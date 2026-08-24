@@ -38,11 +38,11 @@ type GetFullRequestOriginStatByInstanceIdRequest struct {
 	//
 	// example:
 	//
-	// Disabled
+	// False
 	Asc *bool `json:"Asc,omitempty" xml:"Asc,omitempty"`
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
-	// >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
+	// > The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type GetFullRequestOriginStatByInstanceIdRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
-	// >  This parameter must be specified if the database instance is a PolarDB for MySQL cluster.
+	// > This parameter must be specified if the database instance is a PolarDB for MySQL cluster.
 	//
 	// example:
 	//
@@ -68,17 +68,17 @@ type GetFullRequestOriginStatByInstanceIdRequest struct {
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The field by which the results to be returned are sorted. Default value: **count**. Valid values:
 	//
-	// 	- **count**: the number of executions.
+	// - **count**: the number of executions.
 	//
-	// 	- **avgRt**: the average execution duration.
+	// - **avgRt**: the average execution duration.
 	//
-	// 	- **rtRate**: the execution duration percentage.
+	// - **rtRate**: the execution duration percentage.
 	//
-	// 	- **rowsExamined**: the total number of scanned rows.
+	// - **rowsExamined**: the total number of scanned rows.
 	//
-	// 	- **avgRowsExamined**: the average number of scanned rows.
+	// - **avgRowsExamined**: the average number of scanned rows.
 	//
-	// 	- **avgRowsReturned**: the average number of returned rows.
+	// - **avgRowsReturned**: the average number of returned rows.
 	//
 	// example:
 	//
@@ -102,9 +102,9 @@ type GetFullRequestOriginStatByInstanceIdRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The role of the PolarDB-X 2.0 node. Valid values:
 	//
-	// 	- **polarx_cn**: compute node.
+	// - **polarx_cn**: compute node.
 	//
-	// 	- **polarx_en**: data node.
+	// - **polarx_en**: data node.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type GetFullRequestOriginStatByInstanceIdRequest struct {
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The type of the SQL statement. Valid values: **SELECT**, **INSERT**, **UPDATE**, **DELETE**, **MERGE**, **ALTER**, **CREATEINDEX**, **DROPINDEX**, **CREATE**, **DROP**, **SET**, **DESC**, **REPLACE**, **CALL**, **BEGIN**, **DESCRIBE**, **ROLLBACK**, **FLUSH**, **USE**, **SHOW**, **START**, **COMMIT**, and **RENAME**.
 	//
-	// >  If the database instance is an ApsaraDB RDS for MySQL instance, a PolarDB for MySQL instance, or a PolarDB-X 2.0 instance, statistics can be collected based on the SQL statement type.
+	// > If the database instance is an ApsaraDB RDS for MySQL instance, a PolarDB for MySQL instance, or a PolarDB-X 2.0 instance, statistics can be collected based on the SQL statement type.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type GetFullRequestOriginStatByInstanceIdRequest struct {
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
-	// >  The start time must be within the storage duration of the SQL Explorer of the database instance, and can be up to 90 days earlier than the current time.
+	// > The start time must be within the storage duration of the SQL Explorer of the database instance, and can be up to 90 days earlier than the current time.
 	//
 	// This parameter is required.
 	//
@@ -130,7 +130,7 @@ type GetFullRequestOriginStatByInstanceIdRequest struct {
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to create the database instance.
 	//
-	// >  This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId when you call this operation.
+	// > This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId when you call this operation.
 	//
 	// example:
 	//

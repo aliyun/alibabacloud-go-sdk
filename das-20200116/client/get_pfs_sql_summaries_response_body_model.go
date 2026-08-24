@@ -22,33 +22,33 @@ type iGetPfsSqlSummariesResponseBody interface {
 }
 
 type GetPfsSqlSummariesResponseBody struct {
-	// The HTTP status code returned.
+	// Response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// Response data.
 	Data *GetPfsSqlSummariesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// Response message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request succeeds, this parameter returns **Successful**. If it fails, it returns error details such as an error code.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 54F3DBAE-9420-511A-9C29-265E8C04****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request succeeded:
 	//
-	// 	- **true**
+	// - **true**: Succeeded.
 	//
-	// 	- **false**
+	// - **false**: Failed.
 	//
 	// example:
 	//
@@ -119,27 +119,27 @@ func (s *GetPfsSqlSummariesResponseBody) Validate() error {
 }
 
 type GetPfsSqlSummariesResponseBodyData struct {
-	// The reserved parameter.
+	// Reserved parameter.
 	//
 	// example:
 	//
 	// None
 	Extra interface{} `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// The details of the data returned.
+	// Detailed information list.
 	List []*GetPfsSqlSummariesResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The page number.
+	// Page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// Maximum number of records per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// Total number of records.
 	//
 	// example:
 	//
@@ -214,397 +214,397 @@ func (s *GetPfsSqlSummariesResponseBodyData) Validate() error {
 }
 
 type GetPfsSqlSummariesResponseBodyDataList struct {
-	// The average execution latency. Unit: millisecond.
+	// Average SQL execution duration, in milliseconds.
 	//
 	// example:
 	//
 	// 0.1717
 	AvgLatency *float64 `json:"AvgLatency,omitempty" xml:"AvgLatency,omitempty"`
-	// The total number of executions.
+	// Total number of executions.
 	//
 	// example:
 	//
 	// 100000
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The percentage of the number of executions.
+	// Percentage of total executions.
 	//
 	// example:
 	//
 	// 0.0586
 	CountRate *float64 `json:"CountRate,omitempty" xml:"CountRate,omitempty"`
-	// The ratio of the CPU execution duration to the total execution duration of the SQL statement.
+	// Ratio of CPU execution time to total SQL execution time.
 	//
 	// example:
 	//
 	// 0
 	CpuRate *float64 `json:"CpuRate,omitempty" xml:"CpuRate,omitempty"`
-	// The CPU execution duration. Unit: millisecond.
+	// CPU runtime, in milliseconds.
 	//
 	// example:
 	//
 	// 0
 	CpuTime *float64 `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
-	// The data read duration. Unit: millisecond.
+	// Data read time, in milliseconds.
 	//
 	// example:
 	//
 	// 0
 	DataReadTime *float64 `json:"DataReadTime,omitempty" xml:"DataReadTime,omitempty"`
-	// The number of nodes from which data can be read.
+	// Number of readable data nodes.
 	//
 	// example:
 	//
 	// 0
 	DataReads *int32 `json:"DataReads,omitempty" xml:"DataReads,omitempty"`
-	// The data write duration. Unit: millisecond.
+	// Data write time, in milliseconds.
 	//
 	// example:
 	//
 	// 0
 	DataWriteTime *float64 `json:"DataWriteTime,omitempty" xml:"DataWriteTime,omitempty"`
-	// The number of nodes to which data can be written.
+	// Number of writable data nodes.
 	//
 	// example:
 	//
 	// 0
 	DataWrites *int32 `json:"DataWrites,omitempty" xml:"DataWrites,omitempty"`
-	// The name of the database.
+	// Database name.
 	//
 	// example:
 	//
 	// testDB
 	Db *string `json:"Db,omitempty" xml:"Db,omitempty"`
-	// The execution duration. Unit: millisecond.
+	// Actual runtime, in milliseconds.
 	//
 	// example:
 	//
 	// 0
 	ElapsedTime *float64 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
-	// The number of errors.
+	// Number of errors.
 	//
 	// example:
 	//
 	// 0
 	ErrCount *int64 `json:"ErrCount,omitempty" xml:"ErrCount,omitempty"`
-	// The time when the SQL statement was executed for the first time. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// First execution time, in Unix time format, in milliseconds.
 	//
 	// example:
 	//
 	// 1659308149000
 	FirstTime *int64 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
-	// Indicates whether full table scan was enabled. Valid values:
+	// Indicates whether a full table scan occurred. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Yes.
 	//
-	// 	- **false**
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	FullScan *bool `json:"FullScan,omitempty" xml:"FullScan,omitempty"`
-	// The primary key ID.
+	// Primary key ID.
 	//
 	// example:
 	//
 	// 26186357
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The instance ID.
+	// Instance ID.
 	//
 	// example:
 	//
 	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the SQL statement was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// Last update time, in Unix time format, in milliseconds.
 	//
 	// example:
 	//
 	// 1661306520000
 	LastTime *int64 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
-	// The average lock wait latency. Unit: millisecond.
+	// Average lock wait time, in milliseconds.
 	//
 	// example:
 	//
 	// 0
 	LockLatencyAvg *float64 `json:"LockLatencyAvg,omitempty" xml:"LockLatencyAvg,omitempty"`
-	// The logical database ID.
+	// Logical database ID.
 	//
 	// example:
 	//
 	// 58275984
 	LogicId *int64 `json:"LogicId,omitempty" xml:"LogicId,omitempty"`
-	// The number of logical nodes.
+	// Number of logical nodes.
 	//
 	// example:
 	//
 	// 0
 	LogicReads *int64 `json:"LogicReads,omitempty" xml:"LogicReads,omitempty"`
-	// The maximum execution latency. Unit: millisecond.
+	// Maximum execution duration, in milliseconds.
 	//
 	// example:
 	//
 	// 36.233
 	MaxLatency *float64 `json:"MaxLatency,omitempty" xml:"MaxLatency,omitempty"`
-	// The number of mutex spins.
+	// Number of mutex spins.
 	//
 	// example:
 	//
 	// 1
 	MutexSpins *int32 `json:"MutexSpins,omitempty" xml:"MutexSpins,omitempty"`
-	// The number of mutex waits.
+	// Number of mutex waits.
 	//
 	// example:
 	//
 	// 1
 	MutexWaits *int32 `json:"MutexWaits,omitempty" xml:"MutexWaits,omitempty"`
-	// The node ID.
+	// Node ID.
 	//
-	// >  This parameter is returned only if the database instance is an ApsaraDB RDS for MySQL Cluster Edition instance or a PolarDB for MySQL cluster.
+	// > This parameter is returned for ApsaraDB RDS for MySQL Cluster Edition or PolarDB for MySQL database instances.
 	//
 	// example:
 	//
 	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The number of physical asynchronous nodes.
+	// Number of physical asynchronous nodes.
 	//
 	// example:
 	//
 	// 0
 	PhysicalAsyncReads *int64 `json:"PhysicalAsyncReads,omitempty" xml:"PhysicalAsyncReads,omitempty"`
-	// The number of physical nodes.
+	// Number of physical nodes.
 	//
 	// example:
 	//
 	// 0
 	PhysicalReads *int64 `json:"PhysicalReads,omitempty" xml:"PhysicalReads,omitempty"`
-	// The SQL template.
+	// SQL template.
 	//
 	// example:
 	//
 	// select ?
 	Psql *string `json:"Psql,omitempty" xml:"Psql,omitempty"`
-	// The number of redo nodes.
+	// Number of redo nodes.
 	//
 	// example:
 	//
 	// 0
 	RedoWrites *int64 `json:"RedoWrites,omitempty" xml:"RedoWrites,omitempty"`
-	// The number of rows that are affected by the SQL statement.
+	// Number of rows affected.
 	//
 	// example:
 	//
 	// 0
 	RowsAffected *int64 `json:"RowsAffected,omitempty" xml:"RowsAffected,omitempty"`
-	// The average number of rows affected by the SQL statement.
+	// Average number of rows affected.
 	//
 	// example:
 	//
 	// 0
 	RowsAffectedAvg *float64 `json:"RowsAffectedAvg,omitempty" xml:"RowsAffectedAvg,omitempty"`
-	// The total number of scanned rows.
+	// Total number of rows scanned.
 	//
 	// example:
 	//
 	// 100
 	RowsExamined *int64 `json:"RowsExamined,omitempty" xml:"RowsExamined,omitempty"`
-	// The average number of scanned rows.
+	// Average number of rows scanned.
 	//
 	// example:
 	//
 	// 0
 	RowsExaminedAvg *float64 `json:"RowsExaminedAvg,omitempty" xml:"RowsExaminedAvg,omitempty"`
-	// The average number of returned rows.
+	// Average number of rows sent.
 	//
 	// example:
 	//
 	// 0
 	RowsSendAvg *float64 `json:"RowsSendAvg,omitempty" xml:"RowsSendAvg,omitempty"`
-	// The number of rows returned by the SQL statement.
+	// Number of rows returned.
 	//
 	// example:
 	//
 	// 0
 	RowsSent *int64 `json:"RowsSent,omitempty" xml:"RowsSent,omitempty"`
-	// The average number of rows returned for the SQL statement.
+	// Average number of rows returned per SQL statement.
 	//
 	// example:
 	//
 	// 0.52
 	RowsSentAvg *float64 `json:"RowsSentAvg,omitempty" xml:"RowsSentAvg,omitempty"`
-	// The number of sorted rows.
+	// Number of rows sorted.
 	//
 	// example:
 	//
 	// 0
 	RowsSorted *int64 `json:"RowsSorted,omitempty" xml:"RowsSorted,omitempty"`
-	// The execution duration percentage.
+	// Percentage of total execution duration.
 	//
 	// example:
 	//
 	// 0.1384
 	RtRate *float64 `json:"RtRate,omitempty" xml:"RtRate,omitempty"`
-	// Indicates whether read/write splitting was enabled. Valid values:
+	// Indicates whether read/write splitting is enabled. Valid values:
 	//
-	// 	- **0:*	- Read/write splitting was disabled.
+	// - **0**: Disabled.
 	//
-	// 	- **1:*	- Read/write splitting was enabled.
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 0
 	RwlockOsWaits *int32 `json:"RwlockOsWaits,omitempty" xml:"RwlockOsWaits,omitempty"`
-	// The read/write splitting parameters.
+	// Read/write splitting parameter.
 	//
 	// example:
 	//
 	// 0
 	RwlockSpinRounds *int32 `json:"RwlockSpinRounds,omitempty" xml:"RwlockSpinRounds,omitempty"`
-	// Indices whether multi-index scanning was enabled. Valid values:
+	// Indicates whether multiple index scans are enabled. Valid values:
 	//
-	// 	- **0:*	- Multi-index scanning was disabled.
+	// - **0**: Disabled.
 	//
-	// 	- **1:*	- Multi-index scanning was enabled.
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 0
 	RwlockSpinWaits *int32 `json:"RwlockSpinWaits,omitempty" xml:"RwlockSpinWaits,omitempty"`
-	// The average number of joins that performed table scans without using indexes.
+	// The average number of connections that perform table scans without using an index.
 	//
-	// > If the value of this parameter is not 0, check the table indexes.
+	// 	Notice: If this parameter value is not 0, carefully check the indexes of the table.
 	//
 	// example:
 	//
 	// 0
 	SelectFullJoinAvg *float64 `json:"SelectFullJoinAvg,omitempty" xml:"SelectFullJoinAvg,omitempty"`
-	// The average number of joins that selected a range.
+	// Average number of range joins.
 	//
 	// example:
 	//
 	// 0
 	SelectFullRangeJoinAvg *float64 `json:"SelectFullRangeJoinAvg,omitempty" xml:"SelectFullRangeJoinAvg,omitempty"`
-	// The average selected range.
+	// Average range selection.
 	//
 	// example:
 	//
 	// 0
 	SelectRangeAvg *float64 `json:"SelectRangeAvg,omitempty" xml:"SelectRangeAvg,omitempty"`
-	// The average number of scanned rows.
+	// Average number of scans.
 	//
 	// example:
 	//
 	// 0
 	SelectScanAvg *float64 `json:"SelectScanAvg,omitempty" xml:"SelectScanAvg,omitempty"`
-	// The semi-synchronous replication latency. Unit: millisecond.
+	// Semi-synchronous replication delay, in milliseconds.
 	//
 	// example:
 	//
 	// 0.12
 	SemisyncDelayTime *float64 `json:"SemisyncDelayTime,omitempty" xml:"SemisyncDelayTime,omitempty"`
-	// The amount of time consumed for locking the server. Unit: millisecond.
+	// Server lock time, in milliseconds.
 	//
 	// example:
 	//
 	// 0
 	ServerLockTime *float64 `json:"ServerLockTime,omitempty" xml:"ServerLockTime,omitempty"`
-	// The number of merges that the sorting algorithm must perform.
+	// Number of merge passes required by the sort algorithm.
 	//
 	// example:
 	//
 	// 0
 	SortMergePasses *int64 `json:"SortMergePasses,omitempty" xml:"SortMergePasses,omitempty"`
-	// The average number of sorts that were performed by using a range.
+	// Average number of range-based sorts.
 	//
 	// example:
 	//
 	// 0
 	SortRangeAvg *float64 `json:"SortRangeAvg,omitempty" xml:"SortRangeAvg,omitempty"`
-	// The average number of sorted rows.
+	// Average number of sorted rows.
 	//
 	// example:
 	//
 	// 0
 	SortRowsAvg *float64 `json:"SortRowsAvg,omitempty" xml:"SortRowsAvg,omitempty"`
-	// The average number of sorts that were performed during table scans.
+	// Average number of sorted scans.
 	//
 	// example:
 	//
 	// 0
 	SortScanAvg *float64 `json:"SortScanAvg,omitempty" xml:"SortScanAvg,omitempty"`
-	// The SQL template ID.
+	// SQL template ID.
 	//
 	// example:
 	//
 	// 2e8147b5ca2dfc640dfd5e43d96a****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
-	// The type of the SQL statement. Valid values:
+	// SQL type. Valid values:
 	//
-	// 	- **SELECT**
+	// - **SELECT**
 	//
-	// 	- **UPDATE**
+	// - **UPDATE**
 	//
-	// 	- **DELETE**
+	// - **DELETE**
 	//
 	// example:
 	//
 	// SELECT
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	// The names of tables in the database.
+	// Database table names.
 	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
-	// The reserved parameter.
+	// Reserved parameter.
 	//
 	// example:
 	//
 	// None
 	TimerWaitAvg *float64 `json:"TimerWaitAvg,omitempty" xml:"TimerWaitAvg,omitempty"`
-	// The data timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// Data timestamp in Unix time format, in milliseconds.
 	//
 	// example:
 	//
 	// 1643040000000
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The number of on-disk temporary tables.
+	// Number of temporary disk tables.
 	//
 	// example:
 	//
 	// 0
 	TmpDiskTables *int64 `json:"TmpDiskTables,omitempty" xml:"TmpDiskTables,omitempty"`
-	// The average number of on-disk temporary tables.
+	// Average number of temporary disk tables.
 	//
 	// example:
 	//
 	// 0
 	TmpDiskTablesAvg *float64 `json:"TmpDiskTablesAvg,omitempty" xml:"TmpDiskTablesAvg,omitempty"`
-	// The number of temporary tables.
+	// Number of temporary tables.
 	//
 	// example:
 	//
 	// 0
 	TmpTables *int64 `json:"TmpTables,omitempty" xml:"TmpTables,omitempty"`
-	// The average number of temporary tables.
+	// Average number of temporary tables.
 	//
 	// example:
 	//
 	// 0
 	TmpTablesAvg *float64 `json:"TmpTablesAvg,omitempty" xml:"TmpTablesAvg,omitempty"`
-	// The execution latency. Unit: millisecond.
+	// Total execution duration, in milliseconds.
 	//
 	// example:
 	//
 	// 60913.256
 	TotalLatency *float64 `json:"TotalLatency,omitempty" xml:"TotalLatency,omitempty"`
-	// The amount of time consumed for locking the storage transaction. Unit: millisecond.
+	// Transaction lock time, in milliseconds.
 	//
 	// example:
 	//
 	// 0
 	TransactionLockTime *float64 `json:"TransactionLockTime,omitempty" xml:"TransactionLockTime,omitempty"`
-	// The user ID.
+	// User ID.
 	//
 	// example:
 	//
 	// 196278346919****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The number of warnings.
+	// Number of warnings.
 	//
 	// example:
 	//

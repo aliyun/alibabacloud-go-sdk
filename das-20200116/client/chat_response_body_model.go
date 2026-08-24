@@ -42,62 +42,92 @@ type iChatResponseBody interface {
 }
 
 type ChatResponseBody struct {
+	// Indicates the current activity status of the agent.
+	//
 	// example:
 	//
 	// waiting_for_agent_thinking
 	ActivityType *string `json:"ActivityType,omitempty" xml:"ActivityType,omitempty"`
+	// The content of the response.
+	//
 	// example:
 	//
 	// I see you have several PolarDB instances, and I will query them for you shortly
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The incremental content of the response.
+	//
 	// example:
 	//
 	// hello
 	Delta *string `json:"Delta,omitempty" xml:"Delta,omitempty"`
+	// The message ID.
+	//
 	// example:
 	//
 	// 61820b594664275c4429****
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// The key for the additional information.
+	//
 	// example:
 	//
 	// summary
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the parent message.
+	//
 	// example:
 	//
 	// 76bee207-31ee-4707-8851-6b9d4da033aa
 	ParentMessageId *string `json:"ParentMessageId,omitempty" xml:"ParentMessageId,omitempty"`
+	// The role in the conversation.
+	//
 	// example:
 	//
 	// assistant
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The run ID.
+	//
 	// example:
 	//
 	// ed7cb7b1-ddc8-45d7-9ff3-b315726cb5f7
 	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
+	// The name of the execution step.
+	//
 	// example:
 	//
 	// sub_agent_performance_diagnose_mysql
 	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	// The identifier of the callback tool.
+	//
 	// example:
 	//
 	// das_api
 	TaskTrackerId *string `json:"TaskTrackerId,omitempty" xml:"TaskTrackerId,omitempty"`
+	// The thread ID.
+	//
 	// example:
 	//
 	// 8e481be1-21d5-4a92-a2fb-fb54be0ab4f6
 	ThreadId *string `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
+	// The tool call ID.
+	//
 	// example:
 	//
 	// call_edf9cdb69e0e4c9796a6a5a6
 	ToolCallId *string `json:"ToolCallId,omitempty" xml:"ToolCallId,omitempty"`
+	// The name of the tool.
+	//
 	// example:
 	//
 	// das_api
 	ToolCallName *string `json:"ToolCallName,omitempty" xml:"ToolCallName,omitempty"`
+	// The event type.
+	//
 	// example:
 	//
 	// TEXT_MESSAGE_CONTENT
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value of the additional information.
+	//
 	// example:
 	//
 	// {"CharCount":393,"End":1777428785996,"RequestId":"BE59AED5-D831-5811-BBAD-590B917B2089","SessionId":"123e4567-e89b-12d3-a456-xxxxxxxxxxxx","Start":1777428707927}

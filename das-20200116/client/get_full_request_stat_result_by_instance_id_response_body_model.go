@@ -32,7 +32,7 @@ type GetFullRequestStatResultByInstanceIdResponseBody struct {
 	Data *GetFullRequestStatResultByInstanceIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message that contains information such as an error code is returned.
+	// > If the request was successful, **Successful*	- is returned. If the request failed, an error message that contains information such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type GetFullRequestStatResultByInstanceIdResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -121,9 +121,9 @@ func (s *GetFullRequestStatResultByInstanceIdResponseBody) Validate() error {
 type GetFullRequestStatResultByInstanceIdResponseBodyData struct {
 	// Indicates whether the asynchronous request failed. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -131,9 +131,9 @@ type GetFullRequestStatResultByInstanceIdResponseBodyData struct {
 	Fail *bool `json:"Fail,omitempty" xml:"Fail,omitempty"`
 	// Indicates whether the asynchronous request was complete. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -149,11 +149,11 @@ type GetFullRequestStatResultByInstanceIdResponseBodyData struct {
 	ResultId *string `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
 	// The state of the asynchronous request. Valid values:
 	//
-	// 	- **RUNNING**
+	// - **RUNNING**
 	//
-	// 	- **SUCCESS**
+	// - **SUCCESS**
 	//
-	// 	- **FAIL**
+	// - **FAIL**
 	//
 	// example:
 	//
@@ -347,7 +347,7 @@ type GetFullRequestStatResultByInstanceIdResponseBodyDataResultList struct {
 	AvgSqlCount *int64 `json:"AvgSqlCount,omitempty" xml:"AvgSqlCount,omitempty"`
 	// The average number of updated rows.
 	//
-	//  > This parameter is returned only for ApsaraDB RDS for MySQL and PolarDB-X 2.0 databases.
+	// > This parameter is returned only for ApsaraDB RDS for MySQL and PolarDB-X 2.0 databases.
 	//
 	// example:
 	//

@@ -32,7 +32,7 @@ type GetBlockingDetailListResponseBody struct {
 	Data *GetBlockingDetailListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request is successful, **Successful*	- is returned. Otherwise, an error message such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. Otherwise, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type GetBlockingDetailListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -221,7 +221,7 @@ type GetBlockingDetailListResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// school
+	// testdb1
 	DataBase *string `json:"DataBase,omitempty" xml:"DataBase,omitempty"`
 	// The client hostname.
 	//
@@ -233,13 +233,13 @@ type GetBlockingDetailListResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// Cheney603
+	// Testuser
 	LoginId *string `json:"LoginId,omitempty" xml:"LoginId,omitempty"`
 	// The hash value of the SQL statement.
 	//
 	// example:
 	//
-	// 6977DD06CD9CAFF2
+	// DC08B955CAD25E7B
 	QueryHash *string `json:"QueryHash,omitempty" xml:"QueryHash,omitempty"`
 	// The session ID.
 	//

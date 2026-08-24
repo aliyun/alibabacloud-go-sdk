@@ -32,7 +32,7 @@ type GetKillInstanceSessionTaskResultResponseBody struct {
 	Data *GetKillInstanceSessionTaskResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type GetKillInstanceSessionTaskResultResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -145,7 +145,7 @@ type GetKillInstanceSessionTaskResultResponseBodyData struct {
 	KillSuccessCount *int64 `json:"KillSuccessCount,omitempty" xml:"KillSuccessCount,omitempty"`
 	// The node ID.
 	//
-	// >  This parameter is returned only if the instance is a PolarDB for MySQL cluster.
+	// > This parameter is returned only if the instance is a PolarDB for MySQL cluster.
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ type GetKillInstanceSessionTaskResultResponseBodyData struct {
 	Result []*GetKillInstanceSessionTaskResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 	// The session IDs.
 	//
-	// >  If all sessions are terminated, the IDs of all sessions on the instance or node are returned.
+	// > If all sessions are terminated, the IDs of all sessions on the instance or node are returned.
 	Sessions []*int64 `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
 	// The task ID.
 	//
@@ -165,13 +165,13 @@ type GetKillInstanceSessionTaskResultResponseBodyData struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The state of the task that terminates sessions.
 	//
-	// 	- **RUNNING**: The task is in progress.
+	// - **RUNNING**: The task is in progress.
 	//
-	// 	- **SUCCESS**: The task is successful.
+	// - **SUCCESS**: The task is successful.
 	//
-	// 	- **FAILURE**: The task failed.
+	// - **FAILURE**: The task failed.
 	//
-	// 	- **ERROR**: Other errors occur.
+	// - **ERROR**: Other errors occur.
 	//
 	// example:
 	//
@@ -337,21 +337,21 @@ type GetKillInstanceSessionTaskResultResponseBodyDataResult struct {
 	Info *string `json:"Info,omitempty" xml:"Info,omitempty"`
 	// The description of the session when the session was terminated.
 	//
-	// 	- **SESSION_KILLED**: The session is terminated.
+	// - **SESSION_KILLED**: The session is terminated.
 	//
-	// 	- **SESSION_EXPIRED**: The session has expired.
+	// - **SESSION_EXPIRED**: The session has expired.
 	//
-	// 	- **SESSION_NO_PERMISSION**: The account used to terminate the session has insufficient permissions.
+	// - **SESSION_NO_PERMISSION**: The account used to terminate the session has insufficient permissions.
 	//
-	// 	- **SESSION_ACCOUNT_ERROR**: The account or password used to terminate the session is invalid.
+	// - **SESSION_ACCOUNT_ERROR**: The account or password used to terminate the session is invalid.
 	//
-	// 	- **SESSION_IGNORED_USER**: The session of the account does not need to be terminated.
+	// - **SESSION_IGNORED_USER**: The session of the account does not need to be terminated.
 	//
-	// 	- **SESSION_INTERNAL_USER_OR_COMMAND**: The session is a session initiated by or a command run by an Alibaba Cloud O\\&M account.
+	// - **SESSION_INTERNAL_USER_OR_COMMAND**: The session is a session initiated by or a command run by an Alibaba Cloud O\\&M account.
 	//
-	// 	- **SESSION_KILL_TASK_TIMEOUT**: Timeout occurs when the session is terminated.
+	// - **SESSION_KILL_TASK_TIMEOUT**: Timeout occurs when the session is terminated.
 	//
-	// 	- **SESSION_OTHER_ERROR**: Other errors occurred.
+	// - **SESSION_OTHER_ERROR**: Other errors occurred.
 	//
 	// example:
 	//

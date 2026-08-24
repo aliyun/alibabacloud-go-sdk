@@ -22,17 +22,17 @@ type iDescribeSqlLogConfigResponseBody interface {
 }
 
 type DescribeSqlLogConfigResponseBody struct {
-	// The response code.
+	// The returned status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data that is returned.
+	// The returned data.
 	Data *DescribeSqlLogConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message is returned.
+	// >If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type DescribeSqlLogConfigResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: The request was successful.
 	//
-	// 	- **false**
+	// 	- **false**: The request failed.
 	//
 	// example:
 	//
@@ -119,23 +119,23 @@ func (s *DescribeSqlLogConfigResponseBody) Validate() error {
 }
 
 type DescribeSqlLogConfigResponseBodyData struct {
-	// Indicates whether the cold data storage is enabled. Valid values:
+	// Indicates whether cold data storage is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false**
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	ColdEnable *bool `json:"ColdEnable,omitempty" xml:"ColdEnable,omitempty"`
-	// The number of days for which the SQL Explorer and Audit data is stored in cold storage.
+	// The cold data storage duration. Unit: days.
 	//
 	// example:
 	//
 	// 23
 	ColdRetention *int32 `json:"ColdRetention,omitempty" xml:"ColdRetention,omitempty"`
-	// The time when the cold data storage was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start time of cold data storage. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -143,41 +143,42 @@ type DescribeSqlLogConfigResponseBodyData struct {
 	ColdStartTime *int64 `json:"ColdStartTime,omitempty" xml:"ColdStartTime,omitempty"`
 	// The collector version. Valid values:
 	//
-	// 	- **MYSQL_V0**
+	// - **MYSQL_V0**: MySQL V0.
 	//
-	// 	- **MYSQL_V1**
+	// - **MYSQL_V1**: MySQL V1.
 	//
-	// 	- **MYSQL_V2**
+	// - **MYSQL_V2**: MySQL V2.
 	//
-	// 	- **MYSQL_V3**
+	// - **MYSQL_V3**: MySQL V3.
 	//
-	// 	- **PG_V1**
+	// - **PG_V1**: PostgreSQL V1.
 	//
-	// 	- **rdspg_v1**
+	// - **rdspg_v1**: ApsaraDB RDS for PostgreSQL V1.
 	//
-	// 	- **polarpg_v1**
+	// - **polarpg_v1**: PolarDB for PostgreSQL V1.
 	//
 	// example:
 	//
 	// MYSQL_V3
 	CollectorVersion *string `json:"CollectorVersion,omitempty" xml:"CollectorVersion,omitempty"`
-	// Indicates whether the hot data storage is enabled. Valid values:
+	Enable           *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Indicates whether hot data storage is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false**
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	HotEnable *bool `json:"HotEnable,omitempty" xml:"HotEnable,omitempty"`
-	// The number of days for which the SQL Explorer and Audit data is stored in hot storage.
+	// The hot data storage duration. Unit: days.
 	//
 	// example:
 	//
 	// 7
 	HotRetention *int32 `json:"HotRetention,omitempty" xml:"HotRetention,omitempty"`
-	// The time when the hot data storage was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start time of hot data storage. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -189,29 +190,29 @@ type DescribeSqlLogConfigResponseBodyData struct {
 	//
 	// None
 	LogFilter *string `json:"LogFilter,omitempty" xml:"LogFilter,omitempty"`
-	// Indicates whether the SQL Explorer feature is enabled. Valid values:
+	// Indicates whether SQL Explorer is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false**
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	RequestEnable *bool `json:"RequestEnable,omitempty" xml:"RequestEnable,omitempty"`
-	// The time when the SQL Explorer feature was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when SQL Explorer was enabled. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1683712800000
 	RequestStartTime *int64 `json:"RequestStartTime,omitempty" xml:"RequestStartTime,omitempty"`
-	// The time when DAS Enterprise Edition V1 expired. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The expiration time of DAS Enterprise Edition V1. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1715335200000
 	RequestStopTime *int64 `json:"RequestStopTime,omitempty" xml:"RequestStopTime,omitempty"`
-	// The total storage duration of the SQL Explorer and Audit data. The value of this parameter is the sum of the values of **HotRetention*	- and **ColdRetention**. Unit: day.
+	// The total data storage duration, which is the sum of **HotRetention*	- and **ColdRetention**. Unit: days.
 	//
 	// example:
 	//
@@ -219,9 +220,9 @@ type DescribeSqlLogConfigResponseBodyData struct {
 	Retention *int32 `json:"Retention,omitempty" xml:"Retention,omitempty"`
 	// Indicates whether DAS Enterprise Edition is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false**
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -233,19 +234,19 @@ type DescribeSqlLogConfigResponseBodyData struct {
 	//
 	// None
 	SqlLogSource *string `json:"SqlLogSource,omitempty" xml:"SqlLogSource,omitempty"`
-	// The state of data migration. Valid values:
+	// The data migration status. Valid values:
 	//
-	// 	- **FINISH**: The historical data is migrated.
+	// - **FINISH**: Historical data migration is complete.
 	//
-	// 	- **RUNNING**: The historical data is being migrated.
+	// - **RUNNING**: Historical data migration is in progress.
 	//
-	// 	- **FAILURE**: The historical data fails to be migrated.
+	// - **FAILURE**: Historical data migration failed.
 	//
 	// example:
 	//
 	// FINISH
 	SqlLogState *string `json:"SqlLogState,omitempty" xml:"SqlLogState,omitempty"`
-	// The time when DAS Enterprise Edition was enabled. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when DAS Enterprise Edition was enabled. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -256,38 +257,39 @@ type DescribeSqlLogConfigResponseBodyData struct {
 	// example:
 	//
 	// None
-	SupportMigration *bool `json:"SupportMigration,omitempty" xml:"SupportMigration,omitempty"`
-	// The latest version of DAS Enterprise Edition that supports the database instance. Valid values:
+	SupportMigration     *bool `json:"SupportMigration,omitempty" xml:"SupportMigration,omitempty"`
+	SupportSecurityAudit *bool `json:"SupportSecurityAudit,omitempty" xml:"SupportSecurityAudit,omitempty"`
+	// The latest DAS Enterprise Edition version supported by the instance. Valid values:
 	//
-	// 	- **SQL_LOG_V0**: DAS Enterprise Edition V0.
+	// - **SQL_LOG_V0**: Enterprise Edition V0.
 	//
-	// 	- **SQL_LOG_V1**: DAS Enterprise version V1.
+	// - **SQL_LOG_V1**: Enterprise Edition V1.
 	//
-	// 	- **SQL_LOG_V2**: DAS Enterprise Edition V2.
+	// - **SQL_LOG_V2**: Enterprise Edition V2.
 	//
-	// 	- **SQL_LOG_V3**: DAS Enterprise Edition V3.
+	// - **SQL_LOG_V3**: Enterprise Edition V3.
 	//
-	// 	- **SQL_LOG_NOT_ENABLE**: DAS Enterprise Edition is not enabled.
+	// - **SQL_LOG_NOT_ENABLE**: Enterprise Edition is not enabled.
 	//
-	// 	- **SQL_LOG_NOT_SUPPORT**: DAS Enterprise Edition is not supported.
+	// - **SQL_LOG_NOT_SUPPORT**: Enterprise Edition is not supported.
 	//
 	// example:
 	//
 	// SQL_LOG_V3
 	SupportVersion *string `json:"SupportVersion,omitempty" xml:"SupportVersion,omitempty"`
-	// The version of DAS Enterprise Edition that is enabled for the database instance. Valid values:
+	// The current DAS Enterprise Edition version that is enabled. Valid values:
 	//
-	// 	- **SQL_LOG_V0**: DAS Enterprise Edition V0.
+	// - **SQL_LOG_V0**: Enterprise Edition V0.
 	//
-	// 	- **SQL_LOG_V1**: DAS Enterprise version V1.
+	// - **SQL_LOG_V1**: Enterprise Edition V1.
 	//
-	// 	- **SQL_LOG_V2**: DAS Enterprise Edition V2.
+	// - **SQL_LOG_V2**: Enterprise Edition V2.
 	//
-	// 	- **SQL_LOG_V3**: DAS Enterprise Edition V3.
+	// - **SQL_LOG_V3**: Enterprise Edition V3.
 	//
-	// 	- **SQL_LOG_NOT_ENABLE**: DAS Enterprise Edition is not enabled.
+	// - **SQL_LOG_NOT_ENABLE**: Enterprise Edition is not enabled.
 	//
-	// 	- **SQL_LOG_NOT_SUPPORT**: DAS Enterprise Edition is not supported.
+	// - **SQL_LOG_NOT_SUPPORT**: Enterprise Edition is not supported.
 	//
 	// example:
 	//
@@ -317,6 +319,10 @@ func (s *DescribeSqlLogConfigResponseBodyData) GetColdStartTime() *int64 {
 
 func (s *DescribeSqlLogConfigResponseBodyData) GetCollectorVersion() *string {
 	return s.CollectorVersion
+}
+
+func (s *DescribeSqlLogConfigResponseBodyData) GetEnable() *bool {
+	return s.Enable
 }
 
 func (s *DescribeSqlLogConfigResponseBodyData) GetHotEnable() *bool {
@@ -371,6 +377,10 @@ func (s *DescribeSqlLogConfigResponseBodyData) GetSupportMigration() *bool {
 	return s.SupportMigration
 }
 
+func (s *DescribeSqlLogConfigResponseBodyData) GetSupportSecurityAudit() *bool {
+	return s.SupportSecurityAudit
+}
+
 func (s *DescribeSqlLogConfigResponseBodyData) GetSupportVersion() *string {
 	return s.SupportVersion
 }
@@ -396,6 +406,11 @@ func (s *DescribeSqlLogConfigResponseBodyData) SetColdStartTime(v int64) *Descri
 
 func (s *DescribeSqlLogConfigResponseBodyData) SetCollectorVersion(v string) *DescribeSqlLogConfigResponseBodyData {
 	s.CollectorVersion = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBodyData) SetEnable(v bool) *DescribeSqlLogConfigResponseBodyData {
+	s.Enable = &v
 	return s
 }
 
@@ -461,6 +476,11 @@ func (s *DescribeSqlLogConfigResponseBodyData) SetSqlLogVisibleTime(v int64) *De
 
 func (s *DescribeSqlLogConfigResponseBodyData) SetSupportMigration(v bool) *DescribeSqlLogConfigResponseBodyData {
 	s.SupportMigration = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBodyData) SetSupportSecurityAudit(v bool) *DescribeSqlLogConfigResponseBodyData {
+	s.SupportSecurityAudit = &v
 	return s
 }
 

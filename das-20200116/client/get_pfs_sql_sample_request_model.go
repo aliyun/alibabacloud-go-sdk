@@ -24,7 +24,7 @@ type iGetPfsSqlSampleRequest interface {
 type GetPfsSqlSampleRequest struct {
 	// The end of the time range to query. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
-	// >  The end time must be later than the start time. You can view the data of up to seven days in the previous 30 days.
+	// > The end time must be later than the start time. You can view the data of up to seven days in the previous 30 days.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GetPfsSqlSampleRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The instance ID.
 	//
-	// >  Only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters are supported
+	// > Only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters are supported
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type GetPfsSqlSampleRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
-	// >  For ApsaraDB RDS for MySQL Cluster Edition instances or PolarDB for MySQL clusters, you must specify the node ID.
+	// > For ApsaraDB RDS for MySQL Cluster Edition instances or PolarDB for MySQL clusters, you must specify the node ID.
 	//
 	// example:
 	//

@@ -28,15 +28,15 @@ type EnableDasProRequest struct {
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
   // The storage duration of SQL Explorer data. Unit: day. Default value: **30**. Valid values:
   // 
-  // 	- **30**
+  // - **30**
   // 
-  // 	- **180**
+  // - **180**
   // 
-  // 	- **365**
+  // - **365**
   // 
-  // 	- **1095**
+  // - **1095**
   // 
-  // 	- **1825**
+  // - **1825**
   // 
   // example:
   // 
@@ -44,7 +44,7 @@ type EnableDasProRequest struct {
   SqlRetention *int32 `json:"SqlRetention,omitempty" xml:"SqlRetention,omitempty"`
   // The ID of the Alibaba Cloud account that is used to create the database instance.
   // 
-  // >  This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId when you call this operation.
+  // > This parameter is optional. The system can automatically obtain the account ID based on the value of InstanceId when you call this operation.
   // 
   // example:
   // 

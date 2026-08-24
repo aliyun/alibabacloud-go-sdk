@@ -15,25 +15,36 @@ type iGetInstanceGroupInspectReportListRequest interface {
 	GetEndTime() *int64
 	SetGroupId(v string) *GetInstanceGroupInspectReportListRequest
 	GetGroupId() *string
+	SetReportType(v string) *GetInstanceGroupInspectReportListRequest
+	GetReportType() *string
 	SetStartTime(v int64) *GetInstanceGroupInspectReportListRequest
 	GetStartTime() *int64
 }
 
 type GetInstanceGroupInspectReportListRequest struct {
+	// Optional. By default, the default Agent is used. You can also specify the Agent that was generated after DAS Agent was activated or that was manually created.
+	//
 	// example:
 	//
 	// ag-472T0DxtmjIxxxxx
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The end timestamp.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1655427625000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Reserved parameter.
+	//
 	// example:
 	//
 	// null
-	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId    *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
+	// The start timestamp.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -62,6 +73,10 @@ func (s *GetInstanceGroupInspectReportListRequest) GetGroupId() *string {
 	return s.GroupId
 }
 
+func (s *GetInstanceGroupInspectReportListRequest) GetReportType() *string {
+	return s.ReportType
+}
+
 func (s *GetInstanceGroupInspectReportListRequest) GetStartTime() *int64 {
 	return s.StartTime
 }
@@ -78,6 +93,11 @@ func (s *GetInstanceGroupInspectReportListRequest) SetEndTime(v int64) *GetInsta
 
 func (s *GetInstanceGroupInspectReportListRequest) SetGroupId(v string) *GetInstanceGroupInspectReportListRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *GetInstanceGroupInspectReportListRequest) SetReportType(v string) *GetInstanceGroupInspectReportListRequest {
+	s.ReportType = &v
 	return s
 }
 

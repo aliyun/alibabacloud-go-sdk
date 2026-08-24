@@ -32,7 +32,7 @@ type GetEventSubscriptionResponseBody struct {
 	Data *GetEventSubscriptionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type GetEventSubscriptionResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -121,9 +121,9 @@ func (s *GetEventSubscriptionResponseBody) Validate() error {
 type GetEventSubscriptionResponseBodyData struct {
 	// Indicates whether the event subscription feature is enabled. Valid values:
 	//
-	// 	- **0**: The event subscription feature is disabled.
+	// - **0**: The event subscription feature is disabled.
 	//
-	// 	- **1**: The event subscription feature is enabled.
+	// - **1**: The event subscription feature is enabled.
 	//
 	// example:
 	//
@@ -131,13 +131,13 @@ type GetEventSubscriptionResponseBodyData struct {
 	Active *int32 `json:"active,omitempty" xml:"active,omitempty"`
 	// The notification method. Valid values:
 	//
-	// 	- **hdm_alarm_sms**: text message.
+	// - **hdm_alarm_sms**: text message.
 	//
-	// 	- **dingtalk**: DingTalk chatbot.
+	// - **dingtalk**: DingTalk chatbot.
 	//
-	// 	- **hdm_alarm_sms_and_email**: text message and email.
+	// - **hdm_alarm_sms_and_email**: text message and email.
 	//
-	// 	- **hdm_alarm_sms,dingtalk**: text message and DingTalk chatbot.
+	// - **hdm_alarm_sms,dingtalk**: text message and DingTalk chatbot.
 	//
 	// example:
 	//
@@ -199,13 +199,13 @@ type GetEventSubscriptionResponseBodyData struct {
 	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
 	// The risk level of the events that trigger notifications. Valid values:
 	//
-	// 	- **Notice**
+	// - **Notice**
 	//
-	// 	- **Optimization**
+	// - **Optimization**
 	//
-	// 	- **Warn**
+	// - **Warn**
 	//
-	// 	- **Critical**
+	// - **Critical**
 	//
 	// example:
 	//
@@ -404,7 +404,7 @@ type GetEventSubscriptionResponseBodyDataContactGroups struct {
 	//
 	// example:
 	//
-	// "[\\"Mr. Zhang\\",\\"Ms. Wang\\",\\"Mr. Li\\"]"
+	// "[\\"Mr. Zhang\\",\\"Mr. Wang\\",\\"Mr. Li\\"]"
 	Contacts *string `json:"contacts,omitempty" xml:"contacts,omitempty"`
 	// The description of the alert contact group.
 	//
@@ -416,7 +416,7 @@ type GetEventSubscriptionResponseBodyDataContactGroups struct {
 	//
 	// example:
 	//
-	// Mr. Zhang
+	// 张先生
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The user ID.
 	//
@@ -488,12 +488,16 @@ type GetEventSubscriptionResponseBodyDataContacts struct {
 	// a***@example.net
 	Email *string `json:"email,omitempty" xml:"email,omitempty"`
 	// The contact groups to which the alert contact belongs.
+	//
+	// example:
+	//
+	// Mr. Zhang
 	Groups []*string `json:"groups,omitempty" xml:"groups,omitempty" type:"Repeated"`
 	// Indicates whether the alert contact name is the same as the contact name on CloudMonitor.
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

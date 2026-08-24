@@ -32,7 +32,7 @@ type GetDeadLockDetailListResponseBody struct {
 	Data *GetDeadLockDetailListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request is successful, **Successful*	- is returned. Otherwise, an error message such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. Otherwise, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type GetDeadLockDetailListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -217,13 +217,13 @@ type GetDeadLockDetailListResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// school
+	// testdb1
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The hostname.
 	//
 	// example:
 	//
-	// sd74020124
+	// sd7402****
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// The time when the transaction was started. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
@@ -247,19 +247,19 @@ type GetDeadLockDetailListResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// sd74020124\\\\Administrator
+	// sd7402****\\\\Administrator
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
 	// The locked object.
 	//
 	// example:
 	//
-	// school.dbo.test1
+	// testdb1.dbo.test1
 	ObjectOwned *string `json:"ObjectOwned,omitempty" xml:"ObjectOwned,omitempty"`
 	// The object that the transaction requested to lock.
 	//
 	// example:
 	//
-	// school.dbo.test2
+	// testdb1.dbo.test2
 	ObjectRequested *string `json:"ObjectRequested,omitempty" xml:"ObjectRequested,omitempty"`
 	// The lock mode held by the session. For more information, see [Lock modes](https://help.aliyun.com/document_detail/2362804.html).
 	//
@@ -287,9 +287,9 @@ type GetDeadLockDetailListResponseBodyDataList struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether the session is the victim of the deadlock. Valid values:
 	//
-	// 	- **0**: no.
+	// - **0**: no.
 	//
-	// 	- **1**: yes.
+	// - **1**: yes.
 	//
 	// example:
 	//
@@ -518,13 +518,13 @@ type GetDeadLockDetailListResponseBodyDataListBlockProcessList struct {
 	//
 	// example:
 	//
-	// school
+	// testdb1
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The hostname.
 	//
 	// example:
 	//
-	// sd74020124
+	// sd7402****
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// The time when the transaction was started. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
@@ -548,19 +548,19 @@ type GetDeadLockDetailListResponseBodyDataListBlockProcessList struct {
 	//
 	// example:
 	//
-	// sd74020124\\\\Administrator
+	// sd7402****\\\\Administrator
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
 	// The locked object.
 	//
 	// example:
 	//
-	// school.dbo.test2
+	// testdb1.dbo.test2
 	ObjectOwned *string `json:"ObjectOwned,omitempty" xml:"ObjectOwned,omitempty"`
 	// The object that the transaction requested to lock.
 	//
 	// example:
 	//
-	// school.dbo.test1
+	// testdb1.dbo.test1
 	ObjectRequested *string `json:"ObjectRequested,omitempty" xml:"ObjectRequested,omitempty"`
 	// The lock mode held by the session. For more information, see [Lock modes](https://help.aliyun.com/document_detail/2362804.html).
 	//
@@ -588,9 +588,9 @@ type GetDeadLockDetailListResponseBodyDataListBlockProcessList struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether the session is the victim of the deadlock. Valid values:
 	//
-	// 	- **0**: no.
+	// - **0**: no.
 	//
-	// 	- **1**: yes.
+	// - **1**: yes.
 	//
 	// example:
 	//

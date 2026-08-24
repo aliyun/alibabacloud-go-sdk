@@ -32,15 +32,15 @@ type DescribeDiagnosticReportListResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The information of the diagnostics reports. Valid values:
 	//
-	// 	- **total**: the number of diagnostics reports.
+	// - **total**: the number of diagnostics reports.
 	//
-	// 	- **score**: the health score.
+	// - **score**: the health score.
 	//
-	// 	- **diagnosticTime**: the time when the diagnostics report was generated. The time is displayed in UTC.
+	// - **diagnosticTime**: the time when the diagnostics report was generated. The time is displayed in UTC.
 	//
-	// 	- **startTime**: the start time of the query. The time is displayed in UTC.
+	// - **startTime**: the start time of the query. The time is displayed in UTC.
 	//
-	// 	- **endTime**: the end time of the query. The time is displayed in UTC.
+	// - **endTime**: the end time of the query. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeDiagnosticReportListResponseBody struct {
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type DescribeDiagnosticReportListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

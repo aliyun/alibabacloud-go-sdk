@@ -22,19 +22,34 @@ type iDescribeErrorLogRecordsResponseBody interface {
 }
 
 type DescribeErrorLogRecordsResponseBody struct {
+	// The returned status code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data details.
 	Data *DescribeErrorLogRecordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// >  If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AAA17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - **true**
+	//
+	// - **false**
+	//
 	// example:
 	//
 	// true
@@ -104,27 +119,40 @@ func (s *DescribeErrorLogRecordsResponseBody) Validate() error {
 }
 
 type DescribeErrorLogRecordsResponseBodyData struct {
+	// The end time of the query. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+	//
 	// example:
 	//
 	// 2025-07-23T05:48:43Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The total number of log entries returned on the current page.
+	//
 	// example:
 	//
 	// 10
-	ItemsNumbers *int64                                         `json:"ItemsNumbers,omitempty" xml:"ItemsNumbers,omitempty"`
-	Logs         []*DescribeErrorLogRecordsResponseBodyDataLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	ItemsNumbers *int64 `json:"ItemsNumbers,omitempty" xml:"ItemsNumbers,omitempty"`
+	// The log details.
+	Logs []*DescribeErrorLogRecordsResponseBodyDataLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// The maximum number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	MaxRecordsPerPage *int32 `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumbers *int32 `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
+	// The start time of the query. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+	//
 	// example:
 	//
 	// 2025-07-22T05:48:43Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The total number of log entries within the specified time range.
+	//
 	// example:
 	//
 	// 100
@@ -216,22 +244,58 @@ func (s *DescribeErrorLogRecordsResponseBodyData) Validate() error {
 }
 
 type DescribeErrorLogRecordsResponseBodyDataLogs struct {
+	// The log category. Valid values:
+	//
+	// - **NETWORK**: network connectivity log.
+	//
+	// - **ACCESS**: access control log.
+	//
+	// - **-**: common log.
+	//
+	// - **COMMAND**: slow log.
+	//
+	// - **SHARDING**: cluster log.
+	//
+	// - **STORAGE**: storage engine log.
+	//
+	// - **CONNPOOL**: connection pool log.
+	//
+	// - **ASIO**: asynchronous I/O log.
+	//
+	// - **WRITE**: slow update log.
+	//
+	// > This parameter is supported only for ApsaraDB for MongoDB instances.
+	//
 	// example:
 	//
 	// NETWORK
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The log connection information.
+	//
+	// > This parameter is supported only for ApsaraDB for MongoDB instances.
+	//
 	// example:
 	//
 	// conn18xxxxxx
 	ConnInfo *string `json:"ConnInfo,omitempty" xml:"ConnInfo,omitempty"`
+	// The error log content.
+	//
 	// example:
 	//
 	// 2025-07-15T15:14:27.175188+08:00 0 [Note] [MY-012468] [InnoDB] Transactions deadlock detected, dumping detailed information.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The time when the error log was generated. The value is a UNIX timestamp in milliseconds.
+	//
+	// 	Notice: For ApsaraDB for MongoDB instances, the time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+	//
 	// example:
 	//
 	// 1731983067000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The node ID.
+	//
+	// > This parameter is supported only for ApsaraDB for MongoDB instances.
+	//
 	// example:
 	//
 	// d-bp128a003436****

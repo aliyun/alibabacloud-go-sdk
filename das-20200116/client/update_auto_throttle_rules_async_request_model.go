@@ -44,9 +44,9 @@ type UpdateAutoThrottleRulesAsyncRequest struct {
 	AbnormalDuration *float64 `json:"AbnormalDuration,omitempty" xml:"AbnormalDuration,omitempty"`
 	// The threshold for the number of active sessions.
 	//
-	// 	- If this parameter and CpuUsage are in the **OR*	- relationship, set this parameter to an integer that is greater than or equal to 16.
+	// - If this parameter and CpuUsage are in the **OR*	- relationship, set this parameter to an integer that is greater than or equal to 16.
 	//
-	// 	- If this parameter and CpuUsage are in the **AND*	- relationship, set this parameter to an integer that is greater than or equal to 2.
+	// - If this parameter and CpuUsage are in the **AND*	- relationship, set this parameter to an integer that is greater than or equal to 2.
 	//
 	// This parameter is required.
 	//
@@ -72,11 +72,11 @@ type UpdateAutoThrottleRulesAsyncRequest struct {
 	AllowThrottleStartTime *string `json:"AllowThrottleStartTime,omitempty" xml:"AllowThrottleStartTime,omitempty"`
 	// Specifies whether to terminate abnormal SQL statements in execution at the same time. Valid values:
 	//
-	// >  Abnormal SQL statements use the same template as the SQL statements to be throttled.
+	// > Abnormal SQL statements use the same template as the SQL statements to be throttled.
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// This parameter is required.
 	//
@@ -92,9 +92,9 @@ type UpdateAutoThrottleRulesAsyncRequest struct {
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	// The logical relationship between the CPU utilization threshold and the maximum number of active sessions. Valid values:
 	//
-	// 	- **AND**
+	// - **AND**
 	//
-	// 	- **OR**
+	// - **OR**
 	//
 	// This parameter is required.
 	//
@@ -112,7 +112,7 @@ type UpdateAutoThrottleRulesAsyncRequest struct {
 	CpuUsage *float64 `json:"CpuUsage,omitempty" xml:"CpuUsage,omitempty"`
 	// The database instance IDs.
 	//
-	// >  Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\\"Instance ID1\\", \\"Instance ID2\\"]`.
+	// > Set this parameter to a JSON array that consists of multiple instance IDs. Separate instance IDs with commas (,). Example: `[\\"Instance ID1\\", \\"Instance ID2\\"]`.
 	//
 	// This parameter is required.
 	//
@@ -130,7 +130,7 @@ type UpdateAutoThrottleRulesAsyncRequest struct {
 	MaxThrottleTime *float64 `json:"MaxThrottleTime,omitempty" xml:"MaxThrottleTime,omitempty"`
 	// The ID of the asynchronous request.
 	//
-	// >  You can leave this parameter empty when you call the operation to initiate the request for the first time, and use the value of this parameter contained in the response to the first request for subsequent requests.
+	// > You can leave this parameter empty when you call the operation to initiate the request for the first time, and use the value of this parameter contained in the response to the first request for subsequent requests.
 	//
 	// example:
 	//

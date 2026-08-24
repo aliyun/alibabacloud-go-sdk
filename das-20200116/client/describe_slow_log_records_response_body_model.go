@@ -22,20 +22,34 @@ type iDescribeSlowLogRecordsResponseBody interface {
 }
 
 type DescribeSlowLogRecordsResponseBody struct {
+	// The status code returned.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// DBLogRecords<SlowLogItem>
 	Data *DescribeSlowLogRecordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned for the request.
+	//
+	// >  This parameter returns **Successful*	- when the request succeeds. If the request fails, an exception message is returned, such as an error code.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A1C79EE2-D04D-571B-8C60-961FAF8E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// - **true**: successful.
+	//
+	// - **false**: failed.
+	//
 	// example:
 	//
 	// true
@@ -105,39 +119,58 @@ func (s *DescribeSlowLogRecordsResponseBody) Validate() error {
 }
 
 type DescribeSlowLogRecordsResponseBodyData struct {
+	// The numeric ID of the instance.
+	//
 	// example:
 	//
 	// 100
 	DbInstanceId *int64 `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rm-bp157g54vy772****
 	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
+	// The end time.
+	//
 	// example:
 	//
 	// 1672617600000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The number of items in the query log list on the current page.
+	//
 	// example:
 	//
 	// 10
-	ItemsNumbers *int64                                        `json:"ItemsNumbers,omitempty" xml:"ItemsNumbers,omitempty"`
-	Logs         []*DescribeSlowLogRecordsResponseBodyDataLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	ItemsNumbers *int64 `json:"ItemsNumbers,omitempty" xml:"ItemsNumbers,omitempty"`
+	// The returned data.
+	Logs []*DescribeSlowLogRecordsResponseBodyDataLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// The maximum number of records per page for the paged query. Valid values: 5 to 100.
+	//
 	// example:
 	//
 	// 20
 	MaxRecordsPerPage *int32 `json:"MaxRecordsPerPage,omitempty" xml:"MaxRecordsPerPage,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// node123
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The page number for the paged query. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumbers *int32 `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 1672531200000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 100
@@ -256,79 +289,133 @@ func (s *DescribeSlowLogRecordsResponseBodyData) Validate() error {
 }
 
 type DescribeSlowLogRecordsResponseBodyDataLogs struct {
+	// The username.
+	//
 	// example:
 	//
 	// user1
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The application name.
+	//
+	// > Only ApsaraDB RDS for SQL Server instances are supported.
+	//
 	// example:
 	//
 	// MyApp
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// The CPU query time.
+	//
+	// > Only ApsaraDB RDS for SQL Server instances are supported.
+	//
 	// example:
 	//
 	// 50
 	CPUTime *float64 `json:"CPUTime,omitempty" xml:"CPUTime,omitempty"`
+	// The CPU query time, in seconds.
+	//
+	// > Only ApsaraDB RDS for SQL Server instances are supported.
+	//
 	// example:
 	//
 	// 100
 	CPUTimeSeconds *float64 `json:"CPUTimeSeconds,omitempty" xml:"CPUTimeSeconds,omitempty"`
 	ClientIp       *string  `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
 	Cmd            *string  `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
+	// The slow query statement.
+	//
+	// > Only ApsaraDB for Tair (Redis® OSS-Compatible) database instances are supported.
+	//
 	// example:
 	//
 	// SELECT
 	Command *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// test
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	DbId   *string `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rm-2zebg30mk056g****
 	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
+	// The number of documents scanned during the MongoDB operation.
+	//
 	// example:
 	//
 	// 100
 	DocsExamined *string `json:"DocsExamined,omitempty" xml:"DocsExamined,omitempty"`
 	ExtText      *string `json:"ExtText,omitempty" xml:"ExtText,omitempty"`
 	Fail         *string `json:"Fail,omitempty" xml:"Fail,omitempty"`
+	// The number of rows fetched by the compute node (CN) of the ApsaraDB PolarDB-X 2.0 database instance.
+	//
+	// > Only ApsaraDB PolarDB-X 2.0 instances are supported.
+	//
 	// example:
 	//
 	// 10
 	Frows *int64 `json:"Frows,omitempty" xml:"Frows,omitempty"`
+	// The source host address.
+	//
 	// example:
 	//
 	// 192.168.1.1
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
+	// The number of I/O writes.
+	//
+	// > Only ApsaraDB RDS for SQL Server instances are supported.
+	//
 	// example:
 	//
 	// 1
 	IOWrites *int64 `json:"IOWrites,omitempty" xml:"IOWrites,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// test
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	// The number of index rows scanned in MongoDB.
+	//
 	// example:
 	//
 	// valueA
 	KeysExamined *string `json:"KeysExamined,omitempty" xml:"KeysExamined,omitempty"`
+	// The number of rows affected by the last statement.
+	//
+	// > Only ApsaraDB RDS for SQL Server instances are supported.
+	//
 	// example:
 	//
 	// 10
 	LastRowsCountAffected *int64 `json:"LastRowsCountAffected,omitempty" xml:"LastRowsCountAffected,omitempty"`
+	// The lock wait time.
+	//
 	// example:
 	//
 	// 100
 	LockTime *float64 `json:"LockTime,omitempty" xml:"LockTime,omitempty"`
+	// The lock wait time, in seconds.
+	//
 	// example:
 	//
 	// 100
 	LockTimeSeconds *float64 `json:"LockTimeSeconds,omitempty" xml:"LockTimeSeconds,omitempty"`
+	// The number of logical reads.
+	//
+	// > Only ApsaraDB RDS for SQL Server instances are supported.
+	//
 	// example:
 	//
 	// 1
 	LogicalIOReads *int64 `json:"LogicalIOReads,omitempty" xml:"LogicalIOReads,omitempty"`
+	// The namespace.
+	//
+	// > Only ApsaraDB for MongoDB instances are supported.
+	//
 	// example:
 	//
 	// pro-test
@@ -337,26 +424,42 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	OpType     *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
 	OriginTime *string `json:"OriginTime,omitempty" xml:"OriginTime,omitempty"`
 	Params     *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The number of physical reads.
+	//
+	// > Only ApsaraDB RDS for SQL Server instances are supported.
+	//
 	// example:
 	//
 	// 1
 	PhysicalIOReads *int64 `json:"PhysicalIOReads,omitempty" xml:"PhysicalIOReads,omitempty"`
+	// The SQL template.
+	//
 	// example:
 	//
 	// SELECT 	- FROM my_table WHERE ROWNUM <= 10
 	Psql *string `json:"Psql,omitempty" xml:"Psql,omitempty"`
+	// The query ID.
+	//
+	// > Only ApsaraDB for MongoDB instances are supported.
+	//
 	// example:
 	//
 	// sq-1pzcdMwRb
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// The time when the query started. Format: yyyy-MM-dd hh:mm:ss (UTC).
+	//
 	// example:
 	//
 	// 2024-04-01 11:00:00
 	QueryStartTime *string `json:"QueryStartTime,omitempty" xml:"QueryStartTime,omitempty"`
+	// The query duration.
+	//
 	// example:
 	//
 	// 121
 	QueryTime *int64 `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
+	// The query duration, in seconds.
+	//
 	// example:
 	//
 	// 100
@@ -365,72 +468,125 @@ type DescribeSlowLogRecordsResponseBodyDataLogs struct {
 	ReqId            *string  `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
 	RequestSize      *int64   `json:"RequestSize,omitempty" xml:"RequestSize,omitempty"`
 	ResponseSize     *int64   `json:"ResponseSize,omitempty" xml:"ResponseSize,omitempty"`
+	// The number of returned items.
+	//
 	// example:
 	//
 	// test
 	ReturnItemNumbers *string `json:"ReturnItemNumbers,omitempty" xml:"ReturnItemNumbers,omitempty"`
+	// The number of rows returned.
+	//
+	// > Only ApsaraDB for MongoDB instances are supported.
+	//
 	// example:
 	//
 	// 20
 	ReturnNum *string `json:"ReturnNum,omitempty" xml:"ReturnNum,omitempty"`
+	// The total number of rows updated or returned by the compute nodes of the ApsaraDB PolarDB-X 2.0 database instance.
+	//
+	// > Only ApsaraDB PolarDB-X 2.0 instances are supported.
+	//
 	// example:
 	//
 	// 20
 	Rows *int64 `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	// The number of rows affected.
+	//
+	// > Only ApsaraDB RDS for SQL Server instances are supported.
+	//
 	// example:
 	//
 	// 10
 	RowsCountAffected *int64 `json:"RowsCountAffected,omitempty" xml:"RowsCountAffected,omitempty"`
+	// The number of rows scanned.
+	//
 	// example:
 	//
 	// 100
 	RowsExamined *int64 `json:"RowsExamined,omitempty" xml:"RowsExamined,omitempty"`
+	// The number of rows returned.
+	//
 	// example:
 	//
 	// 10
 	RowsSent *int64 `json:"RowsSent,omitempty" xml:"RowsSent,omitempty"`
 	Rt       *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	// The SQL text.
+	//
 	// example:
 	//
 	// SELECT 	- FROM my_table WHERE ROWNUM <= 10
 	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
+	// The data schema.
+	//
 	// example:
 	//
 	// HTTPS
 	Scheme *string `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
+	// The number of DN requests from the compute node (CN) of the ApsaraDB PolarDB-X 2.0 database instance.
+	//
+	// > Only ApsaraDB PolarDB-X 2.0 instances are supported.
+	//
 	// example:
 	//
 	// 10
 	Scnt *int64 `json:"Scnt,omitempty" xml:"Scnt,omitempty"`
+	// The SQL template ID.
+	//
 	// example:
 	//
 	// sqlId
-	SqlId  *string                                           `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// The tag.
 	SqlTag *DescribeSlowLogRecordsResponseBodyDataLogsSqlTag `json:"SqlTag,omitempty" xml:"SqlTag,omitempty" type:"Struct"`
+	// The SQL statement type. Valid values:
+	//
+	// - **SELECT**
+	//
+	// - **UPDATE**
+	//
+	// - **DELETE**
+	//
 	// example:
 	//
 	// SELECT
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
+	// The child instance ID.
+	//
 	// example:
 	//
 	// r-8vb219d10038****
 	SubInstanceId *string `json:"SubInstanceId,omitempty" xml:"SubInstanceId,omitempty"`
+	// The table name.
+	//
 	// example:
 	//
 	// tableNameExample
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The template ID of the ApsaraDB PolarDB-X 2.0 database instance.
+	//
+	// > Only ApsaraDB PolarDB-X 2.0 instances are supported.
+	//
 	// example:
 	//
 	// 6a63b6ac4572abfaef7d1163f684****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The thread ID.
+	//
 	// example:
 	//
 	// 57472578
 	ThreadId *string `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
+	// The timestamp.
+	//
 	// example:
 	//
 	// 1747118812
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The trace ID of PolarDB-X 2.0, which is the execute ID of the SQL statement on the ApsaraDB PolarDB-X 2.0 database node.
+	//
+	// > Only ApsaraDB PolarDB-X 2.0 instances are supported.
+	//
 	// example:
 	//
 	// 074ce334-5247-40b9-b0c1-158aea5d****
@@ -959,6 +1115,8 @@ func (s *DescribeSlowLogRecordsResponseBodyDataLogs) Validate() error {
 }
 
 type DescribeSlowLogRecordsResponseBodyDataLogsSqlTag struct {
+	// The remarks.
+	//
 	// example:
 	//
 	// test
@@ -969,6 +1127,8 @@ type DescribeSlowLogRecordsResponseBodyDataLogsSqlTag struct {
 	//
 	// 8ad7069f236bcdaaa9b3ae4b6299****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// Multiple tags separated by commas.
+	//
 	// example:
 	//
 	// DAS_IMPORTANT,DAS_IN_PLAN

@@ -22,21 +22,21 @@ type iGetAsyncErrorRequestStatResultResponseBody interface {
 }
 
 type GetAsyncErrorRequestStatResultResponseBody struct {
-	// The HTTP status code returned.
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	//
 	// example:
 	//
 	// {         "fail": false,         "data": {             "ad78a4e7d3ce81590c9dc2d5f4bc****": {                 "sqlId": "ad78a4e7d3ce81590c9dc2d5f4bc****",                 "instanceId": "rm-2ze8g2am97624****",                 "count": 1             },             "0f92feacd92c048b06a16617a633****": {                 "sqlId": "0f92feacd92c048b06a16617a633****",                 "instanceId": "rm-2ze8g2am97624****",                 "count": 2             }         },         "resultId": "async__61f45ee381b2fa4e8a6545e3bee9****",         "isFinish": true,         "state": "SUCCESS",         "complete": true,         "timestamp": 1644558576717     }
 	Data *GetAsyncErrorRequestStatResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request succeeds, this parameter returns **Successful**. If the request fails, this parameter returns an error message.
 	//
 	// example:
 	//
@@ -48,11 +48,11 @@ type GetAsyncErrorRequestStatResultResponseBody struct {
 	//
 	// 3FC3F8EB-3564-5D1A-B187-3B03E5B0****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request was successful.
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -123,39 +123,39 @@ func (s *GetAsyncErrorRequestStatResultResponseBody) Validate() error {
 }
 
 type GetAsyncErrorRequestStatResultResponseBodyData struct {
-	// Indicates whether the asynchronous request was complete.
+	// Indicates whether the asynchronous request is complete.
 	//
-	// 	- **true**
+	// - **true**: The request is complete.
 	//
-	// 	- **false**
+	// - **false**: The request is in progress.
 	//
 	// example:
 	//
 	// true
 	Complete *bool `json:"complete,omitempty" xml:"complete,omitempty"`
-	// Indicates whether the request failed. Valid values:
+	// Indicates whether the request failed.
 	//
-	// 	- **true**
+	// - **true**: The request failed.
 	//
-	// 	- **false**
+	// - **false**: The request succeeded.
 	//
 	// example:
 	//
 	// false
 	Fail *bool `json:"fail,omitempty" xml:"fail,omitempty"`
-	// Indicates whether the asynchronous request was successful. Valid values:
+	// Indicates whether the asynchronous request is complete.
 	//
-	// 	- **true**
+	// - **true**: The request is complete.
 	//
-	// 	- **false**
+	// - **false**: The request is in progress.
 	//
 	// example:
 	//
 	// true
 	IsFinish *bool `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
-	// The returned data of the asynchronous request.
+	// The data returned by the asynchronous request.
 	Result map[string]*DataResultValue `json:"result,omitempty" xml:"result,omitempty"`
-	// The ID of the asynchronous request.
+	// The asynchronous request ID.
 	//
 	// example:
 	//
@@ -163,17 +163,17 @@ type GetAsyncErrorRequestStatResultResponseBodyData struct {
 	ResultId *string `json:"resultId,omitempty" xml:"resultId,omitempty"`
 	// The state of the asynchronous request. Valid values:
 	//
-	// 	- **RUNNING**: The asynchronous request is running.
+	// - **RUNNING**: The request is running.
 	//
-	// 	- **SUCCESS**: The asynchronous request is successful.
+	// - **SUCCESS**: The request succeeded.
 	//
-	// 	- **FAIL**: The asynchronous request fails.
+	// - **FAIL**: The request failed.
 	//
 	// example:
 	//
 	// SUCCESS
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The time when the asynchronous request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the asynchronous request was complete. The time is a Unix timestamp in milliseconds.
 	//
 	// example:
 	//

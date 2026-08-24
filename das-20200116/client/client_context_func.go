@@ -16,9 +16,9 @@ import (
 //
 // Before you call this operation, take note of the following items:
 //
-//   - If you use an Alibaba Cloud SDK or a DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use an Alibaba Cloud SDK or a DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//   - If you use an SDK to call DAS, you must set the region to cn-shanghai.
+// - If you use an SDK to call DAS, you must set the region to cn-shanghai.
 //
 // @param request - AddHDMInstanceRequest
 //
@@ -110,7 +110,19 @@ func (client *Client) AddHDMInstanceWithContext(ctx context.Context, request *Ad
 
 // Summary:
 //
-// # DAS大模型能力异步逻辑接口
+// An asynchronous API to access the large language model capabilities of DAS.
+//
+// Description:
+//
+// Prerequisites:
+//
+// - Use the latest version of the Alibaba Cloud SDK or the DAS SDK.
+//
+// - When you use an SDK to call the DAS service, you must specify the region as cn-shanghai.
+//
+// - You can create offline tasks only for database instances that have DAS Enterprise Edition enabled. For information about the databases and regions that are supported by different versions of DAS Enterprise Edition, see [DAS product editions and features](https://help.aliyun.com/document_detail/156204.html).
+//
+// For more information about using the Chat API with DAS Agent, see [Best practices for DAS Agent interaction (integrating with the Chat API)](https://help.aliyun.com/zh/das/developer-reference/chat-api-best-practice).
 //
 // @param request - ChatRequest
 //
@@ -125,7 +137,19 @@ func (client *Client) ChatWithSSECtx(ctx context.Context, request *ChatRequest, 
 
 // Summary:
 //
-// # DAS大模型能力异步逻辑接口
+// An asynchronous API to access the large language model capabilities of DAS.
+//
+// Description:
+//
+// Prerequisites:
+//
+// - Use the latest version of the Alibaba Cloud SDK or the DAS SDK.
+//
+// - When you use an SDK to call the DAS service, you must specify the region as cn-shanghai.
+//
+// - You can create offline tasks only for database instances that have DAS Enterprise Edition enabled. For information about the databases and regions that are supported by different versions of DAS Enterprise Edition, see [DAS product editions and features](https://help.aliyun.com/document_detail/156204.html).
+//
+// For more information about using the Chat API with DAS Agent, see [Best practices for DAS Agent interaction (integrating with the Chat API)](https://help.aliyun.com/zh/das/developer-reference/chat-api-best-practice).
 //
 // @param request - ChatRequest
 //
@@ -181,21 +205,21 @@ func (client *Client) ChatWithContext(ctx context.Context, request *ChatRequest,
 
 // Summary:
 //
-// Creates a cache analysis task.
+// Creates a cache analysis task by calling the CreateCacheAnalysisJob operation.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// Before you begin:
 //
-//   - If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - Use the latest version of the Alibaba Cloud or DAS SDK.
 //
-//   - If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
+// - When calling DAS by using the SDK, set the region to cn-shanghai.
 //
-//   - You can call this operation to analyze the data structures of ApsaraDB for Redis and the following self-developed data structures of Tair: TairString, TairHash, TairGIS, TairBloom, TairDoc, TairCpc, and TairZset. Other self-developed Tair data structures are not supported.
+// - Only Redis data structures and the following Tair-developed data structures are supported for analysis: TairString, TairHash, TairGIS, TairBloom, TairDoc, TairCpc, and TairZset. Other Tair-developed data structures are not supported.
 //
-//   - If the specifications of the database instance that you want to analyze are changed, the backup file generated before the specification change cannot be analyzed.
+// - If the specifications of the target instance have been changed, backup files generated before the change cannot be analyzed.
 //
-//   - Tair ESSD/SSD-based instances are not supported.
+// - Tair ESSD-based instances are not supported.
 //
 // @param request - CreateCacheAnalysisJobRequest
 //
@@ -251,19 +275,19 @@ func (client *Client) CreateCacheAnalysisJobWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Creates stress testing tasks.
+// You can call the CreateCloudBenchTasks operation to create a stress testing task.
 //
 // Description:
 //
-// Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html). Before you call this API operation, make sure that your database instances meet the following requirements:
+// Database Autonomy Service (DAS) provides intelligent stress testing to help you verify whether your instance type needs to be scaled out to effectively handle service traffic peaks. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html). The database must meet the following prerequisites:
 //
-//   - The source database instance is an ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance, or a PolarDB for MySQL Cluster Edition cluster.
+// - The source database only supports RDS MySQL High Availability Edition or RDS Enterprise Edition, and PolarDB MySQL cluster edition.
 //
-//   - The destination database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+// - The target database instance is RDS MySQL or PolarDB MySQL.
 //
-//   - The source and destination database instances are connected to DAS. For information about how to connect database instances to DAS, see [Connect an Alibaba Cloud database instance to DAS](https://help.aliyun.com/document_detail/65405.html).
+// - The instance is connected to DAS. For more information, see [Connect to Alibaba Cloud database instances](https://help.aliyun.com/document_detail/65405.html).
 //
-//   - DAS Enterprise Edition is enabled for the source and destination database instances. For more information, see [Overview](https://help.aliyun.com/document_detail/190912.html).
+// - DAS Enterprise Edition must be enabled. For more information, see [DAS Enterprise Edition](https://help.aliyun.com/document_detail/190912.html).
 //
 // @param request - CreateCloudBenchTasksRequest
 //
@@ -417,13 +441,13 @@ func (client *Client) CreateCloudBenchTasksWithContext(ctx context.Context, requ
 //
 // Before you call this operation, take note of the following items:
 //
-//   - If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
+// - If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
 //
-//   - The version of Database Autonomy Service (DAS) SDK must be 1.0.3 or later.
+// - The version of Database Autonomy Service (DAS) SDK must be 1.0.3 or later.
 //
-//   - If you use an SDK to call DAS, you must set the region to cn-shanghai.
+// - If you use an SDK to call DAS, you must set the region to cn-shanghai.
 //
-//   - This operation supports the following database engines:
+// - This operation supports the following database engines:
 //
 //   - RDS MySQL
 //
@@ -481,15 +505,15 @@ func (client *Client) CreateDiagnosticReportWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Creates a task that terminates sessions.
+// Calls the CreateKillInstanceSessionTask operation to create a task that terminates sessions.
 //
 // Description:
 //
-//	  This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+// - This operation is applicable only to ApsaraDB RDS for MySQL and PolarDB for MySQL instances.
 //
-//		- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - When using the Alibaba Cloud or DAS SDK, use the latest version.
 //
-//		- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - When calling DAS by using the SDK, set the region to cn-shanghai.
 //
 // @param request - CreateKillInstanceSessionTaskRequest
 //
@@ -619,6 +643,18 @@ func (client *Client) CreateKillInstanceSessionTaskWithMaintainUserWithContext(c
 //
 // Creates a recent deadlock analysis task.
 //
+// Description:
+//
+// This operation creates a recent deadlock analysis task. Database Autonomy Service (DAS) analyzes the most recent deadlock log returned by SHOW ENGINE INNODB STATUS. If multiple deadlocks have occurred, DAS analyzes only the most recent one. For more information, see [Recent deadlock analysis](https://help.aliyun.com/document_detail/2858236.html).
+//
+// Before you begin, make sure the following prerequisites are met:
+//
+// - The database engine is one of the following: ApsaraDB RDS for MySQL, self-managed MySQL, PolarDB for MySQL, or PolarDB-X 2.0.
+//
+// - If you use the China site (Chinese) or DAS SDK, use the latest version.
+//
+// - When you call DAS by using the SDK, set the region to cn-shanghai.
+//
 // @param request - CreateLatestDeadLockAnalysisRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -669,17 +705,17 @@ func (client *Client) CreateLatestDeadLockAnalysisWithContext(ctx context.Contex
 //
 // Description:
 //
-//	  If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//		- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
-//		- This operation supports the following database engines:
+// - This operation supports the following database engines:
 //
-//	    	- ApsaraDB RDS for MySQL
+//   - ApsaraDB RDS for MySQL
 //
-//	    	- PolarDB for MySQL
+//   - PolarDB for MySQL
 //
-//	    	- ApsaraDB RDS for PostgreSQL
+//   - ApsaraDB RDS for PostgreSQL
 //
 // @param request - CreateQueryOptimizeTagRequest
 //
@@ -749,9 +785,9 @@ func (client *Client) CreateQueryOptimizeTagWithContext(ctx context.Context, req
 //
 // Before you call this operation, take note of the following items:
 //
-//   - If you use an SDK to call Database Autonomy Service (DAS), you must set the region to cn-shanghai.
+// - If you use an SDK to call Database Autonomy Service (DAS), you must set the region to cn-shanghai.
 //
-//   - This operation supports the following database engines:
+// - This operation supports the following database engines:
 //
 //   - ApsaraDB RDS for MySQL
 //
@@ -765,7 +801,7 @@ func (client *Client) CreateQueryOptimizeTagWithContext(ctx context.Context, req
 //
 //   - ApsaraDB for MongoDB
 //
-// >  The minor engine version of ApsaraDB RDS for PostgreSQL instances must be 20221230 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/146895.html).
+// > The minor engine version of ApsaraDB RDS for PostgreSQL instances must be 20221230 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/146895.html).
 //
 // @param request - CreateRequestDiagnosisRequest
 //
@@ -821,7 +857,21 @@ func (client *Client) CreateRequestDiagnosisWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 创建用户跨产品白名单模板
+// Creates a cross-service whitelist template for a user.
+//
+// Description:
+//
+// Before you begin:
+//
+// - If you use the Alibaba Cloud or DAS SDK, use the latest version.
+//
+// - When you call DAS by using the SDK, set the region to cn-shanghai.
+//
+// - Only database instances with DAS Enterprise Edition activated support creating batch tasks. For information about the databases and regions supported by each DAS Enterprise Edition version, see [DAS editions and supported features](https://help.aliyun.com/document_detail/156204.html).
+//
+// Limits:
+//
+// The maximum number of concurrent executions is 10.
 //
 // @param request - CreateSecurityIPGroupRequest
 //
@@ -873,17 +923,21 @@ func (client *Client) CreateSecurityIPGroupWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Creates an offline task for Database Autonomy Service (DAS) Enterprise Edition.
+// Creates an asynchronous task for detailed data.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// Before you begin:
 //
-//   - If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - Use the latest version of the Alibaba Cloud or DAS SDK.
 //
-//   - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - When you call DAS operations by using the SDK, set the region to cn-shanghai.
 //
-//   - You can create an offline task only for database instances for which DAS Enterprise Edition V2 or V3 is enabled. For more information about the databases and regions that are supported by various versions of DAS Enterprise Edition, see [Editions and supported features](https://help.aliyun.com/document_detail/156204.html).
+// - Only database instances with DAS Enterprise Edition enabled support creating batch tasks. For information about the databases and regions supported by each DAS Enterprise Edition version, see [DAS editions and supported features](https://help.aliyun.com/document_detail/156204.html).
+//
+// Rate limit:
+//
+// The maximum number of concurrent tasks is 10.
 //
 // @param request - CreateSqlLogTaskRequest
 //
@@ -961,13 +1015,13 @@ func (client *Client) CreateSqlLogTaskWithContext(ctx context.Context, request *
 //
 // Description:
 //
-//	  This operation is applicable only to ApsaraDB RDS for MySQL instances, PolarDB for MySQL clusters, and ApsaraDB for MongoDB instances.
+// - This operation is applicable only to ApsaraDB RDS for MySQL instances, PolarDB for MySQL clusters, and ApsaraDB for MongoDB instances.
 //
-//		- For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, this operation works the same as the storage analysis feature of the previous version. Tasks generated by this operation cannot be viewed on the Storage Analysis page of the new version in the Database Autonomy Service (DAS) console. If you want to view the tasks and results, call the related API operation to obtain data and save data to your computer.
+// - For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, this operation works the same as the storage analysis feature of the previous version. Tasks generated by this operation cannot be viewed on the Storage Analysis page of the new version in the Database Autonomy Service (DAS) console. If you want to view the tasks and results, call the related API operation to obtain data and save data to your computer.
 //
-//		- If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//		- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
 // @param request - CreateStorageAnalysisTaskRequest
 //
@@ -1027,7 +1081,7 @@ func (client *Client) CreateStorageAnalysisTaskWithContext(ctx context.Context, 
 //
 // Description:
 //
-// Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to handle traffic spikes in an effective manner. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
+// Call this API to delete a stress testing task. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
 //
 // @param request - DeleteCloudBenchTaskRequest
 //
@@ -1071,7 +1125,15 @@ func (client *Client) DeleteCloudBenchTaskWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 删除用户跨产品白名单模板
+// Deletes a cross-product whitelist template for a user.
+//
+// Description:
+//
+// - This operation is used to delete the released DBgateway metadata from intelligent stress testing tasks created by the [CreateCloudBenchTasks](https://help.aliyun.com/document_detail/230665.html) operation.
+//
+// - When using the SDK to call DAS, specify the region as cn-shanghai.
+//
+// > When a DBGateway has no heartbeat with the access point for more than 20 seconds, the DBGateway is in the stopped state.
 //
 // @param request - DeleteSecurityIPGroupRequest
 //
@@ -1119,15 +1181,15 @@ func (client *Client) DeleteSecurityIPGroupWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Deletes the metadata of a stopped DBGateway.
+// Deletes the metadata of a stopped database gateway.
 //
 // Description:
 //
-//	  This operation is used to delete the metadata of a DBGateway that is released in a stress testing task created by calling the [CreateCloudBenchTasks](https://help.aliyun.com/document_detail/230665.html) operation.
+// Call this API to delete metadata for inactive database gateway instances that were created during stress testing created by the [CreateCloudBenchTasks](https://help.aliyun.com/document_detail/230665.html) operation.
 //
-//		- If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+// When you use an SDK to call the DAS service, you must specify the region as `cn-shanghai`.
 //
-// >  If the heartbeat is lost between a DBGateway and the access point for more than 20 seconds, the DBGateway is considered stopped.
+// > A database gateway is considered "stopped" if it has not sent a heartbeat to the DAS service for more than 20 seconds.
 //
 // @param request - DeleteStopGatewayRequest
 //
@@ -1171,7 +1233,15 @@ func (client *Client) DeleteStopGatewayWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取审计告警日志
+// Queries the list of audit alert logs for alert search and alert handling.
+//
+// Description:
+//
+// Before you begin:
+//
+// - Use the latest version of the Alibaba Cloud or DAS SDK.
+//
+// - When calling DAS by using the SDK, set the region to cn-shanghai.
 //
 // @param request - DescribeAuditLogsRequest
 //
@@ -1232,6 +1302,10 @@ func (client *Client) DescribeAuditLogsWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.LoadWhiteList) {
 		query["LoadWhiteList"] = request.LoadWhiteList
+	}
+
+	if !dara.IsNil(request.LogQueryOpJson) {
+		query["LogQueryOpJson"] = request.LogQueryOpJson
 	}
 
 	if !dara.IsNil(request.LogSource) {
@@ -1321,9 +1395,9 @@ func (client *Client) DescribeAuditLogsWithContext(ctx context.Context, request 
 //
 // Before you call this operation, take note of the following items:
 //
-//   - If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//   - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
 // @param request - DescribeAutoScalingConfigRequest
 //
@@ -1367,15 +1441,15 @@ func (client *Client) DescribeAutoScalingConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the auto scaling history of an instance.
+// Queries the elastic scaling history of an instance.
 //
 // Description:
 //
-//	  You can call this operation to query the history information about the automatic performance scaling only of ApsaraDB RDS for MySQL High-availability Edition instances.
+// - Currently, only the automatic performance scaling history of ApsaraDB RDS for MySQL instances in the high-availability series with cloud disks is supported.
 //
-//		- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - When using the Alibaba Cloud or DAS SDK, use the latest version.
 //
-//		- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - When you invoke DAS by using the SDK, set the region to cn-shanghai.
 //
 // @param request - DescribeAutoScalingHistoryRequest
 //
@@ -1415,19 +1489,19 @@ func (client *Client) DescribeAutoScalingHistoryWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the details of a cache analysis task.
+// Returns details of a cache analysis task.
 //
 // Description:
 //
 // Before you call this operation, take note of the following items:
 //
-//   - If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//   - If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
 //
-//   - This operation is applicable only to ApsaraDB for Redis.
+// - This operation is applicable only to ApsaraDB for Redis.
 //
-// >  You can call this operation to query the top 500 keys in a cache analysis task.
+// > Returns the top 500 keys in a cache analysis task.
 //
 // @param request - DescribeCacheAnalysisJobRequest
 //
@@ -1481,11 +1555,11 @@ func (client *Client) DescribeCacheAnalysisJobWithContext(ctx context.Context, r
 //
 // Before you call this operation, take note of the following items:
 //
-//   - If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//   - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
 //
-//   - This operation is applicable only to ApsaraDB for Redis.
+// - This operation is applicable only to ApsaraDB for Redis.
 //
 // @param request - DescribeCacheAnalysisJobsRequest
 //
@@ -1545,11 +1619,11 @@ func (client *Client) DescribeCacheAnalysisJobsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries stress testing tasks.
+// Queries the list of stress testing tasks.
 //
 // Description:
 //
-// Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
+// Database Autonomy Service (DAS) provides intelligent stress testing features to help you verify whether your instance specifications need to be scaled up to effectively handle service traffic peaks. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
 //
 // @param request - DescribeCloudBenchTasksRequest
 //
@@ -1617,7 +1691,7 @@ func (client *Client) DescribeCloudBenchTasksWithContext(ctx context.Context, re
 //
 // Description:
 //
-// Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether you need to scale up your database instance to handle workloads during peak hours. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
+// Database Autonomy Service (DAS) provides stress testing features to help you verify whether your instance specifications need to be scaled up to effectively handle service traffic peaks. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
 //
 // @param request - DescribeCloudbenchTaskRequest
 //
@@ -1661,11 +1735,11 @@ func (client *Client) DescribeCloudbenchTaskWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the configurations of a stress testing task.
+// Retrieves the detailed configuration, file paths, and execution commands for a specific stress test task.
 //
 // Description:
 //
-// Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
+// Call this API to get the configuration details of a stress testing task for advanced debugging, or to understand how the Database Autonomy Service (DAS) stress testing feature operates. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
 //
 // @param request - DescribeCloudbenchTaskConfigRequest
 //
@@ -1715,11 +1789,11 @@ func (client *Client) DescribeCloudbenchTaskConfigWithContext(ctx context.Contex
 //
 // Before you call this operation, take note of the following items:
 //
-//   - If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//   - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
-//   - This operation is applicable to the following database engines:
+// - This operation is applicable to the following database engines:
 //
 //   - ApsaraDB RDS for MySQL
 //
@@ -1785,7 +1859,19 @@ func (client *Client) DescribeDiagnosticReportListWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询实例错误日志
+// Queries the error log details of an instance within a specified time range.
+//
+// Description:
+//
+// This operation queries the error log details of an instance within a specified time range.
+//
+// Before you begin:
+//
+// - The target database engine must be one of the following: ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, PolarDB for MySQL, PolarDB for PostgreSQL, PolarDB for PostgreSQL (Compatible with Oracle), or ApsaraDB for MongoDB.
+//
+// - If you use the Alibaba Cloud or DAS SDK, use the latest version.
+//
+// - When you call DAS operations by using the SDK, set the region to cn-shanghai.
 //
 // @param request - DescribeErrorLogRecordsRequest
 //
@@ -1857,23 +1943,27 @@ func (client *Client) DescribeErrorLogRecordsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the hot keys and the large keys in the memory in real time.
+// Calls the DescribeHotBigKeys operation to retrieve the hot keys and big keys in the current memory in real time.
 //
 // Description:
 //
-// This operation sorts list, hash, set, and zset keys based on the number of elements contained in these keys. The top three keys that contain the most elements are considered large keys. If the number of queries per second (QPS) of a key is greater than 3,000, the key is considered a hot key.
+// For keys with data structures of List, Hash, Set, or Zset, the top 3 keys are sorted and displayed by the number of elements in the key, and are recorded as big keys. If the QPS of a key exceeds 5,000, the key is recorded as a hot key. For more information about the definitions of big keys and hot keys, see [Top Key statistics](https://www.alibabacloud.com/help/en/das/user-guide/key-analysis).
 //
-//   - If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
+// >
 //
-//   - The version of Database Autonomy Service (DAS) SDK must be 1.0.2 or later.
+// > - For instances running Redis Community Edition 7.0.18, 6.0.2.9, 5.5.2.9, or earlier versions, or Tair (Enhanced Edition) in-memory instances running version 5.0.50, 25.2.0.0, or earlier versions, a key with a QPS greater than 3,000 is recorded as a hot key. This threshold cannot be adjusted.
 //
-//   - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - When using the Alibaba Cloud SDK, make sure the version of aliyun-sdk-core is later than 4.3.3. We recommend that you use the latest version.
 //
-//   - This operation is available only for ApsaraDB for Redis instances that meet the following requirements:
+// - Use DAS SDK 1.0.2 or later.
 //
-//   - The instance is a Community Edition instance that uses a major version of 5.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
+// - When calling DAS by using the SDK, set the region to cn-shanghai.
 //
-//   - The ApsaraDB for Redis instance is updated to the latest minor version.
+// - This operation applies only to the following Redis instances:
+//
+//   - The instance is Redis Community Edition or Tair (Redis® OSS-Compatible) in-memory.
+//
+//   - The minor version of the instance is the latest.
 //
 // @param request - DescribeHotBigKeysRequest
 //
@@ -1925,23 +2015,23 @@ func (client *Client) DescribeHotBigKeysWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the hot keys of an ApsaraDB for Redis instance.
+// Queries the hot keys of a Redis instance by calling the DescribeHotKeys operation.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// Before you begin:
 //
-//   - If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V4.3.3. We recommend that you use the latest version.
+// - When using the Alibaba Cloud SDK, make sure the version of aliyun-sdk-core is later than 4.3.3. Use the latest version.
 //
-//   - The version of your Database Autonomy Service (DAS) SDK must be V1.0.2 or later.
+// - The version of the DAS SDK must be 1.0.2 or later.
 //
-//   - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - When calling DAS by using the SDK, set the region to cn-shanghai.
 //
-//   - This operation is applicable only to ApsaraDB for Redis instances that meet the following requirements:
+// - This operation applies only to the following Redis instances:
 //
-//   - The ApsaraDB for Redis instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
+//   - The instance is a Redis Community Edition instance or a Tair (Redis® OSS-Compatible) memory-optimized instance.
 //
-//   - The ApsaraDB for Redis instance is updated to the latest minor version.
+//   - The minor engine version of the instance is the latest.
 //
 // @param request - DescribeHotKeysRequest
 //
@@ -1993,13 +2083,13 @@ func (client *Client) DescribeHotKeysWithContext(ctx context.Context, request *D
 //
 // Description:
 //
-//	  For more information about the database instances that support DAS Enterprise Edition, see [Overview of DAS Enterprise Edition](https://help.aliyun.com/document_detail/190912.html).
+// - For more information about the database instances that support DAS Enterprise Edition, see [Overview of DAS Enterprise Edition](https://help.aliyun.com/document_detail/190912.html).
 //
-//		- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
 //
-//		- This operation is applicable only to DAS Enterprise Edition V1 and V2.
+// - This operation is applicable only to DAS Enterprise Edition V1 and V2.
 //
-// >  We recommend that you call the [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) operation to query the DAS Enterprise Edition configurations of a database instance.
+// > We recommend that you call the [DescribeSqlLogConfig](https://help.aliyun.com/document_detail/2778837.html) operation to query the DAS Enterprise Edition configurations of a database instance.
 //
 // @param request - DescribeInstanceDasProRequest
 //
@@ -2043,7 +2133,15 @@ func (client *Client) DescribeInstanceDasProWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the execution plan of an SQL statement.
+// Obtain the execution plan for an SQL statement.
+//
+// Description:
+//
+// - This operation supports only ApsaraDB RDS for MySQL and PolarDB for MySQL instances.
+//
+// - When using the Alibaba Cloud or DAS SDK, use the latest version.
+//
+// - When calling the DAS service with the SDK, set the region to cn-shanghai.
 //
 // @param request - DescribeQueryExplainRequest
 //
@@ -2103,7 +2201,15 @@ func (client *Client) DescribeQueryExplainWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 展示用户跨产品白名单模板具体信息
+// Displays the details of a cross-engine whitelist template for a user.
+//
+// Description:
+//
+// Before you begin:
+//
+// - Use the latest version of the Alibaba Cloud or DAS SDK.
+//
+// - When calling DAS by using the SDK, set the region to cn-shanghai.
 //
 // @param request - DescribeSecurityIPGroupRequest
 //
@@ -2147,7 +2253,15 @@ func (client *Client) DescribeSecurityIPGroupWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 展示用户跨产品白名单模板与实例绑定信息
+// Displays the binding information between a cross-engine whitelist template and instances for a user.
+//
+// Description:
+//
+// Before you begin:
+//
+// - Use the latest version of the Alibaba Cloud or DAS SDK.
+//
+// - When calling DAS by using the SDK, set the region to cn-shanghai.
 //
 // @param request - DescribeSecurityIPGroupRelationRequest
 //
@@ -2195,7 +2309,21 @@ func (client *Client) DescribeSecurityIPGroupRelationWithContext(ctx context.Con
 
 // Summary:
 //
-// Asynchronously queries the trend data of slow query logs of an instance.
+// Asynchronously retrieves slow log trends data for an instance.
+//
+// Description:
+//
+// *Before using this operation, make sure that you fully understand the [billing methods and pricing](https://help.aliyun.com/document_detail/156195.html) of DAS.**
+//
+// Before you begin:
+//
+// - DAS Enterprise Edition or the Alibaba Cloud Managed Services (not yet online) is enabled for the requested instance.
+//
+// - If you use the Alibaba Cloud SDK or DAS SDK, use the latest version.
+//
+// - When you invoke DAS by using the SDK, set the region to cn-shanghai.
+//
+// This operation uses asynchronous calls and does not immediately return complete results. If the value of isFinish in the response is false, wait 1 second and invoke the operation again until the value of isFinish is true, which indicates that complete results are returned.
 //
 // @param request - DescribeSlowLogHistogramAsyncRequest
 //
@@ -2255,7 +2383,21 @@ func (client *Client) DescribeSlowLogHistogramAsyncWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the slow logs of a database instance. You can filter and sort data by multiple conditions.
+// Queries slow query log records of a database instance with support for filtering and sorting by multiple conditions.
+//
+// Description:
+//
+// - `InstanceId` specifies the instance ID. This parameter is required.
+//
+// - `StartTime` and `EndTime` specify the time range for the query. These parameters are required.
+//
+// - Set `PageNumber` and `PageSize` to retrieve results by paging.
+//
+// - Use the `OrderBy` parameter to sort results. For sortable fields, refer to the References.
+//
+// - Use the `Filters` parameter to further refine query conditions, such as filtering by host address or SQL ID.
+//
+// <notice>Certain database types (such as PostgreSQL and PolarDB for PostgreSQL) do not support specific sorting methods. Settings appropriate parameters as needed.</notice>
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -2333,7 +2475,21 @@ func (client *Client) DescribeSlowLogRecordsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries statistical information about slow query logs.
+// Retrieves slow query log statistics.
+//
+// Description:
+//
+// *Before you call this operation, make sure that you understand the [billing methods and pricing](https://help.aliyun.com/document_detail/156195.html) of Database Autonomy Service (DAS).**
+//
+// Before you call this operation, make sure that the following requirements are met:
+//
+// - Alibaba Cloud Managed Services is enabled for the instance.
+//
+// - Use the latest version of the Alibaba Cloud SDK or DAS SDK.
+//
+// - When you use an SDK to call the DAS service, set the region to cn-shanghai.
+//
+// This operation is asynchronous and does not return the complete result immediately. If the \\`isFinish\\` parameter in the response is \\`false\\`, wait 1 second and send the request again. Repeat the request until the \\`isFinish\\` parameter is \\`true\\` to retrieve the complete result.
 //
 // @param request - DescribeSlowLogStatisticRequest
 //
@@ -2417,15 +2573,15 @@ func (client *Client) DescribeSlowLogStatisticWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the configurations of Database Autonomy Service (DAS) Enterprise Edition that is enabled for a database instance.
+// Queries the DAS Enterprise Edition configuration of a database instance.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// Before you begin:
 //
-//   - If you use an Alibaba Cloud SDK or a DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - Use the latest version of the Alibaba Cloud or DAS SDK.
 //
-//   - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - When calling DAS by using the SDK, set the region to cn-shanghai.
 //
 // @param request - DescribeSqlLogConfigRequest
 //
@@ -2469,15 +2625,15 @@ func (client *Client) DescribeSqlLogConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the log details of a database instance for which Database Autonomy Service (DAS) Enterprise Edition is enabled.
+// Call DescribeSqlLogRecords to query log details in DAS Enterprise Edition.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// Before calling this operation, note the following:
 //
-//   - If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - When you use an Alibaba Cloud or Database Autonomy Service (DAS) SDK, we recommend that you use the latest version.
 //
-//   - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - When you call the DAS service by using an SDK, you must set the region to `cn-shanghai`.
 //
 // @param request - DescribeSqlLogRecordsRequest
 //
@@ -2551,15 +2707,15 @@ func (client *Client) DescribeSqlLogRecordsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the statistics of Database Autonomy Service (DAS) Enterprise Edition.
+// Invokes the DescribeSqlLogStatistic operation to query the statistics information of DAS Enterprise Edition.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// Before you begin:
 //
-//   - If you use an Alibaba Cloud SDK or a DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - Use the latest version of Alibaba Cloud SDK or DAS SDK.
 //
-//   - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - When calling DAS by using the SDK, set the region to cn-shanghai.
 //
 // @param request - DescribeSqlLogStatisticRequest
 //
@@ -2603,15 +2759,15 @@ func (client *Client) DescribeSqlLogStatisticWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the details of an offline task in Database Autonomy Service (DAS) Enterprise Edition.
+// Call the `DescribeSqlLogTask` operation to query the details of an offline task in DAS enterprise edition.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// Note the following before you call this operation:
 //
-//   - If you use an Alibaba Cloud SDK or a DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - We recommend using the latest version of the Alibaba Cloud SDK or DAS SDK.
 //
-//   - If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
+// - When calling the DAS service with an SDK, set the region to cn-shanghai.
 //
 // @param request - DescribeSqlLogTaskRequest
 //
@@ -2667,15 +2823,15 @@ func (client *Client) DescribeSqlLogTaskWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the audit log tasks of a database instance.
+// Lists the audit log tasks for an instance.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// The following prerequisites must be met to call this operation:
 //
-//   - If you use an Alibaba Cloud SDK or a DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - We recommend that you use the latest version of the Alibaba Cloud SDK or the DAS SDK.
 //
-//   - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - When you use an SDK to call the DAS service, you must set the region to `cn-shanghai`.
 //
 // @param request - DescribeSqlLogTasksRequest
 //
@@ -2749,13 +2905,13 @@ func (client *Client) DescribeSqlLogTasksWithContext(ctx context.Context, reques
 //
 // The list, hash, set, and zset keys are sorted based on the number of elements in these keys. The top three keys that have the most elements are considered large keys.
 //
-//   - If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
+// - If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
 //
-//   - The version of Database Autonomy Service (DAS) SDK must be 1.0.2 or later.
+// - The version of Database Autonomy Service (DAS) SDK must be 1.0.2 or later.
 //
-//   - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
 //
-//   - This operation is available only for an ApsaraDB for Redis instance of one of the following versions:
+// - This operation is available only for an ApsaraDB for Redis instance of one of the following versions:
 //
 //   - The instance is ApsaraDB for Redis Community Edition instances that use a major version of 5.0 or later or a performance-enhanced instance of the ApsaraDB for Redis Enhanced Edition (Tair).
 //
@@ -2819,23 +2975,23 @@ func (client *Client) DescribeTopBigKeysWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the top 100 hotkeys over a period of time.
+// Queries the top 100 hot keys within a specified time period.
 //
 // Description:
 //
-// If the number of queries per second (QPS) of a key is greater than 3,000, the key is considered a hot key.
+// A key is identified as a hot key if its QPS exceeds 3,000.
 //
-//   - If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than 4.3.3. We recommend that you use the latest version.
+// - If you use an Alibaba Cloud SDK, ensure that the version of aliyun-sdk-core is 4.3.3 or later. We recommend using the latest version.
 //
-//   - The version of Database Autonomy Service (DAS) SDK must be 1.0.2 or later.
+// - The DAS SDK version must be 1.0.2 or later.
 //
-//   - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - When calling the DAS service with an SDK, set the region to cn-shanghai.
 //
-//   - This operation is available only for an ApsaraDB for Redis instance of one of the following versions:
+// - This operation applies only to the following Redis instances:
 //
-//   - The instance is a Community Edition instance that uses a major version of 4.0 or later or a performance-enhanced instance of the Enhanced Edition (Tair).
+//   - The instance is an open source Redis instance or a Tair (Enterprise Edition) memory-optimized instance.
 //
-//   - The ApsaraDB for Redis instance is updated to the latest minor version.
+//   - The instance runs on the latest minor version.
 //
 // @param request - DescribeTopHotKeysRequest
 //
@@ -2901,9 +3057,9 @@ func (client *Client) DescribeTopHotKeysWithContext(ctx context.Context, request
 //
 // This operation supports the following database engines:
 //
-//   - ApsaraDB RDS for MySQL
+// - ApsaraDB RDS for MySQL
 //
-//   - PolarDB for MySQL
+// - PolarDB for MySQL
 //
 // @param request - DisableAllSqlConcurrencyControlRulesRequest
 //
@@ -3059,13 +3215,13 @@ func (client *Client) DisableAutoThrottleRulesWithContext(ctx context.Context, r
 //
 // Description:
 //
-//	  For more information about the database instances that support DAS Enterprise Edition, see [Overview](https://help.aliyun.com/document_detail/190912.html).
+// - For more information about the database instances that support DAS Enterprise Edition, see [Overview](https://help.aliyun.com/document_detail/190912.html).
 //
-//		- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
 //
-//		- This operation is applicable only to DAS Enterprise Edition V1.
+// - This operation is applicable only to DAS Enterprise Edition V1.
 //
-// >  We recommend that you call the [ModifySqlLogConfig](https://help.aliyun.com/document_detail/2778835.html) operation to enable or disable DAS Enterprise Edition for a database instance. For more information about the databases and regions supported by each version of DAS Enterprise Edition, see [Editions and supported features](https://help.aliyun.com/document_detail/156204.html).
+// > We recommend that you call the [ModifySqlLogConfig](https://help.aliyun.com/document_detail/2778835.html) operation to enable or disable DAS Enterprise Edition for a database instance. For more information about the databases and regions supported by each version of DAS Enterprise Edition, see [Editions and supported features](https://help.aliyun.com/document_detail/156204.html).
 //
 // @param request - DisableDasProRequest
 //
@@ -3119,11 +3275,11 @@ func (client *Client) DisableDasProWithContext(ctx context.Context, request *Dis
 //
 // Before you call this operation, take note of the following items:
 //
-//   - If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//   - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
-//   - This operation is applicable only to ApsaraDB for Redis instances.
+// - This operation is applicable only to ApsaraDB for Redis instances.
 //
 // @param request - DisableInstanceDasConfigRequest
 //
@@ -3181,9 +3337,9 @@ func (client *Client) DisableInstanceDasConfigWithContext(ctx context.Context, r
 //
 // This operation is applicable to the following database engines:
 //
-//   - ApsaraDB RDS for MySQL
+// - ApsaraDB RDS for MySQL
 //
-//   - PolarDB for MySQL
+// - PolarDB for MySQL
 //
 // @param request - DisableSqlConcurrencyControlRequest
 //
@@ -3239,11 +3395,11 @@ func (client *Client) DisableSqlConcurrencyControlWithContext(ctx context.Contex
 //
 // Description:
 //
-//	  If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
 //
-//		- This operation is applicable only to DAS Enterprise Edition V1.
+// - This operation is applicable only to DAS Enterprise Edition V1.
 //
-// >  We recommend that you call the [ModifySqlLogConfig](https://help.aliyun.com/document_detail/2778835.html) operation to activate or deactivate DAS Enterprise Edition for a database instance. For more information about the databases and regions supported by each version of DAS Enterprise Edition, see [DAS editions and supported features](https://help.aliyun.com/document_detail/156204.html).
+// > We recommend that you call the [ModifySqlLogConfig](https://help.aliyun.com/document_detail/2778835.html) operation to activate or deactivate DAS Enterprise Edition for a database instance. For more information about the databases and regions supported by each version of DAS Enterprise Edition, see [DAS editions and supported features](https://help.aliyun.com/document_detail/156204.html).
 //
 // @param request - EnableDasProRequest
 //
@@ -3301,9 +3457,9 @@ func (client *Client) EnableDasProWithContext(ctx context.Context, request *Enab
 //
 // This operation supports the following database engines:
 //
-//   - ApsaraDB RDS for MySQL
+// - ApsaraDB RDS for MySQL
 //
-//   - PolarDB for MySQL
+// - PolarDB for MySQL
 //
 // @param request - EnableSqlConcurrencyControlRequest
 //
@@ -3371,13 +3527,13 @@ func (client *Client) EnableSqlConcurrencyControlWithContext(ctx context.Context
 //
 // Description:
 //
-// >  GetAsyncErrorRequestListByCode is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of the **isFinish*	- parameter is **false*	- in the response, wait for 1 second and then send a request again. If the value of the **isFinish*	- parameter is **true**, the complete results are returned.
+// > GetAsyncErrorRequestListByCode is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of the **isFinish*	- parameter is **false*	- in the response, wait for 1 second and then send a request again. If the value of the **isFinish*	- parameter is **true**, the complete results are returned.
 //
-//   - This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Enable and manage DAS Economy Edition and DAS Enterprise Edition](https://help.aliyun.com/document_detail/163298.html).
+// - This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Enable and manage DAS Economy Edition and DAS Enterprise Edition](https://help.aliyun.com/document_detail/163298.html).
 //
-//   - If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
 //
-//   - When you call this operation, the value of the SqlId parameter changes due to the optimization of the SQL template algorithm starting from September 1, 2024. For more information, see [[Notice\\] Optimization of the SQL template algorithm](~~2845725~~).
+// - When you call this operation, the value of the SqlId parameter changes due to the optimization of the SQL template algorithm starting from September 1, 2024. For more information, see [[Notice\\] Optimization of the SQL template algorithm](~~2845725~~).
 //
 // @param request - GetAsyncErrorRequestListByCodeRequest
 //
@@ -3441,11 +3597,11 @@ func (client *Client) GetAsyncErrorRequestListByCodeWithContext(ctx context.Cont
 //
 // Description:
 //
-// >  GetAsyncErrorRequestStatByCode is an asynchronous operation After a request is sent, the complete results are not returned immediately. If the value of **isFinish*	- is **false*	- in the response, wait for 1 second and then send a request again. If the value of **isFinish*	- is **true**, the complete results are returned.
+// > GetAsyncErrorRequestStatByCode is an asynchronous operation After a request is sent, the complete results are not returned immediately. If the value of **isFinish*	- is **false*	- in the response, wait for 1 second and then send a request again. If the value of **isFinish*	- is **true**, the complete results are returned.
 //
-//   - This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](https://help.aliyun.com/document_detail/163298.html).
+// - This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](https://help.aliyun.com/document_detail/163298.html).
 //
-//   - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
 //
 // @param request - GetAsyncErrorRequestStatByCodeRequest
 //
@@ -3505,15 +3661,15 @@ func (client *Client) GetAsyncErrorRequestStatByCodeWithContext(ctx context.Cont
 
 // Summary:
 //
-// Asynchronously obtains the number of failed executions of SQL templates based on SQL Explorer data.
+// Call GetAsyncErrorRequestStatResult to asynchronously get the execution error count for a specific SQL statement from the SQL Insight results of a database instance.
 //
 // Description:
 //
-// >  GetAsyncErrorRequestStatResult is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish*	- is **false*	- in the response, wait for 1 second and then send a request again. If the value of **isFinish*	- is **true**, the complete results are returned.
+// > This is an asynchronous call, so the complete results are not returned immediately. If the **isFinish*	- field in the response is **false**, wait 1s and retry the call. The complete results are returned when **isFinish*	- is **true**.
 //
-//   - This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](https://help.aliyun.com/document_detail/163298.html).
+// - This operation supports only RDS MySQL and PolarDB for MySQL instances. Before you call this operation, ensure that DAS Enterprise Edition is enabled for the instance. For more information, see [Purchase DAS Enterprise Edition](https://help.aliyun.com/document_detail/163298.html).
 //
-//   - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - When you use an SDK to call DAS, you must set the region to cn-shanghai.
 //
 // @param request - GetAsyncErrorRequestStatResultRequest
 //
@@ -3581,11 +3737,11 @@ func (client *Client) GetAsyncErrorRequestStatResultWithContext(ctx context.Cont
 //
 // Description:
 //
-//	  This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+// - This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 //
-//		- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//		- If you use an SDK to call DAS, you must set the region to cn-shanghai.
+// - If you use an SDK to call DAS, you must set the region to cn-shanghai.
 //
 // @param request - GetAutoIncrementUsageStatisticRequest
 //
@@ -3647,11 +3803,11 @@ func (client *Client) GetAutoIncrementUsageStatisticWithContext(ctx context.Cont
 //
 // Before you call this operation, take note of the following items:
 //
-//   - If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+// - If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
 //
-//   - The database instance is an ApsaraDB RDS for MySQL instance of High-availability Edition.
+// - The database instance is an ApsaraDB RDS for MySQL instance of High-availability Edition.
 //
-//   - The database instance has four or more cores, and **innodb_file_per_table*	- is set to **ON**.
+// - The database instance has four or more cores, and **innodb_file_per_table*	- is set to **ON**.
 //
 // @param request - GetAutoResourceOptimizeRulesRequest
 //
@@ -3705,9 +3861,9 @@ func (client *Client) GetAutoResourceOptimizeRulesWithContext(ctx context.Contex
 //
 // Before you call this operation, take note of the following items:
 //
-//   - If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+// - If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
 //
-//   - The database instance that you want to manage must be of one of the following types:
+// - The database instance that you want to manage must be of one of the following types:
 //
 //   - ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0
 //
@@ -3759,19 +3915,19 @@ func (client *Client) GetAutoThrottleRulesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the details of notification events of a database instance.
+// Returns details of autonomous notification events for a database instance.
 //
 // Description:
 //
 // Before you call this operation, take note of the following items:
 //
-//   - If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//   - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
-//   - After your instance is connected to DAS, notification events such as snapshot capture are triggered if DAS detects changes to database monitoring metrics during anomaly detection.
+// - After your instance is connected to DAS, notification events such as snapshot capture are triggered if DAS detects changes to database monitoring metrics during anomaly detection.
 //
-// >  You can query the details of notification events only if the autonomy center is enabled. For more information, see [Autonomy center](https://help.aliyun.com/document_detail/152139.html).
+// > You can query the details of notification events only if the autonomy center is enabled. For more information, see [Autonomy center](https://help.aliyun.com/document_detail/152139.html).
 //
 // @param request - GetAutonomousNotifyEventContentRequest
 //
@@ -3829,13 +3985,13 @@ func (client *Client) GetAutonomousNotifyEventContentWithContext(ctx context.Con
 //
 // Before you call this operation, take note of the following items:
 //
-//   - If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//   - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
-//   - After your instance is connected to DAS, notification events such as snapshot capture are triggered if DAS detects changes to database monitoring metrics during anomaly detection.
+// - After your instance is connected to DAS, notification events such as snapshot capture are triggered if DAS detects changes to database monitoring metrics during anomaly detection.
 //
-// >  You can query the details of notification events only if the autonomy center is enabled. For more information, see [Autonomy center](https://help.aliyun.com/document_detail/152139.html).
+// > You can query the details of notification events only if the autonomy center is enabled. For more information, see [Autonomy center](https://help.aliyun.com/document_detail/152139.html).
 //
 // @param request - GetAutonomousNotifyEventsInRangeRequest
 //
@@ -3919,11 +4075,11 @@ func (client *Client) GetAutonomousNotifyEventsInRangeWithContext(ctx context.Co
 //
 // Description:
 //
-//	  This operation is applicable only to ApsaraDB RDS for SQL Server instances.
+// - This operation is applicable only to ApsaraDB RDS for SQL Server instances.
 //
-//		- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//		- If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
 //
 // @param request - GetBlockingDetailListRequest
 //
@@ -4049,7 +4205,11 @@ func (client *Client) GetDBInstanceConnectivityDiagnosisWithContext(ctx context.
 
 // Summary:
 //
-// # DAS大模型能力异步逻辑接口
+// This API uses Server-Sent Events (SSE) to interact with the DAS agent. You can use this API for features such as Q&A and performance diagnostics.
+//
+// Description:
+//
+// This is a paid API. You are charged based on the number of output characters. Before you use this API, ensure that you understand the billing methods and [pricing](https://help.aliyun.com/zh/das/product-overview/billing-details-of-the-previous-version?spm=a2c4g.11186623.help-menu-63907.d_0_1_0.b7203b87MDNqHO\\&scm=20140722.H_156195._.OR_help-T_cn~zh-V_1#cad160563fbkd) of the DAS Agent product.
 //
 // @param request - GetDasAgentSSERequest
 //
@@ -4064,7 +4224,11 @@ func (client *Client) GetDasAgentSSEWithSSECtx(ctx context.Context, request *Get
 
 // Summary:
 //
-// # DAS大模型能力异步逻辑接口
+// This API uses Server-Sent Events (SSE) to interact with the DAS agent. You can use this API for features such as Q&A and performance diagnostics.
+//
+// Description:
+//
+// This is a paid API. You are charged based on the number of output characters. Before you use this API, ensure that you understand the billing methods and [pricing](https://help.aliyun.com/zh/das/product-overview/billing-details-of-the-previous-version?spm=a2c4g.11186623.help-menu-63907.d_0_1_0.b7203b87MDNqHO\\&scm=20140722.H_156195._.OR_help-T_cn~zh-V_1#cad160563fbkd) of the DAS Agent product.
 //
 // @param request - GetDasAgentSSERequest
 //
@@ -4120,19 +4284,19 @@ func (client *Client) GetDasAgentSSEWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// Queries the storage usage of a database instance for which Database Autonomy Service (DAS) Enterprise Edition V1 or V2 is enabled.
+// Queries the storage usage of DAS Enterprise Edition V1 or V2 for a database instance.
 //
 // Description:
 //
-//	  For information about the database instances that support this operation, see [Overview of DAS Enterprise Edition](https://help.aliyun.com/document_detail/190912.html).
+// - For information about the supported databases, see [DAS Enterprise Edition](https://help.aliyun.com/document_detail/190912.html).
 //
-//		- If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - When using the Alibaba Cloud or DAS SDK, use the latest version.
 //
-//		- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - When invoking DAS by using the SDK, set the region to cn-shanghai.
 //
-//		- This operation is applicable only to DAS Enterprise Edition V1 and V2.
+// - This operation applies only to DAS Enterprise Edition V1 and V2.
 //
-// >  We recommend that you call the [DescribeSqlLogStatistic](https://help.aliyun.com/document_detail/2778836.html) operation to query the data statistics of a database instance for which DAS Enterprise Edition is enabled.
+// >Use the [DescribeSqlLogStatistic](https://help.aliyun.com/document_detail/2778836.html) operation to query the statistics information of DAS Enterprise Edition.
 //
 // @param request - GetDasProServiceUsageRequest
 //
@@ -4180,19 +4344,21 @@ func (client *Client) GetDasProServiceUsageWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the hot data of audit logs.
+// Retrieves hot data from SQL audit logs.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// Before you call this API, ensure that you meet the following requirements:
 //
-//   - If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - Use the latest version of the Alibaba Cloud SDK or DAS SDK.
 //
-//   - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - When using an SDK to call the DAS service, specify the region as `cn-shanghai`.
 //
-//   - This operation is applicable to PolarDB for MySQL, ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and ApsaraDB RDS for SQL Server.
+// - Supported engines: PolarDB MySQL, ApsaraDB RDS for MySQL, ApsaraDB RDS for PostgreSQL, and ApsaraDB RDS for SQLServer.
 //
-// >  The beginning of the time range to query can be up to seven days earlier than the current time. The interval between the start time and the end time cannot exceed one day. This operation can return a maximum of 10,000 entries.
+// - Enable log indexing for the instance.
+//
+// > The query start time must be within the last 7 days. The query duration cannot exceed 1 day. The API returns up to 10,000 records.
 //
 // @param request - GetDasSQLLogHotDataRequest
 //
@@ -4344,7 +4510,23 @@ func (client *Client) GetDasSQLLogHotDataWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the details of a deadlock.
+// Retrieves the detailed information for a single deadlock event.
+//
+// Description:
+//
+// This API fetches the full details of a specific deadlock, including the transactions involved, the SQL statements, and the locks held and waited for. The deadlock can be from either a recent analysis or a full historical analysis. For more information, see [Deadlock analysis](https://help.aliyun.com/document_detail/2858236.html).
+//
+// Before you call this operation, ensure the following:
+//
+// - **Supported engines**:
+//
+//   - For recent deadlock analysis: ApsaraDB RDS for MySQL, self-managed MySQL, PolarDB for MySQL, PolarDB-X 2.0.
+//
+//   - For full deadlock analysis: ApsaraDB RDS for MySQL or PolarDB for MySQL with [DAS Economy Edition](https://help.aliyun.com/document_detail/2666482.html) or [DAS Professional Edition](https://help.aliyun.com/document_detail/190912.html) enabled.
+//
+// - **SDK version**: Use the latest version of the Alibaba Cloud SDK.
+//
+// - **Region**: If you call the API via the SDK, set the region ID to `cn-shanghai`.
 //
 // @param request - GetDeadLockDetailRequest
 //
@@ -4404,11 +4586,11 @@ func (client *Client) GetDeadLockDetailWithContext(ctx context.Context, request 
 //
 // Description:
 //
-//	  This operation is applicable only to ApsaraDB RDS for SQL Server instances.
+// - This operation is applicable only to ApsaraDB RDS for SQL Server instances.
 //
-//		- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//		- If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
 //
 // @param request - GetDeadLockDetailListRequest
 //
@@ -4472,7 +4654,21 @@ func (client *Client) GetDeadLockDetailListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the historical tasks of recent deadlock analysis and full deadlock analysis.
+// Retrieves the historical analysis tasks for recent and full deadlock analysis.
+//
+// Description:
+//
+// Retrieves the historical analysis records for recent and full deadlock analysis. For more information, see [Deadlock analysis](https://help.aliyun.com/document_detail/2858236.html).
+//
+// The following requirements must be met before you call this operation:
+//
+// - To query historical analysis records of recent deadlocks, the destination database engine must be RDS MySQL, self-managed MySQL, PolarDB for MySQL, or PolarDB-X 2.0.
+//
+// - To query historical analysis records of full deadlocks, the destination database engine must be RDS MySQL or PolarDB for MySQL, and [DAS Alibaba Cloud Managed Services (formerly known as Economy Edition)](https://help.aliyun.com/document_detail/2666482.html) must be enabled.
+//
+// - Use the latest version of the Alibaba Cloud SDK or DAS SDK.
+//
+// - When you use an SDK to call the DAS service, set the region to cn-shanghai.
 //
 // @param request - GetDeadLockHistoryRequest
 //
@@ -4540,7 +4736,19 @@ func (client *Client) GetDeadLockHistoryWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the trend of the number of deadlocks in full deadlock analysis within a specified period of time.
+// Queries the deadlock count trend based on full deadlock analysis of error logs within a specified time range.
+//
+// Description:
+//
+// Invokes this operation to query the deadlock count from full deadlock analysis within a specified time range. DAS periodically analyzes fault logs, parses deadlock information, and collects statistics on deadlock count trends. For details, see [Full deadlock analysis](https://help.aliyun.com/document_detail/2858236.html).
+//
+// Before you begin:
+//
+// - The database DPI engine must be RDS MySQL or PolarDB for MySQL, and [DAS Alibaba Cloud Managed Services (formerly DAS Economy Edition)](https://help.aliyun.com/document_detail/2666482.html) must be enabled.
+//
+// - If you use the China site (aliyun.com) or DAS SDK, use the latest version.
+//
+// - When you invoke DAS by using the SDK, set the region to cn-shanghai.
 //
 // @param request - GetDeadlockHistogramRequest
 //
@@ -4604,11 +4812,11 @@ func (client *Client) GetDeadlockHistogramWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// >  GetErrorRequestSample is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish*	- is **false*	- in the response, wait for 1 second and then send a request again. If the value of **isFinish*	- is **true**, the complete results are returned.
+// > GetErrorRequestSample is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of **isFinish*	- is **false*	- in the response, wait for 1 second and then send a request again. If the value of **isFinish*	- is **true**, the complete results are returned.
 //
-//   - This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](https://help.aliyun.com/document_detail/163298.html).
+// - This API operation supports only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters for which Database Autonomy Service (DAS) Enterprise Edition is enabled. For more information, see [Purchase DAS Enterprise Edition](https://help.aliyun.com/document_detail/163298.html).
 //
-//   - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
 //
 // @param request - GetErrorRequestSampleRequest
 //
@@ -4678,11 +4886,11 @@ func (client *Client) GetErrorRequestSampleWithContext(ctx context.Context, requ
 //
 // Before you call this operation, take note of the following items:
 //
-//   - If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//   - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
-//   - The database instance that you want to manage is connected to DAS.
+// - The database instance that you want to manage is connected to DAS.
 //
 // @param request - GetEventSubscriptionRequest
 //
@@ -4732,9 +4940,9 @@ func (client *Client) GetEventSubscriptionWithContext(ctx context.Context, reque
 //
 // The SQL Explorer feature allows you to check the health status of SQL statements and troubleshoot performance issues. For more information, see [SQL Explorer](https://help.aliyun.com/document_detail/204096.html).
 //
-//   - For more information about database instances that support this feature, see [Overview](https://help.aliyun.com/document_detail/190912.html).
+// - For more information about database instances that support this feature, see [Overview](https://help.aliyun.com/document_detail/190912.html).
 //
-//   - If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+// - If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
 //
 // @param request - GetFullRequestOriginStatByInstanceIdRequest
 //
@@ -4824,9 +5032,9 @@ func (client *Client) GetFullRequestOriginStatByInstanceIdWithContext(ctx contex
 //
 // The SQL Explorer feature allows you to check the health status of SQL statements and troubleshoot performance issues. For more information, see [SQL Explorer](https://help.aliyun.com/document_detail/204096.html).
 //
-//   - For more information about the database engines that support SQL Explorer, see [SQL Explorer](https://help.aliyun.com/document_detail/204096.html).
+// - For more information about the database engines that support SQL Explorer, see [SQL Explorer](https://help.aliyun.com/document_detail/204096.html).
 //
-//   - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
 //
 // @param request - GetFullRequestSampleByInstanceIdRequest
 //
@@ -4896,15 +5104,15 @@ func (client *Client) GetFullRequestSampleByInstanceIdWithContext(ctx context.Co
 //
 // Description:
 //
-// >  GetFullRequestStatResultByInstanceId is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of the isFinish parameter is **false*	- in the response, wait for 1 second and then send a request again. If the value of the isFinish parameter is **true**, the complete results are returned.
+// > GetFullRequestStatResultByInstanceId is an asynchronous operation. After a request is sent, the complete results are not returned immediately. If the value of the isFinish parameter is **false*	- in the response, wait for 1 second and then send a request again. If the value of the isFinish parameter is **true**, the complete results are returned.
 //
 // The SQL Explorer feature allows you to check the health status of SQL statements and troubleshoot performance issues. For more information, see [SQL Explorer](https://help.aliyun.com/document_detail/204096.html).
 //
-//   - For more information about database instances that support this feature, see [Overview of DAS Enterprise Edition](https://help.aliyun.com/document_detail/190912.html).
+// - For more information about database instances that support this feature, see [Overview of DAS Enterprise Edition](https://help.aliyun.com/document_detail/190912.html).
 //
-//   - If you use an SDK to call the API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+// - If you use an SDK to call the API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
 //
-//   - When you call this operation, the value of the SqlId parameter changes due to the optimization of the SQL template algorithm starting from September 1, 2024. For more information, see [[Notice\\] Optimization of the SQL template algorithm](~~2845725~~).
+// - When you call this operation, the value of the SqlId parameter changes due to the optimization of the SQL template algorithm starting from September 1, 2024. For more information, see [[Notice\\] Optimization of the SQL template algorithm](~~2845725~~).
 //
 // @param request - GetFullRequestStatResultByInstanceIdRequest
 //
@@ -5004,7 +5212,23 @@ func (client *Client) GetFullRequestStatResultByInstanceIdWithContext(ctx contex
 
 // Summary:
 //
-// 获取实例组日报详情
+// Retrieves the details of a DAS Agent automated operations report.
+//
+// Description:
+//
+// Enabling the automated operations report feature for DAS Agent allows the system to perform periodic inspections on target instances and generate reports. Currently, only daily reports are supported. This operation is used to query report details.
+//
+// Before using this operation, ensure that the following prerequisites are met:
+//
+// - DAS Agent is activated and the agent is still within its validity period.
+//
+// - The daily report feature is enabled on the DAS Agent configuration page.
+//
+// - When using the Alibaba Cloud SDK, ensure that the version of aliyun-sdk-core is later than 4.3.3. We recommend that you use the latest version.
+//
+// - The version of the DAS SDK is 1.0.3 or later.
+//
+// - When using the SDK to call DAS, set the region to cn-shanghai.
 //
 // @param request - GetInstanceGroupInspectReportDetailRequest
 //
@@ -5021,6 +5245,10 @@ func (client *Client) GetInstanceGroupInspectReportDetailWithContext(ctx context
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AgentId) {
 		query["AgentId"] = request.AgentId
+	}
+
+	if !dara.IsNil(request.ReportType) {
+		query["ReportType"] = request.ReportType
 	}
 
 	body := map[string]interface{}{}
@@ -5054,7 +5282,23 @@ func (client *Client) GetInstanceGroupInspectReportDetailWithContext(ctx context
 
 // Summary:
 //
-// 查询实例组的报告信息
+// Queries the list of O&M reports generated by DAS Agent.
+//
+// Description:
+//
+// Enabling the O&M report feature of DAS Agent allows the system to perform periodic inspections on target instances and generate reports. Currently, only daily reports are supported.
+//
+// Before you begin:
+//
+// - Activate DAS Agent and ensure that the Agent is still within its validity period.
+//
+// - Enable the daily report feature on the DAS Agent configuration page.
+//
+// - When using the Alibaba Cloud SDK, ensure that the version of aliyun-sdk-core is later than 4.3.3. Use the latest version.
+//
+// - Use DAS SDK 1.0.3 or later.
+//
+// - When calling DAS by using the SDK, set the region to ap-southeast-1.
 //
 // @param request - GetInstanceGroupInspectReportListRequest
 //
@@ -5075,6 +5319,10 @@ func (client *Client) GetInstanceGroupInspectReportListWithContext(ctx context.C
 
 	if !dara.IsNil(request.GroupId) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.ReportType) {
+		query["ReportType"] = request.ReportType
 	}
 
 	body := map[string]interface{}{}
@@ -5120,13 +5368,13 @@ func (client *Client) GetInstanceGroupInspectReportListWithContext(ctx context.C
 //
 // Before you call this operation, take note of the following items:
 //
-//   - This operation is applicable only to ApsaraDB RDS for MySQL databases, self-managed MySQL databases hosted on Elastic Compute Service (ECS) instances, self-managed MySQL databases in data centers, ApsaraDB for Redis databases, and PolarDB for MySQL databases.
+// - This operation is applicable only to ApsaraDB RDS for MySQL databases, self-managed MySQL databases hosted on Elastic Compute Service (ECS) instances, self-managed MySQL databases in data centers, ApsaraDB for Redis databases, and PolarDB for MySQL databases.
 //
-//   - If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V4.3.3. We recommend that you use the latest version.
+// - If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V4.3.3. We recommend that you use the latest version.
 //
-//   - The version of DAS SDK must be V1.0.3 or later.
+// - The version of DAS SDK must be V1.0.3 or later.
 //
-//   - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
 // @param request - GetInstanceInspectionsRequest
 //
@@ -5198,15 +5446,15 @@ func (client *Client) GetInstanceInspectionsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the details of all missing indexes of an instance.
+// Returns details of all missing indexes for an instance.
 //
 // Description:
 //
-//	  This operation is applicable only to ApsaraDB RDS for SQL Server instances.
+// - This operation is applicable only to ApsaraDB RDS for SQL Server instances.
 //
-//		- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//		- If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
 //
 // @param request - GetInstanceMissingIndexListRequest
 //
@@ -5312,11 +5560,11 @@ func (client *Client) GetInstanceMissingIndexListWithContext(ctx context.Context
 //
 // Before you call this operation, take note of the following items:
 //
-//   - If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this API operation, we recommend that you use the latest version of the SDK.
+// - If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this API operation, we recommend that you use the latest version of the SDK.
 //
-//   - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
 //
-//   - The database engine is ApsaraDB RDS for MySQL or PolarDB for MySQL.
+// - The database engine is ApsaraDB RDS for MySQL or PolarDB for MySQL.
 //
 // @param request - GetInstanceSqlOptimizeStatisticRequest
 //
@@ -5388,11 +5636,11 @@ func (client *Client) GetInstanceSqlOptimizeStatisticWithContext(ctx context.Con
 //
 // Description:
 //
-//	  This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+// - This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 //
-//		- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//		- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
 // @param request - GetKillInstanceSessionTaskResultRequest
 //
@@ -5448,11 +5696,11 @@ func (client *Client) GetKillInstanceSessionTaskResultWithContext(ctx context.Co
 //
 // Description:
 //
-//	  This operation is applicable only to MongoDB instances.
+// - This operation is applicable only to MongoDB instances.
 //
-//		- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//		- If you use an SDK to call API operations of DAS, you must set the region to cn-shanghai.
+// - If you use an SDK to call API operations of DAS, you must set the region to cn-shanghai.
 //
 // @param request - GetMongoDBCurrentOpRequest
 //
@@ -5512,13 +5760,13 @@ func (client *Client) GetMongoDBCurrentOpWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// >  GetMySQLAllSessionAsync is an asynchronous operation. After a request is sent, the system does not return complete results but returns a request ID. You need to use the request ID to initiate requests until the value of the **isFinish*	- field in the returned results is **true**, the complete results are returned. This indicates that to obtain complete data, you must call this operation at least twice.
+// > GetMySQLAllSessionAsync is an asynchronous operation. After a request is sent, the system does not return complete results but returns a request ID. You need to use the request ID to initiate requests until the value of the **isFinish*	- field in the returned results is **true**, the complete results are returned. This indicates that to obtain complete data, you must call this operation at least twice.
 //
-//   - This operation is applicable only to ApsaraDB RDS for MySQL instances, PolarDB for MySQL clusters, and PolarDB-X 2.0 instances.
+// - This operation is applicable only to ApsaraDB RDS for MySQL instances, PolarDB for MySQL clusters, and PolarDB-X 2.0 instances.
 //
-//   - If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//   - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
 // @param request - GetMySQLAllSessionAsyncRequest
 //
@@ -5636,13 +5884,13 @@ func (client *Client) GetPartitionsHeatmapWithContext(ctx context.Context, reque
 //
 // Before you call this operation, take note of the following items:
 //
-//   - If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//   - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
-//   - An ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster is connected to DAS.
+// - An ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster is connected to DAS.
 //
-//   - The new version of the performance insight feature is enabled for the database instance. For more information, see [Performance insight (new version)](https://help.aliyun.com/document_detail/469117.html).
+// - The new version of the performance insight feature is enabled for the database instance. For more information, see [Performance insight (new version)](https://help.aliyun.com/document_detail/469117.html).
 //
 // @param request - GetPfsMetricTrendsRequest
 //
@@ -5708,13 +5956,13 @@ func (client *Client) GetPfsMetricTrendsWithContext(ctx context.Context, request
 //
 // Before you call this operation, take note of the following items:
 //
-//   - If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this API operation, we recommend that you use the latest version of the SDK.
+// - If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this API operation, we recommend that you use the latest version of the SDK.
 //
-//   - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
 //
-//   - An ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster is connected to DAS.
+// - An ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster is connected to DAS.
 //
-//   - The new version of the performance insight feature is enabled for the database instance. For more information, see [Performance insight (new version)](https://help.aliyun.com/document_detail/469117.html).
+// - The new version of the performance insight feature is enabled for the database instance. For more information, see [Performance insight (new version)](https://help.aliyun.com/document_detail/469117.html).
 //
 // @param request - GetPfsSqlSampleRequest
 //
@@ -5774,19 +6022,19 @@ func (client *Client) GetPfsSqlSampleWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Queries the full request data generated by the new version of the performance insight feature of a database instance based on the SQL ID.
+// Call the GetPfsSqlSummaries API to query all request data using the SQL ID dimension in Performance Insight (New Version) for a database instance.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// Prerequisites for using this API:
 //
-//   - If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this API operation, we recommend that you use the latest version of the SDK.
+// - Use the latest version of the Alibaba Cloud or DAS SDK.
 //
-//   - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - When calling the DAS service using the SDK, specify the region as cn-shanghai.
 //
-//   - An ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster is connected to DAS.
+// - The target database instance is RDS MySQL or PolarDB MySQL.
 //
-//   - The new version of the performance insight feature is enabled for the database instance. For more information, see [Performance insight (new version)](https://help.aliyun.com/document_detail/469117.html).
+// - The target database instance has Performance Insight (New Version) enabled. For more information, see [Performance Insight (New Version)](https://help.aliyun.com/document_detail/469117.html).
 //
 // @param request - GetPfsSqlSummariesRequest
 //
@@ -5866,23 +6114,23 @@ func (client *Client) GetPfsSqlSummariesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries information about SQL templates based on query governance data.
+// Returns SQL template statistics from query governance data.
 //
 // Description:
 //
-//	  If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
+// - If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
 //
-//		- The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
+// - The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
 //
-//		- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
 //
-//		- This operation supports the following database engines:
+// - This operation supports the following database engines:
 //
-//	    	- ApsaraDB RDS for MySQL
+//   - ApsaraDB RDS for MySQL
 //
-//	    	- PolarDB for MySQL
+//   - PolarDB for MySQL
 //
-//	    	- ApsaraDB RDS for PostgreSQL
+//   - ApsaraDB RDS for PostgreSQL
 //
 // @param request - GetQueryOptimizeDataStatsRequest
 //
@@ -5922,23 +6170,23 @@ func (client *Client) GetQueryOptimizeDataStatsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries information about the best-performing and worst-performing instances based on query governance data.
+// Returns the best- and worst-performing instances based on query governance data.
 //
 // Description:
 //
-//	  If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
+// - If you use an Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
 //
-//		- The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
+// - The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
 //
-//		- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
 //
-//		- This operation supports the following database engines:
+// - This operation supports the following database engines:
 //
-//	    	- ApsaraDB RDS for MySQL
+//   - ApsaraDB RDS for MySQL
 //
-//	    	- PolarDB for MySQL
+//   - PolarDB for MySQL
 //
-//	    	- ApsaraDB RDS for PostgreSQL
+//   - ApsaraDB RDS for PostgreSQL
 //
 // @param request - GetQueryOptimizeDataTopRequest
 //
@@ -5982,19 +6230,19 @@ func (client *Client) GetQueryOptimizeDataTopWithContext(ctx context.Context, re
 //
 // Description:
 //
-//	  If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
+// - If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
 //
-//		- The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
+// - The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
 //
-//		- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
-//		- This operation supports the following database engines:
+// - This operation supports the following database engines:
 //
-//	    	- ApsaraDB RDS for MySQL
+//   - ApsaraDB RDS for MySQL
 //
-//	    	- PolarDB for MySQL
+//   - PolarDB for MySQL
 //
-//	    	- ApsaraDB RDS for PostgreSQL
+//   - ApsaraDB RDS for PostgreSQL
 //
 // @param request - GetQueryOptimizeDataTrendRequest
 //
@@ -6038,19 +6286,19 @@ func (client *Client) GetQueryOptimizeDataTrendWithContext(ctx context.Context, 
 //
 // Description:
 //
-//	  If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
+// - If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
 //
-//		- The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
+// - The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
 //
-//		- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
 //
-//		- This operation supports the following database engines:
+// - This operation supports the following database engines:
 //
-//	    	- ApsaraDB RDS for MySQL
+//   - ApsaraDB RDS for MySQL
 //
-//	    	- PolarDB for MySQL
+//   - PolarDB for MySQL
 //
-//	    	- ApsaraDB RDS for PostgreSQL
+//   - ApsaraDB RDS for PostgreSQL
 //
 // @param request - GetQueryOptimizeExecErrorSampleRequest
 //
@@ -6110,17 +6358,17 @@ func (client *Client) GetQueryOptimizeExecErrorSampleWithContext(ctx context.Con
 //
 // Description:
 //
-//	  If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//		- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
 //
-//		- This operation supports the following database engines:
+// - This operation supports the following database engines:
 //
-//	    	- ApsaraDB RDS for MySQL
+//   - ApsaraDB RDS for MySQL
 //
-//	    	- PolarDB for MySQL
+//   - PolarDB for MySQL
 //
-//	    	- ApsaraDB RDS for PostgreSQL
+//   - ApsaraDB RDS for PostgreSQL
 //
 // @param request - GetQueryOptimizeExecErrorStatsRequest
 //
@@ -6164,19 +6412,19 @@ func (client *Client) GetQueryOptimizeExecErrorStatsWithContext(ctx context.Cont
 //
 // Description:
 //
-//	  If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
+// - If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V2.1.8. We recommend that you use the latest version.
 //
-//		- The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
+// - The version of your Database Autonomy Service (DAS) SDK must be V2.1.8 or later.
 //
-//		- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
 //
-//		- This operation supports the following database engines:
+// - This operation supports the following database engines:
 //
-//	    	- ApsaraDB RDS for MySQL
+//   - ApsaraDB RDS for MySQL
 //
-//	    	- PolarDB for MySQL
+//   - PolarDB for MySQL
 //
-//	    	- ApsaraDB RDS for PostgreSQL
+//   - ApsaraDB RDS for PostgreSQL
 //
 // @param request - GetQueryOptimizeRuleListRequest
 //
@@ -6220,17 +6468,17 @@ func (client *Client) GetQueryOptimizeRuleListWithContext(ctx context.Context, r
 //
 // Description:
 //
-//	  If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//		- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
 //
-//		- This operation supports the following database engines:
+// - This operation supports the following database engines:
 //
-//	    	- ApsaraDB RDS for MySQL
+//   - ApsaraDB RDS for MySQL
 //
-//	    	- PolarDB for MySQL
+//   - PolarDB for MySQL
 //
-//	    	- ApsaraDB RDS for PostgreSQL
+//   - ApsaraDB RDS for PostgreSQL
 //
 // @param request - GetQueryOptimizeShareUrlRequest
 //
@@ -6338,17 +6586,17 @@ func (client *Client) GetQueryOptimizeShareUrlWithContext(ctx context.Context, r
 //
 // Description:
 //
-//	  If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//		- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
-//		- This operation supports the following database engines:
+// - This operation supports the following database engines:
 //
-//	    	- ApsaraDB RDS for MySQL
+//   - ApsaraDB RDS for MySQL
 //
-//	    	- PolarDB for MySQL
+//   - PolarDB for MySQL
 //
-//	    	- ApsaraDB RDS for PostgreSQL
+//   - ApsaraDB RDS for PostgreSQL
 //
 // @param request - GetQueryOptimizeSolutionRequest
 //
@@ -6404,21 +6652,21 @@ func (client *Client) GetQueryOptimizeSolutionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the tags of a SQL statement.
+// Queries the tags of a specified SQL statement by calling the GetQueryOptimizeTag operation.
 //
 // Description:
 //
-//	  If you use Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - When using the Alibaba Cloud or DAS SDK, use the latest version.
 //
-//		- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - When calling DAS by using the SDK, set the region to cn-shanghai.
 //
-//		- This operation supports the following database engines:
+// - This operation supports the following database engines:
 //
-//	    	- ApsaraDB RDS for MySQL
+//   - RDS MySQL
 //
-//	    	- PolarDB for MySQL
+//   - PolarDB for MySQL
 //
-//	    	- ApsaraDB RDS for PostgreSQL
+//   - RDS PostgreSQL
 //
 // @param request - GetQueryOptimizeTagRequest
 //
@@ -6474,11 +6722,11 @@ func (client *Client) GetQueryOptimizeTagWithContext(ctx context.Context, reques
 //
 // Description:
 //
-//	  This operation is applicable only to ApsaraDB for Redis instances.
+// - This operation is applicable only to ApsaraDB for Redis instances.
 //
-//		- If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+// - If you use an SDK to call operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
 //
-// >  This operation cannot be used to query sessions generated in direct connection mode on ApsaraDB for Redis cluster instances.
+// > This operation cannot be used to query sessions generated in direct connection mode on ApsaraDB for Redis cluster instances.
 //
 // @param request - GetRedisAllSessionRequest
 //
@@ -6532,9 +6780,9 @@ func (client *Client) GetRedisAllSessionWithContext(ctx context.Context, request
 //
 // Before you call this operation, take note of the following items:
 //
-//   - If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+// - If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
 //
-//   - This operation supports the following database engines:
+// - This operation supports the following database engines:
 //
 //   - ApsaraDB RDS for MySQL
 //
@@ -6548,7 +6796,7 @@ func (client *Client) GetRedisAllSessionWithContext(ctx context.Context, request
 //
 //   - ApsaraDB for MongoDB
 //
-// >  The minor engine version of the Apsara RDS for PostgreSQL instance must be 20220130 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/146895.html).
+// > The minor engine version of the Apsara RDS for PostgreSQL instance must be 20220130 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/146895.html).
 //
 // @param request - GetRequestDiagnosisPageRequest
 //
@@ -6612,17 +6860,17 @@ func (client *Client) GetRequestDiagnosisPageWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the results of an SQL diagnostics task.
+// Call GetRequestDiagnosisResult to retrieve the SQL diagnosis results.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// This API has the following prerequisites:
 //
-//   - If you use an SDK to call the API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+// - When you use an SDK to call the DAS service, you must set the region to cn-shanghai.
 //
-//   - You cannot call this operation to query the diagnostic result of the automatic SQL optimization feature.
+// - This API does not support querying diagnosis results for automatic SQL optimization.
 //
-//   - This operation is applicable to the following database engines:
+// - This API supports the following database engines:
 //
 //   - RDS MySQL
 //
@@ -6632,11 +6880,11 @@ func (client *Client) GetRequestDiagnosisPageWithContext(ctx context.Context, re
 //
 //   - PolarDB for MySQL
 //
-//   - PolarDB for PostgreSQL (Compatible with Oracle)
+//   - PolarDB for PostgreSQL (Oracle-Compatible)
 //
 //   - ApsaraDB for MongoDB
 //
-// >  If your instance is an ApsaraDB RDS for PostgreSQL instance, make sure that the minor engine version of your instance is 20220130 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/146895.html).
+// > RDS PostgreSQL instances require minor kernel version 20220130 or later. To view and upgrade the minor kernel version, see [Upgrade the minor kernel version](https://help.aliyun.com/document_detail/146895.html).
 //
 // @param request - GetRequestDiagnosisResultRequest
 //
@@ -6702,9 +6950,9 @@ func (client *Client) GetRequestDiagnosisResultWithContext(ctx context.Context, 
 //
 // This operation supports the following database engines:
 //
-//   - ApsaraDB RDS for MySQL
+// - ApsaraDB RDS for MySQL
 //
-//   - PolarDB for MySQL
+// - PolarDB for MySQL
 //
 // @param request - GetRunningSqlConcurrencyControlRulesRequest
 //
@@ -6766,9 +7014,9 @@ func (client *Client) GetRunningSqlConcurrencyControlRulesWithContext(ctx contex
 //
 // This operation supports the following database engines:
 //
-//   - ApsaraDB RDS for MySQL
+// - ApsaraDB RDS for MySQL
 //
-//   - PolarDB for MySQL
+// - PolarDB for MySQL
 //
 // @param request - GetSqlConcurrencyControlKeywordsFromSqlTextRequest
 //
@@ -6826,9 +7074,9 @@ func (client *Client) GetSqlConcurrencyControlKeywordsFromSqlTextWithContext(ctx
 //
 // This operation supports the following database engines:
 //
-//   - ApsaraDB RDS for MySQL
+// - ApsaraDB RDS for MySQL
 //
-//   - PolarDB for MySQL
+// - PolarDB for MySQL
 //
 // @param request - GetSqlConcurrencyControlRulesHistoryRequest
 //
@@ -6890,15 +7138,15 @@ func (client *Client) GetSqlConcurrencyControlRulesHistoryWithContext(ctx contex
 //
 // The SQL diagnostics feature provides optimization suggestions for instances based on diagnostics results. You can use the optimization suggestions to optimize instance indexes. For more information, see [Automatic SQL optimization](https://help.aliyun.com/document_detail/167895.html).
 //
-// >  You can call this operation to query only the optimization suggestions that are automatically generated by the SQL diagnostics feature.
+// > Returns only optimization suggestions that the SQL diagnostics feature automatically generates.
 //
 // Before you call this operation, take note of the following items:
 //
-//   - This operation is applicable to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+// - This operation is applicable to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 //
-//   - If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//   - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
 // @param request - GetSqlOptimizeAdviceRequest
 //
@@ -6966,15 +7214,15 @@ func (client *Client) GetSqlOptimizeAdviceWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// >  The physical file size indicates the actual size of an obtained file. Only specific deployment modes of database instances support the display of physical file sizes. The statistics on tables are obtained from `information_schema.tables`. Statistics in MySQL are not updated in real time. Therefore, the statistics may be different from the physical file sizes. If you want to obtain the latest data, you can execute the `ANALYZE TABLE` statement on the relevant tables during off-peak hours.
+// > The physical file size indicates the actual size of an obtained file. Only specific deployment modes of database instances support the display of physical file sizes. The statistics on tables are obtained from `information_schema.tables`. Statistics in MySQL are not updated in real time. Therefore, the statistics may be different from the physical file sizes. If you want to obtain the latest data, you can execute the `ANALYZE TABLE` statement on the relevant tables during off-peak hours.
 //
-//   - This operation is applicable only to ApsaraDB RDS for MySQL instances, PolarDB for MySQL clusters, and ApsaraDB for MongoDB instances.
+// - This operation is applicable only to ApsaraDB RDS for MySQL instances, PolarDB for MySQL clusters, and ApsaraDB for MongoDB instances.
 //
-//   - For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, this operation works the same as the storage analysis feature of the previous version. Tasks generated by this operation cannot be viewed on the Storage Analysis page of the new version in the Database Autonomy Service (DAS) console. If you want to view the tasks and results, call the related API operation to obtain data and save data to your computer.
+// - For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, this operation works the same as the storage analysis feature of the previous version. Tasks generated by this operation cannot be viewed on the Storage Analysis page of the new version in the Database Autonomy Service (DAS) console. If you want to view the tasks and results, call the related API operation to obtain data and save data to your computer.
 //
-//   - If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//   - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
 // @param request - GetStorageAnalysisResultRequest
 //
@@ -7026,7 +7274,7 @@ func (client *Client) GetStorageAnalysisResultWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 瑶池AI助理大模型能力接口
+// Provides the Alibaba Cloud ApsaraDB Agent foundation model capability interface for AI chat, performance diagnostics, and other features.
 //
 // @param request - GetYaoChiAgentRequest
 //
@@ -7041,7 +7289,7 @@ func (client *Client) GetYaoChiAgentWithSSECtx(ctx context.Context, request *Get
 
 // Summary:
 //
-// 瑶池AI助理大模型能力接口
+// Provides the Alibaba Cloud ApsaraDB Agent foundation model capability interface for AI chat, performance diagnostics, and other features.
 //
 // @param request - GetYaoChiAgentRequest
 //
@@ -7058,6 +7306,10 @@ func (client *Client) GetYaoChiAgentWithContext(ctx context.Context, request *Ge
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExtraInfo) {
 		query["ExtraInfo"] = request.ExtraInfo
+	}
+
+	if !dara.IsNil(request.ImageKeys) {
+		query["ImageKeys"] = request.ImageKeys
 	}
 
 	if !dara.IsNil(request.Query) {
@@ -7101,13 +7353,13 @@ func (client *Client) GetYaoChiAgentWithContext(ctx context.Context, request *Ge
 //
 // Description:
 //
-//	  This operation is applicable only to ApsaraDB for Redis.
+// - This operation is applicable only to ApsaraDB for Redis.
 //
-//		- If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V4.3.3. We recommend that you use the latest version.
+// - If you use Alibaba Cloud SDK, make sure that the aliyun-sdk-core version is later than V4.3.3. We recommend that you use the latest version.
 //
-//		- The version of your Database Autonomy Service (DAS) SDK must be V1.0.2 or later.
+// - The version of your Database Autonomy Service (DAS) SDK must be V1.0.2 or later.
 //
-//		- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
 // @param request - KillInstanceAllSessionRequest
 //
@@ -7159,29 +7411,29 @@ func (client *Client) KillInstanceAllSessionWithContext(ctx context.Context, req
 //
 // Description:
 //
-// You can call this operation to modify the following auto scaling configurations of an instance: **auto scaling for specifications**, **automatic storage expansion**, **automatic bandwidth adjustment**, and **auto scaling for resources**.
+// Modifies the following auto scaling configurations for an instance: **auto scaling for specifications**, **automatic storage expansion**, **automatic bandwidth adjustment**, and **auto scaling for resources**.
 //
-//   - You can modify the configurations of the **auto scaling feature for specifications*	- for the following types of database instances:
+// - You can modify the configurations of the **auto scaling feature for specifications*	- for the following types of database instances:
 //
 //   - PolarDB for MySQL Cluster Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](https://help.aliyun.com/document_detail/169686.html).
 //
 //   - ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs). For more information about the feature and the billing rules, see [Automatic performance scaling](https://help.aliyun.com/document_detail/169686.html).
 //
-//   - You can modify the configurations of the **automatic storage expansion*	- feature for the following types of database instances:
+// - You can modify the configurations of the **automatic storage expansion*	- feature for the following types of database instances:
 //
 //   - ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs. For more information about the feature and the billing rules, see [Automatic space expansion](https://help.aliyun.com/document_detail/173345.html).
 //
-//   - You can modify the configurations of the **automatic bandwidth adjustment*	- feature for the following types of database instances:
+// - You can modify the configurations of the **automatic bandwidth adjustment*	- feature for the following types of database instances:
 //
 //   - ApsaraDB for Redis Classic (Local Disk-based) Edition instances. For more information about the feature and the billing rules, see [Automatic bandwidth adjustment](https://help.aliyun.com/document_detail/216312.html).
 //
-//   - You can modify the configurations of the **auto scaling feature for resources*	- for the following types of database instances:
+// - You can modify the configurations of the **auto scaling feature for resources*	- for the following types of database instances:
 //
 //   - General-purpose ApsaraDB RDS for MySQL Enterprise Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](https://help.aliyun.com/document_detail/169686.html).
 //
-//   - If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-//   - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
 // @param request - ModifyAutoScalingConfigRequest
 //
@@ -7245,7 +7497,17 @@ func (client *Client) ModifyAutoScalingConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 修改用户跨产品白名单模板
+// Modifies a cross-product whitelist template.
+//
+// Description:
+//
+// Before you call this operation, note the following:
+//
+// - Use the latest version of the Alibaba Cloud SDK or DAS SDK.
+//
+// - When you use an SDK to call the DAS service, specify the cn-shanghai region.
+//
+// - This operation uses the latest supported version by default. For more information about the databases and regions that are supported by different versions of DAS Enterprise Edition, see [DAS editions and supported features](https://help.aliyun.com/document_detail/156204.html).
 //
 // @param request - ModifySecurityIPGroupRequest
 //
@@ -7301,7 +7563,17 @@ func (client *Client) ModifySecurityIPGroupWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 绑定/解绑用户跨产品白名单模板
+// Attaches or detaches a cross-product whitelist template.
+//
+// Description:
+//
+// - Use the latest version of the Alibaba Cloud or DAS software development kit (SDK).
+//
+// - When you use the SDK to call the DAS service, set the region to cn-shanghai.
+//
+// - For more information about the supported database instances, see [Overview of features](https://help.aliyun.com/document_detail/92561.html) for SQL Insight and Audit.
+//
+// - The SQL Insight and Audit (Legacy) feature is enabled for the destination database instance. For more information about how to enable this feature, see [Enable SQL Insight and Audit](https://help.aliyun.com/document_detail/92561.html).
 //
 // @param request - ModifySecurityIPGroupRelationRequest
 //
@@ -7353,17 +7625,17 @@ func (client *Client) ModifySecurityIPGroupRelationWithContext(ctx context.Conte
 
 // Summary:
 //
-// Enables or configures Database Autonomy Service (DAS) Enterprise Edition for a database instance.
+// Use the `ModifySqlLogConfig` operation to enable or configure DAS Enterprise Edition for a database instance.
 //
 // Description:
 //
-// Before you call this operation, take note of the following items:
+// Before calling this operation, ensure you meet the following requirements:
 //
-//   - If you use an Alibaba Cloud SDK or a DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+// - Use the latest version of the Alibaba Cloud SDK or the DAS SDK.
 //
-//   - If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+// - When calling the DAS service with an SDK, set the region to cn-shanghai.
 //
-//   - By default, the latest version of DAS Enterprise Edition that supports the database instance is enabled. For information about the databases and regions that are supported by different versions of DAS Enterprise Edition, see [Editions and supported features](https://help.aliyun.com/document_detail/156204.html).
+// - This operation enables the latest supported version of DAS Enterprise Edition by default. See [DAS editions and supported features](https://help.aliyun.com/document_detail/156204.html) for the databases and regions supported by each version of DAS Enterprise Edition.
 //
 // @param request - ModifySqlLogConfigRequest
 //
@@ -7433,11 +7705,11 @@ func (client *Client) ModifySqlLogConfigWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Runs a stress testing task.
+// Calls the RunCloudBenchTask operation to execute a stress testing task.
 //
 // Description:
 //
-// Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you check whether your instance needs to be scaled up to effectively handle traffic spikes. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
+// Database Autonomy Service (DAS) provides the intelligent stress testing feature. This feature helps you determine whether your instance type needs to be scaled out to handle peak service traffic. For more information, see [Intelligent stress testing](https://help.aliyun.com/document_detail/155068.html).
 //
 // @param request - RunCloudBenchTaskRequest
 //
@@ -7579,17 +7851,17 @@ func (client *Client) SetEventSubscriptionWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// >  Asynchronous calls do not immediately return the complete results. To obtain the complete results, you must use the value of **ResultId*	- returned in the response to re-initiate the call until the value of **isFinish*	- is **true**.***	- In this case, you must call this operation at least twice.
+// > Asynchronous calls do not immediately return the complete results. To obtain the complete results, you must use the value of **ResultId*	- returned in the response to re-initiate the call until the value of **isFinish*	- is **true**.\\*\\*\\*\\	- In this case, you must call this operation at least twice.
 //
 // Before you call this operation, take note of the following items:
 //
-//   - If you use an SDK to call the API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+// - If you use an SDK to call the API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
 //
-//   - The database instances must be an ApsaraDB RDS for MySQL High-availability Edition instance.
+// - The database instances must be an ApsaraDB RDS for MySQL High-availability Edition instance.
 //
-//   - DAS Enterprise Edition must be enabled for the database instance. You can call the call [DescribeInstanceDasPro](https://help.aliyun.com/document_detail/413866.html) operation to query whether DAS Enterprise Edition is enabled.
+// - DAS Enterprise Edition must be enabled for the database instance. You can call the call [DescribeInstanceDasPro](https://help.aliyun.com/document_detail/413866.html) operation to query whether DAS Enterprise Edition is enabled.
 //
-//   - The database instance has four or more CPU cores, and **innodb_file_per_table*	- is set to **ON**.
+// - The database instance has four or more CPU cores, and **innodb_file_per_table*	- is set to **ON**.
 //
 // @param request - UpdateAutoResourceOptimizeRulesAsyncRequest
 //
@@ -7655,13 +7927,13 @@ func (client *Client) UpdateAutoResourceOptimizeRulesAsyncWithContext(ctx contex
 //
 // Before you call this operation, take note of the following items:
 //
-//   - If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+// - If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
 //
-//   - DAS Enterprise Edition must be enabled for the database instance that you want to manage. To enable DAS Enterprise Edition for a database instance, you can call the [EnableDasPro](https://help.aliyun.com/document_detail/411645.html) operation.
+// - DAS Enterprise Edition must be enabled for the database instance that you want to manage. To enable DAS Enterprise Edition for a database instance, you can call the [EnableDasPro](https://help.aliyun.com/document_detail/411645.html) operation.
 //
-//   - The autonomy service must be enabled for the database instance. For more information, see [Autonomy center](https://help.aliyun.com/document_detail/152139.html).
+// - The autonomy service must be enabled for the database instance. For more information, see [Autonomy center](https://help.aliyun.com/document_detail/152139.html).
 //
-//   - This operation supports the following database engines:
+// - This operation supports the following database engines:
 //
 //   - ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition
 //
@@ -7717,15 +7989,15 @@ func (client *Client) UpdateAutoSqlOptimizeStatusWithContext(ctx context.Context
 //
 // Description:
 //
-// >  Asynchronous calls do not immediately return the complete results. To obtain the complete results, you must use the value of **ResultId*	- returned in the response to re-initiate the call until the value of **isFinish*	- is **true**.***	- In this case, you must call this operation at least twice.
+// > Asynchronous calls do not immediately return the complete results. To obtain the complete results, you must use the value of **ResultId*	- returned in the response to re-initiate the call until the value of **isFinish*	- is **true**.\\*\\*\\*\\	- In this case, you must call this operation at least twice.
 //
 // Before you call this operation, take note of the following items:
 //
-//   - If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
+// - If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
 //
-//   - The autonomy service must be enabled for the database instance that you want to manage. For more information, see [Autonomy center](https://help.aliyun.com/document_detail/152139.html).
+// - The autonomy service must be enabled for the database instance that you want to manage. For more information, see [Autonomy center](https://help.aliyun.com/document_detail/152139.html).
 //
-//   - The database instance that you want to manage must be of one of the following types:
+// - The database instance that you want to manage must be of one of the following types:
 //
 //   - ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0
 //
@@ -7942,6 +8214,10 @@ func (client *Client) getYaoChiAgentWithSSECtx_opYieldFunc(_yield chan *GetYaoCh
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ExtraInfo) {
 		query["ExtraInfo"] = request.ExtraInfo
+	}
+
+	if !dara.IsNil(request.ImageKeys) {
+		query["ImageKeys"] = request.ImageKeys
 	}
 
 	if !dara.IsNil(request.Query) {

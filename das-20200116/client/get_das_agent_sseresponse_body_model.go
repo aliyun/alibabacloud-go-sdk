@@ -20,18 +20,25 @@ type iGetDasAgentSSEResponseBody interface {
 }
 
 type GetDasAgentSSEResponseBody struct {
+	// The content of the response.
+	//
 	// example:
 	//
 	// rm-xxxx
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// The type of the response message.
+	//
 	// example:
 	//
 	// summary
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The session ID. This is the same as the SessionId in the request.
+	//
 	// example:
 	//
-	// xxx-xxx-xxx
-	Id       *string                             `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 123e4567-e89b-12d3-a456-xxxxxxxxxxxx
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The metadata.
 	Metadata *GetDasAgentSSEResponseBodyMetadata `json:"Metadata,omitempty" xml:"Metadata,omitempty" type:"Struct"`
 }
 
@@ -89,19 +96,31 @@ func (s *GetDasAgentSSEResponseBody) Validate() error {
 }
 
 type GetDasAgentSSEResponseBodyMetadata struct {
+	// The number of characters in the response.
+	//
 	// example:
 	//
 	// 1403
 	CharCount *int64 `json:"CharCount,omitempty" xml:"CharCount,omitempty"`
-	Code      *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code. This parameter is empty if no exception occurs.
+	//
+	// example:
+	//
+	// -1810001
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 04930480-9404-50CB-8252-Axxxxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the tool used.
+	//
 	// example:
 	//
 	// SqlFilter
-	ToolName   *string   `json:"ToolName,omitempty" xml:"ToolName,omitempty"`
+	ToolName *string `json:"ToolName,omitempty" xml:"ToolName,omitempty"`
+	// The tool parameters.
 	ToolParams []*string `json:"ToolParams,omitempty" xml:"ToolParams,omitempty" type:"Repeated"`
 }
 

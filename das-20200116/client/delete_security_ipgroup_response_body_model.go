@@ -22,20 +22,34 @@ type iDeleteSecurityIPGroupResponseBody interface {
 }
 
 type DeleteSecurityIPGroupResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// ListResult<InstanceSSL>
 	Data *DeleteSecurityIPGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// >If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - **true**: The request is successful.
+	//
+	// - **false**: The request fails.
+	//
 	// example:
 	//
 	// true
@@ -105,6 +119,7 @@ func (s *DeleteSecurityIPGroupResponseBody) Validate() error {
 }
 
 type DeleteSecurityIPGroupResponseBodyData struct {
+	// The cross-product whitelist template information.
 	GlobalSecurityIPGroup []*DeleteSecurityIPGroupResponseBodyDataGlobalSecurityIPGroup `json:"GlobalSecurityIPGroup,omitempty" xml:"GlobalSecurityIPGroup,omitempty" type:"Repeated"`
 }
 
@@ -139,6 +154,8 @@ func (s *DeleteSecurityIPGroupResponseBodyData) Validate() error {
 }
 
 type DeleteSecurityIPGroupResponseBodyDataGlobalSecurityIPGroup struct {
+	// The ID of the IP whitelist template.
+	//
 	// example:
 	//
 	// g-1no2rzybnqcv0m****

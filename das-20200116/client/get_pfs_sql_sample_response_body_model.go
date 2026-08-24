@@ -32,7 +32,7 @@ type GetPfsSqlSampleResponseBody struct {
 	Data []*GetPfsSqlSampleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type GetPfsSqlSampleResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -191,9 +191,9 @@ type GetPfsSqlSampleResponseBodyData struct {
 	LogicId *string `json:"LogicId,omitempty" xml:"LogicId,omitempty"`
 	// Indicates whether the server failed to find an index that can be used for the SQL statement. Valid values:
 	//
-	// 	- **1**: yes.
+	// - **1**: yes.
 	//
-	// 	- **0**: no.
+	// - **0**: no.
 	//
 	// example:
 	//
@@ -201,9 +201,9 @@ type GetPfsSqlSampleResponseBodyData struct {
 	NoGoodIndexUsed *int32 `json:"NoGoodIndexUsed,omitempty" xml:"NoGoodIndexUsed,omitempty"`
 	// Indicates whether table scans were performed when indexes were not used. Valid values:
 	//
-	// 	- **1**: yes.
+	// - **1**: yes.
 	//
-	// 	- **0**: no.
+	// - **0**: no.
 	//
 	// example:
 	//
@@ -211,7 +211,7 @@ type GetPfsSqlSampleResponseBodyData struct {
 	NoIndexUsed *int32 `json:"NoIndexUsed,omitempty" xml:"NoIndexUsed,omitempty"`
 	// The node ID.
 	//
-	// >  This parameter is returned only for ApsaraDB RDS for MySQL Cluster Edition instances or PolarDB for MySQL clusters.
+	// > This parameter is returned only for ApsaraDB RDS for MySQL Cluster Edition instances or PolarDB for MySQL clusters.
 	//
 	// example:
 	//

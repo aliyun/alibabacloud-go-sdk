@@ -32,7 +32,7 @@ type DescribeAutoScalingConfigResponseBody struct {
 	Data *DescribeAutoScalingConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type DescribeAutoScalingConfigResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -228,9 +228,9 @@ type DescribeAutoScalingConfigResponseBodyDataBandwidth struct {
 	BandwidthUsageUpperThreshold *int32 `json:"BandwidthUsageUpperThreshold,omitempty" xml:"BandwidthUsageUpperThreshold,omitempty"`
 	// Indicates whether the automatic bandwidth downgrade feature is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -238,15 +238,15 @@ type DescribeAutoScalingConfigResponseBodyDataBandwidth struct {
 	Downgrade *bool `json:"Downgrade,omitempty" xml:"Downgrade,omitempty"`
 	// The observation window of the automatic bandwidth adjustment feature. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
 	//
-	// 	- **s**: seconds.
+	// - **s**: seconds.
 	//
-	// 	- **m**: minutes.
+	// - **m**: minutes.
 	//
-	// 	- **h**: hours.
+	// - **h**: hours.
 	//
-	// 	- **d**: days.
+	// - **d**: days.
 	//
-	// >  A value of **5m*	- indicates 5 minutes.
+	// > A value of **5m*	- indicates 5 minutes.
 	//
 	// example:
 	//
@@ -254,9 +254,9 @@ type DescribeAutoScalingConfigResponseBodyDataBandwidth struct {
 	ObservationWindowSize *string `json:"ObservationWindowSize,omitempty" xml:"ObservationWindowSize,omitempty"`
 	// Indicates whether the automatic bandwidth adjustment feature is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -336,15 +336,15 @@ type DescribeAutoScalingConfigResponseBodyDataResource struct {
 	CpuUsageUpperThreshold *int32 `json:"CpuUsageUpperThreshold,omitempty" xml:"CpuUsageUpperThreshold,omitempty"`
 	// The observation window of the automatic scale-in feature for local resources. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
 	//
-	// 	- **s**: seconds.
+	// - **s**: seconds.
 	//
-	// 	- **m**: minutes.
+	// - **m**: minutes.
 	//
-	// 	- **h**: hours.
+	// - **h**: hours.
 	//
-	// 	- **d**: days.
+	// - **d**: days.
 	//
-	// >  A value of **5m*	- indicates 5 minutes.
+	// > A value of **5m*	- indicates 5 minutes.
 	//
 	// example:
 	//
@@ -352,9 +352,9 @@ type DescribeAutoScalingConfigResponseBodyDataResource struct {
 	DowngradeObservationWindowSize *string `json:"DowngradeObservationWindowSize,omitempty" xml:"DowngradeObservationWindowSize,omitempty"`
 	// Indicates whether the auto scaling feature is enabled for local resources. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -362,15 +362,15 @@ type DescribeAutoScalingConfigResponseBodyDataResource struct {
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The observation window of the automatic scale-out feature for local resources. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
 	//
-	// 	- **s**: seconds.
+	// - **s**: seconds.
 	//
-	// 	- **m**: minutes.
+	// - **m**: minutes.
 	//
-	// 	- **h**: hours.
+	// - **h**: hours.
 	//
-	// 	- **d**: days.
+	// - **d**: days.
 	//
-	// >  A value of **5m*	- indicates 5 minutes.
+	// > A value of **5m*	- indicates 5 minutes.
 	//
 	// example:
 	//
@@ -438,9 +438,9 @@ func (s *DescribeAutoScalingConfigResponseBodyDataResource) Validate() error {
 type DescribeAutoScalingConfigResponseBodyDataShard struct {
 	// Indicates whether the feature of automatically removing shards is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -448,15 +448,15 @@ type DescribeAutoScalingConfigResponseBodyDataShard struct {
 	Downgrade *bool `json:"Downgrade,omitempty" xml:"Downgrade,omitempty"`
 	// The observation window of the feature of automatically removing shards. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
 	//
-	// 	- **s**: seconds.
+	// - **s**: seconds.
 	//
-	// 	- **m**: minutes.
+	// - **m**: minutes.
 	//
-	// 	- **h**: hours.
+	// - **h**: hours.
 	//
-	// 	- **d**: days.
+	// - **d**: days.
 	//
-	// >  A value of **1d*	- indicates one day.
+	// > A value of **1d*	- indicates one day.
 	//
 	// example:
 	//
@@ -488,9 +488,9 @@ type DescribeAutoScalingConfigResponseBodyDataShard struct {
 	MinShards *int32 `json:"MinShards,omitempty" xml:"MinShards,omitempty"`
 	// Indicates whether the feature of automatically adding shards is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -498,15 +498,15 @@ type DescribeAutoScalingConfigResponseBodyDataShard struct {
 	Upgrade *bool `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
 	// The observation window of the feature of automatically adding shards. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
 	//
-	// 	- **s**: seconds.
+	// - **s**: seconds.
 	//
-	// 	- **m**: minutes.
+	// - **m**: minutes.
 	//
-	// 	- **h**: hours.
+	// - **h**: hours.
 	//
-	// 	- **d**: days.
+	// - **d**: days.
 	//
-	// >  A value of **5m*	- indicates 5 minutes.
+	// > A value of **5m*	- indicates 5 minutes.
 	//
 	// example:
 	//
@@ -601,15 +601,15 @@ func (s *DescribeAutoScalingConfigResponseBodyDataShard) Validate() error {
 type DescribeAutoScalingConfigResponseBodyDataSpec struct {
 	// The quiescent period. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
 	//
-	// 	- **s**: seconds.
+	// - **s**: seconds.
 	//
-	// 	- **m**: minutes.
+	// - **m**: minutes.
 	//
-	// 	- **h**: hours.
+	// - **h**: hours.
 	//
-	// 	- **d**: days.
+	// - **d**: days.
 	//
-	// >  A value of **5m*	- indicates 5 minutes.
+	// > A value of **5m*	- indicates 5 minutes.
 	//
 	// example:
 	//
@@ -623,9 +623,9 @@ type DescribeAutoScalingConfigResponseBodyDataSpec struct {
 	CpuUsageUpperThreshold *int32 `json:"CpuUsageUpperThreshold,omitempty" xml:"CpuUsageUpperThreshold,omitempty"`
 	// Indicates whether the automatic specification scale-down feature is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -639,9 +639,9 @@ type DescribeAutoScalingConfigResponseBodyDataSpec struct {
 	MaxReadOnlyNodes *int32 `json:"MaxReadOnlyNodes,omitempty" xml:"MaxReadOnlyNodes,omitempty"`
 	// The maximum specifications to which the cluster can be scaled up. For more information about the specifications of each type of supported database instances, see the following topics:
 	//
-	// 	- PolarDB for MySQL Cluster Edition instances: [Compute node specifications of PolarDB for MySQL Enterprise Edition](https://help.aliyun.com/document_detail/102542.html)
+	// - PolarDB for MySQL Cluster Edition instances: [Compute node specifications of PolarDB for MySQL Enterprise Edition](https://help.aliyun.com/document_detail/102542.html)
 	//
-	// 	- ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: [Specifications](https://help.aliyun.com/document_detail/276974.html)
+	// - ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: [Specifications](https://help.aliyun.com/document_detail/276974.html)
 	//
 	// example:
 	//
@@ -655,15 +655,15 @@ type DescribeAutoScalingConfigResponseBodyDataSpec struct {
 	MemUsageUpperThreshold *int32 `json:"MemUsageUpperThreshold,omitempty" xml:"MemUsageUpperThreshold,omitempty"`
 	// The observation window. The return value consists of a numeric value and a time unit suffix. Valid values of the time unit suffix:
 	//
-	// 	- **s**: seconds.
+	// - **s**: seconds.
 	//
-	// 	- **m**: minutes.
+	// - **m**: minutes.
 	//
-	// 	- **h**: hours.
+	// - **h**: hours.
 	//
-	// 	- **d**: days.
+	// - **d**: days.
 	//
-	// >  A value of **5m*	- indicates 5 minutes.
+	// > A value of **5m*	- indicates 5 minutes.
 	//
 	// example:
 	//
@@ -671,9 +671,9 @@ type DescribeAutoScalingConfigResponseBodyDataSpec struct {
 	ObservationWindowSize *string `json:"ObservationWindowSize,omitempty" xml:"ObservationWindowSize,omitempty"`
 	// Indicates whether the automatic specification scale-up feature is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -780,9 +780,9 @@ type DescribeAutoScalingConfigResponseBodyDataStorage struct {
 	MaxStorage *int32 `json:"MaxStorage,omitempty" xml:"MaxStorage,omitempty"`
 	// Indicates whether the automatic storage expansion feature is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

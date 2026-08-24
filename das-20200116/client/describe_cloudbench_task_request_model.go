@@ -14,7 +14,7 @@ type iDescribeCloudbenchTaskRequest interface {
 }
 
 type DescribeCloudbenchTaskRequest struct {
-	// The ID of the stress testing task. You can call the [DescribeCloudBenchTasks](https://help.aliyun.com/document_detail/230670.html) operation to query the ID.
+	// The task ID. You can call the [DescribeCloudBenchTasks](https://help.aliyun.com/document_detail/230670.html) operation to obtain the task ID.
 	//
 	// This parameter is required.
 	//

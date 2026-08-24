@@ -22,11 +22,11 @@ type iGetQueryOptimizeSolutionRequest interface {
 type GetQueryOptimizeSolutionRequest struct {
 	// The database engine. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **PolarDBMySQL**
+	// - **PolarDBMySQL**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
 	// This parameter is required.
 	//

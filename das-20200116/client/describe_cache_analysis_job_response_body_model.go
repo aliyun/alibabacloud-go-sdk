@@ -32,7 +32,7 @@ type DescribeCacheAnalysisJobResponseBody struct {
 	Data *DescribeCacheAnalysisJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message that is returned for the request.
 	//
-	// >  If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type DescribeCacheAnalysisJobResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type DescribeCacheAnalysisJobResponseBodyData struct {
 	KeyPrefixes *DescribeCacheAnalysisJobResponseBodyDataKeyPrefixes `json:"KeyPrefixes,omitempty" xml:"KeyPrefixes,omitempty" type:"Struct"`
 	// The message that is returned for the request.
 	//
-	// >  If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
 	//
 	// example:
 	//
@@ -151,13 +151,13 @@ type DescribeCacheAnalysisJobResponseBodyData struct {
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The state of the cache analysis task. Valid values:
 	//
-	// 	- **BACKUP**: The data is being backed up.
+	// - **BACKUP**: The data is being backed up.
 	//
-	// 	- **ANALYZING**: The data is being analyzed.
+	// - **ANALYZING**: The data is being analyzed.
 	//
-	// 	- **FINISHED**: The data is analyzed.
+	// - **FINISHED**: The data is analyzed.
 	//
-	// 	- **FAILED**: An error occurred.
+	// - **FAILED**: An error occurred.
 	//
 	// example:
 	//

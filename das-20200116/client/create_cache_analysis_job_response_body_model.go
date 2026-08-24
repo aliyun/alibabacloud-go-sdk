@@ -22,17 +22,17 @@ type iCreateCacheAnalysisJobResponseBody interface {
 }
 
 type CreateCacheAnalysisJobResponseBody struct {
-	// The HTTP status code returned.
+	// The returned status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The detailed information.
+	// The details.
 	Data *CreateCacheAnalysisJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// >If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type CreateCacheAnalysisJobResponseBody struct {
 	//
 	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -126,9 +126,9 @@ type CreateCacheAnalysisJobResponseBodyData struct {
 	//
 	// r-bp18ff4a195d****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the cache analysis task.
+	// The ID of query cache analysis task.
 	//
-	// >  This parameter can be used to query a specific cache analysis task. When you call the CreateCacheAnalysisJob operation, it takes some time to create a cache analysis task. As a result, the analysis results cannot be immediately returned. You can call the [DescribeCacheAnalysisJob](https://help.aliyun.com/document_detail/180983.html) operation to query the analysis results of the specified cache analysis task.
+	// >You can use this parameter to query query cache analysis task. Because creating a cache analysis task takes some time, the analysis result is not immediately returned when you call this operation. Use this parameter together with the [DescribeCacheAnalysisJob](https://help.aliyun.com/document_detail/180983.html) operation to query the analysis result.
 	//
 	// example:
 	//
@@ -136,27 +136,27 @@ type CreateCacheAnalysisJobResponseBodyData struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// >If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the data node on the instance.
+	// The ID of the data node in the instance.
 	//
 	// example:
 	//
 	// r-x****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The state of the cache analysis task. Valid values:
+	// The status of the cache analysis task. Valid values:
 	//
-	// 	- **BACKUP**: The data is being backed up.
+	// - **BACKUP**: The system is performing a backup.
 	//
-	// 	- **ANALYZING**: The data is being analyzed.
+	// - **ANALYZING**: The system is analyzing the backup file.
 	//
-	// 	- **FINISHED**: The data is analyzed.
+	// - **FINISHED**: The analysis is complete.
 	//
-	// 	- **FAILED**: An error occurred.
+	// - **FAILED**: An error occurred.
 	//
 	// example:
 	//

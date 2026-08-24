@@ -24,7 +24,7 @@ type iGetPfsMetricTrendsRequest interface {
 type GetPfsMetricTrendsRequest struct {
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
-	// >  The end time must be later than the start time. You can view the data of up to seven days in the previous 30 days.
+	// > The end time must be later than the start time. You can view the data of up to seven days in the previous 30 days.
 	//
 	// example:
 	//
@@ -38,13 +38,13 @@ type GetPfsMetricTrendsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The metric whose trend you want to query. Valid values:
 	//
-	// 	- **count**: the number of executions.
+	// - **count**: the number of executions.
 	//
-	// 	- **avgRt**: the average execution duration.
+	// - **avgRt**: the average execution duration.
 	//
-	// 	- **rtRate**: the execution duration percentage.
+	// - **rtRate**: the execution duration percentage.
 	//
-	// 	- **rowsExamined**: the total number of scanned rows.
+	// - **rowsExamined**: the total number of scanned rows.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type GetPfsMetricTrendsRequest struct {
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
 	// The node ID.
 	//
-	// >  This parameter is required if the database instance is an ApsaraDB RDS for MySQL Cluster Edition instance or a PolarDB for MySQL clusters.
+	// > This parameter is required if the database instance is an ApsaraDB RDS for MySQL Cluster Edition instance or a PolarDB for MySQL clusters.
 	//
 	// example:
 	//

@@ -22,14 +22,14 @@ type iDescribeTopHotKeysResponseBody interface {
 }
 
 type DescribeTopHotKeysResponseBody struct {
-	// The HTTP status code returned.
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *DescribeTopHotKeysResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//
@@ -43,9 +43,9 @@ type DescribeTopHotKeysResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//

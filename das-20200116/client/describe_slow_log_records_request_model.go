@@ -30,39 +30,88 @@ type iDescribeSlowLogRecordsRequest interface {
 }
 
 type DescribeSlowLogRecordsRequest struct {
+	// Specifies whether to sort results in ascending order. Default value: **true**.
+	//
+	// - **true**: ascending order.
+	//
+	// - **false**: descending order.
+	//
 	// example:
 	//
 	// true
 	Asc *bool `json:"Asc,omitempty" xml:"Asc,omitempty"`
+	// The end time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1634972640000
-	EndTime *int64                                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The list of filter conditions.
 	Filters []*DescribeSlowLogRecordsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-8vbk4xz99su8****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// pi-d9j9fe7wq7t9i****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// - **MySQL*	-
+	//
+	//   - QueryTimeSeconds: query duration in seconds.
+	//
+	//   - LockTimeSeconds: lock time in seconds.
+	//
+	//   - RowsSent: rows sent.
+	//
+	//   - RowsExamined: rows examined.
+	//
+	// - **Redis**
+	//
+	//   - QueryTime: query duration.
+	//
+	//   - Timestamp: execution end time.
+	//
+	// - **MongoDB**
+	//
+	//   - QueryTime: query duration.
+	//
+	//   - Timestamp: execution end time.
+	//
+	//   - KeysExamined: keys examined.
+	//
+	//   - DocExamined: documents examined.
+	//
+	//   - ReturnNum: rows returned.
+	//
+	// <notice>RDS PostgreSQL, PolarDB for PostgreSQL, and SQL Server do not support sorting.</notice>
+	//
 	// example:
 	//
 	// QueryTimeSeconds
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The page number. Pages start from page 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start time.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -174,10 +223,16 @@ func (s *DescribeSlowLogRecordsRequest) Validate() error {
 }
 
 type DescribeSlowLogRecordsRequestFilters struct {
+	// The filter parameter.
+	//
+	// > For more information, refer to the supplementary description.
+	//
 	// example:
 	//
 	// None
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the filter parameter.
+	//
 	// example:
 	//
 	// None

@@ -26,11 +26,11 @@ type iGetQueryOptimizeDataTopRequest interface {
 type GetQueryOptimizeDataTopRequest struct {
 	// The database engine. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **PolarDBMySQL**
+	// - **PolarDBMySQL**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
 	// This parameter is required.
 	//
@@ -46,15 +46,15 @@ type GetQueryOptimizeDataTopRequest struct {
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The region in which the instance resides. Valid values:
 	//
-	// 	- **cn-china**: Chinese mainland
+	// - **cn-china**: Chinese mainland
 	//
-	// 	- **cn-hongkong**: China (Hong Kong)
+	// - **cn-hongkong**: China (Hong Kong)
 	//
-	// 	- **ap-southeast-1**: Singapore
+	// - **ap-southeast-1**: Singapore
 	//
-	// This parameter takes effect only if **InstanceIds*	- is left empty. If you leave **InstanceIds*	- empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region*	- does not take effect and the system obtains data from the region in which the first specified instance resides.****
+	// This parameter takes effect only if **InstanceIds*	- is left empty. If you leave **InstanceIds*	- empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region*	- does not take effect and the system obtains data from the region in which the first specified instance resides.\\*\\*\\*\\*
 	//
-	// >  Set this parameter to **cn-china*	- for all your instances that reside in the regions in the Chinese mainland.
+	// > Set this parameter to **cn-china*	- for all your instances that reside in the regions in the Chinese mainland.
 	//
 	// example:
 	//
@@ -76,9 +76,9 @@ type GetQueryOptimizeDataTopRequest struct {
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 	// The type of instances that you want to query. Valid values:
 	//
-	// 	- **RED**: the best-performing instances
+	// - **RED**: the best-performing instances
 	//
-	// 	- **BLACK**: the worst-performing instances
+	// - **BLACK**: the worst-performing instances
 	//
 	// This parameter is required.
 	//

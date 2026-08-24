@@ -66,29 +66,29 @@ type iCreateCloudBenchTasksRequest interface {
 }
 
 type CreateCloudBenchTasksRequest struct {
-	// The total number of stress testing tasks that you want to create. Valid values: **0*	- to **30**. Default value: **1**.
+	// The total number of stress testing tasks to create. Valid values: **0*	- to **30**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The ID of the backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/26273.html) operation to query the ID of the backup set.
+	// The ID of the backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/26273.html) operation to query the backup list and obtain the ID.
 	//
 	// example:
 	//
 	// 229132
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The time when the backup starts. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The time of the backup. Format: yyyy-MM-ddTHH:mm:ssZ (UTC time).
 	//
 	// example:
 	//
 	// 2021-04-23T13:22:14Z
 	BackupTime *string `json:"BackupTime,omitempty" xml:"BackupTime,omitempty"`
-	// The type of the stress testing client. Valid values:
+	// The type of stress testing machine. Valid values:
 	//
-	// 	- **ECS**: indicates that you must create the [DBGateway](https://help.aliyun.com/document_detail/64905.html).
+	// - **ECS**: You need to prepare a [Database Gateway](https://help.aliyun.com/document_detail/64905.html) yourself.
 	//
-	// 	- **DAS_ECS**: indicates that DAS automatically purchases and deploys an Elastic Compute Service (ECS) instance for stress testing.
+	// - **DAS_ECS**: An ECS instance that is automatically purchased and deployed by DAS.
 	//
 	// This parameter is required.
 	//
@@ -107,135 +107,135 @@ type CreateCloudBenchTasksRequest struct {
 	//
 	// test-das-bench-0501
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The endpoint of the destination instance. The specified endpoint must be the endpoint of an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance.
+	// The connection address of the target instance. Only RDS MySQL and PolarDB MySQL instances are supported.
 	//
-	// >  This parameter takes effect only if you set **DstType*	- to **ConnectionString**.
+	// > This parameter takes effect when **DstType*	- is set to **ConnectionString**.
 	//
 	// example:
 	//
 	// rm-de21209****.mysql.rds.aliyuncs.com
 	DstConnectionString *string `json:"DstConnectionString,omitempty" xml:"DstConnectionString,omitempty"`
-	// The ID of the destination instance. The instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance. You can call the [GetInstanceInspections](https://help.aliyun.com/document_detail/202857.html) operation to query the ID.
+	// The ID of the target instance. Only RDS MySQL and PolarDB MySQL instances are supported. You can call the [GetInstanceInspections](https://help.aliyun.com/document_detail/202857.html) operation to obtain the ID.
 	//
-	// >  This parameter must be specified if you set **DstType*	- to **Instance**.
+	// > This parameter is required when **DstType*	- is set to **Instance**.
 	//
 	// example:
 	//
 	// rm-2ze1jdv45i7l6****
 	DstInstanceId *string `json:"DstInstanceId,omitempty" xml:"DstInstanceId,omitempty"`
-	// The port number of the instance that you want to access.
+	// The port of the target instance.
 	//
-	// >  This parameter takes effect only if you set **DstType*	- to **ConnectionString**.
+	// > This parameter takes effect when **DstType*	- is set to **ConnectionString**.
 	//
 	// example:
 	//
 	// 3306
 	DstPort *string `json:"DstPort,omitempty" xml:"DstPort,omitempty"`
-	// The name of the privileged account for the destination instance.
+	// The privileged account of the target instance.
 	//
 	// example:
 	//
 	// root
 	DstSuperAccount *string `json:"DstSuperAccount,omitempty" xml:"DstSuperAccount,omitempty"`
-	// The password of the privileged account for the destination instance.
+	// The password of the privileged account of the target instance.
 	//
 	// example:
 	//
 	// test123
 	DstSuperPassword *string `json:"DstSuperPassword,omitempty" xml:"DstSuperPassword,omitempty"`
-	// The type of the identifier that is used to indicate the destination instance. Valid values:
+	// The type of the target instance. Valid values:
 	//
-	// 	- **Instance**: the instance ID. This is the default value.
+	// - **Instance*	- (default): instance ID.
 	//
-	// 	- **ConnectionString**: the endpoint of the instance.
+	// - **ConnectionString**: connection address of the instance.
 	//
 	// example:
 	//
 	// Instance
 	DstType *string `json:"DstType,omitempty" xml:"DstType,omitempty"`
-	// The specification of the Data Transmission Service (DTS) migration task. You can call the [DescribeCloudbenchTask](https://help.aliyun.com/document_detail/230669.html) operation to query the specification.
+	// The specification of the DTS migration task. You can call the [DescribeCloudbenchTask](https://help.aliyun.com/document_detail/230669.html) operation to obtain the specification.
 	//
-	// >  You must migrate the basic data in the source instance to the destination instance before you start a stress testing task. When you create a DTS migration task, you must specify this parameter.
+	// > The stress testing task needs to migrate the baseline data from the source instance to the target instance. This parameter is required when you create a new DTS task.
 	//
 	// example:
 	//
 	// medium
 	DtsJobClass *string `json:"DtsJobClass,omitempty" xml:"DtsJobClass,omitempty"`
-	// The ID of the DTS migration task. You can call the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation to query the ID.
+	// The ID of the DTS migration task. You can call the [ConfigureDtsJob](https://help.aliyun.com/document_detail/208399.html) operation to obtain the ID.
 	//
-	// >  After a DTS migration task is created in the DTS console, you must specify this parameter.
+	// > This parameter is required when a DTS task has been created in the DTS console.
 	//
 	// example:
 	//
 	// 23127
 	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	// The state that specifies the last operation that is performed for the stress testing task. Valid values:
+	// The status after the stress testing task ends. Valid values:
 	//
-	// 	- **WAIT_TARGET**: prepares the destination instance
+	// - **WAIT_TARGET**: Prepare the target instance for stress testing.
 	//
-	// 	- **WAIT_DBGATEWAY**: prepares the DBGateway
+	// - **WAIT_DBGATEWAY**: Prepare the stress testing deployment.
 	//
-	// 	- **WAIT_SQL**: prepares the full SQL statistics
+	// - **WAIT_SQL**: Prepare the full SQL statements.
 	//
-	// 	- **WAIT_LOGIC**: prepares to replay the traffic
+	// - **WAIT_LOGIC**: Prepare to start replaying the traffic.
 	//
-	// >  When the state of a stress testing task changes to the state that is specified by the EndState parameter, the stress testing task becomes completed.
+	// > When the stress testing task completes the status set by EndState, the task directly reaches the completed status.
 	//
 	// example:
 	//
 	// WAIT_TARGET
 	EndState *string `json:"EndState,omitempty" xml:"EndState,omitempty"`
-	// The ID of the virtual private cloud (VPC) in which the database gateway (DBGateway) is deployed.
+	// The virtual private cloud (VPC) ID of the Database Gateway.
 	//
-	// >  This parameter must be specified if you set **ClientType*	- to **ECS**.
+	// > This parameter is required when **ClientType*	- is set to **ECS**.
 	//
 	// example:
 	//
 	// vpc-t4nsnwvpbc1h76ja4****
 	GatewayVpcId *string `json:"GatewayVpcId,omitempty" xml:"GatewayVpcId,omitempty"`
-	// The IP address or domain name of the DBGateway.
+	// The IP address or domain name of the Database Gateway.
 	//
-	// >  This parameter must be specified if you set **ClientType*	- to **ECS**.
+	// > This parameter is required when **ClientType*	- is set to **ECS**.
 	//
 	// example:
 	//
 	// 172.30.XX.XX
 	GatewayVpcIp *string `json:"GatewayVpcIp,omitempty" xml:"GatewayVpcIp,omitempty"`
-	// The rate at which the traffic captured from the source instance is replayed on the destination instance. The value must be a positive integer. Valid values: **1*	- to **30**. Default value: **1**.
+	// The replay speed of the source instance traffic on the target instance. The replay speed must be a positive integer. Valid values: **1*	- to **30**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	Rate *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
-	// The duration of the stress testing task for which the traffic is captured from the source instance. Unit: milliseconds.
+	// The duration of the stress testing task. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 86400000
 	RequestDuration *string `json:"RequestDuration,omitempty" xml:"RequestDuration,omitempty"`
-	// The time when the stress testing task ends. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end time of the stress testing task. The time is in the UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1608888296001
 	RequestEndTime *string `json:"RequestEndTime,omitempty" xml:"RequestEndTime,omitempty"`
-	// The time when the stress testing task starts. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start time of the stress testing task. The time is in the UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1608888296000
 	RequestStartTime *string `json:"RequestStartTime,omitempty" xml:"RequestStartTime,omitempty"`
-	// The duration within which the traffic generation stressing test takes effect. Unit: milliseconds.
+	// The duration of the generated stress testing. Unit: milliseconds.
 	//
-	// >  This parameter must be specified if you set **TaskType*	- to **smart pressure test**.
+	// > This parameter is required when **TaskType*	- is set to **smart pressure test**.
 	//
 	// example:
 	//
 	// 86400000
 	SmartPressureTime *string `json:"SmartPressureTime,omitempty" xml:"SmartPressureTime,omitempty"`
-	// The ID of the source instance. The instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL instance. You can call the [GetInstanceInspections](https://help.aliyun.com/document_detail/202857.html) operation to query the ID.
+	// The ID of the source instance. Only RDS MySQL and PolarDB MySQL instances are supported. You can call the [GetInstanceInspections](https://help.aliyun.com/document_detail/202857.html) operation to obtain the ID.
 	//
-	// >  This parameter must be specified if you set **DstType*	- to **Instance**.
+	// > This parameter is required when **DstType*	- is set to **Instance**.
 	//
 	// This parameter is required.
 	//
@@ -243,33 +243,33 @@ type CreateCloudBenchTasksRequest struct {
 	//
 	// rm-2ze1jdv45i7l6****
 	SrcInstanceId *string `json:"SrcInstanceId,omitempty" xml:"SrcInstanceId,omitempty"`
-	// The reserved parameter.
+	// Reserved parameter.
 	//
 	// example:
 	//
 	// None
 	SrcPublicIp *string `json:"SrcPublicIp,omitempty" xml:"SrcPublicIp,omitempty"`
-	// The name of the privileged account for the source instance. Set the value to **admin**.
+	// The privileged account of the source instance. Value: **admin**.
 	//
-	// >  This parameter must be specified if you set **DstType*	- to **Instance**.
+	// > This parameter is required when **DstType*	- is set to **Instance**.
 	//
 	// example:
 	//
 	// admin
 	SrcSuperAccount *string `json:"SrcSuperAccount,omitempty" xml:"SrcSuperAccount,omitempty"`
-	// The password of the privileged account for the source instance.
+	// The password of the privileged account of the source instance.
 	//
-	// >  This parameter must be specified if you set **DstType*	- to **Instance**.
+	// > This parameter is required when **DstType*	- is set to **Instance**.
 	//
 	// example:
 	//
 	// test123
 	SrcSuperPassword *string `json:"SrcSuperPassword,omitempty" xml:"SrcSuperPassword,omitempty"`
-	// The type of the stress testing task. Valid values:
+	// The type of stress testing task. Valid values:
 	//
-	// 	- **pressure test*	- (default): A task of this type replays the traffic that is captured from the source instance on the destination instance at the maximum playback rate that is supported by the destination instance.
+	// - **pressure test*	- (default): Intelligent stress testing, which replays the traffic captured from the source instance on the target instance at the maximum speed supported by the target instance type.
 	//
-	// 	- **smart pressure test**: A task of this type analyzes the traffic that is captured from the source instance over a short period of time and generates traffic on the destination instance for continuous stress testing. The business model based on which the traffic is generated on the destination instance and the traffic distribution are consistent with those on the source instance. Stress testing tasks of this type can help you reduce the amount of time that is consumed to collect data from the source instance and reduce storage costs and performance overheads.
+	// - **smart pressure test**: Generated stress testing, which analyzes and learns from the traffic captured from the source instance in a short period of time, generates traffic that is consistent with the business model and traffic distribution of the original traffic for continuous stress testing, reduces the time for collecting data from the source instance, and reduces storage costs and performance overhead.
 	//
 	// This parameter is required.
 	//
@@ -277,7 +277,7 @@ type CreateCloudBenchTasksRequest struct {
 	//
 	// pressure test
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The temporary directory generated for stress testing.
+	// The temporary directory generated by the stress testing.
 	//
 	// example:
 	//

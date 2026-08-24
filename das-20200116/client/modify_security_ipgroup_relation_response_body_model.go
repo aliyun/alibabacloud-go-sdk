@@ -22,20 +22,34 @@ type iModifySecurityIPGroupRelationResponseBody interface {
 }
 
 type ModifySecurityIPGroupRelationResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// ListResult<InstanceSSL>
+	// The returned data.
 	Data *ModifySecurityIPGroupRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// > If the request is successful, Successful is returned. If the request fails, an error message, such as an error code, is returned.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 840F51F7-9C01-538D-94F6-AE712905****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -105,7 +119,10 @@ func (s *ModifySecurityIPGroupRelationResponseBody) Validate() error {
 }
 
 type ModifySecurityIPGroupRelationResponseBodyData struct {
+	// The information about the cross-product IP address whitelist template that is attached to the instance.
 	GlobalSecurityIPGroupRel []*ModifySecurityIPGroupRelationResponseBodyDataGlobalSecurityIPGroupRel `json:"GlobalSecurityIPGroupRel,omitempty" xml:"GlobalSecurityIPGroupRel,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rm-2ze1jdv45i7l6****
@@ -152,18 +169,34 @@ func (s *ModifySecurityIPGroupRelationResponseBodyData) Validate() error {
 }
 
 type ModifySecurityIPGroupRelationResponseBodyDataGlobalSecurityIPGroupRel struct {
+	// The IP addresses in the whitelist template.
+	//
+	// > Separate multiple IP addresses with commas (,). A maximum of 1,000 IP addresses or CIDR blocks can be added to all IP address whitelists.
+	//
 	// example:
 	//
 	// 192.168.0.1,192.168.100.0/24
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
+	// The name of the IP address whitelist template. The name must meet the following requirements:
+	//
+	// - It must consist of lowercase letters, digits, and underscores (_).
+	//
+	// - It must start with a letter and end with a letter or a digit.
+	//
+	// - It must be 2 to 120 characters in length.
+	//
 	// example:
 	//
 	// saas_jump
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	// The ID of the IP address whitelist template.
+	//
 	// example:
 	//
 	// g-v8kwereyd6u7kx****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai

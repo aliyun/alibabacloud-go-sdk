@@ -26,24 +26,29 @@ type iModifySqlLogConfigRequest interface {
 }
 
 type ModifySqlLogConfigRequest struct {
-	// Specifies whether to enable DAS Enterprise Edition. Valid values:
+	// Indicates whether to enable DAS Enterprise Edition. Valid values:
 	//
-	// 	- **true**
+	// - **true**: enables DAS Enterprise Edition.
 	//
-	// 	- **false**
+	// - **false**: disables DAS Enterprise Edition.
 	//
-	// >  This parameter is required if you want to enable DAS Enterprise Edition. By default, the latest version of DAS Enterprise Edition that supports the database instance is enabled.
+	// > This parameter is required when you enable DAS Enterprise Edition. By default, this operation enables the latest supported version.
 	//
 	// example:
 	//
 	// true
-	Enable      *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Indicates whether to enable security audit.
+	//
+	// example:
+	//
+	// true
 	EnableAudit *bool `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
 	// A reserved parameter.
 	Filters []*ModifySqlLogConfigRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// The number of days for which the SQL Explorer and Audit data is stored in hot storage. Valid values: 1 to 7.
+	// The hot storage retention period, in days. The value must be an integer from 1 to 7.
 	//
-	// >  This parameter is required if only DAS Enterprise Edition V3 can be enabled for the database instance.
+	// > This parameter is required only if you enable DAS Enterprise Edition V3.
 	//
 	// example:
 	//
@@ -55,31 +60,31 @@ type ModifySqlLogConfigRequest struct {
 	//
 	// example:
 	//
-	// rr-2ze770smbq3tpr2o9
+	// rr-2ze770smbq3tp****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether to enable the SQL Explorer feature. Valid values:
+	// Indicates whether to enable SQL Explorer. Valid values:
 	//
-	// 	- **true**
+	// - **true**: enables SQL Explorer.
 	//
-	// 	- **false**
+	// - **false**: disables SQL Explorer.
 	//
-	// >  This parameter is required if only DAS Enterprise Edition V3 can be enabled for the database instance.
+	// > This parameter is required only if you enable DAS Enterprise Edition V3.
 	//
 	// example:
 	//
 	// true
 	RequestEnable *bool `json:"RequestEnable,omitempty" xml:"RequestEnable,omitempty"`
-	// The total storage duration of the SQL Explorer and Audit data. Unit: day. Valid values:
+	// The data retention period, in days. Valid values:
 	//
-	// 	- 7
+	// - 7
 	//
-	// 	- 30
+	// - 30
 	//
-	// 	- 180
+	// - 180
 	//
-	// 	- 365
+	// - 365
 	//
-	// >  If you want to enable DAS Enterprise Edition V3, the value of this parameter must be greater than or equal to 30.
+	// > If you enable DAS Enterprise Edition V3, the value of this parameter must be 30 or greater.
 	//
 	// example:
 	//

@@ -22,20 +22,34 @@ type iCreateSecurityIPGroupResponseBody interface {
 }
 
 type CreateSecurityIPGroupResponseBody struct {
+	// The returned status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// ListResult<InstanceSSL>
 	Data *CreateSecurityIPGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D578DB3C-06BF-54F2-A78F-C6C25Exxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - **true**: The request is successful.
+	//
+	// - **false**: The request fails.
+	//
 	// example:
 	//
 	// true
@@ -105,6 +119,7 @@ func (s *CreateSecurityIPGroupResponseBody) Validate() error {
 }
 
 type CreateSecurityIPGroupResponseBodyData struct {
+	// The cross-service whitelist template information.
 	GlobalSecurityIPGroup []*CreateSecurityIPGroupResponseBodyDataGlobalSecurityIPGroup `json:"GlobalSecurityIPGroup,omitempty" xml:"GlobalSecurityIPGroup,omitempty" type:"Repeated"`
 }
 
@@ -139,26 +154,50 @@ func (s *CreateSecurityIPGroupResponseBodyData) Validate() error {
 }
 
 type CreateSecurityIPGroupResponseBodyDataGlobalSecurityIPGroup struct {
+	// The IP addresses in the whitelist template.
+	//
+	// > Separate multiple IP addresses with commas (,). A maximum of 1000 IP addresses or CIDR blocks can be added across all IP whitelists.
+	//
 	// example:
 	//
 	// 192.168.0.0/24
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
+	// The name of the IP whitelist template. The name must meet the following requirements:
+	//
+	// - Contains only lowercase letters, digits, and underscores (_).
+	//
+	// - Starts with a letter and ends with a letter or digit.
+	//
+	// - Is 2 to 120 characters in length.
+	//
 	// example:
 	//
 	// test
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	// The ID of the IP whitelist template.
+	//
 	// example:
 	//
 	// g-2uztsd6yvhmsqyjXXX
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
+	// The region ID.
+	//
+	// Example value:
+	//
+	// cn-hangzhou
+	//
 	// example:
 	//
 	// cn-shenzhen
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IP type.
+	//
 	// example:
 	//
 	// ipv4
 	SecurityIpType *string `json:"SecurityIpType,omitempty" xml:"SecurityIpType,omitempty"`
+	// The network type of the whitelist.
+	//
 	// example:
 	//
 	// mix

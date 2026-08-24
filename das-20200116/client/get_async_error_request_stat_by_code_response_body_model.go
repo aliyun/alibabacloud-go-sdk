@@ -36,7 +36,7 @@ type GetAsyncErrorRequestStatByCodeResponseBody struct {
 	Data *GetAsyncErrorRequestStatByCodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type GetAsyncErrorRequestStatByCodeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -125,9 +125,9 @@ func (s *GetAsyncErrorRequestStatByCodeResponseBody) Validate() error {
 type GetAsyncErrorRequestStatByCodeResponseBodyData struct {
 	// Indicates whether the asynchronous request was complete.
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -135,9 +135,9 @@ type GetAsyncErrorRequestStatByCodeResponseBodyData struct {
 	Complete *bool `json:"complete,omitempty" xml:"complete,omitempty"`
 	// Indicates whether the asynchronous request failed. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -145,9 +145,9 @@ type GetAsyncErrorRequestStatByCodeResponseBodyData struct {
 	Fail *bool `json:"fail,omitempty" xml:"fail,omitempty"`
 	// Indicates whether the asynchronous request was complete. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -163,11 +163,11 @@ type GetAsyncErrorRequestStatByCodeResponseBodyData struct {
 	ResultId *string `json:"resultId,omitempty" xml:"resultId,omitempty"`
 	// The state of the asynchronous request. Valid values:
 	//
-	// 	- **RUNNING**
+	// - **RUNNING**
 	//
-	// 	- **SUCCESS**
+	// - **SUCCESS**
 	//
-	// 	- **FAIL**
+	// - **FAIL**
 	//
 	// example:
 	//

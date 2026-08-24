@@ -36,11 +36,11 @@ type GetInstanceSqlOptimizeStatisticRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// Specifies whether to filter instances for which DAS Enterprise Edition is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
-	// >  If you set this parameter to **true**, only database instances for which DAS Enterprise Edition is disabled are queried. If you set this parameter to **false**, all database instances are queried.
+	// > If you set this parameter to **true**, only database instances for which DAS Enterprise Edition is disabled are queried. If you set this parameter to **false**, all database instances are queried.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type GetInstanceSqlOptimizeStatisticRequest struct {
 	FilterEnable *string `json:"FilterEnable,omitempty" xml:"FilterEnable,omitempty"`
 	// The database instance ID.
 	//
-	// >  The database instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+	// > The database instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type GetInstanceSqlOptimizeStatisticRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
-	// >  For ApsaraDB RDS for MySQL Cluster Edition instances or PolarDB for MySQL clusters, you must specify the node ID.
+	// > For ApsaraDB RDS for MySQL Cluster Edition instances or PolarDB for MySQL clusters, you must specify the node ID.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type GetInstanceSqlOptimizeStatisticRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The duration threshold for automatic SQL optimization events. After this parameter is specified, the system collects statistics on automatic SQL optimization events whose duration does not exceed the specified threshold.
 	//
-	// >  This parameter is a reserved parameter and does not take effect.
+	// > This parameter is a reserved parameter and does not take effect.
 	//
 	// example:
 	//
@@ -82,11 +82,11 @@ type GetInstanceSqlOptimizeStatisticRequest struct {
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 	// Specifies whether to merge automatic SQL optimization events. Valid values:
 	//
-	// 	- **true**: merges automatic SQL optimization events.
+	// - **true**: merges automatic SQL optimization events.
 	//
-	// 	- **false**: does not merge automatic SQL optimization events.
+	// - **false**: does not merge automatic SQL optimization events.
 	//
-	// >  This parameter is a reserved parameter and does not take effect.
+	// > This parameter is a reserved parameter and does not take effect.
 	//
 	// example:
 	//

@@ -32,11 +32,11 @@ type GetMongoDBCurrentOpRequest struct {
 	//
 	// example:
 	//
-	// dds-uf608087********
+	// dds-uf6079bda570****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
-	// >  If you do not specify a node ID, the sessions of the primary node are queried by default.
+	// > If you do not specify a node ID, the sessions of the primary node are queried by default.
 	//
 	// example:
 	//

@@ -30,9 +30,9 @@ type CreateQueryOptimizeTagResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the tags were added to the SQL templates.
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type CreateQueryOptimizeTagResponseBody struct {
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type CreateQueryOptimizeTagResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

@@ -46,9 +46,9 @@ type iGetQueryOptimizeShareUrlRequest interface {
 type GetQueryOptimizeShareUrlRequest struct {
 	// Specifies whether to sort the returned entries in ascending order. Default value: **true**. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -62,11 +62,11 @@ type GetQueryOptimizeShareUrlRequest struct {
 	DbNames *string `json:"DbNames,omitempty" xml:"DbNames,omitempty"`
 	// The database engine. Valid values:
 	//
-	// 	- **MySQL**: ApsaraDB RDS for MySQL
+	// - **MySQL**: ApsaraDB RDS for MySQL
 	//
-	// 	- **PolarDBMySQL**: PolarDB for MySQL
+	// - **PolarDBMySQL**: PolarDB for MySQL
 	//
-	// 	- **PostgreSQL**: ApsaraDB RDS for PostgreSQL
+	// - **PostgreSQL**: ApsaraDB RDS for PostgreSQL
 	//
 	// This parameter is required.
 	//
@@ -88,9 +88,9 @@ type GetQueryOptimizeShareUrlRequest struct {
 	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
 	// The logical relationship between multiple keywords. Valid values:
 	//
-	// 	- **or**
+	// - **or**
 	//
-	// 	- **and**
+	// - **and**
 	//
 	// example:
 	//
@@ -98,9 +98,9 @@ type GetQueryOptimizeShareUrlRequest struct {
 	LogicalOperator *string `json:"LogicalOperator,omitempty" xml:"LogicalOperator,omitempty"`
 	// Specifies whether to query only SQL templates that need to be optimized. Default value: **false**. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -108,23 +108,23 @@ type GetQueryOptimizeShareUrlRequest struct {
 	OnlyOptimizedSql *bool `json:"OnlyOptimizedSql,omitempty" xml:"OnlyOptimizedSql,omitempty"`
 	// The field by which to sort the returned entries. Default value: **count**. Valid values:
 	//
-	// 	- **count**: the number of executions.
+	// - **count**: the number of executions.
 	//
-	// 	- **maxQueryTime**: the longest execution duration.
+	// - **maxQueryTime**: the longest execution duration.
 	//
-	// 	- **avgQueryTime**: the average execution duration.
+	// - **avgQueryTime**: the average execution duration.
 	//
-	// 	- **maxLockTime**: the longest lock wait duration.
+	// - **maxLockTime**: the longest lock wait duration.
 	//
-	// 	- **avgLockTime**: the average lock wait duration.
+	// - **avgLockTime**: the average lock wait duration.
 	//
-	// 	- **maxRowsExamined**: the largest number of scanned rows.
+	// - **maxRowsExamined**: the largest number of scanned rows.
 	//
-	// 	- **avgRowsExamined**: the average number of scanned rows.
+	// - **avgRowsExamined**: the average number of scanned rows.
 	//
-	// 	- **maxRowsSent**: the largest number of returned rows.
+	// - **maxRowsSent**: the largest number of returned rows.
 	//
-	// 	- **avgRowsSent**: the average number of returned rows.
+	// - **avgRowsSent**: the average number of returned rows.
 	//
 	// example:
 	//
@@ -144,15 +144,15 @@ type GetQueryOptimizeShareUrlRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region in which the instance resides. Valid values:
 	//
-	// 	- **cn-china**: Chinese mainland
+	// - **cn-china**: Chinese mainland
 	//
-	// 	- **cn-hongkong**: China (Hong Kong)
+	// - **cn-hongkong**: China (Hong Kong)
 	//
-	// 	- **ap-southeast-1**: Singapore
+	// - **ap-southeast-1**: Singapore
 	//
-	// This parameter takes effect only if **InstanceIds*	- is left empty. If you leave **InstanceIds*	- empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region*	- does not take effect and the system obtains data from the region in which the first specified instance resides.****
+	// This parameter takes effect only if **InstanceIds*	- is left empty. If you leave **InstanceIds*	- empty, the system obtains data from the region set by **Region**. By default, Region is set to **cn-china**. If you specify **InstanceIds**, **Region*	- does not take effect and the system obtains data from the region in which the first specified instance resides.\\*\\*\\*\\*
 	//
-	// >  If your instances reside in the regions in the Chinese mainland, set this parameter to **cn-china**.
+	// > If your instances reside in the regions in the Chinese mainland, set this parameter to **cn-china**.
 	//
 	// example:
 	//

@@ -44,9 +44,9 @@ type GetQueryOptimizeSolutionResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -214,9 +214,9 @@ func (s *GetQueryOptimizeSolutionResponseBodyData) Validate() error {
 type GetQueryOptimizeSolutionResponseBodyDataList struct {
 	// The severity level. Valid values:
 	//
-	// 	- **INFO**
+	// - **INFO**
 	//
-	// 	- **WARN**
+	// - **WARN**
 	//
 	// example:
 	//

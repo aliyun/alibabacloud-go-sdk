@@ -14,6 +14,8 @@ type iDescribeSecurityIPGroupRequest interface {
 }
 
 type DescribeSecurityIPGroupRequest struct {
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

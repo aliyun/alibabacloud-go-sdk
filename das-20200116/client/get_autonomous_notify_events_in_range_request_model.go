@@ -34,7 +34,7 @@ type iGetAutonomousNotifyEventsInRangeRequest interface {
 type GetAutonomousNotifyEventsInRangeRequest struct {
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
-	// >  The end time must be later than the start time.
+	// > The end time must be later than the start time.
 	//
 	// This parameter is required.
 	//
@@ -56,13 +56,13 @@ type GetAutonomousNotifyEventsInRangeRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The urgency level of the events. If you specify this parameter, the MinLevel parameter does not take effect. Valid values:
 	//
-	// 	- **Notice**: events for which the system sends notifications.
+	// - **Notice**: events for which the system sends notifications.
 	//
-	// 	- **Optimization**: events that need to be optimized.
+	// - **Optimization**: events that need to be optimized.
 	//
-	// 	- **Warn**: events for which the system sends warnings.
+	// - **Warn**: events for which the system sends warnings.
 	//
-	// 	- **Critical**: critical events.
+	// - **Critical**: critical events.
 	//
 	// example:
 	//
@@ -70,13 +70,13 @@ type GetAutonomousNotifyEventsInRangeRequest struct {
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
 	// The minimum urgency level of the events. Valid values:
 	//
-	// 	- **Notice**: events for which the system sends notifications.
+	// - **Notice**: events for which the system sends notifications.
 	//
-	// 	- **Optimization**: events that need to be optimized.
+	// - **Optimization**: events that need to be optimized.
 	//
-	// 	- **Warn**: events for which the system sends warnings.
+	// - **Warn**: events for which the system sends warnings.
 	//
-	// 	- **Critical**: critical events.
+	// - **Critical**: critical events.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type GetAutonomousNotifyEventsInRangeRequest struct {
 	MinLevel *string `json:"MinLevel,omitempty" xml:"MinLevel,omitempty"`
 	// The ID of the node in a PolarDB for MySQL cluster. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the node ID returned by the DBNodeId response parameter.
 	//
-	// >  You must specify the node ID if your database instance is a PolarDB for MySQL cluster.
+	// > You must specify the node ID if your database instance is a PolarDB for MySQL cluster.
 	//
 	// example:
 	//

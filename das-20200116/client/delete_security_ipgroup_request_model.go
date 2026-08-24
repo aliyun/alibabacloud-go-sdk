@@ -16,12 +16,16 @@ type iDeleteSecurityIPGroupRequest interface {
 }
 
 type DeleteSecurityIPGroupRequest struct {
+	// The ID of the IP whitelist template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// g-rcge12hbfooad3m****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

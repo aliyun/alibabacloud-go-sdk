@@ -30,7 +30,7 @@ type GetAsyncErrorRequestStatByCodeRequest struct {
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
-	// >  The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
+	// > The end time must be later than the start time. The interval between the start time and the end time cannot exceed 24 hours.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type GetAsyncErrorRequestStatByCodeRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
-	// >  This parameter must be specified for PolarDB for MySQL clusters.
+	// > This parameter must be specified for PolarDB for MySQL clusters.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type GetAsyncErrorRequestStatByCodeRequest struct {
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
-	// >  The start time must be within the storage duration of the SQL Explorer feature of the database instance and can be up to 90 days earlier than the current time.
+	// > The start time must be within the storage duration of the SQL Explorer feature of the database instance and can be up to 90 days earlier than the current time.
 	//
 	// example:
 	//

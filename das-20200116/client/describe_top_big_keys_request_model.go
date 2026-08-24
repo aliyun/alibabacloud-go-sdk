@@ -32,11 +32,11 @@ type DescribeTopBigKeysRequest struct {
 	//
 	// >
 	//
-	// 	- The end time must be later than the start time.
+	// - The end time must be later than the start time.
 	//
-	// 	- Only data within the last four days can be queried.
+	// - Only data within the last four days can be queried.
 	//
-	// 	- The maximum interval between the **start time*	- and the*	- end time*	- is 3 hours.
+	// - The maximum interval between the **start time*	- and the\\*\\	- end time\\*\\	- is 3 hours.
 	//
 	// This parameter is required.
 	//

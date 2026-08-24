@@ -20,11 +20,11 @@ type iGetQueryOptimizeTagRequest interface {
 type GetQueryOptimizeTagRequest struct {
 	// The database engine. Valid values:
 	//
-	// 	- **MySQL**: ApsaraDB RDS for MySQL
+	// - **MySQL**: RDS MySQL
 	//
-	// 	- **PolarDBMySQL**: PolarDB for MySQL
+	// - **PolarDBMySQL**: PolarDB for MySQL
 	//
-	// 	- **PostgreSQL**: ApsaraDB RDS for PostgreSQL
+	// - **PostgreSQL**: RDS PostgreSQL
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,15 @@ type GetQueryOptimizeTagRequest struct {
 	//
 	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The SQL template ID. You can call the [GetQueryOptimizeDataStats](https://help.aliyun.com/document_detail/405261.html) operation to query the SQL template ID.
+	// The SQL template ID.
+	//
+	// You can call the [GetQueryOptimizeDataStats](https://help.aliyun.com/document_detail/405261.html) operation to query the SQL template ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 29d9fef63e347d39c3436658a5fe5f2b
+	// 29d9fef63e347d39c3436658a5fe****
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 }
 

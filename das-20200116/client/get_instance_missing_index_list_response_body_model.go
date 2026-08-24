@@ -44,9 +44,9 @@ type GetInstanceMissingIndexListResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -219,7 +219,7 @@ type GetInstanceMissingIndexListResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// school
+	// testdb
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// The index columns included in the equal operation.
 	//

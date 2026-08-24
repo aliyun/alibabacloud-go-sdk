@@ -32,7 +32,7 @@ type GetInstanceInspectionsResponseBody struct {
 	Data *GetInstanceInspectionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type GetInstanceInspectionsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -209,11 +209,11 @@ type GetInstanceInspectionsResponseBodyDataList struct {
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
 	// Indicates whether DAS Enterprise Edition is enabled. Valid values:
 	//
-	// 	- **0**: disabled.
+	// - **0**: disabled.
 	//
-	// 	- **1**: enabled.
+	// - **1**: enabled.
 	//
-	// 	- **2**: not supported.
+	// - **2**: not supported.
 	//
 	// example:
 	//
@@ -221,7 +221,7 @@ type GetInstanceInspectionsResponseBodyDataList struct {
 	EnableDasPro *int32 `json:"EnableDasPro,omitempty" xml:"EnableDasPro,omitempty"`
 	// The end time of the inspection and scoring task. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
-	// >  The end time must be later than the start time.
+	// > The end time must be later than the start time.
 	//
 	// example:
 	//
@@ -251,11 +251,11 @@ type GetInstanceInspectionsResponseBodyDataList struct {
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The state of the inspection and scoring task. Valid values:
 	//
-	// 	- **0**: The task is waiting for execution.
+	// - **0**: The task is waiting for execution.
 	//
-	// 	- **1**: The task is in progress.
+	// - **1**: The task is in progress.
 	//
-	// 	- **2**: The task is complete.
+	// - **2**: The task is complete.
 	//
 	// example:
 	//
@@ -263,9 +263,9 @@ type GetInstanceInspectionsResponseBodyDataList struct {
 	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
 	// The mode in which the inspection and scoring task was initiated. Valid values:
 	//
-	// 	- **0**: automatic mode.
+	// - **0**: automatic mode.
 	//
-	// 	- **1**: manual mode.
+	// - **1**: manual mode.
 	//
 	// example:
 	//
@@ -397,11 +397,11 @@ func (s *GetInstanceInspectionsResponseBodyDataList) Validate() error {
 type GetInstanceInspectionsResponseBodyDataListAutoFunction struct {
 	// Indicates whether the feature of automatically creating and deleting indexes is enabled. Valid values:
 	//
-	// 	- **0**: disabled.
+	// - **0**: disabled.
 	//
-	// 	- **1**: enabled.
+	// - **1**: enabled.
 	//
-	// 	- **2**: not supported.
+	// - **2**: not supported.
 	//
 	// example:
 	//
@@ -409,11 +409,11 @@ type GetInstanceInspectionsResponseBodyDataListAutoFunction struct {
 	AutoIndex *int32 `json:"AutoIndex,omitempty" xml:"AutoIndex,omitempty"`
 	// Indicates whether the automatic throttling feature is enabled. Valid values:
 	//
-	// 	- **0**: disabled.
+	// - **0**: disabled.
 	//
-	// 	- **1**: enabled.
+	// - **1**: enabled.
 	//
-	// 	- **2**: not supported.
+	// - **2**: not supported.
 	//
 	// example:
 	//
@@ -421,11 +421,11 @@ type GetInstanceInspectionsResponseBodyDataListAutoFunction struct {
 	AutoLimitedSql *int32 `json:"AutoLimitedSql,omitempty" xml:"AutoLimitedSql,omitempty"`
 	// Indicates whether the automatic fragment recycling feature is enabled. Valid values:
 	//
-	// 	- **0**: disabled.
+	// - **0**: disabled.
 	//
-	// 	- **1**: enabled.
+	// - **1**: enabled.
 	//
-	// 	- **2**: not supported.
+	// - **2**: not supported.
 	//
 	// example:
 	//
@@ -433,11 +433,11 @@ type GetInstanceInspectionsResponseBodyDataListAutoFunction struct {
 	AutoResourceOptimize *int32 `json:"AutoResourceOptimize,omitempty" xml:"AutoResourceOptimize,omitempty"`
 	// Indicates whether the auto scaling feature is enabled. Valid values:
 	//
-	// 	- **0**: disabled.
+	// - **0**: disabled.
 	//
-	// 	- **1**: enabled.
+	// - **1**: enabled.
 	//
-	// 	- **2**: not supported.
+	// - **2**: not supported.
 	//
 	// example:
 	//
@@ -445,11 +445,11 @@ type GetInstanceInspectionsResponseBodyDataListAutoFunction struct {
 	AutoScale *int32 `json:"AutoScale,omitempty" xml:"AutoScale,omitempty"`
 	// Indicates whether the event subscription feature is enabled. Valid values:
 	//
-	// 	- **0**: disabled.
+	// - **0**: disabled.
 	//
-	// 	- **1**: enabled.
+	// - **1**: enabled.
 	//
-	// 	- **2**: not supported.
+	// - **2**: not supported.
 	//
 	// example:
 	//
@@ -523,9 +523,9 @@ type GetInstanceInspectionsResponseBodyDataListInstance struct {
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The connection mode of the instance. Valid values:
 	//
-	// 	- **standard**: standard mode.
+	// - **standard**: standard mode.
 	//
-	// 	- **safe**: database proxy mode.
+	// - **safe**: database proxy mode.
 	//
 	// example:
 	//
@@ -539,11 +539,11 @@ type GetInstanceInspectionsResponseBodyDataListInstance struct {
 	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The database engine. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **Redis**
+	// - **Redis**
 	//
-	// 	- **PolarDBMySQL**
+	// - **PolarDBMySQL**
 	//
 	// example:
 	//
@@ -563,13 +563,13 @@ type GetInstanceInspectionsResponseBodyDataListInstance struct {
 	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
 	// The type of the instance on which the database is deployed. Valid values:
 	//
-	// 	- **RDS**: an Alibaba Cloud database instance.
+	// - **RDS**: an Alibaba Cloud database instance.
 	//
-	// 	- **ECS**: an Elastic Compute Service (ECS) instance on which a self-managed database is deployed.
+	// - **ECS**: an Elastic Compute Service (ECS) instance on which a self-managed database is deployed.
 	//
-	// 	- **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
+	// - **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
 	//
-	// >  The value IDC indicates that the instance is deployed in a data center.
+	// > The value IDC indicates that the instance is deployed in a data center.
 	//
 	// example:
 	//

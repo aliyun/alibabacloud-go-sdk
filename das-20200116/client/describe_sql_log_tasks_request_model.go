@@ -26,13 +26,13 @@ type iDescribeSqlLogTasksRequest interface {
 }
 
 type DescribeSqlLogTasksRequest struct {
-	// The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end time of the query range. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1608888296000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The filter parameters.
+	// An array of filter conditions.
 	Filters []*DescribeSqlLogTasksRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The ID of the database instance.
 	//
@@ -42,25 +42,25 @@ type DescribeSqlLogTasksRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
-	// >  This parameter is available only for instances that are deployed in the cluster architecture. You can specify this parameter to query the tasks of a specific node. If this parameter is not specified, the tasks of the primary node are returned by default.
+	// > For cluster instances only. You can specify a node ID to query its offline tasks. If this parameter is omitted, the offline tasks of the primary node are returned by default.
 	//
 	// example:
 	//
-	// pi-bp1o58x3ib7e6z496
+	// pi-bp1o58x3ib7e6****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. The value must be a positive integer. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	// The number of entries per page. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start time of the query range. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
@@ -153,19 +153,19 @@ func (s *DescribeSqlLogTasksRequest) Validate() error {
 }
 
 type DescribeSqlLogTasksRequestFilters struct {
-	// The name of the filter parameter.
+	// The filter parameter.
 	//
-	// >  For more information about the filter parameters, see the **Valid values of Key*	- section of this topic.
+	// > See **Additional information about request parameters*	- for the supported filter parameters and their valid values.
 	//
 	// example:
 	//
-	// delimiter
+	// keyWords
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the filter parameter.
 	//
 	// example:
 	//
-	// ,
+	// select
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

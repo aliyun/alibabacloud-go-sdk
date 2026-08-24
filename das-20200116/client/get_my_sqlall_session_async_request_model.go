@@ -20,7 +20,7 @@ type iGetMySQLAllSessionAsyncRequest interface {
 type GetMySQLAllSessionAsyncRequest struct {
 	// The instance ID.
 	//
-	// >  Only ApsaraDB RDS for MySQL, PolarDB for MySQL, and PolarDB-X 2.0 instances are supported.
+	// > Only ApsaraDB RDS for MySQL, PolarDB for MySQL, and PolarDB-X 2.0 instances are supported.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type GetMySQLAllSessionAsyncRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
-	// >  You must specify this parameter for PolarDB for MySQL clusters. If you do not specify a node ID, the session data of the primary node is returned by default.
+	// > You must specify this parameter for PolarDB for MySQL clusters. If you do not specify a node ID, the session data of the primary node is returned by default.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type GetMySQLAllSessionAsyncRequest struct {
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The asynchronous request ID.
 	//
-	// >  GetMySQLAllSessionAsync is an asynchronous operation. After a request is sent, the system does not return complete results but returns a **request ID**. You need to use the **request ID*	- to initiate requests until the value of the **isFinish*	- field in the returned results is **true**, the complete results are returned. This indicates that to obtain complete data, you must call this operation at least twice.
+	// > GetMySQLAllSessionAsync is an asynchronous operation. After a request is sent, the system does not return complete results but returns a **request ID**. You need to use the **request ID*	- to initiate requests until the value of the **isFinish*	- field in the returned results is **true**, the complete results are returned. This indicates that to obtain complete data, you must call this operation at least twice.
 	//
 	// example:
 	//

@@ -20,20 +20,34 @@ type iGetDeadLockDetailRequest interface {
 }
 
 type GetDeadLockDetailRequest struct {
+	// The ID of the database instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-bp1u5mas9exx7****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The node ID.
+	//
+	// > Required for PolarDB for MySQL cluster instances.
+	//
 	// example:
 	//
 	// pi-bp16v3824rt73****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The source of the analysis task:
+	//
+	// - **MANUAL*	- or **not specified**: queries the recent deadlock analysis task.
+	//
+	// - **AUTO**: queries the full deadlock analysis task.
+	//
 	// example:
 	//
 	// AUTO
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The ID of the deadlock text. This value is returned from the GetDeadLockHistory operation.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,20 +22,34 @@ type iModifySecurityIPGroupResponseBody interface {
 }
 
 type ModifySecurityIPGroupResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// ListResult<InstanceSSL>
+	// The returned data.
 	Data *ModifySecurityIPGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message is returned, such as an error code.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -105,6 +119,7 @@ func (s *ModifySecurityIPGroupResponseBody) Validate() error {
 }
 
 type ModifySecurityIPGroupResponseBodyData struct {
+	// The information about the cross-product whitelist template.
 	GlobalSecurityIPGroup []*ModifySecurityIPGroupResponseBodyDataGlobalSecurityIPGroup `json:"GlobalSecurityIPGroup,omitempty" xml:"GlobalSecurityIPGroup,omitempty" type:"Repeated"`
 }
 
@@ -139,26 +154,42 @@ func (s *ModifySecurityIPGroupResponseBodyData) Validate() error {
 }
 
 type ModifySecurityIPGroupResponseBodyDataGlobalSecurityIPGroup struct {
+	// The IP addresses in the whitelist template.
+	//
+	// > Separate multiple IP addresses with commas. All IP address whitelists support a combined total of 1,000 IP addresses or address segments.
+	//
 	// example:
 	//
 	// 192.168.0.1
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
+	// The name of the IP address whitelist template.
+	//
 	// example:
 	//
 	// test
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	// The ID of the IP address whitelist template.
+	//
 	// example:
 	//
 	// g-b1asblm5ae****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
+	// The region ID.
+	//
+	// Example: cn-hangzhou
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IP type.
+	//
 	// example:
 	//
 	// ipv4
 	SecurityIpType *string `json:"SecurityIpType,omitempty" xml:"SecurityIpType,omitempty"`
+	// The network type of the whitelist.
+	//
 	// example:
 	//
 	// mix

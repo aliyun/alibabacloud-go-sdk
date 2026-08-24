@@ -22,7 +22,7 @@ type iRunCloudBenchTaskResponseBody interface {
 }
 
 type RunCloudBenchTaskResponseBody struct {
-	// The HTTP status code returned.
+	// The returned status code.
 	//
 	// example:
 	//
@@ -31,7 +31,7 @@ type RunCloudBenchTaskResponseBody struct {
 	Data *RunCloudBenchTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -45,9 +45,9 @@ type RunCloudBenchTaskResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//

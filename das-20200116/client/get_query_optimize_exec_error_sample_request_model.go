@@ -22,11 +22,11 @@ type iGetQueryOptimizeExecErrorSampleRequest interface {
 type GetQueryOptimizeExecErrorSampleRequest struct {
 	// The database engine. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **PolarDBMySQL**
+	// - **PolarDBMySQL**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
 	// This parameter is required.
 	//

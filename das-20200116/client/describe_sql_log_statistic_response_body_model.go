@@ -22,17 +22,17 @@ type iDescribeSqlLogStatisticResponseBody interface {
 }
 
 type DescribeSqlLogStatisticResponseBody struct {
-	// The response code.
+	// The returned status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *DescribeSqlLogStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type DescribeSqlLogStatisticResponseBody struct {
 	//
 	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- true
+	// 	- true: The request is successful.
 	//
-	// 	- false
+	// 	- false: The request fails.
 	//
 	// example:
 	//
@@ -119,42 +119,47 @@ func (s *DescribeSqlLogStatisticResponseBody) Validate() error {
 }
 
 type DescribeSqlLogStatisticResponseBodyData struct {
-	// The size of the SQL Explorer and Audit data that is stored in cold storage. Unit: bytes.
+	// The total cold storage data. Unit: bytes.
 	//
 	// example:
 	//
 	// 8585901
 	ColdSqlSize *int64 `json:"ColdSqlSize,omitempty" xml:"ColdSqlSize,omitempty"`
-	// The free quota for cold data storage. Unit: bytes.
+	// The free cold storage data. Unit: bytes.
 	//
 	// example:
 	//
 	// 5041450
 	FreeColdSqlSize *int64 `json:"FreeColdSqlSize,omitempty" xml:"FreeColdSqlSize,omitempty"`
-	// The free quota for hot data storage. Unit: bytes.
+	// The free hot storage data. Unit: bytes.
 	//
 	// example:
 	//
 	// 297245
 	FreeHotSqlSize *int64 `json:"FreeHotSqlSize,omitempty" xml:"FreeHotSqlSize,omitempty"`
-	// The size of the SQL Explorer and Audit data that is stored in hot storage. Unit: bytes.
+	// The total hot storage data. Unit: bytes.
 	//
 	// example:
 	//
 	// 1118042
 	HotSqlSize *int64 `json:"HotSqlSize,omitempty" xml:"HotSqlSize,omitempty"`
-	// The size of the SQL Explorer and Audit data that was generated in the most recent day. Unit: bytes.
+	// The amount of data imported in the last day. Unit: bytes.
 	//
 	// example:
 	//
-	// 23
+	// 297245
 	ImportSqlSize *int64 `json:"ImportSqlSize,omitempty" xml:"ImportSqlSize,omitempty"`
-	// The timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1712568564928
-	Timestamp    *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The total storage data (cold data + hot data).
+	//
+	// example:
+	//
+	// 9703943
 	TotalSqlSize *int64 `json:"TotalSqlSize,omitempty" xml:"TotalSqlSize,omitempty"`
 }
 

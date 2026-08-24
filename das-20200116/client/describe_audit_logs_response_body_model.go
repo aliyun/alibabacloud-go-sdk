@@ -24,23 +24,34 @@ type iDescribeAuditLogsResponseBody interface {
 }
 
 type DescribeAuditLogsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 3926fba5-1774-44f4-af2d-ac7b33e86c3b
 	AsyncRequestId *string `json:"AsyncRequestId,omitempty" xml:"AsyncRequestId,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Items       []*DescribeAuditLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The client IP addresses in the SQL log records.
+	Items []*DescribeAuditLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page size for the paged query. This parameter indicates the number of entries per page for paging.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A7021857-AFD9-5AD6-979D-AA7DFC5AFADF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records. This parameter is valid only for the Redis engine.
+	//
 	// example:
 	//
 	// 12
@@ -123,124 +134,227 @@ func (s *DescribeAuditLogsResponseBody) Validate() error {
 }
 
 type DescribeAuditLogsResponseBodyItems struct {
+	// The client IP address in the query.
+	//
 	// example:
 	//
 	// 100.104.16.251
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The client port number in the query.
+	//
 	// example:
 	//
 	// 53815
 	ClientPort *string `json:"ClientPort,omitempty" xml:"ClientPort,omitempty"`
+	// The client type.
+	//
 	// example:
 	//
 	// mysql
 	ClientUa *string `json:"ClientUa,omitempty" xml:"ClientUa,omitempty"`
+	// The column name.
+	//
 	// example:
 	//
 	// ds
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The alert time, in milliseconds.
+	//
 	// example:
 	//
 	// 1536751124000
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// chngc_b2b_migration_sh
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// The number of affected rows.
+	//
 	// example:
 	//
 	// 10
 	EffectRow *int64 `json:"EffectRow,omitempty" xml:"EffectRow,omitempty"`
+	// The execution status. Valid values: 0: failed. 1: succeeded.
+	//
 	// example:
 	//
 	// 1
 	ExecuteStatus *int32 `json:"ExecuteStatus,omitempty" xml:"ExecuteStatus,omitempty"`
+	// The execution duration, in milliseconds.
+	//
 	// example:
 	//
 	// 1751870592000
 	ExecuteTime *int64 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	Id          *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The primary key ID.
+	//
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the alert is in the whitelist.
+	//
 	// example:
 	//
 	// True
 	InWhiteList *bool `json:"InWhiteList,omitempty" xml:"InWhiteList,omitempty"`
+	// The instance audit status.
+	//
 	// example:
 	//
 	// 2
 	InstanceAuditStatus *string `json:"InstanceAuditStatus,omitempty" xml:"InstanceAuditStatus,omitempty"`
+	// The description of the data asset instance.
+	//
 	// example:
 	//
 	// instance dscription
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
+	// The instance alias.
+	//
 	// example:
 	//
 	// test-instance-003
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The network type. Valid values:
+	//
+	// **default*	- (default): non-Alibaba Cloud service.
+	//
+	// **aliyun**: Alibaba Cloud service.
+	//
 	// example:
 	//
 	// aliyun
 	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// The data source.
+	//
 	// example:
 	//
 	// SLOW_SQL
 	LogSource *string `json:"LogSource,omitempty" xml:"LogSource,omitempty"`
+	// The log execution time.
+	//
 	// example:
 	//
 	// 1751870592000
 	LogTime *int64 `json:"LogTime,omitempty" xml:"LogTime,omitempty"`
+	// The raw log content.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The operation type.
+	//
 	// example:
 	//
 	// Drop
-	OperateType  *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	// The key of the OSS storage object.
+	//
+	// example:
+	//
+	// N.A
 	OssObjectKey *string `json:"OssObjectKey,omitempty" xml:"OssObjectKey,omitempty"`
+	// The MaxCompute package name.
+	//
 	// example:
 	//
 	// test01
 	PackageName *string `json:"PackageName,omitempty" xml:"PackageName,omitempty"`
+	// The name of the product to which the data asset belongs. Valid values: RDS, PolarDB, PolarDB-X 2.0, and others.
+	//
 	// example:
 	//
 	// RDS
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The ID that corresponds to the product name to which the data object belongs. Valid values:
+	//
+	// - 3: ADB-MYSQL
+	//
+	// - 5: RDS
+	//
+	// - 7: PolarDB-X
+	//
+	// - 8: PolarDB
+	//
+	// - 9: ADB-PG
+	//
+	// - 11: MongoDB
+	//
+	// - 25: Redis
+	//
 	// example:
 	//
 	// 5
 	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// The rule type.
+	//
 	// example:
 	//
 	// 10
 	RuleCategory *string `json:"RuleCategory,omitempty" xml:"RuleCategory,omitempty"`
+	// The ID of the audit policy.
+	//
 	// example:
 	//
 	// 9953411
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the audit policy.
+	//
 	// example:
 	//
 	// name
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The SQL statement.
+	//
 	// example:
 	//
 	// select 	- from test03
 	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
+	// The table name used in the query.
+	//
 	// example:
 	//
 	// it_table
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The user UID.
+	//
 	// example:
 	//
 	// 19********94
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// admin
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The risk level. Valid values:
+	//
+	// - **1**: low-risk.
+	//
+	// - **2**: medium-risk.
+	//
+	// - **3**: high-risk.
+	//
 	// example:
 	//
 	// 1
-	WarnLevel     *string `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
+	WarnLevel *string `json:"WarnLevel,omitempty" xml:"WarnLevel,omitempty"`
+	// The name of the risk level. Valid values:
+	//
+	// - Low-risk.
+	//
+	// - Medium-risk.
+	//
+	// - High-risk.
+	//
+	// example:
+	//
+	// 1
 	WarnLevelName *string `json:"WarnLevelName,omitempty" xml:"WarnLevelName,omitempty"`
 }
 

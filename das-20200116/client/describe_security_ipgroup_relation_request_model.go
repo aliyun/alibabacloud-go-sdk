@@ -16,12 +16,16 @@ type iDescribeSecurityIPGroupRelationRequest interface {
 }
 
 type DescribeSecurityIPGroupRelationRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-2zegsc57ofexxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -44,9 +44,9 @@ type GetQueryOptimizeDataTopResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -220,9 +220,9 @@ type GetQueryOptimizeDataTopResponseBodyDataList struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The metric name. Valid values:
 	//
-	// 	- **sqlExecuteCount**: the number of slow SQL executions.
+	// - **sqlExecuteCount**: the number of slow SQL executions.
 	//
-	// 	- **optimizedSqlExecuteCount**: the number of slow SQL executions that need to be optimized.
+	// - **optimizedSqlExecuteCount**: the number of slow SQL executions that need to be optimized.
 	//
 	// example:
 	//

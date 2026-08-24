@@ -28,7 +28,7 @@ type iCreateSqlLogTaskRequest interface {
 }
 
 type CreateSqlLogTaskRequest struct {
-	// The end of the time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
+	// The end time of the task. Specify the value as a UNIX timestamp. Unit: milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -36,39 +36,39 @@ type CreateSqlLogTaskRequest struct {
 	//
 	// 1608888296000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The filter conditions.
+	// The list of filter conditions.
 	Filters []*CreateSqlLogTaskRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// The ID of the database instance.
+	// The database instance ID.
 	//
 	// example:
 	//
 	// pc-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the task.
+	// The task name.
 	//
 	// example:
 	//
-	// test01
+	// SQL audit export 1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The node ID.
 	//
-	// >  This parameter is available only for instances that run in a cluster architecture. You can specify this parameter to query the offline tasks of a specific node. By default, if this parameter is not specified, the information about the offline tasks of the primary node is returned.
+	// >This parameter is applicable only to cluster instances. You can specify this parameter to query the batch task of a specific node. If you do not specify this parameter, the batch task of the primary node is returned by default.
 	//
 	// example:
 	//
-	// pi-uf6k5f6g3912i0dqz
+	// pi-uf6k5f6g3912i****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The role of the node of the PolarDB-X 2.0 database instance. Valid values:
+	// The node information of the PolarDB-X 2.0 database instance.
 	//
-	// 	- **polarx_cn**: compute node
+	// - **polarx_cn**: compute node.
 	//
-	// 	- **polarx_dn**: data node
+	// - **polarx_dn**: data node.
 	//
 	// example:
 	//
 	// polarx_cn
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The beginning of the time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
+	// The start time of the task. Specify the value as a UNIX timestamp. Unit: milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -76,13 +76,13 @@ type CreateSqlLogTaskRequest struct {
 	//
 	// 1596177993000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of the task. Valid values:
+	// The task type.
 	//
-	// 	- **Export**
+	// - **Export**: export task.
 	//
-	// 	- **Query**
+	// > For the filter parameters and values supported by **Export**, see **Request parameters description**.
 	//
-	// 	- **Insight**
+	// - **Query**: query task.
 	//
 	// example:
 	//
@@ -186,7 +186,7 @@ func (s *CreateSqlLogTaskRequest) Validate() error {
 type CreateSqlLogTaskRequestFilters struct {
 	// The name of the filter parameter.
 	//
-	// >  For more information about the supported filter parameters and their valid values, see the following **supplement about the Key parameter**.
+	// > For the supported filter parameters and values, see **Request parameters description**.
 	//
 	// example:
 	//

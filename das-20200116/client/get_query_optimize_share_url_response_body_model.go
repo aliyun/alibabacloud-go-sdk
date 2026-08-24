@@ -32,11 +32,11 @@ type GetQueryOptimizeShareUrlResponseBody struct {
 	//
 	// example:
 	//
-	// https://hdm.console.aliyun.com/#/queryOptimize?Keywords=&OnlyOptimizedSql=true&Time=1684771200000&Engine=MySQL&InstanceIds=&Rules=&PageNo=1&PageSize=10&OrderBy=count&Asc=false&SqlIds=&dbNames=&region=cn-china&user=
+	// https://hdm.console.aliyun.com/#/queryOptimize****
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
-	// >  If the request was successful, Successful is returned. If the request failed, an error message that contains information such as an error code is returned.
+	// > If the request was successful, Successful is returned. If the request failed, an error message that contains information such as an error code is returned.
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type GetQueryOptimizeShareUrlResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

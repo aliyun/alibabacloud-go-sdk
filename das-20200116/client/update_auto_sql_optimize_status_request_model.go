@@ -18,7 +18,7 @@ type iUpdateAutoSqlOptimizeStatusRequest interface {
 type UpdateAutoSqlOptimizeStatusRequest struct {
 	// The database instance IDs. Separate multiple IDs with commas (,).
 	//
-	// >  You can specify up to 50 instance IDs.
+	// > You can specify up to 50 instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -28,11 +28,11 @@ type UpdateAutoSqlOptimizeStatusRequest struct {
 	Instances *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
 	// The status of the automatic SQL optimization feature. Valid values:
 	//
-	// 	- **0**: The automatic SQL optimization feature is disabled.
+	// - **0**: The automatic SQL optimization feature is disabled.
 	//
-	// 	- **1**: **SQL diagnosis and automatic index creation*	- is specified.
+	// - **1**: **SQL diagnosis and automatic index creation*	- is specified.
 	//
-	// 	- **3**: **SQL diagnosis only*	- is specified.
+	// - **3**: **SQL diagnosis only*	- is specified.
 	//
 	// This parameter is required.
 	//

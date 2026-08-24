@@ -22,17 +22,17 @@ type iDescribeAutoScalingHistoryResponseBody interface {
 }
 
 type DescribeAutoScalingHistoryResponseBody struct {
-	// The HTTP status code returned. The status code 200 indicates that the request was successful.
+	// The status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The history of auto scaling.
+	// The elastic scaling history records.
 	Data *DescribeAutoScalingHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// > If the request was successful, **Successful*	- is returned. Otherwise, an error message such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type DescribeAutoScalingHistoryResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *DescribeAutoScalingHistoryResponseBody) Validate() error {
 }
 
 type DescribeAutoScalingHistoryResponseBodyData struct {
-	// The history of automatic bandwidth scaling of ApsaraDB for Redis instances. This feature is not supported.
+	// The Redis bandwidth elastic scaling history records. This parameter is not supported.
 	Bandwidth []map[string]interface{} `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -127,13 +127,13 @@ type DescribeAutoScalingHistoryResponseBodyData struct {
 	//
 	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The history of resource scale-out of ApsaraDB for Redis instances. This feature is not supported.
+	// The Redis resource scaling history records. This parameter is not supported.
 	Resource []map[string]interface{} `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Repeated"`
-	// The history of automatic shard scale-out of ApsaraDB for Redis instances. This feature is not supported.
+	// The Redis automatic shard scaling history records. This parameter is not supported.
 	Shard []map[string]interface{} `json:"Shard,omitempty" xml:"Shard,omitempty" type:"Repeated"`
-	// The history of automatic performance scaling.
+	// The automatic performance extension history records.
 	SpecHistory []*DescribeAutoScalingHistoryResponseBodyDataSpecHistory `json:"SpecHistory,omitempty" xml:"SpecHistory,omitempty" type:"Repeated"`
-	// The history of storage expansion. This feature is not supported.
+	// The storage expansion history records. This parameter is not supported.
 	Storage []map[string]interface{} `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Repeated"`
 }
 
@@ -213,21 +213,21 @@ func (s *DescribeAutoScalingHistoryResponseBodyData) Validate() error {
 }
 
 type DescribeAutoScalingHistoryResponseBodyDataSpecHistory struct {
-	// The error code returned by the scaling task. Valid values:
+	// The error code returned by the internal scaling task. Valid values:
 	//
-	// 	- **Insufficient_Balance**: The account has insufficient balance or an unpaid order.
+	// - **Insufficient_Balance**: The account balance is insufficient or there are unpaid orders.
 	//
-	// 	- **REACH_SPEC_UPPERBOUND**: The instance type reaches the upper limit.
+	// - **REACH_SPEC_UPPERBOUND**: The upper limit of the instance specification has been reached.
 	//
-	// 	- **Control_Error_Timeout_Msg**: The management task timed out.
+	// - **Control_Error_Timeout_Msg**: The control task timed out.
 	//
-	// 	- **Invoke_Rds_Api_Error_Msg**: Failed to call the ApsaraDB RDS API.
+	// - **Invoke_Rds_Api_Error_Msg**: Failed to call the RDS API.
 	//
 	// example:
 	//
 	// Insufficient_Balance
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The original number of CPU cores of the instance.
+	// The number of CPU cores of the original instance.
 	//
 	// example:
 	//
@@ -239,51 +239,51 @@ type DescribeAutoScalingHistoryResponseBodyDataSpecHistory struct {
 	//
 	// mysql.n2.large.2c
 	OriginInstanceClass *string `json:"OriginInstanceClass,omitempty" xml:"OriginInstanceClass,omitempty"`
-	// The original memory size of the instance. Unit: GB.
+	// The memory size of the original instance. Unit: GB.
 	//
 	// example:
 	//
 	// 8
 	OriginMemory *float64 `json:"OriginMemory,omitempty" xml:"OriginMemory,omitempty"`
-	// The type of the automatic performance scaling task. Valid values:
+	// The type of the automatic performance extension task. Valid values:
 	//
-	// 	- **SCALE_UP**: automatic instance type scale-up task.
+	// - **SCALE_UP**: Automatic specification extension.
 	//
-	// 	- **SCALE_DOWN**: automatic instance type scale-down task.
+	// - **SCALE_DOWN**: Automatic specification scale-down.
 	//
 	// example:
 	//
 	// SCALE_UP
 	ScaleType *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
-	// The destination number of CPU cores of the instance.
+	// The number of CPU cores of the target instance.
 	//
 	// example:
 	//
 	// 8
 	TargetCore *int32 `json:"TargetCore,omitempty" xml:"TargetCore,omitempty"`
-	// The destination instance type.
+	// The target instance type.
 	//
 	// example:
 	//
 	// mysql.n2.xlarge.2c
 	TargetInstanceClass *string `json:"TargetInstanceClass,omitempty" xml:"TargetInstanceClass,omitempty"`
-	// The destination memory size of the instance. Unit: GB.
+	// The memory size of the target instance. Unit: GB.
 	//
 	// example:
 	//
 	// 16
 	TargetMemory *float64 `json:"TargetMemory,omitempty" xml:"TargetMemory,omitempty"`
-	// The status of the task. Valid values:
+	// The task execution status. Valid values:
 	//
-	// 	- **true**: The task was successful.
+	// - **true**: The task was executed successfully.
 	//
-	// 	- **false**: The task failed.
+	// - **false**: The task failed.
 	//
 	// example:
 	//
 	// true
 	TaskExcuteStatus *bool `json:"TaskExcuteStatus,omitempty" xml:"TaskExcuteStatus,omitempty"`
-	// The time when the task was run. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The task execution time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//

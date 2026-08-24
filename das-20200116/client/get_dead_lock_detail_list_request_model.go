@@ -28,7 +28,7 @@ type GetDeadLockDetailListRequest struct {
 	//
 	// example:
 	//
-	// school1,school2
+	// testdb1,testdb2
 	DbNameList *string `json:"DbNameList,omitempty" xml:"DbNameList,omitempty"`
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
@@ -44,7 +44,7 @@ type GetDeadLockDetailListRequest struct {
 	//
 	// example:
 	//
-	// rm-2ze2016723b328gs2
+	// rm-2ze2016723b32****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The page number. The value must be an integer that is greater than 0. Default value: 1.
 	//

@@ -22,20 +22,34 @@ type iGetInstanceGroupInspectReportDetailResponseBody interface {
 }
 
 type GetInstanceGroupInspectReportDetailResponseBody struct {
+	// The status code returned.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// ReportDetail
 	Data *GetInstanceGroupInspectReportDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned for the request.
+	//
+	// > If the request is successful, **Successful*	- is returned. If the request fails, exception information such as an error code is returned.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- true: The request is successful.
+	//
+	// 	- false: The request fails.
+	//
 	// example:
 	//
 	// true
@@ -105,7 +119,14 @@ func (s *GetInstanceGroupInspectReportDetailResponseBody) Validate() error {
 }
 
 type GetInstanceGroupInspectReportDetailResponseBodyData struct {
+	// The content of the automated operations report, including the report date and diagnostic details of managed instances.
+	//
+	// example:
+	//
+	// "### 概要\\n\\n报告日期：2025-12-10  \\n对比周期：[昨日日期] → 2025-12-10 以下省略"
 	ReportDetail *string `json:"ReportDetail,omitempty" xml:"ReportDetail,omitempty"`
+	// The report ID.
+	//
 	// example:
 	//
 	// 13f52040-5a6e-42c3-bb84-051f5d6d****

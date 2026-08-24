@@ -32,7 +32,7 @@ type GetAutoResourceOptimizeRulesResponseBody struct {
 	Data *GetAutoResourceOptimizeRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type GetAutoResourceOptimizeRulesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -135,11 +135,11 @@ type GetAutoResourceOptimizeRulesResponseBodyData struct {
 	HasEnableRuleButNotDasProCount *int64 `json:"HasEnableRuleButNotDasProCount,omitempty" xml:"HasEnableRuleButNotDasProCount,omitempty"`
 	// The database instances for which the automatic fragment recycling feature is enabled and DAS Enterprise Edition is disabled.
 	//
-	// >  Automatic fragment recycling tasks are run on this type of database instances only if DAS Enterprise Edition is enabled for the database instances again.
+	// > Automatic fragment recycling tasks are run on this type of database instances only if DAS Enterprise Edition is enabled for the database instances again.
 	HasEnableRuleButNotDasProList []*GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList `json:"HasEnableRuleButNotDasProList,omitempty" xml:"HasEnableRuleButNotDasProList,omitempty" type:"Repeated"`
 	// The number of database instances that do not exist or for which the automatic fragment recycling feature has never been enabled.
 	//
-	// >  If a database instance does not exist, the instance has been released or the specified instance ID is invalid.
+	// > If a database instance does not exist, the instance has been released or the specified instance ID is invalid.
 	//
 	// example:
 	//
@@ -286,9 +286,9 @@ func (s *GetAutoResourceOptimizeRulesResponseBodyData) Validate() error {
 type GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList struct {
 	// Indicates whether the automatic fragment recycling feature is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -296,9 +296,9 @@ type GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeList 
 	AutoDefragment *bool `json:"AutoDefragment,omitempty" xml:"AutoDefragment,omitempty"`
 	// Indicates whether DAS Enterprise Edition is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -399,9 +399,9 @@ func (s *GetAutoResourceOptimizeRulesResponseBodyDataEnableAutoResourceOptimizeL
 type GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList struct {
 	// Indicates whether the automatic fragment recycling feature is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -409,9 +409,9 @@ type GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProList s
 	AutoDefragment *bool `json:"AutoDefragment,omitempty" xml:"AutoDefragment,omitempty"`
 	// Indicates whether DAS Enterprise Edition is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -512,9 +512,9 @@ func (s *GetAutoResourceOptimizeRulesResponseBodyDataHasEnableRuleButNotDasProLi
 type GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList struct {
 	// Indicates whether the automatic fragment recycling feature is enabled. Valid values:
 	//
-	// 	- **true**:
+	// - **true**:
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -522,9 +522,9 @@ type GetAutoResourceOptimizeRulesResponseBodyDataTurnOffAutoResourceOptimizeList
 	AutoDefragment *bool `json:"AutoDefragment,omitempty" xml:"AutoDefragment,omitempty"`
 	// Indicates whether DAS Enterprise Edition is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

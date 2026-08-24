@@ -16,12 +16,18 @@ type iCreateLatestDeadLockAnalysisRequest interface {
 }
 
 type CreateLatestDeadLockAnalysisRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-bp1u5mas9exx7****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The node ID.
+	//
+	// > For PolarDB for MySQL instances, you must specify the node ID.
+	//
 	// example:
 	//
 	// pi-bp16v3824rt73****

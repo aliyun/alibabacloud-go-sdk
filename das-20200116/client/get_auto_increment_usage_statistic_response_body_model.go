@@ -32,7 +32,7 @@ type GetAutoIncrementUsageStatisticResponseBody struct {
 	Data *GetAutoIncrementUsageStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request is successful, **Successful*	- is returned. Otherwise, an error message such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. Otherwise, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type GetAutoIncrementUsageStatisticResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -129,9 +129,9 @@ type GetAutoIncrementUsageStatisticResponseBodyData struct {
 	ErrorInfo *string `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty"`
 	// Indicates whether the task is complete. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -139,13 +139,13 @@ type GetAutoIncrementUsageStatisticResponseBodyData struct {
 	Finish *bool `json:"Finish,omitempty" xml:"Finish,omitempty"`
 	// The task status. Valid values:
 	//
-	// 	- **INIT**: The task is being initialized.
+	// - **INIT**: The task is being initialized.
 	//
-	// 	- **RUNNING**: The task is being executed.
+	// - **RUNNING**: The task is being executed.
 	//
-	// 	- **SUCCESS**: The task succeeds.
+	// - **SUCCESS**: The task succeeds.
 	//
-	// 	- **FAIL**: The task fails.
+	// - **FAIL**: The task fails.
 	//
 	// example:
 	//

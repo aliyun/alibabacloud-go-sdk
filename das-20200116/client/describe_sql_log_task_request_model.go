@@ -20,19 +20,19 @@ type iDescribeSqlLogTaskRequest interface {
 }
 
 type DescribeSqlLogTaskRequest struct {
-	// The ID of the database instance.
+	// The database instance ID.
 	//
 	// example:
 	//
 	// r-bp1nti25tc7bq5****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Pages are numbered starting from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The page size. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//

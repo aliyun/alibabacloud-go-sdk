@@ -18,18 +18,24 @@ type iModifySecurityIPGroupRelationRequest interface {
 }
 
 type ModifySecurityIPGroupRelationRequest struct {
+	// The ID of the IP address whitelist template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// g-ggh7qvrrwikyxe****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
+	// The database instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-bp1u5mas9exx7****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

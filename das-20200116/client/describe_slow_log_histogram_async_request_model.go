@@ -22,23 +22,36 @@ type iDescribeSlowLogHistogramAsyncRequest interface {
 }
 
 type DescribeSlowLogHistogramAsyncRequest struct {
+	// The end time of the query. Specify a UNIX timestamp in milliseconds.
+	//
+	// > The end time must be later than the start time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1662518540764
-	EndTime *int64                                         `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The list of query filter conditions.
 	Filters []*DescribeSlowLogHistogramAsyncRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// The database instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The node ID.
+	//
+	// > For PolarDB for MySQL instances, specify the node ID.
+	//
 	// example:
 	//
 	// r-****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The start time of the query. Specify a UNIX timestamp in milliseconds.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -114,10 +127,14 @@ func (s *DescribeSlowLogHistogramAsyncRequest) Validate() error {
 }
 
 type DescribeSlowLogHistogramAsyncRequestFilters struct {
+	// The filter parameter.
+	//
 	// example:
 	//
 	// None
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the filter parameter.
+	//
 	// example:
 	//
 	// None

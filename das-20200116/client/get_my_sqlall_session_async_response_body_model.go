@@ -32,7 +32,7 @@ type GetMySQLAllSessionAsyncResponseBody struct {
 	Data *GetMySQLAllSessionAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type GetMySQLAllSessionAsyncResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -121,9 +121,9 @@ func (s *GetMySQLAllSessionAsyncResponseBody) Validate() error {
 type GetMySQLAllSessionAsyncResponseBodyData struct {
 	// Indicates whether the asynchronous request was complete. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -131,9 +131,9 @@ type GetMySQLAllSessionAsyncResponseBodyData struct {
 	Complete *bool `json:"Complete,omitempty" xml:"Complete,omitempty"`
 	// Indicates whether the asynchronous request failed. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -141,9 +141,9 @@ type GetMySQLAllSessionAsyncResponseBodyData struct {
 	Fail *bool `json:"Fail,omitempty" xml:"Fail,omitempty"`
 	// Indicates whether the asynchronous request was complete. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -159,11 +159,11 @@ type GetMySQLAllSessionAsyncResponseBodyData struct {
 	SessionData *GetMySQLAllSessionAsyncResponseBodyDataSessionData `json:"SessionData,omitempty" xml:"SessionData,omitempty" type:"Struct"`
 	// The state of the asynchronous request. Valid values:
 	//
-	// 	- **RUNNING**
+	// - **RUNNING**
 	//
-	// 	- **SUCCESS**
+	// - **SUCCESS**
 	//
-	// 	- **FAIL**
+	// - **FAIL**
 	//
 	// example:
 	//
@@ -415,7 +415,7 @@ func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionData) Validate() error {
 type GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats struct {
 	// The number of active sessions that belong to the client IP address.
 	//
-	// >  If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
+	// > If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
 	//
 	// example:
 	//
@@ -499,7 +499,7 @@ func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats) Validate
 type GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats struct {
 	// The number of active sessions of the database.
 	//
-	// >  If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
+	// > If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
 	//
 	// example:
 	//
@@ -607,7 +607,7 @@ type GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList struct {
 	SessionId *int64 `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// The SQL template ID.
 	//
-	// >  This parameter is returned only when you use a PolarDB-X 2.0 instance.
+	// > This parameter is returned only when you use a PolarDB-X 2.0 instance.
 	//
 	// example:
 	//
@@ -780,7 +780,7 @@ func (s *GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList) Validate
 type GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats struct {
 	// The number of active sessions within the account.
 	//
-	// >  If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
+	// > If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
 	//
 	// example:
 	//

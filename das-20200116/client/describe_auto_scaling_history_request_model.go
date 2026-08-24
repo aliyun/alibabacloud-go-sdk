@@ -20,7 +20,7 @@ type iDescribeAutoScalingHistoryRequest interface {
 }
 
 type DescribeAutoScalingHistoryRequest struct {
-	// The type of the auto scaling task that you want to query. Set the value to **SPEC**, which indicates that you can query the history of only automatic performance scaling tasks.
+	// The type of elastic scaling task to query. Currently, only **SPEC*	- is supported, which indicates querying the automatic performance scaling history.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type DescribeAutoScalingHistoryRequest struct {
 	//
 	// SPEC
 	AutoScalingTaskType *string `json:"AutoScalingTaskType,omitempty" xml:"AutoScalingTaskType,omitempty"`
-	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end time of the query task. Specify the value as a UNIX timestamp. Unit: milliseconds.
 	//
 	// > The end time must be later than the start time.
 	//
@@ -40,7 +40,7 @@ type DescribeAutoScalingHistoryRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The instance ID.
 	//
-	// > Only ApsaraDB RDS for MySQL instances are supported.
+	// > Currently, only ApsaraDB RDS for MySQL instances are supported.
 	//
 	// This parameter is required.
 	//
@@ -48,9 +48,9 @@ type DescribeAutoScalingHistoryRequest struct {
 	//
 	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start time of the query task. Specify the value as a UNIX timestamp. Unit: milliseconds.
 	//
-	// > The maximum time range that can be specified is 45 days.
+	// > The start time cannot be earlier than 45 days before the current time.
 	//
 	// This parameter is required.
 	//

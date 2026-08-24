@@ -22,21 +22,21 @@ type iDeleteCloudBenchTaskResponseBody interface {
 }
 
 type DeleteCloudBenchTaskResponseBody struct {
-	// The HTTP status code returned.
+	// The returned status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The reserved parameter.
+	// Reserved parameter.
 	//
 	// example:
 	//
 	// None
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The returned message.
+	// The returned message of the request.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// > When the request is successful, this parameter returns **Successful**. When the request fails, it returns exception information (such as error codes).
 	//
 	// example:
 	//
@@ -48,11 +48,11 @@ type DeleteCloudBenchTaskResponseBody struct {
 	//
 	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request was successful:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//

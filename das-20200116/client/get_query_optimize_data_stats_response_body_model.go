@@ -44,9 +44,9 @@ type GetQueryOptimizeDataStatsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -529,9 +529,9 @@ type GetQueryOptimizeDataStatsResponseBodyDataListRuleList struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The type of the rule. Valid values:
 	//
-	// 	- **Predefined**
+	// - **Predefined**
 	//
-	// 	- **UserDefined**
+	// - **UserDefined**
 	//
 	// example:
 	//

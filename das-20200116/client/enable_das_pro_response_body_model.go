@@ -38,7 +38,7 @@ type EnableDasProResponseBody struct {
   Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
   // The returned message.
   // 
-  // >  If the request was successful, **Successful*	- is returned. If the request failed, an error message that contains information such as an error code is returned.
+  // > If the request was successful, **Successful*	- is returned. If the request failed, an error message that contains information such as an error code is returned.
   // 
   // example:
   // 
@@ -52,9 +52,9 @@ type EnableDasProResponseBody struct {
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
   // Indicates whether the request was successful. Valid values:
   // 
-  // 	- **true**
+  // - **true**
   // 
-  // 	- **false**
+  // - **false**
   // 
   // example:
   // 

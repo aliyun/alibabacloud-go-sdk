@@ -26,7 +26,7 @@ type DisableSqlConcurrencyControlRequest struct {
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	// The instance ID.
 	//
-	// >  The database instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+	// > The database instance must be an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
 	//
 	// This parameter is required.
 	//

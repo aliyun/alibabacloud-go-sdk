@@ -22,20 +22,34 @@ type iDescribeSecurityIPGroupResponseBody interface {
 }
 
 type DescribeSecurityIPGroupResponseBody struct {
+	// The status code returned.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// ListResult<InstanceSSL>
 	Data *DescribeSecurityIPGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned for the request.
+	//
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an exception message such as an error code is returned.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CAC553F1-C669-53F1-A295-2CF050E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - **true**: The request is successful.
+	//
+	// - **false**: The request fails.
+	//
 	// example:
 	//
 	// true
@@ -105,6 +119,7 @@ func (s *DescribeSecurityIPGroupResponseBody) Validate() error {
 }
 
 type DescribeSecurityIPGroupResponseBodyData struct {
+	// The list of all cross-engine whitelist templates for the user in the specified region.
 	SecurityIpGroups []*DescribeSecurityIPGroupResponseBodyDataSecurityIpGroups `json:"SecurityIpGroups,omitempty" xml:"SecurityIpGroups,omitempty" type:"Repeated"`
 }
 
@@ -139,37 +154,68 @@ func (s *DescribeSecurityIPGroupResponseBodyData) Validate() error {
 }
 
 type DescribeSecurityIPGroupResponseBodyDataSecurityIpGroups struct {
-	DbInstances    []*string                                                                `json:"DbInstances,omitempty" xml:"DbInstances,omitempty" type:"Repeated"`
+	// The list of database instances bound to the cross-engine whitelist template.
+	DbInstances []*string `json:"DbInstances,omitempty" xml:"DbInstances,omitempty" type:"Repeated"`
+	// The instance information for each product bound to the template.
 	EngineInfoList []*DescribeSecurityIPGroupResponseBodyDataSecurityIpGroupsEngineInfoList `json:"EngineInfoList,omitempty" xml:"EngineInfoList,omitempty" type:"Repeated"`
-	GEcsSgIdList   *string                                                                  `json:"GEcsSgIdList,omitempty" xml:"GEcsSgIdList,omitempty"`
+	// The ECS security group ID. This field is invalid and contains redundant data that will be deprecated.
+	//
+	// example:
+	//
+	// null
+	GEcsSgIdList *string `json:"GEcsSgIdList,omitempty" xml:"GEcsSgIdList,omitempty"`
+	// The IP addresses in the whitelist template.
+	//
+	// > Separate multiple IP addresses with commas (,).
+	//
 	// example:
 	//
 	// 192.168.1.28/32
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
+	// The IP whitelist template name. The name must meet the following requirements:
+	//
+	// - Contains only lowercase letters, digits, and underscores (_).
+	//
+	// - Starts with a letter and ends with a letter or digit.
+	//
+	// - Contains 2 to 120 characters in length.
+	//
 	// example:
 	//
 	// test_123
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
+	// The IP whitelist template ID.
+	//
 	// example:
 	//
 	// g-1no2rzybnqcv****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IP type.
+	//
 	// example:
 	//
 	// ipv4
 	SecurityIpType *string `json:"SecurityIpType,omitempty" xml:"SecurityIpType,omitempty"`
+	// The account ID. You can obtain the ID of the **logon account*	- on the **Security Settings*	- page in **Account Management*	- of the Alibaba Cloud console.
+	//
 	// example:
 	//
 	// 160-79abe3f4****
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 641***
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The network type of the whitelist.
+	//
 	// example:
 	//
 	// mix
@@ -297,11 +343,16 @@ func (s *DescribeSecurityIPGroupResponseBodyDataSecurityIpGroups) Validate() err
 }
 
 type DescribeSecurityIPGroupResponseBodyDataSecurityIpGroupsEngineInfoList struct {
+	// The database engine type of the target instance.
+	//
 	// example:
 	//
 	// PolarDBMySQL
-	EngineName  *string   `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	EngineName *string `json:"EngineName,omitempty" xml:"EngineName,omitempty"`
+	// The list of database instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The number of instances under the current logon account.
+	//
 	// example:
 	//
 	// 10

@@ -22,21 +22,23 @@ type iDescribeTopHotKeysRequest interface {
 }
 
 type DescribeTopHotKeysRequest struct {
-	// The reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
 	// None
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
-	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end of the query time range, specified as a UNIX timestamp in milliseconds.
+	//
+	// > - The end time must be later than the start time.
 	//
 	// >
 	//
-	// 	- The end time must be later than the start time.
+	// > - You can query data within the last four days.
 	//
-	// 	- Only data within the last four days can be queried.
+	// >
 	//
-	// 	- The maximum interval between the **start time*	- and the*	- end time*	- is 3 hours.
+	// > - The maximum time interval between **StartTime*	- and **EndTime*	- is three hours.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +46,7 @@ type DescribeTopHotKeysRequest struct {
 	//
 	// 1596177993001
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the ApsaraDB for Redis instance.
+	// The ID of the Redis instance.
 	//
 	// This parameter is required.
 	//
@@ -52,13 +54,13 @@ type DescribeTopHotKeysRequest struct {
 	//
 	// r-bp18ff4a195d****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the data shard on the ApsaraDB for Redis instance.
+	// The ID of the data shard of the Redis instance.
 	//
 	// example:
 	//
 	// r-****-db-0
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start of the query time range, specified as a UNIX timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//

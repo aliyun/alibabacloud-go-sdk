@@ -32,7 +32,7 @@ type DisableAutoResourceOptimizeRulesResponseBody struct {
 	Data *DisableAutoResourceOptimizeRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type DisableAutoResourceOptimizeRulesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -221,9 +221,9 @@ func (s *DisableAutoResourceOptimizeRulesResponseBodyData) Validate() error {
 type DisableAutoResourceOptimizeRulesResponseBodyDataConfigFailInstanceList struct {
 	// Indicates whether the automatic tablespace fragment recycling feature is disabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -285,9 +285,9 @@ func (s *DisableAutoResourceOptimizeRulesResponseBodyDataConfigFailInstanceList)
 type DisableAutoResourceOptimizeRulesResponseBodyDataConfigSuccessInstanceList struct {
 	// Indicates whether the automatic tablespace fragment recycling feature is disabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

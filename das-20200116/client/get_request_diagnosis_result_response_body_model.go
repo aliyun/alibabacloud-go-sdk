@@ -22,7 +22,7 @@ type iGetRequestDiagnosisResultResponseBody interface {
 }
 
 type GetRequestDiagnosisResultResponseBody struct {
-	// The HTTP status code returned.
+	// The status code returned.
 	//
 	// example:
 	//
@@ -30,9 +30,9 @@ type GetRequestDiagnosisResultResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *GetRequestDiagnosisResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
-	// >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+	// > This parameter returns `Successful` if the request succeeds. If the request fails, it returns an error message, which may include an error code.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type GetRequestDiagnosisResultResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request succeeded.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type GetRequestDiagnosisResultResponseBodyData struct {
 	//
 	// 2093****
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
@@ -133,105 +133,135 @@ type GetRequestDiagnosisResultResponseBodyData struct {
 	DbSchema *string `json:"dbSchema,omitempty" xml:"dbSchema,omitempty"`
 	// The database engine. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **PostgreSQL**
+	// - **PostgreSQL**
 	//
-	// 	- **SQLServer**
+	// - **SQL Server**
 	//
-	// 	- **PolarDBMySQL**
+	// - **PolarDB-X**
 	//
-	// 	- **PolarDBOracle**
+	// - **PolarDB for Oracle**
 	//
-	// 	- **MongoDB**
+	// - **MongoDB**
 	//
 	// example:
 	//
 	// MySQL
 	Engine *string `json:"engine,omitempty" xml:"engine,omitempty"`
-	// The time when the SQL diagnostics task was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The creation time of the SQL diagnosis, provided as a Unix timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1633071840000
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The time when the SQL diagnostics task was modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The last modification time of the SQL diagnosis, provided as a Unix timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1633071850000
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// The unique ID of the diagnostics task.
+	// The unique ID of the diagnosis.
 	//
 	// example:
 	//
 	// 61820b594664275c4429****
 	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
-	// The additional information.
+	// Additional information.
 	//
 	// example:
 	//
 	// {"":""}
 	Param *string `json:"param,omitempty" xml:"param,omitempty"`
-	// The result of the SQL diagnostics task. The result includes the following information:
+	// The details of the SQL diagnosis result, returned as a JSON-formatted string.
 	//
-	// 	- **endTime**: the end time of the SQL diagnostics task.
+	// - **endTime**: The end time of the SQL diagnosis.
 	//
-	// 	- **errorCode**: the error code.
+	// - **errorCode**: The error code.
 	//
-	//     	- **0001**: The SQL diagnostics task is complete.
+	//   - **0001**: The diagnosis was successful.
 	//
-	//     	- **0003**: The SQL diagnostics task failed.
+	//   - **0003**: The diagnosis failed.
 	//
-	// 	- **errorMessage**: the error message.
+	// - **errorMessage**: The error message.
 	//
-	// 	- **estimateCost**: the estimated cost.
+	// - **estimateCost**: The estimated cost.
 	//
-	//     	- **cpu**: the estimated CPU utilization of the index.
+	//   - **cpu**: The estimated CPU cost of the query.
 	//
-	//     	- **io**: the estimated I/O usage of the index.
+	//   - **io**: The estimated I/O cost of the query.
 	//
-	//     	- **rows**: the estimated values of the rows returned for the index.
+	//   - **rows**: The estimated number of rows returned by the query.
 	//
-	// 	- **improvement**: the performance improvement ratio.
+	// - **improvement**: The performance improvement ratio.
 	//
-	// 	- **indexAdvices**: the index recommendations, which include the following information:
+	// - **indexAdvices**: The index suggestions.
 	//
-	//     	- **columns**: the index columns.
+	//   - **columns**: The index columns.
 	//
-	//     	- **ddlAddIndex**: the DDL statement for the index.
+	//   - **ddlAddIndex**: The DDL statement for creating the index.
 	//
-	//     	- **indexName**: the name of the index.
+	//   - **indexName**: The index name.
 	//
-	//     	- **schemaName**: the name of the database.
+	//   - **schemaName**: The schema name.
 	//
-	//     	- **tableName**: the name of the table.
+	//   - **tableName**: The table name.
 	//
-	//     	- **unique**: indicates whether the index is unique.
+	//   - **unique**: Indicates whether the index is a unique index.
 	//
-	// 	- **ip**: the IP address of the instance.
+	// - **ip**: The instance IP address.
 	//
-	// 	- **messageId**: the ID of the diagnostics task.
+	// - **messageId**: The diagnosis ID.
 	//
-	// 	- **port**: the port used to connect to the instance.
+	// - **port**: The instance port.
 	//
-	// 	- **sqlTag**: the SQL tag.
+	// - **sqlTag**: The SQL tags.
 	//
-	// 	- **startTime**: the start time of the SQL diagnostics task.
+	//   - **PRED_EQUAL**: Equality predicate.
 	//
-	// 	- **success**: indicates whether the request was successful.
+	//   - **CNT_QB**: Number of query blocks.
 	//
-	// 	- **support**: indicates whether the SQL statement can be diagnosed. Valid values:
+	//   - **CNT_TB**: Number of tables.
 	//
-	//     	- **true**
+	//   - **JOIN_LEFT**: Left join.
 	//
-	//     	- **false**
+	//   - **SEL_SMALL**: Small result set selection.
 	//
-	// 	- **tuningAdvices*	- : the SQL rewrite suggestions.
+	//   - **AGGR_SEL**: Aggregate selection.
+	//
+	//   - **PRED_LT_EQ / PRED_GT_EQ**: Less-than-or-equal-to / greater-than-or-equal-to predicate.
+	//
+	//   - **PRED_LIKE_PREFIX**: LIKE prefix match.
+	//
+	//   - **ORDER_BY**: Contains an ORDER BY clause.
+	//
+	//   - **LIMIT**: Contains a LIMIT clause.
+	//
+	//   - **GROUP_BY**: Contains a GROUP BY clause.
+	//
+	//   - **JOIN_INNER**: Inner join.
+	//
+	//   - **JOIN_RIGHT**: Right join.
+	//
+	//   - **HAVING**: Contains a HAVING clause.
+	//
+	//   - **UNION**: Contains a UNION operation.
+	//
+	// - **startTime**: The start time of the SQL diagnosis.
+	//
+	// - **success**: Indicates whether the diagnosis was successful.
+	//
+	// - **support**: Indicates whether the SQL statement can be diagnosed.
+	//
+	//   - **true**: Supported.
+	//
+	//   - **false**: Not supported.
+	//
+	// - **tuningAdvices**: The SQL rewrite suggestions.
 	//
 	// example:
 	//
-	// { "endTime":1636354256000, "errorCode":"0001", "errorMessage":"TFX succeeded", "estimateCost":{ "cpu":1.7878745150389268, "io":9.948402604746128, "rows":8.889372575194633 }, "improvement":12933.97, "indexAdvices":[ { "columns":[ "work_no" ], "ddlAddIndex":"ALTER TABLE `test`.`work_order` ADD INDEX `idx_workno` (`work_no`)", "indexName":"idx_workno", "schemaName":"test", "tableName":"work_order", "unique":false } ], "ip":"****.mysql.rds.aliyuncs.com", "messageId":"6188c8cb2f1365b16aee****", "port":3306, "sqlTag":"{\\"PRED_EQUAL\\":\\"Y\\",\\"CNT_QB\\":\\"1\\",\\"CNT_TB\\":\\"1\\"}", "startTime":1636354252000, "success":true, "support":true, "tuningAdvices":[ ] }
+	// { "endTime":1636354256000, "errorCode":"0001", "errorMessage":"TFX成功", "estimateCost":{ "cpu":1.7878745150389268, "io":9.948402604746128, "rows":8.889372575194633 }, "improvement":12933.97, "indexAdvices":[ { "columns":[ "work_no" ], "ddlAddIndex":"ALTER TABLE `test`.`work_order` ADD INDEX `idx_workno` (`work_no`)", "indexName":"idx_workno", "schemaName":"test", "tableName":"work_order", "unique":false } ], "ip":"****.mysql.rds.aliyuncs.com", "messageId":"6188c8cb2f1365b16aee****", "port":3306, "sqlTag":"{\\"PRED_EQUAL\\":\\"Y\\",\\"CNT_QB\\":\\"1\\",\\"CNT_TB\\":\\"1\\"}", "startTime":1636354252000, "success":true, "support":true, "tuningAdvices":[ ] }
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
 	// The SQL template ID.
 	//
@@ -239,23 +269,23 @@ type GetRequestDiagnosisResultResponseBodyData struct {
 	//
 	// 0c95dae3afef77be06572612df9b****
 	SqlId *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
-	// The state of the diagnostics task. Valid values:
+	// The diagnosis status. Valid values:
 	//
-	// 	- **0**: The diagnostics task is in progress.
+	// - **0**: In progress.
 	//
-	// 	- **1**: A diagnostics error occurred.
+	// - **1**: Diagnosis error.
 	//
-	// 	- **2**: The diagnostics task is complete.
+	// - **2**: Completed.
 	//
-	// 	- **3**: An SQL error occurred.
+	// - **3**: SQL error.
 	//
-	// 	- **4**: An engine error occurred.
+	// - **4**: Engine error.
 	//
 	// example:
 	//
 	// 2
 	State *int32 `json:"state,omitempty" xml:"state,omitempty"`
-	// The unique ID of the diagnostics instance.
+	// The unique identifier of the diagnosed instance.
 	//
 	// example:
 	//

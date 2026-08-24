@@ -22,17 +22,17 @@ type iDescribeCloudBenchTasksResponseBody interface {
 }
 
 type DescribeCloudBenchTasksResponseBody struct {
-	// The HTTP status code returned.
+	// The returned status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The detailed information, including the error codes and the number of entries that are returned.
+	// The detailed information list, including the total number of entries and error codes.
 	Data *DescribeCloudBenchTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// >If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type DescribeCloudBenchTasksResponseBody struct {
 	//
 	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request is successful.
 	//
-	// 	- **false**
+	// - **false**: The request fails.
 	//
 	// example:
 	//
@@ -132,13 +132,13 @@ type DescribeCloudBenchTasksResponseBodyData struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The maximum number of records per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of results.
 	//
 	// example:
 	//

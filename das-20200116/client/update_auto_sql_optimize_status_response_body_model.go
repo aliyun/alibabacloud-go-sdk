@@ -32,7 +32,7 @@ type UpdateAutoSqlOptimizeStatusResponseBody struct {
 	Data *UpdateAutoSqlOptimizeStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type UpdateAutoSqlOptimizeStatusResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -121,9 +121,9 @@ func (s *UpdateAutoSqlOptimizeStatusResponseBody) Validate() error {
 type UpdateAutoSqlOptimizeStatusResponseBodyData struct {
 	// The error code. Valid values:
 	//
-	// 	- **-1001**: indicates that the specified parameter is invalid.
+	// - **-1001**: indicates that the specified parameter is invalid.
 	//
-	// 	- **-91029**: indicates that a system error occurred.
+	// - **-91029**: indicates that a system error occurred.
 	//
 	// example:
 	//
@@ -137,9 +137,9 @@ type UpdateAutoSqlOptimizeStatusResponseBodyData struct {
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	// Indicates whether the request initiated to configure the automatic SQL optimization feature was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

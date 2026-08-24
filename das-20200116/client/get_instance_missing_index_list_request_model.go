@@ -68,13 +68,13 @@ type GetInstanceMissingIndexListRequest struct {
 	IndexCount *string `json:"IndexCount,omitempty" xml:"IndexCount,omitempty"`
 	// The database instance ID.
 	//
-	// >  Only ApsaraDB RDS for SQL Server instances are supported.
+	// > Only ApsaraDB RDS for SQL Server instances are supported.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// rm-************
+	// rm-t4nfalp2ap421****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The object name.
 	//

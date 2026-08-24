@@ -26,7 +26,7 @@ type iEnableSqlConcurrencyControlRequest interface {
 type EnableSqlConcurrencyControlRequest struct {
   // The duration within which the SQL throttling rule takes effect. Unit: seconds.
   // 
-  // >  The throttling rule takes effect only within this duration.
+  // > The throttling rule takes effect only within this duration.
   // 
   // This parameter is required.
   // 
@@ -42,7 +42,7 @@ type EnableSqlConcurrencyControlRequest struct {
   ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
   // The instance ID.
   // 
-  // >  You must specify the instance ID only if your database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
+  // > You must specify the instance ID only if your database instance is an ApsaraDB RDS for MySQL instance or a PolarDB for MySQL cluster.
   // 
   // This parameter is required.
   // 
@@ -52,7 +52,7 @@ type EnableSqlConcurrencyControlRequest struct {
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
   // The maximum number of concurrent SQL statements. Set this parameter to a positive integer.
   // 
-  // >  When the number of concurrent SQL statements that contain the specified keywords reaches this upper limit, the throttling rule is triggered.
+  // > When the number of concurrent SQL statements that contain the specified keywords reaches this upper limit, the throttling rule is triggered.
   // 
   // This parameter is required.
   // 
@@ -62,7 +62,7 @@ type EnableSqlConcurrencyControlRequest struct {
   MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
   // The keywords that are used to identify the SQL statements that need to be throttled.
   // 
-  // >  If you specify multiple SQL keywords, separate them with tildes (~). If the number of concurrent SQL statements that contain all the specified SQL keywords reaches the specified upper limit, the throttling rule is triggered.
+  // > If you specify multiple SQL keywords, separate them with tildes (\\~). If the number of concurrent SQL statements that contain all the specified SQL keywords reaches the specified upper limit, the throttling rule is triggered.
   // 
   // This parameter is required.
   // 
@@ -72,11 +72,11 @@ type EnableSqlConcurrencyControlRequest struct {
   SqlKeywords *string `json:"SqlKeywords,omitempty" xml:"SqlKeywords,omitempty"`
   // The type of the SQL statements. Valid values:
   // 
-  // 	- **SELECT**
+  // - **SELECT**
   // 
-  // 	- **UPDATE**
+  // - **UPDATE**
   // 
-  // 	- **DELETE**
+  // - **DELETE**
   // 
   // This parameter is required.
   // 

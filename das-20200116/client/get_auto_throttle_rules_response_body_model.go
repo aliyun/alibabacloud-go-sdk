@@ -32,7 +32,7 @@ type GetAutoThrottleRulesResponseBody struct {
 	Data *GetAutoThrottleRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message that contains information such as an error code is returned.
+	// > If the request was successful, **Successful*	- is returned. If the request failed, an error message that contains information such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type GetAutoThrottleRulesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type GetAutoThrottleRulesResponseBodyData struct {
 	EnableAutoThrottleList []*GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList `json:"EnableAutoThrottleList,omitempty" xml:"EnableAutoThrottleList,omitempty" type:"Repeated"`
 	// The number of database instances that do not exist or for which the automatic SQL throttling feature has never been enabled.
 	//
-	// >  If a database instance does not exist, the instance has been released or the specified instance ID is invalid.
+	// > If a database instance does not exist, the instance has been released or the specified instance ID is invalid.
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type GetAutoThrottleRulesResponseBodyData struct {
 	NeverEnableAutoThrottleOrReleasedInstanceCount *int64 `json:"NeverEnableAutoThrottleOrReleasedInstanceCount,omitempty" xml:"NeverEnableAutoThrottleOrReleasedInstanceCount,omitempty"`
 	// The number of database instances that do not exist or for which the automatic SQL throttling feature has never been enabled.
 	//
-	// >  If a database instance does not exist, the instance has been released or the specified instance ID is invalid.
+	// > If a database instance does not exist, the instance has been released or the specified instance ID is invalid.
 	NeverEnableAutoThrottleOrReleasedInstanceIdList []*string `json:"NeverEnableAutoThrottleOrReleasedInstanceIdList,omitempty" xml:"NeverEnableAutoThrottleOrReleasedInstanceIdList,omitempty" type:"Repeated"`
 	// The number of databases for which the automatic SQL throttling feature has been enabled.
 	//
@@ -277,9 +277,9 @@ type GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList struct {
 	//
 	// > Abnormal SQL statements use the same template as the SQL statements that need to be throttled.
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -287,9 +287,9 @@ type GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList struct {
 	AutoKillSession *bool `json:"AutoKillSession,omitempty" xml:"AutoKillSession,omitempty"`
 	// The logical relationship between the CPU utilization threshold and the maximum number of active sessions. Valid values:
 	//
-	// 	- **AND**
+	// - **AND**
 	//
-	// 	- **OR**
+	// - **OR**
 	//
 	// example:
 	//
@@ -321,9 +321,9 @@ type GetAutoThrottleRulesResponseBodyDataEnableAutoThrottleList struct {
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// Indicates whether the automatic SQL throttling feature is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -471,9 +471,9 @@ type GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList struct {
 	//
 	// > Abnormal SQL statements use the same template as the SQL statements that need to be throttled.
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -481,9 +481,9 @@ type GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList struct {
 	AutoKillSession *bool `json:"AutoKillSession,omitempty" xml:"AutoKillSession,omitempty"`
 	// The logical relationship between the CPU utilization threshold and the maximum number of active sessions. Valid values:
 	//
-	// 	- **AND**
+	// - **AND**
 	//
-	// 	- **OR**
+	// - **OR**
 	//
 	// example:
 	//
@@ -515,9 +515,9 @@ type GetAutoThrottleRulesResponseBodyDataTurnOffAutoThrottleList struct {
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// Indicates whether the automatic SQL throttling feature is enabled. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

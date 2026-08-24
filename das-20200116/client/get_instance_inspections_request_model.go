@@ -30,7 +30,7 @@ type iGetInstanceInspectionsRequest interface {
 type GetInstanceInspectionsRequest struct {
 	// The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
-	// >  The end time must be later than the start time.
+	// > The end time must be later than the start time.
 	//
 	// This parameter is required.
 	//
@@ -40,11 +40,11 @@ type GetInstanceInspectionsRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The database engine. Valid values:
 	//
-	// 	- **MySQL**
+	// - **MySQL**
 	//
-	// 	- **Redis**
+	// - **Redis**
 	//
-	// 	- **PolarDBMySQL**
+	// - **PolarDBMySQL**
 	//
 	// This parameter is required.
 	//
@@ -54,13 +54,13 @@ type GetInstanceInspectionsRequest struct {
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The type of the instance on which the database is deployed. Valid values:
 	//
-	// 	- **RDS**: an Alibaba Cloud database instance.
+	// - **RDS**: an Alibaba Cloud database instance.
 	//
-	// 	- **ECS**: an ECS instance on which a self-managed database is deployed.
+	// - **ECS**: an ECS instance on which a self-managed database is deployed.
 	//
-	// 	- **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
+	// - **IDC**: a self-managed database instance that is not deployed on Alibaba Cloud.
 	//
-	// >  The value IDC specifies that the instance is deployed in a data center.
+	// > The value IDC specifies that the instance is deployed in a data center.
 	//
 	// This parameter is required.
 	//
@@ -92,11 +92,11 @@ type GetInstanceInspectionsRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The filter condition, which can be specified in one of the following formats:
 	//
-	// 	- Specify the ID of a single instance in the {"InstanceId":"Instance ID"} format.
+	// - Specify the ID of a single instance in the {"InstanceId":"Instance ID"} format.
 	//
-	// 	- Specify the IDs of multiple instances in the {"InstanceIds":["Instance ID1","Instance ID2"]} format. Separate the instance IDs with commas (,).
+	// - Specify the IDs of multiple instances in the {"InstanceIds":["Instance ID1","Instance ID2"]} format. Separate the instance IDs with commas (,).
 	//
-	// 	- Specify the region in which the instance resides in the {"region":"Region of the instance"} format.
+	// - Specify the region in which the instance resides in the {"region":"Region of the instance"} format.
 	//
 	// example:
 	//

@@ -22,20 +22,34 @@ type iGetInstanceGroupInspectReportListResponseBody interface {
 }
 
 type GetInstanceGroupInspectReportListResponseBody struct {
+	// The response status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// List<ReportStatus>
 	Data []*GetInstanceGroupInspectReportListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The response message.
+	//
+	// >If the request is successful, **Successful*	- is returned. If the request fails, exception information such as an error code is returned.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// 	- **true**: The request is successful.
+	//
+	// 	- **false**: The request fails.
+	//
 	// example:
 	//
 	// true
@@ -109,18 +123,26 @@ func (s *GetInstanceGroupInspectReportListResponseBody) Validate() error {
 }
 
 type GetInstanceGroupInspectReportListResponseBodyData struct {
+	// The time when the task was created.
+	//
 	// example:
 	//
 	// 2025-12-11 00:39:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The date of the diagnosis.
+	//
 	// example:
 	//
 	// 2025-12-10
 	ReportDate *string `json:"ReportDate,omitempty" xml:"ReportDate,omitempty"`
+	// The report ID.
+	//
 	// example:
 	//
 	// 13f52040-5a6e-42c3-bb84-051f5d6d****
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// The task status. Valid values: WAITING_UNREADY = 0, WAITING_READY = 1, PROCESSING = 2, FINISHED = 3, ERROR = 4, STOPPED = -1.
+	//
 	// example:
 	//
 	// 3

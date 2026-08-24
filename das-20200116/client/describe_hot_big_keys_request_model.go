@@ -24,7 +24,7 @@ type DescribeHotBigKeysRequest struct {
 	//
 	// None
 	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
-	// The ID of the ApsaraDB for Redis instance.
+	// The instance ID of the Redis instance.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type DescribeHotBigKeysRequest struct {
 	//
 	// r-bp18ff4a195d****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the data shard on the ApsaraDB for Redis instance.
+	// The ID of the data shard in the Redis instance.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDescribeSqlLogConfigRequest interface {
 }
 
 type DescribeSqlLogConfigRequest struct {
-	// The ID of the database instance.
+	// The database instance ID.
 	//
 	// This parameter is required.
 	//

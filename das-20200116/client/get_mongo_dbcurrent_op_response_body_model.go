@@ -32,7 +32,7 @@ type GetMongoDBCurrentOpResponseBody struct {
 	Data *GetMongoDBCurrentOpResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. Otherwise, an error message such as an error code is returned.
+	// > If the request was successful, **Successful*	- is returned. Otherwise, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type GetMongoDBCurrentOpResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -187,9 +187,9 @@ func (s *GetMongoDBCurrentOpResponseBodyData) Validate() error {
 type GetMongoDBCurrentOpResponseBodyDataSessionList struct {
 	// Indicates whether the operation is active. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -199,7 +199,7 @@ type GetMongoDBCurrentOpResponseBodyDataSessionList struct {
 	//
 	// example:
 	//
-	// 219.143.177.4:52324
+	// 219.143.XX.XX:52324
 	Client *string `json:"Client,omitempty" xml:"Client,omitempty"`
 	// The document that contains the complete command object associated with the operation.
 	//
@@ -243,13 +243,13 @@ type GetMongoDBCurrentOpResponseBodyDataSessionList struct {
 	//
 	// example:
 	//
-	// a79******.cloud.et15:3328
+	// a79****.cloud.et15:3328
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// Indicates whether the operation is marked as terminated.
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -277,7 +277,7 @@ type GetMongoDBCurrentOpResponseBodyDataSessionList struct {
 	//
 	// example:
 	//
-	// amd64
+	// AMD64
 	OsArch *string `json:"OsArch,omitempty" xml:"OsArch,omitempty"`
 	// The name of the operating system.
 	//
@@ -311,7 +311,7 @@ type GetMongoDBCurrentOpResponseBodyDataSessionList struct {
 	SecsRunning *int64 `json:"SecsRunning,omitempty" xml:"SecsRunning,omitempty"`
 	// The ID of the data shard.
 	//
-	// >  This parameter is returned for sharded cluster instances.
+	// > This parameter is returned for sharded cluster instances.
 	//
 	// example:
 	//
@@ -514,7 +514,7 @@ type GetMongoDBCurrentOpResponseBodyDataSessionStat struct {
 	//
 	// example:
 	//
-	// 55
+	// 11
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 

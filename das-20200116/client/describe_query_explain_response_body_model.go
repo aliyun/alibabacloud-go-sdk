@@ -22,20 +22,34 @@ type iDescribeQueryExplainResponseBody interface {
 }
 
 type DescribeQueryExplainResponseBody struct {
+	// The status code returned. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// List<ExplainedSqlDO>
+	// List of execution plans.
 	Data []*DescribeQueryExplainResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The response message.
+	//
+	// > If the request succeeds, this parameter returns Successful. If the request fails, this parameter returns error details such as an error code.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded:
+	//
+	// - **true**: The request succeeded.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -109,63 +123,179 @@ func (s *DescribeQueryExplainResponseBody) Validate() error {
 }
 
 type DescribeQueryExplainResponseBodyData struct {
-	Argument           *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
-	AvgRowSize         *string `json:"AvgRowSize,omitempty" xml:"AvgRowSize,omitempty"`
-	DefinedValues      *string `json:"DefinedValues,omitempty" xml:"DefinedValues,omitempty"`
-	EstimateCPU        *string `json:"EstimateCPU,omitempty" xml:"EstimateCPU,omitempty"`
+	// A reserved field for the SQL Server engine.
+	//
+	// example:
+	//
+	// 无
+	Argument *string `json:"Argument,omitempty" xml:"Argument,omitempty"`
+	// A reserved field for the SQL Server engine.
+	//
+	// example:
+	//
+	// 无
+	AvgRowSize *string `json:"AvgRowSize,omitempty" xml:"AvgRowSize,omitempty"`
+	// A reserved field for the SQL Server engine.
+	//
+	// example:
+	//
+	// 无
+	DefinedValues *string `json:"DefinedValues,omitempty" xml:"DefinedValues,omitempty"`
+	// A reserved field for the SQL Server engine.
+	//
+	// example:
+	//
+	// 无
+	EstimateCPU *string `json:"EstimateCPU,omitempty" xml:"EstimateCPU,omitempty"`
+	// A reserved field for the SQL Server engine.
+	//
+	// example:
+	//
+	// 无
 	EstimateExecutions *string `json:"EstimateExecutions,omitempty" xml:"EstimateExecutions,omitempty"`
-	EstimateIO         *string `json:"EstimateIO,omitempty" xml:"EstimateIO,omitempty"`
-	EstimateRows       *string `json:"EstimateRows,omitempty" xml:"EstimateRows,omitempty"`
-	Extra              *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// A reserved field for the SQL Server engine.
+	//
+	// example:
+	//
+	// 无
+	EstimateIO *string `json:"EstimateIO,omitempty" xml:"EstimateIO,omitempty"`
+	// A reserved field for the SQL Server engine.
+	//
+	// example:
+	//
+	// 无
+	EstimateRows *string `json:"EstimateRows,omitempty" xml:"EstimateRows,omitempty"`
+	// Additional information.
+	//
+	// example:
+	//
+	// 无
+	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// The ID of the query.
+	//
 	// example:
 	//
 	// 1
-	Id        *string   `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// A reserved field for the PostgreSQL engine.
 	IndexList []*string `json:"IndexList,omitempty" xml:"IndexList,omitempty" type:"Repeated"`
+	// The index actually used in the execution plan.
+	//
 	// example:
 	//
 	// PRIMARY
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The length of the index actually used.
+	//
 	// example:
 	//
 	// 3
-	KeyLen          *string   `json:"KeyLen,omitempty" xml:"KeyLen,omitempty"`
-	LogicalOp       *string   `json:"LogicalOp,omitempty" xml:"LogicalOp,omitempty"`
+	KeyLen *string `json:"KeyLen,omitempty" xml:"KeyLen,omitempty"`
+	// A reserved field for the SQL Server engine.
+	//
+	// example:
+	//
+	// 无
+	LogicalOp *string `json:"LogicalOp,omitempty" xml:"LogicalOp,omitempty"`
+	// A reserved field for the PolarDB X engine.
 	LogicalPlanList []*string `json:"LogicalPlanList,omitempty" xml:"LogicalPlanList,omitempty" type:"Repeated"`
-	NodeId          *string   `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	OutputList      *string   `json:"OutputList,omitempty" xml:"OutputList,omitempty"`
-	Parallel        *string   `json:"Parallel,omitempty" xml:"Parallel,omitempty"`
-	Parent          *string   `json:"Parent,omitempty" xml:"Parent,omitempty"`
-	PhysicalOp      *string   `json:"PhysicalOp,omitempty" xml:"PhysicalOp,omitempty"`
+	// A reserved field for the SQL Server engine.
+	//
+	// example:
+	//
+	// 无
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// A reserved field for the SQL Server engine.
+	//
+	// example:
+	//
+	// 无
+	OutputList *string `json:"OutputList,omitempty" xml:"OutputList,omitempty"`
+	// A reserved field for the SQL Server engine.
+	//
+	// example:
+	//
+	// 无
+	Parallel *string `json:"Parallel,omitempty" xml:"Parallel,omitempty"`
+	// A reserved field for the SQL Server engine.
+	//
+	// example:
+	//
+	// 无
+	Parent *string `json:"Parent,omitempty" xml:"Parent,omitempty"`
+	// A reserved field for the SQL Server engine.
+	//
+	// example:
+	//
+	// 无
+	PhysicalOp *string `json:"PhysicalOp,omitempty" xml:"PhysicalOp,omitempty"`
+	// The indexes that might be used.
+	//
 	// example:
 	//
 	// test_idx
 	PossibleKeys *string `json:"PossibleKeys,omitempty" xml:"PossibleKeys,omitempty"`
-	QueryPlan    *string `json:"QueryPlan,omitempty" xml:"QueryPlan,omitempty"`
+	// A reserved field for the PostgreSQL engine.
+	//
+	// example:
+	//
+	// 无
+	QueryPlan *string `json:"QueryPlan,omitempty" xml:"QueryPlan,omitempty"`
+	// The column used by the index.
+	//
 	// example:
 	//
 	// test_column
 	Ref *string `json:"Ref,omitempty" xml:"Ref,omitempty"`
+	// The number of rows to scan.
+	//
 	// example:
 	//
 	// 1000
 	Rows *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	// The type of the query.
+	//
 	// example:
 	//
 	// SIMPLE
 	SelectType *string `json:"SelectType,omitempty" xml:"SelectType,omitempty"`
-	StmtId     *string `json:"StmtId,omitempty" xml:"StmtId,omitempty"`
-	StmtText   *string `json:"StmtText,omitempty" xml:"StmtText,omitempty"`
+	// A reserved field for the SQL Server engine.
+	//
+	// example:
+	//
+	// 无
+	StmtId *string `json:"StmtId,omitempty" xml:"StmtId,omitempty"`
+	// A reserved field for the SQL Server engine.
+	//
+	// example:
+	//
+	// 无
+	StmtText *string `json:"StmtText,omitempty" xml:"StmtText,omitempty"`
+	// The name of the table.
+	//
 	// example:
 	//
 	// test
-	Table            *string   `json:"Table,omitempty" xml:"Table,omitempty"`
-	TableList        []*string `json:"TableList,omitempty" xml:"TableList,omitempty" type:"Repeated"`
-	TotalSubtreeCost *string   `json:"TotalSubtreeCost,omitempty" xml:"TotalSubtreeCost,omitempty"`
+	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	// A reserved field for the PostgreSQL engine.
+	TableList []*string `json:"TableList,omitempty" xml:"TableList,omitempty" type:"Repeated"`
+	// A reserved field for the SQL Server engine.
+	//
+	// example:
+	//
+	// 无
+	TotalSubtreeCost *string `json:"TotalSubtreeCost,omitempty" xml:"TotalSubtreeCost,omitempty"`
+	// The join type.
+	//
 	// example:
 	//
 	// eq_ref
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// A reserved field for the SQL Server engine.
+	//
+	// example:
+	//
+	// 无
 	Warnings *string `json:"Warnings,omitempty" xml:"Warnings,omitempty"`
 }
 

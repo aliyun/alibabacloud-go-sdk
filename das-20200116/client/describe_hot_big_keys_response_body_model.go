@@ -22,13 +22,13 @@ type iDescribeHotBigKeysResponseBody interface {
 }
 
 type DescribeHotBigKeysResponseBody struct {
-	// The HTTP status code returned.
+	// The returned status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of hot keys and large keys.
+	// The details.
 	Data *DescribeHotBigKeysResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -44,9 +44,9 @@ type DescribeHotBigKeysResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**: The request was successful.
+	// - **true**: The request was successful.
 	//
-	// 	- **false**: The request failed.
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -117,22 +117,32 @@ func (s *DescribeHotBigKeysResponseBody) Validate() error {
 }
 
 type DescribeHotBigKeysResponseBodyData struct {
-	// The reason why the large key failed to be queried.
+	// The reason why the big keys sorted by the number of child elements failed to be retrieved.
 	//
 	// example:
 	//
 	// current version doesn\\"t support
-	BigKeyMsg         *string                                            `json:"BigKeyMsg,omitempty" xml:"BigKeyMsg,omitempty"`
-	BigKeys           *DescribeHotBigKeysResponseBodyDataBigKeys         `json:"BigKeys,omitempty" xml:"BigKeys,omitempty" type:"Struct"`
+	BigKeyMsg *string                                    `json:"BigKeyMsg,omitempty" xml:"BigKeyMsg,omitempty"`
+	BigKeys   *DescribeHotBigKeysResponseBodyDataBigKeys `json:"BigKeys,omitempty" xml:"BigKeys,omitempty" type:"Struct"`
+	// The reason why the hot keys sorted by traffic failed to be retrieved.
+	//
+	// example:
+	//
+	// current version doesn\\"t support
 	HighTrafficKeyMsg *string                                            `json:"HighTrafficKeyMsg,omitempty" xml:"HighTrafficKeyMsg,omitempty"`
 	HighTrafficKeys   *DescribeHotBigKeysResponseBodyDataHighTrafficKeys `json:"HighTrafficKeys,omitempty" xml:"HighTrafficKeys,omitempty" type:"Struct"`
-	// The reason why the hot key failed to be queried.
+	// The reason why the hot keys sorted by QPS failed to be retrieved.
 	//
 	// example:
 	//
 	// current version doesn\\"t support
-	HotKeyMsg   *string                                      `json:"HotKeyMsg,omitempty" xml:"HotKeyMsg,omitempty"`
-	HotKeys     *DescribeHotBigKeysResponseBodyDataHotKeys   `json:"HotKeys,omitempty" xml:"HotKeys,omitempty" type:"Struct"`
+	HotKeyMsg *string                                    `json:"HotKeyMsg,omitempty" xml:"HotKeyMsg,omitempty"`
+	HotKeys   *DescribeHotBigKeysResponseBodyDataHotKeys `json:"HotKeys,omitempty" xml:"HotKeys,omitempty" type:"Struct"`
+	// The reason why the big keys sorted by memory usage failed to be retrieved.
+	//
+	// example:
+	//
+	// current version doesn\\"t support
 	LargeKeyMsg *string                                      `json:"LargeKeyMsg,omitempty" xml:"LargeKeyMsg,omitempty"`
 	LargeKeys   *DescribeHotBigKeysResponseBodyDataLargeKeys `json:"LargeKeys,omitempty" xml:"LargeKeys,omitempty" type:"Struct"`
 }

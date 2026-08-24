@@ -32,7 +32,7 @@ type GetSqlOptimizeAdviceResponseBody struct {
 	Data *GetSqlOptimizeAdviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type GetSqlOptimizeAdviceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type GetSqlOptimizeAdviceResponseBodyData struct {
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
 	// The time when the file expires. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
-	// >  The file expires three days after the task is created.
+	// > The file expires three days after the task is created.
 	//
 	// example:
 	//
@@ -141,13 +141,13 @@ type GetSqlOptimizeAdviceResponseBodyData struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The status of the task. Valid values:
 	//
-	// 	- **INIT**: The task is being initialized.
+	// - **INIT**: The task is being initialized.
 	//
-	// 	- **RUNNING**: The task is running.
+	// - **RUNNING**: The task is running.
 	//
-	// 	- **FINISH**: The task is complete.
+	// - **FINISH**: The task is complete.
 	//
-	// 	- **FAILED**: The task failed.
+	// - **FAILED**: The task failed.
 	//
 	// example:
 	//
@@ -155,11 +155,11 @@ type GetSqlOptimizeAdviceResponseBodyData struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The status code of the task. Valid values:
 	//
-	// 	- **NO_DATA**: No data is returned.
+	// - **NO_DATA**: No data is returned.
 	//
-	// 	- **INTERNAL_ERROR**: An internal error occurred.
+	// - **INTERNAL_ERROR**: An internal error occurred.
 	//
-	// 	- **SUCCESS**: The task is successful.
+	// - **SUCCESS**: The task is successful.
 	//
 	// example:
 	//

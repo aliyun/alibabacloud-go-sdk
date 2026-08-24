@@ -28,7 +28,7 @@ type GetKillInstanceSessionTaskResultRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
-	// >  You must specify this parameter if your database instance is a PolarDB for MySQL cluster.
+	// > You must specify this parameter if your database instance is a PolarDB for MySQL cluster.
 	//
 	// example:
 	//

@@ -32,7 +32,7 @@ type GetStorageAnalysisResultResponseBody struct {
 	Data *GetStorageAnalysisResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request is successful, **Successful*	- is returned. Otherwise, an error message such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. Otherwise, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type GetStorageAnalysisResultResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -141,31 +141,31 @@ type GetStorageAnalysisResultResponseBodyData struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task progress.
 	//
-	// >  Valid values are integers that range from 0 to 100.
+	// > Valid values are integers that range from 0 to 100.
 	//
 	// example:
 	//
-	// 50
+	// 100
 	TaskProgress *int64 `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty"`
 	// The status of the storage analysis task. Valid values:
 	//
-	// 	- **INIT**: The task is being initialized.
+	// - **INIT**: The task is being initialized.
 	//
-	// 	- **PENDING**: The task is being queued for execution.
+	// - **PENDING**: The task is being queued for execution.
 	//
-	// 	- **RECEIVED**: The task is received for execution.
+	// - **RECEIVED**: The task is received for execution.
 	//
-	// 	- **RUNNING**: The task is being executed.
+	// - **RUNNING**: The task is being executed.
 	//
-	// 	- **RETRY**: The task is being retried.
+	// - **RETRY**: The task is being retried.
 	//
-	// 	- **SUCCESS**: The task succeeds.
+	// - **SUCCESS**: The task succeeds.
 	//
-	// 	- **FAILURE**: The task fails.
+	// - **FAILURE**: The task fails.
 	//
 	// example:
 	//
-	// RUNNING
+	// SUCCESS
 	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
 	// Indicates whether the task is successful.
 	//
@@ -273,9 +273,9 @@ func (s *GetStorageAnalysisResultResponseBodyData) Validate() error {
 type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult struct {
 	// The reason why the analysis on the database and table fails.
 	//
-	// 	- **DB_OR_TABLE_NOT_EXIST**: The specified database or table does not exist.
+	// - **DB_OR_TABLE_NOT_EXIST**: The specified database or table does not exist.
 	//
-	// 	- **DB_NOT_EXIST**: The specified database does not exist.
+	// - **DB_NOT_EXIST**: The specified database does not exist.
 	//
 	// example:
 	//
@@ -305,7 +305,7 @@ type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult struct {
 	TableStats []*GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats `json:"TableStats,omitempty" xml:"TableStats,omitempty" type:"Repeated"`
 	// The size of remaining storage.
 	//
-	// >  Unit: bytes.
+	// > Unit: bytes.
 	//
 	// example:
 	//
@@ -313,7 +313,7 @@ type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult struct {
 	TotalFreeStorageSize *int64 `json:"TotalFreeStorageSize,omitempty" xml:"TotalFreeStorageSize,omitempty"`
 	// The total size of instance storage.
 	//
-	// >  Unit: bytes.
+	// > Unit: bytes.
 	//
 	// example:
 	//
@@ -321,7 +321,7 @@ type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult struct {
 	TotalStorageSize *int64 `json:"TotalStorageSize,omitempty" xml:"TotalStorageSize,omitempty"`
 	// The size of used storage.
 	//
-	// >  Unit: bytes.
+	// > Unit: bytes.
 	//
 	// example:
 	//
@@ -469,21 +469,21 @@ type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeIt
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The optimization suggestion. Valid values:
 	//
-	// 	- **NEED_ANALYZE_TABLE**: You can execute the `ANALYZE TABLE` statement on the table during off-peak hours. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+	// - **NEED_ANALYZE_TABLE**: You can execute the `ANALYZE TABLE` statement on the table during off-peak hours. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
-	// 	- **NEED_OPTIMIZE_TABLE**: You can reclaim fragments during off-peak hours.
+	// - **NEED_OPTIMIZE_TABLE**: You can reclaim fragments during off-peak hours.
 	//
-	// 	- **CHANGE_TABLE_ENGINE_IF_NECESSARY**: Change the storage engine type of a table after risk assessment. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+	// - **CHANGE_TABLE_ENGINE_IF_NECESSARY**: Change the storage engine type of a table after risk assessment. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
-	// 	- **AUTO_INCREMENT_ID_BE_TO_RUN_OUT**: Pay attention to the usage of auto-increment IDs. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+	// - **AUTO_INCREMENT_ID_BE_TO_RUN_OUT**: Pay attention to the usage of auto-increment IDs. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
-	// 	- **DUPLICATE_INDEX**: Optimize indexes of tables. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+	// - **DUPLICATE_INDEX**: Optimize indexes of tables. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
-	// 	- **TABLE_SIZE**: Pay attention to the table size. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+	// - **TABLE_SIZE**: Pay attention to the table size. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
-	// 	- **TABLE_ROWS_AND_AVG_ROW_LENGTH**: Pay attention to the number of rows in a table and the average row length. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+	// - **TABLE_ROWS_AND_AVG_ROW_LENGTH**: Pay attention to the number of rows in a table and the average row length. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
-	// 	- **STORAGE_USED_PERCENT**: Pay attention to the space usage to prevent the instance from being locked if the instance is full.
+	// - **STORAGE_USED_PERCENT**: Pay attention to the space usage to prevent the instance from being locked if the instance is full.
 	//
 	// example:
 	//
@@ -491,27 +491,27 @@ type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeIt
 	OptimizeAdvice *string `json:"OptimizeAdvice,omitempty" xml:"OptimizeAdvice,omitempty"`
 	// The item to be optimized. Valid values:
 	//
-	// 	- **NEED_ANALYZE_TABLE**: tables whose storage statistics obtained from `information_schema.tables` are 50 GB larger or smaller than the physical file sizes. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+	// - **NEED_ANALYZE_TABLE**: tables whose storage statistics obtained from `information_schema.tables` are 50 GB larger or smaller than the physical file sizes. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
-	// 	- **NEED_OPTIMIZE_TABLE**: tables whose space fragments are larger than 6 GB and whose fragmentation rates are greater than 30%. The fragmentation rate of a table is generally calculated based on the following formulas:
+	// - **NEED_OPTIMIZE_TABLE**: tables whose space fragments are larger than 6 GB and whose fragmentation rates are greater than 30%. The fragmentation rate of a table is generally calculated based on the following formulas:
 	//
-	//     	- ApsaraDB RDS for MySQL and PolarDB for MySQL: `Fragmentation rate = DataFree/(DataSize + IndexSize + DataFree)`. In this topic, PhyTotalSize = DataSize + IndexSize + DataFree. Thus, the fragmentation rate can be calculated based on the following formula: `Fragmentation rate = DataFree/PhyTotalSize`.
+	//   - ApsaraDB RDS for MySQL and PolarDB for MySQL: `Fragmentation rate = DataFree/(DataSize + IndexSize + DataFree)`. In this topic, PhyTotalSize = DataSize + IndexSize + DataFree. Thus, the fragmentation rate can be calculated based on the following formula: `Fragmentation rate = DataFree/PhyTotalSize`.
 	//
-	//     	- ApsaraDB for MongoDB: `Fragmentation rate = FragmentSize/PhyTotalSize`.
+	//   - ApsaraDB for MongoDB: `Fragmentation rate = FragmentSize/PhyTotalSize`.
 	//
-	// 	- **TABLE_ENGINE**: tables whose storage engines are not InnoDB or XEngine. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+	// - **TABLE_ENGINE**: tables whose storage engines are not InnoDB or XEngine. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
-	// 	- **AUTO_INCREMENT_ID_BE_TO_RUN_OUT**: tables whose usages of auto-increment IDs exceed 80%. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+	// - **AUTO_INCREMENT_ID_BE_TO_RUN_OUT**: tables whose usages of auto-increment IDs exceed 80%. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
-	// 	- **DUPLICATE_INDEX**: tables whose indexes are redundant or duplicate. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+	// - **DUPLICATE_INDEX**: tables whose indexes are redundant or duplicate. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
-	// 	- **TABLE_SIZE**: single tables whose sizes are larger than 50 GB. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+	// - **TABLE_SIZE**: single tables whose sizes are larger than 50 GB. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
-	// 	- **TABLE_ROWS_AND_AVG_ROW_LENGTH**: single tables that contain more than 5 million rows and whose average row lengths exceed 10 KB. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+	// - **TABLE_ROWS_AND_AVG_ROW_LENGTH**: single tables that contain more than 5 million rows and whose average row lengths exceed 10 KB. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
-	// 	- **TOTAL_DATA_FREE**: instances whose reclaimable space is larger than 60 GB and whose total fragmentation rate is larger than 5%.
+	// - **TOTAL_DATA_FREE**: instances whose reclaimable space is larger than 60 GB and whose total fragmentation rate is larger than 5%.
 	//
-	// 	- **STORAGE_USED_PERCENT**: instances whose space usage is larger than 90%.
+	// - **STORAGE_USED_PERCENT**: instances whose space usage is larger than 90%.
 	//
 	// example:
 	//
@@ -591,15 +591,15 @@ type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats str
 	AvgRowLength *int64 `json:"AvgRowLength,omitempty" xml:"AvgRowLength,omitempty"`
 	// The size of space fragments. Unit: bytes.
 	//
-	// >  This parameter is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters. The fragmentation rate of a table is generally calculated based on the following formula: `Fragmentation rate = DataFree/(DataSize + IndexSize + DataFree)`. In this topic, `Fragmentation rate = DataFree/PhyTotalSize`.
+	// > This parameter is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters. The fragmentation rate of a table is generally calculated based on the following formula: `Fragmentation rate = DataFree/(DataSize + IndexSize + DataFree)`. In this topic, `Fragmentation rate = DataFree/PhyTotalSize`.
 	//
 	// example:
 	//
 	// 7340032
 	DataFree *int64 `json:"DataFree,omitempty" xml:"DataFree,omitempty"`
-	// 	- For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, this parameter indicates the amount of space occupied by data. Unit: bytes.
+	// - For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, this parameter indicates the amount of space occupied by data. Unit: bytes.
 	//
-	// 	- For ApsaraDB for MongoDB instances, this parameter indicates the size of uncompressed data, that is, the amount of data. Unit: bytes.
+	// - For ApsaraDB for MongoDB instances, this parameter indicates the size of uncompressed data, that is, the amount of data. Unit: bytes.
 	//
 	// example:
 	//
@@ -613,7 +613,7 @@ type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats str
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The type of the storage engine used by the table.
 	//
-	// >  This parameter is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+	// > This parameter is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
 	// example:
 	//
@@ -621,7 +621,7 @@ type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats str
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The size of space that can be reclaimed. Unit: bytes.
 	//
-	// >  This parameter is applicable only to ApsaraDB for MongoDB instances. `Fragmentation rate = FragmentSize/PhyTotalSize`.
+	// > This parameter is applicable only to ApsaraDB for MongoDB instances. `Fragmentation rate = FragmentSize/PhyTotalSize`.
 	//
 	// example:
 	//
@@ -635,7 +635,7 @@ type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats str
 	IndexSize *int64 `json:"IndexSize,omitempty" xml:"IndexSize,omitempty"`
 	// The storage space of the table. Unit: bytes.
 	//
-	// >  For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, the value of the parameter is the sum of **DataSize**, **IndexSize**, and **DataFree**. For ApsaraDB for MongoDB instances, the value of this parameter is the sum of **DataSize*	- and **IndexSize**.
+	// > For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, the value of the parameter is the sum of **DataSize**, **IndexSize**, and **DataFree**. For ApsaraDB for MongoDB instances, the value of this parameter is the sum of **DataSize*	- and **IndexSize**.
 	//
 	// example:
 	//
@@ -643,7 +643,7 @@ type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats str
 	PhyTotalSize *int64 `json:"PhyTotalSize,omitempty" xml:"PhyTotalSize,omitempty"`
 	// The physical file size of the table. Unit: bytes.
 	//
-	// >  This parameter is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters. Data of specific database instances cannot be obtained due to deployment mode.
+	// > This parameter is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters. Data of specific database instances cannot be obtained due to deployment mode.
 	//
 	// example:
 	//
@@ -663,15 +663,15 @@ type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats str
 	TableRows *int64 `json:"TableRows,omitempty" xml:"TableRows,omitempty"`
 	// The type of the table.
 	//
-	// >  This parameter is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+	// > This parameter is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
 	// example:
 	//
 	// BASE TABLE
 	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
-	// 	- For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, this parameter indicates the amount of space occupied by table data and indexes. Unit: bytes. The value is the sum of **DataSize*	- and **IndexSize**.
+	// - For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, this parameter indicates the amount of space occupied by table data and indexes. Unit: bytes. The value is the sum of **DataSize*	- and **IndexSize**.
 	//
-	// 	- For ApsaraDB for MongoDB instances, this parameter indicates the actual size of space allocated by Block Manager. Unit: Bytes. The compression ratio of an ApsaraDB for MongoDB instance is calculated based on the following formula: `Compression ratio = TotalSize/DataSize`.
+	// - For ApsaraDB for MongoDB instances, this parameter indicates the actual size of space allocated by Block Manager. Unit: Bytes. The compression ratio of an ApsaraDB for MongoDB instance is calculated based on the following formula: `Compression ratio = TotalSize/DataSize`.
 	//
 	// example:
 	//

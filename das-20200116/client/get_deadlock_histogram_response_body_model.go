@@ -22,19 +22,34 @@ type iGetDeadlockHistogramResponseBody interface {
 }
 
 type GetDeadlockHistogramResponseBody struct {
+	// The returned status code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data []*GetDeadlockHistogramResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	//
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0A74B755-98B7-59DB-8724-1321B394****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - **true**: The request is successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -108,34 +123,54 @@ func (s *GetDeadlockHistogramResponseBody) Validate() error {
 }
 
 type GetDeadlockHistogramResponseBodyData struct {
+	// The end time of the analysis task range.
+	//
 	// example:
 	//
 	// 1729998000000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// pc-bp1u5mas9exx7****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number of deadlocks.
+	//
 	// example:
 	//
 	// 2
 	LockNumber *int32 `json:"LockNumber,omitempty" xml:"LockNumber,omitempty"`
+	// The node ID. This parameter is used for PolarDB for MySQL clusters.
+	//
 	// example:
 	//
 	// pi-bp16v3824rt73****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The start time of the analysis task range.
+	//
 	// example:
 	//
 	// 1729994400000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task status. Valid values:
+	//
+	// - **SUCCESS**: The analysis is successful.
+	//
+	// - **FAILED**: The analysis failed or encountered an exception.
+	//
 	// example:
 	//
 	// SUCCESS
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The full deadlock analysis task ID.
+	//
 	// example:
 	//
 	// B6D17591-B48B-4D31-9CD6-1321B394****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 108************

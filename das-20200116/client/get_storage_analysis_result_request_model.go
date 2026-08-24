@@ -24,15 +24,15 @@ type GetStorageAnalysisResultRequest struct {
 	//
 	// example:
 	//
-	// rm-bp10xxxxxxxxx
+	// rm-2ze1jdv45i7l6****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
-	// >  This parameter is reserved.
+	// > This parameter is reserved.
 	//
 	// example:
 	//
-	// 202****
+	// None
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The task ID. You can obtain the task ID from the response of the [CreateStorageAnalysisTask](https://help.aliyun.com/document_detail/2639140.html) operation.
 	//

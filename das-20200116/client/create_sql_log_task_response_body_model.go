@@ -32,7 +32,7 @@ type CreateSqlLogTaskResponseBody struct {
 	Data *CreateSqlLogTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, error information such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type CreateSqlLogTaskResponseBody struct {
 	//
 	// 83D9D59B-057A-54A9-BFF9-CF2B42F05645
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful.
 	//
-	// 	- **true**
+	// - **true**: successful.
 	//
-	// 	- **false**
+	// - **false**: failed.
 	//
 	// example:
 	//
@@ -119,49 +119,49 @@ func (s *CreateSqlLogTaskResponseBody) Validate() error {
 }
 
 type CreateSqlLogTaskResponseBodyData struct {
-	// The time when the task was created. This value is a UNIX timestamp. Unit: milliseconds.
+	// The task creation time. Specify the value as a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1681363254423
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end time. Specify the value as a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1608888296000
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// The ID of the database instance.
+	// The database instance ID.
 	//
 	// example:
 	//
 	// pc-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the task.
+	// The task name.
 	//
 	// example:
 	//
 	// Export_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start time. Specify the value as a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1596177993000
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
-	// The state of the task. Valid values:
+	// The task status.
 	//
-	// 	- **INIT**: The task is to be scheduled.
+	// - **INIT**: pending scheduling.
 	//
-	// 	- **RUNNING**: The task is running.
+	// - **RUNNING**: running.
 	//
-	// 	- **FAILED**: The task failed.
+	// - **FAILED**: failed.
 	//
-	// 	- **CANCELED**: The task is canceled.
+	// - **CANCELED**: canceled.
 	//
-	// 	- **COMPLETED**: The task is complete.
+	// - **COMPLETED**: completed.
 	//
-	// >  You can view the result of a task that is in the **COMPLETED*	- state.
+	// > When the task is in the **COMPLETED*	- state, you can view the task results.
 	//
 	// example:
 	//

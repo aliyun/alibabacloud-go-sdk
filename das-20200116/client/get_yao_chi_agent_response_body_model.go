@@ -32,33 +32,53 @@ type iGetYaoChiAgentResponseBody interface {
 }
 
 type GetYaoChiAgentResponseBody struct {
+	// The response content.
+	//
 	// example:
 	//
 	// xxx
-	Content      *string                                   `json:"Content,omitempty" xml:"Content,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The tool calling invoke list.
 	FunctionCall []*GetYaoChiAgentResponseBodyFunctionCall `json:"FunctionCall,omitempty" xml:"FunctionCall,omitempty" type:"Repeated"`
-	ParentId     *string                                   `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The ParentId field. This field exists only when the message is output by a sub-agent, and the value is the sub-agent ID.
+	//
+	// example:
+	//
+	// 12345
+	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// The cloud service type.
+	//
 	// example:
 	//
 	// polardb
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	// The query ID. This value is the same as the QueryId request parameter.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-xxxxxxxxxxxx
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// The reasoning content of the model.
+	//
 	// example:
 	//
 	// xxx
 	ReasoningContent *string `json:"ReasoningContent,omitempty" xml:"ReasoningContent,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7172BECE-588A-5961-8126-C216E16B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The session ID. This value is the same as the SessionId request parameter.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-xxxxxxxxxxxx
-	SessionId      *string                                     `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	SubAgentCall   []*GetYaoChiAgentResponseBodySubAgentCall   `json:"SubAgentCall,omitempty" xml:"SubAgentCall,omitempty" type:"Repeated"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The list of sub-agent call information.
+	SubAgentCall []*GetYaoChiAgentResponseBodySubAgentCall `json:"SubAgentCall,omitempty" xml:"SubAgentCall,omitempty" type:"Repeated"`
+	// The card tool calling invoke list.
 	UiFunctionCall []*GetYaoChiAgentResponseBodyUiFunctionCall `json:"UiFunctionCall,omitempty" xml:"UiFunctionCall,omitempty" type:"Repeated"`
 }
 
@@ -192,18 +212,26 @@ func (s *GetYaoChiAgentResponseBody) Validate() error {
 }
 
 type GetYaoChiAgentResponseBodyFunctionCall struct {
+	// The parameters of the called tool.
+	//
 	// example:
 	//
 	// {"arg": "xxx"}
 	Arguments *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
+	// The tool ID.
+	//
 	// example:
 	//
-	// 123447
+	// 12345
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the called tool.
+	//
 	// example:
 	//
 	// sqlReview
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The tool calling invoke status.
+	//
 	// example:
 	//
 	// RUNNING
@@ -259,8 +287,23 @@ func (s *GetYaoChiAgentResponseBodyFunctionCall) Validate() error {
 }
 
 type GetYaoChiAgentResponseBodySubAgentCall struct {
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubAgentId   *string `json:"SubAgentId,omitempty" xml:"SubAgentId,omitempty"`
+	// The sub-agent status.
+	//
+	// example:
+	//
+	// running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The sub-agent ID.
+	//
+	// example:
+	//
+	// 12345
+	SubAgentId *string `json:"SubAgentId,omitempty" xml:"SubAgentId,omitempty"`
+	// The sub-agent name.
+	//
+	// example:
+	//
+	// XX Agent
 	SubAgentName *string `json:"SubAgentName,omitempty" xml:"SubAgentName,omitempty"`
 }
 
@@ -304,10 +347,14 @@ func (s *GetYaoChiAgentResponseBodySubAgentCall) Validate() error {
 }
 
 type GetYaoChiAgentResponseBodyUiFunctionCall struct {
+	// The parameters of the card tool.
+	//
 	// example:
 	//
 	// {"arg": "xxx"}
 	ArgsText *string `json:"ArgsText,omitempty" xml:"ArgsText,omitempty"`
+	// The name of the card tool.
+	//
 	// example:
 	//
 	// card

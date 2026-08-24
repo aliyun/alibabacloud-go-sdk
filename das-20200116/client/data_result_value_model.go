@@ -18,9 +18,24 @@ type iDataResultValue interface {
 }
 
 type DataResultValue struct {
-	SqlId      *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
+	// The SQL template ID.
+	//
+	// example:
+	//
+	// 61f45ee381b2fa4e8a6545e3bee9
+	SqlId *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// rm-xxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	Count      *int32  `json:"count,omitempty" xml:"count,omitempty"`
+	// The number of errors.
+	//
+	// example:
+	//
+	// 10
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
 }
 
 func (s DataResultValue) String() string {

@@ -44,9 +44,9 @@ type GetQueryOptimizeDataTrendResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -214,21 +214,21 @@ func (s *GetQueryOptimizeDataTrendResponseBodyData) Validate() error {
 type GetQueryOptimizeDataTrendResponseBodyDataList struct {
 	// The name of the metric. Valid values:
 	//
-	// 	- **sqlExecuteCount**: the number of executions of slow SQL queries.
+	// - **sqlExecuteCount**: the number of executions of slow SQL queries.
 	//
-	// 	- **sqlExecuteCountDiff**: the difference in the number of executions of slow SQL queries compared to the previous day.
+	// - **sqlExecuteCountDiff**: the difference in the number of executions of slow SQL queries compared to the previous day.
 	//
-	// 	- **sqlCount**: the number of slow SQL templates.
+	// - **sqlCount**: the number of slow SQL templates.
 	//
-	// 	- **sqlCountDiff**: the difference in the number of slow SQL templates compared to the previous day.
+	// - **sqlCountDiff**: the difference in the number of slow SQL templates compared to the previous day.
 	//
-	// 	- **optimizedSqlExecuteCount**: the number of optimizable executions of slow SQL queries.
+	// - **optimizedSqlExecuteCount**: the number of optimizable executions of slow SQL queries.
 	//
-	// 	- **optimizedSqlExecuteCountDiff**: the difference in the number of optimizable executions of slow SQL queries compared to the previous day.
+	// - **optimizedSqlExecuteCountDiff**: the difference in the number of optimizable executions of slow SQL queries compared to the previous day.
 	//
-	// 	- **optimizedSqlCount**: the number of optimizable slow SQL templates.
+	// - **optimizedSqlCount**: the number of optimizable slow SQL templates.
 	//
-	// 	- **optimizedSqlCountDiff**: the difference in the number of optimizable slow SQL templates compared to the previous day.
+	// - **optimizedSqlCountDiff**: the difference in the number of optimizable slow SQL templates compared to the previous day.
 	//
 	// example:
 	//

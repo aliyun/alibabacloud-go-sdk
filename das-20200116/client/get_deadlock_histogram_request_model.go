@@ -22,28 +22,46 @@ type iGetDeadlockHistogramRequest interface {
 }
 
 type GetDeadlockHistogramRequest struct {
+	// The end of the time range to query. The format is a UNIX timestamp in milliseconds.
+	//
+	// 	Notice: The value is of the Long type. Precision loss may occur during the serialization/deserialization procedure. The value must not be greater than 9007199254740991.</notice>
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1732069466000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-bp1u5mas9exx7****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The node ID.
+	//
+	// > For PolarDB for MySQL instances, you must specify the node ID.
+	//
 	// example:
 	//
 	// pi-bp16v3824rt73****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The beginning of the time range to query. The format is a UNIX timestamp in milliseconds.
+	//
+	// > The start time can be at most 7 days earlier than the end time.
+	//
+	// 	Notice: The value is of the Long type. Precision loss may occur during the serialization/deserialization procedure. The value must not be greater than 9007199254740991.</notice>
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1731983066000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The analysis status of the task.
+	//
 	// example:
 	//
 	// SUCCESS

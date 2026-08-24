@@ -32,7 +32,7 @@ type UpdateAutoResourceOptimizeRulesAsyncResponseBody struct {
 	Data *UpdateAutoResourceOptimizeRulesAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type UpdateAutoResourceOptimizeRulesAsyncResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -121,9 +121,9 @@ func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBody) Validate() error {
 type UpdateAutoResourceOptimizeRulesAsyncResponseBodyData struct {
 	// Indicates whether the asynchronous request was complete. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -131,13 +131,13 @@ type UpdateAutoResourceOptimizeRulesAsyncResponseBodyData struct {
 	Complete *bool `json:"Complete,omitempty" xml:"Complete,omitempty"`
 	// The returned data of the configuration.
 	//
-	// >  The data is returned only if the value of isFinish is **true**. This value indicates that the asynchronous request is complete.
+	// > The data is returned only if the value of isFinish is **true**. This value indicates that the asynchronous request is complete.
 	ConfigResponse *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse `json:"ConfigResponse,omitempty" xml:"ConfigResponse,omitempty" type:"Struct"`
 	// Indicates whether the asynchronous request failed. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -145,9 +145,9 @@ type UpdateAutoResourceOptimizeRulesAsyncResponseBodyData struct {
 	Fail *bool `json:"Fail,omitempty" xml:"Fail,omitempty"`
 	// Indicates whether the asynchronous request was complete. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -161,11 +161,11 @@ type UpdateAutoResourceOptimizeRulesAsyncResponseBodyData struct {
 	ResultId *string `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
 	// The state of the asynchronous request. Valid values:
 	//
-	// 	- **RUNNING**
+	// - **RUNNING**
 	//
-	// 	- **SUCCESS**
+	// - **SUCCESS**
 	//
-	// 	- **FAIL**
+	// - **FAIL**
 	//
 	// example:
 	//
@@ -362,9 +362,9 @@ func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponse) Val
 type UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList struct {
 	// Indicates whether the parameters are configured. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
@@ -426,9 +426,9 @@ func (s *UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfi
 type UpdateAutoResourceOptimizeRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList struct {
 	// Indicates whether the parameters are configured. Valid values:
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//

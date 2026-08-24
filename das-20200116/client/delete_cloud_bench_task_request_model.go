@@ -14,7 +14,7 @@ type iDeleteCloudBenchTaskRequest interface {
 }
 
 type DeleteCloudBenchTaskRequest struct {
-	// The ID of the stress testing task. You can call the [DescribeCloudBenchTasks](https://help.aliyun.com/document_detail/230670.html) operation to query the ID.
+	// The unique task ID. You can call the [DescribeCloudBenchTasks](https://help.aliyun.com/document_detail/230670.html) API to get this task ID.
 	//
 	// This parameter is required.
 	//

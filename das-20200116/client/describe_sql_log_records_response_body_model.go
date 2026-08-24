@@ -22,17 +22,17 @@ type iDescribeSqlLogRecordsResponseBody interface {
 }
 
 type DescribeSqlLogRecordsResponseBody struct {
-	// The HTTP status code that is returned.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data that is returned.
+	// The returned data.
 	Data *DescribeSqlLogRecordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message that is returned.
+	// The returned message.
 	//
-	// >  If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. Otherwise, an error message is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type DescribeSqlLogRecordsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -119,39 +119,39 @@ func (s *DescribeSqlLogRecordsResponseBody) Validate() error {
 }
 
 type DescribeSqlLogRecordsResponseBodyData struct {
-	// The end of the time range to query. This value is a UNIX timestamp. Unit: millisecond.
+	// The end time of the query. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1608888296000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Indicates whether the task was complete. Valid values:
+	// Indicates whether the task is complete. Valid values:
 	//
-	// 	- **0**: no
+	// - **0**: The task is in progress.
 	//
-	// 	- **1**: yes
+	// - **1**: The task is complete.
 	//
-	// >  If the value of **Finish*	- is 0 and the value of **JobId*	- is returned, the request is an asynchronous request and the return result cannot be directly obtained. You must query the return result based on the value of **JobId**. Specify JobId as the key of **Filters*	- and the value of **JobId*	- as the value of Filters. Example: `Filters=[{"Key": "JobId", "Value": "******"}]`.
+	// > If this parameter is **0*	- and the **JobId*	- parameter is returned, the current request is an asynchronous request and you cannot obtain the returned results. You must use the value of **JobId*	- to initiate another request. Set the **Filters*	- parameter to the value of **JobId**. Example: `Filters=[{"Key": "JobId", "Value": "******"}]`.
 	//
 	// example:
 	//
 	// 1
 	Finish *string `json:"Finish,omitempty" xml:"Finish,omitempty"`
-	// The data.
+	// The details of the SQL logs.
 	Items *DescribeSqlLogRecordsResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The ID of the asynchronous task.
+	// The asynchronous task ID.
 	//
 	// example:
 	//
 	// MzI4NTZfUUlOR0RBT19DTTlfTlUyMF9NWVNRTF9PREJTX0xWU18zMjg1Nl9teXNxbF9XZWQgTWFyIDA2IDE0OjUwOjQ3IENTVCAyMDI0XzBfMzBfRXhlY3V0ZVRpbWVfREVTQ19XZWQgTWFyIDA2IDE0OjM1OjQ3IENTVCAyMDI0Xw==_1709708406465
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: millisecond.
+	// The start time of the query. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1596177993000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -266,41 +266,49 @@ func (s *DescribeSqlLogRecordsResponseBodyDataItems) Validate() error {
 }
 
 type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
-	// The account of the database.
+	// The database account.
 	//
 	// example:
 	//
 	// testname
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The affected columns.
+	//
 	// example:
 	//
 	// ["col1"]
 	AffectColumns *string `json:"AffectColumns,omitempty" xml:"AffectColumns,omitempty"`
+	// The client IP address.
+	//
 	// example:
 	//
 	// 10.0.0.1xx
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// The client port.
+	//
 	// example:
 	//
 	// 3306
 	ClientPort *int64 `json:"ClientPort,omitempty" xml:"ClientPort,omitempty"`
-	// A reserved parameter.
+	// This parameter is reserved.
 	//
 	// example:
 	//
 	// None
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	// The connection ID.
+	//
 	// example:
 	//
 	// ld-******
 	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
-	// The amount of time that is consumed to execute the SQL statement. Unit: millisecond.
+	// The execution duration. Unit: microseconds (μs).
 	//
 	// example:
 	//
 	// 58
 	Consume *int64 `json:"Consume,omitempty" xml:"Consume,omitempty"`
-	// The CPU execution duration. Unit: microsecond.
+	// The CPU execution time. Unit: microseconds (μs).
 	//
 	// example:
 	//
@@ -312,31 +320,31 @@ type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
 	//
 	// testdb
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The time when the SQL statement was executed. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	// The execution time. The time is in UTC. Format: `yyyy-MM-ddTHH:mm:ssZ`.
 	//
 	// example:
 	//
 	// 2023-12-07T02:15:32Z
 	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// The extended information. This parameter is a reserved parameter.
+	// The extended information. This parameter is reserved.
 	//
 	// example:
 	//
 	// None
 	Ext *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	// The number of rows that are pulled by the compute nodes of the PolarDB-X 2.0 instance.
+	// The number of rows fetched by the compute node (CN) in a PolarDB-X 2.0 instance.
 	//
 	// example:
 	//
 	// 10
 	Frows *int64 `json:"Frows,omitempty" xml:"Frows,omitempty"`
-	// The IP address of the client.
+	// The client IP address.
 	//
 	// example:
 	//
 	// 11.197.XX.XX
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The lock wait duration. Unit: millisecond.
+	// The lock wait time. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -354,61 +362,67 @@ type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
 	//
 	// pi-uf6k5f6g3912i****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The timestamp generated when the SQL statement was executed. The value of this parameter is a UNIX timestamp. Unit: millisecond.
+	// The execution time. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1701886532000
 	OriginTime *int64 `json:"OriginTime,omitempty" xml:"OriginTime,omitempty"`
-	// The parallel queue time of the PolarDB for MySQL instance. Unit: millisecond.
+	// The degree of parallelism (DOP) for the PolarDB for MySQL instance.
 	//
 	// example:
 	//
 	// 10
 	ParallelDegree *string `json:"ParallelDegree,omitempty" xml:"ParallelDegree,omitempty"`
-	// The parallelism of the PolarDB for MySQL cluster.
+	// The parallel queue time for the PolarDB for MySQL instance. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 2
 	ParallelQueueTime *string `json:"ParallelQueueTime,omitempty" xml:"ParallelQueueTime,omitempty"`
+	// The SQL parameters.
+	//
 	// example:
 	//
 	// [1, "das"]
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// The number of physical asynchronous reads.
+	// The number of asynchronous physical reads.
 	//
 	// example:
 	//
 	// 0
 	PhysicAsyncRead *int64 `json:"PhysicAsyncRead,omitempty" xml:"PhysicAsyncRead,omitempty"`
-	// The total number of physical reads.
+	// The number of physical reads.
 	//
 	// example:
 	//
 	// 0
 	PhysicRead *int64 `json:"PhysicRead,omitempty" xml:"PhysicRead,omitempty"`
-	// The number of physical synchronous reads.
+	// The number of synchronous physical reads.
 	//
 	// example:
 	//
 	// 0
 	PhysicSyncRead *int64 `json:"PhysicSyncRead,omitempty" xml:"PhysicSyncRead,omitempty"`
+	// The protocol type.
+	//
 	// example:
 	//
 	// MySQL
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The number of rows returned by the SQL statement.
+	// The number of returned rows.
 	//
 	// example:
 	//
 	// 0
 	ReturnRows *int64 `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
+	// The row key of the SQL log record.
+	//
 	// example:
 	//
 	// 23
 	RowKey *string `json:"RowKey,omitempty" xml:"RowKey,omitempty"`
-	// The total number of rows that are updated or returned by the compute nodes of the PolarDB-X 2.0 instance.
+	// The total number of rows updated or returned by the compute node (CN) of a PolarDB-X 2.0 instance.
 	//
 	// example:
 	//
@@ -420,13 +434,13 @@ type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
 	//
 	// 0
 	ScanRows *int64 `json:"ScanRows,omitempty" xml:"ScanRows,omitempty"`
-	// The number of requests that are sent from the compute nodes to the data nodes of the PolarDB-X 2.0 instance.
+	// The number of requests sent from a compute node (CN) to data nodes (DNs) in a PolarDB-X 2.0 instance.
 	//
 	// example:
 	//
 	// 10
 	Scnt *int64 `json:"Scnt,omitempty" xml:"Scnt,omitempty"`
-	// The SQL statement ID.
+	// The SQL ID.
 	//
 	// example:
 	//
@@ -444,16 +458,18 @@ type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
 	//
 	// select
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	// The execution status of the SQL statement.
+	// The execution status. Valid values:
 	//
-	// 	- **0**: The execution was successful.
+	// - **0**: The execution was successful.
 	//
-	// 	- **1**: The execution failed.
+	// - **1**: The execution failed.
 	//
 	// example:
 	//
 	// 0
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The name of the table that the SQL statement references.
+	//
 	// example:
 	//
 	// das
@@ -464,7 +480,7 @@ type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
 	//
 	// None
 	ThreadId *int64 `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
-	// The trace ID of the PolarDB-X 2.0 instance. The value is the execution ID of the SQL statement on the data node.
+	// The trace ID for a PolarDB-X 2.0 instance. This is the ID of the SQL statement that was executed on a data node (DN).
 	//
 	// example:
 	//
@@ -476,29 +492,29 @@ type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
 	//
 	// 200000
 	TrxId *string `json:"TrxId,omitempty" xml:"TrxId,omitempty"`
-	// The number of rows that are updated.
+	// The number of updated rows.
 	//
 	// example:
 	//
 	// 0
 	UpdateRows *int64 `json:"UpdateRows,omitempty" xml:"UpdateRows,omitempty"`
-	// Indicates whether the In-Memory Column Index (IMCI) feature is enabled for the PolarDB for MySQL cluster. Valid values:
+	// Indicates whether an In-Memory Column Index (IMCI) is used for the PolarDB for MySQL instance.
 	//
-	// 	- **true**
+	// - **true**
 	//
-	// 	- **false**
+	// - **false**
 	//
 	// example:
 	//
 	// true
 	UseImciEngine *string `json:"UseImciEngine,omitempty" xml:"UseImciEngine,omitempty"`
-	// The IP address that is resolved from the endpoint of the query link.
+	// The endpoint that is resolved from the query connection string.
 	//
 	// example:
 	//
 	// 100.115.XX.XX
 	Vip *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
-	// The number of writes to the ApsaraDB RDS for SQL Server instance.
+	// The number of write operations on an ApsaraDB RDS for SQL Server instance.
 	//
 	// example:
 	//

@@ -22,17 +22,17 @@ type iDescribeSqlLogTasksResponseBody interface {
 }
 
 type DescribeSqlLogTasksResponseBody struct {
-	// The response code.
+	// The returned status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *DescribeSqlLogTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The response message.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, an error message is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type DescribeSqlLogTasksResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The request was successful.
 	//
-	// 	- **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *DescribeSqlLogTasksResponseBody) Validate() error {
 }
 
 type DescribeSqlLogTasksResponseBodyData struct {
-	// The details of the data returned.
+	// The list of tasks.
 	List []*DescribeSqlLogTasksResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -127,13 +127,13 @@ type DescribeSqlLogTasksResponseBodyData struct {
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of tasks.
+	// The total number of tasks.
 	//
 	// example:
 	//
@@ -199,100 +199,107 @@ func (s *DescribeSqlLogTasksResponseBodyData) Validate() error {
 }
 
 type DescribeSqlLogTasksResponseBodyDataList struct {
-	// The time when the analysis task was complete. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The analysis completion time, represented as a unix timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1712751923000
 	AnalysisTaskFinishTime *int64 `json:"AnalysisTaskFinishTime,omitempty" xml:"AnalysisTaskFinishTime,omitempty"`
-	// The state of the analysis task.
+	// The status of the analysis task.
 	//
-	// >  This parameter is a system parameter. You do not need to pay attention to the parameter.
+	// > This is an internal parameter. You can ignore it.
 	//
 	// example:
 	//
 	// SCAN_ANALYZE_COMPLETED
 	AnalysisTaskStatus *string `json:"AnalysisTaskStatus,omitempty" xml:"AnalysisTaskStatus,omitempty"`
-	// The time when the task was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The task creation time, represented as a unix timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1681363254423
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the task ended. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The task end time, represented as a unix timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1705975320000
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// Indicates whether the task expired. Valid values:
+	// Indicates whether the task has expired. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The task has expired.
 	//
-	// 	- **false**
+	// - **false**: The task has not expired.
 	//
 	// example:
 	//
 	// false
 	Expire *bool `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	// The filter parameters.
-	Filters     []*DescribeSqlLogTasksResponseBodyDataListFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	InnerResult *string                                           `json:"InnerResult,omitempty" xml:"InnerResult,omitempty"`
+	// A list of filter conditions.
+	Filters []*DescribeSqlLogTasksResponseBodyDataListFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// The VPC-internal URL for accessing the task result.
+	//
+	// example:
+	//
+	// https://das-sqllog-download-oss-cn-shanghai-internal.aliyuncs.com
+	//
+	// /la
+	InnerResult *string `json:"InnerResult,omitempty" xml:"InnerResult,omitempty"`
 	// The ID of the database instance.
 	//
 	// example:
 	//
-	// rm-2zew761kf7ho18752
+	// r-bp1nti25tc7bq5****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of log records.
+	// The total number of logs.
 	//
 	// example:
 	//
 	// 99999
 	LogCount *int64 `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
-	// The task name.
+	// The name of the task.
 	//
 	// example:
 	//
-	// test01
+	// SQL audit export 1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The task progress.
+	// The progress of the task.
 	//
 	// example:
 	//
 	// 100
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The URL that is returned if the value of TaskType is **Export**.
+	// The URL that is returned when **TaskType*	- is set to **Export**.
 	//
 	// example:
 	//
 	// https://das-sqllog-download-cn-shanghai.oss-cn-shanghai.aliyuncs.com/la
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The number of files that are scanned.
+	// The total size of the scanned files, in bytes.
 	//
 	// example:
 	//
 	// 3000
 	ScanFileSize *int64 `json:"ScanFileSize,omitempty" xml:"ScanFileSize,omitempty"`
-	// The time when the task started. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The task start time, represented as a unix timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1683859555482
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
-	// The task state. Valid values:
+	// The task status. Valid values:
 	//
-	// 	- **INIT**: The task is to be scheduled.
+	// - **INIT**: pending scheduling.
 	//
-	// 	- **RUNNING**: The task is running.
+	// - **RUNNING**: running.
 	//
-	// 	- **FAILED**: The task failed.
+	// - **FAILED**: failed.
 	//
-	// 	- **CANCELED**: The task is canceled.
+	// - **CANCELED**: canceled.
 	//
-	// 	- **COMPLETED**: The task is complete.
+	// - **COMPLETED**: completed.
 	//
-	// >  If a task is in the **COMPLETED*	- state, you can view the results of the task.
+	// > You can view the result of an offline task only when its status is **COMPLETED**.
 	//
 	// example:
 	//
@@ -306,9 +313,9 @@ type DescribeSqlLogTasksResponseBodyDataList struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task type. Valid values:
 	//
-	// 	- **Export**
+	// - **Export**: an export task.
 	//
-	// 	- **Query**
+	// - **Query**: a query task.
 	//
 	// example:
 	//
@@ -491,19 +498,19 @@ func (s *DescribeSqlLogTasksResponseBodyDataList) Validate() error {
 }
 
 type DescribeSqlLogTasksResponseBodyDataListFilters struct {
-	// The name of the filter parameter.
+	// The filter parameter.
 	//
-	// >  For more information about the filter parameters, see the **Valid values of Key*	- section of this topic.
+	// > For information about the supported filter parameters and their valid values, see **Additional information about request parameters**.
 	//
 	// example:
 	//
-	// delimiter
+	// keyWords
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the filter parameter.
 	//
 	// example:
 	//
-	// ,
+	// select
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

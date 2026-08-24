@@ -22,21 +22,36 @@ type iDescribeQueryExplainRequest interface {
 }
 
 type DescribeQueryExplainRequest struct {
+	// The name of the database.
+	//
 	// example:
 	//
 	// dbtest01
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-2ze8g2am97624****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the node.
+	//
+	// > For PolarDB for MySQL instances, if you specify a node ID, the system queries the execution plan on that node. Otherwise, it queries the execution plan on a secondary node.For high availability ApsaraDB RDS for MySQL instances, if you specify an instance ID, the system queries the execution plan on that node. Otherwise, it queries the execution plan on a secondary node.
+	//
 	// example:
 	//
 	// pi-bp1v203xzzh0a****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Schema information. This is a reserved parameter.
+	//
+	// example:
+	//
+	// 无
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The SQL statement for which you want to get the execution plan.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -36,11 +36,11 @@ type DisableInstanceDasConfigRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of auto scaling. Valid values:
 	//
-	// 	- **specScale**: The specifications of a database instance are automatically scaled up or down.
+	// - **specScale**: The specifications of a database instance are automatically scaled up or down.
 	//
-	// 	- **shardScale**: The number of shards for a database instance is automatically increased or decreased.
+	// - **shardScale**: The number of shards for a database instance is automatically increased or decreased.
 	//
-	// 	- **bandwidthScale**: The bandwidth of a database instance is automatically increased or decreased.
+	// - **bandwidthScale**: The bandwidth of a database instance is automatically increased or decreased.
 	//
 	// This parameter is required.
 	//
