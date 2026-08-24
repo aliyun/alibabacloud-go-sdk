@@ -22,11 +22,11 @@ type UpdateUserResponseBody struct {
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The request result. Valid values:
+	// The result of the request. Valid values:
 	//
-	// 	- true: The request was successful.
+	// - true: The request was successful.
 	//
-	// 	- false: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//

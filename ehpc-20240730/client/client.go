@@ -26,8 +26,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"me-east-1":      dara.String("ehpc.me-east-1.aliyuncs.com"),
-		"eu-central-1":   dara.String("ehpc.eu-central-1.aliyuncs.com"),
 		"cn-zhangjiakou": dara.String("ehpc.cn-zhangjiakou.aliyuncs.com"),
 		"cn-wulanchabu":  dara.String("ehpc.cn-wulanchabu.aliyuncs.com"),
 		"cn-wuhan-lr":    dara.String("ehpc.cn-wuhan-lr.aliyuncs.com"),
@@ -44,6 +42,8 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"ap-southeast-5": dara.String("ehpc.ap-southeast-5.aliyuncs.com"),
 		"ap-southeast-1": dara.String("ehpc.ap-southeast-1.aliyuncs.com"),
 		"ap-northeast-1": dara.String("ehpc.ap-northeast-1.aliyuncs.com"),
+		"eu-central-1":   dara.String("ehpc.eu-central-1.aliyuncs.com"),
+		"me-east-1":      dara.String("ehpc.me-east-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -848,7 +848,7 @@ func (client *Client) CreateReservedNodePool(request *CreateReservedNodePoolRequ
 
 // Summary:
 //
-// Adds users to an Elastic High Performance Computing (E-HPC) cluster.
+// Adds one or more users to a specified cluster.
 //
 // @param tmpReq - CreateUsersRequest
 //
@@ -902,7 +902,7 @@ func (client *Client) CreateUsersWithOptions(tmpReq *CreateUsersRequest, runtime
 
 // Summary:
 //
-// Adds users to an Elastic High Performance Computing (E-HPC) cluster.
+// Adds one or more users to a specified cluster.
 //
 // @param request - CreateUsersRequest
 //
@@ -1865,6 +1865,64 @@ func (client *Client) GetQueue(request *GetQueueRequest) (_result *GetQueueRespo
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetQueueResponse{}
 	_body, _err := client.GetQueueWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a cluster user.
+//
+// @param request - GetUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserResponse
+func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *dara.RuntimeOptions) (_result *GetUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUser"),
+		Version:     dara.String("2024-07-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a cluster user.
+//
+// @param request - GetUserRequest
+//
+// @return GetUserResponse
+func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetUserResponse{}
+	_body, _err := client.GetUserWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3672,7 +3730,7 @@ func (client *Client) UpdateQueue(request *UpdateQueueRequest) (_result *UpdateQ
 
 // Summary:
 //
-// Updates the information of a user in an Elastic High Performance Computing (E-HPC) cluster, including the user group and password.
+// Updates the information of a specified cluster user, including properties such as user group and password.
 //
 // @param request - UpdateUserRequest
 //
@@ -3728,7 +3786,7 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 
 // Summary:
 //
-// Updates the information of a user in an Elastic High Performance Computing (E-HPC) cluster, including the user group and password.
+// Updates the information of a specified cluster user, including properties such as user group and password.
 //
 // @param request - UpdateUserRequest
 //

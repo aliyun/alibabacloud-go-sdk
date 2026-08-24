@@ -24,7 +24,7 @@ type CreateUsersShrinkRequest struct {
 	//
 	// ehpc-hz-FYUr32****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The users that you want to add.
+	// The list of users.
 	UserShrink *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 

@@ -613,7 +613,7 @@ func (client *Client) CreateReservedNodePoolWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Adds users to an Elastic High Performance Computing (E-HPC) cluster.
+// Adds one or more users to a specified cluster.
 //
 // @param tmpReq - CreateUsersRequest
 //
@@ -1351,6 +1351,46 @@ func (client *Client) GetQueueWithContext(ctx context.Context, request *GetQueue
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetQueueResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a cluster user.
+//
+// @param request - GetUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserResponse
+func (client *Client) GetUserWithContext(ctx context.Context, request *GetUserRequest, runtime *dara.RuntimeOptions) (_result *GetUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUser"),
+		Version:     dara.String("2024-07-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUserResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2707,7 +2747,7 @@ func (client *Client) UpdateQueueWithContext(ctx context.Context, tmpReq *Update
 
 // Summary:
 //
-// Updates the information of a user in an Elastic High Performance Computing (E-HPC) cluster, including the user group and password.
+// Updates the information of a specified cluster user, including properties such as user group and password.
 //
 // @param request - UpdateUserRequest
 //

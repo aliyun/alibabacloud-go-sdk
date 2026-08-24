@@ -330,8 +330,6 @@ type NodeTemplateDataDisks struct {
 	//
 	// false
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	// Device
-	//
 	// example:
 	//
 	// /dev/xvdb
@@ -376,8 +374,6 @@ type NodeTemplateDataDisks struct {
 	//
 	// 40
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// SnapshotId
-	//
 	// example:
 	//
 	// s-bp1ei2b44ripxuo46hym
