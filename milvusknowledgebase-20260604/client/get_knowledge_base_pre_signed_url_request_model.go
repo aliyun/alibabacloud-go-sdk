@@ -18,11 +18,16 @@ type iGetKnowledgeBasePreSignedUrlRequest interface {
 }
 
 type GetKnowledgeBasePreSignedUrlRequest struct {
+	// The list of files to upload. You can specify 1 to 100 files.
 	Documents []*GetKnowledgeBasePreSignedUrlRequestDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
+	// The validity period of the pre-signed URL in seconds. Default value: `3600`.
+	//
 	// example:
 	//
 	// 3600
 	ExpiresIn *int32 `json:"ExpiresIn,omitempty" xml:"ExpiresIn,omitempty"`
+	// The knowledge base ID. Either this parameter or datasetId must be specified. This parameter takes priority.
+	//
 	// example:
 	//
 	// kb-3bd02617e9be335f
@@ -78,16 +83,20 @@ func (s *GetKnowledgeBasePreSignedUrlRequest) Validate() error {
 }
 
 type GetKnowledgeBasePreSignedUrlRequestDocuments struct {
+	// The display name of the file. If not specified, the file name from Path is used.
+	//
 	// example:
 	//
 	// CHANGELOG.md
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 本地上传时为预签名上传使用的批次相对路径；不同 ImportType 下含义由导入类型定义。
+	// The file name or relative path for local upload scenarios. The value cannot start with `direct_upload/` or `uploaded/`, cannot contain empty segments, `.`, or `..`, and must be 1024 bytes or less.
 	//
 	// example:
 	//
 	// contract-2026.md
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The file size in bytes.
+	//
 	// example:
 	//
 	// 1024

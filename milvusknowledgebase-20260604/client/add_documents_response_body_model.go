@@ -26,27 +26,40 @@ type iAddDocumentsResponseBody interface {
 }
 
 type AddDocumentsResponseBody struct {
+	// The details of the permission verification failure.
+	//
 	// example:
 	//
 	// {"PolicyType":"AccountLevelIdentityBasedPolicy","AuthPrincipalOwnerId":"1234567890123456","AuthPrincipalType":"SubUser","AuthPrincipalDisplayName":"1234567890123456","NoPermissionType":"ImplicitDeny","AuthAction":"milvusknowledgebase:ListDatasets"}
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// 0
-	Code *int32                        `json:"code,omitempty" xml:"code,omitempty"`
+	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *AddDocumentsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 403
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DDDBE0E5-4314-156F-B7F1-C4BCFD25A509
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -134,8 +147,10 @@ func (s *AddDocumentsResponseBody) Validate() error {
 }
 
 type AddDocumentsResponseBodyData struct {
+	// The list of documents.
 	Documents []*AddDocumentsResponseBodyDataDocuments `json:"documents,omitempty" xml:"documents,omitempty" type:"Repeated"`
-	Errors    []*string                                `json:"errors,omitempty" xml:"errors,omitempty" type:"Repeated"`
+	// The list of errors.
+	Errors []*string `json:"errors,omitempty" xml:"errors,omitempty" type:"Repeated"`
 }
 
 func (s AddDocumentsResponseBodyData) String() string {
@@ -178,50 +193,74 @@ func (s *AddDocumentsResponseBodyData) Validate() error {
 }
 
 type AddDocumentsResponseBodyDataDocuments struct {
+	// The chunk count.
+	//
 	// example:
 	//
 	// 0
 	ChunkCount *int32 `json:"chunkCount,omitempty" xml:"chunkCount,omitempty"`
+	// The chunk method.
+	//
 	// example:
 	//
 	// naive
 	ChunkMethod *string `json:"chunkMethod,omitempty" xml:"chunkMethod,omitempty"`
+	// The ID of the knowledge base.
+	//
 	// example:
 	//
 	// kb-123
 	DatasetId *string `json:"datasetId,omitempty" xml:"datasetId,omitempty"`
+	// The document ID.
+	//
 	// example:
 	//
 	// doc-123
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The object path.
+	//
 	// example:
 	//
 	// uploaded/doc-id/example.pdf
 	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// The name of the document.
+	//
 	// example:
 	//
 	// example.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The processing progress.
+	//
 	// example:
 	//
 	// 0
 	Progress *float32 `json:"progress,omitempty" xml:"progress,omitempty"`
+	// The processing status.
+	//
 	// example:
 	//
 	// RUNNING
 	Run *string `json:"run,omitempty" xml:"run,omitempty"`
+	// The size of the file.
+	//
 	// example:
 	//
 	// 1024
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	// The file extension.
+	//
 	// example:
 	//
 	// pdf
 	Suffix *string `json:"suffix,omitempty" xml:"suffix,omitempty"`
+	// The thumbnail.
+	//
 	// example:
 	//
 	// ""
 	Thumbnail *string `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
+	// The token count.
+	//
 	// example:
 	//
 	// 0

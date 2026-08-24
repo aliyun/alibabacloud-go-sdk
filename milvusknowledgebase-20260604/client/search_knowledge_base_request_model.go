@@ -62,13 +62,13 @@ type SearchKnowledgeBaseRequest struct {
 	//
 	// What is the tax amount on the invoice?
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The reranking model ID.
+	// The rerank model ID.
 	//
 	// example:
 	//
 	// 123
 	RerankModelId *int64 `json:"rerankModelId,omitempty" xml:"rerankModelId,omitempty"`
-	// 租户已开通的重排模型名称。同时填写 rerankModelId 时，本参数优先生效。
+	// The name of the rerank model that the tenant has activated. If both rerankModelName and rerankModelId are specified, this parameter takes precedence.
 	//
 	// example:
 	//

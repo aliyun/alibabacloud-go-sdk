@@ -22,19 +22,28 @@ type iGetKnowledgeBasePreSignedUrlResponseBody interface {
 }
 
 type GetKnowledgeBasePreSignedUrlResponseBody struct {
+	// The details of the permission verification failure.
+	//
 	// example:
 	//
 	// {"PolicyType":"AccountLevelIdentityBasedPolicy","AuthPrincipalOwnerId":"1234567890123456","AuthPrincipalType":"SubUser","AuthPrincipalDisplayName":"1234567890123456","NoPermissionType":"ImplicitDeny","AuthAction":"milvusknowledgebase:ListDatasets"}
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// The business status code.
+	//
 	// example:
 	//
 	// 0
-	Code *int32                                        `json:"code,omitempty" xml:"code,omitempty"`
+	Code *int32 `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *GetKnowledgeBasePreSignedUrlResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 403
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -104,14 +113,19 @@ func (s *GetKnowledgeBasePreSignedUrlResponseBody) Validate() error {
 }
 
 type GetKnowledgeBasePreSignedUrlResponseBodyData struct {
+	// The bucket name.
+	//
 	// example:
 	//
 	// knowledgebase-fileupload
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// The validity period of the pre-signed URL in seconds.
+	//
 	// example:
 	//
 	// 3600
-	ExpiresIn     *int32    `json:"expiresIn,omitempty" xml:"expiresIn,omitempty"`
+	ExpiresIn *int32 `json:"expiresIn,omitempty" xml:"expiresIn,omitempty"`
+	// The list of pre-signed PUT URLs. **The order corresponds one-to-one with the `Documents` in the request.**
 	PreSignedUrls []*string `json:"preSignedUrls,omitempty" xml:"preSignedUrls,omitempty" type:"Repeated"`
 }
 

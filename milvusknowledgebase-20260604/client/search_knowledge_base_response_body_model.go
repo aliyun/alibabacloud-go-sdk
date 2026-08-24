@@ -40,7 +40,7 @@ type SearchKnowledgeBaseResponseBody struct {
 	//
 	// {"PolicyType":"AccountLevelIdentityBasedPolicy","NoPermissionType":"ImplicitDeny","AuthAction":"milvusknowledgebase:SearchKnowledgeBase"}
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	// The response status code.
+	// The status code.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type SearchKnowledgeBaseResponseBody struct {
 	//
 	// 0
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -261,6 +261,12 @@ type SearchKnowledgeBaseResponseBodyResults struct {
 	//
 	// parent-chunk-id
 	ParentChunkId *string `json:"parentChunkId,omitempty" xml:"parentChunkId,omitempty"`
+	// The scalar columns of the structured knowledge base. The columns are returned by their original column names and are not used in retrieval.
+	//
+	// example:
+	//
+	// {"question":"How do I reset it?","category":"account"}
+	ScalarFields interface{} `json:"scalarFields,omitempty" xml:"scalarFields,omitempty"`
 	// The overall relevance score.
 	//
 	// example:
@@ -317,6 +323,10 @@ func (s *SearchKnowledgeBaseResponseBodyResults) GetParentChunkId() *string {
 	return s.ParentChunkId
 }
 
+func (s *SearchKnowledgeBaseResponseBodyResults) GetScalarFields() interface{} {
+	return s.ScalarFields
+}
+
 func (s *SearchKnowledgeBaseResponseBodyResults) GetScore() *float32 {
 	return s.Score
 }
@@ -371,6 +381,11 @@ func (s *SearchKnowledgeBaseResponseBodyResults) SetLocations(v []*SearchKnowled
 
 func (s *SearchKnowledgeBaseResponseBodyResults) SetParentChunkId(v string) *SearchKnowledgeBaseResponseBodyResults {
 	s.ParentChunkId = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyResults) SetScalarFields(v interface{}) *SearchKnowledgeBaseResponseBodyResults {
+	s.ScalarFields = v
 	return s
 }
 

@@ -23,32 +23,47 @@ type iAddDocumentsRequest interface {
 	GetStrategyId() *string
 	SetDingTalkConfiguration(v *AddDocumentsRequestDingTalkConfiguration) *AddDocumentsRequest
 	GetDingTalkConfiguration() *AddDocumentsRequestDingTalkConfiguration
+	SetParentId(v string) *AddDocumentsRequest
+	GetParentId() *string
 }
 
 type AddDocumentsRequest struct {
-	Dedup     *AddDocumentsRequestDedup       `json:"Dedup,omitempty" xml:"Dedup,omitempty" type:"Struct"`
+	// The deduplication configuration.
+	Dedup *AddDocumentsRequestDedup `json:"Dedup,omitempty" xml:"Dedup,omitempty" type:"Struct"`
+	// The list of documents.
 	Documents []*AddDocumentsRequestDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
-	// 当前支持 LOCAL_UPLOAD；OSS_IMPORT 和 PUBLIC_URL 为后续导入方式预留。
+	// The import type.
 	//
 	// example:
 	//
 	// LOCAL_UPLOAD
 	ImportType *string `json:"ImportType,omitempty" xml:"ImportType,omitempty"`
+	// The ID of the knowledge base.
+	//
 	// example:
 	//
 	// kb-3bd02617e9be335f
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
-	// 导入时批量设置到本批次所有知识数据的标签键值。Key 必须为知识库已定义标签字段；Value 支持 string、int64、float32、bool、list。
+	// The batch label configuration. The key must be a label field defined in the knowledge base. The value supports string, int64, float32, bool, and list types.
 	//
 	// example:
 	//
 	// {"department":"legal","topics":["policy","contract"],"reviewed":true}
 	MetaFields interface{} `json:"MetaFields,omitempty" xml:"MetaFields,omitempty"`
+	// The ID of the processing strategy.
+	//
 	// example:
 	//
 	// kb-strategy-7043984ca395eabd
-	StrategyId            *string                                   `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	// Not supported. Ignore this parameter.
 	DingTalkConfiguration *AddDocumentsRequestDingTalkConfiguration `json:"dingTalkConfiguration,omitempty" xml:"dingTalkConfiguration,omitempty" type:"Struct"`
+	// Defaults to root when omitted.
+	//
+	// example:
+	//
+	// root
+	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
 }
 
 func (s AddDocumentsRequest) String() string {
@@ -87,6 +102,10 @@ func (s *AddDocumentsRequest) GetDingTalkConfiguration() *AddDocumentsRequestDin
 	return s.DingTalkConfiguration
 }
 
+func (s *AddDocumentsRequest) GetParentId() *string {
+	return s.ParentId
+}
+
 func (s *AddDocumentsRequest) SetDedup(v *AddDocumentsRequestDedup) *AddDocumentsRequest {
 	s.Dedup = v
 	return s
@@ -122,6 +141,11 @@ func (s *AddDocumentsRequest) SetDingTalkConfiguration(v *AddDocumentsRequestDin
 	return s
 }
 
+func (s *AddDocumentsRequest) SetParentId(v string) *AddDocumentsRequest {
+	s.ParentId = &v
+	return s
+}
+
 func (s *AddDocumentsRequest) Validate() error {
 	if s.Dedup != nil {
 		if err := s.Dedup.Validate(); err != nil {
@@ -146,10 +170,14 @@ func (s *AddDocumentsRequest) Validate() error {
 }
 
 type AddDocumentsRequestDedup struct {
+	// Specifies whether to enable content deduplication.
+	//
 	// example:
 	//
 	// true
 	ContentDedup *bool `json:"ContentDedup,omitempty" xml:"ContentDedup,omitempty"`
+	// Specifies whether to enable document name deduplication.
+	//
 	// example:
 	//
 	// true
@@ -187,16 +215,20 @@ func (s *AddDocumentsRequestDedup) Validate() error {
 }
 
 type AddDocumentsRequestDocuments struct {
+	// The name of the document.
+	//
 	// example:
 	//
 	// CHANGELOG.md
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 本地上传时为预签名上传使用的批次相对路径；不同 ImportType 下含义由导入类型定义。
+	// The document path. This is the file name or relative path used during upload, which must be consistent with the pre-signed request.
 	//
 	// example:
 	//
 	// 2026_06_23_17_49_52WwGSUezpG2u2iHWxyYGzkf9KtormhkxN/CHANGELOG.md
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The size of the file.
+	//
 	// example:
 	//
 	// 1024
@@ -243,30 +275,44 @@ func (s *AddDocumentsRequestDocuments) Validate() error {
 }
 
 type AddDocumentsRequestDingTalkConfiguration struct {
+	// Not supported. Ignore this parameter.
+	//
 	// example:
 	//
 	// ignore
 	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	// Not supported. Ignore this parameter.
+	//
 	// example:
 	//
 	// ignore
 	AppPassword *string `json:"appPassword,omitempty" xml:"appPassword,omitempty"`
+	// Not supported. Ignore this parameter.
+	//
 	// example:
 	//
 	// ignore
 	DingDocMcpLink *string `json:"dingDocMcpLink,omitempty" xml:"dingDocMcpLink,omitempty"`
+	// Not supported. Ignore this parameter.
+	//
 	// example:
 	//
 	// ignore
 	DingTableMcpLink *string `json:"dingTableMcpLink,omitempty" xml:"dingTableMcpLink,omitempty"`
+	// Not supported. Ignore this parameter.
+	//
 	// example:
 	//
 	// ignore
 	KnowledgeId *string `json:"knowledgeId,omitempty" xml:"knowledgeId,omitempty"`
+	// Not supported. Ignore this parameter.
+	//
 	// example:
 	//
 	// ignore
 	KnowledgeType *string `json:"knowledgeType,omitempty" xml:"knowledgeType,omitempty"`
+	// Not supported. Ignore this parameter.
+	//
 	// example:
 	//
 	// ignore
