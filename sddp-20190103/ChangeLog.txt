@@ -1,3 +1,9 @@
+2026-08-24 Version: v4.0.4
+- Update API DescribeDataObjects: add request parameters FacetType.
+- Update API DescribeDataObjects: add request parameters IsRevision.
+- Update API DescribeDataObjects: add response parameters Body.HitValues.
+
+
 2026-08-11 Version: v4.0.3
 - Generated golang 2019-01-03 for Sddp.
 

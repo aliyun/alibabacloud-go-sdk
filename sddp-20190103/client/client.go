@@ -2356,11 +2356,11 @@ func (client *Client) DescribeDataObjectColumnDetailV2(request *DescribeDataObje
 //
 // Description:
 //
-// Queries the detection results of data tables and files. This allows you to query data detection results of assets from a global perspective.
+// Queries the detection results of data tables and files, allowing you to view asset data detection results from a global perspective.
 //
 // ## QPS limit
 //
-// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - DescribeDataObjectsRequest
 //
@@ -2407,6 +2407,10 @@ func (client *Client) DescribeDataObjectsWithOptions(request *DescribeDataObject
 		query["EngineType"] = request.EngineType
 	}
 
+	if !dara.IsNil(request.FacetType) {
+		query["FacetType"] = request.FacetType
+	}
+
 	if !dara.IsNil(request.FeatureType) {
 		query["FeatureType"] = request.FeatureType
 	}
@@ -2421,6 +2425,10 @@ func (client *Client) DescribeDataObjectsWithOptions(request *DescribeDataObject
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.IsRevision) {
+		query["IsRevision"] = request.IsRevision
 	}
 
 	if !dara.IsNil(request.Lang) {
@@ -2536,11 +2544,11 @@ func (client *Client) DescribeDataObjectsWithOptions(request *DescribeDataObject
 //
 // Description:
 //
-// Queries the detection results of data tables and files. This allows you to query data detection results of assets from a global perspective.
+// Queries the detection results of data tables and files, allowing you to view asset data detection results from a global perspective.
 //
 // ## QPS limit
 //
-// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - DescribeDataObjectsRequest
 //

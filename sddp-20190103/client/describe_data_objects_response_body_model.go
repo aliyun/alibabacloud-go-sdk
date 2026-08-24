@@ -19,6 +19,8 @@ type iDescribeDataObjectsResponseBody interface {
 	GetHasNext() *bool
 	SetHasPrevious(v bool) *DescribeDataObjectsResponseBody
 	GetHasPrevious() *bool
+	SetHitValues(v []*string) *DescribeDataObjectsResponseBody
+	GetHitValues() []*string
 	SetItems(v []*DescribeDataObjectsResponseBodyItems) *DescribeDataObjectsResponseBody
 	GetItems() []*DescribeDataObjectsResponseBodyItems
 	SetNextCursor(v string) *DescribeDataObjectsResponseBody
@@ -36,7 +38,7 @@ type iDescribeDataObjectsResponseBody interface {
 }
 
 type DescribeDataObjectsResponseBody struct {
-	// The page number of the current page in a paged query. Settings the current page number for paging. Default value: **1**.
+	// The page number of the current page in a paged query. Settings for paging. Default value: **1**.
 	//
 	// example:
 	//
@@ -46,6 +48,12 @@ type DescribeDataObjectsResponseBody struct {
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	HasNext      *bool   `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
 	HasPrevious  *bool   `json:"HasPrevious,omitempty" xml:"HasPrevious,omitempty"`
+	// The associate filter values used to return filtered values.
+	//
+	// example:
+	//
+	// ["linxiu","sddptest"]
+	HitValues []*string `json:"HitValues,omitempty" xml:"HitValues,omitempty" type:"Repeated"`
 	// The list of data objects.
 	Items      []*DescribeDataObjectsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	NextCursor *string                                 `json:"NextCursor,omitempty" xml:"NextCursor,omitempty"`
@@ -99,6 +107,10 @@ func (s *DescribeDataObjectsResponseBody) GetHasPrevious() *bool {
 	return s.HasPrevious
 }
 
+func (s *DescribeDataObjectsResponseBody) GetHitValues() []*string {
+	return s.HitValues
+}
+
 func (s *DescribeDataObjectsResponseBody) GetItems() []*DescribeDataObjectsResponseBodyItems {
 	return s.Items
 }
@@ -149,6 +161,11 @@ func (s *DescribeDataObjectsResponseBody) SetHasNext(v bool) *DescribeDataObject
 
 func (s *DescribeDataObjectsResponseBody) SetHasPrevious(v bool) *DescribeDataObjectsResponseBody {
 	s.HasPrevious = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBody) SetHitValues(v []*string) *DescribeDataObjectsResponseBody {
+	s.HitValues = v
 	return s
 }
 
@@ -288,7 +305,7 @@ type DescribeDataObjectsResponseBodyItems struct {
 	//
 	// **********8103
 	MemberAccount *int64 `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
-	// The list of data tags.
+	// The list of data labels.
 	ModelTags []*DescribeDataObjectsResponseBodyItemsModelTags `json:"ModelTags,omitempty" xml:"ModelTags,omitempty" type:"Repeated"`
 	// The name of the data object.
 	//
@@ -302,7 +319,7 @@ type DescribeDataObjectsResponseBodyItems struct {
 	//
 	// text file
 	ObjectFileCategory *string `json:"ObjectFileCategory,omitempty" xml:"ObjectFileCategory,omitempty"`
-	// The data object type.
+	// The object type of the data object.
 	//
 	// example:
 	//
@@ -315,6 +332,30 @@ type DescribeDataObjectsResponseBodyItems struct {
 	// rm-12**.db_***
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
 	// The product name to which the data object belongs. Valid values:
+	//
+	// - **MaxCompute**
+	//
+	// - **OSS**
+	//
+	// - **ADB-MYSQL**
+	//
+	// - **TableStore**
+	//
+	// - **RDS**
+	//
+	// - **SELF_DB**
+	//
+	// - **PolarDB-X**
+	//
+	// - **PolarDB**
+	//
+	// - **ADB-PG**
+	//
+	// - **OceanBase**
+	//
+	// - **MongoDB**
+	//
+	// - **Redis**
 	//
 	// example:
 	//
@@ -374,13 +415,13 @@ type DescribeDataObjectsResponseBodyItems struct {
 	//
 	// 1
 	RiskLevelId *int32 `json:"RiskLevelId,omitempty" xml:"RiskLevelId,omitempty"`
-	// The number of rules that are hit.
+	// The number of matched rules.
 	//
 	// example:
 	//
 	// 10
 	RuleCount *int32 `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
-	// The list of detection models that are hit.
+	// The list of matched detection models.
 	RuleList []*DescribeDataObjectsResponseBodyItemsRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
 	// The number of sensitive data entries.
 	//
@@ -394,7 +435,7 @@ type DescribeDataObjectsResponseBodyItems struct {
 	//
 	// 1000
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// An array that consists of the number of rules hit for each sensitivity level, in the format "S1,S2,S3,S4,S5,S6,S7,S8,S9,S10", where S1 represents the number of rules hit at sensitivity level S1.
+	// The array that consists of the number of rules matched at each sensitivity level, in the format "S1,S2,S3,S4,S5,S6,S7,S8,S9,S10", where S1 represents the number of rules matched at sensitivity level S1.
 	//
 	// example:
 	//
@@ -823,7 +864,13 @@ type DescribeDataObjectsResponseBodyItemsModelTags struct {
 	//
 	// 101
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The data tag name. Valid values:
+	// The data label name. Valid values:
+	//
+	// - **Personal sensitive information.**
+	//
+	// - **Personal information.**
+	//
+	// - **General information.**
 	//
 	// example:
 	//
@@ -864,6 +911,16 @@ func (s *DescribeDataObjectsResponseBodyItemsModelTags) Validate() error {
 type DescribeDataObjectsResponseBodyItemsRuleList struct {
 	// The risk level ID of the sensitive data detection rule. Valid values:
 	//
+	// - **1**: N/A. No sensitive data is detected.
+	//
+	// - **2**: S1. Level 1 sensitive data.
+	//
+	// - **3**: S2. Level 2 sensitive data.
+	//
+	// - **4**: S3. Level 3 sensitive data.
+	//
+	// - **5**: S4. Level 4 sensitive data.
+	//
 	// example:
 	//
 	// 2
@@ -872,13 +929,13 @@ type DescribeDataObjectsResponseBodyItemsRuleList struct {
 	//
 	// - **N/A**: No sensitive data is detected.
 	//
-	// - **S1**: Level-1 sensitive data.
+	// - **S1**: Level 1 sensitive data.
 	//
-	// - **S2**: Level-2 sensitive data.
+	// - **S2**: Level 2 sensitive data.
 	//
-	// - **S3**: Level-3 sensitive data.
+	// - **S3**: Level 3 sensitive data.
 	//
-	// - **S4**: Level-4 sensitive data.
+	// - **S4**: Level 4 sensitive data.
 	//
 	// example:
 	//
@@ -890,19 +947,19 @@ type DescribeDataObjectsResponseBodyItemsRuleList struct {
 	//
 	// Personal sensitive information-ID card
 	RuleCategoryNameList *string `json:"RuleCategoryNameList,omitempty" xml:"RuleCategoryNameList,omitempty"`
-	// The number of detection models that are hit.
+	// The number of matched detection models.
 	//
 	// example:
 	//
 	// 590
 	RuleCount *int32 `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
-	// The ID of the detection model.
+	// The detection model ID.
 	//
 	// example:
 	//
 	// 1080
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the detection model.
+	// The detection model name.
 	//
 	// example:
 	//

@@ -25,6 +25,8 @@ type iDescribeDataObjectsRequest interface {
 	GetDomainId() *int64
 	SetEngineType(v string) *DescribeDataObjectsRequest
 	GetEngineType() *string
+	SetFacetType(v string) *DescribeDataObjectsRequest
+	GetFacetType() *string
 	SetFeatureType(v int32) *DescribeDataObjectsRequest
 	GetFeatureType() *int32
 	SetFileCategoryCode(v int64) *DescribeDataObjectsRequest
@@ -33,6 +35,8 @@ type iDescribeDataObjectsRequest interface {
 	GetFileType() *int64
 	SetInstanceId(v string) *DescribeDataObjectsRequest
 	GetInstanceId() *string
+	SetIsRevision(v int32) *DescribeDataObjectsRequest
+	GetIsRevision() *int32
 	SetLang(v string) *DescribeDataObjectsRequest
 	GetLang() *string
 	SetLogStore(v string) *DescribeDataObjectsRequest
@@ -78,7 +82,7 @@ type iDescribeDataObjectsRequest interface {
 }
 
 type DescribeDataObjectsRequest struct {
-	// The parameter used for canary release evaluation.
+	// The identifier used for canary release evaluation.
 	//
 	// example:
 	//
@@ -111,6 +115,12 @@ type DescribeDataObjectsRequest struct {
 	// 2
 	DomainId   *int64  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	// The facet dimension for associated filtering in the data catalog. Valid values: rule (category), task (task), instance (instance), and db (database). If this parameter is not specified or is empty, the original list and count query is performed (behavior unchanged). If a valid value is specified, the list query is skipped and only content.hitValues is returned. If an invalid value is specified, a parameter error is returned.
+	//
+	// example:
+	//
+	// instance
+	FacetType *string `json:"FacetType,omitempty" xml:"FacetType,omitempty"`
 	// **[Deprecated]*	- This parameter is deprecated.
 	//
 	// example:
@@ -123,7 +133,9 @@ type DescribeDataObjectsRequest struct {
 	//
 	// 1
 	FileCategoryCode *int64 `json:"FileCategoryCode,omitempty" xml:"FileCategoryCode,omitempty"`
-	// The OSS file type that can be detected.
+	// The OSS file type supported for detection.
+	//
+	// > You can call [DescribeDocTypes](https://help.aliyun.com/document_detail/2536492.html) to obtain the supported OSS file types. Use the Code field value from the response. This parameter is valid only for OSS asset queries.
 	//
 	// example:
 	//
@@ -135,6 +147,12 @@ type DescribeDataObjectsRequest struct {
 	//
 	// 8vb54hn2g9j191ddz
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to filter revision items.
+	//
+	// example:
+	//
+	// 0
+	IsRevision *int32 `json:"IsRevision,omitempty" xml:"IsRevision,omitempty"`
 	// The language of the request and response. Default value: **zh_cn**. Valid values:
 	//
 	// - **zh_cn**: Chinese.
@@ -151,7 +169,7 @@ type DescribeDataObjectsRequest struct {
 	//
 	// logstore
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	// Specifies whether to query data at the Logstore dimension. The SLS page in the data catalog has two layers, and this parameter determines whether the query targets Logstore-level data.
+	// The data catalog SLS page has two layers. This parameter indicates whether the query is at the Logstore dimension.
 	//
 	// example:
 	//
@@ -163,15 +181,21 @@ type DescribeDataObjectsRequest struct {
 	//
 	// **********8103
 	MemberAccount *int64 `json:"MemberAccount,omitempty" xml:"MemberAccount,omitempty"`
-	// The model IDs of the industry template. Separate multiple IDs with commas.
+	// The model IDs of the industry template, separated by commas.
 	//
-	// > You can call [DescribeTemplateAllRules](https://help.aliyun.com/document_detail/2536491.html) to obtain the model IDs of the industry template.
+	// > You can call [DescribeTemplateAllRules](https://help.aliyun.com/document_detail/2536491.html) to obtain the industry template model IDs.
 	//
 	// example:
 	//
 	// 101
 	ModelIds *string `json:"ModelIds,omitempty" xml:"ModelIds,omitempty"`
 	// The data tags to query, separated by commas. Valid values:
+	//
+	// - **101**: personal sensitive information.
+	//
+	// - **102**: personal information.
+	//
+	// - **107**: general information.
 	//
 	// example:
 	//
@@ -183,7 +207,7 @@ type DescribeDataObjectsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The parent category IDs of the templates to query, separated by commas.
+	// The list of parent category IDs of the templates to query, separated by commas.
 	//
 	// example:
 	//
@@ -201,7 +225,7 @@ type DescribeDataObjectsRequest struct {
 	//
 	// 5
 	ProductId *int32 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// We recommend that you specify this parameter. The IDs of the products to query. Separate multiple IDs with commas. Valid values:
+	// We recommend that you specify this parameter. The list of product IDs to query, separated by commas. Valid values:
 	//
 	// - **1**: MaxCompute
 	//
@@ -257,7 +281,7 @@ type DescribeDataObjectsRequest struct {
 	//
 	// 1,2,3
 	RiskLevelIdList *string `json:"RiskLevelIdList,omitempty" xml:"RiskLevelIdList,omitempty"`
-	// The risk levels of the data assets that you want to query. Separate multiple risk levels with commas (,). Valid values:
+	// The risk levels of the data assets to query. Separate multiple values with commas (,).
 	//
 	// - **2**: S1, low risk level.
 	//
@@ -279,11 +303,25 @@ type DescribeDataObjectsRequest struct {
 	RuleIds *string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty"`
 	// The region where the asset resides. Valid values:
 	//
+	// - **cn-beijing**: China (Beijing).
+	//
+	// - **cn-zhangjiakou**: China (Zhangjiakou).
+	//
+	// - **cn-huhehaote**: China (Hohhot).
+	//
+	// - **cn-hangzhou**: China (Hangzhou).
+	//
+	// - **cn-shanghai**: China (Shanghai).
+	//
+	// - **cn-shenzhen**: China (Shenzhen).
+	//
+	// - **cn-hongkong**: Hong Kong (China).
+	//
 	// example:
 	//
 	// cn-hangzhou
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
-	// The node name filter.
+	// The task name filter.
 	//
 	// example:
 	//
@@ -296,6 +334,8 @@ type DescribeDataObjectsRequest struct {
 	// 1
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The industry template ID.
+	//
+	// > You can call [DescribeCategoryTemplateList](https://help.aliyun.com/document_detail/2399296.html) to obtain the industry template ID.
 	//
 	// This parameter is required.
 	//
@@ -345,6 +385,10 @@ func (s *DescribeDataObjectsRequest) GetEngineType() *string {
 	return s.EngineType
 }
 
+func (s *DescribeDataObjectsRequest) GetFacetType() *string {
+	return s.FacetType
+}
+
 func (s *DescribeDataObjectsRequest) GetFeatureType() *int32 {
 	return s.FeatureType
 }
@@ -359,6 +403,10 @@ func (s *DescribeDataObjectsRequest) GetFileType() *int64 {
 
 func (s *DescribeDataObjectsRequest) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *DescribeDataObjectsRequest) GetIsRevision() *int32 {
+	return s.IsRevision
 }
 
 func (s *DescribeDataObjectsRequest) GetLang() *string {
@@ -485,6 +533,11 @@ func (s *DescribeDataObjectsRequest) SetEngineType(v string) *DescribeDataObject
 	return s
 }
 
+func (s *DescribeDataObjectsRequest) SetFacetType(v string) *DescribeDataObjectsRequest {
+	s.FacetType = &v
+	return s
+}
+
 func (s *DescribeDataObjectsRequest) SetFeatureType(v int32) *DescribeDataObjectsRequest {
 	s.FeatureType = &v
 	return s
@@ -502,6 +555,11 @@ func (s *DescribeDataObjectsRequest) SetFileType(v int64) *DescribeDataObjectsRe
 
 func (s *DescribeDataObjectsRequest) SetInstanceId(v string) *DescribeDataObjectsRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDataObjectsRequest) SetIsRevision(v int32) *DescribeDataObjectsRequest {
+	s.IsRevision = &v
 	return s
 }
 
