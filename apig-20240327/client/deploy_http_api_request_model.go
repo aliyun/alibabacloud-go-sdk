@@ -249,7 +249,7 @@ func (s *DeployHttpApiRequestRestApiConfig) Validate() error {
 type DeployHttpApiRequestRestApiConfigEnvironment struct {
 	// Deprecated
 	//
-	// The API publish scenario. Backend configurations cannot be specified during publishing. Use UpdateHttpApi or UpdateHttpApiOperation to configure the backend before publishing.
+	// The API publish scenario. Backend configurations cannot be specified during publishing. Configure them in advance by using UpdateHttpApi or UpdateHttpApiOperation before publishing.
 	//
 	// example:
 	//
@@ -267,7 +267,7 @@ type DeployHttpApiRequestRestApiConfigEnvironment struct {
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
 	// Deprecated
 	//
-	// The existing service configurations. In the single service scenario, only one entry is allowed. In ratio-based or content-based scenarios, multiple entries are allowed. Backend configurations cannot be specified during publishing. Use UpdateHttpApi or UpdateHttpApiOperation to configure the backend before publishing.
+	// The existing service configurations. In the single service scenario, only one entry is allowed. In ratio-based or content-based scenarios, multiple entries are allowed. Backend configurations cannot be specified during publishing. Configure them in advance by using UpdateHttpApi or UpdateHttpApiOperation before publishing.
 	//
 	// if can be null:
 	// true
@@ -344,7 +344,7 @@ type DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs struct {
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The service protocol:
+	// The service protocol. Valid values:
 	//
 	// - HTTP.
 	//

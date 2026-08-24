@@ -96,13 +96,19 @@ func (s *GetGatewayResponseBody) Validate() error {
 }
 
 type GetGatewayResponseBodyData struct {
-	// The billing method.
+	// The billing method. Valid values:
+	//
+	// - POSTPAY: pay-as-you-go.
+	//
+	// - PREPAY: subscription.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
 	// The source from which the gateway was created. Valid values:
+	//
+	// - Console: the console.
 	//
 	// example:
 	//
@@ -116,17 +122,17 @@ type GetGatewayResponseBodyData struct {
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
 	// The list of environments associated with the gateway.
 	Environments []*GetGatewayResponseBodyDataEnvironments `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
-	// The subscription expiration timestamp. Unit: milliseconds.
+	// The expiration timestamp for subscription instances. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1719386834548
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
-	// The edition of the gateway instance. Valid values:
+	// The gateway instance edition. Valid values:
 	//
 	// - Professional: standard instance.
 	//
-	// - Serverless: Serverless.
+	// - Serverless: Serverless instance.
 	//
 	// example:
 	//
@@ -138,13 +144,17 @@ type GetGatewayResponseBodyData struct {
 	//
 	// gw-cq2vundlhtg***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The running mode of AI multi-tenant V2. Default value: ENTERPRISE. This parameter can be specified only when AI + MultiTenantServerless is used.
+	// The running mode of AI multi-tenant V2. Default value: ENTERPRISE. Only AI + MultiTenantServerless allows this parameter.
 	//
 	// example:
 	//
 	// STANDARD
 	GatewayMode *string `json:"gatewayMode,omitempty" xml:"gatewayMode,omitempty"`
 	// The gateway type. Valid values:
+	//
+	// - API: API gateway.
+	//
+	// - AI: AI gateway.
 	//
 	// example:
 	//
@@ -182,11 +192,31 @@ type GetGatewayResponseBodyData struct {
 	SecurityGroup *GetGatewayResponseBodyDataSecurityGroup `json:"securityGroup,omitempty" xml:"securityGroup,omitempty" type:"Struct"`
 	// The gateway specification. Valid values:
 	//
+	// - apigw.small.x1: small specification.
+	//
 	// example:
 	//
 	// apigw.small.x1
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 	// The gateway status. Valid values:
+	//
+	// - Running: The gateway is running.
+	//
+	// - Creating: The gateway is being created.
+	//
+	// - CreateFailed: The gateway failed to be created.
+	//
+	// - Upgrading: The gateway is being upgraded.
+	//
+	// - UpgradeFailed: The gateway failed to be upgraded.
+	//
+	// - Restarting: The gateway is being restarted.
+	//
+	// - RestartFailed: The gateway failed to be restarted.
+	//
+	// - Deleting: The gateway is being released.
+	//
+	// - DeleteFailed: The gateway failed to be released.
 	//
 	// example:
 	//
@@ -597,11 +627,19 @@ type GetGatewayResponseBodyDataLoadBalancers struct {
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
 	// The protocol version. Valid values:
 	//
+	// - ipv4: IPv4.
+	//
+	// - ipv6: IPv6.
+	//
 	// example:
 	//
 	// ipv4
 	AddressIpVersion *string `json:"addressIpVersion,omitempty" xml:"addressIpVersion,omitempty"`
 	// The load balancing address type. Valid values:
+	//
+	// - Internet: public network.
+	//
+	// - Intranet: private network.
 	//
 	// example:
 	//
@@ -625,6 +663,8 @@ type GetGatewayResponseBodyDataLoadBalancers struct {
 	LoadBalancerId *string `json:"loadBalancerId,omitempty" xml:"loadBalancerId,omitempty"`
 	// The load balancing mode of the gateway. Valid values:
 	//
+	// - Managed: managed by Cloud-native API Gateway.
+	//
 	// example:
 	//
 	// Managed
@@ -633,11 +673,19 @@ type GetGatewayResponseBodyDataLoadBalancers struct {
 	Ports []*GetGatewayResponseBodyDataLoadBalancersPorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
 	// The status of load balancing. Valid values:
 	//
+	// - Ready: active.
+	//
+	// - NotCreate: not associated with an instance.
+	//
 	// example:
 	//
 	// Ready
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The load balancing type.
+	// The load balancing type. Valid values:
+	//
+	// - NLB: Network Load Balancer (NLB).
+	//
+	// - CLB: Classic Load Balancer (CLB).
 	//
 	// example:
 	//
@@ -773,6 +821,10 @@ type GetGatewayResponseBodyDataLoadBalancersPorts struct {
 	// 443
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
 	// The protocol. Valid values:
+	//
+	// - TCP
+	//
+	// - UDP
 	//
 	// example:
 	//

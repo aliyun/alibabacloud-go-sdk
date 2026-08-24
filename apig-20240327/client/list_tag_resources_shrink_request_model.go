@@ -20,13 +20,13 @@ type iListTagResourcesShrinkRequest interface {
 }
 
 type ListTagResourcesShrinkRequest struct {
-	// The token for the next query.
+	// The token for the next query start position.
 	//
 	// example:
 	//
 	// caeb235b-xxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The resource ID. You can specify up to 50 subkeys.
+	// The resource ID. Up to 50 subkeys are supported. At least one of ResourceId and Tag must be provided. If both are empty, the API returns InvalidParameter.BothEmpty (400).
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListTagResourcesShrinkRequest struct {
 	//
 	// Gateway
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The list of labels to add. You can specify up to 20 subkeys.
+	// The label list. Up to 20 subkeys are supported. At least one of ResourceId and Tag must be provided. If both are empty, the API returns InvalidParameter.BothEmpty (400).
 	//
 	// example:
 	//

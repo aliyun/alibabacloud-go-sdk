@@ -200,12 +200,30 @@ func (s *UpdateHttpApiRouteRequestBackendConfig) Validate() error {
 }
 
 type UpdateHttpApiRouteRequestBackendConfigServices struct {
-	// The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewrite semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If this field is not configured in the AiAutoRouter scenario, the default model of the AI service is used.
+	// The service group. Used in HTTP-to-Dubbo conversion scenarios.
+	//
+	// example:
+	//
+	// DEFAULT_GROUP
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The HTTP-to-Dubbo protocol conversion configuration. Only supported for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
+	//
+	// example:
+	//
+	// {"dubboServiceName":"com.alibaba.nacos.example.dubbo.service.DemoService","dubboServiceVersion":"1.0.0","dubboServiceGroup":"DEV","methodMapList":[{"dubboMethodName":"sayName","httpMethod":"ALL_GET","methodPath":"/dubbo/sayName","passThroughAllHeaders":"PASS_ALL"}]}
+	HttpDubboTranscoder *HttpDubboTranscoder `json:"httpDubboTranscoder,omitempty" xml:"httpDubboTranscoder,omitempty"`
+	// The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewrite semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If not specified in the AiAutoRouter scenario, the default model of the AI service is used.
 	//
 	// example:
 	//
 	// qwen-plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The service namespace. Used in HTTP-to-Dubbo conversion scenarios.
+	//
+	// example:
+	//
+	// public
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
 	// The service port. Do not specify this parameter for dynamic ports.
 	//
 	// example:
@@ -228,6 +246,12 @@ type UpdateHttpApiRouteRequestBackendConfigServices struct {
 	//
 	// svc-cr6pk4tlhtgm58e***
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// The service source type. Use MSE_NACOS for HTTP-to-Dubbo conversion scenarios.
+	//
+	// example:
+	//
+	// MSE_NACOS
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The service version.
 	//
 	// example:
@@ -250,8 +274,20 @@ func (s UpdateHttpApiRouteRequestBackendConfigServices) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateHttpApiRouteRequestBackendConfigServices) GetGroupName() *string {
+	return s.GroupName
+}
+
+func (s *UpdateHttpApiRouteRequestBackendConfigServices) GetHttpDubboTranscoder() *HttpDubboTranscoder {
+	return s.HttpDubboTranscoder
+}
+
 func (s *UpdateHttpApiRouteRequestBackendConfigServices) GetModelName() *string {
 	return s.ModelName
+}
+
+func (s *UpdateHttpApiRouteRequestBackendConfigServices) GetNamespace() *string {
+	return s.Namespace
 }
 
 func (s *UpdateHttpApiRouteRequestBackendConfigServices) GetPort() *int32 {
@@ -266,6 +302,10 @@ func (s *UpdateHttpApiRouteRequestBackendConfigServices) GetServiceId() *string 
 	return s.ServiceId
 }
 
+func (s *UpdateHttpApiRouteRequestBackendConfigServices) GetSourceType() *string {
+	return s.SourceType
+}
+
 func (s *UpdateHttpApiRouteRequestBackendConfigServices) GetVersion() *string {
 	return s.Version
 }
@@ -274,8 +314,23 @@ func (s *UpdateHttpApiRouteRequestBackendConfigServices) GetWeight() *int32 {
 	return s.Weight
 }
 
+func (s *UpdateHttpApiRouteRequestBackendConfigServices) SetGroupName(v string) *UpdateHttpApiRouteRequestBackendConfigServices {
+	s.GroupName = &v
+	return s
+}
+
+func (s *UpdateHttpApiRouteRequestBackendConfigServices) SetHttpDubboTranscoder(v *HttpDubboTranscoder) *UpdateHttpApiRouteRequestBackendConfigServices {
+	s.HttpDubboTranscoder = v
+	return s
+}
+
 func (s *UpdateHttpApiRouteRequestBackendConfigServices) SetModelName(v string) *UpdateHttpApiRouteRequestBackendConfigServices {
 	s.ModelName = &v
+	return s
+}
+
+func (s *UpdateHttpApiRouteRequestBackendConfigServices) SetNamespace(v string) *UpdateHttpApiRouteRequestBackendConfigServices {
+	s.Namespace = &v
 	return s
 }
 
@@ -294,6 +349,11 @@ func (s *UpdateHttpApiRouteRequestBackendConfigServices) SetServiceId(v string) 
 	return s
 }
 
+func (s *UpdateHttpApiRouteRequestBackendConfigServices) SetSourceType(v string) *UpdateHttpApiRouteRequestBackendConfigServices {
+	s.SourceType = &v
+	return s
+}
+
 func (s *UpdateHttpApiRouteRequestBackendConfigServices) SetVersion(v string) *UpdateHttpApiRouteRequestBackendConfigServices {
 	s.Version = &v
 	return s
@@ -305,7 +365,12 @@ func (s *UpdateHttpApiRouteRequestBackendConfigServices) SetWeight(v int32) *Upd
 }
 
 func (s *UpdateHttpApiRouteRequestBackendConfigServices) Validate() error {
-	return dara.Validate(s)
+	if s.HttpDubboTranscoder != nil {
+		if err := s.HttpDubboTranscoder.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type UpdateHttpApiRouteRequestMcpRouteConfig struct {

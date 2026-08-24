@@ -16,9 +16,9 @@ type iInstallPluginRequest interface {
 }
 
 type InstallPluginRequest struct {
-	// The list of gateway IDs.
+	// The list of gateway IDs. This parameter is required. If this parameter is not specified, the service returns InvalidParameter.IsEmpty. This field must be included in the body object.
 	GatewayIds []*string `json:"gatewayIds,omitempty" xml:"gatewayIds,omitempty" type:"Repeated"`
-	// The plug-in type ID.
+	// The plug-in type ID. This parameter is required. If this parameter is not specified, the service returns InvalidParameter.IsEmpty. This field must be included in the body object.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type Backend struct {
 	//
 	// true
 	EnableSystemModels *bool `json:"enableSystemModels,omitempty" xml:"enableSystemModels,omitempty"`
-	// The backend service scenario. Valid values: [Single, MultiServiceByRatio, MultiServiceByTag, Mock, Redirect].
+	// The backend service scenario. Valid values: [Single, MultiServiceByRatio, MultiServiceByTag, Mock, Redirect]
 	//
 	// example:
 	//
@@ -83,7 +83,19 @@ func (s *Backend) Validate() error {
 }
 
 type BackendServices struct {
-	// The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewrite semantics are determined by scene. This field is required in the SemanticRouter scenario. In the AiAutoRouter scenario, the default model of the AI service is used if this field is not configured.
+	// The service group. Used in HTTP-to-Dubbo conversion scenarios.
+	//
+	// example:
+	//
+	// DEFAULT_GROUP
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The HTTP-to-Dubbo protocol conversion configuration. Only supported for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
+	//
+	// example:
+	//
+	// {"dubboServiceName":"com.alibaba.nacos.example.dubbo.service.DemoService","dubboServiceVersion":"1.0.0","dubboServiceGroup":"DEV","methodMapList":[{"dubboMethodName":"sayName","httpMethod":"ALL_GET","methodPath":"/dubbo/sayName","passThroughAllHeaders":"PASS_ALL"}]}
+	HttpDubboTranscoder *HttpDubboTranscoder `json:"httpDubboTranscoder,omitempty" xml:"httpDubboTranscoder,omitempty"`
+	// The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewrite semantics are determined by the scene field. This field is required for the SemanticRouter scenario. If not specified in the AiAutoRouter scenario, the default model of the AI service is used.
 	//
 	// example:
 	//
@@ -95,13 +107,19 @@ type BackendServices struct {
 	//
 	// item-service
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The service namespace. Used in HTTP-to-Dubbo conversion scenarios.
+	//
+	// example:
+	//
+	// public
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
 	// The service port. Do not specify this parameter for dynamic ports.
 	//
 	// example:
 	//
 	// port
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The service protocol. Valid values: [HTTP, TCP, DUBBO].
+	// The service protocol. Valid values: [HTTP, TCP, DUBBO]
 	//
 	// example:
 	//
@@ -113,6 +131,12 @@ type BackendServices struct {
 	//
 	// service-cq2bmmdlhtgj***
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
+	// The service source type. Set this to MSE_NACOS for HTTP-to-Dubbo conversion scenarios.
+	//
+	// example:
+	//
+	// MSE_NACOS
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
 	// The service version.
 	//
 	// example:
@@ -135,12 +159,24 @@ func (s BackendServices) GoString() string {
 	return s.String()
 }
 
+func (s *BackendServices) GetGroupName() *string {
+	return s.GroupName
+}
+
+func (s *BackendServices) GetHttpDubboTranscoder() *HttpDubboTranscoder {
+	return s.HttpDubboTranscoder
+}
+
 func (s *BackendServices) GetModelName() *string {
 	return s.ModelName
 }
 
 func (s *BackendServices) GetName() *string {
 	return s.Name
+}
+
+func (s *BackendServices) GetNamespace() *string {
+	return s.Namespace
 }
 
 func (s *BackendServices) GetPort() *int32 {
@@ -155,12 +191,26 @@ func (s *BackendServices) GetServiceId() *string {
 	return s.ServiceId
 }
 
+func (s *BackendServices) GetSourceType() *string {
+	return s.SourceType
+}
+
 func (s *BackendServices) GetVersion() *string {
 	return s.Version
 }
 
 func (s *BackendServices) GetWeight() *int32 {
 	return s.Weight
+}
+
+func (s *BackendServices) SetGroupName(v string) *BackendServices {
+	s.GroupName = &v
+	return s
+}
+
+func (s *BackendServices) SetHttpDubboTranscoder(v *HttpDubboTranscoder) *BackendServices {
+	s.HttpDubboTranscoder = v
+	return s
 }
 
 func (s *BackendServices) SetModelName(v string) *BackendServices {
@@ -170,6 +220,11 @@ func (s *BackendServices) SetModelName(v string) *BackendServices {
 
 func (s *BackendServices) SetName(v string) *BackendServices {
 	s.Name = &v
+	return s
+}
+
+func (s *BackendServices) SetNamespace(v string) *BackendServices {
+	s.Namespace = &v
 	return s
 }
 
@@ -188,6 +243,11 @@ func (s *BackendServices) SetServiceId(v string) *BackendServices {
 	return s
 }
 
+func (s *BackendServices) SetSourceType(v string) *BackendServices {
+	s.SourceType = &v
+	return s
+}
+
 func (s *BackendServices) SetVersion(v string) *BackendServices {
 	s.Version = &v
 	return s
@@ -199,5 +259,10 @@ func (s *BackendServices) SetWeight(v int32) *BackendServices {
 }
 
 func (s *BackendServices) Validate() error {
-	return dara.Validate(s)
+	if s.HttpDubboTranscoder != nil {
+		if err := s.HttpDubboTranscoder.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

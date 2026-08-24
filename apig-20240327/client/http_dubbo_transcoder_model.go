@@ -15,15 +15,19 @@ type iHttpDubboTranscoder interface {
 	GetDubboServiceName() *string
 	SetDubboServiceVersion(v string) *HttpDubboTranscoder
 	GetDubboServiceVersion() *string
-	SetMothedMapList(v []*HttpDubboTranscoderMothedMapList) *HttpDubboTranscoder
-	GetMothedMapList() []*HttpDubboTranscoderMothedMapList
+	SetMethodMapList(v []*HttpDubboTranscoderMethodMapList) *HttpDubboTranscoder
+	GetMethodMapList() []*HttpDubboTranscoderMethodMapList
 }
 
 type HttpDubboTranscoder struct {
-	DubboServiceGroup   *string                             `json:"dubboServiceGroup,omitempty" xml:"dubboServiceGroup,omitempty"`
-	DubboServiceName    *string                             `json:"dubboServiceName,omitempty" xml:"dubboServiceName,omitempty"`
-	DubboServiceVersion *string                             `json:"dubboServiceVersion,omitempty" xml:"dubboServiceVersion,omitempty"`
-	MothedMapList       []*HttpDubboTranscoderMothedMapList `json:"mothedMapList,omitempty" xml:"mothedMapList,omitempty" type:"Repeated"`
+	// The Dubbo service group.
+	DubboServiceGroup *string `json:"dubboServiceGroup,omitempty" xml:"dubboServiceGroup,omitempty"`
+	// The Dubbo service name.
+	DubboServiceName *string `json:"dubboServiceName,omitempty" xml:"dubboServiceName,omitempty"`
+	// The Dubbo service version.
+	DubboServiceVersion *string `json:"dubboServiceVersion,omitempty" xml:"dubboServiceVersion,omitempty"`
+	// The method mapping list.
+	MethodMapList []*HttpDubboTranscoderMethodMapList `json:"methodMapList,omitempty" xml:"methodMapList,omitempty" type:"Repeated"`
 }
 
 func (s HttpDubboTranscoder) String() string {
@@ -46,8 +50,8 @@ func (s *HttpDubboTranscoder) GetDubboServiceVersion() *string {
 	return s.DubboServiceVersion
 }
 
-func (s *HttpDubboTranscoder) GetMothedMapList() []*HttpDubboTranscoderMothedMapList {
-	return s.MothedMapList
+func (s *HttpDubboTranscoder) GetMethodMapList() []*HttpDubboTranscoderMethodMapList {
+	return s.MethodMapList
 }
 
 func (s *HttpDubboTranscoder) SetDubboServiceGroup(v string) *HttpDubboTranscoder {
@@ -65,14 +69,14 @@ func (s *HttpDubboTranscoder) SetDubboServiceVersion(v string) *HttpDubboTransco
 	return s
 }
 
-func (s *HttpDubboTranscoder) SetMothedMapList(v []*HttpDubboTranscoderMothedMapList) *HttpDubboTranscoder {
-	s.MothedMapList = v
+func (s *HttpDubboTranscoder) SetMethodMapList(v []*HttpDubboTranscoderMethodMapList) *HttpDubboTranscoder {
+	s.MethodMapList = v
 	return s
 }
 
 func (s *HttpDubboTranscoder) Validate() error {
-	if s.MothedMapList != nil {
-		for _, item := range s.MothedMapList {
+	if s.MethodMapList != nil {
+		for _, item := range s.MethodMapList {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -83,87 +87,96 @@ func (s *HttpDubboTranscoder) Validate() error {
 	return nil
 }
 
-type HttpDubboTranscoderMothedMapList struct {
-	DubboMothedName *string `json:"dubboMothedName,omitempty" xml:"dubboMothedName,omitempty"`
+type HttpDubboTranscoderMethodMapList struct {
+	// The Dubbo method name.
+	DubboMethodName *string `json:"dubboMethodName,omitempty" xml:"dubboMethodName,omitempty"`
+	// The HTTP method. Valid values: ALL_GET. ALL_POST. ALL_PUT. ALL_DELETE. ALL_PATCH.
+	//
 	// example:
 	//
 	// ALL_GET
-	HttpMothed *string `json:"httpMothed,omitempty" xml:"httpMothed,omitempty"`
+	HttpMethod *string `json:"httpMethod,omitempty" xml:"httpMethod,omitempty"`
+	// The method matching path.
+	//
 	// example:
 	//
 	// /mytestzbk/sayhello
-	Mothedpath    *string                                          `json:"mothedpath,omitempty" xml:"mothedpath,omitempty"`
-	ParamMapsList []*HttpDubboTranscoderMothedMapListParamMapsList `json:"paramMapsList,omitempty" xml:"paramMapsList,omitempty" type:"Repeated"`
+	MethodPath *string `json:"methodPath,omitempty" xml:"methodPath,omitempty"`
+	// The parameter mapping list.
+	ParamMapsList []*HttpDubboTranscoderMethodMapListParamMapsList `json:"paramMapsList,omitempty" xml:"paramMapsList,omitempty" type:"Repeated"`
+	// The header pass-through type. Valid values: PASS_ALL: passes through all headers. PASS_NOT: does not pass through any headers. PASS_ASSIGN: passes through specified headers.
+	//
 	// example:
 	//
 	// PASS_NOT
-	PassThroughAllHeaders *string   `json:"passThroughAllHeaders,omitempty" xml:"passThroughAllHeaders,omitempty"`
-	PassThroughList       []*string `json:"passThroughList,omitempty" xml:"passThroughList,omitempty" type:"Repeated"`
+	PassThroughAllHeaders *string `json:"passThroughAllHeaders,omitempty" xml:"passThroughAllHeaders,omitempty"`
+	// The list of specified pass-through headers.
+	PassThroughList []*string `json:"passThroughList,omitempty" xml:"passThroughList,omitempty" type:"Repeated"`
 }
 
-func (s HttpDubboTranscoderMothedMapList) String() string {
+func (s HttpDubboTranscoderMethodMapList) String() string {
 	return dara.Prettify(s)
 }
 
-func (s HttpDubboTranscoderMothedMapList) GoString() string {
+func (s HttpDubboTranscoderMethodMapList) GoString() string {
 	return s.String()
 }
 
-func (s *HttpDubboTranscoderMothedMapList) GetDubboMothedName() *string {
-	return s.DubboMothedName
+func (s *HttpDubboTranscoderMethodMapList) GetDubboMethodName() *string {
+	return s.DubboMethodName
 }
 
-func (s *HttpDubboTranscoderMothedMapList) GetHttpMothed() *string {
-	return s.HttpMothed
+func (s *HttpDubboTranscoderMethodMapList) GetHttpMethod() *string {
+	return s.HttpMethod
 }
 
-func (s *HttpDubboTranscoderMothedMapList) GetMothedpath() *string {
-	return s.Mothedpath
+func (s *HttpDubboTranscoderMethodMapList) GetMethodPath() *string {
+	return s.MethodPath
 }
 
-func (s *HttpDubboTranscoderMothedMapList) GetParamMapsList() []*HttpDubboTranscoderMothedMapListParamMapsList {
+func (s *HttpDubboTranscoderMethodMapList) GetParamMapsList() []*HttpDubboTranscoderMethodMapListParamMapsList {
 	return s.ParamMapsList
 }
 
-func (s *HttpDubboTranscoderMothedMapList) GetPassThroughAllHeaders() *string {
+func (s *HttpDubboTranscoderMethodMapList) GetPassThroughAllHeaders() *string {
 	return s.PassThroughAllHeaders
 }
 
-func (s *HttpDubboTranscoderMothedMapList) GetPassThroughList() []*string {
+func (s *HttpDubboTranscoderMethodMapList) GetPassThroughList() []*string {
 	return s.PassThroughList
 }
 
-func (s *HttpDubboTranscoderMothedMapList) SetDubboMothedName(v string) *HttpDubboTranscoderMothedMapList {
-	s.DubboMothedName = &v
+func (s *HttpDubboTranscoderMethodMapList) SetDubboMethodName(v string) *HttpDubboTranscoderMethodMapList {
+	s.DubboMethodName = &v
 	return s
 }
 
-func (s *HttpDubboTranscoderMothedMapList) SetHttpMothed(v string) *HttpDubboTranscoderMothedMapList {
-	s.HttpMothed = &v
+func (s *HttpDubboTranscoderMethodMapList) SetHttpMethod(v string) *HttpDubboTranscoderMethodMapList {
+	s.HttpMethod = &v
 	return s
 }
 
-func (s *HttpDubboTranscoderMothedMapList) SetMothedpath(v string) *HttpDubboTranscoderMothedMapList {
-	s.Mothedpath = &v
+func (s *HttpDubboTranscoderMethodMapList) SetMethodPath(v string) *HttpDubboTranscoderMethodMapList {
+	s.MethodPath = &v
 	return s
 }
 
-func (s *HttpDubboTranscoderMothedMapList) SetParamMapsList(v []*HttpDubboTranscoderMothedMapListParamMapsList) *HttpDubboTranscoderMothedMapList {
+func (s *HttpDubboTranscoderMethodMapList) SetParamMapsList(v []*HttpDubboTranscoderMethodMapListParamMapsList) *HttpDubboTranscoderMethodMapList {
 	s.ParamMapsList = v
 	return s
 }
 
-func (s *HttpDubboTranscoderMothedMapList) SetPassThroughAllHeaders(v string) *HttpDubboTranscoderMothedMapList {
+func (s *HttpDubboTranscoderMethodMapList) SetPassThroughAllHeaders(v string) *HttpDubboTranscoderMethodMapList {
 	s.PassThroughAllHeaders = &v
 	return s
 }
 
-func (s *HttpDubboTranscoderMothedMapList) SetPassThroughList(v []*string) *HttpDubboTranscoderMothedMapList {
+func (s *HttpDubboTranscoderMethodMapList) SetPassThroughList(v []*string) *HttpDubboTranscoderMethodMapList {
 	s.PassThroughList = v
 	return s
 }
 
-func (s *HttpDubboTranscoderMothedMapList) Validate() error {
+func (s *HttpDubboTranscoderMethodMapList) Validate() error {
 	if s.ParamMapsList != nil {
 		for _, item := range s.ParamMapsList {
 			if item != nil {
@@ -176,56 +189,62 @@ func (s *HttpDubboTranscoderMothedMapList) Validate() error {
 	return nil
 }
 
-type HttpDubboTranscoderMothedMapListParamMapsList struct {
+type HttpDubboTranscoderMethodMapListParamMapsList struct {
+	// The key used to extract the input parameter.
+	//
 	// example:
 	//
 	// name
 	ExtractKey *string `json:"extractKey,omitempty" xml:"extractKey,omitempty"`
+	// The input parameter location. Valid values: ALL_QUERY_PARAMETER: request parameter. ALL_HEADER: request header. ALL_PATH: URI of the request. ALL_BODY: request body.
+	//
 	// example:
 	//
 	// ALL_QUERY_PARAMETER
 	ExtractKeySpec *string `json:"extractKeySpec,omitempty" xml:"extractKeySpec,omitempty"`
+	// The backend parameter type.
+	//
 	// example:
 	//
 	// java.lang.String
 	MappingType *string `json:"mappingType,omitempty" xml:"mappingType,omitempty"`
 }
 
-func (s HttpDubboTranscoderMothedMapListParamMapsList) String() string {
+func (s HttpDubboTranscoderMethodMapListParamMapsList) String() string {
 	return dara.Prettify(s)
 }
 
-func (s HttpDubboTranscoderMothedMapListParamMapsList) GoString() string {
+func (s HttpDubboTranscoderMethodMapListParamMapsList) GoString() string {
 	return s.String()
 }
 
-func (s *HttpDubboTranscoderMothedMapListParamMapsList) GetExtractKey() *string {
+func (s *HttpDubboTranscoderMethodMapListParamMapsList) GetExtractKey() *string {
 	return s.ExtractKey
 }
 
-func (s *HttpDubboTranscoderMothedMapListParamMapsList) GetExtractKeySpec() *string {
+func (s *HttpDubboTranscoderMethodMapListParamMapsList) GetExtractKeySpec() *string {
 	return s.ExtractKeySpec
 }
 
-func (s *HttpDubboTranscoderMothedMapListParamMapsList) GetMappingType() *string {
+func (s *HttpDubboTranscoderMethodMapListParamMapsList) GetMappingType() *string {
 	return s.MappingType
 }
 
-func (s *HttpDubboTranscoderMothedMapListParamMapsList) SetExtractKey(v string) *HttpDubboTranscoderMothedMapListParamMapsList {
+func (s *HttpDubboTranscoderMethodMapListParamMapsList) SetExtractKey(v string) *HttpDubboTranscoderMethodMapListParamMapsList {
 	s.ExtractKey = &v
 	return s
 }
 
-func (s *HttpDubboTranscoderMothedMapListParamMapsList) SetExtractKeySpec(v string) *HttpDubboTranscoderMothedMapListParamMapsList {
+func (s *HttpDubboTranscoderMethodMapListParamMapsList) SetExtractKeySpec(v string) *HttpDubboTranscoderMethodMapListParamMapsList {
 	s.ExtractKeySpec = &v
 	return s
 }
 
-func (s *HttpDubboTranscoderMothedMapListParamMapsList) SetMappingType(v string) *HttpDubboTranscoderMothedMapListParamMapsList {
+func (s *HttpDubboTranscoderMethodMapListParamMapsList) SetMappingType(v string) *HttpDubboTranscoderMethodMapListParamMapsList {
 	s.MappingType = &v
 	return s
 }
 
-func (s *HttpDubboTranscoderMothedMapListParamMapsList) Validate() error {
+func (s *HttpDubboTranscoderMethodMapListParamMapsList) Validate() error {
 	return dara.Validate(s)
 }

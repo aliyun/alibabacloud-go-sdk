@@ -10677,7 +10677,7 @@ func (client *Client) UpdateHttpApiOperation(httpApiId *string, operationId *str
 
 // Summary:
 //
-// Updates the route of an HTTP API.
+// Updates a route of an HTTP API.
 //
 // @param request - UpdateHttpApiRouteRequest
 //
@@ -10748,7 +10748,7 @@ func (client *Client) UpdateHttpApiRouteWithOptions(httpApiId *string, routeId *
 
 // Summary:
 //
-// Updates the route of an HTTP API.
+// Updates a route of an HTTP API.
 //
 // @param request - UpdateHttpApiRouteRequest
 //

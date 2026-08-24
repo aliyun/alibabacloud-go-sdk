@@ -7887,7 +7887,7 @@ func (client *Client) UpdateHttpApiOperationWithContext(ctx context.Context, htt
 
 // Summary:
 //
-// Updates the route of an HTTP API.
+// Updates a route of an HTTP API.
 //
 // @param request - UpdateHttpApiRouteRequest
 //

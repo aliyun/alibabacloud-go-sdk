@@ -34,7 +34,7 @@ type CreateHttpApiRouteRequest struct {
 	BackendConfig *CreateHttpApiRouteRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
 	// Deprecated
 	//
-	// The API deployment configurations.
+	// The API deployment configuration.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
 	// The route description.
 	//
@@ -50,7 +50,7 @@ type CreateHttpApiRouteRequest struct {
 	//
 	// env-cpqnr6tlhtgubcv***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The route match rules.
+	// The route match rule.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// The MCP route configuration.
 	McpRouteConfig *CreateHttpApiRouteRequestMcpRouteConfig `json:"mcpRouteConfig,omitempty" xml:"mcpRouteConfig,omitempty" type:"Struct"`
@@ -193,13 +193,13 @@ func (s *CreateHttpApiRouteRequest) Validate() error {
 type CreateHttpApiRouteRequestBackendConfig struct {
 	// The backend service scenario. Valid values:
 	//
-	// - SingleService: Single service.
+	// - SingleService: single service.
 	//
-	// - MultiServiceByRatio: Multiple services with ratio-based canary release.
+	// - MultiServiceByRatio: multiple services with ratio-based canary release.
 	//
-	// - Mock: Mock service.
+	// - Mock: mock service.
 	//
-	// - Redirect: Redirect service.
+	// - Redirect: redirect service.
 	//
 	// example:
 	//
@@ -249,12 +249,30 @@ func (s *CreateHttpApiRouteRequestBackendConfig) Validate() error {
 }
 
 type CreateHttpApiRouteRequestBackendConfigServices struct {
-	// The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewrite semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If not specified in the AiAutoRouter scenario, the default model of the AI service is used.
+	// The service group. Used in the HTTP-to-Dubbo conversion scenario.
+	//
+	// example:
+	//
+	// DEFAULT_GROUP
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The HTTP-to-Dubbo protocol conversion configuration. Only supported for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
+	//
+	// example:
+	//
+	// {"dubboServiceName":"com.alibaba.nacos.example.dubbo.service.DemoService","dubboServiceVersion":"1.0.0","dubboServiceGroup":"DEV","methodMapList":[{"dubboMethodName":"sayName","httpMethod":"ALL_GET","methodPath":"/dubbo/sayName","passThroughAllHeaders":"PASS_ALL"}]}
+	HttpDubboTranscoder *HttpDubboTranscoder `json:"httpDubboTranscoder,omitempty" xml:"httpDubboTranscoder,omitempty"`
+	// The target model name. This field is shared by multiple model backend scenarios. The specific routing or model rewrite semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If not specified in the AiAutoRouter scenario, the default model of the AI service is used.
 	//
 	// example:
 	//
 	// qwen-plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The service namespace. Used in the HTTP-to-Dubbo conversion scenario.
+	//
+	// example:
+	//
+	// public
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
 	// The service port. Do not specify this parameter for dynamic ports.
 	//
 	// example:
@@ -263,9 +281,9 @@ type CreateHttpApiRouteRequestBackendConfigServices struct {
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
 	// The service protocol. Valid values:
 	//
-	// - HTTP
+	// - HTTP.
 	//
-	// - HTTPS
+	// - HTTPS.
 	//
 	// example:
 	//
@@ -277,13 +295,19 @@ type CreateHttpApiRouteRequestBackendConfigServices struct {
 	//
 	// svc-crbgq0dlhtgr***
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// The service version. This parameter is valid only in the by-tag scenario.
+	// The service source type. Used in the HTTP-to-Dubbo conversion scenario.
+	//
+	// example:
+	//
+	// MSE_NACOS
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// The service version. This parameter is valid only in the tag-based scenario.
 	//
 	// example:
 	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The percentage value of the traffic ratio.
+	// The traffic ratio percentage value.
 	//
 	// example:
 	//
@@ -299,8 +323,20 @@ func (s CreateHttpApiRouteRequestBackendConfigServices) GoString() string {
 	return s.String()
 }
 
+func (s *CreateHttpApiRouteRequestBackendConfigServices) GetGroupName() *string {
+	return s.GroupName
+}
+
+func (s *CreateHttpApiRouteRequestBackendConfigServices) GetHttpDubboTranscoder() *HttpDubboTranscoder {
+	return s.HttpDubboTranscoder
+}
+
 func (s *CreateHttpApiRouteRequestBackendConfigServices) GetModelName() *string {
 	return s.ModelName
+}
+
+func (s *CreateHttpApiRouteRequestBackendConfigServices) GetNamespace() *string {
+	return s.Namespace
 }
 
 func (s *CreateHttpApiRouteRequestBackendConfigServices) GetPort() *int32 {
@@ -315,6 +351,10 @@ func (s *CreateHttpApiRouteRequestBackendConfigServices) GetServiceId() *string 
 	return s.ServiceId
 }
 
+func (s *CreateHttpApiRouteRequestBackendConfigServices) GetSourceType() *string {
+	return s.SourceType
+}
+
 func (s *CreateHttpApiRouteRequestBackendConfigServices) GetVersion() *string {
 	return s.Version
 }
@@ -323,8 +363,23 @@ func (s *CreateHttpApiRouteRequestBackendConfigServices) GetWeight() *int32 {
 	return s.Weight
 }
 
+func (s *CreateHttpApiRouteRequestBackendConfigServices) SetGroupName(v string) *CreateHttpApiRouteRequestBackendConfigServices {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateHttpApiRouteRequestBackendConfigServices) SetHttpDubboTranscoder(v *HttpDubboTranscoder) *CreateHttpApiRouteRequestBackendConfigServices {
+	s.HttpDubboTranscoder = v
+	return s
+}
+
 func (s *CreateHttpApiRouteRequestBackendConfigServices) SetModelName(v string) *CreateHttpApiRouteRequestBackendConfigServices {
 	s.ModelName = &v
+	return s
+}
+
+func (s *CreateHttpApiRouteRequestBackendConfigServices) SetNamespace(v string) *CreateHttpApiRouteRequestBackendConfigServices {
+	s.Namespace = &v
 	return s
 }
 
@@ -343,6 +398,11 @@ func (s *CreateHttpApiRouteRequestBackendConfigServices) SetServiceId(v string) 
 	return s
 }
 
+func (s *CreateHttpApiRouteRequestBackendConfigServices) SetSourceType(v string) *CreateHttpApiRouteRequestBackendConfigServices {
+	s.SourceType = &v
+	return s
+}
+
 func (s *CreateHttpApiRouteRequestBackendConfigServices) SetVersion(v string) *CreateHttpApiRouteRequestBackendConfigServices {
 	s.Version = &v
 	return s
@@ -354,7 +414,12 @@ func (s *CreateHttpApiRouteRequestBackendConfigServices) SetWeight(v int32) *Cre
 }
 
 func (s *CreateHttpApiRouteRequestBackendConfigServices) Validate() error {
-	return dara.Validate(s)
+	if s.HttpDubboTranscoder != nil {
+		if err := s.HttpDubboTranscoder.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type CreateHttpApiRouteRequestMcpRouteConfig struct {
@@ -372,11 +437,11 @@ type CreateHttpApiRouteRequestMcpRouteConfig struct {
 	McpStatisticsEnable *bool `json:"mcpStatisticsEnable,omitempty" xml:"mcpStatisticsEnable,omitempty"`
 	// The service protocol. Valid values:
 	//
-	// - TCP
+	// - TCP.
 	//
-	// - HTTP
+	// - HTTP.
 	//
-	// - DUBBO
+	// - DUBBO.
 	//
 	// example:
 	//

@@ -46,9 +46,9 @@ type CreateGatewayRequest struct {
 	//
 	// - Professional: standard instance.
 	//
-	// - Serverless: Serverless instance.
+	// - Serverless: Serverless.
 	//
-	// - MultiTenantServerless: multi-tenant Serverless instance.
+	// - MultiTenantServerless: multi-tenant Serverless.
 	//
 	// - Unknown: unknown.
 	//
@@ -56,7 +56,7 @@ type CreateGatewayRequest struct {
 	//
 	// Professional
 	GatewayEdition *string `json:"gatewayEdition,omitempty" xml:"gatewayEdition,omitempty"`
-	// The running mode for AI multi-tenant V2. Default value: ENTERPRISE. Only allowed when the gateway type is AI and the edition is MultiTenantServerless.
+	// The running mode for AI multi-tenant V2. Default value: ENTERPRISE. This parameter can be specified only when gatewayType is AI and gatewayEdition is MultiTenantServerless.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type CreateGatewayRequest struct {
 	//
 	// example:
 	//
-	// apigw.dev.x2
+	// apigw.dev.x1
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 	// The list of tags.
 	Tag []*CreateGatewayRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
@@ -278,7 +278,7 @@ func (s *CreateGatewayRequestLogConfig) Validate() error {
 }
 
 type CreateGatewayRequestLogConfigSls struct {
-	// Specifies whether to enable log collection.
+	// Specifies whether to enable SLS log collection.
 	//
 	// example:
 	//
@@ -395,7 +395,7 @@ type CreateGatewayRequestZoneConfig struct {
 	//
 	// vsw-xxx
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	// The list of supported zones.
+	// The list of supported zones. At least two zones are required.
 	Zones []*CreateGatewayRequestZoneConfigZones `json:"zones,omitempty" xml:"zones,omitempty" type:"Repeated"`
 }
 
@@ -458,7 +458,7 @@ type CreateGatewayRequestZoneConfigZones struct {
 	//
 	// example:
 	//
-	// cn-wulanchabu-a
+	// cn-hangzhou-j
 	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
 }
 

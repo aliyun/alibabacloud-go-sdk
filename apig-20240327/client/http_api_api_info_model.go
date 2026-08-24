@@ -70,7 +70,10 @@ type HttpApiApiInfo struct {
 	//
 	// for test only
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	EnableAuth  *bool   `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
+	// example:
+	//
+	// true
+	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
 	// The API environment information.
 	Environments []*HttpApiApiInfoEnvironments `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
 	// The instance ID.

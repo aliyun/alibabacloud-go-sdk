@@ -32,9 +32,9 @@ type iGetDashboardShrinkRequest interface {
 type GetDashboardShrinkRequest struct {
 	// The language. Valid values:
 	//
-	// - zh: Chinese
+	// - zh: Chinese.
 	//
-	// - en: English
+	// - en: English.
 	//
 	// example:
 	//
@@ -50,21 +50,21 @@ type GetDashboardShrinkRequest struct {
 	FilterShrink *string `json:"filter,omitempty" xml:"filter,omitempty"`
 	// The dashboard name. Valid values:
 	//
-	// - LOG: access log
+	// - LOG: access log.
 	//
-	// - PLUGIN: plug-in log
+	// - PLUGIN: plugin log.
 	//
 	// example:
 	//
 	// PLUGIN
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The plug-in type ID.
+	// The plugin type ID.
 	//
 	// example:
 	//
 	// pls-dn82a9djd8z****
 	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
-	// The plug-in ID.
+	// The plugin ID.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type GetDashboardShrinkRequest struct {
 	RouteId *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
 	// The dashboard source. Valid values:
 	//
-	// - SLS: log dashboard
+	// - SLS: log dashboard.
 	//
 	// example:
 	//
