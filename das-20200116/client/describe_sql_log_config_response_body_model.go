@@ -32,7 +32,7 @@ type DescribeSqlLogConfigResponseBody struct {
 	Data *DescribeSqlLogConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// >If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
+	// >If the request is successful, **Successful*	- is returned. If the request fails, an error message is returned, such as an error code.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type DescribeSqlLogConfigResponseBodyData struct {
 	//
 	// - **true**: Enabled.
 	//
-	// - **false**: Disabled.
+	// - **false**: Not enabled.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type DescribeSqlLogConfigResponseBodyData struct {
 	//
 	// - **PG_V1**: PostgreSQL V1.
 	//
-	// - **rdspg_v1**: ApsaraDB RDS for PostgreSQL V1.
+	// - **rdspg_v1**: RDS PostgreSQL V1.
 	//
 	// - **polarpg_v1**: PolarDB for PostgreSQL V1.
 	//
@@ -161,12 +161,13 @@ type DescribeSqlLogConfigResponseBodyData struct {
 	//
 	// MYSQL_V3
 	CollectorVersion *string `json:"CollectorVersion,omitempty" xml:"CollectorVersion,omitempty"`
-	Enable           *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// Indicates whether SQL Explorer is enabled. This parameter is an alias of SqlLogEnable.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// Indicates whether hot data storage is enabled. Valid values:
 	//
 	// - **true**: Enabled.
 	//
-	// - **false**: Disabled.
+	// - **false**: Not enabled.
 	//
 	// example:
 	//
@@ -194,7 +195,7 @@ type DescribeSqlLogConfigResponseBodyData struct {
 	//
 	// - **true**: Enabled.
 	//
-	// - **false**: Disabled.
+	// - **false**: Not enabled.
 	//
 	// example:
 	//
@@ -222,7 +223,7 @@ type DescribeSqlLogConfigResponseBodyData struct {
 	//
 	// - **true**: Enabled.
 	//
-	// - **false**: Disabled.
+	// - **false**: Not enabled.
 	//
 	// example:
 	//
@@ -257,9 +258,10 @@ type DescribeSqlLogConfigResponseBodyData struct {
 	// example:
 	//
 	// None
-	SupportMigration     *bool `json:"SupportMigration,omitempty" xml:"SupportMigration,omitempty"`
+	SupportMigration *bool `json:"SupportMigration,omitempty" xml:"SupportMigration,omitempty"`
+	// Indicates whether the engine and region of the current instance support security audit activation. This field only indicates product capability and does not indicate that security audit is already enabled.
 	SupportSecurityAudit *bool `json:"SupportSecurityAudit,omitempty" xml:"SupportSecurityAudit,omitempty"`
-	// The latest DAS Enterprise Edition version supported by the instance. Valid values:
+	// The latest DAS Enterprise Edition version supported by the current instance. Valid values:
 	//
 	// - **SQL_LOG_V0**: Enterprise Edition V0.
 	//

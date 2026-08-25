@@ -22,7 +22,7 @@ type iKillInstanceAllSessionResponseBody interface {
 }
 
 type KillInstanceAllSessionResponseBody struct {
-	// The HTTP status code returned.
+	// The returned status code.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type KillInstanceAllSessionResponseBody struct {
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//
-	// > If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an exception message is returned, such as an error code.
 	//
 	// example:
 	//
@@ -48,11 +48,11 @@ type KillInstanceAllSessionResponseBody struct {
 	//
 	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**
+	// - **true**: The request is successful.
 	//
-	// - **false**
+	// - **false**: The request fails.
 	//
 	// example:
 	//

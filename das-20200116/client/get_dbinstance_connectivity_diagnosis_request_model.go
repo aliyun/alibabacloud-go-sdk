@@ -30,7 +30,7 @@ type GetDBInstanceConnectivityDiagnosisRequest struct {
 	//
 	// example:
 	//
-	// 47.110.180.62
+	// 47.100.XX.XX
 	SrcIp *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
 }
 

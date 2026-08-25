@@ -22,17 +22,17 @@ type iUpdateAutoThrottleRulesAsyncResponseBody interface {
 }
 
 type UpdateAutoThrottleRulesAsyncResponseBody struct {
-	// The HTTP status code returned.
+	// The returned status code.
 	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *UpdateAutoThrottleRulesAsyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// > If the request was successful, **Successful*	- is returned. If the request failed, an error message such as an error code is returned.
+	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type UpdateAutoThrottleRulesAsyncResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**
+	// - **true**: The request was successful.
 	//
-	// - **false**
+	// - **false**: The request failed.
 	//
 	// example:
 	//
@@ -119,35 +119,35 @@ func (s *UpdateAutoThrottleRulesAsyncResponseBody) Validate() error {
 }
 
 type UpdateAutoThrottleRulesAsyncResponseBodyData struct {
-	// Indicates whether the asynchronous request was complete. Valid values:
+	// Indicates whether the asynchronous request is complete. Valid values:
 	//
-	// - **true**
+	// - **true**: The request is complete.
 	//
-	// - **false**
+	// - **false**: The request is not complete.
 	//
 	// example:
 	//
 	// true
 	Complete *bool `json:"Complete,omitempty" xml:"Complete,omitempty"`
-	// The returned data of the configuration.
+	// The response data of the batch configuration.
 	//
-	// > The data is returned only if the value of isFinish is **true**. This value indicates that the asynchronous request is complete.
+	// > This data is returned only when the asynchronous request is complete (that is, when isFinish is **true**).
 	ConfigResponse *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse `json:"ConfigResponse,omitempty" xml:"ConfigResponse,omitempty" type:"Struct"`
-	// Indicates whether the asynchronous request failed. Valid values:
+	// Indicates whether the request failed. Valid values:
 	//
-	// - **true**
+	// - **true**: The request failed.
 	//
-	// - **false**
+	// - **false**: The request did not fail.
 	//
 	// example:
 	//
 	// false
 	Fail *bool `json:"Fail,omitempty" xml:"Fail,omitempty"`
-	// Indicates whether the asynchronous request was complete. Valid values:
+	// Indicates whether the asynchronous request is complete. Valid values:
 	//
-	// - **true**
+	// - **true**: The request is complete.
 	//
-	// - **false**
+	// - **false**: The request is not complete.
 	//
 	// example:
 	//
@@ -159,19 +159,19 @@ type UpdateAutoThrottleRulesAsyncResponseBodyData struct {
 	//
 	// async__665ee69612f1627c7fd9f3c85075****
 	ResultId *string `json:"ResultId,omitempty" xml:"ResultId,omitempty"`
-	// The state of the asynchronous request. Valid values:
+	// The execution status of the asynchronous request. Valid values:
 	//
-	// - **RUNNING**
+	// - **RUNNING**: The request is running.
 	//
-	// - **SUCCESS**
+	// - **SUCCESS**: The request succeeded.
 	//
-	// - **FAIL**
+	// - **FAIL**: The request failed.
 	//
 	// example:
 	//
 	// SUCCESS
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The time when the asynchronous request was made. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The execution time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -260,21 +260,21 @@ func (s *UpdateAutoThrottleRulesAsyncResponseBodyData) Validate() error {
 }
 
 type UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse struct {
-	// The number of database instances for which the parameters failed to be configured.
+	// The number of database instances that failed to be configured.
 	//
 	// example:
 	//
 	// 1
 	ConfigFailInstanceCount *int64 `json:"ConfigFailInstanceCount,omitempty" xml:"ConfigFailInstanceCount,omitempty"`
-	// The database instances for which the parameters failed to be configured.
+	// The list of database instances that failed to be configured.
 	ConfigFailInstanceList []*UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList `json:"ConfigFailInstanceList,omitempty" xml:"ConfigFailInstanceList,omitempty" type:"Repeated"`
-	// The number of database instances for which the parameters are configured.
+	// The number of database instances that were configured successfully.
 	//
 	// example:
 	//
 	// 1
 	ConfigSuccessInstanceCount *int64 `json:"ConfigSuccessInstanceCount,omitempty" xml:"ConfigSuccessInstanceCount,omitempty"`
-	// The database instances for which the parameters are configured.
+	// The list of database instances that were configured successfully.
 	ConfigSuccessInstanceList []*UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList `json:"ConfigSuccessInstanceList,omitempty" xml:"ConfigSuccessInstanceList,omitempty" type:"Repeated"`
 	// The total number of database instances.
 	//
@@ -360,17 +360,17 @@ func (s *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponse) Validate() 
 }
 
 type UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailInstanceList struct {
-	// Indicates whether the parameters are configured. Valid values:
+	// Indicates whether the configuration was successful. Valid values:
 	//
-	// - **true**
+	// - **true**: The configuration was successful.
 	//
-	// - **false**
+	// - **false**: The configuration failed.
 	//
 	// example:
 	//
 	// false
 	ConfigSuccess *bool `json:"ConfigSuccess,omitempty" xml:"ConfigSuccess,omitempty"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
@@ -424,11 +424,11 @@ func (s *UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigFailIns
 }
 
 type UpdateAutoThrottleRulesAsyncResponseBodyDataConfigResponseConfigSuccessInstanceList struct {
-	// Indicates whether the parameters are configured. Valid values:
+	// Indicates whether the configuration was successful. Valid values:
 	//
-	// - **true**
+	// - **true**: The configuration was successful.
 	//
-	// - **false**
+	// - **false**: The configuration failed.
 	//
 	// example:
 	//

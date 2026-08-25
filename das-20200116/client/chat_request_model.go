@@ -20,13 +20,13 @@ type iChatRequest interface {
 }
 
 type ChatRequest struct {
-	// Optional. The agent ID. You can use the ID of an agent that is automatically generated when you enable DAS Agent, or the ID of a custom agent. If this parameter is omitted, the default agent is used.
+	// The Agent ID used for the service. You can specify an Agent generated after enabling DAS Agent or an Agent that you manually created. If not specified, the default Agent is used.
 	//
 	// example:
 	//
 	// ag-472T0DxtmjIxxxxx
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The message object.
+	// The message content.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type ChatRequest struct {
 	//
 	// {"id":"68fe0321-37fe-4c75-a118-b61b33156f6a","role":"user","content":[{"type":"text","text":"hello"}]}
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Optional. The session ID, which must be a UUID. If unspecified, a new session is created. To maintain conversational context, use the same session ID for all subsequent requests.
+	// The session ID in UUID string format. If not specified, a new session is created by default. To maintain context across conversations, use the same session ID.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-xxxxxxxxxxxx
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// Specifies whether to return summary information.
+	// Specifies whether to output summary information.
 	//
 	// example:
 	//

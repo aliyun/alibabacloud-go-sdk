@@ -22,17 +22,17 @@ type iGetSqlOptimizeAdviceResponseBody interface {
 }
 
 type GetSqlOptimizeAdviceResponseBody struct {
-	// The HTTP status code returned.
+	// The status code returned.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The detailed information, including the error codes and the number of entries that are returned.
+	// The details, including the total number of entries and error codes.
 	Data *GetSqlOptimizeAdviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message returned for the request.
 	//
-	// > If the request was successful, Successful is returned. If the request failed, an error message such as an error code is returned.
+	// >If the request is successful, Successful is returned. If the request fails, an error message is returned, such as an error code.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type GetSqlOptimizeAdviceResponseBody struct {
 	//
 	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**
+	// - **true**: successful.
 	//
-	// - **false**
+	// - **false**: failed.
 	//
 	// example:
 	//
@@ -119,47 +119,47 @@ func (s *GetSqlOptimizeAdviceResponseBody) Validate() error {
 }
 
 type GetSqlOptimizeAdviceResponseBodyData struct {
-	// The time when the task was created. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the task was created. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1632303861000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The URL that is used to download the file.
+	// The download URL of the file.
 	//
 	// example:
 	//
 	// https://das-sql-optimize.oss-cn-shanghai.aliyuncs.com/adb/oss_sql_optimize_advice/1083*******
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The time when the file expires. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the file expires. The value is a UNIX timestamp. Unit: milliseconds.
 	//
-	// > The file expires three days after the task is created.
+	// >The file expires three days after the task is created.
 	//
 	// example:
 	//
 	// 1632563061000
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The status of the task. Valid values:
+	// The task status. Valid values:
 	//
-	// - **INIT**: The task is being initialized.
+	// - **INIT**: initializing.
 	//
-	// - **RUNNING**: The task is running.
+	// - **RUNNING**: running.
 	//
-	// - **FINISH**: The task is complete.
+	// - **FINISH**: completed.
 	//
-	// - **FAILED**: The task failed.
+	// - **FAILED**: failed.
 	//
 	// example:
 	//
 	// FINISH
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The status code of the task. Valid values:
+	// The task status code. Valid values:
 	//
-	// - **NO_DATA**: No data is returned.
+	// - **NO_DATA**: no data available.
 	//
-	// - **INTERNAL_ERROR**: An internal error occurred.
+	// - **INTERNAL_ERROR**: internal error.
 	//
-	// - **SUCCESS**: The task is successful.
+	// - **SUCCESS**: successful.
 	//
 	// example:
 	//

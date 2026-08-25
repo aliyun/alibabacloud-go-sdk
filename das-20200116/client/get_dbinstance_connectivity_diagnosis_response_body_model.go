@@ -22,17 +22,17 @@ type iGetDBInstanceConnectivityDiagnosisResponseBody interface {
 }
 
 type GetDBInstanceConnectivityDiagnosisResponseBody struct {
-	// The HTTP status code returned.
+	// The returned status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The detailed information.
+	// The details.
 	Data *GetDBInstanceConnectivityDiagnosisResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// > If the request was successful, **Successful*	- is returned. Otherwise, an error message such as an error code is returned.
+	// >If the request is successful, **Successful*	- is returned. If the request fails, an error message is returned, such as an error code.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type GetDBInstanceConnectivityDiagnosisResponseBody struct {
 	//
 	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: The request is successful.
 	//
-	// 	- **false**
+	// 	- **false**: The request fails.
 	//
 	// example:
 	//
@@ -119,45 +119,45 @@ func (s *GetDBInstanceConnectivityDiagnosisResponseBody) Validate() error {
 }
 
 type GetDBInstanceConnectivityDiagnosisResponseBodyData struct {
-	// The exception detection items:
+	// The outlier detection item. Valid values:
 	//
-	// 	- **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not added to the whitelist of the user.
+	// - **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not added to the user whitelist.
 	//
-	// 	- **VIP_NOT_EXISTS**: The Application Load Balancer (ALB) instance corresponding to the virtual IP address (VIP) does not exist.
+	// - **VIP_NOT_EXISTS**: The ALB instance corresponding to the VIP does not exist.
 	//
-	// 	- **RS_NOT_EXISTS**: The resource sharing (RS) is not properly mounted.
+	// - **RS_NOT_EXISTS**: The RS is not properly mounted.
 	//
-	// 	- **VIP_TUNNEL_ID_NOT_CONSISTENT**: The tunnel ID used by the VIP of the virtual private cloud (VPC) type is different from the tunnel ID of the VPC.
+	// - **VIP_TUNNEL_ID_NOT_CONSISTENT**: The TUNNEL ID used by the VPC-type VIP is inconsistent with the actual TUNNEL ID of the VPC.
 	//
-	// 	- **VIP_VPC_CLOUD_INSTANCE_NOT_EXISTS**: The VIP of the VPC type does not exist.
+	// - **VIP_VPC_CLOUD_INSTANCE_NOT_EXISTS**: The VPC-type VIP does not exist.
 	//
-	// 	- **VIP_IS_NOT_NGLB**: The NGLB mode is disabled for the VIP.
+	// - **VIP_IS_NOT_NGLB**: The NGLB pattern is shutdown for the VIP.
 	//
-	// 	- **CUSTINS_NOT_ASSOCIATE_ECS_SECURITY_GROUP**: No security group is associated with the instance.
+	// - **CUSTINS_NOT_ASSOCIATE_ECS_SECURITY_GROUP**: The instance is not associated with a security group.
 	//
-	// 	- **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not added to the whitelist of the user.
+	// - **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not added to the user whitelist.
 	//
-	// 	- **SRC_IP_NOT_IN_ADMIN_WHITELIST**: The source IP address is not added to the whitelist of the instance.
+	// - **SRC_IP_NOT_IN_ADMIN_WHITELIST**: The source IP address is not added to the management machine whitelist.
 	//
-	// 	- **SRC_IP_NOT_IN_ECS_SECURITY_GROUP**: The source IP address is not added to the security group that is associated with the instance.
+	// - **SRC_IP_NOT_IN_ECS_SECURITY_GROUP**: The source IP address is not added to the security group associated with the instance.
 	//
-	// 	- **VPC_INSTANCE_IP_NOT_WORKING_STATUS**: The IP address in the VPC is in an abnormal state.
+	// - **VPC_INSTANCE_IP_NOT_WORKING_STATUS**: The VPC IP address is in an abnormal state.
 	//
 	// example:
 	//
 	// SRC_IP_NOT_IN_USER_WHITELIST
 	ConnCheckErrorCode *string `json:"connCheckErrorCode,omitempty" xml:"connCheckErrorCode,omitempty"`
-	// The details of the exception detection.
+	// The details of the outlier detection item.
 	//
 	// example:
 	//
-	// Src ip:47.110.180.62 not in user whitelist
+	// Src ip:47.100.XX.XX not in user whitelist
 	ConnCheckErrorMessage *string `json:"connCheckErrorMessage,omitempty" xml:"connCheckErrorMessage,omitempty"`
-	// The type of the exception:
+	// The exception type. Valid values:
 	//
-	// 	- **0**: an exception that can be handled by the user.
+	// - **0**: The issue can be resolved by the user.
 	//
-	// 	- **1**: an exception that can be handled by a technical engineer.
+	// - **1**: The issue requires on-duty personnel to resolve.
 	//
 	// example:
 	//
@@ -169,11 +169,11 @@ type GetDBInstanceConnectivityDiagnosisResponseBodyData struct {
 	//
 	// rm-2ze8g2am97624****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// Indicates whether the connectivity test was passed:
+	// Indicates whether the check is passed. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The check is passed.
 	//
-	// 	- **false**
+	// - **false**: The check is not passed.
 	//
 	// example:
 	//

@@ -11,14 +11,24 @@ type iChatResponseBody interface {
 	GoString() string
 	SetActivityType(v string) *ChatResponseBody
 	GetActivityType() *string
+	SetAgentId(v string) *ChatResponseBody
+	GetAgentId() *string
 	SetContent(v string) *ChatResponseBody
 	GetContent() *string
 	SetDelta(v string) *ChatResponseBody
 	GetDelta() *string
+	SetKind(v string) *ChatResponseBody
+	GetKind() *string
+	SetLabel(v string) *ChatResponseBody
+	GetLabel() *string
 	SetMessageId(v string) *ChatResponseBody
 	GetMessageId() *string
 	SetName(v string) *ChatResponseBody
 	GetName() *string
+	SetOriginatingToolCallId(v string) *ChatResponseBody
+	GetOriginatingToolCallId() *string
+	SetParentAgentId(v string) *ChatResponseBody
+	GetParentAgentId() *string
 	SetParentMessageId(v string) *ChatResponseBody
 	GetParentMessageId() *string
 	SetRole(v string) *ChatResponseBody
@@ -27,10 +37,16 @@ type iChatResponseBody interface {
 	GetRunId() *string
 	SetStepName(v string) *ChatResponseBody
 	GetStepName() *string
+	SetStepStatus(v string) *ChatResponseBody
+	GetStepStatus() *string
 	SetTaskTrackerId(v string) *ChatResponseBody
 	GetTaskTrackerId() *string
 	SetThreadId(v string) *ChatResponseBody
 	GetThreadId() *string
+	SetTimestamp(v int64) *ChatResponseBody
+	GetTimestamp() *int64
+	SetToolCallError(v string) *ChatResponseBody
+	GetToolCallError() *string
 	SetToolCallId(v string) *ChatResponseBody
 	GetToolCallId() *string
 	SetToolCallName(v string) *ChatResponseBody
@@ -42,43 +58,48 @@ type iChatResponseBody interface {
 }
 
 type ChatResponseBody struct {
-	// Indicates the current activity status of the agent.
+	// The heartbeat.
 	//
 	// example:
 	//
 	// waiting_for_agent_thinking
 	ActivityType *string `json:"ActivityType,omitempty" xml:"ActivityType,omitempty"`
-	// The content of the response.
+	AgentId      *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The response content.
 	//
 	// example:
 	//
 	// I see you have several PolarDB instances, and I will query them for you shortly
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The incremental content of the response.
+	// Indicates whether the content is incremental.
 	//
 	// example:
 	//
 	// hello
 	Delta *string `json:"Delta,omitempty" xml:"Delta,omitempty"`
+	Kind  *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The message ID.
 	//
 	// example:
 	//
 	// 61820b594664275c4429****
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// The key for the additional information.
+	// The extension key.
 	//
 	// example:
 	//
 	// summary
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the parent message.
+	Name                  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OriginatingToolCallId *string `json:"OriginatingToolCallId,omitempty" xml:"OriginatingToolCallId,omitempty"`
+	ParentAgentId         *string `json:"ParentAgentId,omitempty" xml:"ParentAgentId,omitempty"`
+	// The parent message ID.
 	//
 	// example:
 	//
 	// 76bee207-31ee-4707-8851-6b9d4da033aa
 	ParentMessageId *string `json:"ParentMessageId,omitempty" xml:"ParentMessageId,omitempty"`
-	// The role in the conversation.
+	// The conversation role ID.
 	//
 	// example:
 	//
@@ -90,13 +111,14 @@ type ChatResponseBody struct {
 	//
 	// ed7cb7b1-ddc8-45d7-9ff3-b315726cb5f7
 	RunId *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
-	// The name of the execution step.
+	// The execution step name.
 	//
 	// example:
 	//
 	// sub_agent_performance_diagnose_mysql
-	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
-	// The identifier of the callback tool.
+	StepName   *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	StepStatus *string `json:"StepStatus,omitempty" xml:"StepStatus,omitempty"`
+	// The callback tool class.
 	//
 	// example:
 	//
@@ -107,14 +129,16 @@ type ChatResponseBody struct {
 	// example:
 	//
 	// 8e481be1-21d5-4a92-a2fb-fb54be0ab4f6
-	ThreadId *string `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
-	// The tool call ID.
+	ThreadId      *string `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
+	Timestamp     *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	ToolCallError *string `json:"ToolCallError,omitempty" xml:"ToolCallError,omitempty"`
+	// The tool calling invoke ID.
 	//
 	// example:
 	//
 	// call_edf9cdb69e0e4c9796a6a5a6
 	ToolCallId *string `json:"ToolCallId,omitempty" xml:"ToolCallId,omitempty"`
-	// The name of the tool.
+	// The tool name.
 	//
 	// example:
 	//
@@ -126,7 +150,7 @@ type ChatResponseBody struct {
 	//
 	// TEXT_MESSAGE_CONTENT
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The value of the additional information.
+	// The extension value.
 	//
 	// example:
 	//
@@ -146,6 +170,10 @@ func (s *ChatResponseBody) GetActivityType() *string {
 	return s.ActivityType
 }
 
+func (s *ChatResponseBody) GetAgentId() *string {
+	return s.AgentId
+}
+
 func (s *ChatResponseBody) GetContent() *string {
 	return s.Content
 }
@@ -154,12 +182,28 @@ func (s *ChatResponseBody) GetDelta() *string {
 	return s.Delta
 }
 
+func (s *ChatResponseBody) GetKind() *string {
+	return s.Kind
+}
+
+func (s *ChatResponseBody) GetLabel() *string {
+	return s.Label
+}
+
 func (s *ChatResponseBody) GetMessageId() *string {
 	return s.MessageId
 }
 
 func (s *ChatResponseBody) GetName() *string {
 	return s.Name
+}
+
+func (s *ChatResponseBody) GetOriginatingToolCallId() *string {
+	return s.OriginatingToolCallId
+}
+
+func (s *ChatResponseBody) GetParentAgentId() *string {
+	return s.ParentAgentId
 }
 
 func (s *ChatResponseBody) GetParentMessageId() *string {
@@ -178,12 +222,24 @@ func (s *ChatResponseBody) GetStepName() *string {
 	return s.StepName
 }
 
+func (s *ChatResponseBody) GetStepStatus() *string {
+	return s.StepStatus
+}
+
 func (s *ChatResponseBody) GetTaskTrackerId() *string {
 	return s.TaskTrackerId
 }
 
 func (s *ChatResponseBody) GetThreadId() *string {
 	return s.ThreadId
+}
+
+func (s *ChatResponseBody) GetTimestamp() *int64 {
+	return s.Timestamp
+}
+
+func (s *ChatResponseBody) GetToolCallError() *string {
+	return s.ToolCallError
 }
 
 func (s *ChatResponseBody) GetToolCallId() *string {
@@ -207,6 +263,11 @@ func (s *ChatResponseBody) SetActivityType(v string) *ChatResponseBody {
 	return s
 }
 
+func (s *ChatResponseBody) SetAgentId(v string) *ChatResponseBody {
+	s.AgentId = &v
+	return s
+}
+
 func (s *ChatResponseBody) SetContent(v string) *ChatResponseBody {
 	s.Content = &v
 	return s
@@ -217,6 +278,16 @@ func (s *ChatResponseBody) SetDelta(v string) *ChatResponseBody {
 	return s
 }
 
+func (s *ChatResponseBody) SetKind(v string) *ChatResponseBody {
+	s.Kind = &v
+	return s
+}
+
+func (s *ChatResponseBody) SetLabel(v string) *ChatResponseBody {
+	s.Label = &v
+	return s
+}
+
 func (s *ChatResponseBody) SetMessageId(v string) *ChatResponseBody {
 	s.MessageId = &v
 	return s
@@ -224,6 +295,16 @@ func (s *ChatResponseBody) SetMessageId(v string) *ChatResponseBody {
 
 func (s *ChatResponseBody) SetName(v string) *ChatResponseBody {
 	s.Name = &v
+	return s
+}
+
+func (s *ChatResponseBody) SetOriginatingToolCallId(v string) *ChatResponseBody {
+	s.OriginatingToolCallId = &v
+	return s
+}
+
+func (s *ChatResponseBody) SetParentAgentId(v string) *ChatResponseBody {
+	s.ParentAgentId = &v
 	return s
 }
 
@@ -247,6 +328,11 @@ func (s *ChatResponseBody) SetStepName(v string) *ChatResponseBody {
 	return s
 }
 
+func (s *ChatResponseBody) SetStepStatus(v string) *ChatResponseBody {
+	s.StepStatus = &v
+	return s
+}
+
 func (s *ChatResponseBody) SetTaskTrackerId(v string) *ChatResponseBody {
 	s.TaskTrackerId = &v
 	return s
@@ -254,6 +340,16 @@ func (s *ChatResponseBody) SetTaskTrackerId(v string) *ChatResponseBody {
 
 func (s *ChatResponseBody) SetThreadId(v string) *ChatResponseBody {
 	s.ThreadId = &v
+	return s
+}
+
+func (s *ChatResponseBody) SetTimestamp(v int64) *ChatResponseBody {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *ChatResponseBody) SetToolCallError(v string) *ChatResponseBody {
+	s.ToolCallError = &v
 	return s
 }
 
