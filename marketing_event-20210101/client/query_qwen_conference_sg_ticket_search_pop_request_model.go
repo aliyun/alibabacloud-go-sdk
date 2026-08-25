@@ -14,9 +14,6 @@ type iQueryQwenConferenceSgTicketSearchPopRequest interface {
 }
 
 type QueryQwenConferenceSgTicketSearchPopRequest struct {
-	// example:
-	//
-	// neal
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 }
 

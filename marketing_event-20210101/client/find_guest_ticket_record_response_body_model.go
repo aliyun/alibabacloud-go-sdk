@@ -22,23 +22,11 @@ type iFindGuestTicketRecordResponseBody interface {
 }
 
 type FindGuestTicketRecordResponseBody struct {
-	Data []*FindGuestTicketRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// example:
-	//
-	// Success
-	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// example:
-	//
-	// error
-	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	// example:
-	//
-	// 8D190CE8-7D76-5781-8055-0990BBD2249F
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data       []*FindGuestTicketRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrCode    *string                                  `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	ErrMessage *string                                  `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s FindGuestTicketRecordResponseBody) String() string {
@@ -108,36 +96,20 @@ func (s *FindGuestTicketRecordResponseBody) Validate() error {
 }
 
 type FindGuestTicketRecordResponseBodyData struct {
-	ChannelLevelInfo *FindGuestTicketRecordResponseBodyDataChannelLevelInfo `json:"ChannelLevelInfo,omitempty" xml:"ChannelLevelInfo,omitempty" type:"Struct"`
-	CompanyName      *string                                                `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
-	// example:
-	//
-	// 2023-10-31,2023-11-02
-	EquityDates *string `json:"EquityDates,omitempty" xml:"EquityDates,omitempty"`
-	// example:
-	//
-	// -1
-	HealthCommitmentStatus *int32 `json:"HealthCommitmentStatus,omitempty" xml:"HealthCommitmentStatus,omitempty"`
-	// example:
-	//
-	// IjEqZpp8Wn29+sqOr3hxXuOqn6CyKYNSQ5dmMA0txiM=
-	IdNumber *string `json:"IdNumber,omitempty" xml:"IdNumber,omitempty"`
-	IdType   *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// example:
-	//
-	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// example:
-	//
-	// 3702-10240842
-	TicketCode         *string `json:"TicketCode,omitempty" xml:"TicketCode,omitempty"`
-	TicketName         *string `json:"TicketName,omitempty" xml:"TicketName,omitempty"`
-	TicketReceiveDates *string `json:"TicketReceiveDates,omitempty" xml:"TicketReceiveDates,omitempty"`
-	// example:
-	//
-	// 1
-	TicketType *string `json:"TicketType,omitempty" xml:"TicketType,omitempty"`
+	ChannelLevelInfo       *FindGuestTicketRecordResponseBodyDataChannelLevelInfo `json:"ChannelLevelInfo,omitempty" xml:"ChannelLevelInfo,omitempty" type:"Struct"`
+	CompanyName            *string                                                `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
+	EquityDates            *string                                                `json:"EquityDates,omitempty" xml:"EquityDates,omitempty"`
+	FaceFeature            *string                                                `json:"FaceFeature,omitempty" xml:"FaceFeature,omitempty"`
+	FaceFeatureWriteTime   *string                                                `json:"FaceFeatureWriteTime,omitempty" xml:"FaceFeatureWriteTime,omitempty"`
+	HealthCommitmentStatus *int32                                                 `json:"HealthCommitmentStatus,omitempty" xml:"HealthCommitmentStatus,omitempty"`
+	IdNumber               *string                                                `json:"IdNumber,omitempty" xml:"IdNumber,omitempty"`
+	IdType                 *string                                                `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	Name                   *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status                 *int32                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	TicketCode             *string                                                `json:"TicketCode,omitempty" xml:"TicketCode,omitempty"`
+	TicketName             *string                                                `json:"TicketName,omitempty" xml:"TicketName,omitempty"`
+	TicketReceiveDates     *string                                                `json:"TicketReceiveDates,omitempty" xml:"TicketReceiveDates,omitempty"`
+	TicketType             *string                                                `json:"TicketType,omitempty" xml:"TicketType,omitempty"`
 }
 
 func (s FindGuestTicketRecordResponseBodyData) String() string {
@@ -158,6 +130,14 @@ func (s *FindGuestTicketRecordResponseBodyData) GetCompanyName() *string {
 
 func (s *FindGuestTicketRecordResponseBodyData) GetEquityDates() *string {
 	return s.EquityDates
+}
+
+func (s *FindGuestTicketRecordResponseBodyData) GetFaceFeature() *string {
+	return s.FaceFeature
+}
+
+func (s *FindGuestTicketRecordResponseBodyData) GetFaceFeatureWriteTime() *string {
+	return s.FaceFeatureWriteTime
 }
 
 func (s *FindGuestTicketRecordResponseBodyData) GetHealthCommitmentStatus() *int32 {
@@ -208,6 +188,16 @@ func (s *FindGuestTicketRecordResponseBodyData) SetCompanyName(v string) *FindGu
 
 func (s *FindGuestTicketRecordResponseBodyData) SetEquityDates(v string) *FindGuestTicketRecordResponseBodyData {
 	s.EquityDates = &v
+	return s
+}
+
+func (s *FindGuestTicketRecordResponseBodyData) SetFaceFeature(v string) *FindGuestTicketRecordResponseBodyData {
+	s.FaceFeature = &v
+	return s
+}
+
+func (s *FindGuestTicketRecordResponseBodyData) SetFaceFeatureWriteTime(v string) *FindGuestTicketRecordResponseBodyData {
+	s.FaceFeatureWriteTime = &v
 	return s
 }
 
@@ -266,29 +256,14 @@ func (s *FindGuestTicketRecordResponseBodyData) Validate() error {
 }
 
 type FindGuestTicketRecordResponseBodyDataChannelLevelInfo struct {
-	// example:
-	//
-	// 1401
-	ChannelId *int64 `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// example:
-	//
-	// VIP
-	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// example:
-	//
-	// VIP
-	LevelOneChannelName *string                                                               `json:"LevelOneChannelName,omitempty" xml:"LevelOneChannelName,omitempty"`
-	LevelOneOwner       []*FindGuestTicketRecordResponseBodyDataChannelLevelInfoLevelOneOwner `json:"LevelOneOwner,omitempty" xml:"LevelOneOwner,omitempty" type:"Repeated"`
-	// example:
-	//
-	// VIP
+	ChannelId             *int64                                                                  `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	ChannelName           *string                                                                 `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	LevelOneChannelName   *string                                                                 `json:"LevelOneChannelName,omitempty" xml:"LevelOneChannelName,omitempty"`
+	LevelOneOwner         []*FindGuestTicketRecordResponseBodyDataChannelLevelInfoLevelOneOwner   `json:"LevelOneOwner,omitempty" xml:"LevelOneOwner,omitempty" type:"Repeated"`
 	LevelThreeChannelName *string                                                                 `json:"LevelThreeChannelName,omitempty" xml:"LevelThreeChannelName,omitempty"`
 	LevelThreeOwner       []*FindGuestTicketRecordResponseBodyDataChannelLevelInfoLevelThreeOwner `json:"LevelThreeOwner,omitempty" xml:"LevelThreeOwner,omitempty" type:"Repeated"`
-	// example:
-	//
-	// VIP
-	LevelTwoChannelName *string                                                               `json:"LevelTwoChannelName,omitempty" xml:"LevelTwoChannelName,omitempty"`
-	LevelTwoOwner       []*FindGuestTicketRecordResponseBodyDataChannelLevelInfoLevelTwoOwner `json:"LevelTwoOwner,omitempty" xml:"LevelTwoOwner,omitempty" type:"Repeated"`
+	LevelTwoChannelName   *string                                                                 `json:"LevelTwoChannelName,omitempty" xml:"LevelTwoChannelName,omitempty"`
+	LevelTwoOwner         []*FindGuestTicketRecordResponseBodyDataChannelLevelInfoLevelTwoOwner   `json:"LevelTwoOwner,omitempty" xml:"LevelTwoOwner,omitempty" type:"Repeated"`
 }
 
 func (s FindGuestTicketRecordResponseBodyDataChannelLevelInfo) String() string {
@@ -403,15 +378,9 @@ func (s *FindGuestTicketRecordResponseBodyDataChannelLevelInfo) Validate() error
 }
 
 type FindGuestTicketRecordResponseBodyDataChannelLevelInfoLevelOneOwner struct {
-	// example:
-	//
-	// IjEqZpp8Wn29+sqOr3hxXuOqn6CyKYNSQ5dmMA0txiM=
 	OwnerEmpIdOrTelephone *string `json:"OwnerEmpIdOrTelephone,omitempty" xml:"OwnerEmpIdOrTelephone,omitempty"`
 	OwnerName             *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// example:
-	//
-	// dUffKUpLXP5LFGeJa+Rs8Q==
-	OwnerNickName *string `json:"OwnerNickName,omitempty" xml:"OwnerNickName,omitempty"`
+	OwnerNickName         *string `json:"OwnerNickName,omitempty" xml:"OwnerNickName,omitempty"`
 }
 
 func (s FindGuestTicketRecordResponseBodyDataChannelLevelInfoLevelOneOwner) String() string {
@@ -454,15 +423,9 @@ func (s *FindGuestTicketRecordResponseBodyDataChannelLevelInfoLevelOneOwner) Val
 }
 
 type FindGuestTicketRecordResponseBodyDataChannelLevelInfoLevelThreeOwner struct {
-	// example:
-	//
-	// IjEqZpp8Wn29+sqOr3hxXuOqn6CyKYNSQ5dmMA0txiM=
 	OwnerEmpIdOrTelephone *string `json:"OwnerEmpIdOrTelephone,omitempty" xml:"OwnerEmpIdOrTelephone,omitempty"`
 	OwnerName             *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// example:
-	//
-	// dUffKUpLXP5LFGeJa+Rs8Q==
-	OwnerNickName *string `json:"OwnerNickName,omitempty" xml:"OwnerNickName,omitempty"`
+	OwnerNickName         *string `json:"OwnerNickName,omitempty" xml:"OwnerNickName,omitempty"`
 }
 
 func (s FindGuestTicketRecordResponseBodyDataChannelLevelInfoLevelThreeOwner) String() string {
@@ -505,15 +468,9 @@ func (s *FindGuestTicketRecordResponseBodyDataChannelLevelInfoLevelThreeOwner) V
 }
 
 type FindGuestTicketRecordResponseBodyDataChannelLevelInfoLevelTwoOwner struct {
-	// example:
-	//
-	// IjEqZpp8Wn29+sqOr3hxXuOqn6CyKYNSQ5dmMA0txiM=
 	OwnerEmpIdOrTelephone *string `json:"OwnerEmpIdOrTelephone,omitempty" xml:"OwnerEmpIdOrTelephone,omitempty"`
 	OwnerName             *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// example:
-	//
-	// dUffKUpLXP5LFGeJa+Rs8Q==
-	OwnerNickName *string `json:"OwnerNickName,omitempty" xml:"OwnerNickName,omitempty"`
+	OwnerNickName         *string `json:"OwnerNickName,omitempty" xml:"OwnerNickName,omitempty"`
 }
 
 func (s FindGuestTicketRecordResponseBodyDataChannelLevelInfoLevelTwoOwner) String() string {

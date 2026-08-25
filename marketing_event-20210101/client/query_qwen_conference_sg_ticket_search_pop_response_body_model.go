@@ -22,25 +22,11 @@ type iQueryQwenConferenceSgTicketSearchPopResponseBody interface {
 }
 
 type QueryQwenConferenceSgTicketSearchPopResponseBody struct {
-	// Id of the request
-	//
-	// example:
-	//
-	// 200
-	Code *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data []*QueryQwenConferenceSgTicketSearchPopResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// example:
-	//
-	// SUCCESS
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 1skladklasmda
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*QueryQwenConferenceSgTicketSearchPopResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryQwenConferenceSgTicketSearchPopResponseBody) String() string {
@@ -111,25 +97,10 @@ func (s *QueryQwenConferenceSgTicketSearchPopResponseBody) Validate() error {
 
 type QueryQwenConferenceSgTicketSearchPopResponseBodyData struct {
 	CompanyName *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
-	// example:
-	//
-	// placeholder
-	ExtFields *string `json:"ExtFields,omitempty" xml:"ExtFields,omitempty"`
-	// example:
-	//
-	// ***
-	FirstName *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
-	// example:
-	//
-	// ***
-	LastName *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
-	// example:
-	//
-	// 12
-	SubmitId *int64 `json:"SubmitId,omitempty" xml:"SubmitId,omitempty"`
-	// example:
-	//
-	// 1skladklasmda
+	ExtFields   *string `json:"ExtFields,omitempty" xml:"ExtFields,omitempty"`
+	FirstName   *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
+	LastName    *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
+	SubmitId    *int64  `json:"SubmitId,omitempty" xml:"SubmitId,omitempty"`
 	TicketToken *string `json:"TicketToken,omitempty" xml:"TicketToken,omitempty"`
 }
 

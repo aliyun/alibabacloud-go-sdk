@@ -145,14 +145,10 @@ type QuerySignInRecordPopResponseBodyData struct {
 	//
 	// boarding
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	// nfcid
-	//
 	// example:
 	//
 	// cshdsaodhoashd
 	Rfid *string `json:"Rfid,omitempty" xml:"Rfid,omitempty"`
-	// sessionId
-	//
 	// example:
 	//
 	// 2001

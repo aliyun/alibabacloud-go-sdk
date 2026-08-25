@@ -26,22 +26,13 @@ type iQuerySingleActivityInfoResponseBody interface {
 }
 
 type QuerySingleActivityInfoResponseBody struct {
-	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// example:
-	//
-	// 200
-	Code           *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           []*QuerySingleActivityInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	HttpStatusCode *string                                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// example:
-	//
-	// null
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	AccessDeniedDetail *string                                    `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               []*QuerySingleActivityInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	HttpStatusCode     *string                                    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message            *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success            *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QuerySingleActivityInfoResponseBody) String() string {
@@ -129,46 +120,16 @@ func (s *QuerySingleActivityInfoResponseBody) Validate() error {
 }
 
 type QuerySingleActivityInfoResponseBodyData struct {
-	// example:
-	//
-	// 123
-	ActivityId *int64 `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
-	// example:
-	//
-	// vip
-	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// example:
-	//
-	// aliyun
-	CompanyName *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
-	// example:
-	//
-	// xxx
-	CustomerName *string `json:"CustomerName,omitempty" xml:"CustomerName,omitempty"`
-	// example:
-	//
-	// xx@aliyun.com
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// example:
-	//
-	// 1
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// true
+	ActivityId    *int64  `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
+	ChannelName   *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
+	CompanyName   *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
+	CustomerName  *string `json:"CustomerName,omitempty" xml:"CustomerName,omitempty"`
+	Email         *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Id            *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	IsVipCustomer *string `json:"IsVipCustomer,omitempty" xml:"IsVipCustomer,omitempty"`
-	// example:
-	//
-	// 234355**
-	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	// example:
-	//
-	// http://xxx.com?a=xx
-	QRCode *string `json:"QRCode,omitempty" xml:"QRCode,omitempty"`
-	// example:
-	//
-	// {}
-	ReportFields *string `json:"ReportFields,omitempty" xml:"ReportFields,omitempty"`
+	Mobile        *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	QRCode        *string `json:"QRCode,omitempty" xml:"QRCode,omitempty"`
+	ReportFields  *string `json:"ReportFields,omitempty" xml:"ReportFields,omitempty"`
 }
 
 func (s QuerySingleActivityInfoResponseBodyData) String() string {

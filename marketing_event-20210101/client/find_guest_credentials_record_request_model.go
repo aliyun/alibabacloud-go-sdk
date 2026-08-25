@@ -20,13 +20,7 @@ type iFindGuestCredentialsRecordRequest interface {
 }
 
 type FindGuestCredentialsRecordRequest struct {
-	// example:
-	//
-	// 34429
-	ActivityId *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
-	// example:
-	//
-	// 2023-08-07 12:00:00
+	ActivityId     *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
 	DateTimeString *string `json:"DateTimeString,omitempty" xml:"DateTimeString,omitempty"`
 	EndDateTime    *string `json:"EndDateTime,omitempty" xml:"EndDateTime,omitempty"`
 	StartDateTime  *string `json:"StartDateTime,omitempty" xml:"StartDateTime,omitempty"`

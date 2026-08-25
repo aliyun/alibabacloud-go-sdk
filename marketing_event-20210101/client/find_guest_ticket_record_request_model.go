@@ -20,13 +20,7 @@ type iFindGuestTicketRecordRequest interface {
 }
 
 type FindGuestTicketRecordRequest struct {
-	// example:
-	//
-	// 34434
-	ActivityId *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
-	// example:
-	//
-	// 2023-09-04 15:14:00
+	ActivityId     *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
 	DateTimeString *string `json:"DateTimeString,omitempty" xml:"DateTimeString,omitempty"`
 	EndDateTime    *string `json:"EndDateTime,omitempty" xml:"EndDateTime,omitempty"`
 	StartDateTime  *string `json:"StartDateTime,omitempty" xml:"StartDateTime,omitempty"`

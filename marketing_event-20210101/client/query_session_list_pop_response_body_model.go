@@ -141,8 +141,6 @@ func (s *QuerySessionListPopResponseBody) Validate() error {
 }
 
 type QuerySessionListPopResponseBodyData struct {
-	// code
-	//
 	// example:
 	//
 	// code
@@ -151,20 +149,14 @@ type QuerySessionListPopResponseBodyData struct {
 	//
 	// 2024-09-25 14:11
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// id
-	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// location
-	//
 	// example:
 	//
 	// location
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	// name
-	//
 	// example:
 	//
 	// name

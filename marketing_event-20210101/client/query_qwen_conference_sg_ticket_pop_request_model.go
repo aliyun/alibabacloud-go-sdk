@@ -14,9 +14,6 @@ type iQueryQwenConferenceSgTicketPopRequest interface {
 }
 
 type QueryQwenConferenceSgTicketPopRequest struct {
-	// example:
-	//
-	// bPbXgB8nSzI9UIbdqAWaOhtr7T3p1Ryr
 	TicketToken *string `json:"TicketToken,omitempty" xml:"TicketToken,omitempty"`
 }
 

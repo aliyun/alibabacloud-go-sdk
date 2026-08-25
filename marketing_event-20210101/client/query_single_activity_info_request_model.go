@@ -23,18 +23,11 @@ type iQuerySingleActivityInfoRequest interface {
 
 type QuerySingleActivityInfoRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 123
 	ActivityId   *string `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
 	CompanyName  *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
 	CustomerName *string `json:"CustomerName,omitempty" xml:"CustomerName,omitempty"`
-	// example:
-	//
-	// 12233445
-	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	QRCode *string `json:"QRCode,omitempty" xml:"QRCode,omitempty"`
+	Mobile       *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	QRCode       *string `json:"QRCode,omitempty" xml:"QRCode,omitempty"`
 }
 
 func (s QuerySingleActivityInfoRequest) String() string {
