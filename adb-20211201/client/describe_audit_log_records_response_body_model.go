@@ -26,7 +26,7 @@ type iDescribeAuditLogRecordsResponseBody interface {
 type DescribeAuditLogRecordsResponseBody struct {
 	// <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
-	// <props="intl">The ID of the Data Lakehouse Edition cluster.
+	// <props="intl">The cluster ID of the Data Lakehouse Edition cluster.
 	//
 	// example:
 	//
@@ -142,19 +142,19 @@ type DescribeAuditLogRecordsResponseBodyItems struct {
 	//
 	// 14356****
 	ConnId *string `json:"ConnId,omitempty" xml:"ConnId,omitempty"`
-	// The name of the database on which the SQL statement was executed.
+	// The name of the database on which the SQL statement is executed.
 	//
 	// example:
 	//
 	// adb_demo
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The execution start time of the SQL statement in local time. The time is in the yyyy-MM-dd HH:mm:ss format.
+	// The execution start time of the SQL statement in local time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2022-08-12 10:10:00
 	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// The execution start time of the SQL statement, in millisecond-precision UNIX timestamp.
+	// The execution start time of the SQL statement. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ type DescribeAuditLogRecordsResponseBodyItems struct {
 	//
 	// true
 	HasDiagnosticInfo *bool `json:"HasDiagnosticInfo,omitempty" xml:"HasDiagnosticInfo,omitempty"`
-	// The IP address and port number of the client that executed the SQL statement.
+	// The IP address and port number of the client that executes the SQL statement.
 	//
 	// example:
 	//
@@ -193,11 +193,11 @@ type DescribeAuditLogRecordsResponseBodyItems struct {
 	//
 	// SELECT
 	SQLType *string `json:"SQLType,omitempty" xml:"SQLType,omitempty"`
-	// Indicates whether the SQL statement was executed successfully. Valid values:
+	// Indicates whether the SQL statement is executed successfully. Valid values:
 	//
-	// - **true**: The SQL statement was executed successfully.
+	// - **true**: Executed successfully.
 	//
-	// - **false**: The SQL statement failed to be executed.
+	// - **false**: Execution failed.
 	//
 	// example:
 	//
@@ -209,7 +209,7 @@ type DescribeAuditLogRecordsResponseBodyItems struct {
 	//
 	// 216
 	TotalTime *string `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
-	// The username that executed the SQL statement.
+	// The username that executes the SQL statement.
 	//
 	// example:
 	//

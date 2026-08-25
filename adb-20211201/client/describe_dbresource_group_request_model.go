@@ -22,9 +22,9 @@ type iDescribeDBResourceGroupRequest interface {
 }
 
 type DescribeDBResourceGroupRequest struct {
-	// <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	// <props="china">The ID of the cluster. The cluster is of Enterprise Edition, Basic Edition, or Data Lakehouse Edition.
 	//
-	// <props="intl">The cluster ID of the Data Lakehouse Edition cluster.
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -32,21 +32,21 @@ type DescribeDBResourceGroupRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The resource group name.
+	// The name of the resource group.
 	//
-	// > If this parameter is not specified, information about all resource groups in the specified cluster is returned by default.
+	// > If you do not specify this parameter, information about all resource groups in the specified cluster is returned.
 	//
 	// example:
 	//
 	// test_group
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The resource group type. Valid values:
+	// The type of the resource group. Valid values:
 	//
 	// - **Interactive**
 	//
 	// - **Job**
 	//
-	// > For more information about resource groups in Data Lakehouse Edition, see [Resource group overview](https://help.aliyun.com/document_detail/428610.html).
+	// > For more information about resource groups in Data Lakehouse Edition, see [Resource group introduction](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// example:
 	//

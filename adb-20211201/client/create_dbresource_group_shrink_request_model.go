@@ -60,8 +60,9 @@ type iCreateDBResourceGroupShrinkRequest interface {
 }
 
 type CreateDBResourceGroupShrinkRequest struct {
+	// The PromQL resource group configuration.
 	AtmConfigShrink *string `json:"AtmConfig,omitempty" xml:"AtmConfig,omitempty"`
-	// The automatic stop interval. Unit: minutes (m).
+	// The automatic stop interval, in minutes (m).
 	//
 	// example:
 	//
@@ -93,7 +94,7 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// -
 	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
-	// The ID of the Dedicated Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	// The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -149,7 +150,7 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// - **Job**
 	//
-	// > For more information about Data Lakehouse Edition resource groups, see [Resource group overview (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
+	// > For more information about resource groups of the Data Lakehouse Edition, see [Resource group overview (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// This parameter is required.
 	//
@@ -163,11 +164,11 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// -
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
-	// The maximum amount of reserved computing resources. Unit: ACUs.
+	// The maximum reserved computing resources, in ACUs.
 	//
-	// - If the resource group type is Interactive, the maximum reserved computing resources is the current unallocated resources of the cluster, in increments of 16 ACUs.
+	// - If the resource group type is Interactive, the maximum reserved computing resources is the current unallocated resources of the cluster, with a step size of 16 ACUs.
 	//
-	// - If the resource group type is Job, the maximum reserved computing resources is the current unallocated resources of the cluster, in increments of 8 ACUs.
+	// - If the resource group type is Job, the maximum reserved computing resources is the current unallocated resources of the cluster, with a step size of 8 ACUs.
 	//
 	// example:
 	//
@@ -185,7 +186,7 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// -
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
-	// The minimum amount of reserved computing resources. Unit: ACUs.
+	// The minimum reserved computing resources, in ACUs.
 	//
 	// - If the resource group type is Interactive, the minimum reserved computing resources is 16 ACUs.
 	//
@@ -201,7 +202,7 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// 1
 	MinGpuQuantity *int32 `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
-	// The Ray configuration.
+	// The Ray configuration information.
 	//
 	// > This parameter is required when the resource group is an AI resource group and the corresponding engine is RayCluster.
 	RayConfigShrink *string `json:"RayConfig,omitempty" xml:"RayConfig,omitempty"`
@@ -233,7 +234,7 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// ADB.MLLarge.2
 	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	// The name of the destination resource group.
+	// The name of the target resource group.
 	//
 	// example:
 	//

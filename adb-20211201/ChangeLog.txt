@@ -1,3 +1,14 @@
+2026-08-25 Version: v5.1.0
+- Support API CloseLogSyncToSLS.
+- Support API GetLogSyncToSLS.
+- Support API OpenLogSyncToSLS.
+- Update API CreateDBResourceGroup: add request parameters RayConfig.StorageMounts.
+- Update API DescribeAuditLogRecords: add request parameters ProcessId.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.RayConfig.StorageMounts.$.StorageName.
+- Update API GetKnowledgeRecall: add request parameters User.
+- Update API ModifyDBResourceGroup: add request parameters RayConfig.StorageMounts.$.StorageName.
+
+
 2026-08-03 Version: v5.0.2
 - Update API DescribeAuditLogRecords: add request parameters EngineType.
 

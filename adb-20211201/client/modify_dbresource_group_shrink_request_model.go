@@ -56,28 +56,29 @@ type iModifyDBResourceGroupShrinkRequest interface {
 }
 
 type ModifyDBResourceGroupShrinkRequest struct {
+	// The PromQL resource group configuration.
 	AtmConfigShrink *string `json:"AtmConfig,omitempty" xml:"AtmConfig,omitempty"`
-	// The idle duration after which the resource group is automatically stopped.
+	// The automatic stop interval.
 	//
 	// example:
 	//
 	// 5m
 	AutoStopInterval *string `json:"AutoStopInterval,omitempty" xml:"AutoStopInterval,omitempty"`
-	// This parameter is reserved.
+	// A reserved parameter (not applicable).
 	//
 	// example:
 	//
 	// 无
 	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
-	// This parameter is reserved.
+	// A reserved parameter (not applicable).
 	//
 	// example:
 	//
 	// 无
 	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
-	// <props="china">The ID of the Data Lakehouse Edition, Enterprise Edition, or Basic Edition cluster.
+	// <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
-	// <props="intl">The ID of the Data Lakehouse Edition cluster.
+	// <props="intl">The cluster ID of the Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -85,11 +86,11 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	//
 	// amv-bp1r053byu48p****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to enable the spot instance feature for the resource group. This feature provides resources at a lower unit price, but they can be reclaimed at any time. Only `Job` resource groups support this feature. Valid values:
+	// Specifies whether to enable the spot instance feature for the resource group. After the spot instance feature is enabled, the unit price of resources is reduced, but the resources may be released. Only Job resource groups support this feature. Valid values:
 	//
-	// - **True**: enables the spot instance feature.
+	// - **True**: Enables the spot instance feature.
 	//
-	// - **False**: disables the spot instance feature.
+	// - **False**: Disables the spot instance feature.
 	//
 	// example:
 	//
@@ -101,11 +102,11 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	//
 	// {\\"spark.adb.version\\":\\"3.5\\"}
 	EngineParamsShrink *string `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
-	// The time-based scaling plan for GPUs.
+	// The GPU time-sharing elastic plan.
 	GpuElasticPlanShrink *string `json:"GpuElasticPlan,omitempty" xml:"GpuElasticPlan,omitempty"`
-	// The name of the resource group.
+	// The resource group name.
 	//
-	// > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the resource group name for a specific cluster.
+	// > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the resource group names of a specified cluster.
 	//
 	// This parameter is required.
 	//
@@ -113,13 +114,13 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The type of the resource group. Valid values:
+	// The resource group type. Valid values:
 	//
 	// - **Interactive**
 	//
 	// - **Job**
 	//
-	// > For more information about resource groups in Data Lakehouse Edition clusters, see [Resource groups](https://help.aliyun.com/document_detail/428610.html).
+	// > For more information about Data Lakehouse Edition resource groups, see [Resource group overview](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// This parameter is required.
 	//
@@ -127,75 +128,75 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	//
 	// Interactive
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// This parameter is reserved.
+	// A reserved parameter (not applicable).
 	//
 	// example:
 	//
 	// 无
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
-	// The maximum amount of reserved computing resources. The value cannot exceed the unallocated computing resources of the cluster.
+	// The maximum reserved computing resources.
 	//
-	// - If the resource group type is `Interactive`, the value is specified in increments of 16 ACU.
+	// - If the resource group type is Interactive, the maximum reserved computing resources is the unallocated resources of the cluster, in increments of 16 ACUs.
 	//
-	// - If the resource group type is `Job`, the value is specified in increments of 8 ACU.
+	// - If the resource group type is Job, the maximum reserved computing resources is the unallocated resources of the cluster, in increments of 8 ACUs.
 	//
 	// example:
 	//
 	// 48ACU
 	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
-	// This parameter is reserved.
+	// A reserved parameter (not applicable).
 	//
 	// example:
 	//
 	// Reserved parameter. Not applicable.
 	MaxGpuQuantity *int32 `json:"MaxGpuQuantity,omitempty" xml:"MaxGpuQuantity,omitempty"`
-	// This parameter is reserved.
+	// A reserved parameter (not applicable).
 	//
 	// example:
 	//
 	// 无
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
-	// The minimum amount of reserved computing resources.
+	// The minimum reserved computing resources.
 	//
-	// - If the resource group type is `Interactive`, the minimum amount of reserved computing resources is 16 ACU.
+	// - If the resource group type is Interactive, the minimum reserved computing resources is 16 ACUs.
 	//
-	// - If the resource group type is `Job`, the minimum amount of reserved computing resources is 0 ACU.
+	// - If the resource group type is Job, the minimum reserved computing resources is 0 ACUs.
 	//
 	// example:
 	//
 	// 0ACU
 	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
-	// This parameter is reserved.
+	// A reserved parameter (not applicable).
 	//
 	// example:
 	//
 	// Reserved parameter. Not applicable.
 	MinGpuQuantity *int32 `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
-	// The Ray configuration. This parameter is required if the resource group is an AI group and uses a Ray cluster as its engine.
+	// The Ray configuration. This parameter is required when the resource group is an AI resource group and the corresponding engine is RayCluster.
 	RayConfigShrink *string `json:"RayConfig,omitempty" xml:"RayConfig,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query available regions.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of a specified cluster.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The job submission rules.
+	// The job routing rules.
 	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// This parameter is reserved.
+	// A reserved parameter (not applicable).
 	//
 	// example:
 	//
 	// Reserved parameter. Not applicable.
 	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	// The desired state of the resource group. Specify **starting*	- to start the resource group or **stopping*	- to stop it.
+	// The resource group status. **starting*	- indicates that the resource group is being started. **stopping*	- indicates that the resource group is being stopped.
 	//
 	// example:
 	//
 	// starting
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// This parameter is reserved.
+	// A reserved parameter (not applicable).
 	//
 	// example:
 	//

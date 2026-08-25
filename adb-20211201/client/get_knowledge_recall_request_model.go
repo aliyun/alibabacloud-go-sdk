@@ -15,6 +15,8 @@ type iGetKnowledgeRecallRequest interface {
 	GetQuestion() *string
 	SetTopk(v int32) *GetKnowledgeRecallRequest
 	GetTopk() *int32
+	SetUser(v string) *GetKnowledgeRecallRequest
+	GetUser() *string
 }
 
 type GetKnowledgeRecallRequest struct {
@@ -40,6 +42,8 @@ type GetKnowledgeRecallRequest struct {
 	//
 	// 5
 	Topk *int32 `json:"Topk,omitempty" xml:"Topk,omitempty"`
+	// The username. Only files that this user has permission to access are recalled.
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s GetKnowledgeRecallRequest) String() string {
@@ -62,6 +66,10 @@ func (s *GetKnowledgeRecallRequest) GetTopk() *int32 {
 	return s.Topk
 }
 
+func (s *GetKnowledgeRecallRequest) GetUser() *string {
+	return s.User
+}
+
 func (s *GetKnowledgeRecallRequest) SetDBClusterId(v string) *GetKnowledgeRecallRequest {
 	s.DBClusterId = &v
 	return s
@@ -74,6 +82,11 @@ func (s *GetKnowledgeRecallRequest) SetQuestion(v string) *GetKnowledgeRecallReq
 
 func (s *GetKnowledgeRecallRequest) SetTopk(v int32) *GetKnowledgeRecallRequest {
 	s.Topk = &v
+	return s
+}
+
+func (s *GetKnowledgeRecallRequest) SetUser(v string) *GetKnowledgeRecallRequest {
+	s.User = &v
 	return s
 }
 

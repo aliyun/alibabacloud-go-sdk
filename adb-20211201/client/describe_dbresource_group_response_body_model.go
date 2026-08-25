@@ -66,6 +66,7 @@ func (s *DescribeDBResourceGroupResponseBody) Validate() error {
 }
 
 type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
+	// The PromQL resource group configuration.
 	AtmConfig *DescribeDBResourceGroupResponseBodyGroupsInfoAtmConfig `json:"AtmConfig,omitempty" xml:"AtmConfig,omitempty" type:"Struct"`
 	// The automatic stop interval, in the format of a number followed by m (minutes). The value ranges from 0m or 5m to 10080m. A value of 0m indicates that automatic stop is disabled.
 	//
@@ -99,19 +100,19 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	//
 	// Reserved parameter
 	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
-	// The time when the resource group was created. The time is in UTC and in the format of <i>yyyy-MM-ddTHH:mm:ssZ</i>.
+	// The time when the resource group was created, in UTC. Format: <i>yyyy-MM-ddTHH:mm:ssZ</i>.
 	//
 	// example:
 	//
 	// 2022-08-29T03:34:30Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The minimum elastic computing resources. Unit: ACUs.
+	// The minimum elastic computing resources, in ACUs.
 	//
 	// example:
 	//
 	// 16ACU
 	ElasticMinComputeResource *string `json:"ElasticMinComputeResource,omitempty" xml:"ElasticMinComputeResource,omitempty"`
-	// Indicates whether the spot instance feature is enabled for the resource group. When the spot instance feature is enabled, the unit price of resources is reduced, but the resources may be released. Valid values:
+	// Indicates whether the spot instance feature is enabled for the resource group. When the spot instance feature is enabled, the unit price of resources is reduced, but instances may be released. Valid values:
 	//
 	// - **True**: The spot instance feature is enabled.
 	//
@@ -145,7 +146,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	//
 	// - **Job**
 	//
-	// > For more information about resource groups in Data Lakehouse Edition, see [Resource group overview (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
+	// > For more information about resource groups in Data Lakehouse Edition, see [Resource group introduction (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// example:
 	//
@@ -163,7 +164,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	//
 	// Reserved parameter
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
-	// The maximum reserved computing resources. Unit: ACUs.
+	// The maximum reserved computing resources, in ACUs.
 	//
 	// example:
 	//
@@ -189,7 +190,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	//
 	// Reserved parameter
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
-	// The minimum reserved computing resources. Unit: ACUs.
+	// The minimum reserved computing resources, in ACUs.
 	//
 	// example:
 	//
@@ -211,7 +212,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	//
 	// Reserved parameter
 	RunningClusterCount *int32 `json:"RunningClusterCount,omitempty" xml:"RunningClusterCount,omitempty"`
-	// The scale-out policy of the resource group. Valid values:
+	// The scaling policy of the resource group. Valid values:
 	//
 	// - AutoScaling: enables the AutoScaling automatic scaling policy.
 	//
@@ -229,7 +230,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	//
 	// ADB.MLLarge.2
 	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	// The status of the resource group. Valid values:
+	// The resource group status. Valid values:
 	//
 	// - **creating**: being created
 	//
@@ -247,7 +248,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	//
 	// test
 	TargetResourceGroupName *string `json:"TargetResourceGroupName,omitempty" xml:"TargetResourceGroupName,omitempty"`
-	// The time when the resource group was last updated. The time is in UTC and in the format of <i>yyyy-MM-ddTHH:mm:ssZ</i>.
+	// The time when the resource group was last updated, in UTC. Format: <i>yyyy-MM-ddTHH:mm:ssZ</i>.
 	//
 	// example:
 	//
@@ -553,46 +554,68 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) Validate() error {
 }
 
 type DescribeDBResourceGroupResponseBodyGroupsInfoAtmConfig struct {
+	// The number of authentication nodes.
+	//
 	// example:
 	//
 	// 2
 	AuthNodeNum *string `json:"AuthNodeNum,omitempty" xml:"AuthNodeNum,omitempty"`
+	// The authentication node specifications.
+	//
 	// example:
 	//
 	// 8ACU
 	AuthNodeSpec *string `json:"AuthNodeSpec,omitempty" xml:"AuthNodeSpec,omitempty"`
+	// The number of write nodes.
+	//
 	// example:
 	//
 	// 1
 	InsertNodeNum *string `json:"InsertNodeNum,omitempty" xml:"InsertNodeNum,omitempty"`
+	// The write node specifications.
+	//
 	// example:
 	//
 	// 8ACU
 	InsertNodeSpec *string `json:"InsertNodeSpec,omitempty" xml:"InsertNodeSpec,omitempty"`
+	// The cache size of query nodes.
+	//
 	// example:
 	//
 	// 10
 	SelectNodeCacheSize *string `json:"SelectNodeCacheSize,omitempty" xml:"SelectNodeCacheSize,omitempty"`
+	// The number of query nodes.
+	//
 	// example:
 	//
 	// 1
 	SelectNodeNum *string `json:"SelectNodeNum,omitempty" xml:"SelectNodeNum,omitempty"`
+	// The query node specifications.
+	//
 	// example:
 	//
 	// 8ACU
 	SelectNodeSpec *string `json:"SelectNodeSpec,omitempty" xml:"SelectNodeSpec,omitempty"`
+	// The disk size of storage nodes.
+	//
 	// example:
 	//
 	// 100
 	StorageNodeDiskSize *string `json:"StorageNodeDiskSize,omitempty" xml:"StorageNodeDiskSize,omitempty"`
+	// The disk type of storage nodes.
+	//
 	// example:
 	//
 	// essd_pl1
 	StorageNodeDiskType *string `json:"StorageNodeDiskType,omitempty" xml:"StorageNodeDiskType,omitempty"`
+	// The number of storage nodes.
+	//
 	// example:
 	//
 	// 2
 	StorageNodeNum *string `json:"StorageNodeNum,omitempty" xml:"StorageNodeNum,omitempty"`
+	// The storage node specifications.
+	//
 	// example:
 	//
 	// 8ACU
@@ -761,13 +784,13 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlan) Validate()
 }
 
 type DescribeDBResourceGroupResponseBodyGroupsInfoGpuElasticPlanRules struct {
-	// The end time, specified as a cron expression. The interval must be at least 1 hour.
+	// The end time in Cron expression format. The interval must be at least 1 hour.
 	//
 	// example:
 	//
 	// 0 0 3 	- 	- ?
 	EndCronExpression *string `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
-	// The start time, specified as a cron expression. The interval must be at least 1 hour.
+	// The start time in Cron expression format. The interval must be at least 1 hour.
 	//
 	// example:
 	//
@@ -832,7 +855,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig struct {
 	//
 	// 1
 	HeadAllocateUnit *string `json:"HeadAllocateUnit,omitempty" xml:"HeadAllocateUnit,omitempty"`
-	// The disk size of the head node.
+	// The disk capacity of the head node.
 	//
 	// example:
 	//
@@ -868,6 +891,8 @@ type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig struct {
 	//
 	// http://ray-grafana-address.example.com
 	RayGrafanaAddress *string `json:"RayGrafanaAddress,omitempty" xml:"RayGrafanaAddress,omitempty"`
+	// The Ray Serve public address.
+	//
 	// example:
 	//
 	// 1.2.3.4:8100
@@ -1176,7 +1201,8 @@ type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts struct 
 	// example:
 	//
 	// 1
-	StorageId *int64 `json:"StorageId,omitempty" xml:"StorageId,omitempty"`
+	StorageId   *int64  `json:"StorageId,omitempty" xml:"StorageId,omitempty"`
+	StorageName *string `json:"StorageName,omitempty" xml:"StorageName,omitempty"`
 }
 
 func (s DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts) String() string {
@@ -1195,6 +1221,10 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts) Ge
 	return s.StorageId
 }
 
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts) GetStorageName() *string {
+	return s.StorageName
+}
+
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts) SetMountPath(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts {
 	s.MountPath = &v
 	return s
@@ -1202,6 +1232,11 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts) Se
 
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts) SetStorageId(v int64) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts {
 	s.StorageId = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts) SetStorageName(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigStorageMounts {
+	s.StorageName = &v
 	return s
 }
 
@@ -1216,7 +1251,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups struct {
 	//
 	// 1
 	AllocateUnit *string `json:"AllocateUnit,omitempty" xml:"AllocateUnit,omitempty"`
-	// The name of the Ray worker group.
+	// The Ray worker group name.
 	//
 	// example:
 	//
@@ -1234,7 +1269,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups struct {
 	//
 	// 1
 	MinWorkerQuantity *int32 `json:"MinWorkerQuantity,omitempty" xml:"MinWorkerQuantity,omitempty"`
-	// The disk size per worker.
+	// The disk capacity per worker.
 	//
 	// example:
 	//
@@ -1336,7 +1371,7 @@ type DescribeDBResourceGroupResponseBodyGroupsInfoRules struct {
 	//
 	// user_default
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The query execution time threshold. Unit: milliseconds (ms).
+	// The query execution time threshold, in milliseconds (ms).
 	//
 	// example:
 	//

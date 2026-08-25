@@ -60,8 +60,9 @@ type iCreateDBResourceGroupRequest interface {
 }
 
 type CreateDBResourceGroupRequest struct {
+	// The PromQL resource group configuration.
 	AtmConfig *CreateDBResourceGroupRequestAtmConfig `json:"AtmConfig,omitempty" xml:"AtmConfig,omitempty" type:"Struct"`
-	// The automatic stop interval. Unit: minutes (m).
+	// The automatic stop interval, in minutes (m).
 	//
 	// example:
 	//
@@ -93,7 +94,7 @@ type CreateDBResourceGroupRequest struct {
 	//
 	// -
 	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
-	// The ID of the Dedicated Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	// The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -149,7 +150,7 @@ type CreateDBResourceGroupRequest struct {
 	//
 	// - **Job**
 	//
-	// > For more information about Data Lakehouse Edition resource groups, see [Resource group overview (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
+	// > For more information about resource groups of the Data Lakehouse Edition, see [Resource group overview (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// This parameter is required.
 	//
@@ -163,11 +164,11 @@ type CreateDBResourceGroupRequest struct {
 	//
 	// -
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
-	// The maximum amount of reserved computing resources. Unit: ACUs.
+	// The maximum reserved computing resources, in ACUs.
 	//
-	// - If the resource group type is Interactive, the maximum reserved computing resources is the current unallocated resources of the cluster, in increments of 16 ACUs.
+	// - If the resource group type is Interactive, the maximum reserved computing resources is the current unallocated resources of the cluster, with a step size of 16 ACUs.
 	//
-	// - If the resource group type is Job, the maximum reserved computing resources is the current unallocated resources of the cluster, in increments of 8 ACUs.
+	// - If the resource group type is Job, the maximum reserved computing resources is the current unallocated resources of the cluster, with a step size of 8 ACUs.
 	//
 	// example:
 	//
@@ -185,7 +186,7 @@ type CreateDBResourceGroupRequest struct {
 	//
 	// -
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
-	// The minimum amount of reserved computing resources. Unit: ACUs.
+	// The minimum reserved computing resources, in ACUs.
 	//
 	// - If the resource group type is Interactive, the minimum reserved computing resources is 16 ACUs.
 	//
@@ -201,7 +202,7 @@ type CreateDBResourceGroupRequest struct {
 	//
 	// 1
 	MinGpuQuantity *int32 `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
-	// The Ray configuration.
+	// The Ray configuration information.
 	//
 	// > This parameter is required when the resource group is an AI resource group and the corresponding engine is RayCluster.
 	RayConfig *CreateDBResourceGroupRequestRayConfig `json:"RayConfig,omitempty" xml:"RayConfig,omitempty" type:"Struct"`
@@ -233,7 +234,7 @@ type CreateDBResourceGroupRequest struct {
 	//
 	// ADB.MLLarge.2
 	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	// The name of the destination resource group.
+	// The name of the target resource group.
 	//
 	// example:
 	//
@@ -494,46 +495,68 @@ func (s *CreateDBResourceGroupRequest) Validate() error {
 }
 
 type CreateDBResourceGroupRequestAtmConfig struct {
+	// The number of authentication nodes.
+	//
 	// example:
 	//
 	// 2
 	AuthNodeNum *int32 `json:"AuthNodeNum,omitempty" xml:"AuthNodeNum,omitempty"`
+	// The authentication node specifications ([0-9+]ACU).
+	//
 	// example:
 	//
 	// 8ACU
 	AuthNodeSpec *string `json:"AuthNodeSpec,omitempty" xml:"AuthNodeSpec,omitempty"`
+	// The number of insert nodes.
+	//
 	// example:
 	//
 	// 2
 	InsertNodeNum *int32 `json:"InsertNodeNum,omitempty" xml:"InsertNodeNum,omitempty"`
+	// The insert node specifications ([0-9+]ACU).
+	//
 	// example:
 	//
 	// 8ACU
 	InsertNodeSpec *string `json:"InsertNodeSpec,omitempty" xml:"InsertNodeSpec,omitempty"`
+	// The cache size of query nodes (GB).
+	//
 	// example:
 	//
 	// 10
 	SelectNodeCacheSize *int32 `json:"SelectNodeCacheSize,omitempty" xml:"SelectNodeCacheSize,omitempty"`
+	// The number of query nodes.
+	//
 	// example:
 	//
 	// 1
 	SelectNodeNum *int32 `json:"SelectNodeNum,omitempty" xml:"SelectNodeNum,omitempty"`
+	// The query node specifications ([0-9+]ACU).
+	//
 	// example:
 	//
 	// 8ACU
 	SelectNodeSpec *string `json:"SelectNodeSpec,omitempty" xml:"SelectNodeSpec,omitempty"`
+	// The disk size of storage nodes.
+	//
 	// example:
 	//
 	// 1
 	StorageNodeDiskSize *int32 `json:"StorageNodeDiskSize,omitempty" xml:"StorageNodeDiskSize,omitempty"`
+	// The disk type of storage nodes (essd_pl1, essd_pl2).
+	//
 	// example:
 	//
 	// essd_pl1
 	StorageNodeDiskType *string `json:"StorageNodeDiskType,omitempty" xml:"StorageNodeDiskType,omitempty"`
+	// The number of storage nodes.
+	//
 	// example:
 	//
 	// 2
 	StorageNodeNum *int32 `json:"StorageNodeNum,omitempty" xml:"StorageNodeNum,omitempty"`
+	// The storage node specifications ([0-9+]ACU).
+	//
 	// example:
 	//
 	// 8ACU
@@ -706,13 +729,13 @@ func (s *CreateDBResourceGroupRequestGpuElasticPlan) Validate() error {
 }
 
 type CreateDBResourceGroupRequestGpuElasticPlanRules struct {
-	// The end time as a cron expression. The interval must be at least 1 hour.
+	// The end time, specified as a cron expression. The interval must be at least 1 hour.
 	//
 	// example:
 	//
 	// 0 0 3 	- 	- ?
 	EndCronExpression *string `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
-	// The start time as a cron expression. The interval must be at least 1 hour.
+	// The start time, specified as a cron expression. The interval must be at least 1 hour.
 	//
 	// example:
 	//
@@ -753,9 +776,9 @@ func (s *CreateDBResourceGroupRequestGpuElasticPlanRules) Validate() error {
 type CreateDBResourceGroupRequestRayConfig struct {
 	// The Ray cluster type. Valid values:
 	//
-	// - BASIC: basic type, non-high-availability
+	// - BASIC: basic type, non-high-availability.
 	//
-	// - HIGH_AVAILABILITY: high-availability type
+	// - HIGH_AVAILABILITY: high-availability type.
 	//
 	// example:
 	//
@@ -786,8 +809,9 @@ type CreateDBResourceGroupRequestRayConfig struct {
 	// example:
 	//
 	// CPU
-	HeadSpecType            *string `json:"HeadSpecType,omitempty" xml:"HeadSpecType,omitempty"`
-	UserDefinedRequirements *string `json:"UserDefinedRequirements,omitempty" xml:"UserDefinedRequirements,omitempty"`
+	HeadSpecType            *string                                               `json:"HeadSpecType,omitempty" xml:"HeadSpecType,omitempty"`
+	StorageMounts           []*CreateDBResourceGroupRequestRayConfigStorageMounts `json:"StorageMounts,omitempty" xml:"StorageMounts,omitempty" type:"Repeated"`
+	UserDefinedRequirements *string                                               `json:"UserDefinedRequirements,omitempty" xml:"UserDefinedRequirements,omitempty"`
 	// The list of Ray worker group configurations.
 	WorkerGroups []*CreateDBResourceGroupRequestRayConfigWorkerGroups `json:"WorkerGroups,omitempty" xml:"WorkerGroups,omitempty" type:"Repeated"`
 }
@@ -822,6 +846,10 @@ func (s *CreateDBResourceGroupRequestRayConfig) GetHeadSpec() *string {
 
 func (s *CreateDBResourceGroupRequestRayConfig) GetHeadSpecType() *string {
 	return s.HeadSpecType
+}
+
+func (s *CreateDBResourceGroupRequestRayConfig) GetStorageMounts() []*CreateDBResourceGroupRequestRayConfigStorageMounts {
+	return s.StorageMounts
 }
 
 func (s *CreateDBResourceGroupRequestRayConfig) GetUserDefinedRequirements() *string {
@@ -862,6 +890,11 @@ func (s *CreateDBResourceGroupRequestRayConfig) SetHeadSpecType(v string) *Creat
 	return s
 }
 
+func (s *CreateDBResourceGroupRequestRayConfig) SetStorageMounts(v []*CreateDBResourceGroupRequestRayConfigStorageMounts) *CreateDBResourceGroupRequestRayConfig {
+	s.StorageMounts = v
+	return s
+}
+
 func (s *CreateDBResourceGroupRequestRayConfig) SetUserDefinedRequirements(v string) *CreateDBResourceGroupRequestRayConfig {
 	s.UserDefinedRequirements = &v
 	return s
@@ -873,6 +906,15 @@ func (s *CreateDBResourceGroupRequestRayConfig) SetWorkerGroups(v []*CreateDBRes
 }
 
 func (s *CreateDBResourceGroupRequestRayConfig) Validate() error {
+	if s.StorageMounts != nil {
+		for _, item := range s.StorageMounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.WorkerGroups != nil {
 		for _, item := range s.WorkerGroups {
 			if item != nil {
@@ -883,6 +925,51 @@ func (s *CreateDBResourceGroupRequestRayConfig) Validate() error {
 		}
 	}
 	return nil
+}
+
+type CreateDBResourceGroupRequestRayConfigStorageMounts struct {
+	MountPath   *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	StorageId   *int64  `json:"StorageId,omitempty" xml:"StorageId,omitempty"`
+	StorageName *string `json:"StorageName,omitempty" xml:"StorageName,omitempty"`
+}
+
+func (s CreateDBResourceGroupRequestRayConfigStorageMounts) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDBResourceGroupRequestRayConfigStorageMounts) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBResourceGroupRequestRayConfigStorageMounts) GetMountPath() *string {
+	return s.MountPath
+}
+
+func (s *CreateDBResourceGroupRequestRayConfigStorageMounts) GetStorageId() *int64 {
+	return s.StorageId
+}
+
+func (s *CreateDBResourceGroupRequestRayConfigStorageMounts) GetStorageName() *string {
+	return s.StorageName
+}
+
+func (s *CreateDBResourceGroupRequestRayConfigStorageMounts) SetMountPath(v string) *CreateDBResourceGroupRequestRayConfigStorageMounts {
+	s.MountPath = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestRayConfigStorageMounts) SetStorageId(v int64) *CreateDBResourceGroupRequestRayConfigStorageMounts {
+	s.StorageId = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestRayConfigStorageMounts) SetStorageName(v string) *CreateDBResourceGroupRequestRayConfigStorageMounts {
+	s.StorageName = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestRayConfigStorageMounts) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateDBResourceGroupRequestRayConfigWorkerGroups struct {
@@ -1018,13 +1105,13 @@ type CreateDBResourceGroupRequestRules struct {
 	//
 	// test_group
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The query execution time threshold. Unit: milliseconds (ms).
+	// The query execution time threshold, in milliseconds (ms).
 	//
 	// example:
 	//
 	// 180000
 	QueryTime *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
-	// The name of the destination resource group.
+	// The name of the target resource group.
 	//
 	// example:
 	//

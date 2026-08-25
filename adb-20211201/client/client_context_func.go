@@ -703,6 +703,66 @@ func (client *Client) CheckSampleDataSetWithContext(ctx context.Context, request
 
 // Summary:
 //
+// Disables log synchronization to Simple Log Service (SLS).
+//
+// Description:
+//
+// - Central public endpoint: `adb.aliyuncs.com`.
+//
+// - Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// - Regional VPC endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
+// @param request - CloseLogSyncToSLSRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloseLogSyncToSLSResponse
+func (client *Client) CloseLogSyncToSLSWithContext(ctx context.Context, request *CloseLogSyncToSLSRequest, runtime *dara.RuntimeOptions) (_result *CloseLogSyncToSLSResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.LogType) {
+		query["LogType"] = request.LogType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CloseLogSyncToSLS"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CloseLogSyncToSLSResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Configures the export destination (SLS or OSS) at the instance level. The configuration is unique per instance and follows the "configure once, use multiple times" principle.
 //
 // @param tmpReq - ConfigureResultExportRequest
@@ -1879,11 +1939,11 @@ func (client *Client) CreateDBClusterWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Creates a resource group for a specified Dedicated Edition, Basic Edition, or Data Lakehouse Edition cluster.
+// Creates a resource group for a specified Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 //
 // Description:
 //
-// For information about the service registration of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param tmpReq - CreateDBResourceGroupRequest
 //
@@ -4969,13 +5029,13 @@ func (client *Client) DescribeApsResourceGroupsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the SQL Audit Log of a cluster.
+// Queries the SQL audit logs of a cluster.
 //
 // Description:
 //
-// - SQL Audit Log entries can be queried only when SQL audit is enabled, and only entries from the last 30 days are supported. If SQL audit is shutdown and then re-enabled, only entries recorded after re-enabling are available. SQL Audit Log does not record **INSERT INTO VALUES**, **REPLACE INTO VALUES**, or **UPSERT INTO VALUES*	- operations.
+// - SQL audit logs can be queried only when SQL audit is enabled, and only logs from the last 30 days are supported. If SQL audit is shutdown and then re-enabled, only logs generated after re-enabling can be queried. SQL audit logs do not record **INSERT INTO VALUES**, **REPLACE INTO VALUES**, or **UPSERT INTO VALUES*	- operations.
 //
-// - For the endpoints of this service, see [Service registration](https://help.aliyun.com/document_detail/612373.html).
+// - For the service registration of this service, see [Service registration](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeAuditLogRecordsRequest
 //
@@ -5032,6 +5092,10 @@ func (client *Client) DescribeAuditLogRecordsWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProcessId) {
+		query["ProcessId"] = request.ProcessId
 	}
 
 	if !dara.IsNil(request.ProxyUser) {
@@ -6355,7 +6419,7 @@ func (client *Client) DescribeDBClustersWithContext(ctx context.Context, request
 //
 // Description:
 //
-// For information about the service registration of the current service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDBResourceGroupRequest
 //
@@ -10892,6 +10956,10 @@ func (client *Client) GetKnowledgeRecallWithContext(ctx context.Context, request
 		query["Topk"] = request.Topk
 	}
 
+	if !dara.IsNil(request.User) {
+		query["User"] = request.User
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -10961,6 +11029,66 @@ func (client *Client) GetLakeStorageWithContext(ctx context.Context, request *Ge
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetLakeStorageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the log synchronization configuration.
+//
+// Description:
+//
+// - Central public endpoint: `adb.aliyuncs.com`.
+//
+// - Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// - Regional VPC endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
+// @param request - GetLogSyncToSLSRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLogSyncToSLSResponse
+func (client *Client) GetLogSyncToSLSWithContext(ctx context.Context, request *GetLogSyncToSLSRequest, runtime *dara.RuntimeOptions) (_result *GetLogSyncToSLSResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.LogType) {
+		query["LogType"] = request.LogType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetLogSyncToSLS"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetLogSyncToSLSResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -14493,7 +14621,7 @@ func (client *Client) ModifyDBClusterVipWithContext(ctx context.Context, request
 //
 // Description:
 //
-// For service endpoints, see [endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the endpoints of this service, see [Service registration](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param tmpReq - ModifyDBResourceGroupRequest
 //
@@ -15205,6 +15333,74 @@ func (client *Client) ModifyUserEniVswitchOptionsWithContext(ctx context.Context
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyUserEniVswitchOptionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables log synchronization to Simple Log Service (SLS).
+//
+// Description:
+//
+// - Central public endpoint: `adb.aliyuncs.com`.
+//
+// - Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// - Regional VPC endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
+// @param request - OpenLogSyncToSLSRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenLogSyncToSLSResponse
+func (client *Client) OpenLogSyncToSLSWithContext(ctx context.Context, request *OpenLogSyncToSLSRequest, runtime *dara.RuntimeOptions) (_result *OpenLogSyncToSLSResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.LogType) {
+		query["LogType"] = request.LogType
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TargetLogStore) {
+		query["TargetLogStore"] = request.TargetLogStore
+	}
+
+	if !dara.IsNil(request.TargetProject) {
+		query["TargetProject"] = request.TargetProject
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OpenLogSyncToSLS"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OpenLogSyncToSLSResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

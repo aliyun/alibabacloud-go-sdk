@@ -62,7 +62,7 @@ func (s *GetKnowledgeRecallResponseBody) Validate() error {
 }
 
 type GetKnowledgeRecallResponseBodyData struct {
-	// The total number of results.
+	// The total number of entries.
 	//
 	// example:
 	//

@@ -31,6 +31,8 @@ type iDescribeAuditLogRecordsRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *DescribeAuditLogRecordsRequest
 	GetPageSize() *int32
+	SetProcessId(v string) *DescribeAuditLogRecordsRequest
+	GetProcessId() *string
 	SetProxyUser(v string) *DescribeAuditLogRecordsRequest
 	GetProxyUser() *string
 	SetQueryKeyword(v string) *DescribeAuditLogRecordsRequest
@@ -54,9 +56,9 @@ type iDescribeAuditLogRecordsRequest interface {
 type DescribeAuditLogRecordsRequest struct {
 	// <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
-	// <props="intl">The ID of the Data Lakehouse Edition cluster.
+	// <props="intl">The cluster ID of the Data Lakehouse Edition cluster.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the cluster IDs of all clusters in a region.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the cluster IDs of all clusters in a specified region.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +66,7 @@ type DescribeAuditLogRecordsRequest struct {
 	//
 	// amv-t4nj8619bz2w3****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The name of the database on which the SQL statement was executed.
+	// The name of the database on which the SQL statement is executed.
 	//
 	// example:
 	//
@@ -79,9 +81,20 @@ type DescribeAuditLogRecordsRequest struct {
 	// example:
 	//
 	// 2022-08-12T17:08Z
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The engine type. Valid values:
+	//
+	// - XIHE: audit logs of the default compute engine.
+	//
+	// - AGENT_SERVERLESS: audit logs of the Serverless analytics feature.
+	//
+	// If this parameter is not specified, the default value is XIHE.
+	//
+	// example:
+	//
+	// XIHE
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The IP address and port number of the client that executed the SQL statement.
+	// The IP address and port number of the client that executes the SQL statement.
 	//
 	// example:
 	//
@@ -101,7 +114,7 @@ type DescribeAuditLogRecordsRequest struct {
 	//
 	//     	- **PeakMemoryUsage**: the peak memory usage during the execution of the SQL statement.
 	//
-	//     	- **ScanRows**: the number of rows scanned by the task with a data source.
+	//     	- **ScanRows**: the number of rows scanned by tasks with data sources.
 	//
 	//     	- **ScanSize**: the amount of scanned data.
 	//
@@ -154,14 +167,15 @@ type DescribeAuditLogRecordsRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
 	// A reserved parameter.
 	//
 	// example:
 	//
 	// None
 	ProxyUser *string `json:"ProxyUser,omitempty" xml:"ProxyUser,omitempty"`
-	// The keyword used to filter the returned results.
+	// The keyword used to search the returned results.
 	//
 	// example:
 	//
@@ -195,7 +209,7 @@ type DescribeAuditLogRecordsRequest struct {
 	//
 	// - **CREATE**
 	//
-	// > Only one type can be specified per request. If this parameter is left empty, all types are queried by default.
+	// > Only one type can be specified per request. If this parameter is not specified, all types are queried by default.
 	//
 	// example:
 	//
@@ -203,23 +217,23 @@ type DescribeAuditLogRecordsRequest struct {
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
 	// The beginning of the time range to query. Specify the time in UTC in the yyyy-MM-ddTHH:mmZ format.
 	//
-	// > SQL Audit Log entries can be queried only when SQL audit is enabled, and only entries from the last 30 days are supported. If SQL audit is disabled and then re-enabled, only entries recorded after re-enabling are available.
+	// > SQL audit logs can be queried only when SQL audit is enabled, and only logs from the last 30 days are supported. If SQL audit is disabled and then re-enabled, only logs generated after re-enabling can be queried.
 	//
 	// example:
 	//
 	// 2022-08-12T04:17Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Specifies whether the SQL statement was executed successfully. Valid values:
+	// Specifies whether the SQL statement is executed successfully. Valid values:
 	//
-	// 	- **true**: The SQL statement was executed successfully.
+	// 	- **true**: Executed successfully.
 	//
-	// 	- **false**: The SQL statement failed to be executed.
+	// 	- **false**: Execution failed.
 	//
 	// example:
 	//
 	// true
 	Succeed *string `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
-	// The username that executed the SQL statement.
+	// The username that executes the SQL statement.
 	//
 	// example:
 	//
@@ -277,6 +291,10 @@ func (s *DescribeAuditLogRecordsRequest) GetPageNumber() *int32 {
 
 func (s *DescribeAuditLogRecordsRequest) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *DescribeAuditLogRecordsRequest) GetProcessId() *string {
+	return s.ProcessId
 }
 
 func (s *DescribeAuditLogRecordsRequest) GetProxyUser() *string {
@@ -367,6 +385,11 @@ func (s *DescribeAuditLogRecordsRequest) SetPageNumber(v int32) *DescribeAuditLo
 
 func (s *DescribeAuditLogRecordsRequest) SetPageSize(v int32) *DescribeAuditLogRecordsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAuditLogRecordsRequest) SetProcessId(v string) *DescribeAuditLogRecordsRequest {
+	s.ProcessId = &v
 	return s
 }
 
