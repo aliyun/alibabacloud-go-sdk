@@ -273,7 +273,7 @@ func (client *Client) CheckIpExistsInSecurityIpListWithContext(ctx context.Conte
 
 // Summary:
 //
-// Call this operation to check the service-linked role.
+// Checks the service-linked role.
 //
 // @param request - CheckServiceLinkedRoleRequest
 //
@@ -673,7 +673,7 @@ func (client *Client) CreateDBInstanceWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// Creates a time-based scaling rule.
+// Creates a time-based elastic scaling rule.
 //
 // @param request - CreateElasticRuleRequest
 //
@@ -741,7 +741,7 @@ func (client *Client) CreateElasticRuleWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Call this operation to create a service-linked role.
+// Creates a service-linked role.
 //
 // @param request - CreateServiceLinkedRoleForSelectDBRequest
 //
@@ -793,11 +793,11 @@ func (client *Client) CreateServiceLinkedRoleForSelectDBWithContext(ctx context.
 //
 // Description:
 //
-// This operation is supported only for instances that use zone-redundant storage. The following conditions must also be met:
+// Only instances with cross-zone redundancy support this operation, and the following conditions must be met:
 //
 // - The minor engine version of the instance is 4.0.7 or later.
 //
-// - The primary and standby clusters are in different zones.
+// - The primary and secondary clusters are in different zones.
 //
 // @param request - CreateVirtualClusterRequest
 //
@@ -975,7 +975,7 @@ func (client *Client) DeleteDBClusterBindingWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deletes a specified ApsaraDB SelectDB instance.
+// Deletes a specified ApsaraDB for SelectDB instance.
 //
 // Description:
 //
@@ -1101,7 +1101,9 @@ func (client *Client) DeleteElasticRuleWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// > - This operation deletes only the virtual cluster. It **does not*	- delete the attached primary or secondary cluster.
+// >
+//
+// > - Only the virtual cluster is deleted. The associated primary/secondary clusters are **not*	- deleted.
 //
 // @param request - DeleteVirtualClusterRequest
 //
@@ -1153,7 +1155,7 @@ func (client *Client) DeleteVirtualClusterWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieves all instance type information.
+// Retrieves information about all instance specifications.
 //
 // @param request - DescribeAllDBInstanceClassRequest
 //
@@ -1168,6 +1170,10 @@ func (client *Client) DescribeAllDBInstanceClassWithContext(ctx context.Context,
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -1257,7 +1263,7 @@ func (client *Client) DescribeDBClusterConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the change logs for cluster configurations.
+// Queries the configuration change records of a cluster.
 //
 // @param request - DescribeDBClusterConfigChangeLogsRequest
 //
@@ -1425,7 +1431,7 @@ func (client *Client) DescribeDBInstanceAttributeWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the network information of a specified ApsaraDB SelectDB instance.
+// Queries the network information of a specified ApsaraDB for SelectDB instance.
 //
 // @param request - DescribeDBInstanceNetInfoRequest
 //
@@ -1931,7 +1937,7 @@ func (client *Client) DescribeTableSchemaWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries vSwitches in a specified zone.
+// Lists vSwitches in a zone.
 //
 // @param request - DescribeVSwitchesRequest
 //
@@ -2115,7 +2121,7 @@ func (client *Client) EnDisableScalingRulesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries pricing information for creating a new cluster in a SelectDB instance.
+// Retrieves pricing information for creating a new cluster under a specified ApsaraDB for SelectDB instance.
 //
 // @param request - GetCreateBEClusterInquiryRequest
 //
@@ -2195,7 +2201,7 @@ func (client *Client) GetModifyBEClusterInquiryWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Modifies the cluster name of an ApsaraDB SelectDB instance.
+// Modifies the cluster name of an ApsaraDB for SelectDB instance.
 //
 // @param request - ModifyBEClusterAttributeRequest
 //
@@ -2259,7 +2265,7 @@ func (client *Client) ModifyBEClusterAttributeWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Scales out or in a specified ApsaraDB for SelectDB cluster.
+// Scales a cluster of a specified ApsaraDB for SelectDB instance.
 //
 // @param request - ModifyDBClusterRequest
 //
@@ -2343,7 +2349,7 @@ func (client *Client) ModifyDBClusterWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// Modifies the cluster configuration.
+// Modifies the configuration of a cluster.
 //
 // @param request - ModifyDBClusterConfigRequest
 //
@@ -2615,15 +2621,13 @@ func (client *Client) ModifySecurityIPListWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// - You can modify the primary cluster independently.
+// - You can modify the primary cluster separately.
 //
-// - You can modify the standby cluster independently.
+// - You can modify the secondary cluster separately.
 //
-// - You can switch between the primary and standby clusters.
+// - You can switch between the primary and secondary clusters.
 //
-//	Warning:
-//
-// You cannot modify both the primary and standby clusters in the same operation.
+//	Warning: Modifying both the primary and secondary clusters to other clusters at the same time is not supported.
 //
 // @param request - ModifyVirtualClusterRequest
 //
@@ -2739,7 +2743,7 @@ func (client *Client) ReleaseInstancePublicConnectionWithContext(ctx context.Con
 
 // Summary:
 //
-// Resets the password for a database account in an ApsaraDB for SelectDB instance.
+// Resets the account password of an ApsaraDB for SelectDB instance.
 //
 // @param request - ResetAccountPasswordRequest
 //
@@ -2779,7 +2783,7 @@ func (client *Client) ResetAccountPasswordWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Restarts the cluster of a specified ApsaraDB for SelectDB instance.
+// Restarts a cluster of a specified ApsaraDB for SelectDB instance.
 //
 // @param request - RestartDBClusterRequest
 //
@@ -2901,7 +2905,7 @@ func (client *Client) StartBEClusterWithContext(ctx context.Context, request *St
 
 // Summary:
 //
-// Stops a specified ApsaraDB SelectDB cluster.
+// Stops a specified ApsaraDB for SelectDB cluster.
 //
 // @param request - StopBEClusterRequest
 //
@@ -3145,7 +3149,7 @@ func (client *Client) UpgradeDBInstanceDeploySchemeWithContext(ctx context.Conte
 
 // Summary:
 //
-// Upgrades the database version of a specified ApsaraDB SelectDB instance.
+// Upgrades the database version of a specified ApsaraDB for SelectDB instance.
 //
 // @param request - UpgradeDBInstanceEngineVersionRequest
 //

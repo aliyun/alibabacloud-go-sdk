@@ -22,7 +22,7 @@ type CheckServiceLinkedRoleResponseBody struct {
 	//
 	// False
 	HasServiceLinkedRole *bool `json:"HasServiceLinkedRole,omitempty" xml:"HasServiceLinkedRole,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

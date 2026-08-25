@@ -24,7 +24,7 @@ type iDescribeDBClusterConfigChangeLogsRequest interface {
 }
 
 type DescribeDBClusterConfigChangeLogsRequest struct {
-	// The configuration file that was modified. The value is \\`be.conf\\` for a compute cluster and \\`fe.conf\\` for an FE cluster.
+	// The configuration file that was modified. For compute clusters, this value is fixed as be.conf. For FE clusters, this value is fixed as fe.conf.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeDBClusterConfigChangeLogsRequest struct {
 	//
 	// selectdb-cn-7213c8****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end time to query change logs. The format is \\`yyyy-MM-dd HH:mm:ss\\`.
+	// The end time for querying change records. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type DescribeDBClusterConfigChangeLogsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time to query change logs. The format is \\`yyyy-MM-dd HH:mm:ss\\`.
+	// The start time for querying change records. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// This parameter is required.
 	//

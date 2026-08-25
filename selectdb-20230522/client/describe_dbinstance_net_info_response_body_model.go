@@ -18,11 +18,11 @@ type iDescribeDBInstanceNetInfoResponseBody interface {
 }
 
 type DescribeDBInstanceNetInfoResponseBody struct {
-	// Network list of BE instances.
+	// The network information list of the BE instances.
 	DBClustersNetInfos []*DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos `json:"DBClustersNetInfos,omitempty" xml:"DBClustersNetInfos,omitempty" type:"Repeated"`
-	// Instance network information.
+	// The network information of the instance.
 	DBInstanceNetInfos []*DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos `json:"DBInstanceNetInfos,omitempty" xml:"DBInstanceNetInfos,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -88,51 +88,51 @@ func (s *DescribeDBInstanceNetInfoResponseBody) Validate() error {
 }
 
 type DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos struct {
-	// Cluster ID.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// selectdb-cn-****-be
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Connection address.
+	// The endpoint.
 	//
 	// example:
 	//
 	// selectdb-cn-****-fe.selectdbfe.pre.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// IP address.
+	// The IP address.
 	//
 	// example:
 	//
 	// 8.131.***.***
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// Network type.
+	// The network type.
 	//
 	// example:
 	//
 	// VPC/PUBLIC
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// Port list.
+	// The port list.
 	PortList []*DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
-	// Indicates whether the information is visible to users.
+	// Indicates whether the network information is visible to users.
 	//
 	// example:
 	//
 	// true/false
 	UserVisible *bool `json:"UserVisible,omitempty" xml:"UserVisible,omitempty"`
-	// VPC ID.
+	// VPC ID。
 	//
 	// example:
 	//
 	// vpc-****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// VPC instance ID.
+	// The VPC instance ID.
 	//
 	// example:
 	//
 	// selectdb-cn-****-fe-20230816101006
 	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
-	// vSwitch ID.
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -243,13 +243,13 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos) Validate() err
 }
 
 type DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList struct {
-	// Connection port number.
+	// The connection port number.
 	//
 	// example:
 	//
 	// 9030/8080
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// Port type.
+	// The port type.
 	//
 	// example:
 	//
@@ -288,27 +288,29 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList) Valida
 }
 
 type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos struct {
-	// Cluster ID.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// selectdb-cn-****-be
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Connection address.
+	// The endpoint.
 	//
 	// example:
 	//
 	// selectdb-cn-h033cnd****-fe.selectdbfe.pre.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// IP address.
+	// The IP address.
 	//
 	// example:
 	//
 	// 172.16.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// Network type of the instance. Valid values:
+	// The network type of the instance. Valid values:
 	//
-	// - **VPC**: Virtual Private Cloud (VPC).
+	// - **VPC**: virtual private cloud (VPC).
+	//
+	//
 	//
 	// - **PUBLIC**: Internet.
 	//
@@ -316,9 +318,9 @@ type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos struct {
 	//
 	// VPC
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// Port object.
+	// The port objects.
 	PortList []*DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosPortList `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
-	// Indicates whether the information is visible to users. Valid values:
+	// Indicates whether the network information is visible to users. Valid values:
 	//
 	// - **true**: Visible to users.
 	//
@@ -328,19 +330,19 @@ type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos struct {
 	//
 	// true
 	UserVisible *bool `json:"UserVisible,omitempty" xml:"UserVisible,omitempty"`
-	// VPC ID.
+	// VPC ID。
 	//
 	// example:
 	//
 	// vpc-wz90scxq6ods388ft****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// VPC instance ID.
+	// The VPC instance ID.
 	//
 	// example:
 	//
 	// selectdb-cn-h033cnd****-fe-20230816101006
 	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
-	// vSwitch ID.
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -451,13 +453,13 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos) Validate() err
 }
 
 type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosPortList struct {
-	// Connection port number.
+	// The connection port number.
 	//
 	// example:
 	//
 	// MySQLPort
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// Port type. Valid values:
+	// The port type. Valid values:
 	//
 	// - **HttpPort**: HTTP protocol port.
 	//

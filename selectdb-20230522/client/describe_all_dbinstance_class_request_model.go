@@ -9,6 +9,8 @@ type iDescribeAllDBInstanceClassRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDBInstanceId(v string) *DescribeAllDBInstanceClassRequest
+	GetDBInstanceId() *string
 	SetRegionId(v string) *DescribeAllDBInstanceClassRequest
 	GetRegionId() *string
 	SetResourceOwnerId(v int64) *DescribeAllDBInstanceClassRequest
@@ -16,7 +18,8 @@ type iDescribeAllDBInstanceClassRequest interface {
 }
 
 type DescribeAllDBInstanceClassRequest struct {
-	// Region ID.
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -35,12 +38,21 @@ func (s DescribeAllDBInstanceClassRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeAllDBInstanceClassRequest) GetDBInstanceId() *string {
+	return s.DBInstanceId
+}
+
 func (s *DescribeAllDBInstanceClassRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
 func (s *DescribeAllDBInstanceClassRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
+}
+
+func (s *DescribeAllDBInstanceClassRequest) SetDBInstanceId(v string) *DescribeAllDBInstanceClassRequest {
+	s.DBInstanceId = &v
+	return s
 }
 
 func (s *DescribeAllDBInstanceClassRequest) SetRegionId(v string) *DescribeAllDBInstanceClassRequest {

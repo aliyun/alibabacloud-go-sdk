@@ -14,7 +14,7 @@ type iStopBEClusterResponseBody interface {
 }
 
 type StopBEClusterResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

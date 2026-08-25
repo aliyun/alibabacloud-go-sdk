@@ -14,7 +14,7 @@ type iModifyBEClusterAttributeResponseBody interface {
 }
 
 type ModifyBEClusterAttributeResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

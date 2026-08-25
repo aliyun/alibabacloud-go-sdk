@@ -18,7 +18,7 @@ type iDeleteVirtualClusterResponseBody interface {
 type DeleteVirtualClusterResponseBody struct {
 	// The returned data.
 	Data *DeleteVirtualClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

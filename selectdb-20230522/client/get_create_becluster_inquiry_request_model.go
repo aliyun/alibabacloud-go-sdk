@@ -42,7 +42,7 @@ type GetCreateBEClusterInquiryRequest struct {
 	//
 	// 200
 	CacheSize *int64 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
-	// The billing method.
+	// The billing type.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type GetCreateBEClusterInquiryRequest struct {
 	//
 	// selectdb_go_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The elastic computing resources.
+	// The elastic compute resources.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type GetCreateBEClusterInquiryRequest struct {
 	//
 	// 200
 	PreCacheSize *int64 `json:"PreCacheSize,omitempty" xml:"PreCacheSize,omitempty"`
-	// The reserved computing resources.
+	// The reserved compute resources.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iCreateServiceLinkedRoleForSelectDBResponseBody interface {
 }
 
 type CreateServiceLinkedRoleForSelectDBResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

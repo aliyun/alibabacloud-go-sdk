@@ -26,7 +26,7 @@ type iModifyDBClusterConfigRequest interface {
 }
 
 type ModifyDBClusterConfigRequest struct {
-	// Configuration file to modify. For compute clusters, it is fixed as be.conf. For fe clusters, it is fixed as fe.conf.
+	// The configuration file to modify. Set this parameter to be.conf for compute clusters or fe.conf for FE clusters.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ModifyDBClusterConfigRequest struct {
 	//
 	// be.conf
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
-	// Cluster ID.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ModifyDBClusterConfigRequest struct {
 	//
 	// selectdb-cn-7213c8*****-be
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -50,13 +50,13 @@ type ModifyDBClusterConfigRequest struct {
 	//
 	// selectdb-cn-7213c8*****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// Whether to operate cluster nodes in parallel
+	// Specifies whether to perform operations on cluster nodes in parallel.
 	//
 	// example:
 	//
 	// false
 	ParallelOperation *bool `json:"ParallelOperation,omitempty" xml:"ParallelOperation,omitempty"`
-	// JSON string of parameters and parameter values.
+	// The JSON string of parameters and parameter values.
 	//
 	// This parameter is required.
 	//
@@ -64,13 +64,13 @@ type ModifyDBClusterConfigRequest struct {
 	//
 	// {"param1_name":"param1_value","param2_name":"param2_value"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// Region ID.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Upgrade method. If not specified, the upgrade will be performed immediately. If set to 1, the upgrade will be performed during the maintenance window.
+	// The upgrade mode. If this parameter is not specified, the upgrade takes effect immediately. Set this parameter to 1 to perform the upgrade during the maintenance window.
 	//
 	// example:
 	//

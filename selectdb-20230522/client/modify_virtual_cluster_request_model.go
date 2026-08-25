@@ -22,7 +22,7 @@ type iModifyVirtualClusterRequest interface {
 }
 
 type ModifyVirtualClusterRequest struct {
-	// The ID of the primary cluster.
+	// The primary cluster ID.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ModifyVirtualClusterRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the standby cluster.
+	// The secondary cluster ID.
 	//
 	// example:
 	//

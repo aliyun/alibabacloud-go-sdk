@@ -34,7 +34,7 @@ type iModifyDBClusterRequest interface {
 }
 
 type ModifyDBClusterRequest struct {
-	// The size of the reserved cache.
+	// The reserved cache size.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ModifyDBClusterRequest struct {
 	CacheSize        *string `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
 	ClusterNodeCount *int32  `json:"ClusterNodeCount,omitempty" xml:"ClusterNodeCount,omitempty"`
 	ClusterNodeType  *string `json:"ClusterNodeType,omitempty" xml:"ClusterNodeType,omitempty"`
-	// The instance class of the cluster. Valid values:
+	// The cluster specifications. Valid values:
 	//
 	// - **selectdb.xlarge**: 4 cores, 32 GB memory.
 	//
@@ -80,7 +80,7 @@ type ModifyDBClusterRequest struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The database type. The value is fixed to selectdb.
+	// The database type. Set the value to selectdb.
 	//
 	// example:
 	//

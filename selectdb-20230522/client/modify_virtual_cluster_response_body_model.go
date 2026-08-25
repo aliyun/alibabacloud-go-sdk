@@ -18,7 +18,7 @@ type iModifyVirtualClusterResponseBody interface {
 type ModifyVirtualClusterResponseBody struct {
 	// The returned data.
 	Data *ModifyVirtualClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

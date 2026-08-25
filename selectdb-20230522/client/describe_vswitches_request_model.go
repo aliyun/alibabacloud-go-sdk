@@ -26,29 +26,29 @@ type iDescribeVSwitchesRequest interface {
 }
 
 type DescribeVSwitchesRequest struct {
-	// The number of entries to return on each page.
+	// The number of entries per page for a paged query.
 	//
-	// 	Warning: This is a reserved parameter and is not supported.
+	// 	Warning: This is a reserved parameter and is not supported.</warning>
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to start the next query.
+	// The token for the next query.
 	//
-	// 	Warning: This is a reserved parameter and is not supported.
+	// 	Warning: This is a reserved parameter and is not supported.</warning>
 	//
 	// example:
 	//
 	// 4ea98363565e4951e0b5e8707e68181f
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//

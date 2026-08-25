@@ -16,9 +16,9 @@ type iCreateVirtualClusterResponseBody interface {
 }
 
 type CreateVirtualClusterResponseBody struct {
-	// The returned data.
+	// The response data.
 	Data *CreateVirtualClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

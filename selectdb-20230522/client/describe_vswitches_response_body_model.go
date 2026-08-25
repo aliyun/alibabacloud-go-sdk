@@ -26,15 +26,15 @@ type iDescribeVSwitchesResponseBody interface {
 }
 
 type DescribeVSwitchesResponseBody struct {
-	// The list of results.
+	// The result list.
 	Items []*DescribeVSwitchesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of entries returned per page.
+	// The number of entries per page for a paged query.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to start the next query. If this parameter is empty, all results have been returned.
+	// The token for the next query. An empty value of NextToken indicates that no more results exist.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type DescribeVSwitchesResponseBody struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries on the current page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

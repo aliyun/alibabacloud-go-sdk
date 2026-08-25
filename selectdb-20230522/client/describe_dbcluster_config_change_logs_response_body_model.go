@@ -30,13 +30,13 @@ type DescribeDBClusterConfigChangeLogsResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The returned data.
 	Data *DescribeDBClusterConfigChangeLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The dynamic code. This parameter is not used. Ignore this parameter.
+	// The dynamic code. This parameter is not in use. Ignore this parameter.
 	//
 	// example:
 	//
 	// 0
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not used. Ignore this parameter.
+	// The dynamic message. This parameter is not in use. Ignore this parameter.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type DescribeDBClusterConfigChangeLogsResponseBodyData struct {
 	//
 	// selectdb-cn-7213c8****
 	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
-	// The parameter change logs.
+	// The parameter change records.
 	ParamChangeLogs []*DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs `json:"ParamChangeLogs,omitempty" xml:"ParamChangeLogs,omitempty" type:"Repeated"`
 	// The task ID.
 	//
@@ -208,13 +208,13 @@ func (s *DescribeDBClusterConfigChangeLogsResponseBodyData) Validate() error {
 }
 
 type DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs struct {
-	// The time when the task was created. The time is in GMT.
+	// The task creation time (GMT).
 	//
 	// example:
 	//
 	// 2022-10-11T08:53:32Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the task was last modified. The time is in GMT.
+	// The task modification time (GMT).
 	//
 	// example:
 	//
@@ -244,7 +244,7 @@ type DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs struct {
 	//
 	// 12
 	NewValue *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
-	// The original parameter value.
+	// The old parameter value.
 	//
 	// example:
 	//

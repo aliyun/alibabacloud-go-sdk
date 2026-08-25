@@ -16,9 +16,9 @@ type iDescribeAllDBInstanceClassResponseBody interface {
 }
 
 type DescribeAllDBInstanceClassResponseBody struct {
-	// Instance type list.
+	// The list of instance specifications.
 	ClassCodeList []*DescribeAllDBInstanceClassResponseBodyClassCodeList `json:"ClassCodeList,omitempty" xml:"ClassCodeList,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,43 +66,43 @@ func (s *DescribeAllDBInstanceClassResponseBody) Validate() error {
 }
 
 type DescribeAllDBInstanceClassResponseBodyClassCodeList struct {
-	// Type code.
+	// The specification code.
 	//
 	// example:
 	//
 	// selectdb.xlarge
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
-	// Number of CPU cores.
+	// The number of CPU cores.
 	//
 	// example:
 	//
 	// 4
 	CpuCores *int64 `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
-	// Default cache.
+	// The default cache size.
 	//
 	// example:
 	//
 	// 200
 	DefaultStorageInGB *int64 `json:"DefaultStorageInGB,omitempty" xml:"DefaultStorageInGB,omitempty"`
-	// Maximum cache.
+	// The maximum cache size.
 	//
 	// example:
 	//
 	// 2000
 	MaxStorageInGB *int64 `json:"MaxStorageInGB,omitempty" xml:"MaxStorageInGB,omitempty"`
-	// Memory.
+	// The memory size.
 	//
 	// example:
 	//
 	// 16
 	MemoryInGB *int64 `json:"MemoryInGB,omitempty" xml:"MemoryInGB,omitempty"`
-	// Minimum cache.
+	// The minimum cache size.
 	//
 	// example:
 	//
 	// 100
 	MinStorageInGB *int64 `json:"MinStorageInGB,omitempty" xml:"MinStorageInGB,omitempty"`
-	// Cache increment.
+	// The cache step size.
 	//
 	// example:
 	//

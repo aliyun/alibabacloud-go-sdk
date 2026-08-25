@@ -14,7 +14,7 @@ type iUpgradeDBInstanceEngineVersionResponseBody interface {
 }
 
 type UpgradeDBInstanceEngineVersionResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iGetCreateBEClusterInquiryResponseBody interface {
 }
 
 type GetCreateBEClusterInquiryResponseBody struct {
-	// The returned data.
+	// The response data.
 	Data *GetCreateBEClusterInquiryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -70,7 +70,7 @@ type GetCreateBEClusterInquiryResponseBodyData struct {
 	Currency           *string                                                        `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	OptionalPromotions []*GetCreateBEClusterInquiryResponseBodyDataOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
 	PricingRules       map[string]*string                                             `json:"PricingRules,omitempty" xml:"PricingRules,omitempty"`
-	// The amount.
+	// The trade amount.
 	//
 	// example:
 	//
@@ -146,11 +146,11 @@ type GetCreateBEClusterInquiryResponseBodyDataOptionalPromotions struct {
 	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
 	// example:
 	//
-	// 通用优惠券可抵扣100
+	// General coupon with a deduction of 100
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
 	// example:
 	//
-	// 通用优惠券
+	// General coupon
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
 	// example:
 	//

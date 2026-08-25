@@ -22,27 +22,27 @@ type iModifyDBClusterConfigResponseBody interface {
 }
 
 type ModifyDBClusterConfigResponseBody struct {
-	// Access denied details.
+	// The details about the access denial.
 	//
 	// example:
 	//
 	// failed
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Return data.
+	// The returned data.
 	Data *ModifyDBClusterConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Dynamic code, currently not in use, please ignore.
+	// The dynamic code. This parameter is not in use. Ignore this parameter.
 	//
 	// example:
 	//
 	// 0
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// Dynamic message, currently not in use, please ignore.
+	// The dynamic message. This parameter is not in use. Ignore this parameter.
 	//
 	// example:
 	//
 	// An error occurred while processing your request.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -113,25 +113,25 @@ func (s *ModifyDBClusterConfigResponseBody) Validate() error {
 }
 
 type ModifyDBClusterConfigResponseBodyData struct {
-	// Cluster ID.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// selectdb-cn-7213c8*****
 	DbClusterId *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
-	// Instance numeric ID.
+	// The numeric ID of the instance.
 	//
 	// example:
 	//
 	// 6585
 	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// selectdb-cn-7213c8*****
 	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
-	// Task ID
+	// The task ID.
 	//
 	// example:
 	//
