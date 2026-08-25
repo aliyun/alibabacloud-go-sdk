@@ -20,18 +20,30 @@ type iGetOrCreateInvitationCodeRequest interface {
 }
 
 type GetOrCreateInvitationCodeRequest struct {
+	// The validity period in days, calculated from the current time. Set to -1 for permanent validity.
+	//
 	// example:
 	//
 	// 1
 	ExpireDays *int32 `json:"ExpireDays,omitempty" xml:"ExpireDays,omitempty"`
+	// The validity period in minutes, calculated from the current time. Set to -1 for permanent validity.
+	//
 	// example:
 	//
 	// 10
 	ExpireMinutes *int32 `json:"ExpireMinutes,omitempty" xml:"ExpireMinutes,omitempty"`
+	// The terminal group ID.
+	//
 	// example:
 	//
 	// tg-XXX
 	TerminalGroupId *string `json:"TerminalGroupId,omitempty" xml:"TerminalGroupId,omitempty"`
+	// The validity period type. Valid values:
+	//
+	// - 1: The response returns the expiration in days. This is the default value if Type is not specified.
+	//
+	// - 2: The response returns the expiration in minutes.
+	//
 	// example:
 	//
 	// cron

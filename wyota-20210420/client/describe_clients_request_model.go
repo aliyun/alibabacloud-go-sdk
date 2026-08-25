@@ -42,61 +42,92 @@ type iDescribeClientsRequest interface {
 }
 
 type DescribeClientsRequest struct {
-	// aliuid
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// ***
 	CallerAliUid *string `json:"CallerAliUid,omitempty" xml:"CallerAliUid,omitempty"`
+	// The client type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	ClientType *int32 `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// The custom task ID.
+	//
 	// example:
 	//
 	// cr-***
-	CustomResourceId     *string `json:"CustomResourceId,omitempty" xml:"CustomResourceId,omitempty"`
-	CustomResourceStatus *bool   `json:"CustomResourceStatus,omitempty" xml:"CustomResourceStatus,omitempty"`
+	CustomResourceId *string `json:"CustomResourceId,omitempty" xml:"CustomResourceId,omitempty"`
+	// The effective status of the custom task. Valid values:
+	//
+	// - true: effective.
+	//
+	// - false: ineffective.
+	//
+	// - null: all.
+	CustomResourceStatus *bool `json:"CustomResourceStatus,omitempty" xml:"CustomResourceStatus,omitempty"`
+	// Specifies whether the client is managed.
+	//
 	// example:
 	//
 	// True
 	InManage *bool `json:"InManage,omitempty" xml:"InManage,omitempty"`
+	// Specifies whether to include subgroups.
+	//
 	// example:
 	//
 	// false
 	IncludeSubGroups *bool `json:"IncludeSubGroups,omitempty" xml:"IncludeSubGroups,omitempty"`
+	// The maximum number of results to return.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The device model.
+	//
 	// example:
 	//
 	// US02-2BFXG
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The token for the next page.
+	//
 	// example:
 	//
 	// AAAAAdEdsXbwG2ZlbWCzN4wTTg6wQvfp7u1BJl4bxCAby41POSaYAlCvfULQpkAnb0ff****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The soft client status.
+	//
 	// example:
 	//
 	// True
 	OnlineStatus *bool `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
+	// The soft client platform.
+	//
 	// example:
 	//
 	// linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// The fuzzy search parameter. Supports fuzzy search by SN, alias, or IP address. This parameter is incompatible with exact search parameters.
+	//
 	// example:
 	//
 	// 061
 	SearchKeyword *string `json:"SearchKeyword,omitempty" xml:"SearchKeyword,omitempty"`
+	// The group ID.
+	//
 	// example:
 	//
 	// tg-bp103v8x70nasykdjrd1
-	TerminalGroupId *string   `json:"TerminalGroupId,omitempty" xml:"TerminalGroupId,omitempty"`
-	Uuids           []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`
-	WithBindUser    *bool     `json:"WithBindUser,omitempty" xml:"WithBindUser,omitempty"`
+	TerminalGroupId *string `json:"TerminalGroupId,omitempty" xml:"TerminalGroupId,omitempty"`
+	// The UUIDs of the servers to query. Separate multiple UUIDs with commas (,).
+	Uuids []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`
+	// Specifies whether to return bound users.
+	WithBindUser *bool `json:"WithBindUser,omitempty" xml:"WithBindUser,omitempty"`
 }
 
 func (s DescribeClientsRequest) String() string {

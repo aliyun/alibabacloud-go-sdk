@@ -18,18 +18,22 @@ type iDeleteClientsRequest interface {
 }
 
 type DeleteClientsRequest struct {
-	// aliuid
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// ***
 	CallerAliUid *string `json:"CallerAliUid,omitempty" xml:"CallerAliUid,omitempty"`
+	// Specifies whether the device is managed.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// True
 	InManage *bool `json:"InManage,omitempty" xml:"InManage,omitempty"`
+	// The UUIDs of the asset instances. Separate multiple UUIDs with commas (,).
+	//
 	// This parameter is required.
 	Uuids []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`
 }

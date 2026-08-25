@@ -24,23 +24,34 @@ type iGetOrCreateInvitationCodeResponseBody interface {
 }
 
 type GetOrCreateInvitationCodeResponseBody struct {
+	// The error code returned when the call fails.
+	//
 	// example:
 	//
 	// PARAMETER_ERROR
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned when the call is successful.
 	Data *GetOrCreateInvitationCodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message returned when the call fails.
+	//
 	// example:
 	//
 	// parameter error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C5DCE54A-B266-522E-A6ED-468AF45F5AAA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
 	// true
@@ -119,14 +130,20 @@ func (s *GetOrCreateInvitationCodeResponseBody) Validate() error {
 }
 
 type GetOrCreateInvitationCodeResponseBodyData struct {
+	// The authentication code for device enrollment.
+	//
 	// example:
 	//
 	// 000000
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The expiration time of the compute group.
+	//
 	// example:
 	//
 	// 1772162247
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// Indicates whether the invitation code has expired.
+	//
 	// example:
 	//
 	// True

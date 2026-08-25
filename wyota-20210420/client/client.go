@@ -24,7 +24,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -353,7 +353,7 @@ func (client *Client) BindPasswordFreeLoginUser(request *BindPasswordFreeLoginUs
 
 // Summary:
 //
-// 解除桌面端、移动端纳管
+// Removes managed terminal devices by UUID.
 //
 // @param request - DeleteClientsRequest
 //
@@ -410,7 +410,7 @@ func (client *Client) DeleteClientsWithOptions(request *DeleteClientsRequest, ru
 
 // Summary:
 //
-// 解除桌面端、移动端纳管
+// Removes managed terminal devices by UUID.
 //
 // @param request - DeleteClientsRequest
 //
@@ -428,7 +428,7 @@ func (client *Client) DeleteClients(request *DeleteClientsRequest) (_result *Del
 
 // Summary:
 //
-// 查询桌面端、移动端详细信息
+// Queries information about all managed clients.
 //
 // @param request - DescribeClientsRequest
 //
@@ -533,7 +533,7 @@ func (client *Client) DescribeClientsWithOptions(request *DescribeClientsRequest
 
 // Summary:
 //
-// 查询桌面端、移动端详细信息
+// Queries information about all managed clients.
 //
 // @param request - DescribeClientsRequest
 //
@@ -551,7 +551,73 @@ func (client *Client) DescribeClients(request *DescribeClientsRequest) (_result 
 
 // Summary:
 //
-// 获取桌面端纳管邀请码
+// Retrieves custom resource statistics information.
+//
+// @param request - GetCustomResourceStatsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCustomResourceStatsResponse
+func (client *Client) GetCustomResourceStatsWithOptions(request *GetCustomResourceStatsRequest, runtime *dara.RuntimeOptions) (_result *GetCustomResourceStatsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MainBizType) {
+		body["MainBizType"] = request.MainBizType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCustomResourceStats"),
+		Version:     dara.String("2021-04-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCustomResourceStatsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves custom resource statistics information.
+//
+// @param request - GetCustomResourceStatsRequest
+//
+// @return GetCustomResourceStatsResponse
+func (client *Client) GetCustomResourceStats(request *GetCustomResourceStatsRequest) (_result *GetCustomResourceStatsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetCustomResourceStatsResponse{}
+	_body, _err := client.GetCustomResourceStatsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves or creates an invitation code for desktop device enrollment.
+//
+// Query mode: Pass only terminalGroupId to return the current invitation code and its expiration status in read-only mode.
+//
+// Creation mode: Pass terminalGroupId along with an expiration duration (expireDays or expireMinutes) to generate a new code that overwrites the existing invitation code.
 //
 // @param request - GetOrCreateInvitationCodeRequest
 //
@@ -607,7 +673,11 @@ func (client *Client) GetOrCreateInvitationCodeWithOptions(request *GetOrCreateI
 
 // Summary:
 //
-// 获取桌面端纳管邀请码
+// Retrieves or creates an invitation code for desktop device enrollment.
+//
+// Query mode: Pass only terminalGroupId to return the current invitation code and its expiration status in read-only mode.
+//
+// Creation mode: Pass terminalGroupId along with an expiration duration (expireDays or expireMinutes) to generate a new code that overwrites the existing invitation code.
 //
 // @param request - GetOrCreateInvitationCodeRequest
 //
@@ -616,6 +686,68 @@ func (client *Client) GetOrCreateInvitationCode(request *GetOrCreateInvitationCo
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetOrCreateInvitationCodeResponse{}
 	_body, _err := client.GetOrCreateInvitationCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the number of terminals.
+//
+// @param request - GetTerminalCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTerminalCountResponse
+func (client *Client) GetTerminalCountWithOptions(request *GetTerminalCountRequest, runtime *dara.RuntimeOptions) (_result *GetTerminalCountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientType) {
+		body["ClientType"] = request.ClientType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTerminalCount"),
+		Version:     dara.String("2021-04-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTerminalCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the number of terminals.
+//
+// @param request - GetTerminalCountRequest
+//
+// @return GetTerminalCountResponse
+func (client *Client) GetTerminalCount(request *GetTerminalCountRequest) (_result *GetTerminalCountResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetTerminalCountResponse{}
+	_body, _err := client.GetTerminalCountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -735,6 +867,84 @@ func (client *Client) ListTerminal(request *ListTerminalRequest) (_result *ListT
 
 // Summary:
 //
+// Queries the version distribution of terminals.
+//
+// @param request - ListVersionDistributionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVersionDistributionResponse
+func (client *Client) ListVersionDistributionWithOptions(request *ListVersionDistributionRequest, runtime *dara.RuntimeOptions) (_result *ListVersionDistributionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientType) {
+		body["ClientType"] = request.ClientType
+	}
+
+	if !dara.IsNil(request.InManage) {
+		body["InManage"] = request.InManage
+	}
+
+	if !dara.IsNil(request.MainBizType) {
+		body["MainBizType"] = request.MainBizType
+	}
+
+	if !dara.IsNil(request.Model) {
+		body["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.VersionType) {
+		body["VersionType"] = request.VersionType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVersionDistribution"),
+		Version:     dara.String("2021-04-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVersionDistributionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the version distribution of terminals.
+//
+// @param request - ListVersionDistributionRequest
+//
+// @return ListVersionDistributionResponse
+func (client *Client) ListVersionDistribution(request *ListVersionDistributionRequest) (_result *ListVersionDistributionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListVersionDistributionResponse{}
+	_body, _err := client.ListVersionDistributionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 向终端发送运维命令
 //
 // @param request - SendOpsMessageToTerminalsRequest
@@ -757,6 +967,10 @@ func (client *Client) SendOpsMessageToTerminalsWithOptions(request *SendOpsMessa
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Msg) {
 		body["Msg"] = request.Msg
+	}
+
+	if !dara.IsNil(request.OpDomain) {
+		body["OpDomain"] = request.OpDomain
 	}
 
 	if !dara.IsNil(request.OpsAction) {

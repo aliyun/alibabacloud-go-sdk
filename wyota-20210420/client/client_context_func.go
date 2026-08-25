@@ -232,7 +232,7 @@ func (client *Client) BindPasswordFreeLoginUserWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 解除桌面端、移动端纳管
+// Removes managed terminal devices by UUID.
 //
 // @param request - DeleteClientsRequest
 //
@@ -289,7 +289,7 @@ func (client *Client) DeleteClientsWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// 查询桌面端、移动端详细信息
+// Queries information about all managed clients.
 //
 // @param request - DescribeClientsRequest
 //
@@ -394,7 +394,55 @@ func (client *Client) DescribeClientsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 获取桌面端纳管邀请码
+// Retrieves custom resource statistics information.
+//
+// @param request - GetCustomResourceStatsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCustomResourceStatsResponse
+func (client *Client) GetCustomResourceStatsWithContext(ctx context.Context, request *GetCustomResourceStatsRequest, runtime *dara.RuntimeOptions) (_result *GetCustomResourceStatsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MainBizType) {
+		body["MainBizType"] = request.MainBizType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCustomResourceStats"),
+		Version:     dara.String("2021-04-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCustomResourceStatsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves or creates an invitation code for desktop device enrollment.
+//
+// Query mode: Pass only terminalGroupId to return the current invitation code and its expiration status in read-only mode.
+//
+// Creation mode: Pass terminalGroupId along with an expiration duration (expireDays or expireMinutes) to generate a new code that overwrites the existing invitation code.
 //
 // @param request - GetOrCreateInvitationCodeRequest
 //
@@ -440,6 +488,50 @@ func (client *Client) GetOrCreateInvitationCodeWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetOrCreateInvitationCodeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the number of terminals.
+//
+// @param request - GetTerminalCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTerminalCountResponse
+func (client *Client) GetTerminalCountWithContext(ctx context.Context, request *GetTerminalCountRequest, runtime *dara.RuntimeOptions) (_result *GetTerminalCountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientType) {
+		body["ClientType"] = request.ClientType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTerminalCount"),
+		Version:     dara.String("2021-04-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTerminalCountResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -542,6 +634,66 @@ func (client *Client) ListTerminalWithContext(ctx context.Context, request *List
 
 // Summary:
 //
+// Queries the version distribution of terminals.
+//
+// @param request - ListVersionDistributionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVersionDistributionResponse
+func (client *Client) ListVersionDistributionWithContext(ctx context.Context, request *ListVersionDistributionRequest, runtime *dara.RuntimeOptions) (_result *ListVersionDistributionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientType) {
+		body["ClientType"] = request.ClientType
+	}
+
+	if !dara.IsNil(request.InManage) {
+		body["InManage"] = request.InManage
+	}
+
+	if !dara.IsNil(request.MainBizType) {
+		body["MainBizType"] = request.MainBizType
+	}
+
+	if !dara.IsNil(request.Model) {
+		body["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.VersionType) {
+		body["VersionType"] = request.VersionType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListVersionDistribution"),
+		Version:     dara.String("2021-04-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListVersionDistributionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 向终端发送运维命令
 //
 // @param request - SendOpsMessageToTerminalsRequest
@@ -564,6 +716,10 @@ func (client *Client) SendOpsMessageToTerminalsWithContext(ctx context.Context, 
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Msg) {
 		body["Msg"] = request.Msg
+	}
+
+	if !dara.IsNil(request.OpDomain) {
+		body["OpDomain"] = request.OpDomain
 	}
 
 	if !dara.IsNil(request.OpsAction) {

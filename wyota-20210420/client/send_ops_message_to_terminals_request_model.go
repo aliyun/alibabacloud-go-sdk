@@ -13,6 +13,8 @@ type iSendOpsMessageToTerminalsRequest interface {
 	GetDelay() *bool
 	SetMsg(v string) *SendOpsMessageToTerminalsRequest
 	GetMsg() *string
+	SetOpDomain(v string) *SendOpsMessageToTerminalsRequest
+	GetOpDomain() *string
 	SetOpsAction(v string) *SendOpsMessageToTerminalsRequest
 	GetOpsAction() *string
 	SetUuids(v []*string) *SendOpsMessageToTerminalsRequest
@@ -24,6 +26,7 @@ type iSendOpsMessageToTerminalsRequest interface {
 type SendOpsMessageToTerminalsRequest struct {
 	Delay      *bool     `json:"Delay,omitempty" xml:"Delay,omitempty"`
 	Msg        *string   `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	OpDomain   *string   `json:"OpDomain,omitempty" xml:"OpDomain,omitempty"`
 	OpsAction  *string   `json:"OpsAction,omitempty" xml:"OpsAction,omitempty"`
 	Uuids      []*string `json:"Uuids,omitempty" xml:"Uuids,omitempty" type:"Repeated"`
 	WaitForAck *bool     `json:"WaitForAck,omitempty" xml:"WaitForAck,omitempty"`
@@ -45,6 +48,10 @@ func (s *SendOpsMessageToTerminalsRequest) GetMsg() *string {
 	return s.Msg
 }
 
+func (s *SendOpsMessageToTerminalsRequest) GetOpDomain() *string {
+	return s.OpDomain
+}
+
 func (s *SendOpsMessageToTerminalsRequest) GetOpsAction() *string {
 	return s.OpsAction
 }
@@ -64,6 +71,11 @@ func (s *SendOpsMessageToTerminalsRequest) SetDelay(v bool) *SendOpsMessageToTer
 
 func (s *SendOpsMessageToTerminalsRequest) SetMsg(v string) *SendOpsMessageToTerminalsRequest {
 	s.Msg = &v
+	return s
+}
+
+func (s *SendOpsMessageToTerminalsRequest) SetOpDomain(v string) *SendOpsMessageToTerminalsRequest {
+	s.OpDomain = &v
 	return s
 }
 

@@ -22,22 +22,32 @@ type iDeleteClientsResponseBody interface {
 }
 
 type DeleteClientsResponseBody struct {
+	// The error code returned if the call failed.
+	//
 	// example:
 	//
 	// TERMINAL_NOT_FOUND
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message returned if the call failed.
+	//
 	// example:
 	//
 	// terminal not found
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C5DCE54A-B266-522E-A6ED-468AF45F5AAA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
 	// true

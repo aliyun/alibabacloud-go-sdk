@@ -28,31 +28,46 @@ type iDescribeClientsResponseBody interface {
 }
 
 type DescribeClientsResponseBody struct {
+	// The error code returned when the call fails.
+	//
 	// example:
 	//
 	// TERMINAL_NOT_FOUND
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned when the call is successful.
 	Data []*DescribeClientsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message returned when the call fails.
+	//
 	// example:
 	//
 	// terminal not found
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The token for the next query. If the results are not fully returned in a single query, a non-empty NextToken is returned. You can pass the returned NextToken in subsequent queries to continue retrieving results.
+	//
 	// example:
 	//
 	// AAAAAdEdsXbwG2ZlbWCzN4wTTg6wQvfp7u1BJl4bxCAby41POSaYAlCvfULQpkAnb0ff****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C5DCE54A-B266-522E-A6ED-468AF45F5AAA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of returned results.
+	//
 	// example:
 	//
 	// 20
@@ -159,80 +174,120 @@ type DescribeClientsResponseBodyData struct {
 	//
 	// 1627390268362106
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// The alias.
+	//
 	// example:
 	//
 	// DemoDevice
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// The area site.
+	//
 	// example:
 	//
 	// ap-southeast-1
 	AreaSite *string `json:"AreaSite,omitempty" xml:"AreaSite,omitempty"`
+	// The number of bound logon users.
+	//
 	// example:
 	//
 	// 1
 	BindUserCount *int32 `json:"BindUserCount,omitempty" xml:"BindUserCount,omitempty"`
+	// The password-free logon user.
+	//
 	// example:
 	//
 	// ***
 	BindUserId *string `json:"BindUserId,omitempty" xml:"BindUserId,omitempty"`
+	// The system version number.
+	//
 	// example:
 	//
 	// 7.0.2-RS-***
 	BuildId *string `json:"BuildId,omitempty" xml:"BuildId,omitempty"`
+	// The client type.
+	//
 	// example:
 	//
 	// 1
 	ClientType *int32 `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// The client version.
+	//
 	// example:
 	//
 	// 1.2.1-DAILY-20240906.140842
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// The currently used desktop.
+	//
 	// example:
 	//
 	// ecd-drqmaogzbmbdf****
 	CurrentConnectDesktop *string `json:"CurrentConnectDesktop,omitempty" xml:"CurrentConnectDesktop,omitempty"`
+	// The currently logged-on user.
+	//
 	// example:
 	//
 	// ***
 	CurrentLoginUser *string `json:"CurrentLoginUser,omitempty" xml:"CurrentLoginUser,omitempty"`
+	// The reason why the custom resource is invalid.
+	//
 	// example:
 	//
 	// ***
 	CustomResInvalidReason *string `json:"CustomResInvalidReason,omitempty" xml:"CustomResInvalidReason,omitempty"`
+	// The custom resource ID.
+	//
 	// example:
 	//
 	// ***
 	CustomResourceId *string `json:"CustomResourceId,omitempty" xml:"CustomResourceId,omitempty"`
+	// The custom resource name.
+	//
 	// example:
 	//
 	// ***
 	CustomResourceName *string `json:"CustomResourceName,omitempty" xml:"CustomResourceName,omitempty"`
+	// The custom resource status.
+	//
 	// example:
 	//
 	// ***
 	CustomResourceStatus *bool `json:"CustomResourceStatus,omitempty" xml:"CustomResourceStatus,omitempty"`
+	// The currently used desktop.
+	//
 	// example:
 	//
 	// ecd-9ior729dcvn91uo9i
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The desktop region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	DesktopRegionId *string `json:"DesktopRegionId,omitempty" xml:"DesktopRegionId,omitempty"`
+	// The device operating system.
+	//
 	// example:
 	//
 	// Windows
-	DeviceOs        *string                                         `json:"DeviceOs,omitempty" xml:"DeviceOs,omitempty"`
+	DeviceOs *string `json:"DeviceOs,omitempty" xml:"DeviceOs,omitempty"`
+	// The features and support information.
 	FunctionSupport *DescribeClientsResponseBodyDataFunctionSupport `json:"FunctionSupport,omitempty" xml:"FunctionSupport,omitempty" type:"Struct"`
-	HardwareInfo    *DescribeClientsResponseBodyDataHardwareInfo    `json:"HardwareInfo,omitempty" xml:"HardwareInfo,omitempty" type:"Struct"`
+	// The hardware information.
+	HardwareInfo *DescribeClientsResponseBodyDataHardwareInfo `json:"HardwareInfo,omitempty" xml:"HardwareInfo,omitempty" type:"Struct"`
+	// The host operating system information.
+	//
 	// example:
 	//
 	// Windows
 	HostOsInfo *string `json:"HostOsInfo,omitempty" xml:"HostOsInfo,omitempty"`
+	// Indicates whether the client is managed.
+	//
 	// example:
 	//
 	// True
 	InManage *bool `json:"InManage,omitempty" xml:"InManage,omitempty"`
+	// The geolocation of the public IP address.
+	//
 	// example:
 	//
 	// CN-Zhejiang
@@ -243,51 +298,80 @@ type DescribeClientsResponseBodyData struct {
 	//
 	// 192.168.XX.XX
 	Ipv4 *string `json:"Ipv4,omitempty" xml:"Ipv4,omitempty"`
+	// The most recently logged-on user.
+	//
 	// example:
 	//
 	// ***
 	LastLoginUser *string `json:"LastLoginUser,omitempty" xml:"LastLoginUser,omitempty"`
+	// The on-premises device SN.
+	//
 	// example:
 	//
 	// ***
 	LocalDeviceSn *string `json:"LocalDeviceSn,omitempty" xml:"LocalDeviceSn,omitempty"`
-	LocationInfo  *string `json:"LocationInfo,omitempty" xml:"LocationInfo,omitempty"`
+	// The location remarks.
+	//
+	// example:
+	//
+	// 杭州市
+	LocationInfo *string `json:"LocationInfo,omitempty" xml:"LocationInfo,omitempty"`
+	// The currently logged-on user.
+	//
 	// example:
 	//
 	// ***
 	LoginUser *string `json:"LoginUser,omitempty" xml:"LoginUser,omitempty"`
+	// The main business type.
+	//
 	// example:
 	//
 	// enterprise
 	MainBizType *string `json:"MainBizType,omitempty" xml:"MainBizType,omitempty"`
+	// The time when the client was managed.
+	//
 	// example:
 	//
 	// 2020-01-01 00:00:00
 	ManageTime *string `json:"ManageTime,omitempty" xml:"ManageTime,omitempty"`
+	// The timestamp when the client was managed.
+	//
 	// example:
 	//
 	// 1000000
 	ManageTimestamp *int64 `json:"ManageTimestamp,omitempty" xml:"ManageTimestamp,omitempty"`
+	// The device model.
+	//
 	// example:
 	//
 	// US01
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The preview image URL of the device type.
+	//
 	// example:
 	//
 	// ***
 	ModelPreviewUrl *string `json:"ModelPreviewUrl,omitempty" xml:"ModelPreviewUrl,omitempty"`
+	// Indicates whether the client is online.
+	//
 	// example:
 	//
 	// true
 	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
+	// Indicates whether the client is online.
+	//
 	// example:
 	//
 	// False
 	OnlineStatus *bool `json:"OnlineStatus,omitempty" xml:"OnlineStatus,omitempty"`
+	// The password-free logon user.
+	//
 	// example:
 	//
 	// ***
 	PasswordFreeLoginUser *string `json:"PasswordFreeLoginUser,omitempty" xml:"PasswordFreeLoginUser,omitempty"`
+	// The device type.
+	//
 	// example:
 	//
 	// 123123
@@ -298,22 +382,32 @@ type DescribeClientsResponseBodyData struct {
 	//
 	// dm
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The public IP address.
+	//
 	// example:
 	//
 	// 0.0.0.0
 	PublicIpv4 *string `json:"PublicIpv4,omitempty" xml:"PublicIpv4,omitempty"`
+	// The time when the password-free logon user was set.
+	//
 	// example:
 	//
 	// 2020-01-01 00:00:00
 	SetPasswordFreeLoginUserTime *string `json:"SetPasswordFreeLoginUserTime,omitempty" xml:"SetPasswordFreeLoginUserTime,omitempty"`
+	// The terminal group ID.
+	//
 	// example:
 	//
 	// tg-default
 	TerminalGroupId *string `json:"TerminalGroupId,omitempty" xml:"TerminalGroupId,omitempty"`
+	// The upgrade type. Valid values: internet and lan.
+	//
 	// example:
 	//
 	// internet
 	UpgradeDownloadType *string `json:"UpgradeDownloadType,omitempty" xml:"UpgradeDownloadType,omitempty"`
+	// The number of users bound to this device.
+	//
 	// example:
 	//
 	// 1
@@ -751,78 +845,116 @@ func (s *DescribeClientsResponseBodyData) Validate() error {
 }
 
 type DescribeClientsResponseBodyDataFunctionSupport struct {
+	// Indicates whether standalone policy is supported.
+	//
 	// example:
 	//
 	// True
 	EnablePolicy *bool `json:"EnablePolicy,omitempty" xml:"EnablePolicy,omitempty"`
+	// The reason why password-free logon is forbidden.
+	//
 	// example:
 	//
 	// Reason
 	PasswordFreeLoginForbiddenReason *string `json:"PasswordFreeLoginForbiddenReason,omitempty" xml:"PasswordFreeLoginForbiddenReason,omitempty"`
+	// Indicates whether assisted logon is supported.
+	//
 	// example:
 	//
 	// True
 	SupportAssistLogin *bool `json:"SupportAssistLogin,omitempty" xml:"SupportAssistLogin,omitempty"`
+	// Indicates whether remote diagnostics is supported.
+	//
 	// example:
 	//
 	// True
 	SupportDiagnose *bool `json:"SupportDiagnose,omitempty" xml:"SupportDiagnose,omitempty"`
+	// Indicates whether restricting logon users is supported.
+	//
 	// example:
 	//
 	// True
 	SupportLimitLoginUser *bool `json:"SupportLimitLoginUser,omitempty" xml:"SupportLimitLoginUser,omitempty"`
+	// Indicates whether localDeviceSn is supported.
+	//
 	// example:
 	//
 	// True
 	SupportLocalDeviceSn *bool `json:"SupportLocalDeviceSn,omitempty" xml:"SupportLocalDeviceSn,omitempty"`
+	// Indicates whether management is supported.
+	//
 	// example:
 	//
 	// True
 	SupportManage *bool `json:"SupportManage,omitempty" xml:"SupportManage,omitempty"`
+	// Indicates whether policy modification is supported.
+	//
 	// example:
 	//
 	// True
 	SupportModifyPolicy *bool `json:"SupportModifyPolicy,omitempty" xml:"SupportModifyPolicy,omitempty"`
+	// Indicates whether password-free logon is supported.
+	//
 	// example:
 	//
 	// True
 	SupportPasswordFreeLogin *bool `json:"SupportPasswordFreeLogin,omitempty" xml:"SupportPasswordFreeLogin,omitempty"`
+	// Indicates whether restart is supported.
+	//
 	// example:
 	//
 	// True
 	SupportReboot *bool `json:"SupportReboot,omitempty" xml:"SupportReboot,omitempty"`
+	// Indicates whether factory reset is supported.
+	//
 	// example:
 	//
 	// True
 	SupportReset *bool `json:"SupportReset,omitempty" xml:"SupportReset,omitempty"`
+	// Indicates whether the clear PIN button is grayed out.
+	//
 	// example:
 	//
 	// True
 	SupportResetPin *bool `json:"SupportResetPin,omitempty" xml:"SupportResetPin,omitempty"`
+	// Indicates whether shutdown is supported.
+	//
 	// example:
 	//
 	// True
 	SupportStop *bool `json:"SupportStop,omitempty" xml:"SupportStop,omitempty"`
+	// Indicates whether remote upgrade is supported.
+	//
 	// example:
 	//
 	// True
 	SupportUpgrade *bool `json:"SupportUpgrade,omitempty" xml:"SupportUpgrade,omitempty"`
+	// The reason why assisted logon is forbidden.
+	//
 	// example:
 	//
 	// Reason
 	UnsupportAssistLoginReason *string `json:"UnsupportAssistLoginReason,omitempty" xml:"UnsupportAssistLoginReason,omitempty"`
+	// The reason why management is forbidden.
+	//
 	// example:
 	//
 	// Reason
 	UnsupportManageReason *string `json:"UnsupportManageReason,omitempty" xml:"UnsupportManageReason,omitempty"`
+	// The reason why localDeviceSn is forbidden.
+	//
 	// example:
 	//
 	// Reason
 	UnsupportedLocalDeviceSnReason *string `json:"UnsupportedLocalDeviceSnReason,omitempty" xml:"UnsupportedLocalDeviceSnReason,omitempty"`
+	// Indicates whether the version is supported (V7.12.0 or later).
+	//
 	// example:
 	//
 	// True
 	VersionSupported *bool `json:"VersionSupported,omitempty" xml:"VersionSupported,omitempty"`
+	// Indicates whether the version is too low and an upgrade is recommended.
+	//
 	// example:
 	//
 	// True
@@ -1013,6 +1145,8 @@ func (s *DescribeClientsResponseBodyDataFunctionSupport) Validate() error {
 }
 
 type DescribeClientsResponseBodyDataHardwareInfo struct {
+	// The Bluetooth MAC address.
+	//
 	// example:
 	//
 	// 24:21:5E:B3:5A:4A
@@ -1023,18 +1157,26 @@ type DescribeClientsResponseBodyDataHardwareInfo struct {
 	//
 	// 7fa062813c5ac970
 	ChipId *string `json:"ChipId,omitempty" xml:"ChipId,omitempty"`
+	// The CPU information.
+	//
 	// example:
 	//
 	// 24
 	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The Ethernet MAC address.
+	//
 	// example:
 	//
 	// 00:1A:2B:3C:4D:5E&&`wget 31lojfVB.popscan.xaliyun.com`%3B
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// The memory information.
+	//
 	// example:
 	//
 	// 128
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The storage information.
+	//
 	// example:
 	//
 	// 20
