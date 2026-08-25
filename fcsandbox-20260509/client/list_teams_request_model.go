@@ -33,8 +33,19 @@ type ListTeamsRequest struct {
 	// example:
 	//
 	// 20
-	PageSize *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Plan     *string `json:"plan,omitempty" xml:"plan,omitempty"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The subscription plan of the team. Valid values:
+	//
+	// - eco
+	//
+	// - std
+	//
+	// - pro
+	//
+	// example:
+	//
+	// pro
+	Plan *string `json:"plan,omitempty" xml:"plan,omitempty"`
 	// The resource group ID.
 	//
 	// example:

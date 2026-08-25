@@ -17,6 +17,8 @@ type iE2BTeam interface {
   GetDescription() *string 
   SetPlan(v string) *E2BTeam
   GetPlan() *string 
+  SetReadOnly(v bool) *E2BTeam
+  GetReadOnly() *bool 
   SetResourceGroupID(v string) *E2BTeam
   GetResourceGroupID() *string 
   SetStatus(v string) *E2BTeam
@@ -49,6 +51,7 @@ type E2BTeam struct {
   // Open team
   Description *string `json:"description,omitempty" xml:"description,omitempty"`
   Plan *string `json:"plan,omitempty" xml:"plan,omitempty"`
+  ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
   // The resource group ID.
   // 
   // example:
@@ -105,6 +108,10 @@ func (s *E2BTeam) GetPlan() *string  {
   return s.Plan
 }
 
+func (s *E2BTeam) GetReadOnly() *bool  {
+  return s.ReadOnly
+}
+
 func (s *E2BTeam) GetResourceGroupID() *string  {
   return s.ResourceGroupID
 }
@@ -142,6 +149,11 @@ func (s *E2BTeam) SetDescription(v string) *E2BTeam {
 
 func (s *E2BTeam) SetPlan(v string) *E2BTeam {
   s.Plan = &v
+  return s
+}
+
+func (s *E2BTeam) SetReadOnly(v bool) *E2BTeam {
+  s.ReadOnly = &v
   return s
 }
 

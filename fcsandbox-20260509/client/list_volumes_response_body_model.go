@@ -24,27 +24,38 @@ type iListVolumesResponseBody interface {
 }
 
 type ListVolumesResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 4
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The pagination token used to retrieve more results. You do not need to specify this parameter for the first request. For subsequent requests, use the token returned in the previous response.
+	//
 	// example:
 	//
 	// qxGrXje86XMrYQ51aJMy
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7ADFF8D8-D4BA-5F79-AD49-DDABFEA59B6C
-	RequestId *string      `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Volumes   []*E2BVolume `json:"volumes,omitempty" xml:"volumes,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of volumes.
+	Volumes []*E2BVolume `json:"volumes,omitempty" xml:"volumes,omitempty" type:"Repeated"`
 }
 
 func (s ListVolumesResponseBody) String() string {

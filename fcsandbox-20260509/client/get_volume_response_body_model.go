@@ -20,19 +20,26 @@ type iGetVolumeResponseBody interface {
 }
 
 type GetVolumeResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7ADFF8D8-D4BA-5F79-AD49-DDABFEA59B6C
-	RequestId *string    `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Volume    *E2BVolume `json:"volume,omitempty" xml:"volume,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The storage configuration.
+	Volume *E2BVolume `json:"volume,omitempty" xml:"volume,omitempty"`
 }
 
 func (s GetVolumeResponseBody) String() string {

@@ -14,6 +14,7 @@ type iUpdateVolumeRequest interface {
 }
 
 type UpdateVolumeRequest struct {
+	// The parameters for updating the volume.
 	Body *UpdateVolumeInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 

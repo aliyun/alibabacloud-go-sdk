@@ -14,6 +14,8 @@ type iDeleteVolumeRequest interface {
 }
 
 type DeleteVolumeRequest struct {
+	// The unique identifier of the Team.
+	//
 	// example:
 	//
 	// 70d1c834-0383-58d8-97ac-5336eb91abcd

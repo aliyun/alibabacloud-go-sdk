@@ -18,14 +18,20 @@ type iDeleteVolumeResponseBody interface {
 }
 
 type DeleteVolumeResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B5AD8B54-4358-5F5B-ACAA-52F2016459C6

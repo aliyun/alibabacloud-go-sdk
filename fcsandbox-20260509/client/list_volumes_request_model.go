@@ -26,30 +26,52 @@ type iListVolumesRequest interface {
 }
 
 type ListVolumesRequest struct {
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 5
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token used to retrieve more results. You do not need to specify this parameter for the first request. For subsequent requests, use the token returned in the previous response.
+	//
 	// example:
 	//
 	// qxGrXje86XMrYQ51aJMy
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-acfmwxqyrgwabcd
 	ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+	// The status of the volume. Valid values:
+	//
+	// - CREATING
+	//
+	// - AVAILABLE
+	//
+	// - ERROR
+	//
+	// - DELETING
+	//
 	// example:
 	//
 	// CREATING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The unique identifier of the team.
+	//
 	// example:
 	//
 	// 70d1c834-0383-58d8-97ac-5336eb91abcd
 	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// The UID of the creator.
+	//
 	// example:
 	//
 	// 210000000
 	UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
+	// The name of the volume. The name must be unique within the team.
+	//
 	// example:
 	//
 	// workspace

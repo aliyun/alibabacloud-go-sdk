@@ -264,7 +264,7 @@ func (client *Client) DeleteTeamWithContext(ctx context.Context, teamID *string,
 
 // Summary:
 //
-// 删除 Volume
+// Deletes a Volume.
 //
 // @param request - DeleteVolumeRequest
 //
@@ -440,7 +440,7 @@ func (client *Client) GetTeamWithContext(ctx context.Context, teamID *string, re
 
 // Summary:
 //
-// 查看 Volume
+// Queries a Volume.
 //
 // @param request - GetVolumeRequest
 //
@@ -609,7 +609,7 @@ func (client *Client) ListQuotaWithContext(ctx context.Context, request *ListQuo
 
 // Summary:
 //
-// Queries a list of teams.
+// Queries the list of teams.
 //
 // @param request - ListTeamsRequest
 //
@@ -672,7 +672,7 @@ func (client *Client) ListTeamsWithContext(ctx context.Context, request *ListTea
 
 // Summary:
 //
-// 分页查询 Volumes
+// Queries volumes by using paging.
 //
 // @param request - ListVolumesRequest
 //
@@ -910,7 +910,7 @@ func (client *Client) UpdateTeamWithContext(ctx context.Context, teamID *string,
 
 // Summary:
 //
-// 更新 Volume
+// Updates a volume.
 //
 // @param request - UpdateVolumeRequest
 //

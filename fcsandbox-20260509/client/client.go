@@ -435,7 +435,7 @@ func (client *Client) DeleteTeam(teamID *string, request *DeleteTeamRequest) (_r
 
 // Summary:
 //
-// 删除 Volume
+// Deletes a Volume.
 //
 // @param request - DeleteVolumeRequest
 //
@@ -482,7 +482,7 @@ func (client *Client) DeleteVolumeWithOptions(volumeID *string, request *DeleteV
 
 // Summary:
 //
-// 删除 Volume
+// Deletes a Volume.
 //
 // @param request - DeleteVolumeRequest
 //
@@ -687,7 +687,7 @@ func (client *Client) GetTeam(teamID *string, request *GetTeamRequest) (_result 
 
 // Summary:
 //
-// 查看 Volume
+// Queries a Volume.
 //
 // @param request - GetVolumeRequest
 //
@@ -734,7 +734,7 @@ func (client *Client) GetVolumeWithOptions(volumeID *string, request *GetVolumeR
 
 // Summary:
 //
-// 查看 Volume
+// Queries a Volume.
 //
 // @param request - GetVolumeRequest
 //
@@ -913,7 +913,7 @@ func (client *Client) ListQuota(request *ListQuotaRequest) (_result *ListQuotaRe
 
 // Summary:
 //
-// Queries a list of teams.
+// Queries the list of teams.
 //
 // @param request - ListTeamsRequest
 //
@@ -976,7 +976,7 @@ func (client *Client) ListTeamsWithOptions(request *ListTeamsRequest, headers ma
 
 // Summary:
 //
-// Queries a list of teams.
+// Queries the list of teams.
 //
 // @param request - ListTeamsRequest
 //
@@ -995,7 +995,7 @@ func (client *Client) ListTeams(request *ListTeamsRequest) (_result *ListTeamsRe
 
 // Summary:
 //
-// 分页查询 Volumes
+// Queries volumes by using paging.
 //
 // @param request - ListVolumesRequest
 //
@@ -1066,7 +1066,7 @@ func (client *Client) ListVolumesWithOptions(request *ListVolumesRequest, header
 
 // Summary:
 //
-// 分页查询 Volumes
+// Queries volumes by using paging.
 //
 // @param request - ListVolumesRequest
 //
@@ -1328,7 +1328,7 @@ func (client *Client) UpdateTeam(teamID *string, request *UpdateTeamRequest) (_r
 
 // Summary:
 //
-// 更新 Volume
+// Updates a volume.
 //
 // @param request - UpdateVolumeRequest
 //
@@ -1370,7 +1370,7 @@ func (client *Client) UpdateVolumeWithOptions(volumeID *string, request *UpdateV
 
 // Summary:
 //
-// 更新 Volume
+// Updates a volume.
 //
 // @param request - UpdateVolumeRequest
 //
