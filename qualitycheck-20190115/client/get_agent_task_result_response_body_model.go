@@ -348,7 +348,8 @@ type GetAgentTaskResultResponseBodyDataResponse struct {
 	// The result of the custom prompt.
 	CustomerPromptResponse *GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse `json:"CustomerPromptResponse,omitempty" xml:"CustomerPromptResponse,omitempty" type:"Struct"`
 	// The property extraction result.
-	FieldResponse *GetAgentTaskResultResponseBodyDataResponseFieldResponse `json:"FieldResponse,omitempty" xml:"FieldResponse,omitempty" type:"Struct"`
+	FieldResponse         *GetAgentTaskResultResponseBodyDataResponseFieldResponse         `json:"FieldResponse,omitempty" xml:"FieldResponse,omitempty" type:"Struct"`
+	MultiLevelTagResponse *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponse `json:"MultiLevelTagResponse,omitempty" xml:"MultiLevelTagResponse,omitempty" type:"Struct"`
 	// The service quality inspection result.
 	ServiceInspectionResponse *GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponse `json:"ServiceInspectionResponse,omitempty" xml:"ServiceInspectionResponse,omitempty" type:"Struct"`
 	// The tag categorization result.
@@ -372,6 +373,10 @@ func (s *GetAgentTaskResultResponseBodyDataResponse) GetFieldResponse() *GetAgen
 	return s.FieldResponse
 }
 
+func (s *GetAgentTaskResultResponseBodyDataResponse) GetMultiLevelTagResponse() *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponse {
+	return s.MultiLevelTagResponse
+}
+
 func (s *GetAgentTaskResultResponseBodyDataResponse) GetServiceInspectionResponse() *GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponse {
 	return s.ServiceInspectionResponse
 }
@@ -391,6 +396,11 @@ func (s *GetAgentTaskResultResponseBodyDataResponse) SetCustomerPromptResponse(v
 
 func (s *GetAgentTaskResultResponseBodyDataResponse) SetFieldResponse(v *GetAgentTaskResultResponseBodyDataResponseFieldResponse) *GetAgentTaskResultResponseBodyDataResponse {
 	s.FieldResponse = v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponse) SetMultiLevelTagResponse(v *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponse) *GetAgentTaskResultResponseBodyDataResponse {
+	s.MultiLevelTagResponse = v
 	return s
 }
 
@@ -417,6 +427,11 @@ func (s *GetAgentTaskResultResponseBodyDataResponse) Validate() error {
 	}
 	if s.FieldResponse != nil {
 		if err := s.FieldResponse.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MultiLevelTagResponse != nil {
+		if err := s.MultiLevelTagResponse.Validate(); err != nil {
 			return err
 		}
 	}
@@ -571,6 +586,291 @@ func (s *GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList) Set
 }
 
 func (s *GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponse struct {
+	TagList []*GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+}
+
+func (s GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponse) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponse) GetTagList() []*GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagList {
+	return s.TagList
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponse) SetTagList(v []*GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagList) *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponse {
+	s.TagList = v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponse) Validate() error {
+	if s.TagList != nil {
+		for _, item := range s.TagList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagList struct {
+	Children []*GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildren `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	Remarks  *string                                                                           `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	TagName  *string                                                                           `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagList) GetChildren() []*GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildren {
+	return s.Children
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagList) GetRemarks() *string {
+	return s.Remarks
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagList) GetTagName() *string {
+	return s.TagName
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagList) SetChildren(v []*GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildren) *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagList {
+	s.Children = v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagList) SetRemarks(v string) *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagList {
+	s.Remarks = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagList) SetTagName(v string) *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagList {
+	s.TagName = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagList) Validate() error {
+	if s.Children != nil {
+		for _, item := range s.Children {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildren struct {
+	Children []*GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildren `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	Remarks  *string                                                                                   `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	TagName  *string                                                                                   `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildren) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildren) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildren) GetChildren() []*GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildren {
+	return s.Children
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildren) GetRemarks() *string {
+	return s.Remarks
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildren) GetTagName() *string {
+	return s.TagName
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildren) SetChildren(v []*GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildren) *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildren {
+	s.Children = v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildren) SetRemarks(v string) *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildren {
+	s.Remarks = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildren) SetTagName(v string) *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildren {
+	s.TagName = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildren) Validate() error {
+	if s.Children != nil {
+		for _, item := range s.Children {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildren struct {
+	Children []*GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildren `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	Remarks  *string                                                                                           `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	TagName  *string                                                                                           `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildren) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildren) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildren) GetChildren() []*GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildren {
+	return s.Children
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildren) GetRemarks() *string {
+	return s.Remarks
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildren) GetTagName() *string {
+	return s.TagName
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildren) SetChildren(v []*GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildren) *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildren {
+	s.Children = v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildren) SetRemarks(v string) *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildren {
+	s.Remarks = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildren) SetTagName(v string) *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildren {
+	s.TagName = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildren) Validate() error {
+	if s.Children != nil {
+		for _, item := range s.Children {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildren struct {
+	Children []*GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildrenChildren `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	Remarks  *string                                                                                                   `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	TagName  *string                                                                                                   `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildren) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildren) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildren) GetChildren() []*GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildrenChildren {
+	return s.Children
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildren) GetRemarks() *string {
+	return s.Remarks
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildren) GetTagName() *string {
+	return s.TagName
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildren) SetChildren(v []*GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildrenChildren) *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildren {
+	s.Children = v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildren) SetRemarks(v string) *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildren {
+	s.Remarks = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildren) SetTagName(v string) *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildren {
+	s.TagName = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildren) Validate() error {
+	if s.Children != nil {
+		for _, item := range s.Children {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildrenChildren struct {
+	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildrenChildren) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildrenChildren) GoString() string {
+	return s.String()
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildrenChildren) GetRemarks() *string {
+	return s.Remarks
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildrenChildren) GetTagName() *string {
+	return s.TagName
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildrenChildren) SetRemarks(v string) *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildrenChildren {
+	s.Remarks = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildrenChildren) SetTagName(v string) *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildrenChildren {
+	s.TagName = &v
+	return s
+}
+
+func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildrenChildren) Validate() error {
 	return dara.Validate(s)
 }
 
