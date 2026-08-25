@@ -38,17 +38,19 @@ type ListTasksRequest struct {
 	//
 	// g-59d8d22e78792ffe3d3eb6154d727
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The keyword for fuzzy search by task ID or task name.
+	// The keyword used to perform a fuzzy search by task ID or task name.
 	//
 	// example:
 	//
 	// key
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// The key ID.
+	//
 	// example:
 	//
 	// 21a90f5d-a469-4ac4-a8ea-f6e1e7470e6f
 	KmsKeyId *string `json:"kmsKeyId,omitempty" xml:"kmsKeyId,omitempty"`
-	// The module ID.
+	// The template ID.
 	//
 	// example:
 	//
@@ -60,7 +62,7 @@ type ListTasksRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+	// The number of results returned per page. Default value: 20. Minimum value: 1. Maximum value: 100.
 	//
 	// example:
 	//
@@ -78,13 +80,13 @@ type ListTasksRequest struct {
 	//
 	// - Planned: The job has completed the Plan execution.
 	//
-	// - PlannedAndFinished: After the Plan execution is completed, no diff is found, and the job enters the final state.
+	// - PlannedAndFinished: After the Plan execution is complete, no diff is found. The job is in a final state.
 	//
 	// - Applying: The job is in the Apply execution phase.
 	//
 	// - Applied: The job has completed the Apply execution.
 	//
-	// - Errored: The job execution encountered errors and entered the final state.
+	// - Errored: The job execution encountered an error and entered a final state.
 	//
 	// example:
 	//

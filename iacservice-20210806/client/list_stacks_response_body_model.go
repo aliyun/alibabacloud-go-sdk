@@ -117,7 +117,7 @@ func (s *ListStacksResponseBody) Validate() error {
 }
 
 type ListStacksResponseBodyStacks struct {
-	// The creation time.
+	// The creation time in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -145,11 +145,11 @@ type ListStacksResponseBodyStacks struct {
 	//
 	// OSS
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The path of the configuration source. The value cannot exceed 1000 characters.
+	// The path value of the configuration source. The value cannot exceed 1000 characters.
 	//
-	// - If the source is OSS, the value is in the format oss::<file link> and must be a zip file, such as oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip.
+	// - If the source is OSS, the value is in the format oss::<file link> and must be a zip file. Example: oss::https://terraform-pipeline.oss-eu-central-1.aliyuncs.com/code.zip
 	//
-	// - If the source is IAC_SERVICE_MODULE, the value is a template ID, such as mod-xxxxx.
+	// - If the source is IAC_SERVICE_MODULE, the value is a template ID. Example: mod-xxxxx
 	//
 	// example:
 	//
@@ -179,23 +179,23 @@ type ListStacksResponseBodyStacks struct {
 	//
 	// |------|------|
 	//
-	// | Creating | Being created |
+	// | Creating | Being created. |
 	//
-	// | Created | Creation complete |
+	// | Created | Created. |
 	//
-	// | Waiting | Waiting for deployment |
+	// | Waiting | Waiting for deployment. |
 	//
-	// | Deploying | Being deployed |
+	// | Deploying | Being deployed. |
 	//
-	// | Deployed | Deployment complete |
+	// | Deployed | Deployed. |
 	//
-	// | Errored | Deployment failed |
+	// | Errored | Deployment failed. |
 	//
-	// | Deleting | Being deleted |
+	// | Deleting | Being deleted. |
 	//
-	// | Deleted | Deleted |
+	// | Deleted | Deleted. |
 	//
-	// | DeleteFailed | Deletion failed |.
+	// | DeleteFailed | Deletion failed. |
 	//
 	// example:
 	//

@@ -30,13 +30,13 @@ type GetResourceTypeRequest struct {
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"acceptLanguage,omitempty" xml:"acceptLanguage,omitempty"`
-	// Specifies whether to filter out read-only properties.
+	// Specifies whether to filter read-only properties.
 	//
 	// example:
 	//
 	// false
 	FilterReadOnly *bool `json:"filterReadOnly,omitempty" xml:"filterReadOnly,omitempty"`
-	// The Terraform provider version. If left empty, the latest version is used by default.
+	// The Terraform provider version. If this parameter is left empty, the latest version is used by default.
 	//
 	// example:
 	//

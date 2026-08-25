@@ -74,7 +74,7 @@ type GetTaskResponseBodyTask struct {
 	//
 	// false
 	AutoDestroy *bool `json:"autoDestroy,omitempty" xml:"autoDestroy,omitempty"`
-	// The time when the task was created.
+	// The time when the task was created, in UTC in the ISO 8601 format of YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type GetTaskResponseBodyTask struct {
 	//
 	// true
 	DeletionProtection *bool `json:"deletionProtection,omitempty" xml:"deletionProtection,omitempty"`
-	// The description of the task.
+	// The description.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type GetTaskResponseBodyTask struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The group information.
 	GroupInfo *GetTaskResponseBodyTaskGroupInfo `json:"groupInfo,omitempty" xml:"groupInfo,omitempty" type:"Struct"`
-	// Specifies whether to use a state file. Default value: false. This parameter is applicable to templates that originate from resource export. Only one task can use this parameter at a time.
+	// Specifies whether to use a state file. Default value: false. This parameter applies to templates that originate from resource export. Only one task can use this parameter at a time.
 	//
 	// example:
 	//
@@ -156,12 +156,13 @@ type GetTaskResponseBodyTask struct {
 	//
 	// false
 	SkipPropertyValidation *bool `json:"skipPropertyValidation,omitempty" xml:"skipPropertyValidation,omitempty"`
-	SkipRegionValidation   *bool `json:"skipRegionValidation,omitempty" xml:"skipRegionValidation,omitempty"`
+	// Specifies whether to skip region validation. Valid values: true and false.
+	SkipRegionValidation *bool `json:"skipRegionValidation,omitempty" xml:"skipRegionValidation,omitempty"`
 	// The task status. Valid values:
 	//
 	// - Available: the task is available and no job is running.
 	//
-	// - Running: a job is currently running.
+	// - Running: the task is running and a job is in progress.
 	//
 	// example:
 	//

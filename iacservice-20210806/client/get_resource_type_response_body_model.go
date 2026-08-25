@@ -106,7 +106,12 @@ type GetResourceTypeResponseBodyResourceType struct {
 	//
 	// https://vpc.console.aliyun.com/vpc/${RegionId}/route-tables
 	ResourceListPageUrl *string `json:"resourceListPageUrl,omitempty" xml:"resourceListPageUrl,omitempty"`
-	ResourceType        *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The Alibaba Cloud resource type, in the format of ALIYUN::<cloud service>::<resource type>.
+	//
+	// example:
+	//
+	// ALIYUN::VPC::VPC
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 	// The resource status.
 	//
 	// example:

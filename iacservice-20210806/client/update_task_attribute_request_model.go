@@ -44,7 +44,7 @@ type iUpdateTaskAttributeRequest interface {
 }
 
 type UpdateTaskAttributeRequest struct {
-	// Specifies whether to automatically execute the task. Default value: false.
+	// Specifies whether to automatically execute the node. Default value: false.
 	//
 	// - true: After the preview is complete (terraform plan), the execution (terraform apply) is automatically performed without manual confirmation.
 	//
@@ -64,7 +64,7 @@ type UpdateTaskAttributeRequest struct {
 	//
 	// true
 	AutoDestroy *bool `json:"autoDestroy,omitempty" xml:"autoDestroy,omitempty"`
-	// The idempotency token. Format: [0-9a-zA-Z-]{1,64}. We recommend that you use a UUID.
+	// The idempotency token. Format: [0-9a-zA-Z-]{1,64}. Use a UUID.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type UpdateTaskAttributeRequest struct {
 	//
 	// a65451293e64979ba7a4b573950217fe
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
-	// The description of the task.
+	// The description.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type UpdateTaskAttributeRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The project group information.
 	GroupInfo *UpdateTaskAttributeRequestGroupInfo `json:"groupInfo,omitempty" xml:"groupInfo,omitempty" type:"Struct"`
-	// Specifies whether to use a state file. Default value: false. This parameter is applicable when the template originates from resource export. Only one task can use this parameter.
+	// Specifies whether to use a state file. Default value: false. This parameter applies to templates that originate from resource export. Only one node can use this parameter.
 	//
 	// example:
 	//
@@ -92,13 +92,13 @@ type UpdateTaskAttributeRequest struct {
 	//
 	// v1
 	ModuleVersion *string `json:"moduleVersion,omitempty" xml:"moduleVersion,omitempty"`
-	// The task name. The name must meet the following requirements:
+	// The node name. The name must meet the following requirements:
 	//
 	// - The name must be 2 to 128 characters in length.
 	//
-	// - The name can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). It cannot start or end with a hyphen, underscore, or period.
+	// - The name can contain letters, digits, Chinese characters, hyphens (-), underscores (_), and periods (.). The name cannot start or end with a hyphen, underscore, or period.
 	//
-	// - The name must be unique among all tasks under the current account.
+	// - The name must be unique among all node resources within the current account.
 	//
 	// example:
 	//
@@ -112,33 +112,39 @@ type UpdateTaskAttributeRequest struct {
 	//
 	// role
 	RamRole *string `json:"ramRole,omitempty" xml:"ramRole,omitempty"`
-	// Specifies whether to skip enum value validation. Default value: false.
+	// Specifies whether to skip enumeration value validation. Default value: false.
 	//
 	// example:
 	//
 	// false
 	SkipPropertyValidation *bool `json:"skipPropertyValidation,omitempty" xml:"skipPropertyValidation,omitempty"`
-	SkipRegionValidation   *bool `json:"skipRegionValidation,omitempty" xml:"skipRegionValidation,omitempty"`
-	// The list of tags for the task.
-	Tags                     []*UpdateTaskAttributeRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	TerraformProviderVersion *string                           `json:"terraformProviderVersion,omitempty" xml:"terraformProviderVersion,omitempty"`
-	// The Terraform version. Call the **ListAvailableTerraformVersions*	- operation to obtain the list of supported versions. Default value: 1.5.7.
+	// Specifies whether to skip region validation. Valid values: true indicates skipping, false indicates not skipping.
+	SkipRegionValidation *bool `json:"skipRegionValidation,omitempty" xml:"skipRegionValidation,omitempty"`
+	// The list of tags for the node.
+	Tags []*UpdateTaskAttributeRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The Terraform Provider version. Use the **ListTerraformProviderVersions*	- API to query the list of supported versions.
+	//
+	// example:
+	//
+	// 1.248.0
+	TerraformProviderVersion *string `json:"terraformProviderVersion,omitempty" xml:"terraformProviderVersion,omitempty"`
+	// The Terraform version. Use the **ListAvailableTerraformVersions*	- API to obtain the list of supported versions. Default value: 1.5.7.
 	//
 	// example:
 	//
 	// 1.5.7
 	TerraformVersion *string `json:"terraformVersion,omitempty" xml:"terraformVersion,omitempty"`
-	// The job trigger method. Valid values:
+	// The job trigger method.
 	//
-	// - Manual: manually triggered (default).
+	// - Manual: manual trigger (default).
 	//
 	// - NewVersion: triggered when a new template version is published.
 	//
 	// - ParameterSetUpdated: triggered when the parameter set content changes or the parameter set attach relationship changes.
 	//
-	// - Auto: automatically triggered when the task\\"s own properties change, such as task creation, execution version change, or job trigger policy change (when changed from another value to Auto).
+	// - Auto: automatically triggered when the node properties change, such as creating a node, changing the execution version, or changing the job trigger policy (when changed from another method to Auto).
 	//
-	// The **ramRole*	- parameter is required when the trigger method is not manual.
+	// The **ramRole*	- parameter is required for non-manual triggers.
 	//
 	// example:
 	//
@@ -362,13 +368,13 @@ func (s *UpdateTaskAttributeRequestGroupInfo) Validate() error {
 }
 
 type UpdateTaskAttributeRequestTags struct {
-	// The tag key of the task.
+	// The tag key of the node.
 	//
 	// example:
 	//
 	// TestKey
 	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
-	// The tag value of the task.
+	// The tag value of the node.
 	//
 	// example:
 	//

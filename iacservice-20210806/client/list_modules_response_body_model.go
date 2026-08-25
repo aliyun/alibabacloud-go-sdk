@@ -117,19 +117,19 @@ func (s *ListModulesResponseBody) Validate() error {
 }
 
 type ListModulesResponseBodyModules struct {
-	// The time when the template was created.
+	// The creation time in UTC, in the ISO 8601 format of YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2022-01-30T02:14:16Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Indicates whether deletion protection is enabled. Deletion protection is automatically enabled when the template is associated with a node, which prevents the template from being deleted.
+	// Indicates whether deletion protection is enabled. When the template is associated with a task, deletion protection is enabled and the template cannot be deleted.
 	//
 	// example:
 	//
 	// false
 	DeletionProtection *bool `json:"deletionProtection,omitempty" xml:"deletionProtection,omitempty"`
-	// The description of the template.
+	// The template description.
 	//
 	// example:
 	//
@@ -167,7 +167,7 @@ type ListModulesResponseBodyModules struct {
 	//
 	// - Shared: cloned from a shared template.
 	//
-	// - Editor: created by using the online editor.
+	// - Editor: created using the online editor.
 	//
 	// example:
 	//
@@ -177,7 +177,7 @@ type ListModulesResponseBodyModules struct {
 	//
 	// - Creating: the template is being created.
 	//
-	// - Created: the template has been created. You can publish a version after the template is created.
+	// - Created: the template has been created. A version can be published after the template is created.
 	//
 	// example:
 	//

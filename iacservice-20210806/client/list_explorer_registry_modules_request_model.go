@@ -41,6 +41,10 @@ type ListExplorerRegistryModulesRequest struct {
 	// The name of the module.
 	//
 	// Note: The module name is not necessarily the same as the product name or resource name.
+	//
+	// example:
+	//
+	// vpc
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
 	// The pagination token for the next page of results.
 	//

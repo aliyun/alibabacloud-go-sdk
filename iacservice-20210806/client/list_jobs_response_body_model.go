@@ -22,7 +22,7 @@ type iListJobsResponseBody interface {
 }
 
 type ListJobsResponseBody struct {
-	// The list of jobs.
+	// The list of job information.
 	Jobs []*ListJobsResponseBodyJobs `json:"jobs,omitempty" xml:"jobs,omitempty" type:"Repeated"`
 	// The page number. Default value: 1.
 	//
@@ -30,7 +30,7 @@ type ListJobsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+	// The number of results returned per page. Default value: 20. Minimum value: 1. Maximum value: 100.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *ListJobsResponseBody) Validate() error {
 type ListJobsResponseBodyJobs struct {
 	// The job configuration.
 	Config *ListJobsResponseBodyJobsConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The time when the job was created.
+	// The time when the job was created, in UTC in the ISO 8601 format of YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -139,9 +139,9 @@ type ListJobsResponseBodyJobs struct {
 	ElapsedTime *int64 `json:"elapsedTime,omitempty" xml:"elapsedTime,omitempty"`
 	// The execution type. Valid values:
 	//
-	// - Manual: manual execution. This is the default value.
+	// - Manual: Manual execution (default).
 	//
-	// - Auto: automatic execution.
+	// - Auto: Automatic execution.
 	//
 	// example:
 	//
@@ -167,21 +167,21 @@ type ListJobsResponseBodyJobs struct {
 	//
 	// - Planning: The resource job is in the Plan execution phase.
 	//
-	// - ConfigProactiveInProgress: Compliance pre-check is in progress. The compliance pre-check feature must be enabled for the account.
+	// - ConfigProactiveInProgress: Compliance pre-check is in progress. The account must have the compliance pre-check feature enabled.
 	//
-	// - ConfigProactiveSuccess: Compliance pre-check succeeded. The compliance pre-check feature must be enabled for the account.
+	// - ConfigProactiveSuccess: Compliance pre-check succeeded. The account must have the compliance pre-check feature enabled.
 	//
-	// - Planned: The resource job has completed the Plan execution.
+	// - Planned: The resource job has completed Plan execution.
 	//
-	// - PlannedAndFinished: After the Plan execution is complete, no diff is found. This is a final status.
+	// - PlannedAndFinished: After Plan execution is completed, no diff is found. This is a final status.
 	//
-	// - Confirmed: The resource job is waiting for confirmation after the Plan execution is complete.
+	// - Confirmed: The resource job is waiting for confirmation after Plan execution is completed.
 	//
 	// - ApplyQueued: During job execution, if no workflow is available, the job is queued.
 	//
 	// - Applying: The resource job is in the Apply execution phase.
 	//
-	// - Applied: The resource job has completed the Apply execution. This is a final status.
+	// - Applied: The resource job has completed Apply execution. This is a final status.
 	//
 	// - Errored: The job execution encountered an error. This is a final status.
 	//
@@ -189,7 +189,7 @@ type ListJobsResponseBodyJobs struct {
 	//
 	// - Discarded: The plan of the resource job was discarded. This is a final status.
 	//
-	// - ConfigProactiveFailure: Compliance pre-check failed. The compliance pre-check feature must be enabled for the account.
+	// - ConfigProactiveFailure: Compliance pre-check failed. The account must have the compliance pre-check feature enabled.
 	//
 	// example:
 	//
@@ -346,7 +346,7 @@ type ListJobsResponseBodyJobsConfig struct {
 	//
 	// v4
 	ModuleVersion *string `json:"moduleVersion,omitempty" xml:"moduleVersion,omitempty"`
-	// The resource change details.
+	// The resource change content.
 	//
 	// example:
 	//

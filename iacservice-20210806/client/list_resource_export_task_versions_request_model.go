@@ -28,7 +28,7 @@ type ListResourceExportTaskVersionsRequest struct {
 	//
 	// v1
 	ExportVersion *string `json:"exportVersion,omitempty" xml:"exportVersion,omitempty"`
-	// The search keyword. Fuzzy match is supported for export version names.
+	// The search keyword. Fuzzy search on export version names is supported.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListResourceExportTaskVersionsRequest struct {
 	//
 	// - Errored: failed
 	//
-	// - Canceled: canceled.
+	// - Canceled: canceled
 	//
 	// example:
 	//

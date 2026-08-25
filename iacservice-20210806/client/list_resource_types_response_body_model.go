@@ -40,7 +40,7 @@ type ListResourceTypesResponseBody struct {
 	//
 	// 9bcaac3c-420d-4303-87ab-7638c07b0a0b
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The resources.
+	// The list of resources.
 	ResourceTypes []*ListResourceTypesResponseBodyResourceTypes `json:"resourceTypes,omitempty" xml:"resourceTypes,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//
@@ -121,7 +121,7 @@ type ListResourceTypesResponseBodyResourceTypes struct {
 	//
 	// example:
 	//
-	// 路由表
+	// Route Table
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The product name.
 	//
@@ -147,7 +147,12 @@ type ListResourceTypesResponseBodyResourceTypes struct {
 	//
 	// https://vpc.console.aliyun.com/vpc/${RegionId}/route-tables
 	ResourceListPageUrl *string `json:"resourceListPageUrl,omitempty" xml:"resourceListPageUrl,omitempty"`
-	ResourceType        *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The Alibaba Cloud resource type in the format of ALIYUN::\\<cloud service>::\\<resource type>.
+	//
+	// example:
+	//
+	// ALIYUN::VPC::VPC
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
 	// The resource status.
 	//
 	// example:
@@ -172,7 +177,7 @@ type ListResourceTypesResponseBodyResourceTypes struct {
 	//
 	// true
 	SupportTerraformer *string `json:"supportTerraformer,omitempty" xml:"supportTerraformer,omitempty"`
-	// The Terraform provider version.
+	// The Terraform Provider version.
 	//
 	// example:
 	//
@@ -188,7 +193,7 @@ type ListResourceTypesResponseBodyResourceTypes struct {
 	//
 	// example:
 	//
-	// 路由表
+	// Route Table
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 

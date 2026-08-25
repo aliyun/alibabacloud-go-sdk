@@ -32,6 +32,8 @@ type ListStacksRequest struct {
 	//
 	// key
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// The key ID.
+	//
 	// example:
 	//
 	// 21a90f5d-a469-4ac4-a8ea-f6e1e7470e6f
@@ -54,7 +56,7 @@ type ListStacksRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 200.
+	// The number of results returned per page. Default value: 20. Minimum value: 1. Maximum value: 200.
 	//
 	// example:
 	//
@@ -66,25 +68,25 @@ type ListStacksRequest struct {
 	//
 	// |------|------|
 	//
-	// | Creating | Being created |
+	// | Creating | Being created. |
 	//
-	// | Created | Creation complete |
+	// | Created | Created. |
 	//
-	// | Waiting | Waiting for deployment |
+	// | Waiting | Waiting for deployment. |
 	//
-	// | Deploying | Being deployed |
+	// | Deploying | Being deployed. |
 	//
-	// | Deployed | Deployment complete |
+	// | Deployed | Deployed. |
 	//
-	// | Errored | Deployment failed |
+	// | Errored | Deployment failed. |
 	//
-	// | Deleting | Being deleted |
+	// | Deleting | Being deleted. |
 	//
-	// | Deleted | Deleted |
+	// | Deleted | Deleted. |
 	//
-	// | DeleteFailed | Deletion failed |
+	// | DeleteFailed | Deletion failed. |
 	//
-	// | DetectTriggered | Drift detection triggered |.
+	// | DetectTriggered | Drift detection triggered. |
 	//
 	// example:
 	//

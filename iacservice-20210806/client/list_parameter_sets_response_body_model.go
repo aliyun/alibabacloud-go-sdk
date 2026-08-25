@@ -28,7 +28,7 @@ type ListParameterSetsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of results per page. Default value: 20. Minimum value: 1. Maximum value: 200.
+	// The number of results returned per page. Default value: 20. Minimum value: 1. Maximum value: 200.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListParameterSetsResponseBody) Validate() error {
 }
 
 type ListParameterSetsResponseBodyParameterSets struct {
-	// The creation time.
+	// The creation time in UTC, in the ISO 8601 format of YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -149,7 +149,7 @@ type ListParameterSetsResponseBodyParameterSets struct {
 	ParameterSetId *string `json:"parameterSetId,omitempty" xml:"parameterSetId,omitempty"`
 	// The parameters in the parameter set.
 	Parameters []*ListParameterSetsResponseBodyParameterSetsParameters `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Repeated"`
-	// The relationships associated with the parameter set.
+	// The associated resources.
 	RelationList []*ListParameterSetsResponseBodyParameterSetsRelationList `json:"relationList,omitempty" xml:"relationList,omitempty" type:"Repeated"`
 }
 
@@ -247,18 +247,19 @@ func (s *ListParameterSetsResponseBodyParameterSets) Validate() error {
 }
 
 type ListParameterSetsResponseBodyParameterSetsParameters struct {
-	// The parameter name.
+	// The name of the parameter.
 	//
 	// example:
 	//
 	// region
-	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
-	Secret *bool   `json:"secret,omitempty" xml:"secret,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Specifies whether the parameter is a secret parameter. Secret parameters are hidden in API responses and console displays, and are stored with encryption.
+	Secret *bool `json:"secret,omitempty" xml:"secret,omitempty"`
 	// The parameter set status. Valid values:
 	//
-	// HAS_VALUE (default): A specific value is defined.
+	// - HAS_VALUE (default): A specific value is defined.
 	//
-	// EXPLICIT_NULL: The value is explicitly set to null.
+	// - EXPLICIT_NULL: Explicitly set to null.
 	//
 	// example:
 	//
@@ -270,7 +271,7 @@ type ListParameterSetsResponseBodyParameterSetsParameters struct {
 	//
 	// string
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The parameter value.
+	// The value of the parameter.
 	//
 	// example:
 	//
@@ -336,13 +337,13 @@ func (s *ListParameterSetsResponseBodyParameterSetsParameters) Validate() error 
 }
 
 type ListParameterSetsResponseBodyParameterSetsRelationList struct {
-	// The creation time.
+	// The creation time in UTC, in the ISO 8601 format of YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2022-06-09T03:46:18Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The resource ID. When the resource type is ModuleVersion, the value is a concatenation of <moduleId>-<moduleversion>, such as mod-34535345df123fr-v3.
+	// The resource ID. When the resource type is ModuleVersion, the ID is composed of <moduleId>-<moduleversion>, such as mod-34535345df123fr-v3.
 	//
 	// example:
 	//
@@ -350,9 +351,9 @@ type ListParameterSetsResponseBodyParameterSetsRelationList struct {
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
 	// The resource type. Valid values:
 	//
-	// - Module: template
+	// - Module: template.
 	//
-	// - ModuleVersion: template version
+	// - ModuleVersion: template version.
 	//
 	// - Task: task.
 	//

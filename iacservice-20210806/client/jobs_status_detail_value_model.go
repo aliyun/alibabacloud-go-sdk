@@ -18,19 +18,19 @@ type iJobsStatusDetailValue interface {
 }
 
 type JobsStatusDetailValue struct {
-	// 备注
+	// The comment.
 	//
 	// example:
 	//
 	// comment
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
-	// 作业执行结果
+	// The job execution result.
 	//
 	// example:
 	//
 	// Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 	JobResult *string `json:"jobResult,omitempty" xml:"jobResult,omitempty"`
-	// 到达状态时间
+	// The time when the status was reached, in the format of YYYY-MM-DD HH:mm:ss. The returned value does not include a time zone identifier.
 	//
 	// example:
 	//

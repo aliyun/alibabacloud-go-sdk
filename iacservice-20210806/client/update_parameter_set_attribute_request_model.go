@@ -90,19 +90,20 @@ type UpdateParameterSetAttributeRequestParameters struct {
 	// example:
 	//
 	// region
-	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
-	Secret *bool   `json:"secret,omitempty" xml:"secret,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Specifies whether the parameter is a secret parameter. Secret parameters are hidden in API responses and console displays, and are stored with encryption.
+	Secret *bool `json:"secret,omitempty" xml:"secret,omitempty"`
 	// The parameter set status. Valid values:
 	//
-	// - HAS_VALUE (default): Defines a specific value.
+	// HAS_VALUE (default): Defines a specific value.
 	//
-	// - EXPLICIT_NULL: Explicitly set to null.
+	// EXPLICIT_NULL: Explicitly set to null.
 	//
 	// example:
 	//
 	// HAS_VALUE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The parameter type. Valid values: string, number, bool, map(string), and list(string).
+	// The parameter type (string/number/bool/map(string)/list(string)).
 	//
 	// example:
 	//

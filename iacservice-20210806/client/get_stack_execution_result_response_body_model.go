@@ -26,14 +26,25 @@ type GetStackExecutionResultResponseBody struct {
 	//
 	// F2D40488-3F74-568B-87EC-1C04D098DF8B
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The execution results of the triggered stacks.
+	// The execution results of the triggered Stacks.
 	StackResults []*GetStackExecutionResultResponseBodyStackResults `json:"stackResults,omitempty" xml:"stackResults,omitempty" type:"Repeated"`
 	// The unique ID of the trigger.
 	//
 	// example:
 	//
 	// event-xxx
-	TriggerId       *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
+	TriggerId *string `json:"triggerId,omitempty" xml:"triggerId,omitempty"`
+	// The overall execution status of this trigger task. Valid values:
+	//
+	// - Waiting: Processing.
+	//
+	// - Success: Processing succeeded.
+	//
+	// - Errored: Processing failed.
+	//
+	// example:
+	//
+	// Success
 	TriggeredStatus *string `json:"triggeredStatus,omitempty" xml:"triggeredStatus,omitempty"`
 }
 
@@ -95,35 +106,29 @@ func (s *GetStackExecutionResultResponseBody) Validate() error {
 }
 
 type GetStackExecutionResultResponseBodyStackResults struct {
-	// The deployment results of the stack.
+	// The deployment results of the Stack.
 	Deployments []*GetStackExecutionResultResponseBodyStackResultsDeployments `json:"deployments,omitempty" xml:"deployments,omitempty" type:"Repeated"`
+	// Error code of the stack execution
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	// The error message.
 	//
 	// example:
 	//
 	// No corresponding Stack found.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The unique identifier of the stack.
+	// The unique identifier of the Stack.
 	//
 	// example:
 	//
 	// stack-al181av2bloah5s53hacbp4
 	StackId *string `json:"stackId,omitempty" xml:"stackId,omitempty"`
-	// The stack name.
+	// The Stack name.
 	//
 	// example:
 	//
 	// stack-demo
 	StackName *string `json:"stackName,omitempty" xml:"stackName,omitempty"`
-	// The execution status of the stack. Valid values:
-	//
-	// - Deploying: deploying
-	//
-	// - Errored: deployment failed
-	//
-	// - Deployed: deployment completed
-	//
-	// - Waiting: waiting for deployment.
+	// The execution status of the Stack.
 	//
 	// example:
 	//
@@ -141,6 +146,10 @@ func (s GetStackExecutionResultResponseBodyStackResults) GoString() string {
 
 func (s *GetStackExecutionResultResponseBodyStackResults) GetDeployments() []*GetStackExecutionResultResponseBodyStackResultsDeployments {
 	return s.Deployments
+}
+
+func (s *GetStackExecutionResultResponseBodyStackResults) GetErrorCode() *string {
+	return s.ErrorCode
 }
 
 func (s *GetStackExecutionResultResponseBodyStackResults) GetMessage() *string {
@@ -161,6 +170,11 @@ func (s *GetStackExecutionResultResponseBodyStackResults) GetStackStatus() *stri
 
 func (s *GetStackExecutionResultResponseBodyStackResults) SetDeployments(v []*GetStackExecutionResultResponseBodyStackResultsDeployments) *GetStackExecutionResultResponseBodyStackResults {
 	s.Deployments = v
+	return s
+}
+
+func (s *GetStackExecutionResultResponseBodyStackResults) SetErrorCode(v string) *GetStackExecutionResultResponseBodyStackResults {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -216,7 +230,7 @@ type GetStackExecutionResultResponseBodyStackResultsDeployments struct {
 	//
 	// Applied
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The URL to view the deployment details.
+	// The URL for viewing deployment details.
 	//
 	// example:
 	//

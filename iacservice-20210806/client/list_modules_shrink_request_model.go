@@ -32,12 +32,17 @@ type ListModulesShrinkRequest struct {
 	//
 	// g-kw1a50tj8rk7cki2q8bbat
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The search keyword. Fuzzy match is supported for template names.
+	// The search keyword. Supports fuzzy match on template names.
 	//
 	// example:
 	//
 	// key
-	Keyword    *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// ModuleName
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
 	// The page number. Default value: 1.
 	//

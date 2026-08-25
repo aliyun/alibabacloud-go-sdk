@@ -28,7 +28,7 @@ type ListTasksResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Default value: 20. Minimum value: 1. Maximum value: 100.
+	// The number of results returned per page. Default value: 20. Minimum value: 1. Maximum value: 100.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListTasksResponseBody struct {
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The list of tasks.
 	Tasks []*ListTasksResponseBodyTasks `json:"tasks,omitempty" xml:"tasks,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type ListTasksResponseBodyTasks struct {
 	//
 	// false
 	AutoApply *bool `json:"autoApply,omitempty" xml:"autoApply,omitempty"`
-	// The time when the task was created.
+	// The time when the task was created, in UTC in the ISO 8601 format of YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -135,13 +135,13 @@ type ListTasksResponseBodyTasks struct {
 	//
 	// job-123asd
 	CurrentJobId *string `json:"currentJobId,omitempty" xml:"currentJobId,omitempty"`
-	// The current job status.
+	// The status of the current job.
 	//
 	// example:
 	//
 	// Pending
 	CurrentJobStatus *string `json:"currentJobStatus,omitempty" xml:"currentJobStatus,omitempty"`
-	// Indicates whether deletion protection is enabled. Deletion protection is automatically enabled when managed resources are included.
+	// Indicates whether deletion protection is enabled. Deletion protection is automatically enabled when managed resources exist.
 	//
 	// example:
 	//
@@ -149,25 +149,25 @@ type ListTasksResponseBodyTasks struct {
 	DeletionProtection *bool `json:"deletionProtection,omitempty" xml:"deletionProtection,omitempty"`
 	// The task group information.
 	GroupInfo *ListTasksResponseBodyTasksGroupInfo `json:"groupInfo,omitempty" xml:"groupInfo,omitempty" type:"Struct"`
-	// The latest version of the module.
+	// The latest version number of the template.
 	//
 	// example:
 	//
 	// v3
 	LatestModuleVersion *string `json:"latestModuleVersion,omitempty" xml:"latestModuleVersion,omitempty"`
-	// The module ID.
+	// The template ID.
 	//
 	// example:
 	//
 	// mod-518855d9a058c331e9c60bc0ce
 	ModuleId *string `json:"moduleId,omitempty" xml:"moduleId,omitempty"`
-	// The module name.
+	// The template name.
 	//
 	// example:
 	//
 	// mod-name
 	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
-	// The module version.
+	// The template version.
 	//
 	// example:
 	//
@@ -181,9 +181,9 @@ type ListTasksResponseBodyTasks struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The task status. Valid values:
 	//
-	// - Available: The task is available, and no job is running.
+	// - Available: The task is in an available state with no job running.
 	//
-	// - Running: The task is running, and the current job is in progress.
+	// - Running: The task is in a running state with a current job in progress.
 	//
 	// example:
 	//
@@ -427,13 +427,13 @@ func (s *ListTasksResponseBodyTasksGroupInfo) Validate() error {
 }
 
 type ListTasksResponseBodyTasksTags struct {
-	// The tag key of the task.
+	// The task tag key.
 	//
 	// example:
 	//
 	// name
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The tag key of the module.
+	// The tag key of the template.
 	//
 	// example:
 	//
@@ -445,7 +445,7 @@ type ListTasksResponseBodyTasksTags struct {
 	//
 	// iac-demo
 	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
-	// The tag value of the task.
+	// The task tag value.
 	//
 	// example:
 	//

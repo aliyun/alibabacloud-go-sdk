@@ -46,7 +46,7 @@ type ListResourceTypesShrinkRequest struct {
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"acceptLanguage,omitempty" xml:"acceptLanguage,omitempty"`
-	// The keyword for searching resource codes or names. Fuzzy match is supported.
+	// The keyword for searching resource code or name. Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -74,17 +74,17 @@ type ListResourceTypesShrinkRequest struct {
 	//
 	// - Normal (default): returned in normal order.
 	//
-	// - Top: returned in order of popularity.
+	// - Top: returned in order of popular access.
 	//
 	// example:
 	//
 	// Normal
 	Sort *string `json:"sort,omitempty" xml:"sort,omitempty"`
-	// The status filter list. Valid values:
+	// The status list for filtering. Valid values:
 	//
 	// - Available
 	//
-	// - Deprecated.
+	// - Deprecated
 	//
 	// example:
 	//
@@ -102,13 +102,13 @@ type ListResourceTypesShrinkRequest struct {
 	//
 	// true
 	SupportTerraformer *bool `json:"supportTerraformer,omitempty" xml:"supportTerraformer,omitempty"`
-	// The Terraform provider version. If this parameter is left empty, the latest version is used by default.
+	// The Terraform Provider version. If this parameter is left empty, the latest version is used by default.
 	//
 	// example:
 	//
 	// 1.227.0
 	TerraformProviderVersion *string `json:"terraformProviderVersion,omitempty" xml:"terraformProviderVersion,omitempty"`
-	// The Terraform resources.
+	// The list of Terraform resources.
 	TerraformResourceTypesShrink *string `json:"terraformResourceTypes,omitempty" xml:"terraformResourceTypes,omitempty"`
 }
 

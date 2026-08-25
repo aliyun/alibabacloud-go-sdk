@@ -16,7 +16,7 @@ type iCreateParameterSetResponseBody interface {
 }
 
 type CreateParameterSetResponseBody struct {
-	// The ID of the parameter set.
+	// The parameter set ID.
 	//
 	// example:
 	//

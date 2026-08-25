@@ -224,7 +224,7 @@ func (client *Client) AddSharedAccounts(request *AddSharedAccountsRequest) (_res
 
 // Summary:
 //
-// # Associate drift detection configuration
+// Associates a drift detection configuration.
 //
 // @param request - AssociateDetectConfigRequest
 //
@@ -279,7 +279,7 @@ func (client *Client) AssociateDetectConfigWithOptions(request *AssociateDetectC
 
 // Summary:
 //
-// # Associate drift detection configuration
+// Associates a drift detection configuration.
 //
 // @param request - AssociateDetectConfigRequest
 //
@@ -1070,11 +1070,11 @@ func (client *Client) CreateModuleVersion(moduleId *string, request *CreateModul
 //
 // - This operation creates a new parameter set.
 //
-// - The name field is required and can be up to 128 characters in length.
+// - The `name` field is required and can be up to 128 characters in length.
 //
-// - Each element in the parameters array must contain the name field. Other fields are optional.
+// - Each element in the `parameters` array must contain the `name` field. Other fields are optional.
 //
-// - Use the clientToken field to ensure the idempotence of the request.
+// - Use the `clientToken` field to ensure idempotence of the request.
 //
 // - The request header must contain authentication information to ensure secure access.
 //
@@ -1143,11 +1143,11 @@ func (client *Client) CreateParameterSetWithOptions(request *CreateParameterSetR
 //
 // - This operation creates a new parameter set.
 //
-// - The name field is required and can be up to 128 characters in length.
+// - The `name` field is required and can be up to 128 characters in length.
 //
-// - Each element in the parameters array must contain the name field. Other fields are optional.
+// - Each element in the `parameters` array must contain the `name` field. Other fields are optional.
 //
-// - Use the clientToken field to ensure the idempotence of the request.
+// - Use the `clientToken` field to ensure idempotence of the request.
 //
 // - The request header must contain authentication information to ensure secure access.
 //
@@ -1634,7 +1634,7 @@ func (client *Client) CreateStack(request *CreateStackRequest) (_result *CreateS
 
 // Summary:
 //
-// Creates a node.
+// Creates a task.
 //
 // Description:
 //
@@ -1757,7 +1757,7 @@ func (client *Client) CreateTaskWithOptions(request *CreateTaskRequest, headers 
 
 // Summary:
 //
-// Creates a node.
+// Creates a task.
 //
 // Description:
 //
@@ -1780,7 +1780,85 @@ func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTas
 
 // Summary:
 //
-// # Delete drift detection configuration
+// Creates a node from a resource import result.
+//
+// @param request - CreateTaskFromResourceImportRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTaskFromResourceImportResponse
+func (client *Client) CreateTaskFromResourceImportWithOptions(request *CreateTaskFromResourceImportRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTaskFromResourceImportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["clientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ExportTaskId) {
+		body["exportTaskId"] = request.ExportTaskId
+	}
+
+	if !dara.IsNil(request.ExportVersion) {
+		body["exportVersion"] = request.ExportVersion
+	}
+
+	if !dara.IsNil(request.TaskName) {
+		body["taskName"] = request.TaskName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTaskFromResourceImport"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/tasks/operations/createTaskFromResourceImport"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTaskFromResourceImportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a node from a resource import result.
+//
+// @param request - CreateTaskFromResourceImportRequest
+//
+// @return CreateTaskFromResourceImportResponse
+func (client *Client) CreateTaskFromResourceImport(request *CreateTaskFromResourceImportRequest) (_result *CreateTaskFromResourceImportResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateTaskFromResourceImportResponse{}
+	_body, _err := client.CreateTaskFromResourceImportWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a bias detection configuration.
 //
 // @param request - DeleteDetectConfigRequest
 //
@@ -1821,7 +1899,7 @@ func (client *Client) DeleteDetectConfigWithOptions(detectConfigId *string, requ
 
 // Summary:
 //
-// # Delete drift detection configuration
+// Deletes a bias detection configuration.
 //
 // @param request - DeleteDetectConfigRequest
 //
@@ -2448,7 +2526,7 @@ func (client *Client) DeleteStack(stackId *string, request *DeleteStackRequest) 
 //
 // Single-user call frequency: 100 calls per second.
 //
-// Deletes a node. If the node has resources that have not been destroyed, the node cannot be deleted.
+// Deletes a node. If the node has resources that have not been destroyed, the deletion is not allowed.
 //
 // @param request - DeleteTaskRequest
 //
@@ -2464,8 +2542,14 @@ func (client *Client) DeleteTaskWithOptions(taskId *string, request *DeleteTaskR
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ResourceRetentionPolicy) {
+		query["resourceRetentionPolicy"] = request.ResourceRetentionPolicy
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DeleteTask"),
@@ -2495,7 +2579,7 @@ func (client *Client) DeleteTaskWithOptions(taskId *string, request *DeleteTaskR
 //
 // Single-user call frequency: 100 calls per second.
 //
-// Deletes a node. If the node has resources that have not been destroyed, the node cannot be deleted.
+// Deletes a node. If the node has resources that have not been destroyed, the deletion is not allowed.
 //
 // @param request - DeleteTaskRequest
 //
@@ -2596,7 +2680,7 @@ func (client *Client) DetectTerraformState(request *DetectTerraformStateRequest)
 
 // Summary:
 //
-// # Disassociate drift detection configuration
+// Dissociates a drift detection configuration.
 //
 // @param request - DissociateDetectConfigRequest
 //
@@ -2651,7 +2735,7 @@ func (client *Client) DissociateDetectConfigWithOptions(request *DissociateDetec
 
 // Summary:
 //
-// # Disassociate drift detection configuration
+// Dissociates a drift detection configuration.
 //
 // @param request - DissociateDetectConfigRequest
 //
@@ -3370,6 +3454,66 @@ func (client *Client) GetDetectConfig(detectConfigId *string, request *GetDetect
 
 // Summary:
 //
+// Retrieves the encryption configuration.
+//
+// @param request - GetEncryptionConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEncryptionConfigResponse
+func (client *Client) GetEncryptionConfigWithOptions(request *GetEncryptionConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetEncryptionConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetEncryptionConfig"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/encryption/config"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetEncryptionConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the encryption configuration.
+//
+// @param request - GetEncryptionConfigRequest
+//
+// @return GetEncryptionConfigResponse
+func (client *Client) GetEncryptionConfig(request *GetEncryptionConfigRequest) (_result *GetEncryptionConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetEncryptionConfigResponse{}
+	_body, _err := client.GetEncryptionConfigWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the result of a Terraform run.
 //
 // Description:
@@ -3720,13 +3864,13 @@ func (client *Client) GetModuleVersion(moduleId *string, moduleVersion *string, 
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - This operation retrieves detailed parameter set information by specifying a parameterSetId.
+// - This operation retrieves detailed parameter set information by specifying a `parameterSetId`.
 //
-// - Authentication is required to call this operation.
+// - Authentication is required to access this operation.
 //
-// - If the request succeeds, the response includes detailed data such as the parameter set name, description, and parameter list.
+// - If the request is successful, detailed data including the parameter set name, description, and parameter list is returned.
 //
 // @param request - GetParameterSetRequest
 //
@@ -3771,13 +3915,13 @@ func (client *Client) GetParameterSetWithOptions(parameterSetId *string, request
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - This operation retrieves detailed parameter set information by specifying a parameterSetId.
+// - This operation retrieves detailed parameter set information by specifying a `parameterSetId`.
 //
-// - Authentication is required to call this operation.
+// - Authentication is required to access this operation.
 //
-// - If the request succeeds, the response includes detailed data such as the parameter set name, description, and parameter list.
+// - If the request is successful, detailed data including the parameter set name, description, and parameter list is returned.
 //
 // @param request - GetParameterSetRequest
 //
@@ -4432,7 +4576,7 @@ func (client *Client) GetStackDeployments(stackId *string, request *GetStackDepl
 
 // Summary:
 //
-// Retrieves the trigger result of a stack.
+// Retrieves the trigger result of a Stack.
 //
 // @param request - GetStackExecutionResultRequest
 //
@@ -4473,7 +4617,7 @@ func (client *Client) GetStackExecutionResultWithOptions(triggerId *string, requ
 
 // Summary:
 //
-// Retrieves the trigger result of a stack.
+// Retrieves the trigger result of a Stack.
 //
 // @param request - GetStackExecutionResultRequest
 //
@@ -4496,7 +4640,7 @@ func (client *Client) GetStackExecutionResult(triggerId *string, request *GetSta
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// Per-user call frequency: 100 calls per second.
 //
 // @param request - GetTaskRequest
 //
@@ -4541,7 +4685,7 @@ func (client *Client) GetTaskWithOptions(taskId *string, request *GetTaskRequest
 //
 // Description:
 //
-// Single-user call frequency: 100 calls per second.
+// Per-user call frequency: 100 calls per second.
 //
 // @param request - GetTaskRequest
 //
@@ -5410,25 +5554,25 @@ func (client *Client) ListModuleVersion(moduleId *string, request *ListModuleVer
 
 // Summary:
 //
-// Retrieves a list of templates for the current user, with support for pagination and conditional filtering.
+// Retrieves the list of templates under the current user, with support for pagination and conditional filtering.
 //
 // Description:
 //
 // ## Operation description
 //
-// This operation lists all Terraform templates for the current user. You can specify query parameters to implement pagination, fuzzy match template names, and filter templates by source or status. You can also filter templates by tag for more granular results.
+// This operation lists all Terraform templates under the current user. You can specify query parameters to implement pagination, fuzzy match template names, filter templates by source or status, and more. You can also filter templates by tags for more granular results.
 //
-// ### Notes
+// ### Precautions
 //
-// - Use the pageNumber and pageSize parameters to control the number of returned results.
+// - The pagination parameters `pageNumber` and `pageSize` help control the number of returned results.
 //
-// - Use the name parameter to perform a fuzzy match on template names.
+// - Use the `name` parameter to perform a fuzzy match search on template names.
 //
-// - Use the source parameter to filter templates by source, such as OSS import or file upload.
+// - Use the `source` parameter to filter templates by source (such as OSS import or file upload).
 //
-// - Use the status parameter to filter templates by status, such as Created or Published.
+// - Use the `status` parameter to filter templates by status (such as created or published).
 //
-// - Tag-based filtering requires a JSON-formatted string, for example, `[{"key":"env","value":"prod"}]`.
+// - Tag filtering requires a JSON-formatted string, for example, `[{"key":"env","value":"prod"}]`.
 //
 // @param tmpReq - ListModulesRequest
 //
@@ -5505,25 +5649,25 @@ func (client *Client) ListModulesWithOptions(tmpReq *ListModulesRequest, headers
 
 // Summary:
 //
-// Retrieves a list of templates for the current user, with support for pagination and conditional filtering.
+// Retrieves the list of templates under the current user, with support for pagination and conditional filtering.
 //
 // Description:
 //
 // ## Operation description
 //
-// This operation lists all Terraform templates for the current user. You can specify query parameters to implement pagination, fuzzy match template names, and filter templates by source or status. You can also filter templates by tag for more granular results.
+// This operation lists all Terraform templates under the current user. You can specify query parameters to implement pagination, fuzzy match template names, filter templates by source or status, and more. You can also filter templates by tags for more granular results.
 //
-// ### Notes
+// ### Precautions
 //
-// - Use the pageNumber and pageSize parameters to control the number of returned results.
+// - The pagination parameters `pageNumber` and `pageSize` help control the number of returned results.
 //
-// - Use the name parameter to perform a fuzzy match on template names.
+// - Use the `name` parameter to perform a fuzzy match search on template names.
 //
-// - Use the source parameter to filter templates by source, such as OSS import or file upload.
+// - Use the `source` parameter to filter templates by source (such as OSS import or file upload).
 //
-// - Use the status parameter to filter templates by status, such as Created or Published.
+// - Use the `status` parameter to filter templates by status (such as created or published).
 //
-// - Tag-based filtering requires a JSON-formatted string, for example, `[{"key":"env","value":"prod"}]`.
+// - Tag filtering requires a JSON-formatted string, for example, `[{"key":"env","value":"prod"}]`.
 //
 // @param request - ListModulesRequest
 //
@@ -5618,13 +5762,13 @@ func (client *Client) ListParameterSetRelation(request *ListParameterSetRelation
 //
 // ## Operation description
 //
-// This operation queries all parameter sets in the system. You can filter results by keyword and paginate the results. Authentication information is required.
+// This operation queries all parameter sets in the system and supports filtering by keyword and paginated results. Authentication information is required in the request.
 //
 // ### Notes
 //
-// - The keyword parameter can be used to perform a fuzzy match on parameter sets by name or description.
+// - The `keyword` parameter can be used to fuzzy match parameter sets by name or description.
 //
-// - Pagination is controlled by pageNumber and pageSize. Results start from the first page by default. Set pageSize to a reasonable value to avoid performance issues.
+// - Pagination is controlled by `pageNumber` and `pageSize`. By default, results start from the first page. The page size is customizable but should be set to a reasonable value to avoid performance issues.
 //
 // @param request - ListParameterSetsRequest
 //
@@ -5689,13 +5833,13 @@ func (client *Client) ListParameterSetsWithOptions(request *ListParameterSetsReq
 //
 // ## Operation description
 //
-// This operation queries all parameter sets in the system. You can filter results by keyword and paginate the results. Authentication information is required.
+// This operation queries all parameter sets in the system and supports filtering by keyword and paginated results. Authentication information is required in the request.
 //
 // ### Notes
 //
-// - The keyword parameter can be used to perform a fuzzy match on parameter sets by name or description.
+// - The `keyword` parameter can be used to fuzzy match parameter sets by name or description.
 //
-// - Pagination is controlled by pageNumber and pageSize. Results start from the first page by default. Set pageSize to a reasonable value to avoid performance issues.
+// - Pagination is controlled by `pageNumber` and `pageSize`. By default, results start from the first page. The page size is customizable but should be set to a reasonable value to avoid performance issues.
 //
 // @param request - ListParameterSetsRequest
 //
@@ -5998,7 +6142,7 @@ func (client *Client) ListRegistryModuleVersions(request *ListRegistryModuleVers
 
 // Summary:
 //
-// Queries a list of registry modules.
+// Queries the list of Registry modules.
 //
 // Description:
 //
@@ -6069,7 +6213,7 @@ func (client *Client) ListRegistryModulesWithOptions(request *ListRegistryModule
 
 // Summary:
 //
-// Queries a list of registry modules.
+// Queries the list of Registry modules.
 //
 // Description:
 //
@@ -6360,7 +6504,7 @@ func (client *Client) ListResourceExportTasks(request *ListResourceExportTasksRe
 //
 // ## Operation description
 //
-// This API operation allows you to perform a conditional query for a list of resource types based on conditions such as product code, Terraform provider version, child class, status, and keyword. The results include detailed information about each resource, such as the product code, status, status effective version, child class, Terraform provider version, and resource type code. Paging is supported to facilitate handling large amounts of data.
+// This API allows you to perform a conditional query for a list of resource types based on conditions such as product code, Terraform Provider version, child class, status, and keyword. The results contain detailed information about resources, including product code, status, status effective version, child class, Terraform Provider version, and resource type code. Paging is supported for handling large amounts of data.
 //
 // @param tmpReq - ListResourceTypesRequest
 //
@@ -6459,7 +6603,7 @@ func (client *Client) ListResourceTypesWithOptions(tmpReq *ListResourceTypesRequ
 //
 // ## Operation description
 //
-// This API operation allows you to perform a conditional query for a list of resource types based on conditions such as product code, Terraform provider version, child class, status, and keyword. The results include detailed information about each resource, such as the product code, status, status effective version, child class, Terraform provider version, and resource type code. Paging is supported to facilitate handling large amounts of data.
+// This API allows you to perform a conditional query for a list of resource types based on conditions such as product code, Terraform Provider version, child class, status, and keyword. The results contain detailed information about resources, including product code, status, status effective version, child class, Terraform Provider version, and resource type code. Paging is supported for handling large amounts of data.
 //
 // @param request - ListResourceTypesRequest
 //
@@ -6728,11 +6872,11 @@ func (client *Client) ListStacks(request *ListStacksRequest) (_result *ListStack
 
 // Summary:
 //
-// Queries a list of tasks.
+// Retrieves a list of tasks.
 //
 // Description:
 //
-// The maximum number of times that a single user can call this operation per second: 100.
+// Per-user call frequency: 100 calls per second.
 //
 // @param tmpReq - ListTasksRequest
 //
@@ -6821,11 +6965,11 @@ func (client *Client) ListTasksWithOptions(tmpReq *ListTasksRequest, headers map
 
 // Summary:
 //
-// Queries a list of tasks.
+// Retrieves a list of tasks.
 //
 // Description:
 //
-// The maximum number of times that a single user can call this operation per second: 100.
+// Per-user call frequency: 100 calls per second.
 //
 // @param request - ListTasksRequest
 //
@@ -7276,7 +7420,81 @@ func (client *Client) RemoveSharedAccounts(request *RemoveSharedAccountsRequest)
 
 // Summary:
 //
-// # Trigger Stack execution
+// Sets the encryption configuration.
+//
+// @param request - SetEncryptionConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetEncryptionConfigResponse
+func (client *Client) SetEncryptionConfigWithOptions(request *SetEncryptionConfigRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SetEncryptionConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["clientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.KmsKeyId) {
+		body["kmsKeyId"] = request.KmsKeyId
+	}
+
+	if !dara.IsNil(request.KmsRegionId) {
+		body["kmsRegionId"] = request.KmsRegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetEncryptionConfig"),
+		Version:     dara.String("2021-08-06"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/encryption/config"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetEncryptionConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sets the encryption configuration.
+//
+// @param request - SetEncryptionConfigRequest
+//
+// @return SetEncryptionConfigResponse
+func (client *Client) SetEncryptionConfig(request *SetEncryptionConfigRequest) (_result *SetEncryptionConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SetEncryptionConfigResponse{}
+	_body, _err := client.SetEncryptionConfigWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Triggers the execution of a stack.
 //
 // @param request - TriggerStackExecutionRequest
 //
@@ -7313,6 +7531,10 @@ func (client *Client) TriggerStackExecutionWithOptions(request *TriggerStackExec
 		body["codeVersionId"] = request.CodeVersionId
 	}
 
+	if !dara.IsNil(request.SourceTriggerId) {
+		body["sourceTriggerId"] = request.SourceTriggerId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -7339,7 +7561,7 @@ func (client *Client) TriggerStackExecutionWithOptions(request *TriggerStackExec
 
 // Summary:
 //
-// # Trigger Stack execution
+// Triggers the execution of a stack.
 //
 // @param request - TriggerStackExecutionRequest
 //
@@ -7798,11 +8020,11 @@ func (client *Client) UpdateModuleAttribute(moduleId *string, request *UpdateMod
 //
 // - This operation allows you to modify the basic information of an existing parameter set, including the name and description.
 //
-// - If the request includes the parameters field, the parameter list in the parameter set is updated.
+// - If the request includes the `parameters` field, the parameter list in the parameter set is updated.
 //
-// - The clientToken field can be used to ensure the idempotence of the request.
+// - The `clientToken` field can be used to ensure the idempotence of the request.
 //
-// - The update operation requires a valid parameterSetId as a path parameter.
+// - The update operation requires a valid `parameterSetId` as a path parameter.
 //
 // - The request must include authentication information to pass identity verification.
 //
@@ -7867,11 +8089,11 @@ func (client *Client) UpdateParameterSetAttributeWithOptions(parameterSetId *str
 //
 // - This operation allows you to modify the basic information of an existing parameter set, including the name and description.
 //
-// - If the request includes the parameters field, the parameter list in the parameter set is updated.
+// - If the request includes the `parameters` field, the parameter list in the parameter set is updated.
 //
-// - The clientToken field can be used to ensure the idempotence of the request.
+// - The `clientToken` field can be used to ensure the idempotence of the request.
 //
-// - The update operation requires a valid parameterSetId as a path parameter.
+// - The update operation requires a valid `parameterSetId` as a path parameter.
 //
 // - The request must include authentication information to pass identity verification.
 //
@@ -8326,7 +8548,7 @@ func (client *Client) UpdateStack(stackId *string, request *UpdateStackRequest) 
 
 // Summary:
 //
-// Updates the properties of a task.
+// Updates the attributes of a node.
 //
 // Description:
 //
@@ -8437,7 +8659,7 @@ func (client *Client) UpdateTaskAttributeWithOptions(taskId *string, request *Up
 
 // Summary:
 //
-// Updates the properties of a task.
+// Updates the attributes of a node.
 //
 // Description:
 //

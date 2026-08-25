@@ -40,7 +40,7 @@ type ListRegistryModulesResponseBody struct {
 	//
 	// iRdnbADPQp4dD+2BRJj42DLT6GrZysw=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The list of registry modules.
+	// The list of Registry modules.
 	RegistryModules []*ListRegistryModulesResponseBodyRegistryModules `json:"registryModules,omitempty" xml:"registryModules,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -117,19 +117,19 @@ func (s *ListRegistryModulesResponseBody) Validate() error {
 }
 
 type ListRegistryModulesResponseBodyRegistryModules struct {
-	// The permission. A value of private indicates that the module is private.
+	// The permission. private: private.
 	//
 	// example:
 	//
 	// private
 	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
-	// The creation time.
+	// The creation time in the format of YYYY-MM-DD HH:mm:ss. The returned value does not include a time zone identifier.
 	//
 	// example:
 	//
 	// 2025-06-10 16:16:04
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The description of the registry module.
+	// The description of the Registry module.
 	//
 	// example:
 	//
@@ -141,7 +141,7 @@ type ListRegistryModulesResponseBodyRegistryModules struct {
 	//
 	// 32
 	Downloads *int32 `json:"downloads,omitempty" xml:"downloads,omitempty"`
-	// The name of the registry module.
+	// The name of the Registry module.
 	//
 	// example:
 	//
@@ -153,13 +153,13 @@ type ListRegistryModulesResponseBodyRegistryModules struct {
 	//
 	// NamespaceName
 	NamespaceName *string `json:"namespaceName,omitempty" xml:"namespaceName,omitempty"`
-	// The provider type. A value of alicloud indicates Alibaba Cloud.
+	// The provider type. alicloud: Alibaba Cloud.
 	//
 	// example:
 	//
 	// alicloud
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
-	// The list of accounts with which the registry module is shared.
+	// The list of accounts with which the Registry module is shared.
 	SharedAccounts []*int64 `json:"sharedAccounts,omitempty" xml:"sharedAccounts,omitempty" type:"Repeated"`
 	// The module source.
 	//

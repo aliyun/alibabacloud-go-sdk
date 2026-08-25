@@ -91,7 +91,7 @@ type GetStackDeploymentsResponseBodyDeployments struct {
 	//
 	// v1
 	ConfigVersion *string `json:"configVersion,omitempty" xml:"configVersion,omitempty"`
-	// The creation time.
+	// The creation time in UTC, in the format of YYYY-MM-DDTHH:mm:ssZ (ISO 8601).
 	//
 	// example:
 	//
@@ -103,7 +103,7 @@ type GetStackDeploymentsResponseBodyDeployments struct {
 	//
 	// production
 	DeploymentName *string `json:"deploymentName,omitempty" xml:"deploymentName,omitempty"`
-	// The deployment number. The deployment number of each stack starts from 1 and increments each time a deployment is triggered.
+	// The deployment number. The deployment number for each stack starts from 1 and increments each time a deployment is successfully triggered.
 	//
 	// example:
 	//
@@ -123,9 +123,9 @@ type GetStackDeploymentsResponseBodyDeployments struct {
 	ElapsedTime *int64 `json:"elapsedTime,omitempty" xml:"elapsedTime,omitempty"`
 	// The execution type.
 	//
-	// Manual: manual execution (default).
+	// Manual: Manual execution (default).
 	//
-	// Auto: automatic execution.
+	// Auto: Automatic execution.
 	//
 	// example:
 	//
@@ -143,6 +143,8 @@ type GetStackDeploymentsResponseBodyDeployments struct {
 	//
 	// job-as154vldqt46mv0ixxxxx
 	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// OSS object key prefix for deployment logs
+	LogOutputPath *string `json:"logOutputPath,omitempty" xml:"logOutputPath,omitempty"`
 	// The outputs.
 	Outputs []*GetStackDeploymentsResponseBodyDeploymentsOutputs `json:"outputs,omitempty" xml:"outputs,omitempty" type:"Repeated"`
 	// The parameter set content.
@@ -155,31 +157,31 @@ type GetStackDeploymentsResponseBodyDeployments struct {
 	//
 	// |------|------|
 	//
-	// | Pending | The initial status after a deployment is created. |
+	// | Pending | The initial status after the deployment is created. |
 	//
-	// | PriorityQueued | The deployment is queued by priority. |
+	// | PriorityQueued | Priority queuing in progress. |
 	//
-	// | PlanQueued | The deployment is queued because no workflow is available after the deployment is created. |
+	// | PlanQueued | The deployment is queuing because no workflow is available after creation. |
 	//
-	// | ApplyQueued | The deployment is queued because no workflow is available during execution. |
+	// | ApplyQueued | The deployment is queuing because no workflow is available during execution. |
 	//
 	// | Planning | The resource deployment is in the Plan phase. |
 	//
 	// | Planned | The resource deployment has completed the Plan phase. |
 	//
-	// | ConfigProactiveInProgress | A compliance pre-check is in progress. |
+	// | ConfigProactiveInProgress | Compliance pre-check in progress. |
 	//
-	// | ConfigProactiveSuccess | The compliance pre-check succeeded. |
+	// | ConfigProactiveSuccess | Compliance pre-check succeeded. |
 	//
-	// | DetectInProgress | Drift detection is in progress. |
+	// | DetectInProgress | Drift detection in progress. |
 	//
-	// | ImportQueued | The deployment is queued because no workflow is available during the Import phase. |
+	// | ImportQueued | The deployment is queuing because no workflow is available during Import execution. |
 	//
 	// | Importing | The resource deployment is in the Import phase. |
 	//
 	// | Imported | The resource deployment has completed the Import phase. |
 	//
-	// | StateQueued | The deployment is queued because no workflow is available during the state command execution. |
+	// | StateQueued | The deployment is queuing because no workflow is available during state command execution. |
 	//
 	// | Stating | The resource deployment is executing the state command. |
 	//
@@ -187,7 +189,7 @@ type GetStackDeploymentsResponseBodyDeployments struct {
 	//
 	// | Confirmed | The resource deployment has been confirmed after the Plan phase. |
 	//
-	// | PlannedAndFinished | No differences were found after the Plan phase. The deployment is in a final status. |
+	// | PlannedAndFinished | No diff was found after the Plan phase. The deployment is in a final status. |
 	//
 	// | Applying | The resource deployment is in the Apply phase. |
 	//
@@ -195,11 +197,11 @@ type GetStackDeploymentsResponseBodyDeployments struct {
 	//
 	// | Discarded | The resource deployment has been discarded and is in a final status. |
 	//
-	// | Errored | The deployment encountered an error and is in a final status. |
+	// | Errored | The deployment execution encountered an error and is in a final status. |
 	//
-	// | ConfigProactiveFailure | The compliance pre-check failed. |
+	// | ConfigProactiveFailure | Compliance pre-check failed. |
 	//
-	// | Canceled | The deployment has been canceled and is in a final status. |.
+	// | Canceled | The deployment execution has been canceled and is in a final status. |
 	//
 	// example:
 	//
@@ -259,6 +261,10 @@ func (s *GetStackDeploymentsResponseBodyDeployments) GetFailedReason() *string {
 
 func (s *GetStackDeploymentsResponseBodyDeployments) GetJobId() *string {
 	return s.JobId
+}
+
+func (s *GetStackDeploymentsResponseBodyDeployments) GetLogOutputPath() *string {
+	return s.LogOutputPath
 }
 
 func (s *GetStackDeploymentsResponseBodyDeployments) GetOutputs() []*GetStackDeploymentsResponseBodyDeploymentsOutputs {
@@ -328,6 +334,11 @@ func (s *GetStackDeploymentsResponseBodyDeployments) SetFailedReason(v string) *
 
 func (s *GetStackDeploymentsResponseBodyDeployments) SetJobId(v string) *GetStackDeploymentsResponseBodyDeployments {
 	s.JobId = &v
+	return s
+}
+
+func (s *GetStackDeploymentsResponseBodyDeployments) SetLogOutputPath(v string) *GetStackDeploymentsResponseBodyDeployments {
+	s.LogOutputPath = &v
 	return s
 }
 
@@ -403,7 +414,7 @@ type GetStackDeploymentsResponseBodyDeploymentsConfig struct {
 	//
 	// false
 	AutoApply *bool `json:"autoApply,omitempty" xml:"autoApply,omitempty"`
-	// Specifies whether this is a destroy job.
+	// Indicates whether this is a destroy job.
 	//
 	// example:
 	//
@@ -448,7 +459,7 @@ type GetStackDeploymentsResponseBodyDeploymentsOutputs struct {
 	//
 	// The name of the SLS log project
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The expression, which can reference component outputs. Format: component.{component name}.{component output name}.
+	// The expression that can reference component outputs, in the format: component.{component name}.{component output name}.
 	//
 	// example:
 	//
@@ -549,8 +560,13 @@ type GetStackDeploymentsResponseBodyDeploymentsParameters struct {
 	// example:
 	//
 	// region
-	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
-	Sensitive *bool   `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Specifies whether the parameter is sensitive. Sensitive parameter values are not visible in the console or API. Valid values:
+	//
+	// - true: Sensitive.
+	//
+	// - false: Not sensitive.
+	Sensitive *bool `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
 	// The parameter type.
 	//
 	// example:
@@ -634,19 +650,19 @@ func (s *GetStackDeploymentsResponseBodyDeploymentsParameters) Validate() error 
 type GetStackDeploymentsResponseBodyDeploymentsPlanOutputs struct {
 	// The change type of the component. Valid values:
 	//
-	// - create: all resource changes in the component are additions.
+	// - create: All resource changes in the component are creations.
 	//
-	// - delete: all resource changes in the component are deletions.
+	// - delete: All resource changes in the component are deletions.
 	//
-	// - read: all resource changes in the component are read operations.
+	// - read: All resource changes in the component are reads.
 	//
-	// - update: resource changes in the component include two or more types among additions, deletions, and read operations.
+	// - update: Resource changes in the component include two or more types among creation, deletion, and read.
 	//
 	// example:
 	//
 	// update
 	ModuleAction *string `json:"moduleAction,omitempty" xml:"moduleAction,omitempty"`
-	// The number of resources to be added, updated, and destroyed in this deployment.
+	// The number of resources to be created, updated, and destroyed in this deployment.
 	ModuleActionDetail *GetStackDeploymentsResponseBodyDeploymentsPlanOutputsModuleActionDetail `json:"moduleActionDetail,omitempty" xml:"moduleActionDetail,omitempty" type:"Struct"`
 	// The resource change information.
 	ResourceChanges []*GetStackDeploymentsResponseBodyDeploymentsPlanOutputsResourceChanges `json:"resourceChanges,omitempty" xml:"resourceChanges,omitempty" type:"Repeated"`
@@ -781,7 +797,7 @@ func (s *GetStackDeploymentsResponseBodyDeploymentsPlanOutputsModuleActionDetail
 }
 
 type GetStackDeploymentsResponseBodyDeploymentsPlanOutputsResourceChanges struct {
-	// The difference information of the resource change.
+	// The diff information of the resource change.
 	//
 	// example:
 	//
