@@ -106,7 +106,8 @@ type UpdateNodePoolComponentInstanceRequestConfig struct {
 	// example:
 	//
 	// {"cpuManagerPolicy":"static"}
-	CustomConfig map[string]interface{} `json:"custom_config,omitempty" xml:"custom_config,omitempty"`
+	CustomConfig map[string]interface{}                              `json:"custom_config,omitempty" xml:"custom_config,omitempty"`
+	Envs         []*UpdateNodePoolComponentInstanceRequestConfigEnvs `json:"envs,omitempty" xml:"envs,omitempty" type:"Repeated"`
 }
 
 func (s UpdateNodePoolComponentInstanceRequestConfig) String() string {
@@ -121,12 +122,71 @@ func (s *UpdateNodePoolComponentInstanceRequestConfig) GetCustomConfig() map[str
 	return s.CustomConfig
 }
 
+func (s *UpdateNodePoolComponentInstanceRequestConfig) GetEnvs() []*UpdateNodePoolComponentInstanceRequestConfigEnvs {
+	return s.Envs
+}
+
 func (s *UpdateNodePoolComponentInstanceRequestConfig) SetCustomConfig(v map[string]interface{}) *UpdateNodePoolComponentInstanceRequestConfig {
 	s.CustomConfig = v
 	return s
 }
 
+func (s *UpdateNodePoolComponentInstanceRequestConfig) SetEnvs(v []*UpdateNodePoolComponentInstanceRequestConfigEnvs) *UpdateNodePoolComponentInstanceRequestConfig {
+	s.Envs = v
+	return s
+}
+
 func (s *UpdateNodePoolComponentInstanceRequestConfig) Validate() error {
+	if s.Envs != nil {
+		for _, item := range s.Envs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type UpdateNodePoolComponentInstanceRequestConfigEnvs struct {
+	// example:
+	//
+	// LOG_LEVEL
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// info
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s UpdateNodePoolComponentInstanceRequestConfigEnvs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateNodePoolComponentInstanceRequestConfigEnvs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNodePoolComponentInstanceRequestConfigEnvs) GetName() *string {
+	return s.Name
+}
+
+func (s *UpdateNodePoolComponentInstanceRequestConfigEnvs) GetValue() *string {
+	return s.Value
+}
+
+func (s *UpdateNodePoolComponentInstanceRequestConfigEnvs) SetName(v string) *UpdateNodePoolComponentInstanceRequestConfigEnvs {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateNodePoolComponentInstanceRequestConfigEnvs) SetValue(v string) *UpdateNodePoolComponentInstanceRequestConfigEnvs {
+	s.Value = &v
+	return s
+}
+
+func (s *UpdateNodePoolComponentInstanceRequestConfigEnvs) Validate() error {
 	return dara.Validate(s)
 }
 

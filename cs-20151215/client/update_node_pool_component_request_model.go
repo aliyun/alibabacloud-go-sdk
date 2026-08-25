@@ -26,7 +26,7 @@ type iUpdateNodePoolComponentRequest interface {
 type UpdateNodePoolComponentRequest struct {
 	// The configuration of the node component.
 	Config *UpdateNodePoolComponentRequestConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// Specifies whether to disable rolling. Default value: false. If set to false, updating the baseline configuration triggers a rolling update of nodes.
+	// Specifies whether to disable log rotation. Default value: false. Updating the baseline configuration triggers log rotation on nodes.
 	DisableRolling *bool `json:"disableRolling,omitempty" xml:"disableRolling,omitempty"`
 	// The name of the node component.
 	//
@@ -34,9 +34,9 @@ type UpdateNodePoolComponentRequest struct {
 	//
 	// kubelet
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The list of nodes to be included in the rolling update. By default, all nodes are included.
+	// The list of nodes for log rotation. By default, all nodes are included.
 	NodeNames []*string `json:"nodeNames,omitempty" xml:"nodeNames,omitempty" type:"Repeated"`
-	// The rolling update policy.
+	// The log rotation configuration.
 	RollingPolicy *UpdateNodePoolComponentRequestRollingPolicy `json:"rollingPolicy,omitempty" xml:"rollingPolicy,omitempty" type:"Struct"`
 	// The version of the node component.
 	//
@@ -129,6 +129,8 @@ type UpdateNodePoolComponentRequestConfig struct {
 	//
 	// {"cpuManagerPolicy":"static"}
 	CustomConfig map[string]interface{} `json:"customConfig,omitempty" xml:"customConfig,omitempty"`
+	// The environment variables of the node component.
+	Envs []*UpdateNodePoolComponentRequestConfigEnvs `json:"envs,omitempty" xml:"envs,omitempty" type:"Repeated"`
 }
 
 func (s UpdateNodePoolComponentRequestConfig) String() string {
@@ -143,35 +145,98 @@ func (s *UpdateNodePoolComponentRequestConfig) GetCustomConfig() map[string]inte
 	return s.CustomConfig
 }
 
+func (s *UpdateNodePoolComponentRequestConfig) GetEnvs() []*UpdateNodePoolComponentRequestConfigEnvs {
+	return s.Envs
+}
+
 func (s *UpdateNodePoolComponentRequestConfig) SetCustomConfig(v map[string]interface{}) *UpdateNodePoolComponentRequestConfig {
 	s.CustomConfig = v
 	return s
 }
 
+func (s *UpdateNodePoolComponentRequestConfig) SetEnvs(v []*UpdateNodePoolComponentRequestConfigEnvs) *UpdateNodePoolComponentRequestConfig {
+	s.Envs = v
+	return s
+}
+
 func (s *UpdateNodePoolComponentRequestConfig) Validate() error {
+	if s.Envs != nil {
+		for _, item := range s.Envs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type UpdateNodePoolComponentRequestConfigEnvs struct {
+	// The name of the environment variable.
+	//
+	// example:
+	//
+	// LOG_LEVEL
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The value of the environment variable.
+	//
+	// example:
+	//
+	// info
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s UpdateNodePoolComponentRequestConfigEnvs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdateNodePoolComponentRequestConfigEnvs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNodePoolComponentRequestConfigEnvs) GetName() *string {
+	return s.Name
+}
+
+func (s *UpdateNodePoolComponentRequestConfigEnvs) GetValue() *string {
+	return s.Value
+}
+
+func (s *UpdateNodePoolComponentRequestConfigEnvs) SetName(v string) *UpdateNodePoolComponentRequestConfigEnvs {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateNodePoolComponentRequestConfigEnvs) SetValue(v string) *UpdateNodePoolComponentRequestConfigEnvs {
+	s.Value = &v
+	return s
+}
+
+func (s *UpdateNodePoolComponentRequestConfigEnvs) Validate() error {
 	return dara.Validate(s)
 }
 
 type UpdateNodePoolComponentRequestRollingPolicy struct {
-	// The interval between batches during the upgrade. Unit: seconds.
+	// The upgrade interval between batches. Unit: seconds.
 	//
 	// example:
 	//
 	// 0
 	BatchInterval *int64 `json:"batchInterval,omitempty" xml:"batchInterval,omitempty"`
-	// The maximum number of nodes that are allowed to fail during the rolling update. Default value: 0, which indicates that the task fails if any node fails. If the value is greater than 0, the task fails and stops when the cumulative number of failed nodes exceeds this value.
+	// The maximum number of nodes that can fail during the rolling update. Default value: 0, which means the task fails if any node fails. If the value is greater than 0, the task fails and stops when the cumulative number of failed nodes exceeds this value.
 	//
 	// example:
 	//
 	// 0
 	MaxFailedNodes *int64 `json:"maxFailedNodes,omitempty" xml:"maxFailedNodes,omitempty"`
-	// The maximum number of nodes that can be updated in parallel per batch. Default value: 1.
+	// The maximum number of parallel operations per batch. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	MaxParallelism *int64 `json:"maxParallelism,omitempty" xml:"maxParallelism,omitempty"`
-	// The automatic pause policy during the node upgrade process.
+	// The automatic pause policy during node upgrade.
 	//
 	// example:
 	//

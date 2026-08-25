@@ -141,7 +141,8 @@ type CreateNodePoolComponentInstancesRequestComponentsConfig struct {
 	// example:
 	//
 	// {"cpuManagerPolicy":"static"}
-	CustomConfig map[string]interface{} `json:"custom_config,omitempty" xml:"custom_config,omitempty"`
+	CustomConfig map[string]interface{}                                         `json:"custom_config,omitempty" xml:"custom_config,omitempty"`
+	Envs         []*CreateNodePoolComponentInstancesRequestComponentsConfigEnvs `json:"envs,omitempty" xml:"envs,omitempty" type:"Repeated"`
 }
 
 func (s CreateNodePoolComponentInstancesRequestComponentsConfig) String() string {
@@ -156,12 +157,71 @@ func (s *CreateNodePoolComponentInstancesRequestComponentsConfig) GetCustomConfi
 	return s.CustomConfig
 }
 
+func (s *CreateNodePoolComponentInstancesRequestComponentsConfig) GetEnvs() []*CreateNodePoolComponentInstancesRequestComponentsConfigEnvs {
+	return s.Envs
+}
+
 func (s *CreateNodePoolComponentInstancesRequestComponentsConfig) SetCustomConfig(v map[string]interface{}) *CreateNodePoolComponentInstancesRequestComponentsConfig {
 	s.CustomConfig = v
 	return s
 }
 
+func (s *CreateNodePoolComponentInstancesRequestComponentsConfig) SetEnvs(v []*CreateNodePoolComponentInstancesRequestComponentsConfigEnvs) *CreateNodePoolComponentInstancesRequestComponentsConfig {
+	s.Envs = v
+	return s
+}
+
 func (s *CreateNodePoolComponentInstancesRequestComponentsConfig) Validate() error {
+	if s.Envs != nil {
+		for _, item := range s.Envs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateNodePoolComponentInstancesRequestComponentsConfigEnvs struct {
+	// example:
+	//
+	// LOG_LEVEL
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// info
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateNodePoolComponentInstancesRequestComponentsConfigEnvs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateNodePoolComponentInstancesRequestComponentsConfigEnvs) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNodePoolComponentInstancesRequestComponentsConfigEnvs) GetName() *string {
+	return s.Name
+}
+
+func (s *CreateNodePoolComponentInstancesRequestComponentsConfigEnvs) GetValue() *string {
+	return s.Value
+}
+
+func (s *CreateNodePoolComponentInstancesRequestComponentsConfigEnvs) SetName(v string) *CreateNodePoolComponentInstancesRequestComponentsConfigEnvs {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateNodePoolComponentInstancesRequestComponentsConfigEnvs) SetValue(v string) *CreateNodePoolComponentInstancesRequestComponentsConfigEnvs {
+	s.Value = &v
+	return s
+}
+
+func (s *CreateNodePoolComponentInstancesRequestComponentsConfigEnvs) Validate() error {
 	return dara.Validate(s)
 }
 

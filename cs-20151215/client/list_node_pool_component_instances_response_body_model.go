@@ -163,7 +163,8 @@ type ListNodePoolComponentInstancesResponseBodyComponentInstancesConfig struct {
 	// example:
 	//
 	// {"cpuManagerPolicy":"static"}
-	CustomConfig map[string]interface{} `json:"custom_config,omitempty" xml:"custom_config,omitempty"`
+	CustomConfig map[string]interface{}                                                    `json:"custom_config,omitempty" xml:"custom_config,omitempty"`
+	Envs         []*ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs `json:"envs,omitempty" xml:"envs,omitempty" type:"Repeated"`
 }
 
 func (s ListNodePoolComponentInstancesResponseBodyComponentInstancesConfig) String() string {
@@ -178,11 +179,70 @@ func (s *ListNodePoolComponentInstancesResponseBodyComponentInstancesConfig) Get
 	return s.CustomConfig
 }
 
+func (s *ListNodePoolComponentInstancesResponseBodyComponentInstancesConfig) GetEnvs() []*ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs {
+	return s.Envs
+}
+
 func (s *ListNodePoolComponentInstancesResponseBodyComponentInstancesConfig) SetCustomConfig(v map[string]interface{}) *ListNodePoolComponentInstancesResponseBodyComponentInstancesConfig {
 	s.CustomConfig = v
 	return s
 }
 
+func (s *ListNodePoolComponentInstancesResponseBodyComponentInstancesConfig) SetEnvs(v []*ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs) *ListNodePoolComponentInstancesResponseBodyComponentInstancesConfig {
+	s.Envs = v
+	return s
+}
+
 func (s *ListNodePoolComponentInstancesResponseBodyComponentInstancesConfig) Validate() error {
+	if s.Envs != nil {
+		for _, item := range s.Envs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs struct {
+	// example:
+	//
+	// LOG_LEVEL
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// info
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs) GoString() string {
+	return s.String()
+}
+
+func (s *ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs) GetName() *string {
+	return s.Name
+}
+
+func (s *ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs) GetValue() *string {
+	return s.Value
+}
+
+func (s *ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs) SetName(v string) *ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs {
+	s.Name = &v
+	return s
+}
+
+func (s *ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs) SetValue(v string) *ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs {
+	s.Value = &v
+	return s
+}
+
+func (s *ListNodePoolComponentInstancesResponseBodyComponentInstancesConfigEnvs) Validate() error {
 	return dara.Validate(s)
 }

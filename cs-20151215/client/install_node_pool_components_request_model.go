@@ -20,7 +20,7 @@ type iInstallNodePoolComponentsRequest interface {
 type InstallNodePoolComponentsRequest struct {
 	// The list of node components.
 	Components []*InstallNodePoolComponentsRequestComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
-	// The list of node names for the rolling operation. Default value: all nodes.
+	// The list of node names for the rolling operation. By default, all nodes are included.
 	NodeNames []*string `json:"nodeNames,omitempty" xml:"nodeNames,omitempty" type:"Repeated"`
 	// The rolling policy configuration.
 	RollingPolicy *InstallNodePoolComponentsRequestRollingPolicy `json:"rollingPolicy,omitempty" xml:"rollingPolicy,omitempty" type:"Struct"`
@@ -149,6 +149,8 @@ type InstallNodePoolComponentsRequestComponentsConfig struct {
 	//
 	// {"cpuManagerPolicy":"static"}
 	CustomConfig map[string]interface{} `json:"customConfig,omitempty" xml:"customConfig,omitempty"`
+	// The environment variables of the node component.
+	Envs []*InstallNodePoolComponentsRequestComponentsConfigEnvs `json:"envs,omitempty" xml:"envs,omitempty" type:"Repeated"`
 }
 
 func (s InstallNodePoolComponentsRequestComponentsConfig) String() string {
@@ -163,12 +165,75 @@ func (s *InstallNodePoolComponentsRequestComponentsConfig) GetCustomConfig() map
 	return s.CustomConfig
 }
 
+func (s *InstallNodePoolComponentsRequestComponentsConfig) GetEnvs() []*InstallNodePoolComponentsRequestComponentsConfigEnvs {
+	return s.Envs
+}
+
 func (s *InstallNodePoolComponentsRequestComponentsConfig) SetCustomConfig(v map[string]interface{}) *InstallNodePoolComponentsRequestComponentsConfig {
 	s.CustomConfig = v
 	return s
 }
 
+func (s *InstallNodePoolComponentsRequestComponentsConfig) SetEnvs(v []*InstallNodePoolComponentsRequestComponentsConfigEnvs) *InstallNodePoolComponentsRequestComponentsConfig {
+	s.Envs = v
+	return s
+}
+
 func (s *InstallNodePoolComponentsRequestComponentsConfig) Validate() error {
+	if s.Envs != nil {
+		for _, item := range s.Envs {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type InstallNodePoolComponentsRequestComponentsConfigEnvs struct {
+	// The name of the environment variable.
+	//
+	// example:
+	//
+	// LOG_LEVEL
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The value of the environment variable.
+	//
+	// example:
+	//
+	// info
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s InstallNodePoolComponentsRequestComponentsConfigEnvs) String() string {
+	return dara.Prettify(s)
+}
+
+func (s InstallNodePoolComponentsRequestComponentsConfigEnvs) GoString() string {
+	return s.String()
+}
+
+func (s *InstallNodePoolComponentsRequestComponentsConfigEnvs) GetName() *string {
+	return s.Name
+}
+
+func (s *InstallNodePoolComponentsRequestComponentsConfigEnvs) GetValue() *string {
+	return s.Value
+}
+
+func (s *InstallNodePoolComponentsRequestComponentsConfigEnvs) SetName(v string) *InstallNodePoolComponentsRequestComponentsConfigEnvs {
+	s.Name = &v
+	return s
+}
+
+func (s *InstallNodePoolComponentsRequestComponentsConfigEnvs) SetValue(v string) *InstallNodePoolComponentsRequestComponentsConfigEnvs {
+	s.Value = &v
+	return s
+}
+
+func (s *InstallNodePoolComponentsRequestComponentsConfigEnvs) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -179,7 +244,7 @@ type InstallNodePoolComponentsRequestRollingPolicy struct {
 	//
 	// 0
 	BatchInterval *int64 `json:"batchInterval,omitempty" xml:"batchInterval,omitempty"`
-	// The maximum number of nodes that are allowed to fail during the rolling process. Default value: 0, which indicates that the task fails if any node fails. If the value is greater than 0, the task fails and stops when the cumulative number of failed nodes exceeds this value.
+	// The maximum number of nodes that are allowed to fail during the rolling process. Default value: 0, which indicates that the task is considered failed if any node fails. If the value is greater than 0, the task is considered failed and stops when the cumulative number of failed nodes exceeds this value.
 	//
 	// example:
 	//

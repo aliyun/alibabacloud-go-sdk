@@ -1250,7 +1250,7 @@ func (client *Client) CreateClusterInspectConfigWithContext(ctx context.Context,
 
 // Summary:
 //
-// A node pool is a logical collection of nodes that share the same attributes, allowing unified management and O&M operations such as node upgrades and elastic scaling. You can further use the automated O&M capabilities of node pools, including automatic OS CVE vulnerability patching, automatic faulty node recovery, and automatic kubelet and containerd version upgrades, to reduce O&M costs. You can call CreateClusterNodePool to create a node pool for a cluster.
+// A node pool is a logical collection of nodes that share the same attributes. Node pools allow you to manage and maintain nodes in a unified manner, such as node upgrades and elastic scaling. You can further use the automated O&M capabilities of node pools, including automatic OS CVE vulnerability patching, automatic faulty node recovery, and automatic kubelet and containerd version upgrades, to reduce O&M costs. You can call CreateClusterNodePool to create a node pool for a cluster.
 //
 // @param request - CreateClusterNodePoolRequest
 //
@@ -4951,7 +4951,7 @@ func (client *Client) InstallClusterAddonsWithContext(ctx context.Context, Clust
 
 // Summary:
 //
-// Installs node components. You can configure and specify nodes on which to install components.
+// Installs components on nodes. You can configure and specify nodes on which to install components.
 //
 // @param request - InstallNodePoolComponentsRequest
 //
