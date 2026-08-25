@@ -26,12 +26,15 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"cn-shenzhen":    dara.String("adbai.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai":    dara.String("adbai.cn-shanghai.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("adbai.cn-hangzhou.aliyuncs.com"),
-		"cn-beijing":     dara.String("adbai.cn-beijing.aliyuncs.com"),
-		"ap-southeast-1": dara.String("adbai.ap-southeast-1.aliyuncs.com"),
 		"ap-northeast-1": dara.String("adbai.ap-northeast-1.aliyuncs.com"),
+		"ap-southeast-1": dara.String("adbai.ap-southeast-1.aliyuncs.com"),
+		"cn-beijing":     dara.String("adbai.cn-beijing.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("adbai.cn-hangzhou.aliyuncs.com"),
+		"cn-shanghai":    dara.String("adbai.cn-shanghai.aliyuncs.com"),
+		"cn-shenzhen":    dara.String("adbai.cn-shenzhen.aliyuncs.com"),
+		"cn-guangzhou":   dara.String("adbai.cn-guangzhou.aliyuncs.com"),
+		"cn-wulanchabu":  dara.String("adbai.cn-wulanchabu.aliyuncs.com"),
+		"us-west-1":      dara.String("adbai.us-west-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -250,6 +253,80 @@ func (client *Client) CreateEmbodiedAIPlatform(request *CreateEmbodiedAIPlatform
 
 // Summary:
 //
+// Creates an AnalyticDB multimodal knowledge base.
+//
+// Description:
+//
+// Creates an AnalyticDB multimodal knowledge base.
+//
+// @param request - CreateMultiModelKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMultiModelKnowledgeBaseResponse
+func (client *Client) CreateMultiModelKnowledgeBaseWithOptions(request *CreateMultiModelKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *CreateMultiModelKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMultiModelKnowledgeBase"),
+		Version:     dara.String("2025-08-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMultiModelKnowledgeBaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an AnalyticDB multimodal knowledge base.
+//
+// Description:
+//
+// Creates an AnalyticDB multimodal knowledge base.
+//
+// @param request - CreateMultiModelKnowledgeBaseRequest
+//
+// @return CreateMultiModelKnowledgeBaseResponse
+func (client *Client) CreateMultiModelKnowledgeBase(request *CreateMultiModelKnowledgeBaseRequest) (_result *CreateMultiModelKnowledgeBaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateMultiModelKnowledgeBaseResponse{}
+	_body, _err := client.CreateMultiModelKnowledgeBaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a metrics platform.
 //
 // @param request - DeleteAgentPlatformRequest
@@ -390,6 +467,80 @@ func (client *Client) DeleteEmbodiedAIPlatform(request *DeleteEmbodiedAIPlatform
 
 // Summary:
 //
+// Deletes an ADB multimodal knowledge base.
+//
+// Description:
+//
+// Deletes an ADB multimodal knowledge base.
+//
+// @param request - DeleteMultiModalKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMultiModalKnowledgeBaseResponse
+func (client *Client) DeleteMultiModalKnowledgeBaseWithOptions(request *DeleteMultiModalKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *DeleteMultiModalKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMultiModalKnowledgeBase"),
+		Version:     dara.String("2025-08-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMultiModalKnowledgeBaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an ADB multimodal knowledge base.
+//
+// Description:
+//
+// Deletes an ADB multimodal knowledge base.
+//
+// @param request - DeleteMultiModalKnowledgeBaseRequest
+//
+// @return DeleteMultiModalKnowledgeBaseResponse
+func (client *Client) DeleteMultiModalKnowledgeBase(request *DeleteMultiModalKnowledgeBaseRequest) (_result *DeleteMultiModalKnowledgeBaseResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteMultiModalKnowledgeBaseResponse{}
+	_body, _err := client.DeleteMultiModalKnowledgeBaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries multi-turn conversations for instance kernel diagnostics.
 //
 // Description:
@@ -495,11 +646,11 @@ func (client *Client) DescribeChatMessage(request *DescribeChatMessageRequest) (
 
 // Summary:
 //
-// # Query the resource allocation plan for Embodied Intelligence platform devices
+// Queries the resource allocation plan for devices on the embodied intelligence platform.
 //
 // Description:
 //
-// # Used to view the actual resource amount corresponding to the backend of the instance ontology count
+// Queries the actual resource capacity corresponding to the backend of the instance device count.
 //
 // @param request - DescribeEapDeviceResourceAllocationRequest
 //
@@ -551,11 +702,11 @@ func (client *Client) DescribeEapDeviceResourceAllocationWithOptions(request *De
 
 // Summary:
 //
-// # Query the resource allocation plan for Embodied Intelligence platform devices
+// Queries the resource allocation plan for devices on the embodied intelligence platform.
 //
 // Description:
 //
-// # Used to view the actual resource amount corresponding to the backend of the instance ontology count
+// Queries the actual resource capacity corresponding to the backend of the instance device count.
 //
 // @param request - DescribeEapDeviceResourceAllocationRequest
 //

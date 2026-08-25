@@ -18,7 +18,7 @@ type iDescribeEapDeviceResourceAllocationRequest interface {
 }
 
 type DescribeEapDeviceResourceAllocationRequest struct {
-	// Instance cluster ID.
+	// The cluster ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -26,15 +26,15 @@ type DescribeEapDeviceResourceAllocationRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Total number of devices
+	// The total number of devices.
 	//
 	// example:
 	//
 	// 3
 	DeviceCount *int32 `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
-	// Region ID where the instance is located.
+	// The region ID of the instance.
 	//
-	// > You can invoke the DescribeRegions API to view the region ID of a specified Data Lakehouse Edition cluster.
+	// > You can call the DescribeRegions operation to query the region ID of a specified Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//

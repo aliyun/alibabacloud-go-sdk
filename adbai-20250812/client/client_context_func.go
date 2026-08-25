@@ -154,6 +154,58 @@ func (client *Client) CreateEmbodiedAIPlatformWithContext(ctx context.Context, t
 
 // Summary:
 //
+// Creates an AnalyticDB multimodal knowledge base.
+//
+// Description:
+//
+// Creates an AnalyticDB multimodal knowledge base.
+//
+// @param request - CreateMultiModelKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMultiModelKnowledgeBaseResponse
+func (client *Client) CreateMultiModelKnowledgeBaseWithContext(ctx context.Context, request *CreateMultiModelKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *CreateMultiModelKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMultiModelKnowledgeBase"),
+		Version:     dara.String("2025-08-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMultiModelKnowledgeBaseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a metrics platform.
 //
 // @param request - DeleteAgentPlatformRequest
@@ -258,6 +310,58 @@ func (client *Client) DeleteEmbodiedAIPlatformWithContext(ctx context.Context, r
 
 // Summary:
 //
+// Deletes an ADB multimodal knowledge base.
+//
+// Description:
+//
+// Deletes an ADB multimodal knowledge base.
+//
+// @param request - DeleteMultiModalKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMultiModalKnowledgeBaseResponse
+func (client *Client) DeleteMultiModalKnowledgeBaseWithContext(ctx context.Context, request *DeleteMultiModalKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *DeleteMultiModalKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMultiModalKnowledgeBase"),
+		Version:     dara.String("2025-08-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMultiModalKnowledgeBaseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries multi-turn conversations for instance kernel diagnostics.
 //
 // Description:
@@ -341,11 +445,11 @@ func (client *Client) DescribeChatMessageWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Query the resource allocation plan for Embodied Intelligence platform devices
+// Queries the resource allocation plan for devices on the embodied intelligence platform.
 //
 // Description:
 //
-// # Used to view the actual resource amount corresponding to the backend of the instance ontology count
+// Queries the actual resource capacity corresponding to the backend of the instance device count.
 //
 // @param request - DescribeEapDeviceResourceAllocationRequest
 //
