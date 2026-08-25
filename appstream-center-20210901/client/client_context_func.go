@@ -1818,6 +1818,54 @@ func (client *Client) GetDebugAppInstanceWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// Retrieves file upload information.
+//
+// Description:
+//
+// Visitor information is filled in on the lead capture page when visitors execute a cloud flow. Therefore, the usage mode of cloud applications does not generate visitor information.
+//
+// @param request - GetFileUploadInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFileUploadInfoResponse
+func (client *Client) GetFileUploadInfoWithContext(ctx context.Context, request *GetFileUploadInfoRequest, runtime *dara.RuntimeOptions) (_result *GetFileUploadInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileType) {
+		query["FileType"] = request.FileType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetFileUploadInfo"),
+		Version:     dara.String("2021-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetFileUploadInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a model provider template.
 //
 // Description:
@@ -2896,7 +2944,7 @@ func (client *Client) ListModelProviderEndpointsWithContext(ctx context.Context,
 //
 // Description:
 //
-// You can perform a paged query to retrieve the list of model provider templates under a specified model group in the WUYING Agent Management Center. Filtering by provider name, model group ID, and provider template ID is supported. Paging is controlled by the PageSize and PageNumber parameters.
+// You can perform a paged query to retrieve the list of model provider templates under a specified model group in the WUYING Agent Management Center. Filtering by provider name, model group ID, and provider template ID is supported. Use the paging parameters to control the number of results returned per page.
 //
 // Before using this operation, make sure that you are familiar with the operations and usage of the WUYING Agent Management Center.
 //

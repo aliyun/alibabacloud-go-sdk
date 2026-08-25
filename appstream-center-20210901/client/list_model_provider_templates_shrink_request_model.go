@@ -34,7 +34,7 @@ type ListModelProviderTemplatesShrinkRequest struct {
 	//
 	// ENTERPRISE
 	AgentPlatform *string `json:"AgentPlatform,omitempty" xml:"AgentPlatform,omitempty"`
-	// The name of the Agent provider.
+	// The Agent provider name.
 	//
 	// This parameter is required.
 	//

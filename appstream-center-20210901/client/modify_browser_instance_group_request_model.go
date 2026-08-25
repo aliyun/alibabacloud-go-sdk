@@ -482,7 +482,7 @@ type ModifyBrowserInstanceGroupRequestPolicy struct {
 	AuthorizeAccessPolicyRules []*ModifyBrowserInstanceGroupRequestPolicyAuthorizeAccessPolicyRules `json:"AuthorizeAccessPolicyRules,omitempty" xml:"AuthorizeAccessPolicyRules,omitempty" type:"Repeated"`
 	// The logon client type control settings.
 	ClientTypes []*ModifyBrowserInstanceGroupRequestPolicyClientTypes `json:"ClientTypes,omitempty" xml:"ClientTypes,omitempty" type:"Repeated"`
-	// The clipboard-related policy.
+	// The clipboard policy.
 	ClipboardPolicy *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy `json:"ClipboardPolicy,omitempty" xml:"ClipboardPolicy,omitempty" type:"Struct"`
 	// The data retention policy upon disconnection.
 	//
@@ -514,7 +514,7 @@ type ModifyBrowserInstanceGroupRequestPolicy struct {
 	//
 	// on
 	NoOperationDisconnect *string `json:"NoOperationDisconnect,omitempty" xml:"NoOperationDisconnect,omitempty"`
-	// The time in seconds before a session is disconnected when no operation is performed.
+	// The no-operation disconnect time, in seconds.
 	//
 	// example:
 	//
@@ -532,7 +532,9 @@ type ModifyBrowserInstanceGroupRequestPolicy struct {
 	//
 	// Center
 	PolicyVersion *string `json:"PolicyVersion,omitempty" xml:"PolicyVersion,omitempty"`
-	// The display policy.
+	// The server-side access IP address whitelist rules to revoke in this request.
+	RevokeAccessPolicyRules []*ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules `json:"RevokeAccessPolicyRules,omitempty" xml:"RevokeAccessPolicyRules,omitempty" type:"Repeated"`
+	// The video policy.
 	VideoPolicy *ModifyBrowserInstanceGroupRequestPolicyVideoPolicy `json:"VideoPolicy,omitempty" xml:"VideoPolicy,omitempty" type:"Struct"`
 	// The watermark configuration.
 	WatermarkPolicy *ModifyBrowserInstanceGroupRequestPolicyWatermarkPolicy `json:"WatermarkPolicy,omitempty" xml:"WatermarkPolicy,omitempty" type:"Struct"`
@@ -592,6 +594,10 @@ func (s *ModifyBrowserInstanceGroupRequestPolicy) GetPolicyId() *string {
 
 func (s *ModifyBrowserInstanceGroupRequestPolicy) GetPolicyVersion() *string {
 	return s.PolicyVersion
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicy) GetRevokeAccessPolicyRules() []*ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules {
+	return s.RevokeAccessPolicyRules
 }
 
 func (s *ModifyBrowserInstanceGroupRequestPolicy) GetVideoPolicy() *ModifyBrowserInstanceGroupRequestPolicyVideoPolicy {
@@ -662,6 +668,11 @@ func (s *ModifyBrowserInstanceGroupRequestPolicy) SetPolicyVersion(v string) *Mo
 	return s
 }
 
+func (s *ModifyBrowserInstanceGroupRequestPolicy) SetRevokeAccessPolicyRules(v []*ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules) *ModifyBrowserInstanceGroupRequestPolicy {
+	s.RevokeAccessPolicyRules = v
+	return s
+}
+
 func (s *ModifyBrowserInstanceGroupRequestPolicy) SetVideoPolicy(v *ModifyBrowserInstanceGroupRequestPolicyVideoPolicy) *ModifyBrowserInstanceGroupRequestPolicy {
 	s.VideoPolicy = v
 	return s
@@ -694,6 +705,15 @@ func (s *ModifyBrowserInstanceGroupRequestPolicy) Validate() error {
 	if s.ClipboardPolicy != nil {
 		if err := s.ClipboardPolicy.Validate(); err != nil {
 			return err
+		}
+	}
+	if s.RevokeAccessPolicyRules != nil {
+		for _, item := range s.RevokeAccessPolicyRules {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
 		}
 	}
 	if s.VideoPolicy != nil {
@@ -828,13 +848,13 @@ type ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// 1
 	RichTextClipboardLimit *int32 `json:"RichTextClipboardLimit,omitempty" xml:"RichTextClipboardLimit,omitempty"`
-	// The maximum size of rich text that can be downloaded from the cloud via the clipboard.
+	// The maximum size of rich text that can be downloaded from the cloud browser through the clipboard.
 	//
 	// example:
 	//
 	// 1
 	RichTextClipboardReadLimit *int32 `json:"RichTextClipboardReadLimit,omitempty" xml:"RichTextClipboardReadLimit,omitempty"`
-	// The size unit for rich text clipboard downloads from the cloud.
+	// The size unit for rich text downloaded from the cloud browser through the clipboard.
 	//
 	// example:
 	//
@@ -846,13 +866,13 @@ type ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// B
 	RichTextClipboardSizeUnit *string `json:"RichTextClipboardSizeUnit,omitempty" xml:"RichTextClipboardSizeUnit,omitempty"`
-	// The maximum size of rich text that can be uploaded to the cloud via the clipboard.
+	// The maximum size of rich text that can be uploaded to the cloud browser through the clipboard.
 	//
 	// example:
 	//
 	// 1
 	RichTextClipboardWriteLimit *int32 `json:"RichTextClipboardWriteLimit,omitempty" xml:"RichTextClipboardWriteLimit,omitempty"`
-	// The size unit for rich text clipboard uploads to the cloud.
+	// The size unit for rich text uploaded to the cloud browser through the clipboard.
 	//
 	// example:
 	//
@@ -864,25 +884,25 @@ type ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy struct {
 	//
 	// off
 	TextClipboard *string `json:"TextClipboard,omitempty" xml:"TextClipboard,omitempty"`
-	// The maximum size of text that can be downloaded from the cloud via the clipboard.
+	// The maximum size of text that can be downloaded from the cloud browser through the clipboard.
 	//
 	// example:
 	//
 	// 1
 	TextClipboardReadLimit *int32 `json:"TextClipboardReadLimit,omitempty" xml:"TextClipboardReadLimit,omitempty"`
-	// The size unit for text clipboard downloads from the cloud.
+	// The size unit for text downloaded from the cloud browser through the clipboard.
 	//
 	// example:
 	//
 	// KB
 	TextClipboardReadSizeUnit *string `json:"TextClipboardReadSizeUnit,omitempty" xml:"TextClipboardReadSizeUnit,omitempty"`
-	// The maximum size of text that can be uploaded to the cloud via the clipboard.
+	// The maximum size of text that can be uploaded to the cloud browser through the clipboard.
 	//
 	// example:
 	//
 	// 1
 	TextClipboardWriteLimit *int32 `json:"TextClipboardWriteLimit,omitempty" xml:"TextClipboardWriteLimit,omitempty"`
-	// The size unit for text clipboard uploads to the cloud.
+	// The size unit for text uploaded to the cloud browser through the clipboard.
 	//
 	// example:
 	//
@@ -1064,6 +1084,51 @@ func (s *ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy) Validate() erro
 	return dara.Validate(s)
 }
 
+type ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules struct {
+	// The IPv4 address or CIDR block to revoke.
+	//
+	// example:
+	//
+	// 192.168.1.0/24
+	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
+	// The description of the access IP address whitelist rule to revoke.
+	//
+	// example:
+	//
+	// office network
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+}
+
+func (s ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules) GetCidrIp() *string {
+	return s.CidrIp
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules) GetDescription() *string {
+	return s.Description
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules) SetCidrIp(v string) *ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules {
+	s.CidrIp = &v
+	return s
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules) SetDescription(v string) *ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules) Validate() error {
+	return dara.Validate(s)
+}
+
 type ModifyBrowserInstanceGroupRequestPolicyVideoPolicy struct {
 	// The frame rate.
 	//
@@ -1095,7 +1160,7 @@ func (s *ModifyBrowserInstanceGroupRequestPolicyVideoPolicy) Validate() error {
 }
 
 type ModifyBrowserInstanceGroupRequestPolicyWatermarkPolicy struct {
-	// The watermark switch.
+	// Specifies whether to enable the watermark.
 	//
 	// example:
 	//

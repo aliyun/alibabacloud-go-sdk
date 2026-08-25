@@ -1,3 +1,9 @@
+2026-08-25 Version: v5.7.0
+- Support API GetFileUploadInfo.
+- Update API ListModelProviderTemplates: add response parameters Body.Data.$.WuyingProviderKey.
+- Update API ModifyBrowserInstanceGroup: add request parameters Policy.RevokeAccessPolicyRules.
+
+
 2026-08-18 Version: v5.6.4
 - Update API CreateImageByInstance: add request parameters CopyProfile.
 

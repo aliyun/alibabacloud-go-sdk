@@ -24,7 +24,7 @@ type iListModelProviderTemplatesResponseBody interface {
 type ListModelProviderTemplatesResponseBody struct {
 	// The list of returned data objects.
 	Data []*ListModelProviderTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The page number of the current query results.
+	// The current page number of the query results.
 	//
 	// example:
 	//
@@ -135,7 +135,7 @@ type ListModelProviderTemplatesResponseBodyData struct {
 	//
 	// example:
 	//
-	// 阿里云百炼服务商
+	// Alibaba Cloud Bailian provider
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether the WUYING secure gateway proxy is enabled.
 	//
@@ -147,7 +147,7 @@ type ListModelProviderTemplatesResponseBodyData struct {
 	//
 	// example:
 	//
-	// 阿里云百炼
+	// Alibaba Cloud Bailian
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The model provider name.
 	//
@@ -167,6 +167,12 @@ type ListModelProviderTemplatesResponseBodyData struct {
 	//
 	// WuyingCredit
 	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
+	// The WUYING secure gateway proxy ProviderKey.
+	//
+	// example:
+	//
+	// wuying-key-12345
+	WuyingProviderKey *string `json:"WuyingProviderKey,omitempty" xml:"WuyingProviderKey,omitempty"`
 }
 
 func (s ListModelProviderTemplatesResponseBodyData) String() string {
@@ -205,6 +211,10 @@ func (s *ListModelProviderTemplatesResponseBodyData) GetProviderType() *string {
 	return s.ProviderType
 }
 
+func (s *ListModelProviderTemplatesResponseBodyData) GetWuyingProviderKey() *string {
+	return s.WuyingProviderKey
+}
+
 func (s *ListModelProviderTemplatesResponseBodyData) SetConfig(v string) *ListModelProviderTemplatesResponseBodyData {
 	s.Config = &v
 	return s
@@ -237,6 +247,11 @@ func (s *ListModelProviderTemplatesResponseBodyData) SetProviderTemplateId(v str
 
 func (s *ListModelProviderTemplatesResponseBodyData) SetProviderType(v string) *ListModelProviderTemplatesResponseBodyData {
 	s.ProviderType = &v
+	return s
+}
+
+func (s *ListModelProviderTemplatesResponseBodyData) SetWuyingProviderKey(v string) *ListModelProviderTemplatesResponseBodyData {
+	s.WuyingProviderKey = &v
 	return s
 }
 
