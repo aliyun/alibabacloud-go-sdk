@@ -18,7 +18,7 @@ type iListUpstreamTaskInstancesResponseBody interface {
 type ListUpstreamTaskInstancesResponseBody struct {
 	// The pagination information.
 	PagingInfo *ListUpstreamTaskInstancesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The request ID, which is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -74,15 +74,15 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfo struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The instances. This parameter is deprecated and replaced by the UpstreamTaskInstances parameter.
+	// **[Deprecated]*	- The list of task instances. This field is deprecated. Use UpstreamTaskInstances instead.
 	TaskInstances []*ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances `json:"TaskInstances,omitempty" xml:"TaskInstances,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
 	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The ancestor instances.
+	// The list of upstream task instances.
 	UpstreamTaskInstances []*ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstances `json:"UpstreamTaskInstances,omitempty" xml:"UpstreamTaskInstances,omitempty" type:"Repeated"`
 }
 
@@ -168,7 +168,7 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// 1234
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// The data timestamp.
+	// The business date.
 	//
 	// example:
 	//
@@ -180,13 +180,13 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The account ID of the creator.
+	// The account ID of the user who created the instance.
 	//
 	// example:
 	//
 	// 1000
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The information about the associated data source.
+	// The data source information associated with the instance.
 	DataSource *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
 	// The description.
 	//
@@ -194,11 +194,7 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The environment of the workspace. Valid values:
-	//
-	// - Prod
-	//
-	// - Dev
+	// The project environment.
 	//
 	// example:
 	//
@@ -210,7 +206,7 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// 1710239005403
 	FinishedTime *int64 `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
-	// The instance ID.
+	// The unique identifier of the task instance.
 	//
 	// example:
 	//
@@ -222,7 +218,7 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The account ID of the modifier.
+	// The account ID of the user who last modified the instance.
 	//
 	// example:
 	//
@@ -234,13 +230,13 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The sequence number of the period. Indicates which cycle of the day the task instance is in.
+	// The period number. Indicates which scheduling cycle of the day the task instance belongs to.
 	//
 	// example:
 	//
 	// 1
 	PeriodNumber *int32 `json:"PeriodNumber,omitempty" xml:"PeriodNumber,omitempty"`
-	// The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
+	// The task running priority. Minimum value: 1. Maximum value: 8. A larger value indicates a higher priority. Default value: 1.
 	//
 	// example:
 	//
@@ -248,129 +244,103 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// Deprecated
 	//
-	// The environment of the workspace. Valid values:
-	//
-	// - Prod: production environment
-	//
-	// - Dev: development environment
+	// The project environment.
 	//
 	// example:
 	//
 	// Prod
 	ProjectEnv *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
-	// The workspace ID.
+	// The project ID.
 	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The rerun mode. Valid values:
+	// The rerun configuration of the node. Valid values:
 	//
-	// - AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
+	// - AllDenied: The node cannot be rerun regardless of whether it fails or succeeds.
 	//
-	// - FailureAllowed: The task can be rerun only after it fails to run.
+	// - FailureAllowed: The node can be rerun only after it fails.
 	//
-	// - AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
+	// - AllAllowed: The node can be rerun regardless of whether it fails or succeeds.
 	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The number of times the instance is run. By default, the value starts from 1.
+	// The current run number, starting from 1 by default.
 	//
 	// example:
 	//
 	// 1
 	RunNumber *int32 `json:"RunNumber,omitempty" xml:"RunNumber,omitempty"`
-	// The runtime information about the instance.
+	// The instance runtime information.
 	Runtime *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
-	// The configurations of the runtime environment, such as the resource group information.
+	// The runtime environment configuration, such as resource group information.
 	RuntimeResource *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	// The time when the instance started to run.
+	// The time when the instance started running.
 	//
 	// example:
 	//
 	// 1710239005403
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
-	// The status of the instance. Valid values:
-	//
-	// - NotRun: The instance is not run.
-	//
-	// - Running: The instance is running.
-	//
-	// - WaitTime: The instance is waiting for the scheduling time to arrive.
-	//
-	// - CheckingCondition: Branch conditions are being checked for the instance.
-	//
-	// - WaitResource: The instance is waiting for resources.
-	//
-	// - Failure: The instance fails to be run.
-	//
-	// - Success: The instance is successfully run.
-	//
-	// - Checking: Data quality is being checked for the instance.
+	// The instance running status.
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The scheduling dependency type. Valid values:
-	//
-	// - Normal: same-cycle scheduling dependency
-	//
-	// - CrossCycle: cross-cycle scheduling dependency
+	// The dependency type.
 	//
 	// example:
 	//
 	// Normal
 	StepType *string `json:"StepType,omitempty" xml:"StepType,omitempty"`
-	// The ID of the task for which the instance is generated.
+	// The ID of the corresponding task.
 	//
 	// example:
 	//
 	// 1234
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The name of the task for which the instance is generated.
+	// The name of the corresponding task.
 	//
 	// example:
 	//
 	// SQL node
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The type of the task for which the instance is generated.
+	// The type of the corresponding task.
 	//
 	// example:
 	//
 	// ODPS_SQL
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The timeout period of task running. Unit: seconds.
+	// The timeout period for task execution, in seconds.
 	//
 	// example:
 	//
 	// 3600
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler. Valid values:
+	// The run mode when the instance is triggered. This parameter takes effect when TriggerType is set to Scheduler.
 	//
-	// - Pause
+	// Valid values:
 	//
-	// - Skip
+	// - Pause: paused
 	//
-	// - Normal
+	// - Skip: dry run
+	//
+	// - Normal: normal execution
 	//
 	// example:
 	//
 	// Normal
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
-	// The scheduling time.
+	// The scheduled trigger time.
 	//
 	// example:
 	//
 	// 1710239005403
 	TriggerTime *int64 `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
-	// The trigger type. Valid values:
-	//
-	// - Scheduler: scheduling cycle-based trigger
-	//
-	// - Manual: manual trigger
+	// The trigger type.
 	//
 	// example:
 	//
@@ -382,25 +352,13 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// 1234
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
-	// The workflow instance ID.
+	// The ID of the workflow instance to which the instance belongs.
 	//
 	// example:
 	//
 	// 1234
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
-	// The type of the workflow instance. Valid values:
-	//
-	// - SmokeTest
-	//
-	// - SupplementData
-	//
-	// - Manual
-	//
-	// - ManualWorkflow
-	//
-	// - Normal
-	//
-	// - ManualFlow
+	// The type of the workflow instance to which the instance belongs.
 	//
 	// example:
 	//
@@ -748,7 +706,7 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances) Validate(
 }
 
 type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource struct {
-	// The name of the data source.
+	// The data source name.
 	//
 	// example:
 	//
@@ -778,13 +736,13 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesDataSource)
 }
 
 type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime struct {
-	// The host for running.
+	// The machine on which the task runs.
 	//
 	// example:
 	//
 	// cn-shanghai.1.2
 	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
-	// The instance run ID.
+	// The unique run ID.
 	//
 	// example:
 	//
@@ -823,19 +781,19 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntime) Va
 }
 
 type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource struct {
-	// The default number of compute units (CUs) configured for task running.
+	// The compute unit (CU) consumption configured for the task.
 	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The ID of the image configured for task running.
+	// The image ID configured for the task.
 	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The ID of the resource group for scheduling configured for task running.
+	// The identifier of the schedule resource group configured for the task.
 	//
 	// example:
 	//
@@ -883,17 +841,13 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeReso
 }
 
 type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstances struct {
-	// The scheduling dependency type. Valid values:
-	//
-	// - Normal
-	//
-	// - CrossCycle
+	// The dependency type.
 	//
 	// example:
 	//
 	// Normal
 	DependencyType *string `json:"DependencyType,omitempty" xml:"DependencyType,omitempty"`
-	// The information about a task instance.
+	// The details of the task instance.
 	TaskInstance *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstance `json:"TaskInstance,omitempty" xml:"TaskInstance,omitempty" type:"Struct"`
 }
 
@@ -939,7 +893,7 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIns
 	//
 	// 1234
 	BaselineId *int64 `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// The data timestamp.
+	// The business date.
 	//
 	// example:
 	//
@@ -951,13 +905,13 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIns
 	//
 	// 1710239005403
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The account ID of the creator.
+	// The account ID of the user who created the instance.
 	//
 	// example:
 	//
 	// 1000
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The information about the associated data source.
+	// The data source information associated with the instance.
 	DataSource *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
 	// The description.
 	//
@@ -965,11 +919,7 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIns
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The environment in which the data source is used. Valid values:
-	//
-	// - Dev
-	//
-	// - Prod
+	// The environment of the target data source. Valid values:
 	//
 	// example:
 	//
@@ -981,7 +931,7 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIns
 	//
 	// 1710239005403
 	FinishedTime *int64 `json:"FinishedTime,omitempty" xml:"FinishedTime,omitempty"`
-	// The instance ID.
+	// The unique identifier of the task instance.
 	//
 	// example:
 	//
@@ -993,7 +943,7 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIns
 	//
 	// 1710239005403
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The account ID of the modifier.
+	// The account ID of the user who last modified the instance.
 	//
 	// example:
 	//
@@ -1005,119 +955,97 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIns
 	//
 	// 1000
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The sequence number of the cycle. This parameter indicates the cycle of the task instance on the current day.
+	// The period number. Indicates which scheduling cycle of the day the task instance belongs to.
 	//
 	// example:
 	//
 	// 1
 	PeriodNumber *int32 `json:"PeriodNumber,omitempty" xml:"PeriodNumber,omitempty"`
-	// The priority of the task. Minimum value: 1. Maximum value: 8. A larger value indicates a higher priority. Default value: 1.
+	// The task running priority. Minimum value: 1. Maximum value: 8. A larger value indicates a higher priority. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The workspace ID.
+	// The project ID.
 	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The rerun mode.
+	// The configuration that specifies whether the task can be rerun.
 	//
 	// example:
 	//
 	// AllAllowed
 	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	// The number of times the instance is run. By default, the value starts from 1.
+	// The current run number, starting from 1 by default.
 	//
 	// example:
 	//
 	// 1
 	RunNumber *int32 `json:"RunNumber,omitempty" xml:"RunNumber,omitempty"`
-	// The runtime information about the instance.
+	// The instance runtime information.
 	Runtime *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntime `json:"Runtime,omitempty" xml:"Runtime,omitempty" type:"Struct"`
-	// The configurations of the runtime environment, such as the resource group information.
+	// The runtime environment configuration, such as resource group information.
 	RuntimeResource *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntimeResource `json:"RuntimeResource,omitempty" xml:"RuntimeResource,omitempty" type:"Struct"`
-	// The time when the instance started to run.
+	// The time when the instance started running.
 	//
 	// example:
 	//
 	// 1710239005403
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
-	// The status of the instance. Valid values:
-	//
-	// - NotRun: The instance is not run.
-	//
-	// - Running: The instance is running.
-	//
-	// - WaitTime: The instance is waiting for the scheduling time to arrive.
-	//
-	// - CheckingCondition: Branch conditions are being checked for the instance.
-	//
-	// - WaitResource: The instance is waiting for resources.
-	//
-	// - Failure: The instance fails to be run.
-	//
-	// - Success: The instance is successfully run.
-	//
-	// - Checking: Data quality is being checked for the instance.
-	//
-	// - WaitTrigger: The instance is waiting to be triggered by external scheduling systems.
+	// The instance running status.
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the task for which the instance is generated.
+	// The ID of the corresponding task.
 	//
 	// example:
 	//
 	// 1234
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The name of the task for which the instance is generated.
+	// The name of the corresponding task.
 	//
 	// example:
 	//
 	// SQL node
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The type of the task for which the instance is generated.
+	// The type of the corresponding task.
 	//
 	// example:
 	//
 	// ODPS_SQL
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The timeout period of task running. Unit: seconds.
-	//
-	// Note: The value of this parameter is rounded up by hour.
+	// The timeout period for task execution, in seconds.
 	//
 	// example:
 	//
 	// 3600
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler. Valid values:
+	// The run mode when the instance is triggered. This parameter takes effect when TriggerType is set to Scheduler.
 	//
-	// - Pause
+	// Valid values:
 	//
-	// - Skip
+	// - Pause: paused.
 	//
-	// - Normal
+	// - Skip: dry run.
+	//
+	// - Normal: normal run.
 	//
 	// example:
 	//
 	// Normal
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
-	// The scheduling time.
+	// The scheduled trigger time.
 	//
 	// example:
 	//
 	// 1710239005403
 	TriggerTime *int64 `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
-	// The trigger type. Valid values:
-	//
-	// - Scheduler: scheduling cycle-based trigger
-	//
-	// - Manual: manual trigger
+	// The trigger type.
 	//
 	// example:
 	//
@@ -1129,23 +1057,13 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskIns
 	//
 	// 1234
 	WorkflowId *int64 `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
-	// The workflow instance ID.
+	// The ID of the workflow instance to which the instance belongs.
 	//
 	// example:
 	//
 	// 1234
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
-	// The type of the workflow instance. Valid values:
-	//
-	// - Normal
-	//
-	// - Manual
-	//
-	// - SmokeTest
-	//
-	// - SupplementData
-	//
-	// - ManualWorkflow
+	// The type of the workflow instance to which the instance belongs.
 	//
 	// example:
 	//
@@ -1475,7 +1393,7 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTas
 }
 
 type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceDataSource struct {
-	// The name of the data source.
+	// The data source name.
 	//
 	// example:
 	//
@@ -1505,13 +1423,13 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTas
 }
 
 type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntime struct {
-	// The host for running.
+	// The machine on which the task runs.
 	//
 	// example:
 	//
 	// cn-shanghai.1.2
 	Gateway *string `json:"Gateway,omitempty" xml:"Gateway,omitempty"`
-	// The instance run ID.
+	// The unique run ID.
 	//
 	// example:
 	//
@@ -1550,19 +1468,19 @@ func (s *ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTas
 }
 
 type ListUpstreamTaskInstancesResponseBodyPagingInfoUpstreamTaskInstancesTaskInstanceRuntimeResource struct {
-	// The default number of compute units (CUs) configured for task running.
+	// The compute unit (CU) consumption configured for the task.
 	//
 	// example:
 	//
 	// 0.25
 	Cu *string `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The ID of the image configured for task running.
+	// The image ID configured for the task.
 	//
 	// example:
 	//
 	// i-xxxxxx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The ID of the resource group for scheduling configured for task running.
+	// The identifier of the schedule resource group configured for the task.
 	//
 	// example:
 	//

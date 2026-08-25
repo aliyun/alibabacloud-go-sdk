@@ -16,9 +16,9 @@ type iListDataQualityEvaluationTasksResponseBody interface {
 }
 
 type ListDataQualityEvaluationTasksResponseBody struct {
-	// 质量校验任务分页查询结果
+	// The paged query result of quality evaluation nodes.
 	PagingInfo *ListDataQualityEvaluationTasksResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
-	// API请求ID
+	// The API request ID.
 	//
 	// example:
 	//
@@ -62,21 +62,21 @@ func (s *ListDataQualityEvaluationTasksResponseBody) Validate() error {
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfo struct {
-	// 质量校验任务
+	// The quality evaluation tasks.
 	DataQualityEvaluationTasks []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks `json:"DataQualityEvaluationTasks,omitempty" xml:"DataQualityEvaluationTasks,omitempty" type:"Repeated"`
-	// 页码
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 页大小
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 总条数
+	// The total number of records.
 	//
 	// example:
 	//
@@ -143,43 +143,43 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfo) Validate() error 
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasks struct {
 	DataSourceId *int64 `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// 数据质量校验任务描述，最长65535个字符
+	// The description of the data quality evaluation task. The description can be up to 65,535 characters in length.
 	//
 	// example:
 	//
 	// This is a daily run data quality evaluation plan
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 数据质量校验任务实例生命周期中的回调设置，目前只支持一个阻塞调度任务的Hook
+	// The callback settings during the epoch of data quality evaluation task instances. Currently, only one hook that blocks a scheduling node instance is supported.
 	Hooks []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks `json:"Hooks,omitempty" xml:"Hooks,omitempty" type:"Repeated"`
-	// 数据质量校验任务ID
+	// The ID of the data quality evaluation task.
 	//
 	// example:
 	//
 	// 10001
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// 数据质量校验任务名称，数字、英文字母、汉字、半角全角标点符号组合，最长255个字符。
+	// The name of the data quality evaluation task. The name can contain digits, letters, Chinese characters, and half-width or full-width punctuation marks. The name can be up to 255 characters in length.
 	//
 	// example:
 	//
 	// Data quality verification task
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 告警配置
+	// The alert configuration.
 	Notifications *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Struct"`
-	// DataWorks工作空间ID
+	// The DataWorks workspace ID.
 	//
 	// example:
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// 使用数据源时的一些设置，目前只支持指定EMR的yarn队列、采集EMR表时SQL引擎指定为SPARK_SQL|KYUUBI|PRESTO_SQL|HIVE_SQL
+	// The runtime settings for data sources. Currently, only specifying the EMR YARN queue and the SQL engine for collecting EMR tables is supported. Valid SQL engine values: SPARK_SQL, KYUUBI, PRESTO_SQL, and HIVE_SQL.
 	//
 	// example:
 	//
 	// { "queue": "default", "sqlEngine": "SPARK_SQL" }
 	RuntimeConf *string `json:"RuntimeConf,omitempty" xml:"RuntimeConf,omitempty"`
-	// 数据质量校验任务的监控对象
+	// The monitored object of the data quality evaluation task.
 	Target *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
-	// 数据质量校验任务的触发配置
+	// The trigger configuration of the data quality evaluation task.
 	Trigger *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger `json:"Trigger,omitempty" xml:"Trigger,omitempty" type:"Struct"`
 }
 
@@ -310,15 +310,15 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksHooks struct {
-	// Hook触发条件
+	// The cause that triggers the hook.
 	//
 	// example:
 	//
 	// ${severity} == "High" AND ${status} == "Critical"
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// 后续处理动作类型
+	// The type of the follow-up action. Valid values:
 	//
-	// - BlockTaskInstance：阻塞DataWorks任务实例执行
+	// - BlockTaskInstance: Blocks the execution of a DataWorks node instance.
 	//
 	// example:
 	//
@@ -357,13 +357,13 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotifications struct {
-	// Notification触发条件
+	// The cause that triggers the notification.
 	//
 	// example:
 	//
 	// ${severity} == "High"
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
-	// 具体的告警设置
+	// The alert settings.
 	Notifications []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotifications `json:"Notifications,omitempty" xml:"Notifications,omitempty" type:"Repeated"`
 }
 
@@ -407,9 +407,9 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotifications struct {
-	// 告警方式配置
+	// The alert channel configurations.
 	NotificationChannels []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationChannels `json:"NotificationChannels,omitempty" xml:"NotificationChannels,omitempty" type:"Repeated"`
-	// 告警接收人配置
+	// The alert recipient configurations.
 	NotificationReceivers []*ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers `json:"NotificationReceivers,omitempty" xml:"NotificationReceivers,omitempty" type:"Repeated"`
 }
 
@@ -462,7 +462,7 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationChannels struct {
-	// 告警方式
+	// The alert channel.
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
 }
 
@@ -488,29 +488,29 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksNotificationsNotificationsNotificationReceivers struct {
-	// 扩展信息，格式为 json，例如钉钉机器人支持 at 所有人
+	// The extension information in JSON format. For example, DingTalk chatbots support mentioning all members.
 	//
 	// example:
 	//
 	// {"atAll":"true"}
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// 告警接收人类型
+	// The type of the alert recipient. Valid values:
 	//
-	// - AliUid - 阿里云账号Uid
+	// - AliUid: Alibaba Cloud account UID.
 	//
-	// - WebhookUrl - 自定义 webhook URL
+	// - WebhookUrl: custom webhook URL.
 	//
-	// - DingdingUrl - 钉钉机器人Url
+	// - DingdingUrl: DingTalk chatbot URL.
 	//
-	// - FeishuUrl - 飞书机器人Url
+	// - FeishuUrl: Lark chatbot URL.
 	//
-	// - WeixinUrl - 企微机器人Url
+	// - WeixinUrl: WeCom chatbot URL.
 	//
 	// example:
 	//
 	// AliUid
 	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
-	// 告警接收人具体值
+	// The specific values of the alert recipients.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -554,7 +554,7 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTarget struct {
-	// 表类型的数据集，表所属的数据库类型
+	// The database type of the table dataset. Valid values:
 	//
 	// - maxcompute
 	//
@@ -574,19 +574,19 @@ type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTa
 	//
 	// maxcompute
 	DatabaseType *string `json:"DatabaseType,omitempty" xml:"DatabaseType,omitempty"`
-	// 分区表的分区设置
+	// The partition settings of the partitioned table.
 	//
 	// example:
 	//
 	// ds=$[yyyymmdd-1]
 	PartitionSpec *string `json:"PartitionSpec,omitempty" xml:"PartitionSpec,omitempty"`
-	// 表在数据地图中的唯一ID
+	// The unique ID of the table in DataWorks Data Map.
 	//
 	// example:
 	//
 	// odps.unit_test.tb_unit_test
 	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-	// 监控对象类型
+	// The monitored object type. Valid values:
 	//
 	// - Table
 	//
@@ -645,13 +645,11 @@ func (s *ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluati
 }
 
 type ListDataQualityEvaluationTasksResponseBodyPagingInfoDataQualityEvaluationTasksTrigger struct {
-	// type=ByScheduledTaskInstance时生效
-	//
-	// ,具体指明哪些调度节点的实例执行成功后可以触发
+	// This parameter takes effect when type is set to ByScheduledTaskInstance. Specifies the scheduled node IDs whose successful instance execution can trigger the task.
 	TaskIds []*int64 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
-	// 何种事件可以触发质量校验任务执行
+	// The type of event that triggers the quality evaluation task. Valid values:
 	//
-	// - ByScheduledTaskInstance：调度实例运行成功
+	// - ByScheduledTaskInstance: Triggered when a scheduled node instance runs successfully.
 	//
 	// example:
 	//

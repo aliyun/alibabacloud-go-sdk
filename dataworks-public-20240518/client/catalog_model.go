@@ -26,34 +26,48 @@ type iCatalog interface {
 }
 
 type Catalog struct {
+	// The comment.
+	//
 	// example:
 	//
 	// this is a comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1722073854000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// ID
+	//
 	// example:
 	//
 	// dlf-catalog:123456XXX:test_catalog
 	//
 	// starrocks-catalog:c-abc123xxx:default_catalog
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The modification time.
+	//
 	// example:
 	//
 	// 1722073854000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// default_catalog
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the parent entity.
+	//
 	// example:
 	//
 	// dlf
 	//
 	// starrocks:c-abc123xxx
 	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
+	// The type.
+	//
 	// example:
 	//
 	// Internal

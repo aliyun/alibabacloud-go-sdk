@@ -608,6 +608,68 @@ func (client *Client) BatchUpdateTasksWithContext(ctx context.Context, tmpReq *B
 
 // Summary:
 //
+// Builds an image.
+//
+// Description:
+//
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+//
+// 2. **Before calling this operation, make sure that the service-linked role AliyunServiceRoleForDataWorks has been created.**
+//
+// @param request - BuildImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BuildImageResponse
+func (client *Client) BuildImageWithContext(ctx context.Context, request *BuildImageRequest, runtime *dara.RuntimeOptions) (_result *BuildImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Cu) {
+		body["Cu"] = request.Cu
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.ProcessId) {
+		body["ProcessId"] = request.ProcessId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BuildImage"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BuildImageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Interrupts the Agent call for a specified session, supporting interruption during streaming responses.
 //
 // Description:
@@ -664,6 +726,60 @@ func (client *Client) CancelAgentSessionWithContext(ctx context.Context, tmpReq 
 		BodyType:    dara.String("json"),
 	}
 	_result = &CancelAgentSessionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Cancels an image test.
+//
+// Description:
+//
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
+//
+// 2. **Make sure that the service-linked role AliyunServiceRoleForDataWorks is created before you call this operation.**
+//
+// @param request - CancelImageTestRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelImageTestResponse
+func (client *Client) CancelImageTestWithContext(ctx context.Context, request *CancelImageTestRequest, runtime *dara.RuntimeOptions) (_result *CancelImageTestResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.ProcessId) {
+		body["ProcessId"] = request.ProcessId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CancelImageTest"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CancelImageTestResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1000,7 +1116,7 @@ func (client *Client) CreateAlertRuleWithContext(ctx context.Context, tmpReq *Cr
 
 // Summary:
 //
-// Creates a workflow in DataStudio.
+// Creates a business process in DataStudio for data development.
 //
 // @param request - CreateBusinessRequest
 //
@@ -2930,6 +3046,118 @@ func (client *Client) CreateIdentifyCredentialWithContext(ctx context.Context, t
 
 // Summary:
 //
+// Creates an image.
+//
+// Description:
+//
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+//
+// 2. **Before calling this operation, make sure that the service-linked role AliyunServiceRoleForDataWorks has been created.**
+//
+// @param tmpReq - CreateImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateImageResponse
+func (client *Client) CreateImageWithContext(ctx context.Context, tmpReq *CreateImageRequest, runtime *dara.RuntimeOptions) (_result *CreateImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateImageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BuildConfig) {
+		request.BuildConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BuildConfig, dara.String("BuildConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Supported) {
+		request.SupportedShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Supported, dara.String("Supported"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Accessibility) {
+		body["Accessibility"] = request.Accessibility
+	}
+
+	if !dara.IsNil(request.AcrAssociatedVpcId) {
+		body["AcrAssociatedVpcId"] = request.AcrAssociatedVpcId
+	}
+
+	if !dara.IsNil(request.AcrInstanceId) {
+		body["AcrInstanceId"] = request.AcrInstanceId
+	}
+
+	if !dara.IsNil(request.BuildConfigShrink) {
+		body["BuildConfig"] = request.BuildConfigShrink
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EnableSyncMaxCompute) {
+		body["EnableSyncMaxCompute"] = request.EnableSyncMaxCompute
+	}
+
+	if !dara.IsNil(request.ImageUri) {
+		body["ImageUri"] = request.ImageUri
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.ProviderImageId) {
+		body["ProviderImageId"] = request.ProviderImageId
+	}
+
+	if !dara.IsNil(request.ProviderType) {
+		body["ProviderType"] = request.ProviderType
+	}
+
+	if !dara.IsNil(request.RepositoryName) {
+		body["RepositoryName"] = request.RepositoryName
+	}
+
+	if !dara.IsNil(request.SupportedShrink) {
+		body["Supported"] = request.SupportedShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateImage"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateImageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Registers a data lineage relationship in DataWorks Data Map. You can use this operation to establish lineage relationships between metadata entities managed by DataWorks, including table-to-table, column-to-column, table-to-column, and dataset-to-table scenarios. You can also establish lineage relationships between managed entities and custom entity objects registered by users. This operation is compatible with non-managed custom objects, but this approach is no longer recommended. Before calling this operation, make sure that the managed entities involved in the lineage registration already exist on the DataWorks platform.
 //
 // Description:
@@ -4532,11 +4760,11 @@ func (client *Client) CreateWorkflowDefinitionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Creates a workflow instance, such as a data backfill workflow instance, based on configurations.
+// Creates a workflow instance based on configurations, such as a data backfill workflow instance.
 //
 // Description:
 //
-// DataWorks Basic Edition or higher is required.
+// DataWorks Basic Edition or a higher edition is required.
 //
 // @param tmpReq - CreateWorkflowInstancesRequest
 //
@@ -6688,6 +6916,54 @@ func (client *Client) DeleteSemanticJobWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// Deletes a specified personal development environment instance.
+//
+// Description:
+//
+// Deletes a specified personal development environment (ServerIDE) instance and returns the instance ID.
+//
+// @param request - DeleteServerIdeInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServerIdeInstanceResponse
+func (client *Client) DeleteServerIdeInstanceWithContext(ctx context.Context, request *DeleteServerIdeInstanceRequest, runtime *dara.RuntimeOptions) (_result *DeleteServerIdeInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteServerIdeInstance"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteServerIdeInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // # Delete Skill
 //
 // Description:
@@ -6796,11 +7072,11 @@ func (client *Client) DeleteTaskWithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
-// Deletes a workflow.
+// Deletes a specified workflow.
 //
 // Description:
 //
-// This API operation is available for all DataWorks editions.
+// DataWorks Basic Edition or a more advanced edition is required.
 //
 // @param request - DeleteWorkflowRequest
 //
@@ -7020,6 +7296,56 @@ func (client *Client) DetachDataQualityRulesFromEvaluationTaskWithContext(ctx co
 		BodyType:    dara.String("json"),
 	}
 	_result = &DetachDataQualityRulesFromEvaluationTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables an image.
+//
+// Description:
+//
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+//
+// 2. **Before using this operation, make sure that the service-linked role AliyunServiceRoleForDataWorks has been created.**
+//
+// @param request - DisableImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableImageResponse
+func (client *Client) DisableImageWithContext(ctx context.Context, request *DisableImageRequest, runtime *dara.RuntimeOptions) (_result *DisableImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableImage"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableImageResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7254,6 +7580,56 @@ func (client *Client) DownloadSemanticResultsWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &DownloadSemanticResultsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables an image.
+//
+// Description:
+//
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
+//
+// 2. **Make sure that the service-linked role AliyunServiceRoleForDataWorks is created before you call this operation.**
+//
+// @param request - EnableImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableImageResponse
+func (client *Client) EnableImageWithContext(ctx context.Context, request *EnableImageRequest, runtime *dara.RuntimeOptions) (_result *EnableImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableImage"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableImageResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -9411,6 +9787,60 @@ func (client *Client) GetImageWithContext(ctx context.Context, request *GetImage
 
 // Summary:
 //
+// Retrieves the details of an image test result.
+//
+// Description:
+//
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
+//
+// 2. **Before using this operation, make sure that the service-linked role AliyunServiceRoleForDataWorks has been created.**
+//
+// @param request - GetImageTestResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetImageTestResultResponse
+func (client *Client) GetImageTestResultWithContext(ctx context.Context, request *GetImageTestResultRequest, runtime *dara.RuntimeOptions) (_result *GetImageTestResultResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.ProcessId) {
+		query["ProcessId"] = request.ProcessId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetImageTestResult"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetImageTestResultResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Returns the status of an asynchronous task. After calling an asynchronous API, poll this API to obtain the success status.
 //
 // @param request - GetJobStatusRequest
@@ -10555,6 +10985,54 @@ func (client *Client) GetSemanticJobLogWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetSemanticJobLogResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a specified personal development environment instance.
+//
+// Description:
+//
+// Queries the basic information, running status, image, network, dataset, and credential configurations of a specified personal development environment (ServerIDE) instance.
+//
+// @param request - GetServerIdeInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServerIdeInstanceResponse
+func (client *Client) GetServerIdeInstanceWithContext(ctx context.Context, request *GetServerIdeInstanceRequest, runtime *dara.RuntimeOptions) (_result *GetServerIdeInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetServerIdeInstance"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetServerIdeInstanceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -12605,11 +13083,11 @@ func (client *Client) ListDataQualityEvaluationTaskInstancesWithContext(ctx cont
 //
 // Summary:
 //
-// Lists quality monitoring nodes by paging query.
+// Queries a paged list of quality monitoring nodes by using paging.
 //
 // Description:
 //
-// 需要购买DataWorks基础版及以上版本才能使用
+// You must purchase DataWorks Basic Edition or a higher edition to use this feature.
 //
 // @param request - ListDataQualityEvaluationTasksRequest
 //
@@ -13913,6 +14391,64 @@ func (client *Client) ListImageAssociatedProjectsWithContext(ctx context.Context
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListImageAssociatedProjectsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the list of image test results.
+//
+// Description:
+//
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+//
+// 2. **Before using this operation, make sure that the service-linked role AliyunServiceRoleForDataWorks has been created.**
+//
+// @param request - ListImageTestResultsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListImageTestResultsResponse
+func (client *Client) ListImageTestResultsWithContext(ctx context.Context, request *ListImageTestResultsRequest, runtime *dara.RuntimeOptions) (_result *ListImageTestResultsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListImageTestResults"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListImageTestResultsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -16059,6 +16595,214 @@ func (client *Client) ListSemanticJobsWithContext(ctx context.Context, request *
 
 // Summary:
 //
+// Queries the list of available ECS instance types for personal development environments.
+//
+// Description:
+//
+// Queries the ECS instance types available when creating a personal development environment (ServerIDE). You can filter by CPU or GPU type. If no type is specified, both CPU and GPU instance types are returned.
+//
+// @param request - ListServerIdeEcsSpecsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServerIdeEcsSpecsResponse
+func (client *Client) ListServerIdeEcsSpecsWithContext(ctx context.Context, request *ListServerIdeEcsSpecsRequest, runtime *dara.RuntimeOptions) (_result *ListServerIdeEcsSpecsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AcceleratorType) {
+		body["AcceleratorType"] = request.AcceleratorType
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListServerIdeEcsSpecs"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListServerIdeEcsSpecsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of available images for personal development environments by using paging.
+//
+// Description:
+//
+// Queries the available images for creating a personal development environment (ServerIDE) by using paging. Supports filtering by image name and labels.
+//
+// @param request - ListServerIdeImagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServerIdeImagesResponse
+func (client *Client) ListServerIdeImagesWithContext(ctx context.Context, request *ListServerIdeImagesRequest, runtime *dara.RuntimeOptions) (_result *ListServerIdeImagesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Labels) {
+		body["Labels"] = request.Labels
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListServerIdeImages"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListServerIdeImagesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a paged query list of personal development environment instances with paging support.
+//
+// Description:
+//
+// Queries a paged query list of personal development environment (ServerIDE) instances with paging. You can filter results by workspace, resource group, keyword, owner, and instance child class.
+//
+// @param request - ListServerIdeInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServerIdeInstancesResponse
+func (client *Client) ListServerIdeInstancesWithContext(ctx context.Context, request *ListServerIdeInstancesRequest, runtime *dara.RuntimeOptions) (_result *ListServerIdeInstancesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.RelatedUserId) {
+		body["RelatedUserId"] = request.RelatedUserId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.SubType) {
+		body["SubType"] = request.SubType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListServerIdeInstances"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListServerIdeInstancesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Lists the Skills in your account.
 //
 // Description:
@@ -16583,7 +17327,11 @@ func (client *Client) ListTasksWithContext(ctx context.Context, tmpReq *ListTask
 
 // Summary:
 //
-// Queries a list of ancestor instances of an instance by page.
+// Retrieves the upstream instances of a specified instance by page.
+//
+// Description:
+//
+// DataWorks Basic Edition or a more advanced edition is required.
 //
 // @param request - ListUpstreamTaskInstancesRequest
 //
@@ -17377,6 +18125,60 @@ func (client *Client) PromptAgentSessionWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
+// Publishes an image.
+//
+// Description:
+//
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+//
+// 2. **Make sure that the service-linked role AliyunServiceRoleForDataWorks has been created before you call this operation.**
+//
+// @param request - PublishImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PublishImageResponse
+func (client *Client) PublishImageWithContext(ctx context.Context, request *PublishImageRequest, runtime *dara.RuntimeOptions) (_result *PublishImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.ProcessId) {
+		body["ProcessId"] = request.ProcessId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PublishImage"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PublishImageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Remove an entity object from a Data Map collection. The collection supports Data Map categories and data albums, and the entity currently supports only the Data Table type.
 //
 // When removing an entity from a data album, the caller must have the AliyunDataWorksFullAccess permission or be the creator or administrator of the album.
@@ -17979,6 +18781,60 @@ func (client *Client) RevokeMemberProjectRolesWithContext(ctx context.Context, t
 
 // Summary:
 //
+// Rolls back an image.
+//
+// Description:
+//
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+//
+// 2. **Before calling this operation, make sure that the service-linked role AliyunServiceRoleForDataWorks has been created.**
+//
+// @param request - RollbackImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RollbackImageResponse
+func (client *Client) RollbackImageWithContext(ctx context.Context, request *RollbackImageRequest, runtime *dara.RuntimeOptions) (_result *RollbackImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.ImageVersion) {
+		body["ImageVersion"] = request.ImageVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RollbackImage"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RollbackImageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Rolls back a specified parameter.
 //
 // Description:
@@ -18093,6 +18949,68 @@ func (client *Client) RunCrawlerWithContext(ctx context.Context, request *RunCra
 		BodyType:    dara.String("json"),
 	}
 	_result = &RunCrawlerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Runs an image test.
+//
+// Description:
+//
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this feature.
+//
+// 2. **Make sure that the service-linked role AliyunServiceRoleForDataWorks is created before you call this operation.**
+//
+// @param request - RunImageTestRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunImageTestResponse
+func (client *Client) RunImageTestWithContext(ctx context.Context, request *RunImageTestRequest, runtime *dara.RuntimeOptions) (_result *RunImageTestResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Cu) {
+		body["Cu"] = request.Cu
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.ProcessId) {
+		body["ProcessId"] = request.ProcessId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunImageTest"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunImageTestResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -18263,6 +19181,54 @@ func (client *Client) StartDIJobWithContext(ctx context.Context, tmpReq *StartDI
 		BodyType:    dara.String("json"),
 	}
 	_result = &StartDIJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Starts a specified personal development environment instance.
+//
+// Description:
+//
+// Starts a specified personal development environment (ServerIDE) instance and returns the instance ID.
+//
+// @param request - StartServerIdeInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartServerIdeInstanceResponse
+func (client *Client) StartServerIdeInstanceWithContext(ctx context.Context, request *StartServerIdeInstanceRequest, runtime *dara.RuntimeOptions) (_result *StartServerIdeInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StartServerIdeInstance"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StartServerIdeInstanceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -18489,6 +19455,54 @@ func (client *Client) StopProcessInstanceWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopProcessInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops a specified personal development environment instance.
+//
+// Description:
+//
+// Stops a specified personal development environment (ServerIDE) instance and returns the instance ID.
+//
+// @param request - StopServerIdeInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopServerIdeInstanceResponse
+func (client *Client) StopServerIdeInstanceWithContext(ctx context.Context, request *StopServerIdeInstanceRequest, runtime *dara.RuntimeOptions) (_result *StopServerIdeInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("StopServerIdeInstance"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &StopServerIdeInstanceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -20765,6 +21779,112 @@ func (client *Client) UpdateIDEEventResultWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateIDEEventResultResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates an image.
+//
+// Description:
+//
+// 1. You must purchase DataWorks Basic Edition or a higher edition to use this operation.
+//
+// 2. **Before calling this operation, make sure that the service-linked role AliyunServiceRoleForDataWorks has been created.**
+//
+// @param tmpReq - UpdateImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateImageResponse
+func (client *Client) UpdateImageWithContext(ctx context.Context, tmpReq *UpdateImageRequest, runtime *dara.RuntimeOptions) (_result *UpdateImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateImageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.BuildConfig) {
+		request.BuildConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BuildConfig, dara.String("BuildConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Supported) {
+		request.SupportedShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Supported, dara.String("Supported"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AcrAssociatedVpcId) {
+		query["AcrAssociatedVpcId"] = request.AcrAssociatedVpcId
+	}
+
+	if !dara.IsNil(request.AcrInstanceId) {
+		query["AcrInstanceId"] = request.AcrInstanceId
+	}
+
+	if !dara.IsNil(request.ImageUri) {
+		query["ImageUri"] = request.ImageUri
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.RepositoryName) {
+		query["RepositoryName"] = request.RepositoryName
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Accessibility) {
+		body["Accessibility"] = request.Accessibility
+	}
+
+	if !dara.IsNil(request.BuildConfigShrink) {
+		body["BuildConfig"] = request.BuildConfigShrink
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Id) {
+		body["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ProviderImageId) {
+		body["ProviderImageId"] = request.ProviderImageId
+	}
+
+	if !dara.IsNil(request.SupportedShrink) {
+		body["Supported"] = request.SupportedShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateImage"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateImageResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

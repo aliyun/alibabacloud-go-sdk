@@ -18,23 +18,23 @@ type iDeleteWorkflowRequest interface {
 }
 
 type DeleteWorkflowRequest struct {
-	// The unique code of the client. This parameter is used to create a workflow asynchronously and implement the idempotence of the workflow. If you do not specify this parameter when you create the workflow, the system automatically generates a unique code. The unique code is uniquely associated with the workflow ID. If you specify this parameter when you update or delete the workflow, the value of this parameter must be the unique code that is used to create the workflow.
+	// The client unique code of the workflow, which is used to implement asynchronous operations and idempotence. If you do not specify this parameter during creation, the system automatically generates one. This code is uniquely bound to the resource ID. If you specify this parameter during update or deletion, it must be the same as the client unique code specified during creation.
 	//
 	// example:
 	//
 	// Workflow_0bc5213917368545132902xxxxxxxx
 	ClientUniqueCode *string `json:"ClientUniqueCode,omitempty" xml:"ClientUniqueCode,omitempty"`
-	// The environment of the workspace. Valid values:
+	// The project environment. Valid values:
 	//
-	// - Prod: production environment
+	// - Prod: production
 	//
-	// - Dev: development environment
+	// - Dev: development
 	//
 	// example:
 	//
 	// Prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The workflow ID.
+	// The unique identifier of the workflow.
 	//
 	// This parameter is required.
 	//

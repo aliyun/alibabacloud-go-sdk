@@ -18,7 +18,7 @@ type iLineageTask interface {
 }
 
 type LineageTask struct {
-	// The properties of the task.
+	// The task attributes.
 	Attributes map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
 	// The task ID.
 	//
@@ -26,7 +26,7 @@ type LineageTask struct {
 	//
 	// 12345
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The type of the task.
+	// The task type.
 	//
 	// example:
 	//

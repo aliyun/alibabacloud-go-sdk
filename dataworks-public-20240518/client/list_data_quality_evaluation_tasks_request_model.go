@@ -22,19 +22,19 @@ type iListDataQualityEvaluationTasksRequest interface {
 }
 
 type ListDataQualityEvaluationTasksRequest struct {
-	// The name used to fuzzy match data quality check task names.
+	// The name used for fuzzy matching of data quality evaluation task names.
 	//
 	// example:
 	//
 	// Test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The page number for the paging query. Default value: 1.
+	// The page number for paging. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size for the paging query. Default value: 10.
+	// The page size for paging. Default value: 10.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListDataQualityEvaluationTasksRequest struct {
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The unique ID of the table in Data Map.
+	// The unique ID of the table in DataWorks Data Map.
 	//
 	// example:
 	//

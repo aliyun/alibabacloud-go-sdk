@@ -18,11 +18,16 @@ type iCrawlerType interface {
 }
 
 type CrawlerType struct {
+	// The display name.
+	//
 	// example:
 	//
 	// Data Lake Formation
-	DisplayName          *string                            `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The list of supported entity types. The entity types have a top-down hierarchical relationship based on their declaration order.
 	SupportedEntityTypes []*CrawlerTypeSupportedEntityTypes `json:"SupportedEntityTypes,omitempty" xml:"SupportedEntityTypes,omitempty" type:"Repeated"`
+	// The type identifier.
+	//
 	// example:
 	//
 	// dlf
@@ -78,18 +83,26 @@ func (s *CrawlerType) Validate() error {
 }
 
 type CrawlerTypeSupportedEntityTypes struct {
+	// Indicates whether the entity type is optional.
+	//
 	// example:
 	//
-	// true
+	// For example, for the maxcompute-schema type, whether the schema level is optional (whether the three-layer model is enabled)
 	Optional *bool `json:"Optional,omitempty" xml:"Optional,omitempty"`
+	// The entity subtype of the parent level. The value is null if no parent level exists.
+	//
 	// example:
 	//
 	// database
 	ParentSubType *string `json:"ParentSubType,omitempty" xml:"ParentSubType,omitempty"`
+	// The entity subtype identifier.
+	//
 	// example:
 	//
 	// table
 	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	// The entity type identifier, which is related to the crawler type. The format is (CrawlerType)-{SubType}.
+	//
 	// example:
 	//
 	// dlf-table

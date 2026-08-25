@@ -22,7 +22,7 @@ type UpdateSkillResponseBody struct {
 	//
 	// 824F80BA-1778-5D8A-BAFF-668A4D9C4CC7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// -
+	// The Skill details.
 	Skill *UpdateSkillResponseBodySkill `json:"Skill,omitempty" xml:"Skill,omitempty" type:"Struct"`
 }
 
@@ -66,7 +66,7 @@ type UpdateSkillResponseBodySkill struct {
 	//
 	// example:
 	//
-	// 把大象放冰箱分为三步，把冰箱门打开，把大象放进去，把冰箱门关上。
+	// Putting an elephant in a refrigerator takes three steps: open the refrigerator door, put the elephant in, and close the refrigerator door
 	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
 	// The creator ID.
 	//
@@ -78,7 +78,7 @@ type UpdateSkillResponseBodySkill struct {
 	//
 	// example:
 	//
-	// 数据分析技能
+	// Data analytics skill
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The creation time (millisecond timestamp).
 	//
