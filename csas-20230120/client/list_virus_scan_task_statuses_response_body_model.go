@@ -16,11 +16,14 @@ type iListVirusScanTaskStatusesResponseBody interface {
 }
 
 type ListVirusScanTaskStatusesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 3D7EC0AF-DB2A-5D9C-90EC-F090A6BAAEA7
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     []*ListVirusScanTaskStatusesResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of execution progress for virus scan tasks.
+	Tasks []*ListVirusScanTaskStatusesResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s ListVirusScanTaskStatusesResponseBody) String() string {
@@ -63,10 +66,13 @@ func (s *ListVirusScanTaskStatusesResponseBody) Validate() error {
 }
 
 type ListVirusScanTaskStatusesResponseBodyTasks struct {
+	// The virus scan task ID.
+	//
 	// example:
 	//
 	// v1:1024772
-	TaskId     *string                                               `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The execution progress measured by device count.
 	TaskStatus *ListVirusScanTaskStatusesResponseBodyTasksTaskStatus `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty" type:"Struct"`
 }
 
@@ -106,18 +112,26 @@ func (s *ListVirusScanTaskStatusesResponseBodyTasks) Validate() error {
 }
 
 type ListVirusScanTaskStatusesResponseBodyTasksTaskStatus struct {
+	// The number of user terminal devices that have received the task.
+	//
 	// example:
 	//
 	// 120
 	DeviceAckCount *int32 `json:"DeviceAckCount,omitempty" xml:"DeviceAckCount,omitempty"`
+	// The number of user terminal devices on which the scan execution failed.
+	//
 	// example:
 	//
 	// 5
 	DeviceResultFailCount *int32 `json:"DeviceResultFailCount,omitempty" xml:"DeviceResultFailCount,omitempty"`
+	// The number of user terminal devices on which the scan was executed successfully.
+	//
 	// example:
 	//
 	// 100
 	DeviceResultSuccessCount *int32 `json:"DeviceResultSuccessCount,omitempty" xml:"DeviceResultSuccessCount,omitempty"`
+	// The number of user terminal devices that are currently executing the scan.
+	//
 	// example:
 	//
 	// 15

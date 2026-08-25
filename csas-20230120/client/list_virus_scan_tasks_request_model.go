@@ -30,33 +30,56 @@ type iListVirusScanTasksRequest interface {
 }
 
 type ListVirusScanTasksRequest struct {
+	// The page number of the current page in paging. Valid values: 1 to 10000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The end point for filtering by task expiration time. The value is a UNIX timestamp in seconds. The value must be greater than StartTime.
+	//
 	// example:
 	//
 	// 1762135466
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The number of entries per page in paging. Valid values: 1 to 1000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	PageSize         *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The collection of scan performance modes. Duplicate values are not allowed.
 	PerformanceModes []*string `json:"PerformanceModes,omitempty" xml:"PerformanceModes,omitempty" type:"Repeated"`
-	ScanModes        []*string `json:"ScanModes,omitempty" xml:"ScanModes,omitempty" type:"Repeated"`
+	// The collection of scan path scopes. Duplicate values are not allowed.
+	ScanModes []*string `json:"ScanModes,omitempty" xml:"ScanModes,omitempty" type:"Repeated"`
+	// The start point for filtering by task expiration time. The value is a UNIX timestamp in seconds. This parameter must be specified together with EndTime. Specifying this parameter alone does not take effect.
+	//
 	// example:
 	//
 	// 1754150421
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task status. Valid values:
+	//
+	// - **0**: Not canceled. This is the default value.
+	//
+	// - **1**: Canceled.
+	//
+	// - **-1**: No status filter. All tasks are returned.
+	//
 	// example:
 	//
 	// 0
-	Status  *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The collection of virus scan task IDs. Duplicate values are not allowed.
 	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// The user group ID, used to filter tasks whose effective scope includes the specified user group. You can obtain the value from:
+	//
+	// - [ListUserGroups](~~ListUserGroups~~): Lists user groups.
+	//
 	// example:
 	//
 	// usergroup-9d4f2a7b3c1e****

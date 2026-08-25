@@ -18,11 +18,16 @@ type iListVirusScanTasksResponseBody interface {
 }
 
 type ListVirusScanTasksResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 3D7EC0AF-DB2A-5D9C-90EC-F090A6BAAEA7
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     []*ListVirusScanTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of virus scan tasks.
+	Tasks []*ListVirusScanTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// The total number of virus scan tasks.
+	//
 	// example:
 	//
 	// 100
@@ -78,58 +83,121 @@ func (s *ListVirusScanTasksResponseBody) Validate() error {
 }
 
 type ListVirusScanTasksResponseBodyTasks struct {
+	// The time when the task was created, in the yyyy-MM-dd HH:mm:ss format. The time is in the UTC+8 time zone.
+	//
 	// example:
 	//
 	// 2026-08-21 10:24:31
-	CreateTime       *string                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The effective scope specified by organizational structure.
 	CustomMatchGroup []*ListVirusScanTasksResponseBodyTasksCustomMatchGroup `json:"CustomMatchGroup,omitempty" xml:"CustomMatchGroup,omitempty" type:"Repeated"`
+	// The time when the task expires, in seconds-level UNIX timestamp format.
+	//
 	// example:
 	//
 	// 1786377600
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The action to take on high-risk virus files. Valid values:
+	//
+	// - **Quarantine**: Quarantine quarantined file.
+	//
+	// - **Notify**: Report an alert only without taking action on quarantined file.
+	//
 	// example:
 	//
 	// Quarantine
 	HighRiskOperation *string `json:"HighRiskOperation,omitempty" xml:"HighRiskOperation,omitempty"`
+	// The action to take on low-risk virus files. Valid values:
+	//
+	// - **Quarantine**: Quarantine quarantined file.
+	//
+	// - **Notify**: Report an alert only without taking action on quarantined file.
+	//
+	// - **None**: Take no action.
+	//
 	// example:
 	//
 	// None
 	LowRiskOperation *string `json:"LowRiskOperation,omitempty" xml:"LowRiskOperation,omitempty"`
+	// The matching mode for the effective scope. Valid values:
+	//
+	// - **UserGroupAll**: Applies to all users under the current Alibaba Cloud account.
+	//
+	// - **UserGroupNormal**: Applies only to users in specified user groups.
+	//
 	// example:
 	//
 	// UserGroupNormal
-	MatchMode        *string                                                `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
+	MatchMode *string `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
+	// The collection of user groups to which the task applies.
 	MatchTargetInfos []*ListVirusScanTasksResponseBodyTasksMatchTargetInfos `json:"MatchTargetInfos,omitempty" xml:"MatchTargetInfos,omitempty" type:"Repeated"`
+	// The maximum percentage of endpoint CPU usage allowed during scanning.
+	//
 	// example:
 	//
 	// 30
 	MaxCpuUsage *int64 `json:"MaxCpuUsage,omitempty" xml:"MaxCpuUsage,omitempty"`
+	// The action to take on medium-risk virus files. Valid values:
+	//
+	// - **Quarantine**: Quarantine quarantined file.
+	//
+	// - **Notify**: Report an alert only without taking action on quarantined file.
+	//
 	// example:
 	//
 	// Notify
 	MidRiskOperation *string `json:"MidRiskOperation,omitempty" xml:"MidRiskOperation,omitempty"`
+	// The scan performance schema pattern. Valid values:
+	//
+	// - **SecurityFirst**: Security first. The default CPU usage upper limit is 50%.
+	//
+	// - **Balance**: Balanced. The default CPU usage upper limit is 30%.
+	//
+	// - **ExperienceFirst**: Experience first. The default CPU usage upper limit is 15%.
+	//
 	// example:
 	//
 	// Balance
 	PerformanceMode *string `json:"PerformanceMode,omitempty" xml:"PerformanceMode,omitempty"`
+	// The scan path scope. Valid values:
+	//
+	// - **Quick**: Quick scan. Only scans critical system directories and common risk locations.
+	//
+	// - **Full**: Full scan.
+	//
+	// - **Custom**: Custom path scan.
+	//
 	// example:
 	//
 	// Quick
-	ScanMode    *string   `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
-	ScanPath    []*string `json:"ScanPath,omitempty" xml:"ScanPath,omitempty" type:"Repeated"`
+	ScanMode *string `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	// The collection of custom scan paths.
+	ScanPath []*string `json:"ScanPath,omitempty" xml:"ScanPath,omitempty" type:"Repeated"`
+	// The collection of virus types to be handled in this scan.
 	ScanTargets []*string `json:"ScanTargets,omitempty" xml:"ScanTargets,omitempty" type:"Repeated"`
+	// The task status. Valid values:
+	//
+	// - **0**: Not canceled.
+	//
+	// - **1**: Canceled.
+	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The description of the task.
+	//
 	// example:
 	//
-	// 研发部门全盘扫描
+	// Full scan for R&D department
 	TaskDescription *string `json:"TaskDescription,omitempty" xml:"TaskDescription,omitempty"`
+	// The ID of the virus scan task.
+	//
 	// example:
 	//
 	// v1:1024772
-	TaskId    *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The list of exempted users.
 	Whitelist []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
 }
 
@@ -317,7 +385,10 @@ func (s *ListVirusScanTasksResponseBodyTasks) Validate() error {
 }
 
 type ListVirusScanTasksResponseBodyTasksCustomMatchGroup struct {
+	// The collection of organizational structure nodes.
 	Group []*string `json:"Group,omitempty" xml:"Group,omitempty" type:"Repeated"`
+	// The ID of the identity provider.
+	//
 	// example:
 	//
 	// idp-7c3f9a2e5b18****
@@ -355,13 +426,17 @@ func (s *ListVirusScanTasksResponseBodyTasksCustomMatchGroup) Validate() error {
 }
 
 type ListVirusScanTasksResponseBodyTasksMatchTargetInfos struct {
+	// The ID of the user group.
+	//
 	// example:
 	//
 	// usergroup-9d4f2a7b3c1e****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The name of the user group.
+	//
 	// example:
 	//
-	// 研发部门
+	// R&D Department
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 }
 

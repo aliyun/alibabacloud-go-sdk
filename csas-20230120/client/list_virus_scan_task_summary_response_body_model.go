@@ -16,11 +16,14 @@ type iListVirusScanTaskSummaryResponseBody interface {
 }
 
 type ListVirusScanTaskSummaryResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 3D7EC0AF-DB2A-5D9C-90EC-F090A6BAAEA7
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tasks     []*ListVirusScanTaskSummaryResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of detection statistics for virus scan tasks.
+	Tasks []*ListVirusScanTaskSummaryResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s ListVirusScanTaskSummaryResponseBody) String() string {
@@ -63,10 +66,14 @@ func (s *ListVirusScanTaskSummaryResponseBody) Validate() error {
 }
 
 type ListVirusScanTaskSummaryResponseBodyTasks struct {
+	// The virus scan task ID.
+	//
 	// example:
 	//
 	// v1:1024772
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The number of virus files detected by the task.
+	//
 	// example:
 	//
 	// 7

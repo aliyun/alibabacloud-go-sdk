@@ -14,6 +14,8 @@ type iListVirusScanTaskSummaryRequest interface {
 }
 
 type ListVirusScanTaskSummaryRequest struct {
+	// The collection of virus scan task IDs. The collection must contain at least one ID. Duplicate IDs are not allowed.
+	//
 	// This parameter is required.
 	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 }

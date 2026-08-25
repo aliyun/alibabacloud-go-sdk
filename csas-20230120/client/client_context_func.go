@@ -1881,6 +1881,213 @@ func (client *Client) CreateRegistrationPolicyWithContext(ctx context.Context, t
 
 // Summary:
 //
+// Creates a software distribution task.
+//
+// Description:
+//
+// - After a task is created, its initial status is disabled.
+//
+// - MatchMode determines how to specify the matching target parameters: when set to UserGroupNormal, you must pass only UserGroupIds. When set to DeviceGroupNormal, you must pass only DeviceGroupIds. When set to DevTagNormal, you must pass only DevTags. Requests that contain parameters not matching the MatchMode value are rejected.
+//
+// - SupportOs supports only a single operating system value.
+//
+// @param request - CreateSoftwarelibDistributeTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSoftwarelibDistributeTaskResponse
+func (client *Client) CreateSoftwarelibDistributeTaskWithContext(ctx context.Context, request *CreateSoftwarelibDistributeTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateSoftwarelibDistributeTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.DevTags) {
+		bodyFlat["DevTags"] = request.DevTags
+	}
+
+	if !dara.IsNil(request.DeviceGroupIds) {
+		bodyFlat["DeviceGroupIds"] = request.DeviceGroupIds
+	}
+
+	if !dara.IsNil(request.ExecuteMode) {
+		body["ExecuteMode"] = request.ExecuteMode
+	}
+
+	if !dara.IsNil(request.ExecuteParameters) {
+		body["ExecuteParameters"] = request.ExecuteParameters
+	}
+
+	if !dara.IsNil(request.ExecutePeriod) {
+		body["ExecutePeriod"] = request.ExecutePeriod
+	}
+
+	if !dara.IsNil(request.ExpireMode) {
+		body["ExpireMode"] = request.ExpireMode
+	}
+
+	if !dara.IsNil(request.GmtExpired) {
+		body["GmtExpired"] = request.GmtExpired
+	}
+
+	if !dara.IsNil(request.MatchMode) {
+		body["MatchMode"] = request.MatchMode
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RetryTimes) {
+		body["RetryTimes"] = request.RetryTimes
+	}
+
+	if !dara.IsNil(request.RunAsAccount) {
+		body["RunAsAccount"] = request.RunAsAccount
+	}
+
+	if !dara.IsNil(request.SoftwareId) {
+		body["SoftwareId"] = request.SoftwareId
+	}
+
+	if !dara.IsNil(request.SoftwareName) {
+		body["SoftwareName"] = request.SoftwareName
+	}
+
+	if !dara.IsNil(request.SupportOs) {
+		body["SupportOs"] = request.SupportOs
+	}
+
+	if !dara.IsNil(request.TaskType) {
+		body["TaskType"] = request.TaskType
+	}
+
+	if !dara.IsNil(request.Timeout) {
+		body["Timeout"] = request.Timeout
+	}
+
+	if !dara.IsNil(request.UserGroupIds) {
+		bodyFlat["UserGroupIds"] = request.UserGroupIds
+	}
+
+	if !dara.IsNil(request.VersionId) {
+		body["VersionId"] = request.VersionId
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSoftwarelibDistributeTask"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSoftwarelibDistributeTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a software version.
+//
+// Description:
+//
+// - Within the same software, the combination of operating system and version number must be unique. If a duplicate is created, a ResourceDuplicated error is returned.
+//
+// - A newly created version has an initial publish status of unpublished.
+//
+// - A newly created version has the highest priority. The priorities of other versions under the same software are shifted down accordingly.
+//
+// @param request - CreateSoftwarelibVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSoftwarelibVersionResponse
+func (client *Client) CreateSoftwarelibVersionWithContext(ctx context.Context, request *CreateSoftwarelibVersionRequest, runtime *dara.RuntimeOptions) (_result *CreateSoftwarelibVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Md5) {
+		body["Md5"] = request.Md5
+	}
+
+	if !dara.IsNil(request.Os) {
+		body["Os"] = request.Os
+	}
+
+	if !dara.IsNil(request.PublisherType) {
+		body["PublisherType"] = request.PublisherType
+	}
+
+	if !dara.IsNil(request.SoftwareId) {
+		body["SoftwareId"] = request.SoftwareId
+	}
+
+	if !dara.IsNil(request.SoftwareName) {
+		body["SoftwareName"] = request.SoftwareName
+	}
+
+	if !dara.IsNil(request.SoftwarePkgName) {
+		body["SoftwarePkgName"] = request.SoftwarePkgName
+	}
+
+	if !dara.IsNil(request.SoftwarePkgSize) {
+		body["SoftwarePkgSize"] = request.SoftwarePkgSize
+	}
+
+	if !dara.IsNil(request.SoftwareUrl) {
+		body["SoftwareUrl"] = request.SoftwareUrl
+	}
+
+	if !dara.IsNil(request.SoftwareVersion) {
+		body["SoftwareVersion"] = request.SoftwareVersion
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSoftwarelibVersion"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSoftwarelibVersionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a user group for your Alibaba Cloud account.
 //
 // Description:
@@ -6526,6 +6733,94 @@ func (client *Client) ListNacUserCertWithContext(ctx context.Context, request *L
 
 // Summary:
 //
+// Queries administrator operation audit logs in batches.
+//
+// Description:
+//
+// - StartTime and EndTime are UNIX timestamps in seconds. StartTime must be earlier than EndTime. The interval between them cannot exceed 30 days, and StartTime cannot be more than 31 days before the current time.
+//
+// - If OperationStatus is not specified, only successful operation records are returned.
+//
+// - Results are sorted by operation time in descending order.
+//
+// - The return values of OperationFunc, OperationPage, and OperationType are localized based on the request language.
+//
+// - The values of filter parameters cannot contain single quotation marks (\\"), double quotation marks ("), or backslashes (\\\\). Otherwise, an InvalidParameter error is returned.
+//
+// @param request - ListOperationAuditLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOperationAuditLogsResponse
+func (client *Client) ListOperationAuditLogsWithContext(ctx context.Context, request *ListOperationAuditLogsRequest, runtime *dara.RuntimeOptions) (_result *ListOperationAuditLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.EventType) {
+		query["EventType"] = request.EventType
+	}
+
+	if !dara.IsNil(request.OperationFunc) {
+		query["OperationFunc"] = request.OperationFunc
+	}
+
+	if !dara.IsNil(request.OperationStatus) {
+		query["OperationStatus"] = request.OperationStatus
+	}
+
+	if !dara.IsNil(request.OperationType) {
+		query["OperationType"] = request.OperationType
+	}
+
+	if !dara.IsNil(request.OperatorId) {
+		query["OperatorId"] = request.OperatorId
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListOperationAuditLogs"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListOperationAuditLogsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries policies for private access applications in your Alibaba Cloud account in batches.
 //
 // @param request - ListPolicesForPrivateAccessApplicationRequest
@@ -7344,6 +7639,86 @@ func (client *Client) ListSoftwareForUserDeviceWithContext(ctx context.Context, 
 
 // Summary:
 //
+// Queries software in the software library in batches.
+//
+// Description:
+//
+// - Use CurrentPage and PageSize for pagination. NextToken and MaxResults do not take effect.
+//
+// - SoftwareName supports fuzzy match.
+//
+// - The Versions field (software version list) is not returned in the response. To query software versions, call [ListSoftwarelibVersion](~~ListSoftwarelibVersion~~).
+//
+// @param request - ListSoftwarelibSoftwareRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSoftwarelibSoftwareResponse
+func (client *Client) ListSoftwarelibSoftwareWithContext(ctx context.Context, request *ListSoftwarelibSoftwareRequest, runtime *dara.RuntimeOptions) (_result *ListSoftwarelibSoftwareResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClassifyId) {
+		query["ClassifyId"] = request.ClassifyId
+	}
+
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Os) {
+		query["Os"] = request.Os
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SoftwareName) {
+		query["SoftwareName"] = request.SoftwareName
+	}
+
+	if !dara.IsNil(request.SourceType) {
+		query["SourceType"] = request.SourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSoftwarelibSoftware"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSoftwarelibSoftwareResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Batch query tags for private network access applications under the current Alibaba Cloud account.
 //
 // @param request - ListTagsForPrivateAccessApplicationRequest
@@ -7964,7 +8339,7 @@ func (client *Client) ListVirusScanScheduledStrategiesWithContext(ctx context.Co
 
 // Summary:
 //
-// 批量查询病毒扫描任务的状态
+// Queries the execution progress of specified virus scan tasks on user terminal devices in batches.
 //
 // @param request - ListVirusScanTaskStatusesRequest
 //
@@ -8004,7 +8379,7 @@ func (client *Client) ListVirusScanTaskStatusesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 批量查询病毒扫描任务统计数据
+// Queries the detection result statistics of specified virus scan tasks in batches.
 //
 // @param request - ListVirusScanTaskSummaryRequest
 //
@@ -8044,7 +8419,7 @@ func (client *Client) ListVirusScanTaskSummaryWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 批量查询病毒扫描任务
+// Queries instant virus scan tasks under the current Alibaba Cloud account by paging.
 //
 // @param request - ListVirusScanTasksRequest
 //
