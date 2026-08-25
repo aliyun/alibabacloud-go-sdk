@@ -22,7 +22,7 @@ type UploadDataSyncForLLMRequest struct {
 	//
 	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// The complete JSON string. For more information about the content, see the following details.
+	// The complete JSON string. For more information, see the following details.
 	//
 	// This parameter is required.
 	//

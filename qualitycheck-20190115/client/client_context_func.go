@@ -3589,6 +3589,10 @@ func (client *Client) ListRulesV4WithContext(ctx context.Context, request *ListR
 		body["Status"] = request.Status
 	}
 
+	if !dara.IsNil(request.TargetType) {
+		body["TargetType"] = request.TargetType
+	}
+
 	if !dara.IsNil(request.Type) {
 		body["Type"] = request.Type
 	}
@@ -5628,7 +5632,7 @@ func (client *Client) UploadDataSyncWithContext(ctx context.Context, request *Up
 //
 // Description:
 //
-// Pushes text data in a specific format to Smart Conversation Analysis (SCA) for real-time quality inspection based on user-specified rules, and synchronously returns the analysis results. Compared with uploaded text quality inspection, which typically uploads the complete conversation text after a conversation ends, real-time text quality inspection allows you to push text to SCA for analysis after one role finishes one or more sentences, providing higher real-time performance. Special notes:
+// Pushes text data in a specific format to Smart Conversation Analysis (SCA) for real-time quality inspection based on user-specified rules, and synchronously returns the analysis results. Compared with uploaded text quality inspection, which typically uploads the complete conversation text after a conversation ends, real-time text quality inspection allows you to push text to SCA for analysis after one or more sentences are spoken by a role, providing higher real-time performance. Special notes:
 //
 // If the pushed text is a single sentence from one role, some operators in the rules may not work due to the lack of conversation context, such as context repetition check, interruption check, and call silence check.
 //

@@ -51,6 +51,8 @@ type iListRulesV4Request interface {
 	GetStartTime() *string
 	SetStatus(v int32) *ListRulesV4Request
 	GetStatus() *int32
+	SetTargetType(v string) *ListRulesV4Request
+	GetTargetType() *string
 	SetType(v int32) *ListRulesV4Request
 	GetType() *int32
 	SetTypeName(v string) *ListRulesV4Request
@@ -181,7 +183,8 @@ type ListRulesV4Request struct {
 	// example:
 	//
 	// 2
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	// Type value of the rule category that the rule belongs to.
 	//
 	// example:
@@ -306,6 +309,10 @@ func (s *ListRulesV4Request) GetStatus() *int32 {
 	return s.Status
 }
 
+func (s *ListRulesV4Request) GetTargetType() *string {
+	return s.TargetType
+}
+
 func (s *ListRulesV4Request) GetType() *int32 {
 	return s.Type
 }
@@ -428,6 +435,11 @@ func (s *ListRulesV4Request) SetStartTime(v string) *ListRulesV4Request {
 
 func (s *ListRulesV4Request) SetStatus(v int32) *ListRulesV4Request {
 	s.Status = &v
+	return s
+}
+
+func (s *ListRulesV4Request) SetTargetType(v string) *ListRulesV4Request {
+	s.TargetType = &v
 	return s
 }
 

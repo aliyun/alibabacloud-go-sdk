@@ -120,6 +120,7 @@ type AgentInfoInstructionTypeParam struct {
 	FieldsParam            *AgentInfoInstructionTypeParamFieldsParam            `json:"FieldsParam,omitempty" xml:"FieldsParam,omitempty" type:"Struct"`
 	ServiceInspectionParam *AgentInfoInstructionTypeParamServiceInspectionParam `json:"ServiceInspectionParam,omitempty" xml:"ServiceInspectionParam,omitempty" type:"Struct"`
 	TagCategoryParam       *AgentInfoInstructionTypeParamTagCategoryParam       `json:"TagCategoryParam,omitempty" xml:"TagCategoryParam,omitempty" type:"Struct"`
+	TagTreeLevelParam      *AgentInfoInstructionTypeParamTagTreeLevelParam      `json:"TagTreeLevelParam,omitempty" xml:"TagTreeLevelParam,omitempty" type:"Struct"`
 }
 
 func (s AgentInfoInstructionTypeParam) String() string {
@@ -146,6 +147,10 @@ func (s *AgentInfoInstructionTypeParam) GetTagCategoryParam() *AgentInfoInstruct
 	return s.TagCategoryParam
 }
 
+func (s *AgentInfoInstructionTypeParam) GetTagTreeLevelParam() *AgentInfoInstructionTypeParamTagTreeLevelParam {
+	return s.TagTreeLevelParam
+}
+
 func (s *AgentInfoInstructionTypeParam) SetCustomPromptParam(v *AgentInfoInstructionTypeParamCustomPromptParam) *AgentInfoInstructionTypeParam {
 	s.CustomPromptParam = v
 	return s
@@ -163,6 +168,11 @@ func (s *AgentInfoInstructionTypeParam) SetServiceInspectionParam(v *AgentInfoIn
 
 func (s *AgentInfoInstructionTypeParam) SetTagCategoryParam(v *AgentInfoInstructionTypeParamTagCategoryParam) *AgentInfoInstructionTypeParam {
 	s.TagCategoryParam = v
+	return s
+}
+
+func (s *AgentInfoInstructionTypeParam) SetTagTreeLevelParam(v *AgentInfoInstructionTypeParamTagTreeLevelParam) *AgentInfoInstructionTypeParam {
+	s.TagTreeLevelParam = v
 	return s
 }
 
@@ -184,6 +194,11 @@ func (s *AgentInfoInstructionTypeParam) Validate() error {
 	}
 	if s.TagCategoryParam != nil {
 		if err := s.TagCategoryParam.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.TagTreeLevelParam != nil {
+		if err := s.TagTreeLevelParam.Validate(); err != nil {
 			return err
 		}
 	}
@@ -513,5 +528,84 @@ func (s *AgentInfoInstructionTypeParamTagCategoryParamNameDescPairList) SetValue
 }
 
 func (s *AgentInfoInstructionTypeParamTagCategoryParamNameDescPairList) Validate() error {
+	return dara.Validate(s)
+}
+
+type AgentInfoInstructionTypeParamTagTreeLevelParam struct {
+	TagIds        []*int64                                                       `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	TagTreeLevels []*AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels `json:"TagTreeLevels,omitempty" xml:"TagTreeLevels,omitempty" type:"Repeated"`
+}
+
+func (s AgentInfoInstructionTypeParamTagTreeLevelParam) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AgentInfoInstructionTypeParamTagTreeLevelParam) GoString() string {
+	return s.String()
+}
+
+func (s *AgentInfoInstructionTypeParamTagTreeLevelParam) GetTagIds() []*int64 {
+	return s.TagIds
+}
+
+func (s *AgentInfoInstructionTypeParamTagTreeLevelParam) GetTagTreeLevels() []*AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels {
+	return s.TagTreeLevels
+}
+
+func (s *AgentInfoInstructionTypeParamTagTreeLevelParam) SetTagIds(v []*int64) *AgentInfoInstructionTypeParamTagTreeLevelParam {
+	s.TagIds = v
+	return s
+}
+
+func (s *AgentInfoInstructionTypeParamTagTreeLevelParam) SetTagTreeLevels(v []*AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels) *AgentInfoInstructionTypeParamTagTreeLevelParam {
+	s.TagTreeLevels = v
+	return s
+}
+
+func (s *AgentInfoInstructionTypeParamTagTreeLevelParam) Validate() error {
+	if s.TagTreeLevels != nil {
+		for _, item := range s.TagTreeLevels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels struct {
+	Prompt     *string  `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	TagTreeIds []*int64 `json:"TagTreeIds,omitempty" xml:"TagTreeIds,omitempty" type:"Repeated"`
+}
+
+func (s AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels) GoString() string {
+	return s.String()
+}
+
+func (s *AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels) GetPrompt() *string {
+	return s.Prompt
+}
+
+func (s *AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels) GetTagTreeIds() []*int64 {
+	return s.TagTreeIds
+}
+
+func (s *AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels) SetPrompt(v string) *AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels {
+	s.Prompt = &v
+	return s
+}
+
+func (s *AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels) SetTagTreeIds(v []*int64) *AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels {
+	s.TagTreeIds = v
+	return s
+}
+
+func (s *AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels) Validate() error {
 	return dara.Validate(s)
 }
