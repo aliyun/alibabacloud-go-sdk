@@ -117,8 +117,11 @@ func (s *GetAgentTaskResultResponseBody) Validate() error {
 }
 
 type GetAgentTaskResultResponseBodyData struct {
-	Dialogues    []*GetAgentTaskResultResponseBodyDataDialogues `json:"Dialogues,omitempty" xml:"Dialogues,omitempty" type:"Repeated"`
-	ErrorMessage *string                                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Dialogues []*GetAgentTaskResultResponseBodyDataDialogues `json:"Dialogues,omitempty" xml:"Dialogues,omitempty" type:"Repeated"`
+	// example:
+	//
+	// xxxx
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The request ID returned by the large language model service.
 	//
 	// example:
@@ -260,13 +263,34 @@ func (s *GetAgentTaskResultResponseBodyData) Validate() error {
 }
 
 type GetAgentTaskResultResponseBodyDataDialogues struct {
-	Begin        *int64  `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	EmotionValue *int32  `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
-	End          *int64  `json:"End,omitempty" xml:"End,omitempty"`
-	HourMinSec   *string `json:"HourMinSec,omitempty" xml:"HourMinSec,omitempty"`
-	Role         *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	SpeechRate   *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	Words        *string `json:"Words,omitempty" xml:"Words,omitempty"`
+	// example:
+	//
+	// 980
+	Begin *int64 `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// example:
+	//
+	// 7
+	EmotionValue *int32 `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
+	// example:
+	//
+	// 80000
+	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// 00:08
+	HourMinSec *string `json:"HourMinSec,omitempty" xml:"HourMinSec,omitempty"`
+	// example:
+	//
+	// 客服
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// 200
+	SpeechRate *int32 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	// example:
+	//
+	// 你好有什么可以帮您
+	Words *string `json:"Words,omitempty" xml:"Words,omitempty"`
 }
 
 func (s GetAgentTaskResultResponseBodyDataDialogues) String() string {
@@ -347,7 +371,7 @@ func (s *GetAgentTaskResultResponseBodyDataDialogues) Validate() error {
 type GetAgentTaskResultResponseBodyDataResponse struct {
 	// The result of the custom prompt.
 	CustomerPromptResponse *GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse `json:"CustomerPromptResponse,omitempty" xml:"CustomerPromptResponse,omitempty" type:"Struct"`
-	// The property extraction result.
+	// The attribute extraction result.
 	FieldResponse         *GetAgentTaskResultResponseBodyDataResponseFieldResponse         `json:"FieldResponse,omitempty" xml:"FieldResponse,omitempty" type:"Struct"`
 	MultiLevelTagResponse *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponse `json:"MultiLevelTagResponse,omitempty" xml:"MultiLevelTagResponse,omitempty" type:"Struct"`
 	// The service quality inspection result.
@@ -458,7 +482,7 @@ type GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse struct {
 	//
 	// example:
 	//
-	// 175/XL the fabric feels very comfortable, looks slim when worn, great clothes super good-looking, quality and feel are top-notch, very satisfied with this purchase.
+	// 175/XL the fabric feels very comfortable, looks slim when worn, great clothes super good-looking, quality and feel are top-notch, very satisfied with this purchase
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
@@ -484,7 +508,7 @@ func (s *GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse) Valid
 }
 
 type GetAgentTaskResultResponseBodyDataResponseFieldResponse struct {
-	// The list of properties.
+	// The list of attributes.
 	FieldVoList []*GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList `json:"FieldVoList,omitempty" xml:"FieldVoList,omitempty" type:"Repeated"`
 }
 
@@ -519,7 +543,7 @@ func (s *GetAgentTaskResultResponseBodyDataResponseFieldResponse) Validate() err
 }
 
 type GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList struct {
-	// The property name.
+	// The attribute name.
 	//
 	// example:
 	//
@@ -531,9 +555,9 @@ type GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList struct {
 	//
 	// example:
 	//
-	// Determined based on the first sentence of the agent.
+	// Determined based on the first sentence of the agent
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
-	// The property value.
+	// The attribute value.
 	//
 	// example:
 	//
@@ -914,9 +938,9 @@ type GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponseServiceI
 	//
 	// example:
 	//
-	// Service attitude.
+	// Service attitude
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// Indicates whether the label is matched.
+	// Indicates whether the tag is matched.
 	//
 	// example:
 	//
@@ -928,7 +952,7 @@ type GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponseServiceI
 	//
 	// example:
 	//
-	// Determined based on the first sentence of the agent.
+	// Determined based on the first sentence of the agent
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 }
 
@@ -981,7 +1005,7 @@ func (s *GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponseServ
 }
 
 type GetAgentTaskResultResponseBodyDataResponseTagCategoryResponse struct {
-	// The list of labels.
+	// The list of tags.
 	TagCategoryVoList []*GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategoryVoList `json:"TagCategoryVoList,omitempty" xml:"TagCategoryVoList,omitempty" type:"Repeated"`
 }
 
@@ -1016,13 +1040,13 @@ func (s *GetAgentTaskResultResponseBodyDataResponseTagCategoryResponse) Validate
 }
 
 type GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategoryVoList struct {
-	// The label dimension.
+	// The tag dimension.
 	//
 	// example:
 	//
-	// Customer intent.
+	// Customer intent
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// Indicates whether the label is matched.
+	// Indicates whether the tag is matched.
 	//
 	// example:
 	//
@@ -1034,7 +1058,7 @@ type GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategoryVoL
 	//
 	// example:
 	//
-	// Determined based on the first sentence of the agent.
+	// Determined based on the first sentence of the agent
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 	// The list of matched labels.
 	ResultLabels []*string `json:"ResultLabels,omitempty" xml:"ResultLabels,omitempty" type:"Repeated"`
@@ -1152,9 +1176,18 @@ func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse) Validate(
 
 type GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue struct {
 	Additions *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions `json:"Additions,omitempty" xml:"Additions,omitempty" type:"Struct"`
-	Begin     *int64                                                                         `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	End       *int64                                                                         `json:"End,omitempty" xml:"End,omitempty"`
-	Words     *string                                                                        `json:"Words,omitempty" xml:"Words,omitempty"`
+	// example:
+	//
+	// 443
+	Begin *int64 `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// example:
+	//
+	// 1767492840000
+	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
+	// example:
+	//
+	// 不清楚
+	Words *string `json:"Words,omitempty" xml:"Words,omitempty"`
 }
 
 func (s GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue) String() string {
@@ -1211,16 +1244,46 @@ func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue) V
 }
 
 type GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions struct {
-	Age                 *string  `json:"Age,omitempty" xml:"Age,omitempty"`
-	AgeGroup            *string  `json:"AgeGroup,omitempty" xml:"AgeGroup,omitempty"`
-	AgeScore            *float32 `json:"AgeScore,omitempty" xml:"AgeScore,omitempty"`
+	// example:
+	//
+	// 38
+	Age *string `json:"Age,omitempty" xml:"Age,omitempty"`
+	// example:
+	//
+	// 中年
+	AgeGroup *string `json:"AgeGroup,omitempty" xml:"AgeGroup,omitempty"`
+	// example:
+	//
+	// 0.9
+	AgeScore *float32 `json:"AgeScore,omitempty" xml:"AgeScore,omitempty"`
+	// example:
+	//
+	// 0.6
 	BestVoiceprintScore *float32 `json:"BestVoiceprintScore,omitempty" xml:"BestVoiceprintScore,omitempty"`
-	Emotion             *string  `json:"Emotion,omitempty" xml:"Emotion,omitempty"`
-	EmotionScore        *float32 `json:"EmotionScore,omitempty" xml:"EmotionScore,omitempty"`
-	Gender              *string  `json:"Gender,omitempty" xml:"Gender,omitempty"`
-	GenderScore         *float32 `json:"GenderScore,omitempty" xml:"GenderScore,omitempty"`
-	IsKnownVoiceprint   *bool    `json:"IsKnownVoiceprint,omitempty" xml:"IsKnownVoiceprint,omitempty"`
-	Speaker             *string  `json:"Speaker,omitempty" xml:"Speaker,omitempty"`
+	// example:
+	//
+	// 中立/neutral
+	Emotion *string `json:"Emotion,omitempty" xml:"Emotion,omitempty"`
+	// example:
+	//
+	// 0.9
+	EmotionScore *float32 `json:"EmotionScore,omitempty" xml:"EmotionScore,omitempty"`
+	// example:
+	//
+	// 女
+	Gender *string `json:"Gender,omitempty" xml:"Gender,omitempty"`
+	// example:
+	//
+	// 0.8
+	GenderScore *float32 `json:"GenderScore,omitempty" xml:"GenderScore,omitempty"`
+	// example:
+	//
+	// true
+	IsKnownVoiceprint *bool `json:"IsKnownVoiceprint,omitempty" xml:"IsKnownVoiceprint,omitempty"`
+	// example:
+	//
+	// 12
+	Speaker *string `json:"Speaker,omitempty" xml:"Speaker,omitempty"`
 }
 
 func (s GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions) String() string {
@@ -1326,7 +1389,13 @@ func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdd
 }
 
 type GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -1361,8 +1430,11 @@ func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors) Val
 }
 
 type GetAgentTaskResultResponseBodyDataUsage struct {
-	InputTokens    *string `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
-	OutputTokens   *string `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	InputTokens  *string `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	OutputTokens *string `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 0
 	TotalTokens    *string `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
 	TymxPlusCount  *string `json:"TymxPlusCount,omitempty" xml:"TymxPlusCount,omitempty"`
 	TymxTurboCount *string `json:"TymxTurboCount,omitempty" xml:"TymxTurboCount,omitempty"`
