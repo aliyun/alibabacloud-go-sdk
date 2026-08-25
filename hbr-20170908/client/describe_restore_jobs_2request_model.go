@@ -22,13 +22,15 @@ type iDescribeRestoreJobs2Request interface {
 }
 
 type DescribeRestoreJobs2Request struct {
+	// The edition. Valid values: `BASIC` and `STANDARD`. Default value: `STANDARD`.
+	//
 	// example:
 	//
 	// STANDARD
 	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// The keys in the filter.
+	// The filter conditions.
 	Filters []*DescribeRestoreJobs2RequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -40,17 +42,19 @@ type DescribeRestoreJobs2Request struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the data source. Valid values:
+	// The data source type. Valid values:
 	//
-	// 	- **ECS_FILE**: Elastic Compute Service (ECS) files
+	// - **ECS_FILE**: Restores ECS files.
 	//
-	// 	- **OSS**: Object Storage Service (OSS) buckets
+	// - **OSS**: Restores OSS objects.
 	//
-	// 	- **NAS**: Apsara File Storage NAS file systems
+	// - **NAS**: Restores NAS files.
 	//
-	// 	- **OTS_TABLE**: Tablestore instances
+	// - **COMMON_FILE_SYSTEM**: Restores data to a CPFS file system.
 	//
-	// 	- **UDM_ECS_ROLLBACK**: ECS instances
+	// - **OTS_TABLE**: Restores an OTS table.
+	//
+	// - **UDM_ECS_ROLLBACK**: Restores an entire ECS instance.
 	//
 	// example:
 	//
@@ -125,55 +129,55 @@ func (s *DescribeRestoreJobs2Request) Validate() error {
 }
 
 type DescribeRestoreJobs2RequestFilters struct {
-	// The key in the filter. Valid values:
+	// The filter key. Valid values:
 	//
-	// 	- **RegionId**: the region ID
+	// - **RegionId**: region ID
 	//
-	// 	- **PlanId**: the ID of a backup plan
+	// - **PlanId**: backup plan ID
 	//
-	// 	- **JobId**: the ID of a backup job
+	// - **JobId**: backup job ID
 	//
-	// 	- **VaultId**: the ID of a backup vault
+	// - **VaultId**: vault ID
 	//
-	// 	- **InstanceId**: the ID of an ECS instance
+	// - **InstanceId**: ECS instance ID
 	//
-	// 	- **Bucket**: the name of an OSS bucket
+	// - **Bucket**: OSS bucket name
 	//
-	// 	- **FileSystemId**: the ID of a file system
+	// - **FileSystemId**: file system ID
 	//
-	// 	- **Status**: the status of a backup job
+	// - **Status**: job status
 	//
-	// 	- **CompleteTime**: the end time of a backup job
+	// - **CompleteTime**: completion time
 	//
 	// example:
 	//
 	// VaultId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The matching method. Default value: IN. This parameter specifies the operator that you want to use to match a key and a value in the filter. Valid values:
+	// The matching method. The default value is IN. Valid values:
 	//
-	// 	- **EQUAL**: equal to
+	// - **EQUAL**: Equal to
 	//
-	// 	- **NOT_EQUAL**: not equal to
+	// - **NOT_EQUAL**: Not equal to
 	//
-	// 	- **GREATER_THAN**: greater than
+	// - **GREATER_THAN**: Greater than
 	//
-	// 	- **GREATER_THAN_OR_EQUAL**: greater than or equal to
+	// - **GREATER_THAN_OR_EQUAL**: Greater than or equal to
 	//
-	// 	- **LESS_THAN**: less than
+	// - **LESS_THAN**: Less than
 	//
-	// 	- **LESS_THAN_OR_EQUAL**: less than or equal to
+	// - **LESS_THAN_OR_EQUAL**: Less than or equal to
 	//
-	// 	- **BETWEEN**: specifies a JSON array as a range. The results must fall within the range in the `[Minimum value,Maximum value]` format.
+	// - **BETWEEN**: The value is within a specified range. The `Values` parameter must be a JSON array in the `[min, max]` format.
 	//
-	// 	- **IN**: specifies an array as a collection. The results must fall within the collection.
+	// - **IN**: The value is in a specified set. The `Values` parameter must be an array.
 	//
-	// > If you specify the **CompleteTime*	- parameter as a key to query backup jobs, you cannot use the IN operator to perform a match.
+	// > The IN operator is not supported when `Key` is **CompleteTime**.
 	//
 	// example:
 	//
 	// IN
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The values that you want to match in the filter.
+	// An array of values for the specified filter key.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

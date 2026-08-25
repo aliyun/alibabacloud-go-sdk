@@ -24,26 +24,38 @@ type iDescribeDataSourcesRequest interface {
 }
 
 type DescribeDataSourcesRequest struct {
+	// The client group ID used to access the data source.
+	//
 	// example:
 	//
 	// cl-0003jyv******fsku5m
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// ds-000******2nqeo
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The data source name.
+	//
 	// example:
 	//
 	// MyLocalNas
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// The data source type.
+	//
 	// example:
 	//
 	// COMMON_NAS
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of data sources to return on each page.
+	//
 	// example:
 	//
 	// 10

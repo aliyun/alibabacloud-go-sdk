@@ -22,35 +22,35 @@ type iCreateBackupPlanResponseBody interface {
 }
 
 type CreateBackupPlanResponseBody struct {
-	// Return code, 200 indicates success.
+	// The response code. The value 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Description of the return message, usually returns \\"successful\\" upon success, and corresponding error messages in case of failure.
+	// The returned message. The value "successful" is returned for a success response. An error message is returned for a failure response.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Backup plan ID.
+	// The backup plan ID.
 	//
 	// example:
 	//
 	// plan-*********************
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the request was successful.
+	// Indicates whether the request was successful.
 	//
-	// - true: Success.
+	// - true: The request was successful.
 	//
-	// - false: Failure.
+	// - false: The request failed.
 	//
 	// example:
 	//

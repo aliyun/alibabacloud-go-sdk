@@ -36,54 +36,161 @@ type iAddDataSourceRequest interface {
 }
 
 type AddDataSourceRequest struct {
+	// The ID of the client group used to access the data source.
+	//
 	// example:
 	//
 	// cl-0004i0nlngorvgjpl7ck
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The connection information for the data source. Examples:
+	//
+	// - Local NAS data source:
+	//
+	//   {
+	//
+	//   "dataServerAddresses": [
+	//
+	//   {
+	//
+	//   "host": "123.123.123.123",
+	//
+	//   "port": "8080"
+	//
+	//   }
+	//
+	//   ],
+	//
+	//   "sharePath": "/share",
+	//
+	//   "mountOptions": "vers=3",
+	//
+	//   "fileSystemType": "nfs"
+	//
+	//   }
+	//
+	// - CPFS AI-Computing Edition data source:
+	//
+	//   {"vpcMountTarget":"cpfs-010wn\\*\\*\\*wy-vpc-ta\\*\\*\\*8.cn-shanghai.cpfs.aliyuncs.com","sharePath":"/"}
+	//
+	// - Other large-scale file system data source:
+	//
+	//   {"path":"/mnt"}
+	//
 	// example:
 	//
-	// {\\"dataServerAddresses\\":[{\\"host\\":\\"111\\",\\"port\\":\\"\\"}],\\"sharePath\\":\\"/share\\",\\"mountOptions\\":\\"\\",\\"fileSystemType\\":\\"nfs\\"}
+	// {
+	//
+	//     "dataServerAddresses": [
+	//
+	//         {
+	//
+	//             "host": "123.123.123.123",
+	//
+	//             "port": "8080"
+	//
+	//         }
+	//
+	//     ],
+	//
+	//     "sharePath": "/share",
+	//
+	//     "mountOptions": "vers=3",
+	//
+	//     "fileSystemType": "nfs"
+	//
+	// }
 	ConnectionInfo *string `json:"ConnectionInfo,omitempty" xml:"ConnectionInfo,omitempty"`
+	// The access credential for the data source. This parameter is required for local NAS (SMB) data sources and for OSS- or S3-compatible data sources. Examples:
+	//
+	// - Local NAS data source (SMB protocol):
+	//
+	//   {
+	//
+	//   "mountUsername": "\\*\\*\\*\\*\\*",
+	//
+	//   "mountPassword": "\\*\\*\\*\\*\\*"
+	//
+	//   }
+	//
+	// - OSS-compatible or S3-compatible data source:
+	//
+	//   {
+	//
+	//   "accessKeyId": "\\*\\*\\*\\*\\*",
+	//
+	//   "accessKeySecret": "\\*\\*\\*\\*\\*"
+	//
+	//   }
+	//
 	// example:
 	//
-	// {}
+	// {
+	//
+	//     "mountUsername": "*****",
+	//
+	//     "mountPassword": "*****"
+	//
+	// }
 	Credential *string `json:"Credential,omitempty" xml:"Credential,omitempty"`
+	// The name of the data source.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// hbr_detection_source-nas-20250710101315
+	// MyLocalNas
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// The type of the data source.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// COMMON_NAS
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// A filter that specifies the files to exclude. This parameter applies only to data source analysis with the archive feature.
+	//
 	// example:
 	//
-	// ["/var", "/proc"]
+	// ["/home/alice/log"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	// A filter that specifies the files to include. This parameter applies only to data source analysis with the archive feature.
+	//
 	// example:
 	//
-	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
+	// ["/home/alice", "/home/bob"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
+	// The index level. This parameter applies only to data source analysis with the archive feature.
+	//
+	// - `OFF`: No index is created.
+	//
+	// - `META`: A metadata index is created.
+	//
+	// - `ALL`: A full-text index is created. (Deprecated)
+	//
 	// example:
 	//
 	// META
 	IndexLevel *string `json:"IndexLevel,omitempty" xml:"IndexLevel,omitempty"`
+	// The options for data source analysis. This parameter applies only to data source analysis with the archive feature.
+	//
 	// example:
 	//
-	// {\\"includes\\":[],\\"excludes\\":[],\\"conflictPolicy\\":\\"OVERWRITE_EXISTING\\"}
-	Options *string   `json:"Options,omitempty" xml:"Options,omitempty"`
-	Path    []*string `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
+	// {}
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// A list of paths for data source analysis. This parameter applies only to data source analysis with the archive feature.
+	Path []*string `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
+	// The execution schedule. This parameter applies only to data source analysis with the archive feature. The format `I|{startTime}|{interval}` specifies a task that runs at a defined interval starting from `{startTime}`. `{interval}` is an ISO 8601 duration. For example, `PT1H` specifies a one-hour interval, and `P1D` specifies a one-day interval.
+	//
 	// example:
 	//
 	// I|1729493847|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	// The rate limiting settings. This parameter applies only to data source analysis with the archive feature.
+	//
 	// example:
 	//
-	// 0:24:5120
+	// 6:21:10240
 	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
 }
 

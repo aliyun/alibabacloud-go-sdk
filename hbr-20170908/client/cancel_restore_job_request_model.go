@@ -18,6 +18,8 @@ type iCancelRestoreJobRequest interface {
 }
 
 type CancelRestoreJobRequest struct {
+	// The edition. Valid values: BASIC and STANDARD. The default value is STANDARD.
+	//
 	// example:
 	//
 	// STANDARD
@@ -30,7 +32,7 @@ type CancelRestoreJobRequest struct {
 	//
 	// r-*********************
 	RestoreId *string `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
-	// The ID of the backup vault.
+	// The ID of the backup repository.
 	//
 	// example:
 	//

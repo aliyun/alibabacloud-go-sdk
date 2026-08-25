@@ -16,9 +16,9 @@ type iCreatePolicyBindingsShrinkRequest interface {
 }
 
 type CreatePolicyBindingsShrinkRequest struct {
-	// The data sources that you want to bind to the backup policy.
+	// The list of policy bindings.
 	PolicyBindingListShrink *string `json:"PolicyBindingList,omitempty" xml:"PolicyBindingList,omitempty"`
-	// The ID of the backup policy.
+	// The policy ID.
 	//
 	// example:
 	//

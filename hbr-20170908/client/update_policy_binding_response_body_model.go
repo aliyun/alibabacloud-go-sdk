@@ -20,13 +20,13 @@ type iUpdatePolicyBindingResponseBody interface {
 }
 
 type UpdatePolicyBindingResponseBody struct {
-	// The HTTP status code. The status code 200 indicates that the request was successful.
+	// The return code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	// The returned message. The value "successful" is returned for successful requests. An error message is returned for failed requests.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type UpdatePolicyBindingResponseBody struct {
 	//
 	// B6F24C46-54B9-519B-9AB8-A8988D705E67
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request was successful.
 	//
-	// 	- true
+	// - true: Successful.
 	//
-	// 	- false
+	// - false: Failed.
 	//
 	// example:
 	//

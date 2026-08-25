@@ -18,16 +18,26 @@ type iDeleteCrossAccountRequest interface {
 }
 
 type DeleteCrossAccountRequest struct {
+	// The name of the RAM role of the account to back up. This parameter is required when you configure cross-account backup by assuming a RAM role.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hbrcrossrole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	// The type of cross-account backup. Valid values:
+	//
+	// - **CROSS_ACCOUNT**: Cross-account backup is configured by assuming a RAM role.
+	//
+	// - **CROSS_ACCOUNT_BY_RD**: Cross-account backup is configured based on a resource directory.
+	//
 	// example:
 	//
 	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	// The UID of the account to back up.
+	//
 	// This parameter is required.
 	//
 	// example:

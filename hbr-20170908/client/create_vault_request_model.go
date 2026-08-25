@@ -30,29 +30,34 @@ type iCreateVaultRequest interface {
 }
 
 type CreateVaultRequest struct {
-	// The description of the backup vault. The description must be 0 to 255 characters in length.
+	// The description of the backup vault. The description can be 0 to 255 characters in length.
 	//
 	// example:
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The method that is used to encrypt the source data. This parameter is valid only if you set the VaultType parameter to STANDARD or OTS_BACKUP. Valid values:
+	// The encryption type of the source data. This parameter is valid only if you set VaultType to STANDARD or OTS_BACKUP. Valid values:
 	//
-	// 	- **HBR_PRIVATE**: The source data is encrypted by using the built-in encryption method of Hybrid Backup Recovery (HBR).
+	// - **HBR_PRIVATE**: The backup vault is encrypted using the built-in encryption method of Cloud Backup.
 	//
-	// 	- **KMS**: The source data is encrypted by using Key Management Service (KMS).
+	// - **KMS**: The backup vault is encrypted using a customer master key (CMK) from Key Management Service (KMS).
 	//
 	// example:
 	//
 	// KMS
 	EncryptType *string `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	// The customer master key (CMK) created in KMS or the alias of the key. This parameter is required only if you set the EncryptType parameter to KMS.
+	// The ID or alias of the KMS key. This parameter is required only if you set EncryptType to KMS.
 	//
 	// example:
 	//
 	// alias/yzs-hhht
-	KmsKeyId    *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	Replication *bool   `json:"Replication,omitempty" xml:"Replication,omitempty"`
+	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// Specifies whether to create a replication vault.
+	//
+	// example:
+	//
+	// true
+	Replication *bool `json:"Replication,omitempty" xml:"Replication,omitempty"`
 	// The name of the backup vault. The name must be 1 to 64 characters in length.
 	//
 	// This parameter is required.
@@ -61,7 +66,7 @@ type CreateVaultRequest struct {
 	//
 	// backupvaultname
 	VaultName *string `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
-	// The ID of the region where the backup vault resides.
+	// The region ID of the backup vault.
 	//
 	// This parameter is required.
 	//
@@ -69,15 +74,15 @@ type CreateVaultRequest struct {
 	//
 	// cn-shanghai
 	VaultRegionId *string `json:"VaultRegionId,omitempty" xml:"VaultRegionId,omitempty"`
-	// The storage type of the backup vault.
+	// The storage class of the backup vault.
 	//
-	// 	- **STANDARD**: standard storage.
+	// - **STANDARD**: Standard.
 	//
-	// 	- **ARCHIVE**: This parameter is deprecated.
+	// - **ARCHIVE**: This value is deprecated.
 	//
-	// 	- **COLD_ARCHIVE**: This parameter is deprecated.
+	// - **COLD_ARCHIVE**: This value is deprecated.
 	//
-	// 	- **IA**: This parameter is deprecated.
+	// - **IA**: This value is deprecated.
 	//
 	// example:
 	//
@@ -85,15 +90,15 @@ type CreateVaultRequest struct {
 	VaultStorageClass *string `json:"VaultStorageClass,omitempty" xml:"VaultStorageClass,omitempty"`
 	// The type of the backup vault. Valid values:
 	//
-	// 	- **STANDARD**: standard backup vault
+	// - **STANDARD**: a standard backup vault.
 	//
-	// 	- **OTS_BACKUP**: backup vault for Tablestore
+	// - **OTS_BACKUP**: a Tablestore backup vault.
 	//
 	// example:
 	//
 	// STANDARD
 	VaultType *string `json:"VaultType,omitempty" xml:"VaultType,omitempty"`
-	// Specifies whether to enable the immutable backup feature.
+	// Specifies whether to enable backup locking.
 	//
 	// example:
 	//

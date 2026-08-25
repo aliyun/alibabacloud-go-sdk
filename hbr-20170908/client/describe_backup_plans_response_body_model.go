@@ -29,47 +29,43 @@ type iDescribeBackupPlansResponseBody interface {
 
 type DescribeBackupPlansResponseBody struct {
 	BackupPlans *DescribeBackupPlansResponseBodyBackupPlans `json:"BackupPlans,omitempty" xml:"BackupPlans,omitempty" type:"Struct"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
+	// The return code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	// The returned message. If the request was successful, "successful" is returned. If the request failed, the corresponding error message is returned.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number of the returned page. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page. Valid values: 1 to 99. Default value: 10.
+	// The number of entries per page. Minimum value: 1. Maximum value: 99. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
-	//
-	// 	- true: The call is successful.
-	//
-	// 	- false: The call fails.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of returned backup plans that meet the specified conditions.
+	// The total number of backup plans that meet the specified conditions.
 	//
 	// example:
 	//

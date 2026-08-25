@@ -28,35 +28,35 @@ type iDescribePolicyBindingsResponseBody interface {
 }
 
 type DescribePolicyBindingsResponseBody struct {
-	// Return code, 200 indicates success.
+	// The response code. 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of results per query.
+	// The number of results for each query.
 	//
-	// Range: 10~100. Default: 10.
+	// Valid values: 10 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Description of the return message. A successful response usually returns \\"successful\\", while an error will return a corresponding error message.
+	// The returned message. "successful" is returned for success. An error message is returned for failure.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The token required to fetch the next page of policy and data source bindings.
+	// The token required to obtain the next page of policy-data source bindings.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// List of bound policies.
+	// The list of policy bindings.
 	PolicyBindings []*DescribePolicyBindingsResponseBodyPolicyBindings `json:"PolicyBindings,omitempty" xml:"PolicyBindings,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -64,15 +64,15 @@ type DescribePolicyBindingsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
 	//
-	// - true: Success
+	// - true: Successful.
 	//
-	// - false: Failure
+	// - false: Failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total number of records.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -174,119 +174,133 @@ func (s *DescribePolicyBindingsResponseBody) Validate() error {
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindings struct {
-	// Advanced options.
+	// The advanced options.
 	AdvancedOptions *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions `json:"AdvancedOptions,omitempty" xml:"AdvancedOptions,omitempty" type:"Struct"`
-	// Whether the resource is automatically associated through the backup policy resource tag.
+	// Indicates whether the resource is automatically associated through a backup policy resource tag.
 	//
 	// example:
 	//
 	// false
 	CreatedByTag *bool `json:"CreatedByTag,omitempty" xml:"CreatedByTag,omitempty"`
-	// Creation time. UNIX timestamp, in seconds.
+	// The creation time. UNIX timestamp, in seconds.
 	//
 	// example:
 	//
 	// 1661399570
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The name of the role created in the RAM of the original account for cross-account backup.
+	// The RAM role name created in the source account for cross-account backup.
 	//
 	// example:
 	//
 	// hbrcrossrole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	// Cross-account backup type. Supported values:
+	// The cross-account backup type. Valid values:
 	//
-	// - SELF_ACCOUNT: Backup within the same account
+	// - SELF_ACCOUNT: backup within the current account.
 	//
-	// - CROSS_ACCOUNT: Cross-account backup
+	// - CROSS_ACCOUNT: cross-account backup.
 	//
 	// example:
 	//
 	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
-	// The ID of the original account for cross-account backup.
+	// The ID of the source account for cross-account backup.
 	//
 	// example:
 	//
 	// 1480************
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// Data source ID.
+	// The data source ID.
 	//
 	// example:
 	//
 	// i-8vb************5ly
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// Whether the policy is disbaled for this data source.
+	// Indicates whether the policy is effective for the data source.
 	//
-	// - true: disabled
+	// - true: paused.
 	//
-	// - false: Not disabled
+	// - false: not paused.
 	//
 	// example:
 	//
 	// true
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// This parameter is required only when **SourceType*	- is **ECS_FILE*	- or **File**. It specifies the file types that should not be backed up, and all files of these types will be excluded. Supports up to 255 characters.
+	// This parameter is required only when **SourceType*	- is set to **ECS_FILE*	- or **File**. Specifies the file types to exclude from backup. All files of these types are not backed up. Maximum of 255 characters.
 	//
 	// example:
 	//
 	// [\\"*.doc\\",\\"*.xltm\\"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// Hit tag rules.
+	// The matched tag rules.
 	HitTags []*DescribePolicyBindingsResponseBodyPolicyBindingsHitTags `json:"HitTags,omitempty" xml:"HitTags,omitempty" type:"Repeated"`
-	// This parameter is required only when **SourceType*	- is **ECS_FILE*	- or **File**. It specifies the file types to be backed up, and all files of these types will be backed up. Supports up to 255 characters.
+	// This parameter is required only when **SourceType*	- is set to **ECS_FILE*	- or **File**. Specifies the file types to back up. All files of these types are backed up. Maximum of 255 characters.
 	//
 	// example:
 	//
 	// [\\"*.doc\\",\\"*.xltm\\"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	// Bound policy description.
+	// The description of the policy binding.
 	//
 	// example:
 	//
 	// po-000************eslc-i-uf6************y5g
 	PolicyBindingDescription *string `json:"PolicyBindingDescription,omitempty" xml:"PolicyBindingDescription,omitempty"`
-	// Bound policy ID.
+	// The policy binding ID.
 	//
 	// example:
 	//
 	// pd-000************slc
 	PolicyBindingId *string `json:"PolicyBindingId,omitempty" xml:"PolicyBindingId,omitempty"`
-	// Policy ID.
+	// The policy ID.
 	//
 	// example:
 	//
 	// po-000************56y
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// - When **SourceType*	- is **OSS**, it indicates the prefix to be backed up. If not specified, it means backing up the entire root directory of the Bucket.
+	// - If SourceType is set to **OSS**, this parameter specifies the prefix to back up. If not specified, the entire Bucket root directory is backed up.
 	//
-	// - When **SourceType*	- is **ECS_FILE*	- or **File**, it indicates the file directory to be backed up. If not specified, it means backing up all directories.
+	// - If SourceType is set to **ECS_FILE*	- or **File**, this parameter specifies the file directory to back up. If not specified, all directories are backed up.
 	//
 	// example:
 	//
 	// backup/
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// Data source type, with the value range:
+	// The data source type. Valid values:
 	//
-	// - **UDM_ECS**: indicates ECS full machine backup
+	// - **UDM_ECS**: ECS instance backup.
+	//
+	// - **OSS**: OSS backup.
+	//
+	// - **NAS**: Alibaba Cloud NAS backup.
+	//
+	// - **COMMON_NAS**: On-premises NAS backup.
+	//
+	// - **ECS_FILE**: ECS File Backup Essential Edition.
+	//
+	// - **File**: On-premises file backup.
+	//
+	// - **COMMON_FILE_SYSTEM**: CPFS backup.
+	//
+	// - **OTS**: Tablestore backup.
 	//
 	// example:
 	//
 	// UDM_ECS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is required only when **SourceType*	- is **ECS_FILE*	- or **File**. It specifies the backup traffic control. The format is `{start}{end}{bandwidth}`. Multiple traffic control configurations are separated by commas, and the configured times must not overlap.
+	// This parameter is required only when **SourceType*	- is set to **ECS_FILE*	- or **File**. Specifies the backup traffic control. Format: `{start}{end}{bandwidth}`. Multiple traffic control configurations are separated by delimiters, and configuration times cannot overlap.
 	//
-	// - **start**: Start hour.
+	// - **start**: start hour.
 	//
-	// - **end**: End hour.
+	// - **end**: end hour.
 	//
-	// - **bandwidth**: Limit rate, in KB/s.
+	// - **bandwidth**: rate limit, in KB/s.
 	//
 	// example:
 	//
 	// 0:24:10240
 	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
-	// Update time. UNIX timestamp, in seconds.
+	// The update time. UNIX timestamp, in seconds.
 	//
 	// example:
 	//
@@ -483,15 +497,15 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindings) Validate() error {
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions struct {
-	// Advanced options for large-scale file system backup.
+	// The advanced options for large-scale file system backup.
 	CommonFileSystemDetail *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonFileSystemDetail `json:"CommonFileSystemDetail,omitempty" xml:"CommonFileSystemDetail,omitempty" type:"Struct"`
-	// Advanced options for local NAS.
+	// The advanced options for on-premises NAS.
 	CommonNasDetail *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonNasDetail `json:"CommonNasDetail,omitempty" xml:"CommonNasDetail,omitempty" type:"Struct"`
-	// Advanced options for file backup.
+	// The advanced options for file backup.
 	FileDetail *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsFileDetail `json:"FileDetail,omitempty" xml:"FileDetail,omitempty" type:"Struct"`
-	// Advanced options for OSS backup.
+	// The advanced options for OSS backup.
 	OssDetail *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsOssDetail `json:"OssDetail,omitempty" xml:"OssDetail,omitempty" type:"Struct"`
-	// Advanced options for full machine backup.
+	// The advanced options for ECS instance backup.
 	UdmDetail *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty" type:"Struct"`
 }
 
@@ -578,17 +592,17 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions) Valida
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonFileSystemDetail struct {
-	// Backup shard size (number of files).
+	// The sub-task slice size (number of files).
 	//
 	// example:
 	//
 	// 100000
 	FetchSliceSize *int64 `json:"FetchSliceSize,omitempty" xml:"FetchSliceSize,omitempty"`
-	// Whether to switch to a full backup when an incremental backup fails. Values:
+	// Specifies whether to switch to a full backup when an incremental backup fails. Valid values:
 	//
-	// - **true**: Switch to full backup on failure.
+	// - **true**: Switches to a full backup upon failure.
 	//
-	// - **false**: Do not switch to full backup on failure.
+	// - **false**: Does not switch to a full backup upon failure.
 	//
 	// example:
 	//
@@ -627,29 +641,29 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonFi
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonNasDetail struct {
-	// Backup client ID.
+	// The backup client ID.
 	//
 	// example:
 	//
 	// c-0001eg6mcvjs93f46s2d
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// Client group ID.
+	// The client group ID.
 	//
 	// example:
 	//
 	// cl-000gkcofngi04j6k680a
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Backup slice size (number of files).
+	// The sub-task slice size (number of files).
 	//
 	// example:
 	//
 	// 100000
 	FetchSliceSize *int64 `json:"FetchSliceSize,omitempty" xml:"FetchSliceSize,omitempty"`
-	// Whether to switch to a full backup when an incremental backup fails. Values:
+	// Specifies whether to switch to a full backup when an incremental backup fails. Valid values:
 	//
-	// - **true**: Switch to full backup on failure.
+	// - **true**: Switches to a full backup upon failure.
 	//
-	// - **false**: Do not switch to full backup on failure.
+	// - **false**: Does not switch to a full backup upon failure.
 	//
 	// example:
 	//
@@ -706,21 +720,21 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsCommonNa
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsFileDetail struct {
-	// Whether to use advanced policies. Values:
+	// Specifies whether to use an advanced policy. Valid values:
 	//
-	// - **true**: Use.
+	// - **true**: Used.
 	//
-	// - **false**: Do not use.
+	// - **false**: Not used.
 	//
 	// example:
 	//
 	// false
 	AdvPolicy *bool `json:"AdvPolicy,omitempty" xml:"AdvPolicy,omitempty"`
-	// Whether to enable VSS (Windows) functionality. Values:
+	// Specifies whether to enable the Volume Shadow Copy Service (VSS) feature (Windows). Valid values:
 	//
-	// - **true**: Enable.
+	// - **true**: Enabled.
 	//
-	// - **false**: Disable.
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -759,13 +773,13 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsFileDeta
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsOssDetail struct {
-	// Do not prompt for archive-type objects in the task statistics and failed file list.
+	// Specifies whether to exclude archive objects from task statistics and failed file lists.
 	//
 	// example:
 	//
 	// true
 	IgnoreArchiveObject *bool `json:"IgnoreArchiveObject,omitempty" xml:"IgnoreArchiveObject,omitempty"`
-	// Whether to delete the inventory file after the backup. This is only effective when using an OSS inventory. Supported values:
+	// Specifies whether to delete inventory files after backup. This parameter is valid only when OSS inventory is used. Valid values:
 	//
 	// - **NO_CLEANUP**: Do not delete.
 	//
@@ -777,11 +791,11 @@ type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsOssDetail st
 	//
 	// DELETE_CURRENT_AND_PREVIOUS
 	InventoryCleanupPolicy *string `json:"InventoryCleanupPolicy,omitempty" xml:"InventoryCleanupPolicy,omitempty"`
-	// The name of the OSS inventory. If this value is not empty, the OSS inventory will be used for performance optimization.
+	// The OSS inventory name. If this value is not empty, the OSS inventory is used for performance tuning.
 	//
-	// - It is recommended to use an inventory for backing up more than 100 million OSS objects to improve incremental performance. Storage costs for the inventory files are charged separately by the OSS service.
+	// - Using an inventory to improve incremental performance is recommended when backing up more than 100 million OSS objects. Storage fees generated by inventory files are charged separately by OSS.
 	//
-	// - The generation of the OSS inventory file takes time, and the backup may fail before the inventory file is generated. You can wait for the next cycle to execute.
+	// - OSS inventory files take time to generate. Backup may fail before the OSS inventory file is generated. Wait for the next cycle to execute.
 	//
 	// example:
 	//
@@ -829,65 +843,65 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsOssDetai
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail struct {
-	// 是否创建应用一致性。仅云盘类型全部为ESSD时，支持创建快照应用一致性。
+	// Specifies whether to create an application-consistent snapshot. Creating an application-consistent snapshot is supported only when all cloud disk types are ESSD.
 	//
 	// example:
 	//
 	// false
 	AppConsistent *bool `json:"AppConsistent,omitempty" xml:"AppConsistent,omitempty"`
-	// The custom KMS key ID in the destination region. When this field is not empty and cross-region replication is enabled, the specified key will be used for encrypting the cross-region replication.
+	// The custom KMS key ID in the destination region. If this field is not empty and cross-region replication is enabled, this key is used to encrypt the cross-region replication.
 	//
 	// example:
 	//
 	// 4ed37b1e-da51-4187-aceb-9db4f9b7148b
 	DestinationKmsKeyId *string `json:"DestinationKmsKeyId,omitempty" xml:"DestinationKmsKeyId,omitempty"`
-	// List of disk IDs that need protection. This value is empty when protecting all disks.
+	// The list of cloud disk IDs that need to be protected. This value is empty when all cloud disks are protected.
 	DiskIdList []*string `json:"DiskIdList,omitempty" xml:"DiskIdList,omitempty" type:"Repeated"`
-	// This parameter is required when **AppConsistent*	- is **true**. It indicates whether to use the Linux FsFreeze mechanism to ensure the file system is in a read-only consistent state before creating an application-consistent snapshot. The default value is true.
+	// This parameter is required only when **AppConsistent*	- is set to **true**. Specifies whether to use the Linux FsFreeze mechanism to ensure the file system is in read consistency before creating an application-consistent snapshot. Default value: true.
 	//
 	// example:
 	//
 	// true
 	EnableFsFreeze *bool `json:"EnableFsFreeze,omitempty" xml:"EnableFsFreeze,omitempty"`
-	// This parameter is required when **AppConsistent*	- is **true**. It determines whether to set an application-consistent snapshot:
+	// This parameter is required only when **AppConsistent*	- is set to **true**. Specifies whether to create an application-consistent snapshot:
 	//
-	// - **true**: Create an application-consistent snapshot
+	// - true: Creates an application-consistent snapshot.
 	//
-	// - **false**: Create a file system-consistent snapshot
+	// - false: Creates a file system-consistent snapshot.
 	//
-	// The default value is true.
+	// Default value: true.
 	//
 	// example:
 	//
 	// true
 	EnableWriters *bool `json:"EnableWriters,omitempty" xml:"EnableWriters,omitempty"`
-	// List of disk IDs that do not need protection. This parameter is ignored if DiskIdList is not empty.
+	// The list of cloud disk IDs that do not need to be protected. This parameter is ignored when DiskIdList is not empty.
 	ExcludeDiskIdList []*string `json:"ExcludeDiskIdList,omitempty" xml:"ExcludeDiskIdList,omitempty" type:"Repeated"`
-	// This parameter is required when **AppConsistent*	- is **true**. It specifies the path of the unfreeze script to be executed after creating an application-consistent snapshot.
+	// This parameter is required only when **AppConsistent*	- is set to **true**. The path of the post-thaw script to execute after creating an application-consistent snapshot.
 	//
 	// example:
 	//
 	// /tmp/postscript.sh
 	PostScriptPath *string `json:"PostScriptPath,omitempty" xml:"PostScriptPath,omitempty"`
-	// This parameter is required when **AppConsistent*	- is **true**. It specifies the path of the freeze script to be executed before creating an application-consistent snapshot.
+	// This parameter is required only when **AppConsistent*	- is set to **true**. The path of the pre-freeze script to execute before creating an application-consistent snapshot.
 	//
 	// example:
 	//
 	// /tmp/prescript.sh
 	PreScriptPath *string `json:"PreScriptPath,omitempty" xml:"PreScriptPath,omitempty"`
-	// This parameter is required when **AppConsistent*	- is **true**. It specifies the RAM role name needed for creating an application-consistent snapshot.
+	// This parameter is required only when **AppConsistent*	- is set to **true**. The RAM role name required for creating application-consistent snapshots.
 	//
 	// example:
 	//
 	// AliyunECSInstanceForHbrRole
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// Indicates whether to create a snapshot consistency group. Only supported when all disk types are ESSD.
+	// Specifies whether to create a snapshot-consistent group. Creating a snapshot-consistent group is supported only when all cloud disk types are ESSD.
 	//
 	// example:
 	//
 	// true
 	SnapshotGroup *bool `json:"SnapshotGroup,omitempty" xml:"SnapshotGroup,omitempty"`
-	// This parameter is required when **AppConsistent*	- is **true**. It specifies the IO freeze timeout duration. The default value is 30 seconds.
+	// This parameter is required only when **AppConsistent*	- is set to **true**. The I/O freeze timeout period. Unit: seconds. Default value: 30.
 	//
 	// example:
 	//
@@ -1007,23 +1021,23 @@ func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetai
 }
 
 type DescribePolicyBindingsResponseBodyPolicyBindingsHitTags struct {
-	// Tag key.
+	// The tag key.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Tag matching rule.
+	// The tag matching rule.
 	//
 	// - **EQUAL**: Matches both the tag key and tag value.
 	//
-	// - **NOT**: Matches the tag key but not the tag value.
+	// - **NOT**: Matches the tag key but does not match the tag value.
 	//
 	// example:
 	//
 	// EQUAL
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// Tag value.
+	// The tag value.
 	//
 	// example:
 	//

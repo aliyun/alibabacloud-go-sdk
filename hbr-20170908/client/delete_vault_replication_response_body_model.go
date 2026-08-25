@@ -20,18 +20,30 @@ type iDeleteVaultReplicationResponseBody interface {
 }
 
 type DeleteVaultReplicationResponseBody struct {
+	// The return code. A value of 200 indicates that the request is successful.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message returned. If the request is successful, `successful` is returned. If the request fails, an error message is returned.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C438054F-9088-5D1B-AED0-0EA86D9C65F4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request fails.
+	//
 	// example:
 	//
 	// true

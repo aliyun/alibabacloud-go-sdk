@@ -14,13 +14,13 @@ type iDeleteBackupClientResourceShrinkRequest interface {
 }
 
 type DeleteBackupClientResourceShrinkRequest struct {
-	// The IDs of HBR clients. The value can be a JSON array that consists of up to 100 client IDs. Separate the IDs with commas (,).
+	// A list of client IDs. The list can contain up to 100 client IDs.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ["c-0007kyu045r0********", "c-000b6818umvo********"]
+	// ["c-*********************"]
 	ClientIdsShrink *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
 }
 

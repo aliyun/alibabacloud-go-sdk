@@ -14,7 +14,7 @@ type iDeletePolicyV2Request interface {
 }
 
 type DeletePolicyV2Request struct {
-	// The ID of the backup policy.
+	// The policy ID.
 	//
 	// example:
 	//

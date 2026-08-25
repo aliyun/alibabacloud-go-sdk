@@ -28,20 +28,20 @@ type iDescribeHanaBackupPlansResponseBody interface {
 }
 
 type DescribeHanaBackupPlansResponseBody struct {
-	// The response code. The status code 200 indicates that the request was successful.
+	// The return code. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code            *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
 	HanaBackupPlans *DescribeHanaBackupPlansResponseBodyHanaBackupPlans `json:"HanaBackupPlans,omitempty" xml:"HanaBackupPlans,omitempty" type:"Struct"`
-	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	// The message that is returned. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. The value must be a number that starts from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -59,17 +59,17 @@ type DescribeHanaBackupPlansResponseBody struct {
 	//
 	// F029C1C7-26B6-5ADD-A73E-D85CCD7C73A9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request was successful.
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//

@@ -20,6 +20,8 @@ type iEnableBackupPlanRequest interface {
 }
 
 type EnableBackupPlanRequest struct {
+  // The edition. Valid values are BASIC and STANDARD. The default value is STANDARD.
+  // 
   // example:
   // 
   // STANDARD
@@ -34,11 +36,11 @@ type EnableBackupPlanRequest struct {
   PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
   // The type of the data source. Valid values:
   // 
-  // 	- **ECS_FILE**: ECS files
+  // - **ECS_FILE**: Backs up ECS files.
   // 
-  // 	- **OSS**: Object Storage Service (OSS) buckets
+  // - **OSS**: Backs up Alibaba Cloud OSS.
   // 
-  // 	- **NAS**: Apsara File Storage NAS (NAS) file systems
+  // - **NAS**: Backs up Alibaba Cloud NAS.
   // 
   // example:
   // 

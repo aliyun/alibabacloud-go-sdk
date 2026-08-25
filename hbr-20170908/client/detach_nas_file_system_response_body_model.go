@@ -42,9 +42,9 @@ type DetachNasFileSystemResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
 	//
-	// 	- true: The request is successful.
+	// - true: The request is successful.
 	//
-	// 	- false: The request fails.
+	// - false: The request fails.
 	//
 	// example:
 	//

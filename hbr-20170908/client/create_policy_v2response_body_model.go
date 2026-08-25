@@ -22,35 +22,35 @@ type iCreatePolicyV2ResponseBody interface {
 }
 
 type CreatePolicyV2ResponseBody struct {
-	// The HTTP status code. The status code 200 indicates that the call is successful.
+	// The response code. 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	// The returned message. The value "successful" is returned for a successful request. An error message is returned for a failed request.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the backup policy.
+	// The policy ID.
 	//
 	// example:
 	//
 	// po-000000zemnuyx2li3y9y
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// EEC65C22-2152-5E31-8AD6-D6CBF1BFF49F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: The call is successful.
+	// - true
 	//
-	// 	- false: The call fails.
+	// - false
 	//
 	// example:
 	//

@@ -26,27 +26,76 @@ type iListProtectedResourcesRequest interface {
 }
 
 type ListProtectedResourcesRequest struct {
+	// The product capability to which the resource belongs. Valid values:
+	//
+	// - **HBR**: Cloud Backup standard capability.
+	//
+	// - **BASIC**: ECS File Backup Essential Edition.
+	//
 	// example:
 	//
 	// BASIC
 	CreatedByProduct *string `json:"CreatedByProduct,omitempty" xml:"CreatedByProduct,omitempty"`
-	HasSnapshot      *bool   `json:"HasSnapshot,omitempty" xml:"HasSnapshot,omitempty"`
+	// Specifies whether the resource has backup points.
+	//
+	// example:
+	//
+	// true
+	HasSnapshot *bool `json:"HasSnapshot,omitempty" xml:"HasSnapshot,omitempty"`
+	// The number of results per query.
+	//
+	// Valid values: 10 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token for the next page. If this parameter is empty, no more pages are available.
+	//
 	// example:
 	//
 	// aWQj********MCMy
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The resource ID.
+	//
+	// - **SourceType=ECS_FILE**: the ECS instance ID.
+	//
+	// - **SourceType=COMMON_FILE_SYSTEM**: the CPFS data source ID.
+	//
+	// - **SourceType=COMMON_NAS**: the on-premises NAS data source ID.
+	//
+	// - **SourceType=File**: the local service client ID.
+	//
+	// - **SourceType=NAS**: the Alibaba Cloud NAS file system ID.
+	//
+	// - **SourceType=OSS**: the OSS bucket.
+	//
 	// example:
 	//
 	// i-wz95************7zrd
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The number of entries to skip for paging.
+	//
+	// If the number of skipped entries exceeds the total number of conditional entries, an empty list is returned. The number of skipped entries must be a multiple of MaxResults.
+	//
 	// example:
 	//
 	// 10
 	Skip *int32 `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// The backup feature type. Valid values:
+	//
+	// - **ECS_FILE**: ECS file backup.
+	//
+	// - **COMMON_FILE_SYSTEM**: Cloud Parallel File Storage (CPFS) backup.
+	//
+	// - **COMMON_NAS**: on-premises NAS backup.
+	//
+	// - **File**: on-premises file backup.
+	//
+	// - **NAS**: Alibaba Cloud NAS backup.
+	//
+	// - **OSS**: OSS backup.
+	//
 	// example:
 	//
 	// ECS_FILE

@@ -24,13 +24,13 @@ type DescribeContainerClusterRequest struct {
 	//
 	// example:
 	//
-	// cc-000*************hg9
+	// cc-000**************hg9
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The identifier of the container cluster. For a Container Service for Kubernetes (ACK) cluster, specify the cluster ID.
 	//
 	// example:
 	//
-	// cca*******************************87a
+	// cca***************************87a
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 	// The number of the page to return. Pages start from page 1. Default value: 1.
 	//

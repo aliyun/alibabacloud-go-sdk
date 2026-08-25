@@ -29,47 +29,47 @@ type iDescribeBackupJobs2ResponseBody interface {
 
 type DescribeBackupJobs2ResponseBody struct {
 	BackupJobs *DescribeBackupJobs2ResponseBodyBackupJobs `json:"BackupJobs,omitempty" xml:"BackupJobs,omitempty" type:"Struct"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
+	// The return code. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	// The message that is returned. If the request was successful, successful is returned. If the request failed, an error message is returned.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number of the returned page. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from page 1. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Valid values: 1 to 99. Default value: 10.
+	// The number of entries per page. Valid values: 1 to 99. The default value is 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the request was successful.
 	//
-	// 	- true: The call is successful.
+	// - true: The request was successful.
 	//
-	// 	- false: The call fails.
+	// - false: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of returned backup jobs that meet the specified conditions.
+	// The total number of backup jobs that meet the specified criteria.
 	//
 	// example:
 	//

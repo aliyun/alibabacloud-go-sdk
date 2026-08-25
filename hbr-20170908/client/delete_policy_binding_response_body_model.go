@@ -20,29 +20,29 @@ type iDeletePolicyBindingResponseBody interface {
 }
 
 type DeletePolicyBindingResponseBody struct {
-	// The HTTP status code. The status code 200 indicates that the call is successful.
+	// The return code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	// The returned message. The value "successful" is returned for a successful request. An error message is returned for a failed request.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 3E961A5E-C5C6-566D-BFC3-0362A6A52EBA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the request was successful.
 	//
-	// 	- true: The call is successful.
+	// - true: Successful.
 	//
-	// 	- false: The call fails.
+	// - false: Failed.
 	//
 	// example:
 	//

@@ -20,25 +20,25 @@ type iUpdatePolicyV2ShrinkRequest interface {
 }
 
 type UpdatePolicyV2ShrinkRequest struct {
-	// The description of the backup policy.
+	// The policy description.
 	//
 	// example:
 	//
-	// Data is backed up at 10:00:00 every day and replicated to the China (Shanghai) region for geo-redundancy.
+	// Back up once every day at 10:00 AM, with cross-region backup to Shanghai.
 	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
-	// The ID of the backup policy.
+	// The policy ID.
 	//
 	// example:
 	//
 	// po-000************viy
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The name of the backup policy.
+	// The policy name.
 	//
 	// example:
 	//
-	// Daily Local Backup + Remote Backup
+	// Daily backup + geo-redundancy
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The rules in the backup policy.
+	// The list of policy rules.
 	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 }
 

@@ -22,35 +22,35 @@ type iCreateRestoreJobResponseBody interface {
 }
 
 type CreateRestoreJobResponseBody struct {
-	// Return code, 200 indicates success.
+	// The response code. The value 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Description of the return message, usually \\"successful\\" when successful, and corresponding error messages when there is an error.
+	// The response message. The value "successful" is returned for a success. An error message is returned for a failure.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Restore job ID.
+	// The ID of the restore job.
 	//
 	// example:
 	//
 	// r-*********************
 	RestoreId *string `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
-	// Whether the request was successful.
+	// Indicates whether the request was successful.
 	//
-	//   - true: Success
+	//   - true: The request was successful.
 	//
-	//   - false: Failure
+	//   - false: The request failed.
 	//
 	// example:
 	//

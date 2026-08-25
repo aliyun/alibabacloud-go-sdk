@@ -18,9 +18,9 @@ type iDeletePolicyBindingRequest interface {
 }
 
 type DeletePolicyBindingRequest struct {
-	// The IDs of the data sources that you want to disassociate from the backup policy.
+	// The list of data source IDs to dissociate from the policy.
 	DataSourceIds []*string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty" type:"Repeated"`
-	// The ID of the backup policy.
+	// The policy ID.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,23 @@ type DeletePolicyBindingRequest struct {
 	//
 	// po-000************hgp
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The type of the data source. Valid values:
+	// The data source type. Valid values:
 	//
-	// 	- **UDM_ECS**: ECS instance backup
+	// - **UDM_ECS**: ECS instance backup.
+	//
+	// - **OSS**: OSS backup.
+	//
+	// - **NAS**: Alibaba Cloud NAS backup.
+	//
+	// - **COMMON_NAS**: On-premises NAS backup.
+	//
+	// - **ECS_FILE**: ECS File Backup Essential Edition.
+	//
+	// - **File**: On-premises file backup.
+	//
+	// - **COMMON_FILE_SYSTEM**: CPFS backup.
+	//
+	// - **OTS**: Tablestore backup.
 	//
 	// example:
 	//

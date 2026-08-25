@@ -16,13 +16,13 @@ type iDeleteAirEcsInstanceRequest interface {
 }
 
 type DeleteAirEcsInstanceRequest struct {
-	// The ID of the Elastic Compute Service (ECS) instance.
+	// The instance ID of the ECS instance.
 	//
 	// example:
 	//
 	// i-uf6ir9y******hvisj
 	EcsInstanceId *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
-	// The data sources for which the client needs to be uninstalled.
+	// The list of data sources for which the client needs to be uninstalled.
 	UninstallClientSourceTypes []*string `json:"UninstallClientSourceTypes,omitempty" xml:"UninstallClientSourceTypes,omitempty" type:"Repeated"`
 }
 

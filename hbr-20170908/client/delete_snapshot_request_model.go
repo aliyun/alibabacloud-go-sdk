@@ -26,7 +26,7 @@ type iDeleteSnapshotRequest interface {
 }
 
 type DeleteSnapshotRequest struct {
-	// The ID of the Cloud Backup client. If you delete a backup snapshot for Elastic Compute Service (ECS) instances, you must specify one of the ClientId and **InstanceId*	- parameters.
+	// The client ID. When deleting a backup snapshot of ECS File Backup Essential Edition, you must specify either this parameter or **InstanceId**.
 	//
 	// example:
 	//
@@ -34,19 +34,19 @@ type DeleteSnapshotRequest struct {
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated.
+	// Deprecated.
 	//
 	// example:
 	//
-	// Deprected.
+	// false
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
-	// The ID of the ECS instance. If you delete a backup snapshot for ECS instances, you must specify one of the InstanceId and **ClientId*	- parameters.
+	// The ECS instance ID. When deleting a backup snapshot of ECS File Backup Essential Edition, you must specify either this parameter or **ClientId**.
 	//
 	// example:
 	//
 	// i-*********************
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the backup snapshot.
+	// The backup snapshot ID.
 	//
 	// This parameter is required.
 	//
@@ -54,25 +54,27 @@ type DeleteSnapshotRequest struct {
 	//
 	// s-*********************
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The type of the backup source. Valid values:
+	// The backup source type. Valid values:
 	//
-	// 	- **ECS_FILE**: backup snapshots for ECS files
+	// 	- **ECS_FILE**: backup snapshot of ECS File Backup Essential Edition.
 	//
-	// 	- **OSS**: backup snapshots for Object Storage Service (OSS) buckets
+	// 	- **OSS**: backup snapshot of Alibaba Cloud OSS.
 	//
-	// 	- **NAS**: backup snapshots for Apsara File Storage NAS (NAS) file systems
+	// 	- **NAS**: backup snapshot of Alibaba Cloud NAS.
+	//
+	// 	- **UDM_ECS**: backup snapshot of an entire ECS instance.
 	//
 	// example:
 	//
 	// ECS_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The token that you want to delete.
+	// The token for the deletion.
 	//
 	// example:
 	//
 	// 02WJDOE7
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// The ID of the backup vault.
+	// The backup vault ID.
 	//
 	// example:
 	//

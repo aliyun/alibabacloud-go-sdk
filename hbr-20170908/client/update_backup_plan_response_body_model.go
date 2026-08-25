@@ -20,29 +20,29 @@ type iUpdateBackupPlanResponseBody interface {
 }
 
 type UpdateBackupPlanResponseBody struct {
-	// The HTTP status code. The status code 200 indicates that the call is successful.
+	// The return code. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	// The message returned. If the request is successful, \\`successful\\` is returned. If the request fails, an error message is returned.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the request was successful.
 	//
-	// 	- true: The call is successful.
+	// - true: The request was successful.
 	//
-	// 	- false: The call fails.
+	// - false: The request failed.
 	//
 	// example:
 	//

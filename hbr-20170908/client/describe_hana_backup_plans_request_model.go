@@ -32,13 +32,13 @@ type DescribeHanaBackupPlansRequest struct {
 	//
 	// cl-000chxz******lz7bk
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
 	// example:
 	//
 	// SYSTEMDB
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. The value must be a number that starts from 1. Default value: 1.
 	//
 	// example:
 	//

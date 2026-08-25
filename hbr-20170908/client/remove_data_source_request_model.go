@@ -14,6 +14,8 @@ type iRemoveDataSourceRequest interface {
 }
 
 type RemoveDataSourceRequest struct {
+	// The ID of the data source.
+	//
 	// This parameter is required.
 	//
 	// example:

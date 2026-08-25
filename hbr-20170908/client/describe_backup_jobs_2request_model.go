@@ -24,29 +24,31 @@ type iDescribeBackupJobs2Request interface {
 }
 
 type DescribeBackupJobs2Request struct {
+	// The edition. Valid values: BASIC and STANDARD. The default value is STANDARD.
+	//
 	// example:
 	//
 	// STANDARD
 	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// The keys that you want to match in the filter.
+	// The key-value pairs of the filter.
 	Filters []*DescribeBackupJobs2RequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from page 1. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: 1 to 99. Default value: 10.
+	// The number of entries per page. Valid values: 1 to 99. The default value is 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The order in which you want to sort the results. Valid values:
+	// The sort direction. Valid values:
 	//
-	// 	- **ASCEND**: sorts the results in ascending order
+	// - **ASCEND**: Ascending order.
 	//
-	// 	- **DESCEND*	- (default value): sorts the results in descending order
+	// - **DESCEND*	- (Default): Descending order.
 	//
 	// example:
 	//
@@ -54,17 +56,23 @@ type DescribeBackupJobs2Request struct {
 	SortDirection *string `json:"SortDirection,omitempty" xml:"SortDirection,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// 	- **ECS_FILE**: Elastic Compute Service (ECS) files
+	// - **ECS_FILE**: Backs up Elastic Compute Service (ECS) files.
 	//
-	// 	- **OSS**: Object Storage Service (OSS) buckets
+	// - **OSS**: Backs up Alibaba Cloud Object Storage Service (OSS) buckets.
 	//
-	// 	- **NAS**: Apsara File Storage NAS file systems
+	// - **NAS**: Backs up Alibaba Cloud Apsara File Storage NAS (NAS) file systems.
 	//
-	// 	- **OTS**: Tablestore instances
+	// - **OTS**: Backs up Alibaba Cloud Tablestore instances.
 	//
-	// 	- **UDM_ECS**: ECS instances
+	// - **UDM_ECS**: Backs up entire ECS instances.
 	//
-	// 	- **UDM_ECS_DISK**: ECS disks
+	// - **UDM_ECS_DISK**: A sub-task for disk backup in an ECS instance backup job.
+	//
+	// - **COMMON_NAS**: A generic NAS data source. This includes archive NAS and on-premises NAS data sources. Use the Values parameter of Filters to specify the data source type.
+	//
+	// - **File**: Backs up on-premises files.
+	//
+	// - **SYNC**: Data synchronization.
 	//
 	// example:
 	//
@@ -148,59 +156,63 @@ func (s *DescribeBackupJobs2Request) Validate() error {
 }
 
 type DescribeBackupJobs2RequestFilters struct {
-	// The keys in the filter. Valid values:
+	// The key of the filter. Valid values:
 	//
-	// 	- **RegionId**: the ID of a region
+	// - **RegionId**: The region ID.
 	//
-	// 	- **PlanId**: the ID of a backup plan
+	// - **PlanId**: The backup plan ID.
 	//
-	// 	- **JobId**: the ID of a backup job
+	// - **JobId**: The backup job ID.
 	//
-	// 	- **VaultId**: the ID of a backup vault
+	// - **VaultId**: The repository ID.
 	//
-	// 	- **InstanceId**: the ID of an ECS instance
+	// - **InstanceId**: The ECS instance ID.
 	//
-	// 	- **Bucket**: the name of an OSS bucket
+	// - **Bucket**: The name of the OSS bucket.
 	//
-	// 	- **FileSystemId**: the ID of a file system
+	// - **FileSystemId**: The file system ID.
 	//
-	// 	- **Status**: the status of a backup job
+	// - **Status**: The job status.
 	//
-	// 	- **CreatedTime**: the start time of a backup job
+	// - **CreatedTime**: The start time of the job.
 	//
-	// 	- **CompleteTime**: the end time of a backup job
+	// - **CompleteTime**: The end time of the job.
 	//
-	// 	- **instanceName**: the name of a Tablestore instance
+	// - **InstanceName**: The name of the Tablestore instance.
+	//
+	// - **BackupType**: The backup job. This parameter is required only when SourceType is set to COMMON_NAS.
+	//
+	// - **ParentId**: The ID of the parent job. This parameter is required when you query sub-tasks. For example, if you set SourceType to UDM_ECS_DISK, you must specify the ID of the UDM_ECS job.
 	//
 	// example:
 	//
 	// VaultId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The matching method. Default value: IN. This parameter specifies the operator that you want to use to match a key and a value in the filter. Valid values:
+	// The matching operator. The default value is IN. This parameter specifies the operator to use for matching the Key and Value. Valid values:
 	//
-	// 	- **EQUAL**: equal to
+	// - **EQUAL**: Equal to.
 	//
-	// 	- **NOT_EQUAL**: not equal to
+	// - **NOT_EQUAL**: Not equal to.
 	//
-	// 	- **GREATER_THAN**: greater than
+	// - **GREATER_THAN**: Greater than.
 	//
-	// 	- **GREATER_THAN_OR_EQUAL**: greater than or equal to
+	// - **GREATER_THAN_OR_EQUAL**: Greater than or equal to.
 	//
-	// 	- **LESS_THAN**: less than
+	// - **LESS_THAN**: Less than.
 	//
-	// 	- **LESS_THAN_OR_EQUAL**: less than or equal to
+	// - **LESS_THAN_OR_EQUAL**: Less than or equal to.
 	//
-	// 	- **BETWEEN**: specifies a JSON array as a range. The results must fall within the range in the `[Minimum value,maximum value]` format.
+	// - **BETWEEN**: The value is a JSON array in the format of `[start,end]`.
 	//
-	// 	- **IN**: specifies an array as a collection. The results must fall within the collection.
+	// - **IN**: The value is an array.
 	//
-	// >  If you specify **CompleteTime*	- as a key to query backup jobs, you cannot use the IN operator to perform a match.
+	// > The IN operator is not supported when you use **CompleteTime*	- as the key for a query.
 	//
 	// example:
 	//
 	// IN
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The values that you want to match in the filter.
+	// The value of the filter.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

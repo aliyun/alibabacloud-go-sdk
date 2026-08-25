@@ -20,18 +20,30 @@ type iDeleteCrossAccountResponseBody interface {
 }
 
 type DeleteCrossAccountResponseBody struct {
+	// The return code. A value of 200 indicates that the request is successful.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message returned. If the request is successful, \\`successful\\` is returned. If the request fails, an error message is returned.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 921E9989-735C-5254-A29F-6B8A5DDC1ED1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// - true: The request is successful.
+	//
+	// - false: The request fails.
+	//
 	// example:
 	//
 	// True

@@ -28,48 +28,48 @@ type iSearchHistoricalSnapshotsResponseBody interface {
 }
 
 type SearchHistoricalSnapshotsResponseBody struct {
-	// The HTTP status code. The status code 200 indicates that the call is successful.
+	// The return code. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of historical backup snapshots that are displayed on the current page.
+	// The number of historical snapshots displayed on the current page.
 	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	// The returned message. If the request is successful, \\`successful\\` is returned. If the request fails, an error message is returned.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The token that is required to obtain the next page of backup snapshots.
+	// The token that is required to obtain the next page of snapshots.
 	//
 	// example:
 	//
 	// BE
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Snapshots *SearchHistoricalSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the request was successful.
 	//
-	// 	- true: The call is successful.
+	// - true: The request was successful.
 	//
-	// 	- false: The call fails.
+	// - false: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of returned backup snapshots that meet the specified conditions.
+	// The total number of snapshots that meet the specified criteria.
 	//
 	// example:
 	//

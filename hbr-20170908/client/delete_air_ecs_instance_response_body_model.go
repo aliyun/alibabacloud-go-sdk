@@ -22,13 +22,13 @@ type iDeleteAirEcsInstanceResponseBody interface {
 }
 
 type DeleteAirEcsInstanceResponseBody struct {
-	// The response code. The status code 200 indicates that the request was successful.
+	// The return code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	// The returned message. The value "successful" is returned for a successful request. An error message is returned for a failed request.
 	//
 	// example:
 	//
@@ -42,15 +42,15 @@ type DeleteAirEcsInstanceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of an asynchronous job.
+	// The asynchronous task ID. You can call DescribeTask to obtain the task result.
 	//
 	// example:
 	//

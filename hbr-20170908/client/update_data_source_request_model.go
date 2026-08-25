@@ -36,10 +36,46 @@ type iUpdateDataSourceRequest interface {
 }
 
 type UpdateDataSourceRequest struct {
+	// The ID of the client group used to access the data source.
+	//
 	// example:
 	//
 	// cl-000**************hg9
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The connection information for the data source. Examples:
+	//
+	// - On-premises NAS data source:
+	//
+	//   {
+	//
+	//   "dataServerAddresses": [
+	//
+	//   {
+	//
+	//   "host": "123.123.123.123",
+	//
+	//   "port": "8080"
+	//
+	//   }
+	//
+	//   ],
+	//
+	//   "sharePath": "/share",
+	//
+	//   "mountOptions": "vers=3",
+	//
+	//   "fileSystemType": "nfs"
+	//
+	//   }
+	//
+	// - Intelligent Computing CPFS data source:
+	//
+	//   {"vpcMountTarget":"cpfs-010wn\\*\\*\\*wy-vpc-ta\\*\\*\\*8.cn-shanghai.cpfs.aliyuncs.com","sharePath":"/"}
+	//
+	// - Other large-scale file system data sources:
+	//
+	//   {"path":"/mnt"}
+	//
 	// example:
 	//
 	// {
@@ -64,41 +100,86 @@ type UpdateDataSourceRequest struct {
 	//
 	// }
 	ConnectionInfo *string `json:"ConnectionInfo,omitempty" xml:"ConnectionInfo,omitempty"`
+	// The access credentials for the data source. This parameter is used for on-premises NAS data sources that use the SMB protocol, and for OSS and S3 protocol-compatible data sources. Examples:
+	//
+	// - On-premises NAS data source (SMB protocol):
+	//
+	//   {
+	//
+	//   "mountUsername": "\\*\\*\\*\\*\\*",
+	//
+	//   "mountPassword": "\\*\\*\\*\\*\\*"
+	//
+	//   }
+	//
+	// - OSS protocol-compatible data source/S3 protocol-compatible data source:
+	//
+	//   {
+	//
+	//   "accessKeyId": "\\*\\*\\*\\*\\*",
+	//
+	//   "accessKeySecret": "\\*\\*\\*\\*\\*"
+	//
+	//   }
+	//
 	// example:
 	//
 	// {"mountUsername":"***","mountPassword":"***"}
 	Credential *string `json:"Credential,omitempty" xml:"Credential,omitempty"`
+	// The ID of the data source.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ds-0006xo****dtle
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The name of the data source.
+	//
 	// example:
 	//
 	// MyLocalNas
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// A filter to specify which files to exclude. This parameter applies only to the archive feature.
+	//
 	// example:
 	//
 	// ["/home/alice/log/"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	// A filter to specify which files to include. This parameter applies only to the archive feature.
+	//
 	// example:
 	//
 	// ["/home/alice/", "/home/bob/"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
+	// The index level for data source analysis. This parameter applies only to the archive feature.
+	//
+	// - OFF: No index is created.
+	//
+	// - META: A metadata index is created.
+	//
+	// - ALL: A full-text index is created. (Deprecated)
+	//
 	// example:
 	//
 	// META
 	IndexLevel *string `json:"IndexLevel,omitempty" xml:"IndexLevel,omitempty"`
+	// The options for data source analysis. This parameter applies only to the archive feature.
+	//
 	// example:
 	//
 	// {}
-	Options *string   `json:"Options,omitempty" xml:"Options,omitempty"`
-	Path    []*string `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// A list of paths for data source analysis. This parameter applies only to the archive feature.
+	Path []*string `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
+	// The schedule for data source analysis. This parameter applies only to the archive feature. The format is `I|{startTime}|{interval}`. This specifies a task that starts at `{startTime}` and repeats at the specified `{interval}`. `startTime` is a Unix time value in seconds. `interval` is an ISO 8601 time interval. For example, `PT1H` indicates a one-hour interval, and `P1D` indicates a one-day interval.
+	//
 	// example:
 	//
 	// I|1729493847|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	// The rate limiting configuration for data source analysis. This parameter applies only to the archive feature.
+	//
 	// example:
 	//
 	// 0:24:102400

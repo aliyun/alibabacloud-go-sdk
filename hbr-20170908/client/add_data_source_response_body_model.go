@@ -22,22 +22,32 @@ type iAddDataSourceResponseBody interface {
 }
 
 type AddDataSourceResponseBody struct {
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// ds-000*******xzj
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 53167AD3-****-****-92C7-CF69A000BA45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

@@ -18,16 +18,22 @@ type iCreateVaultReplicationRequest interface {
 }
 
 type CreateVaultReplicationRequest struct {
+	// The ID of the source region. If you do not specify this parameter, the region where the API is called is used.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	ReplicationSourceRegionId *string `json:"ReplicationSourceRegionId,omitempty" xml:"ReplicationSourceRegionId,omitempty"`
+	// The ID of the source backup vault.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// v-*********************
 	ReplicationSourceVaultId *string `json:"ReplicationSourceVaultId,omitempty" xml:"ReplicationSourceVaultId,omitempty"`
+	// The ID of the destination backup vault.
+	//
 	// This parameter is required.
 	//
 	// example:

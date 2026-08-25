@@ -20,13 +20,13 @@ type iCheckRoleResponseBody interface {
 }
 
 type CheckRoleResponseBody struct {
-	// The response code. The status code 200 indicates that the request was successful.
+	// The response code. 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	// The response message. "successful" is returned if the request is successful. An error message is returned if the request fails.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type CheckRoleResponseBody struct {
 	//
 	// 2F63CA9B-744E-51C0-A638-27882BB03078
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful.
 	//
-	// 	- true
+	// - true: The request is successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//

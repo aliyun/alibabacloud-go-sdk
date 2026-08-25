@@ -68,68 +68,79 @@ type iCreateRestoreJobRequest interface {
 }
 
 type CreateRestoreJobRequest struct {
-	// The name of the role created in the RAM of the original account for cross-account backup managed by the current account.
+	// The name of the RAM role created in the source account for cross-account backup managed by the current account.
 	//
 	// example:
 	//
 	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	// Cross-account backup type. Supported values:
+	// The cross-account backup type. Valid values:
 	//
-	// - SELF_ACCOUNT: Backup within the same account
+	// - SELF_ACCOUNT: backup within the current account.
 	//
-	// - CROSS_ACCOUNT: Cross-account backup
+	// - CROSS_ACCOUNT: cross-account backup.
 	//
 	// example:
 	//
 	// SELF_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
-	// The original account ID managed by the current account for cross-account backup.
+	// The ID of the source account for cross-account backup managed by the current account.
 	//
 	// example:
 	//
 	// 158975xxxxx4625
-	CrossAccountUserId *int64  `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	Edition            *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// The path not to be restored. All documents under this path will not be restored. Maximum length is 255 characters.
+	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	// The Cloud Backup feature edition. Valid values:
+	//
+	// - **STANDARD**: Standard Edition. This is the default value.
+	//
+	// - **BASIC**: Essential Edition. Currently, only ECS File Backup Essential Edition is supported.
+	//
+	// example:
+	//
+	// STANDARD
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// The path to exclude from restoration. All files under this path are not restored. Maximum length: 255 characters.
 	//
 	// example:
 	//
 	// ["/var", "/proc"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// Details of restoring to the local environment.
+	// The details of the restoration to the local host.
 	FailbackDetail map[string]interface{} `json:"FailbackDetail,omitempty" xml:"FailbackDetail,omitempty"`
-	// The path to be restored. All documents under this path will be restored. Maximum length is 255 characters.
+	// The path to restore. All files under this path are restored. Maximum length: 255 characters.
 	//
 	// example:
 	//
 	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	// Indicates whether it is called by the container service. Default is false.
+	// Specifies whether the operation is invoked by Container Service. Default value: false.
 	//
 	// example:
 	//
 	// false
 	InitiatedByAck *bool `json:"InitiatedByAck,omitempty" xml:"InitiatedByAck,omitempty"`
-	// Parameters for the restore job.
+	// The restore job parameters.
 	//
 	// example:
 	//
 	// {\\"includes\\":[],\\"excludes\\":[],\\"conflictPolicy\\":\\"OVERWRITE_EXISTING\\"}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// Details of the Table Store instance.
+	// The details of the Tablestore instance.
 	OtsDetail *OtsTableRestoreDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
-	// The type of the restore destination data source. Possible values:
+	// The data source type of the restore destination. Valid values:
 	//
-	//   - **ECS_FILE**: Restore to ECS file.
+	//   - **ECS_FILE**: restores to an ECS file.
 	//
-	//   - **OSS**: Restore to Alibaba Cloud OSS.
+	//   - **OSS**: restores to Alibaba Cloud OSS.
 	//
-	//   - **NAS**: Restore to Alibaba Cloud NAS.
+	//   - **NAS**: restores to Alibaba Cloud NAS.
 	//
-	//   - **OTS_TABLE**: Restore to Alibaba Cloud OTS.
+	//   - **COMMON_FILE_SYSTEM**: restores to CPFS.
 	//
-	//   - **UDM_ECS_ROLLBACK**: Restore to Alibaba Cloud ECS whole machine.
+	//   - **OTS_TABLE**: restores to Alibaba Cloud OTS.
+	//
+	//   - **UDM_ECS_ROLLBACK**: restores to an Alibaba Cloud ECS instance (full-copy migration).
 	//
 	// This parameter is required.
 	//
@@ -137,7 +148,7 @@ type CreateRestoreJobRequest struct {
 	//
 	// ECS_FILE
 	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
-	// The HASH value of the backup snapshot.
+	// The hash value of the backup snapshot.
 	//
 	// example:
 	//
@@ -149,17 +160,19 @@ type CreateRestoreJobRequest struct {
 	//
 	// s-********************
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The type of the data source. Possible values:
+	// The data source type. Valid values:
 	//
-	//   - **ECS_FILE**: Restore ECS file.
+	//   - **ECS_FILE**: restores ECS files.
 	//
-	//   - **OSS**: Restore Alibaba Cloud OSS.
+	//   - **OSS**: restores Alibaba Cloud OSS.
 	//
-	//   - **NAS**: Restore Alibaba Cloud NAS.
+	//   - **NAS**: restores Alibaba Cloud NAS.
 	//
-	//   - **OTS_TABLE**: Restore to Alibaba Cloud OTS.
+	//   - **COMMON_FILE_SYSTEM**: restores to CPFS.
 	//
-	//   - **UDM_ECS**: Restore to Alibaba Cloud ECS whole machine.
+	//   - **OTS_TABLE**: restores to Alibaba Cloud OTS.
+	//
+	//   - **UDM_ECS**: restores to an Alibaba Cloud ECS instance (full-copy migration).
 	//
 	// This parameter is required.
 	//
@@ -167,131 +180,131 @@ type CreateRestoreJobRequest struct {
 	//
 	// ECS_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// Valid only when **RestoreType*	- is **OSS**. Indicates the name of the OSS bucket at the restore destination.
+	// This parameter is valid only when **RestoreType*	- is set to **OSS**. The name of the destination OSS bucket.
 	//
 	// example:
 	//
 	// hbr-backup-oss
 	TargetBucket *string `json:"TargetBucket,omitempty" xml:"TargetBucket,omitempty"`
-	// Details of the target container.
+	// The details of the target container for restoration.
 	//
 	// example:
 	//
 	// {\\"host\\":\\"k8s-node1\\",\\"hostPrefix\\":\\"/var/lib/kubelet/pods/4acb31fe-8577-40ff-bc8c-eccabd835f73/volumes/kubernetes.io~csi/pvc-b050b00e-ef17-4792-aab1-1642355cf1f4/mount\\",\\"pvPath\\":\\"/\\"}
 	TargetContainer *string `json:"TargetContainer,omitempty" xml:"TargetContainer,omitempty"`
-	// The ID of the target container cluster.
+	// The ID of the target container cluster for restoration.
 	//
 	// example:
 	//
 	// cc-000amjsc7o1h9506oob7
 	TargetContainerClusterId *string `json:"TargetContainerClusterId,omitempty" xml:"TargetContainerClusterId,omitempty"`
-	// Valid only when **RestoreType*	- is **NAS**. Indicates the creation time of the file system at the restore destination.
+	// This parameter is valid only when **RestoreType*	- is set to **NAS**. The creation time of the destination file system. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1554347313
 	TargetCreateTime *int64 `json:"TargetCreateTime,omitempty" xml:"TargetCreateTime,omitempty"`
-	// Valid only when **RestoreType*	- is **NAS**. Indicates the ID of the file system at the restore destination.
+	// This parameter is valid only when **RestoreType*	- is set to **NAS**. The file system ID of the restore destination.
 	//
 	// example:
 	//
 	// 005494
 	TargetFileSystemId *string `json:"TargetFileSystemId,omitempty" xml:"TargetFileSystemId,omitempty"`
-	// Valid only when **RestoreType*	- is **ECS_FILE**. Indicates the ECS instance ID at the restore destination.
+	// This parameter is valid only when **RestoreType*	- is set to **ECS_FILE**. The ECS instance ID of the restore destination.
 	//
 	// example:
 	//
 	// i-*********************
 	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	// The name of the target Table Store instance.
+	// The name of the target Tablestore instance for restoration.
 	//
 	// example:
 	//
 	// instancename
 	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
-	// Valid only when **RestoreType*	- is **ECS_FILE**. Indicates the file path at the restore destination.
+	// This parameter is valid only when **RestoreType*	- is set to **ECS_FILE**. The file path of the restore destination.
 	//
 	// example:
 	//
 	// C:\\
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// Valid only when **RestoreType*	- is **OSS**. Indicates the object prefix at the restore destination.
+	// This parameter is valid only when **RestoreType*	- is set to **OSS**. The object prefix of the restore destination.
 	//
 	// example:
 	//
 	// hbr
 	TargetPrefix *string `json:"TargetPrefix,omitempty" xml:"TargetPrefix,omitempty"`
-	// The name of the data table in the target Table Store.
+	// The name of the target data table in Tablestore for restoration.
 	//
 	// example:
 	//
 	// tablename
 	TargetTableName *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
-	// The time of the Table Store to be restored. UNIX timestamp, in seconds.
+	// The point in time to which the Tablestore data is restored. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1642496881
 	TargetTime *int64 `json:"TargetTime,omitempty" xml:"TargetTime,omitempty"`
-	// The parameter is valid only when the SourceType is set to UDM_ECS. It represents the details of the entire machine backup and is a JSON string. Depending on the value of RestoreType, different details must be passed as follows:
+	// This parameter is valid only when SourceType is set to UDM_ECS. The details of the full-copy migration backup. This parameter is a JSON string. The details vary depending on the value of RestoreType:
 	//
-	// - **UDM_ECS_DISK**: ECS disk cloning.
+	// - **UDM_ECS_DISK**: ECS cloud disk clone.
 	//
-	//   - **targetInstanceId**: string (required). Specifies the target ECS instance ID to which the cloned disk will be attached.
+	//   - **targetInstanceId**: string type, required. Instance ID of the target ECS instance to which the cloned cloud disk is attached.
 	//
-	//   - **diskCategory**: string (required). Specifies the type of the target disk.
+	//   - **diskCategory**: string type, required. The type of the target cloud disk.
 	//
-	//   - **diskPerformanceLevel**: string. When diskCategory is "essd", this indicates the disk performance level, supporting PL0, PL1, PL2, and PL3, with PL1 as the default.
+	//   - **diskPerformanceLevel**: string type. If diskCategory is set to essd, this parameter specifies the performance level (PL) of the cloud disk. Valid values: PL0, PL1, PL2, and PL3. Default value: PL1.
 	//
-	// - **UDM_ECS_DISK_ROLLBACK**: ECS disk rollback.
+	// - **UDM_ECS_DISK_ROLLBACK**: ECS cloud disk restoration.
 	//
-	//   - **sourceInstanceId**: string (required). Specifies the source ECS instance ID.
+	//   - **sourceInstanceId**: string type, required. Instance ID of the source ECS instance.
 	//
-	//   - **forceRestore**: bool (default: false). Indicates whether to force restore. NOTE: If forceRestore is set to true, the disk restoration will proceed even if the backup disk has been unmounted from the original ECS instance or mounted to another instance. Exercise caution when using this option.
+	//   - **foreceRestore**: bool type. Default value: false. Specifies whether to forcibly restore. If foreceRestore is set to true, the restore job still restores the cloud disk even if the backed-up cloud disk has been unmounted from the original ECS instance or attached to a new ECS instance. Proceed with caution.
 	//
-	//   - **bootAfterRestore**: bool (default: false). Indicates whether to start the ECS instance after restoration.
+	//   - **bootAfterRestore**: bool type. Default value: false. Specifies whether to start the ECS instance after restoration.
 	//
-	// - **UDM_ECS**: Full ECS cloning.
+	// - **UDM_ECS**: ECS full-copy clone.
 	//
-	//   - **bootAfterRestore**: bool (default: false). Indicates whether to start the ECS instance after restoration.
+	//   - **bootAfterRestore**: bool type. Default value: false. Specifies whether to start the ECS instance after restoration.
 	//
-	//   - **diskCategory**: string (required). Specifies the type of the target disk.
+	//   - **diskCategory**: string type, required. The type of the target cloud disk.
 	//
-	//   - **diskPerformanceLevel**: string. When diskCategory is "essd", this indicates the disk performance level (PL0/PL1/PL2/PL3), defaulting to PL1.
+	//   - **diskPerformanceLevel**: string type. If diskCategory is set to essd, this parameter specifies the performance level (PL) of the cloud disk. Valid values: PL0, PL1, PL2, and PL3. Default value: PL1.
 	//
-	//   - **instanceType**: string (required). Specifies the specification of the target ECS instance.
+	//   - **instanceType**: string type, required. The instance type of the target ECS instance.
 	//
-	//   - **restoredNetwork**: string (required). Specifies the vSwitch ID for the target ECS instance.
+	//   - **restoredNetwork**: string type, required. The vSwitch ID of the target ECS instance.
 	//
-	//   - **securityGroup**: string (required). Specifies the security group ID for the target ECS instance.
+	//   - **securityGroup**: string type, required. The security group ID of the target ECS instance.
 	//
-	//   - **restoredName:*	- string (required). Specifies the instance name of the target ECS instance.
+	//   - **restoredName**: string type, required. The instance name of the target ECS instance.
 	//
-	//   - **restoredHostName**: string (required). Specifies the host name of the target ECS instance.
+	//   - **restoredHostName**: string type, required. The hostname of the target ECS instance.
 	//
-	//   - **allocatePublicIp**: bool (default: false). Indicates whether to assign a public IP to the target ECS instance.
+	//   - **allocatePublicIp**: bool type. Default value: false. Specifies whether to assign a public IP address to the target ECS instance.
 	//
-	//   - **privateIpAddress**: string. Specifies the internal IP address of the target ECS instance. If not specified, an IP will be assigned via DHCP.
+	//   - **privateIpAddress**: string type. The internal IP address of the target ECS instance. If this parameter is not specified, DHCP is used to randomly assign an IP address.
 	//
-	// - **UDM_ECS_ROLLBACK**: Full ECS rollback.
+	// - **UDM_ECS_ROLLBACK**: ECS full-copy restoration.
 	//
-	//   - **sourceInstanceId**: string (required). Specifies the source ECS instance ID.
+	//   - **sourceInstanceId**: string type, required. Instance ID of the source ECS instance.
 	//
-	//   - **forceRestore**: bool (default: false). Indicates whether to force restore. NOTE: If forceRestore is set to true, the disk restoration will proceed even if the backup disk has been unmounted from the original ECS instance or mounted to another instance. Exercise caution when using this option.
+	//   - **forceRestore**: bool type. Default value: false. Specifies whether to forcibly restore. If foreceRestore is set to true, the restore job still restores the cloud disk even if the backed-up cloud disk has been unmounted from the original ECS instance or attached to a new ECS instance. Proceed with caution.
 	//
-	//   - **bootAfterRestore**: bool (default: false). Indicates whether to start the ECS instance after restoration.
+	//   - **bootAfterRestore**: bool type. Default value: false. Specifies whether to start the ECS instance after restoration.
 	//
 	// example:
 	//
 	// {\\"sourceInstanceId\\":\\"i-uf62te6pm3iwsyxyz66q\\",\\"bootAfterRestore\\":false}
 	UdmDetail map[string]interface{} `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty"`
-	// Valid only when **SourceType*	- is **UDM_ECS**. Indicates the target region for the restore.
+	// This parameter is valid only when **SourceType*	- is set to **UDM_ECS**. The destination region for restoration.
 	//
 	// example:
 	//
 	// cn-shanghai
 	UdmRegionId *string `json:"UdmRegionId,omitempty" xml:"UdmRegionId,omitempty"`
-	// The ID of the backup vault that the snapshot belongs to.
+	// The ID of the backup vault to which the backup snapshot belongs.
 	//
 	// example:
 	//

@@ -20,13 +20,13 @@ type iUpdateClientSettingsResponseBody interface {
 }
 
 type UpdateClientSettingsResponseBody struct {
-	// The HTTP status code. The status code 200 indicates that the request was successful.
+	// The response code. 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	// The response message. "successful" is returned for success. An error message is returned for failure.
 	//
 	// example:
 	//
@@ -38,11 +38,11 @@ type UpdateClientSettingsResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request was successful.
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//

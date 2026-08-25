@@ -24,13 +24,13 @@ type iCreateReplicationVaultResponseBody interface {
 }
 
 type CreateReplicationVaultResponseBody struct {
-	// The response code. The status code 200 indicates that the request was successful.
+	// The return code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	// The returned message. The value "successful" is returned for successful requests. An error message is returned for failed requests.
 	//
 	// example:
 	//
@@ -42,17 +42,17 @@ type CreateReplicationVaultResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request was successful.
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the job that is used to initialize the backup vault. You can call the DescribeTask operation to query the job status.
+	// The initialization task ID of the backup vault. You can call DescribeTask to query the task status.
 	//
 	// example:
 	//

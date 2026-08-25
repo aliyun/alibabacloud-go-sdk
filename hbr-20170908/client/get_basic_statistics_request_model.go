@@ -14,6 +14,10 @@ type iGetBasicStatisticsRequest interface {
 }
 
 type GetBasicStatisticsRequest struct {
+	// The data source type. The valid value is:
+	//
+	// - **ECS_FILE**: ECS File Backup.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -28,31 +28,50 @@ type iDescribeDataSourcesResponseBody interface {
 }
 
 type DescribeDataSourcesResponseBody struct {
+	// The HTTP status code. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
-	Code        *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data sources.
 	DataSources []*DescribeDataSourcesResponseBodyDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	// The response message. The value is "successful" if the request was successful, or an error message if the request failed.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size. Valid values: 1 to 99. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 36A5CD24-****-****-****-5F30C3F1753F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of returned data sources.
+	//
 	// example:
 	//
 	// 20
@@ -153,54 +172,64 @@ func (s *DescribeDataSourcesResponseBody) Validate() error {
 }
 
 type DescribeDataSourcesResponseBodyDataSources struct {
+	// The client group ID used to access the data source.
+	//
 	// example:
 	//
-	// [
-	//
-	//       "/home/alice/log"
-	//
-	// ]
+	// cl-0003jyv******fsku5m
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The connection information of the data source, which describes how to access the data source.
+	//
 	// example:
 	//
 	// {
 	//
-	//       "dataServerAddresses": [
+	//     "dataServerAddresses": [
 	//
-	//             {
+	//         {
 	//
-	//                   "host": "123.123.123.123",
+	//             "host": "123.123.123.123",
 	//
-	//                   "port": "8080"
+	//             "port": "8080"
 	//
-	//             }
+	//         }
 	//
-	//       ],
+	//     ],
 	//
-	//       "sharePath": "/share",
+	//     "sharePath": "/share",
 	//
-	//       "mountOptions": "",
+	//     "mountOptions": "vers=3",
 	//
-	//       "fileSystemType": "nfs"
+	//     "fileSystemType": "nfs"
 	//
 	// }
 	ConnectionInfo *string `json:"ConnectionInfo,omitempty" xml:"ConnectionInfo,omitempty"`
+	// The time when the data source was created. UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1770257653
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// ds-000******2nqeo
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The data source name.
+	//
 	// example:
 	//
 	// COMMON_NAS
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// The data source type.
+	//
 	// example:
 	//
 	// COMMON_NAS
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The paths excluded from analysis. Archiving feature only.
+	//
 	// example:
 	//
 	// [
@@ -209,6 +238,8 @@ type DescribeDataSourcesResponseBodyDataSources struct {
 	//
 	// ]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	// The paths included in the analysis. Archiving feature only.
+	//
 	// example:
 	//
 	// [
@@ -219,39 +250,64 @@ type DescribeDataSourcesResponseBodyDataSources struct {
 	//
 	// ]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
+	// Whether the index is available. Archiving feature only.
+	//
 	// example:
 	//
 	// true
 	IndexAvailable *bool `json:"IndexAvailable,omitempty" xml:"IndexAvailable,omitempty"`
+	// The index level. Valid values:
+	//
+	// - OFF: No index is created.
+	//
+	// - META: A metadata index is created.
+	//
+	// - ALL: A full-text index is created. This value is deprecated.
+	//
 	// example:
 	//
 	// META
 	IndexLevel *string `json:"IndexLevel,omitempty" xml:"IndexLevel,omitempty"`
+	// The time when the index was last updated. UNIX timestamp in seconds. Archiving feature only.
+	//
 	// example:
 	//
 	// 1745454604
 	IndexUpdateTime *bool `json:"IndexUpdateTime,omitempty" xml:"IndexUpdateTime,omitempty"`
+	// Whether an index is being built. Archiving feature only.
+	//
 	// example:
 	//
 	// false
 	Indexing *bool `json:"Indexing,omitempty" xml:"Indexing,omitempty"`
+	// The analysis options. Archiving feature only.
+	//
 	// example:
 	//
 	// {}
-	Options *string   `json:"Options,omitempty" xml:"Options,omitempty"`
-	Paths   []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The analysis paths. Archiving feature only.
+	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	// The analysis plan ID. Archiving feature only.
+	//
 	// example:
 	//
 	// plan-123***7890
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// The analysis schedule. Archiving feature only. Format: `I|{startTime}|{interval}`. `{startTime}` is the start time as a UNIX timestamp in seconds. `{interval}` is the execution interval in ISO 8601 format. Example: PT1H for one hour, P1D for one day.
+	//
 	// example:
 	//
 	// I|1729493847|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	// The rate limit configuration. Archiving feature only.
+	//
 	// example:
 	//
 	// 6:21:10240
 	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
+	// The time when the data source was last updated. UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1745454604

@@ -26,24 +26,42 @@ type iGetBasicStatisticsResponseBody interface {
 }
 
 type GetBasicStatisticsResponseBody struct {
+	// The HTTP status code. A value of 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
-	Code             *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The Backup statistics for all regions.
 	GlobalStatistics *GetBasicStatisticsResponseBodyGlobalStatistics `json:"GlobalStatistics,omitempty" xml:"GlobalStatistics,omitempty" type:"Struct"`
+	// The response message. If the request is successful, `successful` is returned. If the request fails, an error message is returned.
+	//
 	// example:
 	//
 	// successful
-	Message          *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The Backup statistics for each region.
 	RegionStatistics []*GetBasicStatisticsResponseBodyRegionStatistics `json:"RegionStatistics,omitempty" xml:"RegionStatistics,omitempty" type:"Repeated"`
+	// The Request ID.
+	//
 	// example:
 	//
 	// EB526A5D-1FE2-51C1-B790-1732C1DBA969
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The data source type. The valid value is:
+	//
+	// - **ECS_FILE**: ECS File Backup.
+	//
 	// example:
 	//
 	// ECS_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -140,10 +158,18 @@ func (s *GetBasicStatisticsResponseBody) Validate() error {
 }
 
 type GetBasicStatisticsResponseBodyGlobalStatistics struct {
+	// The backed-up data size, in bytes.
+	//
+	// - When `SourceType` is set to `ECS_FILE`, this parameter represents the total capacity of backed-up Cloud Disks.
+	//
 	// example:
 	//
 	// 42949672960
 	ProtectedDataSize *int64 `json:"ProtectedDataSize,omitempty" xml:"ProtectedDataSize,omitempty"`
+	// The number of backed-up resources.
+	//
+	// - When `SourceType` is set to `ECS_FILE`, this parameter represents the number of backed-up ECS instances.
+	//
 	// example:
 	//
 	// 5
@@ -181,14 +207,24 @@ func (s *GetBasicStatisticsResponseBodyGlobalStatistics) Validate() error {
 }
 
 type GetBasicStatisticsResponseBodyRegionStatistics struct {
+	// The backed-up data size, in bytes.
+	//
+	// - When `SourceType` is set to `ECS_FILE`, this parameter represents the total capacity of backed-up Cloud Disks.
+	//
 	// example:
 	//
 	// 42949672960
 	ProtectedDataSize *int64 `json:"ProtectedDataSize,omitempty" xml:"ProtectedDataSize,omitempty"`
+	// The number of backed-up resources.
+	//
+	// - When `SourceType` is set to `ECS_FILE`, this parameter represents the number of backed-up ECS instances.
+	//
 	// example:
 	//
 	// 5
 	ProtectedResourceCount *int32 `json:"ProtectedResourceCount,omitempty" xml:"ProtectedResourceCount,omitempty"`
+	// The Region ID.
+	//
 	// example:
 	//
 	// cn-shenzhen

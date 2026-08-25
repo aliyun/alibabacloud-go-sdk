@@ -62,9 +62,9 @@ type DescribeContainerClusterResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// 	- true: The call is successful.
+	// - true: The call is successful.
 	//
-	// 	- false: The call fails.
+	// - false: The call fails.
 	//
 	// example:
 	//
@@ -174,11 +174,11 @@ func (s *DescribeContainerClusterResponseBody) Validate() error {
 type DescribeContainerClusterResponseBodyClusters struct {
 	// The status of the client. Valid values:
 	//
-	// 	- **MISS**: The client is disconnected.
+	// - **MISS**: The client is disconnected.
 	//
-	// 	- **UNKNOWN**: The client is in an unknown state.
+	// - **UNKNOWN**: The client is in an unknown state.
 	//
-	// 	- **READY**: The client is ready.
+	// - **READY**: The client is ready.
 	//
 	// example:
 	//
@@ -208,7 +208,7 @@ type DescribeContainerClusterResponseBodyClusters struct {
 	//
 	// c5bbd0931a30947f4ab85efd19380a72d
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	// The name of the instance.
+	// The cluster name.
 	//
 	// example:
 	//
@@ -216,9 +216,9 @@ type DescribeContainerClusterResponseBodyClusters struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The network type of the cluster. Valid values:
 	//
-	// 	- **CLASSIC**: the classic network
+	// - **CLASSIC**: the classic network
 	//
-	// 	- **VPC**: virtual private cloud (VPC)
+	// - **VPC**: virtual private cloud (VPC)
 	//
 	// example:
 	//

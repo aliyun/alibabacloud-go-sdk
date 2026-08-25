@@ -38,9 +38,9 @@ type DetachNasFileSystemRequest struct {
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
 	// Specifies whether data is backed up and restored within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
 	//
-	// 	- SELF_ACCOUNT: Data is backed up and restored within the same Alibaba Cloud account.
+	// - SELF_ACCOUNT: Data is backed up and restored within the same Alibaba Cloud account.
 	//
-	// 	- CROSS_ACCOUNT: Data is backed up and restored across Alibaba Cloud accounts.
+	// - CROSS_ACCOUNT: Data is backed up and restored across Alibaba Cloud accounts.
 	//
 	// example:
 	//

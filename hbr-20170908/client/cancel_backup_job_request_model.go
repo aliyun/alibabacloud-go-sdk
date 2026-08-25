@@ -18,6 +18,8 @@ type iCancelBackupJobRequest interface {
 }
 
 type CancelBackupJobRequest struct {
+	// The edition type. Valid values are BASIC and STANDARD. The default value is STANDARD.
+	//
 	// example:
 	//
 	// STANDARD
@@ -30,7 +32,7 @@ type CancelBackupJobRequest struct {
 	//
 	// j-******************************
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the backup vault.
+	// The ID of the backup repository.
 	//
 	// example:
 	//

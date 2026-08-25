@@ -69,7 +69,7 @@ func (client *Client) AddContainerClusterWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 添加跨账号信息
+// Create a cross-account management relationship.
 //
 // @param request - AddCrossAccountRequest
 //
@@ -123,6 +123,18 @@ func (client *Client) AddCrossAccountWithContext(ctx context.Context, request *A
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a data source.
+//
+// Description:
+//
+// - The local NAS backup feature supports the local NAS (`COMMON_NAS`) data source type.
+//
+// - The CPFS backup feature supports the following data source types: CPFS (`CPFS`), CPFS AI-Computing Edition (`BMCPFS`), and other large-scale file system (`COMMON_FILE_SYSTEM`).
+//
+// - The archive feature supports the following data source types: local NAS (`COMMON_NAS`), HDFS (`HDFS`), and S3 (`S3`).
+//
 // @param request - AddDataSourceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -209,7 +221,7 @@ func (client *Client) AddDataSourceWithContext(ctx context.Context, request *Add
 
 // Summary:
 //
-// 浏览备份文件
+// Browses the list of backup files in a specified backup snapshot.
 //
 // @param request - BrowseFilesRequest
 //
@@ -469,7 +481,7 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Checks whether the user has permissions to access the current resource or page.
+// Checks whether the current user has permissions to access a specific resource or page.
 //
 // @param request - CheckRoleRequest
 //
@@ -639,17 +651,25 @@ func (client *Client) CreateBackupJobWithContext(ctx context.Context, tmpReq *Cr
 
 // Summary:
 //
-// Create a backup plan.
+// Creates a backup plan.
 //
 // Description:
 //
-// - A backup plan associates data sources with backup policies and other necessary information for backups. After the execution of a backup plan, it generates a backup task that records the progress and results of the backup. If the backup task is successful, a backup snapshot is created. You can use the backup snapshot to create a recovery task.
+//	Notice:
 //
-// - A backup plan supports only one type of data source.
+// - To use features such as ECS File Backup Essential Edition, cloud disk backup, container backup, Tablestore backup free trial, archiving, or data synchronization, call this operation.
 //
-// - A backup plan supports only a single fixed interval backup cycle strategy.
+// - To use the 30-day free trial of NAS backup or OSS backup, call the CreateTrialBackupPlan operation.
 //
-// - A backup plan can back up to only one backup vault.
+// - To use standard capabilities of ECS File Backup Standard Edition, local file backup, ECS full-copy backup, NAS backup, OSS backup, or CPFS backup, call the CreatePolicyV2 and CreatePolicyBindings operations.
+//
+// - A backup plan associates a data source with a backup policy and other information required for backup. After a backup plan is executed, a backup job is generated to record the backup progress and result. If the backup job succeeds, a backup snapshot is generated. You can use the backup snapshot to create a restore job.
+//
+// - A backup plan supports only one data source.
+//
+// - A backup plan supports only a single backup cycle policy with a fixed interval.
+//
+// - A backup plan can back up data to only one vault.
 //
 // @param tmpReq - CreateBackupPlanRequest
 //
@@ -1215,13 +1235,13 @@ func (client *Client) CreateHanaRestoreWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Binds one or more data sources to a backup policy.
+// Binds one or more data sources to a policy.
 //
 // Description:
 //
-//	  You can bind data sources to only one policy in each request.
+// - Each call supports binding only data sources of the same type to a single policy.
 //
-//		- Elastic Compute Service (ECS) instances can be bound to only one policy.
+// - ECS instances (full server backup) can be bound to only one policy.
 //
 // @param tmpReq - CreatePolicyBindingsRequest
 //
@@ -1277,17 +1297,17 @@ func (client *Client) CreatePolicyBindingsWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Creates a backup policy.
+// Creates a policy.
 //
 // Description:
 //
-// A backup policy records the information required for backup. After you execute a backup policy, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+// A backup policy records the information required for backup. After a backup policy is executed, a backup job is generated to record the backup progress and result. If the backup job succeeds, a backup snapshot is generated. You can use the backup snapshot to create a restore job.
 //
-//   - A backup policy supports multiple data sources. The data sources can be only Elastic Compute Service (ECS) instances.
+// - A backup policy supports multiple data source types, including NAS backup, OSS backup, ECS instance backup, ECS File Backup Essential Edition, local file backup, Tablestore backup, and CPFS backup.
 //
-//   - You can specify only one interval as a backup cycle in a backup policy.
+// - A backup policy supports only a single backup cycle policy with a fixed interval.
 //
-//   - Each backup policy allows you to back up data to only one backup vault.
+// - A backup policy can back up data to only one backup vault.
 //
 // @param tmpReq - CreatePolicyV2Request
 //
@@ -1349,11 +1369,13 @@ func (client *Client) CreatePolicyV2WithContext(ctx context.Context, tmpReq *Cre
 
 // Summary:
 //
-// Creates a mirror vault.
+// *[Deprecated]*	- Creates a replication target vault and configures cross-region replication. This API operation does not support cross-account replication and is deprecated. Use CreateVault and CreateVaultReplication instead for full capabilities.
 //
 // Description:
 //
-// After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state.Call this operation in the region where the mirror vault resides, which is specified by the VaultRegionId parameter.
+// After the backup vault is created, its status is INITIALIZING, and an initialization task is automatically initiated. After the task succeeds, the vault status changes to CREATED.
+//
+// Call this operation in the region where the replication target vault resides (VaultRegionId).
 //
 // @param request - CreateReplicationVaultRequest
 //
@@ -1429,13 +1451,13 @@ func (client *Client) CreateReplicationVaultWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Create a restore job.
+// Creates a restore job.
 //
 // Description:
 //
-// - Create a restore job based on the selected snapshot and the restore destination.
+// - Creates a restore job based on the selected snapshot and restore destination.
 //
-// - Currently, the data source type must match the restore destination data source type.
+// - The data source type and the restore destination data source type must be the same.
 //
 // @param tmpReq - CreateRestoreJobRequest
 //
@@ -1659,13 +1681,13 @@ func (client *Client) CreateTempFileUploadUrlWithContext(ctx context.Context, re
 //
 // Description:
 //
-//	  Each Alibaba Cloud account can create up to 100 backup vaults.
+// - Each Alibaba Cloud account can create a maximum of 100 backup vaults.
 //
-//		- After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state. A backup job can use a backup vault to store backup data only if the backup vault is in the CREATED state.
+// - After a backup vault is created, its status is INITIALIZING and an initialization task automatically starts. After the task is successfully completed, the status changes to CREATED. The backup vault can be used for backup jobs only when its status is CREATED.
 //
-//	    **
+//		Notice:
 //
-//	    **Note*	- Before you call this operation, make sure that you fully understand the billing of Cloud Backup.
+//	Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.aliyun.com/price/detail/hbr?) of Cloud Backup.
 //
 // @param request - CreateVaultRequest
 //
@@ -1741,7 +1763,11 @@ func (client *Client) CreateVaultWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// 创建备份库复制
+// Configures backup vault replication.
+//
+// Description:
+//
+// Call this method in the region where the destination backup vault is located. Before you use this API, review the billing methods and pricing of Cloud Backup.
 //
 // @param request - CreateVaultReplicationRequest
 //
@@ -1791,9 +1817,11 @@ func (client *Client) CreateVaultReplicationWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DeleteAirEcsInstance is deprecated
+//
 // Summary:
 //
-// Removes the Elastic Compute Service (ECS) instance that is used for restoration only in ECS Backup Essential Edition.
+// Removes a restore-only ECS instance from ECS Backup Essential Edition.
 //
 // @param tmpReq - DeleteAirEcsInstanceRequest
 //
@@ -1851,15 +1879,15 @@ func (client *Client) DeleteAirEcsInstanceWithContext(ctx context.Context, tmpRe
 //
 // Description:
 //
-//	  You cannot delete the active Cloud Backup clients that receive heartbeat packets within 1 hour. You can call the UninstallBackupClients operation to uninstall a Cloud Backup client. Then, the client becomes inactive.
+// - You cannot delete the active Cloud Backup clients that receive heartbeat packets within 1 hour. You can call the UninstallBackupClients operation to uninstall a Cloud Backup client. Then, the client becomes inactive.
 //
-//		- When you perform this operation, resources that are associated with the client are also deleted, including:
+// - When you perform this operation, resources that are associated with the client are also deleted, including:
 //
-//	    	- Backup plans
+//   - Backup plans
 //
-//	    	- Backup jobs
+//   - Backup jobs
 //
-//	    	- Snapshots
+//   - Snapshots
 //
 // @param request - DeleteBackupClientRequest
 //
@@ -1903,11 +1931,11 @@ func (client *Client) DeleteBackupClientWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Deletes the resources that are related to one or more HBR clients.
+// Deletes the resources of a backup client.
 //
 // Description:
 //
-// This operation deletes only the resources that are related to HBR clients. The resources include backup plans, backup jobs, and backup snapshots. The operation does not delete HBR clients.
+// This operation does not delete the backup client. It only deletes the resources of the backup client, such as backup plans, backup jobs, and snapshots.
 //
 // @param tmpReq - DeleteBackupClientResourceRequest
 //
@@ -1961,9 +1989,9 @@ func (client *Client) DeleteBackupClientResourceWithContext(ctx context.Context,
 //
 // Description:
 //
-//	  If you delete a backup plan, the backup jobs are also deleted.
+// - Deleting a backup plan also deletes the associated backup jobs.
 //
-//		- If you delete a backup plan, the created snapshot files are not deleted.
+// - Deleting a backup plan does not delete existing snapshots.
 //
 // @param request - DeleteBackupPlanRequest
 //
@@ -2023,7 +2051,7 @@ func (client *Client) DeleteBackupPlanWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除客户端
+// Deletes a client.
 //
 // @param request - DeleteClientRequest
 //
@@ -2073,6 +2101,10 @@ func (client *Client) DeleteClientWithContext(ctx context.Context, request *Dele
 	return _result, _err
 }
 
+// Summary:
+//
+// Unregisters a container cluster record in Cloud Backup. After you unregister the cluster, you cannot recover backups of the cluster.
+//
 // @param request - DeleteContainerClusterRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2119,7 +2151,7 @@ func (client *Client) DeleteContainerClusterWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 删除跨账号信息
+// Deletes a cross-account management relationship.
 //
 // @param request - DeleteCrossAccountRequest
 //
@@ -2287,7 +2319,7 @@ func (client *Client) DeleteHanaInstanceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Disassociates one or more data sources from a backup policy. After you disassociate the data sources from the backup policy, the backup policy no longer protects the data sources. Proceed with caution.
+// Dissociates a data source from a policy. After the dissociation, the policy can no longer protect the data source. Proceed with caution.
 //
 // @param tmpReq - DeletePolicyBindingRequest
 //
@@ -2347,11 +2379,11 @@ func (client *Client) DeletePolicyBindingWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Deletes a backup policy.
+// Deletes a policy.
 //
 // Description:
 //
-// If you delete a backup policy, the backup policy is disassociated with all data sources. Proceed with caution.
+// When you delete a policy, it is detached from all associated data sources. Proceed with caution.
 //
 // @param request - DeletePolicyV2Request
 //
@@ -2609,7 +2641,11 @@ func (client *Client) DeleteVaultWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// 关闭备份库复制
+// Stops backup vault replication.
+//
+// Description:
+//
+// You can call this method in the region of the destination backup vault.
 //
 // @param request - DeleteVaultReplicationRequest
 //
@@ -2661,7 +2697,7 @@ func (client *Client) DeleteVaultReplicationWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the information about one or more HBR clients that meet the specified conditions.
+// Retrieves information about one or more backup clients that meet the specified conditions.
 //
 // @param tmpReq - DescribeBackupClientsRequest
 //
@@ -2757,7 +2793,7 @@ func (client *Client) DescribeBackupClientsWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// Queries the information about one or more backup jobs that meet the specified conditions.
+// Queries backup jobs that meet the specified criteria.
 //
 // @param request - DescribeBackupJobs2Request
 //
@@ -2821,7 +2857,7 @@ func (client *Client) DescribeBackupJobs2WithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the information about one or more backup plans that meet the specified conditions.
+// Retrieves one or more backup plans that meet the specified conditions.
 //
 // @param request - DescribeBackupPlansRequest
 //
@@ -2961,7 +2997,7 @@ func (client *Client) DescribeClientsWithContext(ctx context.Context, request *D
 //
 // Description:
 //
-// You can call this operation to query only Container Service for Kubernetes (ACK) clusters.
+// Supported only for Container Service for Kubernetes (ACK) integration.
 //
 // @param request - DescribeContainerClusterRequest
 //
@@ -3015,6 +3051,10 @@ func (client *Client) DescribeContainerClusterWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of container cluster resources.
+//
 // @param request - DescribeContainerResourceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3073,7 +3113,7 @@ func (client *Client) DescribeContainerResourceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the information about the accounts used in cross-account backup.
+// Queries cross-account management relationships.
 //
 // @param request - DescribeCrossAccountsRequest
 //
@@ -3119,6 +3159,10 @@ func (client *Client) DescribeCrossAccountsWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of data sources. Filter results by data source type, data source ID, data source name, or client group ID.
+//
 // @param request - DescribeDataSourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3181,7 +3225,7 @@ func (client *Client) DescribeDataSourcesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries one or more SAP HANA backup plans that meet the specified conditions.
+// Queries for one or more SAP HANA backup plans that match specified criteria.
 //
 // @param request - DescribeHanaBackupPlansRequest
 //
@@ -3758,21 +3802,35 @@ func (client *Client) DescribeOtsTableSnapshotsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries one or more backup policies.
+// Queries one or more policies.
 //
-// @param request - DescribePoliciesV2Request
+// @param tmpReq - DescribePoliciesV2Request
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribePoliciesV2Response
-func (client *Client) DescribePoliciesV2WithContext(ctx context.Context, request *DescribePoliciesV2Request, runtime *dara.RuntimeOptions) (_result *DescribePoliciesV2Response, _err error) {
+func (client *Client) DescribePoliciesV2WithContext(ctx context.Context, tmpReq *DescribePoliciesV2Request, runtime *dara.RuntimeOptions) (_result *DescribePoliciesV2Response, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &DescribePoliciesV2ShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Accounts) {
+		request.AccountsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Accounts, dara.String("Accounts"), dara.String("json"))
+	}
+
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AccountScope) {
+		body["AccountScope"] = request.AccountScope
+	}
+
+	if !dara.IsNil(request.AccountsShrink) {
+		body["Accounts"] = request.AccountsShrink
+	}
+
 	if !dara.IsNil(request.MaxResults) {
 		body["MaxResults"] = request.MaxResults
 	}
@@ -3783,6 +3841,10 @@ func (client *Client) DescribePoliciesV2WithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.PolicyId) {
 		body["PolicyId"] = request.PolicyId
+	}
+
+	if !dara.IsNil(request.RuleScope) {
+		body["RuleScope"] = request.RuleScope
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3810,7 +3872,7 @@ func (client *Client) DescribePoliciesV2WithContext(ctx context.Context, request
 
 // Summary:
 //
-// Query one or more data sources bound to a policy, or query one or more policies bound to a data source.
+// Queries one or more data sources bound to a policy, or queries one or more policies bound to a data source.
 //
 // @param tmpReq - DescribePolicyBindingsRequest
 //
@@ -3934,7 +3996,7 @@ func (client *Client) DescribeRecoverableOtsInstancesWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries one or more restore jobs that meet the specified conditions.
+// Queries restore jobs that match specified criteria.
 //
 // @param request - DescribeRestoreJobs2Request
 //
@@ -4046,7 +4108,7 @@ func (client *Client) DescribeTaskWithContext(ctx context.Context, request *Desc
 
 // Summary:
 //
-// Queries the backup snapshots of an Elastic Compute Service (ECS) instance.
+// Queries the snapshots of full backups.
 //
 // @param tmpReq - DescribeUdmSnapshotsRequest
 //
@@ -4174,7 +4236,7 @@ func (client *Client) DescribeVaultReplicationRegionsWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the information about one or more backup vaults that meet the specified conditions.
+// Retrieves information about one or more backup vaults that meet the specified conditions.
 //
 // @param request - DescribeVaultsRequest
 //
@@ -4264,9 +4326,9 @@ func (client *Client) DescribeVaultsWithContext(ctx context.Context, request *De
 //
 // Description:
 //
-//	  If the request is successful, the mount target is deleted.
+// - If the request is successful, the mount target is deleted.
 //
-//		- After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status*	- column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
+// - After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. Call this operation to delete the mount target. In the **Status*	- column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
 //
 // @param request - DetachNasFileSystemRequest
 //
@@ -4330,7 +4392,7 @@ func (client *Client) DetachNasFileSystemWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// After you call this operation, the backup plan is suspended. In the DescribeBackupPlans operation, the Disabled parameter is set to true.
+// If the call is successful, the backup plan is disabled. The value of the Disabled parameter is then returned as true in the response of the DescribeBackupPlans operation.
 //
 // @param request - DisableBackupPlanRequest
 //
@@ -4446,11 +4508,11 @@ func (client *Client) DisableHanaBackupPlanWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Enables a backup plan.
+// Resumes a backup plan.
 //
 // Description:
 //
-// After you call this operation, the backup plan is restarted (Disabled is set to false in the DescribeBackupPlans operation). Cloud Backup continues to perform backups based on the policy specified in the backup plan.
+// If the call is successful, the backup plan is enabled. The plan then executes backups according to its policy. In the response of the DescribeBackupPlans operation, the value of the Disabled parameter is false.
 //
 // @param request - EnableBackupPlanRequest
 //
@@ -4740,7 +4802,7 @@ func (client *Client) GenerateRamPolicyWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Obtains basic backup statistics.
+// Retrieves basic statistics for Backup.
 //
 // @param request - GetBasicStatisticsRequest
 //
@@ -4828,15 +4890,15 @@ func (client *Client) GetTempFileDownloadLinkWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Installs an HBR client on one or more Elastic Compute Service (ECS) instances.
+// Installs backup clients on one or more ECS instances.
 //
 // Description:
 //
-//	  This operation creates an asynchronous job at the backend and calls Cloud Assistant to install an HBR client on an ECS instance.
+// - This operation creates a background asynchronous task. The task uses Cloud Assistant to install backup clients on ECS instances.
 //
-//		- You can call the [DescribeTask](https://help.aliyun.com/document_detail/431265.html) operation to query the execution result of an asynchronous job.
+// - Call the [DescribeTask](https://help.aliyun.com/document_detail/431265.html) operation to get the task result.
 //
-//		- The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 60 seconds after you call the InstallBackupClients operation to install HBR clients. Then, run the next queries at an interval of 30 seconds.
+// - The task timeout is 15 minutes. After the task is created, wait 60 seconds before making the first query. Then, query the result every 30 seconds.
 //
 // @param tmpReq - InstallBackupClientsRequest
 //
@@ -4898,7 +4960,7 @@ func (client *Client) InstallBackupClientsWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 查询已保护的资源列表
+// Queries the list of protected resources.
 //
 // @param request - ListProtectedResourcesRequest
 //
@@ -4964,6 +5026,16 @@ func (client *Client) ListProtectedResourcesWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a data source.
+//
+// Description:
+//
+//	Warning:
+//
+// Deleting a data source can cause data loss or render related data unqueryable. Before you delete the data source, ensure that you have removed all associated backup data and backup plans.
+//
 // @param request - RemoveDataSourceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5006,7 +5078,7 @@ func (client *Client) RemoveDataSourceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the information about one or more backup snapshots that meet the specified conditions.
+// Retrieves one or more historical backup snapshots that meet the specified criteria.
 //
 // @param tmpReq - SearchHistoricalSnapshotsRequest
 //
@@ -5454,11 +5526,11 @@ func (client *Client) UpdateBackupPlanWithContext(ctx context.Context, tmpReq *U
 
 // Summary:
 //
-// Updates the configurations of an HBR client.
+// Updates the configuration of a backup client.
 //
 // Description:
 //
-// You can call this operation to update the configurations of both the old and new HBR clients.
+// Applies to updating both legacy and new clients.
 //
 // @param request - UpdateClientSettingsRequest
 //
@@ -5612,6 +5684,10 @@ func (client *Client) UpdateContainerClusterWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the data source configuration.
+//
 // @param request - UpdateDataSourceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6014,7 +6090,7 @@ func (client *Client) UpdateHanaRetentionSettingWithContext(ctx context.Context,
 
 // Summary:
 //
-// Modifies the association between a backup policy and a data source.
+// Modifies the association between a policy and a data source.
 //
 // @param tmpReq - UpdatePolicyBindingRequest
 //
@@ -6102,11 +6178,11 @@ func (client *Client) UpdatePolicyBindingWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Modifies a backup policy.
+// Modifies a policy.
 //
 // Description:
 //
-// If you modify a backup policy, the modification takes effect on all data sources that are bound to the backup policy. Proceed with caution.
+// Modifications to a policy take effect on all associated data sources. Proceed with caution.
 //
 // @param tmpReq - UpdatePolicyV2Request
 //
@@ -6310,7 +6386,7 @@ func (client *Client) UpgradeBackupClientsWithContext(ctx context.Context, tmpRe
 //
 // Description:
 //
-// You can call this operation to upgrade a Cloud Backup client to the latest version. After the Cloud Backup client is upgraded, the version of the client cannot be rolled back.
+// Upgrades a Cloud Backup client to the latest version. After the upgrade succeeds, the client version cannot be rolled back.
 //
 // @param request - UpgradeClientRequest
 //

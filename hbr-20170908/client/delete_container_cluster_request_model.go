@@ -16,12 +16,16 @@ type iDeleteContainerClusterRequest interface {
 }
 
 type DeleteContainerClusterRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc-0005**********hhjw
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Specifies whether to forcibly delete active container backup clients.
+	//
 	// example:
 	//
 	// false

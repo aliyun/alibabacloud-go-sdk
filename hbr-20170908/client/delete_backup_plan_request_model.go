@@ -22,6 +22,8 @@ type iDeleteBackupPlanRequest interface {
 }
 
 type DeleteBackupPlanRequest struct {
+	// The edition type. Valid values are BASIC and STANDARD. The default value is STANDARD.
+	//
 	// example:
 	//
 	// STANDARD
@@ -34,7 +36,7 @@ type DeleteBackupPlanRequest struct {
 	//
 	// plan-*********************
 	PlanId *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	// Specifies whether no running jobs are required.
+	// Specifies whether to prevent the deletion of the backup plan if backup jobs are running.
 	//
 	// example:
 	//
@@ -42,15 +44,15 @@ type DeleteBackupPlanRequest struct {
 	RequireNoRunningJobs *bool `json:"RequireNoRunningJobs,omitempty" xml:"RequireNoRunningJobs,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// 	- **ECS_FILE**: Elastic Compute Service (ECS) files
+	// - **ECS_FILE**: Backs up Elastic Compute Service (ECS) files.
 	//
-	// 	- **OSS**: Object Storage Service (OSS) buckets
+	// - **OSS**: Backs up Object Storage Service (OSS) buckets.
 	//
-	// 	- **NAS**: Apsara File Storage NAS file systems
+	// - **NAS**: Backs up Network Attached Storage (NAS) file systems.
 	//
-	// 	- **UDM_ECS**: ECS instances
+	// - **UDM_ECS**: Backs up entire ECS instances.
 	//
-	// 	- **OTS**: Tablestore instances
+	// - **OTS**: Backs up Tablestore instances.
 	//
 	// example:
 	//

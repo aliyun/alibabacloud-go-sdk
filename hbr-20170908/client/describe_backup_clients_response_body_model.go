@@ -28,53 +28,53 @@ type iDescribeBackupClientsResponseBody interface {
 }
 
 type DescribeBackupClientsResponseBody struct {
-	// The queried backup clients.
+	// The list of backup clients.
 	//
 	// example:
 	//
 	// {\\"Client\\": []}
 	Clients []*DescribeBackupClientsResponseBodyClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Repeated"`
-	// The HTTP status code. The status code 200 indicates that the call is successful.
+	// The response code. 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	// The returned message. The value "successful" is returned for successful requests. An error message is returned for failed requests.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number of the returned page. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page. Valid values: 1 to 99. Default value: 10.
+	// The number of entries per page. Minimum value: 1. Maximum value: 99. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the request was successful.
 	//
-	// 	- true: The call is successful.
+	// - true: The request was successful.
 	//
-	// 	- false: The call fails.
+	// - false: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of returned HBR clients that meet the specified conditions.
+	// The total number of backup clients that meet the specified conditions.
 	//
 	// example:
 	//
@@ -176,17 +176,17 @@ func (s *DescribeBackupClientsResponseBody) Validate() error {
 }
 
 type DescribeBackupClientsResponseBodyClients struct {
-	// Indicates whether the client is installed on an all-in-one PC that integrates hardware and monitoring program. Valid values:
+	// Indicates whether the client is a hardware monitoring appliance client.
 	//
-	// 	- true: The client is installed on an all-in-one PC that integrates hardware and monitoring program.
+	// - true: The client is a hardware monitoring appliance client.
 	//
-	// 	- false: The client is not installed on an all-in-one PC that integrates hardware and monitoring program.
+	// - false: The client is not a hardware monitoring appliance client.
 	//
 	// example:
 	//
 	// false
 	Appliance *bool `json:"Appliance,omitempty" xml:"Appliance,omitempty"`
-	// This parameter is valid only if the **ClientType*	- parameter is set to **ECS_CLIENT**. This parameter indicates the system architecture where the backup client resides. Valid values:
+	// This parameter is valid only when **ClientType*	- is set to **ECS_CLIENT**. The system architecture of the backup client. Valid values:
 	//
 	// 	- **amd64**
 	//
@@ -198,9 +198,9 @@ type DescribeBackupClientsResponseBodyClients struct {
 	ArchType *string `json:"ArchType,omitempty" xml:"ArchType,omitempty"`
 	// The protection status of the backup client. Valid values:
 	//
-	// 	- **UNPROTECTED**: The backup client is not protected.
+	// 	- **UNPROTECTED**: The server is not protected.
 	//
-	// 	- **PROTECTED**: The backup client is protected.
+	// 	- **PROTECTED**: The server is protected.
 	//
 	// example:
 	//
@@ -212,7 +212,7 @@ type DescribeBackupClientsResponseBodyClients struct {
 	//
 	// c-*********************
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The type of the backup client. Valid value: **ECS_CLIENT**, which indicates a client for ECS file backup.
+	// The type of the backup client. The value **ECS_CLIENT*	- indicates an ECS File Backup client.
 	//
 	// example:
 	//
@@ -224,7 +224,7 @@ type DescribeBackupClientsResponseBodyClients struct {
 	//
 	// 2.4.5
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	// The time when the backup client was created. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the backup client was created. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
@@ -238,21 +238,21 @@ type DescribeBackupClientsResponseBodyClients struct {
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
 	// The instance ID.
 	//
-	// 	- If the client is used to back up ECS files, this parameter indicates the ID of an ECS instance.
+	// - If the client type is ECS File Backup client, this parameter indicates the ECS instance ID.
 	//
-	// 	- If the client is used to back up on-premises files, this parameter indicates the hardware fingerprint that is generated based on the system information.
+	// - If the client type is local file backup client, this parameter indicates the hardware fingerprint generated based on system information.
 	//
 	// example:
 	//
 	// i-*********************
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// This parameter is valid only if the **ClientType*	- parameter is set to **ECS_CLIENT**. This parameter indicates the name of the ECS instance.
+	// This parameter is valid only when **ClientType*	- is set to **ECS_CLIENT**. The name of the ECS instance.
 	//
 	// example:
 	//
 	// instancename
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The last heartbeat time of the backup client. The value is a UNIX timestamp. Unit: seconds.
+	// The time of the last heartbeat of the backup client. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
@@ -264,7 +264,7 @@ type DescribeBackupClientsResponseBodyClients struct {
 	//
 	// 2.4.5
 	MaxClientVersion *string `json:"MaxClientVersion,omitempty" xml:"MaxClientVersion,omitempty"`
-	// This parameter is valid only if the **ClientType*	- parameter is set to **ECS_CLIENT**. This parameter indicates the operating system type of the backup client. Valid values:
+	// This parameter is valid only when **ClientType*	- is set to **ECS_CLIENT**. The operating system type of the client. Valid values:
 	//
 	// 	- **windows**
 	//
@@ -274,7 +274,7 @@ type DescribeBackupClientsResponseBodyClients struct {
 	//
 	// linux
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// This parameter is valid only if the **ClientType*	- parameter is set to **ECS_CLIENT**. This parameter indicates the internal IP address of the ECS instance.
+	// This parameter is valid only when **ClientType*	- is set to **ECS_CLIENT**. The internal IP address of the ECS instance.
 	//
 	// example:
 	//
@@ -284,29 +284,29 @@ type DescribeBackupClientsResponseBodyClients struct {
 	Settings *DescribeBackupClientsResponseBodyClientsSettings `json:"Settings,omitempty" xml:"Settings,omitempty" type:"Struct"`
 	// The status of the backup client. Valid values:
 	//
-	// 	- **REGISTERED**: The backup client is registered.
+	// 	- **REGISTERED**: The client is registered.
 	//
-	// 	- **ACTIVATED**: The backup client is activated.
+	// 	- **ACTIVATED**: The client is activated.
 	//
-	// 	- **DEACTIVATED**: The backup client fails to be activated.
+	// 	- **DEACTIVATED**: The client activation has expired.
 	//
-	// 	- **INSTALLING**: The backup client is being installed.
+	// 	- **INSTALLING**: The client is being installed.
 	//
-	// 	- **INSTALL_FAILED**: The backup client fails to be installed.
+	// 	- **INSTALL_FAILED**: The client installation failed.
 	//
-	// 	- **NOT_INSTALLED**: The backup client is not installed.
+	// 	- **NOT_INSTALLED**: The client is not installed.
 	//
-	// 	- **UPGRADING**: The backup client is being upgraded.
+	// 	- **UPGRADING**: The client is being upgraded.
 	//
-	// 	- **UPGRADE_FAILED**: The backup client fails to be upgraded.
+	// 	- **UPGRADE_FAILED**: The client upgrade failed.
 	//
-	// 	- **UNINSTALLING**: The backup client is being uninstalled.
+	// 	- **UNINSTALLING**: The client is being uninstalled.
 	//
-	// 	- **UNINSTALL_FAILED**: The backup client fails to be uninstalled.
+	// 	- **UNINSTALL_FAILED**: The client uninstallation failed.
 	//
-	// 	- **STOPPED**: The backup client is out of service.
+	// 	- **STOPPED**: The client service is stopped.
 	//
-	// 	- **UNKNOWN**: The backup client is disconnected.
+	// 	- **UNKNOWN**: The client is disconnected.
 	//
 	// example:
 	//
@@ -314,13 +314,13 @@ type DescribeBackupClientsResponseBodyClients struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tag information.
 	Tags []*DescribeBackupClientsResponseBodyClientsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The time when the backup client was updated. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the backup client was last updated. This value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1554347313
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// This parameter is valid only if the **ClientType*	- parameter is set to **ECS_CLIENT**. This parameter indicates the zone of the backup client.
+	// This parameter is valid only when **ClientType*	- is set to **ECS_CLIENT**. The zone ID.
 	//
 	// example:
 	//
@@ -526,83 +526,83 @@ func (s *DescribeBackupClientsResponseBodyClients) Validate() error {
 }
 
 type DescribeBackupClientsResponseBodyClientsSettings struct {
-	// Indicates whether alerts are generated for partially completed jobs. This parameter is valid only for on-premises file backup and ECS file backup.
+	// Specifies whether to send alerts for partially completed jobs. This setting applies only to File Backup and ECS File Backup Essential Edition.
 	//
 	// example:
 	//
 	// false
 	AlertOnPartialComplete *bool `json:"AlertOnPartialComplete,omitempty" xml:"AlertOnPartialComplete,omitempty"`
-	// The type of the endpoint on the data plane. Valid values:
+	// The type of the data plane endpoint. Valid values:
 	//
-	// 	- **PUBLIC**: Internet
+	// - **PUBLIC**: public network.
 	//
-	// 	- **VPC**: virtual private cloud (VPC)
+	// - **VPC**: VPC network.
 	//
-	// 	- **CLASSIC**: classic network
+	// - **CLASSIC**: classic network.
 	//
 	// example:
 	//
 	// VPC
 	DataNetworkType *string `json:"DataNetworkType,omitempty" xml:"DataNetworkType,omitempty"`
-	// The proxy configuration on the data plane. Valid values:
+	// The data plane proxy setting. Valid values:
 	//
-	// 	- **DISABLE**: The proxy is not used.
+	// - **DISABLE**: No proxy is used.
 	//
-	// 	- **USE_CONTROL_PROXY*	- (default): The configuration is the same as that on the control plane.
+	// - **USE_CONTROL_PROXY*	- (default): The same configuration as the control plane is used.
 	//
-	// 	- **CUSTOM**: The configuration is customized (HTTP).
+	// - **CUSTOM**: A custom configuration is used (HTTP protocol).
 	//
 	// example:
 	//
 	// USE_CONTROL_PROXY
 	DataProxySetting *string `json:"DataProxySetting,omitempty" xml:"DataProxySetting,omitempty"`
-	// The number of CPU cores used by a single backup job. The value 0 indicates that the number is unlimited.
+	// The number of CPU cores used by a single backup job. A value of 0 indicates no limit.
 	//
 	// example:
 	//
 	// 1
 	MaxCpuCore *string `json:"MaxCpuCore,omitempty" xml:"MaxCpuCore,omitempty"`
-	// The maximum memory that can be used by the client. Unit: bytes. Only V2.13.0 and later are supported.
+	// The maximum memory that the client can use. Unit: bytes. Only versions 2.13.0 and later are supported.
 	//
 	// example:
 	//
 	// 0
 	MaxMemory *int64 `json:"MaxMemory,omitempty" xml:"MaxMemory,omitempty"`
-	// The number of concurrent backup jobs. The value 0 indicates that the number is unlimited.
+	// The number of concurrent workers for a single backup job. A value of 0 indicates no limit.
 	//
 	// example:
 	//
 	// 1
 	MaxWorker *string `json:"MaxWorker,omitempty" xml:"MaxWorker,omitempty"`
-	// The custom host IP address of the proxy server on the data plane.
+	// The IP address of the custom data plane proxy server.
 	//
 	// example:
 	//
 	// 192.168.11.100
 	ProxyHost *string `json:"ProxyHost,omitempty" xml:"ProxyHost,omitempty"`
-	// The custom password of the proxy server on the data plane.
+	// The password of the custom data plane proxy server.
 	//
 	// example:
 	//
 	// ******
 	ProxyPassword *string `json:"ProxyPassword,omitempty" xml:"ProxyPassword,omitempty"`
-	// The custom host port of the proxy server on the data plane.
+	// The port of the custom data plane proxy server.
 	//
 	// example:
 	//
 	// 3128
 	ProxyPort *int32 `json:"ProxyPort,omitempty" xml:"ProxyPort,omitempty"`
-	// The custom username of the proxy server on the data plane.
+	// The username of the custom data plane proxy server.
 	//
 	// example:
 	//
 	// user
 	ProxyUser *string `json:"ProxyUser,omitempty" xml:"ProxyUser,omitempty"`
-	// Indicates whether data on the data plane is transmitted over HTTPS. Valid values:
+	// Indicates whether HTTPS is used to transmit data plane data.
 	//
-	// 	- true: Data is transmitted over HTTPS.
+	// - true: HTTPS is used for transmission.
 	//
-	// 	- false: Data is transmitted over HTTP.
+	// - false: HTTP is used for transmission.
 	//
 	// example:
 	//
@@ -722,25 +722,25 @@ func (s *DescribeBackupClientsResponseBodyClientsSettings) Validate() error {
 }
 
 type DescribeBackupClientsResponseBodyClientsTags struct {
-	// The tag key of the backup vault. Valid values of N: 1 to 20
+	// The tag key of the backup vault. Valid values of N: 1 to 20.
 	//
-	// 	- The tag key cannot start with `aliyun` or `acs:`.
+	// - The tag key cannot start with `aliyun` or `acs:`.
 	//
-	// 	- The tag key cannot contain `http://` or `https://`.
+	// - The tag key cannot contain `http://` or `https://`.
 	//
-	// 	- The tag key cannot be an empty string.
+	// - The tag key cannot be an empty string.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the backup vault. Valid values of N: 1 to 20
+	// The tag value of the backup vault. Valid values of N: 1 to 20.
 	//
-	// 	- The tag value cannot start with `aliyun` or `acs:`.
+	// - The tag value cannot start with `aliyun` or `acs:`.
 	//
-	// 	- The tag value cannot contain `http://` or `https://`.
+	// - The tag value cannot contain `http://` or `https://`.
 	//
-	// 	- The tag value cannot be an empty string.
+	// - The tag value cannot be an empty string.
 	//
 	// example:
 	//

@@ -24,37 +24,37 @@ type iDescribeUdmSnapshotsResponseBody interface {
 }
 
 type DescribeUdmSnapshotsResponseBody struct {
-	// The HTTP status code. The status code 200 indicates that the call is successful.
+	// The HTTP status code. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	// The message that is returned. If the request was successful, **successful*	- is returned. If the request failed, an error message is returned.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 51CDEECB-7001-51CC-94AC-2A0F2A4B71D2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details about snapshots.
+	// The details of the snapshots.
 	Snapshots []*DescribeUdmSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the request was successful.
 	//
-	// 	- true: The call is successful.
+	// - true: The request was successful.
 	//
-	// 	- false: The call fails.
+	// - false: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of backup snapshots.
+	// The total number of snapshots.
 	//
 	// example:
 	//
@@ -138,40 +138,55 @@ func (s *DescribeUdmSnapshotsResponseBody) Validate() error {
 }
 
 type DescribeUdmSnapshotsResponseBodySnapshots struct {
-	// The size of the backup snapshot. Unit: bytes.
+	// The actual size of the snapshot. Unit: bytes.
 	//
 	// example:
 	//
 	// 600
 	ActualBytes *string `json:"ActualBytes,omitempty" xml:"ActualBytes,omitempty"`
-	// The special retention type, which is valid only for special backups. Valid values:
+	// The special retention type. This parameter is valid only for special retention backups. Valid values:
 	//
-	// 	- **WEEKLY**: weekly backups
+	// - **WEEKLY**: weekly special retention backup
 	//
-	// 	- **MONTHLY**: monthly backups
+	// - **MONTHLY**: monthly special retention backup
 	//
-	// 	- **YEARLY**: yearly backups
+	// - **YEARLY**: yearly special retention backup
 	//
 	// example:
 	//
 	// WEEKLY
 	AdvancedRetentionType *string `json:"AdvancedRetentionType,omitempty" xml:"AdvancedRetentionType,omitempty"`
-	ArchiveErrorMessage   *string `json:"ArchiveErrorMessage,omitempty" xml:"ArchiveErrorMessage,omitempty"`
-	ArchiveStatus         *string `json:"ArchiveStatus,omitempty" xml:"ArchiveStatus,omitempty"`
-	ArchiveTriggerTime    *int64  `json:"ArchiveTriggerTime,omitempty" xml:"ArchiveTriggerTime,omitempty"`
-	// The backup type. Valid value: **COMPLETE**, which indicates full backup.
+	// The error message that is returned if the archiving fails.
+	//
+	// example:
+	//
+	// InternalError
+	ArchiveErrorMessage *string `json:"ArchiveErrorMessage,omitempty" xml:"ArchiveErrorMessage,omitempty"`
+	// The archiving status.
+	//
+	// example:
+	//
+	// ARCHIVED
+	ArchiveStatus *string `json:"ArchiveStatus,omitempty" xml:"ArchiveStatus,omitempty"`
+	// The time when the archiving was triggered.
+	//
+	// example:
+	//
+	// 1763373304
+	ArchiveTriggerTime *int64 `json:"ArchiveTriggerTime,omitempty" xml:"ArchiveTriggerTime,omitempty"`
+	// The backup type. The value **COMPLETE*	- indicates a full backup.
 	//
 	// example:
 	//
 	// COMPLETE
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The total amount of data. Unit: bytes.
+	// The total size of the data source. Unit: bytes.
 	//
 	// example:
 	//
 	// 1000
 	BytesTotal *int64 `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
-	// Indicates whether the disk backup point can be deleted. This parameter is valid only if the value of SourceType is UDM_ECS_DISK.
+	// Indicates whether the disk backup point can be deleted. This parameter is valid only if **SourceType*	- is set to **UDM_ECS_DISK**.
 	//
 	// if can be null:
 	// true
@@ -180,7 +195,7 @@ type DescribeUdmSnapshotsResponseBodySnapshots struct {
 	//
 	// false
 	CanBeDeleted *bool `json:"CanBeDeleted,omitempty" xml:"CanBeDeleted,omitempty"`
-	// The time when the backup snapshot was completed. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the backup snapshot was completed. This value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -192,21 +207,21 @@ type DescribeUdmSnapshotsResponseBodySnapshots struct {
 	//
 	// 1607436917
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The time when the backup snapshot was created. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the backup snapshot was created. This value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1642496679
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The snapshot details.
+	// The details of the snapshot.
 	Detail *DescribeUdmSnapshotsResponseBodySnapshotsDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
-	// The ID of the cloud disk or local disk.
+	// The ID of the disk. The disk can be a cloud disk or a local disk.
 	//
 	// example:
 	//
 	// d-2ze86h5fga5rfwxxa8ef
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The expiration time of the backup.
+	// The time when the backup expires.
 	//
 	// example:
 	//
@@ -224,13 +239,13 @@ type DescribeUdmSnapshotsResponseBodySnapshots struct {
 	//
 	// job-00030j3chkt******2
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The ID of the backup snapshot.
+	// The ID of the native snapshot.
 	//
 	// example:
 	//
 	// s-00047mg17p26x*****b
 	NativeSnapshotId *string `json:"NativeSnapshotId,omitempty" xml:"NativeSnapshotId,omitempty"`
-	// The snapshot information.
+	// The information about the native snapshot.
 	//
 	// example:
 	//
@@ -288,31 +303,31 @@ type DescribeUdmSnapshotsResponseBodySnapshots struct {
 	//
 	// 				}
 	NativeSnapshotInfo *string `json:"NativeSnapshotInfo,omitempty" xml:"NativeSnapshotInfo,omitempty"`
-	// The hash value of the parent backup snapshot.
+	// The hash value of the parent snapshot.
 	//
 	// example:
 	//
 	// f2fe..
 	ParentSnapshotHash *string `json:"ParentSnapshotHash,omitempty" xml:"ParentSnapshotHash,omitempty"`
-	// The prefix of the backup snapshot.
+	// The prefix of the snapshot.
 	//
 	// example:
 	//
 	// example/
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	// The timestamp of the backup snapshot. The value is a UNIX timestamp. Unit: seconds.
+	// The timestamp of the snapshot. This value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1642496679
 	RealSnapshotTime *int64 `json:"RealSnapshotTime,omitempty" xml:"RealSnapshotTime,omitempty"`
-	// The retention period of the backup snapshot. Unit: days.
+	// The retention period of the snapshot in days.
 	//
 	// example:
 	//
 	// 7
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// The hash value of the backup snapshot.
+	// The hash value of the snapshot.
 	//
 	// example:
 	//
@@ -326,35 +341,35 @@ type DescribeUdmSnapshotsResponseBodySnapshots struct {
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// 	- **UDM_ECS**: ECS instance backup
+	// - **UDM_ECS**: ECS instance backup
 	//
-	// 	- **UDM_ECS_DISK**: disk backup subtask of ECS instance backup
+	// - **UDM_ECS_DISK**: a disk backup subtask of an ECS instance backup
 	//
-	// 	- **UDM_DISK**: disk backup
+	// - **UDM_DISK**: disk backup
 	//
 	// example:
 	//
 	// UDM_ECS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The time when the backup snapshot was created. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the snapshot was started. This value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1554347313
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the backup job. Valid values:
+	// The status of the backup snapshot. Valid values:
 	//
-	// 	- **COMPLETE**: The backup job is completed.
+	// - **COMPLETE**: The backup is successful.
 	//
-	// 	- **PARTIAL_COMPLETE**: The backup job is partially completed.
+	// - **PARTIAL_COMPLETE**: The backup is partially successful.
 	//
-	// 	- **FAILED**: The backup job has failed.
+	// - **FAILED**: The backup failed.
 	//
 	// example:
 	//
 	// COMPLETE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the backup snapshot was updated. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the backup snapshot was updated. This value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -650,13 +665,13 @@ type DescribeUdmSnapshotsResponseBodySnapshotsDetail struct {
 	//
 	// cloud_essd
 	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
-	// The name of the disk.
+	// The name of the disk device.
 	//
 	// example:
 	//
 	// /dev/xvdb
 	DiskDevName *string `json:"DiskDevName,omitempty" xml:"DiskDevName,omitempty"`
-	// The mapping between the device and the recovery point ID.
+	// The mapping between devices and backup point IDs.
 	//
 	// example:
 	//
@@ -668,7 +683,7 @@ type DescribeUdmSnapshotsResponseBodySnapshotsDetail struct {
 	//
 	// }
 	DiskHbrSnapshotIdWithDeviceMap map[string]interface{} `json:"DiskHbrSnapshotIdWithDeviceMap,omitempty" xml:"DiskHbrSnapshotIdWithDeviceMap,omitempty"`
-	// The IDs of the disks that are backed up at the recovery point.
+	// The list of disk IDs that are included in the backup point.
 	DiskIdList []*string `json:"DiskIdList,omitempty" xml:"DiskIdList,omitempty" type:"Repeated"`
 	// The reason for the downgrade.
 	//
@@ -682,7 +697,7 @@ type DescribeUdmSnapshotsResponseBodySnapshotsDetail struct {
 	//
 	// iZbpxxxxxxxxxxxxxxxxe2Z
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The mapping between the instance ID and the disk ID.
+	// The mapping between instance IDs and disk IDs.
 	//
 	// example:
 	//
@@ -700,19 +715,19 @@ type DescribeUdmSnapshotsResponseBodySnapshotsDetail struct {
 	//
 	// swh-hbr
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The specifications of the source instance.
+	// The instance type of the source instance.
 	//
 	// example:
 	//
 	// ecs.c6.xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// Indicates whether the backup is created by the instant clone feature.
+	// Indicates whether the backup is created for the instant clone feature.
 	//
 	// example:
 	//
 	// false
 	InstantAccess *bool `json:"InstantAccess,omitempty" xml:"InstantAccess,omitempty"`
-	// The list of snapshot IDs, corresponding to DiskIdList.
+	// The list of native snapshot IDs. The native snapshot IDs in this list have a one-to-one correspondence with the disk IDs in the DiskIdList.
 	NativeSnapshotIdList []*string `json:"NativeSnapshotIdList,omitempty" xml:"NativeSnapshotIdList,omitempty" type:"Repeated"`
 	// The ID of the system disk.
 	//
@@ -732,7 +747,7 @@ type DescribeUdmSnapshotsResponseBodySnapshotsDetail struct {
 	//
 	// Debian  11.1 64 bit
 	OsNameEn *string `json:"OsNameEn,omitempty" xml:"OsNameEn,omitempty"`
-	// The type of the operating system. Valid values: linux and windows.
+	// The type of the operating system. Valid values: linux, windows.
 	//
 	// example:
 	//
@@ -744,7 +759,7 @@ type DescribeUdmSnapshotsResponseBodySnapshotsDetail struct {
 	//
 	// PL0
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The system platform.
+	// The operating system.
 	//
 	// example:
 	//

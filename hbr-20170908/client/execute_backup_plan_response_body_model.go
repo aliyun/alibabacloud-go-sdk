@@ -22,7 +22,7 @@ type iExecuteBackupPlanResponseBody interface {
 }
 
 type ExecuteBackupPlanResponseBody struct {
-  // The response code. The status code 200 indicates that the request was successful.
+  // The return code. A value of 200 indicates success.
   // 
   // example:
   // 
@@ -34,7 +34,7 @@ type ExecuteBackupPlanResponseBody struct {
   // 
   // job-*********************
   JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-  // The returned message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+  // The returned message. If the request is successful, \\`successful\\` is returned. If the request fails, an error message is returned.
   // 
   // example:
   // 
@@ -46,11 +46,11 @@ type ExecuteBackupPlanResponseBody struct {
   // 
   // 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether the request was successful. Valid values:
+  // Indicates whether the request was successful.
   // 
-  // 	- true
+  // - true: successful
   // 
-  // 	- false
+  // - false: failed
   // 
   // example:
   // 

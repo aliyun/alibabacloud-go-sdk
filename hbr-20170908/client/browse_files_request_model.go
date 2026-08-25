@@ -40,52 +40,91 @@ type iBrowseFilesRequest interface {
 }
 
 type BrowseFilesRequest struct {
+	// The absolute path of the directory. Specify `/` to browse the root directory of the backup.
+	//
+	// example:
+	//
+	// /data/
 	AbsolutePath *string `json:"AbsolutePath,omitempty" xml:"AbsolutePath,omitempty"`
+	// The backup client ID.
+	//
 	// example:
 	//
 	// c-000***o48
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The Cloud Backup edition. Valid values:
+	//
+	// - **STANDARD**: Standard Edition. This is the default value.
+	//
+	// - **BASIC**: Basic Edition. Only ECS file backup is supported in Basic Edition.
+	//
 	// example:
 	//
 	// STANDARD
 	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// The maximum number of results to return per request.
+	//
+	// Valid values: 10 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token that is required to retrieve the next page of results. If this parameter is not specified, the first page of results is returned.
+	//
 	// example:
 	//
 	// eyJ***Q==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Deprecated. Use MaxResults and NextToken for pagination instead.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Deprecated. Use MaxResults and NextToken for pagination instead.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The hash value of the directory. If this parameter is not specified, the root directory of the backup is browsed.
+	//
 	// example:
 	//
 	// ef6***46a
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// Deprecated.
+	//
 	// example:
 	//
 	// r-000***oy9
 	RestoreId     *string `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The hash value of the backup snapshot.
+	//
 	// example:
 	//
 	// 971***e9d
 	SnapshotHash *string `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
+	// The storage class of the backup data. Valid values:
+	//
+	// - **STANDARD**: Standard.
+	//
+	// - **ARCHIVE**: Archive.
+	//
 	// example:
 	//
 	// STANDARD
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
+	// Deprecated. Do not use.
+	//
 	// example:
 	//
 	// ***
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The backup vault ID.
+	//
 	// example:
 	//
 	// v-000***jtz

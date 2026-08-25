@@ -20,29 +20,29 @@ type iInstallBackupClientsRequest interface {
 }
 
 type InstallBackupClientsRequest struct {
-	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	// The name of the RAM role that is created in the source account for cross-account backup.
 	//
 	// example:
 	//
 	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	// Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
+	// The type of cross-account backup. Valid values:
 	//
-	// 	- SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+	// - SELF_ACCOUNT: Backs up data within the current account.
 	//
-	// 	- CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	// - CROSS_ACCOUNT: Backs up data across accounts.
 	//
 	// example:
 	//
 	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
-	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	// The ID of the source account that is used for cross-account backup.
 	//
 	// example:
 	//
 	// 16392782xxxxxx
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// The IDs of the ECS instances. You can specify up to 20 IDs.
+	// The IDs of the ECS instances. You can specify a maximum of 20 instance IDs.
 	//
 	// This parameter is required.
 	//

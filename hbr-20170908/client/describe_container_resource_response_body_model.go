@@ -28,31 +28,50 @@ type iDescribeContainerResourceResponseBody interface {
 }
 
 type DescribeContainerResourceResponseBody struct {
+	// The return code. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response message. Returns "successful" on success or an error message on failure.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page in a paged query.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D98A2895-745B-5530-A8C1-9A86F0A82354
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of resources.
 	Resources []*DescribeContainerResourceResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// Indicates whether the request succeeded.
+	//
+	// - true: succeeded
+	//
+	// - false: failed
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 8
@@ -153,22 +172,32 @@ func (s *DescribeContainerResourceResponseBody) Validate() error {
 }
 
 type DescribeContainerResourceResponseBodyResources struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// cc-0005**********hhjw
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The cluster identifier.
+	//
 	// example:
 	//
 	// c21b653f********695e892e718c419a4
 	ClusterIdentifier *string `json:"ClusterIdentifier,omitempty" xml:"ClusterIdentifier,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// a9ab843d-****-****-8e46-1d67a82128a7
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Resource details.
+	//
 	// example:
 	//
 	// {"pv_name":"nas-a9ab843d-****-****-8e46-1d67a82128a7","pv_size":"1000Gi","storage_class":"opk8s-nas","pvc_name":"**-pvc","namespace":"default"}
 	ResourceInfo *string `json:"ResourceInfo,omitempty" xml:"ResourceInfo,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// PV

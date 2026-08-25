@@ -24,37 +24,37 @@ type iInstallBackupClientsResponseBody interface {
 }
 
 type InstallBackupClientsResponseBody struct {
-	// The HTTP status code. The status code 200 indicates that the call is successful.
+	// The return code. A value of 200 indicates that the operation is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The status of the ECS instance.
+	// The status of the ECS instances.
 	InstanceStatuses []*InstallBackupClientsResponseBodyInstanceStatuses `json:"InstanceStatuses,omitempty" xml:"InstanceStatuses,omitempty" type:"Repeated"`
-	// The message that is returned. If the call is successful, "successful" is returned. If the call fails, an error message is returned.
+	// The message that is returned. If the request is successful, successful is returned. If the request fails, an error message is returned.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the request is successful.
 	//
-	// 	- true: The call is successful.
+	// - true: The request is successful.
 	//
-	// 	- false: The call fails.
+	// - false: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the asynchronous job. You can call the DescribeTask operation to query the execution result of an asynchronous job.
+	// The ID of the asynchronous task. Call the DescribeTask operation to query the task result.
 	//
 	// example:
 	//
@@ -138,15 +138,15 @@ func (s *InstallBackupClientsResponseBody) Validate() error {
 }
 
 type InstallBackupClientsResponseBodyInstanceStatuses struct {
-	// The error code that is returned. Valid values:
+	// The error code. Valid values:
 	//
-	// 	- If the value is empty, the call is successful.
+	// - An empty value indicates that the operation is successful.
 	//
-	// 	- **InstanceNotExists**: The ECS instance does not exist.
+	// - **InstanceNotExists**: The ECS instance does not exist.
 	//
-	// 	- **InstanceNotRunning**: The ECS instance is not running.
+	// - **InstanceNotRunning**: The ECS instance is not in the Running state.
 	//
-	// 	- **CloudAssistNotRunningOnInstance**: Cloud Assistant is unavailable.
+	// - **CloudAssistNotRunningOnInstance**: Cloud Assistant is not available.
 	//
 	// example:
 	//
@@ -158,11 +158,11 @@ type InstallBackupClientsResponseBodyInstanceStatuses struct {
 	//
 	// i-0xi5w***v3j3bh2gj5
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether an HBR client can be installed on the ECS instance. Valid values:
+	// Indicates whether a backup client can be installed on the ECS instance.
 	//
-	// 	- true: An HBR client can be installed on the ECS instance.
+	// - true: The backup client can be installed.
 	//
-	// 	- false: An HBR client cannot be installed on the ECS instance.
+	// - false: The backup client cannot be installed.
 	//
 	// example:
 	//

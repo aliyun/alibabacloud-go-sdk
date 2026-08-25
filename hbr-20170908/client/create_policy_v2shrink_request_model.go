@@ -20,35 +20,35 @@ type iCreatePolicyV2ShrinkRequest interface {
 }
 
 type CreatePolicyV2ShrinkRequest struct {
-	// The description of the backup policy.
+	// The policy description.
 	//
 	// example:
 	//
-	// Data is backed up at 10:00:00 every day and replicated to the China (Shanghai) region for geo-redundancy.
+	// Backup once every day at 10:00 AM, with cross-region backup to Shanghai.
 	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
-	// The name of the backup policy.
+	// The policy name.
 	//
 	// example:
 	//
-	// Daily Local Backup + Remote Backup
+	// Daily local backup + geo-redundancy
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	// The policy type. Valid values:
 	//
-	// 	- **STANDARD**: the general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+	// - **STANDARD**: general backup policy. Supports backing up data sources other than ECS instances.
 	//
-	// 	- **UDM_ECS_ONLY**: This type of policy applies only to ECS instance backup.
+	// - **UDM_ECS_ONLY**: ECS instance backup policy. Supports backing up only ECS instances.
 	//
-	// If the policy type is not specified, Cloud Backup automatically sets the policy type based on whether the backup vault is specified in the rules of the policy:
+	// If you do not specify the policy type, Cloud Backup automatically sets the policy type based on whether a backup vault is specified in the policy rules:
 	//
-	// 	- If the backup vault is specified, Cloud Backup sets the policy type to **STANDARD**.
+	// - A backup vault is specified in the policy rules: **STANDARD**
 	//
-	// 	- If the backup vault is not specified, Cloud Backup sets the policy type to **UDM_ECS_ONLY**.
+	// - No backup vault is specified in the policy rules: **UDM_ECS_ONLY**
 	//
 	// example:
 	//
 	// STANDARD
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The rules in the backup policy.
+	// The list of policy rules.
 	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 }
 

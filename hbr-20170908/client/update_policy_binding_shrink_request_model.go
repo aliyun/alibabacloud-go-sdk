@@ -34,7 +34,7 @@ type iUpdatePolicyBindingShrinkRequest interface {
 type UpdatePolicyBindingShrinkRequest struct {
 	// The advanced options.
 	AdvancedOptionsShrink *string `json:"AdvancedOptions,omitempty" xml:"AdvancedOptions,omitempty"`
-	// The ID of the data source.
+	// The data source ID.
 	//
 	// This parameter is required.
 	//
@@ -42,35 +42,35 @@ type UpdatePolicyBindingShrinkRequest struct {
 	//
 	// i-bp1************dtv
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// Specifies whether to disable the backup policy for the data source. Valid values:
+	// Specifies whether the policy is suspended for the data source.
 	//
-	// 	- true: disables the backup policy for the data source
+	// - true: Suspended.
 	//
-	// 	- false: enables the backup policy for the data source
+	// - false: Not suspended.
 	//
 	// example:
 	//
 	// true
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE*	- or **File**. This parameter specifies the type of files that do not need to be backed up. No files of the specified type are backed up. The value can be up to 255 characters in length.
+	// This parameter is valid only when **SourceType*	- is set to **ECS_FILE**, **File**, **NAS**, **COMMON_NAS**, or **COMMON_FILE_SYSTEM**. Specifies the file types to back up. All files of these types are backed up. The value can be up to 255 characters in length.
 	//
 	// example:
 	//
 	// [\\"*.doc\\",\\"*.xltm\\"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE*	- or **File**. This parameter specifies the type of files to be backed up. All files of the specified type are backed up. The value can be up to 255 characters in length.
+	// This parameter is valid only when **SourceType*	- is set to **ECS_FILE**, **File**, **NAS**, **COMMON_NAS**, or **COMMON_FILE_SYSTEM**. Specifies the file types to back up. All files of these types are backed up. The value can be up to 255 characters in length.
 	//
 	// example:
 	//
 	// [\\"*.doc\\",\\"*.xltm\\"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	// The description of the association.
+	// The description of the policy binding.
 	//
 	// example:
 	//
 	// po-000************5xx-i-2ze************nw4
 	PolicyBindingDescription *string `json:"PolicyBindingDescription,omitempty" xml:"PolicyBindingDescription,omitempty"`
-	// The ID of the backup policy.
+	// The policy ID.
 	//
 	// This parameter is required.
 	//
@@ -78,17 +78,41 @@ type UpdatePolicyBindingShrinkRequest struct {
 	//
 	// po-000************ky9
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// 	- If the SourceType parameter is set to **OSS**, set the Source parameter to the prefix of the path to the folder that you want to back up. If you do not specify the Source parameter, the entire bucket (root directory) is backed up.
+	// The meaning varies depending on the SourceType value:
 	//
-	// 	- If the SourceType parameter is set to **ECS_FILE*	- or **File**, set the Source parameter to the path to the files that you want to back up. If you do not specify the Source parameter, all paths backed up.
+	// - **OSS**: The prefix to back up. If not specified, the entire root directory of the bucket is backed up. Only a single prefix is supported. To back up /backup, set this parameter to /backup.
+	//
+	// - **ECS_FILE**: The file directories to back up. If not specified, all directories are backed up. Multiple directories are supported. To back up files in /a and /b, set this parameter to ["/a", "/b"].
+	//
+	// - **File**: The file directories to back up. If not specified, all directories are backed up. Multiple directories are supported. To back up files in /a and /b, set this parameter to ["/a", "/b"].
+	//
+	// - **COMMON_FILE_SYSTEM**: Required. The source paths to back up. Multiple paths are supported. To back up /a and /b, set this parameter to ["/a", "/b"]. To back up the root path, set this parameter to ["/"].
+	//
+	// - **COMMON_NAS**: Required. The source path to back up. Only a single path is supported. To back up /a, set this parameter to ["/a"]. To back up the root path, set this parameter to ["/"].
+	//
+	// - **OTS**: The list of data tables to back up. If not specified, all data tables are backed up. Multiple data tables are supported. To back up data tables a and b, set this parameter to ["a", "b"].
 	//
 	// example:
 	//
 	// backup/
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The type of the data source. Valid values:
+	// The data source type. Valid values:
 	//
-	// 	- **UDM_ECS**: ECS instance backup
+	// - **UDM_ECS**: ECS instance backup.
+	//
+	// - **OSS**: OSS backup.
+	//
+	// - **NAS**: Alibaba Cloud NAS backup.
+	//
+	// - **COMMON_NAS**: On-premises NAS backup.
+	//
+	// - **ECS_FILE**: ECS File Backup Essential Edition.
+	//
+	// - **File**: On-premises file backup.
+	//
+	// - **COMMON_FILE_SYSTEM**: CPFS backup.
+	//
+	// - **OTS**: Tablestore backup.
 	//
 	// This parameter is required.
 	//
@@ -96,13 +120,13 @@ type UpdatePolicyBindingShrinkRequest struct {
 	//
 	// UDM_ECS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE*	- or **File**. This parameter specifies the throttling rules. Format: `{start}{end}{bandwidth}`. Separate multiple throttling rules with vertical bars (|). The time ranges of the throttling rules cannot overlap.
+	// This parameter is required only when **SourceType*	- is set to **ECS_FILE*	- or **File**. Specifies the backup traffic control. The format is `{start}{end}{bandwidth}`. Multiple traffic control configurations are separated by delimiters, and the time ranges cannot overlap.
 	//
-	// 	- **start**: the start hour.
+	// - **start**: The start hour.
 	//
-	// 	- **end**: the end hour.
+	// - **end**: The end hour.
 	//
-	// 	- **bandwidth**: the bandwidth. Unit: KB/s.
+	// - **bandwidth**: The rate limit, in KB/s.
 	//
 	// example:
 	//

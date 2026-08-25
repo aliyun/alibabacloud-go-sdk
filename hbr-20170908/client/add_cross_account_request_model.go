@@ -20,15 +20,30 @@ type iAddCrossAccountRequest interface {
 }
 
 type AddCrossAccountRequest struct {
+	// The alias. The maximum length is 32 characters. This parameter is not required for cross-account backups that are configured based on a resource directory.
+	//
+	// example:
+	//
+	// Source account 1
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// The name of the RAM role for the account to back up. This parameter is used when you configure a cross-account backup by assuming a RAM role.
+	//
 	// example:
 	//
 	// hbrcrossrole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	// The type of cross-account backup. Valid values:
+	//
+	// - **CROSS_ACCOUNT**: Configures a cross-account backup by assuming a RAM role.
+	//
+	// - **CROSS_ACCOUNT_BY_RD**: Configures a cross-account backup based on a resource directory.
+	//
 	// example:
 	//
 	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	// The UID of the account to back up.
+	//
 	// example:
 	//
 	// 1589753xxxxxx625

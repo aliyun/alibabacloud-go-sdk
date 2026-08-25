@@ -34,20 +34,25 @@ type iDescribeVaultsRequest interface {
 }
 
 type DescribeVaultsRequest struct {
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 99. Default value: 10.
+	// The number of entries per page. Minimum value: 1. Maximum value: 99. Default value: 10.
 	//
 	// example:
 	//
 	// 10
-	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Replication *bool  `json:"Replication,omitempty" xml:"Replication,omitempty"`
-	// Resource group ID.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether to query replication target vaults.
+	//
+	// example:
+	//
+	// true
+	Replication *bool `json:"Replication,omitempty" xml:"Replication,omitempty"`
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -55,25 +60,25 @@ type DescribeVaultsRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the backup vault. Valid values:
 	//
-	// 	- **UNKNOWN**: The backup vault is in an unknown state.
+	// - **UNKNOWN**: unknown
 	//
-	// 	- **INITIALIZING**: The backup vault is being initialized.
+	// - **INITIALIZING**: initializing
 	//
-	// 	- **CREATED**: The backup vault is created.
+	// - **CREATED**: created
 	//
-	// 	- **ERROR**: An error occurs on the backup vault.
+	// - **ERROR**: error
 	//
 	// example:
 	//
 	// CREATED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Tag information. Supports up to 20 tags.
+	// The tag information. A maximum of 20 tags are supported.
 	//
 	// example:
 	//
 	// 6a745bceffb042959b3b5206d6f12ad1
 	Tag []*DescribeVaultsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// Backup vault ID.
+	// The backup vault ID.
 	//
 	// example:
 	//
@@ -84,19 +89,20 @@ type DescribeVaultsRequest struct {
 	// example:
 	//
 	// vaultname
-	VaultName    *string `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
-	VaultOwnerId *int64  `json:"VaultOwnerId,omitempty" xml:"VaultOwnerId,omitempty"`
-	// The region ID to which the backup vault belongs.
+	VaultName *string `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
+	// The ID of the account to which the backup vault belongs.
+	//
+	// example:
+	//
+	// 144******732
+	VaultOwnerId *int64 `json:"VaultOwnerId,omitempty" xml:"VaultOwnerId,omitempty"`
+	// The region ID of the backup vault.
 	//
 	// example:
 	//
 	// cn-shanghai
 	VaultRegionId *string `json:"VaultRegionId,omitempty" xml:"VaultRegionId,omitempty"`
-	// Backup repository type. The values are as follows:
-	//
-	// - **STANDARD**: Represents a standard repository, which can be used for ECS file backups, OSS backups, NAS backups, etc.
-	//
-	// - **OTS_BACKUP**: Represents a TableStore repository, which is only used for TableStore backups, and TableStore must use this type of repository.
+	// The type of the backup vault. Valid values.
 	//
 	// example:
 	//
@@ -231,7 +237,7 @@ type DescribeVaultsRequestTag struct {
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The Value of the tag.
+	// The value of the tag.
 	//
 	// example:
 	//

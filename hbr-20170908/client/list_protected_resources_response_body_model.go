@@ -28,31 +28,52 @@ type iListProtectedResourcesResponseBody interface {
 }
 
 type ListProtectedResourcesResponseBody struct {
+	// The return code. A value of 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The number of results per query.
+	//
+	// Valid values: 10 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The returned message. The value "successful" is returned for a successful request. An error message is returned for a failed request.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The pagination token for the next page. If this parameter is empty, no more pages are available.
+	//
 	// example:
 	//
 	// eyJJ************MX0=
-	NextToken          *string                                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The list of protected resources.
 	ProtectedResources []*ListProtectedResourcesResponseBodyProtectedResources `json:"ProtectedResources,omitempty" xml:"ProtectedResources,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EB09****-****-****-****-********6C38
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of protected resources.
+	//
 	// example:
 	//
 	// 3
@@ -153,38 +174,86 @@ func (s *ListProtectedResourcesResponseBody) Validate() error {
 }
 
 type ListProtectedResourcesResponseBodyProtectedResources struct {
+	// The number of backup plans.
+	//
 	// example:
 	//
 	// 1
 	BackupPlanCount *int64 `json:"BackupPlanCount,omitempty" xml:"BackupPlanCount,omitempty"`
+	// The product capability to which the resource belongs. Valid values:
+	//
+	// - **HBR**: Cloud Backup standard capability.
+	//
+	// - **BASIC**: ECS File Backup Essential Edition.
+	//
 	// example:
 	//
 	// BASIC
 	CreatedByProduct *string `json:"CreatedByProduct,omitempty" xml:"CreatedByProduct,omitempty"`
+	// The amount of protected data, in bytes. Currently, only ECS File Backup Essential Edition is supported.
+	//
+	// - **SourceType=ECS_FILE**: the backed-up block storage capacity.
+	//
 	// example:
 	//
 	// 107374182400
 	ProtectedDataSize *int64 `json:"ProtectedDataSize,omitempty" xml:"ProtectedDataSize,omitempty"`
+	// The ID of the protected resource.
+	//
 	// example:
 	//
 	// pr-0004************gs61
 	ProtectedResourceId *string `json:"ProtectedResourceId,omitempty" xml:"ProtectedResourceId,omitempty"`
+	// The resource ID.
+	//
+	// - **SourceType=ECS_FILE**: the ECS instance ID.
+	//
+	// - **SourceType=COMMON_FILE_SYSTEM**: the CPFS data source ID.
+	//
+	// - **SourceType=COMMON_NAS**: the on-premises NAS data source ID.
+	//
+	// - **SourceType=File**: the local service client ID.
+	//
+	// - **SourceType=NAS**: the Alibaba Cloud NAS file system ID.
+	//
+	// - **SourceType=OSS**: the OSS bucket.
+	//
 	// example:
 	//
 	// i-wz95************7zrd
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The UID of the user who owns the resource.
+	//
 	// example:
 	//
 	// 1024********0703
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The region ID of the resource.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// The number of backups.
+	//
 	// example:
 	//
 	// 30
 	SnapshotCount *int64 `json:"SnapshotCount,omitempty" xml:"SnapshotCount,omitempty"`
+	// The backup feature type. Valid values:
+	//
+	// - **ECS_FILE**: ECS file backup.
+	//
+	// - **COMMON_FILE_SYSTEM**: Cloud Parallel File Storage (CPFS) backup.
+	//
+	// - **COMMON_NAS**: on-premises NAS backup.
+	//
+	// - **File**: on-premises file backup.
+	//
+	// - **NAS**: Alibaba Cloud NAS backup.
+	//
+	// - **OSS**: OSS backup.
+	//
 	// example:
 	//
 	// ECS_FILE

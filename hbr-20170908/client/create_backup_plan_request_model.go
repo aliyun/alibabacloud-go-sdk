@@ -78,19 +78,19 @@ type iCreateBackupPlanRequest interface {
 }
 
 type CreateBackupPlanRequest struct {
-	// Backup type. Value: **COMPLETE**, indicating a full backup.
+	// The backup type. Set the value to **COMPLETE**, which indicates full backup.
 	//
 	// example:
 	//
 	// COMPLETE
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// This parameter is required when **SourceType*	- is set to **OSS**. It represents the OSS bucket name.
+	// This parameter is required only when **SourceType*	- is set to **OSS**. The name of the OSS bucket.
 	//
 	// example:
 	//
 	// hbr-backup-oss
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// Configuration for the incremental file synchronization list. (Required only for synchronization)
+	// The configuration of the incremental file synchronization list. This parameter is required only for data synchronization.
 	//
 	// example:
 	//
@@ -102,160 +102,165 @@ type CreateBackupPlanRequest struct {
 	//
 	// cl-***************
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// This parameter is required when **SourceType*	- is set to **NAS**. It represents the creation time of the file system, in UNIX timestamp, in seconds.
+	// This parameter is required only when **SourceType*	- is set to **NAS**. The time when the file system was created. The value is a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1607436917
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The role name created in the RAM of the original account for cross-account backup.
+	// The name of the RAM role created in the source account for cross-account backup.
 	//
 	// example:
 	//
 	// BackupRole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	// Cross-account backup type. Supported values:
+	// The cross-account backup type. Valid values:
 	//
-	// - SELF_ACCOUNT: Backup within the same account
+	// - SELF_ACCOUNT: backup within the same account.
 	//
-	// - CROSS_ACCOUNT: Cross-account backup
+	// - CROSS_ACCOUNT: cross-account backup.
 	//
 	// example:
 	//
 	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
-	// The original account ID used for cross-account backup.
+	// The ID of the source account for cross-account backup.
 	//
 	// example:
 	//
 	// 15897534xxxx4625
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// The ID of the data source. This parameter is required only for data synchronization.
+	// The ID of the source data source. This parameter is required only for data synchronization.
 	//
 	// example:
 	//
 	// ds-****************
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// Destination data source details. (Required only for synchronization)
+	// The details of the destination data source. This parameter is required only for data synchronization.
 	//
 	// example:
 	//
 	// {\\"prefix\\":\\"/\\"}
 	DestDataSourceDetail map[string]interface{} `json:"DestDataSourceDetail,omitempty" xml:"DestDataSourceDetail,omitempty"`
-	// Destination data source ID. (Required only for synchronization)
+	// The ID of the destination data source. This parameter is required only for data synchronization.
 	//
 	// example:
 	//
 	// ds-*********************
 	DestDataSourceId *string `json:"DestDataSourceId,omitempty" xml:"DestDataSourceId,omitempty"`
-	// Destination data source type. (Required only for synchronization)
+	// The type of the destination data source. This parameter is required only for data synchronization.
 	//
 	// example:
 	//
 	// OSS
 	DestSourceType *string `json:"DestSourceType,omitempty" xml:"DestSourceType,omitempty"`
-	// Details of the whole machine backup, in JSON string format.
+	// The details of the full-copy backup. The value is a JSON string.
 	//
-	// 	- snapshotGroup: Whether to use a consistent snapshot group (only valid if all instance disks are ESSD).
+	// 	- snapshotGroup: specifies whether to use a consistent snapshot group. This parameter is valid only when all cloud disks of the instance are ESSDs.
 	//
-	// 	- appConsistent: Whether to use application consistency (requires the use of preScriptPath and postScriptPath parameters).
+	// 	- appConsistent: specifies whether to use application consistency. This parameter must be used together with the preScriptPath and postScriptPath parameters.
 	//
-	// 	- preScriptPath: Path to the freeze script.
+	// 	- preScriptPath: the path of the pre-freeze script.
 	//
-	// 	- postScriptPath: Path to the thaw script.
+	// 	- postScriptPath: the path of the post-thaw script.
 	//
 	// example:
 	//
 	// {\\"EnableFsFreeze\\":true,\\"appConsistent\\":false,\\"postScriptPath\\":\\"\\",\\"preScriptPath\\":\\"\\",\\"snapshotGroup\\":true,\\"timeoutInSeconds\\":60}
 	Detail map[string]interface{} `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// Is the plan disabled by default
+	// Specifies whether the plan is disabled by default.
 	//
 	// example:
 	//
 	// true
-	Disabled *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	Edition  *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// This parameter is required only when **SourceType*	- is set to **ECS_FILE**. It specifies the path that should not be backed up, meaning all files under this path will not be included in the backup. The maximum length is 255 characters.
+	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// The edition type. Valid values: BASIC and STANDARD. Default value: STANDARD.
+	//
+	// example:
+	//
+	// STANDARD
+	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// This parameter is required only when **SourceType*	- is set to **ECS_FILE**. The path to exclude from the backup. All files in this path are not backed up. The value can be up to 255 characters in length.
 	//
 	// example:
 	//
 	// ["/var", "/proc"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// This parameter is required when **SourceType*	- is set to **NAS**. It represents the file system ID.
+	// This parameter is required only when **SourceType*	- is set to **NAS**. The file system ID.
 	//
 	// example:
 	//
 	// 005494
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// This parameter is required when **SourceType*	- is set to **ECS_FILE**. It represents the path to be backed up, and all files under this path will be backed up. Supports up to 255 characters.
+	// This parameter is required only when **SourceType*	- is set to **ECS_FILE**. The path to include in the backup. All files in this path are backed up. The value can be up to 255 characters in length.
 	//
 	// example:
 	//
 	// ["/home/alice/*.pdf", "/home/bob/*.txt"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	// This parameter is required when **SourceType*	- is set to **ECS_FILE**. It represents the ECS instance ID.
+	// This parameter is required only when **SourceType*	- is set to **ECS_FILE**. The ECS instance ID.
 	//
 	// example:
 	//
 	// i-m5e*****6q
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Table store instance name.
+	// The name of the Tablestore instance.
 	//
 	// example:
 	//
 	// instancename
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Whether to enable retaining at least one backup version.
+	// Specifies whether to retain at least one backup version. Valid values:
 	//
-	// - 0 - Do not retain
+	// - 0: does not retain.
 	//
-	// - 1 - Retain
+	// - 1: retains.
 	//
 	// example:
 	//
 	// 1
 	KeepLatestSnapshots *int64 `json:"KeepLatestSnapshots,omitempty" xml:"KeepLatestSnapshots,omitempty"`
-	// This parameter is required when **SourceType*	- is set to **ECS_FILE**. It indicates whether to use the Windows system VSS to define the backup path.
+	// This parameter is required only when **SourceType*	- is set to **ECS_FILE**. Specifies whether to use Windows Volume Shadow Copy Service (VSS) to define the source path.
 	//
-	// - This feature only supports Windows type ECS instances.
+	// - This feature is supported only for Windows ECS instances.
 	//
-	// - If there are data changes in the backup source and you need to ensure consistency between the backup data and the source data, you can configure it as `["UseVSS":true]`.
+	// - If the backup source contains data changes and you need to ensure consistency between the backup data and the source data, set this parameter to `["UseVSS":true]`.
 	//
-	// - After choosing to use VSS, multiple file directories cannot be backed up simultaneously.
+	// - After VSS is enabled, multiple file folders cannot be backed up simultaneously.
 	//
 	// example:
 	//
 	// {"UseVSS":false}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// The details about the Tablestore instance.
+	// The details of the Tablestore instance.
 	OtsDetail *OtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
-	// Backup paths.
+	// The source paths.
 	Path []*string `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
-	// Name of the backup plan. 1 to 64 characters. The name must be unique for each data source type within a single backup vault.
+	// The name of the backup plan. The name must be 1 to 64 characters in length. The backup plan name must be unique for each data source type within a single vault.
 	//
 	// example:
 	//
 	// planname
 	PlanName *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	// This parameter is required when **SourceType*	- is set to **OSS**. It represents the backup prefix. When specified, only objects matching the prefix are backed up.
+	// This parameter is required only when **SourceType*	- is set to **OSS**. The backup prefix. If specified, only objects that match the prefix are backed up.
 	//
 	// example:
 	//
 	// oss-prefix
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	// Number of days to retain the backup, with a minimum value of 1, in days.
+	// The retention period of the backup data. Minimum value: 1. Unit: days.
 	//
 	// example:
 	//
 	// 7
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// Backup plan rules.
+	// The backup plan rules.
 	Rule []*CreateBackupPlanRequestRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
-	// Backup policy. Optional format: `I|{startTime}|{interval}`. This indicates that a backup task will be executed every `{interval}` starting from `{startTime}`. It does not compensate for missed backup tasks due to past time. If the previous backup task has not been completed, the next backup task will not be triggered. For example, `I|1631685600|P1D` means a backup is performed every day starting from 2021-09-15 14:00:00.
+	// The backup policy. Format: `I|{startTime}|{interval}`. This indicates that a backup job is executed at every `{interval}` starting from `{startTime}`. Backup jobs for past time periods are not compensated. If the previous backup job is not completed, the next backup job is not triggered. Example: `I|1631685600|P1D` indicates that a backup is performed once a day starting from 2021-09-15 14:00:00.
 	//
-	// - **startTime**: Start time of the backup, in UNIX timestamp, in seconds.
+	// - **startTime**: the start time of the backup. The value is a UNIX timestamp. Unit: seconds.
 	//
-	// - **interval**: ISO8601 time interval. For example, PT1H indicates an interval of one hour, and P1D indicates an interval of one day.
+	// - **interval**: the ISO 8601 time interval. Example: PT1H indicates an interval of one hour. P1D indicates an interval of one day.
 	//
 	// example:
 	//
@@ -263,17 +268,17 @@ type CreateBackupPlanRequest struct {
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
 	// The type of the data source. Valid values:
 	//
-	// 	- **ECS_FILE**: Elastic Compute Service (ECS) files
+	// - **ECS_FILE**: backs up ECS files.
 	//
-	// 	- **OSS**: Object Storage Service (OSS) buckets
+	// - **OSS**: backs up Alibaba Cloud OSS.
 	//
-	// 	- **NAS**: File Storage NAS (NAS) file systems
+	// - **NAS**: backs up Alibaba Cloud NAS.
 	//
-	// 	- **OTS**: Tablestore instances
+	// - **OTS**: backs up Alibaba Cloud OTS.
 	//
-	// 	- **UDM_ECS**: ECS instances
+	// - **UDM_ECS**: backs up an entire ECS instance.
 	//
-	// 	- **SYNC**: data synchronization
+	// - **SYNC**: data synchronization.
 	//
 	// This parameter is required.
 	//
@@ -281,25 +286,25 @@ type CreateBackupPlanRequest struct {
 	//
 	// ECS_FILE
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is required when **SourceType*	- is set to **ECS_FILE**. It represents the backup traffic control. Format: `{start}:{end}:{bandwidth}`. Multiple traffic control configurations are separated by |, and the configured times should not overlap.
+	// This parameter is required only when **SourceType*	- is set to **ECS_FILE**. The backup traffic control. Format: `{start}:{end}:{bandwidth}`. Separate multiple traffic control configurations with vertical bars (|). The time ranges of the configurations cannot overlap.
 	//
-	// - **start**: Start hour.
+	// - **start**: the start hour.
 	//
-	// - **end**: End hour.
+	// - **end**: the end hour.
 	//
-	// - **bandwidth**: Limit rate, in KB/s.
+	// - **bandwidth**: the rate limit. Unit: KB/s.
 	//
 	// example:
 	//
 	// 0:24:5120
 	SpeedLimit *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
-	// Region where the whole machine backup instance is located.
+	// The region where the ECS instance for full-copy backup resides.
 	//
 	// example:
 	//
 	// cn-shanghai
 	UdmRegionId *string `json:"UdmRegionId,omitempty" xml:"UdmRegionId,omitempty"`
-	// Backup vault ID.
+	// The vault ID.
 	//
 	// example:
 	//
@@ -631,53 +636,53 @@ func (s *CreateBackupPlanRequest) Validate() error {
 }
 
 type CreateBackupPlanRequestRule struct {
-	// Backup type.
+	// The backup type.
 	//
 	// example:
 	//
 	// COMPLETE
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// ID of the region for offsite replication.
+	// The ID of the destination region for cross-region replication.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
-	// Number of days to retain offsite backups.
+	// The retention period of the geo-redundancy backup. Unit: days.
 	//
 	// example:
 	//
 	// 7
 	DestinationRetention *int64 `json:"DestinationRetention,omitempty" xml:"DestinationRetention,omitempty"`
-	// Whether the rule is enabled.
+	// Specifies whether the rule is disabled.
 	//
 	// example:
 	//
-	// true
+	// false
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// Whether to enable offsite replication.
+	// Specifies whether to enable cross-region replication.
 	//
 	// example:
 	//
-	// true
+	// false
 	DoCopy *bool `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
-	// Backup retention period.
+	// The retention period of the backup.
 	//
 	// example:
 	//
 	// 7
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// Rule name.
+	// The rule name.
 	//
 	// example:
 	//
 	// rule-test-name
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// Backup strategy. Optional format: I|{startTime}|{interval}. This means that a backup task is executed every {interval} starting from {startTime}. Backup tasks for past times will not be executed. If the previous backup task has not been completed, the next backup task will not be triggered. For example, I|1631685600|P1D means a backup is performed every day starting from 2021-09-15 14:00:00.
+	// The backup policy. Format: I|{startTime}|{interval}. This indicates that a backup job is executed at every {interval} starting from {startTime}. Backup jobs for past time periods are not executed. If the previous backup job is not completed, the next backup job is not triggered. Example: I|1631685600|P1D indicates that a backup is performed once a day starting from 2021-09-15 14:00:00.
 	//
-	// - startTime: The start time of the backup, in UNIX time, in seconds.
+	// startTime: the start time of the backup. The value is a UNIX timestamp. Unit: seconds.
 	//
-	// - interval: ISO8601 time interval. For example, PT1H means an interval of one hour. P1D means an interval of one day.
+	// interval: the ISO 8601 time interval. Example: PT1H indicates an interval of one hour. P1D indicates an interval of one day.
 	//
 	// example:
 	//

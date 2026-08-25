@@ -22,6 +22,8 @@ type iExecuteBackupPlanRequest interface {
 }
 
 type ExecuteBackupPlanRequest struct {
+  // The edition. Valid values: BASIC and STANDARD. Default value: STANDARD.
+  // 
   // example:
   // 
   // STANDARD
@@ -42,11 +44,11 @@ type ExecuteBackupPlanRequest struct {
   RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
   // The type of the data source. Valid values:
   // 
-  // 	- **ECS_FILE**: Elastic Compute Service (ECS) files
+  // - **ECS_FILE**: Backs up ECS files.
   // 
-  // 	- **OSS**: Object Storage Service (OSS) buckets
+  // - **OSS**: Backs up Alibaba Cloud OSS.
   // 
-  // 	- **NAS**: Apsara File Storage NAS (NAS) file systems
+  // - **NAS**: Backs up Alibaba Cloud NAS.
   // 
   // example:
   // 

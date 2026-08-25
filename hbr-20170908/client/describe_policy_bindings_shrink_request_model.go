@@ -24,33 +24,47 @@ type iDescribePolicyBindingsShrinkRequest interface {
 }
 
 type DescribePolicyBindingsShrinkRequest struct {
-	// List of data source IDs.
+	// The list of data source IDs.
 	DataSourceIdsShrink *string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty"`
-	// Query filters.
+	// The query filters.
 	Filters []*DescribePolicyBindingsShrinkRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// Number of results per query.
+	// The number of results for each query.
 	//
-	// Range: 10~100. Default: 10.
+	// Valid values: 10 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Token required to fetch the next page of policy and data source associations.
+	// The token required to obtain the next page of policy-data source associations.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Policy ID.
+	// The policy ID.
 	//
 	// example:
 	//
 	// po-000************hky
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// Data source type. Possible values:
+	// The data source type. Valid values:
 	//
-	// 	- **UDM_ECS**: Indicates ECS full machine backup.
+	// - **UDM_ECS**: ECS instance backup.
+	//
+	// - **OSS**: OSS backup.
+	//
+	// - **NAS**: Alibaba Cloud NAS backup.
+	//
+	// - **COMMON_NAS**: On-premises NAS backup.
+	//
+	// - **ECS_FILE**: ECS File Backup Essential Edition.
+	//
+	// - **File**: On-premises file backup.
+	//
+	// - **COMMON_FILE_SYSTEM**: CPFS backup.
+	//
+	// - **OTS**: Tablestore backup.
 	//
 	// example:
 	//
@@ -134,41 +148,41 @@ func (s *DescribePolicyBindingsShrinkRequest) Validate() error {
 }
 
 type DescribePolicyBindingsShrinkRequestFilters struct {
-	// Key in the query filter. Possible values include:
+	// The key in the query filter. Valid values:
 	//
-	// - **PolicyId**: Backup policy ID
+	// - **PolicyId**: backup policy ID
 	//
 	// - **DataSourceId**: ECS instance ID
 	//
-	// - **DataSourceType**: Data source type
+	// - **DataSourceType**: data source type
 	//
 	// example:
 	//
 	// DataSourceType
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// Matching method. Default is IN. This refers to the matching operation (Operator) supported by the Key and Value in the filter. Possible values include:
+	// The matching method. Default value: IN. The matching operation (Operator) supported by the Key and Value in the filter. Valid values:
 	//
-	// - **EQUAL**: Equal to
+	// - **EQUAL**: equal to
 	//
-	// - **NOT_EQUAL**: Not equal to
+	// - **NOT_EQUAL**: not equal to
 	//
-	// - **GREATER_THAN**: Greater than
+	// - **GREATER_THAN**: greater than
 	//
-	// - **GREATER_THAN_OR_EQUAL**: Greater than or equal to
+	// - **GREATER_THAN_OR_EQUAL**: greater than or equal to
 	//
-	// - **LESS_THAN**: Less than
+	// - **LESS_THAN**: less than
 	//
-	// - **LESS_THAN_OR_EQUAL**: Less than or equal to
+	// - **LESS_THAN_OR_EQUAL**: less than or equal to
 	//
-	// - **BETWEEN**: Range, where value is a JSON array `[lower_bound, upper_bound]`.
+	// - **BETWEEN**: range. The value is a JSON array `[lower bound, upper bound]`.
 	//
-	// - **IN**: In the set, where value is an array.
+	// - **IN**: in a set. The value is an array.
 	//
 	// example:
 	//
 	// IN
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// Values to be matched in the query filter.
+	// The values to match in the query filter.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 

@@ -34,17 +34,19 @@ type iDescribeBackupClientsRequest interface {
 }
 
 type DescribeBackupClientsRequest struct {
-	// The IDs of HBR clients.
+	// The list of backup client IDs.
 	//
 	// example:
 	//
 	// ["c-*********************"]
 	ClientIds []*string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty" type:"Repeated"`
-	// The type of the HBR client. Valid values:
+	// The type of the backup client. Valid values:
 	//
-	// 	- **ECS_CLIENT**: HBR client for Elastic Compute Service (ECS) file backup
+	// - **ECS_CLIENT**: ECS File Backup client.
 	//
-	// 	- **CONTAINER_CLIENT**: HBR client for container backup
+	// - **CONTAINER_CLIENT**: container backup client.
+	//
+	// - **LOCAL_CLIENT**: local NAS backup, CPFS backup, archive, or data synchronization client.
 	//
 	// This parameter is required.
 	//
@@ -52,54 +54,55 @@ type DescribeBackupClientsRequest struct {
 	//
 	// ECS_CLIENT
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	// The ID of the cluster for the backup.
+	// The ID of the backup cluster.
 	//
 	// example:
 	//
 	// cl-000ge4wa61b4d337xblq
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	// The name of the RAM role created in the source account for cross-account backup.
 	//
 	// example:
 	//
 	// hbrcrossrole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	// Specifies whether data is backed up within the same Alibaba Cloud account or across Alibaba Cloud accounts. Valid values:
+	// The type of cross-account backup. Valid values:
 	//
-	// 	- SELF_ACCOUNT: Data is backed up within the same Alibaba Cloud account.
+	// - SELF_ACCOUNT: backup within the current account.
 	//
-	// 	- CROSS_ACCOUNT: Data is backed up across Alibaba Cloud accounts.
+	// - CROSS_ACCOUNT: cross-account backup.
 	//
 	// example:
 	//
 	// CROSS_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
-	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	// The ID of the source account used for cross-account backup.
 	//
 	// example:
 	//
 	// 129374672382xxxx
-	CrossAccountUserId *int64                                 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	Filters            []*DescribeBackupClientsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// The IDs of ECS instances.
+	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	// The query filters.
+	Filters []*DescribeBackupClientsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	// The list of ECS instance IDs.
 	//
 	// example:
 	//
 	// ["i-*********************"]
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 99. Default value: 10.
+	// The number of entries per page. Minimum value: 1. Maximum value: 99. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The tags.
+	// The tag information to return.
 	//
 	// example:
 	//
@@ -237,7 +240,13 @@ func (s *DescribeBackupClientsRequest) Validate() error {
 }
 
 type DescribeBackupClientsRequestFilters struct {
-	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the query filter.
+	//
+	// example:
+	//
+	// InstanceId
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The values to match in the query filter.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -274,11 +283,11 @@ func (s *DescribeBackupClientsRequestFilters) Validate() error {
 type DescribeBackupClientsRequestTag struct {
 	// The tag key of the backup vault. Valid values of N: 1 to 20.
 	//
-	// 	- The tag key cannot start with `aliyun` or `acs:`.
+	// - The tag key cannot start with `aliyun` or `acs:`.
 	//
-	// 	- The tag key cannot contain `http://` or `https://`.
+	// - The tag key cannot contain `http://` or `https://`.
 	//
-	// 	- The tag key cannot be an empty string.
+	// - The tag key cannot be an empty string.
 	//
 	// example:
 	//
@@ -286,11 +295,11 @@ type DescribeBackupClientsRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the backup vault. Valid values of N: 1 to 20.
 	//
-	// 	- The tag value cannot start with `aliyun` or `acs:`.
+	// - The tag value cannot start with `aliyun` or `acs:`.
 	//
-	// 	- The tag value cannot contain `http://` or `https://`.
+	// - The tag value cannot contain `http://` or `https://`.
 	//
-	// 	- The tag value cannot be an empty string.
+	// - The tag value cannot be an empty string.
 	//
 	// example:
 	//

@@ -28,25 +28,25 @@ type iDescribeRestoreJobs2ResponseBody interface {
 }
 
 type DescribeRestoreJobs2ResponseBody struct {
-	// The response status code. The status code 200 indicates that the request was successful.
+	// The return code. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message. If the request was successful, "successful" is returned. If the request failed, an error message is returned.
+	// The response message. If the request is successful, "successful" is returned. Otherwise, an error message is returned.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number of the returned page. Pages start from 1. Default: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 99. Default value: 10.
+	// The number of entries per page. Valid values: 1 to 99. Default: 10.
 	//
 	// example:
 	//
@@ -57,19 +57,20 @@ type DescribeRestoreJobs2ResponseBody struct {
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
-	RequestId   *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A container for the restore job details.
 	RestoreJobs *DescribeRestoreJobs2ResponseBodyRestoreJobs `json:"RestoreJobs,omitempty" xml:"RestoreJobs,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request was successful.
 	//
-	// 	- true
+	// - true: The request was successful.
 	//
-	// 	- false
+	// - false: The request failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries that match the query.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type DeleteClientRequest struct {
 	//
 	// rg-acf************kwy
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the backup vault.
+	// The ID of the backup repository.
 	//
 	// example:
 	//

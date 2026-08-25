@@ -16,9 +16,9 @@ type iCreatePolicyBindingsRequest interface {
 }
 
 type CreatePolicyBindingsRequest struct {
-	// The data sources that you want to bind to the backup policy.
+	// The list of policy bindings.
 	PolicyBindingList []*CreatePolicyBindingsRequestPolicyBindingList `json:"PolicyBindingList,omitempty" xml:"PolicyBindingList,omitempty" type:"Repeated"`
-	// The ID of the backup policy.
+	// The policy ID.
 	//
 	// example:
 	//
@@ -68,113 +68,123 @@ func (s *CreatePolicyBindingsRequest) Validate() error {
 type CreatePolicyBindingsRequestPolicyBindingList struct {
 	// The advanced options.
 	AdvancedOptions *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions `json:"AdvancedOptions,omitempty" xml:"AdvancedOptions,omitempty" type:"Struct"`
-	// The name of the RAM role that is created within the source Alibaba Cloud account and assigned to the current Alibaba Cloud account to authorize the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	// The RAM role name created in the source account for cross-account backup.
 	//
 	// example:
 	//
 	// hbrcrossrole
 	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
-	// Specifies whether to back up and restore data within the same Alibaba Cloud account or across Alibaba Cloud accounts. Default value: SELF_ACCOUNT. Valid values:
+	// The cross-account backup type. Default value: SELF_ACCOUNT. Valid values:
 	//
-	// 	- **SELF_ACCOUNT**: backs up data within the same Alibaba Cloud account.
+	// - **SELF_ACCOUNT**: Backup within the same account.
 	//
-	// 	- **CROSS_ACCOUNT**: backs up data across Alibaba Cloud accounts.
+	// - **CROSS_ACCOUNT**: Cross-account backup.
 	//
 	// example:
 	//
 	// SELF_ACCOUNT
 	CrossAccountType *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
-	// The ID of the source Alibaba Cloud account that authorizes the current Alibaba Cloud account to back up data across Alibaba Cloud accounts.
+	// The Alibaba Cloud UID of the source account for cross-account backup.
 	//
 	// example:
 	//
 	// 144**********732
 	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
-	// The ID of the data source. The meaning of this parameter depends on the **SourceType*	- parameter. Valid values:
+	// The data source ID. The value has different meanings depending on the **SourceType*	- field:
 	//
-	// 	- **UDM_ECS**: the ID of the Elastic Compute Service (ECS) instance
+	// - **UDM_ECS**: The ECS instance ID.
 	//
-	// 	- **OSS**: the name of the Object Storage Service (OSS) bucket
+	// - **OSS**: The OSS bucket name.
 	//
-	// 	- **NAS**: the ID of the File Storage NAS (NAS) file system
+	// - **NAS**: The Alibaba Cloud NAS file system ID.
 	//
-	// 	- **COMMON_NAS**: the ID of the on-premises NAS file system
+	// - **COMMON_NAS**: The on-premises NAS instance ID.
 	//
-	// 	- **ECS_FILE**: the ID of the ECS instance
+	// - **ECS_FILE**: The ECS instance ID.
 	//
-	// 	- **File**: the ID of the Cloud Backup client
+	// - **File**: The Cloud Backup client ID.
 	//
-	// 	- **COMMON_FILE_SYSTEM**: the ID of the Cloud Parallel File Storage (CPFS) backup data source
+	// - **COMMON_FILE_SYSTEM**: The CPFS backup data source ID.
 	//
 	// example:
 	//
 	// i-bp1************dl8
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// Specifies whether to disable the backup policy for the data source. Valid values:
+	// Specifies whether the policy is suspended for this data source.
 	//
-	// 	- true: disables the backup policy for the data source
+	// - true: Suspended.
 	//
-	// 	- false: enables the backup policy for the data source
+	// - false: Not suspended.
 	//
 	// example:
 	//
 	// true
 	Disabled *string `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE**, **File**, **NAS**, **COMMON_NAS**, or **COMMON_FILE_SYSTEM**. This parameter specifies the type of files that do not need to be backed up. No files of the specified type are backed up. The value can be up to 255 characters in length.
+	// This parameter can be configured when **SourceType*	- is set to **ECS_FILE**, **File**, **NAS**, **COMMON_NAS**, or **COMMON_FILE_SYSTEM**. Specifies the file types to exclude from the backup. All files of these types are not backed up. The value can be up to 255 characters in length.
 	//
 	// example:
 	//
 	// [\\"*.doc\\",\\"*.xltm\\"]
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE**, **File**, **NAS**, **COMMON_NAS**, or **COMMON_FILE_SYSTEM**. This parameter specifies the type of files to be backed up. All files of the specified type are backed up. The value can be up to 255 characters in length.
+	// This parameter can be configured when **SourceType*	- is set to **ECS_FILE**, **File**, **NAS**, **COMMON_NAS**, or **COMMON_FILE_SYSTEM**. Specifies the file types to include in the backup. All files of these types are backed up. The value can be up to 255 characters in length.
 	//
 	// example:
 	//
 	// [\\"*.doc\\",\\"*.xltm\\"]
 	Include *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	// The description of the association.
+	// The description of the policy binding.
 	//
 	// example:
 	//
-	// Bind data sources to a backup policy
+	// This is a description of the policy binding
 	PolicyBindingDescription *string `json:"PolicyBindingDescription,omitempty" xml:"PolicyBindingDescription,omitempty"`
-	// 	- If the SourceType parameter is set to **OSS**, set the Source parameter to the prefix of the path to the folder that you want to back up. If you do not specify the Source parameter, the entire bucket (root directory) is backed up.
+	// The value has different meanings depending on the SourceType value:
 	//
-	// 	- If the SourceType parameter is set to **ECS_FILE*	- or **File**, set the Source parameter to the path to the files that you want to back up. If you do not specify the Source parameter, all paths are backed up.
+	// - **OSS**: The prefix to back up. If not specified, the entire bucket root directory is backed up. Only a single prefix is supported. To back up /backup, specify /backup.
 	//
-	// 	- This parameter is required if the SourceType parameter is set to **COMMON_FILE_SYSTEM**. This parameter specifies the path to be backed up. To back up the /src path, enter ["/src"]. To back up the root path, enter ["/"].
+	// - **ECS_FILE**: The file directories to back up. If not specified, all directories are backed up. Multiple directories are supported. To back up files under /a and /b, specify ["/a", "/b"].
+	//
+	// - **File**: The file directories to back up. If not specified, all directories are backed up. Multiple directories are supported. To back up files under /a and /b, specify ["/a", "/b"].
+	//
+	// - **COMMON_FILE_SYSTEM**: Required. The source paths to back up. Multiple paths are supported. To back up /a and /b, specify ["/a", "/b"]. To back up the root path, specify ["/"].
+	//
+	// - **COMMON_NAS**: Required. The source path to back up. Only a single path is supported. To back up /a, specify ["/a"]. To back up the root path, specify ["/"].
+	//
+	// - **OTS**: The list of data tables to back up. If not specified, all data tables are backed up. Multiple data tables are supported. To back up tables a and b, specify ["a", "b"].
 	//
 	// example:
 	//
 	// backup/
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The type of the data source. Valid values:
+	// The data source type. Valid values:
 	//
-	// 	- **UDM_ECS**: ECS instance
+	// - **UDM_ECS**: ECS full server backup.
 	//
-	// 	- **OSS**: OSS bucket
+	// - **OSS**: OSS backup.
 	//
-	// 	- **NAS**: NAS file system
+	// - **NAS**: Alibaba Cloud NAS backup.
 	//
-	// 	- **COMMON_NAS**: on-premises NAS file system
+	// - **COMMON_NAS**: On-premises NAS backup.
 	//
-	// 	- **ECS_FILE**: ECS file
+	// - **ECS_FILE**: ECS File Backup Essential Edition.
 	//
-	// 	- **File**: on-premises file
+	// - **File**: On-premises file backup.
 	//
-	// 	- **COMMON_FILE_SYSTEM**: CPFS file system
+	// - **COMMON_FILE_SYSTEM**: CPFS backup.
+	//
+	// - **OTS**: Tablestore backup.
 	//
 	// example:
 	//
 	// UDM_ECS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// This parameter is required only if you set the **SourceType*	- parameter to **ECS_FILE*	- or **File**. This parameter specifies the throttling rules. Format: `{start}{end}{bandwidth}`. Separate multiple throttling rules with vertical bars (|). The time ranges of the throttling rules cannot overlap.
+	// This parameter is required only when **SourceType*	- is set to **ECS_FILE*	- or **File**. Specifies the backup traffic control. The format is `{start}{end}{bandwidth}`. Multiple traffic control configurations are separated by delimiters, and the time ranges must not overlap.
 	//
-	// 	- **start**: the start hour.
+	// - **start**: The start hour.
 	//
-	// 	- **end**: the end hour.
+	// - **end**: The end hour.
 	//
-	// 	- **bandwidth**: the bandwidth. Unit: KB/s.
+	// - **bandwidth**: The rate limit, in KB/s.
 	//
 	// example:
 	//
@@ -314,9 +324,9 @@ type CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions struct {
 	CommonNasDetail *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonNasDetail `json:"CommonNasDetail,omitempty" xml:"CommonNasDetail,omitempty" type:"Struct"`
 	// The advanced options for file backup.
 	FileDetail *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsFileDetail `json:"FileDetail,omitempty" xml:"FileDetail,omitempty" type:"Struct"`
-	// The advanced options for Object Storage Service (OSS) backup.
+	// The advanced options for OSS backup.
 	OssDetail *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsOssDetail `json:"OssDetail,omitempty" xml:"OssDetail,omitempty" type:"Struct"`
-	// The advanced options for ECS instance backup.
+	// The advanced options for ECS full server backup.
 	UdmDetail *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty" type:"Struct"`
 }
 
@@ -403,17 +413,17 @@ func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions) Validate()
 }
 
 type CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonFileSystemDetail struct {
-	// The size of backup shards (the number of files).
+	// The sub-task slice size (number of files).
 	//
 	// example:
 	//
 	// 100000
 	FetchSliceSize *int64 `json:"FetchSliceSize,omitempty" xml:"FetchSliceSize,omitempty"`
-	// Specifies whether the system performs full backup if incremental backup fails. Valid values:
+	// Specifies whether to switch to a full backup when an incremental backup fails. Valid values:
 	//
-	// 	- **true**: The system performs full backup if incremental backup fails.
+	// - **true**: Switch to a full backup on failure.
 	//
-	// 	- **false**: The system does not perform full backup if incremental backup fails.
+	// - **false**: Do not switch to a full backup on failure.
 	//
 	// example:
 	//
@@ -452,23 +462,23 @@ func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonFileSy
 }
 
 type CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonNasDetail struct {
-	// The ID of the backup client group. When you perform on-premises NAS backup, Cloud Backup selects clients from the specified backup client group.
+	// The backup client group ID. On-premises NAS backup selects a client from the backup client group to perform the backup.
 	//
 	// example:
 	//
 	// cl-000**************ggu
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The size of backup shards (the number of files).
+	// The sub-task slice size (number of files).
 	//
 	// example:
 	//
 	// 100000
 	FetchSliceSize *int64 `json:"FetchSliceSize,omitempty" xml:"FetchSliceSize,omitempty"`
-	// Specifies whether the system performs full backup if incremental backup fails. Valid values:
+	// Specifies whether to switch to a full backup when an incremental backup fails. Valid values:
 	//
-	// 	- **true**: The system performs full backup if incremental backup fails.
+	// - **true**: Switch to a full backup on failure.
 	//
-	// 	- **false**: The system does not perform full backup if incremental backup fails.
+	// - **false**: Do not switch to a full backup on failure.
 	//
 	// example:
 	//
@@ -518,19 +528,19 @@ func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsCommonNasDet
 type CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsFileDetail struct {
 	// Specifies whether to use an advanced policy. Valid values:
 	//
-	// 	- **true**: uses the advanced policy.
+	// - **true**: Use.
 	//
-	// 	- **false**: does not use the advanced policy.
+	// - **false**: Do not use.
 	//
 	// example:
 	//
 	// true
 	AdvPolicy *bool `json:"AdvPolicy,omitempty" xml:"AdvPolicy,omitempty"`
-	// Specifies whether to enable the Volume Shadow Copy Service (VSS) feature. Valid values:
+	// Specifies whether to enable the Volume Shadow Copy Service (VSS) feature (Windows). Valid values:
 	//
-	// 	- **true**: enables the feature.
+	// - **true**: Enabled.
 	//
-	// 	- **false**: disables the feature.
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -569,29 +579,29 @@ func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsFileDetail) 
 }
 
 type CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsOssDetail struct {
-	// Do not prompt for archival type objects in task statistics and failed file lists.
+	// Specifies whether to exclude archive objects from job statistics and failed file lists.
 	//
 	// example:
 	//
 	// true
 	IgnoreArchiveObject *bool `json:"IgnoreArchiveObject,omitempty" xml:"IgnoreArchiveObject,omitempty"`
-	// Specifies whether the system deletes the inventory lists when a backup is completed. This parameter is valid only when OSS inventories are used. Valid values:
+	// Specifies whether to delete inventory files after backup. This parameter takes effect only when OSS inventory is used. Valid values:
 	//
-	// 	- **NO_CLEANUP**: does not delete inventory lists.
+	// - **NO_CLEANUP**: Do not delete.
 	//
-	// 	- **DELETE_CURRENT**: deletes the current inventory list.
+	// - **DELETE_CURRENT**: Delete the current file.
 	//
-	// 	- **DELETE_CURRENT_AND_PREVIOUS**: deletes all inventory lists.
+	// - **DELETE_CURRENT_AND_PREVIOUS**: Delete all files.
 	//
 	// example:
 	//
 	// NO_CLEANUP
 	InventoryCleanupPolicy *string `json:"InventoryCleanupPolicy,omitempty" xml:"InventoryCleanupPolicy,omitempty"`
-	// The name of the OSS inventory. If this parameter is not empty, the OSS inventory is used for performance optimization.
+	// The OSS inventory name. When this value is not empty, the OSS inventory is used for performance optimization.
 	//
-	// 	- If you want to back up more than 100 million OSS objects, we recommend that you use inventory lists to accelerate incremental backup. Storage fees for inventory lists are included into your OSS bills.
+	// - Using an inventory is recommended for backing up more than 100 million OSS objects to improve incremental performance. Storage fees generated by inventory files are charged separately by OSS.
 	//
-	// 	- A certain amount of time is required for OSS to generate inventory lists. Before inventory lists are generated, OSS objects may fail to be backed up. In this case, you can back up the OSS objects in the next backup cycle.
+	// - OSS inventory files take time to generate. Backup jobs may fail before the inventory files are generated. Wait for the next backup cycle.
 	//
 	// example:
 	//
@@ -639,25 +649,25 @@ func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsOssDetail) V
 }
 
 type CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail struct {
-	// Specifies whether to enable application consistency. You can enable application consistency only if all disks are ESSDs.
+	// Specifies whether to create an application-consistent snapshot. Application-consistent snapshots are supported only when all cloud disk types are ESSD.
 	//
 	// example:
 	//
 	// false
 	AppConsistent *bool `json:"AppConsistent,omitempty" xml:"AppConsistent,omitempty"`
-	// The IDs of the disks that need to be protected. If all disks need to be protected, this parameter is empty.
+	// The list of cloud disk IDs that need to be protected. Leave this value empty to protect all cloud disks.
 	DiskIdList []*string `json:"DiskIdList,omitempty" xml:"DiskIdList,omitempty" type:"Repeated"`
-	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter specifies whether to enable Linux fsfreeze to put file systems into the read-only state before application-consistent snapshots are created. Default value: true.
+	// This parameter is required only when **AppConsistent*	- is set to **true**. Specifies whether to use the Linux FsFreeze mechanism to ensure the file system is in read consistency before creating an application-consistent snapshot. Default value: true.
 	//
 	// example:
 	//
 	// true
 	EnableFsFreeze *bool `json:"EnableFsFreeze,omitempty" xml:"EnableFsFreeze,omitempty"`
-	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter specifies whether to create application-consistent snapshots. Valid values:
+	// This parameter is required only when **AppConsistent*	- is set to **true**. Specifies whether to create an application-consistent snapshot:
 	//
-	// 	- true: creates application-consistent snapshots.
+	// - true: Creates an application-consistent snapshot.
 	//
-	// 	- false: creates file system-consistent snapshots.
+	// - false: Creates a file system-consistent snapshot.
 	//
 	// Default value: true.
 	//
@@ -665,33 +675,33 @@ type CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail struct
 	//
 	// true
 	EnableWriters *bool `json:"EnableWriters,omitempty" xml:"EnableWriters,omitempty"`
-	// The IDs of the disks that do not need to be protected. If the DiskIdList parameter is not empty, this parameter is ignored.
+	// The list of cloud disk IDs that do not need to be protected. This parameter is ignored when DiskIdList is not empty.
 	ExcludeDiskIdList []*string `json:"ExcludeDiskIdList,omitempty" xml:"ExcludeDiskIdList,omitempty" type:"Repeated"`
-	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter specifies the path of the post-thaw scripts that are executed after application-consistent snapshots are created.
+	// This parameter is required only when **AppConsistent*	- is set to **true**. The path of the post-thaw script to run after creating an application-consistent snapshot.
 	//
 	// example:
 	//
 	// /tmp/postscript.sh
 	PostScriptPath *string `json:"PostScriptPath,omitempty" xml:"PostScriptPath,omitempty"`
-	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter specifies the path of the pre-freeze scripts that are executed before application-consistent snapshots are created.
+	// This parameter is required only when **AppConsistent*	- is set to **true**. The path of the pre-freeze script to run before creating an application-consistent snapshot.
 	//
 	// example:
 	//
 	// /tmp/prescript.sh
 	PreScriptPath *string `json:"PreScriptPath,omitempty" xml:"PreScriptPath,omitempty"`
-	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter specifies the name of the Resource Access Management (RAM) role that is required to create application-consistent snapshots.
+	// This parameter is required only when **AppConsistent*	- is set to **true**. The RAM role name required for creating application-consistent snapshots.
 	//
 	// example:
 	//
 	// AliyunECSInstanceForHbrRole
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// Specifies whether to create a snapshot-consistent group. You can create a snapshot-consistent group only if all disks are Enterprise SSDs (ESSDs).
+	// Specifies whether to create a snapshot-consistent group. Snapshot-consistent groups are supported only when all cloud disk types are ESSD.
 	//
 	// example:
 	//
 	// true
 	SnapshotGroup *bool `json:"SnapshotGroup,omitempty" xml:"SnapshotGroup,omitempty"`
-	// This parameter is required only if you set the **AppConsistent*	- parameter to **true**. This parameter specifies the I/O freeze timeout period. Default value: 30. Unit: seconds.
+	// This parameter is required only when **AppConsistent*	- is set to **true**. The I/O freeze timeout period, in seconds. Default value: 30.
 	//
 	// example:
 	//

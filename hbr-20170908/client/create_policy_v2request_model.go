@@ -20,35 +20,35 @@ type iCreatePolicyV2Request interface {
 }
 
 type CreatePolicyV2Request struct {
-	// The description of the backup policy.
+	// The policy description.
 	//
 	// example:
 	//
-	// Data is backed up at 10:00:00 every day and replicated to the China (Shanghai) region for geo-redundancy.
+	// Backup once every day at 10:00 AM, with cross-region backup to Shanghai.
 	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
-	// The name of the backup policy.
+	// The policy name.
 	//
 	// example:
 	//
-	// Daily Local Backup + Remote Backup
+	// Daily local backup + geo-redundancy
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 	// The policy type. Valid values:
 	//
-	// 	- **STANDARD**: the general backup policy. This type of policy applies to backups other than Elastic Compute Service (ECS) instance backup.
+	// - **STANDARD**: general backup policy. Supports backing up data sources other than ECS instances.
 	//
-	// 	- **UDM_ECS_ONLY**: This type of policy applies only to ECS instance backup.
+	// - **UDM_ECS_ONLY**: ECS instance backup policy. Supports backing up only ECS instances.
 	//
-	// If the policy type is not specified, Cloud Backup automatically sets the policy type based on whether the backup vault is specified in the rules of the policy:
+	// If you do not specify the policy type, Cloud Backup automatically sets the policy type based on whether a backup vault is specified in the policy rules:
 	//
-	// 	- If the backup vault is specified, Cloud Backup sets the policy type to **STANDARD**.
+	// - A backup vault is specified in the policy rules: **STANDARD**
 	//
-	// 	- If the backup vault is not specified, Cloud Backup sets the policy type to **UDM_ECS_ONLY**.
+	// - No backup vault is specified in the policy rules: **UDM_ECS_ONLY**
 	//
 	// example:
 	//
 	// STANDARD
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The rules in the backup policy.
+	// The list of policy rules.
 	Rules []*CreatePolicyV2RequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -110,59 +110,65 @@ func (s *CreatePolicyV2Request) Validate() error {
 }
 
 type CreatePolicyV2RequestRules struct {
-	// This parameter is required only if the **RuleType*	- parameter is set to **BACKUP**. This parameter specifies the backup type. Valid value: **COMPLETE**, which indicates full backup.
+	// This parameter is required only when **RuleType*	- is set to **TRANSITION**. The number of days after which a backup is automatically moved to the archive tier. Backups must be retained in the standard tier for at least 30 days and in the archive tier for at least 60 days. Unit: days.
+	//
+	// example:
+	//
+	// 90
+	ArchiveDays *int64 `json:"ArchiveDays,omitempty" xml:"ArchiveDays,omitempty"`
+	// This parameter is required only when **RuleType*	- is set to **BACKUP**. The backup type. Set the value to **COMPLETE**, which specifies full backup.
 	//
 	// example:
 	//
 	// COMPLETE
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// This parameter is required only if the **RuleType*	- parameter is set to **TAG**. This parameter specifies the data source filter rule.
+	// This parameter is required only when **RuleType*	- is set to **TAG**. The data source filter rules.
 	DataSourceFilters []*CreatePolicyV2RequestRulesDataSourceFilters `json:"DataSourceFilters,omitempty" xml:"DataSourceFilters,omitempty" type:"Repeated"`
-	// This parameter is required only if the **PolicyType*	- parameter is set to **UDM_ECS_ONLY**. This parameter specifies whether to enable the immutable backup feature.
+	// This parameter is required only when **PolicyType*	- is set to **UDM_ECS_ONLY*	- and **RuleType*	- is set to **SECURITY**. Specifies whether to enable backup locking.
 	//
 	// example:
 	//
 	// true
 	Immutable *bool `json:"Immutable,omitempty" xml:"Immutable,omitempty"`
-	// Specifies whether to enable the feature of keeping at least one backup version. Valid values:
+	// Specifies whether to retain at least one backup version. Valid values:
 	//
-	// 	- 0: The feature is disabled.
+	// - 0: do not retain.
 	//
-	// 	- 1: The feature is enabled.
+	// - 1: retain.
 	//
 	// example:
 	//
 	// 1
 	KeepLatestSnapshots *int64 `json:"KeepLatestSnapshots,omitempty" xml:"KeepLatestSnapshots,omitempty"`
-	// This parameter is required only if the **RuleType*	- parameter is set to **REPLICATION**. This parameter specifies the ID of the destination region.
+	// This parameter is required only when **RuleType*	- is set to **REPLICATION**. The ID of the destination region for replication.
 	//
 	// example:
 	//
 	// cn-shanghai
 	ReplicationRegionId *string `json:"ReplicationRegionId,omitempty" xml:"ReplicationRegionId,omitempty"`
-	// This parameter is required only if the **RuleType*	- parameter is set to **BACKUP**, **TRANSITION**, or **REPLICATION**.
+	// This parameter is required only when **RuleType*	- is set to **BACKUP**, **TRANSITION**, or **REPLICATION**.
 	//
-	// 	- If the **RuleType*	- parameter is set to **BACKUP**, this parameter specifies the retention period of the backup data. The priority is lower than the retention period when the **RuleType*	- parameter is set to **TRANSITION**. Minimum value: 1. Maximum value: 364635. Unit: days.
+	// - If **RuleType*	- is set to **BACKUP**: the retention period of backups. The priority of this parameter is lower than the Retention parameter of the rule whose **RuleType*	- is **TRANSITION**. Minimum value: 1. Maximum value: 364635. Unit: days.
 	//
-	// 	- If the **RuleType*	- parameter is set to **TRANSITION**, this parameter specifies the retention period of the backup data. Minimum value: 1. Maximum value: 364635. Unit: days.
+	// - If **RuleType*	- is set to **TRANSITION**: the retention period of backups. Minimum value: 1. Maximum value: 364635. Unit: days.
 	//
-	// 	- If the **RuleType*	- parameter is set to **REPLICATION**, this parameter specifies the retention period of remote backups. Minimum value: 1. Maximum value: 364635. Unit: days.
+	// - If **RuleType*	- is set to **REPLICATION**: the retention period of cross-region backups. Minimum value: 1. Maximum value: 364635. Unit: days.
 	//
 	// example:
 	//
 	// 7
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// This parameter is required only if the **RuleType*	- parameter is set to **TRANSITION**. This parameter specifies the special retention rules.
+	// This parameter is required only when **RuleType*	- is set to **TRANSITION**. The special retention rules.
 	RetentionRules []*CreatePolicyV2RequestRulesRetentionRules `json:"RetentionRules,omitempty" xml:"RetentionRules,omitempty" type:"Repeated"`
-	// The type of the rule. Each backup policy must have at least one rule of the **BACKUP*	- type and only one rule of the **TRANSITION*	- type. Valid values:
+	// The rule type. Each policy must have at least one **BACKUP*	- rule and exactly one **TRANSITION*	- rule. Valid values:
 	//
-	// 	- **BACKUP**: backup rule
+	// - **BACKUP**: backup rule.
 	//
-	// 	- **TRANSITION**: lifecycle rule
+	// - **TRANSITION**: lifecycle rule.
 	//
-	// 	- **REPLICATION**: replication rule
+	// - **REPLICATION**: replication rule.
 	//
-	// 	- **TAG**: tag-based resource association rule
+	// - **TAG**: tag-based resource association rule.
 	//
 	// This parameter is required.
 	//
@@ -170,29 +176,29 @@ type CreatePolicyV2RequestRules struct {
 	//
 	// BACKUP
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// This parameter is required only if the **RuleType*	- parameter is set to **BACKUP**. This parameter specifies the backup schedule settings. Formats:
+	// This parameter is required only when **RuleType*	- is set to **BACKUP**. The backup schedule settings. Supported formats:
 	//
-	// 	- `I|{startTime}|{interval}`: The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+	// - `I|{startTime}|{interval}`: specifies that a backup job is executed at the specified interval starting from {startTime}. For example, `I|1631685600|P1D` specifies that a backup job is executed once a day starting from 2021-09-15 14:00:00.
 	//
-	//     	- startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
+	//   	- startTime: the start time of the backup. This value is a UNIX timestamp. Unit: seconds.
 	//
-	//     	- interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, `PT1H` specifies an interval of 1 hour. `P1D` specifies an interval of one day.
+	//   	- interval: the ISO 8601 time interval. For example, `PT1H` specifies an interval of one hour. `P1D` specifies an interval of one day.
 	//
-	// 	- `C|{startTime}|{crontab}`: The system runs backup jobs at a point in time that is specified in the {startTime} parameter based on the {crontab} expression. For example, C|1631685600|0 0 2 ?\\	- 3,5,7 indicates that the system runs backup jobs at 02:00:00 every Tuesday, Thursday, and Saturday from14:00:00 on September 15, 2021.``
+	// - `C|{startTime}|{crontab}`: specifies that a backup job is executed based on the {crontab} expression starting from {startTime}. For example, `C|1631685600|0 0 2 ? 	- 3,5,7` specifies that a backup job is executed at 02:00:00 every Tuesday, Thursday, and Saturday starting from 2021-09-15 14:00:00.
 	//
-	//     	- startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
+	//   	- startTime: the start time of the backup. This value is a UNIX timestamp. Unit: seconds.
 	//
-	//     	- crontab: the crontab expression. For example, 0 0 2 ?\\	- 3,5,7 indicates 02:00:00 every Tuesday, Thursday, and Saturday.``
+	//   	- crontab: the crontab expression. For example, `0 0 2 ? 	- 3,5,7` specifies every Tuesday, Thursday, and Saturday at 02:00:00.
 	//
-	// The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed.
+	// Backup jobs that are missed are not compensated. If the previous backup job is not complete, the next backup job is not triggered.
 	//
 	// example:
 	//
 	// I|1648647166|P1D
 	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	// This parameter is required only if the **RuleType*	- parameter is set to **TAG**. This parameter specifies the resource tag filter rule.
+	// This parameter is required only when **RuleType*	- is set to **TAG**. The resource tag filter rules.
 	TagFilters []*CreatePolicyV2RequestRulesTagFilters `json:"TagFilters,omitempty" xml:"TagFilters,omitempty" type:"Repeated"`
-	// This parameter is required only if the RuleType parameter is set to BACKUP. The ID of the backup vault.
+	// This parameter is required only when RuleType is set to BACKUP. The backup vault ID.
 	//
 	// example:
 	//
@@ -206,6 +212,10 @@ func (s CreatePolicyV2RequestRules) String() string {
 
 func (s CreatePolicyV2RequestRules) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePolicyV2RequestRules) GetArchiveDays() *int64 {
+	return s.ArchiveDays
 }
 
 func (s *CreatePolicyV2RequestRules) GetBackupType() *string {
@@ -250,6 +260,11 @@ func (s *CreatePolicyV2RequestRules) GetTagFilters() []*CreatePolicyV2RequestRul
 
 func (s *CreatePolicyV2RequestRules) GetVaultId() *string {
 	return s.VaultId
+}
+
+func (s *CreatePolicyV2RequestRules) SetArchiveDays(v int64) *CreatePolicyV2RequestRules {
+	s.ArchiveDays = &v
+	return s
 }
 
 func (s *CreatePolicyV2RequestRules) SetBackupType(v string) *CreatePolicyV2RequestRules {
@@ -339,19 +354,23 @@ func (s *CreatePolicyV2RequestRules) Validate() error {
 }
 
 type CreatePolicyV2RequestRulesDataSourceFilters struct {
-	// This parameter is deprecated.
+	AccountScope *string                                                `json:"AccountScope,omitempty" xml:"AccountScope,omitempty"`
+	Accounts     []*CreatePolicyV2RequestRulesDataSourceFiltersAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
+	// Deprecated
+	//
+	// Deprecated.
 	DataSourceIds []*string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty" type:"Repeated"`
-	// The type of the data source. Valid values:
+	// The data source type. Valid values:
 	//
-	// 	- **UDM_ECS**: Elastic Compute Service (ECS) instance This type of data source is supported only if the **PolicyType*	- parameter is set to **UDM_ECS_ONLY**.
+	// - **UDM_ECS**: ECS instance backup. This data source type is supported only when **PolicyType*	- is set to **UDM_ECS_ONLY**.
 	//
-	// 	- **OSS**: Object Storage Service (OSS) bucket This type of data source is supported only if the **PolicyType*	- parameter is set to **STANDARD**.
+	// - **OSS**: OSS backup. This data source type is supported only when **PolicyType*	- is set to **STANDARD**.
 	//
-	// 	- **NAS**: File Storage NAS (NAS) file system This type of data source is supported only if the **PolicyType*	- parameter is set to **STANDARD**.
+	// - **NAS**: Alibaba Cloud NAS backup. This data source type is supported only when **PolicyType*	- is set to **STANDARD**.
 	//
-	// 	- **ECS_FILE**: ECS file This type of data source is supported only if the **PolicyType*	- parameter is set to **STANDARD**.
+	// - **ECS_FILE**: ECS File Backup Essential Edition. This data source type is supported only when **PolicyType*	- is set to **STANDARD**.
 	//
-	// 	- **OTS**: Tablestore instance This type of data source is supported only if the **PolicyType*	- parameter is set to **STANDARD**.
+	// - **OTS**: Tablestore backup. This data source type is supported only when **PolicyType*	- is set to **STANDARD**.
 	//
 	// example:
 	//
@@ -367,12 +386,30 @@ func (s CreatePolicyV2RequestRulesDataSourceFilters) GoString() string {
 	return s.String()
 }
 
+func (s *CreatePolicyV2RequestRulesDataSourceFilters) GetAccountScope() *string {
+	return s.AccountScope
+}
+
+func (s *CreatePolicyV2RequestRulesDataSourceFilters) GetAccounts() []*CreatePolicyV2RequestRulesDataSourceFiltersAccounts {
+	return s.Accounts
+}
+
 func (s *CreatePolicyV2RequestRulesDataSourceFilters) GetDataSourceIds() []*string {
 	return s.DataSourceIds
 }
 
 func (s *CreatePolicyV2RequestRulesDataSourceFilters) GetSourceType() *string {
 	return s.SourceType
+}
+
+func (s *CreatePolicyV2RequestRulesDataSourceFilters) SetAccountScope(v string) *CreatePolicyV2RequestRulesDataSourceFilters {
+	s.AccountScope = &v
+	return s
+}
+
+func (s *CreatePolicyV2RequestRulesDataSourceFilters) SetAccounts(v []*CreatePolicyV2RequestRulesDataSourceFiltersAccounts) *CreatePolicyV2RequestRulesDataSourceFilters {
+	s.Accounts = v
+	return s
 }
 
 func (s *CreatePolicyV2RequestRulesDataSourceFilters) SetDataSourceIds(v []*string) *CreatePolicyV2RequestRulesDataSourceFilters {
@@ -386,31 +423,85 @@ func (s *CreatePolicyV2RequestRulesDataSourceFilters) SetSourceType(v string) *C
 }
 
 func (s *CreatePolicyV2RequestRulesDataSourceFilters) Validate() error {
+	if s.Accounts != nil {
+		for _, item := range s.Accounts {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreatePolicyV2RequestRulesDataSourceFiltersAccounts struct {
+	CrossAccountRoleName *string `json:"CrossAccountRoleName,omitempty" xml:"CrossAccountRoleName,omitempty"`
+	CrossAccountType     *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossAccountUserId   *int64  `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+}
+
+func (s CreatePolicyV2RequestRulesDataSourceFiltersAccounts) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreatePolicyV2RequestRulesDataSourceFiltersAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyV2RequestRulesDataSourceFiltersAccounts) GetCrossAccountRoleName() *string {
+	return s.CrossAccountRoleName
+}
+
+func (s *CreatePolicyV2RequestRulesDataSourceFiltersAccounts) GetCrossAccountType() *string {
+	return s.CrossAccountType
+}
+
+func (s *CreatePolicyV2RequestRulesDataSourceFiltersAccounts) GetCrossAccountUserId() *int64 {
+	return s.CrossAccountUserId
+}
+
+func (s *CreatePolicyV2RequestRulesDataSourceFiltersAccounts) SetCrossAccountRoleName(v string) *CreatePolicyV2RequestRulesDataSourceFiltersAccounts {
+	s.CrossAccountRoleName = &v
+	return s
+}
+
+func (s *CreatePolicyV2RequestRulesDataSourceFiltersAccounts) SetCrossAccountType(v string) *CreatePolicyV2RequestRulesDataSourceFiltersAccounts {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *CreatePolicyV2RequestRulesDataSourceFiltersAccounts) SetCrossAccountUserId(v int64) *CreatePolicyV2RequestRulesDataSourceFiltersAccounts {
+	s.CrossAccountUserId = &v
+	return s
+}
+
+func (s *CreatePolicyV2RequestRulesDataSourceFiltersAccounts) Validate() error {
 	return dara.Validate(s)
 }
 
 type CreatePolicyV2RequestRulesRetentionRules struct {
 	// The type of the special retention rule. Valid values:
 	//
-	// 	- **DAILY**: retains daily backups
+	// - **DAILY**: daily backup.
 	//
-	// 	- **WEEKLY**: retains weekly backups
+	// - **WEEKLY**: weekly backup.
 	//
-	// 	- **MONTHLY**: retains monthly backups
+	// - **MONTHLY**: monthly backup.
 	//
-	// 	- **YEARLY**: retains yearly backups
+	// - **YEARLY**: yearly backup.
 	//
 	// example:
 	//
 	// YEARLY
 	AdvancedRetentionType *string `json:"AdvancedRetentionType,omitempty" xml:"AdvancedRetentionType,omitempty"`
-	// The special retention period of backups. Minimum value: 1. Unit: days.
+	// The special retention period of the backup. Minimum value: 1. Unit: days.
 	//
 	// example:
 	//
 	// 730
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// Specifies which backup is retained based on the special retention rule. Only the first backup can be retained.
+	// The backup to which the rule applies. Currently, only the first backup is supported. Set the value to 1.
 	//
 	// example:
 	//
@@ -464,17 +555,17 @@ type CreatePolicyV2RequestRulesTagFilters struct {
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag-based matching rule. Valid values:
+	// The tag matching rule. Valid values:
 	//
-	// 	- **EQUAL**: Both the tag key and tag value are matched.
+	// - **EQUAL**: matches both the tag key and tag value.
 	//
-	// 	- **NOT**: The tag key is matched and the tag value is not matched.
+	// - **NOT**: matches the tag key but not the tag value.
 	//
 	// example:
 	//
 	// EQUAL
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The tag value. If you leave this parameter empty, the value is any value.
+	// The tag value. An empty value indicates any value.
 	//
 	// example:
 	//
