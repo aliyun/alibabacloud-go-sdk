@@ -85,8 +85,11 @@ type GenerateDataKeyShrinkRequest struct {
 	// example:
 	//
 	// 256
-	NumberOfBytes *int32  `json:"NumberOfBytes,omitempty" xml:"NumberOfBytes,omitempty"`
-	Recipient     *string `json:"Recipient,omitempty" xml:"Recipient,omitempty"`
+	NumberOfBytes *int32 `json:"NumberOfBytes,omitempty" xml:"NumberOfBytes,omitempty"`
+	// example:
+	//
+	// { "AttestationDocument":"base64-encoded-attestion-document",  "KeyEncryptionAlgorithm":"RSAES_OAEP_SHA_256" }
+	Recipient *string `json:"Recipient,omitempty" xml:"Recipient,omitempty"`
 }
 
 func (s GenerateDataKeyShrinkRequest) String() string {

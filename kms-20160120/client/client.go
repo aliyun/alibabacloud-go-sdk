@@ -34,40 +34,40 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"us-west-1":             dara.String("kms.us-west-1.aliyuncs.com"),
-		"us-east-1":             dara.String("kms.us-east-1.aliyuncs.com"),
-		"na-south-1":            dara.String("kms.na-south-1.aliyuncs.com"),
-		"me-east-1":             dara.String("kms.me-east-1.aliyuncs.com"),
-		"me-central-1":          dara.String("kms.me-central-1.aliyuncs.com"),
-		"eu-west-1":             dara.String("kms.eu-west-1.aliyuncs.com"),
-		"eu-central-1":          dara.String("kms.eu-central-1.aliyuncs.com"),
-		"cn-zhengzhou-jva":      dara.String("kms.cn-zhengzhou-jva.aliyuncs.com"),
-		"cn-zhangjiakou":        dara.String("kms.cn-zhangjiakou.aliyuncs.com"),
-		"cn-wulanchabu":         dara.String("kms.cn-wulanchabu.aliyuncs.com"),
-		"cn-wuhan-lr":           dara.String("kms.cn-wuhan-lr.aliyuncs.com"),
-		"cn-shenzhen-finance-1": dara.String("kms.cn-shenzhen-finance-1.aliyuncs.com"),
-		"cn-shenzhen":           dara.String("kms.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai-finance-1": dara.String("kms.cn-shanghai-finance-1.aliyuncs.com"),
-		"cn-shanghai":           dara.String("kms.cn-shanghai.aliyuncs.com"),
-		"cn-qingdao":            dara.String("kms.cn-qingdao.aliyuncs.com"),
-		"cn-huhehaote":          dara.String("kms.cn-huhehaote.aliyuncs.com"),
-		"cn-hongkong":           dara.String("kms.cn-hongkong.aliyuncs.com"),
-		"cn-heyuan-acdr-1":      dara.String("kms.cn-heyuan-acdr-1.aliyuncs.com"),
-		"cn-heyuan":             dara.String("kms.cn-heyuan.aliyuncs.com"),
-		"cn-hangzhou-finance":   dara.String("kms.cn-hangzhou-finance.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("kms.cn-hangzhou.aliyuncs.com"),
-		"cn-guangzhou":          dara.String("kms.cn-guangzhou.aliyuncs.com"),
-		"cn-fuzhou":             dara.String("kms.cn-fuzhou.aliyuncs.com"),
-		"cn-chengdu":            dara.String("kms.cn-chengdu.aliyuncs.com"),
-		"cn-beijing-finance-1":  dara.String("kms.cn-beijing-finance-1.aliyuncs.com"),
-		"cn-beijing":            dara.String("kms.cn-beijing.aliyuncs.com"),
+		"ap-northeast-1":        dara.String("kms.ap-northeast-1.aliyuncs.com"),
+		"ap-northeast-2":        dara.String("kms.ap-northeast-2.aliyuncs.com"),
 		"ap-southeast-7":        dara.String("kms.ap-southeast-7.aliyuncs.com"),
 		"ap-southeast-6":        dara.String("kms.ap-southeast-6.aliyuncs.com"),
 		"ap-southeast-5":        dara.String("kms.ap-southeast-5.aliyuncs.com"),
 		"ap-southeast-3":        dara.String("kms.ap-southeast-3.aliyuncs.com"),
 		"ap-southeast-1":        dara.String("kms.ap-southeast-1.aliyuncs.com"),
-		"ap-northeast-2":        dara.String("kms.ap-northeast-2.aliyuncs.com"),
-		"ap-northeast-1":        dara.String("kms.ap-northeast-1.aliyuncs.com"),
+		"cn-hongkong":           dara.String("kms.cn-hongkong.aliyuncs.com"),
+		"cn-chengdu":            dara.String("kms.cn-chengdu.aliyuncs.com"),
+		"cn-wulanchabu":         dara.String("kms.cn-wulanchabu.aliyuncs.com"),
+		"cn-huhehaote":          dara.String("kms.cn-huhehaote.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("kms.cn-zhangjiakou.aliyuncs.com"),
+		"cn-beijing":            dara.String("kms.cn-beijing.aliyuncs.com"),
+		"cn-qingdao":            dara.String("kms.cn-qingdao.aliyuncs.com"),
+		"cn-guangzhou":          dara.String("kms.cn-guangzhou.aliyuncs.com"),
+		"cn-heyuan":             dara.String("kms.cn-heyuan.aliyuncs.com"),
+		"cn-shenzhen":           dara.String("kms.cn-shenzhen.aliyuncs.com"),
+		"cn-shanghai":           dara.String("kms.cn-shanghai.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("kms.cn-hangzhou.aliyuncs.com"),
+		"cn-fuzhou":             dara.String("kms.cn-fuzhou.aliyuncs.com"),
+		"cn-wuhan-lr":           dara.String("kms.cn-wuhan-lr.aliyuncs.com"),
+		"cn-zhengzhou-jva":      dara.String("kms.cn-zhengzhou-jva.aliyuncs.com"),
+		"na-south-1":            dara.String("kms.na-south-1.aliyuncs.com"),
+		"eu-central-1":          dara.String("kms.eu-central-1.aliyuncs.com"),
+		"eu-west-1":             dara.String("kms.eu-west-1.aliyuncs.com"),
+		"us-west-1":             dara.String("kms.us-west-1.aliyuncs.com"),
+		"us-east-1":             dara.String("kms.us-east-1.aliyuncs.com"),
+		"me-central-1":          dara.String("kms.me-central-1.aliyuncs.com"),
+		"me-east-1":             dara.String("kms.me-east-1.aliyuncs.com"),
+		"cn-heyuan-acdr-1":      dara.String("kms.cn-heyuan-acdr-1.aliyuncs.com"),
+		"cn-hangzhou-finance":   dara.String("kms.cn-hangzhou-finance.aliyuncs.com"),
+		"cn-shanghai-finance-1": dara.String("kms.cn-shanghai-finance-1.aliyuncs.com"),
+		"cn-shenzhen-finance-1": dara.String("kms.cn-shenzhen-finance-1.aliyuncs.com"),
+		"cn-beijing-finance-1":  dara.String("kms.cn-beijing-finance-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -175,8 +175,14 @@ func (client *Client) AsymmetricDecryptWithOptions(request *AsymmetricDecryptReq
 		query["KeyVersionId"] = request.KeyVersionId
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Recipient) {
+		body["Recipient"] = request.Recipient
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("AsymmetricDecrypt"),
@@ -1887,12 +1893,14 @@ func (client *Client) DecryptWithOptions(tmpReq *DecryptRequest, runtime *dara.R
 		query["EncryptionContext"] = request.EncryptionContextShrink
 	}
 
+	body := map[string]interface{}{}
 	if !dara.IsNil(request.Recipient) {
-		query["Recipient"] = request.Recipient
+		body["Recipient"] = request.Recipient
 	}
 
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("Decrypt"),
@@ -3623,12 +3631,14 @@ func (client *Client) GenerateDataKeyWithOptions(tmpReq *GenerateDataKeyRequest,
 		query["NumberOfBytes"] = request.NumberOfBytes
 	}
 
+	body := map[string]interface{}{}
 	if !dara.IsNil(request.Recipient) {
-		query["Recipient"] = request.Recipient
+		body["Recipient"] = request.Recipient
 	}
 
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("GenerateDataKey"),
@@ -3937,6 +3947,61 @@ func (client *Client) GenerateMac(request *GenerateMacRequest) (_result *Generat
 	runtime := &dara.RuntimeOptions{}
 	_result = &GenerateMacResponse{}
 	_body, _err := client.GenerateMacWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 从kms获取挑战
+//
+// @param request - GetChallengeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetChallengeResponse
+func (client *Client) GetChallengeWithOptions(request *GetChallengeRequest, runtime *dara.RuntimeOptions) (_result *GetChallengeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetChallenge"),
+		Version:     dara.String("2016-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetChallengeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 从kms获取挑战
+//
+// @param request - GetChallengeRequest
+//
+// @return GetChallengeResponse
+func (client *Client) GetChallenge(request *GetChallengeRequest) (_result *GetChallengeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetChallengeResponse{}
+	_body, _err := client.GetChallengeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4757,17 +4822,17 @@ func (client *Client) GetSecretPolicy(request *GetSecretPolicyRequest) (_result 
 
 // Summary:
 //
-// Retrieve the 
+// Retrieves a secret value.
 //
 // Description:
 //
-// - For details about the access policy that must be granted to a Resource Access Management (RAM) user or RAM role to invoke this OpenAPI operation, see [Resource Access Management](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy required for a Resource Access Management (RAM) user or RAM role to invoke this operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - If you do not specify a version number or version status, Key Management Service (KMS) returns the credential value of the version marked as ACSCurrent by default.
+// - If you do not specify a version number or version stage, KMS returns the secret value of the version marked as ACSCurrent by default.
 //
-// - If a customer-managed key is used to protect the credential value, the caller must also have the `kms:Decrypt` permission on the corresponding master key.
+// - If the secret uses a user-specified key to protect the secret value, the caller must also have the `kms:Decrypt` permission on the corresponding master key.
 //
-// This topic provides a sample request to retrieve the credential value of a credential named `secret001`. The returned result shows that the credential value `SecretData` is `testdata1`.
+// This topic provides an example of how to retrieve the secret value of a secret named `secret001`. The response shows that the secret value `SecretData` is `testdata1`.
 //
 // @param request - GetSecretValueRequest
 //
@@ -4802,8 +4867,14 @@ func (client *Client) GetSecretValueWithOptions(request *GetSecretValueRequest, 
 		query["VersionStage"] = request.VersionStage
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Recipient) {
+		body["Recipient"] = request.Recipient
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("GetSecretValue"),
@@ -4827,17 +4898,17 @@ func (client *Client) GetSecretValueWithOptions(request *GetSecretValueRequest, 
 
 // Summary:
 //
-// Retrieve the credential value.
+// Retrieves a secret value.
 //
 // Description:
 //
-// - For details about the access policy that must be granted to a Resource Access Management (RAM) user or RAM role to invoke this OpenAPI operation, see [Resource Access Management](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy required for a Resource Access Management (RAM) user or RAM role to invoke this operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - If you do not specify a version number or version status, Key Management Service (KMS) returns the credential value of the version marked as ACSCurrent by default.
+// - If you do not specify a version number or version stage, KMS returns the secret value of the version marked as ACSCurrent by default.
 //
-// - If a customer-managed key is used to protect the credential value, the caller must also have the `kms:Decrypt` permission on the corresponding master key.
+// - If the secret uses a user-specified key to protect the secret value, the caller must also have the `kms:Decrypt` permission on the corresponding master key.
 //
-// This topic provides a sample request to retrieve the credential value of a credential named `secret001`. The returned result shows that the credential value `SecretData` is `testdata1`.
+// This topic provides an example of how to retrieve the secret value of a secret named `secret001`. The response shows that the secret value `SecretData` is `testdata1`.
 //
 // @param request - GetSecretValueRequest
 //

@@ -19,6 +19,8 @@ type iAsymmetricDecryptRequest interface {
 	GetKeyId() *string
 	SetKeyVersionId(v string) *AsymmetricDecryptRequest
 	GetKeyVersionId() *string
+	SetRecipient(v string) *AsymmetricDecryptRequest
+	GetRecipient() *string
 }
 
 type AsymmetricDecryptRequest struct {
@@ -76,6 +78,10 @@ type AsymmetricDecryptRequest struct {
 	//
 	// 2ab1a983-7072-4bbc-a582-584b5bd8****
 	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
+	// example:
+	//
+	// { "AttestationDocument":"base64-encoded-attestion-document",  "KeyEncryptionAlgorithm":"RSAES_OAEP_SHA_256" }
+	Recipient *string `json:"Recipient,omitempty" xml:"Recipient,omitempty"`
 }
 
 func (s AsymmetricDecryptRequest) String() string {
@@ -106,6 +112,10 @@ func (s *AsymmetricDecryptRequest) GetKeyVersionId() *string {
 	return s.KeyVersionId
 }
 
+func (s *AsymmetricDecryptRequest) GetRecipient() *string {
+	return s.Recipient
+}
+
 func (s *AsymmetricDecryptRequest) SetAlgorithm(v string) *AsymmetricDecryptRequest {
 	s.Algorithm = &v
 	return s
@@ -128,6 +138,11 @@ func (s *AsymmetricDecryptRequest) SetKeyId(v string) *AsymmetricDecryptRequest 
 
 func (s *AsymmetricDecryptRequest) SetKeyVersionId(v string) *AsymmetricDecryptRequest {
 	s.KeyVersionId = &v
+	return s
+}
+
+func (s *AsymmetricDecryptRequest) SetRecipient(v string) *AsymmetricDecryptRequest {
+	s.Recipient = &v
 	return s
 }
 

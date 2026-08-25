@@ -82,8 +82,14 @@ func (client *Client) AsymmetricDecryptWithContext(ctx context.Context, request 
 		query["KeyVersionId"] = request.KeyVersionId
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Recipient) {
+		body["Recipient"] = request.Recipient
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("AsymmetricDecrypt"),
@@ -1244,12 +1250,14 @@ func (client *Client) DecryptWithContext(ctx context.Context, tmpReq *DecryptReq
 		query["EncryptionContext"] = request.EncryptionContextShrink
 	}
 
+	body := map[string]interface{}{}
 	if !dara.IsNil(request.Recipient) {
-		query["Recipient"] = request.Recipient
+		body["Recipient"] = request.Recipient
 	}
 
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("Decrypt"),
@@ -2380,12 +2388,14 @@ func (client *Client) GenerateDataKeyWithContext(ctx context.Context, tmpReq *Ge
 		query["NumberOfBytes"] = request.NumberOfBytes
 	}
 
+	body := map[string]interface{}{}
 	if !dara.IsNil(request.Recipient) {
-		query["Recipient"] = request.Recipient
+		body["Recipient"] = request.Recipient
 	}
 
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("GenerateDataKey"),
@@ -2561,6 +2571,43 @@ func (client *Client) GenerateMacWithContext(ctx context.Context, request *Gener
 		BodyType:    dara.String("json"),
 	}
 	_result = &GenerateMacResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 从kms获取挑战
+//
+// @param request - GetChallengeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetChallengeResponse
+func (client *Client) GetChallengeWithContext(ctx context.Context, request *GetChallengeRequest, runtime *dara.RuntimeOptions) (_result *GetChallengeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetChallenge"),
+		Version:     dara.String("2016-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetChallengeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3093,17 +3140,17 @@ func (client *Client) GetSecretPolicyWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Retrieve the credential value.
+// Retrieves a secret value.
 //
 // Description:
 //
-// - For details about the access policy that must be granted to a Resource Access Management (RAM) user or RAM role to invoke this OpenAPI operation, see [Resource Access Management](https://help.aliyun.com/document_detail/2767210.html).
+// - For details about the access policy required for a Resource Access Management (RAM) user or RAM role to invoke this operation, see [Access control](https://help.aliyun.com/document_detail/2767210.html).
 //
-// - If you do not specify a version number or version status, Key Management Service (KMS) returns the credential value of the version marked as ACSCurrent by default.
+// - If you do not specify a version number or version stage, KMS returns the secret value of the version marked as ACSCurrent by default.
 //
-// - If a customer-managed key is used to protect the credential value, the caller must also have the `kms:Decrypt` permission on the corresponding master key.
+// - If the secret uses a user-specified key to protect the secret value, the caller must also have the `kms:Decrypt` permission on the corresponding master key.
 //
-// This topic provides a sample request to retrieve the credential value of a credential named `secret001`. The returned result shows that the credential value `SecretData` is `testdata1`.
+// This topic provides an example of how to retrieve the secret value of a secret named `secret001`. The response shows that the secret value `SecretData` is `testdata1`.
 //
 // @param request - GetSecretValueRequest
 //
@@ -3138,8 +3185,14 @@ func (client *Client) GetSecretValueWithContext(ctx context.Context, request *Ge
 		query["VersionStage"] = request.VersionStage
 	}
 
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Recipient) {
+		body["Recipient"] = request.Recipient
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("GetSecretValue"),

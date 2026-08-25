@@ -60,7 +60,10 @@ type DecryptRequest struct {
 	//
 	// {"Example":"Example"}
 	EncryptionContext map[string]interface{} `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
-	Recipient         *string                `json:"Recipient,omitempty" xml:"Recipient,omitempty"`
+	// example:
+	//
+	// { "AttestationDocument":"base64-encoded-attestion-document",  "KeyEncryptionAlgorithm":"RSAES_OAEP_SHA_256" }
+	Recipient *string `json:"Recipient,omitempty" xml:"Recipient,omitempty"`
 }
 
 func (s DecryptRequest) String() string {

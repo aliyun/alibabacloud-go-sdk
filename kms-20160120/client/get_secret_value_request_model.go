@@ -13,6 +13,8 @@ type iGetSecretValueRequest interface {
 	GetDryRun() *string
 	SetFetchExtendedConfig(v bool) *GetSecretValueRequest
 	GetFetchExtendedConfig() *bool
+	SetRecipient(v string) *GetSecretValueRequest
+	GetRecipient() *string
 	SetSecretName(v string) *GetSecretValueRequest
 	GetSecretName() *string
 	SetVersionId(v string) *GetSecretValueRequest
@@ -22,39 +24,43 @@ type iGetSecretValueRequest interface {
 }
 
 type GetSecretValueRequest struct {
-	// Indicates whether to enable DryRun mode.
+	// Specifies whether to enable DryRun mode. Valid values:
 	//
-	// - true: Enabled
+	// - true: enables DryRun mode.
 	//
-	// - false (Default Value): Disabled
+	// - false (default): disables DryRun mode.
 	//
-	// DryRun mode is used for Testing API Calls to authenticate whether you have the required permissions on the specified resource and whether the Request Parameters are correctly configured. When DryRun mode is enabled, KMS always returns a failed response along with the failure reason. Possible failure reasons include:
+	// DryRun mode is used to test API calls and verify whether you have the required permissions on the corresponding resources and whether the request parameters are correctly configured. When DryRun mode is enabled, KMS always returns a failure and provides the failure reason. Failure reasons include:
 	//
-	// - DryRunOperationError: The request would succeed if the DryRun parameter were not specified.
+	// - DryRunOperationError: The request would succeed without the DryRun parameter.
 	//
-	// - ValidationError: One or more parameters in the request are invalid.
+	// - ValidationError: The parameters specified in the request are invalid.
 	//
-	// - AccessDeniedError: You do not have permission to execute this operation on the KMS resource.
+	// - AccessDeniedError: You are not authorized to perform this operation on the KMS resource.
 	//
 	// example:
 	//
 	// false
 	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Indicates whether to retrieve the extended configuration of the credential. Valid values:
+	// Specifies whether to retrieve the extended configuration of the secret. Valid values:
 	//
-	// - true: Retrieve
+	// - true: retrieves the extended configuration.
 	//
-	// - false (Default Value): Do not retrieve
+	// - false (default): does not retrieve the extended configuration.
 	//
-	// > Generic secrets do not support extended configuration. If you specify this parameter, it will be ignored.
+	// > Generic secrets do not support extended configurations. This parameter is ignored if specified.
 	//
 	// example:
 	//
 	// true
 	FetchExtendedConfig *bool `json:"FetchExtendedConfig,omitempty" xml:"FetchExtendedConfig,omitempty"`
-	// The name or ARN of the credential.
+	// example:
 	//
-	// > When accessing a credential under another Alibaba Cloud account, you must specify the credential ARN. The ARN format is `acs:kms:${region}:${account}:secret/${secret-name}`.
+	// { "AttestationDocument":"base64-encoded-attestion-document",  "KeyEncryptionAlgorithm":"RSAES_OAEP_SHA_256" }
+	Recipient *string `json:"Recipient,omitempty" xml:"Recipient,omitempty"`
+	// The secret name or secret Alibaba Cloud Resource Name (ARN).
+	//
+	// >To access a secret in another Alibaba Cloud account, you must specify the secret ARN. The format of the secret ARN is `acs:kms:${region}:${account}:secret/${secret-name}`.
 	//
 	// This parameter is required.
 	//
@@ -62,9 +68,9 @@ type GetSecretValueRequest struct {
 	//
 	// secret001
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	// Version number.
+	// The version number.
 	//
-	// > The VersionId parameter is not supported for RDS credentials, PolarDB credentials, Redis/Tair credentials, RAM credentials, and ECS credentials. If you specify this parameter, it will be ignored.
+	// > ApsaraDB RDS secrets, PolarDB secrets, Redis/Tair secrets, RAM secrets, and ECS secrets do not support specifying VersionId. This parameter is ignored if specified.
 	//
 	// example:
 	//
@@ -72,9 +78,9 @@ type GetSecretValueRequest struct {
 	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 	// The version stage. Default value: ACSCurrent.
 	//
-	// If you specify this parameter, the credential value of the specified version stage is returned. If you do not specify this parameter, the credential value of the ACSCurrent version stage is returned.
+	// If you specify this parameter, the secret value of the specified version stage is returned. If you do not specify this parameter, the secret value of the ACSCurrent version stage is returned.
 	//
-	// > For RDS credentials, PolarDB credentials, Redis/Tair credentials, RAM credentials, and ECS credentials, you can retrieve only the credential values corresponding to the ACSPrevious or ACSCurrent version stages.
+	// > For ApsaraDB RDS secrets, PolarDB secrets, Redis/Tair secrets, RAM secrets, and ECS secrets, you can retrieve only the secret values of the ACSPrevious and ACSCurrent versions.
 	//
 	// example:
 	//
@@ -98,6 +104,10 @@ func (s *GetSecretValueRequest) GetFetchExtendedConfig() *bool {
 	return s.FetchExtendedConfig
 }
 
+func (s *GetSecretValueRequest) GetRecipient() *string {
+	return s.Recipient
+}
+
 func (s *GetSecretValueRequest) GetSecretName() *string {
 	return s.SecretName
 }
@@ -117,6 +127,11 @@ func (s *GetSecretValueRequest) SetDryRun(v string) *GetSecretValueRequest {
 
 func (s *GetSecretValueRequest) SetFetchExtendedConfig(v bool) *GetSecretValueRequest {
 	s.FetchExtendedConfig = &v
+	return s
+}
+
+func (s *GetSecretValueRequest) SetRecipient(v string) *GetSecretValueRequest {
+	s.Recipient = &v
 	return s
 }
 

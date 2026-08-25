@@ -9,6 +9,8 @@ type iAsymmetricDecryptResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCiphertextForRecipient(v string) *AsymmetricDecryptResponseBody
+	GetCiphertextForRecipient() *string
 	SetKeyId(v string) *AsymmetricDecryptResponseBody
 	GetKeyId() *string
 	SetKeyVersionId(v string) *AsymmetricDecryptResponseBody
@@ -20,6 +22,10 @@ type iAsymmetricDecryptResponseBody interface {
 }
 
 type AsymmetricDecryptResponseBody struct {
+	// example:
+	//
+	// ***Ciphertext***
+	CiphertextForRecipient *string `json:"CiphertextForRecipient,omitempty" xml:"CiphertextForRecipient,omitempty"`
 	// The ID of the key. If the KeyId parameter in the request is a key alias or key ARN, the key ID is also returned in the response.
 	//
 	// example:
@@ -54,6 +60,10 @@ func (s AsymmetricDecryptResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *AsymmetricDecryptResponseBody) GetCiphertextForRecipient() *string {
+	return s.CiphertextForRecipient
+}
+
 func (s *AsymmetricDecryptResponseBody) GetKeyId() *string {
 	return s.KeyId
 }
@@ -68,6 +78,11 @@ func (s *AsymmetricDecryptResponseBody) GetPlaintext() *string {
 
 func (s *AsymmetricDecryptResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *AsymmetricDecryptResponseBody) SetCiphertextForRecipient(v string) *AsymmetricDecryptResponseBody {
+	s.CiphertextForRecipient = &v
+	return s
 }
 
 func (s *AsymmetricDecryptResponseBody) SetKeyId(v string) *AsymmetricDecryptResponseBody {
