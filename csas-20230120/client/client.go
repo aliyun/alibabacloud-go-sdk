@@ -10464,6 +10464,86 @@ func (client *Client) ListRiskItems(request *ListRiskItemsRequest) (_result *Lis
 
 // Summary:
 //
+// Retrieves a list of user labels.
+//
+// @param tmpReq - ListSaseUserTagsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSaseUserTagsResponse
+func (client *Client) ListSaseUserTagsWithOptions(tmpReq *ListSaseUserTagsRequest, runtime *dara.RuntimeOptions) (_result *ListSaseUserTagsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListSaseUserTagsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TagIds) {
+		request.TagIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagIds, dara.String("TagIds"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		body["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TagIdsShrink) {
+		body["TagIds"] = request.TagIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSaseUserTags"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSaseUserTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of user labels.
+//
+// @param request - ListSaseUserTagsRequest
+//
+// @return ListSaseUserTagsResponse
+func (client *Client) ListSaseUserTags(request *ListSaseUserTagsRequest) (_result *ListSaseUserTagsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListSaseUserTagsResponse{}
+	_body, _err := client.ListSaseUserTagsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the list of software installed on user endpoint devices under the current Alibaba Cloud account.
 //
 // @param request - ListSoftwareForUserDeviceRequest

@@ -211,6 +211,12 @@ type ListSoftwarelibSoftwareResponseBodyDataList struct {
 	//
 	// http://xxx.com/****
 	OfficialDownloadUrl *string `json:"OfficialDownloadUrl,omitempty" xml:"OfficialDownloadUrl,omitempty"`
+	// The execution account (only supported on Windows).
+	//
+	// example:
+	//
+	// admin
+	RunAsAccount *string `json:"RunAsAccount,omitempty" xml:"RunAsAccount,omitempty"`
 	// The software ID.
 	//
 	// example:
@@ -223,7 +229,7 @@ type ListSoftwarelibSoftwareResponseBodyDataList struct {
 	//
 	// Thunder
 	SoftwareName *string `json:"SoftwareName,omitempty" xml:"SoftwareName,omitempty"`
-	// Indicates whether the built-in library source has been removed.
+	// Indicates whether the built-in library source has been deleted.
 	//
 	// example:
 	//
@@ -317,6 +323,10 @@ func (s *ListSoftwarelibSoftwareResponseBodyDataList) GetMatchMode() *string {
 
 func (s *ListSoftwarelibSoftwareResponseBodyDataList) GetOfficialDownloadUrl() *string {
 	return s.OfficialDownloadUrl
+}
+
+func (s *ListSoftwarelibSoftwareResponseBodyDataList) GetRunAsAccount() *string {
+	return s.RunAsAccount
 }
 
 func (s *ListSoftwarelibSoftwareResponseBodyDataList) GetSoftwareId() *string {
@@ -422,6 +432,11 @@ func (s *ListSoftwarelibSoftwareResponseBodyDataList) SetOfficialDownloadUrl(v s
 	return s
 }
 
+func (s *ListSoftwarelibSoftwareResponseBodyDataList) SetRunAsAccount(v string) *ListSoftwarelibSoftwareResponseBodyDataList {
+	s.RunAsAccount = &v
+	return s
+}
+
 func (s *ListSoftwarelibSoftwareResponseBodyDataList) SetSoftwareId(v string) *ListSoftwarelibSoftwareResponseBodyDataList {
 	s.SoftwareId = &v
 	return s
@@ -517,7 +532,7 @@ type ListSoftwarelibSoftwareResponseBodyDataListVersions struct {
 	//
 	// local
 	PublisherType *string `json:"PublisherType,omitempty" xml:"PublisherType,omitempty"`
-	// The ID of the software to which the version belongs.
+	// The ID of the software to which this version belongs.
 	//
 	// example:
 	//
@@ -543,9 +558,9 @@ type ListSoftwarelibSoftwareResponseBodyDataListVersions struct {
 	SoftwareUrl *string `json:"SoftwareUrl,omitempty" xml:"SoftwareUrl,omitempty"`
 	// The version publish status. Valid values:
 	//
-	// - **published**: Published.
+	// - **published**: published.
 	//
-	// - **unpublished**: Not published.
+	// - **unpublished**: not published.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type iListSoftwarelibSoftwareRequest interface {
 }
 
 type ListSoftwarelibSoftwareRequest struct {
-	// The software classification ID. You can obtain the value from [ListSoftwarelibClassify](~~ListSoftwarelibClassify~~).
+	// The software classification ID. You can call [ListSoftwarelibClassify](~~ListSoftwarelibClassify~~) to obtain the value.
 	//
 	// example:
 	//
