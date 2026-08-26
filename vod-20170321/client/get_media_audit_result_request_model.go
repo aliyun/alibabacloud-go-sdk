@@ -14,7 +14,7 @@ type iGetMediaAuditResultRequest interface {
 }
 
 type GetMediaAuditResultRequest struct {
-	// The video ID or image ID to query.
+	// The ID of the video or image to query.
 	//
 	// This parameter is required.
 	//

@@ -9,6 +9,10 @@ type iSubmitAIImageAuditJobRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCensorProvider(v string) *SubmitAIImageAuditJobRequest
+	GetCensorProvider() *string
+	SetImageService(v string) *SubmitAIImageAuditJobRequest
+	GetImageService() *string
 	SetMediaAuditConfiguration(v string) *SubmitAIImageAuditJobRequest
 	GetMediaAuditConfiguration() *string
 	SetMediaId(v string) *SubmitAIImageAuditJobRequest
@@ -21,18 +25,22 @@ type iSubmitAIImageAuditJobRequest interface {
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v string) *SubmitAIImageAuditJobRequest
 	GetResourceOwnerId() *string
+	SetServiceParameters(v string) *SubmitAIImageAuditJobRequest
+	GetServiceParameters() *string
 	SetTemplateId(v string) *SubmitAIImageAuditJobRequest
 	GetTemplateId() *string
 }
 
 type SubmitAIImageAuditJobRequest struct {
+	CensorProvider *string `json:"CensorProvider,omitempty" xml:"CensorProvider,omitempty"`
+	ImageService   *string `json:"ImageService,omitempty" xml:"ImageService,omitempty"`
 	// The review node configuration.
 	//
-	// - Other configuration items of the review node. Currently, only the ResourceType field is supported, which is used to specify the media file type and adjust the review standards and rules for the specified type.
+	// - Other configuration items of the review node. Currently, only the ResourceType field is supported, which is used to specify the media file type. You can adjust the review standards and rules for the specified type.
 	//
-	// - Usage notes for ResourceType: only letters, digits, and underscores are allowed.
+	// - Usage notes for ResourceType: Only letters, digits, and underscores (_) are allowed.
 	//
-	// >- You can customize the ResourceType field as described in the usage notes. After customization, [submit a Yida form](https://yida.alibaba-inc.com/o/ticketapply) to commit to Alibaba Cloud for spooling before the configuration takes effect.
+	// >- You can customize the ResourceType field based on the usage notes. After customization, [submit a Yida form](https://yida.alibaba-inc.com/o/ticketapply) to commit to Alibaba Cloud for spooling before the configuration takes effect.
 	//
 	// >- To adjust the review standards and rules for a specific ResourceType, [submit a Yida form](https://yida.alibaba-inc.com/o/ticketapply) to request technical support.
 	//
@@ -54,11 +62,12 @@ type SubmitAIImageAuditJobRequest struct {
 	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ServiceParameters    *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 	// The AI template ID. You can obtain the ID by using one of the following methods:
 	//
-	// - When you call the [Add AI template](https://help.aliyun.com/document_detail/102930.html) operation to add an AI template, the AI template ID is the value of TemplateId in the response.
+	// - Call the [Add AI template](https://help.aliyun.com/document_detail/102930.html) operation to add an AI template. The AI template ID is the value of TemplateId in the response.
 	//
-	// - After the AI template is added, call the [Query AI template list](https://help.aliyun.com/document_detail/102936.html) operation to obtain the AI template ID, which is the value of TemplateId in the response.
+	// - After the AI template is added, call the [Query AI template list](https://help.aliyun.com/document_detail/102936.html) operation to query the AI template ID, which is the value of TemplateId in the response.
 	//
 	// This parameter is required.
 	//
@@ -74,6 +83,14 @@ func (s SubmitAIImageAuditJobRequest) String() string {
 
 func (s SubmitAIImageAuditJobRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitAIImageAuditJobRequest) GetCensorProvider() *string {
+	return s.CensorProvider
+}
+
+func (s *SubmitAIImageAuditJobRequest) GetImageService() *string {
+	return s.ImageService
 }
 
 func (s *SubmitAIImageAuditJobRequest) GetMediaAuditConfiguration() *string {
@@ -100,8 +117,22 @@ func (s *SubmitAIImageAuditJobRequest) GetResourceOwnerId() *string {
 	return s.ResourceOwnerId
 }
 
+func (s *SubmitAIImageAuditJobRequest) GetServiceParameters() *string {
+	return s.ServiceParameters
+}
+
 func (s *SubmitAIImageAuditJobRequest) GetTemplateId() *string {
 	return s.TemplateId
+}
+
+func (s *SubmitAIImageAuditJobRequest) SetCensorProvider(v string) *SubmitAIImageAuditJobRequest {
+	s.CensorProvider = &v
+	return s
+}
+
+func (s *SubmitAIImageAuditJobRequest) SetImageService(v string) *SubmitAIImageAuditJobRequest {
+	s.ImageService = &v
+	return s
 }
 
 func (s *SubmitAIImageAuditJobRequest) SetMediaAuditConfiguration(v string) *SubmitAIImageAuditJobRequest {
@@ -131,6 +162,11 @@ func (s *SubmitAIImageAuditJobRequest) SetResourceOwnerAccount(v string) *Submit
 
 func (s *SubmitAIImageAuditJobRequest) SetResourceOwnerId(v string) *SubmitAIImageAuditJobRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SubmitAIImageAuditJobRequest) SetServiceParameters(v string) *SubmitAIImageAuditJobRequest {
+	s.ServiceParameters = &v
 	return s
 }
 

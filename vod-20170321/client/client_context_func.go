@@ -9,13 +9,15 @@ import (
 
 // Summary:
 //
-// Adds an AI template used for automated review and smart thumbnail tasks.
+// Adds an AI template for automated review and smart thumbnail tasks.
 //
 // Description:
 //
 // - Currently, this operation is supported in the following regions: **China (Beijing)**, **China (Shanghai)**, and **Singapore**.
 //
-// - Before adding an AI template for automated review or smart thumbnail tasks, make sure that you have activated [automated review](https://ai.aliyun.com/vi/censor) or [smart thumbnail](https://ai.aliyun.com/vi/cover).
+// - <props="china">Before adding an AI template for automated review and smart thumbnail tasks, make sure that you have activated [automated review](https://ai.aliyun.com/vi/censor) or [smart thumbnail](https://ai.aliyun.com/vi/cover).
+//
+// - <props="intl">Before adding an AI template for automated review and smart thumbnail tasks, make sure that you have activated automated review or smart thumbnail.
 //
 // @param request - AddAITemplateRequest
 //
@@ -7099,7 +7101,7 @@ func (client *Client) GetMediaAuditAudioResultDetailWithContext(ctx context.Cont
 //
 // ### QPS limit
 //
-// The maximum queries per second (QPS) for a single user for this operation is 20. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342790.html).
+// You can call this operation up to 20 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. For more information, see [QPS limit](https://help.aliyun.com/document_detail/342790.html).
 //
 // @param request - GetMediaAuditResultRequest
 //
@@ -10485,7 +10487,7 @@ func (client *Client) SetVodDomainSSLCertificateWithContext(ctx context.Context,
 
 // Summary:
 //
-// Submits an image automated review task. The task is asynchronously executed after it is submitted. The task may not be complete when the response is returned.
+// Submits an automated review task for an image. The task is asynchronously executed after it is submitted. The task may not be complete when the response is returned.
 //
 // Description:
 //
@@ -10512,6 +10514,14 @@ func (client *Client) SubmitAIImageAuditJobWithContext(ctx context.Context, requ
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CensorProvider) {
+		query["CensorProvider"] = request.CensorProvider
+	}
+
+	if !dara.IsNil(request.ImageService) {
+		query["ImageService"] = request.ImageService
+	}
+
 	if !dara.IsNil(request.MediaAuditConfiguration) {
 		query["MediaAuditConfiguration"] = request.MediaAuditConfiguration
 	}
@@ -10534,6 +10544,10 @@ func (client *Client) SubmitAIImageAuditJobWithContext(ctx context.Context, requ
 
 	if !dara.IsNil(request.ResourceOwnerId) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !dara.IsNil(request.ServiceParameters) {
+		query["ServiceParameters"] = request.ServiceParameters
 	}
 
 	if !dara.IsNil(request.TemplateId) {
@@ -10731,15 +10745,15 @@ func (client *Client) SubmitAIJobWithContext(ctx context.Context, request *Submi
 //
 // Description:
 //
-// - **Before using this API, make sure that you understand the billing methods and pricing of ApsaraVideo VOD. Automated review is a paid feature. For billing details, <props="china">see [Automated review billing](~~188310#section-g7l-s3o-9ng~~).<props="intl">submit a ticket or contact your Alibaba Cloud account manager.**
+// - **Before using this operation, make sure that you are familiar with the billing methods and pricing of ApsaraVideo VOD. Automated review is a paid feature. For billing details, <props="china">refer to [Automated review billing](~~188310#section-g7l-s3o-9ng~~).<props="intl">submit a ticket or contact your Alibaba Cloud account manager.**
 //
 // - This operation currently supports only the **Shanghai**, **Beijing**, and **Singapore*	- regions.
 //
-// - This is an [asynchronous operation](https://help.aliyun.com/document_detail/3027551.html). After you submit a task, the task ID is returned. The task is not complete at this point and enters a queue for asynchronous execution. The final result is sent through a callback notification. You can also call [Query automated review job](https://help.aliyun.com/document_detail/454959.html) to query the task status.
+// - This is an [asynchronous operation](https://help.aliyun.com/document_detail/3027551.html). After you submit a task, a task ID is returned. The task is not yet complete at this point and enters a queue for asynchronous execution. The final result is sent through a callback notification. You can also call [Query automated review job](https://help.aliyun.com/document_detail/454959.html) to query the task status.
 //
-// - For the development guide on submitting automated review jobs, see [Automated review](https://help.aliyun.com/document_detail/101148.html).
+// - For the development guide on submitting automated review jobs, refer to [Automated review](https://help.aliyun.com/document_detail/101148.html).
 //
-// - After an automated review job is complete, the image resources generated during the job are retained free of charge for only two weeks in the VOD system bucket allocated by ApsaraVideo VOD. The images are automatically deleted after two weeks.
+// - After an automated review job is complete, the image resources generated during the job are retained for free for only two weeks in the VOD system bucket allocated by ApsaraVideo VOD. The images are automatically deleted after two weeks.
 //
 // @param request - SubmitAIMediaAuditJobRequest
 //
@@ -10754,6 +10768,10 @@ func (client *Client) SubmitAIMediaAuditJobWithContext(ctx context.Context, requ
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.CensorProvider) {
+		query["CensorProvider"] = request.CensorProvider
+	}
+
 	if !dara.IsNil(request.MediaAuditConfiguration) {
 		query["MediaAuditConfiguration"] = request.MediaAuditConfiguration
 	}
@@ -10766,12 +10784,24 @@ func (client *Client) SubmitAIMediaAuditJobWithContext(ctx context.Context, requ
 		query["MediaType"] = request.MediaType
 	}
 
+	if !dara.IsNil(request.ServiceParameters) {
+		query["ServiceParameters"] = request.ServiceParameters
+	}
+
 	if !dara.IsNil(request.TemplateId) {
 		query["TemplateId"] = request.TemplateId
 	}
 
 	if !dara.IsNil(request.UserData) {
 		query["UserData"] = request.UserData
+	}
+
+	if !dara.IsNil(request.VideoService) {
+		query["VideoService"] = request.VideoService
+	}
+
+	if !dara.IsNil(request.VoiceService) {
+		query["VoiceService"] = request.VoiceService
 	}
 
 	req := &openapiutil.OpenApiRequest{
