@@ -24,13 +24,13 @@ type iListAuthorizationResourcesResponseBody interface {
 type ListAuthorizationResourcesResponseBody struct {
 	// The list of authorization resources.
 	AuthorizationResources []*ListAuthorizationResourcesResponseBodyAuthorizationResources `json:"AuthorizationResources,omitempty" xml:"AuthorizationResources,omitempty" type:"Repeated"`
-	// The number of entries per page in a paged query. This parameter is used for paging.
+	// The number of rows per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token returned for the next page query.
+	// The pagination token returned by this call, used for the next page query.
 	//
 	// example:
 	//
@@ -117,15 +117,15 @@ func (s *ListAuthorizationResourcesResponseBody) Validate() error {
 }
 
 type ListAuthorizationResourcesResponseBodyAuthorizationResources struct {
-	// The ID of the resource entity associated with the authorization resource.
+	// The resource entity ID associated with the authorization resource.
 	//
 	// example:
 	//
 	// carole_01kmek49aqxxxx
 	AuthorizationResourceEntityId *string `json:"AuthorizationResourceEntityId,omitempty" xml:"AuthorizationResourceEntityId,omitempty"`
-	// The type of the resource entity associated with the authorization resource. Valid values:
+	// The resource entity type associated with the authorization resource. Valid values:
 	//
-	// - cloud_account_role: cloud role.
+	// - cloud_account_role: cloud role
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ type ListAuthorizationResourcesResponseBodyAuthorizationResources struct {
 	//
 	// example:
 	//
-	// 1787023451494
+	// 1768789292000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The instance ID.
 	//
@@ -167,7 +167,7 @@ type ListAuthorizationResourcesResponseBodyAuthorizationResources struct {
 	//
 	// example:
 	//
-	// 1787023451494
+	// 1768789292000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -302,6 +302,10 @@ func (s *ListAuthorizationResourcesResponseBodyAuthorizationResourcesCondition) 
 
 type ListAuthorizationResourcesResponseBodyAuthorizationResourcesConditionCredentialCondition struct {
 	// Specifies whether same-name identity accounts are supported.
+	//
+	// example:
+	//
+	// true
 	AllowSameNameIdentity *bool `json:"AllowSameNameIdentity,omitempty" xml:"AllowSameNameIdentity,omitempty"`
 }
 

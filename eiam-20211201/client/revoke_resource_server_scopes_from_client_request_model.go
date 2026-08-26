@@ -20,7 +20,7 @@ type iRevokeResourceServerScopesFromClientRequest interface {
 }
 
 type RevokeResourceServerScopesFromClientRequest struct {
-	// The unique identifier of the client application.
+	// The unique identifier of the Client application.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type RevokeResourceServerScopesFromClientRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ResourceServerApplicationId *string `json:"ResourceServerApplicationId,omitempty" xml:"ResourceServerApplicationId,omitempty"`
-	// The list of scope permission IDs under the ResourceServer.
+	// The list of Scope permission IDs under the ResourceServer.
 	//
 	// This parameter is required.
 	//

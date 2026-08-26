@@ -823,7 +823,7 @@ func (client *Client) AuthorizeResourceServerScopesToUserWithContext(ctx context
 
 // Summary:
 //
-// Authorizes a specified ResourceServer for a Client application.
+// Grants a specified ResourceServer to a Client application.
 //
 // @param request - AuthorizeResourceServerToClientRequest
 //
@@ -2959,6 +2959,66 @@ func (client *Client) CreateResourceServerScopeWithContext(ctx context.Context, 
 
 // Summary:
 //
+// Creates a trusted origin.
+//
+// @param request - CreateTrustedOriginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTrustedOriginResponse
+func (client *Client) CreateTrustedOriginWithContext(ctx context.Context, request *CreateTrustedOriginRequest, runtime *dara.RuntimeOptions) (_result *CreateTrustedOriginResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Origin) {
+		query["Origin"] = request.Origin
+	}
+
+	if !dara.IsNil(request.TrustOriginName) {
+		query["TrustOriginName"] = request.TrustOriginName
+	}
+
+	if !dara.IsNil(request.TrustedOriginScene) {
+		query["TrustedOriginScene"] = request.TrustedOriginScene
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTrustedOrigin"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTrustedOriginResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an EIAM account in a specified EIAM instance.
 //
 // @param request - CreateUserRequest
@@ -4397,6 +4457,58 @@ func (client *Client) DeleteResourceServerScopeWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteResourceServerScopeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a trusted origin.
+//
+// @param request - DeleteTrustedOriginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTrustedOriginResponse
+func (client *Client) DeleteTrustedOriginWithContext(ctx context.Context, request *DeleteTrustedOriginRequest, runtime *dara.RuntimeOptions) (_result *DeleteTrustedOriginResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.TrustedOriginId) {
+		query["TrustedOriginId"] = request.TrustedOriginId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteTrustedOrigin"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteTrustedOriginResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5857,6 +5969,54 @@ func (client *Client) DisableResourceServerCustomSubjectWithContext(ctx context.
 
 // Summary:
 //
+// Disables a trusted origin.
+//
+// @param request - DisableTrustedOriginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableTrustedOriginResponse
+func (client *Client) DisableTrustedOriginWithContext(ctx context.Context, request *DisableTrustedOriginRequest, runtime *dara.RuntimeOptions) (_result *DisableTrustedOriginResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.TrustedOriginId) {
+		query["TrustedOriginId"] = request.TrustedOriginId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DisableTrustedOrigin"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DisableTrustedOriginResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Sets an account status to disabled. If the account is already disabled, the operation returns success directly.
 //
 // @param request - DisableUserRequest
@@ -7193,6 +7353,54 @@ func (client *Client) EnableResourceServerCustomSubjectWithContext(ctx context.C
 		BodyType:    dara.String("json"),
 	}
 	_result = &EnableResourceServerCustomSubjectResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables a trusted origin.
+//
+// @param request - EnableTrustedOriginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableTrustedOriginResponse
+func (client *Client) EnableTrustedOriginWithContext(ctx context.Context, request *EnableTrustedOriginRequest, runtime *dara.RuntimeOptions) (_result *EnableTrustedOriginResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.TrustedOriginId) {
+		query["TrustedOriginId"] = request.TrustedOriginId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("EnableTrustedOrigin"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &EnableTrustedOriginResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -10067,6 +10275,54 @@ func (client *Client) GetSynchronizationJobWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// Queries the details of a trusted origin.
+//
+// @param request - GetTrustedOriginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTrustedOriginResponse
+func (client *Client) GetTrustedOriginWithContext(ctx context.Context, request *GetTrustedOriginRequest, runtime *dara.RuntimeOptions) (_result *GetTrustedOriginResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.TrustedOriginId) {
+		query["TrustedOriginId"] = request.TrustedOriginId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTrustedOrigin"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTrustedOriginResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of an EIAM account.
 //
 // @param request - GetUserRequest
@@ -11084,6 +11340,10 @@ func (client *Client) ListApplicationsForUserWithContext(ctx context.Context, re
 // Summary:
 //
 // Queries a list of authorization resource information.
+//
+// Description:
+//
+// This operation queries only the direct permissions of an organization, that is, applications directly assigned to the organization. When calling this operation, you can use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListAuthorizationResourcesRequest
 //
@@ -13573,6 +13833,74 @@ func (client *Client) ListSynchronizationJobsWithContext(ctx context.Context, re
 
 // Summary:
 //
+// Queries the list of trusted origins.
+//
+// @param request - ListTrustedOriginsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTrustedOriginsResponse
+func (client *Client) ListTrustedOriginsWithContext(ctx context.Context, request *ListTrustedOriginsRequest, runtime *dara.RuntimeOptions) (_result *ListTrustedOriginsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.Origin) {
+		query["Origin"] = request.Origin
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TrustOriginName) {
+		query["TrustOriginName"] = request.TrustOriginName
+	}
+
+	if !dara.IsNil(request.TrustedOriginScene) {
+		query["TrustedOriginScene"] = request.TrustedOriginScene
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTrustedOrigins"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTrustedOriginsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Lists the mappings for third-party logon accounts.
 //
 // Description:
@@ -14793,7 +15121,7 @@ func (client *Client) RevokeApplicationFromUsersWithContext(ctx context.Context,
 
 // Summary:
 //
-// Cancels the authorization granted by a specified ResourceServer to a Client application.
+// Revokes the authorization granted by a specified ResourceServer to a Client application.
 //
 // @param request - RevokeResourceServerFromClientRequest
 //
@@ -14845,7 +15173,7 @@ func (client *Client) RevokeResourceServerFromClientWithContext(ctx context.Cont
 
 // Summary:
 //
-// Revokes the scope permissions of a specified ResourceServer from a client application.
+// Revokes the Scope permissions of a specified ResourceServer from a Client application.
 //
 // @param request - RevokeResourceServerScopesFromClientRequest
 //
@@ -19093,6 +19421,66 @@ func (client *Client) UpdateResourceServerScopeWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateResourceServerScopeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies a trusted origin.
+//
+// @param request - UpdateTrustedOriginRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTrustedOriginResponse
+func (client *Client) UpdateTrustedOriginWithContext(ctx context.Context, request *UpdateTrustedOriginRequest, runtime *dara.RuntimeOptions) (_result *UpdateTrustedOriginResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.TrustOriginName) {
+		query["TrustOriginName"] = request.TrustOriginName
+	}
+
+	if !dara.IsNil(request.TrustedOriginId) {
+		query["TrustedOriginId"] = request.TrustedOriginId
+	}
+
+	if !dara.IsNil(request.TrustedOriginScene) {
+		query["TrustedOriginScene"] = request.TrustedOriginScene
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateTrustedOrigin"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateTrustedOriginResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

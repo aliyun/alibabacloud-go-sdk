@@ -247,6 +247,10 @@ func (s *GetAuthorizationResourceResponseBodyAuthorizationResourceCondition) Val
 
 type GetAuthorizationResourceResponseBodyAuthorizationResourceConditionCredentialCondition struct {
 	// Specifies whether same-name identity accounts are supported.
+	//
+	// example:
+	//
+	// true
 	AllowSameNameIdentity *bool `json:"AllowSameNameIdentity,omitempty" xml:"AllowSameNameIdentity,omitempty"`
 }
 
