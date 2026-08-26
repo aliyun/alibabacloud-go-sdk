@@ -20,7 +20,7 @@ type iListTrusteeOrderRequest interface {
 }
 
 type ListTrusteeOrderRequest struct {
-	// The certificate ID.
+	// The certificate ID. You must specify either CertificateId or OrderId. Both cannot be empty at the same time.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListTrusteeOrderRequest struct {
 	//
 	// 1d2db86sca4384811e0b5e8707e68181f
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The order ID.
+	// The order ID. You must specify either CertificateId or OrderId. Both cannot be empty at the same time.
 	//
 	// example:
 	//

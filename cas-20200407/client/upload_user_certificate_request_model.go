@@ -11,6 +11,8 @@ type iUploadUserCertificateRequest interface {
 	GoString() string
 	SetCert(v string) *UploadUserCertificateRequest
 	GetCert() *string
+	SetClientToken(v string) *UploadUserCertificateRequest
+	GetClientToken() *string
 	SetEncryptCert(v string) *UploadUserCertificateRequest
 	GetEncryptCert() *string
 	SetEncryptPrivateKey(v string) *UploadUserCertificateRequest
@@ -30,13 +32,19 @@ type iUploadUserCertificateRequest interface {
 }
 
 type UploadUserCertificateRequest struct {
-	// The content of a non-SM certificate in PEM format.
+	// The non-China SM certificate content in PEM format.
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE----- MIIF...... -----END CERTIFICATE-----
 	Cert *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
-	// The content of the SM encryption certificate in PEM format. This parameter is invalid if Cert and Key are not empty.
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// XXX
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The encryption certificate content of the China SM certificate in PEM format. This field is invalid when Cert and Key are not empty.
 	//
 	// example:
 	//
@@ -46,7 +54,7 @@ type UploadUserCertificateRequest struct {
 	//
 	// -----END CERTIFICATE-----
 	EncryptCert *string `json:"EncryptCert,omitempty" xml:"EncryptCert,omitempty"`
-	// The content of the private key of the SM encryption certificate in PEM format. This parameter is invalid if Cert and Key are not empty.
+	// The private key content of the encryption certificate of the China SM certificate in PEM format. This field is invalid when Cert and Key are not empty.
 	//
 	// example:
 	//
@@ -56,7 +64,7 @@ type UploadUserCertificateRequest struct {
 	//
 	// -----END EC PRIVATE KEY-----
 	EncryptPrivateKey *string `json:"EncryptPrivateKey,omitempty" xml:"EncryptPrivateKey,omitempty"`
-	// The private key of a non-SM certificate in PEM format.
+	// The private key content of the non-China SM certificate in PEM format.
 	//
 	// example:
 	//
@@ -66,9 +74,9 @@ type UploadUserCertificateRequest struct {
 	//
 	// -----END CERTIFICATE-----
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The custom name of the certificate. The name can be up to 63 characters long and can contain letters, digits, and underscores (_).
+	// The custom certificate name. Maximum length: 63 characters. All character types are supported, including letters, digits, and underscores.
 	//
-	// > Certificate names must be unique for each user.
+	// > Certificate names must be unique within the same user account.
 	//
 	// This parameter is required.
 	//
@@ -76,13 +84,13 @@ type UploadUserCertificateRequest struct {
 	//
 	// cert-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-ae****vty
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The content of the SM signing certificate in PEM format. This parameter is invalid if Cert and Key are not empty.
+	// The signing certificate content of the China SM certificate in PEM format. This field is invalid when Cert and Key are not empty.
 	//
 	// example:
 	//
@@ -92,7 +100,7 @@ type UploadUserCertificateRequest struct {
 	//
 	// -----END CERTIFICATE-----
 	SignCert *string `json:"SignCert,omitempty" xml:"SignCert,omitempty"`
-	// The content of the private key of the SM signing certificate in PEM format. This parameter is invalid if Cert and Key are not empty.
+	// The private key content of the signing certificate of the China SM certificate in PEM format. This field is invalid when Cert and Key are not empty.
 	//
 	// example:
 	//
@@ -102,7 +110,7 @@ type UploadUserCertificateRequest struct {
 	//
 	// -----END EC PRIVATE KEY-----
 	SignPrivateKey *string `json:"SignPrivateKey,omitempty" xml:"SignPrivateKey,omitempty"`
-	// A list of tags.
+	// The list of tags.
 	Tags []*UploadUserCertificateRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -116,6 +124,10 @@ func (s UploadUserCertificateRequest) GoString() string {
 
 func (s *UploadUserCertificateRequest) GetCert() *string {
 	return s.Cert
+}
+
+func (s *UploadUserCertificateRequest) GetClientToken() *string {
+	return s.ClientToken
 }
 
 func (s *UploadUserCertificateRequest) GetEncryptCert() *string {
@@ -152,6 +164,11 @@ func (s *UploadUserCertificateRequest) GetTags() []*UploadUserCertificateRequest
 
 func (s *UploadUserCertificateRequest) SetCert(v string) *UploadUserCertificateRequest {
 	s.Cert = &v
+	return s
+}
+
+func (s *UploadUserCertificateRequest) SetClientToken(v string) *UploadUserCertificateRequest {
+	s.ClientToken = &v
 	return s
 }
 

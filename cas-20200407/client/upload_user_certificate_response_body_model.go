@@ -18,19 +18,19 @@ type iUploadUserCertificateResponseBody interface {
 }
 
 type UploadUserCertificateResponseBody struct {
-	// The ID of the certificate.
+	// The certificate ID.
 	//
 	// example:
 	//
 	// 12345
 	CertId *int64 `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// BDB81BA2-E1F5-4D08-A2DD-4BE2BF44C90E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the certificate instance.
+	// The instance ID of the certificate to operate on.
 	//
 	// example:
 	//

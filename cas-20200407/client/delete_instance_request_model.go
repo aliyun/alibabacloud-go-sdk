@@ -9,11 +9,14 @@ type iDeleteInstanceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *DeleteInstanceRequest
+	GetClientToken() *string
 	SetInstanceId(v string) *DeleteInstanceRequest
 	GetInstanceId() *string
 }
 
 type DeleteInstanceRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the instance.
 	//
 	// This parameter is required.
@@ -32,8 +35,17 @@ func (s DeleteInstanceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteInstanceRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *DeleteInstanceRequest) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *DeleteInstanceRequest) SetClientToken(v string) *DeleteInstanceRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *DeleteInstanceRequest) SetInstanceId(v string) *DeleteInstanceRequest {

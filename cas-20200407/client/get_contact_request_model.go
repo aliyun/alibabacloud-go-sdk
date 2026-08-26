@@ -16,6 +16,8 @@ type iGetContactRequest interface {
 type GetContactRequest struct {
 	// The contact ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1397591

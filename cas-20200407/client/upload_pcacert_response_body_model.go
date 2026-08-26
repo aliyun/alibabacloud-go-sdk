@@ -16,13 +16,13 @@ type iUploadPCACertResponseBody interface {
 }
 
 type UploadPCACertResponseBody struct {
-	// The unique identifier for the certificate.
+	// The certificate identifier.
 	//
 	// example:
 	//
 	// 1ed65580-7e33-6a50-8630-dd13fdc009ee
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

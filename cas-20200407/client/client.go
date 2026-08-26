@@ -1386,7 +1386,15 @@ func (client *Client) CreateWHClientCertificate(request *CreateWHClientCertifica
 
 // Summary:
 //
-// Creates a certificate warehouse.
+// Creates a certificate repository.
+//
+// Description:
+//
+// This operation is used to query the list of certificate repositories.
+//
+// ### QPS limit
+//
+// The China single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - CreateWarehouseRequest
 //
@@ -1438,7 +1446,15 @@ func (client *Client) CreateWarehouseWithOptions(request *CreateWarehouseRequest
 
 // Summary:
 //
-// Creates a certificate warehouse.
+// Creates a certificate repository.
+//
+// Description:
+//
+// This operation is used to query the list of certificate repositories.
+//
+// ### QPS limit
+//
+// The China single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - CreateWarehouseRequest
 //
@@ -1942,7 +1958,17 @@ func (client *Client) DeleteDeploymentJob(request *DeleteDeploymentJobRequest) (
 
 // Summary:
 //
-// Deletes a Certificate Management Service instance.
+// Deletes an instance.
+//
+// Description:
+//
+// 本接口用于通过私有CA实例的ID，查询您通过SSL证书服务控制台购买的私有CA实例的状态信息，例如，CA实例的状态、包含的证书数量、已签发的证书数量等。
+//
+// 调用本接口前，您必须已经通过[数字证书管理服务控制台](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist)购买了私有CA。具体操作，请参见[购买私有CA](https://help.aliyun.com/document_detail/208553.html)。
+//
+// ## QPS限制
+//
+// 本接口的单用户QPS限制为10次/秒。超过限制，API调用将会被限流，这可能影响您的业务，请合理调用。
 //
 // @param request - DeleteInstanceRequest
 //
@@ -1957,6 +1983,10 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -1986,7 +2016,17 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 
 // Summary:
 //
-// Deletes a Certificate Management Service instance.
+// Deletes an instance.
+//
+// Description:
+//
+// 本接口用于通过私有CA实例的ID，查询您通过SSL证书服务控制台购买的私有CA实例的状态信息，例如，CA实例的状态、包含的证书数量、已签发的证书数量等。
+//
+// 调用本接口前，您必须已经通过[数字证书管理服务控制台](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist)购买了私有CA。具体操作，请参见[购买私有CA](https://help.aliyun.com/document_detail/208553.html)。
+//
+// ## QPS限制
+//
+// 本接口的单用户QPS限制为10次/秒。超过限制，API调用将会被限流，这可能影响您的业务，请合理调用。
 //
 // @param request - DeleteInstanceRequest
 //
@@ -2082,11 +2122,11 @@ func (client *Client) DeletePCACert(request *DeletePCACertRequest) (_result *Del
 
 // Summary:
 //
-// Deletes an expired, revoked, or manually uploaded certificate from Certificate Management Service.
+// Deletes an expired, revoked, or uploaded certificate.
 //
 // Description:
 //
-// This operation is limited to 100 queries per second (QPS) per user. API calls exceeding this limit are throttled, which can impact your business. We recommend calling this operation at a reasonable rate to avoid this.
+// The China single-user queries per second (QPS) limit for this operation is 100. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
 // @param request - DeleteUserCertificateRequest
 //
@@ -2103,6 +2143,10 @@ func (client *Client) DeleteUserCertificateWithOptions(request *DeleteUserCertif
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CertId) {
 		query["CertId"] = request.CertId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2130,11 +2174,11 @@ func (client *Client) DeleteUserCertificateWithOptions(request *DeleteUserCertif
 
 // Summary:
 //
-// Deletes an expired, revoked, or manually uploaded certificate from Certificate Management Service.
+// Deletes an expired, revoked, or uploaded certificate.
 //
 // Description:
 //
-// This operation is limited to 100 queries per second (QPS) per user. API calls exceeding this limit are throttled, which can impact your business. We recommend calling this operation at a reasonable rate to avoid this.
+// The China single-user queries per second (QPS) limit for this operation is 100. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
 // @param request - DeleteUserCertificateRequest
 //
@@ -2954,15 +2998,15 @@ func (client *Client) GetCertificateDetail(request *GetCertificateDetailRequest)
 
 // Summary:
 //
-// 获取证书资源包数量
+// Retrieves the number of certificate resource plans.
 //
 // Description:
 //
-// 本接口用于查询您已创建的CA证书（包括根CA证书、子CA证书）的数量。
+// Queries the number of CA certificates (including root CA certificates and subordinate CA certificates) that you have created.
 //
-// ## QPS限制
+// ## QPS limit
 //
-// 本接口的单用户QPS限制为10次/秒。超过限制，API调用将会被限流，这可能影响您的业务，请合理调用。
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - GetCertificatePackageCountRequest
 //
@@ -2999,15 +3043,15 @@ func (client *Client) GetCertificatePackageCountWithOptions(request *GetCertific
 
 // Summary:
 //
-// 获取证书资源包数量
+// Retrieves the number of certificate resource plans.
 //
 // Description:
 //
-// 本接口用于查询您已创建的CA证书（包括根CA证书、子CA证书）的数量。
+// Queries the number of CA certificates (including root CA certificates and subordinate CA certificates) that you have created.
 //
-// ## QPS限制
+// ## QPS limit
 //
-// 本接口的单用户QPS限制为10次/秒。超过限制，API调用将会被限流，这可能影响您的业务，请合理调用。
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - GetCertificatePackageCountRequest
 //
@@ -3818,15 +3862,15 @@ func (client *Client) ListCert(request *ListCertRequest) (_result *ListCertRespo
 
 // Summary:
 //
-// Queries the certificate application repositories in your account.
+// Queries the list of certificate repositories.
 //
 // Description:
 //
-// You can call the ListCertWarehouse operation to query certificate repositories.
+// Queries the list of certificate repositories.
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user QPS limit for this API is 10 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this API appropriately.
 //
 // @param request - ListCertWarehouseRequest
 //
@@ -3886,15 +3930,15 @@ func (client *Client) ListCertWarehouseWithOptions(request *ListCertWarehouseReq
 
 // Summary:
 //
-// Queries the certificate application repositories in your account.
+// Queries the list of certificate repositories.
 //
 // Description:
 //
-// You can call the ListCertWarehouse operation to query certificate repositories.
+// Queries the list of certificate repositories.
 //
-// ### Limits
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// The single-user QPS limit for this API is 10 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this API appropriately.
 //
 // @param request - ListCertWarehouseRequest
 //
@@ -4674,11 +4718,219 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
+// Retrieves a list of tag keys and values.
+//
+// Description:
+//
+// Queries the status information of a private Certificate Authority (CA) instance that you purchased in the SSL Certificate console by using the ID of the private CA instance. For example, you can query the status of the CA instance, the number of certificates included, and the number of certificates issued.
+//
+// Before you invoke this operation, you must have purchased a private CA in the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Invoke this operation as appropriate.
+//
+// @param request - ListTagKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagKeysResponse
+func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtime *dara.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTagKeys"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTagKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of tag keys and values.
+//
+// Description:
+//
+// Queries the status information of a private Certificate Authority (CA) instance that you purchased in the SSL Certificate console by using the ID of the private CA instance. For example, you can query the status of the CA instance, the number of certificates included, and the number of certificates issued.
+//
+// Before you invoke this operation, you must have purchased a private CA in the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Invoke this operation as appropriate.
+//
+// @param request - ListTagKeysRequest
+//
+// @return ListTagKeysResponse
+func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTagKeysResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListTagKeysResponse{}
+	_body, _err := client.ListTagKeysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the tags associated with a resource.
+//
+// Description:
+//
+// This operation queries the status information of a private Certificate Authority (CA) instance that you purchased through the SSL Certificate console by using the ID of the private CA instance. For example, you can query the status of the CA instance, the number of digital certificates included, and the number of digital certificates issued.
+//
+// Before you invoke this operation, you must have purchased a private CA through the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Invoke this operation appropriately.
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *dara.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTagResources"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the tags associated with a resource.
+//
+// Description:
+//
+// This operation queries the status information of a private Certificate Authority (CA) instance that you purchased through the SSL Certificate console by using the ID of the private CA instance. For example, you can query the status of the CA instance, the number of digital certificates included, and the number of digital certificates issued.
+//
+// Before you invoke this operation, you must have purchased a private CA through the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Invoke this operation appropriately.
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the list of managed orders.
 //
 // Description:
 //
-// This operation is used to query user certificates or order lists. When OrderType is set to CERT or UPLOAD, it queries the certificate list. When OrderType is set to CPACK or BUY, it queries the order list.
+// Queries the managed orders for a certificate or order.
 //
 // ## QPS limit
 //
@@ -4742,7 +4994,7 @@ func (client *Client) ListTrusteeOrderWithOptions(request *ListTrusteeOrderReque
 //
 // Description:
 //
-// This operation is used to query user certificates or order lists. When OrderType is set to CERT or UPLOAD, it queries the certificate list. When OrderType is set to CPACK or BUY, it queries the order list.
+// Queries the managed orders for a certificate or order.
 //
 // ## QPS limit
 //
@@ -5260,6 +5512,14 @@ func (client *Client) RenewCertificateOrderForPackageRequest(request *RenewCerti
 //
 // Revokes a certificate.
 //
+// Description:
+//
+// Invokes this operation to query the details of all revoked client certificates and server certificates by paging. The details include the unique identifier, serial number, and revocation date of each certificate.
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for a single user for this operation is 10. If the limit is exceeded, API calls are throttled, which may affect your business. Invoke this operation at an appropriate frequency.
+//
 // @param request - RevokeCertificateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5307,6 +5567,14 @@ func (client *Client) RevokeCertificateWithOptions(request *RevokeCertificateReq
 // Summary:
 //
 // Revokes a certificate.
+//
+// Description:
+//
+// Invokes this operation to query the details of all revoked client certificates and server certificates by paging. The details include the unique identifier, serial number, and revocation date of each certificate.
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for a single user for this operation is 10. If the limit is exceeded, API calls are throttled, which may affect your business. Invoke this operation at an appropriate frequency.
 //
 // @param request - RevokeCertificateRequest
 //
@@ -5483,6 +5751,198 @@ func (client *Client) Sign(request *SignRequest) (_result *SignResponse, _err er
 	runtime := &dara.RuntimeOptions{}
 	_result = &SignResponse{}
 	_body, _err := client.SignWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds resource tags.
+//
+// Description:
+//
+// Queries the status information of a private Certificate Authority (CA) instance that you purchased through the SSL Certificate console by using the ID of the private CA instance. For example, you can query the status of the CA instance, the number of certificates included, and the number of certificates issued.
+//
+// Before you invoke this operation, you must have purchased a private CA through the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Invoke this operation as needed.
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *dara.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.Tag) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TagResources"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds resource tags.
+//
+// Description:
+//
+// Queries the status information of a private Certificate Authority (CA) instance that you purchased through the SSL Certificate console by using the ID of the private CA instance. For example, you can query the status of the CA instance, the number of certificates included, and the number of certificates issued.
+//
+// Before you invoke this operation, you must have purchased a private CA through the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Invoke this operation as needed.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes tags.
+//
+// Description:
+//
+// Queries the status information of a private Certificate Authority (CA) instance that you purchased through the SSL Certificate console by using the ID of the private CA instance. The status information includes the CA instance status, the number of digital certificates included, and the number of digital certificates issued.
+//
+// Before you invoke this operation, you must have purchased a private CA through the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Invoke this operation as needed.
+//
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *dara.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.All) {
+		query["All"] = request.All
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceId) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !dara.IsNil(request.TagKey) {
+		query["TagKey"] = request.TagKey
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UntagResources"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes tags.
+//
+// Description:
+//
+// Queries the status information of a private Certificate Authority (CA) instance that you purchased through the SSL Certificate console by using the ID of the private CA instance. The status information includes the CA instance status, the number of digital certificates included, and the number of digital certificates issued.
+//
+// Before you invoke this operation, you must have purchased a private CA through the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Invoke this operation as needed.
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5684,7 +6144,7 @@ func (client *Client) UpdateContact(request *UpdateContactRequest) (_result *Upd
 
 // Summary:
 //
-// Uploads the private key corresponding to a CSR if the private key was not provided when the local CSR was uploaded.
+// Uploads the private key corresponding to a CSR if you did not provide the CSR private key when uploading the local CSR.
 //
 // @param request - UpdateCsrRequest
 //
@@ -5732,7 +6192,7 @@ func (client *Client) UpdateCsrWithOptions(request *UpdateCsrRequest, runtime *d
 
 // Summary:
 //
-// Uploads the private key corresponding to a CSR if the private key was not provided when the local CSR was uploaded.
+// Uploads the private key corresponding to a CSR if you did not provide the CSR private key when uploading the local CSR.
 //
 // @param request - UpdateCsrRequest
 //
@@ -6016,7 +6476,7 @@ func (client *Client) UpdateInstance(request *UpdateInstanceRequest) (_result *U
 
 // Summary:
 //
-// Rolls back or re-executes a worker task in a certificate deployment task.
+// Updates the status of a worker task in a deployment task.
 //
 // @param request - UpdateWorkerResourceStatusRequest
 //
@@ -6068,7 +6528,7 @@ func (client *Client) UpdateWorkerResourceStatusWithOptions(request *UpdateWorke
 
 // Summary:
 //
-// Rolls back or re-executes a worker task in a certificate deployment task.
+// Updates the status of a worker task in a deployment task.
 //
 // @param request - UpdateWorkerResourceStatusRequest
 //
@@ -6156,15 +6616,15 @@ func (client *Client) UploadCsr(request *UploadCsrRequest) (_result *UploadCsrRe
 
 // Summary:
 //
-// Uploads a PCA certificate to a certificate warehouse.
+// Uploads a PCA certificate to a certificate repository.
 //
 // Description:
 //
-// Use this operation to upload a PCA certificate to a certificate warehouse.
+// Uploads a PCA certificate to a certificate repository.
 //
 // ## QPS limit
 //
-// The QPS limit for this operation is 10 requests per second per user. Exceeding this limit triggers throttling, which can affect your business.
+// The single-user QPS limit for this API is 10 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - UploadPCACertRequest
 //
@@ -6220,15 +6680,15 @@ func (client *Client) UploadPCACertWithOptions(request *UploadPCACertRequest, ru
 
 // Summary:
 //
-// Uploads a PCA certificate to a certificate warehouse.
+// Uploads a PCA certificate to a certificate repository.
 //
 // Description:
 //
-// Use this operation to upload a PCA certificate to a certificate warehouse.
+// Uploads a PCA certificate to a certificate repository.
 //
 // ## QPS limit
 //
-// The QPS limit for this operation is 10 requests per second per user. Exceeding this limit triggers throttling, which can affect your business.
+// The single-user QPS limit for this API is 10 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - UploadPCACertRequest
 //
@@ -6246,11 +6706,23 @@ func (client *Client) UploadPCACert(request *UploadPCACertRequest) (_result *Upl
 
 // Summary:
 //
-// Uploads a certificate and its private key to Certificate Management Service. Both SM and non-SM certificates are supported.
+// Uploads a certificate, including a standard Chinese national cryptographic (China SM) certificate or a non-China SM certificate.
 //
 // Description:
 //
-// The queries per second (QPS) limit for this operation is 100 for each user. If you exceed this limit, API calls are throttled. This may affect your business. Plan your calls accordingly.
+// The China SM certificate refers to a certificate that uses the ShangMi (SM) cryptographic algorithms. The China SM certificate includes an encryption certificate and a signing certificate. The China SM certificate is used in China to comply with the national cryptographic standards.
+//
+// The China SM certificate refers to a certificate that uses the ShangMi (SM) cryptographic algorithms.
+//
+// The China SM certificate includes an encryption certificate and a signing certificate.
+//
+// The China SM certificate is used in China to comply with the national cryptographic standards.
+//
+// The China SM certificate refers to a certificate that uses the ShangMi (SM) cryptographic algorithms.
+//
+// The China SM certificate includes an encryption certificate and a signing certificate.
+//
+// The throttling limit for this API is 100 queries per second (QPS) per user. If this limit is exceeded, API calls are throttled, which may affect your business. Call this API at a reasonable frequency.
 //
 // @param request - UploadUserCertificateRequest
 //
@@ -6267,6 +6739,10 @@ func (client *Client) UploadUserCertificateWithOptions(request *UploadUserCertif
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Cert) {
 		query["Cert"] = request.Cert
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
 	}
 
 	if !dara.IsNil(request.EncryptCert) {
@@ -6326,11 +6802,23 @@ func (client *Client) UploadUserCertificateWithOptions(request *UploadUserCertif
 
 // Summary:
 //
-// Uploads a certificate and its private key to Certificate Management Service. Both SM and non-SM certificates are supported.
+// Uploads a certificate, including a standard Chinese national cryptographic (China SM) certificate or a non-China SM certificate.
 //
 // Description:
 //
-// The queries per second (QPS) limit for this operation is 100 for each user. If you exceed this limit, API calls are throttled. This may affect your business. Plan your calls accordingly.
+// The China SM certificate refers to a certificate that uses the ShangMi (SM) cryptographic algorithms. The China SM certificate includes an encryption certificate and a signing certificate. The China SM certificate is used in China to comply with the national cryptographic standards.
+//
+// The China SM certificate refers to a certificate that uses the ShangMi (SM) cryptographic algorithms.
+//
+// The China SM certificate includes an encryption certificate and a signing certificate.
+//
+// The China SM certificate is used in China to comply with the national cryptographic standards.
+//
+// The China SM certificate refers to a certificate that uses the ShangMi (SM) cryptographic algorithms.
+//
+// The China SM certificate includes an encryption certificate and a signing certificate.
+//
+// The throttling limit for this API is 100 queries per second (QPS) per user. If this limit is exceeded, API calls are throttled, which may affect your business. Call this API at a reasonable frequency.
 //
 // @param request - UploadUserCertificateRequest
 //

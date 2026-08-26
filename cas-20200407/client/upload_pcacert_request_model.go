@@ -20,7 +20,7 @@ type iUploadPCACertRequest interface {
 }
 
 type UploadPCACertRequest struct {
-	// The content of the certificate and its chain, in PEM format.
+	// The certificate.
 	//
 	// This parameter is required.
 	//
@@ -28,21 +28,21 @@ type UploadPCACertRequest struct {
 	//
 	// -----BEGIN CERTIFICATE----- MIIEJDCCAwygAwIBAgIQITRHItTLTQizTyd3K7AMRTANBgkqhkiG9w0BAQsFADBe ***************	- 5/akmr2GK/Y= -----END CERTIFICATE----- -----BEGIN CERTIFICATE----- MIIDuzCCAqOgAwIBAgIQSEIWDPfWTDKZcWNyL2O+fjANBgkqhkiG9w0BAQsFADBf ***************	- URUHyMW5Qd5Q9g6Y4sDOIm6It9TF7EjpwMs42R30agcRYzuUsN72ZFBYFJwnBX8= -----END CERTIFICATE----- -----BEGIN CERTIFICATE----- MIIDizCCAnOgAwIBAgIRAMfjPkDKfELTo07l3A3cUSYwDQYJKoZIhvcNAQELBQAw ********	- CjWTnYPhCcO2uIcnqMt7zCVs5LXBK/XSwlAXKMvKT0uuzw9VxeMfEabflKu0By8= -----END CERTIFICATE-----
 	Cert *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
-	// A custom name for the certificate.
+	// The certificate name.
 	//
 	// example:
 	//
 	// cert_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The private key of the certificate, in PEM format.
+	// The private key of the certificate.
 	//
 	// example:
 	//
 	// -----BEGIN RSA PRIVATE KEY----- MIIEowIBAAKCAQEA5SIfpNCBoiDrZhX1H39CHwQMVD0kBNeBTWfP9xkeesvfzbOz ******	- POVNFfDf9h7pJtQ5fRZNTYTDs/d+cH62Z3+nS74mNnEfff0nkvne -----END RSA PRIVATE KEY-----
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
-	// The ID of the certificate warehouse.
+	// The repository ID.
 	//
-	// > Call [ListCertWarehouse](https://help.aliyun.com/document_detail/455805.html) to obtain this ID.
+	// > You can call [ListCertWarehouse](https://help.aliyun.com/document_detail/455805.html) to obtain this ID.
 	//
 	// This parameter is required.
 	//

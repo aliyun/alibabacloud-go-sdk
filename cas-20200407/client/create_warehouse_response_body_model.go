@@ -22,7 +22,7 @@ type CreateWarehouseResponseBody struct {
 	//
 	// F0206B77-14B9-584C-8A3A-09D5827FBC50
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The instance ID of the certificate warehouse.
+	// The instance ID of the certificate application repository.
 	//
 	// example:
 	//

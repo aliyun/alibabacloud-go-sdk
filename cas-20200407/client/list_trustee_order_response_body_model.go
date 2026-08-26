@@ -46,7 +46,7 @@ type ListTrusteeOrderResponseBody struct {
 	//
 	// 23
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The order list.
+	// The list of orders.
 	//
 	// example:
 	//

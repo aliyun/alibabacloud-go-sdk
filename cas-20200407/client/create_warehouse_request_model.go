@@ -18,19 +18,19 @@ type iCreateWarehouseRequest interface {
 }
 
 type CreateWarehouseRequest struct {
-	// The use case of the certificate warehouse.
+	// The scenarios of the repository.
 	//
 	// example:
 	//
 	// contract
 	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
-	// The name of the certificate warehouse.
+	// The name of the certificate repository.
 	//
 	// example:
 	//
 	// MyCertificateWarehouse
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the certificate warehouse. Valid values:
+	// The type of the certificate repository.
 	//
 	// example:
 	//

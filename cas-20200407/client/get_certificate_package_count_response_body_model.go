@@ -24,10 +24,14 @@ type iGetCertificatePackageCountResponseBody interface {
 }
 
 type GetCertificatePackageCountResponseBody struct {
+	// The message notification quota.
+	//
 	// example:
 	//
 	// {TotalCount=189, RemainCount=94, UsedCount=95}
 	NoticeCountDetail *string `json:"NoticeCountDetail,omitempty" xml:"NoticeCountDetail,omitempty"`
+	// The details of certificate brand products.
+	//
 	// example:
 	//
 	// [
@@ -54,18 +58,26 @@ type GetCertificatePackageCountResponseBody struct {
 	//
 	// ]
 	ProductCountList *string `json:"ProductCountList,omitempty" xml:"ProductCountList,omitempty"`
+	// The acceleration gateway forwarding quota.
+	//
 	// example:
 	//
 	// {TotalCount=116900, RemainCount=90448, AutoPay=0, AutoPayCount=5000, UsedCount=26452}
 	ProxyCountDetail *string `json:"ProxyCountDetail,omitempty" xml:"ProxyCountDetail,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 08F45EA0-66A7-4504-9B31-3589F5CE308D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of domain names bound to certificates.
+	//
 	// example:
 	//
 	// {TotalCount=573, RemainCount=243, FreeQuota=10, UsedCount=330}
 	TotalCountDetail *string `json:"TotalCountDetail,omitempty" xml:"TotalCountDetail,omitempty"`
+	// The usage of the hosting quota.
+	//
 	// example:
 	//
 	// {TotalCount=177, ValidCount=6, RemainCount=129, UsedCount=48}

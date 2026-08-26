@@ -16,13 +16,13 @@ type iUpdateWorkerResourceStatusResponseBody interface {
 }
 
 type UpdateWorkerResourceStatusResponseBody struct {
-	// The response parameters.
+	// The data returned by the request.
 	//
 	// example:
 	//
 	// []
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique identifier for each request, which can be used for troubleshooting and diagnostics.
 	//
 	// example:
 	//

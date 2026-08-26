@@ -22,7 +22,7 @@ type RevokeCertificateRequest struct {
 	//
 	// 51001
 	CertificateId *int64 `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	// The ID of the instance.
+	// The ID of the instance. This parameter accepts only V2.0 subscription certificate instances (certificates purchased from a CA such as DigiCert or GeoTrust, with an InstanceId in the format of cas-cn-*). Uploaded certificates (cas-upload-*) are not supported.
 	//
 	// This parameter is required.
 	//

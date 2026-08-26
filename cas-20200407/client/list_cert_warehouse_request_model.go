@@ -28,35 +28,31 @@ type ListCertWarehouseRequest struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The instance ID of the certificate application repository.
+	// The repository instance.
 	//
 	// example:
 	//
 	// 14dcc8afc7578e1f
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the certificate application repository. Fuzzy match is supported.
+	// The repository name. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of entries to return on each page. Default value: 50.
+	// The number of entries per page. Default value: 50.
 	//
 	// example:
 	//
 	// 50
 	ShowSize *int64 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
-	// The type of the certificate application repository. Valid values:
+	// The repository type. Valid values:
 	//
-	// - **ssl**: certificate application repository of SSL certificates
+	// - **uploadCA**: an uploaded CA certificate that contains a complete certificate chain.
 	//
-	// - **uploadPCA**: certificate application repository of uploaded private certificates
+	// - **uploadPCA**: an uploaded certificate, including a self-signed certificate, a certificate issued by a third party, or a certificate issued by Alibaba Cloud.
 	//
-	// - **free**: certificate application repository of free certificates, available only on the China site (aliyun.com)
-	//
-	// - **aliyunPCA**: certificate application repository of private certificates purchased from Alibaba Cloud Private Certificate Authority (PCA), available only on the China site (aliyun.com)
-	//
-	// - **disable**: disabled certificate application repository
+	// - **aliyunPCA**: an Alibaba Cloud PCA certificate.
 	//
 	// example:
 	//

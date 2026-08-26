@@ -22,27 +22,27 @@ type iListCertWarehouseResponseBody interface {
 }
 
 type ListCertWarehouseResponseBody struct {
-	// The certificate application repositories.
+	// The list of certificate repositories.
 	CertWarehouseList []*ListCertWarehouseResponseBodyCertWarehouseList `json:"CertWarehouseList,omitempty" xml:"CertWarehouseList,omitempty" type:"Repeated"`
-	// The page number of the returned page. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 15C66C7B-671A-4297-9187-2C4477247A74
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned per page. Default value: 50.
+	// The number of entries per page. Default value: 50.
 	//
 	// example:
 	//
 	// 50
 	ShowSize *int64 `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,19 +117,19 @@ func (s *ListCertWarehouseResponseBody) Validate() error {
 }
 
 type ListCertWarehouseResponseBodyCertWarehouseList struct {
-	// The timestamp when the certificate application repository expires. Unit: milliseconds.
+	// The expiration time, in timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1665819958000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The instance ID of the certificate application repository.
+	// The sales instance.
 	//
 	// example:
 	//
 	// 14dcc8afc7578e1f
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether the certificate application repository has expired. Valid values:
+	// Indicates whether the repository has expired. Valid values:
 	//
 	// - **true**
 	//
@@ -139,41 +139,37 @@ type ListCertWarehouseResponseBodyCertWarehouseList struct {
 	//
 	// false
 	IsExpired *bool `json:"IsExpired,omitempty" xml:"IsExpired,omitempty"`
-	// The name of the certificate application repository.
+	// The repository name.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The instance ID of the private CA.
+	// The PCA instance.
 	//
 	// example:
 	//
 	// 14dcc8afc7578e1f
 	PcaInstanceId *string `json:"PcaInstanceId,omitempty" xml:"PcaInstanceId,omitempty"`
-	// The queries per second (QPS).
+	// Qps。
 	//
 	// example:
 	//
 	// 10
 	Qps *int64 `json:"Qps,omitempty" xml:"Qps,omitempty"`
-	// The type of the certificate application repository. Valid values:
+	// The repository type. Valid values:
 	//
-	// - **ssl**: certificate application repository of SSL certificates
+	// - **uploadCA**: an uploaded CA certificate that contains a complete certificate chain.
 	//
-	// - **uploadPCA**: certificate application repository of uploaded private certificates
+	// - **uploadPCA**: an uploaded certificate, including a self-signed certificate, a certificate issued by a third party, or a certificate issued by Alibaba Cloud.
 	//
-	// - **free**: certificate application repository of free certificates, available only on the China site (aliyun.com)
-	//
-	// - **aliyunPCA**: certificate application repository of private certificates purchased from Alibaba Cloud PCA, available only on the China site (aliyun.com)
-	//
-	// - **disable**: disabled certificate application repository
+	// - **aliyunPCA**: an Alibaba Cloud PCA certificate.
 	//
 	// example:
 	//
 	// aliyunPCA
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the certificate application repository.
+	// The repository ID.
 	//
 	// example:
 	//
