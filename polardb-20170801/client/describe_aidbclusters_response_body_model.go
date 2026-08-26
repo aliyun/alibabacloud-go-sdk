@@ -22,7 +22,6 @@ type iDescribeAIDBClustersResponseBody interface {
 }
 
 type DescribeAIDBClustersResponseBody struct {
-	// The details of the AI clusters.
 	Items *DescribeAIDBClustersResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number. Default value: 1.
 	//
@@ -30,19 +29,19 @@ type DescribeAIDBClustersResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries on the current page.
+	// The number of records on the current page.
 	//
 	// example:
 	//
 	// 7
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 9D6CE7C6-1C52-5BF6-B3D7-10977D44542C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//

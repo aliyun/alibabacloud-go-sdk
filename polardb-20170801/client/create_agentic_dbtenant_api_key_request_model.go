@@ -22,26 +22,36 @@ type iCreateAgenticDBTenantApiKeyRequest interface {
 }
 
 type CreateAgenticDBTenantApiKeyRequest struct {
+	// The AgenticDB cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The description of the API key usage.
+	//
 	// example:
 	//
-	// MCP Server专用Key
+	// Dedicated key for MCP Server
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The expiration time in ISO 8601 format. If this parameter is not specified, the API key never expires.
+	//
 	// example:
 	//
 	// 2027-01-01T00:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The tenant name. The name must be unique within the cluster and contain 2 to 64 characters.
+	//
 	// This parameter is required.
 	//
 	// example:

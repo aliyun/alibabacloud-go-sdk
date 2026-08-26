@@ -26,30 +26,44 @@ type iCreateAgenticDBTenantApiKeyResponseBody interface {
 }
 
 type CreateAgenticDBTenantApiKeyResponseBody struct {
+	// The plaintext of the API key. This value is returned only in this response.
+	//
 	// example:
 	//
 	// pagc_key_xxxx.yyyy
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The resource ID of the API key.
+	//
 	// example:
 	//
 	// ak-xxxxxxxxxxxx
 	ApiKeyId *string `json:"ApiKeyId,omitempty" xml:"ApiKeyId,omitempty"`
+	// The time when the API key was created.
+	//
 	// example:
 	//
 	// 2026-06-10T08:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The expiration time of the API key. This value is empty if the API key never expires.
+	//
 	// example:
 	//
 	// 2027-01-01T00:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F45FFACC-1B2C-3D4E-5F6A-7B8C9D0E1F2A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// t-aaaa111122223333
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The tenant name.
+	//
 	// example:
 	//
 	// my-tenant

@@ -24,15 +24,17 @@ type CreateAIDBClusterApiKeyRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The model space ID.
+	//
 	// example:
 	//
 	// pms-xxx
 	ModelSpaceName *string `json:"ModelSpaceName,omitempty" xml:"ModelSpaceName,omitempty"`
 	// The region ID.
 	//
-	// > 	- You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the regions of all clusters under the specified account.
+	// > 	- You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region information of all clusters under the specified account.
 	//
-	// > 	- If you leave this parameter empty, scheduled tasks across all regions under the current account are queried.
+	// > 	- If this parameter is left empty, scheduled tasks in all regions under the current account are queried by default.
 	//
 	// This parameter is required.
 	//

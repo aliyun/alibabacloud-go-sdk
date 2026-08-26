@@ -9,6 +9,8 @@ type iModifyModelApiRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetConfig(v string) *ModifyModelApiRequest
+	GetConfig() *string
 	SetGwClusterId(v string) *ModifyModelApiRequest
 	GetGwClusterId() *string
 	SetModelApiId(v string) *ModifyModelApiRequest
@@ -30,6 +32,28 @@ type iModifyModelApiRequest interface {
 }
 
 type ModifyModelApiRequest struct {
+	// The gateway retry configuration.
+	//
+	// example:
+	//
+	// {
+	//
+	// 	"failover": {
+	//
+	// 		"enabled": true,
+	//
+	// 		"max_provider_retries": 2,
+	//
+	// 		"max_failover_providers": 1,
+	//
+	// 		"retryable_status_codes": [429, 500, 502, 503, 504],
+	//
+	// 		"retry_delay": 0.5
+	//
+	// 	}
+	//
+	// }
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The gateway instance ID.
 	//
 	// This parameter is required.
@@ -46,13 +70,13 @@ type ModifyModelApiRequest struct {
 	//
 	// mi-xxxxx
 	ModelApiId *string `json:"ModelApiId,omitempty" xml:"ModelApiId,omitempty"`
-	// The model category. Valid values:
+	// The category. Valid values:
 	//
-	// - `text`
+	// 	- **text**
 	//
-	// - `embedding`
+	// 	- **embedding**
 	//
-	// - `rerank`
+	// 	- **rerank**
 	//
 	// This parameter is required.
 	//
@@ -70,13 +94,13 @@ type ModifyModelApiRequest struct {
 	PathPrefix *string `json:"PathPrefix,omitempty" xml:"PathPrefix,omitempty"`
 	// The protocol. Valid values:
 	//
-	// - `openai`
+	// 	- **openai**
 	//
-	// - `anthropic`
+	// 	- **anthropic**
 	//
-	// - `Model Studio`
+	// 	- **bailian**
 	//
-	// - `vllm`
+	// 	- **vllm**
 	//
 	// This parameter is required.
 	//
@@ -84,13 +108,13 @@ type ModifyModelApiRequest struct {
 	//
 	// openai
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The number of input units.
+	// The number of input points.
 	//
 	// example:
 	//
 	// 10
 	RecordInput *string `json:"RecordInput,omitempty" xml:"RecordInput,omitempty"`
-	// The number of output units.
+	// The number of output points.
 	//
 	// example:
 	//
@@ -102,7 +126,7 @@ type ModifyModelApiRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// A JSON array of routing rules, provided as a string.
+	// The list of routing rules (JSON array string).
 	//
 	// This parameter is required.
 	//
@@ -166,6 +190,10 @@ func (s ModifyModelApiRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyModelApiRequest) GetConfig() *string {
+	return s.Config
+}
+
 func (s *ModifyModelApiRequest) GetGwClusterId() *string {
 	return s.GwClusterId
 }
@@ -200,6 +228,11 @@ func (s *ModifyModelApiRequest) GetRegionId() *string {
 
 func (s *ModifyModelApiRequest) GetRouteRules() *string {
 	return s.RouteRules
+}
+
+func (s *ModifyModelApiRequest) SetConfig(v string) *ModifyModelApiRequest {
+	s.Config = &v
+	return s
 }
 
 func (s *ModifyModelApiRequest) SetGwClusterId(v string) *ModifyModelApiRequest {

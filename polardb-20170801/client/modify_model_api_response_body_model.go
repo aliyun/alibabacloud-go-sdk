@@ -22,7 +22,7 @@ type ModifyModelApiResponseBody struct {
 	//
 	// mi-xxxxx
 	ModelApiId *string `json:"ModelApiId,omitempty" xml:"ModelApiId,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

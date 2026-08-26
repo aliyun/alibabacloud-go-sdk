@@ -52,25 +52,25 @@ type InstallPolarClawPluginResponseBody struct {
 	//
 	// @larksuite/openclaw-lark@2026.4.7
 	NpmPackage *string `json:"NpmPackage,omitempty" xml:"NpmPackage,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
 	// true
 	Ok *bool `json:"Ok,omitempty" xml:"Ok,omitempty"`
-	// The ID of the installed plugin.
+	// The ID of the installed plug-in.
 	//
 	// example:
 	//
 	// openclaw-lark
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// CDB3258F-B5DE-43C4-8935-CBA0CA******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the gateway restarted.
+	// Indicates whether the gateway has been restarted.
 	//
 	// example:
 	//

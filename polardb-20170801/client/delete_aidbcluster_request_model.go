@@ -16,7 +16,7 @@ type iDeleteAIDBClusterRequest interface {
 }
 
 type DeleteAIDBClusterRequest struct {
-	// The ID of the AI cluster.
+	// The AI cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -24,6 +24,8 @@ type DeleteAIDBClusterRequest struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The model operator space.
+	//
 	// example:
 	//
 	// pms-xxx

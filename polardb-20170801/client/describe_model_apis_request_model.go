@@ -32,7 +32,7 @@ type iDescribeModelApisRequest interface {
 }
 
 type DescribeModelApisRequest struct {
-	// The ID of the gateway instance.
+	// The gateway instance ID.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DescribeModelApisRequest struct {
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The IDs of the model APIs. Separate multiple IDs with a comma.
+	// The model API IDs.
 	//
 	// example:
 	//
@@ -48,17 +48,17 @@ type DescribeModelApisRequest struct {
 	ModelApiIds *string `json:"ModelApiIds,omitempty" xml:"ModelApiIds,omitempty"`
 	// The model category. Valid values:
 	//
-	// - **text**
+	// 	- **text**
 	//
-	// - **embedding**
+	// 	- **embedding**
 	//
-	// - **rerank**
+	// 	- **rerank**
 	//
 	// example:
 	//
 	// text
 	ModelCategory *string `json:"ModelCategory,omitempty" xml:"ModelCategory,omitempty"`
-	// The name of the model API.
+	// The model API name.
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type DescribeModelApisRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// - **30**
+	// 	- **30**
 	//
-	// - **50**
+	// 	- **50**
 	//
-	// - **100**
+	// 	- **100**
 	//
-	//   The default value is **30**.
+	// Default value: **30**.
 	//
 	// example:
 	//
@@ -92,19 +92,19 @@ type DescribeModelApisRequest struct {
 	PathPrefix *string `json:"PathPrefix,omitempty" xml:"PathPrefix,omitempty"`
 	// The protocol. Valid values:
 	//
-	// - **openai**
+	// 	- **openai**
 	//
-	// - **anthropic**
+	// 	- **anthropic**
 	//
-	// - **bailian**
+	// 	- **bailian**
 	//
-	// - **vllm**
+	// 	- **vllm**
 	//
 	// example:
 	//
 	// openai
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//

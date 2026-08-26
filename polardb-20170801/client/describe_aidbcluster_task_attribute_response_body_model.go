@@ -139,9 +139,9 @@ type DescribeAIDBClusterTaskAttributeResponseBody struct {
 	KindCode *int64 `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
 	// The lock mode. Valid values:
 	//
-	// 	- **0**: Locked.
+	// 	- **0**: locked.
 	//
-	// 	- **1**: Unlocked.
+	// 	- **1**: unlocked.
 	//
 	// example:
 	//
@@ -159,7 +159,7 @@ type DescribeAIDBClusterTaskAttributeResponseBody struct {
 	//
 	// 8:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	// The list of output model paths in the model fine-tuning scenario.
+	// The list of model paths output in the model fine-tuning scenario.
 	ModelPath *string `json:"ModelPath,omitempty" xml:"ModelPath,omitempty"`
 	// Id of the request
 	//
@@ -170,7 +170,7 @@ type DescribeAIDBClusterTaskAttributeResponseBody struct {
 	// The task information.
 	TaskInfo []*DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Repeated"`
 	TuneArch *string                                                 `json:"TuneArch,omitempty" xml:"TuneArch,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -458,7 +458,7 @@ type DescribeAIDBClusterTaskAttributeResponseBodyDataSets struct {
 	//
 	// polardb_ai/datasets/train/grpo/dataset02/test-**.jsonl#1000
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The ratio of data split from the training set.
+	// The ratio split from the training set.
 	//
 	// example:
 	//
@@ -567,9 +567,9 @@ type DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The task type. Valid values:
 	//
-	// 	- **sft**: SFT-efficient training.
+	// 	- **sft**: SFT efficient training.
 	//
-	// 	- **grpo**: GRPO-reinforcement learning.
+	// 	- **grpo**: GRPO reinforcement learning.
 	//
 	// example:
 	//
@@ -579,7 +579,7 @@ type DescribeAIDBClusterTaskAttributeResponseBodyTaskInfo struct {
 	//
 	// 	- **lora**
 	//
-	// 	- **full**: full-parameter training.
+	// 	- **full**: full-parameter fine-tuning.
 	//
 	// example:
 	//

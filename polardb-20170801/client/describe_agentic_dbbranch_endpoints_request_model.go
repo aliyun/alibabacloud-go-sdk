@@ -22,30 +22,40 @@ type iDescribeAgenticDBBranchEndpointsRequest interface {
 }
 
 type DescribeAgenticDBBranchEndpointsRequest struct {
+	// The branch ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// br-7g8h9i0j1k2l
 	BranchId *string `json:"BranchId,omitempty" xml:"BranchId,omitempty"`
+	// The AgenticDB cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the project to which the branch belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// proj-a1b2c3d4e5f6
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the tenant to which the branch belongs.
+	//
 	// This parameter is required.
 	//
 	// example:

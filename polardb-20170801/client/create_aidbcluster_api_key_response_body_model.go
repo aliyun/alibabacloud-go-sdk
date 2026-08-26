@@ -62,7 +62,7 @@ func (s *CreateAIDBClusterApiKeyResponseBody) Validate() error {
 }
 
 type CreateAIDBClusterApiKeyResponseBodyApiKey struct {
-	// The API key of the model service.
+	// The API key for model serving.
 	//
 	// example:
 	//

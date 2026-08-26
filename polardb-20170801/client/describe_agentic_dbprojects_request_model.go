@@ -26,34 +26,48 @@ type iDescribeAgenticDBProjectsRequest interface {
 }
 
 type DescribeAgenticDBProjectsRequest struct {
+	// The AgenticDB cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 30. Maximum value: 100.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The project ID for exact match.
+	//
 	// example:
 	//
 	// proj-a1b2c3d4e5f6
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project name for fuzzy match.
+	//
 	// example:
 	//
 	// analytics
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The tenant ID to which the project belongs.
+	//
 	// example:
 	//
 	// t-4b83e0da66674951

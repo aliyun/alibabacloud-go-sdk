@@ -21,6 +21,8 @@ type iDescribeApplicationPerformanceShrinkRequest interface {
 	GetEndStep() *int64
 	SetEndTime(v string) *DescribeApplicationPerformanceShrinkRequest
 	GetEndTime() *string
+	SetFilterShrink(v string) *DescribeApplicationPerformanceShrinkRequest
+	GetFilterShrink() *string
 	SetInterval(v string) *DescribeApplicationPerformanceShrinkRequest
 	GetInterval() *string
 	SetKey(v string) *DescribeApplicationPerformanceShrinkRequest
@@ -33,8 +35,6 @@ type iDescribeApplicationPerformanceShrinkRequest interface {
 	GetStartStep() *int64
 	SetStartTime(v string) *DescribeApplicationPerformanceShrinkRequest
 	GetStartTime() *string
-	SetFilterShrink(v string) *DescribeApplicationPerformanceShrinkRequest
-	GetFilterShrink() *string
 }
 
 type DescribeApplicationPerformanceShrinkRequest struct {
@@ -77,7 +77,8 @@ type DescribeApplicationPerformanceShrinkRequest struct {
 	// example:
 	//
 	// 2020-09-23T01:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FilterShrink *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The data granularity of performance data. Valid values:
 	//
 	// - 5
@@ -100,7 +101,7 @@ type DescribeApplicationPerformanceShrinkRequest struct {
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The performance metrics to query. Separate multiple values with commas (,).
 	//
-	// > **Note*	- You can specify up to 5 performance metrics.
+	// >  You can specify up to 5 performance metrics.
 	//
 	// This parameter is required.
 	//
@@ -133,8 +134,7 @@ type DescribeApplicationPerformanceShrinkRequest struct {
 	// example:
 	//
 	// 2020-09-23T01:01Z
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	FilterShrink *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeApplicationPerformanceShrinkRequest) String() string {
@@ -169,6 +169,10 @@ func (s *DescribeApplicationPerformanceShrinkRequest) GetEndTime() *string {
 	return s.EndTime
 }
 
+func (s *DescribeApplicationPerformanceShrinkRequest) GetFilterShrink() *string {
+	return s.FilterShrink
+}
+
 func (s *DescribeApplicationPerformanceShrinkRequest) GetInterval() *string {
 	return s.Interval
 }
@@ -191,10 +195,6 @@ func (s *DescribeApplicationPerformanceShrinkRequest) GetStartStep() *int64 {
 
 func (s *DescribeApplicationPerformanceShrinkRequest) GetStartTime() *string {
 	return s.StartTime
-}
-
-func (s *DescribeApplicationPerformanceShrinkRequest) GetFilterShrink() *string {
-	return s.FilterShrink
 }
 
 func (s *DescribeApplicationPerformanceShrinkRequest) SetApplicationId(v string) *DescribeApplicationPerformanceShrinkRequest {
@@ -227,6 +227,11 @@ func (s *DescribeApplicationPerformanceShrinkRequest) SetEndTime(v string) *Desc
 	return s
 }
 
+func (s *DescribeApplicationPerformanceShrinkRequest) SetFilterShrink(v string) *DescribeApplicationPerformanceShrinkRequest {
+	s.FilterShrink = &v
+	return s
+}
+
 func (s *DescribeApplicationPerformanceShrinkRequest) SetInterval(v string) *DescribeApplicationPerformanceShrinkRequest {
 	s.Interval = &v
 	return s
@@ -254,11 +259,6 @@ func (s *DescribeApplicationPerformanceShrinkRequest) SetStartStep(v int64) *Des
 
 func (s *DescribeApplicationPerformanceShrinkRequest) SetStartTime(v string) *DescribeApplicationPerformanceShrinkRequest {
 	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeApplicationPerformanceShrinkRequest) SetFilterShrink(v string) *DescribeApplicationPerformanceShrinkRequest {
-	s.FilterShrink = &v
 	return s
 }
 

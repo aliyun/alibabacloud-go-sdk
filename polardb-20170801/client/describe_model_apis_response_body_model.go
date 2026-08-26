@@ -24,7 +24,7 @@ type iDescribeModelApisResponseBody interface {
 }
 
 type DescribeModelApisResponseBody struct {
-	// A list of Model API objects.
+	// The list of model APIs.
 	Items []*DescribeModelApisResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -32,13 +32,13 @@ type DescribeModelApisResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records returned on the current page.
+	// The number of records on the current page.
 	//
 	// example:
 	//
 	// 30
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The number of records to return on each page. Valid values: **30**, **50**, and **100**.
+	// The number of entries per page. Valid values: **30**, **50**, or **100**.
 	//
 	// Default value: **30**.
 	//
@@ -46,13 +46,13 @@ type DescribeModelApisResponseBody struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// C61892A4-0850-4516-9E26-44D96C1782DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records that match the query.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -138,29 +138,30 @@ func (s *DescribeModelApisResponseBody) Validate() error {
 type DescribeModelApisResponseBodyItems struct {
 	// The model category. Valid values:
 	//
-	// - **text**
+	// 	- **text**
 	//
-	// - **embedding**
+	// 	- **embedding**
 	//
-	// - **rerank**
+	// 	- **rerank**
 	//
 	// example:
 	//
 	// text
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Config   *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The creation time.
 	//
 	// example:
 	//
 	// 2024-10-16 16:46:20
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The Model API ID.
+	// The model API IDs.
 	//
 	// example:
 	//
 	// mi-xxxx
 	ModelApiId *string `json:"ModelApiId,omitempty" xml:"ModelApiId,omitempty"`
-	// The Model API name.
+	// The model API name.
 	//
 	// example:
 	//
@@ -174,31 +175,31 @@ type DescribeModelApisResponseBodyItems struct {
 	PathPrefix *string `json:"PathPrefix,omitempty" xml:"PathPrefix,omitempty"`
 	// The protocol. Valid values:
 	//
-	// - **openai**
+	// 	- **openai**
 	//
-	// - **anthropic**
+	// 	- **anthropic**
 	//
-	// - **bailian**
+	// 	- **bailian**
 	//
-	// - **vllm**
+	// 	- **vllm**
 	//
 	// example:
 	//
 	// openai
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The number of input records.
+	// The number of input tokens.
 	//
 	// example:
 	//
 	// 10
 	RecordInput *string `json:"RecordInput,omitempty" xml:"RecordInput,omitempty"`
-	// The number of output records.
+	// The number of output tokens.
 	//
 	// example:
 	//
 	// 10
 	RecordOutput *string `json:"RecordOutput,omitempty" xml:"RecordOutput,omitempty"`
-	// A JSON array of routing rules, formatted as a string.
+	// The routing rules list (JSON array string).
 	//
 	// example:
 	//
@@ -250,7 +251,7 @@ type DescribeModelApisResponseBodyItems struct {
 	//
 	// ]
 	RouteRules *string `json:"RouteRules,omitempty" xml:"RouteRules,omitempty"`
-	// The Model API status.
+	// The model API status.
 	//
 	// example:
 	//
@@ -268,6 +269,10 @@ func (s DescribeModelApisResponseBodyItems) GoString() string {
 
 func (s *DescribeModelApisResponseBodyItems) GetCategory() *string {
 	return s.Category
+}
+
+func (s *DescribeModelApisResponseBodyItems) GetConfig() *string {
+	return s.Config
 }
 
 func (s *DescribeModelApisResponseBodyItems) GetGmtCreated() *string {
@@ -308,6 +313,11 @@ func (s *DescribeModelApisResponseBodyItems) GetStatus() *string {
 
 func (s *DescribeModelApisResponseBodyItems) SetCategory(v string) *DescribeModelApisResponseBodyItems {
 	s.Category = &v
+	return s
+}
+
+func (s *DescribeModelApisResponseBodyItems) SetConfig(v string) *DescribeModelApisResponseBodyItems {
+	s.Config = &v
 	return s
 }
 

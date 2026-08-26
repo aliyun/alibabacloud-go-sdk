@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/polardb-20170801/v8
+module github.com/alibabacloud-go/polardb-20170801/v9
 
 go 1.14
 

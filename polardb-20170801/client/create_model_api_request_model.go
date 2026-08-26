@@ -9,6 +9,8 @@ type iCreateModelApiRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetConfig(v string) *CreateModelApiRequest
+	GetConfig() *string
 	SetForceModel(v string) *CreateModelApiRequest
 	GetForceModel() *string
 	SetGwClusterId(v string) *CreateModelApiRequest
@@ -32,7 +34,29 @@ type iCreateModelApiRequest interface {
 }
 
 type CreateModelApiRequest struct {
-	// The model to which requests are forcibly routed.
+	// The gateway retry configuration.
+	//
+	// example:
+	//
+	// {
+	//
+	// 	"failover": {
+	//
+	// 		"enabled": true,
+	//
+	// 		"max_provider_retries": 2,
+	//
+	// 		"max_failover_providers": 1,
+	//
+	// 		"retryable_status_codes": [429, 500, 502, 503, 504],
+	//
+	// 		"retry_delay": 0.5
+	//
+	// 	}
+	//
+	// }
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The forced model.
 	//
 	// example:
 	//
@@ -46,13 +70,13 @@ type CreateModelApiRequest struct {
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The model API category. Valid values:
+	// The category. Valid values:
 	//
-	// - **text**
+	// 	- **text**
 	//
-	// - **embedding**
+	// 	- **embedding**
 	//
-	// - **rerank**
+	// 	- **rerank**
 	//
 	// This parameter is required.
 	//
@@ -68,7 +92,7 @@ type CreateModelApiRequest struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The path prefix.
+	// The API path prefix.
 	//
 	// This parameter is required.
 	//
@@ -76,15 +100,15 @@ type CreateModelApiRequest struct {
 	//
 	// /test
 	PathPrefix *string `json:"PathPrefix,omitempty" xml:"PathPrefix,omitempty"`
-	// The model API protocol. Valid values:
+	// The protocol. Valid values:
 	//
-	// - **OpenAI**
+	// 	- **openai**
 	//
-	// - **Anthropic**
+	// 	- **anthropic**
 	//
-	// - **Model Studio**
+	// 	- **bailian**
 	//
-	// - **vLLM**
+	// 	- **vllm**
 	//
 	// This parameter is required.
 	//
@@ -92,13 +116,13 @@ type CreateModelApiRequest struct {
 	//
 	// openai
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// Specifies whether to record input for billing.
+	// The number of input points.
 	//
 	// example:
 	//
 	// 10
 	RecordInput *string `json:"RecordInput,omitempty" xml:"RecordInput,omitempty"`
-	// Specifies whether to record output for billing.
+	// The number of output points.
 	//
 	// example:
 	//
@@ -110,7 +134,7 @@ type CreateModelApiRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// A list of routing rules, provided as a JSON array string.
+	// The list of routing rules (JSON array string).
 	//
 	// This parameter is required.
 	//
@@ -174,6 +198,10 @@ func (s CreateModelApiRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateModelApiRequest) GetConfig() *string {
+	return s.Config
+}
+
 func (s *CreateModelApiRequest) GetForceModel() *string {
 	return s.ForceModel
 }
@@ -212,6 +240,11 @@ func (s *CreateModelApiRequest) GetRegionId() *string {
 
 func (s *CreateModelApiRequest) GetRouteRules() *string {
 	return s.RouteRules
+}
+
+func (s *CreateModelApiRequest) SetConfig(v string) *CreateModelApiRequest {
+	s.Config = &v
+	return s
 }
 
 func (s *CreateModelApiRequest) SetForceModel(v string) *CreateModelApiRequest {

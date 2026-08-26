@@ -20,18 +20,26 @@ type iAddPolarOSSAuthorizedAccountResponseBody interface {
 }
 
 type AddPolarOSSAuthorizedAccountResponseBody struct {
+	// The updated list of RAM role ARNs, separated by commas.
+	//
 	// example:
 	//
 	// arn:sts::123456:assumed-role/myrole/*
 	AuthorizedUserArnIds *string `json:"AuthorizedUserArnIds,omitempty" xml:"AuthorizedUserArnIds,omitempty"`
+	// The updated list of UIDs, separated by commas.
+	//
 	// example:
 	//
 	// 1234567890,9876543210
 	AuthorizedUserIds *string `json:"AuthorizedUserIds,omitempty" xml:"AuthorizedUserIds,omitempty"`
+	// The cold storage instance ID.
+	//
 	// example:
 	//
 	// pfs-xxxxxxxxxxxxxxxxx
 	PfsInstanceId *string `json:"PfsInstanceId,omitempty" xml:"PfsInstanceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F45FFACC-xxx

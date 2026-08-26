@@ -21,6 +21,8 @@ type iDescribeApplicationPerformanceRequest interface {
 	GetEndStep() *int64
 	SetEndTime(v string) *DescribeApplicationPerformanceRequest
 	GetEndTime() *string
+	SetFilter(v map[string]interface{}) *DescribeApplicationPerformanceRequest
+	GetFilter() map[string]interface{}
 	SetInterval(v string) *DescribeApplicationPerformanceRequest
 	GetInterval() *string
 	SetKey(v string) *DescribeApplicationPerformanceRequest
@@ -33,8 +35,6 @@ type iDescribeApplicationPerformanceRequest interface {
 	GetStartStep() *int64
 	SetStartTime(v string) *DescribeApplicationPerformanceRequest
 	GetStartTime() *string
-	SetFilter(v map[string]interface{}) *DescribeApplicationPerformanceRequest
-	GetFilter() map[string]interface{}
 }
 
 type DescribeApplicationPerformanceRequest struct {
@@ -77,7 +77,8 @@ type DescribeApplicationPerformanceRequest struct {
 	// example:
 	//
 	// 2020-09-23T01:00Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string                `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Filter  map[string]interface{} `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The data granularity of performance data. Valid values:
 	//
 	// - 5
@@ -100,7 +101,7 @@ type DescribeApplicationPerformanceRequest struct {
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The performance metrics to query. Separate multiple values with commas (,).
 	//
-	// > **Note*	- You can specify up to 5 performance metrics.
+	// >  You can specify up to 5 performance metrics.
 	//
 	// This parameter is required.
 	//
@@ -133,8 +134,7 @@ type DescribeApplicationPerformanceRequest struct {
 	// example:
 	//
 	// 2020-09-23T01:01Z
-	StartTime *string                `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Filter    map[string]interface{} `json:"filter,omitempty" xml:"filter,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeApplicationPerformanceRequest) String() string {
@@ -169,6 +169,10 @@ func (s *DescribeApplicationPerformanceRequest) GetEndTime() *string {
 	return s.EndTime
 }
 
+func (s *DescribeApplicationPerformanceRequest) GetFilter() map[string]interface{} {
+	return s.Filter
+}
+
 func (s *DescribeApplicationPerformanceRequest) GetInterval() *string {
 	return s.Interval
 }
@@ -191,10 +195,6 @@ func (s *DescribeApplicationPerformanceRequest) GetStartStep() *int64 {
 
 func (s *DescribeApplicationPerformanceRequest) GetStartTime() *string {
 	return s.StartTime
-}
-
-func (s *DescribeApplicationPerformanceRequest) GetFilter() map[string]interface{} {
-	return s.Filter
 }
 
 func (s *DescribeApplicationPerformanceRequest) SetApplicationId(v string) *DescribeApplicationPerformanceRequest {
@@ -227,6 +227,11 @@ func (s *DescribeApplicationPerformanceRequest) SetEndTime(v string) *DescribeAp
 	return s
 }
 
+func (s *DescribeApplicationPerformanceRequest) SetFilter(v map[string]interface{}) *DescribeApplicationPerformanceRequest {
+	s.Filter = v
+	return s
+}
+
 func (s *DescribeApplicationPerformanceRequest) SetInterval(v string) *DescribeApplicationPerformanceRequest {
 	s.Interval = &v
 	return s
@@ -254,11 +259,6 @@ func (s *DescribeApplicationPerformanceRequest) SetStartStep(v int64) *DescribeA
 
 func (s *DescribeApplicationPerformanceRequest) SetStartTime(v string) *DescribeApplicationPerformanceRequest {
 	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeApplicationPerformanceRequest) SetFilter(v map[string]interface{}) *DescribeApplicationPerformanceRequest {
-	s.Filter = v
 	return s
 }
 

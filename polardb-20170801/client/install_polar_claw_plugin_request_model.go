@@ -30,13 +30,11 @@ type InstallPolarClawPluginRequest struct {
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The npm package name, including the version number.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// @larksuite/openclaw-lark@2026.4.7
 	NpmPackage *string `json:"NpmPackage,omitempty" xml:"NpmPackage,omitempty"`
-	// The plugin ID.
+	// The plug-in ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +42,7 @@ type InstallPolarClawPluginRequest struct {
 	//
 	// openclaw-lark
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// Specifies whether to restart the gateway after installation. Defaults to true.
+	// Specifies whether to restart the gateway after installation. Default value: true.
 	//
 	// example:
 	//

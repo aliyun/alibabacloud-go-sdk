@@ -38,25 +38,25 @@ type iDescribeAIDBClustersRequest interface {
 }
 
 type DescribeAIDBClustersRequest struct {
-	// The node type. To specify multiple types, separate them with a comma. Valid values:
+	// The node type. Multiple types are supported. Separate two values with a comma (,).
 	//
-	// - **vnode**: a node managed by Kubernetes
+	// - vnode: managed by Kubernetes.
 	//
-	// - **container**: a container that you can log on to
+	// - container: logon-enabled container.
 	//
-	// - **maas**: model service
+	// - maas: model service.
 	//
 	// example:
 	//
 	// vnode,container
 	AiNodeType *string `json:"AiNodeType,omitempty" xml:"AiNodeType,omitempty"`
-	// The cluster description. Fuzzy search is supported.
+	// The cluster description. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// pc-****************
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The cluster ID. To specify multiple clusters, separate their IDs with a comma.
+	// The cluster ID. Separate multiple cluster IDs with commas (,).
 	//
 	// example:
 	//
@@ -64,29 +64,29 @@ type DescribeAIDBClustersRequest struct {
 	DBClusterIds *string `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
 	// The cluster status. Valid values:
 	//
-	// - **Creating**: The cluster is being created.
+	// - **Creating**: being created.
 	//
-	// - **Running**: The cluster is running.
+	// - **Running**: running.
 	//
-	// - **Deleting**: The cluster is being released.
+	// - **Deleting**: being released.
 	//
-	// - **Rebooting**: The cluster is restarting.
+	// - **Rebooting**: being restarted.
 	//
-	// - **DBNodeCreating**: A node is being added.
+	// - **DBNodeCreating**: a node is being added (increase).
 	//
-	// - **DBNodeDeleting**: A node is being deleted.
+	// - **DBNodeDeleting**: a node is being deleted.
 	//
-	// - **ClassChanging**: The node specifications are being changed.
+	// - **ClassChanging**: node specifications are being changed.
 	//
-	// - **NetAddressCreating**: A network connection is being created.
+	// - **NetAddressCreating**: a network connectivity is being created.
 	//
-	// - **NetAddressDeleting**: A network connection is being deleted.
+	// - **NetAddressDeleting**: a network connectivity is being deleted.
 	//
-	// - **NetAddressModifying**: A network connection is being modified.
+	// - **NetAddressModifying**: a network connectivity is being modified.
 	//
-	// - **Deleted**: The cluster is released.
+	// - **Deleted**: released.
 	//
-	// 	- **ClassChanged**: Resources are being reclaimed after the upgrade or downgrade.
+	// 	- **ClassChanged**: resources are being revoked after a decrease the quota operation.
 	//
 	// example:
 	//
@@ -102,6 +102,8 @@ type DescribeAIDBClustersRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values: **30**, **50**, and **100**.
 	//
+	//
+	//
 	// Default value: **30**.
 	//
 	// example:
@@ -110,9 +112,9 @@ type DescribeAIDBClustersRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - **Postpaid**: pay-as-you-go
+	// - **Postpaid**: pay-as-you-go.
 	//
-	// - **Prepaid**: subscription
+	// - **Prepaid**: subscription.
 	//
 	// example:
 	//
@@ -128,7 +130,7 @@ type DescribeAIDBClustersRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// A list of tags.
+	// The list of tags.
 	Tag []*DescribeAIDBClustersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -271,13 +273,13 @@ func (s *DescribeAIDBClustersRequest) Validate() error {
 }
 
 type DescribeAIDBClustersRequestTag struct {
-	// The tag key. Use this parameter with `Tag.n.Value` to filter clusters by tag. You can specify up to 20 tag pairs. The index n must be a unique, consecutive integer starting from 1.
+	// The tag key. You can filter the cluster list by tag. You can specify up to 20 tag pairs. The number n for each tag pair must be unique and must be a consecutive integer starting from 1. The value of Tag.n.Key corresponds to Tag.n.Value.
 	//
 	// example:
 	//
 	// testKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value that corresponds to the tag key.
 	//
 	// example:
 	//

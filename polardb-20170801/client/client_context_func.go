@@ -416,7 +416,7 @@ func (client *Client) AddPolarFsQuotaWithContext(ctx context.Context, request *A
 
 // Summary:
 //
-// 添加冷存授权账号
+// Adds authorized accounts for cold storage.
 //
 // @param request - AddPolarOSSAuthorizedAccountRequest
 //
@@ -1902,7 +1902,7 @@ func (client *Client) ContinueDBClusterMigrationWithContext(ctx context.Context,
 
 // Summary:
 //
-// This topic describes how to create an AI cluster.
+// Creates an AI cluster.
 //
 // @param request - CreateAIDBClusterRequest
 //
@@ -2082,7 +2082,7 @@ func (client *Client) CreateAIDBClusterWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates a model service API key.
+// Creates a model creation service API key.
 //
 // @param request - CreateAIDBClusterApiKeyRequest
 //
@@ -2790,7 +2790,7 @@ func (client *Client) CreateAgenticDBProjectWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 创建 AgenticDB 租户 API Key
+// Creates an API key for an AgenticDB tenant.
 //
 // @param request - CreateAgenticDBTenantApiKeyRequest
 //
@@ -5420,6 +5420,182 @@ func (client *Client) CreateGwConsumerOrderWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// Creates a knowledge base.
+//
+// @param request - CreateKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateKnowledgeBaseResponse
+func (client *Client) CreateKnowledgeBaseWithContext(ctx context.Context, request *CreateKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *CreateKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseType) {
+		query["KnowledgeBaseType"] = request.KnowledgeBaseType
+	}
+
+	if !dara.IsNil(request.KnowledgeSpaceId) {
+		query["KnowledgeSpaceId"] = request.KnowledgeSpaceId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SearchMode) {
+		query["SearchMode"] = request.SearchMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateKnowledgeBase"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateKnowledgeBaseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a knowledge space.
+//
+// @param request - CreateKnowledgeSpaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateKnowledgeSpaceResponse
+func (client *Client) CreateKnowledgeSpaceWithContext(ctx context.Context, request *CreateKnowledgeSpaceRequest, runtime *dara.RuntimeOptions) (_result *CreateKnowledgeSpaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBType) {
+		query["DBType"] = request.DBType
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EmbeddingDimension) {
+		query["EmbeddingDimension"] = request.EmbeddingDimension
+	}
+
+	if !dara.IsNil(request.EmbeddingModel) {
+		query["EmbeddingModel"] = request.EmbeddingModel
+	}
+
+	if !dara.IsNil(request.EnforceAcl) {
+		query["EnforceAcl"] = request.EnforceAcl
+	}
+
+	if !dara.IsNil(request.LLMModel) {
+		query["LLMModel"] = request.LLMModel
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OSSAccessKey) {
+		query["OSSAccessKey"] = request.OSSAccessKey
+	}
+
+	if !dara.IsNil(request.OSSBucket) {
+		query["OSSBucket"] = request.OSSBucket
+	}
+
+	if !dara.IsNil(request.OSSSecretKey) {
+		query["OSSSecretKey"] = request.OSSSecretKey
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RerankModel) {
+		query["RerankModel"] = request.RerankModel
+	}
+
+	if !dara.IsNil(request.SecurityGroupId) {
+		query["SecurityGroupId"] = request.SecurityGroupId
+	}
+
+	if !dara.IsNil(request.ShardingSize) {
+		query["ShardingSize"] = request.ShardingSize
+	}
+
+	if !dara.IsNil(request.ShardingStrategy) {
+		query["ShardingStrategy"] = request.ShardingStrategy
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateKnowledgeSpace"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateKnowledgeSpaceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a PolarFS S3 account.
 //
 // @param request - CreateLakebaseS3AccountRequest
@@ -5480,7 +5656,7 @@ func (client *Client) CreateLakebaseS3AccountWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Creates a model API.
+// Creates a routing rule.
 //
 // @param request - CreateModelApiRequest
 //
@@ -5495,6 +5671,10 @@ func (client *Client) CreateModelApiWithContext(ctx context.Context, request *Cr
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		query["Config"] = request.Config
+	}
+
 	if !dara.IsNil(request.ForceModel) {
 		query["ForceModel"] = request.ForceModel
 	}
@@ -7127,6 +7307,10 @@ func (client *Client) DeleteAgenticDBComputeClusterWithContext(ctx context.Conte
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BranchId) {
+		query["BranchId"] = request.BranchId
+	}
+
 	if !dara.IsNil(request.ComputeClusterId) {
 		query["ComputeClusterId"] = request.ComputeClusterId
 	}
@@ -7135,8 +7319,16 @@ func (client *Client) DeleteAgenticDBComputeClusterWithContext(ctx context.Conte
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !dara.IsNil(request.ProjectId) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -8720,6 +8912,54 @@ func (client *Client) DeleteGlobalSecurityIPGroupWithContext(ctx context.Context
 
 // Summary:
 //
+// Deletes a knowledge base.
+//
+// @param request - DeleteKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteKnowledgeBaseResponse
+func (client *Client) DeleteKnowledgeBaseWithContext(ctx context.Context, request *DeleteKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *DeleteKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		query["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteKnowledgeBase"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteKnowledgeBaseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a PolarFS S3 account.
 //
 // @param request - DeleteLakebaseS3AccountRequest
@@ -9498,7 +9738,7 @@ func (client *Client) DeletePolarFsQuotaWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 删除冷存授权账号
+// Deletes authorized accounts for cold storage.
 //
 // @param request - DeletePolarOSSAuthorizedAccountRequest
 //
@@ -9782,7 +10022,7 @@ func (client *Client) DescribeAIDBClusterApiKeysWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the details of a custom instance.
+// Queries the detailed attributes of a custom instance.
 //
 // @param request - DescribeAIDBClusterAttributeRequest
 //
@@ -10282,7 +10522,7 @@ func (client *Client) DescribeAIDBClusterTasksWithContext(ctx context.Context, r
 
 // Summary:
 //
-// View custom clusters.
+// Queries the list of custom AI clusters.
 //
 // @param request - DescribeAIDBClustersRequest
 //
@@ -11354,7 +11594,7 @@ func (client *Client) DescribeAgenticDBProjectWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询 AgenticDB 项目列表
+// Queries the list of AgenticDB projects.
 //
 // @param request - DescribeAgenticDBProjectsRequest
 //
@@ -11753,7 +11993,7 @@ func (client *Client) DescribeApplicationPerformanceWithContext(ctx context.Cont
 	request := &DescribeApplicationPerformanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
 	if !dara.IsNil(tmpReq.Filter) {
-		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, dara.String("filter"), dara.String("json"))
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, dara.String("Filter"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -11781,6 +12021,10 @@ func (client *Client) DescribeApplicationPerformanceWithContext(ctx context.Cont
 		query["EndTime"] = request.EndTime
 	}
 
+	if !dara.IsNil(request.FilterShrink) {
+		query["Filter"] = request.FilterShrink
+	}
+
 	if !dara.IsNil(request.Interval) {
 		query["Interval"] = request.Interval
 	}
@@ -11803,10 +12047,6 @@ func (client *Client) DescribeApplicationPerformanceWithContext(ctx context.Cont
 
 	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
-	}
-
-	if !dara.IsNil(request.FilterShrink) {
-		query["filter"] = request.FilterShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -14748,7 +14988,7 @@ func (client *Client) DescribeDBClusterServerlessConfWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the transparent data encryption (TDE) settings for a specified PolarDB cluster.
+// Queries the Transparent Data Encryption (TDE) settings of a PolarDB cluster.
 //
 // @param request - DescribeDBClusterTDERequest
 //
@@ -17392,6 +17632,118 @@ func (client *Client) DescribeHistoryTasksStatWithContext(ctx context.Context, r
 
 // Summary:
 //
+// Queries the details of a knowledge base.
+//
+// @param request - DescribeKnowledgeBaseAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeKnowledgeBaseAttributeResponse
+func (client *Client) DescribeKnowledgeBaseAttributeWithContext(ctx context.Context, request *DescribeKnowledgeBaseAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeKnowledgeBaseAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		query["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeKnowledgeBaseAttribute"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeKnowledgeBaseAttributeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of knowledge bases.
+//
+// @param request - DescribeKnowledgeBasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeKnowledgeBasesResponse
+func (client *Client) DescribeKnowledgeBasesWithContext(ctx context.Context, request *DescribeKnowledgeBasesRequest, runtime *dara.RuntimeOptions) (_result *DescribeKnowledgeBasesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.KnowledgeSpaceId) {
+		query["KnowledgeSpaceId"] = request.KnowledgeSpaceId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeKnowledgeBases"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeKnowledgeBasesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a PolarFS S3 account.
 //
 // @param request - DescribeLakebaseS3AccountRequest
@@ -17848,7 +18200,7 @@ func (client *Client) DescribeMetaListWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Model Query API
+// Queries model APIs.
 //
 // @param request - DescribeModelApisRequest
 //
@@ -22451,7 +22803,7 @@ func (client *Client) GrantAccountPrivilegeZonalWithContext(ctx context.Context,
 
 // Summary:
 //
-// Installs a PolarClaw plugin.
+// Installs the PolarClaw plug-in.
 //
 // @param request - InstallPolarClawPluginRequest
 //
@@ -27988,6 +28340,10 @@ func (client *Client) ModifyModelApiWithContext(ctx context.Context, request *Mo
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Config) {
+		query["Config"] = request.Config
+	}
+
 	if !dara.IsNil(request.GwClusterId) {
 		query["GwClusterId"] = request.GwClusterId
 	}

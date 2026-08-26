@@ -16,6 +16,8 @@ type iDescribeAIDBClusterApiKeysRequest interface {
 }
 
 type DescribeAIDBClusterApiKeysRequest struct {
+	// The model space ID.
+	//
 	// example:
 	//
 	// pms-xxx

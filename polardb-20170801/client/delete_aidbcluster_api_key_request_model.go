@@ -26,13 +26,15 @@ type DeleteAIDBClusterApiKeyRequest struct {
 	//
 	// xxx
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The model space ID.
+	//
 	// example:
 	//
 	// pms-xxx
 	ModelSpaceName *string `json:"ModelSpaceName,omitempty" xml:"ModelSpaceName,omitempty"`
 	// The region ID.
 	//
-	// >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region IDs.
+	// >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available region IDs.
 	//
 	// This parameter is required.
 	//

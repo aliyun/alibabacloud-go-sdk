@@ -140,7 +140,7 @@ type CreateAIDBClusterTaskRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The running parameters in JSON string format.
+	// The running parameters in a JSON string.
 	//
 	// This parameter is required.
 	//
@@ -154,7 +154,7 @@ type CreateAIDBClusterTaskRequest struct {
 	//
 	// sg-bp**************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The description of the model service.
+	// The model service description.
 	//
 	// example:
 	//

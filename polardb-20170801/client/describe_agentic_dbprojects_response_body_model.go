@@ -22,19 +22,28 @@ type iDescribeAgenticDBProjectsResponseBody interface {
 }
 
 type DescribeAgenticDBProjectsResponseBody struct {
+	// The list of projects.
 	Items []*DescribeAgenticDBProjectsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F6A7B8C9-D0E1-2345-FABC-456789012345
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
@@ -108,30 +117,44 @@ func (s *DescribeAgenticDBProjectsResponseBody) Validate() error {
 }
 
 type DescribeAgenticDBProjectsResponseBodyItems struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-06-10T11:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The associated AgenticDB cluster ID.
+	//
 	// example:
 	//
 	// pagc-bp1abcdef1234567
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The default branch ID.
+	//
 	// example:
 	//
 	// br-1a2b3c4d5e6f
 	DefaultBranchId *string `json:"DefaultBranchId,omitempty" xml:"DefaultBranchId,omitempty"`
+	// The default branch name.
+	//
 	// example:
 	//
 	// main
 	DefaultBranchName *string `json:"DefaultBranchName,omitempty" xml:"DefaultBranchName,omitempty"`
+	// The description of the project.
+	//
 	// example:
 	//
 	// Production analytics database
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Project ID
+	//
 	// example:
 	//
 	// proj-a1b2c3d4e5f6
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The project name.
+	//
 	// example:
 	//
 	// analytics-prod
@@ -140,6 +163,8 @@ type DescribeAgenticDBProjectsResponseBodyItems struct {
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tenant ID to which the project belongs.
+	//
 	// example:
 	//
 	// t-4b83e0da66674951
