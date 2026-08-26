@@ -4524,6 +4524,112 @@ func (client *Client) CreateSemanticJobWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
+// Creates a personal development environment instance.
+//
+// Description:
+//
+// Creates a personal development environment (ServerIDE) instance. After you specify the DataWorks workspace, resource group, image, and specifications, the instance is created and the instance ID is returned.
+//
+// @param tmpReq - CreateServerIdeInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServerIdeInstanceResponse
+func (client *Client) CreateServerIdeInstanceWithContext(ctx context.Context, tmpReq *CreateServerIdeInstanceRequest, runtime *dara.RuntimeOptions) (_result *CreateServerIdeInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateServerIdeInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CredentialConfig) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, dara.String("CredentialConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Datasets) {
+		request.DatasetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Datasets, dara.String("Datasets"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.UserCommand) {
+		request.UserCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserCommand, dara.String("UserCommand"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.UserVpc) {
+		request.UserVpcShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserVpc, dara.String("UserVpc"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CredentialConfigShrink) {
+		body["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !dara.IsNil(request.Cu) {
+		body["Cu"] = request.Cu
+	}
+
+	if !dara.IsNil(request.DatasetsShrink) {
+		body["Datasets"] = request.DatasetsShrink
+	}
+
+	if !dara.IsNil(request.ImageId) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.ImageUrl) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.Owner) {
+		body["Owner"] = request.Owner
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.UserCommandShrink) {
+		body["UserCommand"] = request.UserCommandShrink
+	}
+
+	if !dara.IsNil(request.UserVpcShrink) {
+		body["UserVpc"] = request.UserVpcShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateServerIdeInstance"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateServerIdeInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a new Skill in DataWorks.
 //
 // Description:
@@ -22783,6 +22889,102 @@ func (client *Client) UpdateSecurityStrategyWithContext(ctx context.Context, tmp
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateSecurityStrategyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the configuration of a specified personal development environment instance.
+//
+// Description:
+//
+// Updates the configuration of a specified personal development environment (ServerIDE) instance. You can modify the CU, image, instance name, VPC, dataset, and credential configurations. If the CU and image parameters are not specified, the existing instance configurations are retained.
+//
+// @param tmpReq - UpdateServerIdeInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServerIdeInstanceResponse
+func (client *Client) UpdateServerIdeInstanceWithContext(ctx context.Context, tmpReq *UpdateServerIdeInstanceRequest, runtime *dara.RuntimeOptions) (_result *UpdateServerIdeInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateServerIdeInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CredentialConfig) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CredentialConfig, dara.String("CredentialConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Datasets) {
+		request.DatasetsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Datasets, dara.String("Datasets"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.UserVpc) {
+		request.UserVpcShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserVpc, dara.String("UserVpc"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CredentialConfigShrink) {
+		body["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !dara.IsNil(request.Cu) {
+		body["Cu"] = request.Cu
+	}
+
+	if !dara.IsNil(request.DatasetsShrink) {
+		body["Datasets"] = request.DatasetsShrink
+	}
+
+	if !dara.IsNil(request.ImageId) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.ImageUrl) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	if !dara.IsNil(request.InstanceName) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.ProjectId) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !dara.IsNil(request.UserVpcShrink) {
+		body["UserVpc"] = request.UserVpcShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateServerIdeInstance"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateServerIdeInstanceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
