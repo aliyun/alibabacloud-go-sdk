@@ -16,7 +16,10 @@ type iUpdateModelRequest interface {
 }
 
 type UpdateModelRequest struct {
+	// The request body.
 	Body *UpdateModelRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
+	// The client token for idempotence. Not currently supported.
+	//
 	// example:
 	//
 	// client-token-1
@@ -59,6 +62,8 @@ func (s *UpdateModelRequest) Validate() error {
 }
 
 type UpdateModelRequestBody struct {
+	// The model description. Maximum length: 255 characters.
+	//
 	// This parameter is required.
 	//
 	// example:

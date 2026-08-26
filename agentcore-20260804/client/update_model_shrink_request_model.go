@@ -16,7 +16,10 @@ type iUpdateModelShrinkRequest interface {
 }
 
 type UpdateModelShrinkRequest struct {
+	// The request body.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
+	// The client token for idempotence. Not currently supported.
+	//
 	// example:
 	//
 	// client-token-1

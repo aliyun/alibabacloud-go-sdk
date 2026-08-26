@@ -24,24 +24,34 @@ type iUpdateModelResponseBody interface {
 }
 
 type UpdateModelResponseBody struct {
+	// The business status code. The value SUCCESS indicates success.
+	//
 	// example:
 	//
 	// SUCCESS
-	Code *string                      `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The updated model information.
 	Data *UpdateModelResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The HTTP status code. The value 200 indicates success.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The message of the request processing result.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// request-1
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Indicates whether the request was successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s UpdateModelResponseBody) String() string {
@@ -116,39 +126,58 @@ func (s *UpdateModelResponseBody) Validate() error {
 }
 
 type UpdateModelResponseBodyData struct {
+	// The model capability configurations.
 	Capabilities *UpdateModelResponseBodyDataCapabilities `json:"capabilities,omitempty" xml:"capabilities,omitempty" type:"Struct"`
+	// The model connection ID.
+	//
 	// example:
 	//
 	// mc-1
 	ConnectionId *string `json:"connectionId,omitempty" xml:"connectionId,omitempty"`
+	// The model context window size, in tokens. Must be a positive integer.
+	//
 	// example:
 	//
 	// 128000
 	ContextSize *int64 `json:"contextSize,omitempty" xml:"contextSize,omitempty"`
+	// The time when the resource was created, in RFC 3339 UTC format.
+	//
 	// example:
 	//
 	// 2026-08-09T00:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The model description. Maximum length: 255 characters.
+	//
 	// example:
 	//
 	// description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The maximum number of output tokens supported per model generation.
+	//
 	// example:
 	//
 	// 131072
 	MaxTokens *int64 `json:"maxTokens,omitempty" xml:"maxTokens,omitempty"`
+	// The model ID.
+	//
 	// example:
 	//
 	// model-1
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// The upstream model name.
+	//
 	// example:
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	// The time when the resource was last updated, in RFC 3339 UTC format.
+	//
 	// example:
 	//
 	// 2026-08-09T00:00:00Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-1
@@ -263,14 +292,22 @@ func (s *UpdateModelResponseBodyData) Validate() error {
 }
 
 type UpdateModelResponseBodyDataCapabilities struct {
-	Audio          *bool `json:"audio,omitempty" xml:"audio,omitempty"`
-	Document       *bool `json:"document,omitempty" xml:"document,omitempty"`
-	MultiToolCall  *bool `json:"multiToolCall,omitempty" xml:"multiToolCall,omitempty"`
-	Reasoning      *bool `json:"reasoning,omitempty" xml:"reasoning,omitempty"`
+	// Indicates whether the model supports audio input or output.
+	Audio *bool `json:"audio,omitempty" xml:"audio,omitempty"`
+	// Indicates whether the model supports document input.
+	Document *bool `json:"document,omitempty" xml:"document,omitempty"`
+	// Indicates whether the model is able to invoke multiple tool calling requests in a single response.
+	MultiToolCall *bool `json:"multiToolCall,omitempty" xml:"multiToolCall,omitempty"`
+	// Indicates whether the model supports reasoning capabilities.
+	Reasoning *bool `json:"reasoning,omitempty" xml:"reasoning,omitempty"`
+	// Indicates whether the model supports streaming tool calling.
 	StreamToolCall *bool `json:"streamToolCall,omitempty" xml:"streamToolCall,omitempty"`
-	ToolCall       *bool `json:"toolCall,omitempty" xml:"toolCall,omitempty"`
-	Video          *bool `json:"video,omitempty" xml:"video,omitempty"`
-	Vision         *bool `json:"vision,omitempty" xml:"vision,omitempty"`
+	// Indicates whether the model supports tool calling.
+	ToolCall *bool `json:"toolCall,omitempty" xml:"toolCall,omitempty"`
+	// Indicates whether the model supports video input.
+	Video *bool `json:"video,omitempty" xml:"video,omitempty"`
+	// Indicates whether the model supports image input.
+	Vision *bool `json:"vision,omitempty" xml:"vision,omitempty"`
 }
 
 func (s UpdateModelResponseBodyDataCapabilities) String() string {
