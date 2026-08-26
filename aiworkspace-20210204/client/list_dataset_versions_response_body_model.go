@@ -30,7 +30,7 @@ type ListDatasetVersionsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The current page size.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListDatasetVersionsResponseBody struct {
 	//
 	// 0648C5BB-68D0-54D2-92A5-607135B8806B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of resources that match the filter conditions.
+	// The resource count that matches the conditional filter criteria.
 	//
 	// example:
 	//

@@ -501,6 +501,10 @@ func (client *Client) CreateDatasetWithContext(ctx context.Context, request *Cre
 		body["DataType"] = request.DataType
 	}
 
+	if !dara.IsNil(request.DatasetTaskRamRole) {
+		body["DatasetTaskRamRole"] = request.DatasetTaskRamRole
+	}
+
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
 	}
@@ -565,6 +569,10 @@ func (client *Client) CreateDatasetWithContext(ctx context.Context, request *Cre
 		body["UserId"] = request.UserId
 	}
 
+	if !dara.IsNil(request.UserMetricsEndpoints) {
+		body["UserMetricsEndpoints"] = request.UserMetricsEndpoints
+	}
+
 	if !dara.IsNil(request.VersionDescription) {
 		body["VersionDescription"] = request.VersionDescription
 	}
@@ -603,7 +611,7 @@ func (client *Client) CreateDatasetWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Creates file metadata records for a dataset in a batch.
+// Creates file metadata records in a dataset in batches.
 //
 // @param request - CreateDatasetFileMetasRequest
 //
@@ -868,6 +876,10 @@ func (client *Client) CreateDatasetVersionWithContext(ctx context.Context, Datas
 		body["DataSourceType"] = request.DataSourceType
 	}
 
+	if !dara.IsNil(request.DatasetTaskRamRole) {
+		body["DatasetTaskRamRole"] = request.DatasetTaskRamRole
+	}
+
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
 	}
@@ -898,6 +910,10 @@ func (client *Client) CreateDatasetVersionWithContext(ctx context.Context, Datas
 
 	if !dara.IsNil(request.Uri) {
 		body["Uri"] = request.Uri
+	}
+
+	if !dara.IsNil(request.UserMetricsEndpoints) {
+		body["UserMetricsEndpoints"] = request.UserMetricsEndpoints
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1783,7 +1799,7 @@ func (client *Client) CreateWorkspaceResourceWithContext(ctx context.Context, Wo
 
 // Summary:
 //
-// Creates a workspace role.
+// Adds a workspace role.
 //
 // @param request - CreateWorkspaceRoleRequest
 //
@@ -3334,7 +3350,7 @@ func (client *Client) GetDatasetJobConfigWithContext(ctx context.Context, Datase
 
 // Summary:
 //
-// Retrieves information about a specific dataset version.
+// Retrieves the information of a specified dataset version.
 //
 // @param request - GetDatasetVersionRequest
 //
@@ -4602,7 +4618,7 @@ func (client *Client) ListDatasetVersionsWithContext(ctx context.Context, Datase
 
 // Summary:
 //
-// Lists the datasets in a workspace.
+// Retrieves the list of datasets in a specified workspace.
 //
 // @param request - ListDatasetsRequest
 //
@@ -6943,7 +6959,7 @@ func (client *Client) UpdateDatasetJobConfigWithContext(ctx context.Context, Dat
 
 // Summary:
 //
-// Updates the information for a specific version of a dataset.
+// Updates the information of a specified dataset version.
 //
 // @param request - UpdateDatasetVersionRequest
 //
@@ -6968,12 +6984,20 @@ func (client *Client) UpdateDatasetVersionWithContext(ctx context.Context, Datas
 		body["DataSize"] = request.DataSize
 	}
 
+	if !dara.IsNil(request.DatasetTaskRamRole) {
+		body["DatasetTaskRamRole"] = request.DatasetTaskRamRole
+	}
+
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
 	}
 
 	if !dara.IsNil(request.Options) {
 		body["Options"] = request.Options
+	}
+
+	if !dara.IsNil(request.UserMetricsEndpoints) {
+		body["UserMetricsEndpoints"] = request.UserMetricsEndpoints
 	}
 
 	req := &openapiutil.OpenApiRequest{

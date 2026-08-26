@@ -17,6 +17,8 @@ type iGetDatasetVersionResponseBody interface {
 	GetDataSourceType() *string
 	SetDatasetId(v string) *GetDatasetVersionResponseBody
 	GetDatasetId() *string
+	SetDatasetTaskRamRole(v string) *GetDatasetVersionResponseBody
+	GetDatasetTaskRamRole() *string
 	SetDescription(v string) *GetDatasetVersionResponseBody
 	GetDescription() *string
 	SetGmtCreateTime(v string) *GetDatasetVersionResponseBody
@@ -41,24 +43,26 @@ type iGetDatasetVersionResponseBody interface {
 	GetSourceType() *string
 	SetUri(v string) *GetDatasetVersionResponseBody
 	GetUri() *string
+	SetUserMetricsEndpoints(v []*UserMetricsEndpoint) *GetDatasetVersionResponseBody
+	GetUserMetricsEndpoints() []*UserMetricsEndpoint
 	SetVersionName(v string) *GetDatasetVersionResponseBody
 	GetVersionName() *string
 }
 
 type GetDatasetVersionResponseBody struct {
-	// The number of data entries.
+	// The data volume.
 	//
 	// example:
 	//
 	// 10000
 	DataCount *int64 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
-	// The size of the dataset.
+	// The dataset size.
 	//
 	// example:
 	//
 	// 10000
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// The type of the data source.
+	// The data source type.
 	//
 	// This parameter is required.
 	//
@@ -66,47 +70,49 @@ type GetDatasetVersionResponseBody struct {
 	//
 	// OSS
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// The ID of the dataset.
+	// The primary resource ID.
 	//
 	// example:
 	//
 	// d-dkdbnnap0g7b6su4yg
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The description of the version.
+	// DatasetTaskRamRole
+	//
+	// example:
+	//
+	// acs:ram::1234567890123456:role/role-name
+	DatasetTaskRamRole *string `json:"DatasetTaskRamRole,omitempty" xml:"DatasetTaskRamRole,omitempty"`
+	// The version description.
 	//
 	// example:
 	//
 	// This is a description of the dataset version.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the dataset version was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2023-12-13T10:22:05.694Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time when the dataset version was last modified.
+	// The last modification time.
 	//
 	// example:
 	//
 	// 2023-12-13T10:22:05.694Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The storage import configuration of the dataset. Supported storage services include OSS, NAS, and CPFS.
+	// The storage import configuration of the dataset. OSS, NAS, and CPFS are supported.
 	//
 	// <details>
 	//
-	// <summary>
-	//
-	// OSS
-	//
-	// </summary>
+	// <summary>OSS</summary>
 	//
 	// {
 	//
-	// "region": "${region}",// Region ID
+	// "region": "${region}",//The region ID.
 	//
-	// "bucket": "${bucket}",// Bucket name
+	// "bucket": "${bucket}",//The bucket name.
 	//
-	// "path": "${path}" // File path
+	// "path": "${path}" //The file path.
 	//
 	// }
 	//
@@ -114,33 +120,22 @@ type GetDatasetVersionResponseBody struct {
 	//
 	// <details>
 	//
-	// <summary>
-	//
-	// NAS
-	//
-	// </summary>
+	// <summary>NAS</summary>
 	//
 	// </details>
 	//
 	// <details>
 	//
-	// <summary>
-	//
-	// CPFS
-	//
-	// </summary>
+	// <summary>CPFS</summary>
 	//
 	// Block content
 	//
 	// </details>
 	//
+	//
 	// <details>
 	//
-	// <summary>
-	//
-	// AI Computing CPFS
-	//
-	// </summary>
+	// <summary>Intelligent computing CPFS</summary>
 	//
 	// Block content
 	//
@@ -162,19 +157,19 @@ type GetDatasetVersionResponseBody struct {
 	//
 	// }
 	ImportInfo *string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
-	// The tags of the resource.
+	// The resource labels.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The access permissions when the dataset is mounted.
+	// The permission when the dataset is mounted. Valid values:
 	//
-	// - RO: Read-only mount
+	// - RO: read-only mount
 	//
-	// - RW: Read-write mount
+	// - RW: read and write mount
 	//
 	// example:
 	//
 	// RO
 	MountAccess *string `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
-	// Additional options.
+	// The extension field.
 	//
 	// example:
 	//
@@ -192,33 +187,34 @@ type GetDatasetVersionResponseBody struct {
 	//
 	// DIRECTORY
 	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
 	// C55DF3DA-F120-5E37-A374-F49365531701
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the dataset source.
+	// The dataset source ID.
 	//
 	// example:
 	//
 	// d-rbvg5wzljzjhc9ks92
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The source type.
+	// The data source type.
 	//
 	// example:
 	//
 	// USER
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The URI of the dataset version.
+	// The URI configuration example.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://ai4d-br7hx9ngzelo2o6uip.oss-cn-shanghai.aliyuncs.com/365349/data-1157703270994901/datasets/aka108o/
-	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	// The name of the dataset version.
+	Uri                  *string                `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	UserMetricsEndpoints []*UserMetricsEndpoint `json:"UserMetricsEndpoints,omitempty" xml:"UserMetricsEndpoints,omitempty" type:"Repeated"`
+	// The dataset version.
 	//
 	// example:
 	//
@@ -248,6 +244,10 @@ func (s *GetDatasetVersionResponseBody) GetDataSourceType() *string {
 
 func (s *GetDatasetVersionResponseBody) GetDatasetId() *string {
 	return s.DatasetId
+}
+
+func (s *GetDatasetVersionResponseBody) GetDatasetTaskRamRole() *string {
+	return s.DatasetTaskRamRole
 }
 
 func (s *GetDatasetVersionResponseBody) GetDescription() *string {
@@ -298,6 +298,10 @@ func (s *GetDatasetVersionResponseBody) GetUri() *string {
 	return s.Uri
 }
 
+func (s *GetDatasetVersionResponseBody) GetUserMetricsEndpoints() []*UserMetricsEndpoint {
+	return s.UserMetricsEndpoints
+}
+
 func (s *GetDatasetVersionResponseBody) GetVersionName() *string {
 	return s.VersionName
 }
@@ -319,6 +323,11 @@ func (s *GetDatasetVersionResponseBody) SetDataSourceType(v string) *GetDatasetV
 
 func (s *GetDatasetVersionResponseBody) SetDatasetId(v string) *GetDatasetVersionResponseBody {
 	s.DatasetId = &v
+	return s
+}
+
+func (s *GetDatasetVersionResponseBody) SetDatasetTaskRamRole(v string) *GetDatasetVersionResponseBody {
+	s.DatasetTaskRamRole = &v
 	return s
 }
 
@@ -382,6 +391,11 @@ func (s *GetDatasetVersionResponseBody) SetUri(v string) *GetDatasetVersionRespo
 	return s
 }
 
+func (s *GetDatasetVersionResponseBody) SetUserMetricsEndpoints(v []*UserMetricsEndpoint) *GetDatasetVersionResponseBody {
+	s.UserMetricsEndpoints = v
+	return s
+}
+
 func (s *GetDatasetVersionResponseBody) SetVersionName(v string) *GetDatasetVersionResponseBody {
 	s.VersionName = &v
 	return s
@@ -390,6 +404,15 @@ func (s *GetDatasetVersionResponseBody) SetVersionName(v string) *GetDatasetVers
 func (s *GetDatasetVersionResponseBody) Validate() error {
 	if s.Labels != nil {
 		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserMetricsEndpoints != nil {
+		for _, item := range s.UserMetricsEndpoints {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err

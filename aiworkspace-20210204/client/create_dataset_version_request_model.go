@@ -15,6 +15,8 @@ type iCreateDatasetVersionRequest interface {
 	GetDataSize() *int64
 	SetDataSourceType(v string) *CreateDatasetVersionRequest
 	GetDataSourceType() *string
+	SetDatasetTaskRamRole(v string) *CreateDatasetVersionRequest
+	GetDatasetTaskRamRole() *string
 	SetDescription(v string) *CreateDatasetVersionRequest
 	GetDescription() *string
 	SetImportInfo(v string) *CreateDatasetVersionRequest
@@ -31,30 +33,32 @@ type iCreateDatasetVersionRequest interface {
 	GetSourceType() *string
 	SetUri(v string) *CreateDatasetVersionRequest
 	GetUri() *string
+	SetUserMetricsEndpoints(v []*UserMetricsEndpoint) *CreateDatasetVersionRequest
+	GetUserMetricsEndpoints() []*UserMetricsEndpoint
 }
 
 type CreateDatasetVersionRequest struct {
-	// The number of files in the dataset.
+	// The number of dataset files.
 	//
 	// example:
 	//
 	// 300
 	DataCount *int64 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
-	// The size of the space occupied by the dataset files. Unit: bytes.
+	// The size of space occupied by dataset files. Unit: bytes.
 	//
 	// example:
 	//
 	// 19000
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// The type of the data source. If you specify multiple types, separate them with commas (,). Valid values:
+	// The data source type. Separate multiple values with commas (,). Valid values:
 	//
-	// - NAS: The data is stored in Alibaba Cloud File Storage (NAS).
+	// - NAS: Alibaba Cloud Network Attached Storage (NAS).
 	//
-	// - OSS: The data is stored in Alibaba Cloud Object Storage Service (OSS).
+	// - OSS: Alibaba Cloud Object Storage Service (OSS).
 	//
 	// - CPFS
 	//
-	// Note: The DataSourceType of the version must be the same as the DataSourceType of the dataset. The system verifies this consistency when you create the version.
+	// > The DataSourceType of the version must be consistent with the DataSourceType of the dataset. Validation is performed against the dataset when a version is created.
 	//
 	// This parameter is required.
 	//
@@ -62,101 +66,92 @@ type CreateDatasetVersionRequest struct {
 	//
 	// OSS
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// A custom description for the dataset version. This helps distinguish different dataset versions.
+	// UserMetricsEndpoints
+	//
+	// example:
+	//
+	// acs:ram::1234567890123456:role/role-name
+	DatasetTaskRamRole *string `json:"DatasetTaskRamRole,omitempty" xml:"DatasetTaskRamRole,omitempty"`
+	// The custom description of the dataset version, used to distinguish different dataset versions.
 	//
 	// example:
 	//
 	// This is a description of the dataset version.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The storage import configuration of the dataset. Supported storage types include OSS, NAS, and CPFS.
+	// The storage import configuration of the dataset. OSS, NAS, and CPFS are supported.
 	//
 	// <details>
 	//
-	// <summary>
+	// <summary>OSS</summary>
 	//
-	// OSS
+	// {<BR>
 	//
-	// </summary>
+	//   "region": "${region}",//Region ID<BR>
 	//
-	// {<br>
+	//   "bucket": "${bucket}",//Bucket name<BR>
 	//
-	// "region": "${region}",// The region ID.<br>
+	//   "path": "${path}" //File path<BR>
 	//
-	// "bucket": "${bucket}",// The bucket name.<br>
-	//
-	// "path": "${path}" // The file path.<br>
-	//
-	// }
+	// }<BR>
 	//
 	// </details>
 	//
 	// <details>
 	//
-	// <summary>
+	// <summary>NAS</summary>
 	//
-	// NAS
+	// {<BR>
 	//
-	// </summary>
+	//   "region": "${region}",//Region ID<BR>
 	//
-	// {<br>
+	//   "fileSystemId": "${file_system_id}", //File system ID<BR>
 	//
-	// "region": "${region}",// The region ID.<br>
+	//   "path": "${path}", //File system path<BR>
 	//
-	// "fileSystemId": "${file_system_id}", // The file system ID.<br>
+	//   "mountTarget": "${mount_target}" //File system mount target<BR>
 	//
-	// "path": "${path}", // The file system path.<br>
+	// }<BR>
 	//
-	// "mountTarget": "${mount_target}" // The mount target of the file system.<br>
+	// </details>
 	//
-	// }
+	//
+	// <details>
+	//
+	// <summary>CPFS</summary>
+	//
+	// {<BR>
+	//
+	//   "region": "${region}",//Region ID<BR>
+	//
+	//   "fileSystemId": "${file_system_id}", //File system ID<BR>
+	//
+	//   "protocolServiceId":"${protocol_service_id}", //File system protocol service<BR>
+	//
+	//   "exportId": "${export_id}", //File system export directory<BR>
+	//
+	//   "path": "${path}",  //File system path<BR>
+	//
+	// }<BR>
 	//
 	// </details>
 	//
 	// <details>
 	//
-	// <summary>
+	// <summary>Lingjun CPFS</summary>
 	//
-	// CPFS
+	// {<BR>
 	//
-	// </summary>
+	//   "region": "${region}",//Region ID<BR>
 	//
-	// {<br>
+	//   "fileSystemId": "${file_system_id}", //File system ID<BR>
 	//
-	// "region": "${region}",// The region ID.<br>
+	//   "path": "${path}",  //File system path<BR>
 	//
-	// "fileSystemId": "${file_system_id}", // The file system ID.<br>
+	//   "mountTarget": "${mount_target}" //File system mount target, specific to Lingjun edition<BR>
 	//
-	// "protocolServiceId":"${protocol_service_id}", // The protocol service of the file system.<br>
+	//   "isVpcMount": boolean, //Whether it is a VPC mount target, specific to Lingjun edition<BR>
 	//
-	// "exportId": "${export_id}", // The exported directory of the file system.<br>
-	//
-	// "path": "${path}", // The file system path.<br>
-	//
-	// }
-	//
-	// </details>
-	//
-	// <details>
-	//
-	// <summary>
-	//
-	// Intelligent Computing CPFS
-	//
-	// </summary>
-	//
-	// {<br>
-	//
-	// "region": "${region}",// The region ID.<br>
-	//
-	// "fileSystemId": "${file_system_id}", // The file system ID.<br>
-	//
-	// "path": "${path}", // The file system path.<br>
-	//
-	// "mountTarget": "${mount_target}", // The mount target of the file system. This parameter is specific to the Intelligent Computing edition.<br>
-	//
-	// "isVpcMount": boolean, // Specifies whether the mount target is in a VPC. This parameter is specific to the Intelligent Computing edition.<br>
-	//
-	// }
+	// }<BR>
 	//
 	// </details>
 	//
@@ -176,11 +171,11 @@ type CreateDatasetVersionRequest struct {
 	//
 	// }
 	ImportInfo *string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
-	// A list of tags for the dataset version.
+	// The list of dataset version labels.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The extended field, which is a JSON string.
+	// The extended field in JsonString format.
 	//
-	// When DLC uses the dataset, you can configure the mountPath field to specify the default mount path for the dataset.
+	// When DLC uses a dataset, you can specify the default mount path of the dataset by configuring the mountPath field.
 	//
 	// example:
 	//
@@ -192,9 +187,9 @@ type CreateDatasetVersionRequest struct {
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// The property of the dataset. Valid values:
 	//
-	// - FILE: A file.
+	// - FILE: file.
 	//
-	// - DIRECTORY: A folder.
+	// - DIRECTORY: folder.
 	//
 	// This parameter is required.
 	//
@@ -202,50 +197,51 @@ type CreateDatasetVersionRequest struct {
 	//
 	// DIRECTORY
 	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
-	// The ID of the data source.
+	// The data source ID.
 	//
-	// - If SourceType is set to USER, you can customize the SourceId.
+	// - If SourceType is USER, SourceId can be customized.
 	//
-	// - If SourceType is set to ITAG, which indicates a dataset generated from the annotation results of the iTAG module, SourceId is the task ID from iTAG.
+	// - If SourceType is ITAG, which indicates a dataset generated from iTAG annotation results, SourceId is the iTAG task ID.
 	//
-	// - If SourceType is set to PAI_PUBLIC_DATASET, which indicates a dataset created from a public PAI dataset, SourceId is empty by default.
+	// - If SourceType is PAI_PUBLIC_DATASET, which indicates a dataset created from a PAI public dataset, SourceId is empty by default.
 	//
 	// example:
 	//
 	// d-a0xbe5n03bhqof46ce
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The type of the data source. The default value is USER. Valid values:
+	// The data source type. Default value: USER. Valid values:
 	//
-	// - PAI-PUBLIC-DATASET: a public dataset from PAI.
+	// - PAI-PUBLIC-DATASET: PAI public dataset.
 	//
-	// - ITAG: a dataset generated from the annotation results of the iTAG module.
+	// - ITAG: dataset generated from iTAG annotation results.
 	//
-	// - USER: a dataset registered by a user.
+	// - USER: user-registered dataset.
 	//
 	// example:
 	//
 	// USER
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The following examples show how to configure the URI:
+	// Examples of Uri configurations:
 	//
 	// - If the data source type is OSS: `oss://bucket.endpoint/object`
 	//
 	// - If the data source type is NAS:
 	//
-	//   The format for a general-purpose NAS file system is `nas://<nasfisid>.region/subpath/to/dir/`.
+	// General-purpose NAS format: `nas://<nasfisid>.region/subpath/to/dir/`;
 	//
-	//   CPFS 1.0: `nas://<cpfs-fsid>.region/subpath/to/dir/`.
+	// CPFS 1.0: `nas://<cpfs-fsid>.region/subpath/to/dir/`;
 	//
-	//   CPFS 2.0: `nas://<cpfs-fsid>.region/<protocolserviceid>/`.
+	// CPFS 2.0: `nas://<cpfs-fsid>.region/<protocolserviceid>/`.
 	//
-	//   CPFS 1.0 and CPFS 2.0 are distinguished by the format of the fsid. The format for CPFS 1.0 is cpfs-<8 ASCII characters>. The format for CPFS 2.0 is cpfs-<16 ASCII characters>.
+	// CPFS 1.0 and CPFS 2.0 are distinguished by the format of the fsid: CPFS 1.0 format is cpfs-<8 ASCII characters>; CPFS 2.0 format is cpfs-<16 ASCII characters>.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/
-	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	Uri                  *string                `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	UserMetricsEndpoints []*UserMetricsEndpoint `json:"UserMetricsEndpoints,omitempty" xml:"UserMetricsEndpoints,omitempty" type:"Repeated"`
 }
 
 func (s CreateDatasetVersionRequest) String() string {
@@ -266,6 +262,10 @@ func (s *CreateDatasetVersionRequest) GetDataSize() *int64 {
 
 func (s *CreateDatasetVersionRequest) GetDataSourceType() *string {
 	return s.DataSourceType
+}
+
+func (s *CreateDatasetVersionRequest) GetDatasetTaskRamRole() *string {
+	return s.DatasetTaskRamRole
 }
 
 func (s *CreateDatasetVersionRequest) GetDescription() *string {
@@ -300,6 +300,10 @@ func (s *CreateDatasetVersionRequest) GetUri() *string {
 	return s.Uri
 }
 
+func (s *CreateDatasetVersionRequest) GetUserMetricsEndpoints() []*UserMetricsEndpoint {
+	return s.UserMetricsEndpoints
+}
+
 func (s *CreateDatasetVersionRequest) SetDataCount(v int64) *CreateDatasetVersionRequest {
 	s.DataCount = &v
 	return s
@@ -312,6 +316,11 @@ func (s *CreateDatasetVersionRequest) SetDataSize(v int64) *CreateDatasetVersion
 
 func (s *CreateDatasetVersionRequest) SetDataSourceType(v string) *CreateDatasetVersionRequest {
 	s.DataSourceType = &v
+	return s
+}
+
+func (s *CreateDatasetVersionRequest) SetDatasetTaskRamRole(v string) *CreateDatasetVersionRequest {
+	s.DatasetTaskRamRole = &v
 	return s
 }
 
@@ -355,9 +364,23 @@ func (s *CreateDatasetVersionRequest) SetUri(v string) *CreateDatasetVersionRequ
 	return s
 }
 
+func (s *CreateDatasetVersionRequest) SetUserMetricsEndpoints(v []*UserMetricsEndpoint) *CreateDatasetVersionRequest {
+	s.UserMetricsEndpoints = v
+	return s
+}
+
 func (s *CreateDatasetVersionRequest) Validate() error {
 	if s.Labels != nil {
 		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserMetricsEndpoints != nil {
+		for _, item := range s.UserMetricsEndpoints {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err

@@ -34,13 +34,13 @@ type iDatasetFileMetaContentCreate interface {
 }
 
 type DatasetFileMetaContentCreate struct {
-	// The comment on the file.
+	// The file comment.
 	//
 	// example:
 	//
 	// The first image file in the dataset.
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The MIME type of the file. It includes a type and a subtype.
+	// The MIME type of the file. Contains Type and SubType.
 	//
 	// This parameter is required.
 	//
@@ -48,13 +48,13 @@ type DatasetFileMetaContentCreate struct {
 	//
 	// image/jpeg
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The size of the file in bytes.
+	// The file size in bytes.
 	//
 	// example:
 	//
 	// 10000
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// The time when the file was created. The time is in ISO 8601 format.
+	// The file creation time in ISO 8601 format.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -62,7 +62,7 @@ type DatasetFileMetaContentCreate struct {
 	//
 	// 2025-01-12T14:36:01Z
 	FileCreateTime *string `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
-	// The fingerprint of the file. This value ensures the uniqueness of the file content and changes if the content is modified. For OSS files, this is the ETag. For NAS files, this is the MD5 value.
+	// The file fingerprint value. Used to determine the uniqueness of file content. This value changes when the file content is modified. OSS files use ETag, and NAS files use MD5 values.
 	//
 	// This parameter is required.
 	//
@@ -70,13 +70,13 @@ type DatasetFileMetaContentCreate struct {
 	//
 	// D41D8CD98F*****E9800998ECF8
 	FileFingerPrint *string `json:"FileFingerPrint,omitempty" xml:"FileFingerPrint,omitempty"`
-	// The name of the file.
+	// The file name.
 	//
 	// example:
 	//
 	// 00001.jpeg
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The type of the file. This is the same as the Multipurpose Internet Mail Extensions (MIME) type.
+	// The file type. Same as MIME Type.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,7 @@ type DatasetFileMetaContentCreate struct {
 	//
 	// image
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The time when the file was last modified. The time is in ISO 8601 format.
+	// The last modification time of the file in ISO 8601 format.
 	//
 	// This parameter is required.
 	//
@@ -94,33 +94,39 @@ type DatasetFileMetaContentCreate struct {
 	//
 	// 2025-01-12T14:36:01Z
 	FileUpdateTime *string `json:"FileUpdateTime,omitempty" xml:"FileUpdateTime,omitempty"`
-	// The specific metadata of the file. This metadata cannot be used for retrieval. The value must be a JSON string.
+	// The specific metadata of the file, not searchable. In JSON string format.
 	//
 	// example:
 	//
 	// {
 	//
-	//     "Image":
+	//     "ImageHeight": 1080,
 	//
-	//     {
+	//     "ImageWidth": 1920
 	//
-	//         "Width": 1920,
+	// }
+	MetaAttributes *string `json:"MetaAttributes,omitempty" xml:"MetaAttributes,omitempty"`
+	// User manual tagging: (add indicates adding tags to the tag group). In JSON string format.
 	//
-	//         "Height": 1080,
+	// The operable tag groups are:
 	//
-	//         "Channel": 3
+	// - user: The list of tag names manually added by the user for a single metadata entry.
+	//
+	// ```
+	//
+	// {
+	//
+	//     "user":{
+	//
+	//         "add":["lane_line","sunny"]
 	//
 	//     }
 	//
 	// }
-	MetaAttributes *string `json:"MetaAttributes,omitempty" xml:"MetaAttributes,omitempty"`
-	// The tags that are manually added by users. The \\`add\\` operation is used to add tags to a tag group. The value must be a JSON string.
-	//
-	// The following tag group is available:
-	//
-	// - user: A list of tag names added to a single piece of metadata.
 	//
 	// ```
+	//
+	// example:
 	//
 	// {
 	//
@@ -131,36 +137,22 @@ type DatasetFileMetaContentCreate struct {
 	//     }
 	//
 	// }
-	//
-	// ```
-	//
-	// example:
-	//
-	// {"user":["cat", "White"]}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The unique URI of the file. This URI records the unique path of the file. The path can be an OSS or NAS path.
+	// The unique URI of the file. Used to record the unique file path. Supports file paths in OSS and NAS.
 	//
 	// <details>
 	//
-	// <summary>
+	// <summary>OSS</summary>
 	//
-	// OSS
-	//
-	// </summary>
-	//
-	// oss\\://${bucket}/${path}
+	// oss://${bucket}/${path}
 	//
 	// </details>
 	//
 	// <details>
 	//
-	// <summary>
+	// <summary>NAS</summary>
 	//
-	// NAS
-	//
-	// </summary>
-	//
-	// nas\\://${fileSystemId}/${path}
+	// nas://${fileSystemId}/${path}
 	//
 	// </details>
 	//

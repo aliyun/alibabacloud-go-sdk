@@ -22,7 +22,7 @@ type CreateDatasetVersionResponseBody struct {
 	//
 	// 41A847C8-3D12-5F24-8CE9-7F9EB2DA9ECD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the dataset version.
+	// The dataset version name.
 	//
 	// example:
 	//

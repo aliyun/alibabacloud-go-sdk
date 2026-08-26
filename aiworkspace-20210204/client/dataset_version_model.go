@@ -15,6 +15,8 @@ type iDatasetVersion interface {
 	GetDataSize() *int64
 	SetDataSourceType(v string) *DatasetVersion
 	GetDataSourceType() *string
+	SetDatasetTaskRamRole(v string) *DatasetVersion
+	GetDatasetTaskRamRole() *string
 	SetDescription(v string) *DatasetVersion
 	GetDescription() *string
 	SetGmtCreateTime(v string) *DatasetVersion
@@ -37,48 +39,56 @@ type iDatasetVersion interface {
 	GetSourceType() *string
 	SetUri(v string) *DatasetVersion
 	GetUri() *string
+	SetUserMetricsEndpoints(v []*UserMetricsEndpoint) *DatasetVersion
+	GetUserMetricsEndpoints() []*UserMetricsEndpoint
 	SetVersionName(v string) *DatasetVersion
 	GetVersionName() *string
 }
 
 type DatasetVersion struct {
-	// The total number of data items in the version.
+	// DataCount
 	//
 	// example:
 	//
 	// 10000
 	DataCount *int64 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
-	// The total size of the data in the version, in bytes.
+	// DataSize
 	//
 	// example:
 	//
 	// 10000
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// The data source type. For example, the value `OSS` indicates Object Storage Service.
+	// DataSourceType
 	//
 	// example:
 	//
 	// OSS
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// A custom description for the dataset version.
+	// DatasetTaskRamRole
+	//
+	// example:
+	//
+	// acs:ram::1234567890123456:role/role-name
+	DatasetTaskRamRole *string `json:"DatasetTaskRamRole,omitempty" xml:"DatasetTaskRamRole,omitempty"`
+	// Description
 	//
 	// example:
 	//
 	// base model v1
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The creation time of the dataset version, in UTC.
+	// create time
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The time the dataset version was last modified, in UTC.
+	// modify time
 	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// Information about the import source, in JSON format.
+	// ImportInfo
 	//
 	// example:
 	//
@@ -96,15 +106,15 @@ type DatasetVersion struct {
 	//
 	// }
 	ImportInfo *string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
-	// A list of labels applied to the dataset version.
+	// Labels
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The access permission for the mounted dataset. For example, `RO` means read-only.
+	// MountAccess
 	//
 	// example:
 	//
 	// RO
 	MountAccess *string `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
-	// Additional configurations for the dataset version, in JSON format.
+	// Options
 	//
 	// example:
 	//
@@ -114,31 +124,33 @@ type DatasetVersion struct {
 	//
 	// }
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// The data format of the dataset.
+	// property
 	//
 	// example:
 	//
 	// FILE
 	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
-	// The ID of the source from which the version was created.
+	// SourceId
 	//
 	// example:
 	//
 	// d-65mrsr5fub4u74lej3
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The method used to create the dataset version.
+	// SourceType
 	//
 	// example:
 	//
 	// USER
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The URI of the data source.
+	// Uri
 	//
 	// example:
 	//
 	// OSS://xxx
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	// The name of the dataset version.
+	// UserMetricsEndpoints
+	UserMetricsEndpoints []*UserMetricsEndpoint `json:"UserMetricsEndpoints,omitempty" xml:"UserMetricsEndpoints,omitempty" type:"Repeated"`
+	// version name
 	//
 	// example:
 	//
@@ -164,6 +176,10 @@ func (s *DatasetVersion) GetDataSize() *int64 {
 
 func (s *DatasetVersion) GetDataSourceType() *string {
 	return s.DataSourceType
+}
+
+func (s *DatasetVersion) GetDatasetTaskRamRole() *string {
+	return s.DatasetTaskRamRole
 }
 
 func (s *DatasetVersion) GetDescription() *string {
@@ -210,6 +226,10 @@ func (s *DatasetVersion) GetUri() *string {
 	return s.Uri
 }
 
+func (s *DatasetVersion) GetUserMetricsEndpoints() []*UserMetricsEndpoint {
+	return s.UserMetricsEndpoints
+}
+
 func (s *DatasetVersion) GetVersionName() *string {
 	return s.VersionName
 }
@@ -226,6 +246,11 @@ func (s *DatasetVersion) SetDataSize(v int64) *DatasetVersion {
 
 func (s *DatasetVersion) SetDataSourceType(v string) *DatasetVersion {
 	s.DataSourceType = &v
+	return s
+}
+
+func (s *DatasetVersion) SetDatasetTaskRamRole(v string) *DatasetVersion {
+	s.DatasetTaskRamRole = &v
 	return s
 }
 
@@ -284,6 +309,11 @@ func (s *DatasetVersion) SetUri(v string) *DatasetVersion {
 	return s
 }
 
+func (s *DatasetVersion) SetUserMetricsEndpoints(v []*UserMetricsEndpoint) *DatasetVersion {
+	s.UserMetricsEndpoints = v
+	return s
+}
+
 func (s *DatasetVersion) SetVersionName(v string) *DatasetVersion {
 	s.VersionName = &v
 	return s
@@ -292,6 +322,15 @@ func (s *DatasetVersion) SetVersionName(v string) *DatasetVersion {
 func (s *DatasetVersion) Validate() error {
 	if s.Labels != nil {
 		for _, item := range s.Labels {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UserMetricsEndpoints != nil {
+		for _, item := range s.UserMetricsEndpoints {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err

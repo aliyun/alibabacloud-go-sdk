@@ -20,7 +20,7 @@ type iCreateDatasetFileMetasResponseBody interface {
 }
 
 type CreateDatasetFileMetasResponseBody struct {
-	// A list of file metadata records that failed to be created.
+	// The list of file metadata entries that failed to be created.
 	FailedDetails []*DatasetFileMetaResponse `json:"FailedDetails,omitempty" xml:"FailedDetails,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -28,13 +28,13 @@ type CreateDatasetFileMetasResponseBody struct {
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the batch metadata creation. A value of \\`true\\` indicates that all records were created successfully. If the value is \\`false\\`, check \\`FailedDetails\\`.
+	// The status of the batch metadata creation result. A value of true indicates that all entries are created. If the value is false, check FailedDetails.
 	//
 	// example:
 	//
 	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
-	// A list of file metadata records that were successfully created.
+	// The list of file metadata entries that were created.
 	SucceedDetails []*DatasetFileMetaResponse `json:"SucceedDetails,omitempty" xml:"SucceedDetails,omitempty" type:"Repeated"`
 }
 

@@ -14,7 +14,7 @@ type iUpdateDatasetVersionResponseBody interface {
 }
 
 type UpdateDatasetVersionResponseBody struct {
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

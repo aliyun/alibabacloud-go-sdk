@@ -16,13 +16,13 @@ type iCreateDatasetResponseBody interface {
 }
 
 type CreateDatasetResponseBody struct {
-	// The ID of the dataset.
+	// The dataset ID.
 	//
 	// example:
 	//
 	// d-rbvg5*****jhc9ks92
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

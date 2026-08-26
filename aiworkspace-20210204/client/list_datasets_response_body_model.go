@@ -26,7 +26,7 @@ type ListDatasetsResponseBody struct {
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total count of datasets.
+	// The total number of entries returned.
 	//
 	// example:
 	//

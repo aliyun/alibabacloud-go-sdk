@@ -16,7 +16,7 @@ type iCreateWorkspaceRoleResponseBody interface {
 }
 
 type CreateWorkspaceRoleResponseBody struct {
-	// The job ID for the request.
+	// The task ID corresponding to the request.
 	//
 	// example:
 	//

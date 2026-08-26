@@ -72,7 +72,7 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-hongkong":                 dara.String("aiworkspace.cn-hongkong.aliyuncs.com"),
 		"cn-heyuan":                   dara.String("aiworkspace.cn-heyuan.aliyuncs.com"),
 		"cn-hangzhou":                 dara.String("aiworkspace.cn-hangzhou.aliyuncs.com"),
-		"cn-guangzhou":                dara.String("aiworkspace.cn-guangzhou.aliyuncs.com	"),
+		"cn-guangzhou":                dara.String("aiworkspace.cn-guangzhou.aliyuncs.com\t"),
 		"cn-beijing":                  dara.String("aiworkspace.cn-beijing.aliyuncs.com"),
 		"ap-southeast-8":              dara.String("aiworkspace.ap-southeast-8.aliyuncs.com"),
 		"ap-southeast-7":              dara.String("aiworkspace.ap-southeast-7.aliyuncs.com"),
@@ -750,6 +750,10 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, he
 		body["DataType"] = request.DataType
 	}
 
+	if !dara.IsNil(request.DatasetTaskRamRole) {
+		body["DatasetTaskRamRole"] = request.DatasetTaskRamRole
+	}
+
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
 	}
@@ -814,6 +818,10 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, he
 		body["UserId"] = request.UserId
 	}
 
+	if !dara.IsNil(request.UserMetricsEndpoints) {
+		body["UserMetricsEndpoints"] = request.UserMetricsEndpoints
+	}
+
 	if !dara.IsNil(request.VersionDescription) {
 		body["VersionDescription"] = request.VersionDescription
 	}
@@ -871,7 +879,7 @@ func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *Cre
 
 // Summary:
 //
-// Creates file metadata records for a dataset in a batch.
+// Creates file metadata records in a dataset in batches.
 //
 // @param request - CreateDatasetFileMetasRequest
 //
@@ -926,7 +934,7 @@ func (client *Client) CreateDatasetFileMetasWithOptions(DatasetId *string, reque
 
 // Summary:
 //
-// Creates file metadata records for a dataset in a batch.
+// Creates file metadata records in a dataset in batches.
 //
 // @param request - CreateDatasetFileMetasRequest
 //
@@ -1220,6 +1228,10 @@ func (client *Client) CreateDatasetVersionWithOptions(DatasetId *string, request
 		body["DataSourceType"] = request.DataSourceType
 	}
 
+	if !dara.IsNil(request.DatasetTaskRamRole) {
+		body["DatasetTaskRamRole"] = request.DatasetTaskRamRole
+	}
+
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
 	}
@@ -1250,6 +1262,10 @@ func (client *Client) CreateDatasetVersionWithOptions(DatasetId *string, request
 
 	if !dara.IsNil(request.Uri) {
 		body["Uri"] = request.Uri
+	}
+
+	if !dara.IsNil(request.UserMetricsEndpoints) {
+		body["UserMetricsEndpoints"] = request.UserMetricsEndpoints
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2409,7 +2425,7 @@ func (client *Client) CreateWorkspaceResource(WorkspaceId *string, request *Crea
 
 // Summary:
 //
-// Creates a workspace role.
+// Adds a workspace role.
 //
 // @param request - CreateWorkspaceRoleRequest
 //
@@ -2468,7 +2484,7 @@ func (client *Client) CreateWorkspaceRoleWithOptions(WorkspaceId *string, reques
 
 // Summary:
 //
-// Creates a workspace role.
+// Adds a workspace role.
 //
 // @param request - CreateWorkspaceRoleRequest
 //
@@ -4595,7 +4611,7 @@ func (client *Client) GetDatasetJobConfig(DatasetId *string, DatasetJobConfigId 
 
 // Summary:
 //
-// Retrieves information about a specific dataset version.
+// Retrieves the information of a specified dataset version.
 //
 // @param request - GetDatasetVersionRequest
 //
@@ -4636,7 +4652,7 @@ func (client *Client) GetDatasetVersionWithOptions(DatasetId *string, VersionNam
 
 // Summary:
 //
-// Retrieves information about a specific dataset version.
+// Retrieves the information of a specified dataset version.
 //
 // @param request - GetDatasetVersionRequest
 //
@@ -6243,7 +6259,7 @@ func (client *Client) ListDatasetVersions(DatasetId *string, request *ListDatase
 
 // Summary:
 //
-// Lists the datasets in a workspace.
+// Retrieves the list of datasets in a specified workspace.
 //
 // @param request - ListDatasetsRequest
 //
@@ -6358,7 +6374,7 @@ func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, head
 
 // Summary:
 //
-// Lists the datasets in a workspace.
+// Retrieves the list of datasets in a specified workspace.
 //
 // @param request - ListDatasetsRequest
 //
@@ -9291,7 +9307,7 @@ func (client *Client) UpdateDatasetJobConfig(DatasetId *string, DatasetJobConfig
 
 // Summary:
 //
-// Updates the information for a specific version of a dataset.
+// Updates the information of a specified dataset version.
 //
 // @param request - UpdateDatasetVersionRequest
 //
@@ -9316,12 +9332,20 @@ func (client *Client) UpdateDatasetVersionWithOptions(DatasetId *string, Version
 		body["DataSize"] = request.DataSize
 	}
 
+	if !dara.IsNil(request.DatasetTaskRamRole) {
+		body["DatasetTaskRamRole"] = request.DatasetTaskRamRole
+	}
+
 	if !dara.IsNil(request.Description) {
 		body["Description"] = request.Description
 	}
 
 	if !dara.IsNil(request.Options) {
 		body["Options"] = request.Options
+	}
+
+	if !dara.IsNil(request.UserMetricsEndpoints) {
+		body["UserMetricsEndpoints"] = request.UserMetricsEndpoints
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -9350,7 +9374,7 @@ func (client *Client) UpdateDatasetVersionWithOptions(DatasetId *string, Version
 
 // Summary:
 //
-// Updates the information for a specific version of a dataset.
+// Updates the information of a specified dataset version.
 //
 // @param request - UpdateDatasetVersionRequest
 //

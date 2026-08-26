@@ -30,29 +30,29 @@ type iListDatasetVersionsRequest interface {
 }
 
 type ListDatasetVersionsRequest struct {
-	// The label keys used to filter the dataset list. Datasets are returned if their label keys contain the specified strings.
+	// The dataset label used to filter the dataset list. Datasets whose label key or value contains the specified string are returned.
 	//
 	// example:
 	//
 	// key1,key2
 	LabelKeys *string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty"`
-	// The label values used to filter the dataset list. Datasets are returned if their label values contain the specified strings.
+	// The dataset label used to filter the dataset list. Datasets whose label key or value contains the specified string are returned.
 	//
 	// example:
 	//
 	// value1,value2
 	LabelValues *string `json:"LabelValues,omitempty" xml:"LabelValues,omitempty"`
-	// The sort order for the paged query. The default value is ASC. Valid values:
+	// The order in which entries are sorted by the specified field in a paged query. Default value: ASC.
 	//
-	// - ASC: Ascending order.
+	// - ASC: ascending order.
 	//
-	// - DESC: Descending order.
+	// - DESC: descending order.
 	//
 	// example:
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. The value starts from 1. The default is 1.
+	// The page number of the dataset list. Minimum value: 1. Default value: 1.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type ListDatasetVersionsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. The default value is 10.
+	// The number of entries per page for a paged query. Default value: 10.
 	//
 	// This parameter is required.
 	//
@@ -68,21 +68,21 @@ type ListDatasetVersionsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The dataset properties. Valid values:
+	// The dataset property. Valid values:
 	//
-	// - DIRECTORY: Folder.
+	// - DIRECTORY: folder.
 	//
-	// - FILE: File.
+	// - FILE: file.
 	//
 	// example:
 	//
 	// DIRECTORY
 	Properties *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	// The field to use for sorting in a paged query. The default value is GmtCreateTime. Valid values:
+	// The field by which entries are sorted in a paged query. Default value: GmtCreateTime. Valid values:
 	//
-	// - GmtCreateTime (default): Creation time.
+	// - GmtCreateTime (default): sort by creation time.
 	//
-	// - GmtModifiedTime: Modification time.
+	// - GmtModifiedTime: sort by modification time.
 	//
 	// - SourceType
 	//
@@ -98,13 +98,13 @@ type ListDatasetVersionsRequest struct {
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The ID of the data source.
+	// The data source ID.
 	//
-	// - If SourceTypes is USER, you can specify a custom ID.
+	// - If SourceTypes is set to USER, SourceId can be customized.
 	//
-	// - If SourceTypes is ITAG, this is the ID of the iTAG annotation task.
+	// - If SourceTypes is set to ITAG, which indicates a dataset generated from iTAG labeling results, SourceId is the iTAG task ID.
 	//
-	// - If SourceTypes is PAI_PUBLIC_DATASET, this parameter is empty by default.
+	// - If SourceTypes is set to PAI_PUBLIC_DATASET, which indicates a dataset created from a PAI public dataset, SourceId is empty by default.
 	//
 	// example:
 	//
@@ -112,11 +112,11 @@ type ListDatasetVersionsRequest struct {
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	// The source type. Valid values:
 	//
-	// - PAI-PUBLIC-DATASET: A public dataset from PAI.
+	// - PAI-PUBLIC-DATASET: PAI public dataset.
 	//
-	// - ITAG: A dataset generated from the annotation results of the iTAG module.
+	// - ITAG: dataset generated from iTAG labeling results.
 	//
-	// - USER: A dataset registered by a user.
+	// - USER: dataset registered by a user.
 	//
 	// example:
 	//
