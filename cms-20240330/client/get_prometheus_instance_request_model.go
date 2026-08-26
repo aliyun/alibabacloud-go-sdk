@@ -16,7 +16,7 @@ type iGetPrometheusInstanceRequest interface {
 }
 
 type GetPrometheusInstanceRequest struct {
-	// The language. Default value: zh. Valid values: zh, en.
+	// The language. Default value: zh. Valid values: zh and en.
 	//
 	// example:
 	//

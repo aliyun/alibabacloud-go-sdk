@@ -76,39 +76,72 @@ type iConditionConfigUnified interface {
 }
 
 type ConditionConfigUnified struct {
-	Aggregate                 *string                              `json:"aggregate,omitempty" xml:"aggregate,omitempty"`
-	AlertCount                *int32                               `json:"alertCount,omitempty" xml:"alertCount,omitempty"`
-	CompareList               []*CompareList                       `json:"compareList,omitempty" xml:"compareList,omitempty" type:"Repeated"`
-	CompositeEscalation       *CloudMonitoringCompositeEscalation  `json:"compositeEscalation,omitempty" xml:"compositeEscalation,omitempty"`
-	CountOperator             *string                              `json:"countOperator,omitempty" xml:"countOperator,omitempty"`
-	CountThreshold            *int64                               `json:"countThreshold,omitempty" xml:"countThreshold,omitempty"`
-	DurationSecs              *int32                               `json:"durationSecs,omitempty" xml:"durationSecs,omitempty"`
-	EnableSeveritySuppression *bool                                `json:"enableSeveritySuppression,omitempty" xml:"enableSeveritySuppression,omitempty"`
-	EscalationType            *string                              `json:"escalationType,omitempty" xml:"escalationType,omitempty"`
-	ExpressEscalation         *CloudMonitoringExpressEscalation    `json:"expressEscalation,omitempty" xml:"expressEscalation,omitempty"`
-	LegacyRaw                 *string                              `json:"legacyRaw,omitempty" xml:"legacyRaw,omitempty"`
-	LegacyType                *string                              `json:"legacyType,omitempty" xml:"legacyType,omitempty"`
-	MatchField                *string                              `json:"matchField,omitempty" xml:"matchField,omitempty"`
-	MatchOperator             *string                              `json:"matchOperator,omitempty" xml:"matchOperator,omitempty"`
-	MatchValue                *string                              `json:"matchValue,omitempty" xml:"matchValue,omitempty"`
-	Max                       *float64                             `json:"max,omitempty" xml:"max,omitempty"`
-	Min                       *float64                             `json:"min,omitempty" xml:"min,omitempty"`
-	NoDataAlertLevel          *string                              `json:"noDataAlertLevel,omitempty" xml:"noDataAlertLevel,omitempty"`
-	NoDataAlertSeverity       *string                              `json:"noDataAlertSeverity,omitempty" xml:"noDataAlertSeverity,omitempty"`
-	NoDataAppendValue         *float64                             `json:"noDataAppendValue,omitempty" xml:"noDataAppendValue,omitempty"`
-	NoDataPolicy              *string                              `json:"noDataPolicy,omitempty" xml:"noDataPolicy,omitempty"`
-	Operator                  *string                              `json:"operator,omitempty" xml:"operator,omitempty"`
-	Prometheus                *CloudMonitoringPrometheusEscalation `json:"prometheus,omitempty" xml:"prometheus,omitempty"`
-	Relation                  *string                              `json:"relation,omitempty" xml:"relation,omitempty"`
-	Severity                  *string                              `json:"severity,omitempty" xml:"severity,omitempty"`
-	SimpleEscalation          *CloudMonitoringSimpleEscalation     `json:"simpleEscalation,omitempty" xml:"simpleEscalation,omitempty"`
-	Threshold                 *float64                             `json:"threshold,omitempty" xml:"threshold,omitempty"`
-	ThresholdList             []*ThresholdList                     `json:"thresholdList,omitempty" xml:"thresholdList,omitempty" type:"Repeated"`
-	Triggers                  []*Triggers                          `json:"triggers,omitempty" xml:"triggers,omitempty" type:"Repeated"`
+	// The aggregate functions (used by APM_SIMPLE_CONDITION. For UMODEL conditions, the aggregation semantics have been migrated to QueryConfigUnified and this field no longer takes effect).
+	Aggregate *string `json:"aggregate,omitempty" xml:"aggregate,omitempty"`
+	// The consecutive trigger count threshold (type=SLS_MULTI_CONDITION). An alert is fired only after the condition is met N times. Default value: 1.
+	AlertCount *int32 `json:"alertCount,omitempty" xml:"alertCount,omitempty"`
+	// The list of comparison conditions (APM_COMPOSITE_CONDITION).
+	CompareList []*CompareList `json:"compareList,omitempty" xml:"compareList,omitempty" type:"Repeated"`
+	// The multi-metric composite trigger configuration for CLOUD_MONITORING_CONDITION when escalationType=COMPOSITE (requires relation, severity, times, escalations).
+	CompositeEscalation *CloudMonitoringCompositeEscalation `json:"compositeEscalation,omitempty" xml:"compositeEscalation,omitempty"`
+	// The count comparison operator (type=UMODEL_LOGSET_CONDITION).
+	CountOperator *string `json:"countOperator,omitempty" xml:"countOperator,omitempty"`
+	// The count threshold (type=UMODEL_LOGSET_CONDITION).
+	CountThreshold *int64 `json:"countThreshold,omitempty" xml:"countThreshold,omitempty"`
+	// The duration in seconds. Used directly by PROMETHEUS_SIMPLE / UMODEL_METRICSET_CONDITION / UMODEL_LOGSET_CONDITION. For UMODEL_METRICSET_MULTI_CONDITION, this serves as the global default and can be overridden by the durationSecs field in each trigger.
+	DurationSecs *int32 `json:"durationSecs,omitempty" xml:"durationSecs,omitempty"`
+	// Specifies whether to enable severity suppression by highest level (type=UMODEL_METRICSET_MULTI_CONDITION / PROMETHEUS_MULTI_CONDITION). Default value: true. When enabled, only the highest severity trigger is reported for the same entity.
+	EnableSeveritySuppression *bool `json:"enableSeveritySuppression,omitempty" xml:"enableSeveritySuppression,omitempty"`
+	// The expression type for CLOUD_MONITORING_CONDITION: SIMPLE / COMPOSITE / EXPRESS / PROMETHEUS (write paths support only SIMPLE / COMPOSITE). Specify the corresponding escalation sub-object based on the type.
+	EscalationType *string `json:"escalationType,omitempty" xml:"escalationType,omitempty"`
+	// The expression-based trigger configuration for CLOUD_MONITORING_CONDITION when escalationType=EXPRESS (read path output only).
+	ExpressEscalation *CloudMonitoringExpressEscalation `json:"expressEscalation,omitempty" xml:"expressEscalation,omitempty"`
+	// The raw V1 condition JSON string returned when type=UNKNOWN_CONDITION and the read path fails to parse the condition. If this field is not empty, display it as read-only on the frontend.
+	LegacyRaw *string `json:"legacyRaw,omitempty" xml:"legacyRaw,omitempty"`
+	// Returned when type=UNKNOWN_CONDITION. Indicates that this rule cannot be edited through the new API. Submit a ticket to contact the CloudMonitor team.
+	LegacyType *string `json:"legacyType,omitempty" xml:"legacyType,omitempty"`
+	// The log field name (used when type=UMODEL_LOGSET_CONDITION and matchOperator=CONTAINS/EQUALS/REGEX).
+	MatchField *string `json:"matchField,omitempty" xml:"matchField,omitempty"`
+	// The log match operator (type=UMODEL_LOGSET_CONDITION).
+	MatchOperator *string `json:"matchOperator,omitempty" xml:"matchOperator,omitempty"`
+	// The log match value (used when type=UMODEL_LOGSET_CONDITION and matchOperator=CONTAINS/EQUALS/REGEX).
+	MatchValue *string `json:"matchValue,omitempty" xml:"matchValue,omitempty"`
+	// The upper bound of the range (used when UMODEL_METRICSET_CONDITION and operator=IN_RANGE/OUT_OF_RANGE).
+	Max *float64 `json:"max,omitempty" xml:"max,omitempty"`
+	// The lower bound of the range (used when UMODEL_METRICSET_CONDITION and operator=IN_RANGE/OUT_OF_RANGE).
+	Min *float64 `json:"min,omitempty" xml:"min,omitempty"`
+	// The no-data alert level (SLS_MULTI_CONDITION). APM and Prometheus conditions have migrated to noDataPolicy + noDataAlertSeverity.
+	NoDataAlertLevel *string `json:"noDataAlertLevel,omitempty" xml:"noDataAlertLevel,omitempty"`
+	// The no-data alert severity level (PROMETHEUS_SIMPLE_CONDITION / PROMETHEUS_MULTI_CONDITION, takes effect when noDataPolicy=NO_DATA_TO_ALERT). SLS_MULTI_CONDITION still uses noDataAlertLevel.
+	NoDataAlertSeverity *string `json:"noDataAlertSeverity,omitempty" xml:"noDataAlertSeverity,omitempty"`
+	// The value to append when no data is available (APM_SIMPLE_CONDITION / APM_COMPOSITE_CONDITION). Nullable.
+	NoDataAppendValue *float64 `json:"noDataAppendValue,omitempty" xml:"noDataAppendValue,omitempty"`
+	// The no-data handling policy (CLOUD_MONITORING_CONDITION / PROMETHEUS_MULTI_CONDITION / PROMETHEUS_SIMPLE_CONDITION / APM_SIMPLE_CONDITION / APM_COMPOSITE_CONDITION): NO_DATA_TO_OK / NO_DATA_TO_ALERT / KEEP_LAST_STATE / APPEND_VALUE (APM only).
+	NoDataPolicy *string `json:"noDataPolicy,omitempty" xml:"noDataPolicy,omitempty"`
+	// The comparison operator. For UMODEL_METRICSET_CONDITION: GT (greater than) / GE (greater than or equal to) / LT (less than) / LE (less than or equal to) / EQ (equal to) / NE (not equal to) / IN_RANGE (within range, requires min/max) / OUT_OF_RANGE (outside range, requires min/max) / PRESENT (field exists) / NOT_PRESENT (field does not exist). Not used by UMODEL_LOGSET_CONDITION. For APM_SIMPLE_CONDITION: GT/GTE/LT/LTE/EQ/NE/YOY_UP/YOY_DOWN (YOY_	- requires yoyTimeUnit/yoyTimeValue).
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// The PromQL-based trigger configuration for CLOUD_MONITORING_CONDITION when escalationType=PROMETHEUS (read path output only).
+	Prometheus *CloudMonitoringPrometheusEscalation `json:"prometheus,omitempty" xml:"prometheus,omitempty"`
+	// The logical relationship between conditions (APM_COMPOSITE_CONDITION).
+	Relation *string `json:"relation,omitempty" xml:"relation,omitempty"`
+	// The severity level (UMODEL_METRICSET_CONDITION / UMODEL_LOGSET_CONDITION / PROMETHEUS_SIMPLE / APM_COMPOSITE).
+	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
+	// The single-metric multi-level trigger configuration for CLOUD_MONITORING_CONDITION when escalationType=SIMPLE (requires metricName, period, escalations).
+	SimpleEscalation *CloudMonitoringSimpleEscalation `json:"simpleEscalation,omitempty" xml:"simpleEscalation,omitempty"`
+	// The threshold (used by UMODEL_METRICSET_CONDITION with non-range operators).
+	Threshold *float64 `json:"threshold,omitempty" xml:"threshold,omitempty"`
+	// The multi-threshold list (APM_SIMPLE_CONDITION).
+	ThresholdList []*ThresholdList `json:"thresholdList,omitempty" xml:"thresholdList,omitempty" type:"Repeated"`
+	// The list of triggers (polymorphic by type. CLOUD_MONITORING_CONDITION does not use this field. Use simpleEscalation.escalations / compositeEscalation.escalations instead). For SLS_MULTI_CONDITION, each case contains matchField / matchOperator / matchValue / countOperator / countThreshold / severity, with at least one required. For UMODEL_METRICSET_MULTI_CONDITION, each trigger contains severity, durationSecs, and an expression (SIMPLE/COMPOSITE). For PROMETHEUS_MULTI_CONDITION, each trigger contains severity, durationSecs, and an expression (SIMPLE/COMPOSITE). Triggers are sorted by severity priority, and the first match fires.
+	Triggers []*Triggers `json:"triggers,omitempty" xml:"triggers,omitempty" type:"Repeated"`
+	// The detection condition type. Valid values and their required fields: PROMETHEUS_SIMPLE_CONDITION (requires operator, threshold, durationSecs, severity). UMODEL_METRICSET_CONDITION (requires operator, durationSecs, severity. Non-range operators require threshold. operator=IN_RANGE/OUT_OF_RANGE requires min and max). UMODEL_LOGSET_CONDITION (requires matchOperator, durationSecs, severity. matchOperator=CONTAINS/EQUALS/REGEX requires matchField and matchValue. countOperator/countThreshold are optional). UMODEL_METRICSET_MULTI_CONDITION (requires triggers[*]. Optional durationSecs as global default, enableSeveritySuppression). APM_SIMPLE_CONDITION (requires operator, aggregate. Use thresholdList or threshold. operator=YOY_UP/YOY_DOWN requires yoyTimeUnit and yoyTimeValue. Optional noDataPolicy, noDataAppendValue). APM_COMPOSITE_CONDITION (requires compareList, relation, severity. Optional noDataPolicy, noDataAppendValue). CLOUD_MONITORING_CONDITION (requires escalationType. escalationType=SIMPLE requires simpleEscalation. escalationType=COMPOSITE requires compositeEscalation. Optional noDataPolicy). UNKNOWN_CONDITION (read-only fallback. Do not use in write paths). Do not use non-enumerated values such as SLS_CONDITION or CMS_BASIC_CONDITION. The backend returns an Invalidtype 400 error.
+	//
 	// This parameter is required.
-	Type         *string `json:"type,omitempty" xml:"type,omitempty"`
-	YoyTimeUnit  *string `json:"yoyTimeUnit,omitempty" xml:"yoyTimeUnit,omitempty"`
-	YoyTimeValue *int32  `json:"yoyTimeValue,omitempty" xml:"yoyTimeValue,omitempty"`
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The year-over-year time unit (APM_SIMPLE_CONDITION, takes effect only when operator=YOY_UP/YOY_DOWN).
+	YoyTimeUnit *string `json:"yoyTimeUnit,omitempty" xml:"yoyTimeUnit,omitempty"`
+	// The year-over-year time value (APM_SIMPLE_CONDITION, takes effect only when operator=YOY_UP/YOY_DOWN).
+	YoyTimeValue *int32 `json:"yoyTimeValue,omitempty" xml:"yoyTimeValue,omitempty"`
 }
 
 func (s ConditionConfigUnified) String() string {

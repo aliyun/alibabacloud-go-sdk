@@ -24,12 +24,18 @@ type iTriggerConditions interface {
 }
 
 type TriggerConditions struct {
-	ExpressionType *string  `json:"expressionType,omitempty" xml:"expressionType,omitempty"`
-	Max            *float64 `json:"max,omitempty" xml:"max,omitempty"`
-	Min            *float64 `json:"min,omitempty" xml:"min,omitempty"`
-	Operator       *string  `json:"operator,omitempty" xml:"operator,omitempty"`
-	QueryName      *string  `json:"queryName,omitempty" xml:"queryName,omitempty"`
-	Threshold      *float64 `json:"threshold,omitempty" xml:"threshold,omitempty"`
+	// The expression type, fixed as SIMPLE (used by MetricSet multi-threshold triggers).
+	ExpressionType *string `json:"expressionType,omitempty" xml:"expressionType,omitempty"`
+	// The upper bound of the range. Required when operator is IN_RANGE or OUT_OF_RANGE. Must be greater than or equal to min.
+	Max *float64 `json:"max,omitempty" xml:"max,omitempty"`
+	// The lower bound of the range. Required when operator is IN_RANGE or OUT_OF_RANGE.
+	Min *float64 `json:"min,omitempty" xml:"min,omitempty"`
+	// The comparison operator. Valid values: GT / GE / LT / LE / EQ / NE / IN_RANGE (requires both min and max) / OUT_OF_RANGE (requires both min and max) / PRESENT / NOT_PRESENT.
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// The referenced query name, corresponding to QueryConfigUnified.queries[].name.
+	QueryName *string `json:"queryName,omitempty" xml:"queryName,omitempty"`
+	// The comparison threshold. Used when operator is GT, GE, LT, LE, EQ, or NE. Use min and max for IN_RANGE or OUT_OF_RANGE. Leave empty for PRESENT or NOT_PRESENT.
+	Threshold *float64 `json:"threshold,omitempty" xml:"threshold,omitempty"`
 }
 
 func (s TriggerConditions) String() string {

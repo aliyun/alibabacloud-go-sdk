@@ -9,6 +9,10 @@ type iSlsMultiConditionCaseConfig interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCondition(v string) *SlsMultiConditionCaseConfig
+	GetCondition() *string
+	SetCountCondition(v string) *SlsMultiConditionCaseConfig
+	GetCountCondition() *string
 	SetCountOperator(v string) *SlsMultiConditionCaseConfig
 	GetCountOperator() *string
 	SetCountThreshold(v int64) *SlsMultiConditionCaseConfig
@@ -19,22 +23,46 @@ type iSlsMultiConditionCaseConfig interface {
 	GetMatchOperator() *string
 	SetMatchValue(v string) *SlsMultiConditionCaseConfig
 	GetMatchValue() *string
+	SetOperator(v string) *SlsMultiConditionCaseConfig
+	GetOperator() *string
+	SetRawCondition(v string) *SlsMultiConditionCaseConfig
+	GetRawCondition() *string
 	SetSeverity(v string) *SlsMultiConditionCaseConfig
 	GetSeverity() *string
 }
 
 type SlsMultiConditionCaseConfig struct {
-	// The count comparison operator. Valid values: GTE, GT, EQ, LTE, LT.
+	// The match expression (corresponds to V1 condition, preserved as-is without structured parsing).
+	Condition *string `json:"condition,omitempty" xml:"condition,omitempty"`
+	// The count match expression (corresponds to V1 countCondition, preserved as-is without structured parsing).
+	CountCondition *string `json:"countCondition,omitempty" xml:"countCondition,omitempty"`
+	// Deprecated
+	//
+	// **[Deprecated]*	- The write path is disabled. Use countCondition instead.
 	CountOperator *string `json:"countOperator,omitempty" xml:"countOperator,omitempty"`
-	// The count threshold. The alert is triggered when this threshold is met.
+	// Deprecated
+	//
+	// **[Deprecated]*	- The write path is disabled. Use countCondition instead.
 	CountThreshold *int64 `json:"countThreshold,omitempty" xml:"countThreshold,omitempty"`
-	// The log field name. Required when matchOperator is set to CONTAINS, EQUALS, or REGEX. Specify the field name when matchOperator is set to PRESENT or NOT_PRESENT.
+	// Deprecated
+	//
+	// **[Deprecated]*	- The write path is disabled. Use condition instead.
 	MatchField *string `json:"matchField,omitempty" xml:"matchField,omitempty"`
-	// The log matching operator. Valid values: PRESENT (field exists), NOT_PRESENT (field does not exist), CONTAINS (contains), EQUALS (equals), REGEX (regular expression). If left empty, any data matches.
+	// Deprecated
+	//
+	// **[Deprecated]*	- The write path is disabled. Use condition instead.
 	MatchOperator *string `json:"matchOperator,omitempty" xml:"matchOperator,omitempty"`
-	// The log match value. Required when matchOperator is set to CONTAINS, EQUALS, or REGEX.
+	// Deprecated
+	//
+	// **[Deprecated]*	- The write path is disabled. Use condition instead.
 	MatchValue *string `json:"matchValue,omitempty" xml:"matchValue,omitempty"`
-	// The severity level.
+	// The detection operator (aligned with V1 caseList.type): HAS_DATA / HAS_DATA_COUNT / HAS_DATA_MATCH / HAS_DATA_MATCH_COUNT.
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// Deprecated
+	//
+	// **[Deprecated]*	- The write path is disabled. Use condition instead.
+	RawCondition *string `json:"rawCondition,omitempty" xml:"rawCondition,omitempty"`
+	// The severity level (corresponds to V1 level).
 	Severity *string `json:"severity,omitempty" xml:"severity,omitempty"`
 }
 
@@ -44,6 +72,14 @@ func (s SlsMultiConditionCaseConfig) String() string {
 
 func (s SlsMultiConditionCaseConfig) GoString() string {
 	return s.String()
+}
+
+func (s *SlsMultiConditionCaseConfig) GetCondition() *string {
+	return s.Condition
+}
+
+func (s *SlsMultiConditionCaseConfig) GetCountCondition() *string {
+	return s.CountCondition
 }
 
 func (s *SlsMultiConditionCaseConfig) GetCountOperator() *string {
@@ -66,8 +102,26 @@ func (s *SlsMultiConditionCaseConfig) GetMatchValue() *string {
 	return s.MatchValue
 }
 
+func (s *SlsMultiConditionCaseConfig) GetOperator() *string {
+	return s.Operator
+}
+
+func (s *SlsMultiConditionCaseConfig) GetRawCondition() *string {
+	return s.RawCondition
+}
+
 func (s *SlsMultiConditionCaseConfig) GetSeverity() *string {
 	return s.Severity
+}
+
+func (s *SlsMultiConditionCaseConfig) SetCondition(v string) *SlsMultiConditionCaseConfig {
+	s.Condition = &v
+	return s
+}
+
+func (s *SlsMultiConditionCaseConfig) SetCountCondition(v string) *SlsMultiConditionCaseConfig {
+	s.CountCondition = &v
+	return s
 }
 
 func (s *SlsMultiConditionCaseConfig) SetCountOperator(v string) *SlsMultiConditionCaseConfig {
@@ -92,6 +146,16 @@ func (s *SlsMultiConditionCaseConfig) SetMatchOperator(v string) *SlsMultiCondit
 
 func (s *SlsMultiConditionCaseConfig) SetMatchValue(v string) *SlsMultiConditionCaseConfig {
 	s.MatchValue = &v
+	return s
+}
+
+func (s *SlsMultiConditionCaseConfig) SetOperator(v string) *SlsMultiConditionCaseConfig {
+	s.Operator = &v
+	return s
+}
+
+func (s *SlsMultiConditionCaseConfig) SetRawCondition(v string) *SlsMultiConditionCaseConfig {
+	s.RawCondition = &v
 	return s
 }
 

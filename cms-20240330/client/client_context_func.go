@@ -9015,6 +9015,10 @@ func (client *Client) UpdatePrometheusInstanceWithContext(ctx context.Context, p
 		body["storageDuration"] = request.StorageDuration
 	}
 
+	if !dara.IsNil(request.StoreConfig) {
+		body["storeConfig"] = request.StoreConfig
+	}
+
 	if !dara.IsNil(request.Workspace) {
 		body["workspace"] = request.Workspace
 	}

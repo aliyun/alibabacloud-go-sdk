@@ -12317,6 +12317,10 @@ func (client *Client) UpdatePrometheusInstanceWithOptions(prometheusInstanceId *
 		body["storageDuration"] = request.StorageDuration
 	}
 
+	if !dara.IsNil(request.StoreConfig) {
+		body["storeConfig"] = request.StoreConfig
+	}
+
 	if !dara.IsNil(request.Workspace) {
 		body["workspace"] = request.Workspace
 	}

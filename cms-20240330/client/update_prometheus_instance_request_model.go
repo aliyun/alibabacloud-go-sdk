@@ -29,14 +29,16 @@ type iUpdatePrometheusInstanceRequest interface {
 	GetStatus() *string
 	SetStorageDuration(v int) *UpdatePrometheusInstanceRequest
 	GetStorageDuration() *int
+	SetStoreConfig(v *PrometheusInstanceStoreConfig) *UpdatePrometheusInstanceRequest
+	GetStoreConfig() *PrometheusInstanceStoreConfig
 	SetWorkspace(v string) *UpdatePrometheusInstanceRequest
 	GetWorkspace() *string
 }
 
 type UpdatePrometheusInstanceRequest struct {
-	// The number of days for automatic archiving after storage expires. A value of 0 indicates no archiving. Valid values for archiving days:
+	// The number of days for automatic archiving after storage expires. A value of 0 indicates no archiving. Valid values for archive days:
 	//
-	// V1: 1 to 365 days. Supported only for billing by metric write volume.
+	// V1: 1 to 365 days. Only supported for billing by metric write volume.
 	//
 	// V2: 1 to 3650 days (3650 indicates permanent retention).
 	//
@@ -113,11 +115,11 @@ type UpdatePrometheusInstanceRequest struct {
 	//
 	// true
 	EnableAuthToken *bool `json:"enableAuthToken,omitempty" xml:"enableAuthToken,omitempty"`
-	// The billing method. This parameter can be modified only once during the instance lifetime. Valid values:
+	// The billing method. This can be modified only once during the instance lifetime:
 	//
-	// - POSTPAY: pay-as-you-go by metric reporting volume.
+	// POSTPAY: pay-as-you-go by metric reporting volume.
 	//
-	// - POSTPAY_GB: pay-as-you-go by metric write volume.
+	// POSTPAY_GB: pay-as-you-go by metric write volume.
 	//
 	// example:
 	//
@@ -129,7 +131,7 @@ type UpdatePrometheusInstanceRequest struct {
 	//
 	// test-prom-name
 	PrometheusInstanceName *string `json:"prometheusInstanceName,omitempty" xml:"prometheusInstanceName,omitempty"`
-	// Instance storage database status of the instance. Only RUNNING is supported. If this parameter is left empty, instance storage database status remains unchanged.
+	// Instance storage database status of the instance. Only RUNNING is supported. If left empty, instance storage database status is not changed.
 	//
 	// example:
 	//
@@ -137,14 +139,16 @@ type UpdatePrometheusInstanceRequest struct {
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The storage duration (days):
 	//
-	// By write volume: 90 or 180.
+	// By write volume: 90, 180.
 	//
-	// By metric reporting volume: 15, 30, 60, 90, or 180.
+	// By metric reporting volume: 15, 30, 60, 90, 180.
 	//
 	// example:
 	//
 	// 90
 	StorageDuration *int `json:"storageDuration,omitempty" xml:"storageDuration,omitempty"`
+	// The Prometheus storage configuration.
+	StoreConfig *PrometheusInstanceStoreConfig `json:"storeConfig,omitempty" xml:"storeConfig,omitempty"`
 	// The workspace to which the instance belongs.
 	//
 	// example:
@@ -201,6 +205,10 @@ func (s *UpdatePrometheusInstanceRequest) GetStorageDuration() *int {
 	return s.StorageDuration
 }
 
+func (s *UpdatePrometheusInstanceRequest) GetStoreConfig() *PrometheusInstanceStoreConfig {
+	return s.StoreConfig
+}
+
 func (s *UpdatePrometheusInstanceRequest) GetWorkspace() *string {
 	return s.Workspace
 }
@@ -255,11 +263,21 @@ func (s *UpdatePrometheusInstanceRequest) SetStorageDuration(v int) *UpdateProme
 	return s
 }
 
+func (s *UpdatePrometheusInstanceRequest) SetStoreConfig(v *PrometheusInstanceStoreConfig) *UpdatePrometheusInstanceRequest {
+	s.StoreConfig = v
+	return s
+}
+
 func (s *UpdatePrometheusInstanceRequest) SetWorkspace(v string) *UpdatePrometheusInstanceRequest {
 	s.Workspace = &v
 	return s
 }
 
 func (s *UpdatePrometheusInstanceRequest) Validate() error {
-	return dara.Validate(s)
+	if s.StoreConfig != nil {
+		if err := s.StoreConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

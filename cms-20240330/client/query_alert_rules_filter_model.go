@@ -19,6 +19,8 @@ type iQueryAlertRulesFilter interface {
 	GetEnabled() *EnabledFilter
 	SetLabels(v *LabelsFilter) *QueryAlertRulesFilter
 	GetLabels() *LabelsFilter
+	SetMigrationStatus(v *MigrationStatusFilter) *QueryAlertRulesFilter
+	GetMigrationStatus() *MigrationStatusFilter
 	SetNotificationChannels(v *NotificationChannelsFilter) *QueryAlertRulesFilter
 	GetNotificationChannels() *NotificationChannelsFilter
 	SetNotifyStrategyId(v *NotifyStrategyIdFilter) *QueryAlertRulesFilter
@@ -44,16 +46,21 @@ type iQueryAlertRulesFilter interface {
 }
 
 type QueryAlertRulesFilter struct {
-	BizSource                  *BizSourceFilter                  `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
-	DatasourceType             *DatasourceTypeFilter             `json:"datasourceType,omitempty" xml:"datasourceType,omitempty"`
-	DisplayName                *DisplayNameFilter                `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	Enabled                    *EnabledFilter                    `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	Labels                     *LabelsFilter                     `json:"labels,omitempty" xml:"labels,omitempty"`
-	NotificationChannels       *NotificationChannelsFilter       `json:"notificationChannels,omitempty" xml:"notificationChannels,omitempty"`
-	NotifyStrategyId           *NotifyStrategyIdFilter           `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
+	BizSource      *BizSourceFilter      `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
+	DatasourceType *DatasourceTypeFilter `json:"datasourceType,omitempty" xml:"datasourceType,omitempty"`
+	DisplayName    *DisplayNameFilter    `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	Enabled        *EnabledFilter        `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	Labels         *LabelsFilter         `json:"labels,omitempty" xml:"labels,omitempty"`
+	// Filters by migration status. isMigrated=true queries migrated rules (migration_status is not 0 or NULL). isMigrated=false queries native rules (migration_status=0).
+	MigrationStatus      *MigrationStatusFilter      `json:"migrationStatus,omitempty" xml:"migrationStatus,omitempty"`
+	NotificationChannels *NotificationChannelsFilter `json:"notificationChannels,omitempty" xml:"notificationChannels,omitempty"`
+	NotifyStrategyId     *NotifyStrategyIdFilter     `json:"notifyStrategyId,omitempty" xml:"notifyStrategyId,omitempty"`
+	// Filters by the observeResourceConfig structure. This takes priority over the standalone observeResourceType / observeResourceGlobalScope / observeResourceList fields below. If both are specified and their semantics conflict, the request is rejected.
 	ObserveResourceConfig      *ObserveResourceConfigFilter      `json:"observeResourceConfig,omitempty" xml:"observeResourceConfig,omitempty"`
 	ObserveResourceGlobalScope *ObserveResourceGlobalScopeFilter `json:"observeResourceGlobalScope,omitempty" xml:"observeResourceGlobalScope,omitempty"`
 	// Deprecated
+	//
+	// **[Deprecated]*	- Filters by a single resource entity ID. This field is retained only for backward compatibility with legacy SDKs. For new integrations, use observeResourceList.contains instead. If this field is not empty and observeResourceList is not specified, it is equivalent to observeResourceList.contains=[observeResourceInstanceId].
 	//
 	// example:
 	//
@@ -61,6 +68,8 @@ type QueryAlertRulesFilter struct {
 	ObserveResourceInstanceId *string                    `json:"observeResourceInstanceId,omitempty" xml:"observeResourceInstanceId,omitempty"`
 	ObserveResourceList       *ObserveResourceListFilter `json:"observeResourceList,omitempty" xml:"observeResourceList,omitempty"`
 	// Deprecated
+	//
+	// **[Deprecated]*	- Filters by observable resource type. For new integrations, use observeResourceConfig.entityType instead.
 	ObserveResourceType *ObserveResourceTypeFilter `json:"observeResourceType,omitempty" xml:"observeResourceType,omitempty"`
 	PartitionKey        *PartitionKeyFilter        `json:"partitionKey,omitempty" xml:"partitionKey,omitempty"`
 	SeverityLevels      *SeverityLevelsFilter      `json:"severityLevels,omitempty" xml:"severityLevels,omitempty"`
@@ -94,6 +103,10 @@ func (s *QueryAlertRulesFilter) GetEnabled() *EnabledFilter {
 
 func (s *QueryAlertRulesFilter) GetLabels() *LabelsFilter {
 	return s.Labels
+}
+
+func (s *QueryAlertRulesFilter) GetMigrationStatus() *MigrationStatusFilter {
+	return s.MigrationStatus
 }
 
 func (s *QueryAlertRulesFilter) GetNotificationChannels() *NotificationChannelsFilter {
@@ -162,6 +175,11 @@ func (s *QueryAlertRulesFilter) SetEnabled(v *EnabledFilter) *QueryAlertRulesFil
 
 func (s *QueryAlertRulesFilter) SetLabels(v *LabelsFilter) *QueryAlertRulesFilter {
 	s.Labels = v
+	return s
+}
+
+func (s *QueryAlertRulesFilter) SetMigrationStatus(v *MigrationStatusFilter) *QueryAlertRulesFilter {
+	s.MigrationStatus = v
 	return s
 }
 
@@ -243,6 +261,11 @@ func (s *QueryAlertRulesFilter) Validate() error {
 	}
 	if s.Labels != nil {
 		if err := s.Labels.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.MigrationStatus != nil {
+		if err := s.MigrationStatus.Validate(); err != nil {
 			return err
 		}
 	}

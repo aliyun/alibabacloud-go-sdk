@@ -62,7 +62,7 @@ func (s *GetPrometheusInstanceResponseBody) Validate() error {
 }
 
 type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
-	// The access type. Valid values:
+	// The permission type. Valid values:
 	//
 	// - readWrite
 	//
@@ -74,7 +74,7 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	//
 	// readOnly
 	AccessType *string `json:"accessType,omitempty" xml:"accessType,omitempty"`
-	// The number of days that data is automatically archived after the storage period expires. A value of 0 indicates that data is not archived. A value of 3650 indicates that data is permanently retained.
+	// The number of days for automatic archiving after storage expires. A value of 0 indicates no archiving, and a value of 3650 indicates permanent retention.
 	//
 	// example:
 	//
@@ -128,13 +128,13 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	//
 	// }
 	AuthFreeWritePolicy *string `json:"authFreeWritePolicy,omitempty" xml:"authFreeWritePolicy,omitempty"`
-	// The authentication token.
+	// The authentication token string.
 	//
 	// example:
 	//
 	// eJwixxxxx
 	AuthToken *string `json:"authToken,omitempty" xml:"authToken,omitempty"`
-	// The time when the instance was created. The time is in UTC+0 and in the yyyy-MM-ddTHH:mmZ format.
+	// The instance creation time in UTC+0, in the format of yyyy-MM-ddTHH:mmZ.
 	//
 	// example:
 	//
@@ -176,7 +176,7 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	//
 	// example:
 	//
-	// 共享版
+	// Shared Edition
 	GrafanaInstanceName *string `json:"grafanaInstanceName,omitempty" xml:"grafanaInstanceName,omitempty"`
 	// The HTTP public endpoint.
 	//
@@ -204,15 +204,15 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - POSTPAY: pay-as-you-go based on the number of reported metrics.
+	// - POSTPAY: pay-as-you-go by metric reporting volume.
 	//
-	// - POSTPAY_GB: pay-as-you-go based on the volume of written metrics.
+	// - POSTPAY_GB: pay-as-you-go by metric write volume.
 	//
 	// example:
 	//
 	// POSTPAY
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
-	// The time when the billing method of the instance was last modified, in UTC format.
+	// The time when the instance billing method was modified, in UTC format.
 	//
 	// example:
 	//
@@ -302,7 +302,7 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	//
 	// rg-acfm3gn5i6bigbi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// Fixed value: PrometheusInstance.
+	// The fixed value: PrometheusInstance.
 	//
 	// example:
 	//
@@ -314,12 +314,14 @@ type GetPrometheusInstanceResponseBodyPrometheusInstance struct {
 	//
 	// Running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The storage duration, in days.
+	// The storage duration in days.
 	//
 	// example:
 	//
 	// 90
 	StorageDuration *int32 `json:"storageDuration,omitempty" xml:"storageDuration,omitempty"`
+	// The Prometheus storage configuration.
+	StoreConfig *PrometheusInstanceStoreConfig `json:"storeConfig,omitempty" xml:"storeConfig,omitempty"`
 	// The supported authentication types.
 	SupportAuthTypes []*string `json:"supportAuthTypes,omitempty" xml:"supportAuthTypes,omitempty" type:"Repeated"`
 	// The list of tags.
@@ -494,6 +496,10 @@ func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) GetStatus() *strin
 
 func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) GetStorageDuration() *int32 {
 	return s.StorageDuration
+}
+
+func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) GetStoreConfig() *PrometheusInstanceStoreConfig {
+	return s.StoreConfig
 }
 
 func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) GetSupportAuthTypes() []*string {
@@ -696,6 +702,11 @@ func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) SetStorageDuration
 	return s
 }
 
+func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) SetStoreConfig(v *PrometheusInstanceStoreConfig) *GetPrometheusInstanceResponseBodyPrometheusInstance {
+	s.StoreConfig = v
+	return s
+}
+
 func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) SetSupportAuthTypes(v []*string) *GetPrometheusInstanceResponseBodyPrometheusInstance {
 	s.SupportAuthTypes = v
 	return s
@@ -722,6 +733,11 @@ func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) SetWorkspace(v str
 }
 
 func (s *GetPrometheusInstanceResponseBodyPrometheusInstance) Validate() error {
+	if s.StoreConfig != nil {
+		if err := s.StoreConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Tags != nil {
 		for _, item := range s.Tags {
 			if item != nil {
