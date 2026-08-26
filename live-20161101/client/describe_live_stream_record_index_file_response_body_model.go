@@ -16,7 +16,7 @@ type iDescribeLiveStreamRecordIndexFileResponseBody interface {
 }
 
 type DescribeLiveStreamRecordIndexFileResponseBody struct {
-	// The information about the index file.
+	// Recording configuration.
 	RecordIndexInfo *DescribeLiveStreamRecordIndexFileResponseBodyRecordIndexInfo `json:"RecordIndexInfo,omitempty" xml:"RecordIndexInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,13 +62,13 @@ func (s *DescribeLiveStreamRecordIndexFileResponseBody) Validate() error {
 }
 
 type DescribeLiveStreamRecordIndexFileResponseBodyRecordIndexInfo struct {
-	// The name of the application to which the live stream belongs.
+	// The AppName of the live stream.
 	//
 	// example:
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The time when the index file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The creation time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//
@@ -80,13 +80,13 @@ type DescribeLiveStreamRecordIndexFileResponseBodyRecordIndexInfo struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The recording length. Unit: seconds.
+	// The recording duration. Unit: seconds.
 	//
 	// example:
 	//
 	// 588.849
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The end time of the index file. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The end time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type DescribeLiveStreamRecordIndexFileResponseBodyRecordIndexInfo struct {
 	//
 	// 480
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The name of the Object Storage Service (OSS) bucket.
+	// The name of the OSS bucket.
 	//
 	// example:
 	//
@@ -122,15 +122,15 @@ type DescribeLiveStreamRecordIndexFileResponseBodyRecordIndexInfo struct {
 	//
 	// liveObject****
 	OssObject *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
-	// The ID of the index file.
+	// The manifest ID.
 	//
 	// example:
 	//
 	// c4d7f0a4-b506-43f9-8de3-07732c3f****
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The URL of the index file.
+	// The URL of the manifest.
 	RecordUrl *string `json:"RecordUrl,omitempty" xml:"RecordUrl,omitempty"`
-	// The start time of the index file. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The start time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//

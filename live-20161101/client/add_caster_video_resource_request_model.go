@@ -42,25 +42,24 @@ type iAddCasterVideoResourceRequest interface {
 }
 
 type AddCasterVideoResourceRequest struct {
-	// The offset of the position where the system starts to read the video source. Unit: milliseconds.
+	// The start offset of the video file. Unit: milliseconds.
 	//
-	// **
+	// 	Notice: This parameter takes effect only when the video source type is file video.
 	//
-	// **Important*	- This parameter takes effect only if the video source is a file.
 	//
-	// > A value greater than **0*	- specifies an offset from the first frame.
+	// > A value greater than **0*	- indicates that reading starts from the offset time relative to the first frame.
 	//
 	// example:
 	//
 	// 1000
 	BeginOffset *int32 `json:"BeginOffset,omitempty" xml:"BeginOffset,omitempty"`
-	// The ID of the production studio.
+	// The production studio ID.
 	//
-	// 	- If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/69338.html) operation, check the value of the response parameter CasterId to obtain the ID.
+	// - If you created the production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the CasterId parameter value returned by the CreateCaster operation.
 	//
-	// 	- If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management*	- page. To go to the page, log on to the **ApsaraVideo Live console*	- and click **Production Studios*	- in the left-side navigation pane.
+	// - If you created the production studio in the ApsaraVideo Live console, navigate to **ApsaraVideo Live console*	- > **Production Studios*	- > **Cloud Production Studio*	- to view the production studio name.
 	//
-	// > You can find the ID of the production studio in the Instance Name column.
+	// > The production studio name in the production studio list on the Cloud Production Studio page of the ApsaraVideo Live console is the production studio ID.
 	//
 	// This parameter is required.
 	//
@@ -68,93 +67,100 @@ type AddCasterVideoResourceRequest struct {
 	//
 	// LIVEPRODUCER_POST-cn-0pp1czt****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-	// The offset of the position where the system stops reading the video source. Unit: milliseconds.
+	// The end offset of the video file. Unit: milliseconds.
 	//
-	// **
+	// 	Notice: This parameter takes effect only when the video source type is file video.
 	//
-	// **Important*	- This parameter takes effect only if the video source is a file.
 	//
-	// 	- A value greater than **0*	- specifies an offset from the first frame.
 	//
-	// 	- A value less than **0*	- specifies an offset from the last frame.
+	// - A value greater than **0**: reading ends at the offset time relative to the first frame.
+	//
+	// - A value less than **0**: reading ends at the offset time relative to the last frame.
 	//
 	// example:
 	//
 	// 10000
 	EndOffset *int32 `json:"EndOffset,omitempty" xml:"EndOffset,omitempty"`
-	// The fixed delay of the video layer. This parameter is used to synchronize the video with subtitles. Unit: milliseconds. Default value: 0. Valid values: `0 to 5000`.
+	// The fixed delay for the video, which can be used for subtitle synchronization. Unit: ms. Default value: 0. Value range: `[0-5000]`.
 	//
 	// example:
 	//
 	// 0
 	FixedDelayDuration *int32 `json:"FixedDelayDuration,omitempty" xml:"FixedDelayDuration,omitempty"`
-	// ID of the media library image material.
+	// The media asset library image material ID.
 	//
-	// >This parameter is only available and must be provided when the video source type is an image.
+	// > This parameter is available and required only when the video source type is image.
 	//
 	// example:
 	//
 	// a089175eb5f4427684fc0715159a****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// Image material URL.
+	// The image material URL.
 	//
-	// >This parameter is available only when the video source type is an image and the image file has not been imported into the material library. Supports uploading images in jpg, png formats, with a maximum file size of 10MB.
+	// >This parameter is available only when the video source type is image and the image file has not been imported to the media asset library. JPG and PNG formats are supported. The maximum file size is 10 MB.
 	//
 	// example:
 	//
 	// http://learn.aliyundoc.com/AppName/image.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The streaming URL.
+	// The ApsaraVideo Live streaming URL.
 	//
-	// **
+	// 	Notice:
 	//
-	// **Important*	- This parameter is required if the video source is a live stream.
 	//
-	// > Do not specify this parameter in the request if the video source is not a live stream.
+	//
+	// -  This parameter is required when the video source type is live stream.
+	//
+	//
+	//
+	// -  Do not include this parameter in the request when the video source type is not live stream.
 	//
 	// example:
 	//
 	// rtmp://guide.aliyundoc.com/caster/4a82a3d1b7f0462ea37348366201****?auth_key=1608953344-0-0-ac8c628078541d7055a170ec59a5****
 	LiveStreamUrl *string `json:"LiveStreamUrl,omitempty" xml:"LiveStreamUrl,omitempty"`
-	// The ID that is used to identify the position of the video source.
+	// The location identifier of the video source. This parameter is required.
 	//
-	// Define the reference numbers in the layout. Each reference number is associated with only one resource. The value of this parameter must be in the RV[Number] format, where Number is `01 to 99`.
+	// Defines the reference number of a scene in the layout. Each location can be associated with at most one resource. The format must match "RV01~RV12", which is RV + a number in the range of `[01~99]`.
 	//
 	// example:
 	//
 	// RV01
 	LocationId *string `json:"LocationId,omitempty" xml:"LocationId,omitempty"`
-	// The ID of the material from the media library.
+	// The media asset library material ID.
 	//
-	// **
+	// 	Notice: This parameter is available and required only when the video source type is material.
 	//
-	// **Important*	- This parameter takes effect and is required only if the video source is a material.
 	//
-	// If you query the configurations of the production studio by calling the [DescribeCasterConfig](https://help.aliyun.com/document_detail/60259.html) operation, obtain the value of the response parameter UrgentMaterialId.
+	// If you call the [DescribeCasterConfig](https://help.aliyun.com/document_detail/2848011.html) operation to query the production studio configuration, check the UrgentMaterialId parameter value returned by the DescribeCasterConfig operation.
 	//
-	// > The value of the UrgentMaterialId parameter is the ID of the material from the media library.
+	// > The UrgentMaterialId value is the media asset library material ID.
 	//
 	// example:
 	//
 	// f080575eb5f4427684fc0715159a****
 	MaterialId *string `json:"MaterialId,omitempty" xml:"MaterialId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The interval between presentation timestamp (PTS) callbacks. Unit: milliseconds.
+	// The PTS callback interval. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 2000
-	PtsCallbackInterval *int32  `json:"PtsCallbackInterval,omitempty" xml:"PtsCallbackInterval,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of playbacks after the first playback is complete. Valid values:
+	PtsCallbackInterval *int32 `json:"PtsCallbackInterval,omitempty" xml:"PtsCallbackInterval,omitempty"`
+	// The region ID.
 	//
-	// **
+	// example:
 	//
-	// **Important*	- This parameter takes effect only if the video source is a file.
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of times the video repeats after playback completes. Valid values:
 	//
-	// 	- **0**: specifies that the video source is played only once. This is the default value.
+	// 	Notice: This parameter takes effect only when the video source type is file video.
 	//
-	// 	- **-1**: specifies that the video source is played in loop mode.
+	//
+	// - **0*	- (default): no repeat.
+	//
+	// - **-1**: loops indefinitely.
 	//
 	// example:
 	//
@@ -168,13 +174,12 @@ type AddCasterVideoResourceRequest struct {
 	//
 	// test001
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The URL of the VOD file.
+	// The video-on-demand file URL.
 	//
-	// **
+	// 	Notice: This parameter is available only when the video source type is file video and the video file has not been imported to the media asset library.
 	//
-	// **Important*	- This parameter takes effect only if the video source is a file that is not from the media library.
 	//
-	// > The VOD file must be in the MP4, FLV, or TS format.
+	// >Video-on-demand files are limited to MP4, FLV, and TS formats.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type iListEdgeTranscodeJobRequest interface {
 }
 
 type ListEdgeTranscodeJobRequest struct {
-	// The ID of the data center.
+	// The data center ID.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +38,11 @@ type ListEdgeTranscodeJobRequest struct {
 	//
 	// cluster-1
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The keyword of the query.
+	// The search keyword. Valid values:
 	//
-	// 	- You can specify a task ID for an exact match.
+	// - Task ID. Exact match is supported.
 	//
-	// 	- You can specify a task name for a fuzzy match.
+	// - Task name. Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -60,37 +60,42 @@ type ListEdgeTranscodeJobRequest struct {
 	// example:
 	//
 	// 20
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The sort order of the tasks by creation time. Default value: desc. Valid values:
+	// The collation based on CreateTime. Default value: desc. Valid values:
 	//
-	// 	- desc: descending order
+	// - desc: descending sorting.
 	//
-	// 	- asc: ascending order
+	// - asc: ascending sorting.
 	//
 	// example:
 	//
 	// desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The task status. Valid values:
+	// The edge transcoding task status. Valid values:
 	//
-	// 	- 0: not started
+	// - 0: not started.
 	//
-	// 	- 1: running
+	// - 1: running.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of edge transcoding. Valid values:
+	// The edge transcoding type. Valid values:
 	//
-	// 	- common: standard transcoding and Narrowband HD™ 1.0 transcoding.
+	// - common: default transcoding (standard + Narrowband HD 1.0).
 	//
-	// 	- nbhd-2: Narrowband HD™ 2.0 transcoding
+	// - nbhd-2: Narrowband HD 2.0.
 	//
-	// 	- ultra-hd: ultra-high definition transcoding
+	// - ultra-hd: ultra-high definition.
 	//
-	// >  If you do not specify this parameter, the query results are filtered based on the types of edge transcoding on which you are granted permissions.
+	// > If this parameter is not specified, transcoding templates for which the user has the corresponding transcoding type permissions are displayed.
 	//
 	// example:
 	//

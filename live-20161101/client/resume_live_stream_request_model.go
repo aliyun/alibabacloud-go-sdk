@@ -24,7 +24,7 @@ type iResumeLiveStreamRequest interface {
 }
 
 type ResumeLiveStreamRequest struct {
-	// The name of the application to which the live stream belongs. You can specify an asterisk (\\*) as the value to match all applications. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The name of the application to which the ingest stream belongs. You can set this parameter to 	- to indicate all AppName values (no restriction on AppName). You can view the AppName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type ResumeLiveStreamRequest struct {
 	//
 	// demo.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Specifies whether the live stream is ingested by a streamer or played by a client. Set the value to **publisher**, which specifies that the live stream is ingested by a streamer.
+	// Specifies whether the stream is a streamer ingest stream or a client playback stream. Currently supported value: **publisher*	- (streamer ingest).
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type ResumeLiveStreamRequest struct {
 	LiveStreamType *string `json:"LiveStreamType,omitempty" xml:"LiveStreamType,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken  *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the ingested stream. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The name of the ingest stream. You can view the StreamName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
 	//
 	// This parameter is required.
 	//

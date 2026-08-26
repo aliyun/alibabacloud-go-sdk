@@ -20,15 +20,15 @@ type iEditPlaylistResponseBody interface {
 }
 
 type EditPlaylistResponseBody struct {
-  // The ID of the production studio. You can use the ID as a request parameter in the API operation that is used to configure callbacks or add a virtual studio layout.
+  // The ID of the production studio. Use this ID as a request parameter to add a callback or a virtual studio layout.
   // 
   // example:
   // 
   // 0e94d1f4-1a65-445c-9dcf-de8b3b8d****
   CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-  // The information about the episodes.
+  // The list of added playlist items.
   Items *EditPlaylistResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-  // The ID of the episode list. You can use the ID as a request parameter in the API operation that is used to delete the episode list, query the information about the episode list, start the episode list, or stop the episode list.
+  // The playlist ID. Use this ID as a request parameter to delete, query, start, or stop the playlist.
   // 
   // example:
   // 
@@ -96,9 +96,9 @@ func (s *EditPlaylistResponseBody) Validate() error {
 }
 
 type EditPlaylistResponseBodyItems struct {
-  // The episodes that failed to be added.
+  // The list of playlist items that failed to be added.
   FailedItems []*EditPlaylistResponseBodyItemsFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
-  // The episodes that were added.
+  // The list of playlist items that were successfully added.
   SuccessItems []*EditPlaylistResponseBodyItemsSuccessItems `json:"SuccessItems,omitempty" xml:"SuccessItems,omitempty" type:"Repeated"`
 }
 
@@ -151,13 +151,13 @@ func (s *EditPlaylistResponseBodyItems) Validate() error {
 }
 
 type EditPlaylistResponseBodyItemsFailedItems struct {
-  // The ID of the episode.
+  // The ID of the playlist item.
   // 
   // example:
   // 
   // c09f3d63-eacf-4fbf-bd48-a07a6ba7****
   ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-  // The name of the episode.
+  // The name of the playlist item.
   // 
   // example:
   // 
@@ -196,13 +196,13 @@ func (s *EditPlaylistResponseBodyItemsFailedItems) Validate() error {
 }
 
 type EditPlaylistResponseBodyItemsSuccessItems struct {
-  // The ID of the episode.
+  // The ID of the playlist item.
   // 
   // example:
   // 
   // c09f3d63-eacf-4fbf-bd48-a07a6ba7****
   ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-  // The name of the episode.
+  // The name of the playlist item.
   // 
   // example:
   // 

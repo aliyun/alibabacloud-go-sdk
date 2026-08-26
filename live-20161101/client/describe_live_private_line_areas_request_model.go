@@ -18,7 +18,7 @@ type iDescribeLivePrivateLineAreasRequest interface {
 }
 
 type DescribeLivePrivateLineAreasRequest struct {
-	// The main streaming domain.
+	// The streaming domain for ingest.
 	//
 	// This parameter is required.
 	//
@@ -27,7 +27,12 @@ type DescribeLivePrivateLineAreasRequest struct {
 	// demo.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeLivePrivateLineAreasRequest) String() string {

@@ -16,7 +16,7 @@ type iGetEdgeTranscodeJobResponseBody interface {
 }
 
 type GetEdgeTranscodeJobResponseBody struct {
-	// The details of the edge transcoding task.
+	// The edge transcoding job.
 	Job *GetEdgeTranscodeJobResponseBodyJob `json:"Job,omitempty" xml:"Job,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,65 +62,65 @@ func (s *GetEdgeTranscodeJobResponseBody) Validate() error {
 }
 
 type GetEdgeTranscodeJobResponseBodyJob struct {
-	// The time when the task was created.
+	// The time when the job was created.
 	//
 	// example:
 	//
 	// 2023-07-24T16:44:55Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the task.
+	// The job ID.
 	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The time when the task was last started.
+	// The time when the job was last started.
 	//
 	// example:
 	//
 	// 2023-07-25T02:48:58Z
 	LastStartAt *string `json:"LastStartAt,omitempty" xml:"LastStartAt,omitempty"`
-	// The time when the task was last stopped.
+	// The time when the job was last stopped.
 	//
 	// example:
 	//
 	// 2023-07-25T05:48:58Z
 	LastStopAt *string `json:"LastStopAt,omitempty" xml:"LastStopAt,omitempty"`
-	// The name of the task.
+	// The job name.
 	//
 	// example:
 	//
 	// my_job
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status of the task. Valid values:
+	// The status of the transcoding job. Valid values:
 	//
-	// 	- 0: not started
+	// - 0: The job is not started.
 	//
-	// 	- 1: in progress
+	// - 1: The job is running.
 	//
 	// example:
 	//
 	// 0
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The URL of the input stream.
+	// The input stream URL.
 	//
 	// example:
 	//
 	// rtmp://mydomain/app/stream1
 	StreamInput *string `json:"StreamInput,omitempty" xml:"StreamInput,omitempty"`
-	// The URL of the output stream.
+	// The output stream URL.
 	//
 	// example:
 	//
 	// rtmp://testdomain/app/stream2
 	StreamOutput *string `json:"StreamOutput,omitempty" xml:"StreamOutput,omitempty"`
-	// The ID of the edge transcoding template used by the task.
+	// The ID of the edge transcoding template used by the job.
 	//
 	// example:
 	//
 	// 9b1571b513cb44f7a1ba6ae561ff****
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// The name of the edge transcoding template used by the task.
+	// The name of the edge transcoding template used by the job.
 	//
 	// example:
 	//
@@ -128,11 +128,11 @@ type GetEdgeTranscodeJobResponseBodyJob struct {
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The type of edge transcoding. Valid values:
 	//
-	// 	- common: standard transcoding and Narrowband HD™ 1.0 transcoding
+	// - common: standard transcoding and Narrowband HD 1.0.
 	//
-	// 	- nbhd-2: Narrowband HD™ 2.0 transcoding
+	// - nbhd-2: Narrowband HD 2.0.
 	//
-	// 	- ultra-hd: ultra-high definition transcoding
+	// - ultra-hd: ultra-high definition.
 	//
 	// example:
 	//

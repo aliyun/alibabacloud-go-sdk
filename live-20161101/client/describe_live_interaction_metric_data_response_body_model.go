@@ -18,15 +18,15 @@ type iDescribeLiveInteractionMetricDataResponseBody interface {
 }
 
 type DescribeLiveInteractionMetricDataResponseBody struct {
-	// The node data.
+	// An array of data points.
 	Nodes []*DescribeLiveInteractionMetricDataResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// A01C98C5-25AE-124A-83FE-514DF5C5BE36
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The summary data.
+	// The summarized data for the query time range.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *DescribeLiveInteractionMetricDataResponseBody) Validate() error {
 }
 
 type DescribeLiveInteractionMetricDataResponseBodyNodes struct {
-	// The time when the metric was queried. The value is a UNIX timestamp. Unit: milliseconds.
+	// The timestamp of the data point, specified as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

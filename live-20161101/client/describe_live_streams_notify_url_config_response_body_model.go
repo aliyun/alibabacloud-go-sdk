@@ -68,7 +68,7 @@ type DescribeLiveStreamsNotifyUrlConfigResponseBodyLiveStreamsNotifyConfig struc
 	//
 	// demo.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Exception event callback URL.
+	// The callback URL for receiving notifications about exception events.
 	//
 	// example:
 	//
@@ -80,17 +80,17 @@ type DescribeLiveStreamsNotifyUrlConfigResponseBodyLiveStreamsNotifyConfig struc
 	//
 	// 123456
 	NotifyAuthKey *string `json:"NotifyAuthKey,omitempty" xml:"NotifyAuthKey,omitempty"`
-	// Indicates whether callback authentication is enabled. Valid values:
+	// Indicates whether authentication is enabled. Valid values:
 	//
-	// 	- yes
+	// - **yes**
 	//
-	// 	- no
+	// - **no**
 	//
 	// example:
 	//
 	// yes
 	NotifyReqAuth *string `json:"NotifyReqAuth,omitempty" xml:"NotifyReqAuth,omitempty"`
-	// The callback URL.
+	// The callback URL for receiving live stream information.
 	//
 	// example:
 	//

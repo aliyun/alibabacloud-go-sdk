@@ -23,31 +23,33 @@ type iDescribeLiveUserBillPredictionResponseBody interface {
 
 type DescribeLiveUserBillPredictionResponseBody struct {
 	BillPredictionData *DescribeLiveUserBillPredictionResponseBodyBillPredictionData `json:"BillPredictionData,omitempty" xml:"BillPredictionData,omitempty" type:"Struct"`
-	// The metering method. Valid values:
+	// The billing method. The following billing methods are supported:
 	//
-	// 	- hour_flow: pay by hourly data transfer
+	// - hour_flow: Pay-by-traffic on an hourly basis.
 	//
-	// 	- day_bandwidth: pay by daily bandwidth
+	// - day_bandwidth: Pay-by-bandwidth on a daily basis.
 	//
-	// 	- month_95: pay by monthly 95th percentile bandwidth
+	// - month_95: Pay-by-monthly 95th percentile peak bandwidth.
 	//
-	// 	- month_avg_day_bandwidth: pay by average daily peak bandwidth per month
+	// - month_avg_day_bandwidth: Pay-by-monthly average of daily peak bandwidth.
 	//
-	// 	- month_4th_day_bandwidth: pay by 4th peak bandwidth per month
+	// - month_4th_day_bandwidth: Pay-by-monthly 4th peak bandwidth.
 	//
-	// 	- month_avg_day_95: pay by average daily 95th percentile bandwidth per month
+	// - month_avg_day_95: Pay-by-monthly average of daily 95th percentile peak bandwidth.
 	//
-	// 	- month_95_night_half: pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00
+	// - month_95_night_half: Pay-by-nightly 95th percentile peak bandwidth with a 50% discount.
 	//
-	// 	- hour_vas: pay by value-added services per hour
+	// - hour_vas: Pay-for-value-added services on an hourly basis.
 	//
-	// 	- day_count: pay by daily requests
+	// - day_count: Pay-by-daily request count.
 	//
 	// example:
 	//
 	// day_bandwidth
 	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
-	// The end time. If you do not specify the request parameter EndTime, the end time is the current time by default. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The end time of the query. The time is in UTC and follows the ISO 8601 standard.
+	//
+	// Format: YYYY-MM-DDThh:mm:ssZ. The default value is the current time.
 	//
 	// example:
 	//
@@ -59,7 +61,9 @@ type DescribeLiveUserBillPredictionResponseBody struct {
 	//
 	// B95BE680-5A6A-1CAD-8AB1-09DFF5D6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time. If you do not specify the request parameter StartTime, the start time is 00:00 on the first day of the month by default. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The start time of the query. The time is in UTC and follows the ISO 8601 standard.
+	//
+	// Format: YYYY-MM-DDThh:mm:ssZ. The default value is 00:00 on the first day of the month.
 	//
 	// example:
 	//

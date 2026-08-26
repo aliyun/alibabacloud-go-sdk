@@ -16,13 +16,13 @@ type iDeleteCasterResponseBody interface {
 }
 
 type DeleteCasterResponseBody struct {
-	// The ID of the production studio. You can use the ID as a request parameter in the API operation that is used to add input sources, layouts, components, or an episode list to the production studio or query the layouts of the production studio.
+	// The ID of the production studio. This ID is used as a request parameter to add video resources, layouts, components, and program lists, or to query the layout list.
 	//
 	// example:
 	//
 	// a2b8e671-2fe5-4642-a2ec-bf93880e****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

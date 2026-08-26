@@ -38,7 +38,7 @@ type DescribeLiveStreamsBlockListResponseBody struct {
 	//
 	// 2
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
@@ -51,13 +51,13 @@ type DescribeLiveStreamsBlockListResponseBody struct {
 	// 9D855EC8-CF71-4615-B164-F7DFCB23B41D
 	RequestId  *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StreamUrls *DescribeLiveStreamsBlockListResponseBodyStreamUrls `json:"StreamUrls,omitempty" xml:"StreamUrls,omitempty" type:"Struct"`
-	// The total number of live stream URLs that meet the specified conditions.
+	// The total number of entries that meet the specified conditions.
 	//
 	// example:
 	//
 	// 11
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	// The total number of returned pages.
+	// The total number of pages.
 	//
 	// example:
 	//

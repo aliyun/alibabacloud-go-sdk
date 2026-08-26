@@ -18,7 +18,7 @@ type iDescribeLiveStreamAuthCheckingResponseBody interface {
 }
 
 type DescribeLiveStreamAuthCheckingResponseBody struct {
-	// The error message for failed authentication.
+	// The error message returned if authentication failed.
 	//
 	// example:
 	//
@@ -30,11 +30,11 @@ type DescribeLiveStreamAuthCheckingResponseBody struct {
 	//
 	// 16F08B4E-14FD-5D72-AB2F-BAFA4C4D57F1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the signed URL is valid. Valid values:
+	// Indicates whether the authentication is passed.
 	//
-	// 	- pass: valid.
+	// - pass: The authentication is passed.
 	//
-	// 	- false: invalid.
+	// - false: The authentication failed.
 	//
 	// example:
 	//

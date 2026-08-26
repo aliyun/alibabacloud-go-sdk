@@ -20,7 +20,7 @@ type iDescribeLiveDomainRecordUsageDataResponseBody interface {
 }
 
 type DescribeLiveDomainRecordUsageDataResponseBody struct {
-	// The end of the time range during which data was queried.
+	// The end time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//
@@ -33,7 +33,7 @@ type DescribeLiveDomainRecordUsageDataResponseBody struct {
 	//
 	// 4B460F8B-993C-4F48-B98A-910811DEBFEB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range during which data was queried.
+	// The start time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//

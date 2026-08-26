@@ -16,7 +16,7 @@ type iDescribeLiveRecordNotifyConfigResponseBody interface {
 }
 
 type DescribeLiveRecordNotifyConfigResponseBody struct {
-	// The configuration of callbacks for live stream recording.
+	// The recording callback configuration for the domain name.
 	LiveRecordNotifyConfig *DescribeLiveRecordNotifyConfigResponseBodyLiveRecordNotifyConfig `json:"LiveRecordNotifyConfig,omitempty" xml:"LiveRecordNotifyConfig,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,25 +62,39 @@ func (s *DescribeLiveRecordNotifyConfigResponseBody) Validate() error {
 }
 
 type DescribeLiveRecordNotifyConfigResponseBodyLiveRecordNotifyConfig struct {
-	// The main streaming domain.
+	// The streaming domain name.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Indicates whether recording status callbacks are enabled. Valid values:
+	// Specifies whether to receive callbacks for the status of recording tasks. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Yes.
 	//
-	// 	- **false*	- (default)
+	// - **false*	- (default): No.
 	//
 	// example:
 	//
 	// false
-	NeedStatusNotify *bool   `json:"NeedStatusNotify,omitempty" xml:"NeedStatusNotify,omitempty"`
-	NotifyAuthKey    *string `json:"NotifyAuthKey,omitempty" xml:"NotifyAuthKey,omitempty"`
-	NotifyReqAuth    *bool   `json:"NotifyReqAuth,omitempty" xml:"NotifyReqAuth,omitempty"`
-	// The recording callback URL.
+	NeedStatusNotify *bool `json:"NeedStatusNotify,omitempty" xml:"NeedStatusNotify,omitempty"`
+	// The authentication key for the callback.
+	//
+	// example:
+	//
+	// KbT8mN2pQ9rS4vX7wZ1aB3cE5fG6hJ8kL
+	NotifyAuthKey *string `json:"NotifyAuthKey,omitempty" xml:"NotifyAuthKey,omitempty"`
+	// Specifies whether to enable callback authentication. Valid values:
+	//
+	// - **yes**: enabled.
+	//
+	// - **no**: disabled.
+	//
+	// example:
+	//
+	// no
+	NotifyReqAuth *bool `json:"NotifyReqAuth,omitempty" xml:"NotifyReqAuth,omitempty"`
+	// The webhook address for recording callbacks.
 	//
 	// example:
 	//

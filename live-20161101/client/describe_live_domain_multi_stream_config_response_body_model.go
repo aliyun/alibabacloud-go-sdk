@@ -24,9 +24,9 @@ type DescribeLiveDomainMultiStreamConfigResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the dual-stream disaster recovery feature is enabled. Valid values:
 	//
-	// 	- **on**: enabled
+	// - **on**: enabled
 	//
-	// 	- **off**: disabled
+	// - **off**: disabled
 	//
 	// example:
 	//

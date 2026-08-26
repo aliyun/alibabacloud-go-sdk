@@ -16,13 +16,13 @@ type iGetMessageAppResponseBody interface {
 }
 
 type GetMessageAppResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 16A96B9A-****-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The result of the request.
 	Result *GetMessageAppResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,21 +62,21 @@ func (s *GetMessageAppResponseBody) Validate() error {
 }
 
 type GetMessageAppResponseBodyResult struct {
-	// The configurations of the application.
+	// The application configuration.
 	AppConfig map[string]*string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
-	// The ID of the interactive messaging application.
+	// The ID of the interactive message application.
 	//
 	// example:
 	//
 	// VKL3***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the interactive messaging application.
+	// The name of the interactive message application.
 	//
 	// example:
 	//
 	// testApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The time when the interactive messaging application was created. The time is displayed in UTC.
+	// The UTC timestamp when the application was created.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type GetMessageAppResponseBodyResult struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The extended field.
 	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// The status of the interactive message application. A value of 1 indicates that the application is normal.
+	// The status of the interactive message application. A value of 1 indicates that the application is in a normal state.
 	//
 	// example:
 	//

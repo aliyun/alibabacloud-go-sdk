@@ -18,7 +18,7 @@ type iQuerySnapshotCallbackAuthRequest interface {
 }
 
 type QuerySnapshotCallbackAuthRequest struct {
-	// The main streaming domain.
+	// The streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -27,7 +27,12 @@ type QuerySnapshotCallbackAuthRequest struct {
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s QuerySnapshotCallbackAuthRequest) String() string {

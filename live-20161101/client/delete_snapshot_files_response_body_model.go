@@ -33,7 +33,7 @@ type DeleteSnapshotFilesResponseBody struct {
 	// 90F60327-ABEC-5A93-BF1F-****
 	RequestId              *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SnapshotDeleteInfoList *DeleteSnapshotFilesResponseBodySnapshotDeleteInfoList `json:"SnapshotDeleteInfoList,omitempty" xml:"SnapshotDeleteInfoList,omitempty" type:"Struct"`
-	// The number of successful screenshot deletions.
+	// The number of snapshots that were deleted.
 	//
 	// example:
 	//

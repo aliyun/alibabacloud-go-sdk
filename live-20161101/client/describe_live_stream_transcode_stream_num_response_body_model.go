@@ -24,7 +24,7 @@ type iDescribeLiveStreamTranscodeStreamNumResponseBody interface {
 }
 
 type DescribeLiveStreamTranscodeStreamNumResponseBody struct {
-	// The number of streams for which transcoding is triggered by stream pulling.
+	// The number of streams that triggered transcoding.
 	//
 	// example:
 	//
@@ -36,15 +36,15 @@ type DescribeLiveStreamTranscodeStreamNumResponseBody struct {
 	//
 	// 150191A4-DD88-5941-B48C-9DF59E0A8B1F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of streams.
+	// The total number of transcoding streams.
 	//
 	// example:
 	//
 	// 57
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// The details about the transcoding templates.
+	// The transcoding template data.
 	TranscodeStreamCountDetails []*DescribeLiveStreamTranscodeStreamNumResponseBodyTranscodeStreamCountDetails `json:"TranscodeStreamCountDetails,omitempty" xml:"TranscodeStreamCountDetails,omitempty" type:"Repeated"`
-	// The number of streams that are transcoded.
+	// The number of transcoded streams.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *DescribeLiveStreamTranscodeStreamNumResponseBody) Validate() error {
 }
 
 type DescribeLiveStreamTranscodeStreamNumResponseBodyTranscodeStreamCountDetails struct {
-	// The number of streams that use the transcoding template.
+	// The number of streams for the transcoding template.
 	//
 	// example:
 	//

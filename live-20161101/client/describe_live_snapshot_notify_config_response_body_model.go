@@ -28,7 +28,7 @@ type DescribeLiveSnapshotNotifyConfigResponseBody struct {
 	//
 	// www.yourdomain***.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The callback authentication key.
+	// The authentication key for the callback.
 	//
 	// example:
 	//
@@ -36,9 +36,9 @@ type DescribeLiveSnapshotNotifyConfigResponseBody struct {
 	NotifyAuthKey *string `json:"NotifyAuthKey,omitempty" xml:"NotifyAuthKey,omitempty"`
 	// Indicates whether callback authentication is enabled. Valid values:
 	//
-	// 	- **yes**: Callback authentication is enabled.
+	// - **yes**: Enabled.
 	//
-	// 	- **no**: Callback authentication is disabled.
+	// - **no**: Disabled.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeLiveSnapshotNotifyConfigResponseBody struct {
 	//
 	// http://callback.yourdomain***.com
 	NotifyUrl *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iVerifyLiveDomainOwnerRequest interface {
 }
 
 type VerifyLiveDomainOwnerRequest struct {
-	// The domain name for which you want to verify the ownership. You can specify only one domain name in each request.
+	// The domain name to verify. Only one domain name can be verified at a time.
 	//
 	// This parameter is required.
 	//
@@ -29,12 +29,17 @@ type VerifyLiveDomainOwnerRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The verification method. Valid values:
 	//
-	// 	- dnsCheck: DNS record verification
+	// - dnsCheck: DNS record verification
 	//
-	// 	- fileCheck: file verification
+	// - fileCheck: file verification
 	//
 	// This parameter is required.
 	//

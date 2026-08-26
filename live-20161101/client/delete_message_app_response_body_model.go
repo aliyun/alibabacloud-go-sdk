@@ -16,13 +16,13 @@ type iDeleteMessageAppResponseBody interface {
 }
 
 type DeleteMessageAppResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 16A96B9A-****-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The returned results.
 	Result *DeleteMessageAppResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,11 +62,11 @@ func (s *DeleteMessageAppResponseBody) Validate() error {
 }
 
 type DeleteMessageAppResponseBodyResult struct {
-	// Indicates whether the application was deleted. Valid values:
+	// Indicates whether the deletion was successful. Valid values:
 	//
-	// 	- true: The application was deleted.
+	// - true: The deletion was successful.
 	//
-	// 	- false: The application failed to be deleted.
+	// - false: The deletion failed.
 	//
 	// example:
 	//

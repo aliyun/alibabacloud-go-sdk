@@ -34,7 +34,7 @@ type SetLiveStreamsNotifyUrlConfigRequest struct {
 	//
 	// demo.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Exception event callback URL.
+	// The callback URL for exception events.
 	//
 	// example:
 	//
@@ -42,39 +42,44 @@ type SetLiveStreamsNotifyUrlConfigRequest struct {
 	ExceptionNotifyUrl *string `json:"ExceptionNotifyUrl,omitempty" xml:"ExceptionNotifyUrl,omitempty"`
 	// The authentication key.
 	//
-	// >  This parameter is required if you set the NotifyReqAuth parameter to **yes**.
+	// > This parameter is required when the NotifyReqAuth request parameter is set to **yes**.
 	//
 	// Value requirements:
 	//
-	// 	- The key must be 16 to 64 characters in length.
+	// - 16 to 64 characters in length.
 	//
-	// 	- The key can contain letters and digits.
+	// - Supports uppercase letters, lowercase letters, and digits.
 	//
 	// example:
 	//
 	// 123456
 	NotifyAuthKey *string `json:"NotifyAuthKey,omitempty" xml:"NotifyAuthKey,omitempty"`
-	// Specifies whether to enable callback authentication. Valid values:
+	// Specifies whether to enable authentication. Valid values:
 	//
-	// 	- **yes**: enables callback authentication. If you set this parameter to **yes**, you must also specify the NotifyAuthKey parameter.
+	// - **yes**: Enabled. If you set this parameter to **yes**, you must also set the NotifyAuthKey request parameter.
 	//
-	// 	- **no**: disables callback authentication.
+	// - **no**: Disabled.
 	//
-	// >  If you do not specify this parameter, the default value **no*	- is used.
+	// > If this parameter is not specified, the default value is **no**.
 	//
-	// For information about the authentication logic, see **Authentication for stream ingest callbacks**.
+	// For the authentication logic, see **Stream ingest callback authentication description*	- below.
 	//
 	// example:
 	//
 	// yes
 	NotifyReqAuth *string `json:"NotifyReqAuth,omitempty" xml:"NotifyReqAuth,omitempty"`
-	// The URL to which the stream ingest callbacks are sent.
+	// The URL to which live stream information is pushed.
 	//
 	// example:
 	//
 	// http://guide.aliyundoc.com/notify
-	NotifyUrl       *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	NotifyUrl *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The callback URL for stream switching information.
+	//
+	// example:
+	//
+	// http://guide.aliyundoc.com/switchnotify
 	SwitchNotifyUrl *string `json:"SwitchNotifyUrl,omitempty" xml:"SwitchNotifyUrl,omitempty"`
 }
 

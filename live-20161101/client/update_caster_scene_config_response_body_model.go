@@ -14,7 +14,7 @@ type iUpdateCasterSceneConfigResponseBody interface {
 }
 
 type UpdateCasterSceneConfigResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

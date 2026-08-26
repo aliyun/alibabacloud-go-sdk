@@ -28,13 +28,13 @@ type iOpenLiveShiftRequest interface {
 }
 
 type OpenLiveShiftRequest struct {
-	// The name of the application to which the live stream belongs. You can specify an asterisk (\\*) as the value to match all applications under the domain name. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The name of the application. The wildcard character (\\*) is supported. An asterisk (\\*) represents all applications under the specified domain name. For more information, see [Stream management](https://help.aliyun.com/document_detail/197397.html).
 	//
 	// example:
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The streaming domain.
+	// The streaming domain name.
 	//
 	// This parameter is required.
 	//
@@ -42,33 +42,38 @@ type OpenLiveShiftRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The length of a TS segment for HTTP Live Streaming (HLS). Unit: seconds.
+	// The duration of an HTTP Live Streaming (HLS) transport stream (TS) segment. Unit: seconds.
 	//
 	// example:
 	//
 	// 3
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// Specifies whether to disable time shifting for the transcoded stream. Valid values:
+	// Specifies whether to enable time shifting for transcoded streams. Valid values:
 	//
-	// 	- **true**: disables time shifting for the transcoded stream.
+	// - **true**: Time shifting is disabled for transcoded streams.
 	//
-	// 	- **false**: enables time shifting for the transcoded stream.
+	// - **false**: Time shifting is enabled for transcoded streams.
 	//
 	// Default value: true.
 	//
 	// example:
 	//
 	// true
-	IgnoreTranscode *bool   `json:"IgnoreTranscode,omitempty" xml:"IgnoreTranscode,omitempty"`
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the live stream. You can specify an asterisk (\\*) as the value to match all streams in the application. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	IgnoreTranscode *bool  `json:"IgnoreTranscode,omitempty" xml:"IgnoreTranscode,omitempty"`
+	OwnerId         *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the stream. The wildcard character (\\*) is supported. An asterisk (\\*) represents all streams under the specified application. For more information, see [Stream management](https://help.aliyun.com/document_detail/197397.html).
 	//
 	// example:
 	//
 	// liveStream****
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The duration for which data is retained. Default value: 7. Unit: day.
+	// The data retention period. The default value is 7. Unit: days.
 	//
 	// example:
 	//

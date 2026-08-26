@@ -14,7 +14,7 @@ type iUpdateLivePackageConfigResponseBody interface {
 }
 
 type UpdateLivePackageConfigResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -18,9 +18,14 @@ type iDeleteCustomTemplateRequest interface {
 }
 
 type DeleteCustomTemplateRequest struct {
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the template that you want to delete. The value is a string.
+	// The name of the template to delete.
 	//
 	// This parameter is required.
 	//

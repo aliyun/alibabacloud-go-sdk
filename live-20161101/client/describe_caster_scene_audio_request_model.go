@@ -22,11 +22,11 @@ type iDescribeCasterSceneAudioRequest interface {
 type DescribeCasterSceneAudioRequest struct {
 	// The ID of the production studio.
 	//
-	// 	- If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/69338.html) operation, check the value of the response parameter CasterId to obtain the ID.
+	// - If you create a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, obtain the value of CasterId from the response.
 	//
-	// 	- If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management*	- page. To go to the page, log on to the **ApsaraVideo Live console*	- and click **Production Studios*	- in the left-side navigation pane.
+	// - If you create a production studio in the ApsaraVideo Live console, view the ID on the **Production Studio*	- > **Cloud Production Studio*	- page.
 	//
-	// >  You can find the ID of the production studio in the Instance Name column.
+	// > The name of a production studio in the list on the Cloud Production Studio page is the ID of the production studio.
 	//
 	// This parameter is required.
 	//
@@ -35,8 +35,13 @@ type DescribeCasterSceneAudioRequest struct {
 	// 97df6b7f-3490-47d2-ac50-88338765****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the scene.
+	// The ID of the scenario.
 	//
 	// This parameter is required.
 	//

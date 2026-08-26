@@ -24,43 +24,48 @@ type iDeleteLiveStreamWatermarkRuleRequest interface {
 }
 
 type DeleteLiveStreamWatermarkRuleRequest struct {
-	// The name of the application to which the live stream belongs.
+	// The AppName of the live stream.
 	//
 	// example:
 	//
 	// liveApp****
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// The streaming domain.
+	// The main streaming domain.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.aliyundoc.com
-	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Domain  *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the watermark rule.
 	//
-	// >  You can obtain the rule ID by checking the value of the RuleId parameter that is returned by the [AddLiveStreamWatermarkRule](https://help.aliyun.com/document_detail/2848100.html) operation.
+	// > Get this ID from the response of the [AddLiveStreamWatermarkRule](https://help.aliyun.com/document_detail/2848100.html) operation.
 	//
 	// example:
 	//
 	// 445409ec-7eaa-461d -8f29-4bec2eb9****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the stream. The following matching rules apply:
+	// The stream name. The following rules apply:
 	//
-	// 	- A stream name can be exactly matched, Example: liveStreamA.
+	// - To match a specific stream, enter the full stream name. Example: liveStreamA.
 	//
-	// 	- Fuzzy match is also supported. The use of an asterisk (`*`) allows all approximate matches to be found.
+	// - Use a wildcard for matching. The asterisk (\\*) matches all streams.
 	//
-	// 	- You can place the asterisk before or after an approximate string.
+	// - You can match by prefix or suffix.
+	//
+	// > 	- For wildcard matching, use only one asterisk (\\*) at the beginning or end of the string. Enclose matching items in parentheses. Separate multiple matching items with a vertical bar (|).
 	//
 	// >
 	//
-	// 	- Fuzzy match: Only one asterisk (`*`) before or after an approximate string is allowed. The approximate string must be enclosed in `()`. Separate multiple strings with vertical bars (`|`).
-	//
-	// 	- For example, `*(t1|t2)` matches all streams whose name has the `t1` or `t2` suffix, and `(abc|123)*` matches all streams whose name has the `abc` or `123` prefix.
+	// > 	- Example: `*(t1|t2)` matches all streams ending with `t1` or `t2`. `(abc|123)*` matches all streams starting with `abc` or `123`.
 	//
 	// example:
 	//

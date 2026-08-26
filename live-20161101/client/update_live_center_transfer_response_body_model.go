@@ -14,7 +14,7 @@ type iUpdateLiveCenterTransferResponseBody interface {
 }
 
 type UpdateLiveCenterTransferResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

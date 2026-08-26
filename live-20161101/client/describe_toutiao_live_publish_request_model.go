@@ -26,7 +26,7 @@ type iDescribeToutiaoLivePublishRequest interface {
 }
 
 type DescribeToutiaoLivePublishRequest struct {
-	// The name of the application to which the live stream belongs.
+	// The name of the application to which the stream belongs.
 	//
 	// This parameter is required.
 	//
@@ -42,17 +42,22 @@ type DescribeToutiaoLivePublishRequest struct {
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The end time must be later than the start time. The maximum time range that can be specified is 10 hours. If you specify neither StartTime nor EndTime, the data of the last hour is queried by default.
+	// The end of the time range to query. The date is in ISO 8601 format and uses UTC. The end time must be later than the start time, and the time span cannot exceed 10 hours. If you do not specify StartTime and EndTime, data from the last hour is queried by default.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2017-10-10T21:00:00Z
-	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start of the time range to query. The date is in ISO 8601 format and uses UTC.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +65,7 @@ type DescribeToutiaoLivePublishRequest struct {
 	//
 	// 2017-10-10T20:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the ingested stream.
+	// The stream name.
 	//
 	// This parameter is required.
 	//

@@ -18,9 +18,14 @@ type iDeleteLiveAIStudioRequest interface {
 }
 
 type DeleteLiveAIStudioRequest struct {
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the template. You can obtain the ID from the response to the CreateLiveAIStudio operation.
+	// The ID of the template. The ID is returned by the CreateLiveAIStudio operation.
 	//
 	// This parameter is required.
 	//

@@ -18,23 +18,23 @@ type iGetEditingJobInfoResponseBody interface {
 }
 
 type GetEditingJobInfoResponseBody struct {
-	// The ID of the production studio.
+	// The production studio ID.
 	//
 	// example:
 	//
 	// 53200b81-b761-4c10-842a-a0726d97****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-	// The information about editing tasks. The following fields are returned for each editing task:
+	// The video clip task information. This includes:
 	//
-	// 	- **OutputVodId**: the ID of the output video-on-demand (VOD) file.
+	// - **OutputVodId**: The ID of the output video-on-demand file.
 	//
-	// 	- **TaskStatus**: the status of the editing task. Valid values: -1, 0, 1, 2, and 3. A value of -1 indicates that the editing task fails. A value of 0 indicates that the editing task is being initialized. A value of 1 indicates that editing is in progress. A value of 2 indicates that the output VOD file is being uploaded. A value of 3 indicates that the editing task is successful.
+	// - **TaskStatus**: The status of the video clip task. (-1: failed. 0: task initialized. 1: clipping in progress. 2: uploading. 3: task succeeded.)
 	//
-	// 	- **StorageLocation**: the storage location in ApsaraVideo VOD.
+	// - **StorageLocation**: The video-on-demand storage address.
 	//
-	// 	- **FileName**: the name of the file that is edited.
+	// - **FileName**: The name of the clipped file.
 	//
-	// 	- **ShowId**: the ID of the episode.
+	// - **ShowId**: The show ID.
 	//
 	// example:
 	//

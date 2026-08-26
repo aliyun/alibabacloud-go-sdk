@@ -16,7 +16,7 @@ type iAddStudioLayoutResponseBody interface {
 }
 
 type AddStudioLayoutResponseBody struct {
-	// The ID of the layout. You can use the ID as a request parameter in the following operations: DeleteStudioLayout, ModifyStudioLayout, and DescribeStudioLayouts.
+	// The layout ID. Use this ID to delete, modify, or query a virtual production studio layout.
 	//
 	// example:
 	//

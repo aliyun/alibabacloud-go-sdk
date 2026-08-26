@@ -18,7 +18,7 @@ type iDescribeLiveDomainDetailRequest interface {
 }
 
 type DescribeLiveDomainDetailRequest struct {
-	// The streaming domain or ingest domain.
+	// The ingest domain or streaming domain.
 	//
 	// This parameter is required.
 	//

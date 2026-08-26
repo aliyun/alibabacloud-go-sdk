@@ -20,21 +20,26 @@ type iCreateCustomTemplateRequest interface {
 }
 
 type CreateCustomTemplateRequest struct {
-	// The configuration of the template. The value is in the following JSON format: {height:xxx,scale:xxx,gop:xxx,bframes:xxx,cdesc:xxx}. All fields are required. If any field is left empty, the call fails.
+	// The template configuration in JSON format. The value must be in the following format: {height:xxx,scale:xxx,gop:xxx,bframes:xxx,cdesc:xxx}. All fields are required. The call fails if any field is missing.
 	//
-	// >  For more information, see **Fields of the CustomTemplate parameter**.
+	// > For more information about the parameters, see the **CustomTemplate details*	- table below.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// {height:1080,scale:[16:9],gop:60,bframes:30,cdesc:h264}
+	// {"height":"1060","scale":"[16:9]","gop":"60","bframes":"30","cdesc":"h264"}
 	CustomTemplate *string `json:"CustomTemplate,omitempty" xml:"CustomTemplate,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the template.
+	// The region ID.
 	//
-	// > Record the template name. The template name is required if you want to use, query, or delete the template.
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the template to add.
+	//
+	// > Record the template name after you create it. The name is required for subsequent operations, such as using, querying, and deleting the template.
 	//
 	// This parameter is required.
 	//

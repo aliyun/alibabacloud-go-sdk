@@ -32,7 +32,7 @@ type iHotLiveRtcStreamRequest interface {
 }
 
 type HotLiveRtcStreamRequest struct {
-	// The name of the application to which the live stream belongs.
+	// The application name of the live stream to prefetch.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type HotLiveRtcStreamRequest struct {
 	//
 	// app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The audio MSID.
+	// The audio Msid.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type HotLiveRtcStreamRequest struct {
 	//
 	// rts audio
 	AudioMsid *string `json:"AudioMsid,omitempty" xml:"AudioMsid,omitempty"`
-	// The duration for which the prefetch connection is maintained. Unit: milliseconds. Default value: 0, which specifies that the prefetch connection is always maintained.
+	// The duration to maintain the prefetch connection. Unit: milliseconds. The default value, 0, means the connection is always maintained.
 	//
 	// example:
 	//
@@ -62,16 +62,20 @@ type HotLiveRtcStreamRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The custom period after which a timeout event is triggered. Unit: milliseconds.
+	// The custom timeout period for a timeout event. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 100000
 	MediaTimeout *string `json:"MediaTimeout,omitempty" xml:"MediaTimeout,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The code of the region in which the live stream is prefetched. For more information, see the following tables that list available region codes.
+	// The prefetch area. For more information, see the RegionCode lookup table.
 	//
-	// >  Region codes include provincial codes for China and country codes for all countries.
+	// > For regions within China, specify the corresponding code from the "Region codes for China" table. For all other regions, specify the country code.
+	//
+	// >
+	//
+	// > - If the CodeRegionHasNoNode error is returned after you specify a RegionCode, the corresponding area is not covered by L1 nodes and cannot be prefetched. In this case, specify a different RegionCode.
 	//
 	// This parameter is required.
 	//
@@ -79,8 +83,13 @@ type HotLiveRtcStreamRequest struct {
 	//
 	// ZHJ
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the live stream that you want to prefetch.
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the live stream to prefetch.
 	//
 	// This parameter is required.
 	//
@@ -88,7 +97,7 @@ type HotLiveRtcStreamRequest struct {
 	//
 	// stream
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The video MSID.
+	// The video Msid.
 	//
 	// This parameter is required.
 	//

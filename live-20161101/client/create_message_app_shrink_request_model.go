@@ -18,9 +18,9 @@ type iCreateMessageAppShrinkRequest interface {
 }
 
 type CreateMessageAppShrinkRequest struct {
-	// The configurations of the application.
+	// The application configuration.
 	AppConfigShrink *string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
-	// The name of the interactive message application. The name must be 2 to 16 characters in length.
+	// The name of the interactive message application. The length must be 2 to 16 characters.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type CreateMessageAppShrinkRequest struct {
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The extended fields.
+	// The extension field.
 	ExtensionShrink *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 }
 

@@ -38,7 +38,7 @@ type DescribeLiveEdgeTransferResponseBody struct {
 	//
 	// demo.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The HTTPDNS API that is used to obtain the destination URLs.
+	// The URL of the HTTPDNS service used to resolve the addresses of the target domains.
 	//
 	// example:
 	//
@@ -50,23 +50,23 @@ type DescribeLiveEdgeTransferResponseBody struct {
 	//
 	// 53FCB985-C67C-467B-B2B3-398430A21E14
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the ingested stream.
+	// The name of the ingested live stream.
 	//
 	// example:
 	//
 	// liveStream****
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The destination domain names to which the ingested stream is relayed. Multiple domain names are separated by commas (,).
+	// A comma-separated list of the target domains where the stream is forwarded.
 	//
 	// example:
 	//
 	// learn.aliyundoc.com,guide.aliyundoc.com
 	TargetDomainList *string `json:"TargetDomainList,omitempty" xml:"TargetDomainList,omitempty"`
-	// Indicates whether stream ingest parameters are passed through. Valid values:
+	// Indicates whether the query parameters from the original ingest URL are passed through to the target URL.
 	//
-	// 	- **yes**: Stream ingest parameters are passed through.
+	// - **yes**: The parameters are passed through.
 	//
-	// 	- **no**: Stream ingest parameters are not passed through.
+	// - **no**: The parameters are not passed through.
 	//
 	// example:
 	//

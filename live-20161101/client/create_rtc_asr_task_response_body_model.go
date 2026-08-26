@@ -20,25 +20,25 @@ type iCreateRtcAsrTaskResponseBody interface {
 }
 
 type CreateRtcAsrTaskResponseBody struct {
-	// The result of the request. If success is returned, the request is successful. If an error message is returned, the request failed.
+	// The result description. The value success indicates a successful operation. An error message is returned if a fault occurs.
 	//
 	// example:
 	//
 	// success
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the request.
+	// The gateway request ID.
 	//
 	// example:
 	//
 	// 7FF5417D-06E9-5A2C-9A70-581F6149E6C1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned HTTP status code. HTTP status code 2000 indicates that the request is successful. If another HTTP status code is returned, the request failed.
+	// The status code. A value of 2000 indicates success. Other values indicate exceptions.
 	//
 	// example:
 	//
 	// 2000
 	RetCode *int64 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
-	// The ID of the task.
+	// The generated task ID.
 	//
 	// example:
 	//

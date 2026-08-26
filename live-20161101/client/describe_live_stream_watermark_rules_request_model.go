@@ -22,25 +22,30 @@ type iDescribeLiveStreamWatermarkRulesRequest interface {
 }
 
 type DescribeLiveStreamWatermarkRulesRequest struct {
-	// The main streaming domain.
+	// The streaming domain.
 	//
 	// example:
 	//
 	// live.yourdomain.com
 	Domain  *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. If you do not specify this parameter, the default value 1 is used.
+	// The page number. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. If you do not specify this parameter, the default value 100 is used.
+	// The number of entries to return on each page. The default value is 100.
 	//
 	// example:
 	//
 	// 100
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

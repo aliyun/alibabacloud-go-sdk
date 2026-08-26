@@ -18,7 +18,7 @@ type iDescribeStudioLayoutsResponseBody interface {
 }
 
 type DescribeStudioLayoutsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -26,7 +26,7 @@ type DescribeStudioLayoutsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The layout information.
 	StudioLayouts []*DescribeStudioLayoutsResponseBodyStudioLayouts `json:"StudioLayouts,omitempty" xml:"StudioLayouts,omitempty" type:"Repeated"`
-	// The total number of layouts.
+	// The number of layouts.
 	//
 	// example:
 	//
@@ -83,37 +83,37 @@ func (s *DescribeStudioLayoutsResponseBody) Validate() error {
 }
 
 type DescribeStudioLayoutsResponseBodyStudioLayouts struct {
-	// The background material configurations.
+	// The background resource configuration.
 	BgImageConfig *DescribeStudioLayoutsResponseBodyStudioLayoutsBgImageConfig `json:"BgImageConfig,omitempty" xml:"BgImageConfig,omitempty" type:"Struct"`
-	// The common layout configurations. This parameter is returned only for a common layout.
+	// The common layout information. This field is returned when the layout is a common layout.
 	CommonConfig *DescribeStudioLayoutsResponseBodyStudioLayoutsCommonConfig `json:"CommonConfig,omitempty" xml:"CommonConfig,omitempty" type:"Struct"`
-	// The layer sorting configurations.
+	// The layer order configuration.
 	LayerOrderConfigList []*DescribeStudioLayoutsResponseBodyStudioLayoutsLayerOrderConfigList `json:"LayerOrderConfigList,omitempty" xml:"LayerOrderConfigList,omitempty" type:"Repeated"`
-	// The ID of the layout.
+	// The studio layout ID.
 	//
 	// example:
 	//
 	// 445409ec-7eaa-461d-8f29-4bec2eb9****
 	LayoutId *string `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
-	// The name of the layout.
+	// The studio layout name.
 	//
 	// example:
 	//
 	// 测试布局
 	LayoutName *string `json:"LayoutName,omitempty" xml:"LayoutName,omitempty"`
-	// The type of the layout. Valid values:
+	// The studio layout type. Valid values:
 	//
-	// 	- **common**
+	// - **common**: common layout.
 	//
-	// 	- **studio**
+	// - **studio**: studio layout.
 	//
 	// example:
 	//
 	// studio
 	LayoutType *string `json:"LayoutType,omitempty" xml:"LayoutType,omitempty"`
-	// The multimedia input configurations.
+	// The multimedia input resource configuration.
 	MediaInputConfigList []*DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList `json:"MediaInputConfigList,omitempty" xml:"MediaInputConfigList,omitempty" type:"Repeated"`
-	// The input configurations for chroma key.
+	// The chroma key input configuration.
 	ScreenInputConfigList []*DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList `json:"ScreenInputConfigList,omitempty" xml:"ScreenInputConfigList,omitempty" type:"Repeated"`
 }
 
@@ -239,7 +239,7 @@ func (s *DescribeStudioLayoutsResponseBodyStudioLayouts) Validate() error {
 }
 
 type DescribeStudioLayoutsResponseBodyStudioLayoutsBgImageConfig struct {
-	// The unique ID of the material.
+	// The unique ID of the background material.
 	//
 	// example:
 	//
@@ -251,13 +251,13 @@ type DescribeStudioLayoutsResponseBodyStudioLayoutsBgImageConfig struct {
 	//
 	// http://example.org
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The position ID.
+	// The location ID.
 	//
 	// example:
 	//
 	// RV01
 	LocationId *string `json:"LocationId,omitempty" xml:"LocationId,omitempty"`
-	// The ID of the material in ApsaraVideo VOD.
+	// The video-on-demand material ID.
 	//
 	// example:
 	//
@@ -314,13 +314,13 @@ func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsBgImageConfig) Validate()
 }
 
 type DescribeStudioLayoutsResponseBodyStudioLayoutsCommonConfig struct {
-	// The ID of the channel that is bound to the video resource.
+	// The channel location ID to which the video resource is bound.
 	//
 	// example:
 	//
 	// RV01
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// The ID of the video resource.
+	// The video resource ID.
 	//
 	// example:
 	//
@@ -365,11 +365,11 @@ type DescribeStudioLayoutsResponseBodyStudioLayoutsLayerOrderConfigList struct {
 	//
 	// k12kj31****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The type of the resource. Valid values:
+	// The type of the resource configuration. Valid values:
 	//
-	// 	- **background**: background material
+	// - **background**: background material.
 	//
-	// 	- **media**: multimedia material
+	// - **media**: multimedia material.
 	//
 	// example:
 	//
@@ -408,7 +408,7 @@ func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsLayerOrderConfigList) Val
 }
 
 type DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList struct {
-	// The ID of the channel that is bound to the video resource.
+	// The channel location ID to which the video resource is bound.
 	//
 	// example:
 	//
@@ -420,7 +420,7 @@ type DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList struct {
 	//
 	// none
 	FillMode *string `json:"FillMode,omitempty" xml:"FillMode,omitempty"`
-	// The normalized value of the material height. The value indicates the ratio of the material height to the height of the background. Valid values: **0 to 1**.
+	// The normalized height of the material. This is the height ratio of the material to the background. Valid values: **0 to 1**.
 	//
 	// example:
 	//
@@ -432,33 +432,33 @@ type DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList struct {
 	//
 	// k12kj31****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the image in ApsaraVideo VOD.
+	// The video-on-demand image material ID.
 	//
 	// example:
 	//
 	// lkajsdfsa8fd89asd8****
 	ImageMaterialId *string `json:"ImageMaterialId,omitempty" xml:"ImageMaterialId,omitempty"`
-	// The sequence number of the multimedia material. This parameter is displayed on the frontend but not used in the operation logic.
+	// The multimedia material number. Used for frontend display only and has no logical function.
 	//
 	// example:
 	//
 	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The normalized value of the position of the material, in the format of [unk][x,y][unk]. Valid values of x and y: **0 to 1**. For example, [unk][0.1,0.2][unk] indicates that the material is horizontally offset by 10% and vertically offset by 20% towards the upper-left corner.
+	// The normalized position of the material fill area [x,y]. The values of x and y range from **0 to 1**. For example, [0.1,0.2] indicates a horizontal offset of 10% and a vertical offset of 20% from the upper-left corner.
 	PositionNormalized []*float32 `json:"PositionNormalized,omitempty" xml:"PositionNormalized,omitempty" type:"Repeated"`
-	// The coordinate origin for the material. Default value: topLeft. topLeft indicates that the upper-left corner is used as the coordinate origin.
+	// The position reference coordinate of the material. Default value: topLeft, which indicates that the position is set based on the upper-left corner.
 	//
 	// example:
 	//
 	// topLeft
 	PositionRefer *string `json:"PositionRefer,omitempty" xml:"PositionRefer,omitempty"`
-	// The ID of the video resource.
+	// The video resource ID.
 	//
 	// example:
 	//
 	// asdfasdfasdfasdfa****
 	VideoResourceId *string `json:"VideoResourceId,omitempty" xml:"VideoResourceId,omitempty"`
-	// The normalized value of the material width. The value indicates the ratio of the material width to the width of the background. Valid values: **0 to 1**.
+	// The normalized width of the material. This is the width ratio of the material to the background. Valid values: **0 to 1**.
 	//
 	// example:
 	//
@@ -569,47 +569,47 @@ func (s *DescribeStudioLayoutsResponseBodyStudioLayoutsMediaInputConfigList) Val
 }
 
 type DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList struct {
-	// The audio configurations.
+	// The audio configuration information.
 	AudioConfig *DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigListAudioConfig `json:"AudioConfig,omitempty" xml:"AudioConfig,omitempty" type:"Struct"`
-	// The ID of the channel that is bound to the video resource.
+	// The channel location ID to which the video resource is bound.
 	//
 	// example:
 	//
 	// RV01
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// The color gamut for chroma key. Valid values:
+	// The chroma key color gamut. Valid values:
 	//
-	// 	- **blue**
+	// - **blue**: blue screen background.
 	//
-	// 	- **green**
+	// - **green**: green screen background.
 	//
-	// 	- **auto**: automatic recognition
+	// - **auto**: automatic detection.
 	//
-	// 	- **complex**: background replacement
+	// - **complex**: real-scene chroma keying.
 	//
 	// example:
 	//
 	// green
 	Color *string `json:"Color,omitempty" xml:"Color,omitempty"`
-	// The normalized value of the height. The value indicates the ratio of the height of the keyed portrait to the height of the background. Valid values: **0 to 1**.
+	// The normalized height. This is the height ratio of the extracted portrait to the background. Valid values: **0 to 1**.
 	//
 	// example:
 	//
 	// 0.4
 	HeightNormalized *float32 `json:"HeightNormalized,omitempty" xml:"HeightNormalized,omitempty"`
-	// The unique ID of the chroma key source.
+	// The unique ID of the chroma key source material.
 	//
 	// example:
 	//
 	// k12kj31****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The sequence number of the chroma key source. This parameter is displayed on the frontend but not used in the operation logic.
+	// The chroma key source number. Used for frontend display only and has no logical function.
 	//
 	// example:
 	//
 	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// Indicates whether only audio exists.
+	// Indicates whether only audio is used.
 	//
 	// example:
 	//
@@ -617,27 +617,27 @@ type DescribeStudioLayoutsResponseBodyStudioLayoutsScreenInputConfigList struct 
 	OnlyAudio *bool `json:"OnlyAudio,omitempty" xml:"OnlyAudio,omitempty"`
 	// The portrait type. Valid values:
 	//
-	// 	- **0**: half body
+	// - **0**: half-body.
 	//
-	// 	- **1**: full body
+	// - **1**: full-body.
 	//
 	// example:
 	//
 	// 0
 	PortraitType *int32 `json:"PortraitType,omitempty" xml:"PortraitType,omitempty"`
-	// The x-coordinate of the material. Valid values: **0 to 1**. The upper-left corner is used as the coordinate origin for the material.
+	// The position parameter, x coordinate. Valid values: **0 to 1**. The material position is based on the upper-left corner.
 	//
 	// example:
 	//
 	// 0.1
 	PositionX *string `json:"PositionX,omitempty" xml:"PositionX,omitempty"`
-	// The y-coordinate of the material. Valid values: **0 to 1**. The upper-left corner is used as the coordinate origin for the material.
+	// The position parameter, y coordinate. Valid values: **0 to 1**. The material position is based on the upper-left corner.
 	//
 	// example:
 	//
 	// 0.2
 	PositionY *string `json:"PositionY,omitempty" xml:"PositionY,omitempty"`
-	// The ID of the video resource.
+	// The video resource ID.
 	//
 	// example:
 	//

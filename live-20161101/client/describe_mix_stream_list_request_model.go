@@ -32,51 +32,56 @@ type iDescribeMixStreamListRequest interface {
 }
 
 type DescribeMixStreamListRequest struct {
-	// The name of the application.
+	// The app name.
 	//
 	// example:
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The main streaming domain.
+	// The streaming domain.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end time. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and in UTC.
 	//
 	// example:
 	//
 	// 2020-09-20T13:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the stream mixing task. If the task was created by calling the [CreateMixStream](https://help.aliyun.com/document_detail/2848087.html) operation, check the value of the response parameter MixStreamId to obtain the ID.
+	// The ID of the stream mixing task. If you create a stream mixing task by calling the [CreateMixStream](https://help.aliyun.com/document_detail/2848087.html) operation, use the MixStreamId value that is returned in the response.
 	//
 	// example:
 	//
 	// 5b2a046e-74d7-385e-d2d7-8a5b87e4****
 	MixStreamId *string `json:"MixStreamId,omitempty" xml:"MixStreamId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Valid values: an integer that is greater than **0*	- and does not exceed the maximum value of the INTEGER data type. Default value: **1**.
+	// The page number. The value must be greater than **0*	- and cannot exceed the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries to return on each page. Default value: **1000**.
+	// The number of records to display on each page. Default value: **1000**.
 	//
 	// example:
 	//
 	// 1000
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The start time. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and in UTC.
 	//
 	// example:
 	//
 	// 2020-09-11T12:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the output stream.
+	// The stream name of the stream mixing task.
 	//
 	// example:
 	//

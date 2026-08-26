@@ -16,13 +16,13 @@ type iDeleteChannelRequest interface {
 }
 
 type DeleteChannelRequest struct {
-	// The application ID. You can specify only one application ID.
+	// The application ID. Only a single ID is supported. This parameter is required. If this parameter is not specified, the service returns InvalidInput.
 	//
 	// example:
 	//
 	// eo85****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The channel ID. You can specify only one channel ID.
+	// The ID of the channel that has been joined. Only a single ID is supported. This parameter is required. If this parameter is not specified, the service returns InvalidInput.
 	//
 	// example:
 	//

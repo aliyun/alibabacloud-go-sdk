@@ -22,11 +22,11 @@ type iEffectCasterUrgentRequest interface {
 type EffectCasterUrgentRequest struct {
   // The ID of the production studio.
   // 
-  // 	- If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
+  // - If you created a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, use the returned CasterId value.
   // 
-  // 	- If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management*	- page. To go to the page, log on to the **ApsaraVideo Live console*	- and click **Production Studios*	- in the left-side navigation pane.
+  // - If you created a production studio in the ApsaraVideo Live console, go to the **Production Studio*	- > **Cloud Production Studio*	- page to obtain the ID.
   // 
-  // >  You can find the ID of the production studio in the Instance ID/Name column.
+  // > The name of the production studio in the list on the Cloud Production Studio page is the production studio ID.
   // 
   // This parameter is required.
   // 
@@ -35,10 +35,15 @@ type EffectCasterUrgentRequest struct {
   // 80787064-1c94-4dc1-85ce-9409960a****
   CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-  RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-  // The ID of the scene. This parameter takes effect only if the scene is a PGM scene.
+  // The ID of the region.
   // 
-  // You can call the [DescribeCasterScenes](https://help.aliyun.com/document_detail/2848039.html) operation to query the scene ID.
+  // example:
+  // 
+  // cn-shanghai
+  RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+  // The ID of the scene. This parameter is valid only for PGM scenes.
+  // 
+  // Call the [DescribeCasterScenes](https://help.aliyun.com/document_detail/2848039.html) operation to query the scene ID of the production studio.
   // 
   // This parameter is required.
   // 

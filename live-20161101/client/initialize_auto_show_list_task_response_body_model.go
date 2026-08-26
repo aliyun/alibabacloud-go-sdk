@@ -18,9 +18,9 @@ type iInitializeAutoShowListTaskResponseBody interface {
 }
 
 type InitializeAutoShowListTaskResponseBody struct {
-	// The ID of the production studio.
+	// The production studio ID.
 	//
-	// >  The value of this parameter can be used as the value of a request parameter to query the streaming URL of the production studio, start the production studio, add video resources to the production studio, add a production studio layout, query production studio layouts, add a production studio component, and add a production studio playlist.
+	// >This ID can be used as a request parameter for querying production studio stream URLs, starting the production studio, adding video resources to the production studio, adding layouts to the production studio, querying the layout list of the production studio, adding components to the production studio, and adding programs to the production studio.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type InitializeAutoShowListTaskResponseBody struct {
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of output video streams.
+	// The list of output addresses of the production studio.
 	//
-	// 	- videoFormat: the format of the streaming URL.
+	// - videoFormat: the streaming URL format.
 	//
-	// 	- outputStreamUrl: the source URL.
+	// - outputStreamUrl: the stream pulling URL.
 	//
-	// 	- transcodeConfig: the output resolution specified for video transcoding of the source URL.
+	// - transcodeConfig: the transcoding resolution description of the stream pulling URL.
 	//
 	// example:
 	//

@@ -105,7 +105,7 @@ type DescribeLiveUserDomainsRequest struct {
 	//
 	// example:
 	//
-	// rg-aek2egyoep3jp7a
+	// rg-**kzvyjetyjjm**
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The tags.

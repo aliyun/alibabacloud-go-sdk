@@ -26,37 +26,37 @@ type iDescribeLiveStreamMetricDetailDataResponseBody interface {
 }
 
 type DescribeLiveStreamMetricDetailDataResponseBody struct {
-	// The accelerated domain name.
+	// The accelerated domain name queried.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which data was queried.
+	// The end time. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2015-12-10T21:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The token that determines the start point of the next query. This parameter is returned if more data results are available.
+	// The starting index for the next query. This value is returned when the queried data has not been fully retrieved.
 	//
 	// example:
 	//
 	// UjsM9x3aVcJi9a0-ArwJUTTC67C***37C0=
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// The number of rows returned.
+	// The number of returned data rows.
 	//
 	// example:
 	//
 	// 5000
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// B955107D-E658-4E77-B913-E0AC3D31693E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range during which data was queried.
+	// The start time. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//

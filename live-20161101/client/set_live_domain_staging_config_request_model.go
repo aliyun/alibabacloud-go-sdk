@@ -28,7 +28,7 @@ type SetLiveDomainStagingConfigRequest struct {
 	//
 	// developer.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The list of features. You must specify the ConfigId field when you want to modify the configurations. For more information, see **Features specified by the Functions parameter**.
+	// The list of features. Specify ConfigId only when you modify a configuration. For more information, see **Functions format description**.
 	//
 	// This parameter is required.
 	//
@@ -37,7 +37,12 @@ type SetLiveDomainStagingConfigRequest struct {
 	// [{"functionArgs":[{"argName":"enable","argValue":"on"},{"argName":"pri","argValue":"1"},{"argName":"rule","argValue":"xxx"}],"functionName":"edge_function"}]
 	Functions *string `json:"Functions,omitempty" xml:"Functions,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SetLiveDomainStagingConfigRequest) String() string {

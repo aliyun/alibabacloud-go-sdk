@@ -16,13 +16,13 @@ type iListMessageGroupResponseBody interface {
 }
 
 type ListMessageGroupResponseBody struct {
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 16A96B9A-****-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// Return result.
 	Result *ListMessageGroupResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,19 @@ func (s *ListMessageGroupResponseBody) Validate() error {
 }
 
 type ListMessageGroupResponseBodyResult struct {
-	// The list of message groups.
+	// Message group list.
 	GroupList []*ListMessageGroupResponseBodyResultGroupList `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
-	// Indicates whether the current page is followed by another page. Valid values:
+	// Indicates whether there is a next page. Valid values:
 	//
-	// 	- true: The current page is followed by another page.
+	// - true: There is a next page.
 	//
-	// 	- false: The current page is not followed by another page.
+	// - false: There is no next page.
 	//
 	// example:
 	//
 	// false
 	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// The total number of message groups.
+	// Total number of message groups.
 	//
 	// example:
 	//
@@ -131,33 +131,33 @@ func (s *ListMessageGroupResponseBodyResult) Validate() error {
 }
 
 type ListMessageGroupResponseBodyResultGroupList struct {
-	// The ID of the interactive messaging application.
+	// Interactive Messages application ID.
 	//
 	// example:
 	//
 	// VKL3***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The time when the message group was created. The time is displayed in UTC.
+	// UTC timestamp when the message group was created.
 	//
 	// example:
 	//
 	// 1502280113
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the creator.
+	// Creator ID.
 	//
 	// example:
 	//
 	// as****hs
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The extended field.
+	// Extension field.
 	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// The ID of the message group.
+	// Message group ID.
 	//
 	// example:
 	//
 	// AE35-****-T95F
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The status of the message group. The default value is **1**, which indicates that the status of the message group is normal.
+	// Message group status. The default value is **1**, indicating that the message group status is normal.
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type iCreateLiveStreamRecordIndexFilesRequest interface {
 }
 
 type CreateLiveStreamRecordIndexFilesRequest struct {
-	// The name of the application to which the live stream belongs. The value of this parameter must be the same as the application name in the ingest URL. Otherwise, the configuration does not take effect. If you want to match all applications, specify an asterisk (\\*) as the value.
+	// The name of the application to which the stream belongs. The AppName must match the AppName in the ingest URL for the template to take effect. To match all AppName values, set this parameter to *.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type CreateLiveStreamRecordIndexFilesRequest struct {
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The main streaming domain.
+	// The streamer streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type CreateLiveStreamRecordIndexFilesRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end time of the index file. TS segments that are uploaded before the end time are included in the index file. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end time of the index file. TS files uploaded before this time are included in the index file. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type CreateLiveStreamRecordIndexFilesRequest struct {
 	//
 	// 2017-12-22T08:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether to include the end time. If you set this parameter to true, the system attempts to include one more TS segment. The created index file covers the entire time range that is specified by the StartTime and EndTime parameters.
+	// Specifies whether to include the end time. If you set this parameter to true, the system attempts to include one additional TS file so that the created index file fully covers the period between StartTime and EndTime.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type CreateLiveStreamRecordIndexFilesRequest struct {
 	//
 	// cn-oss-****.aliyuncs.com
 	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	// The name of the recording that is stored in OSS.
+	// The name of the recording file stored in OSS.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type CreateLiveStreamRecordIndexFilesRequest struct {
 	OssObject     *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The start time of the index file. TS segments that are uploaded after the start time are included in the index file. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The start time of the index file. TS files uploaded after this time are included in the index file. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// This parameter is required.
 	//
@@ -98,7 +98,9 @@ type CreateLiveStreamRecordIndexFilesRequest struct {
 	//
 	// 2017-12-21T08:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the live stream. The value of this parameter must be the same as the stream name in the ingest URL. Otherwise, the configuration does not take effect. If you want to match all streams, specify an asterisk (\\*) as the value.
+	// The stream name. The StreamName must match the StreamName in the ingest URL for the template to take effect. To match all StreamName values, set this parameter to *.
+	//
+	// The stream must have had actual stream ingest activity under the specified DomainName and AppName. Otherwise, the InvalidStream.NotFound error is returned.
 	//
 	// This parameter is required.
 	//

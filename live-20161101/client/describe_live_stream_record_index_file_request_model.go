@@ -24,7 +24,7 @@ type iDescribeLiveStreamRecordIndexFileRequest interface {
 }
 
 type DescribeLiveStreamRecordIndexFileRequest struct {
-	// System-defined parameter. Value: **DescribeLiveStreamRecordIndexFile**.
+	// The AppName of the live stream.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,7 @@ type DescribeLiveStreamRecordIndexFileRequest struct {
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// ## [](#)Usage notes
-	//
-	// ApsaraVideo Live stores the configuration information of an M3U8 index file for six months. You can query only index files created in the previous six months. M3U8 index files are stored in Object Storage Service (OSS) buckets. The retention period is determined by the storage configuration of the OSS buckets.
-	//
-	// ## [](#qps-)QPS limit
-	//
-	// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+	// The main streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -47,9 +41,9 @@ type DescribeLiveStreamRecordIndexFileRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the index file.
+	// The manifest ID.
 	//
-	// >  You can call the [DescribeLiveStreamRecordIndexFiles](https://help.aliyun.com/document_detail/2847890.html) operation to query the ID.
+	// > Call the [DescribeLiveStreamRecordIndexFiles](https://help.aliyun.com/document_detail/2847890.html) API to query the ID.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +52,7 @@ type DescribeLiveStreamRecordIndexFileRequest struct {
 	// c4d7f0a4-b506-43f9-8de3-07732c3f****
 	RecordId      *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The main domain of the live stream.
+	// The name of the live stream.
 	//
 	// This parameter is required.
 	//

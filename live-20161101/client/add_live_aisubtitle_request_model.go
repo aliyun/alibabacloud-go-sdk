@@ -50,51 +50,51 @@ type iAddLiveAISubtitleRequest interface {
 }
 
 type AddLiveAISubtitleRequest struct {
-	// The background color of the subtitles, which is an RGBA value.
+	// The background color of the subtitle. Specify the value in RGBA format.
 	//
 	// example:
 	//
 	// 0xFF0000
 	BgColor *string `json:"BgColor,omitempty" xml:"BgColor,omitempty"`
-	// The background size of the subtitles. Valid values: [0,1].
+	// The background size of the subtitle. Valid values: [0, 1].
 	//
 	// example:
 	//
 	// 0.09
 	BgWidthNormalized *float32 `json:"BgWidthNormalized,omitempty" xml:"BgWidthNormalized,omitempty"`
-	// The font weight. Valid values: [0,1].
+	// The font weight. Valid values: [0, 1].
 	//
 	// example:
 	//
 	// 0.05
 	BorderWidthNormalized *float32 `json:"BorderWidthNormalized,omitempty" xml:"BorderWidthNormalized,omitempty"`
-	// The subtitle template that you copy. Set the value to the name of the subtitle template.
+	// The subtitle template to copy from. Set this parameter to the value of SubtitleName.
 	//
 	// example:
 	//
 	// sub01
 	CopyFrom *string `json:"CopyFrom,omitempty" xml:"CopyFrom,omitempty"`
-	// The custom description of the subtitle template. The description can be up to 128 characters in length and can contain letters, digits, and special characters.
+	// The custom description of the subtitle. The description can contain Chinese characters, letters, digits, and special characters, and can be up to 128 characters in length.
 	//
 	// example:
 	//
 	// live AI subtitle template
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The target language. Valid values:
+	// The target language for translation. Valid values:
 	//
-	//  - en-US: English
+	// - English: en-US
 	//
-	// - zh-CN: Chinese
+	// - Chinese: zh-CN
 	//
-	// - es-ES: Spanish
+	// - Spanish: es-ES
 	//
-	// - ru-RU: Russian
+	// - Russian: ru-RU.
 	//
 	// example:
 	//
 	// zh-CN
 	DstLanguage *string `json:"DstLanguage,omitempty" xml:"DstLanguage,omitempty"`
-	// The font color, which is an RGBA value.
+	// The font color. Specify the value in RGBA format.
 	//
 	// example:
 	//
@@ -102,25 +102,25 @@ type AddLiveAISubtitleRequest struct {
 	FontColor *string `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
 	// The font. Valid values:
 	//
-	// - KaiTi (default)
+	// - KaiTi: KaiTi (default)
 	//
-	// - AlibabaPuHuiTi-Regular
+	// - AlibabaPuHuiTi-Regular: Alibaba PuHuiTi Regular
 	//
-	// - AlibabaPuHuiTi-Bold
+	// - AlibabaPuHuiTi-Bold: Alibaba PuHuiTi Bold
 	//
-	// - AlibabaPuHuiTi-Light
+	// - AlibabaPuHuiTi-Light: Alibaba PuHuiTi Light
 	//
-	// - NotoSansHans-Regular
+	// - NotoSansHans-Regular: Noto Sans SC Regular
 	//
-	// - NotoSansHans-Bold
+	// - NotoSansHans-Bold: Noto Sans SC Bold
 	//
-	// - NotoSansHans-Light
+	// - NotoSansHans-Light: Noto Sans SC Light.
 	//
 	// example:
 	//
 	// KaiTi
 	FontName *string `json:"FontName,omitempty" xml:"FontName,omitempty"`
-	// The font size. Valid values: [0,1].
+	// The font size. Valid values: [0, 1].
 	//
 	// This parameter is required.
 	//
@@ -128,42 +128,53 @@ type AddLiveAISubtitleRequest struct {
 	//
 	// 0.037
 	FontSizeNormalized *float32 `json:"FontSizeNormalized,omitempty" xml:"FontSizeNormalized,omitempty"`
-	// The preview height. Unit: pixels.
+	// The height of the preview screen. Unit: px.
 	//
-	// The following specifications of preview width × preview height are supported:
+	// The width × height of the preview screen supports only the following specifications:
 	//
-	// - Landscape low definition 360p (640×360)
+	// - Landscape low definition 360P: 640 × 360
 	//
-	// - Portrait low definition 360p (360×640)
+	// - Portrait low definition 360P: 360 × 640
 	//
-	// - Landscape standard definition 480p (854×480)
+	// - Landscape standard definition 480P: 854 × 480
 	//
-	// - Portrait standard definition 480p (480×854)
+	// - Portrait standard definition 480P: 480 × 854
 	//
-	// - Landscape high definition 720p (1280×720)
+	// - Landscape high definition 720P: 1280 × 720
 	//
-	// - Portrait high definition 720p (720×1280)
+	// - Portrait high definition 720P: 720 × 1280
 	//
-	// - Landscape ultra-high definition 1080p (1920×1080)
+	// - Landscape ultra-high definition 1080P: 1920 × 1080
 	//
-	// - Portrait ultra-high definition 1080p (1080×1920)
+	// - Portrait ultra-high definition 1080P: 1080 × 1920.
 	//
 	// example:
 	//
 	// 720
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The number of displayed lines.
+	// The number of lines to display.
 	//
 	// example:
 	//
 	// 2
 	MaxLines *int32 `json:"MaxLines,omitempty" xml:"MaxLines,omitempty"`
 	OwnerId  *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The position of the subtitles. The value is a pair of coordinates for which the origin of the x and y axes is the lower-left corner of the screen.
+	// The position of the subtitle. The value is the x,y coordinates with the bottom-left corner of the screen as the origin.
+	//
+	// > The x and y values must be normalized. The actual values are multiplied by the video height. For example, if the video height is 720p and PositionNormalized is set to [0.1, 0.5], the actual position of the subtitle is x = 72 and y = 360.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// [0.32,0.27]
 	PositionNormalized []*float32 `json:"PositionNormalized,omitempty" xml:"PositionNormalized,omitempty" type:"Repeated"`
-	RegionId           *string    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to display the source language. Default value: false.
 	//
 	// example:
@@ -172,11 +183,11 @@ type AddLiveAISubtitleRequest struct {
 	ShowSourceLan *bool `json:"ShowSourceLan,omitempty" xml:"ShowSourceLan,omitempty"`
 	// The source language. Valid values:
 	//
-	//  - en-US: English
+	// - English: en-US
 	//
-	// - zh-CN: Chinese
+	// - Chinese: zh-CN
 	//
-	// - ru-RU: Russian
+	// - Russian: ru-RU.
 	//
 	// This parameter is required.
 	//
@@ -192,13 +203,13 @@ type AddLiveAISubtitleRequest struct {
 	//
 	// sub01
 	SubtitleName *string `json:"SubtitleName,omitempty" xml:"SubtitleName,omitempty"`
-	// The preview width. Unit: pixels.
+	// The width of the preview screen. Unit: px.
 	//
 	// example:
 	//
 	// 1280
 	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
-	// The number of words displayed per line. Valid values: integers from 1 to 500.
+	// The number of characters per line. Valid values: integers in the range of [1, 500].
 	//
 	// This parameter is required.
 	//

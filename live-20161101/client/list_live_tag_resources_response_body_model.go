@@ -18,10 +18,14 @@ type iListLiveTagResourcesResponseBody interface {
 }
 
 type ListLiveTagResourcesResponseBody struct {
+	// The token for the next query.
+	//
 	// example:
 	//
 	// 6a5e8f4fae643e70d1a2ff1827cd91bd
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******

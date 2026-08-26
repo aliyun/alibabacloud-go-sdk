@@ -24,38 +24,38 @@ type iSetLiveStreamPreloadTasksResponseBody interface {
 }
 
 type SetLiveStreamPreloadTasksResponseBody struct {
-	// The number of URLs for which the prefetch task configuration failed.
+	// The number of URLs for which the prefetch task failed.
 	//
 	// example:
 	//
 	// 0
 	FailedURL            *int32                                                     `json:"FailedURL,omitempty" xml:"FailedURL,omitempty"`
 	PreloadTasksMessages *SetLiveStreamPreloadTasksResponseBodyPreloadTasksMessages `json:"PreloadTasksMessages,omitempty" xml:"PreloadTasksMessages,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 36E0E523-E0C6-5D95-A465-A8EA2DCBA2A5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the prefetch task. Valid values:
+	// The task status. Valid values:
 	//
-	// 	- Success
+	// - Success: successful.
 	//
-	// 	- Failed
+	// - Failed: failed.
 	//
-	// >  Success is returned only if the prefetch task is configured for all specified streaming URLs.
+	// > The status is Failed if any task fails to be created.
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The number of URLs for which the prefetch task is successfully configured.
+	// The number of URLs for which the prefetch task succeeded.
 	//
 	// example:
 	//
 	// 1
 	SuccessURL *int32 `json:"SuccessURL,omitempty" xml:"SuccessURL,omitempty"`
-	// The total number of URLs.
+	// The total number of URLs in the prefetch task.
 	//
 	// example:
 	//

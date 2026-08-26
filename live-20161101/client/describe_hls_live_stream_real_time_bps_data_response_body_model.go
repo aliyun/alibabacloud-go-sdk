@@ -18,19 +18,8 @@ type iDescribeHlsLiveStreamRealTimeBpsDataResponseBody interface {
 }
 
 type DescribeHlsLiveStreamRealTimeBpsDataResponseBody struct {
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 17C16B18-D3EA-4809-9CC3-8A2CBE14BC7B
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The timestamp for which the data was queried.
-	//
-	// example:
-	//
-	// 2018-08-08T00:00:00Z
-	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The usage data.
+	RequestId *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Time      *string                                                      `json:"Time,omitempty" xml:"Time,omitempty"`
 	UsageData []*DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageData `json:"UsageData,omitempty" xml:"UsageData,omitempty" type:"Repeated"`
 }
 
@@ -83,13 +72,7 @@ func (s *DescribeHlsLiveStreamRealTimeBpsDataResponseBody) Validate() error {
 }
 
 type DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageData struct {
-	// The domain name.
-	//
-	// example:
-	//
-	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Details about the statistics on each HLS stream under the domain name.
+	DomainName  *string                                                                 `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	StreamInfos []*DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageDataStreamInfos `json:"StreamInfos,omitempty" xml:"StreamInfos,omitempty" type:"Repeated"`
 }
 
@@ -133,14 +116,8 @@ func (s *DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageData) Validate() e
 }
 
 type DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageDataStreamInfos struct {
-	// The statistics on the HLS stream.
-	Infos []*DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageDataStreamInfosInfos `json:"Infos,omitempty" xml:"Infos,omitempty" type:"Repeated"`
-	// The name of the stream.
-	//
-	// example:
-	//
-	// /live/sport.m3u8
-	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	Infos      []*DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageDataStreamInfosInfos `json:"Infos,omitempty" xml:"Infos,omitempty" type:"Repeated"`
+	StreamName *string                                                                      `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
 }
 
 func (s DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageDataStreamInfos) String() string {
@@ -183,24 +160,9 @@ func (s *DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageDataStreamInfos) V
 }
 
 type DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageDataStreamInfosInfos struct {
-	// The bandwidth. Unit: bit/s.
-	//
-	// example:
-	//
-	// 11440.88
 	DownFlow *float32 `json:"DownFlow,omitempty" xml:"DownFlow,omitempty"`
-	// The number of online users.
-	//
-	// example:
-	//
-	// 1
-	Online *float32 `json:"Online,omitempty" xml:"Online,omitempty"`
-	// The bitrate.
-	//
-	// example:
-	//
-	// 1028
-	Rate *string `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	Online   *float32 `json:"Online,omitempty" xml:"Online,omitempty"`
+	Rate     *string  `json:"Rate,omitempty" xml:"Rate,omitempty"`
 }
 
 func (s DescribeHlsLiveStreamRealTimeBpsDataResponseBodyUsageDataStreamInfosInfos) String() string {

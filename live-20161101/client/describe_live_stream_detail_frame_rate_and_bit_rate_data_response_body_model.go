@@ -16,7 +16,7 @@ type iDescribeLiveStreamDetailFrameRateAndBitRateDataResponseBody interface {
 }
 
 type DescribeLiveStreamDetailFrameRateAndBitRateDataResponseBody struct {
-	// The audio and video frame rates and bitrates at each time granularity.
+	// The detailed audio and video frame rate and bitrate data for each time interval.
 	FrameRateAndBitRateInfos []*DescribeLiveStreamDetailFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfos `json:"FrameRateAndBitRateInfos,omitempty" xml:"FrameRateAndBitRateInfos,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,7 +66,7 @@ func (s *DescribeLiveStreamDetailFrameRateAndBitRateDataResponseBody) Validate()
 }
 
 type DescribeLiveStreamDetailFrameRateAndBitRateDataResponseBodyFrameRateAndBitRateInfos struct {
-	// The audio bitrate of the live stream. Unit: bit/s.
+	// The audio bitrate of the live stream. Unit: Bps.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type DescribeLiveStreamDetailFrameRateAndBitRateDataResponseBodyFrameRateAndBitR
 	//
 	// 60
 	AudioFrameRate *float32 `json:"AudioFrameRate,omitempty" xml:"AudioFrameRate,omitempty"`
-	// The bitrate of the live stream. Unit: bit/s.
+	// The bitrate of the live stream. Unit: Bps.
 	//
 	// example:
 	//
@@ -90,19 +90,19 @@ type DescribeLiveStreamDetailFrameRateAndBitRateDataResponseBodyFrameRateAndBitR
 	//
 	// rtmp://example.com/AppName/exampleStreamName
 	StreamUrl *string `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
-	// The time when the data was collected. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The statistical time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC+8).
 	//
 	// example:
 	//
 	// 2016-09-13T16:04:00Z
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The video bitrate of the live stream. Unit: bit/s.
+	// The video bitrate of the live stream. Unit: Bps.
 	//
 	// example:
 	//
 	// 1200
 	VideoBitRate *float32 `json:"VideoBitRate,omitempty" xml:"VideoBitRate,omitempty"`
-	// The video frame rate of the live stream. Unit: frames per second (FPS).
+	// The video frame rate of the live stream. Unit: FPS.
 	//
 	// example:
 	//

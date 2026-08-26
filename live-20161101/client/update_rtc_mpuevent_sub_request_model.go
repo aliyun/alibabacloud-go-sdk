@@ -20,7 +20,7 @@ type iUpdateRtcMPUEventSubRequest interface {
 type UpdateRtcMPUEventSubRequest struct {
 	// The ID of the application.
 	//
-	// >  The ID can be up to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+	// > The ID can be up to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type UpdateRtcMPUEventSubRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The callback URL.
 	//
-	// >  You can use headers such as HTTP and HTTPS in callback URLs. The URL can be up to 2,083 characters and contain letters, digits, and the following special characters: - _ ? % = # . / +
+	// > You can use headers such as HTTP and HTTPS in callback URLs. The URL can be up to 2,083 characters and contain letters, digits, and the following special characters: - _ ? % = # . / +
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type UpdateRtcMPUEventSubRequest struct {
 	//
 	// >
 	//
-	// 	- If you leave this parameter empty, you are subscribed to all mixed-stream relay events submitted in the application.
+	// - If you leave this parameter empty, you are subscribed to all mixed-stream relay events submitted in the application.
 	//
-	// 	- You cannot specify duplicate channel IDs. You can specify up to 20 channel IDs in each call.
+	// - You cannot specify duplicate channel IDs. You can specify up to 20 channel IDs in each call.
 	//
-	// 	- The ID can be up to 64 characters in length and contain letters, digits, underscores (_), and hyphens (-).
+	// - The ID can be up to 64 characters in length and contain letters, digits, underscores (_), and hyphens (-).
 	//
 	// example:
 	//

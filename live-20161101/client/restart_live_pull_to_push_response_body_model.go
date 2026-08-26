@@ -22,7 +22,7 @@ type RestartLivePullToPushResponseBody struct {
 	//
 	// a05e6b15-15af-405b-a4a2-01522450****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The new task ID.
+	// The node ID returned when you create task.
 	//
 	// example:
 	//

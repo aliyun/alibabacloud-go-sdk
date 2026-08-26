@@ -20,7 +20,7 @@ type DescribeLiveDomainSnapshotDataResponseBody struct {
 	//
 	// example:
 	//
-	// B955107D-E658-4E77-B913-E0AC3D31693F
+	// B955107D-E658-4E77-B913-E0AC3D*****
 	RequestId         *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SnapshotDataInfos *DescribeLiveDomainSnapshotDataResponseBodySnapshotDataInfos `json:"SnapshotDataInfos,omitempty" xml:"SnapshotDataInfos,omitempty" type:"Struct"`
 }

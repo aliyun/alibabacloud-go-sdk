@@ -18,7 +18,7 @@ type DeleteLiveRealTimeLogLogstoreResponseBody struct {
 	//
 	// example:
 	//
-	// 9732E117-8A37-49FD-A36F-ABBB87556CA7
+	// 9732E117-8A37-49FD-A36F-ABBB*******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

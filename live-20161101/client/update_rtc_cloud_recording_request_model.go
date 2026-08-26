@@ -18,9 +18,14 @@ type iUpdateRtcCloudRecordingRequest interface {
 }
 
 type UpdateRtcCloudRecordingRequest struct {
+	// The updated layout parameters. Leave this parameter empty in single-stream recording mode. This parameter is required in stream mixing recording mode when the transcoding output is not audio-only.
 	MixLayoutParams *UpdateRtcCloudRecordingRequestMixLayoutParams `json:"MixLayoutParams,omitempty" xml:"MixLayoutParams,omitempty" type:"Struct"`
+	// The updated subscription parameters.
+	//
 	// This parameter is required.
 	SubscribeParams *UpdateRtcCloudRecordingRequestSubscribeParams `json:"SubscribeParams,omitempty" xml:"SubscribeParams,omitempty" type:"Struct"`
+	// The task ID. This ID is returned by StartRtcCloudRecording. Only tasks in the running or abnormal state can be updated.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -79,8 +84,10 @@ func (s *UpdateRtcCloudRecordingRequest) Validate() error {
 }
 
 type UpdateRtcCloudRecordingRequestMixLayoutParams struct {
+	// The global background image for stream mixing.
 	MixBackground *UpdateRtcCloudRecordingRequestMixLayoutParamsMixBackground `json:"MixBackground,omitempty" xml:"MixBackground,omitempty" type:"Struct"`
-	UserPanes     []*UpdateRtcCloudRecordingRequestMixLayoutParamsUserPanes   `json:"UserPanes,omitempty" xml:"UserPanes,omitempty" type:"Repeated"`
+	// The window layout information of the subscribed users. Only UserIds with layout information configured are placed in the output. This parameter is required in stream mixing mode when recording non-audio-only files.
+	UserPanes []*UpdateRtcCloudRecordingRequestMixLayoutParamsUserPanes `json:"UserPanes,omitempty" xml:"UserPanes,omitempty" type:"Repeated"`
 }
 
 func (s UpdateRtcCloudRecordingRequestMixLayoutParams) String() string {
@@ -128,10 +135,18 @@ func (s *UpdateRtcCloudRecordingRequestMixLayoutParams) Validate() error {
 }
 
 type UpdateRtcCloudRecordingRequestMixLayoutParamsMixBackground struct {
+	// The display mode for the output. Valid values:
+	//
+	// - 0: crop. (Default)
+	//
+	// - 1: scale and display with black borders.
+	//
 	// example:
 	//
 	// 0
 	RenderMode *int32 `json:"RenderMode,omitempty" xml:"RenderMode,omitempty"`
+	// The URL of the background image. The maximum length is 2048 characters.
+	//
 	// example:
 	//
 	// https://xxxx.com/photos/my-test-picture.png
@@ -169,31 +184,58 @@ func (s *UpdateRtcCloudRecordingRequestMixLayoutParamsMixBackground) Validate() 
 }
 
 type UpdateRtcCloudRecordingRequestMixLayoutParamsUserPanes struct {
+	// The pane height as a normalized percentage. The value must be in the range of [0, 1]. (Default: 0)
+	//
 	// example:
 	//
 	// 0.5
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The video input stream type of the UserId. This parameter is invalid if UserId is not specified. Valid values:
+	//
+	// - 0: camera. (Default)
+	//
+	// - 1: screen sharing.
+	//
+	// The combination of UserId and SourceType specified here must be included in SubscribeUserIdList.
+	//
 	// example:
 	//
 	// 0
-	SourceType    *int32                                                               `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SourceType *int32 `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The sub-pane background image. When a user turns off the camera, has not started stream ingest after joining, or leaves the channel midway, the corresponding image is displayed at the layout position.
 	SubBackground *UpdateRtcCloudRecordingRequestMixLayoutParamsUserPanesSubBackground `json:"SubBackground,omitempty" xml:"SubBackground,omitempty" type:"Struct"`
+	// The UserId corresponding to this window.
+	//
+	// - If UserId is not specified, windows are filled in the order in which subscribed users join the channel.
+	//
+	// - The combination of UserId and SourceType specified here must be included in SubscribeUserIdList.
+	//
+	// - Audio-only streams cannot be added to the layout.
+	//
 	// example:
 	//
 	// userA
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The pane width as a normalized percentage. The value must be in the range of [0, 1]. (Default: 0)
+	//
 	// example:
 	//
 	// 0.5
 	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The X coordinate as a normalized percentage. The value must be in the range of [0, 1]. (Default: 0)
+	//
 	// example:
 	//
 	// 0
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// The Y coordinate as a normalized percentage. The value must be in the range of [0, 1]. (Default: 0)
+	//
 	// example:
 	//
 	// 0
 	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
+	// The stacking order. 0 is the bottom layer, layer 1 is above layer 0, and so on. (Default: 0)
+	//
 	// example:
 	//
 	// 0
@@ -290,10 +332,18 @@ func (s *UpdateRtcCloudRecordingRequestMixLayoutParamsUserPanes) Validate() erro
 }
 
 type UpdateRtcCloudRecordingRequestMixLayoutParamsUserPanesSubBackground struct {
+	// The display mode for the sub-pane output. Valid values:
+	//
+	// - 0: crop. (Default)
+	//
+	// - 1: scale and display with black borders.
+	//
 	// example:
 	//
 	// 0
 	RenderMode *int32 `json:"RenderMode,omitempty" xml:"RenderMode,omitempty"`
+	// The URL of the background image. The maximum length is 2048 characters.
+	//
 	// example:
 	//
 	// https://xxxx.com/photos/my-test-pane-picture.png
@@ -331,6 +381,12 @@ func (s *UpdateRtcCloudRecordingRequestMixLayoutParamsUserPanesSubBackground) Va
 }
 
 type UpdateRtcCloudRecordingRequestSubscribeParams struct {
+	// The list of subscribed UserId entries. In single-stream recording mode, each UserId is recorded separately. In stream mixing recording mode, the audio and video of all UserIds are mixed into a single set of audio and video.
+	//
+	// >
+	//
+	// > - The array supports a maximum of 17 elements.
+	//
 	// This parameter is required.
 	SubscribeUserIdList []*UpdateRtcCloudRecordingRequestSubscribeParamsSubscribeUserIdList `json:"SubscribeUserIdList,omitempty" xml:"SubscribeUserIdList,omitempty" type:"Repeated"`
 }
@@ -366,14 +422,30 @@ func (s *UpdateRtcCloudRecordingRequestSubscribeParams) Validate() error {
 }
 
 type UpdateRtcCloudRecordingRequestSubscribeParamsSubscribeUserIdList struct {
+	// The video input stream type of the UserId. This parameter takes effect only when the video stream is subscribed (StreamType=2). Valid values:
+	//
+	// - 0: camera. (Default)
+	//
+	// - 1: screen sharing.
+	//
 	// example:
 	//
 	// 0
 	SourceType *int32 `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The media type of the subscribed UserId. Valid values:
+	//
+	// - 0: original stream, which includes both audio and video. (Default)
+	//
+	// - 1: audio-only stream.
+	//
+	// - 2: video-only stream.
+	//
 	// example:
 	//
 	// 0
 	StreamType *int32 `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
+	// The subscribed UserId.
+	//
 	// This parameter is required.
 	//
 	// example:

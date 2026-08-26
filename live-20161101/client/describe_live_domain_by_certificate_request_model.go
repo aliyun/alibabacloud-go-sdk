@@ -20,9 +20,14 @@ type iDescribeLiveDomainByCertificateRequest interface {
 }
 
 type DescribeLiveDomainByCertificateRequest struct {
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The public key of the SSL certificate. You must Base64-encode the public key before you invoke the encodeURIComponent function to encode a URI component. The public key must be in the PEM format.
+	// The public key of the certificate. The public key must be Base64 encoding and then URL-encoded (encodeURIComponent). The PEM format is supported.
 	//
 	// This parameter is required.
 	//
@@ -30,11 +35,11 @@ type DescribeLiveDomainByCertificateRequest struct {
 	//
 	// ******
 	SSLPub *string `json:"SSLPub,omitempty" xml:"SSLPub,omitempty"`
-	// Specifies whether to return only domain names with HTTPS enabled or disabled.
+	// Specifies whether the returned domain name list includes only domain names with HTTPS enabled or disabled.
 	//
-	// 	- **true**: returns only domain names with HTTPS enabled.
+	// - **true**: HTTPS is enabled.
 	//
-	// 	- **false**: The rule is disabled.
+	// - **false**: HTTPS is disabled.
 	//
 	// example:
 	//

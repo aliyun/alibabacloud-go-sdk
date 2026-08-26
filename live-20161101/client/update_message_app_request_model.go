@@ -20,9 +20,9 @@ type iUpdateMessageAppRequest interface {
 }
 
 type UpdateMessageAppRequest struct {
-	// The configurations of the application.
+	// Application configuration.
 	AppConfig map[string]*string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
-	// The ID of the interactive messaging application.
+	// Interactive message application ID.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,13 @@ type UpdateMessageAppRequest struct {
 	//
 	// VKL3***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the interactive messaging application.
+	// Interactive message application name.
 	//
 	// example:
 	//
 	// testApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The extended field.
+	// Extension field.
 	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 }
 

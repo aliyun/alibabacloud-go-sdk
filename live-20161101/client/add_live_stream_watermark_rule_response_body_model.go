@@ -16,7 +16,7 @@ type iAddLiveStreamWatermarkRuleResponseBody interface {
 }
 
 type AddLiveStreamWatermarkRuleResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

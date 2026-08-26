@@ -32,17 +32,17 @@ type DescribeUpBpsPeakOfLineRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Specifies whether to collect statistics at the domain name level. Valid values:
+	// The domain name statistics switch. Valid values:
 	//
-	// 	- on: collects statistics at the domain name level.
+	// - on: Enables domain name-level statistics.
 	//
-	// 	- off (default): collects statistics at the user level.
+	// - off: User-level data. User-level data is collected by default.
 	//
 	// example:
 	//
 	// on
 	DomainSwitch *string `json:"DomainSwitch,omitempty" xml:"DomainSwitch,omitempty"`
-	// The end time of stream pulling. The time must be in UTC. The end time must be later than the start time. The maximum time range that can be specified by StartTime and EndTime is 30 days.
+	// The end time of stream pulling. Specify the time in UTC. The time interval between StartTime and EndTime must be within 30 days, and EndTime must be later than the current time.
 	//
 	// This parameter is required.
 	//
@@ -50,17 +50,22 @@ type DescribeUpBpsPeakOfLineRequest struct {
 	//
 	// 2017-10-10T21:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The leased line. Valid values: integers from 0 to 9.
+	// The dedicated line. Valid values: integers in the range of [0, 9].
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3
-	Line     *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Line    *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time of stream pulling. The time must be in UTC. The maximum time range that can be specified by StartTime and EndTime is 30 days.
+	// The start time of stream pulling. Specify the time in UTC. The time interval between StartTime and EndTime must be within 30 days.
 	//
 	// This parameter is required.
 	//

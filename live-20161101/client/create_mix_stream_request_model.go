@@ -26,15 +26,19 @@ type iCreateMixStreamRequest interface {
 }
 
 type CreateMixStreamRequest struct {
-	// The callback URL. The value is a JSON array. If a callback event is triggered, ApsaraVideo Live sends an HTTP POST request to the URL. The content is included in the HTTP request body.
+	// The webhook address. This is a JSON array. When an event occurs, the live service sends an HTTP POST request to this address. The request body contains the event details.
 	//
 	// example:
 	//
 	// {"CallbackUrl":"http://aliyundoc.com"}
 	CallbackConfig *string `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty"`
-	// The main streaming domain.
+	// The primary streaming domain.
 	//
-	// >  Only domain names that reside in the China (Shanghai) and China (Beijing) regions are supported.
+	// 	Notice:
+	//
+	// Currently, only domain names in the China (Shanghai) and China (Beijing) regions are supported.
+	//
+	// </notice>
 	//
 	// This parameter is required.
 	//
@@ -42,9 +46,9 @@ type CreateMixStreamRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The input streams. The value is a JSON array.
+	// The list of input streams. This is a JSON array.
 	//
-	// For more information, see **InputStreamConfig**.
+	// For more information, see **InputStreamConfig*	- below.
 	//
 	// This parameter is required.
 	//
@@ -52,25 +56,25 @@ type CreateMixStreamRequest struct {
 	//
 	// [{"LayoutChildId":1,"ResourceType":"live","ResourceValue":"rtmp://example.net/live/f2139ec2b8d6a191068cd****ea9064d?auth_key=1600947017-0-0-0b5645fe35d21a65ab92b394bd4d****","LayoutConfig":{"FillMode":"fit","PositionRefer":"topLeft","FillPositionNormalized":[0,0],"FillSizeNormalized":[1,1]}}]
 	InputStreamList *string `json:"InputStreamList,omitempty" xml:"InputStreamList,omitempty"`
-	// The ID of the layout. Valid values:
+	// The layout ID. Valid values:
 	//
-	// 	- **MixStreamLayout-1-1**
+	// - **MixStreamLayout-1-1**
 	//
-	// 	- **MixStreamLayout-2-1**
+	// - **MixStreamLayout-2-1**
 	//
-	// 	- **MixStreamLayout-2-2**
+	// - **MixStreamLayout-2-2**
 	//
-	// 	- **MixStreamLayout-2-3**
+	// - **MixStreamLayout-2-3**
 	//
-	// 	- **MixStreamLayout-3-1**
+	// - **MixStreamLayout-3-1**
 	//
-	// 	- **MixStreamLayout-3-2**
+	// - **MixStreamLayout-3-2**
 	//
-	// 	- **MixStreamLayout-4-1**
+	// - **MixStreamLayout-4-1**
 	//
-	// 	- **USERDEFINED**: If you do not use a preset layout, set this parameter to **USERDEFINED**.
+	// - **USERDEFINED*	- (If you do not use a preset layout, set this parameter to **USERDEFINED**.)
 	//
-	// >  For more information, see [Preset layouts for stream mixing](https://help.aliyun.com/document_detail/199361.html).
+	// > For more information, see [Preset stream mix layouts](https://help.aliyun.com/document_detail/199359.html).
 	//
 	// This parameter is required.
 	//
@@ -78,9 +82,9 @@ type CreateMixStreamRequest struct {
 	//
 	// MixStreamLayout-1-1
 	LayoutId *string `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
-	// The configuration of the output stream. The value is a JSON string.
+	// The output configuration. This is a JSON string.
 	//
-	// For more information, see **OutputConfig**.
+	// For more information, see **OutputConfig*	- below.
 	//
 	// This parameter is required.
 	//
@@ -89,7 +93,12 @@ type CreateMixStreamRequest struct {
 	// {"AppName":"liveApp****","StreamName":"9a78fb3f5c508be0122746f677a3****","MixStreamTemplate":"lp_hd_v","ExpireDuration":"86400"}
 	OutputConfig *string `json:"OutputConfig,omitempty" xml:"OutputConfig,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateMixStreamRequest) String() string {

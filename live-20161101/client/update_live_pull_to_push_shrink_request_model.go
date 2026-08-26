@@ -9,12 +9,16 @@ type iUpdateLivePullToPushShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthKey(v string) *UpdateLivePullToPushShrinkRequest
+	GetAuthKey() *string
 	SetCallbackUrl(v string) *UpdateLivePullToPushShrinkRequest
 	GetCallbackUrl() *string
 	SetEndTime(v string) *UpdateLivePullToPushShrinkRequest
 	GetEndTime() *string
 	SetFileIndex(v int32) *UpdateLivePullToPushShrinkRequest
 	GetFileIndex() *int32
+	SetNotifyItemSwitch(v string) *UpdateLivePullToPushShrinkRequest
+	GetNotifyItemSwitch() *string
 	SetOffset(v int32) *UpdateLivePullToPushShrinkRequest
 	GetOffset() *int32
 	SetOwnerId(v int64) *UpdateLivePullToPushShrinkRequest
@@ -25,6 +29,8 @@ type iUpdateLivePullToPushShrinkRequest interface {
 	GetRegionId() *string
 	SetRepeatNumber(v int32) *UpdateLivePullToPushShrinkRequest
 	GetRepeatNumber() *int32
+	SetReqAuth(v string) *UpdateLivePullToPushShrinkRequest
+	GetReqAuth() *string
 	SetSourceUrlsShrink(v string) *UpdateLivePullToPushShrinkRequest
 	GetSourceUrlsShrink() *string
 	SetStartTime(v string) *UpdateLivePullToPushShrinkRequest
@@ -34,17 +40,16 @@ type iUpdateLivePullToPushShrinkRequest interface {
 }
 
 type UpdateLivePullToPushShrinkRequest struct {
-	// The callback URL. By default, this parameter is left empty.
+	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+	// The callback URL. Default value: empty.
 	//
-	// >
+	// > - The URL that receives task-related callbacks.
 	//
-	// 	- The URL is used to receive callbacks related to the task.
+	// > - Maximum length: 2000 characters.
 	//
-	// 	- The URL can be up to 2,000 characters in length.
+	// > - If this parameter is not specified, task events are not sent as callbacks.
 	//
-	// 	- If you do not specify this parameter, no callbacks are returned for events related to the task.
-	//
-	// 	- The update takes effect for subsequent events that occur.
+	// > - The update takes effect only when the next event is triggered.
 	//
 	// example:
 	//
@@ -52,41 +57,36 @@ type UpdateLivePullToPushShrinkRequest struct {
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
 	// The end time of the task.
 	//
-	// >
+	// > - Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
-	// 	- Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// > - EndTime must be later than StartTime.
 	//
-	// 	- The time range specified by the StartTime and EndTime parameters cannot exceed seven days.
+	// > - EndTime must be later than the current time.
 	//
-	// 	- The end time must be later than the start time.
-	//
-	// 	- The end time must be later than the current time.
-	//
-	// 	- If the task has ended, the update does not take effect.
+	// > - If the task has ended, the update does not take effect.
 	//
 	// example:
 	//
 	// 2024-08-27T14:30:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The file index. Default value: 0.
+	// The video index. Default value: 0.
 	//
-	// >  You can modify this parameter only if the task is stopped. The update takes effect after you restart the task.
+	// > The update must be performed when the task is stopped and takes effect after the task is restarted.
 	//
 	// example:
 	//
 	// 0
-	FileIndex *int32 `json:"FileIndex,omitempty" xml:"FileIndex,omitempty"`
-	// The offset of the position where the system starts to read the video resource. Unit: seconds. Valid values: positive numbers.
+	FileIndex        *int32  `json:"FileIndex,omitempty" xml:"FileIndex,omitempty"`
+	NotifyItemSwitch *string `json:"NotifyItemSwitch,omitempty" xml:"NotifyItemSwitch,omitempty"`
+	// The start offset of the video file, in seconds. Valid values: greater than 0.
 	//
-	// >
+	// > - Specifies the position to start reading from, relative to the first frame.
 	//
-	// 	- This parameter indicates an offset from the first frame.
+	// > - This parameter applies only to video-on-demand or third-party video streams.
 	//
-	// 	- This parameter is applicable to only video resources from ApsaraVideo VOD or a third party.
+	// > - This parameter takes effect only when the first video in the playlist is played.
 	//
-	// 	- The update takes effect only for the first video in a video list.
-	//
-	// 	- You can modify this parameter only if the task is stopped. The update takes effect immediately.
+	// > - The update must be performed when the task is stopped and takes effect after the task is restarted.
 	//
 	// example:
 	//
@@ -95,56 +95,58 @@ type UpdateLivePullToPushShrinkRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region where the task is started. Valid values:
 	//
-	// 	- ap-southeast-1: Singapore
+	// - ap-southeast-1 (Singapore)
 	//
-	// 	- ap-southeast-5: Indonesia (Jakarta)
+	// - ap-southeast-5 (Indonesia)
 	//
-	// 	- cn-beijing: China (Beijing)
+	// - cn-beijing (Beijing)
 	//
-	// 	- cn-shanghai: China (Shanghai)
+	// - cn-shanghai (Shanghai)
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of playbacks after the first playback is complete. Valid values:
+	// The number of times playback repeats after the playlist finishes. Valid values:
 	//
-	// 	- 0 (default): specifies that the video list is played only once.
+	// - 0 (default): No repeat playback.
 	//
-	// 	- \\-1: specifies that the video list is played in loop mode.
+	// - -1: Loops indefinitely.
 	//
-	// 	- Positive integer: specifies the number of times the video list repeats after the first playback is complete.
+	// - Other positive integers: The number of times playback repeats after the playlist finishes.
 	//
-	// >
+	// > - This parameter applies only to video-on-demand or third-party video streams.
 	//
-	// 	- This parameter is applicable to only video resources from ApsaraVideo VOD or a third party.
-	//
-	// 	- The update can take effect immediately.
+	// > - The update takes effect immediately.
 	//
 	// example:
 	//
 	// 0
-	RepeatNumber *int32 `json:"RepeatNumber,omitempty" xml:"RepeatNumber,omitempty"`
-	// The source URLs.
+	RepeatNumber *int32  `json:"RepeatNumber,omitempty" xml:"RepeatNumber,omitempty"`
+	ReqAuth      *string `json:"ReqAuth,omitempty" xml:"ReqAuth,omitempty"`
+	// The list of source stream URLs.
 	//
-	// >
+	// > - For the live type, only one complete live streaming URL is supported.
 	//
-	// 	- If SourceType is set to live, you can specify only one streaming URL.
+	// > - For the vod and url types, up to 30 URLs can be specified.
 	//
-	// 	- If SourceType is set to vod or url, you can specify up to 30 IDs or URLs.
+	// > - The live type supports RTMP, SRT, and HTTP-FLV protocols.
 	//
-	// 	- If SourceType is set to live, the supported protocols for URLs are Real-Time Messaging Protocol (RTMP), Real-Time Streaming Protocol (RTSP), Secure Reliable Transport Protocol (SRT), and HTTP-FLV.
+	// > - For the vod type, specify ApsaraVideo VOD media asset IDs.
 	//
-	// 	- If SourceType is set to vod, specify the IDs of media assets from ApsaraVideo VOD.
+	// > - The url type supports MP4 and HTTP-FLV protocols.
 	//
-	// 	- If SourceType is set to url, the supported protocols for URLs are MP4 and HTTP-FLV.
+	// > - For live source streams, the update takes effect immediately. For video file source streams, the update takes effect after the currently playing video ends, and playback restarts from the beginning of the updated video list.
 	//
-	// 	- If the source is a live stream, the update takes effect immediately. If the source is a list of video resources from ApsaraVideo VOD or a third party, the update does not take effect until the playback of the current video ends. After the update takes effect, the video list starts to play from the beginning.
-	//
-	// 	- You can modify this parameter only if the task is stopped. The update takes effect immediately.
+	// > - The update must be performed when the task is stopped and takes effect after the task is restarted.
 	//
 	// example:
 	//
@@ -152,13 +154,9 @@ type UpdateLivePullToPushShrinkRequest struct {
 	SourceUrlsShrink *string `json:"SourceUrls,omitempty" xml:"SourceUrls,omitempty"`
 	// The start time of the task.
 	//
-	// >
+	// > - Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
-	// 	- Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-	//
-	// 	- The time range specified by the StartTime and EndTime parameters cannot exceed seven days.
-	//
-	// 	- If the task has already started, the update does not take effect.
+	// > - If the task has already started running, the update does not take effect.
 	//
 	// example:
 	//
@@ -182,6 +180,10 @@ func (s UpdateLivePullToPushShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateLivePullToPushShrinkRequest) GetAuthKey() *string {
+	return s.AuthKey
+}
+
 func (s *UpdateLivePullToPushShrinkRequest) GetCallbackUrl() *string {
 	return s.CallbackUrl
 }
@@ -192,6 +194,10 @@ func (s *UpdateLivePullToPushShrinkRequest) GetEndTime() *string {
 
 func (s *UpdateLivePullToPushShrinkRequest) GetFileIndex() *int32 {
 	return s.FileIndex
+}
+
+func (s *UpdateLivePullToPushShrinkRequest) GetNotifyItemSwitch() *string {
+	return s.NotifyItemSwitch
 }
 
 func (s *UpdateLivePullToPushShrinkRequest) GetOffset() *int32 {
@@ -214,6 +220,10 @@ func (s *UpdateLivePullToPushShrinkRequest) GetRepeatNumber() *int32 {
 	return s.RepeatNumber
 }
 
+func (s *UpdateLivePullToPushShrinkRequest) GetReqAuth() *string {
+	return s.ReqAuth
+}
+
 func (s *UpdateLivePullToPushShrinkRequest) GetSourceUrlsShrink() *string {
 	return s.SourceUrlsShrink
 }
@@ -224,6 +234,11 @@ func (s *UpdateLivePullToPushShrinkRequest) GetStartTime() *string {
 
 func (s *UpdateLivePullToPushShrinkRequest) GetTaskId() *string {
 	return s.TaskId
+}
+
+func (s *UpdateLivePullToPushShrinkRequest) SetAuthKey(v string) *UpdateLivePullToPushShrinkRequest {
+	s.AuthKey = &v
+	return s
 }
 
 func (s *UpdateLivePullToPushShrinkRequest) SetCallbackUrl(v string) *UpdateLivePullToPushShrinkRequest {
@@ -238,6 +253,11 @@ func (s *UpdateLivePullToPushShrinkRequest) SetEndTime(v string) *UpdateLivePull
 
 func (s *UpdateLivePullToPushShrinkRequest) SetFileIndex(v int32) *UpdateLivePullToPushShrinkRequest {
 	s.FileIndex = &v
+	return s
+}
+
+func (s *UpdateLivePullToPushShrinkRequest) SetNotifyItemSwitch(v string) *UpdateLivePullToPushShrinkRequest {
+	s.NotifyItemSwitch = &v
 	return s
 }
 
@@ -263,6 +283,11 @@ func (s *UpdateLivePullToPushShrinkRequest) SetRegionId(v string) *UpdateLivePul
 
 func (s *UpdateLivePullToPushShrinkRequest) SetRepeatNumber(v int32) *UpdateLivePullToPushShrinkRequest {
 	s.RepeatNumber = &v
+	return s
+}
+
+func (s *UpdateLivePullToPushShrinkRequest) SetReqAuth(v string) *UpdateLivePullToPushShrinkRequest {
+	s.ReqAuth = &v
 	return s
 }
 

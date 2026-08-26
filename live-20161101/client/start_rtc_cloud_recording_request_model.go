@@ -34,31 +34,56 @@ type iStartRtcCloudRecordingRequest interface {
 }
 
 type StartRtcCloudRecordingRequest struct {
+	// The ID of the app to which the channel to be recorded belongs. The app must belong to the primary account associated with the current API caller\\"s account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ********-7074-****-9ef5-85c19a4*****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the channel to be recorded. Make sure that the channel has active users when you call this operation. Otherwise, the recording task fails to be created.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// room1024
-	ChannelId                *string                                          `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	MaxIdleTime              *int64                                           `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
-	MixLayoutParams          *StartRtcCloudRecordingRequestMixLayoutParams    `json:"MixLayoutParams,omitempty" xml:"MixLayoutParams,omitempty" type:"Struct"`
-	MixTranscodeParams       *StartRtcCloudRecordingRequestMixTranscodeParams `json:"MixTranscodeParams,omitempty" xml:"MixTranscodeParams,omitempty" type:"Struct"`
-	NotifyAuthKey            *string                                          `json:"NotifyAuthKey,omitempty" xml:"NotifyAuthKey,omitempty"`
-	NotifyFileUploadedFormat []*string                                        `json:"NotifyFileUploadedFormat,omitempty" xml:"NotifyFileUploadedFormat,omitempty" type:"Repeated"`
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The idle timeout period. When the task remains idle for longer than MaxIdleTime, the task is automatically stopped. Unit: seconds. The value must be within [10,14400], which is a maximum of 4 hours. Default value: 300.
+	//
+	// example:
+	//
+	// 600
+	MaxIdleTime *int64 `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
+	// The layout parameters. This parameter is not required in single-stream recording mode and is required in stream mixing recording mode when the output is not audio-only.
+	MixLayoutParams *StartRtcCloudRecordingRequestMixLayoutParams `json:"MixLayoutParams,omitempty" xml:"MixLayoutParams,omitempty" type:"Struct"`
+	// The transcoding parameters. This parameter is not required in single-stream recording mode and is required in stream mixing recording mode.
+	MixTranscodeParams *StartRtcCloudRecordingRequestMixTranscodeParams `json:"MixTranscodeParams,omitempty" xml:"MixTranscodeParams,omitempty" type:"Struct"`
+	// The authentication key for callback messages. Leave this parameter empty to skip authentication. If specified, the key must be 16 to 64 characters in length and consist of only uppercase and lowercase letters and digits.
+	//
+	// example:
+	//
+	// mytestkeymytestkey
+	NotifyAuthKey *string `json:"NotifyAuthKey,omitempty" xml:"NotifyAuthKey,omitempty"`
+	// The specified formats for which a callback message is sent when the recording file upload event (RecordFileUploaded) is triggered.
+	NotifyFileUploadedFormat []*string `json:"NotifyFileUploadedFormat,omitempty" xml:"NotifyFileUploadedFormat,omitempty" type:"Repeated"`
+	// The URL for receiving callback messages. Task status messages are pushed to this URL in JSON format by using the POST method. The maximum length is 2048 characters.
+	//
 	// example:
 	//
 	// http://xxxx/test/mycallback
 	NotifyUrl *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	// The recording parameters.
+	//
 	// This parameter is required.
 	RecordParams *StartRtcCloudRecordingRequestRecordParams `json:"RecordParams,omitempty" xml:"RecordParams,omitempty" type:"Struct"`
+	// The storage parameters.
+	//
 	// This parameter is required.
 	StorageParams *StartRtcCloudRecordingRequestStorageParams `json:"StorageParams,omitempty" xml:"StorageParams,omitempty" type:"Struct"`
+	// The subscription parameters.
+	//
 	// This parameter is required.
 	SubscribeParams *StartRtcCloudRecordingRequestSubscribeParams `json:"SubscribeParams,omitempty" xml:"SubscribeParams,omitempty" type:"Struct"`
 }
@@ -200,8 +225,10 @@ func (s *StartRtcCloudRecordingRequest) Validate() error {
 }
 
 type StartRtcCloudRecordingRequestMixLayoutParams struct {
+	// The global background image for stream mixing.
 	MixBackground *StartRtcCloudRecordingRequestMixLayoutParamsMixBackground `json:"MixBackground,omitempty" xml:"MixBackground,omitempty" type:"Struct"`
-	UserPanes     []*StartRtcCloudRecordingRequestMixLayoutParamsUserPanes   `json:"UserPanes,omitempty" xml:"UserPanes,omitempty" type:"Repeated"`
+	// Specifies the window layout information for subscribed users. Only users whose UserId has layout information configured are included in the video. This parameter is required in stream mixing mode when recording non-audio-only files.
+	UserPanes []*StartRtcCloudRecordingRequestMixLayoutParamsUserPanes `json:"UserPanes,omitempty" xml:"UserPanes,omitempty" type:"Repeated"`
 }
 
 func (s StartRtcCloudRecordingRequestMixLayoutParams) String() string {
@@ -249,10 +276,14 @@ func (s *StartRtcCloudRecordingRequestMixLayoutParams) Validate() error {
 }
 
 type StartRtcCloudRecordingRequestMixLayoutParamsMixBackground struct {
+	// The display mode for the output. Valid values:
+	//
 	// example:
 	//
 	// 0
 	RenderMode *int32 `json:"RenderMode,omitempty" xml:"RenderMode,omitempty"`
+	// The URL of the background image. The maximum length is 2048 characters.
+	//
 	// example:
 	//
 	// https://xxxx.com/photos/my-test-picture.png
@@ -290,31 +321,46 @@ func (s *StartRtcCloudRecordingRequestMixLayoutParamsMixBackground) Validate() e
 }
 
 type StartRtcCloudRecordingRequestMixLayoutParamsUserPanes struct {
+	// The pane height as a normalized percentage. The value must be within [0,1]. Default value: 0.
+	//
 	// example:
 	//
 	// 0.5
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The video input stream type for this UserId. If UserId is not specified, this SourceType setting has no effect. Valid values:
+	//
 	// example:
 	//
 	// 0
-	SourceType    *int32                                                              `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SourceType *int32 `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The background image for the sub-pane. When a user turns off the camera, has not published a stream after joining, or leaves the channel midway, the corresponding image fills the layout position.
 	SubBackground *StartRtcCloudRecordingRequestMixLayoutParamsUserPanesSubBackground `json:"SubBackground,omitempty" xml:"SubBackground,omitempty" type:"Struct"`
+	// The UserId corresponding to this window.
+	//
 	// example:
 	//
 	// userA
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The pane width as a normalized percentage. The value must be within [0,1]. Default value: 0.
+	//
 	// example:
 	//
 	// 0.5
 	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The X coordinate as a normalized percentage. The value must be within [0,1]. Default value: 0.
+	//
 	// example:
 	//
 	// 0
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// The Y coordinate as a normalized percentage. The value must be within [0,1]. Default value: 0.
+	//
 	// example:
 	//
 	// 0
 	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
+	// The stacking order. 0 is the bottom layer, layer 1 is above layer 0, and so on. Default value: 0.
+	//
 	// example:
 	//
 	// 0
@@ -411,10 +457,14 @@ func (s *StartRtcCloudRecordingRequestMixLayoutParamsUserPanes) Validate() error
 }
 
 type StartRtcCloudRecordingRequestMixLayoutParamsUserPanesSubBackground struct {
+	// The display mode for the sub-pane output. Valid values:
+	//
 	// example:
 	//
 	// 0
 	RenderMode *int32 `json:"RenderMode,omitempty" xml:"RenderMode,omitempty"`
+	// The URL of the background image. The maximum length is 2048 characters.
+	//
 	// example:
 	//
 	// https://xxxx.com/photos/my-test-pane-picture.png
@@ -452,48 +502,68 @@ func (s *StartRtcCloudRecordingRequestMixLayoutParamsUserPanesSubBackground) Val
 }
 
 type StartRtcCloudRecordingRequestMixTranscodeParams struct {
+	// The audio bitrate in kbps. The value must be in the range of [8, 500]. This parameter is required in stream mixing mode.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 300
 	AudioBitrate *int64 `json:"AudioBitrate,omitempty" xml:"AudioBitrate,omitempty"`
+	// The number of audio channels. Valid values:
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	AudioChannels *int32 `json:"AudioChannels,omitempty" xml:"AudioChannels,omitempty"`
+	// The audio sample rate in Hz. Valid values:
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 32000
 	AudioSampleRate *int64 `json:"AudioSampleRate,omitempty" xml:"AudioSampleRate,omitempty"`
+	// The frame fill type when a stream is interrupted. Valid values:
+	//
 	// example:
 	//
 	// 0
 	FrameFillType *int32 `json:"FrameFillType,omitempty" xml:"FrameFillType,omitempty"`
+	// The video bitrate in kbps. The value must be in the range of [1, 10000].
+	//
 	// example:
 	//
 	// 5000
 	VideoBitrate *int32 `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
+	// The video encoding format. Valid values:
+	//
 	// example:
 	//
 	// H.264
 	VideoCodec *string `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
+	// The video frame rate in fps. The value must be in the range of [1, 60].
+	//
 	// example:
 	//
 	// 30
 	VideoFramerate *int32 `json:"VideoFramerate,omitempty" xml:"VideoFramerate,omitempty"`
+	// The video GOP. An I-frame is inserted every VideoGop frames. The value must be in the range of [1, 60].
+	//
 	// example:
 	//
 	// 30
 	VideoGop *int32 `json:"VideoGop,omitempty" xml:"VideoGop,omitempty"`
+	// The video height in pixels. The value must be in the range of [0, 1920]. Default value: 0.
+	//
 	// example:
 	//
 	// 480
 	VideoHeight *int32 `json:"VideoHeight,omitempty" xml:"VideoHeight,omitempty"`
+	// The video width in pixels. The value must be in the range of [0, 1920]. Default value: 0.
+	//
 	// example:
 	//
 	// 640
@@ -603,16 +673,22 @@ func (s *StartRtcCloudRecordingRequestMixTranscodeParams) Validate() error {
 }
 
 type StartRtcCloudRecordingRequestRecordParams struct {
+	// The maximum duration of a recording file, in seconds. A recording file that exceeds this duration is split. The value must be in the range of [180, 7200], which means a maximum of 2 hours. If this parameter is not specified, the default value is 7200 (2 hours).
+	//
 	// example:
 	//
 	// 7200
 	MaxFileDuration *int64 `json:"MaxFileDuration,omitempty" xml:"MaxFileDuration,omitempty"`
+	// The recording mode. Valid values:
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	RecordMode *int32 `json:"RecordMode,omitempty" xml:"RecordMode,omitempty"`
+	// The media type of the output recording stream. Valid values:
+	//
 	// example:
 	//
 	// 0
@@ -659,15 +735,20 @@ func (s *StartRtcCloudRecordingRequestRecordParams) Validate() error {
 }
 
 type StartRtcCloudRecordingRequestStorageParams struct {
-	FileInfo  []*StartRtcCloudRecordingRequestStorageParamsFileInfo `json:"FileInfo,omitempty" xml:"FileInfo,omitempty" type:"Repeated"`
-	OSSParams *StartRtcCloudRecordingRequestStorageParamsOSSParams  `json:"OSSParams,omitempty" xml:"OSSParams,omitempty" type:"Struct"`
+	// The file storage information, which specifies the format, storage location, and naming of recording files. This parameter takes effect only when StorageType is set to OSS.
+	FileInfo []*StartRtcCloudRecordingRequestStorageParamsFileInfo `json:"FileInfo,omitempty" xml:"FileInfo,omitempty" type:"Repeated"`
+	// The OSS storage configuration. This parameter is required when the storage method is OSS and is invalid when the storage method is VOD.
+	OSSParams *StartRtcCloudRecordingRequestStorageParamsOSSParams `json:"OSSParams,omitempty" xml:"OSSParams,omitempty" type:"Struct"`
+	// The storage method. Valid values:
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
-	StorageType *int32                                               `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	VodParams   *StartRtcCloudRecordingRequestStorageParamsVodParams `json:"VodParams,omitempty" xml:"VodParams,omitempty" type:"Struct"`
+	StorageType *int32 `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The VOD storage configuration. This parameter is required when the storage method is VOD and is invalid when the storage method is OSS.
+	VodParams *StartRtcCloudRecordingRequestStorageParamsVodParams `json:"VodParams,omitempty" xml:"VodParams,omitempty" type:"Struct"`
 }
 
 func (s StartRtcCloudRecordingRequestStorageParams) String() string {
@@ -738,21 +819,30 @@ func (s *StartRtcCloudRecordingRequestStorageParams) Validate() error {
 }
 
 type StartRtcCloudRecordingRequestStorageParamsFileInfo struct {
+	// The file naming format. You can select and combine the following variables in any order:
+	//
 	// example:
 	//
 	// {AppId}_{ChannelId}_{StartTime}_{UserId}
-	FileNamePattern *string   `json:"FileNamePattern,omitempty" xml:"FileNamePattern,omitempty"`
-	FilePathPrefix  []*string `json:"FilePathPrefix,omitempty" xml:"FilePathPrefix,omitempty" type:"Repeated"`
+	FileNamePattern *string `json:"FileNamePattern,omitempty" xml:"FileNamePattern,omitempty"`
+	// The file storage path. Each element in the array corresponds to a directory level. For example, if the value is ["dir1","dir2"], the xxx.m3u8 file is saved as dir1/dir2/TaskId/xxx.m3u8. If this parameter is empty, the file is saved as TaskId/xxx.m3u8.
+	FilePathPrefix []*string `json:"FilePathPrefix,omitempty" xml:"FilePathPrefix,omitempty" type:"Repeated"`
+	// The file storage format. Valid values:
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// HLS
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// The segment length in seconds. This parameter takes effect only in HLS format. The value must be in the range of [10, 30]. Default value: 30.
+	//
 	// example:
 	//
 	// 30
 	SliceDuration *int64 `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
+	// The segment naming format. This parameter takes effect only in HLS format. Similar to FileNamePattern, but with an additional variable Sequence:
+	//
 	// example:
 	//
 	// {AppId}_{ChannelId}_{StartTime}_{Sequence}
@@ -817,12 +907,16 @@ func (s *StartRtcCloudRecordingRequestStorageParamsFileInfo) Validate() error {
 }
 
 type StartRtcCloudRecordingRequestStorageParamsOSSParams struct {
+	// The name of the OSS bucket. The bucket must belong to the primary account associated with the current API caller\\"s account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mytest-bucket
 	OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
+	// The endpoint of the OSS storage. The corresponding region ID must be consistent with the selected service registration endpoint.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -862,10 +956,30 @@ func (s *StartRtcCloudRecordingRequestStorageParamsOSSParams) Validate() error {
 }
 
 type StartRtcCloudRecordingRequestStorageParamsVodParams struct {
-	AutoCompose                *int32  `json:"AutoCompose,omitempty" xml:"AutoCompose,omitempty"`
+	// Specifies whether to enable automatic composition. Valid values:
+	//
+	// example:
+	//
+	// 0
+	AutoCompose *int32 `json:"AutoCompose,omitempty" xml:"AutoCompose,omitempty"`
+	// The ID of the VOD transcoding template group used to transcode the automatically composed video in the VOD service.
+	//
+	// example:
+	//
+	// ****4c34112cfe68248f2f77759c****
 	ComposeVodTranscodeGroupId *string `json:"ComposeVodTranscodeGroupId,omitempty" xml:"ComposeVodTranscodeGroupId,omitempty"`
-	StorageLocation            *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	VodTranscodeGroupId        *string `json:"VodTranscodeGroupId,omitempty" xml:"VodTranscodeGroupId,omitempty"`
+	// The storage address configured in the ApsaraVideo VOD console under Media Asset Management > Storage Management. Recording files are first saved to this location and then uploaded to VOD.
+	//
+	// example:
+	//
+	// mytest.oss-cn-shenzhen.aliyuncs.com
+	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
+	// The ID of the VOD transcoding template group.
+	//
+	// example:
+	//
+	// ****8a914d3989e9825eb90530b2****
+	VodTranscodeGroupId *string `json:"VodTranscodeGroupId,omitempty" xml:"VodTranscodeGroupId,omitempty"`
 }
 
 func (s StartRtcCloudRecordingRequestStorageParamsVodParams) String() string {
@@ -917,6 +1031,8 @@ func (s *StartRtcCloudRecordingRequestStorageParamsVodParams) Validate() error {
 }
 
 type StartRtcCloudRecordingRequestSubscribeParams struct {
+	// The list of subscribed UserId entries. In single-stream recording mode, each UserId is recorded separately. In stream mixing recording mode, the audio and video of all UserIds are mixed into a single set of audio and video.
+	//
 	// This parameter is required.
 	SubscribeUserIdList []*StartRtcCloudRecordingRequestSubscribeParamsSubscribeUserIdList `json:"SubscribeUserIdList,omitempty" xml:"SubscribeUserIdList,omitempty" type:"Repeated"`
 }
@@ -952,14 +1068,20 @@ func (s *StartRtcCloudRecordingRequestSubscribeParams) Validate() error {
 }
 
 type StartRtcCloudRecordingRequestSubscribeParamsSubscribeUserIdList struct {
+	// The video input stream type of the UserId. This parameter takes effect only when the subscription is not audio-only (StreamType != 1). Valid values:
+	//
 	// example:
 	//
 	// 0
 	SourceType *int32 `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The media type of the subscribed UserId. Valid values:
+	//
 	// example:
 	//
 	// 0
 	StreamType *int32 `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
+	// The subscribed UserId.
+	//
 	// This parameter is required.
 	//
 	// example:

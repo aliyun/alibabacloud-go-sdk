@@ -16,13 +16,13 @@ type iDescribeLiveTagResourcesResponseBody interface {
 }
 
 type DescribeLiveTagResourcesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
-	// 34AB41F1-04A5-496F-8C8D-634BDBE6A9FB
+	// ****41F1-04A5-496F-8C8D-634BDBE6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tags of the resource.
+	// A list of resources and their associated tags.
 	TagResources []*DescribeLiveTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -66,13 +66,13 @@ func (s *DescribeLiveTagResourcesResponseBody) Validate() error {
 }
 
 type DescribeLiveTagResourcesResponseBodyTagResources struct {
-	// The resource.
+	// The resource ID.
 	//
 	// example:
 	//
 	// example.com
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The key-value pair of the tag.
+	// The tags bound to the resource.
 	Tag []*DescribeLiveTagResourcesResponseBodyTagResourcesTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -116,13 +116,13 @@ func (s *DescribeLiveTagResourcesResponseBodyTagResources) Validate() error {
 }
 
 type DescribeLiveTagResourcesResponseBodyTagResourcesTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iEnableLiveRealtimeLogDeliveryRequest interface {
 type EnableLiveRealtimeLogDeliveryRequest struct {
   // The streaming domain for which you want to enable real-time log delivery.
   // 
-  // Separate multiple streaming domains with commas (,).
+  // Separate multiple domain names with commas (,).
   // 
   // This parameter is required.
   // 
@@ -29,6 +29,11 @@ type EnableLiveRealtimeLogDeliveryRequest struct {
   // example.com
   DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+  // The ID of the region.
+  // 
+  // example:
+  // 
+  // cn-shanghai
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

@@ -17,7 +17,7 @@ type iDescribeLiveStreamMergeResponseBody interface {
 
 type DescribeLiveStreamMergeResponseBody struct {
 	LiveStreamMergeList *DescribeLiveStreamMergeResponseBodyLiveStreamMergeList `json:"LiveStreamMergeList,omitempty" xml:"LiveStreamMergeList,omitempty" type:"Struct"`
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//

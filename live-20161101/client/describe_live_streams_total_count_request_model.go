@@ -24,7 +24,7 @@ type iDescribeLiveStreamsTotalCountRequest interface {
 }
 
 type DescribeLiveStreamsTotalCountRequest struct {
-	// The ingest domain or streaming domain. This parameter is required if you want to query data based on domain names. You can specify up to 10 domain names. Separate multiple domain names with commas (,).
+	// The ingest domain or streaming domain. This parameter is required when you query domain-level data. You can specify up to 10 domain names in a batch query. Separate multiple domain names with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -32,21 +32,26 @@ type DescribeLiveStreamsTotalCountRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
 	//
-	// >  The maximum time range for a query is 15 days. The end time must be earlier than the current time. Data of the current day can be queried on the next day.
+	// > The interval between StartTime and EndTime must be within 15 days, and EndTime cannot be later than the current time. Data for the current day can be queried only on the next day.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2023-07-25T16:00:00Z
-	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
 	//
-	// >  You can query data in the last 18 months.
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+	//
+	// > The maximum query range is the last 1.5 years.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +59,7 @@ type DescribeLiveStreamsTotalCountRequest struct {
 	//
 	// 2023-07-24T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of data that you want to query. If you leave this parameter empty, data is returned by domain name. If you want to query data by UID, specify the UID for this parameter.
+	// If you leave this parameter empty, domain-level data is queried by default. Set this parameter to aliuid to query UID-level data.
 	//
 	// example:
 	//

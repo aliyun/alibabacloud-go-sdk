@@ -16,11 +16,14 @@ type iDescribeRtcCloudTranscodeResponseBody interface {
 }
 
 type DescribeRtcCloudTranscodeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskInfo  *DescribeRtcCloudTranscodeResponseBodyTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The details of the cloud transcoding task.
+	TaskInfo *DescribeRtcCloudTranscodeResponseBodyTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
 }
 
 func (s DescribeRtcCloudTranscodeResponseBody) String() string {
@@ -59,24 +62,44 @@ func (s *DescribeRtcCloudTranscodeResponseBody) Validate() error {
 }
 
 type DescribeRtcCloudTranscodeResponseBodyTaskInfo struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// ********-7074-****-9ef5-85c19a4*****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The channel ID.
+	//
 	// example:
 	//
 	// myChannel
-	ChannelId  *string                                                  `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The subscription input parameters.
 	InputParam *DescribeRtcCloudTranscodeResponseBodyTaskInfoInputParam `json:"InputParam,omitempty" xml:"InputParam,omitempty" type:"Struct"`
+	// The idle timeout period. If the task remains idle for longer than the MaxIdleTime value, the task is automatically stopped. Unit: seconds. Valid values: 10 to 14400 (maximum of 4 hours). Default value: 300.
+	//
 	// example:
 	//
 	// 600
-	MaxIdleTime  *int64                                                       `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
+	MaxIdleTime *int64 `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
+	// The transcoding output parameters.
 	OutputParams []*DescribeRtcCloudTranscodeResponseBodyTaskInfoOutputParams `json:"OutputParams,omitempty" xml:"OutputParams,omitempty" type:"Repeated"`
+	// The status of the cloud transcoding task. Valid values:
+	//
+	// - STARTING
+	//
+	// - RUNNING
+	//
+	// - RECOVERING
+	//
+	// - STOPPED.
+	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The cloud transcoding task ID.
+	//
 	// example:
 	//
 	// ******73-8501-****-8ac1-72295a******
@@ -173,6 +196,7 @@ func (s *DescribeRtcCloudTranscodeResponseBodyTaskInfo) Validate() error {
 }
 
 type DescribeRtcCloudTranscodeResponseBodyTaskInfoInputParam struct {
+	// The single-stream subscription input parameters.
 	SingleSubUserParam *DescribeRtcCloudTranscodeResponseBodyTaskInfoInputParamSingleSubUserParam `json:"SingleSubUserParam,omitempty" xml:"SingleSubUserParam,omitempty" type:"Struct"`
 }
 
@@ -203,14 +227,20 @@ func (s *DescribeRtcCloudTranscodeResponseBodyTaskInfoInputParam) Validate() err
 }
 
 type DescribeRtcCloudTranscodeResponseBodyTaskInfoInputParamSingleSubUserParam struct {
+	// The video input stream type of the subscription.
+	//
 	// example:
 	//
 	// 0
 	SourceType *int64 `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The media type of the subscribed user.
+	//
 	// example:
 	//
 	// 0
 	StreamType *int64 `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
+	// The user ID of the subscribed user.
+	//
 	// example:
 	//
 	// userA
@@ -257,18 +287,26 @@ func (s *DescribeRtcCloudTranscodeResponseBodyTaskInfoInputParamSingleSubUserPar
 }
 
 type DescribeRtcCloudTranscodeResponseBodyTaskInfoOutputParams struct {
+	// The channel ID to which the transcoded stream is relayed.
+	//
 	// example:
 	//
 	// myChannel
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The transcoding template name.
+	//
 	// example:
 	//
 	// lhd
 	TranscodeTemplate *string `json:"TranscodeTemplate,omitempty" xml:"TranscodeTemplate,omitempty"`
+	// The user ID in the channel to which the transcoded stream is relayed.
+	//
 	// example:
 	//
 	// userA_360p
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The user token required to relay the transcoded stream to the channel.
+	//
 	// example:
 	//
 	// eyJhcHBpZCI********

@@ -22,21 +22,26 @@ type iDescribeLiveUpVideoAudioInfoRequest interface {
 }
 
 type DescribeLiveUpVideoAudioInfoRequest struct {
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time. The format is \\`yyyy-MM-ddTHH:mm:ssZ\\` in UTC.
 	//
 	// example:
 	//
 	// 2015-12-10T15:10:00Z
-	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the stream that you want to query. Specify this parameter in the following format: `rtmp://Ingest domain/Application name/Stream name`.
+	// The start time. The format is \\`yyyy-MM-ddTHH:mm:ssZ\\` in UTC.
 	//
 	// example:
 	//
 	// 2015-12-10T15:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeLiveUpVideoAudioInfo**.
+	// The full name of the stream to query. The format is `rtmp://<ingest domain>/<AppName>/<StreamName>`
 	//
 	// This parameter is required.
 	//

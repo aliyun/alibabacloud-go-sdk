@@ -106,11 +106,11 @@ type DescribeLiveStreamDelayConfigResponseBodyLiveStreamFlvDelayConfig struct {
 	Delay *int32 `json:"Delay,omitempty" xml:"Delay,omitempty"`
 	// The latency level. Valid values:
 	//
-	// 	- **short**: The latency is less than or equal to 4 seconds.
+	// - **short**: The latency is 2 seconds or less.
 	//
-	// 	- **medium**: The latency is greater than 4 seconds, and less than or equal to 8 seconds.
+	// - **medium**: The latency is greater than 2 seconds and 4 seconds or less.
 	//
-	// 	- **long**: The latency is greater than 8 seconds.
+	// - **long**: The latency is greater than 4 seconds.
 	//
 	// example:
 	//
@@ -157,11 +157,11 @@ type DescribeLiveStreamDelayConfigResponseBodyLiveStreamHlsDelayConfig struct {
 	Delay *int32 `json:"Delay,omitempty" xml:"Delay,omitempty"`
 	// The latency level. Valid values:
 	//
-	// 	- **short**: The latency is less than or equal to 4 seconds.
+	// - **short**: The latency is 2 seconds or less.
 	//
-	// 	- **medium**: The latency is greater than 4 seconds, and less than or equal to 8 seconds.
+	// - **medium**: The latency is greater than 2 seconds and 4 seconds or less.
 	//
-	// 	- **long**: The latency is greater than 8 seconds.
+	// - **long**: The latency is greater than 4 seconds.
 	//
 	// example:
 	//
@@ -208,11 +208,11 @@ type DescribeLiveStreamDelayConfigResponseBodyLiveStreamRtmpDelayConfig struct {
 	Delay *int32 `json:"Delay,omitempty" xml:"Delay,omitempty"`
 	// The latency level. Valid values:
 	//
-	// 	- **short**: The latency is less than or equal to 4 seconds.
+	// - **short**: The latency is 2 seconds or less.
 	//
-	// 	- **medium**: The latency is greater than 4 seconds, and less than or equal to 8 seconds.
+	// - **medium**: The latency is greater than 2 seconds and 4 seconds or less.
 	//
-	// 	- **long**: The latency is greater than 8 seconds.
+	// - **long**: The latency is greater than 4 seconds.
 	//
 	// example:
 	//

@@ -22,19 +22,19 @@ type iListLiveMessageGroupUsersResponseBody interface {
 }
 
 type ListLiveMessageGroupUsersResponseBody struct {
-	// The ID of the group queried.
+	// The group ID of the group to query.
 	//
 	// example:
 	//
 	// grouptest
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Indicates whether the current page is followed by another page.
+	// Indicates whether there is a next page.
 	//
 	// example:
 	//
 	// false
 	Hasmore *bool `json:"Hasmore,omitempty" xml:"Hasmore,omitempty"`
-	// The starting page number for the next query. A value of 0 indicates that no further pages can be queried.
+	// The start position of the next page. A value of 0 indicates that there is no next page.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListLiveMessageGroupUsersResponseBody struct {
 	//
 	// A1D75BEA-1329-116F-B29C-76F3F200****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details about the users.
+	// The array of objects.
 	UserList []*ListLiveMessageGroupUsersResponseBodyUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
 }
 
@@ -117,13 +117,13 @@ func (s *ListLiveMessageGroupUsersResponseBody) Validate() error {
 }
 
 type ListLiveMessageGroupUsersResponseBodyUserList struct {
-	// The ID of the user.
+	// The user ID.
 	//
 	// example:
 	//
 	// uid1
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The additional information about the user.
+	// The extended information of the user.
 	//
 	// example:
 	//

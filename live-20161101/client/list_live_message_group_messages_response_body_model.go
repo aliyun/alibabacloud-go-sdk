@@ -22,21 +22,21 @@ type iListLiveMessageGroupMessagesResponseBody interface {
 }
 
 type ListLiveMessageGroupMessagesResponseBody struct {
-	// The ID of the group queried.
+	// The group ID of the group to query.
 	//
 	// example:
 	//
 	// grouptest
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Indicates whether the current page is followed by another page.
+	// Indicates whether there is a next page.
 	//
 	// example:
 	//
 	// false
 	Hasmore *bool `json:"Hasmore,omitempty" xml:"Hasmore,omitempty"`
-	// Details about the messages.
+	// The message list.
 	MessageList []*ListLiveMessageGroupMessagesResponseBodyMessageList `json:"MessageList,omitempty" xml:"MessageList,omitempty" type:"Repeated"`
-	// The starting page number for the next query. A value of 0 indicates that no further pages can be queried.
+	// The start position of the next page. The value is 0 if there is no next page.
 	//
 	// example:
 	//
@@ -123,27 +123,27 @@ type ListLiveMessageGroupMessagesResponseBodyMessageList struct {
 	//
 	// step2 helo, cc group
 	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	// The ID of the message.
+	// The message identifier.
 	//
 	// example:
 	//
 	// c-1-1-0
 	MsgTid *string `json:"MsgTid,omitempty" xml:"MsgTid,omitempty"`
-	// The type of the message.
+	// The message type.
 	//
 	// example:
 	//
 	// 2
 	MsgType *int64 `json:"MsgType,omitempty" xml:"MsgType,omitempty"`
-	// The details about the user who sent the message.
+	// The message sender details.
 	Sender *ListLiveMessageGroupMessagesResponseBodyMessageListSender `json:"Sender,omitempty" xml:"Sender,omitempty" type:"Struct"`
-	// The sequence number of the message.
+	// The message sequence number.
 	//
 	// example:
 	//
 	// 1
 	SeqNumber *int64 `json:"SeqNumber,omitempty" xml:"SeqNumber,omitempty"`
-	// The time when the message was sent. The value is a UNIX timestamp. Unit: seconds.
+	// The time when the message was created, expressed as a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
@@ -244,7 +244,7 @@ type ListLiveMessageGroupMessagesResponseBodyMessageListSender struct {
 	//
 	// uid2
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The additional information about the user who sent the message.
+	// The extended information of the user who sent the message.
 	//
 	// example:
 	//

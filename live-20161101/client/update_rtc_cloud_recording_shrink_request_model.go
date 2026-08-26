@@ -18,9 +18,14 @@ type iUpdateRtcCloudRecordingShrinkRequest interface {
 }
 
 type UpdateRtcCloudRecordingShrinkRequest struct {
+	// The updated layout parameters. Leave this parameter empty in single-stream recording mode. This parameter is required in stream mixing recording mode when the transcoding output is not audio-only.
 	MixLayoutParamsShrink *string `json:"MixLayoutParams,omitempty" xml:"MixLayoutParams,omitempty"`
+	// The updated subscription parameters.
+	//
 	// This parameter is required.
 	SubscribeParamsShrink *string `json:"SubscribeParams,omitempty" xml:"SubscribeParams,omitempty"`
+	// The task ID. This ID is returned by StartRtcCloudRecording. Only tasks in the running or abnormal state can be updated.
+	//
 	// This parameter is required.
 	//
 	// example:

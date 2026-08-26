@@ -16,7 +16,7 @@ type iDescribeLiveUserTagsResponseBody interface {
 }
 
 type DescribeLiveUserTagsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *DescribeLiveUserTagsResponseBody) Validate() error {
 }
 
 type DescribeLiveUserTagsResponseBodyTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

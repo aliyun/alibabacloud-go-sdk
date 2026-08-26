@@ -22,7 +22,7 @@ type iDeleteLivePackageConfigRequest interface {
 }
 
 type DeleteLivePackageConfigRequest struct {
-	// App name, `*` matches all names.
+	// The AppName of all live streams. An asterisk (\\*) matches all AppNames.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DeleteLivePackageConfigRequest struct {
 	//
 	// AppName
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Live streaming domain (primary playback domain).
+	// The main streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -39,8 +39,13 @@ type DeleteLivePackageConfigRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Live stream name, `*` matches all streams under AppName.
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The stream name. An asterisk (\\*) matches all streams under the specified AppName.
 	//
 	// This parameter is required.
 	//

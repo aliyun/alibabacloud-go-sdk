@@ -18,7 +18,7 @@ type iDescribeToutiaoLivePlayResponseBody interface {
 }
 
 type DescribeToutiaoLivePlayResponseBody struct {
-	// The information about the live stream.
+	// The details of the stream information.
 	Content []*DescribeToutiaoLivePlayResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
 	// The description of the response status.
 	//
@@ -83,7 +83,7 @@ func (s *DescribeToutiaoLivePlayResponseBody) Validate() error {
 }
 
 type DescribeToutiaoLivePlayResponseBodyContent struct {
-	// The name of the application to which the live stream belongs.
+	// The name of the application to which the stream belongs.
 	//
 	// example:
 	//
@@ -95,7 +95,7 @@ type DescribeToutiaoLivePlayResponseBodyContent struct {
 	//
 	// 0.0801239013671875
 	Bandwidth *float32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The Content Delivery Network (CDN) name.
+	// The CDN name.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ type DescribeToutiaoLivePlayResponseBodyContent struct {
 	//
 	// 452
 	PlayNum *int64 `json:"PlayNum,omitempty" xml:"PlayNum,omitempty"`
-	// The name of the live stream.
+	// The stream name.
 	//
 	// example:
 	//

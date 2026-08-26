@@ -18,9 +18,9 @@ type iAddPlaylistItemsResponseBody interface {
 }
 
 type AddPlaylistItemsResponseBody struct {
-	// The information about the episodes.
+	// The list of added playlist items.
 	Items *AddPlaylistItemsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	// The ID of the episode list. You can use the ID as a request parameter in the API operation that is used to remove episodes, query episodes, edit an episode list, delete an episode list, query the information about an episode list, start playing an episode list, or stop playing an episode list.
+	// The playlist ID. This value can be used as a request parameter for deleting playlist items, querying playlist items, editing playlists, deleting playlists, querying playlists, starting playlists, and stopping playlists.
 	//
 	// example:
 	//
@@ -79,9 +79,9 @@ func (s *AddPlaylistItemsResponseBody) Validate() error {
 }
 
 type AddPlaylistItemsResponseBodyItems struct {
-	// The episodes that failed to be added.
+	// The list of playlist items that failed to be added.
 	FailedItems []*AddPlaylistItemsResponseBodyItemsFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
-	// The episodes that were added.
+	// The list of playlist items that were successfully added.
 	SuccessItems []*AddPlaylistItemsResponseBodyItemsSuccessItems `json:"SuccessItems,omitempty" xml:"SuccessItems,omitempty" type:"Repeated"`
 }
 
@@ -134,13 +134,13 @@ func (s *AddPlaylistItemsResponseBodyItems) Validate() error {
 }
 
 type AddPlaylistItemsResponseBodyItemsFailedItems struct {
-	// The ID of the episode.
+	// The playlist item ID.
 	//
 	// example:
 	//
 	// c09f3d63-eacf-4fbf-bd48-a07a6ba7****
 	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	// The name of the episode.
+	// The playlist item name.
 	//
 	// example:
 	//
@@ -179,13 +179,13 @@ func (s *AddPlaylistItemsResponseBodyItemsFailedItems) Validate() error {
 }
 
 type AddPlaylistItemsResponseBodyItemsSuccessItems struct {
-	// The ID of the episode.
+	// The playlist item ID.
 	//
 	// example:
 	//
 	// c09f3d63-eacf-4fbf-bd48-a07a6ba7****
 	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	// The name of the episode.
+	// The playlist item name.
 	//
 	// example:
 	//

@@ -29,7 +29,7 @@ type DescribeLiveHttpsDomainListRequest struct {
 	// demo.aliyun.com
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Valid values: **1 to 10000**.
+	// The page number to return. Valid values: **[1,10000]**.
 	//
 	// example:
 	//
@@ -40,7 +40,12 @@ type DescribeLiveHttpsDomainListRequest struct {
 	// example:
 	//
 	// 20
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

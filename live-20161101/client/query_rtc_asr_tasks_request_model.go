@@ -18,9 +18,14 @@ type iQueryRtcAsrTasksRequest interface {
 }
 
 type QueryRtcAsrTasksRequest struct {
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the task that you want to query. If you do not specify this parameter, all running tasks under your UID are queried.
+	// The ID of the task to query. If you do not specify this parameter, all running tasks under your user ID are queried.
 	//
 	// example:
 	//

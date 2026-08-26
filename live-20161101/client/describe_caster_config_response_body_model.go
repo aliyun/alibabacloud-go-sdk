@@ -9,6 +9,8 @@ type iDescribeCasterConfigResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAudioMixerMode(v string) *DescribeCasterConfigResponseBody
+	GetAudioMixerMode() *string
 	SetAutoSwitchUrgentConfig(v string) *DescribeCasterConfigResponseBody
 	GetAutoSwitchUrgentConfig() *string
 	SetAutoSwitchUrgentOn(v string) *DescribeCasterConfigResponseBody
@@ -52,112 +54,119 @@ type iDescribeCasterConfigResponseBody interface {
 }
 
 type DescribeCasterConfigResponseBody struct {
-	// The configuration for automatic switchover to the standby resource. The `eofThres` field specifies the duration after which the production studio automatically switches to the standby resource if a stream interruption occurs. Unit: seconds.
+	AudioMixerMode *string `json:"AudioMixerMode,omitempty" xml:"AudioMixerMode,omitempty"`
+	// The automatic standby video switching configuration. `eofThres`: specifies the duration of stream interruption before automatically switching to the standby video. Unit: seconds.
 	//
 	// example:
 	//
 	// {"eofThres":3}
 	AutoSwitchUrgentConfig *string `json:"AutoSwitchUrgentConfig,omitempty" xml:"AutoSwitchUrgentConfig,omitempty"`
-	// Indicates whether the production studio automatically switches to the standby resource in case of a stream interruption.
+	// Indicates whether automatic switchover to the standby video upon stream interruption is enabled.
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false**
+	// - **false**: Shutdown.
 	//
 	// example:
 	//
 	// true
 	AutoSwitchUrgentOn *string `json:"AutoSwitchUrgentOn,omitempty" xml:"AutoSwitchUrgentOn,omitempty"`
-	// The callback URL.
+	// The user callback URL.
 	//
 	// example:
 	//
 	// http://learn.aliyundoc.com/callBackLive
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
-	// The ID of the production studio.
+	// The production studio ID.
 	//
 	// example:
 	//
 	// LIVEPRODUCER_POST-cn-0pp1czt****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-	// The name of the production studio.
+	// The production studio name.
 	//
 	// example:
 	//
 	// coco-caster10
 	CasterName *string `json:"CasterName,omitempty" xml:"CasterName,omitempty"`
-	// Indicates whether channels are enabled for the production studio. Valid values:
+	// Indicates whether Channel is enabled. Valid values:
 	//
-	// 	- **0**: Channels are disabled.
 	//
-	// 	- **1**: Channels are enabled.
+	//
+	// - **0**: Disabled.
+	//
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	ChannelEnable *int32 `json:"ChannelEnable,omitempty" xml:"ChannelEnable,omitempty"`
-	// Indicates whether stream delay is enabled. Unit: seconds.
+	// The stream delay. Unit: seconds.
 	//
-	// 	- **0**: Stream delay is disabled.
 	//
-	// 	- **A value greater than 0**: Stream delay is enabled.
+	//
+	// - **0**: Stream delay is disabled.
+	//
+	// - Greater than **0**: Stream delay is enabled.
 	//
 	// example:
 	//
 	// 0
 	Delay *float32 `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	// The main streaming domain.
+	// The primary streaming domain.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Indicates whether the carousel playback feature is enabled. Valid values:
+	// The playlist effective flag. Valid values:
 	//
-	// 	- **0**: The carousel playback feature is disabled.
 	//
-	// 	- **1**: The carousel playback feature is enabled.
+	//
+	// - **0**: Not effective.
+	//
+	// - **1**: Effective.
 	//
 	// example:
 	//
 	// 0
 	ProgramEffect *int32 `json:"ProgramEffect,omitempty" xml:"ProgramEffect,omitempty"`
-	// The name of the playlist for carousel playback.
+	// The playlist name.
 	//
 	// example:
 	//
 	// program_name
 	ProgramName *string `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
-	// The recording configuration. If this parameter is empty, the recording feature is disabled.
+	// The recording configuration. If this parameter is empty, the recording feature is not enabled.
 	RecordConfig *DescribeCasterConfigResponseBodyRecordConfig `json:"RecordConfig,omitempty" xml:"RecordConfig,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 97df6b7f-3490-47d2-ac50-8833e1b64597
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The custom stream redirect URL.
+	// The custom side output URL of the production studio.
 	//
 	// example:
 	//
 	// rtmp://sophon-developer.aliyundoc.com/caster/4a82a3d1b7f0462ea37348366201****?auth_key=1608953344-0-0-ac8c628078541d7055a170ec59a5****
 	SideOutputUrl *string `json:"SideOutputUrl,omitempty" xml:"SideOutputUrl,omitempty"`
-	// The list of custom stream redirect URLs.
+	// The list of custom side output URLs of the production studio.
 	//
 	// example:
 	//
-	// rtmp://sophon-developer.aliyundoc.com/caster/4a82a3d1b7f0462ea37348366201****?auth_key=1608953344-0-0-ac8c628078541d7055a170ec59a5****
+	// ["rtmp://domain/app1/stream1","rtmp://domain/app2/stream2"]
 	SideOutputUrlList *string                                           `json:"SideOutputUrlList,omitempty" xml:"SideOutputUrlList,omitempty"`
 	SyncGroupsConfig  *DescribeCasterConfigResponseBodySyncGroupsConfig `json:"SyncGroupsConfig,omitempty" xml:"SyncGroupsConfig,omitempty" type:"Struct"`
 	// The transcoding configuration.
 	TranscodeConfig *DescribeCasterConfigResponseBodyTranscodeConfig `json:"TranscodeConfig,omitempty" xml:"TranscodeConfig,omitempty" type:"Struct"`
-	// Prepared broadcast image media asset ID.
+	// The media library asset ID of the standby image.
 	//
 	// example:
 	//
 	// a089175eb5f4427684fc0715159a****
 	UrgentImageId *string `json:"UrgentImageId,omitempty" xml:"UrgentImageId,omitempty"`
-	// URL of the standby image material.
+	// The URL of the standby image.
 	//
 	// example:
 	//
@@ -169,7 +178,7 @@ type DescribeCasterConfigResponseBody struct {
 	//
 	// rtmp://demo.aliyundoc.com
 	UrgentLiveStreamUrl *string `json:"UrgentLiveStreamUrl,omitempty" xml:"UrgentLiveStreamUrl,omitempty"`
-	// The ID of the material that is used as the standby video from the media library.
+	// The media library asset ID of the standby video.
 	//
 	// example:
 	//
@@ -183,6 +192,10 @@ func (s DescribeCasterConfigResponseBody) String() string {
 
 func (s DescribeCasterConfigResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCasterConfigResponseBody) GetAudioMixerMode() *string {
+	return s.AudioMixerMode
 }
 
 func (s *DescribeCasterConfigResponseBody) GetAutoSwitchUrgentConfig() *string {
@@ -263,6 +276,11 @@ func (s *DescribeCasterConfigResponseBody) GetUrgentLiveStreamUrl() *string {
 
 func (s *DescribeCasterConfigResponseBody) GetUrgentMaterialId() *string {
 	return s.UrgentMaterialId
+}
+
+func (s *DescribeCasterConfigResponseBody) SetAudioMixerMode(v string) *DescribeCasterConfigResponseBody {
+	s.AudioMixerMode = &v
+	return s
 }
 
 func (s *DescribeCasterConfigResponseBody) SetAutoSwitchUrgentConfig(v string) *DescribeCasterConfigResponseBody {
@@ -385,27 +403,27 @@ func (s *DescribeCasterConfigResponseBody) Validate() error {
 }
 
 type DescribeCasterConfigResponseBodyRecordConfig struct {
-	// On-demand recording. Values:
+	// The on-demand recording mode. Valid values:
 	//
-	// - 0: Off.
+	// - 0: Disabled.
 	//
-	// - 1: Via HTTP callback.
+	// - 1: HTTP callback-based.
 	//
-	// - 2: Parse streaming parameters for on-demand recording.
+	// - 2: On-demand recording by parsing stream ingest parameters.
 	//
-	// - 7: Default to not record.
+	// - 7: Not recorded by default.
 	//
 	// example:
 	//
 	// 0
 	OnDemand *int32 `json:"OnDemand,omitempty" xml:"OnDemand,omitempty"`
-	// The OSS bucket for storage.
+	// The storage location.
 	//
 	// example:
 	//
 	// liveBucket****
 	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	// The Object Storage Service (OSS) endpoint.
+	// The OSS endpoint of the storage location.
 	//
 	// example:
 	//
@@ -666,29 +684,29 @@ func (s *DescribeCasterConfigResponseBodySyncGroupsConfigSyncGroupResourceIds) V
 }
 
 type DescribeCasterConfigResponseBodyTranscodeConfig struct {
-	// The transcoding template of the production studio. Valid values:
+	// The production studio transcoding template. Valid values:
 	//
-	// 	- **lp_ld**: low definition
+	// - **lp_ld**: low definition.
 	//
-	// 	- **lp_sd**: standard definition
+	// - **lp_sd**: standard definition.
 	//
-	// 	- **lp_hd**: high definition
+	// - **lp_hd**: high definition.
 	//
-	// 	- **lp_ud**: ultra high definition
+	// - **lp_ud**: ultra-high definition.
 	//
-	// 	- **lp_ld_v**: low definition (portrait mode)
+	// - **lp_ld_v**: portrait low definition.
 	//
-	// 	- **lp_sd_v**: standard definition (portrait mode)
+	// - **lp_sd_v**: portrait standard definition.
 	//
-	// 	- **lp_hd_v**: high definition (portrait mode)
+	// - **lp_hd_v**: portrait high definition.
 	//
-	// 	- **lp_ud_v**: ultra high definition (portrait mode)
+	// - **lp_ud_v**: portrait ultra-high definition.
 	//
 	// example:
 	//
 	// lp_hd
 	CasterTemplate *string `json:"CasterTemplate,omitempty" xml:"CasterTemplate,omitempty"`
-	// The custom settings.
+	// The custom configuration.
 	CustomParams    *DescribeCasterConfigResponseBodyTranscodeConfigCustomParams    `json:"CustomParams,omitempty" xml:"CustomParams,omitempty" type:"Struct"`
 	LiveTemplateIds *DescribeCasterConfigResponseBodyTranscodeConfigLiveTemplateIds `json:"LiveTemplateIds,omitempty" xml:"LiveTemplateIds,omitempty" type:"Struct"`
 }
@@ -786,13 +804,13 @@ type DescribeCasterConfigResponseBodyTranscodeConfigCustomParamsVideo struct {
 	//
 	// 300
 	Fps *int32 `json:"fps,omitempty" xml:"fps,omitempty"`
-	// The video height. Unit: pixels.
+	// The video height. Unit: pixels (px).
 	//
 	// example:
 	//
 	// 720
 	Height *int32 `json:"height,omitempty" xml:"height,omitempty"`
-	// The video width. Unit: pixels.
+	// The video width. Unit: pixels (px).
 	//
 	// example:
 	//

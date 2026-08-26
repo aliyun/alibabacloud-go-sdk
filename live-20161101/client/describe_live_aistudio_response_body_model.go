@@ -22,19 +22,19 @@ type iDescribeLiveAIStudioResponseBody interface {
 }
 
 type DescribeLiveAIStudioResponseBody struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Valid values: 1 to 50.
+	// The number of entries returned on each page. Default value: 10. Valid values: 1 to 50.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

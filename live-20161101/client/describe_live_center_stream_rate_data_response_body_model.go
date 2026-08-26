@@ -22,7 +22,7 @@ type DescribeLiveCenterStreamRateDataResponseBody struct {
 	//
 	// example:
 	//
-	// B6E125BE-E9B8-1103-8684-A3585CB632F1
+	// B6E125BE-E9B8-1103-8684-A35*******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

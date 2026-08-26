@@ -26,7 +26,7 @@ type iDescribeLiveStreamRecordIndexFilesResponseBody interface {
 }
 
 type DescribeLiveStreamRecordIndexFilesResponseBody struct {
-	// The sort order.
+	// The sorting order.
 	//
 	// example:
 	//

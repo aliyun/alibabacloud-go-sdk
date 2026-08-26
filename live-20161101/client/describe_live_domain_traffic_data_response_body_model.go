@@ -24,7 +24,7 @@ type iDescribeLiveDomainTrafficDataResponseBody interface {
 }
 
 type DescribeLiveDomainTrafficDataResponseBody struct {
-	// The time granularity of the query.
+	// The time granularity for querying data.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DescribeLiveDomainTrafficDataResponseBody struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The end time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeLiveDomainTrafficDataResponseBody struct {
 	//
 	// B955107D-E658-4E77-B913-E0AC3D31693E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The start time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
 	//
 	// example:
 	//

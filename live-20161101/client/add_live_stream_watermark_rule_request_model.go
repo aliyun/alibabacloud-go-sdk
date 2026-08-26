@@ -28,7 +28,7 @@ type iAddLiveStreamWatermarkRuleRequest interface {
 }
 
 type AddLiveStreamWatermarkRuleRequest struct {
-	// The name of the application to which the live stream belongs.
+	// The AppName of the live stream.
 	//
 	// This parameter is required.
 	//
@@ -57,22 +57,27 @@ type AddLiveStreamWatermarkRuleRequest struct {
 	// example:
 	//
 	// WatermarkRule****
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the live stream. The following rules apply:
+	// The stream name. The following rules apply:
 	//
-	// 	- A stream name can be exactly matched. Example: liveStreamA.
+	// - To match a specific stream, enter the full stream name. For example, liveStreamA.
 	//
-	// 	- Fuzzy match is also supported. The use of an asterisk (`*`) allows all approximate matches to be found.
+	// - You can use a wildcard match. The asterisk (`*`) matches all streams.
 	//
-	// 	- You can place the asterisk before or after an approximate string.
+	// - You can perform prefix and suffix matching.
 	//
+	// > 	- You can use only one asterisk (`*`). The asterisk must be at the beginning or end of the string. The matching items must be enclosed in parentheses (`()`) and separated by a vertical bar (`|`).
 	//
+	// >
 	//
-	// >	- Fuzzy match: Only one asterisk (`*`) before or after an approximate string is allowed. The approximate string must be enclosed in `()`. Separate multiple strings with vertical bars (`|`).
-	//
-	// >	- For example, `*(t1|t2)` matches all streams whose name has the `t1` or `t2` suffix, and `(abc|123)*` matches all streams whose name has the `abc` or `123` prefix.
+	// > 	- For example, `*(t1|t2)` matches all streams that end with `t1` or `t2`. `(abc|123)*` matches all streams that start with `abc` or `123`.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +87,7 @@ type AddLiveStreamWatermarkRuleRequest struct {
 	Stream *string `json:"Stream,omitempty" xml:"Stream,omitempty"`
 	// The ID of the watermark template.
 	//
-	// >  You can obtain the template ID by checking the value of the TemplateId parameter that is returned by the [AddLiveStreamWatermark](https://help.aliyun.com/document_detail/410759.html) operation.
+	// > Get the template ID from the response of the [AddLiveStreamWatermark](https://help.aliyun.com/document_detail/2848096.html) operation.
 	//
 	// This parameter is required.
 	//

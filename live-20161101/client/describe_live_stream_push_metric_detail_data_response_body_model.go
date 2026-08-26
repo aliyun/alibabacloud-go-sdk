@@ -32,33 +32,37 @@ type DescribeLiveStreamPushMetricDetailDataResponseBody struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range that was queried. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The end of the time range for the returned data. The time follows the ISO 8601 standard in the UTC time zone.
+	//
+	// Format: YYYY-MM-DDThh:mm:ssZ.
 	//
 	// example:
 	//
 	// 2022-09-10T21:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// A pagination token. When you call this operation, up to 5,000 rows of data can be returned per query. If the number of rows exceeds 5,000, the response includes a pagination token that is used in the next request to retrieve a new page of results.
+	// The paging query token. Each query returns a maximum of 5,000 rows of data. If the data to be queried exceeds 5,000 rows, the response includes the start index for the next query.
 	//
-	// When you specify the token in the next query, data continues to be obtained from the end of the previous query.
+	// Pass this token in the request to continue querying data from the row after the last row returned in the previous query.
 	//
 	// example:
 	//
 	// UjsM9x3aVcJi9a0-ArwJUTTC67C***37C0=
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// The number of rows returned.
+	// The number of returned data rows.
 	//
 	// example:
 	//
 	// 5000
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5EBF2AC3-4B73-40A5-8B32-83F49D5F035E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range that was queried. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the UTC time zone.
+	//
+	// Format: YYYY-MM-DDThh:mm:ssZ.
 	//
 	// example:
 	//

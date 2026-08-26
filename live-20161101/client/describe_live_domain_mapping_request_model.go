@@ -18,13 +18,13 @@ type iDescribeLiveDomainMappingRequest interface {
 }
 
 type DescribeLiveDomainMappingRequest struct {
-	// The domain name for which you want to query the mappings. The following types of domain names are supported:
+	// The domain that you want to query. Valid types:
 	//
-	// 	- Ingest domain
+	// - Ingest domain
 	//
-	// 	- Main streaming domain
+	// - Main streaming domain
 	//
-	// 	- Sub-streaming domain
+	// - Sub-streaming domain
 	//
 	// This parameter is required.
 	//
@@ -33,7 +33,12 @@ type DescribeLiveDomainMappingRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeLiveDomainMappingRequest) String() string {

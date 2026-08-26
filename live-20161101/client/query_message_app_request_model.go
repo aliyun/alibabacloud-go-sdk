@@ -22,35 +22,35 @@ type iQueryMessageAppRequest interface {
 }
 
 type QueryMessageAppRequest struct {
-	// The ID of the interactive messaging application.
+	// Interactive message application ID.
 	//
 	// example:
 	//
 	// VKL3***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the interactive messaging application.
+	// Interactive message application name.
 	//
 	// example:
 	//
 	// testApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The number of the page to return. Default value: 1. Valid values: 1 to 100000.
+	// Page number. Default value: 1. Valid values: 1 to 100000.
 	//
 	// example:
 	//
 	// 10
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of applications to return on each page. Default value: 20. Valid values: 1 to 50.
+	// Number of applications displayed per page. Default value: 20. Valid values: 1 to 50.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sort order. Valid values:
+	// Sorting method. Valid values:
 	//
-	// 	- 0: ascending order by time
+	// - 0: Ascending order by time.
 	//
-	// 	- 1: descending order by time
+	// - 1: Descending order by time.
 	//
 	// example:
 	//

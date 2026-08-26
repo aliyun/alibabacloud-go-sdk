@@ -16,13 +16,13 @@ type iMuteAllGroupUserResponseBody interface {
 }
 
 type MuteAllGroupUserResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 16A96B9A-****-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The returned results.
 	Result *MuteAllGroupUserResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,11 +62,11 @@ func (s *MuteAllGroupUserResponseBody) Validate() error {
 }
 
 type MuteAllGroupUserResponseBodyResult struct {
-	// Indicates whether the mute was successful. Valid values:
+	// Indicates whether the muting was successful. Valid values:
 	//
-	// 	- true: The mute was successful.
+	// - true: Successful.
 	//
-	// 	- false: The mute failed.
+	// - false: Unsuccessful.
 	//
 	// example:
 	//

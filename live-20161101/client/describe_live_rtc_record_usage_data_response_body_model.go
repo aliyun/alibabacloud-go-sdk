@@ -30,15 +30,26 @@ type iDescribeLiveRtcRecordUsageDataResponseBody interface {
 }
 
 type DescribeLiveRtcRecordUsageDataResponseBody struct {
+	// The ID of the ApsaraVideo Real-time Communication application that was queried.
+	//
 	// example:
 	//
 	// 7fd341b3-c6fa-43e1-96b8-7295a1dd****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The audio-only summary duration. Unit: seconds.
+	//
 	// example:
 	//
 	// 20
-	AudioSummaryDuration *float64                                          `json:"AudioSummaryDuration,omitempty" xml:"AudioSummaryDuration,omitempty"`
-	Data                 []*DescribeLiveRtcRecordUsageDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	AudioSummaryDuration *float64 `json:"AudioSummaryDuration,omitempty" xml:"AudioSummaryDuration,omitempty"`
+	// The usage statistics information.
+	Data []*DescribeLiveRtcRecordUsageDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The recording mode. Valid values:
+	//
+	// - 0: single-stream recording mode.
+	//
+	// - 1: stream mixing recording mode.
+	//
 	// example:
 	//
 	// 0
@@ -49,18 +60,26 @@ type DescribeLiveRtcRecordUsageDataResponseBody struct {
 	//
 	// 16A96B9A-F2*************B92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total summary duration. Unit: seconds.
+	//
 	// example:
 	//
 	// 150
 	TotalSummaryDuration *float64 `json:"TotalSummaryDuration,omitempty" xml:"TotalSummaryDuration,omitempty"`
+	// The summary duration of video above 720p (including 1080p). Unit: seconds.
+	//
 	// example:
 	//
 	// 10
 	V1080SummaryDuration *float64 `json:"V1080SummaryDuration,omitempty" xml:"V1080SummaryDuration,omitempty"`
+	// The summary duration of video at 480p or lower. Unit: seconds.
+	//
 	// example:
 	//
 	// 30
 	V480SummaryDuration *float64 `json:"V480SummaryDuration,omitempty" xml:"V480SummaryDuration,omitempty"`
+	// The summary duration of video at 720p or lower. Unit: seconds.
+	//
 	// example:
 	//
 	// 40
@@ -170,26 +189,38 @@ func (s *DescribeLiveRtcRecordUsageDataResponseBody) Validate() error {
 }
 
 type DescribeLiveRtcRecordUsageDataResponseBodyData struct {
+	// The audio-only duration. Unit: seconds.
+	//
 	// example:
 	//
 	// 20
 	AudioDuration *float64 `json:"AudioDuration,omitempty" xml:"AudioDuration,omitempty"`
+	// The timestamp of the data point. Format: yyyy-MM-ddTHH:mm:ssZ (UTC time).
+	//
 	// example:
 	//
 	// 2022-10-10T20:00:00Z
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The total duration. Unit: seconds.
+	//
 	// example:
 	//
 	// 150
 	TotalDuration *float64 `json:"TotalDuration,omitempty" xml:"TotalDuration,omitempty"`
+	// The duration of video above 720p. Unit: seconds.
+	//
 	// example:
 	//
 	// 10
 	V1080Duration *float64 `json:"V1080Duration,omitempty" xml:"V1080Duration,omitempty"`
+	// The duration of video at 480p or lower. Unit: seconds.
+	//
 	// example:
 	//
 	// 30
 	V480Duration *float64 `json:"V480Duration,omitempty" xml:"V480Duration,omitempty"`
+	// The duration of video at 720p or lower. Unit: seconds.
+	//
 	// example:
 	//
 	// 40

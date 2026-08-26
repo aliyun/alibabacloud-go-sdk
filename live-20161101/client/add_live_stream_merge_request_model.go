@@ -46,7 +46,7 @@ type iAddLiveStreamMergeRequest interface {
 }
 
 type AddLiveStreamMergeRequest struct {
-	// The name of the application that generates the output stream. The value must be the same as the application name in the ingest URL of the output stream. Otherwise, the configuration does not take effect. You cannot set the value to an asterisk (\\*).
+	// The AppName of the output stream. For the configuration to take effect, this AppName must match the one in the ingest URL. Wildcards (`*`) are not supported.
 	//
 	// This parameter is required.
 	//
@@ -62,11 +62,11 @@ type AddLiveStreamMergeRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end time of the stream mixing.
+	// The end time of the stream merge.
 	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The time must be in UTC and specified in the ISO 8601 standard format: `yyyy-MM-ddTHH:mm:ssZ`.
 	//
-	// >  The interval between the start time and the end time must be within 7 days.
+	// > The interval between `StartTime` and `EndTime` cannot exceed 7 days.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type AddLiveStreamMergeRequest struct {
 	//
 	// 2020-05-29T01:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the application that generates the input primary stream. The value must be the same as the application name that is specified in the ingest URL of the primary stream. Otherwise, the configuration does not take effect.
+	// The AppName of the primary input stream. This value must match the AppName in the ingest URL for the primary stream.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type AddLiveStreamMergeRequest struct {
 	//
 	// app1
 	InAppName1 *string `json:"InAppName1,omitempty" xml:"InAppName1,omitempty"`
-	// The name of the application that generates the input secondary stream. The value must be the same as the application name that is specified in the ingest URL of the secondary stream. Otherwise, the configuration does not take effect.
+	// The AppName of the backup input stream. This value must match the AppName in the ingest URL for the backup stream.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type AddLiveStreamMergeRequest struct {
 	//
 	// app2
 	InAppName2 *string `json:"InAppName2,omitempty" xml:"InAppName2,omitempty"`
-	// The name of the input primary stream. The value must be the same as the stream name that is specified in the ingest URL of the primary stream. Otherwise, the configuration does not take effect.
+	// The StreamName of the primary input stream. This value must match the StreamName in the ingest URL for the primary stream.
 	//
 	// This parameter is required.
 	//
@@ -98,33 +98,64 @@ type AddLiveStreamMergeRequest struct {
 	//
 	// InStream1
 	InStreamName1 *string `json:"InStreamName1,omitempty" xml:"InStreamName1,omitempty"`
-	// The name of the input secondary stream. The value must be the same as the stream name that is specified in the ingest URL of the secondary stream. Otherwise, the configuration does not take effect.
+	// The StreamName of the backup input stream. This value must match the StreamName in the ingest URL for the backup stream.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// stream2
-	InStreamName2   *string `json:"InStreamName2,omitempty" xml:"InStreamName2,omitempty"`
-	LiveMerger      *string `json:"LiveMerger,omitempty" xml:"LiveMerger,omitempty"`
+	InStreamName2 *string `json:"InStreamName2,omitempty" xml:"InStreamName2,omitempty"`
+	// The engine to use for stream merging.
+	//
+	// - `on`: The new liveswitch engine.
+	//
+	// - `off`: A legacy engine (such as rtmpr). This is the default.
+	//
+	// example:
+	//
+	// off
+	LiveMerger *string `json:"LiveMerger,omitempty" xml:"LiveMerger,omitempty"`
+	// Parameters that define the failover conditions. A failover is triggered when one of the following conditions is met:
+	//
+	// 1. An explicit stream disconnection occurs, such as an end-of-file (EOF) or network error.
+	//
+	// 2. The stutter rate exceeds 60% in the last 5 seconds.
+	//
+	// 3. A stream pulling timeout occurs if no frame data is received for 2 consecutive seconds.
+	//
+	// 4. The average frame rate over the period specified by `ali_max_no_frame_timeout` drops below `ali_low_frame_rate_threshold`. This condition applies even if there is no stream disconnection or stuttering. If you set `ali_max_no_frame_timeout`, the timeout for Condition 3 is also updated to this value.
+	//
+	// 5. If `block_all_jitter` is set to `1`, Conditions 2, 3, and 4 do not apply.
+	//
+	// - `ali_max_no_frame_timeout`: an integer from 2 to 10.<br>`ali_low_frame_rate_threshold`: an integer from 1 to 200.<br>`block_all_jitter`: `0` or `1`.<br><br>
+	//
+	// example:
+	//
+	// ali_low_frame_rate_threshold=10&ali_max_no_frame_timeout=5&block_all_jitter=0
 	MergeParameters *string `json:"MergeParameters,omitempty" xml:"MergeParameters,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The streaming protocol. Valid values:
+	// The live stream protocol for the input streams. Valid values:
 	//
-	// 	- **rtmp**: This is the default value.
+	// - **rtmp*	- (Default)
 	//
-	// 	- **rtc**
+	// - **rtc**
 	//
 	// example:
 	//
 	// rtmp
-	Protocol         *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SelectAppName    *string `json:"SelectAppName,omitempty" xml:"SelectAppName,omitempty"`
 	SelectStreamName *string `json:"SelectStreamName,omitempty" xml:"SelectStreamName,omitempty"`
-	// The start time of the stream mixing.
+	// The start time of the stream merge.
 	//
-	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The time must be in UTC and specified in the ISO 8601 standard format: `yyyy-MM-ddTHH:mm:ssZ`.
 	//
 	// This parameter is required.
 	//
@@ -132,7 +163,7 @@ type AddLiveStreamMergeRequest struct {
 	//
 	// 2020-05-29T00:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the output stream. The value must be the same as the stream name in the ingest URL of the output stream. Otherwise, the configuration does not take effect. You cannot set the value to an asterisk (\\*).
+	// The StreamName of the output stream. For the configuration to take effect, this StreamName must match the one in the ingest URL. Wildcards (`*`) are not supported.
 	//
 	// This parameter is required.
 	//

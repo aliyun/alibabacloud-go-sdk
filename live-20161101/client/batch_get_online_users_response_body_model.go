@@ -22,7 +22,7 @@ type BatchGetOnlineUsersResponseBody struct {
 	//
 	// 16A96B9A-****-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned results.
+	// The returned result
 	Result *BatchGetOnlineUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *BatchGetOnlineUsersResponseBody) Validate() error {
 }
 
 type BatchGetOnlineUsersResponseBodyResult struct {
-	// The information about users.
+	// The array of objects
 	OnlineUsers []*BatchGetOnlineUsersResponseBodyResultOnlineUsers `json:"OnlineUsers,omitempty" xml:"OnlineUsers,omitempty" type:"Repeated"`
 }
 
@@ -97,7 +97,7 @@ func (s *BatchGetOnlineUsersResponseBodyResult) Validate() error {
 }
 
 type BatchGetOnlineUsersResponseBodyResultOnlineUsers struct {
-	// The time when the user joined the group. The value is a UTC timestamp. Unit: milliseconds.
+	// The UTC timestamp when the user joined the message group. Unit: milliseconds
 	//
 	// example:
 	//
@@ -105,15 +105,15 @@ type BatchGetOnlineUsersResponseBodyResultOnlineUsers struct {
 	JoinTime *int64 `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
 	// Indicates whether the user is online. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The user is online.
 	//
-	// 	- **false**
+	// - **false**: The user is offline.
 	//
 	// example:
 	//
 	// true
 	Online *bool `json:"Online,omitempty" xml:"Online,omitempty"`
-	// The ID of the user.
+	// The user ID.
 	//
 	// example:
 	//

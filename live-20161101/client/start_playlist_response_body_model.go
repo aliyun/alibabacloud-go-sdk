@@ -18,7 +18,7 @@ type iStartPlaylistResponseBody interface {
 }
 
 type StartPlaylistResponseBody struct {
-	// The ID of the episode list. You can use the ID as a request parameter in the API operation that is used to stop playing the episode list.
+	// The ID of the playlist. You can use this ID as a request parameter to stop the playlist.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type StartPlaylistResponseBody struct {
 	//
 	// 5c6a2a0d-f228-4a64-af62-20e91b96****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the live stream.
+	// The information about the stream.
 	StreamInfo *StartPlaylistResponseBodyStreamInfo `json:"StreamInfo,omitempty" xml:"StreamInfo,omitempty" type:"Struct"`
 }
 
@@ -79,19 +79,19 @@ func (s *StartPlaylistResponseBody) Validate() error {
 }
 
 type StartPlaylistResponseBodyStreamInfo struct {
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The main streaming domain.
+	// The streaming domain.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The name of the live stream.
+	// The stream name.
 	//
 	// example:
 	//

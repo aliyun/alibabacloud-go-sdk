@@ -30,9 +30,9 @@ type CopyCasterRequest struct {
 	//
 	// caster001
 	CasterName *string `json:"CasterName,omitempty" xml:"CasterName,omitempty"`
-	// The user-generated request token. This token is used to ensure the idempotence of the request.
+	// A client-generated token that ensures the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// Generate a unique value for this parameter for each request. The token can contain a maximum of 64 ASCII characters.
 	//
 	// This parameter is required.
 	//
@@ -41,14 +41,19 @@ type CopyCasterRequest struct {
 	// 53200b81-b761-4c10-842a-a0726d97****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the original production studio.
+	// The region ID.
 	//
-	// 	- If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
+	// example:
 	//
-	// 	- If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management*	- page. To go to the page, log on to the **ApsaraVideo Live console*	- and click **Production Studios*	- in the left-side navigation pane.
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the production studio to copy.
 	//
-	// >  You can find the ID of the production studio in the Instance ID/Name column.
+	// - If you created the production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, use the CasterId value that is returned.
+	//
+	// - If you created the production studio in the ApsaraVideo Live console, go to **ApsaraVideo Live console*	- > **Production Studio*	- > **Cloud Production Studio*	- to view the production studio name.
+	//
+	// > The name of a production studio on the Cloud Production Studio page is its production studio ID.
 	//
 	// This parameter is required.
 	//

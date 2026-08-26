@@ -18,14 +18,19 @@ type iListLiveRealtimeLogDeliveryInfosRequest interface {
 }
 
 type ListLiveRealtimeLogDeliveryInfosRequest struct {
-	// This parameter has no practical significance.
+	// This parameter is reserved.
 	//
 	// example:
 	//
-	// 1
+	// 无
 	LiveOpenapiReserve *string `json:"LiveOpenapiReserve,omitempty" xml:"LiveOpenapiReserve,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListLiveRealtimeLogDeliveryInfosRequest) String() string {

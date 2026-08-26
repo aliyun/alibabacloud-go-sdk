@@ -26,9 +26,9 @@ type iDeleteLivePrivateLineRequest interface {
 type DeleteLivePrivateLineRequest struct {
 	// The acceleration type. Valid values:
 	//
-	// 	- play: streaming acceleration
+	// - play: streaming acceleration.
 	//
-	// 	- publish: stream ingest acceleration
+	// - publish: stream ingest acceleration.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DeleteLivePrivateLineRequest struct {
 	//
 	// play
 	AccelerationType *string `json:"AccelerationType,omitempty" xml:"AccelerationType,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// This parameter is required.
 	//
@@ -53,8 +53,13 @@ type DeleteLivePrivateLineRequest struct {
 	// demo.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the live stream.
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The live stream name.
 	//
 	// This parameter is required.
 	//

@@ -26,13 +26,13 @@ type iDescribeLiveSnapshotDetectPornConfigRequest interface {
 }
 
 type DescribeLiveSnapshotDetectPornConfigRequest struct {
-	// The name of the application to which the live stream belongs.
+	// The name of the application to which the stream belongs.
 	//
 	// example:
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The main streaming domain.
+	// The streamer streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -40,17 +40,11 @@ type DescribeLiveSnapshotDetectPornConfigRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The order in which the entries are sorted based on creation time. Valid values:
+	// The order in which entries are sorted by creation time. Valid values:
 	//
-	// 	- **Asc*	- (default): ascending order
+	// - **Asc*	- (default): ascending order.
 	//
-	// 	- **Desc**: descending order
-	//
-	// Enumerated values:
-	//
-	// 	- asc
-	//
-	// 	- desc
+	// - **Desc**: descending order.
 	//
 	// example:
 	//
@@ -63,7 +57,7 @@ type DescribeLiveSnapshotDetectPornConfigRequest struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page. Valid values: **5 to 30**. Default value: **10**.
+	// The number of entries per page. Default value: **10**. Valid values: **5 to 30**.
 	//
 	// example:
 	//

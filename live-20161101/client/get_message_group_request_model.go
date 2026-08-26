@@ -16,7 +16,7 @@ type iGetMessageGroupRequest interface {
 }
 
 type GetMessageGroupRequest struct {
-	// The ID of the interactive messaging application.
+	// Interactive Messages application ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetMessageGroupRequest struct {
 	//
 	// VKL3***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the message group.
+	// Message group ID.
 	//
 	// This parameter is required.
 	//

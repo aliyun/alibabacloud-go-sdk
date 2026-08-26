@@ -30,13 +30,13 @@ type iDescribeMeterLiveBypassDurationResponseBody interface {
 }
 
 type DescribeMeterLiveBypassDurationResponseBody struct {
-	// The total audio-only duration. Audio-only is a basic specification. Unit: minutes.
+	// The total audio-only duration at the basic specification. Unit: minutes.
 	//
 	// example:
 	//
 	// 20
 	AudioSummaryDuration *int64 `json:"AudioSummaryDuration,omitempty" xml:"AudioSummaryDuration,omitempty"`
-	// The usage statistics for each time granularity.
+	// The usage statistics information.
 	Data []*DescribeMeterLiveBypassDurationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -44,13 +44,13 @@ type DescribeMeterLiveBypassDurationResponseBody struct {
 	//
 	// 4B460F8B-993C-4F48-B98A-910811DEBFEB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total single-stream relay duration for audio. Unit: minutes.
+	// The total single-stream relay audio duration. Unit: minutes.
 	//
 	// example:
 	//
 	// 20
 	SingleAudioSummaryDuration *int64 `json:"SingleAudioSummaryDuration,omitempty" xml:"SingleAudioSummaryDuration,omitempty"`
-	// The total single-stream relay duration for video. Unit: minutes.
+	// The total single-stream relay video duration. Unit: minutes.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ type DescribeMeterLiveBypassDurationResponseBody struct {
 	//
 	// 150
 	TotalSummaryDuration *int64 `json:"TotalSummaryDuration,omitempty" xml:"TotalSummaryDuration,omitempty"`
-	// The total Full HD duration. The video resolution is 1920 × 1080 or lower. Unit: minutes.
+	// The total full high definition duration, with a video resolution of 1920 × 1080 or lower. Unit: minutes.
 	//
 	// example:
 	//
 	// 10
 	V1080SummaryDuration *int64 `json:"V1080SummaryDuration,omitempty" xml:"V1080SummaryDuration,omitempty"`
-	// The total standard definition (SD) duration. The video resolution is 640 × 480 or lower. Unit: minutes.
+	// The total standard definition duration, with a video resolution of 640 × 480 or lower. Unit: minutes.
 	//
 	// example:
 	//
 	// 30
 	V480SummaryDuration *int64 `json:"V480SummaryDuration,omitempty" xml:"V480SummaryDuration,omitempty"`
-	// The total high definition (HD) duration. The video resolution is 1280 × 720 or lower. Unit: minutes.
+	// The total high definition duration, with a video resolution of 1280 × 720 or lower. Unit: minutes.
 	//
 	// example:
 	//
@@ -185,49 +185,49 @@ func (s *DescribeMeterLiveBypassDurationResponseBody) Validate() error {
 }
 
 type DescribeMeterLiveBypassDurationResponseBodyData struct {
-	// The audio-only duration. Audio-only is a basic specification. Unit: minutes.
+	// The audio-only duration at the basic specification. Unit: minutes.
 	//
 	// example:
 	//
 	// 20
 	AudioDuration *int64 `json:"AudioDuration,omitempty" xml:"AudioDuration,omitempty"`
-	// The single-stream relay duration for audio. Unit: minutes.
+	// The single-stream relay audio duration. Unit: minutes.
 	//
 	// example:
 	//
 	// 20
 	SingleAudio *int64 `json:"Single_Audio,omitempty" xml:"Single_Audio,omitempty"`
-	// The single-stream relay duration for video. Unit: minutes.
+	// The single-stream relay video duration. Unit: minutes.
 	//
 	// example:
 	//
 	// 30
 	SingleVideo *int64 `json:"Single_Video,omitempty" xml:"Single_Video,omitempty"`
-	// The timestamp of the data returned.
+	// The start time of the time segment. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format in UTC+0.
 	//
 	// example:
 	//
 	// 2022-10-10T20:00:00Z
 	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The duration. Unit: minutes.
+	// The total duration. Unit: minutes.
 	//
 	// example:
 	//
 	// 150
 	TotalDuration *int64 `json:"TotalDuration,omitempty" xml:"TotalDuration,omitempty"`
-	// The Full HD duration. The video resolution is 1920 × 1080 or lower. Unit: minutes.
+	// The full high definition duration, with a video resolution of 1920 × 1080 or lower. Unit: minutes.
 	//
 	// example:
 	//
 	// 10
 	V1080Duration *int64 `json:"V1080Duration,omitempty" xml:"V1080Duration,omitempty"`
-	// The SD duration. The video resolution is 640 × 480 or lower. Unit: minutes.
+	// The standard definition duration, with a video resolution of 640 × 480 or lower. Unit: minutes.
 	//
 	// example:
 	//
 	// 30
 	V480Duration *int64 `json:"V480Duration,omitempty" xml:"V480Duration,omitempty"`
-	// The HD duration. The video resolution is 1280 × 720 or lower. Unit: minutes.
+	// The high definition duration, with a video resolution of 1280 × 720 or lower. Unit: minutes.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iSetSnapshotCallbackAuthResponseBody interface {
 }
 
 type SetSnapshotCallbackAuthResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

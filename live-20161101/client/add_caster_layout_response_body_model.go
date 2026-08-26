@@ -16,15 +16,13 @@ type iAddCasterLayoutResponseBody interface {
 }
 
 type AddCasterLayoutResponseBody struct {
-	// The ID of the layout.
-	//
-	// Record the ID as it can be used to manage the layout being created.
+	// The ID of the layout. You can use this ID as a request parameter when you call operations to manage layouts, such as deleting, modifying, or querying layouts for a production studio or a virtual studio.
 	//
 	// example:
 	//
 	// 21926b36-7dd2-4fde-ae25-51b5bc8e****
 	LayoutId *string `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

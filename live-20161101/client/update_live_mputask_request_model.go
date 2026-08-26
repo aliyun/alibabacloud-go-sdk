@@ -48,9 +48,9 @@ type UpdateLiveMPUTaskRequest struct {
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	// The stream mixing mode. Valid values:
 	//
-	// 	- **0**: the single-stream relay mode. In this mode, the service only relays the original single stream, but does not transcode mixed streams. You do not need to set parameters for mixed-stream transcoding.
+	// - **0**: the single-stream relay mode. In this mode, the service only relays the original single stream, but does not transcode mixed streams. You do not need to set parameters for mixed-stream transcoding.
 	//
-	// 	- **1*	- (default): the mixed-stream relay mode.
+	// - **1*	- (default): the mixed-stream relay mode.
 	//
 	// example:
 	//
@@ -66,11 +66,11 @@ type UpdateLiveMPUTaskRequest struct {
 	//
 	// >
 	//
-	// 	- If the ingest URL is under a domain name for which hotlink protection is enabled, you must include an access token in the URL.
+	// - If the ingest URL is under a domain name for which hotlink protection is enabled, you must include an access token in the URL.
 	//
-	// 	- You cannot use the same ingest URL in different tasks.
+	// - You cannot use the same ingest URL in different tasks.
 	//
-	// 	- You cannot use the same ingest URL within 10 seconds after a task is stopped.
+	// - You cannot use the same ingest URL within 10 seconds after a task is stopped.
 	//
 	// example:
 	//
@@ -208,11 +208,11 @@ func (s *UpdateLiveMPUTaskRequest) Validate() error {
 type UpdateLiveMPUTaskRequestMultiStreamURL struct {
 	// Specifies whether to perform stream relay by using Alibaba Cloud CDN. Valid values:
 	//
-	// 	- false: performs stream relay by using a CDN service that is not Alibaba Cloud CDN.
+	// - false: performs stream relay by using a CDN service that is not Alibaba Cloud CDN.
 	//
-	// 	- true: performs stream relay by using Alibaba Cloud CDN.
+	// - true: performs stream relay by using Alibaba Cloud CDN.
 	//
-	// >  The default value of this parameter is false.
+	// > The default value of this parameter is false.
 	//
 	// example:
 	//
@@ -306,9 +306,9 @@ func (s *UpdateLiveMPUTaskRequestSeiParams) Validate() error {
 type UpdateLiveMPUTaskRequestSeiParamsLayoutVolume struct {
 	// Specifies whether to include the SEI in an Instantaneous Decoder Refresh (IDR) frame. Valid values:
 	//
-	// 	- **0**: does not include the SEI.
+	// - **0**: does not include the SEI.
 	//
-	// 	- **1**: includes the SEI.
+	// - **1**: includes the SEI.
 	//
 	// example:
 	//
@@ -355,9 +355,9 @@ func (s *UpdateLiveMPUTaskRequestSeiParamsLayoutVolume) Validate() error {
 type UpdateLiveMPUTaskRequestSeiParamsPassThrough struct {
 	// Specifies whether to include the SEI in an IDR frame. Valid values:
 	//
-	// 	- **0**: does not include the SEI.
+	// - **0**: does not include the SEI.
 	//
-	// 	- **1**: includes the SEI.
+	// - **1**: includes the SEI.
 	//
 	// example:
 	//
@@ -434,9 +434,9 @@ func (s *UpdateLiveMPUTaskRequestSeiParamsPassThrough) Validate() error {
 type UpdateLiveMPUTaskRequestSingleSubParams struct {
 	// The type of the video source. This parameter is valid only when you set StreamType to 2. Valid values:
 	//
-	// 	- **camera*	- (default)
+	// - **camera*	- (default)
 	//
-	// 	- **shareScreen**
+	// - **shareScreen**
 	//
 	// example:
 	//
@@ -444,11 +444,11 @@ type UpdateLiveMPUTaskRequestSingleSubParams struct {
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The type of the stream that you want to relay. Valid values:
 	//
-	// 	- **0*	- (default): original stream
+	// - **0*	- (default): original stream
 	//
-	// 	- **1**: only the audio track
+	// - **1**: only the audio track
 	//
-	// 	- **2**: only the video track
+	// - **2**: only the video track
 	//
 	// example:
 	//
@@ -510,7 +510,7 @@ type UpdateLiveMPUTaskRequestTranscodeParams struct {
 	EncodeParams *UpdateLiveMPUTaskRequestTranscodeParamsEncodeParams `json:"EncodeParams,omitempty" xml:"EncodeParams,omitempty" type:"Struct"`
 	// The video layout information.
 	//
-	// >  If video transcoding is required, you must specify the video layout information, including the x-coordinate and y-coordinate, the width and height, and the layer. For audio-only transcoding, leave the video layout information empty.
+	// > If video transcoding is required, you must specify the video layout information, including the x-coordinate and y-coordinate, the width and height, and the layer. For audio-only transcoding, leave the video layout information empty.
 	Layout *UpdateLiveMPUTaskRequestTranscodeParamsLayout `json:"Layout,omitempty" xml:"Layout,omitempty" type:"Struct"`
 	// The information about the users whose streams are subscribed to. If you leave this parameter empty, streams from all users are mixed.
 	UserInfos []*UpdateLiveMPUTaskRequestTranscodeParamsUserInfos `json:"UserInfos,omitempty" xml:"UserInfos,omitempty" type:"Repeated"`
@@ -591,9 +591,9 @@ func (s *UpdateLiveMPUTaskRequestTranscodeParams) Validate() error {
 type UpdateLiveMPUTaskRequestTranscodeParamsBackground struct {
 	// The display mode of the global background image.
 	//
-	// 	- **0**: scales the background image proportionally to fit the view, with black bars displayed.
+	// - **0**: scales the background image proportionally to fit the view, with black bars displayed.
 	//
-	// 	- **1*	- (default): crops the background image to fit the view.
+	// - **1*	- (default): crops the background image to fit the view.
 	//
 	// example:
 	//
@@ -652,9 +652,9 @@ type UpdateLiveMPUTaskRequestTranscodeParamsEncodeParams struct {
 	AudioChannels *string `json:"AudioChannels,omitempty" xml:"AudioChannels,omitempty"`
 	// Specifies whether the output stream is an audio-only stream. Valid values:
 	//
-	// 	- **true**: The output stream is an audio-only stream. If you set this parameter to true, you need to configure only audio-related parameters under EncodeParams.
+	// - **true**: The output stream is an audio-only stream. If you set this parameter to true, you need to configure only audio-related parameters under EncodeParams.
 	//
-	// 	- **false*	- (default): The output stream is not an audio-only stream. If you set this parameter to false, you need to configure all parameters under EncodeParams, except the VideoCodec and EnhancedParam parameters.
+	// - **false*	- (default): The output stream is not an audio-only stream. If you set this parameter to false, you need to configure all parameters under EncodeParams, except the VideoCodec and EnhancedParam parameters.
 	//
 	// example:
 	//
@@ -668,11 +668,11 @@ type UpdateLiveMPUTaskRequestTranscodeParamsEncodeParams struct {
 	AudioSampleRate *string `json:"AudioSampleRate,omitempty" xml:"AudioSampleRate,omitempty"`
 	// The parameter used for encoding enhancement, which is a JSON string. The parameter includes the optional profile and preset fields.
 	//
-	// 	- profile: the encoding level. If the video codec is H.264, the valid values of this field are baseline, main, and high. If the video codec is H.265, the valid value of this field is main.
+	// - profile: the encoding level. If the video codec is H.264, the valid values of this field are baseline, main, and high. If the video codec is H.265, the valid value of this field is main.
 	//
-	// 	- preset: adjusts the trade-off between encoding speed and video quality. The valid values of this field are ultrafast, superfast, veryfast, faster, fast, medium, slow, slower, veryslow, and placebo. Each value specifies a level of trade-off between encoding speed and video quality. For example, the ultrafast preset has the fastest encoding speed but the lowest video quality, while the placebo preset sacrifices the encoding speed for the best video quality.
+	// - preset: adjusts the trade-off between encoding speed and video quality. The valid values of this field are ultrafast, superfast, veryfast, faster, fast, medium, slow, slower, veryslow, and placebo. Each value specifies a level of trade-off between encoding speed and video quality. For example, the ultrafast preset has the fastest encoding speed but the lowest video quality, while the placebo preset sacrifices the encoding speed for the best video quality.
 	//
-	// >  A value of superfast for the preset field is suitable for real-time communication scenarios. We recommend that you not set the field if you are not a professional encoding engineer.
+	// > A value of superfast for the preset field is suitable for real-time communication scenarios. We recommend that you not set the field if you are not a professional encoding engineer.
 	//
 	// example:
 	//
@@ -686,9 +686,9 @@ type UpdateLiveMPUTaskRequestTranscodeParamsEncodeParams struct {
 	VideoBitrate *string `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
 	// The video codec. Valid values:
 	//
-	// 	- H.264 (default)
+	// - H.264 (default)
 	//
-	// 	- H.265
+	// - H.265
 	//
 	// example:
 	//
@@ -881,9 +881,9 @@ type UpdateLiveMPUTaskRequestTranscodeParamsLayoutUserPanes struct {
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
 	// The display mode of the pane. Valid values:
 	//
-	// 	- **0**: scales the video proportionally to fit the view, with black bars displayed.
+	// - **0**: scales the video proportionally to fit the view, with black bars displayed.
 	//
-	// 	- **1 (default)**: crops the video to fit the view.
+	// - **1 (default)**: crops the video to fit the view.
 	//
 	// example:
 	//
@@ -893,9 +893,9 @@ type UpdateLiveMPUTaskRequestTranscodeParamsLayoutUserPanes struct {
 	//
 	// >
 	//
-	// 	- If you specify the information about a user by using this parameter, the information about the user must also be specified by using the TranscodeParams.UserInfos parameter.
+	// - If you specify the information about a user by using this parameter, the information about the user must also be specified by using the TranscodeParams.UserInfos parameter.
 	//
-	// 	- This parameter is valid only when you set StreamType to 0 or 2.
+	// - This parameter is valid only when you set StreamType to 0 or 2.
 	UserInfo *UpdateLiveMPUTaskRequestTranscodeParamsLayoutUserPanesUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
 	// The width of the pane. The value is normalized.
 	//
@@ -1021,9 +1021,9 @@ type UpdateLiveMPUTaskRequestTranscodeParamsLayoutUserPanesUserInfo struct {
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	// The type of the video source. This parameter is valid only when you set StreamType to 2. Valid values:
 	//
-	// 	- **camera*	- (default)
+	// - **camera*	- (default)
 	//
-	// 	- **shareScreen**
+	// - **shareScreen**
 	//
 	// example:
 	//
@@ -1085,9 +1085,9 @@ type UpdateLiveMPUTaskRequestTranscodeParamsUserInfos struct {
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	// The type of the video source that is subscribed to. This parameter is valid only when you set StreamType to 2. Valid values:
 	//
-	// 	- **camera*	- (default)
+	// - **camera*	- (default)
 	//
-	// 	- **shareScreen**
+	// - **shareScreen**
 	//
 	// example:
 	//
@@ -1095,11 +1095,11 @@ type UpdateLiveMPUTaskRequestTranscodeParamsUserInfos struct {
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The type of the relayed stream that is subscribed to. Valid values:
 	//
-	// 	- **0*	- (default): original stream
+	// - **0*	- (default): original stream
 	//
-	// 	- **1**: only the audio track
+	// - **1**: only the audio track
 	//
-	// 	- **2**: only the video track
+	// - **2**: only the video track
 	//
 	// example:
 	//

@@ -26,13 +26,13 @@ type iDescribeLiveRecordVodConfigsRequest interface {
 }
 
 type DescribeLiveRecordVodConfigsRequest struct {
-	// The name of the application to which the live stream belongs.
+	// The AppName of the live stream.
 	//
 	// example:
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The main streaming domain.
+	// The streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -52,9 +52,14 @@ type DescribeLiveRecordVodConfigsRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the live stream.
+	// The stream name.
 	//
 	// example:
 	//

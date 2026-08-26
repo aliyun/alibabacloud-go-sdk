@@ -32,7 +32,7 @@ type CreateLiveRealTimeLogDeliveryRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The name of the Logstore to which log entries are delivered.
+	// The LogStoreName for real-time log delivery to SLS.
 	//
 	// This parameter is required.
 	//
@@ -41,7 +41,7 @@ type CreateLiveRealTimeLogDeliveryRequest struct {
 	// test_logstore
 	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the Log Service project that is used for real-time log delivery.
+	// The ProjectName for real-time log delivery to SLS.
 	//
 	// This parameter is required.
 	//
@@ -49,14 +49,19 @@ type CreateLiveRealTimeLogDeliveryRequest struct {
 	//
 	// test_project
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The ID of the region where the Log Service project is deployed.
+	// The Region for real-time log delivery to SLS.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

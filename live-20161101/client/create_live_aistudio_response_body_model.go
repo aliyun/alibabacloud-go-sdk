@@ -22,7 +22,7 @@ type CreateLiveAIStudioResponseBody struct {
 	//
 	// 17D7526C-69AD-5761-8037-071C27358345
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the virtual studio template.
+	// The studio template ID.
 	//
 	// example:
 	//

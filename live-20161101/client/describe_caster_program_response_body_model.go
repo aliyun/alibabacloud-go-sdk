@@ -31,17 +31,17 @@ type DescribeCasterProgramResponseBody struct {
 	// LIVEPRODUCER_POST-cn-0pp1czt****
 	CasterId *string                                    `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
 	Episodes *DescribeCasterProgramResponseBodyEpisodes `json:"Episodes,omitempty" xml:"Episodes,omitempty" type:"Struct"`
-	// Indicates whether carousel playback is enabled.
+	// Indicates whether the program list is enabled.
 	//
-	// 	- **0**: Carousel playback is disabled.
+	// - **0**: disabled
 	//
-	// 	- **1**: Carousel playback is enabled.
+	// - **1**: enabled
 	//
 	// example:
 	//
 	// 1
 	ProgramEffect *int32 `json:"ProgramEffect,omitempty" xml:"ProgramEffect,omitempty"`
-	// The name of the episode list.
+	// The name of the program list.
 	//
 	// example:
 	//
@@ -53,7 +53,7 @@ type DescribeCasterProgramResponseBody struct {
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//

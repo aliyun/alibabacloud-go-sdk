@@ -25,7 +25,7 @@ type ListLiveDelayConfigResponseBody struct {
 	//
 	// A3136B58-5876-4168-83CA-B562781981A0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of stream delay configurations.
+	// The total number of stream delay configurations.
 	//
 	// example:
 	//

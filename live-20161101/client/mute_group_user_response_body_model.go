@@ -16,7 +16,7 @@ type iMuteGroupUserResponseBody interface {
 }
 
 type MuteGroupUserResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,11 +62,11 @@ func (s *MuteGroupUserResponseBody) Validate() error {
 }
 
 type MuteGroupUserResponseBodyResult struct {
-	// Indicates whether the mute is successful. Valid values:
+	// Indicates whether the mute operation is successful. Valid values:
 	//
-	// 	- true: The mute is successful.
+	// - true: Successful.
 	//
-	// 	- false: The mute failed.
+	// - false: Not successful.
 	//
 	// example:
 	//

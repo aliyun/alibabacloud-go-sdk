@@ -24,32 +24,32 @@ type iDescribeLiveDomainRealTimeBpsDataResponseBody interface {
 }
 
 type DescribeLiveDomainRealTimeBpsDataResponseBody struct {
-	// The interval at which data was queried.
+	// The time granularity of the queried data.
 	//
 	// example:
 	//
 	// 60
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The streaming domain name or names that was queried.
+	// The streaming domain name.
 	//
 	// example:
 	//
-	// example.com,example.aliyundoc.com
+	// example1.aliyundoc.com,example2.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range in which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The end of the time range. The format is *yyyy-MM-dd*T*HH:mm:ss*Z (UTC).
 	//
 	// example:
 	//
 	// 2015-11-30T05:40:00Z
 	EndTime                    *string                                                                  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RealTimeBpsDataPerInterval *DescribeLiveDomainRealTimeBpsDataResponseBodyRealTimeBpsDataPerInterval `json:"RealTimeBpsDataPerInterval,omitempty" xml:"RealTimeBpsDataPerInterval,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
-	// BC858082-736F-4A25-867B-E5B67C85ACF7
+	// BC858082-736F-4A25-867B-E5B6******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range in which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The start of the time range. The format is *yyyy-MM-dd*T*HH:mm:ss*Z (UTC).
 	//
 	// example:
 	//

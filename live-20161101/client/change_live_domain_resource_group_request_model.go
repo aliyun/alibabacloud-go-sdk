@@ -20,7 +20,7 @@ type iChangeLiveDomainResourceGroupRequest interface {
 }
 
 type ChangeLiveDomainResourceGroupRequest struct {
-	// The ingest domain or streaming domain.
+	// The ingest or streaming domain name.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type ChangeLiveDomainResourceGroupRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the resource group to which the domain name is moved.
+	// The ID of the destination resource group.
 	//
 	// This parameter is required.
 	//
@@ -37,7 +37,12 @@ type ChangeLiveDomainResourceGroupRequest struct {
 	// rg-****ke6uuxw****
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ChangeLiveDomainResourceGroupRequest) String() string {

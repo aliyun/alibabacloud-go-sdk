@@ -34,11 +34,11 @@ type iAddCasterEpisodeRequest interface {
 type AddCasterEpisodeRequest struct {
 	// The ID of the production studio.
 	//
-	// 	- If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
+	// - If you create a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the CasterId parameter that is returned.
 	//
-	// 	- If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management*	- page. To go to the page, log on to the **ApsaraVideo Live console*	- and click **Production Studios*	- in the left-side navigation pane.
+	// - If you create a production studio in the LIVE console, go to the **LIVE Console**> **Production Studio*	- > **Production Studio*	- page to view the ID.
 	//
-	// >  You can find the ID of the production studio in the Instance ID/Name column.
+	// > The name of the production studio in the production studio list serves as the production studio ID.
 	//
 	// This parameter is required.
 	//
@@ -46,21 +46,21 @@ type AddCasterEpisodeRequest struct {
 	//
 	// LIVEPRODUCER_POST-cn-0pp1czt****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-	// The components. Components in the production studio are listed from the bottom to the top in an array.
+	// A list of component IDs. The components are layered from bottom to top in the specified order.
 	//
-	// If a component was added by calling the [AddCasterComponent](https://help.aliyun.com/document_detail/2848030.html) operation, check the value of the response parameter ComponentId to obtain the component ID.
+	// If you add a component by calling the [AddCasterComponent](https://help.aliyun.com/document_detail/2848030.html) operation, check the value of the ComponentId parameter that is returned.
 	//
-	// 	- This parameter takes effect and is required when the EpisodeType parameter is set to **Component**.
+	// - This parameter is required and applies only when the resource type is **Component**.
 	//
-	// 	- This parameter is optional when the EpisodeType parameter is set to **Resource**. In this case, if this parameter is specified, the components are bound to and switched together with video resources.
+	// - This parameter is optional when the resource type is **Resource**. If you specify this parameter, the component is attached to the video source and they are switched synchronously.
 	//
-	// >  The variable N specifies the sequence number of the component. For example, **ComponentId.1*	- specifies the ID of the first component and **ComponentId.2*	- specifies the ID of the second component.
+	// > N specifies the sequence number of a component ID. For example, **ComponentId.1*	- specifies the first component ID and **ComponentId.2*	- specifies the second component ID.
 	//
 	// example:
 	//
 	// ["a2b8e671-2fe5-4642-a2ec-bf93880e****"]
 	ComponentId []*string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty" type:"Repeated"`
-	// The time when the episode ends. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end time. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// This parameter is required.
 	//
@@ -74,11 +74,11 @@ type AddCasterEpisodeRequest struct {
 	//
 	// episode_1
 	EpisodeName *string `json:"EpisodeName,omitempty" xml:"EpisodeName,omitempty"`
-	// The type of the episode. Valid values:
+	// The node type. Valid values:
 	//
-	// 	- **Resource**: a video resource.
+	// - **Resource**: A video source. If you set this parameter to Resource, you must also specify the ResourceId and SwitchType parameters.
 	//
-	// 	- **Component**: a component.
+	// - **Component**: A component.
 	//
 	// This parameter is required.
 	//
@@ -87,20 +87,27 @@ type AddCasterEpisodeRequest struct {
 	// Resource
 	EpisodeType *string `json:"EpisodeType,omitempty" xml:"EpisodeType,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the video resource.
+	// The region ID.
 	//
-	// >  This parameter takes effect and is required when the EpisodeType parameter is set to Resource.
+	// example:
 	//
-	// \\
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the video source.
 	//
-	// If the video resource was added by calling the [AddCasterVideoResource](https://help.aliyun.com/document_detail/2848020.html) operation, check the value of the response parameter ResourceId to obtain the ID.
+	// 	Notice:
+	//
+	// This parameter is required and applies only when EpisodeType is set to Resource.
+	//
+	//
+	//
+	// If you add a video source by calling the [AddCasterVideoResource](https://help.aliyun.com/document_detail/2848020.html) operation, check the value of the ResourceId parameter that is returned.
 	//
 	// example:
 	//
 	// a2b8e671-2fe5-4642-a2ec-bf93880e****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The time when the episode starts. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The start time. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// This parameter is required.
 	//
@@ -108,15 +115,19 @@ type AddCasterEpisodeRequest struct {
 	//
 	// 2016-06-29T08:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The policy for switching episodes. Valid values:
+	// The switch policy. Valid values:
 	//
-	// 	- **TimeFirst**: The episode starts when the preceding episode ends and ends when the next episode starts. If no next episode exists, the episode keeps repeating until a new episode is added or the production studio stops.
+	// 	Notice:
 	//
-	// 	- **ContentFirst**: The episode starts and ends as scheduled.
+	// This parameter applies only when EpisodeType is set to Resource.
 	//
-	// This parameter takes effect only when the EpisodeType parameter is set to Resource.
 	//
-	// >  This parameter must be set to TimeFirst when the video resource is a live stream.
+	//
+	// - **TimeFirst**: Time first.
+	//
+	// - **ContentFirst**: Content first.
+	//
+	// > For more information about video sources, see [Add a video source](https://help.aliyun.com/document_detail/66094.html).
 	//
 	// This parameter is required.
 	//

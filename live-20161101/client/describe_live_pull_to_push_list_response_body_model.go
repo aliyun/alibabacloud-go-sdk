@@ -28,7 +28,7 @@ type DescribeLivePullToPushListResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of records per page.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type DescribeLivePullToPushListResponseBody struct {
 	//
 	// a05e6b15-15af-405b-a4a2-0152245*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The tasks.
+	// The list of task information.
 	TaskList []*DescribeLivePullToPushListResponseBodyTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of query results.
 	//
 	// example:
 	//
@@ -117,33 +117,33 @@ func (s *DescribeLivePullToPushListResponseBody) Validate() error {
 }
 
 type DescribeLivePullToPushListResponseBodyTaskList struct {
-	// The current file index.
+	// The currently effective playlist sequence offset.
 	//
 	// example:
 	//
 	// 0
 	CurrentFileIndex *int32 `json:"CurrentFileIndex,omitempty" xml:"CurrentFileIndex,omitempty"`
-	// The current offset for video playback.
+	// The currently effective video playback offset.
 	//
 	// example:
 	//
 	// 0
 	CurrentOffset *int32 `json:"CurrentOffset,omitempty" xml:"CurrentOffset,omitempty"`
-	// The reason why the task was exited. Valid values:
+	// The reason why the task exited. Valid values:
 	//
-	// 	- TriggerByUser: You proactively ended the task.
+	// - TriggerByUser: Actively ended by the user.
 	//
-	// 	- OverEndTime: The specified end time was exceeded.
+	// - OverEndTime: Exceeded the preset end time.
 	//
-	// >  This parameter is returned only if the task status is exited.
+	// > Returned only when the task is in the exited state.
 	//
 	// example:
 	//
 	// TriggerByUser
 	TaskExitReason *string `json:"TaskExitReason,omitempty" xml:"TaskExitReason,omitempty"`
-	// The time when the task was exited. The value is a Unix timestamp in seconds.
+	// The task exit time, in Unix seconds timestamp.
 	//
-	// >  This parameter is returned only if the task status is exited.
+	// > Returned only when the task is in the exited state.
 	//
 	// example:
 	//
@@ -155,33 +155,33 @@ type DescribeLivePullToPushListResponseBodyTaskList struct {
 	//
 	// fb0d4ac7-c7e3-4978-9743-0bf2f6e8****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The information about the task.
+	// The task information.
 	TaskInfo *DescribeLivePullToPushListResponseBodyTaskListTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
-	// The reason why the task was stopped.
+	// The reason why the task stopped running. Valid values:
 	//
-	// 	- PullStreamFailed: An exception occurred while pulling the source stream. A retry is in progress.
+	// - PullStreamFailed: Source stream pulling exception. Retrying.
 	//
-	// 	- PushStreamFailed: An exception occurred while ingesting the stream. A retry is in progress.
+	// - PushStreamFailed: Destination stream pushing exception. Retrying.
 	//
-	// 	- UnknownError: An unknown exception occurred.
+	// - UnknownError: Unknown exception.
 	//
-	// >  This parameter is returned only if the task status is stopped.
+	// > Returned only when the task is in the stopped state.
 	//
 	// example:
 	//
 	// PullStreamFailed
 	TaskInvalidReason *string `json:"TaskInvalidReason,omitempty" xml:"TaskInvalidReason,omitempty"`
-	// The task status. Valid values:
+	// The current task status. Valid values:
 	//
-	// 	- 0: not started.
+	// - 0: Not started (the start time has not been reached).
 	//
-	// 	- 1: running. Stream pulling and stream relay are normal.
+	// - 1: Running normally (stream pulling and pushing are normal).
 	//
-	// 	- 2: abnormal.
+	// - 2: Running abnormally.
 	//
-	// 	- 3: stopped. It may be because exceptions occur during stream pulling or stream relay or you proactively call the StopLivePullToPush operation.
+	// - 3: Stopped (stream pulling or pushing is abnormal, or the task was actively stopped by calling an operation).
 	//
-	// 	- \\-1: exited.
+	// - -1: Exited.
 	//
 	// example:
 	//
@@ -279,57 +279,58 @@ func (s *DescribeLivePullToPushListResponseBodyTaskList) Validate() error {
 }
 
 type DescribeLivePullToPushListResponseBodyTaskListTaskInfo struct {
+	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
 	// The HTTP callback URL.
 	//
 	// example:
 	//
 	// hahaha.com
 	CallbackURL *string `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
-	// The destination URL to which the stream is relayed.
+	// The destination ingest URL.
 	//
 	// example:
 	//
 	// rtmp://qd.push.lgg.alivecdn.com/testhsc/streamhsc?live_rtmp_*******
 	DstUrl *string `json:"DstUrl,omitempty" xml:"DstUrl,omitempty"`
-	// The end time of the task. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The task end time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2024-12-30T14:30:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The file index, which indicates the sequence of the file where the playback starts.
+	// The file index. Playback starts from the nth file.
 	//
 	// example:
 	//
 	// 0
-	FileIndex *int32 `json:"FileIndex,omitempty" xml:"FileIndex,omitempty"`
-	// The offset of the position where the system starts to read the video resource. Unit: seconds. Valid values: positive numbers.
+	FileIndex        *int32  `json:"FileIndex,omitempty" xml:"FileIndex,omitempty"`
+	NotifyItemSwitch *string `json:"NotifyItemSwitch,omitempty" xml:"NotifyItemSwitch,omitempty"`
+	// The start offset, which is the start offset value of the video file. Unit: seconds. The value must be greater than 0.
 	//
-	// >
+	// > - Indicates the position to start reading from, relative to the first frame.
 	//
-	// 	- This parameter indicates an offset from the first frame.
-	//
-	// 	- This parameter is applicable to only video resources from ApsaraVideo VOD or a third party.
+	// > - Valid only for video-on-demand resources or video files.
 	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// The number of playbacks after the first playback is complete. Valid values:
+	// The number of times to repeat playback after the playlist finishes. Valid values:
 	//
-	// 	- 0 (default): specifies that the video list is played only once.
+	// - 0 (default): Do not repeat.
 	//
-	// 	- \\-1: specifies that the video list is played in loop mode.
+	// - -1: Loop indefinitely.
 	//
-	// 	- Positive integer: specifies the number of times the video list repeats after the first playback is complete.
+	// - Other positive integers: The number of times to repeat playback after the playlist finishes.
 	//
-	// >  This parameter is applicable to only video resources from ApsaraVideo VOD or a third party.
+	// > This parameter applies only to video-on-demand or third-party video streams.
 	//
 	// example:
 	//
 	// 0
-	RepeatNumber *int32 `json:"RepeatNumber,omitempty" xml:"RepeatNumber,omitempty"`
-	// The number of retries allowed.
+	RepeatNumber *int32  `json:"RepeatNumber,omitempty" xml:"RepeatNumber,omitempty"`
+	ReqAuth      *string `json:"ReqAuth,omitempty" xml:"ReqAuth,omitempty"`
+	// The number of retries.
 	//
 	// example:
 	//
@@ -341,27 +342,27 @@ type DescribeLivePullToPushListResponseBodyTaskListTaskInfo struct {
 	//
 	// 60
 	RetryInterval *int32 `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
-	// The protocol of the source stream.
+	// The source stream protocol name.
 	//
 	// example:
 	//
 	// flv
 	SourceProtocol *string `json:"SourceProtocol,omitempty" xml:"SourceProtocol,omitempty"`
-	// The type of the source stream. Valid values:
+	// The source stream type. Valid values:
 	//
-	// 	- live: a live stream
+	// - live: live stream.
 	//
-	// 	- vod: a list of ApsaraVideo VOD resources
+	// - vod: ApsaraVideo VOD resource.
 	//
-	// 	- url: a list of video resources from a third party
+	// - url: third-party video file resource.
 	//
 	// example:
 	//
 	// vod
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The source URLs.
+	// The source stream URL addresses.
 	SourceUrls []*string `json:"SourceUrls,omitempty" xml:"SourceUrls,omitempty" type:"Repeated"`
-	// The start time of the task. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The task start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
@@ -389,6 +390,10 @@ func (s DescribeLivePullToPushListResponseBodyTaskListTaskInfo) GoString() strin
 	return s.String()
 }
 
+func (s *DescribeLivePullToPushListResponseBodyTaskListTaskInfo) GetAuthKey() *string {
+	return s.AuthKey
+}
+
 func (s *DescribeLivePullToPushListResponseBodyTaskListTaskInfo) GetCallbackURL() *string {
 	return s.CallbackURL
 }
@@ -405,12 +410,20 @@ func (s *DescribeLivePullToPushListResponseBodyTaskListTaskInfo) GetFileIndex() 
 	return s.FileIndex
 }
 
+func (s *DescribeLivePullToPushListResponseBodyTaskListTaskInfo) GetNotifyItemSwitch() *string {
+	return s.NotifyItemSwitch
+}
+
 func (s *DescribeLivePullToPushListResponseBodyTaskListTaskInfo) GetOffset() *int32 {
 	return s.Offset
 }
 
 func (s *DescribeLivePullToPushListResponseBodyTaskListTaskInfo) GetRepeatNumber() *int32 {
 	return s.RepeatNumber
+}
+
+func (s *DescribeLivePullToPushListResponseBodyTaskListTaskInfo) GetReqAuth() *string {
+	return s.ReqAuth
 }
 
 func (s *DescribeLivePullToPushListResponseBodyTaskListTaskInfo) GetRetryCount() *int32 {
@@ -445,6 +458,11 @@ func (s *DescribeLivePullToPushListResponseBodyTaskListTaskInfo) GetTaskName() *
 	return s.TaskName
 }
 
+func (s *DescribeLivePullToPushListResponseBodyTaskListTaskInfo) SetAuthKey(v string) *DescribeLivePullToPushListResponseBodyTaskListTaskInfo {
+	s.AuthKey = &v
+	return s
+}
+
 func (s *DescribeLivePullToPushListResponseBodyTaskListTaskInfo) SetCallbackURL(v string) *DescribeLivePullToPushListResponseBodyTaskListTaskInfo {
 	s.CallbackURL = &v
 	return s
@@ -465,6 +483,11 @@ func (s *DescribeLivePullToPushListResponseBodyTaskListTaskInfo) SetFileIndex(v 
 	return s
 }
 
+func (s *DescribeLivePullToPushListResponseBodyTaskListTaskInfo) SetNotifyItemSwitch(v string) *DescribeLivePullToPushListResponseBodyTaskListTaskInfo {
+	s.NotifyItemSwitch = &v
+	return s
+}
+
 func (s *DescribeLivePullToPushListResponseBodyTaskListTaskInfo) SetOffset(v int32) *DescribeLivePullToPushListResponseBodyTaskListTaskInfo {
 	s.Offset = &v
 	return s
@@ -472,6 +495,11 @@ func (s *DescribeLivePullToPushListResponseBodyTaskListTaskInfo) SetOffset(v int
 
 func (s *DescribeLivePullToPushListResponseBodyTaskListTaskInfo) SetRepeatNumber(v int32) *DescribeLivePullToPushListResponseBodyTaskListTaskInfo {
 	s.RepeatNumber = &v
+	return s
+}
+
+func (s *DescribeLivePullToPushListResponseBodyTaskListTaskInfo) SetReqAuth(v string) *DescribeLivePullToPushListResponseBodyTaskListTaskInfo {
+	s.ReqAuth = &v
 	return s
 }
 

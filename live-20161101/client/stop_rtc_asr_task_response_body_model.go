@@ -18,19 +18,19 @@ type iStopRtcAsrTaskResponseBody interface {
 }
 
 type StopRtcAsrTaskResponseBody struct {
-	// The result of the request. If success is returned, the request is successful. If an error message is returned, the request failed.
+	// The result of the call. The value is \\`success\\` if the call is successful. Otherwise, an error message is returned.
 	//
 	// example:
 	//
 	// success
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 3D208CC1-27C9-51E9-82B8-A6682D466421
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned HTTP status code. HTTP status code 2000 indicates that the request is successful. If another HTTP status code is returned, the request failed.
+	// The status code. A value of \\`2000\\` indicates that the call was successful. Other values indicate that the call failed.
 	//
 	// example:
 	//

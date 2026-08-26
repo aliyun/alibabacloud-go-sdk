@@ -22,7 +22,7 @@ type iCloseLiveShiftRequest interface {
 }
 
 type CloseLiveShiftRequest struct {
-	// The name of the application to which the live stream belongs. You can specify an asterisk (\\*) as the value to match all applications under the domain name. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The name of the application to which the live stream belongs. Wildcards (*) are supported, which indicates all AppName values under the domain name. You can view the AppName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
 	//
 	// example:
 	//
@@ -37,8 +37,13 @@ type CloseLiveShiftRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the live stream. You can specify an asterisk (\\*) as the value to match all streams in the application. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the live stream. Wildcards (*) are supported, which indicates all StreamName values under the AppName. You can view the StreamName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
 	//
 	// example:
 	//

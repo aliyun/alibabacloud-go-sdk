@@ -11,6 +11,8 @@ type iBatchSetLiveDomainConfigsRequest interface {
 	GoString() string
 	SetDomainNames(v string) *BatchSetLiveDomainConfigsRequest
 	GetDomainNames() *string
+	SetDryRun(v bool) *BatchSetLiveDomainConfigsRequest
+	GetDryRun() *bool
 	SetFunctions(v string) *BatchSetLiveDomainConfigsRequest
 	GetFunctions() *string
 	SetOwnerAccount(v string) *BatchSetLiveDomainConfigsRequest
@@ -22,7 +24,7 @@ type iBatchSetLiveDomainConfigsRequest interface {
 }
 
 type BatchSetLiveDomainConfigsRequest struct {
-	// The domain names that you want to batch configure. Supported domain names include ingest domains, main streaming domains, and sub-streaming domains. Separate multiple domain names with commas (,).
+	// The domain names that you want to configure in batches. Valid values: ingest domain names, primary streaming domain names, and secondary streaming domain names. Separate multiple domain names with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -30,9 +32,10 @@ type BatchSetLiveDomainConfigsRequest struct {
 	//
 	// demo.aliyundoc.com,example.aliyundoc.com,example.com
 	DomainNames *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
+	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The list of features.
 	//
-	// Some features, such as `filetype_based_ttl_set`, support multiple configuration records. To update one of the configuration records, use `configId` to identify the record. For more information, see **Format of the Functions parameter*	- and **Features specified by the Functions parameter**.
+	// Some features, such as `filetype_based_ttl_set`, allow you to set multiple records. If you want to update a specific record, you can specify the record by its `configId`. For more information, refer to **Functions format description*	- and **Functions feature description*	- below.
 	//
 	// This parameter is required.
 	//
@@ -57,6 +60,10 @@ func (s *BatchSetLiveDomainConfigsRequest) GetDomainNames() *string {
 	return s.DomainNames
 }
 
+func (s *BatchSetLiveDomainConfigsRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *BatchSetLiveDomainConfigsRequest) GetFunctions() *string {
 	return s.Functions
 }
@@ -75,6 +82,11 @@ func (s *BatchSetLiveDomainConfigsRequest) GetSecurityToken() *string {
 
 func (s *BatchSetLiveDomainConfigsRequest) SetDomainNames(v string) *BatchSetLiveDomainConfigsRequest {
 	s.DomainNames = &v
+	return s
+}
+
+func (s *BatchSetLiveDomainConfigsRequest) SetDryRun(v bool) *BatchSetLiveDomainConfigsRequest {
+	s.DryRun = &v
 	return s
 }
 

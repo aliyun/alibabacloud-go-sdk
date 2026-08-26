@@ -29,19 +29,24 @@ type ListPlaylistRequest struct {
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the episode list. If you set this parameter, only the information about the specified episode lists is returned. If you do not set this parameter, the information about all episode lists that belong to the account is returned. If the episode list was created by calling the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation, check the value of the response parameter ProgramId to obtain the ID.
+	// The ID of the playlist. If you specify this parameter, only the information about the specified playlist is returned. If you leave this parameter empty, the information about all playlists that belong to your account is returned. Use the ProgramId value returned by the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation.
 	//
 	// example:
 	//
 	// c09f3d63-eacf-4fbf-bd48-a07a6ba7****
 	ProgramId *string `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListPlaylistRequest) String() string {

@@ -26,7 +26,7 @@ type iDescribeLiveStreamDetailFrameRateAndBitRateDataRequest interface {
 }
 
 type DescribeLiveStreamDetailFrameRateAndBitRateDataRequest struct {
-	// The name of the application to which the live stream belongs. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The name of the application to which the live stream belongs. You can view the AppName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DescribeLiveStreamDetailFrameRateAndBitRateDataRequest struct {
 	//
 	// AppName
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ingest domain or streaming domain.
+	// The ingest domain.
 	//
 	// This parameter is required.
 	//
@@ -42,23 +42,28 @@ type DescribeLiveStreamDetailFrameRateAndBitRateDataRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC+8).
 	//
-	// >  If the StartTime and EndTime parameters are invalid, or if the StartTime and EndTime parameters are not specified, data in the last hour is queried by default.
+	// > If StartTime and EndTime are invalid or not specified, data from the last 1 hour is returned by default.
 	//
 	// example:
 	//
 	// 2017-12-22T08:00:00Z
-	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC+8).
 	//
 	// example:
 	//
 	// 2017-12-21T08:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the live stream. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The name of the live stream. You can view the StreamName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
 	//
 	// This parameter is required.
 	//

@@ -32,7 +32,7 @@ type iAddLiveAIProduceRulesRequest interface {
 }
 
 type AddLiveAIProduceRulesRequest struct {
-	// The name of the application to which the live stream belongs. The name can be up to 256 characters in length and can contain digits, letters, hyphens (-), and underscores (_). The name must be the same as the application name in the ingest URL. Otherwise, the rule does not take effect.
+	// The name of the live streaming application. The name can be up to 256 characters long and can contain digits, uppercase and lowercase letters, hyphens (-), and underscores (_). The AppName must match the AppName in the ingest URL for the template to take effect.
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type AddLiveAIProduceRulesRequest struct {
 	//
 	// AppName
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// The description of the subtitle rule. The description can be up to 128 characters in length and can contain letters, digits, and special characters.
+	// The description of the subtitle rule. The description can contain Chinese and English characters, digits, and special characters. It can be up to 128 characters in length.
 	//
 	// example:
 	//
 	// live AI subtitle template
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The main streaming domain.
+	// The streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -54,33 +54,33 @@ type AddLiveAIProduceRulesRequest struct {
 	//
 	// demo.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Specifies whether to trigger the subtitle rule when stream pulling starts. Valid values:
+	// Specifies whether the rule is triggered by stream pulling. Valid values:
 	//
-	// 	- true: generates live subtitles when stream pulling starts and stops generating live subtitles when no stream is pulled for 5 minutes. When stream pulling restarts, live subtitles are generated again.
+	// - true: Subtitles are generated when stream pulling starts. If no stream is pulled for 5 minutes, subtitle generation stops. Subtitle generation resumes when stream pulling starts again.
 	//
-	// 	- false: generates live subtitles when stream ingest starts, regardless of whether stream pulling starts.
+	// - false: Subtitles are generated when stream ingest starts, regardless of whether a stream is being pulled.
 	//
 	// example:
 	//
 	// true
 	IsLazy *bool `json:"IsLazy,omitempty" xml:"IsLazy,omitempty"`
-	// The specification of the output subtitles. Valid values:
+	// The specifications of the output subtitles. Valid values:
 	//
-	// 	- `lp_ld`: landscape low definition 360p (640×360)
+	// - Landscape low definition 360p (640 × 360): `lp_ld`
 	//
-	// 	- `lp_ld_v`: portrait low definition 360p (360×640)
+	// - Portrait low definition 360p (360 × 640): `lp_ld_v`
 	//
-	// 	- `lp_sd`: landscape standard definition 480p (854×480)
+	// - Landscape standard definition 480p (854 × 480): `lp_sd`
 	//
-	// 	- `lp_sd_v`: portrait standard definition 480p (480×854)
+	// - Portrait standard definition 480p (480 × 854): `lp_sd_v`
 	//
-	// 	- `lp_hd`: landscape high definition 720p (1280×720)
+	// - Landscape high definition 720p (1280 × 720): `lp_hd`
 	//
-	// 	- `lp_hd_v`: portrait high definition 720p (720×1280)
+	// - Portrait high definition 720p (720 × 1280): `lp_hd_v`
 	//
-	// 	- `lp_ud`: landscape ultra-high definition 1080p (1920×1080)
+	// - Landscape ultra high definition 1080p (1920 × 1080): `lp_ud`
 	//
-	// 	- `lp_ud_v`: portrait ultra-high definition 1080p (1080×1920)
+	// - Portrait ultra high definition 1080p (1080 × 1920): `lp_ud_v`
 	//
 	// This parameter is required.
 	//
@@ -89,7 +89,12 @@ type AddLiveAIProduceRulesRequest struct {
 	// lp_ld
 	LiveTemplate *string `json:"LiveTemplate,omitempty" xml:"LiveTemplate,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the virtual background template.
 	//
 	// example:

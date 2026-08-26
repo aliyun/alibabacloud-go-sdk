@@ -16,12 +16,16 @@ type iStopRtcCloudTranscodeRequest interface {
 }
 
 type StopRtcCloudTranscodeRequest struct {
+	// The application ID. The ID can be up to 64 characters long and can contain uppercase letters, lowercase letters, digits, underscores (_), and hyphens (-).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ********-7074-****-9ef5-85c19a4*****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the cloud transcoding job. The ID can be up to 64 characters long and can contain uppercase letters, lowercase letters, digits, underscores (_), and hyphens (-).
+	//
 	// This parameter is required.
 	//
 	// example:

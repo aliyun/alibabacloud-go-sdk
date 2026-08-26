@@ -28,7 +28,7 @@ type DescribeLiveDomainStagingConfigRequest struct {
 	//
 	// developer.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The feature that you want to query. Separate multiple features with commas (,).
+	// The names of the features. Separate multiple feature names with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -37,7 +37,12 @@ type DescribeLiveDomainStagingConfigRequest struct {
 	// aliauth
 	FunctionNames *string `json:"FunctionNames,omitempty" xml:"FunctionNames,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeLiveDomainStagingConfigRequest) String() string {

@@ -20,7 +20,7 @@ type iMuteAllGroupUserRequest interface {
 }
 
 type MuteAllGroupUserRequest struct {
-	// The ID of the interactive messaging application.
+	// The application ID for interactive messages.
 	//
 	// This parameter is required.
 	//
@@ -28,19 +28,19 @@ type MuteAllGroupUserRequest struct {
 	//
 	// VKL3***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The mode in which system messages are broadcasted. Valid values:
+	// The system message diffusion type. Valid values:
 	//
-	// 	- 0: specifies that system messages are not broadcasted.
+	// - 0: No diffusion.
 	//
-	// 	- 1: specifies that system messages are broadcasted to specified users.
+	// - 1: Diffusion to specified users.
 	//
-	// 	- 2: specifies that system messages are broadcasted to the message group.
+	// - 2: Diffusion to the group.
 	//
 	// example:
 	//
 	// 2
 	BroadCastType *int32 `json:"BroadCastType,omitempty" xml:"BroadCastType,omitempty"`
-	// The ID of the message group.
+	// The message group ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type MuteAllGroupUserRequest struct {
 	//
 	// AE35-****-T95F
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the user who performs the operation.
+	// The user ID of the operator. This user must be the creator of the group.
 	//
 	// This parameter is required.
 	//

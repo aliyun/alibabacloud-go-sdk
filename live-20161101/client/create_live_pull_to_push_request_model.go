@@ -9,6 +9,8 @@ type iCreateLivePullToPushRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAuthKey(v string) *CreateLivePullToPushRequest
+	GetAuthKey() *string
 	SetCallbackUrl(v string) *CreateLivePullToPushRequest
 	GetCallbackUrl() *string
 	SetDstUrl(v string) *CreateLivePullToPushRequest
@@ -17,6 +19,8 @@ type iCreateLivePullToPushRequest interface {
 	GetEndTime() *string
 	SetFileIndex(v int32) *CreateLivePullToPushRequest
 	GetFileIndex() *int32
+	SetNotifyItemSwitch(v string) *CreateLivePullToPushRequest
+	GetNotifyItemSwitch() *string
 	SetOffset(v int32) *CreateLivePullToPushRequest
 	GetOffset() *int32
 	SetOwnerId(v int64) *CreateLivePullToPushRequest
@@ -27,6 +31,8 @@ type iCreateLivePullToPushRequest interface {
 	GetRegionId() *string
 	SetRepeatNumber(v int32) *CreateLivePullToPushRequest
 	GetRepeatNumber() *int32
+	SetReqAuth(v string) *CreateLivePullToPushRequest
+	GetReqAuth() *string
 	SetRetryCount(v int32) *CreateLivePullToPushRequest
 	GetRetryCount() *int32
 	SetRetryInterval(v int32) *CreateLivePullToPushRequest
@@ -44,27 +50,24 @@ type iCreateLivePullToPushRequest interface {
 }
 
 type CreateLivePullToPushRequest struct {
-	// The HTTP callback URL. By default, this parameter is left empty.
+	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
+	// HTTP callback URL. Default value: empty.
 	//
-	// >
+	// > - The URL that receives task-related callbacks.
 	//
-	// 	- The URL is used to receive callbacks related to the task.
+	// > - Maximum length is 2000 characters.
 	//
-	// 	- The URL can be up to 2,000 characters in length.
-	//
-	// 	- If you do not specify this parameter, no callbacks are returned for events related to the task.
+	// > - If this parameter is not specified, no task event callbacks will be sent.
 	//
 	// example:
 	//
 	// https://callback*****.com
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
-	// The destination URL to which the stream is relayed.
+	// Destination URL address for pushing the stream.
 	//
-	// >
+	// > - The rtmp protocol is supported.
 	//
-	// 	- The supported protocol for the URL is RTMP.
-	//
-	// 	- The URL can be up to 2,000 characters in length.
+	// > - Maximum length is 2000 characters.
 	//
 	// This parameter is required.
 	//
@@ -72,17 +75,13 @@ type CreateLivePullToPushRequest struct {
 	//
 	// rtmp://pushtest.********.aliyunlive.com/pulltest493/pulltest-w434
 	DstUrl *string `json:"DstUrl,omitempty" xml:"DstUrl,omitempty"`
-	// The end time of the task.
+	// Task end time.
 	//
-	// >
+	// > - Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC time).
 	//
-	// 	- Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// > - EndTime must be later than StartTime.
 	//
-	// 	- The time range specified by the StartTime and EndTime parameters cannot exceed seven days.
-	//
-	// 	- The end time must be later than the start time.
-	//
-	// 	- The end time must be later than the current time.
+	// > - EndTime must be later than the current time.
 	//
 	// This parameter is required.
 	//
@@ -90,95 +89,100 @@ type CreateLivePullToPushRequest struct {
 	//
 	// 2024-08-27T14:30:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The file index, which specifies the sequence of the file where the playback starts.
+	// File index. Starts playback from the nth file.
 	//
 	// example:
 	//
 	// 0
-	FileIndex *int32 `json:"FileIndex,omitempty" xml:"FileIndex,omitempty"`
-	// The offset of the position where the system starts to read the video resource. Unit: seconds. Valid values: positive numbers.
+	FileIndex        *int32  `json:"FileIndex,omitempty" xml:"FileIndex,omitempty"`
+	NotifyItemSwitch *string `json:"NotifyItemSwitch,omitempty" xml:"NotifyItemSwitch,omitempty"`
+	// Start offset. The offset value from the beginning of the video file. Unit: seconds. Valid values: greater than 0.
 	//
-	// >
+	// > - Indicates the position to start reading from, relative to the first frame (applies to the first video).
 	//
-	// 	- This parameter indicates an offset from the first frame of the first video resource in the list.
-	//
-	// 	- This parameter is applicable to only video resources from ApsaraVideo VOD or a third party.
+	// > - This parameter applies only to VOD or third-party video streams.
 	//
 	// example:
 	//
 	// 2
 	Offset  *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region where the task is started. Valid values:
+	// Specifies the region where the task is launched. Valid values:
 	//
-	// 	- ap-southeast-1: Singapore
+	// - ap-southeast-1 (Singapore)
 	//
-	// 	- ap-southeast-5: Indonesia (Jakarta)
+	// - ap-southeast-5 (Indonesia)
 	//
-	// 	- cn-beijing: China (Beijing)
+	// - cn-beijing (Beijing)
 	//
-	// 	- cn-shanghai: China (Shanghai)
+	// - cn-shanghai (Shanghai)
+	//
+	// - cn-shenzhen (Shenzhen)
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of playbacks after the first playback is complete. Valid values:
+	// Number of times to repeat playback after the initial playback is complete. Valid values:
 	//
-	// 	- 0 (default): specifies that the video list is played only once.
+	// - 0 (default): no repeat playback.
 	//
-	// 	- \\-1: specifies that the video list is played in loop mode.
+	// - -1: loop indefinitely.
 	//
-	// 	- Positive integer: specifies the number of times the video list repeats after the first playback is complete.
+	// - Other positive integers: number of times to repeat playback after the initial playback is complete.
 	//
-	// >  This parameter is applicable to only video resources from ApsaraVideo VOD or a third party.
+	// > This parameter applies only to VOD or third-party video streams.
 	//
 	// example:
 	//
 	// 0
-	RepeatNumber *int32 `json:"RepeatNumber,omitempty" xml:"RepeatNumber,omitempty"`
-	// The number of retries allowed. Default value: 3.
+	RepeatNumber *int32  `json:"RepeatNumber,omitempty" xml:"RepeatNumber,omitempty"`
+	ReqAuth      *string `json:"ReqAuth,omitempty" xml:"ReqAuth,omitempty"`
+	// Number of retries. Default value: 3.
 	//
 	// example:
 	//
 	// 3
 	RetryCount *int32 `json:"RetryCount,omitempty" xml:"RetryCount,omitempty"`
-	// The retry interval. Unit: seconds. Valid values: [60,300]. Default value: 60.
+	// Retry interval, in seconds. Valid values: [60, 300]. Default value: 60 seconds.
 	//
 	// example:
 	//
 	// 60
 	RetryInterval *int32 `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
-	// The protocol of the source stream.
+	// Source stream protocol name.
 	//
 	// Valid values:
 	//
-	// 	- rtmp
+	// - rtmp
 	//
-	// 	- rtsp
+	// - srt
 	//
-	// 	- srt
+	// - http-flv
 	//
-	// 	- http-flv
+	// - hls
 	//
-	// 	- flv
-	//
-	// >  This parameter is required if you set the **SourceType*	- parameter to live, but does not take effect if you set the SourceType parameter to vod or url.
+	// > This parameter is **required only when the SourceType parameter is set to live**, and is invalid when the value is vod or url.
 	//
 	// example:
 	//
 	// rtmp
 	SourceProtocol *string `json:"SourceProtocol,omitempty" xml:"SourceProtocol,omitempty"`
-	// The type of the source stream. Valid values:
+	// Source stream type. Valid values:
 	//
-	// 	- live: a live stream
+	// - live: live stream.
 	//
-	// 	- vod: a list of ApsaraVideo VOD resources
+	// - vod: ApsaraVideo VOD resource.
 	//
-	// 	- url: a list of video resources from a third party
+	// - url: third-party video file resource.
 	//
 	// This parameter is required.
 	//
@@ -186,33 +190,23 @@ type CreateLivePullToPushRequest struct {
 	//
 	// live
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The source URLs.
+	// List of source stream URL addresses.
 	//
-	// >
+	// > - For the live type, only one complete live playback URL is supported.
 	//
-	// 	- If SourceType is set to live, you can specify only one streaming URL.
+	// > - For the vod and url types, a maximum of 30 URLs can be specified.
 	//
-	// 	- If SourceType is set to vod or url, you can specify up to 30 IDs or URLs.
+	// > - The live type supports: rtmp, srt, and http-flv protocols.
 	//
-	// 	- If SourceType is set to live, the supported protocols for URLs are Real-Time Messaging Protocol (RTMP), Real-Time Streaming Protocol (RTSP), Secure Reliable Transport Protocol (SRT), and HTTP-FLV.
+	// > - For the vod type, specify ApsaraVideo VOD media asset IDs.
 	//
-	// 	- If SourceType is set to vod, specify the IDs of media assets from ApsaraVideo VOD.
-	//
-	// 	- If SourceType is set to url, the supported protocols for URLs are MP4 and HTTP-FLV.
+	// > - The url type supports: mp4 and http-flv protocols.
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// testurls
 	SourceUrls []*string `json:"SourceUrls,omitempty" xml:"SourceUrls,omitempty" type:"Repeated"`
-	// The start time of the task.
+	// Task start time.
 	//
-	// >
-	//
-	// 	- Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
-	//
-	// 	- The time range specified by the StartTime and EndTime parameters cannot exceed seven days.
+	// > - Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC time).
 	//
 	// This parameter is required.
 	//
@@ -220,7 +214,7 @@ type CreateLivePullToPushRequest struct {
 	//
 	// 2024-08-26T10:30:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the task. Default value: "". Fuzzy search for task names is supported.
+	// Task name, used to support fuzzy query. Default value: "".
 	//
 	// example:
 	//
@@ -234,6 +228,10 @@ func (s CreateLivePullToPushRequest) String() string {
 
 func (s CreateLivePullToPushRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateLivePullToPushRequest) GetAuthKey() *string {
+	return s.AuthKey
 }
 
 func (s *CreateLivePullToPushRequest) GetCallbackUrl() *string {
@@ -250,6 +248,10 @@ func (s *CreateLivePullToPushRequest) GetEndTime() *string {
 
 func (s *CreateLivePullToPushRequest) GetFileIndex() *int32 {
 	return s.FileIndex
+}
+
+func (s *CreateLivePullToPushRequest) GetNotifyItemSwitch() *string {
+	return s.NotifyItemSwitch
 }
 
 func (s *CreateLivePullToPushRequest) GetOffset() *int32 {
@@ -270,6 +272,10 @@ func (s *CreateLivePullToPushRequest) GetRegionId() *string {
 
 func (s *CreateLivePullToPushRequest) GetRepeatNumber() *int32 {
 	return s.RepeatNumber
+}
+
+func (s *CreateLivePullToPushRequest) GetReqAuth() *string {
+	return s.ReqAuth
 }
 
 func (s *CreateLivePullToPushRequest) GetRetryCount() *int32 {
@@ -300,6 +306,11 @@ func (s *CreateLivePullToPushRequest) GetTaskName() *string {
 	return s.TaskName
 }
 
+func (s *CreateLivePullToPushRequest) SetAuthKey(v string) *CreateLivePullToPushRequest {
+	s.AuthKey = &v
+	return s
+}
+
 func (s *CreateLivePullToPushRequest) SetCallbackUrl(v string) *CreateLivePullToPushRequest {
 	s.CallbackUrl = &v
 	return s
@@ -317,6 +328,11 @@ func (s *CreateLivePullToPushRequest) SetEndTime(v string) *CreateLivePullToPush
 
 func (s *CreateLivePullToPushRequest) SetFileIndex(v int32) *CreateLivePullToPushRequest {
 	s.FileIndex = &v
+	return s
+}
+
+func (s *CreateLivePullToPushRequest) SetNotifyItemSwitch(v string) *CreateLivePullToPushRequest {
+	s.NotifyItemSwitch = &v
 	return s
 }
 
@@ -342,6 +358,11 @@ func (s *CreateLivePullToPushRequest) SetRegionId(v string) *CreateLivePullToPus
 
 func (s *CreateLivePullToPushRequest) SetRepeatNumber(v int32) *CreateLivePullToPushRequest {
 	s.RepeatNumber = &v
+	return s
+}
+
+func (s *CreateLivePullToPushRequest) SetReqAuth(v string) *CreateLivePullToPushRequest {
+	s.ReqAuth = &v
 	return s
 }
 

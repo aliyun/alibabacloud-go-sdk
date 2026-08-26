@@ -16,13 +16,13 @@ type iJoinMessageGroupResponseBody interface {
 }
 
 type JoinMessageGroupResponseBody struct {
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 16A96B9A-****-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// Return result.
 	Result *JoinMessageGroupResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,11 +62,11 @@ func (s *JoinMessageGroupResponseBody) Validate() error {
 }
 
 type JoinMessageGroupResponseBodyResult struct {
-	// Indicates whether the users successfully joined the message group. Valid values:
+	// Indicates whether joining the message group was successful. Valid values:
 	//
-	// 	- true: The users successfully joined the message group.
+	// - true: Successful.
 	//
-	// 	- false: The users failed to join the message group.
+	// - false: Unsuccessful.
 	//
 	// example:
 	//

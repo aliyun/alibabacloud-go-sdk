@@ -25,7 +25,7 @@ type ListEdgeTranscodeTemplateResponseBody struct {
 	// ******3B-0E1A-586A-AC29-742247******
 	RequestId    *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TemplateList *ListEdgeTranscodeTemplateResponseBodyTemplateList `json:"TemplateList,omitempty" xml:"TemplateList,omitempty" type:"Struct"`
-	// The total number of templates returned.
+	// The total number of entries.
 	//
 	// example:
 	//

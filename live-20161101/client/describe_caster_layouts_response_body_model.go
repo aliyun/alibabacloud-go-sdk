@@ -23,13 +23,9 @@ type DescribeCasterLayoutsResponseBody struct {
 	//
 	// example:
 	//
-	// The normalized value of the width of the video layer image.
-	//
-	// 	- If the FillMode parameter of the video layer is set to none, the height of the video image is scaled based on this parameter. The default value is **0**, which indicates that the video image is displayed in the original size.
-	//
-	// 	- If the FillMode parameter of the video layer is set to fit, the value of the parameter is greater than **0**.
+	// 3be7ade8-d907-483c-b24a-0dad45****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//

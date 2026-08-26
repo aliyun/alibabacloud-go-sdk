@@ -20,31 +20,29 @@ type iCreateLivePullToPushResponseBody interface {
 }
 
 type CreateLivePullToPushResponseBody struct {
-	// The description of the custom rule.
+	// Error description.
 	//
 	// example:
 	//
 	// OK
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The code that is returned for the request.
+	// Return code.
 	//
-	// >
+	// > - "0" is returned under normal conditions.
 	//
-	// 	- 0 is returned if the request is normal.
-	//
-	// 	- For information about codes that are returned when exceptions occur, see the following Error codes table.
+	// > - For abnormal conditions, refer to the error code list below.
 	//
 	// example:
 	//
 	// 0
 	RetCode *int32 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
-	// The task ID.
+	// Task ID.
 	//
 	// example:
 	//

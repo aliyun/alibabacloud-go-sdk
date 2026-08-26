@@ -28,7 +28,7 @@ type PublishLiveStagingConfigToProductionRequest struct {
 	//
 	// developer.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The name of the feature. For more information about how to obtain the feature name, see [DescribeLiveDomainStagingConfig](https://help.aliyun.com/document_detail/297374.html).
+	// The name of the feature. To obtain the feature name, call the [DescribeLiveDomainStagingConfig](https://help.aliyun.com/document_detail/297374.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -37,7 +37,12 @@ type PublishLiveStagingConfigToProductionRequest struct {
 	// aliauth
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s PublishLiveStagingConfigToProductionRequest) String() string {

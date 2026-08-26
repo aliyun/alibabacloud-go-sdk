@@ -16,12 +16,16 @@ type iDescribeRtcCloudTranscodeRequest interface {
 }
 
 type DescribeRtcCloudTranscodeRequest struct {
+	// The application ID. The value can contain uppercase and lowercase letters, digits, underscores, and hyphens (-), with a maximum of 64 characters.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ********-7074-****-9ef5-85c19a4*****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The cloud transcoding task ID. The value can contain uppercase and lowercase letters, digits, underscores, and hyphens (-), with a maximum of 64 characters.
+	//
 	// This parameter is required.
 	//
 	// example:

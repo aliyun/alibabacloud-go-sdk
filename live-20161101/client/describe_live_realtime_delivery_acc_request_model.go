@@ -30,51 +30,56 @@ type iDescribeLiveRealtimeDeliveryAccRequest interface {
 type DescribeLiveRealtimeDeliveryAccRequest struct {
 	// The streaming domain.
 	//
-	// 	- You can query one or more domain names. If you specify multiple domain names, separate them with commas (,).
+	// - You can specify a single domain name or multiple domain names. Separate multiple domain names with commas (,).
 	//
-	// 	- If you leave this parameter empty, the data of all domain names within your Alibaba Cloud account is returned.
+	// - If this parameter is not specified, the merged data of all live streaming domain names is returned by default.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
-	// The end time must be later than the start time. The maximum time range that can be specified is one year.
+	// The end time must be later than the start time. The interval between the start time and end time cannot exceed one year.
 	//
 	// example:
 	//
 	// 2015-12-10T21:05:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time granularity of the query. Unit: seconds. Valid values:
+	// The time granularity of the queried data. Unit: seconds. Valid values:
 	//
-	// 	- **300**
+	// - **300**
 	//
-	// 	- **3600**
+	// - **3600**
 	//
-	// 	- **86400**
+	// - **86400**
 	//
-	// If you specify an invalid value or do not specify this parameter, the default value is used. If the specified time range is no more than three days, the default value is 300. If the specified time range is more than three days and no more than 30 days, the default value is 3600. If the specified time range is more than 30 days, the default value is 86400.
+	// If this parameter is not specified or the specified value is not supported, the default value is 300 seconds when the time span does not exceed 3 days, 3600 seconds when the time span exceeds 3 days, and 86400 seconds when the time span exceeds 30 days.
 	//
 	// example:
 	//
 	// 3600
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The name of the Logstore to which log entries are delivered. If you leave this parameter empty, the data of all Logstores is returned.
+	// The Logstore for real-time log delivery. If this parameter is not specified, the merged data of all Logstores is returned by default.
 	//
 	// example:
 	//
 	// logstore_example
 	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the Log Service project that is used for real-time log delivery. If you leave this parameter empty, the data of all Log Service projects is returned.
+	// The Project for real-time log delivery. If this parameter is not specified, the merged data of all Projects is returned by default.
 	//
 	// example:
 	//
 	// project_example
-	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//

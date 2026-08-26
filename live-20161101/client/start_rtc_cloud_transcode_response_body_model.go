@@ -16,10 +16,14 @@ type iStartRtcCloudTranscodeResponseBody interface {
 }
 
 type StartRtcCloudTranscodeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the cloud transcoding job.
+	//
 	// example:
 	//
 	// ******73-8501-****-8ac1-72295a******

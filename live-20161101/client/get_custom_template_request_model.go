@@ -18,9 +18,14 @@ type iGetCustomTemplateRequest interface {
 }
 
 type GetCustomTemplateRequest struct {
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the custom template that you want to query. The value is a string.
+	// The name of the custom template that you want to query.
 	//
 	// This parameter is required.
 	//

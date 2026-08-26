@@ -14,7 +14,7 @@ type iGetMessageAppRequest interface {
 }
 
 type GetMessageAppRequest struct {
-	// The ID of the interactive messaging application.
+	// The ID of the interactive message application.
 	//
 	// This parameter is required.
 	//

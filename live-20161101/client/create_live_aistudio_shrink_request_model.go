@@ -42,13 +42,13 @@ type iCreateLiveAIStudioShrinkRequest interface {
 }
 
 type CreateLiveAIStudioShrinkRequest struct {
-	// The ID of the background material in ApsaraVideo VOD. You can obtain the ID from the ApsaraVideo VOD console.
+	// The video-on-demand resource ID of the background material. Obtain this value from the ApsaraVideo VOD console.
 	//
 	// example:
 	//
 	// d0eb493192c771efba644531858c0102
 	BackgroundResourceId *string `json:"BackgroundResourceId,omitempty" xml:"BackgroundResourceId,omitempty"`
-	// The URL of the background material. Specify either this parameter or the BackgroundResourceId parameter.
+	// The access URL of the background material. Specify either this parameter or the resource ID.
 	//
 	// example:
 	//
@@ -56,11 +56,11 @@ type CreateLiveAIStudioShrinkRequest struct {
 	BackgroundResourceUrl *string `json:"BackgroundResourceUrl,omitempty" xml:"BackgroundResourceUrl,omitempty"`
 	// The type of the background material. Valid values:
 	//
-	// 	- VOD: a video in ApsaraVideo VOD
+	// - VOD: video-on-demand video.
 	//
-	// 	- PIC: an image
+	// - PIC: image.
 	//
-	// 	- LIVE: a live stream
+	// - LIVE: live stream.
 	//
 	// example:
 	//
@@ -72,41 +72,41 @@ type CreateLiveAIStudioShrinkRequest struct {
 	//
 	// template 1080
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The preview height. Unit: pixels.
+	// The height of the preview screen. Unit: px.
 	//
-	// The following preview specifications (width × height) are supported:
+	// The width × height of the preview screen supports only the following specifications:
 	//
-	// 	- Landscape low definition 360p (640×360)
+	// - Landscape low definition 360P: 640 × 360
 	//
-	// 	- Portrait low definition 360p (360×640)
+	// - Portrait low definition 360P: 360 × 640
 	//
-	// 	- Landscape standard definition 480p (854×480)
+	// - Landscape standard definition 480P: 854 × 480
 	//
-	// 	- Portrait standard definition 480p (480×854)
+	// - Portrait standard definition 480P: 480 × 854
 	//
-	// 	- Landscape high definition 720p (1280×720)
+	// - Landscape high definition 720P: 1280 × 720
 	//
-	// 	- Portrait high definition 720p (720×1280)
+	// - Portrait high definition 720P: 720 × 1280
 	//
-	// 	- Landscape ultra-high definition 1080p (1920×1080)
+	// - Landscape ultra-high definition 1080P: 1920 × 1080
 	//
-	// 	- Portrait ultra-high definition 1080p (1080×1920)
+	// - Portrait ultra-high definition 1080P: 1080 × 1920.
 	//
 	// example:
 	//
 	// 1080
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The layout information of the chroma-keyed material.
+	// The layout position information of the source stream after image matting.
 	//
 	// This parameter is required.
 	MattingLayoutShrink *string `json:"MattingLayout,omitempty" xml:"MattingLayout,omitempty"`
-	// The type of chroma key. Valid values:
+	// The image matting type. Valid values:
 	//
-	// 	- green: green-screen chroma key
+	// - green: green screen matting.
 	//
-	// 	- blue: blue-screen chroma key
+	// - blue: blue screen matting.
 	//
-	// 	- complex: background replacement
+	// - complex: real-scene matting.
 	//
 	// This parameter is required.
 	//
@@ -114,15 +114,15 @@ type CreateLiveAIStudioShrinkRequest struct {
 	//
 	// complex
 	MattingType *string `json:"MattingType,omitempty" xml:"MattingType,omitempty"`
-	// The layout information of the multimedia material.
+	// The layout position information of the multimedia material.
 	MediaLayoutShrink *string `json:"MediaLayout,omitempty" xml:"MediaLayout,omitempty"`
-	// The ID of the multimedia material in ApsaraVideo VOD. You can obtain the ID from the ApsaraVideo VOD console.
+	// The video-on-demand resource ID of the multimedia material. Obtain this value from the ApsaraVideo VOD console.
 	//
 	// example:
 	//
 	// d0eb493192c771efba644531858c0102
 	MediaResourceId *string `json:"MediaResourceId,omitempty" xml:"MediaResourceId,omitempty"`
-	// The URL of the multimedia material. Specify either this parameter or the MediaResourceId parameter.
+	// The access URL of the multimedia material. Specify either this parameter or the resource ID.
 	//
 	// example:
 	//
@@ -130,18 +130,23 @@ type CreateLiveAIStudioShrinkRequest struct {
 	MediaResourceUrl *string `json:"MediaResourceUrl,omitempty" xml:"MediaResourceUrl,omitempty"`
 	// The type of the multimedia material. Valid values:
 	//
-	// 	- VOD: a video in ApsaraVideo VOD
+	// - VOD: video-on-demand video.
 	//
-	// 	- PIC: an image
+	// - PIC: image.
 	//
-	// 	- LIVE: a live stream
+	// - LIVE: live stream.
 	//
 	// example:
 	//
 	// VOD
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the virtual studio template. The name must be unique.
 	//
 	// This parameter is required.
@@ -150,7 +155,7 @@ type CreateLiveAIStudioShrinkRequest struct {
 	//
 	// stu02
 	StudioName *string `json:"StudioName,omitempty" xml:"StudioName,omitempty"`
-	// The preview width. Unit: pixels.
+	// The width of the preview screen. Unit: px.
 	//
 	// example:
 	//

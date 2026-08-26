@@ -30,7 +30,7 @@ type iUpdateLiveAudioAuditConfigRequest interface {
 }
 
 type UpdateLiveAudioAuditConfigRequest struct {
-	// The name of the application to which the live stream belongs. The value of this parameter must be the same as the application name in the ingest URL. Otherwise, the configuration does not take effect. The application name is case-sensitive.
+	// The name of the application to which the stream belongs. The template takes effect only if the AppName value matches the AppName in the ingest URL. The value is case-sensitive.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type UpdateLiveAudioAuditConfigRequest struct {
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The business type. You can specify a model. The default value is the domain name.
+	// The business type. This parameter can be used to select a model. Default value: the domain name.
 	//
 	// example:
 	//
 	// example.edu
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The main streaming domain.
+	// The streamer streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -58,21 +58,26 @@ type UpdateLiveAudioAuditConfigRequest struct {
 	//
 	// liveBucket****
 	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	// The endpoint of the OSS bucket.
+	// The name of the OSS endpoint.
 	//
 	// example:
 	//
 	// cn-oss-****.aliyuncs.com
 	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	// The name of the recording that is stored in OSS.
+	// The name of the recording stored in OSS.
 	//
 	// example:
 	//
 	// liveObject****
 	OssObject *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the live stream. The value of this parameter must be the same as the stream name in the ingest URL. Otherwise, the configuration does not take effect. The stream name is case-sensitive.
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The stream name. The template takes effect only if the StreamName value matches the StreamName in the ingest URL. The value is case-sensitive.
 	//
 	// This parameter is required.
 	//

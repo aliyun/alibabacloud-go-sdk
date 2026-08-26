@@ -20,11 +20,11 @@ type iRestartCasterRequest interface {
 type RestartCasterRequest struct {
 	// The ID of the production studio.
 	//
-	// 	- If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
+	// - If you created the production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, use the CasterId value that is returned in the response.
 	//
-	// 	- If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management*	- page. To go to the page, log on to the **ApsaraVideo Live console*	- and click **Production Studios*	- in the left-side navigation pane.
+	// - If you created a production studio in the Live console, go to **Live console*	- > **Production Studio*	- > **Cloud Production Studio*	- to view the ID.
 	//
-	// >  You can find the ID of the production studio in the Instance ID/Name column.
+	// > The name of the production studio in the list on the Cloud Production Studio page is the production studio ID.
 	//
 	// This parameter is required.
 	//
@@ -33,6 +33,11 @@ type RestartCasterRequest struct {
 	// 80787064-1c94-4dc1-85ce-9409960a****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

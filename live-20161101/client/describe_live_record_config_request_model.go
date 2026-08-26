@@ -28,13 +28,13 @@ type iDescribeLiveRecordConfigRequest interface {
 }
 
 type DescribeLiveRecordConfigRequest struct {
-	// The name of the application to which the live stream belongs.
+	// The name of the application to which the stream belongs.
 	//
 	// example:
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The name of the main streaming domain.
+	// The streamer\\"s streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -42,11 +42,11 @@ type DescribeLiveRecordConfigRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The order in which the entries are sorted based on creation time. Valid values:
+	// The order in which entries are sorted by creation time. Valid values:
 	//
-	// 	- **asc*	- (default): ascending order
+	// - **asc*	- (default): ascending order.
 	//
-	// 	- **desc**: descending order
+	// - **desc**: descending order.
 	//
 	// example:
 	//
@@ -59,14 +59,14 @@ type DescribeLiveRecordConfigRequest struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page. Valid values: **5 to 30**. Default value: **10**.
+	// The number of entries per page. Default value: **10**. Valid values: **5 to 30**.
 	//
 	// example:
 	//
 	// 5
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the live stream.
+	// The stream name.
 	//
 	// example:
 	//

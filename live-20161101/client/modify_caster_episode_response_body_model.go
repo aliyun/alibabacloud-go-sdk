@@ -18,19 +18,19 @@ type iModifyCasterEpisodeResponseBody interface {
 }
 
 type ModifyCasterEpisodeResponseBody struct {
-	// The ID of the production studio. You can use the ID as a request parameter in the API operation that is used to copy the configurations of a scene, update the configurations of a scene, query the scenes of a production studio, query the audio configurations of a scene, start a scene in the production studio, or stop a scene in the production studio.
+	// The ID of the production studio. You can use this ID to perform operations on the scenario. These operations include copying, updating, querying, starting, and stopping the scenario. You can also use the ID to query the audio configuration of the scenario.
 	//
 	// example:
 	//
 	// LIVEPRODUCER_POST-cn-0pp1czt****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-	// The ID of the episode. You can use the ID as a request parameter in the API operation that is used to delete an episode list from a production studio, add episodes to an episode list, remove episodes from an episode list, query the information about episodes in an episode list, update episodes in an episode list, delete an episode list, query the information about an episode list, start an episode list, or stop an episode list.
+	// The ID of the episode. You can use this ID to manage the episode list and its items. For the episode list, you can perform operations such as query, edit, delete, start, and stop. For episode items, you can perform operations such as create, add, delete, and query.
 	//
 	// example:
 	//
 	// a2b8e671-2fe5-4642-a2ec-bf938623****
 	EpisodeId *string `json:"EpisodeId,omitempty" xml:"EpisodeId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

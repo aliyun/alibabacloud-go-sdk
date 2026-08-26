@@ -24,31 +24,36 @@ type iDescribeLiveStreamWatermarksRequest interface {
 }
 
 type DescribeLiveStreamWatermarksRequest struct {
-	// The name of the main streaming domain.
+	// The main streaming domain.
 	//
 	// example:
 	//
 	// live.yourdomain.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The keyword used in the query. You can specify the template ID or name. Fuzzy search is supported for the name.
+	// The keyword for the search. You can specify a template ID or name. Fuzzy search is supported for names.
 	//
 	// example:
 	//
 	// 445409ec-7eaa-461d-8f29-4bec2eb9****
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: 1.
+	// The page number. The default value is 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of templates per page. Default value: 100.
+	// The number of templates to return on each page. The default value is 100.
 	//
 	// example:
 	//
 	// 100
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

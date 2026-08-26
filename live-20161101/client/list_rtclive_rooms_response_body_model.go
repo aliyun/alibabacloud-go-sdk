@@ -23,8 +23,11 @@ type ListRTCLiveRoomsResponseBody struct {
 	// example:
 	//
 	// 5c6a2a0df228-4a64-af62-20e91b96****
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rooms     []*string `json:"Rooms,omitempty" xml:"Rooms,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of active channels.
+	Rooms []*string `json:"Rooms,omitempty" xml:"Rooms,omitempty" type:"Repeated"`
+	// The total number of query results.
+	//
 	// example:
 	//
 	// 2

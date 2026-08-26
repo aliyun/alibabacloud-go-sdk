@@ -22,7 +22,7 @@ type iDescribeDomainWithIntegrityRequest interface {
 }
 
 type DescribeDomainWithIntegrityRequest struct {
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard. The time must be in UTC.
+	// The end time must be later than the start time. The date format follows the ISO 8601 standard. Use UTC time.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DescribeDomainWithIntegrityRequest struct {
 	//
 	// 2017-10-10T20:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The integrity.
+	// The integrity value for verification.
 	//
 	// This parameter is required.
 	//
@@ -39,8 +39,13 @@ type DescribeDomainWithIntegrityRequest struct {
 	// 0.95
 	Integrity *float32 `json:"Integrity,omitempty" xml:"Integrity,omitempty"`
 	OwnerId   *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId  *string  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard. The time must be in UTC.
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time to query data. The date format follows the ISO 8601 standard. Use UTC time.
 	//
 	// This parameter is required.
 	//

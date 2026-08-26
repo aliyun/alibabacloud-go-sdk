@@ -34,15 +34,20 @@ type CreateEdgeTranscodeJobRequest struct {
 	//
 	// ******3b-4d18-395c-8106-ff21a6******
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The task name. The name can contain letters, digits, hyphens (-), and underscores (_). The name must be 255 characters in length.
+	// The job name. The name can contain Chinese characters, letters, digits, hyphens (-), and underscores (_). The name can be up to 255 characters in length.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// task1
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The URL of the input stream.
 	//

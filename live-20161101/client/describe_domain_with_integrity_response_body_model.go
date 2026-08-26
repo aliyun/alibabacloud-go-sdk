@@ -16,7 +16,7 @@ type iDescribeDomainWithIntegrityResponseBody interface {
 }
 
 type DescribeDomainWithIntegrityResponseBody struct {
-	// The verification information.
+	// The verification content.
 	Content []*DescribeDomainWithIntegrityResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -74,7 +74,7 @@ type DescribeDomainWithIntegrityResponseBodyContent struct {
 	//
 	// 1637825700000
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The subpoints.
+	// The data points.
 	Points []*string `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
 }
 

@@ -16,13 +16,13 @@ type iCancelMuteGroupUserResponseBody interface {
 }
 
 type CancelMuteGroupUserResponseBody struct {
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 16A96B9A-****-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// Return result.
 	Result *CancelMuteGroupUserResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,11 +62,11 @@ func (s *CancelMuteGroupUserResponseBody) Validate() error {
 }
 
 type CancelMuteGroupUserResponseBodyResult struct {
-	// Indicates whether the members are unmuted. Valid values:
+	// Whether unmuting is successful, values:
 	//
-	// 	- true: The members are unmuted.
+	// - true: Successful.
 	//
-	// 	- false: The members failed to be unmuted.
+	// - false: Unsuccessful.
 	//
 	// example:
 	//

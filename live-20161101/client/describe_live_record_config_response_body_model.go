@@ -27,7 +27,7 @@ type iDescribeLiveRecordConfigResponseBody interface {
 
 type DescribeLiveRecordConfigResponseBody struct {
 	LiveAppRecordList *DescribeLiveRecordConfigResponseBodyLiveAppRecordList `json:"LiveAppRecordList,omitempty" xml:"LiveAppRecordList,omitempty" type:"Struct"`
-	// The sorting order of recording configurations by creation time.
+	// The sort order.
 	//
 	// example:
 	//
@@ -51,7 +51,7 @@ type DescribeLiveRecordConfigResponseBody struct {
 	//
 	// 5056369B-D337-499E-B8B7-B761BD37B08A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of recording configurations that meet the specified conditions.
+	// The total number of entries that meet the specified conditions.
 	//
 	// example:
 	//

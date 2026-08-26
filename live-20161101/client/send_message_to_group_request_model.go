@@ -24,7 +24,7 @@ type iSendMessageToGroupRequest interface {
 }
 
 type SendMessageToGroupRequest struct {
-	// The ID of the interactive messaging application.
+	// Interactive Messages application ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type SendMessageToGroupRequest struct {
 	//
 	// VKL3***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The message body. The value is a JSON string.
+	// Message body, JSONString type.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type SendMessageToGroupRequest struct {
 	//
 	// test
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The ID of the message group.
+	// Message group ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type SendMessageToGroupRequest struct {
 	//
 	// AE35-****-T95F
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the user who performed the operation.
+	// Operator user ID.
 	//
 	// This parameter is required.
 	//
@@ -56,17 +56,17 @@ type SendMessageToGroupRequest struct {
 	//
 	// de1**a0
 	OperatorUserId *string `json:"OperatorUserId,omitempty" xml:"OperatorUserId,omitempty"`
-	// Specifies whether the message requires Alibaba Cloud content moderation. Valid values:
+	// Specifies whether the current message content requires Alibaba Cloud Content Moderation. Valid values:
 	//
-	// - **true**: does not require content moderation.
+	// - **true**: Content Moderation is not required.
 	//
-	// - **false**: requires content moderation. This is the default value.
+	// - **false*	- (default): Content Moderation is required.
 	//
 	// example:
 	//
 	// true
 	SkipAudit *bool `json:"SkipAudit,omitempty" xml:"SkipAudit,omitempty"`
-	// The type of the message. A value that is less than or equal to 10000 specifies a system message. A value that is greater than 10000 specifies a custom message.
+	// Message type. When the type field value is less than or equal to 10000, it indicates a system message. When the value is greater than 10000, it indicates a custom message.
 	//
 	// example:
 	//

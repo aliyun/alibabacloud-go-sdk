@@ -22,7 +22,7 @@ type DeleteMixStreamResponseBody struct {
 	//
 	// 749b7594-86d6-37b1-513b-e1e19845****
 	MixStreamId *string `json:"MixStreamId,omitempty" xml:"MixStreamId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

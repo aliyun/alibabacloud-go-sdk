@@ -24,24 +24,43 @@ type iUnTagLiveResourcesRequest interface {
 }
 
 type UnTagLiveResourcesRequest struct {
+	// Specifies whether to delete all tags. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
+	//
+	// Default value: **false**.
+	//
 	// example:
 	//
 	// false
-	All      *bool   `json:"All,omitempty" xml:"All,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	All     *bool  `json:"All,omitempty" xml:"All,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource ID. The live streaming domain name. Valid values of N: 1 to 50.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type. Enumeration type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DOMAIN
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag key. Valid values of N: **1 to 20**.
+	//
 	// example:
 	//
 	// env

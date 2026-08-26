@@ -16,7 +16,7 @@ type iUpdateMessageGroupResponseBody interface {
 }
 
 type UpdateMessageGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ func (s *UpdateMessageGroupResponseBody) Validate() error {
 type UpdateMessageGroupResponseBodyResult struct {
 	// Indicates whether the update was successful. Valid values:
 	//
-	// 	- true: The update was successful.
+	// - true: The update was successful.
 	//
-	// 	- false: The update failed.
+	// - false: The update failed.
 	//
 	// example:
 	//

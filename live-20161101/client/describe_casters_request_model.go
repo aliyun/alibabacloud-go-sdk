@@ -40,17 +40,15 @@ type iDescribeCastersRequest interface {
 }
 
 type DescribeCastersRequest struct {
-	// The ID of the production studio.
+	// The production studio ID.
 	//
-	// 	- If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848012.html) operation, check the value of the response parameter CasterId to obtain the ID.
+	// - If you created the production studio by calling the [CreateCaster operation](https://help.aliyun.com/document_detail/2848012.html), check the CasterId parameter returned by the CreateCaster operation.
 	//
-	// 	- If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management*	- page. To go to the page, log on to the ApsaraVideo Live console and click Production Studios in the left-side navigation pane.
+	// - If you created the production studio in the ApsaraVideo Live console, go to **ApsaraVideo Live console > Production Studios > Cloud Production Studio*	- to view the ID.
 	//
-	// >
+	// > - The production studio name in the production studio list on the Cloud Production Studio page is the production studio ID.
 	//
-	// 	- You can find the ID of the production studio in the Instance ID/Name column.
-	//
-	// 	- If you leave this parameter empty, the data of all production studios is returned.
+	// > - If this parameter is left empty, the merged data of all production studios is returned by default.
 	//
 	// example:
 	//
@@ -64,79 +62,86 @@ type DescribeCastersRequest struct {
 	CasterName *string `json:"CasterName,omitempty" xml:"CasterName,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- 0: the subscription billing method
+	// - 0: PrePaid (subscription).
 	//
-	// 	- 1: the pay-as-you-go billing method
+	// - 1: PostPaid (pay-as-you-go).
 	//
 	// example:
 	//
 	// 0
 	ChargeType *int32 `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//
 	// 2016-06-29T11:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The type of the production studio. Valid values:
+	// The specification type of the production studio. Valid values:
 	//
-	// 	- 1: general mode
+	// - 1: general mode.
 	//
-	// 	- 3: lightweight carousel playback mode
+	// - 3: lightweight playlist mode.
 	//
-	// 	- 4: virtual studio
+	// - 4: virtual studio mode.
 	//
-	// 	- 6: playlist mode
+	// - 6: playlist mode (new playlist mode production studio).
 	//
 	// example:
 	//
 	// 1
 	NormType *string `json:"NormType,omitempty" xml:"NormType,omitempty"`
-	// Specifies whether to sort the production studios in ascending order based on the modification time.
+	// Specifies whether to sort the production studios in ascending order by modification time.
 	//
-	// >  If you leave this parameter empty, the default value is used. Default value: false.
+	// Valid values: true (ascending order by modification time) | false (descending order by modification time, which is the default value).
+	//
+	// > If this parameter is not specified, the default value is "false".
 	//
 	// example:
 	//
 	// false
 	OrderByModifyAsc *string `json:"OrderByModifyAsc,omitempty" xml:"OrderByModifyAsc,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of templates to return on each page. If you leave this parameter empty, the default value is used. Default value: 100.
+	// The number of entries per page. Default value: 100.
 	//
 	// example:
 	//
 	// 100
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/2381067.html).
+	// The resource group ID. For more information about resource groups, see [What is a resource group](https://help.aliyun.com/document_detail/2381067.html).
 	//
 	// example:
 	//
 	// rg-aekzw******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//
 	// 2016-06-29T09:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the production studio. Valid values:
+	// The status. Valid values:
 	//
-	// 	- 0: idle
+	// - 0: idle.
 	//
-	// 	- 1: streaming
+	// - 1: streaming.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tag []*DescribeCastersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -288,13 +293,13 @@ func (s *DescribeCastersRequest) Validate() error {
 }
 
 type DescribeCastersRequestTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

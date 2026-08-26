@@ -24,9 +24,11 @@ type iListRtcMPUEventSubRecordRequest interface {
 }
 
 type ListRtcMPUEventSubRecordRequest struct {
-	// The ID of the application.
+	// The ID of the subscribed application. You can view your application IDs by navigating to **ApsaraVideo Live > Live+ > ApsaraVideo Real-time Communication > Application Management**.
 	//
-	// >  The ID can be up to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+	// > - The application ID consists of uppercase and lowercase letters, digits, underscores, and hyphens (-), with a maximum of 64 characters.
+	//
+	// > - You must first call CreateRtcMPUEventSub to create a stream mixing and forwarding event subscription for this application ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +36,9 @@ type ListRtcMPUEventSubRecordRequest struct {
 	//
 	// yourAppId
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The end time of the query.
+	//
+	// Format: yyyy-MM-ddTHH:mm:ssZ (UTC). The value cannot be later than the current time.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +54,7 @@ type ListRtcMPUEventSubRecordRequest struct {
 	//
 	// 20
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100.
+	// The number of records per page. Valid values: 1 to 100.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +62,9 @@ type ListRtcMPUEventSubRecordRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The start time of the query.
+	//
+	// Format: yyyy-MM-ddTHH:mm:ssZ (UTC). The value cannot be earlier than seven days before the current time.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +72,7 @@ type ListRtcMPUEventSubRecordRequest struct {
 	//
 	// 1970-01-01T00:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the subscription.
+	// The callback ID of the subscription.
 	//
 	// example:
 	//

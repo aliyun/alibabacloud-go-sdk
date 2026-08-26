@@ -24,7 +24,7 @@ type iDeleteLiveCenterTransferRequest interface {
 }
 
 type DeleteLiveCenterTransferRequest struct {
-	// The name of the application to which the live stream belongs. The value of this parameter must be the same as the application name for the live stream that you want to relay. Otherwise, the configuration does not take effect. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The name of the application. The value must be the same as that of the live stream that you want to relay. View AppName on the [Stream Management](t2019924.xdita#).
 	//
 	// This parameter is required.
 	//
@@ -45,10 +45,15 @@ type DeleteLiveCenterTransferRequest struct {
 	// example:
 	//
 	// rtmp://push.example2.aliyundoc.com/testapp1/teststream2
-	DstUrl   *string `json:"DstUrl,omitempty" xml:"DstUrl,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DstUrl  *string `json:"DstUrl,omitempty" xml:"DstUrl,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the live stream. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The name of the live stream. View StreamName on the [Stream Management](t2019924.xdita#) page.
 	//
 	// This parameter is required.
 	//

@@ -22,7 +22,7 @@ type iSetSnapshotCallbackAuthRequest interface {
 }
 
 type SetSnapshotCallbackAuthRequest struct {
-	// The custom key that is used for callback authentication.
+	// The authentication key.
 	//
 	// This parameter is required.
 	//
@@ -32,9 +32,9 @@ type SetSnapshotCallbackAuthRequest struct {
 	CallbackAuthKey *string `json:"CallbackAuthKey,omitempty" xml:"CallbackAuthKey,omitempty"`
 	// Specifies whether to enable callback authentication. Valid values:
 	//
-	// 	- **yes**: enables callback authentication.
+	// - **yes**: enables
 	//
-	// 	- **no**: disables callback authentication.
+	// - **no**: disables
 	//
 	// This parameter is required.
 	//
@@ -51,7 +51,12 @@ type SetSnapshotCallbackAuthRequest struct {
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SetSnapshotCallbackAuthRequest) String() string {

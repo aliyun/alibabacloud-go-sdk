@@ -18,9 +18,9 @@ type iDescribeMixStreamListResponseBody interface {
 }
 
 type DescribeMixStreamListResponseBody struct {
-	// Details about the stream mixing tasks.
+	// The list of stream mixing tasks.
 	MixStreamList []*DescribeMixStreamListResponseBodyMixStreamList `json:"MixStreamList,omitempty" xml:"MixStreamList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,37 +83,37 @@ func (s *DescribeMixStreamListResponseBody) Validate() error {
 }
 
 type DescribeMixStreamListResponseBodyMixStreamList struct {
-	// The name of the application.
+	// The app name.
 	//
 	// example:
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The main streaming domain.
+	// The streaming domain.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The time when the stream mixing task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the stream mixing task was created. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and in UTC.
 	//
 	// example:
 	//
 	// 2020-09-17T08:39:14Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the stream mixing task was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the stream mixing task was last modified. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and in UTC.
 	//
 	// example:
 	//
 	// 2020-09-17T08:39:15Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The number of input streams.
+	// The number of input sources.
 	//
 	// example:
 	//
 	// 2
 	InputStreamNumber *int32 `json:"InputStreamNumber,omitempty" xml:"InputStreamNumber,omitempty"`
-	// The ID of the layout.
+	// The layout ID.
 	//
 	// example:
 	//
@@ -125,13 +125,13 @@ type DescribeMixStreamListResponseBodyMixStreamList struct {
 	//
 	// lp_ld
 	MixStreamTemplate *string `json:"MixStreamTemplate,omitempty" xml:"MixStreamTemplate,omitempty"`
-	// The ID of the stream mixing task. You can specify this parameter in a request to delete the steam mixing task.
+	// The ID of the stream mixing task. You can use this ID to delete the task.
 	//
 	// example:
 	//
 	// aaf9a50f-c460-3a9b-f180-38dd8f05****
 	MixstreamId *string `json:"MixstreamId,omitempty" xml:"MixstreamId,omitempty"`
-	// The name of the output stream.
+	// The stream name of the stream mixing task.
 	//
 	// example:
 	//

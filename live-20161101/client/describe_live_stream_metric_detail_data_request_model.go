@@ -30,29 +30,29 @@ type iDescribeLiveStreamMetricDetailDataRequest interface {
 }
 
 type DescribeLiveStreamMetricDetailDataRequest struct {
-	// The name of the application for which you want to query the monitoring data of streams.
+	// The application name. Specify this parameter to query stream-level data for a specific application.
 	//
-	// >  If you specify the StreamName parameter, you must also specify the AppName parameter.
+	// > If you specify StreamName, you must also specify AppName.
 	//
 	// example:
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 	- The accelerated domain name. You can specify only one domain name. If you specify multiple domain names, an error occurs.
+	// - The accelerated domain name to query. Only a single domain name can be queried at a time. An error is returned if multiple domain names are specified.
 	//
-	// 	- If you do not specify the AppName and StreamName parameters, monitoring data of all streams for the domain name is returned.
+	// - If AppName and StreamName are not specified, stream-level data for all streams under the domain name is returned.
 	//
-	// 	- If you leave this parameter empty, monitoring data of streams under all domain names is returned.
+	// - If the domain name is left empty, aggregate data for all accelerated domain names under the account is returned.
 	//
-	// 	- If you specify the DomainName parameter and set both the AppName and StreamName parameters to all, monitoring data of all streams in all applications under the specified domain name is returned.
+	// - If DomainName is specified and both AppName and StreamName are set to all, aggregate data for the specified accelerated domain name is returned.
 	//
-	// 	- When you specify the DomainName parameter, make sure that the domain name is a domain name used for live streaming and that you have the permissions on the domain name.
+	// - When you specify DomainName, make sure the domain name is a live streaming domain and the user calling this operation has the required permissions on the domain name.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time, and the maximum time range that can be specified is one day. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end of the time range to query. The end time must be later than the start time, and the difference cannot exceed 1 day. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -60,23 +60,32 @@ type DescribeLiveStreamMetricDetailDataRequest struct {
 	//
 	// 2015-12-10T21:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The token used to query data by page. Up to 5,000 rows of data can be returned per query. If the number of rows exceeds 5,000, a token that determines the start point of the next query is provided in the response. If you specify this parameter, data continues to be obtained from the end of the previous query.
+	// The paged query token. A maximum of 5,000 rows of data can be returned per query. If the data to query exceeds 5,000 rows, the response includes the starting index for the next paging request. Pass this token in the request to continue querying data from where the previous query ended.
 	//
 	// example:
 	//
 	// UjsM9x3aVcJi9a0-ArwJUTTC67CIBKLw*****
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The streaming protocol. Valid values: **flv**, **hls**, **rtmp**, **rts**, and **p2p**.
+	// The stream protocol. Valid values: **flv**, **hls**, **rtmp**, **rts**, and **p2p**.
 	//
-	// You can specify multiple protocols. Separate multiple protocols with commas (,). However, data over multiple protocols is not aggregated and is returned based on the stream.
+	// You can query data for multiple protocols by separating them with commas (,). Data for multiple protocols is not aggregated and is output at the stream level.
+	//
+	// > The **rts*	- option queries Real-Time Streaming (RTS) streams that use the ARTC protocol.
+	//
+	// > - When using rts, you may need to additionally collect statistics for the xxx_AliRTS-opus transcoding stream. This is because when playing an RTS stream on the web, a transcoding stream with the _AliRTS-opus suffix appended to the stream name is automatically generated. For more information, see [RTS sub-second latency automatic transcoding](https://help.aliyun.com/document_detail/2948703.html).
 	//
 	// example:
 	//
 	// flv
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shenzhen
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+	// The start of the time range to query. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -84,9 +93,9 @@ type DescribeLiveStreamMetricDetailDataRequest struct {
 	//
 	// 2015-12-10T20:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the stream. The stream must belong to the application that is specified by the AppName parameter.
+	// The stream name. Specify this parameter together with AppName to return stream-level data.
 	//
-	// >  If you specify the StreamName parameter, you must also specify the AppName parameter.
+	// > If you specify StreamName, you must also specify AppName.
 	//
 	// example:
 	//

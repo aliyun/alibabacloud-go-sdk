@@ -34,83 +34,86 @@ type iDescribeLiveDetectPornDataRequest interface {
 }
 
 type DescribeLiveDetectPornDataRequest struct {
-	// The name of the application to which the live stream belongs.
+	// The name of the application to which the stream belongs.
 	//
 	// example:
 	//
 	// liveApp****
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// The main streaming domain to query.
+	// The streaming domain to query.
 	//
-	// 	- You can query one or more domain names. If you specify multiple domain names, separate them with commas (,).
+	// - You can query one or more domain names. To query multiple domain names, separate them with commas (,).
 	//
-	// 	- If you do not specify this parameter, the data of all domain names within your Alibaba Cloud account is returned.
+	// - If you do not specify this parameter, the service returns the merged data for all streaming domains.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2017-12-10T09:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether a quota of free image scanning is available. Valid values:
+	// You have a daily free quota for image scans. Valid values:
 	//
-	// 	- **free**: specifies that a quota of free image scanning is available.
+	// - **free**
 	//
-	// 	- **charge**: specifies that a quota of free image scanning is not available and fees are charged.
+	// - **charge**
 	//
 	// example:
 	//
 	// free
 	Fee     *string `json:"Fee,omitempty" xml:"Fee,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the domain name resides.
+	// The region where the domain name is located.
 	//
 	// example:
 	//
 	// cn-shanghai
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The moderation scenario. Valid values:
+	// The detection scenario. Valid values:
 	//
-	// 	- **porn**: pornography detection. This is the default value.
+	// - **porn*	- (default): pornography detection.
 	//
-	// 	- **terrorism**: terrorism detection
+	// - **terrorism**: terrorism and political content detection.
 	//
-	// 	- **ad**: ad violation detection
+	// - **ad**: ad and text violation detection.
 	//
-	// 	- **live**: undesirable scene detection
+	// - **live**: undesirable live streaming scenario detection.
 	//
-	// 	- **logo**: logo detection
+	// - **logo**: logo detection.
 	//
 	// example:
 	//
 	// porn
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	// The fields based on which data is grouped. Separate multiple fields with commas (,).
+	// The list of grouping fields. Separate multiple fields with commas (,).
 	//
-	// > If you leave the **SplitBy*	- parameter empty, only the **TimeStamp*	- and **Count*	- parameters are returned.
+	// > If you leave this parameter empty, the service returns only TimeStamp and Count.
 	//
 	// example:
 	//
 	// liveApp****,liveStream****
 	SplitBy *string `json:"SplitBy,omitempty" xml:"SplitBy,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The start of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	//
-	// >
+	// > - You can query data from the last 90 days.
 	//
-	// 	- You can query data in the last 90 days.
-	//
-	// 	- The minimum data granularity is 5 minutes. If you do not specify this parameter, data in the last 24 hours is queried.
+	// - The minimum data granularity is 5 minutes. If you leave this parameter empty, the service queries data from the last 24 hours by default.
 	//
 	// example:
 	//
 	// 2017-12-10T08:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the live stream.
+	// The stream name.
 	//
 	// example:
 	//

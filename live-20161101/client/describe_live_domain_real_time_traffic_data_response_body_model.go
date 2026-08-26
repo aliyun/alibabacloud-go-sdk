@@ -24,19 +24,19 @@ type iDescribeLiveDomainRealTimeTrafficDataResponseBody interface {
 }
 
 type DescribeLiveDomainRealTimeTrafficDataResponseBody struct {
-	// The time interval between the entries returned. Unit: seconds
+	// The time interval between data points. Unit: second.
 	//
 	// example:
 	//
 	// 60
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The streaming domain.
+	// The streaming domain name.
 	//
 	// example:
 	//
 	// example.com,example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The end of the time range. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is in UTC.
 	//
 	// example:
 	//
@@ -49,7 +49,7 @@ type DescribeLiveDomainRealTimeTrafficDataResponseBody struct {
 	//
 	// A666D44F-19D6-490E-97CF-1A64AB962C57
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The start of the time range. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is in UTC.
 	//
 	// example:
 	//

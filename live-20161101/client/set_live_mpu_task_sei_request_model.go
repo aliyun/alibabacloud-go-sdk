@@ -20,33 +20,33 @@ type iSetLiveMpuTaskSeiRequest interface {
 type SetLiveMpuTaskSeiRequest struct {
 	// The application ID.
 	//
-	// >  The ID can be up to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+	// > The ID can be up to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// VKL3***
+	// yourAppId
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The custom SEI.
 	//
-	// >  The value is a JSON string that can be up to 4,096 characters in length.
+	// > The value is a JSON string that can be up to 4,096 characters in length.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// {"name":"myroom"}
+	// {"key": "value"}
 	CustomSei *string `json:"CustomSei,omitempty" xml:"CustomSei,omitempty"`
 	// The task ID.
 	//
-	// >  The ID can be up to 55 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+	// > The ID can be up to 55 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// AL-4bce036dd90277c50705b0599wgfffc7
+	// yourTaskId
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

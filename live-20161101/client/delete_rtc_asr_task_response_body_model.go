@@ -18,7 +18,7 @@ type iDeleteRtcAsrTaskResponseBody interface {
 }
 
 type DeleteRtcAsrTaskResponseBody struct {
-	// The result of the request. If success is returned, the request is successful. If an error message is returned, the request failed.
+	// The description of the result. If the value is \\`success\\`, the operation is successful. Otherwise, an error message is returned.
 	//
 	// example:
 	//
@@ -28,9 +28,9 @@ type DeleteRtcAsrTaskResponseBody struct {
 	//
 	// example:
 	//
-	// 85F94125-B695-1FB8-A7E7-3BE7CE07EF31
+	// 85F94125-B695-1FB8-A7E7-3BE7CE******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned HTTP status code. HTTP status code 2000 indicates that the request is successful. If another HTTP status code is returned, the request failed.
+	// The status code. A value of \\`2000\\` indicates that the operation is successful. Other values indicate that an error occurred.
 	//
 	// example:
 	//

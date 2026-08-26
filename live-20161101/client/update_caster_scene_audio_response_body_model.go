@@ -14,7 +14,7 @@ type iUpdateCasterSceneAudioResponseBody interface {
 }
 
 type UpdateCasterSceneAudioResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type iStartLiveMPUTaskRequest interface {
 }
 
 type StartLiveMPUTaskRequest struct {
-	// The application ID. You can specify only one application ID. The ID can be up to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+	// The application ID. Only one ID is supported. It can contain uppercase letters, lowercase letters, digits, underscores (_), and hyphens (-). The maximum length is 64 characters.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type StartLiveMPUTaskRequest struct {
 	//
 	// yourAppId
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The channel ID. You can specify only one channel ID. The ID can be up to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+	// The channel ID. Only one ID is supported. It can contain uppercase letters, lowercase letters, digits, underscores (_), and hyphens (-). The maximum length is 64 characters.
 	//
 	// This parameter is required.
 	//
@@ -50,9 +50,9 @@ type StartLiveMPUTaskRequest struct {
 	//
 	// yourChannelId
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// The timeout period of an idle connection. Unit: seconds. Valid values: [10,86400].
+	// The idle timeout period. Unit: seconds. The value must be in the range of [10, 86400].
 	//
-	// >  If the task is idle for a period of time longer than the duration specified by the MaxIdleTime parameter, the task is automatically stopped. If the parameter is not specified, the task is stopped after the channel is closed.
+	// > If you set this parameter, the task is automatically stopped when it has been idle for a period longer than MaxIdleTime. If you do not set this parameter, the task is stopped immediately after the channel is closed.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type StartLiveMPUTaskRequest struct {
 	MaxIdleTime *string `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
 	// The stream mixing mode. Valid values:
 	//
-	// 	- **0**: the single-stream relay mode. In this mode, the service only relays the original single stream, but does not transcode mixed streams. You do not need to set parameters for mixed-stream transcoding.
+	// - **0**: Single-stream ingest. The original single stream is ingested without stream mixing or transcoding. You do not need to configure stream mixing and transcoding parameters.
 	//
-	// 	- **1*	- (default): the mixed-stream relay mode.
+	// - **1*	- (default): Stream mixing and transcoding.
 	//
 	// This parameter is required.
 	//
@@ -70,41 +70,41 @@ type StartLiveMPUTaskRequest struct {
 	//
 	// 0
 	MixMode *string `json:"MixMode,omitempty" xml:"MixMode,omitempty"`
-	// The multiple ingest URLs to relay. This parameter allows you to specify multiple ingest URLs.
+	// The parameters for ingesting to multiple URLs. You can specify multiple live ingest URLs.
 	//
-	// >  The StreamURL and MultiStreamURL parameters are mutually exclusive. You must specify one of the two parameters.
+	// > When you set the ingest URL for a task, you must configure either the StreamURL parameter or the MultiStreamURL parameter, but not both.
 	MultiStreamURL []*StartLiveMPUTaskRequestMultiStreamURL `json:"MultiStreamURL,omitempty" xml:"MultiStreamURL,omitempty" type:"Repeated"`
-	// The region in which the streams are mixed. Valid values:
+	// The region where the stream mixing service is located. Valid values:
 	//
-	// 	- **CN-Shanghai**
+	// - **CN-Shanghai<props="china">(default)**: Shanghai.
 	//
-	// 	- **AP-Singapore*	- (default)
+	// - **AP-Singapore<props="intl">(default)**: Singapore.
 	//
-	// 	- **EMAA-Saudi**
+	// - **EMAA-Saudi**: Saudi Arabia.
 	//
 	// example:
 	//
 	// CN-Shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The supplemental enhancement information (SEI) parameters.
+	// The SEI configuration parameters.
 	SeiParams *StartLiveMPUTaskRequestSeiParams `json:"SeiParams,omitempty" xml:"SeiParams,omitempty" type:"Struct"`
-	// The single-stream relay parameters. These parameters are required if you set MixMode to 0. Leave these parameters empty in the mixed-stream relay mode.
+	// The parameters for single-stream ingest. This parameter is required when MixMode is set to 0. Do not set this parameter for stream mixing and transcoding.
 	SingleSubParams *StartLiveMPUTaskRequestSingleSubParams `json:"SingleSubParams,omitempty" xml:"SingleSubParams,omitempty" type:"Struct"`
-	// The ingest URL. You can specify only one ingest URL in the Real-Time Messaging Protocol (RTMP) format. The URL can be up to 2,048 characters in length. For information about the generation rules of ingest URLs, see [Ingest and streaming URLs](https://help.aliyun.com/document_detail/199339.html).
+	// The live ingest URL. Only the RTMP protocol is supported. Only one URL is supported. The maximum length is 2048 characters. For information about how to generate the URL, see [Ingest URLs and playback URLs](https://help.aliyun.com/document_detail/199339.html).
 	//
-	// >
+	// > - For domain names with hotlink protection enabled, the ingest URL must include an access token.
 	//
-	// 	- If the ingest URL is under a domain name for which hotlink protection is enabled, you must include an access token in the URL.
+	// - Do not use the same StreamURL in different tasks at the same time.
 	//
-	// 	- You cannot use the same ingest URL in different tasks.
-	//
-	// 	- You cannot use the same ingest URL within 10 seconds after a task is stopped.
+	// - Do not use the same StreamURL within 10 seconds after a task stops.
 	//
 	// example:
 	//
 	// rtmp://example.com/live/stream
 	StreamURL *string `json:"StreamURL,omitempty" xml:"StreamURL,omitempty"`
-	// The task ID. You can specify only one task ID. The ID can be up to 55 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The ID must be unique.
+	// The task ID. Only one ID is supported. It can contain uppercase letters, lowercase letters, digits, underscores (_), and hyphens (-). The maximum length is 55 characters. This ID is the unique identifier for the bypass ingest task.
+	//
+	// If a task with the same ID still exists and has not been cleared when you start a new task, \\`InvalidParam\\` is returned.
 	//
 	// This parameter is required.
 	//
@@ -112,7 +112,7 @@ type StartLiveMPUTaskRequest struct {
 	//
 	// yourTaskId
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The mixed-stream relay parameters. These parameters are required if you set MixMode to 1. Leave these parameters empty if you use the single-stream relay mode.
+	// The parameters for stream mixing and transcoding. This parameter is required when MixMode is set to 1. Do not set this parameter for single-stream ingest.
 	TranscodeParams *StartLiveMPUTaskRequestTranscodeParams `json:"TranscodeParams,omitempty" xml:"TranscodeParams,omitempty" type:"Struct"`
 }
 
@@ -252,19 +252,19 @@ func (s *StartLiveMPUTaskRequest) Validate() error {
 }
 
 type StartLiveMPUTaskRequestMultiStreamURL struct {
-	// Specifies whether to perform stream relay by using Alibaba Cloud CDN. Valid values:
+	// Specifies whether to ingest the stream to Alibaba Cloud CDN.
 	//
-	// 	- false: performs stream relay by using a CDN service that is not Alibaba Cloud CDN.
+	// - false: Ingest to a non-Alibaba Cloud CDN.
 	//
-	// 	- true: performs stream relay by using Alibaba Cloud CDN.
+	// - true: Ingest to Alibaba Cloud CDN.
 	//
-	// >  The default value of this parameter is false.
+	// > The default value is false.
 	//
 	// example:
 	//
 	// false
 	IsAliCdn *bool `json:"IsAliCdn,omitempty" xml:"IsAliCdn,omitempty"`
-	// The ingest URL. Only the RTMP format is supported. The URL can be up to 2,048 characters in length. For information about the generation rules of ingest URLs, see [Ingest and streaming URLs](https://help.aliyun.com/document_detail/199339.html).
+	// The live ingest URL. Only the RTMP protocol is supported. The maximum length is 2048 characters. For information about how to generate the URL, see [Ingest URLs and playback URLs](https://help.aliyun.com/document_detail/199339.html).
 	//
 	// example:
 	//
@@ -303,11 +303,11 @@ func (s *StartLiveMPUTaskRequestMultiStreamURL) Validate() error {
 }
 
 type StartLiveMPUTaskRequestSeiParams struct {
-	// The layout and volume SEI. If you leave this parameter empty, the default layout and volume SEI is used.
+	// The layout and volume SEI. The content of this parameter can be empty, which means the default layout and volume SEI is carried.
 	LayoutVolume *StartLiveMPUTaskRequestSeiParamsLayoutVolume `json:"LayoutVolume,omitempty" xml:"LayoutVolume,omitempty" type:"Struct"`
-	// Specifies whether to pass through the SEI.
+	// The pass-through SEI.
 	PassThrough *StartLiveMPUTaskRequestSeiParamsPassThrough `json:"PassThrough,omitempty" xml:"PassThrough,omitempty" type:"Struct"`
-	// The custom payload_type of the SEI. Valid values: 100 to 254. If you do not specify this parameter, the default value 5 is used.
+	// The custom payload_type of the SEI message. The value must be in the range of 100-254. If not set, the default payload_type is 5.
 	//
 	// example:
 	//
@@ -365,17 +365,17 @@ func (s *StartLiveMPUTaskRequestSeiParams) Validate() error {
 }
 
 type StartLiveMPUTaskRequestSeiParamsLayoutVolume struct {
-	// Specifies whether to include the SEI in an Instantaneous Decoder Refresh (IDR) frame. Valid values:
+	// Specifies whether to ensure that SEI is carried when sending an IDR keyframe. Valid values:
 	//
-	// 	- **0**: does not include the SEI.
+	// - **0**: Does not ensure SEI is carried.
 	//
-	// 	- **1**: includes the SEI.
+	// - **1**: Ensures SEI is carried.
 	//
 	// example:
 	//
 	// 0
 	FollowIdr *string `json:"FollowIdr,omitempty" xml:"FollowIdr,omitempty"`
-	// The interval at which the SEI is sent. Valid values: [1000,5000]. Unit: milliseconds.
+	// The SEI sending interval. Unit: milliseconds. The value must be in the range of [1000, 5000].
 	//
 	// example:
 	//
@@ -414,29 +414,29 @@ func (s *StartLiveMPUTaskRequestSeiParamsLayoutVolume) Validate() error {
 }
 
 type StartLiveMPUTaskRequestSeiParamsPassThrough struct {
-	// Specifies whether to include the SEI in an IDR frame. Valid values:
+	// Specifies whether to ensure that SEI is carried when sending an IDR keyframe. Valid values:
 	//
-	// 	- **0**: does not include the SEI.
+	// - **0**: Does not ensure SEI is carried.
 	//
-	// 	- **1**: includes the SEI.
+	// - **1**: Ensures SEI is carried.
 	//
 	// example:
 	//
 	// 0
 	FollowIdr *string `json:"FollowIdr,omitempty" xml:"FollowIdr,omitempty"`
-	// The interval at which the SEI is sent. Valid values: [1000,5000]. Unit: milliseconds.
+	// The SEI sending interval. Unit: milliseconds. The value must be in the range of [1000, 5000].
 	//
 	// example:
 	//
 	// 1000
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The payload content of the SEI.
+	// The payload content of the pass-through SEI.
 	//
 	// example:
 	//
 	// yourPayloadContent
 	PayloadContent *string `json:"PayloadContent,omitempty" xml:"PayloadContent,omitempty"`
-	// The key of the payload content of the SEI. If you do not specify this parameter, the default value udd is used.
+	// The key corresponding to the payload content of the pass-through SEI. If not set, the default key is \\`udd\\`.
 	//
 	// example:
 	//
@@ -493,29 +493,29 @@ func (s *StartLiveMPUTaskRequestSeiParamsPassThrough) Validate() error {
 }
 
 type StartLiveMPUTaskRequestSingleSubParams struct {
-	// The type of the video source. This parameter is valid only when you set StreamType to 2. Valid values:
+	// The type of video input stream in single-stream ingest mode. This parameter is valid only for video streams (StreamType=2). Valid values:
 	//
-	// 	- **camera*	- (default)
+	// - **camera*	- (default): Camera stream.
 	//
-	// 	- **shareScreen**
+	// - **shareScreen**: Screen sharing stream.
 	//
 	// example:
 	//
 	// camera
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The type of the stream that you want to relay. Valid values:
+	// The type of stream to ingest in single-stream ingest mode. Valid values:
 	//
-	// 	- **0*	- (default): original stream
+	// - **0*	- (default): Ingest the original stream.
 	//
-	// 	- **1**: only the audio track
+	// - **1**: Ingest only the audio stream.
 	//
-	// 	- **2**: only the video track
+	// - **2**: Ingest only the video stream.
 	//
 	// example:
 	//
 	// 0
 	StreamType *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
-	// The user ID. In the single-stream relay mode, you can relay only one stream in a request.
+	// The ID of the user whose stream is ingested. Only one stream can be ingested at a time.
 	//
 	// This parameter is required.
 	//
@@ -565,15 +565,15 @@ func (s *StartLiveMPUTaskRequestSingleSubParams) Validate() error {
 }
 
 type StartLiveMPUTaskRequestTranscodeParams struct {
-	// The global background image.
+	// The global background image for the mixed stream.
 	Background *StartLiveMPUTaskRequestTranscodeParamsBackground `json:"Background,omitempty" xml:"Background,omitempty" type:"Struct"`
 	// The encoding parameters for the output stream.
 	EncodeParams *StartLiveMPUTaskRequestTranscodeParamsEncodeParams `json:"EncodeParams,omitempty" xml:"EncodeParams,omitempty" type:"Struct"`
 	// The video layout information.
 	//
-	// >  If video transcoding is required, you must specify the video layout information, including the x-coordinate and y-coordinate, the width and height, and the layer. For audio-only transcoding, leave the video layout information empty.
+	// > For video transcoding, you must specify the video layout information, including coordinates (X, Y), pane dimensions (Width, Height), and stacking order (ZOrder). For audio-only transcoding, do not specify video layout information.
 	Layout *StartLiveMPUTaskRequestTranscodeParamsLayout `json:"Layout,omitempty" xml:"Layout,omitempty" type:"Struct"`
-	// The information about the users whose streams are subscribed to. If you leave this parameter empty, streams from all users are mixed.
+	// The information about the users to subscribe to for stream mixing. If you do not specify users, all users are included in the mixed stream.
 	UserInfos []*StartLiveMPUTaskRequestTranscodeParamsUserInfos `json:"UserInfos,omitempty" xml:"UserInfos,omitempty" type:"Repeated"`
 }
 
@@ -650,17 +650,17 @@ func (s *StartLiveMPUTaskRequestTranscodeParams) Validate() error {
 }
 
 type StartLiveMPUTaskRequestTranscodeParamsBackground struct {
-	// The display mode of the global background image. Valid values:
+	// The display mode of the output video. Valid values:
 	//
-	// 	- **0**: scales the background image proportionally to fit the view, with black bars displayed.
+	// - **0**: Scale and display a black background.
 	//
-	// 	- **1*	- (default): crops the background image to fit the view.
+	// - **1*	- (default): Clip.
 	//
 	// example:
 	//
 	// 1
 	RenderMode *string `json:"RenderMode,omitempty" xml:"RenderMode,omitempty"`
-	// The URL of the global background image. The URL can be up to 2,048 characters in length.
+	// The URL of the global background image. The maximum length is 2048 characters.
 	//
 	// example:
 	//
@@ -699,81 +699,81 @@ func (s *StartLiveMPUTaskRequestTranscodeParamsBackground) Validate() error {
 }
 
 type StartLiveMPUTaskRequestTranscodeParamsEncodeParams struct {
-	// The bitrate of the audio. Valid values: [8,500]. Unit: Kbit/s.
+	// The audio bitrate. Unit: kbps. The value must be in the range of [8, 500].
 	//
 	// example:
 	//
 	// 128
 	AudioBitrate *string `json:"AudioBitrate,omitempty" xml:"AudioBitrate,omitempty"`
-	// The number of sound channels. Valid values: 1 and 2.
+	// The number of audio channels. Valid values: 1, 2.
 	//
 	// example:
 	//
 	// 2
 	AudioChannels *string `json:"AudioChannels,omitempty" xml:"AudioChannels,omitempty"`
-	// Specifies whether the output stream is an audio-only stream. Valid values:
+	// Specifies whether the stream is audio-only. Valid values:
 	//
-	// 	- **true**: The output stream is an audio-only stream. If you set this parameter to true, you need to configure only audio-related parameters under EncodeParams.
+	// - **true**: Audio-only. You only need to set audio-related parameters.
 	//
-	// 	- **false*	- (default): The output stream is not an audio-only stream. If you set this parameter to false, you need to configure all parameters under EncodeParams, except the VideoCodec and EnhancedParam parameters.
+	// - **false*	- (default): Not audio-only. All parameters except VideoCodec and EnhancedParam must be specified.
 	//
 	// example:
 	//
 	// false
 	AudioOnly *string `json:"AudioOnly,omitempty" xml:"AudioOnly,omitempty"`
-	// The audio sampling rate. Valid values: 8000, 16000, 32000, 44100, and 48000. Unit: Hz.
+	// The audio sampling rate. Unit: Hz. Valid values: 8000, 16000, 32000, 44100, 48000.
 	//
 	// example:
 	//
 	// 44100
 	AudioSampleRate *string `json:"AudioSampleRate,omitempty" xml:"AudioSampleRate,omitempty"`
-	// The parameter used for encoding enhancement, which is a JSON string. The parameter includes the optional profile and preset fields.
+	// The enhanced encoding parameters. This is a JSON string. The supported optional configurations include \\`profile\\` and \\`preset\\`.
 	//
-	// 	- profile: the encoding level. If the video codec is H.264, the valid values of this field are baseline, main, and high. If the video codec is H.265, the valid value of this field is main.
+	// - \\`profile\\`: The encoding profile. If the video encoding format is H.264, valid values for \\`profile\\` include "baseline", "main", and "high". If the video encoding format is H.265, the valid value for \\`profile\\` is "main".
 	//
-	// 	- preset: adjusts the trade-off between encoding speed and video quality. The valid values of this field are ultrafast, superfast, veryfast, faster, fast, medium, slow, slower, veryslow, and placebo. Each value specifies a level of trade-off between encoding speed and video quality. For example, the ultrafast preset has the fastest encoding speed but the lowest video quality, while the placebo preset sacrifices the encoding speed for the best video quality.
+	// - \\`preset\\`: Balances encoding speed and quality. Valid values for \\`preset\\` include "ultrafast", "superfast", "veryfast", "faster", "fast", "medium", "slow", "slower", "veryslow", and "placebo". Each value represents a strategy for balancing encoding speed and output video quality, from "ultrafast" (fastest encoding speed) to "placebo" (highest quality, slowest encoding speed).
 	//
-	// >  A value of superfast for the preset field is suitable for real-time communication scenarios. We recommend that you not set the field if you are not a professional encoding engineer.
+	// > For example, "superfast" is mainly used for real-time communication. If you are not an expert in encoders, do not set this option.
 	//
 	// example:
 	//
 	// {"profile": "high", "preset": "veryfast"}
 	EnhancedParam *string `json:"EnhancedParam,omitempty" xml:"EnhancedParam,omitempty"`
-	// The bitrate of the video. Valid values: [1,10000]. Unit: Kbit/s.
+	// The video bitrate. Unit: kbps. The value must be in the range of [1, 10000].
 	//
 	// example:
 	//
 	// 3500
 	VideoBitrate *string `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
-	// The video codec. Valid values:
+	// The video encoding format. Valid values:
 	//
-	// 	- H.264 (default)
+	// - H.264 (default).
 	//
-	// 	- H.265
+	// - H.265.
 	//
 	// example:
 	//
 	// H.264
 	VideoCodec *string `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
-	// The frame rate of the video. Valid values: [1,60]. Unit: frames per second (FPS).
+	// The video frame rate. Unit: fps. The value must be in the range of [1, 60].
 	//
 	// example:
 	//
 	// 25
 	VideoFramerate *string `json:"VideoFramerate,omitempty" xml:"VideoFramerate,omitempty"`
-	// The group of pictures (GOP) size of the video. Valid values: [1,60].
+	// The video GOP size. The value must be in the range of [1, 60].
 	//
 	// example:
 	//
 	// 20
 	VideoGop *string `json:"VideoGop,omitempty" xml:"VideoGop,omitempty"`
-	// The height of the video. Valid values: [0,1920]. Unit: pixels.
+	// The video height. Unit: pixels. The value must be in the range of [0, 1920].
 	//
 	// example:
 	//
 	// 1000
 	VideoHeight *string `json:"VideoHeight,omitempty" xml:"VideoHeight,omitempty"`
-	// The width of the video. Valid values: [0,1920]. Unit: pixels.
+	// The video width. Unit: pixels. The value must be in the range of [0, 1920].
 	//
 	// example:
 	//
@@ -893,7 +893,7 @@ func (s *StartLiveMPUTaskRequestTranscodeParamsEncodeParams) Validate() error {
 }
 
 type StartLiveMPUTaskRequestTranscodeParamsLayout struct {
-	// The information about the panes.
+	// The information about user panes in the mixed stream.
 	UserPanes []*StartLiveMPUTaskRequestTranscodeParamsLayoutUserPanes `json:"UserPanes,omitempty" xml:"UserPanes,omitempty" type:"Repeated"`
 }
 
@@ -928,55 +928,53 @@ func (s *StartLiveMPUTaskRequestTranscodeParamsLayout) Validate() error {
 }
 
 type StartLiveMPUTaskRequestTranscodeParamsLayoutUserPanes struct {
-	// The URL of the background image of the pane. The URL can be up to 2,048 characters in length. This image is displayed if the user turns off the camera or is not present in the channel.
+	// The URL of the background image for the video pane. The maximum length is 2048 characters. When a user turns off their camera or has not joined the channel, this image is displayed in their layout position.
 	//
 	// example:
 	//
 	// yourImageUrl
 	BackgroundImageUrl *string `json:"BackgroundImageUrl,omitempty" xml:"BackgroundImageUrl,omitempty"`
-	// The height of the pane. The value is normalized.
+	// The height of the pane, as a normalized percentage.
 	//
 	// example:
 	//
 	// 0.2632
 	Height *string `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The display mode of the pane. Valid values:
+	// The display mode of the output video pane. Valid values:
 	//
-	// 	- **0**: scales the video proportionally to fit the view, with black bars displayed.
+	// - **0**: Scale and display a black background.
 	//
-	// 	- **1 (default)**: crops the video to fit the view.
+	// - **1*	- (default): Clip.
 	//
 	// example:
 	//
 	// 1
 	RenderMode *string `json:"RenderMode,omitempty" xml:"RenderMode,omitempty"`
-	// The information about the user whose stream is played in the pane. If you leave this parameter empty, the system automatically sets this parameter based on the order in which streamers join the channel.
+	// The information about the user corresponding to this pane. If you do not set this parameter, the system automatically fills it based on the order in which streamers join the channel.
 	//
-	// >
+	// > - If you specify user information, that user must already be configured in the \\`TranscodeParams.UserInfos\\` parameter.
 	//
-	// 	- If you specify the information about a user by using this parameter, the information about the user must also be specified by using the TranscodeParams.UserInfos parameter.
-	//
-	// 	- This parameter is valid only when you set StreamType to 0 or 2.
+	// - This parameter is valid only for original streams and video streams.
 	UserInfo *StartLiveMPUTaskRequestTranscodeParamsLayoutUserPanesUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
-	// The width of the pane. The value is normalized.
+	// The width of the pane, as a normalized percentage.
 	//
 	// example:
 	//
 	// 0.3564
 	Width *string `json:"Width,omitempty" xml:"Width,omitempty"`
-	// The x-coordinate of the pane. The value is normalized.
+	// The X-coordinate, as a normalized percentage.
 	//
 	// example:
 	//
 	// 0.2456
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
-	// The y-coordinate of the pane. The value is normalized.
+	// The Y-coordinate, as a normalized percentage.
 	//
 	// example:
 	//
 	// 0.3789
 	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
-	// The layer in which the pane resides. A value of 0 indicates the bottom layer. Each increment of the value by 1 indicates the next upper layer.
+	// The stacking order. 0 is the bottom layer. Layer 1 is on top of layer 0, and so on.
 	//
 	// example:
 	//
@@ -1074,17 +1072,17 @@ func (s *StartLiveMPUTaskRequestTranscodeParamsLayoutUserPanes) Validate() error
 }
 
 type StartLiveMPUTaskRequestTranscodeParamsLayoutUserPanesUserInfo struct {
-	// The ID of the channel where the user is. If the user is in the same channel, you can leave this parameter empty. We recommend that you specify this parameter when you perform stream mixing across channels.
+	// The ID of the channel where the user is located. You do not need to set this parameter for users in the same channel. For cross-channel stream mixing, set this parameter.
 	//
 	// example:
 	//
 	// yourChannelId
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// The type of the video source. This parameter is valid only when you set StreamType to 2. Valid values:
+	// The type of video input stream in stream mixing and transcoding mode. This parameter is valid only for video streams (StreamType=2). Valid values:
 	//
-	// 	- **camera*	- (default)
+	// - **camera*	- (default): Camera stream.
 	//
-	// 	- **shareScreen**
+	// - **shareScreen**: Screen sharing stream.
 	//
 	// example:
 	//
@@ -1138,35 +1136,35 @@ func (s *StartLiveMPUTaskRequestTranscodeParamsLayoutUserPanesUserInfo) Validate
 }
 
 type StartLiveMPUTaskRequestTranscodeParamsUserInfos struct {
-	// The ID of the channel where the subscribed user is. If the user is in the same channel, you can leave this parameter empty. We recommend that you specify this parameter when you perform stream mixing across channels.
+	// The ID of the channel where the subscribed user is located. You do not need to set this parameter for users in the same channel. For cross-channel stream mixing, set this parameter.
 	//
 	// example:
 	//
 	// yourChannelId
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// The type of the video source that is subscribed to. This parameter is valid only when you set StreamType to 2. Valid values:
+	// The type of video input stream to subscribe to for stream mixing. This parameter is valid only for video streams (StreamType=2). Valid values:
 	//
-	// 	- **camera*	- (default)
+	// - **camera*	- (default): Camera stream.
 	//
-	// 	- **shareScreen**
+	// - **shareScreen**: Screen sharing stream.
 	//
 	// example:
 	//
 	// camera
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The type of the relayed stream that is subscribed to. Valid values:
+	// The type of stream to subscribe to for stream mixing. Valid values:
 	//
-	// 	- **0*	- (default): original stream
+	// - **0*	- (default): Ingest the original stream.
 	//
-	// 	- **1**: only the audio track
+	// - **1**: Ingest only the audio stream.
 	//
-	// 	- **2**: only the video track
+	// - **2**: Ingest only the video stream.
 	//
 	// example:
 	//
 	// 0
 	StreamType *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
-	// The ID of the subscribed user.
+	// The ID of the user to subscribe to for stream mixing.
 	//
 	// This parameter is required.
 	//

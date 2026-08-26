@@ -32,19 +32,19 @@ type MuteGroupUserShrinkRequest struct {
 	//
 	// VKL3***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The mode in which system messages are broadcasted. Valid values:
+	// The system message broadcast type. Valid values:
 	//
-	// 	- 0: specifies that system messages are not broadcasted. This is the default value.
+	// - 0: no broadcast.
 	//
-	// 	- 1: specifies that system messages are broadcasted to specified users.
+	// - 1: broadcast to specified users.
 	//
-	// 	- 2: specifies that system messages are broadcasted to the message group.
+	// - 2: broadcast to the group.
 	//
 	// example:
 	//
 	// 2
 	BroadCastType *int32 `json:"BroadCastType,omitempty" xml:"BroadCastType,omitempty"`
-	// The ID of the message group.
+	// The message group ID.
 	//
 	// This parameter is required.
 	//
@@ -52,19 +52,21 @@ type MuteGroupUserShrinkRequest struct {
 	//
 	// AE35-****-T95F
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The duration of the mute. Unit: seconds.
+	// The mute duration. Unit: seconds.
 	//
-	// > If you do not specify this parameter or set the value to 0, the default duration of 86,400 seconds is used.
+	// >If this parameter is not specified or is set to 0, the default mute duration (86400 seconds) is used.
 	//
 	// example:
 	//
 	// 3600
 	MuteTime *int32 `json:"MuteTime,omitempty" xml:"MuteTime,omitempty"`
-	// Details about the mute.
+	// The mute details.
 	//
 	// This parameter is required.
 	MuteUserListShrink *string `json:"MuteUserList,omitempty" xml:"MuteUserList,omitempty"`
-	// The ID of the user who performs the operation.
+	// The user ID of the operator.
+	//
+	// > This parameter is required, and the user must be the creator of the group.
 	//
 	// example:
 	//

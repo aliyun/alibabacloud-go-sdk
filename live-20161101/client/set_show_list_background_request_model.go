@@ -24,13 +24,13 @@ type iSetShowListBackgroundRequest interface {
 }
 
 type SetShowListBackgroundRequest struct {
-	// The ID of the production studio.
+	// The production studio ID.
 	//
-	// 	- If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
+	// - If you created the production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the CasterId value returned by the CreateCaster operation.
 	//
-	// 	- If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management*	- page. To go to the page, log on to the **ApsaraVideo Live console*	- and click **Production Studios*	- in the left-side navigation pane.
+	// - If you created the production studio in the ApsaraVideo Live console, navigate to **ApsaraVideo Live console*	- > **Production Studios*	- > **Cloud Production Studio*	- to view the production studio name.
 	//
-	// >  You can find the ID of the production studio in the Instance ID/Name column.
+	// > The production studio name in the production studio list on the Cloud Production Studio page is the production studio ID.
 	//
 	// This parameter is required.
 	//
@@ -38,31 +38,36 @@ type SetShowListBackgroundRequest struct {
 	//
 	// LIVEPRODUCER_POST-cn-0pp1czt****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-	// The ID of the material in ApsaraVideo VOD.
+	// The video-on-demand material ID.
 	//
-	// >  Specify either this parameter or the ResourceUrl parameter.
+	// > Specify either this parameter or ResourceUrl.
 	//
 	// example:
 	//
 	// a2b8e671-2fe5-4642-a2ec-bf93880e****
 	MaterialId *string `json:"MaterialId,omitempty" xml:"MaterialId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource type. Valid values:
+	// The region ID.
 	//
-	// 	- LIVE: live stream. You can add a live stream from ApsaraVideo Live or by using a third-party URL.
+	// example:
 	//
-	// 	- VOD: on-demand video. You can add an on-demand video from ApsaraVideo VOD or by using a third-party URL.
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The material type. Valid values:
 	//
-	// 	- PIC: image. You can add an image from ApsaraVideo VOD or by using a third-party URL.
+	// - LIVE: live streaming material. Supports live streaming materials and third-party URLs.
 	//
-	// >  Set this parameter to one of the preceding values, or leave this parameter empty.
+	// - VOD: video-on-demand material. Supports video-on-demand materials and third-party URLs.
+	//
+	// - PIC: image material. Supports video-on-demand materials and third-party URLs.
+	//
+	// > Specify one of the three values or leave this parameter empty.
 	//
 	// example:
 	//
 	// VOD
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The URL of the third-party material.
+	// The URL of the external material.
 	ResourceUrl *string `json:"ResourceUrl,omitempty" xml:"ResourceUrl,omitempty"`
 }
 

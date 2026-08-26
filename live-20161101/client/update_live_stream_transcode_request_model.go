@@ -26,7 +26,7 @@ type iUpdateLiveStreamTranscodeRequest interface {
 }
 
 type UpdateLiveStreamTranscodeRequest struct {
-	// The name of the application to which the stream belongs, and it cannot be modified.
+	// The AppName of the live stream. This parameter cannot be modified.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UpdateLiveStreamTranscodeRequest struct {
 	//
 	// liveApp****
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// Streamer domain name, not modifiable.
+	// The streaming domain. This parameter cannot be modified.
 	//
 	// This parameter is required.
 	//
@@ -42,31 +42,38 @@ type UpdateLiveStreamTranscodeRequest struct {
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The encryption configuration. The value is a JSON string. The following fields are included in the syntax:
+	// The encryption settings, formatted as a JSON string.
 	//
-	// 	- EncryptType: the type of the encryption. Set the value to **aliyun**.
+	// - **EncryptType**: The encryption type. Set the value to aliyun.
 	//
-	// 	- KmsKeyID: the ID of the CMK in KMS.
+	// - **KmsKeyID**: The ID of the customer master key (CMK) in Key Management Service (KMS).
 	//
-	// 	- KmsKeyExpireInterval: the validity period of the CMK. Valid values: **60 to 3600**. Unit: seconds.
+	// - **KmsKeyExpireInterval**: The key rotation period. Unit: seconds. Valid values: **60 to 3600.**
+	//
+	// > When you use Digital Rights Management (DRM) encryption, you cannot modify **KmsKeyID**.
 	//
 	// example:
 	//
 	// {"EncryptType": "aliyun", "KmsKeyID":"afce5722-81d2-43c3-9930-7601da11****","KmsKeyExpireInterval":"3600"}
 	EncryptParameters *string `json:"EncryptParameters,omitempty" xml:"EncryptParameters,omitempty"`
-	// Specifies whether to enable triggered transcoding. Valid values:
+	// Specifies whether to enable on-demand transcoding. Valid values:
 	//
-	// 	- **yes**: enables triggered transcoding.
+	// - **yes**: Transcoding only starts when the first viewer requests this transcoded stream.
 	//
-	// 	- **no**: disables triggered transcoding.
+	// - **no**: Transcoding starts immediately after the stream is published.
 	//
 	// example:
 	//
 	// yes
-	Lazy     *string `json:"Lazy,omitempty" xml:"Lazy,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Lazy    *string `json:"Lazy,omitempty" xml:"Lazy,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Transcoding template, not modifiable.
+	// The transcoding template name. This parameter cannot be modified.
 	//
 	// This parameter is required.
 	//

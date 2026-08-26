@@ -52,7 +52,7 @@ type iUpdateRtsLiveStreamTranscodeRequest interface {
 }
 
 type UpdateRtsLiveStreamTranscodeRequest struct {
-	// The name of the application to which the live stream belongs, which cannot be modified.
+	// The AppName of the live stream. This parameter cannot be modified.
 	//
 	// This parameter is required.
 	//
@@ -60,31 +60,31 @@ type UpdateRtsLiveStreamTranscodeRequest struct {
 	//
 	// aliyun-test
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// The bitrate of the output audio. Unit: Kbit/s. Valid values: 1 to 1000.
+	// The output audio bitrate. Unit: kbps. Valid values: 1 to **1000**.
 	//
-	// >  This parameter is required if you set the TemplateType parameter to audio.
+	// > Required if you set TemplateType to audio.
 	//
 	// example:
 	//
 	// 128
 	AudioBitrate *int32 `json:"AudioBitrate,omitempty" xml:"AudioBitrate,omitempty"`
-	// The number of sound channels. Valid values:
+	// The number of audio channels. Valid values:
 	//
-	// 	- **1**: mono
+	// - **1**: mono.
 	//
-	// 	- **2**: stereo
+	// - **2**: stereo.
 	//
 	// example:
 	//
 	// 2
 	AudioChannelNum *int32 `json:"AudioChannelNum,omitempty" xml:"AudioChannelNum,omitempty"`
-	// The audio encoder. Valid values:
+	// The audio codec. Valid values:
 	//
-	// 	- aac
+	// - aac
 	//
-	// 	- mp3
+	// - mp3
 	//
-	// >  To use the Opus encoder, you need only to set the Opus parameter to true.
+	// > To use the Opus codec, set the Opus parameter to true.
 	//
 	// example:
 	//
@@ -92,43 +92,39 @@ type UpdateRtsLiveStreamTranscodeRequest struct {
 	AudioCodec *string `json:"AudioCodec,omitempty" xml:"AudioCodec,omitempty"`
 	// The audio codec profile. Valid values:
 	//
-	// 	- aac_low
+	// - aac_low
 	//
-	// 	- aac_he
+	// - aac_he
 	//
-	// 	- aac_he_v2
+	// - aac_he_v2
 	//
-	// 	- aac_ld
+	// - aac_ld
 	//
 	// example:
 	//
 	// aac_low
 	AudioProfile *string `json:"AudioProfile,omitempty" xml:"AudioProfile,omitempty"`
-	// The audio sampling rate. Valid values: 22050, 32000, 44100, 48000, and 96000. 44100 is commonly used. Unit: Hz.
+	// The audio sample rate. Valid values: 22050, 32000, 44100, 48000, 96000. Recommended: 44100. Unit: Hz.
 	//
-	// >  If the value of the AudioProfile parameter is aac_ld, the audio sampling rate cannot exceed 44,100.
+	// > If AudioProfile is set to aac_ld, the sample rate cannot exceed 44100.
 	//
 	// example:
 	//
 	// 44100
 	AudioRate *int32 `json:"AudioRate,omitempty" xml:"AudioRate,omitempty"`
-	// Specifies whether to remove B frames during transcoding. Valid values:
+	// Controls whether to remove B-frames from the transcoded output video. Valid values:
 	//
-	// 	- true: Remove B frames.
+	// - **true**: The transcoded video has no B-frames.
 	//
-	// 	- false (default): Retain B frames.
+	// - **false**: The transcoded video contains B-frames. This is the default value.
 	//
-	// >
-	//
-	// 	- This parameter is required when the TemplateType parameter is set to h264, h264-nbhd, or h264-origin.
-	//
-	// 	- If this parameter is not specified, the default value false is used.
+	// > Required if you set TemplateType to h264, h264-nbhd, or h264-origin.
 	//
 	// example:
 	//
 	// false
 	DeleteBframes *bool `json:"DeleteBframes,omitempty" xml:"DeleteBframes,omitempty"`
-	// The main streaming domain, which cannot be modified.
+	// The streaming domain. This parameter cannot be modified.
 	//
 	// This parameter is required.
 	//
@@ -136,77 +132,80 @@ type UpdateRtsLiveStreamTranscodeRequest struct {
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The frame rate of the output video. Unit: frames per second (FPS). Valid values: 1 to 60.
+	// The frame rate of the output video. Unit: frames per second (FPS). Valid values: 1 to **60**.
 	//
-	// >  This parameter is required when the TemplateType parameter is set to h264, h264-nbhd, or h264-origin.
+	// > Required if you set TemplateType to h264, h264-nbhd, or h264-origin.
 	//
 	// example:
 	//
 	// 30
 	FPS *int32 `json:"FPS,omitempty" xml:"FPS,omitempty"`
-	// The group of pictures (GOP) of the output video. This parameter is used to specify the keyframe interval. Unit: seconds. Valid values: 1 to 3.
+	// The Group of Pictures (GOP) size, which specifies the keyframe interval. Unit: seconds. Valid values: **1*	- to **3**.
 	//
 	// example:
 	//
 	// 2
 	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
-	// The height of the output video. Unit: pixel.
+	// Output video height in pixels.
 	//
-	// The value must comply with the following rules:
+	// Requirements:
 	//
-	// 	- Height ≥ 100: The height of the video is at least 100 pixels.
+	// - Height ≥ 100
 	//
-	// 	- max(Height,Width) ≤ 2560: The larger of the width and height of the video cannot exceed 2,560 pixels.
+	// - max(Height, Width) ≤ 2560
 	//
-	// 	- min(Height,Width) ≤ 1440: The smaller of the width and height of the video cannot exceed 1,440 pixels. For example, a resolution of 1560 × 1560 pixels is invalid.
+	// - min(Height, Width) ≤ 1440
+	//
+	// > 	- Required if you set TemplateType to h264, h264-nbhd, or h264-origin.
 	//
 	// >
 	//
-	// 	- This parameter is required when the TemplateType parameter is set to h264, h264-nbhd, or h264-origin.
-	//
-	// 	- If the TemplateType parameter is set to h264-origin, the highest resolution supported is 4K.
+	// > 	- For h264-origin templates, the resolution can be up to 4K to retain the information of the source stream.
 	//
 	// example:
 	//
 	// 1280
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// Specifies whether to enable triggered transcoding. Valid values:
+	// Specifies whether to enable on-demand transcoding. Valid values:
 	//
-	// 	- **yes**: enables triggered transcoding.
+	// - **yes**: Transcoding only starts when the first viewer requests this transcoded stream.
 	//
-	// 	- **no**: disables triggered transcoding.
+	// - **no**: Transcoding starts immediately after the stream is published.
 	//
 	// example:
 	//
 	// no
 	Lazy *string `json:"Lazy,omitempty" xml:"Lazy,omitempty"`
-	// Specifies whether to transcode streams to the Opus format to be compatible with native WebRTC. Valid values:
+	// Specifies whether to use the Opus codec for audio transcoding. This is mainly for compatibility with native WebRTC. Valid values:
 	//
-	// 	- true: Transcode streams to the Opus format.
+	// - **true**: Transcodes the audio to the Opus format.
 	//
-	// 	- false: Do not transcode streams to the Opus format.
-	//
-	// >  If this parameter is not specified, the default value false is used.
+	// - **false**: Does not use the Opus format for transcoding. This is the default value.
 	//
 	// example:
 	//
 	// true
 	Opus    *bool  `json:"Opus,omitempty" xml:"Opus,omitempty"`
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The video encoding profile. The profile defines a set of parameters that are used to encode a video. In most cases, a greater value indicates better image quality and higher resource consumption. Valid values:
+	// The video codec profile. A larger value indicates better video quality and higher resource consumption for encoding and decoding. Valid values:
 	//
-	// 	- **1**: baseline. This value is suitable for mobile devices.
+	// - **1**: baseline (for mobile devices).
 	//
-	// 	- **2**: main. This value is suitable for standard-definition devices.
+	// - **2**: main (for SD devices).
 	//
-	// 	- **3**: high. This value is suitable for high-definition devices.
+	// - **3**: high (for HD devices).
 	//
 	// example:
 	//
 	// 2
-	Profile  *int32  `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Profile *int32 `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the custom transcoding template, which cannot be modified.
+	// The name of the custom transcoding template. This parameter cannot be modified.
 	//
 	// This parameter is required.
 	//
@@ -214,7 +213,7 @@ type UpdateRtsLiveStreamTranscodeRequest struct {
 	//
 	// ld
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	// The type of the custom transcoding template, which cannot be modified.
+	// The type of the custom transcoding template. This parameter cannot be modified.
 	//
 	// This parameter is required.
 	//
@@ -222,33 +221,31 @@ type UpdateRtsLiveStreamTranscodeRequest struct {
 	//
 	// h264
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
-	// The bitrate of the output video. Unit: Kbit/s. Valid values: 1 to 6000.
+	// The output video bitrate. Unit: kbps. Valid values: 1 to **6000**.
+	//
+	// > - Required if you set TemplateType to h264, h264-nbhd, or h264-origin.
 	//
 	// >
 	//
-	// 	- This parameter is required when the TemplateType parameter is set to h264, h264-nbhd, or h264-origin.
-	//
-	// 	- The bitrate of the output video is as close to the value that you specify as possible, but not the same as the value, especially when the value is excessively large or small.
+	// > - The system tries to transcode the video at the specified bitrate. However, the actual bitrate may not be the same as the specified value, especially when the specified value is too high or too low.
 	//
 	// example:
 	//
 	// 2000
 	VideoBitrate *int32 `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
-	// The width of the output video. Unit: pixel.
+	// Output video width in pixels.
 	//
-	// The value must comply with the following rules:
+	// Requirements:
 	//
-	// 	- Width ≥ 100: The width of the video is at least 100 pixels.
+	// - Width ≥ 100
 	//
-	// 	- max(Height,Width) ≤ 2560: The larger of the width and height of the video cannot exceed 2,560 pixels.
+	// - max(Height, Width) ≤ 2560
 	//
-	// 	- min(Height,Width) ≤ 1440: The smaller of the width and height of the video cannot exceed 1,440 pixels. For example, a resolution of 1560 × 1560 pixels is invalid.
+	// - min(Height, Width) ≤ 1440
 	//
-	// >
+	// > Required if you set TemplateType to h264, h264-nbhd, or h264-origin.
 	//
-	// 	- This parameter is required when the TemplateType parameter is set to h264, h264-nbhd, or h264-origin.
-	//
-	// 	- If the TemplateType parameter is set to h264-origin, the highest resolution supported is 4K.
+	// For h264-origin templates, the resolution can be up to 4K to retain the information of the source stream.
 	//
 	// example:
 	//

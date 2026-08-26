@@ -26,41 +26,44 @@ type iDescribeLiveAISubtitleRequest interface {
 }
 
 type DescribeLiveAISubtitleRequest struct {
-	// Specifies whether to query the default subtitle template. Valid values:
+	// Specifies whether to query the default caption templates. Valid values:
 	//
-	// 	- true
+	// - true: queries the default caption templates.
 	//
-	// 	- false
+	// - false: does not query the default caption templates.
 	//
-	//     **
-	//
-	//     **Note **The default template includes the built-in parameter configurations. You can specify the copyFrom parameter when you call the AddLiveAISubtitle operation to use the default template.
+	// > Default templates are built-in parameter sets. You can use them by specifying the copyFrom parameter in the AddLiveAISubtitle operation.
 	//
 	// example:
 	//
 	// false
 	IsDefault *bool  `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	OwnerId   *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Valid values: [1,100].
+	// The page number. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: [1,100].
+	// The number of templates on each page. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 100
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the subtitle template.
+	// The ID of the caption template.
 	//
 	// example:
 	//
 	// 445409ec-7eaa-461d-8f29-4bec2eb9****
 	SubtitleId *string `json:"SubtitleId,omitempty" xml:"SubtitleId,omitempty"`
-	// The name of the subtitle template. The name can contain only digits, letters, and hyphens (-). The name cannot start with a hyphen.
+	// The name of the caption template. The name can contain only digits, uppercase letters, lowercase letters, and hyphens (-). The name cannot start with a hyphen.
 	//
 	// example:
 	//

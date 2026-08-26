@@ -20,9 +20,14 @@ type iDeleteLiveAISubtitleRequest interface {
 }
 
 type DeleteLiveAISubtitleRequest struct {
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the subtitle template.
+	// The ID of the caption template.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +35,7 @@ type DeleteLiveAISubtitleRequest struct {
 	//
 	// 445409ec-7eaa-461d-8f29-4bec2eb9****
 	SubtitleId *string `json:"SubtitleId,omitempty" xml:"SubtitleId,omitempty"`
-	// The name of the subtitle template. The name can contain only digits, letters, and hyphens (-). The name cannot start with a hyphen.
+	// The name of the caption template. The name can contain only digits, letters, and hyphens (-). A hyphen cannot be the first character.
 	//
 	// example:
 	//

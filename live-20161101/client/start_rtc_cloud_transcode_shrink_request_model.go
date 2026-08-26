@@ -22,24 +22,34 @@ type iStartRtcCloudTranscodeShrinkRequest interface {
 }
 
 type StartRtcCloudTranscodeShrinkRequest struct {
+	// The ID of the application to which the channel belongs. The ID can contain uppercase letters, lowercase letters, digits, underscores (_), and hyphens (-). The maximum length is 64 characters.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ********-7074-****-9ef5-85c19a4*****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the channel to which the user to be transcoded belongs. The ID can contain uppercase letters, lowercase letters, digits, underscores (_), and hyphens (-). The maximum length is 64 characters.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// myChannel
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The parameters for the input stream subscription.
+	//
 	// This parameter is required.
 	InputParamShrink *string `json:"InputParam,omitempty" xml:"InputParam,omitempty"`
+	// The idle timeout period in seconds. If a task cannot subscribe to the specified streamer\\"s stream and remains idle for longer than this period, the task automatically stops. The value must be an integer from 10 to 14,400. The default value is 300.
+	//
 	// example:
 	//
 	// 600
 	MaxIdleTime *int64 `json:"MaxIdleTime,omitempty" xml:"MaxIdleTime,omitempty"`
+	// The parameters for the transcoded output.
+	//
 	// This parameter is required.
 	OutputParamsShrink *string `json:"OutputParams,omitempty" xml:"OutputParams,omitempty"`
 }

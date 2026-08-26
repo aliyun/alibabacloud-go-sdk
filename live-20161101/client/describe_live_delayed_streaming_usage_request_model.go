@@ -30,83 +30,88 @@ type iDescribeLiveDelayedStreamingUsageRequest interface {
 }
 
 type DescribeLiveDelayedStreamingUsageRequest struct {
-	// The main streaming domain to query.
+	// The streaming domain name to query.
 	//
-	// 	- You can query one or more domain names. If you specify multiple domain names, separate them with commas (,).
+	// - You can specify a single domain name or multiple domain names. Separate multiple domain names with commas (,).
 	//
-	// 	- If you leave this parameter empty, the data of all domain names within your Alibaba Cloud account is returned.
+	// - If this parameter is left empty, the aggregated data of all live streaming domain names is returned by default.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The end time must be later than the start time. We recommend that you specify a time range that is less than or equal to 10 hours.
+	// The end of the time range to query. The end time must be later than the start time. The time span cannot exceed 10 hours. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2022-10-10T21:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time granularity of the query. Unit: seconds. Valid values:
+	// The time granularity of the queried data. Unit: seconds. Valid values:
 	//
-	// 	- 300
+	// - 300
 	//
-	// 	- 3600
+	// - 3600
 	//
-	// 	- 86400
+	// - 86400
 	//
-	// If you specify an invalid value or do not specify this parameter, the default value 3600 is used.
+	// If this parameter is left empty or set to an unsupported value, the default value 3600 is used.
 	//
 	// example:
 	//
 	// 3600
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region. Separate multiple region IDs with commas (,). Valid values:
+	// The live center to query. You can specify multiple regions. Separate multiple regions with commas (,). Valid values:
 	//
-	// 	- cn-beijing: China (Beijing)
+	// - cn-beijing: Beijing
 	//
-	// 	- cn-shanghai: China (Shanghai)
+	// - cn-shanghai: Shanghai
 	//
-	// 	- cn-shenzhen: China (Shenzhen)
+	// - cn-shenzhen: Shenzhen
 	//
-	// 	- cn-qingdao: China (Qingdao)
+	// - cn-qingdao: Qingdao
 	//
-	// 	- ap-southeast-1: Singapore
+	// - ap-southeast-1: Singapore
 	//
-	// 	- eu-central-1: Germany (Frankfurt)
+	// - eu-central-1: Germany
 	//
-	// 	- ap-northeast-1: Japan (Tokyo)
+	// - ap-northeast-1: Tokyo
 	//
-	// 	- ap-southeast-5: Indonesia (Jakarta)
+	// - ap-southeast-5: Jakarta
 	//
-	// If you leave this parameter empty, data of all regions is aggregated and returned by default.
+	// If this parameter is left empty, the aggregated data of all regions is returned by default.
 	//
 	// example:
 	//
 	// cn-shanghai
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The key that is used to group data. If you leave this parameter empty, data is aggregated and returned. Valid values:
+	// The grouping key. If this parameter is left empty, user data is aggregated. Valid values:
 	//
-	// 	- domain: The DomainName parameter in the response takes effect only if SplitBy is set to domain.
+	// - domain: domain name. If the SplitBy (grouping key) parameter is set to domain, the Domain response parameter takes effect.
 	//
-	// 	- region: The Region parameter in the response takes effect only if SplitBy is set to region.
+	// - region: live center region. If the SplitBy (grouping key) parameter is set to region, the Region response parameter takes effect.
 	//
-	// 	- stream: The StreamName parameter in the response takes effect only if SplitBy is set to stream.
+	// - stream: stream name. If the SplitBy (grouping key) parameter is set to stream, the stream response parameter takes effect.
 	//
-	// >  This parameter takes effect only if the parameter corresponding to the value of this parameter is not left empty. Otherwise, an error is returned. For example, you cannot set this parameter to domain if the DomainName parameter is left empty.
+	// > You can query data only when the parameter corresponding to the grouping key is not empty. Otherwise, an error is returned. For example, when DomainName is empty, you cannot specify domain as the grouping key.
 	//
 	// example:
 	//
 	// domain
 	SplitBy *string `json:"SplitBy,omitempty" xml:"SplitBy,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. By default, data in the last seven days is returned.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC. By default, data of the last seven days is returned.
 	//
 	// example:
 	//
 	// 2022-10-10T20:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the stream. Separate multiple stream names with commas (,). By default, data of all streams is aggregated and returned.
+	// The stream name. Separate multiple stream names with commas (,). By default, the data of all stream names is aggregated.
 	//
 	// example:
 	//

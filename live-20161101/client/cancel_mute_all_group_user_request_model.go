@@ -20,7 +20,7 @@ type iCancelMuteAllGroupUserRequest interface {
 }
 
 type CancelMuteAllGroupUserRequest struct {
-	// Interactive message application ID.
+	// Interactive Messages application ID.
 	//
 	// This parameter is required.
 	//
@@ -28,19 +28,19 @@ type CancelMuteAllGroupUserRequest struct {
 	//
 	// VKL3***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 系统消息扩散类型，取值：
+	// System message diffusion type. Valid values:
 	//
-	// - 0：不扩散。
+	// - 0: No diffusion.
 	//
-	// - 1：扩散到指定人。
+	// - 1: Diffusion to specified users.
 	//
-	// - 2：扩散到群组。
+	// - 2: Diffusion to the group.
 	//
 	// example:
 	//
 	// 2
 	BroadCastType *int32 `json:"BroadCastType,omitempty" xml:"BroadCastType,omitempty"`
-	// Message group ID.
+	// Group ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,9 @@ type CancelMuteAllGroupUserRequest struct {
 	//
 	// AE35-****-T95F
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Operator\\"s UserId. > This parameter is required and the user must be the creator of the group.
+	// User ID of the operator.
+	//
+	// > This parameter is required. The user must be the creator of the group.
 	//
 	// example:
 	//

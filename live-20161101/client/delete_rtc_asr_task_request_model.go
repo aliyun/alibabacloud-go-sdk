@@ -18,9 +18,14 @@ type iDeleteRtcAsrTaskRequest interface {
 }
 
 type DeleteRtcAsrTaskRequest struct {
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The task ID. You can obtain the ID from the response to the [CreateRtcAsrTask](https://help.aliyun.com/document_detail/2848217.html) operation.
+	// The ID of the task. Call the [CreateRtcAsrTask](https://help.aliyun.com/document_detail/2848217.html) operation to obtain the task ID.
 	//
 	// This parameter is required.
 	//

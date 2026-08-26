@@ -24,19 +24,19 @@ type iDescribeLiveDelayConfigResponseBody interface {
 }
 
 type DescribeLiveDelayConfigResponseBody struct {
-	// The name of the application to which the live stream belongs.
+	// The application name.
 	//
 	// example:
 	//
 	// liveApp****
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// The duration for which the playback of the live stream is delayed.
+	// The playback latency of the stream.
 	//
 	// example:
 	//
 	// 60
 	DelayTime *string `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
-	// The main streaming domain.
+	// The streaming domain.
 	//
 	// example:
 	//
@@ -48,19 +48,19 @@ type DescribeLiveDelayConfigResponseBody struct {
 	//
 	// A3136B58-5876-4168-83CA-B562781981A0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the live stream.
+	// The stream name.
 	//
 	// example:
 	//
 	// liveStream****
 	Stream *string `json:"Stream,omitempty" xml:"Stream,omitempty"`
-	// The trigger mode. Valid values:
+	// The trigger mode for the task. Valid values:
 	//
-	// 	- **PUBLISH_ONLY**: Stream delay can be triggered only by specifying the stream delay parameter in the ingest URL.
+	// - **PUBLISH_ONLY**: The task is triggered only when stream ingest parameters for delayed playback are specified.
 	//
-	// 	- **CONFIG_ONLY**: Stream delay can be triggered only by the stream delay configuration.
+	// - **CONFIG_ONLY**: The task is triggered only by the configuration. Stream ingest parameters are ignored.
 	//
-	// 	- **PUBLISH_CONFIG**: Stream delay can be triggered by the stream delay parameter in the ingest URL or the stream delay configuration. The stream delay parameter takes precedence over the stream delay configuration.
+	// - **PUBLISH_CONFIG**: The task can be triggered by both stream ingest parameters and the configuration. Stream ingest parameters have a higher priority than the configuration.
 	//
 	// example:
 	//

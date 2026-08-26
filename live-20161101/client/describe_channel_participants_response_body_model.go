@@ -26,7 +26,7 @@ type DescribeChannelParticipantsResponseBody struct {
 	//
 	// example:
 	//
-	// 6159ba01-6687-4fb2-a831-f0cd8d188648
+	// 6159ba01-6687-4fb2-a831-f0cd8d1******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The time elapsed until the result was returned. Unit: seconds. The value is a UNIX timestamp.
 	//

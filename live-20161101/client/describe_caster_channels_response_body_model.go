@@ -25,7 +25,7 @@ type DescribeCasterChannelsResponseBody struct {
 	//
 	// 83C52866-281E-4AEA-9582-B124********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of channels.
+	// The total number of entries.
 	//
 	// example:
 	//

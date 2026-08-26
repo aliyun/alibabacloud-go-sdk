@@ -18,7 +18,9 @@ type iDescribeLiveStreamCountRequest interface {
 }
 
 type DescribeLiveStreamCountRequest struct {
-	// The main streaming domain.
+	// The streaming domain.
+	//
+	// > Make sure that the domain name is added to ApsaraVideo Live and that you have the permissions to operate on it.
 	//
 	// This parameter is required.
 	//
@@ -27,7 +29,12 @@ type DescribeLiveStreamCountRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeLiveStreamCountRequest) String() string {

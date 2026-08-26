@@ -30,7 +30,7 @@ type SetLiveDomainMultiStreamOptimalModeRequest struct {
 	//
 	// testapp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The main streaming domain.
+	// The primary streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +38,11 @@ type SetLiveDomainMultiStreamOptimalModeRequest struct {
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Specifies whether to enable the auto mode of dual-stream disaster recovery. Valid values:
+	// The automatic mode switch. Valid values:
 	//
-	// 	- **on**: enables the auto mode.
+	// - **on**: enabled
 	//
-	// 	- **off**: disables the auto mode.
+	// - **off**: disabled.
 	//
 	// This parameter is required.
 	//
@@ -51,7 +51,7 @@ type SetLiveDomainMultiStreamOptimalModeRequest struct {
 	// on
 	OptimalMode *string `json:"OptimalMode,omitempty" xml:"OptimalMode,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the live stream.
+	// The live stream name.
 	//
 	// This parameter is required.
 	//

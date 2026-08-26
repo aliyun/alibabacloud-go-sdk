@@ -20,7 +20,7 @@ type iModifyLiveMessageAppAuditRequest interface {
 }
 
 type ModifyLiveMessageAppAuditRequest struct {
-	// The ID of the interactive messaging application whose content moderation settings you want to modify.
+	// The ID of the interactive messaging application to modify.
 	//
 	// This parameter is required.
 	//
@@ -28,25 +28,25 @@ type ModifyLiveMessageAppAuditRequest struct {
 	//
 	// demo
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The content moderation method. Valid values:
+	// The security audit method. Valid values:
 	//
-	// 	- 0: disables content moderation.
+	// - 0: No security audit.
 	//
-	// 	- 1: uses built-in content moderation.
+	// - 1: Built-in security audit.
 	//
-	// 	- 2: uses custom content moderation.
+	// - 2: Custom security audit.
 	//
 	// example:
 	//
 	// 2
 	AuditType *int32 `json:"AuditType,omitempty" xml:"AuditType,omitempty"`
-	// The URL for content moderation. This parameter is required if you set AuditType to 2. The URL must start with http:// or https:// and cannot contain a private IP address or a port number.
+	// The security audit URL required when custom security audit is used (AuditType=2). The URL must start with http:// or https://, must not contain private IP addresses, and must not include port numbers.
 	//
 	// example:
 	//
 	// http://example.aliyundoc.com/exampleaudit
 	AuditUrl *string `json:"AuditUrl,omitempty" xml:"AuditUrl,omitempty"`
-	// The data center. It must be the same as the data center that was specified when you called the [CreateLiveMessageApp](https://help.aliyun.com/document_detail/2848162.html) operation to create the interactive messaging application. Valid values: cn-shanghai and ap-southeast-1 (Singapore).
+	// The data center. This value must be the same as the data center specified in [CreateLiveMessageApp](https://help.aliyun.com/document_detail/2848162.html). Valid values: cn-shanghai (Shanghai) and ap-southeast-1 (Singapore).
 	//
 	// example:
 	//

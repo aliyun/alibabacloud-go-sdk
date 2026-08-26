@@ -20,9 +20,9 @@ type iSetLiveStreamBlockResponseBody interface {
 type SetLiveStreamBlockResponseBody struct {
 	// The result description.
 	//
-	// 	- If the request was successful, ok is returned.
+	// - Success: ok.
 	//
-	// 	- If the request failed, the failure detail is returned.
+	// - Failure: failure details.
 	//
 	// example:
 	//
@@ -34,13 +34,13 @@ type SetLiveStreamBlockResponseBody struct {
 	//
 	// 3be7ade8-d907-483c-b24a-0dad4595beaf
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status. Valid values:
+	// The task status. Valid values:
 	//
-	// 	- ok: The request was successful.
+	// - ok: succeeded.
 	//
-	// 	- fail: The request failed.
+	// - fail: failed.
 	//
-	// >  If any parameter failed to be configured, the request failed.
+	// > The task is considered failed if any single subtask fails to be created.
 	//
 	// example:
 	//

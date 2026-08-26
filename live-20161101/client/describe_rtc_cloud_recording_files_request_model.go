@@ -14,6 +14,8 @@ type iDescribeRtcCloudRecordingFilesRequest interface {
 }
 
 type DescribeRtcCloudRecordingFilesRequest struct {
+	// The task ID. This ID is returned by StartRtcCloudRecording. Only tasks created within the last 3 days can be queried.
+	//
 	// This parameter is required.
 	//
 	// example:

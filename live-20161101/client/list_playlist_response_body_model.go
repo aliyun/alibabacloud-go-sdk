@@ -18,7 +18,7 @@ type iListPlaylistResponseBody interface {
 }
 
 type ListPlaylistResponseBody struct {
-	// The episode lists.
+	// The list of playlists.
 	ProgramList []*ListPlaylistResponseBodyProgramList `json:"ProgramList,omitempty" xml:"ProgramList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListPlaylistResponseBody struct {
 	//
 	// 5c6a2a0d-f228-4a64-af62-20e91b96****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of episode lists returned.
+	// The total number of playlists.
 	//
 	// example:
 	//
@@ -83,47 +83,47 @@ func (s *ListPlaylistResponseBody) Validate() error {
 }
 
 type ListPlaylistResponseBodyProgramList struct {
-	// The ID of the production studio to which the episode list belongs. You can use the ID as a request parameter in the API operation that is used to add a layout to the virtual studio, delete a layout in the virtual studio, modify a layout of the virtual studio, or query layouts of the virtual studio.
+	// The ID of the production studio to which the playlist belongs. Use this ID as a request parameter to add, delete, modify, or query the layout of a virtual studio.
 	//
 	// example:
 	//
 	// casdfasdfasfdasdflkasjdflaj****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-	// The main streaming domain.
+	// The streaming domain.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the episode list.
+	// The ID of the playlist.
 	//
 	// example:
 	//
 	// c09f3d63-eacf-4fbf-bd48-a07a6ba7****
 	ProgramId *string `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
-	// The name of the episode list.
+	// The name of the playlist.
 	//
 	// example:
 	//
 	// playlist1
 	ProgramName *string `json:"ProgramName,omitempty" xml:"ProgramName,omitempty"`
-	// The number of playbacks after the first playback is complete. Valid values:
+	// The number of times the playlist repeats after the first playback. Valid values:
 	//
-	// 	- **0*	- (default): specifies that the episode list is played only once.
+	// - **0*	- (default): The playlist does not repeat.
 	//
-	// 	- **-1**: specifies that the episode list is played in loop mode.
+	// - **-1**: The playlist plays in a loop.
 	//
-	// 	- Positive integer: specifies the number of times the episode list repeats after the first playback is complete.
+	// - Other positive integers: The number of times the playlist repeats.
 	//
 	// example:
 	//
 	// 1
 	RepeatNumber *int32 `json:"RepeatNumber,omitempty" xml:"RepeatNumber,omitempty"`
-	// The status of the episode list. Valid values:
+	// The status of the playlist. Valid values:
 	//
-	// 	- **0**: stopped
+	// - **0**: stopped.
 	//
-	// 	- **1**: running
+	// - **1**: running.
 	//
 	// example:
 	//

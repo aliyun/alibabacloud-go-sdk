@@ -14,7 +14,7 @@ type iAddLiveDomainResponseBody interface {
 }
 
 type AddLiveDomainResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

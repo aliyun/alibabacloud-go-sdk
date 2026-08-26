@@ -26,21 +26,23 @@ type iSetLiveStreamPreloadTasksRequest interface {
 }
 
 type SetLiveStreamPreloadTasksRequest struct {
-	// The acceleration region where you want to prefetch the live content. Valid values:
+	// The prefetch area. Valid values:
 	//
-	// 	- domestic: regions in the Chinese mainland.
+	// - domestic: the Chinese mainland.
 	//
-	// 	- overseas: regions outside the Chinese mainland.
+	// - overseas: outside the Chinese mainland, including Hong Kong (China), Macao (China), and Taiwan (China).
 	//
-	// 	- global: regions in and outside the Chinese mainland.
+	// - global: global acceleration.
 	//
-	// If you do not specify this parameter, the acceleration region configured for the domain name is used.
+	//
+	//
+	// If you do not specify this parameter, the default prefetch area is the acceleration region configured for your domain name.
 	//
 	// example:
 	//
 	// domestic
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The streaming domain name.
+	// The streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -49,23 +51,28 @@ type SetLiveStreamPreloadTasksRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The streaming URL. You can specify up to 100 streaming URLs in a request. Separate multiple streaming URLs with commas (,).
+	// The live stream URLs. You can specify multiple URLs separated by commas (,). A maximum of 100 URLs can be specified.
 	//
 	// This parameter is required.
 	PlayUrl *string `json:"PlayUrl,omitempty" xml:"PlayUrl,omitempty"`
-	// The end time of the prefetch task. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2016-06-30T19:00:00Z. The interval between the start time and end time cannot exceed 6 hours.
+	// The end time of the prefetch task in UTC. Example: 2016-06-30T19:00:00Z. The interval between EndTime and StartTime cannot exceed 6 hours.
 	//
 	// example:
 	//
 	// 2016-06-30T19:00:00Z
 	PreloadedEndTime *string `json:"PreloadedEndTime,omitempty" xml:"PreloadedEndTime,omitempty"`
-	// The start time of the prefetch task. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2016-06-29T19:00:00Z. If you do not specify this parameter, the prefetch task runs for 1 hour by default.
+	// The start time of the prefetch task in UTC. Example: 2016-06-29T19:00:00Z. If you do not specify this parameter, the default prefetch duration is 1 hour.
 	//
 	// example:
 	//
 	// 2016-06-29T19:00:00Z
 	PreloadedStartTime *string `json:"PreloadedStartTime,omitempty" xml:"PreloadedStartTime,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SetLiveStreamPreloadTasksRequest) String() string {

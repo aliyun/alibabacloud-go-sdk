@@ -16,11 +16,14 @@ type iDescribeRtcCloudRecordingFilesResponseBody interface {
 }
 
 type DescribeRtcCloudRecordingFilesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******58-5876-****-83CA-B56278******
-	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskInfo  *DescribeRtcCloudRecordingFilesResponseBodyTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task information.
+	TaskInfo *DescribeRtcCloudRecordingFilesResponseBodyTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
 }
 
 func (s DescribeRtcCloudRecordingFilesResponseBody) String() string {
@@ -59,11 +62,24 @@ func (s *DescribeRtcCloudRecordingFilesResponseBody) Validate() error {
 }
 
 type DescribeRtcCloudRecordingFilesResponseBodyTaskInfo struct {
+	// The list of recording files.
 	RecordFileList *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList `json:"RecordFileList,omitempty" xml:"RecordFileList,omitempty" type:"Struct"`
+	// The task status. Valid values:
+	//
+	// - RUNNING
+	//
+	// - RECOVERING
+	//
+	// - STOPPING
+	//
+	// - STOPPED.
+	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The task ID passed in the request.
+	//
 	// example:
 	//
 	// ******73-8501-****-8ac1-72295a******
@@ -115,9 +131,13 @@ func (s *DescribeRtcCloudRecordingFilesResponseBodyTaskInfo) Validate() error {
 }
 
 type DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList struct {
-	HlsFileList  []*string                                                                       `json:"HlsFileList,omitempty" xml:"HlsFileList,omitempty" type:"Repeated"`
-	Mp3FileList  []*string                                                                       `json:"Mp3FileList,omitempty" xml:"Mp3FileList,omitempty" type:"Repeated"`
-	Mp4FileList  []*string                                                                       `json:"Mp4FileList,omitempty" xml:"Mp4FileList,omitempty" type:"Repeated"`
+	// The array of HLS recording file names.
+	HlsFileList []*string `json:"HlsFileList,omitempty" xml:"HlsFileList,omitempty" type:"Repeated"`
+	// The array of MP3 recording file names.
+	Mp3FileList []*string `json:"Mp3FileList,omitempty" xml:"Mp3FileList,omitempty" type:"Repeated"`
+	// The array of MP4 recording file names.
+	Mp4FileList []*string `json:"Mp4FileList,omitempty" xml:"Mp4FileList,omitempty" type:"Repeated"`
+	// The array of VOD media resources. When recording to VOD, this is the collection of recording files for each subscribed stream, where each item corresponds to a subscribed stream.
 	VodMediaList []*DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList `json:"VodMediaList,omitempty" xml:"VodMediaList,omitempty" type:"Repeated"`
 }
 
@@ -179,9 +199,30 @@ func (s *DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList) Valid
 }
 
 type DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList struct {
-	MediaIds  []*string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty" type:"Repeated"`
+	// The array of media resource IDs generated during recording.
+	MediaIds []*string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty" type:"Repeated"`
+	// The array of automatically merged media resource IDs generated after recording ends.
 	MergedIds []*string `json:"MergedIds,omitempty" xml:"MergedIds,omitempty" type:"Repeated"`
-	Stream    *string   `json:"Stream,omitempty" xml:"Stream,omitempty"`
+	// The subscribed stream.
+	//
+	//  - For stream mixing recording, the value is always Mix.
+	//
+	//  - For single-stream recording, the value is Single::{UserId}::{Suffix}.
+	//
+	//    - UserId is the UserId corresponding to this stream.
+	//
+	//    - Suffix depends on the StreamType and SourceType specified during subscription.
+	//
+	//      - When StreamType is 0: if SourceType is 0, Suffix is AV::C. If SourceType is 1, Suffix is AV::S.
+	//
+	//      - When StreamType is 1: Suffix can only be A.
+	//
+	//      - When StreamType is 2 (not supported for single-stream recording): if SourceType is 0, Suffix is V::C. If SourceType is 1, Suffix is V::S.
+	//
+	// example:
+	//
+	// Single::UserA::AV::C
+	Stream *string `json:"Stream,omitempty" xml:"Stream,omitempty"`
 }
 
 func (s DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList) String() string {

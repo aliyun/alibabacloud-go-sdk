@@ -16,13 +16,13 @@ type iListMessageResponseBody interface {
 }
 
 type ListMessageResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 16A96B9A-****-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The returned results.
 	Result *ListMessageResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,17 +62,17 @@ func (s *ListMessageResponseBody) Validate() error {
 }
 
 type ListMessageResponseBodyResult struct {
-	// Indicates whether the current page is followed by another page. Valid values:
+	// Indicates whether there is a next page. Valid values:
 	//
-	// 	- true: The current page is followed by another page.
+	// - true: There is a next page.
 	//
-	// 	- false: The current page is not followed by another page.
+	// - false: There is no next page.
 	//
 	// example:
 	//
 	// false
 	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// Details about the messages.
+	// The message list.
 	MessageList []*ListMessageResponseBodyResultMessageList `json:"MessageList,omitempty" xml:"MessageList,omitempty" type:"Repeated"`
 }
 
@@ -116,31 +116,31 @@ func (s *ListMessageResponseBodyResult) Validate() error {
 }
 
 type ListMessageResponseBodyResultMessageList struct {
-	// The message body. The value is a JSON string.
+	// The message body, in JSONString format.
 	//
 	// example:
 	//
 	// test
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The ID of the message group.
+	// The message group ID.
 	//
 	// example:
 	//
 	// AE35-****-T95F
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the message.
+	// The message ID.
 	//
 	// example:
 	//
 	// qt***
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// The ID of the user who sent the message.
+	// The message sender ID.
 	//
 	// example:
 	//
 	// yi***
 	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
-	// The type of the message.
+	// The message type.
 	//
 	// example:
 	//

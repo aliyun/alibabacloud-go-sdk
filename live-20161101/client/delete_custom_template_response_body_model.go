@@ -14,7 +14,7 @@ type iDeleteCustomTemplateResponseBody interface {
 }
 
 type DeleteCustomTemplateResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

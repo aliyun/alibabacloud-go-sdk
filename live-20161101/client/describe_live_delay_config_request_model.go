@@ -22,7 +22,7 @@ type iDescribeLiveDelayConfigRequest interface {
 }
 
 type DescribeLiveDelayConfigRequest struct {
-	// The name of the application to which the live stream belongs. You can specify an asterisk (\\*) as the value to match all applications under the domain name.
+	// The application name. You can use a wildcard character (\\*) to represent all applications under the domain name.
 	//
 	// This parameter is required.
 	//
@@ -30,17 +30,22 @@ type DescribeLiveDelayConfigRequest struct {
 	//
 	// liveApp****
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// The main streaming domain.
+	// The streaming domain.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
-	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Domain  *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the live stream. You can specify an asterisk (\\*) as the value to match all streams in the application.
+	// The stream name. You can use a wildcard character (\\*) to represent all streams under the application.
 	//
 	// This parameter is required.
 	//

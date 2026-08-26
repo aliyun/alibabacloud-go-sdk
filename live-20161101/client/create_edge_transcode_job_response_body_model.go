@@ -16,7 +16,7 @@ type iCreateEdgeTranscodeJobResponseBody interface {
 }
 
 type CreateEdgeTranscodeJobResponseBody struct {
-	// The ID of the edge transcoding task.
+	// The ID of the edge transcoding job.
 	//
 	// example:
 	//

@@ -18,11 +18,16 @@ type iDeleteLiveStreamWatermarkRequest interface {
 }
 
 type DeleteLiveStreamWatermarkRequest struct {
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the watermark template.
 	//
-	// >  You can obtain the template ID by checking the value of the TemplateId parameter that is returned by the [AddLiveStreamWatermark](https://help.aliyun.com/document_detail/410759.html) operation.
+	// > The template ID is returned in the response of the [AddLiveStreamWatermark](https://help.aliyun.com/document_detail/2848096.html) operation.
 	//
 	// This parameter is required.
 	//

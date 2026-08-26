@@ -22,7 +22,7 @@ type iCreateEventSubRequest interface {
 }
 
 type CreateEventSubRequest struct {
-	// The application ID.
+	// The ID of the application to subscribe to. You can view your application IDs by navigating to **ApsaraVideo Live > Live+ > ApsaraVideo Real-time Communication > Application Management**. If no application exists, create one by clicking [Create Application].
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type CreateEventSubRequest struct {
 	//
 	// 9qb1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The callback URL. For more information about the content of the messages that are sent to the callback URL, see the Callback section in this topic.
+	// The callback URL. For the callback content, see the callback content examples below.
 	//
 	// This parameter is required.
 	//
@@ -38,31 +38,33 @@ type CreateEventSubRequest struct {
 	//
 	// http://****.com/callback
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
-	// The channel ID. You can call the [ListEventSub](https://help.aliyun.com/document_detail/2628135.html) operation to query the channel ID.
+	// The ID of the channel to subscribe to. You can call the [ListEventSub](https://help.aliyun.com/document_detail/2848210.html) operation to query the subscribed channel IDs.
 	//
-	// >
+	// >- If the Users.N parameter is not empty, this parameter is required.
 	//
-	// 	- This parameter is required if you specify the Users.N parameter.
+	// >- If ChannelId is set to \\	- or left empty, all channels are subscribed. Each AppId allows only one all-channel subscription.
 	//
-	// 	- If you set this parameter to \\	- or do not specify this parameter, all channels are subscribed to.
-	//
-	// 	- Each application ID allows only one all-channel subscription.
+	// >- Each AppId allows a maximum of 20 subscriptions at the same time.
 	//
 	// example:
 	//
 	// 123333
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// Subscribe to events.
+	// The subscription events.
 	//
 	// This parameter is required.
 	Events []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	// The user whose events you want to subscribe to. If you leave this parameter empty, the events of all users in the channel are subscribed to, including the events of the streamer and viewers. Specify this parameter in the following format:
+	// The users whose messages you want to subscribe to. If this parameter is empty, all users in the channel (including streamers and viewers) are subscribed. Format:
 	//
-	//     Users.1=****
+	// ```
 	//
-	//     Users.2=****
+	// Users.1=****
 	//
-	//     ......
+	// Users.2=****
+	//
+	// ......
+	//
+	// ```
 	Users []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 

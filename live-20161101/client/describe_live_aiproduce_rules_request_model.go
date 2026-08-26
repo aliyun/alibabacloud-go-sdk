@@ -28,41 +28,46 @@ type iDescribeLiveAIProduceRulesRequest interface {
 }
 
 type DescribeLiveAIProduceRulesRequest struct {
-	// The name of the application to which the live stream belongs.
+	// The name of the application to which the stream belongs.
 	//
 	// example:
 	//
 	// AppName
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// The main streaming domain.
+	// The primary playback domain name.
 	//
 	// example:
 	//
 	// demo.aliyundoc.com
 	Domain  *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Valid values: [1,100].
+	// The page number. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: [1,100].
+	// The number of entries per page. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 100
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the subtitle rule.
+	// The ID of the caption rule.
 	//
 	// example:
 	//
 	// 445409ec-7eaa-461d-8f29-4bec****
 	RulesId *string `json:"RulesId,omitempty" xml:"RulesId,omitempty"`
-	// The suffix of the subtitle rule.
+	// The caption suffix.
 	//
-	// > Set the value to the name of the subtitle template.
+	// > Set this parameter to the value of SubtitleName that is specified for the caption template.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iListMessageGroupUserByIdResponseBody interface {
 }
 
 type ListMessageGroupUserByIdResponseBody struct {
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 16A96B9A-****-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned results.
+	// Return result.
 	Result *ListMessageGroupUserByIdResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,23 +62,23 @@ func (s *ListMessageGroupUserByIdResponseBody) Validate() error {
 }
 
 type ListMessageGroupUserByIdResponseBodyResult struct {
-	// Indicates whether the current page is followed by another page. Valid values:
+	// Indicates whether there is a next page. Valid values:
 	//
-	// 	- true
+	// - true: There is a next page.
 	//
-	// 	- false
+	// - false: There is no next page.
 	//
 	// example:
 	//
 	// false
 	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// The total number of users returned.
+	// Total number of users queried.
 	//
 	// example:
 	//
 	// 3
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// The list of users.
+	// User list information.
 	UserList []*ListMessageGroupUserByIdResponseBodyResultUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
 }
 
@@ -133,39 +133,39 @@ func (s *ListMessageGroupUserByIdResponseBodyResult) Validate() error {
 type ListMessageGroupUserByIdResponseBodyResultUserList struct {
 	// Indicates whether the user is muted. Valid values:
 	//
-	// 	- true: The user is muted.
+	// - true: Muted.
 	//
-	// 	- false: The user is not muted.
+	// - false: Not muted.
 	//
 	// example:
 	//
 	// true
 	IsMute *bool `json:"IsMute,omitempty" xml:"IsMute,omitempty"`
-	// The type of the mute. Valid values:
+	// Mute type. Valid values:
 	//
-	// 	- group: All members in the message group are muted.
+	// - group: All members in the message group are muted.
 	//
-	// 	- user: Specific members in the message group are muted.
+	// - user: Individual user is muted.
 	MuteBy []*string `json:"MuteBy,omitempty" xml:"MuteBy,omitempty" type:"Repeated"`
-	// The URL of the profile picture of the user.
+	// Profile picture URL.
 	//
 	// example:
 	//
 	// "http://www.aliyundoc.com/xxyy.png"
 	UserAvatar *string `json:"UserAvatar,omitempty" xml:"UserAvatar,omitempty"`
-	// The custom information about the user.
+	// Custom user information content.
 	//
 	// example:
 	//
 	// 12e
 	UserExtension *string `json:"UserExtension,omitempty" xml:"UserExtension,omitempty"`
-	// The ID of the user.
+	// User ID.
 	//
 	// example:
 	//
 	// ad***
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The nickname of the user.
+	// User nickname.
 	//
 	// example:
 	//

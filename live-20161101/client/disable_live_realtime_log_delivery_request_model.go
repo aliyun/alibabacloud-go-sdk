@@ -18,7 +18,7 @@ type iDisableLiveRealtimeLogDeliveryRequest interface {
 }
 
 type DisableLiveRealtimeLogDeliveryRequest struct {
-	// The streaming domain for which you want to suspend real-time log delivery. Separate multiple streaming domains with commas (,).
+	// The streaming domain for which to pause real-time log delivery. To specify multiple domain names, separate them with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -27,7 +27,12 @@ type DisableLiveRealtimeLogDeliveryRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DisableLiveRealtimeLogDeliveryRequest) String() string {

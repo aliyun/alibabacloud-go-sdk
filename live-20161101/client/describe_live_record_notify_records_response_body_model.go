@@ -36,7 +36,7 @@ type DescribeLiveRecordNotifyRecordsResponseBody struct {
 	//
 	// 0
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned message.
+	// The prompt message.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type DescribeLiveRecordNotifyRecordsResponseBody struct {
 	//
 	// 180FA0D2-1A02-5158-A36B-115DBF7B218D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries that meet the specified conditions.
+	// The total number of entries that meet the conditions.
 	//
 	// example:
 	//
@@ -168,43 +168,61 @@ func (s *DescribeLiveRecordNotifyRecordsResponseBody) Validate() error {
 }
 
 type DescribeLiveRecordNotifyRecordsResponseBodyCallbackList struct {
-	// The name of the application to which the live stream belongs.
+	// The name of the application to which the stream belongs.
 	//
 	// example:
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The description of the result. A value of success indicates that the request is successful. If the request fails, an error message is returned.
+	// The result description. The value is success if the callback was successful. Otherwise, an error message is returned.
 	//
 	// example:
 	//
 	// success
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The main streaming domain.
+	// The streamer\\"s streaming domain.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The callback content.
+	// The specific content of the callback.
 	//
 	// example:
 	//
-	// July 26,  16:14{"domain":"al.xxxx.com","stream":"livestream01","pull _stream_result":true,"cdn":"al"}
-	NotifyContent  *string `json:"NotifyContent,omitempty" xml:"NotifyContent,omitempty"`
-	NotifyHeader   *string `json:"NotifyHeader,omitempty" xml:"NotifyHeader,omitempty"`
+	// 7月26日 16:14{"domain":"al.xxxx.com","stream":"livestream01","pull _stream_result":true,"cdn":"al"}
+	NotifyContent *string `json:"NotifyContent,omitempty" xml:"NotifyContent,omitempty"`
+	// The callback request header.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "Content-Type": [
+	//
+	//     "application/json; charset=utf-8"
+	//
+	//   ]
+	//
+	// }
+	NotifyHeader *string `json:"NotifyHeader,omitempty" xml:"NotifyHeader,omitempty"`
+	// The response returned by the user after receiving the callback.
+	//
+	// example:
+	//
+	// {"Code":0,"Msg":"Success"}
 	NotifyResponse *string `json:"NotifyResponse,omitempty" xml:"NotifyResponse,omitempty"`
 	// The callback result. Valid values:
 	//
-	// 	- success
+	// - success: The callback was successful.
 	//
-	// 	- failed
+	// - failed: The callback failed.
 	//
 	// example:
 	//
 	// success
 	NotifyResult *string `json:"NotifyResult,omitempty" xml:"NotifyResult,omitempty"`
-	// The time when the callback was returned. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The callback time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//
@@ -212,19 +230,19 @@ type DescribeLiveRecordNotifyRecordsResponseBodyCallbackList struct {
 	NotifyTime *string `json:"NotifyTime,omitempty" xml:"NotifyTime,omitempty"`
 	// The callback type. Valid values:
 	//
-	// 	- file_created: The recording file is created.
+	// - file_created: The recording was created.
 	//
-	// 	- record_error: A recording error occurs.
+	// - record_error: A recording error occurred.
 	//
-	// 	- record_started: Recording is started.
+	// - record_started: The recording started.
 	//
-	// 	- record_paused: Recording is paused.
+	// - record_paused: The recording was paused.
 	//
-	// 	- record_resumed: Recording is resumed.
+	// - record_resumed: The recording was resumed.
 	//
-	// 	- record_force_transcode_fail: The recording task fails to trigger transcoding.
+	// - record_force_transcode_fail: The recording task failed to trigger transcoding.
 	//
-	// 	- transformat_error: An error occurs when the live stream is parsed.
+	// - transformat_error: An error occurred while parsing the live stream content.
 	//
 	// example:
 	//
@@ -235,9 +253,20 @@ type DescribeLiveRecordNotifyRecordsResponseBodyCallbackList struct {
 	// example:
 	//
 	// http://learn.aliyundoc.com/examplecallback.action
-	NotifyUrl   *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	NotifyUrl *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
+	// The recording storage type. Valid values:
+	//
+	// - oss: recorded to OSS
+	//
+	// - vod: recorded to ApsaraVideo VOD
+	//
+	// - all: all storage types
+	//
+	// example:
+	//
+	// oss
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The name of the live stream.
+	// The stream name.
 	//
 	// example:
 	//

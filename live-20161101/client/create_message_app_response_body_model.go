@@ -16,7 +16,7 @@ type iCreateMessageAppResponseBody interface {
 }
 
 type CreateMessageAppResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *CreateMessageAppResponseBody) Validate() error {
 }
 
 type CreateMessageAppResponseBodyResult struct {
-	// The ID of the interactive messaging application.
+	// The ID of the interactive message application.
 	//
 	// example:
 	//

@@ -16,15 +16,15 @@ type iDescribeAutoShowListTasksResponseBody interface {
 }
 
 type DescribeAutoShowListTasksResponseBody struct {
-	// The information about the scheduled tasks. The following fields are included:
+	// The list of scheduled tasks. The list contains the following parameters:
 	//
-	// 	- Status: the status of the scheduled task. Valid values: 0 and 1. A value of 0 indicates that the scheduled task is paused. A value of 1 indicates that the scheduled task is started.
+	// - Status: The status of the task. A value of 0 indicates that the task is paused. A value of 1 indicates that the task is started.
 	//
-	// 	- LiveTemplate: the transcoding templates.
+	// - LiveTemplate: The list of transcoding configurations.
 	//
-	// 	- TranscodeConfig: the transcoding configuration for the source URL.
+	// - TranscodeConfig: The resolution for transcoding the pulled stream.
 	//
-	// 	- CasterId: the ID of the production studio.
+	// - CasterId: The ID of the production studio.
 	//
 	// example:
 	//

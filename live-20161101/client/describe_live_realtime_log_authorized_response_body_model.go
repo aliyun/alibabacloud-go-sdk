@@ -16,7 +16,9 @@ type iDescribeLiveRealtimeLogAuthorizedResponseBody interface {
 }
 
 type DescribeLiveRealtimeLogAuthorizedResponseBody struct {
-	// The authorization status. **true**: authorized **false**: not authorized
+	// The authorization status. Valid values:
+	//
+	// **true****false**
 	//
 	// example:
 	//

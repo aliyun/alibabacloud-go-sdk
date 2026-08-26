@@ -22,7 +22,7 @@ type AddLiveAISubtitleResponseBody struct {
 	//
 	// 5c6a2a0df228-4a64-af62-20e91b96****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the subtitle template.
+	// The subtitle template ID.
 	//
 	// example:
 	//

@@ -25,20 +25,25 @@ type iDescribeLiveAIStudioRequest interface {
 
 type DescribeLiveAIStudioRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The current page number. The default value is **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Valid values: 1 to 50.
+	// The number of entries to return on each page. Default value: 10. Valid values: 1 to 50.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the virtual studio template that you want to query. This parameter is optional.
+	// The ID of the template to filter. This parameter is optional.
 	//
 	// example:
 	//

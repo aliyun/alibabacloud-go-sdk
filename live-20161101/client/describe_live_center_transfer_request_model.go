@@ -24,7 +24,7 @@ type iDescribeLiveCenterTransferRequest interface {
 }
 
 type DescribeLiveCenterTransferRequest struct {
-	// The name of the application to which the live stream belongs. The value of this parameter must be the same as the application name for the live stream that you want to relay. Otherwise, the configuration does not take effect. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The name of the live stream application. The AppName you enter must match the AppName of the live stream to be relayed for the configuration to take effect. You can view the AppName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
 	//
 	// example:
 	//
@@ -38,15 +38,20 @@ type DescribeLiveCenterTransferRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The third-party URL to which the live stream is relayed.
+	// The third-party live streaming URL to which the stream is relayed.
 	//
 	// example:
 	//
 	// rtmp://push.example2.aliyunlive.com/testapp1/teststream2
-	DstUrl   *string `json:"DstUrl,omitempty" xml:"DstUrl,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	DstUrl  *string `json:"DstUrl,omitempty" xml:"DstUrl,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the live stream. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The name of the live stream. You can view the StreamName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iDeleteLiveStreamMergeResponseBody interface {
 }
 
 type DeleteLiveStreamMergeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

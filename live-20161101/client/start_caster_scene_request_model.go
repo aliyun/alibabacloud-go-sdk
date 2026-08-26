@@ -22,11 +22,11 @@ type iStartCasterSceneRequest interface {
 type StartCasterSceneRequest struct {
 	// The ID of the production studio.
 	//
-	// 	- If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
+	// - If you created the production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, use the CasterId value returned in the response.
 	//
-	// 	- If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management*	- page. To go to the page, log on to the **ApsaraVideo Live console*	- and click **Production Studios*	- in the left-side navigation pane.
+	// - If you created the production studio in the ApsaraVideo Live console, go to the **Production Studio*	- > **Cloud Production Studio*	- page to view the ID.
 	//
-	// >  You can find the ID of the production studio in the Instance ID/Name column.
+	// > The production studio ID is displayed as its name on the Cloud Production Studio page.
 	//
 	// This parameter is required.
 	//
@@ -35,10 +35,15 @@ type StartCasterSceneRequest struct {
 	// 80787064-1c94-4dc1-85ce-9409960a****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the scene.
 	//
-	// This parameter takes effect only if the scene is a PVW scene.
+	// This parameter is valid only for PVW scenes.
 	//
 	// This parameter is required.
 	//

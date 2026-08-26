@@ -18,7 +18,7 @@ type iDeleteLiveEdgeTransferRequest interface {
 }
 
 type DeleteLiveEdgeTransferRequest struct {
-	// The ingest domain. You can set only one stream relay configuration for an ingest domain.
+	// The ingest domain. Each domain name has only one live stream relay configuration.
 	//
 	// This parameter is required.
 	//
@@ -27,7 +27,12 @@ type DeleteLiveEdgeTransferRequest struct {
 	// demo.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteLiveEdgeTransferRequest) String() string {

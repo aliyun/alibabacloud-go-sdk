@@ -16,7 +16,7 @@ type iStopPlaylistResponseBody interface {
 }
 
 type StopPlaylistResponseBody struct {
-	// The ID of the episode list.
+	// The playlist ID.
 	//
 	// example:
 	//

@@ -47,7 +47,7 @@ type SetLiveDomainMultiStreamMasterRequest struct {
 	//
 	// teststream
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The unique identifier of the stream ingest.
+	// The unique identifier of the stream ingest. You can obtain this identifier by calling the [QueryLiveDomainMultiStreamList](https://help.aliyun.com/document_detail/2871872.html) operation.
 	//
 	// This parameter is required.
 	//

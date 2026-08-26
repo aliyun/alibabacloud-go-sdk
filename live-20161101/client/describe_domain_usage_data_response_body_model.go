@@ -28,43 +28,43 @@ type iDescribeDomainUsageDataResponseBody interface {
 }
 
 type DescribeDomainUsageDataResponseBody struct {
-	// The billable region where the resource usage data was generated.
+	// The usage region.
 	//
 	// example:
 	//
 	// CN
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The time interval between the returned entries. Unit: seconds.
+	// The time interval of each record. Unit: seconds.
 	//
 	// example:
 	//
 	// 300
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The domain name.
+	// The streaming domain.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range for which the resource usage data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The end time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2015-12-10T21:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// B955107D-E658-4E77-B913-E0AC3D31693E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range for which the resource usage data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// example:
 	//
 	// 2015-12-10T20:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of the resource usage data.
+	// The usage type.
 	//
 	// example:
 	//

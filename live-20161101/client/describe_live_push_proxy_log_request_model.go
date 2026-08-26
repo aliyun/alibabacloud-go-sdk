@@ -26,7 +26,7 @@ type iDescribeLivePushProxyLogRequest interface {
 }
 
 type DescribeLivePushProxyLogRequest struct {
-	// The ingest domain. You can specify only one domain in each request.
+	// The ingest domain. Multi-domain queries are not supported.
 	//
 	// This parameter is required.
 	//
@@ -34,29 +34,36 @@ type DescribeLivePushProxyLogRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Get the log end time.
+	// The end of the time range to query logs.
 	//
-	// Date format follows the ISO8601 representation and uses UTC+0 time, formatted as yyyy-MM-ddTHH:mm:ssZ.
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2023-09-20T09:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: 1.
+	// The page number. Default value: 1. Valid values: [1, 9223372036854775807].
 	//
 	// example:
 	//
 	// 2
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: [1,1000]. Default value: 300.
+	// The page size. Valid values: [1, 1000\\]. Default value: 300.
 	//
 	// example:
 	//
 	// 300
-	PageSize *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Get the log start time in ISO8601 format with UTC+0 timezone, formatted as yyyy-MM-ddTHH:mm:ssZ.
+	// The beginning of the time range to query logs.
+	//
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//

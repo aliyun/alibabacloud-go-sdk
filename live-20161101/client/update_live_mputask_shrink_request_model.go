@@ -48,9 +48,9 @@ type UpdateLiveMPUTaskShrinkRequest struct {
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	// The stream mixing mode. Valid values:
 	//
-	// 	- **0**: the single-stream relay mode. In this mode, the service only relays the original single stream, but does not transcode mixed streams. You do not need to set parameters for mixed-stream transcoding.
+	// - **0**: the single-stream relay mode. In this mode, the service only relays the original single stream, but does not transcode mixed streams. You do not need to set parameters for mixed-stream transcoding.
 	//
-	// 	- **1*	- (default): the mixed-stream relay mode.
+	// - **1*	- (default): the mixed-stream relay mode.
 	//
 	// example:
 	//
@@ -66,11 +66,11 @@ type UpdateLiveMPUTaskShrinkRequest struct {
 	//
 	// >
 	//
-	// 	- If the ingest URL is under a domain name for which hotlink protection is enabled, you must include an access token in the URL.
+	// - If the ingest URL is under a domain name for which hotlink protection is enabled, you must include an access token in the URL.
 	//
-	// 	- You cannot use the same ingest URL in different tasks.
+	// - You cannot use the same ingest URL in different tasks.
 	//
-	// 	- You cannot use the same ingest URL within 10 seconds after a task is stopped.
+	// - You cannot use the same ingest URL within 10 seconds after a task is stopped.
 	//
 	// example:
 	//

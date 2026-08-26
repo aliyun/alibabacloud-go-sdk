@@ -18,13 +18,13 @@ type iDeleteCasterLayoutResponseBody interface {
 }
 
 type DeleteCasterLayoutResponseBody struct {
-	// The ID of the production studio. You can use the ID as a request parameter in the API operation that is used to modify a layout in the production studio, query layouts in the production studio, add a component in the production studio, or query components in the production studio.
+	// The ID of the production studio. Use this ID to modify a layout, query layouts, add a component, or query components.
 	//
 	// example:
 	//
 	// a2b8e671-2fe5-4642-a2ec-bf93880e****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-	// The ID of the layout. You can use the ID as a request parameter in the API operation that is used to query layouts in the production studio.
+	// The layout ID. Use this ID to query the list of layouts for the production studio.
 	//
 	// example:
 	//

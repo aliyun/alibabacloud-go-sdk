@@ -20,7 +20,7 @@ type iDeleteEdgeTranscodeJobRequest interface {
 }
 
 type DeleteEdgeTranscodeJobRequest struct {
-	// The ID of the data center.
+	// The data center ID.
 	//
 	// This parameter is required.
 	//
@@ -28,15 +28,20 @@ type DeleteEdgeTranscodeJobRequest struct {
 	//
 	// ******3b-4d18-395c-8106-ff21a6******
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the edge transcoding task.
+	// The ID of the edge transcoding job.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ****20b48fb04483915d4f2cd8ac****
-	JobId    *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	JobId   *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

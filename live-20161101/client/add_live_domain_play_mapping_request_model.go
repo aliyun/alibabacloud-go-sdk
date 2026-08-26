@@ -37,7 +37,12 @@ type AddLiveDomainPlayMappingRequest struct {
 	//
 	// example.com
 	PullDomain *string `json:"PullDomain,omitempty" xml:"PullDomain,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s AddLiveDomainPlayMappingRequest) String() string {

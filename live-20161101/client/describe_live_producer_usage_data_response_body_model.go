@@ -21,19 +21,19 @@ type iDescribeLiveProducerUsageDataResponseBody interface {
 
 type DescribeLiveProducerUsageDataResponseBody struct {
 	BillProducerData *DescribeLiveProducerUsageDataResponseBodyBillProducerData `json:"BillProducerData,omitempty" xml:"BillProducerData,omitempty" type:"Struct"`
-	// The end of the time range during which data was queried.
+	// The end time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2018-09-30T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// C370DAF1-C838-4288-A1A0-9A87633D248E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start of the time range for which the data was queried.
+	// The start time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//

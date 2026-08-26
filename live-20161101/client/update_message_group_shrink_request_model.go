@@ -18,7 +18,7 @@ type iUpdateMessageGroupShrinkRequest interface {
 }
 
 type UpdateMessageGroupShrinkRequest struct {
-	// The ID of the interactive messaging application.
+	// The interactive message application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,9 +26,9 @@ type UpdateMessageGroupShrinkRequest struct {
 	//
 	// VKL3***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The extended field.
+	// The extension field.
 	ExtensionShrink *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// The ID of the message group.
+	// The message group ID.
 	//
 	// This parameter is required.
 	//

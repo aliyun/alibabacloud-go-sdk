@@ -13,11 +13,11 @@ import (
 //
 // Description:
 //
-// Before you call this operation to add a component to a production studio, you must first create the production studio and learn about the production studio layouts. You can call this operation to add three types of components: image, text, and subtitle. For information about how to create a production studio, see [CreateCaster](https://help.aliyun.com/document_detail/2848009.html).
+// Before calling this operation, create a production studio and review its layout list. This operation adds components such as images, text, and captions. For more information about creating a production studio using an API call, see [Create a production studio](https://help.aliyun.com/document_detail/2848009.html).
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10. If you exceed this limit, API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - AddCasterComponentRequest
 //
@@ -113,17 +113,17 @@ func (client *Client) AddCasterComponentWithContext(ctx context.Context, request
 //
 // Description:
 //
-// To call this operation, you must obtain the production studio ID in advance. The production studio ID is generated after the production studio is created.
+// Before you call this operation, obtain the ID of the production studio. The ID is generated when the production studio is created.
 //
-//   - If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
+// - If you create a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the returned CasterId parameter.
 //
-//   - If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management*	- page. To go to the page, log on to the **ApsaraVideo Live console*	- and click **Production Studios*	- in the left-side navigation pane.
+// - If you create a production studio in the LIVE console, go to **LIVE Console*	- > **Production Studio*	- > **Production Studio*	- to view the name of the production studio.
 //
-// >  You can find the ID of the production studio in the Instance ID/Name column.
+// > The name of the production studio in the production studio list serves as the production studio ID.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 4 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 4 for each account. API calls that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - AddCasterEpisodeRequest
 //
@@ -203,15 +203,15 @@ func (client *Client) AddCasterEpisodeWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Adds an episode list to a production studio.
+// Adds a program list to a production studio.
 //
 // Description:
 //
-// You need to create a production studio and obtain the production studio configurations before you call this operation to create an episode list in the production studio. For information about how to create a production studio, see [CreateCaster](https://help.aliyun.com/document_detail/2848009.html).
+// Create a production studio and obtain its configuration information before calling this operation to add a program list to the production studio. To create a production studio by using an API operation, see [Create a production studio](https://help.aliyun.com/document_detail/2848009.html).
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 4 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 4 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - AddCasterEpisodeGroupRequest
 //
@@ -287,15 +287,15 @@ func (client *Client) AddCasterEpisodeGroupWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Adds information about an episode list in a production studio.
+// Adds content to an episode group of a production studio.
 //
 // Description:
 //
-// You need to create a production studio and add an episode list to the production studio before you call this operation to add information about the episode list in the production studio. For information about how to create a production studio, see [CreateCaster](https://help.aliyun.com/document_detail/2848009.html).
+// Before you call this operation, you must create a production studio and an episode group. For more information, see [Create a production studio](https://help.aliyun.com/document_detail/2848009.html).
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 4 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 4 for each user. If you exceed this limit, your API calls are throttled. This may impact your business. Plan your calls accordingly.
 //
 // @param request - AddCasterEpisodeGroupContentRequest
 //
@@ -351,15 +351,15 @@ func (client *Client) AddCasterEpisodeGroupContentWithContext(ctx context.Contex
 
 // Summary:
 //
-// Adds a layout for a production studio.
+// Adds a layout to a production studio.
 //
 // Description:
 //
-// First, create a director desk and add video resources to the director desk, then call this interface to add the director desk layout. To create a director desk using the API, refer to [Create Director Desk](https://help.aliyun.com/document_detail/69338.html).
+// Before you call this operation, you must create a production studio and add video sources. For more information about how to create a production studio, see [CreateCaster](https://help.aliyun.com/document_detail/2848009.html).
 //
-// ## QPS Limitation
+// ## QPS limits
 //
-// The per-user QPS limit for this interface is 10 times/second. Exceeding this limit will result in API calls being throttled, which may impact your business operations. Please use the API reasonably. For more information, see [QPS Limitation](https://help.aliyun.com/document_detail/343507.html).
+// The queries per second (QPS) limit for this operation is 10 calls per second per user. API calls that exceed this limit are throttled, which may affect your business. Do not exceed this limit.
 //
 // @param request - AddCasterLayoutRequest
 //
@@ -427,15 +427,15 @@ func (client *Client) AddCasterLayoutWithContext(ctx context.Context, request *A
 
 // Summary:
 //
-// Adds the episode list for carousel playback in a production studio.
+// Adds a program list to a production studio.
 //
 // Description:
 //
-// Create a production studio, add input sources to the production studio, and then call this operation to add the episode list for carousel playback in the production studio. This operation supports videos and components as episodes. For information about how to create a production studio, see [CreateCaster](https://help.aliyun.com/document_detail/2848009.html).
+// Create a production studio and add video resources to it before calling this operation to add a program list. This operation currently supports only two node types: video source and component. To create a production studio by using an API operation, see [CreateCaster](https://help.aliyun.com/document_detail/2848009.html).
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - AddCasterProgramRequest
 //
@@ -491,17 +491,15 @@ func (client *Client) AddCasterProgramWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Adds an input source to a production studio. The number of input sources is limited by the number of input channels of the production studio.
+// Adds a video source to a production studio. The number of video sources is limited by the number of input channels of the production studio.
 //
 // Description:
 //
-// ##
-//
-// Create a production studio, and then call this operation to add a video source to the production studio. The number of video sources is limited by the number of input channels of the production studio. For information about how to create a production studio by calling an API operation, see [CreateCaster](https://help.aliyun.com/document_detail/69338.html).
+// Create a production studio before calling this operation to add a video source. The number of video sources is limited by the number of input channels of the production studio. To create a production studio by using an API operation, see [CreateCaster](https://help.aliyun.com/document_detail/2848009.html).
 //
 // ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - AddCasterVideoResourceRequest
 //
@@ -601,25 +599,25 @@ func (client *Client) AddCasterVideoResourceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Adds a custom transcoding configuration for a streaming domain.
+// Adds a custom transcoding configuration.
 //
 // Description:
 //
 // This operation supports the following types of custom transcoding templates:
 //
-//   - h264: H.264
+// - h264: H.264 standard transcoding.
 //
-//   - h264-nbhd: H.264 Narrowband HD™
+// - h264-nbhd: H.264 Narrowband HD™ transcoding.
 //
-//   - h265: H.265
+// - h265: H.265 standard transcoding.
 //
-//   - h265-nbhd: H.265 Narrowband HD™
+// - h265-nbhd: H.265 Narrowband HD™ transcoding.
 //
-//   - audio: audio-only
+// - audio: audio-only transcoding.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// You can call this operation up to 6,000 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limit](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - AddCustomLiveStreamTranscodeRequest
 //
@@ -771,21 +769,23 @@ func (client *Client) AddCustomLiveStreamTranscodeWithContext(ctx context.Contex
 //
 // Description:
 //
-//	  After you call the [AddLiveAISubtitle](https://help.aliyun.com/document_detail/2848222.html) operation to add a subtitle template, you can call this operation to create a subtitle rule for the template.
+// - After you add a subtitle template by calling the [AddLiveAISubtitle](https://help.aliyun.com/document_detail/2848222.html) operation, you can call this operation to add a subtitle rule.
 //
-//		- You must add "_Subtitle template name" after the stream name in the streaming URL to play the subtitle stream.
+// - To play a subtitle stream, append _{Subtitle template name} to the StreamName in the playback URL.
 //
-//	    	- RTMP: rtmp://example.aliyundoc.com/app/stream_{Subtitle template name}?auth_key={Access token}
+//   - RTMP: rtmp\\://example.aliyundoc.com/app/stream_{Subtitle template name}?auth_key={access token}
 //
-//	    	- FLV: http://example.aliyundoc.com/app/stream_{Subtitle template name}.flv?auth_key={Access token}
+//   - FLV: http\\://example.aliyundoc.com/app/stream_{Subtitle template name}.flv?auth_key={access token}
 //
-//	    	- M3U8: http://example.aliyundoc.com/app/stream_{Subtitle template name}.m3u8?auth_key={Access token}
+//   - M3U8: http\\://example.aliyundoc.com/app/stream_{Subtitle template name}.m3u8?auth_key={access token}
 //
-// >  The live subtitles feature is in invitational preview. You can add up to 300 subtitle templates.
+//     Notice:
 //
-// ## [](#qps-)QPS limit
+// The real-time subtitle feature is in invitational preview. You can add up to 300 subtitle templates.
 //
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// ## QPS limits
+//
+// The queries per second (QPS) limit for this operation is 60 per user. If you exceed this limit, API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - AddLiveAIProduceRulesRequest
 //
@@ -865,23 +865,23 @@ func (client *Client) AddLiveAIProduceRulesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Adds a subtitle template.
+// Adds a subtitle template by calling AddLiveAISubtitle.
 //
 // Description:
 //
-// ## Instructions
+// ## Operation description
 //
-// - This interface supports adding live caption template configurations, with templates configurable to describe caption content, layout, and more.
+// - This operation allows you to add a live subtitle template configuration. The template configuration describes subtitle content, layout, and other information.
 //
-// - After adding caption templates, you also need to call the [AddLiveAIProduceRules](https://help.aliyun.com/document_detail/2799676.html) interface to add caption rules. Restarting the stream will then enable captions in the broadcast.
+// - After you add a subtitle template, call the [AddLiveAIProduceRules](https://help.aliyun.com/document_detail/2799676.html) operation to add subtitle rules. The subtitles take effect in the stream only after you re-ingest the stream.
 //
-// - Real-time captions are currently supported in Beijing, Shanghai, Singapore, Indonesia, and Saudi regions.
+// - Real-time subtitles are supported only in the Beijing, Shanghai, Singapore, Indonesia, and Saudi Arabia regions.
 //
-//	Notice: The real-time caption feature is currently in beta testing. Each user can add up to 300 caption templates.
+//	Notice: The real-time subtitle feature is in public preview. Each user can add up to 300 subtitle templates. The feature is free of charge during the public preview. After the public preview ends, standard billing applies. The specific date will be announced separately.
 //
-// ## QPS Limit
+// ## QPS limit
 //
-// The QPS limit for this interface per user is 60 requests/second. Exceeding this limit will result in API throttling, which may impact your services. Please use judiciously. For more information, refer to [QPS Limitations](https://help.aliyun.com/document_detail/343507.html).
+// The single-user QPS limit for this operation is 60 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as appropriate. For more information, see [QPS limit](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param tmpReq - AddLiveAISubtitleRequest
 //
@@ -1003,17 +1003,27 @@ func (client *Client) AddLiveAISubtitleWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Configure APP recording, with output saved to OSS.
+// Configures recording for an application and saves the output to Object Storage Service (OSS).
 //
 // Description:
 //
-// The live stream recording feature allows you to record a live stream and stores the recordings in a specified location. You can view the recordings whenever you want to. Recordings that are stored in OSS support multiple formats, such as Transport Stream (TS), MP4, Flash Video (FLV), and Common Media Application Format (CMAF). You can use different recording policies, including automatic recording, on-demand recording, and manual recording. By calling this operation, you can configure the recording template. For more information about live stream recording, see [Live stream recording](https://help.aliyun.com/document_detail/199357.html).
+// - Before you use this operation, make sure that you fully understand the billing methods and pricing of live stream recording. For billing details, see [Live stream recording fees](https://help.aliyun.com/document_detail/195287.html).
 //
-// A configuration is identified by the DomainName, AppName, and StreamName parameters all together. If you try to call this operation to add a configuration that has the same DomainName, AppName, and StreamName parameters as an existing configuration, an error indicating that the configuration already exists is returned.
+// - If you use the method of storing recordings in OSS to configure live stream recording, activate OSS and create a bucket. For more information, see [Configure OSS](https://help.aliyun.com/document_detail/84932.html).
 //
-// ## [](#qps-)QPS limit
+// - Recordings stored in OSS incur storage fees. For billing details in OSS, see [Storage fees](https://help.aliyun.com/document_detail/173534.html).
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// - The OSS bucket must be in the same region as the live center of the streaming domain. Cross-region recording is not supported.
+//
+// - The live stream recording feature records live content and saves it to a specified location for on-demand playback. Recordings stored in OSS support multiple container formats (TS, MP4, FLV, and CMAF) and custom recording policies (automatic recording, on-demand recording, and manual recording). Call this operation to configure recording templates. For more information about live stream recording, see [Live stream recording](https://help.aliyun.com/document_detail/199357.html).
+//
+// - The triplet (DomainName, AppName, StreamName) can correspond to only one configuration. If a configuration already exists for the triplet, calling this operation to add another configuration returns a configuration-already-exists error.
+//
+// - Configurations set through this operation take effect only after the live stream is re-ingested and remain effective permanently.
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 30 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - AddLiveAppRecordConfigRequest
 //
@@ -1113,13 +1123,13 @@ func (client *Client) AddLiveAppRecordConfigWithContext(ctx context.Context, req
 //
 // Description:
 //
-//	  Before you call this operation, make sure that you fully understand the billing method and pricing of live stream snapshots in ApsaraVideo Live. For more information, see [Billing of live stream snapshots](https://help.aliyun.com/document_detail/195286.html).
+// - Before you call this operation, make sure that you fully understand the billing method and pricing of live stream snapshots in ApsaraVideo Live. For more information, see [Billing of live stream snapshots](https://help.aliyun.com/document_detail/195286.html).
 //
-//		- Make sure that Object Storage Service (OSS) is activated and a specific bucket is created. This way, ApsaraVideo Live can store live stream snapshots in the bucket. For more information, see [Configure OSS](https://help.aliyun.com/document_detail/84932.html).
+// - Make sure that Object Storage Service (OSS) is activated and a specific bucket is created. This way, ApsaraVideo Live can store live stream snapshots in the bucket. For more information, see [Configure OSS](https://help.aliyun.com/document_detail/84932.html).
 //
-//		- If you store snapshots in OSS, storage fees are generated. For more information, see [Storage fees](https://help.aliyun.com/document_detail/173534.html).
+// - If you store snapshots in OSS, storage fees are generated. For more information, see [Storage fees](https://help.aliyun.com/document_detail/173534.html).
 //
-//		- The OSS bucket must reside in the same region as the live center of the streaming domain. Cross-region snapshot capture is not supported.
+// - The OSS bucket must reside in the same region as the live center of the streaming domain. Cross-region snapshot capture is not supported.
 //
 // ## [](#qps-)QPS limit
 //
@@ -1207,13 +1217,17 @@ func (client *Client) AddLiveAppSnapshotConfigWithContext(ctx context.Context, r
 //
 // Description:
 //
-//	  The content moderation feature detects undesirable sensitive content in the audio from live streams and returns callbacks to notify you of the violations. Then, you can manually review the content and take actions accordingly.
+// - The audio moderation feature detects sensitive content in audio from live streams and uses callbacks to notify you of violations in real time. You can then manually review the content and take appropriate actions.
 //
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
+// - Currently, only some live centers support automated review. For supported regions, see [Service regions](https://help.aliyun.com/document_detail/193730.html).
 //
-// ## [](#qps-)QPS limit
+// <props="china">
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// Before you call this API, make sure that you understand the billing methods and pricing of the live audio moderation service. For more information, see [Automated review fees](https://help.aliyun.com/document_detail/195288.html).
+//
+// ## QPS limits
+//
+// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - AddLiveAudioAuditConfigRequest
 //
@@ -1289,17 +1303,17 @@ func (client *Client) AddLiveAudioAuditConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Configures callbacks for audio moderation results.
+// Adds a callback configuration for audio moderation.
 //
 // Description:
 //
-//	  The content moderation feature returns the audio moderation results based on the configured callback template.
+// - The automated review service returns review results based on the configured callback template.
 //
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
+// - The automated review feature is available only in some live centers. For supported regions, see [Service regions](https://help.aliyun.com/document_detail/193730.html).
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - AddLiveAudioAuditNotifyConfigRequest
 //
@@ -1359,11 +1373,11 @@ func (client *Client) AddLiveAudioAuditNotifyConfigWithContext(ctx context.Conte
 
 // Summary:
 //
-// Adds a configuration of live center stream relay.
+// Adds a live center stream relay configuration.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit of this API is 100 calls per second. If the limit is exceeded, API calls will be throttled, which may affect your business. Please make calls appropriately.
 //
 // @param request - AddLiveCenterTransferRequest
 //
@@ -1443,9 +1457,9 @@ func (client *Client) AddLiveCenterTransferWithContext(ctx context.Context, requ
 //
 // Description:
 //
-//	  The automated review feature sends notifications about violations to the callback URL in real time. Then, you can manually review the content and take actions accordingly.
+// - The automated review feature sends notifications about violations to the callback URL in real time. Then, you can manually review the content and take actions accordingly.
 //
-//		- Only some live centers support the automated review feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
+// - Only some live centers support the automated review feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
 //
 // ## QPS limit
 //
@@ -1505,25 +1519,25 @@ func (client *Client) AddLiveDetectNotifyConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Adds a domain name to ApsaraVideo Live. This operation allows you to add only one domain name at a time.
+// Adds a live streaming domain name. You can add only one domain name at a time.
 //
 // Description:
 //
-//	  You must activate ApsaraVideo Live before you add a domain name. For more information, see [Activate ApsaraVideo Live](https://help.aliyun.com/document_detail/195292.html).
+// - Before you add a live streaming domain name, you must activate ApsaraVideo Live. For more information, see [Activate the service](https://help.aliyun.com/document_detail/195292.html).
 //
-//		- ApsaraVideo Live verifies the ownership of a new domain name that you add. After the verification is passed, the domain name is added to ApsaraVideo Live. ApsaraVideo Live allows you to use a Domain Name System (DNS) record or a verification file to verify the ownership of a domain name. For more information, see [Verify the ownership of a domain name](https://help.aliyun.com/document_detail/184466.html).
+// - Before you add a new domain name, you must first verify the domain name ownership and then call this operation to add the domain name. You can use DNS resolution verification or file verification. For more information, see [Verify domain name ownership](https://help.aliyun.com/document_detail/184466.html).
 //
-//		- To use ApsaraVideo Live to ingest and play streams, you must add an ingest domain and a streaming domain. You can add only one domain name at a time.
+// - ApsaraVideo Live requires both stream ingest and streaming. You must add an ingest domain and a streaming domain separately. You can commit only one domain name at a time.
 //
-//		- After you add a domain name, you must configure a CNAME record for the domain name. For more information, see [Add a CNAME record](https://help.aliyun.com/document_detail/84929.html).
+// - After you add a domain name, you must configure CNAME resolution for the domain name. For more information, see [Configure CNAME resolution](https://help.aliyun.com/document_detail/84929.html).
 //
-//		- After you add an ingest domain and a streaming domain, you must associate the streaming domain with the ingest domain. For more information, see [Associate a streaming domain with an ingest domain](https://help.aliyun.com/document_detail/199338.html).
+// - After you add an ingest domain and a streaming domain, you must associate the associated domains before you can use ApsaraVideo Live. For more information, see [Associated domain](https://help.aliyun.com/document_detail/199338.html).
 //
-// >  From February 19, 2019, domain names that are added by calling the AddLiveDomain operation do not support live center ingest. Domain names that are added by using Alibaba Cloud CDN also do not support live center ingest. When you call the AddLiveDomain operation, you can set the LiveDomainType parameter to liveEdge to add an ingest domain that uses edge ingest or set the LiveDomainType parameter to liveVideo to add a streaming domain. You can associate a streaming domain with an ingest domain by calling the AddLiveDomainMapping operation. Domain names added before February 19, 2019, for which live center ingest was configured, are not affected.
+//	Notice: Starting from February 19, 2019, domain names added by using AddLiveDomain do not support live center ingest. New domain names added by using CDN API operations also do not support live center ingest. Use edge ingest to add an ingest domain (call AddLiveDomain with the business type set to liveEdge) and a streaming domain (call AddLiveDomain with the business type set to liveVideo), and then associate them (call [AddLiveDomainMapping](https://help.aliyun.com/document_detail/2847792.html)). Domain names added before February 19, 2019 are not affected.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 30 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - AddLiveDomainRequest
 //
@@ -1675,11 +1689,11 @@ func (client *Client) AddLiveDomainMappingWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// You can call the [AddLiveDomain](https://help.aliyun.com/document_detail/88327.html) operation to add a main streaming domain and a sub-streaming domain and then call this operation to map the sub-streaming domain to the main streaming domain.
+// Before you call this operation, you must add the main streaming domain and sub-streaming domain by calling [AddLiveDomain](https://help.aliyun.com/document_detail/88327.html).
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - AddLiveDomainPlayMappingRequest
 //
@@ -1735,15 +1749,15 @@ func (client *Client) AddLiveDomainPlayMappingWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Mutes one or more users.
+// The AddLiveMessageGroupBand operation mutes users in a group.
 //
 // Description:
 //
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
+// Before you call this operation, you must call the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive message group.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 calls per second for each user. API calls that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param tmpReq - AddLiveMessageGroupBandRequest
 //
@@ -1805,19 +1819,19 @@ func (client *Client) AddLiveMessageGroupBandWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Adds a live stream encapsulation configuration.
+// You can call the AddLivePackageConfig operation to add a live stream packaging configuration.
 //
 // Description:
 //
-//	  The first time you configure encapsulation for a domain name, domain acceleration is automatically configured and takes effect in 3 to 5 minutes.
+// - When you add a packaging configuration to a domain name for the first time, the related acceleration configurations for the playback domain name are also applied. The configurations take effect in 3 to 5 minutes.
 //
-//		- If the streaming domain resides in a region outside China, including Singapore, Germany (Frankfurt), Japan (Tokyo), and Indonesia (Jakarta), you may encounter high latency issues. We recommend that you test and verify whether the settings meet expectations.
+// - If the playback domain name is in a region outside China, such as Singapore, Germany, Japan, or Indonesia, high latency may occur. After you add the configuration, test it to ensure it works as expected.
 //
-//		- You can call this operation to add a live stream encapsulation configuration. The configuration takes effect only after you re-ingest the stream.
+// - After you add a live stream packaging configuration, you must restart the stream ingest for the configuration to take effect.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 300 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 300 calls per minute. If you exceed the limit, API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - AddLivePackageConfigRequest
 //
@@ -1897,25 +1911,25 @@ func (client *Client) AddLivePackageConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates a stream pulling configuration for a live stream, which includes parameters such as the origin URL, start time, and end time.
+// Creates a scheduled stream pulling configuration, which includes parameters such as the origin URL, start time, and end time.
 //
 // Description:
 //
-//	  Before you call this operation, make sure that you fully understand the billing method and pricing of stream pulling in ApsaraVideo Live. For more information, see [Billing of standard streaming](https://help.aliyun.com/document_detail/195284.html).
+// - Before you call this operation, make sure that you understand the billing method and pricing of ApsaraVideo Live. For more information, see [](t1961174.xdita#).
 //
-//		- Stream pulling refers to the process of pulling live streams from third-party streaming URLs to a live center of ApsaraVideo Live for CDN acceleration.
+// - Stream pulling refers to the process of pulling live streams from third-party URLs to a live center of ApsaraVideo Live for CDN acceleration.
 //
-//		- You can call this operation only for regular stream pulling. That is, you can specify the start time and end time to pull live streams.
+// - This operation supports only scheduled stream pulling. You can specify a start time and an end time to pull a live stream during a specific time period.
 //
-//		- Regular stream pulling and triggered stream pulling are supported in the ApsaraVideo Live console. For more information, see [Configure stream pulling](https://help.aliyun.com/document_detail/199452.html).
+// - The console supports both scheduled and triggered stream pulling. For more information, see [Configure stream pulling](https://help.aliyun.com/document_detail/199452.html).
 //
-//		- You can specify custom values for the AppName and StreamName parameters. Streaming URLs that are generated vary based on different values of the AppName and StreamName parameters. You can use the [URL generator](https://help.aliyun.com/document_detail/197400.html) to generate a streaming URL.
+// - You can specify custom values for the AppName and StreamName parameters. Streaming URLs are generated based on AppName and StreamName. You can use the [](t2020590.xdita#) to generate a streaming URL.
 //
-//		- A configuration is identified by the DomainName, AppName, and StreamName parameters all together. If you try to call this operation to add a configuration that has the same DomainName, AppName, and StreamName parameters as an existing configuration, an error indicating that the configuration already exists is returned.
+// - Each stream pulling configuration must be unique. The combination of DomainName, AppName, and StreamName can only be associated with one active configuration. Attempting to add a duplicate configuration will result in an error.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - AddLivePullStreamInfoConfigRequest
 //
@@ -1987,15 +2001,15 @@ func (client *Client) AddLivePullStreamInfoConfigWithContext(ctx context.Context
 
 // Summary:
 //
-// Configures recording callbacks for a domain name.
+// Adds a domain-level recording callback configuration.
 //
 // Description:
 //
-// Before you call this operation to configure recording callbacks for a domain name, you can query whether the domain name already has recording callbacks configured. For more information, see [DescribeLiveRecordNotifyConfig](https://help.aliyun.com/document_detail/2847893.html).
+// Before calling this operation to add a domain-level recording callback configuration, query the live recording callback configuration first. To query the live recording callback configuration by using an API operation, see [Query live recording callback configuration](https://help.aliyun.com/document_detail/2847893.html).
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 30 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - AddLiveRecordNotifyConfigRequest
 //
@@ -2067,17 +2081,17 @@ func (client *Client) AddLiveRecordNotifyConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Adds a Live-to-VOD configuration to store recordings in the media library of ApsaraVideo VOD.
+// Creates a live-to-VOD configuration to store recordings in ApsaraVideo VOD.
 //
 // Description:
 //
-// You can call this operation to configure the Live-to-VOD feature to store recordings in the media library of ApsaraVideo VOD.
+// - Storing recordings in ApsaraVideo for VOD triggers automatic operations like video merging and transcoding, which incur video processing fees within the service. For details, see [video editing billing](https://help.aliyun.com/document_detail/188310.html) and [video transcoding billing](https://help.aliyun.com/document_detail/188308.html). For FAQs on automatic merging and transcoding, see the [live-to-VOD FAQ](https://help.aliyun.com/document_detail/99726.html).
 //
-// >  You cannot configure the Live-to-VOD feature by using a Finance Cloud account.
+// - Alibaba Finance Cloud accounts do not support the live-to-VOD feature.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The QPS limit for this API is 1,000 calls per minute per user. Exceeding this limit will cause API calls to be throttled, which can impact your business. To avoid throttling, call the API at a reasonable rate.
 //
 // @param request - AddLiveRecordVodConfigRequest
 //
@@ -2185,7 +2199,7 @@ func (client *Client) AddLiveRecordVodConfigWithContext(ctx context.Context, req
 //
 // Description:
 //
-// - The live streaming audit function identifies and reviews违规sensitive content at the domain and App level, and promptly notifies users of such violations via callbacks. Users can then review the content and take appropriate actions.
+// - The live streaming audit function identifies and reviews non-compliant sensitive content at the domain and App level, and promptly notifies users of such violations via callbacks. Users can then review the content and take appropriate actions.
 //
 // - Currently, only some live streaming centers support intelligent auditing. For a list of live streaming centers that support this feature, please refer to [Service Regions](https://help.aliyun.com/document_detail/193730.html).
 //
@@ -2271,9 +2285,7 @@ func (client *Client) AddLiveSnapshotDetectPornConfigWithContext(ctx context.Con
 //
 // Description:
 //
-// ### QPS Limit
-//
-// The QPS limit for this API per user is 30 times/second. Exceeding this limit will result in API calls being throttled, which may impact your business operations. Please use the API reasonably. For more information, please refer to [QPS Limitation](https://help.aliyun.com/document_detail/343507.html).
+// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - AddLiveSnapshotNotifyConfigRequest
 //
@@ -2337,11 +2349,11 @@ func (client *Client) AddLiveSnapshotNotifyConfigWithContext(ctx context.Context
 
 // Summary:
 //
-// Invoke AddLiveStreamMerge to add primary and backup stream merging configuration.
+// Call AddLiveStreamMerge to add a primary/backup stream merge configuration.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// Exceeding the API limit of 100 QPS per account triggers throttling, which may disrupt your service. Please make calls reasonably.
 //
 // @param request - AddLiveStreamMergeRequest
 //
@@ -2449,15 +2461,19 @@ func (client *Client) AddLiveStreamMergeWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Adds transcoding configurations for a streaming domain.
+// Calls AddLiveStreamTranscode to add transcoding configuration information.
 //
 // Description:
 //
-// You must obtain the customer master key (CMK) in Key Management Service (KMS) before you call this operation to add transcoding configurations. Only standard transcoding templates and Narrowband HD™ transcoding templates are supported for this operation.
+// - Using the live stream transcoding feature incurs transcoding fees, which are calculated based on the transcoding standard, resolution specification, and total transcoding length. For billing rules, see [Live stream transcoding fees](https://help.aliyun.com/document_detail/90424.html).
 //
-// ## QPS limits
+// - First obtain the user KMS master key ID through Key Management Service (KMS), and then invoke this operation to add default transcoding configuration information. Currently, this operation supports only two types of transcoding templates: standard quality templates and Narrowband HD™ transcoding templates.
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://www.alibabacloud.com/help/en/apsaravideo-live/latest/qps-limit-on-an-api-operation-in-apsaravideo-live).
+// - Alibaba Cloud KMS provides default keys for server-side encryption of cloud services at no cost, and no instance purchase is required. However, if you need to build a custom application cryptographic solution, use the credential feature, or manage the key lifecycle, you must purchase a software or hardware key management instance. For billing details, see [Billing](https://help.aliyun.com/document_detail/600418.html).
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 30 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Invoke this operation appropriately.
 //
 // @param request - AddLiveStreamTranscodeRequest
 //
@@ -2525,17 +2541,17 @@ func (client *Client) AddLiveStreamTranscodeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Creates a watermark template.
+// Adds a watermark template.
 //
 // Description:
 //
-//	  You can call this operation to create a watermark template and configure information such as the watermark content and layout in the template.
+// - This API creates a live stream watermark template, which defines the watermark\\"s content, layout, and other properties.
 //
-//		- After you create a watermark template, you must also call the [AddLiveStreamWatermarkRule](https://help.aliyun.com/document_detail/2848100.html) operation to add a watermark rule. A live stream in progress can contain the watermark only after the stream is re-ingested.
+// - After you add a watermark template, you must call the [AddLiveStreamWatermarkRule](https://help.aliyun.com/document_detail/2848100.html) operation to create a rule that applies the template. The watermark appears on the stream after you restart the stream ingest.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - AddLiveStreamWatermarkRequest
 //
@@ -2635,11 +2651,11 @@ func (client *Client) AddLiveStreamWatermarkWithContext(ctx context.Context, req
 //
 // Description:
 //
-// After calling the [AddLiveStreamWatermark](https://help.aliyun.com/document_detail/469416.html) API to add a watermark template, you can use this interface to add watermark rules.
+// After you add a watermark template by calling the [AddLiveStreamWatermark](https://help.aliyun.com/document_detail/2848096.html) operation, call this operation to create a rule that applies the template.
 //
-// ## QPS Limit
+// ## QPS limits
 //
-//	The QPS limit for this interface per user is 60 times/second. Exceeding the limit will result in API calls being throttled, which may impact your business. Please use it reasonably. For more information, see [QPS Limit](https://help.aliyun.com/document_detail/343507.html).
+// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - AddLiveStreamWatermarkRuleRequest
 //
@@ -2711,15 +2727,15 @@ func (client *Client) AddLiveStreamWatermarkRuleWithContext(ctx context.Context,
 
 // Summary:
 //
-// Adds episodes to an episode list.
+// Adds a playlist item.
 //
 // Description:
 //
-// Create a production studio, add a layout and components to the production studio, and then call this operation to add episodes. If no episode list exists in the production studio, this operation creates an episode list for the production studio. For more information about how to create a production studio, see [CreateCaster](https://help.aliyun.com/document_detail/2848009.html).
+// Create a production studio, add a production studio layout and production studio components, and then call this operation to add a playlist item. If no playlist has been created, the system automatically creates one. To create a production studio by using an API operation, see [CreateCaster](https://help.aliyun.com/document_detail/2848009.html).
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - AddPlaylistItemsRequest
 //
@@ -2783,15 +2799,17 @@ func (client *Client) AddPlaylistItemsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Creates a Real-Time Streaming (RTS) transcoding configuration for a streaming domain.
+// Adds a custom transcoding configuration for a streaming domain with Real-Time Streaming (RTS) enabled.
 //
 // Description:
 //
-// You can call this operation to add an RTS transcoding configuration. This operation supports four template types: h264, h264-nbhd, h264-origin, and audio.
+// ## Usage notes
 //
-// ## QPS limit
+// You can call this operation to add a custom RTS transcoding configuration. This operation supports only the following types of custom transcoding templates: h264, h264-nbhd, h264-origin, and audio.
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// ## QPS limits
+//
+// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - AddRtsLiveStreamTranscodeRequest
 //
@@ -2911,23 +2929,23 @@ func (client *Client) AddRtsLiveStreamTranscodeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Adds an episode to an episode list.
+// Adds a show to a playlist.
 //
 // Description:
 //
-// You must create a production studio in the new playlist mode and add media resources to the production studio before you can call this operation. For information about how to create a production studio, see [CreateCaster](https://help.aliyun.com/document_detail/2848009.html).
+// Before calling this operation, create a playlist mode production studio (NormType=6) and add video resources to it. To create a production studio by using an API operation, refer to [CreateCaster](https://help.aliyun.com/document_detail/2848009.html).
 //
-// You can add up to 1,000 episodes to an episode list.
+// Each playlist can contain up to 1000 shows.
 //
-// >
+//	Notice:
 //
-//   - When you select media resources from ApsaraVideo VOD, we recommend that you select resources that are stored in hosted OSS buckets. Resources stored in non-hosted OSS buckets have a validity period. Pay attention to the validity if you select resources that are stored in non-hosted OSS buckets.
+// - When using video-on-demand (VOD) resources, use managed Bucket resources first. Resources in your own Bucket may expire. If you use resources in your own Bucket, check the resource validity period.
 //
-//   - When you add media resources to a production studio, we recommend that you select resources from ApsaraVideo Live and ApsaraVideo VOD. If you add a third-party stream by specifying a streaming URL, there is a possibility that the stream fails to be played. You must pay attention to the quality and validity of the third-party stream.
+// - Use ApsaraVideo Live and ApsaraVideo VOD resources as input for the production studio. Resources from third-party URLs may fail to play. Verify the quality and validity of such resources.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - AddShowIntoShowListRequest
 //
@@ -3019,15 +3037,15 @@ func (client *Client) AddShowIntoShowListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Configures a layout for a virtual studio.
+// Adds layout settings for a virtual production studio.
 //
 // Description:
 //
-// You can call this operation to configure a common layout or a studio layout for a virtual studio.
+// You can call this operation to add layout settings for a virtual production studio. This operation supports both common and studio layouts.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 per user. If you exceed this limit, your API calls are throttled. This may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - AddStudioLayoutRequest
 //
@@ -3107,15 +3125,15 @@ func (client *Client) AddStudioLayoutWithContext(ctx context.Context, request *A
 
 // Summary:
 //
-// Inserts supplemental enhancement information (SEI) to transcoded streams.
+// Inserts Supplemental Enhancement Information (SEI) data into transcoded streams.
 //
 // Description:
 //
-// Obtain the streaming domain, and then call this operation to insert SEI to the transcoded streams. Make sure that the stream name is the name of the source stream. This way, the SEI is inserted to all the transcoded streams.
+// First, obtain the streaming domain. Then, call this operation to insert SEI into the transcoded streams. The stream name must be the same as the source stream to ensure that SEI is inserted into all transcoded streams.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 6,000 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - AddTrancodeSEIRequest
 //
@@ -3191,15 +3209,15 @@ func (client *Client) AddTrancodeSEIWithContext(ctx context.Context, request *Ad
 
 // Summary:
 //
-// Mutes a group.
+// Call the BanLiveMessageGroup operation to mute a user.
 //
 // Description:
 //
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
+// Before you call this operation, you must call [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) to create an interactive message group.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// Each user can call this operation up to 10 times per second. API calls that exceed this limit are throttled, which may impact your business. We recommend that you call this operation within this limit.
 //
 // @param tmpReq - BanLiveMessageGroupRequest
 //
@@ -3329,17 +3347,17 @@ func (client *Client) BatchDeleteLiveDomainConfigsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries whether users are online by UID.
+// # Queries whether one or more users are online based on their UIDs
 //
 // Description:
 //
 // ## Usage notes
 //
-// You can query whether up to 20 users are online at a time.
+// This operation supports batch queries. You can query the online status of up to 20 users at a time.
 //
-// ## QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The single-user queries per second (QPS) limit for this operation is 100 times/second. If you exceed this limit, API calls will be throttled, which may affect your business. You should make API calls at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - BatchGetOnlineUsersRequest
 //
@@ -3391,15 +3409,15 @@ func (client *Client) BatchGetOnlineUsersWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Configures multiple domain names at a time.
+// Configures domain names in batches.
 //
 // Description:
 //
-// Obtain the domain names that you want to configure, and then call this operation to configure the domain names in batches.
+// Obtain the ApsaraVideo Live domain names to configure, and then call this operation to configure domain names in batches.
 //
-// ## [](#qps-)QPS limit
+// ## Rate limit
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 30 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - BatchSetLiveDomainConfigsRequest
 //
@@ -3416,6 +3434,10 @@ func (client *Client) BatchSetLiveDomainConfigsWithContext(ctx context.Context, 
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DomainNames) {
 		query["DomainNames"] = request.DomainNames
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.Functions) {
@@ -3459,13 +3481,13 @@ func (client *Client) BatchSetLiveDomainConfigsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Unmutes a message group.
+// Cancels the muting of a message group user.
 //
 // Description:
 //
-// ## QPS限制
+// ## QPS limits
 //
-// 本接口的单用户QPS限制为100次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。更多信息，请参见[QPS限制](https://help.aliyun.com/document_detail/343507.html)。
+// The single-user QPS limit for this operation is 100 times/second. If this limit is exceeded, API calls will be throttled, which may affect your business. You should make API calls at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - CancelMuteAllGroupUserRequest
 //
@@ -3521,13 +3543,13 @@ func (client *Client) CancelMuteAllGroupUserWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Unmutes members in a message group.
+// Calls CancelMuteGroupUser to batch unmute members in a message group.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The QPS limit for this API is 100 queries per second (QPS) per user. If the limit is exceeded, API calls will be throttled, which may affect your business. You can call the API properly to avoid this issue. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param tmpReq - CancelMuteGroupUserRequest
 //
@@ -3593,11 +3615,11 @@ func (client *Client) CancelMuteGroupUserWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Changes the resource group to which a domain name belongs. In this case, you move the domain name from the original resource group to another resource group.
+// Moves a domain name in ApsaraVideo Live to a specified resource group.
 //
 // Description:
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - ChangeLiveDomainResourceGroupRequest
 //
@@ -3785,15 +3807,17 @@ func (client *Client) CheckLiveMessageUsersOnlineWithContext(ctx context.Context
 
 // Summary:
 //
-// Disables time shifting for a domain name, or an application or a live stream under the domain name.
+// Disables the time shifting service for a specified domain name (application or live stream).
 //
 // Description:
 //
-// Obtain the streaming domain, and then call this operation to disable time shifting for the streaming domain or an application or a live stream under the streaming domain.
+// Obtain the streaming domain first, and then call this operation to disable the time shifting service for a specified domain name (application or live stream).
 //
-// ## [](#qps-)QPS limit
+// Before calling this operation, call OpenLiveShift to enable the time shifting service. The AppName and StreamName specified when disabling the service must be the same as those specified when enabling the service. Wildcards (*) are supported.
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - CloseLiveShiftRequest
 //
@@ -3853,15 +3877,15 @@ func (client *Client) CloseLiveShiftWithContext(ctx context.Context, request *Cl
 
 // Summary:
 //
-// Duplicates a production studio.
+// Duplicates a production studio and creates a new production studio instance.
 //
 // Description:
 //
-// You can call this operation to duplicate a production studio. This way, a new, identical production studio is created.
+// You can call this operation to copy a specified production studio, which creates a new production studio instance.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - CopyCasterRequest
 //
@@ -3925,15 +3949,15 @@ func (client *Client) CopyCasterWithContext(ctx context.Context, request *CopyCa
 //
 // Description:
 //
-//	  Streaming fees and transcoding fees are calculated based on the corresponding output resolutions and durations. For more information, see [Billing of production studios](https://help.aliyun.com/document_detail/64531.html).
+// - Production Studio is billed based on output specifications, transcoding specifications, and the duration of usage. For more information, see [Production studio pricing](https://help.aliyun.com/document_detail/64531.html).
 //
-//		- You can call this operation to apply the configuration of a source scene to a destination scene. This operation takes effect only if the source scene is a PVW scene and the destination scene is a PGM scene. A PVW scene is a preview scene, and a PGM scene is a program scene.
+// - You can call this operation to copy the configuration from a source scene to a destination scene. You can only copy the configuration from a PVW scene to a PGM scene. A PVW scene is a preview scene, and a PGM scene is a program scene.
 //
-//		- The PVW scene and PGM scene must be in the same production studio.
+// - The PVW scene and the PGM scene must be in the same production studio.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 calls per second per user. API calls that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - CopyCasterSceneConfigRequest
 //
@@ -3993,17 +4017,15 @@ func (client *Client) CopyCasterSceneConfigWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Creates a production studio.
+// Call the CreateCaster operation to create a production studio.
 //
 // Description:
 //
-// You must enable the production studio feature before you can call this operation to create a production studio. For more information, see [Enable the production studio feature](https://help.aliyun.com/document_detail/60361.html).
+// You must activate ApsaraVideo Live before you call this operation. For more information, see [Activate ApsaraVideo Live](https://help.aliyun.com/document_detail/60361.html). <props="china">This operation supports the following types of production studios: Standard, Lightweight Carousel, Virtual Studio, and New Playlist (Carousel). <props="intl">This operation supports the following types of production studios: Standard and New Playlist (Carousel).
 //
-// You can call this operation to create production studios in general mode or playlist mode. Production studios in playlist mode can be used for carousel playback.
+// ## QPS limit
 //
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If you exceed this limit, API calls are throttled, which may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - CreateCasterRequest
 //
@@ -4091,11 +4113,11 @@ func (client *Client) CreateCasterWithContext(ctx context.Context, request *Crea
 //
 // Description:
 //
-// After you call this operation to create a custom template, record the template name. When you call the [CreateMixStream](https://help.aliyun.com/document_detail/2848087.html) operation to create a stream mixing task, you can set the MixStreamTemplate parameter to the name of the custom template. This way, you can use the custom template for stream mixing.
+// After you call this operation to create a custom template, record the template name. To use the custom template, set the MixStreamTemplate parameter to the template name when you call the [CreateMixStream](https://help.aliyun.com/document_detail/2848087.html) operation to create a stream mixing task.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 for each user. API calls that exceed this limit are throttled, which can affect your business. Plan your calls accordingly.
 //
 // @param request - CreateCustomTemplateRequest
 //
@@ -4151,17 +4173,17 @@ func (client *Client) CreateCustomTemplateWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates an edge transcoding task.
+// Creates an edge transcoding job.
 //
 // Description:
 //
-//	  You can call this operation to create an edge transcoding task.
+// - You can call this operation to create an edge transcoding job.
 //
-//		- To call this operation, make sure that you have the permissions to access the edge transcoding feature.
+// - Before you call this operation, you must have permission to access the edge transcoding service.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 6,000 calls per minute for each user. If you exceed this limit, API calls are throttled, which can affect your business. Plan your calls accordingly.
 //
 // @param request - CreateEdgeTranscodeJobRequest
 //
@@ -4229,15 +4251,15 @@ func (client *Client) CreateEdgeTranscodeJobWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Creates a callback to subscribe to channel or user events.
+// Creates a callback for subscribing to channel messages.
 //
 // Description:
 //
-// You can call this operation to create a callback to subscribe to channel or user events. When you create a callback, you can configure parameters such as the callback URL and event type.
+// Creates a callback for subscribing to channel messages. For example, when creating a callback, you can configure parameters such as the callback URL and event types.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 100 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - CreateEventSubRequest
 //
@@ -4301,7 +4323,7 @@ func (client *Client) CreateEventSubWithContext(ctx context.Context, request *Cr
 //
 // Description:
 //
-// >  The lightweight virtual studio feature is in invitational preview. You can add up to 300 virtual studio templates.
+//	Notice: The lightweight virtual studio feature is in public preview. Each user can create up to 300 templates. The feature is free of charge during the public preview. After the public preview ends, standard fees will apply. The specific date will be announced separately..
 //
 // @param tmpReq - CreateLiveAIStudioRequest
 //
@@ -4415,11 +4437,11 @@ func (client *Client) CreateLiveAIStudioWithContext(ctx context.Context, tmpReq 
 //
 // Description:
 //
-// Stream delay is different from latency caused by streaming protocols. Stream delay is a feature that allows you to delay the playback of a live stream that is processed in the cloud.
+// Stream delay differs from latency caused by streaming protocols. Stream delay is a feature that lets you delay the playback of a live stream processed in the cloud.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 60 for each user. If you exceed the limit, API calls are throttled, which may affect your business. Call this operation within the specified limit.
 //
 // @param request - CreateLiveDelayConfigRequest
 //
@@ -4487,17 +4509,17 @@ func (client *Client) CreateLiveDelayConfigWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Creates an interactive messaging application.
+// Creates an interactive messaging application by calling CreateLiveMessageApp.
 //
 // Description:
 //
-//	  When you call other operations to manage the interactive messaging application, you must specify the same data center in which the application is created.
+// - When calling other interactive messaging API operations, the data center must be the same as the one specified when creating the interactive messaging application.
 //
-//		- You can create up to 300 interactive messaging applications in an Alibaba Cloud account.
+// - A maximum of 300 interactive messaging applications can be created under a single Alibaba Cloud account.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this API operation is 50 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - CreateLiveMessageAppRequest
 //
@@ -4645,17 +4667,17 @@ func (client *Client) CreateLiveMessageGroupWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Creates a Global Accelerator (GA) instance and binds it to an acceleration circuit.
+// Creates an Alibaba Cloud Global Accelerator (GA) instance and attaches it to a live streaming link.
 //
 // Description:
 //
-//	  You can call this operation to create a GA instance and bind it to an acceleration circuit. The granularity is at the stream level. You need to specify the access points where the acceleration circuit starts and ends.
+// - This operation creates an Alibaba Cloud Global Accelerator (GA) instance and attaches it to a live streaming link. You must specify the stream-level granularity and indicate the acceleration start point and end point.
 //
-//		- The settings take effect only if the value of AppName and the value of StreamName are the same as the application name and stream name that are specified in the streaming URL.
+// - The template takes effect only when the AppName and StreamName values match the AppName and StreamName in the streaming URL.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 50 calls per second. If this limit is exceeded, the API invoke is throttled, which may affect your business. Invoke this operation appropriately.
 //
 // @param request - CreateLivePrivateLineRequest
 //
@@ -4739,25 +4761,27 @@ func (client *Client) CreateLivePrivateLineWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Creates a pulled-stream relay task.
+// Call CreateLivePullToPush to create a pull-to-push task.
 //
 // Description:
 //
-// >  The pulled-stream relay feature is in public preview. You can use it free of charge. After the public preview ends, fees will be charged. The specific end time will be announced.
+//	Notice: Pull-to-push is a paid feature. Billing officially starts from 00:00 on December 5, 2025.
 //
-//   - You can call this operation to create a pulled-stream relay task.
+// - For pricing details, see [Pull-to-push pricing](https://help.aliyun.com/document_detail/2997901.html).
 //
-//   - The pulled source can be a live stream or video-on-demand (VOD) resources.
+// - Call this operation to create a pull-to-push task.
 //
-//   - After a task is created, it starts at the specified start time and ends at the specified end time. A task that ends is automatically deleted.
+// - Supports creating live stream pull tasks and VOD pull tasks.
 //
-//   - Make sure that the destination URL specified in the task is not used by another task. Otherwise, conflicts occur and stream ingest fails.
+// - After a task is created, it starts running at the specified start time and automatically stops and is deleted at the specified end time.
 //
-//   - The events for pulled-stream relay callbacks include state changes of a pulled-stream relay task and exit of a pulled-stream relay task. For more information, see [Pulled-stream relay callbacks](https://help.aliyun.com/document_detail/2846768.html).
+// - The push destination URL specified in the task must not be used by other tasks. Otherwise, multiple tasks pushing to the same URL simultaneously will cause push failures.
 //
-// ## [](#qps-)QPS limit
+// - Pull-to-push callback events include task running status change callbacks and task exit callbacks. For more information, see [Pull-to-push event callbacks](https://help.aliyun.com/document_detail/2846768.html).
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls will be throttled, which may affect your business. Please call this operation appropriately.
 //
 // @param tmpReq - CreateLivePullToPushRequest
 //
@@ -4778,6 +4802,10 @@ func (client *Client) CreateLivePullToPushWithContext(ctx context.Context, tmpRe
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AuthKey) {
+		query["AuthKey"] = request.AuthKey
+	}
+
 	if !dara.IsNil(request.CallbackUrl) {
 		query["CallbackUrl"] = request.CallbackUrl
 	}
@@ -4792,6 +4820,10 @@ func (client *Client) CreateLivePullToPushWithContext(ctx context.Context, tmpRe
 
 	if !dara.IsNil(request.FileIndex) {
 		query["FileIndex"] = request.FileIndex
+	}
+
+	if !dara.IsNil(request.NotifyItemSwitch) {
+		query["NotifyItemSwitch"] = request.NotifyItemSwitch
 	}
 
 	if !dara.IsNil(request.Offset) {
@@ -4812,6 +4844,10 @@ func (client *Client) CreateLivePullToPushWithContext(ctx context.Context, tmpRe
 
 	if !dara.IsNil(request.RepeatNumber) {
 		query["RepeatNumber"] = request.RepeatNumber
+	}
+
+	if !dara.IsNil(request.ReqAuth) {
+		query["ReqAuth"] = request.ReqAuth
 	}
 
 	if !dara.IsNil(request.RetryCount) {
@@ -4867,19 +4903,21 @@ func (client *Client) CreateLivePullToPushWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Configures real-time log delivery for a domain name.
+// Calls CreateLiveRealTimeLogDelivery to create a real-time log delivery configuration for a domain name.
 //
 // Description:
 //
-// ##
+// Obtain the streaming domain first, and then call this operation to create a real-time log delivery configuration for the domain name.
 //
-// Obtain the streaming domain, and then call this operation to configure real-time log delivery for the streaming domain.
+// The resources corresponding to the Project, Logstore, and Region parameters must be created in Simple Log Service (SLS) in advance.
 //
-// This operation is applicable to only streaming domains. If you want to configure real-time log delivery for an ingest domain, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12818093.nav-right.dticket.6cb216d07otFWR#/ticket/createIndex).
+// Currently, only streaming domains can be configured. To push upstream real-time logs (that is, to configure an ingest domain), [submit a ticket](https://workorder.console.aliyun.com/console.htm#/ticket/add?productCode=live&commonQuestionId=4545&isSmart=true&iatraceid=1608439120675-2a5c48de0b84805313c708&channel=selfservice).
+//
+// Currently, only streaming domains can be configured. To push upstream real-time logs (that is, to configure an ingest domain), [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12818093.nav-right.dticket.6cb216d07otFWR#/ticket/createIndex).
 //
 // ## QPS limit
 //
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The single-user QPS limit for this operation is 6,000 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - CreateLiveRealTimeLogDeliveryRequest
 //
@@ -4923,11 +4961,11 @@ func (client *Client) CreateLiveRealTimeLogDeliveryWithContext(ctx context.Conte
 //
 // Description:
 //
-// You can call this operation to create a monitoring session. Make sure that the parameter settings meet the requirements.
+// Call this operation to create a monitoring session. Ensure that the required parameters are configured.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. If you exceed the limit, your API calls are throttled. This may affect your business. Plan your API calls accordingly.
 //
 // @param request - CreateLiveStreamMonitorRequest
 //
@@ -5011,29 +5049,35 @@ func (client *Client) CreateLiveStreamMonitorWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Creates an M3U8 index file for a recording in a specified time period.
+// Creates an M3U8 index file for a specified time range.
 //
 // Description:
 //
-// You must have configured Object Storage Service (OSS) before you call this operation. For more information, see [Configure OSS](https://help.aliyun.com/document_detail/84932.html). ApsaraVideo Live allows you to record a live stream in the M3U8 format and store the M3U8 file in OSS. You can edit the TS segments that are included in the stored M3U8 file in real time.
+// You have configured OSS. For more information, see [Configure OSS](https://help.aliyun.com/document_detail/84932.html).
 //
-// >
+// Live recording indexing records a live video stream in M3U8 format, stores it in OSS, and performs real-time clipping on the stored TS segment index files.
 //
-//   - You can create an index file only after a live stream is ingested. If no live stream is available within the specified time range or the name of the specified live stream is invalid, the index file fails to be created.
+// > - To create a recording index, the live stream must have had stream ingest activity. If no live streaming occurred within the specified time range or the stream name is incorrect, the recording index creation is failed.
 //
-//   - The time range that is specified by the StartTime and EndTime parameters must be the duration of at least one TS segment. The default duration of a TS segment is 30 seconds.
+// > - Make sure that DomainName, AppName, and StreamName are correct. Otherwise, the InvalidStream.NotFound error is returned.
 //
-//   - ApsaraVideo Live stores the information about TS segments for only three months. You can create M3U8 index files only for the recordings of the last three months.
+// > - The interval between StartTime and EndTime must be at least the duration of one TS segment (30 seconds by default).
 //
-//   - OSS stores TS segments for a time period that is specified by the storage configuration in OSS. For more information, see [Configure lifecycle rules](https://help.aliyun.com/document_detail/31904.html).
+// > - EndTime must be later than StartTime, and the interval cannot exceed 4 days.
 //
-//   - ApsaraVideo Live stores the information about M3U8 index files for six months. You can query the information about only the M3U8 index files that were created in the last six months.
+// > - TS segment information is retained in the ApsaraVideo Live system for only 3 months. You can create an M3U8 file only from recordings within the last 3 months.
 //
-//   - OSS stores M3U8 index files for a time period that is specified by the storage configuration in OSS.
+// > - TS segment files are stored in OSS. The retention period is determined by the OSS storage configuration. For more information, see [Settings lifecycle rules](https://help.aliyun.com/document_detail/31904.html).
 //
-// ## [](#qps-)QPS limit
+// > - Information about created M3U8 index files is retained in the ApsaraVideo Live system for only 6 months. You can query only the information of index files created within the last 6 months.
 //
-// You can call this operation up to 45 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// > - M3U8 index files are stored in OSS. The retention period is determined by the OSS storage configuration.
+//
+// > - If the M3U8 and TS files are stored in different buckets, the TS paths in the M3U8 file are in HTTP format.
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this API is 45 calls per second. If this limit is exceeded, throttling is triggered, which may affect your business. Call this operation as appropriate.
 //
 // @param request - CreateLiveStreamRecordIndexFilesRequest
 //
@@ -5117,13 +5161,13 @@ func (client *Client) CreateLiveStreamRecordIndexFilesWithContext(ctx context.Co
 
 // Summary:
 //
-// Creates an interactive messaging application.
+// You can call CreateMessageApp to create an interactive message application.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The QPS limit for this API is 100 queries per second (QPS) per user. If the limit is exceeded, API calls will be throttled, which may affect your business. You can call this API at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param tmpReq - CreateMessageAppRequest
 //
@@ -5189,9 +5233,9 @@ func (client *Client) CreateMessageAppWithContext(ctx context.Context, tmpReq *C
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. Consider this limit when calling this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param tmpReq - CreateMessageGroupRequest
 //
@@ -5253,13 +5297,17 @@ func (client *Client) CreateMessageGroupWithContext(ctx context.Context, tmpReq 
 //
 // Description:
 //
-// You can call this operation to create a stream mixing task. This operation supports preset layouts and custom layouts.
+//	Notice:
 //
-// If you have any questions or suggestions about the use of the stream mixing feature, you are welcome to search the group ID 34935990 in DingTalk to join the developer group.
+// Cloud stream mixing is a paid feature. This feature is in public preview and is currently free of charge. Standard fees will apply after the public preview period. The end date of the public preview will be announced at a later date.
 //
-// ## [](#qps-)QPS limit
+// </notice>
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation to create a stream mixing task. This operation supports both preset and custom layouts.
+//
+// ## QPS limit
+//
+// A single user can make up to 10 queries per second (QPS). Calls that exceed this limit are throttled. Throttling may affect your business operations. We recommend that you plan your calls accordingly.
 //
 // @param request - CreateMixStreamRequest
 //
@@ -5327,7 +5375,39 @@ func (client *Client) CreateMixStreamWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 创建房间whip协议推流地址
+// Creates a WHIP ingest URL for an ApsaraVideo Real-time Communication channel by calling CreateRTCWhipStreamAddress.
+//
+// Description:
+//
+// ## Usage notes
+//
+// 1. Call the CreateRTCWhipStreamAddress operation to create a WHIP ingest URL (WhipAddress) for the specified RTC channel.
+//
+// 2. Use OBS to ingest a stream by using the WHIP protocol.
+//
+//   - Run the OBS streaming tool.
+//
+//   - In the menu bar, choose **File > Settings**.
+//
+//   - On the Settings page, select **Stream**, configure the following information, and then click **OK**.
+//
+//     | Parameter | Description |
+//
+//     | ------ | ------|
+//
+//     | Service| Set Service to **WHIP**.|
+//
+//     | Server | Use the WhipAddress generated by the operation in Step 1.|
+//
+//     | Bearer Token| Leave the stream key empty. |
+//
+//     ![](https://img.alicdn.com/imgextra/i3/O1CN01xaAEK61umh8yP8NFe_!!6000000006080-2-tps-1746-685.png)
+//
+// 3. Other users can join the corresponding channel to watch the stream.
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 40 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - CreateRTCWhipStreamAddressRequest
 //
@@ -5391,31 +5471,29 @@ func (client *Client) CreateRTCWhipStreamAddressWithContext(ctx context.Context,
 
 // Summary:
 //
-// Generates a Real-Time Messaging Protocol (RTMP) ingest URL for a channel.
+// Creates an ingest URL for an RTMP stream in a channel.
 //
 // Description:
 //
-// ### [](#)Usage notes
+// 1. Call this operation to generate an RTMP ingest URL.
 //
-// To use the interactive streaming feature, you must use ApsaraVideo Real-time Communication (ARTC) SDK to join a channel and ingest streams over Real-Time Communication (RTC). In specific scenarios, you can ingest streams over Real-Time Messaging Protocol (RTMP) by using tools such as Open Broadcaster Software (OBS). Then, ApsaraVideo Live automatically converts the RTMP streams to RTC streams and distributes the RTC streams to viewers. You can call this operation to generate an ingest URL in the RTMP format. After you ingest RTMP streams, ApsaraVideo Live automatically converts the streams to RTC streams. Do not call this operation if you require only regular live streaming. To quickly ingest RTMP streams and start live streaming, see [Get started with ApsaraVideo Live](https://help.aliyun.com/document_detail/198676.html).
+// 2. Ingest a stream to the RTMP URL. Other users in the channel can view this stream.
 //
-// ## [](#)Procedure
+// 3. Stop stream ingest. Other users in the channel see the RTMP stream user leave the channel.
 //
-// 1.  Call this operation to generate an ingest URL in the RTMP format.
+// > - You can repeat steps 2 and 3 while the RTMP URL is valid.
 //
-// 2.  Ingest a stream by using the ingest URL. Other users in the channel can watch the stream.
+// >- Call [DescribeChannelParticipants](https://help.aliyun.com/document_detail/2848193.html) to query the channel user list and periodically check whether the RTMP stream user is still in the channel. If the user is no longer in the channel, stream ingest may have been interrupted. Stop stream ingest and go back to step 2 to re-ingest.
 //
-// 3.  Stop ingesting the stream. Other users in the channel see that the user who ingested the stream leaves the channel.
+// ## Before you begin
 //
-// >
+// When using ApsaraVideo Real-time Communication, you typically join a channel and ingest RTC streams through the Alibaba Cloud ARTC SDK. However, in certain special scenarios, Alibaba Cloud allows you to use the RTMP protocol for stream ingest (such as OBS stream ingest). Alibaba Cloud then converts the RTMP stream to an RTC stream for distribution and user joining. You can use this operation to implement this capability. This operation generates an RTMP ingest URL. After you complete stream ingest, Alibaba Cloud automatically converts the stream to an RTC stream.
 //
-//   - You can repeat Steps 2 and 3 within the validity period of the ingest URL.
+// If your business is a pure live streaming scenario, do not use this operation. Refer to [Generate ingest URLs and streaming URLs](https://help.aliyun.com/document_detail/198676.html) to quickly implement RTMP stream ingest and live playback.
 //
-//   - We recommend that you call the [DescribeChannelParticipants](https://help.aliyun.com/document_detail/610801.html) operation to query online users in the channel at regular intervals. This way, you can check whether the user who ingests the stream is still in the channel. If the user who ingests the stream is not in the channel, the stream may be interrupted. In this case, we recommend that you stop ingesting the stream and perform Step 2.
+// ## Rate limit
 //
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The single-user queries per second (QPS) limit for this operation is 100. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - CreateRoomRealTimeStreamAddressRequest
 //
@@ -5455,15 +5533,15 @@ func (client *Client) CreateRoomRealTimeStreamAddressWithContext(ctx context.Con
 
 // Summary:
 //
-// Creates a live subtitle task to transcribe an audio stream to text in real time.
+// Creates a real-time subtitle task to transcribe an audio stream into text in real time.
 //
 // Description:
 //
-// You can call this operation to create a live subtitle task that transcribes audio in a live stream to text in real time.
+// This operation is currently in maintenance mode. Use intelligent workflows to implement this capability. For more information, see [Intelligent workflow configuration](https://help.aliyun.com/document_detail/2985843.html).
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 20 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - CreateRtcAsrTaskRequest
 //
@@ -5563,15 +5641,15 @@ func (client *Client) CreateRtcAsrTaskWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Creates a subscription to mixed-stream relay events.
+// Creates an event subscription for stream mixing and relaying.
 //
 // Description:
 //
-// You can call this operation to create a subscription to mixed-stream relay events. You can configure parameters such as the callback URL, application to which you want to subscribe, and channel information when you create a subscription.
+// Creates an event subscription for stream mixing and relaying. When you create a subscription, you can configure parameters such as the callback URL, the application to subscribe to, and channel information.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 50 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - CreateRtcMPUEventSubRequest
 //
@@ -5627,15 +5705,15 @@ func (client *Client) CreateRtcMPUEventSubWithContext(ctx context.Context, reque
 //
 // Description:
 //
-//	  You can delete only production studios that are closed.
+// - A production studio must be shut down before you can delete it. Otherwise, the operation fails.
 //
-//		- When a production studio is deleted, the scenes, components, and layouts of the production studio are also deleted.
+// - When you delete a production studio, its associated scenes, components, and layouts are also deleted.
 //
-//		- You cannot recover a deleted production studio.
+// - You cannot recover a deleted production studio.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 for each user. Calls that exceed this limit are throttled, which can affect your business. Plan your calls accordingly.
 //
 // @param request - DeleteCasterRequest
 //
@@ -5687,15 +5765,15 @@ func (client *Client) DeleteCasterWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// Deletes a component in a production studio.
+// Deletes a component from a production studio.
 //
 // Description:
 //
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and then call this operation to delete a component in the production studio.
+// Call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio. You can then call this operation to delete a component from the production studio.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// This operation is limited to 10 queries per second (QPS) per user. Calls that exceed this limit are throttled, which may affect your business. We recommend that you plan your calls accordingly.
 //
 // @param request - DeleteCasterComponentRequest
 //
@@ -5751,15 +5829,15 @@ func (client *Client) DeleteCasterComponentWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Deletes an episode in a production studio.
+// Deletes an episode from a production studio.
 //
 // Description:
 //
-// Before you call this operation to delete an episode in a production studio, you must obtain the ID of the production studio and the ID of the episode.
+// Before you call this operation, you must obtain the production studio ID and the episode ID.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 4 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 4. API calls that exceed this limit are throttled, which may impact your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DeleteCasterEpisodeRequest
 //
@@ -5819,11 +5897,11 @@ func (client *Client) DeleteCasterEpisodeWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// Before you call this operation to delete an episode list in a production studio, make sure that you have called the [AddCasterEpisodeGroup](https://help.aliyun.com/document_detail/2848071.html) operation to add the episode list in the production studio.
+// First, call the [AddCasterEpisodeGroup](https://help.aliyun.com/document_detail/2848071.html) operation to add an episode list to a production studio. You can then call this operation to delete the episode list.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 4 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 4 per user. API calls that exceed this limit are throttled, which may affect your business. Call this operation within the specified limit.
 //
 // @param request - DeleteCasterEpisodeGroupRequest
 //
@@ -5879,11 +5957,11 @@ func (client *Client) DeleteCasterEpisodeGroupWithContext(ctx context.Context, r
 //
 // Description:
 //
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/69338.html) operation to create a production studio and then call this operation to delete a layout in the production studio.
+// Call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio. You can then call this operation to delete a layout in the production studio.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// This operation is limited to 10 queries per second (QPS) for each user. API calls that exceed this limit are throttled, which may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - DeleteCasterLayoutRequest
 //
@@ -5943,11 +6021,11 @@ func (client *Client) DeleteCasterLayoutWithContext(ctx context.Context, request
 //
 // Description:
 //
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and then call this operation to delete the episode list for carousel playback in the production studio.
+// First, call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio. Then, call this operation to delete the program of the production studio.
 //
-// ## [](#qps-)QPS limit
+// ## Usage limits
 //
-// You can call this operation up to 4 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 4 queries per second (QPS) per account. If you exceed this limit, API calls are throttled. This can affect your business. Plan your calls accordingly.
 //
 // @param request - DeleteCasterProgramRequest
 //
@@ -5999,15 +6077,17 @@ func (client *Client) DeleteCasterProgramWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes the settings of a scene.
+// Deletes the scene configuration of a production studio.
 //
 // Description:
 //
-// You can call this operation to delete the settings of a scene, such as the component setting, layout setting, or both of them.
+// Calls this operation to delete the scene configuration of a production studio. This operation currently supports the following scene configuration types: component configuration, layout configuration, and component and layout configuration.
 //
-// ## [](#qps-)QPS limit
+// The scene specified by SceneId must be in the started state (Status=1). You can check the current state of the scene by using the Scene.Status field of the DescribeCasterScenes operation.
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DeleteCasterSceneConfigRequest
 //
@@ -6071,11 +6151,11 @@ func (client *Client) DeleteCasterSceneConfigWithContext(ctx context.Context, re
 //
 // Description:
 //
-// Before you call this operation to remove an input source from a production studio, make sure that you have called the [CreateCaster](https://help.aliyun.com/document_detail/69338.html) operation to create the production studio.
+// You must first call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio. You can then call this operation to remove a video resource from the production studio.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The limit for this operation is 10 queries per second (QPS) per user. Calls that exceed this limit are throttled, which may impact your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DeleteCasterVideoResourceRequest
 //
@@ -6131,13 +6211,13 @@ func (client *Client) DeleteCasterVideoResourceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Deletes a channel.
+// Closes a channel, which causes all current members in the channel to leave, but does not affect subsequent reuse of the channel.
 //
 // Description:
 //
-// ## [](#qps-)QPS limit
+// A channel is implicitly created when an RTC client SDK joins a session. You can call ListRTCLiveRooms to query existing channels.
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 100. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DeleteChannelRequest
 //
@@ -6189,11 +6269,11 @@ func (client *Client) DeleteChannelWithContext(ctx context.Context, request *Del
 //
 // Description:
 //
-// Obtain the name of the custom stream mixing template that you want to delete, and then call this operation to delete the template.
+// Obtain the name of the custom stream mixing template to delete, and then call this operation.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 10 times per second per user. If you exceed this limit, your API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - DeleteCustomTemplateRequest
 //
@@ -6245,17 +6325,17 @@ func (client *Client) DeleteCustomTemplateWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Deletes an edge transcoding task.
+// Deletes an edge transcoding job.
 //
 // Description:
 //
-//	  You can call this operation to delete an edge transcoding task.
+// - This operation deletes an edge transcoding job.
 //
-//		- To call this operation, make sure that you have the permissions to access the edge transcoding feature.
+// - You must have permission to access the edge transcoding service to call this operation.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 6,000 calls per minute. If you exceed this limit, your API calls are throttled, which may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - DeleteEdgeTranscodeJobRequest
 //
@@ -6371,13 +6451,13 @@ func (client *Client) DeleteEventSubWithContext(ctx context.Context, request *De
 //
 // Description:
 //
-// You can call this operation to delete a specified subtitle rule.
+// This operation deletes a specified subtitle rule.
 //
-// >  The live subtitles feature is in invitational preview. You can add up to 300 subtitle templates.
+//	Notice: The intelligent subtitling feature is currently in invitational preview. A single user can add up to 300 subtitle templates.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 60 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - DeleteLiveAIProduceRulesRequest
 //
@@ -6445,9 +6525,11 @@ func (client *Client) DeleteLiveAIProduceRulesWithContext(ctx context.Context, r
 //
 // Description:
 //
-// To delete a virtual studio template, you must first unbind the rules. Otherwise, an error occurs.
+// Before you delete a virtual studio template, you must detach all associated rules. Otherwise, an error is reported.
 //
-// >  The lightweight virtual studio feature is in invitational preview. You can add up to 300 virtual studio templates.
+//	Notice:
+//
+// The lightweight virtual studio feature is in invitational preview. Each user can add a maximum of 300 templates.
 //
 // @param request - DeleteLiveAIStudioRequest
 //
@@ -6503,13 +6585,15 @@ func (client *Client) DeleteLiveAIStudioWithContext(ctx context.Context, request
 //
 // Description:
 //
-// You can call this operation to delete a specified subtitle template for live streaming.
+// You can call this operation to delete a specified caption template for a live stream.
 //
-// >  The live subtitles feature is in invitational preview. You can add up to 300 subtitle templates.
+//	Notice:
 //
-// ## [](#qps-)QPS limit
+// The real-time caption feature is in invitational preview. Each user can add up to 300 caption templates.
 //
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// ## QPS limits
+//
+// The queries per second (QPS) limit for this operation is 60 calls per second for each user. API calls that exceed this limit are throttled, which may affect your business. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - DeleteLiveAISubtitleRequest
 //
@@ -6565,13 +6649,13 @@ func (client *Client) DeleteLiveAISubtitleWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Deletes a recording configuration at the application level.
+// Deletes a recording configuration at the AppName level.
 //
 // Description:
 //
-// Obtain the main streaming domain, and then call this operation to delete a recording configuration at the application level.
+// Obtain the main streaming domain, then call this operation to delete a recording configuration at the AppName level.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
 //
@@ -6701,13 +6785,13 @@ func (client *Client) DeleteLiveAppSnapshotConfigWithContext(ctx context.Context
 //
 // Description:
 //
-//	  Obtain the main streaming domain, and then call this operation to delete an audio moderation configuration.
+// - You can call this operation to delete the automated audio review configuration for a specified streaming domain.
 //
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
+// - The automated review feature is available only in specific regions. For supported regions, see [Service regions](https://help.aliyun.com/document_detail/193730.html).
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DeleteLiveAudioAuditConfigRequest
 //
@@ -6767,17 +6851,15 @@ func (client *Client) DeleteLiveAudioAuditConfigWithContext(ctx context.Context,
 
 // Summary:
 //
-// Deletes the configuration of callbacks for audio moderation results.
+// Deletes the callback configuration for automated audio review from a streaming domain.
 //
 // Description:
 //
-//	  Obtain the main streaming domain, and then call this operation to delete the configuration of callbacks for audio moderation results.
+// Only some live centers support automated review. For supported regions, see [Service regions](https://help.aliyun.com/document_detail/193730.html).
 //
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
+// ## QPS limits
 //
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DeleteLiveAudioAuditNotifyConfigRequest
 //
@@ -6829,11 +6911,11 @@ func (client *Client) DeleteLiveAudioAuditNotifyConfigWithContext(ctx context.Co
 
 // Summary:
 //
-// Deletes a configuration of live center stream relay.
+// Deletes a live center stream relay configuration.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DeleteLiveCenterTransferRequest
 //
@@ -6901,7 +6983,7 @@ func (client *Client) DeleteLiveCenterTransferWithContext(ctx context.Context, r
 //
 // Description:
 //
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 60. If you exceed the limit, API calls are throttled. This may impact your business. Plan your API calls accordingly.
 //
 // @param request - DeleteLiveDelayConfigRequest
 //
@@ -6967,9 +7049,9 @@ func (client *Client) DeleteLiveDelayConfigWithContext(ctx context.Context, requ
 //
 // ## [](#)Usage notes
 //
-//   - Obtain the main streaming domain, and then call this operation to delete the configuration of callbacks for video moderation results.
+// - Obtain the main streaming domain, and then call this operation to delete the configuration of callbacks for video moderation results.
 //
-//   - Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
+// - Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
 //
 // ## [](#qps-)QPS limit
 //
@@ -7025,19 +7107,19 @@ func (client *Client) DeleteLiveDetectNotifyConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// Removes a domain name from ApsaraVideo Live.
+// Deletes all records of the specified live streaming domain.
 //
 // Description:
 //
-//	  After you successfully call the DeleteLiveDomain operation, all records of the specified domain name are deleted. Exercise caution when you perform this operation.
+// - A successful call to the DeleteLiveDomain operation deletes all records for the specified live streaming domain. Use this operation with caution.
 //
-//		- We recommend that you restore to an A record for the domain name at the DNS provider before you remove the domain name. Otherwise, the domain name may become inaccessible. If your domain name is registered with Alibaba Cloud, log on to the [Alibaba Cloud DNS console](https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fdns.console.aliyun.com%2F%3Fspm%3Da2c4g.11186623.0.0.3cda841fcvk7Qs\\&lang=zh) and navigate to the **Domain Name Resolution*	- page. Find the domain name and then click **DNS Settings*	- in the Actions column. On the page that appears, change the CNAME record to an A record. If your domain name is registered with another DNS provider, configure similar settings on the platform of that DNS provider.
+// - To prevent the domain name from becoming inaccessible, you must restore its A record with your DNS service provider before you delete the domain name. If your domain name registrar is Alibaba Cloud, log on to the [Alibaba Cloud DNS console](https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fdns.console.aliyun.com%2F%3Fspm%3Da2c4g.11186623.0.0.3cda841fcvk7Qs\\&lang=zh). Navigate to the **Public Zone*	- page. Find the domain name, click **Settings**, and change the CNAME record to an A record. If your domain name is registered with another registrar, perform a similar configuration with that registrar.
 //
-//		- If you want to only suspend the use of the domain name, we recommend that you call the [StopLiveDomain](https://help.aliyun.com/document_detail/88329.html) operation.
+// - If you only need to disable a live streaming domain, call the [StopLiveDomain](https://help.aliyun.com/document_detail/2847799.html) operation.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DeleteLiveDomainRequest
 //
@@ -7161,11 +7243,9 @@ func (client *Client) DeleteLiveDomainMappingWithContext(ctx context.Context, re
 //
 // Description:
 //
-// Before you call this operation, make sure that the mapping between the main streaming domain and the sub-streaming domain is created. For more information about how to call an operation to create the mapping between a main streaming domain and a sub-streaming domain, see [AddLiveDomainPlayMapping](https://help.aliyun.com/document_detail/173091.html).
+// ## QPS limits
 //
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DeleteLiveDomainPlayMappingRequest
 //
@@ -7221,25 +7301,25 @@ func (client *Client) DeleteLiveDomainPlayMappingWithContext(ctx context.Context
 
 // Summary:
 //
-// Deletes the configuration of edge stream relay.
+// Deletes a live stream relay configuration.
 //
 // Description:
 //
-// You can call the DeleteLiveEdgeTransfer operation to delete the configuration of edge stream relay for a specific domain name. Ingested streams that are already relayed based on the configuration are not affected. The following table describes the scenarios in which edge stream relay takes effect or not.
+// Calling DeleteLiveEdgeTransfer only deletes the live edge relay configuration for a specific domain name. It does not affect live stream relays that are already in progress based on that configuration. The following table describes typical scenarios:
 //
-// |Scenario|Analysis|Result|
+// | Scenario        | Analysis           | Result   |
 //
-// |---|---|---|
+// | -------------- | -------------- | ------ |
 //
-// |1\\. You ingest a stream after you call the SetLiveEdgeTransfer operation to configure edge stream relay. Then, you call the DeleteLiveEdgeTransfer operation to delete the configuration.|The configuration of edge stream relay is available when you ingest the stream.|The ingested stream is not affected, and stream relay is not interrupted.|
+// | 1. You call SetLiveEdgeTransfer to configure live edge relay, start stream ingest, and then call DeleteLiveEdgeTransfer to delete the configuration during the stream.      | The live edge relay configuration exists when stream ingest starts.        | Stream ingest is not affected, and the live stream relay is not interrupted.  |
 //
-// |2\\. You call the DeleteLiveEdgeTransfer operation to delete the configuration of edge stream relay after you ingest a stream. Then, you disconnect and resume the ingested stream.|The configuration of edge stream relay is not available after you resume the ingested stream.|Edge stream relay does not take effect.|
+// | 2. You call DeleteLiveEdgeTransfer to delete the live edge relay configuration during stream ingest, stop the stream, and then restart stream ingest.       | The live edge relay configuration no longer exists when stream ingest restarts.       |   Live edge relay is not started.  |
 //
-// |3\\. You call the DeleteLiveEdgeTransfer operation before you ingest a stream.|The configuration of edge stream relay is not available.|Edge stream relay does not take effect.|
+// | 3. You start stream ingest after calling DeleteLiveEdgeTransfer. | The live edge relay configuration does not exist at this point.      |    Live edge relay is not started.  |
 //
 // ## QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this API is 100 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DeleteLiveEdgeTransferRequest
 //
@@ -7295,11 +7375,11 @@ func (client *Client) DeleteLiveEdgeTransferWithContext(ctx context.Context, req
 //
 // Description:
 //
-// This operation is application to triggered stream pulling. You can call this operation to delete a configuration of triggered stream pulling. If you set the AppName parameter to ali_all_app, configurations of triggered stream pulling for all applications under the domain name are deleted.
+// This operation supports deleting only the configurations of triggered stream pulling. If AppName is set to ali_all_app, such configurations for all applications under the domain name are deleted.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DeleteLiveLazyPullStreamInfoConfigRequest
 //
@@ -7491,13 +7571,11 @@ func (client *Client) DeleteLiveMessageGroupMessageWithContext(ctx context.Conte
 
 // Summary:
 //
-// Deletes a message that is sent to a user.
+// Deletes (recalls) a specific one-to-one chat message.
 //
 // Description:
 //
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The single-user QPS limit for this operation is 50 calls per second. Exceeding this limit will trigger throttling, which may affect your business. Call this operation appropriately.
 //
 // @param request - DeleteLiveMessageUserMessageRequest
 //
@@ -7561,15 +7639,15 @@ func (client *Client) DeleteLiveMessageUserMessageWithContext(ctx context.Contex
 
 // Summary:
 //
-// 删除直播封装配置
+// Deletes a live stream encapsulation configuration.
 //
 // Description:
 //
-// You can call this operation to delete a live stream encapsulation configuration. The deletion takes effect after you re-ingest the stream.
+// You can call this operation to delete a live stream encapsulation configuration. The change takes effect the next time you ingest the stream.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 300 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 300 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DeleteLivePackageConfigRequest
 //
@@ -7629,15 +7707,15 @@ func (client *Client) DeleteLivePackageConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Unbinds a Global Accelerator (GA) instance from an acceleration circuit.
+// Unbinds an Alibaba Cloud Global Accelerator (GA) instance from a live streaming link.
 //
 // Description:
 //
-// After you unbind a GA instance from an acceleration circuit, your stream ingest and streaming are no longer accelerated by the GA instance. The GA instance still exists. If you want to release the GA instance, delete it in the GA console.
+// After unbinding, your live stream ingest and streaming links no longer use GA for back-to-origin. The accelerator instance still exists after unbinding. To release the accelerator instance, delete it in the Global Accelerator console.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 50 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - DeleteLivePrivateLineRequest
 //
@@ -7701,15 +7779,15 @@ func (client *Client) DeleteLivePrivateLineWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Deletes a stream pulling configuration.
+// Deletes a scheduled stream pulling configuration.
 //
 // Description:
 //
-// This operation is applicable to regular stream pulling. You can call this operation to delete a configuration of regular stream pulling.
+// This operation supports deleting only the configurations of scheduled stream pulling.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DeleteLivePullStreamInfoConfigRequest
 //
@@ -7769,17 +7847,17 @@ func (client *Client) DeleteLivePullStreamInfoConfigWithContext(ctx context.Cont
 
 // Summary:
 //
-// Deletes a pulled-stream relay task.
+// Deletes a stream pulling-to-pushing task by calling DeleteLivePullToPush.
 //
 // Description:
 //
-//	  You can call this operation to delete a pulled-stream relay task.
+// - Deletes a stream pulling-to-pushing task.
 //
-//		- If you delete a running task, the task is immediately stopped and cannot be restarted.
+// - Deleting a task cleans up the task. A running task is stopped immediately and cannot be restarted.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DeleteLivePullToPushRequest
 //
@@ -7819,17 +7897,17 @@ func (client *Client) DeleteLivePullToPushWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Deletes the Logstore that is specified by a configuration of real-time log delivery.
+// Deletes a Logstore for real-time log delivery.
 //
 // Description:
 //
-//	  You can call this operation to delete the Logstore that is specified by a configuration of real-time log delivery. Make sure that all parameters meet the requirements when you call this operation.
+// - You can call this operation to delete a Logstore used for real-time log delivery. Make sure that you set the parameters correctly.
 //
-//		- You can call the [DescribeLiveDomainRealtimeLogDelivery](https://help.aliyun.com/document_detail/2848121.html) operation to query the Project, Logstore, and Region parameters.
+// - You can call the [DescribeLiveDomainRealtimeLogDelivery](https://help.aliyun.com/document_detail/2848121.html) operation to query the Project, Logstore, and Region parameters.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The rate limit for this operation is 6,000 calls per minute for each user. If you exceed the limit, API calls are throttled. This may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DeleteLiveRealTimeLogLogstoreRequest
 //
@@ -7869,17 +7947,21 @@ func (client *Client) DeleteLiveRealTimeLogLogstoreWithContext(ctx context.Conte
 
 // Summary:
 //
-// Deletes the configurations of real-time log delivery for one or more domain names.
+// Deletes a real-time log delivery configuration.
 //
 // Description:
 //
-//   - - This operation is applicable to only streaming domains. If you want to configure real-tome log delivery for an ingest domain, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12818093.nav-right.dticket.6cb216d07otFWR#/ticket/createIndex).
+// <props="china">
 //
-//   - You can call the [DescribeLiveDomainRealtimeLogDelivery](https://help.aliyun.com/document_detail/2848121.html) to query the Project, Logstore, and Region parameters.
+// - Real-time log delivery can be configured only for streaming domains. To configure real-time log delivery for ingest domains, [submit a ticket](https://workorder.console.aliyun.com/console.htm#/ticket/add?productCode=live\\&commonQuestionId=4545\\&isSmart=true\\&iatraceid=1608439120675-2a5c48de0b84805313c708\\&channel=selfservice).
 //
-// ## [](#qps-)QPS limit
+// <props="intl">Real-time log delivery can be configured only for streaming domains. To configure real-time log delivery for ingest domains, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12818093.nav-right.dticket.6cb216d07otFWR#/ticket/createIndex).
 //
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// - You can call [DescribeLiveDomainRealtimeLogDelivery](https://help.aliyun.com/document_detail/2848121.html) to query the Project, Logstore, and Region parameters.
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for this operation is 6,000 calls per minute for each user. API calls that exceed this limit are throttled, which may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - DeleteLiveRealtimeLogDeliveryRequest
 //
@@ -7983,11 +8065,11 @@ func (client *Client) DeleteLiveRecordNotifyConfigWithContext(ctx context.Contex
 //
 // Description:
 //
-// Obtain the main streaming domain, and then call this operation to delete a Live-to-VOD configuration.
+// You can call this operation to delete the live-to-VOD configuration for a specified streaming domain.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DeleteLiveRecordVodConfigRequest
 //
@@ -8051,9 +8133,9 @@ func (client *Client) DeleteLiveRecordVodConfigWithContext(ctx context.Context, 
 //
 // Description:
 //
-//	  Obtain the main streaming domain, and then call this operation to delete a video moderation configuration.
+// - Obtain the main streaming domain, and then call this operation to delete a video moderation configuration.
 //
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
+// - Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
 //
 // ## [](#qps-)QPS limit
 //
@@ -8113,11 +8195,11 @@ func (client *Client) DeleteLiveSnapshotDetectPornConfigWithContext(ctx context.
 
 // Summary:
 //
-// Deletes the configuration of snapshot callbacks.
+// Deletes the snapshot callback configuration.
 //
 // Description:
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DeleteLiveSnapshotNotifyConfigRequest
 //
@@ -8169,17 +8251,17 @@ func (client *Client) DeleteLiveSnapshotNotifyConfigWithContext(ctx context.Cont
 
 // Summary:
 //
-// Deletes domain configurations in the canary release environment.
+// You can call the DeleteLiveSpecificStagingConfig operation to delete domain name configurations in a grayscale environment.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## QPS limits
 //
-// Before you call this operation to delete a domain configuration in the canary release environment, you can call the [DescribeLiveDomainStagingConfig](https://help.aliyun.com/document_detail/297374.html) operation to obtain the configuration ID.
+// You can call this operation up to 20 times per second per account. If you exceed this limit, API calls are throttled. This may affect your business. Plan your calls accordingly. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
-// ## [](#qps-)QPS limit
+// ## Queries Per Second (QPS) limits
 //
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// You can call this operation up to 20 times per second per account. If you exceed this limit, your API calls are throttled, which may impact your business. We recommend that you plan your calls accordingly. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - DeleteLiveSpecificStagingConfigRequest
 //
@@ -8235,15 +8317,15 @@ func (client *Client) DeleteLiveSpecificStagingConfigWithContext(ctx context.Con
 
 // Summary:
 //
-// Deletes a configuration of stream-level region blocking.
+// Deletes blocking configurations for a specific live stream.
 //
 // Description:
 //
-// You can call this operation to delete a configuration of stream-level region blocking.
+// You can call this operation to delete a stream-level block configuration.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DeleteLiveStreamBlockRequest
 //
@@ -8303,11 +8385,11 @@ func (client *Client) DeleteLiveStreamBlockWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Deletes an active mixed stream.
+// Deletes an active merged stream.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DeleteLiveStreamMergeRequest
 //
@@ -8371,13 +8453,15 @@ func (client *Client) DeleteLiveStreamMergeWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// Before you call this operation, obtain the monitoring session ID from the response parameter **MonitorId*	- of the [CreateLiveStreamMonitor](https://help.aliyun.com/document_detail/2848129.html) operation.
+// Obtain the **MonitorId*	- from the response of the [CreateLiveStreamMonitor](https://help.aliyun.com/document_detail/2848129.html) operation. Then, call this operation to delete the monitoring session.
 //
-// >  You cannot delete a monitoring session that is in the started state. If you try to delete it, a 400 error is reported.
+//	Notice:
 //
-// ## [](#qps-)QPS limit
+// You cannot delete a monitoring session that is running. Attempting to do so returns a 400 error.
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// ## QPS limits
+//
+// This operation is limited to 10 queries per second (QPS) per account. Calls that exceed this limit are throttled, which can affect your business. To avoid interruptions to your business, make sure that you do not exceed this limit.
 //
 // @param request - DeleteLiveStreamMonitorRequest
 //
@@ -8429,11 +8513,11 @@ func (client *Client) DeleteLiveStreamMonitorWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Deletes live stream recordings.
+// Deletes the index files of live stream recordings.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DeleteLiveStreamRecordIndexFilesRequest
 //
@@ -8505,11 +8589,11 @@ func (client *Client) DeleteLiveStreamRecordIndexFilesWithContext(ctx context.Co
 //
 // Description:
 //
-// Standard transcoding templates, Narrowband HD™ transcoding templates, and custom transcoding templates are supported for this operation.
+// Standard, Narrowband HD™, and custom transcoding templates are supported.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DeleteLiveStreamTranscodeRequest
 //
@@ -8573,11 +8657,11 @@ func (client *Client) DeleteLiveStreamTranscodeWithContext(ctx context.Context, 
 //
 // Description:
 //
-// This interface supports deleting the watermark template with the specified TemplateId for live streaming.
+// This operation deletes a live streaming watermark template based on a specified template ID.
 //
-// ## QPS Limitation
+// ## QPS Limits
 //
-//	The per-user QPS limit for this interface is 60 times/second. Exceeding this limit will result in API throttling, which may impact your business operations. Please use it reasonably. For more information, please refer to [QPS Limitation](https://help.aliyun.com/document_detail/343507.html).
+// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DeleteLiveStreamWatermarkRequest
 //
@@ -8633,11 +8717,11 @@ func (client *Client) DeleteLiveStreamWatermarkWithContext(ctx context.Context, 
 //
 // Description:
 //
-// You can call this operation to delete a watermark rule with a specified ID.
+// This operation deletes the watermark rule based on the specified rule ID.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DeleteLiveStreamWatermarkRuleRequest
 //
@@ -8701,15 +8785,15 @@ func (client *Client) DeleteLiveStreamWatermarkRuleWithContext(ctx context.Conte
 
 // Summary:
 //
-// Deletes the callback configuration for stream ingest under an ingest domain.
+// Deletes the callback configuration of stream ingest for an ingest domain.
 //
 // Description:
 //
-// Obtain the ingest domain, and then call this operation to delete the callback configuration for stream ingest under the ingest domain.
+// After you obtain an ingest domain, you can call this operation to delete the stream ingest callback configuration.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// This operation is limited to 15 queries per second (QPS) for each user. If you exceed the limit, API calls are throttled, which can affect your business. Plan your calls accordingly.
 //
 // @param request - DeleteLiveStreamsNotifyUrlConfigRequest
 //
@@ -8761,13 +8845,13 @@ func (client *Client) DeleteLiveStreamsNotifyUrlConfigWithContext(ctx context.Co
 
 // Summary:
 //
-// Deletes an interactive messaging application.
+// Call DeleteMessageApp to delete an interactive message application.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The QPS limit for this API is 100 queries per second (QPS) per user. API calls that exceed this limit are throttled, which may affect your business. You can call this API at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - DeleteMessageAppRequest
 //
@@ -8815,11 +8899,11 @@ func (client *Client) DeleteMessageAppWithContext(ctx context.Context, request *
 //
 // Description:
 //
-// You can call the [CreateMixStream](https://help.aliyun.com/document_detail/2848087.html) operation to create a stream mixing task and then call this operation to delete the stream mixing task. If you no longer need a mixed stream, be sure to delete it. Mixed streams that are not deleted are continuously ingested.
+// Before you call this operation, you must create a stream mixing task by calling the [CreateMixStream](https://help.aliyun.com/document_detail/2848087.html) operation. If you no longer need the mixed stream, you must delete the task. Otherwise, the stream will be continuously ingested.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 for each user. API calls that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - DeleteMixStreamRequest
 //
@@ -8883,15 +8967,15 @@ func (client *Client) DeleteMixStreamWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Deletes an episode list.
+// Deletes an entire playlist.
 //
 // Description:
 //
-// Before you call this operation to delete an episode list, make sure that you have called the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation to create the episode list.
+// After you add items to a playlist by calling the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation, you can call this operation to delete the entire playlist.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// Each user can make up to 10 queries per second (QPS). If you exceed this limit, API calls are throttled, which can affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DeletePlaylistRequest
 //
@@ -8943,15 +9027,15 @@ func (client *Client) DeletePlaylistWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Removes episodes from an episode list.
+// Deletes items from a playlist.
 //
 // Description:
 //
-// Before you call this operation to remove an episode, make sure that you have called the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation to add the episode.
+// You can call the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation to add items to a playlist. Then, you can call this operation to delete the items.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 calls per second per user. If you exceed this limit, your API calls are throttled, which may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DeletePlaylistItemsRequest
 //
@@ -9007,11 +9091,11 @@ func (client *Client) DeletePlaylistItemsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes a live subtitle task.
+// Call `DeleteRtcAsrTask` to delete a real-time speech-to-text or translation task.
 //
 // Description:
 //
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The call frequency for this API is limited to 20 queries per second (QPS) per user. If you exceed this limit, your API calls are throttled. This may impact your business. Plan your calls accordingly.
 //
 // @param request - DeleteRtcAsrTaskRequest
 //
@@ -9067,9 +9151,9 @@ func (client *Client) DeleteRtcAsrTaskWithContext(ctx context.Context, request *
 //
 // Description:
 //
-//	  You can call this operation to delete a subscription to mixed-stream relay events.
+// - You can call this operation to delete a subscription to mixed-stream relay events.
 //
-//		- Before you call this operation, make sure that you have called the CreateRtcMPUEventSub operation to create the subscription.
+// - Before you call this operation, make sure that you have called the CreateRtcMPUEventSub operation to create the subscription.
 //
 // ## [](#qps-)QPS limit
 //
@@ -9117,15 +9201,15 @@ func (client *Client) DeleteRtcMPUEventSubWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Deletes the configuration of authentication for snapshot callbacks.
+// Deletes the authentication configuration for snapshot callbacks.
 //
 // Description:
 //
-// You can call this operation to delete the configuration of authentication for snapshot callbacks for a main streaming domain. For an ongoing live stream, the deletion takes effect after you re-ingest the stream. Snapshot callbacks for the stream are no longer authenticated.
+// After the deletion, callbacks for new streams will no longer be authenticated.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DeleteSnapshotCallbackAuthRequest
 //
@@ -9177,15 +9261,15 @@ func (client *Client) DeleteSnapshotCallbackAuthWithContext(ctx context.Context,
 
 // Summary:
 //
-// Deletes snapshots.
+// Deletes specified snapshot files.
 //
 // Description:
 //
-// You can delete only snapshots that were captured in the last year.
+// This operation supports deleting snapshot files generated within a year.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DeleteSnapshotFilesRequest
 //
@@ -9257,11 +9341,11 @@ func (client *Client) DeleteSnapshotFilesWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// You can call this operation to delete a layout in a virtual studio. You can delete only one layout in a call.
+// You can call this operation to delete a layout from a production studio. You can delete only one layout in each call.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Plan your calls accordingly.
 //
 // @param request - DeleteStudioLayoutRequest
 //
@@ -9317,15 +9401,15 @@ func (client *Client) DeleteStudioLayoutWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries scheduled tasks that are used to start and stop playing an episode list at specified points in time.
+// Queries scheduled tasks for automatic start and stop.
 //
 // Description:
 //
-// You can call this operation to query scheduled tasks that are used to start and stop playing an episode list at specified points in time. Make sure that the parameter settings meet the requirements.
+// This operation queries information about scheduled tasks for automatic start and stop. When you call this operation, ensure that the parameters meet the requirements.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// A single user can make a maximum of 10 queries per second (QPS). If you exceed this limit, API calls are throttled. This may affect your business. Therefore, call this operation at a reasonable rate.
 //
 // @param request - DescribeAutoShowListTasksRequest
 //
@@ -9377,15 +9461,15 @@ func (client *Client) DescribeAutoShowListTasksWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the channels of a production studio.
+// This operation queries the channels of a production studio.
 //
 // Description:
 //
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and then call this operation to query the channels of the production studio.
+// After you create a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, you can call this operation to query its channels.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// This operation is limited to 15 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which can affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DescribeCasterChannelsRequest
 //
@@ -9437,15 +9521,15 @@ func (client *Client) DescribeCasterChannelsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the components of a production studio.
+// Queries the list of components for a production studio.
 //
 // Description:
 //
-// You can call the [AddCasterComponent](https://help.aliyun.com/document_detail/2848030.html) operation to add components to a production studio and then call this operation to query the components of the production studio.
+// Call the [AddCasterComponent](https://help.aliyun.com/document_detail/2848030.html) operation to add components to a production studio. You can then call this operation to query the list of components.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 15. If you exceed the limit, API calls are throttled. This may affect your business, so ensure that you call this operation within the limit.
 //
 // @param request - DescribeCasterComponentsRequest
 //
@@ -9501,15 +9585,15 @@ func (client *Client) DescribeCasterComponentsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the configurations of a production studio.
+// Queries the configuration information of a production studio.
 //
 // Description:
 //
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and then call this operation to query the configurations of the production studio.
+// Create a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, and then call this operation to query the configuration information of the production studio.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 15 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeCasterConfigRequest
 //
@@ -9561,15 +9645,15 @@ func (client *Client) DescribeCasterConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries a specified layout or all layouts of a production studio.
+// Queries the layouts of a production studio.
 //
 // Description:
 //
-// You can call this operation to query layouts of a production studio. If no layout ID is specified, the operation returns all layouts of the production studio.
+// You can call this API operation to query the layouts of a production studio. If you do not specify a layout ID, all layouts of the studio are returned.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this API operation is 15 calls per second for each user. If you exceed this limit, API calls are throttled. This can affect your business, so you should call this API operation at a reasonable rate.
 //
 // @param request - DescribeCasterLayoutsRequest
 //
@@ -9625,15 +9709,15 @@ func (client *Client) DescribeCasterLayoutsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the information about the episode list for carousel playback in a production studio.
+// Queries the program list of a production studio.
 //
 // Description:
 //
-// You can call this operation to query episodes in the episode list for carousel playback. The supported types of episodes include video resource and component.
+// You can call this operation to query the program list of a production studio. This operation supports video source and component nodes.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 4 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 4 calls per second. If the limit is exceeded, API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeCasterProgramRequest
 //
@@ -9713,17 +9797,15 @@ func (client *Client) DescribeCasterProgramWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the audio configurations of a scene.
+// Queries the audio configuration of a scenario.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// Before you call this operation, you must create a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation.
 //
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/69338.html) operation to create a production studio and then call this operation to query the audio configurations of a scene in the production studio.
+// ## QPS limit
 //
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The queries per second (QPS) limit for a single user is 15 calls per second. API calls that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeCasterSceneAudioRequest
 //
@@ -9779,15 +9861,15 @@ func (client *Client) DescribeCasterSceneAudioWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the scenes of a production studio.
+// Queries the list of scenes in a production studio.
 //
 // Description:
 //
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/69338.html) operation to create a production studio and then call this operation to query the scenes of the production studio.
+// Create a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, and then call this operation to query the list of scenes in the production studio.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The single-user QPS limit for this operation is 15 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - DescribeCasterScenesRequest
 //
@@ -9843,15 +9925,15 @@ func (client *Client) DescribeCasterScenesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the streaming URLs of a production studio.
+// Queries the stream URL of a production studio.
 //
 // Description:
 //
-// You must create a production studio before calling this operation to query the information.
+// Before you call this operation, call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio. If a production studio has not been created, the InvalidScene.NotFound error is returned.
 //
 // ## QPS limit
 //
-// A single user can perform a maximum of 15 queries per second (QPS). Throttling is triggered when the number of calls per second exceeds the QPS limit. The throttling may affect your business. Thus, we recommend that you observe the QPS limit on this operation. For more information about what a single user means and the QPS details, see [QPS limit on an API operation in ApsaraVideo Live](https://www.alibabacloud.com/help/en/apsaravideo-live/latest/qps-limit-on-an-api-operation-in-apsaravideo-live#topic-2136805).
+// The queries per second (QPS) limit for this operation is 5 for each user. Calls that exceed this limit are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeCasterStreamUrlRequest
 //
@@ -9903,15 +9985,15 @@ func (client *Client) DescribeCasterStreamUrlWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the input sources of a production studio.
+// Queries the video sources of a production studio.
 //
 // Description:
 //
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and then call this operation to query the input sources of the production studio.
+// Call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio. You can then call this operation to query the video sources of the production studio.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// This operation is limited to 15 queries per second (QPS) for each user. If you exceed this limit, your API calls are throttled. Throttling may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DescribeCasterVideoResourcesRequest
 //
@@ -9967,11 +10049,15 @@ func (client *Client) DescribeCasterVideoResourcesWithContext(ctx context.Contex
 //
 // Description:
 //
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848012.html) operation to create a production studio and then call this operation to query the production studio list. The status of a production studio can be idle or streaming.
+// Create a production studio by calling the CreateCaster operation, and then call this operation to query the list of production studios. A production studio can be in the idle or streaming state.
 //
-// ## [](#qps-)QPS limit
+// >
 //
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// > - The account that calls this operation must have [ApsaraVideo Live activated](https://live.console.aliyun.com/#/overview).
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 15 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - DescribeCastersRequest
 //
@@ -10191,31 +10277,31 @@ func (client *Client) DescribeChannelUsersWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the resource usage data of specific domain names in a specified billable region.
+// Queries the usage data of a domain name in a specific billing region.
 //
 // Description:
 //
-// You can query the resource usage data of up to 100 domain names at a time. Separate multiple domain names with commas (,). If you do not specify the DomainName parameter, the resource usage data of all domain names within your Alibaba Cloud account is returned.
+// - This operation supports batch domain name queries. Separate multiple domain names with commas (,). You can query up to 100 domain names at a time. If the DomainName parameter is empty, data for all domain names under the account is returned.
 //
-//   - The resource usage data includes network traffic that is measured in bytes, bandwidth that is measured in bit/s, and the number of requests.
+// - Usage data includes three types: traffic, bandwidth, and requests, measured in bytes, bit/s, and count respectively.
 //
-//   - If you do not specify the Interval parameter, you can query the resource usage data in the last 12 months that spans a period of up to 31 days per call. If you specify a time range of 1 to 3 days in a call, the time interval between the entries that are returned is 1 hour. If you specify a time range of more than 3 days in a call, the time interval between the entries that are returned is 1 day.
+// - If you do not specify the Interval parameter, you can query data for up to the last year, and the maximum time span per query is 31 days. For a query period of 1 to 3 days, data is returned at hourly granularity. For a query period longer than 3 days, data is returned at daily granularity.
 //
-//   - The following table describes the maximum time range per query, the time period within which historical data is available, and the data delay if you specify the Interval parameter.
+// - When you specify the Interval parameter, the supported maximum time span per query, the historical data range, and the data delay are as follows:
 //
-// |Time granularity|Maximum time range per query|Historical data available|Data delay|
+// | Time granularity | Maximum time span per query | Historical data range | Data delay |
 //
-// |---|---|---|---|
+// | -------------- | -------------- | ------ | ------ |
 //
-// |5 minutes|3 days|93 days|15 minutes|
+// | 5 minutes | 3 days | 93 days | 15 minutes |
 //
-// |1 hour|31 days|186 days|4 hours|
+// | 1 hour | 31 days | 186 days | 4 hours |
 //
-// |1 day|90 days|366 days|04:00 on the next day|
+// | 1 day | 90 days | 366 days | 4:00 AM the next day |
 //
 // ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The QPS limit for a single user on this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeDomainUsageDataRequest
 //
@@ -10295,15 +10381,15 @@ func (client *Client) DescribeDomainUsageDataWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Obtains domain integrity.
+// Obtains the integrity of a domain name.
 //
 // Description:
 //
-// You can call this operation to obtain domain integrity.
+// You can call this operation to obtain the integrity of a domain name.
 //
-// ## [](#qps-)QPS limits
+// ## QPS limit
 //
-// You can call this API operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If you exceed this limit, API calls are throttled, which can affect your business. We recommend that you call this operation at a reasonable rate. For more information, see [QPS limit](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - DescribeDomainWithIntegrityRequest
 //
@@ -10343,15 +10429,7 @@ func (client *Client) DescribeDomainWithIntegrityWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the information about HTTP Live Streaming (HLS) streams, such as the number of online users and bandwidth.
-//
-// Description:
-//
-// You can call this operation to query the information about HTTP Live Streaming (HLS) streams, such as the number of online users and bandwidth.
-//
-//   - The number of online users for an HLS stream is counted based on the universally unique identifiers (UUIDs) of users that are placed after the M3U8 URL.
-//
-//   - You can query the data of up to 100 domain names in a single request. If the DomainName parameter is left empty, the data of all domain names under the account is queried.
+// 查询HLS直播流的实时在线人数和带宽信息
 //
 // @param request - DescribeHlsLiveStreamRealTimeBpsDataRequest
 //
@@ -10391,17 +10469,19 @@ func (client *Client) DescribeHlsLiveStreamRealTimeBpsDataWithContext(ctx contex
 
 // Summary:
 //
-// Queries subtitle rules.
+// Queries a list of caption rules.
 //
 // Description:
 //
-// You can call this operation to query subtitle rules. Make sure that the parameter settings meet the requirements.
+// This operation queries a list of caption rules. Before you call this operation, ensure that the parameters are correctly configured.
 //
-// >  The live subtitles feature is in invitational preview. You can add up to 300 subtitle templates.
+//	Notice:
 //
-// ## [](#qps-)QPS limit
+// The real-time caption feature is in invitational preview. Each user can add a maximum of 300 caption templates.
 //
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// ## QPS limit
+//
+// The queries per second (QPS) limit for a single user is 60. Exceeding this limit results in API call throttling, which can affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DescribeLiveAIProduceRulesRequest
 //
@@ -10473,7 +10553,7 @@ func (client *Client) DescribeLiveAIProduceRulesWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the virtual studio templates within your Alibaba Cloud account.
+// Queries the virtual studio templates in your account.
 //
 // @param request - DescribeLiveAIStudioRequest
 //
@@ -10537,17 +10617,19 @@ func (client *Client) DescribeLiveAIStudioWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries subtitle templates.
+// You can call the DescribeLiveAISubtitle operation to query a list of caption templates.
 //
 // Description:
 //
-// This interface supports querying the list of subtitle template information with specified pagination parameters. Ensure that the parameter settings meet the requirements when calling.
+// This operation supports paging. You can specify paging parameters to query a list of caption templates. When you call this operation, ensure that the parameter settings are valid.
 //
-//	Notice: The real-time subtitle function is currently in the beta testing phase, and each user can add up to 300 subtitle templates.
+//	Notice:
 //
-// ## QPS Limit
+// The real-time captioning feature is in invitational preview. Each user can add a maximum of 300 caption templates.
 //
-// The QPS limit for this interface per user is 60 times/second. Exceeding this limit will result in API calls being throttled, which may impact your business operations. Please use it reasonably. For more information, refer to [QPS Limitation](https://help.aliyun.com/document_detail/343507.html).
+// ## QPS limits
+//
+// The queries per second (QPS) limit for a single user is 60. If the number of calls per second exceeds the limit, throttling is triggered, which may affect your business. We recommend that you take note of the limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - DescribeLiveAISubtitleRequest
 //
@@ -10615,17 +10697,17 @@ func (client *Client) DescribeLiveAISubtitleWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries audio moderation configurations.
+// Queries the audio moderation configurations.
 //
 // Description:
 //
-//	  Obtain the main streaming domain, and then call this operation to query audio moderation configurations.
+// - You can call this API operation to query the audio moderation configurations for a specific streaming domain.
 //
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
+// - Automated review is supported only in some live centers. For supported regions, see [Service regions](https://help.aliyun.com/document_detail/193730.html).
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLiveAudioAuditConfigRequest
 //
@@ -10685,17 +10767,17 @@ func (client *Client) DescribeLiveAudioAuditConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the configuration of callbacks for audio moderation results.
+// Queries the callback configuration for audio moderation.
 //
 // Description:
 //
-//	  Obtain the main streaming domain, and then call this operation to query the configuration of callbacks for audio moderation results.
+// - You can call this operation to query the callback configuration for audio moderation for a specified streaming domain.
 //
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
+// - Automated review is available only in some live centers. For supported regions, see [Service regions](https://help.aliyun.com/document_detail/193730.html).
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLiveAudioAuditNotifyConfigRequest
 //
@@ -10895,11 +10977,11 @@ func (client *Client) DescribeLiveCenterStreamRateDataWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the information about a configuration of live center stream relay.
+// Queries the live center stream relay configuration by calling DescribeLiveCenterTransfer.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user on this operation is 100. Requests that exceed this limit are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeLiveCenterTransferRequest
 //
@@ -10967,11 +11049,11 @@ func (client *Client) DescribeLiveCenterTransferWithContext(ctx context.Context,
 //
 // Description:
 //
-// You can obtain the certificate name on the [Certificates](https://help.aliyun.com/document_detail/2584962.html) page of the ApsaraVideo Live console and then call this operation to query the certificate details.
+// Before you call this operation, get the certificate name from the [Certificates](https://help.aliyun.com/document_detail/2584962.html) page in the ApsaraVideo Live console.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [](t2136805.xdita#).
 //
 // @param request - DescribeLiveCertificateDetailRequest
 //
@@ -11083,13 +11165,11 @@ func (client *Client) DescribeLiveCertificateListWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the information about a stream delay configuration.
+// Calls DescribeLiveDelayConfig to query the stream delay configuration.
 //
 // Description:
 //
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The number of queries per second (QPS) for this operation is limited to 60 per user. Calls that exceed this limit are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeLiveDelayConfigRequest
 //
@@ -11149,21 +11229,21 @@ func (client *Client) DescribeLiveDelayConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the stream delay usage data.
+// Calls DescribeLiveDelayedStreamingUsage to query delayed streaming duration usage data.
 //
 // Description:
 //
-//	  You can call this operation to query your stream delay usage data. The default time granularity is 1 hour.
+// - Queries user delayed streaming service usage data. The default granularity is 1 hour.
 //
-//		- The maximum time range for a query is 31 days.
+// - Maximum query time span: 31 days.
 //
-//		- The minimum time granularity for a query is 1 hour.
+// - Minimum query time granularity: 1 hour.
 //
-//		- You can query the data in the last 31 days.
+// - Maximum query time range: 31 days.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this API is 5 queries per second. If the limit is exceeded, API calls are throttled, which may affect your business. We recommend that you call this API at a reasonable frequency.
 //
 // @param request - DescribeLiveDelayedStreamingUsageRequest
 //
@@ -11243,9 +11323,9 @@ func (client *Client) DescribeLiveDelayedStreamingUsageWithContext(ctx context.C
 //
 // Description:
 //
-//	  Obtain the main streaming domain, and then call this operation to query the configuration of callbacks for video moderation results.
+// - Obtain the main streaming domain, and then call this operation to query the configuration of callbacks for video moderation results.
 //
-//		- Only some live centers support the automated review feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
+// - Only some live centers support the automated review feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
 //
 // ## QPS limit
 //
@@ -11301,19 +11381,19 @@ func (client *Client) DescribeLiveDetectNotifyConfigWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the usage data of content moderation.
+// You can call the DescribeLiveDetectPornData operation to query usage data for live stream moderation.
 //
 // Description:
 //
-//	  The minimum data granularity is 5 minutes. If you do not specify the `StartTime` parameter, data in the last 24 hours is queried.
+// - The minimum data granularity is 5 minutes. If the `StartTime` parameter is empty, the service queries data from the last 24 hours by default.
 //
-//		- You can query data in the last 90 days.
+// - You can query data from the last 90 days.
 //
-//		- You can call this operation to query the bandwidth at each interval.
+// - You can query network bandwidth data for each time interval.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10. If you exceed this limit, API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeLiveDetectPornDataRequest
 //
@@ -11397,23 +11477,23 @@ func (client *Client) DescribeLiveDetectPornDataWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the bandwidth data for one or more streaming domains.
+// Queries the network bandwidth monitoring data of a live streaming domain.
 //
 // Description:
 //
-//	  You can specify both the StartTime and EndTime parameters to query the data in the specified period of time. If you do not specify the StartTime and EndTime parameters, the data of the last hour is queried by default.
+// - If you do not specify StartTime or EndTime, data of the last 24 hours is returned by default. You can also query data for a specific time range by specifying both StartTime and EndTime.
 //
-//		- If you specify only the StartTime parameter but not the EndTime parameter, the data of the hour following the specified start time is queried.
+// - If you specify only StartTime without EndTime, data within 1 hour from StartTime is returned.
 //
-//		- If you specify only the EndTime parameter but not the StartTime parameter, the data of the hour preceding the specified end time is queried.
+// - If you specify only EndTime without StartTime, data within 1 hour before EndTime is returned.
 //
-//		- You can query the data in the last 90 days.
+// - You can query data of up to the last 90 days.
 //
-//		- This operation is used to monitor data. The data returned by this operation cannot be used as a reference to calculate resource usage for billing.
+// - This is a monitoring data API. The data collection and processing method differs from that used for billing. Do not use this API to calculate usage for billing reconciliation.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this API is 100 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this API at a reasonable frequency.
 //
 // @param request - DescribeLiveDomainBpsDataRequest
 //
@@ -11485,23 +11565,27 @@ func (client *Client) DescribeLiveDomainBpsDataWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the bandwidth and traffic data by protocol for one or more domain names.
+// Queries bandwidth and traffic data of a domain name by protocol by calling DescribeLiveDomainBpsDataByLayer.
 //
 // Description:
 //
-// You can query data in the last 90 days. You can specify up to 500 domain names. Separate multiple domain names with commas (,). The data of multiple domain names is aggregated and returned. The following section describes the time granularities of the data entries returned depending on the time range specified by the **StartTime*	- and **EndTime*	- parameters:
+// The storage duration of data is up to 90 days.
 //
-//   - If the time range is smaller than or equal to 3 days, the time granularity is 5 minutes.
+// You can query data for multiple domain names at a time. Separate multiple domain names with commas (,). A maximum of 500 domain names are supported. Data for multiple domain names is returned as aggregation results.
 //
-//   - If the time range is larger than 3 days but smaller than or equal to 31 days, the time granularity is 1 hour.
+// The time granularity of returned data varies based on the time range specified by **StartTime*	- and **EndTime**:
 //
-//   - If the time range is larger than 31 days, the time granularity is 1 day.
+// - Time range ≤ 3 days: The time granularity is 5 minutes.
 //
-// >  If neither the **StartTime*	- nor the **EndTime*	- parameter is specified, the data of the last 24 hours is returned.
+// - 3 days < time range ≤ 31 days: The time granularity is 1 hour.
 //
-// ## [](#qps-)QPS limit
+// - Time range > 31 days: The time granularity is 1 day.
 //
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// >If neither **StartTime*	- nor **EndTime*	- is specified, data for the last 24 hours is returned by default.
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 20 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Invoke this operation appropriately.
 //
 // @param request - DescribeLiveDomainBpsDataByLayerRequest
 //
@@ -11577,15 +11661,15 @@ func (client *Client) DescribeLiveDomainBpsDataByLayerWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the accelerated domain names that match a certificate.
+// Retrieves accelerated domain names based on certificate information.
 //
 // Description:
 //
-// You can call this operation to query the accelerated domain names that match a certificate.
+// Calls this operation to query accelerated domain names that match the specified certificate information.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The QPS limit for a single user is 100 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable frequency.
 //
 // @param request - DescribeLiveDomainByCertificateRequest
 //
@@ -11641,15 +11725,15 @@ func (client *Client) DescribeLiveDomainByCertificateWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries certificate information about a domain name.
+// Retrieves the certificate information for a specified domain name.
 //
 // Description:
 //
-// Obtain a domain name, and then call this operation to query certificate information about the domain name.
+// You must specify a domain name whose certificate information you want to query.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLiveDomainCertificateInfoRequest
 //
@@ -11765,17 +11849,15 @@ func (client *Client) DescribeLiveDomainConfigsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the basic information about a domain name.
+// Queries the basic configuration information of a specified ingest domain or streaming domain.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// This operation queries the basic configuration information of a specified ingest domain or streaming domain. The configuration of a newly added domain name takes several minutes to complete. You can query it after the configuration is complete.
 //
-// You can call this operation to query the basic information about an ingest domain or a streaming domain. If you want to query a newly added domain name, wait a few minutes until the configuration of the domain name is completed in ApsaraVideo Live.
+// ## QPS limit
 //
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLiveDomainDetailRequest
 //
@@ -11895,17 +11977,17 @@ func (client *Client) DescribeLiveDomainEdgeLogWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the frame rates and bitrates of all live streams under an ingest domain.
+// Queries the frame rate and bitrate data of streams for an ingest domain.
 //
 // Description:
 //
-// You can call this operation to query the real-time bitrates and frame rates of live streams, which helps you evaluate the stream ingest quality. A delay exists in data collection and statistics. We recommend that you query the data of more than 5 minutes ago.
+// You can call this API to query the real-time bitrate and frame rate of a stream. This helps you monitor the quality of stream ingest. Data collection and statistics are subject to a delay. Query data that is at least 5 minutes old.
 //
-// >  Use this operation to replace the deprecated DescribeLiveStreamsFrameRateAndBitRateData operation.
+// > Use this API to replace the deprecated DescribeLiveStreamsFrameRateAndBitRateData API.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLiveDomainFrameRateAndBitRateDataRequest
 //
@@ -11965,11 +12047,11 @@ func (client *Client) DescribeLiveDomainFrameRateAndBitRateDataWithContext(ctx c
 //
 // Description:
 //
-// This operation applies only to main streaming domains.
+// This operation supports only main streaming domains.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. For more information, see [QPS limit](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - DescribeLiveDomainLimitRequest
 //
@@ -12021,19 +12103,19 @@ func (client *Client) DescribeLiveDomainLimitWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the address from which you can download the raw access logs of a domain name.
+// Retrieves the download URLs of raw access logs for a specified domain name in ApsaraVideo Live.
 //
 // Description:
 //
-//	  You can call this operation to query the offline logs of a single domain name.
+// - Each API call supports querying offline logs for only a single domain name.
 //
-//		- The StartTime and EndTime parameters are optional. You can specify both the parameters to query logs that are generated within the specified time period.
+// - The optional parameters StartTime and EndTime must be specified together. After you specify the start time and end time, logs within the specified time range are queried.
 //
-//		- If you do not specify the StartTime and EndTime parameters, logs that are generated in the last 24 hours are queried by default.
+// - If you do not specify StartTime and EndTime, log data from the past 24 hours is returned by default.
 //
 // ## QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The single-user QPS limit for this operation is 100 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeLiveDomainLogRequest
 //
@@ -12169,15 +12251,15 @@ func (client *Client) DescribeLiveDomainLogExTtlWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the mappings of an ingest domain, a main streaming domain, or a sub-streaming domain.
+// Retrieves the mapping between ingest domains, main streaming domains, and sub-streaming domains.
 //
 // Description:
 //
-// Obtain the ingest domain, main streaming domain, or sub-streaming domain, and then call this operation to query the mappings of the domain name.
+// Before you call this operation, identify the ingest or streaming domain that you want to query.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 500 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// You can call this operation up to 500 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLiveDomainMappingRequest
 //
@@ -12217,21 +12299,21 @@ func (client *Client) DescribeLiveDomainMappingWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the live monitoring usage data for one or more domain names.
+// Queries the monitoring usage data of a domain name by calling DescribeLiveDomainMonitoringUsageData.
 //
 // Description:
 //
-//	  You can specify one or more domain names. Separate multiple domain names with commas (,).
+// - You can query multiple domain names at a time. Separate multiple domain names with commas (,).
 //
-//		- You can query data in the last 90 days.
+// - You can query data of up to the last 90 days.
 //
-//		- The data is queried by hour or day.
+// - The time granularity for querying data is hour or day.
 //
-//		- The maximum time range for a query is 31 days.
+// - The maximum query time span is 31 days.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The QPS limit for a single user on this operation is 20 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeLiveDomainMonitoringUsageDataRequest
 //
@@ -12347,17 +12429,17 @@ func (client *Client) DescribeLiveDomainMultiStreamConfigWithContext(ctx context
 
 // Summary:
 //
-// Queries the number of online users at a specified point in time for all live streams under a specified domain name.
+// Retrieves the number of online viewers for all live streams on a specified domain.
 //
 // Description:
 //
-// You can call this operation to collect statistics on the number of online users for only Flash Video (FLV), Real-Time Streaming (RTS), and Real-Time Messaging Protocol (RTMP) streams, but not HTTP Live Streaming (HLS) streams. A delay exists in data collection and statistics. We recommend that you query the data of more than 5 minutes ago.
+// This API only supports viewer counts for FLV, RTS, and RTMP streams. HLS streams are not supported. The data collection has a delay. For accuracy, query for data that is at least 5 minutes old.
 //
-// >  Use this operation to replace the deprecated DescribeLiveStreamOnlineUserNum operation.
+// > This API replaces the deprecated `DescribeLiveStreamOnlineUserNum` endpoint.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 200 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 200 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLiveDomainOnlineUserNumRequest
 //
@@ -12413,19 +12495,19 @@ func (client *Client) DescribeLiveDomainOnlineUserNumWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the HTTP status codes that are returned within a specified period of time under an ingest domain.
+// Queries the stream ingest status codes for an ingest domain within a specified time range.
 //
 // Description:
 //
-//	  This operation is used to monitor data. The returned data cannot be used as a reference to calculate resource usage for billing.
+// - This operation is a monitoring data API. The data collection and processing method differs from billing and cannot be used to calculate usage for reconciliation purposes.
 //
-//		- You can query data within the previous 90 days.
+// - You can query data from the last 90 days.
 //
-//		- The data is delayed for 3 to 5 minutes.
+// - Data is delayed by 3 to 5 minutes.
 //
-// ## [](#qps-)QPS limits
+// ## QPS limit
 //
-// You can call this API operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeLiveDomainPublishErrorCodeRequest
 //
@@ -12489,21 +12571,21 @@ func (client *Client) DescribeLiveDomainPublishErrorCodeWithContext(ctx context.
 
 // Summary:
 //
-// Queries the bandwidth data for one or more ingest domains.
+// Queries the network bandwidth monitoring data for stream ingest on an ingest domain by calling DescribeLiveDomainPushBpsData.
 //
 // Description:
 //
-//	  The bandwidth unit is bit/s.
+// - The bandwidth data is measured in bit/s.
 //
-//		- You can specify multiple domain names by separating them with commas (,).
+// - Batch domain name queries are supported. Separate multiple domain names with commas (,).
 //
-//		- If you do not specify the StartTime or EndTime parameter, the data of the last 24 hours is queried. You can specify both the StartTime and EndTime parameters to query the data of a specific time range.
+// - If you do not specify StartTime or EndTime, data from the last 24 hours is returned by default. You can also query data for a specific time range by specifying both StartTime and EndTime.
 //
-//		- You can query the data in the last 90 days.
+// - You can query data from the last 90 days.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 100 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeLiveDomainPushBpsDataRequest
 //
@@ -12575,21 +12657,21 @@ func (client *Client) DescribeLiveDomainPushBpsDataWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the network traffic data for one or more ingest domains.
+// Queries the push traffic monitoring data of an ingest domain by calling DescribeLiveDomainPushTrafficData.
 //
 // Description:
 //
-//	  The traffic unit is bytes.
+// - The unit of the traffic monitoring data is bytes.
 //
-//		- You can specify multiple domain names by separating them with commas (,).
+// - Batch domain name queries are supported. Separate multiple domain names with commas (,).
 //
-//		- If you do not specify the StartTime or EndTime parameter, the data of the last 24 hours is queried. You can specify both the StartTime and EndTime parameters to query the data of a specific time range.
+// - If you do not specify StartTime or EndTime, data of the last 24 hours is returned by default. You can also query data for a specific time range by specifying both StartTime and EndTime.
 //
-//		- You can query the data in the last 90 days.
+// - You can query data of the last 90 days.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The QPS limit for a single user on this operation is 100 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as appropriate.
 //
 // @param request - DescribeLiveDomainPushTrafficDataRequest
 //
@@ -12661,21 +12743,21 @@ func (client *Client) DescribeLiveDomainPushTrafficDataWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the data of page views (PVs) and unique visitors (UVs) of a streaming domain.
+// Queries the page view (PV) and unique visitor (UV) data for a specified streaming domain.
 //
 // Description:
 //
-//	  You can call this operation to query the geographical distribution of viewers, the visitor ranking of a streaming domain, and the number of independent requests from IP addresses under a streaming domain within a specified time period.
+// - You can call this operation to view the geographic distribution of your video viewers, check access rankings for your accelerated domain names, and count the number of unique IP addresses that send requests to the domain name within a specific period.
 //
-//		- If you do not specify the StartTime or EndTime parameter, the data of the last 24 hours is queried. You can specify both the StartTime and EndTime parameters to query the data of a specific time range.
+// - If you do not specify the StartTime and EndTime parameters, data from the last 24 hours is queried by default. You can also query data for a specified time range.
 //
-//		- You can specify only one streaming domain in each request.
+// - You can query only one domain name at a time.
 //
-//		- You can query the data in the last 90 days.
+// - You can query data from the last 90 days.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 100. If you exceed this limit, API calls are throttled. This may affect your business. We recommend that you call this operation at a reasonable frequency.
 //
 // @param request - DescribeLiveDomainPvUvDataRequest
 //
@@ -12735,21 +12817,21 @@ func (client *Client) DescribeLiveDomainPvUvDataWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the bandwidth data that is collected every minute for one or more domain names.
+// Call the DescribeLiveDomainRealTimeBpsData operation to retrieve bandwidth data for a domain name at a 1-minute granularity.
 //
 // Description:
 //
-//	  You can call this operation to query the bandwidth usage of one or more specified domain names.
+// - You can call this operation to query the traffic and bandwidth usage of a specified domain name.
 //
-//		- You can query data in the last seven days. The time range that is specified by the StartTime and EndTime parameters cannot exceed 24 hours for a query.
+// - You can query data from the last 7 days. The time range of a single query cannot exceed 24 hours.
 //
-//		- If you specify neither the StartTime parameter nor the EndTime parameter, the data of the last hour is returned.
+// - If you do not specify StartTime and EndTime, data for the last hour is returned by default.
 //
-//		- This operation is used to monitor data. The data returned by this operation cannot be used as a reference to calculate resource usage for billing.
+// - This operation provides monitoring data. The data collection and processing methods are different from those used for billing. You cannot use the data from this operation for billing reconciliation.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10. If you exceed this limit, your API calls are throttled. This may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DescribeLiveDomainRealTimeBpsDataRequest
 //
@@ -12789,27 +12871,27 @@ func (client *Client) DescribeLiveDomainRealTimeBpsDataWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the proportions of HTTP status codes returned for one or more domain names. Data is collected every minute.
+// Retrieves the proportions of HTTP status codes for an accelerated domain name at a 1-minute granularity.
 //
 // Description:
 //
-// The following table describes the time granularities supported by this operation.
+// The following table describes the data timestamp granularity supported by this operation:
 //
-// |Time granularity|Maximum time range per query|Historical data available|Data delay|
+// |Time granularity|Maximum time range per query|Historical data available|Data latency|
 //
-// |---|---|---|---|
+// |-----|------|-------|-------|
 //
 // |1 minute|1 hour|7 days|5 minutes|
 //
 // |5 minutes|3 days|93 days|15 minutes|
 //
-// |1 hour|31 days|186 days|Usually 4 hours|
+// |1 hour|31 days|186 days|Typically 4 hours|
 //
 // |1 day|Unlimited|366 days|After 04:00 on the next day|
 //
 // ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Invoke this operation as needed.
 //
 // @param request - DescribeLiveDomainRealTimeHttpCodeDataRequest
 //
@@ -12877,21 +12959,21 @@ func (client *Client) DescribeLiveDomainRealTimeHttpCodeDataWithContext(ctx cont
 
 // Summary:
 //
-// Queries the network traffic data that is collected in real time for one or more domain names.
+// Queries real-time traffic monitoring data for live streaming domain names.
 //
 // Description:
 //
-//	  You can call this operation to query the real-time traffic in a region for an Internet service provider (ISP) within a specified period of time under one or more streaming domains.
+// - Call this operation to query the real-time traffic and bandwidth of a streaming domain name for a specific region, carrier, and time period.
 //
-//		- If you do not specify the StartTime parameter or the EndTime parameter, the data of the last hour is returned. You can specify both the StartTime and EndTime parameters to query the data of a specific time range.
+// - If you do not specify the StartTime and EndTime parameters, data from the last hour is queried by default. To query data for a specific time range, you must specify both the StartTime and EndTime parameters.
 //
-//		- This operation is used to monitor data. The data returned by this operation cannot be used as a reference to calculate resource usage for billing.
+// - This operation returns monitoring data. This data is collected and processed differently from the data used for billing. Therefore, you cannot use the returned data for billing reconciliation.
 //
-//		- You can query the data in the last 90 days.
+// - You can query data from the last 90 days.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// This operation does not have a queries per second (QPS) limit on a single user. You can call this operation based on your business requirements.
+// This operation has no queries per second (QPS) limit for a single user. You can call this operation as needed.
 //
 // @param request - DescribeLiveDomainRealTimeTrafficDataRequest
 //
@@ -12963,11 +13045,11 @@ func (client *Client) DescribeLiveDomainRealTimeTrafficDataWithContext(ctx conte
 //
 // Description:
 //
-// You can call this operation to query the status of real-time log delivery for a domain name. Make sure that the parameter settings meet the requirements.
+// You can call this operation to query the status of real-time log delivery for a domain name. Ensure that the parameter settings are valid.
 //
-// ## QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// This operation is limited to 6,000 queries per second (QPS) per user. Calls that exceed this limit are throttled, which can affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeLiveDomainRealtimeLogDeliveryRequest
 //
@@ -13007,25 +13089,25 @@ func (client *Client) DescribeLiveDomainRealtimeLogDeliveryWithContext(ctx conte
 
 // Summary:
 //
-// Queries the numbers of live recording channels and container format conversions.
+// Queries the number of concurrent recording streams and container format conversion usage for ApsaraVideo Live.
 //
 // Description:
 //
-//	  You can call this operation to query the number of concurrent recording channels on each day and event tracking data at different time intervals. This way, you can measure the peak number of concurrent recording channels on each day or month.
+// - Collects statistics on daily concurrent recording streams and sampling data at different time intervals. You can use this operation to query the peak number of daily or monthly concurrent recording streams.
 //
-//		- The number of time shifting channels is not included in the number of recording channels.
+// - Time shifting streams are not counted as recording streams.
 //
-//		- You can query data by domain name or query data for multiple domain names at a time. If you specify multiple domain names, separate them with commas (,).
+// - Supports domain-level queries and batch domain queries. Separate multiple domain names with commas (,).
 //
-//		- If you set the data granularity to 1 minute, the maximum time range to query is 24 hours. You can query data in the last 60 days.
+// - Data granularity: 1 minute. Maximum query span: 24 hours. Maximum data retention: 60 days.
 //
-//		- If you set the data granularity to 1 hour, the maximum time range to query is 31 days. You can query data in the last 180 days.
+// - Data granularity: 1 hour. Maximum query span: 31 days. Maximum data retention: 180 days.
 //
-//		- If you set the data granularity to 1 day, the maximum time range to query is 90 days. You can query data in the last 366 days.
+// - Data granularity: 1 day. Maximum query span: 90 days. Maximum data retention: 366 days.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeLiveDomainRecordUsageDataRequest
 //
@@ -13097,17 +13179,17 @@ func (client *Client) DescribeLiveDomainRecordUsageDataWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the number of snapshots for one or more streaming domains.
+// Queries the number of snapshots captured for a live streaming domain.
 //
 // Description:
 //
-//	  You can call this operation to collect statistics on the total number of snapshots on a day.
+// - You can use this operation to obtain the total number of snapshots captured per day.
 //
-//		- You can query data in the last 90 days.
+// - You can query data from the last 90 days.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// This operation does not have a queries per second (QPS) limit on a single user. You can call this operation based on your business requirements.
+// This operation does not have a per-user QPS limit. Call this operation as needed.
 //
 // @param request - DescribeLiveDomainSnapshotDataRequest
 //
@@ -13171,13 +13253,13 @@ func (client *Client) DescribeLiveDomainSnapshotDataWithContext(ctx context.Cont
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Usage notes
 //
-// You can call this operation to query the feature configurations of an accelerated domain name in the canary release environment.
+// You can call this operation to query the staging environment configuration of a specified accelerated domain name.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The single-user limit for this API operation is 30 queries per second (QPS). If you exceed this limit, API calls are throttled. This may affect your business. Pace your calls to stay within the limit. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - DescribeLiveDomainStagingConfigRequest
 //
@@ -13233,23 +13315,23 @@ func (client *Client) DescribeLiveDomainStagingConfigWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the transcoding length for one or more domain names.
+// Queries the transcoding usage data of a domain name by calling DescribeLiveDomainStreamTranscodeData.
 //
 // Description:
 //
-//	  You can call this operation to collect the transcoding usage data at each time interval.
+// - You can use this operation to query network bandwidth data for each time interval.
 //
-//		- You can specify multiple domain names by separating them with commas (,).
+// - Batch domain name queries are supported. Separate multiple domain names with commas (,).
 //
-//		- You can query data in the last 90 days.
+// - You can query data from the last 90 days.
 //
-//		- The time granularity of data is 1 hour or 1 day.
+// - The data time granularity is hour or day.
 //
-//		- For information about the billing of different transcoding types and transcoding resolutions, see the description about billing of different transcoding specifications in transcoding bills in the [Billing of live stream transcoding](https://help.aliyun.com/document_detail/90424.html) section of the ApsaraVideo Live pricing page.
+// - For the billing tiers that correspond to different transcoding types and transcoding resolutions, see the billing tier description for different instance specifications in [Live stream transcoding billing](https://help.aliyun.com/document_detail/90424.html).
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 20 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Invoke this operation appropriately.
 //
 // @param request - DescribeLiveDomainStreamTranscodeDataRequest
 //
@@ -13321,21 +13403,21 @@ func (client *Client) DescribeLiveDomainStreamTranscodeDataWithContext(ctx conte
 
 // Summary:
 //
-// Queries the resource usage data of time shifting for one or more domain names.
+// Queries time shifting usage data for live streaming.
 //
 // Description:
 //
-//	  You can call this operation to query the time shifting usage data at each time interval.
+// - Queries time shifting usage data for each time interval.
 //
-//		- You can query data in the last 90 days.
+// - Retrieves data for up to the last 90 days.
 //
-//		- The time interval is 1 hour.
+// - The data interval is fixed at 1 hour.
 //
-//		- The maximum time range for a query is 31 days.
+// - The maximum data timestamp span for a single query is 31 days.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API invoke is throttled, which may affect your business. Invoke this operation as needed.
 //
 // @param request - DescribeLiveDomainTimeShiftDataRequest
 //
@@ -13399,17 +13481,17 @@ func (client *Client) DescribeLiveDomainTimeShiftDataWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the network traffic data for one or more domain names.
+// Queries network traffic monitoring data for live streaming domains.
 //
 // Description:
 //
-//	  If you do not specify the StartTime or EndTime parameter, the data of the last 24 hours is returned.
+// - If you do not specify StartTime or EndTime, data from the past 24 hours is returned by default.
 //
-//		- This operation is used to monitor data. The data returned by this operation cannot be used as a reference to calculate resource usage for billing.
+// - This is a monitoring data API. The data collection and processing method differs from that used for billing. Do not use this API to calculate usage for billing reconciliation.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this API is 100 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this API at a reasonable frequency.
 //
 // @param request - DescribeLiveDomainTrafficDataRequest
 //
@@ -13537,19 +13619,19 @@ func (client *Client) DescribeLiveDomainTranscodeParamsWithContext(ctx context.C
 
 // Summary:
 //
-// 获取直播DRM用量数据
+// Queries DRM usage data within a specified time range.
 //
 // Description:
 //
-// ### [](#)Usage notes
+// ### Operation description
 //
-//   - You can query data in the previous 90 days.
+// - You can query data from the last 90 days.
 //
-//   - The maximum time range to query is 31 days.
+// - The maximum time span is 31 days.
 //
-// ### [](#qps-)QPS limit
+// ### QPS limit
 //
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// Each user can make up to 20 queries per second (QPS). If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation properly. For more information, see [QPS limit](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - DescribeLiveDrmUsageDataRequest
 //
@@ -13617,15 +13699,15 @@ func (client *Client) DescribeLiveDrmUsageDataWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the configuration of edge stream relay.
+// Retrieves the configuration of edge stream relay.
 //
 // Description:
 //
-// Obtain the ingest domain, and then call this operation to query the configuration of edge stream relay.
+// Get the ingest domain, then call this operation to query the configuration of edge stream relay.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLiveEdgeTransferRequest
 //
@@ -13677,19 +13759,19 @@ func (client *Client) DescribeLiveEdgeTransferWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the co-streaming usage data.
+// Call DescribeLiveGrtnDuration to query co-hosting call duration usage data.
 //
 // Description:
 //
-//	  The maximum time range for a query is 31 days.
+// - Maximum query span: 31 days.
 //
-//		- The minimum time granularity for a query is 5 minutes.
+// - Minimum query granularity: 5 minutes.
 //
-//		- You can query the data in the last 90 days.
+// - Maximum query range: Data from the last 90 days.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this API is 10 requests per second. If the limit is exceeded, API calls will be throttled, which may affect your business. Please call this API appropriately.
 //
 // @param request - DescribeLiveGrtnDurationRequest
 //
@@ -13757,15 +13839,17 @@ func (client *Client) DescribeLiveGrtnDurationWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the information about all certificates that you have configured.
+// Queries all configured certificate information for the certificate service of a user.
 //
 // Description:
 //
-// You can call this operation to query the information about all certificates that you have configured.
+// Calls this operation to query all configured certificates and domain name information for the user in the certificate service.
 //
-// ## [](#qps-)QPS limit
+// Before calling this operation, make sure that at least one live streaming domain under the account has HTTPS certificates enabled through SetLiveDomainCertificate. Otherwise, the error NoHttpsDomain(400) is returned.
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 100 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeLiveHttpsDomainListRequest
 //
@@ -13825,17 +13909,17 @@ func (client *Client) DescribeLiveHttpsDomainListWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the metric data of ApsaraVideo Real-time Communication (ARTC).
+// Queries metric data for ApsaraVideo Real-time Communication (ARTC).
 //
 // Description:
 //
-//	  You can query data in the last 30 days. The time range for a query cannot exceed 24 hours.
+// - You can query data from the past 30 days. The query time range for a single request is limited to 24 hours.
 //
-//		- The time granularity for a query is 5 minutes.
+// - The data granularity is 5 minutes.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The QPS limit for this operation is 50 requests per second per account. Exceeding this limit triggers throttling, which can disrupt your services.
 //
 // @param request - DescribeLiveInteractionMetricDataRequest
 //
@@ -13907,9 +13991,9 @@ func (client *Client) DescribeLiveInteractionMetricDataWithContext(ctx context.C
 //
 // Description:
 //
-// ### [](#qps-)QPS limit
+// ### QPS limit
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLiveIpInfoRequest
 //
@@ -13961,17 +14045,15 @@ func (client *Client) DescribeLiveIpInfoWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the configurations of triggered stream pulling for a streaming domain.
+// Retrieves the configurations of triggered stream pulling for a streaming domain.
 //
 // Description:
 //
-// ##
-//
-// This operation is applicable to regular stream pulling. You can call this operation to query the configurations of regular stream pulling for a domain name.
+// This operation supports retrieving only the configurations of triggered stream pulling.
 //
 // ## QPS limit
 //
-// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLiveLazyPullStreamConfigRequest
 //
@@ -14079,15 +14161,15 @@ func (client *Client) DescribeLiveMessageAppWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the information about an interactive messaging group.
+// Queries the details of a live interactive group.
 //
 // Description:
 //
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848162.html) operation to create an interactive messaging group.
+// Before calling this operation, you must have already called [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848162.html) to create an interactive messaging group.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 50 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeLiveMessageGroupRequest
 //
@@ -14199,15 +14281,15 @@ func (client *Client) DescribeLiveMessageGroupBandWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询直播封装配置
+// Queries the live packaging configuration under a streaming domain.
 //
 // Description:
 //
-// Obtain the main streaming domain, and then call this operation to query live stream encapsulation configurations.
+// Obtain the primary streaming domain first, and then call this operation to query the live packaging configuration under the streaming domain.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 300 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 300 calls per minute. If the limit is exceeded, API calls will be throttled, which may affect your business. Please call this operation as appropriate.
 //
 // @param request - DescribeLivePackageConfigRequest
 //
@@ -14279,15 +14361,15 @@ func (client *Client) DescribeLivePackageConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries available access points where acceleration circuits start.
+// Queries the available origin points for Global Accelerator links.
 //
 // Description:
 //
-// Before you call the CreateLivePrivateLine operation, you can call this operation to query available acceleration regions, which are access points where acceleration circuits start.
+// You can call this operation to query available Global Accelerator regions before you call the CreateLivePrivateLine operation. These regions can be used as origin points for acceleration.
 //
-// ## [](#qps-)QPS limit
+// ## Limits
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can make up to 50 queries per second (QPS) per user. If you exceed this limit, API calls are throttled, which may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DescribeLivePrivateLineAreasRequest
 //
@@ -14339,15 +14421,15 @@ func (client *Client) DescribeLivePrivateLineAreasWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the binding information between Global Accelerator (GA) instances and acceleration circuits.
+// Queries the attachment information between an Alibaba Cloud Global Accelerator (GA) instance and a live streaming link.
 //
 // Description:
 //
-// If you set the IsGaInstance parameter to yes, the status of GA instances is queried. If you set the IsGaInstance parameter to no, the binding information between GA instances and acceleration circuits is queried.
+// When the request parameter IsGaInstance is set to yes, the Alibaba Cloud Global Accelerator (GA) instance status is queried. When it is set to no, the attachment details between the GA instance and the live streaming link are queried.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this API is 50 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Invoke this operation appropriately.
 //
 // @param request - DescribeLivePrivateLineAvailGARequest
 //
@@ -14419,15 +14501,15 @@ func (client *Client) DescribeLivePrivateLineAvailGAWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the production studio usage data.
+// Calls DescribeLiveProducerUsageData to query producer studio usage data.
 //
 // Description:
 //
-// The minimum time granularity for a query is 1 hour. The maximum time range for a query is 31 days. You can query the production studio usage data in the last 90 days.
+// The minimum data query granularity is 1 hour. The maximum query time span is 31 days. The maximum historical query range is the last 90 days.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this API operation is 5 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation properly.
 //
 // @param request - DescribeLiveProducerUsageDataRequest
 //
@@ -14511,17 +14593,15 @@ func (client *Client) DescribeLiveProducerUsageDataWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the stream pulling configurations for a domain name.
+// Retrieves the scheduled stream pulling configurations for a domain name.
 //
 // Description:
 //
-// ##
-//
-// This operation is applicable to regular stream pulling. You can call this operation to query the regular stream pulling configurations for a domain name.
+// This operation supports retrieving only the configurations of scheduled stream pulling.
 //
 // ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLivePullStreamConfigRequest
 //
@@ -14573,17 +14653,17 @@ func (client *Client) DescribeLivePullStreamConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries pulled-stream relay tasks.
+// Queries a stream pulling-to-pushing task.
 //
 // Description:
 //
-//	  You can call this operation to query the information about a pulled-stream relay task.
+// - Queries a stream pulling-to-pushing task.
 //
-//		- This operation allows you to query the configurations and status of a task with a specified ID.
+// - You can query the configuration and status information of a task with a specified ID.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this API is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this API appropriately.
 //
 // @param request - DescribeLivePullToPushRequest
 //
@@ -14623,17 +14703,17 @@ func (client *Client) DescribeLivePullToPushWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries pulled-stream relay tasks. Fuzzy match is supported.
+// Queries stream pulling and pushing tasks by using fuzzy match.
 //
 // Description:
 //
-//	  You can call this operation to query pulled-stream relay tasks.
+// - Invoke this operation to query the list of stream pulling and stream ingest nodes.
 //
-//		- You can query tasks by page. Fuzzy search is supported based on task IDs, task names, and destination URLs.
+// - Supports paging query of the node list, and fuzzy search by node ID, node name, and destination stream ingest URL.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Invoke this operation appropriately.
 //
 // @param request - DescribeLivePullToPushListRequest
 //
@@ -14673,19 +14753,19 @@ func (client *Client) DescribeLivePullToPushListWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the stream relay logs, which are available for download.
+// Retrieves the download URLs of offline logs for live stream relay by calling DescribeLivePushProxyLog.
 //
 // Description:
 //
-//	  The time granularity of the data is 1 hour.
+// - Data time granularity: 1 hour.
 //
-//		- You can query data in the last 31 days.
+// - Maximum query range: data from the last 31 days.
 //
-//		- If you do not specify the StartTime or EndTime parameter, the data of the last 24 hours is queried. You can specify both the StartTime and EndTime parameters to query the data of a specific time range.
+// - If you do not specify StartTime or EndTime, this operation reads data from the last 24 hours by default. If you specify StartTime and EndTime, data is queried based on the specified time range.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The QPS limit for a single user on this operation is 100 calls per second. If the limit is exceeded, API invocations are throttled, which may affect your business. Invoke this operation as needed.
 //
 // @param request - DescribeLivePushProxyLogRequest
 //
@@ -14753,21 +14833,21 @@ func (client *Client) DescribeLivePushProxyLogWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the usage data of live center stream relay.
+// Queries the usage data of live center relay by calling DescribeLivePushProxyUsageData.
 //
 // Description:
 //
-//	  You can call this operation to query the usage data of live center stream relay.
+// - Queries the usage data of live center relay.
 //
-//		- The maximum time range for a query is 31 days.
+// - Maximum query span: 31 days.
 //
-//		- The minimum time granularity for a query is 1 day.
+// - Minimum query granularity: 1 day.
 //
-//		- You can query the data in the last 90 days.
+// - Maximum query range: data from the last 90 days.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 5 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeLivePushProxyUsageDataRequest
 //
@@ -14835,19 +14915,19 @@ func (client *Client) DescribeLivePushProxyUsageDataWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the number of real-time log deliveries.
+// Invokes DescribeLiveRealtimeDeliveryAcc to query the number of real-time log delivery attempts.
 //
 // Description:
 //
-//	  You can collect statistics on the number of real-time log deliveries. The number of failed real-time log deliveries and the number of successful real-time log deliveries are counted.
+// - Queries statistics on real-time log delivery attempts, including the number of successful and failed log delivery attempts.
 //
-//		- You can query the data by UID.
+// - Supports queries by UID dimension.
 //
-//		- You are charged for both successful and failed real-time log deliveries.
+// - The billable count includes both successful and failed log delivery attempts.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this API is 100 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Invoke this API appropriately.
 //
 // @param request - DescribeLiveRealtimeDeliveryAccRequest
 //
@@ -14919,15 +14999,15 @@ func (client *Client) DescribeLiveRealtimeDeliveryAccWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the status of authorization for real-time log delivery.
+// Queries the authorization status for real-time log delivery.
 //
 // Description:
 //
-// You can call this operation to query the status of authorization for real-time log delivery.
+// You can call this operation to query the authorization status for real-time log delivery.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The queries per second (QPS) limit for this operation is 100 calls per second per user. If you exceed this limit, throttling is triggered, which may affect your business. Plan your API calls accordingly. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - DescribeLiveRealtimeLogAuthorizedRequest
 //
@@ -14967,15 +15047,15 @@ func (client *Client) DescribeLiveRealtimeLogAuthorizedWithContext(ctx context.C
 
 // Summary:
 //
-// Queries all recording configurations of an application for a streaming domain.
+// Queries all recording configurations of apps under a live streaming domain.
 //
 // Description:
 //
-// Obtain the main streaming domain, and then call this operation to query the recording configurations of all applications under the main streaming domain.
+// Obtain the ingest domain first, and then call this operation to query all app recording configurations under a live streaming domain.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 100 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeLiveRecordConfigRequest
 //
@@ -15047,15 +15127,15 @@ func (client *Client) DescribeLiveRecordConfigWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the configuration of callbacks for live stream recording under a domain name.
+// This operation queries the recording callback configuration for a domain name.
 //
 // Description:
 //
-// Obtain the main streaming domain, and then call this operation to query the configuration of callbacks for live stream recording under the domain name.
+// You can call this operation to query the recording callback configuration for a streaming domain name.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// This operation supports up to 50 queries per second (QPS) per user. If you exceed this limit, your API calls are throttled. Throttling may affect your business operations, so make sure to stay within the specified limit.
 //
 // @param request - DescribeLiveRecordNotifyConfigRequest
 //
@@ -15107,11 +15187,11 @@ func (client *Client) DescribeLiveRecordNotifyConfigWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the recording callback records that are stored in Object Storage Service (OSS).
+// Queries the callback records for live stream recordings stored in OSS.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The China site (Chinese) QPS limit for a single user on this operation is 100 calls per second. Exceeding this limit results in throttling, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeLiveRecordNotifyRecordsRequest
 //
@@ -15195,17 +15275,13 @@ func (client *Client) DescribeLiveRecordNotifyRecordsWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries Live-to-VOD configurations.
+// Queries live-to-VOD configurations of a streaming domain.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ### **QPS limit**
 //
-// Obtain the streaming domain, and then call this operation to query the Live-to-VOD configurations.
-//
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// This API is limited to 1,000 queries per minute for each account. If you exceed this limit, API calls are throttled, which can affect your business.
 //
 // @param request - DescribeLiveRecordVodConfigsRequest
 //
@@ -15273,7 +15349,17 @@ func (client *Client) DescribeLiveRecordVodConfigsWithContext(ctx context.Contex
 
 // Summary:
 //
-// 云端录制用量
+// Queries the cloud recording usage of ApsaraVideo Real-time Communication.
+//
+// Description:
+//
+// - Queries the recording length for each specification of cloud recording on a daily basis.
+//
+// - Supports queries at the ApsaraVideo Real-time Communication application granularity.
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - DescribeLiveRtcRecordUsageDataRequest
 //
@@ -15333,15 +15419,15 @@ func (client *Client) DescribeLiveRtcRecordUsageDataWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the time shifting configurations of a domain name.
+// Queries the time-shifting configurations for a specified domain name.
 //
 // Description:
 //
-// This operation is applicable to the streaming domains.
+// After you obtain a streaming domain name, you can call this operation to query the time-shifting configurations for the specified domain name.
 //
 // ## QPS limit
 //
-// A single user can perform a maximum of 10 queries per second (QPS). Throttling is triggered when the number of calls per second exceeds the QPS limit. The throttling may affect your business. Thus, we recommend that you observe the QPS limit on this operation. For more information about what a single user means and the QPS details, see [QPS limit on an API operation in ApsaraVideo Live](https://www.alibabacloud.com/help/en/apsaravideo-live/latest/qps-limit-on-an-api-operation-in-apsaravideo-live#topic-2136805).
+// You can make up to 10 queries per second (QPS) for each user. If you exceed this limit, API calls are throttled, which may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - DescribeLiveShiftConfigsRequest
 //
@@ -15393,15 +15479,15 @@ func (client *Client) DescribeLiveShiftConfigsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the snapshot configurations of a streaming domain.
+// Queries the snapshot configurations under a streaming domain.
 //
 // Description:
 //
-// Obtain the main streaming domain, and then call this operation to query the snapshot configurations.
+// Obtain the streaming domain first, and then call this operation to query the snapshot configurations under the streaming domain.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 100 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - DescribeLiveSnapshotConfigRequest
 //
@@ -15469,17 +15555,17 @@ func (client *Client) DescribeLiveSnapshotConfigWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries video moderation configurations.
+// Queries the content moderation configurations for live streaming.
 //
 // Description:
 //
-//	  Obtain the main streaming domain, and then call this operation to query video moderation configurations. The configurations can be sorted in ascending or descending order.
+// - Obtain the streamer streaming domain first, and then invoke this operation to query the content moderation configurations for live streaming. This operation supports sorting in ascending and descending order.
 //
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
+// - Currently, only some live centers support intelligent content moderation for live streaming. For information about the live centers that support this feature, see [Service regions](https://help.aliyun.com/document_detail/193730.html).
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 50 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - DescribeLiveSnapshotDetectPornConfigRequest
 //
@@ -15547,11 +15633,11 @@ func (client *Client) DescribeLiveSnapshotDetectPornConfigWithContext(ctx contex
 
 // Summary:
 //
-// Queries the configuration of snapshot callbacks.
+// Queries the configuration for snapshot callbacks.
 //
 // Description:
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLiveSnapshotNotifyConfigRequest
 //
@@ -15607,7 +15693,7 @@ func (client *Client) DescribeLiveSnapshotNotifyConfigWithContext(ctx context.Co
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLiveStreamAuthCheckingRequest
 //
@@ -15663,15 +15749,15 @@ func (client *Client) DescribeLiveStreamAuthCheckingWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the frame rates and bitrates of a Real-Time Messaging Protocol (RTMP) stream within a specified time period. You can call this operation to query historical data.
+// Queries the frame rates and bitrates of an RTMP live stream within a specified time range. This operation is applicable to retrieving historical data.
 //
 // Description:
 //
-// This operation allows you to query the frame rates and bitrates of an RTMP stream within a specified time period. You can call this operation to query historical data.
+// Queries the frame rates and bitrates of an RTMP live stream within a specified time range. This operation is applicable to retrieving historical data.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The maximum number of queries per second (QPS) per user for this operation is 50. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as appropriate.
 //
 // @param request - DescribeLiveStreamBitRateDataRequest
 //
@@ -15739,15 +15825,15 @@ func (client *Client) DescribeLiveStreamBitRateDataWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the numbers of online source streams and transcoded streams.
+// Retrieves the real-time count of active original and transcoded streams for a specified streaming domain.
 //
 // Description:
 //
-// Obtain the main streaming domain, and then call this operation to query the numbers of online source streams and transcoded streams. The streams that are returned by calling this operation are encoded in H.264 or H.265.
+// Before you call this operation, obtain the streaming domain name in the console. The returned stream count includes streams encoded in H.264 and H.265 formats.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation once per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation only one time per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLiveStreamCountRequest
 //
@@ -15791,11 +15877,11 @@ func (client *Client) DescribeLiveStreamCountWithContext(ctx context.Context, re
 //
 // Description:
 //
-// Obtain the streaming domain, and then call this operation to query the live streaming latency.
+// You must first obtain a streaming domain name. You can then call this operation to query the live streaming latency.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// This operation supports up to 1,000 queries per second (QPS) per user. If you exceed the limit, your calls are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeLiveStreamDelayConfigRequest
 //
@@ -15847,19 +15933,19 @@ func (client *Client) DescribeLiveStreamDelayConfigWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the audio and video frame rates and bitrates of a Real-Time Messaging Protocol (RTMP) stream.
+// Queries the detailed audio and video frame rates and bitrates of an RTMP live stream.
 //
 // Description:
 //
-//	  You can call this operation to query a set of audio and video frame rates and bitrates of an RTMP stream within a specified time range.
+// - Call this operation to query a set of audio and video frame rates and bitrates of an RTMP live stream within a specified time range.
 //
-//		- This operation is used to monitor data. The data returned by this operation cannot be used as a reference to calculate resource usage for billing.
+// - This operation is a monitoring data operation. The data collection and processing method differs from that used for billing. Do not use this operation to calculate usage for billing reconciliation.
 //
-//		- You can query data in the last 90 days.
+// - You can query historical data within the last 90 days.
 //
-//		- The data is delayed for 3 to 5 minutes.
+// - Data latency is 3 to 5 minutes.
 //
-//		- The maximum time range that you can specify is 1 hour.
+// - The maximum time span for a single request is 1 hour.
 //
 // @param request - DescribeLiveStreamDetailFrameRateAndBitRateDataRequest
 //
@@ -15931,11 +16017,11 @@ func (client *Client) DescribeLiveStreamDetailFrameRateAndBitRateDataWithContext
 //
 // Description:
 //
-//	  The data returned by this operation is delayed for an average of 2 to 5 minutes.
+// - The data returned by this operation is delayed for an average of 2 to 5 minutes.
 //
-//		- This operation queries the number of historical online users for only Flash Video (FLV) and Real-Time Messaging Protocol (RTMP) streams.
+// - This operation queries the number of historical online users for only Flash Video (FLV) and Real-Time Messaging Protocol (RTMP) streams.
 //
-//		- This operation does not query the number of viewers that are watching transcoded streams.
+// - This operation does not query the number of viewers that are watching transcoded streams.
 //
 // ## [](#qps-)QPS limit
 //
@@ -16007,11 +16093,11 @@ func (client *Client) DescribeLiveStreamHistoryUserNumWithContext(ctx context.Co
 
 // Summary:
 //
-// Invoke DescribeLiveStreamMerge to query the primary-standby stream merging configuration.
+// Query primary/backup stream merge configuration.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The QPS limit for a single user of this API is 100 calls per second. If this limit is exceeded, API calls will be throttled, which may affect your business. Please call this API appropriately.
 //
 // @param request - DescribeLiveStreamMergeRequest
 //
@@ -16075,37 +16161,39 @@ func (client *Client) DescribeLiveStreamMergeWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the monitoring data of streams for a specified domain name. Up to 5,000 rows of data can be returned per call.
+// Queries stream-level batch data for a specified domain name. A maximum of 5,000 rows of data can be returned per query.
 //
 // Description:
 //
-// If you call this operation to query the monitoring data of streams under a domain name for the first time, you must [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12818093.nav-right.dticket.6cb216d07otFWR#/ticket/createIndex) for backend configuration. Provide the following information in the ticket:
+// If this is the first time you use this operation to query stream-level data for a specified domain name, <props="china">[submit a ticket](https://workorder.console.aliyun.com/console.htm#/ticket/add?productCode=live&commonQuestionId=4545&isSmart=true&iatraceid=1608439120675-2a5c48de0b84805313c708&channel=selfservice)<props="intl">[submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12818093.nav-right.dticket.6cb216d07otFWR#/ticket/createIndex) to request backend configuration before using this operation.
 //
-//   - The domain name that you want to query
+// Provide the following information in the ticket:
 //
-//   - The maximum number of concurrent streams under the domain name
+// - The domain name to query.
 //
-//   - The maximum number of concurrent online users in each stream
+// - The maximum number of concurrent live streams under the domain name.
 //
-//   - The protocols used for the client requests
+// - The maximum number of concurrent viewers per live stream.
 //
-// >  The review is expected to be completed within one business day after you submit the ticket.
+// - The protocol types included in client requests.
 //
-// ## [](#)Usage limits
+//	Notice: This operation will no longer be maintained after September 31, 2025. Switch to the new stream-level operation [DescribeLiveUserStreamMetricData](https://help.aliyun.com/document_detail/2948552.html) promptly. The new stream-level operation does not require backend configuration..
 //
-//   - By default, statistics on the number of viewers who watch streams over the HTTP Live Streaming (HLS) protocol cannot be collected.
+// ## Before you begin
 //
-//   - You can specify only one domain name in each call.
+// - Online viewer counting for HLS is not supported by default.
 //
-//   - The maximum time range to query is 24 hours.
+// - Only a single domain name can be queried at a time.
 //
-//   - The minimum data granularity to query is 1 minute.
+// - Maximum large query time span: 24 hours.
 //
-//   - You can query data in the last 31 days.
+// - Minimum query granularity: 1 minute.
 //
-// ## [](#qps-)QPS limit
+// - Maximum query range: 31 days.
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// ## Rate limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeLiveStreamMetricDetailDataRequest
 //
@@ -16185,11 +16273,11 @@ func (client *Client) DescribeLiveStreamMetricDetailDataWithContext(ctx context.
 //
 // Description:
 //
-// [Create monitoring sessions](https://help.aliyun.com/document_detail/2848129.html) before you call this operation to query the monitoring session list. Make sure that the parameter settings meet the requirements.
+// First, [create a monitoring session](https://help.aliyun.com/document_detail/2848129.html). You can then call this operation to query the list of monitoring sessions. When you call this operation, ensure that the required parameters are configured.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// This operation is limited to 15 queries per second (QPS) for each user. API calls that exceed this limit are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeLiveStreamMonitorListRequest
 //
@@ -16257,15 +16345,15 @@ func (client *Client) DescribeLiveStreamMonitorListWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries prefetch tasks in the last three days.
+// Only data from the last 3 days can be queried.
 //
 // Description:
 //
-// You can call this operation to query prefetch tasks in the last three days.
+// This operation only supports querying data from the last 3 days.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeLiveStreamPreloadTasksRequest
 //
@@ -16345,23 +16433,23 @@ func (client *Client) DescribeLiveStreamPreloadTasksWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the stream ingest data of a specified domain name at the application level and the stream level.
+// Queries stream ingest data at the app and stream granularity for a specified domain name.
 //
 // Description:
 //
-//	  You can query data of a single domain name in each request. If you specify multiple domain names, an error is returned.
+// - Only a single domain name can be queried. An error is returned if you specify multiple domain names.
 //
-//		- The maximum time range to query is 24 hours.
+// - Maximum query time range per request: 24 hours.
 //
-//		- The minimum data granularity to query is 1 minute.
+// - Minimum query granularity: 1 minute.
 //
-//		- You can query data in the last 31 days.
+// - Maximum query period: 31 days.
 //
-//		- This operation is used to monitor data. The data returned by this operation cannot be used as a reference to calculate resource usage for billing.
+// - This is a monitoring data API. The data collection and processing method differs from that used for billing. Do not use this API to calculate usage for billing reconciliation.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The maximum number of queries per second (QPS) per user for this operation is 10. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Call this operation as appropriate.
 //
 // @param request - DescribeLiveStreamPushMetricDetailDataRequest
 //
@@ -16437,11 +16525,13 @@ func (client *Client) DescribeLiveStreamPushMetricDetailDataWithContext(ctx cont
 //
 // Description:
 //
-// Obtain the main streaming domain, and then call this operation to query the recordings of the live stream.
+// Obtain the main streaming domain, and then call this operation to query the recordings of a live stream.
+//
+// The information returned by this API is organized by recording task. To get information about specific recording files within a task, use the [DescribeLiveStreamRecordIndexFiles](https://help.aliyun.com/document_detail/2847890.html) and [DescribeLiveStreamRecordIndexFile](https://help.aliyun.com/document_detail/2847889.html) APIs.
 //
 // ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://www.alibabacloud.com/help/en/apsaravideo-live/latest/qps-limit-on-an-api-operation-in-apsaravideo-live).
+// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions.
 //
 // @param request - DescribeLiveStreamRecordContentRequest
 //
@@ -16509,15 +16599,15 @@ func (client *Client) DescribeLiveStreamRecordContentWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the information about an index file.
+// Queries a single recording manifest.
 //
 // Description:
 //
-// ApsaraVideo Live stores the information about M3U8 index files for six months. You can query the information about only the M3U8 index files that were created in the last six months. OSS stores M3U8 index files for a time period that is specified by the storage configuration in OSS.
+// Metadata for created M3U8 manifests is retained in ApsaraVideo Live for 6 months. You can only query information about manifests created within this period. The M3U8 manifest files are stored in OSS, and their retention period is determined by your OSS storage configuration.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions.
 //
 // @param request - DescribeLiveStreamRecordIndexFileRequest
 //
@@ -16581,17 +16671,19 @@ func (client *Client) DescribeLiveStreamRecordIndexFileWithContext(ctx context.C
 
 // Summary:
 //
-// Queries all index files within a specific time period.
+// Queries all recording index files within a specified time period.
 //
 // Description:
 //
-//	  ApsaraVideo Live stores the information about M3U8 index files for six months. You can query the information about only the M3U8 index files that were created in the last six months.
+// - Information about created M3U8 index files is retained in the ApsaraVideo Live system for only 6 months. You can query only the information about index files that were created within the last 6 months.
 //
-//		- OSS stores M3U8 index files for a time period that is specified by the storage configuration in OSS.
+//   - M3U8 index files are stored in OSS. The retention period is determined by the storage configuration of OSS.
 //
-// ## [](#qps-)QPS limit
+// - By default, recording returns HTTP URLs. To use HTTPS, configure the certificate and change HTTP to HTTPS.
 //
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// ## QPS limit
+//
+// The QPS limit on this API is 15 calls per second per user. If this limit is exceeded, API calls are throttled, which may affect your business. Call this API at an appropriate frequency.
 //
 // @param request - DescribeLiveStreamRecordIndexFilesRequest
 //
@@ -16671,15 +16763,15 @@ func (client *Client) DescribeLiveStreamRecordIndexFilesWithContext(ctx context.
 
 // Summary:
 //
-// Queries the snapshots that were captured within a specific time period.
+// Queries snapshot content within a specified time range.
 //
 // Description:
 //
-// You can query only snapshots that were captured in the last year.
+// You can call this operation to query snapshot data only within the last year.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 100 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeLiveStreamSnapshotInfoRequest
 //
@@ -16755,15 +16847,15 @@ func (client *Client) DescribeLiveStreamSnapshotInfoWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the status of a stream in real time.
+// Queries the real-time status of a single stream.
 //
 // Description:
 //
-// Obtain the streaming domain, and then call this operation to query the status of a stream in real time. If the stream is in the offline status, you can check the stream ingest callback to learn about the reason that causes the offline status. This operation does not provide detailed information.
+// After you obtain a live streaming domain name, you can call this operation to query the real-time status of a single stream. For details about the offline status, use the data returned by the stream ingest callback. This operation does not provide a breakdown of the offline status.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLiveStreamStateRequest
 //
@@ -16823,15 +16915,15 @@ func (client *Client) DescribeLiveStreamStateWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the transcoding configurations of a streaming domain.
+// Queries transcoding configurations.
 //
 // Description:
 //
-// Obtain the main streaming domain, and then call this operation to query the transcoding configurations.
+// You must obtain the streaming domain before you call this operation to query the transcoding configurations.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLiveStreamTranscodeInfoRequest
 //
@@ -16887,19 +16979,19 @@ func (client *Client) DescribeLiveStreamTranscodeInfoWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the transcoding data of a specified domain name at the application level and the stream level.
+// Queries transcoding data for a specified domain name at the app and stream granularity.
 //
 // Description:
 //
-//	  The maximum time range for a query is 24 hours.
+// - Maximum query span: 24 hours.
 //
-//		- The minimum time granularity for a query is 5 minutes.
+// - Minimum query granularity: 5 minutes.
 //
-//		- You can query data in the last 31 days.
+// - Maximum query range: data from the last 31 days.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this API is 10 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation at a reasonable frequency.
 //
 // @param request - DescribeLiveStreamTranscodeMetricDataRequest
 //
@@ -16971,11 +17063,11 @@ func (client *Client) DescribeLiveStreamTranscodeMetricDataWithContext(ctx conte
 
 // Summary:
 //
-// Queries the number of transcoded streams in real time.
+// Queries the number of transcoding streams in real time by calling DescribeLiveStreamTranscodeStreamNum.
 //
 // Description:
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The QPS limit for a single user on this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable frequency.
 //
 // @param request - DescribeLiveStreamTranscodeStreamNumRequest
 //
@@ -17031,15 +17123,15 @@ func (client *Client) DescribeLiveStreamTranscodeStreamNumWithContext(ctx contex
 
 // Summary:
 //
-// Queries watermark rules.
+// Queries a list of watermark rules.
 //
 // Description:
 //
-// When you call this operation, you can specify the PageNumber and PageSize parameters to view watermark rules on separate pages. Make sure that the parameter settings meet the requirements.
+// This operation supports pagination.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLiveStreamWatermarkRulesRequest
 //
@@ -17103,11 +17195,11 @@ func (client *Client) DescribeLiveStreamWatermarkRulesWithContext(ctx context.Co
 //
 // Description:
 //
-// You can call this operation to query watermark templates. You can use the PageNumber parameter to view results on separate pages. Make sure that you configure parameters properly when you call this operation.
+// This operation supports paging.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLiveStreamWatermarksRequest
 //
@@ -17171,15 +17263,15 @@ func (client *Client) DescribeLiveStreamWatermarksWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the live streams that are blacklisted under a domain name.
+// Queries the live streams that are blacklisted under a streaming domain.
 //
 // Description:
 //
-// The stream URLs refer to the URLs for playing in particular.
+// The streaming URLs refer to the URLs for playback.
 //
 // ## QPS limit
 //
-// A single user can perform a maximum of 50 queries per second (QPS). Throttling is triggered when the number of calls per second exceeds the QPS limit. The throttling may affect your business. Thus, we recommend that you observe the QPS limit on this operation. For more information about what a single user means and the QPS details, see [QPS limit on an API operation in ApsaraVideo Live](https://www.alibabacloud.com/help/en/apsaravideo-live/latest/qps-limit-on-an-api-operation-in-apsaravideo-live#topic-2136805).
+// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLiveStreamsBlockListRequest
 //
@@ -17239,15 +17331,15 @@ func (client *Client) DescribeLiveStreamsBlockListWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the operation history of live streams under a domain name or in an application.
+// Queries the operations performed on live streams for a specified domain name or application.
 //
 // Description:
 //
-// You can call this operation to query the operation history of live streams under a domain name or in an application. The operations include all API operations that were called on live streams.
+// The operations include all API operations that were called on live streams.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLiveStreamsControlHistoryRequest
 //
@@ -17311,11 +17403,11 @@ func (client *Client) DescribeLiveStreamsControlHistoryWithContext(ctx context.C
 
 // Summary:
 //
-// Queries stream ingest callback records.
+// Queries stream callback records.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The QPS limit for a single user of this API operation is 100 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
 // @param request - DescribeLiveStreamsNotifyRecordsRequest
 //
@@ -17395,7 +17487,15 @@ func (client *Client) DescribeLiveStreamsNotifyRecordsWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the callback configuration for stream ingest under an ingest domain.
+// Queries the callback configuration for stream ingest.
+//
+// Description:
+//
+// You can call this API to query the webhook address and authentication information for an ingest domain.
+//
+// ## QPS limits
+//
+// You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLiveStreamsNotifyUrlConfigRequest
 //
@@ -17447,21 +17547,21 @@ func (client *Client) DescribeLiveStreamsNotifyUrlConfigWithContext(ctx context.
 
 // Summary:
 //
-// Queries the information about all active streams under a specified domain name or the active streams of an application under a specified domain name.
+// Queries the information about all active streams under a specified domain name or a specified application under a domain name.
 //
 // Description:
 //
-// You can call this operation to query the following types of streams.
+// This operation supports the following stream types:
 //
-//   - all: all streams.
+// - all: Queries all streams.
 //
-//   - raw: source streams.
+// - raw: Queries raw streams.
 //
-//   - trans: transcoded streams.
+// - trans: Queries transcoded streams.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The QPS limit for a single user is 10,000 calls per minute. If the limit is exceeded, the API calls are throttled, which may affect your business. Call this operation at a reasonable frequency.
 //
 // @param request - DescribeLiveStreamsOnlineListRequest
 //
@@ -17541,25 +17641,23 @@ func (client *Client) DescribeLiveStreamsOnlineListWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the stream ingest records of a domain name or an application or stream under a domain name.
+// Retrieves the historical stream ingest records of a domain name, an application under a domain name, or a specific stream within a specified time range.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// You can call this operation to query historical streams within the last 30 days. The returned data contains the active stream information within the specified time range. This operation supports the following sorting methods:
 //
-// This operation allows you to query streams in the last 30 days. The information of active streams during the queried period is returned. This operation supports the following sorting methods.
+// - stream_name_desc: sorts by live stream name in descending order.
 //
-//   - stream_name_desc: sorts the entries in descending order by stream name.
+// - stream_name_asc: sorts by live stream name in ascending order.
 //
-//   - stream_name_asc: sorts the entries in ascending order by stream name.
+// - publish_time_desc: sorts by stream ingest time in descending order.
 //
-//   - publish_time_desc: sorts the entries in descending order by stream ingest time.
+// - publish_time_asc: sorts by stream ingest time in ascending order.
 //
-//   - publish_time_asc: sorts the entries in ascending order by stream ingest time.
+// ## QPS limit
 //
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 3 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The single-user QPS limit for this operation is 3 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeLiveStreamsPublishListRequest
 //
@@ -17647,17 +17745,17 @@ func (client *Client) DescribeLiveStreamsPublishListWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries the total number of live streams within a specified time range. Data is collected on a daily basis.
+// Queries the cumulative number of live streams at the day granularity by calling the DescribeLiveStreamsTotalCount operation.
 //
 // Description:
 //
-//	  The maximum time range for a query is 15 days.
+// - Maximum query time span: 15 days.
 //
-//		- You can query data in the last 18 months.
+// - Maximum query time range: up to 1.5 years of historical data.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 100 calls per minute. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - DescribeLiveStreamsTotalCountRequest
 //
@@ -17721,7 +17819,7 @@ func (client *Client) DescribeLiveStreamsTotalCountWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the tags of domain names.
+// Queries the tags of ApsaraVideo Live resources.
 //
 // Description:
 //
@@ -17785,17 +17883,17 @@ func (client *Client) DescribeLiveTagResourcesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the top domain names ranked by traffic.
+// Queries the domains of a user ranked by traffic volume by calling DescribeLiveTopDomainsByFlow.
 //
 // Description:
 //
-//	  If you do not specify the StartTime or EndTime parameter, data of the current month is queried by default. To query data within a specific time range, you must specify both the StartTime and EndTime parameters.
+// - If you do not specify StartTime or EndTime, data for the current month is returned by default. You can also query data for a specified time range. Both StartTime and EndTime must be specified together.
 //
-//		- You can query data in the last 90 days.
+// - You can query data for up to 90 days.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The QPS limit for a single user on this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - DescribeLiveTopDomainsByFlowRequest
 //
@@ -17923,21 +18021,19 @@ func (client *Client) DescribeLiveTrafficDomainLogWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the audio and video data of an ingested stream within a specific period of time.
+// Queries the audio and video parameters of an upstream ingest stream within a specified time range.
 //
 // Description:
 //
-// ### Usage notes
-//
 // - The maximum time range for a query is 24 hours.
 //
-// - The minimum time range for a query is 1 hour.
+// - The minimum time range for a query is 1 minute.
 //
-// - You can query data in the last 31 days.
+// - You can query data from the last 31 days.
 //
-// ### QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The queries per second (QPS) limit for a single user is 10 calls per minute. If you exceed this limit, API calls are throttled, which may affect your business. We recommend that you call this API at a reasonable rate.
 //
 // @param request - DescribeLiveUpVideoAudioInfoRequest
 //
@@ -17997,25 +18093,25 @@ func (client *Client) DescribeLiveUpVideoAudioInfoWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the estimated bills of ApsaraVideo Live in your Alibaba Cloud account.
+// Retrieves the bill prediction for a live streaming user.
 //
 // Description:
 //
-// You can call this operation to estimate resource usage of the current month based on the metering method that is specified on the first day of the month. You can call this operation to estimate resource usage of only the current month within your Alibaba Cloud account. The time range used for the estimation starts at 00:00 on the first day of the month and ends 2 hours earlier than the current time.
+// This operation predicts your usage data for the current month. The prediction is based on the billing method that is active on the first day of the month. This operation supports predictions for monthly billing methods only and provides data at the user level. The query time range starts at 00:00 on the first day of the month and ends two hours before the current time.
 //
-//   - Pay by monthly 95th percentile bandwidth: The top 5% values between the start time and end time are excluded. The highest value among the remaining values is the estimated value.
+// - Monthly 95th percentile: The highest data point after the top 5% of data points are removed from the specified time range.
 //
-//   - Pay by average daily peak bandwidth per month: Estimated value = Sum of daily peak bandwidth values/Number of days. The current day is excluded.
+// - Monthly average of daily peak bandwidth: The sum of daily peak bandwidth values divided by the number of days in the time range. The current day\\"s data is not included.
 //
-//   - Pay by 4th peak bandwidth per month: The estimated value is the 4th peak bandwidth value between the start time and end time. If the time range is less than four days, the estimated value is 0.
+// - Monthly 4th peak: The fourth-highest peak bandwidth in the specified time range. If the time range is less than four days, the predicted value is 0.
 //
-//   - Pay by average daily 95th percentile bandwidth per month: Estimated value = Sum of daily 95th percentile bandwidth values/Number of days. The current day is excluded.
+// - Monthly average of daily 95th percentile peak: The sum of daily 95th percentile peak values divided by the number of days in the time range. The current day\\"s data is not included.
 //
-//   - Pay by 95th percentile bandwidth with 50% off from 00:00 to 08:00: The top 5% values between the start time and end time are excluded. The highest value among the remaining values is the estimated value.
+// - Nightly 95th percentile: The highest data point after the top 5% of data points are removed from the specified time range.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation once per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The queries per second (QPS) limit for a single user is 1. If you exceed this limit, your API calls are throttled, which may affect your business. Make API calls at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - DescribeLiveUserBillPredictionRequest
 //
@@ -18165,7 +18261,31 @@ func (client *Client) DescribeLiveUserDomainsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询指定域名流粒度批量数据
+// Queries stream-level batch data for a specified streaming domain. Multiple protocols are supported.
+//
+// Description:
+//
+// > Querying new connections for the HLS protocol is not supported. Concurrent connections for HLS are counted based on requests in the default format. Requests in special formats require configuration by <props="china">[submit a ticket](https://workorder.console.aliyun.com/console.htm#/ticket/add?productCode=live&commonQuestionId=4545&isSmart=true&iatraceid=1608439120675-2a5c48de0b84805313c708&channel=selfservice)<props="intl">[submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12818093.nav-right.dticket.6cb216d07otFWR#/ticket/createIndex). The default formats are as follows:
+//
+// > - m3u8 request example: http(s)://example.aliyundoc.com/Appname/ StreamName.m3u8
+//
+// > - ts request example: http(s)://example.aliyundoc.com/Appname/ StreamName/153xxxxxxxx_137xxxxx.ts.
+//
+// ## Settings
+//
+// - **Single query limit**: A maximum of 5000 rows of data can be returned per query.
+//
+// - **Domain name query limit**: Only a single domain name is supported. An error is returned if multiple domain names are specified.
+//
+// - **Time span limit**: The maximum query time span is 24 hours.
+//
+// - **Time granularity limit**: The minimum query granularity is 1 minute.
+//
+// - **Query range limit**: The maximum query range is 31 days.
+//
+// - **Call frequency limit**: The maximum call frequency per user is 10 calls per second.
+//
+// - **Special parameter combination**: When `DomainName` is not empty and both `AppName` and `StreamName` are set to `all`, the aggregate data for the streaming domain is returned.
 //
 // @param request - DescribeLiveUserStreamMetricDataRequest
 //
@@ -18237,7 +18357,13 @@ func (client *Client) DescribeLiveUserStreamMetricDataWithContext(ctx context.Co
 
 // Summary:
 //
-// 获取直播用户标签
+// Retrieves user tags.
+//
+// Description:
+//
+// ### QPS limit
+//
+// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DescribeLiveUserTagsRequest
 //
@@ -18353,19 +18479,17 @@ func (client *Client) DescribeLiveUserTrafficLogWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the ownership verification content of a domain name.
+// Queries the ownership verification content for a specified domain name.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// - You can call this operation to query the verification content for a single domain name.
 //
-//   - You can call this operation to query the ownership verification content of a single domain name.
+// - Each user can call this operation up to 30 times per second.
 //
-//   - You can call this operation up to 30 times per second per account.
+// - You must specify the domain name that you want to authenticate.
 //
-//   - When you call this operation, you need to specify a domain name as a request parameter.
-//
-//   - After a successful call, the verification content and request ID are returned, which can be used for subsequent operations.
+// - A successful call returns the verification content and a request ID for subsequent operations or for your records.
 //
 // @param request - DescribeLiveVerifyContentRequest
 //
@@ -18417,21 +18541,21 @@ func (client *Client) DescribeLiveVerifyContentWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # DescribeMeterLiveBypassDuration
+// DescribeMeterLiveBypassDuration.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Operation description
 //
-//   - The maximum time range for a query is 31 days.
+// - Maximum query span: 31 days.
 //
-//   - The minimum time granularity for a query is 5 minutes.
+// - Minimum query granularity: 5 minutes.
 //
-//   - You can query the data in the last 90 days.
+// - Maximum query range: data from the last 90 days.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// A single user can call this operation up to 10 times per second. If the number of calls exceeds the limit, throttling is triggered, which may affect your business. Refer to [QPS limit](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - DescribeMeterLiveBypassDurationRequest
 //
@@ -18491,11 +18615,11 @@ func (client *Client) DescribeMeterLiveBypassDurationWithContext(ctx context.Con
 //
 // Description:
 //
-// You can call the [CreateMixStream](https://help.aliyun.com/document_detail/2848087.html) operation to create stream mixing tasks and then call this operation to query the list of stream mixing tasks.
+// Call the [CreateMixStream](https://help.aliyun.com/document_detail/2848087.html) operation to create a stream mixing task. You can then call this operation to query the list of stream mixing tasks.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 5 for each user. API calls that exceed this limit are throttled. This can affect your business. Plan your API calls accordingly.
 //
 // @param request - DescribeMixStreamListRequest
 //
@@ -18575,11 +18699,11 @@ func (client *Client) DescribeMixStreamListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the information about the factors that cause latency of first frames within a specified period of time.
+// Retrieves the first frame latency composition within a specified time period.
 //
 // Description:
 //
-// You can call this operation to query the information about the factors that cause latency of first frames within a specified period of time. You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see QPS limit.
+// Queries the first frame latency composition within a specified time range. QPS limit: The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable frequency. For more information, see QPS limit.
 //
 // @param tmpReq - DescribeRTSNativeSDKFirstFrameCostRequest
 //
@@ -18641,11 +18765,15 @@ func (client *Client) DescribeRTSNativeSDKFirstFrameCostWithContext(ctx context.
 
 // Summary:
 //
-// Queries the average latency of first frames within a specified period of time.
+// Retrieves the average first frame delay within a specified time range.
 //
 // Description:
 //
-// You can call this operation to query the average latency of first frames within a specified period of time. You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see QPS limit.
+// Queries the first frame delay within a specified time range.
+//
+// # QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately. For more information, see QPS limit.
 //
 // @param tmpReq - DescribeRTSNativeSDKFirstFrameDelayRequest
 //
@@ -18707,11 +18835,11 @@ func (client *Client) DescribeRTSNativeSDKFirstFrameDelayWithContext(ctx context
 
 // Summary:
 //
-// Queries the causes of playback failures that occurred within a specified period of time. The causes are returned in the form of status codes.
+// Queries the reasons for playback failures (in the form of status codes) within a specified time period.
 //
 // Description:
 //
-// You can call this operation to query the causes of playback failures that occurred within a specified period of time. The causes are returned in the form of status codes. You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see QPS limit.
+// Queries the reasons for playback failures (in the form of status codes) within a specified time range. QPS limit: The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at an appropriate frequency. For more information, refer to QPS limits.
 //
 // @param tmpReq - DescribeRTSNativeSDKPlayFailStatusRequest
 //
@@ -18773,11 +18901,11 @@ func (client *Client) DescribeRTSNativeSDKPlayFailStatusWithContext(ctx context.
 
 // Summary:
 //
-// Queries the playback duration within a specified period of time.
+// Retrieves the playback duration within a specified time range.
 //
 // Description:
 //
-// You can query the playback duration within a specified period of time. You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see QPS limit.
+// Queries the playback duration within a specified time range. QPS limit: The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Use this operation appropriately. For more information, refer to QPS limits.
 //
 // @param tmpReq - DescribeRTSNativeSDKPlayTimeRequest
 //
@@ -18839,11 +18967,13 @@ func (client *Client) DescribeRTSNativeSDKPlayTimeWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the total number of playbacks and the number of successful playbacks within a specified period of time.
+// Retrieves the playback count within a specified time period, including the total count and the successful count.
 //
 // Description:
 //
-// QPS limit You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see QPS limit.
+// # QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately. For more information, refer to QPS limit.
 //
 // @param tmpReq - DescribeRTSNativeSDKVvDataRequest
 //
@@ -18905,7 +19035,13 @@ func (client *Client) DescribeRTSNativeSDKVvDataWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the information about a real-time communication (RTC) cloud-based recording task.
+// Queries the cloud recording files and task information for RTC.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 50 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeRtcCloudRecordingFilesRequest
 //
@@ -18949,7 +19085,7 @@ func (client *Client) DescribeRtcCloudRecordingFilesWithContext(ctx context.Cont
 
 // Summary:
 //
-// 查询云端转码任务
+// Queries a cloud transcoding task.
 //
 // @param request - DescribeRtcCloudTranscodeRequest
 //
@@ -18997,19 +19133,17 @@ func (client *Client) DescribeRtcCloudTranscodeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries information about a subscription to mixed-stream relay events.
+// Queries the event subscription for stream mixing and forwarding.
 //
 // Description:
 //
-// ### Usage notes
+// - This operation queries the event subscription for stream mixing and forwarding.
 //
-// - You can call this operation to query information about a subscription to mixed-stream relay events.
+// - Before calling this operation, you must have already called CreateRtcMPUEventSub to create a stream mixing and forwarding event subscription.
 //
-// - Before you call this operation, make sure that you have called the CreateRtcMPUEventSub operation to create the subscription.
+// ## QPS limit
 //
-// ### QPS limit
-//
-// - You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The single-user QPS limit for this operation is 50 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeRtcMPUEventSubRequest
 //
@@ -19053,15 +19187,15 @@ func (client *Client) DescribeRtcMPUEventSubWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the details of the episode list.
+// Queries a playlist.
 //
 // Description:
 //
-// You cannot call this operation if the episode list is empty. For information about how to add episodes to the episode list, see [AddShowIntoShowList](https://help.aliyun.com/document_detail/2848051.html).
+// Before calling this operation, you must add a show to the playlist. To add a show by calling an API operation, see [Add a show to a playlist](https://help.aliyun.com/document_detail/2848051.html).
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled. This may affect your business operations. Plan your calls accordingly.
 //
 // @param request - DescribeShowListRequest
 //
@@ -19113,15 +19247,13 @@ func (client *Client) DescribeShowListWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries configurations of stream-level region blocking.
+// Queries region blocking configurations of a specific live stream.
 //
 // Description:
 //
-// Queries configurations of stream-level region blocking.
+// ## QPS limit
 //
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 50 times per second per user. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Plan your calls accordingly.
 //
 // @param request - DescribeStreamLocationBlockRequest
 //
@@ -19193,15 +19325,15 @@ func (client *Client) DescribeStreamLocationBlockWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries one or more layouts of a virtual studio.
+// Retrieves the layout settings of a virtual studio.
 //
 // Description:
 //
-// You must call the [AddStudioLayout](https://help.aliyun.com/document_detail/215388.html) operation to configure layouts for a virtual studio before you call this operation to query layouts.
+// Before calling this operation, add layout settings for a virtual studio by calling the [AddStudioLayout](https://help.aliyun.com/document_detail/2848062.html) operation. Then call this operation to retrieve the virtual studio layout settings.
 //
-// ## QPS limits
+// ## QPS limit
 //
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://www.alibabacloud.com/help/en/apsaravideo-live/latest/qps-limit-on-an-api-operation-in-apsaravideo-live).
+// The single-user QPS limit for this operation is 15 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - DescribeStudioLayoutsRequest
 //
@@ -19257,15 +19389,15 @@ func (client *Client) DescribeStudioLayoutsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the stream pulling information about a live stream of a headline.
+// This operation queries stream pulling information for a specified Toutiao live stream.
 //
 // Description:
 //
-// You can call this operation to query the stream pulling information about a live stream of a headline.
+// You can call this API to query stream pulling information for a specified Toutiao live stream.
 //
-// ## [](#qps-)QPS limits
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The queries per second (QPS) limit for a single user is 100. If you exceed this limit, API calls are throttled. This may affect your business. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - DescribeToutiaoLivePlayRequest
 //
@@ -19333,15 +19465,15 @@ func (client *Client) DescribeToutiaoLivePlayWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the ingest information of a specified live stream that is ingested to Toutiao.
+// Queries the stream ingest information for a specified Toutiao live stream.
 //
 // Description:
 //
-// You can call this operation to query the ingest information of a specified live stream that is ingested to Toutiao.
+// You can call this API to query the stream ingest information for a specified Toutiao live stream.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The QPS limit for this API is 100 calls per second per user. Calls that exceed this limit are throttled, which may impact your business. We recommend that you call the API within this limit. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - DescribeToutiaoLivePublishRequest
 //
@@ -19449,15 +19581,15 @@ func (client *Client) DescribeUidOnlineStreamsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the daily peak inbound bandwidth.
+// Queries the daily peak upstream bandwidth of a user.
 //
 // Description:
 //
-// You can call this operation to query the daily peak inbound bandwidth.
+// Calls the operation to query the daily peak upstream bandwidth of a user.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The queries per second (QPS) limit for a single user for this operation is 5. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as needed. For more information, see [QPS limit](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - DescribeUpBpsPeakDataRequest
 //
@@ -19521,15 +19653,15 @@ func (client *Client) DescribeUpBpsPeakDataWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the daily peak inbound bandwidth of a leased line.
+// Queries the daily peak upstream bandwidth of a specific dedicated line for a user.
 //
 // Description:
 //
-// You can call this operation to query the daily peak inbound bandwidth of a leased line.
+// Calls the operation to query the daily peak upstream bandwidth of a specific dedicated line for a user.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 5 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The QPS limit for a single user on this operation is 5 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately. For more information, see [QPS limit](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - DescribeUpBpsPeakOfLineRequest
 //
@@ -19597,15 +19729,15 @@ func (client *Client) DescribeUpBpsPeakOfLineWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the daily peak number of concurrently ingested streams.
+// Queries the daily peak number of concurrent upstream ingest streams for a user.
 //
 // Description:
 //
-// You can call this operation to query the daily peak number of concurrently ingested streams.
+// Calls the operation to query the daily peak number of concurrent upstream ingest streams for a user.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The QPS limit for a single user on this operation is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately. For more information, see [QPS limit](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - DescribeUpPeakPublishStreamDataRequest
 //
@@ -19669,17 +19801,15 @@ func (client *Client) DescribeUpPeakPublishStreamDataWithContext(ctx context.Con
 
 // Summary:
 //
-// Suspends real-time log delivery for one or more domain names.
+// Call DisableLiveRealtimeLogDelivery to pause real-time log delivery for a domain name.
 //
 // Description:
 //
-// Obtain a domain name for which real-time log delivery is enabled, and then call this operation to suspend real-time log delivery for the domain name.
+// This operation pauses real-time log delivery for a specified streaming domain. Before you call this operation, you must specify a streaming domain that has real-time log delivery enabled. <props="china">Currently, this feature is available only for streaming domains. To push upstream real-time logs from an ingest domain, you must [submit a ticket](https://workorder.console.aliyun.com/console.htm#/ticket/add?productCode=live\\&commonQuestionId=4545\\&isSmart=true\\&iatraceid=1608439120675-2a5c48de0b84805313c708\\&channel=selfservice). <props="intl">Currently, this feature is available only for streaming domains. To push upstream real-time logs from an ingest domain, you must [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12818093.nav-right.dticket.6cb216d07otFWR#/ticket/createIndex).
 //
-// This operation is applicable to only streaming domains. If you want to configure real-time log delivery for an ingest domain, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12818093.nav-right.dticket.6cb216d07otFWR#/ticket/createIndex).
+// ## QPS limit
 //
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// A single user can make up to 6,000 queries per second (QPS) to this API. If you exceed this limit, API calls are throttled, which can affect your business. We recommend that you call this API at a reasonable rate.
 //
 // @param request - DisableLiveRealtimeLogDeliveryRequest
 //
@@ -19723,11 +19853,11 @@ func (client *Client) DisableLiveRealtimeLogDeliveryWithContext(ctx context.Cont
 //
 // Description:
 //
-// Dynamically updating a watermark means replacing the watermark template ID during live streaming. Before you call this operation to update a watermark, you must prepare the watermark template ID that is used for replacement. The watermark template ID is specified by the **TemplateId*	- parameter of this operation. You can call the [DescribeLiveStreamWatermarks](https://help.aliyun.com/document_detail/2848102.html) operation to obtain available watermark template IDs.
+// Dynamically updating a watermark involves replacing the watermark template ID during a live stream. Before you call this operation, you must obtain the ID of the watermark template that you want to use. To obtain the IDs of available watermark templates, call the [DescribeLiveStreamWatermarks](https://help.aliyun.com/document_detail/2848102.html) operation.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - DynamicUpdateWaterMarkStreamRuleRequest
 //
@@ -19791,15 +19921,15 @@ func (client *Client) DynamicUpdateWaterMarkStreamRuleWithContext(ctx context.Co
 
 // Summary:
 //
-// Edits an episode list.
+// Edits a playlist.
 //
 // Description:
 //
-// You can call this operation to update all configurations of episodes in an episode list or replace the episodes.
+// This operation performs a full edit. You can use this operation to edit configuration information or replace multiple playlist items.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. If you exceed this limit, your API calls are throttled. This throttling can affect your business. Call this API within the specified limit.
 //
 // @param request - EditPlaylistRequest
 //
@@ -19859,15 +19989,17 @@ func (client *Client) EditPlaylistWithContext(ctx context.Context, request *Edit
 
 // Summary:
 //
-// Creates an editing task.
+// Adds a video clip task.
 //
 // Description:
 //
-// You can call this operation to create an editing task by specifying the production studio ID and the episode ID. You will not receive a notification after the editing task is created. You can call the [GetEditingJobInfo](https://help.aliyun.com/document_detail/2848059.html) operation to query the status of the editing task.
+// This operation allows you to add a video clip task by specifying CasterId and ShowId.
 //
-// ## [](#qps-)QPS limit
+// After a video clip task is added, no automatic notification is sent. You can call the [GetEditingJobInfo](https://help.aliyun.com/document_detail/2848059.html) operation to query the task status.
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - EditShowAndReplaceRequest
 //
@@ -19939,15 +20071,15 @@ func (client *Client) EditShowAndReplaceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Switches a scene to the standby resource in a production studio.
+// Switches a production studio to the standby resource.
 //
 // Description:
 //
-// You can call this operation to switch a specified scene to the standby resource. Only a PGM scene is supported.
+// You can call this operation to urgently switch a specified scene to the standby video. This operation applies only to Program (PGM) scenes.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 per user. If you exceed this limit, API calls are throttled, which may impact your business.
 //
 // @param request - EffectCasterUrgentRequest
 //
@@ -20003,15 +20135,15 @@ func (client *Client) EffectCasterUrgentWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Updates the standby resource in a specified scene.
+// Update the standby video of a production studio.
 //
 // Description:
 //
-// Make sure that the resource is referenced by the scene.
+// This operation adds a video resource to a specified scenario. The resource becomes active when it is referenced by the scenario.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for each user is 10. If you exceed this limit, API calls are throttled. Throttling may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - EffectCasterVideoResourceRequest
 //
@@ -20071,17 +20203,15 @@ func (client *Client) EffectCasterVideoResourceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Enables real-time log delivery for one or more domain names.
+// Call the EnableLiveRealtimeLogDelivery operation to enable real-time log delivery for a domain name.
 //
 // Description:
 //
-// ##
-//
-// This operation is applicable to only streaming domains. If you want to configure real-time log delivery for an ingest domain, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12818093.nav-right.dticket.6cb216d07otFWR#/ticket/createIndex).
+// <props="china">Currently, you can configure only streaming domains. To deliver real-time logs for ingest domains, [submit a ticket](https://workorder.console.aliyun.com/console.htm#/ticket/add?productCode=live\\&commonQuestionId=4545\\&isSmart=true\\&iatraceid=1608439120675-2a5c48de0b84805313c708\\&channel=selfservice). <props="intl">Currently, you can configure only streaming domains. To deliver real-time logs for ingest domains, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12818093.nav-right.dticket.6cb216d07otFWR#/ticket/createIndex).
 //
 // ## QPS limit
 //
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The queries per second (QPS) limit for a single user is 6,000 calls per minute. If you exceed the limit, API calls are throttled, which can affect your business. Call this operation at a reasonable rate.
 //
 // @param request - EnableLiveRealtimeLogDeliveryRequest
 //
@@ -20121,21 +20251,19 @@ func (client *Client) EnableLiveRealtimeLogDeliveryWithContext(ctx context.Conte
 
 // Summary:
 //
-// Disables a live stream. You can specify the time when the live stream is resumed.
+// Disables stream ingest for a specified stream. You can preset a time to resume the stream.
 //
 // Description:
 //
-// You can call this operation to disable a live stream and specify the time when the live stream is resumed. If the time is not specified, you can call the [ResumeLiveStream](https://help.aliyun.com/document_detail/2847831.html) operation to resume the live stream. This operation supports only the live streams ingested by streamers.
+// Calls this operation to disable stream ingest for a specified stream. You can preset a time to resume the stream. If no preset time is specified, call the [ResumeLiveStream](https://help.aliyun.com/document_detail/2847831.html) operation to resume the live stream. This operation currently supports only publisher (streamer ingest).
 //
-// >
+// > - This operation disables live streams by adding them to a blacklist. The upper limit is 10,000 streams. If this limit is exceeded, the disable operation fails. Monitor the number of currently disabled streams. Call the [DescribeLiveStreamsBlockList](https://help.aliyun.com/document_detail/2847825.html) operation to query the number of disabled streams.
 //
-//   - This operation disables a live stream by adding the stream to the blacklist. You can disable up to 10,000 live streams. If the limit is reached, you cannot disable any more live streams. Pay attention to the number of live streams that are disabled. You can call the [DescribeLiveStreamsBlockList](https://help.aliyun.com/document_detail/2847825.html) operation to query the number of live streams that are disabled.
+// > - If you only interrupt a live stream without adding it to the blacklist, the stream does not count toward the 10,000-stream blacklist quota.
 //
-//   - An interrupted live stream is not added to the blacklist and does not occupy the quota.
+// ## QPS limit
 //
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The maximum queries per second (QPS) per user for this operation is 20. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - ForbidLiveStreamRequest
 //
@@ -20207,15 +20335,15 @@ func (client *Client) ForbidLiveStreamWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries all custom stream mixing templates.
+// Retrieves all custom stream mix templates.
 //
 // Description:
 //
-// You can call this operation to query all custom stream mixing templates. A list of template names and template configurations is returned.
+// You can call this operation to retrieve all custom stream mix templates. The operation returns a list of template names and template configurations.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. If this limit is exceeded, throttling is triggered, which may affect your business. We recommend that you are aware of this limit when you call this operation.
 //
 // @param request - GetAllCustomTemplatesRequest
 //
@@ -20267,15 +20395,15 @@ func (client *Client) GetAllCustomTemplatesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the information about a custom stream mixing template.
+// Retrieves a custom stream mixing template.
 //
 // Description:
 //
-// Obtain the name of the custom stream mixing template, and then call this operation to query the information about the template.
+// First, obtain the name of the custom template that you want to query. Then, call this operation to retrieve the custom stream mixing template.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 per user. If you exceed this limit, API calls are throttled, which may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - GetCustomTemplateRequest
 //
@@ -20327,15 +20455,15 @@ func (client *Client) GetCustomTemplateWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the details of an edge transcoding task.
+// Queries the details of an edge transcoding job.
 //
 // Description:
 //
-// To call this operation, make sure that you have the permissions to access the edge transcoding feature.
+// To call this API operation, you must have permissions for the edge transcoding service.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user on this API is 6,000 calls per minute. API calls that exceed this limit are throttled. This may affect your business. We recommend that you call the API at a reasonable rate.
 //
 // @param request - GetEdgeTranscodeJobRequest
 //
@@ -20395,13 +20523,13 @@ func (client *Client) GetEdgeTranscodeJobWithContext(ctx context.Context, reques
 //
 // Description:
 //
-//	  You can call this operation to query the details of an edge transcoding template.
+// - This operation queries the details of an edge transcoding template.
 //
-//		- To call this operation, make sure that you have the permissions to access the edge transcoding feature.
+// - You must have permissions to access the edge transcoding service before you can call this operation.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 6,000 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - GetEdgeTranscodeTemplateRequest
 //
@@ -20457,19 +20585,19 @@ func (client *Client) GetEdgeTranscodeTemplateWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the information about editing tasks.
+// Queries the information about a video clip task.
 //
 // Description:
 //
-//	  When you call this operation, you can specify the CasterId and ShowId parameters to query the information about specific editing tasks. Make sure that the parameter settings meet the requirements.
+// - This operation allows you to query information about a video clip task for a specified CasterId and ShowId. Make sure that the parameters are set correctly when you call this operation.
 //
-//		- If you specify the ShowId parameter in the request, the information about the editing tasks for the specified episode is returned.
+// - If you specify the ShowId request parameter, the response returns the video clip task information for the specified show in the playlist.
 //
-//		- If you do not specify the ShowId parameter in the request, the information about the editing tasks for the entire episode list is returned.
+// - If you do not specify the ShowId request parameter, the response returns the video clip task information for the entire playlist.
 //
-// ### [](#qps-)QPS limit
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - GetEditingJobInfoRequest
 //
@@ -20525,13 +20653,13 @@ func (client *Client) GetEditingJobInfoWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the information about a specified interactive messaging application.
+// You can call the GetMessageApp operation to retrieve the details of a specified interactive message application.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The queries per second (QPS) limit for a single user is 100. If you exceed this limit, API calls are throttled, which may affect your business. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - GetMessageAppRequest
 //
@@ -20575,11 +20703,13 @@ func (client *Client) GetMessageAppWithContext(ctx context.Context, request *Get
 
 // Summary:
 //
-// Queries the information about a message group.
+// Call GetMessageGroup to retrieve message group details.
 //
 // Description:
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// ## Usage notes
+//
+// The QPS limit for this API is 100 queries per second per user. If the limit is exceeded, API calls will be throttled, which may affect your business. You can make API calls at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - GetMessageGroupRequest
 //
@@ -20627,17 +20757,17 @@ func (client *Client) GetMessageGroupWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// Obtains a token that the client can use to establish a persistent connection over the LWP protocol and based on atomic capabilities.
+// Call GetMessageToken to obtain a persistent connection token. The client can use this token to communicate with various atomic capabilities through the LWP protocol via persistent connection.
 //
 // Description:
 //
-// ##
+// ## Usage notes
 //
-// Obtain the user ID, device ID, and device type of the client, and then pass the information to the server. When you call this operation, the server obtains a token and returns the token to the client. Different users have different user IDs, and different devices have different device IDs.
+// First obtain the client UserId, DeviceId, and DeviceType information, then pass them to the server. The server uses this interface to obtain the authentication token and returns it to the client. Different users need to use different UserIds, and different terminal devices need to use different DeviceIds.
 //
-// ## QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The QPS limit for this API is 100 queries per second (QPS) per user. If you exceed this limit, API calls will be throttled, which may affect your business. You can call this API at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - GetMessageTokenRequest
 //
@@ -20753,13 +20883,13 @@ func (client *Client) GetTranscodeTaskStatusWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Configures prefetch for a live stream that is ingested based on Real-Time Communication (RTC).
+// Prefetches Real-Time Communication (RTC) streams.
 //
 // Description:
 //
-// ### [](#qps-)QPS limit
+// ### QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. API calls that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - HotLiveRtcStreamRequest
 //
@@ -20839,15 +20969,15 @@ func (client *Client) HotLiveRtcStreamWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Creates a scheduled task to start and stop the playback of a playlist at specified points in time.
+// Creates a scheduled task.
 //
 // Description:
 //
-// You can call this operation to create a scheduled task to start and stop the playback of an episode list at specified points in time. Make sure that the parameter settings meet the requirements.
+// This operation allows you to configure a scheduled task to start and stop a playlist at specified times. Make sure that the parameters are set correctly when you call this operation.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - InitializeAutoShowListTaskRequest
 //
@@ -20919,11 +21049,11 @@ func (client *Client) InitializeAutoShowListTaskWithContext(ctx context.Context,
 
 // Summary:
 //
-// Joins a message group.
+// Join a message group.
 //
 // Description:
 //
-// You can call this operation up to 200 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The QPS limit for this API is 200 calls per second per user. If this limit is exceeded, API calls will be throttled, which may affect your business. Please use this API responsibly.
 //
 // @param request - JoinMessageGroupRequest
 //
@@ -21047,13 +21177,13 @@ func (client *Client) KickLiveMessageGroupUserWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Leaves a message group.
+// Call LeaveMessageGroup to allow users to exit a message group.
 //
 // Description:
 //
-// ##
+// ## Usage notes
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The QPS limit for this API is 100 calls per second per user. If this limit is exceeded, API calls will be throttled, which may affect your business. You can call this API properly to avoid issues. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - LeaveMessageGroupRequest
 //
@@ -21113,19 +21243,19 @@ func (client *Client) LeaveMessageGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries edge transcoding tasks.
+// Queries the list of edge transcoding tasks.
 //
 // Description:
 //
-//	  You can call this operation to query edge transcoding tasks.
+// - This operation queries the list of edge transcoding tasks.
 //
-//		- To call this operation, make sure that you have the permissions to access the edge transcoding feature.
+// - You must have the permissions to access the edge transcoding service before you can call this operation.
 //
-//		- You can query only tasks created or modified in the last 180 days.
+// - This operation returns only tasks from the last 180 days, and the last operation time must be within this 180-day period.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 6,000 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - ListEdgeTranscodeJobRequest
 //
@@ -21205,13 +21335,13 @@ func (client *Client) ListEdgeTranscodeJobWithContext(ctx context.Context, reque
 //
 // Description:
 //
-//	  You can call this operation to query the list of edge transcoding templates.
+// - This operation queries the list of edge transcoding templates.
 //
-//		- To call this operation, make sure that you have the permissions to access the edge transcoding feature.
+// - You must have permissions to access the edge transcoding service before you can call this operation.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 6,000 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - ListEdgeTranscodeTemplateRequest
 //
@@ -21335,15 +21465,15 @@ func (client *Client) ListEventSubWithContext(ctx context.Context, request *List
 //
 // Description:
 //
-//	  The maximum time range to query is seven days.
+// - Maximum query span: 7 days.
 //
-//		- The minimum time granularity to query is 1 minute.
+// - Minimum query granularity: 1 minute.
 //
-//		- You can query data in the last seven days.
+// - Maximum query range: data from the last 7 days.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 50 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - ListEventSubEventRequest
 //
@@ -21383,11 +21513,11 @@ func (client *Client) ListEventSubEventWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries stream delay configurations.
+// Retrieves stream delay configurations.
 //
 // Description:
 //
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 60. If you exceed this limit, API calls are throttled, which may impact your business. Ensure that you call this operation within this limit.
 //
 // @param request - ListLiveDelayConfigRequest
 //
@@ -21447,11 +21577,11 @@ func (client *Client) ListLiveDelayConfigWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries interactive messaging applications.
+// Queries the list of interactive messaging applications by calling ListLiveMessageApps.
 //
 // Description:
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The China (Shanghai) region is replaced by the Singapore region in the example. The China (Shanghai) region is replaced by the Singapore region in the example. The per-user QPS limit for this operation is 50. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable frequency.
 //
 // @param request - ListLiveMessageAppsRequest
 //
@@ -21503,15 +21633,15 @@ func (client *Client) ListLiveMessageAppsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries interactive messaging groups by page.
+// Queries the list of interactive message groups with pagination support.
 //
 // Description:
 //
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
+// Before calling this operation, you must have already called [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) to create an interactive message group.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 50 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - ListLiveMessageGroupByPageRequest
 //
@@ -21551,15 +21681,15 @@ func (client *Client) ListLiveMessageGroupByPageWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the messages sent in a group.
+// Queries the message list of a group by calling ListLiveMessageGroupMessages.
 //
 // Description:
 //
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
+// Before calling this operation, you must have already created an interactive message group by calling [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html).
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 50 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - ListLiveMessageGroupMessagesRequest
 //
@@ -21635,17 +21765,17 @@ func (client *Client) ListLiveMessageGroupMessagesWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the users in an interactive messaging group.
+// Queries the list of users in a group by calling ListLiveMessageGroupUsers.
 //
 // Description:
 //
-//	  Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
+// - Before calling this operation, you must have already created an interactive messaging group by calling [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html).
 //
-//		- For a super group, which has more than 2,000 users, the user list cannot be queried. In addition, the notifications about users entering or leaving the group are sent at an interval of at least of 5 seconds. These notifications display the accurate number of users in the group for the time being, but do not display the list of all users entering or leaving the group. Once a group is upgraded to a super group, the user list of the group is immediately cleared. The super group cannot be restored to a normal group until all users in the group leave the group (that is, the group is closed). After you reopen the group, it is restored to a normal group.
+// - For super-large groups (groups with more than 2,000 members), member list queries are no longer supported. Additionally, notifications for members joining or leaving the group are sent at intervals of at least 5 seconds. The notifications do not display the full list of users who joined or left, but they display the exact group member count. Once a group is upgraded to a super-large group, the member list is immediately cleared. The group cannot be reverted to a regular group until all members leave the group (the group is closed). When the group is reopened, it is restored to a regular group.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 50 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - ListLiveMessageGroupUsersRequest
 //
@@ -21777,15 +21907,15 @@ func (client *Client) ListLiveMessageGroupsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries all configurations of real-time log delivery under an Alibaba Cloud account.
+// You can call the ListLiveRealtimeLogDelivery operation to query all real-time log delivery configurations.
 //
 // Description:
 //
-// You can call this operation to query all configurations of real-time log delivery under an account. Make sure that the parameter settings meet the requirements.
+// You can call this operation to query all real-time log delivery configurations. Make sure that the parameters are set as required.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 6,000 calls per minute for each user. API calls that exceed this limit are throttled, which may impact your business. Call this operation at a reasonable rate.
 //
 // @param request - ListLiveRealtimeLogDeliveryRequest
 //
@@ -21825,17 +21955,17 @@ func (client *Client) ListLiveRealtimeLogDeliveryWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries all domain names that are associated with a specific configuration of real-time log delivery.
+// Call ListLiveRealtimeLogDeliveryDomains to query all streaming domains that are configured for the real-time log delivery service.
 //
 // Description:
 //
-//	  You can call this operation to query all domain names that are associated with a specific configuration of real-time log delivery. The returned results indicate whether real-time log delivery is enabled or disabled for the domain names.
+// - This operation queries all streaming domains that are configured for the real-time log delivery service. The response indicates whether the service is online or offline for each domain.
 //
-//		- You can call the [DescribeLiveDomainRealtimeLogDelivery](https://help.aliyun.com/document_detail/2848121.html) to query the Project, Logstore, and Region parameters.
+// - You can call [DescribeLiveDomainRealtimeLogDelivery](https://help.aliyun.com/document_detail/2848121.html) to query parameters such as Project, Logstore, and Region.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 6,000 calls per minute. If you exceed this limit, API calls are throttled. Throttling may affect your business. We recommend that you call this operation within the specified limit.
 //
 // @param request - ListLiveRealtimeLogDeliveryDomainsRequest
 //
@@ -21875,15 +22005,15 @@ func (client *Client) ListLiveRealtimeLogDeliveryDomainsWithContext(ctx context.
 
 // Summary:
 //
-// Queries all configurations of real-time log delivery.
+// Queries information about all real-time log delivery services.
 //
 // Description:
 //
-// You can call this operation to query all configurations of real-time log delivery. Make sure that the parameter settings meet the requirements.
+// Make sure that you configure the parameters as required when you call this operation.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 6,000 calls per minute. If you exceed this limit, API calls are throttled. This can affect your business, so you should plan your calls accordingly.
 //
 // @param request - ListLiveRealtimeLogDeliveryInfosRequest
 //
@@ -21923,7 +22053,7 @@ func (client *Client) ListLiveRealtimeLogDeliveryInfosWithContext(ctx context.Co
 
 // Summary:
 //
-// 查询符合条件的资源和标签
+// Queries resources and tags that meet the specified conditions.
 //
 // @param request - ListLiveTagResourcesRequest
 //
@@ -21995,13 +22125,13 @@ func (client *Client) ListLiveTagResourcesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries messages.
+// Queries the message list.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The single-user QPS limit for this API operation is 100 queries per second (QPS). If the limit is exceeded, API calls will be throttled, which may affect your business. You can call the API operation properly to avoid this issue. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - ListMessageRequest
 //
@@ -22065,13 +22195,13 @@ func (client *Client) ListMessageWithContext(ctx context.Context, request *ListM
 
 // Summary:
 //
-// Queries interactive messaging applications.
+// Call ListMessageApp to query the list of interactive message applications.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The single-user QPS limit for this API is 100 queries per second (QPS). API calls exceeding this limit will be throttled, which may affect your business. You can call this API at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - ListMessageAppRequest
 //
@@ -22123,13 +22253,13 @@ func (client *Client) ListMessageAppWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// Queries the message groups of a specified user.
+// Call ListMessageGroup to query the message group list for a specified user.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The single-user QPS limit for this API is 100 queries per second. If this limit is exceeded, API calls will be throttled, which may affect your business. You can call this API at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - ListMessageGroupRequest
 //
@@ -22189,13 +22319,13 @@ func (client *Client) ListMessageGroupWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the members of a message group.
+// Query message group members.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The single-user QPS limit for this API is 100 queries per second (QPS). If you exceed this limit, API calls will be throttled, which may affect your business. You can make API calls at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - ListMessageGroupUserRequest
 //
@@ -22255,13 +22385,13 @@ func (client *Client) ListMessageGroupUserWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries user information by user ID.
+// Call ListMessageGroupUserById to query user information by user ID list.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The QPS limit for this API is 100 queries per second per user. If the limit is exceeded, API calls will be throttled, which may affect your business. You can call the API properly to avoid this issue. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param tmpReq - ListMessageGroupUserByIdRequest
 //
@@ -22319,13 +22449,13 @@ func (client *Client) ListMessageGroupUserByIdWithContext(ctx context.Context, t
 
 // Summary:
 //
-// Queries muted members in a messaging group.
+// Call ListMuteGroupUser to query the list of muted members in a message group.
 //
 // Description:
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The QPS limit for this API is 100 queries per second (QPS) per user. If the limit is exceeded, API calls will be throttled, which may affect your business. You can call this API at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - ListMuteGroupUserRequest
 //
@@ -22385,15 +22515,15 @@ func (client *Client) ListMuteGroupUserWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the information about one or more episode lists.
+// Queries episode lists.
 //
 // Description:
 //
-// You can call the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation to add episode lists and then call this operation to query the episode lists.
+// Call the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation to add items to a playlist before you query it.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// This operation is limited to 10 queries per second (QPS) per user. API calls that exceed this limit are throttled. Throttling may affect your business. Plan your calls accordingly.
 //
 // @param request - ListPlaylistRequest
 //
@@ -22453,15 +22583,15 @@ func (client *Client) ListPlaylistWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// Queries the information about episodes in an episode list.
+// Queries the items in a specified playlist.
 //
 // Description:
 //
-// You can call the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation to add episodes to an episode list and then call this operation to query the episodes in the episode list
+// Before you call this operation, you must call the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation to add items to a playlist.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// This operation has a queries per second (QPS) limit of 10 calls per user. If you exceed this limit, your API calls are throttled. Throttling can affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - ListPlaylistItemsRequest
 //
@@ -22517,7 +22647,7 @@ func (client *Client) ListPlaylistItemsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取在线频道列表
+// Retrieves the list of online channels.
 //
 // @param request - ListRTCLiveRoomsRequest
 //
@@ -22569,15 +22699,15 @@ func (client *Client) ListRTCLiveRoomsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the callback records of a subscription to mixed-stream relay events.
+// Queries the event subscription records for stream mixing and forwarding.
 //
 // Description:
 //
-// You can call this operation to query the callback records of a subscription to mixed-stream relay events in the last seven days.
+// Queries the event subscription records for stream mixing and forwarding. You can query data from the last seven days.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 100 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - ListRtcMPUEventSubRecordRequest
 //
@@ -22641,17 +22771,17 @@ func (client *Client) ListRtcMPUEventSubRecordWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the parameters of mixed-stream relay tasks.
+// Queries the parameter details of a stream mixing and relaying task.
 //
 // Description:
 //
-//	  You can call the ListRtcMPUTaskDetail operation to query the parameters of mixed-stream relay tasks that were created by calling the StartLiveMPUTask operation.
+// - This operation queries the parameter details of a stream mixing and relaying task. Only stream mixing and relaying tasks created by using API operations can be queried.
 //
-//		- By default, the query results are sorted in reverse chronological order based on the task update time.
+// - For a paged query, the query results are sorted by task update time in descending order by default.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 50 calls per second. If the limit is exceeded, the API invocation is throttled, which may affect your business. Invoke this operation as needed.
 //
 // @param request - ListRtcMPUTaskDetailRequest
 //
@@ -22933,11 +23063,11 @@ func (client *Client) MiguLivePullToPushStatusWithContext(ctx context.Context, r
 //
 // Description:
 //
-// You can call this operation to modify a text, image, or subtitle component.
+// You can call this operation to modify a production studio component, such as a text, image, or translation caption component.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - ModifyCasterComponentRequest
 //
@@ -23021,15 +23151,15 @@ func (client *Client) ModifyCasterComponentWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Modifies the configurations of an episode in a production studio. You cannot change the episode type.
+// Modifies the configuration of a production studio episode. The episode type cannot be modified.
 //
 // Description:
 //
-// You can call this operation to modify the configurations of an episode in a production studio. You cannot change the episode type.
+// You can call this operation to modify the configuration of a production studio episode. The episode type cannot be modified.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 4 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 4 calls per second. If this limit is exceeded, API calls are throttled. This may affect your business. We recommend that you call this API operation at a reasonable rate.
 //
 // @param request - ModifyCasterEpisodeRequest
 //
@@ -23109,15 +23239,15 @@ func (client *Client) ModifyCasterEpisodeWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Modifies the layout configurations pf a production studio. You need to pass only parameters that you want to modify.
+// Modifies a layout configuration. Only the items to be modified need to be passed. Items that do not require modification do not need to be included.
 //
 // Description:
 //
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and then call this operation to modify a layout of the production studio. This operation supports the default and adaptive scaling modes.
+// Create a production studio by calling the [CreateCaster operation](https://help.aliyun.com/document_detail/2848009.html) first, and then call this operation to modify the layout configuration. Only the items to be modified need to be passed. Items that do not require modification do not need to be included. This operation currently supports the following element fill modes: default and adaptive.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - ModifyCasterLayoutRequest
 //
@@ -23189,15 +23319,15 @@ func (client *Client) ModifyCasterLayoutWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Modifies the episode list for carousel playback in a production studio.
+// This operation modifies the program list of a production studio.
 //
 // Description:
 //
-// You can call the [AddCasterProgram](https://help.aliyun.com/document_detail/2848074.html) operation to add the episode list for carousel playback in a production studio and then call this operation to modify the episode list. The supported types of episodes include video resource and component.
+// You can call the [AddCasterProgram](https://help.aliyun.com/document_detail/2848074.html) operation to add a program list for a production studio. Then, you can call this operation to modify the program list. This operation supports programs of the video source and component types.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 4 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 4 calls per second. If you exceed this limit, API calls are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - ModifyCasterProgramRequest
 //
@@ -23253,17 +23383,15 @@ func (client *Client) ModifyCasterProgramWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Changes the video source for a production studio.
+// Modifies the video resources of a production studio.
 //
 // Description:
 //
-// ## Usage notes
-//
-// You must call the [CreateCaster](https://help.aliyun.com/document_detail/69338.html) operation to create a production studio before you call this operation to modify input sources of the production studio.
+// Before calling this operation, you must create a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation.
 //
 // ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// This operation supports up to 10 queries per second (QPS) per user. If you exceed this limit, your API calls are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - ModifyCasterVideoResourceRequest
 //
@@ -23359,7 +23487,7 @@ func (client *Client) ModifyCasterVideoResourceWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Modifies a virtual studio template.
+// This API is used to modify the specified virtual studio template.
 //
 // @param tmpReq - ModifyLiveAIStudioRequest
 //
@@ -23473,9 +23601,9 @@ func (client *Client) ModifyLiveAIStudioWithContext(ctx context.Context, tmpReq 
 //
 // Description:
 //
-// ### [](#qps-)QPS limit
+// ### QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 100 queries per second (QPS) per user. API calls that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - ModifyLiveDomainSchdmByPropertyRequest
 //
@@ -23531,11 +23659,11 @@ func (client *Client) ModifyLiveDomainSchdmByPropertyWithContext(ctx context.Con
 
 // Summary:
 //
-// Modifies the content moderation settings of an interactive messaging application.
+// Modifies the security audit settings of an interactive messaging application.
 //
 // Description:
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The China site Chinese edition of this API has a single-user QPS limit of 50 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this API at a reasonable frequency.
 //
 // @param request - ModifyLiveMessageAppAuditRequest
 //
@@ -23703,15 +23831,15 @@ func (client *Client) ModifyLiveMessageAppDisableWithContext(ctx context.Context
 
 // Summary:
 //
-// Modifies the information about an interactive messaging group.
+// You can call the ModifyLiveMessageGroup operation to modify information about an interactive message group.
 //
 // Description:
 //
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
+// Before you call this operation, call [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) to create an interactive message group.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// This operation has a queries per second (QPS) limit of 50 for each user. If you exceed the limit, API calls are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param tmpReq - ModifyLiveMessageGroupRequest
 //
@@ -23785,15 +23913,15 @@ func (client *Client) ModifyLiveMessageGroupWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Modifies the mute status of users.
+// Changes the mute status of users in a group.
 //
 // Description:
 //
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
+// Before you call this operation, you must call the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// A single user can make up to 10 queries per second (QPS). If you exceed this limit, API calls are throttled, which may impact your business. Call this operation at a reasonable rate.
 //
 // @param tmpReq - ModifyLiveMessageGroupBandRequest
 //
@@ -23867,7 +23995,11 @@ func (client *Client) ModifyLiveMessageGroupBandWithContext(ctx context.Context,
 
 // Summary:
 //
-// Modifies the information about one or more users.
+// Modifies the information about a user.
+//
+// Description:
+//
+// 本接口的单用户QPS限制为50次/秒。超过限制，API调用会被限流，这可能会影响您的业务，请合理调用。
 //
 // @param request - ModifyLiveMessageUserInfoRequest
 //
@@ -23923,19 +24055,17 @@ func (client *Client) ModifyLiveMessageUserInfoWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Modifies the configuration of real-time log delivery for a domain name.
+// Modifies the real-time log delivery configuration for a domain name.
 //
 // Description:
 //
-//	You can call this operation to modify the configuration of real-time log delivery for a domain name. Logs for a domain name can be delivered to only one Logstore.
+// - Call this operation to modify the real-time log delivery configuration for a domain name. A domain name can deliver logs to only one Logstore at a time. <props="china">Currently, only streaming domains can be configured. To push real-time upstream logs (by configuring an ingest domain), [submit a ticket](https://workorder.console.aliyun.com/console.htm#/ticket/add?productCode=live\\&commonQuestionId=4545\\&isSmart=true\\&iatraceid=1608439120675-2a5c48de0b84805313c708\\&channel=selfservice). <props="intl">Currently, only streaming domains can be configured. To push real-time upstream logs (by configuring an ingest domain), [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12818093.nav-right.dticket.6cb216d07otFWR#/ticket/createIndex).
 //
-// This operation is applicable to only streaming domains. If you want to configure real-time log delivery for an ingest domain, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.12818093.nav-right.dticket.6cb216d07otFWR#/ticket/createIndex).
+// - Call [DescribeLiveDomainRealtimeLogDelivery](https://help.aliyun.com/document_detail/2848121.html) to query information about the Project, Logstore, and Region parameters.
 //
-//   - You can call the [DescribeLiveDomainRealtimeLogDelivery](https://help.aliyun.com/document_detail/2848121.html) operation to query the Project, Logstore, and Region parameters.
+// ## QPS limits
 //
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 6,000 times per minute per user. If you exceed the queries per second (QPS) limit, API calls are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - ModifyLiveRealtimeLogDeliveryRequest
 //
@@ -23979,11 +24109,11 @@ func (client *Client) ModifyLiveRealtimeLogDeliveryWithContext(ctx context.Conte
 //
 // Description:
 //
-// This operation allows you to change the position of an episode in an episode list, how many times an episode list is played, and the specific point in time at which the episode of the highest priority in an episode list is played.
+// This API operation modifies the position of a show in a playlist, the total number of playback loops for the playlist, and the specific playback time of the highest-priority show.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this API operation is 10 calls per second per user. If this limit is exceeded, API calls are throttled, which may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - ModifyShowListRequest
 //
@@ -24055,15 +24185,15 @@ func (client *Client) ModifyShowListWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
-// Modifies a layout of a virtual studio.
+// Modifies the layout of a production studio.
 //
 // Description:
 //
-// You can call this operation to modify a layout of a virtual studio. When you call this operation, specify only the parameters that you want to modify.
+// You can call this operation to modify the layout of a production studio. When you modify the layout settings, pass only the parameters that you want to change.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The QPS limit for this operation is 10 calls per second for each user. If you exceed the limit, API calls are throttled. This may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - ModifyStudioLayoutRequest
 //
@@ -24143,13 +24273,13 @@ func (client *Client) ModifyStudioLayoutWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Mutes a message group. In this case, all members of the message group are muted.
+// Call MuteAllGroupUser to mute a message group, enabling group-wide muting.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The QPS limit for this API is 100 queries per second (QPS) per user. If you exceed this limit, API calls will be throttled, which may affect your business. You can make API calls at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - MuteAllGroupUserRequest
 //
@@ -24205,13 +24335,13 @@ func (client *Client) MuteAllGroupUserWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Mutes members in a message group.
+// Mutes members in a message group in batches.
 //
 // Description:
 //
 // ## QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The single-user QPS limit for this operation is 100 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately. For more information, see [QPS limit](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param tmpReq - MuteGroupUserRequest
 //
@@ -24281,15 +24411,15 @@ func (client *Client) MuteGroupUserWithContext(ctx context.Context, tmpReq *Mute
 
 // Summary:
 //
-// Enables time shifting for a domain name, or an application or a live stream under the domain name.
+// You can call the OpenLiveShift operation to enable time shifting for a specific domain name, application, or stream.
 //
 // Description:
 //
 // You cannot configure time shifting and delayed transcoding at the same time.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// This operation supports up to 10 queries per second (QPS) per user. If you exceed this limit, the system throttles your API calls, which can impact your business. To prevent throttling, call this operation at a reasonable rate.
 //
 // @param request - OpenLiveShiftRequest
 //
@@ -24361,15 +24491,15 @@ func (client *Client) OpenLiveShiftWithContext(ctx context.Context, request *Ope
 
 // Summary:
 //
-// Switches to a specified episode.
+// Manually switches a show.
 //
 // Description:
 //
-// After you add episodes to an episode list and start live streaming, you can call this operation to switch among episodes. For information about how to add episodes to an episode list, see [AddShowIntoShowList](https://help.aliyun.com/document_detail/2848051.html).
+// After you add a show and start live streaming, you can call this operation to switch the show. To add a show by using an API operation, see [Add a show to the show list](https://help.aliyun.com/document_detail/2848051.html).
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - PlayChoosenShowRequest
 //
@@ -24429,11 +24559,13 @@ func (client *Client) PlayChoosenShowWithContext(ctx context.Context, request *P
 //
 // Description:
 //
-// Function name is required for calling this operation. You can get the function name by calling the [DescribeLiveDomainStagingConfig](~~297374#doc-api-live-DescribeLiveDomainStagingConfig~~ "Queries the configurations in the canary release environment.") operation.
+// ## Usage notes
 //
-// ## QPS limit
+// You can call the [DescribeLiveDomainStagingConfig](https://help.aliyun.com/document_detail/297374.html) operation to obtain the feature name. Then, you can call this operation to publish the configurations from the canary release environment to the production environment.
 //
-// A single user can perform a maximum of 30 queries per minute. Throttling is triggered when the number of calls per second exceeds the QPS limit. The throttling may affect your business. Thus, we recommend that you observe the QPS limit on this operation. For more information about what a single user means and the QPS details, see [QPS limit on an API operation in ApsaraVideo Live](https://www.alibabacloud.com/help/en/apsaravideo-live/latest/qps-limit-on-an-api-operation-in-apsaravideo-live#topic-2136805).
+// ## QPS limits
+//
+// You can call this operation up to 30 times per second per user. Throttling is triggered if the number of calls exceeds the limit. This may affect your business operations. We recommend that you plan your calls accordingly. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - PublishLiveStagingConfigToProductionRequest
 //
@@ -24561,7 +24693,7 @@ func (client *Client) PutRecordStorageLifeCycleWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the dual-stream disaster recovery records of online streams.
+// Queries dual-stream disaster recovery online records.
 //
 // @param request - QueryLiveDomainMultiStreamListRequest
 //
@@ -24601,13 +24733,13 @@ func (client *Client) QueryLiveDomainMultiStreamListWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries interactive messaging applications based on specified conditions.
+// Call QueryMessageApp to query interactive message applications based on specified conditions.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The QPS limit for this API is 100 queries per second per user. If the limit is exceeded, API calls will be throttled, which may affect your business. You can call the API properly to avoid this issue. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - QueryMessageAppRequest
 //
@@ -24667,11 +24799,11 @@ func (client *Client) QueryMessageAppWithContext(ctx context.Context, request *Q
 
 // Summary:
 //
-// Queries the status of a speech-to-text or translation task.
+// Queries the status of created real-time speech-to-text or translation tasks.
 //
 // Description:
 //
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 20 calls per second. If you exceed this limit, your API calls are throttled, which can affect your business. Call this API only as needed.
 //
 // @param request - QueryRtcAsrTasksRequest
 //
@@ -24723,15 +24855,15 @@ func (client *Client) QueryRtcAsrTasksWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the configuration of authentication for snapshot callbacks.
+// Queries the authentication configuration for snapshot callbacks.
 //
 // Description:
 //
-// Before you call this operation, make sure that you have configured authentication for snapshot callbacks. For more information, see [SetSnapshotCallbackAuth](https://help.aliyun.com/document_detail/2847907.html). You can call this operation to query the configuration of authentication for snapshot callbacks for a main streaming domain. Make sure that the parameter settings meet the requirements.
+// You can call this operation to query the authentication configuration for snapshot callbacks for a streaming domain. Before you call this operation, you must configure authentication. For more information, see [Set snapshot callback authentication](https://help.aliyun.com/document_detail/2847907.html).
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// This operation is limited to 30 queries per second (QPS) per user. If you exceed this limit, throttling is triggered, which can affect your services.
 //
 // @param request - QuerySnapshotCallbackAuthRequest
 //
@@ -24783,23 +24915,23 @@ func (client *Client) QuerySnapshotCallbackAuthWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Controls recordings manually on demand. For example, you can call this operation to start or stop recording at a specific point in time.
+// Performs on-demand manual recording. For example, dynamically starts or stops recording.
 //
 // Description:
 //
-//	  Before you call this operation, make sure that you fully understand the billing method and pricing of live stream recording in ApsaraVideo Live. For more information, see [Billing of live stream recording](https://help.aliyun.com/document_detail/195287.html).
+// - Before using this operation, make sure that you fully understand the billing method and pricing of live stream recording. For billing details, see [Live stream recording fees](https://help.aliyun.com/document_detail/195287.html).
 //
-//		- If a live stream is being automatically or manually recorded, you can call this operation to stop recording the live stream.
+// - This operation can only control live streams for which a recording configuration has taken effect. Complete [adding a recording configuration](https://help.aliyun.com/document_detail/2847881.html) first.
 //
-//		- If you call this operation to start recording a live stream while it is being recorded, a TaskAlreadyStarted error is returned, indicating that the task has been started.
+// - Before calling this operation, make sure that the target stream (DomainName/AppName/StreamName) is in an active stream ingest state.
 //
-//		- If a live stream that you manually record is interrupted, the recording stops.
+// - If a live stream is being recorded (through automatic recording or manual recording), you can call this operation to stop recording the stream. However, if you call this operation to start recording when recording is already started, the TaskAlreadyStarted error is returned, indicating that the task has already been started.
 //
-//		- If automatic recording is not configured for the live stream, ApsaraVideo Live does not automatically record the live stream after it is resumed.
+// - If a live stream that is manually started for recording is interrupted, recording stops. If automatic recording is not configured, recording does not automatically start after stream ingest resumes.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 50 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - RealTimeRecordCommandRequest
 //
@@ -24925,15 +25057,15 @@ func (client *Client) RecoverLiveMessageDeletedGroupWithContext(ctx context.Cont
 
 // Summary:
 //
-// Unmutes one or more users.
+// Unmutes users in a live interactive message group.
 //
 // Description:
 //
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group.
+// You must call [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) to create an interactive message group before you call this operation.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. Exceeding this limit triggers API throttling, which may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param tmpReq - RemoveLiveMessageGroupBandRequest
 //
@@ -24999,13 +25131,11 @@ func (client *Client) RemoveLiveMessageGroupBandWithContext(ctx context.Context,
 //
 // Description:
 //
-// ## [](#)Usage notes
+// This operation deletes a show from a show list. You must first call the [AddShowIntoShowList](https://help.aliyun.com/document_detail/2848051.html) operation to add the show.
 //
-// You cannot use this operation on empty episode lists. For information about how to add episodes to an episode list, see [AddShowIntoShowList](https://help.aliyun.com/document_detail/370861.html).
+// ## QPS limit
 //
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The limit for this operation is 10 queries per second (QPS) per user. API calls that exceed this limit are throttled, which may affect your business. Plan your API calls to avoid exceeding this limit.
 //
 // @param request - RemoveShowFromShowListRequest
 //
@@ -25133,13 +25263,13 @@ func (client *Client) RemoveTerminalsWithContext(ctx context.Context, request *R
 //
 // Description:
 //
-//	  Only product studios in playlist mode and general mode are supported. Virtual studios are not supported.
+// - This operation supports only production studios in playlist mode (carousel) or general mode. Virtual studios are not supported.
 //
-//		- After you restart a production studio, the current settings such as the resolution and screen orientation are reloaded to restore the previous playback status.
+// - When you restart a production studio, its current settings, such as resolution and screen orientation, are reloaded to restore the previous playback status.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// This operation is limited to 10 queries per second (QPS) per user. Calls that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - RestartCasterRequest
 //
@@ -25191,23 +25321,23 @@ func (client *Client) RestartCasterWithContext(ctx context.Context, request *Res
 
 // Summary:
 //
-// Restarts a pulled-stream relay task.
+// Restarts a stream pulling task.
 //
 // Description:
 //
-//	  You can call this operation to restart a pulled-stream relay task.
+// - Calls this operation to restart a stream pulling task.
 //
-//		- You can restart a task that is running (even if the task is in an abnormal retry state) or a task that is stopped. For a task that is running, this operation stops and then restarts it. For a task that is stopped, this operation directly starts it.
+// - You can restart a task that is running (including tasks in abnormal retry status) or stopped. A running task is stopped and then started again. A non-running task is started directly.
 //
-//		- You cannot restart a task if the start time specified for the task has not been reached.
+// - If the task has not reached the configured start time, the restart does not take effect.
 //
-//		- If a task is restarted, the task runs based on the latest configuration of the task. This interrupts stream ingest.
+// - The restarted task runs based on the latest task configuration, which causes stream ingest interruption.
 //
-//		- If a task for a list of ApsaraVideo VOD resources is restarted, the list plays from the beginning based on the latest configuration. You can call an operation to update the video index and playback progress to achieve successive playback.
+// - After a video-on-demand task is restarted, playback starts from the beginning based on the latest playlist. You can call the update operation to set the video index and video playback progress to resume playback.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - RestartLivePullToPushRequest
 //
@@ -25307,15 +25437,15 @@ func (client *Client) RestartTranscodeTaskWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Resumes the ingest of a live stream.
+// Resumes stream ingest for a specified stream.
 //
 // Description:
 //
-// You can call this operation to resume the ingest of a stream. This operation supports only the live streams ingested by streamers.
+// Calls this operation to resume stream ingest for a specified stream. This operation currently supports only publisher (streamer ingest).
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 30 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - ResumeLiveStreamRequest
 //
@@ -25383,11 +25513,13 @@ func (client *Client) ResumeLiveStreamWithContext(ctx context.Context, request *
 //
 // Description:
 //
-// Function name is required for calling this operation. You can get the function name by calling the [DescribeLiveDomainStagingConfig](~~297374#doc-api-live-DescribeLiveDomainStagingConfig~~ "Queries the configurations in the canary release environment.") operation.
+// ## Usage notes
 //
-// ## QPS limit
+// You must first call the [DescribeLiveDomainStagingConfig](https://help.aliyun.com/document_detail/297374.html) operation to obtain the feature name. Then, you can call this operation to roll back the configurations in the canary release environment.
 //
-// A single user can perform a maximum of 30 queries per minute. Throttling is triggered when the number of calls per second exceeds the QPS limit. The throttling may affect your business. Thus, we recommend that you observe the QPS limit on this operation. For more information about what a single user means and the QPS details, see [QPS limit on an API operation in ApsaraVideo Live](https://www.alibabacloud.com/help/en/apsaravideo-live/latest/qps-limit-on-an-api-operation-in-apsaravideo-live#topic-2136805).
+// ## QPS limits
+//
+// You can call this operation up to 30 times per second per user. API calls that exceed this limit are throttled. This can affect your business. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - RollbackLiveStagingConfigRequest
 //
@@ -25443,13 +25575,13 @@ func (client *Client) RollbackLiveStagingConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Configures likes in a message group.
+// Call SendLike to configure system like messages.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The QPS limit for this API is 100 queries per second (QPS) per user. If the limit is exceeded, API calls will be throttled, which may affect your business. You can call the API properly to avoid this issue. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - SendLikeRequest
 //
@@ -25513,11 +25645,11 @@ func (client *Client) SendLikeWithContext(ctx context.Context, request *SendLike
 //
 // Description:
 //
-// Before you call this operation, make sure that you have called the [CreateLiveMessageGroup](https://help.aliyun.com/document_detail/2848163.html) operation to create an interactive messaging group. You can send messages to a group only if the group is active, which requires that one or more users have joined the group. Offline messages are not supported. If you fail to send a message, check whether users exist in the group. If you want to send a message when all users are offline, we recommend that you store the message locally and send it after users get online.
+// Before you call this operation, you must call [](t2586945.xdita#)to create an interactive messaging group. You can send messages to a group only if the group is active, which means that one or more users have joined the group. Offline messages are not supported. If you fail to send a message, check whether there are users in the group. If you want to send an offline message, we recommend that you store the message locally and send it after users come online.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you consider this limit when calling this operation.
 //
 // @param request - SendLiveMessageGroupRequest
 //
@@ -25689,13 +25821,13 @@ func (client *Client) SendLiveMessageUserWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Sends a message to all members in a message group.
+// Call SendMessageToGroup to send messages to all members of a message group.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The single-user QPS limit for this API is 100 queries per second (QPS). If the limit is exceeded, API calls will be throttled, which may affect your business. You can call the API properly to avoid this issue. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - SendMessageToGroupRequest
 //
@@ -25761,13 +25893,13 @@ func (client *Client) SendMessageToGroupWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Sends a message to specified users in a message group.
+// Call SendMessageToGroupUsers to send messages to specified users in a message group.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The single-user QPS limit for this API is 100 queries per second (QPS). If this limit is exceeded, API calls will be throttled, which may affect your business. You can make API calls at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param tmpReq - SendMessageToGroupUsersRequest
 //
@@ -25843,15 +25975,15 @@ func (client *Client) SendMessageToGroupUsersWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Configures a channel of a production studio.
+// Sets a channel for a production studio.
 //
 // Description:
 //
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and then call this operation to configure a channel for the production studio.
+// Call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio. You can then call this operation to set a channel for the production studio.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 for each user. Exceeding this limit triggers throttling, which may affect your business. Call this operation at a reasonable rate to prevent interruptions.
 //
 // @param request - SetCasterChannelRequest
 //
@@ -25923,15 +26055,17 @@ func (client *Client) SetCasterChannelWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Configures a production studio. For example, you can specify the name of the production studio, configure the transcoding settings, and configure the recording settings.
+// Configures detailed settings for a production studio, including the name, transcoding configuration, recording configuration, and other parameters.
 //
 // Description:
 //
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and then call this operation to configure the production studio. This operation completely replaces existing configurations. If you leave a parameter empty, the corresponding configuration is cleared for the production studio.
+// Create a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation first, and then call this operation to configure detailed settings for the production studio.
 //
-// ## [](#qps-)QPS limit
+//	Warning: This operation fully replaces the existing configuration. If you set a parameter to empty, the existing configuration of that parameter in the production studio is cleared.
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - SetCasterConfigRequest
 //
@@ -26055,17 +26189,15 @@ func (client *Client) SetCasterConfigWithContext(ctx context.Context, request *S
 
 // Summary:
 //
-// Configures all settings of a scene. This is done by clearing all previous settings of the scene and applying new settings, including the layout setting, to the scene.
+// Sets the full scene configuration for a production studio by clearing the existing scene configuration and applying layout information to the specified scene.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// Calls this operation to set the full scene configuration for a production studio by clearing the existing scene configuration and applying layout information to the specified scene.
 //
-// This operation configures a scene by clearing all previous settings of the scene and applying new settings, including the layout setting, to the scene.
+// ## QPS limit
 //
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - SetCasterSceneConfigRequest
 //
@@ -26129,15 +26261,15 @@ func (client *Client) SetCasterSceneConfigWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Enables or disables the certificate of a domain name, and modifies the certificate information.
+// Configures whether the certificate feature is enabled for a domain name and modifies certificate information.
 //
 // Description:
 //
-// Obtain the domain name, and then call this operation to enable or disable the certificate of a domain name and modify the certificate information.
+// Obtain the live streaming domain name first, and then call this operation to configure whether the certificate is enabled for the domain name and modify certificate information.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 30 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - SetLiveDomainCertificateRequest
 //
@@ -26162,6 +26294,10 @@ func (client *Client) SetLiveDomainCertificateWithContext(ctx context.Context, r
 
 	if !dara.IsNil(request.DomainName) {
 		query["DomainName"] = request.DomainName
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
 	}
 
 	if !dara.IsNil(request.ForceSet) {
@@ -26213,15 +26349,15 @@ func (client *Client) SetLiveDomainCertificateWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Configures dual-stream disaster recovery for a streaming domain.
+// Calls SetLiveDomainMultiStreamConfig to enable or disable the dual-stream disaster recovery switch.
 //
 // Description:
 //
-// You can call this operation to configure dual-stream disaster recovery for a streaming domain, which allows you to ingest two streams that have the same name.
+// Calls this operation to enable the dual-stream disaster recovery feature, which allows stream ingest to the same live stream name.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - SetLiveDomainMultiStreamConfigRequest
 //
@@ -26301,7 +26437,7 @@ func (client *Client) SetLiveDomainMultiStreamMasterWithContext(ctx context.Cont
 
 // Summary:
 //
-// Configures the auto mode of dual-stream disaster recovery.
+// Sets the automatic mode switch for dual-stream disaster recovery.
 //
 // @param request - SetLiveDomainMultiStreamOptimalModeRequest
 //
@@ -26341,17 +26477,17 @@ func (client *Client) SetLiveDomainMultiStreamOptimalModeWithContext(ctx context
 
 // Summary:
 //
-// Sets or modifies domain name configurations in the canary release environment.
+// Sets or modifies domain configurations in the canary release environment.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Usage notes
 //
-// Obtain the accelerated domain name, and then call this operation to set or modify the domain name configurations in the canary release environment. For more information, see **Format of the Functions parameter**.
+// Obtain an accelerated domain name. You can then call this operation to set or modify domain name configurations in the staging environment. For more information, see **Functions format description**.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// This operation is limited to 30 queries per second (QPS) per user. API calls that exceed this limit are throttled, which may affect your business. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - SetLiveDomainStagingConfigRequest
 //
@@ -26407,25 +26543,25 @@ func (client *Client) SetLiveDomainStagingConfigWithContext(ctx context.Context,
 
 // Summary:
 //
-// Sets the configuration of edge stream relay.
+// Calls SetLiveEdgeTransfer to configure live stream relay settings.
 //
 // Description:
 //
-// You can call the SetLiveEdgeTransfer operation to configure edge stream relay. The configuration takes effect for ingested streams that start after edge stream relay is configured. The following table describes the scenarios in which edge stream relay takes effect or not.
+// The live edge stream relay configuration made by calling SetLiveEdgeTransfer only takes effect for streams that start after the configuration is completed. The following are examples of some typical scenarios:
 //
-// |Scenario|Analysis|Result|
+// | Scenario | Analysis | Result |
 //
-// |---|---|---|
+// | -------------- | -------------- | ------ |
 //
-// |1\\. You ingest a stream before you call the SetLiveEdgeTransfer operation.|The configuration of edge stream relay is not available.|The ingested stream is not affected by your call of the SetLiveEdgeTransfer operation. Edge stream relay does not take effect.|
+// | 1. The user has already started streaming before calling SetLiveEdgeTransfer. | The live edge stream relay configuration does not exist at this point. | The stream is not affected by the SetLiveEdgeTransfer configuration, meaning live edge stream relay will not be initiated. |
 //
-// |2\\. You disconnect an ingested stream that started before you called the SetLiveEdgeTransfer operation, and then resume the ingested stream.|The configuration of edge stream relay is available.|Edge stream relay takes effect for the resumed ingested stream based on the configuration.|
+// | 2. The user interrupts streaming that was started before calling SetLiveEdgeTransfer, and then resumes streaming. | The live edge stream relay configuration already exists at this point. | The resumed stream will initiate live stream relay according to the SetLiveEdgeTransfer configuration. |
 //
-// |3\\. You ingest a stream after you call the SetLiveEdgeTransfer operation.|The configuration of edge stream relay is available.|Edge stream relay takes effect for the ingested stream based on the configuration.|
+// | 3. The user starts streaming after calling SetLiveEdgeTransfer. | The live edge stream relay configuration already exists at this point. | This stream will initiate live stream relay according to the SetLiveEdgeTransfer configuration. |
 //
-// ## QPS limit
+// ## QPS Limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this API is 100 calls/second. Exceeding the limit will result in API throttling, which may affect your business. Please call this API appropriately.
 //
 // @param request - SetLiveEdgeTransferRequest
 //
@@ -26497,17 +26633,17 @@ func (client *Client) SetLiveEdgeTransferWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates a configuration of triggered stream pulling.
+// Configures triggered stream pulling.
 //
 // Description:
 //
-// You can call this operation to configure triggered stream pulling. The configuration lets ApsaraVideo Live automatically pull live streams from the origin server when the origin server starts to play live streams.
+// This API configures triggered stream pulling. When a live stream starts on the origin server, ApsaraVideo Live automatically pulls the stream for live playback.
 //
-// >  The IPv6 protocol is not supported.
+// > This API does not support the IPv6 protocol.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - SetLiveLazyPullStreamInfoConfigRequest
 //
@@ -26641,15 +26777,15 @@ func (client *Client) SetLiveMpuTaskSeiWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Configures stream-level region blocking.
+// Sets stream-level blocking for live streams by calling SetLiveStreamBlock.
 //
 // Description:
 //
-// You can configure up to 200 stream-level region blocking rules for a domain name. If there are rules in which the same application name and the same stream name are specified, the rule that is updated the most recently takes effect.
+// You can configure up to 200 live stream area blocking rules for a domain name. If duplicate rules with the same AppName and StreamName exist in the live stream area blocking rules, the most recently updated rule takes effect.
 //
-// ### [](#qps-)QPS limit
+// ### QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 50 calls per second. If this limit is exceeded, the API invocations are throttled, which may affect your business. Invoke this operation appropriately.
 //
 // @param request - SetLiveStreamBlockRequest
 //
@@ -26721,27 +26857,27 @@ func (client *Client) SetLiveStreamBlockWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Configures the live streaming latency.
+// You can call SetLiveStreamDelayConfig to configure live streaming latency.
 //
 // Description:
 //
-//	  You can call this operation to configure the latency of a streaming domain.
+// - This operation configures the latency for a streaming domain.
 //
-//		- Because an integer number of groups of pictures (GOPs) are cached, the latency is not less than the GOP size. The actual latency is calculated based on the GOP size. For example, if RtmpDelay is set to 4 seconds and the GOP size is 2 seconds, the minimum latency is 2 seconds (4 seconds minus 2 seconds) and the maximum latency is 6 seconds (4 seconds plus 2 seconds). If the GOP size is greater than the value of RtmpDelay, for example, the GOP size is 5 seconds and RtmpDelay is set to 4 seconds, the latency ranges from 0 to 9 seconds.
+// - The server-side cache stores an integer number of Groups of Pictures (GOPs). Therefore, the latency cannot be less than the GOP size. The actual latency is estimated based on the GOP size. For example, if you set RtmpDelay to 4 seconds for an RTMP stream and the GOP size is 2 seconds, the actual latency ranges from 2 seconds (4 - 2) to 6 seconds (4 + 2). If the GOP size is larger than the configured RtmpDelay, for example, GOP = 5 seconds and RtmpDelay = 4 seconds, the latency fluctuates between 0 and 9 seconds.
 //
-//		- Configuration for the latency of an audio-only stream is invalid. By default, the latency is close to 0.
+// - Latency configurations do not take effect for audio-only streams. The default latency is close to 0 seconds.
 //
-//		- For HTTP Live Streaming (HLS)-based playback, the segment size equals the latency divided by 3. Round the value down to the nearest integer. The value cannot be less than 1 second. Then, calculate the maximum number of segments. If the segment size is greater than or equal to 3 seconds, the maximum number of segments is 4. Otherwise, the maximum number of segments is 6.
+// - For an HLS configuration, the segment size is calculated as \\`Delay / 3\\` and rounded down to the nearest integer. The minimum segment size is 1 second. The maximum number of segments is 4 if the segment size is 3 seconds or more. Otherwise, the maximum is 6 segments.
 //
-//		- The actual HLS segment size is not smaller than the GOP size.
+// - The actual HLS segment size cannot be smaller than the GOP size.
 //
-//		- The latency of HLS-based playback equals the configured segment size times 3.
+// - The HLS latency is calculated as: Configured Segment Size × 3.
 //
-//		- If you do not call this operation, the default latency is 2 seconds for Real-Time Messaging Protocol (RTMP)-based playback and 4 seconds for Flash Video (FLV)-based playback. By default, the size of an HLS segment is 5 seconds. In this case, the latency is 15 seconds and the maximum number of segments is 6.
+// - If you do not call this operation, the system uses the default values. The default latency is 2 seconds for RTMP and 4 seconds for FLV. For HLS, the default segment size is 5 seconds, which results in a latency of 15 seconds with a maximum of 6 segments.
 //
-// ## [](#qps-)QPS limit
+// ## Queries per second (QPS) limit
 //
-// You can call this operation up to 1,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The QPS limit for this operation is 1,000 calls per second per user. If you exceed this limit, API calls are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - SetLiveStreamDelayConfigRequest
 //
@@ -26817,17 +26953,17 @@ func (client *Client) SetLiveStreamDelayConfigWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Configures a prefetch task. You can specify multiple URLs to prefetch at a time.
+// Sets live stream prefetch tasks. You can prefetch up to 100 live streams in a batch.
 //
 // Description:
 //
-//	  You can call this operation to specify multiple URLs to prefetch at a time. You can specify up to 100 URLs in a request.
+// - You can call this operation to set live stream prefetch tasks in batches. You can set up to 100 live stream URLs at a time.
 //
-//		- URLs in the HTTP Live Steaming (HLS) format are not supported.
+// - Live stream prefetch does not support HLS URLs.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 50 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 50 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - SetLiveStreamPreloadTasksRequest
 //
@@ -26895,17 +27031,17 @@ func (client *Client) SetLiveStreamPreloadTasksWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Configures stream ingest callbacks under an ingest domain.
+// Sets the stream ingest callback configuration.
 //
 // Description:
 //
-//	  You can call this operation to configure the callback URL and authentication information of an ingest domain.
+// - This operation allows you to configure the callback URL and authentication information for an ingest domain.
 //
-//		- If you configure callbacks for stream ingest status, you can receive callback notifications about successful or interrupted stream ingest in a timely manner. For more information, see [Format of stream ingest callbacks](https://help.aliyun.com/document_detail/54787.html).
+// - The real-time stream status callback promptly notifies you of the results of stream ingest or stream disconnection operations. For more information, see [Stream ingest callback format description](https://help.aliyun.com/document_detail/54787.html).
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 15 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 15 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - SetLiveStreamsNotifyUrlConfigRequest
 //
@@ -26973,23 +27109,23 @@ func (client *Client) SetLiveStreamsNotifyUrlConfigWithContext(ctx context.Conte
 
 // Summary:
 //
-// Configures the background of the episode list.
+// Sets the background for a playlist mode production studio.
 //
 // Description:
 //
-//	  Create a production studio in playlist mode, and then call this operation to add the background material. For information about how to create a production studio, see [CreateCaster](https://help.aliyun.com/document_detail/2848009.html).
+// - Create a playlist mode production studio before calling this operation to add background materials. To create a production studio by using an API operation, see [CreateCaster](https://help.aliyun.com/document_detail/2848009.html).
 //
-//		- You can call this operation to create, update, or delete the background of the episode list. To delete the background, leave the ResourceType, ResourceUrl, and MaterialId parameters empty.
+// - You can use this operation to create, update, or delete a playlist background. To delete the background, leave the ResourceType, ResourceUrl, and MaterialId parameters empty.
 //
-// >
+//	Notice:
 //
-//   - When you select media resources from ApsaraVideo VOD, we recommend that you select resources that are stored in hosted OSS buckets. Resources stored in non-hosted OSS buckets have a validity period. Pay attention to the validity if you select resources that are stored in non-hosted OSS buckets.
+// - When using ApsaraVideo VOD resources, use managed bucket resources first. Resources in your own bucket may expire. If you use resources in your own bucket, check the resource validity period.
 //
-//   - When you add media resources to a production studio, we recommend that you select resources from ApsaraVideo Live and ApsaraVideo VOD. If you add a third-party stream by specifying a streaming URL, there is a possibility that the stream fails to be played. You must pay attention to the quality and validity of the third-party stream.
+// - Use ApsaraVideo Live and ApsaraVideo VOD resources as material input first. Resources from third-party URLs may fail to play. Verify the quality and validity of such resources.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - SetShowListBackgroundRequest
 //
@@ -27057,15 +27193,13 @@ func (client *Client) SetShowListBackgroundWithContext(ctx context.Context, requ
 //
 // Description:
 //
-//	  Before you configure authentication for snapshot callbacks, you need to specify the callback URL. For more information, see [AddLiveAppSnapshotConfig](https://help.aliyun.com/document_detail/2847897.html).
+// - Before calling this API, configure a callback URL first. For more information, see [AddLiveAppSnapshotConfig](https://help.aliyun.com/document_detail/2847897.html).
 //
-//		- You can call this operation to configure authentication for snapshot callbacks for a main streaming domain. Make sure that the parameter settings meet the requirements.
+// - The snapshot service supports adding a signature header to HTTP or HTTPS callback requests. This allows the receiving server to authenticate the signature and prevent unauthorized or invalid requests. For more information, see [Usage notes for callback authentication](https://help.aliyun.com/document_detail/417349.html).
 //
-//		- ApsaraVideo Live allows you to add a specific signature header to each HTTP or HTTPS callback request. This way, the server that receives callback messages can authenticate the signature to prevent illegal or invalid requests. For more information, see [Usage notes for callback authentication](https://help.aliyun.com/document_detail/417349.html).
+// ## QPS limits
 //
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - SetSnapshotCallbackAuthRequest
 //
@@ -27125,15 +27259,17 @@ func (client *Client) SetSnapshotCallbackAuthWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Starts a production studio. If the production studio does not have a PVW scene or a PGM scene, this operation creates and starts such scenes and starts audio and video processing tasks.
+// Starts a production studio. If the PVW and PGM scenes do not exist, they are created. The PVW and PGM scenes are started, and the underlying audio and video processing tasks are initiated.
 //
 // Description:
 //
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and then call this operation to start the production studio. If the production studio does not have a PVW scene or a PGM scene, this operation creates and starts such scenes and starts audio and video processing tasks.
+// Create a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, and then call this operation to start the production studio. If the PVW and PGM scenes do not exist, they are created. The PVW and PGM scenes are started, and the underlying audio and video processing tasks are initiated.
 //
-// ## [](#qps-)QPS limit
+// Before calling this operation, call SetCasterConfig to configure DomainName. If DomainName is not configured, the error InvalidDomainName.NotFound is returned.
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as appropriate.
 //
 // @param request - StartCasterRequest
 //
@@ -27185,15 +27321,15 @@ func (client *Client) StartCasterWithContext(ctx context.Context, request *Start
 
 // Summary:
 //
-// Starts a specified preview (PVW) scene.
+// Starts a specified Program View (PVW) scene. This operation is used to start preview scenes.
 //
 // Description:
 //
-// You can call this operation to start a specified PVW scene.
+// You can call this operation to start a specified Program View (PVW) scene. A PVW scene is a preview scene.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10. If you exceed this limit, API calls are throttled. Throttling can affect your business. We recommend that you call this operation within the specified limit.
 //
 // @param request - StartCasterSceneRequest
 //
@@ -27253,13 +27389,13 @@ func (client *Client) StartCasterSceneWithContext(ctx context.Context, request *
 //
 // Description:
 //
-//	  You can call this operation to start an edge transcoding task.
+// - This operation is used to start an edge transcoding job.
 //
-//		- To call this operation, make sure that you have the permissions to access the edge transcoding feature and the edge transcoding task that you specify is not started.
+// - Before you call this operation, make sure that you have the required permissions to access the edge transcoding service and that the specified transcoding job is not running.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 6,000 calls per minute for each user. API calls that exceed this limit are throttled, which may affect your business. We recommend that you call this operation as needed.
 //
 // @param request - StartEdgeTranscodeJobRequest
 //
@@ -27315,15 +27451,15 @@ func (client *Client) StartEdgeTranscodeJobWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Enables a disabled domain name. After the domain name is enabled, its status changes to online.
+// Starts a disabled live streaming domain. This operation changes the DomainStatus to online.
 //
 // Description:
 //
-// This operation does not work if the Alibaba Cloud account to which the domain name belongs has overdue payments or the domain name is invalid.
+// This API operation fails if your account has an overdue payment or if the domain name is in an invalid state.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - StartLiveDomainRequest
 //
@@ -27375,47 +27511,47 @@ func (client *Client) StartLiveDomainWithContext(ctx context.Context, request *S
 
 // Summary:
 //
-// Creates a mixed-stream relay task.
+// Creates a stream mixing and transcoding task.
 //
 // Description:
 //
-// By default, you can create up to 200 single-stream relay tasks and up to 40 mixed-stream relay tasks for an application. To increase the quota, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
+// By default, each application ID supports a maximum of 200 single-stream ingest tasks and 40 stream mixing and transcoding tasks. To increase the quota, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket).
 //
-// ### [](#)Lifecycle of a stream relay task
+// ### Stream mixing task lifecycle
 //
 // **Start**
 //
-//   - Call the StartLiveMPUTask operation to create a task.
+// - When a streamer starts streaming for the first time, you can call StartLiveMPUTask to start a bypass task.
 //
-//   - If no user joins the channel, an error indicating that the channel does not exist is returned.
+//   - If no users are in the channel, a "channel does not exist" error is returned.
 //
-//   - Stream relay is not performed if no stream is ingested. In this case, no relayed stream is available for playback.
+//   - The bypass stream is output only when a user starts stream ingest. If the user in a single-stream task does not ingest a stream, the bypass stream cannot be played.
 //
-//   - If the task is in the mixed-stream relay mode, make sure that at least one user is ingesting a stream, which can be relayed for playback. A black screen is displayed in the pane of a user who is not ingesting a stream.
+//   - For a stream mixing task, at least one user must be ingesting a stream for the bypass stream to be playable. The layout area for users who are not ingesting streams shows a black screen.
 //
-//   - We recommend that you record the task status, task mode, and task parameters on your business server.
+// - You can record the bypass task status, task type, and task parameters on your business server.
 //
-//   - Task status: started or stopped.
+//   - Task status: Started, Stopped.
 //
-//   - Task mode: single-stream relay or mixed-stream relay.
+//   - Task type: Single-stream, Stream mixing.
 //
-//   - Task parameters: the latest input parameters. For example, after your call of the UpdateLiveMPUTask operation is successful, record the task parameters, which are the latest.
+//   - Task parameters: The latest input parameters. For example, after a successful call to UpdateLiveMPUTask, record the latest task parameters.
 //
-//   - In co-streaming or battle scenarios, the task is in the mixed-stream relay mode. If the streamer leaves the channel due to exceptions and re-joins the channel, you can directly call the StartLiveMPUTask operation on your business server to start stream relay based on the recorded task parameters.
+// - In co-streaming or PK scenarios, if a task has been updated to a stream mixing task and the streamer unexpectedly leaves and then rejoins the channel, your business server can call StartLiveMPUTask to restart the stream mixing task based on the saved task type and parameters.
 //
-//   - If the task has not been automatically cleared by the system, the task is directly started.
+//   - If the system has not automatically cleared the task before you start it, the task starts successfully.
 //
-//   - If the task has not been automatically cleared by the system, a message indicating that **the task already exists*	- is returned.
+//   - If the system has not yet cleared the task, a **Task already exists*	- error code is returned.
 //
 // **End**
 //
-//   - After the streamer leaves the channel, you need to call the [StopLiveMPUTask](https://help.aliyun.com/document_detail/2362742.html) operation to stop the task.
+// - When a streamer leaves the channel, call [StopLiveMPUTask](https://help.aliyun.com/document_detail/2362742.html) to stop the bypass task.
 //
-//   - If all users specified in the task have left the channel, but you do not call the StopLiveMPUTask operation, the system stops the task in 2 minutes.
+// - If all users in the task leave the channel and StopLiveMPUTask is not called, the system automatically stops the bypass task after 2 minutes.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 500 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user for this API is 500 calls/second. If you exceed this limit, API calls are throttled. This may affect your business. We recommend that you call this API reasonably.
 //
 // @param tmpReq - StartLiveMPUTaskRequest
 //
@@ -27521,11 +27657,11 @@ func (client *Client) StartLiveMPUTaskWithContext(ctx context.Context, tmpReq *S
 //
 // Description:
 //
-// You can call the [CreateLiveStreamMonitor](https://help.aliyun.com/document_detail/2848129.html) operation to create a monitoring session, obtain the value of the response parameter **MonitorId**, and then start live monitoring.
+// You can call the [CreateLiveStreamMonitor](https://help.aliyun.com/document_detail/2848129.html) operation to create a monitoring session. Then, you can use the **MonitorId*	- value from the response to start the session.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 calls per second for each user. Calls that exceed this limit are throttled. Throttling may affect your business. Plan your calls accordingly.
 //
 // @param request - StartLiveStreamMonitorRequest
 //
@@ -27577,15 +27713,15 @@ func (client *Client) StartLiveStreamMonitorWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Starts playing an episode list.
+// Starts a playlist.
 //
 // Description:
 //
-// You can call the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation to add episodes to an episode list and then call this operation to start playing the episode list.
+// Call the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation to add items to a playlist. Then, call this operation to start the playlist.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// This operation has a queries per second (QPS) limit of 10 for each user. If you exceed this limit, your API calls are throttled, which may affect your business. Call this operation within the specified limit.
 //
 // @param request - StartPlaylistRequest
 //
@@ -27649,7 +27785,15 @@ func (client *Client) StartPlaylistWithContext(ctx context.Context, request *Sta
 
 // Summary:
 //
-// 启动rtc云端录制任务
+// Starts an RTC cloud recording task.
+//
+// Description:
+//
+// Cloud recording is a paid feature. For billing details, see [Cloud recording fees](https://help.aliyun.com/document_detail/2976391.html).
+//
+// ## Service registration
+//
+// ## QPS limit.
 //
 // @param tmpReq - StartRtcCloudRecordingRequest
 //
@@ -27755,7 +27899,19 @@ func (client *Client) StartRtcCloudRecordingWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// 创建云端转码任务
+// Creates a cloud transcoding job.
+//
+// Description:
+//
+// ## Endpoints
+//
+// The following endpoints are available for this operation.
+//
+// | Region    | Region ID      | Public endpoint                  |
+//
+// | --------- | -------------- | -------------------------------- |
+//
+// | Singapore | ap-southeast-1 | live.ap-southeast-1.aliyuncs.com |
 //
 // @param tmpReq - StartRtcCloudTranscodeRequest
 //
@@ -27825,15 +27981,15 @@ func (client *Client) StartRtcCloudTranscodeWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Stops a production studio. This stops the PVW and PGM scenes of the production studio.
+// Stops a production studio. This stops the PVW (preview scene) and PGM (program output scene) scenes.
 //
 // Description:
 //
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and call this operation to stop the production studio. When a production studio is stopped, its PVW and PGM scenes are stopped.
+// You must first call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio. You can then call this operation to stop the production studio, which stops the Preview (PVW) and Program (PGM) scenes.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 calls per second per user. API calls that exceed this limit are throttled. This may affect your business. Plan your calls accordingly.
 //
 // @param request - StopCasterRequest
 //
@@ -27889,9 +28045,11 @@ func (client *Client) StopCasterWithContext(ctx context.Context, request *StopCa
 //
 // Description:
 //
-// ## Usage note
+// Call this operation to stop a specified preview (PVW) scene.
 //
-// This operation is only applicable to the PVW scenes.
+// ## QPS limit
+//
+// This operation is limited to 10 queries per second (QPS) per user. Exceeding this limit results in API call throttling, which may affect your business. We recommend that you call this operation at a reasonable frequency.
 //
 // @param request - StopCasterSceneRequest
 //
@@ -27951,13 +28109,13 @@ func (client *Client) StopCasterSceneWithContext(ctx context.Context, request *S
 //
 // Description:
 //
-//	  You can call this operation to stop an edge transcoding task.
+// - This operation stops an edge transcoding job.
 //
-//		- To call this operation, make sure that you have the permissions to access the edge transcoding feature and the edge transcoding task that you specify is running.
+// - To call this operation, you must have permissions to access the edge transcoding service, and the transcoding job must be in the running state.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 6,000 calls per minute for each account. Calls that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - StopEdgeTranscodeJobRequest
 //
@@ -28013,15 +28171,15 @@ func (client *Client) StopEdgeTranscodeJobWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Disables an enabled domain name. After the domain name is disabled, its status changes to offline.
+// Disables a live streaming domain. This operation changes the DomainStatus to offline.
 //
 // Description:
 //
-// After you disable a domain name, the information about the domain name is retained. ApsaraVideo Live automatically reroutes all requests that are destined for the domain name to the origin.
+// After a live streaming domain is disabled, its information is retained. The system automatically performs an origin fetch for requests to the domain.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - StopLiveDomainRequest
 //
@@ -28073,17 +28231,17 @@ func (client *Client) StopLiveDomainWithContext(ctx context.Context, request *St
 
 // Summary:
 //
-// Stops a mixed-stream relay task.
+// Stops a stream mixing and forwarding task.
 //
 // Description:
 //
-//	  Make sure that a mixed-stream relay task is started before you call this operation. You can call the [StartLiveMPUTask](https://help.aliyun.com/document_detail/2848199.html) operation to start a mixed-stream relay task.
+// - Before you call this operation, you must have already called [StartLiveMPUTask](https://help.aliyun.com/document_detail/2848199.html) to start a stream mixing and forwarding task.
 //
-//		- If a mixed-stream relay task becomes abnormal, the task is automatically stopped 2 minutes after the last person leaves the channel. In this case, you do not need to call the StopLiveMPUTask operation. If you need to resume a mixed-stream relay task that is stopped, call the [StartLiveMPUTask](https://help.aliyun.com/document_detail/2848199.html) operation again.
+// - If you need to stop a stream mixing and forwarding task but the task is abnormal (StopLiveMPUTask was not called to stop the task), the task automatically stops 2 minutes after the last user leaves the channel. To resume stream mixing and forwarding after the task stops, call the [StartLiveMPUTask](https://help.aliyun.com/document_detail/2848199.html) operation again.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 500 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 500 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - StopLiveMPUTaskRequest
 //
@@ -28131,17 +28289,17 @@ func (client *Client) StopLiveMPUTaskWithContext(ctx context.Context, request *S
 
 // Summary:
 //
-// Stops a pulled-stream relay task.
+// Stops a stream pulling task.
 //
 // Description:
 //
-//	  You can call this operation to stop a pulled-stream relay task.
+// - Call this operation to stop a stream pulling task.
 //
-//		- You can stop a task that is running (even if the task is in an abnormal retry state). You cannot stop a task that is not running.
+// - You can forcibly stop a running task (including tasks in the abnormal retry state). This operation does not take effect on tasks that are not running.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - StopLivePullToPushRequest
 //
@@ -28181,15 +28339,15 @@ func (client *Client) StopLivePullToPushWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Stops live monitoring.
+// Stops a monitoring session.
 //
 // Description:
 //
-// Before you call this operation to stop live monitoring, make sure that live monitoring is started. You can call the [CreateLiveStreamMonitor](https://help.aliyun.com/document_detail/2848129.html) operation to create a monitoring session, obtain the value of the response parameter **MonitorId**, and then start live monitoring.
+// You can obtain a **MonitorId*	- by calling the [CreateLiveStreamMonitor](https://help.aliyun.com/document_detail/2848129.html) operation. After a monitoring session starts, call this operation to stop the session.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// This operation is limited to 10 queries per second (QPS) per user. Calls that exceed this limit are throttled, which may affect your business. Plan your calls accordingly.
 //
 // @param request - StopLiveStreamMonitorRequest
 //
@@ -28245,11 +28403,11 @@ func (client *Client) StopLiveStreamMonitorWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// You can call the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation to add episodes to an episode list and then call this operation to stop playing the episode list.
+// First, call the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation to add items to a playlist. You can then call this operation to stop the playlist.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation based on your business needs.
 //
 // @param request - StopPlaylistRequest
 //
@@ -28305,7 +28463,7 @@ func (client *Client) StopPlaylistWithContext(ctx context.Context, request *Stop
 //
 // Description:
 //
-// You can call this operation up to 20 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// This operation is limited to 20 queries per second (QPS) for each account. If you exceed the limit, API calls are throttled, which may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - StopRtcAsrTaskRequest
 //
@@ -28357,7 +28515,13 @@ func (client *Client) StopRtcAsrTaskWithContext(ctx context.Context, request *St
 
 // Summary:
 //
-// Stops a real-time communication (RTC) cloud-based recording task.
+// Stops an RTC cloud recording task.
+//
+// Description:
+//
+// ## QPS limit
+//
+// The queries per second (QPS) limit for a single user is 50 calls per second. If the number of calls exceeds the limit, throttling is triggered, which may affect your business. We recommend that you call this operation at a reasonable rate.
 //
 // @param request - StopRtcCloudRecordingRequest
 //
@@ -28401,7 +28565,7 @@ func (client *Client) StopRtcCloudRecordingWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 停止云端转码任务
+// Stops a cloud transcoding job.
 //
 // @param request - StopRtcCloudTranscodeRequest
 //
@@ -28449,11 +28613,11 @@ func (client *Client) StopRtcCloudTranscodeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Adds tags for domain names.
+// Adds labels to ApsaraVideo Live resources by calling TagLiveResources.
 //
 // Description:
 //
-// The key of the tag. Valid values of N: **1 to 20**.
+// The maximum number of times that each user can call this operation per second is 100.
 //
 // @param request - TagLiveResourcesRequest
 //
@@ -28513,7 +28677,11 @@ func (client *Client) TagLiveResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Deletes tags of domain names.
+// Calls UnTagLiveResources to delete tags from ApsaraVideo Live resources.
+//
+// Description:
+//
+// The maximum call frequency for a single user is 100 calls per second.
 //
 // @param request - UnTagLiveResourcesRequest
 //
@@ -28639,17 +28807,17 @@ func (client *Client) UnbanLiveMessageGroupWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Changes the resource group to which a production studio belongs.
+// Updates the resource group of a production studio.
 //
 // Description:
 //
-// ## [](#)Usage notes
+// ## Usage notes
 //
-// To call this operation to change the resource group to which a production studio belongs, you must have access permissions on the original resource group and the destination resource group.
+// When you call this operation, your account must have permissions on both the source and destination resource groups.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// The queries per second (QPS) limit for this operation is 10 calls per second per user. If you exceed the limit, your API calls are throttled. This may affect your business. Make sure that you call this operation within the limit. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param request - UpdateCasterResourceGroupRequest
 //
@@ -28705,15 +28873,15 @@ func (client *Client) UpdateCasterResourceGroupWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Modifies the audio configurations of a scene. This operation also allows you to add an audio configuration or apply an existing audio configuration to a new scene.
+// Modifies the audio configurations of a scene. This operation also lets you add an audio configuration or apply an existing audio configuration to a new scene.
 //
 // Description:
 //
-// You can call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio and then call this operation to modify the audio configurations of a scene in the production studio. This operation supports the audio mixing mode and the audio follows video (AFV) mode.
+// First, call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio. Then, you can call this operation to update the audio configuration of a scene. This operation supports the audio mixing mode and the audio-follows-video (AFV) mode.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can make up to 10 queries per second (QPS) per Alibaba Cloud account. API calls that exceed this limit are throttled, which may affect your business. We recommend that you adhere to this limit.
 //
 // @param request - UpdateCasterSceneAudioRequest
 //
@@ -28785,11 +28953,11 @@ func (client *Client) UpdateCasterSceneAudioWithContext(ctx context.Context, req
 //
 // Description:
 //
-// You can call this operation to modify a scene, including the layout, without invalidating the previous configurations. This operation is more efficient than the SetCasterSceneConfig operation.
+// You can call this operation to incrementally modify the configuration of a scene, including its layout. This operation preserves existing settings and is more efficient than a full update.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 10 calls per second per user. Calls that exceed this limit are throttled, which may affect your business. We recommend that you plan your calls accordingly.
 //
 // @param request - UpdateCasterSceneConfigRequest
 //
@@ -28859,19 +29027,19 @@ func (client *Client) UpdateCasterSceneConfigWithContext(ctx context.Context, re
 //
 // This operation supports the following types of custom transcoding templates:
 //
-//   - h264: custom H.264 standard transcoding.
+// - h264: H.264 standard transcoding.
 //
-//   - h264-nbhd: custom H.264 Narrowband HD™ transcoding.
+// - h264-nbhd: H.264 Narrowband HD™ transcoding.
 //
-//   - h265: custom H.265 standard transcoding.
+// - h265: H.265 standard transcoding.
 //
-//   - h265-nbhd: custom H.265 Narrowband HD™ transcoding.
+// - h265-nbhd: H.265 Narrowband HD™ transcoding.
 //
-//   - audio: audio-only transcoding.
+// - audio: an audio-only transcoding.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 6,000 times per minute per account.
+// You can call this operation up to 6,000 times per second per account.
 //
 // @param request - UpdateCustomLiveStreamTranscodeRequest
 //
@@ -29007,17 +29175,17 @@ func (client *Client) UpdateCustomLiveStreamTranscodeWithContext(ctx context.Con
 
 // Summary:
 //
-// Updates an edge transcoding task.
+// Updates an edge transcoding job.
 //
 // Description:
 //
-//	  You can call this operation to update an edge transcoding task.
+// - This operation updates an edge transcoding job.
 //
-//		- To call this operation, make sure that you have the permissions to access the edge transcoding feature and the edge transcoding task that you specify is not started.
+// - To call this operation, you must have permissions to access the edge transcoding service. The transcoding job must not have been started.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 6,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for this operation is 6,000 calls per minute per user. If you exceed this limit, API calls are throttled. This may impact your business. Plan your calls accordingly.
 //
 // @param request - UpdateEdgeTranscodeJobRequest
 //
@@ -29093,11 +29261,11 @@ func (client *Client) UpdateEdgeTranscodeJobWithContext(ctx context.Context, req
 //
 // Description:
 //
-//	  Before you call this operation, make sure that you have called the [CreateEventSub](https://help.aliyun.com/document_detail/2848209.html) operation to create a callback that is used to subscribe to channel or user events.
+// - Before you call this operation, make sure that you have called the [CreateEventSub](https://help.aliyun.com/document_detail/2848209.html) operation to create a callback that is used to subscribe to channel or user events.
 //
-//		- An existing channel that you specify in this operation still uses its original callback configuration. The updated configuration can apply to the channel only if you restart the channel after it is closed for longer than 20 minutes.
+// - An existing channel that you specify in this operation still uses its original callback configuration. The updated configuration can apply to the channel only if you restart the channel after it is closed for longer than 20 minutes.
 //
-//		- If you only want to update specific parameters, you must also specify the other required parameters with their original values.
+// - If you only want to update specific parameters, you must also specify the other required parameters with their original values.
 //
 // ## [](#qps-)QPS limit
 //
@@ -29169,13 +29337,13 @@ func (client *Client) UpdateEventSubWithContext(ctx context.Context, request *Up
 //
 // Description:
 //
-// You can call this operation to modify the parameters of a specified subtitle rule.
+// Updates the parameters of a specified subtitle rule.
 //
-// >  The live subtitles feature is in invitational preview. You can add up to 300 subtitle templates.
+//	Notice: The real-time subtitle feature is currently in invitational preview. Each user can add up to 300 subtitle templates.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this API is 60 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
 //
 // @param request - UpdateLiveAIProduceRulesRequest
 //
@@ -29263,7 +29431,19 @@ func (client *Client) UpdateLiveAIProduceRulesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Updates a subtitle template.
+// Updates a subtitle template by calling UpdateLiveAISubtitle.
+//
+// Description:
+//
+// ## Operation description
+//
+// This operation updates the parameters of a specified subtitle template.
+//
+//	Notice: The real-time subtitle feature is currently in invitational preview. Each user can add up to 300 subtitle templates.
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 60 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately. For more information, see [QPS limit](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param tmpReq - UpdateLiveAISubtitleRequest
 //
@@ -29385,15 +29565,13 @@ func (client *Client) UpdateLiveAISubtitleWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Updates a recording configuration for an application. The recordings are stored in Object Storage Service (OSS).
+// Updates a live stream recording configuration that saves the output to Object Storage Service (OSS).
 //
 // Description:
 //
-// Obtain the main streaming domain, and then call this operation to update a recording configuration.
+// ## QPS limit
 //
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - UpdateLiveAppRecordConfigRequest
 //
@@ -29573,17 +29751,19 @@ func (client *Client) UpdateLiveAppSnapshotConfigWithContext(ctx context.Context
 
 // Summary:
 //
-// Modifies an audio moderation configuration.
+// Updates the voice content moderation configuration for live streaming.
 //
 // Description:
 //
-//	  Obtain the main streaming domain, and then call this operation to modify an audio moderation configuration.
+// - Obtain the streamer streaming domain before invoking this operation to update the voice content moderation configuration for live streaming.
 //
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
+// - Before invoking this operation, create a voice content moderation configuration by calling AddLiveAudioAuditConfig.
 //
-// ## [](#qps-)QPS limit
+// - Currently, only some live centers support intelligent content moderation for live streaming. For information about the live centers that support this feature, see [Service regions](https://help.aliyun.com/document_detail/193730.html).
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// ## QPS limit
+//
+// The maximum number of queries per second (QPS) per user for this operation is 10. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Invoke this operation as needed.
 //
 // @param request - UpdateLiveAudioAuditConfigRequest
 //
@@ -29659,7 +29839,17 @@ func (client *Client) UpdateLiveAudioAuditConfigWithContext(ctx context.Context,
 
 // Summary:
 //
-// Modifies the configuration of callbacks for audio moderation results.
+// Updates the callback configuration for automated audio review.
+//
+// Description:
+//
+// - Obtain the streaming domain and then call this operation to update the callback configuration for automated audio review.
+//
+// - Live audio moderation is available only in specific regions. For supported regions, see [Service regions](https://help.aliyun.com/document_detail/193730.html).
+//
+// ## QPS limits
+//
+// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - UpdateLiveAudioAuditNotifyConfigRequest
 //
@@ -29719,15 +29909,15 @@ func (client *Client) UpdateLiveAudioAuditNotifyConfigWithContext(ctx context.Co
 
 // Summary:
 //
-// Modifies the configurations of live center stream relay.
+// Updates the live center transfer configuration by calling UpdateLiveCenterTransfer.
 //
 // Description:
 //
-// You can call this operation to modify only the **time-related*	- parameters, including TransferArgs, StartTime, and EndTime.
+// This operation only supports updating configurations related to the **transfer validity period*	- (TransferArgs, StartTime, EndTime).
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The QPS limit for this operation is 100 calls per second per user. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable rate.
 //
 // @param request - UpdateLiveCenterTransferRequest
 //
@@ -29803,13 +29993,11 @@ func (client *Client) UpdateLiveCenterTransferWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Updates a stream delay configuration.
+// Updates the live stream delay configuration.
 //
 // Description:
 //
-// ## [](#qps-)QPS limit
-//
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - UpdateLiveDelayConfigRequest
 //
@@ -29881,9 +30069,9 @@ func (client *Client) UpdateLiveDelayConfigWithContext(ctx context.Context, requ
 //
 // Description:
 //
-//	  Obtain the main streaming domain, and then call this operation to modify the configuration of callbacks for video moderation results.
+// - Obtain the main streaming domain, and then call this operation to modify the configuration of callbacks for video moderation results.
 //
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
+// - Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
 //
 // ## [](#qps-)QPS limit
 //
@@ -30045,15 +30233,15 @@ func (client *Client) UpdateLiveMPUTaskWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Updates a live stream encapsulation configuration.
+// Updates live encapsulation configurations.
 //
 // Description:
 //
-// You can call this operation to update a live stream encapsulation configuration. The update takes effect only after you re-ingest the stream.
+// You can call this operation to update live encapsulation configurations. The new configurations take effect after you restart the stream ingest.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 300 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// This operation is limited to 300 queries per second (QPS) per user. If you exceed this limit, API calls are throttled. This can affect your business operations. Plan your calls accordingly.
 //
 // @param request - UpdateLivePackageConfigRequest
 //
@@ -30133,17 +30321,19 @@ func (client *Client) UpdateLivePackageConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies the stream pulling settings of a live stream, including the origin URL, start time, and end time.
+// Updates the configuration of live stream pulling, including the addresses of the origin server, start time, and end time.
 //
 // Description:
 //
-// This operation is applicable to regular stream pulling. You can call this operation to modify the stream pulling settings of a live stream, including the origin URL, start time, and end time.
+// This operation is applicable to fixed stream pulling. Invoke this operation to update the configuration of live stream pulling, including the addresses of the origin server, start time, and end time.
 //
-// >  After this operation is complete, ApsaraVideo Live uses the updated settings for regular stream pulling. Make sure that the modification does not affect your business.
+// Before invoking this operation, use AddLivePullStreamInfoConfig to create a stream pulling configuration for the specified (DomainName, AppName, StreamName).
 //
-// ## [](#qps-)QPS limit
+// > After you invoke this operation to modify the configuration, the live streaming service re-executes fixed stream pulling based on the modified configuration. Make sure that the modification does not affect your online services.
 //
-// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// ## QPS limit
+//
+// The QPS limit for a single user on this operation is 1000 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Invoke this operation appropriately.
 //
 // @param request - UpdateLivePullStreamInfoConfigRequest
 //
@@ -30183,21 +30373,21 @@ func (client *Client) UpdateLivePullStreamInfoConfigWithContext(ctx context.Cont
 
 // Summary:
 //
-// Updates a pulled-stream relay task.
+// Updates a stream pulling task by calling UpdateLivePullToPush.
 //
 // Description:
 //
-//	  You can call this operation to update a pulled-stream relay task.
+// - Call this operation to update a stream pulling task.
 //
-//		- As long as the specified start time of a task has not been reached, you can modify the SourceType, Region, and DstUrl parameters of the task.
+// - If the task has not reached the configured start time, you can update the Region parameter.
 //
-//		- If a task is running (even if the task is in an abnormal retry state), you can modify only the CallbackUrl and RepeatTime parameters of the task. The update takes effect immediately.
+// - If the task is running (including in an abnormal retry state), only CallbackUrl and RepeatTime can be updated, and the updates take effect immediately.
 //
-//		- If a task is stopped, you can modify all parameters of the task except SourceType, Region, and DstUrl.
+// - If the task is stopped, all parameters except Region can be updated.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param tmpReq - UpdateLivePullToPushRequest
 //
@@ -30243,21 +30433,21 @@ func (client *Client) UpdateLivePullToPushWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Modifies the recording callback configuration of a streaming domain.
+// Updates the domain-level recording callback configuration.
 //
 // Description:
 //
-// You can call this operation to modify the following settings:
+// When you update the domain-level recording callback configuration, you can modify the following settings:
 //
-//   - The callback URL that is used to receive notifications about recording events and status. For more information, see [Recording event callbacks](https://help.aliyun.com/document_detail/55016.html).
+// - The callback URL for recording events, including recording file generation event callbacks and recording task status callbacks. For more information, see [Recording event callbacks](https://help.aliyun.com/document_detail/55016.html).
 //
-//   - The callback URL for on-demand recordings. For more information, see [On-demand recording callbacks](https://help.aliyun.com/document_detail/85910.html).
+// - The on-demand recording callback URL. For more information, see [On-demand recording callback](https://help.aliyun.com/document_detail/85910.html).
 //
-//   - The setting that specifies whether to enable callbacks for recording status.
+// - Whether recording task status callbacks are required.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The single-user QPS limit for this operation is 30 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - UpdateLiveRecordNotifyConfigRequest
 //
@@ -30329,11 +30519,11 @@ func (client *Client) UpdateLiveRecordNotifyConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// Updates a Live-to-VOD configuration.
+// Update a live-to-VOD configuration.
 //
 // Description:
 //
-// You can call this operation up to 1,000 times per minute per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// This operation has a rate limit of 1,000 calls per minute per account. If you exceed this limit, your API calls will be rate-limited, which may interrupt your service.
 //
 // @param request - UpdateLiveRecordVodConfigRequest
 //
@@ -30425,17 +30615,19 @@ func (client *Client) UpdateLiveRecordVodConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Modifies a video moderation configuration.
+// Updates the content moderation configuration for live streaming.
 //
 // Description:
 //
-//	  Obtain the main streaming domain, and then call this operation to modify a video moderation configuration.
+// - Obtain the streaming domain of the streamer first, and then invoke this operation to update the content moderation configuration for live streaming.
 //
-//		- Only some live centers support the content moderation feature. For more information, see [Supported regions](https://help.aliyun.com/document_detail/193730.html).
+// - Currently, only some live centers support intelligent content moderation for live streaming. For more information about the live centers that support this feature, see [Service regions](https://help.aliyun.com/document_detail/193730.html).
 //
-// ## [](#qps-)QPS limit
+// - Before you invoke this operation, you must have already created a content moderation configuration for the specified DomainName and AppName by invoking AddLiveSnapshotDetectPornConfig.
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 30 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Invoke this operation appropriately.
 //
 // @param request - UpdateLiveSnapshotDetectPornConfigRequest
 //
@@ -30511,11 +30703,11 @@ func (client *Client) UpdateLiveSnapshotDetectPornConfigWithContext(ctx context.
 
 // Summary:
 //
-// Modifies the configuration of snapshot callbacks.
+// Updates the snapshot callback configuration.
 //
 // Description:
 //
-// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 30 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - UpdateLiveSnapshotNotifyConfigRequest
 //
@@ -30583,11 +30775,11 @@ func (client *Client) UpdateLiveSnapshotNotifyConfigWithContext(ctx context.Cont
 //
 // Description:
 //
-// You can call this operation to update the configurations of a monitoring session. The updates that you make to the input source configurations when the monitoring session is in the Running state immediately take effect.
+// This operation updates the configuration of a monitoring session. If the monitoring session is running, updates to the input source configuration take effect in real time.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10. API calls that exceed this limit are throttled. Throttling can affect your business, so we recommend that you plan your calls accordingly.
 //
 // @param request - UpdateLiveStreamMonitorRequest
 //
@@ -30679,11 +30871,11 @@ func (client *Client) UpdateLiveStreamMonitorWithContext(ctx context.Context, re
 //
 // Description:
 //
-// You must obtain the customer master key (CMK) in Key Management Service (KMS) before you call this operation to update a transcoding configuration. Only standard transcoding templates and Narrowband HD™ transcoding templates are supported for this operation.
+// To modify the encryption settings, first obtain a Customer Master Key (CMK) ID from Key Management Service (KMS). This operation supports only standard and Narrowband HD™ transcoding templates.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 30 times per second per account.
+// ou can call this operation up to 30 times per second per account.
 //
 // @param request - UpdateLiveStreamTranscodeRequest
 //
@@ -30755,11 +30947,11 @@ func (client *Client) UpdateLiveStreamTranscodeWithContext(ctx context.Context, 
 //
 // Description:
 //
-// This operation allows you to modify the parameters of a watermark template with a specified ID.
+// This operation updates the parameters of a specified watermark template.
 //
-// ## QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://www.alibabacloud.com/help/en/apsaravideo-live/latest/qps-limit-on-an-api-operation-in-apsaravideo-live).
+// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - UpdateLiveStreamWatermarkRequest
 //
@@ -30855,11 +31047,11 @@ func (client *Client) UpdateLiveStreamWatermarkWithContext(ctx context.Context, 
 //
 // Description:
 //
-// This operation allows you to modify the parameters of a watermark rule with a specified ID.
+// This operation updates the parameters of a watermark rule based on the specified rule ID.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// You can call this operation up to 60 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - UpdateLiveStreamWatermarkRuleRequest
 //
@@ -30923,13 +31115,13 @@ func (client *Client) UpdateLiveStreamWatermarkRuleWithContext(ctx context.Conte
 
 // Summary:
 //
-// Updates the configurations of an interactive message application.
+// Call UpdateMessageApp to update interactive message application information.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The single-user QPS limit for this API is 100 queries per second (QPS). API calls that exceed this limit are throttled, which may affect your business. You can call this API at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param tmpReq - UpdateMessageAppRequest
 //
@@ -30995,13 +31187,13 @@ func (client *Client) UpdateMessageAppWithContext(ctx context.Context, tmpReq *U
 
 // Summary:
 //
-// Updates the information about a message group.
+// You can call the UpdateMessageGroup operation to update message group information.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limit on an API operation in ApsaraVideo Live](https://help.aliyun.com/document_detail/343507.html).
+// The QPS limit for this API is 100 queries per second (QPS) per user. If the limit is exceeded, API calls will be throttled, which may affect your business. You can call the API properly to avoid this issue. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
 //
 // @param tmpReq - UpdateMessageGroupRequest
 //
@@ -31059,15 +31251,15 @@ func (client *Client) UpdateMessageGroupWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Updates a stream mixing task.
+// Updates a stream mix task.
 //
 // Description:
 //
-// You can call this operation to update a stream mixing task. This operation allows you to modify the input sources and layout, but not other parameters such as the output resolution.
+// You can call this API operation to update a stream mix task. You can update the input sources and layout, but you cannot update parameters such as the output resolution.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
-// You can call this operation up to 10 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
+// The queries per second (QPS) limit for a single user is 10 calls per second. If you exceed this limit, your API calls are throttled. This may impact your business. Plan your calls accordingly.
 //
 // @param request - UpdateMixStreamRequest
 //
@@ -31131,7 +31323,15 @@ func (client *Client) UpdateMixStreamWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// 更新rtc云端录制任务
+// Updates an RTC cloud recording task.
+//
+// Description:
+//
+// Single-stream recording supports updating subscription parameters. Stream mixing recording supports updating only the subscribed user streams.
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 50 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation as appropriate.
 //
 // @param tmpReq - UpdateRtcCloudRecordingRequest
 //
@@ -31197,9 +31397,9 @@ func (client *Client) UpdateRtcCloudRecordingWithContext(ctx context.Context, tm
 //
 // Description:
 //
-//	  You can call this operation to update a subscription to mixed-stream relay events. You can modify parameters such as the callback URL and channel IDs.
+// - You can call this operation to update a subscription to mixed-stream relay events. You can modify parameters such as the callback URL and channel IDs.
 //
-//		- Before you call this operation, make sure that you have called the CreateRtcMPUEventSub operation to create the subscription.
+// - Before you call this operation, make sure that you have called the CreateRtcMPUEventSub operation to create the subscription.
 //
 // ## [](#qps-)QPS limit
 //
@@ -31255,13 +31455,13 @@ func (client *Client) UpdateRtcMPUEventSubWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Updates a custom Real-Time Streaming (RTS) transcoding configuration.
+// Updates the configuration of a custom Real-time Streaming (RTS) transcoding template.
 //
 // Description:
 //
-// This operation supports the following types of custom transcoding templates: h264, h264-nbhd, h264-origin, and audio.
+// This API operation supports only the following types of custom transcoding templates: h264, h264-nbhd, h264-origin, and audio.
 //
-// ## [](#qps-)QPS limit
+// ## QPS limit
 //
 // You can call this operation up to 10 times per second per account.
 //
@@ -31387,9 +31587,9 @@ func (client *Client) UpdateRtsLiveStreamTranscodeWithContext(ctx context.Contex
 //
 // Description:
 //
-// ### [](#qps-)QPS limit
+// ### QPS limits
 //
-// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions. We recommend that you take note of this limit when you call this operation. For more information, see [QPS limits](https://help.aliyun.com/document_detail/343507.html).
+// You can call this operation up to 100 times per second per account. Requests that exceed this limit are dropped and you may experience service interruptions.
 //
 // @param request - VerifyLiveDomainOwnerRequest
 //

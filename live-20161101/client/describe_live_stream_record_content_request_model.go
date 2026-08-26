@@ -26,7 +26,7 @@ type iDescribeLiveStreamRecordContentRequest interface {
 }
 
 type DescribeLiveStreamRecordContentRequest struct {
-	// The main streaming domain.
+	// The AppName of the live stream.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DescribeLiveStreamRecordContentRequest struct {
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The operation that you want to perform. Set the value to **DescribeLiveStreamRecordContent**.
+	// The main streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DescribeLiveStreamRecordContentRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The beginning of the time range to query. You can only query the recordings in the last 6 months. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end time for the query. The time range between StartTime and EndTime cannot exceed 4 days. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type DescribeLiveStreamRecordContentRequest struct {
 	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The name of the live stream.
+	// The start time for the query. You can query records from the last 6 months. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type DescribeLiveStreamRecordContentRequest struct {
 	//
 	// 2017-12-21T08:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the application to which the live stream belongs.
+	// The name of the live stream.
 	//
 	// This parameter is required.
 	//

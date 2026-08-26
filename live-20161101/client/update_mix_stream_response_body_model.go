@@ -16,13 +16,13 @@ type iUpdateMixStreamResponseBody interface {
 }
 
 type UpdateMixStreamResponseBody struct {
-	// The ID of the stream mixing task. You can specify this parameter in a request to delete the stream mixing task or query stream mixing tasks.
+	// The ID of the stream mix task. You can use this ID to query or delete the task.
 	//
 	// example:
 	//
 	// 5b2a046e-74d7-385e-d2d7-8a5b87e4****
 	MixStreamId *string `json:"MixStreamId,omitempty" xml:"MixStreamId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

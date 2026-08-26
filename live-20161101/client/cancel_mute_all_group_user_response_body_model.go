@@ -16,13 +16,13 @@ type iCancelMuteAllGroupUserResponseBody interface {
 }
 
 type CancelMuteAllGroupUserResponseBody struct {
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 16A96B9A-****-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// Actual return result of the service
 	Result *CancelMuteAllGroupUserResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,11 +62,11 @@ func (s *CancelMuteAllGroupUserResponseBody) Validate() error {
 }
 
 type CancelMuteAllGroupUserResponseBodyResult struct {
-	// Indicates whether the cancellation was successful, with values:
+	// Indicates whether the cancellation was successful. Valid values:
 	//
-	// - true: Success.
+	// - true: Successful.
 	//
-	// - false: Not successful.
+	// - false: Unsuccessful.
 	//
 	// example:
 	//

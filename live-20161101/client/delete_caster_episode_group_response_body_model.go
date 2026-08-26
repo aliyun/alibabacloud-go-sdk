@@ -14,7 +14,7 @@ type iDeleteCasterEpisodeGroupResponseBody interface {
 }
 
 type DeleteCasterEpisodeGroupResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

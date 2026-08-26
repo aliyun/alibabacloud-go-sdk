@@ -30,11 +30,11 @@ type iSetCasterChannelRequest interface {
 type SetCasterChannelRequest struct {
 	// The ID of the production studio.
 	//
-	// 	- If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
+	// - If you create a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, use the CasterId value returned in the response.
 	//
-	// 	- If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management*	- page. To go to the page, log on to the **ApsaraVideo Live console*	- and click **Production Studios*	- in the left-side navigation pane.
+	// - If you create a production studio in the ApsaraVideo Live console, go to the **Production Studio*	- > **Cloud Production Studio*	- page to view the ID.
 	//
-	// >  You can find the ID of the production studio in the Instance ID/Name column.
+	// > The production studio name in the list on the Cloud Production Studio page is the production studio ID.
 	//
 	// This parameter is required.
 	//
@@ -42,9 +42,9 @@ type SetCasterChannelRequest struct {
 	//
 	// a2b8e671-2fe5-4642-a2ec-bf93880e****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-	// The ID of the channel.
+	// The channel ID.
 	//
-	// When channels are enabled, the layout references the channel IDs. You can specify up to one resource for a channel. The number of resources is limited by the number of the channels of the production studio. The value must be in the RV[Number] format, such as RV01 and RV12.
+	// The reference ID for the layout scene. You can set a maximum of one resource for each channel. The total number of channels is determined when you create the production studio. The format is \\`RV01\\` to \\`RV12\\`.
 	//
 	// This parameter is required.
 	//
@@ -52,31 +52,36 @@ type SetCasterChannelRequest struct {
 	//
 	// RV01
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// The face retouching effect. Valid values: 0 (all effects), 1 (skin smoothing), 2 (skin whitening), 3 (dark circles removal), and 4 (nasolabial folds removal).
+	// The facial retouching settings. Valid values: 0 (whole), 1 (skin smoothing), 2 (skin whitening), 3 (dark circle removal), and 4 (nasolabial fold removal).
 	//
 	// example:
 	//
 	// 0
 	FaceBeauty *string `json:"FaceBeauty,omitempty" xml:"FaceBeauty,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The playback status. This parameter take effects for video files, but not for live streams. Valid values:
+	// The playback status. This parameter applies only to video files, not live streams. Valid values:
 	//
-	// 	- **1**: specifies that the video source is playing. This is the default value.
+	// - **1*	- (default): Playback.
 	//
-	// 	- **0**: specifies that the playback of the video source is paused.
+	// - **0**: Pause.
 	//
 	// example:
 	//
 	// 1
-	PlayStatus *int32  `json:"PlayStatus,omitempty" xml:"PlayStatus,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	PlayStatus *int32 `json:"PlayStatus,omitempty" xml:"PlayStatus,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the video source.
 	//
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The offset of the position where the production studio starts reading the video source. The value must be greater than or equal to 0, indicating an offset from the first frame. This parameter take effects for video files, but not for live streams. Unit: milliseconds.
+	// This parameter applies only to video files, not live streams. The value must be greater than or equal to 0. It specifies the offset from the first frame at which to start reading the file. Unit: milliseconds (ms).
 	//
 	// example:
 	//

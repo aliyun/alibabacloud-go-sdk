@@ -25,8 +25,13 @@ type DescribeLiveIpInfoRequest struct {
 	// example:
 	//
 	// 192.168.0.1
-	IP       *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	IP      *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

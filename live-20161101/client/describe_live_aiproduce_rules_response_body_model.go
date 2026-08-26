@@ -16,7 +16,7 @@ type iDescribeLiveAIProduceRulesResponseBody interface {
 }
 
 type DescribeLiveAIProduceRulesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

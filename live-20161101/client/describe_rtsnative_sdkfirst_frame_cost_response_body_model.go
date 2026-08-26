@@ -28,21 +28,21 @@ type DescribeRTSNativeSDKFirstFrameCostResponseBody struct {
 	//
 	// 300
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The end of the time range for which the data was queried.
+	// The end time. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2021-12-10T21:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The average latency of first frames at each interval. Unit: milliseconds.
+	// The average first frame latency composition for each time interval. Unit: milliseconds.
 	FirstFrameCostData []*DescribeRTSNativeSDKFirstFrameCostResponseBodyFirstFrameCostData `json:"FirstFrameCostData,omitempty" xml:"FirstFrameCostData,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id
 	//
 	// example:
 	//
 	// BC858082-736F-4A25-867B-E5B67C85ACF7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range for which the data was queried.
+	// The start time. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -117,37 +117,37 @@ func (s *DescribeRTSNativeSDKFirstFrameCostResponseBody) Validate() error {
 }
 
 type DescribeRTSNativeSDKFirstFrameCostResponseBodyFirstFrameCostData struct {
-	// The time elapsed from initialization to connection establishment.
+	// The time elapsed from successful initialization to successful connection establishment.
 	//
 	// example:
 	//
 	// 100
 	Connected *string `json:"Connected,omitempty" xml:"Connected,omitempty"`
-	// The time elapsed from connection establishment to subscription.
+	// The time elapsed from successful connection establishment to successful subscription.
 	//
 	// example:
 	//
 	// 89
 	FinishGetStreamInfo *string `json:"FinishGetStreamInfo,omitempty" xml:"FinishGetStreamInfo,omitempty"`
-	// The time elapsed from first packet processing to display of the first frame.
+	// The time elapsed from receiving the first packet to rendering the first frame.
 	//
 	// example:
 	//
 	// 32
 	FirstFrameComplete *string `json:"FirstFrameComplete,omitempty" xml:"FirstFrameComplete,omitempty"`
-	// The time elapsed from subscription to first packet processing.
+	// The time elapsed from successful subscription to receiving the first packet.
 	//
 	// example:
 	//
 	// 132
 	FirstPacket *string `json:"FirstPacket,omitempty" xml:"FirstPacket,omitempty"`
-	// The time consumed by initialization.
+	// The initialization duration.
 	//
 	// example:
 	//
 	// 1100
 	Initialized *string `json:"Initialized,omitempty" xml:"Initialized,omitempty"`
-	// The timestamp of the returned data.
+	// The start time of the time interval. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iDeleteLiveAppRecordConfigRequest interface {
 }
 
 type DeleteLiveAppRecordConfigRequest struct {
-	// The name of the application to which the live stream belongs.
+	// The AppName of the live stream.
 	//
 	// This parameter is required.
 	//

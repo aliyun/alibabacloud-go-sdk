@@ -32,20 +32,20 @@ type DescribeLiveDomainMonitoringUsageDataResponseBody struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range.
+	// The end time of the query. The time is in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is in UTC.
 	//
 	// example:
 	//
 	// 2022-12-10T22:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the monitoring session.
+	// The monitoring session ID.
 	//
 	// example:
 	//
 	// e62af24d-a354-3b0c-9f1f-da592c4b****
 	InstanceId     *string                                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	MonitoringData *DescribeLiveDomainMonitoringUsageDataResponseBodyMonitoringData `json:"MonitoringData,omitempty" xml:"MonitoringData,omitempty" type:"Struct"`
-	// The region of the live center.
+	// The live center region.
 	//
 	// example:
 	//
@@ -55,9 +55,9 @@ type DescribeLiveDomainMonitoringUsageDataResponseBody struct {
 	//
 	// example:
 	//
-	// 3C6CCEC4-6B88-4D4A-93E4-D47B3D92CF8F
+	// 3C6CCEC4-6B88-4D4A-93E4-D47B3******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range.
+	// The start time of the query. The time is in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is in UTC.
 	//
 	// example:
 	//

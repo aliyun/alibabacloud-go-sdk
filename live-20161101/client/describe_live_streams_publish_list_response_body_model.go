@@ -30,7 +30,7 @@ type DescribeLiveStreamsPublishListResponseBody struct {
 	//
 	// 2
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -43,7 +43,7 @@ type DescribeLiveStreamsPublishListResponseBody struct {
 	//
 	// 40A4F36D-A7CC-473A-88E7-154F92242566
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries that meet the specified conditions.
+	// The total number of entries that match the specified conditions.
 	//
 	// example:
 	//

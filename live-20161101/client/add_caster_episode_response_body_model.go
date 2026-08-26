@@ -16,7 +16,7 @@ type iAddCasterEpisodeResponseBody interface {
 }
 
 type AddCasterEpisodeResponseBody struct {
-	// The ID of the episode. You can use the ID as a request parameter in the API operation that is used to query the information about the episode list, modify the configurations of the episode, and delete the episode.
+	// The ID of the episode. This ID can be used as a request parameter to query the episode list, modify an episode, or delete an episode.
 	//
 	// example:
 	//

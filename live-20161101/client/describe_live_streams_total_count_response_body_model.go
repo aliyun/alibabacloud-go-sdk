@@ -16,7 +16,7 @@ type iDescribeLiveStreamsTotalCountResponseBody interface {
 }
 
 type DescribeLiveStreamsTotalCountResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

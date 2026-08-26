@@ -26,7 +26,7 @@ type DescribeLiveIpInfoResponseBody struct {
 	//
 	// example:
 	//
-	// ChinaTelecom
+	// 电信
 	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
 	// The English name of the Internet service provider (ISP).
 	//
@@ -34,19 +34,19 @@ type DescribeLiveIpInfoResponseBody struct {
 	//
 	// telecom
 	IspEname *string `json:"IspEname,omitempty" xml:"IspEname,omitempty"`
-	// The Chinese name of the region.
+	// The Chinese name of the IP region.
 	//
 	// example:
 	//
-	// China-Guizhou-guiyang
+	// 中国-贵州省-贵阳市
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The English name of the region.
+	// The English name of the IP region.
 	//
 	// example:
 	//
 	// China-Guizhou-guiyang
 	RegionEname *string `json:"RegionEname,omitempty" xml:"RegionEname,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

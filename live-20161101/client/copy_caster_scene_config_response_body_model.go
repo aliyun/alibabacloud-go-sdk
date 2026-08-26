@@ -14,7 +14,7 @@ type iCopyCasterSceneConfigResponseBody interface {
 }
 
 type CopyCasterSceneConfigResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

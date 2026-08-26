@@ -16,7 +16,7 @@ type iSetCasterConfigResponseBody interface {
 }
 
 type SetCasterConfigResponseBody struct {
-	// The ID of the production studio. You can specify the ID in a request to query the streaming URLs of the production studio, start the production studio, add a video resource, a layout, a component, or a playlist to the production studio, or query layouts of the production studio.
+	// The production studio ID. This ID can be used as a request parameter for querying the production studio stream address, starting the production studio, adding video resources, adding layouts, querying the layout list, adding components, and adding a program list.
 	//
 	// example:
 	//

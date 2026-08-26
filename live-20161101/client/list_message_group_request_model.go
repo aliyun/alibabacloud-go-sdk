@@ -22,13 +22,15 @@ type iListMessageGroupRequest interface {
 }
 
 type ListMessageGroupRequest struct {
-	// The ID of the interactive messaging application.
+	// Interactive Messages application ID.
+	//
+	// > You must correctly fill in this parameter to perform a normal query.
 	//
 	// example:
 	//
 	// VKL3***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The number of the page to return. Default value: 1. Valid values: 1 to 100000.
+	// Page number. Default value: 1. Valid values: 1 to 100000.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +38,7 @@ type ListMessageGroupRequest struct {
 	//
 	// 10
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of message groups to return on each page. Default value: 20.
+	// Number of message groups to display per page. Default value: 20.
 	//
 	// Valid values: 1 to 50.
 	//
@@ -46,17 +48,19 @@ type ListMessageGroupRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sort order. Valid values:
+	// Sorting method. Valid values:
 	//
-	// 	- 0: ascending order by time
+	// - 0: Ascending order by time.
 	//
-	// 	- 1: descending order by time
+	// - 1: Descending order by time.
 	//
 	// example:
 	//
 	// 1
 	SortType *int32 `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	// The ID of the user. Each user has a unique ID in the application. You can specify multiple user IDs.
+	// User ID, which is customized by the user and must be unique within an AppId. Different users must use different UserIds.
+	//
+	// > You must correctly fill in this parameter to perform a normal query.
 	//
 	// example:
 	//

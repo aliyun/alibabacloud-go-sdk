@@ -32,7 +32,7 @@ type DescribeLiveSnapshotConfigRequest struct {
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The main streaming domain.
+	// The streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -42,9 +42,9 @@ type DescribeLiveSnapshotConfigRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The sort order. Valid values:
 	//
-	// 	- **asc*	- (default): ascending order
+	// - **asc*	- (default): ascending order.
 	//
-	// 	- **desc**: descending order
+	// - **desc**: descending order.
 	//
 	// example:
 	//

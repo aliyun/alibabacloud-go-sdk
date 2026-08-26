@@ -32,34 +32,39 @@ type UpdateLiveSnapshotNotifyConfigRequest struct {
 	//
 	// ww.yourdomain***.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The callback authentication key. The key can be 16 to 32 characters in length and can contain only letters and digits.
+	// The callback authentication key. The key must be 16 to 32 characters in length and can contain letters and digits.
 	//
-	// >  This parameter is required if you set the NotifyReqAuth parameter to **yes**.
+	// > This parameter is required when NotifyReqAuth is set to **yes**.
 	//
 	// example:
 	//
-	// yourkey
+	// testkeyyourkey12
 	NotifyAuthKey *string `json:"NotifyAuthKey,omitempty" xml:"NotifyAuthKey,omitempty"`
-	// Specifies whether to enable callback authentication. Valid values:
+	// Specifies whether to enable authentication for callback notifications. Valid values:
 	//
-	// 	- **yes**: enables callback authentication
+	// - **yes**: Enables
 	//
-	// 	- **no**: disables callback authentication
+	// - **no**: Disables
 	//
-	// >  Default value: **no**. If you set this parameter to **yes**, the NotifyAuthKey parameter is required.
+	// > The default value is **no**. If you set this parameter to **yes**, NotifyAuthKey is required.
 	//
 	// example:
 	//
 	// yes
 	NotifyReqAuth *string `json:"NotifyReqAuth,omitempty" xml:"NotifyReqAuth,omitempty"`
-	// The callback URL. Specify a valid URL that is up to 500 characters in length.
+	// The callback URL. The URL must be valid and cannot exceed 500 characters.
 	//
 	// example:
 	//
 	// http://callback.yourdomain***.com
 	NotifyUrl *string `json:"NotifyUrl,omitempty" xml:"NotifyUrl,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateLiveSnapshotNotifyConfigRequest) String() string {

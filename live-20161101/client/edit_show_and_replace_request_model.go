@@ -28,13 +28,13 @@ type iEditShowAndReplaceRequest interface {
 }
 
 type EditShowAndReplaceRequest struct {
-  // The ID of the production studio.
+  // The production studio ID.
   // 
-  // 	- If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
+  // - If you created the production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the CasterId parameter in the response.
   // 
-  // 	- If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management*	- page. To go to the page, log on to the **ApsaraVideo Live console*	- and click **Production Studios*	- in the left-side navigation pane.
+  // - If you created the production studio in the ApsaraVideo Live console, go to **ApsaraVideo Live console*	- > **Production Studios*	- > **Cloud Production Studio*	- to view the ID.
   // 
-  // >  You can find the ID of the production studio in the Instance ID/Name column.
+  // > The production studio name in the production studio list on the Cloud Production Studio page is the production studio ID.
   // 
   // This parameter is required.
   // 
@@ -42,25 +42,30 @@ type EditShowAndReplaceRequest struct {
   // 
   // 53200b81-b761-4c10-842a-a0726d97****
   CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-  // The end time of the editing task. Unit: seconds.
+  // The end time of the video clip. Unit: seconds.
   // 
-  // > 
+  // > - The valid range of the clip time is 0 to the total duration of the show.
   // 
-  // 	- The valid values range from 0 to the value indicated by the total length of the episode.
+  // > - The default value is the end time of the video-on-demand file. The value cannot exceed the total duration of the show.
   // 
-  // 	- By default, this parameter is set to the value that indicates the total length of the episode. The editing period cannot exceed the total length of the episode.
+  // > - For example, to clip a video-on-demand file from the 2nd second to the 5th second, set StartTime to 2.0 and EndTime to 5.0.
   // 
-  // 	- If you want to edit a VOD file from the 2nd second to the 5th second, set the StartTime parameter to 2.0 and the EndTime parameter to 5.0.
+  // > - You must specify at least one of StartTime and EndTime.
   // 
   // example:
   // 
   // 5.0
   EndTime *float32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-  RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-  // The ID of the episode to be edited.
+  // The region ID.
   // 
-  // >  You can obtain the ID from the response parameter ShowId of the [AddShowIntoShowList](https://help.aliyun.com/document_detail/2848051.html) operation.
+  // example:
+  // 
+  // cn-shanghai
+  RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+  // The ID of the show to be clipped. The referenced show must be of the video-on-demand material type (ResourceInfo.ResourceType=vod with a valid resourceId).
+  // 
+  // > Obtain the ShowId value from the response parameters of the [AddShowIntoShowList](https://help.aliyun.com/document_detail/2848051.html) operation.
   // 
   // This parameter is required.
   // 
@@ -68,25 +73,25 @@ type EditShowAndReplaceRequest struct {
   // 
   // 42200b81-b761-4c10-842a-a0726d97****
   ShowId *string `json:"ShowId,omitempty" xml:"ShowId,omitempty"`
-  // The start time of the editing task. Unit: seconds.
+  // The start time of the video clip. Unit: seconds.
   // 
-  // > 
+  // > - The valid range of the clip time is 0 to the total duration of the show. - By default, the clip starts from the beginning of the video-on-demand file. Value: 0.0.
   // 
-  // 	- The valid values range from 0 to the value indicated by the total length of the episode. By default, the editing task starts from the beginning of the episode. Default value: 0.0.
+  // > - For example, to clip a video-on-demand file from the 2nd second to the 5th second, set StartTime to 2.0 and EndTime to 5.0.
   // 
-  // 	- If you want to edit a VOD file from the 2nd second to the 5th second, set the StartTime parameter to 2.0 and the EndTime parameter to 5.0.
+  // > - You must specify at least one of StartTime and EndTime.
   // 
   // example:
   // 
   // 2.0
   StartTime *float32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-  // The storage information of the episode. The following fields are included:
+  // The storage information. This parameter is required. Description:
   // 
-  // 	- **StorageLocation**: the storage location of ApsaraVideo VOD.
+  // - **StorageLocation**: the video-on-demand storage address of the user.
   // 
-  // 	- **FileName**: the custom file name.
+  // - **FileName**: the custom file name.
   // 
-  // >  Editing outputs must be stored in the VOD bucket within the same account that is used to access both ApsaraVideo VOD and ApsaraVideo Live. For more information about how to obtain the storage location, see [Manage VOD resources](https://help.aliyun.com/document_detail/86097.html).
+  // > The video clip storage address must be a video-on-demand storage address under the same account. To obtain the video-on-demand storage address, see [Storage management](https://help.aliyun.com/document_detail/86097.html).
   // 
   // example:
   // 

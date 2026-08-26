@@ -20,9 +20,9 @@ type iDeleteLiveLazyPullStreamInfoConfigRequest interface {
 }
 
 type DeleteLiveLazyPullStreamInfoConfigRequest struct {
-	// The name of the application to which the live stream belongs.
+	// The name of the application.
 	//
-	// >  If you want to delete configurations of triggered stream pulling for all applications, set the value to **ali_all_app**.
+	// > To delete configurations of triggered stream pulling for all applications, set it to **ali_all_app**.
 	//
 	// This parameter is required.
 	//
@@ -39,7 +39,12 @@ type DeleteLiveLazyPullStreamInfoConfigRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteLiveLazyPullStreamInfoConfigRequest) String() string {

@@ -18,7 +18,7 @@ type iDescribeToutiaoLivePublishResponseBody interface {
 }
 
 type DescribeToutiaoLivePublishResponseBody struct {
-	// The stream ingest details.
+	// The details of the stream ingest information.
 	Content []*DescribeToutiaoLivePublishResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
 	// The description of the response status.
 	//
@@ -83,13 +83,13 @@ func (s *DescribeToutiaoLivePublishResponseBody) Validate() error {
 }
 
 type DescribeToutiaoLivePublishResponseBodyContent struct {
-	// The name of the application to which the live stream belongs.
+	// The name of the application to which the stream belongs.
 	//
 	// example:
 	//
 	// liveApp****
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// The bitrate. Unit: bit/s.
+	// The bitrate in bit/s.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ type DescribeToutiaoLivePublishResponseBodyContent struct {
 	//
 	// 0
 	BwDiff *float32 `json:"BwDiff,omitempty" xml:"BwDiff,omitempty"`
-	// The name of the content delivery network (CDN) service.
+	// The CDN name.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type DescribeToutiaoLivePublishResponseBodyContent struct {
 	//
 	// 74.4
 	Fps *float32 `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// The name of the ingested stream.
+	// The stream name.
 	//
 	// example:
 	//

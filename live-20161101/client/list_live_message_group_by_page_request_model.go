@@ -24,7 +24,7 @@ type iListLiveMessageGroupByPageRequest interface {
 }
 
 type ListLiveMessageGroupByPageRequest struct {
-	// The ID of the interactive messaging application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -32,25 +32,25 @@ type ListLiveMessageGroupByPageRequest struct {
 	//
 	// demo
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The data center. It must be the same as the data center that was specified when you called the [CreateLiveMessageApp](https://help.aliyun.com/document_detail/2848162.html) operation to create the interactive messaging application. Valid values: cn-shanghai and ap-southeast-1 (Singapore).
+	// The data center. This value must be the same as the data center specified in [CreateLiveMessageApp](https://help.aliyun.com/document_detail/2848162.html). Currently supported data centers are Shanghai (cn-shanghai) and Singapore (ap-southeast-1).
 	//
 	// example:
 	//
 	// cn-shanghai
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	// The status of the groups to query. Default value: 0. Valid values:
+	// The group status. Default value: 0. Valid values:
 	//
-	// 	- 0: all groups
+	// - 0: Queries all groups.
 	//
-	// 	- 1: existing groups
+	// - 1: Queries groups that are not deleted.
 	//
-	// 	- 2: deleted groups
+	// - 2: Queries deleted groups.
 	//
 	// example:
 	//
 	// 1
 	GroupStatus *int32 `json:"GroupStatus,omitempty" xml:"GroupStatus,omitempty"`
-	// The page number. Valid values: [1,10000].
+	// The page number. Valid values: [1,10000\\].
 	//
 	// Default value: 1.
 	//
@@ -58,7 +58,7 @@ type ListLiveMessageGroupByPageRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values:[1,50].
+	// The page size. Valid values: [1,50\\].
 	//
 	// Default value: 20.
 	//
@@ -66,11 +66,11 @@ type ListLiveMessageGroupByPageRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sort order based on the time when the groups were created. Valid values:
+	// The sort order, based on group creation time. Valid values:
 	//
-	// 	- 1: ascending order
+	// - 1: Ascending order.
 	//
-	// 	- 2: descending order
+	// - 2: Descending order.
 	//
 	// This parameter is required.
 	//

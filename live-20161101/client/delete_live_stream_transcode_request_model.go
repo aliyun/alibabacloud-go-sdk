@@ -22,7 +22,7 @@ type iDeleteLiveStreamTranscodeRequest interface {
 }
 
 type DeleteLiveStreamTranscodeRequest struct {
-	// The name of the application to which the live stream belongs.
+	// The AppName of the live stream.
 	//
 	// This parameter is required.
 	//
@@ -42,27 +42,27 @@ type DeleteLiveStreamTranscodeRequest struct {
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The transcoding template ID. Valid values:
 	//
-	// 	- Standard transcoding:
+	// - Standard transcoding:
 	//
-	//     	- lld: low definition
+	//   - lld: low definition
 	//
-	//     	- lsd: standard definition
+	//   - lsd: standard definition
 	//
-	//     	- lhd: high definition
+	//   - lhd: high definition
 	//
-	//     	- lud : ultra-high definition
+	//   - lud : ultra-high definition
 	//
-	// 	- Narrowband HD™ transcoding:
+	// - Narrowband HD™ transcoding:
 	//
-	//     	- ld: low definition
+	//   - ld: low definition
 	//
-	//     	- sd: standard definition
+	//   - sd: standard definition
 	//
-	//     	- hd: high definition
+	//   - hd: high definition
 	//
-	//     	- ud: ultra-high definition
+	//   - ud: ultra-high definition
 	//
-	// 	- Custom transcoding: a custom ID
+	// - Custom transcoding: a custom ID
 	//
 	// This parameter is required.
 	//

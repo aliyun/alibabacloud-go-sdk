@@ -34,13 +34,13 @@ type iDescribeLiveRecordNotifyRecordsRequest interface {
 }
 
 type DescribeLiveRecordNotifyRecordsRequest struct {
-	// The name of the application to which the live stream belongs.
+	// The name of the application to which the stream belongs.
 	//
 	// example:
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The main streaming domain.
+	// The streamer\\"s streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type DescribeLiveRecordNotifyRecordsRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time. The end time must be later than the start time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// This parameter is required.
 	//
@@ -65,18 +65,23 @@ type DescribeLiveRecordNotifyRecordsRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 500. Default value: 20.
+	// The number of entries per page. Default value: 20. Maximum value: 500. Valid values: any integer from 1 to 500.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
 	//
-	// >  You can query data within the last seven days.
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
+	//
+	// > You can query data within the last 7 days.
 	//
 	// This parameter is required.
 	//
@@ -84,18 +89,29 @@ type DescribeLiveRecordNotifyRecordsRequest struct {
 	//
 	// 2023-02-10T21:03:47Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Specifies whether the callback is successful. Valid values:
+	// Specifies whether the callback was successful. Valid values:
 	//
-	// 	- success
+	// - success: The callback was successful.
 	//
-	// 	- failed
+	// - failed: The callback failed.
 	//
 	// example:
 	//
 	// success
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The storage type of the recording for which to query callback records. Valid values:
+	//
+	// - oss: recorded to OSS
+	//
+	// - vod: recorded to ApsaraVideo VOD
+	//
+	// - all: queries callback records for all storage types
+	//
+	// example:
+	//
+	// oss
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The name of the live stream.
+	// The stream name.
 	//
 	// example:
 	//

@@ -20,9 +20,9 @@ type iListRtcMPUTaskDetailRequest interface {
 }
 
 type ListRtcMPUTaskDetailRequest struct {
-	// The ID of the application.
+	// The application ID.
 	//
-	// >  The ID can be up to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+	// > The application ID consists of uppercase and lowercase letters, digits, underscores, and hyphens (-), with a maximum of 64 characters.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,15 @@ type ListRtcMPUTaskDetailRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The page number.
 	//
+	// > If you do not specify a task ID, you must specify the PageSize and PageNo parameters. In this case, the paged query results of all stream mixing and relaying tasks under the specified application ID are returned.
+	//
 	// example:
 	//
 	// 20
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100.
+	// The number of records per page. Valid values: 1 to 100.
 	//
-	// >  If you do not specify TaskId, you must specify PageSize and PageNo. Then, the parameters of all stream relay tasks for the specified application are returned in pages.
+	// > If you do not specify a task ID, you must specify the PageSize and PageNo parameters. In this case, the paged query results of all stream mixing and relaying tasks under the specified application ID are returned.
 	//
 	// example:
 	//
@@ -46,11 +48,10 @@ type ListRtcMPUTaskDetailRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The task ID.
 	//
-	// >
 	//
-	// 	- The ID can be up to 55 characters in length and can contain letters, digits, underscores (_), and hyphens (-).
+	// >- The task ID consists of uppercase and lowercase letters, digits, underscores, and hyphens (-), with a maximum of 55 characters.
 	//
-	// 	- If you specify TaskId, the parameters of the specified tasks are returned.
+	// - If you specify a task ID, the query is performed based on the task ID first, and the result contains the parameter details of the stream mixing and relaying task with the specified task ID.
 	//
 	// example:
 	//

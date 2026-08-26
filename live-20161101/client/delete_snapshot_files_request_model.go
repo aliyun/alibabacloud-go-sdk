@@ -26,7 +26,7 @@ type iDeleteSnapshotFilesRequest interface {
 }
 
 type DeleteSnapshotFilesRequest struct {
-	// The name of the application to which the live stream belongs.
+	// The AppName of the live stream.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteSnapshotFilesRequest struct {
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The timestamps when the snapshots that you want to delete were captured.
+	// A list of timestamps of the snapshots to delete.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DeleteSnapshotFilesRequest struct {
 	//
 	// 1653641526637
 	CreateTimestampList []*int64 `json:"CreateTimestampList,omitempty" xml:"CreateTimestampList,omitempty" type:"Repeated"`
-	// The main streaming domain.
+	// The streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -51,14 +51,19 @@ type DeleteSnapshotFilesRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to also delete the corresponding file in Object Storage Service (OSS) at the same time. Value values:
+	// The region ID.
 	//
-	// 	- **true**: deletes the corresponding file in OSS.
+	// example:
 	//
-	// 	- **false**: does not delete the corresponding file in OSS.
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to also delete the snapshot files from OSS. Valid values:
 	//
-	// >  To delete the corresponding file in OSS, you must have the permissions on the OSS bucket.
+	// - **true**: Deletes.
+	//
+	// - **false**: Does not delete.
+	//
+	// > To delete files from OSS, you must have the required permissions for OSS file operations.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +71,7 @@ type DeleteSnapshotFilesRequest struct {
 	//
 	// true
 	RemoveFile *bool `json:"RemoveFile,omitempty" xml:"RemoveFile,omitempty"`
-	// The name of the live stream.
+	// The stream name.
 	//
 	// This parameter is required.
 	//

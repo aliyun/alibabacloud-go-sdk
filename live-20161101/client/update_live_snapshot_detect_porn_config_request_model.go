@@ -30,7 +30,7 @@ type iUpdateLiveSnapshotDetectPornConfigRequest interface {
 }
 
 type UpdateLiveSnapshotDetectPornConfigRequest struct {
-	// The name of the application to which the live stream belongs. The value of this parameter must be the same as the application name in the ingest URL. Otherwise, the configuration does not take effect. The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). The name cannot start with a hyphen (-) or underscore (_). You can also specify an asterisk (\\*) as the value to match all applications.
+	// The name of the application to which the stream belongs. The AppName value must match the AppName in the ingest URL for the template to take effect. The value can be up to 255 characters in length and can contain digits, uppercase and lowercase letters, hyphens (-), and underscores (_). Hyphens and underscores cannot be the first character. The value can also be a single asterisk (*) to match all AppName values.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type UpdateLiveSnapshotDetectPornConfigRequest struct {
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The main streaming domain.
+	// The streaming domain of the streamer.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type UpdateLiveSnapshotDetectPornConfigRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The interval at which snapshots are captured from the live stream. Valid values: **5 to 3600**. Unit: seconds.
+	// The sampling interval. Valid values: **5 to 3600**. Unit: seconds.
 	//
 	// example:
 	//
@@ -58,20 +58,20 @@ type UpdateLiveSnapshotDetectPornConfigRequest struct {
 	//
 	// liveBucket****
 	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
-	// The endpoint of the Object Storage Service (OSS) bucket.
+	// The endpoint of the OSS bucket.
 	//
 	// example:
 	//
 	// cn-oss-****.aliyuncs.com
 	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	// The name of the snapshot that stores violations such as pornographic content and politically sensitive content.
+	// The name of the stored image that contains violations such as pornography or politically sensitive content.
 	//
 	// example:
 	//
 	// {liveApp****}/{liveStream****}/{Date}/{Hour}/{Minute}_{Second}.jpg
 	OssObject *string `json:"OssObject,omitempty" xml:"OssObject,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The moderation scenario array.
+	// The array of detection scenarios.
 	//
 	// example:
 	//

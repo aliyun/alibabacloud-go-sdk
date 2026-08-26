@@ -18,7 +18,7 @@ type iStopLiveDomainRequest interface {
 }
 
 type StopLiveDomainRequest struct {
-	// The streaming domain or ingest domain.
+	// The ingest domain or streaming domain.
 	//
 	// This parameter is required.
 	//

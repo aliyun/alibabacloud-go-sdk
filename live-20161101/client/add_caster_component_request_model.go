@@ -38,37 +38,37 @@ type iAddCasterComponentRequest interface {
 }
 
 type AddCasterComponentRequest struct {
-	// The information about the caption layer. This parameter contains the following fields:
+	// The properties of the layer element. The properties are described as follows:
 	//
-	// >  This parameter is required when the ComponentType parameter is set to caption.
+	// 	Notice: This parameter is required when ComponentType is set to caption.
 	//
-	// 	- **SizeNormalized**: the normalized font size. The font size is set to font_size/output_height. The value range is `[0,1]` and accurate to two decimal places. If the font size calculated by the system based on the normalization method is greater than **1024**, **1024*	- is used.
+	// - **SizeNormalized**: The normalized font size. This value is calculated as font size / output height. The value must be in the `[0,1]` range and accurate to two decimal places. If the font size calculated from the normalized value is greater than **1024**, the font size is set to **1024**.
 	//
-	// 	- **BorderWidthNormalized**: the normalized value of the text border width, which is calculated based on the size of the text, namely "BorderWidth/FontSize". The value range is `[0,1]` and accurate to two decimal places. If the value calculated according to the normalization method exceeds **16**, **16*	- is used. The default value is **0**.
+	// - **BorderWidthNormalized**: The normalized width of the text border. This value is calculated based on the font size: BorderWidth / FontSize. The value must be in the `[0,1]` range and accurate to two decimal places. If the width calculated from the normalized value is greater than **16**, the width is set to **16**. The default value is **0**.
 	//
-	// 	- **FontName**: the font name. For more information about the value, see **Font description**. The default font name is KaiTi.
+	// - **FontName**: The font name. For valid values, see **Production studio fonts**. The default font is KaiTi.
 	//
-	// 	- **BorderColor**: the color of the text border. Valid values: 0x000000 to 0xffffff. By default, this parameter is not set. In this case, the color of the text border is transparent.
+	// - **BorderColor**: The color of the text border. The value must be a hexadecimal color code that ranges from 0x000000 to 0xffffff. The default value is an empty string (""), which indicates that no border color is set.
 	//
-	// 	- **LocationId**: the channel ID of the source subtitle.
+	// - **LocationId**: The channel ID of the translation source.
 	//
-	// 	- **SourceLan**: the source language of the audio in the source video. Valid values: en, cn, es, and ru, which indicate English, Chinese, Spanish, and Russian respectively. Default value: cn.
+	// - **SourceLan**: The original audio language of the video source. Valid values: en (English), cn (Chinese), es (Spanish), and ru (Russian). The default value is cn.
 	//
-	// 	- **TargetLan**: the target audio language in the source video. If you do not specify this field, speech recognition is used. If you specify this field, translation is used. Valid values: en, cn, es, and ru, which indicate English, Chinese, Spanish, and Russian respectively. Default value: cn.
+	// - **TargetLan**: The target audio language for the video source. If you do not set this parameter, only speech recognition is performed. If you set this parameter, the audio is translated. Valid values: en (English), cn (Chinese), es (Spanish), and ru (Russian).
 	//
-	// 	- **ShowSourceLan**: specifies whether to display the source language. Valid values: true: displays the source language. false: hides the source language. Default value: false.
+	// - **ShowSourceLan**: Specifies whether to display the source language. Valid values: true and false. The default value is false.
 	//
-	// 	- **Truncation**: specifies whether to allow caption truncation. Valid values: true: specifies that the caption can be truncated. false: specifies that the caption cannot be truncated. Default value: false.
+	// - **Truncation**: Specifies whether captions can be truncated. Valid values: true and false. The default value is false.
 	//
-	// 	- **SourceLanPerLineWordCount**: the number of words displayed in each line when the subtitle is in the source language. Default value: 20.
+	// - **SourceLanPerLineWordCount**: The maximum number of words per line for the source language captions. The default value is 20.
 	//
-	// 	- **TargetLanPerLineWordCount**: the number of words displayed in each line when the subtitle is in the destination language. Default value: 20.
+	// - **TargetLanPerLineWordCount**: The maximum number of words per line for the target language captions. The default value is 20.
 	//
-	// 	- **SourceLanReservePages**: the number of lines reserved when the subtitle is in the source language. This field takes effect only when the Truncation field is set to true. Default value: 2.
+	// - **SourceLanReservePages**: The number of lines to reserve for the source language captions. This parameter takes effect only when Truncation is set to true. The default value is 2.
 	//
-	// 	- **TargetLanReservePages**: the number of lines reserved when the subtitle is in the destination language. This field takes effect only when the Truncation field is set to true. Default value: 2.
+	// - **TargetLanReservePages**: The number of lines to reserve for the target language captions. This parameter takes effect only when Truncation is set to true. The default value is 2.
 	//
-	// The value is a JSON string. Use upper camel case for field names.
+	// The value must be a JSON-formatted string. Parameter names must be in upper-camel case.
 	//
 	// example:
 	//
@@ -76,11 +76,11 @@ type AddCasterComponentRequest struct {
 	CaptionLayerContent *string `json:"CaptionLayerContent,omitempty" xml:"CaptionLayerContent,omitempty"`
 	// The ID of the production studio.
 	//
-	// 	- If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
+	// - If you create the production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, find the ID in the CasterId parameter of the response.
 	//
-	// 	- If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management*	- page. To go to the page, log on to the **ApsaraVideo Live console*	- and click **Production Studios*	- in the left-side navigation pane.
+	// - If you create the production studio in the LIVE console, go to the **LIVE Console*	- > **Production Studio*	- > **Cloud Production Studio*	- page to view the ID.
 	//
-	// >  You can find the ID of the production studio in the Instance ID/Name column.
+	// > The name of the production studio in the list on the Cloud Production Studio page is the production studio ID.
 	//
 	// This parameter is required.
 	//
@@ -88,17 +88,17 @@ type AddCasterComponentRequest struct {
 	//
 	// LIVEPRODUCER_POST-cn-0pp1czt****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-	// The information about the component layer, such as the size and layout. This parameter contains the following fields:
+	// The size, layout, and other information about the component layer. The elements are described as follows:
 	//
-	// 	- **HeightNormalized**: the normalized value of heights for the elements in the component layer
+	// - **HeightNormalized**: The normalized height.
 	//
-	// 	- **WidthNormalized**: the normalized value of widths for the elements in the component layer
+	// - **WidthNormalized**: The normalized width.
 	//
-	// 	- **PositionNormalized**: the normalized value of the coordinates of the component layer
+	// - **PositionNormalized**: The normalized position of the layer element.
 	//
-	// 	- **PositionRefer**: the reference coordinates of the component layer.
+	// - **PositionRefer**: The reference coordinates for the element\\"s position.
 	//
-	// The value is a JSON string. Use upper camel case for field names.
+	// The value is a JSON-formatted string. Parameter names must be in upper-camel case.
 	//
 	// This parameter is required.
 	//
@@ -106,19 +106,19 @@ type AddCasterComponentRequest struct {
 	//
 	// {"HeightNormalized":"1","PositionRefer":"topRight","WidthNormalized":"0","PositionNormalized":["0.1","0.2"]}
 	ComponentLayer *string `json:"ComponentLayer,omitempty" xml:"ComponentLayer,omitempty"`
-	// The component name. By default, the component name is the component ID.
+	// The name of the component. The default value is the component ID.
 	//
 	// example:
 	//
 	// text01
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	// The component type. Valid values:
+	// The type of component. Valid values:
 	//
-	// 	- **text**: a text component. If you set ComponentType to text, you must also specify TextLayerContent.
+	// - **text**: A text component. If you set this parameter to text, you must also set the TextLayerContent parameter.
 	//
-	// 	- **image**: an image component. If you set ComponentType to image, you must also specify ImageLayerContent.
+	// - **image**: An image component. If you set this parameter to image, you must also set the ImageLayerContent parameter.
 	//
-	// 	- **caption**: a caption component. If you set ComponentType to caption, you must also specify CaptionLayerContent.
+	// - **caption**: A caption component. If you set this parameter to caption, you must also set the CaptionLayerContent parameter.
 	//
 	// This parameter is required.
 	//
@@ -126,49 +126,53 @@ type AddCasterComponentRequest struct {
 	//
 	// text
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	// The effect of the component. Valid values:
+	// The display effect of the component. Valid values:
 	//
-	// 	- **none (default)**
+	// - **none*	- (default): No effect.
 	//
-	// 	- **animateH**: horizontal scrolling
+	// - **animateH**: Scrolls horizontally.
 	//
-	// 	- **animateV**: vertical scrolling
+	// - **animateV**: Scrolls vertically.
 	//
 	// example:
 	//
 	// animateH
 	Effect *string `json:"Effect,omitempty" xml:"Effect,omitempty"`
-	// The information about the HTML5 layer.
+	// The configuration of the H5 component.
 	//
 	// example:
 	//
 	// {"htmlUrl":http://caster.example.com}
 	HtmlLayerContent *string `json:"HtmlLayerContent,omitempty" xml:"HtmlLayerContent,omitempty"`
-	// The information about the image layer. This parameter contains the following fields:
+	// The properties of the layer element. The properties are described as follows:
 	//
-	// >  This parameter is required when the ComponentType parameter is set to image.
+	// 	Notice:
 	//
-	// MaterialId: the ID of the asset from the media asset library. The name that you set when you upload an asset is the ID of the asset.
+	// This parameter is required when ComponentType is set to image.
 	//
-	// The value is a JSON string. Use upper camel case for field names.
+	//
+	//
+	// MaterialId: The ID of the media asset. The name that you specify when you upload a media asset is used as the ID of the media asset.
+	//
+	// The value must be a JSON-formatted string. Parameter names must be in upper-camel case.
 	//
 	// example:
 	//
 	// {"MaterialId":"6cf724c6ebfd4a59b5b3cec6f10d****"}
 	ImageLayerContent *string `json:"ImageLayerContent,omitempty" xml:"ImageLayerContent,omitempty"`
-	// The layer stacking order of the component. Valid values:
+	// The layer order of the component.
 	//
-	// 	- cover
+	// - cover: The component is in the foreground.
 	//
-	// 	- background
+	// - background: The component is in the background.
 	//
 	// example:
 	//
 	// cover
 	LayerOrder *string `json:"LayerOrder,omitempty" xml:"LayerOrder,omitempty"`
-	// The location ID of the component. Each location ID can be assigned to only one component and must be in the RC[Number] format. The values specified by this parameter must be in ascending order, such as RC01 to RC99.
+	// Specifies the position of the component. Each position can hold only one component. The format must be RC01 to RC99.
 	//
-	// >  If the ComponentType parameter is set to caption, the LocationId parameter specifies the location ID of the video source referenced by the component.
+	// > If the component type is caption, this parameter specifies the location of the referenced video source.
 	//
 	// This parameter is required.
 	//
@@ -177,24 +181,29 @@ type AddCasterComponentRequest struct {
 	// RC01
 	LocationId *string `json:"LocationId,omitempty" xml:"LocationId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The information about the text layer. This parameter contains the following fields:
+	// The ID of the region.
 	//
-	// >  This parameter is available and required only when the ComponentType parameter is set to text.
+	// example:
 	//
-	// 	- **SizeNormalized**: the normalized font size. The font size is set to font_size/output_height. The value range is `[0,1]`. If the font size calculated by the system based on the normalization method is greater than 1024, 1024 is used.
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The properties of the layer element. The properties are described as follows:
 	//
-	// 	- **BorderWidthNormalized**: the normalized value of the text border width. The normalized value is calculated based on the size of the text, that is, "BorderWidth/FontSize". The value range is `[0,1]`. If the value calculated based on the normalization method exceeds 16, 16 is used. The default value is 0.
+	// 	Notice: This parameter is required only when ComponentType is set to text.
 	//
-	// 	- **FontName**: the font name. For more information about the value, see **Font description**. The default value is KaiTi.
+	// - **SizeNormalized**: The normalized font size. This value is calculated as font size / output height. The value must be in the `[0,1]` range. If the font size calculated from the normalized value is greater than 1024, the font size is set to 1024.
 	//
-	// 	- **BorderColor**: the color of the text border. Valid values: 0x000000 to 0xffffff. By default, this parameter is not set. In this case, the color of the text border is transparent.
+	// - **BorderWidthNormalized**: The normalized width of the text border. This value is calculated based on the font size: BorderWidth / FontSize. The value must be in the `[0,1]` range. If the width calculated from the normalized value is greater than 16, the width is set to 16. The default value is 0.
 	//
-	// 	- **Text**: the content of the text. By default, this parameter is not set. In this case, the text contains no content.
+	// - **FontName**: The font name. For valid values, see **Production studio fonts**. The default font is KaiTi.
 	//
-	// 	- **Color**: the color of the text. The default value is 0xff0000, which indicates that the text is in red.
+	// - **BorderColor**: The color of the text border. The value must be a hexadecimal color code that ranges from 0x000000 to 0xffffff. The default value is an empty string (""), which indicates that no border color is set.
 	//
-	// The value is a JSON string. Use upper camel case for field names.
+	// - **Text**: The text content. The default value is an empty string ("").
+	//
+	// - **Color**: The text color. The default value is 0xff0000, which represents red.
+	//
+	// The value must be a JSON-formatted string. Parameter names must be in upper-camel case.
 	//
 	// example:
 	//

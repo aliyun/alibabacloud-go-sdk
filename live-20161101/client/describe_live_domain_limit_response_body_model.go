@@ -21,7 +21,7 @@ type DescribeLiveDomainLimitResponseBody struct {
 	//
 	// example:
 	//
-	// A3136B58-5876-4168-83CA-B562781981A0
+	// A3136B58-5876-4168-83CA-B562********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

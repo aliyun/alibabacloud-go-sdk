@@ -29,7 +29,7 @@ type DescribeLiveRecordVodConfigsResponseBody struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeLiveRecordVodConfigsResponseBody struct {
 	//
 	// 5056369B-D337-499E-B8B7-B761BD37B08A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

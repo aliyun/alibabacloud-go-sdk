@@ -16,7 +16,7 @@ type iGetAllCustomTemplatesResponseBody interface {
 }
 
 type GetAllCustomTemplatesResponseBody struct {
-	// The template names and template configurations returned.
+	// A list of template names and template configurations.
 	//
 	// example:
 	//

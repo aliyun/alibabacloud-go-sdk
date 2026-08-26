@@ -18,9 +18,14 @@ type iStopRtcAsrTaskRequest interface {
 }
 
 type StopRtcAsrTaskRequest struct {
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the task.
+	// The task ID.
 	//
 	// This parameter is required.
 	//

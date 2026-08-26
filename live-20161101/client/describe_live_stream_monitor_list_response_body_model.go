@@ -26,7 +26,7 @@ type DescribeLiveStreamMonitorListResponseBody struct {
 	//
 	// 2234baba-a586-46ea-8bd4-c8f7891abcdef
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of monitoring sessions.
+	// The total number of monitoring sessions.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorList struct {
 	//
 	// 1
 	AudioFrom *int32 `json:"AudioFrom,omitempty" xml:"AudioFrom,omitempty"`
-	// The callback URL that sends monitoring alerts.
+	// The webhook address for monitoring alert notifications.
 	//
 	// example:
 	//
@@ -101,21 +101,21 @@ type DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorList struct {
 	//
 	// https://oapi.dingtalk.com/robot/send?access_token=7a7d404056eee1f2fd944ace9bcfc361dc6448583e1d3d3baa****
 	DingTalkWebHookUrl *string `json:"DingTalkWebHookUrl,omitempty" xml:"DingTalkWebHookUrl,omitempty"`
-	// The domain name.
+	// The output domain name for monitoring.
 	//
 	// example:
 	//
 	// demo.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The list of monitored input streams.
+	// The list of input streams for monitoring.
 	InputList []*DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorListInputList `json:"InputList,omitempty" xml:"InputList,omitempty" type:"Repeated"`
-	// The monitoring alert thresholds. The following fields are included:
+	// The settings for monitoring alert thresholds. The value is a JSON string that includes the following fields:
 	//
-	// 	- fpsLowThres: the video frame rate alert threshold. The value is a floating-point number.
+	// - fpsLowThres: the alert threshold for the video frame rate. This is a float.
 	//
-	// 	- brHighThres: the audio/video bitrate alert threshold. The value is a floating-point number.
+	// - brHighThres: the alert threshold for the audio and video bitrate. This is a float.
 	//
-	// 	- eofDurationThresSec: the interruption duration alert threshold. The value is a floating-point number.
+	// - eofDurationThresSec: the alert threshold for the stream interruption duration. This is a float.
 	//
 	// example:
 	//
@@ -133,35 +133,35 @@ type DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorList struct {
 	//
 	// liveMonito****
 	MonitorName *string `json:"MonitorName,omitempty" xml:"MonitorName,omitempty"`
-	// The output resolution template. Valid values:
+	// The template for the output resolution. Valid values:
 	//
-	// 	- **lp_ld**: low definition
+	// - **lp_ld**: low definition
 	//
-	// 	- **lp_sd**: standard definition
+	// - **lp_sd**: standard definition
 	//
-	// 	- **lp_hd**: high definition
+	// - **lp_hd**: high definition
 	//
-	// 	- **lp_ud**: ultra-high definition
+	// - **lp_ud**: ultra-high definition
 	//
 	// example:
 	//
 	// lp_ud
 	OutputTemplate *string `json:"OutputTemplate,omitempty" xml:"OutputTemplate,omitempty"`
-	// The output URLs.
+	// The output URLs for monitoring.
 	OutputUrls *DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorListOutputUrls `json:"OutputUrls,omitempty" xml:"OutputUrls,omitempty" type:"Struct"`
-	// The ID of the region. Valid values:
+	// The region. Valid values:
 	//
-	// 	- cn-shanghai: China (Shanghai)
+	// - cn-shanghai: China (Shanghai)
 	//
-	// 	- cn-beijing: China (Beijing)
+	// - cn-beijing: China (Beijing)
 	//
-	// 	- ap-southeast-1: Singapore
+	// - ap-southeast-1: Singapore
 	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The start time of live monitoring. The time is displayed in UTC.
+	// The time when monitoring starts. The time is in UTC format.
 	//
 	// example:
 	//
@@ -169,15 +169,15 @@ type DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorList struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the monitoring session. Valid values:
 	//
-	// 	- 1: Monitoring
+	// - 1: The session is being monitored.
 	//
-	// 	- 0: Unmonitored
+	// - 0: The session is not being monitored.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The end time of live monitoring. The time is displayed in UTC.
+	// The time when monitoring stops. The time is in UTC format.
 	//
 	// example:
 	//
@@ -338,7 +338,7 @@ func (s *DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorList) Validat
 }
 
 type DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorListInputList struct {
-	// The index.
+	// The index. This parameter is used by the frontend.
 	//
 	// example:
 	//
@@ -352,15 +352,15 @@ type DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorListInputList str
 	InputUrl *string `json:"InputUrl,omitempty" xml:"InputUrl,omitempty"`
 	// The layout information.
 	LayoutConfig *DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorListInputListLayoutConfig `json:"LayoutConfig,omitempty" xml:"LayoutConfig,omitempty" type:"Struct"`
-	// The layout ID, which must start from 1.
+	// The layout ID. The value must start from 1.
 	//
 	// example:
 	//
 	// 1
 	LayoutId *int32 `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
-	// The playback configurations.
+	// The playback configuration.
 	PlayConfig *DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorListInputListPlayConfig `json:"PlayConfig,omitempty" xml:"PlayConfig,omitempty" type:"Struct"`
-	// The display name of the monitored stream.
+	// The display name of the stream for monitoring.
 	//
 	// example:
 	//
@@ -445,29 +445,29 @@ func (s *DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorListInputList
 }
 
 type DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorListInputListLayoutConfig struct {
-	// The fill type. Set this value to none.
+	// The fill mode. For frontend development, set this parameter to none.
 	//
 	// example:
 	//
 	// none
 	FillMode *string `json:"FillMode,omitempty" xml:"FillMode,omitempty"`
-	// The position of the layer, in the format of [unk][x,y][unk]. The values of x and y need to be normalized.
+	// The normalized coordinates of the element\\"s position, in the format of [x,y]. The default value is [0,0]. The values of x and y must be normalized.
 	PositionNormalized []*float32 `json:"PositionNormalized,omitempty" xml:"PositionNormalized,omitempty" type:"Repeated"`
-	// The reference position of the element. Valid values:
+	// The reference point for the element\\"s position. Valid values:
 	//
-	// 	- topLeft
+	// - topLeft
 	//
-	// 	- topRight
+	// - topRight
 	//
-	// 	- bottomLeft
+	// - bottomLeft
 	//
-	// 	- bottomRight
+	// - bottomRight
 	//
 	// example:
 	//
 	// topLeft
 	PositionRefer *string `json:"PositionRefer,omitempty" xml:"PositionRefer,omitempty"`
-	// The size of the layer. Unit: bytes.
+	// The normalized size of the element\\"s fill area, in the format of [w,h].
 	SizeNormalized []*float32 `json:"SizeNormalized,omitempty" xml:"SizeNormalized,omitempty" type:"Repeated"`
 }
 
@@ -520,7 +520,7 @@ func (s *DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorListInputList
 }
 
 type DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorListInputListPlayConfig struct {
-	// The volume. Valid values: 0 to 1. The value is rounded to two decimal places.
+	// The volume. The value must be between 0 and 1, inclusive, with up to two decimal places.
 	//
 	// example:
 	//
@@ -550,13 +550,13 @@ func (s *DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorListInputList
 }
 
 type DescribeLiveStreamMonitorListResponseBodyLiveStreamMonitorListOutputUrls struct {
-	// The output URL in the Flash Video (FLV) format.
+	// The output URL in FLV format.
 	//
 	// example:
 	//
 	// http://demo.aliyundoc.com/monitor/445409ec-7eaa-461d-8f29-4bec2eb9****.flv
 	FlvUrl *string `json:"FlvUrl,omitempty" xml:"FlvUrl,omitempty"`
-	// The output URL in the Real-Time Messaging Protocol (RTMP) format.
+	// The output URL in RTMP format.
 	//
 	// example:
 	//

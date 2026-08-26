@@ -16,10 +16,14 @@ type iUpdateRtcCloudRecordingResponseBody interface {
 }
 
 type UpdateRtcCloudRecordingResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******58-5876-****-83CA-B56278******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// ******73-8501-****-8ac1-72295a******

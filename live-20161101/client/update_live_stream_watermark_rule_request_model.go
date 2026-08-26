@@ -24,23 +24,28 @@ type iUpdateLiveStreamWatermarkRuleRequest interface {
 }
 
 type UpdateLiveStreamWatermarkRuleRequest struct {
-	// The description of the custom rule.
+	// The custom description of the rule.
 	//
 	// example:
 	//
 	// my rule
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the custom rule.
+	// The custom name of the rule.
 	//
 	// example:
 	//
 	// WatermarkRule****
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the watermark rule.
 	//
-	// >  You can obtain the rule ID by checking the value of the RuleId parameter that is returned by the [AddLiveStreamWatermarkRule](https://help.aliyun.com/document_detail/2848100.html) operation.
+	// > Get the rule ID from the response of the [AddLiveStreamWatermarkRule](https://help.aliyun.com/document_detail/2848100.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +55,7 @@ type UpdateLiveStreamWatermarkRuleRequest struct {
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The ID of the watermark template.
 	//
-	// >  You can obtain the template ID by checking the value of the TemplateId parameter that is returned by the [AddLiveStreamWatermark](https://help.aliyun.com/document_detail/2848096.html) operation.
+	// > Get the template ID from the response of the [AddLiveStreamWatermark](https://help.aliyun.com/document_detail/2848096.html) operation.
 	//
 	// example:
 	//

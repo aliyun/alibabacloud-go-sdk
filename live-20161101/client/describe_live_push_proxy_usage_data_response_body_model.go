@@ -20,7 +20,7 @@ type iDescribeLivePushProxyUsageDataResponseBody interface {
 }
 
 type DescribeLivePushProxyUsageDataResponseBody struct {
-	// The end time.
+	// The end time. The time is in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is in UTC.
 	//
 	// example:
 	//
@@ -33,7 +33,7 @@ type DescribeLivePushProxyUsageDataResponseBody struct {
 	//
 	// 4B460F8B-993C-4F48-B98A-910811DEBFEB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time.
+	// The start time. The time is in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is in UTC.
 	//
 	// example:
 	//

@@ -19,7 +19,7 @@ type iDeletePlaylistRequest interface {
 
 type DeletePlaylistRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the episode list. If the episode list was created by calling the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation, check the value of the response parameter ProgramId to obtain the ID.
+	// The ID of the playlist. You can obtain the playlist ID from the ProgramId parameter in the response of the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -27,7 +27,12 @@ type DeletePlaylistRequest struct {
 	//
 	// 445409ec-7eaa-461d-8f29-4bec2eb9****
 	ProgramId *string `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeletePlaylistRequest) String() string {

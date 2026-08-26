@@ -22,9 +22,9 @@ type iDeleteLiveAudioAuditConfigRequest interface {
 }
 
 type DeleteLiveAudioAuditConfigRequest struct {
-	// The name of the application to which the live stream belongs.
+	// The AppName of the live stream.
 	//
-	// >  A value of asterisk (\\*) specifies all applications under the domain name.
+	// > Set AppName to an asterisk (\\*) to match all AppNames under the domain.
 	//
 	// This parameter is required.
 	//
@@ -41,10 +41,15 @@ type DeleteLiveAudioAuditConfigRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the live stream.
+	// The region ID.
 	//
-	// >  A value of asterisk (\\*) specifies all live streams in the application.
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The stream name.
+	//
+	// > Set StreamName to an asterisk (\\*) to match all streams in the AppName.
 	//
 	// This parameter is required.
 	//

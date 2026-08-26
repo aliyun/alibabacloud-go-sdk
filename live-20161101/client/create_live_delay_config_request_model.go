@@ -26,7 +26,7 @@ type iCreateLiveDelayConfigRequest interface {
 }
 
 type CreateLiveDelayConfigRequest struct {
-	// The name of the application to which the live stream belongs. You can specify an asterisk (\\*) as the value to match all applications that belong to the domain name.
+	// The AppName of the live stream. You can specify an asterisk (\\*) to match all AppNames under the domain name.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type CreateLiveDelayConfigRequest struct {
 	//
 	// liveApp****
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// The duration for which the playback of the live stream is delayed. The value must be an integer. Valid values: 16 to 3600. Unit: seconds.
+	// The duration for which the playback is delayed. The value must be an integer. Valid values: 16 to 3600. Unit: seconds.
 	//
 	// This parameter is required.
 	//
@@ -49,10 +49,15 @@ type CreateLiveDelayConfigRequest struct {
 	// example:
 	//
 	// example.com
-	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Domain  *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the live stream. You can use the wildcard (\\*) to specify all streams of the application.
+	// The name of the live stream. You can use the wildcard (\\*) to specify all StreamNames under the AppName.
 	//
 	// This parameter is required.
 	//
@@ -62,11 +67,11 @@ type CreateLiveDelayConfigRequest struct {
 	Stream *string `json:"Stream,omitempty" xml:"Stream,omitempty"`
 	// The trigger mode. Valid values:
 	//
-	// 	- **PUBLISH_ONLY**: Stream delay can be triggered only by specifying the stream delay parameter in the ingest URL.
+	// - **PUBLISH_ONLY**: Stream delay is triggered only by relevant parameters in the ingest URL.
 	//
-	// 	- **CONFIG_ONLY**: Stream delay can be triggered only by the stream delay configuration.
+	// - **CONFIG_ONLY**: Stream delay is triggered only by the configuration. Parameters in the ingest URL are ignored.
 	//
-	// 	- **PUBLISH_CONFIG**: Stream delay can be triggered by the stream delay parameter in the ingest URL or the stream delay configuration. The stream delay parameter takes precedence over the stream delay configuration.
+	// - **PUBLISH_CONFIG**: Stream delay is triggered by both the configuration and parameters in the ingest URL. Parameters in the ingest URL have a higher priority than the configuration.
 	//
 	// This parameter is required.
 	//

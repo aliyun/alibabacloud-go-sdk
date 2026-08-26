@@ -22,7 +22,7 @@ type iDeleteLiveRealTimeLogLogstoreRequest interface {
 }
 
 type DeleteLiveRealTimeLogLogstoreRequest struct {
-	// The name of the Logstore to which log entries are delivered.
+	// The name of the SLS Logstore for real-time delivery.
 	//
 	// This parameter is required.
 	//
@@ -31,7 +31,7 @@ type DeleteLiveRealTimeLogLogstoreRequest struct {
 	// logstore_example
 	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the Log Service project that is used for real-time log delivery.
+	// The name of the Simple Log Service (SLS) project for real-time delivery.
 	//
 	// This parameter is required.
 	//
@@ -39,14 +39,19 @@ type DeleteLiveRealTimeLogLogstoreRequest struct {
 	//
 	// project_example
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The ID of the region where the Log Service project is deployed.
+	// The region of the SLS project for real-time delivery.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

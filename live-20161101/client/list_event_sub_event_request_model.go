@@ -24,7 +24,7 @@ type iListEventSubEventRequest interface {
 }
 
 type ListEventSubEventRequest struct {
-	// The application ID.
+	// The ID of the subscribed application.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type ListEventSubEventRequest struct {
 	//
 	// 9qb1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The end time, expressed as a UNIX timestamp. Unit: seconds.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type ListEventSubEventRequest struct {
 	//
 	// 1698201013
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The page number.
+	// The page number. Valid values: 1 and greater.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type ListEventSubEventRequest struct {
 	//
 	// 20
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of callback records to return on each page. Valid values: 1 to 100.
+	// The number of records per page. Valid values: 1 to 100.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type ListEventSubEventRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The start time, expressed as a UNIX timestamp. Unit: seconds.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type ListEventSubEventRequest struct {
 	//
 	// 1698195600
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The subscription ID. You can obtain the ID from the response to the [CreateEventSub](https://help.aliyun.com/document_detail/2848209.html) operation.
+	// The subscribe ID. You can obtain the subscribe ID from the response parameters of the [CreateEventSub](https://help.aliyun.com/document_detail/2848209.html) operation by using a parameter query.
 	//
 	// example:
 	//

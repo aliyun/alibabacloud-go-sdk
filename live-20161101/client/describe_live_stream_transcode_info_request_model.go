@@ -20,7 +20,7 @@ type iDescribeLiveStreamTranscodeInfoRequest interface {
 }
 
 type DescribeLiveStreamTranscodeInfoRequest struct {
-	// The name of the application to which the live stream belongs.
+	// The AppName of the live stream.
 	//
 	// example:
 	//
@@ -35,7 +35,12 @@ type DescribeLiveStreamTranscodeInfoRequest struct {
 	// example.com
 	DomainTranscodeName *string `json:"DomainTranscodeName,omitempty" xml:"DomainTranscodeName,omitempty"`
 	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeLiveStreamTranscodeInfoRequest) String() string {

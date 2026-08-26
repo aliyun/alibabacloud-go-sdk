@@ -29,8 +29,13 @@ type DescribeLiveStreamAuthCheckingRequest struct {
 	// demo.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The complete ingest URL or streaming URL. You can use the [URL generator](https://help.aliyun.com/document_detail/197400.html) to generate a URL.
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The complete ingest or streaming URL. You can use the [URL generator](https://help.aliyun.com/document_detail/197400.html) to generate a URL.
 	//
 	// This parameter is required.
 	//

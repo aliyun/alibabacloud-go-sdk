@@ -22,25 +22,25 @@ type iCreateLiveMessageAppResponseBody interface {
 }
 
 type CreateLiveMessageAppResponseBody struct {
-	// The application ID. The ID is used in subsequent operations, such as joining a group.
+	// The application ID, which is used for subsequent operations such as joining groups.
 	//
 	// example:
 	//
 	// demo
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The AppKey for authentication of this application.
+	// The AppKey, which is used to generate authentication for various operations related to the AppId.
 	//
 	// example:
 	//
 	// **********************************
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// The application signature. The signature is required when you use the interactive messaging SDK.
+	// The application signature. The interactive messaging service SDK requires this information.
 	//
 	// example:
 	//
 	// **************************************************************************
 	AppSign *string `json:"AppSign,omitempty" xml:"AppSign,omitempty"`
-	// The data center in which the interactive messaging application was created.
+	// The data center.
 	//
 	// example:
 	//

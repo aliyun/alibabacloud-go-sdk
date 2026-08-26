@@ -26,7 +26,7 @@ type iModifyLiveMessageGroupShrinkRequest interface {
 }
 
 type ModifyLiveMessageGroupShrinkRequest struct {
-	// The list of administrators after your change.
+	// The updated list of administrators. Separate multiple administrators with commas (,). You can specify up to three administrators.
 	AdminListShrink *string `json:"AdminList,omitempty" xml:"AdminList,omitempty"`
 	// The application ID.
 	//
@@ -36,7 +36,7 @@ type ModifyLiveMessageGroupShrinkRequest struct {
 	//
 	// demo
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The data center. It must be the same as the data center that was specified when you called the [CreateLiveMessageApp](https://help.aliyun.com/document_detail/2848162.html) operation to create the interactive messaging application. Valid values: cn-shanghai and ap-southeast-1 (Singapore).
+	// The data center. It must be the same as the data center specified in the [CreateLiveMessageApp](https://help.aliyun.com/document_detail/2848162.html) call. Valid values: cn-shanghai (Shanghai) and ap-southeast-1 (Singapore).
 	//
 	// example:
 	//
@@ -50,19 +50,19 @@ type ModifyLiveMessageGroupShrinkRequest struct {
 	//
 	// grouptest
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The additional information about the group after the modification. The value can be up to 32 KB in length.
+	// The updated extended information of the group. The information can be up to 32 KB in length.
 	//
 	// example:
 	//
 	// newmeta
 	GroupInfo *string `json:"GroupInfo,omitempty" xml:"GroupInfo,omitempty"`
-	// Specifies whether to change the group administrators.
+	// Specifies whether to modify the group administrators.
 	//
 	// example:
 	//
 	// true
 	ModifyAdmin *bool `json:"ModifyAdmin,omitempty" xml:"ModifyAdmin,omitempty"`
-	// Specifies whether to modify the additional information about the group.
+	// Specifies whether to modify the extended information of the group.
 	//
 	// example:
 	//

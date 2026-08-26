@@ -25,7 +25,7 @@ type DescribeCasterComponentsResponseBody struct {
 	//
 	// 3be7ade8-d907-483c-b24a-0dad45******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iJoinMessageGroupRequest interface {
 }
 
 type JoinMessageGroupRequest struct {
-	// The ID of the interactive messaging application.
+	// Interactive message application ID.
 	//
 	// This parameter is required.
 	//
@@ -30,29 +30,29 @@ type JoinMessageGroupRequest struct {
 	//
 	// a494caec-***-695ef345db77
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Specifies whether to broadcast statistical messages. If you set the value to true, statistical messages of the message group are broadcasted after the users join the message group. The client can receive and process these messages. Valid values:
+	// Specifies whether to broadcast statistics messages. When enabled, statistics information of the message group will be broadcast after joining the message group, and the client can receive and process this message. Valid values:
 	//
-	// 	- true: broadcasts statistical messages.
+	// - true: Broadcast statistics messages.
 	//
-	// 	- false: does not broadcast statistical messages.
+	// - false: Do not broadcast statistics messages.
 	//
 	// example:
 	//
 	// true
 	BroadCastStatistics *bool `json:"BroadCastStatistics,omitempty" xml:"BroadCastStatistics,omitempty"`
-	// The mode in which system messages are broadcasted. Valid values:
+	// System message diffusion type. Valid values:
 	//
-	// 	- 0: specifies that system messages are not broadcasted. This is the default value.
+	// - 0 (default): No diffusion.
 	//
-	// 	- 1: specifies that system messages are broadcasted to specified users.
+	// - 1: Diffusion to specified users.
 	//
-	// 	- 2: specifies that system messages are broadcasted to the message group.
+	// - 2: Diffusion to the group.
 	//
 	// example:
 	//
 	// 2
 	BroadCastType *int32 `json:"BroadCastType,omitempty" xml:"BroadCastType,omitempty"`
-	// The ID of the message group to join.
+	// The ID of the message group to join. Make sure the GroupId you provide exists.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type JoinMessageGroupRequest struct {
 	//
 	// AE35-****-T95F
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the user. Each user has a unique ID in the application. The ID can be up to 32 characters in length and can contain lowercase letters, digits, underscores (_), and periods (.). You can specify multiple user IDs.
+	// User ID, which is customized by the user and must be unique under the AppId. It can contain lowercase letters, numbers, underscores (_), and periods (.). The maximum length is 32 characters. Different users must use different UserIds.
 	//
 	// This parameter is required.
 	//

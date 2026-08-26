@@ -14,11 +14,11 @@ type iCreateLiveRealTimeLogDeliveryResponseBody interface {
 }
 
 type CreateLiveRealTimeLogDeliveryResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
-	// F32C57AA-7BF8-49AE-A2CC-9F42390F5A19
+	// F32C57AA-7BF8-49AE-A2CC-9F42390F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

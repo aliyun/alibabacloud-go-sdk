@@ -16,13 +16,13 @@ type iSendLiveMessageGroupResponseBody interface {
 }
 
 type SendLiveMessageGroupResponseBody struct {
-	// The ID of the message, which is a unique identifier that can be used to delete the message. The ID can be up to 64 bytes in length and can contain letters and digits.
+	// The unique identifier of the message, which can be used to delete the message. The ID can contain only letters and digits and can be up to 64 bytes in length.
 	//
 	// example:
 	//
 	// 169830****
 	MsgTid *string `json:"MsgTid,omitempty" xml:"MsgTid,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

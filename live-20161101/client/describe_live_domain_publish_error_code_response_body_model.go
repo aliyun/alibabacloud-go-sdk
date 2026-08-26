@@ -24,7 +24,7 @@ type iDescribeLiveDomainPublishErrorCodeResponseBody interface {
 }
 
 type DescribeLiveDomainPublishErrorCodeResponseBody struct {
-	// The time granularity of the query. Unit: seconds. Default value: 60.
+	// The time granularity of the queried data. Unit: seconds. Default value: 60.
 	//
 	// example:
 	//
@@ -34,23 +34,23 @@ type DescribeLiveDomainPublishErrorCodeResponseBody struct {
 	//
 	// example:
 	//
-	// example.com,example.aliyundoc.com
+	// example1.aliyundoc.com,example2.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The end time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2016-06-29T09:10:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The proportions of error codes at each time interval.
+	// The status code distribution data for each time interval.
 	RealTimeCodeData []*DescribeLiveDomainPublishErrorCodeResponseBodyRealTimeCodeData `json:"RealTimeCodeData,omitempty" xml:"RealTimeCodeData,omitempty" type:"Repeated"`
 	// The request ID.
 	//
 	// example:
 	//
-	// BC858082-736F-4A25-867B-E5B67C85ACF7
+	// BC858082-736F-4A25-867B-E5B67C******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The start time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
@@ -134,9 +134,9 @@ func (s *DescribeLiveDomainPublishErrorCodeResponseBody) Validate() error {
 }
 
 type DescribeLiveDomainPublishErrorCodeResponseBodyRealTimeCodeData struct {
-	// The proportions of error codes.
+	// The list of status code distribution data.
 	CodeData []*DescribeLiveDomainPublishErrorCodeResponseBodyRealTimeCodeDataCodeData `json:"CodeData,omitempty" xml:"CodeData,omitempty" type:"Repeated"`
-	// The timestamp of the data returned.
+	// The start time of the time interval. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
 	//
 	// example:
 	//
@@ -186,35 +186,35 @@ func (s *DescribeLiveDomainPublishErrorCodeResponseBodyRealTimeCodeData) Validat
 type DescribeLiveDomainPublishErrorCodeResponseBodyRealTimeCodeDataCodeData struct {
 	// The response code. Valid values:
 	//
-	// 	- 3: The data read timed out.
+	// - 3: read data timeout.
 	//
-	// 	- 4: A data write error occurred.
+	// - 4: write data error.
 	//
-	// 	- 6: The data write timed out.
+	// - 6: write data timeout.
 	//
-	// 	- 200: The request is successful.
+	// - 200: success.
 	//
-	// 	- 500: An unknown internal error occurred.
+	// - 500: internal system unknown error.
 	//
-	// 	- 501: The stream ingest failed.
+	// - 501: stream ingest exception.
 	//
-	// 	- 502: The signaling operation timed out.
+	// - 502: signaling took too long.
 	//
-	// 	- 401: A stream ingest parameter is invalid.
+	// - 401: stream ingest parameter exception.
 	//
-	// 	- 403: The stream ingest authentication failed.
+	// - 403: stream ingest authentication failed.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of times the HTTP status code was returned.
+	// The number of responses.
 	//
 	// example:
 	//
 	// 20
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The proportion of the HTTP status code.
+	// The proportion of responses.
 	//
 	// example:
 	//

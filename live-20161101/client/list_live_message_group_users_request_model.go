@@ -24,7 +24,7 @@ type iListLiveMessageGroupUsersRequest interface {
 }
 
 type ListLiveMessageGroupUsersRequest struct {
-	// The ID of the interactive messaging application to query.
+	// The ID of the live interactive application to query.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,13 @@ type ListLiveMessageGroupUsersRequest struct {
 	//
 	// demo
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The data center. It must be the same as the data center that was specified when you called the [CreateLiveMessageApp](https://help.aliyun.com/document_detail/2848162.html) operation to create the interactive messaging application. Valid values: cn-shanghai and ap-southeast-1 (Singapore).
+	// The data center. This value must be the same as the data center specified in [CreateLiveMessageApp](https://help.aliyun.com/document_detail/2848162.html). Valid values: cn-shanghai (Shanghai) and ap-southeast-1 (Singapore).
 	//
 	// example:
 	//
 	// cn-shanghai
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	// The ID of the group to query.
+	// The group ID of the group to query.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,13 @@ type ListLiveMessageGroupUsersRequest struct {
 	//
 	// grouptest
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The starting page number for the query. If you leave this parameter empty, the query starts from the first page.
+	// The start position of the query page. If this parameter is left empty, the first page is returned by default.
 	//
 	// example:
 	//
 	// 1
 	NextPageToken *int64 `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// The number of entries per page. Valid values: **10 to 50**.
+	// The number of users to display per page. Valid values: **10 to 50**.
 	//
 	// This parameter is required.
 	//
@@ -60,11 +60,11 @@ type ListLiveMessageGroupUsersRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sort order based on the time when the users joined the group. Valid values:
+	// The sort order. Users are sorted by the time they joined the group. Valid values:
 	//
-	// 	- 1: ascending order
+	// - 1: ascending order.
 	//
-	// 	- 2: descending order
+	// - 2: descending order.
 	//
 	// This parameter is required.
 	//

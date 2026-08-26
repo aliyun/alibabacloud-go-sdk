@@ -24,7 +24,7 @@ type iDescribeLiveDomainPvUvDataResponseBody interface {
 }
 
 type DescribeLiveDomainPvUvDataResponseBody struct {
-	// The time interval between the entries returned. Unit: seconds. Default value: 3600.
+	// The time interval for each record. Unit: seconds. The value is fixed at 3600.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DescribeLiveDomainPvUvDataResponseBody struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ssZ	- format. The time is displayed in UTC.
+	// The end time. The format is *yyyy-MM-dd*T*HH:mm:ssZ	- (UTC).
 	//
 	// example:
 	//
@@ -49,7 +49,7 @@ type DescribeLiveDomainPvUvDataResponseBody struct {
 	//
 	// E9D3257A-1B7C-414C-90C1-8D07AC47BCAC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ssZ	- format. The time is displayed in UTC.
+	// The start time. The format is *yyyy-MM-dd*T*HH:mm:ssZ	- (UTC).
 	//
 	// example:
 	//

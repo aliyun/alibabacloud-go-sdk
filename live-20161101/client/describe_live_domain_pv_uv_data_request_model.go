@@ -24,21 +24,28 @@ type iDescribeLiveDomainPvUvDataRequest interface {
 type DescribeLiveDomainPvUvDataRequest struct {
 	// The streaming domain.
 	//
+	// > - Make sure that the specified domain name is a streaming domain and that you have the required permissions to operate on it.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ssZ	- format. The time must be in UTC.
+	// The end time. The time must be later than the start time. The format is *yyyy-MM-dd*T*HH:mm:ssZ	- (UTC).
 	//
 	// example:
 	//
 	// 2018-03-20T16:00:00Z
-	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ssZ	- format. The time must be in UTC.
+	// The start time. The format is *yyyy-MM-dd*T*HH:mm:ssZ	- (UTC).
 	//
 	// example:
 	//

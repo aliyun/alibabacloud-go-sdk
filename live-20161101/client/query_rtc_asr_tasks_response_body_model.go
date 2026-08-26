@@ -20,25 +20,25 @@ type iQueryRtcAsrTasksResponseBody interface {
 }
 
 type QueryRtcAsrTasksResponseBody struct {
-	// The result of the request. If success is returned, the request was successful. If an error message is returned, the request failed.
+	// The description of the result. A value of \\`success\\` indicates that the call is successful. If the call fails, an error message is returned.
 	//
 	// example:
 	//
 	// success
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// D8ADAB55-1BB8-5C01-8434-C45D353BB1FD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The HTTP status code. HTTP status code 2000 indicates that the request was successful. Other HTTP status codes indicate that the request failed.
+	// The status code. A value of 2000 indicates that the call is successful. Other values indicate that an error occurred.
 	//
 	// example:
 	//
 	// 2000
 	RetCode *int64 `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
-	// The results returned for the tasks.
+	// The result set of tasks.
 	Tasks map[string]interface{} `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
 }
 

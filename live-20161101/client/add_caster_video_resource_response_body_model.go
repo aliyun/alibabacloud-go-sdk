@@ -16,13 +16,13 @@ type iAddCasterVideoResourceResponseBody interface {
 }
 
 type AddCasterVideoResourceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// CF60DB6A-7FD6-426E-9288-122CC1A52FA7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource. This parameter can be used as a request parameter in the API operation that you can call to delete the video source in the production studio or modify the video source in the production studio.
+	// The resource ID. This ID can be used as a request parameter for deleting or modifying a video source in the production studio.
 	//
 	// example:
 	//

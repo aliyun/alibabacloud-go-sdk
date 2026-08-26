@@ -21,22 +21,27 @@ type iRestartLivePullToPushRequest interface {
 
 type RestartLivePullToPushRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region of the live center. Valid values:
+	// The live center to query. Valid values:
 	//
-	// 	- ap-southeast-1: Singapore
+	// - ap-southeast-1 (Singapore)
 	//
-	// 	- ap-southeast-5: Indonesia (Jakarta)
+	// - ap-southeast-5 (Indonesia)
 	//
-	// 	- cn-beijing: China (Beijing)
+	// - cn-beijing (Beijing)
 	//
-	// 	- cn-shanghai: China (Shanghai)
+	// - cn-shanghai (Shanghai).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// preregion
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The task ID.
 	//

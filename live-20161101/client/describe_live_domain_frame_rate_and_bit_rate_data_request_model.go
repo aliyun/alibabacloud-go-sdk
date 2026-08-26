@@ -22,6 +22,8 @@ type iDescribeLiveDomainFrameRateAndBitRateDataRequest interface {
 type DescribeLiveDomainFrameRateAndBitRateDataRequest struct {
 	// The ingest domain.
 	//
+	// > Make sure that the domain name added to ApsaraVideo Live and that you have the permissions to manage the domain name.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -29,7 +31,7 @@ type DescribeLiveDomainFrameRateAndBitRateDataRequest struct {
 	// demo.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The point of time to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The time to query. The time is in UTC. Format: *yyyy-MM-dd*T*HH:mm:ss*Z.
 	//
 	// This parameter is required.
 	//
@@ -37,7 +39,12 @@ type DescribeLiveDomainFrameRateAndBitRateDataRequest struct {
 	//
 	// 2019-02-21T08:00:00Z
 	QueryTime *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeLiveDomainFrameRateAndBitRateDataRequest) String() string {

@@ -32,61 +32,61 @@ type iDescribeDomainUsageDataRequest interface {
 }
 
 type DescribeDomainUsageDataRequest struct {
-	// The billable region. Valid values:
+	// The region code. Valid values:
 	//
-	// 	- **CN**: Chinese mainland
+	// - **CN**: the Chinese mainland.
 	//
-	// 	- **OverSeas**: outside the Chinese mainland
+	// - **OverSeas**: outside the Chinese mainland.
 	//
-	// 	- **AP1**: Asia Pacific 1
+	// - **AP1**: Asia-Pacific 1.
 	//
-	// 	- **AP2**: Asia Pacific 2
+	// - **AP2**: Asia-Pacific 2.
 	//
-	// 	- **AP3**: Asia Pacific 3
+	// - **AP3**: Asia-Pacific 3.
 	//
-	// 	- **NA**: North America
+	// - **NA**: North America.
 	//
-	// 	- **SA**: South America
+	// - **SA**: South America.
 	//
-	// 	- **EU**: Europe
+	// - **EU**: Europe.
 	//
-	// 	- **MEAA**: Middle East and Africa
+	// - **MEAA**: Middle East and Africa.
 	//
-	// 	- **all**: all regions
+	// - **all**: all regions.
 	//
-	// >  If you do not specify this parameter, the default value CN is used. Alibaba Cloud supports the following countries and regions outside the Chinese mainland: - Asia Pacific 1: Hong Kong (China), Macao (China), Taiwan (China), Japan, and Southeast Asia excluding Vietnam and Indonesia. - Asia Pacific 2: Indonesia, South Korea, and Vietnam. - Asia Pacific 3: Australia and New Zealand. - North America: US and Canada. - South America: Brazil. Europe: Ukraine, UK, France, Netherlands, Spain, Italy, Sweden, and Germany. - Middle East and Africa: South Africa, Oman, UAE, and Kuwait.
+	// > If this parameter is not specified, the default value is the Chinese mainland. Regions outside the Chinese mainland: - Asia-Pacific 1: Hong Kong (China), Macao (China), Taiwan (China), Japan, and Southeast Asian countries except Vietnam and Indonesia. - Asia-Pacific 2: Indonesia, South Korea, and Vietnam. - Asia-Pacific 3: Australia and New Zealand. North America: the United States and Canada. - South America: Brazil. - Europe: Ukraine, the United Kingdom, France, the Netherlands, Spain, Italy, Sweden, and Germany. - Middle East and Africa: South Africa, Oman, the United Arab Emirates, and Kuwait.
 	//
 	// example:
 	//
 	// CN
 	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	// The protocol of the data to query. Valid values:
+	// The protocol of the data to retrieve. Valid values:
 	//
-	// 	- **http**: HTTP
+	// - **http**: HTTP.
 	//
-	// 	- **https**: HTTPS
+	// - **https**: HTTPS.
 	//
-	// 	- **quic**: QUIC
+	// - **quic**: QUIC.
 	//
-	// 	- **all*	- (default): HTTP, HTTPS, and QUIC
+	// - **all*	- (default): all of the preceding protocols.
 	//
 	// example:
 	//
 	// all
 	DataProtocol *string `json:"DataProtocol,omitempty" xml:"DataProtocol,omitempty"`
-	// The domain name.
+	// The streaming domain.
 	//
-	// 	- You can query one or more domain names. If you specify multiple domain names, separate them with commas (,).
+	// - You can specify a single domain name or multiple domain names. Separate multiple domain names with commas (,).
 	//
-	// 	- If you leave this parameter empty, the data of all domain names within your Alibaba Cloud account is returned.
+	// - If this parameter is empty, the merged data of all streaming domains is returned by default.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
-	// The end time must be later than the start time. The maximum time range that you can specify is **31*	- days.
+	// The end time must be later than the start time, and the difference between the end time and the start time cannot exceed **31*	- days.
 	//
 	// This parameter is required.
 	//
@@ -94,15 +94,15 @@ type DescribeDomainUsageDataRequest struct {
 	//
 	// 2015-12-10T21:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The category of the resource usage data to query. Valid values:
+	// The data type of the usage data to query. Valid values:
 	//
-	// 	- **bps**: streaming bandwidth
+	// - **bps**: playback bandwidth.
 	//
-	// 	- **traf**: streaming traffic
+	// - **traf**: traffic.
 	//
-	// 	- **req_traf**: stream ingest traffic if you set Type to push, or stream relay traffic if you set Type to push_proxy
+	// - **req_traf**: when Type is set to push, this indicates stream ingest traffic. When Type is set to push_proxy, this indicates relay traffic.
 	//
-	// 	- **req_bps**: stream ingest bandwidth if you set Type to push, or stream relay bandwidth if you set Type to push_proxy
+	// - **req_bps**: when Type is set to push, this indicates stream ingest bandwidth. When Type is set to push_proxy, this indicates relay bandwidth.
 	//
 	// This parameter is required.
 	//
@@ -110,15 +110,20 @@ type DescribeDomainUsageDataRequest struct {
 	//
 	// traf
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	// The time interval between the data entries to return. Unit: seconds. Valid values: **300*	- (5 minutes), **3600*	- (1 hour), and **86400*	- (1 day).
+	// Forces retrieval of data at the specified time granularity, in seconds. Valid values: **300*	- (5 minutes), **3600*	- (1 hour), and **86400*	- (1 day).
 	//
 	// example:
 	//
 	// 300
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// This parameter is required.
 	//
@@ -126,21 +131,19 @@ type DescribeDomainUsageDataRequest struct {
 	//
 	// 2015-12-10T20:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of the resource usage data to query.
+	// The type of usage data to retrieve.
 	//
-	// Valid values if you set **Field*	- to **bps*	- or **traf**:
+	// When **Field*	- is set to **bps*	- or **traf**, valid values:
 	//
-	// 	- **rts**: bandwidth or traffic for Real-Time Streaming (RTS)
+	// - **rts**: RTS bandwidth or traffic.
 	//
-	// 	- **quic**: bandwidth or traffic for QUIC
+	// - **quic**: QUIC bandwidth or traffic.
 	//
-	// 	- **all**: all bandwidth or traffic
+	// When **Field*	- is set to **req_traf*	- or **req_bps**, valid values:
 	//
-	// Valid values if you set **Field*	- to **req_traf*	- or **req_bps**:
+	// - **push**: stream ingest bandwidth or traffic.
 	//
-	// 	- **push**: stream ingest bandwidth or traffic
-	//
-	// 	- **push_proxy**: stream relay bandwidth or traffic
+	// - **push_proxy**: relay bandwidth or traffic.
 	//
 	// example:
 	//

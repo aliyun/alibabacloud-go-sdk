@@ -33,7 +33,7 @@ type DescribeLiveDomainOnlineUserNumResponseBody struct {
 	//
 	// 1
 	StreamCount *int32 `json:"StreamCount,omitempty" xml:"StreamCount,omitempty"`
-	// The total number of online users at the specified point in time for all the live streams under the main streaming domain.
+	// The total number of online users at the specified point in time on the specified domain.
 	//
 	// example:
 	//

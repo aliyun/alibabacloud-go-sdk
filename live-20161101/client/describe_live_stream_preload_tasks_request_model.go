@@ -32,7 +32,7 @@ type iDescribeLiveStreamPreloadTasksRequest interface {
 }
 
 type DescribeLiveStreamPreloadTasksRequest struct {
-	// The streaming domain name.
+	// The streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -40,49 +40,54 @@ type DescribeLiveStreamPreloadTasksRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2016-06-30T19:00:00Z. The interval between the start time and end time cannot exceed three days.
+	// The end time in ISO 8601 format in UTC. Format: yyyy-MM-ddTHH:mm:ssZ. The interval between EndTime and StartTime cannot exceed 3 days.
 	//
 	// example:
 	//
 	// 2016-06-30T19:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: 1.
+	// The page number to return. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100.
+	// The number of entries per page. Maximum value: 100. Valid values: any integer from 1 to 100.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The streaming URL. You can specify up to 100 streaming URLs in a request. Separate multiple streaming URLs with commas (,).
-	PlayUrl  *string `json:"PlayUrl,omitempty" xml:"PlayUrl,omitempty"`
+	// The live streaming URL. You can specify multiple URLs separated by commas (,), up to 100.
+	PlayUrl *string `json:"PlayUrl,omitempty" xml:"PlayUrl,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2016-06-29T19:00:00Z. You can query only data in the previous three days.
+	// The start time in ISO 8601 format in UTC. Format: yyyy-MM-ddTHH:mm:ssZ. The start time must be within the last 3 days.
 	//
 	// example:
 	//
 	// 2016-06-29T19:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the prefetch task. Valid values:
+	// The task status. Valid values:
 	//
-	// 	- complete
+	// - complete: completed.
 	//
-	// 	- pending
+	// - pending: waiting for preload.
 	//
-	// 	- preloading
+	// - preloading: preloading in progress.
 	//
-	// 	- failed
+	// - failed: preload failed.
 	//
 	// example:
 	//
 	// complete
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the prefetch task. The task ID is returned when you call the [SetLiveStreamPreloadTasks](https://help.aliyun.com/document_detail/2519938.html) operation to configure the prefetch task.
+	// The task ID. You can obtain the preload task ID by calling the [SetLiveStreamPreloadTasks](https://help.aliyun.com/document_detail/2519938.html) operation.
 	//
 	// example:
 	//

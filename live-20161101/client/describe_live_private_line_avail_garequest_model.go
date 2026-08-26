@@ -34,13 +34,13 @@ type DescribeLivePrivateLineAvailGARequest struct {
 	//
 	// ap-southeast-1
 	AccelerationArea *string `json:"AccelerationArea,omitempty" xml:"AccelerationArea,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// live
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The main streaming domain.
+	// The streamer\\"s streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -48,11 +48,11 @@ type DescribeLivePrivateLineAvailGARequest struct {
 	//
 	// demo.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Specifies whether to query Global Accelerator (GA) instances. Valid values:
+	// Specifies whether to query the Alibaba Cloud Global Accelerator (GA) instance. Valid values:
 	//
-	// 	- yes: queries the status of GA instances.
+	// - yes: Queries the GA instance status.
 	//
-	// 	- no: queries the binding information between GA instances and acceleration circuits.
+	// - no: Queries the attachment details between the GA instance and the live streaming link.
 	//
 	// This parameter is required.
 	//
@@ -61,14 +61,19 @@ type DescribeLivePrivateLineAvailGARequest struct {
 	// no
 	IsGaInstance *string `json:"IsGaInstance,omitempty" xml:"IsGaInstance,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the live stream.
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The live stream name.
 	//
 	// example:
 	//
 	// testStream
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The live center. Valid values: cn-beijing, cn-shanghai, cn-shenzhen, cn-qingdao, ap-northeast-1, ap-southeast-5, eu-central-1, ap-southeast-1, and ap-south-1. cn-beijing indicates China (Beijing). cn-shanghai indicates China (Shanghai). cn-shenzhen indicates China (Shenzhen). cn-qingdao indicates China (Qingdao). ap-northeast-1 indicates Japan (Tokyo). ap-southeast-5 indicates Indonesia (Jakarta). eu-central-1 indicates Germany (Frankfurt). ap-southeast-1 indicates Singapore.
+	// The live center. Valid values: cn-beijing, cn-shanghai, cn-shenzhen, cn-qingdao, ap-northeast-1, ap-southeast-5, eu-central-1, and ap-southeast-1, ap-south-1, which represent the live centers located in Beijing, Shanghai, Shenzhen, Qingdao, Japan, Indonesia, Germany, and Singapore.
 	//
 	// example:
 	//

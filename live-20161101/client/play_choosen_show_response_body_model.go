@@ -22,7 +22,7 @@ type PlayChoosenShowResponseBody struct {
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the episode.
+	// The show ID.
 	//
 	// example:
 	//

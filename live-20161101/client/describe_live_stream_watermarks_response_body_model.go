@@ -18,13 +18,13 @@ type iDescribeLiveStreamWatermarksResponseBody interface {
 }
 
 type DescribeLiveStreamWatermarksResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5c6a2a0df228-4a64- af62-20e91b9676b3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of watermark templates that meet the specified conditions.
+	// The total number of matching entries.
 	//
 	// example:
 	//

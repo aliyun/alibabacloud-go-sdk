@@ -25,31 +25,31 @@ type iDescribeLiveStreamsOnlineListResponseBody interface {
 
 type DescribeLiveStreamsOnlineListResponseBody struct {
 	OnlineInfo *DescribeLiveStreamsOnlineListResponseBodyOnlineInfo `json:"OnlineInfo,omitempty" xml:"OnlineInfo,omitempty" type:"Struct"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 5c6a2a0df228-4a64- af62-20e91b9676b3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of streams that meet the specified conditions.
+	// The total number of entries that meet the specified conditions.
 	//
 	// example:
 	//
 	// 11
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
-	// The total number of pages returned.
+	// The total number of pages.
 	//
 	// example:
 	//

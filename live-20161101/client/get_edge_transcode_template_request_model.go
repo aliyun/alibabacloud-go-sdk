@@ -20,7 +20,7 @@ type iGetEdgeTranscodeTemplateRequest interface {
 }
 
 type GetEdgeTranscodeTemplateRequest struct {
-	// The ID of the data center.
+	// The data center ID.
 	//
 	// This parameter is required.
 	//
@@ -29,7 +29,12 @@ type GetEdgeTranscodeTemplateRequest struct {
 	// ******3b-4d18-395c-8106-ff21a6******
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The template ID.
 	//
 	// This parameter is required.

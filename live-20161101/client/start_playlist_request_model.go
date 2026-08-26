@@ -24,16 +24,16 @@ type iStartPlaylistRequest interface {
 }
 
 type StartPlaylistRequest struct {
-	// The offset of the position where the system starts the playback. This parameter takes effect only if the input source is a video file. Unit: milliseconds.
+	// The start offset for the video file. This parameter is valid only for video files. Unit: milliseconds.
 	//
-	// A value greater than 0 indicates an offset from the first frame.
+	// A value greater than 0 specifies the start time relative to the first frame.
 	//
 	// example:
 	//
 	// 10000
 	Offset  *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the episode list. If the episode list was created by calling the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation, check the value of the response parameter ProgramId to obtain the ID.
+	// The ID of the playlist. If you add items to the playlist by calling the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation, use the value of the ProgramId parameter that is returned.
 	//
 	// This parameter is required.
 	//
@@ -41,22 +41,29 @@ type StartPlaylistRequest struct {
 	//
 	// 445409ec-7eaa-461d-8f29-4bec2eb9****
 	ProgramId *string `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The method to resume the playback of the episode list. Valid values:
+	// The region ID.
 	//
-	// 	- **Restart**: resumes the playback from the beginning.
+	// example:
 	//
-	// 	- **Continue**: resumes the playback from the position where the previous playback stops. The **StartItemId*	- parameter is required only if you set **ResumeMode*	- to **Custom**.
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The restart mode. Valid values:
 	//
-	// 	- **Custom**: resumes the playback from a custom position.
+	// - **Restart**: Starts from the beginning.
+	//
+	// - **Continue**: Resumes playback from where it was stopped. The **StartItemId*	- parameter is required only when you set the **ResumeMode*	- parameter to **Custom**.
+	//
+	// - **Custom**: Custom start point.
 	//
 	// example:
 	//
 	// Custom
 	ResumeMode *string `json:"ResumeMode,omitempty" xml:"ResumeMode,omitempty"`
-	// The ID of the first episode to play. This episode is the first to play in carousel playback.
+	// The ID of the item to play first. When the carousel starts, this item is played.
 	//
-	// >  This parameter is required only if you set ResumeMode to Custom.
+	// 	Notice:
+	//
+	// This parameter is required only when you set **ResumeMode*	- to **Custom**.
 	//
 	// example:
 	//

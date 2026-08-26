@@ -16,7 +16,7 @@ type iDescribeLiveDomainDetailResponseBody interface {
 }
 
 type DescribeLiveDomainDetailResponseBody struct {
-	// The configuration details of the domain name.
+	// The details of the domain configuration.
 	DomainDetail *DescribeLiveDomainDetailResponseBodyDomainDetail `json:"DomainDetail,omitempty" xml:"DomainDetail,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -68,9 +68,9 @@ type DescribeLiveDomainDetailResponseBodyDomainDetail struct {
 	//
 	// liveCert****
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The CNAME that is assigned to the domain name. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name to the CNAME.
+	// The canonical name (CNAME). A CNAME is generated for the live streaming domain. You must add a CNAME record at your DNS provider to map the live streaming domain to this CNAME.
 	//
-	// >  A time-to-live (TTL) value is specified in the CNAME record of a domain name to indicate how long the CNAME record can be cached on the DNS resolver. If you modify the CNAME record of the domain name, the new settings take effect after the cache expires, which takes about 10 minutes. For more information, see [CNAME resolution](https://help.aliyun.com/document_detail/362010.html).
+	// > Local DNS records are cached. After you add the CNAME record, it may take up to 10 minutes to take effect. For more information, see [FAQ about CNAME records](https://help.aliyun.com/document_detail/362010.html).
 	//
 	// example:
 	//
@@ -82,31 +82,31 @@ type DescribeLiveDomainDetailResponseBodyDomainDetail struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The streaming domain or ingest domain.
+	// The ingest domain or streaming domain.
 	//
 	// example:
 	//
 	// demo.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The status of the domain name. Valid values:
+	// The status of the domain. Valid values:
 	//
-	// 	- **online**: The domain name is enabled.
+	// - **online**: enabled.
 	//
-	// 	- **offline**: The domain name is disabled.
+	// - **offline**: disabled.
 	//
-	// 	- **configuring**: The domain is being configured.
+	// - **configuring**: being configured.
 	//
 	// example:
 	//
 	// online
 	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	// The time when the domain name was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the domain was added. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2018-07-27T06:51:25Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the domain name was last modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The time when the domain was last modified. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -114,15 +114,15 @@ type DescribeLiveDomainDetailResponseBodyDomainDetail struct {
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The type of the domain name. Valid values:
 	//
-	// 	- **liveVideo**: streaming domain
+	// - **liveVideo**: streaming domain.
 	//
-	// 	- **liveEdge**: ingest domain
+	// - **liveEdge**: ingest domain.
 	//
 	// example:
 	//
 	// liveVideo
 	LiveDomainType *string `json:"LiveDomainType,omitempty" xml:"LiveDomainType,omitempty"`
-	// The ID of the region where the domain name resides.
+	// The region where the domain name is added.
 	//
 	// example:
 	//
@@ -132,13 +132,13 @@ type DescribeLiveDomainDetailResponseBodyDomainDetail struct {
 	//
 	// example:
 	//
-	// rg-aek2ogvt4nwmi7i
+	// rg-**k3bpq2yjw22**
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether the SSL certificate is enabled. Valid values:
+	// Indicates whether SSL is enabled. Valid values:
 	//
-	// 	- **on**
+	// - **on**: enabled.
 	//
-	// 	- **off**
+	// - **off**: disabled.
 	//
 	// example:
 	//
@@ -152,11 +152,11 @@ type DescribeLiveDomainDetailResponseBodyDomainDetail struct {
 	SSLPub *string `json:"SSLPub,omitempty" xml:"SSLPub,omitempty"`
 	// The acceleration region. Valid values:
 	//
-	// 	- **domestic**: regions in the Chinese mainland.
+	// - **domestic**: the Chinese mainland.
 	//
-	// 	- **overseas**: regions outside the Chinese mainland.
+	// - **overseas**: regions outside the Chinese mainland.
 	//
-	// 	- **global**: regions in and outside the Chinese mainland.
+	// - **global**: global.
 	//
 	// example:
 	//

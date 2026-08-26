@@ -22,19 +22,19 @@ type iDescribeLiveDomainRealtimeLogDeliveryResponseBody interface {
 }
 
 type DescribeLiveDomainRealtimeLogDeliveryResponseBody struct {
-	// The name of the Logstore to which log entries are delivered.
+	// The name of the Logstore in Simple Log Service (SLS) for real-time log delivery.
 	//
 	// example:
 	//
 	// logstore_example
 	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
-	// The name of the Log Service project that is used for real-time log delivery.
+	// The name of the SLS project for real-time log delivery.
 	//
 	// example:
 	//
 	// project_example
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	// The ID of the region where the Log Service project is deployed.
+	// The region where the SLS project is located.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeLiveDomainRealtimeLogDeliveryResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The status of real-time log delivery. Valid values:
 	//
-	// 	- online: Real-time log delivery is enabled.
+	// - online: Real-time log delivery is enabled.
 	//
-	// 	- offline: Real-time log delivery is disabled.
+	// - offline: Real-time log delivery is disabled.
 	//
 	// example:
 	//

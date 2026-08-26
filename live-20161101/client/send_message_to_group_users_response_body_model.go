@@ -16,13 +16,13 @@ type iSendMessageToGroupUsersResponseBody interface {
 }
 
 type SendMessageToGroupUsersResponseBody struct {
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 16A96B9A-****-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// Return result.
 	Result *SendMessageToGroupUsersResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *SendMessageToGroupUsersResponseBody) Validate() error {
 }
 
 type SendMessageToGroupUsersResponseBodyResult struct {
-	// The ID of the message.
+	// Message ID.
 	//
 	// example:
 	//

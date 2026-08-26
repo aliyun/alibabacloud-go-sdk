@@ -16,9 +16,9 @@ type iCreateLiveStreamRecordIndexFilesResponseBody interface {
 }
 
 type CreateLiveStreamRecordIndexFilesResponseBody struct {
-	// The recording configuration.
+	// The recording configuration information.
 	RecordInfo *CreateLiveStreamRecordIndexFilesResponseBodyRecordInfo `json:"RecordInfo,omitempty" xml:"RecordInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ func (s *CreateLiveStreamRecordIndexFilesResponseBody) Validate() error {
 }
 
 type CreateLiveStreamRecordIndexFilesResponseBodyRecordInfo struct {
-	// The name of the application to which the live stream belongs.
+	// The name of the application to which the stream belongs.
 	//
 	// example:
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The time when the index file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+	// The creation time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2016-05-27T09:40:56Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The main streaming domain.
+	// The streamer streaming domain.
 	//
 	// example:
 	//
@@ -86,13 +86,13 @@ type CreateLiveStreamRecordIndexFilesResponseBodyRecordInfo struct {
 	//
 	// 20
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The end time of the index file. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The end time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2015-12-01T07:40:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The height of the video.
+	// The video height.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type CreateLiveStreamRecordIndexFilesResponseBodyRecordInfo struct {
 	//
 	// cn-oss-****.aliyuncs.com
 	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
-	// The name of the recording that is stored in OSS.
+	// The name of the recording file stored in OSS.
 	//
 	// example:
 	//
@@ -122,21 +122,21 @@ type CreateLiveStreamRecordIndexFilesResponseBodyRecordInfo struct {
 	//
 	// c4d7f0a4-b506-43f9-8de3-07732c3f****
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The URL of the M3U8 index file.
+	// The URL of the index file.
 	RecordUrl *string `json:"RecordUrl,omitempty" xml:"RecordUrl,omitempty"`
-	// The start time of the index file. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+	// The start time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2015-12-01T07:36:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the live stream.
+	// The stream name.
 	//
 	// example:
 	//
 	// liveStream****
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The width of the video.
+	// The video width.
 	//
 	// example:
 	//

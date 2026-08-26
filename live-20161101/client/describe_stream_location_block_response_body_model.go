@@ -24,7 +24,7 @@ type iDescribeStreamLocationBlockResponseBody interface {
 }
 
 type DescribeStreamLocationBlockResponseBody struct {
-	// The total number of entries that meet the specified conditions.
+	// The total number of entries that meet the specified criteria.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DescribeStreamLocationBlockResponseBody struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page.
+	// The number of entries on each page.
 	//
 	// example:
 	//
@@ -49,7 +49,7 @@ type DescribeStreamLocationBlockResponseBody struct {
 	// C7C69682-7F88-40DD-A198-10D0309E439B
 	RequestId       *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StreamBlockList *DescribeStreamLocationBlockResponseBodyStreamBlockList `json:"StreamBlockList,omitempty" xml:"StreamBlockList,omitempty" type:"Struct"`
-	// The total number of pages.
+	// The total number of pages returned.
 	//
 	// example:
 	//

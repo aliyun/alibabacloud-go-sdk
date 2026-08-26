@@ -14,7 +14,7 @@ type iResumeLiveStreamResponseBody interface {
 }
 
 type ResumeLiveStreamResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

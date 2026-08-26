@@ -14,7 +14,7 @@ type iStopLiveMPUTaskResponseBody interface {
 }
 
 type StopLiveMPUTaskResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

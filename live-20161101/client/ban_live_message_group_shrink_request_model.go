@@ -28,15 +28,15 @@ type BanLiveMessageGroupShrinkRequest struct {
 	//
 	// demo
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The data center. It must be the same as the data center that was specified when you called the [CreateLiveMessageApp](https://help.aliyun.com/document_detail/2848162.html) operation to create the interactive messaging application.
+	// The data center. This value must be the same as the data center that you specified when you called [CreateLiveMessageApp](https://help.aliyun.com/document_detail/2848162.html).
 	//
-	// >  Valid values: cn-shanghai and ap-southeast-1 (Singapore).
+	// > The supported data centers are China (Shanghai) (cn-shanghai) and Singapore (ap-southeast-1).
 	//
 	// example:
 	//
 	// cn-shanghai
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	// The users whom you do not want to mute when the group is muted.
+	// The users who are exempt from the group-wide mute. Specify up to 30 users. Separate multiple user IDs with a comma (,).
 	ExceptUsersShrink *string `json:"ExceptUsers,omitempty" xml:"ExceptUsers,omitempty"`
 	// The group ID.
 	//

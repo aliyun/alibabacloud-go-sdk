@@ -30,13 +30,11 @@ type UpdateLivePullToPushResponseBody struct {
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The code that is returned for the request.
+	// The return code.
 	//
-	// >
+	// > - The value "0" is returned if the operation is successful.
 	//
-	// 	- 0 is returned if the request is normal.
-	//
-	// 	- For information about codes that are returned when exceptions occur, see the following Error codes table.
+	// > - For exceptions, refer to the error codes listed below.
 	//
 	// example:
 	//

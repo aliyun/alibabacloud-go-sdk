@@ -22,9 +22,14 @@ type iDescribeLiveTagResourcesRequest interface {
 }
 
 type DescribeLiveTagResourcesRequest struct {
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The N resources. The resources are domain names in this operation. Valid values of N: **1 to 50**.
+	// The resource IDs. The resources are domain names for live streaming. You can query up to 50 resource IDs at a time.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +37,7 @@ type DescribeLiveTagResourcesRequest struct {
 	//
 	// example.com
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resources. Set the value to **DOMAIN**.
+	// The type of the resource.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +45,7 @@ type DescribeLiveTagResourcesRequest struct {
 	//
 	// DOMAIN
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The N tags.
+	// A list of tags.
 	Tag []*DescribeLiveTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -111,13 +116,13 @@ func (s *DescribeLiveTagResourcesRequest) Validate() error {
 }
 
 type DescribeLiveTagResourcesRequestTag struct {
-	// The key of the tag. Valid values of N: **1 to 20**.
+	// The tag key. You can specify up to 20 tag keys.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. Valid values of N: **1 to 20**.
+	// The tag value. You can specify up to 20 tag values.
 	//
 	// example:
 	//

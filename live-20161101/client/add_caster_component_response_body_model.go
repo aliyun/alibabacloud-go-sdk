@@ -16,7 +16,7 @@ type iAddCasterComponentResponseBody interface {
 }
 
 type AddCasterComponentResponseBody struct {
-	// The component ID. The value can be used as the value of a request parameter to query, modify, or delete a production studio.
+	// The component ID. Use this ID to query, modify, or delete the component.
 	//
 	// example:
 	//

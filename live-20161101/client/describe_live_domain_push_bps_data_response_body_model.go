@@ -25,19 +25,19 @@ type iDescribeLiveDomainPushBpsDataResponseBody interface {
 
 type DescribeLiveDomainPushBpsDataResponseBody struct {
 	BpsDataPerInterval *DescribeLiveDomainPushBpsDataResponseBodyBpsDataPerInterval `json:"BpsDataPerInterval,omitempty" xml:"BpsDataPerInterval,omitempty" type:"Struct"`
-	// The time granularity of the query.
+	// The time granularity of the queried data.
 	//
 	// example:
 	//
 	// 300
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The ingest domain.
+	// The ingest domain that was queried.
 	//
 	// example:
 	//
 	// demo.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which the data was queried.
+	// The end of the time range. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
 	//
 	// example:
 	//
@@ -49,7 +49,7 @@ type DescribeLiveDomainPushBpsDataResponseBody struct {
 	//
 	// 3C6CCEC4-6B88-4D4A-93E4-D47B3D92CF8F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range during which the data was queried.
+	// The beginning of the time range. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
 	//
 	// example:
 	//

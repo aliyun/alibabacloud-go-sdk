@@ -36,7 +36,9 @@ type UpdateLivePullStreamInfoConfigRequest struct {
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The domain name used for stream pulling. It is the main streaming domain.
+	// The streaming domain used as the streamer\\"s stream domain.
+	//
+	// > - When you specify DomainName, make sure that the domain is a live streaming domain and that the user calling this operation has the permission to operate on the specified domain.
 	//
 	// This parameter is required.
 	//
@@ -44,25 +46,30 @@ type UpdateLivePullStreamInfoConfigRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The time when stream pulling ends.
+	// The end time of stream pulling.
 	//
-	// The time range specified by the StartTime and EndTime parameters cannot exceed seven days. The time specified by the EndTime parameter must be later than the current time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The interval between StartTime and EndTime must be within 7 days, and EndTime must be later than the current time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2017-12-22T08:00:00Z
-	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The complete URL of the origin server of the live stream. You can specify multiple URLs by separating them with semicolons (;).
+	// The full URL of the origin server where the live stream resides. You can specify multiple origin URLs separated by semicolons (;).
 	//
 	// This parameter is required.
 	SourceUrl *string `json:"SourceUrl,omitempty" xml:"SourceUrl,omitempty"`
-	// The time when stream pulling starts.
+	// The start time of stream pulling.
 	//
-	// The time range specified by the StartTime and EndTime parameters cannot exceed seven days. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The interval between StartTime and EndTime must be within 7 days. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// This parameter is required.
 	//

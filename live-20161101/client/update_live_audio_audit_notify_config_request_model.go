@@ -22,23 +22,23 @@ type iUpdateLiveAudioAuditNotifyConfigRequest interface {
 }
 
 type UpdateLiveAudioAuditNotifyConfigRequest struct {
-	// The callback URL. This URL is used to receive callback notifications about violations in audio.
+	// The webhook URL for receiving callback notifications about audio that contains violations.
 	//
 	// example:
 	//
 	// http://guide.aliyundoc.com/callback
 	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
-	// The callback template. Configure the following fields:
+	// The callback template for automated review. The value can contain the following variables:
 	//
-	// 	- **{DomainName}**: the streaming domain.
+	// - **{DomainName}**: The streaming domain.
 	//
-	// 	- **{AppName}**: the name of the application to which the live stream belongs.
+	// - **{AppName}**: The AppName of the stream.
 	//
-	// 	- **{StreamName}**: the name of the live stream.
+	// - **{StreamName}**: The stream name.
 	//
-	// 	- **{Timestamp}**: the time when the callback is returned. The value of this field is a UNIX timestamp. Unit: seconds.
+	// - **{Timestamp}**: The UNIX timestamp when the callback is generated. Unit: seconds.
 	//
-	// 	- **{Result}**: the moderation results.
+	// - **{Result}**: The detection result.
 	//
 	// example:
 	//
@@ -53,7 +53,12 @@ type UpdateLiveAudioAuditNotifyConfigRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdateLiveAudioAuditNotifyConfigRequest) String() string {

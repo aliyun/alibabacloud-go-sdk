@@ -28,13 +28,13 @@ type iDescribeLivePackageConfigRequest interface {
 }
 
 type DescribeLivePackageConfigRequest struct {
-	// The application name. If you leave this parameter empty, all applications are matched.
+	// The app name. Leave empty to match all names.
 	//
 	// example:
 	//
 	// AppName
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The main streaming domain.
+	// The live streaming domain (primary playback domain).
 	//
 	// This parameter is required.
 	//
@@ -42,31 +42,36 @@ type DescribeLivePackageConfigRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The sorting order. Valid values:
+	// The sort order. Valid values:
 	//
-	// 	- **asc*	- (default): ascending order
+	// - **asc*	- (default): ascending order.
 	//
-	// 	- **desc**: descending order
+	// - **desc**: descending order.
 	//
 	// example:
 	//
 	// asc
 	Order   *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: 1.
+	// The current page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page. Valid values: 5 to 30. Default value: 10.
+	// The page size. Default value: 10. Valid values: 5 to 30.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The stream name. If you leave this parameter empty, all streams are matched.
+	// The live stream name. Leave empty to match all stream names.
 	//
 	// example:
 	//

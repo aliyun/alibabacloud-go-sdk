@@ -28,7 +28,7 @@ type iSetLiveStreamBlockRequest interface {
 }
 
 type SetLiveStreamBlockRequest struct {
-	// The name of the application to which the live stream belongs. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The name of the application to which the live stream belongs. You can view the AppName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,11 @@ type SetLiveStreamBlockRequest struct {
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The blocking type. Valid values: blacklist and whitelist.
+	// The blocking mode. Valid values:
+	//
+	// - blacklist: blacklist.
+	//
+	// - whitelist: whitelist.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +56,7 @@ type SetLiveStreamBlockRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The blocked region. If you specify multiple regions, such as CN and AS, separate them with commas (,).
+	// The blocked regions, such as CN and AS. Separate multiple regions with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -61,14 +65,19 @@ type SetLiveStreamBlockRequest struct {
 	// CN
 	LocationList *string `json:"LocationList,omitempty" xml:"LocationList,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The time when the blocking ends. The time must be in UTC. If you do not specify this parameter, the blocking is valid for 7 days by default.
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The end time of the blocking period in UTC. If this parameter is not specified, the blocking lasts for 7 days by default.
 	//
 	// example:
 	//
 	// 2016-06-29T19:00:00Z
 	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	// The name of the live stream. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The name of the live stream. You can view the StreamName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
 	//
 	// This parameter is required.
 	//

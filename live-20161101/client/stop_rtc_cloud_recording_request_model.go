@@ -14,6 +14,8 @@ type iStopRtcCloudRecordingRequest interface {
 }
 
 type StopRtcCloudRecordingRequest struct {
+	// The ID of the task that is returned when you start an RTC cloud recording.
+	//
 	// This parameter is required.
 	//
 	// example:

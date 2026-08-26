@@ -18,9 +18,9 @@ type iCreateRtcMPUEventSubRequest interface {
 }
 
 type CreateRtcMPUEventSubRequest struct {
-	// The ID of the application.
+	// The ID of the application to subscribe to. You can view your application IDs by navigating to **ApsaraVideo Live > Live+ > ApsaraVideo Real-time Communication > Application Management**. If no application exists, create one by clicking **Create Application**.
 	//
-	// > The ID can be up to 64 characters in length and can contain letters, digits, underscores, and hyphens (-).
+	// > The application ID consists of uppercase and lowercase letters, digits, underscores, and hyphens (-), with a maximum of 64 characters.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type CreateRtcMPUEventSubRequest struct {
 	//
 	// yourAppId
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The callback URL.
+	// The callback URL. For the URL format, refer to the callback content specifications below.
 	//
-	// > The callback URL can be up to 2,083 characters in length. You can use headers such as HTTP and HTTPS in callback URLs. The URL can contain letters, digits, and the following special characters: - _ ? % = # . / +
+	// > The callback URL protocol must be HTTP or HTTPS. The URL can contain only the following characters: a-z, A-Z, 0-9, -, _, ?, %, =, #, ., /, and +. The URL cannot exceed 2083 characters.
 	//
 	// This parameter is required.
 	//
@@ -38,15 +38,13 @@ type CreateRtcMPUEventSubRequest struct {
 	//
 	// http://****.com/callback
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
-	// The ID of the channel to which you want to send mixed-stream relay event callbacks. Separate multiple channel IDs with commas (,).
+	// The channel IDs of the stream mixing tasks for which you want to receive callbacks. You can specify multiple channel IDs separated by commas (,).
 	//
-	// >
+	// >- If you leave this parameter empty, callbacks for all stream mixing and relaying tasks under the specified AppId are received by default.
 	//
-	// 	- If you leave this parameter empty, you are subscribed to mixed-stream relay events of all channels in the application.
+	// - When specifying multiple channel IDs, do not include duplicates. You can specify up to 20 channel IDs at a time.
 	//
-	// 	- You cannot specify duplicate channel IDs. You can specify up to 20 channel IDs in each call.
-	//
-	// 	- The ID can be up to 64 characters in length and contain letters, digits, underscores (_), and hyphens (-).
+	// - Each channel ID consists of uppercase and lowercase letters, digits, underscores, and hyphens (-), with a maximum of 64 characters.
 	//
 	// example:
 	//

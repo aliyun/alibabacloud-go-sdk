@@ -31,9 +31,9 @@ type DescribeCasterStreamUrlResponseBody struct {
 	//
 	// example:
 	//
-	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
+	// 16A96B9A-F203-4EC5-8E43-CB92E6******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of streams that were returned.
+	// The total number of entries.
 	//
 	// example:
 	//

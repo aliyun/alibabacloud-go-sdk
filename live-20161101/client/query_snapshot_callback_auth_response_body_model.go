@@ -20,23 +20,23 @@ type iQuerySnapshotCallbackAuthResponseBody interface {
 }
 
 type QuerySnapshotCallbackAuthResponseBody struct {
-	// The callback authentication key.
+	// The authentication key for callbacks.
 	//
 	// example:
 	//
 	// yourkey
 	CallbackAuthKey *string `json:"CallbackAuthKey,omitempty" xml:"CallbackAuthKey,omitempty"`
-	// Indicates whether callback authentication is enabled. Valid values:
+	// Indicates whether authentication for callbacks is enabled. Valid values:
 	//
-	// 	- **yes**: Callback authentication is enabled.
+	// - **yes**: enabled.
 	//
-	// 	- **no**: Callback authentication is disabled.
+	// - **no**: disabled.
 	//
 	// example:
 	//
 	// yes
 	CallbackReqAuth *string `json:"CallbackReqAuth,omitempty" xml:"CallbackReqAuth,omitempty"`
-	// The main streaming domain.
+	// The streaming domain.
 	//
 	// example:
 	//

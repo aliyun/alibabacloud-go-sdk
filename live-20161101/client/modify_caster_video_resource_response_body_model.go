@@ -18,19 +18,19 @@ type iModifyCasterVideoResourceResponseBody interface {
 }
 
 type ModifyCasterVideoResourceResponseBody struct {
-	// The ID of the production studio. This parameter is used in the requests of the following operations: DescribeCasterVideoResources, AddCasterLayout, and DescribeCasterLayouts.
+	// The ID of the production studio. You can use this ID to query video sources, add layouts, or query layout lists for the production studio.
 	//
 	// example:
 	//
 	// LIVEPRODUCER_POST-cn-0pp1czt****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// CF60DB6A-7FD6-426E-9288-122CC1A52FA7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// example:
 	//

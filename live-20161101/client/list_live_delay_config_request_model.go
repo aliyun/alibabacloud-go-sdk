@@ -22,7 +22,7 @@ type iListLiveDelayConfigRequest interface {
 }
 
 type ListLiveDelayConfigRequest struct {
-	// The main streaming domain.
+	// The streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -37,12 +37,17 @@ type ListLiveDelayConfigRequest struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page. Valid values: 5 to 30. Default value: 10.
+	// The number of entries to return on each page. Valid values: 5 to 30. Default value: 10.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

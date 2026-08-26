@@ -18,7 +18,7 @@ type iDeleteLiveStreamBlockResponseBody interface {
 }
 
 type DeleteLiveStreamBlockResponseBody struct {
-	// The result description. If the request was successful, ok is returned. If the request failed, the failure detail is returned.
+	// The description of the request. A value of ok indicates that the request was successful. An error message is returned if the request failed.
 	//
 	// example:
 	//
@@ -30,13 +30,13 @@ type DeleteLiveStreamBlockResponseBody struct {
 	//
 	// B908FF89-B03C-4831-B55B-48D2A7DA0A68
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status. Valid values:
+	// The status of the operation. Valid values:
 	//
-	// 	- ok: The request was successful.
+	// - ok: Success.
 	//
-	// 	- fail: The request failed.
+	// - fail: Failure.
 	//
-	// >  If any parameter failed to be configured, the request failed.
+	// > The status is ok only if all tasks succeeded.
 	//
 	// example:
 	//

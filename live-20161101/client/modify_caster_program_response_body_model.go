@@ -22,7 +22,7 @@ type ModifyCasterProgramResponseBody struct {
 	//
 	// a2b8e671-2fe5-4642-a2ec-bf93880e****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

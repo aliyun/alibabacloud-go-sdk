@@ -28,49 +28,56 @@ type iDescribeLiveDomainTrafficDataRequest interface {
 }
 
 type DescribeLiveDomainTrafficDataRequest struct {
-	// The streaming domain. You can query one or more domain names. If you specify multiple domain names, separate them with commas (,). If you do not specify this parameter, the data of all domain names within your Alibaba Cloud account is returned.
+	// The streaming domain. You can specify a single domain name or multiple domain names. Separate multiple domain names with commas (,). If this parameter is left empty, the merged data of all live streaming domains is returned by default.
+	//
+	// > - When you specify DomainName, make sure that the specified domain names are live streaming domains and that you have the required permissions to operate on the specified domain names.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end time. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
 	//
 	// example:
 	//
 	// 2017-12-10T15:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time granularity of the query. Unit: seconds. Valid values:
+	// The time granularity for querying data. Unit: seconds. Valid values:
 	//
-	// 	- **300*	- (default)
+	// - **300*	- (default).
 	//
-	// 	- **3600**
+	// - **3600**.
 	//
-	// 	- **86400**
+	// - **86400**.
 	//
-	// >  If you specify an invalid value or do not specify this parameter, the default value **300*	- is used.
+	// > If you do not set this parameter or set it to an unsupported value, the default value **300*	- seconds is used.
 	//
 	// example:
 	//
 	// 300
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The name of the Internet service provider (ISP). You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query a list of available ISPs. If you do not specify this parameter, the data of all ISPs is returned.
+	// The name of the Internet service provider (ISP) in English. You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to obtain the ISP name. If you do not set this parameter, data of all ISPs is returned.
 	//
 	// example:
 	//
 	// alibaba
 	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
-	// The name of the region. You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query a list of available regions. If you do not specify this parameter, the data of all regions is returned.
+	// The name of the region in English. You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to obtain the region name. If you do not set this parameter, data of all regions is returned.
 	//
 	// example:
 	//
 	// tianjin
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The region ID.
 	//
-	// >  You can query data in the last **90*	- days.
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format in UTC.
+	//
+	// >You can query data from the past **90*	- days.
 	//
 	// example:
 	//

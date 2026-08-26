@@ -38,75 +38,80 @@ type SetLiveStreamDelayConfigRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The latency of FLV-based playback. Unit: seconds.
+	// The FLV playback latency. Unit: seconds.
 	//
-	// >  If this parameter is left empty, the latency is set to a value corresponding to the FlvLevel parameter.
+	// > If this parameter is left empty, the latency is set based on the value of FlvLevel.
 	//
 	// example:
 	//
 	// 8
 	FlvDelay *int32 `json:"FlvDelay,omitempty" xml:"FlvDelay,omitempty"`
-	// The latency level of FLV-based playback. Ignore this parameter if the FlvDelay parameter is configured.
+	// The FLV latency level. This parameter is ignored if FlvDelay is set.
 	//
 	// Valid values:
 	//
-	// 	- **short*	- (default): The latency is 4 seconds.
+	// - **short*	- (default): 2 seconds.
 	//
-	// 	- **medium**: The latency is 8 seconds.
+	// - **medium**: 4 seconds.
 	//
-	// 	- **long**: The latency is 16 seconds.
+	// - **long**: more than 4 seconds.
 	//
-	// >  If both the FlvDelay and FlvLevel parameters are left empty, FlvLevel is set to **short*	- by default.
+	// > If both FlvDelay and FlvLevel are left empty, the default value **short*	- is used.
 	//
 	// example:
 	//
 	// medium
 	FlvLevel *string `json:"FlvLevel,omitempty" xml:"FlvLevel,omitempty"`
-	// The latency of HLS-based playback. Unit: seconds.
+	// The HLS playback latency. Unit: seconds.
 	//
-	// >  If this parameter is left empty, the latency is set to a value corresponding to the HlsLevel parameter.
+	// > If this parameter is left empty, the latency is set based on the value of HlsLevel.
 	//
 	// example:
 	//
 	// 4
 	HlsDelay *int32 `json:"HlsDelay,omitempty" xml:"HlsDelay,omitempty"`
-	// The latency level of HLS-based playback. Ignore this parameter if the HlsDelay parameter is configured.
+	// The HLS latency level. This parameter is ignored if HlsDelay is set.
 	//
 	// Valid values:
 	//
-	// 	- **short**: The latency is 3 seconds. This is the default value.
+	// - **short*	- (default): 3 seconds.
 	//
-	// 	- **medium**: The latency is 6 seconds.
+	// - **medium**: 6 seconds.
 	//
-	// 	- **long**: The latency is 15 seconds.
+	// - **long**: 15 seconds.
 	//
-	// >  If both the HlsDelay and HlsLevel parameters are left empty, HlsLevel is set to **short*	- by default.
+	// > If both HlsDelay and HlsLevel are left empty, the default value **short*	- is used.
 	//
 	// example:
 	//
 	// short
 	HlsLevel *string `json:"HlsLevel,omitempty" xml:"HlsLevel,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The latency of RTMP-based playback. Unit: seconds.
+	// The region ID.
 	//
-	// >  If this parameter is left empty, the latency is set to a value corresponding to the RtmpLevel parameter.
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The RTMP playback latency. Unit: seconds.
+	//
+	// > If this parameter is left empty, the latency is set based on the value of RtmpLevel.
 	//
 	// example:
 	//
 	// 4
 	RtmpDelay *int32 `json:"RtmpDelay,omitempty" xml:"RtmpDelay,omitempty"`
-	// The latency level of RTMP-based playback. Ignore this parameter if the RtmpDelay parameter is configured.
+	// The RTMP latency level. This parameter is ignored if RtmpDelay is set.
 	//
 	// Valid values:
 	//
-	// 	- **short*	- (default): The latency is 4 seconds.
+	// - **short*	- (default): 2 seconds.
 	//
-	// 	- **medium**: The latency is 8 seconds.
+	// - **medium**: 4 seconds.
 	//
-	// 	- **long**: The latency is 16 seconds.
+	// - **long**: more than 4 seconds.
 	//
-	// >  If both the RtmpDelay and RtmpLevel parameters are left empty, RtmpLevel is set to **short*	- by default.
+	// > If both RtmpDelay and RtmpLevel are left empty, the default value **short*	- is used.
 	//
 	// example:
 	//

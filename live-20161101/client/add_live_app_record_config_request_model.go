@@ -40,7 +40,7 @@ type iAddLiveAppRecordConfigRequest interface {
 }
 
 type AddLiveAppRecordConfigRequest struct {
-	// The name of the application to which the live stream belongs. The value of this parameter must be the same as the application name in the ingest URL. Otherwise, the configuration does not take effect. If you want to match all applications, specify an asterisk (\\*) as the value.
+	// The name of the application to which the stream belongs. The template takes effect only when the AppName value matches the AppName in the ingest URL. To match all application names, set this parameter to an asterisk (*).
 	//
 	// This parameter is required.
 	//
@@ -48,13 +48,13 @@ type AddLiveAppRecordConfigRequest struct {
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// Duration for stream concatenation. If the live streaming interruption exceeds the set concatenation duration, a new file will be generated. The concatenation duration can be set between 15 to 21600 seconds.
+	// The stream discontinuity merging duration. If the live stream is disconnected for longer than the specified merging duration, a new file is generated. Valid values: 15 to 21600. Unit: seconds.
 	//
 	// example:
 	//
 	// 180
 	DelayTime *int32 `json:"DelayTime,omitempty" xml:"DelayTime,omitempty"`
-	// The main streaming domain.
+	// The streaming domain of the streamer.
 	//
 	// This parameter is required.
 	//
@@ -62,31 +62,31 @@ type AddLiveAppRecordConfigRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Recording end time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC time).
+	// The recording end time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
-	// > The difference between EndTime and StartTime should not exceed 7 days; if it does, it will be calculated as 7 days. This is only valid for stream-level recording (when StreamName is not empty).
+	// > The difference between EndTime and StartTime cannot exceed 7 days. If it exceeds 7 days, the value is calculated as 7 days. This parameter is valid only for stream-level recording (when StreamName is not empty).
 	//
 	// example:
 	//
 	// 2018-04-16T09:57:21Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether to enable on-demand recording. Valid values:
+	// The on-demand or manual recording mode. Valid values:
 	//
-	// 	- **0**: disables on-demand recording.
+	// - **0*	- (default): disabled. Automatic recording is used.
 	//
-	// 	- **1**: enables on-demand recording by using the HTTP callback method.
+	// - **1**: on-demand recording through HTTP callback. You must first configure OnDemandUrl by calling the [AddLiveRecordNotifyConfig](https://help.aliyun.com/document_detail/2847891.html) operation. Otherwise, recording is not performed by default.
 	//
-	// 	- **2**: enables on-demand recording by parsing the stream ingest parameters.
+	// - **2**: on-demand recording by parsing stream ingest parameters.
 	//
-	// 	- **7**: By default, ApsaraVideo Live does not automatically record live streams. You can call the [RealTimeRecordCommand](https://help.aliyun.com/document_detail/2847882.html) operation to manually start or stop recording.
-	//
-	// >  If you set the OnDemand parameter to **1**, you need to call the [AddLiveRecordNotifyConfig](https://help.aliyun.com/document_detail/2847891.html) operation to configure the OnDemandUrl parameter. Otherwise, ApsaraVideo Live does not perform on-demand recording.
+	// - **7**: manual recording. Recording is not performed by default. You can call the [RealTimeRecordCommand](https://help.aliyun.com/document_detail/2847882.html) operation to manually start or stop recording.
 	//
 	// example:
 	//
 	// 1
 	OnDemand *int32 `json:"OnDemand,omitempty" xml:"OnDemand,omitempty"`
-	// The name of the OSS bucket where live streaming recording files are stored. To store recorded files in OSS, you need to create an OSS bucket in advance. For creation method, please refer to [Configure OSS](https://help.aliyun.com/document_detail/84932.html).
+	// The name of the OSS bucket.
+	//
+	// To store live recordings in OSS, create an OSS bucket in advance. For more information, see [Configure OSS](https://help.aliyun.com/document_detail/84932.html).
 	//
 	// This parameter is required.
 	//
@@ -96,27 +96,27 @@ type AddLiveAppRecordConfigRequest struct {
 	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
 	// The endpoint of the OSS bucket.
 	//
-	// To store live stream recordings in OSS, you need to create an OSS bucket in advance. For more information, see Configure OSS.
+	// To store live recordings in OSS, create an OSS bucket in advance. For more information, see [Configure OSS](https://help.aliyun.com/document_detail/84932.html).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// learn.developer.aliyundoc.com
+	// oss-cn-beijing.aliyuncs.com
 	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The recording details.
 	RecordFormat  []*AddLiveAppRecordConfigRequestRecordFormat `json:"RecordFormat,omitempty" xml:"RecordFormat,omitempty" type:"Repeated"`
 	SecurityToken *string                                      `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// Start time of the recording. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC time).
+	// The recording start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
-	// > The set time must be within 7 days of the actual streaming start time, and is only valid for stream-level recording (when StreamName is not empty).
+	// > The specified time must be within 7 days of the actual stream ingest start time. This parameter is valid only for stream-level recording (when StreamName is not empty).
 	//
 	// example:
 	//
 	// 2018-04-10T09:57:21Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Stream broadcast name.
+	// The stream name. The template takes effect only when the StreamName value matches the StreamName in the ingest URL. To match all stream names under the specified AppName, set this parameter to an asterisk (*).
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type AddLiveAppRecordConfigRequest struct {
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
 	// The transcoded stream recording details.
 	TranscodeRecordFormat []*AddLiveAppRecordConfigRequestTranscodeRecordFormat `json:"TranscodeRecordFormat,omitempty" xml:"TranscodeRecordFormat,omitempty" type:"Repeated"`
-	// Transcoding stream recording template group.
+	// The transcoding template group for transcoded stream recording.
 	//
 	// example:
 	//
@@ -289,61 +289,66 @@ func (s *AddLiveAppRecordConfigRequest) Validate() error {
 }
 
 type AddLiveAppRecordConfigRequestRecordFormat struct {
-	// The recording cycle. Unit: seconds. If you do not specify this parameter, the default value 6 hours is used.
+	// The recording length per epoch. Unit: seconds.
 	//
-	// >
+	// > - If this parameter is not specified, the default value varies by recording format: 6 hours for m3u8 and cmaf formats, and 1 hour for flv and mp4 formats.
 	//
-	// 	- If a live stream is interrupted during a recording cycle but is resumed within the interruption duration threshold, the stream is recorded in the same recording before and after the interruption.
+	// > - If a live stream is disconnected within a recording epoch but resumes stream ingest within the stream discontinuity merging duration, recording continues in the same file. This is Normal behavior.
 	//
-	// 	- If a live stream is interrupted for longer than the interruption duration threshold, a new recording is generated.
+	// > - A recording file is generated only after the live stream is disconnected for longer than the stream discontinuity merging duration.
 	//
 	// example:
 	//
 	// 1
 	CycleDuration *int32 `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
-	// The recording format. Supported formats include M3U8, FLV, MP4, and CMAF. Valid values:
+	// The format. M3U8, FLV, MP4, and CMAF are supported. Valid values:
 	//
-	// >  You need to specify at lease one of the RecordFormat and TranscodeRecordFormat parameters. If you set this parameter to m3u8 or cmaf, you must also specify the RecordFormat.N.SliceOssObjectPrefix and RecordFormat.N.SliceDuration parameters.
+	// 	Notice: At least one of RecordFormat and TranscodeRecordFormat must be set. If you select m3u8 or cmaf, you must also set the request parameters RecordFormat.N.SliceOssObjectPrefix and RecordFormat.N.SliceDuration.
 	//
-	// 	- m3u8
 	//
-	// 	- flv
+	// - m3u8.
 	//
-	// 	- mp4
+	// - flv.
 	//
-	// 	- cmaf
+	// - mp4.
+	//
+	// - cmaf.
+	//
+	// > Settings for RecordFormat and TranscodeRecordFormat: at least one must be specified.
 	//
 	// example:
 	//
 	// m3u8
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The naming format of a recording to store in OSS.
+	// The name of the recording file stored in OSS.
 	//
-	// 	- The name must be less than 256 bytes in length and can contain the {AppName}, {StreamName}, {Sequence}, {StartTime}, {EndTime}, {EscapedStartTime}, and {EscapedEndTime} variables.
+	// - The file name must be less than 256 bytes and supports variable matching, including {AppName}, {StreamName}, {Sequence}, {StartTime}, {EndTime}, {EscapedStartTime}, and {EscapedEndTime}.
 	//
-	// 	- The name must contain the {StartTime} and {EndTime} variables or the {EscapedStartTime} and {EscapedEndTime} variables.
+	// - The value must contain {StartTime} or {EscapedStartTime} and {EndTime} or {EscapedEndTime}.
 	//
 	// example:
 	//
 	// record/{AppName}/{StreamName}/{Sequence}_{EscapedStartTime}_{EscapedEndTime}
 	OssObjectPrefix *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
-	// The duration of a single segment. Unit: seconds.
+	// The segment length of a single segment. Unit: seconds.
 	//
-	// >  This parameter takes effect only if you set the RecordFormat.N.Format parameter to m3u8 or cmaf.
+	// 	Notice: This parameter takes effect only when RecordFormat.N.Format is set to m3u8 or cmaf.
 	//
-	// If you do not specify this parameter, the default value 30 seconds is used. Valid values: 5 to 30.
+	//
+	// If this parameter is not specified, the default value is 30 seconds. Valid values: 5 to 30.
 	//
 	// example:
 	//
 	// 30
 	SliceDuration *int32 `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
-	// The naming format of a segment.
+	// The segment name.
 	//
-	// >  This parameter is required only if you set the RecordFormat.N.Format parameter to m3u8 or cmaf.
+	// 	Notice: This parameter is required only when RecordFormat.N.Format is set to m3u8 or cmaf.
 	//
-	// 	- By default, the duration of a segment is 30 seconds. The segment name must be less than 256 bytes in length and can contain the {AppName}, {StreamName}, {UnixTimestamp}, and {Sequence} variables.
 	//
-	// 	- The segment name must contain the {UnixTimestamp} and {Sequence} variables.
+	// - The default segment length is 30 seconds. The value must be less than 256 bytes and supports variable matching, including {AppName}, {StreamName}, {UnixTimestamp}, and {Sequence}.
+	//
+	// - The value must contain the {UnixTimestamp} and {Sequence} variables.
 	//
 	// example:
 	//
@@ -409,55 +414,62 @@ func (s *AddLiveAppRecordConfigRequestRecordFormat) Validate() error {
 }
 
 type AddLiveAppRecordConfigRequestTranscodeRecordFormat struct {
-	// The transcoded stream recording cycle. Unit: seconds. If you do not specify this parameter, the default value 6 hours is used.
+	// The recording length per epoch for transcoding stream recording. Unit: seconds.
+	//
+	// > If this parameter is not specified, the default value varies by recording format: 6 hours for m3u8 and cmaf formats, and 1 hour for flv and mp4 formats.
 	//
 	// example:
 	//
 	// 21600
 	CycleDuration *int32 `json:"CycleDuration,omitempty" xml:"CycleDuration,omitempty"`
-	// The transcoded stream recording format. Supported formats include M3U8, FLV, MP4, and CMAF. Valid values:
+	// The transcoding stream recording format. M3U8, FLV, MP4, and CMAF are supported. Valid values:
 	//
-	// >  If you set this parameter to m3u8 or cmaf, you must also specify the TranscodeRecordFormat.N.SliceOssObjectPrefix and TranscodeRecordFormat.N.SliceDuration parameters.
+	// 	Notice: If you select m3u8 or cmaf, you must also set the request parameters TranscodeRecordFormat.N.SliceOssObjectPrefix and TranscodeRecordFormat.N.SliceDuration.
 	//
-	// 	- m3u8
 	//
-	// 	- flv
+	// - m3u8.
 	//
-	// 	- mp4
+	// - flv.
 	//
-	// 	- cmaf
+	// - mp4.
+	//
+	// - cmaf.
+	//
+	// > Settings: if you select m3u8 or cmaf format, the corresponding slice parameters must also be configured.
 	//
 	// example:
 	//
 	// m3u8
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The naming format of a transcoded stream recording to store in OSS.
+	// The name of the transcoded stream recording file stored in OSS.
 	//
-	// 	- The name must be less than 256 bytes in length and can contain the {AppName}, {StreamName}, {Sequence}, {StartTime}, {EndTime}, {EscapedStartTime}, and {EscapedEndTime} variables.
+	// - The file name must be less than 256 bytes and supports variable matching, including {AppName}, {StreamName}, {Sequence}, {StartTime}, {EndTime}, {EscapedStartTime}, and {EscapedEndTime}.
 	//
-	// 	- The name must contain the {StartTime} and {EndTime} variables or the {EscapedStartTime} and {EscapedEndTime} variables.
+	// - The value must contain {StartTime} or {EscapedStartTime} and {EndTime} or {EscapedEndTime}.
 	//
 	// example:
 	//
 	// record/{AppName}/{StreamName}/{Sequence}_{EscapedStartTime}_{EscapedEndTime}
 	OssObjectPrefix *string `json:"OssObjectPrefix,omitempty" xml:"OssObjectPrefix,omitempty"`
-	// The duration of a single segment in a transcoded stream recording. Unit: seconds.
+	// The segment length of a single segment for transcoding stream recording. Unit: seconds.
 	//
-	// >  This parameter takes effect only if you set the TranscodeRecordFormat.N.Format parameter to m3u8 or cmaf.
+	// 	Notice: This parameter takes effect only when TranscodeRecordFormat.N.Format (transcoding stream recording format) is set to m3u8 or cmaf.
 	//
-	// If you do not specify this parameter, the default value 30 seconds is used. Valid values: 5 to 30.
+	//
+	// If this parameter is not specified, the default value is 30 seconds. Valid values: 5 to 30.
 	//
 	// example:
 	//
 	// 30
 	SliceDuration *int32 `json:"SliceDuration,omitempty" xml:"SliceDuration,omitempty"`
-	// The naming format of a segment in a transcoded stream recording.
+	// The segment name for transcoded stream recording.
 	//
-	// >  This parameter is required only if you set the TranscodeRecordFormat.N.Format parameter to m3u8 or cmaf.
+	// 	Notice: This parameter is required only when TranscodeRecordFormat.N.Format is set to m3u8 or cmaf.
 	//
-	// 	- By default, the duration of a segment is 30 seconds. The segment name must be less than 256 bytes in length and can contain the {AppName}, {StreamName}, {UnixTimestamp}, and {Sequence} variables.
 	//
-	// 	- The segment name must contain the {UnixTimestamp} and {Sequence} variables.
+	// - The default segment length is 30 seconds. The value must be less than 256 bytes and supports variable matching, including {AppName}, {StreamName}, {UnixTimestamp}, and {Sequence}.
+	//
+	// - The value must contain the {UnixTimestamp} and {Sequence} variables.
 	//
 	// example:
 	//

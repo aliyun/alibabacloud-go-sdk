@@ -25,7 +25,7 @@ type DescribeLiveStreamWatermarkRulesResponseBody struct {
 	// 5c6a2a0df228-4a64- af62-20e91b9676b3
 	RequestId    *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RuleInfoList *DescribeLiveStreamWatermarkRulesResponseBodyRuleInfoList `json:"RuleInfoList,omitempty" xml:"RuleInfoList,omitempty" type:"Struct"`
-	// The total number of entries that meet the specified conditions.
+	// The total number of matching entries.
 	//
 	// example:
 	//

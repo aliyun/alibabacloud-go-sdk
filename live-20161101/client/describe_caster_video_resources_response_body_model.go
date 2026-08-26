@@ -24,7 +24,7 @@ type DescribeCasterVideoResourcesResponseBody struct {
 	//
 	// CF60DB6A-7FD6-426E-9288-122CC1A52FA7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
+	// The total number of records.
 	//
 	// example:
 	//

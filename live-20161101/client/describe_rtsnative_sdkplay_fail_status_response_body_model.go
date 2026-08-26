@@ -28,21 +28,21 @@ type DescribeRTSNativeSDKPlayFailStatusResponseBody struct {
 	//
 	// 300
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The end of the time range for which the data was queried.
+	// The end time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2021-12-10T21:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of error status codes at each interval.
+	// The total number of error status codes for each time interval.
 	PlayFailStatus []*DescribeRTSNativeSDKPlayFailStatusResponseBodyPlayFailStatus `json:"PlayFailStatus,omitempty" xml:"PlayFailStatus,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id
 	//
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range for which the data was queried.
+	// The start time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -117,43 +117,43 @@ func (s *DescribeRTSNativeSDKPlayFailStatusResponseBody) Validate() error {
 }
 
 type DescribeRTSNativeSDKPlayFailStatusResponseBodyPlayFailStatus struct {
-	// The timestamp of the returned data.
+	// The beginning of the time interval. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2021-12-10T20:00:00Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The status code that indicates failed DNS resolution.
+	// DNS resolution failure.
 	//
 	// example:
 	//
 	// 1
 	V20001 *string `json:"V20001,omitempty" xml:"V20001,omitempty"`
-	// The status code that indicates failed authentication.
+	// Authentication failure.
 	//
 	// example:
 	//
 	// 2
 	V20002 *string `json:"V20002,omitempty" xml:"V20002,omitempty"`
-	// The status code that indicates a connection signaling timeout.
+	// Connection signaling timeout.
 	//
 	// example:
 	//
 	// 3
 	V20011 *string `json:"V20011,omitempty" xml:"V20011,omitempty"`
-	// The status code that indicates a subscription signaling error.
+	// Subscription signaling error.
 	//
 	// example:
 	//
 	// 4
 	V20012 *string `json:"V20012,omitempty" xml:"V20012,omitempty"`
-	// The status code indicating that the stream to subscribe to does not exist.
+	// Subscribed stream does not exist.
 	//
 	// example:
 	//
 	// 5
 	V20013 *string `json:"V20013,omitempty" xml:"V20013,omitempty"`
-	// The status code that indicates a media packet collection timeout.
+	// Media packet receiving timeout.
 	//
 	// example:
 	//

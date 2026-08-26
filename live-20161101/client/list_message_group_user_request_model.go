@@ -22,7 +22,7 @@ type iListMessageGroupUserRequest interface {
 }
 
 type ListMessageGroupUserRequest struct {
-	// The ID of the interactive messaging application.
+	// Interactive Messages application ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type ListMessageGroupUserRequest struct {
 	//
 	// VKL3***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the message group.
+	// Message group ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ListMessageGroupUserRequest struct {
 	//
 	// AE35-****-T95F
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The number of the page to return. Default value: 1.
+	// Page number. Default value: 1.
 	//
 	// Valid values: 1 to 100000.
 	//
@@ -46,7 +46,7 @@ type ListMessageGroupUserRequest struct {
 	//
 	// 10
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of members to return on each page. Default value: 20.
+	// Number of message group members to display per page. Default value: 20.
 	//
 	// Valid values: 1 to 50.
 	//
@@ -54,11 +54,11 @@ type ListMessageGroupUserRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sort order. Valid values:
+	// Sorting method. Valid values:
 	//
-	// 	- 0: ascending order by time
+	// - 0: Ascending order by time.
 	//
-	// 	- 1: descending order by time
+	// - 1: Descending order by time.
 	//
 	// example:
 	//

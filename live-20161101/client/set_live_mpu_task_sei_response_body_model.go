@@ -18,7 +18,7 @@ type SetLiveMpuTaskSeiResponseBody struct {
 	//
 	// example:
 	//
-	// 7BF95F2A-3B24-4CDE-9346-7F6FA86697A1
+	// ******3B-0E1A-586A-AC29-742247******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

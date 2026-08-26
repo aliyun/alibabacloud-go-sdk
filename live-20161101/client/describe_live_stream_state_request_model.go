@@ -22,7 +22,7 @@ type iDescribeLiveStreamStateRequest interface {
 }
 
 type DescribeLiveStreamStateRequest struct {
-	// The name of the application to which the live stream belongs. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The AppName of the live stream. View AppNames on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DescribeLiveStreamStateRequest struct {
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The streaming domain or ingest domain.
+	// The ingest domain or the streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -39,8 +39,13 @@ type DescribeLiveStreamStateRequest struct {
 	// demo.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the live stream. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the live stream. View StreamNames on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
 	//
 	// This parameter is required.
 	//

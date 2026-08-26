@@ -16,8 +16,15 @@ type iAddLiveStreamMergeResponseBody interface {
 }
 
 type AddLiveStreamMergeResponseBody struct {
+	// - A message that indicates the result of the request. If the request fails, this message helps the caller identify the issue.
+	//
+	// - Valid values: OK, config invalid, degrade to no livemerger.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//

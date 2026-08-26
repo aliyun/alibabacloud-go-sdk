@@ -24,11 +24,11 @@ type iCopyCasterSceneConfigRequest interface {
 type CopyCasterSceneConfigRequest struct {
 	// The ID of the production studio.
 	//
-	// 	- If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
+	// - If you create a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, use the CasterId value that is returned in the response.
 	//
-	// 	- If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management*	- page. To go to the page, log on to the **ApsaraVideo Live console*	- and click **Production Studios*	- in the left-side navigation pane.
+	// - If you create a production studio in the ApsaraVideo Live console, go to the **Production Studio*	- > **Cloud Production Studio*	- page. The ID of the production studio is in the **Instance ID/Name*	- column.
 	//
-	// >  You can find the ID of the production studio in the Instance ID/Name column.
+	// > The production studio name in the list on the Cloud Production Studio page of the ApsaraVideo Live console is the production studio ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type CopyCasterSceneConfigRequest struct {
 	//
 	// LIVEPRODUCER_POST-cn-0pp1czt****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-	// The ID of the source scene, which must be a PVW scene.
+	// The ID of the source scene. The scene must be a PVW scene.
 	//
 	// This parameter is required.
 	//
@@ -45,8 +45,13 @@ type CopyCasterSceneConfigRequest struct {
 	// f1a361f4-bee3-436d-ae6e-d38e6943****
 	FromSceneId *string `json:"FromSceneId,omitempty" xml:"FromSceneId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the destination scene, which must be a PGM scene.
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the destination scene. The scene must be a PGM scene.
 	//
 	// This parameter is required.
 	//

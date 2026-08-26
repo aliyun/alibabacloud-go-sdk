@@ -16,13 +16,13 @@ type iCreateRtcMPUEventSubResponseBody interface {
 }
 
 type CreateRtcMPUEventSubResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the subscription.
+	// The subscription ID.
 	//
 	// example:
 	//

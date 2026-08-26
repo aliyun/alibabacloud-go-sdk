@@ -22,27 +22,27 @@ type iListLiveMessageGroupByPageResponseBody interface {
 }
 
 type ListLiveMessageGroupByPageResponseBody struct {
-	// The list of groups.
+	// The group list.
 	GroupList []*ListLiveMessageGroupByPageResponseBodyGroupList `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
-	// The page number.
+	// The current page number of the returned data.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// B5D95365-5A46-1A6A-BBF5-C7B6BDED****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,15 +117,15 @@ func (s *ListLiveMessageGroupByPageResponseBody) Validate() error {
 }
 
 type ListLiveMessageGroupByPageResponseBodyGroupList struct {
-	// The list of administrators.
+	// The list of administrator user IDs.
 	AdminList []*string `json:"AdminList,omitempty" xml:"AdminList,omitempty" type:"Repeated"`
-	// The time when the group was created. The value is a UNIX timestamp. Unit: seconds.
+	// The creation time, expressed as a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1698299727
 	Createtime *int64 `json:"Createtime,omitempty" xml:"Createtime,omitempty"`
-	// The ID of the user who created the group.
+	// The creator ID.
 	//
 	// example:
 	//
@@ -137,19 +137,19 @@ type ListLiveMessageGroupByPageResponseBodyGroupList struct {
 	//
 	// true
 	Delete *bool `json:"Delete,omitempty" xml:"Delete,omitempty"`
-	// The ID of the interactive messaging group.
+	// The group ID.
 	//
 	// example:
 	//
 	// cU9MeBqf****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The additional information about the group.
+	// The extended information of the group.
 	//
 	// example:
 	//
 	// testgroupinfo
 	GroupInfo *string `json:"GroupInfo,omitempty" xml:"GroupInfo,omitempty"`
-	// The name of the group.
+	// The group name.
 	//
 	// example:
 	//

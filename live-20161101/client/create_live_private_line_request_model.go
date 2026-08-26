@@ -44,9 +44,9 @@ type CreateLivePrivateLineRequest struct {
 	AccelerationArea *string `json:"AccelerationArea,omitempty" xml:"AccelerationArea,omitempty"`
 	// The acceleration type. Valid values:
 	//
-	// 	- play: streaming acceleration
+	// - play: streaming acceleration.
 	//
-	// 	- publish: stream ingest acceleration
+	// - publish: stream ingest acceleration.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type CreateLivePrivateLineRequest struct {
 	//
 	// play
 	AccelerationType *string `json:"AccelerationType,omitempty" xml:"AccelerationType,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type CreateLivePrivateLineRequest struct {
 	//
 	// live
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The main streaming domain.
+	// The streamer streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -70,25 +70,30 @@ type CreateLivePrivateLineRequest struct {
 	//
 	// demo.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The acceleration channel that you want to reuse. This parameter is required if Reuse is set to yes.
+	// The ID of the acceleration channel to reuse. This parameter is required when Reuse is set to yes.
 	//
 	// example:
 	//
 	// ga-bp1iovsdpf01ym9su****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The accelerated bandwidth. Unit: Mbit/s. This parameter is required if Reuse is set to no.
+	// The acceleration bandwidth. Unit: Mbit/s. This parameter is required when Reuse is set to no.
 	//
 	// example:
 	//
 	// 200
 	MaxBandwidth *string `json:"MaxBandwidth,omitempty" xml:"MaxBandwidth,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to reuse an existing acceleration channel. Valid values:
 	//
-	// 	- yes: reuses an existing acceleration channel.
+	// - yes: Reuse an existing acceleration channel.
 	//
-	// 	- no: creates a new acceleration channel.
+	// - no: Create a new acceleration channel.
 	//
 	// This parameter is required.
 	//
@@ -96,7 +101,7 @@ type CreateLivePrivateLineRequest struct {
 	//
 	// no
 	Reuse *string `json:"Reuse,omitempty" xml:"Reuse,omitempty"`
-	// The name of the live stream.
+	// The live stream name.
 	//
 	// This parameter is required.
 	//
@@ -104,7 +109,7 @@ type CreateLivePrivateLineRequest struct {
 	//
 	// testStream
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The live center. Valid values: cn-beijing, cn-shanghai, cn-shenzhen, cn-qingdao, ap-northeast-1, ap-southeast-5, eu-central-1, and ap-southeast-1, which indicate China (Beijing), China (Shanghai), China (Shenzhen), China (Qingdao), Japan (Tokyo), Indonesia (Jakarta), Germany (Frankfurt), and Singapore, respectively.
+	// The live center. Valid values: cn-beijing, cn-shanghai, cn-shenzhen, cn-qingdao, ap-northeast-1, ap-southeast-5, eu-central-1, ap-southeast-1, and ap-south-1, which represent the live centers in Beijing, Shanghai, Shenzhen, Qingdao, Japan, Indonesia, Germany, and Singapore respectively.
 	//
 	// This parameter is required.
 	//

@@ -18,7 +18,7 @@ type iSetLiveDomainMultiStreamConfigRequest interface {
 }
 
 type SetLiveDomainMultiStreamConfigRequest struct {
-	// The main streaming domain.
+	// The primary streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -27,11 +27,11 @@ type SetLiveDomainMultiStreamConfigRequest struct {
 	// example.com
 	Domain  *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether to enable the dual-stream disaster recovery feature. Valid values:
+	// The feature switch. Valid values:
 	//
-	// 	- **on**: enables the feature.
+	// - **on**: enabled
 	//
-	// 	- **off**: disables the feature.
+	// - **off**: disabled.
 	//
 	// This parameter is required.
 	//

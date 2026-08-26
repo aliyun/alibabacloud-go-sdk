@@ -20,21 +20,10 @@ type iDescribeHlsLiveStreamRealTimeBpsDataRequest interface {
 }
 
 type DescribeHlsLiveStreamRealTimeBpsDataRequest struct {
-	// The domain names to query. Separate them with commas (,). A domain name cannot contain double-byte characters.
-	//
-	// example:
-	//
-	// live.aiyun.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The timestamp.
-	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 2018-08-08T00:00:00Z
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 

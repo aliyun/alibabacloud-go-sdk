@@ -21,7 +21,7 @@ type iListPlaylistItemsRequest interface {
 
 type ListPlaylistItemsRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the episode list. If the episode list was created by calling the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation, check the value of the response parameter ProgramId to obtain the ID.
+	// The ID of the playlist. You can obtain the ID from the ProgramId parameter in the response of the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -29,13 +29,18 @@ type ListPlaylistItemsRequest struct {
 	//
 	// 445409ec-7eaa-461d-8f29-4bec2eb9****
 	ProgramId *string `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
-	// The IDs of the episodes that you want to query. Separate episode IDs with commas (,). If you set this parameter, only the information about the specified episodes is returned. If you do not set this parameter, the information about all episodes in the episode list is returned.
+	// The IDs of the playlist items. Separate multiple IDs with commas (,). If you specify this parameter, only the information about the specified items is returned. If you leave this parameter empty, the information about all items in the playlist is returned.
 	//
 	// example:
 	//
 	// c10f3d63-eacf-4fbf-bd48-a07a6ba7****,c09f3d63-eacf-4fbf-bd48-a07a6ba7****
 	ProgramItemIds *string `json:"ProgramItemIds,omitempty" xml:"ProgramItemIds,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListPlaylistItemsRequest) String() string {

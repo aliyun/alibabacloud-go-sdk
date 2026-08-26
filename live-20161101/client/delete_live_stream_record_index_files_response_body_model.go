@@ -20,20 +20,20 @@ type iDeleteLiveStreamRecordIndexFilesResponseBody interface {
 }
 
 type DeleteLiveStreamRecordIndexFilesResponseBody struct {
-	// The status code. A return value of 500 indicates an error. For details, see the Error codes section of this topic.
+	// The status code. If an error occurs, see the error codes.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The status description. A return value of 500 indicates an error. For details, see the Error codes section of this topic.
+	// The status message. If an error occurs, see the error codes.
 	//
 	// example:
 	//
 	// OK
 	Message              *string                                                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	RecordDeleteInfoList *DeleteLiveStreamRecordIndexFilesResponseBodyRecordDeleteInfoList `json:"RecordDeleteInfoList,omitempty" xml:"RecordDeleteInfoList,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

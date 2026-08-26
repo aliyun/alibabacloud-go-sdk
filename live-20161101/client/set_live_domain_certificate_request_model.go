@@ -15,6 +15,8 @@ type iSetLiveDomainCertificateRequest interface {
 	GetCertType() *string
 	SetDomainName(v string) *SetLiveDomainCertificateRequest
 	GetDomainName() *string
+	SetDryRun(v bool) *SetLiveDomainCertificateRequest
+	GetDryRun() *bool
 	SetForceSet(v string) *SetLiveDomainCertificateRequest
 	GetForceSet() *string
 	SetOwnerId(v int64) *SetLiveDomainCertificateRequest
@@ -38,17 +40,17 @@ type SetLiveDomainCertificateRequest struct {
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
 	// The certificate type. Valid values:
 	//
-	// 	- **upload**: a custom certificate
+	// - **upload**: an uploaded certificate.
 	//
-	// 	- **cas**: a certificate that is purchased from Certificate Management Service
+	// - **cas**: a certificate from SSL Certificates Service.
 	//
-	// 	- **free**: a free certificate (for testing)
+	// - **free**: a personal test certificate (Free Edition).
 	//
 	// example:
 	//
 	// free
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The domain name that is secured by the certificate. The domain name uses `HTTPS`-based acceleration.
+	// The accelerated domain name to which the certificate belongs. The domain name is of the `https` acceleration type.
 	//
 	// This parameter is required.
 	//
@@ -56,16 +58,24 @@ type SetLiveDomainCertificateRequest struct {
 	//
 	// developer.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Specifies whether to check the certificate name for duplicates. A value of 1 indicates that the system does not perform the check and overwrites the information about the certificate that has the same name. Set the value to **1**.
+	// Specifies whether to perform only a dry run, without actually executing the operation. Valid values:
+	//
+	// - true: sends a dry run request. If the request passes the check, the operation is not actually executed.
+	//
+	// - false (default): sends a normal request. If the request passes the check, the operation is actually executed.
+	//
+	// The dry run checks parameter validity, RAM permissions, and resource status. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the operation is not actually executed.
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Ignores the check for duplicate certificate names and overwrites the existing certificate information with the same name. Fixed value: **1**.
 	//
 	// example:
 	//
 	// 1
 	ForceSet *string `json:"ForceSet,omitempty" xml:"ForceSet,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The private key.
+	// The private key content.
 	//
-	// >  This parameter is required only if you set the SSLProtocol parameter to on.
+	// > This parameter is required only when SSLProtocol is set to on.
 	//
 	// example:
 	//
@@ -73,9 +83,9 @@ type SetLiveDomainCertificateRequest struct {
 	SSLPri *string `json:"SSLPri,omitempty" xml:"SSLPri,omitempty"`
 	// Specifies whether to enable the HTTPS certificate. Valid values:
 	//
-	// 	- **on**. If you set this parameter to **on**, you must also specify the SSLPub and SSLPri parameters.
+	// - **on**: enabled. If the value is **on**, you must also set the SSLPub and SSLPri request parameters.
 	//
-	// 	- **off**. This is the default value.
+	// - **off*	- (default): disabled.
 	//
 	// This parameter is required.
 	//
@@ -83,9 +93,9 @@ type SetLiveDomainCertificateRequest struct {
 	//
 	// off
 	SSLProtocol *string `json:"SSLProtocol,omitempty" xml:"SSLProtocol,omitempty"`
-	// The public key.
+	// The public key content.
 	//
-	// >  This parameter is required only if you set the SSLProtocol parameter to on.
+	// > This parameter is required only when SSLProtocol is set to on.
 	//
 	// example:
 	//
@@ -112,6 +122,10 @@ func (s *SetLiveDomainCertificateRequest) GetCertType() *string {
 
 func (s *SetLiveDomainCertificateRequest) GetDomainName() *string {
 	return s.DomainName
+}
+
+func (s *SetLiveDomainCertificateRequest) GetDryRun() *bool {
+	return s.DryRun
 }
 
 func (s *SetLiveDomainCertificateRequest) GetForceSet() *string {
@@ -150,6 +164,11 @@ func (s *SetLiveDomainCertificateRequest) SetCertType(v string) *SetLiveDomainCe
 
 func (s *SetLiveDomainCertificateRequest) SetDomainName(v string) *SetLiveDomainCertificateRequest {
 	s.DomainName = &v
+	return s
+}
+
+func (s *SetLiveDomainCertificateRequest) SetDryRun(v bool) *SetLiveDomainCertificateRequest {
+	s.DryRun = &v
 	return s
 }
 

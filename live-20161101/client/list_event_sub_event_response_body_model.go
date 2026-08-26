@@ -26,7 +26,7 @@ type ListEventSubEventResponseBody struct {
 	//
 	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// Indicates whether the current page is followed by a page.
+	// Indicates whether there is a next page.
 	//
 	// example:
 	//
@@ -100,13 +100,13 @@ func (s *ListEventSubEventResponseBody) Validate() error {
 }
 
 type ListEventSubEventResponseBodyLogs struct {
-	// The application ID.
+	// The ID of the subscribed application.
 	//
 	// example:
 	//
 	// 9qb1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The HTTP status code. A value of 200 indicates that the callback was successful.
+	// The error code. A value of 200 indicates a successful callback.
 	//
 	// example:
 	//
@@ -118,25 +118,25 @@ type ListEventSubEventResponseBodyLogs struct {
 	//
 	// 22
 	Cost *int32 `json:"Cost,omitempty" xml:"Cost,omitempty"`
-	// The details about the callback.
+	// The callback content details.
 	//
 	// example:
 	//
 	// {\\"MsgId\\":\\"875d5266cbabb1834cc84a105cf68454\\",\\"MsgTimestamp\\":1697545591,\\"SubscribeId\\":\\"09be0d2254cb5a89f4cbd86403ec5343\\",\\"AppId\\":\\"xxx\\",\\"ChannelId\\":\\"9099\\",\\"Contents\\":[{\\"Event\\":\\"UserEvent\\",\\"UserEvent\\":{\\"UserId\\":\\"linux_test\\",\\"EventTag\\":\\"Leave\\",\\"SessionId\\":\\"je7y2sBZJZQ0VBJZrh4LnBkxvGH2WyVs\\",\\"Timestamp\\":1697545591,\\"ChannelProfile\\":\\"interactive_live\\",\\"US\\":5068748604047364,\\"Reason\\":1,\\"Role\\":1,\\"TerminalType\\":6,\\"UserType\\":2}}]}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The ID of the callback record.
+	// The callback record ID.
 	//
 	// example:
 	//
 	// 875d5266cbabb1834cc84a105cf6****
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// The subscription ID.
+	// The subscription event ID.
 	//
 	// example:
 	//
 	// ad53276431c****
 	SubId *string `json:"SubId,omitempty" xml:"SubId,omitempty"`
-	// The time when the callback was generated.
+	// The time when the callback record was generated. The time is in the UTC+8 time zone. Format: yyyy-MM-dd hh:mm:ss.SSS.
 	//
 	// example:
 	//

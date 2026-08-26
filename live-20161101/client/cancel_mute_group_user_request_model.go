@@ -22,7 +22,7 @@ type iCancelMuteGroupUserRequest interface {
 }
 
 type CancelMuteGroupUserRequest struct {
-	// The ID of the interactive messaging application.
+	// Interactive Messages application ID.
 	//
 	// This parameter is required.
 	//
@@ -30,23 +30,23 @@ type CancelMuteGroupUserRequest struct {
 	//
 	// VKL3***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The mode in which system messages are broadcasted. Valid values:
+	// System message diffusion type, values:
 	//
-	// 	- 0: specifies that system messages are not broadcasted. This is the default value.
+	// - 0 (default): No diffusion.
 	//
-	// 	- 1: specifies that system messages are broadcasted to specified users.
+	// - 1: Diffusion to specified users.
 	//
-	// 	- 2: specifies that system messages are broadcasted to the message group.
+	// - 2: Diffusion to the group.
 	//
 	// example:
 	//
 	// 2
 	BroadCastType *int32 `json:"BroadCastType,omitempty" xml:"BroadCastType,omitempty"`
-	// The IDs of the users.
+	// User ID group.
 	//
 	// This parameter is required.
 	CancelMuteUserList []*string `json:"CancelMuteUserList,omitempty" xml:"CancelMuteUserList,omitempty" type:"Repeated"`
-	// The ID of the message group.
+	// Message group ID.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,9 @@ type CancelMuteGroupUserRequest struct {
 	//
 	// AE35-****-T95F
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the user who performs the operation.
+	// Operator\\"s user ID.
+	//
+	// > This parameter must be filled and the user must be the creator of the group.
 	//
 	// example:
 	//

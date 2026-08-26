@@ -22,7 +22,7 @@ type iDeleteLivePullStreamInfoConfigRequest interface {
 }
 
 type DeleteLivePullStreamInfoConfigRequest struct {
-	// The name of the application to which the live stream belongs. You can call [DescribeLivePullStreamConfig](https://help.aliyun.com/document_detail/2847818.htmll) operation to query the application name.
+	// The name of the application to which the live stream belongs. Call [DescribeLivePullStreamConfig](https://help.aliyun.com/document_detail/2847818.html) to query the application name.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DeleteLivePullStreamInfoConfigRequest struct {
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The main streaming domain.
+	// The streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -39,8 +39,13 @@ type DeleteLivePullStreamInfoConfigRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the live stream. You can call [DescribeLivePullStreamConfig](https://help.aliyun.com/document_detail/2847818.htmll) operation to query the stream name.
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the stream. Call [DescribeLivePullStreamConfig](https://help.aliyun.com/document_detail/2847818.html) to query the stream name.
 	//
 	// This parameter is required.
 	//

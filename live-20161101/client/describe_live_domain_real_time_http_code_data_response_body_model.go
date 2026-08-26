@@ -24,7 +24,7 @@ type iDescribeLiveDomainRealTimeHttpCodeDataResponseBody interface {
 }
 
 type DescribeLiveDomainRealTimeHttpCodeDataResponseBody struct {
-	// The time interval between the entries returned. Unit: seconds Default value: 60.
+	// The time interval between consecutive data entries. Unit: seconds. Default value: 60.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DescribeLiveDomainRealTimeHttpCodeDataResponseBody struct {
 	//
 	// example.com,example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The end time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
@@ -49,7 +49,7 @@ type DescribeLiveDomainRealTimeHttpCodeDataResponseBody struct {
 	//
 	// BC858082-736F-4A25-867B-E5B67C85ACF7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+	// The start time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//

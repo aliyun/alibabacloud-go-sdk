@@ -16,13 +16,13 @@ type iListMessageAppResponseBody interface {
 }
 
 type ListMessageAppResponseBody struct {
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 16A96B9A-****-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// Return result.
 	Result *ListMessageAppResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,19 @@ func (s *ListMessageAppResponseBody) Validate() error {
 }
 
 type ListMessageAppResponseBodyResult struct {
-	// Details about the applications.
+	// Application list.
 	AppList []*ListMessageAppResponseBodyResultAppList `json:"AppList,omitempty" xml:"AppList,omitempty" type:"Repeated"`
-	// Indicates whether the current page is followed by another page. Valid values:
+	// Indicates whether there is a next page. Valid values:
 	//
-	// 	- true: The current page is followed by another page.
+	// - true: There is a next page.
 	//
-	// 	- false: The current page is not followed by another page.
+	// - false: There is no next page.
 	//
 	// example:
 	//
 	// false
 	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// The total number of interactive message applications.
+	// Total number of interactive message applications.
 	//
 	// example:
 	//
@@ -131,29 +131,29 @@ func (s *ListMessageAppResponseBodyResult) Validate() error {
 }
 
 type ListMessageAppResponseBodyResultAppList struct {
-	// The configurations of the application.
+	// Application configuration.
 	AppConfig map[string]*string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
-	// The ID of the interactive messaging application.
+	// Interactive message application ID.
 	//
 	// example:
 	//
 	// VKL3***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The name of the interactive messaging application.
+	// Interactive message application name.
 	//
 	// example:
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The time when the interactive messaging application was created. The time is displayed in UTC.
+	// UTC timestamp when the application was created.
 	//
 	// example:
 	//
 	// 502280113
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The extended field.
+	// Extension field.
 	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// The status of the interactive message application. A value of **1*	- indicates that the application is normal.
+	// Interactive message application status. A value of **1*	- indicates that the application status is Normal.
 	//
 	// example:
 	//

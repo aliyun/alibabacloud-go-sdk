@@ -24,13 +24,13 @@ type iDescribeLiveStreamMergeRequest interface {
 }
 
 type DescribeLiveStreamMergeRequest struct {
-	// The name of the application that generates the output stream. You can view the application name on the [Primary/Secondary Stream Mixing Settings](https://help.aliyun.com/document_detail/606583.html) page of the ApsaraVideo Live console.
+	// Merged output App name. You can view this on the [Primary/Backup Stream Merge Configuration](https://help.aliyun.com/document_detail/606583.html) page.
 	//
 	// example:
 	//
 	// app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The streaming domain.
+	// Streaming domain name.
 	//
 	// This parameter is required.
 	//
@@ -39,18 +39,23 @@ type DescribeLiveStreamMergeRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The streaming protocol. Valid values:
+	// Streaming protocol. Valid values:
 	//
-	// 	- **rtmp**: This is the default value.
+	// - **rtmp*	- (default)
 	//
-	// 	- **rtc**
+	// - **rtc**
 	//
 	// example:
 	//
 	// rtmp
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// Region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the output stream. You can view the stream name on the [Primary/Secondary Stream Mixing Settings](https://help.aliyun.com/document_detail/606583.html) page of the ApsaraVideo Live console.
+	// Merged output Stream name. You can view this on the [Primary/Backup Stream Merge Configuration](https://help.aliyun.com/document_detail/606583.html) page.
 	//
 	// example:
 	//

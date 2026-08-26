@@ -24,23 +24,24 @@ type iAddPlaylistItemsRequest interface {
 }
 
 type AddPlaylistItemsRequest struct {
-	// The ID of the production studio.
+	// The production studio ID.
 	//
-	// 	- If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
+	// - If you created the production studio by calling the [CreateCaster operation](https://help.aliyun.com/document_detail/2848009.html), check the CasterId parameter value returned by the CreateCaster operation.
 	//
-	// 	- If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management*	- page. To go to the page, log on to the **ApsaraVideo Live console*	- and click **Production Studios*	- in the left-side navigation pane.
+	// - If you created the production studio in the ApsaraVideo Live console, navigate to **ApsaraVideo Live console*	- > **Production Studios*	- > **Cloud Production Studio*	- to view the production studio name.
 	//
-	// >  You can find the ID of the production studio in the Instance ID/Name column.
+	// > The production studio name in the production studio list on the Cloud Production Studio page of the ApsaraVideo Live console is the production studio ID.
 	//
-	// The production studio must use the following configurations:
 	//
-	// 	- **NormType**: 3****. You need to call the **CreateCaster*	- operation to create a production studio for lightweight carousel playback in advance.
+	// The production studio must meet the following configurations:
 	//
-	// 	- **CasterTemplate**: lp_noTranscode.
+	// - **NormType**: **3**. Create a lightweight carousel production studio in advance. You can call the **CreateCaster*	- operation to create a production studio.
 	//
-	// 	- **channelEnable**: 0.
+	// - **CasterTemplate**: lp_noTranscode.
 	//
-	// 	- **programEffect**: 1.
+	// - **channelEnable**: 0.
+	//
+	// - **programEffect**: 1.
 	//
 	// This parameter is required.
 	//
@@ -49,19 +50,19 @@ type AddPlaylistItemsRequest struct {
 	// 0e94d1f4-1a65-445c-9dcf-de8b3b8d****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The configurations of the episode list. If the episode list is added to the production studio for the first time, specify this parameter to pass in the initial configurations. For more information, see the **ProgramConfig*	- section of this topic.
+	// The playlist item configuration. If this is the first time you add a playlist item, specify this parameter for initialization. For more information, see **ProgramConfig**.
 	//
 	// example:
 	//
 	// [{"RepeatNumber":"0","ProgramName":"my program"}]
 	ProgramConfig *string `json:"ProgramConfig,omitempty" xml:"ProgramConfig,omitempty"`
-	// The ID of the episode list. If you do not specify this parameter, an episode list is created by default.
+	// The playlist ID. If the production studio already has a playlist, you must specify the corresponding ProgramId. If no playlist has been created, you can leave this parameter empty, and the system performs automatic creation.
 	//
 	// example:
 	//
 	// 445409ec-7eaa-461d-8f29-4bec2eb9****
 	ProgramId *string `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
-	// The episodes that you want to add to the production studio. The value is a JSON string. For more information, see the **InputProgramItem*	- section of this topic.
+	// The list of playlist item inputs. The value is a JSON string. For more information, see **InputProgramItem**.
 	//
 	// This parameter is required.
 	//
@@ -69,7 +70,12 @@ type AddPlaylistItemsRequest struct {
 	//
 	// [{"ItemName":"item1","ResourceType":"vod","ResourceValue":"5f8809f2-3352-4d1f-a8f7-86f9429f****"}, {"ItemName": "item2","ResourceType": "vod","ResourceValue": "e7411c0b-dd98-4c61-a545-f8bfba6c****"}]
 	ProgramItems *string `json:"ProgramItems,omitempty" xml:"ProgramItems,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s AddPlaylistItemsRequest) String() string {

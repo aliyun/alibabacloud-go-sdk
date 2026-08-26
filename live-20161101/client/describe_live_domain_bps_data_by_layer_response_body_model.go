@@ -19,7 +19,7 @@ type iDescribeLiveDomainBpsDataByLayerResponseBody interface {
 
 type DescribeLiveDomainBpsDataByLayerResponseBody struct {
 	BpsDataInterval *DescribeLiveDomainBpsDataByLayerResponseBodyBpsDataInterval `json:"BpsDataInterval,omitempty" xml:"BpsDataInterval,omitempty" type:"Struct"`
-	// The time interval between the data entries returned. Unit: seconds.
+	// The time interval between data entries. Unit: seconds.
 	//
 	// example:
 	//

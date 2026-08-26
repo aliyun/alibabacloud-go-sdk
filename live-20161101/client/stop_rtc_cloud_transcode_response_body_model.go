@@ -14,6 +14,8 @@ type iStopRtcCloudTranscodeResponseBody interface {
 }
 
 type StopRtcCloudTranscodeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ******3B-0E1A-586A-AC29-742247******

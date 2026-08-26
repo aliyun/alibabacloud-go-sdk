@@ -18,7 +18,7 @@ type iGetCustomTemplateResponseBody interface {
 }
 
 type GetCustomTemplateResponseBody struct {
-	// The configurations of the template.
+	// The template configuration.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type GetCustomTemplateResponseBody struct {
 	//
 	// BC1E78D3-FA8B-4457-DEE2-6093E1232254
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the template.
+	// The template name.
 	//
 	// example:
 	//

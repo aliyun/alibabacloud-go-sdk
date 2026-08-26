@@ -24,33 +24,38 @@ type iDescribeLiveDomainPublishErrorCodeRequest interface {
 }
 
 type DescribeLiveDomainPublishErrorCodeRequest struct {
-	// The application name. The data is aggregated based on the application. If you specify this parameter, the DomainName parameter is required.
+	// Filters and aggregates data by AppName. If you specify AppName, you must set DomainName to a specific ingest domain.
 	//
 	// example:
 	//
 	// AppName
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ingest domain. If you want to specify multiple ingest domains, separate them with commas (,).
+	// The ingest domain. You can specify multiple ingest domains. Separate multiple domain names with commas (,).
 	//
-	// >  This parameter is required.
+	// > This parameter is required.
 	//
 	// example:
 	//
-	// example.com,example.aliyundoc.com
+	// example1.aliyundoc.com,example2.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end time. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
-	// >  If you do not configure StartTime, the data within the previous hour is queried.
+	// > If you do not set this parameter, data from the last hour is queried by default.
 	//
 	// example:
 	//
 	// 2016-06-29T09:10:00Z
-	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
 	//
-	// >  If you do not configure StartTime, the data within the previous hour is queried.
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	//
+	// > If you do not set this parameter, data from the last hour is queried by default.
 	//
 	// example:
 	//

@@ -18,9 +18,9 @@ type iCreateMessageAppRequest interface {
 }
 
 type CreateMessageAppRequest struct {
-	// The configurations of the application.
+	// The application configuration.
 	AppConfig map[string]*string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
-	// The name of the interactive message application. The name must be 2 to 16 characters in length.
+	// The name of the interactive message application. The length must be 2 to 16 characters.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type CreateMessageAppRequest struct {
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The extended fields.
+	// The extension field.
 	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 }
 

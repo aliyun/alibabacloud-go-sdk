@@ -26,7 +26,7 @@ type iDeleteLiveStreamRecordIndexFilesRequest interface {
 }
 
 type DeleteLiveStreamRecordIndexFilesRequest struct {
-	// The name of the application to which the live stream belongs.
+	// The AppName of the live stream.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteLiveStreamRecordIndexFilesRequest struct {
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The name of the main streaming domain.
+	// The main streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -43,7 +43,7 @@ type DeleteLiveStreamRecordIndexFilesRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The index file IDs.
+	// The array of index file IDs.
 	//
 	// This parameter is required.
 	//
@@ -51,12 +51,17 @@ type DeleteLiveStreamRecordIndexFilesRequest struct {
 	//
 	// c4d7f0a4-b506-43f9-8de3-07732c3f****
 	RecordId []*string `json:"RecordId,omitempty" xml:"RecordId,omitempty" type:"Repeated"`
-	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to delete the corresponding file in Object Storage Service (OSS) synchronously. Valid values:
+	// The region ID.
 	//
-	// 	- **true**: The corresponding file in OSS is deleted.
+	// example:
 	//
-	// 	- **false**: The corresponding file in OSS is not deleted.
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to delete the associated OSS objects at the same time. Valid values:
+	//
+	// - **true**: Deletes.
+	//
+	// - **false**: Does not delete.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +69,7 @@ type DeleteLiveStreamRecordIndexFilesRequest struct {
 	//
 	// true
 	RemoveFile *string `json:"RemoveFile,omitempty" xml:"RemoveFile,omitempty"`
-	// The name of the live stream.
+	// The stream name.
 	//
 	// This parameter is required.
 	//

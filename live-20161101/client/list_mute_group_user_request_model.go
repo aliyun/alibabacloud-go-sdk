@@ -22,7 +22,7 @@ type iListMuteGroupUserRequest interface {
 }
 
 type ListMuteGroupUserRequest struct {
-	// The ID of the interactive messaging application.
+	// The ID of the interactive message application.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type ListMuteGroupUserRequest struct {
 	//
 	// VKL3***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the messaging group.
+	// The ID of the message group.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ListMuteGroupUserRequest struct {
 	//
 	// AE35-****-T95F
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the user who performs the operation.
+	// The user ID of the operator. This user must be the creator of the group.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ListMuteGroupUserRequest struct {
 	//
 	// 10
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page. Default value: 20. Valid values: 1 to 50.
+	// The number of users to display on each page. Default value: 20. Valid values: 1 to 50.
 	//
 	// This parameter is required.
 	//

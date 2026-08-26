@@ -14,7 +14,7 @@ type iDeleteLiveAIStudioResponseBody interface {
 }
 
 type DeleteLiveAIStudioResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -28,7 +28,9 @@ type iDescribeLiveDomainLogRequest interface {
 type DescribeLiveDomainLogRequest struct {
 	// The streaming domain or ingest domain.
 	//
-	// You can specify only one domain name.
+	// > - When you specify DomainName, make sure that the domain name is a live streaming domain name and that the user calling this operation has the required permissions on the specified domain name.
+	//
+	// > - Only a single domain name can be queried at a time.
 	//
 	// This parameter is required.
 	//
@@ -36,9 +38,9 @@ type DescribeLiveDomainLogRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query data. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
-	// The end time must be later than the start time. The maximum time range that can be specified is 31 days.
+	// The end time must be later than the start time. The interval between the start time and end time cannot exceed 31 days.
 	//
 	// example:
 	//
@@ -47,26 +49,33 @@ type DescribeLiveDomainLogRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number.
 	//
-	// >  If you do not specify the PageNumber parameter, the data on the first page is returned.
+	// Valid values: [1, 9223372036854775807].
+	//
+	// > If you do not specify PageNumber, the first page of data is returned by default.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size. Valid values:
 	//
-	// 	- Valid values: integers from **1 to 1000**.
+	// - Any integer from **1*	- to **1000**.
 	//
-	// 	- Default value: **300**.
+	// - Default value: **300**.
 	//
-	// 	- Maximum value: **1000**.
+	// - Maximum value: **1000**.
 	//
 	// example:
 	//
 	// 20
-	PageSize *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//

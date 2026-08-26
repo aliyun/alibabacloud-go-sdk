@@ -20,21 +20,21 @@ type iListLiveMessageAppsResponseBody interface {
 }
 
 type ListLiveMessageAppsResponseBody struct {
-	// The interactive messaging applications.
+	// The list of interactive messaging applications.
 	AppList []*ListLiveMessageAppsResponseBodyAppList `json:"AppList,omitempty" xml:"AppList,omitempty" type:"Repeated"`
-	// Indicates whether the current page is followed by a page.
+	// Indicates whether there is a next page.
 	//
 	// example:
 	//
 	// true
 	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// The starting page number for the next query. This parameter is returned only if the value of HasMore is true.
+	// The starting position of the next page. This parameter is returned only when HasMore is set to true.
 	//
 	// example:
 	//
 	// 1
 	NextPageToken *int64 `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -100,37 +100,37 @@ func (s *ListLiveMessageAppsResponseBody) Validate() error {
 }
 
 type ListLiveMessageAppsResponseBodyAppList struct {
-	// The ID of the interactive messaging application queried.
+	// The ID of the interactive messaging application.
 	//
 	// example:
 	//
 	// demo
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The AppKey of the interactive messaging application. It is used to authorize operations related to the application ID.
+	// The AppKey of the interactive messaging application. This value is required for authentication of related operations on this application.
 	//
 	// example:
 	//
 	// **********************************
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// testApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The signature of the interactive messaging application. It is required by the interactive messaging SDK.
+	// The signature of the interactive messaging application. This value is required by the interactive messaging SDK.
 	//
 	// example:
 	//
 	// **************************************************************************
 	AppSign *string `json:"AppSign,omitempty" xml:"AppSign,omitempty"`
-	// The time when the application was created. The value is a UNIX timestamp. Unit: seconds.
+	// The creation time, represented as a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1698305471
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The live center.
+	// The data center.
 	//
 	// example:
 	//
@@ -142,19 +142,19 @@ type ListLiveMessageAppsResponseBodyAppList struct {
 	//
 	// false
 	Disable *string `json:"Disable,omitempty" xml:"Disable,omitempty"`
-	// The time when the application was last modified. The value is a UNIX timestamp. Unit: seconds.
+	// The modification time, represented as a UNIX timestamp. Unit: seconds.
 	//
 	// example:
 	//
 	// 1698305471
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The retention period of group messages in the application. Valid values:
+	// The storage duration tier for group messages within the application. Valid values:
 	//
-	// 	- 0 (default): 30 days
+	// - 0: Default value. Messages are stored for 30 days.
 	//
-	// 	- 1: 90 days
+	// - 1: Messages are stored for 90 days.
 	//
-	// 	- 2: 180 days
+	// - 2: Messages are stored for 180 days.
 	//
 	// example:
 	//

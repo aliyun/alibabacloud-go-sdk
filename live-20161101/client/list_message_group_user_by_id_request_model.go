@@ -18,7 +18,7 @@ type iListMessageGroupUserByIdRequest interface {
 }
 
 type ListMessageGroupUserByIdRequest struct {
-	// The ID of the interactive messaging application.
+	// Interactive message application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type ListMessageGroupUserByIdRequest struct {
 	//
 	// VKL3***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the message group.
+	// Message group ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ListMessageGroupUserByIdRequest struct {
 	//
 	// AE35-****-T95F
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The list of users.
+	// User list.
 	//
 	// This parameter is required.
 	UserIdList []*string `json:"UserIdList,omitempty" xml:"UserIdList,omitempty" type:"Repeated"`

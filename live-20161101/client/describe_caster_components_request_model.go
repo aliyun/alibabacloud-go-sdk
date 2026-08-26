@@ -22,11 +22,11 @@ type iDescribeCasterComponentsRequest interface {
 type DescribeCasterComponentsRequest struct {
 	// The ID of the production studio.
 	//
-	// 	- If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
+	// - If you created the production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, obtain the ID from the CasterId parameter in the response.
 	//
-	// 	- If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management*	- page. To go to the page, log on to the **ApsaraVideo Live console*	- and click **Production Studios*	- in the left-side navigation pane.
+	// - If you created the production studio in the LIVE console, go to the Cloud Production Studio page by choosing **LIVE Console*	- > **Production Studio*	- > **Cloud Production Studio**.
 	//
-	// >  You can find the ID of the production studio in the Instance ID/Name column.
+	// > The name of the production studio in the list on the Cloud Production Studio page is the production studio ID.
 	//
 	// This parameter is required.
 	//
@@ -34,14 +34,19 @@ type DescribeCasterComponentsRequest struct {
 	//
 	// LIVEPRODUCER_POST-cn-0pp1czt****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-	// The component ID. If the component was added by calling the [AddCasterComponent](https://help.aliyun.com/document_detail/2848030.html) operation, check the value of the response parameter ComponentId to obtain the ID.
+	// The component ID. If you added the component by calling the [AddCasterComponent](https://help.aliyun.com/document_detail/2848030.html) operation, obtain the ID from the ComponentId parameter in the response.
 	//
 	// example:
 	//
 	// 21926b36-7dd2-4fde-ae25-51b5bc8e****
 	ComponentId *string `json:"ComponentId,omitempty" xml:"ComponentId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeCasterComponentsRequest) String() string {

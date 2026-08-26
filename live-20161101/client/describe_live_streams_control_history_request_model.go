@@ -24,7 +24,7 @@ type iDescribeLiveStreamsControlHistoryRequest interface {
 }
 
 type DescribeLiveStreamsControlHistoryRequest struct {
-	// The application name. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The application name. View AppName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
 	//
 	// example:
 	//
@@ -38,19 +38,24 @@ type DescribeLiveStreamsControlHistoryRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	//
-	// >  The time range specified by the StartTime and EndTime parameters cannot exceed seven days.
+	// > The interval between EndTime and StartTime cannot exceed 7 days.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2017-12-22T08:00:00Z
-	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//

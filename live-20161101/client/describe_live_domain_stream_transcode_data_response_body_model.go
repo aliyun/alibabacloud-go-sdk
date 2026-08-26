@@ -20,7 +20,7 @@ type DescribeLiveDomainStreamTranscodeDataResponseBody struct {
 	//
 	// example:
 	//
-	// 3C6CCEC4-6B88-4D4A-93E4-D47B3D92CF8F
+	// 3C6CCEC4-6B88-4D4A-93E4-D47B******
 	RequestId         *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TranscodeDataList *DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataList `json:"TranscodeDataList,omitempty" xml:"TranscodeDataList,omitempty" type:"Struct"`
 }

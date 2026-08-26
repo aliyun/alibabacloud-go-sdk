@@ -17,7 +17,7 @@ type iDescribeLiveDomainByCertificateResponseBody interface {
 
 type DescribeLiveDomainByCertificateResponseBody struct {
 	CertInfos *DescribeLiveDomainByCertificateResponseBodyCertInfos `json:"CertInfos,omitempty" xml:"CertInfos,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iUpdateMessageAppResponseBody interface {
 }
 
 type UpdateMessageAppResponseBody struct {
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 16A96B9A-****-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// Return result.
 	Result *UpdateMessageAppResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -64,9 +64,9 @@ func (s *UpdateMessageAppResponseBody) Validate() error {
 type UpdateMessageAppResponseBodyResult struct {
 	// Indicates whether the update is successful. Valid values:
 	//
-	// 	- true: The update is successful.
+	// - true: successful.
 	//
-	// 	- false: The update failed.
+	// - false: unsuccessful.
 	//
 	// example:
 	//

@@ -28,25 +28,25 @@ type DescribeRTSNativeSDKVvDataResponseBody struct {
 	//
 	// 300
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The end of the time range for which the data was queried.
+	// The end time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2021-12-10T21:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the request.
+	// Id
 	//
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range for which the data was queried.
+	// The start time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2021-12-10T20:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total number of playbacks and the number of successful playbacks at each interval.
+	// The total playback count and total successful playback count for each time interval. Unit: count.
 	VvData []*DescribeRTSNativeSDKVvDataResponseBodyVvData `json:"VvData,omitempty" xml:"VvData,omitempty" type:"Repeated"`
 }
 
@@ -117,19 +117,19 @@ func (s *DescribeRTSNativeSDKVvDataResponseBody) Validate() error {
 }
 
 type DescribeRTSNativeSDKVvDataResponseBodyVvData struct {
-	// The timestamp of the returned data.
+	// The start time of the time interval. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2021-12-10T20:00:00Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	// The number of successful playbacks within the period of time.
+	// The total number of successful playbacks within the specified time period.
 	//
 	// example:
 	//
 	// 99
 	VvSuccess *string `json:"VvSuccess,omitempty" xml:"VvSuccess,omitempty"`
-	// The total number of playbacks within the period of time.
+	// The total number of playbacks within the specified time period.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iDeleteLiveDomainRequest interface {
 }
 
 type DeleteLiveDomainRequest struct {
-	// The ingest domain or streaming domain that you want to delete.
+	// The ingest or streaming domain to delete.
 	//
 	// This parameter is required.
 	//

@@ -28,6 +28,8 @@ type iDescribeLiveUserStreamMetricDataResponseBody interface {
 }
 
 type DescribeLiveUserStreamMetricDataResponseBody struct {
+	// The streaming domain information.
+	//
 	// example:
 	//
 	// test.com
@@ -38,23 +40,34 @@ type DescribeLiveUserStreamMetricDataResponseBody struct {
 	//
 	// 2015-12-10T21:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The beginning of the time range to query. The time is in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format in UTC.
+	//
 	// example:
 	//
 	// 2015-12-10T20:00:00Z
-	StartTime        *string                                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The traffic data for each time interval.
 	StreamDetailData []*DescribeLiveUserStreamMetricDataResponseBodyStreamDetailData `json:"StreamDetailData,omitempty" xml:"StreamDetailData,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 50
@@ -155,90 +168,136 @@ func (s *DescribeLiveUserStreamMetricDataResponseBody) Validate() error {
 }
 
 type DescribeLiveUserStreamMetricDataResponseBodyStreamDetailData struct {
+	// The application name. This value is returned regardless of whether it is specified.
+	//
 	// example:
 	//
 	// app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The total bandwidth per minute for the stream, in bps.
+	//
 	// example:
 	//
 	// 423304182.66
 	Bps *float32 `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	// The total number of concurrent connections per minute for the stream.
+	//
+	// > **Concurrent connections*	- refers to the count of client process connections to the same stream within a unit of time.
+	//
 	// example:
 	//
 	// 423304182
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The bandwidth for the FLV protocol, in bps. This field is not returned if the specified protocol does not match.
+	//
 	// example:
 	//
 	// 454
 	FlvBps *float32 `json:"FlvBps,omitempty" xml:"FlvBps,omitempty"`
+	// The number of concurrent connections for the FLV protocol. This field is not returned if the specified protocol does not match.
+	//
 	// example:
 	//
 	// 32
 	FlvCount *int64 `json:"FlvCount,omitempty" xml:"FlvCount,omitempty"`
+	// The traffic for the FLV protocol, in bytes. This field is not returned if the specified protocol does not match.
+	//
 	// example:
 	//
 	// 1254
 	FlvTraffic *float64 `json:"FlvTraffic,omitempty" xml:"FlvTraffic,omitempty"`
+	// The bandwidth for the HLS protocol, in bps. This field is not returned if the specified protocol does not match.
+	//
 	// example:
 	//
 	// 4456
 	HlsBps *float32 `json:"HlsBps,omitempty" xml:"HlsBps,omitempty"`
+	// The number of concurrent connections for the HLS protocol. This field is not returned if the specified protocol does not match.
+	//
 	// example:
 	//
 	// 56
 	HlsCount *int64 `json:"HlsCount,omitempty" xml:"HlsCount,omitempty"`
+	// The traffic for the HLS protocol, in bytes. This field is not returned if the specified protocol does not match.
+	//
 	// example:
 	//
 	// 568
 	HlsTraffic *float64 `json:"HlsTraffic,omitempty" xml:"HlsTraffic,omitempty"`
+	// The number of new connections per minute for the stream.
+	//
 	// example:
 	//
 	// 450
 	NewConns *int64 `json:"NewConns,omitempty" xml:"NewConns,omitempty"`
+	// The bandwidth for the P2P protocol, in bps. This field is not returned if the specified protocol does not match.
+	//
 	// example:
 	//
 	// 6845
 	P2pBps *float32 `json:"P2pBps,omitempty" xml:"P2pBps,omitempty"`
+	// The number of concurrent connections for the P2P protocol. This field is not returned if the specified protocol does not match.
+	//
 	// example:
 	//
 	// 78
 	P2pCount *int64 `json:"P2pCount,omitempty" xml:"P2pCount,omitempty"`
+	// The traffic for the P2P protocol, in bytes. This field is not returned if the specified protocol does not match.
+	//
 	// example:
 	//
 	// 4102
 	P2pTraffic *float64 `json:"P2pTraffic,omitempty" xml:"P2pTraffic,omitempty"`
+	// The bandwidth for the RTMP protocol, in bps. This field is not returned if the specified protocol does not match.
+	//
 	// example:
 	//
 	// 3323
 	RtmpBps *float32 `json:"RtmpBps,omitempty" xml:"RtmpBps,omitempty"`
+	// The number of concurrent connections for the RTMP protocol. This field is not returned if the specified protocol does not match.
+	//
 	// example:
 	//
 	// 63
 	RtmpCount *int64 `json:"RtmpCount,omitempty" xml:"RtmpCount,omitempty"`
+	// The traffic for the RTMP protocol, in bytes. This field is not returned if the specified protocol does not match.
+	//
 	// example:
 	//
 	// 5568
 	RtmpTraffic *float64 `json:"RtmpTraffic,omitempty" xml:"RtmpTraffic,omitempty"`
+	// The bandwidth for the RTS protocol, in bps. This field is not returned if the specified protocol does not match.
+	//
 	// example:
 	//
 	// 2361
 	RtsBps *float64 `json:"RtsBps,omitempty" xml:"RtsBps,omitempty"`
+	// The number of concurrent connections for the RTS protocol. This field is not returned if the specified protocol does not match.
+	//
 	// example:
 	//
 	// 89
 	RtsCount *int64 `json:"RtsCount,omitempty" xml:"RtsCount,omitempty"`
+	// The traffic for the RTS protocol, in bytes. This field is not returned if the specified protocol does not match.
+	//
 	// example:
 	//
 	// 2322
 	RtsTraffic *float64 `json:"RtsTraffic,omitempty" xml:"RtsTraffic,omitempty"`
+	// The stream name. This value is returned regardless of whether it is specified.
+	//
 	// example:
 	//
 	// test.flv
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	// The start time of the time slice. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format in UTC+0.
+	//
 	// example:
 	//
 	// 2015-12-10T20:00:00Z
 	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// The total traffic per minute for the stream, in bytes.
+	//
 	// example:
 	//
 	// 423304182

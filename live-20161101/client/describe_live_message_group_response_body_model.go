@@ -40,33 +40,33 @@ type iDescribeLiveMessageGroupResponseBody interface {
 }
 
 type DescribeLiveMessageGroupResponseBody struct {
-	// The list of the group administrators.
+	// The list of administrators.
 	AdminList []*string `json:"AdminList,omitempty" xml:"AdminList,omitempty" type:"Repeated"`
-	// The time when the group was created. The value is a UNIX timestamp. Unit: seconds.
+	// The creation time. This value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1698305471
 	Createtime *int64 `json:"Createtime,omitempty" xml:"Createtime,omitempty"`
-	// The ID of the group creator.
+	// The creator ID.
 	//
 	// example:
 	//
 	// uid1
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The time when the group was deleted. This parameter is returned only if the group was deleted.
+	// The deletion time. This parameter is returned only when the group has been deleted. This value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1698299827
 	Deletatime *int64 `json:"Deletatime,omitempty" xml:"Deletatime,omitempty"`
-	// Indicates whether the group was deleted.
+	// Indicates whether the group has been deleted.
 	//
 	// example:
 	//
 	// false
 	Delete *bool `json:"Delete,omitempty" xml:"Delete,omitempty"`
-	// The ID of the user who deleted the group. This parameter is returned only if the group was deleted.
+	// The user who deleted the group. This parameter is returned only when the group has been deleted.
 	//
 	// example:
 	//
@@ -76,23 +76,23 @@ type DescribeLiveMessageGroupResponseBody struct {
 	//
 	// example:
 	//
-	// grouptest1
+	// grouptest
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Additional information about the group.
+	// The extended information of the group.
 	//
 	// example:
 	//
 	// testgroupinfo
 	GroupInfo *string `json:"GroupInfo,omitempty" xml:"GroupInfo,omitempty"`
-	// The name of the group.
+	// The group name.
 	//
 	// example:
 	//
 	// mytestgroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The categorized message statistics. This parameter is returned only if the group exists.
+	// The message count statistics by category. This parameter is returned only when the group exists.
 	MsgAmount map[string]*int64 `json:"MsgAmount,omitempty" xml:"MsgAmount,omitempty"`
-	// The number of online users in the group. This parameter is returned only if the group exists.
+	// The number of online users in the group. This parameter is returned only when the group exists.
 	//
 	// example:
 	//
@@ -102,19 +102,19 @@ type DescribeLiveMessageGroupResponseBody struct {
 	//
 	// example:
 	//
-	// 1815A27D-BAE2-10E6-89FD-D477951C67C7
+	// 1815A27D-BAE2-10E6-89FD-D477951C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the group is a super group. Valid values:
+	// Indicates whether the group is a super large group. Valid values:
 	//
-	// 	- True
+	// - True: The group is a super large group.
 	//
-	// 	- False
+	// - False: The group is not a super large group.
 	//
 	// example:
 	//
 	// False
 	SuperLargeGroup *bool `json:"SuperLargeGroup,omitempty" xml:"SuperLargeGroup,omitempty"`
-	// The total number of sessions. This parameter is returned only if the group exists.
+	// The total number of sessions. This parameter is returned only when the group exists.
 	//
 	// example:
 	//

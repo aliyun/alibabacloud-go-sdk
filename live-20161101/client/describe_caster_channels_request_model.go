@@ -20,11 +20,11 @@ type iDescribeCasterChannelsRequest interface {
 type DescribeCasterChannelsRequest struct {
 	// The ID of the production studio.
 	//
-	// 	- If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
+	// - If you call the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation to create a production studio, use the CasterId returned in the response.
 	//
-	// 	- If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management*	- page. To go to the page, log on to the **ApsaraVideo Live console*	- and click **Production Studios*	- in the left-side navigation pane.
+	// - If you create a production studio in the ApsaraVideo Live console, go to the **ApsaraVideo Live console*	- > **Production Studio*	- > **Cloud Production Studio*	- page to view the ID.
 	//
-	// >  You can find the ID of the production studio in the Instance ID/Name column.
+	// > The name of a production studio in the list on the Cloud Production Studio page is the ID of the production studio.
 	//
 	// This parameter is required.
 	//
@@ -33,6 +33,11 @@ type DescribeCasterChannelsRequest struct {
 	// a2b8e671-2fe5-4642-a2ec-bf93880e****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

@@ -17,7 +17,7 @@ type iDescribeLiveStreamsControlHistoryResponseBody interface {
 
 type DescribeLiveStreamsControlHistoryResponseBody struct {
 	ControlInfo *DescribeLiveStreamsControlHistoryResponseBodyControlInfo `json:"ControlInfo,omitempty" xml:"ControlInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

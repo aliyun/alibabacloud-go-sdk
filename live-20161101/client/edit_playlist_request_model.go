@@ -23,13 +23,13 @@ type iEditPlaylistRequest interface {
 
 type EditPlaylistRequest struct {
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-  // The configurations of the episode list. For more information, see the **ProgramConfig*	- section of this topic.
+  // The playlist configuration. For more information, see **ProgramConfig**.
   // 
   // example:
   // 
   // [{"RepeatNumber":"0","ProgramName":"my program"}]
   ProgramConfig *string `json:"ProgramConfig,omitempty" xml:"ProgramConfig,omitempty"`
-  // The ID of the episode list. If the episode list was created by calling the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation, check the value of the response parameter ProgramId to obtain the ID.
+  // The playlist ID. If you add playlist items by calling the [AddPlaylistItems](https://help.aliyun.com/document_detail/2848078.html) operation, use the ProgramId value returned by the call.
   // 
   // This parameter is required.
   // 
@@ -37,7 +37,7 @@ type EditPlaylistRequest struct {
   // 
   // 445409ec-7eaa-461d-8f29-4bec2eb9****
   ProgramId *string `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
-  // The episodes that you want to add to the production studio. The value is a JSON string. For more information, see the **InputProgramItem*	- section of this topic.
+  // The list of playlist items. This is a JSON string. For more information, see **InputProgramItem**.
   // 
   // This parameter is required.
   // 
@@ -45,6 +45,11 @@ type EditPlaylistRequest struct {
   // 
   // [{"ItemName":"item1","ResourceType":"vod","ResourceValue":"5f8809f2-3352-4d1f-a8f7-86f9429f****"}, {"ItemName": "item2","ResourceType": "vod","ResourceValue": "e7411c0b-dd98-4c61-a545-f8bfba6c****"}]
   ProgramItems *string `json:"ProgramItems,omitempty" xml:"ProgramItems,omitempty"`
+  // The region ID.
+  // 
+  // example:
+  // 
+  // cn-shanghai
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 

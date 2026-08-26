@@ -16,7 +16,7 @@ type iDeletePlaylistResponseBody interface {
 }
 
 type DeletePlaylistResponseBody struct {
-	// The ID of the episode list. You can use the ID as a request parameter in the API operation that is used to query the information about the episode list, start the episode list, or stop the episode list.
+	// The playlist ID. You can use this ID as a request parameter to query, start, or stop the playlist.
 	//
 	// example:
 	//

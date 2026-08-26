@@ -24,13 +24,13 @@ type ModifyLiveMessageAppDisableResponseBody struct {
 	//
 	// example:
 	//
-	// ab6b5740****
+	// demo
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The signature of the interactive messaging application. It is required by the interactive messaging SDK.
 	//
 	// example:
 	//
-	// H4sIAAAAAAAE/wBwAI//zguHB+lYCilkv7diSkk4GhHQAvMXs5tWyI+I09+uEBiB5sqa28ycJSJFmsd50Mhz8nDrvvqmti+fVaNLC5CMgLvNIy48v1aV9x74LRNFN0+Dxd2Al51xuDNkEIDaEwjqfyxscTXjSr0iQjHu2WgkpQAAAP//AQAA//+yR5XCc****
+	// ********************
 	AppSign *string `json:"AppSign,omitempty" xml:"AppSign,omitempty"`
 	// Indicates whether the interactive messaging application is disabled.
 	//
@@ -42,7 +42,7 @@ type ModifyLiveMessageAppDisableResponseBody struct {
 	//
 	// example:
 	//
-	// 6AA1AE11-EA78-1FD4-A966-6BA843073F6D
+	// 6AA1AE11-EA78-1FD4-A966-6BA84307****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

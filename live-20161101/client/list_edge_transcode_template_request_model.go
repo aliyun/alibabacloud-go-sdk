@@ -30,7 +30,7 @@ type iListEdgeTranscodeTemplateRequest interface {
 }
 
 type ListEdgeTranscodeTemplateRequest struct {
-	// The ID of the data center.
+	// The data center ID.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +38,11 @@ type ListEdgeTranscodeTemplateRequest struct {
 	//
 	// ******3b-4d18-395c-8106-ff21a6******
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The keyword of the query.
+	// The search keyword. Valid values:
 	//
-	// 	- You can specify a template ID for an exact match.
+	// - Template ID. Exact match is supported.
 	//
-	// 	- You can also specify a template name for a fuzzy match.
+	// - Template name. Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -55,32 +55,37 @@ type ListEdgeTranscodeTemplateRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	// The number of entries per page. Default value: 10. Maximum value: 100.
 	//
 	// example:
 	//
 	// 20
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The sorting order of the templates by creation time. Default value: desc. Valid values:
+	// The sorting rule. Templates are sorted by creation time (CreateTime). Default value: desc. Valid values:
 	//
-	// 	- desc: descending order.
+	// - desc: descending order.
 	//
-	// 	- asc: ascending order.
+	// - asc: ascending order.
 	//
 	// example:
 	//
 	// desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The type of edge transcoding. Valid values:
+	// The edge transcoding type. Valid values:
 	//
-	// 	- **common**: standard transcoding and Narrowband HD™ 1.0 transcoding.
+	// - **common**: default transcoding (standard + Narrowband HD 1.0).
 	//
-	// 	- **nbhd-2**: Narrowband HD™ 2.0 transcoding.
+	// - **nbhd-2**: Narrowband HD 2.0.
 	//
-	// 	- **ultra-hd**: ultra-high definition transcoding.
+	// - **ultra-hd**: ultra-high definition.
 	//
-	// >  If you do not specify this parameter, the query result is filtered based on the type of edge transcoding on which you are granted permissions.
+	// > If this parameter is not specified, the system displays transcoding templates for the transcoding types that the user has permissions to access.
 	//
 	// example:
 	//
@@ -88,11 +93,11 @@ type ListEdgeTranscodeTemplateRequest struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The video encoding format. Valid values:
 	//
-	// 	- H.264
+	// - H.264.
 	//
-	// 	- H.265
+	// - H.265.
 	//
-	// >  If you do not specify this parameter, the query result is filtered based on the video encoding format on which you are granted permissions.
+	// > If this parameter is not specified, the system displays transcoding templates for the video encoding formats that the user has permissions to access.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type iListLiveMessageGroupMessagesRequest interface {
 }
 
 type ListLiveMessageGroupMessagesRequest struct {
-	// The ID of the interactive messaging application to query.
+	// The ID of the interactive message application to query.
 	//
 	// This parameter is required.
 	//
@@ -38,25 +38,25 @@ type ListLiveMessageGroupMessagesRequest struct {
 	//
 	// demo
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds. If you leave this parameter empty, the earliest available time is used.
+	// The query start time, expressed as a UNIX timestamp. Unit: seconds. If this parameter is left empty, the earliest time is used by default.
 	//
 	// example:
 	//
 	// 1697783235
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The data center. It must be the same as the data center that was specified when you called the [CreateLiveMessageApp](https://help.aliyun.com/document_detail/2848162.html) operation to create the interactive messaging application. Valid values: cn-shanghai and ap-southeast-1 (Singapore).
+	// The data center. This value must be consistent with the data center specified in [CreateLiveMessageApp](https://help.aliyun.com/document_detail/2848162.html). Currently supported data centers are Shanghai (cn-shanghai) and Singapore (ap-southeast-1).
 	//
 	// example:
 	//
 	// cn-shanghai
 	DataCenter *string `json:"DataCenter,omitempty" xml:"DataCenter,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. If you leave this parameter empty, the latest available time is used.
+	// The query end time, expressed as a UNIX timestamp. Unit: seconds. If this parameter is left empty, the latest time is used by default.
 	//
 	// example:
 	//
 	// 1698301635
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the group to query.
+	// The group ID of the group to query.
 	//
 	// This parameter is required.
 	//
@@ -64,19 +64,19 @@ type ListLiveMessageGroupMessagesRequest struct {
 	//
 	// grouptest
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The type of messages that you want to query. If you leave this parameter empty, all types of messages are queried.
+	// The message type to query. If this parameter is left empty, all message types are returned by default.
 	//
 	// example:
 	//
 	// 1
 	MsgType *int64 `json:"MsgType,omitempty" xml:"MsgType,omitempty"`
-	// The starting page number for the query. If you leave this parameter empty, the query starts from the first page.
+	// The start position of the query page. If this parameter is left empty, the first page is returned by default.
 	//
 	// example:
 	//
 	// 1
 	NextPageToken *int64 `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// The number of entries per page. Valid values: **10 to 50**.
+	// The number of messages to display at a time. Valid values: **[10,50]**.
 	//
 	// This parameter is required.
 	//
@@ -84,11 +84,11 @@ type ListLiveMessageGroupMessagesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sort order based on the time when the messages were sent. Valid values:
+	// The sort type. Messages are sorted by the time they were sent. Valid values:
 	//
-	// 	- 1: ascending order
+	// - 1: ascending order
 	//
-	// 	- 2: descending order
+	// - 2: descending order
 	//
 	// This parameter is required.
 	//

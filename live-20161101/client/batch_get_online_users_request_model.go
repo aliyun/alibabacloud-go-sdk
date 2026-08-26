@@ -26,7 +26,7 @@ type BatchGetOnlineUsersRequest struct {
 	//
 	// a494caec-***-695ef345db77
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the message group.
+	// The message group ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type BatchGetOnlineUsersRequest struct {
 	//
 	// 23wcaec-***695ef
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The list of user IDs. Separate multiple user IDs with commas (,). You can specify a maximum of 20 user IDs.
+	// The list of user IDs. Separate multiple user IDs with commas (,). You can specify up to 20 user IDs.
 	//
 	// This parameter is required.
 	//

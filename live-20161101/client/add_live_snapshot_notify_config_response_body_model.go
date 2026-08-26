@@ -14,7 +14,7 @@ type iAddLiveSnapshotNotifyConfigResponseBody interface {
 }
 
 type AddLiveSnapshotNotifyConfigResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

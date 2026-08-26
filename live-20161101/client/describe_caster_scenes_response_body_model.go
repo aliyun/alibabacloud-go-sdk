@@ -22,10 +22,10 @@ type DescribeCasterScenesResponseBody struct {
 	//
 	// example:
 	//
-	// The ID of the scene.
+	// CF60DB6A-7FD6-426E-9288-122CC1*****
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SceneList *DescribeCasterScenesResponseBodySceneList `json:"SceneList,omitempty" xml:"SceneList,omitempty" type:"Struct"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iDescribeLiveVerifyContentRequest interface {
 }
 
 type DescribeLiveVerifyContentRequest struct {
-	// The domain name. You can specify only one domain name.
+	// The domain name. Only one domain name is supported.
 	//
 	// This parameter is required.
 	//
@@ -27,7 +27,12 @@ type DescribeLiveVerifyContentRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeLiveVerifyContentRequest) String() string {

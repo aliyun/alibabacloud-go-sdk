@@ -28,7 +28,7 @@ type iUpdateEdgeTranscodeJobRequest interface {
 }
 
 type UpdateEdgeTranscodeJobRequest struct {
-	// The ID of the data center.
+	// The data center ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type UpdateEdgeTranscodeJobRequest struct {
 	//
 	// ******3b-4d18-395c-8106-ff21a6******
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the edge transcoding task.
+	// The ID of the edge transcoding job.
 	//
 	// This parameter is required.
 	//
@@ -44,21 +44,26 @@ type UpdateEdgeTranscodeJobRequest struct {
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The task name.
+	// The job name.
 	//
 	// example:
 	//
 	// task1
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The URL of the input stream.
+	// The input stream URL.
 	//
 	// example:
 	//
 	// rtmp://mydomain/app/stream1
 	StreamInput *string `json:"StreamInput,omitempty" xml:"StreamInput,omitempty"`
-	// The URL of the output stream.
+	// The output stream URL.
 	//
 	// example:
 	//

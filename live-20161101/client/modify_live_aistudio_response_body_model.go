@@ -14,7 +14,7 @@ type iModifyLiveAIStudioResponseBody interface {
 }
 
 type ModifyLiveAIStudioResponseBody struct {
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//

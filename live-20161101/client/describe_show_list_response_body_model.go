@@ -18,21 +18,19 @@ type iDescribeShowListResponseBody interface {
 }
 
 type DescribeShowListResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// ****Details of the episode list.
-	//
-	// Show indicates the information about a specific episode. For more information, see the **Show*	- parameter.
+	// The details of the playlist. `Show` contains the details of a show in the playlist.
 	//
 	// example:
 	//
 	// ShowList[Show1, Show2, Show3...]
 	ShowList *string `json:"ShowList,omitempty" xml:"ShowList,omitempty"`
-	// The information about the episode list.
+	// The playlist.
 	ShowListInfo *DescribeShowListResponseBodyShowListInfo `json:"ShowListInfo,omitempty" xml:"ShowListInfo,omitempty" type:"Struct"`
 }
 
@@ -81,42 +79,42 @@ func (s *DescribeShowListResponseBody) Validate() error {
 }
 
 type DescribeShowListResponseBodyShowListInfo struct {
-	// The background of the episode list.
+	// The background of the playlist.
 	//
 	// example:
 	//
 	// {\\"MaterialId\\":\\"a2b8e671-2fe5-4642-a2ec-bf93880e****\\",\\"resourceType\\":\\"VOD\\"}
 	Background *string `json:"Background,omitempty" xml:"Background,omitempty"`
-	// The ID of the episode that is playing.
+	// The ID of the show that is being played.
 	//
 	// example:
 	//
 	// a2b8e671-2fe5-4642-a2ec-bf93880e****
 	CurrentShowId *string `json:"CurrentShowId,omitempty" xml:"CurrentShowId,omitempty"`
-	// The episode of the highest priority.
+	// The highest-priority show.
 	//
-	// > You can configure this parameter only before the episode list starts playing.
+	// > You can configure this parameter only before the playlist starts.
 	//
 	// example:
 	//
 	// a2b8e671-2fe5-4642-a2ec-bf93880e****
 	HighPriorityShowId *string `json:"HighPriorityShowId,omitempty" xml:"HighPriorityShowId,omitempty"`
-	// The time at which the episode of the highest priority is played. Format: yyyy-MM-dd\\"T\\"HH:mm:ss.
+	// The time when the highest-priority show is played. The format is yyyy-MM-dd\\"T\\"HH:mm:ss.
 	//
-	// > You can configure this parameter only before the episode list starts playing. After you configure this parameter, when the specified point in time is reached, any episode that is playing stops and the episode of the highest priority in the episode list starts to play.
+	// > You can configure this parameter only before the playlist starts. After the configuration is complete, the system switches to the highest-priority show at the specified time.
 	//
 	// example:
 	//
 	// 2021-11-23T12:30:00
 	HighPriorityShowStartTime *string                                           `json:"HighPriorityShowStartTime,omitempty" xml:"HighPriorityShowStartTime,omitempty"`
 	ShowList                  *DescribeShowListResponseBodyShowListInfoShowList `json:"ShowList,omitempty" xml:"ShowList,omitempty" type:"Struct"`
-	// The number of additional times the episode list is played by default. The value is 0.
+	// The default number of loops for the playlist. This value is always 0.
 	//
 	// example:
 	//
 	// 0
 	ShowListRepeatTimes *int32 `json:"ShowListRepeatTimes,omitempty" xml:"ShowListRepeatTimes,omitempty"`
-	// The number of additional times the episode list is played.
+	// The number of times the entire playlist is looped.
 	//
 	// example:
 	//

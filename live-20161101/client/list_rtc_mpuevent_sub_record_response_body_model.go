@@ -20,13 +20,13 @@ type iListRtcMPUEventSubRecordResponseBody interface {
 }
 
 type ListRtcMPUEventSubRecordResponseBody struct {
-	// The number of entries per page.
+	// The total number of callback records returned on the current page.
 	//
 	// example:
 	//
 	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// Indicates whether the current page is followed by a page.
+	// Indicates whether there is a next page.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListRtcMPUEventSubRecordResponseBody struct {
 	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
 	// The callback records.
 	Logs []*ListRtcMPUEventSubRecordResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *ListRtcMPUEventSubRecordResponseBody) Validate() error {
 }
 
 type ListRtcMPUEventSubRecordResponseBodyLogs struct {
-	// The ID of the application.
+	// The ID of the subscribed application.
 	//
 	// example:
 	//
@@ -118,31 +118,33 @@ type ListRtcMPUEventSubRecordResponseBodyLogs struct {
 	//
 	// 22
 	Cost *int64 `json:"Cost,omitempty" xml:"Cost,omitempty"`
-	// For more information about the callback, see [CreateRtcMPUEventSub](https://help.aliyun.com/document_detail/2804583.html).
+	// The callback content. For more information, see [Create a stream mixing and forwarding event callback](https://help.aliyun.com/document_detail/2804583.html).
 	//
 	// example:
 	//
 	// {\\"EventType\\":1,\\"MsgId\\":\\"42bba8b5-94ab-468c-9dae-9b501dd6c***\\",\\"AppId\\":\\"rtcdev\\",\\"SubId\\":\\"Sub-9799B2C45009799B2C4***\\",\\"TaskId\\":\\"mpucallbacktest\\",\\"CallbackTs\\":1712656430***,\\"Payload\\":{\\"DstUrl\\":\\"rtmp://domain/app/stream?auth\\",\\"EventTs\\":1712656430***,\\"EventCode\\":1,\\"ErrorCode\\":0,\\"ErrorMessage\\":\\"\\"}}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The HTTP status code. 200 indicates that the callback is successful.
+	// The error code. A value of 200 indicates that the callback was successful.
 	//
 	// example:
 	//
 	// 200
 	HTTPCode *string `json:"HTTPCode,omitempty" xml:"HTTPCode,omitempty"`
-	// The ID of the callback record.
+	// The callback record ID.
 	//
 	// example:
 	//
 	// 42bba8b5-********-9b501dd6cb6e
 	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	// The ID of the subscription.
+	// The event callback ID.
 	//
 	// example:
 	//
 	// Sub-******9799B2C4500******
 	SubId *string `json:"SubId,omitempty" xml:"SubId,omitempty"`
-	// The time when the callback was invoked. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	// The time when the callback was invoked.
+	//
+	// Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//

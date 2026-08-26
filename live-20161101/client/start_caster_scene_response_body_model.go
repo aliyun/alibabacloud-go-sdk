@@ -16,13 +16,13 @@ type iStartCasterSceneResponseBody interface {
 }
 
 type StartCasterSceneResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// CF60DB6A-7FD6-426E-9288-122CC1A52FA7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The streaming URL of the scene. It is used for playback, but not for stream relay.
+	// The output stream URL of the current scene. This URL is used for playback in the production studio and is not a bypass output.
 	//
 	// example:
 	//

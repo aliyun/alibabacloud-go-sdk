@@ -28,21 +28,21 @@ type DescribeRTSNativeSDKPlayTimeResponseBody struct {
 	//
 	// 300
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The end of the time range for which the data was queried.
+	// The end time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2021-12-10T21:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The average playback duration and average stuttering duration at each interval. Unit: milliseconds.
+	// The average playback duration and average stall duration for each time interval. Unit: milliseconds.
 	PlayTimeData []*DescribeRTSNativeSDKPlayTimeResponseBodyPlayTimeData `json:"PlayTimeData,omitempty" xml:"PlayTimeData,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id
 	//
 	// example:
 	//
 	// 7BF95F2A-3B24-4CDE-9346-7F6FA86697A1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range for which the data was queried.
+	// The start time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -117,19 +117,19 @@ func (s *DescribeRTSNativeSDKPlayTimeResponseBody) Validate() error {
 }
 
 type DescribeRTSNativeSDKPlayTimeResponseBodyPlayTimeData struct {
-	// The average playback duration within the period of time.
+	// The average playback duration during the time interval. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1000
 	PlayTime *string `json:"PlayTime,omitempty" xml:"PlayTime,omitempty"`
-	// The average stuttering duration within the period of time.
+	// The average stall duration during the time interval. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 100
 	StallTime *string `json:"StallTime,omitempty" xml:"StallTime,omitempty"`
-	// The timestamp of the returned data.
+	// The start time of the time interval. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//

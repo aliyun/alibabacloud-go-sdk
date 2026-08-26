@@ -28,13 +28,13 @@ type iDescribeLiveStreamTranscodeMetricDataRequest interface {
 }
 
 type DescribeLiveStreamTranscodeMetricDataRequest struct {
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The domain name. You can specify only one domain name in each request.
+	// The domain name. Only a single domain name can be queried at a time.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DescribeLiveStreamTranscodeMetricDataRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time. The end time must be later than the start time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// This parameter is required.
 	//
@@ -50,17 +50,22 @@ type DescribeLiveStreamTranscodeMetricDataRequest struct {
 	//
 	// 2023-06-11T03:46:40Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// A pagination token. When you call this operation, up to 5,000 rows of data can be returned per query. If the number of rows exceeds 5,000, the response includes a pagination token that is used in the next request to retrieve a new page of results.
+	// The paged query token. Each query returns a maximum of 5,000 rows of data. If the data to be queried exceeds 5,000 rows, the response provides the start index for the next query.
 	//
-	// When you specify the token in the next query, data continues to be obtained from the end of the previous query.
+	// Pass this token in the request to continue querying data from the row after the last row returned in the previous query. This token is used for paging.
 	//
 	// example:
 	//
 	// UjsM9x3aVcJi9a0-ArwJUTTC67C***37C0=
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
 	//
 	// This parameter is required.
 	//
@@ -68,7 +73,7 @@ type DescribeLiveStreamTranscodeMetricDataRequest struct {
 	//
 	// 2023-06-11T02:46:40Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the stream.
+	// The stream name.
 	//
 	// example:
 	//

@@ -32,13 +32,15 @@ type iDescribeLiveStreamsOnlineListRequest interface {
 }
 
 type DescribeLiveStreamsOnlineListRequest struct {
-	// The name of the application to which the live stream belongs. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The name of the application to which the stream belongs. You can view the AppName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
 	//
 	// example:
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The main streaming domain.
+	// The streaming domain of the streamer.
+	//
+	// > - When you specify DomainName, make sure that the domain name is a live streaming domain name and that you have the permissions to manage the domain name.
 	//
 	// This parameter is required.
 	//
@@ -46,11 +48,11 @@ type DescribeLiveStreamsOnlineListRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Specifies whether to return only specific parameters. Valid values:
+	// Specifies whether to return only specified fields. Valid values:
 	//
-	// 	- **yes**: returns only the DomainName, AppName, StreamName, and PublishTime parameters.
+	// - **yes**: Only the DomainName, AppName, StreamName, and PublishTime fields are returned.
 	//
-	// 	- **no**: returns all parameters. This is the default value.
+	// - **no*	- (default): All fields are returned.
 	//
 	// example:
 	//
@@ -69,30 +71,39 @@ type DescribeLiveStreamsOnlineListRequest struct {
 	//
 	// 1500
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The mode in which stream names are matched. Valid values:
+	// Specifies whether to use fuzzy match for the stream name. Valid values:
 	//
-	// 	- **fuzzy*	- (default): fuzzy match
+	// - **fuzzy*	- (default): fuzzy match.
 	//
-	// 	- **strict**: exact match
+	// - **strict**: exact match.
 	//
 	// example:
 	//
 	// fuzzy
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the live stream. You can specify only one live stream. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The stream name. Only a single StreamName can be specified. You can view the StreamName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
 	//
 	// example:
 	//
 	// liveStream****
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The type of the streams to query. Valid values:
+	// The stream type. Valid values:
 	//
-	// 	- **all*	- (default): all streams
+	// - **all*	- (default): all streams.
 	//
-	// 	- **raw**: source streams
 	//
-	// 	- **trans**: transcoded streams
+	//
+	// - **raw**: raw streams.
+	//
+	//
+	//
+	// - **trans**: transcoded streams.
 	//
 	// example:
 	//

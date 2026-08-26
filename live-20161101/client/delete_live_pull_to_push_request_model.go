@@ -23,20 +23,25 @@ type DeleteLivePullToPushRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region where the task is started. Valid values:
 	//
-	// 	- ap-southeast-1: Singapore
+	// - ap-southeast-1 (Singapore)
 	//
-	// 	- ap-southeast-5: Indonesia (Jakarta)
+	// - ap-southeast-5 (Indonesia)
 	//
-	// 	- cn-beijing: China (Beijing)
+	// - cn-beijing (Beijing)
 	//
-	// 	- cn-shanghai: China (Shanghai)
+	// - cn-shanghai (Shanghai).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The task ID.
 	//

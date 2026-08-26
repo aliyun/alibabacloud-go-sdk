@@ -22,9 +22,9 @@ type iQueryLiveDomainMultiStreamListResponseBody interface {
 }
 
 type QueryLiveDomainMultiStreamListResponseBody struct {
-	// The online streams returned.
+	// The number of online records.
 	OnlineStreams []*QueryLiveDomainMultiStreamListResponseBodyOnlineStreams `json:"OnlineStreams,omitempty" xml:"OnlineStreams,omitempty" type:"Repeated"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type QueryLiveDomainMultiStreamListResponseBody struct {
 	//
 	// CF60DB6A-7FD6-426E-9288-122CC1A5****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,25 +117,25 @@ func (s *QueryLiveDomainMultiStreamListResponseBody) Validate() error {
 }
 
 type QueryLiveDomainMultiStreamListResponseBodyOnlineStreams struct {
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// apptest
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The switchover records.
+	// The stream switching records.
 	ChangeLogs []*QueryLiveDomainMultiStreamListResponseBodyOnlineStreamsChangeLogs `json:"ChangeLogs,omitempty" xml:"ChangeLogs,omitempty" type:"Repeated"`
-	// The main streaming domain.
+	// The streaming domain of the streamer.
 	//
 	// example:
 	//
 	// play.***.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Indicates whether the dual-stream disaster recovery feature is enabled. Valid values:
+	// The feature switch. Valid values:
 	//
-	// 	- **on**: enabled
+	// - **on**: enabled.
 	//
-	// 	- **off**: disabled
+	// - **off**: disabled.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ type QueryLiveDomainMultiStreamListResponseBodyOnlineStreams struct {
 	//
 	// teststream
 	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	// The standby streams.
+	// The list of all candidate streams.
 	UpstreamList []*QueryLiveDomainMultiStreamListResponseBodyOnlineStreamsUpstreamList `json:"UpstreamList,omitempty" xml:"UpstreamList,omitempty" type:"Repeated"`
 }
 
@@ -236,37 +236,37 @@ func (s *QueryLiveDomainMultiStreamListResponseBodyOnlineStreams) Validate() err
 }
 
 type QueryLiveDomainMultiStreamListResponseBodyOnlineStreamsChangeLogs struct {
-	// The reason for the switchover.
+	// The reason for stream switching.
 	//
-	// 	- merge cut manually: You proactively switched the stream.
+	// 	- merge cut manually: The user manually switched the stream.
 	//
-	// 	- master stream no data: No data is available in the active stream.
+	// 	- master stream no data: The primary stream has no data.
 	//
-	// 	- master stream low quality: The quality of the active stream deteriorated.
+	// 	- master stream low quality: The primary stream quality degraded.
 	//
 	// example:
 	//
 	// merge cut manually
 	ChangeReason *string `json:"ChangeReason,omitempty" xml:"ChangeReason,omitempty"`
-	// The switchover time.
+	// The stream switching time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format (UTC+0).
 	//
 	// example:
 	//
 	// 2024-11-13T09:20:47Z
 	ChangeTime *string `json:"ChangeTime,omitempty" xml:"ChangeTime,omitempty"`
-	// The stream used after the switchover.
+	// The stream that is actually used after the switch.
 	//
 	// example:
 	//
 	// rtmp://118.178.168.35:1936/wwMultitest/pull.livetest2.aliyunlive.com_wwMultitest428_AliRewrite_2?vhost=pull.livetest2.aliyunlive.com&live_rtmp_test=on
 	MasterUpstream *string `json:"MasterUpstream,omitempty" xml:"MasterUpstream,omitempty"`
-	// The IP address used after the switchover.
+	// The IP address used after the stream switch.
 	//
 	// example:
 	//
 	// 1.1.1.1
 	UpstreamIp *string `json:"UpstreamIp,omitempty" xml:"UpstreamIp,omitempty"`
-	// The identifier of the stream after the switchover.
+	// The stream identifier after the switch.
 	//
 	// example:
 	//
@@ -332,33 +332,27 @@ func (s *QueryLiveDomainMultiStreamListResponseBodyOnlineStreamsChangeLogs) Vali
 }
 
 type QueryLiveDomainMultiStreamListResponseBodyOnlineStreamsUpstreamList struct {
-	// The active/standby tag.
+	// The primary/secondary flag.
 	//
-	// >  This parameter indicates whether the active or standby stream is being distributed.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
+	// > Indicates which stream is currently being used for merged distribution.
 	//
 	// example:
 	//
 	// false
 	MasterFlag *bool `json:"MasterFlag,omitempty" xml:"MasterFlag,omitempty"`
-	// The IP address of the stream ingest client.
+	// The IP address of the ingest client.
 	//
 	// example:
 	//
 	// 1.1.1.1
 	UpstreamIp *string `json:"UpstreamIp,omitempty" xml:"UpstreamIp,omitempty"`
-	// The unique identifier of the stream ingest.
+	// The unique identifier of the ingest stream.
 	//
 	// example:
 	//
 	// ***test_Alirewrite1
 	UpstreamSequence *string `json:"UpstreamSequence,omitempty" xml:"UpstreamSequence,omitempty"`
-	// The stream ingest time.
+	// The stream ingest time. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format (UTC+0).
 	//
 	// example:
 	//

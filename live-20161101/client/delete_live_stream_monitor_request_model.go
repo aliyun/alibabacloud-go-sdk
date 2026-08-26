@@ -20,7 +20,7 @@ type iDeleteLiveStreamMonitorRequest interface {
 type DeleteLiveStreamMonitorRequest struct {
 	// The ID of the monitoring session.
 	//
-	// >  You can obtain the monitoring session ID from the response parameter **MonitorId*	- of the [CreateLiveStreamMonitor](https://help.aliyun.com/document_detail/2848129.html) operation.
+	// > The **MonitorId*	- is returned in the response of the [CreateLiveStreamMonitor](https://help.aliyun.com/document_detail/2848129.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -29,7 +29,12 @@ type DeleteLiveStreamMonitorRequest struct {
 	// 445409ec-7eaa-461d-8f29-4bec2eb9****
 	MonitorId *string `json:"MonitorId,omitempty" xml:"MonitorId,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteLiveStreamMonitorRequest) String() string {

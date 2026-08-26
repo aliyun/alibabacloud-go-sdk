@@ -22,7 +22,7 @@ type iDeleteLiveDelayConfigRequest interface {
 }
 
 type DeleteLiveDelayConfigRequest struct {
-	// The name of the application to which the live stream belongs. You can specify an asterisk (\\*) as the value to match all applications that belong to the domain name.
+	// The AppName of the live stream. You can specify an asterisk (\\*) to match all AppNames under the domain name.
 	//
 	// This parameter is required.
 	//
@@ -30,17 +30,22 @@ type DeleteLiveDelayConfigRequest struct {
 	//
 	// liveApp****
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// The main streaming domain.
+	// The streaming domain.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// example.com
-	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Domain  *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the live stream. You can use the wildcard (\\*) to specify all streams of the application.
+	// The name of the live stream. You can use the wildcard (\\*) to specify all StreamNames under the AppName.
 	//
 	// This parameter is required.
 	//

@@ -18,16 +18,22 @@ type iListRTCLiveRoomsRequest interface {
 }
 
 type ListRTCLiveRoomsRequest struct {
+	// The application ID. You can view your application IDs by navigating to **ApsaraVideo Live > Live+ > ApsaraVideo Real-time Communication > Application Management**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// a494caec-***-695ef345db77
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The current page number, starting from 1.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The page size. Valid values: 10 to 100. Default value: 50.
+	//
 	// example:
 	//
 	// 50

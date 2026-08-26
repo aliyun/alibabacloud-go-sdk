@@ -22,7 +22,7 @@ type iSendLikeRequest interface {
 }
 
 type SendLikeRequest struct {
-	// The ID of the interactive messaging application.
+	// Interactive Messages application ID.
 	//
 	// This parameter is required.
 	//
@@ -30,19 +30,19 @@ type SendLikeRequest struct {
 	//
 	// VKL3***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The mode in which system messages are broadcasted. Valid values:
+	// System message diffusion type. Valid values:
 	//
-	// 	- 0: specifies that system messages are not broadcasted. This is the default value.
+	// - 0: No diffusion.
 	//
-	// 	- 1: specifies that system messages are broadcasted to specified users.
+	// - 1: Diffusion to specified users.
 	//
-	// 	- 2: specifies that system messages are broadcasted to the message group.
+	// - 2: Diffusion to a group.
 	//
 	// example:
 	//
 	// 2
 	BroadCastType *int32 `json:"BroadCastType,omitempty" xml:"BroadCastType,omitempty"`
-	// The number of likes.
+	// Number of likes.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type SendLikeRequest struct {
 	//
 	// 10
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The ID of the message group.
+	// Message group ID.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type SendLikeRequest struct {
 	//
 	// AE35-****-T95F
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the user who performs the operation.
+	// Operator user ID.
 	//
 	// example:
 	//

@@ -26,9 +26,9 @@ type iDescribeLiveDomainRealTimeTrafficDataRequest interface {
 }
 
 type DescribeLiveDomainRealTimeTrafficDataRequest struct {
-	// The streaming domain.
+	// The streaming domain name.
 	//
-	// Separate multiple streaming domains with commas (,).
+	// To specify multiple domain names, separate them with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -36,15 +36,15 @@ type DescribeLiveDomainRealTimeTrafficDataRequest struct {
 	//
 	// example.com,example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end of the time range to query. The end time must be later than the start time. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2015-12-10T15:01:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the ISP.
+	// The name of the carrier.
 	//
-	// You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query a list of available ISPs.
+	// You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to obtain the carrier name.
 	//
 	// example:
 	//
@@ -52,17 +52,22 @@ type DescribeLiveDomainRealTimeTrafficDataRequest struct {
 	IspNameEn *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
 	// The name of the region.
 	//
-	// You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to query a list of available regions.
+	// You can call the [DescribeCdnRegionAndIsp](https://help.aliyun.com/document_detail/91077.html) operation to obtain the region name.
 	//
 	// example:
 	//
 	// tianjin
 	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The ID of the region.
 	//
-	// >  If you do not specify this parameter, the data of the last hour is returned.
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	//
+	// > If you do not specify this parameter, data in the last hour is queried.
 	//
 	// example:
 	//

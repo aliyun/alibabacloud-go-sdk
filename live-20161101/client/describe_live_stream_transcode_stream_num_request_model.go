@@ -29,22 +29,21 @@ type DescribeLiveStreamTranscodeStreamNumRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The grouping method.
-	//
-	// 	- Domain name (default)
-	//
-	// 	- Template
-	//
-	// Valid values:
-	//
-	// 	- domain
-	//
-	// 	- template
+	// The region ID.
 	//
 	// example:
 	//
-	// domain
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The grouping type. Valid values:
+	//
+	// 	- domain (default)
+	//
+	// 	- template.
+	//
+	// example:
+	//
+	// template
 	SplitType *string `json:"SplitType,omitempty" xml:"SplitType,omitempty"`
 }
 

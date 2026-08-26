@@ -22,9 +22,16 @@ type iTagLiveResourcesRequest interface {
 }
 
 type TagLiveResourcesRequest struct {
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the resources. Set the value to **DOMAIN**.
+	// The resource ID. Set this parameter to a live streaming domain name.
+	//
+	// Valid values of N: **1 to 50**.
 	//
 	// This parameter is required.
 	//
@@ -32,12 +39,16 @@ type TagLiveResourcesRequest struct {
 	//
 	// example.com
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type. Set this parameter to **DOMAIN**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DOMAIN
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The list of labels.
+	//
 	// This parameter is required.
 	Tag []*TagLiveResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -109,12 +120,16 @@ func (s *TagLiveResourcesRequest) Validate() error {
 }
 
 type TagLiveResourcesRequestTag struct {
+	// The label key. Valid values of N: **1 to 20**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The label value. Valid values of N: **1 to 20**.
+	//
 	// example:
 	//
 	// product

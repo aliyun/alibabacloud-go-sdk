@@ -17,7 +17,7 @@ type iListLiveRealtimeLogDeliveryInfosResponseBody interface {
 
 type ListLiveRealtimeLogDeliveryInfosResponseBody struct {
 	Content *ListLiveRealtimeLogDeliveryInfosResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

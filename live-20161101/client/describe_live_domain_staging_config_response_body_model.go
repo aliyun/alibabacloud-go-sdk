@@ -16,9 +16,9 @@ type iDescribeLiveDomainStagingConfigResponseBody interface {
 }
 
 type DescribeLiveDomainStagingConfigResponseBody struct {
-	// The feature configurations of the accelerated domain name.
+	// The domain name configurations.
 	DomainConfigs []*DescribeLiveDomainStagingConfigResponseBodyDomainConfigs `json:"DomainConfigs,omitempty" xml:"DomainConfigs,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ func (s *DescribeLiveDomainStagingConfigResponseBody) Validate() error {
 }
 
 type DescribeLiveDomainStagingConfigResponseBodyDomainConfigs struct {
-	// The configuration ID.
+	// The ID of the configuration.
 	//
 	// example:
 	//
@@ -80,15 +80,15 @@ type DescribeLiveDomainStagingConfigResponseBodyDomainConfigs struct {
 	//
 	// aliauth
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
-	// The configuration status. Valid values:
+	// The status of the configuration. Valid values:
 	//
-	// 	- **success**
+	// - **success**: Successful.
 	//
-	// 	- **testing**
+	// - **testing**: The configuration is being verified.
 	//
-	// 	- **failed**
+	// - **failed**: Failed.
 	//
-	// 	- **configuring**
+	// - **configuring**: The configuration is in progress.
 	//
 	// example:
 	//
@@ -154,13 +154,13 @@ func (s *DescribeLiveDomainStagingConfigResponseBodyDomainConfigs) Validate() er
 }
 
 type DescribeLiveDomainStagingConfigResponseBodyDomainConfigsFunctionArgs struct {
-	// The name of the parameter.
+	// The name of the configuration parameter.
 	//
 	// example:
 	//
 	// auth_type
 	ArgName *string `json:"ArgName,omitempty" xml:"ArgName,omitempty"`
-	// The configured value.
+	// The value of the configuration parameter.
 	//
 	// example:
 	//

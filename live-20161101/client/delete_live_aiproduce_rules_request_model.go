@@ -24,7 +24,7 @@ type iDeleteLiveAIProduceRulesRequest interface {
 }
 
 type DeleteLiveAIProduceRulesRequest struct {
-	// The name of the application to which the live stream belongs.
+	// The name of the live stream application.
 	//
 	// This parameter is required.
 	//
@@ -32,25 +32,30 @@ type DeleteLiveAIProduceRulesRequest struct {
 	//
 	// AppName
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// The main streaming domain.
+	// The primary streaming domain.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// demo.aliyundoc.com
-	Domain   *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Domain  *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the subtitle rule.
+	// The subtitle rule ID.
 	//
 	// example:
 	//
 	// 445409ec-7eaa-461d -8f29-4bec2eb9****
 	RulesId *string `json:"RulesId,omitempty" xml:"RulesId,omitempty"`
-	// The suffix of the subtitle rule.
+	// The subtitle suffix. This parameter is required. Otherwise, the InvalidParameter error is returned.
 	//
-	// >  Set the value to the name of the subtitle template.
+	// > Set this parameter to the value of SubtitleName that is specified in the subtitle template.
 	//
 	// example:
 	//

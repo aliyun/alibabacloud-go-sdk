@@ -26,7 +26,7 @@ type KickLiveMessageGroupUserRequest struct {
 	//
 	// example:
 	//
-	// coims-****
+	// demo
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The data center. It must be the same as the data center that was specified when you called the [CreateLiveMessageApp](https://help.aliyun.com/document_detail/2848162.html) operation to create the interactive messaging application. Valid values: cn-shanghai and ap-southeast-1 (Singapore).
 	//

@@ -27,23 +27,23 @@ type iDescribeLivePackageConfigResponseBody interface {
 
 type DescribeLivePackageConfigResponseBody struct {
 	LivePackageConfigList *DescribeLivePackageConfigResponseBodyLivePackageConfigList `json:"LivePackageConfigList,omitempty" xml:"LivePackageConfigList,omitempty" type:"Struct"`
-	// The sorting order. Valid values:
+	// The sort order. Valid values:
 	//
-	// 	- **asc*	- (default): ascending order
+	// - **asc*	- (default): ascending order.
 	//
-	// 	- **desc**: descending order
+	// - **desc**: descending order.
 	//
 	// example:
 	//
 	// asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -55,7 +55,7 @@ type DescribeLivePackageConfigResponseBody struct {
 	//
 	// 1FEDCFD8-4C5D-5CB3-A5A1-0B59E5AE57B0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of live stream encapsulation configurations.
+	// The total number of records.
 	//
 	// example:
 	//

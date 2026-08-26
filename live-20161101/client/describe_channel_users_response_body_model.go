@@ -58,7 +58,7 @@ type DescribeChannelUsersResponseBody struct {
 	//
 	// example:
 	//
-	// AD86847D-1F36-18C8-A995-5EEA340B3202
+	// AD86847D-1F36-18C8-A995-5EEA34******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The UTC timestamp when the response is returned.
 	//

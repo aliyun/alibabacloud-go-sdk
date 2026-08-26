@@ -20,7 +20,7 @@ type iDescribeMeterLiveBypassDurationRequest interface {
 }
 
 type DescribeMeterLiveBypassDurationRequest struct {
-	// The ID of the application. You can view the application ID on the [Applications](https://help.aliyun.com/document_detail/2355593.html) page in the ApsaraVideo Real-time Communication (ARTC) section of the ApsaraVideo Live console.
+	// The application ID. You can view the application ID on the [Application Management](https://help.aliyun.com/document_detail/2355593.html) page of ApsaraVideo Real-time Communication.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type DescribeMeterLiveBypassDurationRequest struct {
 	//
 	// 4346289a-a790-4869-9e23-22766d5e****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The end time must be later than the start time. The time range that can be specified is greater than or equal to 5 minutes and less than or equal to 31 days.
+	// The end time of the query. The end time must be later than the start time. The query granularity must be ≥ 5 minutes and ≤ 31 days. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -36,21 +36,21 @@ type DescribeMeterLiveBypassDurationRequest struct {
 	//
 	// 2022-10-10T21:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time granularity of the query. Unit: seconds. Valid values:
+	// The time granularity for querying data. Unit: seconds. Valid values:
 	//
-	// 	- 300
+	// - 300
 	//
-	// 	- 3600
+	// - 3600
 	//
-	// 	- 86400
+	// - 86400
 	//
-	// If you specify an invalid value or do not specify this parameter, the default value 3600 is used.
+	// If this parameter is not specified or set to an unsupported value, the default value 3600 is used.
 	//
 	// example:
 	//
 	// 86400
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time of the query. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//

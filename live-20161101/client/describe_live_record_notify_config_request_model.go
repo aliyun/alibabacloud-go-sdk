@@ -18,7 +18,7 @@ type iDescribeLiveRecordNotifyConfigRequest interface {
 }
 
 type DescribeLiveRecordNotifyConfigRequest struct {
-	// The main streaming domain.
+	// The streaming domain name.
 	//
 	// This parameter is required.
 	//

@@ -16,7 +16,7 @@ type iModifyCasterLayoutResponseBody interface {
 }
 
 type ModifyCasterLayoutResponseBody struct {
-	// The ID of the layout. You can use this ID to query information about the layout.
+	// The layout ID. This can be used as a request parameter to query the list of production studio layouts.
 	//
 	// example:
 	//

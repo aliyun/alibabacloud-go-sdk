@@ -28,17 +28,17 @@ type iDescribeStreamLocationBlockRequest interface {
 }
 
 type DescribeStreamLocationBlockRequest struct {
-	// The name of the application to which the live stream belongs.
+	// The AppName of the live stream.
 	//
 	// example:
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The blocking type. Valid values:
+	// The blocking method. Valid values:
 	//
-	// 	- blacklist
+	// - blacklist
 	//
-	// 	- whitelist
+	// - whitelist
 	//
 	// example:
 	//
@@ -53,18 +53,23 @@ type DescribeStreamLocationBlockRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: 1.
+	// The number of the page to return. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page. Valid values: integers from 1 to 100.
+	// The number of entries to return on each page. Valid values: integers from 1 to 100.
 	//
 	// example:
 	//
 	// 5
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the live stream.
 	//

@@ -16,13 +16,13 @@ type iSendLikeResponseBody interface {
 }
 
 type SendLikeResponseBody struct {
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 16A96B9A-****-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// Return result.
 	Result *SendLikeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *SendLikeResponseBody) Validate() error {
 }
 
 type SendLikeResponseBodyResult struct {
-	// The number of likes.
+	// Number of likes.
 	//
 	// example:
 	//

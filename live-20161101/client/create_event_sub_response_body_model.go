@@ -22,7 +22,7 @@ type CreateEventSubResponseBody struct {
 	//
 	// 760bad53276431c499e30dc36f6b****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The subscription ID.
+	// The ID of the created subscription.
 	//
 	// example:
 	//

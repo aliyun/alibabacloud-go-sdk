@@ -14,7 +14,7 @@ type iUpdateLiveRecordVodConfigResponseBody interface {
 }
 
 type UpdateLiveRecordVodConfigResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

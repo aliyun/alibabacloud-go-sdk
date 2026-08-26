@@ -18,7 +18,7 @@ type iUpdateMessageGroupRequest interface {
 }
 
 type UpdateMessageGroupRequest struct {
-	// The ID of the interactive messaging application.
+	// The interactive message application ID.
 	//
 	// This parameter is required.
 	//
@@ -26,9 +26,9 @@ type UpdateMessageGroupRequest struct {
 	//
 	// VKL3***
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The extended field.
+	// The extension field.
 	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// The ID of the message group.
+	// The message group ID.
 	//
 	// This parameter is required.
 	//

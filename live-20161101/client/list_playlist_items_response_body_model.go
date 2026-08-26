@@ -18,15 +18,15 @@ type iListPlaylistItemsResponseBody interface {
 }
 
 type ListPlaylistItemsResponseBody struct {
-	// The episodes.
+	// The list of playlist items.
 	ProgramItems []*ListPlaylistItemsResponseBodyProgramItems `json:"ProgramItems,omitempty" xml:"ProgramItems,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 5c6a2a0d-f228-4a64-af62-20e91b9****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of episodes.
+	// The number of playlist items.
 	//
 	// example:
 	//
@@ -83,37 +83,37 @@ func (s *ListPlaylistItemsResponseBody) Validate() error {
 }
 
 type ListPlaylistItemsResponseBodyProgramItems struct {
-	// The sequence number of the episode in the query result.
+	// The orchestration index.
 	//
 	// example:
 	//
 	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// The ID of the episode list. You can use the ID as a request parameter in the API operation that is used to edit the episode list, delete the episode list, query the information about the episode list, start the episode list, or stop the episode list.
+	// The ID of the playlist. You can use this ID as a request parameter when you edit, delete, query, start, or stop the playlist.
 	//
 	// example:
 	//
 	// 445409ec-7eaa-461d-8f29-4bec2eb9****
 	ProgramId *string `json:"ProgramId,omitempty" xml:"ProgramId,omitempty"`
-	// The ID of the episode.
+	// The ID of the playlist item.
 	//
 	// example:
 	//
 	// c10f3d63-eacf-4fbf-bd48-a07a6ba7****
 	ProgramItemId *string `json:"ProgramItemId,omitempty" xml:"ProgramItemId,omitempty"`
-	// The name of the episode.
+	// The name of the playlist item.
 	//
 	// example:
 	//
 	// playlistItem1
 	ProgramItemName *string `json:"ProgramItemName,omitempty" xml:"ProgramItemName,omitempty"`
-	// The resource type.
+	// The type of the resource.
 	//
 	// example:
 	//
 	// vod
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The resource ID.
+	// The ID of the resource.
 	//
 	// example:
 	//

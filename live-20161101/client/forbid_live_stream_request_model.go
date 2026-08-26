@@ -28,7 +28,7 @@ type iForbidLiveStreamRequest interface {
 }
 
 type ForbidLiveStreamRequest struct {
-	// The name of the application to which the live stream belongs. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The name of the application to which the ingest stream belongs. You can view the AppName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type ForbidLiveStreamRequest struct {
 	//
 	// demo.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Specifies whether the live stream is ingested by a streamer or played by a viewer. Set the value to **publisher**.
+	// Specifies whether to disable stream ingest or streaming. Currently, only disabling stream ingest is supported: **publisher**.
 	//
 	// This parameter is required.
 	//
@@ -52,33 +52,36 @@ type ForbidLiveStreamRequest struct {
 	//
 	// publisher
 	LiveStreamType *string `json:"LiveStreamType,omitempty" xml:"LiveStreamType,omitempty"`
-	// Specifies whether to only interrupt the live stream without adding the ingest URL of the live stream to the blacklist. Valid values:
+	// Specifies whether to only interrupt the stream without adding it to the blacklist. Valid values:
 	//
-	// 	- **yes**: interrupts the live stream but does not add the ingest URL of the live stream to the blacklist. This value is available only when the live stream is ingested or played in the upstream.
+	// - **yes**: Only interrupts the stream without adding it to the blacklist (supports upstream ingest or upstream streaming).
 	//
-	// 	- **no**: disables the live stream and adds the ingest URL of the live stream to the blacklist.
+	// - **no**: Interrupts the stream and adds it to the blacklist.
 	//
-	// >  If you do not specify this parameter, the default value no is used.
+	// > Default value: no.
 	//
 	// example:
 	//
 	// yes
-	Oneshot  *string `json:"Oneshot,omitempty" xml:"Oneshot,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Oneshot *string `json:"Oneshot,omitempty" xml:"Oneshot,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The time when the live stream is resumed. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The time to resume the stream. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
-	// >
+	// > - If the **Oneshot*	- parameter is set to **no*	- and ResumeTime is not specified, the live stream is disabled for 6 months by default.
 	//
-	// 	- If you set the **Oneshot*	- parameter to **no*	- and do not specify this parameter, the live stream is disabled for six months by default.
-	//
-	// 	- If you specify this parameter, the live stream is resumed at the specified point in time.
+	// > - If a value is specified, the restriction is lifted at the time specified by ResumeTime and the live stream is resumed.
 	//
 	// example:
 	//
 	// 2015-12-01T10:37:00Z
 	ResumeTime *string `json:"ResumeTime,omitempty" xml:"ResumeTime,omitempty"`
-	// The name of the ingested stream. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The name of the ingest stream. You can view the StreamName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
 	//
 	// This parameter is required.
 	//

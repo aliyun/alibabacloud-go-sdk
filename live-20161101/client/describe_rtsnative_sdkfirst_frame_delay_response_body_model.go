@@ -28,21 +28,21 @@ type DescribeRTSNativeSDKFirstFrameDelayResponseBody struct {
 	//
 	// 300
 	DataInterval *string `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	// The end of the time range for which the data was queried.
+	// The end time. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2021-12-10T21:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The average latency of first frames at each interval. Unit: milliseconds.
+	// The average first frame delay for each time interval. Unit: milliseconds.
 	FrameDelayData []*DescribeRTSNativeSDKFirstFrameDelayResponseBodyFrameDelayData `json:"FrameDelayData,omitempty" xml:"FrameDelayData,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id
 	//
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range for which the data was queried.
+	// The start time. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *DescribeRTSNativeSDKFirstFrameDelayResponseBody) Validate() error {
 }
 
 type DescribeRTSNativeSDKFirstFrameDelayResponseBodyFrameDelayData struct {
-	// The average latency of first frames within the period of time.
+	// The average first frame delay during the time interval.
 	//
 	// example:
 	//
 	// 400
 	FrameDelay *string `json:"FrameDelay,omitempty" xml:"FrameDelay,omitempty"`
-	// The timestamp of the returned data.
+	// The beginning of the time interval. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iAddLiveStreamTranscodeResponseBody interface {
 }
 
 type AddLiveStreamTranscodeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

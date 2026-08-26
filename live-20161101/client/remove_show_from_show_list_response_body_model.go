@@ -20,25 +20,25 @@ type iRemoveShowFromShowListResponseBody interface {
 }
 
 type RemoveShowFromShowListResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the episode.
+	// The show ID.
 	//
 	// example:
 	//
 	// a2b8e671-2fe5-4642-a2ec-bf93880e****
 	ShowId *string `json:"ShowId,omitempty" xml:"ShowId,omitempty"`
-	// The IDs of episodes that failed to be removed and the relevant failure information.
+	// A list of IDs of the shows that failed to be deleted and the failure information.
 	//
 	// example:
 	//
 	// failedList[Show1, Show2...]
 	FailedList *string `json:"failedList,omitempty" xml:"failedList,omitempty"`
-	// The IDs of episodes that were removed.
+	// The IDs of the shows that were successfully deleted.
 	//
 	// example:
 	//

@@ -19,13 +19,13 @@ type iDescribeLivePushProxyLogResponseBody interface {
 
 type DescribeLivePushProxyLogResponseBody struct {
 	DomainLogDetails *DescribeLivePushProxyLogResponseBodyDomainLogDetails `json:"DomainLogDetails,omitempty" xml:"DomainLogDetails,omitempty" type:"Struct"`
-	// Push domain.
+	// The ingest domain.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

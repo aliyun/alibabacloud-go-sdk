@@ -28,19 +28,19 @@ type iDescribeLiveStreamMonitorListRequest interface {
 type DescribeLiveStreamMonitorListRequest struct {
 	// The ID of the monitoring session.
 	//
-	// >  You can obtain the monitoring session ID from the response parameter MonitorId of the [CreateLiveStreamMonitor](https://help.aliyun.com/document_detail/2848129.html) operation. If you leave this parameter empty, the data of all monitoring sessions is returned.
+	// > Obtain the MonitorId value from the response parameters of the [CreateLiveStreamMonitor](https://help.aliyun.com/document_detail/2848129.html) operation. If you leave this parameter empty, the data of all monitoring sessions is returned.
 	//
 	// example:
 	//
 	// 445409ec-7eaa-461d-8f29-4bec2eb9****
 	MonitorId *string `json:"MonitorId,omitempty" xml:"MonitorId,omitempty"`
-	// The sorting order of monitoring sessions. Valid values:
+	// The order in which to sort the monitoring sessions. Valid values:
 	//
-	// 	- 0: Monitoring sessions are sorted by status.
+	// - 0: Default. The monitoring sessions are sorted by monitoring status in descending order (active sessions are listed first). The start time is not used for sorting.
 	//
-	// 	- 1: Monitoring sessions are sorted by start time in descending order.
+	// - 1: The monitoring sessions are sorted by start time in descending order.
 	//
-	// 	- 2: Monitoring sessions are sorted by start time in ascending order.
+	// - 2: The monitoring sessions are sorted by start time in ascending order.
 	//
 	// example:
 	//
@@ -53,18 +53,23 @@ type DescribeLiveStreamMonitorListRequest struct {
 	//
 	// 2
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of monitoring sessions to return per page.
+	// The number of monitoring sessions to return on each page.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The status of the monitoring session. Valid values:
 	//
-	// 	- 1: Monitoring
+	// - 1: The session is being monitored.
 	//
-	// 	- 0: Unmonitored
+	// - 0: The session is not being monitored.
 	//
 	// example:
 	//

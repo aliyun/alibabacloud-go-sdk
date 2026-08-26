@@ -32,7 +32,7 @@ type iDescribeLiveStreamsNotifyRecordsRequest interface {
 }
 
 type DescribeLiveStreamsNotifyRecordsRequest struct {
-	// The name of the application to which the live stream belongs. You can view the application name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The name of the application to which the live stream belongs. You can view the AppName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeLiveStreamsNotifyRecordsRequest struct {
 	//
 	// push.example1.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time. The end time must be later than the start time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// This parameter is required.
 	//
@@ -61,16 +61,21 @@ type DescribeLiveStreamsNotifyRecordsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 20. Maximum value: 500. Valid values: integers from 1 to 500.
+	// The page size. Default value: 20. Maximum value: 500. Valid values: any integer from 1 to 500.
 	//
 	// example:
 	//
 	// 20
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
 	//
-	// >  The start time must be in the last seven days.
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
+	//
+	// > The start time must be within the last 7 days.
 	//
 	// This parameter is required.
 	//
@@ -78,17 +83,17 @@ type DescribeLiveStreamsNotifyRecordsRequest struct {
 	//
 	// 2017-12-10T08:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Specifies whether to return the records of successful or failed callbacks. Valid values:
+	// Specifies whether the callback is successful. Valid values:
 	//
-	// 	- success
+	// - success: Successful.
 	//
-	// 	- failed
+	// - failed: Failed.
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The name of the live stream. You can view the stream name on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page of the ApsaraVideo Live console.
+	// The name of the live stream. You can view the StreamName on the [Stream Management](https://help.aliyun.com/document_detail/197397.html) page.
 	//
 	// example:
 	//

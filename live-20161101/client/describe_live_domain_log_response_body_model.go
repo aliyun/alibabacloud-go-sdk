@@ -25,7 +25,7 @@ type DescribeLiveDomainLogResponseBody struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iGetMessageGroupResponseBody interface {
 }
 
 type GetMessageGroupResponseBody struct {
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 16A96B9A-****-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// Return result.
 	Result *GetMessageGroupResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,41 +62,41 @@ func (s *GetMessageGroupResponseBody) Validate() error {
 }
 
 type GetMessageGroupResponseBodyResult struct {
-	// The time when the message group was created. The time is displayed in UTC.
+	// UTC timestamp when the message group was created.
 	//
 	// example:
 	//
 	// 1502280113
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the creator.
+	// Creator ID.
 	//
 	// example:
 	//
 	// as****hs
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The extended field.
+	// Extension field.
 	//
 	// example:
 	//
 	// 1
 	Extension map[string]interface{} `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// The ID of the message group.
+	// Message group ID.
 	//
 	// example:
 	//
 	// AE35-****-T95F
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Indicates whether the message group is muted.
+	// Indicates whether all members in this message group are muted.
 	//
-	// 	- true: The message group is muted.
+	// - true: All members are muted.
 	//
-	// 	- false: The message group is not muted.
+	// - false: All members are not muted.
 	//
 	// example:
 	//
 	// true
 	IsMuteAll *bool `json:"IsMuteAll,omitempty" xml:"IsMuteAll,omitempty"`
-	// The status of the message group. The default value is **1**, which indicates that the message group is normal.
+	// Message group status. The default value is **1**, which indicates that the message group status is normal.
 	//
 	// example:
 	//

@@ -38,13 +38,13 @@ type iAddShowIntoShowListRequest interface {
 }
 
 type AddShowIntoShowListRequest struct {
-	// The ID of the production studio.
+	// The production studio ID.
 	//
-	// 	- If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
+	// - If you created the production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the CasterId value returned by the CreateCaster operation.
 	//
-	// 	- If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management*	- page. To go to the page, log on to the **ApsaraVideo Live console*	- and click **Production Studios*	- in the left-side navigation pane.
+	// - If you created the production studio in the ApsaraVideo Live console, navigate to **ApsaraVideo Live console*	- > **Production Studios*	- > **Cloud Production Studio*	- to view the production studio name.
 	//
-	// >  You can find the ID of the production studio in the Instance ID/Name column.
+	// > The production studio name in the production studio list on the Cloud Production Studio page of the ApsaraVideo Live console is the production studio ID.
 	//
 	// This parameter is required.
 	//
@@ -52,33 +52,38 @@ type AddShowIntoShowListRequest struct {
 	//
 	// LIVEPRODUCER_POST-cn-0pp1czt****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-	// The duration of the episode. Unit: seconds.
+	// The playback duration of a single show. Unit: seconds.
 	//
-	// > You can specify only one of the **RepeatTimes*	- and **Duration*	- parameters.
+	// > - You can set only one of **RepeatTimes*	- and **Duration**.
+	//
+	// > - This parameter is required when ResourceType is set to live.
 	//
 	// example:
 	//
 	// 20
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The custom type label.
+	// The custom type tag.
 	//
 	// example:
 	//
 	// 1
-	LiveInputType *int32  `json:"LiveInputType,omitempty" xml:"LiveInputType,omitempty"`
-	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of times the episode repeats after the first playback is complete. The default value is 0.
+	LiveInputType *int32 `json:"LiveInputType,omitempty" xml:"LiveInputType,omitempty"`
+	OwnerId       *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
 	//
-	// >
+	// example:
 	//
-	// 	- You can specify only one of the **RepeatTimes*	- and **Duration*	- parameters. - The RepeatTimes parameter specifies the number of repetitions. For example, if you set the value to -1, the episode is to be played for infinite times. If you set the value to 0, the episode is to be played once. If you set the value to 1, the episode is to be played twice.
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of times a single show is repeated. Default value: 0.
+	//
+	// > - You can set only one of **RepeatTimes*	- and **Duration**.- RepeatTimes specifies the number of repetitions. For example, -1 means infinite repetition, 0 means the show is repeated 0 times (played once), 1 means the show is repeated 1 time (played twice), and so on.
 	//
 	// example:
 	//
 	// 0
 	RepeatTimes *int32 `json:"RepeatTimes,omitempty" xml:"RepeatTimes,omitempty"`
-	// The ID of the resource.
+	// The VOD file ID.
 	//
 	// example:
 	//
@@ -86,47 +91,51 @@ type AddShowIntoShowListRequest struct {
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource type. Valid values:
 	//
-	// 	- live: live stream
+	// - live: live streaming resource.
 	//
-	// 	- vod: on-demand video
+	// - vod: video-on-demand resource.
 	//
-	// 	- pic: image
+	// - pic: image resource.
 	//
-	// >
+	// >- When using video-on-demand (VOD) resources, use managed Bucket resources first. Resources in your own Bucket may expire. If you use resources in your own Bucket, check the resource validity period.
 	//
-	// 	- When you select media resources from ApsaraVideo VOD, we recommend that you select resources that are stored in hosted OSS buckets. Resources stored in non-hosted OSS buckets have a validity period. Pay attention to the validity if you select resources that are stored in non-hosted OSS buckets. - You can add a live stream from ApsaraVideo Live or by using a third-party URL. - You can add an on-demand video from ApsaraVideo VOD or by using a third-party URL, or add an on-demand image.
+	// - Live files support live streaming resources and third-party URLs.
+	//
+	// - VOD files support video-on-demand resources, image resources, and third-party URLs.
+	//
+	// - When using live streaming resources, you must also specify the Duration parameter.
 	//
 	// example:
 	//
 	// vod
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The URL of the resource.
+	// The URL of the playback file.
 	ResourceUrl *string `json:"ResourceUrl,omitempty" xml:"ResourceUrl,omitempty"`
-	// The name of the episode.
+	// The show name.
 	//
 	// example:
 	//
 	// liveShow****
 	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
-	// The position of the episode in the episode list. Position indexes start from 0. By default, the episode is added to the end of the episode list.
+	// The position in the playlist where the show is inserted. Positions start from 0. By default, the show is added to the end of the current playlist.
 	//
 	// example:
 	//
 	// 1
 	Spot *int32 `json:"Spot,omitempty" xml:"Spot,omitempty"`
-	// Specifies whether to add multiple episodes to the episode list at a time. Valid values:
+	// Specifies whether to add shows to the playlist in batch. Valid values:
 	//
-	// 	- true: adds multiple episodes to the episode list at a time.
+	// - true: Batch addition.
 	//
-	// 	- false: adds a single episode to the episode list.
+	// - false: Single addition.
 	//
-	// > If you do not specify this parameter or this parameter is left empty, a single episode is to be added to the episode list.
+	// >If this parameter is not specified or left empty, single addition is used.
 	//
 	// example:
 	//
 	// false
 	IsBatchMode *bool `json:"isBatchMode,omitempty" xml:"isBatchMode,omitempty"`
-	// The episodes that you want to add to the episode list. Each episode has a unique name and resource URL.
+	// The list of show resources to add. Each resource has independent parameters such as showName and resourceUrl.
 	ShowList []*AddShowIntoShowListRequestShowList `json:"showList,omitempty" xml:"showList,omitempty" type:"Repeated"`
 }
 
@@ -269,33 +278,33 @@ func (s *AddShowIntoShowListRequest) Validate() error {
 }
 
 type AddShowIntoShowListRequestShowList struct {
-	// The duration of the episode. Unit: seconds.
+	// The playback duration of a single show. Unit: seconds.
 	//
-	// >  You can specify only one of the **RepeatTimes*	- and **Duration*	- parameters.
+	// > - You can set only one of **repeatTimes*	- and **duration**.
+	//
+	// > - This parameter is required when resourceType is set to live.
 	//
 	// example:
 	//
 	// 20
 	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// The custom type label.
+	// The custom type tag.
 	//
 	// example:
 	//
 	// 1
 	LiveInputType *int32 `json:"liveInputType,omitempty" xml:"liveInputType,omitempty"`
-	// The number of times the episode repeats after the first playback is complete. Default value: 0.
+	// The number of times a single show is repeated. Default value: 0.
 	//
-	// >
+	// >- You can set only one of **repeatTimes*	- and **duration**.
 	//
-	// 	- You can specify only one of the **RepeatTimes*	- and **Duration*	- parameters.
-	//
-	// 	- The RepeatTimes parameter specifies the number of repetitions. For example, if you set the value to 0, the episode is to be played once. If you set the value to 1, the episode is to be played twice.
+	// - repeatTimes specifies the number of repetitions. For example, 0 means the show is repeated 0 times (played once), 1 means the show is repeated 1 time (played twice), and so on.
 	//
 	// example:
 	//
 	// 0
 	RepeatTimes *int32 `json:"repeatTimes,omitempty" xml:"repeatTimes,omitempty"`
-	// The ID of the resource.
+	// The VOD file ID.
 	//
 	// example:
 	//
@@ -303,27 +312,27 @@ type AddShowIntoShowListRequestShowList struct {
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
 	// The resource type. Valid values:
 	//
-	// 	- live: live stream
+	// - live: live streaming resource.
 	//
-	// 	- vod: on-demand video
+	// - vod: video-on-demand resource.
 	//
-	// 	- pic: image
+	// - pic: image resource.
 	//
-	// >
+	// >- When using video-on-demand (VOD) resources, use managed Bucket resources first. Resources in your own Bucket may expire. If you use resources in your own Bucket, check the resource validity period.
 	//
-	// 	- When you select media resources from ApsaraVideo VOD, we recommend that you select resources that are stored in hosted OSS buckets. Resources stored in non-hosted OSS buckets have a validity period. Pay attention to the validity if you select resources that are stored in non-hosted OSS buckets.
+	// - Live files support live streaming resources and third-party URLs.
 	//
-	// 	- You can add a live stream from ApsaraVideo Live or by using a third-party URL.
+	// - VOD files support video-on-demand resources, image resources, and third-party URLs.
 	//
-	// 	- You can add an on-demand video from ApsaraVideo VOD or by using a third-party URL, or add an on-demand image.
+	// - When using live streaming resources, you must also specify the duration parameter.
 	//
 	// example:
 	//
 	// vod
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The URL of the resource.
+	// The URL of the playback file.
 	ResourceUrl *string `json:"resourceUrl,omitempty" xml:"resourceUrl,omitempty"`
-	// The name of the episode.
+	// The show name.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type iDescribeLiveInteractionMetricDataRequest interface {
 }
 
 type DescribeLiveInteractionMetricDataRequest struct {
-	// The ID of the application.
+	// The ARTC application ID.
 	//
 	// This parameter is required.
 	//
@@ -34,16 +34,21 @@ type DescribeLiveInteractionMetricDataRequest struct {
 	//
 	// e4d7f08a-01fe-41b5-a091-fe41060a****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+	// The start time of the query, specified as a UNIX timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1698195600000
-	BeginTs   *int64  `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
+	BeginTs *int64 `json:"BeginTs,omitempty" xml:"BeginTs,omitempty"`
+	// The channel ID.
+	//
+	// example:
+	//
+	// 770513
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
+	// The end time of the query, specified as a UNIX timestamp in milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -51,15 +56,15 @@ type DescribeLiveInteractionMetricDataRequest struct {
 	//
 	// 1698201013000
 	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
-	// The metric. Valid values:
+	// The metric type. Valid values:
 	//
-	// 	- JoinChannelSucRate: the success rate of joining a channel within 5 seconds.
+	// - `JoinChannelSucRate`: the success rate of joining a channel within 5 seconds.
 	//
-	// 	- VideoStuckRate: the video stuttering rate.
+	// - `VideoStuckRate`: the video stuttering rate.
 	//
-	// 	- AudioStuckRate: the audio stuttering rate.
+	// - `AudioStuckRate`: the audio stuttering rate.
 	//
-	// 	- FirstFrameCost: the time to first frame.
+	// - `FirstFrameCost`: the time to first frame.
 	//
 	// This parameter is required.
 	//
@@ -67,13 +72,13 @@ type DescribeLiveInteractionMetricDataRequest struct {
 	//
 	// FirstFrameCost
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	// The operating system. Valid values: iOS and Android.
+	// The operating system. Valid values: `iOS` and `Android`.
 	//
 	// example:
 	//
 	// Android
 	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	// The terminal type. Valid values: web and mobile.
+	// The terminal type. Valid values: `web` and `mobile`.
 	//
 	// example:
 	//

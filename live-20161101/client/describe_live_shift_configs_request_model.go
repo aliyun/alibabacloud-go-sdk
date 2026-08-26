@@ -18,7 +18,7 @@ type iDescribeLiveShiftConfigsRequest interface {
 }
 
 type DescribeLiveShiftConfigsRequest struct {
-	// The streaming domain.
+	// The streaming domain name.
 	//
 	// This parameter is required.
 	//
@@ -27,7 +27,7 @@ type DescribeLiveShiftConfigsRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the streaming domain resides.
+	// The ID of the region.
 	//
 	// example:
 	//

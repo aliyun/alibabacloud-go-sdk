@@ -16,13 +16,13 @@ type iGetMessageTokenResponseBody interface {
 }
 
 type GetMessageTokenResponseBody struct {
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 16A96B9A-****-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// Return results.
 	Result *GetMessageTokenResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,19 +62,19 @@ func (s *GetMessageTokenResponseBody) Validate() error {
 }
 
 type GetMessageTokenResponseBodyResult struct {
-	// The token used to establish a persistent connection.
+	// Token used for establishing persistent connections.
 	//
 	// example:
 	//
 	// oauth_cloud_key:***-b0YY5Gy6Q
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
-	// Indicates how long until the token expires. Unit: milliseconds.
+	// Logon token expiration time in milliseconds.
 	//
 	// example:
 	//
 	// 86400000
 	AccessTokenExpiredTime *int64 `json:"AccessTokenExpiredTime,omitempty" xml:"AccessTokenExpiredTime,omitempty"`
-	// The updated token. If a token expires, you can call RefreshToken to obtain a new token.
+	// Refresh token. If the AccessToken expires, you can use the RefreshToken to obtain a new token.
 	//
 	// example:
 	//

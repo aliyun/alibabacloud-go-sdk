@@ -22,7 +22,7 @@ type DescribeRtcMPUEventSubResponseBody struct {
 	//
 	// ******3B-0E1A-586A-AC29-742247******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the subscription.
+	// The event callback information.
 	SubInfo *DescribeRtcMPUEventSubResponseBodySubInfo `json:"SubInfo,omitempty" xml:"SubInfo,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *DescribeRtcMPUEventSubResponseBody) Validate() error {
 }
 
 type DescribeRtcMPUEventSubResponseBodySubInfo struct {
-	// The application ID. You can specify only one application ID.
+	// The ID of the subscribed application.
 	//
 	// example:
 	//
@@ -74,19 +74,19 @@ type DescribeRtcMPUEventSubResponseBodySubInfo struct {
 	//
 	// http://testcallback***.com/callback
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
-	// The ID of the channel to which mixed-stream relay event callbacks are sent. Multiple channel IDs are separated by commas (,). If this parameter is not returned, mixed-stream relay event callbacks are sent to all channels.
+	// The channel IDs of stream mixing tasks that receive callbacks, separated by commas (,). If this field is empty, all channels receive callbacks.
 	//
 	// example:
 	//
 	// yourCh1,yourCh2
 	ChannelIds *string `json:"ChannelIds,omitempty" xml:"ChannelIds,omitempty"`
-	// The time when the event callback was fired. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	// The creation time of the event callback, in the format of yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//
 	// 2024-04-09 18:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the subscription.
+	// The event callback ID.
 	//
 	// example:
 	//

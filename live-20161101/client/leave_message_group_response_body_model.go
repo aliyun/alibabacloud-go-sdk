@@ -16,13 +16,13 @@ type iLeaveMessageGroupResponseBody interface {
 }
 
 type LeaveMessageGroupResponseBody struct {
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 16A96B9A-****-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// Return result.
 	Result *LeaveMessageGroupResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,11 +62,11 @@ func (s *LeaveMessageGroupResponseBody) Validate() error {
 }
 
 type LeaveMessageGroupResponseBodyResult struct {
-	// Indicates whether the user left the message group. Valid values:
+	// Indicates whether the user successfully left the message group. Valid values:
 	//
-	// 	- true: The user left the message group.
+	// - true: Successful.
 	//
-	// 	- false: The user failed to leave the message group.
+	// - false: Unsuccessful.
 	//
 	// example:
 	//

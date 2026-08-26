@@ -36,7 +36,7 @@ type iUpdateLiveAIProduceRulesRequest interface {
 }
 
 type UpdateLiveAIProduceRulesRequest struct {
-	// The name of the application to which the live stream belongs.
+	// The name of the live stream application.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +44,13 @@ type UpdateLiveAIProduceRulesRequest struct {
 	//
 	// AppName
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// The description of the subtitle rule. The description can be up to 128 characters in length and can contain letters, digits, and special characters.
+	// The description of the subtitle rule. The description can contain letters, digits, Chinese characters, and special characters, and can be up to 128 characters in length.
 	//
 	// example:
 	//
 	// live AI subtitle template
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The main streaming domain.
+	// The primary streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -58,47 +58,52 @@ type UpdateLiveAIProduceRulesRequest struct {
 	//
 	// demo.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Specifies whether to generate live subtitles when stream pulling starts. Valid values:
+	// Specifies whether subtitles are triggered by stream pulling. Valid values:
 	//
-	// 	- true: generates live subtitles when stream pulling starts and stops generating live subtitles when no streams are pulled for 5 minutes. When stream pulling restarts, live subtitles are generated again.
+	// - true: Subtitles start when a stream is pulled. If no stream is pulled within 5 minutes, the subtitles stop. Subtitles restart when a stream is pulled again.
 	//
-	// 	- false: generates live subtitles when stream ingest starts.
+	// - false: Subtitles start as long as stream ingest is active, regardless of whether a stream is being pulled.
 	//
 	// example:
 	//
 	// true
 	IsLazy *bool `json:"IsLazy,omitempty" xml:"IsLazy,omitempty"`
-	// The specification of the output subtitles. Valid values:
+	// The output specification of the subtitle. Valid values:
 	//
-	// 	- `lp_ld`: 360p (640 × 360)
+	// - Landscape low definition 360P 640 × 360: `lp_ld`
 	//
-	// 	- `lp_ld_v`: 360p (360 × 640)
+	// - Portrait low definition 360P 360 × 640: `lp_ld_v`
 	//
-	// 	- `lp_sd`: 480p (854 × 480)
+	// - Landscape standard definition 480P 854 × 480: `lp_sd`
 	//
-	// 	- `lp_sd_v`: 480p (480 × 854)
+	// - Portrait standard definition 480P 480 × 854: `lp_sd_v`
 	//
-	// 	- `lp_hd`: 720p (1280 × 720)
+	// - Landscape high definition 720P 1280 × 720: `lp_hd`
 	//
-	// 	- `lp_hd_v`: 720p (720 × 1280)
+	// - Portrait high definition 720P 720 × 1280: `lp_hd_v`
 	//
-	// 	- `lp_ud`: 1080p (1920 × 1080)
+	// - Landscape ultra-high definition 1080P 1920 × 1080: `lp_ud`
 	//
-	// 	- `lp_ud_v`: 1080p (1080 × 1920)
+	// - Portrait ultra-high definition 1080P 1080 × 1920: `lp_ud_v`
 	//
 	// example:
 	//
 	// lp_ld
 	LiveTemplate *string `json:"LiveTemplate,omitempty" xml:"LiveTemplate,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the subtitle rule.
 	//
 	// example:
 	//
 	// 445409ec-7eaa-461d -8f29-4bec2eb9****
 	RulesId *string `json:"RulesId,omitempty" xml:"RulesId,omitempty"`
-	// The name of the virtual background template.
+	// The name of the virtual background template. You must specify at least one of SubtitleName and StudioName. Otherwise, a MissingParameter error is returned.
 	//
 	// example:
 	//
@@ -110,13 +115,13 @@ type UpdateLiveAIProduceRulesRequest struct {
 	//
 	// 445409ec-7eaa-461d-8f29-4bec2eb9****
 	SubtitleId *string `json:"SubtitleId,omitempty" xml:"SubtitleId,omitempty"`
-	// The name of the subtitle template.
+	// The name of the subtitle template. You must specify at least one of SubtitleName and StudioName. Otherwise, a MissingParameter error is returned.
 	//
 	// example:
 	//
 	// sub01
 	SubtitleName *string `json:"SubtitleName,omitempty" xml:"SubtitleName,omitempty"`
-	// The suffix to match.
+	// The suffix match.
 	//
 	// example:
 	//

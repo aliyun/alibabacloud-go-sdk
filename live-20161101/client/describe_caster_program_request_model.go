@@ -34,11 +34,11 @@ type iDescribeCasterProgramRequest interface {
 type DescribeCasterProgramRequest struct {
 	// The ID of the production studio.
 	//
-	// 	- If the production studio was created by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, check the value of the response parameter CasterId to obtain the ID.
+	// - If you create a production studio by calling the [CreateCaster](https://help.aliyun.com/document_detail/2848009.html) operation, use the CasterId value that is returned in the response.
 	//
-	// 	- If the production studio was created by using the ApsaraVideo Live console, obtain the ID on the **Production Studio Management*	- page. To go to the page, log on to the **ApsaraVideo Live console*	- and click **Production Studios*	- in the left-side navigation pane.
+	// - If you create a production studio in the LIVE console, find the ID on the Cloud Production Studio page. To go to this page, choose **LIVE*	- > **Production Studio*	- > **Cloud Production Studio**.
 	//
-	// >  You can find the ID of the production studio in the Instance ID/Name column.
+	// > The name of the production studio in the list on the Cloud Production Studio page is its ID.
 	//
 	// This parameter is required.
 	//
@@ -46,23 +46,23 @@ type DescribeCasterProgramRequest struct {
 	//
 	// LIVEPRODUCER_POST-cn-0pp1czt****
 	CasterId *string `json:"CasterId,omitempty" xml:"CasterId,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The end time. The time must be in the *yyyy-MM-dd*T*HH:mm:ss*Z format and in UTC.
 	//
 	// example:
 	//
 	// 2016-06-29T10:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the episode.
+	// The ID of the program.
 	//
 	// example:
 	//
 	// 1872639A-F203-4EC5-8E43-CB92E68F****
 	EpisodeId *string `json:"EpisodeId,omitempty" xml:"EpisodeId,omitempty"`
-	// The type of the episode. Valid values:
+	// The type of the node. Valid values:
 	//
-	// 	- **Resource**: a video resource
+	// - **Resource**: video source.
 	//
-	// 	- **Component**: a component
+	// - **Component**: component.
 	//
 	// example:
 	//
@@ -75,26 +75,31 @@ type DescribeCasterProgramRequest struct {
 	//
 	// 5
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page.
+	// The number of programs on each page.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+	// The start time. The time must be in the *yyyy-MM-dd*T*HH:mm:ss*Z format and in UTC.
 	//
 	// example:
 	//
 	// 2016-06-29T09:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the episode. Valid values:
+	// The status of the program. Valid values:
 	//
-	// 	- **0**: The episode is not played.
+	// - **0**: not started
 	//
-	// 	- **1**: The episode is being played.
+	// - **1**: playing
 	//
-	// 	- **2**: The playback of the episode is complete.
+	// - **2**: finished
 	//
 	// example:
 	//

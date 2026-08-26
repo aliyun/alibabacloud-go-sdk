@@ -24,13 +24,13 @@ type iDeleteMixStreamRequest interface {
 }
 
 type DeleteMixStreamRequest struct {
-	// The name of the application.
+	// The name of the app.
 	//
 	// example:
 	//
 	// liveApp****
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The main streaming domain.
+	// The domain name of the output stream.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DeleteMixStreamRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the stream mixing task. If the task was created by calling the [CreateMixStream](https://help.aliyun.com/document_detail/2848087.html) operation, check the value of the response parameter MixStreamId to obtain the ID.
+	// The ID of the stream mixing task. Obtain this ID from the MixStreamId parameter returned by the [CreateMixStream](https://help.aliyun.com/document_detail/2848087.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -47,7 +47,12 @@ type DeleteMixStreamRequest struct {
 	// 749b7594-86d6-37b1-513b-e1e19845****
 	MixStreamId *string `json:"MixStreamId,omitempty" xml:"MixStreamId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the output stream.
 	//
 	// example:

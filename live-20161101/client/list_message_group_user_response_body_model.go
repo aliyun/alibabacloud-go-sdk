@@ -16,13 +16,13 @@ type iListMessageGroupUserResponseBody interface {
 }
 
 type ListMessageGroupUserResponseBody struct {
-	// The ID of the request.
+	// Request ID.
 	//
 	// example:
 	//
 	// 16A96B9A-****-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// Return results.
 	Result *ListMessageGroupUserResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -62,23 +62,23 @@ func (s *ListMessageGroupUserResponseBody) Validate() error {
 }
 
 type ListMessageGroupUserResponseBodyResult struct {
-	// Indicates whether the current page is followed by another page. Valid values:
+	// Indicates whether there is a next page. Valid values:
 	//
-	// 	- true: The current page is followed by another page.
+	// - true: There is a next page.
 	//
-	// 	- false: The current page is not followed by another page.
+	// - false: There is no next page.
 	//
 	// example:
 	//
 	// false
 	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// The total number of users in the message group.
+	// Total number of message group users.
 	//
 	// example:
 	//
 	// 2
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// Details about the users.
+	// User list.
 	UserList []*ListMessageGroupUserResponseBodyResultUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
 }
 
@@ -131,13 +131,13 @@ func (s *ListMessageGroupUserResponseBodyResult) Validate() error {
 }
 
 type ListMessageGroupUserResponseBodyResultUserList struct {
-	// The time when the user joined the message group. The value is a UTC timestamp.
+	// UTC timestamp when the user joined the message group.
 	//
 	// example:
 	//
 	// 12**45
 	JoinTime *int64 `json:"JoinTime,omitempty" xml:"JoinTime,omitempty"`
-	// The ID of the user.
+	// User ID.
 	//
 	// example:
 	//

@@ -66,7 +66,7 @@ type iAddCustomLiveStreamTranscodeRequest interface {
 }
 
 type AddCustomLiveStreamTranscodeRequest struct {
-	// The name of the application to which the live stream belongs.
+	// The AppName of the live stream.
 	//
 	// This parameter is required.
 	//
@@ -74,69 +74,79 @@ type AddCustomLiveStreamTranscodeRequest struct {
 	//
 	// liveApp****
 	App *string `json:"App,omitempty" xml:"App,omitempty"`
-	// The bitrate of the output audio. Unit: Kbit/s. Valid values: **1 to 1000**.
+	// The output audio bitrate. Unit: kbps. Valid values: 1 to **1000**.
 	//
 	// example:
 	//
 	// 512
 	AudioBitrate *int32 `json:"AudioBitrate,omitempty" xml:"AudioBitrate,omitempty"`
-	// The number of sound channels. Valid values:
+	// The number of audio channels. Valid values:
 	//
-	// 	- **1**: mono.
+	// - **1**: mono.
 	//
-	// 	- **2**: binaural.
+	// - **2**: stereo.
 	//
 	// example:
 	//
 	// 2
 	AudioChannelNum *int32 `json:"AudioChannelNum,omitempty" xml:"AudioChannelNum,omitempty"`
-	// The audio encoding format. Valid values:
+	// The audio codec. Valid values:
 	//
-	// 	- **AAC**
+	// - **AAC**
 	//
-	// 	- **MP3**
+	// - **MP3**
 	//
 	// example:
 	//
 	// AAC
 	AudioCodec *string `json:"AudioCodec,omitempty" xml:"AudioCodec,omitempty"`
-	// The audio encoding profile. Valid values:
+	// The audio profile. Valid values:
 	//
-	// 	- **aac_low**
+	// - **aac_low**
 	//
-	// 	- **aac_he**
+	// - **aac_he**
 	//
-	// 	- **aac_he_v2**
+	// - **aac_he_v2**
 	//
-	// 	- **aac_ld**
+	// - **aac_ld**
 	//
 	// example:
 	//
 	// aac_low
 	AudioProfile *string `json:"AudioProfile,omitempty" xml:"AudioProfile,omitempty"`
-	// The audio sampling rate. Valid values: **22050 to 96000**.
+	// The audio sample rate. Valid values: **22050*	- to **96000**.
 	//
+	// 	Notice:
 	//
-	// 	Notice: If you set AudioProfile to **aac_ld**, the audio sampling rate cannot exceed 44100.
+	// If you set AudioProfile to **aac_ld**, the sample rate cannot exceed 44100.
 	//
 	// example:
 	//
 	// 96000
 	AudioRate *int32 `json:"AudioRate,omitempty" xml:"AudioRate,omitempty"`
-	// The source-based bitrate settings. This parameter takes precedence over other bitrate settings. The following fields must be included:
+	// The adaptive bitrate settings. If specified, it overrides the VideoBitrate parameter. Fields:
 	//
-	// 	- **UpLimit**: the maximum bitrate limit. Valid values: an integer from 128 to 10000. The value must be greater than the minimum bitrate.
+	// - **UpLimit (integer):*	- Required. The upper limit of the bitrate. This must be an integer from 128 to 10000 and greater than the lower limit.
 	//
-	// 	- **LowerLimit int*	- : the minimum bitrate rate. Valid values: an integer from 128 to 10000. The value must be smaller than the maximum bitrate.
+	// - **LowerLimit (integer):*	- Required. The lower limit of the bitrate. This must be an integer from 128 to 10000 and less than the upper limit.
 	//
-	// 	- **Factor**: The ratio of the output bitrate to the source bitrate. Valid values: 0.1 to 1. The value is accurate to one decimal place. A value of 1 indicates that the output video has the same bitrate as the source video.
+	// - **Factor (float):*	- Required: The factor by which the source bitrate is multiplied to calculate the output bitrate. Valid values: 0.1 to 1. The value can be accurate to one decimal place. A value of 1 indicates that the output bitrate is the same as the source bitrate.
 	//
 	// example:
 	//
 	// {"UpLimit":2500,"LowerLimit":800,"Factor":1}
 	BitrateWithSource *string `json:"BitrateWithSource,omitempty" xml:"BitrateWithSource,omitempty"`
-	DeInterlaced      *bool   `json:"DeInterlaced,omitempty" xml:"DeInterlaced,omitempty"`
-	// The main streaming domain.
+	// Specifies whether to automatically detect and remove interlacing during transcoding. Deinterlacing converts interlaced video into progressive video.
+	//
+	// - true: enables deinterlacing.
+	//
+	// - false: keeps the source format. This is the default value.
+	//
+	// example:
+	//
+	// false
+	DeInterlaced *bool `json:"DeInterlaced,omitempty" xml:"DeInterlaced,omitempty"`
+	// The streaming domain.
 	//
 	// This parameter is required.
 	//
@@ -144,131 +154,144 @@ type AddCustomLiveStreamTranscodeRequest struct {
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Encryption configuration. In JSON format, the fields are explained as follows:
+	// The encryption settings, formatted as a JSON string.
 	//
-	// - **EncryptType**: Encryption type. Fixed value is aliyun.
+	// - **EncryptType**: The encryption type. Set the value to aliyun.
 	//
-	// - **KmsKeyID**: User KMS master key ID.
+	// - **KmsKeyID**: The ID of the customer master key (CMK) in Key Management Service (KMS).
 	//
-	// - **KmsKeyExpireInterval**: Key rotation period. Range: 60~3600, unit: seconds.
+	// - **KmsKeyExpireInterval**: The key rotation period. Unit: seconds. Valid values: **60 to 3600.**
 	//
-	// > If the EncryptParameters is configured, the KmsKeyID, KmsUID, and KmsKeyExpireInterval parameters cannot be empty
+	// > If set, its internal fields cannot be empty.
 	//
 	// example:
 	//
 	// {"EncryptType": "aliyun", "KmsKeyID":"afce5722-81d2-43c3-9930-7601da11****","KmsKeyExpireInterval":"3600"}
 	EncryptParameters *string `json:"EncryptParameters,omitempty" xml:"EncryptParameters,omitempty"`
-	// Other source-based settings, including the following fields:
+	// Other adaptive settings that align the transcoded stream with the source stream. Fields:
 	//
-	// 	- **KeyFrameOpen**: specifies whether to use the key frames of the source video. Valid values: yes or no.
+	// - **KeyFrameOpen**: Specifies whether to align keyframes with the source stream. Valid values: yes and no.
 	//
-	// 	- **Copyts**: specifies whether to use the presentation time stamp (PTS) of the source video. Valid values: yes or no.
+	// - **Copyts (string)**: Specifies whether to align the presentation timestamp (PTS) with the source stream. Valid values: yes and no.
 	//
-	// 	- **SeiMode**: specifies whether to pass through supplemental enhancement information (SEI) messages. Valid values: 0, 1, and 2, where 0 specifies that no SEI messages are passed through, 1 specifies that part of SEI messages are passed through, and 2 specifies that all SEI messages are passed through.
+	// - **SeiMode**: The pass-through mode for Supplemental Enhancement Information (SEI). Valid values: 0 (disabled) and 1 (enabled).
 	//
 	// example:
 	//
 	// {"KeyFrameOpen":"yes","Copyts":"yes","SeiMode":1}
 	ExtWithSource *string `json:"ExtWithSource,omitempty" xml:"ExtWithSource,omitempty"`
-	// The frame rate of the output video. Unit: frames per second (FPS). Valid values: **1 to 60**.
+	// The frame rate of the output video. Unit: frames per second (FPS). Valid values: 1 to **60**.
 	//
 	// example:
 	//
 	// 30
 	FPS *int32 `json:"FPS,omitempty" xml:"FPS,omitempty"`
-	// The source-based frame rate settings. This parameter takes precedence over other frame rate settings. The following fields must be included:
+	// Adapts the output frame rate based on the source\\"s frame rate, while keeping it within a specified range. If specified, it overrides the FPS parameter. Fields:
 	//
-	// 	- **UpLimit**: the maximum frame rate. Valid values: an integer from 1 to 60. The value must be greater than the minimum frame rate.
+	// - **UpLimit (integer):*	- Required. The upper limit of the frame rate. This must be an integer from 1 to 60 and greater than the lower limit.
 	//
-	// 	- **LowerLimit**: the minimum frame rate. Valid values: an integer from 1 to 60. The value must be smaller than the maximum frame rate.
+	// - **LowerLimit (integer):*	- Required. The lower limit of the frame rate. This must be an integer from 1 to 60 and less than the upper limit.
 	//
 	// example:
 	//
 	// {"UpLimit":60,"LowerLimit":1}
 	FpsWithSource *string `json:"FpsWithSource,omitempty" xml:"FpsWithSource,omitempty"`
-	// The Group of Picture (GOP) size of the video. Unit: frames or seconds.
+	// The Group of Pictures (GOP) size. The unit can be frame or second. Valid values:
 	//
-	// 	- Unit: frames. Valid values: **1 to 3000**.
+	// - By frames: 1 to 3000.
 	//
-	// 	- Unit: seconds. Valid value: **1 to 20**.
+	// - By seconds: 1s to 20s.
 	//
 	// example:
 	//
 	// 1
 	Gop *string `json:"Gop,omitempty" xml:"Gop,omitempty"`
-	// The height of the output video. Unit: pixel. Valid values:
+	// Output video height in pixels. Requirements:
 	//
-	// The value must comply with all the following rules:
+	// - **Height ≥ 100**
 	//
-	// 	- **Height ≥ 100**: The height of the video is greater than or equal to 100 pixels.
+	// - **max(Height, Width) ≤ 2560**
 	//
-	// 	- **max(Height,Width) ≤ 2560**: The width or height of the video, whichever is greater, cannot exceed 2,560 pixels.
+	// - **min(Height, Width) ≤ 1440**
 	//
-	// 	- **min(Height,Width) ≤ 1440**: The width or height of the video, whichever is smaller, cannot exceed 1,440 pixels.
-	//
-	// > The resolution of the output video that is transcoded by using the H.265 Narrowband HD™ transcoding template cannot exceed 1280 × 720 pixels.
+	// > For h265-nbhd, it cannot exceed 720.
 	//
 	// example:
 	//
 	// 720
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The rotation period of the CMK. Valid values: 60 to 3600. Unit: seconds.
+	// The key rotation period. Unit: seconds. Valid values: 60 to 3600.
 	//
 	// example:
 	//
 	// 3600
 	KmsKeyExpireInterval *string `json:"KmsKeyExpireInterval,omitempty" xml:"KmsKeyExpireInterval,omitempty"`
-	// The ID of the customer master key (CMK) that you created in Key Management Service (KMS).
+	// The ID of the customer master key (CMK) in Key Management Service (KMS).
 	//
 	// example:
 	//
 	// afce5722-81d2-43c3-9930-7601da11****
 	KmsKeyID *string `json:"KmsKeyID,omitempty" xml:"KmsKeyID,omitempty"`
-	// The ID of your KMS account.
+	// The ID of the KMS account.
 	//
 	// example:
 	//
 	// 25346073170691****
 	KmsUID *string `json:"KmsUID,omitempty" xml:"KmsUID,omitempty"`
-	// Specifies whether to use the load-on-demand mechanism for transcoding. Valid values: yes and no. Default value: **yes**.
+	// Specifies whether to enable on-demand transcoding. Valid values:
+	//
+	// - **yes**: Transcoding only starts when the first viewer requests this transcoded stream.
+	//
+	// - **no**: Transcoding starts immediately after the stream is published.
 	//
 	// example:
 	//
 	// yes
 	Lazy    *string `json:"Lazy,omitempty" xml:"Lazy,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The video encoding profile. The profile defines a set of parameters that are used to encode a video. In most cases, a greater value indicates better image quality and higher resource consumption. Valid values:
+	// The video codec profile. A larger value indicates better video quality and higher resource consumption for encoding and decoding. Valid values:
 	//
-	// 	- **1**: baseline. This value is suitable for mobile devices.
+	// - **1**: baseline (for mobile devices).
 	//
-	// 	- **2**: main. This value is suitable for standard-definition devices.
+	// - **2**: main (for SD devices).
 	//
-	// 	- **3**: high. This value is suitable for high-definition devices.
+	// - **3**: high (for HD devices).
 	//
 	// example:
 	//
 	// 2
-	Profile  *int32  `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	Profile *int32 `json:"Profile,omitempty" xml:"Profile,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The source-based resolution settings. This parameter takes precedence over other resolution settings. The following fields must be included:
+	// The adaptive resolution settings. If specified, it overrides the Height and Width parameters. Fieds:
 	//
-	// 	- **Type**: You can set this field to short, long, or screen. short specifies that the resolution of the output video is adapted to the shorter side, long specifies that the resolution of the output video is adapted to the longer side, and screen specifies that the output video has an adaptive resolution.
+	// - **Type (string):*	- Required. Valid values:
 	//
-	// 	- **Value**:
+	//   - **short**: sets the shorter edge of the video to the specified value and scales the other edge to maintain the original aspect ratio.
 	//
-	//     	- Set this field to 360, 480, 540, 720, or 1080 if the Type field is set to short.
+	//   - **long**: sets the longer edge of the video to the specified value and scales the other edge to maintain the original aspect ratio.
 	//
-	//     	- Set this field to 640, 848, 960, 1280, or 1920 if the Type field is set to long.
+	//   - **screen**: Matches the output to a standard resolution, automatically flipping the dimensions based on the source\\"s orientation.
 	//
-	//     	- Set this field to 640\\*360, 848\\*480, 960\\*540, 1280\\*720, or 1920\\*1080 if the Type field is set to screen.
+	// - **Value (string):*	- Required. Valid values:
+	//
+	//   - For short: 360, 480, 540, 720, and 1080.
+	//
+	//   - For long: 640, 848, 960, 1280, and 1920.
+	//
+	//   - For screen: 640×360, 848×480, 960×540, 1280×720, and 1920×1080.
 	//
 	// example:
 	//
 	// {"Type":"short","Value":"1080"}
 	ResWithSource *string `json:"ResWithSource,omitempty" xml:"ResWithSource,omitempty"`
-	// The name of the custom transcoding template.
+	// The custom name of the transcoding template.
 	//
-	// > The name can contain digits, letters, and hyphens (-), and must start with a letter or digit. The name must be different from the names of any default transcoding templates.
+	// > The name can contain digits, letters, and hyphens (-). It must start with a digit or a letter. It cannot be the same as the name of a standard transcoding template.
 	//
 	// This parameter is required.
 	//
@@ -278,17 +301,17 @@ type AddCustomLiveStreamTranscodeRequest struct {
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The type of the custom transcoding template. Valid values:
 	//
-	// 	- **h264**: custom H.264 standard transcoding.
+	// - **h264**: custom H.264 standard transcoding.
 	//
-	// 	- **h264-nbhd**: custom H.264 Narrowband HD™ transcoding.
+	// - **h264-nbhd**: custom H.264 Narrowband HD™ transcoding.
 	//
-	// 	- **h265**: custom H.265 standard transcoding.
+	// - **h265**: custom H.265 standard transcoding.
 	//
-	// 	- **h265-nbhd**: custom H.265 Narrowband HD™ transcoding.
+	// - **h265-nbhd**: custom H.265 Narrowband HD™ transcoding.
 	//
-	// 	- **audio**: audio-only transcoding.
+	// - **audio**: audio-only transcoding.
 	//
-	// > If you set **TemplateType*	- to **h264**, **h264-nbhd**, **h265**, or **h265-nbhd**, the **Height**, **Width**, **FPS**, and **VideoBitrate*	- parameters are required.
+	// > For video types, Height, Width, FPS, and VideoBitrate are required.
 	//
 	// This parameter is required.
 	//
@@ -296,25 +319,25 @@ type AddCustomLiveStreamTranscodeRequest struct {
 	//
 	// h264
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
-	// The bitrate of the output video. Unit: Kbit/s. Valid values: **1 to 6000**.
+	// The output video bitrate. Unit: kbps. Valid values: 1 to **6000**.
 	//
-	// > The bitrate of the output video may not be the same as the value that you specify, but is as close to the value as possible, especially when the value is excessively large or small.
+	// > The system tries to transcode the video at the specified bitrate. However, the actual bitrate may not be the same as the specified value, especially when the specified value is too high or too low.
 	//
 	// example:
 	//
 	// 720
 	VideoBitrate *int32 `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
-	// The width of the output video. Unit: pixel. Valid values:
+	// Output video width in pixels.
 	//
-	// The value must comply with all the following rules:
+	// Requirements:
 	//
-	// 	- **Width ≥ 100**: The width of the video is greater than or equal to 100 pixels.
+	// - **Width ≥ 100**
 	//
-	// 	- **max(Height,Width) ≤ 2560**: The width or height of the video, whichever is greater, cannot exceed 2,560 pixels.
+	// - **max(Height, Width) ≤ 2560**
 	//
-	// 	- **min(Height,Width) ≤ 1440**: The width or height of the video, whichever is smaller, cannot exceed 1,440 pixels.
+	// - **min(Height, Width) ≤ 1440**
 	//
-	// > The resolution of the output video that is transcoded by using the H.265 Narrowband HD™ transcoding template cannot exceed 1280 × 720 pixels.
+	// > For h265-nbhd, it cannot exceed 1280.
 	//
 	// example:
 	//

@@ -28,27 +28,39 @@ type iListLiveTagResourcesRequest interface {
 }
 
 type ListLiveTagResourcesRequest struct {
+	// The token for the next query.
+	//
 	// example:
 	//
 	// q2j8bLtBdhONLRkgaPBa6A==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The list of resource IDs. ResourceId and Tag cannot both be empty.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DOMAIN
-	ResourceType *string                           `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListLiveTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The list of tags. ResourceId and Tag cannot both be empty.
+	Tag []*ListLiveTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The Bid of the tag owner.
+	//
 	// example:
 	//
 	// 26842
 	TagOwnerBid *string `json:"TagOwnerBid,omitempty" xml:"TagOwnerBid,omitempty"`
+	// The Alibaba Cloud account ID to which the tag belongs.
+	//
 	// example:
 	//
 	// xxx1234xxx
@@ -149,10 +161,14 @@ func (s *ListLiveTagResourcesRequest) Validate() error {
 }
 
 type ListLiveTagResourcesRequestTag struct {
+	// The tag key of the resource.
+	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value that corresponds to the tag key.
+	//
 	// example:
 	//
 	// dev

@@ -31,7 +31,7 @@ type DescribeLiveStreamsBlockListRequest struct {
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The number of the page to return. Default value: **1**.
 	//
 	// example:
 	//

@@ -20,15 +20,20 @@ type iDescribeLiveUserBillPredictionRequest interface {
 }
 
 type DescribeLiveUserBillPredictionRequest struct {
-	// The end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time. The time must be in UTC and follow the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2015-12-01T05:45:00Z
-	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd**THH:mm:ssZ	- format. The time must be in UTC.
+	// The start time. The time must be in UTC and follow the *yyyy-mm-dd*T*hh:mm:ss*Z format.
 	//
 	// example:
 	//
