@@ -28,18 +28,88 @@ type iImportOneMetaOssieModelRequest interface {
 }
 
 type ImportOneMetaOssieModelRequest struct {
+	// The UUID of the associated folder.
+	//
 	// This parameter is required.
-	CatalogUuid  *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
+	//
+	// example:
+	//
+	// mc-HZ-OfjcNc2z***
+	CatalogUuid *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
+	// The UUID of the associated database.
+	//
+	// example:
+	//
+	// md-HZ-fp9K7r***
 	DatabaseUuid *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The semantic description.
+	//
+	// example:
+	//
+	// Order summary
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The semantic model document type. Valid values: JSON and YAML.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// JSON
 	DocFormat *string `json:"DocFormat,omitempty" xml:"DocFormat,omitempty"`
+	// The semantic model document definition.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "version": "0.2.0.dev0",
+	//
+	//   "semantic_model": [
+	//
+	//     {
+	//
+	//       "name": "sales",
+	//
+	//       "datasets": [
+	//
+	//         {
+	//
+	//           "name": "orders",
+	//
+	//           "source": "analytics.public.orders"
+	//
+	//         }
+	//
+	//       ]
+	//
+	//     }
+	//
+	//   ]
+	//
+	// }
 	Document *string `json:"Document,omitempty" xml:"Document,omitempty"`
+	// The source of the semantic model.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// DATA_AGENT
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	Tag    *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The semantic model tag.
+	//
+	// example:
+	//
+	// new_sales
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The semantic title. If the value is empty, the title is extracted from the document.
+	//
+	// example:
+	//
+	// Order total
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ImportOneMetaOssieModelRequest) String() string {

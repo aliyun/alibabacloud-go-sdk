@@ -26,13 +26,48 @@ type iListOneMetaSqlTemplatesResponseBody interface {
 }
 
 type ListOneMetaSqlTemplatesResponseBody struct {
-	Data         []*OneMetaSqlTemplateView `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorCode    *string                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	MaxResults   *int32                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response struct.
+	Data []*OneMetaSqlTemplateView `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error code returned when the request fails.
+	//
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned when the call fails.
+	//
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The page size.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token for the next query.
+	//
+	// example:
+	//
+	// NesLoKLEdIZrKhDT7I2gS****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 67E910F2-4B62-5B0C-ACA3-7547695C****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListOneMetaSqlTemplatesResponseBody) String() string {

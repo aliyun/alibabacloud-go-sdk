@@ -14,7 +14,13 @@ type iDeleteOneMetaSqlTemplateRequest interface {
 }
 
 type DeleteOneMetaSqlTemplateRequest struct {
+	// The UUID of the knowledge base.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 86c5c290052147c***
 	KnowledgeUuid *string `json:"KnowledgeUuid,omitempty" xml:"KnowledgeUuid,omitempty"`
 }
 

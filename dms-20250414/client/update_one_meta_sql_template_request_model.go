@@ -28,15 +28,56 @@ type iUpdateOneMetaSqlTemplateRequest interface {
 }
 
 type UpdateOneMetaSqlTemplateRequest struct {
-	CatalogUuid  *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
+	// The UUID of the associated folder.
+	//
+	// example:
+	//
+	// mc-HZ-OfjcNc2z***
+	CatalogUuid *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
+	// The UUID of the associated database.
+	//
+	// example:
+	//
+	// md-HZ-fp9K7r***
 	DatabaseUuid *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Expr         *string `json:"Expr,omitempty" xml:"Expr,omitempty"`
+	// The description of the SQL template.
+	//
+	// example:
+	//
+	// sales version 2
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The content of the SQL template.
+	//
+	// example:
+	//
+	// select count(1) from sales where dt = \\"2026-08-01\\"
+	Expr *string `json:"Expr,omitempty" xml:"Expr,omitempty"`
+	// The UUID of the knowledge base.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 86c5c290052147c***
 	KnowledgeUuid *string `json:"KnowledgeUuid,omitempty" xml:"KnowledgeUuid,omitempty"`
-	SqlParams     *string `json:"SqlParams,omitempty" xml:"SqlParams,omitempty"`
-	Tag           *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The custom template parameters.
+	//
+	// example:
+	//
+	// {"dt": "2026-08-01"}
+	SqlParams *string `json:"SqlParams,omitempty" xml:"SqlParams,omitempty"`
+	// The tag of the SQL template.
+	//
+	// example:
+	//
+	// new_sales
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The title of the SQL template.
+	//
+	// example:
+	//
+	// sales_v2
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateOneMetaSqlTemplateRequest) String() string {

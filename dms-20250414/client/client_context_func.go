@@ -1038,6 +1038,70 @@ func (client *Client) CreateDataAgentSessionWithContext(ctx context.Context, tmp
 
 // Summary:
 //
+// Creates a DataAgent theme.
+//
+// @param request - CreateDataAgentThemeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataAgentThemeResponse
+func (client *Client) CreateDataAgentThemeWithContext(ctx context.Context, request *CreateDataAgentThemeRequest, runtime *dara.RuntimeOptions) (_result *CreateDataAgentThemeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Category) {
+		query["Category"] = request.Category
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.FileFrom) {
+		query["FileFrom"] = request.FileFrom
+	}
+
+	if !dara.IsNil(request.ThemeId) {
+		query["ThemeId"] = request.ThemeId
+	}
+
+	if !dara.IsNil(request.ThemeName) {
+		query["ThemeName"] = request.ThemeName
+	}
+
+	if !dara.IsNil(request.ThemeType) {
+		query["ThemeType"] = request.ThemeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataAgentTheme"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDataAgentThemeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a DataAgent workspace.
 //
 // @param request - CreateDataAgentWorkspaceRequest
@@ -1384,7 +1448,7 @@ func (client *Client) CreateDataLakeTableWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// 创建sql模版
+// Creates an SQL template.
 //
 // @param request - CreateOneMetaSqlTemplateRequest
 //
@@ -2270,7 +2334,7 @@ func (client *Client) DeleteFileUploadWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除onemeta3.0的Ossie模型
+// Deletes an Ossie model from onemeta 3.0.
 //
 // @param request - DeleteOneMetaOssieModelRequest
 //
@@ -2314,7 +2378,7 @@ func (client *Client) DeleteOneMetaOssieModelWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 删除sql模版
+// Deletes a knowledge base in OneMeta 3.0.
 //
 // @param request - DeleteOneMetaSqlTemplateRequest
 //
@@ -2564,6 +2628,50 @@ func (client *Client) DescribeDataAgentSessionWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeDataAgentSessionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Invokes the DescribeDataAgentTheme operation to query the details of a single DataAgent theme, including the theme name, stage, source, common scenarios, description, and creation and modification time.
+//
+// @param request - DescribeDataAgentThemeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDataAgentThemeResponse
+func (client *Client) DescribeDataAgentThemeWithContext(ctx context.Context, request *DescribeDataAgentThemeRequest, runtime *dara.RuntimeOptions) (_result *DescribeDataAgentThemeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ThemeId) {
+		query["ThemeId"] = request.ThemeId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDataAgentTheme"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDataAgentThemeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3233,6 +3341,52 @@ func (client *Client) GetDataAgentTaskModelUsageMetricsWithContext(ctx context.C
 
 // Summary:
 //
+// Calls the GetDataAgentThemeUploadSignature operation to obtain OSS direct upload credentials for uploading a DataAgent theme file. After obtaining the credentials, use the PostObject method to upload the theme file directly to OSS. After the upload is complete, call the CreateDataAgentTheme operation with the returned ThemeId to complete theme creation.
+//
+// Refer to https://www.alibabacloud.com/help/en/oss/user-guide/client-direct-transmission/ for instructions on uploading the theme file.
+//
+// @param request - GetDataAgentThemeUploadSignatureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataAgentThemeUploadSignatureResponse
+func (client *Client) GetDataAgentThemeUploadSignatureWithContext(ctx context.Context, request *GetDataAgentThemeUploadSignatureRequest, runtime *dara.RuntimeOptions) (_result *GetDataAgentThemeUploadSignatureResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ThemeId) {
+		query["ThemeId"] = request.ThemeId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataAgentThemeUploadSignature"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataAgentThemeUploadSignatureResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of a collaborative workspace.
 //
 // @param request - GetDataAgentWorkspaceInfoRequest
@@ -3745,7 +3899,7 @@ func (client *Client) GetNotebookTaskStatusWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取onemeta3.0的Ossie模型
+// Retrieves the Ossie model of onemeta 3.0.
 //
 // @param request - GetOneMetaOssieModelRequest
 //
@@ -4017,7 +4171,7 @@ func (client *Client) GetWorkspaceQuotaWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 导入Ossie模型
+// Creates an SQL template.
 //
 // @param request - ImportOneMetaOssieModelRequest
 //
@@ -4843,6 +4997,74 @@ func (client *Client) ListDataAgentSessionWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDataAgentSessionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Invokes the ListDataAgentTheme operation to query the DataAgent theme list by paging. You can filter themes by theme stage, source, and common scenarios.
+//
+// @param request - ListDataAgentThemeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataAgentThemeResponse
+func (client *Client) ListDataAgentThemeWithContext(ctx context.Context, request *ListDataAgentThemeRequest, runtime *dara.RuntimeOptions) (_result *ListDataAgentThemeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Category) {
+		query["Category"] = request.Category
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ThemeFrom) {
+		query["ThemeFrom"] = request.ThemeFrom
+	}
+
+	if !dara.IsNil(request.ThemeType) {
+		query["ThemeType"] = request.ThemeType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataAgentTheme"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataAgentThemeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6119,7 +6341,7 @@ func (client *Client) ListKnowledgeBasesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取ossie模型列表
+// Retrieves a list of OSSIE models.
 //
 // @param request - ListOneMetaOssieModelsRequest
 //
@@ -6187,7 +6409,7 @@ func (client *Client) ListOneMetaOssieModelsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 获取sql模版
+// Retrieves SQL templates.
 //
 // @param request - ListOneMetaSqlTemplatesRequest
 //
@@ -6529,6 +6751,58 @@ func (client *Client) ModifyDataAgentMcpWithContext(ctx context.Context, request
 
 // Summary:
 //
+// # ModifyDataAgentTheme
+//
+// @param request - ModifyDataAgentThemeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDataAgentThemeResponse
+func (client *Client) ModifyDataAgentThemeWithContext(ctx context.Context, request *ModifyDataAgentThemeRequest, runtime *dara.RuntimeOptions) (_result *ModifyDataAgentThemeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ThemeId) {
+		query["ThemeId"] = request.ThemeId
+	}
+
+	if !dara.IsNil(request.ThemeName) {
+		query["ThemeName"] = request.ThemeName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyDataAgentTheme"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyDataAgentThemeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Operate custom agents in personal spaces and workspaces.
 //
 // @param request - OperateCustomAgentRequest
@@ -6857,17 +7131,13 @@ func (client *Client) SaveWorkspaceCodeWithContext(ctx context.Context, request 
 //
 // ## Request description
 //
-// - `agent_id` and `session_id` are required fields.
-//
 // - `message_type` defaults to `primary`. Set it to `additional` or `cancel` when you need to append information or cancel a session.
 //
 // - The `reply_to` field indicates which Agent message this message is responding to. The default value is `0`.
 //
 // - When `message_type` is `additional`, the `question` field is required.
 //
-// - `quoted_message` can be used to quote the user\\"s previous message content.
-//
-// - Fields such as `data_source`, `dms_user`, `db_metadata`, and `session_config` are optional but provide more detailed context information.
+// - `quoted_message` can be used to quote the content of a previous user message.
 //
 // @param tmpReq - SendChatMessageRequest
 //
@@ -8047,7 +8317,7 @@ func (client *Client) UpdateKnowledgeBaseWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 更新Ossie模型
+// Updates an SQL template.
 //
 // @param request - UpdateOneMetaOssieModelRequest
 //
@@ -8119,7 +8389,7 @@ func (client *Client) UpdateOneMetaOssieModelWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 更新sql模版
+// Updates an SQL template.
 //
 // @param request - UpdateOneMetaSqlTemplateRequest
 //

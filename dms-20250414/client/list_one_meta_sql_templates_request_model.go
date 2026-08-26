@@ -28,14 +28,55 @@ type iListOneMetaSqlTemplatesRequest interface {
 }
 
 type ListOneMetaSqlTemplatesRequest struct {
-	CatalogUuid        *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
-	DatabaseUuid       *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
-	EnableVectorSearch *bool   `json:"EnableVectorSearch,omitempty" xml:"EnableVectorSearch,omitempty"`
-	MaxResults         *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken          *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The UUID of the associated catalog.
+	//
+	// example:
+	//
+	// mc-HZ-OfjcNc2z***
+	CatalogUuid *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
+	// The UUID of the associated database.
+	//
+	// example:
+	//
+	// md-HZ-fp9K7r***
+	DatabaseUuid *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
+	// Specifies whether to use semantic search.
+	//
+	// example:
+	//
+	// true
+	EnableVectorSearch *bool `json:"EnableVectorSearch,omitempty" xml:"EnableVectorSearch,omitempty"`
+	// The maximum number of entries to return in this response.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token for the next query.
+	//
+	// example:
+	//
+	// f056501ada12****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The search keyword.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// sale
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	Tag   *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The SQL template tag.
+	//
+	// example:
+	//
+	// new_sales
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The UUIDs of knowledge instances. Separate multiple UUIDs with commas (,).
+	//
+	// example:
+	//
+	// 86c5c290052147c***,56c5c2900dasqw***
 	Uuids *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 

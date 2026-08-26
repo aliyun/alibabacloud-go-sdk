@@ -22,11 +22,36 @@ type iUpdateOneMetaOssieModelResponseBody interface {
 }
 
 type UpdateOneMetaOssieModelResponseBody struct {
-	Data         *OssieModelView `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode    *string         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response struct.
+	Data *OssieModelView `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned if the request failed.
+	//
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the call failed.
+	//
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 67E910F2-4B62-5B0C-ACA3-7547695C****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateOneMetaOssieModelResponseBody) String() string {

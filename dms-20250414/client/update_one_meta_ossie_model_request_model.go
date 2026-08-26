@@ -28,15 +28,86 @@ type iUpdateOneMetaOssieModelRequest interface {
 }
 
 type UpdateOneMetaOssieModelRequest struct {
-	CatalogUuid  *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
+	// The UUID of the associated folder.
+	//
+	// example:
+	//
+	// mc-HZ-OfjcNc2z***
+	CatalogUuid *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
+	// The UUID of the associated database.
+	//
+	// example:
+	//
+	// md-HZ-fp9K7r***
 	DatabaseUuid *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DocFormat    *string `json:"DocFormat,omitempty" xml:"DocFormat,omitempty"`
-	Document     *string `json:"Document,omitempty" xml:"Document,omitempty"`
+	// The semantic description.
+	//
+	// example:
+	//
+	// Order summary
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The document type of the semantic model. Valid values:
+	//
+	// - JSON
+	//
+	// - YAML
+	//
+	// example:
+	//
+	// JSON
+	DocFormat *string `json:"DocFormat,omitempty" xml:"DocFormat,omitempty"`
+	// The document definition of the semantic model.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "version": "0.2.0.dev0",
+	//
+	//   "semantic_model": [
+	//
+	//     {
+	//
+	//       "name": "sales",
+	//
+	//       "datasets": [
+	//
+	//         {
+	//
+	//           "name": "orders",
+	//
+	//           "source": "analytics.public.orders"
+	//
+	//         }
+	//
+	//       ]
+	//
+	//     }
+	//
+	//   ]
+	//
+	// }
+	Document *string `json:"Document,omitempty" xml:"Document,omitempty"`
+	// The UUID of the knowledge.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 86c5c290052147c***
 	KnowledgeUuid *string `json:"KnowledgeUuid,omitempty" xml:"KnowledgeUuid,omitempty"`
-	Tag           *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The tag of the semantic model.
+	//
+	// example:
+	//
+	// sales
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The semantic title.
+	//
+	// example:
+	//
+	// Order total
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateOneMetaOssieModelRequest) String() string {

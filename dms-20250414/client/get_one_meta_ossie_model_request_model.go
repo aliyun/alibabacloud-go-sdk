@@ -16,9 +16,21 @@ type iGetOneMetaOssieModelRequest interface {
 }
 
 type GetOneMetaOssieModelRequest struct {
+	// The document type of the semantic model. Valid values: JSON and YAML.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// JSON
 	DocFormat *string `json:"DocFormat,omitempty" xml:"DocFormat,omitempty"`
+	// The UUID of the knowledge base.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 86c5c290052147c***
 	KnowledgeUuid *string `json:"KnowledgeUuid,omitempty" xml:"KnowledgeUuid,omitempty"`
 }
 

@@ -26,14 +26,50 @@ type iListOneMetaOssieModelsRequest interface {
 }
 
 type ListOneMetaOssieModelsRequest struct {
-	CatalogUuid        *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
-	DatabaseUuid       *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
-	EnableVectorSearch *bool   `json:"EnableVectorSearch,omitempty" xml:"EnableVectorSearch,omitempty"`
-	MaxResults         *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken          *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The UUID of the associated folder.
+	//
+	// example:
+	//
+	// mc-HZ-OfjcNc2z***
+	CatalogUuid *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
+	// The UUID of the associated database.
+	//
+	// example:
+	//
+	// md-HZ-fp9K7r***
+	DatabaseUuid *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
+	// Specifies whether to use semantic search.
+	//
+	// example:
+	//
+	// true
+	EnableVectorSearch *bool `json:"EnableVectorSearch,omitempty" xml:"EnableVectorSearch,omitempty"`
+	// The maximum number of records per page.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next query.
+	//
+	// example:
+	//
+	// NesLoKLEdIZrKhDT7I2gS****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The search keyword.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// sale
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	Tag   *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The semantic model tag.
+	//
+	// example:
+	//
+	// new_sales
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s ListOneMetaOssieModelsRequest) String() string {

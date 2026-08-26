@@ -22,11 +22,40 @@ type iDeleteOneMetaSqlTemplateResponseBody interface {
 }
 
 type DeleteOneMetaSqlTemplateResponseBody struct {
-	Data         *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The response struct.
+	//
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code returned when the request fails.
+	//
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned when the call fails.
+	//
+	// example:
+	//
+	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// E0D21075-CD3E-4D98-8264-FD8AD04A63B6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - **true**: The request is successful.
+	//
+	// - **false**: The request failed.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteOneMetaSqlTemplateResponseBody) String() string {

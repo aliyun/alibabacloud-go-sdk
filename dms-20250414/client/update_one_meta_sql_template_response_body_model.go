@@ -22,11 +22,36 @@ type iUpdateOneMetaSqlTemplateResponseBody interface {
 }
 
 type UpdateOneMetaSqlTemplateResponseBody struct {
-	Data         *OneMetaSqlTemplateView `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode    *string                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string                 `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The response struct.
+	Data *OneMetaSqlTemplateView `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// UnknownError
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the call failed.
+	//
+	// example:
+	//
+	// Current Session is processing request, cannot accept more message.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 67E910F2-4B62-5B0C-ACA3-7547695C****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateOneMetaSqlTemplateResponseBody) String() string {

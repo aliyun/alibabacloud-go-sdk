@@ -28,38 +28,54 @@ type iCreateOneMetaSqlTemplateRequest interface {
 }
 
 type CreateOneMetaSqlTemplateRequest struct {
+	// The UUID of the associated folder.
+	//
 	// example:
 	//
 	// mc-HZ-OfjcNc2z***
 	CatalogUuid *string `json:"CatalogUuid,omitempty" xml:"CatalogUuid,omitempty"`
+	// The UUID of the associated database.
+	//
 	// example:
 	//
 	// md-HZ-fp9K7r***
 	DatabaseUuid *string `json:"DatabaseUuid,omitempty" xml:"DatabaseUuid,omitempty"`
+	// The description of the SQL template.
+	//
 	// example:
 	//
 	// sales template
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The content of the SQL template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// SELECT SUM(amount) AS total_sales FROM store_daily_sales
 	Expr *string `json:"Expr,omitempty" xml:"Expr,omitempty"`
+	// The knowledge source of the SQL template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DATA_AGENT
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The custom template parameters.
+	//
 	// example:
 	//
 	// {"start_day_id": "2026-08-01", "end_day_id": "2026-08-16"}
 	SqlParams *string `json:"SqlParams,omitempty" xml:"SqlParams,omitempty"`
+	// The tag of the SQL template.
+	//
 	// example:
 	//
 	// sales
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The title of the SQL template.
+	//
 	// This parameter is required.
 	//
 	// example:
