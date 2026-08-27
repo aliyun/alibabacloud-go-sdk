@@ -609,6 +609,176 @@ func (client *Client) GetApiKeyWithContext(ctx context.Context, apiKeyId *string
 
 // Summary:
 //
+// 查询账单概览
+//
+// @param tmpReq - GetBillingOverviewRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBillingOverviewResponse
+func (client *Client) GetBillingOverviewWithContext(ctx context.Context, tmpReq *GetBillingOverviewRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetBillingOverviewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetBillingOverviewShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Filter) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, dara.String("filter"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.GroupBy) {
+		request.GroupByShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GroupBy, dara.String("groupBy"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BillMonth) {
+		query["billMonth"] = request.BillMonth
+	}
+
+	if !dara.IsNil(request.FilterShrink) {
+		query["filter"] = request.FilterShrink
+	}
+
+	if !dara.IsNil(request.GroupByShrink) {
+		query["groupBy"] = request.GroupByShrink
+	}
+
+	if !dara.IsNil(request.Locale) {
+		query["locale"] = request.Locale
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TopNum) {
+		query["topNum"] = request.TopNum
+	}
+
+	if !dara.IsNil(request.ZeroFilter) {
+		query["zeroFilter"] = request.ZeroFilter
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetBillingOverview"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/modelstudio/billing/overview"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetBillingOverviewResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询账单趋势
+//
+// @param tmpReq - GetBillingTrendRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBillingTrendResponse
+func (client *Client) GetBillingTrendWithContext(ctx context.Context, tmpReq *GetBillingTrendRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetBillingTrendResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetBillingTrendShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Filter) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, dara.String("filter"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.GroupBy) {
+		request.GroupByShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GroupBy, dara.String("groupBy"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TimePeriod) {
+		request.TimePeriodShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TimePeriod, dara.String("timePeriod"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FilterShrink) {
+		query["filter"] = request.FilterShrink
+	}
+
+	if !dara.IsNil(request.Granularity) {
+		query["granularity"] = request.Granularity
+	}
+
+	if !dara.IsNil(request.GroupByShrink) {
+		query["groupBy"] = request.GroupByShrink
+	}
+
+	if !dara.IsNil(request.Locale) {
+		query["locale"] = request.Locale
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["regionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TimePeriodShrink) {
+		query["timePeriod"] = request.TimePeriodShrink
+	}
+
+	if !dara.IsNil(request.TopNum) {
+		query["topNum"] = request.TopNum
+	}
+
+	if !dara.IsNil(request.ZeroFilter) {
+		query["zeroFilter"] = request.ZeroFilter
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetBillingTrend"),
+		Version:     dara.String("2026-02-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/modelstudio/billing/trend"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetBillingTrendResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves information about a specified organization.
 //
 // Description:
@@ -1774,7 +1944,7 @@ func (client *Client) UpdateModelLimitsWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 更新业务空间模型授权
+// Updates model authorization for a workspace.
 //
 // @param request - UpdateModelPermissionsRequest
 //

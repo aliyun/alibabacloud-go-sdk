@@ -18,11 +18,22 @@ type iUpdateModelPermissionsRequest interface {
 }
 
 type UpdateModelPermissionsRequest struct {
+	// The tri-state value for one-click authorization. Valid values:
+	//
+	// - OPEN: grants authorization to all models with one click.
+	//
+	// - CLOSE: cancels one-click authorization.
+	//
+	// - KEEP: keeps per-model authorization.
+	//
 	// example:
 	//
 	// OPEN
-	AccessAllEntities *string                                `json:"accessAllEntities,omitempty" xml:"accessAllEntities,omitempty"`
-	Models            []*UpdateModelPermissionsRequestModels `json:"models,omitempty" xml:"models,omitempty" type:"Repeated"`
+	AccessAllEntities *string `json:"accessAllEntities,omitempty" xml:"accessAllEntities,omitempty"`
+	// The list of per-model authorization items.
+	Models []*UpdateModelPermissionsRequestModels `json:"models,omitempty" xml:"models,omitempty" type:"Repeated"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -80,9 +91,14 @@ func (s *UpdateModelPermissionsRequest) Validate() error {
 }
 
 type UpdateModelPermissionsRequestModels struct {
-	Deploy    *bool `json:"deploy,omitempty" xml:"deploy,omitempty"`
-	FineTune  *bool `json:"fineTune,omitempty" xml:"fineTune,omitempty"`
+	// Specifies whether to grant model deployment permission.
+	Deploy *bool `json:"deploy,omitempty" xml:"deploy,omitempty"`
+	// Specifies whether to grant model training permission.
+	FineTune *bool `json:"fineTune,omitempty" xml:"fineTune,omitempty"`
+	// Specifies whether to grant model invocation permission.
 	Inference *bool `json:"inference,omitempty" xml:"inference,omitempty"`
+	// The model.
+	//
 	// This parameter is required.
 	//
 	// example:
