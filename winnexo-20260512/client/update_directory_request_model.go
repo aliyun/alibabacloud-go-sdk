@@ -24,13 +24,13 @@ type iUpdateDirectoryRequest interface {
 }
 
 type UpdateDirectoryRequest struct {
-	// 新目录描述；缺省表示不更新
+	// The description of the to-do card type.
 	//
 	// example:
 	//
-	// 示例描述
+	// Sample description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 目录唯一标识（业务 ID，非主键 ID）
+	// The directory ID.
 	//
 	// This parameter is required.
 	//
@@ -38,25 +38,25 @@ type UpdateDirectoryRequest struct {
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 新目录名称；缺省表示不更新
+	// The name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 新父目录主键 ID；缺省表示不更新父目录
+	// The ID of the parent node.
 	//
 	// example:
 	//
 	// 1
 	ParentId *int64 `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	// 新目录路径；传入时会级联更新当前目录及全部子目录的 path
+	// The path of the node.
 	//
 	// example:
 	//
 	// https://example.com/oss/file.pdf
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID.
 	//
 	// example:
 	//

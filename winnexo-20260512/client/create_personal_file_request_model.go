@@ -32,69 +32,69 @@ type iCreatePersonalFileRequest interface {
 }
 
 type CreatePersonalFileRequest struct {
-	// 资源描述（可选）
+	// The pipeline description.
 	//
 	// example:
 	//
-	// 示例描述
+	// created by eventbridge
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 目标个人目录 ID；不传时自动绑定到当前数字员工默认根目录，传入时必须是当前用户在当前数字员工下的已有个人目录
+	// The directory ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 文件后缀名（可选，如 pdf、docx）
+	// The file extension (optional, such as pdf or docx).
 	//
 	// example:
 	//
 	// string_value
 	FileExt *string `json:"fileExt,omitempty" xml:"fileExt,omitempty"`
-	// 原始文件名（可选，含后缀）
+	// The file name.
 	//
 	// example:
 	//
-	// example.pdf
+	// 0250705120003-2026-04-28-19-22-20.wav
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	// 文件 OSS 持久化地址（必填，对应 settings.file_path）
+	// The file path.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// string_value
+	// bi/batch-query-service.app.yaml
 	FilePath *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
-	// 文件公开访问 URL（可选，带签名，对应 settings.file_public_url）
+	// The publicly accessible URL of the Alibaba DingTalk online document.
 	//
 	// example:
 	//
 	// https://example.com/winnexo/resource
 	FilePublicUrl *string `json:"filePublicUrl,omitempty" xml:"filePublicUrl,omitempty"`
-	// 文件记录 ID（可选，对应 settings.file_record_id）
+	// The file record ID (optional, corresponding to settings.file_record_id).
 	//
 	// example:
 	//
 	// exampleFileRecordId
 	FileRecordId *string `json:"fileRecordId,omitempty" xml:"fileRecordId,omitempty"`
-	// 资源显示名称
+	// The pipeline name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// sys_first_new_v3_b
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 数字员工名称（已废弃：不再作为个人资源隔离条件，仅保留用于来源追溯）
+	// The name of the digital employee (operating object name, optional).
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID.
 	//
 	// example:
 	//
-	// 10000
+	// 1798284341201499
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

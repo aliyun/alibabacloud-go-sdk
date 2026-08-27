@@ -26,34 +26,39 @@ type iListBillingResponseBody interface {
 }
 
 type ListBillingResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
-	Code *string                        `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The details of the list.
 	List []*ListBillingResponseBodyList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	// 错误描述，成功时为空
+	// The prompt message.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 页码
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页条数
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 总数
+	// The total number of bills.
 	//
 	// example:
 	//
@@ -146,19 +151,19 @@ func (s *ListBillingResponseBody) Validate() error {
 }
 
 type ListBillingResponseBodyList struct {
-	// 账单业务ID
+	// The billing ID.
 	//
 	// example:
 	//
 	// exampleBillingId
 	BillingId *string `json:"billingId,omitempty" xml:"billingId,omitempty"`
-	// 业务来源ID
+	// The file ID.
 	//
 	// example:
 	//
 	// exampleBizId
 	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
-	// 业务来源类型
+	// The business type.
 	//
 	// example:
 	//
@@ -176,73 +181,73 @@ type ListBillingResponseBodyList struct {
 	//
 	// string_value
 	CostSourceDisplayName []*string `json:"costSourceDisplayName,omitempty" xml:"costSourceDisplayName,omitempty" type:"Repeated"`
-	// 结束时间
+	// The end timestamp, in milliseconds.
 	//
 	// example:
 	//
 	// 2023-10-01T12:00:00Z
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 入口对象ID
+	// The entry object ID.
 	//
 	// example:
 	//
 	// exampleEntryObjectId
 	EntryObjectId *string `json:"entryObjectId,omitempty" xml:"entryObjectId,omitempty"`
-	// 入口对象类型
+	// The entry object type.
 	//
 	// example:
 	//
 	// string_value
 	EntryObjectType *string `json:"entryObjectType,omitempty" xml:"entryObjectType,omitempty"`
-	// 是否影子账单
+	// Indicates whether the bill is a shadow bill.
 	//
 	// example:
 	//
 	// true
 	IsShadow *bool `json:"isShadow,omitempty" xml:"isShadow,omitempty"`
-	// 操作类型
+	// The operation type.
 	//
 	// example:
 	//
 	// string_value
 	Operation *string `json:"operation,omitempty" xml:"operation,omitempty"`
-	// 操作类型展示名称
+	// The display name of the operation.
 	//
 	// example:
 	//
 	// string_value
 	OperationDisplayName *string `json:"operationDisplayName,omitempty" xml:"operationDisplayName,omitempty"`
-	// 开始时间
+	// The start timestamp, in milliseconds.
 	//
 	// example:
 	//
 	// 2023-10-01T12:00:00Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// 状态
+	// The task status. Running is returned upon submission.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 状态展示名称
+	// The display name of the status.
 	//
 	// example:
 	//
 	// string_value
 	StatusDisplayName *string `json:"statusDisplayName,omitempty" xml:"statusDisplayName,omitempty"`
-	// 租户ID
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *int64 `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 汇总 credit 消耗
+	// The total credit consumption.
 	//
 	// example:
 	//
 	// string_value
 	TotalCreditCost *string `json:"totalCreditCost,omitempty" xml:"totalCreditCost,omitempty"`
-	// WINNEXO 平台用户ID
+	// The WINNEXO platform user ID.
 	//
 	// example:
 	//

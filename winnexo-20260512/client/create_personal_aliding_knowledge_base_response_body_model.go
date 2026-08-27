@@ -30,55 +30,63 @@ type iCreatePersonalAlidingKnowledgeBaseResponseBody interface {
 }
 
 type CreatePersonalAlidingKnowledgeBaseResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 新建知识库根目录 ID
+	// The directory ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 创建时间 ISO8601
+	// The creation time in ISO 8601 format.
 	//
 	// example:
 	//
-	// string_value
+	// 2025-11-14T02:18:27Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 知识库 URL（echo 回入参，便于调用方对齐）
+	// The knowledge base URL (echoed from the request parameter for caller alignment).
 	//
 	// example:
 	//
 	// https://example.com/winnexo/resource
 	KbUrl *string `json:"kbUrl,omitempty" xml:"kbUrl,omitempty"`
-	// 错误描述，成功时为空
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 文件名
+	// The response message.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The name of the AI assistant.
+	//
+	// example:
+	//
+	// p-toolset-3dcef7ca-31b9-4d1c-8692-1ef03099cad3
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 所属数字员工名称（echo 回入参，可为 null）
+	// The name of the digital employee (operating object name, optional).
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
-	// 019FF406-1B10-0065-A97D-2D1920C2A03D
+	// E68654BD-F7BA-5837-8686-5645D739A47C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 知识库根目录状态（创建后为 RUNNING；后台同步完成后转 READY 或 FAILED）
+	// The status. Valid values:
+	//
+	// - 200: Success.
+	//
+	// - 500: Failure.
 	//
 	// example:
 	//
-	// READY
+	// 200
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 

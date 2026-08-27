@@ -22,22 +22,31 @@ type iListChatSessionsRequest interface {
 }
 
 type ListChatSessionsRequest struct {
-	// 数字员工名称筛选（逗号分隔，如 sales_agent,service_agent）
+	// The list of digital employee names. A single string can be passed for backward compatibility with the legacy format.
 	//
 	// example:
 	//
 	// string_value
 	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
-	// 标题模糊搜索
+	// The rule name keyword for fuzzy match.
 	//
 	// example:
 	//
-	// 示例关键词
+	// SampleKeyword
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// 页码，从 1 开始
-	Page     *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The page number. Default value: 1. Pages start from page 1.
+	//
+	// example:
+	//
+	// 1
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The maximum number of data records to read in this request.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 租户ID
+	// The tenant ID to which the task belongs.
 	//
 	// example:
 	//

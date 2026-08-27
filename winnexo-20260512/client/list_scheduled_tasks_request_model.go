@@ -11,6 +11,8 @@ type iListScheduledTasksRequest interface {
 	GoString() string
 	SetCollaborationGroupId(v string) *ListScheduledTasksRequest
 	GetCollaborationGroupId() *string
+	SetCreatorOnly(v bool) *ListScheduledTasksRequest
+	GetCreatorOnly() *bool
 	SetKeyword(v string) *ListScheduledTasksRequest
 	GetKeyword() *string
 	SetMaxResults(v int32) *ListScheduledTasksRequest
@@ -23,47 +25,75 @@ type iListScheduledTasksRequest interface {
 	GetPageSize() *int64
 	SetTenantId(v string) *ListScheduledTasksRequest
 	GetTenantId() *string
+	SetVisibilities(v []*string) *ListScheduledTasksRequest
+	GetVisibilities() []*string
 }
 
 type ListScheduledTasksRequest struct {
-	// 协作群组 ID（如 cg_101）；传入时按群维度返回群任务（调用者需为有效群成员），未传时为个人维度（排除群任务）
+	// The ID of the collaboration group (such as cg_101). If specified, a group task is created (the caller must be a valid group member). If left empty, a personal task is created.
 	//
 	// example:
 	//
 	// exampleCollaborationGroupId
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// 任务名模糊搜索
+	// Specifies whether to return only tasks created by the caller. This parameter takes effect only in the group dimension (in the personal dimension, only the caller\\"s own tasks are returned). If not specified, no filtering is applied.
 	//
 	// example:
 	//
-	// 示例关键词
+	// true
+	CreatorOnly *bool `json:"creatorOnly,omitempty" xml:"creatorOnly,omitempty"`
+	// The keyword of the rule name, used for fuzzy match.
+	//
+	// example:
+	//
+	// SampleKeyword
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// 单页最大返回数量（1~100）；传入时优先于 pageSize
+	// The maximum number of entries returned in this request.
 	//
 	// example:
 	//
 	// string_value
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 翻页令牌，取上次响应返回的 nextToken；传入时优先于 page，翻页过程中请保持 maxResults 不变
+	// The pagination token for the next page.
+	//
+	// example:
+	//
+	// eHiB8vca1XDyBT0cNAmThA==
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 页码
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页条数（1~100）
+	// The number of entries per page.
+	//
+	// > The maximum number of entries per page is 30.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID that takes effect.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// Filters by visibility. Valid values:
+	//
+	// - PRIVATE: visible only to the creator and group owner.
+	//
+	// - COLLABORATIVE: visible to specified collaborators.
+	//
+	// - PUBLIC: visible to all group members.
+	//
+	// If not specified or an empty list is passed, no filtering is applied. This parameter takes effect only in the group dimension (when collaborationGroupId is specified) and is ignored in the personal dimension.
+	//
+	// example:
+	//
+	// PRIVATE
+	Visibilities []*string `json:"visibilities,omitempty" xml:"visibilities,omitempty" type:"Repeated"`
 }
 
 func (s ListScheduledTasksRequest) String() string {
@@ -76,6 +106,10 @@ func (s ListScheduledTasksRequest) GoString() string {
 
 func (s *ListScheduledTasksRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
+}
+
+func (s *ListScheduledTasksRequest) GetCreatorOnly() *bool {
+	return s.CreatorOnly
 }
 
 func (s *ListScheduledTasksRequest) GetKeyword() *string {
@@ -102,8 +136,17 @@ func (s *ListScheduledTasksRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *ListScheduledTasksRequest) GetVisibilities() []*string {
+	return s.Visibilities
+}
+
 func (s *ListScheduledTasksRequest) SetCollaborationGroupId(v string) *ListScheduledTasksRequest {
 	s.CollaborationGroupId = &v
+	return s
+}
+
+func (s *ListScheduledTasksRequest) SetCreatorOnly(v bool) *ListScheduledTasksRequest {
+	s.CreatorOnly = &v
 	return s
 }
 
@@ -134,6 +177,11 @@ func (s *ListScheduledTasksRequest) SetPageSize(v int64) *ListScheduledTasksRequ
 
 func (s *ListScheduledTasksRequest) SetTenantId(v string) *ListScheduledTasksRequest {
 	s.TenantId = &v
+	return s
+}
+
+func (s *ListScheduledTasksRequest) SetVisibilities(v []*string) *ListScheduledTasksRequest {
+	s.Visibilities = v
 	return s
 }
 

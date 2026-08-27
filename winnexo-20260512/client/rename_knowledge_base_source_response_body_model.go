@@ -26,39 +26,43 @@ type iRenameKnowledgeBaseSourceResponseBody interface {
 }
 
 type RenameKnowledgeBaseSourceResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 最近修改时间，ISO8601 格式
+	// The last modified time.
 	//
 	// example:
 	//
 	// string_value
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 错误描述，成功时为空
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 文件名
+	// The description of the status code.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// successful
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The file name.
+	//
+	// example:
+	//
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 请求追踪 ID
+	// The request trace ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 数据源 ID
+	// The data source ID.
 	//
 	// example:
 	//
 	// exampleSourceId
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 数据源状态
+	// The data source status after re-parsing.
 	//
 	// example:
 	//

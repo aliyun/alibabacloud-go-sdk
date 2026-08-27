@@ -18,13 +18,13 @@ type iGetSourceRequest interface {
 }
 
 type GetSourceRequest struct {
-	// 是否返回大体积明细字段（settings / notes / structuredTables / unstructuredDocs）。默认 False，仅返回元信息。
+	// Specifies whether to return large detail fields (settings / notes / structuredTables / unstructuredDocs). Default value: False, which returns only metadata.
 	//
 	// example:
 	//
 	// false
 	IncludeDetails *bool `json:"includeDetails,omitempty" xml:"includeDetails,omitempty"`
-	// 数据源 ID（租户内唯一）
+	// The primary ID of the resource.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type GetSourceRequest struct {
 	//
 	// exampleSourceId
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID to which the task belongs.
 	//
 	// example:
 	//

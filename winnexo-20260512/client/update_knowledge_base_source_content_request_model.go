@@ -20,21 +20,21 @@ type iUpdateKnowledgeBaseSourceContentRequest interface {
 }
 
 type UpdateKnowledgeBaseSourceContentRequest struct {
-	// 更新后的完整正文；允许空字符串
+	// Specifies whether the operation is successful. A value of true indicates success.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例内容
+	// Sample content
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// 是否同步等待重新解析完成；默认 false，异步入队
+	// Specifies whether to force synchronous processing.
 	//
 	// example:
 	//
 	// false
 	ForceSync *bool `json:"forceSync,omitempty" xml:"forceSync,omitempty"`
-	// 待编辑的企业知识库数据源 ID
+	// The source ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type UpdateKnowledgeBaseSourceContentRequest struct {
 	//
 	// exampleSourceId
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID that takes effect.
 	//
 	// example:
 	//

@@ -17,6 +17,8 @@ type iGetGraphSchemaResponseBody interface {
 	GetMessage() *string
 	SetRequestId(v string) *GetGraphSchemaResponseBody
 	GetRequestId() *string
+	SetSchemaId(v string) *GetGraphSchemaResponseBody
+	GetSchemaId() *string
 	SetSchemaVersion(v string) *GetGraphSchemaResponseBody
 	GetSchemaVersion() *string
 	SetYamlEdit(v string) *GetGraphSchemaResponseBody
@@ -24,13 +26,13 @@ type iGetGraphSchemaResponseBody interface {
 }
 
 type GetGraphSchemaResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 图谱名称
+	// The graph name.
 	//
 	// This parameter is required.
 	//
@@ -38,15 +40,25 @@ type GetGraphSchemaResponseBody struct {
 	//
 	// string_value
 	GraphName *string `json:"graphName,omitempty" xml:"graphName,omitempty"`
-	// 错误描述，成功时为空
+	// The status code description.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 当前 active Graph Schema 版本
+	// The active QueryAgent registered schema ID corresponding to the graph. The value is null if not yet registered.
+	//
+	// example:
+	//
+	// schema_123456
+	SchemaId *string `json:"schemaId,omitempty" xml:"schemaId,omitempty"`
+	// The version.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +66,7 @@ type GetGraphSchemaResponseBody struct {
 	//
 	// string_value
 	SchemaVersion *string `json:"schemaVersion,omitempty" xml:"schemaVersion,omitempty"`
-	// 按 READ 权限裁剪的 Graph Schema 原始 YAML 文本，保留授权子图内的 $ref
+	// The raw YAML text of the Graph Schema trimmed by READ permissions, retaining $ref references within the authorized subgraph.
 	//
 	// This parameter is required.
 	//
@@ -88,6 +100,10 @@ func (s *GetGraphSchemaResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *GetGraphSchemaResponseBody) GetSchemaId() *string {
+	return s.SchemaId
+}
+
 func (s *GetGraphSchemaResponseBody) GetSchemaVersion() *string {
 	return s.SchemaVersion
 }
@@ -113,6 +129,11 @@ func (s *GetGraphSchemaResponseBody) SetMessage(v string) *GetGraphSchemaRespons
 
 func (s *GetGraphSchemaResponseBody) SetRequestId(v string) *GetGraphSchemaResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetGraphSchemaResponseBody) SetSchemaId(v string) *GetGraphSchemaResponseBody {
+	s.SchemaId = &v
 	return s
 }
 

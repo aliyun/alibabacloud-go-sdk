@@ -16,7 +16,7 @@ type iStopChatMessageRequest interface {
 }
 
 type StopChatMessageRequest struct {
-	// 会话ID
+	// The session ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type StopChatMessageRequest struct {
 	//
 	// exampleSessionId
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The ID of the effective tenant.
 	//
 	// example:
 	//

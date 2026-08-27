@@ -28,57 +28,57 @@ type iCreatePersonalDingtalkMeetingRequest interface {
 }
 
 type CreatePersonalDingtalkMeetingRequest struct {
-	// 凭证 ID（不传则使用系统默认配置）
+	// The credential ID.
 	//
 	// example:
 	//
 	// exampleCredentialId
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	// 资源描述（可选）
+	// The pipeline description.
 	//
 	// example:
 	//
-	// 示例描述
+	// Watchlist Monitor Layer
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 目标个人目录 ID；不传时自动绑定到当前数字员工默认根目录，传入时必须是当前用户在当前数字员工下的已有个人目录
+	// The directory ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 资源显示名称
+	// The image name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// p-default-007735a2-58f5-47a5-9e37-ea3fd64e0899
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 会议笔记内容（可选），会参与辅助分析
+	// The meeting notes content (optional). The notes are used for auxiliary analysis.
 	//
 	// example:
 	//
 	// string_value
 	Notes *string `json:"notes,omitempty" xml:"notes,omitempty"`
-	// 数字员工名称（已废弃：不再作为个人资源隔离条件，仅保留用于来源追溯）
+	// The name of the digital employee (operating object name, optional).
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 钉钉会议号（必填）
+	// The meeting code.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// string_value
+	// 356 776 973
 	RoomCode *string `json:"roomCode,omitempty" xml:"roomCode,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID.
 	//
 	// example:
 	//
-	// 10000
+	// 520539530998273
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

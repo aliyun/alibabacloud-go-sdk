@@ -16,7 +16,7 @@ type iGetScheduledTaskExecutionDetailRequest interface {
 }
 
 type GetScheduledTaskExecutionDetailRequest struct {
-	// 执行记录 ID
+	// The execution record ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetScheduledTaskExecutionDetailRequest struct {
 	//
 	// exampleExecutionId
 	ExecutionId *string `json:"executionId,omitempty" xml:"executionId,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID that takes effect.
 	//
 	// example:
 	//

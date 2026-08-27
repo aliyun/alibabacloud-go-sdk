@@ -26,34 +26,43 @@ type iQueryPrimaryObjectDataResponseBody interface {
 }
 
 type QueryPrimaryObjectDataResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.	- / InvalidParameter.*).
 	//
 	// example:
 	//
 	// 200
-	Code  *string              `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The incremental information list.
+	//
+	// example:
+	//
+	// string_value
 	Items []map[string]*string `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 错误描述，成功时为空
+	// The error description. This value is empty when the request succeeds.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 当前页码
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页数量
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 请求追踪 ID
+	// The request trace ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 总数
+	// The total number of entries.
 	//
 	// example:
 	//

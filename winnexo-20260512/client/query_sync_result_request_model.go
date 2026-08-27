@@ -16,7 +16,7 @@ type iQuerySyncResultRequest interface {
 }
 
 type QuerySyncResultRequest struct {
-	// 同步任务 ID（由 syncOrgStructure 返回）
+	// The task ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type QuerySyncResultRequest struct {
 	//
 	// 1
 	TaskId *int64 `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

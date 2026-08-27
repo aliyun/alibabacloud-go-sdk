@@ -26,27 +26,39 @@ type iListSkillsResponseBody interface {
 }
 
 type ListSkillsResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 技能列表
+	// The list of skill cards.
 	Items []*ListSkillsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 错误描述，成功时为空
+	// The prompt message.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 当前页码
+	// The page number.
+	//
+	// example:
+	//
+	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页数量
+	// The number of entries per page. Default value: 20. Minimum value: 1. Maximum value: 50.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 符合条件的技能总数
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -139,79 +151,79 @@ func (s *ListSkillsResponseBody) Validate() error {
 }
 
 type ListSkillsResponseBodyItems struct {
-	// 创建时间，ISO8601 格式
+	// The creation time.
 	//
 	// example:
 	//
 	// 2023-10-01T12:00:00Z
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	// 技能描述（已 i18n 解析）
+	// The description of the to-do card type.
 	//
 	// example:
 	//
-	// 示例描述
+	// Sample description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 执行模式：CODE_AGENT / SYSTEM 等
+	// The execution mode, such as CODE_AGENT or SYSTEM.
 	//
 	// example:
 	//
 	// string_value
 	ExecuteMode *string `json:"executeMode,omitempty" xml:"executeMode,omitempty"`
-	// 是否全局可访问
+	// Indicates whether the skill is globally accessible.
 	//
 	// example:
 	//
 	// true
 	GlobalAccess *bool `json:"globalAccess,omitempty" xml:"globalAccess,omitempty"`
-	// 是否存在未发布的草稿修改
+	// Indicates whether unpublished draft modifications exist.
 	//
 	// example:
 	//
 	// true
 	HasDraftChanges *bool `json:"hasDraftChanges,omitempty" xml:"hasDraftChanges,omitempty"`
-	// 技能名称（已 i18n 解析）
+	// The file name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 技能编码（全局唯一）
+	// The actual skill code for execution.
 	//
 	// example:
 	//
 	// string_value
 	SkillCode *string `json:"skillCode,omitempty" xml:"skillCode,omitempty"`
-	// 技能定义 ID
+	// The skill definition ID.
 	//
 	// example:
 	//
 	// 1
 	SkillHubDefinitionId *int64 `json:"skillHubDefinitionId,omitempty" xml:"skillHubDefinitionId,omitempty"`
-	// 来源类型：BUILTIN / CUSTOM
+	// The data source type. Fixed value: FILE.
 	//
 	// example:
 	//
 	// BUILTIN
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// 技能状态：ACTIVE / DRAFT
+	// The task status. Returns Running upon submission.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 标签列表（已 i18n 解析）
+	// The keys.
 	//
 	// example:
 	//
 	// string_value
 	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// 修改时间，ISO8601 格式
+	// The update timestamp, in milliseconds.
 	//
 	// example:
 	//
 	// 2023-10-01T12:00:00Z
 	UpdatedTime *string `json:"updatedTime,omitempty" xml:"updatedTime,omitempty"`
-	// 版本号
+	// The workflow definition version number.
 	//
 	// example:
 	//

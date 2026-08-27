@@ -18,19 +18,19 @@ type iRenameSourceRequest interface {
 }
 
 type RenameSourceRequest struct {
-	// 新的数据源名称
+	// The new name of the data source.
 	//
 	// example:
 	//
 	// string_value
 	NewName *string `json:"newName,omitempty" xml:"newName,omitempty"`
-	// 数据源 ID（租户内唯一）
+	// The data source ID, which is unique within the tenant.
 	//
 	// example:
 	//
 	// exampleSourceId
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID. This is a common parameter. You can pass this parameter explicitly by using --tenant-id in winnexo-cli.
 	//
 	// example:
 	//

@@ -22,22 +22,27 @@ type iReplaceObjectBindingsResponseBody interface {
 }
 
 type ReplaceObjectBindingsResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 错误描述，成功时为空
-	Message        *string                                            `json:"message,omitempty" xml:"message,omitempty"`
+	// The description of the status code.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The object binding.
 	ObjectBindings []*ReplaceObjectBindingsResponseBodyObjectBindings `json:"objectBindings,omitempty" xml:"objectBindings,omitempty" type:"Repeated"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 数据源 ID
+	// The ID of the personal FILE data source to be replaced (unique within the tenant).
 	//
 	// example:
 	//
@@ -112,19 +117,19 @@ func (s *ReplaceObjectBindingsResponseBody) Validate() error {
 }
 
 type ReplaceObjectBindingsResponseBodyObjectBindings struct {
-	// 绑定对象归属的语义图谱名（object_id 在该 graph 下唯一，必填）
+	// The semantic graph name to which the binding object belongs (object_id is unique within this graph. Required).
 	//
 	// example:
 	//
 	// string_value
 	GraphName *string `json:"graphName,omitempty" xml:"graphName,omitempty"`
-	// 绑定对象 ID
+	// The binding object ID.
 	//
 	// example:
 	//
 	// exampleObjectId
 	ObjectId *string `json:"objectId,omitempty" xml:"objectId,omitempty"`
-	// 绑定对象类型（如 customer / project）
+	// The binding object type (such as customer or project).
 	//
 	// example:
 	//

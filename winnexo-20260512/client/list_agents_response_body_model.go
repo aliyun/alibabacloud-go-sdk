@@ -20,17 +20,21 @@ type iListAgentsResponseBody interface {
 }
 
 type ListAgentsResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 租户全量数字员工列表（含停用，按名称字母序）
+	// The list of skill cards.
 	Items []*ListAgentsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 错误描述，成功时为空
+	// The prompt message.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,25 +100,25 @@ func (s *ListAgentsResponseBody) Validate() error {
 }
 
 type ListAgentsResponseBodyItems struct {
-	// 使用权限授权模式：SPECIFIED_USERS=指定用户 / ALL_USERS=所有用户；未设置时为 null
+	// The authentication mode.
 	//
 	// example:
 	//
 	// string_value
 	AuthMode *string `json:"authMode,omitempty" xml:"authMode,omitempty"`
-	// 数字员工显示名称
+	// The display name of the tool.
 	//
 	// example:
 	//
 	// string_value
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// 启用/停用状态
+	// Indicates whether the account is activated.
 	//
 	// example:
 	//
 	// true
 	IsActive *bool `json:"isActive,omitempty" xml:"isActive,omitempty"`
-	// 数字员工名称（唯一标识）
+	// The name of the digital employee.
 	//
 	// example:
 	//

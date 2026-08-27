@@ -24,13 +24,13 @@ type iGrantAgentUsersRequest interface {
 }
 
 type GrantAgentUsersRequest struct {
-	// 授权截止时间戳（毫秒），不传表示永不过期
+	// The authorization expiration timestamp in milliseconds. If this parameter is not specified, the authorization never expires.
 	//
 	// example:
 	//
 	// 1
 	ExpireDate *int64 `json:"expireDate,omitempty" xml:"expireDate,omitempty"`
-	// 数字员工名称
+	// The name of the digital human.
 	//
 	// This parameter is required.
 	//
@@ -38,25 +38,25 @@ type GrantAgentUsersRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 权限列表：USE（使用权限）和/或 MANAGE（管理权限），不传时默认仅 USE；不得为空列表
+	// The permission items.
 	//
 	// example:
 	//
 	// string_value
 	Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID.
 	//
 	// example:
 	//
 	// 676577544219585
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 被授权的用户组 ID 列表（16位 hex 字符串）
+	// The list of user group IDs.
 	//
 	// example:
 	//
 	// string_value
 	UserGroupIds []*string `json:"userGroupIds,omitempty" xml:"userGroupIds,omitempty" type:"Repeated"`
-	// 被授权的用户 ID 列表
+	// The list of user IDs to be authorized.
 	//
 	// example:
 	//

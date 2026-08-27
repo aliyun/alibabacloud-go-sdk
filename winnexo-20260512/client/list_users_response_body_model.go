@@ -26,35 +26,39 @@ type iListUsersResponseBody interface {
 }
 
 type ListUsersResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 成员列表
+	// The user information.
 	Items []*ListUsersResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 错误描述，成功时为空
+	// The description of the status code.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 当前页码
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页数量
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 符合条件的总记录数
+	// The total number of data entries in the project.
 	//
 	// example:
 	//
@@ -147,43 +151,47 @@ func (s *ListUsersResponseBody) Validate() error {
 }
 
 type ListUsersResponseBodyItems struct {
-	// WINNEXO 登录账号
+	// The account ID.
 	//
 	// example:
 	//
 	// exampleAccountId
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	// 用户显示名称
+	// The display name of the tool.
 	//
 	// example:
 	//
 	// string_value
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// 加入租户时间
+	// The creation time.
 	//
 	// example:
 	//
 	// string_value
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 启用/停用状态
+	// Indicates whether the account is activated:
+	//
+	// - 1: Activated.
+	//
+	// - 0: Not activated.
 	//
 	// example:
 	//
 	// true
 	IsActive *bool `json:"isActive,omitempty" xml:"isActive,omitempty"`
-	// 最后登录时间
+	// The last logon time.
 	//
 	// example:
 	//
 	// 2023-10-01T12:00:00Z
 	LastLoginTime *string `json:"lastLoginTime,omitempty" xml:"lastLoginTime,omitempty"`
-	// 用户拥有的系统角色 code 列表
+	// The list of new system role codes (full replacement, at least one role must be included). Valid values: SUPER_ADMIN / SYSTEM_ADMIN / SEMANTIC_ADMIN / SKILL_ADMIN / KB_ADMIN / AGENT_ADMIN / APPLICATION_USER.
 	//
 	// example:
 	//
 	// string_value
 	RoleCodes []*string `json:"roleCodes,omitempty" xml:"roleCodes,omitempty" type:"Repeated"`
-	// 用户ID
+	// The user ID.
 	//
 	// example:
 	//

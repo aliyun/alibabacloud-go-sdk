@@ -34,67 +34,73 @@ type iListBillingRequest interface {
 }
 
 type ListBillingRequest struct {
-	// 业务来源ID（可选筛选）
+	// The unique business identifier. When bizType is set to LibraryChat, bizId refers to the document library ID.
 	//
 	// example:
 	//
 	// exampleBizId
 	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
-	// 业务来源类型（可选筛选）
+	// The business type. Currently supported values: model Q&A (LlmChat) and document library Q&A (LibraryChat).
 	//
 	// example:
 	//
 	// string_value
 	BizType *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
-	// 结束时间范围，ISO-8601 字符串，如 2026-08-05T16:30:00.000Z
+	// The actual end timestamp of the live stream, in milliseconds.
 	//
 	// example:
 	//
 	// 2023-10-01T12:00:00Z
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 是否过滤 credit 消耗为 0 的账单，默认 true（过滤）
+	// Specifies whether to filter out bills with zero credit consumption. Default value: true (filtered).
 	//
 	// example:
 	//
 	// true
 	IgnoreZero *bool `json:"ignoreZero,omitempty" xml:"ignoreZero,omitempty"`
-	// 操作类型（可选筛选）
+	// The operation type. Valid values:
+	//
+	// - start: indicates node creation. This is the default value and does not need to be explicitly set in most cases.
+	//
+	// - stop: stops a real-time meeting task. This corresponds to the creation of a real-time meeting. Set this to stop after the meeting ends to trigger the call. This is used in real-time meeting scenarios.
+	//
+	// Note: When ending a real-time recording, you must set this parameter to stop.
 	//
 	// example:
 	//
 	// string_value
 	Operation *string `json:"operation,omitempty" xml:"operation,omitempty"`
-	// 页码
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页条数
+	// The number of entries per page. Default value: 20. Minimum value: 1. Maximum value: 50.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 开始时间范围，ISO-8601 字符串，如 2026-08-05T16:30:00.000Z
+	// The query start time. This is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 2023-10-01T12:00:00Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// 状态（可选筛选）
+	// The task status. Running is returned upon submission.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID. This is a common parameter. In winnexo-cli, pass it explicitly with --tenant-id.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 用户ID（WINNEXO 平台用户ID，可选筛选）
+	// The user ID (WINNEXO platform user ID, optional filter).
 	//
 	// example:
 	//

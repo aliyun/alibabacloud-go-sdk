@@ -17,13 +17,13 @@ type iCreatePersonalVoiceMeetingHeaders interface {
 
 type CreatePersonalVoiceMeetingHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 请求追踪 ID
+	// Id of the request
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 019FF406-1B10-0065-A97D-2D1920C2A03D
+	// 0B6F0F99-EB17-51D5-AAC8-AD78A26E18DD
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

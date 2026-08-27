@@ -30,55 +30,63 @@ type iCreateKnowledgeBaseFileResponseBody interface {
 }
 
 type CreateKnowledgeBaseFileResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 绑定的目录 ID
+	// The directory ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 创建时间 ISO8601
+	// The creation time in ISO 8601 format.
 	//
 	// example:
 	//
-	// string_value
+	// 2025-11-12T03:08:56Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 错误描述，成功时为空
+	// The response message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 文件名
+	// The image name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// oklabs_tongyici
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
-	// 019FF406-1B10-0065-A97D-2D1920C2A03D
+	// 911656E1-9A09-5C77-BAAD-915EB4958D68
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 资源 scope，固定为 TENANT
+	// The export scope. Valid values:
+	//
+	// - ALL: all.
+	//
+	// - SELECT: selected rows.
 	//
 	// example:
 	//
-	// PERSONAL
+	// user_info projects pull_requests hook gists emails
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 新建资源 ID
+	// The unique identifier on the business system side, which is the business ID.
 	//
 	// example:
 	//
-	// exampleSourceId
+	// 2001549
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 资源状态
+	// The store status.
 	//
 	// example:
 	//
-	// READY
+	// 200
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 

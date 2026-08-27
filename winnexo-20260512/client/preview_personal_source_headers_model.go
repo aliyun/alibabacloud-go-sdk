@@ -17,7 +17,7 @@ type iPreviewPersonalSourceHeaders interface {
 
 type PreviewPersonalSourceHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 请求追踪 ID
+	// The request trace ID.
 	//
 	// This parameter is required.
 	//

@@ -30,46 +30,51 @@ type iRetryDirectoryFailedSourcesResponseBody interface {
 }
 
 type RetryDirectoryFailedSourcesResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 目录 ID
+	// The ID of the enterprise knowledge base folder. Failed resources in the folder and its subfolders are included recursively.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 成功入队重试的数量
+	// The number of resources successfully enqueued for retry.
 	//
 	// example:
 	//
 	// 1
 	EnqueuedCount *int64 `json:"enqueuedCount,omitempty" xml:"enqueuedCount,omitempty"`
-	// enqueuedIds
+	// enqueuedIds。
 	//
 	// example:
 	//
 	// string_value
 	EnqueuedIds []*string `json:"enqueuedIds,omitempty" xml:"enqueuedIds,omitempty" type:"Repeated"`
-	// 目录下失败资源总数
+	// The total number of failed resources in the folder.
 	//
 	// example:
 	//
 	// 1
-	FailedCount   *int64                                                  `json:"failedCount,omitempty" xml:"failedCount,omitempty"`
+	FailedCount *int64 `json:"failedCount,omitempty" xml:"failedCount,omitempty"`
+	// The list of failed data source IDs.
 	FailedSources []*RetryDirectoryFailedSourcesResponseBodyFailedSources `json:"failedSources,omitempty" xml:"failedSources,omitempty" type:"Repeated"`
-	// 错误描述，成功时为空
+	// The description of the status code.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request trace ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 跳过（非 FAILED 或无权限）的数量
+	// The number of resources skipped because they are not in FAILED status.
 	//
 	// example:
 	//
@@ -180,19 +185,19 @@ func (s *RetryDirectoryFailedSourcesResponseBody) Validate() error {
 }
 
 type RetryDirectoryFailedSourcesResponseBodyFailedSources struct {
-	// 文件名
+	// The file name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 数据源 ID
+	// The data source ID.
 	//
 	// example:
 	//
 	// exampleSourceId
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 数据源类型
+	// The data source type.
 	//
 	// example:
 	//

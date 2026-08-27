@@ -22,13 +22,13 @@ type iUpdateKnowledgeBaseDirectoryRequest interface {
 }
 
 type UpdateKnowledgeBaseDirectoryRequest struct {
-	// 新分类描述；不传表示不更新
+	// The description of the to-do card type.
 	//
 	// example:
 	//
-	// 示例描述
+	// Sample description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 待修改的分类 ID（必传）
+	// The directory ID.
 	//
 	// This parameter is required.
 	//
@@ -36,19 +36,19 @@ type UpdateKnowledgeBaseDirectoryRequest struct {
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 新分类名称；不传表示不更新
+	// The name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 新父分类 ID；不传表示不移动，传入时必须是当前租户下已存在的企业知识库目录 ID
+	// The directory ID.
 	//
 	// example:
 	//
 	// exampleParentDirectoryId
 	ParentDirectoryId *string `json:"parentDirectoryId,omitempty" xml:"parentDirectoryId,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID to take effect.
 	//
 	// example:
 	//

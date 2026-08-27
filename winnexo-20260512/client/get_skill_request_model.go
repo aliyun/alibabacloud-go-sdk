@@ -22,31 +22,31 @@ type iGetSkillRequest interface {
 }
 
 type GetSkillRequest struct {
-	// 是否返回完整文件树（默认 False，避免大体积响应）
+	// Specifies whether to return the complete file tree. Default value: False. This avoids large response payloads.
 	//
 	// example:
 	//
 	// false
 	IncludeSkillFiles *bool `json:"includeSkillFiles,omitempty" xml:"includeSkillFiles,omitempty"`
-	// 技能编码（全局唯一），优先级高于 skillName
+	// The skill code. This parameter has a value when type is set to skill.
 	//
 	// example:
 	//
 	// string_value
 	SkillCode *string `json:"skillCode,omitempty" xml:"skillCode,omitempty"`
-	// 技能名称，未传 skillCode 时使用；租户范围内必须唯一
+	// The skill name.
 	//
 	// example:
 	//
 	// string_value
 	SkillName *string `json:"skillName,omitempty" xml:"skillName,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID to which the task belongs.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 视角：draft（草稿/编辑视角）或 published（已发布视角，默认）
+	// The view mode. Valid values: draft (draft/editing view) or published (published view, default).
 	//
 	// example:
 	//

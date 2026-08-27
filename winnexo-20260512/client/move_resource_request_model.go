@@ -20,7 +20,7 @@ type iMoveResourceRequest interface {
 }
 
 type MoveResourceRequest struct {
-	// 源目录 ID（资源当前所在的个人目录）
+	// The source directory ID, which is the personal directory where the resource currently resides.
 	//
 	// This parameter is required.
 	//
@@ -28,15 +28,15 @@ type MoveResourceRequest struct {
 	//
 	// exampleSourceDirectoryId
 	SourceDirectoryId *string `json:"sourceDirectoryId,omitempty" xml:"sourceDirectoryId,omitempty"`
-	// 待移动的资源 ID
+	// The ID of the resource to be moved.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// exampleSourceId
+	// 8
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 目标目录 ID（资源即将移动到的个人目录）
+	// The target directory ID, which is the personal directory to which the resource will be moved.
 	//
 	// This parameter is required.
 	//
@@ -44,11 +44,11 @@ type MoveResourceRequest struct {
 	//
 	// exampleTargetDirectoryId
 	TargetDirectoryId *string `json:"targetDirectoryId,omitempty" xml:"targetDirectoryId,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID. You can view the tenant ID by logging on to the MaxCompute console and choosing **Tenant Management*	- > **Tenant Properties*	- in the left-side navigation pane.
 	//
 	// example:
 	//
-	// 10000
+	// PiPklI1iSRTm6VFFqlY9VzbgiEiE
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

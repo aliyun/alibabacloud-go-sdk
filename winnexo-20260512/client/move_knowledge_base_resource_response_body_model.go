@@ -26,39 +26,43 @@ type iMoveKnowledgeBaseResourceResponseBody interface {
 }
 
 type MoveKnowledgeBaseResourceResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 目标知识库 ID（echo 回入参）
+	// The target knowledge base ID. This value is echoed from the request parameter.
 	//
 	// example:
 	//
 	// exampleKnowledgeId
 	KnowledgeId *string `json:"knowledgeId,omitempty" xml:"knowledgeId,omitempty"`
-	// 错误描述，成功时为空
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The description of the status code.
 	//
 	// example:
 	//
-	// 019FF406-1B10-0065-A97D-2D1920C2A03D
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 375701FC-2FB9-5782-BE8F-A3F5E2F2158C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 源目录 ID（echo 回入参）
+	// The source directory ID. This value is echoed from the request parameter.
 	//
 	// example:
 	//
 	// exampleSourceDirectoryId
 	SourceDirectoryId *string `json:"sourceDirectoryId,omitempty" xml:"sourceDirectoryId,omitempty"`
-	// 资源 ID（echo 回入参）
+	// The unique identifier on the business system side, that is, the business ID.
 	//
 	// example:
 	//
-	// exampleSourceId
+	// 2000358
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 目标目录 ID（echo 回入参）
+	// The target directory ID. This value is echoed from the request parameter.
 	//
 	// example:
 	//

@@ -26,39 +26,43 @@ type iMoveResourceResponseBody interface {
 }
 
 type MoveResourceResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 错误描述，成功时为空
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The response message.
 	//
 	// example:
 	//
-	// 019FF406-1B10-0065-A97D-2D1920C2A03D
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// E68654BD-F7BA-5837-8686-5645D739A47C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 源目录 ID（echo 回入参）
+	// The source directory ID, which echoes the input parameter.
 	//
 	// example:
 	//
 	// exampleSourceDirectoryId
 	SourceDirectoryId *string `json:"sourceDirectoryId,omitempty" xml:"sourceDirectoryId,omitempty"`
-	// 资源 ID（echo 回入参）
+	// The resource ID, which echoes the input parameter.
 	//
 	// example:
 	//
-	// exampleSourceId
+	// 2000627
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 操作是否成功
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
-	// true
+	// True
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// 目标目录 ID（echo 回入参）
+	// The target directory ID.
 	//
 	// example:
 	//

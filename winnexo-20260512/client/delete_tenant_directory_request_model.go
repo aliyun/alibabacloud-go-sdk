@@ -18,19 +18,19 @@ type iDeleteTenantDirectoryRequest interface {
 }
 
 type DeleteTenantDirectoryRequest struct {
-	// 删除模式：reject / recursive / move_to_root
+	// The deletion mode: reject / recursive / move_to_root.
 	//
 	// example:
 	//
 	// reject
 	DeleteMode *string `json:"deleteMode,omitempty" xml:"deleteMode,omitempty"`
-	// 目录唯一标识
+	// The directory ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID that takes effect.
 	//
 	// example:
 	//

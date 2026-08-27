@@ -26,43 +26,43 @@ type iUpdateUserInfoRequest interface {
 }
 
 type UpdateUserInfoRequest struct {
-	// 用户头像 URL
+	// The profile picture URL.
 	//
 	// example:
 	//
 	// https://example.com/avatar.png
 	Avatar *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
-	// 语言偏好: zh-CN, en-US
+	// The language preference: zh-CN, en-US.
 	//
 	// example:
 	//
 	// string_value
 	LanguagePreference *string `json:"languagePreference,omitempty" xml:"languagePreference,omitempty"`
-	// 文件名
+	// The name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 用户服务描述，最多1000字符
+	// The user service description. Maximum length: 1000 characters.
 	//
 	// example:
 	//
 	// string_value
 	Offering *string `json:"offering,omitempty" xml:"offering,omitempty"`
-	// 用户角色描述（当profileRole为Others时使用），最多100字符
+	// The user role description (used when profileRole is set to Others). Maximum length: 100 characters.
 	//
 	// example:
 	//
 	// string_value
 	ProfileRoleInfo *string `json:"profileRoleInfo,omitempty" xml:"profileRoleInfo,omitempty"`
-	// 用户自我介绍，最多1000字符
+	// The user self-introduction. Maximum length: 1000 characters.
 	//
 	// example:
 	//
 	// string_value
 	SelfIntroduction *string `json:"selfIntroduction,omitempty" xml:"selfIntroduction,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The effective tenant ID.
 	//
 	// example:
 	//

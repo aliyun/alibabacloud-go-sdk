@@ -20,17 +20,21 @@ type iListAvailableConfigsResponseBody interface {
 }
 
 type ListAvailableConfigsResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 可用的组织同步配置列表
+	// The list of queried Logtail configurations.
 	Configs []*ListAvailableConfigsResponseBodyConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	// 错误描述，成功时为空
+	// The status code description.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
@@ -96,31 +100,31 @@ func (s *ListAvailableConfigsResponseBody) Validate() error {
 }
 
 type ListAvailableConfigsResponseBodyConfigs struct {
-	// 企业标识（wecom=corpId, saml=idpEntityId, oauth2=clientId, custom=客户自定义）。注意：OAuth2 多 IdP 配置使用相同 clientId 时，需在 syncOrgStructure 中显式传 ssoSettingsId
+	// The enterprise ID.
 	//
 	// example:
 	//
 	// exampleCorpId
 	CorpId *string `json:"corpId,omitempty" xml:"corpId,omitempty"`
-	// 企业展示名称
+	// The organization name.
 	//
 	// example:
 	//
 	// string_value
 	CorpName *string `json:"corpName,omitempty" xml:"corpName,omitempty"`
-	// 平台类型: wecom / saml / oauth2 / custom
+	// The platform type.
 	//
 	// example:
 	//
 	// string_value
 	PlatformType *string `json:"platformType,omitempty" xml:"platformType,omitempty"`
-	// SSO 配置 ID（仅 SAML/OAuth2/WeCom 有值，custom 为 null）
+	// The SSO configuration ID. This field has a value only for SAML, OAuth2, or WeCom types. The value is null for custom types.
 	//
 	// example:
 	//
 	// exampleSsoSettingsId
 	SsoSettingsId *string `json:"ssoSettingsId,omitempty" xml:"ssoSettingsId,omitempty"`
-	// SSO 配置名称（仅 SAML/OAuth2/WeCom 有值，custom 为 null）
+	// The SSO configuration name. This field has a value only for SAML, OAuth2, or WeCom types. The value is null for custom types.
 	//
 	// example:
 	//

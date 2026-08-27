@@ -20,17 +20,21 @@ type iListRolesResponseBody interface {
 }
 
 type ListRolesResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 系统内置角色列表（固定 7 个）
+	// The MCP card list.
 	Items []*ListRolesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 错误描述，成功时为空
+	// The prompt message.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request trace ID.
 	//
 	// example:
 	//
@@ -96,25 +100,25 @@ func (s *ListRolesResponseBody) Validate() error {
 }
 
 type ListRolesResponseBodyItems struct {
-	// 角色说明（按请求 Accept-Language 国际化）
+	// The description of the to-do card type.
 	//
 	// example:
 	//
-	// 示例描述
+	// Sample description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 角色标识码，用于 createUser/updateUser 的 roleCodes 参数
+	// The role code.
 	//
 	// example:
 	//
 	// string_value
 	RoleCode *string `json:"roleCode,omitempty" xml:"roleCode,omitempty"`
-	// 角色显示名称（按请求 Accept-Language 国际化）
+	// The role name.
 	//
 	// example:
 	//
 	// string_value
 	RoleName *string `json:"roleName,omitempty" xml:"roleName,omitempty"`
-	// 是否允许启用/停用操作（超级管理员和应用用户不可切换）
+	// Indicates whether the enable/disable operation is allowed. Super administrators and application users cannot be switched.
 	//
 	// example:
 	//

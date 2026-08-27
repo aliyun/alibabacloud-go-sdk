@@ -22,13 +22,33 @@ type iUploadChatFileRequest interface {
 }
 
 type UploadChatFileRequest struct {
-	// 文件 MIME 类型（可选，不传时按 application/octet-stream 处理）
+	// The content type of the file. Valid values:
+	//
+	// - **image**: image
+	//
+	// - **document**: general document
+	//
+	// - **alidoc**: Alibaba document
+	//
+	// - **text**: text
+	//
+	// - **video**: video
+	//
+	// - **audio**: audio
+	//
+	// - **archive**: archive
+	//
+	// - **app**: application
+	//
+	// - **link**: shortcut
+	//
+	// - **other**: other
 	//
 	// example:
 	//
 	// application/pdf
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// 原始文件名（含后缀，如 report.pdf）。中转生成的 OSS 地址不携带原始文件名，后端据此确定文件后缀与展示名
+	// The full path name of the file.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +56,7 @@ type UploadChatFileRequest struct {
 	//
 	// report.pdf
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	// 文件的 OSS 地址。使用 SDK 的 UploadChatFileAdvance 方法时由 SDK 中转上传后自动回填；直接调用本 API 时需自行传入可被服务端访问的 OSS 地址
+	// The attachment address.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +64,13 @@ type UploadChatFileRequest struct {
 	//
 	// http://winnexo-file-transfer.oss-cn-hangzhou.aliyuncs.com/openapi/2026-08-06/9f8c2a1b
 	FileUrl *string `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
-	// Agent 命名空间标识
+	// The name of the digital employee (operating object name, optional).
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID.
 	//
 	// example:
 	//

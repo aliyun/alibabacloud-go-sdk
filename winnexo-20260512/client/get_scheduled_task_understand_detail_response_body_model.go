@@ -26,24 +26,31 @@ type iGetScheduledTaskUnderstandDetailResponseBody interface {
 }
 
 type GetScheduledTaskUnderstandDetailResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 错误描述，成功时为空
-	Message          *string                                                         `json:"message,omitempty" xml:"message,omitempty"`
-	RelatedObjects   []*GetScheduledTaskUnderstandDetailResponseBodyRelatedObjects   `json:"relatedObjects,omitempty" xml:"relatedObjects,omitempty" type:"Repeated"`
+	// The description of the status code.
+	//
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The related objects.
+	RelatedObjects []*GetScheduledTaskUnderstandDetailResponseBodyRelatedObjects `json:"relatedObjects,omitempty" xml:"relatedObjects,omitempty" type:"Repeated"`
+	// The related semantics.
 	RelatedSemantics []*GetScheduledTaskUnderstandDetailResponseBodyRelatedSemantics `json:"relatedSemantics,omitempty" xml:"relatedSemantics,omitempty" type:"Repeated"`
-	RelatedSkills    []*GetScheduledTaskUnderstandDetailResponseBodyRelatedSkills    `json:"relatedSkills,omitempty" xml:"relatedSkills,omitempty" type:"Repeated"`
-	// 请求追踪 ID
+	// The related skills.
+	RelatedSkills []*GetScheduledTaskUnderstandDetailResponseBodyRelatedSkills `json:"relatedSkills,omitempty" xml:"relatedSkills,omitempty" type:"Repeated"`
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 润色后的任务理解
+	// The task understanding description polished by the LLM.
 	//
 	// example:
 	//
@@ -154,25 +161,29 @@ func (s *GetScheduledTaskUnderstandDetailResponseBody) Validate() error {
 }
 
 type GetScheduledTaskUnderstandDetailResponseBodyRelatedObjects struct {
-	// 提及类型
+	// The mention type, such as objects.
 	//
 	// example:
 	//
 	// string_value
 	MentionType *string `json:"mentionType,omitempty" xml:"mentionType,omitempty"`
-	// 文件名
+	// The name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 对象 ID
+	// The object ID. Pass the project task ID.
+	//
+	// - For internal enterprise applications, this is the taskId obtained by calling the [Create a project task](https://open.dingtalk.com/document/orgapp-server/create-a-project-task) operation.
+	//
+	// - For third-party enterprise applications, this is the taskId obtained by calling the [Create a project task](https://open.dingtalk.com/document/isvapp-server/create-a-project-task) operation.
 	//
 	// example:
 	//
 	// exampleObjectId
 	ObjectId *string `json:"objectId,omitempty" xml:"objectId,omitempty"`
-	// 对象类型
+	// The object type, such as customer. This parameter has a value when type is set to mention.
 	//
 	// example:
 	//
@@ -229,13 +240,13 @@ func (s *GetScheduledTaskUnderstandDetailResponseBodyRelatedObjects) Validate() 
 }
 
 type GetScheduledTaskUnderstandDetailResponseBodyRelatedSemantics struct {
-	// 语义属性（JSON 字符串），用于语义检索时过滤
+	// The information type.
 	//
 	// example:
 	//
 	// {"level": "VIP"}
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// 语义实体名，如客户/机会
+	// The semantic entity name, such as customer or opportunity.
 	//
 	// example:
 	//
@@ -274,19 +285,19 @@ func (s *GetScheduledTaskUnderstandDetailResponseBodyRelatedSemantics) Validate(
 }
 
 type GetScheduledTaskUnderstandDetailResponseBodyRelatedSkills struct {
-	// 技能展示名称
+	// The display name of the MCP service.
 	//
 	// example:
 	//
 	// string_value
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// 文件名
+	// The name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 技能代码
+	// The skill code.
 	//
 	// example:
 	//

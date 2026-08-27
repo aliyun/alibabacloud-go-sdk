@@ -36,73 +36,77 @@ type iCreatePersonalDirectoryResponseBody interface {
 }
 
 type CreatePersonalDirectoryResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// SUCCESS indicates success. In case of failure, the corresponding error type is returned, such as ERR_BAD_REQUEST, ERR_VALIDATION_FAILED, or ERR_INTERNAL_SERVER_ERROR.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 目录描述
+	// The description.
 	//
 	// example:
 	//
-	// 示例描述
+	// PublicApplication
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 新建目录 ID
+	// The folder ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 目录 KB 归属类型：normal / aliding_kb_root / aliding_kb_internal
+	// The folder type.
 	//
 	// example:
 	//
 	// string_value
 	DirectoryKind *string `json:"directoryKind,omitempty" xml:"directoryKind,omitempty"`
-	// 创建时间戳（毫秒）
+	// The creation time.
 	//
 	// example:
 	//
-	// 1
+	// 2026-03-04 13:54:52
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间戳（毫秒）
+	// The last modification time.
 	//
 	// example:
 	//
-	// 1
+	// 2025-11-14T02:18:27Z
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 错误描述，成功时为空
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 文件名
+	// The response message.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The name of the worksheet.
+	//
+	// example:
+	//
+	// conn_ip_101
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 所属数字员工名称
+	// The name of the digital human (operating object name, optional).
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 父目录 ID（service 若回填默认根目录，这里返回回填后的父目录 ID）
+	// The folder ID.
 	//
 	// example:
 	//
-	// exampleParentDirectoryId
+	// wd-lxykjnnw4lyl9eq
 	ParentDirectoryId *string `json:"parentDirectoryId,omitempty" xml:"parentDirectoryId,omitempty"`
-	// 文件 OSS URL
+	// The path.
 	//
 	// example:
 	//
-	// https://example.com/oss/file.pdf
+	// oss://clg-paimon-4a00f1ac43464714b86fb54ca41a84c9/db-abc73646-6a08-4b96-820f-3d1d547a1e3b.db/tbl-c8a33522-5398-4f8e-9a2a-fba1efad94d1
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// 请求追踪 ID
+	// Id of the request
 	//
 	// example:
 	//
-	// 019FF406-1B10-0065-A97D-2D1920C2A03D
+	// 375701FC-2FB9-5782-BE8F-A3F5E2F2158C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

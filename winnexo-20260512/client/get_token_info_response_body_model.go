@@ -24,33 +24,37 @@ type iGetTokenInfoResponseBody interface {
 }
 
 type GetTokenInfoResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Token 是否开启（存在 ACTIVE 状态的 Token）
+	// Indicates whether the token is enabled.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// Token 创建时间（ISO 8601）
+	// The creation time.
 	//
 	// example:
 	//
 	// string_value
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 错误描述，成功时为空
+	// The description of the status code.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 脱敏后的 Token 值
+	// The masked token value.
 	//
 	// example:
 	//

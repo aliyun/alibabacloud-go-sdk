@@ -36,81 +36,81 @@ type iCreateKnowledgeBaseFileRequest interface {
 }
 
 type CreateKnowledgeBaseFileRequest struct {
-	// 资源描述（可选）
+	// The description of the alias.
 	//
 	// example:
 	//
-	// 示例描述
+	// hangzhou-release-version-3-eventbridge-numeric-queue-fix-20260529
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 目标企业知识库目录 ID；不传时自动绑定到当前数字员工默认根目录，传入时必须是当前租户下已有的企业知识库目录
+	// The directory ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 文件后缀名（可选，如 pdf、docx）
+	// The file name extension. This parameter is optional. Examples: pdf and docx.
 	//
 	// example:
 	//
 	// string_value
 	FileExt *string `json:"fileExt,omitempty" xml:"fileExt,omitempty"`
-	// 原始文件名（可选，含后缀）
+	// The file name.
 	//
 	// example:
 	//
-	// example.pdf
+	// BasicSimilarityScorer.cava
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	// 文件 OSS 持久化地址（必填，对应 settings.file_path）
+	// The file path.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// string_value
+	// bi/batch-query-service.app.yaml
 	FilePath *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
-	// 文件公开访问 URL（可选，带签名，对应 settings.file_public_url）
+	// The publicly accessible URL of the DingTalk online document.
 	//
 	// example:
 	//
 	// https://example.com/winnexo/resource
 	FilePublicUrl *string `json:"filePublicUrl,omitempty" xml:"filePublicUrl,omitempty"`
-	// 文件记录 ID（可选，对应 settings.file_record_id）
+	// The file record ID. This parameter is optional and corresponds to settings.file_record_id.
 	//
 	// example:
 	//
 	// exampleFileRecordId
 	FileRecordId *string `json:"fileRecordId,omitempty" xml:"fileRecordId,omitempty"`
-	// 知识库 ID（可选，透传给 document_agent）
+	// Not supported. Ignore this parameter.
 	//
 	// example:
 	//
 	// exampleKnowledgeId
 	KnowledgeId *string `json:"knowledgeId,omitempty" xml:"knowledgeId,omitempty"`
-	// 资源显示名称
+	// The name of the AI assistant.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// oklabs_tongyici
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 数字员工名称（运营对象 name，可选）
+	// The name of the digital employee (operating object name). This parameter is optional.
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 资源标签（可选，JSON 字符串列表，如 ["tagA","tagB"]）
+	// The resource labels. This parameter is optional. Specify a JSON string list, such as ["tagA","tagB"].
 	//
 	// example:
 	//
 	// string_value
 	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID.
 	//
 	// example:
 	//
-	// 10000
+	// 692318833855074
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

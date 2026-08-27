@@ -16,7 +16,7 @@ type iRetryDirectoryFailedSourcesRequest interface {
 }
 
 type RetryDirectoryFailedSourcesRequest struct {
-	// 目录 ID（递归包含子目录下的失败资源）
+	// The ID of the enterprise knowledge base folder. Failed resources in the folder and its subfolders are included recursively.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type RetryDirectoryFailedSourcesRequest struct {
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID. This is a common parameter. In winnexo-cli, pass this value explicitly by using --tenant-id.
 	//
 	// example:
 	//

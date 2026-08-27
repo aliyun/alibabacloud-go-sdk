@@ -16,7 +16,7 @@ type iPreviewKnowledgeBaseSourceRequest interface {
 }
 
 type PreviewKnowledgeBaseSourceRequest struct {
-	// 知识 ID（数据源唯一标识）
+	// The data source ID, which is unique within the tenant.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type PreviewKnowledgeBaseSourceRequest struct {
 	//
 	// exampleSourceId
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID. This is a common parameter. In winnexo-cli, pass it explicitly with --tenant-id.
 	//
 	// example:
 	//

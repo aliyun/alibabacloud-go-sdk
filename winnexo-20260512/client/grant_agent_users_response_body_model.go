@@ -20,21 +20,25 @@ type iGrantAgentUsersResponseBody interface {
 }
 
 type GrantAgentUsersResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 本次处理的授权记录数（含新增与更新）
+	// The number of authorization records processed in this request, including both newly created and updated records.
 	//
 	// example:
 	//
 	// 1
 	GrantedCount *int64 `json:"grantedCount,omitempty" xml:"grantedCount,omitempty"`
-	// 错误描述，成功时为空
+	// The description of the status code.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//

@@ -22,27 +22,35 @@ type iUpdateDirectoryResponseBody interface {
 }
 
 type UpdateDirectoryResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 目录唯一标识（echo 回入参）
+	// The directory ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 错误描述，成功时为空
+	// The description of the status code.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 操作是否成功
+	// Indicates whether the API call is successful. Valid values:
+	//
+	// - true: The call is successful.
+	//
+	// - false: The call fails.
 	//
 	// example:
 	//

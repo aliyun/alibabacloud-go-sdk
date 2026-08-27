@@ -26,34 +26,39 @@ type iListOutputFilesResponseBody interface {
 }
 
 type ListOutputFilesResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
-	Code  *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The output list.
 	Items []*ListOutputFilesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 错误描述，成功时为空
+	// The prompt message.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 当前页码
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页数量
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 请求追踪 ID
+	// The request trace ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 符合条件的产出总数
+	// The total number of outputs that match the specified conditions.
 	//
 	// example:
 	//
@@ -146,62 +151,63 @@ func (s *ListOutputFilesResponseBody) Validate() error {
 }
 
 type ListOutputFilesResponseBodyItems struct {
-	// 会话 ID
+	// The conversation ID.
 	//
 	// example:
 	//
 	// exampleConversationId
 	ConversationId *string `json:"conversationId,omitempty" xml:"conversationId,omitempty"`
-	// 创建时间(ISO8601)
+	// The creation time in ISO 8601 format.
 	//
 	// example:
 	//
 	// string_value
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 更新时间(ISO8601)
+	// The update time in ISO 8601 format.
 	//
 	// example:
 	//
 	// string_value
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 文件名
+	// The output name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 数字员工（运营对象）名称
+	// The name of the digital employee (operating object).
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 产出 ID
+	// The output ID.
 	//
 	// example:
 	//
 	// exampleOutputId
-	OutputId    *string                                        `json:"outputId,omitempty" xml:"outputId,omitempty"`
+	OutputId *string `json:"outputId,omitempty" xml:"outputId,omitempty"`
+	// The output detail list.
 	OutputItems []*ListOutputFilesResponseBodyItemsOutputItems `json:"outputItems,omitempty" xml:"outputItems,omitempty" type:"Repeated"`
-	// 产出类型: conversation/skill/task
+	// The output type: `conversation/skill/task`.
 	//
 	// example:
 	//
 	// conversation
 	OutputType *string `json:"outputType,omitempty" xml:"outputType,omitempty"`
-	// 产出类型国际化展示名称
+	// The internationalized display name of the output type.
 	//
 	// example:
 	//
 	// string_value
 	OutputTypeDisplayName *string `json:"outputTypeDisplayName,omitempty" xml:"outputTypeDisplayName,omitempty"`
-	// 技能产出 ID
+	// The skill output ID.
 	//
 	// example:
 	//
 	// exampleSkillOutputId
 	SkillOutputId *string `json:"skillOutputId,omitempty" xml:"skillOutputId,omitempty"`
-	// 任务 ID
+	// The task ID.
 	//
 	// example:
 	//
@@ -330,76 +336,79 @@ func (s *ListOutputFilesResponseBodyItems) Validate() error {
 }
 
 type ListOutputFilesResponseBodyItemsOutputItems struct {
-	// 创建时间(ISO8601)
+	// The creation time in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2023-10-01T12:00:00Z
-	CreateTime *string                                               `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	EmailInfo  *ListOutputFilesResponseBodyItemsOutputItemsEmailInfo `json:"emailInfo,omitempty" xml:"emailInfo,omitempty" type:"Struct"`
-	FileInfo   *ListOutputFilesResponseBodyItemsOutputItemsFileInfo  `json:"fileInfo,omitempty" xml:"fileInfo,omitempty" type:"Struct"`
-	// 数据库创建时间(ISO8601)
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The email information. This field is present when the output type is email.
+	EmailInfo *ListOutputFilesResponseBodyItemsOutputItemsEmailInfo `json:"emailInfo,omitempty" xml:"emailInfo,omitempty" type:"Struct"`
+	// The file information. This field is present when the output type is file.
+	FileInfo *ListOutputFilesResponseBodyItemsOutputItemsFileInfo `json:"fileInfo,omitempty" xml:"fileInfo,omitempty" type:"Struct"`
+	// The database creation time in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2023-10-01T12:00:00Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 数据库更新时间(ISO8601)
+	// The database update time in ISO 8601 format.
 	//
 	// example:
 	//
 	// 2023-10-01T12:00:00Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 产出名称
+	// The output name.
 	//
 	// example:
 	//
 	// exampleItemName
 	ItemName *string `json:"itemName,omitempty" xml:"itemName,omitempty"`
-	// 产出明细类型: ppt/html/document/picture/slides/video/audio/email/others
+	// The type of the output item. Valid values: ppt, html, document, picture, slides, video, audio, email, and others.
 	//
 	// example:
 	//
 	// ppt
 	ItemType *string `json:"itemType,omitempty" xml:"itemType,omitempty"`
-	// 产出明细类型国际化展示名称
+	// The internationalized display name of the output detail type.
 	//
 	// example:
 	//
 	// string_value
 	ItemTypeDisplayName *string `json:"itemTypeDisplayName,omitempty" xml:"itemTypeDisplayName,omitempty"`
-	// 助手消息ID，由 sendAsyncChatMessage 返回；不属于当前租户时返回 404
+	// The message ID.
 	//
 	// example:
 	//
 	// exampleMessageId
 	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
-	// 产出明细 ID
+	// The output detail ID.
 	//
 	// example:
 	//
 	// string_example_value
 	OutputItemId *string `json:"outputItemId,omitempty" xml:"outputItemId,omitempty"`
-	// 是否开启分享
+	// Indicates whether sharing is enabled.
 	//
 	// example:
 	//
 	// true
 	ShareEnabled *bool `json:"shareEnabled,omitempty" xml:"shareEnabled,omitempty"`
-	// 分享令牌
+	// The share token, which is present when sharing is enabled. You can use this token to access the public share preview API.
 	//
 	// example:
 	//
 	// example_share_token
 	ShareToken *string `json:"shareToken,omitempty" xml:"shareToken,omitempty"`
-	// 技能产出 ID
+	// The skill output ID.
 	//
 	// example:
 	//
 	// exampleSkillOutputId
-	SkillOutputId *string                                                `json:"skillOutputId,omitempty" xml:"skillOutputId,omitempty"`
-	SlidesInfo    *ListOutputFilesResponseBodyItemsOutputItemsSlidesInfo `json:"slidesInfo,omitempty" xml:"slidesInfo,omitempty" type:"Struct"`
-	// 任务执行 ID
+	SkillOutputId *string `json:"skillOutputId,omitempty" xml:"skillOutputId,omitempty"`
+	// The slides information. This field is present when the output type is slides.
+	SlidesInfo *ListOutputFilesResponseBodyItemsOutputItemsSlidesInfo `json:"slidesInfo,omitempty" xml:"slidesInfo,omitempty" type:"Struct"`
+	// The task execution ID.
 	//
 	// example:
 	//
@@ -570,25 +579,25 @@ func (s *ListOutputFilesResponseBodyItemsOutputItems) Validate() error {
 }
 
 type ListOutputFilesResponseBodyItemsOutputItemsEmailInfo struct {
-	// 邮件内容
+	// The email body.
 	//
 	// example:
 	//
 	// string_value
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
-	// 内容类型，如 MARKDOWN/JSONML/HTML
+	// The content type, such as MARKDOWN/JSONML/HTML.
 	//
 	// example:
 	//
 	// string_value
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// recipients
+	// The recipient list.
 	//
 	// example:
 	//
 	// string_value
 	Recipients []*string `json:"recipients,omitempty" xml:"recipients,omitempty" type:"Repeated"`
-	// 邮件主题
+	// The email subject.
 	//
 	// example:
 	//
@@ -645,25 +654,25 @@ func (s *ListOutputFilesResponseBodyItemsOutputItemsEmailInfo) Validate() error 
 }
 
 type ListOutputFilesResponseBodyItemsOutputItemsFileInfo struct {
-	// 文件描述
+	// The file description.
 	//
 	// example:
 	//
-	// 示例描述
+	// Sample description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 文件名
+	// The file name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 文件 OSS URL
+	// The file path (OSS object key).
 	//
 	// example:
 	//
 	// https://example.com/oss/file.pdf
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// 文件类型，如 .pdf, .md
+	// The file type, such as .pdf or .md.
 	//
 	// example:
 	//
@@ -720,7 +729,7 @@ func (s *ListOutputFilesResponseBodyItemsOutputItemsFileInfo) Validate() error {
 }
 
 type ListOutputFilesResponseBodyItemsOutputItemsSlidesInfo struct {
-	// 已完成幻灯片数
+	// The number of completed slides.
 	//
 	// example:
 	//
@@ -732,13 +741,13 @@ type ListOutputFilesResponseBodyItemsOutputItemsSlidesInfo struct {
 	//
 	// examplePptId
 	PptId *string `json:"pptId,omitempty" xml:"pptId,omitempty"`
-	// PPT 名称
+	// The PPT name.
 	//
 	// example:
 	//
 	// string_value
 	PptName *string `json:"pptName,omitempty" xml:"pptName,omitempty"`
-	// 总幻灯片数
+	// The total number of slides.
 	//
 	// example:
 	//

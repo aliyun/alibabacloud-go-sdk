@@ -28,45 +28,49 @@ type iRunSkillResponseBody interface {
 }
 
 type RunSkillResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 任务创建时间，ISO8601 UTC 格式
+	// The task creation time in ISO 8601 UTC format.
 	//
 	// example:
 	//
 	// string_value
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// 错误描述，成功时为空
+	// The prompt message.
+	//
+	// example:
+	//
+	// The current zone list is illegal.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 异步任务 ID，用于 getSkillRun 查询
+	// The asynchronous task ID, used for querying with getSkillRun.
 	//
 	// example:
 	//
 	// exampleRunId
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
-	// 实际执行的技能编码
+	// The skill code that was actually executed.
 	//
 	// example:
 	//
 	// string_value
 	SkillCode *string `json:"skillCode,omitempty" xml:"skillCode,omitempty"`
-	// 技能名称
+	// The skill name.
 	//
 	// example:
 	//
 	// string_value
 	SkillName *string `json:"skillName,omitempty" xml:"skillName,omitempty"`
-	// 任务状态：提交即返回 Running
+	// The task status. Returns Running immediately upon submission.
 	//
 	// example:
 	//

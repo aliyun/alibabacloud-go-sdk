@@ -24,19 +24,19 @@ type iGetSourceUploadSignatureRequest interface {
 }
 
 type GetSourceUploadSignatureRequest struct {
-	// 文件 Content-Type（可选，不传则自动推断）
+	// The content type. Valid values: Text and Markdown.
 	//
 	// example:
 	//
 	// string_value
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// 签名 URL 过期时间（秒），默认 3600
+	// The expiration time of the signed URL, in seconds. Default value: 3600.
 	//
 	// example:
 	//
 	// 3600
 	Expires *int64 `json:"expires,omitempty" xml:"expires,omitempty"`
-	// 文件名（含后缀，如 report.pdf）
+	// The file name.
 	//
 	// This parameter is required.
 	//
@@ -44,19 +44,19 @@ type GetSourceUploadSignatureRequest struct {
 	//
 	// example.pdf
 	Filename *string `json:"filename,omitempty" xml:"filename,omitempty"`
-	// Agent 命名空间标识（数字员工名称）
+	// The name of the digital employee (operating object name). This parameter is optional.
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 数据源归属范围: source（个人数据源，映射 PERSONAL）/ knowledge（企业知识库，映射 TENANT）
+	// The permission scope.
 	//
 	// example:
 	//
 	// source
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID to which the task belongs.
 	//
 	// example:
 	//

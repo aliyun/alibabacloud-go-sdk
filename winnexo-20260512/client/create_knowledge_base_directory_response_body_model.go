@@ -34,67 +34,71 @@ type iCreateKnowledgeBaseDirectoryResponseBody interface {
 }
 
 type CreateKnowledgeBaseDirectoryResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 分类描述
+	// The description of the to-do card type.
 	//
 	// example:
 	//
-	// 示例描述
+	// This is default function description by fc-deploy component
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 新建分类 ID
+	// The directory ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 目录 KB 归属类型：normal / aliding_kb_root / aliding_kb_internal
+	// The directory type.
 	//
 	// example:
 	//
 	// string_value
 	DirectoryKind *string `json:"directoryKind,omitempty" xml:"directoryKind,omitempty"`
-	// 创建时间戳（毫秒）
+	// The creation time.
 	//
 	// example:
 	//
-	// 1
+	// 2025-11-14T02:18:27Z
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间戳（毫秒）
+	// The last modification time.
 	//
 	// example:
 	//
-	// 1
+	// 2026-01-19T01:48:56Z
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 错误描述，成功时为空
+	// The description of the status code.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 文件名
+	// The name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// p-toolset-89550434-4e20-4e4e-bcac-9ab81b82c5b3
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 父分类 ID；新分类挂在租户根目录下时返回 null
+	// The directory ID.
 	//
 	// example:
 	//
-	// exampleParentDirectoryId
+	// wd-lxykjnnw4lyl9eq
 	ParentDirectoryId *string `json:"parentDirectoryId,omitempty" xml:"parentDirectoryId,omitempty"`
-	// 文件 OSS URL
+	// The path of the node.
 	//
 	// example:
 	//
-	// https://example.com/oss/file.pdf
+	// UVCIpI0siUski9iw
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
-	// 019FF406-1B10-0065-A97D-2D1920C2A03D
+	// C474BFC7-7B11-5D92-971E-74AA82EC495B
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

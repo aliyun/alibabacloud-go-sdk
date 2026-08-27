@@ -28,45 +28,49 @@ type iStopChatMessageResponseBody interface {
 }
 
 type StopChatMessageResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 结束原因
+	// The reason for stopping.
 	//
 	// example:
 	//
 	// string_value
 	FinishReason *string `json:"finishReason,omitempty" xml:"finishReason,omitempty"`
-	// 错误描述，成功时为空
+	// The description of the status code.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 助手消息ID，由 sendAsyncChatMessage 返回；不属于当前租户时返回 404
+	// The message ID.
 	//
 	// example:
 	//
 	// exampleMessageId
 	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
-	// 已生成的部分内容
+	// The partially generated content.
 	//
 	// example:
 	//
 	// string_value
 	PartialContent *string `json:"partialContent,omitempty" xml:"partialContent,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 会话 ID
+	// The session ID.
 	//
 	// example:
 	//
 	// exampleSessionId
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// 消息最终状态
+	// The final status of the message.
 	//
 	// example:
 	//

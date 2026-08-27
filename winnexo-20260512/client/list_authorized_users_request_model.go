@@ -22,19 +22,19 @@ type iListAuthorizedUsersRequest interface {
 }
 
 type ListAuthorizedUsersRequest struct {
-	// 筛选类型：USER / USER_GROUP / 不传则返回全部
+	// The filter type. Valid values: USER, USER_GROUP. If not specified, all types are returned.
 	//
 	// example:
 	//
 	// USER
 	GranteeType *string `json:"granteeType,omitempty" xml:"granteeType,omitempty"`
-	// 搜索关键词，按用户名或组名模糊匹配
+	// The search keyword.
 	//
 	// example:
 	//
-	// 示例关键词
+	// SampleKeyword
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// 数字员工名称
+	// The name of the digital employee.
 	//
 	// This parameter is required.
 	//
@@ -42,13 +42,13 @@ type ListAuthorizedUsersRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 权限类型过滤：USE=使用权限 / MANAGE=管理权限
+	// Permission
 	//
 	// example:
 	//
 	// USE
 	Permission *string `json:"permission,omitempty" xml:"permission,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

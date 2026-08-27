@@ -22,22 +22,28 @@ type iGetChatSessionResponseBody interface {
 }
 
 type GetChatSessionResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 错误描述，成功时为空
-	Message  *string                               `json:"message,omitempty" xml:"message,omitempty"`
+	// The status code description.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The message data detail structure.
 	Messages []*GetChatSessionResponseBodyMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
-	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Session   *GetChatSessionResponseBodySession `json:"session,omitempty" xml:"session,omitempty" type:"Struct"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The session ID.
+	Session *GetChatSessionResponseBodySession `json:"session,omitempty" xml:"session,omitempty" type:"Struct"`
 }
 
 func (s GetChatSessionResponseBody) String() string {
@@ -112,68 +118,73 @@ func (s *GetChatSessionResponseBody) Validate() error {
 }
 
 type GetChatSessionResponseBodyMessages struct {
-	// 消息内容
+	// The message content.
 	//
 	// example:
 	//
-	// 示例内容
+	// Sample content
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// 该消息之后 LLM 上下文是否已清空
+	// Indicates whether the LLM context has been cleared after this message.
 	//
 	// example:
 	//
 	// true
 	ContextCleared *bool `json:"contextCleared,omitempty" xml:"contextCleared,omitempty"`
-	// 是否来自分享续聊复制的消息
+	// Indicates whether the message is copied from a shared conversation.
 	//
 	// example:
 	//
 	// true
 	FromShare *bool `json:"fromShare,omitempty" xml:"fromShare,omitempty"`
-	// 消息ID
+	// The message ID.
 	//
 	// example:
 	//
 	// exampleId
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// 更新时间
+	// The message metadata.
 	//
 	// example:
 	//
 	// 1
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// 类型
+	// The type.
 	//
 	// example:
 	//
 	// string_value
 	Object *string `json:"object,omitempty" xml:"object,omitempty"`
-	// 角色
+	// The role.
 	//
 	// example:
 	//
 	// string_value
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
-	// 分享来源用户名称
+	// The username of the sharing source. This parameter has a value only when from_share=True.
 	//
 	// example:
 	//
 	// string_value
 	ShareUserName *string `json:"shareUserName,omitempty" xml:"shareUserName,omitempty"`
-	// 消息状态
+	// The message status.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 追踪ID
+	// The trace ID.
 	//
 	// example:
 	//
 	// exampleTraceId
-	TraceId  *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
-	UpdateAt *int64  `json:"updateAt,omitempty" xml:"updateAt,omitempty"`
-	// 用户反馈类型
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+	// The update time.
+	//
+	// example:
+	//
+	// 20240101
+	UpdateAt *int64 `json:"updateAt,omitempty" xml:"updateAt,omitempty"`
+	// The user feedback type: LIKE | DISLIKE | CANCEL.
 	//
 	// example:
 	//
@@ -302,56 +313,61 @@ func (s *GetChatSessionResponseBodyMessages) Validate() error {
 }
 
 type GetChatSessionResponseBodySession struct {
-	// 创建时间
+	// The creation time.
 	//
 	// example:
 	//
 	// 1
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// 消息ID
+	// The message ID.
 	//
 	// example:
 	//
 	// exampleId
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// 创建时间是否超过30天
+	// Indicates whether the creation time exceeds 30 days.
 	//
 	// example:
 	//
 	// true
 	IsExpired *bool `json:"isExpired,omitempty" xml:"isExpired,omitempty"`
-	// 关联对象ID
+	// The session metadata.
 	//
 	// example:
 	//
 	// exampleObjectId
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// 会话使用的抽象模型名（quick/standard/flagship）
+	// The abstract model name used by the session (quick/standard/flagship).
 	//
 	// example:
 	//
 	// string_value
 	Model *string `json:"model,omitempty" xml:"model,omitempty"`
-	// 类型
+	// The type.
 	//
 	// example:
 	//
 	// string_value
-	Object   *string `json:"object,omitempty" xml:"object,omitempty"`
+	Object *string `json:"object,omitempty" xml:"object,omitempty"`
+	// The associated object ID.
+	//
+	// example:
+	//
+	// 2676
 	ObjectId *string `json:"objectId,omitempty" xml:"objectId,omitempty"`
-	// operatingObjectName
+	// The list of digital employee names.
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName []*string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty" type:"Repeated"`
-	// 标题
+	// The title.
 	//
 	// example:
 	//
-	// 示例标题
+	// Sample title
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// 更新时间
+	// The update time.
 	//
 	// example:
 	//

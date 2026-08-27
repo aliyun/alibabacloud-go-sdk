@@ -22,37 +22,37 @@ type iCreatePersonalDirectoryRequest interface {
 }
 
 type CreatePersonalDirectoryRequest struct {
-	// 目录描述（可选）
+	// The workspace description.
 	//
 	// example:
 	//
-	// 示例描述
+	// hangzhou-release-version-3-eventbridge-numeric-queue-fix-20260529
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 目录名称
+	// The name of the digital human.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// sandbox-conversation-webpage-github-default-p32JG2
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 数字员工名称（已废弃：不再作为个人资源隔离条件，仅保留用于来源追溯）
+	// The name of the digital human (operating object name, optional).
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 父目录 ID；不传时新目录挂在用户的默认根目录下，传入时必须是当前用户的已有个人目录
+	// The folder ID.
 	//
 	// example:
 	//
-	// exampleParentDirectoryId
+	// wd-lxykjnnw4lyl9eq
 	ParentDirectoryId *string `json:"parentDirectoryId,omitempty" xml:"parentDirectoryId,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID.
 	//
 	// example:
 	//
-	// 10000
+	// 235454102432001
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

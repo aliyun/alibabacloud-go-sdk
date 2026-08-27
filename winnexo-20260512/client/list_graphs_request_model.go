@@ -14,9 +14,13 @@ type iListGraphsRequest interface {
 }
 
 type ListGraphsRequest struct {
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The ID of the tenant to which the node belongs.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 21577
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

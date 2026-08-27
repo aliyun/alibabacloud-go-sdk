@@ -40,19 +40,19 @@ type iCreateTenantDirectoryResponseBody interface {
 }
 
 type CreateTenantDirectoryResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 目录描述
+	// The description of the to-do card type.
 	//
 	// example:
 	//
-	// 示例描述
+	// Sample description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 目录唯一标识
+	// The directory ID.
 	//
 	// This parameter is required.
 	//
@@ -60,19 +60,19 @@ type CreateTenantDirectoryResponseBody struct {
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 创建时间戳
+	// The creation time.
 	//
 	// example:
 	//
 	// 1
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间戳
+	// The last modification time.
 	//
 	// example:
 	//
 	// 1
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 目录内部主键
+	// Id of the request
 	//
 	// This parameter is required.
 	//
@@ -80,29 +80,33 @@ type CreateTenantDirectoryResponseBody struct {
 	//
 	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 错误描述，成功时为空
+	// The description of the status code.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 文件名
+	// The name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 历史运营对象名称
+	// The name of the digital employee (the operating object name, optional).
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 父目录内部主键
+	// The ID of the parent node.
 	//
 	// example:
 	//
 	// 1
 	ParentId *int64 `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	// 文件 OSS URL
+	// The path of the node.
 	//
 	// This parameter is required.
 	//
@@ -110,13 +114,13 @@ type CreateTenantDirectoryResponseBody struct {
 	//
 	// https://example.com/oss/file.pdf
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 租户 ID
+	// The ID of the effective tenant.
 	//
 	// This parameter is required.
 	//
@@ -124,7 +128,7 @@ type CreateTenantDirectoryResponseBody struct {
 	//
 	// 10000
 	TenantId *int64 `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 创建人用户 ID
+	// The user ID of the creator.
 	//
 	// This parameter is required.
 	//

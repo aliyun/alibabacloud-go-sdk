@@ -51,111 +51,131 @@ type iGetScheduledTaskExecutionDetailResponseBody interface {
 	GetTriggerInfo() *GetScheduledTaskExecutionDetailResponseBodyTriggerInfo
 	SetTriggerType(v string) *GetScheduledTaskExecutionDetailResponseBody
 	GetTriggerType() *string
+	SetVisibility(v string) *GetScheduledTaskExecutionDetailResponseBody
+	GetVisibility() *string
 }
 
 type GetScheduledTaskExecutionDetailResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 完成时间 ISO8601
+	// The completion time in ISO 8601 format.
 	//
 	// example:
 	//
 	// string_value
 	CompletedAt *string `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
-	// 执行完整内容
+	// The full execution content.
 	//
 	// example:
 	//
-	// 示例内容
+	// Sample content
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// 创建人
+	// The creator.
 	//
 	// example:
 	//
 	// string_value
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// digitalEmployeeName
+	// The list of digital employee names.
 	//
 	// example:
 	//
 	// string_value
 	DigitalEmployeeName []*string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty" type:"Repeated"`
-	// 错误信息
+	// The error message.
 	//
 	// example:
 	//
 	// string_value
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 执行 ID
+	// The execution ID.
 	//
 	// example:
 	//
 	// exampleExecutionId
-	ExecutionId *string                                             `json:"executionId,omitempty" xml:"executionId,omitempty"`
-	Files       []*GetScheduledTaskExecutionDetailResponseBodyFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
-	// 创建时间 ISO8601
+	ExecutionId *string `json:"executionId,omitempty" xml:"executionId,omitempty"`
+	// The list of output files.
+	Files []*GetScheduledTaskExecutionDetailResponseBodyFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	// The creation time in ISO 8601 format.
 	//
 	// example:
 	//
 	// string_value
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 错误描述，成功时为空
-	Message  *string                                              `json:"message,omitempty" xml:"message,omitempty"`
+	// The status code description.
+	//
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The extended metadata.
 	Metadata *GetScheduledTaskExecutionDetailResponseBodyMetadata `json:"metadata,omitempty" xml:"metadata,omitempty" type:"Struct"`
-	// 结构化输出内容
+	// The structured output content.
 	//
 	// example:
 	//
 	// string_value
 	OutputContent *string `json:"outputContent,omitempty" xml:"outputContent,omitempty"`
-	PushResult    *string `json:"pushResult,omitempty" xml:"pushResult,omitempty"`
-	// 请求追踪 ID
+	// The push status of the execution result.
+	//
+	// example:
+	//
+	// succuss
+	PushResult *string `json:"pushResult,omitempty" xml:"pushResult,omitempty"`
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// skillCodes
+	// The list of associated skill codes.
 	//
 	// example:
 	//
 	// string_value
 	SkillCodes []*string `json:"skillCodes,omitempty" xml:"skillCodes,omitempty" type:"Repeated"`
-	// 开始时间 ISO8601
+	// The start time in ISO 8601 format.
 	//
 	// example:
 	//
 	// string_value
 	StartedAt *string `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
-	// 执行状态
+	// The execution status.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 任务 ID
+	// The task ID.
 	//
 	// example:
 	//
 	// exampleTaskId
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// 执行结果标题
+	// The execution result title.
 	//
 	// example:
 	//
-	// 示例标题
-	Title       *string                                                 `json:"title,omitempty" xml:"title,omitempty"`
+	// Sample title
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// The trigger information.
 	TriggerInfo *GetScheduledTaskExecutionDetailResponseBodyTriggerInfo `json:"triggerInfo,omitempty" xml:"triggerInfo,omitempty" type:"Struct"`
-	// 触发类型
+	// The trigger type.
 	//
 	// example:
 	//
 	// string_value
 	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
+	// The visibility scope of the execution record, which is always equal to the visibility scope of the associated task. Valid values: PRIVATE, COLLABORATIVE, and PUBLIC. This field is empty for personal task executions.
+	//
+	// example:
+	//
+	// COLLABORATIVE
+	Visibility *string `json:"visibility,omitempty" xml:"visibility,omitempty"`
 }
 
 func (s GetScheduledTaskExecutionDetailResponseBody) String() string {
@@ -248,6 +268,10 @@ func (s *GetScheduledTaskExecutionDetailResponseBody) GetTriggerInfo() *GetSched
 
 func (s *GetScheduledTaskExecutionDetailResponseBody) GetTriggerType() *string {
 	return s.TriggerType
+}
+
+func (s *GetScheduledTaskExecutionDetailResponseBody) GetVisibility() *string {
+	return s.Visibility
 }
 
 func (s *GetScheduledTaskExecutionDetailResponseBody) SetCode(v string) *GetScheduledTaskExecutionDetailResponseBody {
@@ -355,6 +379,11 @@ func (s *GetScheduledTaskExecutionDetailResponseBody) SetTriggerType(v string) *
 	return s
 }
 
+func (s *GetScheduledTaskExecutionDetailResponseBody) SetVisibility(v string) *GetScheduledTaskExecutionDetailResponseBody {
+	s.Visibility = &v
+	return s
+}
+
 func (s *GetScheduledTaskExecutionDetailResponseBody) Validate() error {
 	if s.Files != nil {
 		for _, item := range s.Files {
@@ -379,13 +408,13 @@ func (s *GetScheduledTaskExecutionDetailResponseBody) Validate() error {
 }
 
 type GetScheduledTaskExecutionDetailResponseBodyFiles struct {
-	// 文件名
+	// The file name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 文件 OSS URL
+	// The OSS URL of the file.
 	//
 	// example:
 	//
@@ -424,13 +453,13 @@ func (s *GetScheduledTaskExecutionDetailResponseBodyFiles) Validate() error {
 }
 
 type GetScheduledTaskExecutionDetailResponseBodyMetadata struct {
-	// 会话 ID
+	// The session ID.
 	//
 	// example:
 	//
 	// exampleSessionId
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// 执行结果推送状态（多频道时为列表）
+	// The token usage information.
 	//
 	// example:
 	//
@@ -469,7 +498,7 @@ func (s *GetScheduledTaskExecutionDetailResponseBodyMetadata) Validate() error {
 }
 
 type GetScheduledTaskExecutionDetailResponseBodyTriggerInfo struct {
-	// 触发执行的用户标识
+	// The user identifier that triggered the execution.
 	//
 	// example:
 	//

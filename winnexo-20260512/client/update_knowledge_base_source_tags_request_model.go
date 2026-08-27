@@ -18,7 +18,7 @@ type iUpdateKnowledgeBaseSourceTagsRequest interface {
 }
 
 type UpdateKnowledgeBaseSourceTagsRequest struct {
-	// 数据源 ID（租户内唯一）
+	// The unique identifier on the business system side, that is, the business ID.
 	//
 	// This parameter is required.
 	//
@@ -26,13 +26,13 @@ type UpdateKnowledgeBaseSourceTagsRequest struct {
 	//
 	// exampleSourceId
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 资源标签（JSON 字符串列表，如 ["tagA","tagB"]；传 null 表示清空标签）
+	// The resource tags. This is an optional parameter that accepts a JSON string list, such as ["tagA","tagB"].
 	//
 	// example:
 	//
 	// string_value
 	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID.
 	//
 	// example:
 	//

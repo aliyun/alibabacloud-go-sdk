@@ -42,79 +42,83 @@ type iQuerySyncResultResponseBody interface {
 }
 
 type QuerySyncResultResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 任务完成时间（ISO 8601）
+	// The time when the task was completed (ISO 8601 format).
 	//
 	// example:
 	//
 	// string_value
 	CompletedAt *string `json:"completedAt,omitempty" xml:"completedAt,omitempty"`
-	// 企业标识
+	// The enterprise identifier.
 	//
 	// example:
 	//
 	// exampleCorpId
 	CorpId *string `json:"corpId,omitempty" xml:"corpId,omitempty"`
-	// 部门同步统计（完成时有值）
+	// The department synchronization statistics. This field has a value when the task is completed.
 	DeptStats *QuerySyncResultResponseBodyDeptStats `json:"deptStats,omitempty" xml:"deptStats,omitempty" type:"Struct"`
-	// 执行时长（秒）
+	// The execution duration, in seconds.
 	//
 	// example:
 	//
 	// 1
 	DurationSeconds *int64 `json:"durationSeconds,omitempty" xml:"durationSeconds,omitempty"`
-	// 错误信息（失败时有值）
+	// The error message.
 	//
 	// example:
 	//
 	// string_value
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 成员同步统计（syncMembers=true 且完成时有值）
+	// The member synchronization statistics. This field has a value when syncMembers is set to true and the task is completed.
 	MemberStats *QuerySyncResultResponseBodyMemberStats `json:"memberStats,omitempty" xml:"memberStats,omitempty" type:"Struct"`
-	// 错误描述，成功时为空
+	// The description of the status code.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 平台类型
+	// The platform type.
 	//
 	// example:
 	//
 	// string_value
 	PlatformType *string `json:"platformType,omitempty" xml:"platformType,omitempty"`
-	// 请求追踪 ID
+	// The request trace ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 任务开始执行时间（ISO 8601）
+	// The time when the task started (ISO 8601 format).
 	//
 	// example:
 	//
 	// string_value
 	StartedAt *string `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
-	// 任务状态: PENDING / RUNNING / COMPLETED / FAILED / TIMEOUT / CANCELED
+	// The task status. Valid values: PENDING, RUNNING, COMPLETED, FAILED, TIMEOUT, and CANCELED.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 任务提交时间（ISO 8601）
+	// The time when the task was submitted (ISO 8601 format).
 	//
 	// example:
 	//
 	// string_value
 	SubmittedAt *string `json:"submittedAt,omitempty" xml:"submittedAt,omitempty"`
-	// 执行摘要（人可读）
+	// The intelligent meeting summary content.
 	//
 	// example:
 	//
 	// string_value
 	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
-	// 任务 ID
+	// The task ID.
 	//
 	// example:
 	//
@@ -280,37 +284,37 @@ func (s *QuerySyncResultResponseBody) Validate() error {
 }
 
 type QuerySyncResultResponseBodyDeptStats struct {
-	// 新增的用户组数
+	// The total number of external departments.
 	//
 	// example:
 	//
 	// 1
 	Created *int64 `json:"created,omitempty" xml:"created,omitempty"`
-	// 标记删除的用户组数
+	// The number of user groups marked for deletion.
 	//
 	// example:
 	//
 	// 1
 	Deleted *int64 `json:"deleted,omitempty" xml:"deleted,omitempty"`
-	// 移动的用户组数
+	// The number of moved user groups.
 	//
 	// example:
 	//
 	// 1
 	Moved *int64 `json:"moved,omitempty" xml:"moved,omitempty"`
-	// 更名的用户组数
+	// The number of renamed user groups.
 	//
 	// example:
 	//
 	// 1
 	Renamed *int64 `json:"renamed,omitempty" xml:"renamed,omitempty"`
-	// 跳过的用户组数
+	// The number of skipped user groups.
 	//
 	// example:
 	//
 	// 1
 	Skipped *int64 `json:"skipped,omitempty" xml:"skipped,omitempty"`
-	// 外部部门总数
+	// The total number of external departments.
 	//
 	// example:
 	//
@@ -385,31 +389,31 @@ func (s *QuerySyncResultResponseBodyDeptStats) Validate() error {
 }
 
 type QuerySyncResultResponseBodyMemberStats struct {
-	// 失败的成员数
+	// The number of failed members.
 	//
 	// example:
 	//
 	// 1
 	Failed *int64 `json:"failed,omitempty" xml:"failed,omitempty"`
-	// 新增的成员关系数
+	// The number of added member relationships.
 	//
 	// example:
 	//
 	// 1
 	RelationshipAdded *int64 `json:"relationshipAdded,omitempty" xml:"relationshipAdded,omitempty"`
-	// 移除的成员关系数
+	// The number of removed member relationships.
 	//
 	// example:
 	//
 	// 1
 	RelationshipRemoved *int64 `json:"relationshipRemoved,omitempty" xml:"relationshipRemoved,omitempty"`
-	// 外部成员总数
+	// The total number of external members.
 	//
 	// example:
 	//
 	// 1
 	TotalExternal *int64 `json:"totalExternal,omitempty" xml:"totalExternal,omitempty"`
-	// 未变更的成员关系数
+	// The number of unchanged member relationships.
 	//
 	// example:
 	//

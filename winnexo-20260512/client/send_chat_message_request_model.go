@@ -34,61 +34,61 @@ type iSendChatMessageRequest interface {
 }
 
 type SendChatMessageRequest struct {
-	// 用户消息正文
+	// The message body from the user.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例内容
+	// Sample content
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// 消息类型: Text / Markdown
+	// The message type. Valid values: Text and Markdown.
 	//
 	// example:
 	//
 	// Text
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// 数字员工名称列表（兼容旧格式可传单个字符串）
+	// The list of digital employee names. A single string can be passed for backward compatibility with the legacy format.
 	//
 	// example:
 	//
 	// string_value
 	DigitalEmployeeName []*string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty" type:"Repeated"`
-	// 是否启用直连模式；true 时跳过常规场景路由，直接进入直连对话场景
+	// Specifies whether to enable direct connection mode. When set to true, the regular scenario routing is skipped and the direct conversation scenario is entered directly.
 	//
 	// example:
 	//
 	// false
 	DirectChat *bool `json:"directChat,omitempty" xml:"directChat,omitempty"`
-	// 文件引用列表；每项为对象，fileId 必传（由 uploadChatFile 返回）
+	// The list of file references. Each item is an object, and fileId is required (returned by uploadChatFile).
 	Files []*SendChatMessageRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
-	// 抽象模型档位（quick / standard / flagship）；缺省时新会话用 standard，已有会话沿用会话当前档位
+	// The abstract model tier. Valid values: quick, standard, and flagship. If not specified, new sessions use standard, and existing sessions retain the current session tier.
 	//
 	// example:
 	//
 	// quick
 	Model *string `json:"model,omitempty" xml:"model,omitempty"`
-	// 不传 sessionId 时是否复用该数字员工下最近一个会话（CLI 场景），缺省 false 即新建会话
+	// Specifies whether to reuse the most recent session of the digital employee when sessionId is not provided (CLI scenario). Default value: false, which creates a new session.
 	//
 	// example:
 	//
 	// false
 	ReuseLastSession *bool `json:"reuseLastSession,omitempty" xml:"reuseLastSession,omitempty"`
-	// 会话 ID
+	// The session ID.
 	//
 	// example:
 	//
 	// exampleSessionId
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// 是否流式返回，默认True
+	// Specifies whether to use streaming output.
 	//
 	// example:
 	//
 	// true
 	Stream *bool `json:"stream,omitempty" xml:"stream,omitempty"`
-	// executeScheduledTask 返回的任务执行元数据；传入后按任务执行链路处理
+	// The task execution metadata returned by executeScheduledTask. When provided, the request is processed through the task execution pipeline.
 	TaskExecution *SendChatMessageRequestTaskExecution `json:"taskExecution,omitempty" xml:"taskExecution,omitempty" type:"Struct"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The effective tenant ID.
 	//
 	// example:
 	//
@@ -222,7 +222,7 @@ func (s *SendChatMessageRequest) Validate() error {
 }
 
 type SendChatMessageRequestFiles struct {
-	// 文件 ID，由 uploadChatFile 返回
+	// The file ID.
 	//
 	// This parameter is required.
 	//
@@ -230,7 +230,7 @@ type SendChatMessageRequestFiles struct {
 	//
 	// exampleFileId
 	FileId *string `json:"fileId,omitempty" xml:"fileId,omitempty"`
-	// 文件类型
+	// The element type. Valid values: text, web_search, mention, and skill.
 	//
 	// example:
 	//
@@ -269,19 +269,19 @@ func (s *SendChatMessageRequestFiles) Validate() error {
 }
 
 type SendChatMessageRequestTaskExecution struct {
-	// 计费 ID
+	// The billing ID.
 	//
 	// example:
 	//
 	// exampleBillingId
 	BillingId *string `json:"billingId,omitempty" xml:"billingId,omitempty"`
-	// 是否启用联网搜索
+	// Specifies whether to enable web search.
 	//
 	// example:
 	//
 	// true
 	EnableWebSearch *bool `json:"enableWebSearch,omitempty" xml:"enableWebSearch,omitempty"`
-	// 执行记录 ID
+	// The execution record ID.
 	//
 	// This parameter is required.
 	//
@@ -289,19 +289,19 @@ type SendChatMessageRequestTaskExecution struct {
 	//
 	// exampleExecutionId
 	ExecutionId *string `json:"executionId,omitempty" xml:"executionId,omitempty"`
-	// 数字员工名称
+	// The digital employee name.
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 关联技能编码列表
+	// The list of associated skill codes.
 	//
 	// example:
 	//
 	// string_value
 	SkillCodes []*string `json:"skillCodes,omitempty" xml:"skillCodes,omitempty" type:"Repeated"`
-	// 任务 ID
+	// The task ID.
 	//
 	// This parameter is required.
 	//
@@ -309,25 +309,25 @@ type SendChatMessageRequestTaskExecution struct {
 	//
 	// exampleTaskId
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// 任务名称
+	// The task name.
 	//
 	// example:
 	//
 	// string_value
 	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
-	// 任务理解内容
+	// The task understanding content.
 	//
 	// example:
 	//
 	// string_value
 	TaskUnderstand *string `json:"taskUnderstand,omitempty" xml:"taskUnderstand,omitempty"`
-	// 任务所属租户 ID
+	// The tenant ID to which the task belongs.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 任务所属用户 ID
+	// The user ID to which the task belongs.
 	//
 	// example:
 	//

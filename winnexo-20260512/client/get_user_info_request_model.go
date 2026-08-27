@@ -14,7 +14,7 @@ type iGetUserInfoRequest interface {
 }
 
 type GetUserInfoRequest struct {
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The effective tenant ID.
 	//
 	// example:
 	//

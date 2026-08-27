@@ -24,33 +24,37 @@ type iDeleteChatSessionResponseBody interface {
 }
 
 type DeleteChatSessionResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 是否删除成功
+	// Indicates whether the session is deleted.
 	//
 	// example:
 	//
 	// true
 	Deleted *bool `json:"deleted,omitempty" xml:"deleted,omitempty"`
-	// 是否硬删除
+	// Indicates whether the session is hard-deleted.
 	//
 	// example:
 	//
 	// true
 	HardDelete *bool `json:"hardDelete,omitempty" xml:"hardDelete,omitempty"`
-	// 错误描述，成功时为空
+	// The status code description.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 会话 ID
+	// The unique identifier of the function session.
 	//
 	// example:
 	//

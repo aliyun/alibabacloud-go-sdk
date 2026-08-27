@@ -42,87 +42,101 @@ type iGetKnowledgeBaseSourceResponseBody interface {
 }
 
 type GetKnowledgeBaseSourceResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 知识描述
+	// The description of the to-do card type.
 	//
 	// example:
 	//
-	// 示例描述
+	// Sample description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 所属分类 ID
+	// The folder ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 所属分类完整路径
+	// The full path of the category to which the knowledge item belongs.
 	//
 	// example:
 	//
 	// string_value
 	DirectoryPath *string `json:"directoryPath,omitempty" xml:"directoryPath,omitempty"`
-	// 创建时间戳（毫秒）
+	// The creation time.
 	//
 	// example:
 	//
 	// 1
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间戳（毫秒）
+	// The last modification time.
 	//
 	// example:
 	//
 	// 1
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 错误描述，成功时为空
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 文件名
+	// The description of the status code.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 知识 ID
+	// The unique identifier on the business system side, that is, the business ID.
 	//
 	// example:
 	//
 	// exampleSourceId
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 知识 KB 归属类型：aliding_kb_doc（阿里钉知识库文档）/ normal（普通知识）
+	// The knowledge base ownership type. Valid values: aliding_kb_doc (DingTalk knowledge base document) and normal (common knowledge).
 	//
 	// example:
 	//
 	// string_value
 	SourceKind *string `json:"sourceKind,omitempty" xml:"sourceKind,omitempty"`
-	// 知识标签（JSON 字符串列表）
+	// The resource tags. This is optional and is a JSON string list, such as ["tagA","tagB"].
 	//
 	// example:
 	//
 	// string_value
 	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
-	// 知识类型（TEXT / FILE / ONLINE_DOC 等）
+	// The type of the resource source. Valid values:
+	//
+	// - ExportTaskId: the resource export ID.
+	//
+	// - TaskId: the Module execution task ID.
+	//
+	// - StatePath: the OSS path where the resource state is stored.
 	//
 	// example:
 	//
 	// string_value
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// 处理状态（READY / RUNNING / FAILED 等）
+	// The data source status. Valid values:
+	//
+	// - **1**: online.
+	//
+	// - **0**: offline.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 状态附加信息（如失败原因）
+	// The status message.
 	//
 	// example:
 	//

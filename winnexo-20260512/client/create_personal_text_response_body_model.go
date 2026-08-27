@@ -30,55 +30,67 @@ type iCreatePersonalTextResponseBody interface {
 }
 
 type CreatePersonalTextResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// SUCCESS indicates success. In case of failure, the corresponding error type is returned, such as ERR_BAD_REQUEST, ERR_VALIDATION_FAILED, or ERR_INTERNAL_SERVER_ERROR.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 绑定的目录 ID（请求体传入时 echo 回；缺省走默认根目录时为 null）
+	// The folder ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 创建时间 ISO8601
+	// The creation time in ISO 8601 format.
 	//
 	// example:
 	//
-	// string_value
+	// 2026-05-22 18:18:56
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 错误描述，成功时为空
+	// The response message.
+	//
+	// example:
+	//
+	// Instance i-0jl6hlcbtuo4eqg7puni not found
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 文件名
+	// The updated filter view name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// p-toolset-3dcef7ca-31b9-4d1c-8692-1ef03099cad3
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
-	// 019FF406-1B10-0065-A97D-2D1920C2A03D
+	// 04EE99E6-A0D9-5B04-81D1-7BEC0CB0AFDF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 资源 scope，固定为 PERSONAL
+	// The travel scale of the integration partner.
 	//
 	// example:
 	//
-	// PERSONAL
+	// read:user,read:repo,write:repo,read:org,read:group
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 新建资源 ID
+	// The source ID.
 	//
 	// example:
 	//
-	// exampleSourceId
+	// 2000398
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 资源状态（创建链路初始多为 PENDING；on_create 失败则为 FAILED）
+	// The filter status.
+	//
+	// - 0: All
+	//
+	// - 1: Unconfirmed
+	//
+	// - 3: Ignored
+	//
+	// - 4: Rejected
 	//
 	// example:
 	//
-	// READY
+	// {\\"observedGeneration\\": 4, \\"servicesInstances\\": {}, \\"observedTime\\": \\"2025-10-31T03:48:27Z\\", \\"servicesWithPendingChanges\\": [], \\"latestEnvironmentDeploymentName\\": \\"manual-1761882507097-Eu1vIP\\"}
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 

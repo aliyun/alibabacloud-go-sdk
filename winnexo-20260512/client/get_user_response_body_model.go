@@ -34,63 +34,71 @@ type iGetUserResponseBody interface {
 }
 
 type GetUserResponseBody struct {
-	// WINNEXO 登录账号
+	// The account ID.
 	//
 	// example:
 	//
 	// exampleAccountId
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 用户显示名称
+	// The display name of the account.
 	//
 	// example:
 	//
 	// string_value
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// 加入租户时间
+	// The creation time.
 	//
 	// example:
 	//
 	// string_value
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 启用/停用状态
+	// Indicates whether the account is activated. Valid values:
+	//
+	//  - **true**: Activated.
+	//
+	// - **false**: Not activated.
 	//
 	// example:
 	//
 	// true
 	IsActive *bool `json:"isActive,omitempty" xml:"isActive,omitempty"`
-	// 最后登录时间
+	// The last logon time.
 	//
 	// example:
 	//
 	// 2023-10-01T12:00:00Z
 	LastLoginTime *string `json:"lastLoginTime,omitempty" xml:"lastLoginTime,omitempty"`
-	// 错误描述，成功时为空
+	// The status code description.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 用户拥有的系统角色 code 列表
+	// The list of system role codes (full replacement, must contain at least one role). Valid values: SUPER_ADMIN, SYSTEM_ADMIN, SEMANTIC_ADMIN, SKILL_ADMIN, KB_ADMIN, AGENT_ADMIN, and APPLICATION_USER.
 	//
 	// example:
 	//
 	// string_value
 	RoleCodes []*string `json:"roleCodes,omitempty" xml:"roleCodes,omitempty" type:"Repeated"`
-	// 用户所属用户组ID列表
+	// The list of user group IDs to which the user belongs.
 	//
 	// example:
 	//
 	// string_value
 	UserGroupIds []*string `json:"userGroupIds,omitempty" xml:"userGroupIds,omitempty" type:"Repeated"`
-	// WINNEXO 平台用户ID
+	// The WINNEXO platform user ID.
 	//
 	// example:
 	//

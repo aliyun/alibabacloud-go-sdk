@@ -28,43 +28,49 @@ type iCheckHealthResponseBody interface {
 }
 
 type CheckHealthResponseBody struct {
-	// 认证来源: bearer / aliyun_gateway
+	// The authentication source: bearer / aliyun_gateway.
 	//
 	// example:
 	//
 	// aliyun_gateway
 	AuthSource *string `json:"authSource,omitempty" xml:"authSource,omitempty"`
+	// The caller type: user / aliyun_main / aliyun_ram / service.
+	//
 	// example:
 	//
 	// aliyun_main
 	CallerType *string `json:"callerType,omitempty" xml:"callerType,omitempty"`
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 当前请求生效的数字员工名（运营对象）；未传且租户下无数字员工时为空
+	// The name of the currently effective digital employee. This value is empty if not configured.
 	//
 	// example:
 	//
-	// string_value
+	// pcitc-magent
 	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
-	// 错误描述，成功时为空
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The status code description.
 	//
 	// example:
 	//
-	// 019FF406-1B10-0065-A97D-2D1920C2A03D
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F4A9EB1C-6952-5CCC-B1DC-355576FC82A7
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 生效租户ID
+	// The effective tenant ID.
 	//
 	// example:
 	//
 	// 21577
 	TenantId *int64 `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 平台用户ID
+	// The platform user ID.
 	//
 	// example:
 	//

@@ -20,21 +20,26 @@ type iUpdateChatSessionResponseBody interface {
 }
 
 type UpdateChatSessionResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.	- / InvalidParameter.*).
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 错误描述，成功时为空
+	// The error description. This is empty when the request is successful.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request trace ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
-	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Session   *UpdateChatSessionResponseBodySession `json:"session,omitempty" xml:"session,omitempty" type:"Struct"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The session ID.
+	Session *UpdateChatSessionResponseBodySession `json:"session,omitempty" xml:"session,omitempty" type:"Struct"`
 }
 
 func (s UpdateChatSessionResponseBody) String() string {
@@ -91,56 +96,61 @@ func (s *UpdateChatSessionResponseBody) Validate() error {
 }
 
 type UpdateChatSessionResponseBodySession struct {
-	// 创建时间
+	// The creation time.
 	//
 	// example:
 	//
 	// 1
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// 消息ID
+	// The message ID.
 	//
 	// example:
 	//
 	// exampleId
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// 创建时间是否超过30天
+	// Indicates whether the creation time exceeds 30 days.
 	//
 	// example:
 	//
 	// true
 	IsExpired *bool `json:"isExpired,omitempty" xml:"isExpired,omitempty"`
-	// 关联对象ID
+	// The associated object ID.
 	//
 	// example:
 	//
 	// exampleObjectId
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// 会话使用的抽象模型名（quick/standard/flagship）
+	// The abstract model name used by the session (quick/standard/flagship).
 	//
 	// example:
 	//
 	// string_value
 	Model *string `json:"model,omitempty" xml:"model,omitempty"`
-	// 类型
+	// The type.
 	//
 	// example:
 	//
 	// string_value
-	Object   *string `json:"object,omitempty" xml:"object,omitempty"`
+	Object *string `json:"object,omitempty" xml:"object,omitempty"`
+	// The associated object ID.
+	//
+	// example:
+	//
+	// 2676
 	ObjectId *string `json:"objectId,omitempty" xml:"objectId,omitempty"`
-	// operatingObjectName
+	// The operating object name.
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName []*string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty" type:"Repeated"`
-	// 标题
+	// The title.
 	//
 	// example:
 	//
-	// 示例标题
+	// Sample title
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// 更新时间
+	// The update time.
 	//
 	// example:
 	//

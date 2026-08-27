@@ -34,63 +34,67 @@ type iGetUserCreditUsageResponseBody interface {
 }
 
 type GetUserCreditUsageResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 用户 credit 限额
+	// The credit limit of the user.
 	//
 	// example:
 	//
 	// string_value
 	CreditLimit *string `json:"creditLimit,omitempty" xml:"creditLimit,omitempty"`
-	// 错误描述，成功时为空
+	// The status code description.
+	//
+	// example:
+	//
+	// The current zone list is illegal.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 剩余 credit（实时，来自 Redis）
+	// The remaining credits in real time.
 	//
 	// example:
 	//
 	// string_value
 	RemainingCredits *string `json:"remainingCredits,omitempty" xml:"remainingCredits,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 影子 credit 限额
+	// The shadow credit limit.
 	//
 	// example:
 	//
 	// string_value
 	ShadowCreditLimit *string `json:"shadowCreditLimit,omitempty" xml:"shadowCreditLimit,omitempty"`
-	// 剩余影子 credit（实时，来自 Redis）
+	// The remaining shadow credits in real time.
 	//
 	// example:
 	//
 	// string_value
 	ShadowRemainingCredits *string `json:"shadowRemainingCredits,omitempty" xml:"shadowRemainingCredits,omitempty"`
-	// 已消耗影子 credit（实时，来自 Redis）
+	// The consumed shadow credits in real time.
 	//
 	// example:
 	//
 	// string_value
 	ShadowUsedCredits *string `json:"shadowUsedCredits,omitempty" xml:"shadowUsedCredits,omitempty"`
-	// 租户ID
+	// The ID of the tenant to which the task belongs.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *int64 `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 已消耗 credit（实时，来自 Redis）
+	// The consumed credits in real time.
 	//
 	// example:
 	//
 	// string_value
 	UsedCredits *string `json:"usedCredits,omitempty" xml:"usedCredits,omitempty"`
-	// 用户ID
+	// The user ID.
 	//
 	// example:
 	//

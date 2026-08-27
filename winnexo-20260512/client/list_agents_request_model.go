@@ -14,7 +14,7 @@ type iListAgentsRequest interface {
 }
 
 type ListAgentsRequest struct {
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

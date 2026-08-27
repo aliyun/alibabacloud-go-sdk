@@ -66,137 +66,147 @@ type iGetSourceResponseBody interface {
 }
 
 type GetSourceResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// DocumentAgent 解析完成时间，ISO8601 格式
+	// The completion time, in milliseconds.
 	//
 	// example:
 	//
 	// 2023-10-01T12:00:00Z
 	CompletionTime *string `json:"completionTime,omitempty" xml:"completionTime,omitempty"`
-	// 数据源描述
+	// The description of the to-do card type.
 	//
 	// example:
 	//
-	// 示例描述
+	// Sample description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 创建时间，ISO8601 格式
+	// The creation time.
 	//
 	// example:
 	//
 	// string_value
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间，ISO8601 格式
+	// The last modification time.
 	//
 	// example:
 	//
 	// string_value
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 是否存在备注
+	// Indicates whether notes exist.
 	//
 	// example:
 	//
 	// true
 	HasNotes *bool `json:"hasNotes,omitempty" xml:"hasNotes,omitempty"`
-	// 是否存在 settings 配置
+	// Indicates whether settings configuration exists.
 	//
 	// example:
 	//
 	// true
 	HasSettings *bool `json:"hasSettings,omitempty" xml:"hasSettings,omitempty"`
-	// 是否存在结构化表
+	// Indicates whether structured tables exist.
 	//
 	// example:
 	//
 	// true
 	HasStructuredTables *bool `json:"hasStructuredTables,omitempty" xml:"hasStructuredTables,omitempty"`
-	// 是否存在非结构化文档
+	// Indicates whether unstructured documents exist.
 	//
 	// example:
 	//
 	// true
 	HasUnstructuredDocs *bool `json:"hasUnstructuredDocs,omitempty" xml:"hasUnstructuredDocs,omitempty"`
-	// 错误描述，成功时为空
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 文件名
+	// The status code description.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 备注（仅 includeDetails=True）
+	// The meeting notes content (optional), which participates in auxiliary analysis.
 	//
 	// example:
 	//
 	// string_value
-	Notes          *string                                `json:"notes,omitempty" xml:"notes,omitempty"`
+	Notes *string `json:"notes,omitempty" xml:"notes,omitempty"`
+	// The object bindings.
 	ObjectBindings []*GetSourceResponseBodyObjectBindings `json:"objectBindings,omitempty" xml:"objectBindings,omitempty" type:"Repeated"`
-	// 主对象 ID（兼容字段）
+	// The associated variable ID.
 	//
 	// example:
 	//
 	// exampleObjectId
 	ObjectId *string `json:"objectId,omitempty" xml:"objectId,omitempty"`
-	// 主对象类型（兼容字段）
+	// The object type, such as customer. This field has a value when type is set to mention.
 	//
 	// example:
 	//
 	// string_value
 	ObjectType *string `json:"objectType,omitempty" xml:"objectType,omitempty"`
-	// 运营对象名称
+	// The digital employee name (operating object name, optional).
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 可见范围：PERSONAL / TENANT
+	// The task scope.
 	//
 	// example:
 	//
 	// PERSONAL
-	Scope    *string                `json:"scope,omitempty" xml:"scope,omitempty"`
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	// The user profile card settings.
 	Settings map[string]interface{} `json:"settings,omitempty" xml:"settings,omitempty"`
-	// 技能产出 ID（由产出保存为资源时携带）
+	// The skill output ID (carried when the output is saved as a resource).
 	//
 	// example:
 	//
 	// exampleSkillOutputId
 	SkillOutputId *string `json:"skillOutputId,omitempty" xml:"skillOutputId,omitempty"`
-	// 数据源 ID
+	// The data source ID.
 	//
 	// example:
 	//
 	// exampleSourceId
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 数据源归属类型：normal / aliding_kb_doc
+	// The knowledge base affiliation type. Valid values:
+	//
+	// - aliding_kb_doc: DingTalk knowledge base document.
+	//
+	// - normal: common knowledge.
 	//
 	// example:
 	//
 	// string_value
 	SourceKind *string `json:"sourceKind,omitempty" xml:"sourceKind,omitempty"`
-	// 资源标签 JSON 字符串
+	// The resource tags (optional, a JSON string list such as ["tagA","tagB"]).
 	//
 	// example:
 	//
 	// string_value
 	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
-	// 数据源类型
+	// The resource type.
 	//
 	// example:
 	//
 	// string_value
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// 数据源状态
+	// The final status of the message.
 	//
 	// example:
 	//
@@ -207,7 +217,8 @@ type GetSourceResponseBody struct {
 	// example:
 	//
 	// string_value
-	StructuredTables []*string                                `json:"structuredTables,omitempty" xml:"structuredTables,omitempty" type:"Repeated"`
+	StructuredTables []*string `json:"structuredTables,omitempty" xml:"structuredTables,omitempty" type:"Repeated"`
+	// The unstructured documents.
 	UnstructuredDocs []*GetSourceResponseBodyUnstructuredDocs `json:"unstructuredDocs,omitempty" xml:"unstructuredDocs,omitempty" type:"Repeated"`
 }
 
@@ -485,19 +496,19 @@ func (s *GetSourceResponseBody) Validate() error {
 }
 
 type GetSourceResponseBodyObjectBindings struct {
-	// 对象归属的语义图谱名
+	// The semantic graph name to which the object belongs.
 	//
 	// example:
 	//
 	// string_value
 	GraphName *string `json:"graphName,omitempty" xml:"graphName,omitempty"`
-	// 对象 ID
+	// The ID of the recommended item, which can be a **feedId*	- or a micro-application ID.
 	//
 	// example:
 	//
 	// exampleObjectId
 	ObjectId *string `json:"objectId,omitempty" xml:"objectId,omitempty"`
-	// 对象类型
+	// The object type, such as customer. This field has a value when type is set to mention.
 	//
 	// example:
 	//
@@ -545,37 +556,41 @@ func (s *GetSourceResponseBodyObjectBindings) Validate() error {
 }
 
 type GetSourceResponseBodyUnstructuredDocs struct {
-	// DocumentAgent 解析完成时间，ISO8601 格式
+	// The completion time, in milliseconds.
 	//
 	// example:
 	//
 	// 2023-10-01T12:00:00Z
 	CompletionTime *string `json:"completionTime,omitempty" xml:"completionTime,omitempty"`
-	// 文件名
+	// The file name, including the file name extension.
 	//
 	// example:
 	//
 	// example.pdf
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	// 文件记录 ID
+	// The file record ID (optional, corresponding to settings.file_record_id).
 	//
 	// example:
 	//
 	// exampleFileRecordId
 	FileRecordId *string `json:"fileRecordId,omitempty" xml:"fileRecordId,omitempty"`
-	// 文件类型
+	// The file type. Valid values:
+	//
+	// - **file**: file.
+	//
+	// - **folder**: folder.
 	//
 	// example:
 	//
 	// pdf
 	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
-	// OSS 远程 URL
+	// The session analysis result in OSS URL format. The URL expires in one hour.
 	//
 	// example:
 	//
 	// https://example.com/winnexo/resource
 	OssUrl *string `json:"ossUrl,omitempty" xml:"ossUrl,omitempty"`
-	// DocumentAgent 语义 ID
+	// The DocumentAgent semantic ID.
 	//
 	// example:
 	//

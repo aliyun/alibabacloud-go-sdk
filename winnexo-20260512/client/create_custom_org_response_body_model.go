@@ -24,37 +24,41 @@ type iCreateCustomOrgResponseBody interface {
 }
 
 type CreateCustomOrgResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 注册成功的组织标识
+	// The enterprise ID.
 	//
 	// example:
 	//
 	// exampleCorpId
 	CorpId *string `json:"corpId,omitempty" xml:"corpId,omitempty"`
-	// 组织展示名称
+	// The organization name.
 	//
 	// example:
 	//
 	// string_value
 	CorpName *string `json:"corpName,omitempty" xml:"corpName,omitempty"`
-	// 错误描述，成功时为空
+	// The prompt message.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 平台类型，固定为 custom
+	// The platform type.
 	//
 	// example:
 	//
 	// string_value
 	PlatformType *string `json:"platformType,omitempty" xml:"platformType,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
-	// 019FF406-1B10-0065-A97D-2D1920C2A03D
+	// 72D1EC35-B174-5595-891F-2F0B3BFBE56F
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

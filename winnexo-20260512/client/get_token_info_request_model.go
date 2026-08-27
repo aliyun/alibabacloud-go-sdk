@@ -16,13 +16,13 @@ type iGetTokenInfoRequest interface {
 }
 
 type GetTokenInfoRequest struct {
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The ID of the tenant to which the task belongs.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 目标用户 ID（WINNEXO 平台用户ID，空则操作自身，管理员可传入他人 ID 代操作）
+	// The ID of the target user (WINNEXO platform user ID). If left empty, the operation is performed on the caller. Administrators can specify another user\\"s ID to perform the operation on their behalf.
 	//
 	// example:
 	//

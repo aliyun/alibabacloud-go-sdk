@@ -26,38 +26,43 @@ type iCreateConversationResponseBody interface {
 }
 
 type CreateConversationResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 新建会话ID
+	// Id of the request
 	//
 	// example:
 	//
-	// exampleConversationId
+	// 3a59769c-e631-4b48-84f3-c9bf3a8ae940
 	ConversationId *string `json:"conversationId,omitempty" xml:"conversationId,omitempty"`
-	// 会话创建时间戳（秒）
+	// The time when the share was created.
 	//
 	// example:
 	//
-	// 1
+	// 1784513941206
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// 错误描述，成功时为空
-	Message  *string                `json:"message,omitempty" xml:"message,omitempty"`
+	// The status code description.
+	//
+	// example:
+	//
+	// The current zone list is illegal.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// A reserved field for extension use.
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
-	// 019FF406-1B10-0065-A97D-2D1920C2A03D
+	// A5241B90-8FF4-565C-977A-0CE1842AED72
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 会话标题（已按调用方语言国际化）
+	// The appointment title.
 	//
 	// example:
 	//
-	// 示例标题
+	// Incident RCA: alert-0885feb7-3d4b-4da5-90f0-0119dfbbf555:up0shc25tp0kueo0afeobvhk81
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 

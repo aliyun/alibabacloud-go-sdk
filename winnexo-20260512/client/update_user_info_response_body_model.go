@@ -20,21 +20,26 @@ type iUpdateUserInfoResponseBody interface {
 }
 
 type UpdateUserInfoResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 错误描述，成功时为空
+	// The status code description.
+	//
+	// example:
+	//
+	// The current zone list is illegal.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
-	RequestId *string                         `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	User      *UpdateUserInfoResponseBodyUser `json:"user,omitempty" xml:"user,omitempty" type:"Struct"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The user information.
+	User *UpdateUserInfoResponseBodyUser `json:"user,omitempty" xml:"user,omitempty" type:"Struct"`
 }
 
 func (s UpdateUserInfoResponseBody) String() string {
@@ -91,86 +96,87 @@ func (s *UpdateUserInfoResponseBody) Validate() error {
 }
 
 type UpdateUserInfoResponseBodyUser struct {
-	// 用户头像URL
+	// The user profile picture URL.
 	//
 	// example:
 	//
 	// https://example.com/avatar.png
 	Avatar *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
-	// 是否为超级管理员
+	// Indicates whether the user is a super administrator.
 	//
 	// example:
 	//
 	// true
 	IsAdmin *bool `json:"isAdmin,omitempty" xml:"isAdmin,omitempty"`
-	// 当前登录租户是否为系统租户
+	// Indicates whether the current logged-in tenant is a system tenant.
 	//
 	// example:
 	//
 	// true
 	IsSystemTenant *bool `json:"isSystemTenant,omitempty" xml:"isSystemTenant,omitempty"`
-	// 用户语言偏好
+	// The user language preference.
 	//
 	// example:
 	//
 	// string_value
 	LanguagePreference *string `json:"languagePreference,omitempty" xml:"languagePreference,omitempty"`
-	// 文件名
+	// The username.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 用户服务描述
+	// The user service description.
 	//
 	// example:
 	//
 	// string_value
 	Offering *string `json:"offering,omitempty" xml:"offering,omitempty"`
-	// 用户服务解析结果（JSON格式）
+	// The parsed user service result in JSON format.
 	//
 	// example:
 	//
 	// string_value
 	ParsedOffering *string `json:"parsedOffering,omitempty" xml:"parsedOffering,omitempty"`
-	// 用户角色
+	// The user role.
 	//
 	// example:
 	//
 	// string_value
 	ProfileRole *string `json:"profileRole,omitempty" xml:"profileRole,omitempty"`
-	// 用户角色描述
+	// The user role description.
 	//
 	// example:
 	//
 	// string_value
 	ProfileRoleInfo *string `json:"profileRoleInfo,omitempty" xml:"profileRoleInfo,omitempty"`
-	// 用户自我介绍
+	// The user self-introduction.
 	//
 	// example:
 	//
 	// string_value
 	SelfIntroduction *string `json:"selfIntroduction,omitempty" xml:"selfIntroduction,omitempty"`
-	// 当前租户ID
+	// The current tenant ID.
 	//
 	// example:
 	//
 	// 10000
-	TenantId   *int64                                      `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	TenantId *int64 `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// The list of tenants to which the user belongs.
 	TenantList []*UpdateUserInfoResponseBodyUserTenantList `json:"tenantList,omitempty" xml:"tenantList,omitempty" type:"Repeated"`
-	// 当前租户名称
+	// The current tenant name.
 	//
 	// example:
 	//
 	// string_value
 	TenantName *string `json:"tenantName,omitempty" xml:"tenantName,omitempty"`
-	// 用户代码
+	// The user code.
 	//
 	// example:
 	//
 	// string_value
 	UserCode *string `json:"userCode,omitempty" xml:"userCode,omitempty"`
-	// 用户ID
+	// The user ID.
 	//
 	// example:
 	//
@@ -335,13 +341,13 @@ func (s *UpdateUserInfoResponseBodyUser) Validate() error {
 }
 
 type UpdateUserInfoResponseBodyUserTenantList struct {
-	// 租户ID
+	// The tenant ID.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *int64 `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 租户名称
+	// The tenant name.
 	//
 	// example:
 	//

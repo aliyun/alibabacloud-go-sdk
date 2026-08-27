@@ -46,89 +46,96 @@ type iGetSkillRunResponseBody interface {
 }
 
 type GetSkillRunResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 任务创建时间，ISO8601
+	// The task creation time in ISO 8601 format.
 	//
 	// example:
 	//
 	// string_value
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// 错误码，仅 Failed 时返回
+	// The error code. This parameter is returned only when the status is Failed.
 	//
 	// example:
 	//
 	// string_value
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 错误描述，仅 Failed 时返回
+	// The error description. This parameter is returned only when the status is Failed.
 	//
 	// example:
 	//
 	// string_value
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 任务结束时间，ISO8601；仅终态（Succeeded/Failed/Cancelled）有值
+	// The task end time in ISO 8601 format. This parameter has a value only in desired states (Succeeded, Failed, or Cancelled).
 	//
 	// example:
 	//
 	// string_value
-	FinishedAt *string                  `json:"finishedAt,omitempty" xml:"finishedAt,omitempty"`
-	Logs       []map[string]interface{} `json:"logs,omitempty" xml:"logs,omitempty" type:"Repeated"`
-	// 错误描述，成功时为空
+	FinishedAt *string `json:"finishedAt,omitempty" xml:"finishedAt,omitempty"`
+	// The execution log list. This parameter is returned only when IncludeLogs is set to true.
+	Logs []map[string]interface{} `json:"logs,omitempty" xml:"logs,omitempty" type:"Repeated"`
+	// The status code description.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 进度百分比（仅 Running 时有意义）
+	// The progress percentage. This parameter is meaningful only when the status is Running.
 	//
 	// example:
 	//
 	// 1
 	Progress *int64 `json:"progress,omitempty" xml:"progress,omitempty"`
-	// 进度描述
+	// The progress description.
 	//
 	// example:
 	//
 	// string_value
 	ProgressMessage *string `json:"progressMessage,omitempty" xml:"progressMessage,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
-	RequestId *string                `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
-	// 异步任务 ID
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The execution result. This parameter is returned only when the status is Succeeded. It contains a content list.
+	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+	// The asynchronous task ID.
 	//
 	// example:
 	//
 	// exampleRunId
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
-	// 技能编码
+	// The skill code.
 	//
 	// example:
 	//
 	// string_value
 	SkillCode *string `json:"skillCode,omitempty" xml:"skillCode,omitempty"`
-	// 技能名称
+	// The skill name.
 	//
 	// example:
 	//
 	// string_value
 	SkillName *string `json:"skillName,omitempty" xml:"skillName,omitempty"`
-	// 任务开始执行时间，ISO8601
+	// The task execution start time in ISO 8601 format.
 	//
 	// example:
 	//
 	// string_value
 	StartedAt *string `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
-	// 执行状态：Running / Succeeded / Failed / Cancelled
+	// The execution status. Valid values: Running, Succeeded, Failed, and Cancelled.
 	//
 	// example:
 	//
 	// READY
-	Status *string                `json:"status,omitempty" xml:"status,omitempty"`
-	Usage  map[string]interface{} `json:"usage,omitempty" xml:"usage,omitempty"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The LLM token usage statistics. This parameter is returned only when the status is Succeeded.
+	Usage map[string]interface{} `json:"usage,omitempty" xml:"usage,omitempty"`
 }
 
 func (s GetSkillRunResponseBody) String() string {

@@ -30,55 +30,63 @@ type iCreatePersonalFileResponseBody interface {
 }
 
 type CreatePersonalFileResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 绑定的目录 ID
+	// The directory ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 创建时间 ISO8601
+	// The creation time.
 	//
 	// example:
 	//
-	// string_value
+	// 2025-11-14T02:18:27Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 错误描述，成功时为空
+	// The error details.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 文件名
+	// The updated filter view name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// ha-cn-36z45q4xg06_qrs
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
-	// 019FF406-1B10-0065-A97D-2D1920C2A03D
+	// 3DAC4165-2401-543B-B5E7-A86AA151E517
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 资源 scope，固定为 PERSONAL
+	// The export scope. Valid values:
+	//
+	// - ALL: all.
+	//
+	// - SELECT: selected rows.
 	//
 	// example:
 	//
-	// PERSONAL
+	// read:user,read:repo,write:repo,read:org,read:group
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 新建资源 ID
+	// The source ID.
 	//
 	// example:
 	//
-	// exampleSourceId
+	// 2001086
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 资源状态
+	// The status.
 	//
 	// example:
 	//
-	// READY
+	// 200
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 

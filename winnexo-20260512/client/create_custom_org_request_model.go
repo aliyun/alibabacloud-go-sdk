@@ -18,7 +18,7 @@ type iCreateCustomOrgRequest interface {
 }
 
 type CreateCustomOrgRequest struct {
-	// 自定义组织标识，格式：^[a-z0-9][a-z0-9\-]{2,63}$
+	// The corpId of the activated enterprise.
 	//
 	// This parameter is required.
 	//
@@ -26,17 +26,17 @@ type CreateCustomOrgRequest struct {
 	//
 	// exampleCorpId
 	CorpId *string `json:"corpId,omitempty" xml:"corpId,omitempty"`
-	// 组织展示名称（可选，不传则与 corpId 相同）
+	// The organization name.
 	//
 	// example:
 	//
 	// string_value
 	CorpName *string `json:"corpName,omitempty" xml:"corpName,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID.
 	//
 	// example:
 	//
-	// 10000
+	// 692318833855074
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

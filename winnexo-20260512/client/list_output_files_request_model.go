@@ -26,43 +26,43 @@ type iListOutputFilesRequest interface {
 }
 
 type ListOutputFilesRequest struct {
-	// 产出明细类型: ppt/html/document/picture/slides/video/audio/email/others
+	// The type of the output item. Valid values: ppt, html, document, picture, slides, video, audio, email, and others.
 	//
 	// example:
 	//
 	// ppt
 	ItemType *string `json:"itemType,omitempty" xml:"itemType,omitempty"`
-	// 关键词搜索，匹配产出标题或明细名称
+	// The keyword for searching. Matches output titles or item names.
 	//
 	// example:
 	//
 	// string_value
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// 数字员工（运营对象）名称，按名称过滤
+	// The name of the digital employee (operating object). Used to filter results by name.
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 页码，从 1 开始
+	// The page number, starting from 1.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页数量，范围 1-100
+	// The number of entries per page. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 是否仅展示开启分享的产出和产出明细
+	// Specifies whether to display only outputs and output items that have sharing enabled.
 	//
 	// example:
 	//
 	// False
 	SharedOnly *bool `json:"sharedOnly,omitempty" xml:"sharedOnly,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. In winnexo-cli, pass it explicitly with --tenant-id.
 	//
 	// example:
 	//

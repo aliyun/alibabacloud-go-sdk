@@ -16,13 +16,13 @@ type iListUserVisibleKnowledgeBasesRequest interface {
 }
 
 type ListUserVisibleKnowledgeBasesRequest struct {
-	// 知识库名称或描述关键词；不传时返回全部可见知识库
+	// The keyword for fuzzy match on knowledge base name or description.
 	//
 	// example:
 	//
-	// 产品知识
+	// Product knowledge
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. In winnexo-cli, pass it explicitly with --tenant-id.
 	//
 	// example:
 	//

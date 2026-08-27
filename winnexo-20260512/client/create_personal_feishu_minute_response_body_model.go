@@ -30,55 +30,59 @@ type iCreatePersonalFeishuMinuteResponseBody interface {
 }
 
 type CreatePersonalFeishuMinuteResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// SUCCESS indicates success. In case of failure, the corresponding error type is returned, such as ERR_BAD_REQUEST, ERR_VALIDATION_FAILED, or ERR_INTERNAL_SERVER_ERROR.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 绑定的目录 ID
+	// The directory ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 创建时间 ISO8601
+	// The creation time.
 	//
 	// example:
 	//
-	// string_value
+	// 2026-03-04 11:12:03
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 错误描述，成功时为空
+	// The operation message.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 文件名
+	// The resource name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// issue_research
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
-	// 019FF406-1B10-0065-A97D-2D1920C2A03D
+	// 019FEE93-17FB-5369-BB65-1188C3A14B0A
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 资源 scope，固定为 PERSONAL
+	// The permission scope.
 	//
 	// example:
 	//
-	// PERSONAL
+	// read:user,read:repo,write:repo,read:org,read:group
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 新建资源 ID
+	// The original project ID.
 	//
 	// example:
 	//
-	// exampleSourceId
+	// 2001086
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 资源状态
+	// The status.
 	//
 	// example:
 	//
-	// READY
+	// 200
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 

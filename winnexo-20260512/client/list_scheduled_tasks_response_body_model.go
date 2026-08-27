@@ -32,48 +32,61 @@ type iListScheduledTasksResponseBody interface {
 }
 
 type ListScheduledTasksResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 是否有更多数据
+	// Indicates whether more data is available. Valid values:
+	//
+	// - true: More data is available.
+	//
+	// - false: No more data is available.
 	//
 	// example:
 	//
 	// true
-	HasMore *bool                                  `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
-	Items   []*ListScheduledTasksResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 本次实际生效的单页最大返回数量
+	HasMore *bool `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
+	// The list of skill cards.
+	Items []*ListScheduledTasksResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The maximum number of entries returned in this request.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 错误描述，成功时为空
+	// The status code description.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 下一页翻页令牌，原样回传即可取下一页；无更多数据时为空字符串
+	// The pagination token.
+	//
+	// example:
+	//
+	// 1763604514518000_531300
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 当前页码（实际生效值）
+	// The page number. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页条数（实际生效值）
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 满足条件的总数
+	// The total number of tasks.
 	//
 	// example:
 	//
@@ -193,66 +206,146 @@ func (s *ListScheduledTasksResponseBody) Validate() error {
 }
 
 type ListScheduledTasksResponseBodyItems struct {
-	// 创建人
+	// The reason for the abnormality. This field has a value only when status is abnormal.
+	//
+	// example:
+	//
+	// string_value
+	AbnormalReason *string `json:"abnormalReason,omitempty" xml:"abnormalReason,omitempty"`
+	// Indicates whether the current caller can delete the task (only the task creator and group owner can do so). Always returns true for personal tasks.
+	//
+	// example:
+	//
+	// true
+	CanDelete *bool `json:"canDelete,omitempty" xml:"canDelete,omitempty"`
+	// Indicates whether the task can be edited or deleted.
+	//
+	// example:
+	//
+	// true
+	CanEdit *bool `json:"canEdit,omitempty" xml:"canEdit,omitempty"`
+	// Indicates whether the current caller can immediately execute the task (anyone with visibility can operate. Returns false for abnormal tasks). Always returns true for personal tasks.
+	//
+	// example:
+	//
+	// true
+	CanExecute *bool `json:"canExecute,omitempty" xml:"canExecute,omitempty"`
+	// Indicates whether the current caller can start or stop the task (only the task creator and group owner can do so. Returns false for abnormal tasks). Always returns true for personal tasks.
+	//
+	// example:
+	//
+	// true
+	CanToggle *bool `json:"canToggle,omitempty" xml:"canToggle,omitempty"`
+	// The ID of the collaboration group (such as cg_101). If specified, a group task is created (the caller must be a valid group member). If left empty, a personal task is created.
+	//
+	// example:
+	//
+	// exampleCollaborationGroupId
+	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
+	// The creator.
 	//
 	// example:
 	//
 	// string_value
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// Cron 表达式
+	// The creator.
+	//
+	// example:
+	//
+	// string_value
+	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
+	// The cron expression.
 	//
 	// example:
 	//
 	// string_value
 	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
-	// 任务简述
+	// The description of the to-do card type.
 	//
 	// example:
 	//
-	// 示例描述
+	// Sample description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 累计执行次数
+	// The list of digital employee names.
+	//
+	// example:
+	//
+	// string_value
+	DigitalEmployeeName []*string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty" type:"Repeated"`
+	// The cumulative number of executions.
 	//
 	// example:
 	//
 	// 1
 	ExecutionCount *int64 `json:"executionCount,omitempty" xml:"executionCount,omitempty"`
-	// 创建时间 ISO8601
+	// The creation time.
 	//
 	// example:
 	//
 	// string_value
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间 ISO8601
+	// The last modification time.
 	//
 	// example:
 	//
 	// string_value
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 是否公开
+	// Indicates whether public access is enabled.
 	//
 	// example:
 	//
 	// true
 	IsOpen *bool `json:"isOpen,omitempty" xml:"isOpen,omitempty"`
-	// 文件名
+	// The execution model tier. If not specified, the value is not updated.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// standard
+	Model *string `json:"model,omitempty" xml:"model,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 任务 ID
+	// The task status. Running is returned upon submission.
+	//
+	// example:
+	//
+	// active
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The task ID.
 	//
 	// example:
 	//
 	// exampleTaskId
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// 触发类型（manual/cron/event）
+	// The trigger type.
 	//
 	// example:
 	//
 	// string_value
 	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
+	// The visibility of the group task. Valid values:
+	//
+	// - PRIVATE: visible only to the creator and group owner.
+	//
+	// - COLLABORATIVE: visible to specified collaborators.
+	//
+	// - PUBLIC: visible to all group members.
+	//
+	// If not specified for a group task, the default value is PRIVATE. This field is ignored for personal tasks.
+	//
+	// example:
+	//
+	// PRIVATE
+	Visibility *string `json:"visibility,omitempty" xml:"visibility,omitempty"`
+	// The list of collaborator user IDs (excluding the task creator and group creator, who are covered by the authentication layer). This field is returned only for group tasks. An empty list is returned for PRIVATE or PUBLIC visibility.
+	//
+	// example:
+	//
+	// string_value
+	VisibleMemberUserIds []*string `json:"visibleMemberUserIds,omitempty" xml:"visibleMemberUserIds,omitempty" type:"Repeated"`
 }
 
 func (s ListScheduledTasksResponseBodyItems) String() string {
@@ -263,8 +356,36 @@ func (s ListScheduledTasksResponseBodyItems) GoString() string {
 	return s.String()
 }
 
+func (s *ListScheduledTasksResponseBodyItems) GetAbnormalReason() *string {
+	return s.AbnormalReason
+}
+
+func (s *ListScheduledTasksResponseBodyItems) GetCanDelete() *bool {
+	return s.CanDelete
+}
+
+func (s *ListScheduledTasksResponseBodyItems) GetCanEdit() *bool {
+	return s.CanEdit
+}
+
+func (s *ListScheduledTasksResponseBodyItems) GetCanExecute() *bool {
+	return s.CanExecute
+}
+
+func (s *ListScheduledTasksResponseBodyItems) GetCanToggle() *bool {
+	return s.CanToggle
+}
+
+func (s *ListScheduledTasksResponseBodyItems) GetCollaborationGroupId() *string {
+	return s.CollaborationGroupId
+}
+
 func (s *ListScheduledTasksResponseBodyItems) GetCreator() *string {
 	return s.Creator
+}
+
+func (s *ListScheduledTasksResponseBodyItems) GetCreatorName() *string {
+	return s.CreatorName
 }
 
 func (s *ListScheduledTasksResponseBodyItems) GetCronExpression() *string {
@@ -273,6 +394,10 @@ func (s *ListScheduledTasksResponseBodyItems) GetCronExpression() *string {
 
 func (s *ListScheduledTasksResponseBodyItems) GetDescription() *string {
 	return s.Description
+}
+
+func (s *ListScheduledTasksResponseBodyItems) GetDigitalEmployeeName() []*string {
+	return s.DigitalEmployeeName
 }
 
 func (s *ListScheduledTasksResponseBodyItems) GetExecutionCount() *int64 {
@@ -291,8 +416,16 @@ func (s *ListScheduledTasksResponseBodyItems) GetIsOpen() *bool {
 	return s.IsOpen
 }
 
+func (s *ListScheduledTasksResponseBodyItems) GetModel() *string {
+	return s.Model
+}
+
 func (s *ListScheduledTasksResponseBodyItems) GetName() *string {
 	return s.Name
+}
+
+func (s *ListScheduledTasksResponseBodyItems) GetStatus() *string {
+	return s.Status
 }
 
 func (s *ListScheduledTasksResponseBodyItems) GetTaskId() *string {
@@ -303,8 +436,51 @@ func (s *ListScheduledTasksResponseBodyItems) GetTriggerType() *string {
 	return s.TriggerType
 }
 
+func (s *ListScheduledTasksResponseBodyItems) GetVisibility() *string {
+	return s.Visibility
+}
+
+func (s *ListScheduledTasksResponseBodyItems) GetVisibleMemberUserIds() []*string {
+	return s.VisibleMemberUserIds
+}
+
+func (s *ListScheduledTasksResponseBodyItems) SetAbnormalReason(v string) *ListScheduledTasksResponseBodyItems {
+	s.AbnormalReason = &v
+	return s
+}
+
+func (s *ListScheduledTasksResponseBodyItems) SetCanDelete(v bool) *ListScheduledTasksResponseBodyItems {
+	s.CanDelete = &v
+	return s
+}
+
+func (s *ListScheduledTasksResponseBodyItems) SetCanEdit(v bool) *ListScheduledTasksResponseBodyItems {
+	s.CanEdit = &v
+	return s
+}
+
+func (s *ListScheduledTasksResponseBodyItems) SetCanExecute(v bool) *ListScheduledTasksResponseBodyItems {
+	s.CanExecute = &v
+	return s
+}
+
+func (s *ListScheduledTasksResponseBodyItems) SetCanToggle(v bool) *ListScheduledTasksResponseBodyItems {
+	s.CanToggle = &v
+	return s
+}
+
+func (s *ListScheduledTasksResponseBodyItems) SetCollaborationGroupId(v string) *ListScheduledTasksResponseBodyItems {
+	s.CollaborationGroupId = &v
+	return s
+}
+
 func (s *ListScheduledTasksResponseBodyItems) SetCreator(v string) *ListScheduledTasksResponseBodyItems {
 	s.Creator = &v
+	return s
+}
+
+func (s *ListScheduledTasksResponseBodyItems) SetCreatorName(v string) *ListScheduledTasksResponseBodyItems {
+	s.CreatorName = &v
 	return s
 }
 
@@ -315,6 +491,11 @@ func (s *ListScheduledTasksResponseBodyItems) SetCronExpression(v string) *ListS
 
 func (s *ListScheduledTasksResponseBodyItems) SetDescription(v string) *ListScheduledTasksResponseBodyItems {
 	s.Description = &v
+	return s
+}
+
+func (s *ListScheduledTasksResponseBodyItems) SetDigitalEmployeeName(v []*string) *ListScheduledTasksResponseBodyItems {
+	s.DigitalEmployeeName = v
 	return s
 }
 
@@ -338,8 +519,18 @@ func (s *ListScheduledTasksResponseBodyItems) SetIsOpen(v bool) *ListScheduledTa
 	return s
 }
 
+func (s *ListScheduledTasksResponseBodyItems) SetModel(v string) *ListScheduledTasksResponseBodyItems {
+	s.Model = &v
+	return s
+}
+
 func (s *ListScheduledTasksResponseBodyItems) SetName(v string) *ListScheduledTasksResponseBodyItems {
 	s.Name = &v
+	return s
+}
+
+func (s *ListScheduledTasksResponseBodyItems) SetStatus(v string) *ListScheduledTasksResponseBodyItems {
+	s.Status = &v
 	return s
 }
 
@@ -350,6 +541,16 @@ func (s *ListScheduledTasksResponseBodyItems) SetTaskId(v string) *ListScheduled
 
 func (s *ListScheduledTasksResponseBodyItems) SetTriggerType(v string) *ListScheduledTasksResponseBodyItems {
 	s.TriggerType = &v
+	return s
+}
+
+func (s *ListScheduledTasksResponseBodyItems) SetVisibility(v string) *ListScheduledTasksResponseBodyItems {
+	s.Visibility = &v
+	return s
+}
+
+func (s *ListScheduledTasksResponseBodyItems) SetVisibleMemberUserIds(v []*string) *ListScheduledTasksResponseBodyItems {
+	s.VisibleMemberUserIds = v
 	return s
 }
 

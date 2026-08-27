@@ -28,45 +28,57 @@ type iGetInstanceExpireTimeResponseBody interface {
 }
 
 type GetInstanceExpireTimeResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 是否找到标准包实例
+	// Indicates whether a standard package instance is found.
 	//
 	// example:
 	//
 	// true
 	Found *bool `json:"found,omitempty" xml:"found,omitempty"`
-	// 实例过期时间（ISO格式）
+	// The expiration time of the instance in ISO format.
 	//
 	// example:
 	//
 	// 2023-10-01T12:00:00Z
 	InstanceExpireTime *string `json:"instanceExpireTime,omitempty" xml:"instanceExpireTime,omitempty"`
-	// 实例ID
+	// The instance ID. This parameter is required.
 	//
 	// example:
 	//
 	// exampleInstanceId
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 实例状态
+	// The instance status. Valid values:
+	//
+	// - RUNNING: Running.
+	//
+	// - TERMINATED: Terminated.
+	//
+	// - COMPLETED: Completed.
+	//
+	// - ERROR: Error.
 	//
 	// example:
 	//
 	// string_value
 	InstanceStatus *string `json:"instanceStatus,omitempty" xml:"instanceStatus,omitempty"`
-	// 错误描述，成功时为空
+	// The prompt message.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 系统租户ID
+	// The effective tenant ID.
 	//
 	// example:
 	//

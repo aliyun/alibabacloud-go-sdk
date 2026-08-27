@@ -24,29 +24,33 @@ type iListAuthorizedUsersResponseBody interface {
 }
 
 type ListAuthorizedUsersResponseBody struct {
-	// 授权模式：SPECIFIED_USERS / ALL_USERS
+	// The authentication mode.
 	//
 	// example:
 	//
 	// string_value
 	AuthMode *string `json:"authMode,omitempty" xml:"authMode,omitempty"`
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 已授权对象列表
+	// The details.
 	Items []*ListAuthorizedUsersResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 错误描述，成功时为空
+	// The description of the status code.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 授权记录总数
+	// The total number of records.
 	//
 	// example:
 	//
@@ -130,79 +134,89 @@ func (s *ListAuthorizedUsersResponseBody) Validate() error {
 }
 
 type ListAuthorizedUsersResponseBodyItems struct {
-	// 授权截止时间戳（毫秒）
+	// The authorization expiration timestamp in milliseconds. If not specified, the authorization never expires.
 	//
 	// example:
 	//
 	// 1
 	ExpireDate *int64 `json:"expireDate,omitempty" xml:"expireDate,omitempty"`
-	// 创建时间
+	// The creation time.
 	//
 	// example:
 	//
 	// string_value
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 最后修改时间
+	// The last update time.
 	//
 	// example:
 	//
 	// string_value
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 授权人用户 ID
+	// The user ID of the person who granted the authorization.
 	//
 	// example:
 	//
 	// 1
 	GrantedBy *int64 `json:"grantedBy,omitempty" xml:"grantedBy,omitempty"`
-	// 被授权对象 ID
+	// The ID of the authorized object.
 	//
 	// example:
 	//
 	// exampleGranteeId
 	GranteeId *string `json:"granteeId,omitempty" xml:"granteeId,omitempty"`
-	// 被授权对象类型：USER / USER_GROUP
+	// The authorization object type. Valid values: USER, USER_GROUP.
 	//
 	// example:
 	//
 	// string_value
 	GranteeType *string `json:"granteeType,omitempty" xml:"granteeType,omitempty"`
-	// 授权记录 ID
+	// The Operation logs ID.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// 用户组成员数
+	// The number of members.
 	//
 	// example:
 	//
 	// 1
 	MemberCount *int64 `json:"memberCount,omitempty" xml:"memberCount,omitempty"`
-	// 已授权的权限列表
+	// The permission member type. Valid values:
+	//
+	// - **ORG**: Enterprise.
+	//
+	// - **DEPT**: Department.
+	//
+	// - **TAG**: Custom tag.
+	//
+	// - **CONVERSATION**: Conversation.
+	//
+	// - **USER**: User.
 	//
 	// example:
 	//
 	// string_value
 	Permissions []*string `json:"permissions,omitempty" xml:"permissions,omitempty" type:"Repeated"`
-	// 用户组 ID（granteeType=USER_GROUP 时有值）
+	// The user group ID. This parameter has a value only when granteeType is set to USER_GROUP.
 	//
 	// example:
 	//
 	// exampleUserGroupId
 	UserGroupId *string `json:"userGroupId,omitempty" xml:"userGroupId,omitempty"`
-	// 用户组名
+	// The user group name.
 	//
 	// example:
 	//
 	// string_value
 	UserGroupName *string `json:"userGroupName,omitempty" xml:"userGroupName,omitempty"`
-	// 用户 ID（granteeType=USER 时有值）
+	// The user ID. This parameter has a value only when granteeType is set to USER.
 	//
 	// example:
 	//
 	// 1
 	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
-	// 用户名
+	// The username.
 	//
 	// example:
 	//

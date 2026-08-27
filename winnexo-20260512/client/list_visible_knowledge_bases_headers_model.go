@@ -17,11 +17,11 @@ type iListVisibleKnowledgeBasesHeaders interface {
 
 type ListVisibleKnowledgeBasesHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// 请求追踪 ID
+	// Id of the request
 	//
 	// example:
 	//
-	// 019FF406-1B10-0065-A97D-2D1920C2A03D
+	// F892C03F-7E12-5F37-A506-1FC3B065EAC6
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 }
 

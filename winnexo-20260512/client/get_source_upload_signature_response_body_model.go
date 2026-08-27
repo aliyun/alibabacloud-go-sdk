@@ -34,63 +34,67 @@ type iGetSourceUploadSignatureResponseBody interface {
 }
 
 type GetSourceUploadSignatureResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 文件 Content-Type
+	// The content type. Valid values: Text and Markdown.
 	//
 	// example:
 	//
 	// string_value
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// 签名 URL 有效时长（秒）
+	// The validity period of the task, in seconds.
 	//
 	// example:
 	//
 	// 1
 	ExpiresIn *int64 `json:"expiresIn,omitempty" xml:"expiresIn,omitempty"`
-	// 文件公开访问 URL
+	// The publicly accessible URL of the DingTalk online document.
 	//
 	// example:
 	//
 	// https://example.com/winnexo/resource
 	FilePublicUrl *string `json:"filePublicUrl,omitempty" xml:"filePublicUrl,omitempty"`
-	// 文件记录 ID
+	// The file record ID. This parameter is optional and corresponds to settings.file_record_id.
 	//
 	// example:
 	//
 	// exampleFileRecordId
 	FileRecordId *string `json:"fileRecordId,omitempty" xml:"fileRecordId,omitempty"`
-	// 文件 OSS 内部 URL
+	// The Yida attachment URL.
 	//
 	// example:
 	//
 	// https://example.com/winnexo/resource
 	FileUrl *string `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
-	// 错误描述，成功时为空
+	// The prompt message.
+	//
+	// example:
+	//
+	// The current zone list is illegal.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 上传 HTTP 方法（固定为 PUT）
+	// The method.
 	//
 	// example:
 	//
 	// string_value
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
-	// OSS 对象名
+	// The object name.
 	//
 	// example:
 	//
 	// string_value
 	ObjectName *string `json:"objectName,omitempty" xml:"objectName,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 签名上传 URL（PUT 方式）
+	// The signed URL.
 	//
 	// example:
 	//

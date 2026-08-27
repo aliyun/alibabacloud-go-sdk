@@ -26,7 +26,7 @@ type iSyncOrgStructureRequest interface {
 }
 
 type SyncOrgStructureRequest struct {
-	// 企业标识（必须与 listAvailableConfigs 返回的 corpId 一致）
+	// The enterprise identifier. This value must match the corpId returned by listAvailableConfigs.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type SyncOrgStructureRequest struct {
 	//
 	// exampleCorpId
 	CorpId *string `json:"corpId,omitempty" xml:"corpId,omitempty"`
-	// 部门列表（至少包含一个根部门）
+	// The department list. At least one root department must be included.
 	//
 	// This parameter is required.
 	Departments []*SyncOrgStructureRequestDepartments `json:"departments,omitempty" xml:"departments,omitempty" type:"Repeated"`
-	// 成员列表（syncMembers=true 时必须提供）
+	// The member list. This parameter is required when syncMembers is set to true.
 	Members []*SyncOrgStructureRequestMembers `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
-	// 平台类型: saml / oauth2 / custom
+	// The platform type. Valid values: saml, oauth2, or custom.
 	//
 	// This parameter is required.
 	//
@@ -48,19 +48,19 @@ type SyncOrgStructureRequest struct {
 	//
 	// saml
 	PlatformType *string `json:"platformType,omitempty" xml:"platformType,omitempty"`
-	// SSO 配置 ID（SAML/OAuth2 可选：不传时按 corpId 自动推导；若存在多个 IdP 使用相同 corpId 则必须显式传入，否则报 AMBIGUOUS 错误；custom 不需要）
+	// The SSO configuration ID. For SAML/OAuth2, this parameter is optional. If not specified, the value is automatically derived based on corpId. If multiple IdPs use the same corpId, you must explicitly specify this parameter. Otherwise, an AMBIGUOUS error is returned. This parameter is not required for custom.
 	//
 	// example:
 	//
 	// exampleSsoSettingsId
 	SsoSettingsId *string `json:"ssoSettingsId,omitempty" xml:"ssoSettingsId,omitempty"`
-	// 是否同步成员关系（custom 模式强制为 false）
+	// Specifies whether to synchronize member relationships. In custom mode, this parameter is forced to false.
 	//
 	// example:
 	//
 	// false
 	SyncMembers *bool `json:"syncMembers,omitempty" xml:"syncMembers,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
@@ -162,25 +162,25 @@ func (s *SyncOrgStructureRequest) Validate() error {
 }
 
 type SyncOrgStructureRequestDepartments struct {
-	// 部门 ID（外部标识，客户端自行保证唯一性）
+	// The department ID. This is an external identifier. The client is responsible for ensuring uniqueness.
 	//
 	// example:
 	//
 	// exampleDeptId
 	DeptId *string `json:"deptId,omitempty" xml:"deptId,omitempty"`
-	// 部门名称
+	// The department name.
 	//
 	// example:
 	//
 	// string_value
 	DeptName *string `json:"deptName,omitempty" xml:"deptName,omitempty"`
-	// 排序号（数值越小越靠前）
+	// The sort order. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Order *int64 `json:"order,omitempty" xml:"order,omitempty"`
-	// 父部门 ID（null 表示一级部门/根部门）
+	// The parent department ID. A value of null indicates a top-level department or root department.
 	//
 	// example:
 	//
@@ -237,23 +237,23 @@ func (s *SyncOrgStructureRequestDepartments) Validate() error {
 }
 
 type SyncOrgStructureRequestMembers struct {
-	// 用户标识（SAML 场景为邮箱/UPN，需与 rbj_user_account.account_id 匹配）
+	// The user identifier. In the SAML scenario, this is an email address or UPN, which must match rbj_user_account.account_id.
 	//
 	// example:
 	//
 	// exampleAccountId
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	// 所属部门 ID（必须与 departments 中的 deptId 对应）
+	// The department ID to which the member belongs. This value must correspond to a deptId in the departments list.
 	//
 	// example:
 	//
 	// exampleDeptId
 	DeptId *string `json:"deptId,omitempty" xml:"deptId,omitempty"`
-	// 用户姓名（展示用，可选）
+	// The username for display purposes. This parameter is optional.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

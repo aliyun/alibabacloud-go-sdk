@@ -24,45 +24,45 @@ type iCreatePersonalVoiceMeetingRequest interface {
 }
 
 type CreatePersonalVoiceMeetingRequest struct {
-	// 资源描述（可选）
+	// The pipeline description.
 	//
 	// example:
 	//
-	// 示例描述
+	// update-JNQ9csEc6ArPPSXANH7O
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 目标个人目录 ID；不传时自动绑定到当前数字员工默认根目录，传入时必须是当前用户在当前数字员工下的已有个人目录
+	// The directory ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 离线会议音频文件 URL（必填）
+	// The Yida attachment URL.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// https://example.com/winnexo/resource
+	// https://emas-devops-cdn.aliyuncs.com/job/PJ859733644657824768/apk/release/com.czmp.vitanexusoff_release_v331.178.14-signed.apk
 	FileUrl *string `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
-	// 资源显示名称
+	// The image name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// p-toolset-2a1461ff-59c1-4baa-9e19-966ec7c00004
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 数字员工名称（已废弃：不再作为个人资源隔离条件，仅保留用于来源追溯）
+	// The name of the digital employee (operating object name, optional).
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID.
 	//
 	// example:
 	//
-	// 10000
+	// 474379246158592
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

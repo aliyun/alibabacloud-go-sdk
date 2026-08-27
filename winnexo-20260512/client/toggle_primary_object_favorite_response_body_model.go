@@ -22,27 +22,32 @@ type iTogglePrimaryObjectFavoriteResponseBody interface {
 }
 
 type TogglePrimaryObjectFavoriteResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 该用户的关注总数（针对该对象类型）
+	// The total number of follows by the user for the specified object type.
 	//
 	// example:
 	//
 	// 1
 	FavoriteCount *int64 `json:"favoriteCount,omitempty" xml:"favoriteCount,omitempty"`
-	// 错误描述，成功时为空
+	// The description of the status code.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
-	RequestId *string                                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Results   []*TogglePrimaryObjectFavoriteResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The list of results.
+	Results []*TogglePrimaryObjectFavoriteResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
 func (s TogglePrimaryObjectFavoriteResponseBody) String() string {
@@ -112,25 +117,25 @@ func (s *TogglePrimaryObjectFavoriteResponseBody) Validate() error {
 }
 
 type TogglePrimaryObjectFavoriteResponseBodyResults struct {
-	// 操作后是否已关注
+	// Indicates whether the object is followed after the operation.
 	//
 	// example:
 	//
 	// true
 	IsFavorited *bool `json:"isFavorited,omitempty" xml:"isFavorited,omitempty"`
-	// 失败原因（成功时为 null）
+	// The description of the status code.
 	//
 	// example:
 	//
 	// string_value
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 主对象业务ID
+	// The ID of the aligned object: target ID or KR ID.
 	//
 	// example:
 	//
 	// exampleObjectId
 	ObjectId *string `json:"objectId,omitempty" xml:"objectId,omitempty"`
-	// 操作是否成功
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//

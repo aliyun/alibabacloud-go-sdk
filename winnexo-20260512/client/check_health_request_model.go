@@ -14,11 +14,11 @@ type iCheckHealthRequest interface {
 }
 
 type CheckHealthRequest struct {
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID.
 	//
 	// example:
 	//
-	// 10000
+	// 692318833855074
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

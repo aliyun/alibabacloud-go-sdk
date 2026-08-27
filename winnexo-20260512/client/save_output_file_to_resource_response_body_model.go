@@ -20,21 +20,26 @@ type iSaveOutputFileToResourceResponseBody interface {
 }
 
 type SaveOutputFileToResourceResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.	- / InvalidParameter.*).
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 错误描述，成功时为空
+	// The error description. This value is empty on success.
+	//
+	// example:
+	//
+	// The current zone list is illegal.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request trace ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
-	RequestId *string                                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Results   []*SaveOutputFileToResourceResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The per-record results in the same order as the input itemIds. A single record failure does not affect other records.
+	Results []*SaveOutputFileToResourceResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
 func (s SaveOutputFileToResourceResponseBody) String() string {
@@ -95,31 +100,31 @@ func (s *SaveOutputFileToResourceResponseBody) Validate() error {
 }
 
 type SaveOutputFileToResourceResponseBodyResults struct {
-	// 失败时返回业务错误码（i18n key）
+	// The business error code (i18n key). Returned on failure.
 	//
 	// example:
 	//
 	// string_value
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// 失败时返回错误描述（已按请求 locale 国际化）
+	// The error description, localized based on the request Accept-Language header. Returned on failure.
 	//
 	// example:
 	//
 	// string_value
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// 产出明细 ID
+	// The output detail ID.
 	//
 	// example:
 	//
 	// exampleItemId
 	ItemId *string `json:"itemId,omitempty" xml:"itemId,omitempty"`
-	// 成功时返回新建的资源 sourceId
+	// The sourceId of the newly created resource. Returned on success.
 	//
 	// example:
 	//
 	// exampleSourceId
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 操作是否成功
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//

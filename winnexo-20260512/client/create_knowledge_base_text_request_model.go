@@ -28,51 +28,51 @@ type iCreateKnowledgeBaseTextRequest interface {
 }
 
 type CreateKnowledgeBaseTextRequest struct {
-	// 资源描述（可选）
+	// The description of the alias.
 	//
 	// example:
 	//
-	// 示例描述
+	// InterviewMaster operations and health check service
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 目标企业知识库目录 ID；不传时自动绑定到当前数字员工默认根目录，传入时必须是当前租户下已有的企业知识库目录
+	// The folder ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 知识库 ID（可选，透传给 document_agent）
+	// Not supported. Ignore this parameter.
 	//
 	// example:
 	//
 	// exampleKnowledgeId
 	KnowledgeId *string `json:"knowledgeId,omitempty" xml:"knowledgeId,omitempty"`
-	// 资源显示名称
+	// The image name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// KL_tongyici
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 数字员工名称（运营对象 name，可选）
+	// The name of the operating object.
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 资源标签（可选，JSON 字符串列表，如 ["tagA","tagB"]）
+	// The source tags.
 	//
 	// example:
 	//
 	// string_value
 	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID.
 	//
 	// example:
 	//
-	// 10000
+	// 10001
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// 纯文本正文（必填）
+	// The message content for text messages.
 	//
 	// This parameter is required.
 	//

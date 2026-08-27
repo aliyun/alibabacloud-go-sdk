@@ -14,7 +14,7 @@ type iListAvailableConfigsRequest interface {
 }
 
 type ListAvailableConfigsRequest struct {
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. Pass it explicitly through --tenant-id in winnexo-cli.
 	//
 	// example:
 	//

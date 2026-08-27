@@ -24,37 +24,37 @@ type iUpdateTenantDirectoryRequest interface {
 }
 
 type UpdateTenantDirectoryRequest struct {
-	// 新目录描述
+	// The folder description.
 	//
 	// example:
 	//
-	// 示例描述
+	// Sample description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 目录唯一标识
+	// The folder ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 文件名
+	// The folder name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 新父目录内部主键
+	// The parent label ID. Set this parameter to -**1*	- for the root folder.
 	//
 	// example:
 	//
 	// 1
 	ParentId *int64 `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	// 文件 OSS URL
+	// The path of the node.
 	//
 	// example:
 	//
 	// https://example.com/oss/file.pdf
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The ID of the effective tenant.
 	//
 	// example:
 	//

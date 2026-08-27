@@ -24,7 +24,12 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-shanghai":    dara.String("winnexo.cn-shanghai.aliyuncs.com"),
+		"cn-zhangjiakou": dara.String("winnexo.cn-zhangjiakou.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("winnexo.cn-hangzhou.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -139,7 +144,113 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 服务健康检查
+// Adds multiple tenant members to a specified user group in a single request.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation supports batch addition of members by providing a user group ID and one or more user IDs.
+//
+// - Duplicate entries in the user ID list do not cause errors. The system automatically handles duplicates to ensure each user is added only once.
+//
+// - The caller must have the required permissions to perform this operation.
+//
+// - This operation is applicable to scenarios that require quick team structure management or access control policy adjustments.
+//
+// @param tmpReq - AddUserGroupMembersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUserGroupMembersResponse
+func (client *Client) AddUserGroupMembersWithOptions(tmpReq *AddUserGroupMembersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddUserGroupMembersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &AddUserGroupMembersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UserIds) {
+		request.UserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserIds, dara.String("userIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UserGroupId) {
+		body["userGroupId"] = request.UserGroupId
+	}
+
+	if !dara.IsNil(request.UserIdsShrink) {
+		body["userIds"] = request.UserIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddUserGroupMembers"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/addUserGroupMembers"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddUserGroupMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds multiple tenant members to a specified user group in a single request.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation supports batch addition of members by providing a user group ID and one or more user IDs.
+//
+// - Duplicate entries in the user ID list do not cause errors. The system automatically handles duplicates to ensure each user is added only once.
+//
+// - The caller must have the required permissions to perform this operation.
+//
+// - This operation is applicable to scenarios that require quick team structure management or access control policy adjustments.
+//
+// @param request - AddUserGroupMembersRequest
+//
+// @return AddUserGroupMembersResponse
+func (client *Client) AddUserGroupMembers(request *AddUserGroupMembersRequest) (_result *AddUserGroupMembersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AddUserGroupMembersResponse{}
+	_body, _err := client.AddUserGroupMembersWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a service health check.
 //
 // @param request - CheckHealthRequest
 //
@@ -186,7 +297,7 @@ func (client *Client) CheckHealthWithOptions(request *CheckHealthRequest, header
 
 // Summary:
 //
-// 服务健康检查
+// Performs a service health check.
 //
 // @param request - CheckHealthRequest
 //
@@ -205,7 +316,161 @@ func (client *Client) CheckHealth(request *CheckHealthRequest) (_result *CheckHe
 
 // Summary:
 //
-// 创建会话
+// Creates a service notice.
+//
+// Description:
+//
+// ## Operation description
+//
+// Creates a service notice. The caller identity must be mapped to a real platform user in the system O&M tenant and must have notice management permissions.
+//
+// - `priority`: The importance level of the notice. Valid values: URGENT, IMPORTANT, and GENERAL.
+//
+// - `targetTenantIds` / `targetRoleCodes`: Used only when the corresponding target mode is set to SPECIFIED. Pass values as a JSON array.
+//
+// - `effectiveStart` / `effectiveEnd`: ISO 8601 timestamps with time zone information.
+//
+// - `publishNow`: If set to true, the notice is published immediately after creation. Otherwise, it is saved as a draft.
+//
+// @param tmpReq - CreateAnnouncementRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAnnouncementResponse
+func (client *Client) CreateAnnouncementWithOptions(tmpReq *CreateAnnouncementRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateAnnouncementResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateAnnouncementShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TargetRoleCodes) {
+		request.TargetRoleCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TargetRoleCodes, dara.String("targetRoleCodes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.TargetTenantIds) {
+		request.TargetTenantIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TargetTenantIds, dara.String("targetTenantIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Content) {
+		body["content"] = request.Content
+	}
+
+	if !dara.IsNil(request.DisplayPage) {
+		body["displayPage"] = request.DisplayPage
+	}
+
+	if !dara.IsNil(request.DisplayType) {
+		body["displayType"] = request.DisplayType
+	}
+
+	if !dara.IsNil(request.EffectiveEnd) {
+		body["effectiveEnd"] = request.EffectiveEnd
+	}
+
+	if !dara.IsNil(request.EffectiveStart) {
+		body["effectiveStart"] = request.EffectiveStart
+	}
+
+	if !dara.IsNil(request.Priority) {
+		body["priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.PublishNow) {
+		body["publishNow"] = request.PublishNow
+	}
+
+	if !dara.IsNil(request.TargetRoleCodesShrink) {
+		body["targetRoleCodes"] = request.TargetRoleCodesShrink
+	}
+
+	if !dara.IsNil(request.TargetRoleMode) {
+		body["targetRoleMode"] = request.TargetRoleMode
+	}
+
+	if !dara.IsNil(request.TargetTenantIdsShrink) {
+		body["targetTenantIds"] = request.TargetTenantIdsShrink
+	}
+
+	if !dara.IsNil(request.TargetTenantMode) {
+		body["targetTenantMode"] = request.TargetTenantMode
+	}
+
+	if !dara.IsNil(request.Title) {
+		body["title"] = request.Title
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateAnnouncement"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createAnnouncement"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateAnnouncementResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a service notice.
+//
+// Description:
+//
+// ## Operation description
+//
+// Creates a service notice. The caller identity must be mapped to a real platform user in the system O&M tenant and must have notice management permissions.
+//
+// - `priority`: The importance level of the notice. Valid values: URGENT, IMPORTANT, and GENERAL.
+//
+// - `targetTenantIds` / `targetRoleCodes`: Used only when the corresponding target mode is set to SPECIFIED. Pass values as a JSON array.
+//
+// - `effectiveStart` / `effectiveEnd`: ISO 8601 timestamps with time zone information.
+//
+// - `publishNow`: If set to true, the notice is published immediately after creation. Otherwise, it is saved as a draft.
+//
+// @param request - CreateAnnouncementRequest
+//
+// @return CreateAnnouncementResponse
+func (client *Client) CreateAnnouncement(request *CreateAnnouncementRequest) (_result *CreateAnnouncementResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAnnouncementResponse{}
+	_body, _err := client.CreateAnnouncementWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a session.
 //
 // @param tmpReq - CreateConversationRequest
 //
@@ -272,7 +537,7 @@ func (client *Client) CreateConversationWithOptions(tmpReq *CreateConversationRe
 
 // Summary:
 //
-// 创建会话
+// Creates a session.
 //
 // @param request - CreateConversationRequest
 //
@@ -291,21 +556,21 @@ func (client *Client) CreateConversation(request *CreateConversationRequest) (_r
 
 // Summary:
 //
-// 注册纯自定义组织
+// Registers a custom-only organization.
 //
 // Description:
 //
-// 注册一个纯自定义组织，用于后续通过 syncOrgStructure 推送部门树。
+// Registers a custom-only organization for subsequent department tree push through syncOrgStructure.
 //
-//	注册逻辑：
+//	Registration logic:
 //
-//	1. 校验 corpId 格式（小写字母/数字开头，3-64 位，允许中划线）
+//	1. Validates the corpId format (must start with a lowercase letter or digit, 3-64 characters, hyphens allowed).
 //
-//	2. 委托 OrgSyncAuthorizedService 执行注册（内含权限校验 + 租户内唯一性检查）
+//	2. Delegates to OrgSyncAuthorizedService to execute registration (includes permission verification and tenant-level uniqueness check).
 //
-//	3. 返回注册结果
+//	3. Returns the registration result.
 //
-//	注意：纯自定义组织仅支持部门树同步，不支持成员关系同步。
+//	Note: Custom-only organizations support only department tree synchronization. Member relationship synchronization is not supported.
 //
 // @param request - CreateCustomOrgRequest
 //
@@ -362,21 +627,21 @@ func (client *Client) CreateCustomOrgWithOptions(request *CreateCustomOrgRequest
 
 // Summary:
 //
-// 注册纯自定义组织
+// Registers a custom-only organization.
 //
 // Description:
 //
-// 注册一个纯自定义组织，用于后续通过 syncOrgStructure 推送部门树。
+// Registers a custom-only organization for subsequent department tree push through syncOrgStructure.
 //
-//	注册逻辑：
+//	Registration logic:
 //
-//	1. 校验 corpId 格式（小写字母/数字开头，3-64 位，允许中划线）
+//	1. Validates the corpId format (must start with a lowercase letter or digit, 3-64 characters, hyphens allowed).
 //
-//	2. 委托 OrgSyncAuthorizedService 执行注册（内含权限校验 + 租户内唯一性检查）
+//	2. Delegates to OrgSyncAuthorizedService to execute registration (includes permission verification and tenant-level uniqueness check).
 //
-//	3. 返回注册结果
+//	3. Returns the registration result.
 //
-//	注意：纯自定义组织仅支持部门树同步，不支持成员关系同步。
+//	Note: Custom-only organizations support only department tree synchronization. Member relationship synchronization is not supported.
 //
 // @param request - CreateCustomOrgRequest
 //
@@ -395,25 +660,435 @@ func (client *Client) CreateCustomOrg(request *CreateCustomOrgRequest) (_result 
 
 // Summary:
 //
-// 将阿里钉在线文档上传到企业知识库，需管理权限。
+// Creates a DingTalk group chat knowledge resource in a group.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该接口用于将阿里钉在线文档添加到指定的企业知识库中。
+// - Connects a specified DingTalk group chat to a group knowledge base that the caller has joined.
 //
-// - 调用者必须具备`DEVELOPMENT_KB_MANAGE`功能权限。
+// - The resource type is fixed to ALI_DING, the scope is fixed to GROUP, and the owning user is resolved from the gateway authentication identity.
 //
-// - `source_type`固定为`ONLINE_DOC`，`platform`固定为`ALI_DING`，`scope`固定为`TENANT`。
+// - groupId, chatId, and historyStartTime are required.
 //
-// - 如果不提供`directoryId`，则默认绑定到当前数字员工的根目录；若提供，则必须是当前租户下的有效目录ID。
+// - updateFrequency can be configured by using a preset or a five-field cron expression for subsequent synchronization frequency.
 //
-// - `filePublicUrl`参数是必需的，表示要上传的阿里钉在线文档的公开访问URL。
+// - The server verifies the caller\\"s group membership, the target group directory permissions, and the uniqueness of chatId within the scope.
 //
-// - 可选参数包括`operatingObjectName`（数字员工名称）、`description`（资源描述）、`knowledgeId`（知识库ID）和`sourceTags`（资源标签）等。
+// @param tmpReq - CreateGroupAliDingChatRequest
 //
-// - 成功响应会返回新创建资源的相关信息，如`sourceId`、`name`、`status`、`directoryId`及创建时间等。
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGroupAliDingChatResponse
+func (client *Client) CreateGroupAliDingChatWithOptions(tmpReq *CreateGroupAliDingChatRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGroupAliDingChatResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateGroupAliDingChatShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateFrequency) {
+		request.UpdateFrequencyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateFrequency, dara.String("updateFrequency"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChatId) {
+		body["chatId"] = request.ChatId
+	}
+
+	if !dara.IsNil(request.ChatName) {
+		body["chatName"] = request.ChatName
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.HistoryStartTime) {
+		body["historyStartTime"] = request.HistoryStartTime
+	}
+
+	if !dara.IsNil(request.Notes) {
+		body["notes"] = request.Notes
+	}
+
+	if !dara.IsNil(request.OperatingObjectName) {
+		body["operatingObjectName"] = request.OperatingObjectName
+	}
+
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
+	if !dara.IsNil(request.UpdateFrequencyShrink) {
+		body["updateFrequency"] = request.UpdateFrequencyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGroupAliDingChat"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createGroupAliDingChat"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGroupAliDingChatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a DingTalk group chat knowledge resource in a group.
+//
+// Description:
+//
+// ## Operation description
+//
+// - Connects a specified DingTalk group chat to a group knowledge base that the caller has joined.
+//
+// - The resource type is fixed to ALI_DING, the scope is fixed to GROUP, and the owning user is resolved from the gateway authentication identity.
+//
+// - groupId, chatId, and historyStartTime are required.
+//
+// - updateFrequency can be configured by using a preset or a five-field cron expression for subsequent synchronization frequency.
+//
+// - The server verifies the caller\\"s group membership, the target group directory permissions, and the uniqueness of chatId within the scope.
+//
+// @param request - CreateGroupAliDingChatRequest
+//
+// @return CreateGroupAliDingChatResponse
+func (client *Client) CreateGroupAliDingChat(request *CreateGroupAliDingChatRequest) (_result *CreateGroupAliDingChatResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateGroupAliDingChatResponse{}
+	_body, _err := client.CreateGroupAliDingChatWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a group-level DingTalk chat knowledge source.
+//
+// Description:
+//
+// ## Operation description
+//
+// - Connects a specified DingTalk chat to the knowledge base of a group that the caller has joined.
+//
+// - The resource type is fixed to DINGTALK, the scope is fixed to GROUP, and the owning user is parsed from the gateway authentication identity.
+//
+// - groupId, chatId, and historyStartTime are required.
+//
+// - updateFrequency can be configured by using a preset or a five-field cron expression for subsequent synchronization frequency.
+//
+// - The server verifies the caller\\"s group membership and the target group directory permissions. The same chat can be created as different sources.
+//
+// @param tmpReq - CreateGroupDingtalkChatRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGroupDingtalkChatResponse
+func (client *Client) CreateGroupDingtalkChatWithOptions(tmpReq *CreateGroupDingtalkChatRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGroupDingtalkChatResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateGroupDingtalkChatShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateFrequency) {
+		request.UpdateFrequencyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateFrequency, dara.String("updateFrequency"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChatId) {
+		body["chatId"] = request.ChatId
+	}
+
+	if !dara.IsNil(request.ChatName) {
+		body["chatName"] = request.ChatName
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.HistoryStartTime) {
+		body["historyStartTime"] = request.HistoryStartTime
+	}
+
+	if !dara.IsNil(request.Notes) {
+		body["notes"] = request.Notes
+	}
+
+	if !dara.IsNil(request.OperatingObjectName) {
+		body["operatingObjectName"] = request.OperatingObjectName
+	}
+
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
+	if !dara.IsNil(request.UpdateFrequencyShrink) {
+		body["updateFrequency"] = request.UpdateFrequencyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGroupDingtalkChat"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createGroupDingtalkChat"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGroupDingtalkChatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a group-level DingTalk chat knowledge source.
+//
+// Description:
+//
+// ## Operation description
+//
+// - Connects a specified DingTalk chat to the knowledge base of a group that the caller has joined.
+//
+// - The resource type is fixed to DINGTALK, the scope is fixed to GROUP, and the owning user is parsed from the gateway authentication identity.
+//
+// - groupId, chatId, and historyStartTime are required.
+//
+// - updateFrequency can be configured by using a preset or a five-field cron expression for subsequent synchronization frequency.
+//
+// - The server verifies the caller\\"s group membership and the target group directory permissions. The same chat can be created as different sources.
+//
+// @param request - CreateGroupDingtalkChatRequest
+//
+// @return CreateGroupDingtalkChatResponse
+func (client *Client) CreateGroupDingtalkChat(request *CreateGroupDingtalkChatRequest) (_result *CreateGroupDingtalkChatResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateGroupDingtalkChatResponse{}
+	_body, _err := client.CreateGroupDingtalkChatWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a group knowledge resource from a single Lark online document using the current user\\"s Lark authorization.
+//
+// Description:
+//
+// ## Request description\\n\\nFixed as `ONLINE_DOC + FEISHU + GROUP`. `groupId` is required. If `directoryId` is omitted, the root directory of the group knowledge base is used. Group membership and directory write permissions are verified by the backend.
+//
+// @param tmpReq - CreateGroupFeishuDocRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGroupFeishuDocResponse
+func (client *Client) CreateGroupFeishuDocWithOptions(tmpReq *CreateGroupFeishuDocRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateGroupFeishuDocResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateGroupFeishuDocShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ObjectBindings) {
+		request.ObjectBindingsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ObjectBindings, dara.String("objectBindings"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SyncConfig) {
+		request.SyncConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SyncConfig, dara.String("syncConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.DocUrl) {
+		body["docUrl"] = request.DocUrl
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Notes) {
+		body["notes"] = request.Notes
+	}
+
+	if !dara.IsNil(request.ObjectBindingsShrink) {
+		body["objectBindings"] = request.ObjectBindingsShrink
+	}
+
+	if !dara.IsNil(request.OperatingObjectName) {
+		body["operatingObjectName"] = request.OperatingObjectName
+	}
+
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
+	if !dara.IsNil(request.SyncConfigShrink) {
+		body["syncConfig"] = request.SyncConfigShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGroupFeishuDoc"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createGroupFeishuDoc"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGroupFeishuDocResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a group knowledge resource from a single Lark online document using the current user\\"s Lark authorization.
+//
+// Description:
+//
+// ## Request description\\n\\nFixed as `ONLINE_DOC + FEISHU + GROUP`. `groupId` is required. If `directoryId` is omitted, the root directory of the group knowledge base is used. Group membership and directory write permissions are verified by the backend.
+//
+// @param request - CreateGroupFeishuDocRequest
+//
+// @return CreateGroupFeishuDocResponse
+func (client *Client) CreateGroupFeishuDoc(request *CreateGroupFeishuDocRequest) (_result *CreateGroupFeishuDocResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateGroupFeishuDocResponse{}
+	_body, _err := client.CreateGroupFeishuDocWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Uploads an AliDing online document to the enterprise knowledge base. Management permissions are required.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation adds an AliDing online document to a specified enterprise knowledge base.
+//
+// - The caller must have the `DEVELOPMENT_KB_MANAGE` permission.
+//
+// - `source_type` is fixed to `ONLINE_DOC`, `platform` is fixed to `ALI_DING`, and `scope` is fixed to `TENANT`.
+//
+// - If `directoryId` is not provided, the document is bound to the root directory of the current digital employee by default. If provided, it must be a valid directory ID under the current tenant.
+//
+// - The `filePublicUrl` parameter is required and specifies the publicly accessible URL of the AliDing online document to upload.
+//
+// - Optional parameters include `operatingObjectName` (digital employee name), `description` (resource description), `knowledgeId` (knowledge base ID), and `sourceTags` (resource tags).
+//
+// - A successful response returns information about the newly created resource, such as `sourceId`, `name`, `status`, `directoryId`, and creation time.
 //
 // @param request - CreateKnowledgeBaseAliDingDocRequest
 //
@@ -490,25 +1165,25 @@ func (client *Client) CreateKnowledgeBaseAliDingDocWithOptions(request *CreateKn
 
 // Summary:
 //
-// 将阿里钉在线文档上传到企业知识库，需管理权限。
+// Uploads an AliDing online document to the enterprise knowledge base. Management permissions are required.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口用于将阿里钉在线文档添加到指定的企业知识库中。
+// - This operation adds an AliDing online document to a specified enterprise knowledge base.
 //
-// - 调用者必须具备`DEVELOPMENT_KB_MANAGE`功能权限。
+// - The caller must have the `DEVELOPMENT_KB_MANAGE` permission.
 //
-// - `source_type`固定为`ONLINE_DOC`，`platform`固定为`ALI_DING`，`scope`固定为`TENANT`。
+// - `source_type` is fixed to `ONLINE_DOC`, `platform` is fixed to `ALI_DING`, and `scope` is fixed to `TENANT`.
 //
-// - 如果不提供`directoryId`，则默认绑定到当前数字员工的根目录；若提供，则必须是当前租户下的有效目录ID。
+// - If `directoryId` is not provided, the document is bound to the root directory of the current digital employee by default. If provided, it must be a valid directory ID under the current tenant.
 //
-// - `filePublicUrl`参数是必需的，表示要上传的阿里钉在线文档的公开访问URL。
+// - The `filePublicUrl` parameter is required and specifies the publicly accessible URL of the AliDing online document to upload.
 //
-// - 可选参数包括`operatingObjectName`（数字员工名称）、`description`（资源描述）、`knowledgeId`（知识库ID）和`sourceTags`（资源标签）等。
+// - Optional parameters include `operatingObjectName` (digital employee name), `description` (resource description), `knowledgeId` (knowledge base ID), and `sourceTags` (resource tags).
 //
-// - 成功响应会返回新创建资源的相关信息，如`sourceId`、`name`、`status`、`directoryId`及创建时间等。
+// - A successful response returns information about the newly created resource, such as `sourceId`, `name`, `status`, `directoryId`, and creation time.
 //
 // @param request - CreateKnowledgeBaseAliDingDocRequest
 //
@@ -527,21 +1202,21 @@ func (client *Client) CreateKnowledgeBaseAliDingDoc(request *CreateKnowledgeBase
 
 // Summary:
 //
-// 用于在企业知识库中创建新的分类目录。
+// Creates a category directory in the enterprise knowledge base.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口允许具有`DEVELOPMENT_KB_MANAGE`权限的用户为企业知识库创建新的分类。
+// - This operation allows users with the `DEVELOPMENT_KB_MANAGE` permission to create a category for the enterprise knowledge base.
 //
-// - 创建时可指定父分类ID，若未指定，则新分类将直接挂载于企业知识库根目录下。
+// - You can specify a parent category ID when creating a category. If no parent category ID is specified, the new category is mounted directly under the root directory of the enterprise knowledge base.
 //
-// - 系统会自动检查同名冲突及目录深度限制等问题。
+// - The system automatically checks for name conflicts and directory depth limits.
 //
-// - `tenant_id`和`user_id`仅通过鉴权身份获取，请求体中即使提供也会被忽略。
+// - `tenant_id` and `user_id` are obtained only through authentication. These parameters are ignored even if they are provided in the request body.
 //
-// - 需要确保提供的`parentDirectoryId`（如果有的话）属于当前租户。
+// - Ensure that the specified `parentDirectoryId` (if any) belongs to the current tenant.
 //
 // @param request - CreateKnowledgeBaseDirectoryRequest
 //
@@ -602,21 +1277,21 @@ func (client *Client) CreateKnowledgeBaseDirectoryWithOptions(request *CreateKno
 
 // Summary:
 //
-// 用于在企业知识库中创建新的分类目录。
+// Creates a category directory in the enterprise knowledge base.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口允许具有`DEVELOPMENT_KB_MANAGE`权限的用户为企业知识库创建新的分类。
+// - This operation allows users with the `DEVELOPMENT_KB_MANAGE` permission to create a category for the enterprise knowledge base.
 //
-// - 创建时可指定父分类ID，若未指定，则新分类将直接挂载于企业知识库根目录下。
+// - You can specify a parent category ID when creating a category. If no parent category ID is specified, the new category is mounted directly under the root directory of the enterprise knowledge base.
 //
-// - 系统会自动检查同名冲突及目录深度限制等问题。
+// - The system automatically checks for name conflicts and directory depth limits.
 //
-// - `tenant_id`和`user_id`仅通过鉴权身份获取，请求体中即使提供也会被忽略。
+// - `tenant_id` and `user_id` are obtained only through authentication. These parameters are ignored even if they are provided in the request body.
 //
-// - 需要确保提供的`parentDirectoryId`（如果有的话）属于当前租户。
+// - Ensure that the specified `parentDirectoryId` (if any) belongs to the current tenant.
 //
 // @param request - CreateKnowledgeBaseDirectoryRequest
 //
@@ -635,25 +1310,147 @@ func (client *Client) CreateKnowledgeBaseDirectory(request *CreateKnowledgeBaseD
 
 // Summary:
 //
-// 将指定文件上传至企业知识库，需具备管理权限。
+// Creates a single Lark online document in the enterprise knowledge base using the current user\\"s Lark authorization.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description\\n\\nFixed as `ONLINE_DOC + FEISHU + TENANT`. `directoryId` is required. The invoker must have the enterprise knowledge base feature permission and knowledge base management permission on the target knowledge base.
 //
-// - 该接口用于向企业知识库中上传文件。
+// @param tmpReq - CreateKnowledgeBaseFeishuDocRequest
 //
-// - 需要拥有`DEVELOPMENT_KB_MANAGE`功能权限才能调用此API。
+// @param headers - map
 //
-// - 文件上传时必须提供文件的OSS持久化地址(`filePath`)。
+// @param runtime - runtime options for this request RuntimeOptions
 //
-// - 可选参数包括文件公开访问URL、原始文件名等，以增强文件信息的完整性。
+// @return CreateKnowledgeBaseFeishuDocResponse
+func (client *Client) CreateKnowledgeBaseFeishuDocWithOptions(tmpReq *CreateKnowledgeBaseFeishuDocRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateKnowledgeBaseFeishuDocResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateKnowledgeBaseFeishuDocShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ObjectBindings) {
+		request.ObjectBindingsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ObjectBindings, dara.String("objectBindings"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SyncConfig) {
+		request.SyncConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SyncConfig, dara.String("syncConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.DocUrl) {
+		body["docUrl"] = request.DocUrl
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Notes) {
+		body["notes"] = request.Notes
+	}
+
+	if !dara.IsNil(request.ObjectBindingsShrink) {
+		body["objectBindings"] = request.ObjectBindingsShrink
+	}
+
+	if !dara.IsNil(request.OperatingObjectName) {
+		body["operatingObjectName"] = request.OperatingObjectName
+	}
+
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
+	if !dara.IsNil(request.SyncConfigShrink) {
+		body["syncConfig"] = request.SyncConfigShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateKnowledgeBaseFeishuDoc"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createKnowledgeBaseFeishuDoc"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateKnowledgeBaseFeishuDocResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
 //
-// - 如果指定了`directoryId`，则文件会被放置在对应的企业知识库目录下；否则，默认绑定到当前数字员工默认根目录。
+// Creates a single Lark online document in the enterprise knowledge base using the current user\\"s Lark authorization.
 //
-// - 支持通过`sourceTags`为资源添加标签，便于后续管理和检索。
+// Description:
 //
-// - 本操作会启动计费账单（UNSTRUCTURED_PARSE），请确保账户余额充足。
+// ## Request description\\n\\nFixed as `ONLINE_DOC + FEISHU + TENANT`. `directoryId` is required. The invoker must have the enterprise knowledge base feature permission and knowledge base management permission on the target knowledge base.
+//
+// @param request - CreateKnowledgeBaseFeishuDocRequest
+//
+// @return CreateKnowledgeBaseFeishuDocResponse
+func (client *Client) CreateKnowledgeBaseFeishuDoc(request *CreateKnowledgeBaseFeishuDocRequest) (_result *CreateKnowledgeBaseFeishuDocResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateKnowledgeBaseFeishuDocResponse{}
+	_body, _err := client.CreateKnowledgeBaseFeishuDocWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Uploads a specified file to the enterprise knowledge base. Management permissions are required.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation uploads a file to the enterprise knowledge base.
+//
+// - The `DEVELOPMENT_KB_MANAGE` permission is required to call this operation.
+//
+// - You must provide the Object Storage Service (OSS) persistent address (`filePath`) of the file when uploading.
+//
+// - Optional parameters include the public access URL and original file name to enhance the completeness of file information.
+//
+// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee.
+//
+// - You can use `sourceTags` to add labels to resources for subsequent management and retrieval.
+//
+// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Ensure that your account balance is sufficient.
 //
 // @param request - CreateKnowledgeBaseFileRequest
 //
@@ -746,25 +1543,25 @@ func (client *Client) CreateKnowledgeBaseFileWithOptions(request *CreateKnowledg
 
 // Summary:
 //
-// 将指定文件上传至企业知识库，需具备管理权限。
+// Uploads a specified file to the enterprise knowledge base. Management permissions are required.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该接口用于向企业知识库中上传文件。
+// - This operation uploads a file to the enterprise knowledge base.
 //
-// - 需要拥有`DEVELOPMENT_KB_MANAGE`功能权限才能调用此API。
+// - The `DEVELOPMENT_KB_MANAGE` permission is required to call this operation.
 //
-// - 文件上传时必须提供文件的OSS持久化地址(`filePath`)。
+// - You must provide the Object Storage Service (OSS) persistent address (`filePath`) of the file when uploading.
 //
-// - 可选参数包括文件公开访问URL、原始文件名等，以增强文件信息的完整性。
+// - Optional parameters include the public access URL and original file name to enhance the completeness of file information.
 //
-// - 如果指定了`directoryId`，则文件会被放置在对应的企业知识库目录下；否则，默认绑定到当前数字员工默认根目录。
+// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee.
 //
-// - 支持通过`sourceTags`为资源添加标签，便于后续管理和检索。
+// - You can use `sourceTags` to add labels to resources for subsequent management and retrieval.
 //
-// - 本操作会启动计费账单（UNSTRUCTURED_PARSE），请确保账户余额充足。
+// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Ensure that your account balance is sufficient.
 //
 // @param request - CreateKnowledgeBaseFileRequest
 //
@@ -783,23 +1580,23 @@ func (client *Client) CreateKnowledgeBaseFile(request *CreateKnowledgeBaseFileRe
 
 // Summary:
 //
-// 将纯文本内容添加至指定的企业知识库中。
+// Adds plain text content to a specified enterprise knowledge base.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该API用于向企业知识库上传纯文本信息，要求调用者具备相应的管理权限。
+// - This API is used to upload plain text information to an enterprise knowledge base. The caller must have the required management permissions.
 //
-// - `textContent`字段为必填项，代表要上传的纯文本内容。
+// - The `textContent` field is required and represents the plain text content to upload.
 //
-// - 可选参数包括数字员工名称(`operatingObjectName`)、资源描述(`description`)等，允许用户自定义更多细节。
+// - Optional parameters include the digital employee name (`operatingObjectName`) and resource description (`description`), which allow users to customize additional details.
 //
-// - 如果提供了`directoryId`，则会将上传的文本绑定到指定的知识库目录下；若未提供，则默认绑定到当前数字员工的根目录。
+// - If `directoryId` is provided, the uploaded text is attached to the specified knowledge base folder. If not provided, the text is attached to the root folder of the current digital employee by default.
 //
-// - 支持通过`sourceTags`给资源打标签，方便后续管理和检索。
+// - You can use `sourceTags` to add labels to resources for easier management and retrieval.
 //
-// - 调用此接口前，请确保已正确配置身份验证方式（支持AK、BearerToken及APP认证）并拥有`DEVELOPMENT_KB_MANAGE`权限。
+// - Before invoking this operation, make sure that you have correctly configured the authentication method (AK, BearerToken, and APP authentication are supported) and have the `DEVELOPMENT_KB_MANAGE` permission.
 //
 // @param request - CreateKnowledgeBaseTextRequest
 //
@@ -876,23 +1673,23 @@ func (client *Client) CreateKnowledgeBaseTextWithOptions(request *CreateKnowledg
 
 // Summary:
 //
-// 将纯文本内容添加至指定的企业知识库中。
+// Adds plain text content to a specified enterprise knowledge base.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该API用于向企业知识库上传纯文本信息，要求调用者具备相应的管理权限。
+// - This API is used to upload plain text information to an enterprise knowledge base. The caller must have the required management permissions.
 //
-// - `textContent`字段为必填项，代表要上传的纯文本内容。
+// - The `textContent` field is required and represents the plain text content to upload.
 //
-// - 可选参数包括数字员工名称(`operatingObjectName`)、资源描述(`description`)等，允许用户自定义更多细节。
+// - Optional parameters include the digital employee name (`operatingObjectName`) and resource description (`description`), which allow users to customize additional details.
 //
-// - 如果提供了`directoryId`，则会将上传的文本绑定到指定的知识库目录下；若未提供，则默认绑定到当前数字员工的根目录。
+// - If `directoryId` is provided, the uploaded text is attached to the specified knowledge base folder. If not provided, the text is attached to the root folder of the current digital employee by default.
 //
-// - 支持通过`sourceTags`给资源打标签，方便后续管理和检索。
+// - You can use `sourceTags` to add labels to resources for easier management and retrieval.
 //
-// - 调用此接口前，请确保已正确配置身份验证方式（支持AK、BearerToken及APP认证）并拥有`DEVELOPMENT_KB_MANAGE`权限。
+// - Before invoking this operation, make sure that you have correctly configured the authentication method (AK, BearerToken, and APP authentication are supported) and have the `DEVELOPMENT_KB_MANAGE` permission.
 //
 // @param request - CreateKnowledgeBaseTextRequest
 //
@@ -911,23 +1708,161 @@ func (client *Client) CreateKnowledgeBaseText(request *CreateKnowledgeBaseTextRe
 
 // Summary:
 //
-// 将阿里钉会议文件上传至当前数字员工的个人资源库。
+// Creates a personal AliDing group chat knowledge resource.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API用于将阿里钉会议相关资料（如音视频、闪记链接等）上传至指定数字员工的“我的资源”中。
+// - Connects the specified AliDing group chat to the current user\\"s personal knowledge base.
 //
-// - `source_type` 固定为 `ALI_DING_MEETING`，且作用范围 `scope` 固定为 `PERSONAL`。
+// - The resource type is fixed to ALI_DING, the scope is fixed to PERSONAL, and the owning user is parsed from the gateway authentication identity.
 //
-// - 必须提供公开的音视频OSS地址 (`ossUrl`) 和原始的闪记链接 (`shanjiUrl`)。
+// - historyStartTime is required and supports YYYY-MM-DD or YYYY-MM-DD HH:MM:SS format.
 //
-// - 可选地，可以指定目标个人目录ID (`directoryId`)；若未指定，则自动绑定到当前数字员工默认根目录。
+// - updateFrequency can be configured with a preset or a five-field cron expression for subsequent synchronization frequency.
 //
-// - 支持添加资源描述 (`description`) 和会议笔记内容 (`notes`)，其中会议笔记可用于辅助分析。
+// - chatId must be unique within the target personal scope.
 //
-// - 此操作需要相应的权限认证，支持AK、BearerToken和APP三种认证方式之一。
+// @param tmpReq - CreatePersonalAliDingChatRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePersonalAliDingChatResponse
+func (client *Client) CreatePersonalAliDingChatWithOptions(tmpReq *CreatePersonalAliDingChatRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePersonalAliDingChatResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreatePersonalAliDingChatShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateFrequency) {
+		request.UpdateFrequencyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateFrequency, dara.String("updateFrequency"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChatId) {
+		body["chatId"] = request.ChatId
+	}
+
+	if !dara.IsNil(request.ChatName) {
+		body["chatName"] = request.ChatName
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.HistoryStartTime) {
+		body["historyStartTime"] = request.HistoryStartTime
+	}
+
+	if !dara.IsNil(request.Notes) {
+		body["notes"] = request.Notes
+	}
+
+	if !dara.IsNil(request.OperatingObjectName) {
+		body["operatingObjectName"] = request.OperatingObjectName
+	}
+
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
+	if !dara.IsNil(request.UpdateFrequencyShrink) {
+		body["updateFrequency"] = request.UpdateFrequencyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePersonalAliDingChat"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createPersonalAliDingChat"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePersonalAliDingChatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a personal AliDing group chat knowledge resource.
+//
+// Description:
+//
+// ## Request description
+//
+// - Connects the specified AliDing group chat to the current user\\"s personal knowledge base.
+//
+// - The resource type is fixed to ALI_DING, the scope is fixed to PERSONAL, and the owning user is parsed from the gateway authentication identity.
+//
+// - historyStartTime is required and supports YYYY-MM-DD or YYYY-MM-DD HH:MM:SS format.
+//
+// - updateFrequency can be configured with a preset or a five-field cron expression for subsequent synchronization frequency.
+//
+// - chatId must be unique within the target personal scope.
+//
+// @param request - CreatePersonalAliDingChatRequest
+//
+// @return CreatePersonalAliDingChatResponse
+func (client *Client) CreatePersonalAliDingChat(request *CreatePersonalAliDingChatRequest) (_result *CreatePersonalAliDingChatResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePersonalAliDingChatResponse{}
+	_body, _err := client.CreatePersonalAliDingChatWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Uploads an AliDing meeting file to the personal resource library of the current digital employee.
+//
+// Description:
+//
+// ## Request description
+//
+// - This API uploads AliDing meeting materials (such as audio/video files and Shanji links) to the "My Resources" section of a specified digital employee.
+//
+// - The `source_type` is fixed to `ALI_DING_MEETING`, and the `scope` is fixed to `PERSONAL`.
+//
+// - You must provide a public audio/video OSS URL (`ossUrl`) and the original Shanji link (`shanjiUrl`).
+//
+// - Optionally, you can specify a target personal directory ID (`directoryId`). If not specified, the resource is automatically bound to the default root directory of the current digital employee.
+//
+// - You can add a resource description (`description`) and meeting notes (`notes`). The meeting notes can be used for auxiliary analysis.
+//
+// - This operation requires authentication. AK, BearerToken, and APP authentication methods are supported.
 //
 // @param request - CreatePersonalAliDingMeetingRequest
 //
@@ -1000,23 +1935,23 @@ func (client *Client) CreatePersonalAliDingMeetingWithOptions(request *CreatePer
 
 // Summary:
 //
-// 将阿里钉会议文件上传至当前数字员工的个人资源库。
+// Uploads an AliDing meeting file to the personal resource library of the current digital employee.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API用于将阿里钉会议相关资料（如音视频、闪记链接等）上传至指定数字员工的“我的资源”中。
+// - This API uploads AliDing meeting materials (such as audio/video files and Shanji links) to the "My Resources" section of a specified digital employee.
 //
-// - `source_type` 固定为 `ALI_DING_MEETING`，且作用范围 `scope` 固定为 `PERSONAL`。
+// - The `source_type` is fixed to `ALI_DING_MEETING`, and the `scope` is fixed to `PERSONAL`.
 //
-// - 必须提供公开的音视频OSS地址 (`ossUrl`) 和原始的闪记链接 (`shanjiUrl`)。
+// - You must provide a public audio/video OSS URL (`ossUrl`) and the original Shanji link (`shanjiUrl`).
 //
-// - 可选地，可以指定目标个人目录ID (`directoryId`)；若未指定，则自动绑定到当前数字员工默认根目录。
+// - Optionally, you can specify a target personal directory ID (`directoryId`). If not specified, the resource is automatically bound to the default root directory of the current digital employee.
 //
-// - 支持添加资源描述 (`description`) 和会议笔记内容 (`notes`)，其中会议笔记可用于辅助分析。
+// - You can add a resource description (`description`) and meeting notes (`notes`). The meeting notes can be used for auxiliary analysis.
 //
-// - 此操作需要相应的权限认证，支持AK、BearerToken和APP三种认证方式之一。
+// - This operation requires authentication. AK, BearerToken, and APP authentication methods are supported.
 //
 // @param request - CreatePersonalAliDingMeetingRequest
 //
@@ -1035,23 +1970,23 @@ func (client *Client) CreatePersonalAliDingMeeting(request *CreatePersonalAliDin
 
 // Summary:
 //
-// 将阿里钉在线文档上传至当前数字员工的个人资源中。
+// Uploads an AliDing online document to the personal resources of the current digital employee.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API用于将阿里钉在线文档添加到指定数字员工的"我的资源"中。
+// - This API is used to add an AliDing online document to the "My Resources" section of a specified digital employee.
 //
-// - 固定参数包括 `source_type=ONLINE_DOC`、`platform=ALI_DING` 和 `scope=PERSONAL`。
+// - Fixed parameters include `source_type=ONLINE_DOC`, `platform=ALI_DING`, and `scope=PERSONAL`.
 //
-// - 如果未提供`directoryId`，则默认绑定到当前数字员工的根目录；若提供了，则需确保该目录属于当前用户且在当前数字员工下存在。
+// - If `directoryId` is not provided, the document is attached to the root folder of the current digital employee by default. If provided, ensure that the folder belongs to the current user and exists under the current digital employee.
 //
-// - 调用过程中会启动计量并记录相关操作日志。
+// - During the invoke process, metering is started and related operation logs are recorded.
 //
-// - 安全性方面，`tenant_id`和`user_id`仅从鉴权身份获取，调用方提供的这些字段值将被忽略。
+// - For security purposes, `tenant_id` and `user_id` are obtained only from the authentication identity. Values provided by the caller for these fields are ignored.
 //
-// - 任何校验或执行失败都会通过服务抛出异常，并转换为POP错误码返回给调用者。
+// - Any validation or execute failure is thrown as an exception by the service and transformed into a POP error code returned to the caller.
 //
 // @param request - CreatePersonalAlidingDocRequest
 //
@@ -1120,23 +2055,23 @@ func (client *Client) CreatePersonalAlidingDocWithOptions(request *CreatePersona
 
 // Summary:
 //
-// 将阿里钉在线文档上传至当前数字员工的个人资源中。
+// Uploads an AliDing online document to the personal resources of the current digital employee.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API用于将阿里钉在线文档添加到指定数字员工的"我的资源"中。
+// - This API is used to add an AliDing online document to the "My Resources" section of a specified digital employee.
 //
-// - 固定参数包括 `source_type=ONLINE_DOC`、`platform=ALI_DING` 和 `scope=PERSONAL`。
+// - Fixed parameters include `source_type=ONLINE_DOC`, `platform=ALI_DING`, and `scope=PERSONAL`.
 //
-// - 如果未提供`directoryId`，则默认绑定到当前数字员工的根目录；若提供了，则需确保该目录属于当前用户且在当前数字员工下存在。
+// - If `directoryId` is not provided, the document is attached to the root folder of the current digital employee by default. If provided, ensure that the folder belongs to the current user and exists under the current digital employee.
 //
-// - 调用过程中会启动计量并记录相关操作日志。
+// - During the invoke process, metering is started and related operation logs are recorded.
 //
-// - 安全性方面，`tenant_id`和`user_id`仅从鉴权身份获取，调用方提供的这些字段值将被忽略。
+// - For security purposes, `tenant_id` and `user_id` are obtained only from the authentication identity. Values provided by the caller for these fields are ignored.
 //
-// - 任何校验或执行失败都会通过服务抛出异常，并转换为POP错误码返回给调用者。
+// - Any validation or execute failure is thrown as an exception by the service and transformed into a POP error code returned to the caller.
 //
 // @param request - CreatePersonalAlidingDocRequest
 //
@@ -1155,27 +2090,27 @@ func (client *Client) CreatePersonalAlidingDoc(request *CreatePersonalAlidingDoc
 
 // Summary:
 //
-// 将阿里钉整体知识库添加到当前数字员工的个人资源中。
+// Adds an AliDing knowledge base to the personal resources of the current digital employee.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API用于创建一个阿里钉知识库，并将其挂载到指定数字员工的个人资源目录下。
+// - This API creates an AliDing knowledge base and mounts it to the personal resource directory of the specified digital employee.
 //
-// - `platform`固定为`ALI_DING`，`directory_type`固定为`PERSONAL`。
+// - `platform` is fixed to `ALI_DING`, and `directory_type` is fixed to `PERSONAL`.
 //
-// - 如果提供了`directoryId`，则会验证该目录是否存在且属于当前租户和个人类型。
+// - If `directoryId` is provided, the system verifies that the directory exists and belongs to the current tenant and is of the personal type.
 //
-// - 创建过程中会初始化知识库根目录（状态设置为`RUNNING`），并根据提供的同步配置派发后台任务以拉取远程目录树和创建子节点。
+// - During creation, the knowledge base root directory is initialized (with the status set to `RUNNING`), and background tasks are dispatched based on the provided synchronization configuration to pull the remote directory tree and create child nodes.
 //
-// - 安全性方面，`tenant_id`与`user_id`仅从鉴权身份获取，请求体中的这些字段会被忽略。
+// - For security purposes, `tenant_id` and `user_id` are obtained only from the authenticated identity. These fields in the request body are ignored.
 //
-// - 同步配置可选，若启用需提供cron表达式；未传或禁用时，默认不进行定时同步。
+// - The synchronization configuration is optional. If enabled, a cron expression must be provided. If not provided or disabled, scheduled synchronization is not performed by default.
 //
-// - 知识库名称可以自定义，如果不提供，则会在后台同步后自动填充。
+// - The knowledge base name can be customized. If not provided, it is automatically populated after background synchronization.
 //
-// - 支持多值对象绑定，相关信息将被序列化并存储于知识库元数据中。
+// - Multi-value object binding is supported. Related information is serialized and stored in the knowledge base metadata.
 //
 // @param tmpReq - CreatePersonalAlidingKnowledgeBaseRequest
 //
@@ -1258,27 +2193,27 @@ func (client *Client) CreatePersonalAlidingKnowledgeBaseWithOptions(tmpReq *Crea
 
 // Summary:
 //
-// 将阿里钉整体知识库添加到当前数字员工的个人资源中。
+// Adds an AliDing knowledge base to the personal resources of the current digital employee.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API用于创建一个阿里钉知识库，并将其挂载到指定数字员工的个人资源目录下。
+// - This API creates an AliDing knowledge base and mounts it to the personal resource directory of the specified digital employee.
 //
-// - `platform`固定为`ALI_DING`，`directory_type`固定为`PERSONAL`。
+// - `platform` is fixed to `ALI_DING`, and `directory_type` is fixed to `PERSONAL`.
 //
-// - 如果提供了`directoryId`，则会验证该目录是否存在且属于当前租户和个人类型。
+// - If `directoryId` is provided, the system verifies that the directory exists and belongs to the current tenant and is of the personal type.
 //
-// - 创建过程中会初始化知识库根目录（状态设置为`RUNNING`），并根据提供的同步配置派发后台任务以拉取远程目录树和创建子节点。
+// - During creation, the knowledge base root directory is initialized (with the status set to `RUNNING`), and background tasks are dispatched based on the provided synchronization configuration to pull the remote directory tree and create child nodes.
 //
-// - 安全性方面，`tenant_id`与`user_id`仅从鉴权身份获取，请求体中的这些字段会被忽略。
+// - For security purposes, `tenant_id` and `user_id` are obtained only from the authenticated identity. These fields in the request body are ignored.
 //
-// - 同步配置可选，若启用需提供cron表达式；未传或禁用时，默认不进行定时同步。
+// - The synchronization configuration is optional. If enabled, a cron expression must be provided. If not provided or disabled, scheduled synchronization is not performed by default.
 //
-// - 知识库名称可以自定义，如果不提供，则会在后台同步后自动填充。
+// - The knowledge base name can be customized. If not provided, it is automatically populated after background synchronization.
 //
-// - 支持多值对象绑定，相关信息将被序列化并存储于知识库元数据中。
+// - Multi-value object binding is supported. Related information is serialized and stored in the knowledge base metadata.
 //
 // @param request - CreatePersonalAlidingKnowledgeBaseRequest
 //
@@ -1297,21 +2232,161 @@ func (client *Client) CreatePersonalAlidingKnowledgeBase(request *CreatePersonal
 
 // Summary:
 //
-// 将钉钉会议上传至当前数字员工的个人资源库。
+// Creates a personal DingTalk group chat knowledge source.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该接口用于将钉钉会议作为资源上传到指定数字员工的“我的资源”中。
+// - Connects a specified DingTalk group chat to the personal knowledge base of the current user.
 //
-// - `source_type` 固定为 `DINGTALK_MEETING`，`scope` 固定为 `PERSONAL`。
+// - The resource type is fixed to DINGTALK, the scope is fixed to PERSONAL, and the owning user is parsed from the gateway authentication identity.
 //
-// - 如果不提供 `credentialId`，则使用系统默认配置。
+// - historyStartTime is required and supports YYYY-MM-DD or YYYY-MM-DD HH:MM:SS format.
 //
-// - 当未指定 `directoryId` 时，资源将自动绑定到当前数字员工的默认根目录下；若指定，则必须是调用者在该数字员工下的已有个人目录。
+// - updateFrequency can be configured with a preset or a five-field cron expression for subsequent synchronization frequency.
 //
-// - 可选参数 `description` 和 `notes` 分别用于描述资源和记录会议笔记，其中 `notes` 会参与辅助分析。
+// - The same group chat can be created as different sources. Each source is isolated by sourceId.
+//
+// @param tmpReq - CreatePersonalDingtalkChatRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePersonalDingtalkChatResponse
+func (client *Client) CreatePersonalDingtalkChatWithOptions(tmpReq *CreatePersonalDingtalkChatRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePersonalDingtalkChatResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreatePersonalDingtalkChatShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateFrequency) {
+		request.UpdateFrequencyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateFrequency, dara.String("updateFrequency"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChatId) {
+		body["chatId"] = request.ChatId
+	}
+
+	if !dara.IsNil(request.ChatName) {
+		body["chatName"] = request.ChatName
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.HistoryStartTime) {
+		body["historyStartTime"] = request.HistoryStartTime
+	}
+
+	if !dara.IsNil(request.Notes) {
+		body["notes"] = request.Notes
+	}
+
+	if !dara.IsNil(request.OperatingObjectName) {
+		body["operatingObjectName"] = request.OperatingObjectName
+	}
+
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
+	if !dara.IsNil(request.UpdateFrequencyShrink) {
+		body["updateFrequency"] = request.UpdateFrequencyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePersonalDingtalkChat"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createPersonalDingtalkChat"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePersonalDingtalkChatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a personal DingTalk group chat knowledge source.
+//
+// Description:
+//
+// ## Operation description
+//
+// - Connects a specified DingTalk group chat to the personal knowledge base of the current user.
+//
+// - The resource type is fixed to DINGTALK, the scope is fixed to PERSONAL, and the owning user is parsed from the gateway authentication identity.
+//
+// - historyStartTime is required and supports YYYY-MM-DD or YYYY-MM-DD HH:MM:SS format.
+//
+// - updateFrequency can be configured with a preset or a five-field cron expression for subsequent synchronization frequency.
+//
+// - The same group chat can be created as different sources. Each source is isolated by sourceId.
+//
+// @param request - CreatePersonalDingtalkChatRequest
+//
+// @return CreatePersonalDingtalkChatResponse
+func (client *Client) CreatePersonalDingtalkChat(request *CreatePersonalDingtalkChatRequest) (_result *CreatePersonalDingtalkChatResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePersonalDingtalkChatResponse{}
+	_body, _err := client.CreatePersonalDingtalkChatWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Deprecated: OpenAPI CreatePersonalDingtalkMeeting is deprecated
+//
+// Summary:
+//
+// Uploads a DingTalk meeting to the personal resource library of the current digital employee.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation uploads a DingTalk meeting as a resource to the "My Resources" section of a specified digital employee.
+//
+// - `source_type` is fixed to `DINGTALK_MEETING`, and `scope` is fixed to `PERSONAL`.
+//
+// - If `credentialId` is not provided, the system default configurations are used.
+//
+// - If `directoryId` is not specified, the resource is automatically attached to the default root folder of the current digital employee. If specified, it must be an existing personal folder of the invoker under the digital employee.
+//
+// - The optional parameters `description` and `notes` are used to describe the resource and record meeting notes, respectively. The `notes` value is used for auxiliary analysis.
 //
 // @param request - CreatePersonalDingtalkMeetingRequest
 //
@@ -1386,27 +2461,30 @@ func (client *Client) CreatePersonalDingtalkMeetingWithOptions(request *CreatePe
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreatePersonalDingtalkMeeting is deprecated
+//
 // Summary:
 //
-// 将钉钉会议上传至当前数字员工的个人资源库。
+// Uploads a DingTalk meeting to the personal resource library of the current digital employee.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口用于将钉钉会议作为资源上传到指定数字员工的“我的资源”中。
+// - This operation uploads a DingTalk meeting as a resource to the "My Resources" section of a specified digital employee.
 //
-// - `source_type` 固定为 `DINGTALK_MEETING`，`scope` 固定为 `PERSONAL`。
+// - `source_type` is fixed to `DINGTALK_MEETING`, and `scope` is fixed to `PERSONAL`.
 //
-// - 如果不提供 `credentialId`，则使用系统默认配置。
+// - If `credentialId` is not provided, the system default configurations are used.
 //
-// - 当未指定 `directoryId` 时，资源将自动绑定到当前数字员工的默认根目录下；若指定，则必须是调用者在该数字员工下的已有个人目录。
+// - If `directoryId` is not specified, the resource is automatically attached to the default root folder of the current digital employee. If specified, it must be an existing personal folder of the invoker under the digital employee.
 //
-// - 可选参数 `description` 和 `notes` 分别用于描述资源和记录会议笔记，其中 `notes` 会参与辅助分析。
+// - The optional parameters `description` and `notes` are used to describe the resource and record meeting notes, respectively. The `notes` value is used for auxiliary analysis.
 //
 // @param request - CreatePersonalDingtalkMeetingRequest
 //
 // @return CreatePersonalDingtalkMeetingResponse
+// Deprecated
 func (client *Client) CreatePersonalDingtalkMeeting(request *CreatePersonalDingtalkMeetingRequest) (_result *CreatePersonalDingtalkMeetingResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -1421,19 +2499,143 @@ func (client *Client) CreatePersonalDingtalkMeeting(request *CreatePersonalDingt
 
 // Summary:
 //
-// 在我的资源下创建个人目录（分类）
+// Uploads a meeting to the current user\\"s personal knowledge base by using a standard DingTalk Shanji URL.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该 API 用于在“我的资源”下创建个人目录（分类）。
+// - This API creates a meeting resource by using a standard DingTalk Shanji link. The collection method is fixed to the DWS corresponding to personal OAuth.
 //
-// - 若未传 `parentDirectoryId`，系统将自动使用或创建当前数字员工的默认根目录作为父目录。
+// - `source_type` is fixed to `DINGTALK_MEETING`, and `scope` is fixed to `PERSONAL`.
 //
-// - 若传入 `parentDirectoryId`，则必须是当前用户在当前数字员工下的已有个人目录。
+// - You must provide a standard DingTalk Shanji link or taskUuid (`shanjiUrl`).
 //
-// - `tenant_id` 和 `user_id` 仅来自鉴权身份，调用方在请求体中传入这些字段会被忽略。
+// - Optionally specify a target personal directory ID (`directoryId`). If not specified, the default root directory of the current digital employee is used.
+//
+// - You can add a resource description (`description`) and meeting notes (`notes`).
+//
+// - This operation supports one of the following authentication methods: AK, BearerToken, or APP.
+//
+// @param request - CreatePersonalDingtalkMinutesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePersonalDingtalkMinutesResponse
+func (client *Client) CreatePersonalDingtalkMinutesWithOptions(request *CreatePersonalDingtalkMinutesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePersonalDingtalkMinutesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Notes) {
+		body["notes"] = request.Notes
+	}
+
+	if !dara.IsNil(request.OperatingObjectName) {
+		body["operatingObjectName"] = request.OperatingObjectName
+	}
+
+	if !dara.IsNil(request.ShanjiUrl) {
+		body["shanjiUrl"] = request.ShanjiUrl
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePersonalDingtalkMinutes"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createPersonalDingtalkMinutes"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePersonalDingtalkMinutesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Uploads a meeting to the current user\\"s personal knowledge base by using a standard DingTalk Shanji URL.
+//
+// Description:
+//
+// ## Request description
+//
+// - This API creates a meeting resource by using a standard DingTalk Shanji link. The collection method is fixed to the DWS corresponding to personal OAuth.
+//
+// - `source_type` is fixed to `DINGTALK_MEETING`, and `scope` is fixed to `PERSONAL`.
+//
+// - You must provide a standard DingTalk Shanji link or taskUuid (`shanjiUrl`).
+//
+// - Optionally specify a target personal directory ID (`directoryId`). If not specified, the default root directory of the current digital employee is used.
+//
+// - You can add a resource description (`description`) and meeting notes (`notes`).
+//
+// - This operation supports one of the following authentication methods: AK, BearerToken, or APP.
+//
+// @param request - CreatePersonalDingtalkMinutesRequest
+//
+// @return CreatePersonalDingtalkMinutesResponse
+func (client *Client) CreatePersonalDingtalkMinutes(request *CreatePersonalDingtalkMinutesRequest) (_result *CreatePersonalDingtalkMinutesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePersonalDingtalkMinutesResponse{}
+	_body, _err := client.CreatePersonalDingtalkMinutesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a personal folder (category) under My Resources.
+//
+// Description:
+//
+// ## Request description
+//
+// - This API is used to create a personal folder (category) under "My Resources".
+//
+// - If `parentDirectoryId` is not specified, the system automatically uses or creates the default root folder of the current digital human as the parent folder.
+//
+// - If `parentDirectoryId` is specified, it must be an existing personal folder of the current user under the current digital human.
+//
+// - `tenant_id` and `user_id` are derived from the authentication identity only. These fields are ignored if included in the request body.
 //
 // @param request - CreatePersonalDirectoryRequest
 //
@@ -1498,19 +2700,19 @@ func (client *Client) CreatePersonalDirectoryWithOptions(request *CreatePersonal
 
 // Summary:
 //
-// 在我的资源下创建个人目录（分类）
+// Creates a personal folder (category) under My Resources.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该 API 用于在“我的资源”下创建个人目录（分类）。
+// - This API is used to create a personal folder (category) under "My Resources".
 //
-// - 若未传 `parentDirectoryId`，系统将自动使用或创建当前数字员工的默认根目录作为父目录。
+// - If `parentDirectoryId` is not specified, the system automatically uses or creates the default root folder of the current digital human as the parent folder.
 //
-// - 若传入 `parentDirectoryId`，则必须是当前用户在当前数字员工下的已有个人目录。
+// - If `parentDirectoryId` is specified, it must be an existing personal folder of the current user under the current digital human.
 //
-// - `tenant_id` 和 `user_id` 仅来自鉴权身份，调用方在请求体中传入这些字段会被忽略。
+// - `tenant_id` and `user_id` are derived from the authentication identity only. These fields are ignored if included in the request body.
 //
 // @param request - CreatePersonalDirectoryRequest
 //
@@ -1529,31 +2731,295 @@ func (client *Client) CreatePersonalDirectory(request *CreatePersonalDirectoryRe
 
 // Summary:
 //
-// 将飞书妙记会议文件上传至当前数字员工的个人资源库。
+// Creates a personal knowledge resource from a single Lark group chat using the current user\\"s Lark authorization.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 该 API 用于将飞书妙记中的会议记录上传至指定数字员工的"我的资源"中。通过提供必要的参数，如飞书妙记的唯一标识符（`minuteToken`）和凭证 ID（`credentialId`），可以实现会议内容的迁移与保存。若未指定目标目录，则默认绑定到当前数字员工下的根目录。
+// This API uses the Lark application connection managed by the user corresponding to the current OpenAPI identity. It pulls the name and historical messages of the specified group chat through the built-in CLI of the project and creates a knowledge resource in the user\\"s personal knowledge base.
 //
-// - `operatingObjectName`：执行操作的数字员工名称。
+// - `chatId`: The Lark group chat ID. Must start with `oc_`.
 //
-// - `name`：上传后资源在系统内的显示名称。
+// - `directoryId` (optional): The target personal directory ID. If omitted, the current user\\"s default personal root directory is used.
 //
-// - `minuteToken`：来自飞书妙记平台的会议唯一标识符。
+// - `historyStartTime` (optional): The start time for historical messages. Supports `YYYY-MM-DD` or `YYYY-MM-DD HH:MM:SS`.
 //
-// - `credentialId`：关联到特定认证信息的ID，用于验证请求合法性。
+// - `updateFrequency` (optional): The Source-level scheduled synchronization configuration. Supports preset frequencies or five-field cron expressions.
 //
-// - `directoryId`（可选）：指定要存放资源的目标个人目录ID；如果省略此字段，则资源将被自动放置于默认位置。
+// - `description`, `operatingObjectName`, `notes`, `sourceTags`: Optional Source metadata.
 //
-// - `description`（可选）：对所上传资源的简短描述或备注。
+// Security constraints: The Source Type is fixed to FEISHU, and the knowledge scope is fixed to PERSONAL. The Lark connector user is determined by the POP trusted identity. Credentials or user IDs passed by the caller are not accepted.
 //
-// 注意事项：
+// @param tmpReq - CreatePersonalFeishuChatRequest
 //
-// - 确保提供的 `minuteToken` 和 `credentialId` 的有效性。
+// @param headers - map
 //
-// - 当指定了 `directoryId` 时，请确认其属于调用者在当前数字员工环境下的可用个人目录之一。
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePersonalFeishuChatResponse
+func (client *Client) CreatePersonalFeishuChatWithOptions(tmpReq *CreatePersonalFeishuChatRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePersonalFeishuChatResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreatePersonalFeishuChatShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateFrequency) {
+		request.UpdateFrequencyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateFrequency, dara.String("updateFrequency"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ChatId) {
+		body["chatId"] = request.ChatId
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.HistoryStartTime) {
+		body["historyStartTime"] = request.HistoryStartTime
+	}
+
+	if !dara.IsNil(request.Notes) {
+		body["notes"] = request.Notes
+	}
+
+	if !dara.IsNil(request.OperatingObjectName) {
+		body["operatingObjectName"] = request.OperatingObjectName
+	}
+
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
+	if !dara.IsNil(request.UpdateFrequencyShrink) {
+		body["updateFrequency"] = request.UpdateFrequencyShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePersonalFeishuChat"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createPersonalFeishuChat"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePersonalFeishuChatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a personal knowledge resource from a single Lark group chat using the current user\\"s Lark authorization.
+//
+// Description:
+//
+// ## Request description
+//
+// This API uses the Lark application connection managed by the user corresponding to the current OpenAPI identity. It pulls the name and historical messages of the specified group chat through the built-in CLI of the project and creates a knowledge resource in the user\\"s personal knowledge base.
+//
+// - `chatId`: The Lark group chat ID. Must start with `oc_`.
+//
+// - `directoryId` (optional): The target personal directory ID. If omitted, the current user\\"s default personal root directory is used.
+//
+// - `historyStartTime` (optional): The start time for historical messages. Supports `YYYY-MM-DD` or `YYYY-MM-DD HH:MM:SS`.
+//
+// - `updateFrequency` (optional): The Source-level scheduled synchronization configuration. Supports preset frequencies or five-field cron expressions.
+//
+// - `description`, `operatingObjectName`, `notes`, `sourceTags`: Optional Source metadata.
+//
+// Security constraints: The Source Type is fixed to FEISHU, and the knowledge scope is fixed to PERSONAL. The Lark connector user is determined by the POP trusted identity. Credentials or user IDs passed by the caller are not accepted.
+//
+// @param request - CreatePersonalFeishuChatRequest
+//
+// @return CreatePersonalFeishuChatResponse
+func (client *Client) CreatePersonalFeishuChat(request *CreatePersonalFeishuChatRequest) (_result *CreatePersonalFeishuChatResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePersonalFeishuChatResponse{}
+	_body, _err := client.CreatePersonalFeishuChatWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a personal knowledge resource from a single Lark online document using the current user\\"s Lark authorization.
+//
+// Description:
+//
+// ## Request description\\n\\nFixed as `ONLINE_DOC + FEISHU + PERSONAL`. The Lark connector user is determined by the trusted OpenAPI identity. If `directoryId` is omitted, the current user\\"s default personal root directory is used.
+//
+// @param tmpReq - CreatePersonalFeishuDocRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePersonalFeishuDocResponse
+func (client *Client) CreatePersonalFeishuDocWithOptions(tmpReq *CreatePersonalFeishuDocRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePersonalFeishuDocResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreatePersonalFeishuDocShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ObjectBindings) {
+		request.ObjectBindingsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ObjectBindings, dara.String("objectBindings"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SyncConfig) {
+		request.SyncConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SyncConfig, dara.String("syncConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.DocUrl) {
+		body["docUrl"] = request.DocUrl
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.Notes) {
+		body["notes"] = request.Notes
+	}
+
+	if !dara.IsNil(request.ObjectBindingsShrink) {
+		body["objectBindings"] = request.ObjectBindingsShrink
+	}
+
+	if !dara.IsNil(request.OperatingObjectName) {
+		body["operatingObjectName"] = request.OperatingObjectName
+	}
+
+	if !dara.IsNil(request.SourceTags) {
+		body["sourceTags"] = request.SourceTags
+	}
+
+	if !dara.IsNil(request.SyncConfigShrink) {
+		body["syncConfig"] = request.SyncConfigShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePersonalFeishuDoc"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createPersonalFeishuDoc"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePersonalFeishuDocResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a personal knowledge resource from a single Lark online document using the current user\\"s Lark authorization.
+//
+// Description:
+//
+// ## Request description\\n\\nFixed as `ONLINE_DOC + FEISHU + PERSONAL`. The Lark connector user is determined by the trusted OpenAPI identity. If `directoryId` is omitted, the current user\\"s default personal root directory is used.
+//
+// @param request - CreatePersonalFeishuDocRequest
+//
+// @return CreatePersonalFeishuDocResponse
+func (client *Client) CreatePersonalFeishuDoc(request *CreatePersonalFeishuDocRequest) (_result *CreatePersonalFeishuDocResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePersonalFeishuDocResponse{}
+	_body, _err := client.CreatePersonalFeishuDocWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Uploads a Lark Minutes meeting file to the personal resource library of the current digital employee.
+//
+// Description:
+//
+// ## Request description
+//
+// This API uploads a meeting record from Lark Minutes to the "My Resources" section of a specified digital employee. By providing the required parameters, such as the unique identifier of the Lark Minutes record (`minuteToken`) and the credential ID (`credentialId`), you can migrate and save meeting content. If no target directory is specified, the resource is bound to the root directory of the current digital employee by default.
+//
+// - `operatingObjectName`: The name of the digital employee that performs the operation.
+//
+// - `name`: The display name of the uploaded resource in the system.
+//
+// - `minuteToken`: The unique identifier of the meeting from the Lark Minutes platform.
+//
+// - `credentialId`: The ID associated with specific authentication information, used to verify the validity of the request.
+//
+// - `directoryId` (optional): The ID of the target personal directory where the resource is stored. If this field is omitted, the resource is automatically placed in the default location.
+//
+// - `description` (optional): A brief description or note about the uploaded resource.
+//
+// Precautions:
+//
+// - Ensure that the provided `minuteToken` and `credentialId` are valid.
+//
+// - If `directoryId` is specified, confirm that it belongs to one of the available personal directories of the caller in the current digital employee environment.
 //
 // @param request - CreatePersonalFeishuMinuteRequest
 //
@@ -1626,31 +3092,31 @@ func (client *Client) CreatePersonalFeishuMinuteWithOptions(request *CreatePerso
 
 // Summary:
 //
-// 将飞书妙记会议文件上传至当前数字员工的个人资源库。
+// Uploads a Lark Minutes meeting file to the personal resource library of the current digital employee.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 该 API 用于将飞书妙记中的会议记录上传至指定数字员工的"我的资源"中。通过提供必要的参数，如飞书妙记的唯一标识符（`minuteToken`）和凭证 ID（`credentialId`），可以实现会议内容的迁移与保存。若未指定目标目录，则默认绑定到当前数字员工下的根目录。
+// This API uploads a meeting record from Lark Minutes to the "My Resources" section of a specified digital employee. By providing the required parameters, such as the unique identifier of the Lark Minutes record (`minuteToken`) and the credential ID (`credentialId`), you can migrate and save meeting content. If no target directory is specified, the resource is bound to the root directory of the current digital employee by default.
 //
-// - `operatingObjectName`：执行操作的数字员工名称。
+// - `operatingObjectName`: The name of the digital employee that performs the operation.
 //
-// - `name`：上传后资源在系统内的显示名称。
+// - `name`: The display name of the uploaded resource in the system.
 //
-// - `minuteToken`：来自飞书妙记平台的会议唯一标识符。
+// - `minuteToken`: The unique identifier of the meeting from the Lark Minutes platform.
 //
-// - `credentialId`：关联到特定认证信息的ID，用于验证请求合法性。
+// - `credentialId`: The ID associated with specific authentication information, used to verify the validity of the request.
 //
-// - `directoryId`（可选）：指定要存放资源的目标个人目录ID；如果省略此字段，则资源将被自动放置于默认位置。
+// - `directoryId` (optional): The ID of the target personal directory where the resource is stored. If this field is omitted, the resource is automatically placed in the default location.
 //
-// - `description`（可选）：对所上传资源的简短描述或备注。
+// - `description` (optional): A brief description or note about the uploaded resource.
 //
-// 注意事项：
+// Precautions:
 //
-// - 确保提供的 `minuteToken` 和 `credentialId` 的有效性。
+// - Ensure that the provided `minuteToken` and `credentialId` are valid.
 //
-// - 当指定了 `directoryId` 时，请确认其属于调用者在当前数字员工环境下的可用个人目录之一。
+// - If `directoryId` is specified, confirm that it belongs to one of the available personal directories of the caller in the current digital employee environment.
 //
 // @param request - CreatePersonalFeishuMinuteRequest
 //
@@ -1669,23 +3135,25 @@ func (client *Client) CreatePersonalFeishuMinute(request *CreatePersonalFeishuMi
 
 // Summary:
 //
-// 将文件上传至当前数字员工的个人资源库。
+// Uploads a file to the personal resource library of the current digital employee.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API用于将文件上传到指定数字员工的"我的资源"中。
+// - This API is used to upload a file to the "My Resources" section of a specified digital employee.
 //
-// - `source_type` 固定为 `FILE`，`scope` 固定为 `PERSONAL`，`platform` 固定为 `LOCAL`。
+// - `source_type` is fixed to `FILE`, `scope` is fixed to `PERSONAL`, and `platform` is fixed to `LOCAL`.
 //
-// - 文件必须提供OSS持久化地址 (`filePath`)，其他如公开访问URL、原始文件名等信息可选提供。
+// - The file must include an OSS persistent address (`filePath`). Other information such as the public access URL and original file name is optional.
 //
-// - 如果不指定目标目录ID (`directoryId`)，则文件会被自动绑定到当前数字员工默认根目录下；如果指定，则需确保该目录属于调用者的个人目录。
+// - If the target folder ID (`directoryId`) is not specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the personal folder of the caller.
 //
-// - 支持通过多种认证方式（AK、BearerToken、APP）进行安全验证。
+// - Security authentication is supported through multiple authentication methods (AK, BearerToken, and APP) to authenticate requests.
 //
-// - 操作类型为写入(`write`)，并记录操作日志以供后续审计使用。
+// - The operation type is write (`write`), and operation logs are recorded for subsequent auditing.
+//
+// To invoke this operation, you can use AK, BearerToken, or APP authentication.
 //
 // @param request - CreatePersonalFileRequest
 //
@@ -1770,23 +3238,25 @@ func (client *Client) CreatePersonalFileWithOptions(request *CreatePersonalFileR
 
 // Summary:
 //
-// 将文件上传至当前数字员工的个人资源库。
+// Uploads a file to the personal resource library of the current digital employee.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API用于将文件上传到指定数字员工的"我的资源"中。
+// - This API is used to upload a file to the "My Resources" section of a specified digital employee.
 //
-// - `source_type` 固定为 `FILE`，`scope` 固定为 `PERSONAL`，`platform` 固定为 `LOCAL`。
+// - `source_type` is fixed to `FILE`, `scope` is fixed to `PERSONAL`, and `platform` is fixed to `LOCAL`.
 //
-// - 文件必须提供OSS持久化地址 (`filePath`)，其他如公开访问URL、原始文件名等信息可选提供。
+// - The file must include an OSS persistent address (`filePath`). Other information such as the public access URL and original file name is optional.
 //
-// - 如果不指定目标目录ID (`directoryId`)，则文件会被自动绑定到当前数字员工默认根目录下；如果指定，则需确保该目录属于调用者的个人目录。
+// - If the target folder ID (`directoryId`) is not specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the personal folder of the caller.
 //
-// - 支持通过多种认证方式（AK、BearerToken、APP）进行安全验证。
+// - Security authentication is supported through multiple authentication methods (AK, BearerToken, and APP) to authenticate requests.
 //
-// - 操作类型为写入(`write`)，并记录操作日志以供后续审计使用。
+// - The operation type is write (`write`), and operation logs are recorded for subsequent auditing.
+//
+// To invoke this operation, you can use AK, BearerToken, or APP authentication.
 //
 // @param request - CreatePersonalFileRequest
 //
@@ -1805,25 +3275,25 @@ func (client *Client) CreatePersonalFile(request *CreatePersonalFileRequest) (_r
 
 // Summary:
 //
-// 将纯文本内容上传至当前数字员工的个人资源库。
+// Uploads plain text content to the personal resource library of the current digital employee.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该API用于向指定数字员工的个人资源中添加纯文本内容。
+// - This API is used to add plain text content to the personal resources of a specified digital employee.
 //
-// - `source_type` 固定为 `TEXT`，`scope` 固定为 `PERSONAL`。
+// - `source_type` is fixed to `TEXT`, and `scope` is fixed to `PERSONAL`.
 //
-// - 如果不提供`directoryId`，则默认绑定到当前数字员工的根目录；若提供，则必须是调用者在该数字员工下的已有个人目录。
+// - If `directoryId` is not provided, the content is bound to the root directory of the current digital employee by default. If provided, it must be an existing personal directory of the caller under the digital employee.
 //
-// - `tenant_id` 和 `user_id` 只能来自鉴权身份信息，通过请求体传递这些参数将被忽略。
+// - `tenant_id` and `user_id` can only be obtained from the authentication identity information. These parameters are ignored if passed in the request body.
 //
-// - 调用过程中会启动计量并生成相应的`billing_id`。
+// - The call initiates metering and generates a corresponding `billing_id`.
 //
-// - 文本内容将被写入`unstructured_docs`，并生成初始资源记录。
+// - The text content is written to `unstructured_docs`, and an initial resource record is generated.
 //
-// - 任何校验或执行失败都将抛出`RobjectException`异常，并由全局中间件转换为POP错误码返回给调用方。
+// - Any validation or execution failure throws a `RobjectException`, which is converted to a POP error code by the global middleware and returned to the caller.
 //
 // @param request - CreatePersonalTextRequest
 //
@@ -1892,25 +3362,25 @@ func (client *Client) CreatePersonalTextWithOptions(request *CreatePersonalTextR
 
 // Summary:
 //
-// 将纯文本内容上传至当前数字员工的个人资源库。
+// Uploads plain text content to the personal resource library of the current digital employee.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该API用于向指定数字员工的个人资源中添加纯文本内容。
+// - This API is used to add plain text content to the personal resources of a specified digital employee.
 //
-// - `source_type` 固定为 `TEXT`，`scope` 固定为 `PERSONAL`。
+// - `source_type` is fixed to `TEXT`, and `scope` is fixed to `PERSONAL`.
 //
-// - 如果不提供`directoryId`，则默认绑定到当前数字员工的根目录；若提供，则必须是调用者在该数字员工下的已有个人目录。
+// - If `directoryId` is not provided, the content is bound to the root directory of the current digital employee by default. If provided, it must be an existing personal directory of the caller under the digital employee.
 //
-// - `tenant_id` 和 `user_id` 只能来自鉴权身份信息，通过请求体传递这些参数将被忽略。
+// - `tenant_id` and `user_id` can only be obtained from the authentication identity information. These parameters are ignored if passed in the request body.
 //
-// - 调用过程中会启动计量并生成相应的`billing_id`。
+// - The call initiates metering and generates a corresponding `billing_id`.
 //
-// - 文本内容将被写入`unstructured_docs`，并生成初始资源记录。
+// - The text content is written to `unstructured_docs`, and an initial resource record is generated.
 //
-// - 任何校验或执行失败都将抛出`RobjectException`异常，并由全局中间件转换为POP错误码返回给调用方。
+// - Any validation or execution failure throws a `RobjectException`, which is converted to a POP error code by the global middleware and returned to the caller.
 //
 // @param request - CreatePersonalTextRequest
 //
@@ -1929,23 +3399,23 @@ func (client *Client) CreatePersonalText(request *CreatePersonalTextRequest) (_r
 
 // Summary:
 //
-// 将离线会议音频文件上传至当前数字员工的个人资源中。
+// Uploads an offline meeting audio file to the personal resources of the current digital employee.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该API用于将离线会议的音频文件上传到指定数字员工的“我的资源”中。
+// - This API operation uploads an offline meeting audio file to the "My Resources" section of a specified digital employee.
 //
-// - `source_type`固定为`VOICE_MEETING`，`scope`固定为`PERSONAL`，且`voice_meeting_type`固定为`OFFLINE`。
+// - `source_type` is fixed to `VOICE_MEETING`, `scope` is fixed to `PERSONAL`, and `voice_meeting_type` is fixed to `OFFLINE`.
 //
-// - 如果请求体中未提供`directoryId`，则资源将自动绑定到默认根目录；若提供了`directoryId`，则必须是当前用户在当前数字员工下的已有个人目录。
+// - If `directoryId` is not provided in the request body, the resource is automatically bound to the default root directory. If `directoryId` is provided, it must be an existing personal directory of the current user under the current digital employee.
 //
-// - 调用此接口会启动一个后台流程来处理音频文件转写，并返回新建资源的相关信息。
+// - Calling this operation starts a background process to transcribe the audio file and returns information about the newly created resource.
 //
-// - 安全性方面，`tenant_id`和`user_id`仅从鉴权身份获取，即使请求体中包含这些字段也会被忽略。
+// - For security purposes, `tenant_id` and `user_id` are obtained only from the authenticated identity. These fields are ignored even if they are included in the request body.
 //
-// - 任何校验或执行失败都会抛出`RobjectException`，并通过全局中间件转换为POP错误码。
+// - Any validation or execution failure throws a `RobjectException`, which is converted to a POP error code through the global middleware.
 //
 // @param request - CreatePersonalVoiceMeetingRequest
 //
@@ -2023,23 +3493,23 @@ func (client *Client) CreatePersonalVoiceMeetingWithOptions(request *CreatePerso
 
 // Summary:
 //
-// 将离线会议音频文件上传至当前数字员工的个人资源中。
+// Uploads an offline meeting audio file to the personal resources of the current digital employee.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该API用于将离线会议的音频文件上传到指定数字员工的“我的资源”中。
+// - This API operation uploads an offline meeting audio file to the "My Resources" section of a specified digital employee.
 //
-// - `source_type`固定为`VOICE_MEETING`，`scope`固定为`PERSONAL`，且`voice_meeting_type`固定为`OFFLINE`。
+// - `source_type` is fixed to `VOICE_MEETING`, `scope` is fixed to `PERSONAL`, and `voice_meeting_type` is fixed to `OFFLINE`.
 //
-// - 如果请求体中未提供`directoryId`，则资源将自动绑定到默认根目录；若提供了`directoryId`，则必须是当前用户在当前数字员工下的已有个人目录。
+// - If `directoryId` is not provided in the request body, the resource is automatically bound to the default root directory. If `directoryId` is provided, it must be an existing personal directory of the current user under the current digital employee.
 //
-// - 调用此接口会启动一个后台流程来处理音频文件转写，并返回新建资源的相关信息。
+// - Calling this operation starts a background process to transcribe the audio file and returns information about the newly created resource.
 //
-// - 安全性方面，`tenant_id`和`user_id`仅从鉴权身份获取，即使请求体中包含这些字段也会被忽略。
+// - For security purposes, `tenant_id` and `user_id` are obtained only from the authenticated identity. These fields are ignored even if they are included in the request body.
 //
-// - 任何校验或执行失败都会抛出`RobjectException`，并通过全局中间件转换为POP错误码。
+// - Any validation or execution failure throws a `RobjectException`, which is converted to a POP error code through the global middleware.
 //
 // @param request - CreatePersonalVoiceMeetingRequest
 //
@@ -2058,7 +3528,25 @@ func (client *Client) CreatePersonalVoiceMeeting(request *CreatePersonalVoiceMee
 
 // Summary:
 //
-// 创建定时任务
+// Creates a scheduled task.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation is used to upload files to an enterprise knowledge base.
+//
+// - You must have the `DEVELOPMENT_KB_MANAGE` permission to call this API operation.
+//
+// - You must provide the OSS persistent address (`filePath`) of the file when uploading.
+//
+// - Optional parameters include the public access URL of the file and the original file name to enhance the completeness of file information.
+//
+// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee by default.
+//
+// - You can add tags to resources by using `sourceTags` for subsequent management and retrieval.
+//
+// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Make sure that your account balance is sufficient.
 //
 // @param tmpReq - CreateScheduledTaskRequest
 //
@@ -2094,6 +3582,10 @@ func (client *Client) CreateScheduledTaskWithOptions(tmpReq *CreateScheduledTask
 
 	if !dara.IsNil(tmpReq.TriggerConfig) {
 		request.TriggerConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TriggerConfig, dara.String("triggerConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.VisibleMemberUserIds) {
+		request.VisibleMemberUserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VisibleMemberUserIds, dara.String("visibleMemberUserIds"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -2138,6 +3630,14 @@ func (client *Client) CreateScheduledTaskWithOptions(tmpReq *CreateScheduledTask
 		body["triggerConfig"] = request.TriggerConfigShrink
 	}
 
+	if !dara.IsNil(request.Visibility) {
+		body["visibility"] = request.Visibility
+	}
+
+	if !dara.IsNil(request.VisibleMemberUserIdsShrink) {
+		body["visibleMemberUserIds"] = request.VisibleMemberUserIdsShrink
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -2165,7 +3665,25 @@ func (client *Client) CreateScheduledTaskWithOptions(tmpReq *CreateScheduledTask
 
 // Summary:
 //
-// 创建定时任务
+// Creates a scheduled task.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation is used to upload files to an enterprise knowledge base.
+//
+// - You must have the `DEVELOPMENT_KB_MANAGE` permission to call this API operation.
+//
+// - You must provide the OSS persistent address (`filePath`) of the file when uploading.
+//
+// - Optional parameters include the public access URL of the file and the original file name to enhance the completeness of file information.
+//
+// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee by default.
+//
+// - You can add tags to resources by using `sourceTags` for subsequent management and retrieval.
+//
+// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Make sure that your account balance is sufficient.
 //
 // @param request - CreateScheduledTaskRequest
 //
@@ -2184,21 +3702,21 @@ func (client *Client) CreateScheduledTask(request *CreateScheduledTaskRequest) (
 
 // Summary:
 //
-// 使用租户和用户信息创建企业知识库目录。
+// Adds a knowledge base and knowledge base categories.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该 API 用于在指定租户下创建新的企业知识库目录。
+// - This API is used to create a new enterprise knowledge base directory under a specified tenant.
 //
-// - 可以通过设置 `parentId` 参数来指定新目录的父目录，如果不传则默认创建为根目录。
+// - You can specify the parent directory of the new directory by setting the `parentId` parameter. If this parameter is not specified, the directory is created as a root directory by default.
 //
-// - `path` 参数可选，不提供时系统会根据父目录自动计算路径。
+// - The `path` parameter is optional. If this parameter is not specified, the system automatically calculates the path based on the parent directory.
 //
-// - 调用此接口需要具备相应的权限，并且支持多种认证方式包括 AK、BearerToken 和 APP 认证。
+// - Calling this operation requires the corresponding permissions. Multiple authentication methods are supported, including AK, BearerToken, and APP authentication.
 //
-// - 创建成功后返回新目录的相关信息，如目录 ID、名称等。
+// - After the directory is created, the related information of the new directory is returned, such as the directory ID and name.
 //
 // @param request - CreateTenantDirectoryRequest
 //
@@ -2263,21 +3781,21 @@ func (client *Client) CreateTenantDirectoryWithOptions(request *CreateTenantDire
 
 // Summary:
 //
-// 使用租户和用户信息创建企业知识库目录。
+// Adds a knowledge base and knowledge base categories.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该 API 用于在指定租户下创建新的企业知识库目录。
+// - This API is used to create a new enterprise knowledge base directory under a specified tenant.
 //
-// - 可以通过设置 `parentId` 参数来指定新目录的父目录，如果不传则默认创建为根目录。
+// - You can specify the parent directory of the new directory by setting the `parentId` parameter. If this parameter is not specified, the directory is created as a root directory by default.
 //
-// - `path` 参数可选，不提供时系统会根据父目录自动计算路径。
+// - The `path` parameter is optional. If this parameter is not specified, the system automatically calculates the path based on the parent directory.
 //
-// - 调用此接口需要具备相应的权限，并且支持多种认证方式包括 AK、BearerToken 和 APP 认证。
+// - Calling this operation requires the corresponding permissions. Multiple authentication methods are supported, including AK, BearerToken, and APP authentication.
 //
-// - 创建成功后返回新目录的相关信息，如目录 ID、名称等。
+// - After the directory is created, the related information of the new directory is returned, such as the directory ID and name.
 //
 // @param request - CreateTenantDirectoryRequest
 //
@@ -2296,29 +3814,29 @@ func (client *Client) CreateTenantDirectory(request *CreateTenantDirectoryReques
 
 // Summary:
 //
-// 创建用户并加入租户
+// Creates a user and adds the user to a tenant.
 //
 // Description:
 //
-// OpenAPI 创建用户。
+// Creates a user by using OpenAPI.
 //
-//	业务编排：
+//	Business orchestration:
 //
-//	1. 解析 roleCodes → role_ids（系统角色枚举校验）
+//	1. Parses roleCodes → role_ids (validates against system role enumerations).
 //
-//	2. 判断用户是否已存在（用于返回 isNewUser 标记）
+//	2. Checks whether the user already exists (used to return the isNewUser flag).
 //
-//	3. 调用 UserManagementService.add_tenant_member 完成创建/加入（密码由调用方强制传入 RSA 密文）
+//	3. Calls UserManagementService.add_tenant_member to create or add the user (the password must be passed in as an RSA ciphertext by the caller).
 //
-//	4. 返回创建结果（含 isNewUser 标记）
+//	4. Returns the creation result (including the isNewUser flag).
 //
-//	错误码：
+//	Error codes:
 //
-//	- ERR.User.DeactivatedInTenant: 用户在租户中已停用，请使用 updateUser 恢复
+//	- ERR.User.DeactivatedInTenant: The user is deactivated in the tenant. Use updateUser to resume the user.
 //
-//	- ERR.User.AlreadyInTenant: 用户已是租户活跃成员
+//	- ERR.User.AlreadyInTenant: The user is already an active member of the tenant.
 //
-//	- ERR.User.DisplayNameDuplicateInTenant: 租户内显示名重复
+//	- ERR.User.DisplayNameDuplicateInTenant: The display name is duplicate within the tenant.
 //
 // @param tmpReq - CreateUserRequest
 //
@@ -2389,29 +3907,29 @@ func (client *Client) CreateUserWithOptions(tmpReq *CreateUserRequest, headers m
 
 // Summary:
 //
-// 创建用户并加入租户
+// Creates a user and adds the user to a tenant.
 //
 // Description:
 //
-// OpenAPI 创建用户。
+// Creates a user by using OpenAPI.
 //
-//	业务编排：
+//	Business orchestration:
 //
-//	1. 解析 roleCodes → role_ids（系统角色枚举校验）
+//	1. Parses roleCodes → role_ids (validates against system role enumerations).
 //
-//	2. 判断用户是否已存在（用于返回 isNewUser 标记）
+//	2. Checks whether the user already exists (used to return the isNewUser flag).
 //
-//	3. 调用 UserManagementService.add_tenant_member 完成创建/加入（密码由调用方强制传入 RSA 密文）
+//	3. Calls UserManagementService.add_tenant_member to create or add the user (the password must be passed in as an RSA ciphertext by the caller).
 //
-//	4. 返回创建结果（含 isNewUser 标记）
+//	4. Returns the creation result (including the isNewUser flag).
 //
-//	错误码：
+//	Error codes:
 //
-//	- ERR.User.DeactivatedInTenant: 用户在租户中已停用，请使用 updateUser 恢复
+//	- ERR.User.DeactivatedInTenant: The user is deactivated in the tenant. Use updateUser to resume the user.
 //
-//	- ERR.User.AlreadyInTenant: 用户已是租户活跃成员
+//	- ERR.User.AlreadyInTenant: The user is already an active member of the tenant.
 //
-//	- ERR.User.DisplayNameDuplicateInTenant: 租户内显示名重复
+//	- ERR.User.DisplayNameDuplicateInTenant: The display name is duplicate within the tenant.
 //
 // @param request - CreateUserRequest
 //
@@ -2430,7 +3948,253 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 
 // Summary:
 //
-// 删除会话
+// Creates a user group under the tenant to which the authenticated identity belongs.
+//
+// Description:
+//
+// WinNexo user management OpenAPI: Creates a user group. The tenant identity is derived from the authentication context.
+//
+// @param request - CreateUserGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUserGroupResponse
+func (client *Client) CreateUserGroupWithOptions(request *CreateUserGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateUserGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ParentId) {
+		body["parentId"] = request.ParentId
+	}
+
+	if !dara.IsNil(request.UserGroupName) {
+		body["userGroupName"] = request.UserGroupName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateUserGroup"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createUserGroup"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateUserGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a user group under the tenant to which the authenticated identity belongs.
+//
+// Description:
+//
+// WinNexo user management OpenAPI: Creates a user group. The tenant identity is derived from the authentication context.
+//
+// @param request - CreateUserGroupRequest
+//
+// @return CreateUserGroupResponse
+func (client *Client) CreateUserGroup(request *CreateUserGroupRequest) (_result *CreateUserGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateUserGroupResponse{}
+	_body, _err := client.CreateUserGroupWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a WINNEXO user in the current tenant and assigns roles and user groups to the user.
+//
+// Description:
+//
+// Creates a user and sets initial roles and user groups via OpenAPI.
+//
+//	Business orchestration:
+//
+//	1. Parses roleCodes → role_ids (system role enumeration validation)
+//
+//	2. Checks whether the user already exists (used to return the isNewUser flag)
+//
+//	3. Validates the tenant ownership of userGroupIds and completes creation/joining (the password must be passed in by the caller as RSA ciphertext)
+//
+//	4. Returns the creation result (including the isNewUser flag)
+//
+//	Error codes:
+//
+//	- ERR.User.DeactivatedInTenant: The user is deactivated in the tenant. Use updateUser to resume.
+//
+//	- ERR.User.AlreadyInTenant: The user is already an active member of the tenant.
+//
+//	- ERR.User.DisplayNameDuplicateInTenant: The display name is duplicate within the tenant.
+//
+// @param tmpReq - CreateUserWithGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUserWithGroupsResponse
+func (client *Client) CreateUserWithGroupsWithOptions(tmpReq *CreateUserWithGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateUserWithGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateUserWithGroupsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RoleCodes) {
+		request.RoleCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RoleCodes, dara.String("roleCodes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.UserGroupIds) {
+		request.UserGroupIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserGroupIds, dara.String("userGroupIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DisplayName) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !dara.IsNil(request.PasswordEncrypted) {
+		body["passwordEncrypted"] = request.PasswordEncrypted
+	}
+
+	if !dara.IsNil(request.RoleCodesShrink) {
+		body["roleCodes"] = request.RoleCodesShrink
+	}
+
+	if !dara.IsNil(request.UserGroupIdsShrink) {
+		body["userGroupIds"] = request.UserGroupIdsShrink
+	}
+
+	if !dara.IsNil(request.WnAccountId) {
+		body["wnAccountId"] = request.WnAccountId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateUserWithGroups"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/createUserWithGroups"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateUserWithGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a WINNEXO user in the current tenant and assigns roles and user groups to the user.
+//
+// Description:
+//
+// Creates a user and sets initial roles and user groups via OpenAPI.
+//
+//	Business orchestration:
+//
+//	1. Parses roleCodes → role_ids (system role enumeration validation)
+//
+//	2. Checks whether the user already exists (used to return the isNewUser flag)
+//
+//	3. Validates the tenant ownership of userGroupIds and completes creation/joining (the password must be passed in by the caller as RSA ciphertext)
+//
+//	4. Returns the creation result (including the isNewUser flag)
+//
+//	Error codes:
+//
+//	- ERR.User.DeactivatedInTenant: The user is deactivated in the tenant. Use updateUser to resume.
+//
+//	- ERR.User.AlreadyInTenant: The user is already an active member of the tenant.
+//
+//	- ERR.User.DisplayNameDuplicateInTenant: The display name is duplicate within the tenant.
+//
+// @param request - CreateUserWithGroupsRequest
+//
+// @return CreateUserWithGroupsResponse
+func (client *Client) CreateUserWithGroups(request *CreateUserWithGroupsRequest) (_result *CreateUserWithGroupsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateUserWithGroupsResponse{}
+	_body, _err := client.CreateUserWithGroupsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a session.
+//
+// Description:
+//
+// ## Request description
+//
+// - This API is used to upload a file to the "My Resources" section of a specified digital employee.
+//
+// - `source_type` is fixed to `FILE`, `scope` is fixed to `PERSONAL`, and `platform` is fixed to `LOCAL`.
+//
+// - The file must include an OSS persistent address (`filePath`). Other information such as the public access URL and original file name is optional.
+//
+// - If the target directory ID (`directoryId`) is not specified, the file is automatically attached to the default root directory of the current digital employee. If specified, ensure that the directory belongs to the personal directory of the caller.
+//
+// - Security authentication is supported through multiple methods (AK, BearerToken, APP).
+//
+// - The operation type is write (`write`), and operation logs are recorded for subsequent auditing.
 //
 // @param request - DeleteChatSessionRequest
 //
@@ -2481,7 +4245,23 @@ func (client *Client) DeleteChatSessionWithOptions(request *DeleteChatSessionReq
 
 // Summary:
 //
-// 删除会话
+// Deletes a session.
+//
+// Description:
+//
+// ## Request description
+//
+// - This API is used to upload a file to the "My Resources" section of a specified digital employee.
+//
+// - `source_type` is fixed to `FILE`, `scope` is fixed to `PERSONAL`, and `platform` is fixed to `LOCAL`.
+//
+// - The file must include an OSS persistent address (`filePath`). Other information such as the public access URL and original file name is optional.
+//
+// - If the target directory ID (`directoryId`) is not specified, the file is automatically attached to the default root directory of the current digital employee. If specified, ensure that the directory belongs to the personal directory of the caller.
+//
+// - Security authentication is supported through multiple methods (AK, BearerToken, APP).
+//
+// - The operation type is write (`write`), and operation logs are recorded for subsequent auditing.
 //
 // @param request - DeleteChatSessionRequest
 //
@@ -2500,17 +4280,17 @@ func (client *Client) DeleteChatSession(request *DeleteChatSessionRequest) (_res
 
 // Summary:
 //
-// 删除当前租户内的指定资源（知识）。
+// Deletes a specified source.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - `tenantId` 仅来自鉴权身份；调用方传入会被忽略。
+// - `tenantId` is derived from the authenticated identity only. Any value passed by the caller is ignored.
 //
-// - `sourceId` 通过 body 传递，注册路径为扁平的 `/openapi/deleteSource`，不含 `{sourceId}` 路径模板；请勿以路径段形式追加资源 ID，网关按扁平 URI 精确路由，会回 `InvalidAction.NotFound`。
+// - `sourceId` is passed through the request body. The registration path is the flat URI `/openapi/deleteSource` and does not contain a `{sourceId}` path template. Do not append the resource ID as a path segment. The gateway performs exact routing based on the flat URI and returns `InvalidAction.NotFound` if the path does not match.
 //
-// - 删除为不可逆操作，资源关联的解析结果与绑定关系会一并失效。
+// - Deletion is irreversible. The parsing results and bindings associated with the resource are invalidated.
 //
 // @param request - DeleteSourceRequest
 //
@@ -2563,17 +4343,17 @@ func (client *Client) DeleteSourceWithOptions(request *DeleteSourceRequest, head
 
 // Summary:
 //
-// 删除当前租户内的指定资源（知识）。
+// Deletes a specified source.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - `tenantId` 仅来自鉴权身份；调用方传入会被忽略。
+// - `tenantId` is derived from the authenticated identity only. Any value passed by the caller is ignored.
 //
-// - `sourceId` 通过 body 传递，注册路径为扁平的 `/openapi/deleteSource`，不含 `{sourceId}` 路径模板；请勿以路径段形式追加资源 ID，网关按扁平 URI 精确路由，会回 `InvalidAction.NotFound`。
+// - `sourceId` is passed through the request body. The registration path is the flat URI `/openapi/deleteSource` and does not contain a `{sourceId}` path template. Do not append the resource ID as a path segment. The gateway performs exact routing based on the flat URI and returns `InvalidAction.NotFound` if the path does not match.
 //
-// - 删除为不可逆操作，资源关联的解析结果与绑定关系会一并失效。
+// - Deletion is irreversible. The parsing results and bindings associated with the resource are invalidated.
 //
 // @param request - DeleteSourceRequest
 //
@@ -2592,19 +4372,19 @@ func (client *Client) DeleteSource(request *DeleteSourceRequest) (_result *Delet
 
 // Summary:
 //
-// 用于删除指定的企业知识库目录，支持不同删除模式。
+// Deletes an enterprise knowledge base and its subdirectories.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API允许用户删除特定的企业知识库目录。
+// - This API allows you to delete a specific enterprise knowledge base directory.
 //
-// - 用户可以通过设置`deleteMode`参数来选择不同的删除策略，包括拒绝删除（reject）、递归删除（recursive）或将目录移动到根目录（move_to_root）。
+// - Set the `deleteMode` parameter to select different deletion strategies, including reject deletion (reject), recursive deletion (recursive), or move the directory to the root directory (move_to_root).
 //
-// - 如果不提供`deleteMode`，默认行为是拒绝删除。
+// - If `deleteMode` is not provided, the default behavior is to reject deletion.
 //
-// - 删除操作前会校验企业目录边界。
+// - The enterprise directory boundary is validated before the deletion operation.
 //
 // @param request - DeleteTenantDirectoryRequest
 //
@@ -2661,19 +4441,19 @@ func (client *Client) DeleteTenantDirectoryWithOptions(request *DeleteTenantDire
 
 // Summary:
 //
-// 用于删除指定的企业知识库目录，支持不同删除模式。
+// Deletes an enterprise knowledge base and its subdirectories.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API允许用户删除特定的企业知识库目录。
+// - This API allows you to delete a specific enterprise knowledge base directory.
 //
-// - 用户可以通过设置`deleteMode`参数来选择不同的删除策略，包括拒绝删除（reject）、递归删除（recursive）或将目录移动到根目录（move_to_root）。
+// - Set the `deleteMode` parameter to select different deletion strategies, including reject deletion (reject), recursive deletion (recursive), or move the directory to the root directory (move_to_root).
 //
-// - 如果不提供`deleteMode`，默认行为是拒绝删除。
+// - If `deleteMode` is not provided, the default behavior is to reject deletion.
 //
-// - 删除操作前会校验企业目录边界。
+// - The enterprise directory boundary is validated before the deletion operation.
 //
 // @param request - DeleteTenantDirectoryRequest
 //
@@ -2692,23 +4472,23 @@ func (client *Client) DeleteTenantDirectory(request *DeleteTenantDirectoryReques
 
 // Summary:
 //
-// 关闭 API Token
+// Disables an API token.
 //
 // Description:
 //
-// 关闭用户的 INSTANCE Token。
+// Disables the INSTANCE token of a user.
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 取 user_id（强制 caller_type=user）
+//	1. Retrieves user_id from identity (caller_type=user is enforced).
 //
-//	2. 构造 AuthContext，委托 UserTokenAuthorizedService 完成权限校验
+//	2. Constructs an AuthContext and delegates permission verification to UserTokenAuthorizedService.
 //
-//	3. 调用 disable_token（ACTIVE → INACTIVE）
+//	3. Calls disable_token (ACTIVE → INACTIVE).
 //
-//	4. 返回 disabled=True
+//	4. Returns disabled=True.
 //
-//	幂等性：若当前无 ACTIVE Token，deactivate_all 影响 0 行，不报错。
+//	Idempotence: If no ACTIVE token exists, deactivate_all affects 0 rows and does not return an error.
 //
 // @param request - DisableTokenRequest
 //
@@ -2761,23 +4541,23 @@ func (client *Client) DisableTokenWithOptions(request *DisableTokenRequest, head
 
 // Summary:
 //
-// 关闭 API Token
+// Disables an API token.
 //
 // Description:
 //
-// 关闭用户的 INSTANCE Token。
+// Disables the INSTANCE token of a user.
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 取 user_id（强制 caller_type=user）
+//	1. Retrieves user_id from identity (caller_type=user is enforced).
 //
-//	2. 构造 AuthContext，委托 UserTokenAuthorizedService 完成权限校验
+//	2. Constructs an AuthContext and delegates permission verification to UserTokenAuthorizedService.
 //
-//	3. 调用 disable_token（ACTIVE → INACTIVE）
+//	3. Calls disable_token (ACTIVE → INACTIVE).
 //
-//	4. 返回 disabled=True
+//	4. Returns disabled=True.
 //
-//	幂等性：若当前无 ACTIVE Token，deactivate_all 影响 0 行，不报错。
+//	Idempotence: If no ACTIVE token exists, deactivate_all affects 0 rows and does not return an error.
 //
 // @param request - DisableTokenRequest
 //
@@ -2796,27 +4576,27 @@ func (client *Client) DisableToken(request *DisableTokenRequest) (_result *Disab
 
 // Summary:
 //
-// 开启 API Token
+// Enables an API token.
 //
 // Description:
 //
-// 开启用户的 INSTANCE Token（幂等）。
+// Enables the INSTANCE token for a user (idempotent).
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 取 user_id（强制 caller_type=user）
+//	1. Retrieves user_id from identity (caller_type=user is required).
 //
-//	2. 构造 AuthContext，委托 UserTokenAuthorizedService 完成权限校验
+//	2. Constructs an AuthContext and delegates permission verification to UserTokenAuthorizedService.
 //
-//	3. 调用 enable_token：
+//	3. Calls enable_token:
 //
-//	   - 已有 ACTIVE → 幂等返回（仅脱敏值，不重复下发明文）
+//	   - If an ACTIVE token exists, returns idempotently (only the masked value is returned, and the plaintext is not issued again).
 //
-//	   - 有 INACTIVE → 重新激活（返回明文）
+//	   - If an INACTIVE token exists, reactivates it (returns the plaintext).
 //
-//	   - 都没有 → 新建（返回明文）
+//	   - If no token exists, creates one (returns the plaintext).
 //
-//	安全约束：Token 明文仅在首次开启时返回一次，后续幂等调用不再下发明文。
+//	Security constraint: The token plaintext is returned only once when the token is first enabled. Subsequent idempotent calls do not return the plaintext.
 //
 // @param request - EnableTokenRequest
 //
@@ -2869,27 +4649,27 @@ func (client *Client) EnableTokenWithOptions(request *EnableTokenRequest, header
 
 // Summary:
 //
-// 开启 API Token
+// Enables an API token.
 //
 // Description:
 //
-// 开启用户的 INSTANCE Token（幂等）。
+// Enables the INSTANCE token for a user (idempotent).
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 取 user_id（强制 caller_type=user）
+//	1. Retrieves user_id from identity (caller_type=user is required).
 //
-//	2. 构造 AuthContext，委托 UserTokenAuthorizedService 完成权限校验
+//	2. Constructs an AuthContext and delegates permission verification to UserTokenAuthorizedService.
 //
-//	3. 调用 enable_token：
+//	3. Calls enable_token:
 //
-//	   - 已有 ACTIVE → 幂等返回（仅脱敏值，不重复下发明文）
+//	   - If an ACTIVE token exists, returns idempotently (only the masked value is returned, and the plaintext is not issued again).
 //
-//	   - 有 INACTIVE → 重新激活（返回明文）
+//	   - If an INACTIVE token exists, reactivates it (returns the plaintext).
 //
-//	   - 都没有 → 新建（返回明文）
+//	   - If no token exists, creates one (returns the plaintext).
 //
-//	安全约束：Token 明文仅在首次开启时返回一次，后续幂等调用不再下发明文。
+//	Security constraint: The token plaintext is returned only once when the token is first enabled. Subsequent idempotent calls do not return the plaintext.
 //
 // @param request - EnableTokenRequest
 //
@@ -2908,7 +4688,23 @@ func (client *Client) EnableToken(request *EnableTokenRequest) (_result *EnableT
 
 // Summary:
 //
-// 获取会话详情
+// Retrieves session details.
+//
+// Description:
+//
+// ## Request description
+//
+// - This API uploads a file to the "My Resources" section of a specified digital employee.
+//
+// - `source_type` is fixed to `FILE`, `scope` is fixed to `PERSONAL`, and `platform` is fixed to `LOCAL`.
+//
+// - The file must include an OSS persistent address (`filePath`). Other information such as the public access URL and original file name is optional.
+//
+// - If no target folder ID (`directoryId`) is specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the invoker\\"s personal folder.
+//
+// - Security verification is supported through multiple authenticate methods (AK, BearerToken, APP).
+//
+// - The operation type is write (`write`), and operation logs are recorded for subsequent auditing.
 //
 // @param request - GetChatSessionRequest
 //
@@ -2963,7 +4759,23 @@ func (client *Client) GetChatSessionWithOptions(request *GetChatSessionRequest, 
 
 // Summary:
 //
-// 获取会话详情
+// Retrieves session details.
+//
+// Description:
+//
+// ## Request description
+//
+// - This API uploads a file to the "My Resources" section of a specified digital employee.
+//
+// - `source_type` is fixed to `FILE`, `scope` is fixed to `PERSONAL`, and `platform` is fixed to `LOCAL`.
+//
+// - The file must include an OSS persistent address (`filePath`). Other information such as the public access URL and original file name is optional.
+//
+// - If no target folder ID (`directoryId`) is specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the invoker\\"s personal folder.
+//
+// - Security verification is supported through multiple authenticate methods (AK, BearerToken, APP).
+//
+// - The operation type is write (`write`), and operation logs are recorded for subsequent auditing.
 //
 // @param request - GetChatSessionRequest
 //
@@ -2982,11 +4794,11 @@ func (client *Client) GetChatSession(request *GetChatSessionRequest) (_result *G
 
 // Summary:
 //
-// 获取当前用户可读的 active Graph Schema
+// Retrieves the active Graph Schema readable by the current user.
 //
 // Description:
 //
-// 读取 active schema_content，并按 Token 用户的语义资源 READ 权限安全裁剪。
+// Reads the active schema_content and securely trims it based on the token user\\"s semantic resource READ permissions.
 //
 // @param request - GetGraphSchemaRequest
 //
@@ -3039,11 +4851,11 @@ func (client *Client) GetGraphSchemaWithOptions(request *GetGraphSchemaRequest, 
 
 // Summary:
 //
-// 获取当前用户可读的 active Graph Schema
+// Retrieves the active Graph Schema readable by the current user.
 //
 // Description:
 //
-// 读取 active schema_content，并按 Token 用户的语义资源 READ 权限安全裁剪。
+// Reads the active schema_content and securely trims it based on the token user\\"s semantic resource READ permissions.
 //
 // @param request - GetGraphSchemaRequest
 //
@@ -3062,21 +4874,21 @@ func (client *Client) GetGraphSchema(request *GetGraphSchemaRequest) (_result *G
 
 // Summary:
 //
-// 查询租户最新创建的标准包实例的过期时间。
+// Queries the expiration time of the most recently created standard package instance for a tenant.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该API用于查询指定租户下最新创建的标准包实例的过期时间。
+// - This API operation queries the expiration time of the most recently created standard package instance for a specified tenant.
 //
-// - 如果未找到相关标准包实例，`found` 字段将返回 `False`。
+// - If no standard package instance is found, the `found` field returns `False`.
 //
-// - 支持通过 `tenantId` 参数指定查询的租户ID，默认使用调用方的租户ID。
+// - You can use the `tenantId` parameter to specify the tenant ID. By default, the tenant ID of the caller is used.
 //
-// - 请求方法为 POST，且需要通过 HTTPS 协议进行调用。
+// - The request method is POST and must be called over HTTPS.
 //
-// - 需要提供有效的认证信息（如 AK、BearerToken 或 APP）以完成请求。
+// - Valid authentication information (such as AK, BearerToken, or APP) is required to complete the request.
 //
 // @param request - GetInstanceExpireTimeRequest
 //
@@ -3123,21 +4935,21 @@ func (client *Client) GetInstanceExpireTimeWithOptions(request *GetInstanceExpir
 
 // Summary:
 //
-// 查询租户最新创建的标准包实例的过期时间。
+// Queries the expiration time of the most recently created standard package instance for a tenant.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该API用于查询指定租户下最新创建的标准包实例的过期时间。
+// - This API operation queries the expiration time of the most recently created standard package instance for a specified tenant.
 //
-// - 如果未找到相关标准包实例，`found` 字段将返回 `False`。
+// - If no standard package instance is found, the `found` field returns `False`.
 //
-// - 支持通过 `tenantId` 参数指定查询的租户ID，默认使用调用方的租户ID。
+// - You can use the `tenantId` parameter to specify the tenant ID. By default, the tenant ID of the caller is used.
 //
-// - 请求方法为 POST，且需要通过 HTTPS 协议进行调用。
+// - The request method is POST and must be called over HTTPS.
 //
-// - 需要提供有效的认证信息（如 AK、BearerToken 或 APP）以完成请求。
+// - Valid authentication information (such as AK, BearerToken, or APP) is required to complete the request.
 //
 // @param request - GetInstanceExpireTimeRequest
 //
@@ -3156,25 +4968,25 @@ func (client *Client) GetInstanceExpireTime(request *GetInstanceExpireTimeReques
 
 // Summary:
 //
-// 查询指定知识在企业知识库中的详细信息。
+// Queries the details of a specified knowledge item in the enterprise knowledge base.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该 API 用于获取企业知识库下特定知识的详情。
+// - This API operation retrieves the details of a specific knowledge item in the enterprise knowledge base.
 //
-// - 调用此接口需要具备 `DEVELOPMENT_KB_VIEW` 功能权限。
+// - Calling this operation requires the `DEVELOPMENT_KB_VIEW` feature permission.
 //
-// - 知识详情包括但不限于知识类型、名称、描述等。
+// - Knowledge details include but are not limited to the knowledge type, name, and description.
 //
-// - 请求时必须提供 `sourceId` 参数，标识要查询的知识。
+// - The `sourceId` parameter is required to identify the knowledge item to query.
 //
-// - `tenantId` 是可选参数，默认使用调用方的租户ID。
+// - `tenantId` is an optional parameter. The tenant ID of the caller is used by default.
 //
-// - 支持通过 `AK`、`BearerToken` 或 `APP` 方式进行鉴权。
+// - Authentication is supported through `AK`, `BearerToken`, or `APP` methods.
 //
-// - 安全约束：`tenant_id` 和 `user_id` 只能来自鉴权身份。
+// - Security constraint: `tenant_id` and `user_id` can only be derived from the authenticated identity.
 //
 // @param request - GetKnowledgeBaseSourceRequest
 //
@@ -3227,25 +5039,25 @@ func (client *Client) GetKnowledgeBaseSourceWithOptions(request *GetKnowledgeBas
 
 // Summary:
 //
-// 查询指定知识在企业知识库中的详细信息。
+// Queries the details of a specified knowledge item in the enterprise knowledge base.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该 API 用于获取企业知识库下特定知识的详情。
+// - This API operation retrieves the details of a specific knowledge item in the enterprise knowledge base.
 //
-// - 调用此接口需要具备 `DEVELOPMENT_KB_VIEW` 功能权限。
+// - Calling this operation requires the `DEVELOPMENT_KB_VIEW` feature permission.
 //
-// - 知识详情包括但不限于知识类型、名称、描述等。
+// - Knowledge details include but are not limited to the knowledge type, name, and description.
 //
-// - 请求时必须提供 `sourceId` 参数，标识要查询的知识。
+// - The `sourceId` parameter is required to identify the knowledge item to query.
 //
-// - `tenantId` 是可选参数，默认使用调用方的租户ID。
+// - `tenantId` is an optional parameter. The tenant ID of the caller is used by default.
 //
-// - 支持通过 `AK`、`BearerToken` 或 `APP` 方式进行鉴权。
+// - Authentication is supported through `AK`, `BearerToken`, or `APP` methods.
 //
-// - 安全约束：`tenant_id` 和 `user_id` 只能来自鉴权身份。
+// - Security constraint: `tenant_id` and `user_id` can only be derived from the authenticated identity.
 //
 // @param request - GetKnowledgeBaseSourceRequest
 //
@@ -3264,7 +5076,25 @@ func (client *Client) GetKnowledgeBaseSource(request *GetKnowledgeBaseSourceRequ
 
 // Summary:
 //
-// 获取定时任务执行详情
+// Retrieves the execution details of a scheduled task.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation uploads a file to an enterprise knowledge base.
+//
+// - You must have the `DEVELOPMENT_KB_MANAGE` permission to call this API operation.
+//
+// - You must provide the OSS persistent address (`filePath`) of the file when uploading.
+//
+// - Optional parameters include the public access URL and original file name to enhance the completeness of file information.
+//
+// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee.
+//
+// - You can add tags to the resource by using `sourceTags` for subsequent management and retrieval.
+//
+// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Make sure your account balance is sufficient.
 //
 // @param request - GetScheduledTaskExecutionDetailRequest
 //
@@ -3315,7 +5145,25 @@ func (client *Client) GetScheduledTaskExecutionDetailWithOptions(request *GetSch
 
 // Summary:
 //
-// 获取定时任务执行详情
+// Retrieves the execution details of a scheduled task.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation uploads a file to an enterprise knowledge base.
+//
+// - You must have the `DEVELOPMENT_KB_MANAGE` permission to call this API operation.
+//
+// - You must provide the OSS persistent address (`filePath`) of the file when uploading.
+//
+// - Optional parameters include the public access URL and original file name to enhance the completeness of file information.
+//
+// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee.
+//
+// - You can add tags to the resource by using `sourceTags` for subsequent management and retrieval.
+//
+// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Make sure your account balance is sufficient.
 //
 // @param request - GetScheduledTaskExecutionDetailRequest
 //
@@ -3334,7 +5182,25 @@ func (client *Client) GetScheduledTaskExecutionDetail(request *GetScheduledTaskE
 
 // Summary:
 //
-// 获取定时任务执行记录
+// Retrieves execution records of scheduled tasks.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation uploads a file to the enterprise knowledge base.
+//
+// - The `DEVELOPMENT_KB_MANAGE` feature permission is required to call this API.
+//
+// - You must provide the OSS persistent address (`filePath`) of the file when uploading.
+//
+// - Optional parameters include the public access URL and original file name to enhance the completeness of file information.
+//
+// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee.
+//
+// - You can add tags to the resource by using `sourceTags` for subsequent management and retrieval.
+//
+// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Ensure that your account balance is sufficient.
 //
 // @param request - GetScheduledTaskExecutionRecordsRequest
 //
@@ -3355,12 +5221,24 @@ func (client *Client) GetScheduledTaskExecutionRecordsWithOptions(request *GetSc
 		query["collaborationGroupId"] = request.CollaborationGroupId
 	}
 
+	if !dara.IsNil(request.InitiatorUserId) {
+		query["initiatorUserId"] = request.InitiatorUserId
+	}
+
 	if !dara.IsNil(request.Page) {
 		query["page"] = request.Page
 	}
 
 	if !dara.IsNil(request.PageSize) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["taskId"] = request.TaskId
 	}
 
 	if !dara.IsNil(request.TenantId) {
@@ -3393,7 +5271,25 @@ func (client *Client) GetScheduledTaskExecutionRecordsWithOptions(request *GetSc
 
 // Summary:
 //
-// 获取定时任务执行记录
+// Retrieves execution records of scheduled tasks.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation uploads a file to the enterprise knowledge base.
+//
+// - The `DEVELOPMENT_KB_MANAGE` feature permission is required to call this API.
+//
+// - You must provide the OSS persistent address (`filePath`) of the file when uploading.
+//
+// - Optional parameters include the public access URL and original file name to enhance the completeness of file information.
+//
+// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee.
+//
+// - You can add tags to the resource by using `sourceTags` for subsequent management and retrieval.
+//
+// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Ensure that your account balance is sufficient.
 //
 // @param request - GetScheduledTaskExecutionRecordsRequest
 //
@@ -3412,7 +5308,111 @@ func (client *Client) GetScheduledTaskExecutionRecords(request *GetScheduledTask
 
 // Summary:
 //
-// 获取定时任务理解详情
+// Retrieves the push configuration options for scheduled tasks.
+//
+// Description:
+//
+// Queries the channels and methods available to the current user for scheduled task push notifications.
+//
+// @param request - GetScheduledTaskPushOptionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetScheduledTaskPushOptionsResponse
+func (client *Client) GetScheduledTaskPushOptionsWithOptions(request *GetScheduledTaskPushOptionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetScheduledTaskPushOptionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CollaborationGroupId) {
+		body["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.DigitalEmployeeName) {
+		body["digitalEmployeeName"] = request.DigitalEmployeeName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetScheduledTaskPushOptions"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getScheduledTaskPushOptions"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetScheduledTaskPushOptionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the push configuration options for scheduled tasks.
+//
+// Description:
+//
+// Queries the channels and methods available to the current user for scheduled task push notifications.
+//
+// @param request - GetScheduledTaskPushOptionsRequest
+//
+// @return GetScheduledTaskPushOptionsResponse
+func (client *Client) GetScheduledTaskPushOptions(request *GetScheduledTaskPushOptionsRequest) (_result *GetScheduledTaskPushOptionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetScheduledTaskPushOptionsResponse{}
+	_body, _err := client.GetScheduledTaskPushOptionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Deprecated: OpenAPI GetScheduledTaskUnderstandDetail is deprecated
+//
+// Summary:
+//
+// Retrieves the details of scheduled task understanding.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation uploads a file to the enterprise knowledge base.
+//
+// - You must have the `DEVELOPMENT_KB_MANAGE` permission to call this API operation.
+//
+// - You must provide the OSS persistent address (`filePath`) of the file when uploading.
+//
+// - Optional parameters include the public access URL of the file and the original file name to enhance the completeness of file information.
+//
+// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee by default.
+//
+// - You can add tags to the resource by using `sourceTags` for subsequent management and retrieval.
+//
+// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Ensure that your account balance is sufficient.
 //
 // @param tmpReq - GetScheduledTaskUnderstandDetailRequest
 //
@@ -3483,13 +5483,34 @@ func (client *Client) GetScheduledTaskUnderstandDetailWithOptions(tmpReq *GetSch
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetScheduledTaskUnderstandDetail is deprecated
+//
 // Summary:
 //
-// 获取定时任务理解详情
+// Retrieves the details of scheduled task understanding.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation uploads a file to the enterprise knowledge base.
+//
+// - You must have the `DEVELOPMENT_KB_MANAGE` permission to call this API operation.
+//
+// - You must provide the OSS persistent address (`filePath`) of the file when uploading.
+//
+// - Optional parameters include the public access URL of the file and the original file name to enhance the completeness of file information.
+//
+// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee by default.
+//
+// - You can add tags to the resource by using `sourceTags` for subsequent management and retrieval.
+//
+// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Ensure that your account balance is sufficient.
 //
 // @param request - GetScheduledTaskUnderstandDetailRequest
 //
 // @return GetScheduledTaskUnderstandDetailResponse
+// Deprecated
 func (client *Client) GetScheduledTaskUnderstandDetail(request *GetScheduledTaskUnderstandDetailRequest) (_result *GetScheduledTaskUnderstandDetailResponse, _err error) {
 	runtime := &dara.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3504,23 +5525,23 @@ func (client *Client) GetScheduledTaskUnderstandDetail(request *GetScheduledTask
 
 // Summary:
 //
-// 获取技能详情。
+// Retrieves skill details.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 根据 SkillCode 或 SkillName 查询技能详情，包括元数据、入参 Schema、SKILL.md 摘要等。
+// Queries skill details by SkillCode or SkillName, including metadata, input parameter schema, and SKILL.md summary.
 //
-// - **TenantId**：可选公共参数，由网关透传到后端 Header；不传时使用当前调用方的默认租户。
+// - **TenantId**: Optional common parameter passed through by the gateway to the backend header. If not specified, the default tenant of the current caller is used.
 //
-// - **SkillCode**：与 SkillName 二选一；同时传入时 SkillCode 优先。
+// - **SkillCode**: Mutually exclusive with SkillName. If both are specified, SkillCode takes precedence.
 //
-// - **SkillName**：与 SkillCode 二选一；租户内不唯一时返回 `ERR.SkillHub.SkillNameAmbiguous`。
+// - **SkillName**: Mutually exclusive with SkillCode. If the name is not unique within the tenant, `ERR.SkillHub.SkillNameAmbiguous` is returned.
 //
-// - **ViewMode**：可选，`draft`（草稿/编辑视角）或 `published`（已发布视角，默认）。
+// - **ViewMode**: Optional. Valid values: `draft` (draft/editing view) or `published` (published view, default).
 //
-// - **IncludeSkillFiles**：可选，是否返回完整技能文件树（SKILL.md / scripts / templates），默认 `false`。
+// - **IncludeSkillFiles**: Optional. Specifies whether to return the complete skill file tree (SKILL.md / scripts / templates). Default value: `false`.
 //
 // @param request - GetSkillRequest
 //
@@ -3585,23 +5606,23 @@ func (client *Client) GetSkillWithOptions(request *GetSkillRequest, headers map[
 
 // Summary:
 //
-// 获取技能详情。
+// Retrieves skill details.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 根据 SkillCode 或 SkillName 查询技能详情，包括元数据、入参 Schema、SKILL.md 摘要等。
+// Queries skill details by SkillCode or SkillName, including metadata, input parameter schema, and SKILL.md summary.
 //
-// - **TenantId**：可选公共参数，由网关透传到后端 Header；不传时使用当前调用方的默认租户。
+// - **TenantId**: Optional common parameter passed through by the gateway to the backend header. If not specified, the default tenant of the current caller is used.
 //
-// - **SkillCode**：与 SkillName 二选一；同时传入时 SkillCode 优先。
+// - **SkillCode**: Mutually exclusive with SkillName. If both are specified, SkillCode takes precedence.
 //
-// - **SkillName**：与 SkillCode 二选一；租户内不唯一时返回 `ERR.SkillHub.SkillNameAmbiguous`。
+// - **SkillName**: Mutually exclusive with SkillCode. If the name is not unique within the tenant, `ERR.SkillHub.SkillNameAmbiguous` is returned.
 //
-// - **ViewMode**：可选，`draft`（草稿/编辑视角）或 `published`（已发布视角，默认）。
+// - **ViewMode**: Optional. Valid values: `draft` (draft/editing view) or `published` (published view, default).
 //
-// - **IncludeSkillFiles**：可选，是否返回完整技能文件树（SKILL.md / scripts / templates），默认 `false`。
+// - **IncludeSkillFiles**: Optional. Specifies whether to return the complete skill file tree (SKILL.md / scripts / templates). Default value: `false`.
 //
 // @param request - GetSkillRequest
 //
@@ -3620,21 +5641,21 @@ func (client *Client) GetSkill(request *GetSkillRequest) (_result *GetSkillRespo
 
 // Summary:
 //
-// 查询技能执行结果。
+// Queries the execution result of a skill.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 通过 `RunId` 查询异步任务的当前状态与结果。
+// Queries the current status and result of an asynchronous task by `RunId`.
 //
-// - **状态机**：Running（PENDING/RUNNING）→ Succeeded / Failed / Cancelled
+// - **State machine**: Running (PENDING/RUNNING) → Succeeded / Failed / Cancelled
 //
-// - **TenantId**：可选公共参数，由网关透传；后端会校验 RunId 必须属于当前租户，否则统一返回 `ERR.SkillHub.RunNotFound`（避免泄漏存在性）。
+// - **TenantId**: An optional common parameter passed through by the gateway. The backend verifies that the RunId belongs to the current tenant. Otherwise, `ERR.SkillHub.RunNotFound` is returned to avoid exposing existence information.
 //
-// - **IncludeLogs**：可选，是否返回执行日志，默认 `false`。
+// - **IncludeLogs**: Optional. Specifies whether to return execution logs. Default value: `false`.
 //
-// 执行成功时 `Result.Content[]` 为 MCP 风格 Content 块数组（Text / File / Image）。
+// When execution succeeds, `Result.Content[]` is an MCP-style Content block array (Text / File / Image).
 //
 // @param request - GetSkillRunRequest
 //
@@ -3691,21 +5712,21 @@ func (client *Client) GetSkillRunWithOptions(request *GetSkillRunRequest, header
 
 // Summary:
 //
-// 查询技能执行结果。
+// Queries the execution result of a skill.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 通过 `RunId` 查询异步任务的当前状态与结果。
+// Queries the current status and result of an asynchronous task by `RunId`.
 //
-// - **状态机**：Running（PENDING/RUNNING）→ Succeeded / Failed / Cancelled
+// - **State machine**: Running (PENDING/RUNNING) → Succeeded / Failed / Cancelled
 //
-// - **TenantId**：可选公共参数，由网关透传；后端会校验 RunId 必须属于当前租户，否则统一返回 `ERR.SkillHub.RunNotFound`（避免泄漏存在性）。
+// - **TenantId**: An optional common parameter passed through by the gateway. The backend verifies that the RunId belongs to the current tenant. Otherwise, `ERR.SkillHub.RunNotFound` is returned to avoid exposing existence information.
 //
-// - **IncludeLogs**：可选，是否返回执行日志，默认 `false`。
+// - **IncludeLogs**: Optional. Specifies whether to return execution logs. Default value: `false`.
 //
-// 执行成功时 `Result.Content[]` 为 MCP 风格 Content 块数组（Text / File / Image）。
+// When execution succeeds, `Result.Content[]` is an MCP-style Content block array (Text / File / Image).
 //
 // @param request - GetSkillRunRequest
 //
@@ -3724,17 +5745,17 @@ func (client *Client) GetSkillRun(request *GetSkillRunRequest) (_result *GetSkil
 
 // Summary:
 //
-// 查询指定资源（知识）的详细信息，支持按需返回大体积明细字段。
+// Queries the details of a specified resource (knowledge), with support for returning large detail fields on demand.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - `tenant_id` 仅来自鉴权身份；调用方在 body 中传入会被忽略。
+// - `tenant_id` is derived from the authenticated identity only. Any value passed in the body is ignored.
 //
-// - 出参不暴露 `creator` / `modifier` 等审计字段；`unstructured_docs[ ].content` 默认不返回，以避免大体积响应。
+// - Response parameters do not expose audit fields such as `creator` or `modifier`. The `unstructured_docs[ ].content` field is not returned by default to avoid large responses.
 //
-// - 通过设置 `includeDetails` 参数为 `True` 可以获取包括 `settings`, `notes`, `structuredTables`, 和 `unstructuredDocs` 在内的更多细节信息。
+// - Set the `includeDetails` parameter to `True` to retrieve additional details including `settings`, `notes`, `structuredTables`, and `unstructuredDocs`.
 //
 // @param request - GetSourceRequest
 //
@@ -3791,17 +5812,17 @@ func (client *Client) GetSourceWithOptions(request *GetSourceRequest, headers ma
 
 // Summary:
 //
-// 查询指定资源（知识）的详细信息，支持按需返回大体积明细字段。
+// Queries the details of a specified resource (knowledge), with support for returning large detail fields on demand.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - `tenant_id` 仅来自鉴权身份；调用方在 body 中传入会被忽略。
+// - `tenant_id` is derived from the authenticated identity only. Any value passed in the body is ignored.
 //
-// - 出参不暴露 `creator` / `modifier` 等审计字段；`unstructured_docs[ ].content` 默认不返回，以避免大体积响应。
+// - Response parameters do not expose audit fields such as `creator` or `modifier`. The `unstructured_docs[ ].content` field is not returned by default to avoid large responses.
 //
-// - 通过设置 `includeDetails` 参数为 `True` 可以获取包括 `settings`, `notes`, `structuredTables`, 和 `unstructuredDocs` 在内的更多细节信息。
+// - Set the `includeDetails` parameter to `True` to retrieve additional details including `settings`, `notes`, `structuredTables`, and `unstructuredDocs`.
 //
 // @param request - GetSourceRequest
 //
@@ -3820,21 +5841,21 @@ func (client *Client) GetSource(request *GetSourceRequest) (_result *GetSourceRe
 
 // Summary:
 //
-// 生成用于直接上传文件到OSS的签名URL。
+// Generates a signed URL for directly uploading files to OSS.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// 该API允许调用方根据提供的文件名等信息，获取一个可用于直接上传文件至阿里云OSS（对象存储服务）的签名URL。通过此URL，用户可以将文件直接上传至指定的OSS位置而无需经过中间服务器转发，从而提高效率和安全性。
+// This API allows callers to obtain a signed URL for directly uploading files to Alibaba Cloud Object Storage Service (OSS) based on the provided file name and other information. With this URL, users can upload files directly to the specified OSS location without routing through an intermediate server, which improves efficiency and security.
 //
-// - **安全约束**：`tenant_id`/`user_id`仅来自鉴权身份，即使在请求体中提供也会被忽略。
+// - **Security constraint**: `tenant_id`/`user_id` are derived only from the authenticated identity. Values provided in the request body are ignored.
 //
-// - **默认值**：如果未指定`expires`参数，则默认过期时间为3600秒（即1小时）。
+// - **Default value**: If the `expires` parameter is not specified, the default expiration time is 3600 seconds (1 hour).
 //
-// - **Content-Type**：如果不提供`contentType`，系统会尝试自动推断文件类型。
+// - **Content-Type**: If `contentType` is not provided, the system attempts to automatically infer the file type.
 //
-// - **归属范围**：通过`scope`参数定义数据源是属于个人还是企业知识库，默认情况下可能不需要设置。
+// - **Scope**: The `scope` parameter defines whether the data source belongs to a personal or enterprise knowledge base. In most cases, this does not need to be set.
 //
 // @param request - GetSourceUploadSignatureRequest
 //
@@ -3903,21 +5924,21 @@ func (client *Client) GetSourceUploadSignatureWithOptions(request *GetSourceUplo
 
 // Summary:
 //
-// 生成用于直接上传文件到OSS的签名URL。
+// Generates a signed URL for directly uploading files to OSS.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// 该API允许调用方根据提供的文件名等信息，获取一个可用于直接上传文件至阿里云OSS（对象存储服务）的签名URL。通过此URL，用户可以将文件直接上传至指定的OSS位置而无需经过中间服务器转发，从而提高效率和安全性。
+// This API allows callers to obtain a signed URL for directly uploading files to Alibaba Cloud Object Storage Service (OSS) based on the provided file name and other information. With this URL, users can upload files directly to the specified OSS location without routing through an intermediate server, which improves efficiency and security.
 //
-// - **安全约束**：`tenant_id`/`user_id`仅来自鉴权身份，即使在请求体中提供也会被忽略。
+// - **Security constraint**: `tenant_id`/`user_id` are derived only from the authenticated identity. Values provided in the request body are ignored.
 //
-// - **默认值**：如果未指定`expires`参数，则默认过期时间为3600秒（即1小时）。
+// - **Default value**: If the `expires` parameter is not specified, the default expiration time is 3600 seconds (1 hour).
 //
-// - **Content-Type**：如果不提供`contentType`，系统会尝试自动推断文件类型。
+// - **Content-Type**: If `contentType` is not provided, the system attempts to automatically infer the file type.
 //
-// - **归属范围**：通过`scope`参数定义数据源是属于个人还是企业知识库，默认情况下可能不需要设置。
+// - **Scope**: The `scope` parameter defines whether the data source belongs to a personal or enterprise knowledge base. In most cases, this does not need to be set.
 //
 // @param request - GetSourceUploadSignatureRequest
 //
@@ -3936,23 +5957,135 @@ func (client *Client) GetSourceUploadSignature(request *GetSourceUploadSignature
 
 // Summary:
 //
-// 查询用户的 Token 状态
+// Retrieves an API token and ensures that it is active.
 //
 // Description:
 //
-// 查询用户的 INSTANCE Token 状态。
+// Retrieves the INSTANCE token for a user and ensures that it is in an active state (idempotent).
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 取 user_id（强制 caller_type=user）
+//	1. Obtains user_id from identity (caller_type=user is enforced).
 //
-//	2. 构造 AuthContext，委托 UserTokenAuthorizedService 完成权限校验
+//	2. Constructs an AuthContext and delegates permission verification to UserTokenAuthorizedService.
 //
-//	3. 查询 ACTIVE INSTANCE Token
+//	3. Calls ensure_active_token:
 //
-//	4. 存在 → 返回 enabled=True + 脱敏值 + 创建时间
+//	   - If an ACTIVE token exists, returns the token in plaintext as-is (no reset, no key rotation).
 //
-//	5. 不存在 → 返回 enabled=False
+//	   - If an INACTIVE token exists, automatically re-enables it and returns the plaintext.
+//
+//	   - If no token exists (or only expired RESET records exist), creates a new token and returns the plaintext.
+//
+//	Difference from EnableToken: When an ACTIVE token already exists, EnableToken returns only the masked value. This operation guarantees that a usable plaintext credential is returned without destroying the existing token.
+//
+// @param request - GetTokenEnsureEnableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTokenEnsureEnableResponse
+func (client *Client) GetTokenEnsureEnableWithOptions(request *GetTokenEnsureEnableRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTokenEnsureEnableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.WnUserId) {
+		body["wnUserId"] = request.WnUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTokenEnsureEnable"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getTokenEnsureEnable"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTokenEnsureEnableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves an API token and ensures that it is active.
+//
+// Description:
+//
+// Retrieves the INSTANCE token for a user and ensures that it is in an active state (idempotent).
+//
+//	Business logic:
+//
+//	1. Obtains user_id from identity (caller_type=user is enforced).
+//
+//	2. Constructs an AuthContext and delegates permission verification to UserTokenAuthorizedService.
+//
+//	3. Calls ensure_active_token:
+//
+//	   - If an ACTIVE token exists, returns the token in plaintext as-is (no reset, no key rotation).
+//
+//	   - If an INACTIVE token exists, automatically re-enables it and returns the plaintext.
+//
+//	   - If no token exists (or only expired RESET records exist), creates a new token and returns the plaintext.
+//
+//	Difference from EnableToken: When an ACTIVE token already exists, EnableToken returns only the masked value. This operation guarantees that a usable plaintext credential is returned without destroying the existing token.
+//
+// @param request - GetTokenEnsureEnableRequest
+//
+// @return GetTokenEnsureEnableResponse
+func (client *Client) GetTokenEnsureEnable(request *GetTokenEnsureEnableRequest) (_result *GetTokenEnsureEnableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetTokenEnsureEnableResponse{}
+	_body, _err := client.GetTokenEnsureEnableWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the token status of a user.
+//
+// Description:
+//
+// Queries the INSTANCE token status of a user.
+//
+//	Business logic:
+//
+//	1. Retrieves user_id from identity (caller_type=user is required).
+//
+//	2. Constructs an AuthContext and delegates permission verification to UserTokenAuthorizedService.
+//
+//	3. Queries the ACTIVE INSTANCE token.
+//
+//	4. If the token exists, returns enabled=True with the masked value and creation time.
+//
+//	5. If the token does not exist, returns enabled=False.
 //
 // @param request - GetTokenInfoRequest
 //
@@ -4005,23 +6138,23 @@ func (client *Client) GetTokenInfoWithOptions(request *GetTokenInfoRequest, head
 
 // Summary:
 //
-// 查询用户的 Token 状态
+// Queries the token status of a user.
 //
 // Description:
 //
-// 查询用户的 INSTANCE Token 状态。
+// Queries the INSTANCE token status of a user.
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 取 user_id（强制 caller_type=user）
+//	1. Retrieves user_id from identity (caller_type=user is required).
 //
-//	2. 构造 AuthContext，委托 UserTokenAuthorizedService 完成权限校验
+//	2. Constructs an AuthContext and delegates permission verification to UserTokenAuthorizedService.
 //
-//	3. 查询 ACTIVE INSTANCE Token
+//	3. Queries the ACTIVE INSTANCE token.
 //
-//	4. 存在 → 返回 enabled=True + 脱敏值 + 创建时间
+//	4. If the token exists, returns enabled=True with the masked value and creation time.
 //
-//	5. 不存在 → 返回 enabled=False
+//	5. If the token does not exist, returns enabled=False.
 //
 // @param request - GetTokenInfoRequest
 //
@@ -4040,29 +6173,29 @@ func (client *Client) GetTokenInfo(request *GetTokenInfoRequest) (_result *GetTo
 
 // Summary:
 //
-// 查询用户详情
+// Queries user details.
 //
 // Description:
 //
-// OpenAPI 查询用户详情。
+// Queries user details through OpenAPI.
 //
-//	业务编排：
+//	Business orchestration:
 //
-//	1. 按 wnUserId 或 accountId 定位用户
+//	1. Locate the user by wnUserId or accountId.
 //
-//	2. 查询用户在当前租户的映射信息（状态、加入时间、最后登录）
+//	2. Query the user mapping information in the current tenant (status, join time, and last logon time).
 //
-//	3. 查询用户在当前租户的角色列表
+//	3. Query the role list of the user in the current tenant.
 //
-//	4. 查询用户在当前租户的用户组列表
+//	4. Query the user group list of the user in the current tenant.
 //
-//	5. 组装响应
+//	5. Assemble the response.
 //
-//	错误码：
+//	Error codes:
 //
-//	- ERR.User.NotFound: 用户不存在
+//	- ERR.User.NotFound: The user does not exist.
 //
-//	- ERR.User.NotInTenant: 用户不在当前租户下
+//	- ERR.User.NotInTenant: The user does not belong to the current tenant.
 //
 // @param request - GetUserRequest
 //
@@ -4117,29 +6250,29 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, headers map[st
 
 // Summary:
 //
-// 查询用户详情
+// Queries user details.
 //
 // Description:
 //
-// OpenAPI 查询用户详情。
+// Queries user details through OpenAPI.
 //
-//	业务编排：
+//	Business orchestration:
 //
-//	1. 按 wnUserId 或 accountId 定位用户
+//	1. Locate the user by wnUserId or accountId.
 //
-//	2. 查询用户在当前租户的映射信息（状态、加入时间、最后登录）
+//	2. Query the user mapping information in the current tenant (status, join time, and last logon time).
 //
-//	3. 查询用户在当前租户的角色列表
+//	3. Query the role list of the user in the current tenant.
 //
-//	4. 查询用户在当前租户的用户组列表
+//	4. Query the user group list of the user in the current tenant.
 //
-//	5. 组装响应
+//	5. Assemble the response.
 //
-//	错误码：
+//	Error codes:
 //
-//	- ERR.User.NotFound: 用户不存在
+//	- ERR.User.NotFound: The user does not exist.
 //
-//	- ERR.User.NotInTenant: 用户不在当前租户下
+//	- ERR.User.NotInTenant: The user does not belong to the current tenant.
 //
 // @param request - GetUserRequest
 //
@@ -4158,19 +6291,19 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 
 // Summary:
 //
-// 查询当前登录用户的实时信用消耗、限额及剩余情况。
+// Queries the real-time credit consumption, limit, and remaining balance of the current logged-on user.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API用于获取当前登录用户的信用使用详情，包括信用限额、已消耗的信用额度以及剩余信用额度。
+// - This API is used to retrieve the credit usage details of the current logged-on user, including the credit limit, consumed credits, and remaining credits.
 //
-// - 数据来源于Redis实时缓存，确保了信息的即时性。
+// - Data is sourced from a real-time Redis cache, ensuring information immediacy.
 //
-// - 支持通过租户ID来指定查询特定租户下的用户信用使用情况，默认情况下将使用调用方的默认租户。
+// - You can specify a tenant ID to query the credit usage of a user under a specific tenant. By default, the caller\\"s default tenant is used.
 //
-// - 请求时可选择提供`RequestId`作为请求标识符，但这不是必需的。
+// - You can optionally provide a `RequestId` as a request identifier, but this is not required.
 //
 // @param request - GetUserCreditUsageRequest
 //
@@ -4217,19 +6350,19 @@ func (client *Client) GetUserCreditUsageWithOptions(request *GetUserCreditUsageR
 
 // Summary:
 //
-// 查询当前登录用户的实时信用消耗、限额及剩余情况。
+// Queries the real-time credit consumption, limit, and remaining balance of the current logged-on user.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API用于获取当前登录用户的信用使用详情，包括信用限额、已消耗的信用额度以及剩余信用额度。
+// - This API is used to retrieve the credit usage details of the current logged-on user, including the credit limit, consumed credits, and remaining credits.
 //
-// - 数据来源于Redis实时缓存，确保了信息的即时性。
+// - Data is sourced from a real-time Redis cache, ensuring information immediacy.
 //
-// - 支持通过租户ID来指定查询特定租户下的用户信用使用情况，默认情况下将使用调用方的默认租户。
+// - You can specify a tenant ID to query the credit usage of a user under a specific tenant. By default, the caller\\"s default tenant is used.
 //
-// - 请求时可选择提供`RequestId`作为请求标识符，但这不是必需的。
+// - You can optionally provide a `RequestId` as a request identifier, but this is not required.
 //
 // @param request - GetUserCreditUsageRequest
 //
@@ -4248,23 +6381,127 @@ func (client *Client) GetUserCreditUsage(request *GetUserCreditUsageRequest) (_r
 
 // Summary:
 //
-// 通过OpenAPI获取鉴权用户的完整信息，包括基本信息、租户列表等。
+// Queries the details of a specified user group, including its parent group, child groups, and members.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该接口用于返回当前鉴权用户的详细信息。
+// - This operation retrieves the details of a specified user group, including the basic information of the user group, parent user group information, direct child user group list, and direct member list.
 //
-// - 当租户信息失效时，将返回对应的错误信息。
+// - `userGroupId` is a required parameter that must be provided in the request body.
 //
-// - `tenantId`为可选参数，若未提供，则使用调用方默认的租户ID。
+// - `tenantId` is an optional parameter that can be passed through the query string.
 //
-// - 支持多种认证方式：AK、BearerToken和APP认证。
+// - The operation supports multiple authentication methods, including AK, BearerToken, and APP authentication.
 //
-// - 返回的数据中包含了用户的个人资料（如用户名、头像链接）、角色偏好设置以及所属的所有租户详情。
+// - The content type for both requests and responses is `application/json`.
 //
-// - 特别注意，如果当前登录的租户是系统租户（即`tenantId=10000`），则会在响应中明确标识出来。
+// - Ensure that you have the required permissions (such as `winnexo:GetUserGroup`) before calling this operation.
+//
+// @param request - GetUserGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserGroupResponse
+func (client *Client) GetUserGroupWithOptions(request *GetUserGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetUserGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UserGroupId) {
+		body["userGroupId"] = request.UserGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUserGroup"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/getUserGroup"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUserGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a specified user group, including its parent group, child groups, and members.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation retrieves the details of a specified user group, including the basic information of the user group, parent user group information, direct child user group list, and direct member list.
+//
+// - `userGroupId` is a required parameter that must be provided in the request body.
+//
+// - `tenantId` is an optional parameter that can be passed through the query string.
+//
+// - The operation supports multiple authentication methods, including AK, BearerToken, and APP authentication.
+//
+// - The content type for both requests and responses is `application/json`.
+//
+// - Ensure that you have the required permissions (such as `winnexo:GetUserGroup`) before calling this operation.
+//
+// @param request - GetUserGroupRequest
+//
+// @return GetUserGroupResponse
+func (client *Client) GetUserGroup(request *GetUserGroupRequest) (_result *GetUserGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetUserGroupResponse{}
+	_body, _err := client.GetUserGroupWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the complete information of the authenticated user through OpenAPI, including basic information and tenant list.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation returns the detailed information of the current authenticated user.
+//
+// - If the tenant information is invalid, the corresponding error message is returned.
+//
+// - `tenantId` is an optional parameter. If not provided, the default tenant ID of the caller is used.
+//
+// - Multiple authentication methods are supported: AK, BearerToken, and APP authentication.
+//
+// - The returned data includes the user profile (such as username and profile picture URL), role preference settings, and details of all tenants to which the user belongs.
+//
+// - If the current logon tenant is the system tenant (that is, `tenantId=10000`), this is explicitly indicated in the response.
 //
 // @param request - GetUserInfoRequest
 //
@@ -4311,23 +6548,23 @@ func (client *Client) GetUserInfoWithOptions(request *GetUserInfoRequest, header
 
 // Summary:
 //
-// 通过OpenAPI获取鉴权用户的完整信息，包括基本信息、租户列表等。
+// Retrieves the complete information of the authenticated user through OpenAPI, including basic information and tenant list.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口用于返回当前鉴权用户的详细信息。
+// - This operation returns the detailed information of the current authenticated user.
 //
-// - 当租户信息失效时，将返回对应的错误信息。
+// - If the tenant information is invalid, the corresponding error message is returned.
 //
-// - `tenantId`为可选参数，若未提供，则使用调用方默认的租户ID。
+// - `tenantId` is an optional parameter. If not provided, the default tenant ID of the caller is used.
 //
-// - 支持多种认证方式：AK、BearerToken和APP认证。
+// - Multiple authentication methods are supported: AK, BearerToken, and APP authentication.
 //
-// - 返回的数据中包含了用户的个人资料（如用户名、头像链接）、角色偏好设置以及所属的所有租户详情。
+// - The returned data includes the user profile (such as username and profile picture URL), role preference settings, and details of all tenants to which the user belongs.
 //
-// - 特别注意，如果当前登录的租户是系统租户（即`tenantId=10000`），则会在响应中明确标识出来。
+// - If the current logon tenant is the system tenant (that is, `tenantId=10000`), this is explicitly indicated in the response.
 //
 // @param request - GetUserInfoRequest
 //
@@ -4346,23 +6583,23 @@ func (client *Client) GetUserInfo(request *GetUserInfoRequest) (_result *GetUser
 
 // Summary:
 //
-// 授权用户/用户组使用数字员工
+// Grants authorization to authorized users or user groups to use a digital human.
 //
 // Description:
 //
-// 授权用户或用户组使用指定数字员工。
+// Grants authorization to authorized users or user groups to use a specified digital human.
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 构造 AuthContext
+//	1. Constructs an AuthContext from identity.
 //
-//	2. 请求体互斥校验：userIds / userGroupIds 二选一
+//	2. Performs mutual exclusion validation on the request body: specify either userIds or userGroupIds.
 //
-//	3. 委托 AgentAuthorizationAuthorizedService.grant_authorization 执行
+//	3. Delegates to AgentAuthorizationAuthorizedService.grant_authorization to execute.
 //
-//	4. 前置校验：MANAGE 权限 + agent 存在性（由 AuthorizedService 层执行，先鉴权后暴露存在性）
+//	4. Pre-validation: verifies MANAGE permission and agent existence (performed at the AuthorizedService layer, which performs authentication first before it exposes existence).
 //
-//	5. 已存在的授权记录会被更新（expire_date / permissions）
+//	5. Existing authorization records are updated (expire_date / permissions).
 //
 // @param tmpReq - GrantAgentUsersRequest
 //
@@ -4445,23 +6682,23 @@ func (client *Client) GrantAgentUsersWithOptions(tmpReq *GrantAgentUsersRequest,
 
 // Summary:
 //
-// 授权用户/用户组使用数字员工
+// Grants authorization to authorized users or user groups to use a digital human.
 //
 // Description:
 //
-// 授权用户或用户组使用指定数字员工。
+// Grants authorization to authorized users or user groups to use a specified digital human.
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 构造 AuthContext
+//	1. Constructs an AuthContext from identity.
 //
-//	2. 请求体互斥校验：userIds / userGroupIds 二选一
+//	2. Performs mutual exclusion validation on the request body: specify either userIds or userGroupIds.
 //
-//	3. 委托 AgentAuthorizationAuthorizedService.grant_authorization 执行
+//	3. Delegates to AgentAuthorizationAuthorizedService.grant_authorization to execute.
 //
-//	4. 前置校验：MANAGE 权限 + agent 存在性（由 AuthorizedService 层执行，先鉴权后暴露存在性）
+//	4. Pre-validation: verifies MANAGE permission and agent existence (performed at the AuthorizedService layer, which performs authentication first before it exposes existence).
 //
-//	5. 已存在的授权记录会被更新（expire_date / permissions）
+//	5. Existing authorization records are updated (expire_date / permissions).
 //
 // @param request - GrantAgentUsersRequest
 //
@@ -4480,23 +6717,111 @@ func (client *Client) GrantAgentUsers(request *GrantAgentUsersRequest) (_result 
 
 // Summary:
 //
-// 用于查询或下钻查看租户的企业知识库列表。
+// Queries currently effective service notices.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该 API 支持两种模式：当 `directoryId` 为空或为 'root' 时，返回知识库的顶层列表；当 `directoryId` 有具体值时，则进行下钻操作，返回指定目录下的子目录和资源。
+// Performs a paging query for published platform notices that are effective within the current database time window. The invoking identity must be a real user who has the notice viewing permission in the system O&M tenant.
 //
-// - `tenantId` 作为公共参数，若未提供则默认使用调用方的租户 ID。
+// @param request - ListActiveAnnouncementsRequest
 //
-// - 在下钻模式下（即 `directoryId` 非空），可以通过 `sourceTypes` 参数来过滤特定类型的资源。
+// @param headers - map
 //
-// - 排序字段 (`sortField`) 和排序方向 (`sortOrder`) 可以自定义，但非法值将被重置为默认设置。
+// @param runtime - runtime options for this request RuntimeOptions
 //
-// - 搜索功能仅在获取顶层列表时有效，并且只支持模糊匹配名称或描述。
+// @return ListActiveAnnouncementsResponse
+func (client *Client) ListActiveAnnouncementsWithOptions(request *ListActiveAnnouncementsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListActiveAnnouncementsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		body["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListActiveAnnouncements"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listActiveAnnouncements"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListActiveAnnouncementsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
 //
-// - 安全性方面，`tenant_id` 严格从鉴权身份中获取，不允许通过请求体传递。
+// Queries currently effective service notices.
+//
+// Description:
+//
+// ## Request description
+//
+// Performs a paging query for published platform notices that are effective within the current database time window. The invoking identity must be a real user who has the notice viewing permission in the system O&M tenant.
+//
+// @param request - ListActiveAnnouncementsRequest
+//
+// @return ListActiveAnnouncementsResponse
+func (client *Client) ListActiveAnnouncements(request *ListActiveAnnouncementsRequest) (_result *ListActiveAnnouncementsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListActiveAnnouncementsResponse{}
+	_body, _err := client.ListActiveAnnouncementsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries or drills down into the enterprise knowledge base list of a tenant.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This API supports two modes: when `directoryId` is empty or set to \\"root\\", the top-level knowledge base list is returned. When `directoryId` has a specific value, a drill-down operation is performed to return subdirectories and resources under the specified directory.
+//
+// - `tenantId` is a common parameter. If not provided, the caller\\"s tenant ID is used by default.
+//
+// - In drill-down mode (when `directoryId` is not empty), use the `sourceTypes` parameter to filter resources by specific types.
+//
+// - The sort field (`sortField`) and sort order (`sortOrder`) can be customized. Invalid values are reset to default settings.
+//
+// - The search feature is only effective when retrieving the top-level list and supports only fuzzy matching on names or descriptions.
+//
+// - For security purposes, `tenant_id` is strictly obtained from the authenticated identity and cannot be passed through the request body.
 //
 // @param tmpReq - ListAdminKnowledgeBasesRequest
 //
@@ -4579,23 +6904,23 @@ func (client *Client) ListAdminKnowledgeBasesWithOptions(tmpReq *ListAdminKnowle
 
 // Summary:
 //
-// 用于查询或下钻查看租户的企业知识库列表。
+// Queries or drills down into the enterprise knowledge base list of a tenant.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该 API 支持两种模式：当 `directoryId` 为空或为 'root' 时，返回知识库的顶层列表；当 `directoryId` 有具体值时，则进行下钻操作，返回指定目录下的子目录和资源。
+// - This API supports two modes: when `directoryId` is empty or set to \\"root\\", the top-level knowledge base list is returned. When `directoryId` has a specific value, a drill-down operation is performed to return subdirectories and resources under the specified directory.
 //
-// - `tenantId` 作为公共参数，若未提供则默认使用调用方的租户 ID。
+// - `tenantId` is a common parameter. If not provided, the caller\\"s tenant ID is used by default.
 //
-// - 在下钻模式下（即 `directoryId` 非空），可以通过 `sourceTypes` 参数来过滤特定类型的资源。
+// - In drill-down mode (when `directoryId` is not empty), use the `sourceTypes` parameter to filter resources by specific types.
 //
-// - 排序字段 (`sortField`) 和排序方向 (`sortOrder`) 可以自定义，但非法值将被重置为默认设置。
+// - The sort field (`sortField`) and sort order (`sortOrder`) can be customized. Invalid values are reset to default settings.
 //
-// - 搜索功能仅在获取顶层列表时有效，并且只支持模糊匹配名称或描述。
+// - The search feature is only effective when retrieving the top-level list and supports only fuzzy matching on names or descriptions.
 //
-// - 安全性方面，`tenant_id` 严格从鉴权身份中获取，不允许通过请求体传递。
+// - For security purposes, `tenant_id` is strictly obtained from the authenticated identity and cannot be passed through the request body.
 //
 // @param request - ListAdminKnowledgeBasesRequest
 //
@@ -4614,25 +6939,23 @@ func (client *Client) ListAdminKnowledgeBases(request *ListAdminKnowledgeBasesRe
 
 // Summary:
 //
-// 查询租户全量数字员工列表
+// Queries the full list of digital employees for a tenant.
 //
 // Description:
 //
-// 查询租户下全部数字员工列表（含停用）。
+// Queries the full list of digital employees under a tenant, including deactivated ones.
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 构造 AuthContext
+//	1. Constructs AuthContext from identity.
 //
-//	2. 委托 AgentAuthorizationAuthorizedService.list_agents 完成权限校验（APPLICATION_AGENT_VIEW）
+//	2. Delegates to AgentAuthorizationAuthorizedService.list_agents to complete permission verification (APPLICATION_AGENT_VIEW).
 //
-//	3. 返回租户全量数字员工的富字段（operatingObjectName / displayName / authMode / isActive）
+//	3. Returns rich fields for all digital employees of the tenant (operatingObjectName / displayName / authMode / isActive).
 //
-//	4. 系统级 Token 通过 ctx.skip_permission 自动放行
+//	4. System-level tokens are automatically allowed through ctx.skip_permission.
 //
-//	与 listAuthorizedAgents 区别：本接口返回租户全量（含停用、不做授权过滤），
-//
-//	并携带 displayName / isActive 等富字段，供管理端展示。
+//	Difference from listAuthorizedAgents: This operation returns all digital employees of the tenant (including deactivated ones, without authorization filtering) and includes rich fields such as displayName and isActive for management console display.
 //
 // @param request - ListAgentsRequest
 //
@@ -4679,25 +7002,23 @@ func (client *Client) ListAgentsWithOptions(request *ListAgentsRequest, headers 
 
 // Summary:
 //
-// 查询租户全量数字员工列表
+// Queries the full list of digital employees for a tenant.
 //
 // Description:
 //
-// 查询租户下全部数字员工列表（含停用）。
+// Queries the full list of digital employees under a tenant, including deactivated ones.
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 构造 AuthContext
+//	1. Constructs AuthContext from identity.
 //
-//	2. 委托 AgentAuthorizationAuthorizedService.list_agents 完成权限校验（APPLICATION_AGENT_VIEW）
+//	2. Delegates to AgentAuthorizationAuthorizedService.list_agents to complete permission verification (APPLICATION_AGENT_VIEW).
 //
-//	3. 返回租户全量数字员工的富字段（operatingObjectName / displayName / authMode / isActive）
+//	3. Returns rich fields for all digital employees of the tenant (operatingObjectName / displayName / authMode / isActive).
 //
-//	4. 系统级 Token 通过 ctx.skip_permission 自动放行
+//	4. System-level tokens are automatically allowed through ctx.skip_permission.
 //
-//	与 listAuthorizedAgents 区别：本接口返回租户全量（含停用、不做授权过滤），
-//
-//	并携带 displayName / isActive 等富字段，供管理端展示。
+//	Difference from listAuthorizedAgents: This operation returns all digital employees of the tenant (including deactivated ones, without authorization filtering) and includes rich fields such as displayName and isActive for management console display.
 //
 // @param request - ListAgentsRequest
 //
@@ -4716,25 +7037,23 @@ func (client *Client) ListAgents(request *ListAgentsRequest) (_result *ListAgent
 
 // Summary:
 //
-// 查询调用方有指定权限的数字员工名称列表
+// Queries the list of digital human names for which the caller has specified permissions.
 //
 // Description:
 //
-// 查询当前调用方（或指定目标用户）拥有指定权限（USE/MANAGE）的数字员工名称列表。
+// Queries the list of digital human names for which the current caller (or a specified target user) has specified permissions (USE/MANAGE).
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 构造 AuthContext
+//	1. Constructs an AuthContext from the identity.
 //
-//	2. 委托 AgentAuthorizationAuthorizedService.list_authorized_agents 执行查询
+//	2. Delegates to AgentAuthorizationAuthorizedService.list_authorized_agents to execute the query.
 //
-//	3. skip_permission=True 时返回租户全量活跃 agent
+//	3. When skip_permission=True, returns all active agents for the tenant.
 //
-//	4. 普通用户根据授权记录 + auth_mode 过滤
+//	4. Regular users are filtered based on authorization records and auth_mode.
 //
-//	5. 传入 targetUserId（代查他人）时需 APPLICATION_AGENT_VIEW 门控，查询限定本租户；
-//
-//	   目标用户非本租户成员时抛 USER_NOT_IN_TENANT（不静默返回空列表）
+//	5. When targetUserId is specified (querying on behalf of another user), the APPLICATION_AGENT_VIEW gate is required, and the query is restricted to the current tenant. If the target user is not a member of the current tenant, a USER_NOT_IN_TENANT error is thrown (an empty list is not silently returned).
 //
 // @param request - ListAuthorizedAgentsRequest
 //
@@ -4791,25 +7110,23 @@ func (client *Client) ListAuthorizedAgentsWithOptions(request *ListAuthorizedAge
 
 // Summary:
 //
-// 查询调用方有指定权限的数字员工名称列表
+// Queries the list of digital human names for which the caller has specified permissions.
 //
 // Description:
 //
-// 查询当前调用方（或指定目标用户）拥有指定权限（USE/MANAGE）的数字员工名称列表。
+// Queries the list of digital human names for which the current caller (or a specified target user) has specified permissions (USE/MANAGE).
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 构造 AuthContext
+//	1. Constructs an AuthContext from the identity.
 //
-//	2. 委托 AgentAuthorizationAuthorizedService.list_authorized_agents 执行查询
+//	2. Delegates to AgentAuthorizationAuthorizedService.list_authorized_agents to execute the query.
 //
-//	3. skip_permission=True 时返回租户全量活跃 agent
+//	3. When skip_permission=True, returns all active agents for the tenant.
 //
-//	4. 普通用户根据授权记录 + auth_mode 过滤
+//	4. Regular users are filtered based on authorization records and auth_mode.
 //
-//	5. 传入 targetUserId（代查他人）时需 APPLICATION_AGENT_VIEW 门控，查询限定本租户；
-//
-//	   目标用户非本租户成员时抛 USER_NOT_IN_TENANT（不静默返回空列表）
+//	5. When targetUserId is specified (querying on behalf of another user), the APPLICATION_AGENT_VIEW gate is required, and the query is restricted to the current tenant. If the target user is not a member of the current tenant, a USER_NOT_IN_TENANT error is thrown (an empty list is not silently returned).
 //
 // @param request - ListAuthorizedAgentsRequest
 //
@@ -4828,21 +7145,21 @@ func (client *Client) ListAuthorizedAgents(request *ListAuthorizedAgentsRequest)
 
 // Summary:
 //
-// 查询数字员工已授权的用户/用户组列表
+// Queries the list of authorized users or user groups for a digital employee.
 //
 // Description:
 //
-// 查询某数字员工已授权的用户/用户组列表。
+// Queries the list of authorized users or user groups for a specified digital employee.
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 构造 AuthContext
+//	1. Constructs an AuthContext from the identity.
 //
-//	2. 委托 AgentAuthorizationAuthorizedService.list_authorized_users 执行查询
+//	2. Delegates to AgentAuthorizationAuthorizedService.list_authorized_users to execute the query.
 //
-//	3. 权限校验由 AuthorizedService 层 @require_permission(APPLICATION_AGENT_VIEW) 完成
+//	3. Permission verification is performed at the AuthorizedService layer by @require_permission(APPLICATION_AGENT_VIEW).
 //
-//	4. auth_mode=ALL_USERS 时仅展示有 MANAGE 权限的记录
+//	4. When auth_mode=ALL_USERS, only records with MANAGE permissions are displayed.
 //
 // @param request - ListAuthorizedUsersRequest
 //
@@ -4907,21 +7224,21 @@ func (client *Client) ListAuthorizedUsersWithOptions(request *ListAuthorizedUser
 
 // Summary:
 //
-// 查询数字员工已授权的用户/用户组列表
+// Queries the list of authorized users or user groups for a digital employee.
 //
 // Description:
 //
-// 查询某数字员工已授权的用户/用户组列表。
+// Queries the list of authorized users or user groups for a specified digital employee.
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 构造 AuthContext
+//	1. Constructs an AuthContext from the identity.
 //
-//	2. 委托 AgentAuthorizationAuthorizedService.list_authorized_users 执行查询
+//	2. Delegates to AgentAuthorizationAuthorizedService.list_authorized_users to execute the query.
 //
-//	3. 权限校验由 AuthorizedService 层 @require_permission(APPLICATION_AGENT_VIEW) 完成
+//	3. Permission verification is performed at the AuthorizedService layer by @require_permission(APPLICATION_AGENT_VIEW).
 //
-//	4. auth_mode=ALL_USERS 时仅展示有 MANAGE 权限的记录
+//	4. When auth_mode=ALL_USERS, only records with MANAGE permissions are displayed.
 //
 // @param request - ListAuthorizedUsersRequest
 //
@@ -4940,23 +7257,23 @@ func (client *Client) ListAuthorizedUsers(request *ListAuthorizedUsersRequest) (
 
 // Summary:
 //
-// 枚举可用的组织同步配置
+// Enumerates available organization synchronization configurations.
 //
 // Description:
 //
-// 枚举当前租户下所有可用的组织同步配置。
+// Enumerates all available organization synchronization configurations under the current tenant.
 //
-//	返回统一格式的 configs 列表，涵盖四种平台类型：
+//	Returns a unified configs list covering four platform types:
 //
-//	- **wecom**：从 SsoProviderRegistry 获取活跃的企微 SSO 配置
+//	- **wecom**: Retrieves active WeCom SSO configurations from SsoProviderRegistry.
 //
-//	- **saml**：从 SsoProviderRegistry 获取活跃的 SAML SSO 配置，corpId 取 idpEntityId
+//	- **saml**: Retrieves active SAML SSO configurations from SsoProviderRegistry. The corpId is set to idpEntityId.
 //
-//	- **oauth2**：从 SsoProviderRegistry 获取活跃的 OAuth2 SSO 配置，corpId 取 clientId
+//	- **oauth2**: Retrieves active OAuth2 SSO configurations from SsoProviderRegistry. The corpId is set to clientId.
 //
-//	- **custom**：从数据库查询该租户已注册的纯自定义组织
+//	- **custom**: Queries the database for pure custom organizations registered under the tenant.
 //
-//	客户端根据返回的 platformType 区分处理逻辑，corpId 为后续同步接口的必传参数。
+//	The client distinguishes processing logic based on the returned platformType. The corpId is a required parameter for subsequent synchronization operations.
 //
 // @param request - ListAvailableConfigsRequest
 //
@@ -5003,23 +7320,23 @@ func (client *Client) ListAvailableConfigsWithOptions(request *ListAvailableConf
 
 // Summary:
 //
-// 枚举可用的组织同步配置
+// Enumerates available organization synchronization configurations.
 //
 // Description:
 //
-// 枚举当前租户下所有可用的组织同步配置。
+// Enumerates all available organization synchronization configurations under the current tenant.
 //
-//	返回统一格式的 configs 列表，涵盖四种平台类型：
+//	Returns a unified configs list covering four platform types:
 //
-//	- **wecom**：从 SsoProviderRegistry 获取活跃的企微 SSO 配置
+//	- **wecom**: Retrieves active WeCom SSO configurations from SsoProviderRegistry.
 //
-//	- **saml**：从 SsoProviderRegistry 获取活跃的 SAML SSO 配置，corpId 取 idpEntityId
+//	- **saml**: Retrieves active SAML SSO configurations from SsoProviderRegistry. The corpId is set to idpEntityId.
 //
-//	- **oauth2**：从 SsoProviderRegistry 获取活跃的 OAuth2 SSO 配置，corpId 取 clientId
+//	- **oauth2**: Retrieves active OAuth2 SSO configurations from SsoProviderRegistry. The corpId is set to clientId.
 //
-//	- **custom**：从数据库查询该租户已注册的纯自定义组织
+//	- **custom**: Queries the database for pure custom organizations registered under the tenant.
 //
-//	客户端根据返回的 platformType 区分处理逻辑，corpId 为后续同步接口的必传参数。
+//	The client distinguishes processing logic based on the returned platformType. The corpId is a required parameter for subsequent synchronization operations.
 //
 // @param request - ListAvailableConfigsRequest
 //
@@ -5038,21 +7355,21 @@ func (client *Client) ListAvailableConfigs(request *ListAvailableConfigsRequest)
 
 // Summary:
 //
-// 通过OpenAPI查询并筛选账单列表，支持多种条件过滤。
+// Queries and filters the bill list through OpenAPI with support for multiple filter conditions.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该接口用于查询指定条件下的账单列表。
+// - This operation queries the bill list based on specified conditions.
 //
-// - 支持按租户、用户、操作类型、状态、时间范围、业务来源等条件进行筛选。
+// - Supports filtering by tenant, user, operation type, status, time range, business source, and other conditions.
 //
-// - 分页返回账单数据，默认每页显示20条记录。
+// - Returns bill data in pages. The default page size is 20 records.
 //
-// - 可选择是否过滤掉credit消耗为0的账单，默认过滤。
+// - You can choose whether to filter out bills with zero credit consumption. By default, such bills are filtered out.
 //
-// - 请求时需提供必要的认证信息（如AK、BearerToken或APP认证）。
+// - Authentication information (such as AK, BearerToken, or APP authentication) is required in the request.
 //
 // @param request - ListBillingRequest
 //
@@ -5141,21 +7458,21 @@ func (client *Client) ListBillingWithOptions(request *ListBillingRequest, header
 
 // Summary:
 //
-// 通过OpenAPI查询并筛选账单列表，支持多种条件过滤。
+// Queries and filters the bill list through OpenAPI with support for multiple filter conditions.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该接口用于查询指定条件下的账单列表。
+// - This operation queries the bill list based on specified conditions.
 //
-// - 支持按租户、用户、操作类型、状态、时间范围、业务来源等条件进行筛选。
+// - Supports filtering by tenant, user, operation type, status, time range, business source, and other conditions.
 //
-// - 分页返回账单数据，默认每页显示20条记录。
+// - Returns bill data in pages. The default page size is 20 records.
 //
-// - 可选择是否过滤掉credit消耗为0的账单，默认过滤。
+// - You can choose whether to filter out bills with zero credit consumption. By default, such bills are filtered out.
 //
-// - 请求时需提供必要的认证信息（如AK、BearerToken或APP认证）。
+// - Authentication information (such as AK, BearerToken, or APP authentication) is required in the request.
 //
 // @param request - ListBillingRequest
 //
@@ -5174,17 +7491,17 @@ func (client *Client) ListBilling(request *ListBillingRequest) (_result *ListBil
 
 // Summary:
 //
-// 按创建时间倒序列出当前用户的聊天会话。
+// Lists chat sessions of the current user in reverse chronological order by creation time.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该 API 支持通过多种参数进行过滤和排序，包括租户 ID、分页大小、分页令牌、关键词搜索、数字员工名称以及更新时间区间。
+// - This API supports filtering and sorting by multiple parameters, including tenant ID, page size, pagination token, keyword search, digital employee name, and update time range.
 //
-// - 默认情况下，结果将按照 `UpdatedAt` 字段降序排列。
+// - By default, results are sorted in descending order by the `UpdatedAt` field.
 //
-// - 如果提供了无效的 `NextToken` 或者 `PageSize` 超出了允许范围（1-100），API 将返回 400 错误。
+// - If an invalid `NextToken` is provided or `PageSize` exceeds the allowed range (1-100), the API returns a 400 error.
 //
 // @param request - ListChatSessionsRequest
 //
@@ -5247,17 +7564,17 @@ func (client *Client) ListChatSessionsWithOptions(request *ListChatSessionsReque
 
 // Summary:
 //
-// 按创建时间倒序列出当前用户的聊天会话。
+// Lists chat sessions of the current user in reverse chronological order by creation time.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该 API 支持通过多种参数进行过滤和排序，包括租户 ID、分页大小、分页令牌、关键词搜索、数字员工名称以及更新时间区间。
+// - This API supports filtering and sorting by multiple parameters, including tenant ID, page size, pagination token, keyword search, digital employee name, and update time range.
 //
-// - 默认情况下，结果将按照 `UpdatedAt` 字段降序排列。
+// - By default, results are sorted in descending order by the `UpdatedAt` field.
 //
-// - 如果提供了无效的 `NextToken` 或者 `PageSize` 超出了允许范围（1-100），API 将返回 400 错误。
+// - If an invalid `NextToken` is provided or `PageSize` exceeds the allowed range (1-100), the API returns a 400 error.
 //
 // @param request - ListChatSessionsRequest
 //
@@ -5276,19 +7593,17 @@ func (client *Client) ListChatSessions(request *ListChatSessionsRequest) (_resul
 
 // Summary:
 //
-// 查询租户可用于语义查询的图谱列表
+// Queries the list of knowledge graphs available for semantic queries under a tenant.
 //
 // Description:
 //
-// 列出身份租户下的已发布图谱。
+// Lists published knowledge graphs under an identity tenant.
 //
-//	CLI 映射为 ``winnexo graph list``；``tenantId`` 是必传公共参数，不进入请求体。
+//	CLI mapping: ``winnexo graph list``. ``tenantId`` is a required common parameter and is not included in the request body.
 //
-//	返回的 ``graphName`` 可直接用于 ``querySemanticKnowledge``。该查询与现有前台
+//	The returned ``graphName`` can be used directly in ``querySemanticKnowledge``. This query is consistent with the existing frontend knowledge graph list and does not apply digital worker permission filtering. Specific semantic queries still verify agent USE permissions.
 //
-//	图谱列表保持一致，不做数字员工权限过滤；具体语义查询仍会校验 agent USE 权限。
-//
-//	数据库异常直接进入统一 5xx 错误处理，不会伪装为成功空列表。
+//	Database exceptions go directly into unified 5xx error handling and are not disguised as a successful empty list.
 //
 // @param request - ListGraphsRequest
 //
@@ -5335,19 +7650,17 @@ func (client *Client) ListGraphsWithOptions(request *ListGraphsRequest, headers 
 
 // Summary:
 //
-// 查询租户可用于语义查询的图谱列表
+// Queries the list of knowledge graphs available for semantic queries under a tenant.
 //
 // Description:
 //
-// 列出身份租户下的已发布图谱。
+// Lists published knowledge graphs under an identity tenant.
 //
-//	CLI 映射为 ``winnexo graph list``；``tenantId`` 是必传公共参数，不进入请求体。
+//	CLI mapping: ``winnexo graph list``. ``tenantId`` is a required common parameter and is not included in the request body.
 //
-//	返回的 ``graphName`` 可直接用于 ``querySemanticKnowledge``。该查询与现有前台
+//	The returned ``graphName`` can be used directly in ``querySemanticKnowledge``. This query is consistent with the existing frontend knowledge graph list and does not apply digital worker permission filtering. Specific semantic queries still verify agent USE permissions.
 //
-//	图谱列表保持一致，不做数字员工权限过滤；具体语义查询仍会校验 agent USE 权限。
-//
-//	数据库异常直接进入统一 5xx 错误处理，不会伪装为成功空列表。
+//	Database exceptions go directly into unified 5xx error handling and are not disguised as a successful empty list.
 //
 // @param request - ListGraphsRequest
 //
@@ -5366,19 +7679,19 @@ func (client *Client) ListGraphs(request *ListGraphsRequest) (_result *ListGraph
 
 // Summary:
 //
-// 查询企业知识库的分类目录树，支持按指定字段排序。
+// Queries the category directory tree of an enterprise knowledge base, with support for sorting by a specified field.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该 API 用于获取企业知识库的分类列表（子目录树），需要具备知识库查看权限。
+// - This API retrieves the category list (subdirectory tree) of an enterprise knowledge base. You must have the knowledge base view permission.
 //
-// - 如果未提供 `directoryId` 参数，则返回企业知识库根目录下的所有分类树；如果提供了 `directoryId`，则以该目录为根返回其子目录树。
+// - If the `directoryId` parameter is not provided, the API returns all category trees under the root directory of the enterprise knowledge base. If `directoryId` is provided, the API returns the subdirectory tree rooted at the specified directory.
 //
-// - 支持通过 `sortField` 和 `sortOrder` 参数对结果进行排序，默认按照创建时间降序排列。
+// - You can sort results by using the `sortField` and `sortOrder` parameters. By default, results are sorted by creation time in descending order.
 //
-// - 安全约束：`tenant_id` 和 `user_id` 仅来自鉴权身份，并且调用者必须拥有 `DEVELOPMENT_KB_VIEW` 功能权限。
+// - Security constraints: `tenant_id` and `user_id` are derived only from the authenticated identity, and the caller must have the `DEVELOPMENT_KB_VIEW` feature permission.
 //
 // @param request - ListKnowledgeBaseDirectoriesRequest
 //
@@ -5439,19 +7752,19 @@ func (client *Client) ListKnowledgeBaseDirectoriesWithOptions(request *ListKnowl
 
 // Summary:
 //
-// 查询企业知识库的分类目录树，支持按指定字段排序。
+// Queries the category directory tree of an enterprise knowledge base, with support for sorting by a specified field.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该 API 用于获取企业知识库的分类列表（子目录树），需要具备知识库查看权限。
+// - This API retrieves the category list (subdirectory tree) of an enterprise knowledge base. You must have the knowledge base view permission.
 //
-// - 如果未提供 `directoryId` 参数，则返回企业知识库根目录下的所有分类树；如果提供了 `directoryId`，则以该目录为根返回其子目录树。
+// - If the `directoryId` parameter is not provided, the API returns all category trees under the root directory of the enterprise knowledge base. If `directoryId` is provided, the API returns the subdirectory tree rooted at the specified directory.
 //
-// - 支持通过 `sortField` 和 `sortOrder` 参数对结果进行排序，默认按照创建时间降序排列。
+// - You can sort results by using the `sortField` and `sortOrder` parameters. By default, results are sorted by creation time in descending order.
 //
-// - 安全约束：`tenant_id` 和 `user_id` 仅来自鉴权身份，并且调用者必须拥有 `DEVELOPMENT_KB_VIEW` 功能权限。
+// - Security constraints: `tenant_id` and `user_id` are derived only from the authenticated identity, and the caller must have the `DEVELOPMENT_KB_VIEW` feature permission.
 //
 // @param request - ListKnowledgeBaseDirectoriesRequest
 //
@@ -5470,25 +7783,25 @@ func (client *Client) ListKnowledgeBaseDirectories(request *ListKnowledgeBaseDir
 
 // Summary:
 //
-// 查询当前用户的产出列表，支持按条件过滤和分页。
+// Queries the output list of the current user with support for conditional filtering and pagination.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该API用于查询当前登录用户的产出列表。
+// - This API operation queries the output list of the current logon user.
 //
-// - `tenantId`作为公共参数，缺省时使用调用方默认租户。
+// - `tenantId` is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
 //
-// - 支持通过`operatingObjectName`、`itemType`、`keyword`等参数进行过滤查询。
+// - You can filter results by using parameters such as `operatingObjectName`, `itemType`, and `keyword`.
 //
-// - 可以设置`sharedOnly`为`true`来仅展示开启分享的产出。
+// - Set `sharedOnly` to `true` to display only shared outputs.
 //
-// - 分页信息通过`page`（页码）和`pageSize`（每页数量）控制，默认从第1页开始，每页显示20条记录。
+// - Pagination is controlled by `page` (page number) and `pageSize` (number of entries per page). By default, the first page is returned with 20 records per page.
 //
-// - 默认按更新时间倒序排列。
+// - Results are sorted by update time in descending order by default.
 //
-// - 调用者在请求体中传入的`tenant_id`或`user_id`将被忽略，这些信息仅来自鉴权身份。
+// - The `tenant_id` or `user_id` values passed in the request body are ignored. This information is obtained only from the authenticated identity.
 //
 // @param request - ListOutputFilesRequest
 //
@@ -5561,25 +7874,25 @@ func (client *Client) ListOutputFilesWithOptions(request *ListOutputFilesRequest
 
 // Summary:
 //
-// 查询当前用户的产出列表，支持按条件过滤和分页。
+// Queries the output list of the current user with support for conditional filtering and pagination.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该API用于查询当前登录用户的产出列表。
+// - This API operation queries the output list of the current logon user.
 //
-// - `tenantId`作为公共参数，缺省时使用调用方默认租户。
+// - `tenantId` is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
 //
-// - 支持通过`operatingObjectName`、`itemType`、`keyword`等参数进行过滤查询。
+// - You can filter results by using parameters such as `operatingObjectName`, `itemType`, and `keyword`.
 //
-// - 可以设置`sharedOnly`为`true`来仅展示开启分享的产出。
+// - Set `sharedOnly` to `true` to display only shared outputs.
 //
-// - 分页信息通过`page`（页码）和`pageSize`（每页数量）控制，默认从第1页开始，每页显示20条记录。
+// - Pagination is controlled by `page` (page number) and `pageSize` (number of entries per page). By default, the first page is returned with 20 records per page.
 //
-// - 默认按更新时间倒序排列。
+// - Results are sorted by update time in descending order by default.
 //
-// - 调用者在请求体中传入的`tenant_id`或`user_id`将被忽略，这些信息仅来自鉴权身份。
+// - The `tenant_id` or `user_id` values passed in the request body are ignored. This information is obtained only from the authenticated identity.
 //
 // @param request - ListOutputFilesRequest
 //
@@ -5598,23 +7911,23 @@ func (client *Client) ListOutputFiles(request *ListOutputFilesRequest) (_result 
 
 // Summary:
 //
-// 查询指定数字员工资源目录下的子目录与资源。
+// Queries subdirectories and resources under a specified digital employee resource directory.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该 API 用于下钻查询"我的资源"目录下的子目录与资源。
+// - This API is used to drill down and query subdirectories and resources under the "My Resources" directory.
 //
-// - 当 `directoryId` 设置为 'root' 时，服务将自动解析并返回当前数字员工默认根目录下的内容；若提供具体的目录 ID，则返回该目录下的子目录和资源。
+// - When `directoryId` is set to \\"root\\", the service automatically resolves and returns the content under the current digital employee\\"s default root directory. If a specific directory ID is provided, the subdirectories and resources under that directory are returned.
 //
-// - 安全约束：`tenant_id` 和 `user_id` 只能来自鉴权身份信息，调用方在请求体中提供的这些字段将被忽略。
+// - Security constraint: `tenant_id` and `user_id` can only come from the authenticated identity information. These fields provided by the caller in the request body are ignored.
 //
-// - 支持通过 `sourceTypes` 参数筛选特定类型的资源，当此参数有值时，仅返回符合类型条件的资源而不包含子目录。
+// - You can use the `sourceTypes` parameter to filter resources of specific types. When this parameter has a value, only resources that match the type condition are returned, and subdirectories are not included.
 //
-// - 排序支持按名称 (`name`)、创建时间 (`gmt_create`) 或修改时间 (`gmt_modified`) 进行升序或降序排列。
+// - Sorting supports ascending or descending order by name (`name`), creation time (`gmt_create`), or modification time (`gmt_modified`).
 //
-// - 分页功能允许用户自定义每页显示的数量（最大100）及当前查看的页码。
+// - The pagination feature allows you to customize the number of items displayed per page (maximum 100) and the current page number.
 //
 // @param tmpReq - ListPersonalDirectoryContentsRequest
 //
@@ -5697,23 +8010,23 @@ func (client *Client) ListPersonalDirectoryContentsWithOptions(tmpReq *ListPerso
 
 // Summary:
 //
-// 查询指定数字员工资源目录下的子目录与资源。
+// Queries subdirectories and resources under a specified digital employee resource directory.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该 API 用于下钻查询"我的资源"目录下的子目录与资源。
+// - This API is used to drill down and query subdirectories and resources under the "My Resources" directory.
 //
-// - 当 `directoryId` 设置为 'root' 时，服务将自动解析并返回当前数字员工默认根目录下的内容；若提供具体的目录 ID，则返回该目录下的子目录和资源。
+// - When `directoryId` is set to \\"root\\", the service automatically resolves and returns the content under the current digital employee\\"s default root directory. If a specific directory ID is provided, the subdirectories and resources under that directory are returned.
 //
-// - 安全约束：`tenant_id` 和 `user_id` 只能来自鉴权身份信息，调用方在请求体中提供的这些字段将被忽略。
+// - Security constraint: `tenant_id` and `user_id` can only come from the authenticated identity information. These fields provided by the caller in the request body are ignored.
 //
-// - 支持通过 `sourceTypes` 参数筛选特定类型的资源，当此参数有值时，仅返回符合类型条件的资源而不包含子目录。
+// - You can use the `sourceTypes` parameter to filter resources of specific types. When this parameter has a value, only resources that match the type condition are returned, and subdirectories are not included.
 //
-// - 排序支持按名称 (`name`)、创建时间 (`gmt_create`) 或修改时间 (`gmt_modified`) 进行升序或降序排列。
+// - Sorting supports ascending or descending order by name (`name`), creation time (`gmt_create`), or modification time (`gmt_modified`).
 //
-// - 分页功能允许用户自定义每页显示的数量（最大100）及当前查看的页码。
+// - The pagination feature allows you to customize the number of items displayed per page (maximum 100) and the current page number.
 //
 // @param request - ListPersonalDirectoryContentsRequest
 //
@@ -5732,23 +8045,23 @@ func (client *Client) ListPersonalDirectoryContents(request *ListPersonalDirecto
 
 // Summary:
 //
-// 查询系统内置角色列表
+// Queries the list of system built-in roles.
 //
 // Description:
 //
-// 查询系统内置角色列表。
+// Queries the list of system built-in roles.
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 构造 AuthContext
+//	1. Constructs AuthContext from identity.
 //
-//	2. 委托 UserManagementAuthorizedService.list_system_roles 完成权限校验（PLATFORM_USER_VIEW）
+//	2. Delegates to UserManagementAuthorizedService.list_system_roles for permission verification (PLATFORM_USER_VIEW).
 //
-//	3. 按请求 Accept-Language 渲染角色名称与说明
+//	3. Renders role names and descriptions based on the request Accept-Language header.
 //
-//	4. 返回固定的 7 个系统内置角色
+//	4. Returns a fixed set of 7 system built-in roles.
 //
-//	返回字段 roleCode 可直接用于 createUser / updateUser 的 roleCodes 参数。
+//	The returned roleCode field can be directly used as the roleCodes parameter for createUser or updateUser.
 //
 // @param request - ListRolesRequest
 //
@@ -5795,23 +8108,23 @@ func (client *Client) ListRolesWithOptions(request *ListRolesRequest, headers ma
 
 // Summary:
 //
-// 查询系统内置角色列表
+// Queries the list of system built-in roles.
 //
 // Description:
 //
-// 查询系统内置角色列表。
+// Queries the list of system built-in roles.
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 构造 AuthContext
+//	1. Constructs AuthContext from identity.
 //
-//	2. 委托 UserManagementAuthorizedService.list_system_roles 完成权限校验（PLATFORM_USER_VIEW）
+//	2. Delegates to UserManagementAuthorizedService.list_system_roles for permission verification (PLATFORM_USER_VIEW).
 //
-//	3. 按请求 Accept-Language 渲染角色名称与说明
+//	3. Renders role names and descriptions based on the request Accept-Language header.
 //
-//	4. 返回固定的 7 个系统内置角色
+//	4. Returns a fixed set of 7 system built-in roles.
 //
-//	返回字段 roleCode 可直接用于 createUser / updateUser 的 roleCodes 参数。
+//	The returned roleCode field can be directly used as the roleCodes parameter for createUser or updateUser.
 //
 // @param request - ListRolesRequest
 //
@@ -5830,25 +8143,53 @@ func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesRe
 
 // Summary:
 //
-// 获取定时任务列表
+// Retrieves a list of scheduled tasks.
 //
-// @param request - ListScheduledTasksRequest
+// Description:
+//
+// ## Operation description
+//
+// - This operation uploads a file to an enterprise knowledge base.
+//
+// - The `DEVELOPMENT_KB_MANAGE` permission is required to call this API.
+//
+// - You must provide the OSS persistent address (`filePath`) of the file when uploading.
+//
+// - Optional parameters include the public access URL and original file name to enhance the completeness of file information.
+//
+// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee.
+//
+// - You can add tags to the resource by using `sourceTags` for subsequent management and retrieval.
+//
+// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Make sure your account balance is sufficient.
+//
+// @param tmpReq - ListScheduledTasksRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListScheduledTasksResponse
-func (client *Client) ListScheduledTasksWithOptions(request *ListScheduledTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListScheduledTasksResponse, _err error) {
+func (client *Client) ListScheduledTasksWithOptions(tmpReq *ListScheduledTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListScheduledTasksResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListScheduledTasksShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Visibilities) {
+		request.VisibilitiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Visibilities, dara.String("visibilities"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CollaborationGroupId) {
 		query["collaborationGroupId"] = request.CollaborationGroupId
+	}
+
+	if !dara.IsNil(request.CreatorOnly) {
+		query["creatorOnly"] = request.CreatorOnly
 	}
 
 	if !dara.IsNil(request.Keyword) {
@@ -5873,6 +8214,10 @@ func (client *Client) ListScheduledTasksWithOptions(request *ListScheduledTasksR
 
 	if !dara.IsNil(request.TenantId) {
 		query["tenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.VisibilitiesShrink) {
+		query["visibilities"] = request.VisibilitiesShrink
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5901,7 +8246,25 @@ func (client *Client) ListScheduledTasksWithOptions(request *ListScheduledTasksR
 
 // Summary:
 //
-// 获取定时任务列表
+// Retrieves a list of scheduled tasks.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation uploads a file to an enterprise knowledge base.
+//
+// - The `DEVELOPMENT_KB_MANAGE` permission is required to call this API.
+//
+// - You must provide the OSS persistent address (`filePath`) of the file when uploading.
+//
+// - Optional parameters include the public access URL and original file name to enhance the completeness of file information.
+//
+// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee.
+//
+// - You can add tags to the resource by using `sourceTags` for subsequent management and retrieval.
+//
+// - This operation initiates a billing item (UNSTRUCTURED_PARSE). Make sure your account balance is sufficient.
 //
 // @param request - ListScheduledTasksRequest
 //
@@ -5920,35 +8283,35 @@ func (client *Client) ListScheduledTasks(request *ListScheduledTasksRequest) (_r
 
 // Summary:
 //
-// 列出当前租户可见的技能。
+// Lists the skills visible to the current tenant.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 该 API 用于获取当前租户下所有可见的技能列表。支持按数字员工绑定关系、技能来源、标签、关键词等条件进行过滤，并支持分页。
+// This API retrieves all visible skills under the current tenant. It supports filtering by digital employee binding relationship, skill source, tags, keywords, and other conditions, and supports pagination.
 //
-// ### 入参
+// ### Request parameters
 //
-// - **TenantId**：可选，公共参数，由网关透传到后端 Header；不传时使用当前调用方所属的默认租户。
+// - **TenantId**: Optional. A common parameter passed through by the gateway to the backend header. If not specified, the default tenant of the current caller is used.
 //
-// - **FilterType**：可选，技能筛选维度。可选值：`ALL`(全部已发布)、`BUILTIN`(内置已发布)、`CUSTOM`(自定义已发布)、`DRAFT`(草稿箱，含未发布修改的已发布技能)。默认 `ALL`。
+// - **FilterType**: Optional. The skill filtering dimension. Valid values: `ALL` (all published), `BUILTIN` (built-in published), `CUSTOM` (custom published), `DRAFT` (drafts, including published skills with unpublished modifications). Default value: `ALL`.
 //
-// - **Tags**：可选，按标签过滤，数组任一命中即匹配。
+// - **Tags**: Optional. Filters by tags. A match occurs if any tag in the array is hit.
 //
-// - **Keyword**：可选，按技能名称或描述模糊匹配。
+// - **Keyword**: Optional. Performs fuzzy matching by skill name or description.
 //
-// - **Page**：可选，页码，最小 1，默认 1。
+// - **Page**: Optional. The page number. Minimum value: 1. Default value: 1.
 //
-// - **PageSize**：可选，每页数量，范围 1~100，默认 20。
+// - **PageSize**: Optional. The number of entries per page. Value range: 1 to 100. Default value: 20.
 //
-// - **OperatingObjectName**：可选，数字员工名称，传入时按绑定关系过滤；必须配合 `BindStatus` 使用。
+// - **OperatingObjectName**: Optional. The digital employee name. If specified, filters by binding relationship. Must be used together with `BindStatus`.
 //
-// - **BindStatus**：可选，绑定状态。可选值：`BOUND`(已绑定)、`UNBOUND`(未绑定的全局技能)。
+// - **BindStatus**: Optional. The binding status. Valid values: `BOUND` (bound), `UNBOUND` (unbound global skills).
 //
-// ### 出参
+// ### Response parameters
 //
-// 响应包含技能列表 `items`、总数 `total`、当前页 `page` 与每页数量 `pageSize`。
+// The response contains the skill list `items`, total count `total`, current page `page`, and page size `pageSize`.
 //
 // @param tmpReq - ListSkillsRequest
 //
@@ -6031,35 +8394,35 @@ func (client *Client) ListSkillsWithOptions(tmpReq *ListSkillsRequest, headers m
 
 // Summary:
 //
-// 列出当前租户可见的技能。
+// Lists the skills visible to the current tenant.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 该 API 用于获取当前租户下所有可见的技能列表。支持按数字员工绑定关系、技能来源、标签、关键词等条件进行过滤，并支持分页。
+// This API retrieves all visible skills under the current tenant. It supports filtering by digital employee binding relationship, skill source, tags, keywords, and other conditions, and supports pagination.
 //
-// ### 入参
+// ### Request parameters
 //
-// - **TenantId**：可选，公共参数，由网关透传到后端 Header；不传时使用当前调用方所属的默认租户。
+// - **TenantId**: Optional. A common parameter passed through by the gateway to the backend header. If not specified, the default tenant of the current caller is used.
 //
-// - **FilterType**：可选，技能筛选维度。可选值：`ALL`(全部已发布)、`BUILTIN`(内置已发布)、`CUSTOM`(自定义已发布)、`DRAFT`(草稿箱，含未发布修改的已发布技能)。默认 `ALL`。
+// - **FilterType**: Optional. The skill filtering dimension. Valid values: `ALL` (all published), `BUILTIN` (built-in published), `CUSTOM` (custom published), `DRAFT` (drafts, including published skills with unpublished modifications). Default value: `ALL`.
 //
-// - **Tags**：可选，按标签过滤，数组任一命中即匹配。
+// - **Tags**: Optional. Filters by tags. A match occurs if any tag in the array is hit.
 //
-// - **Keyword**：可选，按技能名称或描述模糊匹配。
+// - **Keyword**: Optional. Performs fuzzy matching by skill name or description.
 //
-// - **Page**：可选，页码，最小 1，默认 1。
+// - **Page**: Optional. The page number. Minimum value: 1. Default value: 1.
 //
-// - **PageSize**：可选，每页数量，范围 1~100，默认 20。
+// - **PageSize**: Optional. The number of entries per page. Value range: 1 to 100. Default value: 20.
 //
-// - **OperatingObjectName**：可选，数字员工名称，传入时按绑定关系过滤；必须配合 `BindStatus` 使用。
+// - **OperatingObjectName**: Optional. The digital employee name. If specified, filters by binding relationship. Must be used together with `BindStatus`.
 //
-// - **BindStatus**：可选，绑定状态。可选值：`BOUND`(已绑定)、`UNBOUND`(未绑定的全局技能)。
+// - **BindStatus**: Optional. The binding status. Valid values: `BOUND` (bound), `UNBOUND` (unbound global skills).
 //
-// ### 出参
+// ### Response parameters
 //
-// 响应包含技能列表 `items`、总数 `total`、当前页 `page` 与每页数量 `pageSize`。
+// The response contains the skill list `items`, total count `total`, current page `page`, and page size `pageSize`.
 //
 // @param request - ListSkillsRequest
 //
@@ -6078,21 +8441,21 @@ func (client *Client) ListSkills(request *ListSkillsRequest) (_result *ListSkill
 
 // Summary:
 //
-// 按管理端口径分页查询企业知识库目录与资源。
+// Retrieves the list of knowledge bases.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API用于分页查询企业知识库中的目录内容和资源。
+// - This API is used to perform a paging query on the folder content and resources in an enterprise knowledge base.
 //
-// - 支持通过多种参数进行过滤和排序，如`directoryId`、`page`、`pageSize`、`sortField`、`sortOrder`等。
+// - Multiple parameters are supported for filtering and sorting, such as `directoryId`, `page`, `pageSize`, `sortField`, `sortOrder`, and others.
 //
-// - `sourceTypes`参数允许用户根据资源类型进行过滤，多个类型使用逗号分隔。
+// - The `sourceTypes` parameter allows you to filter by resource type. Separate multiple types with commas.
 //
-// - 当不传或传入`root`作为`directoryId`时，默认查询知识库根目录列表。
+// - When `directoryId` is not specified or set to `root`, the root folder list of the knowledge base is queried by default.
 //
-// - 默认的排序字段为`name`，默认排序方向为升序（`asc`）。
+// - The default sort field is `name`, and the default sort order is ascending (`asc`).
 //
 // @param request - ListTenantDirectoryRequest
 //
@@ -6165,21 +8528,21 @@ func (client *Client) ListTenantDirectoryWithOptions(request *ListTenantDirector
 
 // Summary:
 //
-// 按管理端口径分页查询企业知识库目录与资源。
+// Retrieves the list of knowledge bases.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API用于分页查询企业知识库中的目录内容和资源。
+// - This API is used to perform a paging query on the folder content and resources in an enterprise knowledge base.
 //
-// - 支持通过多种参数进行过滤和排序，如`directoryId`、`page`、`pageSize`、`sortField`、`sortOrder`等。
+// - Multiple parameters are supported for filtering and sorting, such as `directoryId`, `page`, `pageSize`, `sortField`, `sortOrder`, and others.
 //
-// - `sourceTypes`参数允许用户根据资源类型进行过滤，多个类型使用逗号分隔。
+// - The `sourceTypes` parameter allows you to filter by resource type. Separate multiple types with commas.
 //
-// - 当不传或传入`root`作为`directoryId`时，默认查询知识库根目录列表。
+// - When `directoryId` is not specified or set to `root`, the root folder list of the knowledge base is queried by default.
 //
-// - 默认的排序字段为`name`，默认排序方向为升序（`asc`）。
+// - The default sort field is `name`, and the default sort order is ascending (`asc`).
 //
 // @param request - ListTenantDirectoryRequest
 //
@@ -6198,17 +8561,107 @@ func (client *Client) ListTenantDirectory(request *ListTenantDirectoryRequest) (
 
 // Summary:
 //
-// 查询当前 OpenAPI 用户可见知识库目录内容。
+// Returns the multi-level user group tree for the current tenant.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 本接口按企业知识库前台口径返回指定目录的子目录和 READY 资源。
+// This API is used to query the complete user group hierarchy under a specified tenant, including the basic information of each user group and its direct child user group list. Use the `tenantId` parameter to specify the tenant ID to query. If this parameter is not provided, the caller\\"s tenant ID is used by default.
 //
-// - 用户身份与目录可见范围均来自 OpenAPI 鉴权上下文。
+// ### Precautions
 //
-// - `sourceTypes` 有值时仅返回资源；`keyword` 仅搜索当前目录层级。
+// - This operation returns only the direct member count and direct child user group count. It does not include information about indirect members or child groups.
+//
+// - The external synchronization status field is empty when data is normal. It is populated with relevant information only when data is out of sync between an external system (such as WeCom) and the internal system.
+//
+// @param request - ListUserGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserGroupsResponse
+func (client *Client) ListUserGroupsWithOptions(request *ListUserGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListUserGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListUserGroups"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listUserGroups"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListUserGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Returns the multi-level user group tree for the current tenant.
+//
+// Description:
+//
+// ## Request description
+//
+// This API is used to query the complete user group hierarchy under a specified tenant, including the basic information of each user group and its direct child user group list. Use the `tenantId` parameter to specify the tenant ID to query. If this parameter is not provided, the caller\\"s tenant ID is used by default.
+//
+// ### Precautions
+//
+// - This operation returns only the direct member count and direct child user group count. It does not include information about indirect members or child groups.
+//
+// - The external synchronization status field is empty when data is normal. It is populated with relevant information only when data is out of sync between an external system (such as WeCom) and the internal system.
+//
+// @param request - ListUserGroupsRequest
+//
+// @return ListUserGroupsResponse
+func (client *Client) ListUserGroups(request *ListUserGroupsRequest) (_result *ListUserGroupsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListUserGroupsResponse{}
+	_body, _err := client.ListUserGroupsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the knowledge base directory content visible to the current OpenAPI user.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation returns subdirectories and READY resources under the specified directory based on the enterprise knowledge base frontend scope.
+//
+// - The user identity and directory visibility scope are derived from the OpenAPI authentication context.
+//
+// - When `sourceTypes` has a value, only resources are returned. `keyword` searches only the current directory level.
 //
 // @param request - ListUserVisibleKnowledgeBaseContentsRequest
 //
@@ -6285,17 +8738,17 @@ func (client *Client) ListUserVisibleKnowledgeBaseContentsWithOptions(request *L
 
 // Summary:
 //
-// 查询当前 OpenAPI 用户可见知识库目录内容。
+// Queries the knowledge base directory content visible to the current OpenAPI user.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 本接口按企业知识库前台口径返回指定目录的子目录和 READY 资源。
+// - This operation returns subdirectories and READY resources under the specified directory based on the enterprise knowledge base frontend scope.
 //
-// - 用户身份与目录可见范围均来自 OpenAPI 鉴权上下文。
+// - The user identity and directory visibility scope are derived from the OpenAPI authentication context.
 //
-// - `sourceTypes` 有值时仅返回资源；`keyword` 仅搜索当前目录层级。
+// - When `sourceTypes` has a value, only resources are returned. `keyword` searches only the current directory level.
 //
 // @param request - ListUserVisibleKnowledgeBaseContentsRequest
 //
@@ -6314,17 +8767,17 @@ func (client *Client) ListUserVisibleKnowledgeBaseContents(request *ListUserVisi
 
 // Summary:
 //
-// 查询当前 OpenAPI 用户可见的企业知识库列表。
+// Queries the list of enterprise knowledge bases visible to the current OpenAPI user.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 本接口按 OpenAPI 鉴权身份映射的平台用户查询其可见企业知识库。
+// - This operation queries the enterprise knowledge bases visible to the platform user mapped from the OpenAPI authentication identity.
 //
-// - 租户和用户身份均由鉴权上下文确定，调用方不能通过业务参数扩大可见范围。
+// - Both the tenant and user identities are determined by the authentication context. Callers cannot expand the visible scope through business parameters.
 //
-// - `tenantId` 为可选公共参数；`keyword` 可按知识库名称或描述过滤。
+// - `tenantId` is an optional common parameter. `keyword` can filter by knowledge base name or description.
 //
 // @param request - ListUserVisibleKnowledgeBasesRequest
 //
@@ -6377,17 +8830,17 @@ func (client *Client) ListUserVisibleKnowledgeBasesWithOptions(request *ListUser
 
 // Summary:
 //
-// 查询当前 OpenAPI 用户可见的企业知识库列表。
+// Queries the list of enterprise knowledge bases visible to the current OpenAPI user.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 本接口按 OpenAPI 鉴权身份映射的平台用户查询其可见企业知识库。
+// - This operation queries the enterprise knowledge bases visible to the platform user mapped from the OpenAPI authentication identity.
 //
-// - 租户和用户身份均由鉴权上下文确定，调用方不能通过业务参数扩大可见范围。
+// - Both the tenant and user identities are determined by the authentication context. Callers cannot expand the visible scope through business parameters.
 //
-// - `tenantId` 为可选公共参数；`keyword` 可按知识库名称或描述过滤。
+// - `tenantId` is an optional common parameter. `keyword` can filter by knowledge base name or description.
 //
 // @param request - ListUserVisibleKnowledgeBasesRequest
 //
@@ -6406,23 +8859,23 @@ func (client *Client) ListUserVisibleKnowledgeBases(request *ListUserVisibleKnow
 
 // Summary:
 //
-// 分页查询租户成员列表
+// Queries tenant members by paging.
 //
 // Description:
 //
-// OpenAPI 分页查询租户成员列表。
+// Queries a paged list of tenant members by using OpenAPI.
 //
-//	业务编排：
+//	Business orchestration:
 //
-//	1. 解析筛选条件（roleCodes → role_ids）
+//	1. Parse filter conditions (roleCodes → role_ids).
 //
-//	2. 调用 UserTenantMappingRepository.query_paged_tenant_members 分页查询
+//	2. Call UserTenantMappingRepository.query_paged_tenant_members to perform a paged query.
 //
-//	3. 将结果中的 role_id 转为 roleCode 并组装响应
+//	3. Convert role_id in the results to roleCode and assemble the response.
 //
-//	错误码：
+//	Error codes:
 //
-//	- 非法 roleCode 参数时抛出错误
+//	- An error is thrown when an invalid roleCode parameter is specified.
 //
 // @param tmpReq - ListUsersRequest
 //
@@ -6505,23 +8958,23 @@ func (client *Client) ListUsersWithOptions(tmpReq *ListUsersRequest, headers map
 
 // Summary:
 //
-// 分页查询租户成员列表
+// Queries tenant members by paging.
 //
 // Description:
 //
-// OpenAPI 分页查询租户成员列表。
+// Queries a paged list of tenant members by using OpenAPI.
 //
-//	业务编排：
+//	Business orchestration:
 //
-//	1. 解析筛选条件（roleCodes → role_ids）
+//	1. Parse filter conditions (roleCodes → role_ids).
 //
-//	2. 调用 UserTenantMappingRepository.query_paged_tenant_members 分页查询
+//	2. Call UserTenantMappingRepository.query_paged_tenant_members to perform a paged query.
 //
-//	3. 将结果中的 role_id 转为 roleCode 并组装响应
+//	3. Convert role_id in the results to roleCode and assemble the response.
 //
-//	错误码：
+//	Error codes:
 //
-//	- 非法 roleCode 参数时抛出错误
+//	- An error is thrown when an invalid roleCode parameter is specified.
 //
 // @param request - ListUsersRequest
 //
@@ -6540,23 +8993,23 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 
 // Summary:
 //
-// 下钻查询指定数字员工可见的知识库目录下的子目录与资源。
+// Drills down to query subdirectories and resources under a specified knowledge base directory visible to a specified digital employee.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 本接口用于查询特定数字员工在指定知识库目录下的所有子目录和资源。
+// - This operation queries all subdirectories and resources under a specified knowledge base directory for a specific digital employee.
 //
-// - 用户需拥有对目标数字员工的USE权限，且该数字员工必须有权访问请求中指定的目录及其子目录。
+// - The user must have the USE permission on the target digital employee, and the digital employee must have access to the directory and its subdirectories specified in the request.
 //
-// - 请求时需要提供数字员工名称（`operatingObjectName`）及要查询的目录ID（`directoryId`），其他参数如分页信息、排序方式等为可选项。
+// - You must provide the digital employee name (`operatingObjectName`) and the directory ID (`directoryId`) to query. Other parameters such as pagination information and sorting method are optional.
 //
-// - 接口返回结果包括目录下的子目录和资源列表，并支持按页码分页显示。
+// - The response includes the list of subdirectories and resources under the directory, and supports pagination.
 //
-// - `sourceStatus`字段固定过滤值为`READY`状态的资源。
+// - The `sourceStatus` field filters only resources in the `READY` state.
 //
-// - 安全性方面，`tenant_id`与`user_id`仅从鉴权身份获取，调用方即使在请求体中传递也会被忽略。
+// - For security purposes, `tenant_id` and `user_id` are obtained only from the authenticated identity. Values passed in the request body by the caller are ignored.
 //
 // @param tmpReq - ListVisibleKnowledgeBaseContentsRequest
 //
@@ -6639,23 +9092,23 @@ func (client *Client) ListVisibleKnowledgeBaseContentsWithOptions(tmpReq *ListVi
 
 // Summary:
 //
-// 下钻查询指定数字员工可见的知识库目录下的子目录与资源。
+// Drills down to query subdirectories and resources under a specified knowledge base directory visible to a specified digital employee.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 本接口用于查询特定数字员工在指定知识库目录下的所有子目录和资源。
+// - This operation queries all subdirectories and resources under a specified knowledge base directory for a specific digital employee.
 //
-// - 用户需拥有对目标数字员工的USE权限，且该数字员工必须有权访问请求中指定的目录及其子目录。
+// - The user must have the USE permission on the target digital employee, and the digital employee must have access to the directory and its subdirectories specified in the request.
 //
-// - 请求时需要提供数字员工名称（`operatingObjectName`）及要查询的目录ID（`directoryId`），其他参数如分页信息、排序方式等为可选项。
+// - You must provide the digital employee name (`operatingObjectName`) and the directory ID (`directoryId`) to query. Other parameters such as pagination information and sorting method are optional.
 //
-// - 接口返回结果包括目录下的子目录和资源列表，并支持按页码分页显示。
+// - The response includes the list of subdirectories and resources under the directory, and supports pagination.
 //
-// - `sourceStatus`字段固定过滤值为`READY`状态的资源。
+// - The `sourceStatus` field filters only resources in the `READY` state.
 //
-// - 安全性方面，`tenant_id`与`user_id`仅从鉴权身份获取，调用方即使在请求体中传递也会被忽略。
+// - For security purposes, `tenant_id` and `user_id` are obtained only from the authenticated identity. Values passed in the request body by the caller are ignored.
 //
 // @param request - ListVisibleKnowledgeBaseContentsRequest
 //
@@ -6674,13 +9127,13 @@ func (client *Client) ListVisibleKnowledgeBaseContents(request *ListVisibleKnowl
 
 // Summary:
 //
-// 查询数字员工可访问的企业知识库顶层目录。
+// Queries the top-level directories of enterprise knowledge bases accessible to a digital employee.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API用于获取指定数字员工（运营对象）在企业内可见的知识库顶层目录列表。
+// - This API operation retrieves the list of top-level knowledge base directories visible to a specified digital employee (operating object) within the enterprise.
 //
 // @param request - ListVisibleKnowledgeBasesRequest
 //
@@ -6742,13 +9195,13 @@ func (client *Client) ListVisibleKnowledgeBasesWithOptions(request *ListVisibleK
 
 // Summary:
 //
-// 查询数字员工可访问的企业知识库顶层目录。
+// Queries the top-level directories of enterprise knowledge bases accessible to a digital employee.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API用于获取指定数字员工（运营对象）在企业内可见的知识库顶层目录列表。
+// - This API operation retrieves the list of top-level knowledge base directories visible to a specified digital employee (operating object) within the enterprise.
 //
 // @param request - ListVisibleKnowledgeBasesRequest
 //
@@ -6767,37 +9220,37 @@ func (client *Client) ListVisibleKnowledgeBases(request *ListVisibleKnowledgeBas
 
 // Summary:
 //
-// 在企业知识库目录间移动指定资源，需具备管理权限。
+// Moves a specified resource between enterprise knowledge base directories. Management permissions are required.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - **鉴权流程**：
+// - **Authentication flow**:
 //
-//  1. 基础鉴权由根 router 统一完成（`request.state.openapi_identity`）。
+//  1. Basic authentication is performed by the root router (`request.state.openapi_identity`).
 //
-//  2. 本 handler 校验 `DEVELOPMENT_KB_MANAGE` 功能权限。
+//  2. This handler checks the `DEVELOPMENT_KB_MANAGE` feature permission.
 //
-// - **操作步骤**：
+// - **Procedure**:
 //
-//  1. 检查源目录与目标目录不能相同。
+//  1. Check that the source directory and target directory are not the same.
 //
-//  2. 确认目标目录存在。
+//  2. Confirm that the target directory exists.
 //
-//  3. 验证待移动的资源确实位于源目录中。
+//  3. Verify that the resource to be moved is in the source directory.
 //
-//  4. 更新资源的目录绑定关系。
+//  4. Update the directory binding of the resource.
 //
-//  5. 尽力更新 `source.settings["knowledge_id"]` 为目标知识库 ID。
+//  5. Best-effort update of `source.settings["knowledge_id"]` to the target knowledge base ID.
 //
-//  6. 尽力通知 DocumentAgent 同步 `knowledge_id` 和 `update_time`。
+//  6. Best-effort notification to DocumentAgent to sync `knowledge_id` and `update_time`.
 //
-// - **安全约束**：
+// - **Security constraints**:
 //
-//   - `tenant_id` 和 `user_id` 必须来自鉴权身份。
+//   - `tenant_id` and `user_id` must come from the authenticated identity.
 //
-//   - 调用者需要拥有 KB 管理权限。
+//   - The caller must have KB management permissions.
 //
 // @param request - MoveKnowledgeBaseResourceRequest
 //
@@ -6862,37 +9315,37 @@ func (client *Client) MoveKnowledgeBaseResourceWithOptions(request *MoveKnowledg
 
 // Summary:
 //
-// 在企业知识库目录间移动指定资源，需具备管理权限。
+// Moves a specified resource between enterprise knowledge base directories. Management permissions are required.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - **鉴权流程**：
+// - **Authentication flow**:
 //
-//  1. 基础鉴权由根 router 统一完成（`request.state.openapi_identity`）。
+//  1. Basic authentication is performed by the root router (`request.state.openapi_identity`).
 //
-//  2. 本 handler 校验 `DEVELOPMENT_KB_MANAGE` 功能权限。
+//  2. This handler checks the `DEVELOPMENT_KB_MANAGE` feature permission.
 //
-// - **操作步骤**：
+// - **Procedure**:
 //
-//  1. 检查源目录与目标目录不能相同。
+//  1. Check that the source directory and target directory are not the same.
 //
-//  2. 确认目标目录存在。
+//  2. Confirm that the target directory exists.
 //
-//  3. 验证待移动的资源确实位于源目录中。
+//  3. Verify that the resource to be moved is in the source directory.
 //
-//  4. 更新资源的目录绑定关系。
+//  4. Update the directory binding of the resource.
 //
-//  5. 尽力更新 `source.settings["knowledge_id"]` 为目标知识库 ID。
+//  5. Best-effort update of `source.settings["knowledge_id"]` to the target knowledge base ID.
 //
-//  6. 尽力通知 DocumentAgent 同步 `knowledge_id` 和 `update_time`。
+//  6. Best-effort notification to DocumentAgent to sync `knowledge_id` and `update_time`.
 //
-// - **安全约束**：
+// - **Security constraints**:
 //
-//   - `tenant_id` 和 `user_id` 必须来自鉴权身份。
+//   - `tenant_id` and `user_id` must come from the authenticated identity.
 //
-//   - 调用者需要拥有 KB 管理权限。
+//   - The caller must have KB management permissions.
 //
 // @param request - MoveKnowledgeBaseResourceRequest
 //
@@ -6911,21 +9364,21 @@ func (client *Client) MoveKnowledgeBaseResource(request *MoveKnowledgeBaseResour
 
 // Summary:
 //
-// 在用户的个人目录之间移动指定资源。
+// Moves a specified resource between personal directories of a user.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - **源目录与目标目录不能相同**，否则将返回 `ERR.Robject.UserDirectory.InvalidOperation` 错误。
+// - **The source directory and target directory cannot be the same**. Otherwise, the `ERR.Robject.UserDirectory.InvalidOperation` error is returned.
 //
-// - **目标目录必须存在**，如果不存在则会返回 `ERR.Robject.UserDirectory.DirectoryNotFound` 错误。
+// - **The target directory must exist**. If it does not exist, the `ERR.Robject.UserDirectory.DirectoryNotFound` error is returned.
 //
-// - **待移动的资源必须存在于源目录中**，若不在源目录中，则会收到 `ERR.Robject.UserDirectory.ResourceNotInDirectory` 错误。
+// - **The resource to be moved must exist in the source directory**. If it is not in the source directory, the `ERR.Robject.UserDirectory.ResourceNotInDirectory` error is returned.
 //
-// - 成功移动后，系统会尝试通知 DocumentAgent 更新资源的新路径 (`source_path`)，但此步骤为尽力而为（best-effort），即使失败也不会影响整体操作的成功状态，仅记录错误日志。
+// - After a successful move, the system attempts to notify DocumentAgent to update the new path (`source_path`) of the resource. This step is best-effort. Even if it fails, the overall operation success status is not affected. Only an error log is recorded.
 //
-// - 安全性方面，`tenant_id` 的值只能来源于鉴权身份信息。
+// - For security purposes, the value of `tenant_id` can only be derived from the authenticated identity information.
 //
 // @param request - MoveResourceRequest
 //
@@ -6986,21 +9439,21 @@ func (client *Client) MoveResourceWithOptions(request *MoveResourceRequest, head
 
 // Summary:
 //
-// 在用户的个人目录之间移动指定资源。
+// Moves a specified resource between personal directories of a user.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - **源目录与目标目录不能相同**，否则将返回 `ERR.Robject.UserDirectory.InvalidOperation` 错误。
+// - **The source directory and target directory cannot be the same**. Otherwise, the `ERR.Robject.UserDirectory.InvalidOperation` error is returned.
 //
-// - **目标目录必须存在**，如果不存在则会返回 `ERR.Robject.UserDirectory.DirectoryNotFound` 错误。
+// - **The target directory must exist**. If it does not exist, the `ERR.Robject.UserDirectory.DirectoryNotFound` error is returned.
 //
-// - **待移动的资源必须存在于源目录中**，若不在源目录中，则会收到 `ERR.Robject.UserDirectory.ResourceNotInDirectory` 错误。
+// - **The resource to be moved must exist in the source directory**. If it is not in the source directory, the `ERR.Robject.UserDirectory.ResourceNotInDirectory` error is returned.
 //
-// - 成功移动后，系统会尝试通知 DocumentAgent 更新资源的新路径 (`source_path`)，但此步骤为尽力而为（best-effort），即使失败也不会影响整体操作的成功状态，仅记录错误日志。
+// - After a successful move, the system attempts to notify DocumentAgent to update the new path (`source_path`) of the resource. This step is best-effort. Even if it fails, the overall operation success status is not affected. Only an error log is recorded.
 //
-// - 安全性方面，`tenant_id` 的值只能来源于鉴权身份信息。
+// - For security purposes, the value of `tenant_id` can only be derived from the authenticated identity information.
 //
 // @param request - MoveResourceRequest
 //
@@ -7019,21 +9472,109 @@ func (client *Client) MoveResource(request *MoveResourceRequest) (_result *MoveR
 
 // Summary:
 //
-// 预览指定企业知识库下的知识内容
+// Offlines a service notice.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口用于预览企业知识库下指定知识的内容。
+// Idempotently offlines a platform announcement by announcement ID. Returns `changed=true` when a PUBLISHED announcement is offlined for the first time. Returns `changed=false` when the announcement is already offline or expired.
 //
-// - 需要具备`DEVELOPMENT_KB_VIEW`功能权限才能调用此API。
+// The caller must belong to the system operations tenant and have announcement management permissions.
 //
-// - `sourceId`是必需参数，用来标识要预览的知识条目。
+// @param request - OfflineAnnouncementRequest
 //
-// - 可选参数`tenantId`允许指定租户ID；若未提供，则使用调用方默认的租户ID。
+// @param headers - map
 //
-// - 支持多种类型的预览，包括但不限于图片、音频、视频及文本等。
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OfflineAnnouncementResponse
+func (client *Client) OfflineAnnouncementWithOptions(request *OfflineAnnouncementRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *OfflineAnnouncementResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AnnouncementId) {
+		body["announcementId"] = request.AnnouncementId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("OfflineAnnouncement"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/offlineAnnouncement"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &OfflineAnnouncementResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Offlines a service notice.
+//
+// Description:
+//
+// ## Request description
+//
+// Idempotently offlines a platform announcement by announcement ID. Returns `changed=true` when a PUBLISHED announcement is offlined for the first time. Returns `changed=false` when the announcement is already offline or expired.
+//
+// The caller must belong to the system operations tenant and have announcement management permissions.
+//
+// @param request - OfflineAnnouncementRequest
+//
+// @return OfflineAnnouncementResponse
+func (client *Client) OfflineAnnouncement(request *OfflineAnnouncementRequest) (_result *OfflineAnnouncementResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &OfflineAnnouncementResponse{}
+	_body, _err := client.OfflineAnnouncementWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Previews the knowledge content in a specified enterprise knowledge base.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This operation previews the content of a specified knowledge entry in an enterprise knowledge base.
+//
+// - The `DEVELOPMENT_KB_VIEW` permission is required to call this API.
+//
+// - `sourceId` is a required parameter that identifies the knowledge entry to preview.
+//
+// - The optional parameter `tenantId` specifies the tenant ID. If not provided, the default tenant ID of the caller is used.
+//
+// - Multiple preview types are supported, including but not limited to images, audio, video, and text.
 //
 // @param request - PreviewKnowledgeBaseSourceRequest
 //
@@ -7086,21 +9627,21 @@ func (client *Client) PreviewKnowledgeBaseSourceWithOptions(request *PreviewKnow
 
 // Summary:
 //
-// 预览指定企业知识库下的知识内容
+// Previews the knowledge content in a specified enterprise knowledge base.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该接口用于预览企业知识库下指定知识的内容。
+// - This operation previews the content of a specified knowledge entry in an enterprise knowledge base.
 //
-// - 需要具备`DEVELOPMENT_KB_VIEW`功能权限才能调用此API。
+// - The `DEVELOPMENT_KB_VIEW` permission is required to call this API.
 //
-// - `sourceId`是必需参数，用来标识要预览的知识条目。
+// - `sourceId` is a required parameter that identifies the knowledge entry to preview.
 //
-// - 可选参数`tenantId`允许指定租户ID；若未提供，则使用调用方默认的租户ID。
+// - The optional parameter `tenantId` specifies the tenant ID. If not provided, the default tenant ID of the caller is used.
 //
-// - 支持多种类型的预览，包括但不限于图片、音频、视频及文本等。
+// - Multiple preview types are supported, including but not limited to images, audio, video, and text.
 //
 // @param request - PreviewKnowledgeBaseSourceRequest
 //
@@ -7119,19 +9660,19 @@ func (client *Client) PreviewKnowledgeBaseSource(request *PreviewKnowledgeBaseSo
 
 // Summary:
 //
-// 允许用户预览其个人目录下的指定知识内容。
+// Allows a user to preview specified knowledge content in their personal directory.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口仅允许用户预览属于自己的个人目录下的资源。
+// - This operation only allows a user to preview resources in their own personal directory.
 //
-// - 鉴权流程包括基础鉴权和数据源归属校验，确保请求者只能访问其个人目录中的知识。
+// - The authentication process includes basic authentication and data source ownership verification to ensure that the requester can only access knowledge in their personal directory.
 //
-// - 请求时需提供知识的唯一标识 `sourceId`，系统将根据此ID及用户的租户信息查询并返回相应的预览信息。
+// - You must provide the unique identifier `sourceId` of the knowledge content in the request. The system queries and returns the corresponding preview information based on this ID and the user\\"s tenant information.
 //
-// - 支持多种类型的预览，如图片、音频、视频等，并根据不同类型返回对应的预览URL或直接的内容展示。
+// - Multiple preview types are supported, such as image, audio, and video. The system returns the corresponding preview URL or direct content display based on the type.
 //
 // @param request - PreviewPersonalSourceRequest
 //
@@ -7193,19 +9734,19 @@ func (client *Client) PreviewPersonalSourceWithOptions(request *PreviewPersonalS
 
 // Summary:
 //
-// 允许用户预览其个人目录下的指定知识内容。
+// Allows a user to preview specified knowledge content in their personal directory.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口仅允许用户预览属于自己的个人目录下的资源。
+// - This operation only allows a user to preview resources in their own personal directory.
 //
-// - 鉴权流程包括基础鉴权和数据源归属校验，确保请求者只能访问其个人目录中的知识。
+// - The authentication process includes basic authentication and data source ownership verification to ensure that the requester can only access knowledge in their personal directory.
 //
-// - 请求时需提供知识的唯一标识 `sourceId`，系统将根据此ID及用户的租户信息查询并返回相应的预览信息。
+// - You must provide the unique identifier `sourceId` of the knowledge content in the request. The system queries and returns the corresponding preview information based on this ID and the user\\"s tenant information.
 //
-// - 支持多种类型的预览，如图片、音频、视频等，并根据不同类型返回对应的预览URL或直接的内容展示。
+// - Multiple preview types are supported, such as image, audio, and video. The system returns the corresponding preview URL or direct content display based on the type.
 //
 // @param request - PreviewPersonalSourceRequest
 //
@@ -7224,21 +9765,21 @@ func (client *Client) PreviewPersonalSource(request *PreviewPersonalSourceReques
 
 // Summary:
 //
-// 通过运营对象名称分页查询主对象数据，支持过滤和搜索。
+// Queries primary object data by operating object name with paging support, including filtering and search.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该API用于根据给定的运营对象名称（如 `customer_1`）分页查询相关的主对象数据。
+// - This API queries primary object data by a specified operating object name (such as `customer_1`) with paging.
 //
-// - 支持通过关键字进行搜索，并且可以设置是否仅返回被标记为关注的对象。
+// - Keyword-based search is supported. You can set whether to return only objects marked as favorites in Settings.
 //
-// - 可以使用复杂的过滤条件来进一步筛选结果，包括但不限于等于、不等于、大于、小于等逻辑操作符。
+// - Complex filter conditions can be used to further narrow results, including but not limited to equal to, not equal to, greater than, and less than operators.
 //
-// - 如果没有配置主对象类型，则会返回一个空的结果集。
+// - If no primary object type is configured, an empty result set is returned.
 //
-// - 请求中包含的数据将经过鉴权与过滤处理，确保安全性和准确性。
+// - Data in the request undergoes authentication and filtering to ensure security and accuracy.
 //
 // @param request - QueryPrimaryObjectDataRequest
 //
@@ -7307,21 +9848,21 @@ func (client *Client) QueryPrimaryObjectDataWithOptions(request *QueryPrimaryObj
 
 // Summary:
 //
-// 通过运营对象名称分页查询主对象数据，支持过滤和搜索。
+// Queries primary object data by operating object name with paging support, including filtering and search.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该API用于根据给定的运营对象名称（如 `customer_1`）分页查询相关的主对象数据。
+// - This API queries primary object data by a specified operating object name (such as `customer_1`) with paging.
 //
-// - 支持通过关键字进行搜索，并且可以设置是否仅返回被标记为关注的对象。
+// - Keyword-based search is supported. You can set whether to return only objects marked as favorites in Settings.
 //
-// - 可以使用复杂的过滤条件来进一步筛选结果，包括但不限于等于、不等于、大于、小于等逻辑操作符。
+// - Complex filter conditions can be used to further narrow results, including but not limited to equal to, not equal to, greater than, and less than operators.
 //
-// - 如果没有配置主对象类型，则会返回一个空的结果集。
+// - If no primary object type is configured, an empty result set is returned.
 //
-// - 请求中包含的数据将经过鉴权与过滤处理，确保安全性和准确性。
+// - Data in the request undergoes authentication and filtering to ensure security and accuracy.
 //
 // @param request - QueryPrimaryObjectDataRequest
 //
@@ -7340,19 +9881,21 @@ func (client *Client) QueryPrimaryObjectData(request *QueryPrimaryObjectDataRequ
 
 // Summary:
 //
-// 查询与用户问题相关的语义知识
+// Queries semantic knowledge related to a user question.
 //
 // Description:
 //
-// 仅开放 smart-query 的 schema_knowledge 语义召回能力。
+// Exposes only the schema_knowledge semantic recall capability of smart-query.
 //
-//	CLI 映射为 ``winnexo semantic query``。``tenantId`` 由公共参数传入，``userId``
+//	CLI mapping: ``winnexo semantic query``. ``tenantId`` is passed through common parameters. ``userId``
 //
-//	仅从 Token 身份读取，禁止请求体覆盖。服务会校验 ``graphName + agentName`` 归属、
+//	is read only from the Token identity and cannot be overridden by the request body. The service validates
 //
-//	active graph、数字员工启用状态及当前用户 USE 权限；跨图同名 agent 会失败关闭，
+//	the ownership of ``graphName + agentName``, active graph status, digital human enablement status, and
 //
-//	随后固定 ``outputs=[schema_knowledge]``。
+//	the current user\\"s USE permission. A cross-graph agent with the same name will fail and be closed.
+//
+//	Then ``outputs=[schema_knowledge]`` is fixed.
 //
 // @param request - QuerySemanticKnowledgeRequest
 //
@@ -7413,19 +9956,21 @@ func (client *Client) QuerySemanticKnowledgeWithOptions(request *QuerySemanticKn
 
 // Summary:
 //
-// 查询与用户问题相关的语义知识
+// Queries semantic knowledge related to a user question.
 //
 // Description:
 //
-// 仅开放 smart-query 的 schema_knowledge 语义召回能力。
+// Exposes only the schema_knowledge semantic recall capability of smart-query.
 //
-//	CLI 映射为 ``winnexo semantic query``。``tenantId`` 由公共参数传入，``userId``
+//	CLI mapping: ``winnexo semantic query``. ``tenantId`` is passed through common parameters. ``userId``
 //
-//	仅从 Token 身份读取，禁止请求体覆盖。服务会校验 ``graphName + agentName`` 归属、
+//	is read only from the Token identity and cannot be overridden by the request body. The service validates
 //
-//	active graph、数字员工启用状态及当前用户 USE 权限；跨图同名 agent 会失败关闭，
+//	the ownership of ``graphName + agentName``, active graph status, digital human enablement status, and
 //
-//	随后固定 ``outputs=[schema_knowledge]``。
+//	the current user\\"s USE permission. A cross-graph agent with the same name will fail and be closed.
+//
+//	Then ``outputs=[schema_knowledge]`` is fixed.
 //
 // @param request - QuerySemanticKnowledgeRequest
 //
@@ -7444,15 +9989,15 @@ func (client *Client) QuerySemanticKnowledge(request *QuerySemanticKnowledgeRequ
 
 // Summary:
 //
-// 查询组织同步结果
+// Queries the result of an organization synchronization task.
 //
 // Description:
 //
-// 根据 taskId 查询组织同步任务的执行状态和结果。
+// Queries the execution status and result of an organization synchronization task based on the task ID.
 //
-//	任务状态流转：PENDING → RUNNING → COMPLETED / FAILED / TIMEOUT / CANCELED
+//	Task status transitions: PENDING → RUNNING → COMPLETED / FAILED / TIMEOUT / CANCELED
 //
-//	建议客户端轮询间隔：3-5 秒。
+//	Recommended client polling interval: 3 to 5 seconds.
 //
 // @param request - QuerySyncResultRequest
 //
@@ -7505,15 +10050,15 @@ func (client *Client) QuerySyncResultWithOptions(request *QuerySyncResultRequest
 
 // Summary:
 //
-// 查询组织同步结果
+// Queries the result of an organization synchronization task.
 //
 // Description:
 //
-// 根据 taskId 查询组织同步任务的执行状态和结果。
+// Queries the execution status and result of an organization synchronization task based on the task ID.
 //
-//	任务状态流转：PENDING → RUNNING → COMPLETED / FAILED / TIMEOUT / CANCELED
+//	Task status transitions: PENDING → RUNNING → COMPLETED / FAILED / TIMEOUT / CANCELED
 //
-//	建议客户端轮询间隔：3-5 秒。
+//	Recommended client polling interval: 3 to 5 seconds.
 //
 // @param request - QuerySyncResultRequest
 //
@@ -7532,29 +10077,145 @@ func (client *Client) QuerySyncResult(request *QuerySyncResultRequest) (_result 
 
 // Summary:
 //
-// 从租户移除用户
+// Generates next-step recommendations for a session.
 //
 // Description:
 //
-// OpenAPI 从租户移除用户。
+// ## Request description
 //
-//	业务编排：
+// Based on the most recent N messages in a session and the skills attached to the agent, this operation invokes an LLM to generate 0 to 3 next-step recommendations (follow-up questions or recommended skills to execute).
 //
-//	1. 从 identity 获取 tenant_id
+// - `sessionId`: The session ID. Required. Only sessions that the currently authenticated user has permission to access are allowed.
 //
-//	2. 调用 delete_user_from_tenant（内部含最后超管保护）
+// - `recentMessageCount`: The number of recent messages used to assemble contextual information. Valid values: 1 to 30. Default value: 10 (approximately 5 rounds of user+assistant conversation).
 //
-//	3. 返回成功
+// - `customPrompt`: A custom recommendation instruction (up to 10,000 characters). This is injected into the default recommendation template as a custom instruction (before the output format constraints). The output is still subject to the JSON format and type constraints of the template.
 //
-//	该操作会：
+// - `outputType`: The output type filter. followUpOnly = follow-up recommendations only (default). skillOnly = skill recommendations only. both = generate both types.
 //
-//	- 移除用户在租户下的所有角色关联
+// Unlike internal endpoints, API calls are not restricted by the next-step recommendation toggle in user personal settings and always execute recommendation generation.
 //
-//	- 移除用户在租户下的所有用户组关联
+// @param request - RecommendNextActionsRequest
 //
-//	- 撤销用户在租户下的全部数字员工使用授权
+// @param headers - map
 //
-//	- 删除用户-租户映射
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecommendNextActionsResponse
+func (client *Client) RecommendNextActionsWithOptions(request *RecommendNextActionsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RecommendNextActionsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CustomPrompt) {
+		body["customPrompt"] = request.CustomPrompt
+	}
+
+	if !dara.IsNil(request.OutputType) {
+		body["outputType"] = request.OutputType
+	}
+
+	if !dara.IsNil(request.RecentMessageCount) {
+		body["recentMessageCount"] = request.RecentMessageCount
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		body["sessionId"] = request.SessionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RecommendNextActions"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/recommendNextActions"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RecommendNextActionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Generates next-step recommendations for a session.
+//
+// Description:
+//
+// ## Request description
+//
+// Based on the most recent N messages in a session and the skills attached to the agent, this operation invokes an LLM to generate 0 to 3 next-step recommendations (follow-up questions or recommended skills to execute).
+//
+// - `sessionId`: The session ID. Required. Only sessions that the currently authenticated user has permission to access are allowed.
+//
+// - `recentMessageCount`: The number of recent messages used to assemble contextual information. Valid values: 1 to 30. Default value: 10 (approximately 5 rounds of user+assistant conversation).
+//
+// - `customPrompt`: A custom recommendation instruction (up to 10,000 characters). This is injected into the default recommendation template as a custom instruction (before the output format constraints). The output is still subject to the JSON format and type constraints of the template.
+//
+// - `outputType`: The output type filter. followUpOnly = follow-up recommendations only (default). skillOnly = skill recommendations only. both = generate both types.
+//
+// Unlike internal endpoints, API calls are not restricted by the next-step recommendation toggle in user personal settings and always execute recommendation generation.
+//
+// @param request - RecommendNextActionsRequest
+//
+// @return RecommendNextActionsResponse
+func (client *Client) RecommendNextActions(request *RecommendNextActionsRequest) (_result *RecommendNextActionsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RecommendNextActionsResponse{}
+	_body, _err := client.RecommendNextActionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes a user from a tenant.
+//
+// Description:
+//
+// Removes a user from a tenant.
+//
+//	Business orchestration:
+//
+//	1. Obtains tenant_id from identity.
+//
+//	2. Calls delete_user_from_tenant (includes last admin protection).
+//
+//	3. Returns success.
+//
+//	This operation:
+//
+//	- Removes all role associations of the user under the tenant.
+//
+//	- Removes all user group associations of the user under the tenant.
+//
+//	- Revokes all digital employee usage authorizations of the user under the tenant.
+//
+//	- Deletes the user-tenant mapping.
 //
 // @param request - RemoveUserRequest
 //
@@ -7605,29 +10266,29 @@ func (client *Client) RemoveUserWithOptions(request *RemoveUserRequest, headers 
 
 // Summary:
 //
-// 从租户移除用户
+// Removes a user from a tenant.
 //
 // Description:
 //
-// OpenAPI 从租户移除用户。
+// Removes a user from a tenant.
 //
-//	业务编排：
+//	Business orchestration:
 //
-//	1. 从 identity 获取 tenant_id
+//	1. Obtains tenant_id from identity.
 //
-//	2. 调用 delete_user_from_tenant（内部含最后超管保护）
+//	2. Calls delete_user_from_tenant (includes last admin protection).
 //
-//	3. 返回成功
+//	3. Returns success.
 //
-//	该操作会：
+//	This operation:
 //
-//	- 移除用户在租户下的所有角色关联
+//	- Removes all role associations of the user under the tenant.
 //
-//	- 移除用户在租户下的所有用户组关联
+//	- Removes all user group associations of the user under the tenant.
 //
-//	- 撤销用户在租户下的全部数字员工使用授权
+//	- Revokes all digital employee usage authorizations of the user under the tenant.
 //
-//	- 删除用户-租户映射
+//	- Deletes the user-tenant mapping.
 //
 // @param request - RemoveUserRequest
 //
@@ -7646,25 +10307,135 @@ func (client *Client) RemoveUser(request *RemoveUserRequest) (_result *RemoveUse
 
 // Summary:
 //
-// 用于更改指定企业知识库内数据源的名称。
+// Removes direct member relationships in bulk from a specified user group.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口允许具有相应权限的用户修改企业知识库中的特定数据源名称。
+// - This operation supports batch removal of direct member relationships between users and a specified user group by providing the user group ID and one or more user IDs.
 //
-// - 需要提供待修改的数据源ID(“sourceId“)及新的名称(“newName“)。
+// - The `userIds` parameter accepts an integer array that represents the list of platform user IDs to be removed.
 //
-// - 修改操作仅更新数据源的名字字段，不会触发其他处理流程。
+// - If a user you attempt to remove is not a direct member of the user group, the final result count is not affected.
 //
-// - 成功执行后，系统会发布“SOURCE_CHANGED“事件以供前端刷新显示，并尝试通知DocumentAgent同步最新的source_name信息，但此步骤失败不会影响主流程的完成状态。
+// - After a successful call, the response returns information such as the number of members actually removed and the number of members before the request was processed.
 //
-// - 如果提供的“sourceId“不存在，则返回错误码“ERR.Robject.Source.NotFound“。
+// - This operation requires appropriate permission authentication and is recorded in operation logs.
 //
-// - 此API调用需具备“DEVELOPMENT_KB_MANAGE“功能权限。
+// @param tmpReq - RemoveUserGroupMembersRequest
 //
-// - 支持通过AK、BearerToken或APP方式进行身份验证。
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveUserGroupMembersResponse
+func (client *Client) RemoveUserGroupMembersWithOptions(tmpReq *RemoveUserGroupMembersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RemoveUserGroupMembersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &RemoveUserGroupMembersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UserIds) {
+		request.UserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserIds, dara.String("userIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UserGroupId) {
+		body["userGroupId"] = request.UserGroupId
+	}
+
+	if !dara.IsNil(request.UserIdsShrink) {
+		body["userIds"] = request.UserIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveUserGroupMembers"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/removeUserGroupMembers"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveUserGroupMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Removes direct member relationships in bulk from a specified user group.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation supports batch removal of direct member relationships between users and a specified user group by providing the user group ID and one or more user IDs.
+//
+// - The `userIds` parameter accepts an integer array that represents the list of platform user IDs to be removed.
+//
+// - If a user you attempt to remove is not a direct member of the user group, the final result count is not affected.
+//
+// - After a successful call, the response returns information such as the number of members actually removed and the number of members before the request was processed.
+//
+// - This operation requires appropriate permission authentication and is recorded in operation logs.
+//
+// @param request - RemoveUserGroupMembersRequest
+//
+// @return RemoveUserGroupMembersResponse
+func (client *Client) RemoveUserGroupMembers(request *RemoveUserGroupMembersRequest) (_result *RemoveUserGroupMembersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RemoveUserGroupMembersResponse{}
+	_body, _err := client.RemoveUserGroupMembersWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Renames a data source in a specified enterprise knowledge base.
+//
+// Description:
+//
+// ## Request description
+//
+// - This operation allows users with the required permissions to modify the name of a specific data source in an enterprise knowledge base.
+//
+// - You must provide the ID of the data source to be renamed (sourceId) and the new name (newName).
+//
+// - The rename operation only updates the name field of the data source and does not trigger other processing flows.
+//
+// - After successful execution, the system publishes a `SOURCE_CHANGED` event for frontend display refresh and attempts to notify DocumentAgent to synchronize the latest source_name information. However, if this step fails, it does not affect the completion status of the main flow.
+//
+// - If the specified sourceId does not exist, the error code `ERR.Robject.Source.NotFound` is returned.
+//
+// - To invoke this API, you must have the `DEVELOPMENT_KB_MANAGE` feature permission.
+//
+// - Identity verification is supported through AccessKey, BearerToken, or APP methods to authenticate requests.
 //
 // @param request - RenameKnowledgeBaseSourceRequest
 //
@@ -7721,25 +10492,25 @@ func (client *Client) RenameKnowledgeBaseSourceWithOptions(request *RenameKnowle
 
 // Summary:
 //
-// 用于更改指定企业知识库内数据源的名称。
+// Renames a data source in a specified enterprise knowledge base.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口允许具有相应权限的用户修改企业知识库中的特定数据源名称。
+// - This operation allows users with the required permissions to modify the name of a specific data source in an enterprise knowledge base.
 //
-// - 需要提供待修改的数据源ID(“sourceId“)及新的名称(“newName“)。
+// - You must provide the ID of the data source to be renamed (sourceId) and the new name (newName).
 //
-// - 修改操作仅更新数据源的名字字段，不会触发其他处理流程。
+// - The rename operation only updates the name field of the data source and does not trigger other processing flows.
 //
-// - 成功执行后，系统会发布“SOURCE_CHANGED“事件以供前端刷新显示，并尝试通知DocumentAgent同步最新的source_name信息，但此步骤失败不会影响主流程的完成状态。
+// - After successful execution, the system publishes a `SOURCE_CHANGED` event for frontend display refresh and attempts to notify DocumentAgent to synchronize the latest source_name information. However, if this step fails, it does not affect the completion status of the main flow.
 //
-// - 如果提供的“sourceId“不存在，则返回错误码“ERR.Robject.Source.NotFound“。
+// - If the specified sourceId does not exist, the error code `ERR.Robject.Source.NotFound` is returned.
 //
-// - 此API调用需具备“DEVELOPMENT_KB_MANAGE“功能权限。
+// - To invoke this API, you must have the `DEVELOPMENT_KB_MANAGE` feature permission.
 //
-// - 支持通过AK、BearerToken或APP方式进行身份验证。
+// - Identity verification is supported through AccessKey, BearerToken, or APP methods to authenticate requests.
 //
 // @param request - RenameKnowledgeBaseSourceRequest
 //
@@ -7758,21 +10529,21 @@ func (client *Client) RenameKnowledgeBaseSource(request *RenameKnowledgeBaseSour
 
 // Summary:
 //
-// 用于更改指定数据源的名称，支持轻量级操作。
+// Renames a specified data source. This is a lightweight operation.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该 API 仅更新数据源的 `name` 字段，不会触发 `process_source`。
+// - This API updates only the `name` field of the data source and does not trigger `process_source`.
 //
-// - 成功后会发布 `SOURCE_CHANGED` 事件供前端刷新显示。
+// - After a successful update, a `SOURCE_CHANGED` event is published for the frontend to refresh the display.
 //
-// - 将尽力通知 DocumentAgent 同步新的 `source_name`，即使同步失败也不会阻断主流程。
+// - The system makes a best-effort attempt to notify DocumentAgent to sync the new `source_name`. Even if the sync fails, the main process is not blocked.
 //
-// - 如果指定的数据源不存在，则抛出 `ERR.Robject.Source.NotFound` 错误，并由全局中间件统一转换为 POP 错误码。
+// - If the specified data source does not exist, the `ERR.Robject.Source.NotFound` error is returned. The global middleware converts this error into a POP error code.
 //
-// - 安全约束：`tenant_id` 和 `user_id` 必须来自鉴权身份。
+// - Security constraint: `tenant_id` and `user_id` must be derived from the authenticated identity.
 //
 // @param request - RenameSourceRequest
 //
@@ -7829,21 +10600,21 @@ func (client *Client) RenameSourceWithOptions(request *RenameSourceRequest, head
 
 // Summary:
 //
-// 用于更改指定数据源的名称，支持轻量级操作。
+// Renames a specified data source. This is a lightweight operation.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该 API 仅更新数据源的 `name` 字段，不会触发 `process_source`。
+// - This API updates only the `name` field of the data source and does not trigger `process_source`.
 //
-// - 成功后会发布 `SOURCE_CHANGED` 事件供前端刷新显示。
+// - After a successful update, a `SOURCE_CHANGED` event is published for the frontend to refresh the display.
 //
-// - 将尽力通知 DocumentAgent 同步新的 `source_name`，即使同步失败也不会阻断主流程。
+// - The system makes a best-effort attempt to notify DocumentAgent to sync the new `source_name`. Even if the sync fails, the main process is not blocked.
 //
-// - 如果指定的数据源不存在，则抛出 `ERR.Robject.Source.NotFound` 错误，并由全局中间件统一转换为 POP 错误码。
+// - If the specified data source does not exist, the `ERR.Robject.Source.NotFound` error is returned. The global middleware converts this error into a POP error code.
 //
-// - 安全约束：`tenant_id` 和 `user_id` 必须来自鉴权身份。
+// - Security constraint: `tenant_id` and `user_id` must be derived from the authenticated identity.
 //
 // @param request - RenameSourceRequest
 //
@@ -7862,17 +10633,17 @@ func (client *Client) RenameSource(request *RenameSourceRequest) (_result *Renam
 
 // Summary:
 //
-// 重新解析当前租户内的指定数据源。
+// Re-parses a resource.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// 该 API 用于重新解析指定的数据源，支持同步或异步执行。请求时需提供数据源 ID，并可选择是否同步等待解析完成，默认为异步入队处理。此外，可以通过 `tenantId` 参数指定租户ID，但此参数非必填。
+// This API operation re-parses a specified data source. You can choose synchronous or asynchronous execution. You must provide the data source ID in the request. You can optionally specify whether to synchronously wait for parsing to complete. By default, the request is processed asynchronously by being added to a queue. You can also use the `tenantId` parameter to specify a tenant ID, but this parameter is optional.
 //
-// - **forceSync**：若设置为 `true`，则会同步等待重新解析操作完成；默认值为 `false`，表示以异步方式处理请求。
+// - **forceSync**: If set to `true`, the operation synchronously waits for the re-parsing to complete. Default value: `false`, which indicates that the request is processed asynchronously.
 //
-// - 当服务返回 `None` 时，将被转换成 `SourceNotFound` 异常；其他异常情况将由 OpenAPI 的全局异常链进行处理。
+// - When the service returns `None`, it is converted to a `SourceNotFound` exception. Other exceptions are handled by the OpenAPI global exception chain.
 //
 // @param request - ReparseSourceRequest
 //
@@ -7929,17 +10700,17 @@ func (client *Client) ReparseSourceWithOptions(request *ReparseSourceRequest, he
 
 // Summary:
 //
-// 重新解析当前租户内的指定数据源。
+// Re-parses a resource.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// 该 API 用于重新解析指定的数据源，支持同步或异步执行。请求时需提供数据源 ID，并可选择是否同步等待解析完成，默认为异步入队处理。此外，可以通过 `tenantId` 参数指定租户ID，但此参数非必填。
+// This API operation re-parses a specified data source. You can choose synchronous or asynchronous execution. You must provide the data source ID in the request. You can optionally specify whether to synchronously wait for parsing to complete. By default, the request is processed asynchronously by being added to a queue. You can also use the `tenantId` parameter to specify a tenant ID, but this parameter is optional.
 //
-// - **forceSync**：若设置为 `true`，则会同步等待重新解析操作完成；默认值为 `false`，表示以异步方式处理请求。
+// - **forceSync**: If set to `true`, the operation synchronously waits for the re-parsing to complete. Default value: `false`, which indicates that the request is processed asynchronously.
 //
-// - 当服务返回 `None` 时，将被转换成 `SourceNotFound` 异常；其他异常情况将由 OpenAPI 的全局异常链进行处理。
+// - When the service returns `None`, it is converted to a `SourceNotFound` exception. Other exceptions are handled by the OpenAPI global exception chain.
 //
 // @param request - ReparseSourceRequest
 //
@@ -7958,19 +10729,19 @@ func (client *Client) ReparseSource(request *ReparseSourceRequest) (_result *Rep
 
 // Summary:
 //
-// 用于替换指定的企业知识库中的FILE资源并触发重新解析。
+// Replaces a FILE resource in a specified enterprise knowledge base and triggers re-parsing.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 该API允许用户更新企业自建知识库中特定的FILE类型的数据源，并通过提供新的文件路径和公开访问URL来触发系统对该数据源的重新解析。支持同步或异步模式下的操作执行，其中同步模式下客户端将等待直到解析过程完成。
+// This API allows you to update a specific FILE-type data source in a self-built enterprise knowledge base and trigger the system to re-parse the data source by providing a new file path and public access URL. Operations can be performed in synchronous or asynchronous mode. In synchronous mode, the client waits until the parsing process is complete.
 //
-// - **forceSync*	- 参数控制是否采用同步方式处理请求，默认为 `false`，即以异步方式进行。
+// - The **forceSync*	- parameter controls whether the request is processed synchronously. The default value is `false`, which indicates asynchronous processing.
 //
-// - 当不提供 **fileName*	- 或其值为空时，新上传的文件将保留原有的文件名。
+// - If **fileName*	- is not provided or its value is empty, the newly uploaded file retains the original file name.
 //
-// - 必须确保提供的 **filePath*	- 和 **filePublicUrl*	- 是有效的且指向同一个文件实体。
+// - Ensure that the provided **filePath*	- and **filePublicUrl*	- are valid and point to the same file entity.
 //
 // @param request - ReplaceKnowledgeBaseSourceFileRequest
 //
@@ -8043,19 +10814,19 @@ func (client *Client) ReplaceKnowledgeBaseSourceFileWithOptions(request *Replace
 
 // Summary:
 //
-// 用于替换指定的企业知识库中的FILE资源并触发重新解析。
+// Replaces a FILE resource in a specified enterprise knowledge base and triggers re-parsing.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 该API允许用户更新企业自建知识库中特定的FILE类型的数据源，并通过提供新的文件路径和公开访问URL来触发系统对该数据源的重新解析。支持同步或异步模式下的操作执行，其中同步模式下客户端将等待直到解析过程完成。
+// This API allows you to update a specific FILE-type data source in a self-built enterprise knowledge base and trigger the system to re-parse the data source by providing a new file path and public access URL. Operations can be performed in synchronous or asynchronous mode. In synchronous mode, the client waits until the parsing process is complete.
 //
-// - **forceSync*	- 参数控制是否采用同步方式处理请求，默认为 `false`，即以异步方式进行。
+// - The **forceSync*	- parameter controls whether the request is processed synchronously. The default value is `false`, which indicates asynchronous processing.
 //
-// - 当不提供 **fileName*	- 或其值为空时，新上传的文件将保留原有的文件名。
+// - If **fileName*	- is not provided or its value is empty, the newly uploaded file retains the original file name.
 //
-// - 必须确保提供的 **filePath*	- 和 **filePublicUrl*	- 是有效的且指向同一个文件实体。
+// - Ensure that the provided **filePath*	- and **filePublicUrl*	- are valid and point to the same file entity.
 //
 // @param request - ReplaceKnowledgeBaseSourceFileRequest
 //
@@ -8074,19 +10845,19 @@ func (client *Client) ReplaceKnowledgeBaseSourceFile(request *ReplaceKnowledgeBa
 
 // Summary:
 //
-// 用于全量替换指定数据源下的对象绑定信息。
+// Replaces all object binding information under a specified data source.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// 该 API 用于全量替换特定数据源的对象绑定（先删除现有绑定，再插入新的绑定）。如果传入空列表，则表示清空所有绑定。
+// This API performs a full replacement of object bindings for a specified data source (deletes existing bindings first, then inserts new bindings). If an empty list is passed, all bindings are cleared.
 //
-// - **安全约束**：`tenant_id` 和 `user_id` 必须来自鉴权身份。
+// - **Security constraints**: `tenant_id` and `user_id` must come from the authenticated identity.
 //
-// - **错误处理**：若指定的数据源不存在，将抛出 `ERR.Robject.InvalidParameter` 错误，并由全局中间件转换为 POP 错误码。
+// - **Error handling**: If the specified data source does not exist, an `ERR.Robject.InvalidParameter` error is thrown and converted to a POP error code by the global middleware.
 //
-// - **同步通知**：替换成功后会尽力同步通知 DocumentAgent 更新 `semantics.object_bindings`，但失败仅记录日志，不会阻断主流程。
+// - **Synchronous notification**: After a successful replacement, the system makes a best-effort synchronous notification to DocumentAgent to update `semantics.object_bindings`. However, failures are only logged and do not block the main process.
 //
 // @param tmpReq - ReplaceObjectBindingsRequest
 //
@@ -8149,19 +10920,19 @@ func (client *Client) ReplaceObjectBindingsWithOptions(tmpReq *ReplaceObjectBind
 
 // Summary:
 //
-// 用于全量替换指定数据源下的对象绑定信息。
+// Replaces all object binding information under a specified data source.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// 该 API 用于全量替换特定数据源的对象绑定（先删除现有绑定，再插入新的绑定）。如果传入空列表，则表示清空所有绑定。
+// This API performs a full replacement of object bindings for a specified data source (deletes existing bindings first, then inserts new bindings). If an empty list is passed, all bindings are cleared.
 //
-// - **安全约束**：`tenant_id` 和 `user_id` 必须来自鉴权身份。
+// - **Security constraints**: `tenant_id` and `user_id` must come from the authenticated identity.
 //
-// - **错误处理**：若指定的数据源不存在，将抛出 `ERR.Robject.InvalidParameter` 错误，并由全局中间件转换为 POP 错误码。
+// - **Error handling**: If the specified data source does not exist, an `ERR.Robject.InvalidParameter` error is thrown and converted to a POP error code by the global middleware.
 //
-// - **同步通知**：替换成功后会尽力同步通知 DocumentAgent 更新 `semantics.object_bindings`，但失败仅记录日志，不会阻断主流程。
+// - **Synchronous notification**: After a successful replacement, the system makes a best-effort synchronous notification to DocumentAgent to update `semantics.object_bindings`. However, failures are only logged and do not block the main process.
 //
 // @param request - ReplaceObjectBindingsRequest
 //
@@ -8180,19 +10951,19 @@ func (client *Client) ReplaceObjectBindings(request *ReplaceObjectBindingsReques
 
 // Summary:
 //
-// 允许用户替换其创建的个人文件资源，并触发系统重新解析该文件。
+// Allows a user to replace a personal file resource that they created and triggers the system to re-parse the file.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 此 API 用于替换当前平台用户创建的个人 FILE 资源，并触发系统对该文件的重新解析。
+// - This API operation replaces a personal FILE resource created by the current platform user and triggers the system to re-parse the file.
 //
-// - `tenant_id`、操作人和创建者约束只读取鉴权身份。缺少平台用户时请求将被拒绝，以防止绕过所有权校验。
+// - The `tenant_id`, operator, and creator constraints are read only from the authenticated identity. Requests without a platform user are rejected to prevent bypassing ownership verification.
 //
-// - 如果服务端返回 `None`，则会被转换为 `NotFound` 异常；其他异常由 OpenAPI 全局异常链处理。
+// - If the server returns `None`, it is converted to a `NotFound` exception. Other exceptions are handled by the OpenAPI global exception chain.
 //
-// - 该接口支持同步或异步等待重新解析完成，默认为异步入队（通过设置 `forceSync` 参数控制）。
+// - This operation supports synchronous or asynchronous waiting for re-parsing to complete. The default behavior is asynchronous queuing (controlled by the `forceSync` parameter).
 //
 // @param request - ReplaceSourceFileRequest
 //
@@ -8265,19 +11036,19 @@ func (client *Client) ReplaceSourceFileWithOptions(request *ReplaceSourceFileReq
 
 // Summary:
 //
-// 允许用户替换其创建的个人文件资源，并触发系统重新解析该文件。
+// Allows a user to replace a personal file resource that they created and triggers the system to re-parse the file.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 此 API 用于替换当前平台用户创建的个人 FILE 资源，并触发系统对该文件的重新解析。
+// - This API operation replaces a personal FILE resource created by the current platform user and triggers the system to re-parse the file.
 //
-// - `tenant_id`、操作人和创建者约束只读取鉴权身份。缺少平台用户时请求将被拒绝，以防止绕过所有权校验。
+// - The `tenant_id`, operator, and creator constraints are read only from the authenticated identity. Requests without a platform user are rejected to prevent bypassing ownership verification.
 //
-// - 如果服务端返回 `None`，则会被转换为 `NotFound` 异常；其他异常由 OpenAPI 全局异常链处理。
+// - If the server returns `None`, it is converted to a `NotFound` exception. Other exceptions are handled by the OpenAPI global exception chain.
 //
-// - 该接口支持同步或异步等待重新解析完成，默认为异步入队（通过设置 `forceSync` 参数控制）。
+// - This operation supports synchronous or asynchronous waiting for re-parsing to complete. The default behavior is asynchronous queuing (controlled by the `forceSync` parameter).
 //
 // @param request - ReplaceSourceFileRequest
 //
@@ -8296,27 +11067,27 @@ func (client *Client) ReplaceSourceFile(request *ReplaceSourceFileRequest) (_res
 
 // Summary:
 //
-// 重置用户密码
+// Resets the password of a user.
 //
 // Description:
 //
-// OpenAPI 重置用户密码。
+// Resets the password of a user through OpenAPI.
 //
-//	业务编排：
+//	Business orchestration:
 //
-//	1. 调用 UserManagementService.reset_member_password 传入 password_encrypted（必填）
+//	1. Call UserManagementService.reset_member_password with password_encrypted (required).
 //
-//	   → service 内部完成 RSA 解密 + 复杂度校验 + bcrypt hash + 写入
+//	   The service internally performs RSA decryption, complexity validation, bcrypt hashing, and writes the result.
 //
-//	2. 返回重置结果
+//	2. Returns the reset result.
 //
-//	错误码：
+//	Error codes:
 //
-//	- ERR.User.NotFound: 用户不存在
+//	- ERR.User.NotFound: The user does not exist.
 //
-//	- ERR.User.NotInTenant: 用户不在当前租户下
+//	- ERR.User.NotInTenant: The user does not belong to the current tenant.
 //
-//	- ERR.User.WinnexoPasswordRequired: 用户无密码凭证（非 WINNEXO 类型）
+//	- ERR.User.WinnexoPasswordRequired: The user does not have password credentials (non-WINNEXO type).
 //
 // @param request - ResetPasswordRequest
 //
@@ -8373,27 +11144,27 @@ func (client *Client) ResetPasswordWithOptions(request *ResetPasswordRequest, he
 
 // Summary:
 //
-// 重置用户密码
+// Resets the password of a user.
 //
 // Description:
 //
-// OpenAPI 重置用户密码。
+// Resets the password of a user through OpenAPI.
 //
-//	业务编排：
+//	Business orchestration:
 //
-//	1. 调用 UserManagementService.reset_member_password 传入 password_encrypted（必填）
+//	1. Call UserManagementService.reset_member_password with password_encrypted (required).
 //
-//	   → service 内部完成 RSA 解密 + 复杂度校验 + bcrypt hash + 写入
+//	   The service internally performs RSA decryption, complexity validation, bcrypt hashing, and writes the result.
 //
-//	2. 返回重置结果
+//	2. Returns the reset result.
 //
-//	错误码：
+//	Error codes:
 //
-//	- ERR.User.NotFound: 用户不存在
+//	- ERR.User.NotFound: The user does not exist.
 //
-//	- ERR.User.NotInTenant: 用户不在当前租户下
+//	- ERR.User.NotInTenant: The user does not belong to the current tenant.
 //
-//	- ERR.User.WinnexoPasswordRequired: 用户无密码凭证（非 WINNEXO 类型）
+//	- ERR.User.WinnexoPasswordRequired: The user does not have password credentials (non-WINNEXO type).
 //
 // @param request - ResetPasswordRequest
 //
@@ -8412,27 +11183,27 @@ func (client *Client) ResetPassword(request *ResetPasswordRequest) (_result *Res
 
 // Summary:
 //
-// 重置 API Token
+// Resets an API token.
 //
 // Description:
 //
-// 重置用户的 INSTANCE Token。
+// Resets the token of a user.
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 取 user_id（强制 caller_type=user）
+//	1. Retrieves user_id from identity (caller_type=user is required).
 //
-//	2. 构造 AuthContext，委托 UserTokenAuthorizedService 完成权限校验
+//	2. Constructs an AuthContext and delegates permission verification to UserTokenAuthorizedService.
 //
-//	3. 调用 reset_token：
+//	3. Calls reset_token:
 //
-//	   - 旧 ACTIVE Token → RESET（永久失效）
+//	   - Changes the old ACTIVE token to RESET (permanently invalidated).
 //
-//	   - 生成新 ACTIVE Token
+//	   - Generates a new ACTIVE token.
 //
-//	4. 返回新 Token 明文 + 脱敏值
+//	4. Returns the new token in plaintext and the masked value.
 //
-//	注意：重置后旧 Token 永久失效且不可恢复。新 Token 明文仅在本次响应中返回。
+//	Note: After the reset, the old token is permanently invalidated and cannot be recovered. The new token in plaintext is returned only in this response.
 //
 // @param request - ResetTokenRequest
 //
@@ -8485,27 +11256,27 @@ func (client *Client) ResetTokenWithOptions(request *ResetTokenRequest, headers 
 
 // Summary:
 //
-// 重置 API Token
+// Resets an API token.
 //
 // Description:
 //
-// 重置用户的 INSTANCE Token。
+// Resets the token of a user.
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 取 user_id（强制 caller_type=user）
+//	1. Retrieves user_id from identity (caller_type=user is required).
 //
-//	2. 构造 AuthContext，委托 UserTokenAuthorizedService 完成权限校验
+//	2. Constructs an AuthContext and delegates permission verification to UserTokenAuthorizedService.
 //
-//	3. 调用 reset_token：
+//	3. Calls reset_token:
 //
-//	   - 旧 ACTIVE Token → RESET（永久失效）
+//	   - Changes the old ACTIVE token to RESET (permanently invalidated).
 //
-//	   - 生成新 ACTIVE Token
+//	   - Generates a new ACTIVE token.
 //
-//	4. 返回新 Token 明文 + 脱敏值
+//	4. Returns the new token in plaintext and the masked value.
 //
-//	注意：重置后旧 Token 永久失效且不可恢复。新 Token 明文仅在本次响应中返回。
+//	Note: After the reset, the old token is permanently invalidated and cannot be recovered. The new token in plaintext is returned only in this response.
 //
 // @param request - ResetTokenRequest
 //
@@ -8524,29 +11295,29 @@ func (client *Client) ResetToken(request *ResetTokenRequest) (_result *ResetToke
 
 // Summary:
 //
-// 批量重试指定目录及其子目录下的所有失败数据源。
+// Retries all failed data sources in a specified folder and its subfolders in batch.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 该API用于获取并重试指定用户个人目录（包括其所有子目录）中状态为FAILED的数据源。请求将立即返回，实际的重试任务将在后台异步执行。请注意，只有当前登录用户有权访问且属于其创建的资源才能被重试。
+// This API retrieves and retries data sources with a FAILED status in the specified personal folder of a user (including all subfolders). The request returns immediately, and the actual retry tasks are executed asynchronously in the background. Only resources that the current logged-in user has access to and that were created by the user can be retried.
 //
-// ### 安全与权限
+// ### Security and permissions
 //
-// - 此操作需要适当的RAM权限。
+// - This operation requires appropriate RAM permissions.
 //
-// - 只能对当前用户所属租户内的资源进行操作。
+// - You can only operate on resources within the tenant to which the current user belongs.
 //
-// - 确保`tenantId`和`userId`来自经过验证的身份信息。
+// - Ensure that `tenantId` and `userId` come from verified identity information.
 //
-// ### 注意事项
+// ### Precautions
 //
-// - `directoryId`是必需参数，指定了要检查和重试失败数据源的目标目录。
+// - `directoryId` is a required parameter that specifies the target folder in which to check and retry failed data sources.
 //
-// - 如果没有提供`tenantId`，则默认使用调用方的租户ID。
+// - If `tenantId` is not provided, the tenant ID of the caller is used by default.
 //
-// - API支持多种认证方式，包括AK、BearerToken以及APP认证。
+// - The API supports multiple authentication methods, including AccessKey, BearerToken, and APP authentication.
 //
 // @param request - RetryDirectoryFailedSourcesRequest
 //
@@ -8599,29 +11370,29 @@ func (client *Client) RetryDirectoryFailedSourcesWithOptions(request *RetryDirec
 
 // Summary:
 //
-// 批量重试指定目录及其子目录下的所有失败数据源。
+// Retries all failed data sources in a specified folder and its subfolders in batch.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 该API用于获取并重试指定用户个人目录（包括其所有子目录）中状态为FAILED的数据源。请求将立即返回，实际的重试任务将在后台异步执行。请注意，只有当前登录用户有权访问且属于其创建的资源才能被重试。
+// This API retrieves and retries data sources with a FAILED status in the specified personal folder of a user (including all subfolders). The request returns immediately, and the actual retry tasks are executed asynchronously in the background. Only resources that the current logged-in user has access to and that were created by the user can be retried.
 //
-// ### 安全与权限
+// ### Security and permissions
 //
-// - 此操作需要适当的RAM权限。
+// - This operation requires appropriate RAM permissions.
 //
-// - 只能对当前用户所属租户内的资源进行操作。
+// - You can only operate on resources within the tenant to which the current user belongs.
 //
-// - 确保`tenantId`和`userId`来自经过验证的身份信息。
+// - Ensure that `tenantId` and `userId` come from verified identity information.
 //
-// ### 注意事项
+// ### Precautions
 //
-// - `directoryId`是必需参数，指定了要检查和重试失败数据源的目标目录。
+// - `directoryId` is a required parameter that specifies the target folder in which to check and retry failed data sources.
 //
-// - 如果没有提供`tenantId`，则默认使用调用方的租户ID。
+// - If `tenantId` is not provided, the tenant ID of the caller is used by default.
 //
-// - API支持多种认证方式，包括AK、BearerToken以及APP认证。
+// - The API supports multiple authentication methods, including AccessKey, BearerToken, and APP authentication.
 //
 // @param request - RetryDirectoryFailedSourcesRequest
 //
@@ -8640,25 +11411,25 @@ func (client *Client) RetryDirectoryFailedSources(request *RetryDirectoryFailedS
 
 // Summary:
 //
-// 批量重试指定目录下所有失败状态的数据源
+// Retries all data sources in failed status under a specified directory in batch.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 该API用于获取并重试指定企业知识库目录（包括其子目录）下的所有处于FAILED状态的数据源。请求将立即返回，实际的重试操作将在后台异步执行。
+// This API retrieves and retries all data sources in FAILED status under a specified enterprise knowledge base directory (including its subdirectories). The request returns immediately, and the actual retry operations are executed asynchronously in the background.
 //
-// - **鉴权**：除了基础鉴权外，还需具备`DEVELOPMENT_KB_MANAGE`权限。
+// - **Authentication**: In addition to basic authentication, the `DEVELOPMENT_KB_MANAGE` permission is required.
 //
-// - **安全约束**：仅允许具有相应租户和用户身份的调用者访问，并且需要KB管理权限；管理员可以对任何用户的失败资源发起重试。
+// - **Security constraints**: Only callers with the corresponding tenant and user identity are allowed access, and KB management permission is required. Administrators can initiate retries for failed resources of any user.
 //
-// - **参数**：
+// - **Parameters**:
 //
-//   - `directoryId` (必填)：指定要检查和重试失败数据源的企业知识库目录ID。
+//   - `directoryId` (required): The ID of the enterprise knowledge base directory for which to check and retry failed data sources.
 //
-//   - `tenantId` (可选)：指定租户ID，默认使用调用方的默认租户。
+//   - `tenantId` (optional): The tenant ID. The default tenant of the caller is used if this parameter is not specified.
 //
-// - **响应**：成功时返回已入队等待重试的数据源数量及详情等信息。
+// - **Response**: On success, returns the number of data sources enqueued for retry and related details.
 //
 // @param request - RetryKnowledgeBaseFailedSourcesRequest
 //
@@ -8711,25 +11482,25 @@ func (client *Client) RetryKnowledgeBaseFailedSourcesWithOptions(request *RetryK
 
 // Summary:
 //
-// 批量重试指定目录下所有失败状态的数据源
+// Retries all data sources in failed status under a specified directory in batch.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 该API用于获取并重试指定企业知识库目录（包括其子目录）下的所有处于FAILED状态的数据源。请求将立即返回，实际的重试操作将在后台异步执行。
+// This API retrieves and retries all data sources in FAILED status under a specified enterprise knowledge base directory (including its subdirectories). The request returns immediately, and the actual retry operations are executed asynchronously in the background.
 //
-// - **鉴权**：除了基础鉴权外，还需具备`DEVELOPMENT_KB_MANAGE`权限。
+// - **Authentication**: In addition to basic authentication, the `DEVELOPMENT_KB_MANAGE` permission is required.
 //
-// - **安全约束**：仅允许具有相应租户和用户身份的调用者访问，并且需要KB管理权限；管理员可以对任何用户的失败资源发起重试。
+// - **Security constraints**: Only callers with the corresponding tenant and user identity are allowed access, and KB management permission is required. Administrators can initiate retries for failed resources of any user.
 //
-// - **参数**：
+// - **Parameters**:
 //
-//   - `directoryId` (必填)：指定要检查和重试失败数据源的企业知识库目录ID。
+//   - `directoryId` (required): The ID of the enterprise knowledge base directory for which to check and retry failed data sources.
 //
-//   - `tenantId` (可选)：指定租户ID，默认使用调用方的默认租户。
+//   - `tenantId` (optional): The tenant ID. The default tenant of the caller is used if this parameter is not specified.
 //
-// - **响应**：成功时返回已入队等待重试的数据源数量及详情等信息。
+// - **Response**: On success, returns the number of data sources enqueued for retry and related details.
 //
 // @param request - RetryKnowledgeBaseFailedSourcesRequest
 //
@@ -8748,23 +11519,23 @@ func (client *Client) RetryKnowledgeBaseFailedSources(request *RetryKnowledgeBas
 
 // Summary:
 //
-// 撤销用户/用户组的数字员工使用权限
+// Revokes the usage permissions of a user or user group on a digital human.
 //
 // Description:
 //
-// 撤销用户或用户组对指定数字员工的使用权限。
+// Revokes the usage permissions of a user or user group on a specified digital human.
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 构造 AuthContext
+//	1. Constructs an AuthContext from identity.
 //
-//	2. 请求体互斥校验：userIds / userGroupIds 二选一
+//	2. Performs mutual exclusion validation on the request body: either userIds or userGroupIds must be specified.
 //
-//	3. 委托 AgentAuthorizationAuthorizedService.revoke_authorization 执行
+//	3. Delegates to AgentAuthorizationAuthorizedService.revoke_authorization for execution.
 //
-//	4. 前置校验：MANAGE 权限 + agent 存在性（由 AuthorizedService 层执行，先鉴权后暴露存在性）
+//	4. Pre-validation: MANAGE permission + agent existence check (performed by the AuthorizedService layer, which authenticates before exposing existence).
 //
-//	5. 撤销用户直接授权后，用户可能仍通过用户组获得授权
+//	5. After direct user authorization is revoked, the user may still have access through user group authorization.
 //
 // @param tmpReq - RevokeAgentUsersRequest
 //
@@ -8835,23 +11606,23 @@ func (client *Client) RevokeAgentUsersWithOptions(tmpReq *RevokeAgentUsersReques
 
 // Summary:
 //
-// 撤销用户/用户组的数字员工使用权限
+// Revokes the usage permissions of a user or user group on a digital human.
 //
 // Description:
 //
-// 撤销用户或用户组对指定数字员工的使用权限。
+// Revokes the usage permissions of a user or user group on a specified digital human.
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 构造 AuthContext
+//	1. Constructs an AuthContext from identity.
 //
-//	2. 请求体互斥校验：userIds / userGroupIds 二选一
+//	2. Performs mutual exclusion validation on the request body: either userIds or userGroupIds must be specified.
 //
-//	3. 委托 AgentAuthorizationAuthorizedService.revoke_authorization 执行
+//	3. Delegates to AgentAuthorizationAuthorizedService.revoke_authorization for execution.
 //
-//	4. 前置校验：MANAGE 权限 + agent 存在性（由 AuthorizedService 层执行，先鉴权后暴露存在性）
+//	4. Pre-validation: MANAGE permission + agent existence check (performed by the AuthorizedService layer, which authenticates before exposing existence).
 //
-//	5. 撤销用户直接授权后，用户可能仍通过用户组获得授权
+//	5. After direct user authorization is revoked, the user may still have access through user group authorization.
 //
 // @param request - RevokeAgentUsersRequest
 //
@@ -8870,23 +11641,23 @@ func (client *Client) RevokeAgentUsers(request *RevokeAgentUsersRequest) (_resul
 
 // Summary:
 //
-// 异步触发技能执行，立即返回 RunId。
+// Asynchronously triggers skill execution and immediately returns a RunId.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 本接口仅支持异步模式：提交后立即返回 `RunId` 和 `Status=Running`，客户端通过 `GetSkillRun` 轮询最终结果。
+// This operation supports only asynchronous mode. After submission, the operation immediately returns a `RunId` and `Status=Running`. The client polls for the final result by calling `GetSkillRun`.
 //
-// - **TenantId**：可选公共参数，由网关透传到后端 Header。
+// - **TenantId**: An optional common parameter that the gateway passes through to the backend header.
 //
-// - **SkillCode*	- / **SkillName**：二选一；SkillCode 优先；SkillName 不唯一时返回 `ERR.SkillHub.SkillNameAmbiguous`。
+// - **SkillCode*	- / **SkillName**: Specify one of the two parameters. SkillCode takes priority. If SkillName is not unique, `ERR.SkillHub.SkillNameAmbiguous` is returned.
 //
-// - **Arguments**：必填，技能入参对象，结构由 `GetSkill` 返回的 inputConfig 描述。
+// - **Arguments**: Required. The skill input parameter object. The structure is described by the inputConfig returned by `GetSkill`.
 //
-// - **ClientToken**：可选幂等键；当前版本仅记录到任务元数据，不做强幂等去重。
+// - **ClientToken**: An optional idempotency key. In the current version, this value is only recorded in the task metadata and is not used for strict idempotency deduplication.
 //
-// 注意：同步模式（Async=false）、Stream、CallbackUrl 一期不支持，将在后续版本提供。
+// Note: Synchronous mode (Async=false), Stream, and CallbackUrl are not supported in the first release and will be available in later versions.
 //
 // @param tmpReq - RunSkillRequest
 //
@@ -8965,23 +11736,23 @@ func (client *Client) RunSkillWithOptions(tmpReq *RunSkillRequest, headers map[s
 
 // Summary:
 //
-// 异步触发技能执行，立即返回 RunId。
+// Asynchronously triggers skill execution and immediately returns a RunId.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 本接口仅支持异步模式：提交后立即返回 `RunId` 和 `Status=Running`，客户端通过 `GetSkillRun` 轮询最终结果。
+// This operation supports only asynchronous mode. After submission, the operation immediately returns a `RunId` and `Status=Running`. The client polls for the final result by calling `GetSkillRun`.
 //
-// - **TenantId**：可选公共参数，由网关透传到后端 Header。
+// - **TenantId**: An optional common parameter that the gateway passes through to the backend header.
 //
-// - **SkillCode*	- / **SkillName**：二选一；SkillCode 优先；SkillName 不唯一时返回 `ERR.SkillHub.SkillNameAmbiguous`。
+// - **SkillCode*	- / **SkillName**: Specify one of the two parameters. SkillCode takes priority. If SkillName is not unique, `ERR.SkillHub.SkillNameAmbiguous` is returned.
 //
-// - **Arguments**：必填，技能入参对象，结构由 `GetSkill` 返回的 inputConfig 描述。
+// - **Arguments**: Required. The skill input parameter object. The structure is described by the inputConfig returned by `GetSkill`.
 //
-// - **ClientToken**：可选幂等键；当前版本仅记录到任务元数据，不做强幂等去重。
+// - **ClientToken**: An optional idempotency key. In the current version, this value is only recorded in the task metadata and is not used for strict idempotency deduplication.
 //
-// 注意：同步模式（Async=false）、Stream、CallbackUrl 一期不支持，将在后续版本提供。
+// Note: Synchronous mode (Async=false), Stream, and CallbackUrl are not supported in the first release and will be available in later versions.
 //
 // @param request - RunSkillRequest
 //
@@ -9000,25 +11771,269 @@ func (client *Client) RunSkill(request *RunSkillRequest) (_result *RunSkillRespo
 
 // Summary:
 //
-// 将产出明细批量保存为个人资源，支持链接或复制模式。
+// Saves group outputs in batches to the collaboration group repository.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API用于将一批产出明细保存为用户的个人资源。
+// - Saves specified group outputs to the repository directory of the same collaboration group.
 //
-// - 支持两种保存方式：`link`（链接）和`copy`（复制）。选择`link`时，编辑产出会同步到资源；选择`copy`则创建快照，不限次数。
+// - Supports two modes: `link` (maintains output association) and `copy` (creates an independent snapshot).
 //
-// - `tenant_id` 和 `user_id` 仅来自鉴权身份。
+// - The caller must be a platform user and a member of the target group. The caller can archive group outputs visible to them, including outputs created by other members.
 //
-// - 如果批内 `operating_object` 不一致且未传 `directoryId`，则整批请求前置失败。
+// - If `directoryId` is not specified, the default repository directory of the target group is used.
 //
-// - 单条记录的处理结果不会影响其他记录的结果，单条失败信息会在响应中返回。
+// - A maximum of 50 outputs can be processed per batch. All entries are validated before saving. If any entry does not exist, is not visible, or cannot be operated on, the entire batch fails.
 //
-// - 批量操作最多支持50条记录。
+// - After unified validation passes, entries are saved one by one. The response results maintain the same order as `itemIds`. A failure of a single entry does not affect other entries.
 //
-// - 整批前置失败的情况由全局异常中间件统一返回POP兼容错误格式。
+// @param tmpReq - SaveGroupOutputFileToGroupResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveGroupOutputFileToGroupResourceResponse
+func (client *Client) SaveGroupOutputFileToGroupResourceWithOptions(tmpReq *SaveGroupOutputFileToGroupResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SaveGroupOutputFileToGroupResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SaveGroupOutputFileToGroupResourceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ItemIds) {
+		request.ItemIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ItemIds, dara.String("itemIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DirectoryId) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.ItemIdsShrink) {
+		body["itemIds"] = request.ItemIdsShrink
+	}
+
+	if !dara.IsNil(request.Mode) {
+		body["mode"] = request.Mode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SaveGroupOutputFileToGroupResource"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/saveGroupOutputFileToGroupResource"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SaveGroupOutputFileToGroupResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Saves group outputs in batches to the collaboration group repository.
+//
+// Description:
+//
+// ## Request description
+//
+// - Saves specified group outputs to the repository directory of the same collaboration group.
+//
+// - Supports two modes: `link` (maintains output association) and `copy` (creates an independent snapshot).
+//
+// - The caller must be a platform user and a member of the target group. The caller can archive group outputs visible to them, including outputs created by other members.
+//
+// - If `directoryId` is not specified, the default repository directory of the target group is used.
+//
+// - A maximum of 50 outputs can be processed per batch. All entries are validated before saving. If any entry does not exist, is not visible, or cannot be operated on, the entire batch fails.
+//
+// - After unified validation passes, entries are saved one by one. The response results maintain the same order as `itemIds`. A failure of a single entry does not affect other entries.
+//
+// @param request - SaveGroupOutputFileToGroupResourceRequest
+//
+// @return SaveGroupOutputFileToGroupResourceResponse
+func (client *Client) SaveGroupOutputFileToGroupResource(request *SaveGroupOutputFileToGroupResourceRequest) (_result *SaveGroupOutputFileToGroupResourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SaveGroupOutputFileToGroupResourceResponse{}
+	_body, _err := client.SaveGroupOutputFileToGroupResourceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Batch saves group outputs to the current operator\\"s personal knowledge base.
+//
+// Description:
+//
+// ## Request description
+//
+// - Saves specified group outputs to the current operator\\"s personal knowledge base.
+//
+// - Supports two modes: `link` (maintains output association) and `copy` (creates an independent snapshot).
+//
+// - The caller must be a member of the target group who is associated with a platform user. Regular members can only archive outputs they created, while group administrators can archive visible outputs from other members. Personal ownership is always derived from the gateway authentication identity.
+//
+// - If `directoryId` is not specified, the current operator\\"s default personal directory is used.
+//
+// - A maximum of 50 outputs can be processed per batch. All entries are validated before saving. The entire batch fails if any entry does not exist, is not visible, or cannot be operated on.
+//
+// - After unified validation passes, entries are saved one by one. The response results maintain the same order as `itemIds`. A failure to save a single entry does not affect other entries.
+//
+// @param tmpReq - SaveGroupOutputFileToPersonalResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveGroupOutputFileToPersonalResourceResponse
+func (client *Client) SaveGroupOutputFileToPersonalResourceWithOptions(tmpReq *SaveGroupOutputFileToPersonalResourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *SaveGroupOutputFileToPersonalResourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SaveGroupOutputFileToPersonalResourceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ItemIds) {
+		request.ItemIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ItemIds, dara.String("itemIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DirectoryId) {
+		body["directoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.GroupId) {
+		body["groupId"] = request.GroupId
+	}
+
+	if !dara.IsNil(request.ItemIdsShrink) {
+		body["itemIds"] = request.ItemIdsShrink
+	}
+
+	if !dara.IsNil(request.Mode) {
+		body["mode"] = request.Mode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SaveGroupOutputFileToPersonalResource"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/saveGroupOutputFileToPersonalResource"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SaveGroupOutputFileToPersonalResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Batch saves group outputs to the current operator\\"s personal knowledge base.
+//
+// Description:
+//
+// ## Request description
+//
+// - Saves specified group outputs to the current operator\\"s personal knowledge base.
+//
+// - Supports two modes: `link` (maintains output association) and `copy` (creates an independent snapshot).
+//
+// - The caller must be a member of the target group who is associated with a platform user. Regular members can only archive outputs they created, while group administrators can archive visible outputs from other members. Personal ownership is always derived from the gateway authentication identity.
+//
+// - If `directoryId` is not specified, the current operator\\"s default personal directory is used.
+//
+// - A maximum of 50 outputs can be processed per batch. All entries are validated before saving. The entire batch fails if any entry does not exist, is not visible, or cannot be operated on.
+//
+// - After unified validation passes, entries are saved one by one. The response results maintain the same order as `itemIds`. A failure to save a single entry does not affect other entries.
+//
+// @param request - SaveGroupOutputFileToPersonalResourceRequest
+//
+// @return SaveGroupOutputFileToPersonalResourceResponse
+func (client *Client) SaveGroupOutputFileToPersonalResource(request *SaveGroupOutputFileToPersonalResourceRequest) (_result *SaveGroupOutputFileToPersonalResourceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SaveGroupOutputFileToPersonalResourceResponse{}
+	_body, _err := client.SaveGroupOutputFileToPersonalResourceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Saves output details in batch as personal resources. Supports link or copy mode.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This API saves a batch of output details as personal resources for the user.
+//
+// - Two save modes are supported: `link` and `copy`. When `link` is selected, edits to the output are synchronized to the resource. When `copy` is selected, a snapshot is created with no limit on the number of copies.
+//
+// - `tenant_id` and `user_id` are derived only from the authenticated identity.
+//
+// - If `operating_object` values are inconsistent within the batch and `directoryId` is not specified, the entire batch fails with a pre-check error.
+//
+// - The processing result of a single record does not affect other records. Failure information for individual records is returned in the response.
+//
+// - A maximum of 50 records are supported per batch operation.
+//
+// - Batch-level pre-check failures are returned in a POP-compatible error format by the global exception middleware.
 //
 // @param tmpReq - SaveOutputFileToResourceRequest
 //
@@ -9085,25 +12100,25 @@ func (client *Client) SaveOutputFileToResourceWithOptions(tmpReq *SaveOutputFile
 
 // Summary:
 //
-// 将产出明细批量保存为个人资源，支持链接或复制模式。
+// Saves output details in batch as personal resources. Supports link or copy mode.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该API用于将一批产出明细保存为用户的个人资源。
+// - This API saves a batch of output details as personal resources for the user.
 //
-// - 支持两种保存方式：`link`（链接）和`copy`（复制）。选择`link`时，编辑产出会同步到资源；选择`copy`则创建快照，不限次数。
+// - Two save modes are supported: `link` and `copy`. When `link` is selected, edits to the output are synchronized to the resource. When `copy` is selected, a snapshot is created with no limit on the number of copies.
 //
-// - `tenant_id` 和 `user_id` 仅来自鉴权身份。
+// - `tenant_id` and `user_id` are derived only from the authenticated identity.
 //
-// - 如果批内 `operating_object` 不一致且未传 `directoryId`，则整批请求前置失败。
+// - If `operating_object` values are inconsistent within the batch and `directoryId` is not specified, the entire batch fails with a pre-check error.
 //
-// - 单条记录的处理结果不会影响其他记录的结果，单条失败信息会在响应中返回。
+// - The processing result of a single record does not affect other records. Failure information for individual records is returned in the response.
 //
-// - 批量操作最多支持50条记录。
+// - A maximum of 50 records are supported per batch operation.
 //
-// - 整批前置失败的情况由全局异常中间件统一返回POP兼容错误格式。
+// - Batch-level pre-check failures are returned in a POP-compatible error format by the global exception middleware.
 //
 // @param request - SaveOutputFileToResourceRequest
 //
@@ -9122,7 +12137,11 @@ func (client *Client) SaveOutputFileToResource(request *SaveOutputFileToResource
 
 // Summary:
 //
-// 异步发送会话消息
+// Asynchronously sends a session message.
+//
+// Description:
+//
+// Asynchronously sends a session message.
 //
 // @param tmpReq - SendAsyncChatMessageRequest
 //
@@ -9225,7 +12244,11 @@ func (client *Client) SendAsyncChatMessageWithOptions(tmpReq *SendAsyncChatMessa
 
 // Summary:
 //
-// 异步发送会话消息
+// Asynchronously sends a session message.
+//
+// Description:
+//
+// Asynchronously sends a session message.
 //
 // @param request - SendAsyncChatMessageRequest
 //
@@ -9244,7 +12267,23 @@ func (client *Client) SendAsyncChatMessage(request *SendAsyncChatMessageRequest)
 
 // Summary:
 //
-// 发送消息
+// Sends a message.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This API is used to upload a file to the "My Resources" section of a specified digital employee.
+//
+// - `source_type` is fixed to `FILE`, `scope` is fixed to `PERSONAL`, and `platform` is fixed to `LOCAL`.
+//
+// - A persistent OSS address (`filePath`) must be provided for the file. Other information such as the public access URL and original file name is optional.
+//
+// - If the target folder ID (`directoryId`) is not specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the invoker\\"s personal folder.
+//
+// - Multiple authentication methods (AK, BearerToken, APP) are supported to authenticate requests.
+//
+// - The operation type is write, and operation logs are recorded for subsequent auditing.
 //
 // @param tmpReq - SendChatMessageRequest
 //
@@ -9261,7 +12300,23 @@ func (client *Client) SendChatMessageWithSSE(tmpReq *SendChatMessageRequest, hea
 
 // Summary:
 //
-// 发送消息
+// Sends a message.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This API is used to upload a file to the "My Resources" section of a specified digital employee.
+//
+// - `source_type` is fixed to `FILE`, `scope` is fixed to `PERSONAL`, and `platform` is fixed to `LOCAL`.
+//
+// - A persistent OSS address (`filePath`) must be provided for the file. Other information such as the public access URL and original file name is optional.
+//
+// - If the target folder ID (`directoryId`) is not specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the invoker\\"s personal folder.
+//
+// - Multiple authentication methods (AK, BearerToken, APP) are supported to authenticate requests.
+//
+// - The operation type is write, and operation logs are recorded for subsequent auditing.
 //
 // @param tmpReq - SendChatMessageRequest
 //
@@ -9364,7 +12419,23 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 
 // Summary:
 //
-// 发送消息
+// Sends a message.
+//
+// Description:
+//
+// ## Operation description
+//
+// - This API is used to upload a file to the "My Resources" section of a specified digital employee.
+//
+// - `source_type` is fixed to `FILE`, `scope` is fixed to `PERSONAL`, and `platform` is fixed to `LOCAL`.
+//
+// - A persistent OSS address (`filePath`) must be provided for the file. Other information such as the public access URL and original file name is optional.
+//
+// - If the target folder ID (`directoryId`) is not specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the invoker\\"s personal folder.
+//
+// - Multiple authentication methods (AK, BearerToken, APP) are supported to authenticate requests.
+//
+// - The operation type is write, and operation logs are recorded for subsequent auditing.
 //
 // @param request - SendChatMessageRequest
 //
@@ -9383,7 +12454,7 @@ func (client *Client) SendChatMessage(request *SendChatMessageRequest) (_result 
 
 // Summary:
 //
-// 停止对话生成
+// Stops conversation generation.
 //
 // @param request - StopChatMessageRequest
 //
@@ -9434,7 +12505,7 @@ func (client *Client) StopChatMessageWithOptions(request *StopChatMessageRequest
 
 // Summary:
 //
-// 停止对话生成
+// Stops conversation generation.
 //
 // @param request - StopChatMessageRequest
 //
@@ -9453,7 +12524,11 @@ func (client *Client) StopChatMessage(request *StopChatMessageRequest) (_result 
 
 // Summary:
 //
-// 订阅会话消息流
+// Subscribes to a conversation message stream.
+//
+// Description:
+//
+// Subscribes to a conversation message stream.
 //
 // @param request - StreamChatMessageRequest
 //
@@ -9470,7 +12545,11 @@ func (client *Client) StreamChatMessageWithSSE(messageId *string, request *Strea
 
 // Summary:
 //
-// 订阅会话消息流
+// Subscribes to a conversation message stream.
+//
+// Description:
+//
+// Subscribes to a conversation message stream.
 //
 // @param request - StreamChatMessageRequest
 //
@@ -9521,7 +12600,11 @@ func (client *Client) StreamChatMessageWithOptions(messageId *string, request *S
 
 // Summary:
 //
-// 订阅会话消息流
+// Subscribes to a conversation message stream.
+//
+// Description:
+//
+// Subscribes to a conversation message stream.
 //
 // @param request - StreamChatMessageRequest
 //
@@ -9540,27 +12623,27 @@ func (client *Client) StreamChatMessage(messageId *string, request *StreamChatMe
 
 // Summary:
 //
-// 推送组织架构同步
+// Pushes organizational structure synchronization.
 //
 // Description:
 //
-// 接收客户端推送的部门树和成员关系，创建异步同步任务。
+// Accepts a department tree and member relationships pushed from the client and creates an asynchronous synchronization task.
 //
-//	处理流程：
+//	Processing flow:
 //
-//	1. 校验 platformType（仅允许 saml / oauth2 / custom）
+//	1. Validates platformType (only saml, oauth2, or custom are allowed).
 //
-//	2. 校验数据量限制（departments + members <= 50000）
+//	2. Validates data volume limits (departments + members <= 50000).
 //
-//	3. 校验 syncMembers 与 platformType 的兼容性
+//	3. Validates the compatibility between syncMembers and platformType.
 //
-//	4. SAML/OAuth2 场景：解析或自动推导 ssoSettingsId
+//	4. SAML/OAuth2 scenario: Parses or automatically derives ssoSettingsId.
 //
-//	5. Custom 场景：校验 corpId 已通过 createCustomOrg 注册
+//	5. Custom scenario: Validates that corpId has been registered through createCustomOrg.
 //
-//	6. 委托 OrgSyncAuthorizedService 创建任务（内含权限校验）
+//	6. Delegates to OrgSyncAuthorizedService to create the task (which includes permission verification).
 //
-//	7. 返回 taskId 供轮询
+//	7. Returns taskId for polling.
 //
 // @param tmpReq - SyncOrgStructureRequest
 //
@@ -9643,27 +12726,27 @@ func (client *Client) SyncOrgStructureWithOptions(tmpReq *SyncOrgStructureReques
 
 // Summary:
 //
-// 推送组织架构同步
+// Pushes organizational structure synchronization.
 //
 // Description:
 //
-// 接收客户端推送的部门树和成员关系，创建异步同步任务。
+// Accepts a department tree and member relationships pushed from the client and creates an asynchronous synchronization task.
 //
-//	处理流程：
+//	Processing flow:
 //
-//	1. 校验 platformType（仅允许 saml / oauth2 / custom）
+//	1. Validates platformType (only saml, oauth2, or custom are allowed).
 //
-//	2. 校验数据量限制（departments + members <= 50000）
+//	2. Validates data volume limits (departments + members <= 50000).
 //
-//	3. 校验 syncMembers 与 platformType 的兼容性
+//	3. Validates the compatibility between syncMembers and platformType.
 //
-//	4. SAML/OAuth2 场景：解析或自动推导 ssoSettingsId
+//	4. SAML/OAuth2 scenario: Parses or automatically derives ssoSettingsId.
 //
-//	5. Custom 场景：校验 corpId 已通过 createCustomOrg 注册
+//	5. Custom scenario: Validates that corpId has been registered through createCustomOrg.
 //
-//	6. 委托 OrgSyncAuthorizedService 创建任务（内含权限校验）
+//	6. Delegates to OrgSyncAuthorizedService to create the task (which includes permission verification).
 //
-//	7. 返回 taskId 供轮询
+//	7. Returns taskId for polling.
 //
 // @param request - SyncOrgStructureRequest
 //
@@ -9682,29 +12765,29 @@ func (client *Client) SyncOrgStructure(request *SyncOrgStructureRequest) (_resul
 
 // Summary:
 //
-// 通过此API可以对指定的主对象执行关注或取消关注操作。
+// Follows or unfollows a specified primary object.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
 // - **Precheck**:
 //
-//  1. 添加关注时：系统会检查是否已对该主对象进行了关注以防止重复，并且会验证该主对象是否存在。
+//  1. When adding a follow: The system checks whether the primary object is already followed to prevent duplicates, and authenticates that the primary object exists.
 //
-//  2. 取消关注时：这是一个幂等操作，无论用户之前是否已经关注了该对象，都会返回 `success=true`。
+//  2. When unfollowing: This is an idempotent operation. Regardless of whether the user has previously followed the object, `success=true` is returned.
 //
-// - **安全性**：支持AK、BearerToken和APP三种认证方式。
+// - **Security**: Three authentication methods are supported: AK, BearerToken, and APP.
 //
-// - **请求频率限制**：每秒最多可发送100次请求。
+// - **Request frequency limit**: A maximum of 100 requests can be send per second.
 //
-// - **响应日志**：开启响应日志记录功能。
+// - **Response log**: The response log record feature is enabled.
 //
-// - **租户相关性**：此API与特定租户相关联，默认使用调用方的租户ID。
+// - **Tenant relevance**: This API is associated with a specific tenant. The tenant ID of the invoker is used by default.
 //
-// - **操作类型**：属于写入型操作。
+// - **Operation type**: Write operation.
 //
-// - **后端服务**：请求将被转发至内部服务进行处理，超时时间为3秒。
+// - **Backend service**: Requests are forwarded to an internal service for processing. The timeout period is 3 seconds.
 //
 // @param tmpReq - TogglePrimaryObjectFavoriteRequest
 //
@@ -9775,29 +12858,29 @@ func (client *Client) TogglePrimaryObjectFavoriteWithOptions(tmpReq *TogglePrima
 
 // Summary:
 //
-// 通过此API可以对指定的主对象执行关注或取消关注操作。
+// Follows or unfollows a specified primary object.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
 // - **Precheck**:
 //
-//  1. 添加关注时：系统会检查是否已对该主对象进行了关注以防止重复，并且会验证该主对象是否存在。
+//  1. When adding a follow: The system checks whether the primary object is already followed to prevent duplicates, and authenticates that the primary object exists.
 //
-//  2. 取消关注时：这是一个幂等操作，无论用户之前是否已经关注了该对象，都会返回 `success=true`。
+//  2. When unfollowing: This is an idempotent operation. Regardless of whether the user has previously followed the object, `success=true` is returned.
 //
-// - **安全性**：支持AK、BearerToken和APP三种认证方式。
+// - **Security**: Three authentication methods are supported: AK, BearerToken, and APP.
 //
-// - **请求频率限制**：每秒最多可发送100次请求。
+// - **Request frequency limit**: A maximum of 100 requests can be send per second.
 //
-// - **响应日志**：开启响应日志记录功能。
+// - **Response log**: The response log record feature is enabled.
 //
-// - **租户相关性**：此API与特定租户相关联，默认使用调用方的租户ID。
+// - **Tenant relevance**: This API is associated with a specific tenant. The tenant ID of the invoker is used by default.
 //
-// - **操作类型**：属于写入型操作。
+// - **Operation type**: Write operation.
 //
-// - **后端服务**：请求将被转发至内部服务进行处理，超时时间为3秒。
+// - **Backend service**: Requests are forwarded to an internal service for processing. The timeout period is 3 seconds.
 //
 // @param request - TogglePrimaryObjectFavoriteRequest
 //
@@ -9816,23 +12899,23 @@ func (client *Client) TogglePrimaryObjectFavorite(request *TogglePrimaryObjectFa
 
 // Summary:
 //
-// 更新数字员工使用权限授权模式
+// Updates the authorization mode for digital employee usage permissions.
 //
 // Description:
 //
-// 切换数字员工的使用权限授权模式。
+// Switches the authorization mode for digital employee usage permissions.
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 构造 AuthContext
+//	1. Constructs an AuthContext from the identity.
 //
-//	2. 委托 AgentAuthorizationAuthorizedService.update_auth_mode 执行
+//	2. Delegates to AgentAuthorizationAuthorizedService.update_auth_mode for execution.
 //
-//	3. 前置校验：MANAGE 权限 + agent 存在性（由 AuthorizedService 层执行，先鉴权后暴露存在性）
+//	3. Pre-validation: MANAGE permission + agent existence check (performed by the AuthorizedService layer, which authenticates before exposing existence).
 //
-//	4. SPECIFIED_USERS：需显式授权才能使用
+//	4. SPECIFIED_USERS: Explicit authorization is required before usage.
 //
-//	5. ALL_USERS：所有用户无需授权即可使用（管理权限不受影响）
+//	5. ALL_USERS: All users can use the digital employee without authorization (management permissions are not affected).
 //
 // @param request - UpdateAgentAuthModeRequest
 //
@@ -9889,23 +12972,23 @@ func (client *Client) UpdateAgentAuthModeWithOptions(request *UpdateAgentAuthMod
 
 // Summary:
 //
-// 更新数字员工使用权限授权模式
+// Updates the authorization mode for digital employee usage permissions.
 //
 // Description:
 //
-// 切换数字员工的使用权限授权模式。
+// Switches the authorization mode for digital employee usage permissions.
 //
-//	业务逻辑：
+//	Business logic:
 //
-//	1. 从 identity 构造 AuthContext
+//	1. Constructs an AuthContext from the identity.
 //
-//	2. 委托 AgentAuthorizationAuthorizedService.update_auth_mode 执行
+//	2. Delegates to AgentAuthorizationAuthorizedService.update_auth_mode for execution.
 //
-//	3. 前置校验：MANAGE 权限 + agent 存在性（由 AuthorizedService 层执行，先鉴权后暴露存在性）
+//	3. Pre-validation: MANAGE permission + agent existence check (performed by the AuthorizedService layer, which authenticates before exposing existence).
 //
-//	4. SPECIFIED_USERS：需显式授权才能使用
+//	4. SPECIFIED_USERS: Explicit authorization is required before usage.
 //
-//	5. ALL_USERS：所有用户无需授权即可使用（管理权限不受影响）
+//	5. ALL_USERS: All users can use the digital employee without authorization (management permissions are not affected).
 //
 // @param request - UpdateAgentAuthModeRequest
 //
@@ -9924,7 +13007,11 @@ func (client *Client) UpdateAgentAuthMode(request *UpdateAgentAuthModeRequest) (
 
 // Summary:
 //
-// 更新会话
+// Updates a session.
+//
+// Description:
+//
+// Updates a session.
 //
 // @param request - UpdateChatSessionRequest
 //
@@ -9985,7 +13072,11 @@ func (client *Client) UpdateChatSessionWithOptions(request *UpdateChatSessionReq
 
 // Summary:
 //
-// 更新会话
+// Updates a session.
+//
+// Description:
+//
+// Updates a session.
 //
 // @param request - UpdateChatSessionRequest
 //
@@ -10004,29 +13095,29 @@ func (client *Client) UpdateChatSession(request *UpdateChatSessionRequest) (_res
 
 // Summary:
 //
-// 用于更新用户的个人目录基础信息。
+// Updates the basic information of a user\\"s personal directory.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// 该 API 用于更新指定用户的个人目录信息，包括名称、描述、父目录等。请求时需确保提供的 `directoryId` 对应的目录存在且属于当前用户。此外，如果更改了目录的 `name` 或 `path`，系统将自动递归更新所有子目录的路径以保持一致性。特别注意，在调整父目录时，必须保证新父目录的有效性（即非自身或不会导致循环引用）。
+// This API operation updates the personal directory information of a specified user, including the name, description, and parent directory. Ensure that the directory corresponding to the provided `directoryId` exists and belongs to the current user. If the `name` or `path` of the directory is changed, the system automatically and recursively updates the paths of all subdirectories to maintain consistency. When adjusting the parent directory, ensure the validity of the new parent directory (that is, it is not the directory itself and does not cause a circular dependency).
 //
-// - **安全约束**：`tenant_id` 和 `user_id` 必须来自于鉴权身份。
+// - **Security constraints**: `tenant_id` and `user_id` must be derived from the authenticated identity.
 //
-// - **权限要求**：执行此操作需要相应的 RAM 权限。
+// - **Permission requirements**: Corresponding RAM permissions are required to perform this operation.
 //
-// - **输入参数**：
+// - **Input parameters**:
 //
-//   - `directoryId`：必填，表示要更新的目录唯一标识。
+//   - `directoryId`: Required. The unique identifier of the directory to update.
 //
-//   - `name`：选填，设置新的目录名称。
+//   - `name`: Optional. The new directory name.
 //
-//   - `description`：选填，提供新的目录描述。
+//   - `description`: Optional. The new directory description.
 //
-//   - `parentId`：选填，指定新的父目录ID。
+//   - `parentId`: Optional. The ID of the new parent directory.
 //
-//   - `path`：选填，当传入时会级联更新当前及所有子目录的路径。
+//   - `path`: Optional. When specified, the system cascades the update to the paths of the current directory and all its subdirectories.
 //
 // @param request - UpdateDirectoryRequest
 //
@@ -10095,29 +13186,29 @@ func (client *Client) UpdateDirectoryWithOptions(request *UpdateDirectoryRequest
 
 // Summary:
 //
-// 用于更新用户的个人目录基础信息。
+// Updates the basic information of a user\\"s personal directory.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// 该 API 用于更新指定用户的个人目录信息，包括名称、描述、父目录等。请求时需确保提供的 `directoryId` 对应的目录存在且属于当前用户。此外，如果更改了目录的 `name` 或 `path`，系统将自动递归更新所有子目录的路径以保持一致性。特别注意，在调整父目录时，必须保证新父目录的有效性（即非自身或不会导致循环引用）。
+// This API operation updates the personal directory information of a specified user, including the name, description, and parent directory. Ensure that the directory corresponding to the provided `directoryId` exists and belongs to the current user. If the `name` or `path` of the directory is changed, the system automatically and recursively updates the paths of all subdirectories to maintain consistency. When adjusting the parent directory, ensure the validity of the new parent directory (that is, it is not the directory itself and does not cause a circular dependency).
 //
-// - **安全约束**：`tenant_id` 和 `user_id` 必须来自于鉴权身份。
+// - **Security constraints**: `tenant_id` and `user_id` must be derived from the authenticated identity.
 //
-// - **权限要求**：执行此操作需要相应的 RAM 权限。
+// - **Permission requirements**: Corresponding RAM permissions are required to perform this operation.
 //
-// - **输入参数**：
+// - **Input parameters**:
 //
-//   - `directoryId`：必填，表示要更新的目录唯一标识。
+//   - `directoryId`: Required. The unique identifier of the directory to update.
 //
-//   - `name`：选填，设置新的目录名称。
+//   - `name`: Optional. The new directory name.
 //
-//   - `description`：选填，提供新的目录描述。
+//   - `description`: Optional. The new directory description.
 //
-//   - `parentId`：选填，指定新的父目录ID。
+//   - `parentId`: Optional. The ID of the new parent directory.
 //
-//   - `path`：选填，当传入时会级联更新当前及所有子目录的路径。
+//   - `path`: Optional. When specified, the system cascades the update to the paths of the current directory and all its subdirectories.
 //
 // @param request - UpdateDirectoryRequest
 //
@@ -10136,23 +13227,23 @@ func (client *Client) UpdateDirectory(request *UpdateDirectoryRequest) (_result 
 
 // Summary:
 //
-// 更新指定的企业知识库分类信息，包括名称、描述及父目录。
+// Updates the information of a specified enterprise knowledge base directory, including the name, description, and parent directory.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该接口用于修改企业知识库中的某个分类。
+// - This operation modifies a directory in the enterprise knowledge base.
 //
-// - 需要具有`DEVELOPMENT_KB_MANAGE`功能权限才能调用此API。
+// - You must have the `DEVELOPMENT_KB_MANAGE` permission to call this API operation.
 //
-// - `tenantId`参数为可选，若未提供，则默认使用调用者的租户ID。
+// - The `tenantId` parameter is optional. If not provided, the tenant ID of the caller is used by default.
 //
-// - 必须提供待修改的`directoryId`，而`name`、`description`和`parentDirectoryId`均为可选项，不提供则表示这些字段保持不变。
+// - You must specify the `directoryId` of the directory to modify. The `name`, `description`, and `parentDirectoryId` parameters are optional. If not provided, the corresponding fields remain unchanged.
 //
-// - 当指定了新的`parentDirectoryId`时，系统会检查新父目录是否属于当前租户，并且不会导致循环引用问题。
+// - When a new `parentDirectoryId` is specified, the system checks whether the new parent directory belongs to the current tenant and does not cause a circular dependency.
 //
-// - 安全性方面，本API支持多种认证方式（AK、BearerToken、APP），并启用了RAM权限控制与操作审计。
+// - This API operation supports multiple authentication methods (AK, BearerToken, APP) and has RAM permission control and operation auditing enabled.
 //
 // @param request - UpdateKnowledgeBaseDirectoryRequest
 //
@@ -10217,23 +13308,23 @@ func (client *Client) UpdateKnowledgeBaseDirectoryWithOptions(request *UpdateKno
 
 // Summary:
 //
-// 更新指定的企业知识库分类信息，包括名称、描述及父目录。
+// Updates the information of a specified enterprise knowledge base directory, including the name, description, and parent directory.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该接口用于修改企业知识库中的某个分类。
+// - This operation modifies a directory in the enterprise knowledge base.
 //
-// - 需要具有`DEVELOPMENT_KB_MANAGE`功能权限才能调用此API。
+// - You must have the `DEVELOPMENT_KB_MANAGE` permission to call this API operation.
 //
-// - `tenantId`参数为可选，若未提供，则默认使用调用者的租户ID。
+// - The `tenantId` parameter is optional. If not provided, the tenant ID of the caller is used by default.
 //
-// - 必须提供待修改的`directoryId`，而`name`、`description`和`parentDirectoryId`均为可选项，不提供则表示这些字段保持不变。
+// - You must specify the `directoryId` of the directory to modify. The `name`, `description`, and `parentDirectoryId` parameters are optional. If not provided, the corresponding fields remain unchanged.
 //
-// - 当指定了新的`parentDirectoryId`时，系统会检查新父目录是否属于当前租户，并且不会导致循环引用问题。
+// - When a new `parentDirectoryId` is specified, the system checks whether the new parent directory belongs to the current tenant and does not cause a circular dependency.
 //
-// - 安全性方面，本API支持多种认证方式（AK、BearerToken、APP），并启用了RAM权限控制与操作审计。
+// - This API operation supports multiple authentication methods (AK, BearerToken, APP) and has RAM permission control and operation auditing enabled.
 //
 // @param request - UpdateKnowledgeBaseDirectoryRequest
 //
@@ -10252,17 +13343,17 @@ func (client *Client) UpdateKnowledgeBaseDirectory(request *UpdateKnowledgeBaseD
 
 // Summary:
 //
-// 用于编辑企业自建知识库中的资源正文并触发重新解析。
+// Edits the body content of a resource in an enterprise self-built knowledge base and triggers re-parsing.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 本接口允许用户更新指定的企业知识库数据源的正文内容，并可选择是否同步等待解析完成。通过设置`forceSync`参数，可以控制解析过程是同步还是异步执行，默认为异步处理。
+// This operation allows you to update the body content of a specified enterprise knowledge base data source and optionally wait synchronously for parsing to complete. By setting the `forceSync` parameter, you can control whether the parsing process is executed synchronously or asynchronously. The default is asynchronous processing.
 //
-// - **注意**：当`content`字段为空字符串时，表示清空原有内容。
+// - **Note**: When the `content` field is an empty string, the original content is cleared.
 //
-// - **权限要求**：调用此接口需要具备相应的RAM操作权限（`winnexo:UpdateKnowledgeBaseSourceContent`）。
+// - **Permission requirement**: Calling this operation requires the corresponding RAM action permission (`winnexo:UpdateKnowledgeBaseSourceContent`).
 //
 // @param request - UpdateKnowledgeBaseSourceContentRequest
 //
@@ -10323,17 +13414,17 @@ func (client *Client) UpdateKnowledgeBaseSourceContentWithOptions(request *Updat
 
 // Summary:
 //
-// 用于编辑企业自建知识库中的资源正文并触发重新解析。
+// Edits the body content of a resource in an enterprise self-built knowledge base and triggers re-parsing.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 本接口允许用户更新指定的企业知识库数据源的正文内容，并可选择是否同步等待解析完成。通过设置`forceSync`参数，可以控制解析过程是同步还是异步执行，默认为异步处理。
+// This operation allows you to update the body content of a specified enterprise knowledge base data source and optionally wait synchronously for parsing to complete. By setting the `forceSync` parameter, you can control whether the parsing process is executed synchronously or asynchronously. The default is asynchronous processing.
 //
-// - **注意**：当`content`字段为空字符串时，表示清空原有内容。
+// - **Note**: When the `content` field is an empty string, the original content is cleared.
 //
-// - **权限要求**：调用此接口需要具备相应的RAM操作权限（`winnexo:UpdateKnowledgeBaseSourceContent`）。
+// - **Permission requirement**: Calling this operation requires the corresponding RAM action permission (`winnexo:UpdateKnowledgeBaseSourceContent`).
 //
 // @param request - UpdateKnowledgeBaseSourceContentRequest
 //
@@ -10352,25 +13443,25 @@ func (client *Client) UpdateKnowledgeBaseSourceContent(request *UpdateKnowledgeB
 
 // Summary:
 //
-// 更新指定企业知识库数据源的资源标签。
+// Updates the resource tags of a specified data source in an enterprise knowledge base.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口用于更新企业知识库中特定数据源的标签。
+// - This operation updates the labels of a specific data source in an enterprise knowledge base.
 //
-// - 需要具备知识库管理权限才能调用此接口。
+// - You must have knowledge base management permissions to invoke this operation.
 //
-// - `sourceTags` 参数接受 JSON 字符串列表形式，例如 `["tagA", "tagB"]`；若传入 `null` 则表示清空所有现有标签。
+// - The `sourceTags` parameter accepts a JSON character string list, such as `["tagA", "tagB"]`. If you set this parameter to `null`, all existing labels are cleared.
 //
-// - 更新操作仅影响 `sourceTags` 和 `gmt_modified` 字段，并不会触发 `process_source` 流程。
+// - The update operation affects only the `sourceTags` and `gmt_modified` fields and does not trigger the `process_source` workflow.
 //
-// - 如果指定的数据源不存在，则会抛出 `ERR.Robject.Source.NotFound` 错误。
+// - If the specified data source does not exist, the `ERR.Robject.Source.NotFound` fault is returned.
 //
-// - 接口支持通过 AK、BearerToken 或 APP 方式进行身份验证。
+// - This operation supports authentication through AccessKey, BearerToken, or APP methods.
 //
-// - 调用时需确保 `tenant_id` 和 `user_id` 来自有效的鉴权身份信息。
+// - When you invoke this operation, make sure that `tenant_id` and `user_id` are from valid authentication identity information.
 //
 // @param request - UpdateKnowledgeBaseSourceTagsRequest
 //
@@ -10427,25 +13518,25 @@ func (client *Client) UpdateKnowledgeBaseSourceTagsWithOptions(request *UpdateKn
 
 // Summary:
 //
-// 更新指定企业知识库数据源的资源标签。
+// Updates the resource tags of a specified data source in an enterprise knowledge base.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口用于更新企业知识库中特定数据源的标签。
+// - This operation updates the labels of a specific data source in an enterprise knowledge base.
 //
-// - 需要具备知识库管理权限才能调用此接口。
+// - You must have knowledge base management permissions to invoke this operation.
 //
-// - `sourceTags` 参数接受 JSON 字符串列表形式，例如 `["tagA", "tagB"]`；若传入 `null` 则表示清空所有现有标签。
+// - The `sourceTags` parameter accepts a JSON character string list, such as `["tagA", "tagB"]`. If you set this parameter to `null`, all existing labels are cleared.
 //
-// - 更新操作仅影响 `sourceTags` 和 `gmt_modified` 字段，并不会触发 `process_source` 流程。
+// - The update operation affects only the `sourceTags` and `gmt_modified` fields and does not trigger the `process_source` workflow.
 //
-// - 如果指定的数据源不存在，则会抛出 `ERR.Robject.Source.NotFound` 错误。
+// - If the specified data source does not exist, the `ERR.Robject.Source.NotFound` fault is returned.
 //
-// - 接口支持通过 AK、BearerToken 或 APP 方式进行身份验证。
+// - This operation supports authentication through AccessKey, BearerToken, or APP methods.
 //
-// - 调用时需确保 `tenant_id` 和 `user_id` 来自有效的鉴权身份信息。
+// - When you invoke this operation, make sure that `tenant_id` and `user_id` are from valid authentication identity information.
 //
 // @param request - UpdateKnowledgeBaseSourceTagsRequest
 //
@@ -10464,7 +13555,11 @@ func (client *Client) UpdateKnowledgeBaseSourceTags(request *UpdateKnowledgeBase
 
 // Summary:
 //
-// 更新定时任务
+// Updates a scheduled task.
+//
+// Description:
+//
+// Updates a scheduled task.
 //
 // @param tmpReq - UpdateScheduledTaskRequest
 //
@@ -10500,6 +13595,10 @@ func (client *Client) UpdateScheduledTaskWithOptions(tmpReq *UpdateScheduledTask
 
 	if !dara.IsNil(tmpReq.TriggerConfig) {
 		request.TriggerConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TriggerConfig, dara.String("triggerConfig"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.VisibleMemberUserIds) {
+		request.VisibleMemberUserIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VisibleMemberUserIds, dara.String("visibleMemberUserIds"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -10544,6 +13643,14 @@ func (client *Client) UpdateScheduledTaskWithOptions(tmpReq *UpdateScheduledTask
 		body["triggerConfig"] = request.TriggerConfigShrink
 	}
 
+	if !dara.IsNil(request.Visibility) {
+		body["visibility"] = request.Visibility
+	}
+
+	if !dara.IsNil(request.VisibleMemberUserIdsShrink) {
+		body["visibleMemberUserIds"] = request.VisibleMemberUserIdsShrink
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -10571,7 +13678,11 @@ func (client *Client) UpdateScheduledTaskWithOptions(tmpReq *UpdateScheduledTask
 
 // Summary:
 //
-// 更新定时任务
+// Updates a scheduled task.
+//
+// Description:
+//
+// Updates a scheduled task.
 //
 // @param request - UpdateScheduledTaskRequest
 //
@@ -10590,21 +13701,21 @@ func (client *Client) UpdateScheduledTask(request *UpdateScheduledTaskRequest) (
 
 // Summary:
 //
-// 更新租户内可编辑数据源的正文并触发重新解析。
+// Updates the content of an editable data source within a tenant and triggers re-parsing.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该API用于更新指定租户内的数据源内容，并根据需要触发同步或异步的数据源重新解析。
+// - This API operation updates the content of a data source within a specified tenant and triggers synchronous or asynchronous re-parsing of the data source as needed.
 //
-// - `tenant_id` 和 `user_id` 仅用于鉴权，不参与实际业务逻辑处理。
+// - `tenant_id` and `user_id` are used only for authentication and are not involved in actual business logic processing.
 //
-// - 当提供的正文为空字符串时，系统将按照现有服务契约执行操作。
+// - When the provided content is an empty string, the system performs the operation according to the existing service contract.
 //
-// - 如果指定的数据源不存在，则返回标准的NotFound错误；其他异常情况则由全局异常链处理。
+// - If the specified data source does not exist, a standard NotFound error is returned. Other exceptions are handled by the global exception chain.
 //
-// - 可通过设置`forceSync`参数来决定是否等待解析过程完成（默认为异步入队）。
+// - Set the `forceSync` parameter to determine whether to wait for the parsing process to complete. The default behavior is asynchronous queuing.
 //
 // @param request - UpdateSourceContentRequest
 //
@@ -10665,21 +13776,21 @@ func (client *Client) UpdateSourceContentWithOptions(request *UpdateSourceConten
 
 // Summary:
 //
-// 更新租户内可编辑数据源的正文并触发重新解析。
+// Updates the content of an editable data source within a tenant and triggers re-parsing.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该API用于更新指定租户内的数据源内容，并根据需要触发同步或异步的数据源重新解析。
+// - This API operation updates the content of a data source within a specified tenant and triggers synchronous or asynchronous re-parsing of the data source as needed.
 //
-// - `tenant_id` 和 `user_id` 仅用于鉴权，不参与实际业务逻辑处理。
+// - `tenant_id` and `user_id` are used only for authentication and are not involved in actual business logic processing.
 //
-// - 当提供的正文为空字符串时，系统将按照现有服务契约执行操作。
+// - When the provided content is an empty string, the system performs the operation according to the existing service contract.
 //
-// - 如果指定的数据源不存在，则返回标准的NotFound错误；其他异常情况则由全局异常链处理。
+// - If the specified data source does not exist, a standard NotFound error is returned. Other exceptions are handled by the global exception chain.
 //
-// - 可通过设置`forceSync`参数来决定是否等待解析过程完成（默认为异步入队）。
+// - Set the `forceSync` parameter to determine whether to wait for the parsing process to complete. The default behavior is asynchronous queuing.
 //
 // @param request - UpdateSourceContentRequest
 //
@@ -10698,11 +13809,11 @@ func (client *Client) UpdateSourceContent(request *UpdateSourceContentRequest) (
 
 // Summary:
 //
-// 用于更新指定的企业知识库目录信息。
+// Modifies knowledge base folder information.
 //
 // Description:
 //
-// ## 请求说明
+// Modifies knowledge base folder information.
 //
 // @param request - UpdateTenantDirectoryRequest
 //
@@ -10771,11 +13882,11 @@ func (client *Client) UpdateTenantDirectoryWithOptions(request *UpdateTenantDire
 
 // Summary:
 //
-// 用于更新指定的企业知识库目录信息。
+// Modifies knowledge base folder information.
 //
 // Description:
 //
-// ## 请求说明
+// Modifies knowledge base folder information.
 //
 // @param request - UpdateTenantDirectoryRequest
 //
@@ -10794,29 +13905,29 @@ func (client *Client) UpdateTenantDirectory(request *UpdateTenantDirectoryReques
 
 // Summary:
 //
-// 修改用户信息（含启停用）
+// Modifies user information, including enabling or disabling the user.
 //
 // Description:
 //
-// OpenAPI 修改用户信息。
+// Modifies user information through OpenAPI.
 //
-//	业务编排：
+//	Business orchestration:
 //
-//	1. 解析 roleCodes → role_ids
+//	1. Parse roleCodes → role_ids
 //
-//	2. 若 isActive 有变更，先执行状态切换（含最后超管保护）
+//	2. If isActive has changed, perform the status switch first (including last super admin protection)
 //
-//	3. 调用 update_tenant_member 修改其他字段（displayName / roleCodes / userGroupIds）
+//	3. Call update_tenant_member to modify other fields (displayName / roleCodes / userGroupIds)
 //
-//	4. 全部成功返回 HTTP 200
+//	4. Return HTTP 200 if all steps succeed
 //
-//	执行顺序说明：
+//	Execution order notes:
 //
-//	- isActive 状态变更先于其他字段写入。两步不在同一事务中。
+//	- The isActive status change is performed before other field writes. The two steps are not in the same transaction.
 //
-//	- 校验失败（如最后超管保护）→ 抛出异常，后续步骤不执行。
+//	- If validation fails (such as last super admin protection) → an exception is thrown and subsequent steps are not executed.
 //
-//	- 若 isActive 变更已落库但后续步骤异常，isActive 不会回滚。
+//	- If the isActive change has been persisted but a subsequent step fails, the isActive change is not rolled back.
 //
 // @param tmpReq - UpdateUserRequest
 //
@@ -10895,29 +14006,29 @@ func (client *Client) UpdateUserWithOptions(tmpReq *UpdateUserRequest, headers m
 
 // Summary:
 //
-// 修改用户信息（含启停用）
+// Modifies user information, including enabling or disabling the user.
 //
 // Description:
 //
-// OpenAPI 修改用户信息。
+// Modifies user information through OpenAPI.
 //
-//	业务编排：
+//	Business orchestration:
 //
-//	1. 解析 roleCodes → role_ids
+//	1. Parse roleCodes → role_ids
 //
-//	2. 若 isActive 有变更，先执行状态切换（含最后超管保护）
+//	2. If isActive has changed, perform the status switch first (including last super admin protection)
 //
-//	3. 调用 update_tenant_member 修改其他字段（displayName / roleCodes / userGroupIds）
+//	3. Call update_tenant_member to modify other fields (displayName / roleCodes / userGroupIds)
 //
-//	4. 全部成功返回 HTTP 200
+//	4. Return HTTP 200 if all steps succeed
 //
-//	执行顺序说明：
+//	Execution order notes:
 //
-//	- isActive 状态变更先于其他字段写入。两步不在同一事务中。
+//	- The isActive status change is performed before other field writes. The two steps are not in the same transaction.
 //
-//	- 校验失败（如最后超管保护）→ 抛出异常，后续步骤不执行。
+//	- If validation fails (such as last super admin protection) → an exception is thrown and subsequent steps are not executed.
 //
-//	- 若 isActive 变更已落库但后续步骤异常，isActive 不会回滚。
+//	- If the isActive change has been persisted but a subsequent step fails, the isActive change is not rolled back.
 //
 // @param request - UpdateUserRequest
 //
@@ -10936,23 +14047,119 @@ func (client *Client) UpdateUser(request *UpdateUserRequest) (_result *UpdateUse
 
 // Summary:
 //
-// 支持部分字段更新当前用户信息，并返回完整用户信息。
+// Updates the name, description, and parent relationship of a specified user group.
 //
 // Description:
 //
-// ## 请求说明
+// WinNexo user management OpenAPI: updates a user group. The tenant identity is obtained from the authentication context.
 //
-// - 该API允许调用者更新指定用户的部分或全部可选字段，未提供的字段将保持原有值。
+// @param request - UpdateUserGroupRequest
 //
-// - 支持通过`tenantId`参数指定租户ID；若省略，则默认使用调用方的默认租户。
+// @param headers - map
 //
-// - 更新成功后，响应体中会包含完整的用户信息对象。
+// @param runtime - runtime options for this request RuntimeOptions
 //
-// - 此接口要求认证，支持AK、BearerToken和APP三种安全方案。
+// @return UpdateUserGroupResponse
+func (client *Client) UpdateUserGroupWithOptions(request *UpdateUserGroupRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateUserGroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.MoveToRoot) {
+		body["moveToRoot"] = request.MoveToRoot
+	}
+
+	if !dara.IsNil(request.ParentId) {
+		body["parentId"] = request.ParentId
+	}
+
+	if !dara.IsNil(request.UserGroupId) {
+		body["userGroupId"] = request.UserGroupId
+	}
+
+	if !dara.IsNil(request.UserGroupName) {
+		body["userGroupName"] = request.UserGroupName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateUserGroup"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/updateUserGroup"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateUserGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
 //
-// - 接口消费类型为JSON格式，且仅在HTTPS协议下可用。
+// Updates the name, description, and parent relationship of a specified user group.
 //
-// - 特别注意：`profileRoleInfo`字段仅当用户角色设置为Others时有效，用于描述用户的具体角色信息。
+// Description:
+//
+// WinNexo user management OpenAPI: updates a user group. The tenant identity is obtained from the authentication context.
+//
+// @param request - UpdateUserGroupRequest
+//
+// @return UpdateUserGroupResponse
+func (client *Client) UpdateUserGroup(request *UpdateUserGroupRequest) (_result *UpdateUserGroupResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateUserGroupResponse{}
+	_body, _err := client.UpdateUserGroupWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates partial fields of the current user information and returns the complete user information.
+//
+// Description:
+//
+// ## Request description
+//
+// - This API allows the caller to update some or all optional fields of a specified user. Fields that are not provided retain their original values.
+//
+// - Use the `tenantId` parameter to specify a tenant ID. If omitted, the default tenant of the caller is used.
+//
+// - After a successful update, the response body contains the complete user information object.
+//
+// - This operation requires authentication and supports AK, BearerToken, and APP security schemes.
+//
+// - The request content type is JSON, and the operation is available only over HTTPS.
+//
+// - Note: The `profileRoleInfo` field is valid only when the user role is set to Others. It describes the specific role information of the user.
 //
 // @param request - UpdateUserInfoRequest
 //
@@ -11025,23 +14232,23 @@ func (client *Client) UpdateUserInfoWithOptions(request *UpdateUserInfoRequest, 
 
 // Summary:
 //
-// 支持部分字段更新当前用户信息，并返回完整用户信息。
+// Updates partial fields of the current user information and returns the complete user information.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API允许调用者更新指定用户的部分或全部可选字段，未提供的字段将保持原有值。
+// - This API allows the caller to update some or all optional fields of a specified user. Fields that are not provided retain their original values.
 //
-// - 支持通过`tenantId`参数指定租户ID；若省略，则默认使用调用方的默认租户。
+// - Use the `tenantId` parameter to specify a tenant ID. If omitted, the default tenant of the caller is used.
 //
-// - 更新成功后，响应体中会包含完整的用户信息对象。
+// - After a successful update, the response body contains the complete user information object.
 //
-// - 此接口要求认证，支持AK、BearerToken和APP三种安全方案。
+// - This operation requires authentication and supports AK, BearerToken, and APP security schemes.
 //
-// - 接口消费类型为JSON格式，且仅在HTTPS协议下可用。
+// - The request content type is JSON, and the operation is available only over HTTPS.
 //
-// - 特别注意：`profileRoleInfo`字段仅当用户角色设置为Others时有效，用于描述用户的具体角色信息。
+// - Note: The `profileRoleInfo` field is valid only when the user role is set to Others. It describes the specific role information of the user.
 //
 // @param request - UpdateUserInfoRequest
 //
@@ -11060,33 +14267,33 @@ func (client *Client) UpdateUserInfo(request *UpdateUserInfoRequest) (_result *U
 
 // Summary:
 //
-// 会话上传本地文件
+// Uploads a local file in a session.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// 该 API 用于上传会话临时文件，采用**文件中转上传**模式（`fileTransfer`）：文件二进制不经本 API 的请求体传输，而是先落到 OSS，再把 OSS 地址通过 `FileUrl` 入参交给后端；后端从该地址取回字节并写入自己的 OSS，创建会话临时文件记录。
+// This API is used to upload a session temporary file by using the **file transfer upload*	- mode (`fileTransfer`). The file binary data is not transmitted through the request body of this API. Instead, the file is first uploaded to Object Storage Service (OSS), and then the OSS address is passed to the backend through the `FileUrl` parameter. The backend retrieves the bytes from that address, writes them to its own OSS, and creates a session temporary file record.
 //
-// ### 调用方式
+// ### Call methods
 //
-// - **推荐**：使用 SDK 生成的 `UploadChatFileAdvance` 方法，传入本地文件流，SDK 自动完成中转上传并回填 `FileUrl`。
+// - **Recommended**: Use the `UploadChatFileAdvance` method generated by the SDK. Pass in the local file stream, and the SDK automatically completes the transfer upload and populates `FileUrl`.
 //
-// - **直传**：自行将文件上传到可被服务端访问的 OSS 地址，然后直接调用本 API 并传入 `FileUrl`。
+// - **Direct upload**: Upload the file to an OSS address accessible by the server, and then directly call this API with the `FileUrl` parameter.
 //
-// ### 入参
+// ### Request parameters
 //
-// - **FileUrl**：必填，文件的 OSS 地址。使用 Advance 方法时由 SDK 自动回填，无需手动赋值。
+// - **FileUrl**: Required. The OSS address of the file. When you use the Advance method, the SDK automatically populates this parameter. You do not need to manually assign a value.
 //
-// - **FileName**：必填，原始文件名（含后缀，如 `report.pdf`）。中转生成的 OSS 地址不携带原始文件名，后端据此确定文件后缀与展示名，因此必须显式传入。
+// - **FileName**: Required. The original file name including the extension, such as `report.pdf`. The OSS address generated during transfer does not carry the original file name. The backend uses this parameter to determine the file extension and display name. Therefore, you must explicitly pass in this parameter.
 //
-// - **ContentType**：可选，文件 MIME 类型；不传时按 `application/octet-stream` 处理。
+// - **ContentType**: Optional. The MIME type of the file. If this parameter is not specified, `application/octet-stream` is used.
 //
-// - **OperatingObjectName**：可选，Agent 命名空间标识，决定文件入库路径。
+// - **OperatingObjectName**: Optional. The Agent namespace identifier that determines the file storage path.
 //
-// ### 出参
+// ### Response parameters
 //
-// 返回 OSS 对象路径 `objectName`、入库地址 `fileUrl`、公开访问地址 `filePublicUrl`（有效期 1 小时）、文件记录 ID `fileRecordId` 等；`uploadSignatureUrl` 在本模式下恒为空。
+// The response includes the OSS object path `objectName`, the storage address `fileUrl`, the public access address `filePublicUrl` (valid for 1 hour), and the file record ID `fileRecordId`. The `uploadSignatureUrl` parameter is always empty in this mode.
 //
 // @param request - UploadChatFileRequest
 //
@@ -11151,33 +14358,33 @@ func (client *Client) UploadChatFileWithOptions(request *UploadChatFileRequest, 
 
 // Summary:
 //
-// 会话上传本地文件
+// Uploads a local file in a session.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// 该 API 用于上传会话临时文件，采用**文件中转上传**模式（`fileTransfer`）：文件二进制不经本 API 的请求体传输，而是先落到 OSS，再把 OSS 地址通过 `FileUrl` 入参交给后端；后端从该地址取回字节并写入自己的 OSS，创建会话临时文件记录。
+// This API is used to upload a session temporary file by using the **file transfer upload*	- mode (`fileTransfer`). The file binary data is not transmitted through the request body of this API. Instead, the file is first uploaded to Object Storage Service (OSS), and then the OSS address is passed to the backend through the `FileUrl` parameter. The backend retrieves the bytes from that address, writes them to its own OSS, and creates a session temporary file record.
 //
-// ### 调用方式
+// ### Call methods
 //
-// - **推荐**：使用 SDK 生成的 `UploadChatFileAdvance` 方法，传入本地文件流，SDK 自动完成中转上传并回填 `FileUrl`。
+// - **Recommended**: Use the `UploadChatFileAdvance` method generated by the SDK. Pass in the local file stream, and the SDK automatically completes the transfer upload and populates `FileUrl`.
 //
-// - **直传**：自行将文件上传到可被服务端访问的 OSS 地址，然后直接调用本 API 并传入 `FileUrl`。
+// - **Direct upload**: Upload the file to an OSS address accessible by the server, and then directly call this API with the `FileUrl` parameter.
 //
-// ### 入参
+// ### Request parameters
 //
-// - **FileUrl**：必填，文件的 OSS 地址。使用 Advance 方法时由 SDK 自动回填，无需手动赋值。
+// - **FileUrl**: Required. The OSS address of the file. When you use the Advance method, the SDK automatically populates this parameter. You do not need to manually assign a value.
 //
-// - **FileName**：必填，原始文件名（含后缀，如 `report.pdf`）。中转生成的 OSS 地址不携带原始文件名，后端据此确定文件后缀与展示名，因此必须显式传入。
+// - **FileName**: Required. The original file name including the extension, such as `report.pdf`. The OSS address generated during transfer does not carry the original file name. The backend uses this parameter to determine the file extension and display name. Therefore, you must explicitly pass in this parameter.
 //
-// - **ContentType**：可选，文件 MIME 类型；不传时按 `application/octet-stream` 处理。
+// - **ContentType**: Optional. The MIME type of the file. If this parameter is not specified, `application/octet-stream` is used.
 //
-// - **OperatingObjectName**：可选，Agent 命名空间标识，决定文件入库路径。
+// - **OperatingObjectName**: Optional. The Agent namespace identifier that determines the file storage path.
 //
-// ### 出参
+// ### Response parameters
 //
-// 返回 OSS 对象路径 `objectName`、入库地址 `fileUrl`、公开访问地址 `filePublicUrl`（有效期 1 小时）、文件记录 ID `fileRecordId` 等；`uploadSignatureUrl` 在本模式下恒为空。
+// The response includes the OSS object path `objectName`, the storage address `fileUrl`, the public access address `filePublicUrl` (valid for 1 hour), and the file record ID `fileRecordId`. The `uploadSignatureUrl` parameter is always empty in this mode.
 //
 // @param request - UploadChatFileRequest
 //

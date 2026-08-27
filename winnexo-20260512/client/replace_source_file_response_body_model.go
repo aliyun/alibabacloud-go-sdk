@@ -32,47 +32,51 @@ type iReplaceSourceFileResponseBody interface {
 }
 
 type ReplaceSourceFileResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 替换后的文件 OSS 持久化地址
+	// The OSS persistent address of the file after replacement.
 	//
 	// example:
 	//
 	// string_value
 	FilePath *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
-	// 替换后的文件公开访问 URL
+	// The OSS persistent address of the file after replacement.
 	//
 	// example:
 	//
 	// https://example.com/winnexo/resource
 	FilePublicUrl *string `json:"filePublicUrl,omitempty" xml:"filePublicUrl,omitempty"`
-	// 替换后的文件记录 ID
+	// The file record ID after replacement.
 	//
 	// example:
 	//
 	// exampleFileRecordId
 	FileRecordId *string `json:"fileRecordId,omitempty" xml:"fileRecordId,omitempty"`
-	// 错误描述，成功时为空
+	// The description of the status code.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 文件名
+	// The file name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 请求追踪 ID
+	// The request trace ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 数据源 ID
+	// The data source ID.
 	//
 	// This parameter is required.
 	//
@@ -80,13 +84,13 @@ type ReplaceSourceFileResponseBody struct {
 	//
 	// exampleSourceId
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 数据源类型，固定为 FILE
+	// The data source type. The value is fixed to FILE.
 	//
 	// example:
 	//
 	// string_value
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// 重新解析后的数据源状态
+	// The data source status after re-parsing.
 	//
 	// example:
 	//

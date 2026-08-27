@@ -22,7 +22,7 @@ type iMoveKnowledgeBaseResourceRequest interface {
 }
 
 type MoveKnowledgeBaseResourceRequest struct {
-	// 目标知识库 ID
+	// Not supported. This parameter is ignored.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type MoveKnowledgeBaseResourceRequest struct {
 	//
 	// exampleKnowledgeId
 	KnowledgeId *string `json:"knowledgeId,omitempty" xml:"knowledgeId,omitempty"`
-	// 源目录 ID（资源当前所在的企业知识库目录）
+	// The source directory ID. This is the enterprise knowledge base directory where the resource currently resides.
 	//
 	// This parameter is required.
 	//
@@ -38,15 +38,15 @@ type MoveKnowledgeBaseResourceRequest struct {
 	//
 	// exampleSourceDirectoryId
 	SourceDirectoryId *string `json:"sourceDirectoryId,omitempty" xml:"sourceDirectoryId,omitempty"`
-	// 待移动的资源 ID
+	// The data source ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// exampleSourceId
+	// 2000627
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 目标目录 ID（资源即将移动到的企业知识库目录）
+	// The target directory ID.
 	//
 	// This parameter is required.
 	//
@@ -54,11 +54,11 @@ type MoveKnowledgeBaseResourceRequest struct {
 	//
 	// exampleTargetDirectoryId
 	TargetDirectoryId *string `json:"targetDirectoryId,omitempty" xml:"targetDirectoryId,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID.
 	//
 	// example:
 	//
-	// 10000
+	// 1729094555111072
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

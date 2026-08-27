@@ -30,46 +30,60 @@ type iListChatSessionsResponseBody interface {
 }
 
 type ListChatSessionsResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 是否有更多数据
+	// Indicates whether there is a next page.
 	//
 	// example:
 	//
 	// true
 	HasMore *bool `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
-	// 错误描述，成功时为空
+	// The status code description.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	Page    *int32  `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页条数
+	// The current page number.
+	//
+	// example:
+	//
+	// 1
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// The number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 响应数据负载
+	// The list of sessions.
 	//
 	// example:
 	//
 	// {}
 	Sessions []interface{} `json:"sessions,omitempty" xml:"sessions,omitempty" type:"Repeated"`
-	// 租户ID
+	// The effective tenant ID.
 	//
 	// example:
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	Total    *int32  `json:"total,omitempty" xml:"total,omitempty"`
+	// The total number of records.
+	//
+	// example:
+	//
+	// 1159
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListChatSessionsResponseBody) String() string {

@@ -26,43 +26,49 @@ type iListUsersShrinkRequest interface {
 }
 
 type ListUsersShrinkRequest struct {
-	// 按 WINNEXO 登录账号精确批量查询（多选）；与其他筛选条件取交集。不传或传空列表 [] 均视为不按账号筛选（返回全部符合其他条件的成员）
+	// The list of Alibaba Cloud account IDs.
 	//
 	// example:
 	//
 	// string_value
 	AccountIdsShrink *string `json:"accountIds,omitempty" xml:"accountIds,omitempty"`
-	// 启用/停用状态筛选
+	// Specifies whether the account is activated.
+	//
+	//  - **true**: Activated.
+	//
+	// - **false**: Not activated.
 	//
 	// example:
 	//
 	// true
 	IsActive *bool `json:"isActive,omitempty" xml:"isActive,omitempty"`
-	// 搜索关键词（模糊匹配显示名和账号）
+	// The keyword for searching products. Fuzzy match is supported.
 	//
 	// example:
 	//
-	// 示例关键词
+	// SampleKeyword
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// 页码（从1开始）
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页数量（最大100）
+	// The number of entries per page.
+	//
+	// > The maximum number of entries per page is 30.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 按角色筛选，可选值: SUPER_ADMIN / SYSTEM_ADMIN / SEMANTIC_ADMIN / SKILL_ADMIN / KB_ADMIN / AGENT_ADMIN / APPLICATION_USER
+	// The list of new system role codes (full replacement, at least one role must be included). Valid values: SUPER_ADMIN / SYSTEM_ADMIN / SEMANTIC_ADMIN / SKILL_ADMIN / KB_ADMIN / AGENT_ADMIN / APPLICATION_USER.
 	//
 	// example:
 	//
 	// string_value
 	RoleCodesShrink *string `json:"roleCodes,omitempty" xml:"roleCodes,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. The winnexo-cli passes this parameter explicitly by using --tenant-id.
 	//
 	// example:
 	//

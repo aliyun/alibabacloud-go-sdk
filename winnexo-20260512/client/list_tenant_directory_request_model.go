@@ -26,43 +26,49 @@ type iListTenantDirectoryRequest interface {
 }
 
 type ListTenantDirectoryRequest struct {
-	// 目录唯一标识；不传或传 root 时查询知识库根目录列表
+	// The folder ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 页码
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页数量
+	// The number of entries per page. Default value: 100. Maximum value: 500.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 排序字段
+	// The field by which the results are sorted. Valid values:
+	//
+	// - event_time: the event creation time.
+	//
+	// - event_execute_start_time: the event execution time.
+	//
+	// - event_execute_finish_time: the event completion time.
 	//
 	// example:
 	//
 	// name
 	SortField *string `json:"sortField,omitempty" xml:"sortField,omitempty"`
-	// 排序方向
+	// The sort order. This parameter takes effect only when sortBy is specified. Valid values: ASC, DESC (case-insensitive).
 	//
 	// example:
 	//
 	// asc
 	SortOrder *string `json:"sortOrder,omitempty" xml:"sortOrder,omitempty"`
-	// 资源类型过滤，多个类型使用逗号分隔；传入后只返回资源
+	// The list of source types.
 	//
 	// example:
 	//
 	// string_value
 	SourceTypes *string `json:"sourceTypes,omitempty" xml:"sourceTypes,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

@@ -22,26 +22,31 @@ type iListVisibleKnowledgeBasesResponseBody interface {
 }
 
 type ListVisibleKnowledgeBasesResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The response status code.
 	//
 	// example:
 	//
 	// 200
-	Code  *string                                       `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The file information.
 	Items []*ListVisibleKnowledgeBasesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 错误描述，成功时为空
+	// The description of the status code.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// Id of the request
 	//
 	// example:
 	//
-	// 019FF406-1B10-0065-A97D-2D1920C2A03D
+	// 190F5425-A145-5BBA-980F-082ADB0CA6AF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 返回条数（不分页，等于 len(items)）
+	// The total number of records.
 	//
 	// example:
 	//
-	// 1
+	// 3
 	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
 }
 
@@ -112,61 +117,61 @@ func (s *ListVisibleKnowledgeBasesResponseBody) Validate() error {
 }
 
 type ListVisibleKnowledgeBasesResponseBodyItems struct {
-	// 目录创建者姓名（来自 rbj_user_tenant_mapping.user_display_name）
+	// The creator.
 	//
 	// example:
 	//
-	// string_value
+	// admin
 	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
-	// 目录描述
+	// The description.
 	//
 	// example:
 	//
-	// 示例描述
+	// {{7*7}}
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 目录唯一标识（租户内唯一）
+	// The directory ID. You can obtain this value by calling the API operation for retrieving the knowledge base directory.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 创建时间戳（毫秒）
+	// The creation time. This value is a timestamp in milliseconds.
 	//
 	// example:
 	//
-	// 1
+	// 2025-11-14T02:18:27Z
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间戳（毫秒）
+	// The modification time.
 	//
 	// example:
 	//
-	// 1
+	// 2026-03-26T13:57:42Z
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 文件名
+	// The skill name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// cs-default-umodel-1785637207863_k8s.metric.k8s_csi_node_pv_node_cn-heyuan-acdr-1/c80cf3a4f9d6c496781591bd17d006c6f
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 文件 OSS URL
+	// The file directory information.
 	//
 	// example:
 	//
-	// https://example.com/oss/file.pdf
+	// /test-folder-path1_1773194924773
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// 目录及子目录下状态为 FAILED 的资源数
+	// The number of resources in the FAILED state. This parameter is returned only when listing top-level knowledge base directories.
 	//
 	// example:
 	//
 	// 1
 	SourceFailedCount *int64 `json:"sourceFailedCount,omitempty" xml:"sourceFailedCount,omitempty"`
-	// 目录及子目录下状态为 READY 的资源数
+	// The number of resources in the READY state. This parameter is returned only when listing top-level knowledge base directories.
 	//
 	// example:
 	//
 	// 1
 	SourceReadyCount *int64 `json:"sourceReadyCount,omitempty" xml:"sourceReadyCount,omitempty"`
-	// 目录及子目录下的资源总数
+	// The total number of resources in the directory and its subdirectories. This parameter is returned only when listing top-level knowledge base directories.
 	//
 	// example:
 	//

@@ -26,29 +26,33 @@ type iUpdateSourceContentResponseBody interface {
 }
 
 type UpdateSourceContentResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 错误描述，成功时为空
+	// The description of the status code.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 文件名
+	// The username.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 数据源 ID
+	// The ID of the data source.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +60,11 @@ type UpdateSourceContentResponseBody struct {
 	//
 	// exampleSourceId
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 数据源类型
+	// The source type of the dictionary file. Valid values:
+	//
+	// - OSS: Object Storage Service (OSS).
+	//
+	// - ORIGIN: retains the previously uploaded dictionary.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +72,7 @@ type UpdateSourceContentResponseBody struct {
 	//
 	// string_value
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// 重新解析后的数据源状态
+	// The status.
 	//
 	// This parameter is required.
 	//

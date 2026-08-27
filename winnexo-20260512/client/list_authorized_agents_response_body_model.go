@@ -20,21 +20,25 @@ type iListAuthorizedAgentsResponseBody interface {
 }
 
 type ListAuthorizedAgentsResponseBody struct {
-	// 有指定权限的数字员工名称列表
+	// The agent names.
 	//
 	// example:
 	//
 	// string_value
 	AgentNames []*string `json:"agentNames,omitempty" xml:"agentNames,omitempty" type:"Repeated"`
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 错误描述，成功时为空
+	// The description of the status code.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//

@@ -24,19 +24,19 @@ type iCreatePersonalAlidingDocRequest interface {
 }
 
 type CreatePersonalAlidingDocRequest struct {
-	// 资源描述（可选）
+	// The pipeline description.
 	//
 	// example:
 	//
-	// 示例描述
+	// controll service user
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 目标个人目录 ID；不传时自动绑定到当前数字员工默认根目录，传入时绑定到该目录（必须是当前用户在当前数字员工下的已有个人目录）
+	// The folder ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 阿里钉在线文档的可公开访问 URL
+	// The publicly accessible URL of the AliDing online document.
 	//
 	// This parameter is required.
 	//
@@ -44,25 +44,25 @@ type CreatePersonalAlidingDocRequest struct {
 	//
 	// https://example.com/winnexo/resource
 	FilePublicUrl *string `json:"filePublicUrl,omitempty" xml:"filePublicUrl,omitempty"`
-	// 文件名
+	// The customer group name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// issue_research
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Agent 命名空间标识，可选
+	// The name of the digital employee (operating object name, optional).
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID.
 	//
 	// example:
 	//
-	// 10000
+	// 1729094555111072
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

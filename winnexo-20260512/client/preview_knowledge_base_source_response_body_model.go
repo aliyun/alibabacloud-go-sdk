@@ -30,51 +30,55 @@ type iPreviewKnowledgeBaseSourceResponseBody interface {
 }
 
 type PreviewKnowledgeBaseSourceResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 文本内容（CONTENT类型使用）
+	// The text content. This is used for the CONTENT type.
 	//
 	// example:
 	//
-	// 示例内容
+	// Sample content
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// 文件扩展名（OSS_IMM类型使用）
+	// The file name extension. This is used for the OSS_IMM type.
 	//
 	// example:
 	//
 	// string_value
 	FileExt *string `json:"fileExt,omitempty" xml:"fileExt,omitempty"`
-	// 文件名（OSS_IMM类型使用）
+	// The file name. This is used for the OSS_IMM type.
 	//
 	// example:
 	//
 	// example.pdf
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	// 错误描述，成功时为空
+	// The description of the status code.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 预览类型：OSS_IMM / IMAGE / AUDIO / VIDEO / HTML / DING_TALK / VOICE_MEETING / CONTENT
+	// The preview type. Valid values: OSS_IMM, IMAGE, AUDIO, VIDEO, HTML, DING_TALK, VOICE_MEETING, CONTENT.
 	//
 	// example:
 	//
 	// OSS_IMM
 	PreviewType *string `json:"previewType,omitempty" xml:"previewType,omitempty"`
-	// 预览URL（OSS_IMM、DING_TALK、VOICE_MEETING使用）
+	// The preview URL. This is used for the OSS_IMM, DING_TALK, and VOICE_MEETING types.
 	//
 	// example:
 	//
 	// https://example.com/winnexo/resource
 	PreviewUrl *string `json:"previewUrl,omitempty" xml:"previewUrl,omitempty"`
-	// 公开下载URL（可供下载的文件URL）
+	// The public download URL of the file.
 	//
 	// example:
 	//
 	// https://example.com/winnexo/resource
 	PublicUrl *string `json:"publicUrl,omitempty" xml:"publicUrl,omitempty"`
-	// 请求追踪 ID
+	// The request trace ID.
 	//
 	// example:
 	//

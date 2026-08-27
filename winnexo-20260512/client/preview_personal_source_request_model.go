@@ -16,7 +16,7 @@ type iPreviewPersonalSourceRequest interface {
 }
 
 type PreviewPersonalSourceRequest struct {
-	// 知识 ID（数据源唯一标识）
+	// The data source ID, which is unique within the tenant.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type PreviewPersonalSourceRequest struct {
 	//
 	// exampleSourceId
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. The winnexo-cli passes this parameter explicitly by using --tenant-id.
 	//
 	// example:
 	//

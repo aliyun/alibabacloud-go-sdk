@@ -14,7 +14,7 @@ type iGetUserCreditUsageRequest interface {
 }
 
 type GetUserCreditUsageRequest struct {
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The ID of the tenant to which the task belongs.
 	//
 	// example:
 	//

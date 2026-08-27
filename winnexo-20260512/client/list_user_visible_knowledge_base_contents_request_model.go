@@ -28,7 +28,7 @@ type iListUserVisibleKnowledgeBaseContentsRequest interface {
 }
 
 type ListUserVisibleKnowledgeBaseContentsRequest struct {
-	// 目标知识库根目录或其子目录的唯一标识
+	// The directory ID.
 	//
 	// This parameter is required.
 	//
@@ -36,43 +36,49 @@ type ListUserVisibleKnowledgeBaseContentsRequest struct {
 	//
 	// dir_example
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 当前目录下的目录或资源名称关键词
+	// The search keyword. Supports fuzzy match on version names.
 	//
 	// example:
 	//
-	// 产品说明
+	// Product description
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// 页码，从 1 开始
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页数量，范围 1-200
+	// The page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 排序字段，可选 name / gmt_create / gmt_modified
+	// The field by which the results are sorted. Valid values:
+	//
+	// - event_time: the event creation time.
+	//
+	// - event_execute_start_time: the event execution time.
+	//
+	// - event_execute_finish_time: the event completion time.
 	//
 	// example:
 	//
 	// name
 	SortField *string `json:"sortField,omitempty" xml:"sortField,omitempty"`
-	// 排序方向，可选 asc / desc
+	// The sort order. This parameter takes effect when sortBy is specified. Valid values: ASC, DESC (case-insensitive).
 	//
 	// example:
 	//
 	// asc
 	SortOrder *string `json:"sortOrder,omitempty" xml:"sortOrder,omitempty"`
-	// 资源类型过滤，多个类型使用逗号分隔；传入后只返回资源
+	// The list of service source types.
 	//
 	// example:
 	//
 	// FILE,WEB_PAGE
 	SourceTypes *string `json:"sourceTypes,omitempty" xml:"sourceTypes,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. Pass it explicitly through --tenant-id in winnexo-cli.
 	//
 	// example:
 	//

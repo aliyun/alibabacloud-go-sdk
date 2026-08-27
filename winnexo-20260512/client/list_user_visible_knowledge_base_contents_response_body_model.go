@@ -26,34 +26,39 @@ type iListUserVisibleKnowledgeBaseContentsResponseBody interface {
 }
 
 type ListUserVisibleKnowledgeBaseContentsResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
-	Code  *string                                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The list of skill cards.
 	Items []*ListUserVisibleKnowledgeBaseContentsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 错误描述，成功时为空
+	// The status code description.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 当前页码
+	// The page number. Default value: 1. Pages start from page 1.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页数量
+	// The page size.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 命中总数
+	// The total number of records.
 	//
 	// example:
 	//
@@ -146,123 +151,125 @@ func (s *ListUserVisibleKnowledgeBaseContentsResponseBody) Validate() error {
 }
 
 type ListUserVisibleKnowledgeBaseContentsResponseBodyItems struct {
-	// 创建人名称
+	// The name of the creator.
 	//
 	// example:
 	//
-	// 张三
+	// John
 	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
-	// 知识库描述
+	// The description of the to-do card type.
 	//
 	// example:
 	//
-	// 产品资料与使用说明
+	// Product materials and user guide
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 目录归属类型
+	// The directory type.
 	//
 	// example:
 	//
 	// normal
 	DirectoryKind *string `json:"directoryKind,omitempty" xml:"directoryKind,omitempty"`
-	// 目录类型
+	// The directory type.
 	//
 	// example:
 	//
 	// TENANT
 	DirectoryType *string `json:"directoryType,omitempty" xml:"directoryType,omitempty"`
-	// 创建时间戳（毫秒）
+	// The creation time.
 	//
 	// example:
 	//
 	// 1
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间戳（毫秒）
+	// The last modification time.
 	//
 	// example:
 	//
 	// 1
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 目录 ID 或资源 ID
+	// The item ID.
 	//
 	// example:
 	//
 	// source_example
 	ItemId *string `json:"itemId,omitempty" xml:"itemId,omitempty"`
-	// 内容类型：directory 或 resource
+	// The item type.
 	//
 	// example:
 	//
 	// resource
 	ItemType *string `json:"itemType,omitempty" xml:"itemType,omitempty"`
-	// 资源是否存在待审批的知识库提交记录
+	// Indicates whether the resource has a pending knowledge base submission record.
 	//
 	// example:
 	//
 	// false
 	KbSubmissionPending *bool `json:"kbSubmissionPending,omitempty" xml:"kbSubmissionPending,omitempty"`
-	// 更新人名称
+	// The name of the modifier.
 	//
 	// example:
 	//
-	// 李四
+	// Jane
 	ModifierName *string `json:"modifierName,omitempty" xml:"modifierName,omitempty"`
-	// 目录或资源名称
+	// The name.
 	//
 	// example:
 	//
-	// 产品说明.pdf
-	Name           *string                  `json:"name,omitempty" xml:"name,omitempty"`
+	// Product description.pdf
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The object bindings.
 	ObjectBindings []map[string]interface{} `json:"objectBindings,omitempty" xml:"objectBindings,omitempty" type:"Repeated"`
-	// 知识库对数字员工的可见模式
+	// The visibility mode of the knowledge base to digital employees.
 	//
 	// example:
 	//
 	// PUBLIC
 	OoVisibilityMode *string `json:"ooVisibilityMode,omitempty" xml:"ooVisibilityMode,omitempty"`
-	// 是否为只读关联内容
+	// Indicates whether the item is read-only.
 	//
 	// example:
 	//
 	// false
-	ReadOnly   *bool                                                              `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
+	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
+	// The sharing information.
 	ShareInfos []*ListUserVisibleKnowledgeBaseContentsResponseBodyItemsShareInfos `json:"shareInfos,omitempty" xml:"shareInfos,omitempty" type:"Repeated"`
-	// 是否已直接共享到企业知识库
+	// Indicates whether shared access is allowed.
 	//
 	// example:
 	//
 	// false
 	Shared *bool `json:"shared,omitempty" xml:"shared,omitempty"`
-	// 目录 FAILED 资源数
+	// The number of resources in FAILED status. Returned only when listing top-level KB directories.
 	//
 	// example:
 	//
 	// 0
 	SourceFailedCount *int64 `json:"sourceFailedCount,omitempty" xml:"sourceFailedCount,omitempty"`
-	// 资源归属类型
+	// The knowledge base affiliation type. Valid values: aliding_kb_doc (DingTalk knowledge base document), normal (common knowledge).
 	//
 	// example:
 	//
 	// normal
 	SourceKind *string `json:"sourceKind,omitempty" xml:"sourceKind,omitempty"`
-	// 目录 READY 资源数
+	// The number of resources in READY status. Returned only when listing top-level KB directories.
 	//
 	// example:
 	//
 	// 1
 	SourceReadyCount *int64 `json:"sourceReadyCount,omitempty" xml:"sourceReadyCount,omitempty"`
-	// 资源状态；本接口只返回 READY 资源
+	// The resource status. This field has a value only when itemType is resource.
 	//
 	// example:
 	//
 	// READY
 	SourceStatus *string `json:"sourceStatus,omitempty" xml:"sourceStatus,omitempty"`
-	// 目录资源总数
+	// The total number of resources under the directory and its subdirectories. Returned only when listing top-level KB directories.
 	//
 	// example:
 	//
 	// 1
 	SourceTotalCount *int64 `json:"sourceTotalCount,omitempty" xml:"sourceTotalCount,omitempty"`
-	// 资源类型，目录项为空
+	// The data source type.
 	//
 	// example:
 	//
@@ -490,47 +497,47 @@ func (s *ListUserVisibleKnowledgeBaseContentsResponseBodyItems) Validate() error
 }
 
 type ListUserVisibleKnowledgeBaseContentsResponseBodyItemsShareInfos struct {
-	// 知识库提交审批单 ID
+	// The Ray Job ID.
 	//
 	// example:
 	//
 	// submission_example
 	SubmissionId *string `json:"submissionId,omitempty" xml:"submissionId,omitempty"`
-	// 提交人用户 ID
+	// The user ID of the submitter.
 	//
 	// example:
 	//
 	// 1
 	SubmitterId *int64 `json:"submitterId,omitempty" xml:"submitterId,omitempty"`
-	// 提交人名称
+	// The submitter name.
 	//
 	// example:
 	//
-	// 张三
+	// John
 	SubmitterName *string `json:"submitterName,omitempty" xml:"submitterName,omitempty"`
-	// 目标目录 ID
+	// The target directory ID.
 	//
 	// example:
 	//
 	// dir_target
 	TargetDirectoryId *string `json:"targetDirectoryId,omitempty" xml:"targetDirectoryId,omitempty"`
-	// 目标目录名称
+	// The target directory name.
 	//
 	// example:
 	//
-	// 共享目录
+	// Shared directory
 	TargetDirectoryName *string `json:"targetDirectoryName,omitempty" xml:"targetDirectoryName,omitempty"`
-	// 目标企业知识库根目录 ID
+	// The root directory ID of the target enterprise knowledge base.
 	//
 	// example:
 	//
 	// dir_kb_root
 	TargetKbRootDirectoryId *string `json:"targetKbRootDirectoryId,omitempty" xml:"targetKbRootDirectoryId,omitempty"`
-	// 目标企业知识库名称
+	// The name of the target enterprise knowledge base.
 	//
 	// example:
 	//
-	// 产品知识库
+	// Product knowledge base
 	TargetKbRootDirectoryName *string `json:"targetKbRootDirectoryName,omitempty" xml:"targetKbRootDirectoryName,omitempty"`
 }
 

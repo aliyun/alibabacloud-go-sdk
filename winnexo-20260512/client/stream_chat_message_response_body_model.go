@@ -20,21 +20,25 @@ type iStreamChatMessageResponseBody interface {
 }
 
 type StreamChatMessageResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// SSE 事件流负载；成功时响应为 text/event-stream 原始帧，需按流式方式逐帧消费
+	// The SSE event stream payload. On success, the response is in text/event-stream raw frames and must be consumed frame by frame in a streaming manner.
 	//
 	// example:
 	//
 	// {}
 	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
-	// 错误描述，成功时为空
+	// The status code description.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//

@@ -29,37 +29,44 @@ type iUpdateScheduledTaskRequest interface {
 	GetTenantId() *string
 	SetTriggerConfig(v *UpdateScheduledTaskRequestTriggerConfig) *UpdateScheduledTaskRequest
 	GetTriggerConfig() *UpdateScheduledTaskRequestTriggerConfig
+	SetVisibility(v string) *UpdateScheduledTaskRequest
+	GetVisibility() *string
+	SetVisibleMemberUserIds(v []*string) *UpdateScheduledTaskRequest
+	GetVisibleMemberUserIds() []*string
 }
 
 type UpdateScheduledTaskRequest struct {
+	// The description information.
 	Description []*UpdateScheduledTaskRequestDescription `json:"description,omitempty" xml:"description,omitempty" type:"Repeated"`
-	// 数字员工名称列表
+	// The list of digital human names.
 	//
 	// example:
 	//
 	// string_value
 	DigitalEmployeeName []*string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty" type:"Repeated"`
-	// 是否公开访问
+	// Specifies whether the task is publicly accessible.
 	//
 	// example:
 	//
 	// true
 	IsOpen *bool `json:"isOpen,omitempty" xml:"isOpen,omitempty"`
-	// 执行模型档位；不传则不更新
+	// The execution model tier. If not specified, the model tier is not updated.
 	//
 	// example:
 	//
 	// quick
 	Model *string `json:"model,omitempty" xml:"model,omitempty"`
-	// 文件名
+	// The file name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
-	Name       *string                               `json:"name,omitempty" xml:"name,omitempty"`
-	Segments   []*UpdateScheduledTaskRequestSegments `json:"segments,omitempty" xml:"segments,omitempty" type:"Repeated"`
+	// SampleName.pdf
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The segments.
+	Segments []*UpdateScheduledTaskRequestSegments `json:"segments,omitempty" xml:"segments,omitempty" type:"Repeated"`
+	// The task details.
 	TaskDetail *UpdateScheduledTaskRequestTaskDetail `json:"taskDetail,omitempty" xml:"taskDetail,omitempty" type:"Struct"`
-	// 任务 ID
+	// The task ID.
 	//
 	// This parameter is required.
 	//
@@ -67,13 +74,26 @@ type UpdateScheduledTaskRequest struct {
 	//
 	// exampleTaskId
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// 租户ID，公共参数，缺省时使用调用方默认租户
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
 	// 10000
-	TenantId      *string                                  `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// The trigger configuration. The configuration varies depending on the trigger type.
 	TriggerConfig *UpdateScheduledTaskRequestTriggerConfig `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty" type:"Struct"`
+	// The visibility scope for group tasks. Valid values: PRIVATE (visible only to the creator and group owner), COLLABORATIVE (visible to specified collaborators), and PUBLIC (visible to all group members). If not specified, the visibility is not updated. This parameter is ignored for personal tasks.
+	//
+	// example:
+	//
+	// COLLABORATIVE
+	Visibility *string `json:"visibility,omitempty" xml:"visibility,omitempty"`
+	// The full replacement list of collaborator member user IDs. This parameter takes effect only when visibility is set to COLLABORATIVE. The list is cleared when switching away from the COLLABORATIVE tier. A maximum of 1000 members are supported. If not specified, the member list is not updated. The task creator and group creator do not need to be included because they are covered by the authentication layer. This parameter is ignored for personal tasks.
+	//
+	// example:
+	//
+	// string_value
+	VisibleMemberUserIds []*string `json:"visibleMemberUserIds,omitempty" xml:"visibleMemberUserIds,omitempty" type:"Repeated"`
 }
 
 func (s UpdateScheduledTaskRequest) String() string {
@@ -122,6 +142,14 @@ func (s *UpdateScheduledTaskRequest) GetTenantId() *string {
 
 func (s *UpdateScheduledTaskRequest) GetTriggerConfig() *UpdateScheduledTaskRequestTriggerConfig {
 	return s.TriggerConfig
+}
+
+func (s *UpdateScheduledTaskRequest) GetVisibility() *string {
+	return s.Visibility
+}
+
+func (s *UpdateScheduledTaskRequest) GetVisibleMemberUserIds() []*string {
+	return s.VisibleMemberUserIds
 }
 
 func (s *UpdateScheduledTaskRequest) SetDescription(v []*UpdateScheduledTaskRequestDescription) *UpdateScheduledTaskRequest {
@@ -174,6 +202,16 @@ func (s *UpdateScheduledTaskRequest) SetTriggerConfig(v *UpdateScheduledTaskRequ
 	return s
 }
 
+func (s *UpdateScheduledTaskRequest) SetVisibility(v string) *UpdateScheduledTaskRequest {
+	s.Visibility = &v
+	return s
+}
+
+func (s *UpdateScheduledTaskRequest) SetVisibleMemberUserIds(v []*string) *UpdateScheduledTaskRequest {
+	s.VisibleMemberUserIds = v
+	return s
+}
+
 func (s *UpdateScheduledTaskRequest) Validate() error {
 	if s.Description != nil {
 		for _, item := range s.Description {
@@ -207,43 +245,43 @@ func (s *UpdateScheduledTaskRequest) Validate() error {
 }
 
 type UpdateScheduledTaskRequestDescription struct {
-	// 文本内容，type=text 时必填
+	// The text content. Required when type is set to text.
 	//
 	// example:
 	//
-	// 示例内容
+	// Sample content
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// 功能开关，type=web_search 时可选
+	// The feature switch. Optional when type is set to web_search.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// 文件名
+	// The file name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 对象 ID，type=mention 时有值
+	// The object ID. This parameter has a value when type is set to mention.
 	//
 	// example:
 	//
 	// exampleObjectId
 	ObjectId *string `json:"objectId,omitempty" xml:"objectId,omitempty"`
-	// 对象类型如 customer，type=mention 时有值
+	// The object type, such as customer. This parameter has a value when type is set to mention.
 	//
 	// example:
 	//
 	// string_value
 	ObjectType *string `json:"objectType,omitempty" xml:"objectType,omitempty"`
-	// 技能编码，type=skill 时有值
+	// The skill code. This parameter has a value when type is set to skill.
 	//
 	// example:
 	//
 	// string_value
 	SkillCode *string `json:"skillCode,omitempty" xml:"skillCode,omitempty"`
-	// 元素类型：text|web_search|mention|skill
+	// The element type. Valid values: text, web_search, mention, and skill.
 	//
 	// This parameter is required.
 	//
@@ -329,43 +367,43 @@ func (s *UpdateScheduledTaskRequestDescription) Validate() error {
 }
 
 type UpdateScheduledTaskRequestSegments struct {
-	// 文本内容，type=text 时必填
+	// The text content. Required when type is set to text.
 	//
 	// example:
 	//
-	// 示例内容
+	// Sample content
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// 功能开关，type=web_search 时可选
+	// The feature switch. Optional when type is set to web_search.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// 文件名
+	// The file name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 对象 ID，type=mention 时有值
+	// The object ID. This parameter has a value when type is set to mention.
 	//
 	// example:
 	//
 	// exampleObjectId
 	ObjectId *string `json:"objectId,omitempty" xml:"objectId,omitempty"`
-	// 对象类型如 customer，type=mention 时有值
+	// The object type, such as customer. This parameter has a value when type is set to mention.
 	//
 	// example:
 	//
 	// string_value
 	ObjectType *string `json:"objectType,omitempty" xml:"objectType,omitempty"`
-	// 技能编码，type=skill 时有值
+	// The skill code. This parameter has a value when type is set to skill.
 	//
 	// example:
 	//
 	// string_value
 	SkillCode *string `json:"skillCode,omitempty" xml:"skillCode,omitempty"`
-	// 元素类型：text|web_search|mention|skill
+	// The element type. Valid values: text, web_search, mention, and skill.
 	//
 	// This parameter is required.
 	//
@@ -451,12 +489,13 @@ func (s *UpdateScheduledTaskRequestSegments) Validate() error {
 }
 
 type UpdateScheduledTaskRequestTaskDetail struct {
-	RelatedObjects   []*UpdateScheduledTaskRequestTaskDetailRelatedObjects   `json:"relatedObjects,omitempty" xml:"relatedObjects,omitempty" type:"Repeated"`
+	// The related objects.
+	RelatedObjects []*UpdateScheduledTaskRequestTaskDetailRelatedObjects `json:"relatedObjects,omitempty" xml:"relatedObjects,omitempty" type:"Repeated"`
+	// The related semantics.
 	RelatedSemantics []*UpdateScheduledTaskRequestTaskDetailRelatedSemantics `json:"relatedSemantics,omitempty" xml:"relatedSemantics,omitempty" type:"Repeated"`
-	RelatedSkills    []*UpdateScheduledTaskRequestTaskDetailRelatedSkills    `json:"relatedSkills,omitempty" xml:"relatedSkills,omitempty" type:"Repeated"`
-	// LLM 润色后的任务理解描述
-	//
-	// This parameter is required.
+	// The related skills.
+	RelatedSkills []*UpdateScheduledTaskRequestTaskDetailRelatedSkills `json:"relatedSkills,omitempty" xml:"relatedSkills,omitempty" type:"Repeated"`
+	// The task understanding description polished by the LLM.
 	//
 	// example:
 	//
@@ -540,25 +579,25 @@ func (s *UpdateScheduledTaskRequestTaskDetail) Validate() error {
 }
 
 type UpdateScheduledTaskRequestTaskDetailRelatedObjects struct {
-	// 提及类型，如 objects
+	// The mention type, such as objects.
 	//
 	// example:
 	//
 	// string_value
 	MentionType *string `json:"mentionType,omitempty" xml:"mentionType,omitempty"`
-	// 文件名
+	// The file name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 对象 ID（@指定时有值）
+	// The object ID. This parameter has a value when an object is mentioned using @.
 	//
 	// example:
 	//
 	// exampleObjectId
 	ObjectId *string `json:"objectId,omitempty" xml:"objectId,omitempty"`
-	// 对象类型，如 customer、company
+	// The object type, such as customer or company.
 	//
 	// example:
 	//
@@ -615,13 +654,13 @@ func (s *UpdateScheduledTaskRequestTaskDetailRelatedObjects) Validate() error {
 }
 
 type UpdateScheduledTaskRequestTaskDetailRelatedSemantics struct {
-	// 语义属性（JSON 字符串），用于语义检索时过滤
+	// The semantic attributes (JSON string) used for filtering during semantic retrieval.
 	//
 	// example:
 	//
 	// {"level": "VIP"}
 	Attributes *string `json:"attributes,omitempty" xml:"attributes,omitempty"`
-	// 语义实体名，如客户/机会
+	// The semantic entity name, such as customer or opportunity.
 	//
 	// example:
 	//
@@ -660,19 +699,19 @@ func (s *UpdateScheduledTaskRequestTaskDetailRelatedSemantics) Validate() error 
 }
 
 type UpdateScheduledTaskRequestTaskDetailRelatedSkills struct {
-	// 技能展示名称
+	// The display name of the skill.
 	//
 	// example:
 	//
 	// string_value
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// 文件名
+	// The file name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 技能代码
+	// The skill code.
 	//
 	// example:
 	//
@@ -735,27 +774,27 @@ func (s *UpdateScheduledTaskRequestTaskDetailRelatedSkills) Validate() error {
 }
 
 type UpdateScheduledTaskRequestTriggerConfig struct {
-	// Cron 表达式，trigger_mode=scheduled 时必填，如 \"00 09 	- 	- *\"
+	// The cron expression. Required when trigger_mode is set to scheduled. Example: \\"00 09 	- 	- *\\".
 	//
 	// example:
 	//
 	// string_value
 	Cron *string `json:"cron,omitempty" xml:"cron,omitempty"`
-	// 语言如 zh-CN|en-US，由服务端自动注入
+	// The language, such as zh-CN or en-US. Automatically injected by the server.
 	//
 	// example:
 	//
 	// zh-CN
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// 任务推送频道列表；为空或无启用频道时不推送
+	// The list of push channels for the task. No push notifications are sent if the list is empty or no channel is enabled.
 	PushConfig []*UpdateScheduledTaskRequestTriggerConfigPushConfig `json:"pushConfig,omitempty" xml:"pushConfig,omitempty" type:"Repeated"`
-	// 时区如 Asia/Shanghai，由服务端自动注入
+	// The time zone, such as Asia/Shanghai. Automatically injected by the server.
 	//
 	// example:
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	// 触发模式：manual|scheduled
+	// The trigger mode. Valid values: manual and scheduled.
 	//
 	// This parameter is required.
 	//
@@ -832,43 +871,43 @@ func (s *UpdateScheduledTaskRequestTriggerConfig) Validate() error {
 }
 
 type UpdateScheduledTaskRequestTriggerConfigPushConfig struct {
-	// 推送渠道
+	// The push channel type.
 	//
 	// example:
 	//
 	// DINGTALK
 	ChannelType *string `json:"channelType,omitempty" xml:"channelType,omitempty"`
-	// 推送内容范围，默认 all_replies
+	// The scope of push content. Default value: all_replies.
 	//
 	// example:
 	//
 	// all_replies
 	ContentScope *string `json:"contentScope,omitempty" xml:"contentScope,omitempty"`
-	// 推送方式，默认 channel_bot
+	// The push method. Default value: channel_bot.
 	//
 	// example:
 	//
 	// channel_bot
 	DeliveryMethod *string `json:"deliveryMethod,omitempty" xml:"deliveryMethod,omitempty"`
-	// 是否推送该频道，默认关闭
+	// Specifies whether to push to this channel. Default value: false.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// 产出文件推送格式，默认 file
+	// The format for pushing output files. Default value: file.
 	//
 	// example:
 	//
 	// file
 	FileFormat *string `json:"fileFormat,omitempty" xml:"fileFormat,omitempty"`
-	// 发送机器人所属数字员工，必传且不可为空
+	// The digital human to which the sending bot belongs. This parameter is required and cannot be empty.
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 接收人，当前仅支持 self
+	// The receiver type. Currently only self is supported.
 	//
 	// example:
 	//

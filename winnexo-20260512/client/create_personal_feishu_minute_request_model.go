@@ -26,7 +26,7 @@ type iCreatePersonalFeishuMinuteRequest interface {
 }
 
 type CreatePersonalFeishuMinuteRequest struct {
-	// 凭证 ID（关联 rbj_credential 表，必填）
+	// The credential ID.
 	//
 	// This parameter is required.
 	//
@@ -34,19 +34,19 @@ type CreatePersonalFeishuMinuteRequest struct {
 	//
 	// exampleCredentialId
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	// 资源描述（可选）
+	// The resource description.
 	//
 	// example:
 	//
-	// 示例描述
+	// created by eventbridge
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 目标个人目录 ID；不传时自动绑定到当前数字员工默认根目录，传入时必须是当前用户在当前数字员工下的已有个人目录
+	// The directory ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 飞书妙记 token（妙记唯一标识符，必填）
+	// The Lark Minutes token (unique identifier of the minutes record, required).
 	//
 	// This parameter is required.
 	//
@@ -54,25 +54,25 @@ type CreatePersonalFeishuMinuteRequest struct {
 	//
 	// string_value
 	MinuteToken *string `json:"minuteToken,omitempty" xml:"minuteToken,omitempty"`
-	// 资源显示名称
+	// The resource name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// _DevsAF_19df1a74-a740-449a-bd7a-9acb39e00f25
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 数字员工名称（已废弃：不再作为个人资源隔离条件，仅保留用于来源追溯）
+	// The name of the digital employee (operating object name, optional).
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID.
 	//
 	// example:
 	//
-	// 10000
+	// 1iSgnW4pARwoPUd5D5nuCNwiEiE
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 

@@ -22,22 +22,31 @@ type iListUserVisibleKnowledgeBasesResponseBody interface {
 }
 
 type ListUserVisibleKnowledgeBasesResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
-	Code  *string                                           `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The result list.
+	//
+	// Maximum size:
+	//
+	// 	50
 	Items []*ListUserVisibleKnowledgeBasesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 错误描述，成功时为空
+	// The description of the status code.
+	//
+	// example:
+	//
+	// The current zone list is illegal.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request trace ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 知识库总数
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -112,59 +121,59 @@ func (s *ListUserVisibleKnowledgeBasesResponseBody) Validate() error {
 }
 
 type ListUserVisibleKnowledgeBasesResponseBodyItems struct {
-	// 知识库创建人用户 ID
+	// The user ID of the creator.
 	//
 	// example:
 	//
 	// 1
 	CreatorId *int64 `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
-	// 知识库创建人名称
+	// The name of the creator.
 	//
 	// example:
 	//
-	// 张三
+	// John
 	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
-	// 知识库描述
+	// The description of the knowledge base.
 	//
 	// example:
 	//
-	// 产品资料与使用说明
+	// Product materials and usage instructions
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 知识库根目录唯一标识
+	// The directory ID of the enterprise knowledge base.
 	//
 	// example:
 	//
 	// dir_example
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 目录归属类型
+	// The directory type.
 	//
 	// example:
 	//
 	// normal
 	DirectoryKind *string `json:"directoryKind,omitempty" xml:"directoryKind,omitempty"`
-	// 目录类型
+	// The directory type.
 	//
 	// example:
 	//
 	// TENANT
 	DirectoryType *string `json:"directoryType,omitempty" xml:"directoryType,omitempty"`
-	// 创建时间戳（毫秒）
+	// The creation time.
 	//
 	// example:
 	//
 	// 1
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间戳（毫秒）
+	// The last modification time.
 	//
 	// example:
 	//
 	// 1
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 知识库名称
+	// The file name.
 	//
 	// example:
 	//
-	// 产品知识库
+	// Product Knowledge Base
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

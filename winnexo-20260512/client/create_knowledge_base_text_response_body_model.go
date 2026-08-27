@@ -30,55 +30,59 @@ type iCreateKnowledgeBaseTextResponseBody interface {
 }
 
 type CreateKnowledgeBaseTextResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 绑定的目录 ID
+	// The folder ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 创建时间 ISO8601
+	// The creation time.
 	//
 	// example:
 	//
-	// string_value
+	// 2026-04-22T07:10:40.000+00:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 错误描述，成功时为空
+	// The error message returned when the request fails.
+	//
+	// example:
+	//
+	// The current zone list is illegal.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 文件名
+	// The image name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// p-default-af484147-e026-487b-a9eb-bd25464f0667
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
-	// 019FF406-1B10-0065-A97D-2D1920C2A03D
+	// 9005F6D0-748F-559D-ABDA-F4F31B983316
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 资源 scope，固定为 TENANT
+	// The permission scope.
 	//
 	// example:
 	//
-	// PERSONAL
+	// read:user,read:repo,write:repo,read:org,read:group
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 新建资源 ID
+	// The data source ID.
 	//
 	// example:
 	//
-	// exampleSourceId
+	// 8
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 资源状态
+	// The status.
 	//
 	// example:
 	//
-	// READY
+	// 200
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 

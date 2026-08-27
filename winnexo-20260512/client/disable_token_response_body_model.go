@@ -20,21 +20,29 @@ type iDisableTokenResponseBody interface {
 }
 
 type DisableTokenResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 操作是否成功
+	// Indicates whether the token is disabled. Valid values:
+	//
+	// - true: Disabled.
+	//
+	// - false: Not disabled.
 	//
 	// example:
 	//
 	// true
 	Disabled *bool `json:"disabled,omitempty" xml:"disabled,omitempty"`
-	// 错误描述，成功时为空
+	// The description of the status code.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//

@@ -30,55 +30,59 @@ type iCreatePersonalVoiceMeetingResponseBody interface {
 }
 
 type CreatePersonalVoiceMeetingResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The response code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 绑定的目录 ID（请求体传入时 echo 回；缺省走默认根目录时为 null）
+	// The bound directory ID. This value echoes the directoryId provided in the request body. If no directoryId is specified, the value is null because the default root directory is used.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 创建时间 ISO8601
+	// The creation time in ISO 8601 format.
 	//
 	// example:
 	//
-	// string_value
+	// 2026-04-22T08:15:28.000+00:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 错误描述，成功时为空
+	// The description of the status code.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 文件名
+	// The knowledge base name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// p-toolset-e95d1287-3d40-487a-bcce-6e6252c7a793
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
-	// 019FF406-1B10-0065-A97D-2D1920C2A03D
+	// A5241B90-8FF4-565C-977A-0CE1842AED72
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 资源 scope，固定为 PERSONAL
+	// The resource scope. The value is fixed to PERSONAL.
 	//
 	// example:
 	//
-	// PERSONAL
+	// user_info projects pull_requests hook gists emails
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 新建资源 ID
+	// The unique identifier on the business system side, that is, the business ID.
 	//
 	// example:
 	//
-	// exampleSourceId
+	// 8
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 资源状态（创建链路初始多为 PENDING；on_create 失败则为 FAILED）
+	// The resource status. The initial status during the creation process is typically PENDING. If the on_create process fails, the status is FAILED.
 	//
 	// example:
 	//
-	// READY
+	// {\\"observedGeneration\\": 4, \\"servicesInstances\\": {}, \\"observedTime\\": \\"2025-10-31T03:48:27Z\\", \\"servicesWithPendingChanges\\": [], \\"latestEnvironmentDeploymentName\\": \\"manual-1761882507097-Eu1vIP\\"}
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 

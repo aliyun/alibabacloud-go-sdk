@@ -30,55 +30,59 @@ type iCreatePersonalDingtalkMeetingResponseBody interface {
 }
 
 type CreatePersonalDingtalkMeetingResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// 绑定的目录 ID
+	// The directory ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 创建时间 ISO8601
+	// The creation time.
 	//
 	// example:
 	//
-	// string_value
+	// 2025-11-14T02:18:27Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 错误描述，成功时为空
+	// The response message.
+	//
+	// example:
+	//
+	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 文件名
+	// The skill name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// oklabs_tongyici
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 请求追踪 ID
+	// Id of the request
 	//
 	// example:
 	//
-	// 019FF406-1B10-0065-A97D-2D1920C2A03D
+	// B49109FE-5BB1-593C-915D-F5A99D9F5435
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 资源 scope，固定为 PERSONAL
+	// The permission scope.
 	//
 	// example:
 	//
-	// PERSONAL
+	// user_info projects pull_requests hook gists emails
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// 新建资源 ID
+	// The unique identifier on the business system side, which is the business ID.
 	//
 	// example:
 	//
-	// exampleSourceId
+	// 2000398
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// 资源状态
+	// The task running status.
 	//
 	// example:
 	//
-	// READY
+	// updated
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 

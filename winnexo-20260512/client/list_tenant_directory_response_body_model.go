@@ -26,34 +26,39 @@ type iListTenantDirectoryResponseBody interface {
 }
 
 type ListTenantDirectoryResponseBody struct {
-	// 业务状态码：成功为 200，失败为后端错误码（ERR.	- / InvalidParameter.*）
+	// The status code.
 	//
 	// example:
 	//
 	// 200
-	Code  *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The file information.
 	Items []*ListTenantDirectoryResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// 错误描述，成功时为空
+	// The description of the status code.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// 当前页码
+	// The page number. Default value: 1. Minimum value: 1. Maximum value: 200.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页数量
+	// The number of entries per page. Default value: 100. Maximum value: 500.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 请求追踪 ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 内容总数
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -146,74 +151,75 @@ func (s *ListTenantDirectoryResponseBody) Validate() error {
 }
 
 type ListTenantDirectoryResponseBodyItems struct {
-	// 创建人名称
+	// The nickname of the creator.
 	//
 	// example:
 	//
 	// string_value
 	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
-	// 目录描述
+	// The description of the to-do card type.
 	//
 	// example:
 	//
-	// 示例描述
+	// Sample description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 创建时间戳
+	// The creation time.
 	//
 	// example:
 	//
 	// 1
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// 修改时间戳
+	// The last modification time.
 	//
 	// example:
 	//
 	// 1
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// 目录 ID 或资源 ID
+	// The signing record ID.
 	//
 	// example:
 	//
 	// exampleItemId
 	ItemId *string `json:"itemId,omitempty" xml:"itemId,omitempty"`
-	// 内容类型：directory 或 resource
+	// The data type (group, user, or role).
 	//
 	// example:
 	//
 	// string_value
 	ItemType *string `json:"itemType,omitempty" xml:"itemType,omitempty"`
-	// 文件名
+	// The name.
 	//
 	// example:
 	//
-	// 示例名称.pdf
-	Name           *string                  `json:"name,omitempty" xml:"name,omitempty"`
+	// SampleName.pdf
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The object bindings.
 	ObjectBindings []map[string]interface{} `json:"objectBindings,omitempty" xml:"objectBindings,omitempty" type:"Repeated"`
-	// 根知识库下失败资源数
+	// The number of resources with the FAILED status. This field is returned only when the top-level directory list of the knowledge base is queried.
 	//
 	// example:
 	//
 	// 1
 	SourceFailedCount *int64 `json:"sourceFailedCount,omitempty" xml:"sourceFailedCount,omitempty"`
-	// 根知识库下成功资源数
+	// The number of resources with the READY status. This field is returned only when the top-level directory list of the knowledge base is queried.
 	//
 	// example:
 	//
 	// 1
 	SourceReadyCount *int64 `json:"sourceReadyCount,omitempty" xml:"sourceReadyCount,omitempty"`
-	// 资源解析状态
+	// The resource status. This field has a value only when itemType is set to resource.
 	//
 	// example:
 	//
 	// string_value
 	SourceStatus *string `json:"sourceStatus,omitempty" xml:"sourceStatus,omitempty"`
-	// 根知识库下资源总数
+	// The total number of resources in the directory and its subdirectories. This field is returned only when the top-level directory list of the knowledge base is queried.
 	//
 	// example:
 	//
 	// 1
 	SourceTotalCount *int64 `json:"sourceTotalCount,omitempty" xml:"sourceTotalCount,omitempty"`
-	// 资源类型
+	// The data source type.
 	//
 	// example:
 	//

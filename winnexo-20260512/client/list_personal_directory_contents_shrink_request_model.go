@@ -28,7 +28,7 @@ type iListPersonalDirectoryContentsShrinkRequest interface {
 }
 
 type ListPersonalDirectoryContentsShrinkRequest struct {
-	// 目录 ID（必传非空）；传 \"root\" 时 service 自动解析当前数字员工的默认根目录并返回其下内容（首屏知识库卡片场景），传具体目录 ID 时返回该目录下子目录与资源
+	// The directory ID.
 	//
 	// This parameter is required.
 	//
@@ -36,43 +36,49 @@ type ListPersonalDirectoryContentsShrinkRequest struct {
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 数字员工名称（已废弃：不再作为个人资源隔离条件，仅保留用于来源追溯）
+	// The name of the digital employee.
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// 页码（从 1 开始）
+	// The page number. Default value: 1. Pages start from page 1.
 	//
 	// example:
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// 每页数量，范围 1-100
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// 排序字段，可选 name / gmt_create / gmt_modified
+	// The field by which the results are sorted. Valid values:
+	//
+	// - event_time: event creation time
+	//
+	// - event_execute_start_time: event execution time
+	//
+	// - event_execute_finish_time: event completion time
 	//
 	// example:
 	//
 	// name
 	SortField *string `json:"sortField,omitempty" xml:"sortField,omitempty"`
-	// 排序方向，可选 asc / desc
+	// The sort order. This parameter takes effect when sortBy is specified. Valid values: ASC, DESC (case-insensitive).
 	//
 	// example:
 	//
 	// asc
 	SortOrder *string `json:"sortOrder,omitempty" xml:"sortOrder,omitempty"`
-	// 资源类型筛选列表（有值时仅返回资源，不包含子目录）；支持虚拟类型 OUTPUT（产出保存的资源，service 自动反查关联表）
+	// The list of service source types.
 	//
 	// example:
 	//
 	// string_value
 	SourceTypesShrink *string `json:"sourceTypes,omitempty" xml:"sourceTypes,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

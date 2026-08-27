@@ -22,33 +22,33 @@ type iCreateTenantDirectoryRequest interface {
 }
 
 type CreateTenantDirectoryRequest struct {
-	// 目录描述
+	// The description of the to-do card type.
 	//
 	// example:
 	//
-	// 示例描述
+	// Sample description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 文件名
+	// The name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例名称.pdf
+	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 父目录内部主键；不传表示创建企业知识库根目录
+	// The ID of the parent node.
 	//
 	// example:
 	//
 	// 1
 	ParentId *int64 `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	// 文件 OSS URL
+	// The path of the node.
 	//
 	// example:
 	//
 	// https://example.com/oss/file.pdf
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	// The ID of the effective tenant.
 	//
 	// example:
 	//

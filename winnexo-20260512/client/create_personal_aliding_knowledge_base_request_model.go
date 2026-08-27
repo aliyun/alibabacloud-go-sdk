@@ -26,39 +26,41 @@ type iCreatePersonalAlidingKnowledgeBaseRequest interface {
 }
 
 type CreatePersonalAlidingKnowledgeBaseRequest struct {
-	// 目标个人目录 ID；不传时自动绑定到用户默认根目录，传入时必须是当前用户的已有个人目录（PERSONAL）
+	// The directory ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// 知识库显示名称；不传时由后台从远程拉取的根节点名称回填
+	// The display name of the knowledge base. If not provided, the name is populated from the root node name pulled from the remote source.
 	//
 	// example:
 	//
 	// string_value
 	KbName *string `json:"kbName,omitempty" xml:"kbName,omitempty"`
-	// 阿里钉知识库的可公开访问 URL
+	// The publicly accessible URL of the AliDing knowledge base.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://example.com/winnexo/resource
-	KbUrl          *string                                                    `json:"kbUrl,omitempty" xml:"kbUrl,omitempty"`
+	KbUrl *string `json:"kbUrl,omitempty" xml:"kbUrl,omitempty"`
+	// The object bindings.
 	ObjectBindings []*CreatePersonalAlidingKnowledgeBaseRequestObjectBindings `json:"objectBindings,omitempty" xml:"objectBindings,omitempty" type:"Repeated"`
-	// Agent 命名空间标识，可选
+	// The name of the digital employee (operating object name, optional).
 	//
 	// example:
 	//
 	// string_value
-	OperatingObjectName *string                                              `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	SyncConfig          *CreatePersonalAlidingKnowledgeBaseRequestSyncConfig `json:"syncConfig,omitempty" xml:"syncConfig,omitempty" type:"Struct"`
-	// 租户ID，公共参数；winnexo-cli 通过 --tenant-id 显式传入
+	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// The synchronization settings.
+	SyncConfig *CreatePersonalAlidingKnowledgeBaseRequestSyncConfig `json:"syncConfig,omitempty" xml:"syncConfig,omitempty" type:"Struct"`
+	// The tenant ID.
 	//
 	// example:
 	//
-	// 10000
+	// PiPklI1iSRTm6VFFqlY9VzbgiEiE
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 }
 
@@ -152,17 +154,17 @@ func (s *CreatePersonalAlidingKnowledgeBaseRequest) Validate() error {
 }
 
 type CreatePersonalAlidingKnowledgeBaseRequestObjectBindings struct {
-	// 绑定对象 ID
+	// The ID of the recommended item, which can be a **feedId*	- or a micro-application ID.
 	//
 	// example:
 	//
-	// exampleObjectId
+	// 2676
 	ObjectId *string `json:"objectId,omitempty" xml:"objectId,omitempty"`
-	// 绑定对象类型，例如 CUSTOMER / OPPORTUNITY
+	// The advanced field type.
 	//
 	// example:
 	//
-	// string_value
+	// table
 	ObjectType *string `json:"objectType,omitempty" xml:"objectType,omitempty"`
 }
 
@@ -197,17 +199,17 @@ func (s *CreatePersonalAlidingKnowledgeBaseRequestObjectBindings) Validate() err
 }
 
 type CreatePersonalAlidingKnowledgeBaseRequestSyncConfig struct {
-	// cron 表达式；enabled=true 时必填，enabled=false 时忽略
+	// The cron expression for timed scheduling.
 	//
 	// example:
 	//
 	// string_value
 	Cron *string `json:"cron,omitempty" xml:"cron,omitempty"`
-	// 是否启用定时同步
+	// Specifies whether to enable synchronization.
 	//
 	// example:
 	//
-	// true
+	// False
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
