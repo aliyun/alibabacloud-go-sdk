@@ -48,7 +48,7 @@ type UpdateFlowVersionResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The content of the returned data.
+	// The response content.
 	//
 	// example:
 	//

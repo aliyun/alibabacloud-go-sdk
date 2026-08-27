@@ -22,7 +22,7 @@ type iListPhoneMessageQrdlResponseBody interface {
 }
 
 type ListPhoneMessageQrdlResponseBody struct {
-	// The access denied details.
+	// The details about the access denial.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListPhoneMessageQrdlResponseBody struct {
 	//
 	// example:
 	//
-	// 无
+	// None.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -135,7 +135,7 @@ type ListPhoneMessageQrdlResponseBodyData struct {
 	//
 	// 86138009****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The prefilled message content.
+	// The message content.
 	//
 	// example:
 	//

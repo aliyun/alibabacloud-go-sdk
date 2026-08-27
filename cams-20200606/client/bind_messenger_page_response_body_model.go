@@ -24,23 +24,38 @@ type iBindMessengerPageResponseBody interface {
 }
 
 type BindMessengerPageResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code.
+	//
 	// example:
 	//
 	// ok
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data []*BindMessengerPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error message.
+	//
 	// example:
 	//
 	// ok
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DSFDS-8FSDFS**
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -123,14 +138,20 @@ func (s *BindMessengerPageResponseBody) Validate() error {
 }
 
 type BindMessengerPageResponseBodyData struct {
+	// The connection status.
+	//
 	// example:
 	//
 	// CONNECTED
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
+	// The current page ID.
+	//
 	// example:
 	//
 	// 1654543543543
 	PageId *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The page name.
+	//
 	// example:
 	//
 	// iwhalecloud

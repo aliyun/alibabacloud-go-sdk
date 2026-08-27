@@ -24,7 +24,7 @@ type iDeleteChatFlowResponseBody interface {
 }
 
 type DeleteChatFlowResponseBody struct {
-	// The details about the access denial.
+	// The access denied details.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DeleteChatFlowResponseBody struct {
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
@@ -50,11 +50,11 @@ type DeleteChatFlowResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The response data.
 	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: The request was successful.
+	// - true: Successful.
 	//
-	// - false: The request failed.
+	// - false: Failed.
 	//
 	// example:
 	//

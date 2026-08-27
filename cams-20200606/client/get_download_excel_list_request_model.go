@@ -34,31 +34,48 @@ type iGetDownloadExcelListRequest interface {
 }
 
 type GetDownloadExcelListRequest struct {
+	// The business tenant code. Default value: ALICOM_OPAAS.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
-	BizCode   *string                `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The business extension information. Default value: "{}".
+	//
+	// example:
+	//
+	// {}
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// The query conditions.
+	//
 	// example:
 	//
 	// aa
-	Condition    *string   `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// The country names.
 	CountryNames []*string `json:"CountryNames,omitempty" xml:"CountryNames,omitempty" type:"Repeated"`
+	// The end time.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 2025-12-01
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The group ID.
+	//
 	// example:
 	//
-	// 示例值
-	GroupId              *string   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// 111
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The contact group IDs.
 	GroupIds             []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
 	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// 2025-11-01
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 

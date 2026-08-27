@@ -23,10 +23,14 @@ type iGetPhoneNumberVerificationStatusResponseBody interface {
 
 type GetPhoneNumberVerificationStatusResponseBody struct {
 	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The request status code.
 	//
-	// - A value of OK indicates that the request was successful.
+	// - OK: The request was successful.
 	//
 	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
@@ -113,13 +117,19 @@ func (s *GetPhoneNumberVerificationStatusResponseBody) Validate() error {
 }
 
 type GetPhoneNumberVerificationStatusResponseBodyData struct {
-	// The verification status.
+	// The verification status of the phone number. Valid values:
+	//
+	// - NOT_VERIFIED: Not verified.
+	//
+	// - VERIFIED: Verified.
+	//
+	// - EXPIRED: Verification expired.
 	//
 	// example:
 	//
 	// VERIFIED
 	CodeVerificationStatus *string `json:"CodeVerificationStatus,omitempty" xml:"CodeVerificationStatus,omitempty"`
-	// The ID of the phone number.
+	// The phone number ID.
 	//
 	// example:
 	//

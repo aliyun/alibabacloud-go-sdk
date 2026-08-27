@@ -26,7 +26,7 @@ type iCreateChatFlowResponseBody interface {
 }
 
 type CreateChatFlowResponseBody struct {
-	// Details about the access denial.
+	// The access denied details.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type CreateChatFlowResponseBody struct {
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique ID of the request.
+	// The unique request ID.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type CreateChatFlowResponseBody struct {
 	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
 	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: Successful.
 	//
-	// - false: The operation failed.
+	// - false: Failed.
 	//
 	// example:
 	//

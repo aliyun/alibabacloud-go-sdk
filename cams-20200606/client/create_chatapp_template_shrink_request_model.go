@@ -31,51 +31,56 @@ type iCreateChatappTemplateShrinkRequest interface {
 	GetMessageSendTtlSeconds() *int32
 	SetName(v string) *CreateChatappTemplateShrinkRequest
 	GetName() *string
+	SetProductSetId(v string) *CreateChatappTemplateShrinkRequest
+	GetProductSetId() *string
 	SetTemplateType(v string) *CreateChatappTemplateShrinkRequest
 	GetTemplateType() *string
 }
 
 type CreateChatappTemplateShrinkRequest struct {
-	// Deprecated
+	// Specifies whether to allow Facebook to automatically change the template category (to improve the template approval rate). This property is valid only when TemplateType is set to WHATSAPP.
 	//
-	// Indicates whether to allow Facebook to automatically change the category of the template. This can increase the approval rate of the template. This parameter is valid only when TemplateType is set to WHATSAPP.
-	//
-	// 	Notice: This property is deprecated. WhatsApp no longer supports this property.
+	// 	Notice: This property has been deprecated. WhatsApp no longer supports this property.</notice>
 	//
 	// example:
 	//
 	// true
 	AllowCategoryChange *bool `json:"AllowCategoryChange,omitempty" xml:"AllowCategoryChange,omitempty"`
-	// WhatsApp template categories:
+	// WhatsApp template category. Valid values:
 	//
-	// - **UTILITY**: Transactional.
+	// - **UTILITY**: transaction-related.
 	//
-	// - **MARKETING**: Marketing.
+	// - **MARKETING**: marketing.
 	//
-	// - **AUTHENTICATION**: Authentication.
+	// - **AUTHENTICATION**: identity verification.
 	//
-	// Viber template categories:
+	// Viber template category. Valid values:
 	//
-	// - **UTILITY**: Transactional.
+	// - **UTILITY**: transaction-related.
 	//
-	// - **MARKETING**: Marketing.
+	// - **MARKETING**: marketing.
 	//
-	// - **AUTHENTICATION**: Authentication.
+	// - **AUTHENTICATION**: identity verification.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// UTILITY
-	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	CategoryChangePaused *bool   `json:"CategoryChangePaused,omitempty" xml:"CategoryChangePaused,omitempty"`
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Specifies whether to pause template sending when a Utility template is changed to Marketing type. This property is valid only for WhatsApp templates.
+	//
+	// example:
+	//
+	// false
+	CategoryChangePaused *bool `json:"CategoryChangePaused,omitempty" xml:"CategoryChangePaused,omitempty"`
 	// The list of message template components.
 	//
-	// > When Category is set to AUTHENTICATION, the Components array cannot contain a component of the HEADER type. If the component type is BODY or FOOTER, the Text parameter must be empty.
+	// > When Category=AUTHENTICATION, Components cannot contain nodes with Type=HEADER. When Type=BODY or FOOTER, the Text content must be empty.
 	//
 	// This parameter is required.
 	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
-	// The Space ID of the ISV sub-customer or the instance ID of the direct customer.
+	// The SpaceId of the ISV sub-customer or the direct customer instance ID.
 	//
 	// example:
 	//
@@ -83,27 +88,29 @@ type CreateChatappTemplateShrinkRequest struct {
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// Deprecated
 	//
-	// The WhatsApp Business Account (WABA) ID of the independent software vendor (ISV) customer.
+	// The ISV customer WabaId.
 	//
-	// > This parameter is deprecated. Use CustSpaceId instead.
+	// > Deprecated parameter. Use CustSpaceId instead.
 	//
 	// example:
 	//
 	// 65921621816****
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
-	// An example of how to create a template.
+	// The example for creating the template.
 	//
 	// example:
 	//
 	// hello_whatsapp
 	ExampleShrink *string `json:"Example,omitempty" xml:"Example,omitempty"`
-	// The ISV verification code, used to verify whether the RAM user is authorized by the ISV.
+	// Deprecated
+	//
+	// The ISV verification code, used to verify whether the sub-account is authorized by the ISV.
 	//
 	// example:
 	//
 	// skdi3kksloslikdkkdk
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
-	// The template language. For more information about language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+	// The template language. For detailed language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
 	//
 	// This parameter is required.
 	//
@@ -111,11 +118,11 @@ type CreateChatappTemplateShrinkRequest struct {
 	//
 	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The time-to-live (TTL) of the template message in WhatsApp.
+	// The time-to-live (TTL) for template messages in WhatsApp.
 	//
-	// - For AUTHENTICATION templates, the value ranges from 30 to 900.
+	// - AUTHENTICATION: valid values range from 30 to 900.
 	//
-	// - For UTILITY templates, the value ranges from 30 to 43200.
+	// - UTILITY: valid values range from 30 to 43200.
 	//
 	// example:
 	//
@@ -129,7 +136,13 @@ type CreateChatappTemplateShrinkRequest struct {
 	//
 	// hello_whatsapp
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The template type.
+	// productSetId
+	//
+	// example:
+	//
+	// 9928**
+	ProductSetId *string `json:"ProductSetId,omitempty" xml:"ProductSetId,omitempty"`
+	// The templatetype. Valid values:
 	//
 	// - **WHATSAPP**
 	//
@@ -195,6 +208,10 @@ func (s *CreateChatappTemplateShrinkRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateChatappTemplateShrinkRequest) GetProductSetId() *string {
+	return s.ProductSetId
+}
+
 func (s *CreateChatappTemplateShrinkRequest) GetTemplateType() *string {
 	return s.TemplateType
 }
@@ -251,6 +268,11 @@ func (s *CreateChatappTemplateShrinkRequest) SetMessageSendTtlSeconds(v int32) *
 
 func (s *CreateChatappTemplateShrinkRequest) SetName(v string) *CreateChatappTemplateShrinkRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateChatappTemplateShrinkRequest) SetProductSetId(v string) *CreateChatappTemplateShrinkRequest {
+	s.ProductSetId = &v
 	return s
 }
 

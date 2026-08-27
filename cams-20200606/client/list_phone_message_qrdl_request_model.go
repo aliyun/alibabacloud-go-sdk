@@ -22,7 +22,7 @@ type iListPhoneMessageQrdlRequest interface {
 }
 
 type ListPhoneMessageQrdlRequest struct {
-	// The space ID of the ISV sub-customer, or the instance ID of the direct customer.
+	// The space ID of the ISV sub-customer or the instance ID of the direct customer.
 	//
 	// example:
 	//

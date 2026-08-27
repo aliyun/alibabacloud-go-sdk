@@ -20,6 +20,8 @@ type iDeleteGroupByIdRequest interface {
 }
 
 type DeleteGroupByIdRequest struct {
+	// The group ID.
+	//
 	// This parameter is required.
 	//
 	// example:

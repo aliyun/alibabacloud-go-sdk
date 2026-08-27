@@ -9,6 +9,8 @@ type iListInstanceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBindId(v string) *ListInstanceRequest
+	GetBindId() *string
 	SetChannelType(v string) *ListInstanceRequest
 	GetChannelType() *string
 	SetFilterStr(v string) *ListInstanceRequest
@@ -17,6 +19,8 @@ type iListInstanceRequest interface {
 	GetInstanceId() *string
 	SetInstanceName(v string) *ListInstanceRequest
 	GetInstanceName() *string
+	SetIsBind(v bool) *ListInstanceRequest
+	GetIsBind() *bool
 	SetPageIndex(v int64) *ListInstanceRequest
 	GetPageIndex() *int64
 	SetPageSize(v int64) *ListInstanceRequest
@@ -28,6 +32,7 @@ type iListInstanceRequest interface {
 }
 
 type ListInstanceRequest struct {
+	BindId *string `json:"BindId,omitempty" xml:"BindId,omitempty"`
 	// The channel type. Valid values:
 	//
 	// - **whatsapp**
@@ -36,21 +41,19 @@ type ListInstanceRequest struct {
 	//
 	// - **instagram**
 	//
-	// <props="intl">
-	//
-	// - **viber**
+	// <props="intl">- **viber**
 	//
 	// example:
 	//
 	// VIBER
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	// The filter string for the query.
+	// The filter condition.
 	//
 	// example:
 	//
 	// aa
 	FilterStr *string `json:"FilterStr,omitempty" xml:"FilterStr,omitempty"`
-	// The instance ID. Use this parameter for non-Alibaba Cloud hosts only.
+	// The instance ID. Only non-Alibaba Cloud hosts are supported.
 	//
 	// example:
 	//
@@ -62,25 +65,26 @@ type ListInstanceRequest struct {
 	//
 	// viber_ins
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The page number to return.
+	IsBind       *bool   `json:"IsBind,omitempty" xml:"IsBind,omitempty"`
+	// The page number.
 	//
 	// example:
 	//
 	// 92
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	// The number of items to return per page.
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 87
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group that contains the instance.
+	// The ID of the enterprise resource group to which the instance belongs.
 	//
 	// example:
 	//
 	// 11
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The submission time, in `YYYY-MM-DD HH:MM:SS` format.
+	// The submit time.
 	//
 	// example:
 	//
@@ -94,6 +98,10 @@ func (s ListInstanceRequest) String() string {
 
 func (s ListInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstanceRequest) GetBindId() *string {
+	return s.BindId
 }
 
 func (s *ListInstanceRequest) GetChannelType() *string {
@@ -112,6 +120,10 @@ func (s *ListInstanceRequest) GetInstanceName() *string {
 	return s.InstanceName
 }
 
+func (s *ListInstanceRequest) GetIsBind() *bool {
+	return s.IsBind
+}
+
 func (s *ListInstanceRequest) GetPageIndex() *int64 {
 	return s.PageIndex
 }
@@ -126,6 +138,11 @@ func (s *ListInstanceRequest) GetResourceGroupId() *string {
 
 func (s *ListInstanceRequest) GetSubmitTime() *string {
 	return s.SubmitTime
+}
+
+func (s *ListInstanceRequest) SetBindId(v string) *ListInstanceRequest {
+	s.BindId = &v
+	return s
 }
 
 func (s *ListInstanceRequest) SetChannelType(v string) *ListInstanceRequest {
@@ -145,6 +162,11 @@ func (s *ListInstanceRequest) SetInstanceId(v string) *ListInstanceRequest {
 
 func (s *ListInstanceRequest) SetInstanceName(v string) *ListInstanceRequest {
 	s.InstanceName = &v
+	return s
+}
+
+func (s *ListInstanceRequest) SetIsBind(v bool) *ListInstanceRequest {
+	s.IsBind = &v
 	return s
 }
 

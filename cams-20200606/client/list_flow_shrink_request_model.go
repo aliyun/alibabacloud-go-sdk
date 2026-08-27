@@ -24,15 +24,20 @@ type iListFlowShrinkRequest interface {
 }
 
 type ListFlowShrinkRequest struct {
+	// The SpaceId of the ISV sub-customer.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// cams-sa2ksj21jksd
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The Flow name.
+	//
 	// example:
 	//
-	// 示例值
-	FlowName             *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// flow-21101
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The pagination information.
 	PageShrink           *string `json:"Page,omitempty" xml:"Page,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

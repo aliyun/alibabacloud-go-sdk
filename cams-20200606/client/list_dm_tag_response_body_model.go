@@ -26,27 +26,48 @@ type iListDmTagResponseBody interface {
 }
 
 type ListDmTagResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The response status code.
+	//
+	// - OK indicates that the request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
-	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data object.
 	Data []*ListDmTagResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The error message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// hgfh77-gfh55***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: The operation was successful.
+	//
+	// - false: The operation failed.
+	//
 	// example:
 	//
 	// false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 42
@@ -138,14 +159,20 @@ func (s *ListDmTagResponseBody) Validate() error {
 }
 
 type ListDmTagResponseBodyData struct {
+	// The tag description.
+	//
 	// example:
 	//
 	// xx
 	TagDescription *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
+	// The tag ID.
+	//
 	// example:
 	//
 	// xx
 	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// The tag name.
+	//
 	// example:
 	//
 	// xx

@@ -24,19 +24,25 @@ type iBindMessengerPageRequest interface {
 }
 
 type BindMessengerPageRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// Sample value sample value sample value.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The PageId of the Messenger.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 181916005005216
 	PageId *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// ap-southeast-1

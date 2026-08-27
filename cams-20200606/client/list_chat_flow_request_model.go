@@ -13,6 +13,10 @@ type iListChatFlowRequest interface {
 	GetBizCode() *string
 	SetBizExtend(v map[string]interface{}) *ListChatFlowRequest
 	GetBizExtend() map[string]interface{}
+	SetFlowCode(v string) *ListChatFlowRequest
+	GetFlowCode() *string
+	SetFlowStatus(v string) *ListChatFlowRequest
+	GetFlowStatus() *string
 	SetFlowTriggerType(v string) *ListChatFlowRequest
 	GetFlowTriggerType() *string
 	SetKeyword(v string) *ListChatFlowRequest
@@ -23,6 +27,8 @@ type iListChatFlowRequest interface {
 	GetPageNo() *int64
 	SetPageSize(v int64) *ListChatFlowRequest
 	GetPageSize() *int64
+	SetPhoneNumber(v string) *ListChatFlowRequest
+	GetPhoneNumber() *string
 	SetResourceOwnerAccount(v string) *ListChatFlowRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *ListChatFlowRequest
@@ -31,6 +37,8 @@ type iListChatFlowRequest interface {
 	GetReturnWithOnlineVersion() *bool
 	SetStatus(v string) *ListChatFlowRequest
 	GetStatus() *string
+	SetTitle(v string) *ListChatFlowRequest
+	GetTitle() *string
 }
 
 type ListChatFlowRequest struct {
@@ -46,6 +54,18 @@ type ListChatFlowRequest struct {
 	//
 	// {}
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// flowCode
+	//
+	// example:
+	//
+	// SampleValueSampleValue
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// The flow status.
+	//
+	// example:
+	//
+	// SampleValueSampleValue
+	FlowStatus *string `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
 	// The flow trigger type. Valid values:
 	//
 	// - TriggeredManually
@@ -68,7 +88,10 @@ type ListChatFlowRequest struct {
 	//
 	// LLM
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number.
 	//
 	// example:
@@ -80,9 +103,21 @@ type ListChatFlowRequest struct {
 	// example:
 	//
 	// 20
-	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The phone number.
+	//
+	// example:
+	//
+	// SampleValue
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// example:
+	//
+	// 1
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to return the online status. Valid values:
 	//
 	// - true: Yes.
@@ -99,6 +134,12 @@ type ListChatFlowRequest struct {
 	//
 	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The title.
+	//
+	// example:
+	//
+	// SampleValueSampleValue
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListChatFlowRequest) String() string {
@@ -115,6 +156,14 @@ func (s *ListChatFlowRequest) GetBizCode() *string {
 
 func (s *ListChatFlowRequest) GetBizExtend() map[string]interface{} {
 	return s.BizExtend
+}
+
+func (s *ListChatFlowRequest) GetFlowCode() *string {
+	return s.FlowCode
+}
+
+func (s *ListChatFlowRequest) GetFlowStatus() *string {
+	return s.FlowStatus
 }
 
 func (s *ListChatFlowRequest) GetFlowTriggerType() *string {
@@ -137,6 +186,10 @@ func (s *ListChatFlowRequest) GetPageSize() *int64 {
 	return s.PageSize
 }
 
+func (s *ListChatFlowRequest) GetPhoneNumber() *string {
+	return s.PhoneNumber
+}
+
 func (s *ListChatFlowRequest) GetResourceOwnerAccount() *string {
 	return s.ResourceOwnerAccount
 }
@@ -153,6 +206,10 @@ func (s *ListChatFlowRequest) GetStatus() *string {
 	return s.Status
 }
 
+func (s *ListChatFlowRequest) GetTitle() *string {
+	return s.Title
+}
+
 func (s *ListChatFlowRequest) SetBizCode(v string) *ListChatFlowRequest {
 	s.BizCode = &v
 	return s
@@ -160,6 +217,16 @@ func (s *ListChatFlowRequest) SetBizCode(v string) *ListChatFlowRequest {
 
 func (s *ListChatFlowRequest) SetBizExtend(v map[string]interface{}) *ListChatFlowRequest {
 	s.BizExtend = v
+	return s
+}
+
+func (s *ListChatFlowRequest) SetFlowCode(v string) *ListChatFlowRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *ListChatFlowRequest) SetFlowStatus(v string) *ListChatFlowRequest {
+	s.FlowStatus = &v
 	return s
 }
 
@@ -188,6 +255,11 @@ func (s *ListChatFlowRequest) SetPageSize(v int64) *ListChatFlowRequest {
 	return s
 }
 
+func (s *ListChatFlowRequest) SetPhoneNumber(v string) *ListChatFlowRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
 func (s *ListChatFlowRequest) SetResourceOwnerAccount(v string) *ListChatFlowRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -205,6 +277,11 @@ func (s *ListChatFlowRequest) SetReturnWithOnlineVersion(v bool) *ListChatFlowRe
 
 func (s *ListChatFlowRequest) SetStatus(v string) *ListChatFlowRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListChatFlowRequest) SetTitle(v string) *ListChatFlowRequest {
+	s.Title = &v
 	return s
 }
 

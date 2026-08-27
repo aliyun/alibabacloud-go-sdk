@@ -22,6 +22,11 @@ type iGetFlowResponseBody interface {
 }
 
 type GetFlowResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
@@ -110,29 +115,31 @@ func (s *GetFlowResponseBody) Validate() error {
 type GetFlowResponseBodyData struct {
 	// The list of categories.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// The API version.
+	// The API version information.
 	//
 	// example:
 	//
 	// 3.0
 	DataApiVersion *string `json:"DataApiVersion,omitempty" xml:"DataApiVersion,omitempty"`
+	// The URL of the WA Flow Endpoint
+	//
 	// example:
 	//
 	// http://abc.com
 	EndpointUri *string `json:"EndpointUri,omitempty" xml:"EndpointUri,omitempty"`
-	// The flow ID.
+	// Flow ID。
 	//
 	// example:
 	//
 	// 92675332812643****
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The flow name.
+	// The Flow name.
 	//
 	// example:
 	//
 	// flow_001
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	// The JSON version.
+	// The JSON version information.
 	//
 	// example:
 	//
@@ -150,7 +157,13 @@ type GetFlowResponseBodyData struct {
 	//
 	// 1700617436633
 	PreviewUrlExpires *int64 `json:"PreviewUrlExpires,omitempty" xml:"PreviewUrlExpires,omitempty"`
-	// The status of the flow.
+	// The status of the Flow. Valid values:
+	//
+	// - PUBLISHED: Published.
+	//
+	// - DRAFT: Draft.
+	//
+	// - DEPRECATED: Deprecated.
 	//
 	// example:
 	//

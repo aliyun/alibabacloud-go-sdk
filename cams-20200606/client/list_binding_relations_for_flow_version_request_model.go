@@ -30,9 +30,8 @@ type ListBindingRelationsForFlowVersionRequest struct {
 	//
 	// - MESSENGER
 	//
-	// <props="intl">
 	//
-	// - VIBER
+	// <props="intl">- VIBER
 	//
 	// This parameter is required.
 	//
@@ -40,7 +39,7 @@ type ListBindingRelationsForFlowVersionRequest struct {
 	//
 	// WHATSAPP
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	// The flow code. You can view the flow code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+	// The flow code. View the flow code in the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder) console.
 	//
 	// This parameter is required.
 	//

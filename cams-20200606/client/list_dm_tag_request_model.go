@@ -24,15 +24,21 @@ type iListDmTagRequest interface {
 }
 
 type ListDmTagRequest struct {
+	// The search keyword.
+	//
 	// example:
 	//
 	// a
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int64 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// The number of entries to return on each page.
+	//
 	// example:
 	//
 	// 10

@@ -24,7 +24,7 @@ type iReadChatFlowResponseBody interface {
 }
 
 type ReadChatFlowResponseBody struct {
-	// The detailed reason why the access was denied.
+	// The detailed reason why access was denied.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type ReadChatFlowResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned data.
+	// The response content.
 	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
-	// Indicates whether the operation is successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: The operation is successful.
+	// - true: Successful.
 	//
-	// - false: The operation failed.
+	// - false: Failed.
 	//
 	// example:
 	//

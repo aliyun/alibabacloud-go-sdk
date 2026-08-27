@@ -19,20 +19,22 @@ type iCreateChatappTemplateResponseBody interface {
 	GetMessage() *string
 	SetRequestId(v string) *CreateChatappTemplateResponseBody
 	GetRequestId() *string
+	SetSuccess(v bool) *CreateChatappTemplateResponseBody
+	GetSuccess() *bool
 }
 
 type CreateChatappTemplateResponseBody struct {
-	// The details about the access denial.
+	// The access denied details.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The status code of the request.
+	// The request status code.
 	//
-	// - An \\`OK\\` response indicates that the request was successful.
+	// - OK indicates that the request was successful.
 	//
-	// - For other error codes, see [API error codes](https://www.alibabacloud.com/help/en/cams/latest/api-error-codes).
+	// - For other error codes, see [Error codes](https://www.alibabacloud.com/help/zh/cams/latest/api-error-codes).
 	//
 	// example:
 	//
@@ -56,6 +58,10 @@ type CreateChatappTemplateResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateChatappTemplateResponseBody) String() string {
@@ -86,6 +92,10 @@ func (s *CreateChatappTemplateResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *CreateChatappTemplateResponseBody) GetSuccess() *bool {
+	return s.Success
+}
+
 func (s *CreateChatappTemplateResponseBody) SetAccessDeniedDetail(v string) *CreateChatappTemplateResponseBody {
 	s.AccessDeniedDetail = &v
 	return s
@@ -108,6 +118,11 @@ func (s *CreateChatappTemplateResponseBody) SetMessage(v string) *CreateChatappT
 
 func (s *CreateChatappTemplateResponseBody) SetRequestId(v string) *CreateChatappTemplateResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *CreateChatappTemplateResponseBody) SetSuccess(v bool) *CreateChatappTemplateResponseBody {
+	s.Success = &v
 	return s
 }
 

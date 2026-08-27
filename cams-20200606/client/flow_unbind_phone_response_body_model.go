@@ -24,7 +24,7 @@ type iFlowUnbindPhoneResponseBody interface {
 }
 
 type FlowUnbindPhoneResponseBody struct {
-	// Details about the access denial.
+	// The details about the access denial.
 	//
 	// example:
 	//
@@ -42,9 +42,9 @@ type FlowUnbindPhoneResponseBody struct {
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: The operation is successful.
 	//
 	// - false: The operation failed.
 	//
@@ -53,9 +53,9 @@ type FlowUnbindPhoneResponseBody struct {
 	// true
 	Model     *bool   `json:"Model,omitempty" xml:"Model,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: The operation is successful.
 	//
 	// - false: The operation failed.
 	//

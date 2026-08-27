@@ -19,6 +19,8 @@ type iModifyChatappTemplateResponseBody interface {
 	GetMessage() *string
 	SetRequestId(v string) *ModifyChatappTemplateResponseBody
 	GetRequestId() *string
+	SetSuccess(v bool) *ModifyChatappTemplateResponseBody
+	GetSuccess() *bool
 }
 
 type ModifyChatappTemplateResponseBody struct {
@@ -28,9 +30,9 @@ type ModifyChatappTemplateResponseBody struct {
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The request status code.
+	// The response code.
 	//
-	// - OK indicates the request was successful.
+	// - OK indicates that the request was successful.
 	//
 	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
@@ -52,6 +54,10 @@ type ModifyChatappTemplateResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyChatappTemplateResponseBody) String() string {
@@ -82,6 +88,10 @@ func (s *ModifyChatappTemplateResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *ModifyChatappTemplateResponseBody) GetSuccess() *bool {
+	return s.Success
+}
+
 func (s *ModifyChatappTemplateResponseBody) SetAccessDeniedDetail(v string) *ModifyChatappTemplateResponseBody {
 	s.AccessDeniedDetail = &v
 	return s
@@ -104,6 +114,11 @@ func (s *ModifyChatappTemplateResponseBody) SetMessage(v string) *ModifyChatappT
 
 func (s *ModifyChatappTemplateResponseBody) SetRequestId(v string) *ModifyChatappTemplateResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateResponseBody) SetSuccess(v bool) *ModifyChatappTemplateResponseBody {
+	s.Success = &v
 	return s
 }
 

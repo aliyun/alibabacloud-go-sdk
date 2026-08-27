@@ -30,32 +30,32 @@ type iListFlowVersionRequest interface {
 }
 
 type ListFlowVersionRequest struct {
-	// The business tenant code. The default value is ALICOM_OPAAS.
+	// The business tenant code. Default value: ALICOM_OPAAS.
 	//
 	// example:
 	//
 	// ALICOM_OPAAS
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Business extension information. The default value is an empty collection.
+	// The business extension information. Default value: an empty collection.
 	//
 	// example:
 	//
 	// {}
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
-	// The flow code. Find the flow code in the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+	// The flow code. You can query the flow code on the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
 	//
 	// example:
 	//
 	// 9ccc41**************************
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The number of records per page.
 	//
 	// example:
 	//
@@ -63,15 +63,15 @@ type ListFlowVersionRequest struct {
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The status of the flow version. Valid values:
+	// The flow version status. Valid values:
 	//
-	// - DRAFT: The flow is a draft.
+	// - DRAFT: draft.
 	//
-	// - DELETED: The flow is deleted.
+	// - DELETED: deleted.
 	//
-	// - ONLINE: The flow is published.
+	// - ONLINE: online.
 	//
-	// - OFFLINE: The flow is unpublished.
+	// - OFFLINE: offline.
 	//
 	// example:
 	//

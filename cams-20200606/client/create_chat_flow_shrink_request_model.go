@@ -13,8 +13,14 @@ type iCreateChatFlowShrinkRequest interface {
 	GetBizCode() *string
 	SetBizExtendShrink(v string) *CreateChatFlowShrinkRequest
 	GetBizExtendShrink() *string
+	SetCreateFromFlowCode(v string) *CreateChatFlowShrinkRequest
+	GetCreateFromFlowCode() *string
+	SetCreateFromFlowVersion(v string) *CreateChatFlowShrinkRequest
+	GetCreateFromFlowVersion() *string
 	SetFlowTriggerType(v string) *CreateChatFlowShrinkRequest
 	GetFlowTriggerType() *string
+	SetLifeCycleExtendDataShrink(v string) *CreateChatFlowShrinkRequest
+	GetLifeCycleExtendDataShrink() *string
 	SetOwnerId(v int64) *CreateChatFlowShrinkRequest
 	GetOwnerId() *int64
 	SetRemark(v string) *CreateChatFlowShrinkRequest
@@ -28,21 +34,33 @@ type iCreateChatFlowShrinkRequest interface {
 }
 
 type CreateChatFlowShrinkRequest struct {
-	// The business tenant code. The default value is ALICOM_OPAAS.
+	// The business tenant code. Default value: ALICOM_OPAAS.
 	//
 	// example:
 	//
 	// ALICOM_OPAAS
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Business extension information. The default value is an empty collection.
+	// The business extension information. Default value: an empty collection.
 	//
 	// example:
 	//
 	// {}
 	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
-	// The trigger type for the flow. Valid values:
+	// The source flowCode for creation.
 	//
-	// - TriggeredManually
+	// example:
+	//
+	// 示例值
+	CreateFromFlowCode *string `json:"CreateFromFlowCode,omitempty" xml:"CreateFromFlowCode,omitempty"`
+	// The source flowVersion for creation.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	CreateFromFlowVersion *string `json:"CreateFromFlowVersion,omitempty" xml:"CreateFromFlowVersion,omitempty"`
+	// The flow trigger type. Valid values:
+	//
+	//  - TriggeredManually
 	//
 	// - TriggeredByWhatsApp
 	//
@@ -56,20 +74,22 @@ type CreateChatFlowShrinkRequest struct {
 	//
 	// TriggeredByWhatsApp
 	FlowTriggerType *string `json:"FlowTriggerType,omitempty" xml:"FlowTriggerType,omitempty"`
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The remarks for the flow.
+	// The lifecycle extension input parameters.
+	LifeCycleExtendDataShrink *string `json:"LifeCycleExtendData,omitempty" xml:"LifeCycleExtendData,omitempty"`
+	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The flow remarks.
 	//
 	// example:
 	//
-	// 通过API触发下发验证模板
+	// Send verification template triggered by API
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The title of the flow.
+	// The flow title.
 	//
 	// example:
 	//
-	// WhatsApp自动回复
+	// WhatsApp auto-reply
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -89,8 +109,20 @@ func (s *CreateChatFlowShrinkRequest) GetBizExtendShrink() *string {
 	return s.BizExtendShrink
 }
 
+func (s *CreateChatFlowShrinkRequest) GetCreateFromFlowCode() *string {
+	return s.CreateFromFlowCode
+}
+
+func (s *CreateChatFlowShrinkRequest) GetCreateFromFlowVersion() *string {
+	return s.CreateFromFlowVersion
+}
+
 func (s *CreateChatFlowShrinkRequest) GetFlowTriggerType() *string {
 	return s.FlowTriggerType
+}
+
+func (s *CreateChatFlowShrinkRequest) GetLifeCycleExtendDataShrink() *string {
+	return s.LifeCycleExtendDataShrink
 }
 
 func (s *CreateChatFlowShrinkRequest) GetOwnerId() *int64 {
@@ -123,8 +155,23 @@ func (s *CreateChatFlowShrinkRequest) SetBizExtendShrink(v string) *CreateChatFl
 	return s
 }
 
+func (s *CreateChatFlowShrinkRequest) SetCreateFromFlowCode(v string) *CreateChatFlowShrinkRequest {
+	s.CreateFromFlowCode = &v
+	return s
+}
+
+func (s *CreateChatFlowShrinkRequest) SetCreateFromFlowVersion(v string) *CreateChatFlowShrinkRequest {
+	s.CreateFromFlowVersion = &v
+	return s
+}
+
 func (s *CreateChatFlowShrinkRequest) SetFlowTriggerType(v string) *CreateChatFlowShrinkRequest {
 	s.FlowTriggerType = &v
+	return s
+}
+
+func (s *CreateChatFlowShrinkRequest) SetLifeCycleExtendDataShrink(v string) *CreateChatFlowShrinkRequest {
+	s.LifeCycleExtendDataShrink = &v
 	return s
 }
 

@@ -24,14 +24,20 @@ type iDeletePhoneMessageQrdlRequest interface {
 }
 
 type DeletePhoneMessageQrdlRequest struct {
-	// The space ID of the ISV sub-customer or the instance ID of the direct customer. You can view the Space ID on the <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList) page.
+	// The space ID of the ISV sub-customer or the instance ID of the direct customer. You can view the Space ID on the
+	//
+	// <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList) page.
 	//
 	// example:
 	//
 	// cams-kei****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The phone number. You can view the phone number on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList) > **Management*	- > **WABA Management*	- > **Number Management*	- page.
+	// The phone number. You can view the phone number on the
+	//
+	// <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)
+	//
+	// <props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList)> **Management*	- > **WABA Management*	- > **Number Management*	- page.
 	//
 	// This parameter is required.
 	//
@@ -39,7 +45,7 @@ type DeletePhoneMessageQrdlRequest struct {
 	//
 	// 86158********
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The QR code encoding. This is the QrdlCode returned by the [CreatePhoneMessageQrdl](https://help.aliyun.com/document_detail/2638749.html) operation when you created the message QR code, or the QrdlCode returned by the [UpdatePhoneMessageQrdl](https://help.aliyun.com/document_detail/2638746.html) operation when you updated the QR code.
+	// The QR code identifier. This is the QrdlCode returned by the [CreatePhoneMessageQrdl](https://help.aliyun.com/document_detail/2638749.html) operation when you created the message QR code, or the QrdlCode returned by the [UpdatePhoneMessageQrdl](https://help.aliyun.com/document_detail/2638746.html) operation when you modified the QR code.
 	//
 	// This parameter is required.
 	//

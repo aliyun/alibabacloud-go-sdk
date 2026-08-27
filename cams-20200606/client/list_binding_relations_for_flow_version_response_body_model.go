@@ -24,7 +24,7 @@ type iListBindingRelationsForFlowVersionResponseBody interface {
 }
 
 type ListBindingRelationsForFlowVersionResponseBody struct {
-	// The details about the access denial.
+	// The access denied detail.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type ListBindingRelationsForFlowVersionResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of returned data.
+	// The returned data list.
 	Data []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error message.
 	//
@@ -52,9 +52,9 @@ type ListBindingRelationsForFlowVersionResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: Successful.
 	//
-	// - false: The operation failed.
+	// - false: Failed.
 	//
 	// example:
 	//

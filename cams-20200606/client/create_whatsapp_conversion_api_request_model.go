@@ -24,15 +24,20 @@ type iCreateWhatsappConversionApiRequest interface {
 }
 
 type CreateWhatsappConversionApiRequest struct {
+	// The embedded code.
+	//
 	// example:
 	//
 	// code
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 131
-	InstanceId           *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The list of embedded permissions.
 	Permissions          []*string `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

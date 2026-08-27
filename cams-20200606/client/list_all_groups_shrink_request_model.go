@@ -22,10 +22,17 @@ type iListAllGroupsShrinkRequest interface {
 }
 
 type ListAllGroupsShrinkRequest struct {
+	// The business tenant code. Default value: ALICOM_OPAAS.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
-	BizCode              *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The business extension information. Default value: an empty collection.
+	//
+	// example:
+	//
+	// {}
 	BizExtendShrink      *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

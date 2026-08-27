@@ -22,6 +22,8 @@ type iDeleteMessengerPageRequest interface {
 }
 
 type DeleteMessengerPageRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -29,6 +31,8 @@ type DeleteMessengerPageRequest struct {
 	// e01-in-71cc15xxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The PageId of the Messenger page.
+	//
 	// This parameter is required.
 	//
 	// example:

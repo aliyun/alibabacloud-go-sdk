@@ -13,8 +13,14 @@ type iCreateChatFlowRequest interface {
 	GetBizCode() *string
 	SetBizExtend(v map[string]interface{}) *CreateChatFlowRequest
 	GetBizExtend() map[string]interface{}
+	SetCreateFromFlowCode(v string) *CreateChatFlowRequest
+	GetCreateFromFlowCode() *string
+	SetCreateFromFlowVersion(v string) *CreateChatFlowRequest
+	GetCreateFromFlowVersion() *string
 	SetFlowTriggerType(v string) *CreateChatFlowRequest
 	GetFlowTriggerType() *string
+	SetLifeCycleExtendData(v map[string]*string) *CreateChatFlowRequest
+	GetLifeCycleExtendData() map[string]*string
 	SetOwnerId(v int64) *CreateChatFlowRequest
 	GetOwnerId() *int64
 	SetRemark(v string) *CreateChatFlowRequest
@@ -28,21 +34,33 @@ type iCreateChatFlowRequest interface {
 }
 
 type CreateChatFlowRequest struct {
-	// The business tenant code. The default value is ALICOM_OPAAS.
+	// The business tenant code. Default value: ALICOM_OPAAS.
 	//
 	// example:
 	//
 	// ALICOM_OPAAS
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// Business extension information. The default value is an empty collection.
+	// The business extension information. Default value: an empty collection.
 	//
 	// example:
 	//
 	// {}
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
-	// The trigger type for the flow. Valid values:
+	// The source flowCode for creation.
 	//
-	// - TriggeredManually
+	// example:
+	//
+	// 示例值
+	CreateFromFlowCode *string `json:"CreateFromFlowCode,omitempty" xml:"CreateFromFlowCode,omitempty"`
+	// The source flowVersion for creation.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	CreateFromFlowVersion *string `json:"CreateFromFlowVersion,omitempty" xml:"CreateFromFlowVersion,omitempty"`
+	// The flow trigger type. Valid values:
+	//
+	//  - TriggeredManually
 	//
 	// - TriggeredByWhatsApp
 	//
@@ -56,20 +74,22 @@ type CreateChatFlowRequest struct {
 	//
 	// TriggeredByWhatsApp
 	FlowTriggerType *string `json:"FlowTriggerType,omitempty" xml:"FlowTriggerType,omitempty"`
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The remarks for the flow.
+	// The lifecycle extension input parameters.
+	LifeCycleExtendData map[string]*string `json:"LifeCycleExtendData,omitempty" xml:"LifeCycleExtendData,omitempty"`
+	OwnerId             *int64             `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The flow remarks.
 	//
 	// example:
 	//
-	// 通过API触发下发验证模板
+	// Send verification template triggered by API
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The title of the flow.
+	// The flow title.
 	//
 	// example:
 	//
-	// WhatsApp自动回复
+	// WhatsApp auto-reply
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -89,8 +109,20 @@ func (s *CreateChatFlowRequest) GetBizExtend() map[string]interface{} {
 	return s.BizExtend
 }
 
+func (s *CreateChatFlowRequest) GetCreateFromFlowCode() *string {
+	return s.CreateFromFlowCode
+}
+
+func (s *CreateChatFlowRequest) GetCreateFromFlowVersion() *string {
+	return s.CreateFromFlowVersion
+}
+
 func (s *CreateChatFlowRequest) GetFlowTriggerType() *string {
 	return s.FlowTriggerType
+}
+
+func (s *CreateChatFlowRequest) GetLifeCycleExtendData() map[string]*string {
+	return s.LifeCycleExtendData
 }
 
 func (s *CreateChatFlowRequest) GetOwnerId() *int64 {
@@ -123,8 +155,23 @@ func (s *CreateChatFlowRequest) SetBizExtend(v map[string]interface{}) *CreateCh
 	return s
 }
 
+func (s *CreateChatFlowRequest) SetCreateFromFlowCode(v string) *CreateChatFlowRequest {
+	s.CreateFromFlowCode = &v
+	return s
+}
+
+func (s *CreateChatFlowRequest) SetCreateFromFlowVersion(v string) *CreateChatFlowRequest {
+	s.CreateFromFlowVersion = &v
+	return s
+}
+
 func (s *CreateChatFlowRequest) SetFlowTriggerType(v string) *CreateChatFlowRequest {
 	s.FlowTriggerType = &v
+	return s
+}
+
+func (s *CreateChatFlowRequest) SetLifeCycleExtendData(v map[string]*string) *CreateChatFlowRequest {
+	s.LifeCycleExtendData = v
 	return s
 }
 

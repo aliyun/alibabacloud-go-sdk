@@ -30,23 +30,38 @@ type iDeleteContactsRequest interface {
 }
 
 type DeleteContactsRequest struct {
+	// The business code.
+	//
 	// example:
 	//
-	// 示例值
-	BizCode   *string                `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The business extension information. Default value: an empty collection.
+	//
+	// example:
+	//
+	// {}
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// The contact details.
+	//
 	// example:
 	//
 	// 1507486****
 	ContactDetails *string `json:"ContactDetails,omitempty" xml:"ContactDetails,omitempty"`
+	// The contact name.
+	//
 	// example:
 	//
 	// hahaha
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// The country.
+	//
 	// example:
 	//
 	// China
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The file path.
+	//
 	// example:
 	//
 	// http://****

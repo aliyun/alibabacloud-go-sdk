@@ -22,12 +22,18 @@ type iGetFbInstagramPagesRequest interface {
 }
 
 type GetFbInstagramPagesRequest struct {
+	// The personal access token.
+	//
+	// This field is not required if you use Alibaba Cloud AccessKey pair (AK+SK) or STS temporary authorization.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ftete3254***
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// The instance ID. The unique identifier of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

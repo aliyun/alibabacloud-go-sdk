@@ -30,7 +30,7 @@ type iWhatsappCallShrinkRequest interface {
 }
 
 type WhatsappCallShrinkRequest struct {
-	// The business number.
+	// The business phone number.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type WhatsappCallShrinkRequest struct {
 	//
 	// 86138***
 	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
-	// The action to perform on the call.
+	// The call action.
 	//
 	// This parameter is required.
 	//
@@ -52,9 +52,7 @@ type WhatsappCallShrinkRequest struct {
 	//
 	// wamid-xx**
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	// The Space ID of the ISV sub-customer, or the instance ID of the direct customer. View the Space ID on the
-	//
-	// <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList) page.
+	// The space ID or instance ID of the ISV sub-customer. This is the channel ID, which can be viewed on the <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList) page.
 	//
 	// This parameter is required.
 	//
@@ -67,7 +65,7 @@ type WhatsappCallShrinkRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The call negotiation information.
 	SessionShrink *string `json:"Session,omitempty" xml:"Session,omitempty"`
-	// The user\\"s number.
+	// The user phone number.
 	//
 	// example:
 	//

@@ -30,37 +30,43 @@ type ListChatappTemplateResponseBody struct {
 	//
 	// example:
 	//
-	// 无
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The HTTP status code returned.
+	// The response code.
 	//
-	// - A value of OK indicates that the call is successful.
+	// - A value of OK indicates that the request was successful.
 	//
-	// - Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The message templates.
+	// The list data.
 	ListTemplate []*ListChatappTemplateResponseBodyListTemplate `json:"ListTemplate,omitempty" xml:"ListTemplate,omitempty" type:"Repeated"`
-	// The error message returned.
+	// The error message.
 	//
 	// example:
 	//
 	// User not authorized to operate on the specified resource.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of returned entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -153,83 +159,71 @@ func (s *ListChatappTemplateResponseBody) Validate() error {
 }
 
 type ListChatappTemplateResponseBodyListTemplate struct {
-	// The review state of the template. Valid values:
+	// The review status. Valid values:
 	//
-	// - **pass**: The template is approved.
+	// - **pass**: Approved.
 	//
-	// - **fail**: The template is rejected.
+	// - **fail**: Rejected.
 	//
-	// - **auditing**: The template is being reviewed.
+	// - **auditing**: Under review.
 	//
-	// - **unaudit**: The review is suspended.
+	// - **unaudit**: Review suspended.
 	//
 	// example:
 	//
 	// pass
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	// The category of the WhatsApp message template. Valid values:
+	// The WhatsApp template category. Valid values:
 	//
-	// - **UTILITY**
+	// - **UTILITY**: Transaction-related.
 	//
-	// - **MARKETING**
+	// - **MARKETING**: Marketing template.
 	//
-	// - **AUTHENTICATION**
+	// - **AUTHENTICATION**: Identity verification.
 	//
-	// The category of the Viber template. Valid values:
+	// Viber template category. Valid values:
 	//
-	// - **text**: template that contains only text
+	// - **UTILITY**: Transaction-related.
 	//
-	// - **image**: template that contains only images
+	// - **MARKETING**: Marketing template.
 	//
-	// - **text_image_button**: template that contains text, images, and buttons
-	//
-	// - **text_button**: template that contains text and buttons
-	//
-	// - **document**: template that contains only documents
-	//
-	// - **video**: template that contains only videos
-	//
-	// - **text_video**: template that contains text and videos
-	//
-	// - **text_video_button**: template that contains text, videos, and buttons
-	//
-	// - **text_image**: template that contains text and images
+	// - **AUTHENTICATION**: Identity verification.
 	//
 	// example:
 	//
 	// UTILITY
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+	// The language of the template. For more information about language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
 	//
 	// example:
 	//
 	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The time when the template was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the template was last updated.
 	//
 	// example:
 	//
 	// 1711006633000
 	LastUpdateTime *int64 `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
-	// The reason why the template was rejected.
+	// The reason why the template was rejected during review.
 	//
 	// example:
 	//
 	// None
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The code of the message template.
+	// The code of the template.
 	//
 	// example:
 	//
 	// 744c4b5c79c9432497a075bdfca3****
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	// The name of the message template.
+	// The name of the template.
 	//
 	// example:
 	//
 	// hello_whatsapp
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	// The type of the template. Valid values: WHATSAPP and VIBER.
+	// The templatetype. Valid values: WHATSAPP and VIBER.
 	//
 	// example:
 	//

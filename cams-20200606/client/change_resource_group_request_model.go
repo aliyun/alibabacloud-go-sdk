@@ -18,18 +18,24 @@ type iChangeResourceGroupRequest interface {
 }
 
 type ChangeResourceGroupRequest struct {
+	// The target resource group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// -1
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The resource ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cas-ivauto-hppr74
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// template

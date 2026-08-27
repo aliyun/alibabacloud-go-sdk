@@ -28,7 +28,7 @@ type iListChatGroupParticipantsShrinkRequest interface {
 }
 
 type ListChatGroupParticipantsShrinkRequest struct {
-	// The business number. You can call the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation to obtain the business number.
+	// The business phone number. You can view the business phone number by calling the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -36,17 +36,17 @@ type ListChatGroupParticipantsShrinkRequest struct {
 	//
 	// 8613800***
 	BusinessNumber *string `json:"BusinessNumber,omitempty" xml:"BusinessNumber,omitempty"`
-	// The channel type. Valid value:
+	// The channel type. Valid values:
 	//
 	// - **WHATSAPP**
 	//
-	// > This operation supports only the WhatsApp channel.
+	// > Only the WhatsApp channel type is supported.
 	//
 	// example:
 	//
 	// WHATSAPP
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	// This is the instance ID for direct customers or the SpaceId for ISV sub-customers. You can find the ID on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
+	// The space ID of the ISV sub-customer, which is also the instance ID. This is the channel ID, which can be viewed on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type ListChatGroupParticipantsShrinkRequest struct {
 	//
 	// cams-k***
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The group ID. You can call the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation to obtain the group ID.
+	// The group ID. You can view the group ID by calling the [ListChatGroup](https://help.aliyun.com/document_detail/2932629.html) operation.
 	//
 	// This parameter is required.
 	//
@@ -63,7 +63,7 @@ type ListChatGroupParticipantsShrinkRequest struct {
 	// EA939****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The paging information.
+	// The pagination information.
 	PageShrink           *string `json:"Page,omitempty" xml:"Page,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

@@ -17,6 +17,8 @@ type iFlowBindPhoneShrinkRequest interface {
 	GetFlowCode() *string
 	SetFlowVersion(v string) *FlowBindPhoneShrinkRequest
 	GetFlowVersion() *string
+	SetMultiWabaPhoneNumbersShrink(v string) *FlowBindPhoneShrinkRequest
+	GetMultiWabaPhoneNumbersShrink() *string
 	SetOwnerId(v int64) *FlowBindPhoneShrinkRequest
 	GetOwnerId() *int64
 	SetPhoneNumbersShrink(v string) *FlowBindPhoneShrinkRequest
@@ -30,9 +32,7 @@ type iFlowBindPhoneShrinkRequest interface {
 }
 
 type FlowBindPhoneShrinkRequest struct {
-	// The message channel code. This is the channel ID. View the channel ID on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
-	//
-	// This parameter is required.
+	// The message channel code, which is the channel ID. View the channel ID in the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
 	//
 	// example:
 	//
@@ -46,9 +46,7 @@ type FlowBindPhoneShrinkRequest struct {
 	//
 	// - MESSENGER
 	//
-	// <props="intl">
-	//
-	// - VIBER
+	// <props="intl">- VIBER
 	//
 	// This parameter is required.
 	//
@@ -56,7 +54,7 @@ type FlowBindPhoneShrinkRequest struct {
 	//
 	// WHATSAPP
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	// The flow code. View the flow code on the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
+	// The flow code. View the flow code in the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
 	//
 	// This parameter is required.
 	//
@@ -64,24 +62,24 @@ type FlowBindPhoneShrinkRequest struct {
 	//
 	// 9ccc41**************************
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
-	// The flow version. On the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page, click the flow name to go to the flow editor canvas and view the flow version.
+	// The flow version. Click the flow name in the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder) page to enter the flow builder canvas and view the flow version.
 	//
 	// example:
 	//
 	// 1
 	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// A list of phone numbers, PageIds, AccountIds<props="intl">, or ServiceIds for the channel instance.
+	// The multi-WABA binding configuration.
+	MultiWabaPhoneNumbersShrink *string `json:"MultiWabaPhoneNumbers,omitempty" xml:"MultiWabaPhoneNumbers,omitempty"`
+	OwnerId                     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The list of phone numbers, PageIds, or AccountIds<props="intl">, or ServiceIds under the channel instance.
 	PhoneNumbersShrink   *string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The WABA account ID, PageId, AccountId<props="intl">, or ServiceId.
+	// The WABA account ID, PageId, or AccountId<props="intl">, or ServiceId.
 	//
-	// - If \\`ChannelType\\` is \\`WHATSAPP\\`, pass the WABA account ID. View the WABA account ID on the **WABA Management*	- page by navigating to **Channel Management*	- > **Manage**.
+	// - If the ChannelType parameter is set to WHATSAPP, specify the WABA account ID. View the WABA account ID in [**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement) > **Manage*	- > **WABA Management**.
 	//
-	// - If \\`ChannelType\\` is not \\`WHATSAPP\\`, pass the PageId for \\`MESSENGER\\` or the AccountId for \\`INSTAGRAM\\`<props="intl">. For \\`VIBER\\`, pass the ServiceId.
-	//
-	// This parameter is required.
+	// - If the ChannelType parameter is not set to WHATSAPP, specify the PageId for MESSENGER, the AccountId for INSTAGRAM<props="intl">, or the ServiceId for VIBER.
 	//
 	// example:
 	//
@@ -111,6 +109,10 @@ func (s *FlowBindPhoneShrinkRequest) GetFlowCode() *string {
 
 func (s *FlowBindPhoneShrinkRequest) GetFlowVersion() *string {
 	return s.FlowVersion
+}
+
+func (s *FlowBindPhoneShrinkRequest) GetMultiWabaPhoneNumbersShrink() *string {
+	return s.MultiWabaPhoneNumbersShrink
 }
 
 func (s *FlowBindPhoneShrinkRequest) GetOwnerId() *int64 {
@@ -150,6 +152,11 @@ func (s *FlowBindPhoneShrinkRequest) SetFlowCode(v string) *FlowBindPhoneShrinkR
 
 func (s *FlowBindPhoneShrinkRequest) SetFlowVersion(v string) *FlowBindPhoneShrinkRequest {
 	s.FlowVersion = &v
+	return s
+}
+
+func (s *FlowBindPhoneShrinkRequest) SetMultiWabaPhoneNumbersShrink(v string) *FlowBindPhoneShrinkRequest {
+	s.MultiWabaPhoneNumbersShrink = &v
 	return s
 }
 

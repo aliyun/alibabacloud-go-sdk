@@ -22,6 +22,8 @@ type iGetAuditRequestByTypeUnAuditRequest interface {
 }
 
 type GetAuditRequestByTypeUnAuditRequest struct {
+	// The space ID of the ISV sub-customer or the instance ID of the direct customer. You can view the Space ID on the [China-China interconnection](https://chatapp.console.aliyun.com/CustomerList) page.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -29,6 +31,8 @@ type GetAuditRequestByTypeUnAuditRequest struct {
 	// cams-***
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The request type.
+	//
 	// This parameter is required.
 	//
 	// example:

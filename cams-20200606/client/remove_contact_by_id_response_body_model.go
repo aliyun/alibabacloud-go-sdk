@@ -24,26 +24,46 @@ type iRemoveContactByIdResponseBody interface {
 }
 
 type RemoveContactByIdResponseBody struct {
+	// The details of the access denial.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code.
+	//
+	// - OK indicates that the request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// SampleValueSampleValueSampleValue.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// SampleValueSampleValue.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message. A success message is returned if the request succeeds. A failure reason is returned if the request fails.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// SampleValueSampleValueSampleValue.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// SampleValueSampleValueSampleValue.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// false

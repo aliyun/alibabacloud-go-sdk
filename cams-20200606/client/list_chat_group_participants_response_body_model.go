@@ -34,13 +34,13 @@ type ListChatGroupParticipantsResponseBody struct {
 	//
 	// - OK: The request was successful.
 	//
-	// - For other values, see the [error code list](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response data.
+	// The returned data.
 	Data *ListChatGroupParticipantsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -54,11 +54,11 @@ type ListChatGroupParticipantsResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The call was successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ func (s *ListChatGroupParticipantsResponseBody) Validate() error {
 type ListChatGroupParticipantsResponseBodyData struct {
 	// The list of group members.
 	List []*ListChatGroupParticipantsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The total number of participants.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -188,7 +188,7 @@ func (s *ListChatGroupParticipantsResponseBodyData) Validate() error {
 }
 
 type ListChatGroupParticipantsResponseBodyDataList struct {
-	// The phone number of the group member.
+	// The group member number.
 	//
 	// example:
 	//

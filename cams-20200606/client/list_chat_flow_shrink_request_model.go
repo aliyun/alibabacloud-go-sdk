@@ -13,6 +13,10 @@ type iListChatFlowShrinkRequest interface {
 	GetBizCode() *string
 	SetBizExtendShrink(v string) *ListChatFlowShrinkRequest
 	GetBizExtendShrink() *string
+	SetFlowCode(v string) *ListChatFlowShrinkRequest
+	GetFlowCode() *string
+	SetFlowStatus(v string) *ListChatFlowShrinkRequest
+	GetFlowStatus() *string
 	SetFlowTriggerType(v string) *ListChatFlowShrinkRequest
 	GetFlowTriggerType() *string
 	SetKeyword(v string) *ListChatFlowShrinkRequest
@@ -23,6 +27,8 @@ type iListChatFlowShrinkRequest interface {
 	GetPageNo() *int64
 	SetPageSize(v int64) *ListChatFlowShrinkRequest
 	GetPageSize() *int64
+	SetPhoneNumber(v string) *ListChatFlowShrinkRequest
+	GetPhoneNumber() *string
 	SetResourceOwnerAccount(v string) *ListChatFlowShrinkRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *ListChatFlowShrinkRequest
@@ -31,6 +37,8 @@ type iListChatFlowShrinkRequest interface {
 	GetReturnWithOnlineVersion() *bool
 	SetStatus(v string) *ListChatFlowShrinkRequest
 	GetStatus() *string
+	SetTitle(v string) *ListChatFlowShrinkRequest
+	GetTitle() *string
 }
 
 type ListChatFlowShrinkRequest struct {
@@ -46,6 +54,18 @@ type ListChatFlowShrinkRequest struct {
 	//
 	// {}
 	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// flowCode
+	//
+	// example:
+	//
+	// SampleValueSampleValue
+	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
+	// The flow status.
+	//
+	// example:
+	//
+	// SampleValueSampleValue
+	FlowStatus *string `json:"FlowStatus,omitempty" xml:"FlowStatus,omitempty"`
 	// The flow trigger type. Valid values:
 	//
 	// - TriggeredManually
@@ -68,7 +88,10 @@ type ListChatFlowShrinkRequest struct {
 	//
 	// LLM
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number.
 	//
 	// example:
@@ -80,9 +103,21 @@ type ListChatFlowShrinkRequest struct {
 	// example:
 	//
 	// 20
-	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The phone number.
+	//
+	// example:
+	//
+	// SampleValue
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// example:
+	//
+	// 1
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to return the online status. Valid values:
 	//
 	// - true: Yes.
@@ -99,6 +134,12 @@ type ListChatFlowShrinkRequest struct {
 	//
 	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The title.
+	//
+	// example:
+	//
+	// SampleValueSampleValue
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListChatFlowShrinkRequest) String() string {
@@ -115,6 +156,14 @@ func (s *ListChatFlowShrinkRequest) GetBizCode() *string {
 
 func (s *ListChatFlowShrinkRequest) GetBizExtendShrink() *string {
 	return s.BizExtendShrink
+}
+
+func (s *ListChatFlowShrinkRequest) GetFlowCode() *string {
+	return s.FlowCode
+}
+
+func (s *ListChatFlowShrinkRequest) GetFlowStatus() *string {
+	return s.FlowStatus
 }
 
 func (s *ListChatFlowShrinkRequest) GetFlowTriggerType() *string {
@@ -137,6 +186,10 @@ func (s *ListChatFlowShrinkRequest) GetPageSize() *int64 {
 	return s.PageSize
 }
 
+func (s *ListChatFlowShrinkRequest) GetPhoneNumber() *string {
+	return s.PhoneNumber
+}
+
 func (s *ListChatFlowShrinkRequest) GetResourceOwnerAccount() *string {
 	return s.ResourceOwnerAccount
 }
@@ -153,6 +206,10 @@ func (s *ListChatFlowShrinkRequest) GetStatus() *string {
 	return s.Status
 }
 
+func (s *ListChatFlowShrinkRequest) GetTitle() *string {
+	return s.Title
+}
+
 func (s *ListChatFlowShrinkRequest) SetBizCode(v string) *ListChatFlowShrinkRequest {
 	s.BizCode = &v
 	return s
@@ -160,6 +217,16 @@ func (s *ListChatFlowShrinkRequest) SetBizCode(v string) *ListChatFlowShrinkRequ
 
 func (s *ListChatFlowShrinkRequest) SetBizExtendShrink(v string) *ListChatFlowShrinkRequest {
 	s.BizExtendShrink = &v
+	return s
+}
+
+func (s *ListChatFlowShrinkRequest) SetFlowCode(v string) *ListChatFlowShrinkRequest {
+	s.FlowCode = &v
+	return s
+}
+
+func (s *ListChatFlowShrinkRequest) SetFlowStatus(v string) *ListChatFlowShrinkRequest {
+	s.FlowStatus = &v
 	return s
 }
 
@@ -188,6 +255,11 @@ func (s *ListChatFlowShrinkRequest) SetPageSize(v int64) *ListChatFlowShrinkRequ
 	return s
 }
 
+func (s *ListChatFlowShrinkRequest) SetPhoneNumber(v string) *ListChatFlowShrinkRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
 func (s *ListChatFlowShrinkRequest) SetResourceOwnerAccount(v string) *ListChatFlowShrinkRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -205,6 +277,11 @@ func (s *ListChatFlowShrinkRequest) SetReturnWithOnlineVersion(v bool) *ListChat
 
 func (s *ListChatFlowShrinkRequest) SetStatus(v string) *ListChatFlowShrinkRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListChatFlowShrinkRequest) SetTitle(v string) *ListChatFlowShrinkRequest {
+	s.Title = &v
 	return s
 }
 

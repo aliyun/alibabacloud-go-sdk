@@ -24,26 +24,46 @@ type iGetDownloadExcelListResponseBody interface {
 }
 
 type GetDownloadExcelListResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code. Valid values:
+	//
+	// - OK: The request was successful.
+	//
+	// - For other error codes, see [API error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data object.
+	//
 	// example:
 	//
 	// {}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The result message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 39***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true

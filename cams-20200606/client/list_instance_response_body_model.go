@@ -26,23 +26,23 @@ type iListInstanceResponseBody interface {
 }
 
 type ListInstanceResponseBody struct {
-	// The details of the access denial.
+	// The details about the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The request status code.
+	// The response code.
 	//
-	// - `OK` indicates that the request was successful.
+	// - OK indicates that the request was successful.
 	//
-	// - For other error codes, see the [Error Code List](https://help.aliyun.com/document_detail/196974.html).
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// An array of objects, each representing an instance.
+	// The returned data.
 	Data []*ListInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The response message.
 	//
@@ -56,9 +56,9 @@ type ListInstanceResponseBody struct {
 	//
 	// 2993*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call succeeded.
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: The call succeeded.
+	// - **true**: The call was successful.
 	//
 	// - **false**: The call failed.
 	//
@@ -66,7 +66,7 @@ type ListInstanceResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries that match the specified criteria.
+	// The total number of records that meet the conditions.
 	//
 	// example:
 	//
@@ -183,7 +183,7 @@ type ListInstanceResponseBodyData struct {
 	//
 	// dad-gf**
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The ID of the associated Facebook Business Manager account.
+	// The bound Facebook ID.
 	//
 	// example:
 	//
@@ -207,13 +207,13 @@ type ListInstanceResponseBodyData struct {
 	//
 	// viber_ins
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The ISV terms.
+	// The ISV/Client agreement file name.
 	//
 	// example:
 	//
 	// aa
 	IsvTerms *string `json:"IsvTerms,omitempty" xml:"IsvTerms,omitempty"`
-	// The office address.
+	// The enterprise address.
 	//
 	// example:
 	//
@@ -225,19 +225,19 @@ type ListInstanceResponseBodyData struct {
 	//
 	// 12
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the region where the resource is located.
+	// The region to which the resource belongs.
 	//
 	// example:
 	//
 	// 11
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
-	// The state of the instance.
+	// The status.
 	//
 	// example:
 	//
 	// published
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The time when the instance was submitted.
+	// The submit time.
 	//
 	// example:
 	//

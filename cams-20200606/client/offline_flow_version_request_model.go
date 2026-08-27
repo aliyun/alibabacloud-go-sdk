@@ -34,30 +34,30 @@ type OfflineFlowVersionRequest struct {
 	//
 	// ALICOM_OPAAS
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// The business extension information. The default value is an empty collection.
+	// The business extension information. Default value: an empty collection.
 	//
 	// example:
 	//
 	// {}
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
-	// The code of the flow. View the code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+	// The flow code. View it in the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
 	//
 	// example:
 	//
 	// 9ccc41**************************
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
-	// The version of the flow. View the version on the orchestration canvas in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+	// The flow version. Click the flow name in the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) to enter the flow editor canvas page and view the flow version.
 	//
 	// example:
 	//
 	// 1
 	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The remarks for the flow. View the remarks in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+	// The flow remark. View it in the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
 	//
 	// example:
 	//
-	// 不再需要此版本
+	// No longer need this version.
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

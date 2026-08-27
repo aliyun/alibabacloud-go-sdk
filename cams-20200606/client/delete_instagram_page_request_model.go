@@ -22,13 +22,17 @@ type iDeleteInstagramPageRequest interface {
 }
 
 type DeleteInstagramPageRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// Sample value.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The PageId of the Messenger page.
+	//
 	// This parameter is required.
 	//
 	// example:

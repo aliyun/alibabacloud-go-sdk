@@ -24,7 +24,7 @@ type iListChatFlowTemplateResponseBody interface {
 }
 
 type ListChatFlowTemplateResponseBody struct {
-	// Details about the access denial.
+	// The details about the access denial.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type ListChatFlowTemplateResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: Successful.
 	//
-	// - false: The operation failed.
+	// - false: Failed.
 	//
 	// example:
 	//

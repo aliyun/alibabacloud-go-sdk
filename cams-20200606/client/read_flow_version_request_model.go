@@ -13,6 +13,8 @@ type iReadFlowVersionRequest interface {
 	GetBizCode() *string
 	SetBizExtend(v map[string]interface{}) *ReadFlowVersionRequest
 	GetBizExtend() map[string]interface{}
+	SetDraftVersion(v string) *ReadFlowVersionRequest
+	GetDraftVersion() *string
 	SetFlowCode(v string) *ReadFlowVersionRequest
 	GetFlowCode() *string
 	SetFlowVersion(v string) *ReadFlowVersionRequest
@@ -40,6 +42,12 @@ type ReadFlowVersionRequest struct {
 	//
 	// {}
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// The draft version.
+	//
+	// example:
+	//
+	// Sample valueSample value
+	DraftVersion *string `json:"DraftVersion,omitempty" xml:"DraftVersion,omitempty"`
 	// The flow code. You can view the flow code on the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
 	//
 	// example:
@@ -87,6 +95,10 @@ func (s *ReadFlowVersionRequest) GetBizExtend() map[string]interface{} {
 	return s.BizExtend
 }
 
+func (s *ReadFlowVersionRequest) GetDraftVersion() *string {
+	return s.DraftVersion
+}
+
 func (s *ReadFlowVersionRequest) GetFlowCode() *string {
 	return s.FlowCode
 }
@@ -118,6 +130,11 @@ func (s *ReadFlowVersionRequest) SetBizCode(v string) *ReadFlowVersionRequest {
 
 func (s *ReadFlowVersionRequest) SetBizExtend(v map[string]interface{}) *ReadFlowVersionRequest {
 	s.BizExtend = v
+	return s
+}
+
+func (s *ReadFlowVersionRequest) SetDraftVersion(v string) *ReadFlowVersionRequest {
+	s.DraftVersion = &v
 	return s
 }
 

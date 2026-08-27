@@ -23,8 +23,12 @@ type iListFlowResponseBody interface {
 
 type ListFlowResponseBody struct {
 	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// A value of OK indicates that the request was successful.
+	// The result. OK indicates success.
 	//
 	// example:
 	//
@@ -36,7 +40,7 @@ type ListFlowResponseBody struct {
 	//
 	// example:
 	//
-	// 无
+	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -115,13 +119,13 @@ func (s *ListFlowResponseBody) Validate() error {
 type ListFlowResponseBodyData struct {
 	// The categories.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// The flow ID.
+	// Flow ID。
 	//
 	// example:
 	//
 	// 92675332812643****
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// The name of the flow.
+	// The Flow name.
 	//
 	// example:
 	//

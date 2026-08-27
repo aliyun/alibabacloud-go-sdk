@@ -38,7 +38,7 @@ type CreatePhoneMessageQrdlRequest struct {
 	//
 	// cams-kei****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The type of the generated image. Valid values:
+	// The type of image to generate. Valid values:
 	//
 	// - PNG
 	//
@@ -51,11 +51,11 @@ type CreatePhoneMessageQrdlRequest struct {
 	// PNG
 	GenerateQrImage *string `json:"GenerateQrImage,omitempty" xml:"GenerateQrImage,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The phone number. You can view the phone number on the
+	// The phone number. You can view it on the
 	//
 	// <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)
 	//
-	// <props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList)> **Manage*	- > **WABA Management*	- > **Number Management*	- page.
+	// <props="intl">[Channel Management](https://chatapp.console.alibabacloud.com/CustomerList)>**Manage**>**WABA Management**>**Number Management*	- page.
 	//
 	// This parameter is required.
 	//

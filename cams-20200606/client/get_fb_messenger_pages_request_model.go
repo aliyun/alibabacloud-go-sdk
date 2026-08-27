@@ -22,12 +22,16 @@ type iGetFbMessengerPagesRequest interface {
 }
 
 type GetFbMessengerPagesRequest struct {
+	// The token of the Meta public page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// EARDGFDGF12****
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

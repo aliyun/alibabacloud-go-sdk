@@ -28,21 +28,34 @@ type iMoveContactToGroupShrinkRequest interface {
 }
 
 type MoveContactToGroupShrinkRequest struct {
+	// The business tenant code. Default value: ALICOM_OPAAS.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
-	BizCode         *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// ALICOM_OPAAS
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The business extension information. Default value: an empty collection.
+	//
+	// example:
+	//
+	// {}
 	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// The list of contacts whose group associations are to be modified.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// [{"id":1}]
 	Contacts *string `json:"Contacts,omitempty" xml:"Contacts,omitempty"`
+	// The list of existing group IDs to associate with.
+	//
 	// example:
 	//
 	// [{"id":1}]
 	LinkExistGroups *string `json:"LinkExistGroups,omitempty" xml:"LinkExistGroups,omitempty"`
+	// The list of new group names to associate with.
+	//
 	// example:
 	//
 	// [{"groupName":"aaa"}]

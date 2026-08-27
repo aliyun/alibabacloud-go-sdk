@@ -677,7 +677,7 @@ func (client *Client) AddGroupWithContext(ctx context.Context, tmpReq *AddGroupR
 
 // Summary:
 //
-// 新增营销活动
+// Creates a campaign.
 //
 // @param tmpReq - AddMarketingFlowRequest
 //
@@ -987,7 +987,7 @@ func (client *Client) BindInstagramPageWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 绑定选择的pageId
+// Binds the selected pageId.
 //
 // @param request - BindMessengerPageRequest
 //
@@ -1051,7 +1051,7 @@ func (client *Client) BindMessengerPageWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 资源转组
+// Moves a resource to a different resource group.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -1689,9 +1689,9 @@ func (client *Client) CopyTemplateWithContext(ctx context.Context, request *Copy
 //
 // Description:
 //
-// - This API operation creates a flow. You can also create a flow manually in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) interface.
+// - You can create a flow by calling this operation or manually in the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
 //
-// - After you create a flow, you can orchestrate the canvas. For more information, see [Flow Editor components](https://help.aliyun.com/document_detail/2836818.html).
+// - After creating a flow, refer to [Flow editor component description](https://help.aliyun.com/document_detail/2836818.html) to orchestrate the canvas.
 //
 // @param tmpReq - CreateChatFlowRequest
 //
@@ -1711,6 +1711,10 @@ func (client *Client) CreateChatFlowWithContext(ctx context.Context, tmpReq *Cre
 		request.BizExtendShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizExtend, dara.String("BizExtend"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.LifeCycleExtendData) {
+		request.LifeCycleExtendDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LifeCycleExtendData, dara.String("LifeCycleExtendData"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BizCode) {
 		query["BizCode"] = request.BizCode
@@ -1720,8 +1724,20 @@ func (client *Client) CreateChatFlowWithContext(ctx context.Context, tmpReq *Cre
 		query["BizExtend"] = request.BizExtendShrink
 	}
 
+	if !dara.IsNil(request.CreateFromFlowCode) {
+		query["CreateFromFlowCode"] = request.CreateFromFlowCode
+	}
+
+	if !dara.IsNil(request.CreateFromFlowVersion) {
+		query["CreateFromFlowVersion"] = request.CreateFromFlowVersion
+	}
+
 	if !dara.IsNil(request.FlowTriggerType) {
 		query["FlowTriggerType"] = request.FlowTriggerType
+	}
+
+	if !dara.IsNil(request.LifeCycleExtendDataShrink) {
+		query["LifeCycleExtendData"] = request.LifeCycleExtendDataShrink
 	}
 
 	if !dara.IsNil(request.OwnerId) {
@@ -1773,11 +1789,11 @@ func (client *Client) CreateChatFlowWithContext(ctx context.Context, tmpReq *Cre
 //
 // Description:
 //
-// - You can call this operation to create and import a flow. You can also create and import a flow manually in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+// - You can call this operation to create and import a flow, or manually create and import a flow in the [flow orchestration](https://chatapp.console.aliyun.com/ChatFlowBuilder) console.
 //
-// - Before you call this operation, ensure that you have exported the Domain-Specific Language (DSL) data for the flow.
+// - Before calling this operation, make sure you have exported flow DSL data.
 //
-// - If you do not have the exported DSL data for a flow, go to the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder). Click a flow name to open the canvas. Arrange the components on the canvas, save the flow, and then export it as a JSON data file.
+// - If you do not have exported flow DSL data, go to the [flow orchestration](https://chatapp.console.aliyun.com/ChatFlowBuilder) console, click a flow name to open the canvas orchestration page, arrange canvas components, save the flow, and export it as a JSON data file.
 //
 // @param tmpReq - CreateChatFlowByImportRequest
 //
@@ -1855,17 +1871,17 @@ func (client *Client) CreateChatFlowByImportWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Creates log settings for a flow.
+// Creates a flow log setting.
 //
 // Description:
 //
-// - To update the log settings for a flow using the API, you must first create the log settings. After the settings are created, call the [ReadChatFlowLogSetting](https://help.aliyun.com/document_detail/2937212.html) operation to view the log settings. Then, call the [UpdateChatFlowLogSetting](https://help.aliyun.com/document_detail/2937210.html) operation to update the settings.
+// - To update a flow log setting by using an API, you must first create a flow log setting. After the setting is created, you can call the [ReadChatFlowLogSetting](https://help.aliyun.com/document_detail/2937212.html) operation to view the flow log setting information, and then call the [UpdateChatFlowLogSetting](https://help.aliyun.com/document_detail/2937210.html) operation to update the flow log setting.
 //
-// - If you do not need to update the log settings using the API, you can manually update the log settings on the Log page. In the [**Flow Editor**](https://chatapp.console.aliyun.com/ChatFlowBuilder), choose **Settings*	- > **Log**.
+// - If you do not need to update the flow log setting by using an API, you can manually update the flow log information in the [**Flow Editor**](https://chatapp.console.aliyun.com/ChatFlowBuilder) > **Settings*	- > **Log*	- page.
 //
-// - Before you call this operation, make sure that you have successfully created a flow.
+// - Before calling this operation, make sure that you have a successfully created flow.
 //
-// - If you do not have a successfully created flow, you can create one manually in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) or by calling the [CreateChatFlow](https://help.aliyun.com/document_detail/2937204.html) operation.
+// - If you do not have a successfully created flow, you can manually create a flow in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page or call the [CreateChatFlow](https://help.aliyun.com/document_detail/2937204.html) operation to create a flow.
 //
 // @param request - CreateChatFlowLogSettingRequest
 //
@@ -1989,17 +2005,17 @@ func (client *Client) CreateChatappMigrationInitiateWithContext(ctx context.Cont
 
 // Summary:
 //
-// Creates a message template. After a template is approved, you can use it to send messages.
+// Creates a message template. After the template is approved, you can use it to send messages.
 //
 // Description:
 //
 // ### QPS limit
 //
-// The queries per second (QPS) limit for this API operation is 50 for a single user. If you exceed the limit, API calls are rate-limited, which may affect your business. We recommend that you call this operation at a reasonable frequency.
+// The single-user QPS limit for this operation is 50 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation as needed.
 //
-// ### Status change
+// ### Status changes
 //
-// You can monitor template status and quality changes using Message Service (MNS) or HTTP. For more information, see [Message receipts](https://help.aliyun.com/document_detail/421545.html).
+// You can monitor template status and quality changes through MNS or HTTP. For more information, see [Receipt messages](https://help.aliyun.com/document_detail/421545.html).
 //
 // @param tmpReq - CreateChatappTemplateRequest
 //
@@ -2023,57 +2039,61 @@ func (client *Client) CreateChatappTemplateWithContext(ctx context.Context, tmpR
 		request.ExampleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Example, dara.String("Example"), dara.String("json"))
 	}
 
-	body := map[string]interface{}{}
+	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllowCategoryChange) {
-		body["AllowCategoryChange"] = request.AllowCategoryChange
+		query["AllowCategoryChange"] = request.AllowCategoryChange
 	}
 
 	if !dara.IsNil(request.Category) {
-		body["Category"] = request.Category
+		query["Category"] = request.Category
 	}
 
 	if !dara.IsNil(request.CategoryChangePaused) {
-		body["CategoryChangePaused"] = request.CategoryChangePaused
+		query["CategoryChangePaused"] = request.CategoryChangePaused
 	}
 
 	if !dara.IsNil(request.ComponentsShrink) {
-		body["Components"] = request.ComponentsShrink
+		query["Components"] = request.ComponentsShrink
 	}
 
 	if !dara.IsNil(request.CustSpaceId) {
-		body["CustSpaceId"] = request.CustSpaceId
+		query["CustSpaceId"] = request.CustSpaceId
 	}
 
 	if !dara.IsNil(request.CustWabaId) {
-		body["CustWabaId"] = request.CustWabaId
+		query["CustWabaId"] = request.CustWabaId
 	}
 
 	if !dara.IsNil(request.ExampleShrink) {
-		body["Example"] = request.ExampleShrink
+		query["Example"] = request.ExampleShrink
 	}
 
 	if !dara.IsNil(request.IsvCode) {
-		body["IsvCode"] = request.IsvCode
+		query["IsvCode"] = request.IsvCode
 	}
 
 	if !dara.IsNil(request.Language) {
-		body["Language"] = request.Language
+		query["Language"] = request.Language
 	}
 
 	if !dara.IsNil(request.MessageSendTtlSeconds) {
-		body["MessageSendTtlSeconds"] = request.MessageSendTtlSeconds
+		query["MessageSendTtlSeconds"] = request.MessageSendTtlSeconds
 	}
 
 	if !dara.IsNil(request.Name) {
-		body["Name"] = request.Name
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.ProductSetId) {
+		query["ProductSetId"] = request.ProductSetId
 	}
 
 	if !dara.IsNil(request.TemplateType) {
-		body["TemplateType"] = request.TemplateType
+		query["TemplateType"] = request.TemplateType
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateChatappTemplate"),
@@ -2255,15 +2275,15 @@ func (client *Client) CreateFlowWithContext(ctx context.Context, tmpReq *CreateF
 
 // Summary:
 //
-// Creates a new version of a flow by copying an existing version.
+// Creates a new flow version by copying an existing flow version.
 //
 // Description:
 //
-// - You can call this operation to create a new flow version. You can also manually copy a flow version from the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder). To do this, click a flow name to open the orchestration canvas and then copy the version.
+// - You can call this operation to create a new flow version, or click a flow name on the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page to enter the canvas orchestration page and manually copy a new flow version.
 //
-// - Before you call this operation, make sure that you have created a flow.
+// - Before calling this operation, make sure that you have a successfully created flow.
 //
-// - If you have not created a flow, you can create one manually in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) or by calling the [CreateChatFlow](https://help.aliyun.com/document_detail/2937204.html) operation.
+// - If you do not have a successfully created flow, you can manually create a flow on the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page or create a flow by calling the [CreateChatFlow](https://help.aliyun.com/document_detail/2937204.html) operation.
 //
 // @param tmpReq - CreateFlowVersionRequest
 //
@@ -2497,7 +2517,7 @@ func (client *Client) CreateMessageCampaignWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 嵌入式授权messenger
+// Authorizes an embedded messenger.
 //
 // @param tmpReq - CreateMessengerPageRequest
 //
@@ -2583,7 +2603,7 @@ func (client *Client) CreateMessengerPageWithContext(ctx context.Context, tmpReq
 //
 // - Before calling this operation, make sure that you have a successfully created WhatsApp message channel.
 //
-// - If you do not have a successfully created WhatsApp message channel, manually create one on the
+// - If you do not have a successfully created WhatsApp message channel, you can manually create one on the
 //
 // <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)
 //
@@ -2593,7 +2613,7 @@ func (client *Client) CreateMessengerPageWithContext(ctx context.Context, tmpReq
 //
 // #### QPS limit
 //
-// The single-user QPS limit for this operation is 5 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
+// The single-user QPS limit for this operation is 5 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - CreatePhoneMessageQrdlRequest
 //
@@ -2661,7 +2681,7 @@ func (client *Client) CreatePhoneMessageQrdlWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 根据嵌入式code获取pageId入库
+// Retrieves and stores the pageId based on the embedded code.
 //
 // @param tmpReq - CreateWhatsappConversionApiRequest
 //
@@ -2735,11 +2755,11 @@ func (client *Client) CreateWhatsappConversionApiWithContext(ctx context.Context
 //
 // Description:
 //
-// - You can call this operation to delete a flow. You can also manually delete a flow in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+// - You can call this operation to delete a flow, or manually delete a flow in the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
 //
-// - Before you delete a flow, make sure its status is Unpublished.
+// - Before deleting a flow, make sure the flow status is offline.
 //
-// - Deleted flows cannot be recovered. Proceed with caution.
+// - A deleted flow cannot be recovered. Proceed with caution.
 //
 // @param tmpReq - DeleteChatFlowRequest
 //
@@ -3141,7 +3161,7 @@ func (client *Client) DeleteChatappTemplateWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 编辑联系人-删除联系人
+// Deletes a contact from the contact list.
 //
 // @param tmpReq - DeleteContactsRequest
 //
@@ -3427,7 +3447,7 @@ func (client *Client) DeleteFlowVersionWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 删除群组
+// Deletes a group.
 //
 // @param request - DeleteGroupByIdRequest
 //
@@ -3483,7 +3503,7 @@ func (client *Client) DeleteGroupByIdWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 删除ins的page
+// Deletes a page from an Instagram instance.
 //
 // @param request - DeleteInstagramPageRequest
 //
@@ -3715,7 +3735,7 @@ func (client *Client) DeleteMessageCampaignWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 删除messenger的page
+// Deletes a Messenger page.
 //
 // @param request - DeleteMessengerPageRequest
 //
@@ -3899,11 +3919,11 @@ func (client *Client) DeleteWhatsappUserNameWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deprecates a WhatsApp flow.
+// Deprecates a Flow.
 //
 // Description:
 //
-// This operation allows a maximum of 5 requests per second per account. Excess requests are throttled and may result in service interruptions.
+// The China Message Service API has a single-user QPS limit of 5 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation at a reasonable frequency.
 //
 // @param request - DeprecateFlowRequest
 //
@@ -4035,23 +4055,21 @@ func (client *Client) EnableWhatsappROIMetricWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Attaches a phone number or a business account ID to a flow.
+// Binds a phone number or merchant account ID to a flow.
 //
 // Description:
 //
-// - Call this API operation to attach a phone number or a business account ID to a flow. You can also manually attach them on the **Settings*	- page in the [**Flow Editor**](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+// - You can call this operation to bind a phone number or merchant account ID to a flow, or manually bind them in the [**Flow Builder**](https://chatapp.console.aliyun.com/ChatFlowBuilder) > **Settings*	- page.
 //
-// - Before you call this API operation, make sure that you have created a flow and a message channel of the corresponding type.
+// - Before calling this operation, make sure that you have a successfully created flow and a successfully created message channel that corresponds to the flow type.
 //
-// - For a WhatsApp channel, you must have completed [WhatsApp Business Account (WABA) registration and binding](https://help.aliyun.com/document_detail/172335.html) and [added a phone number](https://help.aliyun.com/document_detail/2656131.html).
+// - For the WhatsApp channel type, complete [WABA registration and bindng](https://help.aliyun.com/document_detail/172335.html) and [add a phone number](https://help.aliyun.com/document_detail/2656131.html).
 //
-// - For a Messenger channel, you must have [connected a public homepage account](https://help.aliyun.com/document_detail/2837713.html).
+// - For the Messenger channel type, complete [connecting a public page account](https://help.aliyun.com/document_detail/2837713.html).
 //
-// - For an Instagram channel, you must have [connected a professional account](https://help.aliyun.com/document_detail/2837720.html).
+// - For the Instagram channel type, complete [connecting a professional account](https://help.aliyun.com/document_detail/2837720.html).
 //
-// <props="intl">
-//
-// - For a Viber channel, you must have [requested a service number](https://help.aliyun.com/document_detail/2807995.html).
+// <props="intl">- For the Viber channel type, complete [applying for a service ID](https://help.aliyun.com/document_detail/2807995.html).
 //
 // @param tmpReq - FlowBindPhoneRequest
 //
@@ -4067,6 +4085,10 @@ func (client *Client) FlowBindPhoneWithContext(ctx context.Context, tmpReq *Flow
 	}
 	request := &FlowBindPhoneShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.MultiWabaPhoneNumbers) {
+		request.MultiWabaPhoneNumbersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MultiWabaPhoneNumbers, dara.String("MultiWabaPhoneNumbers"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.PhoneNumbers) {
 		request.PhoneNumbersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PhoneNumbers, dara.String("PhoneNumbers"), dara.String("json"))
 	}
@@ -4086,6 +4108,10 @@ func (client *Client) FlowBindPhoneWithContext(ctx context.Context, tmpReq *Flow
 
 	if !dara.IsNil(request.FlowVersion) {
 		query["FlowVersion"] = request.FlowVersion
+	}
+
+	if !dara.IsNil(request.MultiWabaPhoneNumbersShrink) {
+		query["MultiWabaPhoneNumbers"] = request.MultiWabaPhoneNumbersShrink
 	}
 
 	if !dara.IsNil(request.OwnerId) {
@@ -4137,7 +4163,7 @@ func (client *Client) FlowBindPhoneWithContext(ctx context.Context, tmpReq *Flow
 //
 // Description:
 //
-// - You can call this operation to rebind a phone number or merchant account ID to a flow that already has a binding. You can also manually rebind on the [**Flow Builder**](https://chatapp.console.aliyun.com/ChatFlowBuilder) > **Settings*	- page.
+// - Call this operation to rebind a phone number or merchant account ID to a flow that already has a binding. You can also manually rebind in [**Flow Builder**](https://chatapp.console.aliyun.com/ChatFlowBuilder) > **Settings**.
 //
 // - Before calling this operation, make sure that your flow already has a phone number or merchant account ID bound to it.
 //
@@ -4157,6 +4183,10 @@ func (client *Client) FlowRebindPhoneWithContext(ctx context.Context, tmpReq *Fl
 	}
 	request := &FlowRebindPhoneShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.MultiWabaPhoneNumbers) {
+		request.MultiWabaPhoneNumbersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MultiWabaPhoneNumbers, dara.String("MultiWabaPhoneNumbers"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.PhoneNumbers) {
 		request.PhoneNumbersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PhoneNumbers, dara.String("PhoneNumbers"), dara.String("json"))
 	}
@@ -4176,6 +4206,10 @@ func (client *Client) FlowRebindPhoneWithContext(ctx context.Context, tmpReq *Fl
 
 	if !dara.IsNil(request.FlowVersion) {
 		query["FlowVersion"] = request.FlowVersion
+	}
+
+	if !dara.IsNil(request.MultiWabaPhoneNumbersShrink) {
+		query["MultiWabaPhoneNumbers"] = request.MultiWabaPhoneNumbersShrink
 	}
 
 	if !dara.IsNil(request.OwnerId) {
@@ -4223,19 +4257,19 @@ func (client *Client) FlowRebindPhoneWithContext(ctx context.Context, tmpReq *Fl
 
 // Summary:
 //
-// Unbinds a phone number or business account ID from a flow.
+// Dissociates a phone number or merchant account ID from a flow.
 //
 // Description:
 //
-// - Before you call this operation, ensure that the flow is unpublished. If the flow is published, you can unpublish it manually in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) by clicking the flow name to open the orchestration canvas. Alternatively, you can call the [OfflineFlowVersion](https://help.aliyun.com/document_detail/2937198.html) operation to unpublish the flow.
+// - Before calling this operation, make sure your flow is in the offline state. If your flow is in the online state, go to the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder) page, click the flow name to enter the canvas orchestration page, and manually take it offline, or call the [OfflineFlowVersion](https://help.aliyun.com/document_detail/2937198.html) operation to take the flow offline.
 //
-// - You can call this operation to unbind a phone number or business account ID from a flow. You can also perform this action manually on the **Settings*	- page in the [**Flow Editor**](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+// - You can call this operation to dissociate a phone number or merchant account ID from a flow, or manually dissociate them on the [**Flow Builder**](https://chatapp.console.aliyun.com/ChatFlowBuilder) > **Settings*	- page.
 //
-// - Before you call this operation, ensure that a phone number or business account ID is bound to the flow.
+// - Before calling this operation, make sure your successfully created flow has a phone number or merchant account ID associated with it.
 //
-// - If no phone number or business account ID is bound to the flow, you can bind one manually on the **Settings*	- page in the [**Flow Editor**](https://chatapp.console.aliyun.com/ChatFlowBuilder) or call the [FlowBindPhone](https://help.aliyun.com/document_detail/2937190.html) operation.
+// - If you have not associated a phone number or merchant account ID, you can manually associate one on the [**Flow Builder**](https://chatapp.console.aliyun.com/ChatFlowBuilder) > **Settings*	- page, or call the [FlowBindPhone](https://help.aliyun.com/document_detail/2937190.html) operation to associate one.
 //
-// - After a phone number or business account ID is unbound from a flow, the flow cannot be published. You must bind a new phone number or business account ID to the flow before you can publish it.
+// - After dissociating a phone number or merchant account ID from a flow, the flow cannot be published. You must re-associate a phone number or merchant account ID before the flow can be published.
 //
 // @param tmpReq - FlowUnbindPhoneRequest
 //
@@ -4365,7 +4399,7 @@ func (client *Client) GeneratePresignedUrlWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 通过类型查询出个人待审核的单子
+// Queries pending review tickets for an individual by type.
 //
 // @param request - GetAuditRequestByTypeUnAuditRequest
 //
@@ -4483,11 +4517,11 @@ func (client *Client) GetAutoGeneratedTemplateWithContext(ctx context.Context, r
 //
 // - Before calling this operation, make sure that the flow you created is online and has been triggered.
 //
-// - If your flow is not online, go to the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page, click the flow name to open the canvas, and manually bring the flow online. Alternatively, call the [OnlineFlowVersion](https://help.aliyun.com/document_detail/2937203.html) operation to bring the flow online.
+// - If your flow is not online, go to the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page, click the flow name to enter the canvas orchestration page, and manually bring the flow online. Alternatively, call the [OnlineFlowVersion](https://help.aliyun.com/document_detail/2937203.html) operation to bring the flow online.
 //
-// - For flows with a manual trigger type, call the [TriggerChatFlow](https://help.aliyun.com/document_detail/2859101.html) operation to trigger the flow, or go to the [Marketing Activity Management](https://chatapp.console.aliyun.com/MarketingActivityManagement) page and trigger the flow by associating it with a campaign.
+// - For flows with a manual trigger type, call the [TriggerChatFlow](https://help.aliyun.com/document_detail/2859101.html) operation to trigger the flow, or go to the [Marketing Activity Management](https://chatapp.console.aliyun.com/MarketingActivityManagement) page and trigger the flow by associating it with a marketing activity.
 //
-// - For flows with a non-manual trigger type, you do not need to manually trigger the flow. The flow is automatically triggered when a message is sent to the bound business account.
+// - For flows with a non-manual trigger type, you do not need to manually trigger the flow. The flow is triggered when a message is sent to the business account bound to the flow.
 //
 // @param tmpReq - GetChatFlowMetricRequest
 //
@@ -4585,9 +4619,9 @@ func (client *Client) GetChatFlowMetricWithContext(ctx context.Context, tmpReq *
 //
 // Description:
 //
-// - You can call this operation to query the details of a flow template. You can also go to the [**Flow Editor**](https://chatapp.console.aliyun.com/ChatFlowBuilder) > **View Templates*	- page and click a template name to view its details.
+// - You can call this operation to query the details of a flow template. You can also view template details by clicking the template name on the **Template View*	- page in the [**Flow Editor**](https://chatapp.console.aliyun.com/ChatFlowBuilder).
 //
-// - After you view the details of a template on the [**Flow Editor**](https://chatapp.console.aliyun.com/ChatFlowBuilder) > **View Templates*	- page, you can use the template to create a flow.
+// - After you view template details by clicking the template name on the **Template View*	- page in the [**Flow Editor**](https://chatapp.console.aliyun.com/ChatFlowBuilder), you can directly use the template to create a flow.
 //
 // @param request - GetChatFlowTemplateRequest
 //
@@ -4855,7 +4889,7 @@ func (client *Client) GetChatappPhoneNumberSettingWithContext(ctx context.Contex
 //
 // ### QPS limit
 //
-// The single-user QPS limit for this operation is 5 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation as needed.
+// The single-user QPS limit for this API is 5 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - GetChatappTemplateDetailRequest
 //
@@ -5335,7 +5369,7 @@ func (client *Client) GetCustomerSiteWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 下载excel数据
+// Downloads Excel data.
 //
 // @param tmpReq - GetDownloadExcelListRequest
 //
@@ -5433,7 +5467,7 @@ func (client *Client) GetDownloadExcelListWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 获取ins的page列表
+// Retrieves the list of Instagram pages for an instance.
 //
 // @param request - GetFbInstagramPagesRequest
 //
@@ -5493,7 +5527,7 @@ func (client *Client) GetFbInstagramPagesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取facebook的pageId列表
+// Retrieves the list of Facebook page IDs.
 //
 // @param request - GetFbMessengerPagesRequest
 //
@@ -5553,17 +5587,17 @@ func (client *Client) GetFbMessengerPagesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the details of a WhatsApp flow, including its status, name, categories, and preview URL.
+// Retrieves the details of a Flow.
 //
 // Description:
 //
-// - Before calling this operation, make sure that you have created a WhatsApp flow.
+// - Before calling this operation, make sure that you have successfully created a WhatsApp Flow.
 //
-// - If you have not created a WhatsApp flow, call the [CreateFlow](https://help.aliyun.com/document_detail/2638742.html) API to create one.
+// - If you do not have a successfully created WhatsApp Flow, call the [CreateFlow](https://help.aliyun.com/document_detail/2638742.html) operation to create one.
 //
 // #### QPS limit
 //
-// This operation allows a maximum of 5 requests per second per account. Excess requests are throttled and may result in service interruptions.
+// The single-user QPS limit for this operation is 5 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation as appropriate.
 //
 // @param request - GetFlowRequest
 //
@@ -5623,17 +5657,17 @@ func (client *Client) GetFlowWithContext(ctx context.Context, request *GetFlowRe
 
 // Summary:
 //
-// Queries the JSON content of a WhatsApp flow.
+// Retrieves the JSON-formatted content of a Flow.
 //
 // Description:
 //
-// - Before calling this operation, make sure that you have created a WhatsApp flow.
+// - Before calling this operation, make sure that you have successfully created a WhatsApp Flow.
 //
-// - If you have not created a WhatsApp flow, call the [CreateFlow](https://help.aliyun.com/document_detail/2638742.html) API to create one.
+// - If you do not have a successfully created WhatsApp Flow, create one by calling the [CreateFlow](https://help.aliyun.com/document_detail/2638742.html) operation.
 //
 // #### QPS limit
 //
-// This operation allows a maximum of 5 requests per second per account. Excess requests are throttled and may result in service interruptions.
+// The single-user QPS limit for this operation is 5 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - GetFlowJSONAssestRequest
 //
@@ -5693,19 +5727,19 @@ func (client *Client) GetFlowJSONAssestWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Generates a temporary preview URL for a WhatsApp flow.
+// Retrieves the preview URL of a Flow.
 //
 // Description:
 //
-// - After you create a WhatsApp flow, call this operation to generate a temporary preview URL for the flow.
+// - After creating a WhatsApp Flow, you can call this operation to retrieve the Flow preview URL to preview your Flow.
 //
-// - Before you call this operation, make sure that you have created a WhatsApp flow.
+// - Before calling this operation, make sure you have a successfully created WhatsApp Flow.
 //
-// - If you do not have a WhatsApp flow, you can call the [CreateFlow](https://help.aliyun.com/document_detail/2638742.html) API to create one.
+// - If you do not have a successfully created WhatsApp Flow, call the [CreateFlow](https://help.aliyun.com/document_detail/2638742.html) operation to create one.
 //
 // #### QPS limit
 //
-// This operation allows a maximum of 5 requests per second per account. Excess requests are throttled and may result in service interruptions.
+// The single-user QPS limit for this operation is 5 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - GetFlowPreviewUrlRequest
 //
@@ -5765,7 +5799,7 @@ func (client *Client) GetFlowPreviewUrlWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询群组是否重名
+// Queries whether a group name already exists.
 //
 // @param tmpReq - GetGroupExistRequest
 //
@@ -6123,13 +6157,19 @@ func (client *Client) GetPhoneEncryptionPublicKeyWithContext(ctx context.Context
 //
 // Description:
 //
-// - You can call this operation to retrieve the verification status of a phone number. You can also view the status on the <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Manage*	- > **WABA Management*	- > **Phone Number Management*	- page.
+// - You can call this operation to retrieve the verification status of a phone number. You can also view the verification status in the
 //
-// - Before calling this operation, add a phone number to your WhatsApp Business Account (WABA) and submit it for verification.
+// <props="china">[Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement)
 //
-// - If you have not added a phone number to your WABA, call the [GetChatappVerifyCode](https://help.aliyun.com/document_detail/600746.html) and [ChatappVerifyAndRegister](https://help.aliyun.com/document_detail/600770.html) APIs to obtain a verification code and register the number.
+// <props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList)> **Manage*	- > **WABA Management*	- > **Phone Number Management*	- page.
 //
-// This operation allows a maximum of 10 requests per second per account. Excess requests are throttled, which may affect your business. Stay within the specified limit.
+// - This operation only queries the verification status of a phone number. If the phone number status is verified, you can directly call the registration operation to register the phone number without obtaining a new verification code.
+//
+// - Before calling this operation, make sure that a phone number has been added to your WABA and that phone number verification has been submitted.
+//
+// - If a phone number has been added to your WABA and needs to be registered, but the verification status is unverified or verification has expired, call [GetChatappVerifyCode](https://help.aliyun.com/document_detail/600746.html) and [ChatappVerifyAndRegister](https://help.aliyun.com/document_detail/600770.html) to obtain a verification code and register the phone number.
+//
+// The queries per second (QPS) limit for a single user on this operation is 10. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param request - GetPhoneNumberVerificationStatusRequest
 //
@@ -6361,7 +6401,7 @@ func (client *Client) GetViberByRequestNoWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 可以申请暂停的次数
+// Queries the number of times that a pause can be requested.
 //
 // @param request - GetViberPauseTimesRequest
 //
@@ -6481,7 +6521,7 @@ func (client *Client) GetWhatsappConnectionCatalogWithContext(ctx context.Contex
 
 // Summary:
 //
-// 获取嵌入式授权page
+// Retrieves the embedded authorization page.
 //
 // @param request - GetWhatsappConversionApiRequest
 //
@@ -6785,7 +6825,7 @@ func (client *Client) IsvGetAppIdWithContext(ctx context.Context, request *IsvGe
 
 // Summary:
 //
-// 查询群组列表
+// Queries the list of groups.
 //
 // @param tmpReq - ListAllGroupsRequest
 //
@@ -6851,7 +6891,7 @@ func (client *Client) ListAllGroupsWithContext(ctx context.Context, tmpReq *List
 
 // Summary:
 //
-// 查询绑定的dm账号
+// Queries the bound DM account.
 //
 // @param request - ListBindDmAccountRequest
 //
@@ -6907,15 +6947,15 @@ func (client *Client) ListBindDmAccountWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the phone numbers or business account IDs attached to a flow.
+// Queries the list of phone numbers or business account IDs bound to a flow based on the flow code.
 //
 // Description:
 //
-// - You can call this operation to query the phone numbers or business account IDs attached to a flow. You can also view this information on the **Settings*	- page in the **Flow Editor**.
+// - You can call this operation to query the list of phone numbers or business account IDs bound to a flow. You can also view the list in [**Flow Builder**](https://chatapp.console.aliyun.com/ChatFlowBuilder) > **Settings**.
 //
-// - Before you call this operation, ensure that a phone number or business account ID is attached to your flow.
+// - Before calling this operation, make sure that your flow is already bound to phone numbers or business account IDs.
 //
-// - If a phone number or business account ID is not attached to your flow, you can attach one manually on the **Settings*	- page in the **Flow Editor*	- or by calling the [FlowBindPhone](https://help.aliyun.com/document_detail/2937190.html) operation.
+// - If your flow is not bound to phone numbers or business account IDs, manually bind them in [**Flow Builder**](https://chatapp.console.aliyun.com/ChatFlowBuilder) > **Settings**, or call the [FlowBindPhone](https://help.aliyun.com/document_detail/2937190.html) operation to bind them.
 //
 // @param request - ListBindingRelationsForFlowVersionRequest
 //
@@ -6983,9 +7023,9 @@ func (client *Client) ListBindingRelationsForFlowVersionWithContext(ctx context.
 //
 // - Before calling this operation, make sure that you have successfully created flows.
 //
-// - If you do not have any successfully created flows, manually create a flow in the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder) console or call the [CreateChatFlow](https://help.aliyun.com/document_detail/2937204.html) operation to create a flow.
+// - If you do not have any successfully created flows, you can manually create a flow in the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder) console or create a flow by calling the [CreateChatFlow](https://help.aliyun.com/document_detail/2937204.html) operation.
 //
-// - The optional parameters in this operation are filter conditions for querying flows. If you do not specify these parameters, all flows are returned.
+// - The optional parameters in this operation are filter conditions for querying flows. If you do not specify them, all flows are queried.
 //
 // @param tmpReq - ListChatFlowRequest
 //
@@ -7014,6 +7054,14 @@ func (client *Client) ListChatFlowWithContext(ctx context.Context, tmpReq *ListC
 		query["BizExtend"] = request.BizExtendShrink
 	}
 
+	if !dara.IsNil(request.FlowCode) {
+		query["FlowCode"] = request.FlowCode
+	}
+
+	if !dara.IsNil(request.FlowStatus) {
+		query["FlowStatus"] = request.FlowStatus
+	}
+
 	if !dara.IsNil(request.FlowTriggerType) {
 		query["FlowTriggerType"] = request.FlowTriggerType
 	}
@@ -7034,6 +7082,10 @@ func (client *Client) ListChatFlowWithContext(ctx context.Context, tmpReq *ListC
 		query["PageSize"] = request.PageSize
 	}
 
+	if !dara.IsNil(request.PhoneNumber) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
 	if !dara.IsNil(request.ResourceOwnerAccount) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -7048,6 +7100,10 @@ func (client *Client) ListChatFlowWithContext(ctx context.Context, tmpReq *ListC
 
 	if !dara.IsNil(request.Status) {
 		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.Title) {
+		query["Title"] = request.Title
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -7079,9 +7135,9 @@ func (client *Client) ListChatFlowWithContext(ctx context.Context, tmpReq *ListC
 //
 // Description:
 //
-// - You can call this operation to list flow templates. You can also view the list of templates on the **View Templates*	- page in the [**Flow Editor**](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+// - You can call this operation to view the template list, or view the template list in the [**Flow Editor**](https://chatapp.console.aliyun.com/ChatFlowBuilder) > **Template View*	- page.
 //
-// - You can use the optional parameters in this operation to filter the list of templates. If you do not specify any filter conditions, all templates are returned.
+// - The optional parameters in this operation are filter conditions for the template list. If not specified, all templates are queried.
 //
 // @param request - ListChatFlowTemplateRequest
 //
@@ -7253,17 +7309,15 @@ func (client *Client) ListChatGroupWithContext(ctx context.Context, tmpReq *List
 
 // Summary:
 //
-// Lists the members of an IM group.
+// Retrieves the member list of an IM group.
 //
 // Description:
 //
-//	Notice:
+//	Notice: The feature of retrieving IM group member lists through API is a Meta beta feature. Contact your account manager to apply for access.
 //
-// This operation is an internal preview feature. Contact your account manager to request access.
+// - Before calling this operation, make sure that the IM group you created has an IM group invitation link added and that members have joined the IM group through the link.
 //
-// - Before calling this operation, ensure you have created an IM group with an invitation link, and that members have joined by using that link.
-//
-// - To create an IM group and add an invitation link, call the [AddChatGroup](https://help.aliyun.com/document_detail/2998429.html) and [AddChatGroupInviteLink](https://help.aliyun.com/document_detail/3019211.html) operations.
+// - If you do not have a created IM group, use the [AddChatGroup](https://help.aliyun.com/document_detail/2998429.html) and [AddChatGroupInviteLink](https://help.aliyun.com/document_detail/3019211.html) operations to create an IM group and add an invitation link.
 //
 // @param tmpReq - ListChatGroupParticipantsRequest
 //
@@ -7463,13 +7517,13 @@ func (client *Client) ListChatappMessageWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Queries message templates.
+// Retrieves a list of message templates.
 //
 // Description:
 //
 // ### QPS limit
 //
-// This operation allows a maximum of 5 requests per second per account. Excess requests are throttled, which may affect your business. Stay within the specified limit.
+// The single-user QPS limit for this operation is 5 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param tmpReq - ListChatappTemplateRequest
 //
@@ -7721,7 +7775,7 @@ func (client *Client) ListDmAccountWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 查询DM的tag
+// Queries the tags of DirectMail.
 //
 // @param request - ListDmTagRequest
 //
@@ -7841,11 +7895,11 @@ func (client *Client) ListFacebookPostsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Retrieves a list of WhatsApp flows.
+// Queries the list of Flows.
 //
 // Description:
 //
-// This operation allows a maximum of 5 requests per second (RPS) per account. Excess requests are throttled and may result in service interruptions.
+// The China Message Service API has a single-user QPS limit of 5 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // @param tmpReq - ListFlowRequest
 //
@@ -7979,9 +8033,9 @@ func (client *Client) ListFlowNodeGroupWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// - You can call this API operation to query flow component prototypes. You can also view the prototypes on the orchestration canvas in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) by clicking a flow name.
+// - You can call this operation to query flow component prototypes. You can also click a flow name in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) to go to the canvas orchestration page and view flow component prototypes.
 //
-// - You can use the optional parameters for this operation to filter flow component prototypes. If you do not specify any optional parameters, all flow component prototypes are returned.
+// - The optional parameters in this operation are filter conditions for flow component prototypes. If you do not specify them, all flow component prototypes are queried.
 //
 // @param request - ListFlowNodePrototypeV2Request
 //
@@ -8057,13 +8111,13 @@ func (client *Client) ListFlowNodePrototypeV2WithContext(ctx context.Context, re
 //
 // Description:
 //
-// - You can call this API operation to query flow versions. You can also view flow versions in the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) by clicking a flow name to open the orchestration canvas.
+// - You can call this operation to query flow versions. You can also click a flow name on the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page to go to the canvas orchestration page and view flow versions.
 //
-// - Before calling this API operation, make sure that you have created one or more flows.
+// - Before calling this operation, make sure that you have a successfully created flow.
 //
-// - If you have not created any flows, create a flow in the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) or call the [CreateChatFlow](https://help.aliyun.com/document_detail/2937204.html) API operation.
+// - If you do not have a successfully created flow, you can manually create a flow on the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page or create a flow by calling the [CreateChatFlow](https://help.aliyun.com/document_detail/2937204.html) operation.
 //
-// - The optional parameters for this API operation are filter conditions. If you do not specify any optional parameters, all flow versions are returned.
+// - The optional parameters in this operation are filter conditions for querying flow versions. If you do not specify them, all flow versions are queried.
 //
 // @param tmpReq - ListFlowVersionRequest
 //
@@ -8201,7 +8255,7 @@ func (client *Client) ListInstagramPageWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询instagram帖子列表
+// Queries the list of Instagram posts.
 //
 // @param request - ListInstagramPostsRequest
 //
@@ -8257,7 +8311,7 @@ func (client *Client) ListInstagramPostsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Lists instances.
+// Queries a list of instances.
 //
 // @param request - ListInstanceRequest
 //
@@ -8272,6 +8326,10 @@ func (client *Client) ListInstanceWithContext(ctx context.Context, request *List
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BindId) {
+		query["BindId"] = request.BindId
+	}
+
 	if !dara.IsNil(request.ChannelType) {
 		query["ChannelType"] = request.ChannelType
 	}
@@ -8286,6 +8344,10 @@ func (client *Client) ListInstanceWithContext(ctx context.Context, request *List
 
 	if !dara.IsNil(request.InstanceName) {
 		query["InstanceName"] = request.InstanceName
+	}
+
+	if !dara.IsNil(request.IsBind) {
+		query["IsBind"] = request.IsBind
 	}
 
 	if !dara.IsNil(request.PageIndex) {
@@ -8649,7 +8711,7 @@ func (client *Client) ListPageAdAccountWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// The queries per second (QPS) limit for this operation is 5 per user. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation as appropriate.
+// The queries per second (QPS) limit for this operation is 5 per user. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation as needed.
 //
 // @param request - ListPhoneMessageQrdlRequest
 //
@@ -8873,7 +8935,7 @@ func (client *Client) ListProductCatalogWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 展示viber申请单服务号卡片
+// Displays the Viber service number card for an application form.
 //
 // @param request - ListViberServiceMessageRequest
 //
@@ -8987,7 +9049,7 @@ func (client *Client) ListWhatAppTemplateWithContext(ctx context.Context, reques
 //
 // ### Status changes
 //
-// Changes to the template status and quality can be monitored through MNS or HTTP. For more information, see [Receipt messages](https://help.aliyun.com/document_detail/421545.html).
+// You can monitor template status and quality changes through MNS or HTTP. For more information, see [Receipt messages](https://help.aliyun.com/document_detail/421545.html).
 //
 // @param tmpReq - ModifyChatappTemplateRequest
 //
@@ -9011,57 +9073,61 @@ func (client *Client) ModifyChatappTemplateWithContext(ctx context.Context, tmpR
 		request.ExampleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Example, dara.String("Example"), dara.String("json"))
 	}
 
-	body := map[string]interface{}{}
+	query := map[string]interface{}{}
 	if !dara.IsNil(request.Category) {
-		body["Category"] = request.Category
+		query["Category"] = request.Category
 	}
 
 	if !dara.IsNil(request.CategoryChangePaused) {
-		body["CategoryChangePaused"] = request.CategoryChangePaused
+		query["CategoryChangePaused"] = request.CategoryChangePaused
 	}
 
 	if !dara.IsNil(request.ComponentsShrink) {
-		body["Components"] = request.ComponentsShrink
+		query["Components"] = request.ComponentsShrink
 	}
 
 	if !dara.IsNil(request.CustSpaceId) {
-		body["CustSpaceId"] = request.CustSpaceId
+		query["CustSpaceId"] = request.CustSpaceId
 	}
 
 	if !dara.IsNil(request.CustWabaId) {
-		body["CustWabaId"] = request.CustWabaId
+		query["CustWabaId"] = request.CustWabaId
 	}
 
 	if !dara.IsNil(request.ExampleShrink) {
-		body["Example"] = request.ExampleShrink
+		query["Example"] = request.ExampleShrink
 	}
 
 	if !dara.IsNil(request.IsvCode) {
-		body["IsvCode"] = request.IsvCode
+		query["IsvCode"] = request.IsvCode
 	}
 
 	if !dara.IsNil(request.Language) {
-		body["Language"] = request.Language
+		query["Language"] = request.Language
 	}
 
 	if !dara.IsNil(request.MessageSendTtlSeconds) {
-		body["MessageSendTtlSeconds"] = request.MessageSendTtlSeconds
+		query["MessageSendTtlSeconds"] = request.MessageSendTtlSeconds
+	}
+
+	if !dara.IsNil(request.ProductSetId) {
+		query["ProductSetId"] = request.ProductSetId
 	}
 
 	if !dara.IsNil(request.TemplateCode) {
-		body["TemplateCode"] = request.TemplateCode
+		query["TemplateCode"] = request.TemplateCode
 	}
 
 	if !dara.IsNil(request.TemplateName) {
-		body["TemplateName"] = request.TemplateName
+		query["TemplateName"] = request.TemplateName
 	}
 
 	if !dara.IsNil(request.TemplateType) {
-		body["TemplateType"] = request.TemplateType
+		query["TemplateType"] = request.TemplateType
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("ModifyChatappTemplate"),
@@ -9341,7 +9407,7 @@ func (client *Client) ModifyPhoneBusinessProfileWithContext(ctx context.Context,
 
 // Summary:
 //
-// 联系人变更群组
+// Modifies the group associations of contacts.
 //
 // @param tmpReq - MoveContactToGroupRequest
 //
@@ -9419,17 +9485,17 @@ func (client *Client) MoveContactToGroupWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Unpublishes a flow version.
+// Offlines a flow version.
 //
 // Description:
 //
-// - You can call this operation to unpublish a flow version. You can also manually unpublish a flow version in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) by clicking the flow name to open the orchestration canvas.
+// - You can call this operation to offline a flow version, or click the flow name in the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) to enter the canvas orchestration page and manually offline the flow version.
 //
-// - Before calling this operation, make sure that the flow is published.
+// - Before calling this operation, make sure the flow you created is already online.
 //
-// - If a flow is not published, you can publish it manually from the orchestration canvas in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder), or by calling the [OnlineFlowVersion](https://help.aliyun.com/document_detail/2937203.html) operation.
+// - If the flow you created is not online, click the flow name in the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) to enter the canvas orchestration page and manually bring the flow version online, or call the [OnlineFlowVersion](https://help.aliyun.com/document_detail/2937203.html) operation to bring the flow version online.
 //
-// - After a flow version is unpublished, the orchestrated flow stops running. This may affect your business. Proceed with caution.
+// - After the flow version is offlined, the orchestrated flow stops running, which may affect your business. Proceed with caution.
 //
 // @param tmpReq - OfflineFlowVersionRequest
 //
@@ -9511,13 +9577,13 @@ func (client *Client) OfflineFlowVersionWithContext(ctx context.Context, tmpReq 
 //
 // Description:
 //
-// - You can call this operation to publish a flow version. You can also manually publish a flow version in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) by clicking the flow name to open the orchestration canvas.
+// - You can call this operation to publish a flow version. You can also click a flow name on the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page to go to the canvas orchestration page and manually publish a flow version.
 //
-// - Before you call this operation, make sure that you have created a flow and attached it to a phone number or a business account ID.
+// - Before calling this operation, make sure that you have a successfully created flow and that your flow is bindded to a phone number or merchant account ID.
 //
-// - If you have not created a flow, you can create one manually in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) and attach a phone number or business account ID. Alternatively, you can call the [CreateChatFlow](https://help.aliyun.com/document_detail/2937204.html) and [FlowBindPhone](https://help.aliyun.com/document_detail/2937190.html) operations to create a flow and attach a phone number or business account ID.
+// - If you do not have a successfully created flow, you can manually create a flow and bindded it to a phone number or merchant account ID on the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page, or call the [CreateChatFlow](https://help.aliyun.com/document_detail/2937204.html) and [FlowBindPhone](https://help.aliyun.com/document_detail/2937190.html) operations to create a flow and bind it to a phone number or merchant account ID.
 //
-// - After a flow with a non-manual trigger is published, it is triggered when the attached phone number or business account sends a message to the business. If your flow contains components that incur fees, such as message sending or function invocations, make sure you understand the billing methods and pricing of the related products before you call this operation.
+// - After a flow with a non-manual trigger type is published, the flow is triggered when the bound phone number or merchant account sends a message to the merchant. If your flow contains components that incur fees for corresponding cloud services, such as message sending or function calling, make sure that you fully understand the billing methods and pricing of the related services before using this operation.
 //
 // @param tmpReq - OnlineFlowVersionRequest
 //
@@ -9595,7 +9661,7 @@ func (client *Client) OnlineFlowVersionWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 开通Chatapp服务
+// Activates the Chat App Message Service.
 //
 // @param request - OpenChatappServiceRequest
 //
@@ -9647,7 +9713,7 @@ func (client *Client) OpenChatappServiceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 暂停服务
+// Pauses a service.
 //
 // @param request - PauseMarketingFLowRequest
 //
@@ -9953,7 +10019,7 @@ func (client *Client) QueryInstanceWithContext(ctx context.Context, request *Que
 
 // Summary:
 //
-// 查询营销消息是否生效
+// Queries whether a marketing message is effective.
 //
 // @param request - QueryMMLActiveRequest
 //
@@ -10141,11 +10207,11 @@ func (client *Client) QueryWabaBusinessInfoWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// - You can call this API operation to retrieve the details of a flow. You can also view the flow details in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+// - You can call this operation to retrieve flow details, or manually view flow details in the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
 //
-// - Before you call this operation, make sure that you have created a flow.
+// - Before calling this operation, ensure that you have a successfully created flow.
 //
-// - If you have not created a flow, you can create one in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) or by calling the [CreateChatFlow](https://help.aliyun.com/document_detail/2937204.html) operation.
+// - If you do not have a successfully created flow, you can manually create a flow in the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) or create a flow by calling the [CreateChatFlow](https://help.aliyun.com/document_detail/2937204.html) operation.
 //
 // @param tmpReq - ReadChatFlowRequest
 //
@@ -10215,15 +10281,15 @@ func (client *Client) ReadChatFlowWithContext(ctx context.Context, tmpReq *ReadC
 
 // Summary:
 //
-// Views the log settings for a flow.
+// Queries the flow log settings.
 //
 // Description:
 //
-// - Before you call this operation, ensure that log settings are configured for the flow.
+// - Before calling this operation, make sure that flow log settings have been created for your flow.
 //
-// - If log settings are not configured for the flow, call the [CreateChatFlowLogSetting](https://help.aliyun.com/document_detail/2937211.html) operation to configure them.
+// - If flow log settings have not been created for your flow, first create them by calling the [CreateChatFlowLogSetting](https://help.aliyun.com/document_detail/2937211.html) operation.
 //
-// - You can use the unique ID returned by this operation to call the [UpdateChatFlowLogSetting](https://help.aliyun.com/document_detail/2937210.html) operation to update the log settings.
+// - You can use the unique ID returned by this operation to call the [UpdateChatFlowLogSetting](https://help.aliyun.com/document_detail/2937210.html) operation to update the flow log settings.
 //
 // @param request - ReadChatFlowLogSettingRequest
 //
@@ -10316,6 +10382,10 @@ func (client *Client) ReadFlowVersionWithContext(ctx context.Context, tmpReq *Re
 		query["BizExtend"] = request.BizExtendShrink
 	}
 
+	if !dara.IsNil(request.DraftVersion) {
+		query["DraftVersion"] = request.DraftVersion
+	}
+
 	if !dara.IsNil(request.FlowCode) {
 		query["FlowCode"] = request.FlowCode
 	}
@@ -10365,7 +10435,7 @@ func (client *Client) ReadFlowVersionWithContext(ctx context.Context, tmpReq *Re
 
 // Summary:
 //
-// 当前群组移除单个联系人
+// Removes a single contact from the current group.
 //
 // @param request - RemoveContactByIdRequest
 //
@@ -10657,17 +10727,17 @@ func (client *Client) SendChatappMassMessageWithContext(ctx context.Context, tmp
 //
 // - Before calling this operation, make sure that you have created a channel and have an approved template.
 //
-// - For the WhatsApp channel type, you must complete [WABA registration and bindng](https://help.aliyun.com/document_detail/172335.html) and [add a phone number](https://help.aliyun.com/document_detail/2656131.html).
+// - For WhatsApp channels, you must complete [WABA registration and bindng](https://help.aliyun.com/document_detail/172335.html) and [add a phone number](https://help.aliyun.com/document_detail/2656131.html).
 //
-// - For the Messenger channel type, you must complete [connecting a public page account](https://help.aliyun.com/document_detail/2837713.html).
+// - For Messenger channels, you must complete [connecting a public page account](https://help.aliyun.com/document_detail/2837713.html).
 //
-// - For the Instagram channel type, you must complete [connecting a professional account](https://help.aliyun.com/document_detail/2837720.html).
+// - For Instagram channels, you must complete [connecting a professional account](https://help.aliyun.com/document_detail/2837720.html).
 //
-// <props="intl">- For the Viber channel type, you must complete [applying for a service ID](https://help.aliyun.com/document_detail/2807995.html).
+// <props="intl">- For Viber channels, you must complete [applying for a service ID](https://help.aliyun.com/document_detail/2807995.html).
 //
 // ### QPS limit
 //
-// The single-user QPS limit for this operation is 250 calls per second. If this limit is exceeded, the API calls are throttled, which may affect your business. Call this operation as needed.
+// The single-user QPS limit for this operation is 250 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Call this operation appropriately.
 //
 // ### Status changes
 //
@@ -10983,7 +11053,7 @@ func (client *Client) SyncBusinessAppHistoryWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 同步flow
+// Syncs a WhatsApp flow.
 //
 // @param request - SyncFlowRequest
 //
@@ -11259,7 +11329,7 @@ func (client *Client) TriggerChatFlowWithContext(ctx context.Context, tmpReq *Tr
 
 // Summary:
 //
-// 解绑邮件账号
+// Unbinds an email account.
 //
 // @param request - UnbindDmAccountRequest
 //
@@ -11465,11 +11535,11 @@ func (client *Client) UpdateAuditRequestWithContext(ctx context.Context, tmpReq 
 //
 // Description:
 //
-// - You can call this operation to update the basic information of a flow, or update it manually on the **Basic Information*	- page under **Settings*	- in the [**Flow Editor**](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+// - You can call this operation to update the basic information of a flow, or manually update it in [**Flow Builder**](https://chatapp.console.aliyun.com/ChatFlowBuilder) > **Settings*	- > **Basic Information**.
 //
-// - Before calling this operation, make sure that you have created a flow.
+// - Before calling this operation, make sure you have a successfully created flow.
 //
-// - If you have not created a flow, go to the [**Flow Editor**](https://chatapp.console.aliyun.com/ChatFlowBuilder) and click **Create Flow*	- to create one.
+// - If you do not have a successfully created flow, click **Create Flow*	- in the [**Flow Builder**](https://chatapp.console.aliyun.com/ChatFlowBuilder) to manually create one.
 //
 // @param tmpReq - UpdateChatFlowRequest
 //
@@ -11783,7 +11853,7 @@ func (client *Client) UpdateCommerceSettingWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 修改联系人
+// Modifies a contact.
 //
 // @param tmpReq - UpdateContactByIdRequest
 //
@@ -12031,15 +12101,15 @@ func (client *Client) UpdateFlowJSONAssetWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Updates the Domain-Specific Language (DSL) data of a flow version on the canvas.
+// Updates the DSL data of a flow version, used for updating the flow version on the canvas.
 //
 // Description:
 //
-// - You can call this operation to update the DSL data of a flow version. You can also update the DSL data on the orchestration canvas in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder). To access the canvas, click the name of the flow.
+// - You can call this operation to update the DSL data of a flow version, or click a flow name on the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page to go to the canvas orchestration page and update the DSL data of the flow version.
 //
-// - Before calling this operation, make sure that you have created a flow and its status is Unpublished.
+// - Before calling this operation, make sure that you have created a flow and the flow status is offline.
 //
-// - If you have not created a flow, you can manually create one in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) or call the [CreateChatFlow](https://help.aliyun.com/document_detail/2937204.html) operation.
+// - If you have not created a flow, you can manually create a flow on the [flow editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page or create a flow by calling the [CreateChatFlow](https://help.aliyun.com/document_detail/2937204.html) operation.
 //
 // @param tmpReq - UpdateFlowVersionRequest
 //
@@ -12096,6 +12166,10 @@ func (client *Client) UpdateFlowVersionWithContext(ctx context.Context, tmpReq *
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12121,7 +12195,7 @@ func (client *Client) UpdateFlowVersionWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 群组改名
+// Renames a group.
 //
 // @param request - UpdateGroupNameRequest
 //
@@ -12725,7 +12799,7 @@ func (client *Client) UpdateWhatsappUserNameWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Places, answers, or ends WhatsApp voice calls.
+// Calls, answers, or hangs up a WhatsApp voice call. The WhatsApp voice call feature is currently in an invite-only phase. To use this feature, contact your account manager or customer service representative to request allowlisting. This feature cannot be used without allowlisting.
 //
 // @param tmpReq - WhatsappCallRequest
 //

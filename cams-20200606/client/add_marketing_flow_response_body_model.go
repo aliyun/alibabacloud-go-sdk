@@ -24,26 +24,42 @@ type iAddMarketingFlowResponseBody interface {
 }
 
 type AddMarketingFlowResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// Example value example value.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// Example value example value.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message returned with the result.
+	//
 	// example:
 	//
-	// 示例值
+	// Example value.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 示例值
+	// Example value.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// false

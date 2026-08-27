@@ -27,6 +27,8 @@ type iModifyChatappTemplateShrinkRequest interface {
 	GetLanguage() *string
 	SetMessageSendTtlSeconds(v int32) *ModifyChatappTemplateShrinkRequest
 	GetMessageSendTtlSeconds() *int32
+	SetProductSetId(v string) *ModifyChatappTemplateShrinkRequest
+	GetProductSetId() *string
 	SetTemplateCode(v string) *ModifyChatappTemplateShrinkRequest
 	GetTemplateCode() *string
 	SetTemplateName(v string) *ModifyChatappTemplateShrinkRequest
@@ -42,7 +44,7 @@ type ModifyChatappTemplateShrinkRequest struct {
 	//
 	// text
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Specifies whether to pause sending when a Utility template is changed to Marketing type.
+	// When a Utility template is changed to Marketing type, the template is paused for sending.
 	//
 	// example:
 	//
@@ -50,35 +52,35 @@ type ModifyChatappTemplateShrinkRequest struct {
 	CategoryChangePaused *bool `json:"CategoryChangePaused,omitempty" xml:"CategoryChangePaused,omitempty"`
 	// The list of message template components.
 	//
-	// > When Category is set to AUTHENTICATION, Components cannot contain a node with Type set to HEADER. When Type is set to BODY or FOOTER and the Text content is empty, the content is automatically generated.
+	// > When Category is AUTHENTICATION, Components cannot contain a node with Type set to HEADER. When Type is BODY/FOOTER, the Text content is empty and is automatically generated.
 	//
 	// This parameter is required.
 	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
-	// The SpaceId of the ISV sub-customer or the instance ID of a direct customer.
+	// The SpaceId of the ISV sub-customer or the instance ID of the direct customer.
 	//
 	// example:
 	//
 	// 28251486512358****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// Deprecated
-	//
 	// The ISV customer WabaId.
 	//
-	// > Deprecated parameter. Use CustSpaceId instead.
+	// > This parameter is deprecated. Use CustSpaceId instead.
 	//
 	// example:
 	//
 	// 65921621816****
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
-	// The examples for creating the template.
+	// The example for creating a template.
 	ExampleShrink *string `json:"Example,omitempty" xml:"Example,omitempty"`
-	// The ISV verification code used to verify whether the RAM user is authorized by the ISV.
+	// Deprecated
+	//
+	// The ISV verification code used to verify whether the sub-account is authorized by the ISV.
 	//
 	// example:
 	//
 	// ksiekdki39ksks93939
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
-	// The template language. For detailed language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+	// The template language. For language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
 	//
 	// This parameter is required.
 	//
@@ -88,14 +90,20 @@ type ModifyChatappTemplateShrinkRequest struct {
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The validity period for sending template messages in WhatsApp.
 	//
-	// - AUTHENTICATION: valid values are 30 to 900.
+	// - AUTHENTICATION: valid values range from 30 to 900.
 	//
-	// - UTILITY: valid values are 30 to 43200.
+	// - UTILITY: valid values range from 30 to 43200.
 	//
 	// example:
 	//
 	// 120
 	MessageSendTtlSeconds *int32 `json:"MessageSendTtlSeconds,omitempty" xml:"MessageSendTtlSeconds,omitempty"`
+	// productSetId
+	//
+	// example:
+	//
+	// 939***
+	ProductSetId *string `json:"ProductSetId,omitempty" xml:"ProductSetId,omitempty"`
 	// The message template code.
 	//
 	// example:
@@ -162,6 +170,10 @@ func (s *ModifyChatappTemplateShrinkRequest) GetMessageSendTtlSeconds() *int32 {
 	return s.MessageSendTtlSeconds
 }
 
+func (s *ModifyChatappTemplateShrinkRequest) GetProductSetId() *string {
+	return s.ProductSetId
+}
+
 func (s *ModifyChatappTemplateShrinkRequest) GetTemplateCode() *string {
 	return s.TemplateCode
 }
@@ -216,6 +228,11 @@ func (s *ModifyChatappTemplateShrinkRequest) SetLanguage(v string) *ModifyChatap
 
 func (s *ModifyChatappTemplateShrinkRequest) SetMessageSendTtlSeconds(v int32) *ModifyChatappTemplateShrinkRequest {
 	s.MessageSendTtlSeconds = &v
+	return s
+}
+
+func (s *ModifyChatappTemplateShrinkRequest) SetProductSetId(v string) *ModifyChatappTemplateShrinkRequest {
+	s.ProductSetId = &v
 	return s
 }
 

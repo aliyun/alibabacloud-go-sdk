@@ -28,38 +28,38 @@ type iUpdateChatFlowShrinkRequest interface {
 }
 
 type UpdateChatFlowShrinkRequest struct {
-	// The business tenant code. The default value is ALICOM_OPAAS.
+	// The business tenant code. Default value: ALICOM_OPAAS.
 	//
 	// example:
 	//
 	// ALICOM_OPAAS
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// The business extension information. The default value is an empty collection.
+	// The business extension information. Default value: an empty collection.
 	//
 	// example:
 	//
 	// {}
 	BizExtendShrink *string `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
-	// The flow code. You can view the flow code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+	// The flow code. View the flow code in the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder).
 	//
 	// example:
 	//
 	// 9ccc41**************************
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The updated remarks for the flow.
+	// The updated flow remark.
 	//
 	// example:
 	//
-	// 流程备注
+	// FlowRemark.
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The updated name of the flow.
+	// The updated flow name.
 	//
 	// example:
 	//
-	// 测试流程
+	// TestFlow.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

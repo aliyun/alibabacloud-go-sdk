@@ -34,40 +34,59 @@ type iUpdateContactByIdRequest interface {
 }
 
 type UpdateContactByIdRequest struct {
+	// The business code.
+	//
 	// example:
 	//
-	// 示例值
-	BizCode   *string                `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Sample value.
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The business extension information. Default value: an empty collection.
+	//
+	// example:
+	//
+	// {}
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// The description of the contact.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// Sample value sample value.
 	ContactDetails *string `json:"ContactDetails,omitempty" xml:"ContactDetails,omitempty"`
+	// The ID of the contact.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// Sample value sample value sample value.
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// The name of the contact.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// Sample value sample value.
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// The country code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// Sample value sample value.
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// The email address.
+	//
 	// example:
 	//
-	// 示例值
+	// Sample value.
 	Email   *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The remarks.
+	//
 	// example:
 	//
 	// test

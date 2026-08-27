@@ -20,6 +20,8 @@ type iQueryMMLActiveRequest interface {
 }
 
 type QueryMMLActiveRequest struct {
+	// The SpaceId of the ISV sub-customer.
+	//
 	// example:
 	//
 	// erer-retreerew**

@@ -24,15 +24,20 @@ type iListFlowRequest interface {
 }
 
 type ListFlowRequest struct {
+	// The SpaceId of the ISV sub-customer.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// cams-sa2ksj21jksd
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// The Flow name.
+	//
 	// example:
 	//
-	// 示例值
-	FlowName             *string              `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
-	OwnerId              *int64               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// flow-21101
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The pagination information.
 	Page                 *ListFlowRequestPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
 	ResourceOwnerAccount *string              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64               `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -110,8 +115,18 @@ func (s *ListFlowRequest) Validate() error {
 }
 
 type ListFlowRequestPage struct {
+	// The page number.
+	//
+	// example:
+	//
+	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	Size  *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s ListFlowRequestPage) String() string {

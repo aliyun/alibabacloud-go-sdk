@@ -24,7 +24,7 @@ type iOfflineFlowVersionResponseBody interface {
 }
 
 type OfflineFlowVersionResponseBody struct {
-	// The details about the access denial.
+	// The access denied details.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type OfflineFlowVersionResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error description.
+	// The error message.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type OfflineFlowVersionResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The content of the returned data.
+	// The response content.
 	Response map[string]interface{} `json:"Response,omitempty" xml:"Response,omitempty"`
 	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: Successful.
 	//
-	// - false: The operation failed.
+	// - false: Failed.
 	//
 	// example:
 	//

@@ -44,58 +44,94 @@ type iAddMarketingFlowRequest interface {
 }
 
 type AddMarketingFlowRequest struct {
+	// The description of the campaign.
+	//
 	// example:
 	//
-	// 示例值示例值
+	// Example value example value.
 	ActivityDesc *string `json:"ActivityDesc,omitempty" xml:"ActivityDesc,omitempty"`
+	// The name of the node instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// Example value example value.
 	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
+	// The business code.
+	//
 	// example:
 	//
-	// 示例值
-	BizCode   *string                `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// Example value.
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// The business extension information. Default value: an empty collection.
+	//
+	// example:
+	//
+	// {}
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
+	// The cron expression.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// Example value example value example value.
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
+	// The end time.
+	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// Example value example value example value.
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The trigger method of the baseline scan. Valid values:
+	//
+	// - **Schedule**: Triggered by a periodic configuration task.
+	//
+	// - **Manual**: Manually triggered.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值
+	// Example value.
 	ExecutionType *string `json:"ExecutionType,omitempty" xml:"ExecutionType,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The parameter flag.
+	//
 	// example:
 	//
-	// 示例值
-	ParamFlag *string                `json:"ParamFlag,omitempty" xml:"ParamFlag,omitempty"`
-	Params    map[string]interface{} `json:"Params,omitempty" xml:"Params,omitempty"`
+	// Example value.
+	ParamFlag *string `json:"ParamFlag,omitempty" xml:"ParamFlag,omitempty"`
+	// The API parameters.
+	//
 	// example:
 	//
-	// 示例值
+	// {}
+	Params map[string]interface{} `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The code of the associated flow.
+	//
+	// example:
+	//
+	// Example value.
 	RelatedFlowCode *string `json:"RelatedFlowCode,omitempty" xml:"RelatedFlowCode,omitempty"`
+	// The name of the associated flow.
+	//
 	// example:
 	//
-	// 示例值
+	// Example value.
 	RelatedFlowName *string `json:"RelatedFlowName,omitempty" xml:"RelatedFlowName,omitempty"`
+	// The ID of the related group.
+	//
 	// example:
 	//
 	// 43
 	RelatedGroupId       *int64  `json:"RelatedGroupId,omitempty" xml:"RelatedGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
-	// 示例值
+	// Example value.
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 }
 

@@ -20,6 +20,8 @@ type iGetViberPauseTimesRequest interface {
 }
 
 type GetViberPauseTimesRequest struct {
+	// The space ID of the ISV sub-customer or the instance ID of the direct customer.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,12 +22,16 @@ type iRemoveContactByIdRequest interface {
 }
 
 type RemoveContactByIdRequest struct {
+	// The contact ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3456456346**
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// The contact group ID.
+	//
 	// This parameter is required.
 	//
 	// example:

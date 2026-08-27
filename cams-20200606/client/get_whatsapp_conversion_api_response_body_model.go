@@ -24,23 +24,42 @@ type iGetWhatsappConversionApiResponseBody interface {
 }
 
 type GetWhatsappConversionApiResponseBody struct {
+	// The details about the access denial.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code.
+	//
+	// - OK indicates that the request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data []*GetWhatsappConversionApiResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// false
@@ -123,14 +142,20 @@ func (s *GetWhatsappConversionApiResponseBody) Validate() error {
 }
 
 type GetWhatsappConversionApiResponseBodyData struct {
+	// The dataset ID.
+	//
 	// example:
 	//
 	// 111
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The PageId of Messenger.
+	//
 	// example:
 	//
 	// 7832312
 	PageId *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	// The page name.
+	//
 	// example:
 	//
 	// aaa

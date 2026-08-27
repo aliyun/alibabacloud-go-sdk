@@ -52,7 +52,7 @@ type GetChatFlowMetricShrinkRequest struct {
 	//
 	// 9ccc41**************************
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
-	// The flow version. On the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page, click the flow name to open the canvas and view the flow version.
+	// The flow version. On the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page, click the flow name to enter the flow editor canvas page and view the flow version.
 	//
 	// example:
 	//
@@ -76,13 +76,13 @@ type GetChatFlowMetricShrinkRequest struct {
 	//
 	// nodeUsageStatistics
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The extended parameter for the metric query. When MetricName is set to nodeErrorDetails, pass in a JSON string. Valid values for the JSON fields:
+	// The extended parameter for the metric query. When MetricName is set to nodeErrorDetails, pass in a JSON string. Valid JSON fields:
 	//
 	// - pageNo: the current page number.
 	//
 	// - pageSize: the number of entries per page.
 	//
-	// - nodeId: the node ID. On the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page, click the flow name to open the canvas and copy the node ID.
+	// - nodeId: the node ID. On the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page, click the flow name to enter the canvas orchestration page and copy the node ID.
 	//
 	// example:
 	//

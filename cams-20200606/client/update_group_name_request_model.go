@@ -22,17 +22,21 @@ type iUpdateGroupNameRequest interface {
 }
 
 type UpdateGroupNameRequest struct {
+	// The group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// Sample value sample value sample value.
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The group name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// Sample value sample value.
 	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

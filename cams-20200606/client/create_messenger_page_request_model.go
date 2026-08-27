@@ -28,32 +28,42 @@ type iCreateMessengerPageRequest interface {
 }
 
 type CreateMessengerPageRequest struct {
+	// The IDs of the authorized ad accounts.
+	//
 	// This parameter is required.
 	AdAccountIds []*string `json:"AdAccountIds,omitempty" xml:"AdAccountIds,omitempty" type:"Repeated"`
+	// The authorization code obtained after the embedded authorization is completed.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值
+	// EAA****
 	AuthenticationCode *string `json:"AuthenticationCode,omitempty" xml:"AuthenticationCode,omitempty"`
+	// The Business platform ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// 293***
 	BusinessId *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// The SpaceId of the ISV sub-customer or the instance ID of the direct customer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// cams-s***
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The PageId of the messenger.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值示例值
+	// 19283***
 	PageId               *string `json:"PageId,omitempty" xml:"PageId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

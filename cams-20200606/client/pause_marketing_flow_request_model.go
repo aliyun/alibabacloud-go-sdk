@@ -22,10 +22,14 @@ type iPauseMarketingFLowRequest interface {
 }
 
 type PauseMarketingFLowRequest struct {
+	// The activity code.
+	//
 	// example:
 	//
 	// 439859845**234
 	ActivityCode *string `json:"ActivityCode,omitempty" xml:"ActivityCode,omitempty"`
+	// The activity ID (deprecated).
+	//
 	// example:
 	//
 	// N/A

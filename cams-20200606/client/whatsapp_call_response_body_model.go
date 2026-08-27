@@ -24,7 +24,7 @@ type iWhatsappCallResponseBody interface {
 }
 
 type WhatsappCallResponseBody struct {
-	// Details about the access denial.
+	// The details about the access denial.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type WhatsappCallResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error description.
+	// The error message.
 	//
 	// example:
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned result.
+	// The response result.
 	Model *WhatsappCallResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -138,7 +138,7 @@ func (s *WhatsappCallResponseBody) Validate() error {
 }
 
 type WhatsappCallResponseBodyModel struct {
-	// The unique identifier for each call.
+	// The unique identifier of each call.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iFlowBindPhoneResponseBody interface {
 }
 
 type FlowBindPhoneResponseBody struct {
-	// Details about the access denial.
+	// The details about the access denial.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type FlowBindPhoneResponseBody struct {
 	//
 	// None
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Indicates whether the result was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true: Yes.
+	// - true: The operation is successful.
 	//
-	// - false: No.
+	// - false: The operation failed.
 	//
 	// example:
 	//
@@ -58,9 +58,9 @@ type FlowBindPhoneResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the operation is successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: The operation is successful.
 	//
 	// - false: The operation failed.
 	//

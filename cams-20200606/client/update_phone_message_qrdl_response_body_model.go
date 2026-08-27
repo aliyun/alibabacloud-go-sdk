@@ -22,7 +22,7 @@ type iUpdatePhoneMessageQrdlResponseBody interface {
 }
 
 type UpdatePhoneMessageQrdlResponseBody struct {
-	// The access denial details.
+	// The details about the access denial.
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type UpdatePhoneMessageQrdlResponseBodyData struct {
 	//
 	// Hello
 	PrefilledMessage *string `json:"PrefilledMessage,omitempty" xml:"PrefilledMessage,omitempty"`
-	// The QR code image URL.
+	// The URL of the QR code image.
 	//
 	// example:
 	//

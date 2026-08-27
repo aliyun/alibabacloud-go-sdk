@@ -24,23 +24,42 @@ type iListViberServiceMessageResponseBody interface {
 }
 
 type ListViberServiceMessageResponseBody struct {
+	// The access denial details.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request status code.
+	//
+	// - OK indicates that the request was successful.
+	//
+	// - For other error codes, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
+	//
 	// example:
 	//
 	// OK
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data object.
 	Data []*ListViberServiceMessageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The returned message.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID. This is used for troubleshooting when an error occurs.
+	//
 	// example:
 	//
 	// ddhjdn-dnjdnkdjknd**
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
 	// example:
 	//
 	// true
@@ -123,22 +142,34 @@ func (s *ListViberServiceMessageResponseBody) Validate() error {
 }
 
 type ListViberServiceMessageResponseBodyData struct {
+	// The business account name.
+	//
 	// example:
 	//
-	// 测试
-	BusinessAccountName               *string   `json:"BusinessAccountName,omitempty" xml:"BusinessAccountName,omitempty"`
-	DestinationCountryId              []*string `json:"DestinationCountryId,omitempty" xml:"DestinationCountryId,omitempty" type:"Repeated"`
+	// Test.
+	BusinessAccountName *string `json:"BusinessAccountName,omitempty" xml:"BusinessAccountName,omitempty"`
+	// The destination country or region ID.
+	DestinationCountryId []*string `json:"DestinationCountryId,omitempty" xml:"DestinationCountryId,omitempty" type:"Repeated"`
+	// The destination country or region ID.
 	DestinationInternationalCountryId []*string `json:"DestinationInternationalCountryId,omitempty" xml:"DestinationInternationalCountryId,omitempty" type:"Repeated"`
+	// The industry involved.
+	//
 	// example:
 	//
-	// 医疗服务
-	IndustryInvolved                       *string   `json:"IndustryInvolved,omitempty" xml:"IndustryInvolved,omitempty"`
-	MessageDestinationCountry              []*string `json:"MessageDestinationCountry,omitempty" xml:"MessageDestinationCountry,omitempty" type:"Repeated"`
+	// Healthcare.
+	IndustryInvolved *string `json:"IndustryInvolved,omitempty" xml:"IndustryInvolved,omitempty"`
+	// The collection of destination countries or regions.
+	MessageDestinationCountry []*string `json:"MessageDestinationCountry,omitempty" xml:"MessageDestinationCountry,omitempty" type:"Repeated"`
+	// The list of international destination countries or regions.
 	MessageDestinationInternationalCountry []*string `json:"MessageDestinationInternationalCountry,omitempty" xml:"MessageDestinationInternationalCountry,omitempty" type:"Repeated"`
+	// The service ID.
+	//
 	// example:
 	//
 	// 25644
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The resource status.
+	//
 	// example:
 	//
 	// stop

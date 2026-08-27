@@ -19,16 +19,18 @@ type iGetChatappTemplateDetailResponseBody interface {
 	GetMessage() *string
 	SetRequestId(v string) *GetChatappTemplateDetailResponseBody
 	GetRequestId() *string
+	SetSuccess(v bool) *GetChatappTemplateDetailResponseBody
+	GetSuccess() *bool
 }
 
 type GetChatappTemplateDetailResponseBody struct {
-	// The access denied details.
+	// The access denied detail information.
 	//
 	// example:
 	//
 	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code.
+	// The request status code.
 	//
 	// - OK indicates that the request was successful.
 	//
@@ -56,6 +58,10 @@ type GetChatappTemplateDetailResponseBody struct {
 	//
 	// 744c4b5c79c9432497a075bdfca3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetChatappTemplateDetailResponseBody) String() string {
@@ -86,6 +92,10 @@ func (s *GetChatappTemplateDetailResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *GetChatappTemplateDetailResponseBody) GetSuccess() *bool {
+	return s.Success
+}
+
 func (s *GetChatappTemplateDetailResponseBody) SetAccessDeniedDetail(v string) *GetChatappTemplateDetailResponseBody {
 	s.AccessDeniedDetail = &v
 	return s
@@ -111,6 +121,11 @@ func (s *GetChatappTemplateDetailResponseBody) SetRequestId(v string) *GetChatap
 	return s
 }
 
+func (s *GetChatappTemplateDetailResponseBody) SetSuccess(v bool) *GetChatappTemplateDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
 func (s *GetChatappTemplateDetailResponseBody) Validate() error {
 	if s.Data != nil {
 		if err := s.Data.Validate(); err != nil {
@@ -121,6 +136,11 @@ func (s *GetChatappTemplateDetailResponseBody) Validate() error {
 }
 
 type GetChatappTemplateDetailResponseBodyData struct {
+	// Indicates whether the current template can be used for sending. This parameter is valid only for Marketing templates.
+	//
+	// example:
+	//
+	// true
 	AllowSend *bool `json:"AllowSend,omitempty" xml:"AllowSend,omitempty"`
 	// The audit status. Valid values:
 	//
@@ -146,34 +166,25 @@ type GetChatappTemplateDetailResponseBodyData struct {
 	//
 	// Viber template category. Valid values:
 	//
-	// - **text**: text only
+	// - **UTILITY**: transaction-related.
 	//
-	// - **image**: image only
+	// - **MARKETING**: marketing template.
 	//
-	// - **text_image_button**: text + image + button
-	//
-	// - **text_button**: text + button
-	//
-	// - **document**: file
-	//
-	// - **video**: video
-	//
-	// - **text_video**: text + video
-	//
-	// - **text_video_button**: text + video + button
-	//
-	// - **text_image**: text + image
-	//
-	// > When the Viber template value is text_video_button, the button does not open a web page. Instead, it opens the video of the current message within the web page. Therefore, you do not need to enter any address information in the URL of the button.
+	// - **AUTHENTICATION**: identity verification.
 	//
 	// example:
 	//
 	// UTILITY
-	Category             *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	CategoryChangePaused *bool   `json:"CategoryChangePaused,omitempty" xml:"CategoryChangePaused,omitempty"`
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Indicates whether template sending is paused when a Utility template is changed to a Marketing template.
+	//
+	// example:
+	//
+	// true
+	CategoryChangePaused *bool `json:"CategoryChangePaused,omitempty" xml:"CategoryChangePaused,omitempty"`
 	// The list of message template components.
 	Components []*GetChatappTemplateDetailResponseBodyDataComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// The variable examples.
+	// The variable example.
 	Example map[string]*string `json:"Example,omitempty" xml:"Example,omitempty"`
 	// The language of the template. For detailed language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
 	//
@@ -181,7 +192,7 @@ type GetChatappTemplateDetailResponseBodyData struct {
 	//
 	// en_US
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The message validity period when sending messages with WhatsApp Authentication templates.
+	// The message time-to-live when sending WhatsApp Authentication template messages.
 	//
 	// example:
 	//
@@ -193,21 +204,27 @@ type GetChatappTemplateDetailResponseBodyData struct {
 	//
 	// hello_whatsapp
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// productSetId
+	//
+	// example:
+	//
+	// 939***
+	ProductSetId *string `json:"ProductSetId,omitempty" xml:"ProductSetId,omitempty"`
 	// The template quality.
 	//
-	// - RED (low quality)
+	// - RED: Low quality.
 	//
-	// - YELLOW (medium quality)
+	// - YELLOW: Medium quality.
 	//
-	// - UNKNOWN (unknown quality)
+	// - UNKNOWN: Quality unknown.
 	//
-	// - GREEN (high quality)
+	// - GREEN: High quality.
 	//
 	// example:
 	//
 	// GREEN
 	QualityScore *string `json:"QualityScore,omitempty" xml:"QualityScore,omitempty"`
-	// The reason why the template was rejected during review.
+	// The reason for template review rejection.
 	//
 	// example:
 	//
@@ -275,6 +292,10 @@ func (s *GetChatappTemplateDetailResponseBodyData) GetName() *string {
 	return s.Name
 }
 
+func (s *GetChatappTemplateDetailResponseBodyData) GetProductSetId() *string {
+	return s.ProductSetId
+}
+
 func (s *GetChatappTemplateDetailResponseBodyData) GetQualityScore() *string {
 	return s.QualityScore
 }
@@ -336,6 +357,11 @@ func (s *GetChatappTemplateDetailResponseBodyData) SetName(v string) *GetChatapp
 	return s
 }
 
+func (s *GetChatappTemplateDetailResponseBodyData) SetProductSetId(v string) *GetChatappTemplateDetailResponseBodyData {
+	s.ProductSetId = &v
+	return s
+}
+
 func (s *GetChatappTemplateDetailResponseBodyData) SetQualityScore(v string) *GetChatappTemplateDetailResponseBodyData {
 	s.QualityScore = &v
 	return s
@@ -370,25 +396,25 @@ func (s *GetChatappTemplateDetailResponseBodyData) Validate() error {
 }
 
 type GetChatappTemplateDetailResponseBodyDataComponents struct {
-	// Valid for WhatsApp templates when Category is Authentication and Component Type is Body. Displays a recommendation on the Body not to share the verification code with others.
+	// Valid for WhatsApp templates when Category is Authentication and Component Type is Body. Indicates whether a security recommendation message that advises users not to share the verification code is displayed above the Body.
 	//
 	// example:
 	//
 	// false
 	AddSecretRecommendation *bool `json:"AddSecretRecommendation,omitempty" xml:"AddSecretRecommendation,omitempty"`
-	// The list of buttons. Applicable only to the **BUTTONS*	- component.
+	// The button list. Applicable only to the **BUTTONS*	- component.
 	//
 	// > WhatsApp button quantity rules:
 	//
-	// > - When the WhatsApp category is MARKETING or UTILITY, a maximum of 10 buttons are allowed.
+	// > - For WhatsApp templates with Category set to MARKETING or UTILITY, a maximum of 10 buttons are allowed.
 	//
-	// > - Only one PHONE_NUMBER button is allowed.
+	// > - Only 1 PHONE_NUMBER button is allowed.
 	//
-	// > - A maximum of two URL buttons are allowed.
+	// > - A maximum of 2 URL buttons are allowed.
 	//
-	// > - QUICK_REPLY buttons cannot appear in a mixed order with PHONE_NUMBER or URL buttons.
+	// > - QUICK_REPLY buttons cannot be mixed in random order with PHONE_NUMBER or URL buttons.
 	Buttons []*GetChatappTemplateDetailResponseBodyDataComponentsButtons `json:"Buttons,omitempty" xml:"Buttons,omitempty" type:"Repeated"`
-	// The description of the file.
+	// The file description.
 	//
 	// example:
 	//
@@ -396,25 +422,25 @@ type GetChatappTemplateDetailResponseBodyDataComponents struct {
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
 	// The list of carousel cards.
 	Cards []*GetChatappTemplateDetailResponseBodyDataComponentsCards `json:"Cards,omitempty" xml:"Cards,omitempty" type:"Repeated"`
-	// The verification code validity period (in minutes) for WhatsApp Authentication templates. Valid only for WhatsApp messages when Category is Authentication and Component Type is Footer. This information is displayed in the Footer.
+	// The verification code validity period in minutes for WhatsApp Authentication templates. Valid only when the message type is WhatsApp, Category is Authentication, and Component Type is Footer. This information is displayed in the Footer position.
 	//
 	// example:
 	//
 	// 5
 	CodeExpirationMinutes *int32 `json:"CodeExpirationMinutes,omitempty" xml:"CodeExpirationMinutes,omitempty"`
-	// The video duration for Viber video messages. Valid values: 0 to 600.
+	// The video duration of a Viber video message. Valid values: 0 to 600.
 	//
 	// example:
 	//
 	// 50
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The name of the file.
+	// The file name.
 	//
 	// example:
 	//
 	// example
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The file type for Viber file messages.
+	// The file type of a Viber file message.
 	//
 	// example:
 	//
@@ -432,13 +458,13 @@ type GetChatappTemplateDetailResponseBodyDataComponents struct {
 	//
 	// 28.001
 	Latitude *string `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
-	// The address of the location.
+	// The location address.
 	//
 	// example:
 	//
 	// hangzhou
 	LocationAddress *string `json:"LocationAddress,omitempty" xml:"LocationAddress,omitempty"`
-	// The name of the location.
+	// The location name.
 	//
 	// example:
 	//
@@ -450,7 +476,7 @@ type GetChatappTemplateDetailResponseBodyDataComponents struct {
 	//
 	// 120.002
 	Longitude *string `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
-	// The coupon code expiration variable for LTO templates.
+	// The offer code expiration variable in a Limited Time Offer (LTO) template.
 	//
 	// example:
 	//
@@ -462,7 +488,7 @@ type GetChatappTemplateDetailResponseBodyDataComponents struct {
 	//
 	// hello
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The thumbnail for Viber video messages.
+	// The thumbnail for a Viber video message.
 	//
 	// example:
 	//
@@ -476,29 +502,29 @@ type GetChatappTemplateDetailResponseBodyDataComponents struct {
 	//
 	// - **FOOTER**
 	//
-	//  - **BUTTONS**
+	// - **BUTTONS**
 	//
 	// - **CAROUSEL**
 	//
 	// - **LIMITED_TIME_OFFER**
 	//
-	// > - For WhatsApp templates, the character length of the **BODY*	- component cannot exceed 1024 characters. The character length of the **HEADER*	- and **FOOTER*	- components cannot exceed 60 characters.
+	// > - For WhatsApp templates, the **BODY*	- component cannot exceed 1024 characters. The **HEADER*	- and **FOOTER*	- components cannot exceed 60 characters.
 	//
 	// > - For Viber templates, the **FOOTER**, **CAROUSEL**, and **LIMITED_TIME_OFFER*	- types are invalid.
 	//
-	// > - In Viber templates, images, videos, and files are placed in the **HEADER*	- (the device displays images below the text).
+	// > - For Viber templates, images, videos, and files are placed in the **HEADER*	- (the device displays images below the text).
 	//
 	// example:
 	//
 	// BODY
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The media URL.
+	// The material URL.
 	//
 	// example:
 	//
 	// https://image.developer.aliyundoc.com
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// Specifies whether the coupon code has an expiration time in limited-time offer (LTO) templates.
+	// Specifies whether the offer code has an expiration time in a Limited Time Offer (LTO) template.
 	//
 	// example:
 	//
@@ -708,7 +734,7 @@ func (s *GetChatappTemplateDetailResponseBodyDataComponents) Validate() error {
 }
 
 type GetChatappTemplateDetailResponseBodyDataComponentsButtons struct {
-	// Required when the WhatsApp template Category is Authentication and Button Type is ONE_TAP. The button text for the WhatsApp autofill operation.
+	// Required for WhatsApp templates with Category set to Authentication and Button Type set to ONE_TAP. Specifies the button text for the WhatsApp Autofill operation.
 	//
 	// example:
 	//
@@ -720,13 +746,13 @@ type GetChatappTemplateDetailResponseBodyDataComponentsButtons struct {
 	//
 	// 202039ksjs
 	CouponCode *string `json:"CouponCode,omitempty" xml:"CouponCode,omitempty"`
-	// The extended attributes.
+	// The extended fields.
 	ExtendAttrs *GetChatappTemplateDetailResponseBodyDataComponentsButtonsExtendAttrs `json:"ExtendAttrs,omitempty" xml:"ExtendAttrs,omitempty" type:"Struct"`
-	// The flow data event type. Valid values:
+	// The Flow data event type. Valid values:
 	//
-	// - NAVIGATE: navigation
+	// - NAVIGATE: navigation.
 	//
-	// - DATA_EXCHANGE: data exchange
+	// - DATA_EXCHANGE: data exchange.
 	//
 	// example:
 	//
@@ -738,7 +764,7 @@ type GetChatappTemplateDetailResponseBodyDataComponentsButtons struct {
 	//
 	// 3838292983
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	// Valid when the WhatsApp template Category is Marketing and Button Type is QUICK_REPLY. Indicates that the button is a marketing opt-out button. If the customer clicks this button and the send control operation is configured on the Chat App platform, subsequent marketing messages will not be sent to the customer.
+	// Valid for WhatsApp templates with Category set to Marketing and Button Type set to QUICK_REPLY. Indicates that the button is a marketing opt-out button. If a customer clicks this button and the send control operation is configured on the Chat App Message Service platform, subsequent Marketing messages will not be sent to the customer.
 	//
 	// example:
 	//
@@ -750,7 +776,7 @@ type GetChatappTemplateDetailResponseBodyDataComponentsButtons struct {
 	//
 	// DETAILS
 	NavigateScreen *string `json:"NavigateScreen,omitempty" xml:"NavigateScreen,omitempty"`
-	// Required when the WhatsApp template Category is Authentication and Button Type is ONE_TAP. The package name of the application launched by WhatsApp.
+	// Required for WhatsApp templates with Category set to Authentication and Button Type set to ONE_TAP. Specifies the package name for WhatsApp to launch the application.
 	//
 	// example:
 	//
@@ -762,13 +788,13 @@ type GetChatappTemplateDetailResponseBodyDataComponentsButtons struct {
 	//
 	// +861398745****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// Required when the WhatsApp template Category is Authentication and Button Type is ONE_TAP. The signature hash value used by WhatsApp to launch the application.
+	// Required for WhatsApp templates with Category set to Authentication and Button Type set to ONE_TAP. Specifies the signature hash value for WhatsApp to launch the application.
 	//
 	// example:
 	//
 	// 2993839
 	SignatureHash *string `json:"SignatureHash,omitempty" xml:"SignatureHash,omitempty"`
-	// The applications supported by ONE_TAP/ZERO_TAP verification code.
+	// The applications supported by the ONE_TAP/ZERO_TAP verification code.
 	SupportedApps []*GetChatappTemplateDetailResponseBodyDataComponentsButtonsSupportedApps `json:"SupportedApps,omitempty" xml:"SupportedApps,omitempty" type:"Repeated"`
 	// The display name of the button.
 	//
@@ -778,23 +804,23 @@ type GetChatappTemplateDetailResponseBodyDataComponentsButtons struct {
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// The button type.
 	//
-	// - **PHONE_NUMBER**: call button
+	// - **PHONE_NUMBER**: phone call button.
 	//
-	// - **URL**: web page button
+	// - **URL**: web page button.
 	//
-	// - **QUICK_REPLY**: quick reply button
+	// - **QUICK_REPLY**: quick reply button.
 	//
-	// - **COPY_CODE**: copy verification code or coupon code
+	// - **COPY_CODE**: copy verification code or coupon code.
 	//
-	// - **ONE_TAP**: autofill button for AUTHENTICATION templates
+	// - **ONE_TAP**: autofill button for AUTHENTICATION templates.
 	//
-	// - **ZERO_TAP**: autofill button for AUTHENTICATION templates
+	// - **ZERO_TAP**: autofill button for AUTHENTICATION templates.
 	//
-	// - **MPM**: multi-product catalog
+	// - **MPM**: multi-product catalog.
 	//
-	// - **CATALOG**: catalog
+	// - **CATALOG**: catalog.
 	//
-	// - **FLOW**: open WhatsApp flow
+	// - **FLOW**: open WhatsApp flow.
 	//
 	// > - For WhatsApp templates with Category set to AUTHENTICATION, only one button is allowed, and the type can only be COPY_CODE or ONE_TAP. If the type is COPY_CODE, Text is required. If the type is ONE_TAP, Text (displayed when the target application is not installed on the device, indicating the name of the copy verification code button), SignatureHash, PackageName, and AutofillText are required.
 	//
@@ -1156,13 +1182,13 @@ func (s *GetChatappTemplateDetailResponseBodyDataComponentsCards) Validate() err
 type GetChatappTemplateDetailResponseBodyDataComponentsCardsCardComponents struct {
 	// The list of card buttons.
 	Buttons []*GetChatappTemplateDetailResponseBodyDataComponentsCardsCardComponentsButtons `json:"Buttons,omitempty" xml:"Buttons,omitempty" type:"Repeated"`
-	// The header type in carousel templates. Only IMAGE and VIDEO are supported. All cards must have the same header type.
+	// The header type in a carousel template. Only IMAGE and VIDEO are supported. All cards must have the same header type.
 	//
 	// example:
 	//
 	// HEADER
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
-	// The text content of the card.
+	// The card text content.
 	//
 	// example:
 	//
@@ -1174,7 +1200,7 @@ type GetChatappTemplateDetailResponseBodyDataComponentsCardsCardComponents struc
 	//
 	// HEADER
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The web address.
+	// The web URL.
 	//
 	// example:
 	//
@@ -1261,13 +1287,13 @@ type GetChatappTemplateDetailResponseBodyDataComponentsCardsCardComponentsButton
 	//
 	// example
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	// The button type for carousel templates. Valid values: URL, PHONE_NUMBER, and QUICK_REPLY.
+	// The button type for a carousel template. Valid values: URL, PHONE_NUMBER, or QUICK_REPLY.
 	//
 	// example:
 	//
 	// URL
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The URL accessed when the button is clicked.
+	// The URL to visit when the button is clicked.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iReadChatFlowLogSettingRequest interface {
 }
 
 type ReadChatFlowLogSettingRequest struct {
-	// The code of the flow. You can find the flow code in the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder).
+	// The flow code. You can view the flow code on the [Flow Editor](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
 	//
 	// example:
 	//

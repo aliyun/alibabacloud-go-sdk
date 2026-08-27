@@ -17,6 +17,8 @@ type iFlowRebindPhoneShrinkRequest interface {
 	GetFlowCode() *string
 	SetFlowVersion(v string) *FlowRebindPhoneShrinkRequest
 	GetFlowVersion() *string
+	SetMultiWabaPhoneNumbersShrink(v string) *FlowRebindPhoneShrinkRequest
+	GetMultiWabaPhoneNumbersShrink() *string
 	SetOwnerId(v int64) *FlowRebindPhoneShrinkRequest
 	GetOwnerId() *int64
 	SetPhoneNumbersShrink(v string) *FlowRebindPhoneShrinkRequest
@@ -30,9 +32,7 @@ type iFlowRebindPhoneShrinkRequest interface {
 }
 
 type FlowRebindPhoneShrinkRequest struct {
-	// The message channel code, which is the channel ID. You can view the channel ID on the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) page.
-	//
-	// This parameter is required.
+	// The message channel code, which is the channel ID. You can view the channel ID in the [Channel Management](https://chatapp.console.aliyun.com/ChannelsManagement) console.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type FlowRebindPhoneShrinkRequest struct {
 	//
 	// WHATSAPP
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	// The flow code. You can view it on the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder) page.
+	// The flow code. You can view this in the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder) console.
 	//
 	// This parameter is required.
 	//
@@ -62,24 +62,24 @@ type FlowRebindPhoneShrinkRequest struct {
 	//
 	// 9ccc41**************************
 	FlowCode *string `json:"FlowCode,omitempty" xml:"FlowCode,omitempty"`
-	// The flow version. On the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder) page, click the flow name to open the flow builder canvas and view the flow version.
+	// The flow version. In the [Flow Builder](https://chatapp.console.aliyun.com/ChatFlowBuilder) console, click the flow name to open the flow editor canvas and view the flow version.
 	//
 	// example:
 	//
 	// 1
 	FlowVersion *string `json:"FlowVersion,omitempty" xml:"FlowVersion,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The multi-WABA binding configurations.
+	MultiWabaPhoneNumbersShrink *string `json:"MultiWabaPhoneNumbers,omitempty" xml:"MultiWabaPhoneNumbers,omitempty"`
+	OwnerId                     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The list of phone numbers, PageIds, or AccountIds<props="intl">, or ServiceIds under the channel instance.
 	PhoneNumbersShrink   *string `json:"PhoneNumbers,omitempty" xml:"PhoneNumbers,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The WABA account ID, PageId, or AccountId<props="intl">, or ServiceId.
 	//
-	// - If ChannelType is set to WHATSAPP, specify the WABA account ID. You can view the WABA account ID on the Channel Management > Manage > WABA Management page.
+	// - If ChannelType is set to WHATSAPP, specify the WABA account ID. You can view the WABA account ID in Channel Management > Manage > WABA Management.
 	//
 	// - If ChannelType is not set to WHATSAPP, specify the PageId for MESSENGER, the AccountId for INSTAGRAM<props="intl">, or the ServiceId for VIBER.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -109,6 +109,10 @@ func (s *FlowRebindPhoneShrinkRequest) GetFlowCode() *string {
 
 func (s *FlowRebindPhoneShrinkRequest) GetFlowVersion() *string {
 	return s.FlowVersion
+}
+
+func (s *FlowRebindPhoneShrinkRequest) GetMultiWabaPhoneNumbersShrink() *string {
+	return s.MultiWabaPhoneNumbersShrink
 }
 
 func (s *FlowRebindPhoneShrinkRequest) GetOwnerId() *int64 {
@@ -148,6 +152,11 @@ func (s *FlowRebindPhoneShrinkRequest) SetFlowCode(v string) *FlowRebindPhoneShr
 
 func (s *FlowRebindPhoneShrinkRequest) SetFlowVersion(v string) *FlowRebindPhoneShrinkRequest {
 	s.FlowVersion = &v
+	return s
+}
+
+func (s *FlowRebindPhoneShrinkRequest) SetMultiWabaPhoneNumbersShrink(v string) *FlowRebindPhoneShrinkRequest {
+	s.MultiWabaPhoneNumbersShrink = &v
 	return s
 }
 

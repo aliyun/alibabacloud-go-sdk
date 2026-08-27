@@ -20,6 +20,8 @@ type iGetWhatsappConversionApiRequest interface {
 }
 
 type GetWhatsappConversionApiRequest struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// chatbot-cn-VBe6QXXX

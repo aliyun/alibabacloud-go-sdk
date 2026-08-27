@@ -38,31 +38,33 @@ type iListChatappTemplateShrinkRequest interface {
 }
 
 type ListChatappTemplateShrinkRequest struct {
-	// The review state of the template. Valid values:
+	// The review status. Valid values:
 	//
-	// - **pass**: The template is approved.
+	// - **pass**: Approved.
 	//
-	// - **fail**: The template is rejected.
+	// - **fail**: Rejected.
 	//
-	// - **auditing**: The template is being reviewed.
+	// - **auditing**: Under review.
 	//
-	// - **unaudit**: The review is suspended.
+	// - **unaudit**: Review suspended.
 	//
 	// example:
 	//
 	// pass
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// The category of the template.
+	//
 	// example:
 	//
 	// AUTHENTICATION
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The code of the message template.
+	// The code of the template.
 	//
 	// example:
 	//
 	// 838888822*****
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The space ID of the RAM user within the ISV account.
+	// The space ID of the ISV sub-customer, or the instance ID of a direct customer.
 	//
 	// example:
 	//
@@ -70,21 +72,21 @@ type ListChatappTemplateShrinkRequest struct {
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// Deprecated
 	//
-	// The WhatsApp Business Account (WABA) ID of the RAM user within the independent software vendor (ISV) account.
+	// The WabaId of the ISV customer.
 	//
-	// > CustWabaId is an obsolete parameter. Use CustSpaceId instead.
+	// > This is a deprecated parameter. Use CustSpaceId instead.
 	//
 	// example:
 	//
 	// 65921621816****
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
-	// The ISV verification code. This parameter is used to verify whether the RAM user is authorized by the ISV account.
+	// The ISV verification code, which is used to verify whether the RAM user is authorized by the ISV.
 	//
 	// example:
 	//
 	// skdi3kksloslikdkkdk
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
-	// The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+	// The language of the template. For more information about language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
 	//
 	// example:
 	//
@@ -105,7 +107,7 @@ type ListChatappTemplateShrinkRequest struct {
 	PageShrink           *string `json:"Page,omitempty" xml:"Page,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the message template.
+	// The templatetype. Valid values:
 	//
 	// - **WHATSAPP**
 	//

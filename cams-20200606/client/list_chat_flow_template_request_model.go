@@ -36,7 +36,7 @@ type ListChatFlowTemplateRequest struct {
 	//
 	// ALICOM_OPAAS
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// The keyword for the search. The operation performs a fuzzy query for template names based on this keyword.
+	// The search keyword. Used for fuzzy match of template names.
 	//
 	// example:
 	//
@@ -49,7 +49,7 @@ type ListChatFlowTemplateRequest struct {
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The number of records per page.
 	//
 	// example:
 	//
@@ -57,7 +57,7 @@ type ListChatFlowTemplateRequest struct {
 	PageSize             *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The trigger type of the flow. Valid values:
+	// The flow trigger type. Valid values:
 	//
 	// - TriggeredManually
 	//

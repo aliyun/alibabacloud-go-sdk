@@ -28,19 +28,19 @@ type iCreateChatFlowByImportRequest interface {
 }
 
 type CreateChatFlowByImportRequest struct {
-	// The business tenant code. The default value is ALICOM_OPAAS.
+	// The business tenant code. Default value: ALICOM_OPAAS.
 	//
 	// example:
 	//
 	// ALICOM_OPAAS
 	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	// The business extension information. The default value is an empty collection.
+	// The business extension information. Default value: an empty collection.
 	//
 	// example:
 	//
 	// {}
 	BizExtend map[string]interface{} `json:"BizExtend,omitempty" xml:"BizExtend,omitempty"`
-	// The flow DSL data to import. This is a block of data in JSON format. To obtain this data, arrange the components on the canvas in the Flow Editor, save the flow, and then click **Settings*	- > **Export*	- in the upper-right corner of the canvas. The flow is exported as a JSON data file.
+	// The imported flow DSL data, which is a JSON-formatted string. You can arrange flow components on the canvas in the flow orchestration console in advance, save the flow, and then click **Settings*	- > **Export*	- in the upper-right corner of the canvas to export a JSON data file for viewing.
 	//
 	// example:
 	//
@@ -67,19 +67,19 @@ type CreateChatFlowByImportRequest struct {
 	// }
 	FlowViewModel *string `json:"FlowViewModel,omitempty" xml:"FlowViewModel,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The remarks for the flow.
+	// The flow remarks.
 	//
 	// example:
 	//
-	// 触发订阅
+	// Trigger Subscription.
 	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The title of the flow.
+	// The flow title.
 	//
 	// example:
 	//
-	// WhatsApp触发订阅
+	// WhatsApp Trigger Subscription.
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

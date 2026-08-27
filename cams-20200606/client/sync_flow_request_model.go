@@ -20,7 +20,7 @@ type iSyncFlowRequest interface {
 }
 
 type SyncFlowRequest struct {
-	// 通道实例
+	// The channel instance.
 	//
 	// This parameter is required.
 	//

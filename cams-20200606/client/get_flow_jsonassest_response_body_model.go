@@ -22,7 +22,11 @@ type iGetFlowJSONAssestResponseBody interface {
 }
 
 type GetFlowJSONAssestResponseBody struct {
-	// Details about the access denial.
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// None
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The error code. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
 	//
@@ -115,7 +119,7 @@ type GetFlowJSONAssestResponseBodyData struct {
 	//
 	// https://bucket-*****-ap-southeast-1.aliyuncs.com/9658820125168****.json
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// The flow ID.
+	// Flow ID。
 	//
 	// example:
 	//

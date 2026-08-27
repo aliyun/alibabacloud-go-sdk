@@ -88,9 +88,9 @@ type SendChatappMessageRequest struct {
 	//
 	// 123123********
 	AdAccountId *string `json:"AdAccountId,omitempty" xml:"AdAccountId,omitempty"`
-	// The message category (for WhatsApp direct send).
+	// The message type (for WhatsApp direct send).
 	//
-	// 	Warning: Do not specify this parameter unless you are a Meta-invited customer. Otherwise, message delivery will fail.
+	// 	Warning: Do not specify this parameter if you are not a Meta-invited customer. Otherwise, message sending fails.
 	//
 	// example:
 	//
@@ -106,6 +106,10 @@ type SendChatappMessageRequest struct {
 	//
 	// - **telegram**
 	//
+	// - **line**
+	//
+	// - **telegram**
+	//
 	// <props="intl">- **viber**
 	//
 	// This parameter is required.
@@ -116,59 +120,126 @@ type SendChatappMessageRequest struct {
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
 	// The message content.
 	//
-	// **WhatsApp message notes:**
+	// <details>
 	//
-	// - If **messageType*	- is **text**, the **text*	- field is required and the **Caption*	- field must not be specified.
+	// <summary>WhatsApp message notes:</summary>
 	//
-	// - If **messageType*	- is **image**, the **Link*	- field is required.
+	// - When **messageType*	- is **text**, the **text*	- field is required and the **Caption*	- field must not be specified.
 	//
-	// - If **messageType*	- is **video**, the **Link*	- field is required.
+	// - When **messageType*	- is **image**, the **Link*	- field is required.
 	//
-	// - If **messageType*	- is **audio**, the **Link*	- field is required and the **Caption*	- field is invalid.
+	// - When **messageType*	- is **video**, the **Link*	- field is required.
 	//
-	// - If **messageType*	- is **document**, the **Link*	- and **FileName*	- fields are required and the **Caption*	- field is invalid.
+	// - When **messageType*	- is **audio**, the **Link*	- field is required and the **Caption*	- field is invalid.
 	//
-	// - If **messageType*	- is **interactive**, the **type*	- and **action*	- fields are required.
+	// - When **messageType*	- is **document**, the **Link*	- and **FileName*	- fields are required and the **Caption*	- field is invalid.
 	//
-	// - If **messageType*	- is **contacts**, the **name*	- field is required.
+	// - When **messageType*	- is **interactive**, the **type*	- and **action*	- fields are required.
 	//
-	// - If **messageType*	- is **location**, the **longitude*	- and **latitude*	- fields are required.
+	// - When **messageType*	- is **contacts**, the **name*	- field is required.
 	//
-	// - If **messageType*	- is **sticker**, the **Link*	- field is required and the **Caption*	- and **FileName*	- fields are invalid.
+	// - When **messageType*	- is **location**, the **longitude*	- and **latitude*	- fields are required.
 	//
-	// - If **messageType*	- is **reaction**, the **messageId*	- and **emoji*	- fields are required.
+	// - When **messageType*	- is **sticker**, the **Link*	- field is required and the **Caption*	- and **FileName*	- fields are invalid.
+	//
+	// - When **messageType*	- is **reaction**, the **messageId*	- and **emoji*	- fields are required.
+	//
+	// </details>
+	//
+	// <details>
+	//
+	// <summary>Messenger message notes:</summary>
+	//
+	// - When **messageType*	- is **text**, the **text*	- field is required.
+	//
+	// - When **messageType*	- is **image**, **video**, **audio**, or **document**, the **link*	- field is required.
+	//
+	// </details>
+	//
+	// <details>
+	//
+	// <summary>Instagram message notes:</summary>
+	//
+	// - When **messageType*	- is **text**, the **text*	- field is required.
+	//
+	// - When **messageType*	- is **image**, **video**, or **audio**, the **link*	- field is required.
+	//
+	// </details>
+	//
+	// <props="intl">
+	//
+	// <details>
+	//
+	// <summary>Viber message notes:</summary>
+	//
+	// - When **messageType*	- is **text**, the **text*	- field is required.
+	//
+	// - When **messageType*	- is **image**, the **link*	- field is required.
+	//
+	// - When **messageType*	- is **video**, the **link**, **thumbnail**, **fileSize**, and **duration*	- fields are required.
+	//
+	// - When **messageType*	- is **document**, the **link**, **fileName**, and **fileType*	- fields are required.
+	//
+	// - When **messageType*	- is **text_button**, the **text**, **caption**, and **action*	- fields are required.
+	//
+	// - When **messageType*	- is **text_image_button**, the **text**, **link**, **caption**, and **action*	- fields are required.
+	//
+	// - When **messageType*	- is **text_video**, the **text**, **link**, **thumbnail**, **fileSize**, and **duration*	- fields are required.
+	//
+	// - When **messageType*	- is **text_video_button**, the **text**, **link**, **thumbnail**, **fileSize**, **duration**, and **caption*	- fields are required, and the **action*	- field must not be empty.
+	//
+	// </details>
 	//
 	//
-	// **Messenger message notes:**
+	// <details>
 	//
-	// - If **messageType*	- is **text**, the **text*	- field is required.
+	// <summary>Telegram message notes:</summary>
 	//
-	// - If **messageType*	- is **image**, **video**, **audio**, or **document**, the **link*	- field is required.
+	// - When **messageType*	- is **text**, the **text*	- field is required.
 	//
-	// **Instagram message notes:**
+	// - When **messageType*	- is **image**, **video**, **audio**, **gif**, or **sticker**, the **link*	- field is required.
 	//
-	// - If **messageType*	- is **text**, the **text*	- field is required.
+	// - When **messageType*	- is **location**, the **latitude*	- and **longitude*	- fields are required.
 	//
-	// - If **messageType*	- is **image**, **video**, or **audio**, the **link*	- field is required.
+	// - When **messageType*	- is **interactive**, the **type*	- field is required. You can send various Telegram message types. Example: {"type": "sendPhoto", "sendPhoto": {"photo":"http://img.png","caption":"21"}}. This can be used to send a Photo type message. For more information about message types, see [Telegram message body](https://core.telegram.org/bots/api#sendphoto).
 	//
+	// </details>
 	//
-	// <props="intl">**Viber message notes:**
+	// <details>
 	//
-	// <props="intl">- If **messageType*	- is **text**, the **text*	- field is required.
+	// <summary>LINE message notes:</summary>
 	//
-	// <props="intl">- If **messageType*	- is **image**, the **link*	- field is required.
+	// - When **messageType*	- is **text*	- or **textV2**, the **text*	- field is required.
 	//
-	// <props="intl">- If **messageType*	- is **video**, the **link**, **thumbnail**, **fileSize**, and **duration*	- fields are required.
+	// - When **messageType*	- is **image*	- or **video**, the **link*	- and **previewImageUrl*	- fields are required.
 	//
-	// <props="intl">- If **messageType*	- is **document**, the **link**, **fileName**, and **fileType*	- fields are required.
+	// - When **messageType*	- is **audio**, the **link*	- and **duration*	- fields are required.
 	//
-	// <props="intl">- If **messageType*	- is **text_button**, the **text**, **caption**, and **action*	- fields are required.
+	// - When **messageType*	- is **buttons*	- or **confirm**, the **text*	- and **actions*	- fields are required.
 	//
-	// <props="intl">- If **messageType*	- is **text_image_button**, the **text**, **link**, **caption**, and **action*	- fields are required.
+	// - When **messageType*	- is **carousel*	- or **imageCarousel**, the **columns*	- field is required.
 	//
-	// <props="intl">- If **messageType*	- is **text_video**, the **text**, **link**, **thumbnail**, **fileSize**, and **duration*	- fields are required.
+	// - When **messageType*	- is **quickReply**, the **text*	- and **items*	- fields are required.
 	//
-	// <props="intl">- If **messageType*	- is **text_video_button**, the **text**, **link**, **thumbnail**, **fileSize**, **duration**, and **caption*	- fields are required, and the **action*	- field must not be empty.
+	// - When **messageType*	- is **sticker**, the **packageId*	- and **stickerId*	- fields are required.
+	//
+	// - When **messageType*	- is **location**, the **title**, **address**, **latitude**, and **longitude*	- fields are required.
+	//
+	// - When **messageType*	- is **coupon**, the **couponId*	- field is required.
+	//
+	// - When **messageType*	- is **imagemap**, the **baseUrl*	- and **altText*	- fields are required.
+	//
+	// - When **messageType*	- is **flex**, the **contents*	- and **altText*	- fields are required.
+	//
+	// - When **messageType*	- is **interactive**, you can pass in message formats supported by LINE:
+	//
+	//   - To send a single message, the **type*	- field is required, and other fields follow the LINE message body format. Example: {"type": "text", "text": "test"}
+	//
+	//   - To send multiple messages (LINE supports up to 5 messages at a time), the **messages*	- field is required. Example: {"messages": [{"type": "text", "text": "test"}, {"type": "image", "originalContentUrl": "http://img.png", "previewImageUrl": "http://img2.png"}]}
+	//
+	//   - For more information, see [LINE message body](https://developers.line.biz/en/reference/messaging-api/#message-objects).
+	//
+	// </details>
 	//
 	// example:
 	//
@@ -190,7 +261,7 @@ type SendChatappMessageRequest struct {
 	//
 	// 61851ccb2f1365b16aee****
 	ContextMessageId *string `json:"ContextMessageId,omitempty" xml:"ContextMessageId,omitempty"`
-	// The SpaceId of the ISV sub-customer, or the direct customer instance ID. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) page.
+	// The SpaceId of the ISV sub-customer or the instance ID of a direct customer. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) page.
 	//
 	// example:
 	//
@@ -198,35 +269,39 @@ type SendChatappMessageRequest struct {
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	// Deprecated
 	//
-	// The ISV customer WABA ID. This parameter is deprecated. Use CustSpaceId instead, which is the direct customer instance ID. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) page.
+	// The ISV customer WABA ID.
+	//
+	// > This parameter is deprecated. Use CustSpaceId instead.
+	//
+	// > - You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) page.
 	//
 	// example:
 	//
 	// cams-8c8*********
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
-	// The custom fallback content. This parameter is for the China site (Chinese mainland). China site users can ignore this parameter.
+	// The custom fallback content. This parameter is for the China International site. China site users can ignore this parameter.
 	//
 	// example:
 	//
 	// Fallback SMS
 	FallBackContent *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
-	// The fallback trigger time. This parameter is for the international site. China site users can ignore this parameter. <props="intl">If the message does not return a delivered receipt within the specified time, fallback is triggered. If this parameter is not specified, fallback is not triggered based on time and occurs only when the message fails to send or a failure status report is received. Unit: seconds. Minimum value: 60. Maximum value: 43200.
+	// The fallback trigger time. This parameter is for the China International site. China site users can ignore this parameter. <props="intl">If the message does not return a delivered receipt within the specified time, fallback is triggered. If this parameter is not specified, fallback is triggered only when the message fails to send or a failure status report is received. Unit: seconds. Minimum value: 60. Maximum value: 43200.
 	//
 	// example:
 	//
 	// 120
 	FallBackDuration *int32 `json:"FallBackDuration,omitempty" xml:"FallBackDuration,omitempty"`
-	// The fallback policy ID. This parameter is for the China site (Chinese mainland). China site users can ignore this parameter. <props="intl">You can view the policy ID on the [**Fallback Policy**](https://chatapp.console.alibabacloud.com/FallbackStrategy) page.
+	// The fallback policy ID. This parameter is for the China International site. China site users can ignore this parameter. <props="intl">You can view the policy ID on the [**Fallback Strategy**](https://chatapp.console.alibabacloud.com/FallbackStrategy) page.
 	//
 	// example:
 	//
 	// S0****
 	FallBackId *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
-	// The fallback rule. This parameter is for the international site. China site users can ignore this parameter.
+	// The fallback rule. This parameter is for the China International site. China site users can ignore this parameter.
 	//
 	// <props="intl">Valid values:
 	//
-	// <props="intl">- **undelivered**: fallback is triggered when the message cannot be delivered to the device (template and parameter validation must pass at the sending stage; template bans or number bans are not validated). This rule is used by default if the parameter value is empty.
+	// <props="intl">- **undelivered**: fallback is triggered when the message cannot be delivered to the endpoint (template and parameter validation must pass during the sending state; blocked templates or numbers are not validated). This rule is used by default when the parameter value is empty.
 	//
 	// <props="intl">- **sentFailed**: fallback is also triggered when template or template variable validation fails. Only the channelType, type, messageType, to, and from (existence check) parameters are strictly validated.
 	//
@@ -235,16 +310,22 @@ type SendChatappMessageRequest struct {
 	// undelivered
 	FallBackRule *string `json:"FallBackRule,omitempty" xml:"FallBackRule,omitempty"`
 	// The Flow message object.
+	//
+	// > Valid only for WHATSAPP.
 	FlowAction *SendChatappMessageRequestFlowAction `json:"FlowAction,omitempty" xml:"FlowAction,omitempty" type:"Struct"`
 	// The sender number.
 	//
-	// - If ChannelType is set to **whatsapp**, this is the phone number registered and bindded with WhatsApp. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management*	- > **WABA Management*	- > **Phone Number Management*	- page.
+	// - When ChannelType is **whatsapp**, this is the phone number registered and bindng with WhatsApp. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management*	- > **WABA Management*	- > **Number Management*	- page.
 	//
-	// - If ChannelType is set to **messenger**, this is the Page ID. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management*	- > **Public Page*	- page.
+	// - When ChannelType is **messenger**, this is the Page ID. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management*	- > **Public Page*	- page.
 	//
-	// - If ChannelType is set to **instagram**, this is the Instagram professional account ID (Account ID). You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management*	- > **Professional Account*	- page.
+	// - When ChannelType is **instagram**, this is the Instagram professional account ID (Account ID). You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management*	- > **Professional Account*	- page.
 	//
-	// <props="intl">- If ChannelType is set to **viber**, this is the Viber Service ID. You can view it on the [**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management*	- > **Service ID Management*	- page.
+	// <props="intl">- When ChannelType is **viber**, this is the Viber Service ID. You can view it on the [**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management*	- > **Service ID Management*	- page.
+	//
+	// - When ChannelType is **telegram**, this is the Telegram bot ID. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management*	- > **Bot Management*	- page.
+	//
+	// - When ChannelType is **line**, this is the LINE Channel ID. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management*	- > **LINE Official Account*	- page.
 	//
 	// This parameter is required.
 	//
@@ -254,19 +335,23 @@ type SendChatappMessageRequest struct {
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
 	// Deprecated
 	//
-	// The ISV verification code used to verify whether a RAM user is authorized by the ISV. This parameter is deprecated and can be ignored.
+	// The ISV verification code.
+	//
+	// > This parameter is deprecated. You can ignore it.
 	//
 	// example:
 	//
 	// 123123******
 	IsvCode *string `json:"IsvCode,omitempty" xml:"IsvCode,omitempty"`
-	// The Viber message type. This parameter is for the international site. China site users can ignore this parameter.
+	// The Viber message type. This parameter is for the China International site. China site users can ignore this parameter.
 	//
 	// <props="intl">Valid values:
 	//
 	// <props="intl">- **pormotion**: marketing or promotional messages.
 	//
 	// <props="intl">- **transaction**: notification messages.
+	//
+	// > Valid only for VIBER.
 	//
 	// example:
 	//
@@ -314,7 +399,7 @@ type SendChatappMessageRequest struct {
 	//
 	// - typing_indicator: typing indicator message.
 	//
-	// - pin: pin or unpin message (available only for group messages).
+	// - pin: pin or unpin message (group messages only).
 	//
 	// - carousel: carousel message.
 	//
@@ -391,6 +476,48 @@ type SendChatappMessageRequest struct {
 	//
 	// - sticker: sticker message.
 	//
+	// - interactive: custom pass-through Telegram message.
+	//
+	// </details>
+	//
+	// <details>
+	//
+	// <summary>LINE</summary>
+	//
+	// - text: text message.
+	//
+	// - image: image message.
+	//
+	// - video: video message.
+	//
+	// - audio: audio message.
+	//
+	// - buttons: button message.
+	//
+	// - confirm: confirm message.
+	//
+	// - carousel: carousel message.
+	//
+	// - imageCarousel: image carousel message.
+	//
+	// - quickReply: quick reply message.
+	//
+	// - sticker: sticker message.
+	//
+	// - location: location message.
+	//
+	// - textV2: text message (V2).
+	//
+	// - coupon: coupon message.
+	//
+	// - imagemap: imagemap message.
+	//
+	// - flex: flex message.
+	//
+	// - interactive: custom pass-through LINE message.
+	//
+	// > [For more information, see the message types supported by LINE](https://developers.line.biz/en/reference/messaging-api/#message-objects)
+	//
 	// </details>
 	//
 	// example:
@@ -400,11 +527,15 @@ type SendChatappMessageRequest struct {
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The collection of button trigger messages.
 	//
+	// > This parameter is valid only for WHATSAPP.
+	//
 	// example:
 	//
 	// payloadtext1,payloadtext2,payloadtext3
 	Payload []*string `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Repeated"`
-	// The product information. This parameter applies only to the WhatsApp channel type and refers to the product information you uploaded on Meta.
+	// The product information. This parameter is valid only for WhatsApp channel types. It refers to the product information you uploaded on Meta.
+	//
+	// > Valid only for WHATSAPP.
 	ProductAction *SendChatappMessageRequestProductAction `json:"ProductAction,omitempty" xml:"ProductAction,omitempty" type:"Struct"`
 	// The recipient type. Valid values:
 	//
@@ -412,13 +543,17 @@ type SendChatappMessageRequest struct {
 	//
 	// - group: a group.
 	//
+	// - userId: WhatsApp BSUID. Valid only for WHATSAPP.
+	//
 	// example:
 	//
 	// individual
 	RecipientType        *string `json:"RecipientType,omitempty" xml:"RecipientType,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tag information. Custom tag information for Viber message delivery.
+	// The tag information. Custom tag information when sending Viber messages.
+	//
+	// > Valid only for VIBER.
 	//
 	// example:
 	//
@@ -446,13 +581,17 @@ type SendChatappMessageRequest struct {
 	TemplateParams map[string]*string `json:"TemplateParams,omitempty" xml:"TemplateParams,omitempty"`
 	// The recipient number.
 	//
-	// - If ChannelType is set to **whatsapp**, this is the phone number of the message recipient.
+	// - When ChannelType is **whatsapp**, this is the phone number or BSUID of the message recipient.
 	//
-	// - If ChannelType is set to **messenger**, this is the Page-Scoped User ID generated when the user interacts with the Facebook page.
+	// - When ChannelType is **messenger**, this is the Page-Scoped User ID generated when the user interacts with the Facebook page.
 	//
-	// - If ChannelType is set to **instagram**, this is the Instagram User ID generated when the user interacts with the Instagram business or creator account.
+	// - When ChannelType is **instagram**, this is the Instagram User ID generated when the user interacts with the Instagram business or creator account.
 	//
-	// <props="intl">- If ChannelType is set to **viber**, this is the phone number of the message recipient.
+	// <props="intl">- When ChannelType is **viber**, this is the phone number of the message recipient.
+	//
+	// - When ChannelType is **telegram**, this is the Telegram chatId.
+	//
+	// - When ChannelType is **line**, this is the LINE User ID.
 	//
 	// This parameter is required.
 	//
@@ -468,13 +607,17 @@ type SendChatappMessageRequest struct {
 	//
 	// bearer
 	TokenType *string `json:"TokenType,omitempty" xml:"TokenType,omitempty"`
-	// The custom tracking data passed in for Viber message types. This parameter is for the international site. China site users can ignore this parameter.
+	// The custom tracking data passed in for Viber message types. This parameter is for the China International site. China site users can ignore this parameter.
+	//
+	// > Valid only for VIBER.
 	//
 	// example:
 	//
 	// Tracking Data
 	TrackingData *string `json:"TrackingData,omitempty" xml:"TrackingData,omitempty"`
-	// The timeout period for Viber message delivery. This parameter is for the international site. China site users can ignore this parameter. <props="intl">Unit: seconds. Valid values: 30 to 1209600.
+	// The Viber message sending timeout period. This parameter is for the China International site. China site users can ignore this parameter. <props="intl">Unit: seconds. Valid values: 30 to 1209600.
+	//
+	// > Valid only for VIBER.
 	//
 	// example:
 	//
@@ -484,9 +627,9 @@ type SendChatappMessageRequest struct {
 	//
 	// - template: a message template that has been approved in the console. This type of message can be sent at any time.
 	//
-	// - message: a message in any format. This type of message can be sent only within 24 hours after the last message is received from the user.
+	// - message: a message in any format. This type of message can only be sent within 24 hours after receiving the last message from the user.
 	//
-	// 	Notice: If Type is set to template, you must specify TemplateCode. If Type is set to message, you must specify MessageType.
+	// 	Notice: When Type is set to template, you must specify TemplateCode. When Type is set to message, you must specify MessageType.
 	//
 	// This parameter is required.
 	//
@@ -868,7 +1011,7 @@ func (s *SendChatappMessageRequestFlowAction) Validate() error {
 type SendChatappMessageRequestProductAction struct {
 	// The list of product categories (up to 10 categories and 30 products).
 	Sections []*SendChatappMessageRequestProductActionSections `json:"Sections,omitempty" xml:"Sections,omitempty" type:"Repeated"`
-	// The product catalog ID. You can obtain this ID by calling the [ListProductCatalog](https://help.aliyun.com/document_detail/2539783.html) operation.
+	// The product catalog ID. You can obtain it by calling the [ListProductCatalog](https://help.aliyun.com/document_detail/2539783.html) operation.
 	//
 	// example:
 	//
@@ -916,7 +1059,7 @@ func (s *SendChatappMessageRequestProductAction) Validate() error {
 }
 
 type SendChatappMessageRequestProductActionSections struct {
-	// The list of product information.
+	// The list of product items.
 	ProductItems []*SendChatappMessageRequestProductActionSectionsProductItems `json:"ProductItems,omitempty" xml:"ProductItems,omitempty" type:"Repeated"`
 	// The category name. You can view it on the <props="china">[**Channel Management**](https://chatapp.console.aliyun.com/ChannelsManagement)<props="intl">[**Channel Management**](https://chatapp.console.alibabacloud.com/CustomerList) > **Management*	- > **Catalog Management*	- > **Product Management*	- page, or obtain it by calling the [ListProduct](https://help.aliyun.com/document_detail/2557786.html) operation.
 	//

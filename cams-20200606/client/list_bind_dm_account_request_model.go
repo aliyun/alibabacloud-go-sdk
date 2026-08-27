@@ -20,11 +20,13 @@ type iListBindDmAccountRequest interface {
 }
 
 type ListBindDmAccountRequest struct {
+	// The SpaceId of the ISV sub-customer or the instance ID of the direct customer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 示例值示例值
+	// Sample value.
 	CustSpaceId          *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`

@@ -24,7 +24,7 @@ type iCreateChatFlowLogSettingResponseBody interface {
 }
 
 type CreateChatFlowLogSettingResponseBody struct {
-	// Details about the denied access.
+	// The access denied detail.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type CreateChatFlowLogSettingResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: Successful.
 	//
-	// - false: The operation failed.
+	// - false: Failed.
 	//
 	// example:
 	//
