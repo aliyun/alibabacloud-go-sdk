@@ -923,7 +923,7 @@ func (client *Client) GetApiKey(apiKeyId *string) (_result *GetApiKeyResponse, _
 
 // Summary:
 //
-// 查询账单概览
+// Queries the bill overview.
 //
 // @param tmpReq - GetBillingOverviewRequest
 //
@@ -1004,7 +1004,7 @@ func (client *Client) GetBillingOverviewWithOptions(tmpReq *GetBillingOverviewRe
 
 // Summary:
 //
-// 查询账单概览
+// Queries the bill overview.
 //
 // @param request - GetBillingOverviewRequest
 //
@@ -1023,7 +1023,7 @@ func (client *Client) GetBillingOverview(request *GetBillingOverviewRequest) (_r
 
 // Summary:
 //
-// 查询账单趋势
+// Queries bill trends.
 //
 // @param tmpReq - GetBillingTrendRequest
 //
@@ -1112,7 +1112,7 @@ func (client *Client) GetBillingTrendWithOptions(tmpReq *GetBillingTrendRequest,
 
 // Summary:
 //
-// 查询账单趋势
+// Queries bill trends.
 //
 // @param request - GetBillingTrendRequest
 //
@@ -2011,7 +2011,7 @@ func (client *Client) ListModels(request *ListModelsRequest) (_result *ListModel
 
 // Summary:
 //
-// Queries the list of organization members including seat information. Supports filtering by name, status, and seat assignment, and supports pagination.
+// Queries the list of organization members (including seat information). Supports filtering by name, status, and seat assignment, and supports pagination.
 //
 // @param request - ListOrganizationMembersRequest
 //
@@ -2074,7 +2074,7 @@ func (client *Client) ListOrganizationMembersWithOptions(request *ListOrganizati
 
 // Summary:
 //
-// Queries the list of organization members including seat information. Supports filtering by name, status, and seat assignment, and supports pagination.
+// Queries the list of organization members (including seat information). Supports filtering by name, status, and seat assignment, and supports pagination.
 //
 // @param request - ListOrganizationMembersRequest
 //

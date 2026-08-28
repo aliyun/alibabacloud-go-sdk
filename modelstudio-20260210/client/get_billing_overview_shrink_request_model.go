@@ -26,24 +26,36 @@ type iGetBillingOverviewShrinkRequest interface {
 }
 
 type GetBillingOverviewShrinkRequest struct {
+	// The billing month. This parameter is required.
+	//
 	// example:
 	//
 	// 2026-08
-	BillMonth     *string `json:"billMonth,omitempty" xml:"billMonth,omitempty"`
-	FilterShrink  *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	BillMonth *string `json:"billMonth,omitempty" xml:"billMonth,omitempty"`
+	// The filter condition.
+	FilterShrink *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// The list of grouping conditions. Currently, you must specify exactly one grouping dimension.
 	GroupByShrink *string `json:"groupBy,omitempty" xml:"groupBy,omitempty"`
+	// The response language. Default value: en-US.
+	//
 	// example:
 	//
 	// zh-CN
 	Locale *string `json:"locale,omitempty" xml:"locale,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The number of groups to return. Valid values: 1 to 20. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	TopNum *int32 `json:"topNum,omitempty" xml:"topNum,omitempty"`
+	// Specifies whether to filter out groups with a zero amount. Default value: true.
+	//
 	// example:
 	//
 	// true

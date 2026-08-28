@@ -26,24 +26,36 @@ type iGetBillingOverviewRequest interface {
 }
 
 type GetBillingOverviewRequest struct {
+	// The billing month. This parameter is required.
+	//
 	// example:
 	//
 	// 2026-08
-	BillMonth *string                             `json:"billMonth,omitempty" xml:"billMonth,omitempty"`
-	Filter    *GetBillingOverviewRequestFilter    `json:"filter,omitempty" xml:"filter,omitempty" type:"Struct"`
-	GroupBy   []*GetBillingOverviewRequestGroupBy `json:"groupBy,omitempty" xml:"groupBy,omitempty" type:"Repeated"`
+	BillMonth *string `json:"billMonth,omitempty" xml:"billMonth,omitempty"`
+	// The filter condition.
+	Filter *GetBillingOverviewRequestFilter `json:"filter,omitempty" xml:"filter,omitempty" type:"Struct"`
+	// The list of grouping conditions. Currently, you must specify exactly one grouping dimension.
+	GroupBy []*GetBillingOverviewRequestGroupBy `json:"groupBy,omitempty" xml:"groupBy,omitempty" type:"Repeated"`
+	// The response language. Default value: en-US.
+	//
 	// example:
 	//
 	// zh-CN
 	Locale *string `json:"locale,omitempty" xml:"locale,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The number of groups to return. Valid values: 1 to 20. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	TopNum *int32 `json:"topNum,omitempty" xml:"topNum,omitempty"`
+	// Specifies whether to filter out groups with a zero amount. Default value: true.
+	//
 	// example:
 	//
 	// true
@@ -140,6 +152,7 @@ func (s *GetBillingOverviewRequest) Validate() error {
 }
 
 type GetBillingOverviewRequestFilter struct {
+	// The list of dimension filters.
 	Dimensions []*GetBillingOverviewRequestFilterDimensions `json:"dimensions,omitempty" xml:"dimensions,omitempty" type:"Repeated"`
 }
 
@@ -174,15 +187,20 @@ func (s *GetBillingOverviewRequestFilter) Validate() error {
 }
 
 type GetBillingOverviewRequestFilterDimensions struct {
+	// The filter field. For more information, see the "Additional information" section below.
+	//
 	// example:
 	//
 	// CHARGE_TYPE
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The filter type.
+	//
 	// example:
 	//
 	// IN
-	SelectType *string   `json:"selectType,omitempty" xml:"selectType,omitempty"`
-	Values     []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+	SelectType *string `json:"selectType,omitempty" xml:"selectType,omitempty"`
+	// The list of filter values.
+	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 
 func (s GetBillingOverviewRequestFilterDimensions) String() string {
@@ -225,6 +243,8 @@ func (s *GetBillingOverviewRequestFilterDimensions) Validate() error {
 }
 
 type GetBillingOverviewRequestGroupBy struct {
+	// The grouping dimension code. For more information, see the "Additional information" section below.
+	//
 	// example:
 	//
 	// BASE_MODEL

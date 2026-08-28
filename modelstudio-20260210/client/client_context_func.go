@@ -609,7 +609,7 @@ func (client *Client) GetApiKeyWithContext(ctx context.Context, apiKeyId *string
 
 // Summary:
 //
-// 查询账单概览
+// Queries the bill overview.
 //
 // @param tmpReq - GetBillingOverviewRequest
 //
@@ -690,7 +690,7 @@ func (client *Client) GetBillingOverviewWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// 查询账单趋势
+// Queries bill trends.
 //
 // @param tmpReq - GetBillingTrendRequest
 //
@@ -1418,7 +1418,7 @@ func (client *Client) ListModelsWithContext(ctx context.Context, tmpReq *ListMod
 
 // Summary:
 //
-// Queries the list of organization members including seat information. Supports filtering by name, status, and seat assignment, and supports pagination.
+// Queries the list of organization members (including seat information). Supports filtering by name, status, and seat assignment, and supports pagination.
 //
 // @param request - ListOrganizationMembersRequest
 //

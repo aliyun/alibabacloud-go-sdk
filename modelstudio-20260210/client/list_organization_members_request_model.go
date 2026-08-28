@@ -28,11 +28,11 @@ type ListOrganizationMembersRequest struct {
 	//
 	// true
 	HasSeat *bool `json:"HasSeat,omitempty" xml:"HasSeat,omitempty"`
-	// Fuzzy filter by member name. Matches accountName or email and is case-insensitive.
+	// Fuzzy filter by member name. Matches accountName or email, case-insensitive.
 	//
 	// example:
 	//
-	// 成员名称
+	// MemberName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The page number, starting from 1. Default value: 1.
 	//
@@ -46,7 +46,7 @@ type ListOrganizationMembersRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Filters by member status, such as ACTIVE or FROZEN. Set to null to disable filtering.
+	// Filters by member status, such as ACTIVE or FROZEN. A value of null indicates no filtering.
 	//
 	// example:
 	//

@@ -28,25 +28,38 @@ type iGetBillingTrendShrinkRequest interface {
 }
 
 type GetBillingTrendShrinkRequest struct {
+	// The dimension filter conditions.
 	FilterShrink *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// The query granularity. This parameter is required.
+	//
 	// example:
 	//
 	// DAY
-	Granularity   *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
+	Granularity *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
+	// The grouping conditions. This parameter must contain one and only one element.
 	GroupByShrink *string `json:"groupBy,omitempty" xml:"groupBy,omitempty"`
+	// The response language. Default value: en-US.
+	//
 	// example:
 	//
 	// zh-CN
 	Locale *string `json:"locale,omitempty" xml:"locale,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
-	RegionId         *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The query time range, including the start time and end time. This parameter is required.
 	TimePeriodShrink *string `json:"timePeriod,omitempty" xml:"timePeriod,omitempty"`
+	// The number of groups to return. Valid values: 1 to 20. Default value: 20. The remaining groups are merged into "Others".
+	//
 	// example:
 	//
 	// 20
 	TopNum *int32 `json:"topNum,omitempty" xml:"topNum,omitempty"`
+	// Specifies whether to filter out groups with a zero amount. Default value: true.
+	//
 	// example:
 	//
 	// true

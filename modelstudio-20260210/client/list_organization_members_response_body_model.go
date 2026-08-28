@@ -52,7 +52,7 @@ type ListOrganizationMembersResponseBody struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -157,13 +157,13 @@ type ListOrganizationMembersResponseBodyData struct {
 	//
 	// 112233
 	AccountBizId *string `json:"AccountBizId,omitempty" xml:"AccountBizId,omitempty"`
-	// The ID of the member account.
+	// The ID of the member accounts.
 	//
 	// example:
 	//
 	// acc_123456789
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The name of the member account.
+	// The name of the member accounts.
 	//
 	// example:
 	//
@@ -175,7 +175,7 @@ type ListOrganizationMembersResponseBodyData struct {
 	//
 	// key_123456789
 	ApiKeyId *string `json:"ApiKeyId,omitempty" xml:"ApiKeyId,omitempty"`
-	// The email address of the member.
+	// The member email address.
 	//
 	// example:
 	//
@@ -198,10 +198,11 @@ type ListOrganizationMembersResponseBodyData struct {
 	// example:
 	//
 	// org_123456789
-	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgId         *string                                               `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	PackLimitInfo *ListOrganizationMembersResponseBodyDataPackLimitInfo `json:"PackLimitInfo,omitempty" xml:"PackLimitInfo,omitempty" type:"Struct"`
 	// The list of member roles.
 	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	// The ID used to allocate the seat resource.
+	// The seat resource allocate ID.
 	//
 	// example:
 	//
@@ -213,7 +214,7 @@ type ListOrganizationMembersResponseBodyData struct {
 	//
 	// - pro: Pro seat.
 	//
-	// - max: Premium seat.
+	// - max: Max seat.
 	//
 	// example:
 	//
@@ -224,7 +225,8 @@ type ListOrganizationMembersResponseBodyData struct {
 	// example:
 	//
 	// ACTIVE
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status           *string                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubscriptionInfo *ListOrganizationMembersResponseBodyDataSubscriptionInfo `json:"SubscriptionInfo,omitempty" xml:"SubscriptionInfo,omitempty" type:"Struct"`
 }
 
 func (s ListOrganizationMembersResponseBodyData) String() string {
@@ -267,6 +269,10 @@ func (s *ListOrganizationMembersResponseBodyData) GetOrgId() *string {
 	return s.OrgId
 }
 
+func (s *ListOrganizationMembersResponseBodyData) GetPackLimitInfo() *ListOrganizationMembersResponseBodyDataPackLimitInfo {
+	return s.PackLimitInfo
+}
+
 func (s *ListOrganizationMembersResponseBodyData) GetRoles() []*string {
 	return s.Roles
 }
@@ -281,6 +287,10 @@ func (s *ListOrganizationMembersResponseBodyData) GetSpecType() *string {
 
 func (s *ListOrganizationMembersResponseBodyData) GetStatus() *string {
 	return s.Status
+}
+
+func (s *ListOrganizationMembersResponseBodyData) GetSubscriptionInfo() *ListOrganizationMembersResponseBodyDataSubscriptionInfo {
+	return s.SubscriptionInfo
 }
 
 func (s *ListOrganizationMembersResponseBodyData) SetAccountBizId(v string) *ListOrganizationMembersResponseBodyData {
@@ -323,6 +333,11 @@ func (s *ListOrganizationMembersResponseBodyData) SetOrgId(v string) *ListOrgani
 	return s
 }
 
+func (s *ListOrganizationMembersResponseBodyData) SetPackLimitInfo(v *ListOrganizationMembersResponseBodyDataPackLimitInfo) *ListOrganizationMembersResponseBodyData {
+	s.PackLimitInfo = v
+	return s
+}
+
 func (s *ListOrganizationMembersResponseBodyData) SetRoles(v []*string) *ListOrganizationMembersResponseBodyData {
 	s.Roles = v
 	return s
@@ -343,6 +358,305 @@ func (s *ListOrganizationMembersResponseBodyData) SetStatus(v string) *ListOrgan
 	return s
 }
 
+func (s *ListOrganizationMembersResponseBodyData) SetSubscriptionInfo(v *ListOrganizationMembersResponseBodyDataSubscriptionInfo) *ListOrganizationMembersResponseBodyData {
+	s.SubscriptionInfo = v
+	return s
+}
+
 func (s *ListOrganizationMembersResponseBodyData) Validate() error {
+	if s.PackLimitInfo != nil {
+		if err := s.PackLimitInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.SubscriptionInfo != nil {
+		if err := s.SubscriptionInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ListOrganizationMembersResponseBodyDataPackLimitInfo struct {
+	AvailableLimit    *float64 `json:"AvailableLimit,omitempty" xml:"AvailableLimit,omitempty"`
+	CycleEndTime      *int64   `json:"CycleEndTime,omitempty" xml:"CycleEndTime,omitempty"`
+	CycleStartTime    *int64   `json:"CycleStartTime,omitempty" xml:"CycleStartTime,omitempty"`
+	FrozenCredits     *float64 `json:"FrozenCredits,omitempty" xml:"FrozenCredits,omitempty"`
+	HasShareLimit     *bool    `json:"HasShareLimit,omitempty" xml:"HasShareLimit,omitempty"`
+	IsAvailable       *bool    `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
+	LastConfirmedTime *int64   `json:"LastConfirmedTime,omitempty" xml:"LastConfirmedTime,omitempty"`
+	UpperLimit        *float64 `json:"UpperLimit,omitempty" xml:"UpperLimit,omitempty"`
+	UsedCredits       *float64 `json:"UsedCredits,omitempty" xml:"UsedCredits,omitempty"`
+}
+
+func (s ListOrganizationMembersResponseBodyDataPackLimitInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListOrganizationMembersResponseBodyDataPackLimitInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationMembersResponseBodyDataPackLimitInfo) GetAvailableLimit() *float64 {
+	return s.AvailableLimit
+}
+
+func (s *ListOrganizationMembersResponseBodyDataPackLimitInfo) GetCycleEndTime() *int64 {
+	return s.CycleEndTime
+}
+
+func (s *ListOrganizationMembersResponseBodyDataPackLimitInfo) GetCycleStartTime() *int64 {
+	return s.CycleStartTime
+}
+
+func (s *ListOrganizationMembersResponseBodyDataPackLimitInfo) GetFrozenCredits() *float64 {
+	return s.FrozenCredits
+}
+
+func (s *ListOrganizationMembersResponseBodyDataPackLimitInfo) GetHasShareLimit() *bool {
+	return s.HasShareLimit
+}
+
+func (s *ListOrganizationMembersResponseBodyDataPackLimitInfo) GetIsAvailable() *bool {
+	return s.IsAvailable
+}
+
+func (s *ListOrganizationMembersResponseBodyDataPackLimitInfo) GetLastConfirmedTime() *int64 {
+	return s.LastConfirmedTime
+}
+
+func (s *ListOrganizationMembersResponseBodyDataPackLimitInfo) GetUpperLimit() *float64 {
+	return s.UpperLimit
+}
+
+func (s *ListOrganizationMembersResponseBodyDataPackLimitInfo) GetUsedCredits() *float64 {
+	return s.UsedCredits
+}
+
+func (s *ListOrganizationMembersResponseBodyDataPackLimitInfo) SetAvailableLimit(v float64) *ListOrganizationMembersResponseBodyDataPackLimitInfo {
+	s.AvailableLimit = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataPackLimitInfo) SetCycleEndTime(v int64) *ListOrganizationMembersResponseBodyDataPackLimitInfo {
+	s.CycleEndTime = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataPackLimitInfo) SetCycleStartTime(v int64) *ListOrganizationMembersResponseBodyDataPackLimitInfo {
+	s.CycleStartTime = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataPackLimitInfo) SetFrozenCredits(v float64) *ListOrganizationMembersResponseBodyDataPackLimitInfo {
+	s.FrozenCredits = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataPackLimitInfo) SetHasShareLimit(v bool) *ListOrganizationMembersResponseBodyDataPackLimitInfo {
+	s.HasShareLimit = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataPackLimitInfo) SetIsAvailable(v bool) *ListOrganizationMembersResponseBodyDataPackLimitInfo {
+	s.IsAvailable = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataPackLimitInfo) SetLastConfirmedTime(v int64) *ListOrganizationMembersResponseBodyDataPackLimitInfo {
+	s.LastConfirmedTime = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataPackLimitInfo) SetUpperLimit(v float64) *ListOrganizationMembersResponseBodyDataPackLimitInfo {
+	s.UpperLimit = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataPackLimitInfo) SetUsedCredits(v float64) *ListOrganizationMembersResponseBodyDataPackLimitInfo {
+	s.UsedCredits = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataPackLimitInfo) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListOrganizationMembersResponseBodyDataSubscriptionInfo struct {
+	EndTime      *int64                                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EquityList   []*ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList `json:"EquityList,omitempty" xml:"EquityList,omitempty" type:"Repeated"`
+	InstanceCode *string                                                              `json:"InstanceCode,omitempty" xml:"InstanceCode,omitempty"`
+	PayMode      *string                                                              `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
+	ProductCode  *string                                                              `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	SpecType     *string                                                              `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	StartTime    *int64                                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status       *string                                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListOrganizationMembersResponseBodyDataSubscriptionInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListOrganizationMembersResponseBodyDataSubscriptionInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfo) GetEndTime() *int64 {
+	return s.EndTime
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfo) GetEquityList() []*ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList {
+	return s.EquityList
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfo) GetInstanceCode() *string {
+	return s.InstanceCode
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfo) GetPayMode() *string {
+	return s.PayMode
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfo) GetProductCode() *string {
+	return s.ProductCode
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfo) GetSpecType() *string {
+	return s.SpecType
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfo) GetStartTime() *int64 {
+	return s.StartTime
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfo) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfo) SetEndTime(v int64) *ListOrganizationMembersResponseBodyDataSubscriptionInfo {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfo) SetEquityList(v []*ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList) *ListOrganizationMembersResponseBodyDataSubscriptionInfo {
+	s.EquityList = v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfo) SetInstanceCode(v string) *ListOrganizationMembersResponseBodyDataSubscriptionInfo {
+	s.InstanceCode = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfo) SetPayMode(v string) *ListOrganizationMembersResponseBodyDataSubscriptionInfo {
+	s.PayMode = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfo) SetProductCode(v string) *ListOrganizationMembersResponseBodyDataSubscriptionInfo {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfo) SetSpecType(v string) *ListOrganizationMembersResponseBodyDataSubscriptionInfo {
+	s.SpecType = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfo) SetStartTime(v int64) *ListOrganizationMembersResponseBodyDataSubscriptionInfo {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfo) SetStatus(v string) *ListOrganizationMembersResponseBodyDataSubscriptionInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfo) Validate() error {
+	if s.EquityList != nil {
+		for _, item := range s.EquityList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList struct {
+	CycleEndTime      *int64   `json:"CycleEndTime,omitempty" xml:"CycleEndTime,omitempty"`
+	CycleStartTime    *int64   `json:"CycleStartTime,omitempty" xml:"CycleStartTime,omitempty"`
+	CycleSurplusValue *float64 `json:"CycleSurplusValue,omitempty" xml:"CycleSurplusValue,omitempty"`
+	CycleTotalValue   *float64 `json:"CycleTotalValue,omitempty" xml:"CycleTotalValue,omitempty"`
+	EquityType        *string  `json:"EquityType,omitempty" xml:"EquityType,omitempty"`
+	EquityUnit        *string  `json:"EquityUnit,omitempty" xml:"EquityUnit,omitempty"`
+}
+
+func (s ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList) GetCycleEndTime() *int64 {
+	return s.CycleEndTime
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList) GetCycleStartTime() *int64 {
+	return s.CycleStartTime
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList) GetCycleSurplusValue() *float64 {
+	return s.CycleSurplusValue
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList) GetCycleTotalValue() *float64 {
+	return s.CycleTotalValue
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList) GetEquityType() *string {
+	return s.EquityType
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList) GetEquityUnit() *string {
+	return s.EquityUnit
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList) SetCycleEndTime(v int64) *ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList {
+	s.CycleEndTime = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList) SetCycleStartTime(v int64) *ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList {
+	s.CycleStartTime = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList) SetCycleSurplusValue(v float64) *ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList {
+	s.CycleSurplusValue = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList) SetCycleTotalValue(v float64) *ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList {
+	s.CycleTotalValue = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList) SetEquityType(v string) *ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList {
+	s.EquityType = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList) SetEquityUnit(v string) *ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList {
+	s.EquityUnit = &v
+	return s
+}
+
+func (s *ListOrganizationMembersResponseBodyDataSubscriptionInfoEquityList) Validate() error {
 	return dara.Validate(s)
 }

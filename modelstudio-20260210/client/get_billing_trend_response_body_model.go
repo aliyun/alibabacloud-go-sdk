@@ -22,19 +22,28 @@ type iGetBillingTrendResponseBody interface {
 }
 
 type GetBillingTrendResponseBody struct {
+	// The request result code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                          `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The response data.
 	Data *GetBillingTrendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request result description.
+	//
 	// example:
 	//
 	// null
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 099A671E-FA21-5A36-8A73-918572DDEF53
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -104,8 +113,11 @@ func (s *GetBillingTrendResponseBody) Validate() error {
 }
 
 type GetBillingTrendResponseBodyData struct {
-	CostTotals   *GetBillingTrendResponseBodyDataCostTotals     `json:"costTotals,omitempty" xml:"costTotals,omitempty" type:"Struct"`
+	// The total cost for the entire query time range, including the top N groups and "Others".
+	CostTotals *GetBillingTrendResponseBodyDataCostTotals `json:"costTotals,omitempty" xml:"costTotals,omitempty" type:"Struct"`
+	// The total cost of the top N groups and the optional "Others" group within the period.
 	GroupByTotal []*GetBillingTrendResponseBodyDataGroupByTotal `json:"groupByTotal,omitempty" xml:"groupByTotal,omitempty" type:"Repeated"`
+	// The cost trend list sorted by time in ascending order.
 	ResultByTime []*GetBillingTrendResponseBodyDataResultByTime `json:"resultByTime,omitempty" xml:"resultByTime,omitempty" type:"Repeated"`
 }
 
@@ -172,18 +184,26 @@ func (s *GetBillingTrendResponseBodyData) Validate() error {
 }
 
 type GetBillingTrendResponseBodyDataCostTotals struct {
+	// The total amount.
+	//
 	// example:
 	//
 	// 100
 	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The currency of the amount.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"currency,omitempty" xml:"currency,omitempty"`
+	// The pretax amount.
+	//
 	// example:
 	//
 	// 94.34
 	PretaxAmount *string `json:"pretaxAmount,omitempty" xml:"pretaxAmount,omitempty"`
+	// The tax amount.
+	//
 	// example:
 	//
 	// 5.66
@@ -239,22 +259,32 @@ func (s *GetBillingTrendResponseBodyDataCostTotals) Validate() error {
 }
 
 type GetBillingTrendResponseBodyDataGroupByTotal struct {
+	// The total amount of the current group.
+	//
 	// example:
 	//
 	// 60
 	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The grouping dimension value.
+	//
 	// example:
 	//
 	// qwen-plus
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The display name of the group. This value is affected by the locale parameter.
+	//
 	// example:
 	//
 	// qwen-plus
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The pretax amount of the current group.
+	//
 	// example:
 	//
 	// 56.60
 	PretaxAmount *string `json:"pretaxAmount,omitempty" xml:"pretaxAmount,omitempty"`
+	// The tax amount of the current group.
+	//
 	// example:
 	//
 	// 3.40
@@ -319,12 +349,16 @@ func (s *GetBillingTrendResponseBodyDataGroupByTotal) Validate() error {
 }
 
 type GetBillingTrendResponseBodyDataResultByTime struct {
+	// The statistical period. DAY returns yyyyMMdd. MONTH returns yyyyMM.
+	//
 	// example:
 	//
 	// 20260801
-	Period        *string                                                     `json:"period,omitempty" xml:"period,omitempty"`
+	Period *string `json:"period,omitempty" xml:"period,omitempty"`
+	// The cost groups that actually exist in the current period.
 	PeriodDetails []*GetBillingTrendResponseBodyDataResultByTimePeriodDetails `json:"periodDetails,omitempty" xml:"periodDetails,omitempty" type:"Repeated"`
-	Total         *GetBillingTrendResponseBodyDataResultByTimeTotal           `json:"total,omitempty" xml:"total,omitempty" type:"Struct"`
+	// The total cost for the current period.
+	Total *GetBillingTrendResponseBodyDataResultByTimeTotal `json:"total,omitempty" xml:"total,omitempty" type:"Struct"`
 }
 
 func (s GetBillingTrendResponseBodyDataResultByTime) String() string {
@@ -381,26 +415,38 @@ func (s *GetBillingTrendResponseBodyDataResultByTime) Validate() error {
 }
 
 type GetBillingTrendResponseBodyDataResultByTimePeriodDetails struct {
+	// The amount of the group within the current period.
+	//
 	// example:
 	//
 	// 20
 	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The grouping dimension value. Data beyond the top N uses DIMENSION_GROUP_OTHERS_VALUE.
+	//
 	// example:
 	//
 	// qwen-plus
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The display name of the group. This value is affected by the locale parameter.
+	//
 	// example:
 	//
 	// qwen-plus
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ratio of the current group amount to the total amount of the current period.
+	//
 	// example:
 	//
 	// 0.6667
 	Percentage *string `json:"percentage,omitempty" xml:"percentage,omitempty"`
+	// The pretax amount of the group within the current period.
+	//
 	// example:
 	//
 	// 18.87
 	PretaxAmount *string `json:"pretaxAmount,omitempty" xml:"pretaxAmount,omitempty"`
+	// The tax amount of the group within the current period.
+	//
 	// example:
 	//
 	// 1.13
@@ -474,18 +520,26 @@ func (s *GetBillingTrendResponseBodyDataResultByTimePeriodDetails) Validate() er
 }
 
 type GetBillingTrendResponseBodyDataResultByTimeTotal struct {
+	// The total amount for the current period.
+	//
 	// example:
 	//
 	// 30
 	Amount *string `json:"amount,omitempty" xml:"amount,omitempty"`
+	// The currency of the amount for the current period.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"currency,omitempty" xml:"currency,omitempty"`
+	// The pretax amount for the current period.
+	//
 	// example:
 	//
 	// 28.30
 	PretaxAmount *string `json:"pretaxAmount,omitempty" xml:"pretaxAmount,omitempty"`
+	// The tax amount for the current period.
+	//
 	// example:
 	//
 	// 1.70

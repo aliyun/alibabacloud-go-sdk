@@ -28,25 +28,38 @@ type iGetBillingTrendRequest interface {
 }
 
 type GetBillingTrendRequest struct {
+	// The dimension filter conditions.
 	Filter *GetBillingTrendRequestFilter `json:"filter,omitempty" xml:"filter,omitempty" type:"Struct"`
+	// The query granularity. This parameter is required.
+	//
 	// example:
 	//
 	// DAY
-	Granularity *string                          `json:"granularity,omitempty" xml:"granularity,omitempty"`
-	GroupBy     []*GetBillingTrendRequestGroupBy `json:"groupBy,omitempty" xml:"groupBy,omitempty" type:"Repeated"`
+	Granularity *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
+	// The grouping conditions. This parameter must contain one and only one element.
+	GroupBy []*GetBillingTrendRequestGroupBy `json:"groupBy,omitempty" xml:"groupBy,omitempty" type:"Repeated"`
+	// The response language. Default value: en-US.
+	//
 	// example:
 	//
 	// zh-CN
 	Locale *string `json:"locale,omitempty" xml:"locale,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
-	RegionId   *string                           `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The query time range, including the start time and end time. This parameter is required.
 	TimePeriod *GetBillingTrendRequestTimePeriod `json:"timePeriod,omitempty" xml:"timePeriod,omitempty" type:"Struct"`
+	// The number of groups to return. Valid values: 1 to 20. Default value: 20. The remaining groups are merged into "Others".
+	//
 	// example:
 	//
 	// 20
 	TopNum *int32 `json:"topNum,omitempty" xml:"topNum,omitempty"`
+	// Specifies whether to filter out groups with a zero amount. Default value: true.
+	//
 	// example:
 	//
 	// true
@@ -157,6 +170,7 @@ func (s *GetBillingTrendRequest) Validate() error {
 }
 
 type GetBillingTrendRequestFilter struct {
+	// The dimension filter list.
 	Dimensions []*GetBillingTrendRequestFilterDimensions `json:"dimensions,omitempty" xml:"dimensions,omitempty" type:"Repeated"`
 }
 
@@ -191,15 +205,20 @@ func (s *GetBillingTrendRequestFilter) Validate() error {
 }
 
 type GetBillingTrendRequestFilterDimensions struct {
+	// The filter dimension code. For more information, see the "Additional information" section below.
+	//
 	// example:
 	//
 	// CHARGE_TYPE
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The filter method.
+	//
 	// example:
 	//
 	// IN
-	SelectType *string   `json:"selectType,omitempty" xml:"selectType,omitempty"`
-	Values     []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+	SelectType *string `json:"selectType,omitempty" xml:"selectType,omitempty"`
+	// The filter value list.
+	Values []*string `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
 }
 
 func (s GetBillingTrendRequestFilterDimensions) String() string {
@@ -242,6 +261,8 @@ func (s *GetBillingTrendRequestFilterDimensions) Validate() error {
 }
 
 type GetBillingTrendRequestGroupBy struct {
+	// The grouping dimension code. For more information, see the "Additional information" section below.
+	//
 	// example:
 	//
 	// BASE_MODEL
@@ -270,10 +291,14 @@ func (s *GetBillingTrendRequestGroupBy) Validate() error {
 }
 
 type GetBillingTrendRequestTimePeriod struct {
+	// The end time.
+	//
 	// example:
 	//
 	// 2026-08-25
 	End *string `json:"end,omitempty" xml:"end,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 2026-08-01
