@@ -3,6 +3,7 @@ package client
 
 import (
 	"context"
+	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
 )
@@ -13,23 +14,23 @@ import (
 //
 // Description:
 //
-// Creates a consumer-based quota rule for an AI gateway. This operation takes effect only on AI gateways of version 2.1.19 or later.
+// Creates a consumer-based quota rule for an AI gateway. This operation applies only to AI gateways running version 2.1.19 or later.
 //
 // >
 //
-// >  Recommended call sequence:
+// >  Recommended call logic:
 //
-// > - Step 1: Perform a dry run to check for rule conflicts.
+// > - 1. Perform a dry run to check for rule conflicts.
 //
-// > - - Set dryRun to true.
+// > - - Set dryRun=true.
 //
-// > - - The response contains a conflict preview with a conflictHash value.
+// > - - The response contains a conflict preview with conflictHash.
 //
-// > - Step 2: Submit the request after confirmation.
+// > - 2. Submit the request after confirmation.
 //
-// > - - No conflicts: Set dryRun to false and overwrite to false.
+// > - - No conflicts: dryRun=false, overwrite=false.
 //
-// > - - Conflicts exist and you confirm the overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
+// > - - Conflicts exist and you confirm overwrite: dryRun=false, overwrite=true, conflictHash=<value returned in the previous step>
 //
 // @param request - AddGatewayQuotaRuleRequest
 //
@@ -84,6 +85,10 @@ func (client *Client) AddGatewayQuotaRuleWithContext(ctx context.Context, gatewa
 
 	if !dara.IsNil(request.RuleName) {
 		body["ruleName"] = request.RuleName
+	}
+
+	if !dara.IsNil(request.SubjectType) {
+		body["subjectType"] = request.SubjectType
 	}
 
 	if !dara.IsNil(request.Timezone) {
@@ -452,6 +457,61 @@ func (client *Client) BatchRemoveConsumerGroupConsumersWithContext(ctx context.C
 		BodyType:    dara.String("json"),
 	}
 	_result = &BatchRemoveConsumerGroupConsumersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量更新消费者鉴权
+//
+// @param request - BatchUpdateHttpApiOperationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchUpdateHttpApiOperationResponse
+func (client *Client) BatchUpdateHttpApiOperationWithContext(ctx context.Context, httpApiId *string, request *BatchUpdateHttpApiOperationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchUpdateHttpApiOperationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AuthConfig) {
+		body["authConfig"] = request.AuthConfig
+	}
+
+	if !dara.IsNil(request.EnableAuth) {
+		body["enableAuth"] = request.EnableAuth
+	}
+
+	if !dara.IsNil(request.OperationIds) {
+		body["operationIds"] = request.OperationIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchUpdateHttpApiOperation"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/http-apis/" + dara.PercentEncode(dara.StringValue(httpApiId)) + "/operations"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchUpdateHttpApiOperationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1502,6 +1562,57 @@ func (client *Client) CreateHttpApiRouteWithContext(ctx context.Context, httpApi
 
 // Summary:
 //
+// 创建API版本
+//
+// Description:
+//
+// 接口支持创建多个服务。
+//
+// @param request - CreateHttpApiVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHttpApiVersionResponse
+func (client *Client) CreateHttpApiVersionWithContext(ctx context.Context, httpApiId *string, request *CreateHttpApiVersionRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateHttpApiVersionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.VersionConfig) {
+		body["versionConfig"] = request.VersionConfig
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateHttpApiVersion"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/http-apis/" + dara.PercentEncode(dara.StringValue(httpApiId)) + "/versions"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateHttpApiVersionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a Model Context Protocol (MCP) server.
 //
 // @param request - CreateMcpServerRequest
@@ -1591,6 +1702,81 @@ func (client *Client) CreateMcpServerWithContext(ctx context.Context, request *C
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreateMcpServerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建迁移任务
+//
+// @param request - CreateMigrationTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMigrationTaskResponse
+func (client *Client) CreateMigrationTaskWithContext(ctx context.Context, request *CreateMigrationTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateMigrationTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterId) {
+		body["clusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.EnvironmentId) {
+		body["environmentId"] = request.EnvironmentId
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		body["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.HttpApiId) {
+		body["httpApiId"] = request.HttpApiId
+	}
+
+	if !dara.IsNil(request.IngressClass) {
+		body["ingressClass"] = request.IngressClass
+	}
+
+	if !dara.IsNil(request.MigrationType) {
+		body["migrationType"] = request.MigrationType
+	}
+
+	if !dara.IsNil(request.WatchNamespace) {
+		body["watchNamespace"] = request.WatchNamespace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateMigrationTask"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/migration-tasks"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateMigrationTaskResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1755,6 +1941,65 @@ func (client *Client) CreatePluginClassWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// 创建插件webide工作空间
+//
+// @param request - CreatePluginWorkspaceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePluginWorkspaceResponse
+func (client *Client) CreatePluginWorkspaceWithContext(ctx context.Context, request *CreatePluginWorkspaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreatePluginWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayType) {
+		body["gatewayType"] = request.GatewayType
+	}
+
+	if !dara.IsNil(request.OrganizationId) {
+		body["organizationId"] = request.OrganizationId
+	}
+
+	if !dara.IsNil(request.RepoName) {
+		body["repoName"] = request.RepoName
+	}
+
+	if !dara.IsNil(request.WorkspaceName) {
+		body["workspaceName"] = request.WorkspaceName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreatePluginWorkspace"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/plugin-workspaces"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreatePluginWorkspaceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a policy.
 //
 // @param request - CreatePolicyRequest
@@ -1867,6 +2112,47 @@ func (client *Client) CreatePolicyAttachmentWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &CreatePolicyAttachmentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建风险检查任务
+//
+// @param request - CreateRiskCheckTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRiskCheckTaskResponse
+func (client *Client) CreateRiskCheckTaskWithContext(ctx context.Context, gatewayId *string, request *CreateRiskCheckTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateRiskCheckTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRiskCheckTask"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/risk-check/tasks"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRiskCheckTaskResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2655,6 +2941,47 @@ func (client *Client) DeleteMcpServerWithContext(ctx context.Context, mcpServerI
 
 // Summary:
 //
+// 删除迁移任务
+//
+// @param request - DeleteMigrationTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMigrationTaskResponse
+func (client *Client) DeleteMigrationTaskWithContext(ctx context.Context, taskId *string, request *DeleteMigrationTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteMigrationTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteMigrationTask"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/migration-tasks/" + dara.PercentEncode(dara.StringValue(taskId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteMigrationTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a plugin mount.
 //
 // @param headers - map
@@ -2988,6 +3315,10 @@ func (client *Client) DeployHttpApiWithContext(ctx context.Context, httpApiId *s
 //
 // Publishes an MCP server.
 //
+// Description:
+//
+// Before deployment, the MCP server must have domainIds configured through CreateMcpServer or UpdateMcpServer. Call GetMcpServer to confirm the domain name bindng status.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3056,6 +3387,53 @@ func (client *Client) DescribeRegionsWithContext(ctx context.Context, request *D
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Disassociates and deletes a policy.
+//
+// @param request - DetachAndDeletePolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetachAndDeletePolicyResponse
+func (client *Client) DetachAndDeletePolicyWithContext(ctx context.Context, policyId *string, request *DetachAndDeletePolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DetachAndDeletePolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PolicyAttachmentId) {
+		query["policyAttachmentId"] = request.PolicyAttachmentId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DetachAndDeletePolicy"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/policies/" + dara.PercentEncode(dara.StringValue(policyId))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DetachAndDeletePolicyResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3610,6 +3988,47 @@ func (client *Client) GetGatewayWithContext(ctx context.Context, gatewayId *stri
 
 // Summary:
 //
+// 获取网关弹性策略
+//
+// @param request - GetGatewayElasticPolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGatewayElasticPolicyResponse
+func (client *Client) GetGatewayElasticPolicyWithContext(ctx context.Context, gatewayId *string, request *GetGatewayElasticPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetGatewayElasticPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGatewayElasticPolicy"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/elastic-policy"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGatewayElasticPolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a gateway quota rate limiting rule.
 //
 // Description:
@@ -3643,6 +4062,10 @@ func (client *Client) GetGatewayQuotaRuleWithContext(ctx context.Context, gatewa
 		query["withConsumers"] = request.WithConsumers
 	}
 
+	if !dara.IsNil(request.WithSubjects) {
+		query["withSubjects"] = request.WithSubjects
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -3673,7 +4096,7 @@ func (client *Client) GetGatewayQuotaRuleWithContext(ctx context.Context, gatewa
 //
 // Description:
 //
-// This operation retrieves the usage details of a consumer under a quota rule. This operation applies only to AI gateways with a version later than 2.1.19.
+// Retrieves the usage details of a specific consumer under a quota rule. This operation applies only to AI gateways with a version later than 2.1.19.
 //
 // @param request - GetGatewayQuotaRuleSubjectUsageRequest
 //
@@ -3878,6 +4301,88 @@ func (client *Client) GetMcpServerWithContext(ctx context.Context, mcpServerId *
 
 // Summary:
 //
+// 获取迁移任务中的命名空间和服务映射
+//
+// @param request - GetMigrationNamespacedServicesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMigrationNamespacedServicesResponse
+func (client *Client) GetMigrationNamespacedServicesWithContext(ctx context.Context, taskId *string, request *GetMigrationNamespacedServicesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMigrationNamespacedServicesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMigrationNamespacedServices"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/migration-tasks/" + dara.PercentEncode(dara.StringValue(taskId)) + "/namespaced-services"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMigrationNamespacedServicesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取迁移任务详情
+//
+// @param request - GetMigrationTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMigrationTaskResponse
+func (client *Client) GetMigrationTaskWithContext(ctx context.Context, taskId *string, request *GetMigrationTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetMigrationTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetMigrationTask"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/migration-tasks/" + dara.PercentEncode(dara.StringValue(taskId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetMigrationTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a plugin mount.
 //
 // @param headers - map
@@ -3942,6 +4447,47 @@ func (client *Client) GetPluginClassWithContext(ctx context.Context, pluginClass
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPluginClassResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询插件webide工作空间
+//
+// @param request - GetPluginWorkspaceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPluginWorkspaceResponse
+func (client *Client) GetPluginWorkspaceWithContext(ctx context.Context, workspaceId *string, request *GetPluginWorkspaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetPluginWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPluginWorkspace"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/plugin-workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPluginWorkspaceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4055,6 +4601,53 @@ func (client *Client) GetResourceOverviewWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetResourceOverviewResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取风险项通知配置
+//
+// @param request - GetRiskNotificationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRiskNotificationResponse
+func (client *Client) GetRiskNotificationWithContext(ctx context.Context, gatewayId *string, request *GetRiskNotificationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRiskNotificationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RiskCode) {
+		query["riskCode"] = request.RiskCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRiskNotification"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/risk-check/notifications"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRiskNotificationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4392,6 +4985,86 @@ func (client *Client) InstallPluginWithContext(ctx context.Context, request *Ins
 		BodyType:    dara.String("json"),
 	}
 	_result = &InstallPluginResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 调用AIAgent
+//
+// @param request - InvokeAIAgentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InvokeAIAgentResponse
+func (client *Client) InvokeAIAgentWithSSECtx(ctx context.Context, request *InvokeAIAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions, _yield chan *InvokeAIAgentResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.invokeAIAgentWithSSECtx_opYieldFunc(_yield, _yieldErr, ctx, request, headers, runtime)
+	return
+}
+
+// Summary:
+//
+// 调用AIAgent
+//
+// @param request - InvokeAIAgentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InvokeAIAgentResponse
+func (client *Client) InvokeAIAgentWithContext(ctx context.Context, request *InvokeAIAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *InvokeAIAgentResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["agentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.BizParams) {
+		body["bizParams"] = request.BizParams
+	}
+
+	if !dara.IsNil(request.History) {
+		body["history"] = request.History
+	}
+
+	if !dara.IsNil(request.OutputLanguage) {
+		body["outputLanguage"] = request.OutputLanguage
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["prompt"] = request.Prompt
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InvokeAIAgent"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-agents/invoke"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InvokeAIAgentResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5030,7 +5703,7 @@ func (client *Client) ListEnvironmentsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves the external service information of a gateway.
+// Retrieves external service information for a gateway.
 //
 // Description:
 //
@@ -5097,6 +5770,165 @@ func (client *Client) ListExternalServicesWithContext(ctx context.Context, gatew
 
 // Summary:
 //
+// Queries the security groups of an instance that can be used for authorization.
+//
+// @param request - ListGatewayAuthorizableSecurityGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGatewayAuthorizableSecurityGroupsResponse
+func (client *Client) ListGatewayAuthorizableSecurityGroupsWithContext(ctx context.Context, gatewayId *string, request *ListGatewayAuthorizableSecurityGroupsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGatewayAuthorizableSecurityGroupsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CsClusterId) {
+		query["csClusterId"] = request.CsClusterId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListGatewayAuthorizableSecurityGroups"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/authorizable-security-groups"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListGatewayAuthorizableSecurityGroupsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the security group rules of an instance that are in effect.
+//
+// @param request - ListGatewayAuthorizedSecurityGroupRulesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGatewayAuthorizedSecurityGroupRulesResponse
+func (client *Client) ListGatewayAuthorizedSecurityGroupRulesWithContext(ctx context.Context, gatewayId *string, request *ListGatewayAuthorizedSecurityGroupRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGatewayAuthorizedSecurityGroupRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListGatewayAuthorizedSecurityGroupRules"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/authorized-security-groups-rules"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListGatewayAuthorizedSecurityGroupRulesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取网关的错误访问日志
+//
+// @param request - ListGatewayErrorAccessLogsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGatewayErrorAccessLogsResponse
+func (client *Client) ListGatewayErrorAccessLogsWithContext(ctx context.Context, gatewayId *string, request *ListGatewayErrorAccessLogsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGatewayErrorAccessLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Authority) {
+		query["authority"] = request.Authority
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.GatewayRequestId) {
+		query["gatewayRequestId"] = request.GatewayRequestId
+	}
+
+	if !dara.IsNil(request.Path) {
+		query["path"] = request.Path
+	}
+
+	if !dara.IsNil(request.ResponseCode) {
+		query["responseCode"] = request.ResponseCode
+	}
+
+	if !dara.IsNil(request.RouteName) {
+		query["routeName"] = request.RouteName
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["startTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListGatewayErrorAccessLogs"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/error-access-logs"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListGatewayErrorAccessLogsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the list of gateway attribute parameter settings.
 //
 // @param headers - map
@@ -5120,6 +5952,73 @@ func (client *Client) ListGatewayFeaturesWithContext(ctx context.Context, gatewa
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListGatewayFeaturesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取网关负载均衡器列表
+//
+// @param request - ListGatewayLoadBalancersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGatewayLoadBalancersResponse
+func (client *Client) ListGatewayLoadBalancersWithContext(ctx context.Context, gatewayId *string, request *ListGatewayLoadBalancersRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGatewayLoadBalancersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.All) {
+		query["all"] = request.All
+	}
+
+	if !dara.IsNil(request.LoadBalancerId) {
+		query["loadBalancerId"] = request.LoadBalancerId
+	}
+
+	if !dara.IsNil(request.Network) {
+		query["network"] = request.Network
+	}
+
+	if !dara.IsNil(request.Related) {
+		query["related"] = request.Related
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["type"] = request.Type
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["vpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListGatewayLoadBalancers"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/list-load-balancers"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListGatewayLoadBalancersResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5272,6 +6171,101 @@ func (client *Client) ListGatewaysWithContext(ctx context.Context, tmpReq *ListG
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListGatewaysResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListGlobalPolicies
+//
+// @param request - ListGlobalPoliciesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGlobalPoliciesResponse
+func (client *Client) ListGlobalPoliciesWithContext(ctx context.Context, request *ListGlobalPoliciesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListGlobalPoliciesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AttachResourceType) {
+		query["attachResourceType"] = request.AttachResourceType
+	}
+
+	if !dara.IsNil(request.ClassName) {
+		query["className"] = request.ClassName
+	}
+
+	if !dara.IsNil(request.Enable) {
+		query["enable"] = request.Enable
+	}
+
+	if !dara.IsNil(request.EnvironmentId) {
+		query["environmentId"] = request.EnvironmentId
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.GlobalPolicyType) {
+		query["globalPolicyType"] = request.GlobalPolicyType
+	}
+
+	if !dara.IsNil(request.IpAccessControlContent) {
+		query["ipAccessControlContent"] = request.IpAccessControlContent
+	}
+
+	if !dara.IsNil(request.IpAccessControlProtocolLayer) {
+		query["ipAccessControlProtocolLayer"] = request.IpAccessControlProtocolLayer
+	}
+
+	if !dara.IsNil(request.IpAccessControlResourceName) {
+		query["ipAccessControlResourceName"] = request.IpAccessControlResourceName
+	}
+
+	if !dara.IsNil(request.IpAccessControlType) {
+		query["ipAccessControlType"] = request.IpAccessControlType
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["name"] = request.Name
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListGlobalPolicies"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/global-policies"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListGlobalPoliciesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5591,6 +6585,108 @@ func (client *Client) ListHttpApisWithContext(ctx context.Context, request *List
 
 // Summary:
 //
+// # ListInstallableGateways
+//
+// @param request - ListInstallableGatewaysRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstallableGatewaysResponse
+func (client *Client) ListInstallableGatewaysWithContext(ctx context.Context, pluginClassId *string, request *ListInstallableGatewaysRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListInstallableGatewaysResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayType) {
+		query["gatewayType"] = request.GatewayType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListInstallableGateways"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/plugin-classes/" + dara.PercentEncode(dara.StringValue(pluginClassId)) + "/installable-gateways"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListInstallableGatewaysResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the Kubernetes (K8s) clusters that can be added as sources.
+//
+// @param request - ListK8sClusterSourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListK8sClusterSourcesResponse
+func (client *Client) ListK8sClusterSourcesWithContext(ctx context.Context, gatewayId *string, request *ListK8sClusterSourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListK8sClusterSourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.VpcId) {
+		query["vpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListK8sClusterSources"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v2/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/service-sources/k8s-clusters"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListK8sClusterSourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the list of MCP servers.
 //
 // Description:
@@ -5656,6 +6752,98 @@ func (client *Client) ListMcpServersWithContext(ctx context.Context, request *Li
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListMcpServersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取迁移任务列表
+//
+// @param request - ListMigrationTasksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMigrationTasksResponse
+func (client *Client) ListMigrationTasksWithContext(ctx context.Context, request *ListMigrationTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMigrationTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMigrationTasks"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/migration-tasks"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMigrationTasksResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the MSE Nacos instances that can be added as sources.
+//
+// @param request - ListMseNacosSourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMseNacosSourcesResponse
+func (client *Client) ListMseNacosSourcesWithContext(ctx context.Context, gatewayId *string, request *ListMseNacosSourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListMseNacosSourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListMseNacosSources"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/service-sources/mse-nacos-instances"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListMseNacosSourcesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5826,6 +7014,94 @@ func (client *Client) ListPluginClassesWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListPluginClassesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询自定义插件托管在云效上的仓库列表和组织信息
+//
+// @param request - ListPluginRepositoriesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPluginRepositoriesResponse
+func (client *Client) ListPluginRepositoriesWithContext(ctx context.Context, request *ListPluginRepositoriesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPluginRepositoriesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPluginRepositories"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/plugin-repositories"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPluginRepositoriesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户插件webide工作空间列表
+//
+// @param request - ListPluginWorkspaceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPluginWorkspaceResponse
+func (client *Client) ListPluginWorkspaceWithContext(ctx context.Context, request *ListPluginWorkspaceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListPluginWorkspaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayType) {
+		query["gatewayType"] = request.GatewayType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPluginWorkspace"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/plugin-workspaces"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPluginWorkspaceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6057,6 +7333,65 @@ func (client *Client) ListPolicyClassesWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// 查询风险检测结果
+//
+// @param request - ListRiskCheckResultsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRiskCheckResultsResponse
+func (client *Client) ListRiskCheckResultsWithContext(ctx context.Context, gatewayId *string, request *ListRiskCheckResultsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListRiskCheckResultsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRiskCheckResults"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/risk-check/results"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRiskCheckResultsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Lists secret references.
 //
 // Description:
@@ -6246,6 +7581,69 @@ func (client *Client) ListServicesWithContext(ctx context.Context, request *List
 
 // Summary:
 //
+// Queries sources.
+//
+// @param request - ListSourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSourcesResponse
+func (client *Client) ListSourcesWithContext(ctx context.Context, request *ListSourcesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSourcesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSources"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/sources"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves a list of certificates.
 //
 // @param request - ListSslCertsRequest
@@ -6295,6 +7693,61 @@ func (client *Client) ListSslCertsWithContext(ctx context.Context, request *List
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListSslCertsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询已同步的MCP Server列表
+//
+// @param request - ListSyncMCPServerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSyncMCPServerResponse
+func (client *Client) ListSyncMCPServerWithContext(ctx context.Context, request *ListSyncMCPServerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListSyncMCPServerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.Namespace) {
+		query["namespace"] = request.Namespace
+	}
+
+	if !dara.IsNil(request.SourceId) {
+		query["sourceId"] = request.SourceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSyncMCPServer"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/mcp-servers/sync-mcp-server/list"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSyncMCPServerResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6520,6 +7973,53 @@ func (client *Client) QueryConsumerAuthorizationRulesWithContext(ctx context.Con
 
 // Summary:
 //
+// 刷新插件托管仓库的oauth code
+//
+// @param request - RefreshPluginOAuthCodeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefreshPluginOAuthCodeResponse
+func (client *Client) RefreshPluginOAuthCodeWithContext(ctx context.Context, request *RefreshPluginOAuthCodeRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RefreshPluginOAuthCodeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Code) {
+		body["code"] = request.Code
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RefreshPluginOAuthCode"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/plugin-oauth-codes"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RefreshPluginOAuthCodeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an API consumer authorization rule.
 //
 // @param headers - map
@@ -6557,23 +8057,23 @@ func (client *Client) RemoveConsumerAuthorizationRuleWithContext(ctx context.Con
 //
 // Description:
 //
-// Resets a quota throttling rule on a gateway. This operation takes effect only on AI gateways running version 2.1.19 or later. Resetting a rule clears the historical usage of consumers associated with the rule.
+// Resets a quota throttling rule on a gateway. This operation only takes effect for AI gateways with versions later than 2.1.19. Resetting clears the historical usage of consumers on the rule.
 //
 // >
 //
-// >  Recommended call sequence:
+// >  Recommended call logic:
 //
 // > - 1. Perform a dry run to check for rule conflicts.
 //
-// > - - Set dryRun to true.
+// > - - Set dryRun=true.
 //
 // > - - The response contains a conflict preview with conflictHash.
 //
 // > - 2. Submit the request after confirmation.
 //
-// > - - No conflicts: Set dryRun to false and overwrite to false.
+// > - - No conflict: dryRun=false, overwrite=false.
 //
-// > - - Conflicts exist and you confirm the overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
+// > - - Conflict exists and overwrite confirmed: dryRun=false, overwrite=true, conflictHash=<value returned in the previous step>
 //
 // @param request - ResetGatewayQuotaRuleRequest
 //
@@ -6671,6 +8171,47 @@ func (client *Client) RestartGatewayWithContext(ctx context.Context, gatewayId *
 		BodyType:    dara.String("json"),
 	}
 	_result = &RestartGatewayResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 插件工作空间运行流水线
+//
+// @param request - RunPluginPipelineRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunPluginPipelineResponse
+func (client *Client) RunPluginPipelineWithContext(ctx context.Context, workspaceId *string, request *RunPluginPipelineRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *RunPluginPipelineResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RunPluginPipeline"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/plugin-workspaces/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/pipeline-run"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RunPluginPipelineResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7182,6 +8723,53 @@ func (client *Client) UpdateAndAttachPolicyWithContext(ctx context.Context, poli
 
 // Summary:
 //
+// 更新消费者授权规则
+//
+// @param request - UpdateAuthorizationRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAuthorizationRuleResponse
+func (client *Client) UpdateAuthorizationRuleWithContext(ctx context.Context, consumerAuthorizationRuleId *string, request *UpdateAuthorizationRuleRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateAuthorizationRuleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Resources) {
+		body["resources"] = request.Resources
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAuthorizationRule"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/authorization-rules/" + dara.PercentEncode(dara.StringValue(consumerAuthorizationRuleId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAuthorizationRuleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates a consumer.
 //
 // @param request - UpdateConsumerRequest
@@ -7246,6 +8834,10 @@ func (client *Client) UpdateConsumerWithContext(ctx context.Context, consumerId 
 // Summary:
 //
 // Updates a consumer authorization rule.
+//
+// Description:
+//
+// 该 API 已被 UpdateAuthorizationRule 替代，新路径为 /v1/authorization-rules/{consumerAuthorizationRuleId}
 //
 // @param request - UpdateConsumerAuthorizationRuleRequest
 //
@@ -7495,6 +9087,53 @@ func (client *Client) UpdateEnvironmentWithContext(ctx context.Context, environm
 
 // Summary:
 //
+// 更新网关弹性策略
+//
+// @param request - UpdateGatewayElasticPolicyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGatewayElasticPolicyResponse
+func (client *Client) UpdateGatewayElasticPolicyWithContext(ctx context.Context, gatewayId *string, request *UpdateGatewayElasticPolicyRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateGatewayElasticPolicyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ElasticPolicy) {
+		body["elasticPolicy"] = request.ElasticPolicy
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateGatewayElasticPolicy"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/elastic-policy"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateGatewayElasticPolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the attribute parameters of a gateway.
 //
 // @param request - UpdateGatewayFeatureRequest
@@ -7532,6 +9171,108 @@ func (client *Client) UpdateGatewayFeatureWithContext(ctx context.Context, gatew
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateGatewayFeatureResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新网关负载均衡器
+//
+// @param request - UpdateGatewayLoadBalancerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGatewayLoadBalancerResponse
+func (client *Client) UpdateGatewayLoadBalancerWithContext(ctx context.Context, gatewayId *string, request *UpdateGatewayLoadBalancerRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateGatewayLoadBalancerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.LoadBalancerDTO) {
+		body["loadBalancerDTO"] = request.LoadBalancerDTO
+	}
+
+	if !dara.IsNil(request.Option) {
+		body["option"] = request.Option
+	}
+
+	if !dara.IsNil(request.Ports) {
+		body["ports"] = request.Ports
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateGatewayLoadBalancer"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/update-load-balancer"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateGatewayLoadBalancerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改网关运维时间
+//
+// @param request - UpdateGatewayMaintenancePeriodRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGatewayMaintenancePeriodResponse
+func (client *Client) UpdateGatewayMaintenancePeriodWithContext(ctx context.Context, gatewayId *string, request *UpdateGatewayMaintenancePeriodRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateGatewayMaintenancePeriodResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.MaintenancePeriod) {
+		body["maintenancePeriod"] = request.MaintenancePeriod
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateGatewayMaintenancePeriod"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/maintenance-period"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateGatewayMaintenancePeriodResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7591,25 +9332,25 @@ func (client *Client) UpdateGatewayNameWithContext(ctx context.Context, gatewayI
 
 // Summary:
 //
-// Edits a quota throttling rule on a gateway.
+// Edits a quota rate-limiting rule on a gateway.
 //
 // Description:
 //
-// Edits a quota rule on a gateway. This operation takes effect only on AI gateways with a version later than 2.1.19. Editing a rule preserves the historical usage of consumers on the rule.
+// Edits a quota rule on a gateway. This operation takes effect only for AI gateways with a version later than 2.1.19. Editing preserves the historical usage of consumers on the rule.
 //
 // >  Recommended call logic:
 //
-// > - Step 1: Perform a dry run to check for rule conflicts.
+// > - 1. Perform a dry run to check for rule conflicts.
 //
 // > - - Set dryRun to true.
 //
 // > - - The response contains a conflict preview with conflictHash.
 //
-// > - Step 2: Submit the request after confirmation.
+// > - 2. Submit the request after confirmation.
 //
-// > - - No conflicts: Set dryRun to false and overwrite to false.
+// > - - No conflict: Set dryRun to false and overwrite to false.
 //
-// > - - Conflicts exist and you confirm the overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
+// > - - Conflict exists and overwrite confirmed: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
 //
 // @param request - UpdateGatewayQuotaRuleRequest
 //
@@ -8053,6 +9794,128 @@ func (client *Client) UpdateMcpServerWithContext(ctx context.Context, mcpServerI
 
 // Summary:
 //
+// 更新迁移任务
+//
+// @param request - UpdateMigrationTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMigrationTaskResponse
+func (client *Client) UpdateMigrationTaskWithContext(ctx context.Context, taskId *string, request *UpdateMigrationTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateMigrationTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterNamespace) {
+		body["clusterNamespace"] = request.ClusterNamespace
+	}
+
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.ServiceName) {
+		body["serviceName"] = request.ServiceName
+	}
+
+	if !dara.IsNil(request.SlbId) {
+		body["slbId"] = request.SlbId
+	}
+
+	if !dara.IsNil(request.SwitchType) {
+		body["switchType"] = request.SwitchType
+	}
+
+	if !dara.IsNil(request.Target) {
+		body["target"] = request.Target
+	}
+
+	if !dara.IsNil(request.VirtualServices) {
+		body["virtualServices"] = request.VirtualServices
+	}
+
+	if !dara.IsNil(request.Weight) {
+		body["weight"] = request.Weight
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateMigrationTask"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/migration-tasks/" + dara.PercentEncode(dara.StringValue(taskId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateMigrationTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更改网关网络访问类型
+//
+// @param request - UpdateNetworkAccessRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNetworkAccessResponse
+func (client *Client) UpdateNetworkAccessWithContext(ctx context.Context, gatewayId *string, request *UpdateNetworkAccessRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateNetworkAccessResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.NetworkAccessType) {
+		query["networkAccessType"] = request.NetworkAccessType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateNetworkAccess"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/network-type"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateNetworkAccessResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates a plugin mount.
 //
 // @param request - UpdatePluginAttachmentRequest
@@ -8153,6 +10016,57 @@ func (client *Client) UpdatePolicyWithContext(ctx context.Context, policyId *str
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdatePolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新风险项通知配置
+//
+// @param request - UpdateRiskNotificationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRiskNotificationResponse
+func (client *Client) UpdateRiskNotificationWithContext(ctx context.Context, gatewayId *string, request *UpdateRiskNotificationRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateRiskNotificationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.IsMute) {
+		body["isMute"] = request.IsMute
+	}
+
+	if !dara.IsNil(request.RiskCode) {
+		body["riskCode"] = request.RiskCode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRiskNotification"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/risk-check/notifications"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRiskNotificationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8387,4 +10301,110 @@ func (client *Client) UpgradeGatewayWithContext(ctx context.Context, gatewayId *
 	}
 	_err = dara.Convert(_body, &_result)
 	return _result, _err
+}
+
+// Summary:
+//
+// 检查迁移任务
+//
+// @param request - VerifyMigrationTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyMigrationTaskResponse
+func (client *Client) VerifyMigrationTaskWithContext(ctx context.Context, taskId *string, request *VerifyMigrationTaskRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *VerifyMigrationTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("VerifyMigrationTask"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/migration-tasks/" + dara.PercentEncode(dara.StringValue(taskId)) + "/verify"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &VerifyMigrationTaskResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) invokeAIAgentWithSSECtx_opYieldFunc(_yield chan *InvokeAIAgentResponse, _yieldErr chan error, ctx context.Context, request *InvokeAIAgentRequest, headers map[string]*string, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["agentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.BizParams) {
+		body["bizParams"] = request.BizParams
+	}
+
+	if !dara.IsNil(request.History) {
+		body["history"] = request.History
+	}
+
+	if !dara.IsNil(request.OutputLanguage) {
+		body["outputLanguage"] = request.OutputLanguage
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		body["prompt"] = request.Prompt
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InvokeAIAgent"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/ai-agents/invoke"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApiWithCtx(ctx, params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }

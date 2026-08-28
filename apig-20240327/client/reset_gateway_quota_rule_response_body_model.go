@@ -36,7 +36,7 @@ type ResetGatewayQuotaRuleResponseBody struct {
 	//
 	// example:
 	//
-	// 你好，世界！
+	// Hello, World!
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// The unique identifier of the request.
 	//
@@ -100,7 +100,7 @@ func (s *ResetGatewayQuotaRuleResponseBody) Validate() error {
 }
 
 type ResetGatewayQuotaRuleResponseBodyData struct {
-	// Indicates whether the write request is accepted by the system. A value of false typically indicates a retryable scenario, such as an unconfirmed conflict overwrite.
+	// Indicates whether the write request is accepted by the system. A value of false typically indicates a retryable scenario such as an unconfirmed conflict overwrite.
 	//
 	// example:
 	//
@@ -108,13 +108,13 @@ type ResetGatewayQuotaRuleResponseBodyData struct {
 	Accepted *bool `json:"accepted,omitempty" xml:"accepted,omitempty"`
 	// The conflict preview.
 	ConflictPreview *ResetGatewayQuotaRuleResponseBodyDataConflictPreview `json:"conflictPreview,omitempty" xml:"conflictPreview,omitempty" type:"Struct"`
-	// Indicates whether this is a dry run.
+	// Indicates whether the request is a dry run.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//
@@ -176,13 +176,13 @@ func (s *ResetGatewayQuotaRuleResponseBodyData) Validate() error {
 }
 
 type ResetGatewayQuotaRuleResponseBodyDataConflictPreview struct {
-	// The hash of the conflict snapshot.
+	// The conflict hash.
 	//
 	// example:
 	//
 	// f8f44dc6cf369a017d56b7197eb4fb5ac4bbb6b09a92b9b41999541fxxxxxxxx
 	ConflictHash *string `json:"conflictHash,omitempty" xml:"conflictHash,omitempty"`
-	// The list of conflicting entities (consumers).
+	// The list of conflicting subjects (consumers).
 	Items []*ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The total number of conflicts.
 	//
@@ -243,11 +243,11 @@ func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreview) Validate() error 
 type ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems struct {
 	// The period type of the existing conflicting rule on the consumer. Valid values:
 	//
-	// - day: daily period.
+	// - day: daily.
 	//
-	// - week: weekly period.
+	// - week: weekly.
 	//
-	// - month: monthly period.
+	// - month: monthly.
 	//
 	// example:
 	//
@@ -255,9 +255,9 @@ type ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems struct {
 	ConflictPeriodType *string `json:"conflictPeriodType,omitempty" xml:"conflictPeriodType,omitempty"`
 	// The type of the existing conflicting rule on the consumer. Valid values:
 	//
-	// - calendar: The existing conflicting rule uses a calendar period.
+	// - calendar: the existing conflicting rule uses a calendar period.
 	//
-	// - epoch: The existing conflicting rule uses a custom period.
+	// - epoch: the existing conflicting rule uses a custom period.
 	//
 	// example:
 	//
@@ -275,6 +275,24 @@ type ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems struct {
 	//
 	// consumer-a
 	ConsumerName *string `json:"consumerName,omitempty" xml:"consumerName,omitempty"`
+	// The ID of the conflicting subject.
+	//
+	// example:
+	//
+	// cs-xxx
+	SubjectId *string `json:"subjectId,omitempty" xml:"subjectId,omitempty"`
+	// The name of the conflicting subject.
+	//
+	// example:
+	//
+	// consumer-a
+	SubjectName *string `json:"subjectName,omitempty" xml:"subjectName,omitempty"`
+	// The conflict subject type. Valid values: consumer and consumer_group.
+	//
+	// example:
+	//
+	// consumer
+	SubjectType *string `json:"subjectType,omitempty" xml:"subjectType,omitempty"`
 }
 
 func (s ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems) String() string {
@@ -301,6 +319,18 @@ func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems) GetConsumerN
 	return s.ConsumerName
 }
 
+func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems) GetSubjectId() *string {
+	return s.SubjectId
+}
+
+func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems) GetSubjectName() *string {
+	return s.SubjectName
+}
+
+func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems) GetSubjectType() *string {
+	return s.SubjectType
+}
+
 func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems) SetConflictPeriodType(v string) *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems {
 	s.ConflictPeriodType = &v
 	return s
@@ -318,6 +348,21 @@ func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems) SetConsumerI
 
 func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems) SetConsumerName(v string) *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems {
 	s.ConsumerName = &v
+	return s
+}
+
+func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems) SetSubjectId(v string) *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems {
+	s.SubjectId = &v
+	return s
+}
+
+func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems) SetSubjectName(v string) *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems {
+	s.SubjectName = &v
+	return s
+}
+
+func (s *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems) SetSubjectType(v string) *ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems {
+	s.SubjectType = &v
 	return s
 }
 

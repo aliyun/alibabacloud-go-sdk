@@ -60,7 +60,7 @@ type ListHttpApiRoutesRequest struct {
 	//
 	// NotDeployed
 	DeployStatuses *string `json:"deployStatuses,omitempty" xml:"deployStatuses,omitempty"`
-	// The domain name ID used to filter route information.
+	// Filters route information by domain name ID.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type ListHttpApiRoutesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The page size. Valid values: 1 to 100. Default value: 10.
+	// The page size. Valid range: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
@@ -114,19 +114,19 @@ type ListHttpApiRoutesRequest struct {
 	//
 	// /v1
 	PathLike *string `json:"pathLike,omitempty" xml:"pathLike,omitempty"`
-	// Specifies whether to include consumer authorization information in the response.
+	// Includes consumer authorization information in the response.
 	//
 	// example:
 	//
 	// true
 	WithAuthPolicyInfo *bool `json:"withAuthPolicyInfo,omitempty" xml:"withAuthPolicyInfo,omitempty"`
-	// Specifies a consumer ID so that the response includes the authorization rule list for the specified consumer in each route.
+	// Includes the authorization rule list of the specified consumer ID for each route in the response.
 	//
 	// example:
 	//
 	// cs-xxx
 	WithConsumerInfoById *string `json:"withConsumerInfoById,omitempty" xml:"withConsumerInfoById,omitempty"`
-	// Specifies a plug-in ID so that the response includes the mount information of the specified plug-in in each route.
+	// Includes the plug-in attachment information of the specified plug-in ID for each route in the response.
 	//
 	// example:
 	//

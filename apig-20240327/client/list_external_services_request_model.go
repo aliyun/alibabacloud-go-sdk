@@ -28,13 +28,13 @@ type ListExternalServicesRequest struct {
 	//
 	// true
 	ImportableOnly *bool `json:"importableOnly,omitempty" xml:"importableOnly,omitempty"`
-	// The maximum number of entries to return. Valid range: (0, 100]. Default value: 10.
+	// The maximum number of results to return. Valid range: (0, 100]. Default value: 10.
 	//
 	// example:
 	//
 	// 100
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The API name for fuzzy match.
+	// Fuzzy search by API name.
 	//
 	// example:
 	//
@@ -46,17 +46,7 @@ type ListExternalServicesRequest struct {
 	//
 	// 667435
 	PaiWorkspaceId *string `json:"paiWorkspaceId,omitempty" xml:"paiWorkspaceId,omitempty"`
-	// The service source type used to filter results. Valid values:
-	//
-	// - MSE_NACOS: services from MSE Nacos.
-	//
-	// - K8S: services from a Kubernetes cluster in Container Service.
-	//
-	// - FC3: services from Function Compute.
-	//
-	// - VIP: services from a fixed address.
-	//
-	// - DNS: services from a domain name.
+	// The service source type used to query services. This parameter is essentially required. If not provided, the API returns 400 InvalidParameter.WithValue. Valid values: SAE_K8S_SERVICE, PAI_EAS_SERVICE, CloudFlow, K8S, FC3, PAI_WORKSPACE, and MSE_NACOS.
 	//
 	// example:
 	//

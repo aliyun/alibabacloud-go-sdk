@@ -48,49 +48,49 @@ type iHttpApiApiInfo interface {
 }
 
 type HttpApiApiInfo struct {
-	// Agent protocol list
+	// The list of agent protocols.
 	AgentProtocols []*string `json:"agentProtocols,omitempty" xml:"agentProtocols,omitempty" type:"Repeated"`
-	// The AI protocols.
+	// The list of AI protocols.
 	AiProtocols []*string `json:"aiProtocols,omitempty" xml:"aiProtocols,omitempty" type:"Repeated"`
-	// The authentication configurations.
+	// The authentication configuration.
 	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	// The base path of the API.
+	// The API base path.
 	//
 	// example:
 	//
 	// /v1
 	BasePath *string `json:"basePath,omitempty" xml:"basePath,omitempty"`
-	// The API publishing status.
+	// The API operation publish status.
 	DeployCntMap map[string]*HttpApiApiInfoDeployCntMapValue `json:"deployCntMap,omitempty" xml:"deployCntMap,omitempty"`
-	// The API deployment configurations.
+	// The list of API deployment configurations.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
 	// The API description.
 	//
 	// example:
 	//
-	// for test only
+	// Test API
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// example:
 	//
 	// true
 	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
-	// The API environment information.
+	// The publish environment context of the API.
 	Environments []*HttpApiApiInfoEnvironments `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
-	// The instance ID.
+	// The ID of the gateway instance to which the API belongs.
 	//
 	// example:
 	//
 	// gw-cpv4sqdl****
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The HTTP API ID.
+	// HTTP API ID。
 	//
 	// example:
 	//
 	// api-xxx
 	HttpApiId *string `json:"httpApiId,omitempty" xml:"httpApiId,omitempty"`
-	// The information about the HTTP Ingress API.
+	// The HTTP Ingress API information.
 	IngressInfo *HttpApiApiInfoIngressInfo `json:"ingressInfo,omitempty" xml:"ingressInfo,omitempty" type:"Struct"`
-	// Model category
+	// The model category.
 	//
 	// example:
 	//
@@ -102,9 +102,9 @@ type HttpApiApiInfo struct {
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The protocols.
+	// The list of API protocols.
 	Protocols []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -112,23 +112,11 @@ type HttpApiApiInfo struct {
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 	// The API type.
 	//
-	// Valid values:
-	//
-	// 	- HttpIngress
-	//
-	// 	- Rest
-	//
-	// 	- Websocket
-	//
-	// 	- AI
-	//
-	// 	- Http
-	//
 	// example:
 	//
 	// Rest
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The API versioning information.
+	// The API version control information.
 	VersionInfo *HttpApiVersionInfo `json:"versionInfo,omitempty" xml:"versionInfo,omitempty"`
 }
 
@@ -346,43 +334,21 @@ type HttpApiApiInfoEnvironments struct {
 	//
 	// test
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// The publishing scenario.
-	//
-	// Valid values:
-	//
-	// 	- SingleService
-	//
-	// 	- MultiServiceByRatio
-	//
-	// 	- MultiServiceByContent
-	//
-	// 	- MultiServiceByTag
-	//
-	// 	- Mock
+	// The deployment scenario.
 	//
 	// example:
 	//
 	// SingleService
 	BackendScene *string `json:"backendScene,omitempty" xml:"backendScene,omitempty"`
-	// The type of the backend service.
-	//
-	// Valid values:
-	//
-	// 	- DNS: a DNS domain name
-	//
-	// 	- Service: an existing service
-	//
-	// 	- VIP: a fixed IP address
-	//
-	// 	- CloudProduct: a cloud service
+	// The backend type.
 	//
 	// example:
 	//
 	// Service
 	BackendType *string `json:"backendType,omitempty" xml:"backendType,omitempty"`
-	// The custom domain names.
+	// The domain name information published by the user.
 	CustomDomains []*HttpApiDomainInfo `json:"customDomains,omitempty" xml:"customDomains,omitempty" type:"Repeated"`
-	// The publishing status of the API in the current environment.
+	// The deployment status of the API in the current environment.
 	//
 	// example:
 	//
@@ -394,7 +360,7 @@ type HttpApiApiInfoEnvironments struct {
 	//
 	// env-xxx
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The information about the gateway instance to which the environment belongs.
+	// The gateway instance information for the current environment.
 	GatewayInfo *HttpApiApiInfoEnvironmentsGatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty" type:"Struct"`
 	// The environment name.
 	//
@@ -402,9 +368,9 @@ type HttpApiApiInfoEnvironments struct {
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The configurations of an existing service.
+	// The existing service configurations.
 	ServiceConfigs []*HttpApiApiInfoEnvironmentsServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
-	// The default domain names of the environment.
+	// The list of default domain names for the environment.
 	SubDomains []*HttpApiApiInfoEnvironmentsSubDomains `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
 }
 
@@ -547,13 +513,13 @@ type HttpApiApiInfoEnvironmentsGatewayInfo struct {
 	//
 	// MultiTenantServerless
 	GatewayEdition *string `json:"gatewayEdition,omitempty" xml:"gatewayEdition,omitempty"`
-	// The instance ID.
+	// The gateway instance ID.
 	//
 	// example:
 	//
 	// gw-xxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The instance name.
+	// The gateway instance name.
 	//
 	// example:
 	//
@@ -607,7 +573,7 @@ type HttpApiApiInfoEnvironmentsServiceConfigs struct {
 	//
 	// gs-xxx
 	GatewayServiceId *string `json:"gatewayServiceId,omitempty" xml:"gatewayServiceId,omitempty"`
-	// The matching conditions.
+	// The match condition.
 	Match *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
 	// The service name.
 	//
@@ -633,13 +599,13 @@ type HttpApiApiInfoEnvironmentsServiceConfigs struct {
 	//
 	// svc-xxx
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// The version of the microservice.
+	// The service version.
 	//
 	// example:
 	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The service weight.
+	// The weight.
 	//
 	// example:
 	//
@@ -755,7 +721,7 @@ type HttpApiApiInfoEnvironmentsSubDomains struct {
 	//
 	// Internet
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	// The communication protocol.
+	// The access protocol.
 	//
 	// example:
 	//
@@ -812,15 +778,15 @@ func (s *HttpApiApiInfoEnvironmentsSubDomains) Validate() error {
 }
 
 type HttpApiApiInfoIngressInfo struct {
-	// The environment information.
+	// The environment context.
 	EnvironmentInfo *HttpApiApiInfoIngressInfoEnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty" type:"Struct"`
-	// The Ingress Class for listening.
+	// The monitored Ingress Class.
 	//
 	// example:
 	//
 	// mse
 	IngressClass *string `json:"ingressClass,omitempty" xml:"ingressClass,omitempty"`
-	// The information about the Kubernetes cluster.
+	// The Kubernetes cluster information.
 	K8sClusterInfo *HttpApiApiInfoIngressInfoK8sClusterInfo `json:"k8sClusterInfo,omitempty" xml:"k8sClusterInfo,omitempty" type:"Struct"`
 	// Specifies whether to update the address in Ingress Status.
 	//
@@ -834,7 +800,7 @@ type HttpApiApiInfoIngressInfo struct {
 	//
 	// src-xxx
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// The namespace for listening.
+	// The monitored namespace.
 	//
 	// example:
 	//

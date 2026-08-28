@@ -144,7 +144,11 @@ type GetGatewayResponseBodyData struct {
 	//
 	// gw-cq2vundlhtg***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The running mode of AI multi-tenant V2. Default value: ENTERPRISE. Only AI + MultiTenantServerless allows this parameter.
+	// The running mode for AI multi-tenant V2. Default value: ENTERPRISE. Only AI + MultiTenantServerless allows this parameter. Valid values:
+	//
+	// - ENTERPRISE: default.
+	//
+	// - STANDARD: allowed only for AI multi-tenant V2.
 	//
 	// example:
 	//
@@ -673,9 +677,9 @@ type GetGatewayResponseBodyDataLoadBalancers struct {
 	Ports []*GetGatewayResponseBodyDataLoadBalancersPorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
 	// The status of load balancing. Valid values:
 	//
-	// - Ready: active.
+	// - Ready: Active.
 	//
-	// - NotCreate: not associated with an instance.
+	// - NotCreate: No associated instance.
 	//
 	// example:
 	//

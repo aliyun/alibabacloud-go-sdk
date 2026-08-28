@@ -32,7 +32,7 @@ type iAiStatisticsPathField interface {
 }
 
 type AiStatisticsPathField struct {
-	// The secondary category.
+	// The secondary business category of the field. Optional. Valid values: conversation (conversation content), config (configuration parameters), tools (tool calling), usage (usage statistics), metadata (metadata), choices (candidate results), identity (identity identifier), cache (cache information), media (multimedia content), logprobs (log probabilities), and custom (custom field). Set custom fields to custom.
 	//
 	// example:
 	//
@@ -42,57 +42,51 @@ type AiStatisticsPathField struct {
 	//
 	// example:
 	//
-	// 用户输入的问题内容
+	// The question content entered by the user
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The log key.
+	// The log key (field name).
 	//
 	// example:
 	//
 	// question
 	FieldKey *string `json:"fieldKey,omitempty" xml:"fieldKey,omitempty"`
-	// The request or response direction.
+	// The request or response attribution. The backend normalizes this to request or response based on source.
 	//
 	// example:
 	//
 	// request
 	Io *string `json:"io,omitempty" xml:"io,omitempty"`
-	// The corresponding JSON path (GJSON syntax).
+	// The corresponding jsonPath (gjson syntax).
 	//
 	// example:
 	//
 	// messages.#.content
 	JsonPath *string `json:"jsonPath,omitempty" xml:"jsonPath,omitempty"`
-	// The display name of the field.
+	// The annotation for the field key name.
 	//
 	// example:
 	//
-	// 问题内容
+	// Question content
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Specifies whether collection is enabled.
+	// Indicates whether collection is enabled to create a log record for the corresponding field in AI request logs.
 	//
 	// example:
 	//
 	// true
 	RecordEnabled *bool `json:"recordEnabled,omitempty" xml:"recordEnabled,omitempty"`
-	// The rule used for streaming response extraction. Valid values:
-	//
-	// - append: appends content
-	//
-	// - first: retrieves the first value
-	//
-	// - replace: retrieves the last value
+	// The aggregation rule for streaming response fields. Valid values: append, first, and replace. append: appends the matched values from each streaming chunk in sequence. first: retains the first matched value. replace: uses the last matched value. When source is response_streaming_body and rule is not specified, first is used by default. This field is not required for non-streaming scenarios.
 	//
 	// example:
 	//
 	// append
 	Rule *string `json:"rule,omitempty" xml:"rule,omitempty"`
-	// Indicates whether the field is sensitive.
+	// Specifies whether the field is sensitive.
 	//
 	// example:
 	//
 	// false
 	Sensitive *bool `json:"sensitive,omitempty" xml:"sensitive,omitempty"`
-	// The data source.
+	// The source of the field value. Valid values: fixed_value (fixed value), request_body (request body), request_header (request header), response_header (response header), response_body (non-streaming response body), and response_streaming_body (streaming response body).
 	//
 	// example:
 	//

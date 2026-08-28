@@ -15,6 +15,8 @@ type iGetGatewayQuotaRuleRequest interface {
 	GetConsumerPageSize() *string
 	SetWithConsumers(v bool) *GetGatewayQuotaRuleRequest
 	GetWithConsumers() *bool
+	SetWithSubjects(v bool) *GetGatewayQuotaRuleRequest
+	GetWithSubjects() *bool
 }
 
 type GetGatewayQuotaRuleRequest struct {
@@ -28,14 +30,16 @@ type GetGatewayQuotaRuleRequest struct {
 	ConsumerPageNumber *string `json:"consumerPageNumber,omitempty" xml:"consumerPageNumber,omitempty"`
 	// Deprecated
 	//
-	// The number of consumers per page.
+	// The page size of the consumer list.
 	//
 	// example:
 	//
 	// 10
 	ConsumerPageSize *string `json:"consumerPageSize,omitempty" xml:"consumerPageSize,omitempty"`
-	// Specifies whether to include the consumer list in the response.
+	// Specifies whether to return the consumer list.
 	WithConsumers *bool `json:"withConsumers,omitempty" xml:"withConsumers,omitempty"`
+	// Specifies whether to return the general subject list. This parameter applies to both consumer and consumer group rules.
+	WithSubjects *bool `json:"withSubjects,omitempty" xml:"withSubjects,omitempty"`
 }
 
 func (s GetGatewayQuotaRuleRequest) String() string {
@@ -58,6 +62,10 @@ func (s *GetGatewayQuotaRuleRequest) GetWithConsumers() *bool {
 	return s.WithConsumers
 }
 
+func (s *GetGatewayQuotaRuleRequest) GetWithSubjects() *bool {
+	return s.WithSubjects
+}
+
 func (s *GetGatewayQuotaRuleRequest) SetConsumerPageNumber(v string) *GetGatewayQuotaRuleRequest {
 	s.ConsumerPageNumber = &v
 	return s
@@ -70,6 +78,11 @@ func (s *GetGatewayQuotaRuleRequest) SetConsumerPageSize(v string) *GetGatewayQu
 
 func (s *GetGatewayQuotaRuleRequest) SetWithConsumers(v bool) *GetGatewayQuotaRuleRequest {
 	s.WithConsumers = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleRequest) SetWithSubjects(v bool) *GetGatewayQuotaRuleRequest {
+	s.WithSubjects = &v
 	return s
 }
 

@@ -29,6 +29,8 @@ type iAddGatewayQuotaRuleRequest interface {
 	GetQuotaLimit() *int64
 	SetRuleName(v string) *AddGatewayQuotaRuleRequest
 	GetRuleName() *string
+	SetSubjectType(v string) *AddGatewayQuotaRuleRequest
+	GetSubjectType() *string
 	SetTimezone(v string) *AddGatewayQuotaRuleRequest
 	GetTimezone() *string
 	SetWindowAlignment(v string) *AddGatewayQuotaRuleRequest
@@ -36,49 +38,47 @@ type iAddGatewayQuotaRuleRequest interface {
 }
 
 type AddGatewayQuotaRuleRequest struct {
-	// The conflict snapshot hash, used to prevent concurrent dirty overwrites during confirmation. Obtain this value from the response of a previous dry run (dryRun=true).
+	// The conflict snapshot hash, used to prevent concurrent dirty overwrites during confirmation. Obtain this value from the response of a previous dryRun=true request.
 	//
-	// This parameter is not required in the following cases: no conflicts exist, the request is a dry run (dryRun=true), or overwrite is set to false.
+	// This parameter is not required in the following cases: no conflicts exist, the request is a dry run (dryRun=true), or overwrite=false (no overwrite confirmation).
 	//
-	// If dryRun is set to false and overwrite is set to true but this parameter is not specified or the value has expired, the system returns accepted=false with a new conflict preview. Perform a new dry run to confirm the updated conflicts.
+	// When dryRun=false and overwrite=true, if this parameter is not provided or the value has expired and no longer matches, the backend returns accepted=false with a new conflict preview. Perform a dry run again to confirm the new conflicts.
 	//
 	// example:
 	//
 	// f8f44dc6cf369a017d56b7197eb4fb5ac4bbb6b09a92b9b41999541fxxxxxxxx
 	ConflictHash *string `json:"conflictHash,omitempty" xml:"conflictHash,omitempty"`
-	// Deprecated
-	//
-	// The list of consumer group IDs. This parameter is not supported.
+	// The list of consumer group IDs (not supported currently).
 	//
 	// example:
 	//
 	// group1,group2
 	ConsumerGroupIds []*string `json:"consumerGroupIds,omitempty" xml:"consumerGroupIds,omitempty" type:"Repeated"`
-	// The list of consumer IDs to bind to the rule. You can specify up to 1,000 consumers in a single request.
+	// The list of consumer IDs to bind to the rule. A maximum of 1000 consumers can be specified in a single request.
 	//
 	// example:
 	//
 	// 1001,1002,1003
 	ConsumerIds []*string `json:"consumerIds,omitempty" xml:"consumerIds,omitempty" type:"Repeated"`
-	// Specifies whether to perform only a dry run without applying the configuration. A dry run checks whether conflicting rules exist on the bound consumers. For example, a consumer that already has a calendar-day quota rule cannot have another calendar-day quota rule added.
+	// Specifies whether to perform only a dry run without applying the configuration. A dry run checks whether conflicting rules exist on the bound consumers. For example, a consumer that already has a calendar-day quota cannot have another calendar-day quota rule added.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	// Specifies whether to allow overwriting when conflicts exist. If overwriting is allowed, the conflicting consumers are unbound from the old rule and bound to the new rule.
+	// Specifies whether to allow overwriting when conflicts exist. If overwriting is allowed, the conflicting subjects (consumers) are unbound from the old rule and bound to the new rule.
 	//
 	// example:
 	//
 	// false
 	Overwrite *bool `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
-	// The period multiplier, which specifies the number of periods after which the quota resets. This parameter is required for custom period rules. Minimum value: 1. Maximum value: 60.
+	// The period multiplier. This parameter applies to epoch period rules.
 	//
 	// example:
 	//
 	// 10
 	PeriodMultiplier *int64 `json:"periodMultiplier,omitempty" xml:"periodMultiplier,omitempty"`
-	// The period unit. For calendar periods, the value can be day, week, or month. For custom periods, only day is supported.
+	// The period type. For calendar periods, statistics are collected by day, week, or month. Valid values: day, week, and month. For epoch periods, only day is supported.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type AddGatewayQuotaRuleRequest struct {
 	//
 	// week
 	PeriodType *string `json:"periodType,omitempty" xml:"periodType,omitempty"`
-	// The quota dimension or throttling type. Valid values: token and credit. The credit quota applies only to dedicated instances of version 2.1.19 or later.
+	// The quota dimension or throttling type. Valid values: token and credit. The credit quota applies only to dedicated instances running version 2.1.19 or later.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,7 @@ type AddGatewayQuotaRuleRequest struct {
 	//
 	// token
 	QuotaDimension *string `json:"quotaDimension,omitempty" xml:"quotaDimension,omitempty"`
-	// The total available quota per period (the limit).
+	// The total available quota per period (limit).
 	//
 	// This parameter is required.
 	//
@@ -110,17 +110,19 @@ type AddGatewayQuotaRuleRequest struct {
 	//
 	// team-rule
 	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+	// The rule subject type. Valid values: consumer (a consumer) and consumer_group (a consumer group). Default value: consumer.
+	//
+	// example:
+	//
+	// consumer_group
+	SubjectType *string `json:"subjectType,omitempty" xml:"subjectType,omitempty"`
 	// The time zone for the calendar period, in UTC+x format.
 	//
 	// example:
 	//
 	// UTC+8
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	// The reset period type. Valid values:
-	//
-	// - calendar: calendar period. The period starts from the beginning of a calendar day, week, or month.
-	//
-	// - epoch: custom period. The period starts from the time the rule is applied. The custom period applies only to dedicated instances of version 2.1.19 or later.
+	// The reset period type. Valid values: calendar (the period starts from the beginning of a calendar day, week, or month) and epoch (the period starts from when the rule is applied). The epoch type applies only to dedicated instances running version 2.1.19 or later.
 	//
 	// example:
 	//
@@ -174,6 +176,10 @@ func (s *AddGatewayQuotaRuleRequest) GetQuotaLimit() *int64 {
 
 func (s *AddGatewayQuotaRuleRequest) GetRuleName() *string {
 	return s.RuleName
+}
+
+func (s *AddGatewayQuotaRuleRequest) GetSubjectType() *string {
+	return s.SubjectType
 }
 
 func (s *AddGatewayQuotaRuleRequest) GetTimezone() *string {
@@ -231,6 +237,11 @@ func (s *AddGatewayQuotaRuleRequest) SetQuotaLimit(v int64) *AddGatewayQuotaRule
 
 func (s *AddGatewayQuotaRuleRequest) SetRuleName(v string) *AddGatewayQuotaRuleRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *AddGatewayQuotaRuleRequest) SetSubjectType(v string) *AddGatewayQuotaRuleRequest {
+	s.SubjectType = &v
 	return s
 }
 

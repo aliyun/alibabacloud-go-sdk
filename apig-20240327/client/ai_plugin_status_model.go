@@ -26,7 +26,7 @@ type AiPluginStatus struct {
 	//
 	// pi-xxx
 	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
-	// Indicates whether the backend service that the plug-in depends on is healthy.
+	// Indicates whether the backend service that the plugin depends on is healthy.
 	//
 	// example:
 	//

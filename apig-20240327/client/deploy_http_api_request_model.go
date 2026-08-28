@@ -22,9 +22,9 @@ type DeployHttpApiRequest struct {
 	//
 	// The HTTP API deployment configuration.
 	HttpApiConfig *DeployHttpApiRequestHttpApiConfig `json:"httpApiConfig,omitempty" xml:"httpApiConfig,omitempty" type:"Struct"`
-	// The REST API deployment configuration. Required when the HTTP API being published is a REST API. At least one of revisionId, environment, or gatewayId must be provided to identify the publish target.
+	// The REST API deployment configuration. This parameter is required when the HTTP API being published is a REST API. At least one of revisionId, environment, or gatewayId must be provided to specify the publish target.
 	RestApiConfig *DeployHttpApiRequestRestApiConfig `json:"restApiConfig,omitempty" xml:"restApiConfig,omitempty" type:"Struct"`
-	// The route ID. Required when publishing a route of an HTTP API.
+	// The route ID. This parameter is required when publishing a route of an HTTP API.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type DeployHttpApiRequestRestApiConfig struct {
 	//
 	// User service API publish
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether to enable REST API route compression. If omitted or set to false, operations are published individually. If set to true, the API is published as a single prefix route. This parameter is ignored for historical version publishing, which uses the routing mode saved in the historical version.
+	// Specifies whether to enable REST API route compression. If this parameter is omitted or set to false, operations are published individually. If set to true, the API is published as a single prefix route. This field is ignored for historical revision publishing, which uses the route mode saved in the historical revision. When set to true, operationDeployments must not be specified because prefix route publishing supports only full publishing.
 	//
 	// example:
 	//
@@ -143,13 +143,13 @@ type DeployHttpApiRequestRestApiConfig struct {
 	//
 	// gw-cvn2u46m1hkun04oll8g
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The operation-level deployment control list.
+	// The operation-level deployment control list. This parameter takes effect only when enableRouteCompression is omitted or set to false. This field must not be specified when enableRouteCompression is set to true.
 	OperationDeployments []*DeployHttpApiRequestRestApiConfigOperationDeployments `json:"operationDeployments,omitempty" xml:"operationDeployments,omitempty" type:"Repeated"`
 	// Deprecated
 	//
 	// The operation IDs.
 	OperationIds []*string `json:"operationIds,omitempty" xml:"operationIds,omitempty" type:"Repeated"`
-	// The historical version number. If specified, the publish uses the information from this historical version.
+	// The historical revision ID. If this field is specified, the publish information is based on the historical revision.
 	//
 	// example:
 	//
@@ -267,7 +267,7 @@ type DeployHttpApiRequestRestApiConfigEnvironment struct {
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
 	// Deprecated
 	//
-	// The existing service configurations. In the single service scenario, only one entry is allowed. In ratio-based or content-based scenarios, multiple entries are allowed. Backend configurations cannot be specified during publishing. Configure them in advance by using UpdateHttpApi or UpdateHttpApiOperation before publishing.
+	// The existing service configurations. In the single-service scenario, only one entry is allowed. In ratio-based or content-based scenarios, multiple entries are allowed. Backend configurations cannot be specified during publishing. Configure them in advance by using UpdateHttpApi or UpdateHttpApiOperation before publishing.
 	//
 	// if can be null:
 	// true
@@ -332,7 +332,7 @@ func (s *DeployHttpApiRequestRestApiConfigEnvironment) Validate() error {
 }
 
 type DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs struct {
-	// The match condition configuration for API publishing.
+	// The match condition configuration related to API publishing.
 	//
 	// example:
 	//
@@ -346,9 +346,9 @@ type DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs struct {
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
 	// The service protocol. Valid values:
 	//
-	// - HTTP.
+	// - HTTP
 	//
-	// - HTTPS.
+	// - HTTPS
 	//
 	// example:
 	//
@@ -366,7 +366,7 @@ type DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs struct {
 	//
 	// v1
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-	// The weight. Valid values: 1 to 100. This parameter takes effect only in ratio-based scenarios.
+	// The weight. Valid values: 1 to 100. This parameter takes effect only in the ratio-based scenario.
 	//
 	// example:
 	//

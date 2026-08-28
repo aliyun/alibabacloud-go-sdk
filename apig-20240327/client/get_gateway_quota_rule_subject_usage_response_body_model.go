@@ -124,19 +124,29 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyData struct {
 	//
 	// 180
 	OutputAmount *int64 `json:"outputAmount,omitempty" xml:"outputAmount,omitempty"`
-	// Indicates whether the limit is exceeded.
+	// Indicates whether the quota limit is exceeded.
 	//
 	// example:
 	//
 	// false
 	OverLimit *bool `json:"overLimit,omitempty" xml:"overLimit,omitempty"`
+	// The subject type. Valid values:
+	//
+	// - consumer
+	//
+	// - consumer_group
+	//
+	// example:
+	//
+	// consumer_group
+	SubjectType *string `json:"subjectType,omitempty" xml:"subjectType,omitempty"`
 	// The total quota of the subject.
 	//
 	// example:
 	//
 	// 1000
 	TotalQuota *int64 `json:"totalQuota,omitempty" xml:"totalQuota,omitempty"`
-	// The total used amount of the subject.
+	// The total used quota of the subject.
 	//
 	// example:
 	//
@@ -172,6 +182,10 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) GetOverLimit() *bool {
 	return s.OverLimit
 }
 
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) GetSubjectType() *string {
+	return s.SubjectType
+}
+
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) GetTotalQuota() *int64 {
 	return s.TotalQuota
 }
@@ -202,6 +216,11 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) SetOutputAmount(v int6
 
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) SetOverLimit(v bool) *GetGatewayQuotaRuleSubjectUsageResponseBodyData {
 	s.OverLimit = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) SetSubjectType(v string) *GetGatewayQuotaRuleSubjectUsageResponseBodyData {
+	s.SubjectType = &v
 	return s
 }
 
@@ -315,6 +334,12 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems struct {
 	//
 	// 10
 	CachedAmount *int64 `json:"cachedAmount,omitempty" xml:"cachedAmount,omitempty"`
+	// The consumer name.
+	//
+	// example:
+	//
+	// consumer-a
+	Consumer *string `json:"consumer,omitempty" xml:"consumer,omitempty"`
 	// The input token consumption.
 	//
 	// example:
@@ -333,6 +358,12 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems struct {
 	//
 	// 80
 	OutputAmount *int64 `json:"outputAmount,omitempty" xml:"outputAmount,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// req-123456
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The consumption (request) time in the format of YYYY-MM-DD.
 	//
 	// example:
@@ -359,6 +390,10 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetCachedA
 	return s.CachedAmount
 }
 
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetConsumer() *string {
+	return s.Consumer
+}
+
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetInputAmount() *int64 {
 	return s.InputAmount
 }
@@ -369,6 +404,10 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetModel()
 
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetOutputAmount() *int64 {
 	return s.OutputAmount
+}
+
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetRequestId() *string {
+	return s.RequestId
 }
 
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetStartTime() *string {
@@ -384,6 +423,11 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetCachedA
 	return s
 }
 
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetConsumer(v string) *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems {
+	s.Consumer = &v
+	return s
+}
+
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetInputAmount(v int64) *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems {
 	s.InputAmount = &v
 	return s
@@ -396,6 +440,11 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetModel(v
 
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetOutputAmount(v int64) *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems {
 	s.OutputAmount = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetRequestId(v string) *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems {
+	s.RequestId = &v
 	return s
 }
 

@@ -36,7 +36,7 @@ type iCreateGatewayRequest interface {
 }
 
 type CreateGatewayRequest struct {
-	// The billing method. Required for the Serverless edition and must be set to POSTPAY.
+	// The billing method. This parameter is required for the Serverless edition and must be set to POSTPAY.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type CreateGatewayRequest struct {
 	//
 	// - Professional: standard instance.
 	//
-	// - Serverless: Serverless.
+	// - Serverless: Serverless instance.
 	//
-	// - MultiTenantServerless: multi-tenant Serverless.
+	// - MultiTenantServerless: multi-tenant Serverless instance.
 	//
 	// - Unknown: unknown.
 	//
@@ -56,13 +56,13 @@ type CreateGatewayRequest struct {
 	//
 	// Professional
 	GatewayEdition *string `json:"gatewayEdition,omitempty" xml:"gatewayEdition,omitempty"`
-	// The running mode for AI multi-tenant V2. Default value: ENTERPRISE. This parameter can be specified only when gatewayType is AI and gatewayEdition is MultiTenantServerless.
+	// The running mode for AI multi-tenant V2. Default value: ENTERPRISE. This parameter is allowed only when gatewayType is AI and gatewayEdition is MultiTenantServerless.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	GatewayMode *string `json:"gatewayMode,omitempty" xml:"gatewayMode,omitempty"`
-	// The gateway type. Must be explicitly set to AI for AI Serverless or multi-tenant editions.
+	// The gateway type. This parameter must be explicitly set to AI for AI Serverless or multi-tenant gateways.
 	//
 	// example:
 	//
@@ -70,13 +70,13 @@ type CreateGatewayRequest struct {
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
 	// The gateway log configuration.
 	LogConfig *CreateGatewayRequestLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty" type:"Struct"`
-	// The gateway name. Required for all editions.
+	// The gateway name. This parameter is required for all gateway editions.
 	//
 	// example:
 	//
 	// test-ceshi
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The network access configuration.
+	// The network access configuration. This parameter is required. If not provided, the service returns InvalidParameter.IsEmpty (400).
 	NetworkAccessConfig *CreateGatewayRequestNetworkAccessConfig `json:"networkAccessConfig,omitempty" xml:"networkAccessConfig,omitempty" type:"Struct"`
 	// The resource group ID.
 	//
@@ -84,7 +84,7 @@ type CreateGatewayRequest struct {
 	//
 	// rg-ahr5uil8raz0rq3b
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The node specifications. Required for the Serverless edition.
+	// The node specifications. This parameter is required for the Serverless edition.
 	//
 	// example:
 	//
@@ -92,13 +92,13 @@ type CreateGatewayRequest struct {
 	Spec *string `json:"spec,omitempty" xml:"spec,omitempty"`
 	// The list of tags.
 	Tag []*CreateGatewayRequestTag `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
-	// The VPC ID. Required for all editions.
+	// The VPC ID. This parameter is required for all gateway editions.
 	//
 	// example:
 	//
 	// vpc-zm0x16tomfiat1mk9f6rs
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
-	// The zone configuration. Required for all editions.
+	// The zone configuration. This parameter is required for all gateway editions.
 	ZoneConfig *CreateGatewayRequestZoneConfig `json:"zoneConfig,omitempty" xml:"zoneConfig,omitempty" type:"Struct"`
 }
 
@@ -278,7 +278,7 @@ func (s *CreateGatewayRequestLogConfig) Validate() error {
 }
 
 type CreateGatewayRequestLogConfigSls struct {
-	// Specifies whether to enable SLS log collection.
+	// Specifies whether to enable log collection.
 	//
 	// example:
 	//

@@ -1,3 +1,60 @@
+2026-08-28 Version: v11.1.0
+- Support API BatchUpdateHttpApiOperation.
+- Support API CreateHttpApiVersion.
+- Support API CreateMigrationTask.
+- Support API CreatePluginWorkspace.
+- Support API CreateRiskCheckTask.
+- Support API DeleteMigrationTask.
+- Support API DetachAndDeletePolicy.
+- Support API GetGatewayElasticPolicy.
+- Support API GetMigrationNamespacedServices.
+- Support API GetMigrationTask.
+- Support API GetPluginWorkspace.
+- Support API GetRiskNotification.
+- Support API InvokeAIAgent.
+- Support API ListGatewayAuthorizableSecurityGroups.
+- Support API ListGatewayAuthorizedSecurityGroupRules.
+- Support API ListGatewayErrorAccessLogs.
+- Support API ListGatewayLoadBalancers.
+- Support API ListGlobalPolicies.
+- Support API ListInstallableGateways.
+- Support API ListK8sClusterSources.
+- Support API ListMigrationTasks.
+- Support API ListMseNacosSources.
+- Support API ListPluginRepositories.
+- Support API ListPluginWorkspace.
+- Support API ListRiskCheckResults.
+- Support API ListSources.
+- Support API ListSyncMCPServer.
+- Support API RefreshPluginOAuthCode.
+- Support API RunPluginPipeline.
+- Support API UpdateAuthorizationRule.
+- Support API UpdateGatewayElasticPolicy.
+- Support API UpdateGatewayLoadBalancer.
+- Support API UpdateGatewayMaintenancePeriod.
+- Support API UpdateMigrationTask.
+- Support API UpdateNetworkAccess.
+- Support API UpdateRiskNotification.
+- Support API VerifyMigrationTask.
+- Update API AddGatewayQuotaRule: add request parameters body.subjectType.
+- Update API AddGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.subjectId.
+- Update API AddGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.subjectName.
+- Update API AddGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.subjectType.
+- Update API GetGatewayQuotaRule: add request parameters withSubjects.
+- Update API GetGatewayQuotaRule: add response parameters Body.data.subjectCount.
+- Update API GetGatewayQuotaRule: add response parameters Body.data.subjectType.
+- Update API GetGatewayQuotaRule: add response parameters Body.data.subjects.
+- Update API GetGatewayQuotaRuleSubjectUsage: add response parameters Body.data.subjectType.
+- Update API GetGatewayQuotaRuleSubjectUsage: add response parameters Body.data.details.items.$.consumer.
+- Update API GetGatewayQuotaRuleSubjectUsage: add response parameters Body.data.details.items.$.requestId.
+- Update API ResetGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.subjectId.
+- Update API ResetGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.subjectName.
+- Update API ResetGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.subjectType.
+- Update API UpdateGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.subjectId.
+- Update API UpdateGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.subjectName.
+- Update API UpdateGatewayQuotaRule: add response parameters Body.data.conflictPreview.items.$.subjectType.
+
+
 2026-08-24 Version: v11.0.4
 - Update API CreateHttpApiRoute: add request parameters body.backendConfig.services.$.groupName.
 - Update API CreateHttpApiRoute: add request parameters body.backendConfig.services.$.httpDubboTranscoder.

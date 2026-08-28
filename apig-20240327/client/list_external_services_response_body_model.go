@@ -34,7 +34,7 @@ type ListExternalServicesResponseBody struct {
 	//
 	// Failed to upload data. Please try again
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

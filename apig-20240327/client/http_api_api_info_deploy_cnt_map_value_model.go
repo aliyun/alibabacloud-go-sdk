@@ -16,7 +16,7 @@ type iHttpApiApiInfoDeployCntMapValue interface {
 }
 
 type HttpApiApiInfoDeployCntMapValue struct {
-	// deployedCnt
+	// The number of published API operations.
 	//
 	// example:
 	//

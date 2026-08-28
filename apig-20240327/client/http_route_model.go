@@ -38,55 +38,55 @@ type iHttpRoute interface {
 }
 
 type HttpRoute struct {
-	// The backend configuration
+	// The backend service.
 	Backend *Backend `json:"backend,omitempty" xml:"backend,omitempty"`
-	// builtin
+	// Indicates whether the route is a built-in system route.
 	//
 	// example:
 	//
 	// true
 	Builtin *string `json:"builtin,omitempty" xml:"builtin,omitempty"`
-	// The creation timestamp in milliseconds
+	// The creation time, in ms.
 	//
 	// example:
 	//
 	// 1726649310593
 	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
-	// The deployment status
+	// The deployment status.
 	//
 	// example:
 	//
 	// Deployed
 	DeployStatus *string `json:"deployStatus,omitempty" xml:"deployStatus,omitempty"`
-	// The description of the route
+	// The route description.
 	//
 	// example:
 	//
-	// Route for user management API
+	// Product center staging route
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// List of domain information
+	// The list of domain name information.
 	DomainInfos []*HttpRouteDomainInfos `json:"domainInfos,omitempty" xml:"domainInfos,omitempty" type:"Repeated"`
-	// The environment information
+	// The environment context of the routing.
 	EnvironmentInfo *HttpRouteEnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty" type:"Struct"`
-	// gatewayStatus
+	// The route publish status.
 	GatewayStatus map[string]*string `json:"gatewayStatus,omitempty" xml:"gatewayStatus,omitempty"`
-	// The route matching rules
+	// The route matching rule.
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
-	// The MCP server information
+	// The MCP server information.
 	McpServerInfo *HttpRouteMcpServerInfo `json:"mcpServerInfo,omitempty" xml:"mcpServerInfo,omitempty" type:"Struct"`
-	// The name of the route
+	// The route name.
 	//
 	// example:
 	//
 	// itemcenter-pre-route
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The unique identifier of the route
+	// The HttpApi route ID.
 	//
 	// example:
 	//
 	// hr-crf5l7tlhtgp91t***
 	RouteId *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
-	// The last update timestamp in milliseconds
+	// The update time, in ms.
 	//
 	// example:
 	//
@@ -253,19 +253,19 @@ func (s *HttpRoute) Validate() error {
 }
 
 type HttpRouteDomainInfos struct {
-	// The domain ID
+	// The domain name ID.
 	//
 	// example:
 	//
 	// d-cr3v7dllhtgi9s***
 	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
-	// The domain name
+	// The domain name.
 	//
 	// example:
 	//
 	// itemcenter.dev
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The domain protocol
+	// The domain name protocol.
 	//
 	// example:
 	//
@@ -313,27 +313,27 @@ func (s *HttpRouteDomainInfos) Validate() error {
 }
 
 type HttpRouteEnvironmentInfo struct {
-	// The environment alias
+	// The environment name alias.
 	//
 	// example:
 	//
-	// prod
+	// Product center staging environment
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
-	// The environment ID
+	// The environment ID.
 	//
 	// example:
 	//
 	// env-crhq1u5lhtgju***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
-	// The gateway information
+	// The gateway information.
 	GatewayInfo *HttpRouteEnvironmentInfoGatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty" type:"Struct"`
-	// The environment name
+	// The environment name.
 	//
 	// example:
 	//
 	// itemcenter-pre
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// List of subdomain information
+	// The list of default second-level domain names of the environment.
 	SubDomains []*HttpRouteEnvironmentInfoSubDomains `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
 }
 
@@ -413,13 +413,13 @@ type HttpRouteEnvironmentInfoGatewayInfo struct {
 	//
 	// MultiTenantServerless
 	GatewayEdition *string `json:"gatewayEdition,omitempty" xml:"gatewayEdition,omitempty"`
-	// The gateway ID
+	// The gateway ID.
 	//
 	// example:
 	//
 	// gw-cqoohqtlh***
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The gateway name
+	// The gateway name.
 	//
 	// example:
 	//
@@ -467,25 +467,25 @@ func (s *HttpRouteEnvironmentInfoGatewayInfo) Validate() error {
 }
 
 type HttpRouteEnvironmentInfoSubDomains struct {
-	// The subdomain ID
+	// The domain name ID.
 	//
 	// example:
 	//
 	// d-cqu19hdlhtgjuv4***
 	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
-	// The subdomain name
+	// The domain name.
 	//
 	// example:
 	//
 	// env-crmic3llht***-cn-hangzhou-vpc.alicloudapi.com
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// networkType
+	// The domain name access type.
 	//
 	// example:
 	//
 	// Internet
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	// The subdomain protocol
+	// The domain name protocol.
 	//
 	// example:
 	//
@@ -542,33 +542,33 @@ func (s *HttpRouteEnvironmentInfoSubDomains) Validate() error {
 }
 
 type HttpRouteMcpServerInfo struct {
-	// The creation type
+	// The creation type.
 	//
 	// example:
 	//
 	// Nacos
 	CreateFromType *string `json:"createFromType,omitempty" xml:"createFromType,omitempty"`
-	// The imported instance ID
+	// The Nacos instance ID.
 	//
 	// example:
 	//
 	// import-001
 	ImportInstanceId *string `json:"importInstanceId,omitempty" xml:"importInstanceId,omitempty"`
-	// The imported Nacos MCP server ID
+	// The Nacos MCP server identifier.
 	//
 	// example:
 	//
 	// mcp-002
 	ImportMcpServerId *string `json:"importMcpServerId,omitempty" xml:"importMcpServerId,omitempty"`
-	// The imported namespace
+	// The Nacos namespace.
 	//
 	// example:
 	//
 	// default
 	ImportNamespace *string `json:"importNamespace,omitempty" xml:"importNamespace,omitempty"`
-	// The MCP route configuration
+	// The MCP route information.
 	McpRouteConfig *HttpRouteMcpServerInfoMcpRouteConfig `json:"mcpRouteConfig,omitempty" xml:"mcpRouteConfig,omitempty" type:"Struct"`
-	// The MCP server configuration content
+	// The MCP server metadata configuration.
 	//
 	// example:
 	//
@@ -654,7 +654,7 @@ type HttpRouteMcpServerInfoMcpRouteConfig struct {
 	//
 	// /mcp
 	ExposedUriPath *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
-	// The MCP protocol
+	// The MCP protocol type.
 	//
 	// example:
 	//

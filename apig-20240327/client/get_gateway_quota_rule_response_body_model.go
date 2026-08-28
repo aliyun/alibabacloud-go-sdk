@@ -100,7 +100,7 @@ func (s *GetGatewayQuotaRuleResponseBody) Validate() error {
 }
 
 type GetGatewayQuotaRuleResponseBodyData struct {
-	// The base timestamp of the period.
+	// The period base timestamp.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type GetGatewayQuotaRuleResponseBodyData struct {
 	//
 	// 20
 	ConsumerCount *int64 `json:"consumerCount,omitempty" xml:"consumerCount,omitempty"`
-	// The list of principals (consumers) bound to this rule.
+	// The list of subjects (consumers) bound to this rule.
 	Consumers []*GetGatewayQuotaRuleResponseBodyDataConsumers `json:"consumers,omitempty" xml:"consumers,omitempty" type:"Repeated"`
 	// The quota period type.
 	//
@@ -150,7 +150,21 @@ type GetGatewayQuotaRuleResponseBodyData struct {
 	//
 	// enabled
 	RuleStatus *string `json:"ruleStatus,omitempty" xml:"ruleStatus,omitempty"`
-	// The time zone for the calendar period, in UTC+x format.
+	// The number of associated subjects.
+	//
+	// example:
+	//
+	// 120
+	SubjectCount *int64 `json:"subjectCount,omitempty" xml:"subjectCount,omitempty"`
+	// The rule subject type. Valid values: consumer or consumer_group.
+	//
+	// example:
+	//
+	// consumer_group
+	SubjectType *string `json:"subjectType,omitempty" xml:"subjectType,omitempty"`
+	// The general subject list bound to this rule. Returned only when withSubjects is set to true.
+	Subjects []*GetGatewayQuotaRuleResponseBodyDataSubjects `json:"subjects,omitempty" xml:"subjects,omitempty" type:"Repeated"`
+	// The time zone corresponding to the calendar period, in UTC+x format.
 	//
 	// example:
 	//
@@ -208,6 +222,18 @@ func (s *GetGatewayQuotaRuleResponseBodyData) GetRuleStatus() *string {
 	return s.RuleStatus
 }
 
+func (s *GetGatewayQuotaRuleResponseBodyData) GetSubjectCount() *int64 {
+	return s.SubjectCount
+}
+
+func (s *GetGatewayQuotaRuleResponseBodyData) GetSubjectType() *string {
+	return s.SubjectType
+}
+
+func (s *GetGatewayQuotaRuleResponseBodyData) GetSubjects() []*GetGatewayQuotaRuleResponseBodyDataSubjects {
+	return s.Subjects
+}
+
 func (s *GetGatewayQuotaRuleResponseBodyData) GetTimezone() *string {
 	return s.Timezone
 }
@@ -261,6 +287,21 @@ func (s *GetGatewayQuotaRuleResponseBodyData) SetRuleStatus(v string) *GetGatewa
 	return s
 }
 
+func (s *GetGatewayQuotaRuleResponseBodyData) SetSubjectCount(v int64) *GetGatewayQuotaRuleResponseBodyData {
+	s.SubjectCount = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleResponseBodyData) SetSubjectType(v string) *GetGatewayQuotaRuleResponseBodyData {
+	s.SubjectType = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleResponseBodyData) SetSubjects(v []*GetGatewayQuotaRuleResponseBodyDataSubjects) *GetGatewayQuotaRuleResponseBodyData {
+	s.Subjects = v
+	return s
+}
+
 func (s *GetGatewayQuotaRuleResponseBodyData) SetTimezone(v string) *GetGatewayQuotaRuleResponseBodyData {
 	s.Timezone = &v
 	return s
@@ -281,17 +322,26 @@ func (s *GetGatewayQuotaRuleResponseBodyData) Validate() error {
 			}
 		}
 	}
+	if s.Subjects != nil {
+		for _, item := range s.Subjects {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
 }
 
 type GetGatewayQuotaRuleResponseBodyDataConsumers struct {
-	// The ID of the principal (consumer).
+	// The subject (consumer) ID.
 	//
 	// example:
 	//
 	// c-aaa
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the principal (consumer).
+	// The subject (consumer) name.
 	//
 	// example:
 	//
@@ -326,5 +376,65 @@ func (s *GetGatewayQuotaRuleResponseBodyDataConsumers) SetName(v string) *GetGat
 }
 
 func (s *GetGatewayQuotaRuleResponseBodyDataConsumers) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetGatewayQuotaRuleResponseBodyDataSubjects struct {
+	// The subject ID.
+	//
+	// example:
+	//
+	// cs-xxx
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The subject name.
+	//
+	// example:
+	//
+	// consumer-a
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The subject type. Valid values: consumer or consumer_group.
+	//
+	// example:
+	//
+	// consumer
+	SubjectType *string `json:"subjectType,omitempty" xml:"subjectType,omitempty"`
+}
+
+func (s GetGatewayQuotaRuleResponseBodyDataSubjects) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetGatewayQuotaRuleResponseBodyDataSubjects) GoString() string {
+	return s.String()
+}
+
+func (s *GetGatewayQuotaRuleResponseBodyDataSubjects) GetId() *string {
+	return s.Id
+}
+
+func (s *GetGatewayQuotaRuleResponseBodyDataSubjects) GetName() *string {
+	return s.Name
+}
+
+func (s *GetGatewayQuotaRuleResponseBodyDataSubjects) GetSubjectType() *string {
+	return s.SubjectType
+}
+
+func (s *GetGatewayQuotaRuleResponseBodyDataSubjects) SetId(v string) *GetGatewayQuotaRuleResponseBodyDataSubjects {
+	s.Id = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleResponseBodyDataSubjects) SetName(v string) *GetGatewayQuotaRuleResponseBodyDataSubjects {
+	s.Name = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleResponseBodyDataSubjects) SetSubjectType(v string) *GetGatewayQuotaRuleResponseBodyDataSubjects {
+	s.SubjectType = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleResponseBodyDataSubjects) Validate() error {
 	return dara.Validate(s)
 }

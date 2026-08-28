@@ -21,10 +21,22 @@ type iHttpDubboTranscoder interface {
 
 type HttpDubboTranscoder struct {
 	// The Dubbo service group.
+	//
+	// example:
+	//
+	// DEV
 	DubboServiceGroup *string `json:"dubboServiceGroup,omitempty" xml:"dubboServiceGroup,omitempty"`
 	// The Dubbo service name.
+	//
+	// example:
+	//
+	// com.example.DemoService
 	DubboServiceName *string `json:"dubboServiceName,omitempty" xml:"dubboServiceName,omitempty"`
 	// The Dubbo service version.
+	//
+	// example:
+	//
+	// 1.0.0
 	DubboServiceVersion *string `json:"dubboServiceVersion,omitempty" xml:"dubboServiceVersion,omitempty"`
 	// The method mapping list.
 	MethodMapList []*HttpDubboTranscoderMethodMapList `json:"methodMapList,omitempty" xml:"methodMapList,omitempty" type:"Repeated"`
@@ -89,6 +101,10 @@ func (s *HttpDubboTranscoder) Validate() error {
 
 type HttpDubboTranscoderMethodMapList struct {
 	// The Dubbo method name.
+	//
+	// example:
+	//
+	// sayName
 	DubboMethodName *string `json:"dubboMethodName,omitempty" xml:"dubboMethodName,omitempty"`
 	// The HTTP method. Valid values: ALL_GET. ALL_POST. ALL_PUT. ALL_DELETE. ALL_PATCH.
 	//
@@ -104,7 +120,13 @@ type HttpDubboTranscoderMethodMapList struct {
 	MethodPath *string `json:"methodPath,omitempty" xml:"methodPath,omitempty"`
 	// The parameter mapping list.
 	ParamMapsList []*HttpDubboTranscoderMethodMapListParamMapsList `json:"paramMapsList,omitempty" xml:"paramMapsList,omitempty" type:"Repeated"`
-	// The header pass-through type. Valid values: PASS_ALL: passes through all headers. PASS_NOT: does not pass through any headers. PASS_ASSIGN: passes through specified headers.
+	// The header pass-through type. Valid values:
+	//
+	// - PASS_ALL: Pass through all headers.
+	//
+	// - PASS_NOT: Do not pass through headers.
+	//
+	// - PASS_ASSIGN: Pass through specified headers.
 	//
 	// example:
 	//
@@ -196,7 +218,15 @@ type HttpDubboTranscoderMethodMapListParamMapsList struct {
 	//
 	// name
 	ExtractKey *string `json:"extractKey,omitempty" xml:"extractKey,omitempty"`
-	// The input parameter location. Valid values: ALL_QUERY_PARAMETER: request parameter. ALL_HEADER: request header. ALL_PATH: URI of the request. ALL_BODY: request body.
+	// The input parameter location. Valid values:
+	//
+	// - ALL_QUERY_PARAMETER: Request parameter.
+	//
+	// - ALL_HEADER: Request header.
+	//
+	// - ALL_PATH: URI of the request.
+	//
+	// - ALL_BODY: Request body.
 	//
 	// example:
 	//
