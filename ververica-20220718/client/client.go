@@ -26,24 +26,24 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
+		"cn-qingdao":            dara.String("ververica.cn-qingdao.aliyuncs.com"),
+		"cn-shenzhen":           dara.String("ververica.cn-shenzhen.aliyuncs.com"),
+		"cn-wulanchabu":         dara.String("ververica.cn-wulanchabu.aliyuncs.com"),
+		"cn-beijing":            dara.String("ververica.cn-beijing.aliyuncs.com"),
+		"ap-northeast-1":        dara.String("ververica.ap-northeast-1.aliyuncs.com"),
+		"cn-chengdu":            dara.String("ververica.cn-chengdu.aliyuncs.com"),
+		"cn-shanghai":           dara.String("ververica.cn-shanghai.aliyuncs.com"),
+		"cn-hongkong":           dara.String("ververica.cn-hongkong.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("ververica.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-3":        dara.String("ververica.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-5":        dara.String("ververica.ap-southeast-5.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("ververica.cn-zhangjiakou.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("ververica.cn-hangzhou.aliyuncs.com"),
 		"us-west-1":             dara.String("ververica.us-west-1.aliyuncs.com"),
 		"us-east-1":             dara.String("ververica.us-east-1.aliyuncs.com"),
-		"eu-west-1":             dara.String("ververica.eu-west-1.aliyuncs.com"),
 		"eu-central-1":          dara.String("ververica.eu-central-1.aliyuncs.com"),
-		"cn-zhangjiakou":        dara.String("ververica.cn-zhangjiakou.aliyuncs.com"),
-		"cn-wulanchabu":         dara.String("ververica.cn-wulanchabu.aliyuncs.com"),
-		"cn-shenzhen":           dara.String("ververica.cn-shenzhen.aliyuncs.com"),
+		"eu-west-1":             dara.String("ververica.eu-west-1.aliyuncs.com"),
 		"cn-shanghai-finance-1": dara.String("ververica.cn-shanghai-finance-1.aliyuncs.com"),
-		"cn-shanghai":           dara.String("ververica.cn-shanghai.aliyuncs.com"),
-		"cn-qingdao":            dara.String("ververica.cn-qingdao.aliyuncs.com"),
-		"cn-hongkong":           dara.String("ververica.cn-hongkong.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("ververica.cn-hangzhou.aliyuncs.com"),
-		"cn-chengdu":            dara.String("ververica.cn-chengdu.aliyuncs.com"),
-		"cn-beijing":            dara.String("ververica.cn-beijing.aliyuncs.com"),
-		"ap-southeast-5":        dara.String("ververica.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-3":        dara.String("ververica.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-1":        dara.String("ververica.ap-southeast-1.aliyuncs.com"),
-		"ap-northeast-1":        dara.String("ververica.ap-northeast-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -2222,7 +2222,7 @@ func (client *Client) DeployDeploymentDraftAsync(namespace *string, request *Dep
 
 // Summary:
 //
-// Executes Data Definition Language (DDL) and Data Manipulation Language (DML) statements on metadata. Data Query Language (DQL) is not supported.
+// Runs metadata-related SQL statements. Only DDL and DML statements are supported. DQL statements are not supported.
 //
 // @param request - ExecuteSqlStatementRequest
 //
@@ -2273,7 +2273,7 @@ func (client *Client) ExecuteSqlStatementWithOptions(namespace *string, request 
 
 // Summary:
 //
-// Executes Data Definition Language (DDL) and Data Manipulation Language (DML) statements on metadata. Data Query Language (DQL) is not supported.
+// Runs metadata-related SQL statements. Only DDL and DML statements are supported. DQL statements are not supported.
 //
 // @param request - ExecuteSqlStatementRequest
 //
@@ -2676,7 +2676,7 @@ func (client *Client) GetAppliedScheduledPlan(namespace *string, request *GetApp
 
 // Summary:
 //
-// Queries the Autopilot tuning configuration. Returns the enabled status and full configuration. Does not affect the existing V2 configuration.
+// Retrieves the Autopilot tuning configuration.
 //
 // @param request - GetAutopilotPolicyRequest
 //
@@ -2726,7 +2726,7 @@ func (client *Client) GetAutopilotPolicyWithOptions(namespace *string, deploymen
 
 // Summary:
 //
-// Queries the Autopilot tuning configuration. Returns the enabled status and full configuration. Does not affect the existing V2 configuration.
+// Retrieves the Autopilot tuning configuration.
 //
 // @param request - GetAutopilotPolicyRequest
 //
@@ -2820,7 +2820,7 @@ func (client *Client) GetCatalogs(namespace *string, request *GetCatalogsRequest
 
 // Summary:
 //
-// Retrieves information about one or more databases in a specified catalog.
+// Retrieves information about a specified database or lists all databases under a specified catalog.
 //
 // @param request - GetDatabasesRequest
 //
@@ -2876,7 +2876,7 @@ func (client *Client) GetDatabasesWithOptions(namespace *string, catalogName *st
 
 // Summary:
 //
-// Retrieves information about one or more databases in a specified catalog.
+// Retrieves information about a specified database or lists all databases under a specified catalog.
 //
 // @param request - GetDatabasesRequest
 //
@@ -3511,7 +3511,7 @@ func (client *Client) GetEvents(namespace *string, request *GetEventsRequest) (_
 
 // Summary:
 //
-// Retrieves specific folder information.
+// Retrieves the details of a specific folder.
 //
 // @param request - GetFolderRequest
 //
@@ -3571,7 +3571,7 @@ func (client *Client) GetFolderWithOptions(namespace *string, request *GetFolder
 
 // Summary:
 //
-// Retrieves specific folder information.
+// Retrieves the details of a specific folder.
 //
 // @param request - GetFolderRequest
 //
@@ -4014,6 +4014,158 @@ func (client *Client) GetMember(namespace *string, member *string) (_result *Get
 
 // Summary:
 //
+// Retrieves the inspection configuration.
+//
+// @param request - GetPatrolConfigRequest
+//
+// @param headers - GetPatrolConfigHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPatrolConfigResponse
+func (client *Client) GetPatrolConfigWithOptions(namespace *string, request *GetPatrolConfigRequest, headers *GetPatrolConfigHeaders, runtime *dara.RuntimeOptions) (_result *GetPatrolConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPatrolConfig"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/autopilot/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/patrol-config"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPatrolConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the inspection configuration.
+//
+// @param request - GetPatrolConfigRequest
+//
+// @return GetPatrolConfigResponse
+func (client *Client) GetPatrolConfig(namespace *string, request *GetPatrolConfigRequest) (_result *GetPatrolConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &GetPatrolConfigHeaders{}
+	_result = &GetPatrolConfigResponse{}
+	_body, _err := client.GetPatrolConfigWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of an inspection report.
+//
+// @param request - GetPatrolReportDetailRequest
+//
+// @param headers - GetPatrolReportDetailHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPatrolReportDetailResponse
+func (client *Client) GetPatrolReportDetailWithOptions(namespace *string, request *GetPatrolReportDetailRequest, headers *GetPatrolReportDetailHeaders, runtime *dara.RuntimeOptions) (_result *GetPatrolReportDetailResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Date) {
+		query["date"] = request.Date
+	}
+
+	if !dara.IsNil(request.ReportId) {
+		query["reportId"] = request.ReportId
+	}
+
+	if !dara.IsNil(request.Timezone) {
+		query["timezone"] = request.Timezone
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetPatrolReportDetail"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/autopilot/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/patrol-reports/details"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetPatrolReportDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of an inspection report.
+//
+// @param request - GetPatrolReportDetailRequest
+//
+// @return GetPatrolReportDetailResponse
+func (client *Client) GetPatrolReportDetail(namespace *string, request *GetPatrolReportDetailRequest) (_result *GetPatrolReportDetailResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &GetPatrolReportDetailHeaders{}
+	_result = &GetPatrolReportDetailResponse{}
+	_body, _err := client.GetPatrolReportDetailWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取上传文件URL
 //
 // @param request - GetPreSignedUrlForPutObjectRequest
@@ -4276,7 +4428,7 @@ func (client *Client) GetSqlFile(namespace *string, sqlFileId *string, request *
 
 // Summary:
 //
-// Retrieves the details of a specific table or all tables in a database within a specified catalog.
+// Retrieves the details of a specific table or information about all tables under a specified database in a catalog.
 //
 // @param request - GetTablesRequest
 //
@@ -4332,7 +4484,7 @@ func (client *Client) GetTablesWithOptions(namespace *string, catalogName *strin
 
 // Summary:
 //
-// Retrieves the details of a specific table or all tables in a database within a specified catalog.
+// Retrieves the details of a specific table or information about all tables under a specified database in a catalog.
 //
 // @param request - GetTablesRequest
 //
@@ -5274,6 +5426,105 @@ func (client *Client) ListMembers(namespace *string, request *ListMembersRequest
 
 // Summary:
 //
+// Queries the list of inspection reports.
+//
+// @param request - ListPatrolReportsRequest
+//
+// @param headers - ListPatrolReportsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPatrolReportsResponse
+func (client *Client) ListPatrolReportsWithOptions(namespace *string, request *ListPatrolReportsRequest, headers *ListPatrolReportsHeaders, runtime *dara.RuntimeOptions) (_result *ListPatrolReportsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndDate) {
+		query["endDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.ScopeType) {
+		query["scopeType"] = request.ScopeType
+	}
+
+	if !dara.IsNil(request.Size) {
+		query["size"] = request.Size
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["startDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["status"] = request.Status
+	}
+
+	if !dara.IsNil(request.TriggerType) {
+		query["triggerType"] = request.TriggerType
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPatrolReports"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/autopilot/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/patrol-reports"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPatrolReportsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of inspection reports.
+//
+// @param request - ListPatrolReportsRequest
+//
+// @return ListPatrolReportsResponse
+func (client *Client) ListPatrolReports(namespace *string, request *ListPatrolReportsRequest) (_result *ListPatrolReportsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &ListPatrolReportsHeaders{}
+	_result = &ListPatrolReportsResponse{}
+	_body, _err := client.ListPatrolReportsWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains a list of savepoints or checkpoints.
 //
 // @param request - ListSavepointsRequest
@@ -6023,7 +6274,7 @@ func (client *Client) StartSessionCluster(namespace *string, sessionClusterName 
 
 // Summary:
 //
-// Executes an SQL query script task.
+// Executes an SQL data query script task.
 //
 // @param request - StartSqlExecutionRequest
 //
@@ -6074,7 +6325,7 @@ func (client *Client) StartSqlExecutionWithOptions(namespace *string, request *S
 
 // Summary:
 //
-// Executes an SQL query script task.
+// Executes an SQL data query script task.
 //
 // @param request - StartSqlExecutionRequest
 //
@@ -6417,6 +6668,85 @@ func (client *Client) SubmitSqlPreview(namespace *string, request *SubmitSqlPrev
 	headers := &SubmitSqlPreviewHeaders{}
 	_result = &SubmitSqlPreviewResponse{}
 	_body, _err := client.SubmitSqlPreviewWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Triggers an inspection.
+//
+// @param request - TriggerPatrolRequest
+//
+// @param headers - TriggerPatrolHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TriggerPatrolResponse
+func (client *Client) TriggerPatrolWithOptions(namespace *string, request *TriggerPatrolRequest, headers *TriggerPatrolHeaders, runtime *dara.RuntimeOptions) (_result *TriggerPatrolResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ScopeConfig) {
+		body["scopeConfig"] = request.ScopeConfig
+	}
+
+	if !dara.IsNil(request.ScopeType) {
+		body["scopeType"] = request.ScopeType
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TriggerPatrol"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/autopilot/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/patrol-reports/trigger"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TriggerPatrolResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Triggers an inspection.
+//
+// @param request - TriggerPatrolRequest
+//
+// @return TriggerPatrolResponse
+func (client *Client) TriggerPatrol(namespace *string, request *TriggerPatrolRequest) (_result *TriggerPatrolResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &TriggerPatrolHeaders{}
+	_result = &TriggerPatrolResponse{}
+	_body, _err := client.TriggerPatrolWithOptions(namespace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7000,6 +7330,97 @@ func (client *Client) UpdateMember(namespace *string, request *UpdateMemberReque
 	headers := &UpdateMemberHeaders{}
 	_result = &UpdateMemberResponse{}
 	_body, _err := client.UpdateMemberWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the inspection configuration.
+//
+// @param request - UpdatePatrolConfigRequest
+//
+// @param headers - UpdatePatrolConfigHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePatrolConfigResponse
+func (client *Client) UpdatePatrolConfigWithOptions(namespace *string, request *UpdatePatrolConfigRequest, headers *UpdatePatrolConfigHeaders, runtime *dara.RuntimeOptions) (_result *UpdatePatrolConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Cron) {
+		body["cron"] = request.Cron
+	}
+
+	if !dara.IsNil(request.Enabled) {
+		body["enabled"] = request.Enabled
+	}
+
+	if !dara.IsNil(request.ScopeConfig) {
+		body["scopeConfig"] = request.ScopeConfig
+	}
+
+	if !dara.IsNil(request.ScopeType) {
+		body["scopeType"] = request.ScopeType
+	}
+
+	if !dara.IsNil(request.Timezone) {
+		body["timezone"] = request.Timezone
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.Workspace) {
+		realHeaders["workspace"] = dara.String(dara.ToString(dara.StringValue(headers.Workspace)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdatePatrolConfig"),
+		Version:     dara.String("2022-07-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/autopilot/v2/namespaces/" + dara.PercentEncode(dara.StringValue(namespace)) + "/patrol-config"),
+		Method:      dara.String("PATCH"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdatePatrolConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the inspection configuration.
+//
+// @param request - UpdatePatrolConfigRequest
+//
+// @return UpdatePatrolConfigResponse
+func (client *Client) UpdatePatrolConfig(namespace *string, request *UpdatePatrolConfigRequest) (_result *UpdatePatrolConfigResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := &UpdatePatrolConfigHeaders{}
+	_result = &UpdatePatrolConfigResponse{}
+	_body, _err := client.UpdatePatrolConfigWithOptions(namespace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

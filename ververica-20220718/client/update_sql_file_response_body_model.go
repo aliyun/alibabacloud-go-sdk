@@ -30,19 +30,19 @@ type UpdateSqlFileResponseBody struct {
 	//
 	// 123
 	Data *SqlFile `json:"data,omitempty" xml:"data,omitempty"`
-	// The business error code. This value is not empty when success is false, and is empty when success is true.
+	// The business error code. This value is not empty when success is false. This value is empty when success is true.
 	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The business error message. This value is not empty when success is false, and is empty when success is true.
+	// The business error message. This value is not empty when success is false. This value is empty when success is true.
 	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The business status code, which is always 200. Use success to determine whether the request was successful.
+	// The business status code, which is uniformly 200. Use success to determine whether the request was successful.
 	//
 	// example:
 	//

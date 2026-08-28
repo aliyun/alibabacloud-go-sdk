@@ -22,10 +22,15 @@ type iAutopilotPolicy interface {
 }
 
 type AutopilotPolicy struct {
-	AdvancedRules      *AutopilotPolicyAdvancedRules      `json:"advancedRules,omitempty" xml:"advancedRules,omitempty" type:"Struct"`
-	Limits             *AutopilotPolicyLimits             `json:"limits,omitempty" xml:"limits,omitempty" type:"Struct"`
-	ScaleDownRules     *AutopilotPolicyScaleDownRules     `json:"scaleDownRules,omitempty" xml:"scaleDownRules,omitempty" type:"Struct"`
-	ScaleUpRules       *AutopilotPolicyScaleUpRules       `json:"scaleUpRules,omitempty" xml:"scaleUpRules,omitempty" type:"Struct"`
+	// The advanced rule configuration. This includes advanced parameters such as chain-break optimization, minimum parallelism, and TM CPU scaling. Disabled by default and must be explicitly enabled.
+	AdvancedRules *AutopilotPolicyAdvancedRules `json:"advancedRules,omitempty" xml:"advancedRules,omitempty" type:"Struct"`
+	// The upper and lower limits for tuning resources.
+	Limits *AutopilotPolicyLimits `json:"limits,omitempty" xml:"limits,omitempty" type:"Struct"`
+	// The scale-down rule configuration.
+	ScaleDownRules *AutopilotPolicyScaleDownRules `json:"scaleDownRules,omitempty" xml:"scaleDownRules,omitempty" type:"Struct"`
+	// The scale-up rule configuration.
+	ScaleUpRules *AutopilotPolicyScaleUpRules `json:"scaleUpRules,omitempty" xml:"scaleUpRules,omitempty" type:"Struct"`
+	// The silent period configuration. Automatic tuning operations are not performed during silent periods.
 	SilentPeriodConfig *AutopilotPolicySilentPeriodConfig `json:"silentPeriodConfig,omitempty" xml:"silentPeriodConfig,omitempty" type:"Struct"`
 }
 
@@ -112,7 +117,13 @@ func (s *AutopilotPolicy) Validate() error {
 }
 
 type AutopilotPolicyAdvancedRules struct {
-	Enabled    *bool              `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Specifies whether to enable advanced rules.
+	//
+	// example:
+	//
+	// false
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The advanced rule parameters. An empty map indicates that internal default parameters are used. You can override specific internal parameters by using key-value pairs. The entire map is replaced.
 	Parameters map[string]*string `json:"parameters,omitempty" xml:"parameters,omitempty"`
 }
 
@@ -147,11 +158,36 @@ func (s *AutopilotPolicyAdvancedRules) Validate() error {
 }
 
 type AutopilotPolicyLimits struct {
-	CoolDownMinutes   *int64   `json:"coolDownMinutes,omitempty" xml:"coolDownMinutes,omitempty"`
-	JobMaxCpu         *float64 `json:"jobMaxCpu,omitempty" xml:"jobMaxCpu,omitempty"`
-	JobMaxMemory      *string  `json:"jobMaxMemory,omitempty" xml:"jobMaxMemory,omitempty"`
-	JobMaxParallelism *int32   `json:"jobMaxParallelism,omitempty" xml:"jobMaxParallelism,omitempty"`
-	JobMinParallelism *int32   `json:"jobMinParallelism,omitempty" xml:"jobMinParallelism,omitempty"`
+	// The minimum cool-down time between two tuning operations, in minutes.
+	//
+	// example:
+	//
+	// 10
+	CoolDownMinutes *int64 `json:"coolDownMinutes,omitempty" xml:"coolDownMinutes,omitempty"`
+	// The maximum CPU.
+	//
+	// example:
+	//
+	// 16
+	JobMaxCpu *float64 `json:"jobMaxCpu,omitempty" xml:"jobMaxCpu,omitempty"`
+	// The maximum memory. Format examples: 4Gi, 256GiB.
+	//
+	// example:
+	//
+	// 64GiB
+	JobMaxMemory *string `json:"jobMaxMemory,omitempty" xml:"jobMaxMemory,omitempty"`
+	// The maximum parallelism.
+	//
+	// example:
+	//
+	// 10
+	JobMaxParallelism *int32 `json:"jobMaxParallelism,omitempty" xml:"jobMaxParallelism,omitempty"`
+	// The minimum parallelism.
+	//
+	// example:
+	//
+	// 1
+	JobMinParallelism *int32 `json:"jobMinParallelism,omitempty" xml:"jobMinParallelism,omitempty"`
 }
 
 func (s AutopilotPolicyLimits) String() string {
@@ -212,7 +248,9 @@ func (s *AutopilotPolicyLimits) Validate() error {
 }
 
 type AutopilotPolicyScaleDownRules struct {
-	MemoryScaleDownRule   *AutopilotPolicyScaleDownRulesMemoryScaleDownRule   `json:"memoryScaleDownRule,omitempty" xml:"memoryScaleDownRule,omitempty" type:"Struct"`
+	// The memory scale-down rule. Scale-down is triggered when memory usage falls below the threshold.
+	MemoryScaleDownRule *AutopilotPolicyScaleDownRulesMemoryScaleDownRule `json:"memoryScaleDownRule,omitempty" xml:"memoryScaleDownRule,omitempty" type:"Struct"`
+	// The slot idle scale-down rule. Scale-down is triggered when the slot busy ratio falls below the threshold.
 	SlotBusyScaleDownRule *AutopilotPolicyScaleDownRulesSlotBusyScaleDownRule `json:"slotBusyScaleDownRule,omitempty" xml:"slotBusyScaleDownRule,omitempty" type:"Struct"`
 }
 
@@ -257,9 +295,24 @@ func (s *AutopilotPolicyScaleDownRules) Validate() error {
 }
 
 type AutopilotPolicyScaleDownRulesMemoryScaleDownRule struct {
-	Enabled                         *bool    `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	MemUsageScaleDownSampleInterval *string  `json:"memUsageScaleDownSampleInterval,omitempty" xml:"memUsageScaleDownSampleInterval,omitempty"`
-	MemUsageScaleDownThreshold      *float64 `json:"memUsageScaleDownThreshold,omitempty" xml:"memUsageScaleDownThreshold,omitempty"`
+	// Specifies whether to enable memory scale-down.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The memory scale-down sampling interval. Format examples: 4h, 5m.
+	//
+	// example:
+	//
+	// 25h
+	MemUsageScaleDownSampleInterval *string `json:"memUsageScaleDownSampleInterval,omitempty" xml:"memUsageScaleDownSampleInterval,omitempty"`
+	// The memory scale-down threshold. Valid values: 0.0 to 1.0. Scale-down is triggered when memory usage falls below this value. This value must be less than the scale-up threshold.
+	//
+	// example:
+	//
+	// 0.3
+	MemUsageScaleDownThreshold *float64 `json:"memUsageScaleDownThreshold,omitempty" xml:"memUsageScaleDownThreshold,omitempty"`
 }
 
 func (s AutopilotPolicyScaleDownRulesMemoryScaleDownRule) String() string {
@@ -302,9 +355,24 @@ func (s *AutopilotPolicyScaleDownRulesMemoryScaleDownRule) Validate() error {
 }
 
 type AutopilotPolicyScaleDownRulesSlotBusyScaleDownRule struct {
-	Enabled                         *bool    `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	SlotBusyScaleDownSampleInterval *string  `json:"slotBusyScaleDownSampleInterval,omitempty" xml:"slotBusyScaleDownSampleInterval,omitempty"`
-	SlotBusyScaleDownThreshold      *float64 `json:"slotBusyScaleDownThreshold,omitempty" xml:"slotBusyScaleDownThreshold,omitempty"`
+	// Specifies whether to enable slot idle scale-down.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The slot idle sampling interval. Format examples: 4h, 5m.
+	//
+	// example:
+	//
+	// 24h
+	SlotBusyScaleDownSampleInterval *string `json:"slotBusyScaleDownSampleInterval,omitempty" xml:"slotBusyScaleDownSampleInterval,omitempty"`
+	// The slot idle scale-down threshold. Valid values: 0.0 to 1.0. Scale-down is triggered when the slot busy ratio falls below this value. This value must be less than the scale-up threshold.
+	//
+	// example:
+	//
+	// 0.2
+	SlotBusyScaleDownThreshold *float64 `json:"slotBusyScaleDownThreshold,omitempty" xml:"slotBusyScaleDownThreshold,omitempty"`
 }
 
 func (s AutopilotPolicyScaleDownRulesSlotBusyScaleDownRule) String() string {
@@ -347,10 +415,15 @@ func (s *AutopilotPolicyScaleDownRulesSlotBusyScaleDownRule) Validate() error {
 }
 
 type AutopilotPolicyScaleUpRules struct {
-	DelayRule           *AutopilotPolicyScaleUpRulesDelayRule           `json:"delayRule,omitempty" xml:"delayRule,omitempty" type:"Struct"`
-	GcRule              *AutopilotPolicyScaleUpRulesGcRule              `json:"gcRule,omitempty" xml:"gcRule,omitempty" type:"Struct"`
-	MemoryScaleUpRule   *AutopilotPolicyScaleUpRulesMemoryScaleUpRule   `json:"memoryScaleUpRule,omitempty" xml:"memoryScaleUpRule,omitempty" type:"Struct"`
-	OomScaleUpRule      *AutopilotPolicyScaleUpRulesOomScaleUpRule      `json:"oomScaleUpRule,omitempty" xml:"oomScaleUpRule,omitempty" type:"Struct"`
+	// The delay detection scale-up rule. Scale-up is triggered when the job delay exceeds the threshold.
+	DelayRule *AutopilotPolicyScaleUpRulesDelayRule `json:"delayRule,omitempty" xml:"delayRule,omitempty" type:"Struct"`
+	// The GC tuning rule. Scale-up is triggered when the GC time ratio exceeds the threshold.
+	GcRule *AutopilotPolicyScaleUpRulesGcRule `json:"gcRule,omitempty" xml:"gcRule,omitempty" type:"Struct"`
+	// The memory scale-up rule. Scale-up is triggered when memory usage exceeds the threshold.
+	MemoryScaleUpRule *AutopilotPolicyScaleUpRulesMemoryScaleUpRule `json:"memoryScaleUpRule,omitempty" xml:"memoryScaleUpRule,omitempty" type:"Struct"`
+	// The OOM scale-up rule. Scale-up is triggered when an OOM risk is detected.
+	OomScaleUpRule *AutopilotPolicyScaleUpRulesOomScaleUpRule `json:"oomScaleUpRule,omitempty" xml:"oomScaleUpRule,omitempty" type:"Struct"`
+	// The slot busy scale-up rule. Scale-up is triggered when the slot busy ratio exceeds the threshold.
 	SlotBusyScaleUpRule *AutopilotPolicyScaleUpRulesSlotBusyScaleUpRule `json:"slotBusyScaleUpRule,omitempty" xml:"slotBusyScaleUpRule,omitempty" type:"Struct"`
 }
 
@@ -437,9 +510,24 @@ func (s *AutopilotPolicyScaleUpRules) Validate() error {
 }
 
 type AutopilotPolicyScaleUpRulesDelayRule struct {
+	// The delay sampling interval. Format examples: 3min, 5m, 1h.
+	//
+	// example:
+	//
+	// 3min
 	DelaySampleInterval *string `json:"delaySampleInterval,omitempty" xml:"delaySampleInterval,omitempty"`
-	DelayThreshold      *string `json:"delayThreshold,omitempty" xml:"delayThreshold,omitempty"`
-	Enabled             *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The latency threshold. Format examples: 1min, 10m. Scale-up is triggered when the delay continuously exceeds this threshold.
+	//
+	// example:
+	//
+	// 1min
+	DelayThreshold *string `json:"delayThreshold,omitempty" xml:"delayThreshold,omitempty"`
+	// Specifies whether to enable delay detection scale-up.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
 func (s AutopilotPolicyScaleUpRulesDelayRule) String() string {
@@ -482,8 +570,23 @@ func (s *AutopilotPolicyScaleUpRulesDelayRule) Validate() error {
 }
 
 type AutopilotPolicyScaleUpRulesGcRule struct {
-	Enabled              *bool    `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	GcSampleInterval     *string  `json:"gcSampleInterval,omitempty" xml:"gcSampleInterval,omitempty"`
+	// Specifies whether to enable GC tuning.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The GC sampling interval. Format examples: 3min, 5m.
+	//
+	// example:
+	//
+	// 3min
+	GcSampleInterval *string `json:"gcSampleInterval,omitempty" xml:"gcSampleInterval,omitempty"`
+	// The GC time ratio threshold. Valid values: 0.0 to 1.0. Scale-up is triggered when the GC time ratio exceeds this value.
+	//
+	// example:
+	//
+	// 0.2
 	GcTimeRatioThreshold *float64 `json:"gcTimeRatioThreshold,omitempty" xml:"gcTimeRatioThreshold,omitempty"`
 }
 
@@ -527,7 +630,17 @@ func (s *AutopilotPolicyScaleUpRulesGcRule) Validate() error {
 }
 
 type AutopilotPolicyScaleUpRulesMemoryScaleUpRule struct {
-	Enabled                  *bool    `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Specifies whether to enable memory scale-up.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The memory scale-up threshold. Valid values: 0.0 to 1.0. Scale-up is triggered when memory usage exceeds this value.
+	//
+	// example:
+	//
+	// 0.95
 	MemUsageScaleUpThreshold *float64 `json:"memUsageScaleUpThreshold,omitempty" xml:"memUsageScaleUpThreshold,omitempty"`
 }
 
@@ -562,6 +675,11 @@ func (s *AutopilotPolicyScaleUpRulesMemoryScaleUpRule) Validate() error {
 }
 
 type AutopilotPolicyScaleUpRulesOomScaleUpRule struct {
+	// Specifies whether to enable OOM scale-up.
+	//
+	// example:
+	//
+	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
@@ -587,9 +705,24 @@ func (s *AutopilotPolicyScaleUpRulesOomScaleUpRule) Validate() error {
 }
 
 type AutopilotPolicyScaleUpRulesSlotBusyScaleUpRule struct {
-	Enabled                       *bool    `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	SlotBusyScaleUpSampleInterval *string  `json:"slotBusyScaleUpSampleInterval,omitempty" xml:"slotBusyScaleUpSampleInterval,omitempty"`
-	SlotBusyScaleUpThreshold      *float64 `json:"slotBusyScaleUpThreshold,omitempty" xml:"slotBusyScaleUpThreshold,omitempty"`
+	// Specifies whether to enable slot busy scale-up.
+	//
+	// example:
+	//
+	// true
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The slot busy sampling interval. Format examples: 6min, 5m.
+	//
+	// example:
+	//
+	// 6min
+	SlotBusyScaleUpSampleInterval *string `json:"slotBusyScaleUpSampleInterval,omitempty" xml:"slotBusyScaleUpSampleInterval,omitempty"`
+	// The slot busy scale-up threshold. Valid values: 0.0 to 1.0. Scale-up is triggered when the slot busy ratio exceeds this value.
+	//
+	// example:
+	//
+	// 0.8
+	SlotBusyScaleUpThreshold *float64 `json:"slotBusyScaleUpThreshold,omitempty" xml:"slotBusyScaleUpThreshold,omitempty"`
 }
 
 func (s AutopilotPolicyScaleUpRulesSlotBusyScaleUpRule) String() string {
@@ -632,7 +765,13 @@ func (s *AutopilotPolicyScaleUpRulesSlotBusyScaleUpRule) Validate() error {
 }
 
 type AutopilotPolicySilentPeriodConfig struct {
-	Enabled       *bool                                             `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// Specifies whether to enable silent periods.
+	//
+	// example:
+	//
+	// false
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The list of silent periods. This is a full replacement, not an append operation.
 	SilentPeriods []*AutopilotPolicySilentPeriodConfigSilentPeriods `json:"silentPeriods,omitempty" xml:"silentPeriods,omitempty" type:"Repeated"`
 }
 
@@ -676,9 +815,24 @@ func (s *AutopilotPolicySilentPeriodConfig) Validate() error {
 }
 
 type AutopilotPolicySilentPeriodConfigSilentPeriods struct {
-	BeginTime *int64  `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
-	EndTime   *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	Level     *string `json:"level,omitempty" xml:"level,omitempty"`
+	// The start time. For the DAY level: 0-1439, representing the minute offset of the day (for example, 540 represents 9:00). For the WEEK level: 1-7, representing the day of the week (ISO 8601, 1=Monday, 7=Sunday).
+	//
+	// example:
+	//
+	// 540
+	BeginTime *int64 `json:"beginTime,omitempty" xml:"beginTime,omitempty"`
+	// The end time. The format is the same as beginTime. For the WEEK level, if endTime is less than beginTime, it indicates a cross-week period (for example, beginTime=6, endTime=2 means silent from Saturday to the following Tuesday).
+	//
+	// example:
+	//
+	// 1080
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The silent level. DAY indicates daily repetition. WEEK indicates weekly repetition.
+	//
+	// example:
+	//
+	// DAY
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
 }
 
 func (s AutopilotPolicySilentPeriodConfigSilentPeriods) String() string {

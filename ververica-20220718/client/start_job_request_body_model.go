@@ -18,15 +18,15 @@ type iStartJobRequestBody interface {
 }
 
 type StartJobRequestBody struct {
-	// The deployment ID.
+	// The ID of the deployed job.
 	//
 	// example:
 	//
 	// 5a19a71b-1c42-4f34-94fd-86cf6078****
 	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
-	// The resource configuration of the deployment.
+	// The job resource settings.
 	ResourceSettingSpec *BriefResourceSetting `json:"resourceSettingSpec,omitempty" xml:"resourceSettingSpec,omitempty"`
-	// The start offset of the job.
+	// The startup position settings for the job instance.
 	RestoreStrategy *DeploymentRestoreStrategy `json:"restoreStrategy,omitempty" xml:"restoreStrategy,omitempty"`
 }
 

@@ -5,17 +5,17 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
-type iGetDatabasesHeaders interface {
+type iListPatrolReportsHeaders interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCommonHeaders(v map[string]*string) *GetDatabasesHeaders
+	SetCommonHeaders(v map[string]*string) *ListPatrolReportsHeaders
 	GetCommonHeaders() map[string]*string
-	SetWorkspace(v string) *GetDatabasesHeaders
+	SetWorkspace(v string) *ListPatrolReportsHeaders
 	GetWorkspace() *string
 }
 
-type GetDatabasesHeaders struct {
+type ListPatrolReportsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The workspace ID.
 	//
@@ -27,32 +27,32 @@ type GetDatabasesHeaders struct {
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
-func (s GetDatabasesHeaders) String() string {
+func (s ListPatrolReportsHeaders) String() string {
 	return dara.Prettify(s)
 }
 
-func (s GetDatabasesHeaders) GoString() string {
+func (s ListPatrolReportsHeaders) GoString() string {
 	return s.String()
 }
 
-func (s *GetDatabasesHeaders) GetCommonHeaders() map[string]*string {
+func (s *ListPatrolReportsHeaders) GetCommonHeaders() map[string]*string {
 	return s.CommonHeaders
 }
 
-func (s *GetDatabasesHeaders) GetWorkspace() *string {
+func (s *ListPatrolReportsHeaders) GetWorkspace() *string {
 	return s.Workspace
 }
 
-func (s *GetDatabasesHeaders) SetCommonHeaders(v map[string]*string) *GetDatabasesHeaders {
+func (s *ListPatrolReportsHeaders) SetCommonHeaders(v map[string]*string) *ListPatrolReportsHeaders {
 	s.CommonHeaders = v
 	return s
 }
 
-func (s *GetDatabasesHeaders) SetWorkspace(v string) *GetDatabasesHeaders {
+func (s *ListPatrolReportsHeaders) SetWorkspace(v string) *ListPatrolReportsHeaders {
 	s.Workspace = &v
 	return s
 }
 
-func (s *GetDatabasesHeaders) Validate() error {
+func (s *ListPatrolReportsHeaders) Validate() error {
 	return dara.Validate(s)
 }

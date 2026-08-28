@@ -18,9 +18,12 @@ type iStartSqlExecutionBody interface {
 }
 
 type StartSqlExecutionBody struct {
+	// The execution description.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	SqlFileId   *string `json:"sqlFileId,omitempty" xml:"sqlFileId,omitempty"`
-	SqlScript   *string `json:"sqlScript,omitempty" xml:"sqlScript,omitempty"`
+	// The ID of the associated query script. This is a required parameter. It provides the execution environment configuration (Session Cluster, Flink configuration, etc.) and also serves as the parentResourceId for deduplication.
+	SqlFileId *string `json:"sqlFileId,omitempty" xml:"sqlFileId,omitempty"`
+	// The SQL script content to execute.
+	SqlScript *string `json:"sqlScript,omitempty" xml:"sqlScript,omitempty"`
 }
 
 func (s StartSqlExecutionBody) String() string {

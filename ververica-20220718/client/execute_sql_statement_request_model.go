@@ -14,7 +14,7 @@ type iExecuteSqlStatementRequest interface {
 }
 
 type ExecuteSqlStatementRequest struct {
-  // The SQL statements for metadata.
+  // The metadata-related SQL statement.
   Body *SqlStatementWithContext `json:"body,omitempty" xml:"body,omitempty"`
 }
 

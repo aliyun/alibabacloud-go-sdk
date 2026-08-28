@@ -34,17 +34,84 @@ type iTuningHistory interface {
 }
 
 type TuningHistory struct {
-	ActionType         *string                          `json:"actionType,omitempty" xml:"actionType,omitempty"`
-	Annotations        map[string]*string               `json:"annotations,omitempty" xml:"annotations,omitempty"`
-	DeploymentName     *string                          `json:"deploymentName,omitempty" xml:"deploymentName,omitempty"`
-	IsHotUpdate        *bool                            `json:"isHotUpdate,omitempty" xml:"isHotUpdate,omitempty"`
-	JobId              *string                          `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// The action type. Valid values:
+	//
+	// - SCALE_UP_PARALLELISM: scales up parallelism.
+	//
+	// - SCALE_DOWN_PARALLELISM: scales down parallelism.
+	//
+	// - SCALE_UP_MEMORY: scales up memory.
+	//
+	// - RESTART: restarts the job.
+	//
+	// example:
+	//
+	// SCALE_UP_PARALLELISM
+	ActionType *string `json:"actionType,omitempty" xml:"actionType,omitempty"`
+	// The additional annotations.
+	Annotations map[string]*string `json:"annotations,omitempty" xml:"annotations,omitempty"`
+	// The full path name of the deployment.
+	//
+	// example:
+	//
+	// namespaces/ns-xxx/deployments/6aa0d4d1-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+	DeploymentName *string `json:"deploymentName,omitempty" xml:"deploymentName,omitempty"`
+	// Indicates whether this is a hot update. A value of true indicates that the change takes effect without restarting the job. A value of false indicates that the job must be restarted.
+	//
+	// example:
+	//
+	// true
+	IsHotUpdate *bool `json:"isHotUpdate,omitempty" xml:"isHotUpdate,omitempty"`
+	// The ID of the associated job.
+	//
+	// example:
+	//
+	// b462c053-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// The resource configuration after tuning. This value may be null if the tuning failed.
 	NewResourceSetting *TuningHistoryNewResourceSetting `json:"newResourceSetting,omitempty" xml:"newResourceSetting,omitempty" type:"Struct"`
+	// The resource configuration before tuning.
 	OldResourceSetting *TuningHistoryOldResourceSetting `json:"oldResourceSetting,omitempty" xml:"oldResourceSetting,omitempty" type:"Struct"`
-	TriggerTime        *int64                           `json:"triggerTime,omitempty" xml:"triggerTime,omitempty"`
-	TuningId           *string                          `json:"tuningId,omitempty" xml:"tuningId,omitempty"`
-	TuningMessage      *string                          `json:"tuningMessage,omitempty" xml:"tuningMessage,omitempty"`
-	TuningState        *string                          `json:"tuningState,omitempty" xml:"tuningState,omitempty"`
+	// The trigger timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1718270936000
+	TriggerTime *int64 `json:"triggerTime,omitempty" xml:"triggerTime,omitempty"`
+	// The UUID of the tuning record.
+	//
+	// example:
+	//
+	// 06d81ae2-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+	TuningId *string `json:"tuningId,omitempty" xml:"tuningId,omitempty"`
+	// The tuning message. This is an internationalized, human-readable string that is not recommended for programmatic parsing.
+	//
+	// example:
+	//
+	// Scale up parallelism from 2 to 4
+	TuningMessage *string `json:"tuningMessage,omitempty" xml:"tuningMessage,omitempty"`
+	// The tuning state. Valid values:
+	//
+	// - SUCCESS: The tuning succeeded.
+	//
+	// - FAILED: The tuning failed.
+	//
+	// - EXECUTING: The tuning is in progress.
+	//
+	// - TERMINATED: The tuning was terminated.
+	//
+	// - FAILED_WITH_ROLLBACK_SUCCESS: The tuning failed but the rollback succeeded.
+	//
+	// - FAILED_WITH_ROLLBACK_FAILED: The tuning failed and the rollback also failed.
+	//
+	// - FAILED_WITH_RESOURCE_LACK: The tuning failed due to insufficient resources.
+	//
+	// - FAILED_WITH_SAME_RESOURCE_SETTING: The tuning failed because the resource configuration did not change.
+	//
+	// example:
+	//
+	// SUCCESS
+	TuningState *string `json:"tuningState,omitempty" xml:"tuningState,omitempty"`
 }
 
 func (s TuningHistory) String() string {
@@ -169,9 +236,24 @@ func (s *TuningHistory) Validate() error {
 }
 
 type TuningHistoryNewResourceSetting struct {
-	Cpu         *float64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	Memory      *string  `json:"memory,omitempty" xml:"memory,omitempty"`
-	Parallelism *int32   `json:"parallelism,omitempty" xml:"parallelism,omitempty"`
+	// The number of CPU cores per TaskManager.
+	//
+	// example:
+	//
+	// 1.0
+	Cpu *float64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The memory per TaskManager, in a format such as 4 Gi.
+	//
+	// example:
+	//
+	// 2 Gi
+	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
+	// The parallelism.
+	//
+	// example:
+	//
+	// 4
+	Parallelism *int32 `json:"parallelism,omitempty" xml:"parallelism,omitempty"`
 }
 
 func (s TuningHistoryNewResourceSetting) String() string {
@@ -214,9 +296,24 @@ func (s *TuningHistoryNewResourceSetting) Validate() error {
 }
 
 type TuningHistoryOldResourceSetting struct {
-	Cpu         *float64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	Memory      *string  `json:"memory,omitempty" xml:"memory,omitempty"`
-	Parallelism *int32   `json:"parallelism,omitempty" xml:"parallelism,omitempty"`
+	// The number of CPU cores per TaskManager.
+	//
+	// example:
+	//
+	// 1.0
+	Cpu *float64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The memory per TaskManager, in a format such as 4 Gi.
+	//
+	// example:
+	//
+	// 2 Gi
+	Memory *string `json:"memory,omitempty" xml:"memory,omitempty"`
+	// The parallelism.
+	//
+	// example:
+	//
+	// 2
+	Parallelism *int32 `json:"parallelism,omitempty" xml:"parallelism,omitempty"`
 }
 
 func (s TuningHistoryOldResourceSetting) String() string {

@@ -30,13 +30,13 @@ type CreateSqlFileResponseBody struct {
 	//
 	// "[main] INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] - --------------------------------------------------------------------------------\\n2024-05-22 11:46:39,871 [main] INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint"
 	Data *SqlFile `json:"data,omitempty" xml:"data,omitempty"`
-	// The error code returned when success is false. This value is empty when success is true.
+	// The business error code returned when success is false. This value is empty when success is true.
 	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The error message returned when success is false. This value is empty when success is true.
+	// The business error message returned when success is false. This value is empty when success is true.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iDeleteSqlFileResponseBody interface {
 }
 
 type DeleteSqlFileResponseBody struct {
-	// The basic information about the deleted file returned after a successful deletion. Only metadata is included. The content field is not returned. This field is valid when success is set to true.
+	// The basic information about the deleted file returned after a successful deletion. Only metadata is included. The content field is not returned. This field is valid when success is true.
 	//
 	// example:
 	//

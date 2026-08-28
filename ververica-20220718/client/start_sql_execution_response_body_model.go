@@ -24,25 +24,25 @@ type iStartSqlExecutionResponseBody interface {
 }
 
 type StartSqlExecutionResponseBody struct {
-	// The complete information of the SQL script returned upon success. This parameter is valid when success is true.
+	// The complete SQL script information returned upon success. This parameter is valid when success is true.
 	//
 	// example:
 	//
-	// 如返回示例所示
+	// See the response example
 	Data *StartSqlExecutionResult `json:"data,omitempty" xml:"data,omitempty"`
-	// The business error code. This parameter is not empty when success is false. This parameter is empty when success is true.
+	// The business error code. This parameter is not empty when success is false, and is empty when success is true.
 	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The business error message. This parameter is not empty when success is false. This parameter is empty when success is true.
+	// The business error message. This parameter is not empty when success is false, and is empty when success is true.
 	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The business status code, which is always 200. Use success to determine whether the request was successful.
+	// The business status code, which is always 200. Use success to determine whether the business request is successful.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type StartSqlExecutionResponseBody struct {
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the business request was successful.
+	// Indicates whether the business request is successful.
 	//
 	// example:
 	//

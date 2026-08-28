@@ -18,15 +18,15 @@ type iStreamingResourceSetting interface {
 }
 
 type StreamingResourceSetting struct {
-	// The resource parameters in basic mode.
+	// The resource settings for basic mode.
 	BasicResourceSetting *BasicResourceSetting `json:"basicResourceSetting,omitempty" xml:"basicResourceSetting,omitempty"`
-	// The resource parameters in expert mode.
+	// The resource settings for expert mode.
 	ExpertResourceSetting *ExpertResourceSetting `json:"expertResourceSetting,omitempty" xml:"expertResourceSetting,omitempty"`
-	// The resource configuration mode used by a deployment that runs in streaming mode. Valid values:
+	// The resource mode used in stream mode. Valid values:
 	//
-	// 	- EXPERT
+	// - EXPERT: expert mode.
 	//
-	// 	- BASIC
+	// - BASIC: basic mode.
 	//
 	// example:
 	//

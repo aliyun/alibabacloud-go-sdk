@@ -38,7 +38,7 @@ type ListAutopilotTuningHistoriesResponseBody struct {
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The business status code, which is always 200. Use success to determine whether the business request is successful.
+	// The business status code, which is always 200. Use success to determine whether the business request was successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListAutopilotTuningHistoriesResponseBody struct {
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the business request is successful.
+	// Indicates whether the business request was successful.
 	//
 	// example:
 	//

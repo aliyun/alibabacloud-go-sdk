@@ -5,17 +5,17 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
-type iGetFolderHeaders interface {
+type iGetPatrolConfigHeaders interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetCommonHeaders(v map[string]*string) *GetFolderHeaders
+	SetCommonHeaders(v map[string]*string) *GetPatrolConfigHeaders
 	GetCommonHeaders() map[string]*string
-	SetWorkspace(v string) *GetFolderHeaders
+	SetWorkspace(v string) *GetPatrolConfigHeaders
 	GetWorkspace() *string
 }
 
-type GetFolderHeaders struct {
+type GetPatrolConfigHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// The workspace ID.
 	//
@@ -23,36 +23,36 @@ type GetFolderHeaders struct {
 	//
 	// example:
 	//
-	// a14bda1c4a****
+	// a14bd5d90a****
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 
-func (s GetFolderHeaders) String() string {
+func (s GetPatrolConfigHeaders) String() string {
 	return dara.Prettify(s)
 }
 
-func (s GetFolderHeaders) GoString() string {
+func (s GetPatrolConfigHeaders) GoString() string {
 	return s.String()
 }
 
-func (s *GetFolderHeaders) GetCommonHeaders() map[string]*string {
+func (s *GetPatrolConfigHeaders) GetCommonHeaders() map[string]*string {
 	return s.CommonHeaders
 }
 
-func (s *GetFolderHeaders) GetWorkspace() *string {
+func (s *GetPatrolConfigHeaders) GetWorkspace() *string {
 	return s.Workspace
 }
 
-func (s *GetFolderHeaders) SetCommonHeaders(v map[string]*string) *GetFolderHeaders {
+func (s *GetPatrolConfigHeaders) SetCommonHeaders(v map[string]*string) *GetPatrolConfigHeaders {
 	s.CommonHeaders = v
 	return s
 }
 
-func (s *GetFolderHeaders) SetWorkspace(v string) *GetFolderHeaders {
+func (s *GetPatrolConfigHeaders) SetWorkspace(v string) *GetPatrolConfigHeaders {
 	s.Workspace = &v
 	return s
 }
 
-func (s *GetFolderHeaders) Validate() error {
+func (s *GetPatrolConfigHeaders) Validate() error {
 	return dara.Validate(s)
 }

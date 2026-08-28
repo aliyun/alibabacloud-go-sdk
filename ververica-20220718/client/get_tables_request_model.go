@@ -14,7 +14,7 @@ type iGetTablesRequest interface {
 }
 
 type GetTablesRequest struct {
-	// The name of the table. If this parameter is left empty, information about all tables is returned.
+	// The table name. If this parameter is left empty, information about all tables is returned.
 	//
 	// example:
 	//

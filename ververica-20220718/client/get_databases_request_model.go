@@ -14,7 +14,7 @@ type iGetDatabasesRequest interface {
 }
 
 type GetDatabasesRequest struct {
-	// The name of the database. If you do not specify this parameter, information about all databases in the catalog is returned.
+	// The database name. If this parameter is left empty, information about all databases is returned.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type Variable struct {
 	//
 	// example:
 	//
-	// test
+	// This is a variable description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The type of the variable. `Clear` indicates plaintext and `Encrypted` indicates ciphertext.
 	//
@@ -32,7 +32,7 @@ type Variable struct {
 	//
 	// example:
 	//
-	// Encrypted
+	// Plain
 	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
 	// The name of the variable.
 	//
@@ -40,7 +40,7 @@ type Variable struct {
 	//
 	// example:
 	//
-	// mysqlPassword
+	// variableName
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The value of the variable.
 	//
@@ -48,7 +48,7 @@ type Variable struct {
 	//
 	// example:
 	//
-	// myPassword
+	// variableValue
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

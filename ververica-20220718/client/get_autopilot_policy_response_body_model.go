@@ -26,19 +26,19 @@ type iGetAutopilotPolicyResponseBody interface {
 type GetAutopilotPolicyResponseBody struct {
 	// The Autopilot tuning policy response data.
 	Data *GetAutopilotPolicyResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The business error code. This field is not empty when success is false. This field is empty when success is true.
+	// The error code. This field is not empty when success is false. This field is empty when success is true.
 	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// The business error message. This field is not empty when success is false. This field is empty when success is true.
+	// The error message. This field is not empty when success is false. This field is empty when success is true.
 	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The business status code, which is always 200. Use the success field to determine whether the request was successful.
+	// The business status code, which is always 200. Use the success field to determine whether the request is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetAutopilotPolicyResponseBody struct {
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *GetAutopilotPolicyResponseBody) Validate() error {
 }
 
 type GetAutopilotPolicyResponseBodyData struct {
-	// Indicates whether automatic tuning is enabled. A value of true indicates that automatic tuning is in the ACTIVE state. A value of false indicates that tuning is not enabled.
+	// Indicates whether automatic tuning is enabled. A value of true indicates that automatic tuning is active (ACTIVE). A value of false indicates that tuning is not enabled.
 	//
 	// example:
 	//

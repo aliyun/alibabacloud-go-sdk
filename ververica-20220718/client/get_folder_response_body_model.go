@@ -24,37 +24,39 @@ type iGetFolderResponseBody interface {
 }
 
 type GetFolderResponseBody struct {
-	// Folder data structure.
+	// The folder information data structure.
 	Data *Folder `json:"data,omitempty" xml:"data,omitempty"`
-	// - If success is false, the business error code is returned.
+	// - When success is false, a business error code is returned.
 	//
-	// - If success is true, an empty value is returned.
+	//
+	//
+	// - When success is true, an empty value is returned.
 	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	// - If success is false, the business error message is returned.
+	// - When success is false, a business error message is returned.
 	//
-	// - If success is true, an empty value is returned.
+	// - When success is true, an empty value is returned.
 	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// Indicates task success or failure. If the parameter is not empty and not 200, it means failure.
+	// The business status code. If this value is not empty and is not 200, the business request failed.
 	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the business request was successful.
 	//
 	// example:
 	//

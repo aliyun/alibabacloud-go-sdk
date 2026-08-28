@@ -30,23 +30,19 @@ type iSqlFile interface {
 }
 
 type SqlFile struct {
-	// The batch mode.
-	BatchMode *string `json:"batchMode,omitempty" xml:"batchMode,omitempty"`
-	// The description of the SQL file.
+	// Deprecated
+	BatchMode   *string `json:"batchMode,omitempty" xml:"batchMode,omitempty"`
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the SQL file.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The namespace.
+	// The query script name. This field is required when creating a SqlFile.
+	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// The ID of the parent SQL file.
+	// The parent folder ID. This field is required when creating a SqlFile.
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	// The name of the session cluster.
+	// The session cluster for running the query script. This field is required when creating a SqlFile.
 	SessionClusterName *string `json:"sessionClusterName,omitempty" xml:"sessionClusterName,omitempty"`
-	// The SQL file ID.
-	SqlFileId *string `json:"sqlFileId,omitempty" xml:"sqlFileId,omitempty"`
-	// The SQL script content.
+	SqlFileId          *string `json:"sqlFileId,omitempty" xml:"sqlFileId,omitempty"`
+	// The SQL script. This field is required when creating a SqlFile.
 	SqlScript *string `json:"sqlScript,omitempty" xml:"sqlScript,omitempty"`
-	// The workspace ID.
 	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
 }
 

@@ -168,7 +168,7 @@ type Job struct {
 	//
 	// example:
 	//
-	// null
+	// preview
 	SessionClusterName *string `json:"sessionClusterName,omitempty" xml:"sessionClusterName,omitempty"`
 	// Job instance start time.
 	//

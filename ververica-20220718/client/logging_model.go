@@ -38,7 +38,7 @@ type Logging struct {
 	//
 	// example:
 	//
-	// default
+	// oss
 	LoggingProfile *string `json:"loggingProfile,omitempty" xml:"loggingProfile,omitempty"`
 }
 

@@ -24,11 +24,11 @@ type iGetSqlFileResponseBody interface {
 }
 
 type GetSqlFileResponseBody struct {
-	// The complete SQL script information returned when the request is successful. This field is valid when success is true.
+	// The complete SQL script information returned when the request succeeds. This field is valid when success is true.
 	//
 	// example:
 	//
-	// See the response example.
+	// See the response example
 	Data *SqlFile `json:"data,omitempty" xml:"data,omitempty"`
 	// The error code returned when success is false. This value is empty when success is true.
 	//
