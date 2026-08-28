@@ -22,15 +22,15 @@ type iImageCroppingResponseBody interface {
 }
 
 type ImageCroppingResponseBody struct {
-	// Response code
+	// The response code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Crop result
+	// The cropping result.
 	Data *ImageCroppingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
@@ -42,7 +42,11 @@ type ImageCroppingResponseBody struct {
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the call was successful: true indicates success, false indicates failure
+	// Indicates whether the call is successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -113,25 +117,25 @@ func (s *ImageCroppingResponseBody) Validate() error {
 }
 
 type ImageCroppingResponseBodyData struct {
-	// Image height
+	// The image height.
 	//
 	// example:
 	//
 	// 800
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// URL of the cropped image
+	// The URL of the cropped image.
 	//
 	// example:
 	//
 	// https://example.com/cropped.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Usage information
+	// The usage information.
 	//
 	// example:
 	//
 	// {"ProcessedImageCount":1}
 	UsageMap map[string]*int64 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
-	// Image width
+	// The image width.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type DiduiAreaDeductionRequest struct {
 	//
 	// This parameter is required.
 	Products []*DiduiAreaDeductionRequestProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
-	// The ID of the customer-specific SKU vector database that determines which database is used for retrieval. The database must be created in advance through the database creation process.
+	// The ID of the customer-specific SKU vector store that determines which store is used for retrieval. The store must be created in advance through the store creation process.
 	//
 	// example:
 	//

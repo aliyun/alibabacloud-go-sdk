@@ -22,15 +22,15 @@ type iAssetOptimizeLiteResponseBody interface {
 }
 
 type AssetOptimizeLiteResponseBody struct {
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Asynchronous task submission result
+	// The submit result of the asynchronous task.
 	Data *AssetOptimizeLiteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Error message
+	// The error message.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type AssetOptimizeLiteResponseBody struct {
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the call was successful
+	// Indicates whether the call is successful.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *AssetOptimizeLiteResponseBody) Validate() error {
 }
 
 type AssetOptimizeLiteResponseBodyData struct {
-	// Asynchronous task ID, used for subsequent result queries
+	// The asynchronous task ID, used to query results later.
 	//
 	// example:
 	//

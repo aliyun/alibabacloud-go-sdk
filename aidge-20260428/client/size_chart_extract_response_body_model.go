@@ -113,7 +113,7 @@ func (s *SizeChartExtractResponseBody) Validate() error {
 }
 
 type SizeChartExtractResponseBodyData struct {
-	// The asynchronous task ID, which is used to query the result later.
+	// The asynchronous task ID, used to query the result later.
 	//
 	// example:
 	//

@@ -20,7 +20,15 @@ type iDocumentTranslateRequest interface {
 }
 
 type DocumentTranslateRequest struct {
-	// The supported document types: PDF/Word. Size limits: Word 200 MB/100 pages, PDF 200 MB/100 pages, maximum 200 MB per file.
+	// The supported document types: PDF/Word.
+	//
+	// Supported capacity limits:
+	//
+	// - word: 200 MB/100 pages
+	//
+	// - PDF: 200 MB/100 pages
+	//
+	// - Maximum size per file: 200 MB
 	//
 	// This parameter is required.
 	//
@@ -28,7 +36,7 @@ type DocumentTranslateRequest struct {
 	//
 	// PDF
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The intervention glossary ID. Specify this parameter when you need the intervention feature. Supports custom translation results, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and skip translation (ABC-empty value). Commonly used for brand name protection scenarios.
+	// The glossary ID. Specify this parameter when you need the glossary feature. Supports custom translation results, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and skip translation (ABC-empty value). Commonly used for brand name protection.
 	//
 	// example:
 	//

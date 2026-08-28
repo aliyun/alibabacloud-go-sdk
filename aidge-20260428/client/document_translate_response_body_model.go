@@ -30,19 +30,21 @@ type DocumentTranslateResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The asynchronous task information.
 	Data *DocumentTranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. Not returned for successful calls.
+	// The error message, such as "The parameters contain sensitive information. Try other input."
+	//
+	// This parameter is not returned for successful calls.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The unique request identity, used for troubleshooting and tracing.
 	//
 	// example:
 	//
 	// 39E8A74B-F99E-1195-A5FF-3ECC5F94F304
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. true: successful. false: failed.
+	// Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
 	//
 	// example:
 	//

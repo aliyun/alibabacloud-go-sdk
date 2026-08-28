@@ -28,7 +28,7 @@ type AssetOptimizeProResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result data of the asynchronous task submission, which contains the asynchronous task ID.
+	// The asynchronous task submission result data, which contains the asynchronous task ID.
 	Data *AssetOptimizeProResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message. The value "Success" is returned for a successful call.
 	//
@@ -36,13 +36,13 @@ type AssetOptimizeProResponseBody struct {
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, which uniquely identifies the API call.
+	// The request ID, used to uniquely identify a single API call.
 	//
 	// example:
 	//
 	// 4FCCA90A-A7A4-1D37-88C3-C17549886E70
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
+	// Indicates whether the call was successful. A value of true indicates success. A value of false indicates failure.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *AssetOptimizeProResponseBody) Validate() error {
 }
 
 type AssetOptimizeProResponseBodyData struct {
-	// The asynchronous task ID, which is used to query the processing result by calling QueryAsyncTaskResult.
+	// The asynchronous task ID, used to query processing results through QueryAsyncTaskResult.
 	//
 	// example:
 	//

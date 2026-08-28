@@ -22,27 +22,27 @@ type iTextCorrectResponseBody interface {
 }
 
 type TextCorrectResponseBody struct {
-	// Response code. Returns "success" during normal calls.
+	// The response code. The value "success" is returned if the call is successful.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Intelligent error correction result data.
+	// The intelligent correction result data.
 	Data *TextCorrectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Error message. Returns "Success" during normal calls. Returns specific error information during exceptions, such as "The parameters contain sensitive information. Please try a different input."
+	// The error message. The value "Success" is returned if the call is successful. A specific error message is returned if an exception occurs, such as "The parameters contain sensitive information. Try other input."
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID, used to identify a unique request call.
+	// The request ID, which uniquely identifies the request.
 	//
 	// example:
 	//
 	// 32882AD0-50D1-1D90-A221-3987325EC03E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the call was successful. true indicates success, false indicates failure.
+	// Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type TextCorrectResponseBodyData struct {
 	//
 	// Empfehlung
 	CorrectedText *string `json:"CorrectedText,omitempty" xml:"CorrectedText,omitempty"`
-	// Usage information, including the number of input characters.
+	// The usage information, including the number of input characters.
 	//
 	// example:
 	//

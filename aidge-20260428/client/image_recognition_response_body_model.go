@@ -22,7 +22,7 @@ type iImageRecognitionResponseBody interface {
 }
 
 type ImageRecognitionResponseBody struct {
-	// The error code. This parameter is not returned if the call is successful.
+	// The error code. This parameter is not returned for successful calls.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ImageRecognitionResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The intelligent element recognition result.
 	Data *ImageRecognitionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned if the call is successful.
+	// The error message. This parameter is not returned for successful calls.
 	//
 	// example:
 	//

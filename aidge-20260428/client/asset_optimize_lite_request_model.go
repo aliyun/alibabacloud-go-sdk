@@ -30,19 +30,19 @@ type iAssetOptimizeLiteRequest interface {
 }
 
 type AssetOptimizeLiteRequest struct {
-	// Custom glossary
+	// The custom glossary for term intervention.
 	//
 	// example:
 	//
-	// 测试
+	// test
 	Glossary *string `json:"Glossary,omitempty" xml:"Glossary,omitempty"`
-	// Whether to include product region translation
+	// Specifies whether product area translation is included.
 	//
 	// example:
 	//
 	// false
 	IncludingProductArea *bool `json:"IncludingProductArea,omitempty" xml:"IncludingProductArea,omitempty"`
-	// Whether translation is required
+	// Specifies whether translation is needed.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type AssetOptimizeLiteRequest struct {
 	//
 	// true
 	NeedTrans *bool `json:"NeedTrans,omitempty" xml:"NeedTrans,omitempty"`
-	// Product Link URL
+	// The product URL.
 	//
 	// This parameter is required.
 	//
@@ -58,13 +58,13 @@ type AssetOptimizeLiteRequest struct {
 	//
 	// https://detail.1688.com/offer/631960323816.html
 	ProductUrl *string `json:"ProductUrl,omitempty" xml:"ProductUrl,omitempty"`
-	// Source language code, e.g., zh
+	// The source language code, such as zh.
 	//
 	// example:
 	//
 	// zh
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	// Source platform, e.g., 1688
+	// The source platform, such as 1688.
 	//
 	// This parameter is required.
 	//
@@ -72,13 +72,13 @@ type AssetOptimizeLiteRequest struct {
 	//
 	// 1688
 	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
-	// Target language code, e.g., en
+	// The target language code, such as en.
 	//
 	// example:
 	//
 	// en
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	// Target platform, e.g., temu
+	// The target platform, such as temu.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type AssetOptimizeLiteRequest struct {
 	//
 	// temu
 	TargetPlatform *string `json:"TargetPlatform,omitempty" xml:"TargetPlatform,omitempty"`
-	// Whether to translate brand names in images, default false
+	// Specifies whether to translate brand names in images. Default value: false.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type MerchandisePlacementDetectionRequest struct {
 	//
 	// api_xxx
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The URL of the shelf or floor-stack image to be recognized (accessible via the public network or OSS).
+	// The URL of the shelf or floor-stack image to be recognized (accessible over the public network or from OSS).
 	//
 	// This parameter is required.
 	//
@@ -34,17 +34,17 @@ type MerchandisePlacementDetectionRequest struct {
 	//
 	// https://example.com/shelf.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The customer-specific SKU vector library ID that determines which library to retrieve from. The library must be created in advance through the library creation process.
+	// The ID of the customer\\"s dedicated SKU vector library, which determines which library is used for retrieval. The library must be created in advance through the library creation process.
 	//
 	// example:
 	//
 	// rag_xxx
 	RagId *string `json:"RagId,omitempty" xml:"RagId,omitempty"`
-	// The business type (reserved for future routing by business line). The current release supports skincare & lotion.
+	// The business type (reserved for future routing by business line). The current phase supports skincare & lotion.
 	//
 	// example:
 	//
-	// Lotion.
+	// 水乳
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

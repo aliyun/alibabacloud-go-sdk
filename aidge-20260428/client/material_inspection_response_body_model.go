@@ -22,7 +22,7 @@ type iMaterialInspectionResponseBody interface {
 }
 
 type MaterialInspectionResponseBody struct {
-	// The error code. This parameter is not returned for successful calls.
+	// The error code. This parameter is not returned if the call is successful.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type MaterialInspectionResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The material display detection result.
 	Data *MaterialInspectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned for successful calls.
+	// The error message. This parameter is not returned if the call is successful.
 	//
 	// example:
 	//
@@ -42,7 +42,11 @@ type MaterialInspectionResponseBody struct {
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
+	// Indicates whether the call is successful. Valid values:
+	//
+	// - true: The call is successful.
+	//
+	// - false: The call failed.
 	//
 	// example:
 	//
@@ -159,13 +163,17 @@ func (s *MaterialInspectionResponseBodyData) Validate() error {
 }
 
 type MaterialInspectionResponseBodyDataResult struct {
-	// The natural language summary, such as "1 rule: 1 PASS, all inspection items are compliant."
+	// The natural language summary of the inspection result, such as "1 rule: 1 PASS, all inspection items are compliant."
 	//
 	// example:
 	//
 	// 1项规则：1 PASS，所有检测项合规
 	Evidence *string `json:"Evidence,omitempty" xml:"Evidence,omitempty"`
-	// The overall result. Valid values: PASS and FAIL.
+	// The overall determination result. Valid values:
+	//
+	// - PASS: All inspection items are compliant.
+	//
+	// - FAIL: One or more inspection items are non-compliant.
 	//
 	// example:
 	//
@@ -179,7 +187,7 @@ type MaterialInspectionResponseBodyDataResult struct {
 	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
 	// The list of detection steps.
 	Steps []*MaterialInspectionResponseBodyDataResultSteps `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
-	// The detection type.
+	// The detection type that indicates the identified material category.
 	//
 	// example:
 	//
@@ -254,7 +262,13 @@ func (s *MaterialInspectionResponseBodyDataResult) Validate() error {
 }
 
 type MaterialInspectionResponseBodyDataResultSteps struct {
-	// The step result. Valid values: PASS, FAIL, and UNABLE_TO_JUDGE.
+	// The determination result of the step. Valid values:
+	//
+	// - PASS: The step is compliant.
+	//
+	// - FAIL: The step is non-compliant.
+	//
+	// - UNABLE_TO_JUDGE: The system cannot determine the result.
 	//
 	// example:
 	//

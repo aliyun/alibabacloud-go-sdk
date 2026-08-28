@@ -137,7 +137,7 @@ type DiduiAreaDeductionResponseBodyData struct {
 	//
 	// 1000
 	LatencyMs *int64 `json:"LatencyMs,omitempty" xml:"LatencyMs,omitempty"`
-	// The workflow description.
+	// The workflow description message.
 	//
 	// example:
 	//

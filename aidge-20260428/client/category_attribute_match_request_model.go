@@ -32,9 +32,9 @@ type CategoryAttributeMatchRequest struct {
 	//
 	// example:
 	//
-	// 真丝，春季新款
+	// Silk, new spring style
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The product image URLs. A maximum of 10 images are supported.
+	// The product image URLs (up to 10 images are supported).
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type CategoryAttributeMatchRequest struct {
 	//
 	// example:
 	//
-	// 例如商品的材质等。输入商品属性名称和属性内容
+	// For example, the material of the product. Enter the attribute name and attribute value
 	ItemSpec *string `json:"ItemSpec,omitempty" xml:"ItemSpec,omitempty"`
 	// The product SKU title.
 	//
@@ -62,9 +62,9 @@ type CategoryAttributeMatchRequest struct {
 	//
 	// example:
 	//
-	// 衣服
+	// Clothing
 	SourceCategory *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
-	// The source platform from which the product originates.
+	// The source platform where the product originates.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type CategoryAttributeMatchRequest struct {
 	//
 	// 1688
 	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
-	// The target listing platform. Currently, only temu is supported.
+	// The target listing platform. Currently only temu is supported.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type CategoryAttributeMatchRequest struct {
 	//
 	// example:
 	//
-	// 女士春季新款衣服
+	// Women\\"s new spring clothing
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

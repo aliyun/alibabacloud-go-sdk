@@ -30,13 +30,13 @@ type ImageTranslationStandardResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The translation result data, including the translated image URL and usage information.
 	Data *ImageTranslationStandardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. Returns "Success" for successful calls, and returns specific error information for failed calls.
+	// The error message. "Success" is returned for successful calls, and a specific error message is returned for failed calls.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, which uniquely identifies the request.
+	// The request ID, used to uniquely identify a request.
 	//
 	// example:
 	//
@@ -115,13 +115,13 @@ func (s *ImageTranslationStandardResponseBody) Validate() error {
 type ImageTranslationStandardResponseBodyData struct {
 	// The edit information.
 	EditInfo *ImageTranslationStandardResponseBodyDataEditInfo `json:"EditInfo,omitempty" xml:"EditInfo,omitempty" type:"Struct"`
-	// The URL of the image generated after image translation.
+	// The URL of the image generated from the image translation result.
 	//
 	// example:
 	//
 	// http://dashscope-a717.oss-cn-beijing.aliyuncs.com/xxx.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The usage information, including the number of images processed.
+	// The usage information, including the number of processed images.
 	//
 	// example:
 	//
@@ -180,7 +180,7 @@ type ImageTranslationStandardResponseBodyDataEditInfo struct {
 	//
 	// ["NotoSansSC-Bold"]
 	Font []*string `json:"Font,omitempty" xml:"Font,omitempty" type:"Repeated"`
-	// The product area rectangles.
+	// The product area rectangle.
 	GoodsRects *ImageTranslationStandardResponseBodyDataEditInfoGoodsRects `json:"GoodsRects,omitempty" xml:"GoodsRects,omitempty" type:"Struct"`
 	// The product image URL.
 	//
@@ -194,13 +194,13 @@ type ImageTranslationStandardResponseBodyDataEditInfo struct {
 	//
 	// ["zh"]
 	Languages []*string `json:"Languages,omitempty" xml:"Languages,omitempty" type:"Repeated"`
-	// The original image URL.
+	// The URL of the original image.
 	//
 	// example:
 	//
 	// https://xiuxiu-pro.meitudata.com/posters/34d78f9157e5560a4d612949ca6f6485.jpg
 	PictUrl *string `json:"PictUrl,omitempty" xml:"PictUrl,omitempty"`
-	// The repaired image URL.
+	// The URL of the repaired image.
 	//
 	// example:
 	//
@@ -584,7 +584,7 @@ type ImageTranslationStandardResponseBodyDataEditInfoTextAreasTexts struct {
 	//
 	// example:
 	//
-	// Solid Wood Wardrobe.
+	// Solid Wood Wardrobe
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	// The vertical layout.
 	//

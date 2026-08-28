@@ -28,9 +28,9 @@ type VideoTranslationResponseBody struct {
 	//
 	// Processing
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The asynchronous task submit status.
+	// The asynchronous task submit result.
 	Data *VideoTranslationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The description message.
+	// The description.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type VideoTranslationResponseBody struct {
 	//
 	// req_20260608_jkl012
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values: true: The call is successful. false: The call failed.
+	// Indicates whether the call is successful. Valid values: true: The call is successful. false: The call fails.
 	//
 	// example:
 	//

@@ -22,27 +22,27 @@ type iPackageWeightSizeCheckResponseBody interface {
 }
 
 type PackageWeightSizeCheckResponseBody struct {
-	// The response code. 200 indicates a successful call. For other response codes, refer to the error code information.
+	// The response code. A value of 200 indicates a successful call. For other response codes, refer to the error code information.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The asynchronous submission result data, which contains the asynchronous task ID.
+	// The submit status result data, which contains the asynchronous task ID.
 	Data *PackageWeightSizeCheckResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. "Success" is returned for normal calls, and specific error information is returned for exceptions.
+	// The error message. "Success" is returned for a successful call. A specific error message is returned for a failed call.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, used to identify a unique request call.
+	// The request ID, which uniquely identifies the API call.
 	//
 	// example:
 	//
 	// F93D82E4-D0B6-1043-AC58-282597BC3C10
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the call was successful. true indicates success, and false indicates failure.
+	// Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *PackageWeightSizeCheckResponseBody) Validate() error {
 }
 
 type PackageWeightSizeCheckResponseBodyData struct {
-	// The asynchronous task ID, used to query the audit result later through QueryAsyncTaskResult.
+	// The asynchronous task ID, which is used to query the review result by calling QueryAsyncTaskResult.
 	//
 	// example:
 	//

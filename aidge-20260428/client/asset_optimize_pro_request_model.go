@@ -40,15 +40,15 @@ type AssetOptimizeProRequest struct {
 	//
 	// example:
 	//
-	// ["胸围","腰围","臀围"]
+	// ["Bust","Waist","Hip"]
 	ColumnNameList []*string `json:"ColumnNameList,omitempty" xml:"ColumnNameList,omitempty" type:"Repeated"`
-	// The glossary ID. Optional. Create a glossary in the console and provide its ID. If left empty, translation results are not modified by any glossary.
+	// The glossary ID. Optional. Create a glossary separately in the console and provide its ID. If empty, translation results are not modified.
 	//
 	// example:
 	//
 	// glossary_1
 	Glossary *string `json:"Glossary,omitempty" xml:"Glossary,omitempty"`
-	// Specifies whether to translate text on the product subject area of images. Setting this to false helps protect embedded information such as product names from being translated. Default value: false.
+	// Specifies whether to translate text on the product subject area in images. Setting this to false helps protect embedded information such as product names from being translated. Default value: false.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type AssetOptimizeProRequest struct {
 	//
 	// https://detail.1688.com/offer/771024907536.html
 	ProductUrl *string `json:"ProductUrl,omitempty" xml:"ProductUrl,omitempty"`
-	// The source language code. Optional. For supported language pairs, refer to the supported translation language list. This parameter is required if NeedTrans is set to true.
+	// The source language code. Optional. Refer to the supported language pairs list for available language directions. Required if NeedTrans is set to true.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type AssetOptimizeProRequest struct {
 	//
 	// 1688
 	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
-	// The target language code. Optional. For supported language pairs, refer to the supported translation language list. This parameter is required if NeedTrans is set to true.
+	// The target language code. Optional. Refer to the supported language pairs list for available language directions. Required if NeedTrans is set to true.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type AssetOptimizeProRequest struct {
 	//
 	// 0.4
 	Threshold *float64 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// Specifies whether to translate brand names on images. Optional. Default value: false. Setting this to false helps protect brand name information from being translated.
+	// Specifies whether to translate brand names in images. Optional. Default value: false. Setting this to false helps protect brand name information from being translated.
 	//
 	// example:
 	//

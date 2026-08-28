@@ -18,7 +18,7 @@ type iImageCroppingRequest interface {
 }
 
 type ImageCroppingRequest struct {
-	// URL of the image to be processed
+	// The URL of the image to process.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type ImageCroppingRequest struct {
 	//
 	// https://example.com/image.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Target height
+	// The target height.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ImageCroppingRequest struct {
 	//
 	// 800
 	TargetHeight *int32 `json:"TargetHeight,omitempty" xml:"TargetHeight,omitempty"`
-	// Target width
+	// The target width.
 	//
 	// This parameter is required.
 	//

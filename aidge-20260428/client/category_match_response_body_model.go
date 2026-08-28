@@ -22,7 +22,7 @@ type iCategoryMatchResponseBody interface {
 }
 
 type CategoryMatchResponseBody struct {
-	// The status code. The value "success" is returned for a successful call.
+	// The status code. The value "success" is returned for successful calls.
 	//
 	// example:
 	//
@@ -30,19 +30,19 @@ type CategoryMatchResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The product category matching result.
 	Data *CategoryMatchResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. The value "Success" is returned for a successful call.
+	// The error message. The value "Success" is returned for successful calls.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, which uniquely identifies the request.
+	// The request ID, which uniquely identifies the API call.
 	//
 	// example:
 	//
 	// 2157065A-D6C8-1F3E-A4D0-B1234567890
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values: true and false.
+	// Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
 	//
 	// example:
 	//
@@ -113,19 +113,19 @@ func (s *CategoryMatchResponseBody) Validate() error {
 }
 
 type CategoryMatchResponseBodyData struct {
-	// The ID of the matched category.
+	// The matched category ID.
 	//
 	// example:
 	//
 	// 1522
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The name of the matched category.
+	// The matched category name.
 	//
 	// example:
 	//
 	// 位置和活动跟踪器
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The full path of the category, separated by forward slashes (/).
+	// The full path of the category, separated by "/".
 	//
 	// example:
 	//
@@ -137,17 +137,17 @@ type CategoryMatchResponseBodyData struct {
 	//
 	// 96
 	Confidence *int32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// Indicates whether the match is successful.
+	// Indicates whether the matching is successful.
 	//
 	// example:
 	//
 	// true
 	MatchSuccessful *bool `json:"MatchSuccessful,omitempty" xml:"MatchSuccessful,omitempty"`
-	// The reason for the match.
+	// The explanation of the matching reason.
 	//
 	// example:
 	//
-	// 商品核心为带 AirTag 定位功能的猫项圈，属\\"位置和活动跟踪器\\"类目，叶子节点语义精准匹配其追踪功能与猫用属性。
+	// The product core is a cat collar with AirTag positioning function, belonging to the \\"Location and Activity Trackers\\" category, with leaf node semantics precisely matching its tracking function and cat-use attributes
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The usage information.
 	UsageMap map[string]*int32 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`

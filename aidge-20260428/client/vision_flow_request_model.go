@@ -46,7 +46,7 @@ type iVisionFlowRequest interface {
 }
 
 type VisionFlowRequest struct {
-	// The AI capabilities to apply (1 = intelligent element detection, 2 = intelligent matting, 3 = intelligent removal, 4 = Image Translation Pro, 5 = intelligent cropping, 6 = HD upscaling). Multiple selections allowed.
+	// The AI capabilities to apply (1=Intelligent Element Detection, 2=Intelligent Matting, 3=Intelligent Removal, 4=Image Translation Pro, 5=Intelligent Cropping, 6=HD Upscaling). Multiple selections allowed.
 	//
 	// This parameter is required.
 	//
@@ -54,19 +54,19 @@ type VisionFlowRequest struct {
 	//
 	// [1,2,3,4]
 	Ability []*int32 `json:"Ability,omitempty" xml:"Ability,omitempty" type:"Repeated"`
-	// The background type of the returned image. Valid values: WHITE_BACKGROUND (white background) and TRANSPARENT (transparent background). Required when the intelligent matting capability is selected.
+	// The background type of the output image. Valid values: WHITE_BACKGROUND (white background) and TRANSPARENT (transparent background). Required when the Intelligent Matting capability is selected.
 	//
 	// example:
 	//
 	// WHITE_BACKGROUND
 	BackGroundType *string `json:"BackGroundType,omitempty" xml:"BackGroundType,omitempty"`
-	// The intervention glossary ID. Optional. Create a glossary separately in the console and provide its ID. If left empty, translation results are not modified.
+	// The glossary ID. Optional. Create the glossary separately in the console and provide its ID. If empty, translation results are not modified.
 	//
 	// example:
 	//
 	// glossary_1
 	Glossary *string `json:"Glossary,omitempty" xml:"Glossary,omitempty"`
-	// The URL of the image to process. Required. The resolution must be greater than 256 × 256, the long side must not exceed 1920 pixels, and the short side must not exceed 1080 pixels. The file size must not exceed 5 MB. Supported formats: png, jpeg, jpg, bmp, and webp.
+	// The URL of the image to process. Required. Resolution must be greater than 256×256, long side no greater than 1920 pixels, short side no greater than 1080 pixels. File size must not exceed 5 MB. Supported formats: png, jpeg, jpg, bmp, webp.
 	//
 	// This parameter is required.
 	//
@@ -80,73 +80,73 @@ type VisionFlowRequest struct {
 	//
 	// false
 	IncludingProductArea *bool `json:"IncludingProductArea,omitempty" xml:"IncludingProductArea,omitempty"`
-	// Specifies whether images with the detected elements proceed to subsequent processing. A value of true indicates that images containing the elements proceed to subsequent processing. A value of false indicates that they do not. Required when the intelligent element detection capability is selected.
+	// Specifies whether images containing the specified elements proceed to subsequent processing. A value of true indicates that images with the specified elements proceed to subsequent processing. A value of false indicates that images without the specified elements proceed. Required when the Intelligent Element Detection capability is selected.
 	//
 	// example:
 	//
 	// true
 	IsFilter *bool `json:"IsFilter,omitempty" xml:"IsFilter,omitempty"`
-	// The specific removal area in RLE format. Optional. If provided, this parameter takes priority and the ObjectRemoveElements and NonobjectRemoveElements parameters are ignored.
+	// The specific removal area in RLE format. Optional. If provided, this takes priority and the ObjectRemoveElements and NonobjectRemoveElements parameters are ignored.
 	//
 	// example:
 	//
 	// 474556 160 475356 160
 	Mask *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	// The elements to detect on the non-subject area of the image (1 = watermark, 2 = logo, 3 = text, 4 = text-bearing color block). Multiple selections allowed. When the intelligent element detection capability is selected, at least one of NonobjectDetectElements and ObjectDetectElements is required.
+	// The elements to detect on the non-subject area of the image (1=Watermark, 2=Logo, 3=Text, 4=Text-bearing color block). Multiple selections allowed. When the Intelligent Element Detection capability is selected, at least one of NonobjectDetectElements or ObjectDetectElements is required.
 	//
 	// example:
 	//
 	// [1,2,3]
 	NonobjectDetectElements []*int32 `json:"NonobjectDetectElements,omitempty" xml:"NonobjectDetectElements,omitempty" type:"Repeated"`
-	// The elements to remove from the non-subject area of the image (1 = transparent text block, 2 = specific name, 3 = text, 4 = overlay patch). Multiple selections allowed. When the intelligent removal capability is selected, at least one of NonobjectRemoveElements and ObjectRemoveElements is required.
+	// The elements to remove from the non-subject area of the image (1=Transparent text block, 2=Specific name, 3=Text, 4=Ad patch). Multiple selections allowed. When the Intelligent Removal capability is selected, at least one of NonobjectRemoveElements or ObjectRemoveElements is required.
 	//
 	// example:
 	//
 	// [1,2,4]
 	NonobjectRemoveElements []*int32 `json:"NonobjectRemoveElements,omitempty" xml:"NonobjectRemoveElements,omitempty" type:"Repeated"`
-	// The elements to detect on the image subject (1 = watermark, 2 = logo, 3 = text, 4 = text-bearing color block). Multiple selections allowed. When the intelligent element detection capability is selected, at least one of ObjectDetectElements and NonobjectDetectElements is required.
+	// The elements to detect on the image subject (1=Watermark, 2=Logo, 3=Text, 4=Text-bearing color block). Multiple selections allowed. When the Intelligent Element Detection capability is selected, at least one of ObjectDetectElements or NonobjectDetectElements is required.
 	//
 	// example:
 	//
 	// [1,2,3,4]
 	ObjectDetectElements []*int32 `json:"ObjectDetectElements,omitempty" xml:"ObjectDetectElements,omitempty" type:"Repeated"`
-	// The elements to remove from the image subject (1 = transparent text block, 2 = specific name, 3 = text, 4 = overlay patch). Multiple selections allowed. When the intelligent removal capability is selected, at least one of ObjectRemoveElements and NonobjectRemoveElements is required.
+	// The elements to remove from the image subject (1=Transparent text block, 2=Specific name, 3=Text, 4=Ad patch). Multiple selections allowed. When the Intelligent Removal capability is selected, at least one of ObjectRemoveElements or NonobjectRemoveElements is required.
 	//
 	// example:
 	//
 	// [1,2,4]
 	ObjectRemoveElements []*int32 `json:"ObjectRemoveElements,omitempty" xml:"ObjectRemoveElements,omitempty" type:"Repeated"`
-	// The source language code. Optional. For supported language pairs, see the supported translation language pairs list.
+	// The source language code. Optional. Refer to the supported language pairs list for available language directions.
 	//
 	// example:
 	//
 	// zh
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	// The desired height of the cropped image, in pixels. Valid values: 100 to 5000. Required when the intelligent cropping capability is selected.
+	// The desired height of the cropped image, in pixels. Valid values: 100 to 5000. Required when the Intelligent Cropping capability is selected.
 	//
 	// example:
 	//
 	// 800
 	TargetHeight *int32 `json:"TargetHeight,omitempty" xml:"TargetHeight,omitempty"`
-	// The target language code. Optional. For supported language pairs, see the supported translation language pairs list.
+	// The target language code. Optional. Refer to the supported language pairs list for available language directions.
 	//
 	// example:
 	//
 	// en
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	// The desired width of the cropped image, in pixels. Valid values: 100 to 5000. Required when the intelligent cropping capability is selected.
+	// The desired width of the cropped image, in pixels. Valid values: 100 to 5000. Required when the Intelligent Cropping capability is selected.
 	//
 	// example:
 	//
 	// 800
 	TargetWidth *int32 `json:"TargetWidth,omitempty" xml:"TargetWidth,omitempty"`
-	// Specifies whether to translate brand names on the image. Optional. Default value: false. Helps protect brand name information from being translated.
+	// Specifies whether to translate brand names in the image. Optional. Default value: false. Helps protect brand name information from being translated.
 	//
 	// example:
 	//
 	// false
 	TranslatingBrandInTheProduct *bool `json:"TranslatingBrandInTheProduct,omitempty" xml:"TranslatingBrandInTheProduct,omitempty"`
-	// The image upscaling factor. Optional. Default value: 2. Valid values: 2 to 4. Required when the HD upscaling capability is selected.
+	// The image upscaling factor. Optional. Default value: 2. Valid values: 2 to 4. Required when the HD Upscaling capability is selected.
 	//
 	// example:
 	//

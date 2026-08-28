@@ -26,7 +26,11 @@ type iTextTranslateRequest interface {
 }
 
 type TextTranslateRequest struct {
-	// The business scenario identifier. This parameter is optional. Valid values: e-commerce-title, e-commerce-description, e-commerce-chat, e-commerce-cpv, novel, game. If not specified or invalid, the general translation strategy is used by default.
+	// This field represents your identity and facilitates communication for various issues.
+	//
+	// ● If you are an internal Alibaba organization, pass a value based on your actual scenario, such as BU name-product or BU name-chat.
+	//
+	// ● If you are an external Alibaba partner, pass the full name of your company. This company name must be consistent with the company name used when you registered your Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -38,19 +42,19 @@ type TextTranslateRequest struct {
 	//
 	// text
 	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
-	// The intervention glossary ID. This parameter is optional. The glossary must be created separately in the console, and its ID must be provided. If the glossary ID is empty, the translation result is not modified.
+	// The intervention glossary ID. This parameter is optional. The glossary must be created separately in the console, and its ID must be provided. If the glossary ID is empty, the translation results are not modified.
 	//
 	// example:
 	//
 	// glossary_1
 	Glossary *string `json:"Glossary,omitempty" xml:"Glossary,omitempty"`
-	// The source language code. This parameter is optional. If not specified, the language is automatically detected. You can pass auto for language detection.
+	// The source language code. If not specified, the language is automatically detected. This parameter is optional. You can pass auto for language detection. For supported language pairs, see [Language pair mapping table](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
 	//
 	// example:
 	//
 	// auto
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	// The list of texts to translate. This parameter is required. The total character length cannot exceed 50,000, and the list length cannot exceed 50.
+	// The list of texts to be translated. This parameter is required. The total character length cannot exceed 50,000, and the list length cannot exceed 50.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +62,7 @@ type TextTranslateRequest struct {
 	//
 	// ["Hello world"]
 	SourceTextList []*string `json:"SourceTextList,omitempty" xml:"SourceTextList,omitempty" type:"Repeated"`
-	// The target language code. This parameter is required. More than 100 language directions are supported. For details, refer to the supported language directions list.
+	// The target language code. This parameter is required. For supported language pairs, see [Language pair mapping table](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
 	//
 	// This parameter is required.
 	//
@@ -66,7 +70,21 @@ type TextTranslateRequest struct {
 	//
 	// ko
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	// The format of the translation text. **html*	- (web page format. This setting processes both the source text and translated text in HTML format) or **text*	- (text format. This setting processes both the source text and translated result as plain text without format processing).
+	// The business scenario identifier. You can pass only one of the following values. When specified, the translation engine invokes the corresponding industry terminology library and style strategy to produce translations that better fit the industry. If this field is not specified or an invalid value is passed, the general translation strategy is used.
+	//
+	// Valid values:
+	//
+	// ● e-commerce-title: cross-border e-commerce product title translation
+	//
+	// ● e-commerce-description: cross-border e-commerce product description translation
+	//
+	// ● e-commerce-chat: cross-border e-commerce conversation translation
+	//
+	// ● e-commerce-cpv: cross-border e-commerce product CPV attribute translation
+	//
+	// ● novel: novel translation
+	//
+	// ● game: game translation
 	//
 	// example:
 	//

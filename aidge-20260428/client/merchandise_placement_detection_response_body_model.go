@@ -22,7 +22,7 @@ type iMerchandisePlacementDetectionResponseBody interface {
 }
 
 type MerchandisePlacementDetectionResponseBody struct {
-	// The error code. This parameter is not returned if the call is successful.
+	// The error code. This parameter is not returned for successful calls.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type MerchandisePlacementDetectionResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The display detection result.
 	Data *MerchandisePlacementDetectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned if the call is successful.
+	// The error message. This parameter is not returned for successful calls.
 	//
 	// example:
 	//
@@ -42,9 +42,9 @@ type MerchandisePlacementDetectionResponseBody struct {
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - true: The call is successful.
+	// - true: The call was successful.
 	//
 	// - false: The call failed.
 	//
@@ -125,7 +125,7 @@ type MerchandisePlacementDetectionResponseBodyData struct {
 	BoxCount *int32 `json:"BoxCount,omitempty" xml:"BoxCount,omitempty"`
 	// The list of retrieval details for each detection box.
 	Data []*MerchandisePlacementDetectionResponseBodyDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The usage information. The key is the usage metric name, and the value is the count.
+	// The usage information. The key is the usage name and the value is the count.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ func (s *MerchandisePlacementDetectionResponseBodyData) Validate() error {
 }
 
 type MerchandisePlacementDetectionResponseBodyDataData struct {
-	// The position coordinates of the detection box in the format [x1,y1,x2,y2].
+	// The position coordinates of the detection box in the format [x1, y1, x2, y2].
 	Bbox []*float32 `json:"Bbox,omitempty" xml:"Bbox,omitempty" type:"Repeated"`
 	// The failure reason for the detection box. The value is null if the detection is successful.
 	//
@@ -290,7 +290,7 @@ type MerchandisePlacementDetectionResponseBodyDataDataTop1 struct {
 	//
 	// example:
 	//
-	// Bright Milk 500ml.
+	// 光明牛奶500ml
 	SkuName *string `json:"SkuName,omitempty" xml:"SkuName,omitempty"`
 }
 
@@ -356,7 +356,7 @@ type MerchandisePlacementDetectionResponseBodyDataDataTopk struct {
 	//
 	// example:
 	//
-	// Bright Milk 500ml.
+	// 光明牛奶500ml
 	SkuName *string `json:"SkuName,omitempty" xml:"SkuName,omitempty"`
 }
 

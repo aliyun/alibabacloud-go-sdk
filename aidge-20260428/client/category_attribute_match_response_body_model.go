@@ -22,15 +22,15 @@ type iCategoryAttributeMatchResponseBody interface {
 }
 
 type CategoryAttributeMatchResponseBody struct {
-	// The error code. This parameter is not returned if the call is successful.
+	// The error code. This parameter is not returned for successful calls.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result.
+	// The response data.
 	Data *CategoryAttributeMatchResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned if the call is successful.
+	// The error message. This parameter is not returned for successful calls.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ type CategoryAttributeMatchResponseBodyData struct {
 	//
 	// 10
 	TotalAttributes *int32 `json:"TotalAttributes,omitempty" xml:"TotalAttributes,omitempty"`
-	// The usage fields.
+	// The usage information.
 	UsageMap *CategoryAttributeMatchResponseBodyDataUsageMap `json:"UsageMap,omitempty" xml:"UsageMap,omitempty" type:"Struct"`
 }
 
@@ -260,13 +260,13 @@ type CategoryAttributeMatchResponseBodyDataAttributes struct {
 	//
 	// 682439
 	AttrId *int32 `json:"AttrId,omitempty" xml:"AttrId,omitempty"`
-	// The matching confidence score. Valid values: 0 to 100.
+	// The matching confidence score, ranging from 0 to 100.
 	//
 	// example:
 	//
 	// 50
 	Confidence *int32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// The input type of the attribute.
+	// The attribute input type.
 	//
 	// example:
 	//
@@ -290,7 +290,7 @@ type CategoryAttributeMatchResponseBodyDataAttributes struct {
 	//
 	// ABC Private POP
 	NameEn *string `json:"NameEn,omitempty" xml:"NameEn,omitempty"`
-	// The reason for the matching result.
+	// The explanation for the matching result.
 	//
 	// example:
 	//

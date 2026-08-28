@@ -26,21 +26,21 @@ type iCategoryMatchRequest interface {
 }
 
 type CategoryMatchRequest struct {
-	// The product details.
+	// The product description.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 真丝，春季新款
+	// Silk, new spring style
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The product attributes that describe the characteristics of the product, such as material. Specify the attribute names and attribute values.
+	// The product attributes that describe the characteristics of the product, such as material. Provide the attribute names and values.
 	//
 	// example:
 	//
 	// 材质:涤纶,适用对象:通用,品牌:艾马逊AMASON PET
 	ItemSpec *string `json:"ItemSpec,omitempty" xml:"ItemSpec,omitempty"`
-	// The SKU title of the product.
+	// The product SKU title.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type CategoryMatchRequest struct {
 	//
 	// example:
 	//
-	// 衣服
+	// Clothing
 	SourceCategory *string `json:"SourceCategory,omitempty" xml:"SourceCategory,omitempty"`
-	// The source platform from which products are sourced.
+	// The source platform where products are sourced from.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type CategoryMatchRequest struct {
 	//
 	// 1688
 	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
-	// The target listing platform. Currently, only temu is supported.
+	// The target listing platform. Currently only temu is supported.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type CategoryMatchRequest struct {
 	//
 	// example:
 	//
-	// 女士春季新款衣服
+	// Women\\"s new spring clothing
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

@@ -22,19 +22,19 @@ type iImageRemoveResponseBody interface {
 }
 
 type ImageRemoveResponseBody struct {
-	// The error code.
+	// The status code.
 	//
 	// example:
 	//
-	// 200
+	// "success"
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The intelligent erasure result.
+	// The intelligent removal result.
 	Data *ImageRemoveResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
 	// example:
 	//
-	// OK
+	// “The parameters contain sensitive information, please try other inputs”
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	//
@@ -113,17 +113,19 @@ func (s *ImageRemoveResponseBody) Validate() error {
 }
 
 type ImageRemoveResponseBodyData struct {
-	// The height of the result image, in pixels.
+	// The height of the result image in pixels.
 	//
 	// example:
 	//
 	// 800
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The URL of the result image after erasure.
+	// The URL of the result image after removal.
 	//
 	// example:
 	//
-	// http://dashscope-7c2c.oss-cn-shanghai.aliyuncs.com/xxx.jpg
+	// “http://dashscope-7c2c.oss-cn-shanghai.aliyuncs.com/xxx.jpg
+	//
+	// ”
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	// The usage information.
 	//
@@ -131,7 +133,7 @@ type ImageRemoveResponseBodyData struct {
 	//
 	// {"ProcessedImageCount":1}
 	UsageMap map[string]*int64 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
-	// The width of the result image, in pixels.
+	// The width of the result image in pixels.
 	//
 	// example:
 	//
