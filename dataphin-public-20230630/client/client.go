@@ -26,11 +26,11 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"cn-shenzhen": dara.String("dataphin-public.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai": dara.String("dataphin-public.cn-shanghai.aliyuncs.com"),
-		"cn-hangzhou": dara.String("dataphin-public.cn-hangzhou.aliyuncs.com"),
-		"cn-chengdu":  dara.String("dataphin-public.cn-chengdu.aliyuncs.com"),
 		"cn-beijing":  dara.String("dataphin-public.cn-beijing.aliyuncs.com"),
+		"cn-chengdu":  dara.String("dataphin-public.cn-chengdu.aliyuncs.com"),
+		"cn-hangzhou": dara.String("dataphin-public.cn-hangzhou.aliyuncs.com"),
+		"cn-shanghai": dara.String("dataphin-public.cn-shanghai.aliyuncs.com"),
+		"cn-shenzhen": dara.String("dataphin-public.cn-shenzhen.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
