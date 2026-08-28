@@ -1783,6 +1783,58 @@ func (client *Client) DescribeCloudbenchTaskConfigWithContext(ctx context.Contex
 
 // Summary:
 //
+// Queries the enabled items of the Alibaba Cloud Managed Services.
+//
+// Description:
+//
+// Before you call this operation, take note of the following prerequisites:
+//
+// - If you use the China site (aliyun.com) or China site International (Chinese) SDK, use the latest version.
+//
+// - When you call a DAS operation by using the SDK, set the region to cn-shanghai.
+//
+// @param request - DescribeDasOpsConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDasOpsConfigResponse
+func (client *Client) DescribeDasOpsConfigWithContext(ctx context.Context, request *DescribeDasOpsConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeDasOpsConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDasOpsConfig"),
+		Version:     dara.String("2020-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDasOpsConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries diagnostics reports.
 //
 // Description:
@@ -2475,21 +2527,21 @@ func (client *Client) DescribeSlowLogRecordsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Retrieves slow query log statistics.
+// Queries slow query log statistics information.
 //
 // Description:
 //
-// *Before you call this operation, make sure that you understand the [billing methods and pricing](https://help.aliyun.com/document_detail/156195.html) of Database Autonomy Service (DAS).**
+// *Before you use this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/156195.html) of DAS.**
 //
-// Before you call this operation, make sure that the following requirements are met:
+// Before you invoke this operation, make sure that the following requirements are met:
 //
 // - Alibaba Cloud Managed Services is enabled for the instance.
 //
-// - Use the latest version of the Alibaba Cloud SDK or DAS SDK.
+// - Use the latest version of the Alibaba Cloud or DAS SDK.
 //
-// - When you use an SDK to call the DAS service, set the region to cn-shanghai.
+// - When you invoke DAS operations by using the SDK, set the region to cn-shanghai.
 //
-// This operation is asynchronous and does not return the complete result immediately. If the \\`isFinish\\` parameter in the response is \\`false\\`, wait 1 second and send the request again. Repeat the request until the \\`isFinish\\` parameter is \\`true\\` to retrieve the complete result.
+// This is an asynchronous operation. After a call is made, the complete result is not immediately returned. If the value of isFinish in the response is false, wait 1 second and invoke the operation again. The complete result is returned only when the value of isFinish is true.
 //
 // @param request - DescribeSlowLogStatisticRequest
 //
@@ -2759,15 +2811,15 @@ func (client *Client) DescribeSqlLogStatisticWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Call the `DescribeSqlLogTask` operation to query the details of an offline task in DAS enterprise edition.
+// Queries the details of a DAS Enterprise Edition batch task by calling the DescribeSqlLogTask operation.
 //
 // Description:
 //
-// Note the following before you call this operation:
+// Before you begin:
 //
-// - We recommend using the latest version of the Alibaba Cloud SDK or DAS SDK.
+// - Use the latest version of the Alibaba Cloud or DAS SDK.
 //
-// - When calling the DAS service with an SDK, set the region to cn-shanghai.
+// - When calling DAS by using the SDK, set the region to cn-shanghai.
 //
 // @param request - DescribeSqlLogTaskRequest
 //
@@ -2823,15 +2875,15 @@ func (client *Client) DescribeSqlLogTaskWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Lists the audit log tasks for an instance.
+// Queries the list of audit log tasks for an instance.
 //
 // Description:
 //
-// The following prerequisites must be met to call this operation:
+// Before you begin:
 //
-// - We recommend that you use the latest version of the Alibaba Cloud SDK or the DAS SDK.
+// - Use the latest version of the Alibaba Cloud or DAS SDK.
 //
-// - When you use an SDK to call the DAS service, you must set the region to `cn-shanghai`.
+// - When calling DAS by using the SDK, set the region to cn-shanghai.
 //
 // @param request - DescribeSqlLogTasksRequest
 //
@@ -4205,11 +4257,11 @@ func (client *Client) GetDBInstanceConnectivityDiagnosisWithContext(ctx context.
 
 // Summary:
 //
-// This API uses Server-Sent Events (SSE) to interact with the DAS agent. You can use this API for features such as Q&A and performance diagnostics.
+// Provides a DAS large model interactive SSE interface. Supports features such as AI chat and performance diagnostics.
 //
 // Description:
 //
-// This is a paid API. You are charged based on the number of output characters. Before you use this API, ensure that you understand the billing methods and [pricing](https://help.aliyun.com/zh/das/product-overview/billing-details-of-the-previous-version?spm=a2c4g.11186623.help-menu-63907.d_0_1_0.b7203b87MDNqHO\\&scm=20140722.H_156195._.OR_help-T_cn~zh-V_1#cad160563fbkd) of the DAS Agent product.
+// This is a paid API that is billed based on the number of output characters. Before using this API, make sure that you fully understand the billing method and [pricing](https://www.alibabacloud.com/help/en/das/product-overview/billing-details-of-the-previous-version#cad160563fbkd) of the DAS Agent product.
 //
 // @param request - GetDasAgentSSERequest
 //
@@ -4224,11 +4276,11 @@ func (client *Client) GetDasAgentSSEWithSSECtx(ctx context.Context, request *Get
 
 // Summary:
 //
-// This API uses Server-Sent Events (SSE) to interact with the DAS agent. You can use this API for features such as Q&A and performance diagnostics.
+// Provides a DAS large model interactive SSE interface. Supports features such as AI chat and performance diagnostics.
 //
 // Description:
 //
-// This is a paid API. You are charged based on the number of output characters. Before you use this API, ensure that you understand the billing methods and [pricing](https://help.aliyun.com/zh/das/product-overview/billing-details-of-the-previous-version?spm=a2c4g.11186623.help-menu-63907.d_0_1_0.b7203b87MDNqHO\\&scm=20140722.H_156195._.OR_help-T_cn~zh-V_1#cad160563fbkd) of the DAS Agent product.
+// This is a paid API that is billed based on the number of output characters. Before using this API, make sure that you fully understand the billing method and [pricing](https://www.alibabacloud.com/help/en/das/product-overview/billing-details-of-the-previous-version#cad160563fbkd) of the DAS Agent product.
 //
 // @param request - GetDasAgentSSERequest
 //
@@ -5218,17 +5270,17 @@ func (client *Client) GetFullRequestStatResultByInstanceIdWithContext(ctx contex
 //
 // Enabling the automated operations report feature for DAS Agent allows the system to perform periodic inspections on target instances and generate reports. Currently, only daily reports are supported. This operation is used to query report details.
 //
-// Before using this operation, ensure that the following prerequisites are met:
+// Before you begin:
 //
-// - DAS Agent is activated and the agent is still within its validity period.
+// - Activate DAS Agent and ensure that the agent is still within its validity period.
 //
-// - The daily report feature is enabled on the DAS Agent configuration page.
+// - Enable the daily report feature on the DAS Agent configuration page.
 //
-// - When using the Alibaba Cloud SDK, ensure that the version of aliyun-sdk-core is later than 4.3.3. We recommend that you use the latest version.
+// - When using the Alibaba Cloud SDK, ensure that the version of aliyun-sdk-core is later than 4.3.3. Use the latest version.
 //
-// - The version of the DAS SDK is 1.0.3 or later.
+// - Use DAS SDK 1.0.3 or later.
 //
-// - When using the SDK to call DAS, set the region to cn-shanghai.
+// - When calling DAS by using the SDK, set the region to cn-shanghai.
 //
 // @param request - GetInstanceGroupInspectReportDetailRequest
 //
@@ -7497,6 +7549,136 @@ func (client *Client) ModifyAutoScalingConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
+// Modifies a configuration item of Alibaba Cloud Managed Services.
+//
+// Description:
+//
+// Before you begin:
+//
+// - Use the latest version of Alibaba Cloud SDK or DAS SDK.
+//
+// - When calling DAS by using the SDK, set the region to cn-shanghai.
+//
+// - This operation enables the latest supported version by default. For information about the databases and regions supported by each DAS Enterprise Edition version, see [DAS editions and supported features](https://help.aliyun.com/document_detail/156204.html).
+//
+// @param request - ModifyDasOpsConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDasOpsConfigResponse
+func (client *Client) ModifyDasOpsConfigWithContext(ctx context.Context, request *ModifyDasOpsConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyDasOpsConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Filters) {
+		query["Filters"] = request.Filters
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Enable) {
+		body["Enable"] = request.Enable
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyDasOpsConfig"),
+		Version:     dara.String("2020-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyDasOpsConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the audit log forwarding configuration.
+//
+// Description:
+//
+// Before you call this operation, take note of the following prerequisites:
+//
+// - If you use the Alibaba Cloud SDK or DAS SDK, use the latest version.
+//
+// - When you call DAS by using the SDK, set the region to cn-shanghai.
+//
+// - This operation enables the latest supported version by default. For information about the databases and regions supported by each DAS Enterprise Edition version, see [DAS editions and supported features](https://help.aliyun.com/document_detail/156204.html).
+//
+// @param request - ModifyForwardSqlLogConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyForwardSqlLogConfigResponse
+func (client *Client) ModifyForwardSqlLogConfigWithContext(ctx context.Context, request *ModifyForwardSqlLogConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyForwardSqlLogConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Enable) {
+		body["Enable"] = request.Enable
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Service) {
+		body["Service"] = request.Service
+	}
+
+	if !dara.IsNil(request.Source) {
+		body["Source"] = request.Source
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyForwardSqlLogConfig"),
+		Version:     dara.String("2020-01-16"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyForwardSqlLogConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies a cross-product whitelist template.
 //
 // Description:
@@ -7563,17 +7745,17 @@ func (client *Client) ModifySecurityIPGroupWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Attaches or detaches a cross-product whitelist template.
+// Attaches or detaches a cross-engine whitelist template to or from a user.
 //
 // Description:
 //
-// - Use the latest version of the Alibaba Cloud or DAS software development kit (SDK).
+// - When using the Alibaba Cloud or DAS SDK, use the latest version.
 //
-// - When you use the SDK to call the DAS service, set the region to cn-shanghai.
+// - When calling DAS by using the SDK, set the region to cn-shanghai.
 //
-// - For more information about the supported database instances, see [Overview of features](https://help.aliyun.com/document_detail/92561.html) for SQL Insight and Audit.
+// - For information about the supported database instances, see the [feature overview](https://help.aliyun.com/document_detail/92561.html) of SQL Explorer.
 //
-// - The SQL Insight and Audit (Legacy) feature is enabled for the destination database instance. For more information about how to enable this feature, see [Enable SQL Insight and Audit](https://help.aliyun.com/document_detail/92561.html).
+// - SQL Explorer (original version) must be enabled for the target database instance. For more information, see [Enable SQL Explorer and Audit](https://help.aliyun.com/document_detail/92561.html).
 //
 // @param request - ModifySecurityIPGroupRelationRequest
 //

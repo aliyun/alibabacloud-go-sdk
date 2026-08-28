@@ -30,9 +30,9 @@ type DescribeSqlLogTasksResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *DescribeSqlLogTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The returned message.
 	//
-	// > If the request is successful, **Successful*	- is returned. If the request fails, an error message is returned.
+	// >If the request is successful, **Successful*	- is returned. If the request fails, an error message is returned.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type DescribeSqlLogTasksResponseBody struct {
 	//
 	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
 	// - **false**: The request failed.
 	//
@@ -119,7 +119,7 @@ func (s *DescribeSqlLogTasksResponseBody) Validate() error {
 }
 
 type DescribeSqlLogTasksResponseBodyData struct {
-	// The list of tasks.
+	// The list of returned information.
 	List []*DescribeSqlLogTasksResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -127,7 +127,7 @@ type DescribeSqlLogTasksResponseBodyData struct {
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The page size.
+	// The number of records per page.
 	//
 	// example:
 	//
@@ -199,27 +199,27 @@ func (s *DescribeSqlLogTasksResponseBodyData) Validate() error {
 }
 
 type DescribeSqlLogTasksResponseBodyDataList struct {
-	// The analysis completion time, represented as a unix timestamp in milliseconds.
+	// The analysis task completion time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1712751923000
 	AnalysisTaskFinishTime *int64 `json:"AnalysisTaskFinishTime,omitempty" xml:"AnalysisTaskFinishTime,omitempty"`
-	// The status of the analysis task.
+	// The analysis task status.
 	//
-	// > This is an internal parameter. You can ignore it.
+	// > This is an internal system parameter. You do not need to pay attention to it.
 	//
 	// example:
 	//
 	// SCAN_ANALYZE_COMPLETED
 	AnalysisTaskStatus *string `json:"AnalysisTaskStatus,omitempty" xml:"AnalysisTaskStatus,omitempty"`
-	// The task creation time, represented as a unix timestamp in milliseconds.
+	// The task creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1681363254423
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The task end time, represented as a unix timestamp in milliseconds.
+	// The task end time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -235,9 +235,9 @@ type DescribeSqlLogTasksResponseBodyDataList struct {
 	//
 	// false
 	Expire *bool `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	// A list of filter conditions.
+	// The list of query filter conditions.
 	Filters []*DescribeSqlLogTasksResponseBodyDataListFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// The VPC-internal URL for accessing the task result.
+	// The VPC internal endpoint.
 	//
 	// example:
 	//
@@ -245,7 +245,7 @@ type DescribeSqlLogTasksResponseBodyDataList struct {
 	//
 	// /la
 	InnerResult *string `json:"InnerResult,omitempty" xml:"InnerResult,omitempty"`
-	// The ID of the database instance.
+	// The database instance ID.
 	//
 	// example:
 	//
@@ -257,31 +257,31 @@ type DescribeSqlLogTasksResponseBodyDataList struct {
 	//
 	// 99999
 	LogCount *int64 `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
-	// The name of the task.
+	// The task name.
 	//
 	// example:
 	//
 	// SQL audit export 1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The progress of the task.
+	// The task progress.
 	//
 	// example:
 	//
 	// 100
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The URL that is returned when **TaskType*	- is set to **Export**.
+	// The link address when the task type is **Export**.
 	//
 	// example:
 	//
 	// https://das-sqllog-download-cn-shanghai.oss-cn-shanghai.aliyuncs.com/la
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The total size of the scanned files, in bytes.
+	// The number of scanned files.
 	//
 	// example:
 	//
 	// 3000
 	ScanFileSize *int64 `json:"ScanFileSize,omitempty" xml:"ScanFileSize,omitempty"`
-	// The task start time, represented as a unix timestamp in milliseconds.
+	// The task start time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -289,17 +289,17 @@ type DescribeSqlLogTasksResponseBodyDataList struct {
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
 	// The task status. Valid values:
 	//
-	// - **INIT**: pending scheduling.
+	// - **INIT**: Pending scheduling.
 	//
-	// - **RUNNING**: running.
+	// - **RUNNING**: Running.
 	//
-	// - **FAILED**: failed.
+	// - **FAILED**: Failed.
 	//
-	// - **CANCELED**: canceled.
+	// - **CANCELED**: Canceled.
 	//
-	// - **COMPLETED**: completed.
+	// - **COMPLETED**: Completed.
 	//
-	// > You can view the result of an offline task only when its status is **COMPLETED**.
+	// > When the task is in the **COMPLETED*	- state, you can view the results of the batch task.
 	//
 	// example:
 	//
@@ -313,9 +313,9 @@ type DescribeSqlLogTasksResponseBodyDataList struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task type. Valid values:
 	//
-	// - **Export**: an export task.
+	// - **Export**: export task.
 	//
-	// - **Query**: a query task.
+	// - **Query**: query task.
 	//
 	// example:
 	//
@@ -500,7 +500,7 @@ func (s *DescribeSqlLogTasksResponseBodyDataList) Validate() error {
 type DescribeSqlLogTasksResponseBodyDataListFilters struct {
 	// The filter parameter.
 	//
-	// > For information about the supported filter parameters and their valid values, see **Additional information about request parameters**.
+	// > For supported filter parameters and their values, refer to **Supplementary description of request parameters**.
 	//
 	// example:
 	//

@@ -34,13 +34,13 @@ type iDescribeSlowLogStatisticRequest interface {
 }
 
 type DescribeSlowLogStatisticRequest struct {
-	// Specifies whether to sort the results in ascending order. The default value is false.
+	// Specifies whether to sort results in ascending order. This feature is disabled by default.
 	//
 	// example:
 	//
 	// true
 	Asc *bool `json:"Asc,omitempty" xml:"Asc,omitempty"`
-	// The end time of the query. This value is a UNIX timestamp in UTC. Unit: milliseconds.
+	// The end time of the query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type DescribeSlowLogStatisticRequest struct {
 	//
 	// 1608888296000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The filter conditions.
+	// The list of query filter conditions.
 	Filters []*DescribeSlowLogStatisticRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -60,9 +60,9 @@ type DescribeSlowLogStatisticRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
-	// - For RDS for MySQL and PolarDB for MySQL, this parameter applies only to cluster instances. If you do not specify this parameter, the slow query logs of the primary node are queried by default.
+	// - For ApsaraDB RDS for MySQL and PolarDB for MySQL, this parameter is applicable only to cluster instances. If you do not specify this parameter, the log details of the primary node are queried by default.
 	//
-	// - For PolarDB-X 2.0, specify **polarx_cn*	- for compute nodes or **polarx_dn*	- for data nodes.
+	// - For PolarDB-X 2.0, set this parameter to **polarx_cn*	- (compute node) or **polarx_dn*	- (data node).
 	//
 	// example:
 	//
@@ -84,19 +84,19 @@ type DescribeSlowLogStatisticRequest struct {
 	//
 	// count
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number. The value must be a positive integer. The default value is 1.
+	// The page number. The value starts from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. The default value is 10.
+	// The maximum number of entries per page. Default value: 10.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The start time of the query. This value is a UNIX timestamp in UTC. Unit: milliseconds.
+	// The start time of the query. Specify a UNIX timestamp in UTC. Unit: milliseconds.
 	//
 	// This parameter is required.
 	//
@@ -112,31 +112,32 @@ type DescribeSlowLogStatisticRequest struct {
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The task type.
 	//
-	// For SQL engines:
+	// SQL engine-specific:
 	//
-	// **SlowLogRequestOrigin**: Aggregates logs by source IP address.
+	// **SlowLogRequestOrigin**: aggregates logs by source IP address.
 	//
-	// **SlowLogRequestUser**: Aggregates logs by source user.
+	// **SlowLogRequestUser**: aggregates logs by source user.
 	//
-	// **SQL**: Aggregates logs by SQL ID.
+	// **SQL**: aggregates logs by SQL ID.
 	//
-	// For ApsaraDB for MongoDB engines:
 	//
-	// **SlowLogRequestOrigin**: Aggregates logs by source IP address.
+	// MongoDB engine-specific:
 	//
-	// **SlowLogRequestUser**: Aggregates logs by source user.
+	// **SlowLogRequestOrigin**: aggregates logs by source IP address.
 	//
-	// **SQL**: Aggregates logs by query ID.
+	// **SlowLogRequestUser**: aggregates logs by source user.
 	//
-	// **SlowLogRequestOpType**: Aggregates logs by operation type.
+	// **SQL**: aggregates logs by Query ID.
 	//
-	// **SlowLogRequestNamespace**: Aggregates logs by namespace.
+	// **SlowLogRequestOpType**: aggregates logs by operation type.
 	//
-	// For Redis engines:
+	// **SlowLogRequestNamespace**: aggregates logs by namespace.
 	//
-	// **SlowLogRequestNodeId**: Aggregates logs by node ID.
+	// Redis engine-specific:
 	//
-	// **SlowLogRequestHostInsId**: Aggregates logs by host instance ID.
+	// **SlowLogRequestNodeId**: aggregates logs by node ID.
+	//
+	// **SlowLogRequestHostInsId**: aggregates logs by HostInsId.
 	//
 	// example:
 	//

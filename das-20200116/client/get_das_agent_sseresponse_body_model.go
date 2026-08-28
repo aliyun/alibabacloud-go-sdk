@@ -20,19 +20,19 @@ type iGetDasAgentSSEResponseBody interface {
 }
 
 type GetDasAgentSSEResponseBody struct {
-	// The content of the response.
+	// The answer content.
 	//
 	// example:
 	//
 	// rm-xxxx
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
-	// The type of the response message.
+	// The type of the returned answer information.
 	//
 	// example:
 	//
 	// summary
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	// The session ID. This is the same as the SessionId in the request.
+	// The session ID, which is the same as the SessionId in the request parameters.
 	//
 	// example:
 	//
@@ -96,13 +96,13 @@ func (s *GetDasAgentSSEResponseBody) Validate() error {
 }
 
 type GetDasAgentSSEResponseBodyMetadata struct {
-	// The number of characters in the response.
+	// The number of characters in the answer.
 	//
 	// example:
 	//
 	// 1403
 	CharCount *int64 `json:"CharCount,omitempty" xml:"CharCount,omitempty"`
-	// The error code. This parameter is empty if no exception occurs.
+	// The error type returned when an exception occurs. This field is empty when no exception occurs.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type GetDasAgentSSEResponseBodyMetadata struct {
 	//
 	// 04930480-9404-50CB-8252-Axxxxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the tool used.
+	// The tool command that is called.
 	//
 	// example:
 	//

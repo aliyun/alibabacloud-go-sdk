@@ -26,13 +26,13 @@ type DescribeSqlLogTaskRequest struct {
 	//
 	// r-bp1nti25tc7bq5****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number. Pages are numbered starting from 1. Default value: 1.
+	// The page number for the paging query. Pages start from page 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The page size. Maximum value: 100. Default value: 10.
+	// The maximum number of records per page for the paging query. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//

@@ -119,11 +119,11 @@ func (s *GetInstanceGroupInspectReportDetailResponseBody) Validate() error {
 }
 
 type GetInstanceGroupInspectReportDetailResponseBodyData struct {
-	// The content of the automated operations report, including the report date and diagnostic details of managed instances.
+	// The content of the operations report, which mainly includes the report date and diagnostic details of managed instances.
 	//
 	// example:
 	//
-	// "### 概要\\n\\n报告日期：2025-12-10  \\n对比周期：[昨日日期] → 2025-12-10 以下省略"
+	// "### Summary\\n\\nReport date: 2025-12-10  \\nComparison period: [previous day] → 2025-12-10 The rest is omitted"
 	ReportDetail *string `json:"ReportDetail,omitempty" xml:"ReportDetail,omitempty"`
 	// The report ID.
 	//

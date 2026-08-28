@@ -18,7 +18,7 @@ type iModifySecurityIPGroupRelationRequest interface {
 }
 
 type ModifySecurityIPGroupRelationRequest struct {
-	// The ID of the IP address whitelist template.
+	// The ID of the IP whitelist template.
 	//
 	// This parameter is required.
 	//

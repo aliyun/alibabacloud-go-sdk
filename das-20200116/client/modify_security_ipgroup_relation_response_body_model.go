@@ -28,11 +28,11 @@ type ModifySecurityIPGroupRelationResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// ListResult<InstanceSSL>
 	Data *ModifySecurityIPGroupRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
-	// > If the request is successful, Successful is returned. If the request fails, an error message, such as an error code, is returned.
+	// >If the request is successful, Successful is returned. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type ModifySecurityIPGroupRelationResponseBody struct {
 	//
 	// 840F51F7-9C01-538D-94F6-AE712905****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: The request was successful.
+	// 	- true: The request is successful.
 	//
-	// - false: The request failed.
+	// 	- false: The request fails.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *ModifySecurityIPGroupRelationResponseBody) Validate() error {
 }
 
 type ModifySecurityIPGroupRelationResponseBodyData struct {
-	// The information about the cross-product IP address whitelist template that is attached to the instance.
+	// The binding information of the cross-engine IP whitelist template.
 	GlobalSecurityIPGroupRel []*ModifySecurityIPGroupRelationResponseBodyDataGlobalSecurityIPGroupRel `json:"GlobalSecurityIPGroupRel,omitempty" xml:"GlobalSecurityIPGroupRel,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -171,25 +171,25 @@ func (s *ModifySecurityIPGroupRelationResponseBodyData) Validate() error {
 type ModifySecurityIPGroupRelationResponseBodyDataGlobalSecurityIPGroupRel struct {
 	// The IP addresses in the whitelist template.
 	//
-	// > Separate multiple IP addresses with commas (,). A maximum of 1,000 IP addresses or CIDR blocks can be added to all IP address whitelists.
+	// > Separate multiple IP addresses with commas (,). You can add up to 1,000 IP addresses or CIDR blocks across all IP whitelists.
 	//
 	// example:
 	//
 	// 192.168.0.1,192.168.100.0/24
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
-	// The name of the IP address whitelist template. The name must meet the following requirements:
+	// The name of the IP whitelist template. The name must meet the following requirements:
 	//
-	// - It must consist of lowercase letters, digits, and underscores (_).
+	// - Contains only lowercase letters, digits, and underscores (_).
 	//
-	// - It must start with a letter and end with a letter or a digit.
+	// - Starts with a letter and ends with a letter or digit.
 	//
-	// - It must be 2 to 120 characters in length.
+	// - Contains 2 to 120 characters in length.
 	//
 	// example:
 	//
 	// saas_jump
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
-	// The ID of the IP address whitelist template.
+	// The ID of the IP whitelist template.
 	//
 	// example:
 	//

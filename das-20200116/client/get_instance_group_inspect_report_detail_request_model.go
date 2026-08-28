@@ -24,7 +24,7 @@ type GetInstanceGroupInspectReportDetailRequest struct {
 	//
 	// ag-472T0DxtmjIxxxxx
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The ID of the automated operations report.
+	// The ID of the operations report.
 	//
 	// This parameter is required.
 	//

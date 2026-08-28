@@ -22,7 +22,7 @@ type iDescribeSqlLogTaskResponseBody interface {
 }
 
 type DescribeSqlLogTaskResponseBody struct {
-	// The returned HTTP status code.
+	// The returned status code.
 	//
 	// example:
 	//
@@ -30,9 +30,9 @@ type DescribeSqlLogTaskResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *DescribeSqlLogTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The returned message.
 	//
-	// > If the request is successful, **Successful*	- is returned. Otherwise, an error message is returned.
+	// >If the request is successful, **Successful*	- is returned. If the request fails, exception information such as an error code is returned.
 	//
 	// example:
 	//
@@ -44,11 +44,11 @@ type DescribeSqlLogTaskResponseBody struct {
 	//
 	// B6D17591-B48B-4D31-9CD6-9B9796B2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful.
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//
@@ -119,19 +119,19 @@ func (s *DescribeSqlLogTaskResponseBody) Validate() error {
 }
 
 type DescribeSqlLogTaskResponseBodyData struct {
-	// The time when the task was created, which is a UNIX timestamp in milliseconds.
+	// The task creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1681363254423
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The end of the query time range, which is a UNIX timestamp in milliseconds.
+	// The query end time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1608888296000
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// Indicates whether the task has expired. Valid values:
+	// Indicates whether the task has expired.
 	//
 	// - **true**: The task has expired.
 	//
@@ -141,7 +141,7 @@ type DescribeSqlLogTaskResponseBodyData struct {
 	//
 	// false
 	Expire *bool `json:"Expire,omitempty" xml:"Expire,omitempty"`
-	// The download URL of the exported file. This parameter is returned only if the value of `TaskType` is `Export`.
+	// The download URL of the export task. This value is returned only when TaskType is set to Export.
 	//
 	// example:
 	//
@@ -155,9 +155,9 @@ type DescribeSqlLogTaskResponseBodyData struct {
 	//
 	// SQL audit export 1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The results of the offline query task. This parameter is returned only if the value of `TaskType` is `Query`.
+	// The task result of the offline query node. This value is returned only when TaskType is set to Query.
 	Queries []*DescribeSqlLogTaskResponseBodyDataQueries `json:"Queries,omitempty" xml:"Queries,omitempty" type:"Repeated"`
-	// The beginning of the query time range, which is a UNIX timestamp in milliseconds.
+	// The query start time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -165,17 +165,17 @@ type DescribeSqlLogTaskResponseBodyData struct {
 	Start *int64 `json:"Start,omitempty" xml:"Start,omitempty"`
 	// The task status. Valid values:
 	//
-	// - **INIT**: The task is pending.
+	// - **INIT**: Pending scheduling.
 	//
-	// - **RUNNING**: The task is running.
+	// - **RUNNING**: Running.
 	//
-	// - **FAILED**: The task failed.
+	// - **FAILED**: Failed.
 	//
-	// - **CANCELED**: The task was canceled.
+	// - **CANCELED**: Canceled.
 	//
-	// - **COMPLETED**: The task is complete.
+	// - **COMPLETED**: Completed.
 	//
-	// > The results of an offline task are available only when the status is **COMPLETED**.
+	// > When the task is in the **COMPLETED*	- state, you can view the results of the offline task.
 	//
 	// example:
 	//
@@ -189,9 +189,9 @@ type DescribeSqlLogTaskResponseBodyData struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task type. Valid values:
 	//
-	// - **Export**: an export task.
+	// - **Export**: export task.
 	//
-	// - **Query**: a query task.
+	// - **Query**: custom query task.
 	//
 	// example:
 	//
@@ -346,7 +346,7 @@ func (s *DescribeSqlLogTaskResponseBodyData) Validate() error {
 type DescribeSqlLogTaskResponseBodyDataFilters struct {
 	// The name of the filter parameter.
 	//
-	// > For more information about the supported filter parameters and their valid values, see the "Additional information about response parameters" section.
+	// >For supported filter parameters and their values, refer to **Supplementary description of response parameters**.
 	//
 	// example:
 	//
@@ -403,37 +403,37 @@ type DescribeSqlLogTaskResponseBodyDataQueries struct {
 	//
 	// ["col1"]
 	AffectColumns *string `json:"AffectColumns,omitempty" xml:"AffectColumns,omitempty"`
-	// The client IP address.
+	// The client IP address in the query.
 	//
 	// example:
 	//
 	// 10.0.0.1xx
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The client port.
+	// The client port number in the query.
 	//
 	// example:
 	//
 	// 3306
 	ClientPort *int64 `json:"ClientPort,omitempty" xml:"ClientPort,omitempty"`
-	// This parameter is reserved.
+	// A reserved parameter.
 	//
 	// example:
 	//
 	// None
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	// The connection ID.
+	// The connection ID used in the query.
 	//
 	// example:
 	//
 	// ld-******
 	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
-	// The execution duration. Unit: milliseconds.
+	// The execution duration in milliseconds.
 	//
 	// example:
 	//
 	// 58
 	Consume *int64 `json:"Consume,omitempty" xml:"Consume,omitempty"`
-	// The CPU execution time. Unit: microseconds.
+	// The CPU execution time in microseconds.
 	//
 	// example:
 	//
@@ -445,19 +445,19 @@ type DescribeSqlLogTaskResponseBodyDataQueries struct {
 	//
 	// testdb01
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The time when the SQL statement was executed. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	// The execution time in UTC format: `yyyy-MM-ddTHH:mm:ssZ`.
 	//
 	// example:
 	//
 	// 2023-12-07T02:15:32Z
 	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// Reserved for future use.
+	// The extended information field. This is a reserved parameter.
 	//
 	// example:
 	//
 	// None
 	Ext *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	// The number of rows that are fetched by the compute nodes of a PolarDB-X 2.0 instance.
+	// The number of rows fetched by the PolarDB-X 2.0 compute node (CN).
 	//
 	// example:
 	//
@@ -469,7 +469,7 @@ type DescribeSqlLogTaskResponseBodyDataQueries struct {
 	//
 	// 11.197.XX.XX
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The lock wait time. Unit: milliseconds.
+	// The lock wait time in milliseconds.
 	//
 	// example:
 	//
@@ -481,31 +481,31 @@ type DescribeSqlLogTaskResponseBodyDataQueries struct {
 	//
 	// 0
 	LogicRead *int64 `json:"LogicRead,omitempty" xml:"LogicRead,omitempty"`
-	// The node ID.
+	// The child node ID.
 	//
 	// example:
 	//
 	// pi-bp1o58x3ib7e6****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The time when the SQL statement was executed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The execution timestamp. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1701886532000
 	OriginTime *int64 `json:"OriginTime,omitempty" xml:"OriginTime,omitempty"`
-	// The degree of parallelism (DOP) for the PolarDB for MySQL instance.
+	// The parallel queue time of the PolarDB for MySQL instance in milliseconds.
 	//
 	// example:
 	//
 	// 10
 	ParallelDegree *string `json:"ParallelDegree,omitempty" xml:"ParallelDegree,omitempty"`
-	// The parallel queuing time for the PolarDB for MySQL instance. Unit: milliseconds.
+	// The parallel degree of the PolarDB for MySQL instance.
 	//
 	// example:
 	//
 	// 2
 	ParallelQueueTime *string `json:"ParallelQueueTime,omitempty" xml:"ParallelQueueTime,omitempty"`
-	// The query parameters.
+	// The list of query parameters.
 	//
 	// example:
 	//
@@ -529,7 +529,7 @@ type DescribeSqlLogTaskResponseBodyDataQueries struct {
 	//
 	// 0
 	PhysicSyncRead *int64 `json:"PhysicSyncRead,omitempty" xml:"PhysicSyncRead,omitempty"`
-	// Indicates whether the query is protected.
+	// Indicates whether the query item is protected.
 	//
 	// example:
 	//
@@ -541,13 +541,13 @@ type DescribeSqlLogTaskResponseBodyDataQueries struct {
 	//
 	// 0
 	ReturnRows *int64 `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
-	// The row key.
+	// The row key in the query.
 	//
 	// example:
 	//
 	// 23
 	RowKey *string `json:"RowKey,omitempty" xml:"RowKey,omitempty"`
-	// The total number of rows that are updated or returned by the compute nodes of a PolarDB-X 2.0 instance.
+	// The total number of rows updated or returned by the PolarDB-X 2.0 compute node.
 	//
 	// example:
 	//
@@ -559,7 +559,7 @@ type DescribeSqlLogTaskResponseBodyDataQueries struct {
 	//
 	// 0
 	ScanRows *int64 `json:"ScanRows,omitempty" xml:"ScanRows,omitempty"`
-	// The number of requests that are sent from compute nodes (CNs) to data nodes (DNs) for a PolarDB-X 2.0 instance.
+	// The number of DN requests from the PolarDB-X 2.0 compute node (CN).
 	//
 	// example:
 	//
@@ -571,13 +571,13 @@ type DescribeSqlLogTaskResponseBodyDataQueries struct {
 	//
 	// sql
 	SqlCommand *int64 `json:"SqlCommand,omitempty" xml:"SqlCommand,omitempty"`
-	// The SQL ID.
+	// SQL ID。
 	//
 	// example:
 	//
 	// a4111670e80596c5bf42cf5154438a91
 	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
-	// The SQL statement.
+	// The SQL statement details.
 	//
 	// example:
 	//
@@ -595,17 +595,17 @@ type DescribeSqlLogTaskResponseBodyDataQueries struct {
 	//
 	// SELECT
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	// The execution state. Valid values:
+	// The execution result.
 	//
-	// - **0**: The execution was successful.
+	// - **0**: Execution succeeded.
 	//
-	// - **1**: The execution failed.
+	// - **1**: Execution failed.
 	//
 	// example:
 	//
 	// 0
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The table name.
+	// The table name used in the query.
 	//
 	// example:
 	//
@@ -617,7 +617,7 @@ type DescribeSqlLogTaskResponseBodyDataQueries struct {
 	//
 	// None
 	ThreadId *int64 `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
-	// The trace ID of a PolarDB-X 2.0 instance. The trace ID is the execution ID of the SQL statement on data nodes.
+	// The trace ID of PolarDB-X 2.0, which is the execution ID of the SQL statement on the data node.
 	//
 	// example:
 	//
@@ -635,23 +635,23 @@ type DescribeSqlLogTaskResponseBodyDataQueries struct {
 	//
 	// 0
 	UpdateRows *int64 `json:"UpdateRows,omitempty" xml:"UpdateRows,omitempty"`
-	// Indicates whether an In-Memory Column Index (IMCI) is used for the PolarDB for MySQL instance. Valid values:
+	// Indicates whether the PolarDB for MySQL instance uses the In-Memory Column Index.
 	//
-	// - **true**
+	// - **true**: The IMCI is used.
 	//
-	// - **false**
+	// - **false**: The IMCI is not used.
 	//
 	// example:
 	//
 	// true
 	UseImciEngine *string `json:"UseImciEngine,omitempty" xml:"UseImciEngine,omitempty"`
-	// The IP address that the query endpoint resolves to.
+	// The endpoint resolution address of the query link.
 	//
 	// example:
 	//
 	// 10.146.XX.XX
 	Vip *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
-	// The number of writes for the ApsaraDB RDS for SQL Server instance.
+	// The number of writes for the RDS SQL Server engine.
 	//
 	// example:
 	//
