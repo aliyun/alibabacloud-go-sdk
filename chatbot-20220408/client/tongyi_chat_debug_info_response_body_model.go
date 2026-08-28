@@ -17,6 +17,8 @@ type iTongyiChatDebugInfoResponseBody interface {
 	GetPipeline() []*TongyiChatDebugInfoResponseBodyPipeline
 	SetRequestId(v string) *TongyiChatDebugInfoResponseBody
 	GetRequestId() *string
+	SetSessionId(v string) *TongyiChatDebugInfoResponseBody
+	GetSessionId() *string
 }
 
 type TongyiChatDebugInfoResponseBody struct {
@@ -27,14 +29,15 @@ type TongyiChatDebugInfoResponseBody struct {
 	//
 	// 2828708A-2C7A-1BAE-B810-87DB9DA9C661
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// The array of nodes that constitute the Q\\&A workflow.
+	// The information about the entire Q&A pipeline.
 	Pipeline []*TongyiChatDebugInfoResponseBodyPipeline `json:"Pipeline,omitempty" xml:"Pipeline,omitempty" type:"Repeated"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// E3E5C779-A630-45AC-B0F2-A4506A4212F1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
 func (s TongyiChatDebugInfoResponseBody) String() string {
@@ -61,6 +64,10 @@ func (s *TongyiChatDebugInfoResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *TongyiChatDebugInfoResponseBody) GetSessionId() *string {
+	return s.SessionId
+}
+
 func (s *TongyiChatDebugInfoResponseBody) SetAnswerInfo(v *TongyiChatDebugInfoResponseBodyAnswerInfo) *TongyiChatDebugInfoResponseBody {
 	s.AnswerInfo = v
 	return s
@@ -78,6 +85,11 @@ func (s *TongyiChatDebugInfoResponseBody) SetPipeline(v []*TongyiChatDebugInfoRe
 
 func (s *TongyiChatDebugInfoResponseBody) SetRequestId(v string) *TongyiChatDebugInfoResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *TongyiChatDebugInfoResponseBody) SetSessionId(v string) *TongyiChatDebugInfoResponseBody {
+	s.SessionId = &v
 	return s
 }
 
@@ -393,21 +405,21 @@ func (s *TongyiChatDebugInfoResponseBodyAnswerInfoMessageBodyDirectMessageBodySe
 }
 
 type TongyiChatDebugInfoResponseBodyPipeline struct {
-	// The input data for the node.
+	// The debugging input information.
 	//
 	// example:
 	//
 	// 用户问句：转人工\\n命中规则：[转]人工[客服|服务|坐席]
 	Input interface{} `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The name of the strategy. Possible values include:
+	// The Policy Name. Valid values:
 	//
-	// - FAQ
+	// - High-frequency Q&A direct response
 	//
-	// - Hit Keywords
+	// - Keyword-based transfer to agent
 	//
-	// - Global Sensitive Words
+	// - Global sensitive words
 	//
-	// This parameter is returned only when `NodeType` is set to `system_strategy`.
+	// This field is returned only when NodeType is system_strategy.
 	//
 	// example:
 	//
@@ -415,19 +427,19 @@ type TongyiChatDebugInfoResponseBodyPipeline struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The node type. Valid values:
 	//
-	// - **system_strategy**: system strategy.
+	// 	- **system_strategy**: system strategy.
 	//
-	// - **rewrite_query**: retrieval query.
+	// 	- **rewrite_query**: retrieval query.
 	//
-	// - **invoke_llm**: LLM invocation.
+	// 	- **invoke_llm**: LLM invocation.
 	//
-	// - **invoke_tools**: tool invocation.
+	// 	- **invoke_tools**: tool calling.
 	//
 	// example:
 	//
 	// system_strategy
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The output data from the node.
+	// The output information.
 	//
 	// example:
 	//

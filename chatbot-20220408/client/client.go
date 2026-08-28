@@ -24,7 +24,10 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-shanghai": dara.String("chatbot.cn-shanghai.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -6170,11 +6173,11 @@ func (client *Client) SearchFaq(request *SearchFaqRequest) (_result *SearchFaqRe
 
 // Summary:
 //
-// This operation returns debugging information for the large language model (LLM) Q&A process.
+// Debugging information for large language model Q&A.
 //
 // Description:
 //
-// This operation supports only the latest version of chatbots and can query data from only the last 90 days.
+// Only supported for new version chatbots. Only data within the last 90 days can be queried.
 //
 // @param request - TongyiChatDebugInfoRequest
 //
@@ -6226,11 +6229,11 @@ func (client *Client) TongyiChatDebugInfoWithOptions(request *TongyiChatDebugInf
 
 // Summary:
 //
-// This operation returns debugging information for the large language model (LLM) Q&A process.
+// Debugging information for large language model Q&A.
 //
 // Description:
 //
-// This operation supports only the latest version of chatbots and can query data from only the last 90 days.
+// Only supported for new version chatbots. Only data within the last 90 days can be queried.
 //
 // @param request - TongyiChatDebugInfoRequest
 //

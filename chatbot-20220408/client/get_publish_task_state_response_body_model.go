@@ -54,7 +54,7 @@ type GetPublishTaskStateResponseBody struct {
 	//
 	//     "faq": [
 	//
-	//         "答案资源未发布, 资源类型: 全局服务,名称: 动态答案服务"
+	//         "答案资源未发布，资源类型：全局服务，名称：动态答案服务"
 	//
 	//     ]
 	//
@@ -106,7 +106,7 @@ type GetPublishTaskStateResponseBody struct {
 	//
 	//     "faq": [
 	//
-	//         "答案资源未发布,类型:service名称:null,答案资源未发布,类型:service名称:null"
+	//         "答案资源未发布，类型：service，名称：null，答案资源未发布，类型：service，名称：null"
 	//
 	//     ]
 	//

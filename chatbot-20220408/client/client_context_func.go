@@ -4661,11 +4661,11 @@ func (client *Client) SearchFaqWithContext(ctx context.Context, tmpReq *SearchFa
 
 // Summary:
 //
-// This operation returns debugging information for the large language model (LLM) Q&A process.
+// Debugging information for large language model Q&A.
 //
 // Description:
 //
-// This operation supports only the latest version of chatbots and can query data from only the last 90 days.
+// Only supported for new version chatbots. Only data within the last 90 days can be queried.
 //
 // @param request - TongyiChatDebugInfoRequest
 //
