@@ -22,12 +22,56 @@ type iSubmitTranslationTaskShrinkRequest interface {
 }
 
 type SubmitTranslationTaskShrinkRequest struct {
-	APIKey     *string `json:"APIKey,omitempty" xml:"APIKey,omitempty"`
+	// The API key that identifies the identity of the member account. You can obtain this from the RuiYiBao console.
+	//
+	// example:
+	//
+	// ***
+	APIKey *string `json:"APIKey,omitempty" xml:"APIKey,omitempty"`
+	// The translation task ID of a previously submitted translation task. Pass in this parameter when resubmitting a translation task.
+	//
+	// - You must pass in either this parameter or TaskId.
+	//
+	// example:
+	//
+	// f9c35b0453b
 	BaseTaskId *string `json:"BaseTaskId,omitempty" xml:"BaseTaskId,omitempty"`
+	// The translation configuration.
+	//
 	// This parameter is required.
-	ConfigShrink      *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	//
+	// example:
+	//
+	// {
+	//
+	//         "SourceLanguage": "zh",
+	//
+	//         "TargetLanguage": "en",
+	//
+	//         "Style": "minimal",
+	//
+	//         "Font": "Arial"
+	//
+	//     }
+	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The custom terms.
+	//
+	// 	Notice: Custom terms are for reference only. Actual translation results may differ. Refer to the final output for the definitive result.</notice>
+	//
+	// example:
+	//
+	// [{"SourceTerm":"dog", "TargetTerm":"dog"}]
 	CustomTermsShrink *string `json:"CustomTerms,omitempty" xml:"CustomTerms,omitempty"`
-	TaskId            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The translation task ID.
+	//
+	// - Obtained from the TaskId returned by UploadTranslationFile.
+	//
+	// - You must pass in either this parameter or BaseTaskId.
+	//
+	// example:
+	//
+	// f9c35b0453b
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s SubmitTranslationTaskShrinkRequest) String() string {

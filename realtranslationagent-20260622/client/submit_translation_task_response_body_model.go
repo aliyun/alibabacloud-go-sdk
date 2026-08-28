@@ -22,11 +22,32 @@ type iSubmitTranslationTaskResponseBody interface {
 }
 
 type SubmitTranslationTaskResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *SubmitTranslationTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The return code.
+	//
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
+	Data *SubmitTranslationTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The return message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F6E6D23C-D6FC-5AD4-B90B-1E32850393AB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SubmitTranslationTaskResponseBody) String() string {
@@ -92,7 +113,17 @@ func (s *SubmitTranslationTaskResponseBody) Validate() error {
 }
 
 type SubmitTranslationTaskResponseBodyData struct {
+	// The task status.
+	//
+	// example:
+	//
+	// COMPLETED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The translation task ID.
+	//
+	// example:
+	//
+	// f9c35b0453b
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

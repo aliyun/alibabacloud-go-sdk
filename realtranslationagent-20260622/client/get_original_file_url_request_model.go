@@ -16,8 +16,21 @@ type iGetOriginalFileUrlRequest interface {
 }
 
 type GetOriginalFileUrlRequest struct {
+	// The API key that identifies a member account. You can obtain it from the Ruiyi Bao console.
+	//
+	// example:
+	//
+	// ***
 	APIKey *string `json:"APIKey,omitempty" xml:"APIKey,omitempty"`
+	// The task ID.
+	//
+	// - The TaskId is returned after a task is submitted by calling SubmitTranslationTask.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// f9c35b0453b
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

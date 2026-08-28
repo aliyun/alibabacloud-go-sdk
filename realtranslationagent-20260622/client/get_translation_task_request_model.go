@@ -16,8 +16,19 @@ type iGetTranslationTaskRequest interface {
 }
 
 type GetTranslationTaskRequest struct {
+	// The API key that identifies a member accounts identity. You can obtain it from the RuiYiBao console.
+	//
+	// example:
+	//
+	// ***
 	APIKey *string `json:"APIKey,omitempty" xml:"APIKey,omitempty"`
+	// The translation task ID, which is the TaskId obtained from UploadTranslationFile.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// f9c35b0453b
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

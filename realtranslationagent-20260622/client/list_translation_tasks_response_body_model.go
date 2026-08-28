@@ -22,11 +22,32 @@ type iListTranslationTasksResponseBody interface {
 }
 
 type ListTranslationTasksResponseBody struct {
-	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ListTranslationTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The return code.
+	//
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
+	Data *ListTranslationTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The return message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 50ABF118-2F9D-51DF-B1FB-1E389817DC47
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListTranslationTasksResponseBody) String() string {
@@ -92,10 +113,30 @@ func (s *ListTranslationTasksResponseBody) Validate() error {
 }
 
 type ListTranslationTasksResponseBodyData struct {
-	List       []*ListTranslationTasksResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	MaxResults *int32                                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Total      *int64                                      `json:"Total,omitempty" xml:"Total,omitempty"`
+	// The data list.
+	List []*ListTranslationTasksResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The maximum number of results returned per request when using the NextToken-based pagination.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Indicates whether a token exists for the next query. Valid values:
+	//
+	// - If **NextToken*	- is empty, no next query exists.
+	//
+	// - If **NextToken*	- has a value, the value is the token for the next query.
+	//
+	// example:
+	//
+	// AAAAAVpfrV4aVmra0dxbtRB74lmSGzegoejeIqxIET/WdX50
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 5
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s ListTranslationTasksResponseBodyData) String() string {
@@ -156,28 +197,154 @@ func (s *ListTranslationTasksResponseBodyData) Validate() error {
 }
 
 type ListTranslationTasksResponseBodyDataList struct {
-	CompleteTime     *string  `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	CostCredits      *float64 `json:"CostCredits,omitempty" xml:"CostCredits,omitempty"`
-	CostTime         *int64   `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
-	Creator          *string  `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	CreatorName      *string  `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	ErrorMessage     *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	FileFormat       *string  `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
-	FileName         *string  `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	GmtCreate        *string  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	OrgId            *string  `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	OriginalFileName *string  `json:"OriginalFileName,omitempty" xml:"OriginalFileName,omitempty"`
-	PageCount        *int64   `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	Progress         *int32   `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	SourceLanguage   *string  `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	StartTime        *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status           *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TargetLanguage   *string  `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	TaskId           *string  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType         *string  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	Template         *string  `json:"Template,omitempty" xml:"Template,omitempty"`
-	WordCount        *int64   `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
-	WorkSpaceId      *string  `json:"WorkSpaceId,omitempty" xml:"WorkSpaceId,omitempty"`
+	// The task completion time, in 13-digit timestamp format.
+	//
+	// example:
+	//
+	// 1782459562000
+	CompleteTime *string `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	// The credits consumed by this task.
+	//
+	// example:
+	//
+	// 81.2992
+	CostCredits *float64 `json:"CostCredits,omitempty" xml:"CostCredits,omitempty"`
+	// The time consumed, in milliseconds.
+	//
+	// example:
+	//
+	// 196
+	CostTime *int64 `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	// The creator ID.
+	//
+	// example:
+	//
+	// acc_93****c936
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The creator name.
+	//
+	// example:
+	//
+	// tes_account@test.com
+	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// The error message when the task fails.
+	//
+	// example:
+	//
+	// device offline
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The parsed file format.
+	//
+	// example:
+	//
+	// PPTX
+	FileFormat *string `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
+	// The file name.
+	//
+	// example:
+	//
+	// translated_a_file.pptx
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The task creation time, in 13-digit timestamp format.
+	//
+	// example:
+	//
+	// 1782459562000
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The organization ID.
+	//
+	// example:
+	//
+	// org_c6******cdc2ce7
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// The source file address.
+	//
+	// example:
+	//
+	// translated_a_file.pptx
+	OriginalFileName *string `json:"OriginalFileName,omitempty" xml:"OriginalFileName,omitempty"`
+	// The page count of the uploaded file.
+	//
+	// example:
+	//
+	// 21
+	PageCount *int64 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// The task progress.
+	//
+	// example:
+	//
+	// 61
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The language of the source file.
+	//
+	// example:
+	//
+	// zh
+	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	// The task start time, in 13-digit timestamp format.
+	//
+	// example:
+	//
+	// 1782459562000
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The task status. Valid values:
+	//
+	// - CANCELLED: Cancelled.
+	//
+	// - COMPLETED: Completed.
+	//
+	// - FAILED: Failed.
+	//
+	// - PROCESSING: Processing.
+	//
+	// - PENDING: Pending.
+	//
+	// - ANALYZED: Analyzed.
+	//
+	// example:
+	//
+	// CANCELLED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The target language.
+	//
+	// example:
+	//
+	// en
+	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
+	// The translation task ID.
+	//
+	// example:
+	//
+	// f9c35b0453b
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task type. Valid values:
+	//
+	// - DOCUMENT: document type.
+	//
+	// example:
+	//
+	// DOCUMENT
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The translation template. Valid values:
+	//
+	// - common: General.
+	//
+	// example:
+	//
+	// common
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	// The word count of the uploaded file.
+	//
+	// example:
+	//
+	// 1600
+	WordCount *int64 `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 6458351*****0cc5
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" xml:"WorkSpaceId,omitempty"`
 }
 
 func (s ListTranslationTasksResponseBodyDataList) String() string {

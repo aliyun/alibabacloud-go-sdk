@@ -22,11 +22,32 @@ type iGetTranslationTaskResponseBody interface {
 }
 
 type GetTranslationTaskResponseBody struct {
-	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetTranslationTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The return code.
+	//
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The business data.
+	Data *GetTranslationTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The return message.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EDD51FD8-93E0-5161-BCA6-38A8393F26D9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetTranslationTaskResponseBody) String() string {
@@ -92,27 +113,122 @@ func (s *GetTranslationTaskResponseBody) Validate() error {
 }
 
 type GetTranslationTaskResponseBodyData struct {
-	BaseTaskId           *string                                             `json:"BaseTaskId,omitempty" xml:"BaseTaskId,omitempty"`
-	Config               *GetTranslationTaskResponseBodyDataConfig           `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	CostCredits          *float64                                            `json:"CostCredits,omitempty" xml:"CostCredits,omitempty"`
-	CostTime             *int64                                              `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
-	ErrorMessage         *string                                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	EstimatedCostCredits *float64                                            `json:"EstimatedCostCredits,omitempty" xml:"EstimatedCostCredits,omitempty"`
-	EstimatedTime        *int64                                              `json:"EstimatedTime,omitempty" xml:"EstimatedTime,omitempty"`
-	ExtractedTerms       []*GetTranslationTaskResponseBodyDataExtractedTerms `json:"ExtractedTerms,omitempty" xml:"ExtractedTerms,omitempty" type:"Repeated"`
-	FileFormat           *string                                             `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
-	FileName             *string                                             `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FinishedAt           *string                                             `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
-	Fonts                map[string][]*string                                `json:"Fonts,omitempty" xml:"Fonts,omitempty"`
-	OrgId                *string                                             `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	OriginalFileName     *string                                             `json:"OriginalFileName,omitempty" xml:"OriginalFileName,omitempty"`
-	PageCount            *int64                                              `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	Progress             *int32                                              `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Status               *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId               *string                                             `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskType             *string                                             `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	WordCount            *int64                                              `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
-	WorkSpaceId          *string                                             `json:"WorkSpaceId,omitempty" xml:"WorkSpaceId,omitempty"`
+	// The translation task ID of a previously submitted task. This parameter is passed in when resubmitting a translation task.
+	//
+	// example:
+	//
+	// f9c35b0453b
+	BaseTaskId *string `json:"BaseTaskId,omitempty" xml:"BaseTaskId,omitempty"`
+	// The translation configuration.
+	Config *GetTranslationTaskResponseBodyDataConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// The credits consumed by this task.
+	//
+	// example:
+	//
+	// 2.5510
+	CostCredits *float64 `json:"CostCredits,omitempty" xml:"CostCredits,omitempty"`
+	// The time consumed, in milliseconds.
+	//
+	// example:
+	//
+	// 43
+	CostTime *int64 `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	// The error message when the task fails.
+	//
+	// example:
+	//
+	// error
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The estimated credits to be consumed.
+	//
+	// example:
+	//
+	// 2.5510
+	EstimatedCostCredits *float64 `json:"EstimatedCostCredits,omitempty" xml:"EstimatedCostCredits,omitempty"`
+	// The estimated translation time, in **seconds**.
+	//
+	// example:
+	//
+	// 40000
+	EstimatedTime *int64 `json:"EstimatedTime,omitempty" xml:"EstimatedTime,omitempty"`
+	// The terms used in this task.
+	ExtractedTerms []*GetTranslationTaskResponseBodyDataExtractedTerms `json:"ExtractedTerms,omitempty" xml:"ExtractedTerms,omitempty" type:"Repeated"`
+	// The parsed file format.
+	//
+	// example:
+	//
+	// PPTX
+	FileFormat *string `json:"FileFormat,omitempty" xml:"FileFormat,omitempty"`
+	// The file name.
+	//
+	// example:
+	//
+	// translated_a_file.pptx
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The task completion time, expressed as a 13-digit timestamp.
+	//
+	// example:
+	//
+	// 1774147442
+	FinishedAt *string `json:"FinishedAt,omitempty" xml:"FinishedAt,omitempty"`
+	// The languages that support font modification and the corresponding font lists. The key of the map identifies the language type. Currently supported languages include English, French, Indonesian, and Japanese.
+	Fonts map[string][]*string `json:"Fonts,omitempty" xml:"Fonts,omitempty"`
+	// The organization ID.
+	//
+	// example:
+	//
+	// org_e5b74*****9c94209
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// The source file address.
+	//
+	// example:
+	//
+	// translated_a_file.pptx
+	OriginalFileName *string `json:"OriginalFileName,omitempty" xml:"OriginalFileName,omitempty"`
+	// The page count of the uploaded file.
+	//
+	// example:
+	//
+	// 0
+	PageCount *int64 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	// The progress, expressed as a percentage number.
+	//
+	// example:
+	//
+	// 90
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The task status.
+	//
+	// example:
+	//
+	// PROCESSING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The translation task ID.
+	//
+	// example:
+	//
+	// f9c35b0453b
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task type.
+	//
+	// - DOCUMENT: Document type.
+	//
+	// example:
+	//
+	// DOCUMENT
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The word count of the uploaded document.
+	//
+	// example:
+	//
+	// 1600
+	WordCount *int64 `json:"WordCount,omitempty" xml:"WordCount,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// c2b898f******c985c
+	WorkSpaceId *string `json:"WorkSpaceId,omitempty" xml:"WorkSpaceId,omitempty"`
 }
 
 func (s GetTranslationTaskResponseBodyData) String() string {
@@ -331,11 +447,44 @@ func (s *GetTranslationTaskResponseBodyData) Validate() error {
 }
 
 type GetTranslationTaskResponseBodyDataConfig struct {
-	SecurityLevel  *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
+	// The security level.
+	//
+	// - public: Standard confidentiality.
+	//
+	// example:
+	//
+	// public
+	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
+	// The source file language.
+	//
+	// example:
+	//
+	// zh
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	Style          *string `json:"Style,omitempty" xml:"Style,omitempty"`
+	// The translation style. This parameter takes effect only when the translation file is a PPT file.
+	//
+	// - normal: Standard. The original information is fully preserved.
+	//
+	// - minimal: More concise information with a more visually appealing layout.
+	//
+	// example:
+	//
+	// minimal
+	Style *string `json:"Style,omitempty" xml:"Style,omitempty"`
+	// The target language.
+	//
+	// example:
+	//
+	// en
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	Template       *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	// The translation template.
+	//
+	// - common: General-purpose.
+	//
+	// example:
+	//
+	// common
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 }
 
 func (s GetTranslationTaskResponseBodyDataConfig) String() string {
@@ -396,7 +545,17 @@ func (s *GetTranslationTaskResponseBodyDataConfig) Validate() error {
 }
 
 type GetTranslationTaskResponseBodyDataExtractedTerms struct {
+	// The source term.
+	//
+	// example:
+	//
+	// puppy
 	SourceTerm *string `json:"SourceTerm,omitempty" xml:"SourceTerm,omitempty"`
+	// The translated term.
+	//
+	// example:
+	//
+	// dog
 	TargetTerm *string `json:"TargetTerm,omitempty" xml:"TargetTerm,omitempty"`
 }
 

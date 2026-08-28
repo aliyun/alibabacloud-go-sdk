@@ -16,8 +16,23 @@ type iCancelTranslationTaskRequest interface {
 }
 
 type CancelTranslationTaskRequest struct {
+	// The API key, the identity of member accounts. You can obtain it from the RuiYiBao console.
+	//
+	// example:
+	//
+	// sk-5****7
 	APIKey *string `json:"APIKey,omitempty" xml:"APIKey,omitempty"`
+	// The task ID.
+	//
+	// - The TaskId is returned after a task is submitted by calling SubmitTranslationTask.
+	//
+	// - Only running tasks can be canceled.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// f9c35b0453b
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
