@@ -1252,6 +1252,72 @@ func (client *Client) CreateDeploymentJob(request *CreateDeploymentJobRequest) (
 
 // Summary:
 //
+// Rolls back a deployment.
+//
+// @param request - CreateRollbackTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRollbackTaskResponse
+func (client *Client) CreateRollbackTaskWithOptions(request *CreateRollbackTaskRequest, runtime *dara.RuntimeOptions) (_result *CreateRollbackTaskResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.WorkerId) {
+		query["WorkerId"] = request.WorkerId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRollbackTask"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRollbackTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Rolls back a deployment.
+//
+// @param request - CreateRollbackTaskRequest
+//
+// @return CreateRollbackTaskResponse
+func (client *Client) CreateRollbackTask(request *CreateRollbackTaskRequest) (_result *CreateRollbackTaskResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateRollbackTaskResponse{}
+	_body, _err := client.CreateRollbackTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Issues a single client certificate from the general user certificate repository.
 //
 // Description:
@@ -1962,13 +2028,13 @@ func (client *Client) DeleteDeploymentJob(request *DeleteDeploymentJobRequest) (
 //
 // Description:
 //
-// 本接口用于通过私有CA实例的ID，查询您通过SSL证书服务控制台购买的私有CA实例的状态信息，例如，CA实例的状态、包含的证书数量、已签发的证书数量等。
+// Queries the status information of a private Certificate Authority (CA) instance that you purchased in the SSL Certificate console by using the ID of the private CA instance. For example, you can query the status of the CA instance, the number of certificates included, and the number of certificates issued.
 //
-// 调用本接口前，您必须已经通过[数字证书管理服务控制台](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist)购买了私有CA。具体操作，请参见[购买私有CA](https://help.aliyun.com/document_detail/208553.html)。
+// Before you invoke this operation, you must have purchased a private CA in the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
 //
-// ## QPS限制
+// ## QPS limit
 //
-// 本接口的单用户QPS限制为10次/秒。超过限制，API调用将会被限流，这可能影响您的业务，请合理调用。
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Invoke this operation as needed.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -2020,13 +2086,13 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 //
 // Description:
 //
-// 本接口用于通过私有CA实例的ID，查询您通过SSL证书服务控制台购买的私有CA实例的状态信息，例如，CA实例的状态、包含的证书数量、已签发的证书数量等。
+// Queries the status information of a private Certificate Authority (CA) instance that you purchased in the SSL Certificate console by using the ID of the private CA instance. For example, you can query the status of the CA instance, the number of certificates included, and the number of certificates issued.
 //
-// 调用本接口前，您必须已经通过[数字证书管理服务控制台](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist)购买了私有CA。具体操作，请参见[购买私有CA](https://help.aliyun.com/document_detail/208553.html)。
+// Before you invoke this operation, you must have purchased a private CA in the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
 //
-// ## QPS限制
+// ## QPS limit
 //
-// 本接口的单用户QPS限制为10次/秒。超过限制，API调用将会被限流，这可能影响您的业务，请合理调用。
+// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API call is throttled, which may affect your business. Invoke this operation as needed.
 //
 // @param request - DeleteInstanceRequest
 //
@@ -5653,6 +5719,72 @@ func (client *Client) RevokeWHClientCertificate(request *RevokeWHClientCertifica
 	runtime := &dara.RuntimeOptions{}
 	_result = &RevokeWHClientCertificateResponse{}
 	_body, _err := client.RevokeWHClientCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 共享证书
+//
+// @param request - ShareCertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ShareCertificateResponse
+func (client *Client) ShareCertificateWithOptions(request *ShareCertificateRequest, runtime *dara.RuntimeOptions) (_result *ShareCertificateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CertificateId) {
+		query["CertificateId"] = request.CertificateId
+	}
+
+	if !dara.IsNil(request.TargetUserId) {
+		query["TargetUserId"] = request.TargetUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ShareCertificate"),
+		Version:     dara.String("2020-04-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ShareCertificateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 共享证书
+//
+// @param request - ShareCertificateRequest
+//
+// @return ShareCertificateResponse
+func (client *Client) ShareCertificate(request *ShareCertificateRequest) (_result *ShareCertificateResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ShareCertificateResponse{}
+	_body, _err := client.ShareCertificateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
