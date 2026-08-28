@@ -15,10 +15,14 @@ type iCreateAtiAgentRegisterInfoShrinkRequest interface {
 	GetAgentDisplayName() *string
 	SetAgentHost(v string) *CreateAtiAgentRegisterInfoShrinkRequest
 	GetAgentHost() *string
+	SetAgentSubHost(v string) *CreateAtiAgentRegisterInfoShrinkRequest
+	GetAgentSubHost() *string
 	SetAgentVersion(v string) *CreateAtiAgentRegisterInfoShrinkRequest
 	GetAgentVersion() *string
 	SetClientToken(v string) *CreateAtiAgentRegisterInfoShrinkRequest
 	GetClientToken() *string
+	SetDomainMode(v string) *CreateAtiAgentRegisterInfoShrinkRequest
+	GetDomainMode() *string
 	SetEndpointsShrink(v string) *CreateAtiAgentRegisterInfoShrinkRequest
 	GetEndpointsShrink() *string
 	SetRegistrantId(v string) *CreateAtiAgentRegisterInfoShrinkRequest
@@ -47,7 +51,8 @@ type CreateAtiAgentRegisterInfoShrinkRequest struct {
 	// example:
 	//
 	// example.com
-	AgentHost *string `json:"AgentHost,omitempty" xml:"AgentHost,omitempty"`
+	AgentHost    *string `json:"AgentHost,omitempty" xml:"AgentHost,omitempty"`
+	AgentSubHost *string `json:"AgentSubHost,omitempty" xml:"AgentSubHost,omitempty"`
 	// The version of the agent.
 	//
 	// This parameter is required.
@@ -62,6 +67,7 @@ type CreateAtiAgentRegisterInfoShrinkRequest struct {
 	//
 	// eyJhbGciOiJIUzI1NiIsInR5cC.....
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DomainMode  *string `json:"DomainMode,omitempty" xml:"DomainMode,omitempty"`
 	// The endpoint information of the agent.
 	//
 	// This parameter is required.
@@ -100,12 +106,20 @@ func (s *CreateAtiAgentRegisterInfoShrinkRequest) GetAgentHost() *string {
 	return s.AgentHost
 }
 
+func (s *CreateAtiAgentRegisterInfoShrinkRequest) GetAgentSubHost() *string {
+	return s.AgentSubHost
+}
+
 func (s *CreateAtiAgentRegisterInfoShrinkRequest) GetAgentVersion() *string {
 	return s.AgentVersion
 }
 
 func (s *CreateAtiAgentRegisterInfoShrinkRequest) GetClientToken() *string {
 	return s.ClientToken
+}
+
+func (s *CreateAtiAgentRegisterInfoShrinkRequest) GetDomainMode() *string {
+	return s.DomainMode
 }
 
 func (s *CreateAtiAgentRegisterInfoShrinkRequest) GetEndpointsShrink() *string {
@@ -131,6 +145,11 @@ func (s *CreateAtiAgentRegisterInfoShrinkRequest) SetAgentHost(v string) *Create
 	return s
 }
 
+func (s *CreateAtiAgentRegisterInfoShrinkRequest) SetAgentSubHost(v string) *CreateAtiAgentRegisterInfoShrinkRequest {
+	s.AgentSubHost = &v
+	return s
+}
+
 func (s *CreateAtiAgentRegisterInfoShrinkRequest) SetAgentVersion(v string) *CreateAtiAgentRegisterInfoShrinkRequest {
 	s.AgentVersion = &v
 	return s
@@ -138,6 +157,11 @@ func (s *CreateAtiAgentRegisterInfoShrinkRequest) SetAgentVersion(v string) *Cre
 
 func (s *CreateAtiAgentRegisterInfoShrinkRequest) SetClientToken(v string) *CreateAtiAgentRegisterInfoShrinkRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateAtiAgentRegisterInfoShrinkRequest) SetDomainMode(v string) *CreateAtiAgentRegisterInfoShrinkRequest {
+	s.DomainMode = &v
 	return s
 }
 

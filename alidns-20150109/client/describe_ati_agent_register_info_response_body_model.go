@@ -21,12 +21,16 @@ type iDescribeAtiAgentRegisterInfoResponseBody interface {
 	GetAgentId() *string
 	SetAgentRegisterInfoId(v string) *DescribeAtiAgentRegisterInfoResponseBody
 	GetAgentRegisterInfoId() *string
+	SetAgentSubHost(v string) *DescribeAtiAgentRegisterInfoResponseBody
+	GetAgentSubHost() *string
 	SetAgentVersion(v string) *DescribeAtiAgentRegisterInfoResponseBody
 	GetAgentVersion() *string
 	SetAtiName(v string) *DescribeAtiAgentRegisterInfoResponseBody
 	GetAtiName() *string
 	SetCreateTimestamp(v int64) *DescribeAtiAgentRegisterInfoResponseBody
 	GetCreateTimestamp() *int64
+	SetDomainMode(v string) *DescribeAtiAgentRegisterInfoResponseBody
+	GetDomainMode() *string
 	SetEndpoints(v *DescribeAtiAgentRegisterInfoResponseBodyEndpoints) *DescribeAtiAgentRegisterInfoResponseBody
 	GetEndpoints() *DescribeAtiAgentRegisterInfoResponseBodyEndpoints
 	SetIdentityCertSerialNumber(v string) *DescribeAtiAgentRegisterInfoResponseBody
@@ -47,6 +51,8 @@ type iDescribeAtiAgentRegisterInfoResponseBody interface {
 	GetTrustCard() *string
 	SetTrustCardUrl(v string) *DescribeAtiAgentRegisterInfoResponseBody
 	GetTrustCardUrl() *string
+	SetTrustLevel(v string) *DescribeAtiAgentRegisterInfoResponseBody
+	GetTrustLevel() *string
 	SetUpdateTimestamp(v int64) *DescribeAtiAgentRegisterInfoResponseBody
 	GetUpdateTimestamp() *int64
 }
@@ -54,25 +60,25 @@ type iDescribeAtiAgentRegisterInfoResponseBody interface {
 type DescribeAtiAgentRegisterInfoResponseBody struct {
 	// The details about the access denial. This field is returned only when RAM authentication fails.
 	AccessDeniedDetail *DescribeAtiAgentRegisterInfoResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The description of the Agent capabilities.
+	// The capability description of the Agent.
 	//
 	// example:
 	//
-	// 支付服务
+	// Payment service
 	AgentDescription *string `json:"AgentDescription,omitempty" xml:"AgentDescription,omitempty"`
 	// The display name of the Agent.
 	//
 	// example:
 	//
-	// 测试Agent
+	// TestAgent
 	AgentDisplayName *string `json:"AgentDisplayName,omitempty" xml:"AgentDisplayName,omitempty"`
-	// The endpoint domain name through which the Agent provides services.
+	// The endpoint domain name through which the Agent provides external services.
 	//
 	// example:
 	//
 	// example.com
 	AgentHost *string `json:"AgentHost,omitempty" xml:"AgentHost,omitempty"`
-	// The Agent ID, which is uniformly assigned by CNNIC after real-name verification. The AgentId serves as the unique identifier that binds the Agent to the verified registrant.
+	// The Agent ID, which is uniformly assigned by CNNIC after real-name authentication. The Agent ID serves as the unique identifier that binds the Agent to the authenticated registrant.
 	//
 	// example:
 	//
@@ -84,6 +90,7 @@ type DescribeAtiAgentRegisterInfoResponseBody struct {
 	//
 	// 2074753647748672512
 	AgentRegisterInfoId *string `json:"AgentRegisterInfoId,omitempty" xml:"AgentRegisterInfoId,omitempty"`
+	AgentSubHost        *string `json:"AgentSubHost,omitempty" xml:"AgentSubHost,omitempty"`
 	// The version of the Agent.
 	//
 	// example:
@@ -108,14 +115,15 @@ type DescribeAtiAgentRegisterInfoResponseBody struct {
 	//
 	// 1527690629357
 	CreateTimestamp *int64                                             `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	DomainMode      *string                                            `json:"DomainMode,omitempty" xml:"DomainMode,omitempty"`
 	Endpoints       *DescribeAtiAgentRegisterInfoResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
 	// Ignore.
 	//
 	// example:
 	//
-	// 忽略
+	// Ignore
 	IdentityCertSerialNumber *string `json:"IdentityCertSerialNumber,omitempty" xml:"IdentityCertSerialNumber,omitempty"`
-	// The ID of the verified registrant.
+	// The ID of the authenticated registrant.
 	//
 	// example:
 	//
@@ -125,9 +133,9 @@ type DescribeAtiAgentRegisterInfoResponseBody struct {
 	//
 	// example:
 	//
-	// 张xx
+	// Zhang xx
 	RegistrantName *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
-	// The reason why the Agent registration review failed.
+	// The reason for Agent registration review failure.
 	RejectReason *DescribeAtiAgentRegisterInfoResponseBodyRejectReason `json:"RejectReason,omitempty" xml:"RejectReason,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -139,38 +147,39 @@ type DescribeAtiAgentRegisterInfoResponseBody struct {
 	//
 	// example:
 	//
-	// 忽略
+	// Ignore
 	ServerCertSerialNumber *string `json:"ServerCertSerialNumber,omitempty" xml:"ServerCertSerialNumber,omitempty"`
-	// The status of the Agent. Valid values:
+	// The Agent status. Valid values:
 	//
-	// - Draft: The Agent registration form is being filled out and has not been formally submitted. In the Draft state, only modification and detail viewing operations are supported.
+	// - Draft: The Agent registration form is being filled out and has not been formally submitted. In draft status, only modification and detail viewing operations are supported.
 	//
-	// - Private CA Pending Issuance: The Agent registration has been formally submitted. Alibaba Cloud has completed the ACME DNS-01 pre-check and submitted the registration information along with the generated DNS records to CNNIC. The system is waiting for CNNIC to approve and issue the Private CA and complete the TL sealing.
+	// - Private CA Pending Issuance: The Agent registration has been formally submitted. Alibaba Cloud has completed the ACME DNS-01 pre-check and submitted the registration information and generated DNS records to CNNIC. Currently waiting for CNNIC to approve and issue the Private CA and complete TL sealing.
 	//
-	// - DNS Pending Verification: CNNIC has approved the registration, issued the Private CA certificate, and completed the TL sealing, but the DNS records of the user have not been verified. The user needs to add the corresponding DNS records in the domain name resolution and complete verification.
+	// - DNS Pending Verification: CNNIC has approved and issued the Private CA certificate and completed TL sealing, but the DNS records of the user have not been verified. Waiting for the user to add the corresponding DNS records in domain name resolution and complete verification.
 	//
-	// - Active: All processes are complete. The Private CA certificate has been issued, the TL has been sealed, and the DNS records have been verified. The Agent is activated and can be discovered and trusted across the network.
+	// - Active: All processes are complete. The Private CA certificate has been issued, TL has been sealed, and DNS records have been verified. The Agent is activated and can be discovered and trust-verified across the network.
 	//
-	// - Expired: The Agent identity certificate has expired because the user did not renew the certificate within the validity period.
+	// - Expired: The Agent identity certificate has expired, and the user did not complete certificate renewal within the validity period.
 	//
-	// - Revoked: The Agent certificate has been revoked, the DNS records have been cleaned up, and the Agent can no longer be discovered or trusted. The Agent cannot be restored to the Active state.
+	// - Revoked: The Agent certificate has been revoked, DNS records have been cleaned up, and the Agent cannot be discovered or trust-verified. It cannot be restored to active status.
 	//
 	// example:
 	//
-	// 活跃
+	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Ignore.
 	//
 	// example:
 	//
-	// 忽略
+	// Ignore
 	TrustCard *string `json:"TrustCard,omitempty" xml:"TrustCard,omitempty"`
-	// Deprecated.
+	// **[Deprecated]**
 	//
 	// example:
 	//
-	// 已废弃
+	// Deprecated
 	TrustCardUrl *string `json:"TrustCardUrl,omitempty" xml:"TrustCardUrl,omitempty"`
+	TrustLevel   *string `json:"TrustLevel,omitempty" xml:"TrustLevel,omitempty"`
 	// The update time (timestamp).
 	//
 	// example:
@@ -211,6 +220,10 @@ func (s *DescribeAtiAgentRegisterInfoResponseBody) GetAgentRegisterInfoId() *str
 	return s.AgentRegisterInfoId
 }
 
+func (s *DescribeAtiAgentRegisterInfoResponseBody) GetAgentSubHost() *string {
+	return s.AgentSubHost
+}
+
 func (s *DescribeAtiAgentRegisterInfoResponseBody) GetAgentVersion() *string {
 	return s.AgentVersion
 }
@@ -221,6 +234,10 @@ func (s *DescribeAtiAgentRegisterInfoResponseBody) GetAtiName() *string {
 
 func (s *DescribeAtiAgentRegisterInfoResponseBody) GetCreateTimestamp() *int64 {
 	return s.CreateTimestamp
+}
+
+func (s *DescribeAtiAgentRegisterInfoResponseBody) GetDomainMode() *string {
+	return s.DomainMode
 }
 
 func (s *DescribeAtiAgentRegisterInfoResponseBody) GetEndpoints() *DescribeAtiAgentRegisterInfoResponseBodyEndpoints {
@@ -263,6 +280,10 @@ func (s *DescribeAtiAgentRegisterInfoResponseBody) GetTrustCardUrl() *string {
 	return s.TrustCardUrl
 }
 
+func (s *DescribeAtiAgentRegisterInfoResponseBody) GetTrustLevel() *string {
+	return s.TrustLevel
+}
+
 func (s *DescribeAtiAgentRegisterInfoResponseBody) GetUpdateTimestamp() *int64 {
 	return s.UpdateTimestamp
 }
@@ -297,6 +318,11 @@ func (s *DescribeAtiAgentRegisterInfoResponseBody) SetAgentRegisterInfoId(v stri
 	return s
 }
 
+func (s *DescribeAtiAgentRegisterInfoResponseBody) SetAgentSubHost(v string) *DescribeAtiAgentRegisterInfoResponseBody {
+	s.AgentSubHost = &v
+	return s
+}
+
 func (s *DescribeAtiAgentRegisterInfoResponseBody) SetAgentVersion(v string) *DescribeAtiAgentRegisterInfoResponseBody {
 	s.AgentVersion = &v
 	return s
@@ -309,6 +335,11 @@ func (s *DescribeAtiAgentRegisterInfoResponseBody) SetAtiName(v string) *Describ
 
 func (s *DescribeAtiAgentRegisterInfoResponseBody) SetCreateTimestamp(v int64) *DescribeAtiAgentRegisterInfoResponseBody {
 	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *DescribeAtiAgentRegisterInfoResponseBody) SetDomainMode(v string) *DescribeAtiAgentRegisterInfoResponseBody {
+	s.DomainMode = &v
 	return s
 }
 
@@ -359,6 +390,11 @@ func (s *DescribeAtiAgentRegisterInfoResponseBody) SetTrustCard(v string) *Descr
 
 func (s *DescribeAtiAgentRegisterInfoResponseBody) SetTrustCardUrl(v string) *DescribeAtiAgentRegisterInfoResponseBody {
 	s.TrustCardUrl = &v
+	return s
+}
+
+func (s *DescribeAtiAgentRegisterInfoResponseBody) SetTrustLevel(v string) *DescribeAtiAgentRegisterInfoResponseBody {
+	s.TrustLevel = &v
 	return s
 }
 
@@ -417,11 +453,11 @@ type DescribeAtiAgentRegisterInfoResponseBodyAccessDeniedDetail struct {
 	//
 	// AQFohtp4aIbaeEXXXXQxNjFDLUIzMzgtNTXXXX05NkFCLUI2RkY5XXXXzAzQQ==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The cause of the authentication failure. Valid values:
+	// The reason for the authentication failure. Valid values:
 	//
-	// - ExplicitDeny: explicit deny.
+	// - ExplicitDeny: Explicit deny.
 	//
-	// - ImplicitDeny: implicit deny.
+	// - ImplicitDeny: Implicit deny.
 	//
 	// example:
 	//
@@ -634,9 +670,9 @@ type DescribeAtiAgentRegisterInfoResponseBodyRejectReason struct {
 	//
 	// example:
 	//
-	// 非法状态
+	// Invalid status
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The type of the review failure. Valid values:
+	// The type of review failure. Valid values:
 	//
 	// - ACME_VERIFY_FAILED: ACME verification failed.
 	//

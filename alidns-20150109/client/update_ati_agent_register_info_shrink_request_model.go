@@ -17,10 +17,14 @@ type iUpdateAtiAgentRegisterInfoShrinkRequest interface {
 	GetAgentHost() *string
 	SetAgentRegisterInfoId(v string) *UpdateAtiAgentRegisterInfoShrinkRequest
 	GetAgentRegisterInfoId() *string
+	SetAgentSubHost(v string) *UpdateAtiAgentRegisterInfoShrinkRequest
+	GetAgentSubHost() *string
 	SetAgentVersion(v string) *UpdateAtiAgentRegisterInfoShrinkRequest
 	GetAgentVersion() *string
 	SetClientToken(v string) *UpdateAtiAgentRegisterInfoShrinkRequest
 	GetClientToken() *string
+	SetDomainMode(v string) *UpdateAtiAgentRegisterInfoShrinkRequest
+	GetDomainMode() *string
 	SetEndpointsShrink(v string) *UpdateAtiAgentRegisterInfoShrinkRequest
 	GetEndpointsShrink() *string
 	SetRegistrantId(v string) *UpdateAtiAgentRegisterInfoShrinkRequest
@@ -52,6 +56,7 @@ type UpdateAtiAgentRegisterInfoShrinkRequest struct {
 	//
 	// 2074753647748672512
 	AgentRegisterInfoId *string `json:"AgentRegisterInfoId,omitempty" xml:"AgentRegisterInfoId,omitempty"`
+	AgentSubHost        *string `json:"AgentSubHost,omitempty" xml:"AgentSubHost,omitempty"`
 	// The version of the Agent.
 	//
 	// example:
@@ -66,6 +71,7 @@ type UpdateAtiAgentRegisterInfoShrinkRequest struct {
 	//
 	// eyJhbGciOiJIUzI1NiIsInR5cC.....
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DomainMode  *string `json:"DomainMode,omitempty" xml:"DomainMode,omitempty"`
 	// The endpoints for each protocol.
 	//
 	// example:
@@ -104,12 +110,20 @@ func (s *UpdateAtiAgentRegisterInfoShrinkRequest) GetAgentRegisterInfoId() *stri
 	return s.AgentRegisterInfoId
 }
 
+func (s *UpdateAtiAgentRegisterInfoShrinkRequest) GetAgentSubHost() *string {
+	return s.AgentSubHost
+}
+
 func (s *UpdateAtiAgentRegisterInfoShrinkRequest) GetAgentVersion() *string {
 	return s.AgentVersion
 }
 
 func (s *UpdateAtiAgentRegisterInfoShrinkRequest) GetClientToken() *string {
 	return s.ClientToken
+}
+
+func (s *UpdateAtiAgentRegisterInfoShrinkRequest) GetDomainMode() *string {
+	return s.DomainMode
 }
 
 func (s *UpdateAtiAgentRegisterInfoShrinkRequest) GetEndpointsShrink() *string {
@@ -140,6 +154,11 @@ func (s *UpdateAtiAgentRegisterInfoShrinkRequest) SetAgentRegisterInfoId(v strin
 	return s
 }
 
+func (s *UpdateAtiAgentRegisterInfoShrinkRequest) SetAgentSubHost(v string) *UpdateAtiAgentRegisterInfoShrinkRequest {
+	s.AgentSubHost = &v
+	return s
+}
+
 func (s *UpdateAtiAgentRegisterInfoShrinkRequest) SetAgentVersion(v string) *UpdateAtiAgentRegisterInfoShrinkRequest {
 	s.AgentVersion = &v
 	return s
@@ -147,6 +166,11 @@ func (s *UpdateAtiAgentRegisterInfoShrinkRequest) SetAgentVersion(v string) *Upd
 
 func (s *UpdateAtiAgentRegisterInfoShrinkRequest) SetClientToken(v string) *UpdateAtiAgentRegisterInfoShrinkRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateAtiAgentRegisterInfoShrinkRequest) SetDomainMode(v string) *UpdateAtiAgentRegisterInfoShrinkRequest {
+	s.DomainMode = &v
 	return s
 }
 

@@ -1476,12 +1476,20 @@ func (client *Client) CreateAtiAgentRegisterInfoWithContext(ctx context.Context,
 		query["AgentHost"] = request.AgentHost
 	}
 
+	if !dara.IsNil(request.AgentSubHost) {
+		query["AgentSubHost"] = request.AgentSubHost
+	}
+
 	if !dara.IsNil(request.AgentVersion) {
 		query["AgentVersion"] = request.AgentVersion
 	}
 
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DomainMode) {
+		query["DomainMode"] = request.DomainMode
 	}
 
 	if !dara.IsNil(request.EndpointsShrink) {
@@ -3049,7 +3057,7 @@ func (client *Client) DeleteSubDomainRecordsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the details of an Agent registration.
+// Queries the details of Agent registration information.
 //
 // @param request - DescribeAtiAgentRegisterInfoRequest
 //
@@ -3097,7 +3105,7 @@ func (client *Client) DescribeAtiAgentRegisterInfoWithContext(ctx context.Contex
 
 // Summary:
 //
-// 为sdk查询agent信息功能
+// Queries agent information from the Agent marketplace for the SDK.
 //
 // @param request - DescribeAtiAgentRegisterInfoMarketRequest
 //
@@ -3130,6 +3138,10 @@ func (client *Client) DescribeAtiAgentRegisterInfoMarketWithContext(ctx context.
 
 	if !dara.IsNil(request.NextToken) {
 		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.TrustLevel) {
+		query["TrustLevel"] = request.TrustLevel
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -9125,7 +9137,7 @@ func (client *Client) ListAtiAgentRegisterInfosWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the list of real-name registered contacts.
+// Queries the list of real-name registrants.
 //
 // @param request - ListAtiChangeLogsRequest
 //
@@ -9201,7 +9213,7 @@ func (client *Client) ListAtiChangeLogsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 查询实名注册人列表
+// Queries the list of real-name verified registrants.
 //
 // @param request - ListAtiRegistrantsRequest
 //
@@ -12526,12 +12538,20 @@ func (client *Client) UpdateAtiAgentRegisterInfoWithContext(ctx context.Context,
 		query["AgentRegisterInfoId"] = request.AgentRegisterInfoId
 	}
 
+	if !dara.IsNil(request.AgentSubHost) {
+		query["AgentSubHost"] = request.AgentSubHost
+	}
+
 	if !dara.IsNil(request.AgentVersion) {
 		query["AgentVersion"] = request.AgentVersion
 	}
 
 	if !dara.IsNil(request.ClientToken) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DomainMode) {
+		query["DomainMode"] = request.DomainMode
 	}
 
 	if !dara.IsNil(request.EndpointsShrink) {
@@ -12567,7 +12587,7 @@ func (client *Client) UpdateAtiAgentRegisterInfoWithContext(ctx context.Context,
 
 // Summary:
 //
-// 更新告警设置
+// Updates alert settings.
 //
 // @param request - UpdateAtiAlertSettingsRequest
 //
@@ -12619,7 +12639,7 @@ func (client *Client) UpdateAtiAlertSettingsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Modifies a registrant profile.
+// Modifies a real-name registrant.
 //
 // @param request - UpdateAtiRegistrantRequest
 //
@@ -15722,6 +15742,10 @@ func (client *Client) VerifyAtiAgentDnsRecordsWithContext(ctx context.Context, r
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !dara.IsNil(request.TrustLevel) {
+		query["TrustLevel"] = request.TrustLevel
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15747,7 +15771,7 @@ func (client *Client) VerifyAtiAgentDnsRecordsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 触发 ACME 预检
+// Triggers an ACME pre-check.
 //
 // @param request - VerifyAtiAgentRegisterInfoAcmeChallengeRecordRequest
 //

@@ -17,10 +17,14 @@ type iUpdateAtiAgentRegisterInfoRequest interface {
 	GetAgentHost() *string
 	SetAgentRegisterInfoId(v string) *UpdateAtiAgentRegisterInfoRequest
 	GetAgentRegisterInfoId() *string
+	SetAgentSubHost(v string) *UpdateAtiAgentRegisterInfoRequest
+	GetAgentSubHost() *string
 	SetAgentVersion(v string) *UpdateAtiAgentRegisterInfoRequest
 	GetAgentVersion() *string
 	SetClientToken(v string) *UpdateAtiAgentRegisterInfoRequest
 	GetClientToken() *string
+	SetDomainMode(v string) *UpdateAtiAgentRegisterInfoRequest
+	GetDomainMode() *string
 	SetEndpoints(v []*UpdateAtiAgentRegisterInfoRequestEndpoints) *UpdateAtiAgentRegisterInfoRequest
 	GetEndpoints() []*UpdateAtiAgentRegisterInfoRequestEndpoints
 	SetRegistrantId(v string) *UpdateAtiAgentRegisterInfoRequest
@@ -52,6 +56,7 @@ type UpdateAtiAgentRegisterInfoRequest struct {
 	//
 	// 2074753647748672512
 	AgentRegisterInfoId *string `json:"AgentRegisterInfoId,omitempty" xml:"AgentRegisterInfoId,omitempty"`
+	AgentSubHost        *string `json:"AgentSubHost,omitempty" xml:"AgentSubHost,omitempty"`
 	// The version of the Agent.
 	//
 	// example:
@@ -66,6 +71,7 @@ type UpdateAtiAgentRegisterInfoRequest struct {
 	//
 	// eyJhbGciOiJIUzI1NiIsInR5cC.....
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DomainMode  *string `json:"DomainMode,omitempty" xml:"DomainMode,omitempty"`
 	// The endpoints for each protocol.
 	//
 	// example:
@@ -104,12 +110,20 @@ func (s *UpdateAtiAgentRegisterInfoRequest) GetAgentRegisterInfoId() *string {
 	return s.AgentRegisterInfoId
 }
 
+func (s *UpdateAtiAgentRegisterInfoRequest) GetAgentSubHost() *string {
+	return s.AgentSubHost
+}
+
 func (s *UpdateAtiAgentRegisterInfoRequest) GetAgentVersion() *string {
 	return s.AgentVersion
 }
 
 func (s *UpdateAtiAgentRegisterInfoRequest) GetClientToken() *string {
 	return s.ClientToken
+}
+
+func (s *UpdateAtiAgentRegisterInfoRequest) GetDomainMode() *string {
+	return s.DomainMode
 }
 
 func (s *UpdateAtiAgentRegisterInfoRequest) GetEndpoints() []*UpdateAtiAgentRegisterInfoRequestEndpoints {
@@ -140,6 +154,11 @@ func (s *UpdateAtiAgentRegisterInfoRequest) SetAgentRegisterInfoId(v string) *Up
 	return s
 }
 
+func (s *UpdateAtiAgentRegisterInfoRequest) SetAgentSubHost(v string) *UpdateAtiAgentRegisterInfoRequest {
+	s.AgentSubHost = &v
+	return s
+}
+
 func (s *UpdateAtiAgentRegisterInfoRequest) SetAgentVersion(v string) *UpdateAtiAgentRegisterInfoRequest {
 	s.AgentVersion = &v
 	return s
@@ -147,6 +166,11 @@ func (s *UpdateAtiAgentRegisterInfoRequest) SetAgentVersion(v string) *UpdateAti
 
 func (s *UpdateAtiAgentRegisterInfoRequest) SetClientToken(v string) *UpdateAtiAgentRegisterInfoRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateAtiAgentRegisterInfoRequest) SetDomainMode(v string) *UpdateAtiAgentRegisterInfoRequest {
+	s.DomainMode = &v
 	return s
 }
 

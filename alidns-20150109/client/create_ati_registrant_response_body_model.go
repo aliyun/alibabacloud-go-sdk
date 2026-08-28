@@ -32,13 +32,13 @@ type CreateAtiRegistrantResponseBody struct {
 	//
 	// 1527690629357
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	// The name of the real-name verified registrant.
+	// The name of the real-name registrant.
 	//
 	// example:
 	//
-	// 张xx
+	// Zhang XX
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the real-name verified registrant.
+	// The ID of the real-name registrant.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type CreateAtiRegistrantResponseBody struct {
 	//
 	// - Approved.
 	//
-	// - Under review.
+	// - Pending review.
 	//
 	// - Rejected.
 	//
 	// example:
 	//
-	// 审核通过
+	// Approved
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -160,7 +160,7 @@ type CreateAtiRegistrantResponseBodyAccessDeniedDetail struct {
 	//
 	// SubUser
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encrypted complete diagnostic message.
+	// The encrypted diagnostic message.
 	//
 	// example:
 	//
@@ -168,9 +168,9 @@ type CreateAtiRegistrantResponseBodyAccessDeniedDetail struct {
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
 	// The reason for the authentication failure. Valid values:
 	//
-	// - ExplicitDeny: Explicit deny.
+	// - ExplicitDeny: explicit deny.
 	//
-	// - ImplicitDeny: Implicit deny.
+	// - ImplicitDeny: implicit deny.
 	//
 	// example:
 	//

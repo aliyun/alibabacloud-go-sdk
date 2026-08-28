@@ -26,7 +26,7 @@ type DeleteAtiAgentRegisterInfoResponseBody struct {
 	//
 	// B57C121B-A45F-44D8-A9B2-13E5A5044195
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// Indicates whether the operation was successful:
 	//
 	// - true: The operation was successful.
 	//

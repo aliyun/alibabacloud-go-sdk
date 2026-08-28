@@ -15,10 +15,14 @@ type iCreateAtiAgentRegisterInfoRequest interface {
 	GetAgentDisplayName() *string
 	SetAgentHost(v string) *CreateAtiAgentRegisterInfoRequest
 	GetAgentHost() *string
+	SetAgentSubHost(v string) *CreateAtiAgentRegisterInfoRequest
+	GetAgentSubHost() *string
 	SetAgentVersion(v string) *CreateAtiAgentRegisterInfoRequest
 	GetAgentVersion() *string
 	SetClientToken(v string) *CreateAtiAgentRegisterInfoRequest
 	GetClientToken() *string
+	SetDomainMode(v string) *CreateAtiAgentRegisterInfoRequest
+	GetDomainMode() *string
 	SetEndpoints(v []*CreateAtiAgentRegisterInfoRequestEndpoints) *CreateAtiAgentRegisterInfoRequest
 	GetEndpoints() []*CreateAtiAgentRegisterInfoRequestEndpoints
 	SetRegistrantId(v string) *CreateAtiAgentRegisterInfoRequest
@@ -47,7 +51,8 @@ type CreateAtiAgentRegisterInfoRequest struct {
 	// example:
 	//
 	// example.com
-	AgentHost *string `json:"AgentHost,omitempty" xml:"AgentHost,omitempty"`
+	AgentHost    *string `json:"AgentHost,omitempty" xml:"AgentHost,omitempty"`
+	AgentSubHost *string `json:"AgentSubHost,omitempty" xml:"AgentSubHost,omitempty"`
 	// The version of the agent.
 	//
 	// This parameter is required.
@@ -62,6 +67,7 @@ type CreateAtiAgentRegisterInfoRequest struct {
 	//
 	// eyJhbGciOiJIUzI1NiIsInR5cC.....
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DomainMode  *string `json:"DomainMode,omitempty" xml:"DomainMode,omitempty"`
 	// The endpoint information of the agent.
 	//
 	// This parameter is required.
@@ -100,12 +106,20 @@ func (s *CreateAtiAgentRegisterInfoRequest) GetAgentHost() *string {
 	return s.AgentHost
 }
 
+func (s *CreateAtiAgentRegisterInfoRequest) GetAgentSubHost() *string {
+	return s.AgentSubHost
+}
+
 func (s *CreateAtiAgentRegisterInfoRequest) GetAgentVersion() *string {
 	return s.AgentVersion
 }
 
 func (s *CreateAtiAgentRegisterInfoRequest) GetClientToken() *string {
 	return s.ClientToken
+}
+
+func (s *CreateAtiAgentRegisterInfoRequest) GetDomainMode() *string {
+	return s.DomainMode
 }
 
 func (s *CreateAtiAgentRegisterInfoRequest) GetEndpoints() []*CreateAtiAgentRegisterInfoRequestEndpoints {
@@ -131,6 +145,11 @@ func (s *CreateAtiAgentRegisterInfoRequest) SetAgentHost(v string) *CreateAtiAge
 	return s
 }
 
+func (s *CreateAtiAgentRegisterInfoRequest) SetAgentSubHost(v string) *CreateAtiAgentRegisterInfoRequest {
+	s.AgentSubHost = &v
+	return s
+}
+
 func (s *CreateAtiAgentRegisterInfoRequest) SetAgentVersion(v string) *CreateAtiAgentRegisterInfoRequest {
 	s.AgentVersion = &v
 	return s
@@ -138,6 +157,11 @@ func (s *CreateAtiAgentRegisterInfoRequest) SetAgentVersion(v string) *CreateAti
 
 func (s *CreateAtiAgentRegisterInfoRequest) SetClientToken(v string) *CreateAtiAgentRegisterInfoRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateAtiAgentRegisterInfoRequest) SetDomainMode(v string) *CreateAtiAgentRegisterInfoRequest {
+	s.DomainMode = &v
 	return s
 }
 

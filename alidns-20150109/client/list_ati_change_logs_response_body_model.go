@@ -41,7 +41,7 @@ type ListAtiChangeLogsResponseBody struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
@@ -171,7 +171,7 @@ type ListAtiChangeLogsResponseBodyAccessDeniedDetail struct {
 	//
 	// SubUser
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encrypted diagnostic message.
+	// The encrypted complete diagnostic message.
 	//
 	// example:
 	//
@@ -179,9 +179,9 @@ type ListAtiChangeLogsResponseBodyAccessDeniedDetail struct {
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
 	// The reason for the authentication failure. Valid values:
 	//
-	// - ExplicitDeny: explicit deny.
+	// - ExplicitDeny: explicit deny
 	//
-	// - ImplicitDeny: implicit deny.
+	// - ImplicitDeny: implicit deny
 	//
 	// example:
 	//

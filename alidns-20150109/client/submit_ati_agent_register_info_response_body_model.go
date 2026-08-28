@@ -18,9 +18,9 @@ type iSubmitAtiAgentRegisterInfoResponseBody interface {
 }
 
 type SubmitAtiAgentRegisterInfoResponseBody struct {
-	// The details about the access denial. This field is returned only when the RAM authentication fails.
+	// The access denied details. This field is returned only when RAM authentication fails.
 	AccessDeniedDetail *SubmitAtiAgentRegisterInfoResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
@@ -28,17 +28,17 @@ type SubmitAtiAgentRegisterInfoResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The Agent status. Valid values:
 	//
-	// - Draft: The Agent registration form is being filled out and has not been formally submitted. In the Draft state, only modification and detail viewing are supported. Other operations are not supported.
+	// - Draft: The Agent registration form is being filled in and has not been formally submitted. In the Draft state, only modification and detail viewing operations are supported. Other operations are not supported.
 	//
-	// - Private CA Pending Issuance: The Agent registration has been formally submitted. Alibaba Cloud has completed the ACME DNS-01 pre-check and submitted the registration information along with the generated DNS records to CNNIC. The system is waiting for CNNIC to approve and issue the Private CA certificate and complete the TL sealing.
+	// - Private CA Pending Issuance: The Agent registration has been formally submitted. Alibaba Cloud has completed the ACME DNS-01 pre-check and submitted the registration information and generated DNS records to CNNIC. The system is waiting for CNNIC to approve and issue the Private CA and complete TL sealing.
 	//
-	// - DNS Pending Verification: CNNIC has approved and issued the Private CA certificate and completed the TL sealing, but the DNS records of the user have not been verified. The user needs to add the corresponding DNS records in the domain name resolution and complete the verification.
+	// - DNS Pending Verification: CNNIC has approved the request, issued the Private CA certificate, and completed TL sealing, but the DNS records of the user have not been verified. The user needs to add the corresponding DNS records in domain name resolution and complete verification.
 	//
-	// - Active: All processes are complete. The Private CA certificate has been issued, the TL has been sealed, and the DNS records have been verified. The Agent is activated and can be discovered and trusted across the network.
+	// - Active: All processes are complete. The Private CA certificate has been issued, TL has been sealed, and DNS records have been verified. The Agent is activated and can be discovered and trusted across the network.
 	//
-	// - Expired: The Agent identity certificate has expired because the user did not complete the certificate renewal within the validity period.
+	// - Expired: The Agent identity certificate has expired, and the user did not complete certificate renewal within the validity period.
 	//
-	// - Revoked: The Agent certificate has been revoked, the DNS records have been cleaned up, and the Agent can no longer be discovered or trusted. The Agent cannot be restored to the Active state.
+	// - Revoked: The Agent certificate has been revoked, DNS records have been cleaned up, and the Agent cannot be discovered or trusted. It cannot be restored to the Active state.
 	//
 	// example:
 	//
@@ -97,13 +97,13 @@ type SubmitAtiAgentRegisterInfoResponseBodyAccessDeniedDetail struct {
 	//
 	// AddRspDomainServerHoldStatusForGateway
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the authorized principal.
+	// The display name of the authorization principal.
 	//
 	// example:
 	//
 	// 2015555733387XXXX
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The owner ID of the authorized principal.
+	// The owner ID of the authorization principal.
 	//
 	// example:
 	//
@@ -115,17 +115,17 @@ type SubmitAtiAgentRegisterInfoResponseBodyAccessDeniedDetail struct {
 	//
 	// SubUser
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encrypted diagnostic message.
+	// The encrypted complete diagnostic message.
 	//
 	// example:
 	//
 	// AQEAAAAAaNIARXXXXUQwNjE0LUQzN0XXXXVEQy1BQzExLTMzXXXXNTkxRjk1Ng==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The reason why the authentication failed. Valid values:
+	// The reason for the authentication failure. Valid values:
 	//
-	// - ExplicitDeny: Explicit denial.
+	// - ExplicitDeny: explicit deny.
 	//
-	// - ImplicitDeny: Implicit denial.
+	// - ImplicitDeny: implicit deny.
 	//
 	// example:
 	//

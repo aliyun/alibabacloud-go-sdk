@@ -20,17 +20,13 @@ type iRevokeAtiAgentRegisterInfoResponseBody interface {
 type RevokeAtiAgentRegisterInfoResponseBody struct {
 	// The details about the access denial. This field is returned only when RAM authentication fails.
 	AccessDeniedDetail *RevokeAtiAgentRegisterInfoResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// - true: The request was successful.
-	//
-	// - false: The request failed.
+	// Indicates whether the request was successful. Valid values: `true`: The request was successful. `false`: The request failed.
 	//
 	// example:
 	//
@@ -89,13 +85,13 @@ type RevokeAtiAgentRegisterInfoResponseBodyAccessDeniedDetail struct {
 	//
 	// RemoveRspDomainServerHoldStatusForGatewayOte
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the authorized principal.
+	// The display name of the authorization principal.
 	//
 	// example:
 	//
 	// 2015555733387XXXX
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The owner ID of the authorized principal.
+	// The owner ID of the authorization principal.
 	//
 	// example:
 	//
@@ -107,7 +103,7 @@ type RevokeAtiAgentRegisterInfoResponseBodyAccessDeniedDetail struct {
 	//
 	// SubUser
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic message.
+	// The encrypted complete diagnostic message.
 	//
 	// example:
 	//

@@ -13,6 +13,8 @@ type iVerifyAtiAgentDnsRecordsRequest interface {
 	GetAgentRegisterInfoId() *string
 	SetClientToken(v string) *VerifyAtiAgentDnsRecordsRequest
 	GetClientToken() *string
+	SetTrustLevel(v string) *VerifyAtiAgentDnsRecordsRequest
+	GetTrustLevel() *string
 }
 
 type VerifyAtiAgentDnsRecordsRequest struct {
@@ -32,6 +34,7 @@ type VerifyAtiAgentDnsRecordsRequest struct {
 	//
 	// eyJhbGciOiJIUzI1NiIsInR5cC.....
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	TrustLevel  *string `json:"TrustLevel,omitempty" xml:"TrustLevel,omitempty"`
 }
 
 func (s VerifyAtiAgentDnsRecordsRequest) String() string {
@@ -50,6 +53,10 @@ func (s *VerifyAtiAgentDnsRecordsRequest) GetClientToken() *string {
 	return s.ClientToken
 }
 
+func (s *VerifyAtiAgentDnsRecordsRequest) GetTrustLevel() *string {
+	return s.TrustLevel
+}
+
 func (s *VerifyAtiAgentDnsRecordsRequest) SetAgentRegisterInfoId(v string) *VerifyAtiAgentDnsRecordsRequest {
 	s.AgentRegisterInfoId = &v
 	return s
@@ -57,6 +64,11 @@ func (s *VerifyAtiAgentDnsRecordsRequest) SetAgentRegisterInfoId(v string) *Veri
 
 func (s *VerifyAtiAgentDnsRecordsRequest) SetClientToken(v string) *VerifyAtiAgentDnsRecordsRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *VerifyAtiAgentDnsRecordsRequest) SetTrustLevel(v string) *VerifyAtiAgentDnsRecordsRequest {
+	s.TrustLevel = &v
 	return s
 }
 

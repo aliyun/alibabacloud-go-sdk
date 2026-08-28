@@ -26,37 +26,59 @@ type iListAtiRegistrantsRequest interface {
 }
 
 type ListAtiRegistrantsRequest struct {
+	// Ensures the idempotency of the request. Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// - If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
+	//
 	// example:
 	//
 	// eyJhbGciOiJIUzI1NiIsInR5cC.....
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The maximum number of records to return in this request.
+	//
 	// example:
 	//
 	// 500
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The name of the real-name verified registrant.
+	//
 	// example:
 	//
-	// 张xx
+	// John Doe
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The token for the next query.
+	//
 	// example:
 	//
 	// 4698691
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The current page number. Minimum value: **1**. Default value: **1**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page in a paged query. Maximum value: 100. Default value: 20.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The real-name verification status. Valid values:
+	//
+	// - Approved
+	//
+	// - Pending
+	//
+	// - Rejected
+	//
 	// example:
 	//
-	// 审核通过
+	// Approved
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

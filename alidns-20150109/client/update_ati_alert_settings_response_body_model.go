@@ -18,11 +18,20 @@ type iUpdateAtiAlertSettingsResponseBody interface {
 }
 
 type UpdateAtiAlertSettingsResponseBody struct {
+	// The details about the access denial. This parameter is returned only when RAM authentication fails.
 	AccessDeniedDetail *UpdateAtiAlertSettingsResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values:
+	//
+	// - **true**: The call was successful.
+	//
+	// - **false**: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -74,30 +83,48 @@ func (s *UpdateAtiAlertSettingsResponseBody) Validate() error {
 }
 
 type UpdateAtiAlertSettingsResponseBodyAccessDeniedDetail struct {
+	// The unauthorized operation that was attempted.
+	//
 	// example:
 	//
 	// RemoveRspDomainServerHoldStatusForGateway
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// The display name of the authorization principal.
+	//
 	// example:
 	//
 	// 2015555733387XXXX
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	// The ID of the authorization principal owner.
+	//
 	// example:
 	//
 	// 10469733312XXX
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// The identity type.
+	//
 	// example:
 	//
 	// SubUser
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// The encoded diagnostic message.
+	//
 	// example:
 	//
 	// AQEAAAAAaNIARXXXXUQwNjE0LUQzN0XXXXVEQy1BQzExLTMzXXXXNTkxRjk1Ng==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	// The reason for the authentication failure. Valid values:
+	//
+	// - ExplicitDeny: explicit deny.
+	//
+	// - ImplicitDeny: implicit deny.
+	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// The policy type.
+	//
 	// example:
 	//
 	// DlpSend

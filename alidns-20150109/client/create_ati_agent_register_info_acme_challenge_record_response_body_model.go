@@ -23,6 +23,8 @@ type iCreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody interface {
 	GetRecordType() *string
 	SetRecordValue(v string) *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody
 	GetRecordValue() *string
+	SetRecords(v *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecords) *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody
+	GetRecords() *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecords
 	SetRequestId(v string) *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody
 	GetRequestId() *string
 	SetUpdateTimestamp(v string) *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody
@@ -67,7 +69,8 @@ type CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody struct {
 	// example:
 	//
 	// YkKL7G2TRSAWRRBZ1RcAMeuRYx3Jv28o20yIGmdcYuz
-	RecordValue *string `json:"RecordValue,omitempty" xml:"RecordValue,omitempty"`
+	RecordValue *string                                                           `json:"RecordValue,omitempty" xml:"RecordValue,omitempty"`
+	Records     *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -118,6 +121,10 @@ func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody) GetRecordVal
 	return s.RecordValue
 }
 
+func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody) GetRecords() *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecords {
+	return s.Records
+}
+
 func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
@@ -161,6 +168,11 @@ func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody) SetRecordVal
 	return s
 }
 
+func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody) SetRecords(v *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecords) *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody {
+	s.Records = v
+	return s
+}
+
 func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody) SetRequestId(v string) *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody {
 	s.RequestId = &v
 	return s
@@ -174,6 +186,11 @@ func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody) SetUpdateTim
 func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBody) Validate() error {
 	if s.AccessDeniedDetail != nil {
 		if err := s.AccessDeniedDetail.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Records != nil {
+		if err := s.Records.Validate(); err != nil {
 			return err
 		}
 	}
@@ -301,5 +318,94 @@ func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyAccessDeniedDe
 }
 
 func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyAccessDeniedDetail) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecords struct {
+	Record []*CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord `json:"Record,omitempty" xml:"Record,omitempty" type:"Repeated"`
+}
+
+func (s CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecords) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecords) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecords) GetRecord() []*CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord {
+	return s.Record
+}
+
+func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecords) SetRecord(v []*CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord) *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecords {
+	s.Record = v
+	return s
+}
+
+func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecords) Validate() error {
+	if s.Record != nil {
+		for _, item := range s.Record {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord struct {
+	DomainScope *string `json:"DomainScope,omitempty" xml:"DomainScope,omitempty"`
+	RecordName  *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	RecordType  *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
+	RecordValue *string `json:"RecordValue,omitempty" xml:"RecordValue,omitempty"`
+}
+
+func (s CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord) GetDomainScope() *string {
+	return s.DomainScope
+}
+
+func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord) GetRecordName() *string {
+	return s.RecordName
+}
+
+func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord) GetRecordType() *string {
+	return s.RecordType
+}
+
+func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord) GetRecordValue() *string {
+	return s.RecordValue
+}
+
+func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord) SetDomainScope(v string) *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord {
+	s.DomainScope = &v
+	return s
+}
+
+func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord) SetRecordName(v string) *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord {
+	s.RecordName = &v
+	return s
+}
+
+func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord) SetRecordType(v string) *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord {
+	s.RecordType = &v
+	return s
+}
+
+func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord) SetRecordValue(v string) *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord {
+	s.RecordValue = &v
+	return s
+}
+
+func (s *CreateAtiAgentRegisterInfoAcmeChallengeRecordResponseBodyRecordsRecord) Validate() error {
 	return dara.Validate(s)
 }

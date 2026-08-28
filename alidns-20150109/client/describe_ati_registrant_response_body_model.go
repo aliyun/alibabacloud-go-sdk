@@ -50,15 +50,15 @@ type DescribeAtiRegistrantResponseBody struct {
 	//
 	// example:
 	//
-	// 中国
+	// China
 	Cc *string `json:"Cc,omitempty" xml:"Cc,omitempty"`
 	// The city. Default value: Hangzhou.
 	//
 	// example:
 	//
-	// 杭州市
+	// Hangzhou
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// The creation time (timestamp).
+	// The creation time (UNIX timestamp).
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type DescribeAtiRegistrantResponseBody struct {
 	//
 	// example:
 	//
-	// 张xx
+	// Zhang xx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The phone number of the registrant. The number can be up to 128 characters in length. If the country is China and the number is not a mobile phone number, the area code must match the city.
 	//
@@ -104,19 +104,19 @@ type DescribeAtiRegistrantResponseBody struct {
 	//
 	// example:
 	//
-	// 以实际返回为准
+	// Subject to the actual response
 	RejectReason *string `json:"RejectReason,omitempty" xml:"RejectReason,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// B57C121B-A45F-44D8-A9B2-13E5A5044195
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the public recursive service.
+	// The state or province.
 	//
 	// example:
 	//
-	// 浙江省
+	// Zhejiang
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 	// The real-name verification status. Valid values:
 	//
@@ -134,9 +134,9 @@ type DescribeAtiRegistrantResponseBody struct {
 	//
 	// example:
 	//
-	// xx区xx街道
+	// xx District, xx Street
 	Street *string `json:"Street,omitempty" xml:"Street,omitempty"`
-	// The update time (timestamp).
+	// The update time (UNIX timestamp).
 	//
 	// example:
 	//
@@ -330,7 +330,7 @@ type DescribeAtiRegistrantResponseBodyAccessDeniedDetail struct {
 	//
 	// SubUser
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encrypted diagnostic message.
+	// The encrypted complete diagnostic message.
 	//
 	// example:
 	//

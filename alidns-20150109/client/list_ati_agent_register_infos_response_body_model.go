@@ -33,7 +33,7 @@ type ListAtiAgentRegisterInfosResponseBody struct {
 	// The details about the access denial. This field is returned only when RAM authentication fails.
 	AccessDeniedDetail *ListAtiAgentRegisterInfosResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	AgentRegisterInfos *ListAtiAgentRegisterInfosResponseBodyAgentRegisterInfos `json:"AgentRegisterInfos,omitempty" xml:"AgentRegisterInfos,omitempty" type:"Struct"`
-	// The maximum number of entries to return in this request.
+	// The maximum number of records to return in this request.
 	//
 	// example:
 	//
@@ -45,25 +45,25 @@ type ListAtiAgentRegisterInfosResponseBody struct {
 	//
 	// 4698691
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The current page number. Minimum value: 1. Default value: 1.
+	// The current page number. The start value is 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page set for the paged query. This is the paging size. Maximum value: **100**. Default value: **20**. Settings determine how many rows are displayed per page.
+	// The number of entries per page in the Settings for the paging query. Maximum value: **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The unique request ID.
 	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -205,17 +205,17 @@ type ListAtiAgentRegisterInfosResponseBodyAccessDeniedDetail struct {
 	//
 	// SubUser
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encrypted diagnostic message.
+	// The encrypted complete diagnostic message.
 	//
 	// example:
 	//
 	// AQFohtp4aIbaeEXXXXQxNjFDLUIzMzgtNTXXXX05NkFCLUI2RkY5XXXXzAzQQ==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The cause of the authentication failure. Valid values:
+	// The reason for the authentication failure. Valid values:
 	//
-	// - ExplicitDeny: Explicit denial.
+	// - ExplicitDeny: explicit denial.
 	//
-	// - ImplicitDeny: Implicit denial.
+	// - ImplicitDeny: implicit denial.
 	//
 	// example:
 	//
@@ -348,6 +348,7 @@ type ListAtiAgentRegisterInfosResponseBodyAgentRegisterInfosAgentRegisterInfo st
 	CreateTimestamp     *string                                                                            `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
 	Endpoints           *ListAtiAgentRegisterInfosResponseBodyAgentRegisterInfosAgentRegisterInfoEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Struct"`
 	Status              *string                                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	TrustLevel          *string                                                                            `json:"TrustLevel,omitempty" xml:"TrustLevel,omitempty"`
 	UpdateTimestamp     *string                                                                            `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
 }
 
@@ -393,6 +394,10 @@ func (s *ListAtiAgentRegisterInfosResponseBodyAgentRegisterInfosAgentRegisterInf
 
 func (s *ListAtiAgentRegisterInfosResponseBodyAgentRegisterInfosAgentRegisterInfo) GetStatus() *string {
 	return s.Status
+}
+
+func (s *ListAtiAgentRegisterInfosResponseBodyAgentRegisterInfosAgentRegisterInfo) GetTrustLevel() *string {
+	return s.TrustLevel
 }
 
 func (s *ListAtiAgentRegisterInfosResponseBodyAgentRegisterInfosAgentRegisterInfo) GetUpdateTimestamp() *string {
@@ -441,6 +446,11 @@ func (s *ListAtiAgentRegisterInfosResponseBodyAgentRegisterInfosAgentRegisterInf
 
 func (s *ListAtiAgentRegisterInfosResponseBodyAgentRegisterInfosAgentRegisterInfo) SetStatus(v string) *ListAtiAgentRegisterInfosResponseBodyAgentRegisterInfosAgentRegisterInfo {
 	s.Status = &v
+	return s
+}
+
+func (s *ListAtiAgentRegisterInfosResponseBodyAgentRegisterInfosAgentRegisterInfo) SetTrustLevel(v string) *ListAtiAgentRegisterInfosResponseBodyAgentRegisterInfosAgentRegisterInfo {
+	s.TrustLevel = &v
 	return s
 }
 

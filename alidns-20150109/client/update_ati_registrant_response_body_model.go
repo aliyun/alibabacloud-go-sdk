@@ -18,7 +18,7 @@ type iUpdateAtiRegistrantResponseBody interface {
 }
 
 type UpdateAtiRegistrantResponseBody struct {
-	// The details about the access denial. This field is returned only when RAM authentication fails.
+	// The details of the access denial. This field is returned only when RAM authentication fails.
 	AccessDeniedDetail *UpdateAtiRegistrantResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -107,7 +107,7 @@ type UpdateAtiRegistrantResponseBodyAccessDeniedDetail struct {
 	//
 	// SubUser
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic message.
+	// The encoded complete diagnostic message.
 	//
 	// example:
 	//

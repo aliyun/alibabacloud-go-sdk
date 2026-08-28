@@ -36,7 +36,7 @@ type ListAtiAgentRegisterInfosRequest struct {
 	//
 	// example:
 	//
-	// 测试Agent
+	// TestAgent
 	AgentDisplayName *string `json:"AgentDisplayName,omitempty" xml:"AgentDisplayName,omitempty"`
 	// The host address of the Agent.
 	//
@@ -44,7 +44,7 @@ type ListAtiAgentRegisterInfosRequest struct {
 	//
 	// www.example.com
 	AgentHost *string `json:"AgentHost,omitempty" xml:"AgentHost,omitempty"`
-	// The Agent ID, which is uniformly assigned by CNNIC after real-name verification through CNNIC. The AgentID serves as the unique identifier that binds the Agent to the real-name verified registrant.
+	// The Agent ID, which is uniformly assigned by CNNIC after real-name verification. The AgentID serves as the unique identifier that binds the Agent to the verified registrant.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type ListAtiAgentRegisterInfosRequest struct {
 	//
 	// 1.0.0
 	AgentVersion *string `json:"AgentVersion,omitempty" xml:"AgentVersion,omitempty"`
-	// Ensures the idempotency of the request. Generate a unique parameter value from your client to ensure that the value is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length.
+	// Ensures the idempotency of the request. Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// eyJhbGciOiJIUzI1NiIsInR5cC.....
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The maximum number of entries to return in this request.
+	// The maximum number of records to return in this request.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListAtiAgentRegisterInfosRequest struct {
 	//
 	// 4698691
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The current page number. Minimum value: 1. Default value: 1.
+	// The current page number. The start value is 1. Default value: 1.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +82,7 @@ type ListAtiAgentRegisterInfosRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size for the paged query. This parameter specifies the number of entries per page for paging.
+	// The page size for the paging query.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,7 @@ type ListAtiAgentRegisterInfosRequest struct {
 	//
 	// example:
 	//
-	// 活跃
+	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

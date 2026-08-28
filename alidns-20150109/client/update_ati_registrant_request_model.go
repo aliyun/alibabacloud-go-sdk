@@ -40,23 +40,23 @@ type UpdateAtiRegistrantRequest struct {
 	//
 	// example:
 	//
-	// 中国
+	// China
 	Cc *string `json:"Cc,omitempty" xml:"Cc,omitempty"`
 	// The city.
 	//
 	// example:
 	//
-	// 杭州市
+	// Hangzhou
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// Ensures the idempotency of the request. Generate a unique parameter value from your client to ensure that the value is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length.
+	// Ensures the idempotency of the request. Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters.
 	//
-	// If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
+	// If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
 	//
 	// example:
 	//
 	// eyJhbGciOiJIUzI1NiIsInR5cC.....
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The document number of the registrant. Maximum length: 50 characters.
+	// The document number of the registrant. The number cannot exceed 50 characters in length.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type UpdateAtiRegistrantRequest struct {
 	//
 	// example:
 	//
-	// 证件图片
+	// Document image
 	DocumentImage *string `json:"DocumentImage,omitempty" xml:"DocumentImage,omitempty"`
 	// The document type of the registrant. For more information, see the appendix on document types.
 	//
@@ -74,25 +74,25 @@ type UpdateAtiRegistrantRequest struct {
 	//
 	// SFZ
 	DocumentType *string `json:"DocumentType,omitempty" xml:"DocumentType,omitempty"`
-	// The email address. Maximum length: 300 characters.
+	// The email address. The address cannot exceed 300 characters in length.
 	//
 	// example:
 	//
 	// example@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// The name of the registrant. Maximum length: 255 characters.
+	// The name of the registrant. The name cannot exceed 255 characters in length.
 	//
 	// example:
 	//
-	// 张xx
+	// Zhang XX
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The phone number of the registrant. Maximum length: 128 characters. If the country is China, the area code of a non-mobile phone number must match the city.
+	// The phone number of the registrant. The number cannot exceed 128 characters in length. If the country is China and the number is not a mobile phone number, the area code must match the city.
 	//
 	// example:
 	//
 	// 13112345678
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	// The ID of the registrant profile.
+	// The ID of the real-name registrant.
 	//
 	// example:
 	//
@@ -102,13 +102,13 @@ type UpdateAtiRegistrantRequest struct {
 	//
 	// example:
 	//
-	// 浙江省
+	// Zhejiang
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The street.
+	// The street address.
 	//
 	// example:
 	//
-	// xx区xx街道
+	// XX District, XX Street
 	Street *string `json:"Street,omitempty" xml:"Street,omitempty"`
 }
 

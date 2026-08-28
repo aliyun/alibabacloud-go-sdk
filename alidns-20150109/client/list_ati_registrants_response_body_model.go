@@ -30,32 +30,47 @@ type iListAtiRegistrantsResponseBody interface {
 }
 
 type ListAtiRegistrantsResponseBody struct {
+	// The details of the access denial. This field is returned only when RAM authentication fails.
 	AccessDeniedDetail *ListAtiRegistrantsResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
+	// The maximum number of records to return in this request.
+	//
 	// example:
 	//
 	// 500
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next query.
+	//
 	// example:
 	//
 	// 4698691
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The current page number. Minimum value: 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of rows per page in a paged query. Maximum value: 100. Default value: 20.
+	//
 	// example:
 	//
 	// 2
 	PageSize    *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Registrants *ListAtiRegistrantsResponseBodyRegistrants `json:"Registrants,omitempty" xml:"Registrants,omitempty" type:"Struct"`
+	// The unique request ID.
+	//
 	// example:
 	//
 	// B57C121B-A45F-44D8-A9B2-XXXXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 224
 	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 11
@@ -166,30 +181,48 @@ func (s *ListAtiRegistrantsResponseBody) Validate() error {
 }
 
 type ListAtiRegistrantsResponseBodyAccessDeniedDetail struct {
+	// The unauthorized operation that was attempted.
+	//
 	// example:
 	//
 	// AddRspDomainServerHoldStatusForGatewayOte
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// The display name of the authorization principal.
+	//
 	// example:
 	//
 	// 2015555733387XXXX
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	// The owner ID of the authorization principal.
+	//
 	// example:
 	//
 	// 10469733312XXX
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// The identity type.
+	//
 	// example:
 	//
 	// SubUser
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// The encrypted complete diagnostic message.
+	//
 	// example:
 	//
 	// AQEAAAAAaNIARXXXXUQwNjE0LUQzN0XXXXVEQy1BQzExLTMzXXXXNTkxRjk1Ng==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	// The reason for the authentication failure. Valid values:
+	//
+	// - ExplicitDeny: explicit deny.
+	//
+	// - ImplicitDeny: implicit deny.
+	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// The policy type.
+	//
 	// example:
 	//
 	// DlpSend
