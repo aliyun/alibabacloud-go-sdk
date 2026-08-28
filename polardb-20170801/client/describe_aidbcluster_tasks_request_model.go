@@ -15,6 +15,10 @@ type iDescribeAIDBClusterTasksRequest interface {
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *DescribeAIDBClusterTasksRequest
 	GetOwnerId() *int64
+	SetPageNumber(v int64) *DescribeAIDBClusterTasksRequest
+	GetPageNumber() *int64
+	SetPageSize(v int64) *DescribeAIDBClusterTasksRequest
+	GetPageSize() *int64
 	SetRegionId(v string) *DescribeAIDBClusterTasksRequest
 	GetRegionId() *string
 	SetRelativeDBClusterId(v string) *DescribeAIDBClusterTasksRequest
@@ -34,6 +38,10 @@ type DescribeAIDBClusterTasksRequest struct {
 	KubeType     *string `json:"KubeType,omitempty" xml:"KubeType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of items per page.
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -70,6 +78,14 @@ func (s *DescribeAIDBClusterTasksRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
 
+func (s *DescribeAIDBClusterTasksRequest) GetPageNumber() *int64 {
+	return s.PageNumber
+}
+
+func (s *DescribeAIDBClusterTasksRequest) GetPageSize() *int64 {
+	return s.PageSize
+}
+
 func (s *DescribeAIDBClusterTasksRequest) GetRegionId() *string {
 	return s.RegionId
 }
@@ -98,6 +114,16 @@ func (s *DescribeAIDBClusterTasksRequest) SetOwnerAccount(v string) *DescribeAID
 
 func (s *DescribeAIDBClusterTasksRequest) SetOwnerId(v int64) *DescribeAIDBClusterTasksRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterTasksRequest) SetPageNumber(v int64) *DescribeAIDBClusterTasksRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterTasksRequest) SetPageSize(v int64) *DescribeAIDBClusterTasksRequest {
+	s.PageSize = &v
 	return s
 }
 

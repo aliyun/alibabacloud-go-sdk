@@ -145,6 +145,16 @@ type DescribeKnowledgeBasesResponseBodyItems struct {
 	//
 	// pkb-xxxxxx
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
+	// The type of the knowledge base. Valid values:
+	//
+	// - PUBLIC: public.
+	//
+	// - PERSONAL: personal.
+	//
+	// example:
+	//
+	// PUBLIC
+	KnowledgeBaseType *string `json:"KnowledgeBaseType,omitempty" xml:"KnowledgeBaseType,omitempty"`
 	// The ID of the knowledge space.
 	//
 	// example:
@@ -201,6 +211,10 @@ func (s *DescribeKnowledgeBasesResponseBodyItems) GetKnowledgeBaseId() *string {
 	return s.KnowledgeBaseId
 }
 
+func (s *DescribeKnowledgeBasesResponseBodyItems) GetKnowledgeBaseType() *string {
+	return s.KnowledgeBaseType
+}
+
 func (s *DescribeKnowledgeBasesResponseBodyItems) GetKnowledgeSpaceId() *string {
 	return s.KnowledgeSpaceId
 }
@@ -238,6 +252,11 @@ func (s *DescribeKnowledgeBasesResponseBodyItems) SetDescription(v string) *Desc
 
 func (s *DescribeKnowledgeBasesResponseBodyItems) SetKnowledgeBaseId(v string) *DescribeKnowledgeBasesResponseBodyItems {
 	s.KnowledgeBaseId = &v
+	return s
+}
+
+func (s *DescribeKnowledgeBasesResponseBodyItems) SetKnowledgeBaseType(v string) *DescribeKnowledgeBasesResponseBodyItems {
+	s.KnowledgeBaseType = &v
 	return s
 }
 

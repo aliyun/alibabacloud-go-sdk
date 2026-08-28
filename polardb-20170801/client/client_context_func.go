@@ -10446,13 +10446,13 @@ func (client *Client) DescribeAIDBClusterTaskMetricsWithContext(ctx context.Cont
 
 // Summary:
 //
-// Retrieves the list of model operators for a specified PolarDB database instance.
+// Retrieves the list of template operators for a specified PolarDB database instance.
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
-// - This operation supports filtering and returning the list of model operators based on the `RelativeDBClusterId` and `KubeType` parameters.
+// - This operation supports filtering and returning the list of template operators based on the `RelativeDBClusterId` and `KubeType` parameters.
 //
 // - Note: Ensure that the `RelativeDBClusterId` provided in the request matches an existing PolarDB database instance ID. Otherwise, data cannot be retrieved correctly.
 //
@@ -10479,6 +10479,14 @@ func (client *Client) DescribeAIDBClusterTasksWithContext(ctx context.Context, r
 
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -11778,11 +11786,11 @@ func (client *Client) DescribeApikeyAttributeWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Retrieves the detailed information of a specified PolarDB application.
+// Retrieves the details of a specified PolarDB instance application.
 //
 // Description:
 //
-// This API is used to query all related information of a specific PolarDB application, including but not limited to component details and endpoints.
+// This API operation queries all information about a specific PolarDB application, including but not limited to component details and endpoints.
 //
 // @param request - DescribeApplicationAttributeRequest
 //
@@ -12116,6 +12124,50 @@ func (client *Client) DescribeApplicationPromptsWithContext(ctx context.Context,
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeApplicationPromptsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the SSL configuration of an application.
+//
+// @param request - DescribeApplicationSSLRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApplicationSSLResponse
+func (client *Client) DescribeApplicationSSLWithContext(ctx context.Context, request *DescribeApplicationSSLRequest, runtime *dara.RuntimeOptions) (_result *DescribeApplicationSSLResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeApplicationSSL"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeApplicationSSLResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -17680,7 +17732,7 @@ func (client *Client) DescribeKnowledgeBaseAttributeWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries a list of knowledge bases.
+// Queries the list of knowledge bases.
 //
 // @param request - DescribeKnowledgeBasesRequest
 //
@@ -21012,7 +21064,7 @@ func (client *Client) DescribeVSwitchListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries one or more vSwitches.
+// 查询交换机
 //
 // @param request - DescribeVSwitchesRequest
 //

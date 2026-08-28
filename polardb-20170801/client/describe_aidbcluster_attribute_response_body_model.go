@@ -39,6 +39,8 @@ type iDescribeAIDBClusterAttributeResponseBody interface {
 	GetExpired() *bool
 	SetGatewayId(v string) *DescribeAIDBClusterAttributeResponseBody
 	GetGatewayId() *string
+	SetInferenceEngine(v string) *DescribeAIDBClusterAttributeResponseBody
+	GetInferenceEngine() *string
 	SetInternalIp(v string) *DescribeAIDBClusterAttributeResponseBody
 	GetInternalIp() *string
 	SetKVCacheInstanceId(v string) *DescribeAIDBClusterAttributeResponseBody
@@ -90,11 +92,11 @@ type iDescribeAIDBClusterAttributeResponseBody interface {
 type DescribeAIDBClusterAttributeResponseBody struct {
 	// The node type. Valid values:
 	//
-	// - vnode: managed by ACK
+	// - vnode: ACK-managed.
 	//
-	// - container: loginable container
+	// - container: loginable container.
 	//
-	// - maas: model service
+	// - maas: model service.
 	//
 	// example:
 	//
@@ -126,19 +128,19 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The cluster status. Valid values:
 	//
-	// - **Creating**: being created.
+	// - **Creating**: Being created.
 	//
-	// - **Running**: running.
+	// - **Running**: Running.
 	//
-	// - **Deleting**: being released.
+	// - **Deleting**: Being released.
 	//
-	// - **DBNodeCreating**: a node is being added.
+	// - **DBNodeCreating**: Adding a node.
 	//
-	// - **DBNodeDeleting**: a node is being deleted.
+	// - **DBNodeDeleting**: Deleting a node.
 	//
-	// - **ClassChanging**: node specifications are being changed.
+	// - **ClassChanging**: Changing node specifications.
 	//
-	// - **Deleted**: released.
+	// - **Deleted**: Released.
 	//
 	// example:
 	//
@@ -148,6 +150,12 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	// The node information.
 	DBNodes []*DescribeAIDBClusterAttributeResponseBodyDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Repeated"`
 	// The cluster version. Valid values:
+	//
+	// **1.0**
+	//
+	// **2.0**
+	//
+	// **3.0**
 	//
 	// example:
 	//
@@ -162,9 +170,9 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	EcsSecurityGroupId *string `json:"EcsSecurityGroupId,omitempty" xml:"EcsSecurityGroupId,omitempty"`
 	// The list of network connection addresses of the instance.
 	EndpointList []*DescribeAIDBClusterAttributeResponseBodyEndpointList `json:"EndpointList,omitempty" xml:"EndpointList,omitempty" type:"Repeated"`
-	// The expiration time of the cluster.
+	// The cluster expiration time.
 	//
-	// > Only clusters whose billing method is **Prepaid*	- (subscription) return a specific value for this parameter. **Postpaid*	- (pay-as-you-go) clusters return an empty value.
+	// > Only clusters with the billing method set to **Prepaid*	- (subscription) return a specific value. **Postpaid*	- (pay-as-you-go) clusters return an empty value.
 	//
 	// example:
 	//
@@ -172,11 +180,16 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Indicates whether the cluster has expired. Valid values:
 	//
+	// - **true**
+	//
+	// - **false**
+	//
 	// example:
 	//
 	// false
-	Expired   *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	Expired         *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	GatewayId       *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	InferenceEngine *string `json:"InferenceEngine,omitempty" xml:"InferenceEngine,omitempty"`
 	// The internal IP address.
 	//
 	// example:
@@ -251,11 +264,31 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The architecture type. Valid values:
 	//
+	// - container: AI container.
+	//
+	// - ainode: AI node.
+	//
 	// example:
 	//
 	// container
 	RunType *string `json:"RunType,omitempty" xml:"RunType,omitempty"`
 	// The storage type for Enterprise Edition. Valid values:
+	//
+	// - **PSL5**
+	//
+	// - **PSL4**
+	//
+	// The storage type for Standard Edition. Valid values:
+	//
+	// - **ESSDPL0**
+	//
+	// - **ESSDPL1**
+	//
+	// - **ESSDPL2**
+	//
+	// - **ESSDPL3**
+	//
+	// - **ESSDAUTOPL**
 	//
 	// example:
 	//
@@ -271,6 +304,8 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The vSwitch ID.
 	//
+	// > If VPCId is specified, VSwitchId is required.
+	//
 	// example:
 	//
 	// vsw-*********************
@@ -284,7 +319,7 @@ type DescribeAIDBClusterAttributeResponseBody struct {
 	//
 	// cn-hangzhou-d
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The zone IDs.
+	// The zone ID.
 	//
 	// example:
 	//
@@ -358,6 +393,10 @@ func (s *DescribeAIDBClusterAttributeResponseBody) GetExpired() *bool {
 
 func (s *DescribeAIDBClusterAttributeResponseBody) GetGatewayId() *string {
 	return s.GatewayId
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBody) GetInferenceEngine() *string {
+	return s.InferenceEngine
 }
 
 func (s *DescribeAIDBClusterAttributeResponseBody) GetInternalIp() *string {
@@ -524,6 +563,11 @@ func (s *DescribeAIDBClusterAttributeResponseBody) SetExpired(v bool) *DescribeA
 
 func (s *DescribeAIDBClusterAttributeResponseBody) SetGatewayId(v string) *DescribeAIDBClusterAttributeResponseBody {
 	s.GatewayId = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterAttributeResponseBody) SetInferenceEngine(v string) *DescribeAIDBClusterAttributeResponseBody {
+	s.InferenceEngine = &v
 	return s
 }
 
@@ -724,19 +768,19 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodes struct {
 	//
 	// 	- **Deleting**: Being deleted.
 	//
-	// 	- **Rebooting**: Being restarted.
+	// 	- **Rebooting**: Restarting.
 	//
-	// 	- **DBNodeCreating**: A node is being added.
+	// 	- **DBNodeCreating**: Adding a node.
 	//
-	// 	- **DBNodeDeleting**: A node is being deleted.
+	// 	- **DBNodeDeleting**: Deleting a node.
 	//
-	// 	- **ClassChanging**: The node specifications are being changed.
+	// 	- **ClassChanging**: Changing node specifications.
 	//
-	// 	- **MinorVersionUpgrading**: A minor engine version update is in progress.
+	// 	- **MinorVersionUpgrading**: Performing a minor version upgrade.
 	//
-	// 	- **Maintaining**: The instance is under maintenance.
+	// 	- **Maintaining**: Under maintenance.
 	//
-	// 	- **Switching**: A switchover is in progress.
+	// 	- **Switching**: Switching.
 	//
 	// example:
 	//
@@ -991,7 +1035,7 @@ type DescribeAIDBClusterAttributeResponseBodyDBNodesChildVolumes struct {
 	//
 	// jueming
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The storage disk size.
+	// The storage size.
 	//
 	// example:
 	//
@@ -1162,13 +1206,13 @@ func (s *DescribeAIDBClusterAttributeResponseBodyEndpointList) Validate() error 
 }
 
 type DescribeAIDBClusterAttributeResponseBodyEndpointListNetInfoItems struct {
-	// The database endpoint.
+	// The database connection address.
 	//
 	// example:
 	//
 	// pc-**********.rwlb.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The network type of the endpoint. Valid values:
+	// The network type of the connection string. Valid values:
 	//
 	// 	- **Public**: public endpoint.
 	//
@@ -1430,7 +1474,7 @@ func (s *DescribeAIDBClusterAttributeResponseBodyVnodeKubernetesConfigTaints) Va
 }
 
 type DescribeAIDBClusterAttributeResponseBodyVolumes struct {
-	// The mount path in the container.
+	// The mount path inside the container.
 	//
 	// example:
 	//

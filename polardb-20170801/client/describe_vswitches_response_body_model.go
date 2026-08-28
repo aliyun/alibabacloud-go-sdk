@@ -22,32 +22,11 @@ type iDescribeVSwitchesResponseBody interface {
 }
 
 type DescribeVSwitchesResponseBody struct {
-	// The current page number.
-	//
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries on the current page.
-	//
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 9A572171-4E27-40D1-BD36-D26C9E71E29E
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries in the list.
-	//
-	// example:
-	//
-	// 1
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of vSwitches.
-	VSwitchs []*DescribeVSwitchesResponseBodyVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
+	PageNumber *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	VSwitchs   []*DescribeVSwitchesResponseBodyVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
 }
 
 func (s DescribeVSwitchesResponseBody) String() string {
@@ -117,62 +96,14 @@ func (s *DescribeVSwitchesResponseBody) Validate() error {
 }
 
 type DescribeVSwitchesResponseBodyVSwitchs struct {
-	// The number of available IP addresses in the vSwitch.
-	//
-	// example:
-	//
-	// 1
-	AvailableIpAddressCount *int64 `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
-	// The IPv4 CIDR block of the vSwitch.
-	//
-	// example:
-	//
-	// 172.16.0.0/24
-	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The description of the vSwitch.
-	//
-	// example:
-	//
-	// vSwitchDescription
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the vSwitch is the default vSwitch. Valid values:
-	//
-	// - **true**: The vSwitch is the default vSwitch.
-	//
-	// - **false**: The vSwitch is not the default vSwitch.
-	//
-	// example:
-	//
-	// true
-	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The zone where the NAT Gateway is located.
-	//
-	// example:
-	//
-	// cn-hangzhou-b
-	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
-	// The status of the vSwitch. Valid values:
-	//
-	// - **Pending**: The vSwitch is being configured.
-	//
-	// - **Available**: The vSwitch is active.
-	//
-	// example:
-	//
-	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the vSwitch.
-	//
-	// example:
-	//
-	// vsw-25bcdxs7pv1****
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The name of the vSwitch.
-	//
-	// example:
-	//
-	// vSwitch
-	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
+	AvailableIpAddressCount *int64  `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
+	CidrBlock               *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IsDefault               *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	IzNo                    *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
+	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VSwitchId               *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchName             *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 }
 
 func (s DescribeVSwitchesResponseBodyVSwitchs) String() string {

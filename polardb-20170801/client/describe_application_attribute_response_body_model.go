@@ -101,8 +101,9 @@ type DescribeApplicationAttributeResponseBody struct {
 	// example:
 	//
 	// x86
-	Architecture   *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	CanDisableSnat *bool   `json:"CanDisableSnat,omitempty" xml:"CanDisableSnat,omitempty"`
+	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	// Indicates whether SNAT can be disabled.
+	CanDisableSnat *bool `json:"CanDisableSnat,omitempty" xml:"CanDisableSnat,omitempty"`
 	// The list of subcomponents.
 	Components []*DescribeApplicationAttributeResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	// The creation time.
@@ -123,11 +124,11 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// myapp
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of endpoints of the application.
+	// The list of endpoints for the application.
 	Endpoints []*DescribeApplicationAttributeResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 	// The expiration time.
 	//
-	// This value is empty when the billing method is Postpaid.
+	// This value is empty when the billing type is Postpaid.
 	//
 	// example:
 	//
@@ -139,7 +140,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// false
 	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// Indicates whether the current version is the latest version.
+	// Indicates whether this is the latest version.
 	//
 	// example:
 	//
@@ -161,13 +162,13 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// Unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The end time of the maintenance window.
+	// The maintenance end time.
 	//
 	// example:
 	//
 	// 19:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the maintenance window.
+	// The maintenance start time.
 	//
 	// example:
 	//
@@ -181,11 +182,13 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// v2026.3.13-1#20260320
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	// The NAT gateway ID.
+	//
 	// example:
 	//
 	// pc-xxx
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The billing method.
+	// The billing type.
 	//
 	// example:
 	//
@@ -193,7 +196,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The PolarClaw SaaS application attributes.
 	PolarClawSaaSApplicationAttribute *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute `json:"PolarClawSaaSApplicationAttribute,omitempty" xml:"PolarClawSaaSApplicationAttribute,omitempty" type:"Struct"`
-	// The instance ID of PolarFS cold storage or high-performance edition.
+	// The instance ID of PolarFS Cold Storage Edition or High Performance Edition.
 	//
 	// example:
 	//
@@ -211,9 +214,9 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of security groups at the application level.
+	// The list of application-level security groups.
 	SecurityGroups []*DescribeApplicationAttributeResponseBodySecurityGroups `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
-	// The list of whitelists at the application level.
+	// The list of application-level whitelists.
 	SecurityIPArrays []*DescribeApplicationAttributeResponseBodySecurityIPArrays `json:"SecurityIPArrays,omitempty" xml:"SecurityIPArrays,omitempty" type:"Repeated"`
 	// The serverless type. Valid values:
 	//
@@ -225,6 +228,8 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// 2
 	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
+	// The SNAT status. Valid values: on and off.
+	//
 	// example:
 	//
 	// off
@@ -237,17 +242,17 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// - Maintaining: Under maintenance.
 	//
-	// - ClassChanging: Changing specifications.
+	// - ClassChanging: Configuration is being changed.
 	//
 	// - Transing: Being migrated.
 	//
-	// - MinorVersionUpgrading: Minor version being upgraded.
+	// - MinorVersionUpgrading: Minor version is being upgraded.
 	//
-	// - NetCreating: Endpoint being created.
+	// - NetCreating: Endpoint is being created.
 	//
-	// - NetDeleting: Endpoint being deleted.
+	// - NetDeleting: Endpoint is being deleted.
 	//
-	// - NetModifying: Endpoint being modified.
+	// - NetModifying: Endpoint is being modified.
 	//
 	// - Restarting: Being restarted.
 	//
@@ -722,13 +727,13 @@ type DescribeApplicationAttributeResponseBodyComponents struct {
 	//
 	// gateway
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	// The list of security groups at the subcomponent level.
+	// The list of subcomponent-level security groups.
 	//
-	// If the security groups at the subcomponent level are the same as those at the application level, this response element is omitted.
+	// If the subcomponent-level security groups are the same as the application-level security groups, this response element is omitted.
 	SecurityGroups []*DescribeApplicationAttributeResponseBodyComponentsSecurityGroups `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
-	// The list of whitelists at the subcomponent level.
+	// The list of subcomponent-level whitelist addresses.
 	//
-	// If the whitelists at the subcomponent level are the same as those at the application level, this response element is omitted.
+	// If the subcomponent-level whitelists are the same as the application-level whitelists, this response element is omitted.
 	SecurityIPArrays []*DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays `json:"SecurityIPArrays,omitempty" xml:"SecurityIPArrays,omitempty" type:"Repeated"`
 	// The component status. Valid values are the same as the application status.
 	//
@@ -889,7 +894,7 @@ type DescribeApplicationAttributeResponseBodyComponentsSecurityGroups struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the security group.
+	// The security group ID.
 	//
 	// example:
 	//
@@ -964,7 +969,7 @@ type DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays struct {
 	//
 	// mytag
 	SecurityIPArrayTag *string `json:"SecurityIPArrayTag,omitempty" xml:"SecurityIPArrayTag,omitempty"`
-	// The IP addresses in the whitelist, separated by commas (,).
+	// The whitelisted IP addresses, separated by commas (,).
 	//
 	// example:
 	//
@@ -1042,7 +1047,7 @@ func (s *DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays) Val
 }
 
 type DescribeApplicationAttributeResponseBodyComponentsTopology struct {
-	// The list of child node IDs or child node component types in the topology of the current application subcomponent.
+	// The list of topology child node IDs or child node subcomponent types of the current application subcomponent.
 	Children []*string `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
 	// The topology layer of the current application subcomponent.
 	//
@@ -1050,7 +1055,7 @@ type DescribeApplicationAttributeResponseBodyComponentsTopology struct {
 	//
 	// 0
 	Layer *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
-	// The list of parent node IDs or parent node component types in the topology of the current application subcomponent.
+	// The list of topology parent node IDs or parent node subcomponent types of the current application subcomponent.
 	Parents []*string `json:"Parents,omitempty" xml:"Parents,omitempty" type:"Repeated"`
 }
 
@@ -1225,6 +1230,8 @@ type DescribeApplicationAttributeResponseBodyMemApplicationAttribute struct {
 	//
 	// text-embedding-v4
 	EmbedderModelName *string `json:"EmbedderModelName,omitempty" xml:"EmbedderModelName,omitempty"`
+	// The graph LLM model support.
+	//
 	// example:
 	//
 	// qwen3-max
@@ -1247,6 +1254,8 @@ type DescribeApplicationAttributeResponseBodyMemApplicationAttribute struct {
 	//
 	// qwen3-rerank
 	RerankerModelName *string `json:"RerankerModelName,omitempty" xml:"RerankerModelName,omitempty"`
+	// The Mem0 full session information storage configuration.
+	SessionStore *DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore `json:"SessionStore,omitempty" xml:"SessionStore,omitempty" type:"Struct"`
 	// The username.
 	//
 	// example:
@@ -1287,6 +1296,10 @@ func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) GetRer
 	return s.RerankerModelName
 }
 
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) GetSessionStore() *DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore {
+	return s.SessionStore
+}
+
 func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) GetUserName() *string {
 	return s.UserName
 }
@@ -1321,12 +1334,97 @@ func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) SetRer
 	return s
 }
 
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) SetSessionStore(v *DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore) *DescribeApplicationAttributeResponseBodyMemApplicationAttribute {
+	s.SessionStore = v
+	return s
+}
+
 func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) SetUserName(v string) *DescribeApplicationAttributeResponseBodyMemApplicationAttribute {
 	s.UserName = &v
 	return s
 }
 
 func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttribute) Validate() error {
+	if s.SessionStore != nil {
+		if err := s.SessionStore.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore struct {
+	// The account source. Valid values: reuse_vector and existing. This parameter is returned only when the status is ENABLED.
+	//
+	// example:
+	//
+	// existing
+	AccountMode *string `json:"AccountMode,omitempty" xml:"AccountMode,omitempty"`
+	// The PolarDB cluster ID used for session storage. This parameter is returned only when the status is ENABLED.
+	//
+	// example:
+	//
+	// pc-xxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The session database name. This parameter is returned only when the status is ENABLED.
+	//
+	// example:
+	//
+	// contextdb_example
+	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The session storage status. Valid values: DISABLED, ENABLING, ENABLED, and DISABLING.
+	//
+	// example:
+	//
+	// ENABLED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore) GetAccountMode() *string {
+	return s.AccountMode
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore) GetDBClusterId() *string {
+	return s.DBClusterId
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore) GetDBName() *string {
+	return s.DBName
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore) GetStatus() *string {
+	return s.Status
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore) SetAccountMode(v string) *DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore {
+	s.AccountMode = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore) SetDBClusterId(v string) *DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore) SetDBName(v string) *DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore {
+	s.DBName = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore) SetStatus(v string) *DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore) Validate() error {
 	return dara.Validate(s)
 }
 
@@ -1400,7 +1498,7 @@ type DescribeApplicationAttributeResponseBodySecurityGroups struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the security group.
+	// The security group ID.
 	//
 	// example:
 	//
@@ -1475,7 +1573,7 @@ type DescribeApplicationAttributeResponseBodySecurityIPArrays struct {
 	//
 	// mytag
 	SecurityIPArrayTag *string `json:"SecurityIPArrayTag,omitempty" xml:"SecurityIPArrayTag,omitempty"`
-	// The IP addresses in the whitelist, separated by commas (,).
+	// The whitelisted IP addresses, separated by commas (,).
 	//
 	// example:
 	//

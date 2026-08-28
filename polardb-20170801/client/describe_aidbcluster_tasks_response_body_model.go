@@ -15,12 +15,20 @@ type iDescribeAIDBClusterTasksResponseBody interface {
 	GetEngineVersion() *string
 	SetItems(v []*DescribeAIDBClusterTasksResponseBodyItems) *DescribeAIDBClusterTasksResponseBody
 	GetItems() []*DescribeAIDBClusterTasksResponseBodyItems
+	SetPageNumber(v int64) *DescribeAIDBClusterTasksResponseBody
+	GetPageNumber() *int64
+	SetPageRecordCount(v string) *DescribeAIDBClusterTasksResponseBody
+	GetPageRecordCount() *string
+	SetPageSize(v string) *DescribeAIDBClusterTasksResponseBody
+	GetPageSize() *string
 	SetRelativeDBClusterId(v string) *DescribeAIDBClusterTasksResponseBody
 	GetRelativeDBClusterId() *string
 	SetRequestId(v string) *DescribeAIDBClusterTasksResponseBody
 	GetRequestId() *string
 	SetTaskType(v string) *DescribeAIDBClusterTasksResponseBody
 	GetTaskType() *string
+	SetTotalRecordCount(v string) *DescribeAIDBClusterTasksResponseBody
+	GetTotalRecordCount() *string
 }
 
 type DescribeAIDBClusterTasksResponseBody struct {
@@ -38,6 +46,12 @@ type DescribeAIDBClusterTasksResponseBody struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The cluster endpoint details.
 	Items []*DescribeAIDBClusterTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The total number of records on the current page.
+	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The number of records per page.
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the PolarDB cluster.
 	//
 	// example:
@@ -56,6 +70,8 @@ type DescribeAIDBClusterTasksResponseBody struct {
 	//
 	// train
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The total number of records.
+	TotalRecordCount *string `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s DescribeAIDBClusterTasksResponseBody) String() string {
@@ -78,6 +94,18 @@ func (s *DescribeAIDBClusterTasksResponseBody) GetItems() []*DescribeAIDBCluster
 	return s.Items
 }
 
+func (s *DescribeAIDBClusterTasksResponseBody) GetPageNumber() *int64 {
+	return s.PageNumber
+}
+
+func (s *DescribeAIDBClusterTasksResponseBody) GetPageRecordCount() *string {
+	return s.PageRecordCount
+}
+
+func (s *DescribeAIDBClusterTasksResponseBody) GetPageSize() *string {
+	return s.PageSize
+}
+
 func (s *DescribeAIDBClusterTasksResponseBody) GetRelativeDBClusterId() *string {
 	return s.RelativeDBClusterId
 }
@@ -88,6 +116,10 @@ func (s *DescribeAIDBClusterTasksResponseBody) GetRequestId() *string {
 
 func (s *DescribeAIDBClusterTasksResponseBody) GetTaskType() *string {
 	return s.TaskType
+}
+
+func (s *DescribeAIDBClusterTasksResponseBody) GetTotalRecordCount() *string {
+	return s.TotalRecordCount
 }
 
 func (s *DescribeAIDBClusterTasksResponseBody) SetEngine(v string) *DescribeAIDBClusterTasksResponseBody {
@@ -105,6 +137,21 @@ func (s *DescribeAIDBClusterTasksResponseBody) SetItems(v []*DescribeAIDBCluster
 	return s
 }
 
+func (s *DescribeAIDBClusterTasksResponseBody) SetPageNumber(v int64) *DescribeAIDBClusterTasksResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterTasksResponseBody) SetPageRecordCount(v string) *DescribeAIDBClusterTasksResponseBody {
+	s.PageRecordCount = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterTasksResponseBody) SetPageSize(v string) *DescribeAIDBClusterTasksResponseBody {
+	s.PageSize = &v
+	return s
+}
+
 func (s *DescribeAIDBClusterTasksResponseBody) SetRelativeDBClusterId(v string) *DescribeAIDBClusterTasksResponseBody {
 	s.RelativeDBClusterId = &v
 	return s
@@ -117,6 +164,11 @@ func (s *DescribeAIDBClusterTasksResponseBody) SetRequestId(v string) *DescribeA
 
 func (s *DescribeAIDBClusterTasksResponseBody) SetTaskType(v string) *DescribeAIDBClusterTasksResponseBody {
 	s.TaskType = &v
+	return s
+}
+
+func (s *DescribeAIDBClusterTasksResponseBody) SetTotalRecordCount(v string) *DescribeAIDBClusterTasksResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -152,7 +204,7 @@ type DescribeAIDBClusterTasksResponseBodyItems struct {
 	//
 	// test
 	DBNodeDescription *string `json:"DBNodeDescription,omitempty" xml:"DBNodeDescription,omitempty"`
-	// The instance ID of the model operator.
+	// The template operator instance ID.
 	//
 	// example:
 	//
@@ -230,7 +282,8 @@ type DescribeAIDBClusterTasksResponseBodyItems struct {
 	//
 	// lora
 	TrainType *string `json:"TrainType,omitempty" xml:"TrainType,omitempty"`
-	TuneArch  *string `json:"TuneArch,omitempty" xml:"TuneArch,omitempty"`
+	// The tuning framework.
+	TuneArch *string `json:"TuneArch,omitempty" xml:"TuneArch,omitempty"`
 }
 
 func (s DescribeAIDBClusterTasksResponseBodyItems) String() string {
