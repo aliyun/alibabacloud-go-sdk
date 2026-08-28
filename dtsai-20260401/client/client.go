@@ -161,6 +161,10 @@ func (client *Client) AuthorizeFileUploadWithOptions(request *AuthorizeFileUploa
 		query["AgentName"] = request.AgentName
 	}
 
+	if !dara.IsNil(request.BatchSize) {
+		query["BatchSize"] = request.BatchSize
+	}
+
 	if !dara.IsNil(request.FileFormat) {
 		query["FileFormat"] = request.FileFormat
 	}

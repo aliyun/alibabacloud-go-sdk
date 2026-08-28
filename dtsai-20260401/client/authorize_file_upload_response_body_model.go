@@ -11,6 +11,8 @@ type iAuthorizeFileUploadResponseBody interface {
 	GoString() string
 	SetAccessKeyId(v string) *AuthorizeFileUploadResponseBody
 	GetAccessKeyId() *string
+	SetAuthorizations(v []*AuthorizeFileUploadResponseBodyAuthorizations) *AuthorizeFileUploadResponseBody
+	GetAuthorizations() []*AuthorizeFileUploadResponseBodyAuthorizations
 	SetBucket(v string) *AuthorizeFileUploadResponseBody
 	GetBucket() *string
 	SetEncodedPolicy(v string) *AuthorizeFileUploadResponseBody
@@ -21,6 +23,8 @@ type iAuthorizeFileUploadResponseBody interface {
 	GetErrorCode() *string
 	SetErrorMessage(v string) *AuthorizeFileUploadResponseBody
 	GetErrorMessage() *string
+	SetExpireTime(v int64) *AuthorizeFileUploadResponseBody
+	GetExpireTime() *int64
 	SetHttpStatusCode(v int32) *AuthorizeFileUploadResponseBody
 	GetHttpStatusCode() *int32
 	SetObjectKey(v string) *AuthorizeFileUploadResponseBody
@@ -41,7 +45,8 @@ type AuthorizeFileUploadResponseBody struct {
 	// example:
 	//
 	// STS.NV5xxx
-	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	AccessKeyId    *string                                          `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	Authorizations []*AuthorizeFileUploadResponseBodyAuthorizations `json:"Authorizations,omitempty" xml:"Authorizations,omitempty" type:"Repeated"`
 	// The destination OSS bucket.
 	//
 	// example:
@@ -72,6 +77,7 @@ type AuthorizeFileUploadResponseBody struct {
 	//
 	// The parameter [Query] is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ExpireTime   *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The business-level HTTP status code.
 	//
 	// example:
@@ -90,7 +96,7 @@ type AuthorizeFileUploadResponseBody struct {
 	//
 	// A30D0930-xxxx-xxxx-xxxx-C2C661CC8B58
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The Security Token Service (STS) token.
+	// The Security Token Service (STS) temporary security token.
 	//
 	// example:
 	//
@@ -122,6 +128,10 @@ func (s *AuthorizeFileUploadResponseBody) GetAccessKeyId() *string {
 	return s.AccessKeyId
 }
 
+func (s *AuthorizeFileUploadResponseBody) GetAuthorizations() []*AuthorizeFileUploadResponseBodyAuthorizations {
+	return s.Authorizations
+}
+
 func (s *AuthorizeFileUploadResponseBody) GetBucket() *string {
 	return s.Bucket
 }
@@ -140,6 +150,10 @@ func (s *AuthorizeFileUploadResponseBody) GetErrorCode() *string {
 
 func (s *AuthorizeFileUploadResponseBody) GetErrorMessage() *string {
 	return s.ErrorMessage
+}
+
+func (s *AuthorizeFileUploadResponseBody) GetExpireTime() *int64 {
+	return s.ExpireTime
 }
 
 func (s *AuthorizeFileUploadResponseBody) GetHttpStatusCode() *int32 {
@@ -171,6 +185,11 @@ func (s *AuthorizeFileUploadResponseBody) SetAccessKeyId(v string) *AuthorizeFil
 	return s
 }
 
+func (s *AuthorizeFileUploadResponseBody) SetAuthorizations(v []*AuthorizeFileUploadResponseBodyAuthorizations) *AuthorizeFileUploadResponseBody {
+	s.Authorizations = v
+	return s
+}
+
 func (s *AuthorizeFileUploadResponseBody) SetBucket(v string) *AuthorizeFileUploadResponseBody {
 	s.Bucket = &v
 	return s
@@ -193,6 +212,11 @@ func (s *AuthorizeFileUploadResponseBody) SetErrorCode(v string) *AuthorizeFileU
 
 func (s *AuthorizeFileUploadResponseBody) SetErrorMessage(v string) *AuthorizeFileUploadResponseBody {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AuthorizeFileUploadResponseBody) SetExpireTime(v int64) *AuthorizeFileUploadResponseBody {
+	s.ExpireTime = &v
 	return s
 }
 
@@ -227,5 +251,59 @@ func (s *AuthorizeFileUploadResponseBody) SetSuccess(v bool) *AuthorizeFileUploa
 }
 
 func (s *AuthorizeFileUploadResponseBody) Validate() error {
+	if s.Authorizations != nil {
+		for _, item := range s.Authorizations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type AuthorizeFileUploadResponseBodyAuthorizations struct {
+	EncodedPolicy *string `json:"EncodedPolicy,omitempty" xml:"EncodedPolicy,omitempty"`
+	ObjectKey     *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
+	Signature     *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+}
+
+func (s AuthorizeFileUploadResponseBodyAuthorizations) String() string {
+	return dara.Prettify(s)
+}
+
+func (s AuthorizeFileUploadResponseBodyAuthorizations) GoString() string {
+	return s.String()
+}
+
+func (s *AuthorizeFileUploadResponseBodyAuthorizations) GetEncodedPolicy() *string {
+	return s.EncodedPolicy
+}
+
+func (s *AuthorizeFileUploadResponseBodyAuthorizations) GetObjectKey() *string {
+	return s.ObjectKey
+}
+
+func (s *AuthorizeFileUploadResponseBodyAuthorizations) GetSignature() *string {
+	return s.Signature
+}
+
+func (s *AuthorizeFileUploadResponseBodyAuthorizations) SetEncodedPolicy(v string) *AuthorizeFileUploadResponseBodyAuthorizations {
+	s.EncodedPolicy = &v
+	return s
+}
+
+func (s *AuthorizeFileUploadResponseBodyAuthorizations) SetObjectKey(v string) *AuthorizeFileUploadResponseBodyAuthorizations {
+	s.ObjectKey = &v
+	return s
+}
+
+func (s *AuthorizeFileUploadResponseBodyAuthorizations) SetSignature(v string) *AuthorizeFileUploadResponseBodyAuthorizations {
+	s.Signature = &v
+	return s
+}
+
+func (s *AuthorizeFileUploadResponseBodyAuthorizations) Validate() error {
 	return dara.Validate(s)
 }

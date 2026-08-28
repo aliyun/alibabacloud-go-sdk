@@ -11,6 +11,8 @@ type iAuthorizeFileUploadRequest interface {
 	GoString() string
 	SetAgentName(v string) *AuthorizeFileUploadRequest
 	GetAgentName() *string
+	SetBatchSize(v string) *AuthorizeFileUploadRequest
+	GetBatchSize() *string
 	SetFileFormat(v string) *AuthorizeFileUploadRequest
 	GetFileFormat() *string
 	SetRegionId(v string) *AuthorizeFileUploadRequest
@@ -24,6 +26,7 @@ type AuthorizeFileUploadRequest struct {
 	//
 	// codex
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	BatchSize *string `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
 	// The format of the file to be uploaded.
 	//
 	// example:
@@ -52,6 +55,10 @@ func (s *AuthorizeFileUploadRequest) GetAgentName() *string {
 	return s.AgentName
 }
 
+func (s *AuthorizeFileUploadRequest) GetBatchSize() *string {
+	return s.BatchSize
+}
+
 func (s *AuthorizeFileUploadRequest) GetFileFormat() *string {
 	return s.FileFormat
 }
@@ -62,6 +69,11 @@ func (s *AuthorizeFileUploadRequest) GetRegionId() *string {
 
 func (s *AuthorizeFileUploadRequest) SetAgentName(v string) *AuthorizeFileUploadRequest {
 	s.AgentName = &v
+	return s
+}
+
+func (s *AuthorizeFileUploadRequest) SetBatchSize(v string) *AuthorizeFileUploadRequest {
+	s.BatchSize = &v
 	return s
 }
 

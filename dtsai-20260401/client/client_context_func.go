@@ -28,6 +28,10 @@ func (client *Client) AuthorizeFileUploadWithContext(ctx context.Context, reques
 		query["AgentName"] = request.AgentName
 	}
 
+	if !dara.IsNil(request.BatchSize) {
+		query["BatchSize"] = request.BatchSize
+	}
+
 	if !dara.IsNil(request.FileFormat) {
 		query["FileFormat"] = request.FileFormat
 	}
