@@ -32,7 +32,7 @@ type iFaceCompareV2Request interface {
 type FaceCompareV2Request struct {
 	// Specifies whether to enable quality check for the input face images.
 	//
-	// 	Danger: Deprecated.</danger>.
+	// 	Danger: Deprecated
 	//
 	// example:
 	//
@@ -44,17 +44,17 @@ type FaceCompareV2Request struct {
 	//
 	// Y
 	FaceQualityCheck *string `json:"FaceQualityCheck,omitempty" xml:"FaceQualityCheck,omitempty"`
-	// The merchant-defined unique business ID used for subsequent troubleshooting. The value can be a combination of letters and numbers with a maximum length of 32 characters. Ensure that the value is unique.
+	// The merchant-defined unique business identifier, used for subsequent troubleshooting. Supports a combination of letters and numbers with a maximum length of 32 characters. Ensure that this value is unique.
 	//
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c353888
 	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-	// The Base64-encoded source face image.
+	// The Base64-encoded source face photo.
 	//
 	// > **Note**
 	//
-	// - If you use this method to pass in the image, check the image size and do not pass in an excessively large image.
+	// - If you choose this method to pass in the photo, check the photo size and do not pass in an excessively large photo.
 	//
 	// - Specify one of the following parameters: SourceFacePicture, SourceFacePictureUrl, or SourceFacePictureFile.
 	//
@@ -74,11 +74,11 @@ type FaceCompareV2Request struct {
 	//
 	// https://***face1.jpeg
 	SourceFacePictureUrl *string `json:"SourceFacePictureUrl,omitempty" xml:"SourceFacePictureUrl,omitempty"`
-	// The Base64-encoded reference face image.
+	// The Base64-encoded target reference face photo.
 	//
 	// > **Note**
 	//
-	// - If you use this method to pass in the image, check the image size and do not pass in an excessively large image.
+	// - If you choose this method to pass in the photo, check the photo size and do not pass in an excessively large photo.
 	//
 	// - Specify one of the following parameters: TargetFacePicture, TargetFacePictureUrl, or TargetFacePictureFile.
 	//
@@ -86,13 +86,13 @@ type FaceCompareV2Request struct {
 	//
 	// base64
 	TargetFacePicture *string `json:"TargetFacePicture,omitempty" xml:"TargetFacePicture,omitempty"`
-	// The file stream of the reference face image.
+	// The file stream of the target reference face image.
 	//
 	// example:
 	//
 	// InputStream
 	TargetFacePictureFile *string `json:"TargetFacePictureFile,omitempty" xml:"TargetFacePictureFile,omitempty"`
-	// The HTTPS or HTTP URL of the reference face image.
+	// The HTTPS or HTTP URL of the target reference face image.
 	//
 	// example:
 	//

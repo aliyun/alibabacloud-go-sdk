@@ -1034,11 +1034,11 @@ func (client *Client) CredentialGetResultIntl(request *CredentialGetResultIntlRe
 
 // Summary:
 //
-// An API operation that uploads a credential image, such as a utility bill or credit card statement, and uses Qwen-VL to intelligently fetch the billing address and name from the credential.
+// An API operation that uploads credential images, including utility bills and credit card statements, and uses Qwen-VL to intelligently fetch billing addresses and names.
 //
 // Description:
 //
-// Uses AI technology to detect whether a credential (such as a water, electricity, gas, or credit card electronic bill) has been forged, and extracts key information from the credential.
+// Uses AI technology to detect whether credentials (such as water, electricity, gas, and credit card electronic bills) are forged, and extracts key information from the credentials.
 //
 // @param request - CredentialRecognitionIntlRequest
 //
@@ -1061,8 +1061,20 @@ func (client *Client) CredentialRecognitionIntlWithOptions(request *CredentialRe
 		query["FraudCheck"] = request.FraudCheck
 	}
 
+	if !dara.IsNil(request.IdQuality) {
+		query["IdQuality"] = request.IdQuality
+	}
+
 	if !dara.IsNil(request.OcrArea) {
 		query["OcrArea"] = request.OcrArea
+	}
+
+	if !dara.IsNil(request.OcrTranslation) {
+		query["OcrTranslation"] = request.OcrTranslation
+	}
+
+	if !dara.IsNil(request.OcrValueStandard) {
+		query["OcrValueStandard"] = request.OcrValueStandard
 	}
 
 	if !dara.IsNil(request.ProductCode) {
@@ -1070,6 +1082,10 @@ func (client *Client) CredentialRecognitionIntlWithOptions(request *CredentialRe
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.CheckRuleConfig) {
+		body["CheckRuleConfig"] = request.CheckRuleConfig
+	}
+
 	if !dara.IsNil(request.CredentialOcrPictureBase64) {
 		body["CredentialOcrPictureBase64"] = request.CredentialOcrPictureBase64
 	}
@@ -1104,11 +1120,11 @@ func (client *Client) CredentialRecognitionIntlWithOptions(request *CredentialRe
 
 // Summary:
 //
-// An API operation that uploads a credential image, such as a utility bill or credit card statement, and uses Qwen-VL to intelligently fetch the billing address and name from the credential.
+// An API operation that uploads credential images, including utility bills and credit card statements, and uses Qwen-VL to intelligently fetch billing addresses and names.
 //
 // Description:
 //
-// Uses AI technology to detect whether a credential (such as a water, electricity, gas, or credit card electronic bill) has been forged, and extracts key information from the credential.
+// Uses AI technology to detect whether credentials (such as water, electricity, gas, and credit card electronic bills) are forged, and extracts key information from the credentials.
 //
 // @param request - CredentialRecognitionIntlRequest
 //
@@ -1130,7 +1146,7 @@ func (client *Client) CredentialRecognitionIntl(request *CredentialRecognitionIn
 //
 // Description:
 //
-// Initializes the credential recognition OCR operation and retrieves a transactionId.
+// Initializes the credential recognition OCR operation and returns a transactionId.
 //
 // @param request - CredentialSubmitIntlRequest
 //
@@ -1153,12 +1169,24 @@ func (client *Client) CredentialSubmitIntlWithOptions(request *CredentialSubmitI
 		query["FraudCheck"] = request.FraudCheck
 	}
 
+	if !dara.IsNil(request.IdQuality) {
+		query["IdQuality"] = request.IdQuality
+	}
+
 	if !dara.IsNil(request.MerchantBizId) {
 		query["MerchantBizId"] = request.MerchantBizId
 	}
 
 	if !dara.IsNil(request.OcrArea) {
 		query["OcrArea"] = request.OcrArea
+	}
+
+	if !dara.IsNil(request.OcrTranslation) {
+		query["OcrTranslation"] = request.OcrTranslation
+	}
+
+	if !dara.IsNil(request.OcrValueStandard) {
+		query["OcrValueStandard"] = request.OcrValueStandard
 	}
 
 	if !dara.IsNil(request.ProductCode) {
@@ -1170,6 +1198,10 @@ func (client *Client) CredentialSubmitIntlWithOptions(request *CredentialSubmitI
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.CheckRuleConfig) {
+		body["CheckRuleConfig"] = request.CheckRuleConfig
+	}
+
 	if !dara.IsNil(request.CredentialOcrPictureBase64) {
 		body["CredentialOcrPictureBase64"] = request.CredentialOcrPictureBase64
 	}
@@ -1208,7 +1240,7 @@ func (client *Client) CredentialSubmitIntlWithOptions(request *CredentialSubmitI
 //
 // Description:
 //
-// Initializes the credential recognition OCR operation and retrieves a transactionId.
+// Initializes the credential recognition OCR operation and returns a transactionId.
 //
 // @param request - CredentialSubmitIntlRequest
 //
@@ -2761,6 +2793,10 @@ func (client *Client) EkycVerifyWithOptions(request *EkycVerifyRequest, runtime 
 		query["IdOcrPictureUrl"] = request.IdOcrPictureUrl
 	}
 
+	if !dara.IsNil(request.IdSpoof) {
+		query["IdSpoof"] = request.IdSpoof
+	}
+
 	if !dara.IsNil(request.IdThreshold) {
 		query["IdThreshold"] = request.IdThreshold
 	}
@@ -2830,7 +2866,7 @@ func (client *Client) EkycVerify(request *EkycVerifyRequest) (_result *EkycVerif
 
 // Summary:
 //
-// The eKYC solution server-side API.
+// Provides a server-side-only API for the eKYC solution.
 //
 // @param request - EkycVerifyV2Request
 //
@@ -2875,6 +2911,10 @@ func (client *Client) EkycVerifyV2WithOptions(request *EkycVerifyV2Request, runt
 
 	if !dara.IsNil(request.IdOcrPictureUrl) {
 		query["IdOcrPictureUrl"] = request.IdOcrPictureUrl
+	}
+
+	if !dara.IsNil(request.IdSpoof) {
+		query["IdSpoof"] = request.IdSpoof
 	}
 
 	if !dara.IsNil(request.IdThreshold) {
@@ -2936,7 +2976,7 @@ func (client *Client) EkycVerifyV2WithOptions(request *EkycVerifyV2Request, runt
 
 // Summary:
 //
-// The eKYC solution server-side API.
+// Provides a server-side-only API for the eKYC solution.
 //
 // @param request - EkycVerifyV2Request
 //
@@ -3179,7 +3219,7 @@ func (client *Client) FaceCompare(request *FaceCompareRequest) (_result *FaceCom
 
 // Summary:
 //
-// Compares two face images by using face recognition technology and returns the comparison result and a similarity score.
+// Compares two face images using face recognition technology and returns the comparison result and similarity score.
 //
 // @param request - FaceCompareV2Request
 //
@@ -3257,7 +3297,7 @@ func (client *Client) FaceCompareV2WithOptions(request *FaceCompareV2Request, ru
 
 // Summary:
 //
-// Compares two face images by using face recognition technology and returns the comparison result and a similarity score.
+// Compares two face images using face recognition technology and returns the comparison result and similarity score.
 //
 // @param request - FaceCompareV2Request
 //

@@ -116,7 +116,7 @@ type CredentialRecognitionIntlResponseBodyResult struct {
 	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
 	// The extraction result. Valid values:
 	//
-	// - S: Succeeded.
+	// - S: Successful.
 	//
 	// - F: Failed.
 	//

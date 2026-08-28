@@ -38,7 +38,7 @@ type EkycVerifyResponseBody struct {
   // 
   // 4EB356FE-BB6A-5DCC-B4C5-E8051787EBA1
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // The returned result.
+  // The response result.
   Result *EkycVerifyResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -96,7 +96,7 @@ func (s *EkycVerifyResponseBody) Validate() error {
 }
 
 type EkycVerifyResponseBodyResult struct {
-  // The face verification result.
+  // The face verification result information.
   // 
   // example:
   // 
@@ -112,7 +112,7 @@ type EkycVerifyResponseBodyResult struct {
   // 
   // }
   ExtFaceInfo *string `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty"`
-  // The document recognition result. This field is returned only when the API response is successful.
+  // The document recognition result. Returned only when the API response is successful.
   // 
   // example:
   // 
@@ -120,7 +120,7 @@ type EkycVerifyResponseBodyResult struct {
   // 
   //  "ocrIdInfo": {
   // 
-  //  "firstName": "**龙",
+  //  "firstName": "**Long",
   // 
   //  "lastName": "**",
   // 
@@ -144,7 +144,7 @@ type EkycVerifyResponseBodyResult struct {
   // 
   // }
   ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
-  // Indicates whether the verification is passed. Valid values: T (passed) and F (not passed).
+  // Indicates whether the verification is passed. T indicates passed, and F indicates not passed.
   // 
   // example:
   // 

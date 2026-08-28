@@ -20,7 +20,7 @@ type iCredentialSubmitIntlResponseBody interface {
 }
 
 type CredentialSubmitIntlResponseBody struct {
-	// The return code.
+	// The response code.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type CredentialSubmitIntlResponseBody struct {
 	//
 	// 5E63B760-0ECB-5C07-8503-A65C27876968
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned result.
+	// The response result.
 	Result *CredentialSubmitIntlResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 

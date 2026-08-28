@@ -29,6 +29,8 @@ type iEkycVerifyRequest interface {
   GetIdOcrPictureBase64() *string 
   SetIdOcrPictureUrl(v string) *EkycVerifyRequest
   GetIdOcrPictureUrl() *string 
+  SetIdSpoof(v string) *EkycVerifyRequest
+  GetIdSpoof() *string 
   SetIdThreshold(v string) *EkycVerifyRequest
   GetIdThreshold() *string 
   SetMerchantBizId(v string) *EkycVerifyRequest
@@ -40,7 +42,7 @@ type iEkycVerifyRequest interface {
 }
 
 type EkycVerifyRequest struct {
-  // Specifies whether to enable authoritative identity verification. This feature currently applies only to second-generation ID cards issued in the Chinese mainland.
+  // Specifies whether to enable authoritative identity verification. Currently, this applies only to second-generation ID cards in mainland China.
   // 
   // example:
   // 
@@ -48,25 +50,25 @@ type EkycVerifyRequest struct {
   Authorize *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
   // Specifies whether cropping is allowed. By default, cropping is not allowed. Valid values:
   // 
-  // - T: Cropping is required.
+  // - T: Detection is required.
   // 
-  // - F: Cropping is not required. This is the default value.
+  // - F: Detection is required. (Default value: F)
   // 
   // example:
   // 
   // F
   Crop *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
-  // The real name of the user. If Authorize is set to T and the document type is a Chinese mainland ID card, you must provide at least one of the following: the key document information (DocName and DocNo) or the document image (IdOcrPictureBase64 or IdOcrPictureURL).
+  // The real name of the user. When Authorize=\\"T\\" and the document type is a mainland China ID card, either the key document information (DocName, DocNo) or the document image (IdOcrPictureBase64/URL) must be provided.
   // 
-  // Note: The value must contain at least one Chinese character and cannot contain special characters, except for the middle dot (·) used in ethnic minority names.
+  // Note: Supports a combination of Chinese characters with a minimum length of one character. No special characters are allowed, except for the middle dot (·) used in ethnic minority names.
   // 
   // example:
   // 
-  // 张**
+  // Zhang**
   DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
-  // The document number of the user. If Authorize is set to T and the document type is a Chinese mainland ID card, you must provide at least one of the following: the key document information (DocName and DocNo) or the document image (IdOcrPictureBase64 or IdOcrPictureURL).
+  // The document number of the user. When Authorize=\\"T\\" and the document type is a mainland China ID card, either the key document information (DocName, DocNo) or the document image (IdOcrPictureBase64/URL) must be provided.
   // 
-  // Note: The value is a combination of letters and digits up to 18 characters in length.
+  // Note: Supports a combination of letters and numbers with a length of 18 characters.
   // 
   // example:
   // 
@@ -82,7 +84,7 @@ type EkycVerifyRequest struct {
   // 
   // Note:
   // 
-  // - If you use this method to pass the face image, check the image size and do not pass an excessively large image.
+  // - If you choose this method to pass in the face image, check the photo size and do not pass in an excessively large photo.
   // 
   // - Specify either FacePictureBase64 or FacePictureUrl.
   // 
@@ -96,12 +98,17 @@ type EkycVerifyRequest struct {
   // 
   // https://digital-face-prod8.oss-cn-hangzhou.aliyuncs.com/1669520556530-expo/default/face/20221127114236530_w3kx2e6t.jpg
   FacePictureUrl *string `json:"FacePictureUrl,omitempty" xml:"FacePictureUrl,omitempty"`
+  // Specifies whether to enable face quality detection.
+  // 
+  // example:
+  // 
+  // Y
   FaceQualityCheck *string `json:"FaceQualityCheck,omitempty" xml:"FaceQualityCheck,omitempty"`
   // The Base64-encoded document image.
   // 
   // Note:
   // 
-  // - If you use this method to pass the document image, check the image size and do not pass an excessively large image.
+  // - If you choose this method to pass in the document image, check the photo size and do not pass in an excessively large photo.
   // 
   // - Specify either IdOcrPictureBase64 or IdOcrPictureUrl.
   // 
@@ -115,6 +122,12 @@ type EkycVerifyRequest struct {
   // 
   // https://digital-cardocr-prod8.oss-cn-hangzhou.aliyuncs.com/1669520556530-expo/default/face/20221127114236530_w3kx2e6t.jpg
   IdOcrPictureUrl *string `json:"IdOcrPictureUrl,omitempty" xml:"IdOcrPictureUrl,omitempty"`
+  // Specifies whether to enable document anti-spoofing.
+  // 
+  // example:
+  // 
+  // Y
+  IdSpoof *string `json:"IdSpoof,omitempty" xml:"IdSpoof,omitempty"`
   // The custom OCR quality detection threshold mode. Valid values:
   // 
   // - 0: system default
@@ -123,19 +136,19 @@ type EkycVerifyRequest struct {
   // 
   // - 2: loose mode
   // 
-  // - 3 (default): quality detection disabled.
+  // - 3 (default): disable quality detection
   // 
   // example:
   // 
   // 0
   IdThreshold *string `json:"IdThreshold,omitempty" xml:"IdThreshold,omitempty"`
-  // The merchant-defined unique business identifier, used for subsequent troubleshooting. The value is a combination of letters and digits up to 32 characters in length. Ensure that the value is unique.
+  // A custom business unique identifier defined by the merchant, used for subsequent issue tracking and troubleshooting. Supports a combination of letters and numbers up to 32 characters in length. Ensure that this value is unique.
   // 
   // example:
   // 
   // e0c34a77f5ac40a5aa5e6ed20c353888
   MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
-  // The custom user ID or other identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you mask the value of this field in advance, for example, by hashing the value.
+  // A custom user ID or other identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize this field value in advance, for example, by hashing the value.
   // 
   // example:
   // 
@@ -195,6 +208,10 @@ func (s *EkycVerifyRequest) GetIdOcrPictureBase64() *string  {
 
 func (s *EkycVerifyRequest) GetIdOcrPictureUrl() *string  {
   return s.IdOcrPictureUrl
+}
+
+func (s *EkycVerifyRequest) GetIdSpoof() *string  {
+  return s.IdSpoof
 }
 
 func (s *EkycVerifyRequest) GetIdThreshold() *string  {
@@ -260,6 +277,11 @@ func (s *EkycVerifyRequest) SetIdOcrPictureBase64(v string) *EkycVerifyRequest {
 
 func (s *EkycVerifyRequest) SetIdOcrPictureUrl(v string) *EkycVerifyRequest {
   s.IdOcrPictureUrl = &v
+  return s
+}
+
+func (s *EkycVerifyRequest) SetIdSpoof(v string) *EkycVerifyRequest {
+  s.IdSpoof = &v
   return s
 }
 

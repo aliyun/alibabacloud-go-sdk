@@ -607,11 +607,11 @@ func (client *Client) CredentialGetResultIntlWithContext(ctx context.Context, re
 
 // Summary:
 //
-// An API operation that uploads a credential image, such as a utility bill or credit card statement, and uses Qwen-VL to intelligently fetch the billing address and name from the credential.
+// An API operation that uploads credential images, including utility bills and credit card statements, and uses Qwen-VL to intelligently fetch billing addresses and names.
 //
 // Description:
 //
-// Uses AI technology to detect whether a credential (such as a water, electricity, gas, or credit card electronic bill) has been forged, and extracts key information from the credential.
+// Uses AI technology to detect whether credentials (such as water, electricity, gas, and credit card electronic bills) are forged, and extracts key information from the credentials.
 //
 // @param request - CredentialRecognitionIntlRequest
 //
@@ -634,8 +634,20 @@ func (client *Client) CredentialRecognitionIntlWithContext(ctx context.Context, 
 		query["FraudCheck"] = request.FraudCheck
 	}
 
+	if !dara.IsNil(request.IdQuality) {
+		query["IdQuality"] = request.IdQuality
+	}
+
 	if !dara.IsNil(request.OcrArea) {
 		query["OcrArea"] = request.OcrArea
+	}
+
+	if !dara.IsNil(request.OcrTranslation) {
+		query["OcrTranslation"] = request.OcrTranslation
+	}
+
+	if !dara.IsNil(request.OcrValueStandard) {
+		query["OcrValueStandard"] = request.OcrValueStandard
 	}
 
 	if !dara.IsNil(request.ProductCode) {
@@ -643,6 +655,10 @@ func (client *Client) CredentialRecognitionIntlWithContext(ctx context.Context, 
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.CheckRuleConfig) {
+		body["CheckRuleConfig"] = request.CheckRuleConfig
+	}
+
 	if !dara.IsNil(request.CredentialOcrPictureBase64) {
 		body["CredentialOcrPictureBase64"] = request.CredentialOcrPictureBase64
 	}
@@ -681,7 +697,7 @@ func (client *Client) CredentialRecognitionIntlWithContext(ctx context.Context, 
 //
 // Description:
 //
-// Initializes the credential recognition OCR operation and retrieves a transactionId.
+// Initializes the credential recognition OCR operation and returns a transactionId.
 //
 // @param request - CredentialSubmitIntlRequest
 //
@@ -704,12 +720,24 @@ func (client *Client) CredentialSubmitIntlWithContext(ctx context.Context, reque
 		query["FraudCheck"] = request.FraudCheck
 	}
 
+	if !dara.IsNil(request.IdQuality) {
+		query["IdQuality"] = request.IdQuality
+	}
+
 	if !dara.IsNil(request.MerchantBizId) {
 		query["MerchantBizId"] = request.MerchantBizId
 	}
 
 	if !dara.IsNil(request.OcrArea) {
 		query["OcrArea"] = request.OcrArea
+	}
+
+	if !dara.IsNil(request.OcrTranslation) {
+		query["OcrTranslation"] = request.OcrTranslation
+	}
+
+	if !dara.IsNil(request.OcrValueStandard) {
+		query["OcrValueStandard"] = request.OcrValueStandard
 	}
 
 	if !dara.IsNil(request.ProductCode) {
@@ -721,6 +749,10 @@ func (client *Client) CredentialSubmitIntlWithContext(ctx context.Context, reque
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.CheckRuleConfig) {
+		body["CheckRuleConfig"] = request.CheckRuleConfig
+	}
+
 	if !dara.IsNil(request.CredentialOcrPictureBase64) {
 		body["CredentialOcrPictureBase64"] = request.CredentialOcrPictureBase64
 	}
@@ -1634,6 +1666,10 @@ func (client *Client) EkycVerifyWithContext(ctx context.Context, request *EkycVe
 		query["IdOcrPictureUrl"] = request.IdOcrPictureUrl
 	}
 
+	if !dara.IsNil(request.IdSpoof) {
+		query["IdSpoof"] = request.IdSpoof
+	}
+
 	if !dara.IsNil(request.IdThreshold) {
 		query["IdThreshold"] = request.IdThreshold
 	}
@@ -1685,7 +1721,7 @@ func (client *Client) EkycVerifyWithContext(ctx context.Context, request *EkycVe
 
 // Summary:
 //
-// The eKYC solution server-side API.
+// Provides a server-side-only API for the eKYC solution.
 //
 // @param request - EkycVerifyV2Request
 //
@@ -1730,6 +1766,10 @@ func (client *Client) EkycVerifyV2WithContext(ctx context.Context, request *Ekyc
 
 	if !dara.IsNil(request.IdOcrPictureUrl) {
 		query["IdOcrPictureUrl"] = request.IdOcrPictureUrl
+	}
+
+	if !dara.IsNil(request.IdSpoof) {
+		query["IdSpoof"] = request.IdSpoof
 	}
 
 	if !dara.IsNil(request.IdThreshold) {
@@ -1861,7 +1901,7 @@ func (client *Client) FaceCompareWithContext(ctx context.Context, request *FaceC
 
 // Summary:
 //
-// Compares two face images by using face recognition technology and returns the comparison result and a similarity score.
+// Compares two face images using face recognition technology and returns the comparison result and similarity score.
 //
 // @param request - FaceCompareV2Request
 //

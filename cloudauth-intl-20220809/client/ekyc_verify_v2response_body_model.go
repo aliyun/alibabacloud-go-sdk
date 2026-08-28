@@ -96,7 +96,7 @@ func (s *EkycVerifyV2ResponseBody) Validate() error {
 }
 
 type EkycVerifyV2ResponseBodyResult struct {
-  // The face verification result information.
+  // The face result information.
   // 
   // example:
   // 
@@ -112,7 +112,7 @@ type EkycVerifyV2ResponseBodyResult struct {
   // 
   // }
   ExtFaceInfo *string `json:"ExtFaceInfo,omitempty" xml:"ExtFaceInfo,omitempty"`
-  // The document recognition result. This parameter is returned only when the API response is successful.
+  // The identity document recognition result. Returned only when the API response is successful.
   // 
   // example:
   // 
@@ -120,7 +120,7 @@ type EkycVerifyV2ResponseBodyResult struct {
   // 
   //  "ocrIdInfo": {
   // 
-  //  "firstName": "**龙",
+  //  "firstName": "**Long",
   // 
   //  "lastName": "**",
   // 
@@ -144,7 +144,7 @@ type EkycVerifyV2ResponseBodyResult struct {
   // 
   // }
   ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
-  // Indicates whether the verification is passed. Valid values: Y (passed) and N (not passed).
+  // Indicates whether the verification passed. A value of Y indicates passed, and a value of N indicates not passed.
   // 
   // example:
   // 
@@ -156,7 +156,7 @@ type EkycVerifyV2ResponseBodyResult struct {
   // 
   // 205
   SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
-  // The unique identifier of the authentication request.
+  // The unique identifier of the verification request.
   // 
   // example:
   // 
