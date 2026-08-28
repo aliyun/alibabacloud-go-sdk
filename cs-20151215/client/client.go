@@ -7399,6 +7399,94 @@ func (client *Client) ListClusterKubeconfigStates(ClusterId *string, request *Li
 
 // Summary:
 //
+// 查询节点组件在节点上的状态
+//
+// @param tmpReq - ListNodePoolComponentInstanceNodesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNodePoolComponentInstanceNodesResponse
+func (client *Client) ListNodePoolComponentInstanceNodesWithOptions(clusterId *string, nodepoolId *string, name *string, tmpReq *ListNodePoolComponentInstanceNodesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListNodePoolComponentInstanceNodesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListNodePoolComponentInstanceNodesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.NodeNames) {
+		request.NodeNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodeNames, dara.String("node_names"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigRevision) {
+		query["config_revision"] = request.ConfigRevision
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["max_results"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["next_token"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.NodeNamesShrink) {
+		query["node_names"] = request.NodeNamesShrink
+	}
+
+	if !dara.IsNil(request.Version) {
+		query["version"] = request.Version
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListNodePoolComponentInstanceNodes"),
+		Version:     dara.String("2015-12-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/clusters/" + dara.PercentEncode(dara.StringValue(clusterId)) + "/nodepools/" + dara.PercentEncode(dara.StringValue(nodepoolId)) + "/component_instances/" + dara.PercentEncode(dara.StringValue(name)) + "/nodes"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListNodePoolComponentInstanceNodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询节点组件在节点上的状态
+//
+// @param request - ListNodePoolComponentInstanceNodesRequest
+//
+// @return ListNodePoolComponentInstanceNodesResponse
+func (client *Client) ListNodePoolComponentInstanceNodes(clusterId *string, nodepoolId *string, name *string, request *ListNodePoolComponentInstanceNodesRequest) (_result *ListNodePoolComponentInstanceNodesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListNodePoolComponentInstanceNodesResponse{}
+	_body, _err := client.ListNodePoolComponentInstanceNodesWithOptions(clusterId, nodepoolId, name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询节点组件实例列表
 //
 // @param request - ListNodePoolComponentInstancesRequest
