@@ -21,9 +21,14 @@ type iListModelConnectionsRequest interface {
 	GetProtocol() *string
 	SetProviderType(v string) *ListModelConnectionsRequest
 	GetProviderType() *string
+	SetSearchType(v string) *ListModelConnectionsRequest
+	GetSearchType() *string
 }
 
 type ListModelConnectionsRequest struct {
+	// example:
+	//
+	// false
 	IncludeModels *bool `json:"includeModels,omitempty" xml:"includeModels,omitempty"`
 	// example:
 	//
@@ -45,6 +50,10 @@ type ListModelConnectionsRequest struct {
 	//
 	// qwen
 	ProviderType *string `json:"providerType,omitempty" xml:"providerType,omitempty"`
+	// example:
+	//
+	// blur
+	SearchType *string `json:"searchType,omitempty" xml:"searchType,omitempty"`
 }
 
 func (s ListModelConnectionsRequest) String() string {
@@ -79,6 +88,10 @@ func (s *ListModelConnectionsRequest) GetProviderType() *string {
 	return s.ProviderType
 }
 
+func (s *ListModelConnectionsRequest) GetSearchType() *string {
+	return s.SearchType
+}
+
 func (s *ListModelConnectionsRequest) SetIncludeModels(v bool) *ListModelConnectionsRequest {
 	s.IncludeModels = &v
 	return s
@@ -106,6 +119,11 @@ func (s *ListModelConnectionsRequest) SetProtocol(v string) *ListModelConnection
 
 func (s *ListModelConnectionsRequest) SetProviderType(v string) *ListModelConnectionsRequest {
 	s.ProviderType = &v
+	return s
+}
+
+func (s *ListModelConnectionsRequest) SetSearchType(v string) *ListModelConnectionsRequest {
+	s.SearchType = &v
 	return s
 }
 

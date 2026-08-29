@@ -5017,8 +5017,16 @@ func (client *Client) ListMcpsWithOptions(workspaceId *string, request *ListMcps
 		query["maxResults"] = request.MaxResults
 	}
 
+	if !dara.IsNil(request.Name) {
+		query["name"] = request.Name
+	}
+
 	if !dara.IsNil(request.NextToken) {
 		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.SearchType) {
+		query["searchType"] = request.SearchType
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5074,6 +5082,10 @@ func (client *Client) ListMcps(workspaceId *string, request *ListMcpsRequest) (_
 //
 // 查询模型连接列表
 //
+// Description:
+//
+// 查询指定 AgentCore 工作空间中的模型连接。支持通过 `Name` 按名称筛选，并通过 `SearchType` 选择精确匹配或模糊匹配；支持按模型提供商类型和调用协议筛选，并支持分页查询。
+//
 // @param request - ListModelConnectionsRequest
 //
 // @param headers - map
@@ -5113,6 +5125,10 @@ func (client *Client) ListModelConnectionsWithOptions(workspaceId *string, reque
 		query["providerType"] = request.ProviderType
 	}
 
+	if !dara.IsNil(request.SearchType) {
+		query["searchType"] = request.SearchType
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -5140,6 +5156,10 @@ func (client *Client) ListModelConnectionsWithOptions(workspaceId *string, reque
 // Summary:
 //
 // 查询模型连接列表
+//
+// Description:
+//
+// 查询指定 AgentCore 工作空间中的模型连接。支持通过 `Name` 按名称筛选，并通过 `SearchType` 选择精确匹配或模糊匹配；支持按模型提供商类型和调用协议筛选，并支持分页查询。
 //
 // @param request - ListModelConnectionsRequest
 //

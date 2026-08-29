@@ -11,8 +11,12 @@ type iListMcpsRequest interface {
 	GoString() string
 	SetMaxResults(v int32) *ListMcpsRequest
 	GetMaxResults() *int32
+	SetName(v string) *ListMcpsRequest
+	GetName() *string
 	SetNextToken(v string) *ListMcpsRequest
 	GetNextToken() *string
+	SetSearchType(v string) *ListMcpsRequest
+	GetSearchType() *string
 }
 
 type ListMcpsRequest struct {
@@ -22,12 +26,20 @@ type ListMcpsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// example:
+	//
+	// my-mcp-server
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The pagination token for the next page.
 	//
 	// example:
 	//
 	// next-page-token
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// blur
+	SearchType *string `json:"searchType,omitempty" xml:"searchType,omitempty"`
 }
 
 func (s ListMcpsRequest) String() string {
@@ -42,8 +54,16 @@ func (s *ListMcpsRequest) GetMaxResults() *int32 {
 	return s.MaxResults
 }
 
+func (s *ListMcpsRequest) GetName() *string {
+	return s.Name
+}
+
 func (s *ListMcpsRequest) GetNextToken() *string {
 	return s.NextToken
+}
+
+func (s *ListMcpsRequest) GetSearchType() *string {
+	return s.SearchType
 }
 
 func (s *ListMcpsRequest) SetMaxResults(v int32) *ListMcpsRequest {
@@ -51,8 +71,18 @@ func (s *ListMcpsRequest) SetMaxResults(v int32) *ListMcpsRequest {
 	return s
 }
 
+func (s *ListMcpsRequest) SetName(v string) *ListMcpsRequest {
+	s.Name = &v
+	return s
+}
+
 func (s *ListMcpsRequest) SetNextToken(v string) *ListMcpsRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListMcpsRequest) SetSearchType(v string) *ListMcpsRequest {
+	s.SearchType = &v
 	return s
 }
 
