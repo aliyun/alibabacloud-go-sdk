@@ -650,6 +650,75 @@ func (client *Client) BatchDeletePrivateAccessPolicy(request *BatchDeletePrivate
 
 // Summary:
 //
+// Associates user labels.
+//
+// @param request - BindSaseUserTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindSaseUserTagResponse
+func (client *Client) BindSaseUserTagWithOptions(request *BindSaseUserTagRequest, runtime *dara.RuntimeOptions) (_result *BindSaseUserTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.SaseUserIds) {
+		bodyFlat["SaseUserIds"] = request.SaseUserIds
+	}
+
+	if !dara.IsNil(request.TagIds) {
+		bodyFlat["TagIds"] = request.TagIds
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BindSaseUserTag"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BindSaseUserTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Associates user labels.
+//
+// @param request - BindSaseUserTagRequest
+//
+// @return BindSaseUserTagResponse
+func (client *Client) BindSaseUserTag(request *BindSaseUserTagRequest) (_result *BindSaseUserTagResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &BindSaseUserTagResponse{}
+	_body, _err := client.BindSaseUserTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Cancels multiple virus scan tasks that have not yet expired in a batch. After cancellation, terminals no longer pull and execute the tasks. Scans already running on terminals are not interrupted.
 //
 // @param request - CancelVirusScanTasksRequest
@@ -2465,6 +2534,72 @@ func (client *Client) CreateRegistrationPolicy(request *CreateRegistrationPolicy
 	runtime := &dara.RuntimeOptions{}
 	_result = &CreateRegistrationPolicyResponse{}
 	_body, _err := client.CreateRegistrationPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a user tag.
+//
+// @param request - CreateSaseUserTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSaseUserTagResponse
+func (client *Client) CreateSaseUserTagWithOptions(request *CreateSaseUserTagRequest, runtime *dara.RuntimeOptions) (_result *CreateSaseUserTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateSaseUserTag"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateSaseUserTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a user tag.
+//
+// @param request - CreateSaseUserTagRequest
+//
+// @return CreateSaseUserTagResponse
+func (client *Client) CreateSaseUserTag(request *CreateSaseUserTagRequest) (_result *CreateSaseUserTagResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateSaseUserTagResponse{}
+	_body, _err := client.CreateSaseUserTagWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5107,6 +5242,71 @@ func (client *Client) DeleteRegistrationPolicies(request *DeleteRegistrationPoli
 
 // Summary:
 //
+// Deletes user tags.
+//
+// @param request - DeleteSaseUserTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSaseUserTagResponse
+func (client *Client) DeleteSaseUserTagWithOptions(request *DeleteSaseUserTagRequest, runtime *dara.RuntimeOptions) (_result *DeleteSaseUserTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.TagIds) {
+		bodyFlat["TagIds"] = request.TagIds
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSaseUserTag"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSaseUserTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes user tags.
+//
+// @param request - DeleteSaseUserTagRequest
+//
+// @return DeleteSaseUserTagResponse
+func (client *Client) DeleteSaseUserTag(request *DeleteSaseUserTagRequest) (_result *DeleteSaseUserTagResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteSaseUserTagResponse{}
+	_body, _err := client.DeleteSaseUserTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes user endpoint devices in batches.
 //
 // Description:
@@ -7067,6 +7267,68 @@ func (client *Client) GetRegistrationPolicy(request *GetRegistrationPolicyReques
 
 // Summary:
 //
+// Retrieves a single user tag.
+//
+// @param request - GetSaseUserTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSaseUserTagResponse
+func (client *Client) GetSaseUserTagWithOptions(request *GetSaseUserTagRequest, runtime *dara.RuntimeOptions) (_result *GetSaseUserTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.TagId) {
+		body["TagId"] = request.TagId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSaseUserTag"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSaseUserTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a single user tag.
+//
+// @param request - GetSaseUserTagRequest
+//
+// @return GetSaseUserTagResponse
+func (client *Client) GetSaseUserTag(request *GetSaseUserTagRequest) (_result *GetSaseUserTagResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetSaseUserTagResponse{}
+	_body, _err := client.GetSaseUserTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a user endpoint device under the current Alibaba Cloud account.
 //
 // @param request - GetUserDeviceRequest
@@ -8368,6 +8630,166 @@ func (client *Client) ListDevicesForVulnerability(request *ListDevicesForVulnera
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListDevicesForVulnerabilityResponse{}
 	_body, _err := client.ListDevicesForVulnerabilityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists DLP outbound file transfer logs.
+//
+// @param request - ListDlpOutboundLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDlpOutboundLogsResponse
+func (client *Client) ListDlpOutboundLogsWithOptions(request *ListDlpOutboundLogsRequest, runtime *dara.RuntimeOptions) (_result *ListDlpOutboundLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		body["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.LogId) {
+		body["LogId"] = request.LogId
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PolicyAction) {
+		body["PolicyAction"] = request.PolicyAction
+	}
+
+	if !dara.IsNil(request.SrcFileName) {
+		body["SrcFileName"] = request.SrcFileName
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.SubChannelType) {
+		body["SubChannelType"] = request.SubChannelType
+	}
+
+	if !dara.IsNil(request.UserName) {
+		body["UserName"] = request.UserName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDlpOutboundLogs"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDlpOutboundLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists DLP outbound file transfer logs.
+//
+// @param request - ListDlpOutboundLogsRequest
+//
+// @return ListDlpOutboundLogsResponse
+func (client *Client) ListDlpOutboundLogs(request *ListDlpOutboundLogsRequest) (_result *ListDlpOutboundLogsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDlpOutboundLogsResponse{}
+	_body, _err := client.ListDlpOutboundLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the Internet access logs of endpoints by using paging.
+//
+// Description:
+//
+// Queries the Internet access logs of endpoints under the current tenant by using paging. The logs contain full records of Internet access behavior.
+//
+// @param request - ListDomainAccessLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDomainAccessLogsResponse
+func (client *Client) ListDomainAccessLogsWithOptions(request *ListDomainAccessLogsRequest, runtime *dara.RuntimeOptions) (_result *ListDomainAccessLogsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := openapiutil.Query(dara.ToMap(request))
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDomainAccessLogs"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDomainAccessLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the Internet access logs of endpoints by using paging.
+//
+// Description:
+//
+// Queries the Internet access logs of endpoints under the current tenant by using paging. The logs contain full records of Internet access behavior.
+//
+// @param request - ListDomainAccessLogsRequest
+//
+// @return ListDomainAccessLogsResponse
+func (client *Client) ListDomainAccessLogs(request *ListDomainAccessLogsRequest) (_result *ListDomainAccessLogsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListDomainAccessLogsResponse{}
+	_body, _err := client.ListDomainAccessLogsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12503,6 +12925,75 @@ func (client *Client) RevokeUserSession(request *RevokeUserSessionRequest) (_res
 
 // Summary:
 //
+// Unbinds user labels.
+//
+// @param request - UnbindSaseUserTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindSaseUserTagResponse
+func (client *Client) UnbindSaseUserTagWithOptions(request *UnbindSaseUserTagRequest, runtime *dara.RuntimeOptions) (_result *UnbindSaseUserTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.SaseUserIds) {
+		bodyFlat["SaseUserIds"] = request.SaseUserIds
+	}
+
+	if !dara.IsNil(request.TagIds) {
+		bodyFlat["TagIds"] = request.TagIds
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UnbindSaseUserTag"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UnbindSaseUserTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Unbinds user labels.
+//
+// @param request - UnbindSaseUserTagRequest
+//
+// @return UnbindSaseUserTagResponse
+func (client *Client) UnbindSaseUserTag(request *UnbindSaseUserTagRequest) (_result *UnbindSaseUserTagResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UnbindSaseUserTagResponse{}
+	_body, _err := client.UnbindSaseUserTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Configures the real-time anti-virus defense policy for the current Alibaba Cloud account. The first call creates the policy, and subsequent calls update it. The complete updated configuration is returned. When configuring for the first time, Status, MatchMode, HighRiskOperation, MidRiskOperation, LowRiskOperation, and ScanTargets are all required. ScanTargets and Whitelist are full replacements. The collection you pass in replaces the existing configuration. When MatchMode is set to UserGroupNormal, you must pass in the complete UserGroupIds on every call. When Status is not set to Disabled, the system validates the endpoint hardening license count. The call fails if the count exceeds the purchased licenses.
 //
 // @param request - UpdateAntiVirusRealTimeDefenceStrategyRequest
@@ -14672,6 +15163,76 @@ func (client *Client) UpdateRiskStatus(request *UpdateRiskStatusRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateRiskStatusResponse{}
 	_body, _err := client.UpdateRiskStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a user tag.
+//
+// @param request - UpdateSaseUserTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSaseUserTagResponse
+func (client *Client) UpdateSaseUserTagWithOptions(request *UpdateSaseUserTagRequest, runtime *dara.RuntimeOptions) (_result *UpdateSaseUserTagResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.Name) {
+		body["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.TagId) {
+		body["TagId"] = request.TagId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateSaseUserTag"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateSaseUserTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a user tag.
+//
+// @param request - UpdateSaseUserTagRequest
+//
+// @return UpdateSaseUserTagResponse
+func (client *Client) UpdateSaseUserTag(request *UpdateSaseUserTagRequest) (_result *UpdateSaseUserTagResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateSaseUserTagResponse{}
+	_body, _err := client.UpdateSaseUserTagWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
