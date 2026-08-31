@@ -18,8 +18,12 @@ type iDeleteOpenSearchResponseBody interface {
 }
 
 type DeleteOpenSearchResponseBody struct {
+	// The details of the access denial.
 	AccessDeniedDetail *DeleteOpenSearchResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	Data               *DeleteOpenSearchResponseBodyData               `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The data list.
+	Data *DeleteOpenSearchResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 173CA69A-3513-591D-8A09-C1EA37CBE2D9
@@ -76,30 +80,44 @@ func (s *DeleteOpenSearchResponseBody) Validate() error {
 }
 
 type DeleteOpenSearchResponseBodyAccessDeniedDetail struct {
+	// The authentication action.
+	//
 	// example:
 	//
 	// xxx
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// The display name of the authentication principal.
+	//
 	// example:
 	//
 	// xxx
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	// The owner ID of the authentication principal.
+	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// The type of the authentication principal.
+	//
 	// example:
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// The encoded diagnostic message.
+	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	// The type of the permission denial.
+	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// The policy type.
+	//
 	// example:
 	//
 	// PRIORITY
@@ -182,10 +200,14 @@ func (s *DeleteOpenSearchResponseBodyAccessDeniedDetail) Validate() error {
 }
 
 type DeleteOpenSearchResponseBodyData struct {
+	// The instance name.
+	//
 	// example:
 	//
 	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 1111

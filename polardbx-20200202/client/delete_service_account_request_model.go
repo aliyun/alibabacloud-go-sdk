@@ -18,7 +18,7 @@ type iDeleteServiceAccountRequest interface {
 }
 
 type DeleteServiceAccountRequest struct {
-	// The instance name.
+	// The name of the instance.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DeleteServiceAccountRequest struct {
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The region where the instance resides.
+	// The region in which the instance resides.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DeleteServiceAccountRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The service account type.
+	// The type of the service account.
 	//
 	// This parameter is required.
 	//

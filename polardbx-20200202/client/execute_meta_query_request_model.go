@@ -11,6 +11,8 @@ type iExecuteMetaQueryRequest interface {
   GoString() string
   SetDBInstanceName(v string) *ExecuteMetaQueryRequest
   GetDBInstanceName() *string 
+  SetMaxResultRows(v int64) *ExecuteMetaQueryRequest
+  GetMaxResultRows() *int64 
   SetRegionId(v string) *ExecuteMetaQueryRequest
   GetRegionId() *string 
   SetSql(v string) *ExecuteMetaQueryRequest
@@ -28,6 +30,8 @@ type ExecuteMetaQueryRequest struct {
   // 
   // pxsp-*********
   DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+  // The maximum number of rows to return. Default value: 100. Valid values: 1 to 1000. The actual number of returned rows is the minimum value among the code hard limit, the Biz DB limit, and the outermost LIMIT clause in the SQL statement. To retrieve data continuously, implement pagination in the SQL statement.
+  MaxResultRows *int64 `json:"MaxResultRows,omitempty" xml:"MaxResultRows,omitempty"`
   // The region ID.
   // 
   // This parameter is required.
@@ -64,6 +68,10 @@ func (s *ExecuteMetaQueryRequest) GetDBInstanceName() *string  {
   return s.DBInstanceName
 }
 
+func (s *ExecuteMetaQueryRequest) GetMaxResultRows() *int64  {
+  return s.MaxResultRows
+}
+
 func (s *ExecuteMetaQueryRequest) GetRegionId() *string  {
   return s.RegionId
 }
@@ -78,6 +86,11 @@ func (s *ExecuteMetaQueryRequest) GetStorageInstId() *string  {
 
 func (s *ExecuteMetaQueryRequest) SetDBInstanceName(v string) *ExecuteMetaQueryRequest {
   s.DBInstanceName = &v
+  return s
+}
+
+func (s *ExecuteMetaQueryRequest) SetMaxResultRows(v int64) *ExecuteMetaQueryRequest {
+  s.MaxResultRows = &v
   return s
 }
 

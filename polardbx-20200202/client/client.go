@@ -2530,11 +2530,11 @@ func (client *Client) CreateOpenSearch(request *CreateOpenSearchRequest) (_resul
 
 // Summary:
 //
-// 创建OpenSearch实例账号
+// Creates an account for a PolarDB-X Search instance.
 //
 // Description:
 //
-// <props="china">更多关于实例账号的信息，请参见[账号管理](https://help.aliyun.com/document_detail/172163.html)。
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
 //
 // @param request - CreateOpenSearchAccountRequest
 //
@@ -2590,11 +2590,11 @@ func (client *Client) CreateOpenSearchAccountWithOptions(request *CreateOpenSear
 
 // Summary:
 //
-// 创建OpenSearch实例账号
+// Creates an account for a PolarDB-X Search instance.
 //
 // Description:
 //
-// <props="china">更多关于实例账号的信息，请参见[账号管理](https://help.aliyun.com/document_detail/172163.html)。
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
 //
 // @param request - CreateOpenSearchAccountRequest
 //
@@ -4300,11 +4300,11 @@ func (client *Client) DeleteMem0(request *DeleteMem0Request) (_result *DeleteMem
 
 // Summary:
 //
-// 释放OpenSearch实例
+// Releases a PolarDB-X Search instance.
 //
 // Description:
 //
-// 删除指定数据库实例的自定义连接地址，关闭该域名的访问入口。
+// Deletes a custom endpoint of a specified database instance and disables access through the domain name.
 //
 // @param request - DeleteOpenSearchRequest
 //
@@ -4352,11 +4352,11 @@ func (client *Client) DeleteOpenSearchWithOptions(request *DeleteOpenSearchReque
 
 // Summary:
 //
-// 释放OpenSearch实例
+// Releases a PolarDB-X Search instance.
 //
 // Description:
 //
-// 删除指定数据库实例的自定义连接地址，关闭该域名的访问入口。
+// Deletes a custom endpoint of a specified database instance and disables access through the domain name.
 //
 // @param request - DeleteOpenSearchRequest
 //
@@ -4374,11 +4374,11 @@ func (client *Client) DeleteOpenSearch(request *DeleteOpenSearchRequest) (_resul
 
 // Summary:
 //
-// 删除OpenSearch实例账号
+// Deletes a PolarDB-X Search instance account.
 //
 // Description:
 //
-// <props="china">更多关于实例账号的信息，请参见[账号管理](https://help.aliyun.com/document_detail/172163.html)。
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
 //
 // @param request - DeleteOpenSearchAccountRequest
 //
@@ -4430,11 +4430,11 @@ func (client *Client) DeleteOpenSearchAccountWithOptions(request *DeleteOpenSear
 
 // Summary:
 //
-// 删除OpenSearch实例账号
+// Deletes a PolarDB-X Search instance account.
 //
 // Description:
 //
-// <props="china">更多关于实例账号的信息，请参见[账号管理](https://help.aliyun.com/document_detail/172163.html)。
+// <props="china">For more information about instance accounts, see [Account management](https://help.aliyun.com/document_detail/172163.html).
 //
 // @param request - DeleteOpenSearchAccountRequest
 //
@@ -4452,15 +4452,15 @@ func (client *Client) DeleteOpenSearchAccount(request *DeleteOpenSearchAccountRe
 
 // Summary:
 //
-// 删除OpenSearch实例白名单分组
+// Deletes a PolarDB-X Search whitelist group.
 //
 // Description:
 //
-// - binlog文件默认保存15天。
+// - Binary log files are retained for 15 days by default.
 //
-// - 返回的日志列表中包含日志记录结束时间在查询开始时间之后，并且日志记录开始时间在查询结束时间之前的所有日志。
+// - The returned log list contains all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
 //
-// - 当DownloadLink不为NULL时，用户可以根据此URL下载备份文件，此URL自生成后2天内有效，请在过期时间之前下载。
+// - If DownloadLink is not NULL, you can use the URL to download the backup file. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
 //
 // @param request - DeleteOpenSearchWhitelistGroupRequest
 //
@@ -4512,15 +4512,15 @@ func (client *Client) DeleteOpenSearchWhitelistGroupWithOptions(request *DeleteO
 
 // Summary:
 //
-// 删除OpenSearch实例白名单分组
+// Deletes a PolarDB-X Search whitelist group.
 //
 // Description:
 //
-// - binlog文件默认保存15天。
+// - Binary log files are retained for 15 days by default.
 //
-// - 返回的日志列表中包含日志记录结束时间在查询开始时间之后，并且日志记录开始时间在查询结束时间之前的所有日志。
+// - The returned log list contains all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
 //
-// - 当DownloadLink不为NULL时，用户可以根据此URL下载备份文件，此URL自生成后2天内有效，请在过期时间之前下载。
+// - If DownloadLink is not NULL, you can use the URL to download the backup file. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
 //
 // @param request - DeleteOpenSearchWhitelistGroupRequest
 //
@@ -6274,11 +6274,11 @@ func (client *Client) DescribeComponentPropeties(request *DescribeComponentPrope
 
 // Summary:
 //
-// 查询Context0管理凭证
+// Queries the management credentials of the context service.
 //
 // Description:
 //
-// > 	- PolarDB-X 2.0 SQL审计与分析功能本身免费使用，但日志服务会对存储空间、读取流量、请求数量、数据加工、数据投递等进行收费，更多关于SQL审计功能的详情，请参见[开启SQL审计与分析](https://help.aliyun.com/document_detail/184619.html)。
+// > 	- PolarDB-X 2.0 SQL audit and analysis feature is free of charge, but Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeContext0ConfigRequest
 //
@@ -6326,11 +6326,11 @@ func (client *Client) DescribeContext0ConfigWithOptions(request *DescribeContext
 
 // Summary:
 //
-// 查询Context0管理凭证
+// Queries the management credentials of the context service.
 //
 // Description:
 //
-// > 	- PolarDB-X 2.0 SQL审计与分析功能本身免费使用，但日志服务会对存储空间、读取流量、请求数量、数据加工、数据投递等进行收费，更多关于SQL审计功能的详情，请参见[开启SQL审计与分析](https://help.aliyun.com/document_detail/184619.html)。
+// > 	- PolarDB-X 2.0 SQL audit and analysis feature is free of charge, but Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeContext0ConfigRequest
 //
@@ -8580,11 +8580,11 @@ func (client *Client) DescribeOpenSearchInfo(request *DescribeOpenSearchInfoRequ
 
 // Summary:
 //
-// 查询OpenSearch实例列表
+// Queries the list of PolarDBX Search instances.
 //
 // Description:
 //
-// 该接口用于获取用户已配置的自定义终端节点（Endpoint）列表，便于管理和查看私有连接或VPC终端服务的设置。
+// Queries the list of custom endpoints that you have configured. This operation helps you manage and view the settings of private connections or VPC endpoint services.
 //
 // @param request - DescribeOpenSearchInstancesRequest
 //
@@ -8648,11 +8648,11 @@ func (client *Client) DescribeOpenSearchInstancesWithOptions(request *DescribeOp
 
 // Summary:
 //
-// 查询OpenSearch实例列表
+// Queries the list of PolarDBX Search instances.
 //
 // Description:
 //
-// 该接口用于获取用户已配置的自定义终端节点（Endpoint）列表，便于管理和查看私有连接或VPC终端服务的设置。
+// Queries the list of custom endpoints that you have configured. This operation helps you manage and view the settings of private connections or VPC endpoint services.
 //
 // @param request - DescribeOpenSearchInstancesRequest
 //
@@ -8818,15 +8818,15 @@ func (client *Client) DescribeOpenSearchResourceUsage(request *DescribeOpenSearc
 
 // Summary:
 //
-// 查询OpenSearch实例拓扑
+// Queries the node topology of a PolarDB-X Search cluster.
 //
 // Description:
 //
-// - binlog文件默认保存15天。
+// - Binary log files are retained for 15 days by default.
 //
-// - 返回的日志列表中包含日志记录结束时间在查询开始时间之后，并且日志记录开始时间在查询结束时间之前的所有日志。
+// - The returned log list contains all log records whose log record end time is later than the query start time and whose log record start time is earlier than the query end time.
 //
-// - 当DownloadLink不为NULL时，用户可以根据此URL下载备份文件，此URL自生成后2天内有效，请在过期时间之前下载。
+// - If DownloadLink is not NULL, you can use this URL to download the backup file. This URL is valid for 2 days after it is generated. Download the file before the URL expires.
 //
 // @param request - DescribeOpenSearchTopologyRequest
 //
@@ -8874,15 +8874,15 @@ func (client *Client) DescribeOpenSearchTopologyWithOptions(request *DescribeOpe
 
 // Summary:
 //
-// 查询OpenSearch实例拓扑
+// Queries the node topology of a PolarDB-X Search cluster.
 //
 // Description:
 //
-// - binlog文件默认保存15天。
+// - Binary log files are retained for 15 days by default.
 //
-// - 返回的日志列表中包含日志记录结束时间在查询开始时间之后，并且日志记录开始时间在查询结束时间之前的所有日志。
+// - The returned log list contains all log records whose log record end time is later than the query start time and whose log record start time is earlier than the query end time.
 //
-// - 当DownloadLink不为NULL时，用户可以根据此URL下载备份文件，此URL自生成后2天内有效，请在过期时间之前下载。
+// - If DownloadLink is not NULL, you can use this URL to download the backup file. This URL is valid for 2 days after it is generated. Download the file before the URL expires.
 //
 // @param request - DescribeOpenSearchTopologyRequest
 //
@@ -11526,6 +11526,10 @@ func (client *Client) ExecuteMetaQueryWithOptions(request *ExecuteMetaQueryReque
 		query["DBInstanceName"] = request.DBInstanceName
 	}
 
+	if !dara.IsNil(request.MaxResultRows) {
+		query["MaxResultRows"] = request.MaxResultRows
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
@@ -14065,6 +14069,189 @@ func (client *Client) PreCheckSqlFlashbackTask(request *PreCheckSqlFlashbackTask
 
 // Summary:
 //
+// Queries column store audit logs.
+//
+// Description:
+//
+// ***
+//
+// @param request - QueryColumnarLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryColumnarLogResponse
+func (client *Client) QueryColumnarLogWithOptions(request *QueryColumnarLogRequest, runtime *dara.RuntimeOptions) (_result *QueryColumnarLogResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.MaxResultRows) {
+		query["MaxResultRows"] = request.MaxResultRows
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SQL) {
+		query["SQL"] = request.SQL
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryColumnarLog"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryColumnarLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries column store audit logs.
+//
+// Description:
+//
+// ***
+//
+// @param request - QueryColumnarLogRequest
+//
+// @return QueryColumnarLogResponse
+func (client *Client) QueryColumnarLog(request *QueryColumnarLogRequest) (_result *QueryColumnarLogResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryColumnarLogResponse{}
+	_body, _err := client.QueryColumnarLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries complete column store audit logs by using streaming.
+//
+// Description:
+//
+// ***
+//
+// @param request - QueryColumnarLogSSERequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryColumnarLogSSEResponse
+func (client *Client) QueryColumnarLogSSEWithSSE(request *QueryColumnarLogSSERequest, runtime *dara.RuntimeOptions, _yield chan *QueryColumnarLogSSEResponse, _yieldErr chan error) {
+	defer close(_yield)
+	client.queryColumnarLogSSEWithSSE_opYieldFunc(_yield, _yieldErr, request, runtime)
+	return
+}
+
+// Summary:
+//
+// Queries complete column store audit logs by using streaming.
+//
+// Description:
+//
+// ***
+//
+// @param request - QueryColumnarLogSSERequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryColumnarLogSSEResponse
+func (client *Client) QueryColumnarLogSSEWithOptions(request *QueryColumnarLogSSERequest, runtime *dara.RuntimeOptions) (_result *QueryColumnarLogSSEResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.MaxResultRows) {
+		query["MaxResultRows"] = request.MaxResultRows
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SQL) {
+		query["SQL"] = request.SQL
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryColumnarLogSSE"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryColumnarLogSSEResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries complete column store audit logs by using streaming.
+//
+// Description:
+//
+// ***
+//
+// @param request - QueryColumnarLogSSERequest
+//
+// @return QueryColumnarLogSSEResponse
+func (client *Client) QueryColumnarLogSSE(request *QueryColumnarLogSSERequest) (_result *QueryColumnarLogSSEResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryColumnarLogSSEResponse{}
+	_body, _err := client.QueryColumnarLogSSEWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Refreshes the metadata of an import task.
 //
 // @param request - RefreshImportMetaRequest
@@ -14985,7 +15172,7 @@ func (client *Client) RestartDataImportTask(request *RestartDataImportTaskReques
 
 // Summary:
 //
-// 重启OpenSearch实例
+// Restarts a PolarDB-X Search instance.
 //
 // Description:
 //
@@ -15037,7 +15224,7 @@ func (client *Client) RestartOpenSearchWithOptions(request *RestartOpenSearchReq
 
 // Summary:
 //
-// 重启OpenSearch实例
+// Restarts a PolarDB-X Search instance.
 //
 // Description:
 //
@@ -16835,4 +17022,64 @@ func (client *Client) UpgradeDBInstanceKernelVersion(request *UpgradeDBInstanceK
 	}
 	_result = _body
 	return _result, _err
+}
+
+func (client *Client) queryColumnarLogSSEWithSSE_opYieldFunc(_yield chan *QueryColumnarLogSSEResponse, _yieldErr chan error, request *QueryColumnarLogSSERequest, runtime *dara.RuntimeOptions) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err := request.Validate()
+		if _err != nil {
+			_yieldErr <- _err
+			return
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.MaxResultRows) {
+		query["MaxResultRows"] = request.MaxResultRows
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SQL) {
+		query["SQL"] = request.SQL
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryColumnarLogSSE"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	sseResp := make(chan *openapi.SSEResponse, 1)
+	go client.CallSSEApi(params, req, runtime, sseResp, _yieldErr)
+	for resp := range sseResp {
+		if !dara.IsNil(resp.Event) && !dara.IsNil(resp.Event.Data) {
+			data := dara.ToMap(dara.ParseJSON(dara.StringValue(resp.Event.Data)))
+			_err := dara.ConvertChan(map[string]interface{}{
+				"statusCode": dara.IntValue(resp.StatusCode),
+				"headers":    resp.Headers,
+				"id":         dara.StringValue(resp.Event.Id),
+				"event":      dara.StringValue(resp.Event.Event),
+				"body":       data,
+			}, _yield)
+			if _err != nil {
+				_yieldErr <- _err
+				return
+			}
+		}
+
+	}
 }

@@ -26,7 +26,7 @@ type DeleteServiceAccountResponseBody struct {
 	AccessDeniedDetail *DeleteServiceAccountResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The data struct.
 	Data *DeleteServiceAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is empty if the request is successful.
+	// The error message returned if the request failed. This parameter is empty if the request is successful.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type DeleteServiceAccountResponseBodyAccessDeniedDetail struct {
 	//
 	// xxx
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The authentication principal type.
+	// The type of the authentication principal.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type DeleteServiceAccountResponseBodyAccessDeniedDetail struct {
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the permission denial.
+	// The type of the missing permission.
 	//
 	// example:
 	//
@@ -222,7 +222,7 @@ type DeleteServiceAccountResponseBodyData struct {
 	//
 	// 1E5DCFFC-A00D-****-836E-73318F8CA577
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The service account type.
+	// The type of the service account.
 	//
 	// example:
 	//

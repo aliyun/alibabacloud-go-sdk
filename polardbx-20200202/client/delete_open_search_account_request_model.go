@@ -18,18 +18,24 @@ type iDeleteOpenSearchAccountRequest interface {
 }
 
 type DeleteOpenSearchAccountRequest struct {
+	// The name of the account to delete.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testaccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The instance name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

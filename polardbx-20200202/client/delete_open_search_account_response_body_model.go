@@ -18,8 +18,12 @@ type iDeleteOpenSearchAccountResponseBody interface {
 }
 
 type DeleteOpenSearchAccountResponseBody struct {
+	// The details of the access denial.
 	AccessDeniedDetail *DeleteOpenSearchAccountResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	Data               *DeleteOpenSearchAccountResponseBodyData               `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The data struct.
+	Data *DeleteOpenSearchAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// A501A191-BD70-5E50-98A9-C2A486A82****
@@ -76,30 +80,44 @@ func (s *DeleteOpenSearchAccountResponseBody) Validate() error {
 }
 
 type DeleteOpenSearchAccountResponseBodyAccessDeniedDetail struct {
+	// The authentication action.
+	//
 	// example:
 	//
 	// xxx
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// The display name of the authentication principal.
+	//
 	// example:
 	//
 	// xxx
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	// The owner ID of the authentication principal.
+	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// The type of the authentication principal.
+	//
 	// example:
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// The encoded diagnostic message.
+	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	// NoPermissionType
+	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// The policy type.
+	//
 	// example:
 	//
 	// System
@@ -182,10 +200,14 @@ func (s *DeleteOpenSearchAccountResponseBodyAccessDeniedDetail) Validate() error
 }
 
 type DeleteOpenSearchAccountResponseBodyData struct {
+	// The account name.
+	//
 	// example:
 	//
 	// polardbx_meta_ro
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 2209883

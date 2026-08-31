@@ -18,8 +18,12 @@ type iDescribeContext0ConfigResponseBody interface {
 }
 
 type DescribeContext0ConfigResponseBody struct {
+	// The details of the access denial.
 	AccessDeniedDetail *DescribeContext0ConfigResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	Data               *DescribeContext0ConfigResponseBodyData               `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The paginated result of the instance list.
+	Data *DescribeContext0ConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// C457B28E-9CAB-4B77-B5C6-5D71B7870B6E
@@ -76,30 +80,44 @@ func (s *DescribeContext0ConfigResponseBody) Validate() error {
 }
 
 type DescribeContext0ConfigResponseBodyAccessDeniedDetail struct {
+	// The authentication action.
+	//
 	// example:
 	//
 	// xxx
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// The identity used for authentication in the request.
+	//
 	// example:
 	//
 	// xxx
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	// The owner ID of the authentication principal.
+	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// The type of the authentication principal.
+	//
 	// example:
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// The encoded diagnostic message.
+	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	// NoPermissionType
+	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// The policy type.
+	//
 	// example:
 	//
 	// PRIORITY
@@ -182,22 +200,32 @@ func (s *DescribeContext0ConfigResponseBodyAccessDeniedDetail) Validate() error 
 }
 
 type DescribeContext0ConfigResponseBodyData struct {
+	// The administrator key of the context service.
+	//
 	// example:
 	//
 	// admin-key-example
 	Context0AdminKey *string `json:"Context0AdminKey,omitempty" xml:"Context0AdminKey,omitempty"`
+	// The name of the context service instance.
+	//
 	// example:
 	//
 	// context0-example
 	Context0InstanceName *string `json:"Context0InstanceName,omitempty" xml:"Context0InstanceName,omitempty"`
+	// The owner key of the context service.
+	//
 	// example:
 	//
 	// owner-key-example
 	Context0OwnerKey *string `json:"Context0OwnerKey,omitempty" xml:"Context0OwnerKey,omitempty"`
+	// The name of the instance.
+	//
 	// example:
 	//
 	// pxsp-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The name of the PolarDB-X Search instance.
+	//
 	// example:
 	//
 	// pxs-*********

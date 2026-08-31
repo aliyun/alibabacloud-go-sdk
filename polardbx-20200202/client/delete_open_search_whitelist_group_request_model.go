@@ -18,18 +18,24 @@ type iDeleteOpenSearchWhitelistGroupRequest interface {
 }
 
 type DeleteOpenSearchWhitelistGroupRequest struct {
+	// The name of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-**************
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The ID of the service group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// group_y6sqhtr6jyu52w4oublg3674du
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the region where the instance resides. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+	//
 	// This parameter is required.
 	//
 	// example:

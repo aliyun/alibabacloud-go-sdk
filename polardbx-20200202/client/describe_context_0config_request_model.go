@@ -16,7 +16,7 @@ type iDescribeContext0ConfigRequest interface {
 }
 
 type DescribeContext0ConfigRequest struct {
-	// 关联的 PolarDB-X 实例名（pxc- 前缀）
+	// The name of the instance.
 	//
 	// This parameter is required.
 	//
@@ -24,6 +24,8 @@ type DescribeContext0ConfigRequest struct {
 	//
 	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region in which the instance resides. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+	//
 	// This parameter is required.
 	//
 	// example:

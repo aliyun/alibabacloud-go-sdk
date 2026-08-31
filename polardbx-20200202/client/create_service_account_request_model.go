@@ -34,7 +34,7 @@ type CreateServiceAccountRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The service account type.
+	// The type of the service account.
 	//
 	// This parameter is required.
 	//

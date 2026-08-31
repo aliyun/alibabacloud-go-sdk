@@ -18,8 +18,12 @@ type iDeleteOpenSearchWhitelistGroupResponseBody interface {
 }
 
 type DeleteOpenSearchWhitelistGroupResponseBody struct {
+	// The details of the access denial.
 	AccessDeniedDetail *DeleteOpenSearchWhitelistGroupResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	Data               *DeleteOpenSearchWhitelistGroupResponseBodyData               `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The monitoring data.
+	Data *DeleteOpenSearchWhitelistGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
 	// example:
 	//
 	// B87E2AB3-B7C9-4394-9160-7F639F732031
@@ -76,30 +80,44 @@ func (s *DeleteOpenSearchWhitelistGroupResponseBody) Validate() error {
 }
 
 type DeleteOpenSearchWhitelistGroupResponseBodyAccessDeniedDetail struct {
+	// The authentication action.
+	//
 	// example:
 	//
 	// xxx
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// The display name of the authentication principal.
+	//
 	// example:
 	//
 	// xxx
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	// The owner ID of the authentication principal.
+	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// The type of the authentication principal.
+	//
 	// example:
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// The diagnostic information.
+	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	// The type of the permission denial.
+	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// The policy type.
+	//
 	// example:
 	//
 	// PRIORITY
@@ -182,6 +200,8 @@ func (s *DeleteOpenSearchWhitelistGroupResponseBodyAccessDeniedDetail) Validate(
 }
 
 type DeleteOpenSearchWhitelistGroupResponseBodyData struct {
+	// The response message. "success" is returned if the request is successful. Otherwise, the corresponding error code is returned.
+	//
 	// example:
 	//
 	// get app list success

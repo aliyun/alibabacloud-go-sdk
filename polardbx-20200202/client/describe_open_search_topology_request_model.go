@@ -16,12 +16,16 @@ type iDescribeOpenSearchTopologyRequest interface {
 }
 
 type DescribeOpenSearchTopologyRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxsp-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

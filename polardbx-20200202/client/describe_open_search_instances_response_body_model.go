@@ -18,8 +18,12 @@ type iDescribeOpenSearchInstancesResponseBody interface {
 }
 
 type DescribeOpenSearchInstancesResponseBody struct {
+	// The details of the access denial.
 	AccessDeniedDetail *DescribeOpenSearchInstancesResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	Data               *DescribeOpenSearchInstancesResponseBodyData               `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The operation result.
+	Data *DescribeOpenSearchInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A501A191-BD70-5E50-98A9-C2A486A82****
@@ -76,30 +80,44 @@ func (s *DescribeOpenSearchInstancesResponseBody) Validate() error {
 }
 
 type DescribeOpenSearchInstancesResponseBodyAccessDeniedDetail struct {
+	// The authentication action.
+	//
 	// example:
 	//
 	// xxx
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// The display name of the authentication principal.
+	//
 	// example:
 	//
 	// xxx
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	// The owner ID of the authentication principal.
+	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// The type of the authentication principal.
+	//
 	// example:
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// The encoded diagnostic message.
+	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	// The type of the permission denial.
+	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// The policy type.
+	//
 	// example:
 	//
 	// PRIORITY
@@ -182,23 +200,34 @@ func (s *DescribeOpenSearchInstancesResponseBodyAccessDeniedDetail) Validate() e
 }
 
 type DescribeOpenSearchInstancesResponseBodyData struct {
+	// The cluster ID.
 	Instances []*DescribeOpenSearchInstancesResponseBodyDataInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// The maximum number of entries per page for a paging query. Maximum value: 100. Default value: If you do not specify a value or the value is less than 10, the default value is 10. If the value is greater than 100, the default value is 100.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The token for the next query.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6kmMV9kamx92yNWehxph5Fw
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 130
@@ -281,58 +310,96 @@ func (s *DescribeOpenSearchInstancesResponseBodyData) Validate() error {
 }
 
 type DescribeOpenSearchInstancesResponseBodyDataInstances struct {
+	// The zone.
+	//
 	// example:
 	//
 	// t1222576965886205
 	AvailabilityZone *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
+	// The billing method. Valid values:
+	//
+	// 	- **PrePaid**: subscription.
+	//
+	// 	- **PostPaid**: pay-as-you-go.
+	//
 	// example:
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The number of CPUs.
+	//
 	// example:
 	//
 	// 4000
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-06-08T07:19:05.000+0000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The number of data nodes.
+	//
 	// example:
 	//
 	// 3
 	DataNodeCount *int32 `json:"DataNodeCount,omitempty" xml:"DataNodeCount,omitempty"`
+	// The instance description.
+	//
 	// example:
 	//
-	// 我的 Supabase 项目
+	// My Supabase project
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The DPI engine version. Default value: 2.0.
+	//
 	// example:
 	//
 	// 8.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// pxc-shrdb7a2t8w3c1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The memory size. Unit: GB.
+	//
 	// example:
 	//
 	// 16
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
+	// The network type of the connection string. Valid values:
+	//
+	// 	- **Public**: public endpoint.
+	//
+	// 	- **Private**: private endpoint.
+	//
+	// 	- **Inner**: private endpoint (classic network).
+	//
 	// example:
 	//
 	// 1
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The display name of the instance specifications.
+	//
 	// example:
 	//
-	// 8 核 32 GB
+	// 8 cores 32 GB
 	SpecDisplay *string `json:"SpecDisplay,omitempty" xml:"SpecDisplay,omitempty"`
+	// The instance status.
+	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The storage size of a single data node. Unit: GB.
+	//
 	// example:
 	//
 	// 500

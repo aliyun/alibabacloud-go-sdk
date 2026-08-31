@@ -16,12 +16,16 @@ type iDeleteOpenSearchRequest interface {
 }
 
 type DeleteOpenSearchRequest struct {
+	// The instance name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-spsil01pww4hfz
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

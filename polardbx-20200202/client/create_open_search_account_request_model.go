@@ -20,24 +20,32 @@ type iCreateOpenSearchAccountRequest interface {
 }
 
 type CreateOpenSearchAccountRequest struct {
+	// The name of the account to be created.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// account_sec
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The password of the account. The password must be 6 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$&%^*()_+-=).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// *****
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	// The name of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region in which the instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:

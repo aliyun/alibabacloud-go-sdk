@@ -222,7 +222,7 @@ type CreateServiceAccountResponseBodyData struct {
 	//
 	// 1E5DCFFC-A00D-****-836E-73318F8CA577
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The service account type.
+	// The type of the service account.
 	//
 	// example:
 	//

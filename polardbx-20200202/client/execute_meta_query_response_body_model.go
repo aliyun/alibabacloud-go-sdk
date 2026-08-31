@@ -22,11 +22,11 @@ type iExecuteMetaQueryResponseBody interface {
 }
 
 type ExecuteMetaQueryResponseBody struct {
-  // The details of the access denial.
+  // The details about the access denial.
   AccessDeniedDetail *ExecuteMetaQueryResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
   // The list of instance details.
   Data *ExecuteMetaQueryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-  // The additional information returned. If the request is successful, **success*	- is returned. If the request fails, the corresponding error code is returned.
+  // The additional information returned by the operation. success is returned if the request is successful. Otherwise, an error code is returned.
   // 
   // example:
   // 
@@ -204,8 +204,13 @@ func (s *ExecuteMetaQueryResponseBodyAccessDeniedDetail) Validate() error {
 }
 
 type ExecuteMetaQueryResponseBodyData struct {
+  AppliedOffset *int64 `json:"AppliedOffset,omitempty" xml:"AppliedOffset,omitempty"`
+  AppliedRowLimit *int64 `json:"AppliedRowLimit,omitempty" xml:"AppliedRowLimit,omitempty"`
   // The column names.
   Columns []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+  HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+  RecordsSizeBytes *int64 `json:"RecordsSizeBytes,omitempty" xml:"RecordsSizeBytes,omitempty"`
+  ReturnedRowCount *int64 `json:"ReturnedRowCount,omitempty" xml:"ReturnedRowCount,omitempty"`
   // The total number of data rows.
   // 
   // example:
@@ -224,8 +229,28 @@ func (s ExecuteMetaQueryResponseBodyData) GoString() string {
   return s.String()
 }
 
+func (s *ExecuteMetaQueryResponseBodyData) GetAppliedOffset() *int64  {
+  return s.AppliedOffset
+}
+
+func (s *ExecuteMetaQueryResponseBodyData) GetAppliedRowLimit() *int64  {
+  return s.AppliedRowLimit
+}
+
 func (s *ExecuteMetaQueryResponseBodyData) GetColumns() []*string  {
   return s.Columns
+}
+
+func (s *ExecuteMetaQueryResponseBodyData) GetHasMore() *bool  {
+  return s.HasMore
+}
+
+func (s *ExecuteMetaQueryResponseBodyData) GetRecordsSizeBytes() *int64  {
+  return s.RecordsSizeBytes
+}
+
+func (s *ExecuteMetaQueryResponseBodyData) GetReturnedRowCount() *int64  {
+  return s.ReturnedRowCount
 }
 
 func (s *ExecuteMetaQueryResponseBodyData) GetRowCount() *int32  {
@@ -236,8 +261,33 @@ func (s *ExecuteMetaQueryResponseBodyData) GetRows() []map[string]interface{}  {
   return s.Rows
 }
 
+func (s *ExecuteMetaQueryResponseBodyData) SetAppliedOffset(v int64) *ExecuteMetaQueryResponseBodyData {
+  s.AppliedOffset = &v
+  return s
+}
+
+func (s *ExecuteMetaQueryResponseBodyData) SetAppliedRowLimit(v int64) *ExecuteMetaQueryResponseBodyData {
+  s.AppliedRowLimit = &v
+  return s
+}
+
 func (s *ExecuteMetaQueryResponseBodyData) SetColumns(v []*string) *ExecuteMetaQueryResponseBodyData {
   s.Columns = v
+  return s
+}
+
+func (s *ExecuteMetaQueryResponseBodyData) SetHasMore(v bool) *ExecuteMetaQueryResponseBodyData {
+  s.HasMore = &v
+  return s
+}
+
+func (s *ExecuteMetaQueryResponseBodyData) SetRecordsSizeBytes(v int64) *ExecuteMetaQueryResponseBodyData {
+  s.RecordsSizeBytes = &v
+  return s
+}
+
+func (s *ExecuteMetaQueryResponseBodyData) SetReturnedRowCount(v int64) *ExecuteMetaQueryResponseBodyData {
+  s.ReturnedRowCount = &v
   return s
 }
 

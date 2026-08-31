@@ -16,12 +16,16 @@ type iRestartOpenSearchRequest interface {
 }
 
 type RestartOpenSearchRequest struct {
+	// The instance name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
