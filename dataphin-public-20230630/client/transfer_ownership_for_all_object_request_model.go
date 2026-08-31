@@ -11,6 +11,8 @@ type iTransferOwnershipForAllObjectRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *TransferOwnershipForAllObjectRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *TransferOwnershipForAllObjectRequest
+	GetOpUserId() *string
 	SetPrivilegeTransferRecord(v *TransferOwnershipForAllObjectRequestPrivilegeTransferRecord) *TransferOwnershipForAllObjectRequest
 	GetPrivilegeTransferRecord() *TransferOwnershipForAllObjectRequestPrivilegeTransferRecord
 }
@@ -24,6 +26,10 @@ type TransferOwnershipForAllObjectRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The transfer information.
 	PrivilegeTransferRecord *TransferOwnershipForAllObjectRequestPrivilegeTransferRecord `json:"PrivilegeTransferRecord,omitempty" xml:"PrivilegeTransferRecord,omitempty" type:"Struct"`
 }
@@ -40,12 +46,21 @@ func (s *TransferOwnershipForAllObjectRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *TransferOwnershipForAllObjectRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *TransferOwnershipForAllObjectRequest) GetPrivilegeTransferRecord() *TransferOwnershipForAllObjectRequestPrivilegeTransferRecord {
 	return s.PrivilegeTransferRecord
 }
 
 func (s *TransferOwnershipForAllObjectRequest) SetOpTenantId(v int64) *TransferOwnershipForAllObjectRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *TransferOwnershipForAllObjectRequest) SetOpUserId(v string) *TransferOwnershipForAllObjectRequest {
+	s.OpUserId = &v
 	return s
 }
 

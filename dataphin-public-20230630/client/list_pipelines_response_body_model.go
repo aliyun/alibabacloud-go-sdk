@@ -24,7 +24,7 @@ type iListPipelinesResponseBody interface {
 }
 
 type ListPipelinesResponseBody struct {
-	// The error code. OK indicates that the request was successful.
+	// The error code. A value of OK indicates that the request was successful.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListPipelinesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *ListPipelinesResponseBody) Validate() error {
 }
 
 type ListPipelinesResponseBodyData struct {
-	// The list of task information on the current page.
+	// The list of node information on the current page.
 	List []*ListPipelinesResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 	// The cursor for the next page (an opaque cursor that the caller does not need to interpret). A null value indicates that there are no more pages. Otherwise, pass this value as the nextCursor parameter in the next request to retrieve the next page.
 	//
@@ -150,7 +150,7 @@ type ListPipelinesResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of records that match the conditions. On the first page request, the actual total is returned. On subsequent page requests (when nextCursor is passed in), if totalCount is included in the request, the same value is returned. Otherwise, this field is not returned. The total value is a snapshot taken at the time of the first page query and is not updated in real time as data changes during pagination.
+	// The total number of records that match the conditions. For the first page request, the actual total count is returned. For subsequent page requests (when nextCursor is passed in), if totalCount is included in the request, the same value is returned. Otherwise, this field is not returned. The total value is a snapshot taken at the time of the first page query and is not updated in real time as data changes during pagination.
 	//
 	// example:
 	//
@@ -227,11 +227,11 @@ func (s *ListPipelinesResponseBodyData) Validate() error {
 type ListPipelinesResponseBodyDataList struct {
 	// The list of user IDs of development owners.
 	DevelopOwners []*string `json:"DevelopOwners,omitempty" xml:"DevelopOwners,omitempty" type:"Repeated"`
-	// The directory in which the task resides.
+	// The directory where the node is located.
 	//
 	// example:
 	//
-	// /dwd/Finance/
+	// /dwd/finance_domain/
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
 	// The file ID.
 	//
@@ -239,7 +239,7 @@ type ListPipelinesResponseBodyDataList struct {
 	//
 	// 12121111
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The scheduling node ID.
+	// The schedule node ID.
 	//
 	// example:
 	//
@@ -271,9 +271,9 @@ type ListPipelinesResponseBodyDataList struct {
 	//
 	// 1
 	ScheduleType *int32 `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
-	// The list of task tag names.
+	// The list of node tag names.
 	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The task status. Valid values:
+	// The node status. Valid values:
 	//
 	// - DRAFT: draft.
 	//
@@ -287,7 +287,7 @@ type ListPipelinesResponseBodyDataList struct {
 	//
 	// SUBMITTED
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The task type. Valid values:
+	// The node type. Valid values:
 	//
 	// - 0: offline integration.
 	//

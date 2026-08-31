@@ -13,6 +13,8 @@ type iDeleteQualityTemplatesShrinkRequest interface {
 	GetDeleteCommandShrink() *string
 	SetOpTenantId(v int64) *DeleteQualityTemplatesShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteQualityTemplatesShrinkRequest
+	GetOpUserId() *string
 }
 
 type DeleteQualityTemplatesShrinkRequest struct {
@@ -28,6 +30,10 @@ type DeleteQualityTemplatesShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteQualityTemplatesShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *DeleteQualityTemplatesShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteQualityTemplatesShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteQualityTemplatesShrinkRequest) SetDeleteCommandShrink(v string) *DeleteQualityTemplatesShrinkRequest {
 	s.DeleteCommandShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *DeleteQualityTemplatesShrinkRequest) SetDeleteCommandShrink(v string) *
 
 func (s *DeleteQualityTemplatesShrinkRequest) SetOpTenantId(v int64) *DeleteQualityTemplatesShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteQualityTemplatesShrinkRequest) SetOpUserId(v string) *DeleteQualityTemplatesShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

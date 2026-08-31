@@ -13,6 +13,8 @@ type iCreateKgRelationRequest interface {
 	GetCreateCommand() *CreateKgRelationRequestCreateCommand
 	SetOpTenantId(v int64) *CreateKgRelationRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateKgRelationRequest
+	GetOpUserId() *string
 	SetWorkspaceId(v string) *CreateKgRelationRequest
 	GetWorkspaceId() *string
 }
@@ -30,6 +32,10 @@ type CreateKgRelationRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The workspace ID.
 	//
 	// This parameter is required.
@@ -56,6 +62,10 @@ func (s *CreateKgRelationRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateKgRelationRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateKgRelationRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -67,6 +77,11 @@ func (s *CreateKgRelationRequest) SetCreateCommand(v *CreateKgRelationRequestCre
 
 func (s *CreateKgRelationRequest) SetOpTenantId(v int64) *CreateKgRelationRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateKgRelationRequest) SetOpUserId(v string) *CreateKgRelationRequest {
+	s.OpUserId = &v
 	return s
 }
 

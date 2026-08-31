@@ -15,6 +15,8 @@ type iUpdateFileDirectoryRequest interface {
 	GetFileId() *int64
 	SetOpTenantId(v int64) *UpdateFileDirectoryRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateFileDirectoryRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *UpdateFileDirectoryRequest
 	GetProjectId() *int64
 }
@@ -44,6 +46,10 @@ type UpdateFileDirectoryRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -74,6 +80,10 @@ func (s *UpdateFileDirectoryRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateFileDirectoryRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateFileDirectoryRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -90,6 +100,11 @@ func (s *UpdateFileDirectoryRequest) SetFileId(v int64) *UpdateFileDirectoryRequ
 
 func (s *UpdateFileDirectoryRequest) SetOpTenantId(v int64) *UpdateFileDirectoryRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateFileDirectoryRequest) SetOpUserId(v string) *UpdateFileDirectoryRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iUpsertQualityScheduleRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpsertQualityScheduleRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpsertQualityScheduleRequest
+	GetOpUserId() *string
 	SetUpsertCommand(v *UpsertQualityScheduleRequestUpsertCommand) *UpsertQualityScheduleRequest
 	GetUpsertCommand() *UpsertQualityScheduleRequestUpsertCommand
 }
@@ -24,6 +26,10 @@ type UpsertQualityScheduleRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update instruction.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpsertQualityScheduleRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpsertQualityScheduleRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpsertQualityScheduleRequest) GetUpsertCommand() *UpsertQualityScheduleRequestUpsertCommand {
 	return s.UpsertCommand
 }
 
 func (s *UpsertQualityScheduleRequest) SetOpTenantId(v int64) *UpsertQualityScheduleRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpsertQualityScheduleRequest) SetOpUserId(v string) *UpsertQualityScheduleRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -72,13 +87,13 @@ type UpsertQualityScheduleRequestUpsertCommand struct {
 	//
 	// 	- 	- 1/	- 	- 	- *
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// The ID of the schedule resource. If specified, the operation updates the existing resource. If not specified, the operation creates a new resource.
+	// The schedule object ID. If this parameter is specified, the schedule is updated. If this parameter is not specified, a schedule is created.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the schedule resource.
+	// The name of the schedule object.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +101,7 @@ type UpsertQualityScheduleRequestUpsertCommand struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The partition expression for custom expressions.
+	// The custom partition expression.
 	//
 	// example:
 	//
@@ -96,9 +111,9 @@ type UpsertQualityScheduleRequestUpsertCommand struct {
 	//
 	// - EVERY_DAY: every day.
 	//
-	// - PRE_DAY: previous day.
+	// - PRE_DAY: yesterday.
 	//
-	// - TODAY: current day.
+	// - TODAY: today.
 	//
 	// - FIRST_DAY_OF_WEEK: first day of the week (Sunday).
 	//
@@ -108,7 +123,7 @@ type UpsertQualityScheduleRequestUpsertCommand struct {
 	//
 	// CUSTOM
 	PartitionType *string `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
-	// The scheduling interval type for timed scheduling. Valid values:
+	// The schedule interval type for timed scheduling. Valid values:
 	//
 	// - DAILY: day.
 	//
@@ -124,21 +139,21 @@ type UpsertQualityScheduleRequestUpsertCommand struct {
 	//
 	// DAILY
 	PeriodScheduleIntervalType *string `json:"PeriodScheduleIntervalType,omitempty" xml:"PeriodScheduleIntervalType,omitempty"`
-	// The scheduling interval values for timed scheduling.
+	// The schedule interval values for timed scheduling.
 	PeriodScheduleParamList []*string `json:"PeriodScheduleParamList,omitempty" xml:"PeriodScheduleParamList,omitempty" type:"Repeated"`
 	// The trigger method for fixed task triggers. Valid values:
 	//
-	// - ALL_TASKS_FINISHED
+	// - ALL_TASKS_FINISHED: triggered when all tasks are finished.
 	//
-	// - ONE_TASKS_FINISHED
+	// - ONE_TASKS_FINISHED: triggered when one task is finished.
 	//
-	// - PRE_ONE_TASKS_START.
+	// - PRE_ONE_TASKS_START: triggered when the previous task starts.
 	//
 	// example:
 	//
 	// ONE_TASKS_FINISHED
 	StaticTaskTriggerType *string `json:"StaticTaskTriggerType,omitempty" xml:"StaticTaskTriggerType,omitempty"`
-	// The checklist of trigger nodes for trigger scheduling.
+	// The list of trigger nodes for trigger scheduling.
 	TriggerNodeList []*string `json:"TriggerNodeList,omitempty" xml:"TriggerNodeList,omitempty" type:"Repeated"`
 	// The trigger method for trigger scheduling. Valid values:
 	//
@@ -150,7 +165,7 @@ type UpsertQualityScheduleRequestUpsertCommand struct {
 	//
 	// STATIC_TASK_TRIGGER
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	// The scheduling type. Valid values:
+	// The schedule type. Valid values:
 	//
 	// - PERIOD_SCHEDULE: timed scheduling.
 	//
@@ -178,7 +193,7 @@ type UpsertQualityScheduleRequestUpsertCommand struct {
 	//
 	// TASK_REFERRED_PARTITION
 	ValidatePartitionType *string `json:"ValidatePartitionType,omitempty" xml:"ValidatePartitionType,omitempty"`
-	// The ID of the monitored object.
+	// The monitored object ID.
 	//
 	// This parameter is required.
 	//

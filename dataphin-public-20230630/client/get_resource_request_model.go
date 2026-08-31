@@ -13,6 +13,8 @@ type iGetResourceRequest interface {
 	GetName() *string
 	SetOpTenantId(v int64) *GetResourceRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetResourceRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *GetResourceRequest
 	GetProjectId() *int64
 }
@@ -34,6 +36,10 @@ type GetResourceRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -60,6 +66,10 @@ func (s *GetResourceRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetResourceRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetResourceRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -71,6 +81,11 @@ func (s *GetResourceRequest) SetName(v string) *GetResourceRequest {
 
 func (s *GetResourceRequest) SetOpTenantId(v int64) *GetResourceRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetResourceRequest) SetOpUserId(v string) *GetResourceRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -15,6 +15,8 @@ type iListNodeDownStreamShrinkRequest interface {
 	GetListQueryShrink() *string
 	SetOpTenantId(v int64) *ListNodeDownStreamShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListNodeDownStreamShrinkRequest
+	GetOpUserId() *string
 }
 
 type ListNodeDownStreamShrinkRequest struct {
@@ -40,6 +42,12 @@ type ListNodeDownStreamShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListNodeDownStreamShrinkRequest) String() string {
@@ -62,6 +70,10 @@ func (s *ListNodeDownStreamShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListNodeDownStreamShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListNodeDownStreamShrinkRequest) SetEnv(v string) *ListNodeDownStreamShrinkRequest {
 	s.Env = &v
 	return s
@@ -74,6 +86,11 @@ func (s *ListNodeDownStreamShrinkRequest) SetListQueryShrink(v string) *ListNode
 
 func (s *ListNodeDownStreamShrinkRequest) SetOpTenantId(v int64) *ListNodeDownStreamShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListNodeDownStreamShrinkRequest) SetOpUserId(v string) *ListNodeDownStreamShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

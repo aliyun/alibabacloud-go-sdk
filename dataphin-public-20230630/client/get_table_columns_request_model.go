@@ -13,12 +13,14 @@ type iGetTableColumnsRequest interface {
 	GetCatalog() *string
 	SetOpTenantId(v int64) *GetTableColumnsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetTableColumnsRequest
+	GetOpUserId() *string
 	SetTableName(v string) *GetTableColumnsRequest
 	GetTableName() *string
 }
 
 type GetTableColumnsRequest struct {
-	// Asset table catalog: name of the business unit or project space.
+	// The asset table catalog, which is the name of the business unit or workspace.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +28,7 @@ type GetTableColumnsRequest struct {
 	//
 	// LD_test01_dev
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +36,11 @@ type GetTableColumnsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// Table name.
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
+	// The table name.
 	//
 	// This parameter is required.
 	//
@@ -60,6 +66,10 @@ func (s *GetTableColumnsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetTableColumnsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetTableColumnsRequest) GetTableName() *string {
 	return s.TableName
 }
@@ -71,6 +81,11 @@ func (s *GetTableColumnsRequest) SetCatalog(v string) *GetTableColumnsRequest {
 
 func (s *GetTableColumnsRequest) SetOpTenantId(v int64) *GetTableColumnsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetTableColumnsRequest) SetOpUserId(v string) *GetTableColumnsRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -126,7 +126,7 @@ func (s *CreateBatchTaskResponseBody) Validate() error {
 }
 
 type CreateBatchTaskResponseBodyCreateResult struct {
-	// The node ID in the node directory tree.
+	// The node ID in the folder tree.
 	//
 	// example:
 	//

@@ -15,6 +15,8 @@ type iOfflinePipelineByAsyncShrinkRequest interface {
 	GetOfflineCommandShrink() *string
 	SetOpTenantId(v int64) *OfflinePipelineByAsyncShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *OfflinePipelineByAsyncShrinkRequest
+	GetOpUserId() *string
 }
 
 type OfflinePipelineByAsyncShrinkRequest struct {
@@ -34,6 +36,10 @@ type OfflinePipelineByAsyncShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s OfflinePipelineByAsyncShrinkRequest) String() string {
@@ -56,6 +62,10 @@ func (s *OfflinePipelineByAsyncShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *OfflinePipelineByAsyncShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *OfflinePipelineByAsyncShrinkRequest) SetContextShrink(v string) *OfflinePipelineByAsyncShrinkRequest {
 	s.ContextShrink = &v
 	return s
@@ -68,6 +78,11 @@ func (s *OfflinePipelineByAsyncShrinkRequest) SetOfflineCommandShrink(v string) 
 
 func (s *OfflinePipelineByAsyncShrinkRequest) SetOpTenantId(v int64) *OfflinePipelineByAsyncShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *OfflinePipelineByAsyncShrinkRequest) SetOpUserId(v string) *OfflinePipelineByAsyncShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

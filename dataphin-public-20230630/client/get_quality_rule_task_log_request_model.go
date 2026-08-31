@@ -11,6 +11,8 @@ type iGetQualityRuleTaskLogRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetQualityRuleTaskLogRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetQualityRuleTaskLogRequest
+	GetOpUserId() *string
 	SetRuleTaskId(v int64) *GetQualityRuleTaskLogRequest
 	GetRuleTaskId() *int64
 }
@@ -24,6 +26,12 @@ type GetQualityRuleTaskLogRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The rule task ID.
 	//
 	// This parameter is required.
@@ -46,12 +54,21 @@ func (s *GetQualityRuleTaskLogRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetQualityRuleTaskLogRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetQualityRuleTaskLogRequest) GetRuleTaskId() *int64 {
 	return s.RuleTaskId
 }
 
 func (s *GetQualityRuleTaskLogRequest) SetOpTenantId(v int64) *GetQualityRuleTaskLogRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetQualityRuleTaskLogRequest) SetOpUserId(v string) *GetQualityRuleTaskLogRequest {
+	s.OpUserId = &v
 	return s
 }
 

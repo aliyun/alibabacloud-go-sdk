@@ -11,6 +11,8 @@ type iRemoveDataServiceAppMemberRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *RemoveDataServiceAppMemberRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *RemoveDataServiceAppMemberRequest
+	GetOpUserId() *string
 	SetRemoveCommand(v *RemoveDataServiceAppMemberRequestRemoveCommand) *RemoveDataServiceAppMemberRequest
 	GetRemoveCommand() *RemoveDataServiceAppMemberRequestRemoveCommand
 }
@@ -24,6 +26,10 @@ type RemoveDataServiceAppMemberRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// Remove regular members from a data service application
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *RemoveDataServiceAppMemberRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *RemoveDataServiceAppMemberRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *RemoveDataServiceAppMemberRequest) GetRemoveCommand() *RemoveDataServiceAppMemberRequestRemoveCommand {
 	return s.RemoveCommand
 }
 
 func (s *RemoveDataServiceAppMemberRequest) SetOpTenantId(v int64) *RemoveDataServiceAppMemberRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *RemoveDataServiceAppMemberRequest) SetOpUserId(v string) *RemoveDataServiceAppMemberRequest {
+	s.OpUserId = &v
 	return s
 }
 

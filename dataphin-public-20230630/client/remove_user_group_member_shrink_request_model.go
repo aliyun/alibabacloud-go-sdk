@@ -11,6 +11,8 @@ type iRemoveUserGroupMemberShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *RemoveUserGroupMemberShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *RemoveUserGroupMemberShrinkRequest
+	GetOpUserId() *string
 	SetRemoveCommandShrink(v string) *RemoveUserGroupMemberShrinkRequest
 	GetRemoveCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type RemoveUserGroupMemberShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The command to remove user group members.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *RemoveUserGroupMemberShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *RemoveUserGroupMemberShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *RemoveUserGroupMemberShrinkRequest) GetRemoveCommandShrink() *string {
 	return s.RemoveCommandShrink
 }
 
 func (s *RemoveUserGroupMemberShrinkRequest) SetOpTenantId(v int64) *RemoveUserGroupMemberShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *RemoveUserGroupMemberShrinkRequest) SetOpUserId(v string) *RemoveUserGroupMemberShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

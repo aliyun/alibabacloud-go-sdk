@@ -13,6 +13,8 @@ type iListQualityTemplatesShrinkRequest interface {
 	GetListQueryShrink() *string
 	SetOpTenantId(v int64) *ListQualityTemplatesShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListQualityTemplatesShrinkRequest
+	GetOpUserId() *string
 }
 
 type ListQualityTemplatesShrinkRequest struct {
@@ -26,6 +28,10 @@ type ListQualityTemplatesShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListQualityTemplatesShrinkRequest) String() string {
@@ -44,6 +50,10 @@ func (s *ListQualityTemplatesShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListQualityTemplatesShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListQualityTemplatesShrinkRequest) SetListQueryShrink(v string) *ListQualityTemplatesShrinkRequest {
 	s.ListQueryShrink = &v
 	return s
@@ -51,6 +61,11 @@ func (s *ListQualityTemplatesShrinkRequest) SetListQueryShrink(v string) *ListQu
 
 func (s *ListQualityTemplatesShrinkRequest) SetOpTenantId(v int64) *ListQualityTemplatesShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListQualityTemplatesShrinkRequest) SetOpUserId(v string) *ListQualityTemplatesShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

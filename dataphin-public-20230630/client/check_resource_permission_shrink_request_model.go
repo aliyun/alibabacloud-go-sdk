@@ -13,6 +13,8 @@ type iCheckResourcePermissionShrinkRequest interface {
 	GetCheckCommandShrink() *string
 	SetOpTenantId(v int64) *CheckResourcePermissionShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CheckResourcePermissionShrinkRequest
+	GetOpUserId() *string
 }
 
 type CheckResourcePermissionShrinkRequest struct {
@@ -28,6 +30,10 @@ type CheckResourcePermissionShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CheckResourcePermissionShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CheckResourcePermissionShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CheckResourcePermissionShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CheckResourcePermissionShrinkRequest) SetCheckCommandShrink(v string) *CheckResourcePermissionShrinkRequest {
 	s.CheckCommandShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *CheckResourcePermissionShrinkRequest) SetCheckCommandShrink(v string) *
 
 func (s *CheckResourcePermissionShrinkRequest) SetOpTenantId(v int64) *CheckResourcePermissionShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CheckResourcePermissionShrinkRequest) SetOpUserId(v string) *CheckResourcePermissionShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

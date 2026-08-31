@@ -11,6 +11,8 @@ type iRetryTransferOwnershipShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *RetryTransferOwnershipShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *RetryTransferOwnershipShrinkRequest
+	GetOpUserId() *string
 	SetPrivilegeTransferRecordShrink(v string) *RetryTransferOwnershipShrinkRequest
 	GetPrivilegeTransferRecordShrink() *string
 }
@@ -24,6 +26,10 @@ type RetryTransferOwnershipShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The transfer information.
 	PrivilegeTransferRecordShrink *string `json:"PrivilegeTransferRecord,omitempty" xml:"PrivilegeTransferRecord,omitempty"`
 }
@@ -40,12 +46,21 @@ func (s *RetryTransferOwnershipShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *RetryTransferOwnershipShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *RetryTransferOwnershipShrinkRequest) GetPrivilegeTransferRecordShrink() *string {
 	return s.PrivilegeTransferRecordShrink
 }
 
 func (s *RetryTransferOwnershipShrinkRequest) SetOpTenantId(v int64) *RetryTransferOwnershipShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *RetryTransferOwnershipShrinkRequest) SetOpUserId(v string) *RetryTransferOwnershipShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

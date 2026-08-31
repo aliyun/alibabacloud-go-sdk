@@ -13,6 +13,8 @@ type iAddRegisterLineageRequest interface {
 	GetAddRegisterLineageCommand() *AddRegisterLineageRequestAddRegisterLineageCommand
 	SetOpTenantId(v int64) *AddRegisterLineageRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *AddRegisterLineageRequest
+	GetOpUserId() *string
 }
 
 type AddRegisterLineageRequest struct {
@@ -28,6 +30,10 @@ type AddRegisterLineageRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s AddRegisterLineageRequest) String() string {
@@ -46,6 +52,10 @@ func (s *AddRegisterLineageRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *AddRegisterLineageRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *AddRegisterLineageRequest) SetAddRegisterLineageCommand(v *AddRegisterLineageRequestAddRegisterLineageCommand) *AddRegisterLineageRequest {
 	s.AddRegisterLineageCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *AddRegisterLineageRequest) SetAddRegisterLineageCommand(v *AddRegisterL
 
 func (s *AddRegisterLineageRequest) SetOpTenantId(v int64) *AddRegisterLineageRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *AddRegisterLineageRequest) SetOpUserId(v string) *AddRegisterLineageRequest {
+	s.OpUserId = &v
 	return s
 }
 

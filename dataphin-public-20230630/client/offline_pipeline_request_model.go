@@ -15,6 +15,8 @@ type iOfflinePipelineRequest interface {
 	GetOfflineCommand() *OfflinePipelineRequestOfflineCommand
 	SetOpTenantId(v int64) *OfflinePipelineRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *OfflinePipelineRequest
+	GetOpUserId() *string
 }
 
 type OfflinePipelineRequest struct {
@@ -34,6 +36,10 @@ type OfflinePipelineRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s OfflinePipelineRequest) String() string {
@@ -56,6 +62,10 @@ func (s *OfflinePipelineRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *OfflinePipelineRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *OfflinePipelineRequest) SetContext(v *OfflinePipelineRequestContext) *OfflinePipelineRequest {
 	s.Context = v
 	return s
@@ -68,6 +78,11 @@ func (s *OfflinePipelineRequest) SetOfflineCommand(v *OfflinePipelineRequestOffl
 
 func (s *OfflinePipelineRequest) SetOpTenantId(v int64) *OfflinePipelineRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *OfflinePipelineRequest) SetOpUserId(v string) *OfflinePipelineRequest {
+	s.OpUserId = &v
 	return s
 }
 

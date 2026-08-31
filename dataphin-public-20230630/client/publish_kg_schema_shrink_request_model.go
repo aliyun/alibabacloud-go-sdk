@@ -11,6 +11,8 @@ type iPublishKgSchemaShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *PublishKgSchemaShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *PublishKgSchemaShrinkRequest
+	GetOpUserId() *string
 	SetPublishCommandShrink(v string) *PublishKgSchemaShrinkRequest
 	GetPublishCommandShrink() *string
 	SetWorkspaceId(v string) *PublishKgSchemaShrinkRequest
@@ -26,6 +28,10 @@ type PublishKgSchemaShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The publish command and its details.
 	//
 	// This parameter is required.
@@ -52,6 +58,10 @@ func (s *PublishKgSchemaShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *PublishKgSchemaShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *PublishKgSchemaShrinkRequest) GetPublishCommandShrink() *string {
 	return s.PublishCommandShrink
 }
@@ -62,6 +72,11 @@ func (s *PublishKgSchemaShrinkRequest) GetWorkspaceId() *string {
 
 func (s *PublishKgSchemaShrinkRequest) SetOpTenantId(v int64) *PublishKgSchemaShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *PublishKgSchemaShrinkRequest) SetOpUserId(v string) *PublishKgSchemaShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

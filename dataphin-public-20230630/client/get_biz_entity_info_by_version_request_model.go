@@ -13,6 +13,8 @@ type iGetBizEntityInfoByVersionRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *GetBizEntityInfoByVersionRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetBizEntityInfoByVersionRequest
+	GetOpUserId() *string
 	SetType(v string) *GetBizEntityInfoByVersionRequest
 	GetType() *string
 	SetVersionId(v int64) *GetBizEntityInfoByVersionRequest
@@ -36,6 +38,10 @@ type GetBizEntityInfoByVersionRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The business type. Valid values: BIZ_OBJECT and BIZ_PROCESS.
 	//
 	// This parameter is required.
@@ -70,6 +76,10 @@ func (s *GetBizEntityInfoByVersionRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetBizEntityInfoByVersionRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetBizEntityInfoByVersionRequest) GetType() *string {
 	return s.Type
 }
@@ -85,6 +95,11 @@ func (s *GetBizEntityInfoByVersionRequest) SetId(v int64) *GetBizEntityInfoByVer
 
 func (s *GetBizEntityInfoByVersionRequest) SetOpTenantId(v int64) *GetBizEntityInfoByVersionRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetBizEntityInfoByVersionRequest) SetOpUserId(v string) *GetBizEntityInfoByVersionRequest {
+	s.OpUserId = &v
 	return s
 }
 

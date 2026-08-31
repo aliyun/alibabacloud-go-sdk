@@ -11,6 +11,8 @@ type iUpdateStandardLookupTableRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateStandardLookupTableRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateStandardLookupTableRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateStandardLookupTableRequestUpdateCommand) *UpdateStandardLookupTableRequest
 	GetUpdateCommand() *UpdateStandardLookupTableRequestUpdateCommand
 }
@@ -24,6 +26,10 @@ type UpdateStandardLookupTableRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update command.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateStandardLookupTableRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateStandardLookupTableRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateStandardLookupTableRequest) GetUpdateCommand() *UpdateStandardLookupTableRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *UpdateStandardLookupTableRequest) SetOpTenantId(v int64) *UpdateStandardLookupTableRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateStandardLookupTableRequest) SetOpUserId(v string) *UpdateStandardLookupTableRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iUpdateTenantComputeEngineRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateTenantComputeEngineRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateTenantComputeEngineRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateTenantComputeEngineRequestUpdateCommand) *UpdateTenantComputeEngineRequest
 	GetUpdateCommand() *UpdateTenantComputeEngineRequestUpdateCommand
 }
@@ -24,6 +26,10 @@ type UpdateTenantComputeEngineRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update command.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateTenantComputeEngineRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateTenantComputeEngineRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateTenantComputeEngineRequest) GetUpdateCommand() *UpdateTenantComputeEngineRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *UpdateTenantComputeEngineRequest) SetOpTenantId(v int64) *UpdateTenantComputeEngineRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateTenantComputeEngineRequest) SetOpUserId(v string) *UpdateTenantComputeEngineRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -17,6 +17,8 @@ type iGetInstanceDownStreamRequest interface {
 	GetInstanceGet() *GetInstanceDownStreamRequestInstanceGet
 	SetOpTenantId(v int64) *GetInstanceDownStreamRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetInstanceDownStreamRequest
+	GetOpUserId() *string
 	SetRunStatus(v string) *GetInstanceDownStreamRequest
 	GetRunStatus() *string
 }
@@ -52,6 +54,10 @@ type GetInstanceDownStreamRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// Run status of the instance.
 	//
 	// - INIT
@@ -94,6 +100,10 @@ func (s *GetInstanceDownStreamRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetInstanceDownStreamRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetInstanceDownStreamRequest) GetRunStatus() *string {
 	return s.RunStatus
 }
@@ -115,6 +125,11 @@ func (s *GetInstanceDownStreamRequest) SetInstanceGet(v *GetInstanceDownStreamRe
 
 func (s *GetInstanceDownStreamRequest) SetOpTenantId(v int64) *GetInstanceDownStreamRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetInstanceDownStreamRequest) SetOpUserId(v string) *GetInstanceDownStreamRequest {
+	s.OpUserId = &v
 	return s
 }
 

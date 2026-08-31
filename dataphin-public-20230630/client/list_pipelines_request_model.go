@@ -15,6 +15,8 @@ type iListPipelinesRequest interface {
 	GetListCommand() *ListPipelinesRequestListCommand
 	SetOpTenantId(v int64) *ListPipelinesRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListPipelinesRequest
+	GetOpUserId() *string
 }
 
 type ListPipelinesRequest struct {
@@ -34,6 +36,12 @@ type ListPipelinesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The user ID of the operator.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListPipelinesRequest) String() string {
@@ -56,6 +64,10 @@ func (s *ListPipelinesRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListPipelinesRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListPipelinesRequest) SetContext(v *ListPipelinesRequestContext) *ListPipelinesRequest {
 	s.Context = v
 	return s
@@ -68,6 +80,11 @@ func (s *ListPipelinesRequest) SetListCommand(v *ListPipelinesRequestListCommand
 
 func (s *ListPipelinesRequest) SetOpTenantId(v int64) *ListPipelinesRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListPipelinesRequest) SetOpUserId(v string) *ListPipelinesRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -139,25 +156,25 @@ func (s *ListPipelinesRequestContext) Validate() error {
 }
 
 type ListPipelinesRequestListCommand struct {
-	// The list of creator user IDs for filtering. If left empty, no filtering is applied. Multiple values have an OR relationship.
+	// The list of creator user IDs for filtering. If left empty, no filtering is applied. Multiple values are evaluated with an OR relationship.
 	CreatorList []*string `json:"CreatorList,omitempty" xml:"CreatorList,omitempty" type:"Repeated"`
-	// The list of development owner user IDs for filtering. If left empty, no filtering is applied. Multiple values have an OR relationship.
+	// The list of development owner user IDs for filtering. If left empty, no filtering is applied. Multiple values are evaluated with an OR relationship.
 	DevelopOwnerList []*string `json:"DevelopOwnerList,omitempty" xml:"DevelopOwnerList,omitempty" type:"Repeated"`
 	// The list of full folder paths to query. If left empty, the root folder is queried.
 	Directories []*string `json:"Directories,omitempty" xml:"Directories,omitempty" type:"Repeated"`
 	// Specifies whether to use exact match for node names. Default value: false.
 	ExactMatch *bool `json:"ExactMatch,omitempty" xml:"ExactMatch,omitempty"`
-	// The list of node name keywords. This parameter is optional. If left empty, no filtering by name is applied. For exact match, this is a list of full names. For fuzzy match, this is a list of keywords. Multiple values have an OR relationship.
+	// The list of node name keywords. This parameter is optional. If left empty, no filtering by name is applied. For exact match, specify full names. For fuzzy match, specify keywords. Multiple values are evaluated with an OR relationship.
 	Keywords []*string `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
-	// The cursor-based pagination parameter (an opaque cursor that callers do not need to interpret). This parameter is optional. If not specified, the request is treated as a first-page request and returns the actual total count. If specified, the request is treated as a subsequent-page request. Pass the NextCursor value from the previous page response as-is. The SQL layer automatically filters by incrementing ID to query the next page without re-querying the total count. No OFFSET is used throughout, which avoids performance degradation in deep paging scenarios.
+	// The cursor-based pagination parameter (an opaque cursor that callers do not need to interpret). This parameter is optional. If not specified, the request is treated as a first-page request and returns the actual total count. If specified, the request is treated as a subsequent-page request. Pass the NextCursor value returned from the previous page as-is. The SQL layer automatically filters by incrementing ID to query the next page without re-querying the total count. No OFFSET is used throughout, which avoids performance degradation in deep paging scenarios.
 	//
 	// example:
 	//
 	// 123
 	NextCursor *int64 `json:"NextCursor,omitempty" xml:"NextCursor,omitempty"`
-	// The list of O&M owner user IDs for filtering. If left empty, no filtering is applied. Multiple values have an OR relationship.
+	// The list of O&M owner user IDs for filtering. If left empty, no filtering is applied. Multiple values are evaluated with an OR relationship.
 	OpsOwnerList []*string `json:"OpsOwnerList,omitempty" xml:"OpsOwnerList,omitempty" type:"Repeated"`
-	// The page number. Default value: 1. Starts from 1.
+	// The page number. Default value: 1. Pages start from 1.
 	//
 	// example:
 	//
@@ -169,9 +186,9 @@ type ListPipelinesRequestListCommand struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of node types. Valid values:
+	// The list of node types. Default value: [0] (batch integration). Valid values:
 	//
-	// - 0: offline integration.
+	// - 0: batch integration.
 	//
 	// - 1: real-time integration.
 	//
@@ -183,7 +200,7 @@ type ListPipelinesRequestListCommand struct {
 	//
 	// - 16: online unstructured workflow.
 	//
-	// Default value: [0]. If null or an empty list is passed, the default value [0] is used.
+	// If null or an empty list is passed, the default value [0] is used.
 	PipelineTypeList []*int32 `json:"PipelineTypeList,omitempty" xml:"PipelineTypeList,omitempty" type:"Repeated"`
 	// Specifies whether to recursively query subfolders. Default value: false.
 	//
@@ -211,9 +228,9 @@ type ListPipelinesRequestListCommand struct {
 	//
 	// - PUBLISHED: published.
 	SubmitStatusList []*string `json:"SubmitStatusList,omitempty" xml:"SubmitStatusList,omitempty" type:"Repeated"`
-	// The list of label names for filtering. If left empty, no filtering is applied. Multiple values have an OR relationship.
+	// The list of label names for filtering. If left empty, no filtering is applied. Multiple values are evaluated with an OR relationship.
 	TagList []*string `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
-	// The total number of records for cursor-based pagination. This parameter is optional and takes effect only when NextCursor is not empty. After the first-page request returns the actual total count, pass this value back as-is for subsequent pages. The server does not re-query the total count and directly returns this value, which avoids redundant count overhead. If not specified, the system falls back to querying one extra record to determine whether a next page exists.
+	// The total number of records for cursor-based pagination. This parameter is optional and takes effect only when NextCursor is not empty. After the first-page request returns the actual total count, pass this value back as-is for subsequent pages. The server does not re-query the total count and directly echoes the value, which avoids redundant count overhead. If not specified, the system falls back to querying one extra record to determine whether a next page exists.
 	//
 	// example:
 	//

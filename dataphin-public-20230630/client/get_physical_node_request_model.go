@@ -15,6 +15,8 @@ type iGetPhysicalNodeRequest interface {
 	GetNodeId() *string
 	SetOpTenantId(v int64) *GetPhysicalNodeRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetPhysicalNodeRequest
+	GetOpUserId() *string
 }
 
 type GetPhysicalNodeRequest struct {
@@ -44,6 +46,10 @@ type GetPhysicalNodeRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetPhysicalNodeRequest) String() string {
@@ -66,6 +72,10 @@ func (s *GetPhysicalNodeRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetPhysicalNodeRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetPhysicalNodeRequest) SetEnv(v string) *GetPhysicalNodeRequest {
 	s.Env = &v
 	return s
@@ -78,6 +88,11 @@ func (s *GetPhysicalNodeRequest) SetNodeId(v string) *GetPhysicalNodeRequest {
 
 func (s *GetPhysicalNodeRequest) SetOpTenantId(v int64) *GetPhysicalNodeRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetPhysicalNodeRequest) SetOpUserId(v string) *GetPhysicalNodeRequest {
+	s.OpUserId = &v
 	return s
 }
 

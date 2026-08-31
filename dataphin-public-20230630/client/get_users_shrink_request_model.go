@@ -11,6 +11,8 @@ type iGetUsersShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetUsersShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetUsersShrinkRequest
+	GetOpUserId() *string
 	SetUserIdListShrink(v string) *GetUsersShrinkRequest
 	GetUserIdListShrink() *string
 }
@@ -24,6 +26,10 @@ type GetUsersShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The list of user IDs.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *GetUsersShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetUsersShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetUsersShrinkRequest) GetUserIdListShrink() *string {
 	return s.UserIdListShrink
 }
 
 func (s *GetUsersShrinkRequest) SetOpTenantId(v int64) *GetUsersShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetUsersShrinkRequest) SetOpUserId(v string) *GetUsersShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

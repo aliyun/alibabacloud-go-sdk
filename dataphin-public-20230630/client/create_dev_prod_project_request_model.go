@@ -13,6 +13,8 @@ type iCreateDevProdProjectRequest interface {
 	GetCreateCommand() *CreateDevProdProjectRequestCreateCommand
 	SetOpTenantId(v int64) *CreateDevProdProjectRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateDevProdProjectRequest
+	GetOpUserId() *string
 }
 
 type CreateDevProdProjectRequest struct {
@@ -28,6 +30,10 @@ type CreateDevProdProjectRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateDevProdProjectRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateDevProdProjectRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateDevProdProjectRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateDevProdProjectRequest) SetCreateCommand(v *CreateDevProdProjectRequestCreateCommand) *CreateDevProdProjectRequest {
 	s.CreateCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateDevProdProjectRequest) SetCreateCommand(v *CreateDevProdProjectRe
 
 func (s *CreateDevProdProjectRequest) SetOpTenantId(v int64) *CreateDevProdProjectRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateDevProdProjectRequest) SetOpUserId(v string) *CreateDevProdProjectRequest {
+	s.OpUserId = &v
 	return s
 }
 

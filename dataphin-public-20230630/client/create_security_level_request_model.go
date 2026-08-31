@@ -13,6 +13,8 @@ type iCreateSecurityLevelRequest interface {
 	GetCreateCommand() *CreateSecurityLevelRequestCreateCommand
 	SetOpTenantId(v int64) *CreateSecurityLevelRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateSecurityLevelRequest
+	GetOpUserId() *string
 }
 
 type CreateSecurityLevelRequest struct {
@@ -28,6 +30,12 @@ type CreateSecurityLevelRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateSecurityLevelRequest) String() string {
@@ -46,6 +54,10 @@ func (s *CreateSecurityLevelRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateSecurityLevelRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateSecurityLevelRequest) SetCreateCommand(v *CreateSecurityLevelRequestCreateCommand) *CreateSecurityLevelRequest {
 	s.CreateCommand = v
 	return s
@@ -53,6 +65,11 @@ func (s *CreateSecurityLevelRequest) SetCreateCommand(v *CreateSecurityLevelRequ
 
 func (s *CreateSecurityLevelRequest) SetOpTenantId(v int64) *CreateSecurityLevelRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateSecurityLevelRequest) SetOpUserId(v string) *CreateSecurityLevelRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -78,7 +95,7 @@ type CreateSecurityLevelRequestCreateCommand struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The sort order of the classification level. If this parameter is not specified, the current maximum order ID is used by default.
+	// The order of the classification level. If this parameter is not specified, the current maximum order ID is used by default.
 	//
 	// example:
 	//

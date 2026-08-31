@@ -13,6 +13,8 @@ type iGetDataServiceApiCallTrendRequest interface {
 	GetEndTime() *string
 	SetOpTenantId(v int64) *GetDataServiceApiCallTrendRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetDataServiceApiCallTrendRequest
+	GetOpUserId() *string
 	SetProjectId(v int32) *GetDataServiceApiCallTrendRequest
 	GetProjectId() *int32
 	SetStartTime(v string) *GetDataServiceApiCallTrendRequest
@@ -36,6 +38,10 @@ type GetDataServiceApiCallTrendRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The data service project ID.
 	//
 	// This parameter is required.
@@ -70,6 +76,10 @@ func (s *GetDataServiceApiCallTrendRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetDataServiceApiCallTrendRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetDataServiceApiCallTrendRequest) GetProjectId() *int32 {
 	return s.ProjectId
 }
@@ -85,6 +95,11 @@ func (s *GetDataServiceApiCallTrendRequest) SetEndTime(v string) *GetDataService
 
 func (s *GetDataServiceApiCallTrendRequest) SetOpTenantId(v int64) *GetDataServiceApiCallTrendRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetDataServiceApiCallTrendRequest) SetOpUserId(v string) *GetDataServiceApiCallTrendRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -36,13 +36,13 @@ type GetQualityWatchResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The details of the monitored object.
+	// The monitoring object details.
 	QualityWatchInfo *GetQualityWatchResponseBodyQualityWatchInfo `json:"QualityWatchInfo,omitempty" xml:"QualityWatchInfo,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -138,13 +138,13 @@ type GetQualityWatchResponseBodyQualityWatchInfo struct {
 	//
 	// 30012011
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The creator name.
+	// The name of the creator.
 	//
 	// example:
 	//
 	// test
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The datasource config details.
+	// The data source details.
 	DataSourceInfo *GetQualityWatchResponseBodyQualityWatchInfoDataSourceInfo `json:"DataSourceInfo,omitempty" xml:"DataSourceInfo,omitempty" type:"Struct"`
 	// The number of enabled rules.
 	//
@@ -152,7 +152,7 @@ type GetQualityWatchResponseBodyQualityWatchInfo struct {
 	//
 	// 1
 	EnabledRuleCount *int64 `json:"EnabledRuleCount,omitempty" xml:"EnabledRuleCount,omitempty"`
-	// The monitor ID.
+	// The watchtask ID.
 	//
 	// example:
 	//
@@ -160,13 +160,13 @@ type GetQualityWatchResponseBodyQualityWatchInfo struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The metric details.
 	IndexInfo *GetQualityWatchResponseBodyQualityWatchInfoIndexInfo `json:"IndexInfo,omitempty" xml:"IndexInfo,omitempty" type:"Struct"`
-	// The ID of the most recent quality watchtask for the monitored object.
+	// The ID of the latest quality watchtask.
 	//
 	// example:
 	//
 	// 1
 	LatestWatchTaskId *int64 `json:"LatestWatchTaskId,omitempty" xml:"LatestWatchTaskId,omitempty"`
-	// The status of the most recent quality watchtask for the monitored object.
+	// The status of the latest quality watchtask.
 	//
 	// example:
 	//
@@ -210,9 +210,9 @@ type GetQualityWatchResponseBodyQualityWatchInfo struct {
 	RuleCount *int64 `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
 	// The status. Valid values:
 	//
-	// - ENABLE
+	// - ENABLE: Enabled.
 	//
-	// - DISABLE.
+	// - DISABLE: Disabled.
 	//
 	// example:
 	//
@@ -224,7 +224,7 @@ type GetQualityWatchResponseBodyQualityWatchInfo struct {
 	//
 	// - TABLE: Dataphin table.
 	//
-	// - DATASOURCE_TABLE: full-domain table.
+	// - DATASOURCE_TABLE: global table.
 	//
 	// - DATASOURCE: data source.
 	//
@@ -440,7 +440,7 @@ type GetQualityWatchResponseBodyQualityWatchInfoDataSourceInfo struct {
 	//
 	// 30012011
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The creator name.
+	// The name of the creator.
 	//
 	// example:
 	//
@@ -448,9 +448,9 @@ type GetQualityWatchResponseBodyQualityWatchInfoDataSourceInfo struct {
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
 	// The environment identifier. Valid values:
 	//
-	// - PROD
+	// - PROD: production environment.
 	//
-	// - DEV.
+	// - DEV: development environment.
 	//
 	// example:
 	//
@@ -490,7 +490,7 @@ type GetQualityWatchResponseBodyQualityWatchInfoDataSourceInfo struct {
 	//
 	// - MAX_COMPUTE
 	//
-	// - HADOOP.
+	// - HADOOP
 	//
 	// example:
 	//
@@ -625,15 +625,7 @@ type GetQualityWatchResponseBodyQualityWatchInfoIndexInfo struct {
 	//
 	// dws_all
 	CellSumLogicTableName *string `json:"CellSumLogicTableName,omitempty" xml:"CellSumLogicTableName,omitempty"`
-	// The metric computation type. Valid values:
-	//
-	// - AUTO
-	//
-	// - CUSTOM
-	//
-	// - MOUNT
-	//
-	// - COMBINE.
+	// The metric computation type. Valid values: AUTO, CUSTOM, MOUNT, and COMBINE.
 	//
 	// example:
 	//
@@ -661,7 +653,7 @@ type GetQualityWatchResponseBodyQualityWatchInfoIndexInfo struct {
 	//
 	// example:
 	//
-	// 全站汇总表
+	// Site-wide aggregate table
 	GranularityDisplayName *string `json:"GranularityDisplayName,omitempty" xml:"GranularityDisplayName,omitempty"`
 	// The statistical granularity ID.
 	//
@@ -711,9 +703,7 @@ type GetQualityWatchResponseBodyQualityWatchInfoIndexInfo struct {
 	//
 	// test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The metric type. Valid values:
-	//
-	// - INDEX.
+	// The metric type. Valid values: INDEX.
 	//
 	// example:
 	//
@@ -934,9 +924,9 @@ type GetQualityWatchResponseBodyQualityWatchInfoTableInfo struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The environment identifier. Valid values:
 	//
-	// - DEV
+	// - DEV: development environment.
 	//
-	// - PROD.
+	// - PROD: production environment.
 	//
 	// example:
 	//

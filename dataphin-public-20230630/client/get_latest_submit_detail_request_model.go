@@ -11,6 +11,8 @@ type iGetLatestSubmitDetailRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetLatestSubmitDetailRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetLatestSubmitDetailRequest
+	GetOpUserId() *string
 	SetSubmitDetailQuery(v *GetLatestSubmitDetailRequestSubmitDetailQuery) *GetLatestSubmitDetailRequest
 	GetSubmitDetailQuery() *GetLatestSubmitDetailRequestSubmitDetailQuery
 }
@@ -24,6 +26,10 @@ type GetLatestSubmitDetailRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The pending submit query request.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *GetLatestSubmitDetailRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetLatestSubmitDetailRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetLatestSubmitDetailRequest) GetSubmitDetailQuery() *GetLatestSubmitDetailRequestSubmitDetailQuery {
 	return s.SubmitDetailQuery
 }
 
 func (s *GetLatestSubmitDetailRequest) SetOpTenantId(v int64) *GetLatestSubmitDetailRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetLatestSubmitDetailRequest) SetOpUserId(v string) *GetLatestSubmitDetailRequest {
+	s.OpUserId = &v
 	return s
 }
 

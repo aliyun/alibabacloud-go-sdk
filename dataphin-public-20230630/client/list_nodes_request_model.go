@@ -15,14 +15,16 @@ type iListNodesRequest interface {
 	GetListQuery() *ListNodesRequestListQuery
 	SetOpTenantId(v int64) *ListNodesRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListNodesRequest
+	GetOpUserId() *string
 }
 
 type ListNodesRequest struct {
 	// The environment identifier. Valid values:
 	//
-	// - DEV: development environment
+	// - DEV: Development environment.
 	//
-	// - PROD (default): production environment.
+	// - PROD (default): Production environment.
 	//
 	// example:
 	//
@@ -40,6 +42,12 @@ type ListNodesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListNodesRequest) String() string {
@@ -62,6 +70,10 @@ func (s *ListNodesRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListNodesRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListNodesRequest) SetEnv(v string) *ListNodesRequest {
 	s.Env = &v
 	return s
@@ -74,6 +86,11 @@ func (s *ListNodesRequest) SetListQuery(v *ListNodesRequestListQuery) *ListNodes
 
 func (s *ListNodesRequest) SetOpTenantId(v int64) *ListNodesRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListNodesRequest) SetOpUserId(v string) *ListNodesRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -95,7 +112,7 @@ type ListNodesRequestListQuery struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The node business type. Valid values:
 	//
-	// - SCRIPT: script
+	// - SCRIPT: script.
 	//
 	// - LOGICAL_TABLE: logical table.
 	//
@@ -105,7 +122,7 @@ type ListNodesRequestListQuery struct {
 	//
 	// SCRIPT
 	NodeBizType *string `json:"NodeBizType,omitempty" xml:"NodeBizType,omitempty"`
-	// The sub-business types. Valid values:
+	// The sub-business type. Valid values:
 	//
 	// - MAX_COMPUTE_SQL
 	//
@@ -117,7 +134,7 @@ type ListNodesRequestListQuery struct {
 	//
 	// - ONE_SERVICE_SQL
 	//
-	// - DATABASE_SQL.
+	// - DATABASE_SQL, etc.
 	//
 	// This parameter is required.
 	NodeSubBizTypeList []*string `json:"NodeSubBizTypeList,omitempty" xml:"NodeSubBizTypeList,omitempty" type:"Repeated"`
@@ -129,13 +146,13 @@ type ListNodesRequestListQuery struct {
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of entries per page.
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The node priorities. Valid values:
+	// The node priority. Valid values:
 	//
 	// - HIGHEST
 	//
@@ -145,7 +162,7 @@ type ListNodesRequestListQuery struct {
 	//
 	// - LOW
 	//
-	// - LOWEST.
+	// - LOWEST
 	PriorityList []*string `json:"PriorityList,omitempty" xml:"PriorityList,omitempty" type:"Repeated"`
 	// The project ID.
 	//
@@ -161,7 +178,7 @@ type ListNodesRequestListQuery struct {
 	//
 	// true
 	SchedulePaused *bool `json:"SchedulePaused,omitempty" xml:"SchedulePaused,omitempty"`
-	// The scheduling periods. Valid values:
+	// The scheduling period. Valid values:
 	//
 	// - YEARLY
 	//
@@ -173,21 +190,21 @@ type ListNodesRequestListQuery struct {
 	//
 	// - HOURLY
 	//
-	// - MINUTELY.
+	// - MINUTELY
 	SchedulePeriodList []*string `json:"SchedulePeriodList,omitempty" xml:"SchedulePeriodList,omitempty" type:"Repeated"`
 	// The node scheduling type. Valid values:
 	//
-	// - NORMAL: periodic scheduling
+	// - NORMAL: Periodic.
 	//
-	// - SUPPLEMENT: data backfill
+	// - SUPPLEMENT: Data backfill.
 	//
-	// - MANUAL: manual scheduling.
+	// - MANUAL: Manual.
 	//
 	// example:
 	//
 	// NORMAL
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
-	// The search keyword. Fuzzy search by node name and exact search by node ID are supported.
+	// The search keyword. Supports fuzzy match by node name and exact match by node ID.
 	//
 	// example:
 	//

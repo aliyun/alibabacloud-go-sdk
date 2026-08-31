@@ -13,6 +13,8 @@ type iListAddableUsersRequest interface {
 	GetListQuery() *ListAddableUsersRequestListQuery
 	SetOpTenantId(v int64) *ListAddableUsersRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListAddableUsersRequest
+	GetOpUserId() *string
 }
 
 type ListAddableUsersRequest struct {
@@ -28,6 +30,10 @@ type ListAddableUsersRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListAddableUsersRequest) String() string {
@@ -46,6 +52,10 @@ func (s *ListAddableUsersRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListAddableUsersRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListAddableUsersRequest) SetListQuery(v *ListAddableUsersRequestListQuery) *ListAddableUsersRequest {
 	s.ListQuery = v
 	return s
@@ -53,6 +63,11 @@ func (s *ListAddableUsersRequest) SetListQuery(v *ListAddableUsersRequestListQue
 
 func (s *ListAddableUsersRequest) SetOpTenantId(v int64) *ListAddableUsersRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListAddableUsersRequest) SetOpUserId(v string) *ListAddableUsersRequest {
+	s.OpUserId = &v
 	return s
 }
 

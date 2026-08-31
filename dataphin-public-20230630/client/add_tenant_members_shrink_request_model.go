@@ -13,6 +13,8 @@ type iAddTenantMembersShrinkRequest interface {
 	GetAddCommandShrink() *string
 	SetOpTenantId(v int64) *AddTenantMembersShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *AddTenantMembersShrinkRequest
+	GetOpUserId() *string
 }
 
 type AddTenantMembersShrinkRequest struct {
@@ -28,6 +30,10 @@ type AddTenantMembersShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s AddTenantMembersShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *AddTenantMembersShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *AddTenantMembersShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *AddTenantMembersShrinkRequest) SetAddCommandShrink(v string) *AddTenantMembersShrinkRequest {
 	s.AddCommandShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *AddTenantMembersShrinkRequest) SetAddCommandShrink(v string) *AddTenant
 
 func (s *AddTenantMembersShrinkRequest) SetOpTenantId(v int64) *AddTenantMembersShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *AddTenantMembersShrinkRequest) SetOpUserId(v string) *AddTenantMembersShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

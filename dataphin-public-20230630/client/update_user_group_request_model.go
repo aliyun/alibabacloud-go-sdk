@@ -11,6 +11,8 @@ type iUpdateUserGroupRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateUserGroupRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateUserGroupRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateUserGroupRequestUpdateCommand) *UpdateUserGroupRequest
 	GetUpdateCommand() *UpdateUserGroupRequestUpdateCommand
 }
@@ -24,6 +26,10 @@ type UpdateUserGroupRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The command to edit the user group.
 	UpdateCommand *UpdateUserGroupRequestUpdateCommand `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty" type:"Struct"`
 }
@@ -40,12 +46,21 @@ func (s *UpdateUserGroupRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateUserGroupRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateUserGroupRequest) GetUpdateCommand() *UpdateUserGroupRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *UpdateUserGroupRequest) SetOpTenantId(v int64) *UpdateUserGroupRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateUserGroupRequest) SetOpUserId(v string) *UpdateUserGroupRequest {
+	s.OpUserId = &v
 	return s
 }
 

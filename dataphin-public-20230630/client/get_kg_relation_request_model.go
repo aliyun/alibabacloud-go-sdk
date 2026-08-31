@@ -11,6 +11,8 @@ type iGetKgRelationRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetKgRelationRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetKgRelationRequest
+	GetOpUserId() *string
 	SetRelationId(v string) *GetKgRelationRequest
 	GetRelationId() *string
 	SetRelationType(v string) *GetKgRelationRequest
@@ -28,6 +30,10 @@ type GetKgRelationRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The relationship record ID.
 	//
 	// This parameter is required.
@@ -66,6 +72,10 @@ func (s *GetKgRelationRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetKgRelationRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetKgRelationRequest) GetRelationId() *string {
 	return s.RelationId
 }
@@ -80,6 +90,11 @@ func (s *GetKgRelationRequest) GetWorkspaceId() *string {
 
 func (s *GetKgRelationRequest) SetOpTenantId(v int64) *GetKgRelationRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetKgRelationRequest) SetOpUserId(v string) *GetKgRelationRequest {
+	s.OpUserId = &v
 	return s
 }
 

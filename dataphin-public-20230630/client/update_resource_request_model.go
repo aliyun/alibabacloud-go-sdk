@@ -11,6 +11,8 @@ type iUpdateResourceRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateResourceRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateResourceRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateResourceRequestUpdateCommand) *UpdateResourceRequest
 	GetUpdateCommand() *UpdateResourceRequestUpdateCommand
 }
@@ -24,6 +26,10 @@ type UpdateResourceRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The edit command.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateResourceRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateResourceRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateResourceRequest) GetUpdateCommand() *UpdateResourceRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *UpdateResourceRequest) SetOpTenantId(v int64) *UpdateResourceRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateResourceRequest) SetOpUserId(v string) *UpdateResourceRequest {
+	s.OpUserId = &v
 	return s
 }
 

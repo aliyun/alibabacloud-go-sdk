@@ -13,6 +13,8 @@ type iGetAccountByRowPermissionIdRequest interface {
 	GetGetAccountByRowPermissionIdQuery() *GetAccountByRowPermissionIdRequestGetAccountByRowPermissionIdQuery
 	SetOpTenantId(v int64) *GetAccountByRowPermissionIdRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetAccountByRowPermissionIdRequest
+	GetOpUserId() *string
 }
 
 type GetAccountByRowPermissionIdRequest struct {
@@ -28,6 +30,10 @@ type GetAccountByRowPermissionIdRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetAccountByRowPermissionIdRequest) String() string {
@@ -46,6 +52,10 @@ func (s *GetAccountByRowPermissionIdRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetAccountByRowPermissionIdRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetAccountByRowPermissionIdRequest) SetGetAccountByRowPermissionIdQuery(v *GetAccountByRowPermissionIdRequestGetAccountByRowPermissionIdQuery) *GetAccountByRowPermissionIdRequest {
 	s.GetAccountByRowPermissionIdQuery = v
 	return s
@@ -53,6 +63,11 @@ func (s *GetAccountByRowPermissionIdRequest) SetGetAccountByRowPermissionIdQuery
 
 func (s *GetAccountByRowPermissionIdRequest) SetOpTenantId(v int64) *GetAccountByRowPermissionIdRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetAccountByRowPermissionIdRequest) SetOpUserId(v string) *GetAccountByRowPermissionIdRequest {
+	s.OpUserId = &v
 	return s
 }
 

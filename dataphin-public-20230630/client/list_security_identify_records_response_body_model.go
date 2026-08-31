@@ -36,13 +36,13 @@ type ListSecurityIdentifyRecordsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The backend exception details.
+	// The details of the backend exception.
 	//
 	// example:
 	//
 	// internal error
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The paging query result.
+	// The paged query result.
 	PageResult *ListSecurityIdentifyRecordsResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -194,65 +194,65 @@ type ListSecurityIdentifyRecordsResponseBodyPageResultIdentifyRecordList struct 
 	//
 	// test_abc
 	BizUnitDisplayName *string `json:"BizUnitDisplayName,omitempty" xml:"BizUnitDisplayName,omitempty"`
-	// The business unit ID.
+	// The ID of the business unit.
 	//
 	// example:
 	//
 	// 11
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
-	// The business unit name.
+	// The name of the business unit.
 	//
 	// example:
 	//
 	// test
 	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
-	// The classification abbreviation.
+	// The abbreviation of the classification.
 	//
 	// example:
 	//
 	// test
 	ClassifyAbbreviation *string `json:"ClassifyAbbreviation,omitempty" xml:"ClassifyAbbreviation,omitempty"`
-	// The classification ID.
+	// The ID of the classification.
 	//
 	// example:
 	//
 	// 1
 	ClassifyId *int64 `json:"ClassifyId,omitempty" xml:"ClassifyId,omitempty"`
-	// The classification name.
+	// The name of the classification.
 	//
 	// example:
 	//
 	// test
 	ClassifyName *string `json:"ClassifyName,omitempty" xml:"ClassifyName,omitempty"`
-	// The classification effective status. Valid values:
+	// The status of the classification. Valid values:
 	//
-	// - ENABLE: enabled.
+	// - ENABLE: Enabled.
 	//
-	// - DISABLE: disabled.
+	// - DISABLE: Disabled.
 	//
 	// example:
 	//
 	// ENABLE
 	ClassifyStatus *string `json:"ClassifyStatus,omitempty" xml:"ClassifyStatus,omitempty"`
-	// The datasource ID.
+	// The ID of the data source.
 	//
 	// example:
 	//
 	// 1
 	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	// The datasource name.
+	// The name of the data source.
 	//
 	// example:
 	//
 	// test
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
-	// The field description.
+	// The description of the field.
 	//
 	// example:
 	//
 	// test
 	FieldDescription *string `json:"FieldDescription,omitempty" xml:"FieldDescription,omitempty"`
-	// The field ID.
+	// The ID of the field.
 	//
 	// example:
 	//
@@ -264,7 +264,7 @@ type ListSecurityIdentifyRecordsResponseBodyPageResultIdentifyRecordList struct 
 	//
 	// col1
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	// The identification record ID.
+	// The ID of the identification record.
 	//
 	// example:
 	//
@@ -276,19 +276,19 @@ type ListSecurityIdentifyRecordsResponseBodyPageResultIdentifyRecordList struct 
 	IsCustomIdentify *bool `json:"IsCustomIdentify,omitempty" xml:"IsCustomIdentify,omitempty"`
 	// Indicates whether the record is locked.
 	IsLocked *bool `json:"IsLocked,omitempty" xml:"IsLocked,omitempty"`
-	// The classification level abbreviation.
+	// The abbreviated name of the level.
 	//
 	// example:
 	//
 	// test
 	LevelAbbreviation *string `json:"LevelAbbreviation,omitempty" xml:"LevelAbbreviation,omitempty"`
-	// The classification level index.
+	// The level index.
 	//
 	// example:
 	//
 	// 1
 	LevelIndex *int64 `json:"LevelIndex,omitempty" xml:"LevelIndex,omitempty"`
-	// The classification level name.
+	// The name of the level.
 	//
 	// example:
 	//
@@ -300,19 +300,19 @@ type ListSecurityIdentifyRecordsResponseBodyPageResultIdentifyRecordList struct 
 	//
 	// test_abc
 	ProjectDisplayName *string `json:"ProjectDisplayName,omitempty" xml:"ProjectDisplayName,omitempty"`
-	// The project ID.
+	// The ID of the project.
 	//
 	// example:
 	//
 	// 1001
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The project name.
+	// The name of the project.
 	//
 	// example:
 	//
 	// test
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The table description.
+	// The description of the table.
 	//
 	// example:
 	//
@@ -324,7 +324,7 @@ type ListSecurityIdentifyRecordsResponseBodyPageResultIdentifyRecordList struct 
 	//
 	// DEV
 	TableEnv *string `json:"TableEnv,omitempty" xml:"TableEnv,omitempty"`
-	// The table ID.
+	// The ID of the table.
 	//
 	// example:
 	//
@@ -336,7 +336,7 @@ type ListSecurityIdentifyRecordsResponseBodyPageResultIdentifyRecordList struct 
 	//
 	// t_test
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The table type. Valid values:
+	// The type of the table. Valid values:
 	//
 	// - LOGIC_TABLE: logical table.
 	//
@@ -344,7 +344,7 @@ type ListSecurityIdentifyRecordsResponseBodyPageResultIdentifyRecordList struct 
 	//
 	// - LOGIC_FACT_TABLE: logical fact table.
 	//
-	// - LOGIC_SUM_TABLE: logical aggregate table.
+	// - LOGIC_SUM_TABLE: logical summary table.
 	//
 	// - LOGIC_ODM_SOURCE: source table.
 	//

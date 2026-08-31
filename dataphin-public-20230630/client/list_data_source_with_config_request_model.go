@@ -13,6 +13,8 @@ type iListDataSourceWithConfigRequest interface {
 	GetListQuery() *ListDataSourceWithConfigRequestListQuery
 	SetOpTenantId(v int64) *ListDataSourceWithConfigRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListDataSourceWithConfigRequest
+	GetOpUserId() *string
 }
 
 type ListDataSourceWithConfigRequest struct {
@@ -28,6 +30,10 @@ type ListDataSourceWithConfigRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListDataSourceWithConfigRequest) String() string {
@@ -46,6 +52,10 @@ func (s *ListDataSourceWithConfigRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListDataSourceWithConfigRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListDataSourceWithConfigRequest) SetListQuery(v *ListDataSourceWithConfigRequestListQuery) *ListDataSourceWithConfigRequest {
 	s.ListQuery = v
 	return s
@@ -53,6 +63,11 @@ func (s *ListDataSourceWithConfigRequest) SetListQuery(v *ListDataSourceWithConf
 
 func (s *ListDataSourceWithConfigRequest) SetOpTenantId(v int64) *ListDataSourceWithConfigRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListDataSourceWithConfigRequest) SetOpUserId(v string) *ListDataSourceWithConfigRequest {
+	s.OpUserId = &v
 	return s
 }
 

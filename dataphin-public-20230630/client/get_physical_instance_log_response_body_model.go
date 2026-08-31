@@ -36,7 +36,7 @@ type GetPhysicalInstanceLogResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ func (s *GetPhysicalInstanceLogResponseBody) Validate() error {
 }
 
 type GetPhysicalInstanceLogResponseBodyTaskrunLogList struct {
-	// The execution duration of the task. Unit: seconds.
+	// The task execution duration, in seconds.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type GetPhysicalInstanceLogResponseBodyTaskrunLogList struct {
 	//
 	// 2024-05-30 16:48:13
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The execution log content. This value is empty if the task has not been run.
+	// The run log content. This value is empty if the task has not been run.
 	//
 	// example:
 	//
@@ -158,7 +158,7 @@ type GetPhysicalInstanceLogResponseBodyTaskrunLogList struct {
 	//
 	// 2024-05-30 16:47:13
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The execution status.
+	// The run status.
 	//
 	// example:
 	//

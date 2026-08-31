@@ -13,6 +13,8 @@ type iGetDataServiceAppRequest interface {
 	GetAppId() *int32
 	SetOpTenantId(v int64) *GetDataServiceAppRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetDataServiceAppRequest
+	GetOpUserId() *string
 }
 
 type GetDataServiceAppRequest struct {
@@ -32,6 +34,10 @@ type GetDataServiceAppRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetDataServiceAppRequest) String() string {
@@ -50,6 +56,10 @@ func (s *GetDataServiceAppRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetDataServiceAppRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetDataServiceAppRequest) SetAppId(v int32) *GetDataServiceAppRequest {
 	s.AppId = &v
 	return s
@@ -57,6 +67,11 @@ func (s *GetDataServiceAppRequest) SetAppId(v int32) *GetDataServiceAppRequest {
 
 func (s *GetDataServiceAppRequest) SetOpTenantId(v int64) *GetDataServiceAppRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetDataServiceAppRequest) SetOpUserId(v string) *GetDataServiceAppRequest {
+	s.OpUserId = &v
 	return s
 }
 

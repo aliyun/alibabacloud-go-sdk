@@ -11,6 +11,8 @@ type iResetDataServiceAppSecretShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *ResetDataServiceAppSecretShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ResetDataServiceAppSecretShrinkRequest
+	GetOpUserId() *string
 	SetUpdateCommandShrink(v string) *ResetDataServiceAppSecretShrinkRequest
 	GetUpdateCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type ResetDataServiceAppSecretShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// Reset Data Service Application Key
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *ResetDataServiceAppSecretShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ResetDataServiceAppSecretShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ResetDataServiceAppSecretShrinkRequest) GetUpdateCommandShrink() *string {
 	return s.UpdateCommandShrink
 }
 
 func (s *ResetDataServiceAppSecretShrinkRequest) SetOpTenantId(v int64) *ResetDataServiceAppSecretShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ResetDataServiceAppSecretShrinkRequest) SetOpUserId(v string) *ResetDataServiceAppSecretShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

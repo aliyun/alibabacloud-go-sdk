@@ -13,6 +13,8 @@ type iGrantResourcePermissionShrinkRequest interface {
 	GetGrantCommandShrink() *string
 	SetOpTenantId(v int64) *GrantResourcePermissionShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GrantResourcePermissionShrinkRequest
+	GetOpUserId() *string
 }
 
 type GrantResourcePermissionShrinkRequest struct {
@@ -28,6 +30,10 @@ type GrantResourcePermissionShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GrantResourcePermissionShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *GrantResourcePermissionShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GrantResourcePermissionShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GrantResourcePermissionShrinkRequest) SetGrantCommandShrink(v string) *GrantResourcePermissionShrinkRequest {
 	s.GrantCommandShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *GrantResourcePermissionShrinkRequest) SetGrantCommandShrink(v string) *
 
 func (s *GrantResourcePermissionShrinkRequest) SetOpTenantId(v int64) *GrantResourcePermissionShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GrantResourcePermissionShrinkRequest) SetOpUserId(v string) *GrantResourcePermissionShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

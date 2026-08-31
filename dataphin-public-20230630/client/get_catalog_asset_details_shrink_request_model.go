@@ -13,10 +13,12 @@ type iGetCatalogAssetDetailsShrinkRequest interface {
 	GetGetCatalogAssetDetailsQueryShrink() *string
 	SetOpTenantId(v int64) *GetCatalogAssetDetailsShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetCatalogAssetDetailsShrinkRequest
+	GetOpUserId() *string
 }
 
 type GetCatalogAssetDetailsShrinkRequest struct {
-	// The paging query for the listing asset catalog list.
+	// The paged query for the listed asset catalog.
 	//
 	// This parameter is required.
 	GetCatalogAssetDetailsQueryShrink *string `json:"GetCatalogAssetDetailsQuery,omitempty" xml:"GetCatalogAssetDetailsQuery,omitempty"`
@@ -28,6 +30,12 @@ type GetCatalogAssetDetailsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetCatalogAssetDetailsShrinkRequest) String() string {
@@ -46,6 +54,10 @@ func (s *GetCatalogAssetDetailsShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetCatalogAssetDetailsShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetCatalogAssetDetailsShrinkRequest) SetGetCatalogAssetDetailsQueryShrink(v string) *GetCatalogAssetDetailsShrinkRequest {
 	s.GetCatalogAssetDetailsQueryShrink = &v
 	return s
@@ -53,6 +65,11 @@ func (s *GetCatalogAssetDetailsShrinkRequest) SetGetCatalogAssetDetailsQueryShri
 
 func (s *GetCatalogAssetDetailsShrinkRequest) SetOpTenantId(v int64) *GetCatalogAssetDetailsShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetCatalogAssetDetailsShrinkRequest) SetOpUserId(v string) *GetCatalogAssetDetailsShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

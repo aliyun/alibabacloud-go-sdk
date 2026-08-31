@@ -13,6 +13,8 @@ type iCreatePipelineNodeRequest interface {
 	GetCreatePipelineNodeCommand() *CreatePipelineNodeRequestCreatePipelineNodeCommand
 	SetOpTenantId(v int64) *CreatePipelineNodeRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreatePipelineNodeRequest
+	GetOpUserId() *string
 }
 
 type CreatePipelineNodeRequest struct {
@@ -28,6 +30,10 @@ type CreatePipelineNodeRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreatePipelineNodeRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreatePipelineNodeRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreatePipelineNodeRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreatePipelineNodeRequest) SetCreatePipelineNodeCommand(v *CreatePipelineNodeRequestCreatePipelineNodeCommand) *CreatePipelineNodeRequest {
 	s.CreatePipelineNodeCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *CreatePipelineNodeRequest) SetCreatePipelineNodeCommand(v *CreatePipeli
 
 func (s *CreatePipelineNodeRequest) SetOpTenantId(v int64) *CreatePipelineNodeRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreatePipelineNodeRequest) SetOpUserId(v string) *CreatePipelineNodeRequest {
+	s.OpUserId = &v
 	return s
 }
 

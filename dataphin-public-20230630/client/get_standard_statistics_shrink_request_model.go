@@ -11,6 +11,8 @@ type iGetStandardStatisticsShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetStandardStatisticsShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetStandardStatisticsShrinkRequest
+	GetOpUserId() *string
 	SetStatisticsQueryShrink(v string) *GetStandardStatisticsShrinkRequest
 	GetStatisticsQueryShrink() *string
 }
@@ -24,6 +26,10 @@ type GetStandardStatisticsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The statistical query instruction.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *GetStandardStatisticsShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetStandardStatisticsShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetStandardStatisticsShrinkRequest) GetStatisticsQueryShrink() *string {
 	return s.StatisticsQueryShrink
 }
 
 func (s *GetStandardStatisticsShrinkRequest) SetOpTenantId(v int64) *GetStandardStatisticsShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetStandardStatisticsShrinkRequest) SetOpUserId(v string) *GetStandardStatisticsShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

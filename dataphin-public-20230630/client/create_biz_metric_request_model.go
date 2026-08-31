@@ -13,6 +13,8 @@ type iCreateBizMetricRequest interface {
 	GetCreateBizMetricCommand() *CreateBizMetricRequestCreateBizMetricCommand
 	SetOpTenantId(v int64) *CreateBizMetricRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateBizMetricRequest
+	GetOpUserId() *string
 }
 
 type CreateBizMetricRequest struct {
@@ -28,6 +30,10 @@ type CreateBizMetricRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateBizMetricRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateBizMetricRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateBizMetricRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateBizMetricRequest) SetCreateBizMetricCommand(v *CreateBizMetricRequestCreateBizMetricCommand) *CreateBizMetricRequest {
 	s.CreateBizMetricCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateBizMetricRequest) SetCreateBizMetricCommand(v *CreateBizMetricReq
 
 func (s *CreateBizMetricRequest) SetOpTenantId(v int64) *CreateBizMetricRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateBizMetricRequest) SetOpUserId(v string) *CreateBizMetricRequest {
+	s.OpUserId = &v
 	return s
 }
 

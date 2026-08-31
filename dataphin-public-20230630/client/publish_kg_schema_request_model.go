@@ -11,6 +11,8 @@ type iPublishKgSchemaRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *PublishKgSchemaRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *PublishKgSchemaRequest
+	GetOpUserId() *string
 	SetPublishCommand(v *PublishKgSchemaRequestPublishCommand) *PublishKgSchemaRequest
 	GetPublishCommand() *PublishKgSchemaRequestPublishCommand
 	SetWorkspaceId(v string) *PublishKgSchemaRequest
@@ -26,6 +28,10 @@ type PublishKgSchemaRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The publish command and its details.
 	//
 	// This parameter is required.
@@ -52,6 +58,10 @@ func (s *PublishKgSchemaRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *PublishKgSchemaRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *PublishKgSchemaRequest) GetPublishCommand() *PublishKgSchemaRequestPublishCommand {
 	return s.PublishCommand
 }
@@ -62,6 +72,11 @@ func (s *PublishKgSchemaRequest) GetWorkspaceId() *string {
 
 func (s *PublishKgSchemaRequest) SetOpTenantId(v int64) *PublishKgSchemaRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *PublishKgSchemaRequest) SetOpUserId(v string) *PublishKgSchemaRequest {
+	s.OpUserId = &v
 	return s
 }
 

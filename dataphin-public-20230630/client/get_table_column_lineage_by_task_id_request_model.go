@@ -11,6 +11,8 @@ type iGetTableColumnLineageByTaskIdRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetTableColumnLineageByTaskIdRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetTableColumnLineageByTaskIdRequest
+	GetOpUserId() *string
 	SetTableColumnLineageByTaskIdQuery(v *GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery) *GetTableColumnLineageByTaskIdRequest
 	GetTableColumnLineageByTaskIdQuery() *GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery
 }
@@ -24,6 +26,10 @@ type GetTableColumnLineageByTaskIdRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// Data structure for querying table column lineage.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *GetTableColumnLineageByTaskIdRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetTableColumnLineageByTaskIdRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetTableColumnLineageByTaskIdRequest) GetTableColumnLineageByTaskIdQuery() *GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery {
 	return s.TableColumnLineageByTaskIdQuery
 }
 
 func (s *GetTableColumnLineageByTaskIdRequest) SetOpTenantId(v int64) *GetTableColumnLineageByTaskIdRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdRequest) SetOpUserId(v string) *GetTableColumnLineageByTaskIdRequest {
+	s.OpUserId = &v
 	return s
 }
 

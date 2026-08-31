@@ -24,15 +24,15 @@ type iGetTableLineageByTaskIdResponseBody interface {
 }
 
 type GetTableLineageByTaskIdResponseBody struct {
-	// The error code. OK indicates a successful request.
+	// The error code. A value of OK indicates that the request was successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The query results.
+	// The query result.
 	Data []*GetTableLineageByTaskIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The HTTP status code.
+	// The HTTP status code returned by the backend.
 	//
 	// example:
 	//
@@ -134,43 +134,43 @@ func (s *GetTableLineageByTaskIdResponseBody) Validate() error {
 }
 
 type GetTableLineageByTaskIdResponseBodyData struct {
-	// The business unit ID of the input table.
+	// The ID of the business unit to which the input table belongs.
 	//
 	// example:
 	//
 	// 123
 	InputBizUnitId *int64 `json:"InputBizUnitId,omitempty" xml:"InputBizUnitId,omitempty"`
-	// The data source ID of the input table.
+	// The ID of the data source to which the input table belongs.
 	//
 	// example:
 	//
 	// 123
 	InputDataSourceId *int64 `json:"InputDataSourceId,omitempty" xml:"InputDataSourceId,omitempty"`
-	// The storage type of the input table.
+	// The storage format of the input table.
 	//
 	// example:
 	//
 	// MAX_COMPUTE
 	InputDataSourceType *string `json:"InputDataSourceType,omitempty" xml:"InputDataSourceType,omitempty"`
-	// The data source type of the input table.
+	// The type of the input data source.
 	//
 	// example:
 	//
 	// MAX_COMPUTE
 	InputDbType *string `json:"InputDbType,omitempty" xml:"InputDbType,omitempty"`
-	// The environment of the input table: DEV or PROD.
+	// The environment to which the input table belongs. Valid values: DEV and PROD.
 	//
 	// example:
 	//
 	// DEV
 	InputEnv *string `json:"InputEnv,omitempty" xml:"InputEnv,omitempty"`
-	// The project ID of the input table.
+	// The ID of the project to which the input table belongs.
 	//
 	// example:
 	//
 	// 123
 	InputProjectId *int64 `json:"InputProjectId,omitempty" xml:"InputProjectId,omitempty"`
-	// Indicates whether the input table is deleted.
+	// Indicates whether the input table has been deleted.
 	InputTableDeleted *bool `json:"InputTableDeleted,omitempty" xml:"InputTableDeleted,omitempty"`
 	// The GUID of the input table. Each asset has a unique GUID in the following format:
 	//
@@ -190,71 +190,71 @@ type GetTableLineageByTaskIdResponseBodyData struct {
 	//
 	// order
 	InputTableName *string `json:"InputTableName,omitempty" xml:"InputTableName,omitempty"`
-	// The type of the input table.
+	// The type of the input table. Valid values:
 	//
-	// - PHYSICAL_TABLE Physical table (compute source)
+	// - PHYSICAL_TABLE: physical table (compute source).
 	//
-	// - DIM_LOGIC_TABLE Dimension logical table
+	// - DIM_LOGIC_TABLE: logical dimension table.
 	//
-	// - FACT_LOGIC_TABLE Fact logical table
+	// - FACT_LOGIC_TABLE: fact logical table.
 	//
-	// - SUM_LOGIC_TABLE Aggregate logical table
+	// - SUM_LOGIC_TABLE: aggregate logical table.
 	//
-	// - REAL_TIME_LOGIC_TABLE Real-time meta table
+	// - REAL_TIME_LOGIC_TABLE: real-time meta table.
 	//
-	// - REAL_TIME_MIRROR_TABLE Real-time mirror table
+	// - REAL_TIME_MIRROR_TABLE: real-time mirror table.
 	//
-	// - PHYSICAL_VIEW Physical view
+	// - PHYSICAL_VIEW: physical view.
 	//
-	// - LOGICAL_VIEW Logical view
+	// - LOGICAL_VIEW: logical view.
 	//
-	// - DATA_SOURCE_PHYSICAL_TABLE Data source table
+	// - DATA_SOURCE_PHYSICAL_TABLE: data source table.
 	//
-	// - DATA_SOURCE_VIEW Data source view
+	// - DATA_SOURCE_VIEW: data source view.
 	//
-	// - DATA_SOURCE_MATERIALIZED_VIEW Data source materialized view
+	// - DATA_SOURCE_MATERIALIZED_VIEW: data source materialized view.
 	//
 	// example:
 	//
 	// PHYSICAL_TABLE
 	InputTableType *string `json:"InputTableType,omitempty" xml:"InputTableType,omitempty"`
-	// The business unit ID of the output table.
+	// The ID of the business unit to which the output table belongs.
 	//
 	// example:
 	//
 	// 123
 	OutputBizUnitId *int64 `json:"OutputBizUnitId,omitempty" xml:"OutputBizUnitId,omitempty"`
-	// The data source ID of the output table.
+	// The ID of the data source to which the output table belongs.
 	//
 	// example:
 	//
 	// 123
 	OutputDataSourceId *int64 `json:"OutputDataSourceId,omitempty" xml:"OutputDataSourceId,omitempty"`
-	// The storage type of the output table.
+	// The storage format of the output table.
 	//
 	// example:
 	//
 	// MAX_COMPUTE
 	OutputDataSourceType *string `json:"OutputDataSourceType,omitempty" xml:"OutputDataSourceType,omitempty"`
-	// The data source type of the output table.
+	// The type of the output data source.
 	//
 	// example:
 	//
 	// MAX_COMPUTE
 	OutputDbType *string `json:"OutputDbType,omitempty" xml:"OutputDbType,omitempty"`
-	// The environment of the output table: DEV or PROD.
+	// The environment to which the output table belongs. Valid values: DEV and PROD.
 	//
 	// example:
 	//
 	// DEV/PROD
 	OutputEnv *string `json:"OutputEnv,omitempty" xml:"OutputEnv,omitempty"`
-	// The project ID of the output table.
+	// The ID of the project to which the output table belongs.
 	//
 	// example:
 	//
 	// 123
 	OutputProjectId *int64 `json:"OutputProjectId,omitempty" xml:"OutputProjectId,omitempty"`
-	// Indicates whether the output table is deleted.
+	// Indicates whether the output table has been deleted.
 	OutputTableDeleted *bool `json:"OutputTableDeleted,omitempty" xml:"OutputTableDeleted,omitempty"`
 	// The GUID of the output table. Each asset has a unique GUID. For the format, see InputTableId.
 	//
@@ -274,13 +274,13 @@ type GetTableLineageByTaskIdResponseBodyData struct {
 	//
 	// PHYSICAL_TABLE
 	OutputTableType *string `json:"OutputTableType,omitempty" xml:"OutputTableType,omitempty"`
-	// The environment of the task (node) associated with the lineage: DEV or PROD.
+	// The environment of the node associated with the lineage. Valid values: DEV and PROD.
 	//
 	// example:
 	//
 	// DEV
 	TaskEnv *string `json:"TaskEnv,omitempty" xml:"TaskEnv,omitempty"`
-	// The task (node) ID associated with the lineage.
+	// The ID of the node associated with the lineage.
 	//
 	// example:
 	//

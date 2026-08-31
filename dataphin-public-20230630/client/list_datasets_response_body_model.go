@@ -599,6 +599,7 @@ func (s *ListDatasetsResponseBodyPageResultResultDataOwnerList) Validate() error
 }
 
 type ListDatasetsResponseBodyPageResultResultDataVersionList struct {
+	ApiInfo *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo `json:"ApiInfo,omitempty" xml:"ApiInfo,omitempty" type:"Struct"`
 	// The creator ID.
 	//
 	// example:
@@ -647,6 +648,10 @@ func (s ListDatasetsResponseBodyPageResultResultDataVersionList) GoString() stri
 	return s.String()
 }
 
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionList) GetApiInfo() *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo {
+	return s.ApiInfo
+}
+
 func (s *ListDatasetsResponseBodyPageResultResultDataVersionList) GetCreator() *string {
 	return s.Creator
 }
@@ -673,6 +678,11 @@ func (s *ListDatasetsResponseBodyPageResultResultDataVersionList) GetId() *int64
 
 func (s *ListDatasetsResponseBodyPageResultResultDataVersionList) GetVersion() *string {
 	return s.Version
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionList) SetApiInfo(v *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) *ListDatasetsResponseBodyPageResultResultDataVersionList {
+	s.ApiInfo = v
+	return s
 }
 
 func (s *ListDatasetsResponseBodyPageResultResultDataVersionList) SetCreator(v string) *ListDatasetsResponseBodyPageResultResultDataVersionList {
@@ -711,12 +721,519 @@ func (s *ListDatasetsResponseBodyPageResultResultDataVersionList) SetVersion(v s
 }
 
 func (s *ListDatasetsResponseBodyPageResultResultDataVersionList) Validate() error {
+	if s.ApiInfo != nil {
+		if err := s.ApiInfo.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.DataVersionConfig != nil {
 		if err := s.DataVersionConfig.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo struct {
+	// example:
+	//
+	// 1012
+	ApiNo *int64 `json:"ApiNo,omitempty" xml:"ApiNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 60
+	ExecTimeout *int32 `json:"ExecTimeout,omitempty" xml:"ExecTimeout,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ExecuteMode *int32 `json:"ExecuteMode,omitempty" xml:"ExecuteMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1011
+	OsApiGroup *int32 `json:"OsApiGroup,omitempty" xml:"OsApiGroup,omitempty"`
+	// example:
+	//
+	// test
+	OsApiGroupName *string `json:"OsApiGroupName,omitempty" xml:"OsApiGroupName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1012
+	OsProject *int32 `json:"OsProject,omitempty" xml:"OsProject,omitempty"`
+	// example:
+	//
+	// test
+	OsProjectName *string `json:"OsProjectName,omitempty" xml:"OsProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Protocol *int32 `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	RequestMethod *int32 `json:"RequestMethod,omitempty" xml:"RequestMethod,omitempty"`
+	// This parameter is required.
+	RequestParamList  []*ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList  `json:"RequestParamList,omitempty" xml:"RequestParamList,omitempty" type:"Repeated"`
+	ResponseParamList []*ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList `json:"ResponseParamList,omitempty" xml:"ResponseParamList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 60
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) GetApiNo() *int64 {
+	return s.ApiNo
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) GetExecTimeout() *int32 {
+	return s.ExecTimeout
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) GetExecuteMode() *int32 {
+	return s.ExecuteMode
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) GetOsApiGroup() *int32 {
+	return s.OsApiGroup
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) GetOsApiGroupName() *string {
+	return s.OsApiGroupName
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) GetOsProject() *int32 {
+	return s.OsProject
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) GetOsProjectName() *string {
+	return s.OsProjectName
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) GetProtocol() *int32 {
+	return s.Protocol
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) GetRequestMethod() *int32 {
+	return s.RequestMethod
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) GetRequestParamList() []*ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList {
+	return s.RequestParamList
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) GetResponseParamList() []*ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList {
+	return s.ResponseParamList
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) GetTimeout() *int32 {
+	return s.Timeout
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) SetApiNo(v int64) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo {
+	s.ApiNo = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) SetExecTimeout(v int32) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo {
+	s.ExecTimeout = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) SetExecuteMode(v int32) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo {
+	s.ExecuteMode = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) SetOsApiGroup(v int32) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo {
+	s.OsApiGroup = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) SetOsApiGroupName(v string) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo {
+	s.OsApiGroupName = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) SetOsProject(v int32) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo {
+	s.OsProject = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) SetOsProjectName(v string) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo {
+	s.OsProjectName = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) SetProtocol(v int32) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo {
+	s.Protocol = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) SetRequestMethod(v int32) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo {
+	s.RequestMethod = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) SetRequestParamList(v []*ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo {
+	s.RequestParamList = v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) SetResponseParamList(v []*ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo {
+	s.ResponseParamList = v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) SetTimeout(v int32) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo {
+	s.Timeout = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo) Validate() error {
+	if s.RequestParamList != nil {
+		for _, item := range s.RequestParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResponseParamList != nil {
+		for _, item := range s.ResponseParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList struct {
+	// example:
+	//
+	// yyyyMMdd
+	DateFormat *string `json:"DateFormat,omitempty" xml:"DateFormat,omitempty"`
+	// example:
+	//
+	// test
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// example:
+	//
+	// test
+	Descr *string `json:"Descr,omitempty" xml:"Descr,omitempty"`
+	IsUrl *bool   `json:"IsUrl,omitempty" xml:"IsUrl,omitempty"`
+	// example:
+	//
+	// col02
+	MappingColumn *string `json:"MappingColumn,omitempty" xml:"MappingColumn,omitempty"`
+	Must          *bool   `json:"Must,omitempty" xml:"Must,omitempty"`
+	// example:
+	//
+	// =
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Optional *bool   `json:"Optional,omitempty" xml:"Optional,omitempty"`
+	// example:
+	//
+	// colx
+	OriginalColumn *string `json:"OriginalColumn,omitempty" xml:"OriginalColumn,omitempty"`
+	// example:
+	//
+	// p1
+	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	// example:
+	//
+	// int
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// example:
+	//
+	// test
+	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	// example:
+	//
+	// 1
+	SeqNum *int32 `json:"SeqNum,omitempty" xml:"SeqNum,omitempty"`
+}
+
+func (s ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) GetDateFormat() *string {
+	return s.DateFormat
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) GetDefaultValue() *string {
+	return s.DefaultValue
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) GetDescr() *string {
+	return s.Descr
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) GetIsUrl() *bool {
+	return s.IsUrl
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) GetMappingColumn() *string {
+	return s.MappingColumn
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) GetMust() *bool {
+	return s.Must
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) GetOperator() *string {
+	return s.Operator
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) GetOptional() *bool {
+	return s.Optional
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) GetOriginalColumn() *string {
+	return s.OriginalColumn
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) GetParamName() *string {
+	return s.ParamName
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) GetParamType() *string {
+	return s.ParamType
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) GetSample() *string {
+	return s.Sample
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) GetSeqNum() *int32 {
+	return s.SeqNum
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) SetDateFormat(v string) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList {
+	s.DateFormat = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) SetDefaultValue(v string) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) SetDescr(v string) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList {
+	s.Descr = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) SetIsUrl(v bool) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList {
+	s.IsUrl = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) SetMappingColumn(v string) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList {
+	s.MappingColumn = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) SetMust(v bool) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList {
+	s.Must = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) SetOperator(v string) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) SetOptional(v bool) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList {
+	s.Optional = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) SetOriginalColumn(v string) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList {
+	s.OriginalColumn = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) SetParamName(v string) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList {
+	s.ParamName = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) SetParamType(v string) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList {
+	s.ParamType = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) SetSample(v string) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList {
+	s.Sample = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) SetSeqNum(v int32) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList {
+	s.SeqNum = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParamList) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList struct {
+	// example:
+	//
+	// yyyyMMdd
+	DateFormat *string `json:"DateFormat,omitempty" xml:"DateFormat,omitempty"`
+	// example:
+	//
+	// test
+	Descr *string `json:"Descr,omitempty" xml:"Descr,omitempty"`
+	IsUrl *bool   `json:"IsUrl,omitempty" xml:"IsUrl,omitempty"`
+	// example:
+	//
+	// col1
+	MappingColumn *string `json:"MappingColumn,omitempty" xml:"MappingColumn,omitempty"`
+	// example:
+	//
+	// colx
+	OriginalColumn *string `json:"OriginalColumn,omitempty" xml:"OriginalColumn,omitempty"`
+	// example:
+	//
+	// p2
+	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	// example:
+	//
+	// int
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// example:
+	//
+	// test
+	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	// example:
+	//
+	// 1
+	SeqNum *string `json:"SeqNum,omitempty" xml:"SeqNum,omitempty"`
+}
+
+func (s ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) GetDateFormat() *string {
+	return s.DateFormat
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) GetDescr() *string {
+	return s.Descr
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) GetIsUrl() *bool {
+	return s.IsUrl
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) GetMappingColumn() *string {
+	return s.MappingColumn
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) GetOriginalColumn() *string {
+	return s.OriginalColumn
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) GetParamName() *string {
+	return s.ParamName
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) GetParamType() *string {
+	return s.ParamType
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) GetSample() *string {
+	return s.Sample
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) GetSeqNum() *string {
+	return s.SeqNum
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) SetDateFormat(v string) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList {
+	s.DateFormat = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) SetDescr(v string) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList {
+	s.Descr = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) SetIsUrl(v bool) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList {
+	s.IsUrl = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) SetMappingColumn(v string) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList {
+	s.MappingColumn = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) SetOriginalColumn(v string) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList {
+	s.OriginalColumn = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) SetParamName(v string) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList {
+	s.ParamName = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) SetParamType(v string) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList {
+	s.ParamType = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) SetSample(v string) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList {
+	s.Sample = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) SetSeqNum(v string) *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList {
+	s.SeqNum = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponseParamList) Validate() error {
+	return dara.Validate(s)
 }
 
 type ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfig struct {

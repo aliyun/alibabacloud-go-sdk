@@ -13,6 +13,8 @@ type iCreateUserGroupRequest interface {
 	GetCreateCommand() *CreateUserGroupRequestCreateCommand
 	SetOpTenantId(v int64) *CreateUserGroupRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateUserGroupRequest
+	GetOpUserId() *string
 }
 
 type CreateUserGroupRequest struct {
@@ -26,6 +28,10 @@ type CreateUserGroupRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateUserGroupRequest) String() string {
@@ -44,6 +50,10 @@ func (s *CreateUserGroupRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateUserGroupRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateUserGroupRequest) SetCreateCommand(v *CreateUserGroupRequestCreateCommand) *CreateUserGroupRequest {
 	s.CreateCommand = v
 	return s
@@ -51,6 +61,11 @@ func (s *CreateUserGroupRequest) SetCreateCommand(v *CreateUserGroupRequestCreat
 
 func (s *CreateUserGroupRequest) SetOpTenantId(v int64) *CreateUserGroupRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateUserGroupRequest) SetOpUserId(v string) *CreateUserGroupRequest {
+	s.OpUserId = &v
 	return s
 }
 

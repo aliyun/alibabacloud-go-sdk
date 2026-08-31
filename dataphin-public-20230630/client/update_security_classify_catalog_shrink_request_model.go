@@ -11,6 +11,8 @@ type iUpdateSecurityClassifyCatalogShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateSecurityClassifyCatalogShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateSecurityClassifyCatalogShrinkRequest
+	GetOpUserId() *string
 	SetUpdateCommandShrink(v string) *UpdateSecurityClassifyCatalogShrinkRequest
 	GetUpdateCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type UpdateSecurityClassifyCatalogShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update instruction.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateSecurityClassifyCatalogShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateSecurityClassifyCatalogShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateSecurityClassifyCatalogShrinkRequest) GetUpdateCommandShrink() *string {
 	return s.UpdateCommandShrink
 }
 
 func (s *UpdateSecurityClassifyCatalogShrinkRequest) SetOpTenantId(v int64) *UpdateSecurityClassifyCatalogShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateSecurityClassifyCatalogShrinkRequest) SetOpUserId(v string) *UpdateSecurityClassifyCatalogShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

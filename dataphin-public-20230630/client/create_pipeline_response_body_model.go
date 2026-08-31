@@ -24,21 +24,21 @@ type iCreatePipelineResponseBody interface {
 }
 
 type CreatePipelineResponseBody struct {
-	// Backend response code
+	// The backend response code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Integration pipeline/workflow task creation result
+	// The creation result of the integration pipeline or workflow task.
 	Data *CreatePipelineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Backend response exception details
+	// The details of the backend exception.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CreatePipelineResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the request was successful
+	// Indicates whether the request was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,35 +126,35 @@ func (s *CreatePipelineResponseBody) Validate() error {
 }
 
 type CreatePipelineResponseBodyData struct {
-	// Server-side execution machine name and IP
+	// The name and IP address of the server machine that executes the task.
 	//
 	// example:
 	//
 	// hostName:hostIp
 	HostMachine *string `json:"HostMachine,omitempty" xml:"HostMachine,omitempty"`
-	// Scheduling node ID of the pipeline/workflow task after successful creation
+	// The scheduling node ID of the pipeline or workflow task after successful creation.
 	//
 	// example:
 	//
 	// 123
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// Pipeline/workflow ID after successful creation
+	// The pipeline or workflow ID after successful creation.
 	//
 	// example:
 	//
 	// 123
 	PipelineId *int64 `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// Submit ID of the pending release list generated after successfully submitting the pipeline, used for release through the release domain.
+	// The submit ID of the pending publish list generated after the pipeline is submitted. Use this ID to publish through the publish domain.
 	//
-	// Workflow tasks only support PROD, so this value is not applicable.
+	// Workflow tasks support only PROD, so this value is not returned for workflow tasks.
 	//
 	// example:
 	//
 	// 123
 	SubmitId *int64 `json:"SubmitId,omitempty" xml:"SubmitId,omitempty"`
-	// Pending release version number generated after pipeline submission.
+	// The pending publish version number generated after the pipeline is submitted.
 	//
-	// Workflow tasks only support PROD, so this value is not applicable.
+	// Workflow tasks support only PROD, so this value is not returned for workflow tasks.
 	//
 	// example:
 	//

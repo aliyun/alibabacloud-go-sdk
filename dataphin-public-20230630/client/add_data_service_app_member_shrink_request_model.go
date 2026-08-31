@@ -13,10 +13,12 @@ type iAddDataServiceAppMemberShrinkRequest interface {
 	GetAddCommandShrink() *string
 	SetOpTenantId(v int64) *AddDataServiceAppMemberShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *AddDataServiceAppMemberShrinkRequest
+	GetOpUserId() *string
 }
 
 type AddDataServiceAppMemberShrinkRequest struct {
-	// The regular member to add to the data service application.
+	// The command to add a regular member to a data service application.
 	//
 	// This parameter is required.
 	AddCommandShrink *string `json:"AddCommand,omitempty" xml:"AddCommand,omitempty"`
@@ -28,6 +30,12 @@ type AddDataServiceAppMemberShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s AddDataServiceAppMemberShrinkRequest) String() string {
@@ -46,6 +54,10 @@ func (s *AddDataServiceAppMemberShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *AddDataServiceAppMemberShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *AddDataServiceAppMemberShrinkRequest) SetAddCommandShrink(v string) *AddDataServiceAppMemberShrinkRequest {
 	s.AddCommandShrink = &v
 	return s
@@ -53,6 +65,11 @@ func (s *AddDataServiceAppMemberShrinkRequest) SetAddCommandShrink(v string) *Ad
 
 func (s *AddDataServiceAppMemberShrinkRequest) SetOpTenantId(v int64) *AddDataServiceAppMemberShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *AddDataServiceAppMemberShrinkRequest) SetOpUserId(v string) *AddDataServiceAppMemberShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

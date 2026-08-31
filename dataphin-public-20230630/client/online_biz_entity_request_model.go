@@ -13,6 +13,8 @@ type iOnlineBizEntityRequest interface {
 	GetOnlineCommand() *OnlineBizEntityRequestOnlineCommand
 	SetOpTenantId(v int64) *OnlineBizEntityRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *OnlineBizEntityRequest
+	GetOpUserId() *string
 }
 
 type OnlineBizEntityRequest struct {
@@ -28,6 +30,10 @@ type OnlineBizEntityRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s OnlineBizEntityRequest) String() string {
@@ -46,6 +52,10 @@ func (s *OnlineBizEntityRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *OnlineBizEntityRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *OnlineBizEntityRequest) SetOnlineCommand(v *OnlineBizEntityRequestOnlineCommand) *OnlineBizEntityRequest {
 	s.OnlineCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *OnlineBizEntityRequest) SetOnlineCommand(v *OnlineBizEntityRequestOnlin
 
 func (s *OnlineBizEntityRequest) SetOpTenantId(v int64) *OnlineBizEntityRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *OnlineBizEntityRequest) SetOpUserId(v string) *OnlineBizEntityRequest {
+	s.OpUserId = &v
 	return s
 }
 

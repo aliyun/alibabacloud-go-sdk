@@ -15,6 +15,8 @@ type iExecuteManualNodeShrinkRequest interface {
   GetExecuteCommandShrink() *string 
   SetOpTenantId(v int64) *ExecuteManualNodeShrinkRequest
   GetOpTenantId() *int64 
+  SetOpUserId(v string) *ExecuteManualNodeShrinkRequest
+  GetOpUserId() *string 
 }
 
 type ExecuteManualNodeShrinkRequest struct {
@@ -40,6 +42,10 @@ type ExecuteManualNodeShrinkRequest struct {
   // 
   // 30001011
   OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+  // example:
+  // 
+  // 30001011
+  OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ExecuteManualNodeShrinkRequest) String() string {
@@ -62,6 +68,10 @@ func (s *ExecuteManualNodeShrinkRequest) GetOpTenantId() *int64  {
   return s.OpTenantId
 }
 
+func (s *ExecuteManualNodeShrinkRequest) GetOpUserId() *string  {
+  return s.OpUserId
+}
+
 func (s *ExecuteManualNodeShrinkRequest) SetEnv(v string) *ExecuteManualNodeShrinkRequest {
   s.Env = &v
   return s
@@ -74,6 +84,11 @@ func (s *ExecuteManualNodeShrinkRequest) SetExecuteCommandShrink(v string) *Exec
 
 func (s *ExecuteManualNodeShrinkRequest) SetOpTenantId(v int64) *ExecuteManualNodeShrinkRequest {
   s.OpTenantId = &v
+  return s
+}
+
+func (s *ExecuteManualNodeShrinkRequest) SetOpUserId(v string) *ExecuteManualNodeShrinkRequest {
+  s.OpUserId = &v
   return s
 }
 

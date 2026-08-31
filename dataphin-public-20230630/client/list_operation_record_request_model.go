@@ -13,6 +13,8 @@ type iListOperationRecordRequest interface {
 	GetListCommand() *ListOperationRecordRequestListCommand
 	SetOpTenantId(v int64) *ListOperationRecordRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListOperationRecordRequest
+	GetOpUserId() *string
 }
 
 type ListOperationRecordRequest struct {
@@ -28,6 +30,10 @@ type ListOperationRecordRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListOperationRecordRequest) String() string {
@@ -46,6 +52,10 @@ func (s *ListOperationRecordRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListOperationRecordRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListOperationRecordRequest) SetListCommand(v *ListOperationRecordRequestListCommand) *ListOperationRecordRequest {
 	s.ListCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *ListOperationRecordRequest) SetListCommand(v *ListOperationRecordReques
 
 func (s *ListOperationRecordRequest) SetOpTenantId(v int64) *ListOperationRecordRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListOperationRecordRequest) SetOpUserId(v string) *ListOperationRecordRequest {
+	s.OpUserId = &v
 	return s
 }
 

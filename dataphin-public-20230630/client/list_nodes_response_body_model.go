@@ -36,7 +36,7 @@ type ListNodesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *ListNodesResponseBody) Validate() error {
 }
 
 type ListNodesResponseBodyPageResult struct {
-	// The list of nodes on the current page.
+	// The paginated list of nodes.
 	NodeList []*ListNodesResponseBodyPageResultNodeList `json:"NodeList,omitempty" xml:"NodeList,omitempty" type:"Repeated"`
 	// The total number of records.
 	//
@@ -184,17 +184,17 @@ type ListNodesResponseBodyPageResultNodeList struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xxTest
 	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
-	// The creation time.
+	// The time when the node was created.
 	//
 	// example:
 	//
 	// 2024-05-30 16:47:13
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The creator.
+	// The creator of the node.
 	Creator *ListNodesResponseBodyPageResultNodeListCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
-	// The description.
+	// The description of the node.
 	//
 	// example:
 	//
@@ -206,25 +206,25 @@ type ListNodesResponseBodyPageResultNodeList struct {
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The extended information.
+	// The extended information of the node.
 	//
 	// example:
 	//
 	// {"xx":"zz"}
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
-	// The source.
+	// The source of the node.
 	//
 	// example:
 	//
 	// DATA_PROCESS
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// Indicates whether a development environment exists.
+	// Indicates whether the node has a development environment.
 	//
 	// example:
 	//
 	// true
 	HasDev *bool `json:"HasDev,omitempty" xml:"HasDev,omitempty"`
-	// Indicates whether a production environment exists.
+	// Indicates whether the node has a production environment.
 	//
 	// example:
 	//
@@ -236,7 +236,7 @@ type ListNodesResponseBodyPageResultNodeList struct {
 	//
 	// n_31111
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The last modification time.
+	// The time when the node was last modified.
 	//
 	// example:
 	//
@@ -244,11 +244,11 @@ type ListNodesResponseBodyPageResultNodeList struct {
 	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
 	// The user who last modified the node.
 	Modifier *ListNodesResponseBodyPageResultNodeListModifier `json:"Modifier,omitempty" xml:"Modifier,omitempty" type:"Struct"`
-	// The node name.
+	// The name of the node.
 	//
 	// example:
 	//
-	// xx测试
+	// xxTest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The owner.
 	OwnerList []*ListNodesResponseBodyPageResultNodeListOwnerList `json:"OwnerList,omitempty" xml:"OwnerList,omitempty" type:"Repeated"`
@@ -256,7 +256,7 @@ type ListNodesResponseBodyPageResultNodeList struct {
 	PriorityList []*string `json:"PriorityList,omitempty" xml:"PriorityList,omitempty" type:"Repeated"`
 	// The project to which the node belongs.
 	ProjectInfo *ListNodesResponseBodyPageResultNodeListProjectInfo `json:"ProjectInfo,omitempty" xml:"ProjectInfo,omitempty" type:"Struct"`
-	// Indicates whether scheduling is paused.
+	// Indicates whether the node is paused.
 	//
 	// example:
 	//
@@ -264,7 +264,7 @@ type ListNodesResponseBodyPageResultNodeList struct {
 	SchedulePaused *bool `json:"SchedulePaused,omitempty" xml:"SchedulePaused,omitempty"`
 	// The scheduling period.
 	SchedulePeriodList []*string `json:"SchedulePeriodList,omitempty" xml:"SchedulePeriodList,omitempty" type:"Repeated"`
-	// The sub-business types. Valid values:
+	// The sub-business type. Valid values:
 	//
 	// - MAX_COMPUTE_SQL
 	//
@@ -276,13 +276,13 @@ type ListNodesResponseBodyPageResultNodeList struct {
 	//
 	// - ONE_SERVICE_SQL
 	//
-	// - DATABASE_SQL.
+	// - DATABASE_SQL, etc.
 	//
 	// example:
 	//
 	// SHELL
 	SubDetailType *string `json:"SubDetailType,omitempty" xml:"SubDetailType,omitempty"`
-	// The node type.
+	// The type of the node.
 	//
 	// example:
 	//
@@ -517,7 +517,7 @@ type ListNodesResponseBodyPageResultNodeListCreator struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xxTest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -562,7 +562,7 @@ type ListNodesResponseBodyPageResultNodeListModifier struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xxTest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -607,7 +607,7 @@ type ListNodesResponseBodyPageResultNodeListOwnerList struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xxTest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -652,7 +652,7 @@ type ListNodesResponseBodyPageResultNodeListProjectInfo struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xxTest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

@@ -13,6 +13,8 @@ type iListKgRelationRequest interface {
 	GetListQuery() *ListKgRelationRequestListQuery
 	SetOpTenantId(v int64) *ListKgRelationRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListKgRelationRequest
+	GetOpUserId() *string
 	SetRelationType(v string) *ListKgRelationRequest
 	GetRelationType() *string
 	SetWorkspaceId(v string) *ListKgRelationRequest
@@ -20,7 +22,7 @@ type iListKgRelationRequest interface {
 }
 
 type ListKgRelationRequest struct {
-	// The paged search filter conditions.
+	// The paged query filter conditions.
 	ListQuery *ListKgRelationRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
 	// The tenant ID.
 	//
@@ -30,6 +32,12 @@ type ListKgRelationRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The relationship type code.
 	//
 	// This parameter is required.
@@ -64,6 +72,10 @@ func (s *ListKgRelationRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListKgRelationRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListKgRelationRequest) GetRelationType() *string {
 	return s.RelationType
 }
@@ -79,6 +91,11 @@ func (s *ListKgRelationRequest) SetListQuery(v *ListKgRelationRequestListQuery) 
 
 func (s *ListKgRelationRequest) SetOpTenantId(v int64) *ListKgRelationRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListKgRelationRequest) SetOpUserId(v string) *ListKgRelationRequest {
+	s.OpUserId = &v
 	return s
 }
 

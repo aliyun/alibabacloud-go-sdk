@@ -13,6 +13,8 @@ type iListTablesRequest interface {
 	GetListQuery() *ListTablesRequestListQuery
 	SetOpTenantId(v int64) *ListTablesRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListTablesRequest
+	GetOpUserId() *string
 }
 
 type ListTablesRequest struct {
@@ -26,6 +28,10 @@ type ListTablesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListTablesRequest) String() string {
@@ -44,6 +50,10 @@ func (s *ListTablesRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListTablesRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListTablesRequest) SetListQuery(v *ListTablesRequestListQuery) *ListTablesRequest {
 	s.ListQuery = v
 	return s
@@ -51,6 +61,11 @@ func (s *ListTablesRequest) SetListQuery(v *ListTablesRequestListQuery) *ListTab
 
 func (s *ListTablesRequest) SetOpTenantId(v int64) *ListTablesRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListTablesRequest) SetOpUserId(v string) *ListTablesRequest {
+	s.OpUserId = &v
 	return s
 }
 

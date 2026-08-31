@@ -11,6 +11,8 @@ type iUpdateDataSourceBasicInfoRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateDataSourceBasicInfoRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateDataSourceBasicInfoRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateDataSourceBasicInfoRequestUpdateCommand) *UpdateDataSourceBasicInfoRequest
 	GetUpdateCommand() *UpdateDataSourceBasicInfoRequestUpdateCommand
 }
@@ -24,6 +26,10 @@ type UpdateDataSourceBasicInfoRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The basic information to edit for the data source.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateDataSourceBasicInfoRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateDataSourceBasicInfoRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateDataSourceBasicInfoRequest) GetUpdateCommand() *UpdateDataSourceBasicInfoRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *UpdateDataSourceBasicInfoRequest) SetOpTenantId(v int64) *UpdateDataSourceBasicInfoRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateDataSourceBasicInfoRequest) SetOpUserId(v string) *UpdateDataSourceBasicInfoRequest {
+	s.OpUserId = &v
 	return s
 }
 

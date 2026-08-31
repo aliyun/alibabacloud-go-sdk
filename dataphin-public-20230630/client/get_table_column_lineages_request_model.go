@@ -13,6 +13,8 @@ type iGetTableColumnLineagesRequest interface {
 	GetFilterQuery() *GetTableColumnLineagesRequestFilterQuery
 	SetOpTenantId(v int64) *GetTableColumnLineagesRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetTableColumnLineagesRequest
+	GetOpUserId() *string
 	SetTableGuid(v string) *GetTableColumnLineagesRequest
 	GetTableGuid() *string
 }
@@ -28,6 +30,10 @@ type GetTableColumnLineagesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The GUID of the table, which is the unique identifier of the asset.
 	//
 	// This parameter is required.
@@ -54,6 +60,10 @@ func (s *GetTableColumnLineagesRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetTableColumnLineagesRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetTableColumnLineagesRequest) GetTableGuid() *string {
 	return s.TableGuid
 }
@@ -65,6 +75,11 @@ func (s *GetTableColumnLineagesRequest) SetFilterQuery(v *GetTableColumnLineages
 
 func (s *GetTableColumnLineagesRequest) SetOpTenantId(v int64) *GetTableColumnLineagesRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetTableColumnLineagesRequest) SetOpUserId(v string) *GetTableColumnLineagesRequest {
+	s.OpUserId = &v
 	return s
 }
 

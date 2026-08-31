@@ -13,6 +13,8 @@ type iGetSupplementDagrunRequest interface {
 	GetEnv() *string
 	SetOpTenantId(v int64) *GetSupplementDagrunRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetSupplementDagrunRequest
+	GetOpUserId() *string
 	SetSupplementId(v string) *GetSupplementDagrunRequest
 	GetSupplementId() *string
 }
@@ -36,6 +38,10 @@ type GetSupplementDagrunRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The ID of the data backfill instance.
 	//
 	// This parameter is required.
@@ -62,6 +68,10 @@ func (s *GetSupplementDagrunRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetSupplementDagrunRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetSupplementDagrunRequest) GetSupplementId() *string {
 	return s.SupplementId
 }
@@ -73,6 +83,11 @@ func (s *GetSupplementDagrunRequest) SetEnv(v string) *GetSupplementDagrunReques
 
 func (s *GetSupplementDagrunRequest) SetOpTenantId(v int64) *GetSupplementDagrunRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetSupplementDagrunRequest) SetOpUserId(v string) *GetSupplementDagrunRequest {
+	s.OpUserId = &v
 	return s
 }
 

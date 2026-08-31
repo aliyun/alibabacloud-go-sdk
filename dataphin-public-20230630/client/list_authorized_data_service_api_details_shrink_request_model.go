@@ -13,6 +13,8 @@ type iListAuthorizedDataServiceApiDetailsShrinkRequest interface {
 	GetListQueryShrink() *string
 	SetOpTenantId(v int64) *ListAuthorizedDataServiceApiDetailsShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListAuthorizedDataServiceApiDetailsShrinkRequest
+	GetOpUserId() *string
 }
 
 type ListAuthorizedDataServiceApiDetailsShrinkRequest struct {
@@ -32,6 +34,10 @@ type ListAuthorizedDataServiceApiDetailsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListAuthorizedDataServiceApiDetailsShrinkRequest) String() string {
@@ -50,6 +56,10 @@ func (s *ListAuthorizedDataServiceApiDetailsShrinkRequest) GetOpTenantId() *int6
 	return s.OpTenantId
 }
 
+func (s *ListAuthorizedDataServiceApiDetailsShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListAuthorizedDataServiceApiDetailsShrinkRequest) SetListQueryShrink(v string) *ListAuthorizedDataServiceApiDetailsShrinkRequest {
 	s.ListQueryShrink = &v
 	return s
@@ -57,6 +67,11 @@ func (s *ListAuthorizedDataServiceApiDetailsShrinkRequest) SetListQueryShrink(v 
 
 func (s *ListAuthorizedDataServiceApiDetailsShrinkRequest) SetOpTenantId(v int64) *ListAuthorizedDataServiceApiDetailsShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListAuthorizedDataServiceApiDetailsShrinkRequest) SetOpUserId(v string) *ListAuthorizedDataServiceApiDetailsShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

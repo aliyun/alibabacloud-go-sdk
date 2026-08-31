@@ -13,6 +13,8 @@ type iCreateBasicProjectRequest interface {
 	GetCreateCommand() *CreateBasicProjectRequestCreateCommand
 	SetOpTenantId(v int64) *CreateBasicProjectRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateBasicProjectRequest
+	GetOpUserId() *string
 }
 
 type CreateBasicProjectRequest struct {
@@ -28,6 +30,10 @@ type CreateBasicProjectRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateBasicProjectRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateBasicProjectRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateBasicProjectRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateBasicProjectRequest) SetCreateCommand(v *CreateBasicProjectRequestCreateCommand) *CreateBasicProjectRequest {
 	s.CreateCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateBasicProjectRequest) SetCreateCommand(v *CreateBasicProjectReques
 
 func (s *CreateBasicProjectRequest) SetOpTenantId(v int64) *CreateBasicProjectRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateBasicProjectRequest) SetOpUserId(v string) *CreateBasicProjectRequest {
+	s.OpUserId = &v
 	return s
 }
 

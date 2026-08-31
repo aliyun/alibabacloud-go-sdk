@@ -13,6 +13,8 @@ type iDeleteDirectoryRequest interface {
 	GetFileId() *int64
 	SetOpTenantId(v int64) *DeleteDirectoryRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteDirectoryRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *DeleteDirectoryRequest
 	GetProjectId() *int64
 }
@@ -34,6 +36,10 @@ type DeleteDirectoryRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -60,6 +66,10 @@ func (s *DeleteDirectoryRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteDirectoryRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteDirectoryRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -71,6 +81,11 @@ func (s *DeleteDirectoryRequest) SetFileId(v int64) *DeleteDirectoryRequest {
 
 func (s *DeleteDirectoryRequest) SetOpTenantId(v int64) *DeleteDirectoryRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteDirectoryRequest) SetOpUserId(v string) *DeleteDirectoryRequest {
+	s.OpUserId = &v
 	return s
 }
 

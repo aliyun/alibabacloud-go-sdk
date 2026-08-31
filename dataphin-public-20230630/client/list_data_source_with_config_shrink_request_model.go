@@ -13,6 +13,8 @@ type iListDataSourceWithConfigShrinkRequest interface {
 	GetListQueryShrink() *string
 	SetOpTenantId(v int64) *ListDataSourceWithConfigShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListDataSourceWithConfigShrinkRequest
+	GetOpUserId() *string
 }
 
 type ListDataSourceWithConfigShrinkRequest struct {
@@ -28,6 +30,10 @@ type ListDataSourceWithConfigShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListDataSourceWithConfigShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *ListDataSourceWithConfigShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListDataSourceWithConfigShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListDataSourceWithConfigShrinkRequest) SetListQueryShrink(v string) *ListDataSourceWithConfigShrinkRequest {
 	s.ListQueryShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *ListDataSourceWithConfigShrinkRequest) SetListQueryShrink(v string) *Li
 
 func (s *ListDataSourceWithConfigShrinkRequest) SetOpTenantId(v int64) *ListDataSourceWithConfigShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListDataSourceWithConfigShrinkRequest) SetOpUserId(v string) *ListDataSourceWithConfigShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

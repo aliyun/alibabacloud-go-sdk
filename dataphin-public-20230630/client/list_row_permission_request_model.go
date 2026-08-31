@@ -11,6 +11,8 @@ type iListRowPermissionRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *ListRowPermissionRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListRowPermissionRequest
+	GetOpUserId() *string
 	SetPageRowPermissionQuery(v *ListRowPermissionRequestPageRowPermissionQuery) *ListRowPermissionRequest
 	GetPageRowPermissionQuery() *ListRowPermissionRequestPageRowPermissionQuery
 }
@@ -24,6 +26,10 @@ type ListRowPermissionRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The request command.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *ListRowPermissionRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListRowPermissionRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListRowPermissionRequest) GetPageRowPermissionQuery() *ListRowPermissionRequestPageRowPermissionQuery {
 	return s.PageRowPermissionQuery
 }
 
 func (s *ListRowPermissionRequest) SetOpTenantId(v int64) *ListRowPermissionRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListRowPermissionRequest) SetOpUserId(v string) *ListRowPermissionRequest {
+	s.OpUserId = &v
 	return s
 }
 

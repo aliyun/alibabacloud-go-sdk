@@ -13,6 +13,8 @@ type iCreateStandardMappingRequest interface {
 	GetCreateCommand() *CreateStandardMappingRequestCreateCommand
 	SetOpTenantId(v int64) *CreateStandardMappingRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateStandardMappingRequest
+	GetOpUserId() *string
 }
 
 type CreateStandardMappingRequest struct {
@@ -28,6 +30,10 @@ type CreateStandardMappingRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateStandardMappingRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateStandardMappingRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateStandardMappingRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateStandardMappingRequest) SetCreateCommand(v *CreateStandardMappingRequestCreateCommand) *CreateStandardMappingRequest {
 	s.CreateCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateStandardMappingRequest) SetCreateCommand(v *CreateStandardMapping
 
 func (s *CreateStandardMappingRequest) SetOpTenantId(v int64) *CreateStandardMappingRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateStandardMappingRequest) SetOpUserId(v string) *CreateStandardMappingRequest {
+	s.OpUserId = &v
 	return s
 }
 

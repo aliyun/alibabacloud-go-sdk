@@ -13,6 +13,8 @@ type iCreateUserGroupShrinkRequest interface {
 	GetCreateCommandShrink() *string
 	SetOpTenantId(v int64) *CreateUserGroupShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateUserGroupShrinkRequest
+	GetOpUserId() *string
 }
 
 type CreateUserGroupShrinkRequest struct {
@@ -26,6 +28,10 @@ type CreateUserGroupShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateUserGroupShrinkRequest) String() string {
@@ -44,6 +50,10 @@ func (s *CreateUserGroupShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateUserGroupShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateUserGroupShrinkRequest) SetCreateCommandShrink(v string) *CreateUserGroupShrinkRequest {
 	s.CreateCommandShrink = &v
 	return s
@@ -51,6 +61,11 @@ func (s *CreateUserGroupShrinkRequest) SetCreateCommandShrink(v string) *CreateU
 
 func (s *CreateUserGroupShrinkRequest) SetOpTenantId(v int64) *CreateUserGroupShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateUserGroupShrinkRequest) SetOpUserId(v string) *CreateUserGroupShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

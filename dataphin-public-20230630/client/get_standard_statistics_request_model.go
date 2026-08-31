@@ -11,6 +11,8 @@ type iGetStandardStatisticsRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetStandardStatisticsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetStandardStatisticsRequest
+	GetOpUserId() *string
 	SetStatisticsQuery(v *GetStandardStatisticsRequestStatisticsQuery) *GetStandardStatisticsRequest
 	GetStatisticsQuery() *GetStandardStatisticsRequestStatisticsQuery
 }
@@ -24,6 +26,10 @@ type GetStandardStatisticsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The statistical query instruction.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *GetStandardStatisticsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetStandardStatisticsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetStandardStatisticsRequest) GetStatisticsQuery() *GetStandardStatisticsRequestStatisticsQuery {
 	return s.StatisticsQuery
 }
 
 func (s *GetStandardStatisticsRequest) SetOpTenantId(v int64) *GetStandardStatisticsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetStandardStatisticsRequest) SetOpUserId(v string) *GetStandardStatisticsRequest {
+	s.OpUserId = &v
 	return s
 }
 

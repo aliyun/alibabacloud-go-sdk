@@ -11,6 +11,8 @@ type iSubmitBatchTaskShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *SubmitBatchTaskShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *SubmitBatchTaskShrinkRequest
+	GetOpUserId() *string
 	SetSubmitCommandShrink(v string) *SubmitBatchTaskShrinkRequest
 	GetSubmitCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type SubmitBatchTaskShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The submit request.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *SubmitBatchTaskShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *SubmitBatchTaskShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *SubmitBatchTaskShrinkRequest) GetSubmitCommandShrink() *string {
 	return s.SubmitCommandShrink
 }
 
 func (s *SubmitBatchTaskShrinkRequest) SetOpTenantId(v int64) *SubmitBatchTaskShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *SubmitBatchTaskShrinkRequest) SetOpUserId(v string) *SubmitBatchTaskShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

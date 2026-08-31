@@ -13,6 +13,8 @@ type iExecKgCypherRequest interface {
   GetExecCommand() *ExecKgCypherRequestExecCommand 
   SetOpTenantId(v int64) *ExecKgCypherRequest
   GetOpTenantId() *int64 
+  SetOpUserId(v string) *ExecKgCypherRequest
+  GetOpUserId() *string 
   SetWorkspaceId(v string) *ExecKgCypherRequest
   GetWorkspaceId() *string 
 }
@@ -30,6 +32,10 @@ type ExecKgCypherRequest struct {
   // 
   // 30001011
   OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+  // example:
+  // 
+  // 30001011
+  OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
   // The model ID.
   // 
   // This parameter is required.
@@ -56,6 +62,10 @@ func (s *ExecKgCypherRequest) GetOpTenantId() *int64  {
   return s.OpTenantId
 }
 
+func (s *ExecKgCypherRequest) GetOpUserId() *string  {
+  return s.OpUserId
+}
+
 func (s *ExecKgCypherRequest) GetWorkspaceId() *string  {
   return s.WorkspaceId
 }
@@ -67,6 +77,11 @@ func (s *ExecKgCypherRequest) SetExecCommand(v *ExecKgCypherRequestExecCommand) 
 
 func (s *ExecKgCypherRequest) SetOpTenantId(v int64) *ExecKgCypherRequest {
   s.OpTenantId = &v
+  return s
+}
+
+func (s *ExecKgCypherRequest) SetOpUserId(v string) *ExecKgCypherRequest {
+  s.OpUserId = &v
   return s
 }
 

@@ -17,6 +17,8 @@ type iGetStandardTemplateShrinkRequest interface {
 	GetNullable() *bool
 	SetOpTenantId(v int64) *GetStandardTemplateShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetStandardTemplateShrinkRequest
+	GetOpUserId() *string
 }
 
 type GetStandardTemplateShrinkRequest struct {
@@ -40,6 +42,10 @@ type GetStandardTemplateShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetStandardTemplateShrinkRequest) String() string {
@@ -66,6 +72,10 @@ func (s *GetStandardTemplateShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetStandardTemplateShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetStandardTemplateShrinkRequest) SetFilterQueryShrink(v string) *GetStandardTemplateShrinkRequest {
 	s.FilterQueryShrink = &v
 	return s
@@ -83,6 +93,11 @@ func (s *GetStandardTemplateShrinkRequest) SetNullable(v bool) *GetStandardTempl
 
 func (s *GetStandardTemplateShrinkRequest) SetOpTenantId(v int64) *GetStandardTemplateShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetStandardTemplateShrinkRequest) SetOpUserId(v string) *GetStandardTemplateShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

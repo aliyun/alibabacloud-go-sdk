@@ -13,6 +13,8 @@ type iGetPipelineByIdRequest interface {
 	GetContext() *GetPipelineByIdRequestContext
 	SetOpTenantId(v int64) *GetPipelineByIdRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetPipelineByIdRequest
+	GetOpUserId() *string
 	SetQueryId(v *GetPipelineByIdRequestQueryId) *GetPipelineByIdRequest
 	GetQueryId() *GetPipelineByIdRequestQueryId
 }
@@ -30,7 +32,13 @@ type GetPipelineByIdRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The query ID used to query the pipeline node.
+	// The ID of the operator.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
+	// The ID used to query the pipeline node.
 	//
 	// This parameter is required.
 	QueryId *GetPipelineByIdRequestQueryId `json:"QueryId,omitempty" xml:"QueryId,omitempty" type:"Struct"`
@@ -52,6 +60,10 @@ func (s *GetPipelineByIdRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetPipelineByIdRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetPipelineByIdRequest) GetQueryId() *GetPipelineByIdRequestQueryId {
 	return s.QueryId
 }
@@ -63,6 +75,11 @@ func (s *GetPipelineByIdRequest) SetContext(v *GetPipelineByIdRequestContext) *G
 
 func (s *GetPipelineByIdRequest) SetOpTenantId(v int64) *GetPipelineByIdRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetPipelineByIdRequest) SetOpUserId(v string) *GetPipelineByIdRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -98,7 +115,7 @@ type GetPipelineByIdRequestContext struct {
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The project ID to which the integration pipeline node belongs.
+	// The ID of the project to which the integration pipeline node belongs.
 	//
 	// This parameter is required.
 	//

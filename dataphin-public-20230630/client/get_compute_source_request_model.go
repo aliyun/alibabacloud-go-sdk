@@ -13,6 +13,8 @@ type iGetComputeSourceRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *GetComputeSourceRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetComputeSourceRequest
+	GetOpUserId() *string
 }
 
 type GetComputeSourceRequest struct {
@@ -32,6 +34,10 @@ type GetComputeSourceRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetComputeSourceRequest) String() string {
@@ -50,6 +56,10 @@ func (s *GetComputeSourceRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetComputeSourceRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetComputeSourceRequest) SetId(v int64) *GetComputeSourceRequest {
 	s.Id = &v
 	return s
@@ -57,6 +67,11 @@ func (s *GetComputeSourceRequest) SetId(v int64) *GetComputeSourceRequest {
 
 func (s *GetComputeSourceRequest) SetOpTenantId(v int64) *GetComputeSourceRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetComputeSourceRequest) SetOpUserId(v string) *GetComputeSourceRequest {
+	s.OpUserId = &v
 	return s
 }
 

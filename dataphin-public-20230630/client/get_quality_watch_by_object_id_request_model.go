@@ -11,6 +11,8 @@ type iGetQualityWatchByObjectIdRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetQualityWatchByObjectIdRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetQualityWatchByObjectIdRequest
+	GetOpUserId() *string
 	SetWatchObjectId(v string) *GetQualityWatchByObjectIdRequest
 	GetWatchObjectId() *string
 	SetWatchType(v string) *GetQualityWatchByObjectIdRequest
@@ -26,6 +28,10 @@ type GetQualityWatchByObjectIdRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The object ID, such as a table ID, datasource ID, or metric ID.
 	//
 	// This parameter is required.
@@ -66,6 +72,10 @@ func (s *GetQualityWatchByObjectIdRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetQualityWatchByObjectIdRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetQualityWatchByObjectIdRequest) GetWatchObjectId() *string {
 	return s.WatchObjectId
 }
@@ -76,6 +86,11 @@ func (s *GetQualityWatchByObjectIdRequest) GetWatchType() *string {
 
 func (s *GetQualityWatchByObjectIdRequest) SetOpTenantId(v int64) *GetQualityWatchByObjectIdRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetQualityWatchByObjectIdRequest) SetOpUserId(v string) *GetQualityWatchByObjectIdRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iGetStreamJobsRequest interface {
 	GetEnv() *string
 	SetOpTenantId(v int64) *GetStreamJobsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetStreamJobsRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *GetStreamJobsRequest
 	GetProjectId() *int64
 }
@@ -38,6 +40,10 @@ type GetStreamJobsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The Dataphin project ID.
 	//
 	// This parameter is required.
@@ -64,6 +70,10 @@ func (s *GetStreamJobsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetStreamJobsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetStreamJobsRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -75,6 +85,11 @@ func (s *GetStreamJobsRequest) SetEnv(v string) *GetStreamJobsRequest {
 
 func (s *GetStreamJobsRequest) SetOpTenantId(v int64) *GetStreamJobsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetStreamJobsRequest) SetOpUserId(v string) *GetStreamJobsRequest {
+	s.OpUserId = &v
 	return s
 }
 

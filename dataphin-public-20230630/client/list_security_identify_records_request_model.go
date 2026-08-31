@@ -13,6 +13,8 @@ type iListSecurityIdentifyRecordsRequest interface {
 	GetListQuery() *ListSecurityIdentifyRecordsRequestListQuery
 	SetOpTenantId(v int64) *ListSecurityIdentifyRecordsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListSecurityIdentifyRecordsRequest
+	GetOpUserId() *string
 }
 
 type ListSecurityIdentifyRecordsRequest struct {
@@ -28,6 +30,12 @@ type ListSecurityIdentifyRecordsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListSecurityIdentifyRecordsRequest) String() string {
@@ -46,6 +54,10 @@ func (s *ListSecurityIdentifyRecordsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListSecurityIdentifyRecordsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListSecurityIdentifyRecordsRequest) SetListQuery(v *ListSecurityIdentifyRecordsRequestListQuery) *ListSecurityIdentifyRecordsRequest {
 	s.ListQuery = v
 	return s
@@ -53,6 +65,11 @@ func (s *ListSecurityIdentifyRecordsRequest) SetListQuery(v *ListSecurityIdentif
 
 func (s *ListSecurityIdentifyRecordsRequest) SetOpTenantId(v int64) *ListSecurityIdentifyRecordsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListSecurityIdentifyRecordsRequest) SetOpUserId(v string) *ListSecurityIdentifyRecordsRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -66,13 +83,13 @@ func (s *ListSecurityIdentifyRecordsRequest) Validate() error {
 }
 
 type ListSecurityIdentifyRecordsRequestListQuery struct {
-	// The datasource environment identifier. This parameter is required only for datasource tables.
+	// The data source environment identifier. This parameter is required only for data source tables.
 	//
 	// example:
 	//
 	// DEV
 	DatasourceEnv *string `json:"DatasourceEnv,omitempty" xml:"DatasourceEnv,omitempty"`
-	// The datasource name. This parameter is required only for datasource tables.
+	// The data source name. This parameter is required only for data source tables.
 	//
 	// example:
 	//
@@ -86,9 +103,9 @@ type ListSecurityIdentifyRecordsRequestListQuery struct {
 	//
 	// col1
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	// Specifies whether the table is a datasource table. Default value: false (treated as a Dataphin table).
+	// Specifies whether the table is a data source table. Default value: false (treated as a Dataphin table).
 	IsDatasourceTable *bool `json:"IsDatasourceTable,omitempty" xml:"IsDatasourceTable,omitempty"`
-	// The search keyword. The search scope is the field name.
+	// The search keyword. The search scope is field names.
 	//
 	// example:
 	//
@@ -106,7 +123,7 @@ type ListSecurityIdentifyRecordsRequestListQuery struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The table catalog. For datasource tables, specify the database or schema name. For Dataphin physical tables, specify the project name in English. For Dataphin logical tables, specify the business unit name in English.
+	// The table catalog. For data source tables, specify the database or schema name. For Dataphin physical tables, specify the project name in English. For Dataphin logical tables, specify the business unit name in English.
 	//
 	// This parameter is required.
 	//

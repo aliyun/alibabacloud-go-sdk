@@ -13,6 +13,8 @@ type iCreateSecurityIdentifyResultRequest interface {
 	GetCreateCommand() *CreateSecurityIdentifyResultRequestCreateCommand
 	SetOpTenantId(v int64) *CreateSecurityIdentifyResultRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateSecurityIdentifyResultRequest
+	GetOpUserId() *string
 }
 
 type CreateSecurityIdentifyResultRequest struct {
@@ -28,6 +30,10 @@ type CreateSecurityIdentifyResultRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateSecurityIdentifyResultRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateSecurityIdentifyResultRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateSecurityIdentifyResultRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateSecurityIdentifyResultRequest) SetCreateCommand(v *CreateSecurityIdentifyResultRequestCreateCommand) *CreateSecurityIdentifyResultRequest {
 	s.CreateCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateSecurityIdentifyResultRequest) SetCreateCommand(v *CreateSecurity
 
 func (s *CreateSecurityIdentifyResultRequest) SetOpTenantId(v int64) *CreateSecurityIdentifyResultRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateSecurityIdentifyResultRequest) SetOpUserId(v string) *CreateSecurityIdentifyResultRequest {
+	s.OpUserId = &v
 	return s
 }
 

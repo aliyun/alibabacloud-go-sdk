@@ -13,6 +13,8 @@ type iGetDataDomainInfoRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *GetDataDomainInfoRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetDataDomainInfoRequest
+	GetOpUserId() *string
 }
 
 type GetDataDomainInfoRequest struct {
@@ -32,6 +34,10 @@ type GetDataDomainInfoRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetDataDomainInfoRequest) String() string {
@@ -50,6 +56,10 @@ func (s *GetDataDomainInfoRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetDataDomainInfoRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetDataDomainInfoRequest) SetId(v int64) *GetDataDomainInfoRequest {
 	s.Id = &v
 	return s
@@ -57,6 +67,11 @@ func (s *GetDataDomainInfoRequest) SetId(v int64) *GetDataDomainInfoRequest {
 
 func (s *GetDataDomainInfoRequest) SetOpTenantId(v int64) *GetDataDomainInfoRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetDataDomainInfoRequest) SetOpUserId(v string) *GetDataDomainInfoRequest {
+	s.OpUserId = &v
 	return s
 }
 

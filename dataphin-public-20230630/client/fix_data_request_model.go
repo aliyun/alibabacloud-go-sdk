@@ -15,6 +15,8 @@ type iFixDataRequest interface {
 	GetFixDataCommand() *FixDataRequestFixDataCommand
 	SetOpTenantId(v int64) *FixDataRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *FixDataRequest
+	GetOpUserId() *string
 }
 
 type FixDataRequest struct {
@@ -40,6 +42,10 @@ type FixDataRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s FixDataRequest) String() string {
@@ -62,6 +68,10 @@ func (s *FixDataRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *FixDataRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *FixDataRequest) SetEnv(v string) *FixDataRequest {
 	s.Env = &v
 	return s
@@ -74,6 +84,11 @@ func (s *FixDataRequest) SetFixDataCommand(v *FixDataRequestFixDataCommand) *Fix
 
 func (s *FixDataRequest) SetOpTenantId(v int64) *FixDataRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *FixDataRequest) SetOpUserId(v string) *FixDataRequest {
+	s.OpUserId = &v
 	return s
 }
 

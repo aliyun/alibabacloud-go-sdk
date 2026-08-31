@@ -15,6 +15,8 @@ type iGetKgEntityRequest interface {
 	GetEntityType() *string
 	SetOpTenantId(v int64) *GetKgEntityRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetKgEntityRequest
+	GetOpUserId() *string
 	SetWorkspaceId(v string) *GetKgEntityRequest
 	GetWorkspaceId() *string
 }
@@ -44,6 +46,10 @@ type GetKgEntityRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The workspace ID.
 	//
 	// This parameter is required.
@@ -74,6 +80,10 @@ func (s *GetKgEntityRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetKgEntityRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetKgEntityRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -90,6 +100,11 @@ func (s *GetKgEntityRequest) SetEntityType(v string) *GetKgEntityRequest {
 
 func (s *GetKgEntityRequest) SetOpTenantId(v int64) *GetKgEntityRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetKgEntityRequest) SetOpUserId(v string) *GetKgEntityRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -24,19 +24,19 @@ type iGetResourceByVersionResponseBody interface {
 }
 
 type GetResourceByVersionResponseBody struct {
-	// Backend response code.
+	// The backend response code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Backend error details.
+	// The details of the backend exception.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type GetResourceByVersionResponseBody struct {
 	//
 	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Resource file details.
+	// The details of the resource file.
 	ResourceInfo *GetResourceByVersionResponseBodyResourceInfo `json:"ResourceInfo,omitempty" xml:"ResourceInfo,omitempty" type:"Struct"`
 	// Indicates whether the request was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
@@ -126,79 +126,79 @@ func (s *GetResourceByVersionResponseBody) Validate() error {
 }
 
 type GetResourceByVersionResponseBodyResourceInfo struct {
-	// Compute engine type.
+	// The compute engine source type.
 	//
 	// example:
 	//
 	// MAX_COMPUTE
 	ComputeEngineType *string `json:"ComputeEngineType,omitempty" xml:"ComputeEngineType,omitempty"`
-	// Creator.
+	// The creator.
 	//
 	// example:
 	//
 	// 30011021
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// Description.
+	// The description.
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Storage directory.
+	// The storage folder.
 	//
 	// example:
 	//
 	// /
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// Creation time, format: yyyy-MM-dd HH:mm:ss.
+	// The creation time, in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2025-06-10 10:01:01
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// Modification time, format: yyyy-MM-dd HH:mm:ss.
+	// The update time, in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2025-06-10 10:01:01
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Resource ID.
+	// The resource ID.
 	//
 	// example:
 	//
 	// 10200121011
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Last modifier.
+	// The last modifier.
 	//
 	// example:
 	//
 	// 30011021
 	LastModifier *string `json:"LastModifier,omitempty" xml:"LastModifier,omitempty"`
-	// Resource file name.
+	// The name of the resource file.
 	//
 	// example:
 	//
 	// udf_sleep.jar
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Project ID.
+	// The project ID.
 	//
 	// example:
 	//
 	// 1030111021
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Resource type.
+	// The resource type.
 	//
 	// example:
 	//
 	// JAR
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// Resource size, unit: bytes.
+	// The size of the resource, in bytes.
 	//
 	// example:
 	//
 	// 102400
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// Resource storage address.
+	// The storage address of the resource.
 	//
 	// example:
 	//

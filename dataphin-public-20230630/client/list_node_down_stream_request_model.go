@@ -15,6 +15,8 @@ type iListNodeDownStreamRequest interface {
 	GetListQuery() *ListNodeDownStreamRequestListQuery
 	SetOpTenantId(v int64) *ListNodeDownStreamRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListNodeDownStreamRequest
+	GetOpUserId() *string
 }
 
 type ListNodeDownStreamRequest struct {
@@ -40,6 +42,12 @@ type ListNodeDownStreamRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListNodeDownStreamRequest) String() string {
@@ -62,6 +70,10 @@ func (s *ListNodeDownStreamRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListNodeDownStreamRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListNodeDownStreamRequest) SetEnv(v string) *ListNodeDownStreamRequest {
 	s.Env = &v
 	return s
@@ -77,6 +89,11 @@ func (s *ListNodeDownStreamRequest) SetOpTenantId(v int64) *ListNodeDownStreamRe
 	return s
 }
 
+func (s *ListNodeDownStreamRequest) SetOpUserId(v string) *ListNodeDownStreamRequest {
+	s.OpUserId = &v
+	return s
+}
+
 func (s *ListNodeDownStreamRequest) Validate() error {
 	if s.ListQuery != nil {
 		if err := s.ListQuery.Validate(); err != nil {
@@ -87,13 +104,13 @@ func (s *ListNodeDownStreamRequest) Validate() error {
 }
 
 type ListNodeDownStreamRequestListQuery struct {
-	// The depth. Default value: 3.
+	// The depth of the downstream query. Default value: 3.
 	//
 	// example:
 	//
 	// 1
 	DownStreamDepth *int32 `json:"DownStreamDepth,omitempty" xml:"DownStreamDepth,omitempty"`
-	// The filters. You can include or exclude results based on projects or nodes. Default value: empty.
+	// The list of filters. You can include or exclude results based on projects and nodes. Default value: empty.
 	FilterList []*ListNodeDownStreamRequestListQueryFilterList `json:"FilterList,omitempty" xml:"FilterList,omitempty" type:"Repeated"`
 	// The list of nodes.
 	//
@@ -186,7 +203,7 @@ type ListNodeDownStreamRequestListQueryFilterList struct {
 	//
 	// - PHYSICAL_NODE_ID: physical node ID
 	//
-	// - LOGICAL_TABLE_NODE_ID: logical table ID.
+	// - LOGICAL_TABLE_NODE_ID: logical table ID
 	//
 	// example:
 	//
@@ -236,7 +253,7 @@ func (s *ListNodeDownStreamRequestListQueryFilterList) Validate() error {
 }
 
 type ListNodeDownStreamRequestListQueryNodeIdList struct {
-	// The list of field IDs. This parameter can be specified when the node ID is a logical table node ID. If this parameter is not specified, all fields in the table are used by default.
+	// The list of field IDs. This parameter can be specified when the node ID is a logical table node ID. If this parameter is not specified, the full table is used by default.
 	//
 	// example:
 	//

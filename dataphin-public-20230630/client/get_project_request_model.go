@@ -15,6 +15,8 @@ type iGetProjectRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *GetProjectRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetProjectRequest
+	GetOpUserId() *string
 }
 
 type GetProjectRequest struct {
@@ -44,6 +46,10 @@ type GetProjectRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetProjectRequest) String() string {
@@ -66,6 +72,10 @@ func (s *GetProjectRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetProjectRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetProjectRequest) SetEnv(v string) *GetProjectRequest {
 	s.Env = &v
 	return s
@@ -78,6 +88,11 @@ func (s *GetProjectRequest) SetId(v int64) *GetProjectRequest {
 
 func (s *GetProjectRequest) SetOpTenantId(v int64) *GetProjectRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetProjectRequest) SetOpUserId(v string) *GetProjectRequest {
+	s.OpUserId = &v
 	return s
 }
 

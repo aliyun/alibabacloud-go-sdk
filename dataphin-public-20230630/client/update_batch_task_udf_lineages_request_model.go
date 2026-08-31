@@ -11,6 +11,8 @@ type iUpdateBatchTaskUdfLineagesRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateBatchTaskUdfLineagesRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateBatchTaskUdfLineagesRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateBatchTaskUdfLineagesRequestUpdateCommand) *UpdateBatchTaskUdfLineagesRequest
 	GetUpdateCommand() *UpdateBatchTaskUdfLineagesRequestUpdateCommand
 }
@@ -24,6 +26,10 @@ type UpdateBatchTaskUdfLineagesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update instruction.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateBatchTaskUdfLineagesRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateBatchTaskUdfLineagesRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateBatchTaskUdfLineagesRequest) GetUpdateCommand() *UpdateBatchTaskUdfLineagesRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *UpdateBatchTaskUdfLineagesRequest) SetOpTenantId(v int64) *UpdateBatchTaskUdfLineagesRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateBatchTaskUdfLineagesRequest) SetOpUserId(v string) *UpdateBatchTaskUdfLineagesRequest {
+	s.OpUserId = &v
 	return s
 }
 

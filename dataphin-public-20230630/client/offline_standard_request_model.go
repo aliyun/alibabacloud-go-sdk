@@ -13,6 +13,8 @@ type iOfflineStandardRequest interface {
 	GetOfflineCommand() *OfflineStandardRequestOfflineCommand
 	SetOpTenantId(v int64) *OfflineStandardRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *OfflineStandardRequest
+	GetOpUserId() *string
 }
 
 type OfflineStandardRequest struct {
@@ -28,6 +30,10 @@ type OfflineStandardRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s OfflineStandardRequest) String() string {
@@ -46,6 +52,10 @@ func (s *OfflineStandardRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *OfflineStandardRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *OfflineStandardRequest) SetOfflineCommand(v *OfflineStandardRequestOfflineCommand) *OfflineStandardRequest {
 	s.OfflineCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *OfflineStandardRequest) SetOfflineCommand(v *OfflineStandardRequestOffl
 
 func (s *OfflineStandardRequest) SetOpTenantId(v int64) *OfflineStandardRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *OfflineStandardRequest) SetOpUserId(v string) *OfflineStandardRequest {
+	s.OpUserId = &v
 	return s
 }
 

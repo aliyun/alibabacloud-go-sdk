@@ -13,6 +13,8 @@ type iGetQualityTemplateRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *GetQualityTemplateRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetQualityTemplateRequest
+	GetOpUserId() *string
 }
 
 type GetQualityTemplateRequest struct {
@@ -32,6 +34,10 @@ type GetQualityTemplateRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetQualityTemplateRequest) String() string {
@@ -50,6 +56,10 @@ func (s *GetQualityTemplateRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetQualityTemplateRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetQualityTemplateRequest) SetId(v int64) *GetQualityTemplateRequest {
 	s.Id = &v
 	return s
@@ -57,6 +67,11 @@ func (s *GetQualityTemplateRequest) SetId(v int64) *GetQualityTemplateRequest {
 
 func (s *GetQualityTemplateRequest) SetOpTenantId(v int64) *GetQualityTemplateRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetQualityTemplateRequest) SetOpUserId(v string) *GetQualityTemplateRequest {
+	s.OpUserId = &v
 	return s
 }
 

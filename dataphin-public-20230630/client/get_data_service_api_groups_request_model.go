@@ -11,6 +11,8 @@ type iGetDataServiceApiGroupsRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetDataServiceApiGroupsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetDataServiceApiGroupsRequest
+	GetOpUserId() *string
 	SetProjectId(v int32) *GetDataServiceApiGroupsRequest
 	GetProjectId() *int32
 }
@@ -24,6 +26,10 @@ type GetDataServiceApiGroupsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The Data Service project ID.
 	//
 	// This parameter is required.
@@ -46,12 +52,21 @@ func (s *GetDataServiceApiGroupsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetDataServiceApiGroupsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetDataServiceApiGroupsRequest) GetProjectId() *int32 {
 	return s.ProjectId
 }
 
 func (s *GetDataServiceApiGroupsRequest) SetOpTenantId(v int64) *GetDataServiceApiGroupsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetDataServiceApiGroupsRequest) SetOpUserId(v string) *GetDataServiceApiGroupsRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -15,6 +15,8 @@ type iListPipelinesShrinkRequest interface {
 	GetListCommandShrink() *string
 	SetOpTenantId(v int64) *ListPipelinesShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListPipelinesShrinkRequest
+	GetOpUserId() *string
 }
 
 type ListPipelinesShrinkRequest struct {
@@ -34,6 +36,12 @@ type ListPipelinesShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The user ID of the operator.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListPipelinesShrinkRequest) String() string {
@@ -56,6 +64,10 @@ func (s *ListPipelinesShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListPipelinesShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListPipelinesShrinkRequest) SetContextShrink(v string) *ListPipelinesShrinkRequest {
 	s.ContextShrink = &v
 	return s
@@ -68,6 +80,11 @@ func (s *ListPipelinesShrinkRequest) SetListCommandShrink(v string) *ListPipelin
 
 func (s *ListPipelinesShrinkRequest) SetOpTenantId(v int64) *ListPipelinesShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListPipelinesShrinkRequest) SetOpUserId(v string) *ListPipelinesShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

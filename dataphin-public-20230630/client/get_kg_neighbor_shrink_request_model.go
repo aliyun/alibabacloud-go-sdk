@@ -17,6 +17,8 @@ type iGetKgNeighborShrinkRequest interface {
 	GetNeighborsQueryShrink() *string
 	SetOpTenantId(v int64) *GetKgNeighborShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetKgNeighborShrinkRequest
+	GetOpUserId() *string
 	SetWorkspaceId(v string) *GetKgNeighborShrinkRequest
 	GetWorkspaceId() *string
 }
@@ -48,6 +50,10 @@ type GetKgNeighborShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The model ID.
 	//
 	// This parameter is required.
@@ -82,6 +88,10 @@ func (s *GetKgNeighborShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetKgNeighborShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetKgNeighborShrinkRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -103,6 +113,11 @@ func (s *GetKgNeighborShrinkRequest) SetNeighborsQueryShrink(v string) *GetKgNei
 
 func (s *GetKgNeighborShrinkRequest) SetOpTenantId(v int64) *GetKgNeighborShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetKgNeighborShrinkRequest) SetOpUserId(v string) *GetKgNeighborShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

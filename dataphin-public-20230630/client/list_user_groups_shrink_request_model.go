@@ -13,6 +13,8 @@ type iListUserGroupsShrinkRequest interface {
 	GetListQueryShrink() *string
 	SetOpTenantId(v int64) *ListUserGroupsShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListUserGroupsShrinkRequest
+	GetOpUserId() *string
 }
 
 type ListUserGroupsShrinkRequest struct {
@@ -28,6 +30,10 @@ type ListUserGroupsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListUserGroupsShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *ListUserGroupsShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListUserGroupsShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListUserGroupsShrinkRequest) SetListQueryShrink(v string) *ListUserGroupsShrinkRequest {
 	s.ListQueryShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *ListUserGroupsShrinkRequest) SetListQueryShrink(v string) *ListUserGrou
 
 func (s *ListUserGroupsShrinkRequest) SetOpTenantId(v int64) *ListUserGroupsShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListUserGroupsShrinkRequest) SetOpUserId(v string) *ListUserGroupsShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

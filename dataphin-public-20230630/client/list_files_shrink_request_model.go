@@ -13,6 +13,8 @@ type iListFilesShrinkRequest interface {
 	GetListQueryShrink() *string
 	SetOpTenantId(v int64) *ListFilesShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListFilesShrinkRequest
+	GetOpUserId() *string
 }
 
 type ListFilesShrinkRequest struct {
@@ -28,6 +30,10 @@ type ListFilesShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListFilesShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *ListFilesShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListFilesShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListFilesShrinkRequest) SetListQueryShrink(v string) *ListFilesShrinkRequest {
 	s.ListQueryShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *ListFilesShrinkRequest) SetListQueryShrink(v string) *ListFilesShrinkRe
 
 func (s *ListFilesShrinkRequest) SetOpTenantId(v int64) *ListFilesShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListFilesShrinkRequest) SetOpUserId(v string) *ListFilesShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

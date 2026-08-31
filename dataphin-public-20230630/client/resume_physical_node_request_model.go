@@ -13,6 +13,8 @@ type iResumePhysicalNodeRequest interface {
 	GetEnv() *string
 	SetOpTenantId(v int64) *ResumePhysicalNodeRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ResumePhysicalNodeRequest
+	GetOpUserId() *string
 	SetResumeCommand(v *ResumePhysicalNodeRequestResumeCommand) *ResumePhysicalNodeRequest
 	GetResumeCommand() *ResumePhysicalNodeRequestResumeCommand
 }
@@ -36,6 +38,10 @@ type ResumePhysicalNodeRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// Resume scheduling request.
 	//
 	// This parameter is required.
@@ -58,6 +64,10 @@ func (s *ResumePhysicalNodeRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ResumePhysicalNodeRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ResumePhysicalNodeRequest) GetResumeCommand() *ResumePhysicalNodeRequestResumeCommand {
 	return s.ResumeCommand
 }
@@ -69,6 +79,11 @@ func (s *ResumePhysicalNodeRequest) SetEnv(v string) *ResumePhysicalNodeRequest 
 
 func (s *ResumePhysicalNodeRequest) SetOpTenantId(v int64) *ResumePhysicalNodeRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ResumePhysicalNodeRequest) SetOpUserId(v string) *ResumePhysicalNodeRequest {
+	s.OpUserId = &v
 	return s
 }
 

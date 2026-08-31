@@ -11,6 +11,8 @@ type iUpdateRowPermissionShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateRowPermissionShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateRowPermissionShrinkRequest
+	GetOpUserId() *string
 	SetUpdateRowPermissionCommandShrink(v string) *UpdateRowPermissionShrinkRequest
 	GetUpdateRowPermissionCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type UpdateRowPermissionShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The request command.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateRowPermissionShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateRowPermissionShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateRowPermissionShrinkRequest) GetUpdateRowPermissionCommandShrink() *string {
 	return s.UpdateRowPermissionCommandShrink
 }
 
 func (s *UpdateRowPermissionShrinkRequest) SetOpTenantId(v int64) *UpdateRowPermissionShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateRowPermissionShrinkRequest) SetOpUserId(v string) *UpdateRowPermissionShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

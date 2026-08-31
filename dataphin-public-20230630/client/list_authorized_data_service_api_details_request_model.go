@@ -13,6 +13,8 @@ type iListAuthorizedDataServiceApiDetailsRequest interface {
 	GetListQuery() *ListAuthorizedDataServiceApiDetailsRequestListQuery
 	SetOpTenantId(v int64) *ListAuthorizedDataServiceApiDetailsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListAuthorizedDataServiceApiDetailsRequest
+	GetOpUserId() *string
 }
 
 type ListAuthorizedDataServiceApiDetailsRequest struct {
@@ -32,6 +34,10 @@ type ListAuthorizedDataServiceApiDetailsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListAuthorizedDataServiceApiDetailsRequest) String() string {
@@ -50,6 +56,10 @@ func (s *ListAuthorizedDataServiceApiDetailsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListAuthorizedDataServiceApiDetailsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListAuthorizedDataServiceApiDetailsRequest) SetListQuery(v *ListAuthorizedDataServiceApiDetailsRequestListQuery) *ListAuthorizedDataServiceApiDetailsRequest {
 	s.ListQuery = v
 	return s
@@ -57,6 +67,11 @@ func (s *ListAuthorizedDataServiceApiDetailsRequest) SetListQuery(v *ListAuthori
 
 func (s *ListAuthorizedDataServiceApiDetailsRequest) SetOpTenantId(v int64) *ListAuthorizedDataServiceApiDetailsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListAuthorizedDataServiceApiDetailsRequest) SetOpUserId(v string) *ListAuthorizedDataServiceApiDetailsRequest {
+	s.OpUserId = &v
 	return s
 }
 

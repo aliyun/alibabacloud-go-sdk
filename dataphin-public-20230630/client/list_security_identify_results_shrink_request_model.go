@@ -13,6 +13,8 @@ type iListSecurityIdentifyResultsShrinkRequest interface {
 	GetListQueryShrink() *string
 	SetOpTenantId(v int64) *ListSecurityIdentifyResultsShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListSecurityIdentifyResultsShrinkRequest
+	GetOpUserId() *string
 }
 
 type ListSecurityIdentifyResultsShrinkRequest struct {
@@ -26,6 +28,10 @@ type ListSecurityIdentifyResultsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListSecurityIdentifyResultsShrinkRequest) String() string {
@@ -44,6 +50,10 @@ func (s *ListSecurityIdentifyResultsShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListSecurityIdentifyResultsShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListSecurityIdentifyResultsShrinkRequest) SetListQueryShrink(v string) *ListSecurityIdentifyResultsShrinkRequest {
 	s.ListQueryShrink = &v
 	return s
@@ -51,6 +61,11 @@ func (s *ListSecurityIdentifyResultsShrinkRequest) SetListQueryShrink(v string) 
 
 func (s *ListSecurityIdentifyResultsShrinkRequest) SetOpTenantId(v int64) *ListSecurityIdentifyResultsShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListSecurityIdentifyResultsShrinkRequest) SetOpUserId(v string) *ListSecurityIdentifyResultsShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

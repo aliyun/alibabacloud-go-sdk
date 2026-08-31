@@ -13,6 +13,8 @@ type iUpdatePipelineByAsyncRequest interface {
 	GetContext() *UpdatePipelineByAsyncRequestContext
 	SetOpTenantId(v int64) *UpdatePipelineByAsyncRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdatePipelineByAsyncRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdatePipelineByAsyncRequestUpdateCommand) *UpdatePipelineByAsyncRequest
 	GetUpdateCommand() *UpdatePipelineByAsyncRequestUpdateCommand
 }
@@ -30,6 +32,10 @@ type UpdatePipelineByAsyncRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The pipeline node update configuration.
 	//
 	// This parameter is required.
@@ -52,6 +58,10 @@ func (s *UpdatePipelineByAsyncRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdatePipelineByAsyncRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdatePipelineByAsyncRequest) GetUpdateCommand() *UpdatePipelineByAsyncRequestUpdateCommand {
 	return s.UpdateCommand
 }
@@ -63,6 +73,11 @@ func (s *UpdatePipelineByAsyncRequest) SetContext(v *UpdatePipelineByAsyncReques
 
 func (s *UpdatePipelineByAsyncRequest) SetOpTenantId(v int64) *UpdatePipelineByAsyncRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdatePipelineByAsyncRequest) SetOpUserId(v string) *UpdatePipelineByAsyncRequest {
+	s.OpUserId = &v
 	return s
 }
 

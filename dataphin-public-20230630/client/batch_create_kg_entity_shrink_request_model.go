@@ -13,12 +13,14 @@ type iBatchCreateKgEntityShrinkRequest interface {
 	GetCreateCommandShrink() *string
 	SetOpTenantId(v int64) *BatchCreateKgEntityShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *BatchCreateKgEntityShrinkRequest
+	GetOpUserId() *string
 	SetWorkspaceId(v string) *BatchCreateKgEntityShrinkRequest
 	GetWorkspaceId() *string
 }
 
 type BatchCreateKgEntityShrinkRequest struct {
-	// The create instruction.
+	// The create command.
 	//
 	// This parameter is required.
 	CreateCommandShrink *string `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty"`
@@ -30,6 +32,12 @@ type BatchCreateKgEntityShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The workspace ID.
 	//
 	// This parameter is required.
@@ -56,6 +64,10 @@ func (s *BatchCreateKgEntityShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *BatchCreateKgEntityShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *BatchCreateKgEntityShrinkRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -67,6 +79,11 @@ func (s *BatchCreateKgEntityShrinkRequest) SetCreateCommandShrink(v string) *Bat
 
 func (s *BatchCreateKgEntityShrinkRequest) SetOpTenantId(v int64) *BatchCreateKgEntityShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *BatchCreateKgEntityShrinkRequest) SetOpUserId(v string) *BatchCreateKgEntityShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

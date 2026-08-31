@@ -152,7 +152,7 @@ type ListNodeDownStreamResponseBodyNodeInfoList struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xxTest
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The node type.
 	//

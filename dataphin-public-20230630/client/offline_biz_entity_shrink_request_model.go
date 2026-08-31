@@ -13,6 +13,8 @@ type iOfflineBizEntityShrinkRequest interface {
 	GetOfflineCommandShrink() *string
 	SetOpTenantId(v int64) *OfflineBizEntityShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *OfflineBizEntityShrinkRequest
+	GetOpUserId() *string
 }
 
 type OfflineBizEntityShrinkRequest struct {
@@ -28,6 +30,10 @@ type OfflineBizEntityShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s OfflineBizEntityShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *OfflineBizEntityShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *OfflineBizEntityShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *OfflineBizEntityShrinkRequest) SetOfflineCommandShrink(v string) *OfflineBizEntityShrinkRequest {
 	s.OfflineCommandShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *OfflineBizEntityShrinkRequest) SetOfflineCommandShrink(v string) *Offli
 
 func (s *OfflineBizEntityShrinkRequest) SetOpTenantId(v int64) *OfflineBizEntityShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *OfflineBizEntityShrinkRequest) SetOpUserId(v string) *OfflineBizEntityShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

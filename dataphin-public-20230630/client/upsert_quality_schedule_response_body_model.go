@@ -30,7 +30,7 @@ type UpsertQualityScheduleResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the schedule resource.
+	// The schedule object ID.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type UpsertQualityScheduleResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//

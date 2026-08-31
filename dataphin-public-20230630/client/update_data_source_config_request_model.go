@@ -11,6 +11,8 @@ type iUpdateDataSourceConfigRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateDataSourceConfigRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateDataSourceConfigRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateDataSourceConfigRequestUpdateCommand) *UpdateDataSourceConfigRequest
 	GetUpdateCommand() *UpdateDataSourceConfigRequestUpdateCommand
 }
@@ -24,6 +26,10 @@ type UpdateDataSourceConfigRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The data source configuration item change.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateDataSourceConfigRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateDataSourceConfigRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateDataSourceConfigRequest) GetUpdateCommand() *UpdateDataSourceConfigRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *UpdateDataSourceConfigRequest) SetOpTenantId(v int64) *UpdateDataSourceConfigRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateDataSourceConfigRequest) SetOpUserId(v string) *UpdateDataSourceConfigRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iCreateUdfRequest interface {
 	GetCreateCommand() *CreateUdfRequestCreateCommand
 	SetOpTenantId(v int64) *CreateUdfRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateUdfRequest
+	GetOpUserId() *string
 }
 
 type CreateUdfRequest struct {
@@ -28,6 +30,10 @@ type CreateUdfRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateUdfRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateUdfRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateUdfRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateUdfRequest) SetCreateCommand(v *CreateUdfRequestCreateCommand) *CreateUdfRequest {
 	s.CreateCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateUdfRequest) SetCreateCommand(v *CreateUdfRequestCreateCommand) *C
 
 func (s *CreateUdfRequest) SetOpTenantId(v int64) *CreateUdfRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateUdfRequest) SetOpUserId(v string) *CreateUdfRequest {
+	s.OpUserId = &v
 	return s
 }
 

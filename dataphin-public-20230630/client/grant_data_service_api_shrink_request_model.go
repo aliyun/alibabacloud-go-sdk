@@ -13,6 +13,8 @@ type iGrantDataServiceApiShrinkRequest interface {
 	GetGrantCommandShrink() *string
 	SetOpTenantId(v int64) *GrantDataServiceApiShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GrantDataServiceApiShrinkRequest
+	GetOpUserId() *string
 	SetProjectId(v int32) *GrantDataServiceApiShrinkRequest
 	GetProjectId() *int32
 }
@@ -30,6 +32,10 @@ type GrantDataServiceApiShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The data service project ID.
 	//
 	// This parameter is required.
@@ -56,6 +62,10 @@ func (s *GrantDataServiceApiShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GrantDataServiceApiShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GrantDataServiceApiShrinkRequest) GetProjectId() *int32 {
 	return s.ProjectId
 }
@@ -67,6 +77,11 @@ func (s *GrantDataServiceApiShrinkRequest) SetGrantCommandShrink(v string) *Gran
 
 func (s *GrantDataServiceApiShrinkRequest) SetOpTenantId(v int64) *GrantDataServiceApiShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GrantDataServiceApiShrinkRequest) SetOpUserId(v string) *GrantDataServiceApiShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

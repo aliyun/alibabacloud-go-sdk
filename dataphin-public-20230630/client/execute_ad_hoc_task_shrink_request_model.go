@@ -13,6 +13,8 @@ type iExecuteAdHocTaskShrinkRequest interface {
   GetExecuteCommandShrink() *string 
   SetOpTenantId(v int64) *ExecuteAdHocTaskShrinkRequest
   GetOpTenantId() *int64 
+  SetOpUserId(v string) *ExecuteAdHocTaskShrinkRequest
+  GetOpUserId() *string 
 }
 
 type ExecuteAdHocTaskShrinkRequest struct {
@@ -28,6 +30,10 @@ type ExecuteAdHocTaskShrinkRequest struct {
   // 
   // 30001011
   OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+  // example:
+  // 
+  // 30001011
+  OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ExecuteAdHocTaskShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *ExecuteAdHocTaskShrinkRequest) GetOpTenantId() *int64  {
   return s.OpTenantId
 }
 
+func (s *ExecuteAdHocTaskShrinkRequest) GetOpUserId() *string  {
+  return s.OpUserId
+}
+
 func (s *ExecuteAdHocTaskShrinkRequest) SetExecuteCommandShrink(v string) *ExecuteAdHocTaskShrinkRequest {
   s.ExecuteCommandShrink = &v
   return s
@@ -53,6 +63,11 @@ func (s *ExecuteAdHocTaskShrinkRequest) SetExecuteCommandShrink(v string) *Execu
 
 func (s *ExecuteAdHocTaskShrinkRequest) SetOpTenantId(v int64) *ExecuteAdHocTaskShrinkRequest {
   s.OpTenantId = &v
+  return s
+}
+
+func (s *ExecuteAdHocTaskShrinkRequest) SetOpUserId(v string) *ExecuteAdHocTaskShrinkRequest {
+  s.OpUserId = &v
   return s
 }
 

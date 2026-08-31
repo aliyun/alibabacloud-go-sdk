@@ -13,6 +13,8 @@ type iListKgRelationShrinkRequest interface {
 	GetListQueryShrink() *string
 	SetOpTenantId(v int64) *ListKgRelationShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListKgRelationShrinkRequest
+	GetOpUserId() *string
 	SetRelationType(v string) *ListKgRelationShrinkRequest
 	GetRelationType() *string
 	SetWorkspaceId(v string) *ListKgRelationShrinkRequest
@@ -20,7 +22,7 @@ type iListKgRelationShrinkRequest interface {
 }
 
 type ListKgRelationShrinkRequest struct {
-	// The paged search filter conditions.
+	// The paged query filter conditions.
 	ListQueryShrink *string `json:"ListQuery,omitempty" xml:"ListQuery,omitempty"`
 	// The tenant ID.
 	//
@@ -30,6 +32,12 @@ type ListKgRelationShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The relationship type code.
 	//
 	// This parameter is required.
@@ -64,6 +72,10 @@ func (s *ListKgRelationShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListKgRelationShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListKgRelationShrinkRequest) GetRelationType() *string {
 	return s.RelationType
 }
@@ -79,6 +91,11 @@ func (s *ListKgRelationShrinkRequest) SetListQueryShrink(v string) *ListKgRelati
 
 func (s *ListKgRelationShrinkRequest) SetOpTenantId(v int64) *ListKgRelationShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListKgRelationShrinkRequest) SetOpUserId(v string) *ListKgRelationShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

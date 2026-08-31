@@ -13,6 +13,8 @@ type iCreateDataDomainRequest interface {
 	GetCreateCommand() *CreateDataDomainRequestCreateCommand
 	SetOpTenantId(v int64) *CreateDataDomainRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateDataDomainRequest
+	GetOpUserId() *string
 }
 
 type CreateDataDomainRequest struct {
@@ -28,6 +30,12 @@ type CreateDataDomainRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateDataDomainRequest) String() string {
@@ -46,6 +54,10 @@ func (s *CreateDataDomainRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateDataDomainRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateDataDomainRequest) SetCreateCommand(v *CreateDataDomainRequestCreateCommand) *CreateDataDomainRequest {
 	s.CreateCommand = v
 	return s
@@ -53,6 +65,11 @@ func (s *CreateDataDomainRequest) SetCreateCommand(v *CreateDataDomainRequestCre
 
 func (s *CreateDataDomainRequest) SetOpTenantId(v int64) *CreateDataDomainRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateDataDomainRequest) SetOpUserId(v string) *CreateDataDomainRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -74,7 +91,7 @@ type CreateDataDomainRequestCreateCommand struct {
 	//
 	// dm_code_name
 	Abbreviation *string `json:"Abbreviation,omitempty" xml:"Abbreviation,omitempty"`
-	// The ID of the data unit to which the data domain belongs.
+	// The ID of the business unit to which the data domain belongs.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +111,7 @@ type CreateDataDomainRequestCreateCommand struct {
 	//
 	// example:
 	//
-	// 主题域测试
+	// DataDomainTest
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The code of the data domain.
 	//

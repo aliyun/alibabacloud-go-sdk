@@ -13,6 +13,8 @@ type iCheckResourcePermissionRequest interface {
 	GetCheckCommand() *CheckResourcePermissionRequestCheckCommand
 	SetOpTenantId(v int64) *CheckResourcePermissionRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CheckResourcePermissionRequest
+	GetOpUserId() *string
 }
 
 type CheckResourcePermissionRequest struct {
@@ -28,6 +30,10 @@ type CheckResourcePermissionRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CheckResourcePermissionRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CheckResourcePermissionRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CheckResourcePermissionRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CheckResourcePermissionRequest) SetCheckCommand(v *CheckResourcePermissionRequestCheckCommand) *CheckResourcePermissionRequest {
 	s.CheckCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *CheckResourcePermissionRequest) SetCheckCommand(v *CheckResourcePermiss
 
 func (s *CheckResourcePermissionRequest) SetOpTenantId(v int64) *CheckResourcePermissionRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CheckResourcePermissionRequest) SetOpUserId(v string) *CheckResourcePermissionRequest {
+	s.OpUserId = &v
 	return s
 }
 

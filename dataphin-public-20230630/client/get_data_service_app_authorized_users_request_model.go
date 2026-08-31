@@ -13,6 +13,8 @@ type iGetDataServiceAppAuthorizedUsersRequest interface {
 	GetAppId() *int32
 	SetOpTenantId(v int64) *GetDataServiceAppAuthorizedUsersRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetDataServiceAppAuthorizedUsersRequest
+	GetOpUserId() *string
 	SetProjectId(v int32) *GetDataServiceAppAuthorizedUsersRequest
 	GetProjectId() *int32
 }
@@ -34,6 +36,10 @@ type GetDataServiceAppAuthorizedUsersRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The data service project ID.
 	//
 	// This parameter is required.
@@ -60,6 +66,10 @@ func (s *GetDataServiceAppAuthorizedUsersRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetDataServiceAppAuthorizedUsersRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetDataServiceAppAuthorizedUsersRequest) GetProjectId() *int32 {
 	return s.ProjectId
 }
@@ -71,6 +81,11 @@ func (s *GetDataServiceAppAuthorizedUsersRequest) SetAppId(v int32) *GetDataServ
 
 func (s *GetDataServiceAppAuthorizedUsersRequest) SetOpTenantId(v int64) *GetDataServiceAppAuthorizedUsersRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetDataServiceAppAuthorizedUsersRequest) SetOpUserId(v string) *GetDataServiceAppAuthorizedUsersRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iListDataServicePublishedApisRequest interface {
 	GetListQuery() *ListDataServicePublishedApisRequestListQuery
 	SetOpTenantId(v int64) *ListDataServicePublishedApisRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListDataServicePublishedApisRequest
+	GetOpUserId() *string
 	SetProjectId(v int32) *ListDataServicePublishedApisRequest
 	GetProjectId() *int32
 }
@@ -28,6 +30,10 @@ type ListDataServicePublishedApisRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// Data service project ID.
 	//
 	// This parameter is required.
@@ -54,6 +60,10 @@ func (s *ListDataServicePublishedApisRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListDataServicePublishedApisRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListDataServicePublishedApisRequest) GetProjectId() *int32 {
 	return s.ProjectId
 }
@@ -65,6 +75,11 @@ func (s *ListDataServicePublishedApisRequest) SetListQuery(v *ListDataServicePub
 
 func (s *ListDataServicePublishedApisRequest) SetOpTenantId(v int64) *ListDataServicePublishedApisRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListDataServicePublishedApisRequest) SetOpUserId(v string) *ListDataServicePublishedApisRequest {
+	s.OpUserId = &v
 	return s
 }
 

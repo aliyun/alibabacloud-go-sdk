@@ -11,6 +11,8 @@ type iUpdateRowPermissionRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateRowPermissionRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateRowPermissionRequest
+	GetOpUserId() *string
 	SetUpdateRowPermissionCommand(v *UpdateRowPermissionRequestUpdateRowPermissionCommand) *UpdateRowPermissionRequest
 	GetUpdateRowPermissionCommand() *UpdateRowPermissionRequestUpdateRowPermissionCommand
 }
@@ -24,6 +26,10 @@ type UpdateRowPermissionRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The request command.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateRowPermissionRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateRowPermissionRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateRowPermissionRequest) GetUpdateRowPermissionCommand() *UpdateRowPermissionRequestUpdateRowPermissionCommand {
 	return s.UpdateRowPermissionCommand
 }
 
 func (s *UpdateRowPermissionRequest) SetOpTenantId(v int64) *UpdateRowPermissionRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateRowPermissionRequest) SetOpUserId(v string) *UpdateRowPermissionRequest {
+	s.OpUserId = &v
 	return s
 }
 

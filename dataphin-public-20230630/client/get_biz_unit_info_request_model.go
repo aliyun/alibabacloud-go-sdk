@@ -13,6 +13,8 @@ type iGetBizUnitInfoRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *GetBizUnitInfoRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetBizUnitInfoRequest
+	GetOpUserId() *string
 }
 
 type GetBizUnitInfoRequest struct {
@@ -32,6 +34,10 @@ type GetBizUnitInfoRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetBizUnitInfoRequest) String() string {
@@ -50,6 +56,10 @@ func (s *GetBizUnitInfoRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetBizUnitInfoRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetBizUnitInfoRequest) SetId(v int64) *GetBizUnitInfoRequest {
 	s.Id = &v
 	return s
@@ -57,6 +67,11 @@ func (s *GetBizUnitInfoRequest) SetId(v int64) *GetBizUnitInfoRequest {
 
 func (s *GetBizUnitInfoRequest) SetOpTenantId(v int64) *GetBizUnitInfoRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetBizUnitInfoRequest) SetOpUserId(v string) *GetBizUnitInfoRequest {
+	s.OpUserId = &v
 	return s
 }
 

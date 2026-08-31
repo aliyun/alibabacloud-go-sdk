@@ -13,6 +13,8 @@ type iListQualityTemplatesRequest interface {
 	GetListQuery() *ListQualityTemplatesRequestListQuery
 	SetOpTenantId(v int64) *ListQualityTemplatesRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListQualityTemplatesRequest
+	GetOpUserId() *string
 }
 
 type ListQualityTemplatesRequest struct {
@@ -26,6 +28,10 @@ type ListQualityTemplatesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListQualityTemplatesRequest) String() string {
@@ -44,6 +50,10 @@ func (s *ListQualityTemplatesRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListQualityTemplatesRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListQualityTemplatesRequest) SetListQuery(v *ListQualityTemplatesRequestListQuery) *ListQualityTemplatesRequest {
 	s.ListQuery = v
 	return s
@@ -51,6 +61,11 @@ func (s *ListQualityTemplatesRequest) SetListQuery(v *ListQualityTemplatesReques
 
 func (s *ListQualityTemplatesRequest) SetOpTenantId(v int64) *ListQualityTemplatesRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListQualityTemplatesRequest) SetOpUserId(v string) *ListQualityTemplatesRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iPausePhysicalNodeRequest interface {
 	GetEnv() *string
 	SetOpTenantId(v int64) *PausePhysicalNodeRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *PausePhysicalNodeRequest
+	GetOpUserId() *string
 	SetPauseCommand(v *PausePhysicalNodeRequestPauseCommand) *PausePhysicalNodeRequest
 	GetPauseCommand() *PausePhysicalNodeRequestPauseCommand
 }
@@ -36,6 +38,10 @@ type PausePhysicalNodeRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The pause scheduling request.
 	//
 	// This parameter is required.
@@ -58,6 +64,10 @@ func (s *PausePhysicalNodeRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *PausePhysicalNodeRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *PausePhysicalNodeRequest) GetPauseCommand() *PausePhysicalNodeRequestPauseCommand {
 	return s.PauseCommand
 }
@@ -69,6 +79,11 @@ func (s *PausePhysicalNodeRequest) SetEnv(v string) *PausePhysicalNodeRequest {
 
 func (s *PausePhysicalNodeRequest) SetOpTenantId(v int64) *PausePhysicalNodeRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *PausePhysicalNodeRequest) SetOpUserId(v string) *PausePhysicalNodeRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iGetTableColumnLineagesShrinkRequest interface {
 	GetFilterQueryShrink() *string
 	SetOpTenantId(v int64) *GetTableColumnLineagesShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetTableColumnLineagesShrinkRequest
+	GetOpUserId() *string
 	SetTableGuid(v string) *GetTableColumnLineagesShrinkRequest
 	GetTableGuid() *string
 }
@@ -28,6 +30,10 @@ type GetTableColumnLineagesShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The GUID of the table, which is the unique identifier of the asset.
 	//
 	// This parameter is required.
@@ -54,6 +60,10 @@ func (s *GetTableColumnLineagesShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetTableColumnLineagesShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetTableColumnLineagesShrinkRequest) GetTableGuid() *string {
 	return s.TableGuid
 }
@@ -65,6 +75,11 @@ func (s *GetTableColumnLineagesShrinkRequest) SetFilterQueryShrink(v string) *Ge
 
 func (s *GetTableColumnLineagesShrinkRequest) SetOpTenantId(v int64) *GetTableColumnLineagesShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetTableColumnLineagesShrinkRequest) SetOpUserId(v string) *GetTableColumnLineagesShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

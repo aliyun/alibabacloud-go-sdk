@@ -30,7 +30,7 @@ type CreateSecurityClassifyResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data classification ID.
+	// The data category ID.
 	//
 	// example:
 	//

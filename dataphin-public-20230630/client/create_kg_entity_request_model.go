@@ -13,6 +13,8 @@ type iCreateKgEntityRequest interface {
 	GetCreateCommand() *CreateKgEntityRequestCreateCommand
 	SetOpTenantId(v int64) *CreateKgEntityRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateKgEntityRequest
+	GetOpUserId() *string
 	SetWorkspaceId(v string) *CreateKgEntityRequest
 	GetWorkspaceId() *string
 }
@@ -30,6 +32,10 @@ type CreateKgEntityRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The workspace ID.
 	//
 	// This parameter is required.
@@ -56,6 +62,10 @@ func (s *CreateKgEntityRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateKgEntityRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateKgEntityRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -67,6 +77,11 @@ func (s *CreateKgEntityRequest) SetCreateCommand(v *CreateKgEntityRequestCreateC
 
 func (s *CreateKgEntityRequest) SetOpTenantId(v int64) *CreateKgEntityRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateKgEntityRequest) SetOpUserId(v string) *CreateKgEntityRequest {
+	s.OpUserId = &v
 	return s
 }
 

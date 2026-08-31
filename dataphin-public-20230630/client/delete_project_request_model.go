@@ -13,6 +13,8 @@ type iDeleteProjectRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *DeleteProjectRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteProjectRequest
+	GetOpUserId() *string
 }
 
 type DeleteProjectRequest struct {
@@ -32,6 +34,10 @@ type DeleteProjectRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteProjectRequest) String() string {
@@ -50,6 +56,10 @@ func (s *DeleteProjectRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteProjectRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteProjectRequest) SetId(v int64) *DeleteProjectRequest {
 	s.Id = &v
 	return s
@@ -57,6 +67,11 @@ func (s *DeleteProjectRequest) SetId(v int64) *DeleteProjectRequest {
 
 func (s *DeleteProjectRequest) SetOpTenantId(v int64) *DeleteProjectRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteProjectRequest) SetOpUserId(v string) *DeleteProjectRequest {
+	s.OpUserId = &v
 	return s
 }
 

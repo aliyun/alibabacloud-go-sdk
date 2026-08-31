@@ -11,6 +11,8 @@ type iUpdateDataDomainShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateDataDomainShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateDataDomainShrinkRequest
+	GetOpUserId() *string
 	SetUpdateCommandShrink(v string) *UpdateDataDomainShrinkRequest
 	GetUpdateCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type UpdateDataDomainShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update request.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateDataDomainShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateDataDomainShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateDataDomainShrinkRequest) GetUpdateCommandShrink() *string {
 	return s.UpdateCommandShrink
 }
 
 func (s *UpdateDataDomainShrinkRequest) SetOpTenantId(v int64) *UpdateDataDomainShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateDataDomainShrinkRequest) SetOpUserId(v string) *UpdateDataDomainShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

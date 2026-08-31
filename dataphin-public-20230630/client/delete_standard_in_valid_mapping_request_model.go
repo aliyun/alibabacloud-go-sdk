@@ -13,6 +13,8 @@ type iDeleteStandardInValidMappingRequest interface {
 	GetDeleteCommand() *DeleteStandardInValidMappingRequestDeleteCommand
 	SetOpTenantId(v int64) *DeleteStandardInValidMappingRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteStandardInValidMappingRequest
+	GetOpUserId() *string
 }
 
 type DeleteStandardInValidMappingRequest struct {
@@ -28,6 +30,10 @@ type DeleteStandardInValidMappingRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteStandardInValidMappingRequest) String() string {
@@ -46,6 +52,10 @@ func (s *DeleteStandardInValidMappingRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteStandardInValidMappingRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteStandardInValidMappingRequest) SetDeleteCommand(v *DeleteStandardInValidMappingRequestDeleteCommand) *DeleteStandardInValidMappingRequest {
 	s.DeleteCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *DeleteStandardInValidMappingRequest) SetDeleteCommand(v *DeleteStandard
 
 func (s *DeleteStandardInValidMappingRequest) SetOpTenantId(v int64) *DeleteStandardInValidMappingRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteStandardInValidMappingRequest) SetOpUserId(v string) *DeleteStandardInValidMappingRequest {
+	s.OpUserId = &v
 	return s
 }
 

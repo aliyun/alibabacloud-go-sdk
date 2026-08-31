@@ -15,18 +15,20 @@ type iCreatePipelineShrinkRequest interface {
 	GetCreateCommandShrink() *string
 	SetOpTenantId(v int64) *CreatePipelineShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreatePipelineShrinkRequest
+	GetOpUserId() *string
 }
 
 type CreatePipelineShrinkRequest struct {
-	// Request context information
+	// The request context information.
 	//
 	// This parameter is required.
 	ContextShrink *string `json:"Context,omitempty" xml:"Context,omitempty"`
-	// Pipeline/workflow task creation configuration
+	// The configuration for creating a pipeline or workflow node.
 	//
 	// This parameter is required.
 	CreateCommandShrink *string `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty"`
-	// Tenant ID
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -34,6 +36,12 @@ type CreatePipelineShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreatePipelineShrinkRequest) String() string {
@@ -56,6 +64,10 @@ func (s *CreatePipelineShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreatePipelineShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreatePipelineShrinkRequest) SetContextShrink(v string) *CreatePipelineShrinkRequest {
 	s.ContextShrink = &v
 	return s
@@ -68,6 +80,11 @@ func (s *CreatePipelineShrinkRequest) SetCreateCommandShrink(v string) *CreatePi
 
 func (s *CreatePipelineShrinkRequest) SetOpTenantId(v int64) *CreatePipelineShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreatePipelineShrinkRequest) SetOpUserId(v string) *CreatePipelineShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

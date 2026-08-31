@@ -13,6 +13,8 @@ type iPublishDataServiceApiRequest interface {
 	GetApiId() *int64
 	SetOpTenantId(v int64) *PublishDataServiceApiRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *PublishDataServiceApiRequest
+	GetOpUserId() *string
 	SetProjectId(v int32) *PublishDataServiceApiRequest
 	GetProjectId() *int32
 	SetVersionId(v string) *PublishDataServiceApiRequest
@@ -36,6 +38,10 @@ type PublishDataServiceApiRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The data service project ID.
 	//
 	// This parameter is required.
@@ -70,6 +76,10 @@ func (s *PublishDataServiceApiRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *PublishDataServiceApiRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *PublishDataServiceApiRequest) GetProjectId() *int32 {
 	return s.ProjectId
 }
@@ -85,6 +95,11 @@ func (s *PublishDataServiceApiRequest) SetApiId(v int64) *PublishDataServiceApiR
 
 func (s *PublishDataServiceApiRequest) SetOpTenantId(v int64) *PublishDataServiceApiRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *PublishDataServiceApiRequest) SetOpUserId(v string) *PublishDataServiceApiRequest {
+	s.OpUserId = &v
 	return s
 }
 

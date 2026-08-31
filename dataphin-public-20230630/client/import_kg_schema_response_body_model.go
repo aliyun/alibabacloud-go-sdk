@@ -38,7 +38,7 @@ type ImportKgSchemaResponseBody struct {
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The import result.
 	ImportResult *ImportKgSchemaResponseBodyImportResult `json:"ImportResult,omitempty" xml:"ImportResult,omitempty" type:"Struct"`
-	// The backend exception details.
+	// The details of the backend exception.
 	//
 	// example:
 	//

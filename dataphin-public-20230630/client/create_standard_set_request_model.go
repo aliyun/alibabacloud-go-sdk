@@ -13,6 +13,8 @@ type iCreateStandardSetRequest interface {
 	GetCreateCommand() *CreateStandardSetRequestCreateCommand
 	SetOpTenantId(v int64) *CreateStandardSetRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateStandardSetRequest
+	GetOpUserId() *string
 }
 
 type CreateStandardSetRequest struct {
@@ -28,6 +30,10 @@ type CreateStandardSetRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateStandardSetRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateStandardSetRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateStandardSetRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateStandardSetRequest) SetCreateCommand(v *CreateStandardSetRequestCreateCommand) *CreateStandardSetRequest {
 	s.CreateCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateStandardSetRequest) SetCreateCommand(v *CreateStandardSetRequestC
 
 func (s *CreateStandardSetRequest) SetOpTenantId(v int64) *CreateStandardSetRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateStandardSetRequest) SetOpUserId(v string) *CreateStandardSetRequest {
+	s.OpUserId = &v
 	return s
 }
 

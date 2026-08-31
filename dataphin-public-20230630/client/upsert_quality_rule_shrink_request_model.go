@@ -11,12 +11,14 @@ type iUpsertQualityRuleShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpsertQualityRuleShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpsertQualityRuleShrinkRequest
+	GetOpUserId() *string
 	SetUpsertCommandShrink(v string) *UpsertQualityRuleShrinkRequest
 	GetUpsertCommandShrink() *string
 }
 
 type UpsertQualityRuleShrinkRequest struct {
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +26,13 @@ type UpsertQualityRuleShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The upsert command.
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
+	// The update command.
 	//
 	// This parameter is required.
 	UpsertCommandShrink *string `json:"UpsertCommand,omitempty" xml:"UpsertCommand,omitempty"`
@@ -42,12 +50,21 @@ func (s *UpsertQualityRuleShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpsertQualityRuleShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpsertQualityRuleShrinkRequest) GetUpsertCommandShrink() *string {
 	return s.UpsertCommandShrink
 }
 
 func (s *UpsertQualityRuleShrinkRequest) SetOpTenantId(v int64) *UpsertQualityRuleShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpsertQualityRuleShrinkRequest) SetOpUserId(v string) *UpsertQualityRuleShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

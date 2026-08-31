@@ -19,6 +19,8 @@ type iExecuteTriggerNodeRequest interface {
   GetNodeId() *string 
   SetOpTenantId(v int64) *ExecuteTriggerNodeRequest
   GetOpTenantId() *int64 
+  SetOpUserId(v string) *ExecuteTriggerNodeRequest
+  GetOpUserId() *string 
   SetProjectId(v int64) *ExecuteTriggerNodeRequest
   GetProjectId() *int64 
 }
@@ -66,6 +68,10 @@ type ExecuteTriggerNodeRequest struct {
   // 
   // 30001011
   OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+  // example:
+  // 
+  // 30001011
+  OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
   // The project ID.
   // 
   // This parameter is required.
@@ -104,6 +110,10 @@ func (s *ExecuteTriggerNodeRequest) GetOpTenantId() *int64  {
   return s.OpTenantId
 }
 
+func (s *ExecuteTriggerNodeRequest) GetOpUserId() *string  {
+  return s.OpUserId
+}
+
 func (s *ExecuteTriggerNodeRequest) GetProjectId() *int64  {
   return s.ProjectId
 }
@@ -130,6 +140,11 @@ func (s *ExecuteTriggerNodeRequest) SetNodeId(v string) *ExecuteTriggerNodeReque
 
 func (s *ExecuteTriggerNodeRequest) SetOpTenantId(v int64) *ExecuteTriggerNodeRequest {
   s.OpTenantId = &v
+  return s
+}
+
+func (s *ExecuteTriggerNodeRequest) SetOpUserId(v string) *ExecuteTriggerNodeRequest {
+  s.OpUserId = &v
   return s
 }
 

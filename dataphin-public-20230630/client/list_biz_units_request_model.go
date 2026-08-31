@@ -11,6 +11,8 @@ type iListBizUnitsRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *ListBizUnitsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListBizUnitsRequest
+	GetOpUserId() *string
 }
 
 type ListBizUnitsRequest struct {
@@ -22,6 +24,10 @@ type ListBizUnitsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListBizUnitsRequest) String() string {
@@ -36,8 +42,17 @@ func (s *ListBizUnitsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListBizUnitsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListBizUnitsRequest) SetOpTenantId(v int64) *ListBizUnitsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListBizUnitsRequest) SetOpUserId(v string) *ListBizUnitsRequest {
+	s.OpUserId = &v
 	return s
 }
 

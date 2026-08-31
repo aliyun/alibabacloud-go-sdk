@@ -13,6 +13,8 @@ type iExecuteAdHocTaskRequest interface {
   GetExecuteCommand() *ExecuteAdHocTaskRequestExecuteCommand 
   SetOpTenantId(v int64) *ExecuteAdHocTaskRequest
   GetOpTenantId() *int64 
+  SetOpUserId(v string) *ExecuteAdHocTaskRequest
+  GetOpUserId() *string 
 }
 
 type ExecuteAdHocTaskRequest struct {
@@ -28,6 +30,10 @@ type ExecuteAdHocTaskRequest struct {
   // 
   // 30001011
   OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+  // example:
+  // 
+  // 30001011
+  OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ExecuteAdHocTaskRequest) String() string {
@@ -46,6 +52,10 @@ func (s *ExecuteAdHocTaskRequest) GetOpTenantId() *int64  {
   return s.OpTenantId
 }
 
+func (s *ExecuteAdHocTaskRequest) GetOpUserId() *string  {
+  return s.OpUserId
+}
+
 func (s *ExecuteAdHocTaskRequest) SetExecuteCommand(v *ExecuteAdHocTaskRequestExecuteCommand) *ExecuteAdHocTaskRequest {
   s.ExecuteCommand = v
   return s
@@ -53,6 +63,11 @@ func (s *ExecuteAdHocTaskRequest) SetExecuteCommand(v *ExecuteAdHocTaskRequestEx
 
 func (s *ExecuteAdHocTaskRequest) SetOpTenantId(v int64) *ExecuteAdHocTaskRequest {
   s.OpTenantId = &v
+  return s
+}
+
+func (s *ExecuteAdHocTaskRequest) SetOpUserId(v string) *ExecuteAdHocTaskRequest {
+  s.OpUserId = &v
   return s
 }
 

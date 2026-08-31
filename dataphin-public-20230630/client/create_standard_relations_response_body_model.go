@@ -38,7 +38,7 @@ type CreateStandardRelationsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ func (s *CreateStandardRelationsResponseBody) Validate() error {
 type CreateStandardRelationsResponseBodyData struct {
 	// The list of standard IDs that do not exist.
 	NotExistStandardIdList []*int64 `json:"NotExistStandardIdList,omitempty" xml:"NotExistStandardIdList,omitempty" type:"Repeated"`
-	// The number of successfully added items.
+	// The number of successfully added associations.
 	//
 	// example:
 	//

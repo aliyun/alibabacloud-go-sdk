@@ -13,6 +13,8 @@ type iAddUserGroupMemberRequest interface {
 	GetAddCommand() *AddUserGroupMemberRequestAddCommand
 	SetOpTenantId(v int64) *AddUserGroupMemberRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *AddUserGroupMemberRequest
+	GetOpUserId() *string
 }
 
 type AddUserGroupMemberRequest struct {
@@ -26,6 +28,12 @@ type AddUserGroupMemberRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s AddUserGroupMemberRequest) String() string {
@@ -44,6 +52,10 @@ func (s *AddUserGroupMemberRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *AddUserGroupMemberRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *AddUserGroupMemberRequest) SetAddCommand(v *AddUserGroupMemberRequestAddCommand) *AddUserGroupMemberRequest {
 	s.AddCommand = v
 	return s
@@ -51,6 +63,11 @@ func (s *AddUserGroupMemberRequest) SetAddCommand(v *AddUserGroupMemberRequestAd
 
 func (s *AddUserGroupMemberRequest) SetOpTenantId(v int64) *AddUserGroupMemberRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *AddUserGroupMemberRequest) SetOpUserId(v string) *AddUserGroupMemberRequest {
+	s.OpUserId = &v
 	return s
 }
 

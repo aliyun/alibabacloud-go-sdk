@@ -13,6 +13,8 @@ type iListAlertEventsRequest interface {
 	GetListQuery() *ListAlertEventsRequestListQuery
 	SetOpTenantId(v int64) *ListAlertEventsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListAlertEventsRequest
+	GetOpUserId() *string
 }
 
 type ListAlertEventsRequest struct {
@@ -28,6 +30,10 @@ type ListAlertEventsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListAlertEventsRequest) String() string {
@@ -46,6 +52,10 @@ func (s *ListAlertEventsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListAlertEventsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListAlertEventsRequest) SetListQuery(v *ListAlertEventsRequestListQuery) *ListAlertEventsRequest {
 	s.ListQuery = v
 	return s
@@ -53,6 +63,11 @@ func (s *ListAlertEventsRequest) SetListQuery(v *ListAlertEventsRequestListQuery
 
 func (s *ListAlertEventsRequest) SetOpTenantId(v int64) *ListAlertEventsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListAlertEventsRequest) SetOpUserId(v string) *ListAlertEventsRequest {
+	s.OpUserId = &v
 	return s
 }
 

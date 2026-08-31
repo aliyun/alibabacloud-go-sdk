@@ -13,6 +13,8 @@ type iGetDirectoryTreeRequest interface {
 	GetCategory() *string
 	SetOpTenantId(v int64) *GetDirectoryTreeRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetDirectoryTreeRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *GetDirectoryTreeRequest
 	GetProjectId() *int64
 }
@@ -56,6 +58,10 @@ type GetDirectoryTreeRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// Project ID.
 	//
 	// This parameter is required.
@@ -82,6 +88,10 @@ func (s *GetDirectoryTreeRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetDirectoryTreeRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetDirectoryTreeRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -93,6 +103,11 @@ func (s *GetDirectoryTreeRequest) SetCategory(v string) *GetDirectoryTreeRequest
 
 func (s *GetDirectoryTreeRequest) SetOpTenantId(v int64) *GetDirectoryTreeRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetDirectoryTreeRequest) SetOpUserId(v string) *GetDirectoryTreeRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iGetStandardRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetStandardRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetStandardRequest
+	GetOpUserId() *string
 	SetStandardGetQuery(v *GetStandardRequestStandardGetQuery) *GetStandardRequest
 	GetStandardGetQuery() *GetStandardRequestStandardGetQuery
 }
@@ -24,6 +26,10 @@ type GetStandardRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The query command.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *GetStandardRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetStandardRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetStandardRequest) GetStandardGetQuery() *GetStandardRequestStandardGetQuery {
 	return s.StandardGetQuery
 }
 
 func (s *GetStandardRequest) SetOpTenantId(v int64) *GetStandardRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetStandardRequest) SetOpUserId(v string) *GetStandardRequest {
+	s.OpUserId = &v
 	return s
 }
 

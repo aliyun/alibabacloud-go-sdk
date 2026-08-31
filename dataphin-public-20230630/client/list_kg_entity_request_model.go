@@ -15,6 +15,8 @@ type iListKgEntityRequest interface {
 	GetListQuery() *ListKgEntityRequestListQuery
 	SetOpTenantId(v int64) *ListKgEntityRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListKgEntityRequest
+	GetOpUserId() *string
 	SetWorkspaceId(v string) *ListKgEntityRequest
 	GetWorkspaceId() *string
 }
@@ -36,6 +38,10 @@ type ListKgEntityRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The workspace ID.
 	//
 	// This parameter is required.
@@ -66,6 +72,10 @@ func (s *ListKgEntityRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListKgEntityRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListKgEntityRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -82,6 +92,11 @@ func (s *ListKgEntityRequest) SetListQuery(v *ListKgEntityRequestListQuery) *Lis
 
 func (s *ListKgEntityRequest) SetOpTenantId(v int64) *ListKgEntityRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListKgEntityRequest) SetOpUserId(v string) *ListKgEntityRequest {
+	s.OpUserId = &v
 	return s
 }
 

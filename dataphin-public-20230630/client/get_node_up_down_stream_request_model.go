@@ -17,6 +17,8 @@ type iGetNodeUpDownStreamRequest interface {
 	GetNodeId() *GetNodeUpDownStreamRequestNodeId
 	SetOpTenantId(v int64) *GetNodeUpDownStreamRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetNodeUpDownStreamRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *GetNodeUpDownStreamRequest
 	GetProjectId() *int64
 	SetUpStreamDepth(v int32) *GetNodeUpDownStreamRequest
@@ -52,6 +54,10 @@ type GetNodeUpDownStreamRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// example:
@@ -90,6 +96,10 @@ func (s *GetNodeUpDownStreamRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetNodeUpDownStreamRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetNodeUpDownStreamRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -115,6 +125,11 @@ func (s *GetNodeUpDownStreamRequest) SetNodeId(v *GetNodeUpDownStreamRequestNode
 
 func (s *GetNodeUpDownStreamRequest) SetOpTenantId(v int64) *GetNodeUpDownStreamRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetNodeUpDownStreamRequest) SetOpUserId(v string) *GetNodeUpDownStreamRequest {
+	s.OpUserId = &v
 	return s
 }
 

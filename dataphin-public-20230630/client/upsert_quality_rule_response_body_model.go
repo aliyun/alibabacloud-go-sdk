@@ -24,13 +24,13 @@ type iUpsertQualityRuleResponseBody interface {
 }
 
 type UpsertQualityRuleResponseBody struct {
-	// The response code.
+	// The backend response code.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The rule ID.
+	// The task rule ID.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type UpsertQualityRuleResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The backend exception details.
 	//
 	// example:
 	//

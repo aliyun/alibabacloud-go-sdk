@@ -13,10 +13,12 @@ type iDeleteRegisterLineageShrinkRequest interface {
 	GetDeleteRegisterLineageCommandShrink() *string
 	SetOpTenantId(v int64) *DeleteRegisterLineageShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteRegisterLineageShrinkRequest
+	GetOpUserId() *string
 }
 
 type DeleteRegisterLineageShrinkRequest struct {
-	// The command for deleting registered lineage.
+	// The command for deleting registered data lineage.
 	//
 	// This parameter is required.
 	DeleteRegisterLineageCommandShrink *string `json:"DeleteRegisterLineageCommand,omitempty" xml:"DeleteRegisterLineageCommand,omitempty"`
@@ -28,6 +30,10 @@ type DeleteRegisterLineageShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteRegisterLineageShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *DeleteRegisterLineageShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteRegisterLineageShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteRegisterLineageShrinkRequest) SetDeleteRegisterLineageCommandShrink(v string) *DeleteRegisterLineageShrinkRequest {
 	s.DeleteRegisterLineageCommandShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *DeleteRegisterLineageShrinkRequest) SetDeleteRegisterLineageCommandShri
 
 func (s *DeleteRegisterLineageShrinkRequest) SetOpTenantId(v int64) *DeleteRegisterLineageShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteRegisterLineageShrinkRequest) SetOpUserId(v string) *DeleteRegisterLineageShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iListStandardsRequest interface {
 	GetListQuery() *ListStandardsRequestListQuery
 	SetOpTenantId(v int64) *ListStandardsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListStandardsRequest
+	GetOpUserId() *string
 }
 
 type ListStandardsRequest struct {
@@ -28,6 +30,10 @@ type ListStandardsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListStandardsRequest) String() string {
@@ -46,6 +52,10 @@ func (s *ListStandardsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListStandardsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListStandardsRequest) SetListQuery(v *ListStandardsRequestListQuery) *ListStandardsRequest {
 	s.ListQuery = v
 	return s
@@ -53,6 +63,11 @@ func (s *ListStandardsRequest) SetListQuery(v *ListStandardsRequestListQuery) *L
 
 func (s *ListStandardsRequest) SetOpTenantId(v int64) *ListStandardsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListStandardsRequest) SetOpUserId(v string) *ListStandardsRequest {
+	s.OpUserId = &v
 	return s
 }
 

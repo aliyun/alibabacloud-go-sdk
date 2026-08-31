@@ -13,6 +13,8 @@ type iCreateComputeSourceShrinkRequest interface {
 	GetCreateCommandShrink() *string
 	SetOpTenantId(v int64) *CreateComputeSourceShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateComputeSourceShrinkRequest
+	GetOpUserId() *string
 }
 
 type CreateComputeSourceShrinkRequest struct {
@@ -28,6 +30,12 @@ type CreateComputeSourceShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateComputeSourceShrinkRequest) String() string {
@@ -46,6 +54,10 @@ func (s *CreateComputeSourceShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateComputeSourceShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateComputeSourceShrinkRequest) SetCreateCommandShrink(v string) *CreateComputeSourceShrinkRequest {
 	s.CreateCommandShrink = &v
 	return s
@@ -53,6 +65,11 @@ func (s *CreateComputeSourceShrinkRequest) SetCreateCommandShrink(v string) *Cre
 
 func (s *CreateComputeSourceShrinkRequest) SetOpTenantId(v int64) *CreateComputeSourceShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateComputeSourceShrinkRequest) SetOpUserId(v string) *CreateComputeSourceShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

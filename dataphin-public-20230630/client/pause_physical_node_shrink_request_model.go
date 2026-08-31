@@ -13,6 +13,8 @@ type iPausePhysicalNodeShrinkRequest interface {
 	GetEnv() *string
 	SetOpTenantId(v int64) *PausePhysicalNodeShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *PausePhysicalNodeShrinkRequest
+	GetOpUserId() *string
 	SetPauseCommandShrink(v string) *PausePhysicalNodeShrinkRequest
 	GetPauseCommandShrink() *string
 }
@@ -36,6 +38,10 @@ type PausePhysicalNodeShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The pause scheduling request.
 	//
 	// This parameter is required.
@@ -58,6 +64,10 @@ func (s *PausePhysicalNodeShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *PausePhysicalNodeShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *PausePhysicalNodeShrinkRequest) GetPauseCommandShrink() *string {
 	return s.PauseCommandShrink
 }
@@ -69,6 +79,11 @@ func (s *PausePhysicalNodeShrinkRequest) SetEnv(v string) *PausePhysicalNodeShri
 
 func (s *PausePhysicalNodeShrinkRequest) SetOpTenantId(v int64) *PausePhysicalNodeShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *PausePhysicalNodeShrinkRequest) SetOpUserId(v string) *PausePhysicalNodeShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iUpdateStandardTemplateRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateStandardTemplateRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateStandardTemplateRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateStandardTemplateRequestUpdateCommand) *UpdateStandardTemplateRequest
 	GetUpdateCommand() *UpdateStandardTemplateRequestUpdateCommand
 }
@@ -24,6 +26,10 @@ type UpdateStandardTemplateRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update command.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateStandardTemplateRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateStandardTemplateRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateStandardTemplateRequest) GetUpdateCommand() *UpdateStandardTemplateRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *UpdateStandardTemplateRequest) SetOpTenantId(v int64) *UpdateStandardTemplateRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateStandardTemplateRequest) SetOpUserId(v string) *UpdateStandardTemplateRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iUpdateDataServiceAppMemberRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateDataServiceAppMemberRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateDataServiceAppMemberRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateDataServiceAppMemberRequestUpdateCommand) *UpdateDataServiceAppMemberRequest
 	GetUpdateCommand() *UpdateDataServiceAppMemberRequestUpdateCommand
 }
@@ -24,6 +26,10 @@ type UpdateDataServiceAppMemberRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The command to update regular members of a data service application.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateDataServiceAppMemberRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateDataServiceAppMemberRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateDataServiceAppMemberRequest) GetUpdateCommand() *UpdateDataServiceAppMemberRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *UpdateDataServiceAppMemberRequest) SetOpTenantId(v int64) *UpdateDataServiceAppMemberRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateDataServiceAppMemberRequest) SetOpUserId(v string) *UpdateDataServiceAppMemberRequest {
+	s.OpUserId = &v
 	return s
 }
 

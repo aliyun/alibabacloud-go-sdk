@@ -13,6 +13,8 @@ type iCreateSecurityClassifyCatalogRequest interface {
 	GetCreateCommand() *CreateSecurityClassifyCatalogRequestCreateCommand
 	SetOpTenantId(v int64) *CreateSecurityClassifyCatalogRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateSecurityClassifyCatalogRequest
+	GetOpUserId() *string
 }
 
 type CreateSecurityClassifyCatalogRequest struct {
@@ -28,6 +30,10 @@ type CreateSecurityClassifyCatalogRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateSecurityClassifyCatalogRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateSecurityClassifyCatalogRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateSecurityClassifyCatalogRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateSecurityClassifyCatalogRequest) SetCreateCommand(v *CreateSecurityClassifyCatalogRequestCreateCommand) *CreateSecurityClassifyCatalogRequest {
 	s.CreateCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateSecurityClassifyCatalogRequest) SetCreateCommand(v *CreateSecurit
 
 func (s *CreateSecurityClassifyCatalogRequest) SetOpTenantId(v int64) *CreateSecurityClassifyCatalogRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateSecurityClassifyCatalogRequest) SetOpUserId(v string) *CreateSecurityClassifyCatalogRequest {
+	s.OpUserId = &v
 	return s
 }
 

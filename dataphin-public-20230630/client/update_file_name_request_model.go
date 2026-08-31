@@ -15,6 +15,8 @@ type iUpdateFileNameRequest interface {
 	GetName() *string
 	SetOpTenantId(v int64) *UpdateFileNameRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateFileNameRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *UpdateFileNameRequest
 	GetProjectId() *int64
 }
@@ -44,6 +46,10 @@ type UpdateFileNameRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -74,6 +80,10 @@ func (s *UpdateFileNameRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateFileNameRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateFileNameRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -90,6 +100,11 @@ func (s *UpdateFileNameRequest) SetName(v string) *UpdateFileNameRequest {
 
 func (s *UpdateFileNameRequest) SetOpTenantId(v int64) *UpdateFileNameRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateFileNameRequest) SetOpUserId(v string) *UpdateFileNameRequest {
+	s.OpUserId = &v
 	return s
 }
 

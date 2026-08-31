@@ -13,6 +13,8 @@ type iCreateDataServiceApiRequest interface {
 	GetCreateCommand() *CreateDataServiceApiRequestCreateCommand
 	SetOpTenantId(v int64) *CreateDataServiceApiRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateDataServiceApiRequest
+	GetOpUserId() *string
 }
 
 type CreateDataServiceApiRequest struct {
@@ -28,6 +30,10 @@ type CreateDataServiceApiRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateDataServiceApiRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateDataServiceApiRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateDataServiceApiRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateDataServiceApiRequest) SetCreateCommand(v *CreateDataServiceApiRequestCreateCommand) *CreateDataServiceApiRequest {
 	s.CreateCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateDataServiceApiRequest) SetCreateCommand(v *CreateDataServiceApiRe
 
 func (s *CreateDataServiceApiRequest) SetOpTenantId(v int64) *CreateDataServiceApiRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequest) SetOpUserId(v string) *CreateDataServiceApiRequest {
+	s.OpUserId = &v
 	return s
 }
 

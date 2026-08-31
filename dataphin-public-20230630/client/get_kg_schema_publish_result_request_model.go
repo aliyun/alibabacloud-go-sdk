@@ -11,6 +11,8 @@ type iGetKgSchemaPublishResultRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetKgSchemaPublishResultRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetKgSchemaPublishResultRequest
+	GetOpUserId() *string
 	SetVersionId(v int32) *GetKgSchemaPublishResultRequest
 	GetVersionId() *int32
 	SetWorkspaceId(v string) *GetKgSchemaPublishResultRequest
@@ -26,6 +28,10 @@ type GetKgSchemaPublishResultRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The version number. If this parameter is left empty, the most recent publish record is returned.
 	//
 	// example:
@@ -54,6 +60,10 @@ func (s *GetKgSchemaPublishResultRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetKgSchemaPublishResultRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetKgSchemaPublishResultRequest) GetVersionId() *int32 {
 	return s.VersionId
 }
@@ -64,6 +74,11 @@ func (s *GetKgSchemaPublishResultRequest) GetWorkspaceId() *string {
 
 func (s *GetKgSchemaPublishResultRequest) SetOpTenantId(v int64) *GetKgSchemaPublishResultRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetKgSchemaPublishResultRequest) SetOpUserId(v string) *GetKgSchemaPublishResultRequest {
+	s.OpUserId = &v
 	return s
 }
 

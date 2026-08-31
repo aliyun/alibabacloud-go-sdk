@@ -11,6 +11,8 @@ type iUpdateTenantMemberShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateTenantMemberShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateTenantMemberShrinkRequest
+	GetOpUserId() *string
 	SetUpdateCommandShrink(v string) *UpdateTenantMemberShrinkRequest
 	GetUpdateCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type UpdateTenantMemberShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The request object.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateTenantMemberShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateTenantMemberShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateTenantMemberShrinkRequest) GetUpdateCommandShrink() *string {
 	return s.UpdateCommandShrink
 }
 
 func (s *UpdateTenantMemberShrinkRequest) SetOpTenantId(v int64) *UpdateTenantMemberShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateTenantMemberShrinkRequest) SetOpUserId(v string) *UpdateTenantMemberShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

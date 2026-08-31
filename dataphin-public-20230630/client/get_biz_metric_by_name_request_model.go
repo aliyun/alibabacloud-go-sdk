@@ -13,6 +13,8 @@ type iGetBizMetricByNameRequest interface {
 	GetBizMetricByNameQuery() *GetBizMetricByNameRequestBizMetricByNameQuery
 	SetOpTenantId(v int64) *GetBizMetricByNameRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetBizMetricByNameRequest
+	GetOpUserId() *string
 }
 
 type GetBizMetricByNameRequest struct {
@@ -28,6 +30,10 @@ type GetBizMetricByNameRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetBizMetricByNameRequest) String() string {
@@ -46,6 +52,10 @@ func (s *GetBizMetricByNameRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetBizMetricByNameRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetBizMetricByNameRequest) SetBizMetricByNameQuery(v *GetBizMetricByNameRequestBizMetricByNameQuery) *GetBizMetricByNameRequest {
 	s.BizMetricByNameQuery = v
 	return s
@@ -53,6 +63,11 @@ func (s *GetBizMetricByNameRequest) SetBizMetricByNameQuery(v *GetBizMetricByNam
 
 func (s *GetBizMetricByNameRequest) SetOpTenantId(v int64) *GetBizMetricByNameRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetBizMetricByNameRequest) SetOpUserId(v string) *GetBizMetricByNameRequest {
+	s.OpUserId = &v
 	return s
 }
 

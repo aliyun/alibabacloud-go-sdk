@@ -11,6 +11,8 @@ type iUpdateBatchTaskShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateBatchTaskShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateBatchTaskShrinkRequest
+	GetOpUserId() *string
 	SetUpdateCommandShrink(v string) *UpdateBatchTaskShrinkRequest
 	GetUpdateCommandShrink() *string
 }
@@ -24,6 +26,12 @@ type UpdateBatchTaskShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update request.
 	//
 	// This parameter is required.
@@ -42,12 +50,21 @@ func (s *UpdateBatchTaskShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateBatchTaskShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateBatchTaskShrinkRequest) GetUpdateCommandShrink() *string {
 	return s.UpdateCommandShrink
 }
 
 func (s *UpdateBatchTaskShrinkRequest) SetOpTenantId(v int64) *UpdateBatchTaskShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateBatchTaskShrinkRequest) SetOpUserId(v string) *UpdateBatchTaskShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

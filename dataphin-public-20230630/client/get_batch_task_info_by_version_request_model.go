@@ -13,6 +13,8 @@ type iGetBatchTaskInfoByVersionRequest interface {
 	GetFileId() *int64
 	SetOpTenantId(v int64) *GetBatchTaskInfoByVersionRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetBatchTaskInfoByVersionRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *GetBatchTaskInfoByVersionRequest
 	GetProjectId() *int64
 	SetVersionId(v int64) *GetBatchTaskInfoByVersionRequest
@@ -20,7 +22,7 @@ type iGetBatchTaskInfoByVersionRequest interface {
 }
 
 type GetBatchTaskInfoByVersionRequest struct {
-	// The node ID in the node directory tree.
+	// The node ID in the directory tree.
 	//
 	// This parameter is required.
 	//
@@ -36,6 +38,12 @@ type GetBatchTaskInfoByVersionRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The ID of the project to which the node belongs.
 	//
 	// This parameter is required.
@@ -70,6 +78,10 @@ func (s *GetBatchTaskInfoByVersionRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetBatchTaskInfoByVersionRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetBatchTaskInfoByVersionRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -85,6 +97,11 @@ func (s *GetBatchTaskInfoByVersionRequest) SetFileId(v int64) *GetBatchTaskInfoB
 
 func (s *GetBatchTaskInfoByVersionRequest) SetOpTenantId(v int64) *GetBatchTaskInfoByVersionRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoByVersionRequest) SetOpUserId(v string) *GetBatchTaskInfoByVersionRequest {
+	s.OpUserId = &v
 	return s
 }
 

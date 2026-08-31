@@ -11,6 +11,8 @@ type iUpdateDataServiceAppShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateDataServiceAppShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateDataServiceAppShrinkRequest
+	GetOpUserId() *string
 	SetUpdateCommandShrink(v string) *UpdateDataServiceAppShrinkRequest
 	GetUpdateCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type UpdateDataServiceAppShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The command to update the data service application.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateDataServiceAppShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateDataServiceAppShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateDataServiceAppShrinkRequest) GetUpdateCommandShrink() *string {
 	return s.UpdateCommandShrink
 }
 
 func (s *UpdateDataServiceAppShrinkRequest) SetOpTenantId(v int64) *UpdateDataServiceAppShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateDataServiceAppShrinkRequest) SetOpUserId(v string) *UpdateDataServiceAppShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

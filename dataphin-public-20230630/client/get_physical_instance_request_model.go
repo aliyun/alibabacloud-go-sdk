@@ -15,6 +15,8 @@ type iGetPhysicalInstanceRequest interface {
 	GetInstanceId() *string
 	SetOpTenantId(v int64) *GetPhysicalInstanceRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetPhysicalInstanceRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *GetPhysicalInstanceRequest
 	GetProjectId() *int64
 }
@@ -46,6 +48,10 @@ type GetPhysicalInstanceRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// Project ID
 	//
 	// This parameter is required.
@@ -76,6 +82,10 @@ func (s *GetPhysicalInstanceRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetPhysicalInstanceRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetPhysicalInstanceRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -92,6 +102,11 @@ func (s *GetPhysicalInstanceRequest) SetInstanceId(v string) *GetPhysicalInstanc
 
 func (s *GetPhysicalInstanceRequest) SetOpTenantId(v int64) *GetPhysicalInstanceRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetPhysicalInstanceRequest) SetOpUserId(v string) *GetPhysicalInstanceRequest {
+	s.OpUserId = &v
 	return s
 }
 

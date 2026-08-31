@@ -13,6 +13,8 @@ type iGetBatchTaskUdfLineagesRequest interface {
 	GetFileId() *int64
 	SetOpTenantId(v int64) *GetBatchTaskUdfLineagesRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetBatchTaskUdfLineagesRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *GetBatchTaskUdfLineagesRequest
 	GetProjectId() *int64
 }
@@ -34,6 +36,10 @@ type GetBatchTaskUdfLineagesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project to which the task belongs.
 	//
 	// This parameter is required.
@@ -60,6 +66,10 @@ func (s *GetBatchTaskUdfLineagesRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetBatchTaskUdfLineagesRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetBatchTaskUdfLineagesRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -71,6 +81,11 @@ func (s *GetBatchTaskUdfLineagesRequest) SetFileId(v int64) *GetBatchTaskUdfLine
 
 func (s *GetBatchTaskUdfLineagesRequest) SetOpTenantId(v int64) *GetBatchTaskUdfLineagesRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetBatchTaskUdfLineagesRequest) SetOpUserId(v string) *GetBatchTaskUdfLineagesRequest {
+	s.OpUserId = &v
 	return s
 }
 

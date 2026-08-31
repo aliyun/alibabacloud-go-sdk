@@ -11,6 +11,8 @@ type iListApiByAppShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *ListApiByAppShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListApiByAppShrinkRequest
+	GetOpUserId() *string
 	SetPageQueryShrink(v string) *ListApiByAppShrinkRequest
 	GetPageQueryShrink() *string
 }
@@ -24,6 +26,10 @@ type ListApiByAppShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The paged query parameters.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *ListApiByAppShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListApiByAppShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListApiByAppShrinkRequest) GetPageQueryShrink() *string {
 	return s.PageQueryShrink
 }
 
 func (s *ListApiByAppShrinkRequest) SetOpTenantId(v int64) *ListApiByAppShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListApiByAppShrinkRequest) SetOpUserId(v string) *ListApiByAppShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

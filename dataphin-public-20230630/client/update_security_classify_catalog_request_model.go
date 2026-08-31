@@ -11,6 +11,8 @@ type iUpdateSecurityClassifyCatalogRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateSecurityClassifyCatalogRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateSecurityClassifyCatalogRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateSecurityClassifyCatalogRequestUpdateCommand) *UpdateSecurityClassifyCatalogRequest
 	GetUpdateCommand() *UpdateSecurityClassifyCatalogRequestUpdateCommand
 }
@@ -24,6 +26,10 @@ type UpdateSecurityClassifyCatalogRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update instruction.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateSecurityClassifyCatalogRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateSecurityClassifyCatalogRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateSecurityClassifyCatalogRequest) GetUpdateCommand() *UpdateSecurityClassifyCatalogRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *UpdateSecurityClassifyCatalogRequest) SetOpTenantId(v int64) *UpdateSecurityClassifyCatalogRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateSecurityClassifyCatalogRequest) SetOpUserId(v string) *UpdateSecurityClassifyCatalogRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -90,13 +105,13 @@ type UpdateSecurityClassifyCatalogRequestUpdateCommand struct {
 	//
 	// /d1/d2/
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The visibility scope of the classification folder. This parameter takes effect only when the parent folder is the root folder. Valid values:
+	// The visibility scope of the classification. Valid values:
 	//
 	// - PUBLIC: visible to all users.
 	//
 	// - PRIVATE: visible only to administrators.
 	//
-	// Default value: PUBLIC.
+	// Default value: PUBLIC. This parameter takes effect only when the parent folder is the root folder.
 	//
 	// example:
 	//

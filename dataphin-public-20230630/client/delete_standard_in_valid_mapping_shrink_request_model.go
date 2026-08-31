@@ -13,6 +13,8 @@ type iDeleteStandardInValidMappingShrinkRequest interface {
 	GetDeleteCommandShrink() *string
 	SetOpTenantId(v int64) *DeleteStandardInValidMappingShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteStandardInValidMappingShrinkRequest
+	GetOpUserId() *string
 }
 
 type DeleteStandardInValidMappingShrinkRequest struct {
@@ -28,6 +30,10 @@ type DeleteStandardInValidMappingShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteStandardInValidMappingShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *DeleteStandardInValidMappingShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteStandardInValidMappingShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteStandardInValidMappingShrinkRequest) SetDeleteCommandShrink(v string) *DeleteStandardInValidMappingShrinkRequest {
 	s.DeleteCommandShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *DeleteStandardInValidMappingShrinkRequest) SetDeleteCommandShrink(v str
 
 func (s *DeleteStandardInValidMappingShrinkRequest) SetOpTenantId(v int64) *DeleteStandardInValidMappingShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteStandardInValidMappingShrinkRequest) SetOpUserId(v string) *DeleteStandardInValidMappingShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

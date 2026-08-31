@@ -17,6 +17,8 @@ type iGetStandardTemplateRequest interface {
 	GetNullable() *bool
 	SetOpTenantId(v int64) *GetStandardTemplateRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetStandardTemplateRequest
+	GetOpUserId() *string
 }
 
 type GetStandardTemplateRequest struct {
@@ -40,6 +42,10 @@ type GetStandardTemplateRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetStandardTemplateRequest) String() string {
@@ -66,6 +72,10 @@ func (s *GetStandardTemplateRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetStandardTemplateRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetStandardTemplateRequest) SetFilterQuery(v *GetStandardTemplateRequestFilterQuery) *GetStandardTemplateRequest {
 	s.FilterQuery = v
 	return s
@@ -83,6 +93,11 @@ func (s *GetStandardTemplateRequest) SetNullable(v bool) *GetStandardTemplateReq
 
 func (s *GetStandardTemplateRequest) SetOpTenantId(v int64) *GetStandardTemplateRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetStandardTemplateRequest) SetOpUserId(v string) *GetStandardTemplateRequest {
+	s.OpUserId = &v
 	return s
 }
 

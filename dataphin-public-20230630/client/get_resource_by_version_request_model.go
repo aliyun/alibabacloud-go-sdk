@@ -13,6 +13,8 @@ type iGetResourceByVersionRequest interface {
 	GetName() *string
 	SetOpTenantId(v int64) *GetResourceByVersionRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetResourceByVersionRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *GetResourceByVersionRequest
 	GetProjectId() *int64
 	SetVersionId(v int64) *GetResourceByVersionRequest
@@ -20,7 +22,7 @@ type iGetResourceByVersionRequest interface {
 }
 
 type GetResourceByVersionRequest struct {
-	// Resource file name.
+	// The name of the resource file.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +30,7 @@ type GetResourceByVersionRequest struct {
 	//
 	// udf_sleep.jar
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Tenant ID.
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +38,13 @@ type GetResourceByVersionRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// Project ID.
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
+	// The project ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +52,7 @@ type GetResourceByVersionRequest struct {
 	//
 	// 1030111021
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Version ID.
+	// The version number.
 	//
 	// This parameter is required.
 	//
@@ -70,6 +78,10 @@ func (s *GetResourceByVersionRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetResourceByVersionRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetResourceByVersionRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -85,6 +97,11 @@ func (s *GetResourceByVersionRequest) SetName(v string) *GetResourceByVersionReq
 
 func (s *GetResourceByVersionRequest) SetOpTenantId(v int64) *GetResourceByVersionRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetResourceByVersionRequest) SetOpUserId(v string) *GetResourceByVersionRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -15,6 +15,8 @@ type iDeleteUdfRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *DeleteUdfRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteUdfRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *DeleteUdfRequest
 	GetProjectId() *int64
 }
@@ -44,6 +46,10 @@ type DeleteUdfRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -74,6 +80,10 @@ func (s *DeleteUdfRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteUdfRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteUdfRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -90,6 +100,11 @@ func (s *DeleteUdfRequest) SetId(v int64) *DeleteUdfRequest {
 
 func (s *DeleteUdfRequest) SetOpTenantId(v int64) *DeleteUdfRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteUdfRequest) SetOpUserId(v string) *DeleteUdfRequest {
+	s.OpUserId = &v
 	return s
 }
 

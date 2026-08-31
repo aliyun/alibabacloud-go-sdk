@@ -13,6 +13,8 @@ type iGetMyTenantsRequest interface {
 	GetFeatureCodeList() []*string
 	SetOpTenantId(v int64) *GetMyTenantsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetMyTenantsRequest
+	GetOpUserId() *string
 }
 
 type GetMyTenantsRequest struct {
@@ -26,6 +28,10 @@ type GetMyTenantsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetMyTenantsRequest) String() string {
@@ -44,6 +50,10 @@ func (s *GetMyTenantsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetMyTenantsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetMyTenantsRequest) SetFeatureCodeList(v []*string) *GetMyTenantsRequest {
 	s.FeatureCodeList = v
 	return s
@@ -51,6 +61,11 @@ func (s *GetMyTenantsRequest) SetFeatureCodeList(v []*string) *GetMyTenantsReque
 
 func (s *GetMyTenantsRequest) SetOpTenantId(v int64) *GetMyTenantsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetMyTenantsRequest) SetOpUserId(v string) *GetMyTenantsRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iGetDatasetRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *GetDatasetRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetDatasetRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *GetDatasetRequest
 	GetProjectId() *int64
 }
@@ -34,6 +36,10 @@ type GetDatasetRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -60,6 +66,10 @@ func (s *GetDatasetRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetDatasetRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetDatasetRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -71,6 +81,11 @@ func (s *GetDatasetRequest) SetId(v int64) *GetDatasetRequest {
 
 func (s *GetDatasetRequest) SetOpTenantId(v int64) *GetDatasetRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetDatasetRequest) SetOpUserId(v string) *GetDatasetRequest {
+	s.OpUserId = &v
 	return s
 }
 

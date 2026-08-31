@@ -11,6 +11,8 @@ type iUpdateStandardMappingToInvalidRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateStandardMappingToInvalidRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateStandardMappingToInvalidRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateStandardMappingToInvalidRequestUpdateCommand) *UpdateStandardMappingToInvalidRequest
 	GetUpdateCommand() *UpdateStandardMappingToInvalidRequestUpdateCommand
 }
@@ -24,6 +26,10 @@ type UpdateStandardMappingToInvalidRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// Update Command
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateStandardMappingToInvalidRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateStandardMappingToInvalidRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateStandardMappingToInvalidRequest) GetUpdateCommand() *UpdateStandardMappingToInvalidRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *UpdateStandardMappingToInvalidRequest) SetOpTenantId(v int64) *UpdateStandardMappingToInvalidRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateStandardMappingToInvalidRequest) SetOpUserId(v string) *UpdateStandardMappingToInvalidRequest {
+	s.OpUserId = &v
 	return s
 }
 

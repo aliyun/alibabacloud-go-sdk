@@ -17,6 +17,8 @@ type iGetNodeUpDownStreamShrinkRequest interface {
 	GetNodeIdShrink() *string
 	SetOpTenantId(v int64) *GetNodeUpDownStreamShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetNodeUpDownStreamShrinkRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *GetNodeUpDownStreamShrinkRequest
 	GetProjectId() *int64
 	SetUpStreamDepth(v int32) *GetNodeUpDownStreamShrinkRequest
@@ -52,6 +54,10 @@ type GetNodeUpDownStreamShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// example:
@@ -90,6 +96,10 @@ func (s *GetNodeUpDownStreamShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetNodeUpDownStreamShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetNodeUpDownStreamShrinkRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -115,6 +125,11 @@ func (s *GetNodeUpDownStreamShrinkRequest) SetNodeIdShrink(v string) *GetNodeUpD
 
 func (s *GetNodeUpDownStreamShrinkRequest) SetOpTenantId(v int64) *GetNodeUpDownStreamShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetNodeUpDownStreamShrinkRequest) SetOpUserId(v string) *GetNodeUpDownStreamShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

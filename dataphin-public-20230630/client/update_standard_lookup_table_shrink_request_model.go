@@ -11,6 +11,8 @@ type iUpdateStandardLookupTableShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateStandardLookupTableShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateStandardLookupTableShrinkRequest
+	GetOpUserId() *string
 	SetUpdateCommandShrink(v string) *UpdateStandardLookupTableShrinkRequest
 	GetUpdateCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type UpdateStandardLookupTableShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update command.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateStandardLookupTableShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateStandardLookupTableShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateStandardLookupTableShrinkRequest) GetUpdateCommandShrink() *string {
 	return s.UpdateCommandShrink
 }
 
 func (s *UpdateStandardLookupTableShrinkRequest) SetOpTenantId(v int64) *UpdateStandardLookupTableShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateStandardLookupTableShrinkRequest) SetOpUserId(v string) *UpdateStandardLookupTableShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

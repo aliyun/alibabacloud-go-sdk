@@ -13,6 +13,8 @@ type iDeleteDataSourceShrinkRequest interface {
 	GetDeleteCommandShrink() *string
 	SetOpTenantId(v int64) *DeleteDataSourceShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteDataSourceShrinkRequest
+	GetOpUserId() *string
 }
 
 type DeleteDataSourceShrinkRequest struct {
@@ -28,6 +30,10 @@ type DeleteDataSourceShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteDataSourceShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *DeleteDataSourceShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteDataSourceShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteDataSourceShrinkRequest) SetDeleteCommandShrink(v string) *DeleteDataSourceShrinkRequest {
 	s.DeleteCommandShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *DeleteDataSourceShrinkRequest) SetDeleteCommandShrink(v string) *Delete
 
 func (s *DeleteDataSourceShrinkRequest) SetOpTenantId(v int64) *DeleteDataSourceShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteDataSourceShrinkRequest) SetOpUserId(v string) *DeleteDataSourceShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

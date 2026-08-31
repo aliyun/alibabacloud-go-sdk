@@ -13,6 +13,8 @@ type iListQualityRuleTasksShrinkRequest interface {
 	GetListQueryShrink() *string
 	SetOpTenantId(v int64) *ListQualityRuleTasksShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListQualityRuleTasksShrinkRequest
+	GetOpUserId() *string
 }
 
 type ListQualityRuleTasksShrinkRequest struct {
@@ -26,6 +28,10 @@ type ListQualityRuleTasksShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListQualityRuleTasksShrinkRequest) String() string {
@@ -44,6 +50,10 @@ func (s *ListQualityRuleTasksShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListQualityRuleTasksShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListQualityRuleTasksShrinkRequest) SetListQueryShrink(v string) *ListQualityRuleTasksShrinkRequest {
 	s.ListQueryShrink = &v
 	return s
@@ -51,6 +61,11 @@ func (s *ListQualityRuleTasksShrinkRequest) SetListQueryShrink(v string) *ListQu
 
 func (s *ListQualityRuleTasksShrinkRequest) SetOpTenantId(v int64) *ListQualityRuleTasksShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListQualityRuleTasksShrinkRequest) SetOpUserId(v string) *ListQualityRuleTasksShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iCreateBatchTaskShrinkRequest interface {
 	GetCreateCommandShrink() *string
 	SetOpTenantId(v int64) *CreateBatchTaskShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateBatchTaskShrinkRequest
+	GetOpUserId() *string
 }
 
 type CreateBatchTaskShrinkRequest struct {
@@ -28,6 +30,12 @@ type CreateBatchTaskShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateBatchTaskShrinkRequest) String() string {
@@ -46,6 +54,10 @@ func (s *CreateBatchTaskShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateBatchTaskShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateBatchTaskShrinkRequest) SetCreateCommandShrink(v string) *CreateBatchTaskShrinkRequest {
 	s.CreateCommandShrink = &v
 	return s
@@ -53,6 +65,11 @@ func (s *CreateBatchTaskShrinkRequest) SetCreateCommandShrink(v string) *CreateB
 
 func (s *CreateBatchTaskShrinkRequest) SetOpTenantId(v int64) *CreateBatchTaskShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateBatchTaskShrinkRequest) SetOpUserId(v string) *CreateBatchTaskShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

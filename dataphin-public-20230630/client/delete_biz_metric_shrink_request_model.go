@@ -13,6 +13,8 @@ type iDeleteBizMetricShrinkRequest interface {
 	GetDeleteBizMetricCommandShrink() *string
 	SetOpTenantId(v int64) *DeleteBizMetricShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteBizMetricShrinkRequest
+	GetOpUserId() *string
 }
 
 type DeleteBizMetricShrinkRequest struct {
@@ -28,6 +30,10 @@ type DeleteBizMetricShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteBizMetricShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *DeleteBizMetricShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteBizMetricShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteBizMetricShrinkRequest) SetDeleteBizMetricCommandShrink(v string) *DeleteBizMetricShrinkRequest {
 	s.DeleteBizMetricCommandShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *DeleteBizMetricShrinkRequest) SetDeleteBizMetricCommandShrink(v string)
 
 func (s *DeleteBizMetricShrinkRequest) SetOpTenantId(v int64) *DeleteBizMetricShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteBizMetricShrinkRequest) SetOpUserId(v string) *DeleteBizMetricShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

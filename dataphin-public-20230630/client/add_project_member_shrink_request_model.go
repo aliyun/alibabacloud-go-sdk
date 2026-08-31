@@ -15,10 +15,12 @@ type iAddProjectMemberShrinkRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *AddProjectMemberShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *AddProjectMemberShrinkRequest
+	GetOpUserId() *string
 }
 
 type AddProjectMemberShrinkRequest struct {
-	// The command to add members.
+	// The command for adding members.
 	//
 	// This parameter is required.
 	AddCommandShrink *string `json:"AddCommand,omitempty" xml:"AddCommand,omitempty"`
@@ -38,6 +40,12 @@ type AddProjectMemberShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s AddProjectMemberShrinkRequest) String() string {
@@ -60,6 +68,10 @@ func (s *AddProjectMemberShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *AddProjectMemberShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *AddProjectMemberShrinkRequest) SetAddCommandShrink(v string) *AddProjectMemberShrinkRequest {
 	s.AddCommandShrink = &v
 	return s
@@ -72,6 +84,11 @@ func (s *AddProjectMemberShrinkRequest) SetId(v int64) *AddProjectMemberShrinkRe
 
 func (s *AddProjectMemberShrinkRequest) SetOpTenantId(v int64) *AddProjectMemberShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *AddProjectMemberShrinkRequest) SetOpUserId(v string) *AddProjectMemberShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

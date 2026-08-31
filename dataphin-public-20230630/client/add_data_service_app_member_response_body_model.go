@@ -34,7 +34,7 @@ type AddDataServiceAppMemberResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error details returned by the backend.
+	// The details of the backend exception.
 	//
 	// example:
 	//

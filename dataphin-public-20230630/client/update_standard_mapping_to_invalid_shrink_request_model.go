@@ -11,6 +11,8 @@ type iUpdateStandardMappingToInvalidShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateStandardMappingToInvalidShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateStandardMappingToInvalidShrinkRequest
+	GetOpUserId() *string
 	SetUpdateCommandShrink(v string) *UpdateStandardMappingToInvalidShrinkRequest
 	GetUpdateCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type UpdateStandardMappingToInvalidShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// Update Command
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateStandardMappingToInvalidShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateStandardMappingToInvalidShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateStandardMappingToInvalidShrinkRequest) GetUpdateCommandShrink() *string {
 	return s.UpdateCommandShrink
 }
 
 func (s *UpdateStandardMappingToInvalidShrinkRequest) SetOpTenantId(v int64) *UpdateStandardMappingToInvalidShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateStandardMappingToInvalidShrinkRequest) SetOpUserId(v string) *UpdateStandardMappingToInvalidShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

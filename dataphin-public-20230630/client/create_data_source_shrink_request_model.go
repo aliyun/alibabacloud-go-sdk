@@ -13,6 +13,8 @@ type iCreateDataSourceShrinkRequest interface {
 	GetCreateCommandShrink() *string
 	SetOpTenantId(v int64) *CreateDataSourceShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateDataSourceShrinkRequest
+	GetOpUserId() *string
 }
 
 type CreateDataSourceShrinkRequest struct {
@@ -26,6 +28,10 @@ type CreateDataSourceShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateDataSourceShrinkRequest) String() string {
@@ -44,6 +50,10 @@ func (s *CreateDataSourceShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateDataSourceShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateDataSourceShrinkRequest) SetCreateCommandShrink(v string) *CreateDataSourceShrinkRequest {
 	s.CreateCommandShrink = &v
 	return s
@@ -51,6 +61,11 @@ func (s *CreateDataSourceShrinkRequest) SetCreateCommandShrink(v string) *Create
 
 func (s *CreateDataSourceShrinkRequest) SetOpTenantId(v int64) *CreateDataSourceShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateDataSourceShrinkRequest) SetOpUserId(v string) *CreateDataSourceShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

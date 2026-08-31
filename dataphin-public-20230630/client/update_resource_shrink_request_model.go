@@ -11,6 +11,8 @@ type iUpdateResourceShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateResourceShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateResourceShrinkRequest
+	GetOpUserId() *string
 	SetUpdateCommandShrink(v string) *UpdateResourceShrinkRequest
 	GetUpdateCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type UpdateResourceShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The edit command.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateResourceShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateResourceShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateResourceShrinkRequest) GetUpdateCommandShrink() *string {
 	return s.UpdateCommandShrink
 }
 
 func (s *UpdateResourceShrinkRequest) SetOpTenantId(v int64) *UpdateResourceShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateResourceShrinkRequest) SetOpUserId(v string) *UpdateResourceShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -30,7 +30,7 @@ type UpdateSecurityClassifyCatalogResponseBody struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The full path of the folder after the update.
+	// The full path of the updated folder.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type UpdateSecurityClassifyCatalogResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//

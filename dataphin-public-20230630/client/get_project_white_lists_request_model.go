@@ -13,6 +13,8 @@ type iGetProjectWhiteListsRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *GetProjectWhiteListsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetProjectWhiteListsRequest
+	GetOpUserId() *string
 }
 
 type GetProjectWhiteListsRequest struct {
@@ -32,6 +34,10 @@ type GetProjectWhiteListsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetProjectWhiteListsRequest) String() string {
@@ -50,6 +56,10 @@ func (s *GetProjectWhiteListsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetProjectWhiteListsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetProjectWhiteListsRequest) SetId(v int64) *GetProjectWhiteListsRequest {
 	s.Id = &v
 	return s
@@ -57,6 +67,11 @@ func (s *GetProjectWhiteListsRequest) SetId(v int64) *GetProjectWhiteListsReques
 
 func (s *GetProjectWhiteListsRequest) SetOpTenantId(v int64) *GetProjectWhiteListsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetProjectWhiteListsRequest) SetOpUserId(v string) *GetProjectWhiteListsRequest {
+	s.OpUserId = &v
 	return s
 }
 

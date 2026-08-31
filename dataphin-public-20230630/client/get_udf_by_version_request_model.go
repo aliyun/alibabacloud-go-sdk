@@ -13,6 +13,8 @@ type iGetUdfByVersionRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *GetUdfByVersionRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetUdfByVersionRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *GetUdfByVersionRequest
 	GetProjectId() *int64
 	SetVersionId(v int64) *GetUdfByVersionRequest
@@ -36,6 +38,10 @@ type GetUdfByVersionRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -70,6 +76,10 @@ func (s *GetUdfByVersionRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetUdfByVersionRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetUdfByVersionRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -85,6 +95,11 @@ func (s *GetUdfByVersionRequest) SetId(v int64) *GetUdfByVersionRequest {
 
 func (s *GetUdfByVersionRequest) SetOpTenantId(v int64) *GetUdfByVersionRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetUdfByVersionRequest) SetOpUserId(v string) *GetUdfByVersionRequest {
+	s.OpUserId = &v
 	return s
 }
 

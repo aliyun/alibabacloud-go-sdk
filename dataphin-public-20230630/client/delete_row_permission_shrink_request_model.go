@@ -13,6 +13,8 @@ type iDeleteRowPermissionShrinkRequest interface {
 	GetDeleteRowPermissionCommandShrink() *string
 	SetOpTenantId(v int64) *DeleteRowPermissionShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteRowPermissionShrinkRequest
+	GetOpUserId() *string
 }
 
 type DeleteRowPermissionShrinkRequest struct {
@@ -28,6 +30,10 @@ type DeleteRowPermissionShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteRowPermissionShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *DeleteRowPermissionShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteRowPermissionShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteRowPermissionShrinkRequest) SetDeleteRowPermissionCommandShrink(v string) *DeleteRowPermissionShrinkRequest {
 	s.DeleteRowPermissionCommandShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *DeleteRowPermissionShrinkRequest) SetDeleteRowPermissionCommandShrink(v
 
 func (s *DeleteRowPermissionShrinkRequest) SetOpTenantId(v int64) *DeleteRowPermissionShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteRowPermissionShrinkRequest) SetOpUserId(v string) *DeleteRowPermissionShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

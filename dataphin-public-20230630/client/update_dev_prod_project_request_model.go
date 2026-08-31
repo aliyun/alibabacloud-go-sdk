@@ -11,6 +11,8 @@ type iUpdateDevProdProjectRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateDevProdProjectRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateDevProdProjectRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateDevProdProjectRequestUpdateCommand) *UpdateDevProdProjectRequest
 	GetUpdateCommand() *UpdateDevProdProjectRequestUpdateCommand
 }
@@ -24,6 +26,10 @@ type UpdateDevProdProjectRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update command.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateDevProdProjectRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateDevProdProjectRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateDevProdProjectRequest) GetUpdateCommand() *UpdateDevProdProjectRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *UpdateDevProdProjectRequest) SetOpTenantId(v int64) *UpdateDevProdProjectRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateDevProdProjectRequest) SetOpUserId(v string) *UpdateDevProdProjectRequest {
+	s.OpUserId = &v
 	return s
 }
 

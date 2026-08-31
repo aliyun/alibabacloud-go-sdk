@@ -13,6 +13,8 @@ type iUpdateProjectMemberShrinkRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *UpdateProjectMemberShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateProjectMemberShrinkRequest
+	GetOpUserId() *string
 	SetUpdateCommandShrink(v string) *UpdateProjectMemberShrinkRequest
 	GetUpdateCommandShrink() *string
 }
@@ -34,6 +36,10 @@ type UpdateProjectMemberShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update command.
 	//
 	// This parameter is required.
@@ -56,6 +62,10 @@ func (s *UpdateProjectMemberShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateProjectMemberShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateProjectMemberShrinkRequest) GetUpdateCommandShrink() *string {
 	return s.UpdateCommandShrink
 }
@@ -67,6 +77,11 @@ func (s *UpdateProjectMemberShrinkRequest) SetId(v int64) *UpdateProjectMemberSh
 
 func (s *UpdateProjectMemberShrinkRequest) SetOpTenantId(v int64) *UpdateProjectMemberShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateProjectMemberShrinkRequest) SetOpUserId(v string) *UpdateProjectMemberShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

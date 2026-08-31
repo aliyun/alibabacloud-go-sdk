@@ -13,6 +13,8 @@ type iDeleteStandardLookupTableRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *DeleteStandardLookupTableRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteStandardLookupTableRequest
+	GetOpUserId() *string
 }
 
 type DeleteStandardLookupTableRequest struct {
@@ -32,6 +34,10 @@ type DeleteStandardLookupTableRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteStandardLookupTableRequest) String() string {
@@ -50,6 +56,10 @@ func (s *DeleteStandardLookupTableRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteStandardLookupTableRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteStandardLookupTableRequest) SetId(v int64) *DeleteStandardLookupTableRequest {
 	s.Id = &v
 	return s
@@ -57,6 +67,11 @@ func (s *DeleteStandardLookupTableRequest) SetId(v int64) *DeleteStandardLookupT
 
 func (s *DeleteStandardLookupTableRequest) SetOpTenantId(v int64) *DeleteStandardLookupTableRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteStandardLookupTableRequest) SetOpUserId(v string) *DeleteStandardLookupTableRequest {
+	s.OpUserId = &v
 	return s
 }
 

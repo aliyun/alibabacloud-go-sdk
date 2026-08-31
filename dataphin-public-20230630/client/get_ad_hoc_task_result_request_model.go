@@ -11,6 +11,8 @@ type iGetAdHocTaskResultRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetAdHocTaskResultRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetAdHocTaskResultRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *GetAdHocTaskResultRequest
 	GetProjectId() *int64
 	SetSubTaskId(v int32) *GetAdHocTaskResultRequest
@@ -28,6 +30,10 @@ type GetAdHocTaskResultRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -66,6 +72,10 @@ func (s *GetAdHocTaskResultRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetAdHocTaskResultRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetAdHocTaskResultRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -80,6 +90,11 @@ func (s *GetAdHocTaskResultRequest) GetTaskId() *string {
 
 func (s *GetAdHocTaskResultRequest) SetOpTenantId(v int64) *GetAdHocTaskResultRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetAdHocTaskResultRequest) SetOpUserId(v string) *GetAdHocTaskResultRequest {
+	s.OpUserId = &v
 	return s
 }
 

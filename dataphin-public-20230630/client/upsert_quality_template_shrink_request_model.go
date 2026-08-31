@@ -11,6 +11,8 @@ type iUpsertQualityTemplateShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpsertQualityTemplateShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpsertQualityTemplateShrinkRequest
+	GetOpUserId() *string
 	SetUpsertCommandShrink(v string) *UpsertQualityTemplateShrinkRequest
 	GetUpsertCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type UpsertQualityTemplateShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// Upsert command.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpsertQualityTemplateShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpsertQualityTemplateShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpsertQualityTemplateShrinkRequest) GetUpsertCommandShrink() *string {
 	return s.UpsertCommandShrink
 }
 
 func (s *UpsertQualityTemplateShrinkRequest) SetOpTenantId(v int64) *UpsertQualityTemplateShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpsertQualityTemplateShrinkRequest) SetOpUserId(v string) *UpsertQualityTemplateShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

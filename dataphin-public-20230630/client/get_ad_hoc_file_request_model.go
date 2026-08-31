@@ -13,6 +13,8 @@ type iGetAdHocFileRequest interface {
 	GetFileId() *int64
 	SetOpTenantId(v int64) *GetAdHocFileRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetAdHocFileRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *GetAdHocFileRequest
 	GetProjectId() *int64
 }
@@ -34,6 +36,10 @@ type GetAdHocFileRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -60,6 +66,10 @@ func (s *GetAdHocFileRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetAdHocFileRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetAdHocFileRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -71,6 +81,11 @@ func (s *GetAdHocFileRequest) SetFileId(v int64) *GetAdHocFileRequest {
 
 func (s *GetAdHocFileRequest) SetOpTenantId(v int64) *GetAdHocFileRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetAdHocFileRequest) SetOpUserId(v string) *GetAdHocFileRequest {
+	s.OpUserId = &v
 	return s
 }
 

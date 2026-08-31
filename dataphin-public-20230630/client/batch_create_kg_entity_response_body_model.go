@@ -126,13 +126,13 @@ func (s *BatchCreateKgEntityResponseBody) Validate() error {
 }
 
 type BatchCreateKgEntityResponseBodyCreateResult struct {
-	// The number of failed records.
+	// The number of entity records that failed to be created.
 	//
 	// example:
 	//
 	// 0
 	FailCount *int32 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	// The number of successfully created records.
+	// The number of successfully created entity records.
 	//
 	// example:
 	//

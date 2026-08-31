@@ -11,6 +11,8 @@ type iParseBatchTaskDependencyShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *ParseBatchTaskDependencyShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ParseBatchTaskDependencyShrinkRequest
+	GetOpUserId() *string
 	SetParseCommandShrink(v string) *ParseBatchTaskDependencyShrinkRequest
 	GetParseCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type ParseBatchTaskDependencyShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The parse request.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *ParseBatchTaskDependencyShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ParseBatchTaskDependencyShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ParseBatchTaskDependencyShrinkRequest) GetParseCommandShrink() *string {
 	return s.ParseCommandShrink
 }
 
 func (s *ParseBatchTaskDependencyShrinkRequest) SetOpTenantId(v int64) *ParseBatchTaskDependencyShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ParseBatchTaskDependencyShrinkRequest) SetOpUserId(v string) *ParseBatchTaskDependencyShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

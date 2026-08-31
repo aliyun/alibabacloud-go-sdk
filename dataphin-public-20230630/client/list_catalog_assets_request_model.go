@@ -13,6 +13,8 @@ type iListCatalogAssetsRequest interface {
 	GetListCatalogAssetsQuery() *ListCatalogAssetsRequestListCatalogAssetsQuery
 	SetOpTenantId(v int64) *ListCatalogAssetsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListCatalogAssetsRequest
+	GetOpUserId() *string
 }
 
 type ListCatalogAssetsRequest struct {
@@ -28,6 +30,12 @@ type ListCatalogAssetsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListCatalogAssetsRequest) String() string {
@@ -46,6 +54,10 @@ func (s *ListCatalogAssetsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListCatalogAssetsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListCatalogAssetsRequest) SetListCatalogAssetsQuery(v *ListCatalogAssetsRequestListCatalogAssetsQuery) *ListCatalogAssetsRequest {
 	s.ListCatalogAssetsQuery = v
 	return s
@@ -53,6 +65,11 @@ func (s *ListCatalogAssetsRequest) SetListCatalogAssetsQuery(v *ListCatalogAsset
 
 func (s *ListCatalogAssetsRequest) SetOpTenantId(v int64) *ListCatalogAssetsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListCatalogAssetsRequest) SetOpUserId(v string) *ListCatalogAssetsRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -68,27 +85,27 @@ func (s *ListCatalogAssetsRequest) Validate() error {
 type ListCatalogAssetsRequestListCatalogAssetsQuery struct {
 	// The asset type. Default value: TABLE. Valid values:
 	//
-	// - TABLE: table, including views and materialized views.
+	// - TABLE: tables, including views and materialized views.
 	//
-	// - INDEX: technical metric.
+	// - INDEX: technical metrics.
 	//
-	// - BIZ_INDEX: business metric.
+	// - BIZ_INDEX: business metrics.
 	//
-	// - API: API.
+	// - API
 	//
-	// - PAGE: dashboard.
+	// - PAGE: dashboards.
 	//
 	// example:
 	//
 	// TABLE
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	// The search keyword. Used when queryMode is set to ASSET_SEARCH. Supports keyword matching against the asset full name, asset name, asset display name, and asset description. If this parameter is not specified, all assets are queried.
+	// The search keyword. Used when queryMode is set to ASSET_SEARCH. Supports keyword matching against the asset full name, asset name, asset display name, and asset description. If not specified, all assets are returned by default.
 	//
 	// example:
 	//
 	// abc
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The asset name. Used when queryMode is set to EXACT_MATCH. If this parameter is not specified, all assets are queried.
+	// The asset name. Used when queryMode is set to EXACT_MATCH. If not specified, all assets are returned by default.
 	//
 	// example:
 	//
@@ -106,7 +123,7 @@ type ListCatalogAssetsRequestListCatalogAssetsQuery struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The query type. Determines whether to use name for exact matching or keyword for fuzzy search. Default value: EXACT_MATCH. Valid values:
+	// The query type. Determines whether to use name for exact match or keyword for fuzzy search. Default value: EXACT_MATCH. Valid values:
 	//
 	// - EXACT_MATCH: exact match.
 	//
@@ -116,6 +133,8 @@ type ListCatalogAssetsRequestListCatalogAssetsQuery struct {
 	//
 	// EXACT_MATCH
 	QueryMode *string `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
+	// The list of folder IDs to which the assets belong. Multiple folders are matched with OR logic. Only the specified folders are matched, and subfolders are not included.
+	ShelveDirectoryIds []*int64 `json:"ShelveDirectoryIds,omitempty" xml:"ShelveDirectoryIds,omitempty" type:"Repeated"`
 }
 
 func (s ListCatalogAssetsRequestListCatalogAssetsQuery) String() string {
@@ -150,6 +169,10 @@ func (s *ListCatalogAssetsRequestListCatalogAssetsQuery) GetQueryMode() *string 
 	return s.QueryMode
 }
 
+func (s *ListCatalogAssetsRequestListCatalogAssetsQuery) GetShelveDirectoryIds() []*int64 {
+	return s.ShelveDirectoryIds
+}
+
 func (s *ListCatalogAssetsRequestListCatalogAssetsQuery) SetAssetType(v string) *ListCatalogAssetsRequestListCatalogAssetsQuery {
 	s.AssetType = &v
 	return s
@@ -177,6 +200,11 @@ func (s *ListCatalogAssetsRequestListCatalogAssetsQuery) SetPageSize(v int32) *L
 
 func (s *ListCatalogAssetsRequestListCatalogAssetsQuery) SetQueryMode(v string) *ListCatalogAssetsRequestListCatalogAssetsQuery {
 	s.QueryMode = &v
+	return s
+}
+
+func (s *ListCatalogAssetsRequestListCatalogAssetsQuery) SetShelveDirectoryIds(v []*int64) *ListCatalogAssetsRequestListCatalogAssetsQuery {
+	s.ShelveDirectoryIds = v
 	return s
 }
 

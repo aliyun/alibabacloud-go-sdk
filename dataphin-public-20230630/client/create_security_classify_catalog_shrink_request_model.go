@@ -13,6 +13,8 @@ type iCreateSecurityClassifyCatalogShrinkRequest interface {
 	GetCreateCommandShrink() *string
 	SetOpTenantId(v int64) *CreateSecurityClassifyCatalogShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateSecurityClassifyCatalogShrinkRequest
+	GetOpUserId() *string
 }
 
 type CreateSecurityClassifyCatalogShrinkRequest struct {
@@ -28,6 +30,10 @@ type CreateSecurityClassifyCatalogShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateSecurityClassifyCatalogShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateSecurityClassifyCatalogShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateSecurityClassifyCatalogShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateSecurityClassifyCatalogShrinkRequest) SetCreateCommandShrink(v string) *CreateSecurityClassifyCatalogShrinkRequest {
 	s.CreateCommandShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateSecurityClassifyCatalogShrinkRequest) SetCreateCommandShrink(v st
 
 func (s *CreateSecurityClassifyCatalogShrinkRequest) SetOpTenantId(v int64) *CreateSecurityClassifyCatalogShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateSecurityClassifyCatalogShrinkRequest) SetOpUserId(v string) *CreateSecurityClassifyCatalogShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

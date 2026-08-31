@@ -11,6 +11,8 @@ type iGetQualityAlertOfAllRuleScopeByWatchIdRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetQualityAlertOfAllRuleScopeByWatchIdRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetQualityAlertOfAllRuleScopeByWatchIdRequest
+	GetOpUserId() *string
 	SetWatchId(v int64) *GetQualityAlertOfAllRuleScopeByWatchIdRequest
 	GetWatchId() *int64
 }
@@ -24,6 +26,10 @@ type GetQualityAlertOfAllRuleScopeByWatchIdRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The monitored object ID.
 	//
 	// This parameter is required.
@@ -46,12 +52,21 @@ func (s *GetQualityAlertOfAllRuleScopeByWatchIdRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetQualityAlertOfAllRuleScopeByWatchIdRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetQualityAlertOfAllRuleScopeByWatchIdRequest) GetWatchId() *int64 {
 	return s.WatchId
 }
 
 func (s *GetQualityAlertOfAllRuleScopeByWatchIdRequest) SetOpTenantId(v int64) *GetQualityAlertOfAllRuleScopeByWatchIdRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetQualityAlertOfAllRuleScopeByWatchIdRequest) SetOpUserId(v string) *GetQualityAlertOfAllRuleScopeByWatchIdRequest {
+	s.OpUserId = &v
 	return s
 }
 

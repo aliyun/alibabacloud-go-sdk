@@ -13,10 +13,12 @@ type iGetCatalogAssetDetailsRequest interface {
 	GetGetCatalogAssetDetailsQuery() *GetCatalogAssetDetailsRequestGetCatalogAssetDetailsQuery
 	SetOpTenantId(v int64) *GetCatalogAssetDetailsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetCatalogAssetDetailsRequest
+	GetOpUserId() *string
 }
 
 type GetCatalogAssetDetailsRequest struct {
-	// The paging query for the listing asset catalog list.
+	// The paged query for the listed asset catalog.
 	//
 	// This parameter is required.
 	GetCatalogAssetDetailsQuery *GetCatalogAssetDetailsRequestGetCatalogAssetDetailsQuery `json:"GetCatalogAssetDetailsQuery,omitempty" xml:"GetCatalogAssetDetailsQuery,omitempty" type:"Struct"`
@@ -28,6 +30,12 @@ type GetCatalogAssetDetailsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetCatalogAssetDetailsRequest) String() string {
@@ -46,6 +54,10 @@ func (s *GetCatalogAssetDetailsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetCatalogAssetDetailsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetCatalogAssetDetailsRequest) SetGetCatalogAssetDetailsQuery(v *GetCatalogAssetDetailsRequestGetCatalogAssetDetailsQuery) *GetCatalogAssetDetailsRequest {
 	s.GetCatalogAssetDetailsQuery = v
 	return s
@@ -53,6 +65,11 @@ func (s *GetCatalogAssetDetailsRequest) SetGetCatalogAssetDetailsQuery(v *GetCat
 
 func (s *GetCatalogAssetDetailsRequest) SetOpTenantId(v int64) *GetCatalogAssetDetailsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetCatalogAssetDetailsRequest) SetOpUserId(v string) *GetCatalogAssetDetailsRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iListDataServiceAuthorizedAppsRequest interface {
 	GetListQuery() *ListDataServiceAuthorizedAppsRequestListQuery
 	SetOpTenantId(v int64) *ListDataServiceAuthorizedAppsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListDataServiceAuthorizedAppsRequest
+	GetOpUserId() *string
 	SetProjectId(v int32) *ListDataServiceAuthorizedAppsRequest
 	GetProjectId() *int32
 }
@@ -28,6 +30,10 @@ type ListDataServiceAuthorizedAppsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The ID of the data service project.
 	//
 	// This parameter is required.
@@ -54,6 +60,10 @@ func (s *ListDataServiceAuthorizedAppsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListDataServiceAuthorizedAppsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListDataServiceAuthorizedAppsRequest) GetProjectId() *int32 {
 	return s.ProjectId
 }
@@ -65,6 +75,11 @@ func (s *ListDataServiceAuthorizedAppsRequest) SetListQuery(v *ListDataServiceAu
 
 func (s *ListDataServiceAuthorizedAppsRequest) SetOpTenantId(v int64) *ListDataServiceAuthorizedAppsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListDataServiceAuthorizedAppsRequest) SetOpUserId(v string) *ListDataServiceAuthorizedAppsRequest {
+	s.OpUserId = &v
 	return s
 }
 

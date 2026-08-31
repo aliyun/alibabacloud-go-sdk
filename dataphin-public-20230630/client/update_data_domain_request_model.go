@@ -11,6 +11,8 @@ type iUpdateDataDomainRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateDataDomainRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateDataDomainRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateDataDomainRequestUpdateCommand) *UpdateDataDomainRequest
 	GetUpdateCommand() *UpdateDataDomainRequestUpdateCommand
 }
@@ -24,6 +26,10 @@ type UpdateDataDomainRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update request.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateDataDomainRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateDataDomainRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateDataDomainRequest) GetUpdateCommand() *UpdateDataDomainRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *UpdateDataDomainRequest) SetOpTenantId(v int64) *UpdateDataDomainRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateDataDomainRequest) SetOpUserId(v string) *UpdateDataDomainRequest {
+	s.OpUserId = &v
 	return s
 }
 

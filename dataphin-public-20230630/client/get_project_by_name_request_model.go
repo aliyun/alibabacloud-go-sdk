@@ -13,6 +13,8 @@ type iGetProjectByNameRequest interface {
 	GetName() *string
 	SetOpTenantId(v int64) *GetProjectByNameRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetProjectByNameRequest
+	GetOpUserId() *string
 }
 
 type GetProjectByNameRequest struct {
@@ -32,6 +34,12 @@ type GetProjectByNameRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetProjectByNameRequest) String() string {
@@ -50,6 +58,10 @@ func (s *GetProjectByNameRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetProjectByNameRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetProjectByNameRequest) SetName(v string) *GetProjectByNameRequest {
 	s.Name = &v
 	return s
@@ -57,6 +69,11 @@ func (s *GetProjectByNameRequest) SetName(v string) *GetProjectByNameRequest {
 
 func (s *GetProjectByNameRequest) SetOpTenantId(v int64) *GetProjectByNameRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetProjectByNameRequest) SetOpUserId(v string) *GetProjectByNameRequest {
+	s.OpUserId = &v
 	return s
 }
 

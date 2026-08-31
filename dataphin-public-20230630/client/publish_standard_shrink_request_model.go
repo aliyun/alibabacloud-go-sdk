@@ -11,6 +11,8 @@ type iPublishStandardShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *PublishStandardShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *PublishStandardShrinkRequest
+	GetOpUserId() *string
 	SetPublishCommandShrink(v string) *PublishStandardShrinkRequest
 	GetPublishCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type PublishStandardShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The publish command.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *PublishStandardShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *PublishStandardShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *PublishStandardShrinkRequest) GetPublishCommandShrink() *string {
 	return s.PublishCommandShrink
 }
 
 func (s *PublishStandardShrinkRequest) SetOpTenantId(v int64) *PublishStandardShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *PublishStandardShrinkRequest) SetOpUserId(v string) *PublishStandardShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

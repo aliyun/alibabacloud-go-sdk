@@ -126,7 +126,7 @@ func (s *ListKgRelationResponseBody) Validate() error {
 }
 
 type ListKgRelationResponseBodyPageResult struct {
-	// The paged relationship record list.
+	// The list of paged relationship records.
 	RelationList []*ListKgRelationResponseBodyPageResultRelationList `json:"RelationList,omitempty" xml:"RelationList,omitempty" type:"Repeated"`
 	// The total number of records.
 	//
@@ -176,7 +176,7 @@ func (s *ListKgRelationResponseBodyPageResult) Validate() error {
 }
 
 type ListKgRelationResponseBodyPageResultRelationList struct {
-	// The relationship record property list.
+	// The list of properties for the relationship record.
 	PropertyList []*ListKgRelationResponseBodyPageResultRelationListPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Repeated"`
 	// The relationship record ID.
 	//
@@ -277,7 +277,7 @@ type ListKgRelationResponseBodyPageResultRelationListPropertyList struct {
 	//
 	// company_name
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The property data type. Valid values: STRING (string), INTEGER (integer), FLOAT (float), BOOLEAN (boolean), DATE (date), LIST (list), and others.
+	// The data type of the property. Valid values: STRING (string), INTEGER (integer), FLOAT (floating-point number), BOOLEAN (Boolean), DATE (date), and LIST (list).
 	//
 	// example:
 	//

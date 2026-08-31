@@ -13,6 +13,8 @@ type iCreateDataSourceRequest interface {
 	GetCreateCommand() *CreateDataSourceRequestCreateCommand
 	SetOpTenantId(v int64) *CreateDataSourceRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateDataSourceRequest
+	GetOpUserId() *string
 }
 
 type CreateDataSourceRequest struct {
@@ -26,6 +28,10 @@ type CreateDataSourceRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateDataSourceRequest) String() string {
@@ -44,6 +50,10 @@ func (s *CreateDataSourceRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateDataSourceRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateDataSourceRequest) SetCreateCommand(v *CreateDataSourceRequestCreateCommand) *CreateDataSourceRequest {
 	s.CreateCommand = v
 	return s
@@ -51,6 +61,11 @@ func (s *CreateDataSourceRequest) SetCreateCommand(v *CreateDataSourceRequestCre
 
 func (s *CreateDataSourceRequest) SetOpTenantId(v int64) *CreateDataSourceRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateDataSourceRequest) SetOpUserId(v string) *CreateDataSourceRequest {
+	s.OpUserId = &v
 	return s
 }
 

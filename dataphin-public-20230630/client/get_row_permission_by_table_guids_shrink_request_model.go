@@ -13,6 +13,8 @@ type iGetRowPermissionByTableGuidsShrinkRequest interface {
 	GetGetRowPermissionByTableGuidsQueryShrink() *string
 	SetOpTenantId(v int64) *GetRowPermissionByTableGuidsShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetRowPermissionByTableGuidsShrinkRequest
+	GetOpUserId() *string
 }
 
 type GetRowPermissionByTableGuidsShrinkRequest struct {
@@ -28,6 +30,10 @@ type GetRowPermissionByTableGuidsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetRowPermissionByTableGuidsShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *GetRowPermissionByTableGuidsShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetRowPermissionByTableGuidsShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetRowPermissionByTableGuidsShrinkRequest) SetGetRowPermissionByTableGuidsQueryShrink(v string) *GetRowPermissionByTableGuidsShrinkRequest {
 	s.GetRowPermissionByTableGuidsQueryShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *GetRowPermissionByTableGuidsShrinkRequest) SetGetRowPermissionByTableGu
 
 func (s *GetRowPermissionByTableGuidsShrinkRequest) SetOpTenantId(v int64) *GetRowPermissionByTableGuidsShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetRowPermissionByTableGuidsShrinkRequest) SetOpUserId(v string) *GetRowPermissionByTableGuidsShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

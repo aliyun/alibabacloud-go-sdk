@@ -13,6 +13,8 @@ type iCreateDatasetShrinkRequest interface {
 	GetCreateCommandShrink() *string
 	SetOpTenantId(v int64) *CreateDatasetShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateDatasetShrinkRequest
+	GetOpUserId() *string
 	SetProjectId(v string) *CreateDatasetShrinkRequest
 	GetProjectId() *string
 }
@@ -30,6 +32,10 @@ type CreateDatasetShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -56,6 +62,10 @@ func (s *CreateDatasetShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateDatasetShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateDatasetShrinkRequest) GetProjectId() *string {
 	return s.ProjectId
 }
@@ -67,6 +77,11 @@ func (s *CreateDatasetShrinkRequest) SetCreateCommandShrink(v string) *CreateDat
 
 func (s *CreateDatasetShrinkRequest) SetOpTenantId(v int64) *CreateDatasetShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateDatasetShrinkRequest) SetOpUserId(v string) *CreateDatasetShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

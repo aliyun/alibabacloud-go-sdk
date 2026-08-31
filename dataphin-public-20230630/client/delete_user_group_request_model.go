@@ -11,6 +11,8 @@ type iDeleteUserGroupRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *DeleteUserGroupRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteUserGroupRequest
+	GetOpUserId() *string
 	SetUserGroupId(v string) *DeleteUserGroupRequest
 	GetUserGroupId() *string
 }
@@ -24,6 +26,10 @@ type DeleteUserGroupRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The user group ID.
 	//
 	// This parameter is required.
@@ -46,12 +52,21 @@ func (s *DeleteUserGroupRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteUserGroupRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteUserGroupRequest) GetUserGroupId() *string {
 	return s.UserGroupId
 }
 
 func (s *DeleteUserGroupRequest) SetOpTenantId(v int64) *DeleteUserGroupRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteUserGroupRequest) SetOpUserId(v string) *DeleteUserGroupRequest {
+	s.OpUserId = &v
 	return s
 }
 

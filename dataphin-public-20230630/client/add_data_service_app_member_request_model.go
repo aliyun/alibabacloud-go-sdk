@@ -13,10 +13,12 @@ type iAddDataServiceAppMemberRequest interface {
 	GetAddCommand() *AddDataServiceAppMemberRequestAddCommand
 	SetOpTenantId(v int64) *AddDataServiceAppMemberRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *AddDataServiceAppMemberRequest
+	GetOpUserId() *string
 }
 
 type AddDataServiceAppMemberRequest struct {
-	// The regular member to add to the data service application.
+	// The command to add a regular member to a data service application.
 	//
 	// This parameter is required.
 	AddCommand *AddDataServiceAppMemberRequestAddCommand `json:"AddCommand,omitempty" xml:"AddCommand,omitempty" type:"Struct"`
@@ -28,6 +30,12 @@ type AddDataServiceAppMemberRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s AddDataServiceAppMemberRequest) String() string {
@@ -46,6 +54,10 @@ func (s *AddDataServiceAppMemberRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *AddDataServiceAppMemberRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *AddDataServiceAppMemberRequest) SetAddCommand(v *AddDataServiceAppMemberRequestAddCommand) *AddDataServiceAppMemberRequest {
 	s.AddCommand = v
 	return s
@@ -53,6 +65,11 @@ func (s *AddDataServiceAppMemberRequest) SetAddCommand(v *AddDataServiceAppMembe
 
 func (s *AddDataServiceAppMemberRequest) SetOpTenantId(v int64) *AddDataServiceAppMemberRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *AddDataServiceAppMemberRequest) SetOpUserId(v string) *AddDataServiceAppMemberRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iUpdateStandardWordRootShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateStandardWordRootShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateStandardWordRootShrinkRequest
+	GetOpUserId() *string
 	SetUpdateCommandShrink(v string) *UpdateStandardWordRootShrinkRequest
 	GetUpdateCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type UpdateStandardWordRootShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update instruction.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateStandardWordRootShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateStandardWordRootShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateStandardWordRootShrinkRequest) GetUpdateCommandShrink() *string {
 	return s.UpdateCommandShrink
 }
 
 func (s *UpdateStandardWordRootShrinkRequest) SetOpTenantId(v int64) *UpdateStandardWordRootShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateStandardWordRootShrinkRequest) SetOpUserId(v string) *UpdateStandardWordRootShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

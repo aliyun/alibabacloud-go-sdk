@@ -11,6 +11,8 @@ type iUpdateDataSourceConfigShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateDataSourceConfigShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateDataSourceConfigShrinkRequest
+	GetOpUserId() *string
 	SetUpdateCommandShrink(v string) *UpdateDataSourceConfigShrinkRequest
 	GetUpdateCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type UpdateDataSourceConfigShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The data source configuration item change.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateDataSourceConfigShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateDataSourceConfigShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateDataSourceConfigShrinkRequest) GetUpdateCommandShrink() *string {
 	return s.UpdateCommandShrink
 }
 
 func (s *UpdateDataSourceConfigShrinkRequest) SetOpTenantId(v int64) *UpdateDataSourceConfigShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateDataSourceConfigShrinkRequest) SetOpUserId(v string) *UpdateDataSourceConfigShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

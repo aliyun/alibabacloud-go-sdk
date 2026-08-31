@@ -15,6 +15,8 @@ type iGetStandardLookupTableRequest interface {
 	GetNullable() *bool
 	SetOpTenantId(v int64) *GetStandardLookupTableRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetStandardLookupTableRequest
+	GetOpUserId() *string
 }
 
 type GetStandardLookupTableRequest struct {
@@ -36,6 +38,10 @@ type GetStandardLookupTableRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetStandardLookupTableRequest) String() string {
@@ -58,6 +64,10 @@ func (s *GetStandardLookupTableRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetStandardLookupTableRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetStandardLookupTableRequest) SetId(v int64) *GetStandardLookupTableRequest {
 	s.Id = &v
 	return s
@@ -70,6 +80,11 @@ func (s *GetStandardLookupTableRequest) SetNullable(v bool) *GetStandardLookupTa
 
 func (s *GetStandardLookupTableRequest) SetOpTenantId(v int64) *GetStandardLookupTableRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetStandardLookupTableRequest) SetOpUserId(v string) *GetStandardLookupTableRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -36,7 +36,7 @@ type GetUserBySourceIdResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type GetUserBySourceIdResponseBodyUser struct {
 	//
 	// example:
 	//
-	// xx测试
+	// xx_test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The user ID.
 	//

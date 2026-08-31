@@ -13,6 +13,8 @@ type iCreateComputeSourceRequest interface {
 	GetCreateCommand() *CreateComputeSourceRequestCreateCommand
 	SetOpTenantId(v int64) *CreateComputeSourceRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateComputeSourceRequest
+	GetOpUserId() *string
 }
 
 type CreateComputeSourceRequest struct {
@@ -28,6 +30,12 @@ type CreateComputeSourceRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateComputeSourceRequest) String() string {
@@ -46,6 +54,10 @@ func (s *CreateComputeSourceRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateComputeSourceRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateComputeSourceRequest) SetCreateCommand(v *CreateComputeSourceRequestCreateCommand) *CreateComputeSourceRequest {
 	s.CreateCommand = v
 	return s
@@ -53,6 +65,11 @@ func (s *CreateComputeSourceRequest) SetCreateCommand(v *CreateComputeSourceRequ
 
 func (s *CreateComputeSourceRequest) SetOpTenantId(v int64) *CreateComputeSourceRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateComputeSourceRequest) SetOpUserId(v string) *CreateComputeSourceRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -66,10 +83,26 @@ func (s *CreateComputeSourceRequest) Validate() error {
 }
 
 type CreateComputeSourceRequestCreateCommand struct {
+	// The ID of the associated cluster. This parameter takes effect only when CreateType is not specified or is set to COMPUTE_SOURCE, which creates a compute source that references a cluster. This parameter is mutually exclusive with CreateType=CLUSTER.
+	//
+	// example:
+	//
+	// 102311
+	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The connection configuration items.
 	//
 	// This parameter is required.
 	ConfigList []*CreateComputeSourceRequestCreateCommandConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
+	// The type of entity to create. Valid values:
+	//
+	// - CLUSTER: Creates a cluster. ClusterId cannot be specified.
+	//
+	// - COMPUTE_SOURCE: Creates a compute source. This is the default value.
+	//
+	// example:
+	//
+	// CLUSTER
+	CreateType *string `json:"CreateType,omitempty" xml:"CreateType,omitempty"`
 	// The description.
 	//
 	// example:
@@ -92,6 +125,12 @@ type CreateComputeSourceRequestCreateCommand struct {
 	//
 	// MacCompute
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The version of the compute source type.
+	//
+	// example:
+	//
+	// CDH6
+	TypeVersion *string `json:"TypeVersion,omitempty" xml:"TypeVersion,omitempty"`
 }
 
 func (s CreateComputeSourceRequestCreateCommand) String() string {
@@ -102,8 +141,16 @@ func (s CreateComputeSourceRequestCreateCommand) GoString() string {
 	return s.String()
 }
 
+func (s *CreateComputeSourceRequestCreateCommand) GetClusterId() *int64 {
+	return s.ClusterId
+}
+
 func (s *CreateComputeSourceRequestCreateCommand) GetConfigList() []*CreateComputeSourceRequestCreateCommandConfigList {
 	return s.ConfigList
+}
+
+func (s *CreateComputeSourceRequestCreateCommand) GetCreateType() *string {
+	return s.CreateType
 }
 
 func (s *CreateComputeSourceRequestCreateCommand) GetDescription() *string {
@@ -118,8 +165,22 @@ func (s *CreateComputeSourceRequestCreateCommand) GetType() *string {
 	return s.Type
 }
 
+func (s *CreateComputeSourceRequestCreateCommand) GetTypeVersion() *string {
+	return s.TypeVersion
+}
+
+func (s *CreateComputeSourceRequestCreateCommand) SetClusterId(v int64) *CreateComputeSourceRequestCreateCommand {
+	s.ClusterId = &v
+	return s
+}
+
 func (s *CreateComputeSourceRequestCreateCommand) SetConfigList(v []*CreateComputeSourceRequestCreateCommandConfigList) *CreateComputeSourceRequestCreateCommand {
 	s.ConfigList = v
+	return s
+}
+
+func (s *CreateComputeSourceRequestCreateCommand) SetCreateType(v string) *CreateComputeSourceRequestCreateCommand {
+	s.CreateType = &v
 	return s
 }
 
@@ -135,6 +196,11 @@ func (s *CreateComputeSourceRequestCreateCommand) SetName(v string) *CreateCompu
 
 func (s *CreateComputeSourceRequestCreateCommand) SetType(v string) *CreateComputeSourceRequestCreateCommand {
 	s.Type = &v
+	return s
+}
+
+func (s *CreateComputeSourceRequestCreateCommand) SetTypeVersion(v string) *CreateComputeSourceRequestCreateCommand {
+	s.TypeVersion = &v
 	return s
 }
 

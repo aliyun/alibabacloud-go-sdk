@@ -38,7 +38,7 @@ type GetPipelineByIdResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The error message returned by the backend.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *GetPipelineByIdResponseBody) Validate() error {
 }
 
 type GetPipelineByIdResponseBodyData struct {
-	// The integration pipeline configuration mode.
+	// The configuration mode of the integration pipeline.
 	//
 	// example:
 	//
@@ -138,27 +138,27 @@ type GetPipelineByIdResponseBodyData struct {
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The basic information of the pipeline node.
 	NodeInfo *GetPipelineByIdResponseBodyDataNodeInfo `json:"NodeInfo,omitempty" xml:"NodeInfo,omitempty" type:"Struct"`
-	// The integration pipeline component configuration.
+	// The component configuration of the integration pipeline.
 	PipelineConfig *GetPipelineByIdResponseBodyDataPipelineConfig `json:"PipelineConfig,omitempty" xml:"PipelineConfig,omitempty" type:"Struct"`
-	// The integration pipeline script mode configuration.
+	// The script mode configuration of the integration pipeline.
 	//
 	// example:
 	//
 	// {}
 	PipelineJson *string `json:"PipelineJson,omitempty" xml:"PipelineJson,omitempty"`
-	// The pipeline node type.
+	// The type of the pipeline node.
 	//
 	// example:
 	//
 	// 123
 	PipelineType *int32 `json:"PipelineType,omitempty" xml:"PipelineType,omitempty"`
-	// The integration pipeline scheduling configuration. The value is a JSON string. You can use the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.vo.OAScheduleConfigVO to deserialize it.
+	// The scheduling configuration of the integration pipeline. The value is a JSON string. You can deserialize it by using the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.vo.OAScheduleConfigVO.
 	//
 	// example:
 	//
 	// {}
 	ScheduleConfig *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
-	// The integration pipeline channel configuration. The value is a JSON string. You can use the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.OAPipelineSetting to deserialize it.
+	// The channel configuration of the integration pipeline. The value is a JSON string. You can deserialize it by using the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.OAPipelineSetting.
 	//
 	// example:
 	//
@@ -252,25 +252,25 @@ func (s *GetPipelineByIdResponseBodyData) Validate() error {
 }
 
 type GetPipelineByIdResponseBodyDataNodeInfo struct {
-	// The node description.
+	// The description of the node.
 	//
 	// example:
 	//
 	// comment
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// The folder of the integration pipeline node. The default value is the root folder. This folder must exist. If it does not exist, call the relevant API operation to create a folder of the offlinePipeline type.
+	// The folder of the integration pipeline node. The default value is the root folder. The folder must already exist. If it does not exist, call the relevant API operation to create a folder of the offlinePipeline type.
 	//
 	// example:
 	//
 	// /
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// The pipeline file ID. This value is empty during initial creation. When updating a pipeline node, at least one of pipelineId, fileId, or nodeId must be specified.
+	// The pipeline file ID. This value is empty when the node is first created. When updating a pipeline node, at least one of pipelineId, fileId, or nodeId must be specified.
 	//
 	// example:
 	//
 	// 123
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The scheduling node ID of the pipeline node. This value is empty during initial creation. When updating a pipeline node, at least one of pipelineId, fileId, or nodeId must be specified.
+	// The scheduling node ID of the pipeline node. This value is empty when the node is first created. When updating a pipeline node, at least one of pipelineId, fileId, or nodeId must be specified.
 	//
 	// example:
 	//
@@ -282,7 +282,7 @@ type GetPipelineByIdResponseBodyDataNodeInfo struct {
 	//
 	// test
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The pipeline node ID. This value is empty during initial creation. When updating a pipeline node, at least one of pipelineId, fileId, or nodeId must be specified.
+	// The pipeline node ID. This value is empty when the node is first created. When updating a pipeline node, at least one of pipelineId, fileId, or nodeId must be specified.
 	//
 	// example:
 	//
@@ -357,7 +357,7 @@ func (s *GetPipelineByIdResponseBodyDataNodeInfo) Validate() error {
 }
 
 type GetPipelineByIdResponseBodyDataPipelineConfig struct {
-	// The directed acyclic graph (DAG) link configuration that describes the connections between all components.
+	// The DAG (directed acyclic graph) link configuration that describes the connections between all components.
 	Hops []*GetPipelineByIdResponseBodyDataPipelineConfigHops `json:"Hops,omitempty" xml:"Hops,omitempty" type:"Repeated"`
 	// The component configurations, which contain the detailed configurations of all components used.
 	Steps []*GetPipelineByIdResponseBodyDataPipelineConfigSteps `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
@@ -412,15 +412,15 @@ func (s *GetPipelineByIdResponseBodyDataPipelineConfig) Validate() error {
 }
 
 type GetPipelineByIdResponseBodyDataPipelineConfigHops struct {
-	// Specifies the conditional distribution setting. Set this parameter to true when the downstream condition is true for a conditional distribution component. Otherwise, set it to false.
+	// Specifies the condition for a conditional distribution component. Set this parameter to true when the downstream connection condition is true, or false otherwise.
 	SendTo *bool `json:"SendTo,omitempty" xml:"SendTo,omitempty"`
-	// The input step name, which corresponds to Steps[*].StepName.
+	// The name of the input step, which corresponds to Steps[*].StepName.
 	//
 	// example:
 	//
 	// mysql_reader
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The output step name, which corresponds to Steps[*].StepName.
+	// The name of the output step, which corresponds to Steps[*].StepName.
 	//
 	// example:
 	//
@@ -468,11 +468,11 @@ func (s *GetPipelineByIdResponseBodyDataPipelineConfigHops) Validate() error {
 }
 
 type GetPipelineByIdResponseBodyDataPipelineConfigSteps struct {
-	// Specifies the data distribution mode when the current component has multiple downstream components. Valid values:
+	// Specifies the data distribution method when the current component has multiple downstream components. Valid values:
 	//
-	// - true: the data of the current component is distributed to all downstream components in a round-robin manner. For example, if the current component has 100 records and two downstream components, each downstream component receives 50 records. Default value: true.
+	// - true: The data of the current component is sent to all downstream components in a round-robin manner. For example, if the current component has 100 records and two downstream components, each downstream component receives 50 records. Default value: true.
 	//
-	// - false: the full data of the current component is sent to all downstream components. For example, if the current component has 100 records and two downstream components, both downstream components receive 100 records.
+	// - false: The full data of the current component is sent to all downstream components. For example, if the current component has 100 records and two downstream components, both downstream components receive 100 records.
 	IsDistribute *bool `json:"IsDistribute,omitempty" xml:"IsDistribute,omitempty"`
 	// The plugin ID. Each plugin has a unique identifier. Refer to the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig#stepKey. Developers should inherit this component configuration class and implement the corresponding component configuration. Each component configuration has the same structure as the pipeline configuration created on the Dataphin console.
 	//
@@ -480,7 +480,7 @@ type GetPipelineByIdResponseBodyDataPipelineConfigSteps struct {
 	//
 	// mysqlinput
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The specific component configuration in JSON string format. Refer to the toJsonString method of the subclasses of the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig. Developers should inherit this component configuration class and implement the corresponding component configuration. Each component configuration has the same structure as the pipeline configuration created on the Dataphin console.
+	// The specific component configuration. The value is a JSON string. Refer to the toJsonString method of the subclasses of the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig. Developers should inherit this component configuration class and implement the corresponding component configuration. Each component configuration has the same structure as the pipeline configuration created on the Dataphin console.
 	//
 	// example:
 	//

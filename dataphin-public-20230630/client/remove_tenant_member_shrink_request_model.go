@@ -11,6 +11,8 @@ type iRemoveTenantMemberShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *RemoveTenantMemberShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *RemoveTenantMemberShrinkRequest
+	GetOpUserId() *string
 	SetRemoveCommandShrink(v string) *RemoveTenantMemberShrinkRequest
 	GetRemoveCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type RemoveTenantMemberShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The request command.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *RemoveTenantMemberShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *RemoveTenantMemberShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *RemoveTenantMemberShrinkRequest) GetRemoveCommandShrink() *string {
 	return s.RemoveCommandShrink
 }
 
 func (s *RemoveTenantMemberShrinkRequest) SetOpTenantId(v int64) *RemoveTenantMemberShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *RemoveTenantMemberShrinkRequest) SetOpUserId(v string) *RemoveTenantMemberShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

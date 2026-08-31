@@ -11,6 +11,8 @@ type iUpdateUdfRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateUdfRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateUdfRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateUdfRequestUpdateCommand) *UpdateUdfRequest
 	GetUpdateCommand() *UpdateUdfRequestUpdateCommand
 }
@@ -24,6 +26,10 @@ type UpdateUdfRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update command.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateUdfRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateUdfRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateUdfRequest) GetUpdateCommand() *UpdateUdfRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *UpdateUdfRequest) SetOpTenantId(v int64) *UpdateUdfRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateUdfRequest) SetOpUserId(v string) *UpdateUdfRequest {
+	s.OpUserId = &v
 	return s
 }
 

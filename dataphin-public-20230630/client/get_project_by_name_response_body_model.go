@@ -36,7 +36,7 @@ type GetProjectByNameResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type GetProjectByNameResponseBodyProjectInfo struct {
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	BizUnitDisplayName *string `json:"BizUnitDisplayName,omitempty" xml:"BizUnitDisplayName,omitempty"`
 	// The ID of the business unit to which the project belongs.
 	//
@@ -138,13 +138,13 @@ type GetProjectByNameResponseBodyProjectInfo struct {
 	//
 	// 101131
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
-	// The ID of the associated compute source.
+	// The ID of the bound compute source.
 	//
 	// example:
 	//
 	// 101711
 	ComputeSourceId *int64 `json:"ComputeSourceId,omitempty" xml:"ComputeSourceId,omitempty"`
-	// The name of the associated compute source.
+	// The name of the bound compute source.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type GetProjectByNameResponseBodyProjectInfo struct {
 	//
 	// example:
 	//
-	// 测试
+	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name of the project.
 	//
@@ -168,13 +168,13 @@ type GetProjectByNameResponseBodyProjectInfo struct {
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The creation time, in the format of yyyy-MM-dd HH:mm:ss.
+	// The creation time, in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2025-06-10 10:01:01
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The update time, in the format of yyyy-MM-dd HH:mm:ss.
+	// The modification time, in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
@@ -200,9 +200,9 @@ type GetProjectByNameResponseBodyProjectInfo struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The namespace type. Valid values:
 	//
-	// - PUBLIC: public type
+	// - PUBLIC: common pattern.
 	//
-	// - APPLICATION: application type
+	// - APPLICATION: application type.
 	//
 	// - BASE: base type.
 	//
@@ -220,15 +220,15 @@ type GetProjectByNameResponseBodyProjectInfo struct {
 	//
 	// example:
 	//
-	// 张三
+	// John
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
-	// The ID of the associated real-time compute source.
+	// The ID of the bound streaming compute source.
 	//
 	// example:
 	//
 	// 201711
 	StreamComputeSourceId *int64 `json:"StreamComputeSourceId,omitempty" xml:"StreamComputeSourceId,omitempty"`
-	// The name of the associated real-time compute source.
+	// The name of the bound streaming compute source.
 	//
 	// example:
 	//
@@ -236,7 +236,7 @@ type GetProjectByNameResponseBodyProjectInfo struct {
 	StreamComputeSourceName *string `json:"StreamComputeSourceName,omitempty" xml:"StreamComputeSourceName,omitempty"`
 	// The project type. Valid values:
 	//
-	// - DISTILL: distillation project
+	// - DISTILL: distillation project.
 	//
 	// - GENERAL: general project.
 	//
@@ -445,7 +445,7 @@ type GetProjectByNameResponseBodyProjectInfoWhiteLists struct {
 	//
 	// example:
 	//
-	// xx 白名单
+	// xx whitelist
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Ip
 	//

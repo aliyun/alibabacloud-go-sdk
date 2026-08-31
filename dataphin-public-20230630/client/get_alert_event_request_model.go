@@ -13,6 +13,8 @@ type iGetAlertEventRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *GetAlertEventRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetAlertEventRequest
+	GetOpUserId() *string
 }
 
 type GetAlertEventRequest struct {
@@ -32,6 +34,10 @@ type GetAlertEventRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetAlertEventRequest) String() string {
@@ -50,6 +56,10 @@ func (s *GetAlertEventRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetAlertEventRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetAlertEventRequest) SetId(v int64) *GetAlertEventRequest {
 	s.Id = &v
 	return s
@@ -57,6 +67,11 @@ func (s *GetAlertEventRequest) SetId(v int64) *GetAlertEventRequest {
 
 func (s *GetAlertEventRequest) SetOpTenantId(v int64) *GetAlertEventRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetAlertEventRequest) SetOpUserId(v string) *GetAlertEventRequest {
+	s.OpUserId = &v
 	return s
 }
 

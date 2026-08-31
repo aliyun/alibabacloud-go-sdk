@@ -11,6 +11,8 @@ type iSyncDepartmentRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *SyncDepartmentRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *SyncDepartmentRequest
+	GetOpUserId() *string
 	SetSyncDepartmentCommand(v *SyncDepartmentRequestSyncDepartmentCommand) *SyncDepartmentRequest
 	GetSyncDepartmentCommand() *SyncDepartmentRequestSyncDepartmentCommand
 }
@@ -24,6 +26,10 @@ type SyncDepartmentRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The request command.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *SyncDepartmentRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *SyncDepartmentRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *SyncDepartmentRequest) GetSyncDepartmentCommand() *SyncDepartmentRequestSyncDepartmentCommand {
 	return s.SyncDepartmentCommand
 }
 
 func (s *SyncDepartmentRequest) SetOpTenantId(v int64) *SyncDepartmentRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *SyncDepartmentRequest) SetOpUserId(v string) *SyncDepartmentRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iUpdateTenantMemberRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateTenantMemberRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateTenantMemberRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateTenantMemberRequestUpdateCommand) *UpdateTenantMemberRequest
 	GetUpdateCommand() *UpdateTenantMemberRequestUpdateCommand
 }
@@ -24,6 +26,10 @@ type UpdateTenantMemberRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The request object.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateTenantMemberRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateTenantMemberRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateTenantMemberRequest) GetUpdateCommand() *UpdateTenantMemberRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *UpdateTenantMemberRequest) SetOpTenantId(v int64) *UpdateTenantMemberRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateTenantMemberRequest) SetOpUserId(v string) *UpdateTenantMemberRequest {
+	s.OpUserId = &v
 	return s
 }
 

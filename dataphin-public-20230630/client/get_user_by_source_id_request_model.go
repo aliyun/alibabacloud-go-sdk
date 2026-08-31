@@ -11,8 +11,12 @@ type iGetUserBySourceIdRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetUserBySourceIdRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetUserBySourceIdRequest
+	GetOpUserId() *string
 	SetSourceId(v string) *GetUserBySourceIdRequest
 	GetSourceId() *string
+	SetSourceType(v string) *GetUserBySourceIdRequest
+	GetSourceType() *string
 }
 
 type GetUserBySourceIdRequest struct {
@@ -24,6 +28,12 @@ type GetUserBySourceIdRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The user source ID.
 	//
 	// This parameter is required.
@@ -32,6 +42,12 @@ type GetUserBySourceIdRequest struct {
 	//
 	// 323131
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The user source type.
+	//
+	// example:
+	//
+	// aliyun
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s GetUserBySourceIdRequest) String() string {
@@ -46,8 +62,16 @@ func (s *GetUserBySourceIdRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetUserBySourceIdRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetUserBySourceIdRequest) GetSourceId() *string {
 	return s.SourceId
+}
+
+func (s *GetUserBySourceIdRequest) GetSourceType() *string {
+	return s.SourceType
 }
 
 func (s *GetUserBySourceIdRequest) SetOpTenantId(v int64) *GetUserBySourceIdRequest {
@@ -55,8 +79,18 @@ func (s *GetUserBySourceIdRequest) SetOpTenantId(v int64) *GetUserBySourceIdRequ
 	return s
 }
 
+func (s *GetUserBySourceIdRequest) SetOpUserId(v string) *GetUserBySourceIdRequest {
+	s.OpUserId = &v
+	return s
+}
+
 func (s *GetUserBySourceIdRequest) SetSourceId(v string) *GetUserBySourceIdRequest {
 	s.SourceId = &v
+	return s
+}
+
+func (s *GetUserBySourceIdRequest) SetSourceType(v string) *GetUserBySourceIdRequest {
+	s.SourceType = &v
 	return s
 }
 

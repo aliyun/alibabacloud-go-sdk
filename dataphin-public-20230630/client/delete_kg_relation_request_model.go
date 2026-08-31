@@ -11,6 +11,8 @@ type iDeleteKgRelationRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *DeleteKgRelationRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteKgRelationRequest
+	GetOpUserId() *string
 	SetRelationId(v string) *DeleteKgRelationRequest
 	GetRelationId() *string
 	SetRelationType(v string) *DeleteKgRelationRequest
@@ -28,6 +30,12 @@ type DeleteKgRelationRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The relationship record ID.
 	//
 	// This parameter is required.
@@ -66,6 +74,10 @@ func (s *DeleteKgRelationRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteKgRelationRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteKgRelationRequest) GetRelationId() *string {
 	return s.RelationId
 }
@@ -80,6 +92,11 @@ func (s *DeleteKgRelationRequest) GetWorkspaceId() *string {
 
 func (s *DeleteKgRelationRequest) SetOpTenantId(v int64) *DeleteKgRelationRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteKgRelationRequest) SetOpUserId(v string) *DeleteKgRelationRequest {
+	s.OpUserId = &v
 	return s
 }
 

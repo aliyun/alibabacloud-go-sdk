@@ -11,6 +11,8 @@ type iGetQualityWatchTaskLogRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetQualityWatchTaskLogRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetQualityWatchTaskLogRequest
+	GetOpUserId() *string
 	SetWatchTaskId(v int64) *GetQualityWatchTaskLogRequest
 	GetWatchTaskId() *int64
 }
@@ -24,6 +26,10 @@ type GetQualityWatchTaskLogRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The ID of the quality watchtask.
 	//
 	// This parameter is required.
@@ -46,12 +52,21 @@ func (s *GetQualityWatchTaskLogRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetQualityWatchTaskLogRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetQualityWatchTaskLogRequest) GetWatchTaskId() *int64 {
 	return s.WatchTaskId
 }
 
 func (s *GetQualityWatchTaskLogRequest) SetOpTenantId(v int64) *GetQualityWatchTaskLogRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetQualityWatchTaskLogRequest) SetOpUserId(v string) *GetQualityWatchTaskLogRequest {
+	s.OpUserId = &v
 	return s
 }
 

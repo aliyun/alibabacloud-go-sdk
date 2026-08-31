@@ -15,6 +15,8 @@ type iGetPipelineAsyncResultRequest interface {
 	GetContext() *GetPipelineAsyncResultRequestContext
 	SetOpTenantId(v int64) *GetPipelineAsyncResultRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetPipelineAsyncResultRequest
+	GetOpUserId() *string
 }
 
 type GetPipelineAsyncResultRequest struct {
@@ -38,6 +40,10 @@ type GetPipelineAsyncResultRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetPipelineAsyncResultRequest) String() string {
@@ -60,6 +66,10 @@ func (s *GetPipelineAsyncResultRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetPipelineAsyncResultRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetPipelineAsyncResultRequest) SetAsyncId(v int64) *GetPipelineAsyncResultRequest {
 	s.AsyncId = &v
 	return s
@@ -72,6 +82,11 @@ func (s *GetPipelineAsyncResultRequest) SetContext(v *GetPipelineAsyncResultRequ
 
 func (s *GetPipelineAsyncResultRequest) SetOpTenantId(v int64) *GetPipelineAsyncResultRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetPipelineAsyncResultRequest) SetOpUserId(v string) *GetPipelineAsyncResultRequest {
+	s.OpUserId = &v
 	return s
 }
 

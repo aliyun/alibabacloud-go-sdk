@@ -13,6 +13,8 @@ type iGetBelongAssetMappingRequest interface {
 	GetAssetMappingQuery() *GetBelongAssetMappingRequestAssetMappingQuery
 	SetOpTenantId(v int64) *GetBelongAssetMappingRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetBelongAssetMappingRequest
+	GetOpUserId() *string
 }
 
 type GetBelongAssetMappingRequest struct {
@@ -26,6 +28,10 @@ type GetBelongAssetMappingRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetBelongAssetMappingRequest) String() string {
@@ -44,6 +50,10 @@ func (s *GetBelongAssetMappingRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetBelongAssetMappingRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetBelongAssetMappingRequest) SetAssetMappingQuery(v *GetBelongAssetMappingRequestAssetMappingQuery) *GetBelongAssetMappingRequest {
 	s.AssetMappingQuery = v
 	return s
@@ -51,6 +61,11 @@ func (s *GetBelongAssetMappingRequest) SetAssetMappingQuery(v *GetBelongAssetMap
 
 func (s *GetBelongAssetMappingRequest) SetOpTenantId(v int64) *GetBelongAssetMappingRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetBelongAssetMappingRequest) SetOpUserId(v string) *GetBelongAssetMappingRequest {
+	s.OpUserId = &v
 	return s
 }
 

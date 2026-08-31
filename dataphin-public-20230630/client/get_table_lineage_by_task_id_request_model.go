@@ -11,6 +11,8 @@ type iGetTableLineageByTaskIdRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetTableLineageByTaskIdRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetTableLineageByTaskIdRequest
+	GetOpUserId() *string
 	SetTableLineageByTaskIdQuery(v *GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery) *GetTableLineageByTaskIdRequest
 	GetTableLineageByTaskIdQuery() *GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery
 }
@@ -24,6 +26,12 @@ type GetTableLineageByTaskIdRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The data structure for querying table lineage.
 	//
 	// This parameter is required.
@@ -42,12 +50,21 @@ func (s *GetTableLineageByTaskIdRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetTableLineageByTaskIdRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetTableLineageByTaskIdRequest) GetTableLineageByTaskIdQuery() *GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery {
 	return s.TableLineageByTaskIdQuery
 }
 
 func (s *GetTableLineageByTaskIdRequest) SetOpTenantId(v int64) *GetTableLineageByTaskIdRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdRequest) SetOpUserId(v string) *GetTableLineageByTaskIdRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -68,13 +85,13 @@ func (s *GetTableLineageByTaskIdRequest) Validate() error {
 type GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery struct {
 	// Specifies whether to return tables that do not exist in the asset inventory. If this parameter is not specified, non-existent tables are not returned.
 	NeedNotExistObject *bool `json:"NeedNotExistObject,omitempty" xml:"NeedNotExistObject,omitempty"`
-	// The environment of the task to query: DEV or PROD.
+	// The environment of the node used to filter the query. Valid values: DEV and PROD.
 	//
 	// example:
 	//
 	// DEV
 	TaskEnv *string `json:"TaskEnv,omitempty" xml:"TaskEnv,omitempty"`
-	// The task (node) ID used to filter the query.
+	// The ID of the node used to filter the query.
 	//
 	// This parameter is required.
 	//

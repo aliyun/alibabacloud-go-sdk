@@ -13,6 +13,8 @@ type iGetBatchTemplateVersionsRequest interface {
 	GetEnv() *string
 	SetOpTenantId(v int64) *GetBatchTemplateVersionsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetBatchTemplateVersionsRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *GetBatchTemplateVersionsRequest
 	GetProjectId() *int64
 	SetTemplateId(v int64) *GetBatchTemplateVersionsRequest
@@ -40,6 +42,10 @@ type GetBatchTemplateVersionsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -74,6 +80,10 @@ func (s *GetBatchTemplateVersionsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetBatchTemplateVersionsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetBatchTemplateVersionsRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -89,6 +99,11 @@ func (s *GetBatchTemplateVersionsRequest) SetEnv(v string) *GetBatchTemplateVers
 
 func (s *GetBatchTemplateVersionsRequest) SetOpTenantId(v int64) *GetBatchTemplateVersionsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetBatchTemplateVersionsRequest) SetOpUserId(v string) *GetBatchTemplateVersionsRequest {
+	s.OpUserId = &v
 	return s
 }
 

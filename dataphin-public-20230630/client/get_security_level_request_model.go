@@ -13,6 +13,8 @@ type iGetSecurityLevelRequest interface {
 	GetIndex() *int64
 	SetOpTenantId(v int64) *GetSecurityLevelRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetSecurityLevelRequest
+	GetOpUserId() *string
 }
 
 type GetSecurityLevelRequest struct {
@@ -32,6 +34,10 @@ type GetSecurityLevelRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetSecurityLevelRequest) String() string {
@@ -50,6 +56,10 @@ func (s *GetSecurityLevelRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetSecurityLevelRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetSecurityLevelRequest) SetIndex(v int64) *GetSecurityLevelRequest {
 	s.Index = &v
 	return s
@@ -57,6 +67,11 @@ func (s *GetSecurityLevelRequest) SetIndex(v int64) *GetSecurityLevelRequest {
 
 func (s *GetSecurityLevelRequest) SetOpTenantId(v int64) *GetSecurityLevelRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetSecurityLevelRequest) SetOpUserId(v string) *GetSecurityLevelRequest {
+	s.OpUserId = &v
 	return s
 }
 

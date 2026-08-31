@@ -13,6 +13,8 @@ type iUpdatePipelineByAsyncShrinkRequest interface {
 	GetContextShrink() *string
 	SetOpTenantId(v int64) *UpdatePipelineByAsyncShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdatePipelineByAsyncShrinkRequest
+	GetOpUserId() *string
 	SetUpdateCommandShrink(v string) *UpdatePipelineByAsyncShrinkRequest
 	GetUpdateCommandShrink() *string
 }
@@ -30,6 +32,10 @@ type UpdatePipelineByAsyncShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The pipeline node update configuration.
 	//
 	// This parameter is required.
@@ -52,6 +58,10 @@ func (s *UpdatePipelineByAsyncShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdatePipelineByAsyncShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdatePipelineByAsyncShrinkRequest) GetUpdateCommandShrink() *string {
 	return s.UpdateCommandShrink
 }
@@ -63,6 +73,11 @@ func (s *UpdatePipelineByAsyncShrinkRequest) SetContextShrink(v string) *UpdateP
 
 func (s *UpdatePipelineByAsyncShrinkRequest) SetOpTenantId(v int64) *UpdatePipelineByAsyncShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdatePipelineByAsyncShrinkRequest) SetOpUserId(v string) *UpdatePipelineByAsyncShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

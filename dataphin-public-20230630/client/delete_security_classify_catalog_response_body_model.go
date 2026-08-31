@@ -38,7 +38,7 @@ type DeleteSecurityClassifyCatalogResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -126,9 +126,9 @@ func (s *DeleteSecurityClassifyCatalogResponseBody) Validate() error {
 }
 
 type DeleteSecurityClassifyCatalogResponseBodyData struct {
-	// The list of full paths of child catalogs that were also deleted.
+	// The list of full paths of child catalogs that were deleted as a result of the cascading deletion.
 	ChildCatalogFullPathList []*string `json:"ChildCatalogFullPathList,omitempty" xml:"ChildCatalogFullPathList,omitempty" type:"Repeated"`
-	// The list of classification IDs that were also deleted.
+	// The list of classification IDs that were deleted as a result of the cascading deletion.
 	ClassifyIdList []*int64 `json:"ClassifyIdList,omitempty" xml:"ClassifyIdList,omitempty" type:"Repeated"`
 	// Indicates whether the deletion was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`

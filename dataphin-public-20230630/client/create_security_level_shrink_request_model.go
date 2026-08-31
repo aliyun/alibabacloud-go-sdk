@@ -13,6 +13,8 @@ type iCreateSecurityLevelShrinkRequest interface {
 	GetCreateCommandShrink() *string
 	SetOpTenantId(v int64) *CreateSecurityLevelShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateSecurityLevelShrinkRequest
+	GetOpUserId() *string
 }
 
 type CreateSecurityLevelShrinkRequest struct {
@@ -28,6 +30,12 @@ type CreateSecurityLevelShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateSecurityLevelShrinkRequest) String() string {
@@ -46,6 +54,10 @@ func (s *CreateSecurityLevelShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateSecurityLevelShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateSecurityLevelShrinkRequest) SetCreateCommandShrink(v string) *CreateSecurityLevelShrinkRequest {
 	s.CreateCommandShrink = &v
 	return s
@@ -53,6 +65,11 @@ func (s *CreateSecurityLevelShrinkRequest) SetCreateCommandShrink(v string) *Cre
 
 func (s *CreateSecurityLevelShrinkRequest) SetOpTenantId(v int64) *CreateSecurityLevelShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateSecurityLevelShrinkRequest) SetOpUserId(v string) *CreateSecurityLevelShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

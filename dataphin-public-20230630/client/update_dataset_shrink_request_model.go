@@ -11,6 +11,8 @@ type iUpdateDatasetShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateDatasetShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateDatasetShrinkRequest
+	GetOpUserId() *string
 	SetProjectId(v string) *UpdateDatasetShrinkRequest
 	GetProjectId() *string
 	SetUpdateCommandShrink(v string) *UpdateDatasetShrinkRequest
@@ -26,6 +28,10 @@ type UpdateDatasetShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -52,6 +58,10 @@ func (s *UpdateDatasetShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateDatasetShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateDatasetShrinkRequest) GetProjectId() *string {
 	return s.ProjectId
 }
@@ -62,6 +72,11 @@ func (s *UpdateDatasetShrinkRequest) GetUpdateCommandShrink() *string {
 
 func (s *UpdateDatasetShrinkRequest) SetOpTenantId(v int64) *UpdateDatasetShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateDatasetShrinkRequest) SetOpUserId(v string) *UpdateDatasetShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

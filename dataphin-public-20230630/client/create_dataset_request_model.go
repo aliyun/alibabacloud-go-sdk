@@ -13,6 +13,8 @@ type iCreateDatasetRequest interface {
 	GetCreateCommand() *CreateDatasetRequestCreateCommand
 	SetOpTenantId(v int64) *CreateDatasetRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateDatasetRequest
+	GetOpUserId() *string
 	SetProjectId(v string) *CreateDatasetRequest
 	GetProjectId() *string
 }
@@ -30,6 +32,10 @@ type CreateDatasetRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -56,6 +62,10 @@ func (s *CreateDatasetRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateDatasetRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateDatasetRequest) GetProjectId() *string {
 	return s.ProjectId
 }
@@ -67,6 +77,11 @@ func (s *CreateDatasetRequest) SetCreateCommand(v *CreateDatasetRequestCreateCom
 
 func (s *CreateDatasetRequest) SetOpTenantId(v int64) *CreateDatasetRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetOpUserId(v string) *CreateDatasetRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -85,6 +100,7 @@ func (s *CreateDatasetRequest) Validate() error {
 }
 
 type CreateDatasetRequestCreateCommand struct {
+	ApiInfo *CreateDatasetRequestCreateCommandApiInfo `json:"ApiInfo,omitempty" xml:"ApiInfo,omitempty" type:"Struct"`
 	// The dataset content type. Valid values: GENERAL, TEXT, AUDIO, VIDEO, IMAGE, TABLE, INDEX.
 	//
 	// This parameter is required.
@@ -183,6 +199,10 @@ func (s CreateDatasetRequestCreateCommand) GoString() string {
 	return s.String()
 }
 
+func (s *CreateDatasetRequestCreateCommand) GetApiInfo() *CreateDatasetRequestCreateCommandApiInfo {
+	return s.ApiInfo
+}
+
 func (s *CreateDatasetRequestCreateCommand) GetContentType() *string {
 	return s.ContentType
 }
@@ -233,6 +253,11 @@ func (s *CreateDatasetRequestCreateCommand) GetVersion() *string {
 
 func (s *CreateDatasetRequestCreateCommand) GetVersionConfig() *CreateDatasetRequestCreateCommandVersionConfig {
 	return s.VersionConfig
+}
+
+func (s *CreateDatasetRequestCreateCommand) SetApiInfo(v *CreateDatasetRequestCreateCommandApiInfo) *CreateDatasetRequestCreateCommand {
+	s.ApiInfo = v
+	return s
 }
 
 func (s *CreateDatasetRequestCreateCommand) SetContentType(v string) *CreateDatasetRequestCreateCommand {
@@ -301,12 +326,338 @@ func (s *CreateDatasetRequestCreateCommand) SetVersionConfig(v *CreateDatasetReq
 }
 
 func (s *CreateDatasetRequestCreateCommand) Validate() error {
+	if s.ApiInfo != nil {
+		if err := s.ApiInfo.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.VersionConfig != nil {
 		if err := s.VersionConfig.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type CreateDatasetRequestCreateCommandApiInfo struct {
+	// example:
+	//
+	// 60
+	ExecTimeout *int32 `json:"ExecTimeout,omitempty" xml:"ExecTimeout,omitempty"`
+	// example:
+	//
+	// 1
+	ExecuteMode *int32 `json:"ExecuteMode,omitempty" xml:"ExecuteMode,omitempty"`
+	// example:
+	//
+	// 1011
+	OsApiGroup *int32 `json:"OsApiGroup,omitempty" xml:"OsApiGroup,omitempty"`
+	// example:
+	//
+	// 1022
+	OsProject *int32 `json:"OsProject,omitempty" xml:"OsProject,omitempty"`
+	// example:
+	//
+	// 1
+	Protocol *int32 `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// 1
+	RequestMethod     *int32                                                       `json:"RequestMethod,omitempty" xml:"RequestMethod,omitempty"`
+	RequestParamList  []*CreateDatasetRequestCreateCommandApiInfoRequestParamList  `json:"RequestParamList,omitempty" xml:"RequestParamList,omitempty" type:"Repeated"`
+	ResponseParamList []*CreateDatasetRequestCreateCommandApiInfoResponseParamList `json:"ResponseParamList,omitempty" xml:"ResponseParamList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 60
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s CreateDatasetRequestCreateCommandApiInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDatasetRequestCreateCommandApiInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfo) GetExecTimeout() *int32 {
+	return s.ExecTimeout
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfo) GetExecuteMode() *int32 {
+	return s.ExecuteMode
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfo) GetOsApiGroup() *int32 {
+	return s.OsApiGroup
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfo) GetOsProject() *int32 {
+	return s.OsProject
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfo) GetProtocol() *int32 {
+	return s.Protocol
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfo) GetRequestMethod() *int32 {
+	return s.RequestMethod
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfo) GetRequestParamList() []*CreateDatasetRequestCreateCommandApiInfoRequestParamList {
+	return s.RequestParamList
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfo) GetResponseParamList() []*CreateDatasetRequestCreateCommandApiInfoResponseParamList {
+	return s.ResponseParamList
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfo) GetTimeout() *int32 {
+	return s.Timeout
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfo) SetExecTimeout(v int32) *CreateDatasetRequestCreateCommandApiInfo {
+	s.ExecTimeout = &v
+	return s
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfo) SetExecuteMode(v int32) *CreateDatasetRequestCreateCommandApiInfo {
+	s.ExecuteMode = &v
+	return s
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfo) SetOsApiGroup(v int32) *CreateDatasetRequestCreateCommandApiInfo {
+	s.OsApiGroup = &v
+	return s
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfo) SetOsProject(v int32) *CreateDatasetRequestCreateCommandApiInfo {
+	s.OsProject = &v
+	return s
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfo) SetProtocol(v int32) *CreateDatasetRequestCreateCommandApiInfo {
+	s.Protocol = &v
+	return s
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfo) SetRequestMethod(v int32) *CreateDatasetRequestCreateCommandApiInfo {
+	s.RequestMethod = &v
+	return s
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfo) SetRequestParamList(v []*CreateDatasetRequestCreateCommandApiInfoRequestParamList) *CreateDatasetRequestCreateCommandApiInfo {
+	s.RequestParamList = v
+	return s
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfo) SetResponseParamList(v []*CreateDatasetRequestCreateCommandApiInfoResponseParamList) *CreateDatasetRequestCreateCommandApiInfo {
+	s.ResponseParamList = v
+	return s
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfo) SetTimeout(v int32) *CreateDatasetRequestCreateCommandApiInfo {
+	s.Timeout = &v
+	return s
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfo) Validate() error {
+	if s.RequestParamList != nil {
+		for _, item := range s.RequestParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResponseParamList != nil {
+		for _, item := range s.ResponseParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type CreateDatasetRequestCreateCommandApiInfoRequestParamList struct {
+	// example:
+	//
+	// test
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// example:
+	//
+	// test
+	Descr *string `json:"Descr,omitempty" xml:"Descr,omitempty"`
+	IsUrl *bool   `json:"IsUrl,omitempty" xml:"IsUrl,omitempty"`
+	Must  *bool   `json:"Must,omitempty" xml:"Must,omitempty"`
+	// example:
+	//
+	// col01
+	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	// example:
+	//
+	// int
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// example:
+	//
+	// test
+	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+}
+
+func (s CreateDatasetRequestCreateCommandApiInfoRequestParamList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDatasetRequestCreateCommandApiInfoRequestParamList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoRequestParamList) GetDefaultValue() *string {
+	return s.DefaultValue
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoRequestParamList) GetDescr() *string {
+	return s.Descr
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoRequestParamList) GetIsUrl() *bool {
+	return s.IsUrl
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoRequestParamList) GetMust() *bool {
+	return s.Must
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoRequestParamList) GetParamName() *string {
+	return s.ParamName
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoRequestParamList) GetParamType() *string {
+	return s.ParamType
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoRequestParamList) GetSample() *string {
+	return s.Sample
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoRequestParamList) SetDefaultValue(v string) *CreateDatasetRequestCreateCommandApiInfoRequestParamList {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoRequestParamList) SetDescr(v string) *CreateDatasetRequestCreateCommandApiInfoRequestParamList {
+	s.Descr = &v
+	return s
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoRequestParamList) SetIsUrl(v bool) *CreateDatasetRequestCreateCommandApiInfoRequestParamList {
+	s.IsUrl = &v
+	return s
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoRequestParamList) SetMust(v bool) *CreateDatasetRequestCreateCommandApiInfoRequestParamList {
+	s.Must = &v
+	return s
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoRequestParamList) SetParamName(v string) *CreateDatasetRequestCreateCommandApiInfoRequestParamList {
+	s.ParamName = &v
+	return s
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoRequestParamList) SetParamType(v string) *CreateDatasetRequestCreateCommandApiInfoRequestParamList {
+	s.ParamType = &v
+	return s
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoRequestParamList) SetSample(v string) *CreateDatasetRequestCreateCommandApiInfoRequestParamList {
+	s.Sample = &v
+	return s
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoRequestParamList) Validate() error {
+	return dara.Validate(s)
+}
+
+type CreateDatasetRequestCreateCommandApiInfoResponseParamList struct {
+	// example:
+	//
+	// test
+	Descr *string `json:"Descr,omitempty" xml:"Descr,omitempty"`
+	IsUrl *bool   `json:"IsUrl,omitempty" xml:"IsUrl,omitempty"`
+	// example:
+	//
+	// col01
+	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	// example:
+	//
+	// int
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// example:
+	//
+	// test
+	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+}
+
+func (s CreateDatasetRequestCreateCommandApiInfoResponseParamList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDatasetRequestCreateCommandApiInfoResponseParamList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoResponseParamList) GetDescr() *string {
+	return s.Descr
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoResponseParamList) GetIsUrl() *bool {
+	return s.IsUrl
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoResponseParamList) GetParamName() *string {
+	return s.ParamName
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoResponseParamList) GetParamType() *string {
+	return s.ParamType
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoResponseParamList) GetSample() *string {
+	return s.Sample
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoResponseParamList) SetDescr(v string) *CreateDatasetRequestCreateCommandApiInfoResponseParamList {
+	s.Descr = &v
+	return s
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoResponseParamList) SetIsUrl(v bool) *CreateDatasetRequestCreateCommandApiInfoResponseParamList {
+	s.IsUrl = &v
+	return s
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoResponseParamList) SetParamName(v string) *CreateDatasetRequestCreateCommandApiInfoResponseParamList {
+	s.ParamName = &v
+	return s
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoResponseParamList) SetParamType(v string) *CreateDatasetRequestCreateCommandApiInfoResponseParamList {
+	s.ParamType = &v
+	return s
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoResponseParamList) SetSample(v string) *CreateDatasetRequestCreateCommandApiInfoResponseParamList {
+	s.Sample = &v
+	return s
+}
+
+func (s *CreateDatasetRequestCreateCommandApiInfoResponseParamList) Validate() error {
+	return dara.Validate(s)
 }
 
 type CreateDatasetRequestCreateCommandVersionConfig struct {

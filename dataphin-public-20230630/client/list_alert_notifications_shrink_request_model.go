@@ -13,6 +13,8 @@ type iListAlertNotificationsShrinkRequest interface {
 	GetListQueryShrink() *string
 	SetOpTenantId(v int64) *ListAlertNotificationsShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListAlertNotificationsShrinkRequest
+	GetOpUserId() *string
 }
 
 type ListAlertNotificationsShrinkRequest struct {
@@ -26,6 +28,10 @@ type ListAlertNotificationsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListAlertNotificationsShrinkRequest) String() string {
@@ -44,6 +50,10 @@ func (s *ListAlertNotificationsShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListAlertNotificationsShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListAlertNotificationsShrinkRequest) SetListQueryShrink(v string) *ListAlertNotificationsShrinkRequest {
 	s.ListQueryShrink = &v
 	return s
@@ -51,6 +61,11 @@ func (s *ListAlertNotificationsShrinkRequest) SetListQueryShrink(v string) *List
 
 func (s *ListAlertNotificationsShrinkRequest) SetOpTenantId(v int64) *ListAlertNotificationsShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListAlertNotificationsShrinkRequest) SetOpUserId(v string) *ListAlertNotificationsShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

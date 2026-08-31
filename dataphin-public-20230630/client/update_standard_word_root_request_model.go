@@ -11,6 +11,8 @@ type iUpdateStandardWordRootRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateStandardWordRootRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateStandardWordRootRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateStandardWordRootRequestUpdateCommand) *UpdateStandardWordRootRequest
 	GetUpdateCommand() *UpdateStandardWordRootRequestUpdateCommand
 }
@@ -24,6 +26,10 @@ type UpdateStandardWordRootRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update instruction.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateStandardWordRootRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateStandardWordRootRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateStandardWordRootRequest) GetUpdateCommand() *UpdateStandardWordRootRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *UpdateStandardWordRootRequest) SetOpTenantId(v int64) *UpdateStandardWordRootRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateStandardWordRootRequest) SetOpUserId(v string) *UpdateStandardWordRootRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iRevokeResourcePermissionRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *RevokeResourcePermissionRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *RevokeResourcePermissionRequest
+	GetOpUserId() *string
 	SetRevokeCommand(v *RevokeResourcePermissionRequestRevokeCommand) *RevokeResourcePermissionRequest
 	GetRevokeCommand() *RevokeResourcePermissionRequestRevokeCommand
 }
@@ -24,6 +26,10 @@ type RevokeResourcePermissionRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The authorization revocation request.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *RevokeResourcePermissionRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *RevokeResourcePermissionRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *RevokeResourcePermissionRequest) GetRevokeCommand() *RevokeResourcePermissionRequestRevokeCommand {
 	return s.RevokeCommand
 }
 
 func (s *RevokeResourcePermissionRequest) SetOpTenantId(v int64) *RevokeResourcePermissionRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *RevokeResourcePermissionRequest) SetOpUserId(v string) *RevokeResourcePermissionRequest {
+	s.OpUserId = &v
 	return s
 }
 

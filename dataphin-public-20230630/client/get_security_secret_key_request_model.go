@@ -13,6 +13,8 @@ type iGetSecuritySecretKeyRequest interface {
 	GetName() *string
 	SetOpTenantId(v int64) *GetSecuritySecretKeyRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetSecuritySecretKeyRequest
+	GetOpUserId() *string
 }
 
 type GetSecuritySecretKeyRequest struct {
@@ -32,6 +34,10 @@ type GetSecuritySecretKeyRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetSecuritySecretKeyRequest) String() string {
@@ -50,6 +56,10 @@ func (s *GetSecuritySecretKeyRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetSecuritySecretKeyRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetSecuritySecretKeyRequest) SetName(v string) *GetSecuritySecretKeyRequest {
 	s.Name = &v
 	return s
@@ -57,6 +67,11 @@ func (s *GetSecuritySecretKeyRequest) SetName(v string) *GetSecuritySecretKeyReq
 
 func (s *GetSecuritySecretKeyRequest) SetOpTenantId(v int64) *GetSecuritySecretKeyRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetSecuritySecretKeyRequest) SetOpUserId(v string) *GetSecuritySecretKeyRequest {
+	s.OpUserId = &v
 	return s
 }
 

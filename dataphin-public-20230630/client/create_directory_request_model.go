@@ -13,6 +13,8 @@ type iCreateDirectoryRequest interface {
 	GetCreateCommand() *CreateDirectoryRequestCreateCommand
 	SetOpTenantId(v int64) *CreateDirectoryRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateDirectoryRequest
+	GetOpUserId() *string
 }
 
 type CreateDirectoryRequest struct {
@@ -28,6 +30,10 @@ type CreateDirectoryRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateDirectoryRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateDirectoryRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateDirectoryRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateDirectoryRequest) SetCreateCommand(v *CreateDirectoryRequestCreateCommand) *CreateDirectoryRequest {
 	s.CreateCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateDirectoryRequest) SetCreateCommand(v *CreateDirectoryRequestCreat
 
 func (s *CreateDirectoryRequest) SetOpTenantId(v int64) *CreateDirectoryRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateDirectoryRequest) SetOpUserId(v string) *CreateDirectoryRequest {
+	s.OpUserId = &v
 	return s
 }
 

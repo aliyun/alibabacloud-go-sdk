@@ -13,12 +13,14 @@ type iBatchCreateKgEntityRequest interface {
 	GetCreateCommand() *BatchCreateKgEntityRequestCreateCommand
 	SetOpTenantId(v int64) *BatchCreateKgEntityRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *BatchCreateKgEntityRequest
+	GetOpUserId() *string
 	SetWorkspaceId(v string) *BatchCreateKgEntityRequest
 	GetWorkspaceId() *string
 }
 
 type BatchCreateKgEntityRequest struct {
-	// The create instruction.
+	// The create command.
 	//
 	// This parameter is required.
 	CreateCommand *BatchCreateKgEntityRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
@@ -30,6 +32,12 @@ type BatchCreateKgEntityRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The workspace ID.
 	//
 	// This parameter is required.
@@ -56,6 +64,10 @@ func (s *BatchCreateKgEntityRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *BatchCreateKgEntityRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *BatchCreateKgEntityRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -67,6 +79,11 @@ func (s *BatchCreateKgEntityRequest) SetCreateCommand(v *BatchCreateKgEntityRequ
 
 func (s *BatchCreateKgEntityRequest) SetOpTenantId(v int64) *BatchCreateKgEntityRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *BatchCreateKgEntityRequest) SetOpUserId(v string) *BatchCreateKgEntityRequest {
+	s.OpUserId = &v
 	return s
 }
 

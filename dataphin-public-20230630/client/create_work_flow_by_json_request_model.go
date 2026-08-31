@@ -15,6 +15,8 @@ type iCreateWorkFlowByJsonRequest interface {
 	GetCreateCommand() *CreateWorkFlowByJsonRequestCreateCommand
 	SetOpTenantId(v int64) *CreateWorkFlowByJsonRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateWorkFlowByJsonRequest
+	GetOpUserId() *string
 }
 
 type CreateWorkFlowByJsonRequest struct {
@@ -34,6 +36,12 @@ type CreateWorkFlowByJsonRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateWorkFlowByJsonRequest) String() string {
@@ -56,6 +64,10 @@ func (s *CreateWorkFlowByJsonRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateWorkFlowByJsonRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateWorkFlowByJsonRequest) SetContext(v *CreateWorkFlowByJsonRequestContext) *CreateWorkFlowByJsonRequest {
 	s.Context = v
 	return s
@@ -68,6 +80,11 @@ func (s *CreateWorkFlowByJsonRequest) SetCreateCommand(v *CreateWorkFlowByJsonRe
 
 func (s *CreateWorkFlowByJsonRequest) SetOpTenantId(v int64) *CreateWorkFlowByJsonRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateWorkFlowByJsonRequest) SetOpUserId(v string) *CreateWorkFlowByJsonRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -141,7 +158,7 @@ func (s *CreateWorkFlowByJsonRequestContext) Validate() error {
 }
 
 type CreateWorkFlowByJsonRequestCreateCommand struct {
-	// The description of the node.
+	// The node description.
 	//
 	// example:
 	//
@@ -153,7 +170,7 @@ type CreateWorkFlowByJsonRequestCreateCommand struct {
 	//
 	// /
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// The schedule configuration. This parameter is required for periodic nodes. The value is a JSON string. Refer to the utility class: com.alibaba.dataphin.pipeline.common.facade.openapi.model.OAScheduleConfig#toJsonString method.
+	// The schedule configuration (required for periodic nodes). The value is a JSON string. Refer to the utility class: com.alibaba.dataphin.pipeline.common.facade.openapi.model.OAScheduleConfig#toJsonString method.
 	//
 	// example:
 	//
@@ -161,7 +178,7 @@ type CreateWorkFlowByJsonRequestCreateCommand struct {
 	ScheduleConfig *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
 	// Specifies whether to submit the node. Default value: true.
 	Submit *bool `json:"Submit,omitempty" xml:"Submit,omitempty"`
-	// The name of the node.
+	// The node name.
 	//
 	// This parameter is required.
 	//
@@ -169,7 +186,7 @@ type CreateWorkFlowByJsonRequestCreateCommand struct {
 	//
 	// workflow_name
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The scheduling type of the node. Valid values:
+	// The node scheduling type. Valid values:
 	//
 	// - 1: periodic scheduling.
 	//

@@ -13,6 +13,8 @@ type iUpdatePipelineRequest interface {
 	GetContext() *UpdatePipelineRequestContext
 	SetOpTenantId(v int64) *UpdatePipelineRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdatePipelineRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdatePipelineRequestUpdateCommand) *UpdatePipelineRequest
 	GetUpdateCommand() *UpdatePipelineRequestUpdateCommand
 }
@@ -30,6 +32,12 @@ type UpdatePipelineRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The configuration for updating the pipeline or workflow node.
 	//
 	// This parameter is required.
@@ -52,6 +60,10 @@ func (s *UpdatePipelineRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdatePipelineRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdatePipelineRequest) GetUpdateCommand() *UpdatePipelineRequestUpdateCommand {
 	return s.UpdateCommand
 }
@@ -63,6 +75,11 @@ func (s *UpdatePipelineRequest) SetContext(v *UpdatePipelineRequestContext) *Upd
 
 func (s *UpdatePipelineRequest) SetOpTenantId(v int64) *UpdatePipelineRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdatePipelineRequest) SetOpUserId(v string) *UpdatePipelineRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -90,7 +107,9 @@ type UpdatePipelineRequestContext struct {
 	//
 	// - DEV: the development environment.
 	//
-	// - PROD: the production environment. For workflow nodes, only PROD is supported.
+	// - PROD: the production environment.
+	//
+	// For workflow nodes, only PROD is supported.
 	//
 	// This parameter is required.
 	//
@@ -98,7 +117,7 @@ type UpdatePipelineRequestContext struct {
 	//
 	// DEV
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The ID of the project to which the integration pipeline or workflow node belongs.
+	// The project ID to which the integration pipeline or workflow node belongs.
 	//
 	// This parameter is required.
 	//
@@ -139,7 +158,7 @@ func (s *UpdatePipelineRequestContext) Validate() error {
 }
 
 type UpdatePipelineRequestUpdateCommand struct {
-	// The remarks.
+	// The comment.
 	//
 	// example:
 	//
@@ -147,7 +166,7 @@ type UpdatePipelineRequestUpdateCommand struct {
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The integration pipeline configuration mode. Valid values:
 	//
-	// - PIPELINE (default): pipeline mode.
+	// - PIPELINE: pipeline mode (default).
 	//
 	// - JSON: script mode.
 	//
@@ -157,7 +176,7 @@ type UpdatePipelineRequestUpdateCommand struct {
 	//
 	// PIPELINE
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The basic information about the integration pipeline or workflow node.
+	// The basic information of the integration pipeline or workflow node.
 	//
 	// This parameter is required.
 	NodeInfo *UpdatePipelineRequestUpdateCommandNodeInfo `json:"NodeInfo,omitempty" xml:"NodeInfo,omitempty" type:"Struct"`
@@ -173,17 +192,19 @@ type UpdatePipelineRequestUpdateCommand struct {
 	PipelineJson *string `json:"PipelineJson,omitempty" xml:"PipelineJson,omitempty"`
 	// The node type. Valid values:
 	//
-	// - 0 (default): batch integration.
+	// - 0: offline integration (default).
 	//
 	// - 1: real-time integration.
 	//
 	// - 14: workflow node.
 	//
+	// - 15: real-time workflow.
+	//
 	// example:
 	//
 	// 0
 	PipelineType *int32 `json:"PipelineType,omitempty" xml:"PipelineType,omitempty"`
-	// The scheduling configuration in JSON string format. Refer to the toJsonString method of the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.OAScheduleConfig.
+	// The schedule configuration in JSON string format. Refer to the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.OAScheduleConfig#toJsonString method.
 	//
 	// This parameter is required.
 	//
@@ -191,13 +212,13 @@ type UpdatePipelineRequestUpdateCommand struct {
 	//
 	// {"cronExpression":"0 0 0 	- 	- ?"}
 	ScheduleConfig *string `json:"ScheduleConfig,omitempty" xml:"ScheduleConfig,omitempty"`
-	// The channel configuration in JSON string format. Refer to the toJsonString method of the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.OAPipelineSetting.
+	// The channel configuration in JSON string format. Refer to the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.OAPipelineSetting#toJsonString method.
 	//
 	// example:
 	//
 	// {}
 	Settings *string `json:"Settings,omitempty" xml:"Settings,omitempty"`
-	// Specifies whether to submit the node. Default value: true.
+	// Specifies whether to submit the node. The node is submitted by default.
 	Submit *bool `json:"Submit,omitempty" xml:"Submit,omitempty"`
 }
 
@@ -305,19 +326,19 @@ func (s *UpdatePipelineRequestUpdateCommand) Validate() error {
 }
 
 type UpdatePipelineRequestUpdateCommandNodeInfo struct {
-	// The folder of the integration pipeline or workflow node (defaults to the root folder). The folder must exist. If it does not exist, call the relevant API operation to create a folder of type offlinePipeline (or unstructuredPipeline for workflows).
+	// The folder of the integration pipeline or workflow node. Default value: root directory. The folder must already exist. If it does not exist, call the relevant API operation to create a folder of type offlinePipeline (or unstructuredPipeline for workflow nodes).
 	//
 	// example:
 	//
 	// /
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// The file ID of the pipeline or workflow. Leave this parameter empty for initial creation. When updating a pipeline or workflow node, specify at least one of pipelineId, fileId, or nodeId.
+	// The pipeline or workflow file ID. Leave this parameter empty for initial creation. When updating a pipeline or workflow node, specify at least one of the following parameters: pipelineId, fileId, or nodeId.
 	//
 	// example:
 	//
 	// 123
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The scheduling node ID of the pipeline or workflow node. Leave this parameter empty for initial creation. When updating a pipeline or workflow node, specify at least one of pipelineId, fileId, or nodeId.
+	// The schedule node ID of the pipeline or workflow node. Leave this parameter empty for initial creation. When updating a pipeline or workflow node, specify at least one of the following parameters: pipelineId, fileId, or nodeId.
 	//
 	// example:
 	//
@@ -331,7 +352,7 @@ type UpdatePipelineRequestUpdateCommandNodeInfo struct {
 	//
 	// test
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The ID of the pipeline or workflow node. Leave this parameter empty for initial creation. When updating a pipeline or workflow node, specify at least one of pipelineId, fileId, or nodeId.
+	// The pipeline or workflow node ID. Leave this parameter empty for initial creation. When updating a pipeline or workflow node, specify at least one of the following parameters: pipelineId, fileId, or nodeId.
 	//
 	// example:
 	//
@@ -397,11 +418,11 @@ func (s *UpdatePipelineRequestUpdateCommandNodeInfo) Validate() error {
 }
 
 type UpdatePipelineRequestUpdateCommandPipelineConfig struct {
-	// The DAG (directed acyclic graph) link configuration that describes the connection relationships among all components or operators.
+	// The directed acyclic graph (DAG) link configuration that describes the connections between all components or operators.
 	//
 	// This parameter is required.
 	Hops []*UpdatePipelineRequestUpdateCommandPipelineConfigHops `json:"Hops,omitempty" xml:"Hops,omitempty" type:"Repeated"`
-	// The component or operator configurations, including the detailed configurations of all components or operators used.
+	// The component or operator configurations, including detailed configurations for all components or operators used.
 	//
 	// This parameter is required.
 	Steps []*UpdatePipelineRequestUpdateCommandPipelineConfigSteps `json:"Steps,omitempty" xml:"Steps,omitempty" type:"Repeated"`
@@ -456,9 +477,9 @@ func (s *UpdatePipelineRequestUpdateCommandPipelineConfig) Validate() error {
 }
 
 type UpdatePipelineRequestUpdateCommandPipelineConfigHops struct {
-	// Specifies whether the downstream condition is true for a conditional distribution component. Set this parameter to true if the downstream condition is true, or false otherwise. This parameter is not applicable to workflow nodes.
+	// Specifies the conditional distribution setting for a conditional distribution component. Set this parameter to true if the downstream connection condition is true, or false otherwise. This parameter is not applicable to workflow nodes.
 	SendTo *bool `json:"SendTo,omitempty" xml:"SendTo,omitempty"`
-	// The name of the input step, which corresponds to Steps[*].StepName.
+	// The name of the source step, which corresponds to Steps[*].StepName.
 	//
 	// This parameter is required.
 	//
@@ -466,7 +487,7 @@ type UpdatePipelineRequestUpdateCommandPipelineConfigHops struct {
 	//
 	// mysql_reader
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The name of the output step, which corresponds to Steps[*].StepName.
+	// The name of the target step, which corresponds to Steps[*].StepName.
 	//
 	// This parameter is required.
 	//
@@ -516,15 +537,15 @@ func (s *UpdatePipelineRequestUpdateCommandPipelineConfigHops) Validate() error 
 }
 
 type UpdatePipelineRequestUpdateCommandPipelineConfigSteps struct {
-	// Specifies the data distribution method when the current component has multiple downstream components. Valid values:
+	// Specifies the data distribution mode when the current component has multiple downstream components. Valid values:
 	//
-	// - true (default): The data from the current component is distributed to all downstream components in a round-robin manner. For example, if the current component has 100 records and two downstream components, each downstream component receives 50 records.
+	// - true: Data from the current component is distributed to all downstream components in a round-robin manner. For example, if the current component has 100 records and two downstream components, each downstream component receives 50 records. Default value: true.
 	//
-	// - false: The full data from the current component is sent to all downstream components. For example, if the current component has 100 records and two downstream components, each downstream component receives 100 records.
+	// - false: Full data from the current component is sent to all downstream components. For example, if the current component has 100 records and two downstream components, both downstream components receive 100 records.
 	//
 	// This parameter is not applicable to workflow nodes.
 	IsDistribute *bool `json:"IsDistribute,omitempty" xml:"IsDistribute,omitempty"`
-	// The plugin ID. Each plugin or operator has a unique identifier. Refer to the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig#stepKey. Developers should inherit the component or operator configuration class and implement the corresponding component or operator configuration. Each component or operator configuration has the same structure as the configuration created on the Dataphin console.
+	// The plugin ID. Each plugin or operator has a unique identifier. Refer to the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig#stepKey. Developers should inherit the component or operator configuration class and implement the corresponding configuration. Each component or operator configuration has the same structure as the configuration created on the Dataphin console.
 	//
 	// This parameter is required.
 	//
@@ -532,7 +553,7 @@ type UpdatePipelineRequestUpdateCommandPipelineConfigSteps struct {
 	//
 	// mysqlinput
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The specific component configuration in JSON string format. Refer to the toJsonString method of the relevant subclasses of the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig (or com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.unstructured.BaseOAUnstructuredNeuronConfig for workflow operators). Developers should inherit the component or operator configuration class and implement the corresponding component or operator configuration. Each component or operator configuration has the same structure as the node configuration created on the Dataphin console.
+	// The specific component configuration in JSON string format. Refer to the toJsonString method of the relevant subclasses of the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig (for workflow operators, use com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.unstructured.BaseOAUnstructuredNeuronConfig). Developers should inherit the component or operator configuration class and implement the corresponding configuration. Each component or operator configuration has the same structure as the node configuration created on the Dataphin console.
 	//
 	// This parameter is required.
 	//
@@ -558,7 +579,7 @@ type UpdatePipelineRequestUpdateCommandPipelineConfigSteps struct {
 	//
 	// - process: a flow control component.
 	//
-	// For workflow nodes, this parameter specifies the operator type, such as image for images and text for text. Refer to the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig#stepType. Developers should inherit the component or operator configuration class and implement the corresponding component or operator configuration. Each component or operator configuration has the same structure as the configuration created on the Dataphin console.
+	// For workflow nodes, this parameter indicates the operator type, such as image for images and text for text. Refer to the utility class com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig#stepType. Developers should inherit the component or operator configuration class and implement the corresponding configuration. Each component or operator configuration has the same structure as the configuration created on the Dataphin console.
 	//
 	// This parameter is required.
 	//

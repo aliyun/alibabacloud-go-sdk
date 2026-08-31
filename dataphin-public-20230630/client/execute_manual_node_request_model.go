@@ -15,6 +15,8 @@ type iExecuteManualNodeRequest interface {
   GetExecuteCommand() *ExecuteManualNodeRequestExecuteCommand 
   SetOpTenantId(v int64) *ExecuteManualNodeRequest
   GetOpTenantId() *int64 
+  SetOpUserId(v string) *ExecuteManualNodeRequest
+  GetOpUserId() *string 
 }
 
 type ExecuteManualNodeRequest struct {
@@ -40,6 +42,10 @@ type ExecuteManualNodeRequest struct {
   // 
   // 30001011
   OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+  // example:
+  // 
+  // 30001011
+  OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ExecuteManualNodeRequest) String() string {
@@ -62,6 +68,10 @@ func (s *ExecuteManualNodeRequest) GetOpTenantId() *int64  {
   return s.OpTenantId
 }
 
+func (s *ExecuteManualNodeRequest) GetOpUserId() *string  {
+  return s.OpUserId
+}
+
 func (s *ExecuteManualNodeRequest) SetEnv(v string) *ExecuteManualNodeRequest {
   s.Env = &v
   return s
@@ -74,6 +84,11 @@ func (s *ExecuteManualNodeRequest) SetExecuteCommand(v *ExecuteManualNodeRequest
 
 func (s *ExecuteManualNodeRequest) SetOpTenantId(v int64) *ExecuteManualNodeRequest {
   s.OpTenantId = &v
+  return s
+}
+
+func (s *ExecuteManualNodeRequest) SetOpUserId(v string) *ExecuteManualNodeRequest {
+  s.OpUserId = &v
   return s
 }
 

@@ -15,6 +15,8 @@ type iFixDataShrinkRequest interface {
 	GetFixDataCommandShrink() *string
 	SetOpTenantId(v int64) *FixDataShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *FixDataShrinkRequest
+	GetOpUserId() *string
 }
 
 type FixDataShrinkRequest struct {
@@ -40,6 +42,10 @@ type FixDataShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s FixDataShrinkRequest) String() string {
@@ -62,6 +68,10 @@ func (s *FixDataShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *FixDataShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *FixDataShrinkRequest) SetEnv(v string) *FixDataShrinkRequest {
 	s.Env = &v
 	return s
@@ -74,6 +84,11 @@ func (s *FixDataShrinkRequest) SetFixDataCommandShrink(v string) *FixDataShrinkR
 
 func (s *FixDataShrinkRequest) SetOpTenantId(v int64) *FixDataShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *FixDataShrinkRequest) SetOpUserId(v string) *FixDataShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

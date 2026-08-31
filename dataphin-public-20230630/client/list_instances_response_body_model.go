@@ -24,33 +24,33 @@ type iListInstancesResponseBody interface {
 }
 
 type ListInstancesResponseBody struct {
-	// Request error code. OK indicates a normal request.
+	// The error code. A value of OK indicates that the request was successful.
 	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Backend response HTTP code
+	// The HTTP status code returned by the backend.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Request error message
+	// The error message returned if the request failed.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Paginated result
+	// The paginated result.
 	PageResult *ListInstancesResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the request was successful
+	// Indicates whether the request was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -126,9 +126,9 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyPageResult struct {
-	// Paginated records
+	// The paginated records.
 	Data []*ListInstancesResponseBodyPageResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Total number of records
+	// The total number of records.
 	//
 	// example:
 	//
@@ -176,57 +176,57 @@ func (s *ListInstancesResponseBodyPageResult) Validate() error {
 }
 
 type ListInstancesResponseBodyPageResultData struct {
-	// Business Date
+	// The business date.
 	//
 	// example:
 	//
 	// 2024-05-30
 	BizDate *string `json:"BizDate,omitempty" xml:"BizDate,omitempty"`
-	// Schedule Time
+	// The scheduling time.
 	//
 	// example:
 	//
 	// 2024-05-30 16:47:13
 	DueTime *string `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
-	// Running duration, in seconds
+	// The execution duration. Unit: seconds.
 	//
 	// example:
 	//
 	// 60s
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// Execution End Time
+	// The execution end time.
 	//
 	// example:
 	//
 	// 2024-05-30 16:47:13
 	EndExecuteTime *int64 `json:"EndExecuteTime,omitempty" xml:"EndExecuteTime,omitempty"`
-	// Node extended information: specific information for instances from different business systems, such as pipeline fileId, whether the logical table has hierarchical dimensions, mid node information, and instance output name
+	// The extended node information, which contains properties specific to different business system instances, such as the fileId of a pipeline, whether a logical table uses hierarchy dimensions, mid node information, and instance output names.
 	//
 	// example:
 	//
 	// xx
 	ExtendInfo *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
-	// Instance ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// t_23231
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Hourly/Minutely instance sequence number
+	// The sequence number of the hourly or minutely instance.
 	//
 	// example:
 	//
 	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
-	// Node Details
+	// The node details.
 	NodeInfo *ListInstancesResponseBodyPageResultDataNodeInfo `json:"NodeInfo,omitempty" xml:"NodeInfo,omitempty" type:"Struct"`
-	// Execution start time
+	// The execution start time.
 	//
 	// example:
 	//
 	// 2024-05-30 16:46:13
 	StartExecuteTime *int64 `json:"StartExecuteTime,omitempty" xml:"StartExecuteTime,omitempty"`
-	// Instance Status
+	// The instance status.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 }
 
@@ -338,73 +338,73 @@ func (s *ListInstancesResponseBodyPageResultData) Validate() error {
 }
 
 type ListInstancesResponseBodyPageResultDataNodeInfo struct {
-	// Business Unit
+	// The business unit.
 	//
 	// example:
 	//
-	// xx测试
+	// xx_test
 	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
-	// Creation Time
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-05-30 16:47:13
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Node Creator
+	// The creator of the node.
 	Creator *ListInstancesResponseBodyPageResultDataNodeInfoCreator `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Struct"`
-	// Node Description
+	// The description of the node.
 	//
 	// example:
 	//
-	// xx 测试
+	// xx test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Whether to dry run
+	// Indicates whether the node is a dry run.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Node Source
+	// The source of the node.
 	//
 	// example:
 	//
 	// DATA_PROCES
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// Whether a development environment exists
+	// Indicates whether the node has a development environment.
 	//
 	// example:
 	//
 	// false
 	HasDev *bool `json:"HasDev,omitempty" xml:"HasDev,omitempty"`
-	// Whether a production environment exists
+	// Indicates whether the node has a production environment.
 	//
 	// example:
 	//
 	// true
 	HasProd *bool `json:"HasProd,omitempty" xml:"HasProd,omitempty"`
-	// Node ID
+	// The node ID.
 	//
 	// example:
 	//
 	// n_132331
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Last Modified Time
+	// The modification time.
 	//
 	// example:
 	//
 	// 2024-05-30 16:47:13
 	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	// Modifier
+	// The modifier of the node.
 	Modifier *ListInstancesResponseBodyPageResultDataNodeInfoModifier `json:"Modifier,omitempty" xml:"Modifier,omitempty" type:"Struct"`
-	// Node Name
+	// The name of the node.
 	//
 	// example:
 	//
-	// xx测试
+	// xx_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Owner
+	// The owner.
 	OwnerList []*ListInstancesResponseBodyPageResultDataNodeInfoOwnerList `json:"OwnerList,omitempty" xml:"OwnerList,omitempty" type:"Repeated"`
-	// Priority
+	// The priority. Valid values:
 	//
 	// - HIGHEST
 	//
@@ -416,17 +416,17 @@ type ListInstancesResponseBodyPageResultDataNodeInfo struct {
 	//
 	// - LOWEST
 	PriorityList []*string `json:"PriorityList,omitempty" xml:"PriorityList,omitempty" type:"Repeated"`
-	// Running Resource Group
+	// The schedule resource groups for execution.
 	ResourceGroupList []*string `json:"ResourceGroupList,omitempty" xml:"ResourceGroupList,omitempty" type:"Repeated"`
-	// Whether scheduling is paused
+	// Specifies whether scheduling is paused.
 	//
 	// example:
 	//
 	// false
 	SchedulePaused *bool `json:"SchedulePaused,omitempty" xml:"SchedulePaused,omitempty"`
-	// Schedule Period
+	// The scheduling period.
 	SchedulePeriodList []*string `json:"SchedulePeriodList,omitempty" xml:"SchedulePeriodList,omitempty" type:"Repeated"`
-	// Sub-business Type
+	// The sub-business type. Valid values:
 	//
 	// - MAX_COMPUTE_SQL
 	//
@@ -444,11 +444,11 @@ type ListInstancesResponseBodyPageResultDataNodeInfo struct {
 	//
 	// SHELL
 	SubDetailType *string `json:"SubDetailType,omitempty" xml:"SubDetailType,omitempty"`
-	// Node Business Type
+	// The business type of the node. Valid values:
 	//
-	// - SCRIPT: Script
+	// - SCRIPT: script.
 	//
-	// - LOGICAL_TABLE: Logical Table
+	// - LOGICAL_TABLE: logical table.
 	//
 	// example:
 	//
@@ -659,17 +659,17 @@ func (s *ListInstancesResponseBodyPageResultDataNodeInfo) Validate() error {
 }
 
 type ListInstancesResponseBodyPageResultDataNodeInfoCreator struct {
-	// User ID
+	// The user ID.
 	//
 	// example:
 	//
 	// 21313112
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Username
+	// The username.
 	//
 	// example:
 	//
-	// xx测试
+	// xx_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -704,17 +704,17 @@ func (s *ListInstancesResponseBodyPageResultDataNodeInfoCreator) Validate() erro
 }
 
 type ListInstancesResponseBodyPageResultDataNodeInfoModifier struct {
-	// Username
+	// The username.
 	//
 	// example:
 	//
 	// 21313112
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Username
+	// The username.
 	//
 	// example:
 	//
-	// xx测试
+	// xx_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -749,17 +749,17 @@ func (s *ListInstancesResponseBodyPageResultDataNodeInfoModifier) Validate() err
 }
 
 type ListInstancesResponseBodyPageResultDataNodeInfoOwnerList struct {
-	// User ID
+	// The user ID.
 	//
 	// example:
 	//
 	// 21313112
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Username
+	// The username.
 	//
 	// example:
 	//
-	// xx测试
+	// xx_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

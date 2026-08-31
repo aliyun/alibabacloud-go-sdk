@@ -13,6 +13,8 @@ type iAddTenantMembersRequest interface {
 	GetAddCommand() *AddTenantMembersRequestAddCommand
 	SetOpTenantId(v int64) *AddTenantMembersRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *AddTenantMembersRequest
+	GetOpUserId() *string
 }
 
 type AddTenantMembersRequest struct {
@@ -28,6 +30,10 @@ type AddTenantMembersRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s AddTenantMembersRequest) String() string {
@@ -46,6 +52,10 @@ func (s *AddTenantMembersRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *AddTenantMembersRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *AddTenantMembersRequest) SetAddCommand(v *AddTenantMembersRequestAddCommand) *AddTenantMembersRequest {
 	s.AddCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *AddTenantMembersRequest) SetAddCommand(v *AddTenantMembersRequestAddCom
 
 func (s *AddTenantMembersRequest) SetOpTenantId(v int64) *AddTenantMembersRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *AddTenantMembersRequest) SetOpUserId(v string) *AddTenantMembersRequest {
+	s.OpUserId = &v
 	return s
 }
 

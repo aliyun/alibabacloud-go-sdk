@@ -13,6 +13,8 @@ type iOperateInstanceShrinkRequest interface {
 	GetEnv() *string
 	SetOpTenantId(v int64) *OperateInstanceShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *OperateInstanceShrinkRequest
+	GetOpUserId() *string
 	SetOperateCommandShrink(v string) *OperateInstanceShrinkRequest
 	GetOperateCommandShrink() *string
 }
@@ -36,6 +38,10 @@ type OperateInstanceShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The operation request.
 	//
 	// This parameter is required.
@@ -58,6 +64,10 @@ func (s *OperateInstanceShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *OperateInstanceShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *OperateInstanceShrinkRequest) GetOperateCommandShrink() *string {
 	return s.OperateCommandShrink
 }
@@ -69,6 +79,11 @@ func (s *OperateInstanceShrinkRequest) SetEnv(v string) *OperateInstanceShrinkRe
 
 func (s *OperateInstanceShrinkRequest) SetOpTenantId(v int64) *OperateInstanceShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *OperateInstanceShrinkRequest) SetOpUserId(v string) *OperateInstanceShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

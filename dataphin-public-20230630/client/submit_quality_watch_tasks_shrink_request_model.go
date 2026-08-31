@@ -11,6 +11,8 @@ type iSubmitQualityWatchTasksShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *SubmitQualityWatchTasksShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *SubmitQualityWatchTasksShrinkRequest
+	GetOpUserId() *string
 	SetSubmitCommandShrink(v string) *SubmitQualityWatchTasksShrinkRequest
 	GetSubmitCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type SubmitQualityWatchTasksShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The submit command.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *SubmitQualityWatchTasksShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *SubmitQualityWatchTasksShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *SubmitQualityWatchTasksShrinkRequest) GetSubmitCommandShrink() *string {
 	return s.SubmitCommandShrink
 }
 
 func (s *SubmitQualityWatchTasksShrinkRequest) SetOpTenantId(v int64) *SubmitQualityWatchTasksShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *SubmitQualityWatchTasksShrinkRequest) SetOpUserId(v string) *SubmitQualityWatchTasksShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

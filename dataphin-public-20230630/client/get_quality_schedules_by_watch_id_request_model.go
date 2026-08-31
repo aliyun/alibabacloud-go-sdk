@@ -11,6 +11,8 @@ type iGetQualitySchedulesByWatchIdRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetQualitySchedulesByWatchIdRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetQualitySchedulesByWatchIdRequest
+	GetOpUserId() *string
 	SetWatchId(v int64) *GetQualitySchedulesByWatchIdRequest
 	GetWatchId() *int64
 }
@@ -24,6 +26,10 @@ type GetQualitySchedulesByWatchIdRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The monitored object ID.
 	//
 	// This parameter is required.
@@ -46,12 +52,21 @@ func (s *GetQualitySchedulesByWatchIdRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetQualitySchedulesByWatchIdRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetQualitySchedulesByWatchIdRequest) GetWatchId() *int64 {
 	return s.WatchId
 }
 
 func (s *GetQualitySchedulesByWatchIdRequest) SetOpTenantId(v int64) *GetQualitySchedulesByWatchIdRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetQualitySchedulesByWatchIdRequest) SetOpUserId(v string) *GetQualitySchedulesByWatchIdRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iCheckProjectHasDependencyRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *CheckProjectHasDependencyRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CheckProjectHasDependencyRequest
+	GetOpUserId() *string
 }
 
 type CheckProjectHasDependencyRequest struct {
@@ -32,6 +34,10 @@ type CheckProjectHasDependencyRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CheckProjectHasDependencyRequest) String() string {
@@ -50,6 +56,10 @@ func (s *CheckProjectHasDependencyRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CheckProjectHasDependencyRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CheckProjectHasDependencyRequest) SetId(v int64) *CheckProjectHasDependencyRequest {
 	s.Id = &v
 	return s
@@ -57,6 +67,11 @@ func (s *CheckProjectHasDependencyRequest) SetId(v int64) *CheckProjectHasDepend
 
 func (s *CheckProjectHasDependencyRequest) SetOpTenantId(v int64) *CheckProjectHasDependencyRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CheckProjectHasDependencyRequest) SetOpUserId(v string) *CheckProjectHasDependencyRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iExecKgCypherShrinkRequest interface {
   GetExecCommandShrink() *string 
   SetOpTenantId(v int64) *ExecKgCypherShrinkRequest
   GetOpTenantId() *int64 
+  SetOpUserId(v string) *ExecKgCypherShrinkRequest
+  GetOpUserId() *string 
   SetWorkspaceId(v string) *ExecKgCypherShrinkRequest
   GetWorkspaceId() *string 
 }
@@ -30,6 +32,10 @@ type ExecKgCypherShrinkRequest struct {
   // 
   // 30001011
   OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+  // example:
+  // 
+  // 30001011
+  OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
   // The model ID.
   // 
   // This parameter is required.
@@ -56,6 +62,10 @@ func (s *ExecKgCypherShrinkRequest) GetOpTenantId() *int64  {
   return s.OpTenantId
 }
 
+func (s *ExecKgCypherShrinkRequest) GetOpUserId() *string  {
+  return s.OpUserId
+}
+
 func (s *ExecKgCypherShrinkRequest) GetWorkspaceId() *string  {
   return s.WorkspaceId
 }
@@ -67,6 +77,11 @@ func (s *ExecKgCypherShrinkRequest) SetExecCommandShrink(v string) *ExecKgCypher
 
 func (s *ExecKgCypherShrinkRequest) SetOpTenantId(v int64) *ExecKgCypherShrinkRequest {
   s.OpTenantId = &v
+  return s
+}
+
+func (s *ExecKgCypherShrinkRequest) SetOpUserId(v string) *ExecKgCypherShrinkRequest {
+  s.OpUserId = &v
   return s
 }
 

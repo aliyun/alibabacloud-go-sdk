@@ -13,6 +13,8 @@ type iListDataServiceMyAppPermissionsShrinkRequest interface {
 	GetListQueryShrink() *string
 	SetOpTenantId(v int64) *ListDataServiceMyAppPermissionsShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListDataServiceMyAppPermissionsShrinkRequest
+	GetOpUserId() *string
 	SetProjectId(v int32) *ListDataServiceMyAppPermissionsShrinkRequest
 	GetProjectId() *int32
 }
@@ -30,6 +32,10 @@ type ListDataServiceMyAppPermissionsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The ID of the data service project.
 	//
 	// This parameter is required.
@@ -56,6 +62,10 @@ func (s *ListDataServiceMyAppPermissionsShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListDataServiceMyAppPermissionsShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListDataServiceMyAppPermissionsShrinkRequest) GetProjectId() *int32 {
 	return s.ProjectId
 }
@@ -67,6 +77,11 @@ func (s *ListDataServiceMyAppPermissionsShrinkRequest) SetListQueryShrink(v stri
 
 func (s *ListDataServiceMyAppPermissionsShrinkRequest) SetOpTenantId(v int64) *ListDataServiceMyAppPermissionsShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListDataServiceMyAppPermissionsShrinkRequest) SetOpUserId(v string) *ListDataServiceMyAppPermissionsShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

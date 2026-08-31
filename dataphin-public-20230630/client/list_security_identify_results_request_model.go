@@ -13,6 +13,8 @@ type iListSecurityIdentifyResultsRequest interface {
 	GetListQuery() *ListSecurityIdentifyResultsRequestListQuery
 	SetOpTenantId(v int64) *ListSecurityIdentifyResultsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListSecurityIdentifyResultsRequest
+	GetOpUserId() *string
 }
 
 type ListSecurityIdentifyResultsRequest struct {
@@ -26,6 +28,10 @@ type ListSecurityIdentifyResultsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListSecurityIdentifyResultsRequest) String() string {
@@ -44,6 +50,10 @@ func (s *ListSecurityIdentifyResultsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListSecurityIdentifyResultsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListSecurityIdentifyResultsRequest) SetListQuery(v *ListSecurityIdentifyResultsRequestListQuery) *ListSecurityIdentifyResultsRequest {
 	s.ListQuery = v
 	return s
@@ -51,6 +61,11 @@ func (s *ListSecurityIdentifyResultsRequest) SetListQuery(v *ListSecurityIdentif
 
 func (s *ListSecurityIdentifyResultsRequest) SetOpTenantId(v int64) *ListSecurityIdentifyResultsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListSecurityIdentifyResultsRequest) SetOpUserId(v string) *ListSecurityIdentifyResultsRequest {
+	s.OpUserId = &v
 	return s
 }
 

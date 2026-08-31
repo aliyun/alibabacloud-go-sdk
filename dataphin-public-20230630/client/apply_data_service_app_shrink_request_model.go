@@ -13,6 +13,8 @@ type iApplyDataServiceAppShrinkRequest interface {
 	GetApplyCommandShrink() *string
 	SetOpTenantId(v int64) *ApplyDataServiceAppShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ApplyDataServiceAppShrinkRequest
+	GetOpUserId() *string
 	SetProjectId(v int32) *ApplyDataServiceAppShrinkRequest
 	GetProjectId() *int32
 }
@@ -30,6 +32,12 @@ type ApplyDataServiceAppShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The data service project ID.
 	//
 	// This parameter is required.
@@ -56,6 +64,10 @@ func (s *ApplyDataServiceAppShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ApplyDataServiceAppShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ApplyDataServiceAppShrinkRequest) GetProjectId() *int32 {
 	return s.ProjectId
 }
@@ -67,6 +79,11 @@ func (s *ApplyDataServiceAppShrinkRequest) SetApplyCommandShrink(v string) *Appl
 
 func (s *ApplyDataServiceAppShrinkRequest) SetOpTenantId(v int64) *ApplyDataServiceAppShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ApplyDataServiceAppShrinkRequest) SetOpUserId(v string) *ApplyDataServiceAppShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

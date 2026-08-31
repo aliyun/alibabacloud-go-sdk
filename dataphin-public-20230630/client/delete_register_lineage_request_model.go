@@ -13,10 +13,12 @@ type iDeleteRegisterLineageRequest interface {
 	GetDeleteRegisterLineageCommand() *DeleteRegisterLineageRequestDeleteRegisterLineageCommand
 	SetOpTenantId(v int64) *DeleteRegisterLineageRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteRegisterLineageRequest
+	GetOpUserId() *string
 }
 
 type DeleteRegisterLineageRequest struct {
-	// The command for deleting registered lineage.
+	// The command for deleting registered data lineage.
 	//
 	// This parameter is required.
 	DeleteRegisterLineageCommand *DeleteRegisterLineageRequestDeleteRegisterLineageCommand `json:"DeleteRegisterLineageCommand,omitempty" xml:"DeleteRegisterLineageCommand,omitempty" type:"Struct"`
@@ -28,6 +30,10 @@ type DeleteRegisterLineageRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteRegisterLineageRequest) String() string {
@@ -46,6 +52,10 @@ func (s *DeleteRegisterLineageRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteRegisterLineageRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteRegisterLineageRequest) SetDeleteRegisterLineageCommand(v *DeleteRegisterLineageRequestDeleteRegisterLineageCommand) *DeleteRegisterLineageRequest {
 	s.DeleteRegisterLineageCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *DeleteRegisterLineageRequest) SetDeleteRegisterLineageCommand(v *Delete
 
 func (s *DeleteRegisterLineageRequest) SetOpTenantId(v int64) *DeleteRegisterLineageRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteRegisterLineageRequest) SetOpUserId(v string) *DeleteRegisterLineageRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -66,15 +81,15 @@ func (s *DeleteRegisterLineageRequest) Validate() error {
 }
 
 type DeleteRegisterLineageRequestDeleteRegisterLineageCommand struct {
-	// Specifies whether to automatically delete the object lineage after all detailed lineage entries are deleted. Default value: true.
+	// Specifies whether to automatically delete the object lineage after all detailedLineage entries are deleted. Default value: true.
 	CascadeDeleteLineage *bool `json:"CascadeDeleteLineage,omitempty" xml:"CascadeDeleteLineage,omitempty"`
 	// The detailed lineage relationships. For tables, the detailed lineage relationships refer to field-level lineage.
 	DetailedLineages []*DeleteRegisterLineageRequestDeleteRegisterLineageCommandDetailedLineages `json:"DetailedLineages,omitempty" xml:"DetailedLineages,omitempty" type:"Repeated"`
-	// The source of the lineage.
+	// The source of the data lineage.
 	//
 	// This parameter is required.
 	Source *DeleteRegisterLineageRequestDeleteRegisterLineageCommandSource `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
-	// The target of the lineage.
+	// The target of the data lineage.
 	//
 	// This parameter is required.
 	Target *DeleteRegisterLineageRequestDeleteRegisterLineageCommandTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
@@ -84,7 +99,7 @@ type DeleteRegisterLineageRequestDeleteRegisterLineageCommand struct {
 	//
 	// 300001234
 	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The ID of the current user.
+	// The current user ID.
 	//
 	// example:
 	//
@@ -240,13 +255,13 @@ func (s *DeleteRegisterLineageRequestDeleteRegisterLineageCommandDetailedLineage
 }
 
 type DeleteRegisterLineageRequestDeleteRegisterLineageCommandDetailedLineagesSource struct {
-	// The catalog asset property. For tables, the catalog of both compute source tables and logical tables is uniformly set to dataphin. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The catalog, which is an asset property. For tables, the catalog of compute source tables or logical tables is uniformly set to dataphin. This property is used to identify the corresponding asset by property when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property does not need to be specified.
 	//
 	// example:
 	//
 	// dataphin
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// The environment to which the asset belongs. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The environment to which the asset belongs. This property is used to identify the corresponding asset by property when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property does not need to be specified.
 	//
 	// example:
 	//
@@ -254,19 +269,19 @@ type DeleteRegisterLineageRequestDeleteRegisterLineageCommandDetailedLineagesSou
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	// The extended properties.
 	ExtProperties map[string]interface{} `json:"ExtProperties,omitempty" xml:"ExtProperties,omitempty"`
-	// The GUID of the asset. This parameter is required when referenceType is set to BY_GUID.
+	// The asset GUID. This parameter is required when ReferenceType is set to BY_GUID.
 	//
 	// example:
 	//
 	// odps.300000001.project1.table1
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	// The asset type. Set this parameter based on the actual scenario.
+	// The asset type. Set this parameter as needed.
 	//
 	// example:
 	//
 	// COLUMN
 	MetadataType *string `json:"MetadataType,omitempty" xml:"MetadataType,omitempty"`
-	// The name of the asset. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The asset name. This property is used to identify the corresponding asset by property when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property does not need to be specified.
 	//
 	// example:
 	//
@@ -284,7 +299,7 @@ type DeleteRegisterLineageRequestDeleteRegisterLineageCommandDetailedLineagesSou
 	//
 	// BY_GUID, BY_PROPERTY
 	ReferenceType *string `json:"ReferenceType,omitempty" xml:"ReferenceType,omitempty"`
-	// The schema asset property. For tables, this is typically the project or business unit. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The schema, which is an asset property. For tables, this is typically a project or business unit. This property is used to identify the corresponding asset by property when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property does not need to be specified.
 	//
 	// example:
 	//
@@ -386,13 +401,13 @@ func (s *DeleteRegisterLineageRequestDeleteRegisterLineageCommandDetailedLineage
 }
 
 type DeleteRegisterLineageRequestDeleteRegisterLineageCommandDetailedLineagesTarget struct {
-	// The catalog asset property. For tables, the catalog of both compute source tables and logical tables is uniformly set to dataphin. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The catalog, which is an asset property. For tables, the catalog of compute source tables or logical tables is uniformly set to dataphin. This property is used to identify the corresponding asset by property when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property does not need to be specified.
 	//
 	// example:
 	//
 	// dataphin
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// The environment to which the asset belongs. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The environment to which the asset belongs. This property is used to identify the corresponding asset by property when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property does not need to be specified.
 	//
 	// example:
 	//
@@ -400,19 +415,19 @@ type DeleteRegisterLineageRequestDeleteRegisterLineageCommandDetailedLineagesTar
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	// The extended properties.
 	ExtProperties map[string]interface{} `json:"ExtProperties,omitempty" xml:"ExtProperties,omitempty"`
-	// The GUID of the asset. This parameter is required when referenceType is set to BY_GUID.
+	// The asset GUID. This parameter is required when ReferenceType is set to BY_GUID.
 	//
 	// example:
 	//
 	// odps.300000001.project1.table1
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	// The asset type. Set this parameter based on the actual scenario.
+	// The asset type. Set this parameter as needed.
 	//
 	// example:
 	//
 	// COLUMN
 	MetadataType *string `json:"MetadataType,omitempty" xml:"MetadataType,omitempty"`
-	// The name of the asset. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The asset name. This property is used to identify the corresponding asset by property when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property does not need to be specified.
 	//
 	// example:
 	//
@@ -430,7 +445,7 @@ type DeleteRegisterLineageRequestDeleteRegisterLineageCommandDetailedLineagesTar
 	//
 	// BY_GUID, BY_PROPERTY
 	ReferenceType *string `json:"ReferenceType,omitempty" xml:"ReferenceType,omitempty"`
-	// The schema asset property. For tables, this is typically the project or business unit. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The schema, which is an asset property. For tables, this is typically a project or business unit. This property is used to identify the corresponding asset by property when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property does not need to be specified.
 	//
 	// example:
 	//
@@ -532,13 +547,13 @@ func (s *DeleteRegisterLineageRequestDeleteRegisterLineageCommandDetailedLineage
 }
 
 type DeleteRegisterLineageRequestDeleteRegisterLineageCommandSource struct {
-	// The catalog asset property. For tables, the catalog of both compute source tables and logical tables is uniformly set to dataphin. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The catalog, which is an asset property. For tables, the catalog of compute source tables or logical tables is uniformly set to dataphin. This property is used to identify the corresponding asset by property when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property does not need to be specified.
 	//
 	// example:
 	//
 	// dataphin
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// The environment to which the asset belongs. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The environment to which the asset belongs. This property is used to identify the corresponding asset by property when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property does not need to be specified.
 	//
 	// example:
 	//
@@ -546,19 +561,19 @@ type DeleteRegisterLineageRequestDeleteRegisterLineageCommandSource struct {
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	// The extended properties.
 	ExtProperties map[string]interface{} `json:"ExtProperties,omitempty" xml:"ExtProperties,omitempty"`
-	// The GUID of the asset. This parameter is required when referenceType is set to BY_GUID.
+	// The asset GUID. This parameter is required when ReferenceType is set to BY_GUID.
 	//
 	// example:
 	//
 	// odps.300000001.project1.table1
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	// The asset subtype. Specify this parameter only when metadataType is set to TABLE and referenceType is not set to BY_GUID.
+	// The asset subtype. Specify this parameter only when MetadataType is set to TABLE and ReferenceType is not BY_GUID.
 	//
 	// example:
 	//
 	// PHYSICAL_TABLE, PHYSICAL_VIEW, PHYSICAL_MATERIALIZED_VIEW, DATASOURCE_TABLE, DATASOURCE_VIEW, DATASOURCE_MATERIALIZED_VIEW, DIM_NORMAL, DIM_LEVEL, DIM_ENUM, DIM_VIRTUAL, FACT_EVENT, FACT_PROCESS, FACT_SNAPSHOT, SUM_BIZ_UNIT
 	MetadataSubType *string `json:"MetadataSubType,omitempty" xml:"MetadataSubType,omitempty"`
-	// The asset type. Set this parameter based on the actual scenario.
+	// The asset type. Set this parameter as needed.
 	//
 	// This parameter is required.
 	//
@@ -566,13 +581,13 @@ type DeleteRegisterLineageRequestDeleteRegisterLineageCommandSource struct {
 	//
 	// TABLE
 	MetadataType *string `json:"MetadataType,omitempty" xml:"MetadataType,omitempty"`
-	// The name of the asset. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The asset name. This property is used to identify the corresponding asset by property when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property does not need to be specified.
 	//
 	// example:
 	//
 	// table1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The asset reference data type. Valid values: BY_GUID, BY_PROPERTY.
+	// The asset reference data type. Valid values: BY_GUID and BY_PROPERTY.
 	//
 	// This parameter is required.
 	//
@@ -580,7 +595,7 @@ type DeleteRegisterLineageRequestDeleteRegisterLineageCommandSource struct {
 	//
 	// BY_GUID, BY_PROPERTY
 	ReferenceType *string `json:"ReferenceType,omitempty" xml:"ReferenceType,omitempty"`
-	// The schema asset property. For tables, this is typically the project or business unit. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The schema, which is an asset property. For tables, this is typically a project or business unit. This property is used to identify the corresponding asset by property when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property does not need to be specified.
 	//
 	// example:
 	//
@@ -682,13 +697,13 @@ func (s *DeleteRegisterLineageRequestDeleteRegisterLineageCommandSource) Validat
 }
 
 type DeleteRegisterLineageRequestDeleteRegisterLineageCommandTarget struct {
-	// The catalog asset property. For tables, the catalog of both compute source tables and logical tables is uniformly set to dataphin. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The catalog, which is an asset property. For tables, the catalog of compute source tables or logical tables is uniformly set to dataphin. This property is used to identify the corresponding asset by property when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property does not need to be specified.
 	//
 	// example:
 	//
 	// dataphin
 	Catalog *string `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
-	// The environment to which the asset belongs. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The environment to which the asset belongs. This property is used to identify the corresponding asset by property when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property does not need to be specified.
 	//
 	// example:
 	//
@@ -696,19 +711,19 @@ type DeleteRegisterLineageRequestDeleteRegisterLineageCommandTarget struct {
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
 	// The extended properties.
 	ExtProperties map[string]interface{} `json:"ExtProperties,omitempty" xml:"ExtProperties,omitempty"`
-	// The GUID of the asset. This parameter is required when referenceType is set to BY_GUID.
+	// The asset GUID. This parameter is required when ReferenceType is set to BY_GUID.
 	//
 	// example:
 	//
 	// odps.300000001.project1.table1
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
-	// The asset subtype. Specify this parameter only when metadataType is set to TABLE and referenceType is not set to BY_GUID.
+	// The asset subtype. Specify this parameter only when MetadataType is set to TABLE and ReferenceType is not BY_GUID.
 	//
 	// example:
 	//
 	// PHYSICAL_TABLE, PHYSICAL_VIEW, PHYSICAL_MATERIALIZED_VIEW, DATASOURCE_TABLE, DATASOURCE_VIEW, DATASOURCE_MATERIALIZED_VIEW, DIM_NORMAL, DIM_LEVEL, DIM_ENUM, DIM_VIRTUAL, FACT_EVENT, FACT_PROCESS, FACT_SNAPSHOT,SUM_BIZ_UNIT
 	MetadataSubType *string `json:"MetadataSubType,omitempty" xml:"MetadataSubType,omitempty"`
-	// The asset type. Set this parameter based on the actual scenario.
+	// The asset type. Set this parameter as needed.
 	//
 	// This parameter is required.
 	//
@@ -716,13 +731,13 @@ type DeleteRegisterLineageRequestDeleteRegisterLineageCommandTarget struct {
 	//
 	// TABLE
 	MetadataType *string `json:"MetadataType,omitempty" xml:"MetadataType,omitempty"`
-	// The name of the asset. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The asset name. This property is used to identify the corresponding asset by property when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property does not need to be specified.
 	//
 	// example:
 	//
 	// table1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The asset reference data type. Valid values: BY_GUID, BY_PROPERTY.
+	// The asset reference data type. Valid values: BY_GUID and BY_PROPERTY.
 	//
 	// This parameter is required.
 	//
@@ -730,7 +745,7 @@ type DeleteRegisterLineageRequestDeleteRegisterLineageCommandTarget struct {
 	//
 	// BY_GUID, BY_PROPERTY
 	ReferenceType *string `json:"ReferenceType,omitempty" xml:"ReferenceType,omitempty"`
-	// The schema asset property. For tables, this is typically the project or business unit. This property is used to identify the corresponding asset by property when referenceType is set to BY_PROPERTY. If referenceType is set to BY_GUID, this property does not need to be specified.
+	// The schema, which is an asset property. For tables, this is typically a project or business unit. This property is used to identify the corresponding asset by property when ReferenceType is set to BY_PROPERTY. If ReferenceType is set to BY_GUID, this property does not need to be specified.
 	//
 	// example:
 	//

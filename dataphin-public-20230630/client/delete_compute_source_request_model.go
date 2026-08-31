@@ -13,6 +13,8 @@ type iDeleteComputeSourceRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *DeleteComputeSourceRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteComputeSourceRequest
+	GetOpUserId() *string
 }
 
 type DeleteComputeSourceRequest struct {
@@ -32,6 +34,10 @@ type DeleteComputeSourceRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteComputeSourceRequest) String() string {
@@ -50,6 +56,10 @@ func (s *DeleteComputeSourceRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteComputeSourceRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteComputeSourceRequest) SetId(v int64) *DeleteComputeSourceRequest {
 	s.Id = &v
 	return s
@@ -57,6 +67,11 @@ func (s *DeleteComputeSourceRequest) SetId(v int64) *DeleteComputeSourceRequest 
 
 func (s *DeleteComputeSourceRequest) SetOpTenantId(v int64) *DeleteComputeSourceRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteComputeSourceRequest) SetOpUserId(v string) *DeleteComputeSourceRequest {
+	s.OpUserId = &v
 	return s
 }
 

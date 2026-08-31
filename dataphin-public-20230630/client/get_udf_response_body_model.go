@@ -36,7 +36,7 @@ type GetUdfResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend exception.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -130,15 +130,15 @@ type GetUdfResponseBodyUdfInfo struct {
 	//
 	// - 1: window function.
 	//
-	// - 2: aggregate function.
+	// - 2: statistical function.
 	//
-	// - 3: numeric function.
+	// - 3: numerical function.
 	//
 	// - 4: string function.
 	//
 	// - 5: time function.
 	//
-	// - 6: IP address utility function.
+	// - 6: IP address helper function.
 	//
 	// - 7: URL-related function.
 	//
@@ -164,7 +164,7 @@ type GetUdfResponseBodyUdfInfo struct {
 	//
 	// udf_to_lower(char x)
 	CommandHelp *string `json:"CommandHelp,omitempty" xml:"CommandHelp,omitempty"`
-	// The compute engine. Valid values: HADOOP, MAX_COMPUTE, and FLINK.
+	// The compute engine type. Valid values: HADOOP, MAX_COMPUTE, and FLINK.
 	//
 	// example:
 	//
@@ -182,19 +182,19 @@ type GetUdfResponseBodyUdfInfo struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The directory where the function is stored.
+	// The storage folder.
 	//
 	// example:
 	//
 	// /
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// The creation time, in the yyyy-MM-d HH:mm:ss format.
+	// The creation time. Format: yyyy-MM-d HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-06-10 10:01:01
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The last modification time, in the yyyy-MM-d HH:mm:ss format.
+	// The update time. Format: yyyy-MM-d HH:mm:ss.
 	//
 	// example:
 	//

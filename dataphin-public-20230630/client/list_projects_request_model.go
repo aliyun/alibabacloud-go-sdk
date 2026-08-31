@@ -13,6 +13,8 @@ type iListProjectsRequest interface {
 	GetListQuery() *ListProjectsRequestListQuery
 	SetOpTenantId(v int64) *ListProjectsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListProjectsRequest
+	GetOpUserId() *string
 }
 
 type ListProjectsRequest struct {
@@ -28,6 +30,10 @@ type ListProjectsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListProjectsRequest) String() string {
@@ -46,6 +52,10 @@ func (s *ListProjectsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListProjectsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListProjectsRequest) SetListQuery(v *ListProjectsRequestListQuery) *ListProjectsRequest {
 	s.ListQuery = v
 	return s
@@ -53,6 +63,11 @@ func (s *ListProjectsRequest) SetListQuery(v *ListProjectsRequestListQuery) *Lis
 
 func (s *ListProjectsRequest) SetOpTenantId(v int64) *ListProjectsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListProjectsRequest) SetOpUserId(v string) *ListProjectsRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -15,6 +15,8 @@ type iCreateWorkFlowByJsonShrinkRequest interface {
 	GetCreateCommandShrink() *string
 	SetOpTenantId(v int64) *CreateWorkFlowByJsonShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateWorkFlowByJsonShrinkRequest
+	GetOpUserId() *string
 }
 
 type CreateWorkFlowByJsonShrinkRequest struct {
@@ -34,6 +36,12 @@ type CreateWorkFlowByJsonShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateWorkFlowByJsonShrinkRequest) String() string {
@@ -56,6 +64,10 @@ func (s *CreateWorkFlowByJsonShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateWorkFlowByJsonShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateWorkFlowByJsonShrinkRequest) SetContextShrink(v string) *CreateWorkFlowByJsonShrinkRequest {
 	s.ContextShrink = &v
 	return s
@@ -68,6 +80,11 @@ func (s *CreateWorkFlowByJsonShrinkRequest) SetCreateCommandShrink(v string) *Cr
 
 func (s *CreateWorkFlowByJsonShrinkRequest) SetOpTenantId(v int64) *CreateWorkFlowByJsonShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateWorkFlowByJsonShrinkRequest) SetOpUserId(v string) *CreateWorkFlowByJsonShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

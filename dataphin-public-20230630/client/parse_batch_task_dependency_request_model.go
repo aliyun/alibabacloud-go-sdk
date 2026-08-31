@@ -11,6 +11,8 @@ type iParseBatchTaskDependencyRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *ParseBatchTaskDependencyRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ParseBatchTaskDependencyRequest
+	GetOpUserId() *string
 	SetParseCommand(v *ParseBatchTaskDependencyRequestParseCommand) *ParseBatchTaskDependencyRequest
 	GetParseCommand() *ParseBatchTaskDependencyRequestParseCommand
 }
@@ -24,6 +26,10 @@ type ParseBatchTaskDependencyRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The parse request.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *ParseBatchTaskDependencyRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ParseBatchTaskDependencyRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ParseBatchTaskDependencyRequest) GetParseCommand() *ParseBatchTaskDependencyRequestParseCommand {
 	return s.ParseCommand
 }
 
 func (s *ParseBatchTaskDependencyRequest) SetOpTenantId(v int64) *ParseBatchTaskDependencyRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ParseBatchTaskDependencyRequest) SetOpUserId(v string) *ParseBatchTaskDependencyRequest {
+	s.OpUserId = &v
 	return s
 }
 

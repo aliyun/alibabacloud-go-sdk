@@ -13,6 +13,8 @@ type iCreateKgEntityShrinkRequest interface {
 	GetCreateCommandShrink() *string
 	SetOpTenantId(v int64) *CreateKgEntityShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateKgEntityShrinkRequest
+	GetOpUserId() *string
 	SetWorkspaceId(v string) *CreateKgEntityShrinkRequest
 	GetWorkspaceId() *string
 }
@@ -30,6 +32,10 @@ type CreateKgEntityShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The workspace ID.
 	//
 	// This parameter is required.
@@ -56,6 +62,10 @@ func (s *CreateKgEntityShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateKgEntityShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateKgEntityShrinkRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -67,6 +77,11 @@ func (s *CreateKgEntityShrinkRequest) SetCreateCommandShrink(v string) *CreateKg
 
 func (s *CreateKgEntityShrinkRequest) SetOpTenantId(v int64) *CreateKgEntityShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateKgEntityShrinkRequest) SetOpUserId(v string) *CreateKgEntityShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

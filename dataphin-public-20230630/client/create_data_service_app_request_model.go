@@ -13,6 +13,8 @@ type iCreateDataServiceAppRequest interface {
 	GetCreateCommand() *CreateDataServiceAppRequestCreateCommand
 	SetOpTenantId(v int64) *CreateDataServiceAppRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateDataServiceAppRequest
+	GetOpUserId() *string
 }
 
 type CreateDataServiceAppRequest struct {
@@ -28,6 +30,12 @@ type CreateDataServiceAppRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateDataServiceAppRequest) String() string {
@@ -46,6 +54,10 @@ func (s *CreateDataServiceAppRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateDataServiceAppRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateDataServiceAppRequest) SetCreateCommand(v *CreateDataServiceAppRequestCreateCommand) *CreateDataServiceAppRequest {
 	s.CreateCommand = v
 	return s
@@ -53,6 +65,11 @@ func (s *CreateDataServiceAppRequest) SetCreateCommand(v *CreateDataServiceAppRe
 
 func (s *CreateDataServiceAppRequest) SetOpTenantId(v int64) *CreateDataServiceAppRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateDataServiceAppRequest) SetOpUserId(v string) *CreateDataServiceAppRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -90,9 +107,9 @@ type CreateDataServiceAppRequestCreateCommand struct {
 	//
 	// example:
 	//
-	// 默认应用
+	// Default application
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The app secret.
+	// The application secret.
 	//
 	// If this parameter is not specified, the system automatically generates a new AppSecret value.
 	//
@@ -108,13 +125,13 @@ type CreateDataServiceAppRequestCreateCommand struct {
 	//
 	// This parameter is required.
 	OwnerIds []*string `json:"OwnerIds,omitempty" xml:"OwnerIds,omitempty" type:"Repeated"`
-	// Common scenarios.
+	// The common scenarios.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 数据分析
+	// Data analytics
 	Scenarios *string `json:"Scenarios,omitempty" xml:"Scenarios,omitempty"`
 }
 

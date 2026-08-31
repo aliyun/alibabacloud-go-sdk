@@ -11,6 +11,8 @@ type iUpdateBatchTaskRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateBatchTaskRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateBatchTaskRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateBatchTaskRequestUpdateCommand) *UpdateBatchTaskRequest
 	GetUpdateCommand() *UpdateBatchTaskRequestUpdateCommand
 }
@@ -24,6 +26,12 @@ type UpdateBatchTaskRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update request.
 	//
 	// This parameter is required.
@@ -42,12 +50,21 @@ func (s *UpdateBatchTaskRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateBatchTaskRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateBatchTaskRequest) GetUpdateCommand() *UpdateBatchTaskRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *UpdateBatchTaskRequest) SetOpTenantId(v int64) *UpdateBatchTaskRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequest) SetOpUserId(v string) *UpdateBatchTaskRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -66,7 +83,7 @@ func (s *UpdateBatchTaskRequest) Validate() error {
 }
 
 type UpdateBatchTaskRequestUpdateCommand struct {
-	// The node code.
+	// The code of the node.
 	//
 	// This parameter is required.
 	//
@@ -74,45 +91,47 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	//
 	// show tables;
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The cron expression for automatic scheduling. Refer to the Linux cron expression syntax.
+	// The cron expression for automatic scheduling. Refer to Linux cron expressions.
 	//
 	// example:
 	//
 	// 0 0 1 	- 	- ?
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// The custom scheduling interval configuration.
+	// The custom schedule interval configuration.
 	CustomScheduleConfig *UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig `json:"CustomScheduleConfig,omitempty" xml:"CustomScheduleConfig,omitempty" type:"Struct"`
-	// The catalog for database SQL nodes. This parameter takes effect only for data source types that require a catalog, such as Presto.
+	// The catalog for database SQL nodes. This parameter applies only to datasource types that require a catalog, such as Presto.
 	//
 	// example:
 	//
 	// mysql_catalog
 	DataSourceCatalog *string `json:"DataSourceCatalog,omitempty" xml:"DataSourceCatalog,omitempty"`
-	// The data source ID for database SQL nodes.
+	// The datasource ID for database SQL nodes.
 	//
 	// example:
 	//
 	// 12131111
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The schema for database SQL nodes. This parameter takes effect only for data source types that require a schema, such as Oracle.
+	// The schema for database SQL nodes. This parameter applies only to datasource types that require a schema, such as Oracle.
 	//
 	// example:
 	//
 	// erp
 	DataSourceSchema *string `json:"DataSourceSchema,omitempty" xml:"DataSourceSchema,omitempty"`
-	// The execution engine for the node, such as a Python node. Valid values:
+	// The list of development owner IDs.
+	DevelopOwnerIdList []*string `json:"DevelopOwnerIdList,omitempty" xml:"DevelopOwnerIdList,omitempty" type:"Repeated"`
+	// The execution engine for the node, such as for Python nodes. Valid values:
 	//
 	// - PYTHON2_7
 	//
 	// - PYTHON3_7
 	//
-	// - PYTHON3_11.
+	// - PYTHON3_11
 	//
 	// example:
 	//
 	// PYTHON3_7
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The ID of the node in the folder tree.
+	// The node ID in the folder tree.
 	//
 	// This parameter is required.
 	//
@@ -132,7 +151,7 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	//
 	// example:
 	//
-	// xx测试
+	// Test_description
 	NodeDescription *string `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
 	// The list of node output names.
 	NodeOutputNameList []*string `json:"NodeOutputNameList,omitempty" xml:"NodeOutputNameList,omitempty" type:"Repeated"`
@@ -164,9 +183,9 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	//
 	// 10121101
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The third-party Python packages that the node depends on.
+	// The third-party Python packages required by the node.
 	PythonModuleList []*string `json:"PythonModuleList,omitempty" xml:"PythonModuleList,omitempty" type:"Repeated"`
-	// The scheduling period. Valid values:
+	// The schedule period. Valid values:
 	//
 	// - YEARLY
 	//
@@ -178,7 +197,7 @@ type UpdateBatchTaskRequestUpdateCommand struct {
 	//
 	// - HOURLY
 	//
-	// - MINUTELY.
+	// - MINUTELY
 	//
 	// example:
 	//
@@ -236,6 +255,10 @@ func (s *UpdateBatchTaskRequestUpdateCommand) GetDataSourceId() *string {
 
 func (s *UpdateBatchTaskRequestUpdateCommand) GetDataSourceSchema() *string {
 	return s.DataSourceSchema
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) GetDevelopOwnerIdList() []*string {
+	return s.DevelopOwnerIdList
 }
 
 func (s *UpdateBatchTaskRequestUpdateCommand) GetEngine() *string {
@@ -321,6 +344,11 @@ func (s *UpdateBatchTaskRequestUpdateCommand) SetDataSourceId(v string) *UpdateB
 
 func (s *UpdateBatchTaskRequestUpdateCommand) SetDataSourceSchema(v string) *UpdateBatchTaskRequestUpdateCommand {
 	s.DataSourceSchema = &v
+	return s
+}
+
+func (s *UpdateBatchTaskRequestUpdateCommand) SetDevelopOwnerIdList(v []*string) *UpdateBatchTaskRequestUpdateCommand {
+	s.DevelopOwnerIdList = v
 	return s
 }
 
@@ -445,7 +473,7 @@ type UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig struct {
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The interval unit. Valid values:
 	//
-	// - MINUTE: minute
+	// - MINUTE: minute.
 	//
 	// - HOUR: hour.
 	//
@@ -455,7 +483,7 @@ type UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig struct {
 	//
 	// HOUR
 	IntervalUnit *string `json:"IntervalUnit,omitempty" xml:"IntervalUnit,omitempty"`
-	// The scheduling period. Valid values:
+	// The schedule period. Valid values:
 	//
 	// - YEARLY
 	//
@@ -467,7 +495,7 @@ type UpdateBatchTaskRequestUpdateCommandCustomScheduleConfig struct {
 	//
 	// - HOURLY
 	//
-	// - MINUTELY.
+	// - MINUTELY
 	//
 	// This parameter is required.
 	//
@@ -652,7 +680,7 @@ type UpdateBatchTaskRequestUpdateCommandUpStreamList struct {
 	//
 	// PHYSICAL
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The period offset. A value of 0 indicates a same-period dependency. A positive integer indicates a dependency on the previous N periods.
+	// The period difference. A value of 0 indicates same-period dependency. A positive number indicates dependency on the previous N periods.
 	//
 	// This parameter is required.
 	//
@@ -660,7 +688,7 @@ type UpdateBatchTaskRequestUpdateCommandUpStreamList struct {
 	//
 	// 1
 	PeriodDiff *int32 `json:"PeriodDiff,omitempty" xml:"PeriodDiff,omitempty"`
-	// Specifies whether the upstream node is enabled.
+	// Indicates whether the upstream node is enabled.
 	SourceNodeEnabled *bool `json:"SourceNodeEnabled,omitempty" xml:"SourceNodeEnabled,omitempty"`
 	// The ID of the upstream node.
 	//
@@ -789,7 +817,7 @@ type UpdateBatchTaskRequestUpdateCommandUpStreamListDependPeriod struct {
 	//
 	// 1
 	PeriodOffset *int32 `json:"PeriodOffset,omitempty" xml:"PeriodOffset,omitempty"`
-	// The dependency period type. Valid values:
+	// The type of the dependency period. Valid values:
 	//
 	// - CURRENT_PERIOD: current period.
 	//

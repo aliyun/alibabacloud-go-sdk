@@ -17,6 +17,8 @@ type iGetKgNeighborRequest interface {
 	GetNeighborsQuery() *GetKgNeighborRequestNeighborsQuery
 	SetOpTenantId(v int64) *GetKgNeighborRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetKgNeighborRequest
+	GetOpUserId() *string
 	SetWorkspaceId(v string) *GetKgNeighborRequest
 	GetWorkspaceId() *string
 }
@@ -48,6 +50,10 @@ type GetKgNeighborRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The model ID.
 	//
 	// This parameter is required.
@@ -82,6 +88,10 @@ func (s *GetKgNeighborRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetKgNeighborRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetKgNeighborRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -103,6 +113,11 @@ func (s *GetKgNeighborRequest) SetNeighborsQuery(v *GetKgNeighborRequestNeighbor
 
 func (s *GetKgNeighborRequest) SetOpTenantId(v int64) *GetKgNeighborRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetKgNeighborRequest) SetOpUserId(v string) *GetKgNeighborRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iGetQualityRuleRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *GetQualityRuleRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetQualityRuleRequest
+	GetOpUserId() *string
 }
 
 type GetQualityRuleRequest struct {
@@ -32,6 +34,10 @@ type GetQualityRuleRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetQualityRuleRequest) String() string {
@@ -50,6 +56,10 @@ func (s *GetQualityRuleRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetQualityRuleRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetQualityRuleRequest) SetId(v int64) *GetQualityRuleRequest {
 	s.Id = &v
 	return s
@@ -57,6 +67,11 @@ func (s *GetQualityRuleRequest) SetId(v int64) *GetQualityRuleRequest {
 
 func (s *GetQualityRuleRequest) SetOpTenantId(v int64) *GetQualityRuleRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetQualityRuleRequest) SetOpUserId(v string) *GetQualityRuleRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -13,10 +13,12 @@ type iAssignQualityRuleOfAllRuleScopeSchedulesRequest interface {
 	GetAssignCommand() *AssignQualityRuleOfAllRuleScopeSchedulesRequestAssignCommand
 	SetOpTenantId(v int64) *AssignQualityRuleOfAllRuleScopeSchedulesRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *AssignQualityRuleOfAllRuleScopeSchedulesRequest
+	GetOpUserId() *string
 }
 
 type AssignQualityRuleOfAllRuleScopeSchedulesRequest struct {
-	// The assignment binding instruction.
+	// The assignment binding command.
 	//
 	// This parameter is required.
 	AssignCommand *AssignQualityRuleOfAllRuleScopeSchedulesRequestAssignCommand `json:"AssignCommand,omitempty" xml:"AssignCommand,omitempty" type:"Struct"`
@@ -28,6 +30,12 @@ type AssignQualityRuleOfAllRuleScopeSchedulesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s AssignQualityRuleOfAllRuleScopeSchedulesRequest) String() string {
@@ -46,6 +54,10 @@ func (s *AssignQualityRuleOfAllRuleScopeSchedulesRequest) GetOpTenantId() *int64
 	return s.OpTenantId
 }
 
+func (s *AssignQualityRuleOfAllRuleScopeSchedulesRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *AssignQualityRuleOfAllRuleScopeSchedulesRequest) SetAssignCommand(v *AssignQualityRuleOfAllRuleScopeSchedulesRequestAssignCommand) *AssignQualityRuleOfAllRuleScopeSchedulesRequest {
 	s.AssignCommand = v
 	return s
@@ -53,6 +65,11 @@ func (s *AssignQualityRuleOfAllRuleScopeSchedulesRequest) SetAssignCommand(v *As
 
 func (s *AssignQualityRuleOfAllRuleScopeSchedulesRequest) SetOpTenantId(v int64) *AssignQualityRuleOfAllRuleScopeSchedulesRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *AssignQualityRuleOfAllRuleScopeSchedulesRequest) SetOpUserId(v string) *AssignQualityRuleOfAllRuleScopeSchedulesRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -66,15 +83,15 @@ func (s *AssignQualityRuleOfAllRuleScopeSchedulesRequest) Validate() error {
 }
 
 type AssignQualityRuleOfAllRuleScopeSchedulesRequestAssignCommand struct {
-	// The rule IDs.
+	// The rule ID.
 	//
 	// This parameter is required.
 	RuleIdList []*int64 `json:"RuleIdList,omitempty" xml:"RuleIdList,omitempty" type:"Repeated"`
-	// The schedule IDs.
+	// The schedule ID.
 	//
 	// This parameter is required.
 	ScheduleIdList []*int64 `json:"ScheduleIdList,omitempty" xml:"ScheduleIdList,omitempty" type:"Repeated"`
-	// The ID of the monitored object.
+	// The monitored object ID.
 	//
 	// This parameter is required.
 	//

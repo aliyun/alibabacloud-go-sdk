@@ -13,6 +13,8 @@ type iReplaceProjectWhiteListsRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *ReplaceProjectWhiteListsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ReplaceProjectWhiteListsRequest
+	GetOpUserId() *string
 	SetReplaceCommand(v *ReplaceProjectWhiteListsRequestReplaceCommand) *ReplaceProjectWhiteListsRequest
 	GetReplaceCommand() *ReplaceProjectWhiteListsRequestReplaceCommand
 }
@@ -34,6 +36,10 @@ type ReplaceProjectWhiteListsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The edit command.
 	//
 	// This parameter is required.
@@ -56,6 +62,10 @@ func (s *ReplaceProjectWhiteListsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ReplaceProjectWhiteListsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ReplaceProjectWhiteListsRequest) GetReplaceCommand() *ReplaceProjectWhiteListsRequestReplaceCommand {
 	return s.ReplaceCommand
 }
@@ -67,6 +77,11 @@ func (s *ReplaceProjectWhiteListsRequest) SetId(v int64) *ReplaceProjectWhiteLis
 
 func (s *ReplaceProjectWhiteListsRequest) SetOpTenantId(v int64) *ReplaceProjectWhiteListsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ReplaceProjectWhiteListsRequest) SetOpUserId(v string) *ReplaceProjectWhiteListsRequest {
+	s.OpUserId = &v
 	return s
 }
 

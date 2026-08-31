@@ -13,6 +13,8 @@ type iGetDataSourceDependenciesRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *GetDataSourceDependenciesRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetDataSourceDependenciesRequest
+	GetOpUserId() *string
 }
 
 type GetDataSourceDependenciesRequest struct {
@@ -32,6 +34,10 @@ type GetDataSourceDependenciesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetDataSourceDependenciesRequest) String() string {
@@ -50,6 +56,10 @@ func (s *GetDataSourceDependenciesRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetDataSourceDependenciesRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetDataSourceDependenciesRequest) SetId(v int64) *GetDataSourceDependenciesRequest {
 	s.Id = &v
 	return s
@@ -57,6 +67,11 @@ func (s *GetDataSourceDependenciesRequest) SetId(v int64) *GetDataSourceDependen
 
 func (s *GetDataSourceDependenciesRequest) SetOpTenantId(v int64) *GetDataSourceDependenciesRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetDataSourceDependenciesRequest) SetOpUserId(v string) *GetDataSourceDependenciesRequest {
+	s.OpUserId = &v
 	return s
 }
 

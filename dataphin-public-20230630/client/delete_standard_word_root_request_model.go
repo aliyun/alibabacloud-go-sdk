@@ -13,6 +13,8 @@ type iDeleteStandardWordRootRequest interface {
 	GetName() *string
 	SetOpTenantId(v int64) *DeleteStandardWordRootRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteStandardWordRootRequest
+	GetOpUserId() *string
 }
 
 type DeleteStandardWordRootRequest struct {
@@ -32,6 +34,10 @@ type DeleteStandardWordRootRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteStandardWordRootRequest) String() string {
@@ -50,6 +56,10 @@ func (s *DeleteStandardWordRootRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteStandardWordRootRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteStandardWordRootRequest) SetName(v string) *DeleteStandardWordRootRequest {
 	s.Name = &v
 	return s
@@ -57,6 +67,11 @@ func (s *DeleteStandardWordRootRequest) SetName(v string) *DeleteStandardWordRoo
 
 func (s *DeleteStandardWordRootRequest) SetOpTenantId(v int64) *DeleteStandardWordRootRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteStandardWordRootRequest) SetOpUserId(v string) *DeleteStandardWordRootRequest {
+	s.OpUserId = &v
 	return s
 }
 

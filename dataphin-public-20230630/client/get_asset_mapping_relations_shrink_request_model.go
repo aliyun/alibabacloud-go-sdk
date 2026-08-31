@@ -13,6 +13,8 @@ type iGetAssetMappingRelationsShrinkRequest interface {
 	GetAssetMappingQueryShrink() *string
 	SetOpTenantId(v int64) *GetAssetMappingRelationsShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetAssetMappingRelationsShrinkRequest
+	GetOpUserId() *string
 }
 
 type GetAssetMappingRelationsShrinkRequest struct {
@@ -26,6 +28,10 @@ type GetAssetMappingRelationsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetAssetMappingRelationsShrinkRequest) String() string {
@@ -44,6 +50,10 @@ func (s *GetAssetMappingRelationsShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetAssetMappingRelationsShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetAssetMappingRelationsShrinkRequest) SetAssetMappingQueryShrink(v string) *GetAssetMappingRelationsShrinkRequest {
 	s.AssetMappingQueryShrink = &v
 	return s
@@ -51,6 +61,11 @@ func (s *GetAssetMappingRelationsShrinkRequest) SetAssetMappingQueryShrink(v str
 
 func (s *GetAssetMappingRelationsShrinkRequest) SetOpTenantId(v int64) *GetAssetMappingRelationsShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetAssetMappingRelationsShrinkRequest) SetOpUserId(v string) *GetAssetMappingRelationsShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iGetMyTenantsShrinkRequest interface {
 	GetFeatureCodeListShrink() *string
 	SetOpTenantId(v int64) *GetMyTenantsShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetMyTenantsShrinkRequest
+	GetOpUserId() *string
 }
 
 type GetMyTenantsShrinkRequest struct {
@@ -26,6 +28,10 @@ type GetMyTenantsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetMyTenantsShrinkRequest) String() string {
@@ -44,6 +50,10 @@ func (s *GetMyTenantsShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetMyTenantsShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetMyTenantsShrinkRequest) SetFeatureCodeListShrink(v string) *GetMyTenantsShrinkRequest {
 	s.FeatureCodeListShrink = &v
 	return s
@@ -51,6 +61,11 @@ func (s *GetMyTenantsShrinkRequest) SetFeatureCodeListShrink(v string) *GetMyTen
 
 func (s *GetMyTenantsShrinkRequest) SetOpTenantId(v int64) *GetMyTenantsShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetMyTenantsShrinkRequest) SetOpUserId(v string) *GetMyTenantsShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

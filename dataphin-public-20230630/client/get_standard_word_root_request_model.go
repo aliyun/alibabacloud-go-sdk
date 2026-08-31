@@ -15,6 +15,8 @@ type iGetStandardWordRootRequest interface {
 	GetNullable() *bool
 	SetOpTenantId(v int64) *GetStandardWordRootRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetStandardWordRootRequest
+	GetOpUserId() *string
 }
 
 type GetStandardWordRootRequest struct {
@@ -36,6 +38,10 @@ type GetStandardWordRootRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetStandardWordRootRequest) String() string {
@@ -58,6 +64,10 @@ func (s *GetStandardWordRootRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetStandardWordRootRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetStandardWordRootRequest) SetName(v string) *GetStandardWordRootRequest {
 	s.Name = &v
 	return s
@@ -70,6 +80,11 @@ func (s *GetStandardWordRootRequest) SetNullable(v bool) *GetStandardWordRootReq
 
 func (s *GetStandardWordRootRequest) SetOpTenantId(v int64) *GetStandardWordRootRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetStandardWordRootRequest) SetOpUserId(v string) *GetStandardWordRootRequest {
+	s.OpUserId = &v
 	return s
 }
 

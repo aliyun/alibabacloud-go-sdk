@@ -13,6 +13,8 @@ type iCreateDataServiceAppGroupRequest interface {
 	GetGroupName() *string
 	SetOpTenantId(v int64) *CreateDataServiceAppGroupRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateDataServiceAppGroupRequest
+	GetOpUserId() *string
 }
 
 type CreateDataServiceAppGroupRequest struct {
@@ -32,6 +34,12 @@ type CreateDataServiceAppGroupRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateDataServiceAppGroupRequest) String() string {
@@ -50,6 +58,10 @@ func (s *CreateDataServiceAppGroupRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateDataServiceAppGroupRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateDataServiceAppGroupRequest) SetGroupName(v string) *CreateDataServiceAppGroupRequest {
 	s.GroupName = &v
 	return s
@@ -57,6 +69,11 @@ func (s *CreateDataServiceAppGroupRequest) SetGroupName(v string) *CreateDataSer
 
 func (s *CreateDataServiceAppGroupRequest) SetOpTenantId(v int64) *CreateDataServiceAppGroupRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateDataServiceAppGroupRequest) SetOpUserId(v string) *CreateDataServiceAppGroupRequest {
+	s.OpUserId = &v
 	return s
 }
 

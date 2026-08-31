@@ -13,6 +13,8 @@ type iCreateResourceRequest interface {
 	GetCreateCommand() *CreateResourceRequestCreateCommand
 	SetOpTenantId(v int64) *CreateResourceRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateResourceRequest
+	GetOpUserId() *string
 }
 
 type CreateResourceRequest struct {
@@ -28,6 +30,10 @@ type CreateResourceRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateResourceRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateResourceRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateResourceRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateResourceRequest) SetCreateCommand(v *CreateResourceRequestCreateCommand) *CreateResourceRequest {
 	s.CreateCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateResourceRequest) SetCreateCommand(v *CreateResourceRequestCreateC
 
 func (s *CreateResourceRequest) SetOpTenantId(v int64) *CreateResourceRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateResourceRequest) SetOpUserId(v string) *CreateResourceRequest {
+	s.OpUserId = &v
 	return s
 }
 

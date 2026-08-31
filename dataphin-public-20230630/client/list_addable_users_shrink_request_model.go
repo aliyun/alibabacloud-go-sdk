@@ -13,6 +13,8 @@ type iListAddableUsersShrinkRequest interface {
 	GetListQueryShrink() *string
 	SetOpTenantId(v int64) *ListAddableUsersShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListAddableUsersShrinkRequest
+	GetOpUserId() *string
 }
 
 type ListAddableUsersShrinkRequest struct {
@@ -28,6 +30,10 @@ type ListAddableUsersShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListAddableUsersShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *ListAddableUsersShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListAddableUsersShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListAddableUsersShrinkRequest) SetListQueryShrink(v string) *ListAddableUsersShrinkRequest {
 	s.ListQueryShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *ListAddableUsersShrinkRequest) SetListQueryShrink(v string) *ListAddabl
 
 func (s *ListAddableUsersShrinkRequest) SetOpTenantId(v int64) *ListAddableUsersShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListAddableUsersShrinkRequest) SetOpUserId(v string) *ListAddableUsersShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

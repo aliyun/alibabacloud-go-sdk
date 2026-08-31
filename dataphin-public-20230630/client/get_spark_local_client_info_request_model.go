@@ -13,6 +13,8 @@ type iGetSparkLocalClientInfoRequest interface {
 	GetEnvEnum() *string
 	SetOpTenantId(v int64) *GetSparkLocalClientInfoRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetSparkLocalClientInfoRequest
+	GetOpUserId() *string
 	SetProjectId(v string) *GetSparkLocalClientInfoRequest
 	GetProjectId() *string
 }
@@ -38,6 +40,10 @@ type GetSparkLocalClientInfoRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -64,6 +70,10 @@ func (s *GetSparkLocalClientInfoRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetSparkLocalClientInfoRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetSparkLocalClientInfoRequest) GetProjectId() *string {
 	return s.ProjectId
 }
@@ -75,6 +85,11 @@ func (s *GetSparkLocalClientInfoRequest) SetEnvEnum(v string) *GetSparkLocalClie
 
 func (s *GetSparkLocalClientInfoRequest) SetOpTenantId(v int64) *GetSparkLocalClientInfoRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetSparkLocalClientInfoRequest) SetOpUserId(v string) *GetSparkLocalClientInfoRequest {
+	s.OpUserId = &v
 	return s
 }
 

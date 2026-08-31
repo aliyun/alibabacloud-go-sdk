@@ -15,6 +15,8 @@ type iGetQueueEngineVersionByEnvRequest interface {
 	GetEnv() *string
 	SetOpTenantId(v int64) *GetQueueEngineVersionByEnvRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetQueueEngineVersionByEnvRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *GetQueueEngineVersionByEnvRequest
 	GetProjectId() *int64
 	SetQueueName(v string) *GetQueueEngineVersionByEnvRequest
@@ -48,6 +50,12 @@ type GetQueueEngineVersionByEnvRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -94,6 +102,10 @@ func (s *GetQueueEngineVersionByEnvRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetQueueEngineVersionByEnvRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetQueueEngineVersionByEnvRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -118,6 +130,11 @@ func (s *GetQueueEngineVersionByEnvRequest) SetEnv(v string) *GetQueueEngineVers
 
 func (s *GetQueueEngineVersionByEnvRequest) SetOpTenantId(v int64) *GetQueueEngineVersionByEnvRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetQueueEngineVersionByEnvRequest) SetOpUserId(v string) *GetQueueEngineVersionByEnvRequest {
+	s.OpUserId = &v
 	return s
 }
 

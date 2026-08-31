@@ -13,6 +13,8 @@ type iListDataDomainsRequest interface {
 	GetListQuery() *ListDataDomainsRequestListQuery
 	SetOpTenantId(v int64) *ListDataDomainsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListDataDomainsRequest
+	GetOpUserId() *string
 }
 
 type ListDataDomainsRequest struct {
@@ -28,6 +30,10 @@ type ListDataDomainsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListDataDomainsRequest) String() string {
@@ -46,6 +52,10 @@ func (s *ListDataDomainsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListDataDomainsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListDataDomainsRequest) SetListQuery(v *ListDataDomainsRequestListQuery) *ListDataDomainsRequest {
 	s.ListQuery = v
 	return s
@@ -53,6 +63,11 @@ func (s *ListDataDomainsRequest) SetListQuery(v *ListDataDomainsRequestListQuery
 
 func (s *ListDataDomainsRequest) SetOpTenantId(v int64) *ListDataDomainsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListDataDomainsRequest) SetOpUserId(v string) *ListDataDomainsRequest {
+	s.OpUserId = &v
 	return s
 }
 

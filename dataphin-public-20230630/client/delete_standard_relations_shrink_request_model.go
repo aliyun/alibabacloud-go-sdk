@@ -13,6 +13,8 @@ type iDeleteStandardRelationsShrinkRequest interface {
 	GetDeleteCommandShrink() *string
 	SetOpTenantId(v int64) *DeleteStandardRelationsShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteStandardRelationsShrinkRequest
+	GetOpUserId() *string
 }
 
 type DeleteStandardRelationsShrinkRequest struct {
@@ -28,6 +30,10 @@ type DeleteStandardRelationsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteStandardRelationsShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *DeleteStandardRelationsShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteStandardRelationsShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteStandardRelationsShrinkRequest) SetDeleteCommandShrink(v string) *DeleteStandardRelationsShrinkRequest {
 	s.DeleteCommandShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *DeleteStandardRelationsShrinkRequest) SetDeleteCommandShrink(v string) 
 
 func (s *DeleteStandardRelationsShrinkRequest) SetOpTenantId(v int64) *DeleteStandardRelationsShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteStandardRelationsShrinkRequest) SetOpUserId(v string) *DeleteStandardRelationsShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

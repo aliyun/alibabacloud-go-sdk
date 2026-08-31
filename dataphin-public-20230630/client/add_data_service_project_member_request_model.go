@@ -13,6 +13,8 @@ type iAddDataServiceProjectMemberRequest interface {
 	GetAddCommand() *AddDataServiceProjectMemberRequestAddCommand
 	SetOpTenantId(v int64) *AddDataServiceProjectMemberRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *AddDataServiceProjectMemberRequest
+	GetOpUserId() *string
 	SetProjectId(v int32) *AddDataServiceProjectMemberRequest
 	GetProjectId() *int32
 }
@@ -30,6 +32,10 @@ type AddDataServiceProjectMemberRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The data service project ID.
 	//
 	// This parameter is required.
@@ -56,6 +62,10 @@ func (s *AddDataServiceProjectMemberRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *AddDataServiceProjectMemberRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *AddDataServiceProjectMemberRequest) GetProjectId() *int32 {
 	return s.ProjectId
 }
@@ -67,6 +77,11 @@ func (s *AddDataServiceProjectMemberRequest) SetAddCommand(v *AddDataServiceProj
 
 func (s *AddDataServiceProjectMemberRequest) SetOpTenantId(v int64) *AddDataServiceProjectMemberRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *AddDataServiceProjectMemberRequest) SetOpUserId(v string) *AddDataServiceProjectMemberRequest {
+	s.OpUserId = &v
 	return s
 }
 

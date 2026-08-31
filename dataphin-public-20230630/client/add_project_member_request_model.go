@@ -15,10 +15,12 @@ type iAddProjectMemberRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *AddProjectMemberRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *AddProjectMemberRequest
+	GetOpUserId() *string
 }
 
 type AddProjectMemberRequest struct {
-	// The command to add members.
+	// The command for adding members.
 	//
 	// This parameter is required.
 	AddCommand *AddProjectMemberRequestAddCommand `json:"AddCommand,omitempty" xml:"AddCommand,omitempty" type:"Struct"`
@@ -38,6 +40,12 @@ type AddProjectMemberRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s AddProjectMemberRequest) String() string {
@@ -60,6 +68,10 @@ func (s *AddProjectMemberRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *AddProjectMemberRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *AddProjectMemberRequest) SetAddCommand(v *AddProjectMemberRequestAddCommand) *AddProjectMemberRequest {
 	s.AddCommand = v
 	return s
@@ -75,6 +87,11 @@ func (s *AddProjectMemberRequest) SetOpTenantId(v int64) *AddProjectMemberReques
 	return s
 }
 
+func (s *AddProjectMemberRequest) SetOpUserId(v string) *AddProjectMemberRequest {
+	s.OpUserId = &v
+	return s
+}
+
 func (s *AddProjectMemberRequest) Validate() error {
 	if s.AddCommand != nil {
 		if err := s.AddCommand.Validate(); err != nil {
@@ -85,7 +102,7 @@ func (s *AddProjectMemberRequest) Validate() error {
 }
 
 type AddProjectMemberRequestAddCommand struct {
-	// The environment identifier. Valid values: DEV and PROD.
+	// The environment identifier. Valid values: DEV, PROD.
 	//
 	// This parameter is required.
 	//
@@ -139,7 +156,7 @@ func (s *AddProjectMemberRequestAddCommand) Validate() error {
 }
 
 type AddProjectMemberRequestAddCommandUserList struct {
-	// The member role. Valid values: 1: project administrator. 2: developer. 3: visitor. 4: analyst. 5: O&M engineer.
+	// The member roles. Valid values: 1: project administrator. 2: developer. 3: visitor. 4: analyst. 5: O&M engineer.
 	//
 	// This parameter is required.
 	RoleList []*int32 `json:"RoleList,omitempty" xml:"RoleList,omitempty" type:"Repeated"`

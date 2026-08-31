@@ -13,6 +13,8 @@ type iCreateStandardLookupTableRequest interface {
 	GetCreateCommand() *CreateStandardLookupTableRequestCreateCommand
 	SetOpTenantId(v int64) *CreateStandardLookupTableRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateStandardLookupTableRequest
+	GetOpUserId() *string
 }
 
 type CreateStandardLookupTableRequest struct {
@@ -28,6 +30,10 @@ type CreateStandardLookupTableRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateStandardLookupTableRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateStandardLookupTableRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateStandardLookupTableRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateStandardLookupTableRequest) SetCreateCommand(v *CreateStandardLookupTableRequestCreateCommand) *CreateStandardLookupTableRequest {
 	s.CreateCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateStandardLookupTableRequest) SetCreateCommand(v *CreateStandardLoo
 
 func (s *CreateStandardLookupTableRequest) SetOpTenantId(v int64) *CreateStandardLookupTableRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateStandardLookupTableRequest) SetOpUserId(v string) *CreateStandardLookupTableRequest {
+	s.OpUserId = &v
 	return s
 }
 

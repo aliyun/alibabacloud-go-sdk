@@ -13,6 +13,8 @@ type iUpdateProjectMemberRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *UpdateProjectMemberRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateProjectMemberRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateProjectMemberRequestUpdateCommand) *UpdateProjectMemberRequest
 	GetUpdateCommand() *UpdateProjectMemberRequestUpdateCommand
 }
@@ -34,6 +36,10 @@ type UpdateProjectMemberRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update command.
 	//
 	// This parameter is required.
@@ -56,6 +62,10 @@ func (s *UpdateProjectMemberRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateProjectMemberRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateProjectMemberRequest) GetUpdateCommand() *UpdateProjectMemberRequestUpdateCommand {
 	return s.UpdateCommand
 }
@@ -67,6 +77,11 @@ func (s *UpdateProjectMemberRequest) SetId(v int64) *UpdateProjectMemberRequest 
 
 func (s *UpdateProjectMemberRequest) SetOpTenantId(v int64) *UpdateProjectMemberRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateProjectMemberRequest) SetOpUserId(v string) *UpdateProjectMemberRequest {
+	s.OpUserId = &v
 	return s
 }
 

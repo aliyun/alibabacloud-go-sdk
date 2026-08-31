@@ -11,6 +11,8 @@ type iUpdateStandardTemplateShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateStandardTemplateShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateStandardTemplateShrinkRequest
+	GetOpUserId() *string
 	SetUpdateCommandShrink(v string) *UpdateStandardTemplateShrinkRequest
 	GetUpdateCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type UpdateStandardTemplateShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update command.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateStandardTemplateShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateStandardTemplateShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateStandardTemplateShrinkRequest) GetUpdateCommandShrink() *string {
 	return s.UpdateCommandShrink
 }
 
 func (s *UpdateStandardTemplateShrinkRequest) SetOpTenantId(v int64) *UpdateStandardTemplateShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateStandardTemplateShrinkRequest) SetOpUserId(v string) *UpdateStandardTemplateShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iUpdateBizMetricRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateBizMetricRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateBizMetricRequest
+	GetOpUserId() *string
 	SetUpdateBizMetricCommand(v *UpdateBizMetricRequestUpdateBizMetricCommand) *UpdateBizMetricRequest
 	GetUpdateBizMetricCommand() *UpdateBizMetricRequestUpdateBizMetricCommand
 }
@@ -24,6 +26,10 @@ type UpdateBizMetricRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// Update request
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateBizMetricRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateBizMetricRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateBizMetricRequest) GetUpdateBizMetricCommand() *UpdateBizMetricRequestUpdateBizMetricCommand {
 	return s.UpdateBizMetricCommand
 }
 
 func (s *UpdateBizMetricRequest) SetOpTenantId(v int64) *UpdateBizMetricRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateBizMetricRequest) SetOpUserId(v string) *UpdateBizMetricRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iReplaceProjectWhiteListsShrinkRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *ReplaceProjectWhiteListsShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ReplaceProjectWhiteListsShrinkRequest
+	GetOpUserId() *string
 	SetReplaceCommandShrink(v string) *ReplaceProjectWhiteListsShrinkRequest
 	GetReplaceCommandShrink() *string
 }
@@ -34,6 +36,10 @@ type ReplaceProjectWhiteListsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The edit command.
 	//
 	// This parameter is required.
@@ -56,6 +62,10 @@ func (s *ReplaceProjectWhiteListsShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ReplaceProjectWhiteListsShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ReplaceProjectWhiteListsShrinkRequest) GetReplaceCommandShrink() *string {
 	return s.ReplaceCommandShrink
 }
@@ -67,6 +77,11 @@ func (s *ReplaceProjectWhiteListsShrinkRequest) SetId(v int64) *ReplaceProjectWh
 
 func (s *ReplaceProjectWhiteListsShrinkRequest) SetOpTenantId(v int64) *ReplaceProjectWhiteListsShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ReplaceProjectWhiteListsShrinkRequest) SetOpUserId(v string) *ReplaceProjectWhiteListsShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

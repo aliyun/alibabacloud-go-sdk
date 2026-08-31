@@ -13,6 +13,8 @@ type iOfflineStandardShrinkRequest interface {
 	GetOfflineCommandShrink() *string
 	SetOpTenantId(v int64) *OfflineStandardShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *OfflineStandardShrinkRequest
+	GetOpUserId() *string
 }
 
 type OfflineStandardShrinkRequest struct {
@@ -28,6 +30,10 @@ type OfflineStandardShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s OfflineStandardShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *OfflineStandardShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *OfflineStandardShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *OfflineStandardShrinkRequest) SetOfflineCommandShrink(v string) *OfflineStandardShrinkRequest {
 	s.OfflineCommandShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *OfflineStandardShrinkRequest) SetOfflineCommandShrink(v string) *Offlin
 
 func (s *OfflineStandardShrinkRequest) SetOpTenantId(v int64) *OfflineStandardShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *OfflineStandardShrinkRequest) SetOpUserId(v string) *OfflineStandardShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

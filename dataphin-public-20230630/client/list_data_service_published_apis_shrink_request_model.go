@@ -13,6 +13,8 @@ type iListDataServicePublishedApisShrinkRequest interface {
 	GetListQueryShrink() *string
 	SetOpTenantId(v int64) *ListDataServicePublishedApisShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListDataServicePublishedApisShrinkRequest
+	GetOpUserId() *string
 	SetProjectId(v int32) *ListDataServicePublishedApisShrinkRequest
 	GetProjectId() *int32
 }
@@ -28,6 +30,10 @@ type ListDataServicePublishedApisShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// Data service project ID.
 	//
 	// This parameter is required.
@@ -54,6 +60,10 @@ func (s *ListDataServicePublishedApisShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListDataServicePublishedApisShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListDataServicePublishedApisShrinkRequest) GetProjectId() *int32 {
 	return s.ProjectId
 }
@@ -65,6 +75,11 @@ func (s *ListDataServicePublishedApisShrinkRequest) SetListQueryShrink(v string)
 
 func (s *ListDataServicePublishedApisShrinkRequest) SetOpTenantId(v int64) *ListDataServicePublishedApisShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListDataServicePublishedApisShrinkRequest) SetOpUserId(v string) *ListDataServicePublishedApisShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

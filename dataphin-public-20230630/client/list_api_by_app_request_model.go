@@ -11,6 +11,8 @@ type iListApiByAppRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *ListApiByAppRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListApiByAppRequest
+	GetOpUserId() *string
 	SetPageQuery(v *ListApiByAppRequestPageQuery) *ListApiByAppRequest
 	GetPageQuery() *ListApiByAppRequestPageQuery
 }
@@ -24,6 +26,10 @@ type ListApiByAppRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The paged query parameters.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *ListApiByAppRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListApiByAppRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListApiByAppRequest) GetPageQuery() *ListApiByAppRequestPageQuery {
 	return s.PageQuery
 }
 
 func (s *ListApiByAppRequest) SetOpTenantId(v int64) *ListApiByAppRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListApiByAppRequest) SetOpUserId(v string) *ListApiByAppRequest {
+	s.OpUserId = &v
 	return s
 }
 

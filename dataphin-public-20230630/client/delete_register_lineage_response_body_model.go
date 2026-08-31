@@ -34,7 +34,7 @@ type DeleteRegisterLineageResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error details returned by the backend.
+	// The backend exception details.
 	//
 	// example:
 	//

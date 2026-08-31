@@ -11,6 +11,8 @@ type iListAddableRolesRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *ListAddableRolesRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListAddableRolesRequest
+	GetOpUserId() *string
 }
 
 type ListAddableRolesRequest struct {
@@ -22,6 +24,10 @@ type ListAddableRolesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListAddableRolesRequest) String() string {
@@ -36,8 +42,17 @@ func (s *ListAddableRolesRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListAddableRolesRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListAddableRolesRequest) SetOpTenantId(v int64) *ListAddableRolesRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListAddableRolesRequest) SetOpUserId(v string) *ListAddableRolesRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -17,6 +17,8 @@ type iGetInstanceDownStreamShrinkRequest interface {
 	GetInstanceGetShrink() *string
 	SetOpTenantId(v int64) *GetInstanceDownStreamShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetInstanceDownStreamShrinkRequest
+	GetOpUserId() *string
 	SetRunStatus(v string) *GetInstanceDownStreamShrinkRequest
 	GetRunStatus() *string
 }
@@ -52,6 +54,10 @@ type GetInstanceDownStreamShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// Run status of the instance.
 	//
 	// - INIT
@@ -94,6 +100,10 @@ func (s *GetInstanceDownStreamShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetInstanceDownStreamShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetInstanceDownStreamShrinkRequest) GetRunStatus() *string {
 	return s.RunStatus
 }
@@ -115,6 +125,11 @@ func (s *GetInstanceDownStreamShrinkRequest) SetInstanceGetShrink(v string) *Get
 
 func (s *GetInstanceDownStreamShrinkRequest) SetOpTenantId(v int64) *GetInstanceDownStreamShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetInstanceDownStreamShrinkRequest) SetOpUserId(v string) *GetInstanceDownStreamShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

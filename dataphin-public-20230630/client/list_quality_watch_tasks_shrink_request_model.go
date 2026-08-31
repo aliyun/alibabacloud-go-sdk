@@ -13,6 +13,8 @@ type iListQualityWatchTasksShrinkRequest interface {
 	GetListQueryShrink() *string
 	SetOpTenantId(v int64) *ListQualityWatchTasksShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListQualityWatchTasksShrinkRequest
+	GetOpUserId() *string
 }
 
 type ListQualityWatchTasksShrinkRequest struct {
@@ -26,6 +28,12 @@ type ListQualityWatchTasksShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListQualityWatchTasksShrinkRequest) String() string {
@@ -44,6 +52,10 @@ func (s *ListQualityWatchTasksShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListQualityWatchTasksShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListQualityWatchTasksShrinkRequest) SetListQueryShrink(v string) *ListQualityWatchTasksShrinkRequest {
 	s.ListQueryShrink = &v
 	return s
@@ -51,6 +63,11 @@ func (s *ListQualityWatchTasksShrinkRequest) SetListQueryShrink(v string) *ListQ
 
 func (s *ListQualityWatchTasksShrinkRequest) SetOpTenantId(v int64) *ListQualityWatchTasksShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListQualityWatchTasksShrinkRequest) SetOpUserId(v string) *ListQualityWatchTasksShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

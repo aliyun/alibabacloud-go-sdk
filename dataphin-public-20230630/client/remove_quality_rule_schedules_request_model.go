@@ -11,6 +11,8 @@ type iRemoveQualityRuleSchedulesRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *RemoveQualityRuleSchedulesRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *RemoveQualityRuleSchedulesRequest
+	GetOpUserId() *string
 	SetRemoveCommand(v *RemoveQualityRuleSchedulesRequestRemoveCommand) *RemoveQualityRuleSchedulesRequest
 	GetRemoveCommand() *RemoveQualityRuleSchedulesRequestRemoveCommand
 }
@@ -24,6 +26,10 @@ type RemoveQualityRuleSchedulesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The unbinding instruction.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *RemoveQualityRuleSchedulesRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *RemoveQualityRuleSchedulesRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *RemoveQualityRuleSchedulesRequest) GetRemoveCommand() *RemoveQualityRuleSchedulesRequestRemoveCommand {
 	return s.RemoveCommand
 }
 
 func (s *RemoveQualityRuleSchedulesRequest) SetOpTenantId(v int64) *RemoveQualityRuleSchedulesRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *RemoveQualityRuleSchedulesRequest) SetOpUserId(v string) *RemoveQualityRuleSchedulesRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -15,6 +15,8 @@ type iGetSupplementDagrunInstanceRequest interface {
 	GetEnv() *string
 	SetOpTenantId(v int64) *GetSupplementDagrunInstanceRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetSupplementDagrunInstanceRequest
+	GetOpUserId() *string
 }
 
 type GetSupplementDagrunInstanceRequest struct {
@@ -44,6 +46,10 @@ type GetSupplementDagrunInstanceRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetSupplementDagrunInstanceRequest) String() string {
@@ -66,6 +72,10 @@ func (s *GetSupplementDagrunInstanceRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetSupplementDagrunInstanceRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetSupplementDagrunInstanceRequest) SetDagrunId(v string) *GetSupplementDagrunInstanceRequest {
 	s.DagrunId = &v
 	return s
@@ -78,6 +88,11 @@ func (s *GetSupplementDagrunInstanceRequest) SetEnv(v string) *GetSupplementDagr
 
 func (s *GetSupplementDagrunInstanceRequest) SetOpTenantId(v int64) *GetSupplementDagrunInstanceRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetSupplementDagrunInstanceRequest) SetOpUserId(v string) *GetSupplementDagrunInstanceRequest {
+	s.OpUserId = &v
 	return s
 }
 

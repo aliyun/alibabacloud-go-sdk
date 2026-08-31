@@ -549,6 +549,7 @@ func (s *GetDatasetResponseBodyDatasetDTOOwnerList) Validate() error {
 }
 
 type GetDatasetResponseBodyDatasetDTOVersionList struct {
+	ApiInfo *GetDatasetResponseBodyDatasetDTOVersionListApiInfo `json:"ApiInfo,omitempty" xml:"ApiInfo,omitempty" type:"Struct"`
 	// The creator ID.
 	//
 	// example:
@@ -597,6 +598,10 @@ func (s GetDatasetResponseBodyDatasetDTOVersionList) GoString() string {
 	return s.String()
 }
 
+func (s *GetDatasetResponseBodyDatasetDTOVersionList) GetApiInfo() *GetDatasetResponseBodyDatasetDTOVersionListApiInfo {
+	return s.ApiInfo
+}
+
 func (s *GetDatasetResponseBodyDatasetDTOVersionList) GetCreator() *string {
 	return s.Creator
 }
@@ -623,6 +628,11 @@ func (s *GetDatasetResponseBodyDatasetDTOVersionList) GetId() *int64 {
 
 func (s *GetDatasetResponseBodyDatasetDTOVersionList) GetVersion() *string {
 	return s.Version
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionList) SetApiInfo(v *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) *GetDatasetResponseBodyDatasetDTOVersionList {
+	s.ApiInfo = v
+	return s
 }
 
 func (s *GetDatasetResponseBodyDatasetDTOVersionList) SetCreator(v string) *GetDatasetResponseBodyDatasetDTOVersionList {
@@ -661,12 +671,519 @@ func (s *GetDatasetResponseBodyDatasetDTOVersionList) SetVersion(v string) *GetD
 }
 
 func (s *GetDatasetResponseBodyDatasetDTOVersionList) Validate() error {
+	if s.ApiInfo != nil {
+		if err := s.ApiInfo.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.DataVersionConfig != nil {
 		if err := s.DataVersionConfig.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type GetDatasetResponseBodyDatasetDTOVersionListApiInfo struct {
+	// example:
+	//
+	// 1011
+	ApiNo *int64 `json:"ApiNo,omitempty" xml:"ApiNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 60
+	ExecTimeout *int32 `json:"ExecTimeout,omitempty" xml:"ExecTimeout,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ExecuteMode *int32 `json:"ExecuteMode,omitempty" xml:"ExecuteMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1011
+	OsApiGroup *int32 `json:"OsApiGroup,omitempty" xml:"OsApiGroup,omitempty"`
+	// example:
+	//
+	// test
+	OsApiGroupName *string `json:"OsApiGroupName,omitempty" xml:"OsApiGroupName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1060
+	OsProject *int32 `json:"OsProject,omitempty" xml:"OsProject,omitempty"`
+	// example:
+	//
+	// 1012
+	OsProjectName *string `json:"OsProjectName,omitempty" xml:"OsProjectName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Protocol *int32 `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	RequestMethod *int32 `json:"RequestMethod,omitempty" xml:"RequestMethod,omitempty"`
+	// This parameter is required.
+	RequestParamList  []*GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList  `json:"RequestParamList,omitempty" xml:"RequestParamList,omitempty" type:"Repeated"`
+	ResponseParamList []*GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList `json:"ResponseParamList,omitempty" xml:"ResponseParamList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 60
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s GetDatasetResponseBodyDatasetDTOVersionListApiInfo) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDatasetResponseBodyDatasetDTOVersionListApiInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) GetApiNo() *int64 {
+	return s.ApiNo
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) GetExecTimeout() *int32 {
+	return s.ExecTimeout
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) GetExecuteMode() *int32 {
+	return s.ExecuteMode
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) GetOsApiGroup() *int32 {
+	return s.OsApiGroup
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) GetOsApiGroupName() *string {
+	return s.OsApiGroupName
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) GetOsProject() *int32 {
+	return s.OsProject
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) GetOsProjectName() *string {
+	return s.OsProjectName
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) GetProtocol() *int32 {
+	return s.Protocol
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) GetRequestMethod() *int32 {
+	return s.RequestMethod
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) GetRequestParamList() []*GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList {
+	return s.RequestParamList
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) GetResponseParamList() []*GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList {
+	return s.ResponseParamList
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) GetTimeout() *int32 {
+	return s.Timeout
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) SetApiNo(v int64) *GetDatasetResponseBodyDatasetDTOVersionListApiInfo {
+	s.ApiNo = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) SetExecTimeout(v int32) *GetDatasetResponseBodyDatasetDTOVersionListApiInfo {
+	s.ExecTimeout = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) SetExecuteMode(v int32) *GetDatasetResponseBodyDatasetDTOVersionListApiInfo {
+	s.ExecuteMode = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) SetOsApiGroup(v int32) *GetDatasetResponseBodyDatasetDTOVersionListApiInfo {
+	s.OsApiGroup = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) SetOsApiGroupName(v string) *GetDatasetResponseBodyDatasetDTOVersionListApiInfo {
+	s.OsApiGroupName = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) SetOsProject(v int32) *GetDatasetResponseBodyDatasetDTOVersionListApiInfo {
+	s.OsProject = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) SetOsProjectName(v string) *GetDatasetResponseBodyDatasetDTOVersionListApiInfo {
+	s.OsProjectName = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) SetProtocol(v int32) *GetDatasetResponseBodyDatasetDTOVersionListApiInfo {
+	s.Protocol = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) SetRequestMethod(v int32) *GetDatasetResponseBodyDatasetDTOVersionListApiInfo {
+	s.RequestMethod = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) SetRequestParamList(v []*GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) *GetDatasetResponseBodyDatasetDTOVersionListApiInfo {
+	s.RequestParamList = v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) SetResponseParamList(v []*GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) *GetDatasetResponseBodyDatasetDTOVersionListApiInfo {
+	s.ResponseParamList = v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) SetTimeout(v int32) *GetDatasetResponseBodyDatasetDTOVersionListApiInfo {
+	s.Timeout = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfo) Validate() error {
+	if s.RequestParamList != nil {
+		for _, item := range s.RequestParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.ResponseParamList != nil {
+		for _, item := range s.ResponseParamList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList struct {
+	// example:
+	//
+	// yyyyMMdd
+	DateFormat *string `json:"DateFormat,omitempty" xml:"DateFormat,omitempty"`
+	// example:
+	//
+	// 1
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// example:
+	//
+	// test
+	Descr *string `json:"Descr,omitempty" xml:"Descr,omitempty"`
+	IsUrl *bool   `json:"IsUrl,omitempty" xml:"IsUrl,omitempty"`
+	// example:
+	//
+	// col01
+	MappingColumn *string `json:"MappingColumn,omitempty" xml:"MappingColumn,omitempty"`
+	Must          *bool   `json:"Must,omitempty" xml:"Must,omitempty"`
+	// example:
+	//
+	// =
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	Optional *bool   `json:"Optional,omitempty" xml:"Optional,omitempty"`
+	// example:
+	//
+	// col01
+	OriginalColumn *string `json:"OriginalColumn,omitempty" xml:"OriginalColumn,omitempty"`
+	// example:
+	//
+	// col01
+	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	// example:
+	//
+	// int
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// example:
+	//
+	// 1
+	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	// example:
+	//
+	// 1
+	SeqNum *int32 `json:"SeqNum,omitempty" xml:"SeqNum,omitempty"`
+}
+
+func (s GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) GetDateFormat() *string {
+	return s.DateFormat
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) GetDefaultValue() *string {
+	return s.DefaultValue
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) GetDescr() *string {
+	return s.Descr
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) GetIsUrl() *bool {
+	return s.IsUrl
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) GetMappingColumn() *string {
+	return s.MappingColumn
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) GetMust() *bool {
+	return s.Must
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) GetOperator() *string {
+	return s.Operator
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) GetOptional() *bool {
+	return s.Optional
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) GetOriginalColumn() *string {
+	return s.OriginalColumn
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) GetParamName() *string {
+	return s.ParamName
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) GetParamType() *string {
+	return s.ParamType
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) GetSample() *string {
+	return s.Sample
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) GetSeqNum() *int32 {
+	return s.SeqNum
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) SetDateFormat(v string) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList {
+	s.DateFormat = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) SetDefaultValue(v string) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) SetDescr(v string) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList {
+	s.Descr = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) SetIsUrl(v bool) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList {
+	s.IsUrl = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) SetMappingColumn(v string) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList {
+	s.MappingColumn = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) SetMust(v bool) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList {
+	s.Must = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) SetOperator(v string) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList {
+	s.Operator = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) SetOptional(v bool) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList {
+	s.Optional = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) SetOriginalColumn(v string) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList {
+	s.OriginalColumn = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) SetParamName(v string) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList {
+	s.ParamName = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) SetParamType(v string) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList {
+	s.ParamType = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) SetSample(v string) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList {
+	s.Sample = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) SetSeqNum(v int32) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList {
+	s.SeqNum = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoRequestParamList) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList struct {
+	// example:
+	//
+	// yyyyMMdd
+	DateFormat *string `json:"DateFormat,omitempty" xml:"DateFormat,omitempty"`
+	// example:
+	//
+	// test
+	Descr *string `json:"Descr,omitempty" xml:"Descr,omitempty"`
+	IsUrl *bool   `json:"IsUrl,omitempty" xml:"IsUrl,omitempty"`
+	// example:
+	//
+	// col01
+	MappingColumn *string `json:"MappingColumn,omitempty" xml:"MappingColumn,omitempty"`
+	// example:
+	//
+	// col01
+	OriginalColumn *string `json:"OriginalColumn,omitempty" xml:"OriginalColumn,omitempty"`
+	// example:
+	//
+	// col01
+	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	// example:
+	//
+	// int
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// example:
+	//
+	// 1
+	Sample *string `json:"Sample,omitempty" xml:"Sample,omitempty"`
+	// example:
+	//
+	// 1
+	SeqNum *string `json:"SeqNum,omitempty" xml:"SeqNum,omitempty"`
+}
+
+func (s GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) GetDateFormat() *string {
+	return s.DateFormat
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) GetDescr() *string {
+	return s.Descr
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) GetIsUrl() *bool {
+	return s.IsUrl
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) GetMappingColumn() *string {
+	return s.MappingColumn
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) GetOriginalColumn() *string {
+	return s.OriginalColumn
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) GetParamName() *string {
+	return s.ParamName
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) GetParamType() *string {
+	return s.ParamType
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) GetSample() *string {
+	return s.Sample
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) GetSeqNum() *string {
+	return s.SeqNum
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) SetDateFormat(v string) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList {
+	s.DateFormat = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) SetDescr(v string) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList {
+	s.Descr = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) SetIsUrl(v bool) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList {
+	s.IsUrl = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) SetMappingColumn(v string) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList {
+	s.MappingColumn = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) SetOriginalColumn(v string) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList {
+	s.OriginalColumn = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) SetParamName(v string) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList {
+	s.ParamName = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) SetParamType(v string) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList {
+	s.ParamType = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) SetSample(v string) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList {
+	s.Sample = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) SetSeqNum(v string) *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList {
+	s.SeqNum = &v
+	return s
+}
+
+func (s *GetDatasetResponseBodyDatasetDTOVersionListApiInfoResponseParamList) Validate() error {
+	return dara.Validate(s)
 }
 
 type GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfig struct {

@@ -11,6 +11,8 @@ type iUpdateSecurityIdentifyResultStatusRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateSecurityIdentifyResultStatusRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateSecurityIdentifyResultStatusRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateSecurityIdentifyResultStatusRequestUpdateCommand) *UpdateSecurityIdentifyResultStatusRequest
 	GetUpdateCommand() *UpdateSecurityIdentifyResultStatusRequestUpdateCommand
 }
@@ -24,6 +26,10 @@ type UpdateSecurityIdentifyResultStatusRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update instruction.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateSecurityIdentifyResultStatusRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateSecurityIdentifyResultStatusRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateSecurityIdentifyResultStatusRequest) GetUpdateCommand() *UpdateSecurityIdentifyResultStatusRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *UpdateSecurityIdentifyResultStatusRequest) SetOpTenantId(v int64) *UpdateSecurityIdentifyResultStatusRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateSecurityIdentifyResultStatusRequest) SetOpUserId(v string) *UpdateSecurityIdentifyResultStatusRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iGetTransferInfoRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetTransferInfoRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetTransferInfoRequest
+	GetOpUserId() *string
 	SetProposalId(v int64) *GetTransferInfoRequest
 	GetProposalId() *int64
 }
@@ -24,6 +26,10 @@ type GetTransferInfoRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The transfer record ID.
 	//
 	// This parameter is required.
@@ -46,12 +52,21 @@ func (s *GetTransferInfoRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetTransferInfoRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetTransferInfoRequest) GetProposalId() *int64 {
 	return s.ProposalId
 }
 
 func (s *GetTransferInfoRequest) SetOpTenantId(v int64) *GetTransferInfoRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetTransferInfoRequest) SetOpUserId(v string) *GetTransferInfoRequest {
+	s.OpUserId = &v
 	return s
 }
 

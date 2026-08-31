@@ -11,6 +11,8 @@ type iExportKgSchemaRequest interface {
   GoString() string
   SetOpTenantId(v int64) *ExportKgSchemaRequest
   GetOpTenantId() *int64 
+  SetOpUserId(v string) *ExportKgSchemaRequest
+  GetOpUserId() *string 
   SetOutputFormat(v string) *ExportKgSchemaRequest
   GetOutputFormat() *string 
   SetVersionId(v int32) *ExportKgSchemaRequest
@@ -28,6 +30,10 @@ type ExportKgSchemaRequest struct {
   // 
   // 30001011
   OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+  // example:
+  // 
+  // 30001011
+  OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
   // The format of the exported content. Valid values: json and yaml. Default value: yaml.
   // 
   // example:
@@ -62,6 +68,10 @@ func (s *ExportKgSchemaRequest) GetOpTenantId() *int64  {
   return s.OpTenantId
 }
 
+func (s *ExportKgSchemaRequest) GetOpUserId() *string  {
+  return s.OpUserId
+}
+
 func (s *ExportKgSchemaRequest) GetOutputFormat() *string  {
   return s.OutputFormat
 }
@@ -76,6 +86,11 @@ func (s *ExportKgSchemaRequest) GetWorkspaceId() *string  {
 
 func (s *ExportKgSchemaRequest) SetOpTenantId(v int64) *ExportKgSchemaRequest {
   s.OpTenantId = &v
+  return s
+}
+
+func (s *ExportKgSchemaRequest) SetOpUserId(v string) *ExportKgSchemaRequest {
+  s.OpUserId = &v
   return s
 }
 

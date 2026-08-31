@@ -13,6 +13,8 @@ type iListDatasetsRequest interface {
 	GetDatasetQuery() *ListDatasetsRequestDatasetQuery
 	SetOpTenantId(v int64) *ListDatasetsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListDatasetsRequest
+	GetOpUserId() *string
 }
 
 type ListDatasetsRequest struct {
@@ -26,6 +28,10 @@ type ListDatasetsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListDatasetsRequest) String() string {
@@ -44,6 +50,10 @@ func (s *ListDatasetsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListDatasetsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListDatasetsRequest) SetDatasetQuery(v *ListDatasetsRequestDatasetQuery) *ListDatasetsRequest {
 	s.DatasetQuery = v
 	return s
@@ -51,6 +61,11 @@ func (s *ListDatasetsRequest) SetDatasetQuery(v *ListDatasetsRequestDatasetQuery
 
 func (s *ListDatasetsRequest) SetOpTenantId(v int64) *ListDatasetsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListDatasetsRequest) SetOpUserId(v string) *ListDatasetsRequest {
+	s.OpUserId = &v
 	return s
 }
 

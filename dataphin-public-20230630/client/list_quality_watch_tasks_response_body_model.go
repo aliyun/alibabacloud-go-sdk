@@ -36,7 +36,7 @@ type ListQualityWatchTasksResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error details from the backend.
+	// The backend exception details.
 	//
 	// example:
 	//
@@ -200,13 +200,13 @@ type ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskList struct {
 	//
 	// 30012011
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The end time, in the yyyy-MM-dd HH:mm:ss format.
+	// The end time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-06-30 20:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The quality watchtask ID.
+	// The ID of the monitoring task.
 	//
 	// example:
 	//
@@ -238,15 +238,15 @@ type ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskList struct {
 	QualityOwnerName *string `json:"QualityOwnerName,omitempty" xml:"QualityOwnerName,omitempty"`
 	// The quality rule count information.
 	RuleCountInfo *ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskListRuleCountInfo `json:"RuleCountInfo,omitempty" xml:"RuleCountInfo,omitempty" type:"Struct"`
-	// The quality rule IDs.
+	// The list of quality rule IDs.
 	RuleIdList []*int64 `json:"RuleIdList,omitempty" xml:"RuleIdList,omitempty" type:"Repeated"`
-	// The start time, in the yyyy-MM-dd HH:mm:ss format.
+	// The start time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2025-06-30 08:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The task statuses. Valid values:
+	// The task status. Valid values:
 	//
 	// - NOT_RUN: not executed.
 	//
@@ -268,7 +268,7 @@ type ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskList struct {
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The monitored object ID.
+	// The ID of the monitored object.
 	//
 	// example:
 	//
@@ -429,11 +429,11 @@ func (s *ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskList) Valida
 }
 
 type ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskListRuleCountInfo struct {
-	// The strong rule count.
+	// The strong rule count information.
 	StrongRuleCount *ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskListRuleCountInfoStrongRuleCount `json:"StrongRuleCount,omitempty" xml:"StrongRuleCount,omitempty" type:"Struct"`
-	// The validation rule count.
+	// The validation rule count information.
 	ValidateRuleCount *ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskListRuleCountInfoValidateRuleCount `json:"ValidateRuleCount,omitempty" xml:"ValidateRuleCount,omitempty" type:"Struct"`
-	// The weak rule count.
+	// The weak rule count information.
 	WeakRuleCount *ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskListRuleCountInfoWeakRuleCount `json:"WeakRuleCount,omitempty" xml:"WeakRuleCount,omitempty" type:"Struct"`
 }
 
@@ -492,7 +492,7 @@ func (s *ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskListRuleCoun
 }
 
 type ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskListRuleCountInfoStrongRuleCount struct {
-	// The number of rules that failed to execute.
+	// The number of rules that failed to be executed.
 	//
 	// example:
 	//
@@ -504,7 +504,7 @@ type ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskListRuleCountInf
 	//
 	// 1
 	FinishedRuleCount *int64 `json:"FinishedRuleCount,omitempty" xml:"FinishedRuleCount,omitempty"`
-	// The number of rules that were executed successfully.
+	// The number of rules that were successfully executed.
 	//
 	// example:
 	//
@@ -567,7 +567,7 @@ func (s *ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskListRuleCoun
 }
 
 type ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskListRuleCountInfoValidateRuleCount struct {
-	// The number of rules that failed to execute.
+	// The number of rules that failed to be executed.
 	//
 	// example:
 	//
@@ -579,7 +579,7 @@ type ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskListRuleCountInf
 	//
 	// 1
 	FinishedRuleCount *int64 `json:"FinishedRuleCount,omitempty" xml:"FinishedRuleCount,omitempty"`
-	// The number of rules that were executed successfully.
+	// The number of rules that were successfully executed.
 	//
 	// example:
 	//
@@ -642,7 +642,7 @@ func (s *ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskListRuleCoun
 }
 
 type ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskListRuleCountInfoWeakRuleCount struct {
-	// The number of rules that failed to execute.
+	// The number of rules that failed to be executed.
 	//
 	// example:
 	//
@@ -654,7 +654,7 @@ type ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskListRuleCountInf
 	//
 	// 1
 	FinishedRuleCount *int64 `json:"FinishedRuleCount,omitempty" xml:"FinishedRuleCount,omitempty"`
-	// The number of rules that were executed successfully.
+	// The number of rules that were successfully executed.
 	//
 	// example:
 	//

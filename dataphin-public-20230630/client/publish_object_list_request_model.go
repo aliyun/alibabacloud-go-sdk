@@ -11,6 +11,8 @@ type iPublishObjectListRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *PublishObjectListRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *PublishObjectListRequest
+	GetOpUserId() *string
 	SetPublishCommand(v *PublishObjectListRequestPublishCommand) *PublishObjectListRequest
 	GetPublishCommand() *PublishObjectListRequestPublishCommand
 }
@@ -24,6 +26,10 @@ type PublishObjectListRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The publish command.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *PublishObjectListRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *PublishObjectListRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *PublishObjectListRequest) GetPublishCommand() *PublishObjectListRequestPublishCommand {
 	return s.PublishCommand
 }
 
 func (s *PublishObjectListRequest) SetOpTenantId(v int64) *PublishObjectListRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *PublishObjectListRequest) SetOpUserId(v string) *PublishObjectListRequest {
+	s.OpUserId = &v
 	return s
 }
 

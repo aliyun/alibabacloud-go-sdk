@@ -11,6 +11,8 @@ type iGetProjectProduceUserRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetProjectProduceUserRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetProjectProduceUserRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *GetProjectProduceUserRequest
 	GetProjectId() *int64
 }
@@ -24,6 +26,10 @@ type GetProjectProduceUserRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -46,12 +52,21 @@ func (s *GetProjectProduceUserRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetProjectProduceUserRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetProjectProduceUserRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
 
 func (s *GetProjectProduceUserRequest) SetOpTenantId(v int64) *GetProjectProduceUserRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetProjectProduceUserRequest) SetOpUserId(v string) *GetProjectProduceUserRequest {
+	s.OpUserId = &v
 	return s
 }
 

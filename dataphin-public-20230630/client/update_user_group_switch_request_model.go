@@ -13,6 +13,8 @@ type iUpdateUserGroupSwitchRequest interface {
 	GetActive() *bool
 	SetOpTenantId(v int64) *UpdateUserGroupSwitchRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateUserGroupSwitchRequest
+	GetOpUserId() *string
 	SetUserGroupId(v string) *UpdateUserGroupSwitchRequest
 	GetUserGroupId() *string
 }
@@ -34,6 +36,10 @@ type UpdateUserGroupSwitchRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The user group ID.
 	//
 	// This parameter is required.
@@ -60,6 +66,10 @@ func (s *UpdateUserGroupSwitchRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateUserGroupSwitchRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateUserGroupSwitchRequest) GetUserGroupId() *string {
 	return s.UserGroupId
 }
@@ -71,6 +81,11 @@ func (s *UpdateUserGroupSwitchRequest) SetActive(v bool) *UpdateUserGroupSwitchR
 
 func (s *UpdateUserGroupSwitchRequest) SetOpTenantId(v int64) *UpdateUserGroupSwitchRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateUserGroupSwitchRequest) SetOpUserId(v string) *UpdateUserGroupSwitchRequest {
+	s.OpUserId = &v
 	return s
 }
 

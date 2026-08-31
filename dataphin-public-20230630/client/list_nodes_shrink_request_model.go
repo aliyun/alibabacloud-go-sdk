@@ -15,14 +15,16 @@ type iListNodesShrinkRequest interface {
 	GetListQueryShrink() *string
 	SetOpTenantId(v int64) *ListNodesShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListNodesShrinkRequest
+	GetOpUserId() *string
 }
 
 type ListNodesShrinkRequest struct {
 	// The environment identifier. Valid values:
 	//
-	// - DEV: development environment
+	// - DEV: Development environment.
 	//
-	// - PROD (default): production environment.
+	// - PROD (default): Production environment.
 	//
 	// example:
 	//
@@ -40,6 +42,12 @@ type ListNodesShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListNodesShrinkRequest) String() string {
@@ -62,6 +70,10 @@ func (s *ListNodesShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListNodesShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListNodesShrinkRequest) SetEnv(v string) *ListNodesShrinkRequest {
 	s.Env = &v
 	return s
@@ -74,6 +86,11 @@ func (s *ListNodesShrinkRequest) SetListQueryShrink(v string) *ListNodesShrinkRe
 
 func (s *ListNodesShrinkRequest) SetOpTenantId(v int64) *ListNodesShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListNodesShrinkRequest) SetOpUserId(v string) *ListNodesShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

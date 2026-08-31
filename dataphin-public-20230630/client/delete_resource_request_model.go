@@ -15,6 +15,8 @@ type iDeleteResourceRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *DeleteResourceRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteResourceRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *DeleteResourceRequest
 	GetProjectId() *int64
 }
@@ -44,6 +46,10 @@ type DeleteResourceRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// Project ID.
 	//
 	// This parameter is required.
@@ -74,6 +80,10 @@ func (s *DeleteResourceRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteResourceRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteResourceRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -90,6 +100,11 @@ func (s *DeleteResourceRequest) SetId(v int64) *DeleteResourceRequest {
 
 func (s *DeleteResourceRequest) SetOpTenantId(v int64) *DeleteResourceRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteResourceRequest) SetOpUserId(v string) *DeleteResourceRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iUpdatePipelineShrinkRequest interface {
 	GetContextShrink() *string
 	SetOpTenantId(v int64) *UpdatePipelineShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdatePipelineShrinkRequest
+	GetOpUserId() *string
 	SetUpdateCommandShrink(v string) *UpdatePipelineShrinkRequest
 	GetUpdateCommandShrink() *string
 }
@@ -30,6 +32,12 @@ type UpdatePipelineShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The configuration for updating the pipeline or workflow node.
 	//
 	// This parameter is required.
@@ -52,6 +60,10 @@ func (s *UpdatePipelineShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdatePipelineShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdatePipelineShrinkRequest) GetUpdateCommandShrink() *string {
 	return s.UpdateCommandShrink
 }
@@ -63,6 +75,11 @@ func (s *UpdatePipelineShrinkRequest) SetContextShrink(v string) *UpdatePipeline
 
 func (s *UpdatePipelineShrinkRequest) SetOpTenantId(v int64) *UpdatePipelineShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdatePipelineShrinkRequest) SetOpUserId(v string) *UpdatePipelineShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

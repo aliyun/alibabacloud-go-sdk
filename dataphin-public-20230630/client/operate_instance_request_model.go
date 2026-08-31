@@ -13,6 +13,8 @@ type iOperateInstanceRequest interface {
 	GetEnv() *string
 	SetOpTenantId(v int64) *OperateInstanceRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *OperateInstanceRequest
+	GetOpUserId() *string
 	SetOperateCommand(v *OperateInstanceRequestOperateCommand) *OperateInstanceRequest
 	GetOperateCommand() *OperateInstanceRequestOperateCommand
 }
@@ -36,6 +38,10 @@ type OperateInstanceRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The operation request.
 	//
 	// This parameter is required.
@@ -58,6 +64,10 @@ func (s *OperateInstanceRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *OperateInstanceRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *OperateInstanceRequest) GetOperateCommand() *OperateInstanceRequestOperateCommand {
 	return s.OperateCommand
 }
@@ -69,6 +79,11 @@ func (s *OperateInstanceRequest) SetEnv(v string) *OperateInstanceRequest {
 
 func (s *OperateInstanceRequest) SetOpTenantId(v int64) *OperateInstanceRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *OperateInstanceRequest) SetOpUserId(v string) *OperateInstanceRequest {
+	s.OpUserId = &v
 	return s
 }
 

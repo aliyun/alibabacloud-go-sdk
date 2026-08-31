@@ -13,6 +13,8 @@ type iCreateStandardWordRootRequest interface {
 	GetCreateCommand() *CreateStandardWordRootRequestCreateCommand
 	SetOpTenantId(v int64) *CreateStandardWordRootRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateStandardWordRootRequest
+	GetOpUserId() *string
 }
 
 type CreateStandardWordRootRequest struct {
@@ -28,6 +30,10 @@ type CreateStandardWordRootRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateStandardWordRootRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateStandardWordRootRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateStandardWordRootRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateStandardWordRootRequest) SetCreateCommand(v *CreateStandardWordRootRequestCreateCommand) *CreateStandardWordRootRequest {
 	s.CreateCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateStandardWordRootRequest) SetCreateCommand(v *CreateStandardWordRo
 
 func (s *CreateStandardWordRootRequest) SetOpTenantId(v int64) *CreateStandardWordRootRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateStandardWordRootRequest) SetOpUserId(v string) *CreateStandardWordRootRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -15,6 +15,8 @@ type iDeleteDataDomainRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *DeleteDataDomainRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteDataDomainRequest
+	GetOpUserId() *string
 }
 
 type DeleteDataDomainRequest struct {
@@ -42,6 +44,10 @@ type DeleteDataDomainRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteDataDomainRequest) String() string {
@@ -64,6 +70,10 @@ func (s *DeleteDataDomainRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteDataDomainRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteDataDomainRequest) SetBizUnitId(v int64) *DeleteDataDomainRequest {
 	s.BizUnitId = &v
 	return s
@@ -76,6 +86,11 @@ func (s *DeleteDataDomainRequest) SetId(v int64) *DeleteDataDomainRequest {
 
 func (s *DeleteDataDomainRequest) SetOpTenantId(v int64) *DeleteDataDomainRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteDataDomainRequest) SetOpUserId(v string) *DeleteDataDomainRequest {
+	s.OpUserId = &v
 	return s
 }
 

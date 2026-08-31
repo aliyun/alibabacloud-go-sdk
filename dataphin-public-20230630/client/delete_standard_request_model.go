@@ -13,6 +13,8 @@ type iDeleteStandardRequest interface {
 	GetDeleteCommand() *DeleteStandardRequestDeleteCommand
 	SetOpTenantId(v int64) *DeleteStandardRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteStandardRequest
+	GetOpUserId() *string
 }
 
 type DeleteStandardRequest struct {
@@ -28,6 +30,10 @@ type DeleteStandardRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteStandardRequest) String() string {
@@ -46,6 +52,10 @@ func (s *DeleteStandardRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteStandardRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteStandardRequest) SetDeleteCommand(v *DeleteStandardRequestDeleteCommand) *DeleteStandardRequest {
 	s.DeleteCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *DeleteStandardRequest) SetDeleteCommand(v *DeleteStandardRequestDeleteC
 
 func (s *DeleteStandardRequest) SetOpTenantId(v int64) *DeleteStandardRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteStandardRequest) SetOpUserId(v string) *DeleteStandardRequest {
+	s.OpUserId = &v
 	return s
 }
 

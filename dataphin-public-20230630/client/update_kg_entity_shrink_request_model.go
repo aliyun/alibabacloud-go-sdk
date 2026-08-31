@@ -11,6 +11,8 @@ type iUpdateKgEntityShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateKgEntityShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateKgEntityShrinkRequest
+	GetOpUserId() *string
 	SetUpdateCommandShrink(v string) *UpdateKgEntityShrinkRequest
 	GetUpdateCommandShrink() *string
 	SetWorkspaceId(v string) *UpdateKgEntityShrinkRequest
@@ -26,6 +28,10 @@ type UpdateKgEntityShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update command.
 	//
 	// This parameter is required.
@@ -52,6 +58,10 @@ func (s *UpdateKgEntityShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateKgEntityShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateKgEntityShrinkRequest) GetUpdateCommandShrink() *string {
 	return s.UpdateCommandShrink
 }
@@ -62,6 +72,11 @@ func (s *UpdateKgEntityShrinkRequest) GetWorkspaceId() *string {
 
 func (s *UpdateKgEntityShrinkRequest) SetOpTenantId(v int64) *UpdateKgEntityShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateKgEntityShrinkRequest) SetOpUserId(v string) *UpdateKgEntityShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

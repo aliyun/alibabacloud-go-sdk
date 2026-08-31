@@ -15,6 +15,8 @@ type iDeleteBizEntityRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *DeleteBizEntityRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteBizEntityRequest
+	GetOpUserId() *string
 	SetType(v string) *DeleteBizEntityRequest
 	GetType() *string
 }
@@ -44,6 +46,10 @@ type DeleteBizEntityRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The type of the business entity. For more information, refer to the create business entity operation.
 	//
 	// This parameter is required.
@@ -74,6 +80,10 @@ func (s *DeleteBizEntityRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteBizEntityRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteBizEntityRequest) GetType() *string {
 	return s.Type
 }
@@ -90,6 +100,11 @@ func (s *DeleteBizEntityRequest) SetId(v int64) *DeleteBizEntityRequest {
 
 func (s *DeleteBizEntityRequest) SetOpTenantId(v int64) *DeleteBizEntityRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteBizEntityRequest) SetOpUserId(v string) *DeleteBizEntityRequest {
+	s.OpUserId = &v
 	return s
 }
 

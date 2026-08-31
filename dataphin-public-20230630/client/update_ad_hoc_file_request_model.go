@@ -11,6 +11,8 @@ type iUpdateAdHocFileRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateAdHocFileRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateAdHocFileRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateAdHocFileRequestUpdateCommand) *UpdateAdHocFileRequest
 	GetUpdateCommand() *UpdateAdHocFileRequestUpdateCommand
 }
@@ -24,6 +26,10 @@ type UpdateAdHocFileRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update request.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateAdHocFileRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateAdHocFileRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateAdHocFileRequest) GetUpdateCommand() *UpdateAdHocFileRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *UpdateAdHocFileRequest) SetOpTenantId(v int64) *UpdateAdHocFileRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateAdHocFileRequest) SetOpUserId(v string) *UpdateAdHocFileRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iDeleteDatasetRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *DeleteDatasetRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteDatasetRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *DeleteDatasetRequest
 	GetProjectId() *int64
 }
@@ -34,6 +36,10 @@ type DeleteDatasetRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -60,6 +66,10 @@ func (s *DeleteDatasetRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteDatasetRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteDatasetRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -71,6 +81,11 @@ func (s *DeleteDatasetRequest) SetId(v int64) *DeleteDatasetRequest {
 
 func (s *DeleteDatasetRequest) SetOpTenantId(v int64) *DeleteDatasetRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteDatasetRequest) SetOpUserId(v string) *DeleteDatasetRequest {
+	s.OpUserId = &v
 	return s
 }
 

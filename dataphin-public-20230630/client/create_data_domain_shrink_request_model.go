@@ -13,6 +13,8 @@ type iCreateDataDomainShrinkRequest interface {
 	GetCreateCommandShrink() *string
 	SetOpTenantId(v int64) *CreateDataDomainShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateDataDomainShrinkRequest
+	GetOpUserId() *string
 }
 
 type CreateDataDomainShrinkRequest struct {
@@ -28,6 +30,12 @@ type CreateDataDomainShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateDataDomainShrinkRequest) String() string {
@@ -46,6 +54,10 @@ func (s *CreateDataDomainShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateDataDomainShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateDataDomainShrinkRequest) SetCreateCommandShrink(v string) *CreateDataDomainShrinkRequest {
 	s.CreateCommandShrink = &v
 	return s
@@ -53,6 +65,11 @@ func (s *CreateDataDomainShrinkRequest) SetCreateCommandShrink(v string) *Create
 
 func (s *CreateDataDomainShrinkRequest) SetOpTenantId(v int64) *CreateDataDomainShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateDataDomainShrinkRequest) SetOpUserId(v string) *CreateDataDomainShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

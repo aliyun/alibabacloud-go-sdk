@@ -11,6 +11,8 @@ type iUpdateUserGroupShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateUserGroupShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateUserGroupShrinkRequest
+	GetOpUserId() *string
 	SetUpdateCommandShrink(v string) *UpdateUserGroupShrinkRequest
 	GetUpdateCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type UpdateUserGroupShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The command to edit the user group.
 	UpdateCommandShrink *string `json:"UpdateCommand,omitempty" xml:"UpdateCommand,omitempty"`
 }
@@ -40,12 +46,21 @@ func (s *UpdateUserGroupShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateUserGroupShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateUserGroupShrinkRequest) GetUpdateCommandShrink() *string {
 	return s.UpdateCommandShrink
 }
 
 func (s *UpdateUserGroupShrinkRequest) SetOpTenantId(v int64) *UpdateUserGroupShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateUserGroupShrinkRequest) SetOpUserId(v string) *UpdateUserGroupShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

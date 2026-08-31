@@ -13,6 +13,8 @@ type iListPublishRecordsRequest interface {
 	GetListQuery() *ListPublishRecordsRequestListQuery
 	SetOpTenantId(v int64) *ListPublishRecordsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListPublishRecordsRequest
+	GetOpUserId() *string
 }
 
 type ListPublishRecordsRequest struct {
@@ -28,6 +30,10 @@ type ListPublishRecordsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListPublishRecordsRequest) String() string {
@@ -46,6 +52,10 @@ func (s *ListPublishRecordsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListPublishRecordsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListPublishRecordsRequest) SetListQuery(v *ListPublishRecordsRequestListQuery) *ListPublishRecordsRequest {
 	s.ListQuery = v
 	return s
@@ -53,6 +63,11 @@ func (s *ListPublishRecordsRequest) SetListQuery(v *ListPublishRecordsRequestLis
 
 func (s *ListPublishRecordsRequest) SetOpTenantId(v int64) *ListPublishRecordsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListPublishRecordsRequest) SetOpUserId(v string) *ListPublishRecordsRequest {
+	s.OpUserId = &v
 	return s
 }
 

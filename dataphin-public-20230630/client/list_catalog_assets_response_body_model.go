@@ -38,7 +38,7 @@ type ListCatalogAssetsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The details of the backend response exception.
+	// The backend response exception details.
 	//
 	// example:
 	//
@@ -178,9 +178,9 @@ func (s *ListCatalogAssetsResponseBodyData) Validate() error {
 type ListCatalogAssetsResponseBodyDataAssetList struct {
 	// The API call mode. Returned when the asset type is API. Valid values:
 	//
-	// - 1: synchronous call.
+	// - 1: Synchronous call.
 	//
-	// - 2: asynchronous call.
+	// - 2: Asynchronous call.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type ListCatalogAssetsResponseBodyDataAssetList struct {
 	//
 	// example:
 	//
-	// 默认API分组
+	// Default API Group
 	ApiGroupName *string `json:"ApiGroupName,omitempty" xml:"ApiGroupName,omitempty"`
 	// The API ID. Returned when the asset type is API.
 	//
@@ -214,61 +214,71 @@ type ListCatalogAssetsResponseBodyDataAssetList struct {
 	//
 	// 1
 	ApiRequestMethod *string `json:"ApiRequestMethod,omitempty" xml:"ApiRequestMethod,omitempty"`
-	// The asset description.
+	// The description of the asset.
 	//
 	// example:
 	//
 	// abc
 	AssetDescription *string `json:"AssetDescription,omitempty" xml:"AssetDescription,omitempty"`
-	// The asset display name. Returned when the asset type is TABLE, INDEX, or BIZ_INDEX.
+	// The display name of the asset. This parameter is returned when the asset type is TABLE, INDEX, or BIZ_INDEX.
 	//
 	// example:
 	//
-	// abc表
+	// abc table
 	AssetDisplayName *string `json:"AssetDisplayName,omitempty" xml:"AssetDisplayName,omitempty"`
-	// The asset source. For TABLE (physical table), the value is in the format "Dataphin-workspace type-project Chinese name (project English name)". For TABLE (logical table), the value is in the format "Dataphin-workspace type-data domain Chinese name (data domain English name)". For TABLE (data source table), the value is in the format "source system name-data source name-database/schema name". For INDEX (standard modeling metric), the value is the asset source of the associated aggregate table. For INDEX (custom metric), the value is the asset source of the source table. For API, the value is the data service project name. For PAGE, the value is the application system name.
+	// The source of the asset. For TABLE (physical table), the value is returned in the format of "Dataphin-Workspace Type-Project Chinese Name (Project English Name)". For TABLE (logical table), the value is returned in the format of "Dataphin-Workspace Type-Data Domain Chinese Name (Data Domain English Name)". For TABLE (data source table), the value is returned in the format of "Source System Name-Data Source Name-Database/Schema Name". For INDEX (standard modeling metric), the value is the asset source of the associated aggregate table. For INDEX (custom metric), the value is the asset source of the source table. For API, the value is the data service project name. For PAGE, the value is the application system name.
 	//
 	// example:
 	//
-	// Dataphin-中间层-服饰零售 (LD_Fashion)
+	// Dataphin-Middle Layer-Fashion Retail (LD_Fashion)
 	AssetFrom *string `json:"AssetFrom,omitempty" xml:"AssetFrom,omitempty"`
-	// The asset full name. Returned when the asset type is TABLE or INDEX.
+	// The full name of the asset. This parameter is returned when the asset type is TABLE or INDEX.
 	//
 	// example:
 	//
 	// dwd_all.abc
 	AssetFullName *string `json:"AssetFullName,omitempty" xml:"AssetFullName,omitempty"`
-	// The asset name.
+	// The name of the asset.
 	//
 	// example:
 	//
 	// abc
 	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
-	// The asset tags.
+	// The tags of the asset.
 	AssetTags []*string `json:"AssetTags,omitempty" xml:"AssetTags,omitempty" type:"Repeated"`
-	// The asset type. Valid values: TABLE (table, including views and materialized views), INDEX (technical metric), BIZ_INDEX (business metric), API, and PAGE (dashboard).
+	// The asset type. Valid values:
+	//
+	// - TABLE: table, including views and materialized views.
+	//
+	// - INDEX: technical metric.
+	//
+	// - BIZ_INDEX: business metric.
+	//
+	// - API: API.
+	//
+	// - PAGE: dashboard.
 	//
 	// example:
 	//
 	// TABLE
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
-	// The BI workspace or directory to which the asset belongs. Returned when the asset type is PAGE (dashboard).
+	// The BI space or folder to which the asset belongs. Returned when the asset type is PAGE (dashboard).
 	//
 	// example:
 	//
-	// dataphin演示空间
+	// dataphin demo space
 	BiCatalog *string `json:"BiCatalog,omitempty" xml:"BiCatalog,omitempty"`
-	// The ID of the business unit to which the asset belongs. Returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
+	// The ID of the business unit to which the asset belongs. This parameter is returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
 	//
 	// example:
 	//
 	// 6865277495315392
 	BizUnitId *int64 `json:"BizUnitId,omitempty" xml:"BizUnitId,omitempty"`
-	// The name of the business unit to which the asset belongs. Returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
+	// The name of the business unit to which the asset belongs. This parameter is returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
 	//
 	// example:
 	//
-	// 服饰零售（LD_Fashion）
+	// Fashion Retail (LD_Fashion)
 	BizUnitName *string `json:"BizUnitName,omitempty" xml:"BizUnitName,omitempty"`
 	// The total number of charts. Returned when the asset type is PAGE (dashboard).
 	//
@@ -276,25 +286,25 @@ type ListCatalogAssetsResponseBodyDataAssetList struct {
 	//
 	// 23
 	ChartCount *int64 `json:"ChartCount,omitempty" xml:"ChartCount,omitempty"`
-	// The ID of the subject domain to which the asset belongs. Returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
+	// The ID of the data domain to which the asset belongs. This parameter is returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
 	//
 	// example:
 	//
 	// 49837403
 	DataCellId *string `json:"DataCellId,omitempty" xml:"DataCellId,omitempty"`
-	// The name of the subject domain to which the asset belongs. Returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
+	// The name of the data domain to which the asset belongs. Returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
 	//
 	// example:
 	//
-	// 课程域
+	// Course Domain
 	DataCellName *string `json:"DataCellName,omitempty" xml:"DataCellName,omitempty"`
-	// The name of the data source to which the asset belongs. Returned when the asset type is TABLE (data source tables only) or INDEX (technical metrics whose source table is a data source table only).
+	// The name of the data source to which the asset belongs. This parameter is returned when the asset type is TABLE (data source tables only) or INDEX (technical metrics whose source table is a data source table only).
 	//
 	// example:
 	//
 	// demo_mysql
 	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
-	// The ID of the data source to which the asset belongs. Returned when the asset type is TABLE (data source tables only) or INDEX (technical metrics whose source table is a data source table only).
+	// The ID of the data source to which the asset belongs. This parameter is returned when the asset type is TABLE (data source tables only) or INDEX (technical metrics whose source table is a data source table only).
 	//
 	// example:
 	//
@@ -302,13 +312,13 @@ type ListCatalogAssetsResponseBodyDataAssetList struct {
 	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
 	// The directories to which the asset belongs, including topic ID, topic name, directory ID, and directory name.
 	Directories []*ListCatalogAssetsResponseBodyDataAssetListDirectories `json:"Directories,omitempty" xml:"Directories,omitempty" type:"Repeated"`
-	// The statistical granularity name of the technical metric. Returned when the asset type is INDEX.
+	// The statistical granularity name of the technical metric. This parameter is returned when the asset type is INDEX.
 	//
 	// example:
 	//
-	// 课程
+	// Course
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
-	// The asset GUID, which serves as the unique identifier of the asset.
+	// The GUID of the asset, which serves as the unique identifier of the asset.
 	//
 	// example:
 	//
@@ -316,37 +326,65 @@ type ListCatalogAssetsResponseBodyDataAssetList struct {
 	Guid *string `json:"Guid,omitempty" xml:"Guid,omitempty"`
 	// Indicates whether the asset is deleted.
 	IsDeleted *bool `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// The highest sensitivity level. Returned when the asset type is TABLE.
+	// The maximum sensitivity level. This parameter is returned when the asset type is TABLE.
 	//
 	// example:
 	//
 	// L3
 	MaxSecurityLevel *string `json:"MaxSecurityLevel,omitempty" xml:"MaxSecurityLevel,omitempty"`
-	// The ID of the project to which the asset belongs. Returned when the asset type is TABLE (physical tables only) or INDEX (technical metrics whose source table is a physical table only).
+	// The ID of the project to which the asset belongs. This parameter is returned when the asset type is TABLE (physical tables only) or INDEX (technical metrics whose source table is a physical table only).
 	//
 	// example:
 	//
 	// 6865331517728384
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The name of the project to which the asset belongs. Returned when the asset type is TABLE (physical tables only) or INDEX (technical metrics whose source table is a physical table only).
+	// The name of the project to which the asset belongs. This parameter is returned when the asset type is TABLE (physical tables only) or INDEX (technical metrics whose source table is a physical table only).
 	//
 	// example:
 	//
 	// train
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The subtype. Valid values: DIM_NORMAL (common logical dimension table), DIM_ENUM (enumeration logical dimension table), DIM_VIRTUAL (virtual logical dimension table), SUM_BIZ_UNIT (aggregate logical table), FACT_EVENT (event fact logical table), FACT_SNAPSHOT (snapshot fact logical table), DATASOURCE_TABLE (data source table), PHYSICAL_TABLE (physical table), DATASOURCE_VIEW (view - data source view), PHYSICAL_VIEW (physical view), MATERIALIZED_VIEW (materialized view), BIZ_INDEX (business metric), INDEX (technical metric - standard modeling metric), and CUSTOM_INDEX (technical metric - custom metric).
+	// The subtype of the asset. Valid values:
+	//
+	// - DIM_NORMAL: common logical dimension table.
+	//
+	// - DIM_ENUM: enumeration logical dimension table.
+	//
+	// - DIM_VIRTUAL: virtual logical dimension table.
+	//
+	// - SUM_BIZ_UNIT: aggregate table.
+	//
+	// - FACT_EVENT: event fact logical table.
+	//
+	// - FACT_SNAPSHOT: snapshot fact logical table.
+	//
+	// - DATASOURCE_TABLE: data source table.
+	//
+	// - PHYSICAL_TABLE: physical table.
+	//
+	// - DATASOURCE_VIEW: view (data source view).
+	//
+	// - PHYSICAL_VIEW: physical view.
+	//
+	// - MATERIALIZED_VIEW: materialized view.
+	//
+	// - BIZ_INDEX: business metric.
+	//
+	// - INDEX: technical metric (standard modeling metric).
+	//
+	// - CUSTOM_INDEX: technical metric (custom metric).
 	//
 	// example:
 	//
 	// DIM_NORMAL
 	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
-	// The GUID of the aggregate table to which the asset belongs. Returned when the asset type is INDEX.
+	// The GUID of the aggregate table to which the asset belongs. This parameter is returned when the asset type is INDEX.
 	//
 	// example:
 	//
 	// odps.300023201.test.ads_gross
 	SumTableGuid *string `json:"SumTableGuid,omitempty" xml:"SumTableGuid,omitempty"`
-	// The name of the aggregate table to which the asset belongs. Returned when the asset type is INDEX.
+	// The name of the aggregate table to which the asset belongs. This parameter is returned when the asset type is INDEX.
 	//
 	// example:
 	//
@@ -637,29 +675,29 @@ func (s *ListCatalogAssetsResponseBodyDataAssetList) Validate() error {
 }
 
 type ListCatalogAssetsResponseBodyDataAssetListDirectories struct {
-	// The directory ID.
+	// The ID of the directory.
 	//
 	// example:
 	//
 	// 102260
 	DirectoryId *int64 `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The directory name.
+	// The name of the directory.
 	//
 	// example:
 	//
-	// 线上电商平台
+	// Online E-commerce Platform
 	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
-	// The topic ID.
+	// The ID of the topic.
 	//
 	// example:
 	//
 	// 101676
 	TopicId *int64 `json:"TopicId,omitempty" xml:"TopicId,omitempty"`
-	// The topic name.
+	// The name of the topic.
 	//
 	// example:
 	//
-	// 全渠道数据专题
+	// Omni-channel Data Topic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
 }
 

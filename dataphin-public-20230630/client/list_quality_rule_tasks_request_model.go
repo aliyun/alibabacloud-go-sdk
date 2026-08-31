@@ -13,6 +13,8 @@ type iListQualityRuleTasksRequest interface {
 	GetListQuery() *ListQualityRuleTasksRequestListQuery
 	SetOpTenantId(v int64) *ListQualityRuleTasksRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListQualityRuleTasksRequest
+	GetOpUserId() *string
 }
 
 type ListQualityRuleTasksRequest struct {
@@ -26,6 +28,10 @@ type ListQualityRuleTasksRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListQualityRuleTasksRequest) String() string {
@@ -44,6 +50,10 @@ func (s *ListQualityRuleTasksRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListQualityRuleTasksRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListQualityRuleTasksRequest) SetListQuery(v *ListQualityRuleTasksRequestListQuery) *ListQualityRuleTasksRequest {
 	s.ListQuery = v
 	return s
@@ -51,6 +61,11 @@ func (s *ListQualityRuleTasksRequest) SetListQuery(v *ListQualityRuleTasksReques
 
 func (s *ListQualityRuleTasksRequest) SetOpTenantId(v int64) *ListQualityRuleTasksRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListQualityRuleTasksRequest) SetOpUserId(v string) *ListQualityRuleTasksRequest {
+	s.OpUserId = &v
 	return s
 }
 

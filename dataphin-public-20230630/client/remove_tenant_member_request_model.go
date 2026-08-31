@@ -11,6 +11,8 @@ type iRemoveTenantMemberRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *RemoveTenantMemberRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *RemoveTenantMemberRequest
+	GetOpUserId() *string
 	SetRemoveCommand(v *RemoveTenantMemberRequestRemoveCommand) *RemoveTenantMemberRequest
 	GetRemoveCommand() *RemoveTenantMemberRequestRemoveCommand
 }
@@ -24,6 +26,10 @@ type RemoveTenantMemberRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The request command.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *RemoveTenantMemberRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *RemoveTenantMemberRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *RemoveTenantMemberRequest) GetRemoveCommand() *RemoveTenantMemberRequestRemoveCommand {
 	return s.RemoveCommand
 }
 
 func (s *RemoveTenantMemberRequest) SetOpTenantId(v int64) *RemoveTenantMemberRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *RemoveTenantMemberRequest) SetOpUserId(v string) *RemoveTenantMemberRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -74,6 +89,10 @@ type RemoveTenantMemberRequestRemoveCommand struct {
 	//
 	// 123@xx.com
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// example:
+	//
+	// aliyun
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s RemoveTenantMemberRequestRemoveCommand) String() string {
@@ -88,8 +107,17 @@ func (s *RemoveTenantMemberRequestRemoveCommand) GetSourceId() *string {
 	return s.SourceId
 }
 
+func (s *RemoveTenantMemberRequestRemoveCommand) GetSourceType() *string {
+	return s.SourceType
+}
+
 func (s *RemoveTenantMemberRequestRemoveCommand) SetSourceId(v string) *RemoveTenantMemberRequestRemoveCommand {
 	s.SourceId = &v
+	return s
+}
+
+func (s *RemoveTenantMemberRequestRemoveCommand) SetSourceType(v string) *RemoveTenantMemberRequestRemoveCommand {
+	s.SourceType = &v
 	return s
 }
 

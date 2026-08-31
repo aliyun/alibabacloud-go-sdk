@@ -13,6 +13,8 @@ type iGetDataServiceApiDocumentRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *GetDataServiceApiDocumentRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetDataServiceApiDocumentRequest
+	GetOpUserId() *string
 	SetVersionId(v string) *GetDataServiceApiDocumentRequest
 	GetVersionId() *string
 }
@@ -34,6 +36,10 @@ type GetDataServiceApiDocumentRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The version.
 	//
 	// example:
@@ -58,6 +64,10 @@ func (s *GetDataServiceApiDocumentRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetDataServiceApiDocumentRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetDataServiceApiDocumentRequest) GetVersionId() *string {
 	return s.VersionId
 }
@@ -69,6 +79,11 @@ func (s *GetDataServiceApiDocumentRequest) SetId(v int64) *GetDataServiceApiDocu
 
 func (s *GetDataServiceApiDocumentRequest) SetOpTenantId(v int64) *GetDataServiceApiDocumentRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetDataServiceApiDocumentRequest) SetOpUserId(v string) *GetDataServiceApiDocumentRequest {
+	s.OpUserId = &v
 	return s
 }
 

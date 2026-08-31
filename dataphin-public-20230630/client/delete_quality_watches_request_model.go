@@ -13,6 +13,8 @@ type iDeleteQualityWatchesRequest interface {
 	GetDeleteCommand() *DeleteQualityWatchesRequestDeleteCommand
 	SetOpTenantId(v int64) *DeleteQualityWatchesRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteQualityWatchesRequest
+	GetOpUserId() *string
 }
 
 type DeleteQualityWatchesRequest struct {
@@ -28,6 +30,10 @@ type DeleteQualityWatchesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteQualityWatchesRequest) String() string {
@@ -46,6 +52,10 @@ func (s *DeleteQualityWatchesRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteQualityWatchesRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteQualityWatchesRequest) SetDeleteCommand(v *DeleteQualityWatchesRequestDeleteCommand) *DeleteQualityWatchesRequest {
 	s.DeleteCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *DeleteQualityWatchesRequest) SetDeleteCommand(v *DeleteQualityWatchesRe
 
 func (s *DeleteQualityWatchesRequest) SetOpTenantId(v int64) *DeleteQualityWatchesRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteQualityWatchesRequest) SetOpUserId(v string) *DeleteQualityWatchesRequest {
+	s.OpUserId = &v
 	return s
 }
 

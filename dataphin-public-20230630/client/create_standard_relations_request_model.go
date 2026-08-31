@@ -13,6 +13,8 @@ type iCreateStandardRelationsRequest interface {
 	GetCreateCommand() *CreateStandardRelationsRequestCreateCommand
 	SetOpTenantId(v int64) *CreateStandardRelationsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateStandardRelationsRequest
+	GetOpUserId() *string
 }
 
 type CreateStandardRelationsRequest struct {
@@ -28,6 +30,10 @@ type CreateStandardRelationsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateStandardRelationsRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateStandardRelationsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateStandardRelationsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateStandardRelationsRequest) SetCreateCommand(v *CreateStandardRelationsRequestCreateCommand) *CreateStandardRelationsRequest {
 	s.CreateCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateStandardRelationsRequest) SetCreateCommand(v *CreateStandardRelat
 
 func (s *CreateStandardRelationsRequest) SetOpTenantId(v int64) *CreateStandardRelationsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateStandardRelationsRequest) SetOpUserId(v string) *CreateStandardRelationsRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -66,7 +81,7 @@ func (s *CreateStandardRelationsRequest) Validate() error {
 }
 
 type CreateStandardRelationsRequestCreateCommand struct {
-	// The standard association type: RELATIVE.
+	// The standard association relationship type: RELATIVE.
 	//
 	// This parameter is required.
 	//

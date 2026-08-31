@@ -11,6 +11,8 @@ type iSubmitQualityRuleTasksShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *SubmitQualityRuleTasksShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *SubmitQualityRuleTasksShrinkRequest
+	GetOpUserId() *string
 	SetSubmitCommandShrink(v string) *SubmitQualityRuleTasksShrinkRequest
 	GetSubmitCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type SubmitQualityRuleTasksShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// Submit command
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *SubmitQualityRuleTasksShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *SubmitQualityRuleTasksShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *SubmitQualityRuleTasksShrinkRequest) GetSubmitCommandShrink() *string {
 	return s.SubmitCommandShrink
 }
 
 func (s *SubmitQualityRuleTasksShrinkRequest) SetOpTenantId(v int64) *SubmitQualityRuleTasksShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *SubmitQualityRuleTasksShrinkRequest) SetOpUserId(v string) *SubmitQualityRuleTasksShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

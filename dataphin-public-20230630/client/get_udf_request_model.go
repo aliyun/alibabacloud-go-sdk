@@ -13,6 +13,8 @@ type iGetUdfRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *GetUdfRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetUdfRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *GetUdfRequest
 	GetProjectId() *int64
 }
@@ -34,6 +36,12 @@ type GetUdfRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -60,6 +68,10 @@ func (s *GetUdfRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetUdfRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetUdfRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -71,6 +83,11 @@ func (s *GetUdfRequest) SetId(v int64) *GetUdfRequest {
 
 func (s *GetUdfRequest) SetOpTenantId(v int64) *GetUdfRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetUdfRequest) SetOpUserId(v string) *GetUdfRequest {
+	s.OpUserId = &v
 	return s
 }
 

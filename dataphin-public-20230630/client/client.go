@@ -67,7 +67,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Adds a regular member to a data service application. Only the application owner can perform this operation.
 //
-// Online version: v6.0.0.
+// Release version: v6.0.0.
 //
 // @param tmpReq - AddDataServiceAppMemberRequest
 //
@@ -90,6 +90,10 @@ func (client *Client) AddDataServiceAppMemberWithOptions(tmpReq *AddDataServiceA
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -125,7 +129,7 @@ func (client *Client) AddDataServiceAppMemberWithOptions(tmpReq *AddDataServiceA
 //
 // Adds a regular member to a data service application. Only the application owner can perform this operation.
 //
-// Online version: v6.0.0.
+// Release version: v6.0.0.
 //
 // @param request - AddDataServiceAppMemberRequest
 //
@@ -166,6 +170,10 @@ func (client *Client) AddDataServiceProjectMemberWithOptions(tmpReq *AddDataServ
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -250,6 +258,10 @@ func (client *Client) AddProjectMemberWithOptions(tmpReq *AddProjectMemberReques
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AddCommandShrink) {
 		body["AddCommand"] = request.AddCommandShrink
@@ -324,6 +336,10 @@ func (client *Client) AddRegisterLineageWithOptions(tmpReq *AddRegisterLineageRe
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AddRegisterLineageCommandShrink) {
 		body["AddRegisterLineageCommand"] = request.AddRegisterLineageCommandShrink
@@ -396,6 +412,10 @@ func (client *Client) AddTenantMembersWithOptions(tmpReq *AddTenantMembersReques
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -546,6 +566,10 @@ func (client *Client) AddUserGroupMemberWithOptions(tmpReq *AddUserGroupMemberRe
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AddCommandShrink) {
 		body["AddCommand"] = request.AddCommandShrink
@@ -618,6 +642,10 @@ func (client *Client) ApplyDataServiceApiWithOptions(tmpReq *ApplyDataServiceApi
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -696,6 +724,10 @@ func (client *Client) ApplyDataServiceAppWithOptions(tmpReq *ApplyDataServiceApp
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -778,6 +810,10 @@ func (client *Client) AssignQualityRuleOfAllRuleScopeSchedulesWithOptions(tmpReq
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssignCommandShrink) {
 		body["AssignCommand"] = request.AssignCommandShrink
@@ -829,7 +865,7 @@ func (client *Client) AssignQualityRuleOfAllRuleScopeSchedules(request *AssignQu
 
 // Summary:
 //
-// Creates knowledge graph entity records in batches. Online version: v6.1.1.
+// Creates knowledge graph entity records in batches. Available since version v6.1.1.
 //
 // @param tmpReq - BatchCreateKgEntityRequest
 //
@@ -852,6 +888,10 @@ func (client *Client) BatchCreateKgEntityWithOptions(tmpReq *BatchCreateKgEntity
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -889,7 +929,7 @@ func (client *Client) BatchCreateKgEntityWithOptions(tmpReq *BatchCreateKgEntity
 
 // Summary:
 //
-// Creates knowledge graph entity records in batches. Online version: v6.1.1.
+// Creates knowledge graph entity records in batches. Available since version v6.1.1.
 //
 // @param request - BatchCreateKgEntityRequest
 //
@@ -930,6 +970,10 @@ func (client *Client) BatchCreateKgRelationWithOptions(tmpReq *BatchCreateKgRela
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -1010,6 +1054,10 @@ func (client *Client) CheckComputeSourceConnectivityWithOptions(tmpReq *CheckCom
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CheckCommandShrink) {
 		body["CheckCommand"] = request.CheckCommandShrink
@@ -1082,6 +1130,10 @@ func (client *Client) CheckComputeSourceConnectivityByIdWithOptions(request *Che
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1148,6 +1200,10 @@ func (client *Client) CheckDataSourceConnectivityWithOptions(tmpReq *CheckDataSo
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -1222,6 +1278,10 @@ func (client *Client) CheckDataSourceConnectivityByIdWithOptions(request *CheckD
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1286,6 +1346,10 @@ func (client *Client) CheckProjectHasDependencyWithOptions(request *CheckProject
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1354,6 +1418,10 @@ func (client *Client) CheckResourcePermissionWithOptions(tmpReq *CheckResourcePe
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -1430,6 +1498,10 @@ func (client *Client) CreateAdHocFileWithOptions(tmpReq *CreateAdHocFileRequest,
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CreateCommandShrink) {
 		body["CreateCommand"] = request.CreateCommandShrink
@@ -1502,6 +1574,10 @@ func (client *Client) CreateBasicProjectWithOptions(tmpReq *CreateBasicProjectRe
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -1578,6 +1654,10 @@ func (client *Client) CreateBatchTaskWithOptions(tmpReq *CreateBatchTaskRequest,
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CreateCommandShrink) {
 		body["CreateCommand"] = request.CreateCommandShrink
@@ -1650,6 +1730,10 @@ func (client *Client) CreateBizEntityWithOptions(tmpReq *CreateBizEntityRequest,
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -1728,6 +1812,10 @@ func (client *Client) CreateBizMetricWithOptions(tmpReq *CreateBizMetricRequest,
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CreateBizMetricCommandShrink) {
 		body["CreateBizMetricCommand"] = request.CreateBizMetricCommandShrink
@@ -1804,6 +1892,10 @@ func (client *Client) CreateBizUnitWithOptions(tmpReq *CreateBizUnitRequest, run
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CreateCommandShrink) {
 		body["CreateCommand"] = request.CreateCommandShrink
@@ -1853,6 +1945,84 @@ func (client *Client) CreateBizUnit(request *CreateBizUnitRequest) (_result *Cre
 
 // Summary:
 //
+// Creates a cluster. Online since version v6.3.0.
+//
+// @param tmpReq - CreateComputeClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateComputeClusterResponse
+func (client *Client) CreateComputeClusterWithOptions(tmpReq *CreateComputeClusterRequest, runtime *dara.RuntimeOptions) (_result *CreateComputeClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateComputeClusterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ClusterConfig) {
+		request.ClusterConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ClusterConfig, dara.String("ClusterConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterConfigShrink) {
+		body["ClusterConfig"] = request.ClusterConfigShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateComputeCluster"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateComputeClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a cluster. Online since version v6.3.0.
+//
+// @param request - CreateComputeClusterRequest
+//
+// @return CreateComputeClusterResponse
+func (client *Client) CreateComputeCluster(request *CreateComputeClusterRequest) (_result *CreateComputeClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateComputeClusterResponse{}
+	_body, _err := client.CreateComputeClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a compute source. Business unit administrators and project administrators have permissions to perform this operation.
 //
 // @param tmpReq - CreateComputeSourceRequest
@@ -1876,6 +2046,10 @@ func (client *Client) CreateComputeSourceWithOptions(tmpReq *CreateComputeSource
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -1952,6 +2126,10 @@ func (client *Client) CreateDataDomainWithOptions(tmpReq *CreateDataDomainReques
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CreateCommandShrink) {
 		body["CreateCommand"] = request.CreateCommandShrink
@@ -2026,6 +2204,10 @@ func (client *Client) CreateDataServiceApiWithOptions(tmpReq *CreateDataServiceA
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CreateCommandShrink) {
 		body["CreateCommand"] = request.CreateCommandShrink
@@ -2075,7 +2257,7 @@ func (client *Client) CreateDataServiceApi(request *CreateDataServiceApiRequest)
 
 // Summary:
 //
-// Creates a data service application. Only super administrators or system administrators can perform this operation.
+// Creates a data service application. Only super administrators or system administration administrators can perform this operation.
 //
 // Online version: v6.0.0.
 //
@@ -2100,6 +2282,10 @@ func (client *Client) CreateDataServiceAppWithOptions(tmpReq *CreateDataServiceA
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -2133,7 +2319,7 @@ func (client *Client) CreateDataServiceAppWithOptions(tmpReq *CreateDataServiceA
 
 // Summary:
 //
-// Creates a data service application. Only super administrators or system administrators can perform this operation.
+// Creates a data service application. Only super administrators or system administration administrators can perform this operation.
 //
 // Online version: v6.0.0.
 //
@@ -2153,7 +2339,7 @@ func (client *Client) CreateDataServiceApp(request *CreateDataServiceAppRequest)
 
 // Summary:
 //
-// Creates a data service application group. Only superusers and system administrators can perform this operation.
+// Creates a data service application group. Only super administrators and system administrators can perform this operation.
 //
 // Online version: v6.0.0.
 //
@@ -2176,6 +2362,10 @@ func (client *Client) CreateDataServiceAppGroupWithOptions(request *CreateDataSe
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2203,7 +2393,7 @@ func (client *Client) CreateDataServiceAppGroupWithOptions(request *CreateDataSe
 
 // Summary:
 //
-// Creates a data service application group. Only superusers and system administrators can perform this operation.
+// Creates a data service application group. Only super administrators and system administrators can perform this operation.
 //
 // Online version: v6.0.0.
 //
@@ -2246,6 +2436,10 @@ func (client *Client) CreateDataSourceWithOptions(tmpReq *CreateDataSourceReques
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -2338,6 +2532,10 @@ func (client *Client) CreateDatasetWithOptions(tmpReq *CreateDatasetRequest, run
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -2436,6 +2634,10 @@ func (client *Client) CreateDevProdProjectWithOptions(tmpReq *CreateDevProdProje
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CreateCommandShrink) {
 		body["CreateCommand"] = request.CreateCommandShrink
@@ -2510,6 +2712,10 @@ func (client *Client) CreateDirectoryWithOptions(tmpReq *CreateDirectoryRequest,
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CreateCommandShrink) {
 		body["CreateCommand"] = request.CreateCommandShrink
@@ -2582,6 +2788,10 @@ func (client *Client) CreateKgEntityWithOptions(tmpReq *CreateKgEntityRequest, r
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -2662,6 +2872,10 @@ func (client *Client) CreateKgRelationWithOptions(tmpReq *CreateKgRelationReques
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		query["WorkspaceId"] = request.WorkspaceId
 	}
@@ -2715,11 +2929,11 @@ func (client *Client) CreateKgRelation(request *CreateKgRelationRequest) (_resul
 
 // Summary:
 //
-// General-purpose backfill API that supports both list-mode and bulk-mode backfill:
+// General-purpose data backfill operation that supports both list mode and batch mode data backfill:
 //
-// 1. Backfill instances will be generated and executed, affecting the data output of related tables.
+// 1. Generates data backfill instances that run and affect data output of related tables.
 //
-// 2. Task execution will incur computing costs and storage costs.
+// 2. Triggers node execution, which incurs compute and storage costs.
 //
 // @param tmpReq - CreateNodeSupplementRequest
 //
@@ -2746,6 +2960,10 @@ func (client *Client) CreateNodeSupplementWithOptions(tmpReq *CreateNodeSuppleme
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -2779,11 +2997,11 @@ func (client *Client) CreateNodeSupplementWithOptions(tmpReq *CreateNodeSuppleme
 
 // Summary:
 //
-// General-purpose backfill API that supports both list-mode and bulk-mode backfill:
+// General-purpose data backfill operation that supports both list mode and batch mode data backfill:
 //
-// 1. Backfill instances will be generated and executed, affecting the data output of related tables.
+// 1. Generates data backfill instances that run and affect data output of related tables.
 //
-// 2. Task execution will incur computing costs and storage costs.
+// 2. Triggers node execution, which incurs compute and storage costs.
 //
 // @param request - CreateNodeSupplementRequest
 //
@@ -2801,7 +3019,7 @@ func (client *Client) CreateNodeSupplement(request *CreateNodeSupplementRequest)
 
 // Summary:
 //
-// Create an integration pipeline/unstructured workflow task.
+// Creates an integration pipeline or unstructured workflow node.
 //
 // @param tmpReq - CreatePipelineRequest
 //
@@ -2828,6 +3046,10 @@ func (client *Client) CreatePipelineWithOptions(tmpReq *CreatePipelineRequest, r
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -2865,7 +3087,7 @@ func (client *Client) CreatePipelineWithOptions(tmpReq *CreatePipelineRequest, r
 
 // Summary:
 //
-// Create an integration pipeline/unstructured workflow task.
+// Creates an integration pipeline or unstructured workflow node.
 //
 // @param request - CreatePipelineRequest
 //
@@ -2910,6 +3132,10 @@ func (client *Client) CreatePipelineByAsyncWithOptions(tmpReq *CreatePipelineByA
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -2990,6 +3216,10 @@ func (client *Client) CreatePipelineNodeWithOptions(tmpReq *CreatePipelineNodeRe
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CreatePipelineNodeCommandShrink) {
 		body["CreatePipelineNodeCommand"] = request.CreatePipelineNodeCommandShrink
@@ -3062,6 +3292,10 @@ func (client *Client) CreateResourceWithOptions(tmpReq *CreateResourceRequest, r
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -3142,6 +3376,10 @@ func (client *Client) CreateRowPermissionWithOptions(tmpReq *CreateRowPermission
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CreateRowPermissionCommandShrink) {
 		body["CreateRowPermissionCommand"] = request.CreateRowPermissionCommandShrink
@@ -3195,7 +3433,7 @@ func (client *Client) CreateRowPermission(request *CreateRowPermissionRequest) (
 
 // Summary:
 //
-// Creates a data classification. Available since v5.4.2.
+// Creates a data category. Available since v5.4.2.
 //
 // @param tmpReq - CreateSecurityClassifyRequest
 //
@@ -3218,6 +3456,10 @@ func (client *Client) CreateSecurityClassifyWithOptions(tmpReq *CreateSecurityCl
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -3251,7 +3493,7 @@ func (client *Client) CreateSecurityClassifyWithOptions(tmpReq *CreateSecurityCl
 
 // Summary:
 //
-// Creates a data classification. Available since v5.4.2.
+// Creates a data category. Available since v5.4.2.
 //
 // @param request - CreateSecurityClassifyRequest
 //
@@ -3292,6 +3534,10 @@ func (client *Client) CreateSecurityClassifyCatalogWithOptions(tmpReq *CreateSec
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -3370,6 +3616,10 @@ func (client *Client) CreateSecurityIdentifyResultWithOptions(tmpReq *CreateSecu
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CreateCommandShrink) {
 		body["CreateCommand"] = request.CreateCommandShrink
@@ -3446,6 +3696,10 @@ func (client *Client) CreateSecurityLevelWithOptions(tmpReq *CreateSecurityLevel
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CreateCommandShrink) {
 		body["CreateCommand"] = request.CreateCommandShrink
@@ -3520,6 +3774,10 @@ func (client *Client) CreateStandardWithOptions(tmpReq *CreateStandardRequest, r
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -3600,6 +3858,10 @@ func (client *Client) CreateStandardLookupTableWithOptions(tmpReq *CreateStandar
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CreateCommandShrink) {
 		body["CreateCommand"] = request.CreateCommandShrink
@@ -3678,6 +3940,10 @@ func (client *Client) CreateStandardMappingWithOptions(tmpReq *CreateStandardMap
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CreateCommandShrink) {
 		body["CreateCommand"] = request.CreateCommandShrink
@@ -3729,7 +3995,9 @@ func (client *Client) CreateStandardMapping(request *CreateStandardMappingReques
 
 // Summary:
 //
-// Creates a standard association. Release version: v5.4.2.
+// Creates a standard association relationship.
+//
+// Online version: v5.4.2.
 //
 // @param tmpReq - CreateStandardRelationsRequest
 //
@@ -3752,6 +4020,10 @@ func (client *Client) CreateStandardRelationsWithOptions(tmpReq *CreateStandardR
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -3785,7 +4057,9 @@ func (client *Client) CreateStandardRelationsWithOptions(tmpReq *CreateStandardR
 
 // Summary:
 //
-// Creates a standard association. Release version: v5.4.2.
+// Creates a standard association relationship.
+//
+// Online version: v5.4.2.
 //
 // @param request - CreateStandardRelationsRequest
 //
@@ -3828,6 +4102,10 @@ func (client *Client) CreateStandardSetWithOptions(tmpReq *CreateStandardSetRequ
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -3908,6 +4186,10 @@ func (client *Client) CreateStandardTemplateWithOptions(tmpReq *CreateStandardTe
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CreateCommandShrink) {
 		body["CreateCommand"] = request.CreateCommandShrink
@@ -3986,6 +4268,10 @@ func (client *Client) CreateStandardWordRootWithOptions(tmpReq *CreateStandardWo
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CreateCommandShrink) {
 		body["CreateCommand"] = request.CreateCommandShrink
@@ -4062,6 +4348,10 @@ func (client *Client) CreateStreamBatchJobMappingWithOptions(tmpReq *CreateStrea
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.StreamBatchJobMappingCreateCommandShrink) {
 		body["StreamBatchJobMappingCreateCommand"] = request.StreamBatchJobMappingCreateCommandShrink
@@ -4134,6 +4424,10 @@ func (client *Client) CreateUdfWithOptions(tmpReq *CreateUdfRequest, runtime *da
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -4210,6 +4504,10 @@ func (client *Client) CreateUserGroupWithOptions(tmpReq *CreateUserGroupRequest,
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.CreateCommandShrink) {
 		body["CreateCommand"] = request.CreateCommandShrink
@@ -4259,7 +4557,7 @@ func (client *Client) CreateUserGroup(request *CreateUserGroupRequest) (_result 
 
 // Summary:
 //
-// Creates an unstructured workflow node using JSON script mode. Online version: v6.2.0.
+// Creates an unstructured workflow node using JSON script mode. Online since v6.2.0.
 //
 // @param tmpReq - CreateWorkFlowByJsonRequest
 //
@@ -4286,6 +4584,10 @@ func (client *Client) CreateWorkFlowByJsonWithOptions(tmpReq *CreateWorkFlowByJs
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -4323,7 +4625,7 @@ func (client *Client) CreateWorkFlowByJsonWithOptions(tmpReq *CreateWorkFlowByJs
 
 // Summary:
 //
-// Creates an unstructured workflow node using JSON script mode. Online version: v6.2.0.
+// Creates an unstructured workflow node using JSON script mode. Online since v6.2.0.
 //
 // @param request - CreateWorkFlowByJsonRequest
 //
@@ -4362,6 +4664,10 @@ func (client *Client) DeleteAdHocFileWithOptions(request *DeleteAdHocFileRequest
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -4434,6 +4740,10 @@ func (client *Client) DeleteBatchTaskWithOptions(tmpReq *DeleteBatchTaskRequest,
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -4512,6 +4822,10 @@ func (client *Client) DeleteBizEntityWithOptions(request *DeleteBizEntityRequest
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.Type) {
 		query["Type"] = request.Type
 	}
@@ -4584,6 +4898,10 @@ func (client *Client) DeleteBizMetricWithOptions(tmpReq *DeleteBizMetricRequest,
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -4660,6 +4978,10 @@ func (client *Client) DeleteBizUnitWithOptions(request *DeleteBizUnitRequest, ru
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4703,6 +5025,76 @@ func (client *Client) DeleteBizUnit(request *DeleteBizUnitRequest) (_result *Del
 
 // Summary:
 //
+// 删除集群。
+//
+// @param request - DeleteComputeClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteComputeClusterResponse
+func (client *Client) DeleteComputeClusterWithOptions(request *DeleteComputeClusterRequest, runtime *dara.RuntimeOptions) (_result *DeleteComputeClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteComputeCluster"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteComputeClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除集群。
+//
+// @param request - DeleteComputeClusterRequest
+//
+// @return DeleteComputeClusterResponse
+func (client *Client) DeleteComputeCluster(request *DeleteComputeClusterRequest) (_result *DeleteComputeClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteComputeClusterResponse{}
+	_body, _err := client.DeleteComputeClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a compute source.
 //
 // @param request - DeleteComputeSourceRequest
@@ -4724,6 +5116,10 @@ func (client *Client) DeleteComputeSourceWithOptions(request *DeleteComputeSourc
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4796,6 +5192,10 @@ func (client *Client) DeleteDataDomainWithOptions(request *DeleteDataDomainReque
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4862,6 +5262,10 @@ func (client *Client) DeleteDataServiceAppWithOptions(request *DeleteDataService
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -4934,6 +5338,10 @@ func (client *Client) DeleteDataServiceAppGroupWithOptions(request *DeleteDataSe
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5002,6 +5410,10 @@ func (client *Client) DeleteDataSourceWithOptions(tmpReq *DeleteDataSourceReques
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -5076,6 +5488,10 @@ func (client *Client) DeleteDatasetWithOptions(request *DeleteDatasetRequest, ru
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -5144,6 +5560,10 @@ func (client *Client) DeleteDirectoryWithOptions(request *DeleteDirectoryRequest
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -5220,6 +5640,10 @@ func (client *Client) DeleteKgEntityWithOptions(request *DeleteKgEntityRequest, 
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		query["WorkspaceId"] = request.WorkspaceId
 	}
@@ -5284,6 +5708,10 @@ func (client *Client) DeleteKgRelationWithOptions(request *DeleteKgRelationReque
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.RelationId) {
@@ -5364,6 +5792,10 @@ func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, ru
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5432,6 +5864,10 @@ func (client *Client) DeleteQualityRulesWithOptions(tmpReq *DeleteQualityRulesRe
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -5512,6 +5948,10 @@ func (client *Client) DeleteQualitySchedulesWithOptions(tmpReq *DeleteQualitySch
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DeleteCommandShrink) {
 		body["DeleteCommand"] = request.DeleteCommandShrink
@@ -5588,6 +6028,10 @@ func (client *Client) DeleteQualityTemplatesWithOptions(tmpReq *DeleteQualityTem
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -5668,6 +6112,10 @@ func (client *Client) DeleteQualityWatchesWithOptions(tmpReq *DeleteQualityWatch
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DeleteCommandShrink) {
 		body["DeleteCommand"] = request.DeleteCommandShrink
@@ -5719,7 +6167,7 @@ func (client *Client) DeleteQualityWatches(request *DeleteQualityWatchesRequest)
 
 // Summary:
 //
-// Deletes registered lineage. Available since version v5.4.0.
+// Deletes registered data lineage. Available since v5.4.0.
 //
 // @param tmpReq - DeleteRegisterLineageRequest
 //
@@ -5742,6 +6190,10 @@ func (client *Client) DeleteRegisterLineageWithOptions(tmpReq *DeleteRegisterLin
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -5775,7 +6227,7 @@ func (client *Client) DeleteRegisterLineageWithOptions(tmpReq *DeleteRegisterLin
 
 // Summary:
 //
-// Deletes registered lineage. Available since version v5.4.0.
+// Deletes registered data lineage. Available since v5.4.0.
 //
 // @param request - DeleteRegisterLineageRequest
 //
@@ -5818,6 +6270,10 @@ func (client *Client) DeleteResourceWithOptions(request *DeleteResourceRequest, 
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -5890,6 +6346,10 @@ func (client *Client) DeleteRowPermissionWithOptions(tmpReq *DeleteRowPermission
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -5966,6 +6426,10 @@ func (client *Client) DeleteSecurityClassifyWithOptions(tmpReq *DeleteSecurityCl
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DeleteCommandShrink) {
 		body["DeleteCommand"] = request.DeleteCommandShrink
@@ -6015,7 +6479,7 @@ func (client *Client) DeleteSecurityClassify(request *DeleteSecurityClassifyRequ
 
 // Summary:
 //
-// Deletes a data classification catalog. Release version: v5.4.2.
+// Deletes a data classification catalog. Available since v5.4.2.
 //
 // @param tmpReq - DeleteSecurityClassifyCatalogRequest
 //
@@ -6038,6 +6502,10 @@ func (client *Client) DeleteSecurityClassifyCatalogWithOptions(tmpReq *DeleteSec
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -6071,7 +6539,7 @@ func (client *Client) DeleteSecurityClassifyCatalogWithOptions(tmpReq *DeleteSec
 
 // Summary:
 //
-// Deletes a data classification catalog. Release version: v5.4.2.
+// Deletes a data classification catalog. Available since v5.4.2.
 //
 // @param request - DeleteSecurityClassifyCatalogRequest
 //
@@ -6112,6 +6580,10 @@ func (client *Client) DeleteSecurityIdentifyResultsWithOptions(tmpReq *DeleteSec
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -6188,6 +6660,10 @@ func (client *Client) DeleteSecurityLevelWithOptions(tmpReq *DeleteSecurityLevel
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DeleteCommandShrink) {
 		body["DeleteCommand"] = request.DeleteCommandShrink
@@ -6262,6 +6738,10 @@ func (client *Client) DeleteStandardWithOptions(tmpReq *DeleteStandardRequest, r
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -6342,6 +6822,10 @@ func (client *Client) DeleteStandardInValidMappingWithOptions(tmpReq *DeleteStan
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DeleteCommandShrink) {
 		body["DeleteCommand"] = request.DeleteCommandShrink
@@ -6416,6 +6900,10 @@ func (client *Client) DeleteStandardLookupTableWithOptions(request *DeleteStanda
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6484,6 +6972,10 @@ func (client *Client) DeleteStandardRelationsWithOptions(tmpReq *DeleteStandardR
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -6562,6 +7054,10 @@ func (client *Client) DeleteStandardSetWithOptions(request *DeleteStandardSetReq
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6632,6 +7128,10 @@ func (client *Client) DeleteStandardValidMappingWithOptions(tmpReq *DeleteStanda
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -6710,6 +7210,10 @@ func (client *Client) DeleteStandardWordRootWithOptions(request *DeleteStandardW
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6782,6 +7286,10 @@ func (client *Client) DeleteUdfWithOptions(request *DeleteUdfRequest, runtime *d
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -6846,6 +7354,10 @@ func (client *Client) DeleteUserGroupWithOptions(request *DeleteUserGroupRequest
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.UserGroupId) {
@@ -6920,6 +7432,10 @@ func (client *Client) ExecKgCypherWithOptions(tmpReq *ExecKgCypherRequest, runti
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		query["WorkspaceId"] = request.WorkspaceId
 	}
@@ -6973,6 +7489,88 @@ func (client *Client) ExecKgCypher(request *ExecKgCypherRequest) (_result *ExecK
 
 // Summary:
 //
+// Executes a custom Cypher query. Available since v6.3.0.
+//
+// @param tmpReq - ExecKgGremlinRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecKgGremlinResponse
+func (client *Client) ExecKgGremlinWithOptions(tmpReq *ExecKgGremlinRequest, runtime *dara.RuntimeOptions) (_result *ExecKgGremlinResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ExecKgGremlinShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ExecCommand) {
+		request.ExecCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExecCommand, dara.String("ExecCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ExecCommandShrink) {
+		body["ExecCommand"] = request.ExecCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ExecKgGremlin"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ExecKgGremlinResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Executes a custom Cypher query. Available since v6.3.0.
+//
+// @param request - ExecKgGremlinRequest
+//
+// @return ExecKgGremlinResponse
+func (client *Client) ExecKgGremlin(request *ExecKgGremlinRequest) (_result *ExecKgGremlinResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ExecKgGremlinResponse{}
+	_body, _err := client.ExecKgGremlinWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Executes an ad hoc query task.
 //
 // @param tmpReq - ExecuteAdHocTaskRequest
@@ -6996,6 +7594,10 @@ func (client *Client) ExecuteAdHocTaskWithOptions(tmpReq *ExecuteAdHocTaskReques
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -7158,6 +7760,10 @@ func (client *Client) ExecuteManualNodeWithOptions(tmpReq *ExecuteManualNodeRequ
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ExecuteCommandShrink) {
 		body["ExecuteCommand"] = request.ExecuteCommandShrink
@@ -7242,6 +7848,10 @@ func (client *Client) ExecuteTriggerNodeWithOptions(request *ExecuteTriggerNodeR
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -7306,6 +7916,10 @@ func (client *Client) ExportKgSchemaWithOptions(request *ExportKgSchemaRequest, 
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.OutputFormat) {
@@ -7392,6 +8006,10 @@ func (client *Client) FixDataWithOptions(tmpReq *FixDataRequest, runtime *dara.R
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FixDataCommandShrink) {
 		body["FixDataCommand"] = request.FixDataCommandShrink
@@ -7466,6 +8084,10 @@ func (client *Client) GetAccountByRowPermissionIdWithOptions(tmpReq *GetAccountB
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.GetAccountByRowPermissionIdQueryShrink) {
 		body["GetAccountByRowPermissionIdQuery"] = request.GetAccountByRowPermissionIdQueryShrink
@@ -7538,6 +8160,10 @@ func (client *Client) GetAdHocFileWithOptions(request *GetAdHocFileRequest, runt
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -7606,6 +8232,10 @@ func (client *Client) GetAdHocTaskLogWithOptions(request *GetAdHocTaskLogRequest
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -7680,6 +8310,10 @@ func (client *Client) GetAdHocTaskResultWithOptions(request *GetAdHocTaskResultR
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -7760,6 +8394,10 @@ func (client *Client) GetAlertEventWithOptions(request *GetAlertEventRequest, ru
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7803,6 +8441,84 @@ func (client *Client) GetAlertEvent(request *GetAlertEventRequest) (_result *Get
 
 // Summary:
 //
+// Queries asset property values. Online version: v6.3.0.
+//
+// @param tmpReq - GetAssetAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAssetAttributesResponse
+func (client *Client) GetAssetAttributesWithOptions(tmpReq *GetAssetAttributesRequest, runtime *dara.RuntimeOptions) (_result *GetAssetAttributesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetAssetAttributesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.QueryCommand) {
+		request.QueryCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryCommand, dara.String("QueryCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.QueryCommandShrink) {
+		body["QueryCommand"] = request.QueryCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAssetAttributes"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAssetAttributesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries asset property values. Online version: v6.3.0.
+//
+// @param request - GetAssetAttributesRequest
+//
+// @return GetAssetAttributesResponse
+func (client *Client) GetAssetAttributes(request *GetAssetAttributesRequest) (_result *GetAssetAttributesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAssetAttributesResponse{}
+	_body, _err := client.GetAssetAttributesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries mapping relationships by asset object GUID.
 //
 // Available since: v5.4.2.
@@ -7828,6 +8544,10 @@ func (client *Client) GetAssetMappingRelationsWithOptions(tmpReq *GetAssetMappin
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -7881,6 +8601,76 @@ func (client *Client) GetAssetMappingRelations(request *GetAssetMappingRelations
 
 // Summary:
 //
+// Queries asset property definitions. Online version: v6.3.0.
+//
+// @param request - GetAssetTypeAttributeCodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAssetTypeAttributeCodesResponse
+func (client *Client) GetAssetTypeAttributeCodesWithOptions(request *GetAssetTypeAttributeCodesRequest, runtime *dara.RuntimeOptions) (_result *GetAssetTypeAttributeCodesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AssetType) {
+		query["AssetType"] = request.AssetType
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAssetTypeAttributeCodes"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAssetTypeAttributeCodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries asset property definitions. Online version: v6.3.0.
+//
+// @param request - GetAssetTypeAttributeCodesRequest
+//
+// @return GetAssetTypeAttributeCodesResponse
+func (client *Client) GetAssetTypeAttributeCodes(request *GetAssetTypeAttributeCodesRequest) (_result *GetAssetTypeAttributeCodesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAssetTypeAttributeCodesResponse{}
+	_body, _err := client.GetAssetTypeAttributeCodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of an offline compute node.
 //
 // @param request - GetBatchTaskInfoRequest
@@ -7910,6 +8700,10 @@ func (client *Client) GetBatchTaskInfoWithOptions(request *GetBatchTaskInfoReque
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -7959,7 +8753,7 @@ func (client *Client) GetBatchTaskInfo(request *GetBatchTaskInfoRequest) (_resul
 
 // Summary:
 //
-// Retrieves the details of a specified version of a batch task.
+// Retrieves the details of a specific version of a batch task.
 //
 // @param request - GetBatchTaskInfoByVersionRequest
 //
@@ -7980,6 +8774,10 @@ func (client *Client) GetBatchTaskInfoByVersionWithOptions(request *GetBatchTask
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -8015,7 +8813,7 @@ func (client *Client) GetBatchTaskInfoByVersionWithOptions(request *GetBatchTask
 
 // Summary:
 //
-// Retrieves the details of a specified version of a batch task.
+// Retrieves the details of a specific version of a batch task.
 //
 // @param request - GetBatchTaskInfoByVersionRequest
 //
@@ -8054,6 +8852,10 @@ func (client *Client) GetBatchTaskUdfLineagesWithOptions(request *GetBatchTaskUd
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -8126,6 +8928,10 @@ func (client *Client) GetBatchTaskVersionsWithOptions(request *GetBatchTaskVersi
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -8194,6 +9000,10 @@ func (client *Client) GetBatchTemplateVersionsWithOptions(request *GetBatchTempl
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -8274,6 +9084,10 @@ func (client *Client) GetBelongAssetMappingWithOptions(tmpReq *GetBelongAssetMap
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AssetMappingQueryShrink) {
 		body["AssetMappingQuery"] = request.AssetMappingQueryShrink
@@ -8348,6 +9162,10 @@ func (client *Client) GetBizEntityInfoWithOptions(request *GetBizEntityInfoReque
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.Type) {
 		query["Type"] = request.Type
 	}
@@ -8416,6 +9234,10 @@ func (client *Client) GetBizEntityInfoByVersionWithOptions(request *GetBizEntity
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.Type) {
@@ -8496,6 +9318,10 @@ func (client *Client) GetBizMetricByNameWithOptions(tmpReq *GetBizMetricByNameRe
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.BizMetricByNameQueryShrink) {
 		body["BizMetricByNameQuery"] = request.BizMetricByNameQueryShrink
@@ -8570,6 +9396,10 @@ func (client *Client) GetBizUnitInfoWithOptions(request *GetBizUnitInfoRequest, 
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8613,7 +9443,7 @@ func (client *Client) GetBizUnitInfo(request *GetBizUnitInfoRequest) (_result *G
 
 // Summary:
 //
-// Queries asset details. Release version: v6.1.0.
+// Queries asset details. Online version: v6.1.0.
 //
 // @param tmpReq - GetCatalogAssetDetailsRequest
 //
@@ -8636,6 +9466,10 @@ func (client *Client) GetCatalogAssetDetailsWithOptions(tmpReq *GetCatalogAssetD
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -8669,7 +9503,7 @@ func (client *Client) GetCatalogAssetDetailsWithOptions(tmpReq *GetCatalogAssetD
 
 // Summary:
 //
-// Queries asset details. Release version: v6.1.0.
+// Queries asset details. Online version: v6.1.0.
 //
 // @param request - GetCatalogAssetDetailsRequest
 //
@@ -8714,6 +9548,10 @@ func (client *Client) GetCheckConnectivityJobsWithOptions(request *GetCheckConne
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -8788,6 +9626,10 @@ func (client *Client) GetClusterQueueInfoByEnvWithOptions(request *GetClusterQue
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -8839,6 +9681,84 @@ func (client *Client) GetClusterQueueInfoByEnv(request *GetClusterQueueInfoByEnv
 
 // Summary:
 //
+// Queries cluster details. Available since v6.3.0.
+//
+// Description:
+//
+// Queries the details of a tested connectivity task based on the datasource ID.
+//
+// @param request - GetComputeClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetComputeClusterResponse
+func (client *Client) GetComputeClusterWithOptions(request *GetComputeClusterRequest, runtime *dara.RuntimeOptions) (_result *GetComputeClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetComputeCluster"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetComputeClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries cluster details. Available since v6.3.0.
+//
+// Description:
+//
+// Queries the details of a tested connectivity task based on the datasource ID.
+//
+// @param request - GetComputeClusterRequest
+//
+// @return GetComputeClusterResponse
+func (client *Client) GetComputeCluster(request *GetComputeClusterRequest) (_result *GetComputeClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetComputeClusterResponse{}
+	_body, _err := client.GetComputeClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of a compute source by compute source ID.
 //
 // @param request - GetComputeSourceRequest
@@ -8860,6 +9780,10 @@ func (client *Client) GetComputeSourceWithOptions(request *GetComputeSourceReque
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -8905,6 +9829,92 @@ func (client *Client) GetComputeSource(request *GetComputeSourceRequest) (_resul
 
 // Summary:
 //
+// Retrieves the details of a specified quality watchtask by governance item ID. Online version: v6.3.0.
+//
+// Description:
+//
+// Retrieves the details of a Query Governance object by governance item ID.
+//
+// @param tmpReq - GetDataAssetsGovernObjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDataAssetsGovernObjectResponse
+func (client *Client) GetDataAssetsGovernObjectWithOptions(tmpReq *GetDataAssetsGovernObjectRequest, runtime *dara.RuntimeOptions) (_result *GetDataAssetsGovernObjectResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetDataAssetsGovernObjectShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Command) {
+		request.CommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Command, dara.String("Command"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CommandShrink) {
+		body["Command"] = request.CommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetDataAssetsGovernObject"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetDataAssetsGovernObjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the details of a specified quality watchtask by governance item ID. Online version: v6.3.0.
+//
+// Description:
+//
+// Retrieves the details of a Query Governance object by governance item ID.
+//
+// @param request - GetDataAssetsGovernObjectRequest
+//
+// @return GetDataAssetsGovernObjectResponse
+func (client *Client) GetDataAssetsGovernObject(request *GetDataAssetsGovernObjectRequest) (_result *GetDataAssetsGovernObjectResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetDataAssetsGovernObjectResponse{}
+	_body, _err := client.GetDataAssetsGovernObjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of a data domain.
 //
 // @param request - GetDataDomainInfoRequest
@@ -8926,6 +9936,10 @@ func (client *Client) GetDataDomainInfoWithOptions(request *GetDataDomainInfoReq
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -8992,6 +10006,10 @@ func (client *Client) GetDataServiceApiCallSummaryWithOptions(request *GetDataSe
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -9068,6 +10086,10 @@ func (client *Client) GetDataServiceApiCallTrendWithOptions(request *GetDataServ
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -9142,6 +10164,10 @@ func (client *Client) GetDataServiceApiDocumentWithOptions(request *GetDataServi
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.VersionId) {
 		query["VersionId"] = request.VersionId
 	}
@@ -9212,6 +10238,10 @@ func (client *Client) GetDataServiceApiErrorImpactWithOptions(request *GetDataSe
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -9280,6 +10310,10 @@ func (client *Client) GetDataServiceApiGroupsWithOptions(request *GetDataService
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -9354,6 +10388,10 @@ func (client *Client) GetDataServiceAppWithOptions(request *GetDataServiceAppReq
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -9422,6 +10460,10 @@ func (client *Client) GetDataServiceAppAuthorizedUsersWithOptions(request *GetDa
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -9486,6 +10528,10 @@ func (client *Client) GetDataServiceAppGroupsWithOptions(request *GetDataService
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -9560,6 +10606,10 @@ func (client *Client) GetDataServiceAppMembersWithOptions(request *GetDataServic
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -9626,6 +10676,10 @@ func (client *Client) GetDataServiceAppsByGroupIdWithOptions(request *GetDataSer
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -9698,6 +10752,10 @@ func (client *Client) GetDataServiceAuthorizedAppsByGroupIdWithOptions(request *
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -9764,6 +10822,10 @@ func (client *Client) GetDataServiceAuthorizedProjectsWithOptions(request *GetDa
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -9826,6 +10888,10 @@ func (client *Client) GetDataServiceMyProjectsWithOptions(request *GetDataServic
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -9886,6 +10952,10 @@ func (client *Client) GetDataServiceProjectAddableUsersWithOptions(request *GetD
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -9958,6 +11028,10 @@ func (client *Client) GetDataSourceDependenciesWithOptions(request *GetDataSourc
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -10026,6 +11100,10 @@ func (client *Client) GetDatasetWithOptions(request *GetDatasetRequest, runtime 
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -10110,6 +11188,10 @@ func (client *Client) GetDevObjectDependencyWithOptions(request *GetDevObjectDep
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -10180,6 +11262,10 @@ func (client *Client) GetDirectoryTreeWithOptions(request *GetDirectoryTreeReque
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -10244,6 +11330,10 @@ func (client *Client) GetFileStorageCredentialWithOptions(request *GetFileStorag
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -10334,6 +11424,10 @@ func (client *Client) GetInstanceDownStreamWithOptions(tmpReq *GetInstanceDownSt
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.RunStatus) {
 		query["RunStatus"] = request.RunStatus
 	}
@@ -10420,6 +11514,10 @@ func (client *Client) GetInstanceUpDownStreamWithOptions(tmpReq *GetInstanceUpDo
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -10477,6 +11575,72 @@ func (client *Client) GetInstanceUpDownStream(request *GetInstanceUpDownStreamRe
 
 // Summary:
 //
+// Retrieves the list of workspaces with authorized knowledge graphs. Online version: v6.3.0.
+//
+// @param request - GetKgAuthorizedWorkspacesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetKgAuthorizedWorkspacesResponse
+func (client *Client) GetKgAuthorizedWorkspacesWithOptions(request *GetKgAuthorizedWorkspacesRequest, runtime *dara.RuntimeOptions) (_result *GetKgAuthorizedWorkspacesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetKgAuthorizedWorkspaces"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetKgAuthorizedWorkspacesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the list of workspaces with authorized knowledge graphs. Online version: v6.3.0.
+//
+// @param request - GetKgAuthorizedWorkspacesRequest
+//
+// @return GetKgAuthorizedWorkspacesResponse
+func (client *Client) GetKgAuthorizedWorkspaces(request *GetKgAuthorizedWorkspacesRequest) (_result *GetKgAuthorizedWorkspacesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetKgAuthorizedWorkspacesResponse{}
+	_body, _err := client.GetKgAuthorizedWorkspacesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of a knowledge graph entity record. Online version: v6.1.1.
 //
 // @param request - GetKgEntityRequest
@@ -10502,6 +11666,10 @@ func (client *Client) GetKgEntityWithOptions(request *GetKgEntityRequest, runtim
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -10584,6 +11752,10 @@ func (client *Client) GetKgNeighborWithOptions(tmpReq *GetKgNeighborRequest, run
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		query["WorkspaceId"] = request.WorkspaceId
 	}
@@ -10654,6 +11826,10 @@ func (client *Client) GetKgRelationWithOptions(request *GetKgRelationRequest, ru
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.RelationId) {
@@ -10728,6 +11904,10 @@ func (client *Client) GetKgSchemaPublishResultWithOptions(request *GetKgSchemaPu
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.VersionId) {
@@ -10806,6 +11986,10 @@ func (client *Client) GetLatestSubmitDetailWithOptions(tmpReq *GetLatestSubmitDe
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.SubmitDetailQueryShrink) {
 		body["SubmitDetailQuery"] = request.SubmitDetailQueryShrink
@@ -10855,6 +12039,142 @@ func (client *Client) GetLatestSubmitDetail(request *GetLatestSubmitDetailReques
 
 // Summary:
 //
+// Queries a specific large language model service provider and available models by name. Online version: v6.3.0.
+//
+// @param request - GetLlmModelProviderByNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLlmModelProviderByNameResponse
+func (client *Client) GetLlmModelProviderByNameWithOptions(request *GetLlmModelProviderByNameRequest, runtime *dara.RuntimeOptions) (_result *GetLlmModelProviderByNameResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetLlmModelProviderByName"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetLlmModelProviderByNameResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a specific large language model service provider and available models by name. Online version: v6.3.0.
+//
+// @param request - GetLlmModelProviderByNameRequest
+//
+// @return GetLlmModelProviderByNameResponse
+func (client *Client) GetLlmModelProviderByName(request *GetLlmModelProviderByNameRequest) (_result *GetLlmModelProviderByNameResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetLlmModelProviderByNameResponse{}
+	_body, _err := client.GetLlmModelProviderByNameWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询所有大模型服务供应商和可用模型列表
+//
+// @param request - GetLlmModelProvidersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLlmModelProvidersResponse
+func (client *Client) GetLlmModelProvidersWithOptions(request *GetLlmModelProvidersRequest, runtime *dara.RuntimeOptions) (_result *GetLlmModelProvidersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetLlmModelProviders"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetLlmModelProvidersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询所有大模型服务供应商和可用模型列表
+//
+// @param request - GetLlmModelProvidersRequest
+//
+// @return GetLlmModelProvidersResponse
+func (client *Client) GetLlmModelProviders(request *GetLlmModelProvidersRequest) (_result *GetLlmModelProvidersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetLlmModelProvidersResponse{}
+	_body, _err := client.GetLlmModelProvidersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the list of roles for the current user.
 //
 // @param request - GetMyRolesRequest
@@ -10872,6 +12192,10 @@ func (client *Client) GetMyRolesWithOptions(request *GetMyRolesRequest, runtime 
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -10940,6 +12264,10 @@ func (client *Client) GetMyTenantsWithOptions(tmpReq *GetMyTenantsRequest, runti
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -11024,6 +12352,10 @@ func (client *Client) GetNodeUpDownStreamWithOptions(tmpReq *GetNodeUpDownStream
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -11106,6 +12438,10 @@ func (client *Client) GetOperationRecordByIdWithOptions(tmpReq *GetOperationReco
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DetailCommandShrink) {
 		body["DetailCommand"] = request.DetailCommandShrink
@@ -11180,6 +12516,10 @@ func (client *Client) GetOperationRecordDetailWithOptions(tmpReq *GetOperationRe
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RecordDetailCommandShrink) {
 		body["RecordDetailCommand"] = request.RecordDetailCommandShrink
@@ -11252,6 +12592,10 @@ func (client *Client) GetOperationRecordRunCodeWithOptions(tmpReq *GetOperationR
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -11330,6 +12674,10 @@ func (client *Client) GetOperationSubmitStatusWithOptions(request *GetOperationS
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11398,6 +12746,10 @@ func (client *Client) GetPhysicalInstanceWithOptions(request *GetPhysicalInstanc
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -11474,6 +12826,10 @@ func (client *Client) GetPhysicalInstanceLogWithOptions(request *GetPhysicalInst
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -11548,6 +12904,10 @@ func (client *Client) GetPhysicalNodeWithOptions(request *GetPhysicalNodeRequest
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11612,6 +12972,10 @@ func (client *Client) GetPhysicalNodeByOutputNameWithOptions(request *GetPhysica
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.OutputName) {
@@ -11688,6 +13052,10 @@ func (client *Client) GetPhysicalNodeContentWithOptions(request *GetPhysicalNode
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11756,6 +13124,10 @@ func (client *Client) GetPhysicalNodeOperationLogWithOptions(request *GetPhysica
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -11828,6 +13200,10 @@ func (client *Client) GetPipelineAsyncResultWithOptions(tmpReq *GetPipelineAsync
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -11906,6 +13282,10 @@ func (client *Client) GetPipelineByIdWithOptions(tmpReq *GetPipelineByIdRequest,
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -11988,6 +13368,10 @@ func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime 
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12054,6 +13438,10 @@ func (client *Client) GetProjectByNameWithOptions(request *GetProjectByNameReque
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12114,6 +13502,10 @@ func (client *Client) GetProjectProduceUserWithOptions(request *GetProjectProduc
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -12186,6 +13578,10 @@ func (client *Client) GetProjectWhiteListsWithOptions(request *GetProjectWhiteLi
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12248,6 +13644,10 @@ func (client *Client) GetQualityAlertOfAllRuleScopeByWatchIdWithOptions(request 
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.WatchId) {
 		query["WatchId"] = request.WatchId
 	}
@@ -12295,6 +13695,76 @@ func (client *Client) GetQualityAlertOfAllRuleScopeByWatchId(request *GetQuality
 
 // Summary:
 //
+// Queries the execution progress and result of an asynchronous task for creating or updating an archived table by progress ID. Available since v6.3.0.
+//
+// @param request - GetQualityArchiveTableProgressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualityArchiveTableProgressResponse
+func (client *Client) GetQualityArchiveTableProgressWithOptions(request *GetQualityArchiveTableProgressRequest, runtime *dara.RuntimeOptions) (_result *GetQualityArchiveTableProgressResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	if !dara.IsNil(request.ProgressId) {
+		query["ProgressId"] = request.ProgressId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetQualityArchiveTableProgress"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetQualityArchiveTableProgressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the execution progress and result of an asynchronous task for creating or updating an archived table by progress ID. Available since v6.3.0.
+//
+// @param request - GetQualityArchiveTableProgressRequest
+//
+// @return GetQualityArchiveTableProgressResponse
+func (client *Client) GetQualityArchiveTableProgress(request *GetQualityArchiveTableProgressRequest) (_result *GetQualityArchiveTableProgressResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetQualityArchiveTableProgressResponse{}
+	_body, _err := client.GetQualityArchiveTableProgressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves a quality rule object.
 //
 // Release version: v5.4.2.
@@ -12318,6 +13788,10 @@ func (client *Client) GetQualityRuleWithOptions(request *GetQualityRuleRequest, 
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -12382,6 +13856,10 @@ func (client *Client) GetQualityRuleTaskWithOptions(request *GetQualityRuleTaskR
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.RuleTaskId) {
@@ -12450,6 +13928,10 @@ func (client *Client) GetQualityRuleTaskLogWithOptions(request *GetQualityRuleTa
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.RuleTaskId) {
@@ -12526,6 +14008,10 @@ func (client *Client) GetQualityScheduleWithOptions(request *GetQualityScheduleR
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12590,6 +14076,10 @@ func (client *Client) GetQualitySchedulesByWatchIdWithOptions(request *GetQualit
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.WatchId) {
@@ -12666,6 +14156,10 @@ func (client *Client) GetQualityTemplateWithOptions(request *GetQualityTemplateR
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -12711,9 +14205,9 @@ func (client *Client) GetQualityTemplate(request *GetQualityTemplateRequest) (_r
 
 // Summary:
 //
-// Retrieves a quality monitored object.
+// Retrieves a quality monitoring object.
 //
-// Release version: v5.4.2.
+// Online version: v5.4.2.
 //
 // @param request - GetQualityWatchRequest
 //
@@ -12734,6 +14228,10 @@ func (client *Client) GetQualityWatchWithOptions(request *GetQualityWatchRequest
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -12761,9 +14259,9 @@ func (client *Client) GetQualityWatchWithOptions(request *GetQualityWatchRequest
 
 // Summary:
 //
-// Retrieves a quality monitored object.
+// Retrieves a quality monitoring object.
 //
-// Release version: v5.4.2.
+// Online version: v5.4.2.
 //
 // @param request - GetQualityWatchRequest
 //
@@ -12800,6 +14298,10 @@ func (client *Client) GetQualityWatchByObjectIdWithOptions(request *GetQualityWa
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.WatchObjectId) {
@@ -12876,6 +14378,10 @@ func (client *Client) GetQualityWatchTaskWithOptions(request *GetQualityWatchTas
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.WatchTaskId) {
 		query["WatchTaskId"] = request.WatchTaskId
 	}
@@ -12944,6 +14450,10 @@ func (client *Client) GetQualityWatchTaskLogWithOptions(request *GetQualityWatch
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.WatchTaskId) {
@@ -13020,6 +14530,10 @@ func (client *Client) GetQueueEngineVersionByEnvWithOptions(request *GetQueueEng
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -13100,6 +14614,10 @@ func (client *Client) GetResourceWithOptions(request *GetResourceRequest, runtim
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -13147,7 +14665,7 @@ func (client *Client) GetResource(request *GetResourceRequest) (_result *GetReso
 
 // Summary:
 //
-// Gets the details of a specified version of a resource file.
+// Retrieves the details of a specified version of a resource file.
 //
 // @param request - GetResourceByVersionRequest
 //
@@ -13168,6 +14686,10 @@ func (client *Client) GetResourceByVersionWithOptions(request *GetResourceByVers
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -13203,7 +14725,7 @@ func (client *Client) GetResourceByVersionWithOptions(request *GetResourceByVers
 
 // Summary:
 //
-// Gets the details of a specified version of a resource file.
+// Retrieves the details of a specified version of a resource file.
 //
 // @param request - GetResourceByVersionRequest
 //
@@ -13244,6 +14766,10 @@ func (client *Client) GetRowPermissionByTableGuidsWithOptions(tmpReq *GetRowPerm
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -13318,6 +14844,10 @@ func (client *Client) GetSecurityClassifyWithOptions(request *GetSecurityClassif
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13384,6 +14914,10 @@ func (client *Client) GetSecurityIdentifyResultWithOptions(request *GetSecurityI
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -13454,6 +14988,10 @@ func (client *Client) GetSecurityLevelWithOptions(request *GetSecurityLevelReque
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13520,6 +15058,10 @@ func (client *Client) GetSecuritySecretKeyWithOptions(request *GetSecuritySecret
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13584,6 +15126,10 @@ func (client *Client) GetSparkLocalClientInfoWithOptions(request *GetSparkLocalC
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -13658,6 +15204,10 @@ func (client *Client) GetStandardWithOptions(tmpReq *GetStandardRequest, runtime
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -13740,6 +15290,10 @@ func (client *Client) GetStandardLookupTableWithOptions(request *GetStandardLook
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13814,6 +15368,10 @@ func (client *Client) GetStandardSetWithOptions(request *GetStandardSetRequest, 
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -13884,6 +15442,10 @@ func (client *Client) GetStandardStatisticsWithOptions(tmpReq *GetStandardStatis
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -13972,6 +15534,10 @@ func (client *Client) GetStandardTemplateWithOptions(tmpReq *GetStandardTemplate
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.FilterQueryShrink) {
 		body["FilterQuery"] = request.FilterQueryShrink
@@ -14052,6 +15618,10 @@ func (client *Client) GetStandardWordRootWithOptions(request *GetStandardWordRoo
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14118,6 +15688,10 @@ func (client *Client) GetStreamJobsWithOptions(request *GetStreamJobsRequest, ru
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -14188,6 +15762,10 @@ func (client *Client) GetSupplementDagrunWithOptions(request *GetSupplementDagru
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.SupplementId) {
@@ -14264,6 +15842,10 @@ func (client *Client) GetSupplementDagrunInstanceWithOptions(request *GetSupplem
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14330,6 +15912,10 @@ func (client *Client) GetTableColumnLineageByTaskIdWithOptions(tmpReq *GetTableC
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -14408,6 +15994,10 @@ func (client *Client) GetTableColumnLineagesWithOptions(tmpReq *GetTableColumnLi
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.TableGuid) {
 		query["TableGuid"] = request.TableGuid
 	}
@@ -14463,9 +16053,7 @@ func (client *Client) GetTableColumnLineages(request *GetTableColumnLineagesRequ
 
 // Summary:
 //
-// Queries columns of a Dataphin table in the asset inventory. Supported table types: dimension logical table, fact logical table, aggregate logical table, tag logical table, logical table view, physical table, physical view, and materialized view.
-//
-// Release version: v5.4.2.
+// Queries the columns of a Dataphin table in the asset inventory. Supported table types: logical dimension table, fact logical table, aggregate logical table, tag logical table, logical table view, physical table, physical view, and materialized view table. Release version: v5.4.2.
 //
 // @param request - GetTableColumnsRequest
 //
@@ -14486,6 +16074,10 @@ func (client *Client) GetTableColumnsWithOptions(request *GetTableColumnsRequest
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.TableName) {
@@ -14517,9 +16109,7 @@ func (client *Client) GetTableColumnsWithOptions(request *GetTableColumnsRequest
 
 // Summary:
 //
-// Queries columns of a Dataphin table in the asset inventory. Supported table types: dimension logical table, fact logical table, aggregate logical table, tag logical table, logical table view, physical table, physical view, and materialized view.
-//
-// Release version: v5.4.2.
+// Queries the columns of a Dataphin table in the asset inventory. Supported table types: logical dimension table, fact logical table, aggregate logical table, tag logical table, logical table view, physical table, physical view, and materialized view table. Release version: v5.4.2.
 //
 // @param request - GetTableColumnsRequest
 //
@@ -14560,6 +16150,10 @@ func (client *Client) GetTableLineageByTaskIdWithOptions(tmpReq *GetTableLineage
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -14638,6 +16232,10 @@ func (client *Client) GetTableLineagesWithOptions(tmpReq *GetTableLineagesReques
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.TableGuid) {
 		query["TableGuid"] = request.TableGuid
 	}
@@ -14712,6 +16310,10 @@ func (client *Client) GetTransferInfoWithOptions(request *GetTransferInfoRequest
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProposalId) {
 		query["ProposalId"] = request.ProposalId
 	}
@@ -14780,6 +16382,10 @@ func (client *Client) GetUdfWithOptions(request *GetUdfRequest, runtime *dara.Ru
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -14852,6 +16458,10 @@ func (client *Client) GetUdfByVersionWithOptions(request *GetUdfByVersionRequest
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -14903,7 +16513,73 @@ func (client *Client) GetUdfByVersion(request *GetUdfByVersionRequest) (_result 
 
 // Summary:
 //
-// Retrieves user details by original user ID.
+// Retrieves the current user information based on the AK/SK used for request signing. Available since version v6.3.0.
+//
+// @param request - GetUserByAccessKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserByAccessKeyResponse
+func (client *Client) GetUserByAccessKeyWithOptions(request *GetUserByAccessKeyRequest, runtime *dara.RuntimeOptions) (_result *GetUserByAccessKeyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUserByAccessKey"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUserByAccessKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the current user information based on the AK/SK used for request signing. Available since version v6.3.0.
+//
+// @param request - GetUserByAccessKeyRequest
+//
+// @return GetUserByAccessKeyResponse
+func (client *Client) GetUserByAccessKey(request *GetUserByAccessKeyRequest) (_result *GetUserByAccessKeyResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetUserByAccessKeyResponse{}
+	_body, _err := client.GetUserByAccessKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves user details by the original user ID.
 //
 // @param request - GetUserBySourceIdRequest
 //
@@ -14922,8 +16598,16 @@ func (client *Client) GetUserBySourceIdWithOptions(request *GetUserBySourceIdReq
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.SourceId) {
 		query["SourceId"] = request.SourceId
+	}
+
+	if !dara.IsNil(request.SourceType) {
+		query["SourceType"] = request.SourceType
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -14951,7 +16635,7 @@ func (client *Client) GetUserBySourceIdWithOptions(request *GetUserBySourceIdReq
 
 // Summary:
 //
-// Retrieves user details by original user ID.
+// Retrieves user details by the original user ID.
 //
 // @param request - GetUserBySourceIdRequest
 //
@@ -14986,6 +16670,10 @@ func (client *Client) GetUserGroupWithOptions(request *GetUserGroupRequest, runt
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.UserGroupId) {
@@ -15060,6 +16748,10 @@ func (client *Client) GetUsersWithOptions(tmpReq *GetUsersRequest, runtime *dara
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UserIdListShrink) {
 		body["UserIdList"] = request.UserIdListShrink
@@ -15132,6 +16824,10 @@ func (client *Client) GrantDataServiceApiWithOptions(tmpReq *GrantDataServiceApi
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -15212,6 +16908,10 @@ func (client *Client) GrantResourcePermissionWithOptions(tmpReq *GrantResourcePe
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.GrantCommandShrink) {
 		body["GrantCommand"] = request.GrantCommandShrink
@@ -15286,6 +16986,10 @@ func (client *Client) ImportKgSchemaWithOptions(tmpReq *ImportKgSchemaRequest, r
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		query["WorkspaceId"] = request.WorkspaceId
 	}
@@ -15358,6 +17062,10 @@ func (client *Client) ListAddableRolesWithOptions(request *ListAddableRolesReque
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15424,6 +17132,10 @@ func (client *Client) ListAddableUsersWithOptions(tmpReq *ListAddableUsersReques
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -15500,6 +17212,10 @@ func (client *Client) ListAlertEventsWithOptions(tmpReq *ListAlertEventsRequest,
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ListQueryShrink) {
 		body["ListQuery"] = request.ListQueryShrink
@@ -15572,6 +17288,10 @@ func (client *Client) ListAlertNotificationsWithOptions(tmpReq *ListAlertNotific
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -15652,6 +17372,10 @@ func (client *Client) ListApiByAppWithOptions(tmpReq *ListApiByAppRequest, runti
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PageQueryShrink) {
 		body["PageQuery"] = request.PageQueryShrink
@@ -15705,6 +17429,240 @@ func (client *Client) ListApiByApp(request *ListApiByAppRequest) (_result *ListA
 
 // Summary:
 //
+// Queries a paging list of approval nodes based on the relationship between the current user and the approval nodes. Online version number: v6.3.0.
+//
+// @param tmpReq - ListApprovalTasksByUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApprovalTasksByUserResponse
+func (client *Client) ListApprovalTasksByUserWithOptions(tmpReq *ListApprovalTasksByUserRequest, runtime *dara.RuntimeOptions) (_result *ListApprovalTasksByUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListApprovalTasksByUserShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListApprovalTasksByUser"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListApprovalTasksByUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a paging list of approval nodes based on the relationship between the current user and the approval nodes. Online version number: v6.3.0.
+//
+// @param request - ListApprovalTasksByUserRequest
+//
+// @return ListApprovalTasksByUserResponse
+func (client *Client) ListApprovalTasksByUser(request *ListApprovalTasksByUserRequest) (_result *ListApprovalTasksByUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListApprovalTasksByUserResponse{}
+	_body, _err := client.ListApprovalTasksByUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the published folder list under a specified asset topic. Online version: v6.3.0.
+//
+// @param tmpReq - ListAssetDirectoriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAssetDirectoriesResponse
+func (client *Client) ListAssetDirectoriesWithOptions(tmpReq *ListAssetDirectoriesRequest, runtime *dara.RuntimeOptions) (_result *ListAssetDirectoriesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListAssetDirectoriesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAssetDirectories"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAssetDirectoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the published folder list under a specified asset topic. Online version: v6.3.0.
+//
+// @param request - ListAssetDirectoriesRequest
+//
+// @return ListAssetDirectoriesResponse
+func (client *Client) ListAssetDirectories(request *ListAssetDirectoriesRequest) (_result *ListAssetDirectoriesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAssetDirectoriesResponse{}
+	_body, _err := client.ListAssetDirectoriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of published asset listing topics. Online version: v6.3.0.
+//
+// @param tmpReq - ListAssetTopicsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAssetTopicsResponse
+func (client *Client) ListAssetTopicsWithOptions(tmpReq *ListAssetTopicsRequest, runtime *dara.RuntimeOptions) (_result *ListAssetTopicsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListAssetTopicsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAssetTopics"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAssetTopicsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of published asset listing topics. Online version: v6.3.0.
+//
+// @param request - ListAssetTopicsRequest
+//
+// @return ListAssetTopicsResponse
+func (client *Client) ListAssetTopics(request *ListAssetTopicsRequest) (_result *ListAssetTopicsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAssetTopicsResponse{}
+	_body, _err := client.ListAssetTopicsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the specific field list of APIs that an application has requested.
 //
 // Description:
@@ -15732,6 +17690,10 @@ func (client *Client) ListAuthorizedDataServiceApiDetailsWithOptions(tmpReq *Lis
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -15816,6 +17778,10 @@ func (client *Client) ListBatchTemplatesWithOptions(tmpReq *ListBatchTemplatesRe
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -15894,6 +17860,10 @@ func (client *Client) ListBizEntitiesWithOptions(tmpReq *ListBizEntitiesRequest,
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ListQueryShrink) {
 		body["ListQuery"] = request.ListQueryShrink
@@ -15960,6 +17930,10 @@ func (client *Client) ListBizUnitsWithOptions(request *ListBizUnitsRequest, runt
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -16030,6 +18004,10 @@ func (client *Client) ListCatalogAssetsWithOptions(tmpReq *ListCatalogAssetsRequ
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ListCatalogAssetsQueryShrink) {
 		body["ListCatalogAssetsQuery"] = request.ListCatalogAssetsQueryShrink
@@ -16079,6 +18057,100 @@ func (client *Client) ListCatalogAssets(request *ListCatalogAssetsRequest) (_res
 
 // Summary:
 //
+// Queries the list of clusters. Release version: v6.3.0.
+//
+// Description:
+//
+// Retrieves the list of clusters.
+//
+// @param tmpReq - ListComputeClustersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListComputeClustersResponse
+func (client *Client) ListComputeClustersWithOptions(tmpReq *ListComputeClustersRequest, runtime *dara.RuntimeOptions) (_result *ListComputeClustersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListComputeClustersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListComputeClusters"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListComputeClustersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of clusters. Release version: v6.3.0.
+//
+// Description:
+//
+// Retrieves the list of clusters.
+//
+// @param request - ListComputeClustersRequest
+//
+// @return ListComputeClustersResponse
+func (client *Client) ListComputeClusters(request *ListComputeClustersRequest) (_result *ListComputeClustersResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListComputeClustersResponse{}
+	_body, _err := client.ListComputeClustersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Query the list of compute sources.
 //
 // @param tmpReq - ListComputeSourcesRequest
@@ -16102,6 +18174,10 @@ func (client *Client) ListComputeSourcesWithOptions(tmpReq *ListComputeSourcesRe
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -16178,6 +18254,10 @@ func (client *Client) ListDataDomainsWithOptions(tmpReq *ListDataDomainsRequest,
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ListQueryShrink) {
 		body["ListQuery"] = request.ListQueryShrink
@@ -16250,6 +18330,10 @@ func (client *Client) ListDataServiceApiCallStatisticsWithOptions(tmpReq *ListDa
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -16330,6 +18414,10 @@ func (client *Client) ListDataServiceApiCallsWithOptions(tmpReq *ListDataService
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -16406,6 +18494,10 @@ func (client *Client) ListDataServiceApiImpactsWithOptions(tmpReq *ListDataServi
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -16488,6 +18580,10 @@ func (client *Client) ListDataServiceAppsWithOptions(tmpReq *ListDataServiceApps
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ListQueryShrink) {
 		body["ListQuery"] = request.ListQueryShrink
@@ -16562,6 +18658,10 @@ func (client *Client) ListDataServiceAuthorizedAppsWithOptions(tmpReq *ListDataS
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -16642,6 +18742,10 @@ func (client *Client) ListDataServiceMyApiPermissionsWithOptions(tmpReq *ListDat
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -16718,6 +18822,10 @@ func (client *Client) ListDataServiceMyAppPermissionsWithOptions(tmpReq *ListDat
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -16798,6 +18906,10 @@ func (client *Client) ListDataServicePublishedApisWithOptions(tmpReq *ListDataSe
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -16874,6 +18986,10 @@ func (client *Client) ListDataSourceWithConfigWithOptions(tmpReq *ListDataSource
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -16956,6 +19072,10 @@ func (client *Client) ListDatasetsWithOptions(tmpReq *ListDatasetsRequest, runti
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.DatasetQueryShrink) {
 		body["DatasetQuery"] = request.DatasetQueryShrink
@@ -17036,6 +19156,10 @@ func (client *Client) ListFilesWithOptions(tmpReq *ListFilesRequest, runtime *da
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ListQueryShrink) {
 		body["ListQuery"] = request.ListQueryShrink
@@ -17085,7 +19209,97 @@ func (client *Client) ListFiles(request *ListFilesRequest) (_result *ListFilesRe
 
 // Summary:
 //
-// Paginate and query instances.
+// Queries the list of governance objects based on governance type and filter conditions. Released in v6.3.0.
+//
+// Description:
+//
+// ## Operation description
+//
+// This API operation allows you to retrieve dataset information under a specific project by providing a tenant ID, project ID, and other optional parameters such as keywords and type lists. Paging is supported. The returned data includes basic dataset information and version details. Note that `ProjectId` is required, while other parameters are options that can be configured as needed to filter results.
+//
+// @param tmpReq - ListGovernObjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGovernObjectsResponse
+func (client *Client) ListGovernObjectsWithOptions(tmpReq *ListGovernObjectsRequest, runtime *dara.RuntimeOptions) (_result *ListGovernObjectsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListGovernObjectsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListGovernObjects"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListGovernObjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of governance objects based on governance type and filter conditions. Released in v6.3.0.
+//
+// Description:
+//
+// ## Operation description
+//
+// This API operation allows you to retrieve dataset information under a specific project by providing a tenant ID, project ID, and other optional parameters such as keywords and type lists. Paging is supported. The returned data includes basic dataset information and version details. Note that `ProjectId` is required, while other parameters are options that can be configured as needed to filter results.
+//
+// @param request - ListGovernObjectsRequest
+//
+// @return ListGovernObjectsResponse
+func (client *Client) ListGovernObjects(request *ListGovernObjectsRequest) (_result *ListGovernObjectsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListGovernObjectsResponse{}
+	_body, _err := client.ListGovernObjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries instances by paging.
 //
 // @param tmpReq - ListInstancesRequest
 //
@@ -17112,6 +19326,10 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, run
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -17145,7 +19363,7 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, run
 
 // Summary:
 //
-// Paginate and query instances.
+// Queries instances by paging.
 //
 // @param request - ListInstancesRequest
 //
@@ -17190,6 +19408,10 @@ func (client *Client) ListKgEntityWithOptions(tmpReq *ListKgEntityRequest, runti
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -17270,6 +19492,10 @@ func (client *Client) ListKgRelationWithOptions(tmpReq *ListKgRelationRequest, r
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.RelationType) {
 		query["RelationType"] = request.RelationType
 	}
@@ -17327,7 +19553,7 @@ func (client *Client) ListKgRelation(request *ListKgRelationRequest) (_result *L
 
 // Summary:
 //
-// Queries the downstream nodes of a node. The query results can be used as a data reference when you create a data backfill workflow.
+// Queries the downstream of a node. The query results can be used as a data reference when you create a data backfill workflow.
 //
 // @param tmpReq - ListNodeDownStreamRequest
 //
@@ -17354,6 +19580,10 @@ func (client *Client) ListNodeDownStreamWithOptions(tmpReq *ListNodeDownStreamRe
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -17387,7 +19617,7 @@ func (client *Client) ListNodeDownStreamWithOptions(tmpReq *ListNodeDownStreamRe
 
 // Summary:
 //
-// Queries the downstream nodes of a node. The query results can be used as a data reference when you create a data backfill workflow.
+// Queries the downstream of a node. The query results can be used as a data reference when you create a data backfill workflow.
 //
 // @param request - ListNodeDownStreamRequest
 //
@@ -17405,7 +19635,7 @@ func (client *Client) ListNodeDownStream(request *ListNodeDownStreamRequest) (_r
 
 // Summary:
 //
-// Retrieves a list of scheduling nodes.
+// Retrieves a list of scheduled nodes.
 //
 // @param tmpReq - ListNodesRequest
 //
@@ -17432,6 +19662,10 @@ func (client *Client) ListNodesWithOptions(tmpReq *ListNodesRequest, runtime *da
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -17465,7 +19699,7 @@ func (client *Client) ListNodesWithOptions(tmpReq *ListNodesRequest, runtime *da
 
 // Summary:
 //
-// Retrieves a list of scheduling nodes.
+// Retrieves a list of scheduled nodes.
 //
 // @param request - ListNodesRequest
 //
@@ -17506,6 +19740,10 @@ func (client *Client) ListOperationRecordWithOptions(tmpReq *ListOperationRecord
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -17557,7 +19795,7 @@ func (client *Client) ListOperationRecord(request *ListOperationRecordRequest) (
 
 // Summary:
 //
-// Queries a list of nodes. Supports querying offline integration, real-time integration, and unstructured workflows (data aggregation, offline workflows, and real-time workflows). Supports multi-dimensional filtering by folder, keyword, node type, submit status, scheduling type, owner, label, and creator. Results are returned with pagination.
+// Queries a list of nodes. Supports querying batch integration, real-time integration, and unstructured workflows (data aggregation, offline workflows, and real-time workflows). Supports multi-dimensional filtering by folder, keyword, node type, submit status, scheduling type, owner, label, creator, and more. Results are returned with pagination.
 //
 // @param tmpReq - ListPipelinesRequest
 //
@@ -17584,6 +19822,10 @@ func (client *Client) ListPipelinesWithOptions(tmpReq *ListPipelinesRequest, run
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -17621,7 +19863,7 @@ func (client *Client) ListPipelinesWithOptions(tmpReq *ListPipelinesRequest, run
 
 // Summary:
 //
-// Queries a list of nodes. Supports querying offline integration, real-time integration, and unstructured workflows (data aggregation, offline workflows, and real-time workflows). Supports multi-dimensional filtering by folder, keyword, node type, submit status, scheduling type, owner, label, and creator. Results are returned with pagination.
+// Queries a list of nodes. Supports querying batch integration, real-time integration, and unstructured workflows (data aggregation, offline workflows, and real-time workflows). Supports multi-dimensional filtering by folder, keyword, node type, submit status, scheduling type, owner, label, creator, and more. Results are returned with pagination.
 //
 // @param request - ListPipelinesRequest
 //
@@ -17666,6 +19908,10 @@ func (client *Client) ListProjectMembersWithOptions(tmpReq *ListProjectMembersRe
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -17742,6 +19988,10 @@ func (client *Client) ListProjectsWithOptions(tmpReq *ListProjectsRequest, runti
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ListQueryShrink) {
 		body["ListQuery"] = request.ListQueryShrink
@@ -17816,6 +20066,10 @@ func (client *Client) ListPublishRecordsWithOptions(tmpReq *ListPublishRecordsRe
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ListQueryShrink) {
 		body["ListQuery"] = request.ListQueryShrink
@@ -17865,6 +20119,84 @@ func (client *Client) ListPublishRecords(request *ListPublishRecordsRequest) (_r
 
 // Summary:
 //
+// Queries the list of anomaly archived tables under a specified monitored object. Online version: v6.3.0.
+//
+// @param tmpReq - ListQualityArchiveTablesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListQualityArchiveTablesResponse
+func (client *Client) ListQualityArchiveTablesWithOptions(tmpReq *ListQualityArchiveTablesRequest, runtime *dara.RuntimeOptions) (_result *ListQualityArchiveTablesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &ListQualityArchiveTablesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ListQuery) {
+		request.ListQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListQuery, dara.String("ListQuery"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ListQueryShrink) {
+		body["ListQuery"] = request.ListQueryShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListQualityArchiveTables"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListQualityArchiveTablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of anomaly archived tables under a specified monitored object. Online version: v6.3.0.
+//
+// @param request - ListQualityArchiveTablesRequest
+//
+// @return ListQualityArchiveTablesResponse
+func (client *Client) ListQualityArchiveTables(request *ListQualityArchiveTablesRequest) (_result *ListQualityArchiveTablesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListQualityArchiveTablesResponse{}
+	_body, _err := client.ListQualityArchiveTablesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries quality rule tasks by paging.
 //
 // Online version: v5.4.2.
@@ -17890,6 +20222,10 @@ func (client *Client) ListQualityRuleTasksWithOptions(tmpReq *ListQualityRuleTas
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -17970,6 +20306,10 @@ func (client *Client) ListQualityRulesWithOptions(tmpReq *ListQualityRulesReques
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ListQueryShrink) {
 		body["ListQuery"] = request.ListQueryShrink
@@ -18048,6 +20388,10 @@ func (client *Client) ListQualityTemplatesWithOptions(tmpReq *ListQualityTemplat
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ListQueryShrink) {
 		body["ListQuery"] = request.ListQueryShrink
@@ -18099,7 +20443,7 @@ func (client *Client) ListQualityTemplates(request *ListQualityTemplatesRequest)
 
 // Summary:
 //
-// Queries quality monitoring nodes by paged query.
+// Queries quality monitoring nodes by paging.
 //
 // Online version: v5.4.2.
 //
@@ -18124,6 +20468,10 @@ func (client *Client) ListQualityWatchTasksWithOptions(tmpReq *ListQualityWatchT
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -18157,7 +20505,7 @@ func (client *Client) ListQualityWatchTasksWithOptions(tmpReq *ListQualityWatchT
 
 // Summary:
 //
-// Queries quality monitoring nodes by paged query.
+// Queries quality monitoring nodes by paging.
 //
 // Online version: v5.4.2.
 //
@@ -18202,6 +20550,10 @@ func (client *Client) ListQualityWatchesWithOptions(tmpReq *ListQualityWatchesRe
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -18428,6 +20780,10 @@ func (client *Client) ListRowPermissionWithOptions(tmpReq *ListRowPermissionRequ
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PageRowPermissionQueryShrink) {
 		body["PageRowPermissionQuery"] = request.PageRowPermissionQueryShrink
@@ -18500,6 +20856,10 @@ func (client *Client) ListRowPermissionByUserIdWithOptions(tmpReq *ListRowPermis
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -18625,7 +20985,7 @@ func (client *Client) ListSecurityClassify(request *ListSecurityClassifyRequest)
 
 // Summary:
 //
-// Queries identification records of security identification results by paging.
+// Queries identification records of security identification results by using paging.
 //
 // Online version: v5.4.2.
 //
@@ -18650,6 +21010,10 @@ func (client *Client) ListSecurityIdentifyRecordsWithOptions(tmpReq *ListSecurit
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -18683,7 +21047,7 @@ func (client *Client) ListSecurityIdentifyRecordsWithOptions(tmpReq *ListSecurit
 
 // Summary:
 //
-// Queries identification records of security identification results by paging.
+// Queries identification records of security identification results by using paging.
 //
 // Online version: v5.4.2.
 //
@@ -18728,6 +21092,10 @@ func (client *Client) ListSecurityIdentifyResultsWithOptions(tmpReq *ListSecurit
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -18808,6 +21176,10 @@ func (client *Client) ListStandardsWithOptions(tmpReq *ListStandardsRequest, run
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ListQueryShrink) {
 		body["ListQuery"] = request.ListQueryShrink
@@ -18882,6 +21254,10 @@ func (client *Client) ListSubmitRecordsWithOptions(tmpReq *ListSubmitRecordsRequ
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -18960,6 +21336,10 @@ func (client *Client) ListTablesWithOptions(tmpReq *ListTablesRequest, runtime *
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ListQueryShrink) {
 		body["ListQuery"] = request.ListQueryShrink
@@ -19036,6 +21416,10 @@ func (client *Client) ListTenantMembersWithOptions(tmpReq *ListTenantMembersRequ
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ListQueryShrink) {
 		body["ListQuery"] = request.ListQueryShrink
@@ -19110,6 +21494,10 @@ func (client *Client) ListUserGroupMembersWithOptions(tmpReq *ListUserGroupMembe
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ListQueryShrink) {
 		body["ListQuery"] = request.ListQueryShrink
@@ -19182,6 +21570,10 @@ func (client *Client) ListUserGroupsWithOptions(tmpReq *ListUserGroupsRequest, r
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -19260,6 +21652,10 @@ func (client *Client) OfflineBatchTaskWithOptions(request *OfflineBatchTaskReque
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -19330,6 +21726,10 @@ func (client *Client) OfflineBizEntityWithOptions(tmpReq *OfflineBizEntityReques
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -19408,6 +21808,10 @@ func (client *Client) OfflinePipelineWithOptions(tmpReq *OfflinePipelineRequest,
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -19492,6 +21896,10 @@ func (client *Client) OfflinePipelineByAsyncWithOptions(tmpReq *OfflinePipelineB
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ContextShrink) {
 		body["Context"] = request.ContextShrink
@@ -19572,6 +21980,10 @@ func (client *Client) OfflineStandardWithOptions(tmpReq *OfflineStandardRequest,
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OfflineCommandShrink) {
 		body["OfflineCommand"] = request.OfflineCommandShrink
@@ -19646,6 +22058,10 @@ func (client *Client) OnlineBizEntityWithOptions(tmpReq *OnlineBizEntityRequest,
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -19726,6 +22142,10 @@ func (client *Client) OperateInstanceWithOptions(tmpReq *OperateInstanceRequest,
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.OperateCommandShrink) {
 		body["OperateCommand"] = request.OperateCommandShrink
@@ -19798,6 +22218,10 @@ func (client *Client) ParseBatchTaskDependencyWithOptions(tmpReq *ParseBatchTask
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -19878,6 +22302,10 @@ func (client *Client) PausePhysicalNodeWithOptions(tmpReq *PausePhysicalNodeRequ
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PauseCommandShrink) {
 		body["PauseCommand"] = request.PauseCommandShrink
@@ -19948,6 +22376,10 @@ func (client *Client) PublishDataServiceApiWithOptions(request *PublishDataServi
 
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -20024,6 +22456,10 @@ func (client *Client) PublishKgSchemaWithOptions(tmpReq *PublishKgSchemaRequest,
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -20104,6 +22540,10 @@ func (client *Client) PublishObjectListWithOptions(tmpReq *PublishObjectListRequ
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PublishCommandShrink) {
 		body["PublishCommand"] = request.PublishCommandShrink
@@ -20178,6 +22618,10 @@ func (client *Client) PublishStandardWithOptions(tmpReq *PublishStandardRequest,
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -20256,6 +22700,10 @@ func (client *Client) RemoveDataServiceAppMemberWithOptions(tmpReq *RemoveDataSe
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -20338,6 +22786,10 @@ func (client *Client) RemoveProjectMemberWithOptions(tmpReq *RemoveProjectMember
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RemoveCommandShrink) {
 		body["RemoveCommand"] = request.RemoveCommandShrink
@@ -20412,6 +22864,10 @@ func (client *Client) RemoveQualityRuleSchedulesWithOptions(tmpReq *RemoveQualit
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -20490,6 +22946,10 @@ func (client *Client) RemoveTenantMemberWithOptions(tmpReq *RemoveTenantMemberRe
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.RemoveCommandShrink) {
 		body["RemoveCommand"] = request.RemoveCommandShrink
@@ -20562,6 +23022,10 @@ func (client *Client) RemoveUserGroupMemberWithOptions(tmpReq *RemoveUserGroupMe
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -20642,6 +23106,10 @@ func (client *Client) ReplaceProjectWhiteListsWithOptions(tmpReq *ReplaceProject
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ReplaceCommandShrink) {
 		body["ReplaceCommand"] = request.ReplaceCommandShrink
@@ -20716,6 +23184,10 @@ func (client *Client) ResetDataServiceAppSecretWithOptions(tmpReq *ResetDataServ
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -20798,6 +23270,10 @@ func (client *Client) ResumePhysicalNodeWithOptions(tmpReq *ResumePhysicalNodeRe
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ResumeCommandShrink) {
 		body["ResumeCommand"] = request.ResumeCommandShrink
@@ -20872,6 +23348,10 @@ func (client *Client) RetryTransferOwnershipWithOptions(tmpReq *RetryTransferOwn
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.PrivilegeTransferRecordShrink) {
 		body["PrivilegeTransferRecord"] = request.PrivilegeTransferRecordShrink
@@ -20944,6 +23424,10 @@ func (client *Client) RevokeDataServiceApiWithOptions(tmpReq *RevokeDataServiceA
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -21022,6 +23506,10 @@ func (client *Client) RevokeResourcePermissionWithOptions(tmpReq *RevokeResource
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -21170,6 +23658,10 @@ func (client *Client) StopAdHocTaskWithOptions(request *StopAdHocTaskRequest, ru
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -21221,6 +23713,162 @@ func (client *Client) StopAdHocTask(request *StopAdHocTaskRequest) (_result *Sto
 
 // Summary:
 //
+// Submits asset delisting. Online version: v6.3.0.
+//
+// @param tmpReq - SubmitAssetsOffShelveRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitAssetsOffShelveResponse
+func (client *Client) SubmitAssetsOffShelveWithOptions(tmpReq *SubmitAssetsOffShelveRequest, runtime *dara.RuntimeOptions) (_result *SubmitAssetsOffShelveResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SubmitAssetsOffShelveShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SubmitCommand) {
+		request.SubmitCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubmitCommand, dara.String("SubmitCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SubmitCommandShrink) {
+		body["SubmitCommand"] = request.SubmitCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitAssetsOffShelve"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitAssetsOffShelveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits asset delisting. Online version: v6.3.0.
+//
+// @param request - SubmitAssetsOffShelveRequest
+//
+// @return SubmitAssetsOffShelveResponse
+func (client *Client) SubmitAssetsOffShelve(request *SubmitAssetsOffShelveRequest) (_result *SubmitAssetsOffShelveResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitAssetsOffShelveResponse{}
+	_body, _err := client.SubmitAssetsOffShelveWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits assets for listing. Online version: v6.3.0.
+//
+// @param tmpReq - SubmitAssetsOnShelveRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitAssetsOnShelveResponse
+func (client *Client) SubmitAssetsOnShelveWithOptions(tmpReq *SubmitAssetsOnShelveRequest, runtime *dara.RuntimeOptions) (_result *SubmitAssetsOnShelveResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SubmitAssetsOnShelveShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.SubmitCommand) {
+		request.SubmitCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubmitCommand, dara.String("SubmitCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.SubmitCommandShrink) {
+		body["SubmitCommand"] = request.SubmitCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitAssetsOnShelve"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitAssetsOnShelveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits assets for listing. Online version: v6.3.0.
+//
+// @param request - SubmitAssetsOnShelveRequest
+//
+// @return SubmitAssetsOnShelveResponse
+func (client *Client) SubmitAssetsOnShelve(request *SubmitAssetsOnShelveRequest) (_result *SubmitAssetsOnShelveResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitAssetsOnShelveResponse{}
+	_body, _err := client.SubmitAssetsOnShelveWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Submits a batch task.
 //
 // @param tmpReq - SubmitBatchTaskRequest
@@ -21244,6 +23892,10 @@ func (client *Client) SubmitBatchTaskWithOptions(tmpReq *SubmitBatchTaskRequest,
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -21404,6 +24056,10 @@ func (client *Client) SubmitQualityRuleTasksWithOptions(tmpReq *SubmitQualityRul
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.SubmitCommandShrink) {
 		body["SubmitCommand"] = request.SubmitCommandShrink
@@ -21480,6 +24136,10 @@ func (client *Client) SubmitQualityWatchTasksWithOptions(tmpReq *SubmitQualityWa
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -21562,6 +24222,10 @@ func (client *Client) SyncDepartmentWithOptions(tmpReq *SyncDepartmentRequest, r
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.SyncDepartmentCommandShrink) {
 		body["SyncDepartmentCommand"] = request.SyncDepartmentCommandShrink
@@ -21640,6 +24304,10 @@ func (client *Client) SyncDepartmentUserWithOptions(tmpReq *SyncDepartmentUserRe
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.SyncDepartmentUserCommandShrink) {
 		body["SyncDepartmentUserCommand"] = request.SyncDepartmentUserCommandShrink
@@ -21712,6 +24380,10 @@ func (client *Client) TransferOwnershipForAllObjectWithOptions(tmpReq *TransferO
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -21788,6 +24460,10 @@ func (client *Client) UpdateAdHocFileWithOptions(tmpReq *UpdateAdHocFileRequest,
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpdateCommandShrink) {
 		body["UpdateCommand"] = request.UpdateCommandShrink
@@ -21837,6 +24513,84 @@ func (client *Client) UpdateAdHocFile(request *UpdateAdHocFileRequest) (_result 
 
 // Summary:
 //
+// Updates asset property values. Online version: v6.3.0.
+//
+// @param tmpReq - UpdateAssetAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAssetAttributesResponse
+func (client *Client) UpdateAssetAttributesWithOptions(tmpReq *UpdateAssetAttributesRequest, runtime *dara.RuntimeOptions) (_result *UpdateAssetAttributesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateAssetAttributesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAssetAttributes"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAssetAttributesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates asset property values. Online version: v6.3.0.
+//
+// @param request - UpdateAssetAttributesRequest
+//
+// @return UpdateAssetAttributesResponse
+func (client *Client) UpdateAssetAttributes(request *UpdateAssetAttributesRequest) (_result *UpdateAssetAttributesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAssetAttributesResponse{}
+	_body, _err := client.UpdateAssetAttributesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Edits a Basic (single-environment) project. The project name cannot be modified. You must pass in the current project name.
 //
 // @param tmpReq - UpdateBasicProjectRequest
@@ -21860,6 +24614,10 @@ func (client *Client) UpdateBasicProjectWithOptions(tmpReq *UpdateBasicProjectRe
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -21936,6 +24694,10 @@ func (client *Client) UpdateBatchTaskWithOptions(tmpReq *UpdateBatchTaskRequest,
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpdateCommandShrink) {
 		body["UpdateCommand"] = request.UpdateCommandShrink
@@ -22010,6 +24772,10 @@ func (client *Client) UpdateBatchTaskUdfLineagesWithOptions(tmpReq *UpdateBatchT
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpdateCommandShrink) {
 		body["UpdateCommand"] = request.UpdateCommandShrink
@@ -22082,6 +24848,10 @@ func (client *Client) UpdateBizEntityWithOptions(tmpReq *UpdateBizEntityRequest,
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -22160,6 +24930,10 @@ func (client *Client) UpdateBizMetricWithOptions(tmpReq *UpdateBizMetricRequest,
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpdateBizMetricCommandShrink) {
 		body["UpdateBizMetricCommand"] = request.UpdateBizMetricCommandShrink
@@ -22236,6 +25010,10 @@ func (client *Client) UpdateBizUnitWithOptions(tmpReq *UpdateBizUnitRequest, run
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpdateCommandShrink) {
 		body["UpdateCommand"] = request.UpdateCommandShrink
@@ -22285,6 +25063,88 @@ func (client *Client) UpdateBizUnit(request *UpdateBizUnitRequest) (_result *Upd
 
 // Summary:
 //
+// 修改集群。
+//
+// @param tmpReq - UpdateComputeClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateComputeClusterResponse
+func (client *Client) UpdateComputeClusterWithOptions(tmpReq *UpdateComputeClusterRequest, runtime *dara.RuntimeOptions) (_result *UpdateComputeClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateComputeClusterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ClusterConfig) {
+		request.ClusterConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ClusterConfig, dara.String("ClusterConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Id) {
+		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClusterConfigShrink) {
+		body["ClusterConfig"] = request.ClusterConfigShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateComputeCluster"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateComputeClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改集群。
+//
+// @param request - UpdateComputeClusterRequest
+//
+// @return UpdateComputeClusterResponse
+func (client *Client) UpdateComputeCluster(request *UpdateComputeClusterRequest) (_result *UpdateComputeClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateComputeClusterResponse{}
+	_body, _err := client.UpdateComputeClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Edits a compute source. Business unit administrators and project administrators have permissions to perform this operation.
 //
 // @param tmpReq - UpdateComputeSourceRequest
@@ -22308,6 +25168,10 @@ func (client *Client) UpdateComputeSourceWithOptions(tmpReq *UpdateComputeSource
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -22359,6 +25223,96 @@ func (client *Client) UpdateComputeSource(request *UpdateComputeSourceRequest) (
 
 // Summary:
 //
+// 根据治理项id，批量修改问题清单对象的状态。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该 API 用于更新特定项目下已存在的问题清单的状态。
+//
+// @param tmpReq - UpdateDataAssetsGovernObjectStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDataAssetsGovernObjectStatusResponse
+func (client *Client) UpdateDataAssetsGovernObjectStatusWithOptions(tmpReq *UpdateDataAssetsGovernObjectStatusRequest, runtime *dara.RuntimeOptions) (_result *UpdateDataAssetsGovernObjectStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateDataAssetsGovernObjectStatusShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpdateCommand) {
+		request.UpdateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateCommand, dara.String("UpdateCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpdateCommandShrink) {
+		body["UpdateCommand"] = request.UpdateCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateDataAssetsGovernObjectStatus"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateDataAssetsGovernObjectStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据治理项id，批量修改问题清单对象的状态。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该 API 用于更新特定项目下已存在的问题清单的状态。
+//
+// @param request - UpdateDataAssetsGovernObjectStatusRequest
+//
+// @return UpdateDataAssetsGovernObjectStatusResponse
+func (client *Client) UpdateDataAssetsGovernObjectStatus(request *UpdateDataAssetsGovernObjectStatusRequest) (_result *UpdateDataAssetsGovernObjectStatusResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateDataAssetsGovernObjectStatusResponse{}
+	_body, _err := client.UpdateDataAssetsGovernObjectStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates a data domain.
 //
 // @param tmpReq - UpdateDataDomainRequest
@@ -22382,6 +25336,10 @@ func (client *Client) UpdateDataDomainWithOptions(tmpReq *UpdateDataDomainReques
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -22458,6 +25416,10 @@ func (client *Client) UpdateDataServiceAppWithOptions(tmpReq *UpdateDataServiceA
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -22538,6 +25500,10 @@ func (client *Client) UpdateDataServiceAppGroupWithOptions(tmpReq *UpdateDataSer
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpdateCommandShrink) {
 		body["UpdateCommand"] = request.UpdateCommandShrink
@@ -22616,6 +25582,10 @@ func (client *Client) UpdateDataServiceAppMemberWithOptions(tmpReq *UpdateDataSe
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpdateCommandShrink) {
 		body["UpdateCommand"] = request.UpdateCommandShrink
@@ -22692,6 +25662,10 @@ func (client *Client) UpdateDataSourceBasicInfoWithOptions(tmpReq *UpdateDataSou
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpdateCommandShrink) {
 		body["UpdateCommand"] = request.UpdateCommandShrink
@@ -22764,6 +25738,10 @@ func (client *Client) UpdateDataSourceConfigWithOptions(tmpReq *UpdateDataSource
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -22842,6 +25820,10 @@ func (client *Client) UpdateDatasetWithOptions(tmpReq *UpdateDatasetRequest, run
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.ProjectId) {
@@ -22926,6 +25908,10 @@ func (client *Client) UpdateDevProdProjectWithOptions(tmpReq *UpdateDevProdProje
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpdateCommandShrink) {
 		body["UpdateCommand"] = request.UpdateCommandShrink
@@ -23002,6 +25988,10 @@ func (client *Client) UpdateFileDirectoryWithOptions(request *UpdateFileDirector
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -23076,6 +26066,10 @@ func (client *Client) UpdateFileNameWithOptions(request *UpdateFileNameRequest, 
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.ProjectId) {
 		query["ProjectId"] = request.ProjectId
 	}
@@ -23146,6 +26140,10 @@ func (client *Client) UpdateKgEntityWithOptions(tmpReq *UpdateKgEntityRequest, r
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	if !dara.IsNil(request.WorkspaceId) {
@@ -23226,6 +26224,10 @@ func (client *Client) UpdateKgRelationWithOptions(tmpReq *UpdateKgRelationReques
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.WorkspaceId) {
 		query["WorkspaceId"] = request.WorkspaceId
 	}
@@ -23279,6 +26281,84 @@ func (client *Client) UpdateKgRelation(request *UpdateKgRelationRequest) (_resul
 
 // Summary:
 //
+// Updates O&M owners in batches. This is an OpenAPI wrapper for the "Change Owner" page feature and only supports offline nodes: compute nodes, integration nodes, and logical tables. Real-time nodes are not supported. Available since v6.3.0.
+//
+// @param tmpReq - UpdateNodeOpsOwnerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNodeOpsOwnerResponse
+func (client *Client) UpdateNodeOpsOwnerWithOptions(tmpReq *UpdateNodeOpsOwnerRequest, runtime *dara.RuntimeOptions) (_result *UpdateNodeOpsOwnerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateNodeOpsOwnerShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Command) {
+		request.CommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Command, dara.String("Command"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CommandShrink) {
+		body["Command"] = request.CommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateNodeOpsOwner"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateNodeOpsOwnerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates O&M owners in batches. This is an OpenAPI wrapper for the "Change Owner" page feature and only supports offline nodes: compute nodes, integration nodes, and logical tables. Real-time nodes are not supported. Available since v6.3.0.
+//
+// @param request - UpdateNodeOpsOwnerRequest
+//
+// @return UpdateNodeOpsOwnerResponse
+func (client *Client) UpdateNodeOpsOwner(request *UpdateNodeOpsOwnerRequest) (_result *UpdateNodeOpsOwnerResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateNodeOpsOwnerResponse{}
+	_body, _err := client.UpdateNodeOpsOwnerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates an integration pipeline or unstructured workflow node.
 //
 // @param tmpReq - UpdatePipelineRequest
@@ -23306,6 +26386,10 @@ func (client *Client) UpdatePipelineWithOptions(tmpReq *UpdatePipelineRequest, r
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -23390,6 +26474,10 @@ func (client *Client) UpdatePipelineByAsyncWithOptions(tmpReq *UpdatePipelineByA
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.ContextShrink) {
 		body["Context"] = request.ContextShrink
@@ -23472,6 +26560,10 @@ func (client *Client) UpdateProjectMemberWithOptions(tmpReq *UpdateProjectMember
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpdateCommandShrink) {
 		body["UpdateCommand"] = request.UpdateCommandShrink
@@ -23546,6 +26638,10 @@ func (client *Client) UpdateQualityRuleSwitchWithOptions(tmpReq *UpdateQualityRu
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -23626,6 +26722,10 @@ func (client *Client) UpdateQualityWatchSwitchWithOptions(tmpReq *UpdateQualityW
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpdateCommandShrink) {
 		body["UpdateCommand"] = request.UpdateCommandShrink
@@ -23702,6 +26802,10 @@ func (client *Client) UpdateResourceWithOptions(tmpReq *UpdateResourceRequest, r
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpdateCommandShrink) {
 		body["UpdateCommand"] = request.UpdateCommandShrink
@@ -23774,6 +26878,10 @@ func (client *Client) UpdateRowPermissionWithOptions(tmpReq *UpdateRowPermission
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -23852,6 +26960,10 @@ func (client *Client) UpdateSecurityClassifyWithOptions(tmpReq *UpdateSecurityCl
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpdateCommandShrink) {
 		body["UpdateCommand"] = request.UpdateCommandShrink
@@ -23928,6 +27040,10 @@ func (client *Client) UpdateSecurityClassifyCatalogWithOptions(tmpReq *UpdateSec
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpdateCommandShrink) {
 		body["UpdateCommand"] = request.UpdateCommandShrink
@@ -24002,6 +27118,10 @@ func (client *Client) UpdateSecurityIdentifyResultStatusWithOptions(tmpReq *Upda
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -24082,6 +27202,10 @@ func (client *Client) UpdateSecurityLevelWithOptions(tmpReq *UpdateSecurityLevel
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpdateCommandShrink) {
 		body["UpdateCommand"] = request.UpdateCommandShrink
@@ -24158,6 +27282,10 @@ func (client *Client) UpdateStandardWithOptions(tmpReq *UpdateStandardRequest, r
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -24238,6 +27366,10 @@ func (client *Client) UpdateStandardLookupTableWithOptions(tmpReq *UpdateStandar
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpdateCommandShrink) {
 		body["UpdateCommand"] = request.UpdateCommandShrink
@@ -24314,6 +27446,10 @@ func (client *Client) UpdateStandardMappingToInvalidWithOptions(tmpReq *UpdateSt
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -24394,6 +27530,10 @@ func (client *Client) UpdateStandardSetWithOptions(tmpReq *UpdateStandardSetRequ
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpdateCommandShrink) {
 		body["UpdateCommand"] = request.UpdateCommandShrink
@@ -24470,6 +27610,10 @@ func (client *Client) UpdateStandardTemplateWithOptions(tmpReq *UpdateStandardTe
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -24550,6 +27694,10 @@ func (client *Client) UpdateStandardWordRootWithOptions(tmpReq *UpdateStandardWo
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpdateCommandShrink) {
 		body["UpdateCommand"] = request.UpdateCommandShrink
@@ -24626,6 +27774,10 @@ func (client *Client) UpdateTenantComputeEngineWithOptions(tmpReq *UpdateTenantC
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpdateCommandShrink) {
 		body["UpdateCommand"] = request.UpdateCommandShrink
@@ -24698,6 +27850,10 @@ func (client *Client) UpdateTenantMemberWithOptions(tmpReq *UpdateTenantMemberRe
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -24774,6 +27930,10 @@ func (client *Client) UpdateUdfWithOptions(tmpReq *UpdateUdfRequest, runtime *da
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpdateCommandShrink) {
 		body["UpdateCommand"] = request.UpdateCommandShrink
@@ -24848,6 +28008,10 @@ func (client *Client) UpdateUserGroupWithOptions(tmpReq *UpdateUserGroupRequest,
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpdateCommandShrink) {
 		body["UpdateCommand"] = request.UpdateCommandShrink
@@ -24920,6 +28084,10 @@ func (client *Client) UpdateUserGroupSwitchWithOptions(request *UpdateUserGroupS
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	if !dara.IsNil(request.UserGroupId) {
 		query["UserGroupId"] = request.UserGroupId
 	}
@@ -24967,7 +28135,163 @@ func (client *Client) UpdateUserGroupSwitch(request *UpdateUserGroupSwitchReques
 
 // Summary:
 //
-// Create or modify a quality rule.
+// Uploads a datasource authentication file. Available since v6.3.0.
+//
+// @param tmpReq - UploadDataSourceFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UploadDataSourceFileResponse
+func (client *Client) UploadDataSourceFileWithOptions(tmpReq *UploadDataSourceFileRequest, runtime *dara.RuntimeOptions) (_result *UploadDataSourceFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UploadDataSourceFileShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UploadCommand) {
+		request.UploadCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UploadCommand, dara.String("UploadCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UploadCommandShrink) {
+		body["UploadCommand"] = request.UploadCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UploadDataSourceFile"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UploadDataSourceFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Uploads a datasource authentication file. Available since v6.3.0.
+//
+// @param request - UploadDataSourceFileRequest
+//
+// @return UploadDataSourceFileResponse
+func (client *Client) UploadDataSourceFile(request *UploadDataSourceFileRequest) (_result *UploadDataSourceFileResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UploadDataSourceFileResponse{}
+	_body, _err := client.UploadDataSourceFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates or updates an exception archived table for a monitored object. Online version: v6.3.0.
+//
+// @param tmpReq - UpsertQualityArchiveTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpsertQualityArchiveTableResponse
+func (client *Client) UpsertQualityArchiveTableWithOptions(tmpReq *UpsertQualityArchiveTableRequest, runtime *dara.RuntimeOptions) (_result *UpsertQualityArchiveTableResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpsertQualityArchiveTableShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.UpsertCommand) {
+		request.UpsertCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpsertCommand, dara.String("UpsertCommand"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.OpTenantId) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.UpsertCommandShrink) {
+		body["UpsertCommand"] = request.UpsertCommandShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpsertQualityArchiveTable"),
+		Version:     dara.String("2023-06-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpsertQualityArchiveTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates or updates an exception archived table for a monitored object. Online version: v6.3.0.
+//
+// @param request - UpsertQualityArchiveTableRequest
+//
+// @return UpsertQualityArchiveTableResponse
+func (client *Client) UpsertQualityArchiveTable(request *UpsertQualityArchiveTableRequest) (_result *UpsertQualityArchiveTableResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpsertQualityArchiveTableResponse{}
+	_body, _err := client.UpsertQualityArchiveTableWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates or updates a quality rule.
 //
 // Release version: v5.4.2.
 //
@@ -24992,6 +28316,10 @@ func (client *Client) UpsertQualityRuleWithOptions(tmpReq *UpsertQualityRuleRequ
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -25025,7 +28353,7 @@ func (client *Client) UpsertQualityRuleWithOptions(tmpReq *UpsertQualityRuleRequ
 
 // Summary:
 //
-// Create or modify a quality rule.
+// Creates or updates a quality rule.
 //
 // Release version: v5.4.2.
 //
@@ -25045,7 +28373,7 @@ func (client *Client) UpsertQualityRule(request *UpsertQualityRuleRequest) (_res
 
 // Summary:
 //
-// Creates or updates scheduling settings.
+// Creates or updates a schedule setting.
 //
 // Release version: v5.4.2.
 //
@@ -25070,6 +28398,10 @@ func (client *Client) UpsertQualityScheduleWithOptions(tmpReq *UpsertQualitySche
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -25103,7 +28435,7 @@ func (client *Client) UpsertQualityScheduleWithOptions(tmpReq *UpsertQualitySche
 
 // Summary:
 //
-// Creates or updates scheduling settings.
+// Creates or updates a schedule setting.
 //
 // Release version: v5.4.2.
 //
@@ -25148,6 +28480,10 @@ func (client *Client) UpsertQualityTemplateWithOptions(tmpReq *UpsertQualityTemp
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}
@@ -25228,6 +28564,10 @@ func (client *Client) UpsertQualityWatchWithOptions(tmpReq *UpsertQualityWatchRe
 		query["OpTenantId"] = request.OpTenantId
 	}
 
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.UpsertCommandShrink) {
 		body["UpsertCommand"] = request.UpsertCommandShrink
@@ -25304,6 +28644,10 @@ func (client *Client) UpsertQualityWatchAlertWithOptions(tmpReq *UpsertQualityWa
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.OpTenantId) {
 		query["OpTenantId"] = request.OpTenantId
+	}
+
+	if !dara.IsNil(request.OpUserId) {
+		query["OpUserId"] = request.OpUserId
 	}
 
 	body := map[string]interface{}{}

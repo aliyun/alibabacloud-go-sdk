@@ -13,6 +13,8 @@ type iDeleteSecurityIdentifyResultsShrinkRequest interface {
 	GetDeleteCommandShrink() *string
 	SetOpTenantId(v int64) *DeleteSecurityIdentifyResultsShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteSecurityIdentifyResultsShrinkRequest
+	GetOpUserId() *string
 }
 
 type DeleteSecurityIdentifyResultsShrinkRequest struct {
@@ -28,6 +30,10 @@ type DeleteSecurityIdentifyResultsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteSecurityIdentifyResultsShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *DeleteSecurityIdentifyResultsShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteSecurityIdentifyResultsShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteSecurityIdentifyResultsShrinkRequest) SetDeleteCommandShrink(v string) *DeleteSecurityIdentifyResultsShrinkRequest {
 	s.DeleteCommandShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *DeleteSecurityIdentifyResultsShrinkRequest) SetDeleteCommandShrink(v st
 
 func (s *DeleteSecurityIdentifyResultsShrinkRequest) SetOpTenantId(v int64) *DeleteSecurityIdentifyResultsShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteSecurityIdentifyResultsShrinkRequest) SetOpUserId(v string) *DeleteSecurityIdentifyResultsShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iCreateStandardWordRootShrinkRequest interface {
 	GetCreateCommandShrink() *string
 	SetOpTenantId(v int64) *CreateStandardWordRootShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateStandardWordRootShrinkRequest
+	GetOpUserId() *string
 }
 
 type CreateStandardWordRootShrinkRequest struct {
@@ -28,6 +30,10 @@ type CreateStandardWordRootShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateStandardWordRootShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateStandardWordRootShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateStandardWordRootShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateStandardWordRootShrinkRequest) SetCreateCommandShrink(v string) *CreateStandardWordRootShrinkRequest {
 	s.CreateCommandShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateStandardWordRootShrinkRequest) SetCreateCommandShrink(v string) *
 
 func (s *CreateStandardWordRootShrinkRequest) SetOpTenantId(v int64) *CreateStandardWordRootShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateStandardWordRootShrinkRequest) SetOpUserId(v string) *CreateStandardWordRootShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

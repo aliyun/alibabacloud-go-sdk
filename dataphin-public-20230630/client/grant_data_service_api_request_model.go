@@ -13,6 +13,8 @@ type iGrantDataServiceApiRequest interface {
 	GetGrantCommand() *GrantDataServiceApiRequestGrantCommand
 	SetOpTenantId(v int64) *GrantDataServiceApiRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GrantDataServiceApiRequest
+	GetOpUserId() *string
 	SetProjectId(v int32) *GrantDataServiceApiRequest
 	GetProjectId() *int32
 }
@@ -30,6 +32,10 @@ type GrantDataServiceApiRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The data service project ID.
 	//
 	// This parameter is required.
@@ -56,6 +62,10 @@ func (s *GrantDataServiceApiRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GrantDataServiceApiRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GrantDataServiceApiRequest) GetProjectId() *int32 {
 	return s.ProjectId
 }
@@ -67,6 +77,11 @@ func (s *GrantDataServiceApiRequest) SetGrantCommand(v *GrantDataServiceApiReque
 
 func (s *GrantDataServiceApiRequest) SetOpTenantId(v int64) *GrantDataServiceApiRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GrantDataServiceApiRequest) SetOpUserId(v string) *GrantDataServiceApiRequest {
+	s.OpUserId = &v
 	return s
 }
 

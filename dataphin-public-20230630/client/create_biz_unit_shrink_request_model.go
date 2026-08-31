@@ -13,6 +13,8 @@ type iCreateBizUnitShrinkRequest interface {
 	GetCreateCommandShrink() *string
 	SetOpTenantId(v int64) *CreateBizUnitShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateBizUnitShrinkRequest
+	GetOpUserId() *string
 }
 
 type CreateBizUnitShrinkRequest struct {
@@ -28,6 +30,10 @@ type CreateBizUnitShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateBizUnitShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateBizUnitShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateBizUnitShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateBizUnitShrinkRequest) SetCreateCommandShrink(v string) *CreateBizUnitShrinkRequest {
 	s.CreateCommandShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateBizUnitShrinkRequest) SetCreateCommandShrink(v string) *CreateBiz
 
 func (s *CreateBizUnitShrinkRequest) SetOpTenantId(v int64) *CreateBizUnitShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateBizUnitShrinkRequest) SetOpUserId(v string) *CreateBizUnitShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

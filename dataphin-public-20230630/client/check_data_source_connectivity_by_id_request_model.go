@@ -13,6 +13,8 @@ type iCheckDataSourceConnectivityByIdRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *CheckDataSourceConnectivityByIdRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CheckDataSourceConnectivityByIdRequest
+	GetOpUserId() *string
 }
 
 type CheckDataSourceConnectivityByIdRequest struct {
@@ -32,6 +34,10 @@ type CheckDataSourceConnectivityByIdRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CheckDataSourceConnectivityByIdRequest) String() string {
@@ -50,6 +56,10 @@ func (s *CheckDataSourceConnectivityByIdRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CheckDataSourceConnectivityByIdRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CheckDataSourceConnectivityByIdRequest) SetId(v int64) *CheckDataSourceConnectivityByIdRequest {
 	s.Id = &v
 	return s
@@ -57,6 +67,11 @@ func (s *CheckDataSourceConnectivityByIdRequest) SetId(v int64) *CheckDataSource
 
 func (s *CheckDataSourceConnectivityByIdRequest) SetOpTenantId(v int64) *CheckDataSourceConnectivityByIdRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CheckDataSourceConnectivityByIdRequest) SetOpUserId(v string) *CheckDataSourceConnectivityByIdRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iDeleteDataServiceAppGroupRequest interface {
 	GetGroupId() *int32
 	SetOpTenantId(v int64) *DeleteDataServiceAppGroupRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteDataServiceAppGroupRequest
+	GetOpUserId() *string
 }
 
 type DeleteDataServiceAppGroupRequest struct {
@@ -32,6 +34,10 @@ type DeleteDataServiceAppGroupRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteDataServiceAppGroupRequest) String() string {
@@ -50,6 +56,10 @@ func (s *DeleteDataServiceAppGroupRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteDataServiceAppGroupRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteDataServiceAppGroupRequest) SetGroupId(v int32) *DeleteDataServiceAppGroupRequest {
 	s.GroupId = &v
 	return s
@@ -57,6 +67,11 @@ func (s *DeleteDataServiceAppGroupRequest) SetGroupId(v int32) *DeleteDataServic
 
 func (s *DeleteDataServiceAppGroupRequest) SetOpTenantId(v int64) *DeleteDataServiceAppGroupRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteDataServiceAppGroupRequest) SetOpUserId(v string) *DeleteDataServiceAppGroupRequest {
+	s.OpUserId = &v
 	return s
 }
 

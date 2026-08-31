@@ -11,6 +11,8 @@ type iUpdateBizUnitShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateBizUnitShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateBizUnitShrinkRequest
+	GetOpUserId() *string
 	SetUpdateCommandShrink(v string) *UpdateBizUnitShrinkRequest
 	GetUpdateCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type UpdateBizUnitShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update request.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateBizUnitShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateBizUnitShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateBizUnitShrinkRequest) GetUpdateCommandShrink() *string {
 	return s.UpdateCommandShrink
 }
 
 func (s *UpdateBizUnitShrinkRequest) SetOpTenantId(v int64) *UpdateBizUnitShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateBizUnitShrinkRequest) SetOpUserId(v string) *UpdateBizUnitShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

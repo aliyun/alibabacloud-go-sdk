@@ -11,6 +11,8 @@ type iGetDataServiceMyProjectsRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetDataServiceMyProjectsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetDataServiceMyProjectsRequest
+	GetOpUserId() *string
 }
 
 type GetDataServiceMyProjectsRequest struct {
@@ -22,6 +24,10 @@ type GetDataServiceMyProjectsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetDataServiceMyProjectsRequest) String() string {
@@ -36,8 +42,17 @@ func (s *GetDataServiceMyProjectsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetDataServiceMyProjectsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetDataServiceMyProjectsRequest) SetOpTenantId(v int64) *GetDataServiceMyProjectsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetDataServiceMyProjectsRequest) SetOpUserId(v string) *GetDataServiceMyProjectsRequest {
+	s.OpUserId = &v
 	return s
 }
 

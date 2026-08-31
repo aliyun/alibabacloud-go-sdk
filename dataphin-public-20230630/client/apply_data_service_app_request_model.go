@@ -13,6 +13,8 @@ type iApplyDataServiceAppRequest interface {
 	GetApplyCommand() *ApplyDataServiceAppRequestApplyCommand
 	SetOpTenantId(v int64) *ApplyDataServiceAppRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ApplyDataServiceAppRequest
+	GetOpUserId() *string
 	SetProjectId(v int32) *ApplyDataServiceAppRequest
 	GetProjectId() *int32
 }
@@ -30,6 +32,12 @@ type ApplyDataServiceAppRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The data service project ID.
 	//
 	// This parameter is required.
@@ -56,6 +64,10 @@ func (s *ApplyDataServiceAppRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ApplyDataServiceAppRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ApplyDataServiceAppRequest) GetProjectId() *int32 {
 	return s.ProjectId
 }
@@ -67,6 +79,11 @@ func (s *ApplyDataServiceAppRequest) SetApplyCommand(v *ApplyDataServiceAppReque
 
 func (s *ApplyDataServiceAppRequest) SetOpTenantId(v int64) *ApplyDataServiceAppRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ApplyDataServiceAppRequest) SetOpUserId(v string) *ApplyDataServiceAppRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -93,7 +110,7 @@ type ApplyDataServiceAppRequestApplyCommand struct {
 	//
 	// 2011
 	AppId *int32 `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The expiration date in the format of yyyy-MM-dd.
+	// The expiration date in yyyy-MM-dd format.
 	//
 	// This parameter is required.
 	//

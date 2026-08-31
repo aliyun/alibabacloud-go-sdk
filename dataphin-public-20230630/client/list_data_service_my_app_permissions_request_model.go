@@ -13,6 +13,8 @@ type iListDataServiceMyAppPermissionsRequest interface {
 	GetListQuery() *ListDataServiceMyAppPermissionsRequestListQuery
 	SetOpTenantId(v int64) *ListDataServiceMyAppPermissionsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListDataServiceMyAppPermissionsRequest
+	GetOpUserId() *string
 	SetProjectId(v int32) *ListDataServiceMyAppPermissionsRequest
 	GetProjectId() *int32
 }
@@ -30,6 +32,10 @@ type ListDataServiceMyAppPermissionsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The ID of the data service project.
 	//
 	// This parameter is required.
@@ -56,6 +62,10 @@ func (s *ListDataServiceMyAppPermissionsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListDataServiceMyAppPermissionsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListDataServiceMyAppPermissionsRequest) GetProjectId() *int32 {
 	return s.ProjectId
 }
@@ -67,6 +77,11 @@ func (s *ListDataServiceMyAppPermissionsRequest) SetListQuery(v *ListDataService
 
 func (s *ListDataServiceMyAppPermissionsRequest) SetOpTenantId(v int64) *ListDataServiceMyAppPermissionsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListDataServiceMyAppPermissionsRequest) SetOpUserId(v string) *ListDataServiceMyAppPermissionsRequest {
+	s.OpUserId = &v
 	return s
 }
 

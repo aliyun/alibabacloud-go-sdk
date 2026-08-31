@@ -11,6 +11,8 @@ type iRevokeDataServiceApiShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *RevokeDataServiceApiShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *RevokeDataServiceApiShrinkRequest
+	GetOpUserId() *string
 	SetProjectId(v int32) *RevokeDataServiceApiShrinkRequest
 	GetProjectId() *int32
 	SetRevokeCommandShrink(v string) *RevokeDataServiceApiShrinkRequest
@@ -26,6 +28,10 @@ type RevokeDataServiceApiShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The data service project ID.
 	//
 	// This parameter is required.
@@ -52,6 +58,10 @@ func (s *RevokeDataServiceApiShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *RevokeDataServiceApiShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *RevokeDataServiceApiShrinkRequest) GetProjectId() *int32 {
 	return s.ProjectId
 }
@@ -62,6 +72,11 @@ func (s *RevokeDataServiceApiShrinkRequest) GetRevokeCommandShrink() *string {
 
 func (s *RevokeDataServiceApiShrinkRequest) SetOpTenantId(v int64) *RevokeDataServiceApiShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *RevokeDataServiceApiShrinkRequest) SetOpUserId(v string) *RevokeDataServiceApiShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iCreateBizUnitRequest interface {
 	GetCreateCommand() *CreateBizUnitRequestCreateCommand
 	SetOpTenantId(v int64) *CreateBizUnitRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateBizUnitRequest
+	GetOpUserId() *string
 }
 
 type CreateBizUnitRequest struct {
@@ -28,6 +30,10 @@ type CreateBizUnitRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateBizUnitRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateBizUnitRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateBizUnitRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateBizUnitRequest) SetCreateCommand(v *CreateBizUnitRequestCreateCommand) *CreateBizUnitRequest {
 	s.CreateCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateBizUnitRequest) SetCreateCommand(v *CreateBizUnitRequestCreateCom
 
 func (s *CreateBizUnitRequest) SetOpTenantId(v int64) *CreateBizUnitRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateBizUnitRequest) SetOpUserId(v string) *CreateBizUnitRequest {
+	s.OpUserId = &v
 	return s
 }
 

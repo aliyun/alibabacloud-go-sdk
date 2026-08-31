@@ -15,6 +15,8 @@ type iGetOperationSubmitStatusRequest interface {
 	GetJobId() *string
 	SetOpTenantId(v int64) *GetOperationSubmitStatusRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetOperationSubmitStatusRequest
+	GetOpUserId() *string
 }
 
 type GetOperationSubmitStatusRequest struct {
@@ -44,6 +46,10 @@ type GetOperationSubmitStatusRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetOperationSubmitStatusRequest) String() string {
@@ -66,6 +72,10 @@ func (s *GetOperationSubmitStatusRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetOperationSubmitStatusRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetOperationSubmitStatusRequest) SetEnv(v string) *GetOperationSubmitStatusRequest {
 	s.Env = &v
 	return s
@@ -78,6 +88,11 @@ func (s *GetOperationSubmitStatusRequest) SetJobId(v string) *GetOperationSubmit
 
 func (s *GetOperationSubmitStatusRequest) SetOpTenantId(v int64) *GetOperationSubmitStatusRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetOperationSubmitStatusRequest) SetOpUserId(v string) *GetOperationSubmitStatusRequest {
+	s.OpUserId = &v
 	return s
 }
 

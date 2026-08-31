@@ -13,6 +13,8 @@ type iListRowPermissionByUserIdShrinkRequest interface {
 	GetListRowPermissionByUserIdQueryShrink() *string
 	SetOpTenantId(v int64) *ListRowPermissionByUserIdShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListRowPermissionByUserIdShrinkRequest
+	GetOpUserId() *string
 }
 
 type ListRowPermissionByUserIdShrinkRequest struct {
@@ -28,6 +30,10 @@ type ListRowPermissionByUserIdShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListRowPermissionByUserIdShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *ListRowPermissionByUserIdShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListRowPermissionByUserIdShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListRowPermissionByUserIdShrinkRequest) SetListRowPermissionByUserIdQueryShrink(v string) *ListRowPermissionByUserIdShrinkRequest {
 	s.ListRowPermissionByUserIdQueryShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *ListRowPermissionByUserIdShrinkRequest) SetListRowPermissionByUserIdQue
 
 func (s *ListRowPermissionByUserIdShrinkRequest) SetOpTenantId(v int64) *ListRowPermissionByUserIdShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdShrinkRequest) SetOpUserId(v string) *ListRowPermissionByUserIdShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

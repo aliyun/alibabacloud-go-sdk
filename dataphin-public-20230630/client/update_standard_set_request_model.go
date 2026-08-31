@@ -11,6 +11,8 @@ type iUpdateStandardSetRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateStandardSetRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateStandardSetRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateStandardSetRequestUpdateCommand) *UpdateStandardSetRequest
 	GetUpdateCommand() *UpdateStandardSetRequestUpdateCommand
 }
@@ -24,6 +26,10 @@ type UpdateStandardSetRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// Update command.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpdateStandardSetRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateStandardSetRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateStandardSetRequest) GetUpdateCommand() *UpdateStandardSetRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *UpdateStandardSetRequest) SetOpTenantId(v int64) *UpdateStandardSetRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateStandardSetRequest) SetOpUserId(v string) *UpdateStandardSetRequest {
+	s.OpUserId = &v
 	return s
 }
 

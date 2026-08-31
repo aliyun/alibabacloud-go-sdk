@@ -24,7 +24,7 @@ type iCreateDataServiceAppResponseBody interface {
 }
 
 type CreateDataServiceAppResponseBody struct {
-	// The response code returned by the backend.
+	// The backend response code.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CreateDataServiceAppResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error details returned by the backend.
+	// The details of the backend exception.
 	//
 	// example:
 	//

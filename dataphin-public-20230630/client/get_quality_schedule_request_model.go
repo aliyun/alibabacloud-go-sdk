@@ -13,6 +13,8 @@ type iGetQualityScheduleRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *GetQualityScheduleRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetQualityScheduleRequest
+	GetOpUserId() *string
 }
 
 type GetQualityScheduleRequest struct {
@@ -32,6 +34,10 @@ type GetQualityScheduleRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetQualityScheduleRequest) String() string {
@@ -50,6 +56,10 @@ func (s *GetQualityScheduleRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetQualityScheduleRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetQualityScheduleRequest) SetId(v int64) *GetQualityScheduleRequest {
 	s.Id = &v
 	return s
@@ -57,6 +67,11 @@ func (s *GetQualityScheduleRequest) SetId(v int64) *GetQualityScheduleRequest {
 
 func (s *GetQualityScheduleRequest) SetOpTenantId(v int64) *GetQualityScheduleRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetQualityScheduleRequest) SetOpUserId(v string) *GetQualityScheduleRequest {
+	s.OpUserId = &v
 	return s
 }
 

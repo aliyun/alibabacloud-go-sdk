@@ -11,6 +11,8 @@ type iUpdateComputeSourceRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpdateComputeSourceRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpdateComputeSourceRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *UpdateComputeSourceRequestUpdateCommand) *UpdateComputeSourceRequest
 	GetUpdateCommand() *UpdateComputeSourceRequestUpdateCommand
 }
@@ -24,6 +26,12 @@ type UpdateComputeSourceRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The operator user ID.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The edit command.
 	//
 	// This parameter is required.
@@ -42,12 +50,21 @@ func (s *UpdateComputeSourceRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpdateComputeSourceRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpdateComputeSourceRequest) GetUpdateCommand() *UpdateComputeSourceRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *UpdateComputeSourceRequest) SetOpTenantId(v int64) *UpdateComputeSourceRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateComputeSourceRequest) SetOpUserId(v string) *UpdateComputeSourceRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -66,10 +83,26 @@ func (s *UpdateComputeSourceRequest) Validate() error {
 }
 
 type UpdateComputeSourceRequestUpdateCommand struct {
+	// The associated cluster ID. This parameter takes effect only when CreateType is left empty or set to COMPUTE_SOURCE (to create a compute source that references a cluster). This parameter is mutually exclusive with CreateType=CLUSTER.
+	//
+	// example:
+	//
+	// 102311
+	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The connection configuration items.
 	//
 	// This parameter is required.
 	ConfigList []*UpdateComputeSourceRequestUpdateCommandConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Repeated"`
+	// The creation entity type. Valid values:
+	//
+	// - CLUSTER: Creates the entity as a cluster. ClusterId cannot be specified.
+	//
+	// - COMPUTE_SOURCE: Creates the entity as a compute source. This is the default value.
+	//
+	// example:
+	//
+	// CLUSTER
+	CreateType *string `json:"CreateType,omitempty" xml:"CreateType,omitempty"`
 	// The description.
 	//
 	// This parameter is required.
@@ -78,7 +111,7 @@ type UpdateComputeSourceRequestUpdateCommand struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the compute source.
+	// The compute source ID.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +119,7 @@ type UpdateComputeSourceRequestUpdateCommand struct {
 	//
 	// 102311
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the compute source.
+	// The compute source name.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +127,7 @@ type UpdateComputeSourceRequestUpdateCommand struct {
 	//
 	// test1021
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the compute source.
+	// The compute source type.
 	//
 	// This parameter is required.
 	//
@@ -102,6 +135,12 @@ type UpdateComputeSourceRequestUpdateCommand struct {
 	//
 	// MacCompute
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The compute source type version.
+	//
+	// example:
+	//
+	// CDH6
+	TypeVersion *string `json:"TypeVersion,omitempty" xml:"TypeVersion,omitempty"`
 }
 
 func (s UpdateComputeSourceRequestUpdateCommand) String() string {
@@ -112,8 +151,16 @@ func (s UpdateComputeSourceRequestUpdateCommand) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateComputeSourceRequestUpdateCommand) GetClusterId() *int64 {
+	return s.ClusterId
+}
+
 func (s *UpdateComputeSourceRequestUpdateCommand) GetConfigList() []*UpdateComputeSourceRequestUpdateCommandConfigList {
 	return s.ConfigList
+}
+
+func (s *UpdateComputeSourceRequestUpdateCommand) GetCreateType() *string {
+	return s.CreateType
 }
 
 func (s *UpdateComputeSourceRequestUpdateCommand) GetDescription() *string {
@@ -132,8 +179,22 @@ func (s *UpdateComputeSourceRequestUpdateCommand) GetType() *string {
 	return s.Type
 }
 
+func (s *UpdateComputeSourceRequestUpdateCommand) GetTypeVersion() *string {
+	return s.TypeVersion
+}
+
+func (s *UpdateComputeSourceRequestUpdateCommand) SetClusterId(v int64) *UpdateComputeSourceRequestUpdateCommand {
+	s.ClusterId = &v
+	return s
+}
+
 func (s *UpdateComputeSourceRequestUpdateCommand) SetConfigList(v []*UpdateComputeSourceRequestUpdateCommandConfigList) *UpdateComputeSourceRequestUpdateCommand {
 	s.ConfigList = v
+	return s
+}
+
+func (s *UpdateComputeSourceRequestUpdateCommand) SetCreateType(v string) *UpdateComputeSourceRequestUpdateCommand {
+	s.CreateType = &v
 	return s
 }
 
@@ -157,6 +218,11 @@ func (s *UpdateComputeSourceRequestUpdateCommand) SetType(v string) *UpdateCompu
 	return s
 }
 
+func (s *UpdateComputeSourceRequestUpdateCommand) SetTypeVersion(v string) *UpdateComputeSourceRequestUpdateCommand {
+	s.TypeVersion = &v
+	return s
+}
+
 func (s *UpdateComputeSourceRequestUpdateCommand) Validate() error {
 	if s.ConfigList != nil {
 		for _, item := range s.ConfigList {
@@ -171,7 +237,7 @@ func (s *UpdateComputeSourceRequestUpdateCommand) Validate() error {
 }
 
 type UpdateComputeSourceRequestUpdateCommandConfigList struct {
-	// The key of the configuration item.
+	// The configuration item.
 	//
 	// This parameter is required.
 	//
@@ -179,7 +245,7 @@ type UpdateComputeSourceRequestUpdateCommandConfigList struct {
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the configuration item.
+	// The configuration item value.
 	//
 	// This parameter is required.
 	//

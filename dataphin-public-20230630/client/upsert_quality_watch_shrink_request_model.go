@@ -11,6 +11,8 @@ type iUpsertQualityWatchShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *UpsertQualityWatchShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *UpsertQualityWatchShrinkRequest
+	GetOpUserId() *string
 	SetUpsertCommandShrink(v string) *UpsertQualityWatchShrinkRequest
 	GetUpsertCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type UpsertQualityWatchShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The update instruction.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *UpsertQualityWatchShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *UpsertQualityWatchShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *UpsertQualityWatchShrinkRequest) GetUpsertCommandShrink() *string {
 	return s.UpsertCommandShrink
 }
 
 func (s *UpsertQualityWatchShrinkRequest) SetOpTenantId(v int64) *UpsertQualityWatchShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpsertQualityWatchShrinkRequest) SetOpUserId(v string) *UpsertQualityWatchShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iGetDataServiceProjectAddableUsersRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetDataServiceProjectAddableUsersRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetDataServiceProjectAddableUsersRequest
+	GetOpUserId() *string
 	SetProjectId(v int32) *GetDataServiceProjectAddableUsersRequest
 	GetProjectId() *int32
 }
@@ -24,6 +26,10 @@ type GetDataServiceProjectAddableUsersRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The data service project ID.
 	//
 	// This parameter is required.
@@ -46,12 +52,21 @@ func (s *GetDataServiceProjectAddableUsersRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetDataServiceProjectAddableUsersRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetDataServiceProjectAddableUsersRequest) GetProjectId() *int32 {
 	return s.ProjectId
 }
 
 func (s *GetDataServiceProjectAddableUsersRequest) SetOpTenantId(v int64) *GetDataServiceProjectAddableUsersRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetDataServiceProjectAddableUsersRequest) SetOpUserId(v string) *GetDataServiceProjectAddableUsersRequest {
+	s.OpUserId = &v
 	return s
 }
 

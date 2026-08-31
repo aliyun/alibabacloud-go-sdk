@@ -13,6 +13,8 @@ type iCreateAdHocFileRequest interface {
 	GetCreateCommand() *CreateAdHocFileRequestCreateCommand
 	SetOpTenantId(v int64) *CreateAdHocFileRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateAdHocFileRequest
+	GetOpUserId() *string
 }
 
 type CreateAdHocFileRequest struct {
@@ -28,6 +30,10 @@ type CreateAdHocFileRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateAdHocFileRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateAdHocFileRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateAdHocFileRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateAdHocFileRequest) SetCreateCommand(v *CreateAdHocFileRequestCreateCommand) *CreateAdHocFileRequest {
 	s.CreateCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateAdHocFileRequest) SetCreateCommand(v *CreateAdHocFileRequestCreat
 
 func (s *CreateAdHocFileRequest) SetOpTenantId(v int64) *CreateAdHocFileRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateAdHocFileRequest) SetOpUserId(v string) *CreateAdHocFileRequest {
+	s.OpUserId = &v
 	return s
 }
 

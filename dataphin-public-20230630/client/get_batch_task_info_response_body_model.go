@@ -50,7 +50,7 @@ type GetBatchTaskInfoResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The node details.
+	// The task details.
 	TaskInfo *GetBatchTaskInfoResponseBodyTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
 }
 
@@ -126,13 +126,13 @@ func (s *GetBatchTaskInfoResponseBody) Validate() error {
 }
 
 type GetBatchTaskInfoResponseBodyTaskInfo struct {
-	// The node code.
+	// The task code.
 	//
 	// example:
 	//
 	// show tables;
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The cron expression for automatic scheduling. Refer to the Linux cron expression format.
+	// The cron expression for automatic scheduling. Refer to the Linux cron expression syntax.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type GetBatchTaskInfoResponseBodyTaskInfo struct {
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
 	// The custom scheduling interval configuration.
 	CustomScheduleConfig *GetBatchTaskInfoResponseBodyTaskInfoCustomScheduleConfig `json:"CustomScheduleConfig,omitempty" xml:"CustomScheduleConfig,omitempty" type:"Struct"`
-	// The ID of the DAG to which the node belongs.
+	// The ID of the DAG to which the task belongs.
 	//
 	// example:
 	//
@@ -170,35 +170,39 @@ type GetBatchTaskInfoResponseBodyTaskInfo struct {
 	//
 	// 30231123
 	DevelopOwnerId *string `json:"DevelopOwnerId,omitempty" xml:"DevelopOwnerId,omitempty"`
+	// The list of development owner IDs.
+	DevelopOwnerIdList []*string `json:"DevelopOwnerIdList,omitempty" xml:"DevelopOwnerIdList,omitempty" type:"Repeated"`
 	// The name of the development owner.
 	//
 	// example:
 	//
-	// 张三
+	// John
 	DevelopOwnerName *string `json:"DevelopOwnerName,omitempty" xml:"DevelopOwnerName,omitempty"`
+	// The list of development owner names.
+	DevelopOwnerNameList []*string `json:"DevelopOwnerNameList,omitempty" xml:"DevelopOwnerNameList,omitempty" type:"Repeated"`
 	// The node ID in the directory tree.
 	//
 	// example:
 	//
 	// 12113111
 	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// Indicates whether the node has a development environment node.
+	// Indicates whether the task has a development environment node.
 	HasDevNode *bool `json:"HasDevNode,omitempty" xml:"HasDevNode,omitempty"`
-	// The node name.
+	// The task name.
 	//
 	// example:
 	//
-	// 测试任务1
+	// TestTask1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the node needs to be published.
+	// Indicates whether the task needs to be published.
 	NeedPublish *bool `json:"NeedPublish,omitempty" xml:"NeedPublish,omitempty"`
-	// The node description.
+	// The task description.
 	//
 	// example:
 	//
-	// xx测试
+	// xxTest
 	NodeDescription *string `json:"NodeDescription,omitempty" xml:"NodeDescription,omitempty"`
-	// The node source, indicating the organization or application that created the node.
+	// The source of the node, indicating the organization or application that created the node.
 	//
 	// example:
 	//
@@ -214,7 +218,7 @@ type GetBatchTaskInfoResponseBodyTaskInfo struct {
 	//
 	// example:
 	//
-	// 测试任务1
+	// TestTask1
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	// The list of node output names.
 	NodeOutputNameList []*string `json:"NodeOutputNameList,omitempty" xml:"NodeOutputNameList,omitempty" type:"Repeated"`
@@ -242,17 +246,21 @@ type GetBatchTaskInfoResponseBodyTaskInfo struct {
 	//
 	// 30231123
 	OpsOwnerId *string `json:"OpsOwnerId,omitempty" xml:"OpsOwnerId,omitempty"`
+	// The list of O&M owner IDs.
+	OpsOwnerIdList []*string `json:"OpsOwnerIdList,omitempty" xml:"OpsOwnerIdList,omitempty" type:"Repeated"`
 	// The name of the O&M owner.
 	//
 	// example:
 	//
-	// 张三
+	// John
 	OpsOwnerName *string `json:"OpsOwnerName,omitempty" xml:"OpsOwnerName,omitempty"`
+	// The list of O&M owner names.
+	OpsOwnerNameList []*string `json:"OpsOwnerNameList,omitempty" xml:"OpsOwnerNameList,omitempty" type:"Repeated"`
 	// The name of the node owner.
 	//
 	// example:
 	//
-	// 张三
+	// John
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// The user ID of the node owner.
 	//
@@ -260,7 +268,7 @@ type GetBatchTaskInfoResponseBodyTaskInfo struct {
 	//
 	// 30231123
 	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
-	// The list of custom node parameters.
+	// The list of custom parameters for the node.
 	ParamList []*GetBatchTaskInfoResponseBodyTaskInfoParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
 	// Indicates whether the node is paused for scheduling.
 	Paused *bool `json:"Paused,omitempty" xml:"Paused,omitempty"`
@@ -276,7 +284,7 @@ type GetBatchTaskInfoResponseBodyTaskInfo struct {
 	//
 	// 131211211
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Indicates whether the node is published.
+	// Indicates whether the task is published.
 	Published *bool `json:"Published,omitempty" xml:"Published,omitempty"`
 	// The remarks.
 	//
@@ -298,17 +306,17 @@ type GetBatchTaskInfoResponseBodyTaskInfo struct {
 	//
 	// - HOURLY
 	//
-	// - MINUTELY.
+	// - MINUTELY
 	//
 	// example:
 	//
 	// DAILY
 	SchedulePeriod *string `json:"SchedulePeriod,omitempty" xml:"SchedulePeriod,omitempty"`
-	// The scheduling type. Valid values:
+	// The node type. Valid values:
 	//
-	// - 1: periodic node.
+	// - 1: Periodic node.
 	//
-	// - 3: manual node.
+	// - 3: Manual node.
 	//
 	// example:
 	//
@@ -318,17 +326,17 @@ type GetBatchTaskInfoResponseBodyTaskInfo struct {
 	SparkClientInfo *GetBatchTaskInfoResponseBodyTaskInfoSparkClientInfo `json:"SparkClientInfo,omitempty" xml:"SparkClientInfo,omitempty" type:"Struct"`
 	// The submit status. Valid values:
 	//
-	// - 0: draft.
+	// - 0: Draft.
 	//
-	// - 1: submitted.
+	// - 1: Submitted.
 	//
-	// - 100: in development.
+	// - 100: In development.
 	//
 	// example:
 	//
-	// 测试任务1
+	// TestTask1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The node type. For more information, refer to the create offline compute node operation.
+	// The task type. For more information, refer to the API operation for creating a batch task.
 	//
 	// example:
 	//
@@ -378,8 +386,16 @@ func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetDevelopOwnerId() *string {
 	return s.DevelopOwnerId
 }
 
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetDevelopOwnerIdList() []*string {
+	return s.DevelopOwnerIdList
+}
+
 func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetDevelopOwnerName() *string {
 	return s.DevelopOwnerName
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetDevelopOwnerNameList() []*string {
+	return s.DevelopOwnerNameList
 }
 
 func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetFileId() *int64 {
@@ -430,8 +446,16 @@ func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetOpsOwnerId() *string {
 	return s.OpsOwnerId
 }
 
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetOpsOwnerIdList() []*string {
+	return s.OpsOwnerIdList
+}
+
 func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetOpsOwnerName() *string {
 	return s.OpsOwnerName
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetOpsOwnerNameList() []*string {
+	return s.OpsOwnerNameList
 }
 
 func (s *GetBatchTaskInfoResponseBodyTaskInfo) GetOwnerName() *string {
@@ -534,8 +558,18 @@ func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetDevelopOwnerId(v string) *GetB
 	return s
 }
 
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetDevelopOwnerIdList(v []*string) *GetBatchTaskInfoResponseBodyTaskInfo {
+	s.DevelopOwnerIdList = v
+	return s
+}
+
 func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetDevelopOwnerName(v string) *GetBatchTaskInfoResponseBodyTaskInfo {
 	s.DevelopOwnerName = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetDevelopOwnerNameList(v []*string) *GetBatchTaskInfoResponseBodyTaskInfo {
+	s.DevelopOwnerNameList = v
 	return s
 }
 
@@ -599,8 +633,18 @@ func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetOpsOwnerId(v string) *GetBatch
 	return s
 }
 
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetOpsOwnerIdList(v []*string) *GetBatchTaskInfoResponseBodyTaskInfo {
+	s.OpsOwnerIdList = v
+	return s
+}
+
 func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetOpsOwnerName(v string) *GetBatchTaskInfoResponseBodyTaskInfo {
 	s.OpsOwnerName = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoResponseBodyTaskInfo) SetOpsOwnerNameList(v []*string) *GetBatchTaskInfoResponseBodyTaskInfo {
+	s.OpsOwnerNameList = v
 	return s
 }
 
@@ -724,11 +768,7 @@ type GetBatchTaskInfoResponseBodyTaskInfoCustomScheduleConfig struct {
 	//
 	// 1
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The interval unit. Valid values:
-	//
-	// - MINUTE
-	//
-	// - HOUR.
+	// The interval unit. Valid values: MINUTE and HOUR.
 	//
 	// example:
 	//
@@ -891,7 +931,7 @@ type GetBatchTaskInfoResponseBodyTaskInfoUpStreamList struct {
 	DependStrategy *string `json:"DependStrategy,omitempty" xml:"DependStrategy,omitempty"`
 	// The dependent logical table fields.
 	FieldList []*string `json:"FieldList,omitempty" xml:"FieldList,omitempty" type:"Repeated"`
-	// The upstream dependency node type. Valid values:
+	// The type of the upstream dependency node. Valid values:
 	//
 	// - PHYSICAL: physical node.
 	//
@@ -931,7 +971,7 @@ type GetBatchTaskInfoResponseBodyTaskInfoUpStreamList struct {
 	//
 	// example:
 	//
-	// 张三
+	// John
 	SourceNodeUserName *string `json:"SourceNodeUserName,omitempty" xml:"SourceNodeUserName,omitempty"`
 	// The name of the input table.
 	//
@@ -1072,7 +1112,7 @@ type GetBatchTaskInfoResponseBodyTaskInfoUpStreamListDependPeriod struct {
 	//
 	// - LAST_N_PERIOD
 	//
-	// - LAST_24_HOUR.
+	// - LAST_24_HOUR
 	//
 	// example:
 	//

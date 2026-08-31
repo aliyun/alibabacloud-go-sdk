@@ -15,24 +15,26 @@ type iCreateNodeSupplementShrinkRequest interface {
 	GetEnv() *string
 	SetOpTenantId(v int64) *CreateNodeSupplementShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateNodeSupplementShrinkRequest
+	GetOpUserId() *string
 }
 
 type CreateNodeSupplementShrinkRequest struct {
-	// Create backfill request
+	// The data backfill request.
 	//
 	// This parameter is required.
 	CreateCommandShrink *string `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty"`
-	// Environment identifier.
+	// The environment identifier. Valid values:
 	//
-	// - DEV: development environment.
+	// - DEV: Development environment.
 	//
-	// - PROD (default): production environment.
+	// - PROD (default): Production environment.
 	//
 	// example:
 	//
 	// PROD
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// Tenant ID
+	// The tenant ID.
 	//
 	// This parameter is required.
 	//
@@ -40,6 +42,12 @@ type CreateNodeSupplementShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateNodeSupplementShrinkRequest) String() string {
@@ -62,6 +70,10 @@ func (s *CreateNodeSupplementShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateNodeSupplementShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateNodeSupplementShrinkRequest) SetCreateCommandShrink(v string) *CreateNodeSupplementShrinkRequest {
 	s.CreateCommandShrink = &v
 	return s
@@ -74,6 +86,11 @@ func (s *CreateNodeSupplementShrinkRequest) SetEnv(v string) *CreateNodeSuppleme
 
 func (s *CreateNodeSupplementShrinkRequest) SetOpTenantId(v int64) *CreateNodeSupplementShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateNodeSupplementShrinkRequest) SetOpUserId(v string) *CreateNodeSupplementShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

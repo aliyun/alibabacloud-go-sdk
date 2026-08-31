@@ -11,6 +11,8 @@ type iRetryTransferOwnershipRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *RetryTransferOwnershipRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *RetryTransferOwnershipRequest
+	GetOpUserId() *string
 	SetPrivilegeTransferRecord(v *RetryTransferOwnershipRequestPrivilegeTransferRecord) *RetryTransferOwnershipRequest
 	GetPrivilegeTransferRecord() *RetryTransferOwnershipRequestPrivilegeTransferRecord
 }
@@ -24,6 +26,10 @@ type RetryTransferOwnershipRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The transfer information.
 	PrivilegeTransferRecord *RetryTransferOwnershipRequestPrivilegeTransferRecord `json:"PrivilegeTransferRecord,omitempty" xml:"PrivilegeTransferRecord,omitempty" type:"Struct"`
 }
@@ -40,12 +46,21 @@ func (s *RetryTransferOwnershipRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *RetryTransferOwnershipRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *RetryTransferOwnershipRequest) GetPrivilegeTransferRecord() *RetryTransferOwnershipRequestPrivilegeTransferRecord {
 	return s.PrivilegeTransferRecord
 }
 
 func (s *RetryTransferOwnershipRequest) SetOpTenantId(v int64) *RetryTransferOwnershipRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *RetryTransferOwnershipRequest) SetOpUserId(v string) *RetryTransferOwnershipRequest {
+	s.OpUserId = &v
 	return s
 }
 

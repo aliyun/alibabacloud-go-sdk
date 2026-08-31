@@ -11,6 +11,8 @@ type iResetDataServiceAppSecretRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *ResetDataServiceAppSecretRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ResetDataServiceAppSecretRequest
+	GetOpUserId() *string
 	SetUpdateCommand(v *ResetDataServiceAppSecretRequestUpdateCommand) *ResetDataServiceAppSecretRequest
 	GetUpdateCommand() *ResetDataServiceAppSecretRequestUpdateCommand
 }
@@ -24,6 +26,10 @@ type ResetDataServiceAppSecretRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// Reset Data Service Application Key
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *ResetDataServiceAppSecretRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ResetDataServiceAppSecretRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ResetDataServiceAppSecretRequest) GetUpdateCommand() *ResetDataServiceAppSecretRequestUpdateCommand {
 	return s.UpdateCommand
 }
 
 func (s *ResetDataServiceAppSecretRequest) SetOpTenantId(v int64) *ResetDataServiceAppSecretRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ResetDataServiceAppSecretRequest) SetOpUserId(v string) *ResetDataServiceAppSecretRequest {
+	s.OpUserId = &v
 	return s
 }
 

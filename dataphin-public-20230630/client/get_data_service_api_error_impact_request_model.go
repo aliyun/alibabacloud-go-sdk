@@ -13,6 +13,8 @@ type iGetDataServiceApiErrorImpactRequest interface {
 	GetEndTime() *string
 	SetOpTenantId(v int64) *GetDataServiceApiErrorImpactRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetDataServiceApiErrorImpactRequest
+	GetOpUserId() *string
 	SetProjectId(v int32) *GetDataServiceApiErrorImpactRequest
 	GetProjectId() *int32
 	SetStartTime(v string) *GetDataServiceApiErrorImpactRequest
@@ -36,6 +38,10 @@ type GetDataServiceApiErrorImpactRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The data service project ID.
 	//
 	// This parameter is required.
@@ -70,6 +76,10 @@ func (s *GetDataServiceApiErrorImpactRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetDataServiceApiErrorImpactRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetDataServiceApiErrorImpactRequest) GetProjectId() *int32 {
 	return s.ProjectId
 }
@@ -85,6 +95,11 @@ func (s *GetDataServiceApiErrorImpactRequest) SetEndTime(v string) *GetDataServi
 
 func (s *GetDataServiceApiErrorImpactRequest) SetOpTenantId(v int64) *GetDataServiceApiErrorImpactRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetDataServiceApiErrorImpactRequest) SetOpUserId(v string) *GetDataServiceApiErrorImpactRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iCreateStreamBatchJobMappingShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *CreateStreamBatchJobMappingShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateStreamBatchJobMappingShrinkRequest
+	GetOpUserId() *string
 	SetStreamBatchJobMappingCreateCommandShrink(v string) *CreateStreamBatchJobMappingShrinkRequest
 	GetStreamBatchJobMappingCreateCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type CreateStreamBatchJobMappingShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The stream-batch integrated node information.
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *CreateStreamBatchJobMappingShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateStreamBatchJobMappingShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateStreamBatchJobMappingShrinkRequest) GetStreamBatchJobMappingCreateCommandShrink() *string {
 	return s.StreamBatchJobMappingCreateCommandShrink
 }
 
 func (s *CreateStreamBatchJobMappingShrinkRequest) SetOpTenantId(v int64) *CreateStreamBatchJobMappingShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateStreamBatchJobMappingShrinkRequest) SetOpUserId(v string) *CreateStreamBatchJobMappingShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

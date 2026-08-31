@@ -13,6 +13,8 @@ type iListCatalogAssetsShrinkRequest interface {
 	GetListCatalogAssetsQueryShrink() *string
 	SetOpTenantId(v int64) *ListCatalogAssetsShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListCatalogAssetsShrinkRequest
+	GetOpUserId() *string
 }
 
 type ListCatalogAssetsShrinkRequest struct {
@@ -28,6 +30,12 @@ type ListCatalogAssetsShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListCatalogAssetsShrinkRequest) String() string {
@@ -46,6 +54,10 @@ func (s *ListCatalogAssetsShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListCatalogAssetsShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListCatalogAssetsShrinkRequest) SetListCatalogAssetsQueryShrink(v string) *ListCatalogAssetsShrinkRequest {
 	s.ListCatalogAssetsQueryShrink = &v
 	return s
@@ -53,6 +65,11 @@ func (s *ListCatalogAssetsShrinkRequest) SetListCatalogAssetsQueryShrink(v strin
 
 func (s *ListCatalogAssetsShrinkRequest) SetOpTenantId(v int64) *ListCatalogAssetsShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListCatalogAssetsShrinkRequest) SetOpUserId(v string) *ListCatalogAssetsShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

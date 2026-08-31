@@ -15,6 +15,8 @@ type iListBatchTemplatesRequest interface {
 	GetListQuery() *ListBatchTemplatesRequestListQuery
 	SetOpTenantId(v int64) *ListBatchTemplatesRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListBatchTemplatesRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *ListBatchTemplatesRequest
 	GetProjectId() *int64
 }
@@ -36,6 +38,10 @@ type ListBatchTemplatesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -66,6 +72,10 @@ func (s *ListBatchTemplatesRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListBatchTemplatesRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListBatchTemplatesRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -82,6 +92,11 @@ func (s *ListBatchTemplatesRequest) SetListQuery(v *ListBatchTemplatesRequestLis
 
 func (s *ListBatchTemplatesRequest) SetOpTenantId(v int64) *ListBatchTemplatesRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListBatchTemplatesRequest) SetOpUserId(v string) *ListBatchTemplatesRequest {
+	s.OpUserId = &v
 	return s
 }
 

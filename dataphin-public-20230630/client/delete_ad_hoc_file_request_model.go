@@ -13,6 +13,8 @@ type iDeleteAdHocFileRequest interface {
 	GetFileId() *int64
 	SetOpTenantId(v int64) *DeleteAdHocFileRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteAdHocFileRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *DeleteAdHocFileRequest
 	GetProjectId() *int64
 }
@@ -34,6 +36,10 @@ type DeleteAdHocFileRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -60,6 +66,10 @@ func (s *DeleteAdHocFileRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteAdHocFileRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteAdHocFileRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -71,6 +81,11 @@ func (s *DeleteAdHocFileRequest) SetFileId(v int64) *DeleteAdHocFileRequest {
 
 func (s *DeleteAdHocFileRequest) SetOpTenantId(v int64) *DeleteAdHocFileRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteAdHocFileRequest) SetOpUserId(v string) *DeleteAdHocFileRequest {
+	s.OpUserId = &v
 	return s
 }
 

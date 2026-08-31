@@ -15,6 +15,8 @@ type iListBatchTemplatesShrinkRequest interface {
 	GetListQueryShrink() *string
 	SetOpTenantId(v int64) *ListBatchTemplatesShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListBatchTemplatesShrinkRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *ListBatchTemplatesShrinkRequest
 	GetProjectId() *int64
 }
@@ -36,6 +38,10 @@ type ListBatchTemplatesShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -66,6 +72,10 @@ func (s *ListBatchTemplatesShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListBatchTemplatesShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListBatchTemplatesShrinkRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -82,6 +92,11 @@ func (s *ListBatchTemplatesShrinkRequest) SetListQueryShrink(v string) *ListBatc
 
 func (s *ListBatchTemplatesShrinkRequest) SetOpTenantId(v int64) *ListBatchTemplatesShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListBatchTemplatesShrinkRequest) SetOpUserId(v string) *ListBatchTemplatesShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

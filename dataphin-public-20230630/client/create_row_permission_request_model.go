@@ -13,6 +13,8 @@ type iCreateRowPermissionRequest interface {
 	GetCreateRowPermissionCommand() *CreateRowPermissionRequestCreateRowPermissionCommand
 	SetOpTenantId(v int64) *CreateRowPermissionRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateRowPermissionRequest
+	GetOpUserId() *string
 }
 
 type CreateRowPermissionRequest struct {
@@ -28,6 +30,10 @@ type CreateRowPermissionRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateRowPermissionRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateRowPermissionRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateRowPermissionRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateRowPermissionRequest) SetCreateRowPermissionCommand(v *CreateRowPermissionRequestCreateRowPermissionCommand) *CreateRowPermissionRequest {
 	s.CreateRowPermissionCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateRowPermissionRequest) SetCreateRowPermissionCommand(v *CreateRowP
 
 func (s *CreateRowPermissionRequest) SetOpTenantId(v int64) *CreateRowPermissionRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateRowPermissionRequest) SetOpUserId(v string) *CreateRowPermissionRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iGetFileStorageCredentialRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetFileStorageCredentialRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetFileStorageCredentialRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *GetFileStorageCredentialRequest
 	GetProjectId() *int64
 	SetPurpose(v string) *GetFileStorageCredentialRequest
@@ -28,6 +30,10 @@ type GetFileStorageCredentialRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID. This parameter is required when the temporary authorization is used to create resource files.
 	//
 	// example:
@@ -64,6 +70,10 @@ func (s *GetFileStorageCredentialRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetFileStorageCredentialRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetFileStorageCredentialRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -78,6 +88,11 @@ func (s *GetFileStorageCredentialRequest) GetUseVpcEndpoint() *bool {
 
 func (s *GetFileStorageCredentialRequest) SetOpTenantId(v int64) *GetFileStorageCredentialRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetFileStorageCredentialRequest) SetOpUserId(v string) *GetFileStorageCredentialRequest {
+	s.OpUserId = &v
 	return s
 }
 

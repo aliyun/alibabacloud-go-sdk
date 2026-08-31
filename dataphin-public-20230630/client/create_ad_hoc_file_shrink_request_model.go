@@ -13,6 +13,8 @@ type iCreateAdHocFileShrinkRequest interface {
 	GetCreateCommandShrink() *string
 	SetOpTenantId(v int64) *CreateAdHocFileShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateAdHocFileShrinkRequest
+	GetOpUserId() *string
 }
 
 type CreateAdHocFileShrinkRequest struct {
@@ -28,6 +30,10 @@ type CreateAdHocFileShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateAdHocFileShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateAdHocFileShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateAdHocFileShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateAdHocFileShrinkRequest) SetCreateCommandShrink(v string) *CreateAdHocFileShrinkRequest {
 	s.CreateCommandShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateAdHocFileShrinkRequest) SetCreateCommandShrink(v string) *CreateA
 
 func (s *CreateAdHocFileShrinkRequest) SetOpTenantId(v int64) *CreateAdHocFileShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateAdHocFileShrinkRequest) SetOpUserId(v string) *CreateAdHocFileShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

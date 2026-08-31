@@ -13,12 +13,14 @@ type iImportKgSchemaShrinkRequest interface {
 	GetImportCommandShrink() *string
 	SetOpTenantId(v int64) *ImportKgSchemaShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ImportKgSchemaShrinkRequest
+	GetOpUserId() *string
 	SetWorkspaceId(v string) *ImportKgSchemaShrinkRequest
 	GetWorkspaceId() *string
 }
 
 type ImportKgSchemaShrinkRequest struct {
-	// The instruction for importing the knowledge graph definition.
+	// The command for importing the knowledge graph definition.
 	//
 	// This parameter is required.
 	//
@@ -34,6 +36,12 @@ type ImportKgSchemaShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The workspace ID.
 	//
 	// This parameter is required.
@@ -60,6 +68,10 @@ func (s *ImportKgSchemaShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ImportKgSchemaShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ImportKgSchemaShrinkRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -71,6 +83,11 @@ func (s *ImportKgSchemaShrinkRequest) SetImportCommandShrink(v string) *ImportKg
 
 func (s *ImportKgSchemaShrinkRequest) SetOpTenantId(v int64) *ImportKgSchemaShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ImportKgSchemaShrinkRequest) SetOpUserId(v string) *ImportKgSchemaShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

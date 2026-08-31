@@ -13,6 +13,8 @@ type iListRowPermissionByUserIdRequest interface {
 	GetListRowPermissionByUserIdQuery() *ListRowPermissionByUserIdRequestListRowPermissionByUserIdQuery
 	SetOpTenantId(v int64) *ListRowPermissionByUserIdRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListRowPermissionByUserIdRequest
+	GetOpUserId() *string
 }
 
 type ListRowPermissionByUserIdRequest struct {
@@ -28,6 +30,10 @@ type ListRowPermissionByUserIdRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListRowPermissionByUserIdRequest) String() string {
@@ -46,6 +52,10 @@ func (s *ListRowPermissionByUserIdRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListRowPermissionByUserIdRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListRowPermissionByUserIdRequest) SetListRowPermissionByUserIdQuery(v *ListRowPermissionByUserIdRequestListRowPermissionByUserIdQuery) *ListRowPermissionByUserIdRequest {
 	s.ListRowPermissionByUserIdQuery = v
 	return s
@@ -53,6 +63,11 @@ func (s *ListRowPermissionByUserIdRequest) SetListRowPermissionByUserIdQuery(v *
 
 func (s *ListRowPermissionByUserIdRequest) SetOpTenantId(v int64) *ListRowPermissionByUserIdRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdRequest) SetOpUserId(v string) *ListRowPermissionByUserIdRequest {
+	s.OpUserId = &v
 	return s
 }
 

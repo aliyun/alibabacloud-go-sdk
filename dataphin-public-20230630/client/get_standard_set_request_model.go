@@ -15,6 +15,8 @@ type iGetStandardSetRequest interface {
 	GetNullable() *bool
 	SetOpTenantId(v int64) *GetStandardSetRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetStandardSetRequest
+	GetOpUserId() *string
 }
 
 type GetStandardSetRequest struct {
@@ -36,6 +38,10 @@ type GetStandardSetRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetStandardSetRequest) String() string {
@@ -58,6 +64,10 @@ func (s *GetStandardSetRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetStandardSetRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetStandardSetRequest) SetId(v int64) *GetStandardSetRequest {
 	s.Id = &v
 	return s
@@ -70,6 +80,11 @@ func (s *GetStandardSetRequest) SetNullable(v bool) *GetStandardSetRequest {
 
 func (s *GetStandardSetRequest) SetOpTenantId(v int64) *GetStandardSetRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetStandardSetRequest) SetOpUserId(v string) *GetStandardSetRequest {
+	s.OpUserId = &v
 	return s
 }
 

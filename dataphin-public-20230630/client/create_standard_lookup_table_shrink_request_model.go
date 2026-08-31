@@ -13,6 +13,8 @@ type iCreateStandardLookupTableShrinkRequest interface {
 	GetCreateCommandShrink() *string
 	SetOpTenantId(v int64) *CreateStandardLookupTableShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateStandardLookupTableShrinkRequest
+	GetOpUserId() *string
 }
 
 type CreateStandardLookupTableShrinkRequest struct {
@@ -28,6 +30,10 @@ type CreateStandardLookupTableShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateStandardLookupTableShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateStandardLookupTableShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateStandardLookupTableShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateStandardLookupTableShrinkRequest) SetCreateCommandShrink(v string) *CreateStandardLookupTableShrinkRequest {
 	s.CreateCommandShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateStandardLookupTableShrinkRequest) SetCreateCommandShrink(v string
 
 func (s *CreateStandardLookupTableShrinkRequest) SetOpTenantId(v int64) *CreateStandardLookupTableShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateStandardLookupTableShrinkRequest) SetOpUserId(v string) *CreateStandardLookupTableShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

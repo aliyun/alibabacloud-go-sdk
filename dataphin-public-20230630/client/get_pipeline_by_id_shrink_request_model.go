@@ -13,6 +13,8 @@ type iGetPipelineByIdShrinkRequest interface {
 	GetContextShrink() *string
 	SetOpTenantId(v int64) *GetPipelineByIdShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetPipelineByIdShrinkRequest
+	GetOpUserId() *string
 	SetQueryIdShrink(v string) *GetPipelineByIdShrinkRequest
 	GetQueryIdShrink() *string
 }
@@ -30,7 +32,13 @@ type GetPipelineByIdShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
-	// The query ID used to query the pipeline node.
+	// The ID of the operator.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
+	// The ID used to query the pipeline node.
 	//
 	// This parameter is required.
 	QueryIdShrink *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
@@ -52,6 +60,10 @@ func (s *GetPipelineByIdShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetPipelineByIdShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetPipelineByIdShrinkRequest) GetQueryIdShrink() *string {
 	return s.QueryIdShrink
 }
@@ -63,6 +75,11 @@ func (s *GetPipelineByIdShrinkRequest) SetContextShrink(v string) *GetPipelineBy
 
 func (s *GetPipelineByIdShrinkRequest) SetOpTenantId(v int64) *GetPipelineByIdShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetPipelineByIdShrinkRequest) SetOpUserId(v string) *GetPipelineByIdShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

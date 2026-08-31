@@ -11,6 +11,8 @@ type iGetUserGroupRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *GetUserGroupRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetUserGroupRequest
+	GetOpUserId() *string
 	SetUserGroupId(v string) *GetUserGroupRequest
 	GetUserGroupId() *string
 }
@@ -24,6 +26,10 @@ type GetUserGroupRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The user group ID.
 	//
 	// This parameter is required.
@@ -46,12 +52,21 @@ func (s *GetUserGroupRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetUserGroupRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetUserGroupRequest) GetUserGroupId() *string {
 	return s.UserGroupId
 }
 
 func (s *GetUserGroupRequest) SetOpTenantId(v int64) *GetUserGroupRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetUserGroupRequest) SetOpUserId(v string) *GetUserGroupRequest {
+	s.OpUserId = &v
 	return s
 }
 

@@ -13,6 +13,8 @@ type iCreateBizEntityRequest interface {
 	GetCreateCommand() *CreateBizEntityRequestCreateCommand
 	SetOpTenantId(v int64) *CreateBizEntityRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateBizEntityRequest
+	GetOpUserId() *string
 }
 
 type CreateBizEntityRequest struct {
@@ -28,6 +30,10 @@ type CreateBizEntityRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateBizEntityRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateBizEntityRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateBizEntityRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateBizEntityRequest) SetCreateCommand(v *CreateBizEntityRequestCreateCommand) *CreateBizEntityRequest {
 	s.CreateCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateBizEntityRequest) SetCreateCommand(v *CreateBizEntityRequestCreat
 
 func (s *CreateBizEntityRequest) SetOpTenantId(v int64) *CreateBizEntityRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateBizEntityRequest) SetOpUserId(v string) *CreateBizEntityRequest {
+	s.OpUserId = &v
 	return s
 }
 

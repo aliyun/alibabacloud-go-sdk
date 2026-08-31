@@ -13,6 +13,8 @@ type iListFilesRequest interface {
 	GetListQuery() *ListFilesRequestListQuery
 	SetOpTenantId(v int64) *ListFilesRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListFilesRequest
+	GetOpUserId() *string
 }
 
 type ListFilesRequest struct {
@@ -28,6 +30,10 @@ type ListFilesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListFilesRequest) String() string {
@@ -46,6 +52,10 @@ func (s *ListFilesRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListFilesRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListFilesRequest) SetListQuery(v *ListFilesRequestListQuery) *ListFilesRequest {
 	s.ListQuery = v
 	return s
@@ -53,6 +63,11 @@ func (s *ListFilesRequest) SetListQuery(v *ListFilesRequestListQuery) *ListFiles
 
 func (s *ListFilesRequest) SetOpTenantId(v int64) *ListFilesRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetOpUserId(v string) *ListFilesRequest {
+	s.OpUserId = &v
 	return s
 }
 

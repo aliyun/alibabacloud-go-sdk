@@ -15,6 +15,8 @@ type iOfflinePipelineByAsyncRequest interface {
 	GetOfflineCommand() *OfflinePipelineByAsyncRequestOfflineCommand
 	SetOpTenantId(v int64) *OfflinePipelineByAsyncRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *OfflinePipelineByAsyncRequest
+	GetOpUserId() *string
 }
 
 type OfflinePipelineByAsyncRequest struct {
@@ -34,6 +36,10 @@ type OfflinePipelineByAsyncRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s OfflinePipelineByAsyncRequest) String() string {
@@ -56,6 +62,10 @@ func (s *OfflinePipelineByAsyncRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *OfflinePipelineByAsyncRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *OfflinePipelineByAsyncRequest) SetContext(v *OfflinePipelineByAsyncRequestContext) *OfflinePipelineByAsyncRequest {
 	s.Context = v
 	return s
@@ -68,6 +78,11 @@ func (s *OfflinePipelineByAsyncRequest) SetOfflineCommand(v *OfflinePipelineByAs
 
 func (s *OfflinePipelineByAsyncRequest) SetOpTenantId(v int64) *OfflinePipelineByAsyncRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *OfflinePipelineByAsyncRequest) SetOpUserId(v string) *OfflinePipelineByAsyncRequest {
+	s.OpUserId = &v
 	return s
 }
 

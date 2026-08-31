@@ -13,6 +13,8 @@ type iCreateKgRelationShrinkRequest interface {
 	GetCreateCommandShrink() *string
 	SetOpTenantId(v int64) *CreateKgRelationShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateKgRelationShrinkRequest
+	GetOpUserId() *string
 	SetWorkspaceId(v string) *CreateKgRelationShrinkRequest
 	GetWorkspaceId() *string
 }
@@ -30,6 +32,10 @@ type CreateKgRelationShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The workspace ID.
 	//
 	// This parameter is required.
@@ -56,6 +62,10 @@ func (s *CreateKgRelationShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateKgRelationShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateKgRelationShrinkRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -67,6 +77,11 @@ func (s *CreateKgRelationShrinkRequest) SetCreateCommandShrink(v string) *Create
 
 func (s *CreateKgRelationShrinkRequest) SetOpTenantId(v int64) *CreateKgRelationShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateKgRelationShrinkRequest) SetOpUserId(v string) *CreateKgRelationShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

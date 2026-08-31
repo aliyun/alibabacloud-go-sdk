@@ -13,6 +13,8 @@ type iBatchCreateKgRelationRequest interface {
 	GetCreateCommand() *BatchCreateKgRelationRequestCreateCommand
 	SetOpTenantId(v int64) *BatchCreateKgRelationRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *BatchCreateKgRelationRequest
+	GetOpUserId() *string
 	SetWorkspaceId(v string) *BatchCreateKgRelationRequest
 	GetWorkspaceId() *string
 }
@@ -30,6 +32,10 @@ type BatchCreateKgRelationRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The workspace ID.
 	//
 	// This parameter is required.
@@ -56,6 +62,10 @@ func (s *BatchCreateKgRelationRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *BatchCreateKgRelationRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *BatchCreateKgRelationRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
@@ -67,6 +77,11 @@ func (s *BatchCreateKgRelationRequest) SetCreateCommand(v *BatchCreateKgRelation
 
 func (s *BatchCreateKgRelationRequest) SetOpTenantId(v int64) *BatchCreateKgRelationRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *BatchCreateKgRelationRequest) SetOpUserId(v string) *BatchCreateKgRelationRequest {
+	s.OpUserId = &v
 	return s
 }
 

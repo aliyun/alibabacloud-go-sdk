@@ -13,6 +13,8 @@ type iCreateUdfShrinkRequest interface {
 	GetCreateCommandShrink() *string
 	SetOpTenantId(v int64) *CreateUdfShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateUdfShrinkRequest
+	GetOpUserId() *string
 }
 
 type CreateUdfShrinkRequest struct {
@@ -28,6 +30,10 @@ type CreateUdfShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateUdfShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CreateUdfShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateUdfShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateUdfShrinkRequest) SetCreateCommandShrink(v string) *CreateUdfShrinkRequest {
 	s.CreateCommandShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *CreateUdfShrinkRequest) SetCreateCommandShrink(v string) *CreateUdfShri
 
 func (s *CreateUdfShrinkRequest) SetOpTenantId(v int64) *CreateUdfShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateUdfShrinkRequest) SetOpUserId(v string) *CreateUdfShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

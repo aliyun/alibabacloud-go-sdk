@@ -13,6 +13,8 @@ type iGetBizEntityInfoRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *GetBizEntityInfoRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetBizEntityInfoRequest
+	GetOpUserId() *string
 	SetType(v string) *GetBizEntityInfoRequest
 	GetType() *string
 }
@@ -34,6 +36,10 @@ type GetBizEntityInfoRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The business entity type. For more information, refer to the create business entity operation.
 	//
 	// This parameter is required.
@@ -60,6 +66,10 @@ func (s *GetBizEntityInfoRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetBizEntityInfoRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetBizEntityInfoRequest) GetType() *string {
 	return s.Type
 }
@@ -71,6 +81,11 @@ func (s *GetBizEntityInfoRequest) SetId(v int64) *GetBizEntityInfoRequest {
 
 func (s *GetBizEntityInfoRequest) SetOpTenantId(v int64) *GetBizEntityInfoRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetBizEntityInfoRequest) SetOpUserId(v string) *GetBizEntityInfoRequest {
+	s.OpUserId = &v
 	return s
 }
 

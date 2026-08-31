@@ -13,6 +13,8 @@ type iDeleteDataSourceRequest interface {
 	GetDeleteCommand() *DeleteDataSourceRequestDeleteCommand
 	SetOpTenantId(v int64) *DeleteDataSourceRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteDataSourceRequest
+	GetOpUserId() *string
 }
 
 type DeleteDataSourceRequest struct {
@@ -28,6 +30,10 @@ type DeleteDataSourceRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteDataSourceRequest) String() string {
@@ -46,6 +52,10 @@ func (s *DeleteDataSourceRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteDataSourceRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteDataSourceRequest) SetDeleteCommand(v *DeleteDataSourceRequestDeleteCommand) *DeleteDataSourceRequest {
 	s.DeleteCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *DeleteDataSourceRequest) SetDeleteCommand(v *DeleteDataSourceRequestDel
 
 func (s *DeleteDataSourceRequest) SetOpTenantId(v int64) *DeleteDataSourceRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteDataSourceRequest) SetOpUserId(v string) *DeleteDataSourceRequest {
+	s.OpUserId = &v
 	return s
 }
 

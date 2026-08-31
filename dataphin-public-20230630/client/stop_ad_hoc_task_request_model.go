@@ -11,6 +11,8 @@ type iStopAdHocTaskRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *StopAdHocTaskRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *StopAdHocTaskRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *StopAdHocTaskRequest
 	GetProjectId() *int64
 	SetTaskId(v string) *StopAdHocTaskRequest
@@ -26,6 +28,10 @@ type StopAdHocTaskRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -56,6 +62,10 @@ func (s *StopAdHocTaskRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *StopAdHocTaskRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *StopAdHocTaskRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -66,6 +76,11 @@ func (s *StopAdHocTaskRequest) GetTaskId() *string {
 
 func (s *StopAdHocTaskRequest) SetOpTenantId(v int64) *StopAdHocTaskRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *StopAdHocTaskRequest) SetOpUserId(v string) *StopAdHocTaskRequest {
+	s.OpUserId = &v
 	return s
 }
 

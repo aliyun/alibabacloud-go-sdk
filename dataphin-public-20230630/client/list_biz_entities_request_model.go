@@ -13,6 +13,8 @@ type iListBizEntitiesRequest interface {
 	GetListQuery() *ListBizEntitiesRequestListQuery
 	SetOpTenantId(v int64) *ListBizEntitiesRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListBizEntitiesRequest
+	GetOpUserId() *string
 }
 
 type ListBizEntitiesRequest struct {
@@ -28,6 +30,10 @@ type ListBizEntitiesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListBizEntitiesRequest) String() string {
@@ -46,6 +52,10 @@ func (s *ListBizEntitiesRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListBizEntitiesRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListBizEntitiesRequest) SetListQuery(v *ListBizEntitiesRequestListQuery) *ListBizEntitiesRequest {
 	s.ListQuery = v
 	return s
@@ -53,6 +63,11 @@ func (s *ListBizEntitiesRequest) SetListQuery(v *ListBizEntitiesRequestListQuery
 
 func (s *ListBizEntitiesRequest) SetOpTenantId(v int64) *ListBizEntitiesRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListBizEntitiesRequest) SetOpUserId(v string) *ListBizEntitiesRequest {
+	s.OpUserId = &v
 	return s
 }
 

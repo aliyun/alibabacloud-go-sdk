@@ -13,6 +13,8 @@ type iCheckComputeSourceConnectivityShrinkRequest interface {
 	GetCheckCommandShrink() *string
 	SetOpTenantId(v int64) *CheckComputeSourceConnectivityShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CheckComputeSourceConnectivityShrinkRequest
+	GetOpUserId() *string
 }
 
 type CheckComputeSourceConnectivityShrinkRequest struct {
@@ -28,6 +30,10 @@ type CheckComputeSourceConnectivityShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CheckComputeSourceConnectivityShrinkRequest) String() string {
@@ -46,6 +52,10 @@ func (s *CheckComputeSourceConnectivityShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CheckComputeSourceConnectivityShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CheckComputeSourceConnectivityShrinkRequest) SetCheckCommandShrink(v string) *CheckComputeSourceConnectivityShrinkRequest {
 	s.CheckCommandShrink = &v
 	return s
@@ -53,6 +63,11 @@ func (s *CheckComputeSourceConnectivityShrinkRequest) SetCheckCommandShrink(v st
 
 func (s *CheckComputeSourceConnectivityShrinkRequest) SetOpTenantId(v int64) *CheckComputeSourceConnectivityShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CheckComputeSourceConnectivityShrinkRequest) SetOpUserId(v string) *CheckComputeSourceConnectivityShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

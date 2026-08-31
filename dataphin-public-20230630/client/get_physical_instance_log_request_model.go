@@ -15,6 +15,8 @@ type iGetPhysicalInstanceLogRequest interface {
 	GetInstanceId() *string
 	SetOpTenantId(v int64) *GetPhysicalInstanceLogRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetPhysicalInstanceLogRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *GetPhysicalInstanceLogRequest
 	GetProjectId() *int64
 }
@@ -46,6 +48,12 @@ type GetPhysicalInstanceLogRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -76,6 +84,10 @@ func (s *GetPhysicalInstanceLogRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetPhysicalInstanceLogRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetPhysicalInstanceLogRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -92,6 +104,11 @@ func (s *GetPhysicalInstanceLogRequest) SetInstanceId(v string) *GetPhysicalInst
 
 func (s *GetPhysicalInstanceLogRequest) SetOpTenantId(v int64) *GetPhysicalInstanceLogRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetPhysicalInstanceLogRequest) SetOpUserId(v string) *GetPhysicalInstanceLogRequest {
+	s.OpUserId = &v
 	return s
 }
 

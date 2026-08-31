@@ -13,6 +13,8 @@ type iDeleteSecurityLevelRequest interface {
 	GetDeleteCommand() *DeleteSecurityLevelRequestDeleteCommand
 	SetOpTenantId(v int64) *DeleteSecurityLevelRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteSecurityLevelRequest
+	GetOpUserId() *string
 }
 
 type DeleteSecurityLevelRequest struct {
@@ -28,6 +30,10 @@ type DeleteSecurityLevelRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteSecurityLevelRequest) String() string {
@@ -46,6 +52,10 @@ func (s *DeleteSecurityLevelRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteSecurityLevelRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteSecurityLevelRequest) SetDeleteCommand(v *DeleteSecurityLevelRequestDeleteCommand) *DeleteSecurityLevelRequest {
 	s.DeleteCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *DeleteSecurityLevelRequest) SetDeleteCommand(v *DeleteSecurityLevelRequ
 
 func (s *DeleteSecurityLevelRequest) SetOpTenantId(v int64) *DeleteSecurityLevelRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteSecurityLevelRequest) SetOpUserId(v string) *DeleteSecurityLevelRequest {
+	s.OpUserId = &v
 	return s
 }
 

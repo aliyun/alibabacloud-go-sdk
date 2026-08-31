@@ -17,6 +17,8 @@ type iGetBatchTaskInfoRequest interface {
 	GetIncludeAllUpStreams() *bool
 	SetOpTenantId(v int64) *GetBatchTaskInfoRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetBatchTaskInfoRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *GetBatchTaskInfoRequest
 	GetProjectId() *int64
 }
@@ -52,6 +54,12 @@ type GetBatchTaskInfoRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The ID of the project to which the node belongs.
 	//
 	// This parameter is required.
@@ -86,6 +94,10 @@ func (s *GetBatchTaskInfoRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetBatchTaskInfoRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetBatchTaskInfoRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -107,6 +119,11 @@ func (s *GetBatchTaskInfoRequest) SetIncludeAllUpStreams(v bool) *GetBatchTaskIn
 
 func (s *GetBatchTaskInfoRequest) SetOpTenantId(v int64) *GetBatchTaskInfoRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetBatchTaskInfoRequest) SetOpUserId(v string) *GetBatchTaskInfoRequest {
+	s.OpUserId = &v
 	return s
 }
 

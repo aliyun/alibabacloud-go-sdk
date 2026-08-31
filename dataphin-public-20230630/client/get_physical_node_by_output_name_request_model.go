@@ -13,6 +13,8 @@ type iGetPhysicalNodeByOutputNameRequest interface {
 	GetEnv() *string
 	SetOpTenantId(v int64) *GetPhysicalNodeByOutputNameRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetPhysicalNodeByOutputNameRequest
+	GetOpUserId() *string
 	SetOutputName(v string) *GetPhysicalNodeByOutputNameRequest
 	GetOutputName() *string
 }
@@ -36,6 +38,10 @@ type GetPhysicalNodeByOutputNameRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// Node output name
 	//
 	// This parameter is required.
@@ -62,6 +68,10 @@ func (s *GetPhysicalNodeByOutputNameRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetPhysicalNodeByOutputNameRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetPhysicalNodeByOutputNameRequest) GetOutputName() *string {
 	return s.OutputName
 }
@@ -73,6 +83,11 @@ func (s *GetPhysicalNodeByOutputNameRequest) SetEnv(v string) *GetPhysicalNodeBy
 
 func (s *GetPhysicalNodeByOutputNameRequest) SetOpTenantId(v int64) *GetPhysicalNodeByOutputNameRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetPhysicalNodeByOutputNameRequest) SetOpUserId(v string) *GetPhysicalNodeByOutputNameRequest {
+	s.OpUserId = &v
 	return s
 }
 

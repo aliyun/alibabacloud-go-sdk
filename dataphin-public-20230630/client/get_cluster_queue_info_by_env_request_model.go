@@ -13,6 +13,8 @@ type iGetClusterQueueInfoByEnvRequest interface {
 	GetEnv() *string
 	SetOpTenantId(v int64) *GetClusterQueueInfoByEnvRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetClusterQueueInfoByEnvRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *GetClusterQueueInfoByEnvRequest
 	GetProjectId() *int64
 	SetStreamBatchMode(v string) *GetClusterQueueInfoByEnvRequest
@@ -36,6 +38,10 @@ type GetClusterQueueInfoByEnvRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -70,6 +76,10 @@ func (s *GetClusterQueueInfoByEnvRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetClusterQueueInfoByEnvRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetClusterQueueInfoByEnvRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -85,6 +95,11 @@ func (s *GetClusterQueueInfoByEnvRequest) SetEnv(v string) *GetClusterQueueInfoB
 
 func (s *GetClusterQueueInfoByEnvRequest) SetOpTenantId(v int64) *GetClusterQueueInfoByEnvRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetClusterQueueInfoByEnvRequest) SetOpUserId(v string) *GetClusterQueueInfoByEnvRequest {
+	s.OpUserId = &v
 	return s
 }
 

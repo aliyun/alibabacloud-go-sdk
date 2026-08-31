@@ -13,6 +13,8 @@ type iDeleteBizUnitRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *DeleteBizUnitRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteBizUnitRequest
+	GetOpUserId() *string
 }
 
 type DeleteBizUnitRequest struct {
@@ -32,6 +34,10 @@ type DeleteBizUnitRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteBizUnitRequest) String() string {
@@ -50,6 +56,10 @@ func (s *DeleteBizUnitRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteBizUnitRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteBizUnitRequest) SetId(v int64) *DeleteBizUnitRequest {
 	s.Id = &v
 	return s
@@ -57,6 +67,11 @@ func (s *DeleteBizUnitRequest) SetId(v int64) *DeleteBizUnitRequest {
 
 func (s *DeleteBizUnitRequest) SetOpTenantId(v int64) *DeleteBizUnitRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteBizUnitRequest) SetOpUserId(v string) *DeleteBizUnitRequest {
+	s.OpUserId = &v
 	return s
 }
 

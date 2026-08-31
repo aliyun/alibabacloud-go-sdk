@@ -13,6 +13,8 @@ type iCreateBatchTaskRequest interface {
 	GetCreateCommand() *CreateBatchTaskRequestCreateCommand
 	SetOpTenantId(v int64) *CreateBatchTaskRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *CreateBatchTaskRequest
+	GetOpUserId() *string
 }
 
 type CreateBatchTaskRequest struct {
@@ -28,6 +30,12 @@ type CreateBatchTaskRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s CreateBatchTaskRequest) String() string {
@@ -46,6 +54,10 @@ func (s *CreateBatchTaskRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *CreateBatchTaskRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *CreateBatchTaskRequest) SetCreateCommand(v *CreateBatchTaskRequestCreateCommand) *CreateBatchTaskRequest {
 	s.CreateCommand = v
 	return s
@@ -53,6 +65,11 @@ func (s *CreateBatchTaskRequest) SetCreateCommand(v *CreateBatchTaskRequestCreat
 
 func (s *CreateBatchTaskRequest) SetOpTenantId(v int64) *CreateBatchTaskRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *CreateBatchTaskRequest) SetOpUserId(v string) *CreateBatchTaskRequest {
+	s.OpUserId = &v
 	return s
 }
 
@@ -66,19 +83,19 @@ func (s *CreateBatchTaskRequest) Validate() error {
 }
 
 type CreateBatchTaskRequestCreateCommand struct {
-	// The catalog for a database SQL node. This parameter takes effect only for data source types that require a catalog, such as Presto.
+	// The catalog for database SQL nodes. This parameter takes effect only for data source types that require a catalog, such as Presto.
 	//
 	// example:
 	//
 	// mysql_catalog
 	DataSourceCatalog *string `json:"DataSourceCatalog,omitempty" xml:"DataSourceCatalog,omitempty"`
-	// The data source ID for a database SQL node.
+	// The data source ID for database SQL nodes.
 	//
 	// example:
 	//
 	// 12131111
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// The schema for a database SQL node. This parameter takes effect only for data source types that require a schema, such as Oracle.
+	// The schema for database SQL nodes. This parameter takes effect only for data source types that require a schema, such as Oracle.
 	//
 	// example:
 	//
@@ -92,6 +109,8 @@ type CreateBatchTaskRequestCreateCommand struct {
 	//
 	// xx test.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The list of development owner IDs.
+	DevelopOwnerIdList []*string `json:"DevelopOwnerIdList,omitempty" xml:"DevelopOwnerIdList,omitempty" type:"Repeated"`
 	// The folder path in the menu tree to which the node belongs.
 	//
 	// This parameter is required.
@@ -100,13 +119,13 @@ type CreateBatchTaskRequestCreateCommand struct {
 	//
 	// /a/b
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// The execution engine for the node, such as a Python node. Valid values:
+	// The execution engine for the node, such as for Python nodes. Valid values:
 	//
-	// - 1: PYTHON2_7
+	// - 1. PYTHON2_7
 	//
-	// - 2: PYTHON3_7
+	// - 2. PYTHON3_7
 	//
-	// - 3: PYTHON3_11.
+	// - 3. PYTHON3_11
 	//
 	// example:
 	//
@@ -120,6 +139,8 @@ type CreateBatchTaskRequestCreateCommand struct {
 	//
 	// test111
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of O&M owner IDs.
+	OpsOwnerIdList []*string `json:"OpsOwnerIdList,omitempty" xml:"OpsOwnerIdList,omitempty" type:"Repeated"`
 	// The ID of the project to which the node belongs.
 	//
 	// This parameter is required.
@@ -128,9 +149,9 @@ type CreateBatchTaskRequestCreateCommand struct {
 	//
 	// 10121101
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The list of third-party Python packages that the node depends on.
+	// The list of Python third-party packages that the node depends on.
 	PythonModuleList []*string `json:"PythonModuleList,omitempty" xml:"PythonModuleList,omitempty" type:"Repeated"`
-	// The scheduling type. Valid values:
+	// The schedule type. Valid values:
 	//
 	// - 1: periodic node.
 	//
@@ -230,7 +251,7 @@ type CreateBatchTaskRequestCreateCommand struct {
 	//
 	// - DATABASE_SQL: 998
 	//
-	// - EXTERNAL_TRIGGER: 997.
+	// - EXTERNAL_TRIGGER: 997
 	//
 	// This parameter is required.
 	//
@@ -264,6 +285,10 @@ func (s *CreateBatchTaskRequestCreateCommand) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateBatchTaskRequestCreateCommand) GetDevelopOwnerIdList() []*string {
+	return s.DevelopOwnerIdList
+}
+
 func (s *CreateBatchTaskRequestCreateCommand) GetDirectory() *string {
 	return s.Directory
 }
@@ -274,6 +299,10 @@ func (s *CreateBatchTaskRequestCreateCommand) GetEngine() *string {
 
 func (s *CreateBatchTaskRequestCreateCommand) GetName() *string {
 	return s.Name
+}
+
+func (s *CreateBatchTaskRequestCreateCommand) GetOpsOwnerIdList() []*string {
+	return s.OpsOwnerIdList
 }
 
 func (s *CreateBatchTaskRequestCreateCommand) GetProjectId() *int64 {
@@ -312,6 +341,11 @@ func (s *CreateBatchTaskRequestCreateCommand) SetDescription(v string) *CreateBa
 	return s
 }
 
+func (s *CreateBatchTaskRequestCreateCommand) SetDevelopOwnerIdList(v []*string) *CreateBatchTaskRequestCreateCommand {
+	s.DevelopOwnerIdList = v
+	return s
+}
+
 func (s *CreateBatchTaskRequestCreateCommand) SetDirectory(v string) *CreateBatchTaskRequestCreateCommand {
 	s.Directory = &v
 	return s
@@ -324,6 +358,11 @@ func (s *CreateBatchTaskRequestCreateCommand) SetEngine(v string) *CreateBatchTa
 
 func (s *CreateBatchTaskRequestCreateCommand) SetName(v string) *CreateBatchTaskRequestCreateCommand {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateBatchTaskRequestCreateCommand) SetOpsOwnerIdList(v []*string) *CreateBatchTaskRequestCreateCommand {
+	s.OpsOwnerIdList = v
 	return s
 }
 

@@ -13,10 +13,12 @@ type iGetQualityWatchRequest interface {
 	GetId() *int64
 	SetOpTenantId(v int64) *GetQualityWatchRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetQualityWatchRequest
+	GetOpUserId() *string
 }
 
 type GetQualityWatchRequest struct {
-	// The monitor ID.
+	// The watchtask ID.
 	//
 	// This parameter is required.
 	//
@@ -32,6 +34,12 @@ type GetQualityWatchRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// The ID of the operator user.
+	//
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetQualityWatchRequest) String() string {
@@ -50,6 +58,10 @@ func (s *GetQualityWatchRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetQualityWatchRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetQualityWatchRequest) SetId(v int64) *GetQualityWatchRequest {
 	s.Id = &v
 	return s
@@ -57,6 +69,11 @@ func (s *GetQualityWatchRequest) SetId(v int64) *GetQualityWatchRequest {
 
 func (s *GetQualityWatchRequest) SetOpTenantId(v int64) *GetQualityWatchRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetQualityWatchRequest) SetOpUserId(v string) *GetQualityWatchRequest {
+	s.OpUserId = &v
 	return s
 }
 

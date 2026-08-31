@@ -15,6 +15,8 @@ type iOfflineBatchTaskRequest interface {
 	GetFileId() *int64
 	SetOpTenantId(v int64) *OfflineBatchTaskRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *OfflineBatchTaskRequest
+	GetOpUserId() *string
 	SetProjectId(v int64) *OfflineBatchTaskRequest
 	GetProjectId() *int64
 }
@@ -44,6 +46,10 @@ type OfflineBatchTaskRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// The project ID.
 	//
 	// This parameter is required.
@@ -74,6 +80,10 @@ func (s *OfflineBatchTaskRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *OfflineBatchTaskRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *OfflineBatchTaskRequest) GetProjectId() *int64 {
 	return s.ProjectId
 }
@@ -90,6 +100,11 @@ func (s *OfflineBatchTaskRequest) SetFileId(v int64) *OfflineBatchTaskRequest {
 
 func (s *OfflineBatchTaskRequest) SetOpTenantId(v int64) *OfflineBatchTaskRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *OfflineBatchTaskRequest) SetOpUserId(v string) *OfflineBatchTaskRequest {
+	s.OpUserId = &v
 	return s
 }
 

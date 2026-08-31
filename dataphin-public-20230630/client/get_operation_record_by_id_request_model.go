@@ -13,6 +13,8 @@ type iGetOperationRecordByIdRequest interface {
 	GetDetailCommand() *GetOperationRecordByIdRequestDetailCommand
 	SetOpTenantId(v int64) *GetOperationRecordByIdRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *GetOperationRecordByIdRequest
+	GetOpUserId() *string
 }
 
 type GetOperationRecordByIdRequest struct {
@@ -28,6 +30,10 @@ type GetOperationRecordByIdRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s GetOperationRecordByIdRequest) String() string {
@@ -46,6 +52,10 @@ func (s *GetOperationRecordByIdRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *GetOperationRecordByIdRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *GetOperationRecordByIdRequest) SetDetailCommand(v *GetOperationRecordByIdRequestDetailCommand) *GetOperationRecordByIdRequest {
 	s.DetailCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *GetOperationRecordByIdRequest) SetDetailCommand(v *GetOperationRecordBy
 
 func (s *GetOperationRecordByIdRequest) SetOpTenantId(v int64) *GetOperationRecordByIdRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetOperationRecordByIdRequest) SetOpUserId(v string) *GetOperationRecordByIdRequest {
+	s.OpUserId = &v
 	return s
 }
 

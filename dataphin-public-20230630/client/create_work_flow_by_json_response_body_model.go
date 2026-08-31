@@ -38,7 +38,7 @@ type CreateWorkFlowByJsonResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error details returned by the backend.
+	// The error message returned by the backend.
 	//
 	// example:
 	//
@@ -132,19 +132,19 @@ type CreateWorkFlowByJsonResponseBodyData struct {
 	//
 	// hostName:hostIp
 	HostMachine *string `json:"HostMachine,omitempty" xml:"HostMachine,omitempty"`
-	// The scheduling node ID of the workflow node after successful creation.
+	// The scheduling node ID of the workflow node created.
 	//
 	// example:
 	//
 	// n_123
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The workflow ID after successful creation.
+	// The workflow ID generated after successful creation.
 	//
 	// example:
 	//
 	// 123
 	PipelineId *int64 `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
-	// The submit ID generated for the pending publish list after submission. Use this ID to publish through the publish domain. You can ignore this value for BASIC projects.
+	// The submit ID of the pending publish list generated after a successful submission. Use this ID to publish through the publish domain. You can ignore this value for BASIC projects.
 	//
 	// example:
 	//

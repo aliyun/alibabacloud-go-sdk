@@ -13,6 +13,8 @@ type iListUserGroupsRequest interface {
 	GetListQuery() *ListUserGroupsRequestListQuery
 	SetOpTenantId(v int64) *ListUserGroupsRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListUserGroupsRequest
+	GetOpUserId() *string
 }
 
 type ListUserGroupsRequest struct {
@@ -28,6 +30,10 @@ type ListUserGroupsRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListUserGroupsRequest) String() string {
@@ -46,6 +52,10 @@ func (s *ListUserGroupsRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListUserGroupsRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListUserGroupsRequest) SetListQuery(v *ListUserGroupsRequestListQuery) *ListUserGroupsRequest {
 	s.ListQuery = v
 	return s
@@ -53,6 +63,11 @@ func (s *ListUserGroupsRequest) SetListQuery(v *ListUserGroupsRequestListQuery) 
 
 func (s *ListUserGroupsRequest) SetOpTenantId(v int64) *ListUserGroupsRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListUserGroupsRequest) SetOpUserId(v string) *ListUserGroupsRequest {
+	s.OpUserId = &v
 	return s
 }
 

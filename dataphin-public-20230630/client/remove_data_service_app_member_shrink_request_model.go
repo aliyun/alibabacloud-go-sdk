@@ -11,6 +11,8 @@ type iRemoveDataServiceAppMemberShrinkRequest interface {
 	GoString() string
 	SetOpTenantId(v int64) *RemoveDataServiceAppMemberShrinkRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *RemoveDataServiceAppMemberShrinkRequest
+	GetOpUserId() *string
 	SetRemoveCommandShrink(v string) *RemoveDataServiceAppMemberShrinkRequest
 	GetRemoveCommandShrink() *string
 }
@@ -24,6 +26,10 @@ type RemoveDataServiceAppMemberShrinkRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 	// Remove regular members from a data service application
 	//
 	// This parameter is required.
@@ -42,12 +48,21 @@ func (s *RemoveDataServiceAppMemberShrinkRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *RemoveDataServiceAppMemberShrinkRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *RemoveDataServiceAppMemberShrinkRequest) GetRemoveCommandShrink() *string {
 	return s.RemoveCommandShrink
 }
 
 func (s *RemoveDataServiceAppMemberShrinkRequest) SetOpTenantId(v int64) *RemoveDataServiceAppMemberShrinkRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *RemoveDataServiceAppMemberShrinkRequest) SetOpUserId(v string) *RemoveDataServiceAppMemberShrinkRequest {
+	s.OpUserId = &v
 	return s
 }
 

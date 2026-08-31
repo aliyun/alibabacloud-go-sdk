@@ -13,6 +13,8 @@ type iListQualityWatchesRequest interface {
 	GetListQuery() *ListQualityWatchesRequestListQuery
 	SetOpTenantId(v int64) *ListQualityWatchesRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *ListQualityWatchesRequest
+	GetOpUserId() *string
 }
 
 type ListQualityWatchesRequest struct {
@@ -26,6 +28,10 @@ type ListQualityWatchesRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s ListQualityWatchesRequest) String() string {
@@ -44,6 +50,10 @@ func (s *ListQualityWatchesRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *ListQualityWatchesRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *ListQualityWatchesRequest) SetListQuery(v *ListQualityWatchesRequestListQuery) *ListQualityWatchesRequest {
 	s.ListQuery = v
 	return s
@@ -51,6 +61,11 @@ func (s *ListQualityWatchesRequest) SetListQuery(v *ListQualityWatchesRequestLis
 
 func (s *ListQualityWatchesRequest) SetOpTenantId(v int64) *ListQualityWatchesRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListQualityWatchesRequest) SetOpUserId(v string) *ListQualityWatchesRequest {
+	s.OpUserId = &v
 	return s
 }
 

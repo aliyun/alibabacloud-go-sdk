@@ -13,6 +13,8 @@ type iDeleteBatchTaskRequest interface {
 	GetDeleteCommand() *DeleteBatchTaskRequestDeleteCommand
 	SetOpTenantId(v int64) *DeleteBatchTaskRequest
 	GetOpTenantId() *int64
+	SetOpUserId(v string) *DeleteBatchTaskRequest
+	GetOpUserId() *string
 }
 
 type DeleteBatchTaskRequest struct {
@@ -28,6 +30,10 @@ type DeleteBatchTaskRequest struct {
 	//
 	// 30001011
 	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// example:
+	//
+	// 30001011
+	OpUserId *string `json:"OpUserId,omitempty" xml:"OpUserId,omitempty"`
 }
 
 func (s DeleteBatchTaskRequest) String() string {
@@ -46,6 +52,10 @@ func (s *DeleteBatchTaskRequest) GetOpTenantId() *int64 {
 	return s.OpTenantId
 }
 
+func (s *DeleteBatchTaskRequest) GetOpUserId() *string {
+	return s.OpUserId
+}
+
 func (s *DeleteBatchTaskRequest) SetDeleteCommand(v *DeleteBatchTaskRequestDeleteCommand) *DeleteBatchTaskRequest {
 	s.DeleteCommand = v
 	return s
@@ -53,6 +63,11 @@ func (s *DeleteBatchTaskRequest) SetDeleteCommand(v *DeleteBatchTaskRequestDelet
 
 func (s *DeleteBatchTaskRequest) SetOpTenantId(v int64) *DeleteBatchTaskRequest {
 	s.OpTenantId = &v
+	return s
+}
+
+func (s *DeleteBatchTaskRequest) SetOpUserId(v string) *DeleteBatchTaskRequest {
+	s.OpUserId = &v
 	return s
 }
 
