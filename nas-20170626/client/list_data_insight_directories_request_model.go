@@ -20,20 +20,36 @@ type iListDataInsightDirectoriesRequest interface {
 }
 
 type ListDataInsightDirectoriesRequest struct {
+	// The file system ID.
+	//
+	// - CPFS for Lingjun: The ID must start with `bmcpfs-`, such as bmcpfs-0015\\*\\*\\*\\*.
+	//
+	// > Only CPFS for Lingjun file systems are supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bmcpfs-030wldnqm8evtpy****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The maximum number of directories to return.
+	//
+	// Valid values: 10 to 100.
+	//
+	// Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call. Leave this parameter empty for the first request. Default value: "".
+	//
 	// example:
 	//
 	// ""
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The parent directory path. Specifies the parent directory to query. Default value: root directory "/".
+	//
 	// example:
 	//
 	// /

@@ -62,7 +62,7 @@ func (s *CreateAccessPointResponseBody) Validate() error {
 }
 
 type CreateAccessPointResponseBodyAccessPoint struct {
-	// The domain name of the access point.
+	// The access point domain name.
 	//
 	// example:
 	//

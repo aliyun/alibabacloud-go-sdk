@@ -82,7 +82,7 @@ type ModifyAccessRuleRequest struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The read and write permission that the authorized object has on the file system.
+	// The read and write permissions of the authorized object on the file system.
 	//
 	// Valid values:
 	//
@@ -104,7 +104,7 @@ type ModifyAccessRuleRequest struct {
 	//
 	// ``192.0.**.**``
 	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
-	// The access permissions that the system user of the authorization object has on the file system.
+	// The authorization of the system user of the authorized object on the file system.
 	//
 	// Valid values:
 	//

@@ -16,10 +16,14 @@ type iCreateCpfsAccessPointResponseBody interface {
 }
 
 type CreateCpfsAccessPointResponseBody struct {
+	// The access point ID.
+	//
 	// example:
 	//
 	// ap-ie15yd****
 	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 98696EF0-1607-4E9D-B01D-F20930B6****

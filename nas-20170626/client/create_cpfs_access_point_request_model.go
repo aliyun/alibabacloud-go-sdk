@@ -20,22 +20,41 @@ type iCreateCpfsAccessPointRequest interface {
 }
 
 type CreateCpfsAccessPointRequest struct {
+	// The description of the access point.
+	//
+	// Limits:
+	//
+	// - The description must be 2 to 128 characters in length.
+	//
+	// - The description must start with a letter.It cannot start with http:// or https://.
+	//
+	// - The description can contain digits, colons (:), underscores (_), or hyphens (-).
+	//
 	// example:
 	//
 	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The file system ID.
+	//
+	// - CPFS: The ID must start with `cpfs-`, such as cpfs-125487\\*\\*\\*\\*.
+	//
+	// - CPFS for Lingjun: The ID must start with `bmcpfs-`, such as bmcpfs-0015\\*\\*\\*\\*.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bmcpfs-099394bd928c****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId      *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The root directory of the access point. Default value: "/".
 	RootDirectory *CreateCpfsAccessPointRequestRootDirectory `json:"RootDirectory,omitempty" xml:"RootDirectory,omitempty" type:"Struct"`
 }
 
@@ -93,6 +112,8 @@ func (s *CreateCpfsAccessPointRequest) Validate() error {
 }
 
 type CreateCpfsAccessPointRequestRootDirectory struct {
+	// The root directory of the access point. The value must start and end with a forward slash (/).
+	//
 	// example:
 	//
 	// /test/

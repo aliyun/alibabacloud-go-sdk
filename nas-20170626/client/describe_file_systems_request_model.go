@@ -52,9 +52,9 @@ type DescribeFileSystemsRequest struct {
 	//
 	// - extreme: Extreme NAS.
 	//
-	// - cpfs: Cloud Parallel File Storage (locally redundant).
+	// - cpfs: Cloud Parallel File Storage (CPFS) with locally redundant storage.
 	//
-	// - cpfsse: Cloud Parallel File Storage SE (zone-redundant).
+	// - cpfsse: CPFS SE with zone-redundant storage.
 	//
 	// > To query multiple types, separate them with commas (,).
 	//
@@ -68,7 +68,7 @@ type DescribeFileSystemsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of file systems on each page during a paged query.
+	// The number of file systems on each page in a paging query.
 	//
 	// example:
 	//
@@ -82,25 +82,13 @@ type DescribeFileSystemsRequest struct {
 	//
 	// rg-acfmwavnfef****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The storage type.
-	//
-	// Valid values:
-	//
-	// - General-purpose NAS: Capacity, Performance, and Premium.
-	//
-	// - Extreme NAS: standard and advance.
-	//
-	// - CPFS: advance_100 (100 MB/s/TiB baseline), advance_200 (200 MB/s/TiB baseline), and economic.
-	//
-	// - CPFS SE: advance_100 (100 MB/s/TiB baseline).
-	//
-	// - AgenticFS: Agentic (available only when FileSystemType is set to standard).
+	// The storage type. Currently, only CPFS for Lingjun specifications are supported for a filtered query. Other FileSystemType values are not supported. The following specifications are supported:
 	//
 	// example:
 	//
-	// Capacity
+	// bm_advance_400
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The collection of tag information.
+	// The tag information.
 	Tag []*DescribeFileSystemsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The VPC ID.
 	//
@@ -206,6 +194,16 @@ func (s *DescribeFileSystemsRequest) Validate() error {
 type DescribeFileSystemsRequestTag struct {
 	// The tag key.
 	//
+	// Limits:
+	//
+	// - Valid values of N: 1 to 20.
+	//
+	// - The tag key can be up to 128 characters in length.
+	//
+	// - The tag key cannot start with `aliyun` or `acs:`.
+	//
+	// - The tag key cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// testKey
@@ -214,7 +212,7 @@ type DescribeFileSystemsRequestTag struct {
 	//
 	// Limits:
 	//
-	// - Valid values of N: 1 to 20.
+	// - N can be an integer from 1 to 20.
 	//
 	// - The tag value can be up to 128 characters in length.
 	//

@@ -22,24 +22,42 @@ type iDescribeCpfsAccessPointsRequest interface {
 }
 
 type DescribeCpfsAccessPointsRequest struct {
+	// The access point ID.
+	//
 	// example:
 	//
 	// ap-ie15yd****
 	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	// The file system ID.
+	//
+	// - CPFS: The ID must start with `cpfs-`, such as cpfs-099394bd928c****.
+	//
+	// - CPFS for Lingjun: The ID must start with `bmcpfs-`, such as bmcpfs-290w65p03ok64ya****.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bmcpfs-290rg9crq96m362ups2
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The page number of the list.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of results per query.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

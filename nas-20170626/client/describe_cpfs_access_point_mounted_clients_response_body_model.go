@@ -22,19 +22,28 @@ type iDescribeCpfsAccessPointMountedClientsResponseBody interface {
 }
 
 type DescribeCpfsAccessPointMountedClientsResponseBody struct {
+	// The clients mounted to the access point.
 	MountedClient []*DescribeCpfsAccessPointMountedClientsResponseBodyMountedClient `json:"MountedClient,omitempty" xml:"MountedClient,omitempty" type:"Repeated"`
+	// The page number of the list.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of results on each page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of clients mounted to the access point.
+	//
 	// example:
 	//
 	// 10
@@ -108,14 +117,24 @@ func (s *DescribeCpfsAccessPointMountedClientsResponseBody) Validate() error {
 }
 
 type DescribeCpfsAccessPointMountedClientsResponseBodyMountedClient struct {
+	// The type of the client mounted to the access point. Valid values:
+	//
+	// - vsc
+	//
+	// - tcp
+	//
 	// example:
 	//
 	// vsc
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// The ID of the client mounted to the access point.
+	//
 	// example:
 	//
 	// vsc-8vb864o3ppwfvh****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The IP address of the client mounted to the access point.
+	//
 	// example:
 	//
 	// 219.145.34.210

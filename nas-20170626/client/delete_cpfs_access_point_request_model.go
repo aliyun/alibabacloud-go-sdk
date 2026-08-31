@@ -18,18 +18,28 @@ type iDeleteCpfsAccessPointRequest interface {
 }
 
 type DeleteCpfsAccessPointRequest struct {
+	// The access point ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ap-ie15yd****
 	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	// The file system ID.
+	//
+	// - CPFS: The ID must start with `cpfs-`, such as cpfs-099394bd928c****.
+	//
+	// - CPFS for Lingjun: The ID must start with `bmcpfs-`, such as bmcpfs-290w65p03ok64ya****.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bmcpfs-099394bd928c****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

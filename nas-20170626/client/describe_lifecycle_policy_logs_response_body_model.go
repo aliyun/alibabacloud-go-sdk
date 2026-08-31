@@ -24,7 +24,7 @@ type iDescribeLifecyclePolicyLogsResponseBody interface {
 }
 
 type DescribeLifecyclePolicyLogsResponseBody struct {
-	// The execution logs of the lifecycle policy.
+	// The execution logs of the lifecycle management policy.
 	LifecyclePolicyLogs []*DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogs `json:"LifecyclePolicyLogs,omitempty" xml:"LifecyclePolicyLogs,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -44,9 +44,7 @@ type DescribeLifecyclePolicyLogsResponseBody struct {
 	//
 	// BC7C825C-5F65-4B56-BEF6-98C56C7C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The request status.
-	//
-	// Valid values:
+	// The request status. Valid values:
 	//
 	// - true: The request was successful.
 	//
@@ -304,13 +302,21 @@ type DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsDeleteRules struc
 	//
 	// Valid values:
 	//
-	// - Atime: the access time of the file.
+	// - Atime: the last access time of the file.
+	//
+	// example:
+	//
+	// Atime
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
 	// The threshold of the rule.
 	//
 	// Valid values:
 	//
 	// - If Attribute is set to Atime, this parameter specifies the number of days since the file was last accessed. Valid values: 1 to 365.
+	//
+	// example:
+	//
+	// 3
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
@@ -402,7 +408,7 @@ type DescribeLifecyclePolicyLogsResponseBodyLifecyclePolicyLogsTransitRules stru
 	//
 	// Valid values:
 	//
-	// - Atime: the access time of the file.
+	// - Atime: the last access time of the file.
 	//
 	// example:
 	//

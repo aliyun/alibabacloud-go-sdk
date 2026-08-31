@@ -22,19 +22,32 @@ type iDescribeCpfsAccessPointsResponseBody interface {
 }
 
 type DescribeCpfsAccessPointsResponseBody struct {
+	// The access point information.
 	AccessPoints []*DescribeCpfsAccessPointsResponseBodyAccessPoints `json:"AccessPoints,omitempty" xml:"AccessPoints,omitempty" type:"Repeated"`
+	// The page number of the list.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of results per page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A323836B-5BC6-45A6-8048-60675C23****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of access points.
+	//
 	// example:
 	//
 	// 6
@@ -108,35 +121,64 @@ func (s *DescribeCpfsAccessPointsResponseBody) Validate() error {
 }
 
 type DescribeCpfsAccessPointsResponseBodyAccessPoints struct {
+	// The Alibaba Cloud Resource Name (ARN) of the access point.
+	//
 	// example:
 	//
 	// acs:nas:cn-hangzhou:178321033379****:accesspoint/ap-ie15yd****
 	ARN *string `json:"ARN,omitempty" xml:"ARN,omitempty"`
+	// The access point ID.
+	//
 	// example:
 	//
 	// ap-ie15y*****
 	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	// The time when the access point was created. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2026-03-28T06:32:14Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the access point.
+	//
 	// example:
 	//
 	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The file system ID.
+	//
 	// example:
 	//
 	// bmcpfs-290r9c75fnb0il8d8v1
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The time when the access point was last modified. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2025-03-28T06:32:14Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId      *string                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The root directory information.
 	RootDirectory *DescribeCpfsAccessPointsResponseBodyAccessPointsRootDirectory `json:"RootDirectory,omitempty" xml:"RootDirectory,omitempty" type:"Struct"`
+	// The current status of the access point.
+	//
+	// Valid values:
+	//
+	// - Active: available
+	//
+	// - Inactive: unavailable
+	//
+	// - Pending: being created
+	//
+	// - Deleting: being deleted
+	//
+	// > The file system can be mounted only when the status is Active.
+	//
 	// example:
 	//
 	// Active
@@ -242,10 +284,22 @@ func (s *DescribeCpfsAccessPointsResponseBodyAccessPoints) Validate() error {
 }
 
 type DescribeCpfsAccessPointsResponseBodyAccessPointsRootDirectory struct {
+	// The root directory.
+	//
 	// example:
 	//
 	// /path
 	RootPath *string `json:"RootPath,omitempty" xml:"RootPath,omitempty"`
+	// The current status of the root directory.
+	//
+	// Valid values:
+	//
+	// - Unknown: The root path status is unknown.
+	//
+	// - NotExist: The root path does not exist. It may have been deleted by the user.
+	//
+	// - Ready: The root path status is normal.
+	//
 	// example:
 	//
 	// Ready

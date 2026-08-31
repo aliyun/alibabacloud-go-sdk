@@ -38,7 +38,7 @@ type DescribeFilesetsRequest struct {
 	//
 	// bmcpfs-290w65p03ok64ya****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The filter information for the filesets to query.
+	// The filter key information for the filesets to query.
 	Filters []*DescribeFilesetsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The number of results for each query.
 	//
@@ -68,7 +68,7 @@ type DescribeFilesetsRequest struct {
 	//
 	// FileCountLimit
 	OrderByField *string `json:"OrderByField,omitempty" xml:"OrderByField,omitempty"`
-	// The sort order. Valid values:
+	// The sort order.
 	//
 	// - asc (default): ascending order, which sorts results from smallest to largest.
 	//
@@ -176,13 +176,13 @@ type DescribeFilesetsRequestFilters struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the filter key. Wildcards are not supported for this parameter.
 	//
-	// - If Key is set to FsetIds, Value is a fileset ID. You can specify one or more fileset IDs, up to a maximum of 10. Separate multiple values with commas (,). Example: `fset-1902718ea0ae****` or `fset-1902718ea0ae****,fset-3212718ea0ae****`.
+	// - If Key is set to FsetIds, Value is set to a fileset ID. You can specify one or more fileset IDs, up to a maximum of 10. Separate multiple values with commas (,). Example: `fset-1902718ea0ae****` or `fset-1902718ea0ae****,fset-3212718ea0ae****`.
 	//
-	// - If Key is set to FileSystemPath, Value is the path or a partial path of the fileset in the CPFS file system. The value must be 2 to 1,024 characters in length and encoded in UTF-8.
+	// - If Key is set to FileSystemPath, Value is set to the path or a partial path of the fileset in the CPFS file system. The value must be 2 to 1,024 characters in length and encoded in UTF-8.
 	//
-	// - If Key is set to Description, Value is the description or a partial description of the fileset.
+	// - If Key is set to Description, Value is set to the description or a partial description of the fileset.
 	//
-	// - If Key is set to QuotaExists, Value is true or false. If this parameter is left empty, all filesets are returned.
+	// - If Key is set to QuotaExists, Value is set to true or false. If this parameter is left empty, all filesets are returned.
 	//
 	// example:
 	//

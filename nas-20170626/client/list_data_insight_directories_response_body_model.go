@@ -22,19 +22,28 @@ type iListDataInsightDirectoriesResponseBody interface {
 }
 
 type ListDataInsightDirectoriesResponseBody struct {
+	// The directory information.
 	Directory *ListDataInsightDirectoriesResponseBodyDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
+	// The file system ID.
+	//
 	// example:
 	//
 	// bmcpfs-370lx1ev9ss27o0****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The maximum number of directories returned.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token returned in this call.
+	//
 	// example:
 	//
 	// /subDir
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 98696EF0-1607-4E9D-B01D-F20930B6****
@@ -104,31 +113,50 @@ func (s *ListDataInsightDirectoriesResponseBody) Validate() error {
 }
 
 type ListDataInsightDirectoriesResponseBodyDirectory struct {
+	// The directory capacity.
+	//
 	// example:
 	//
 	// 10240
 	DirCapacity *int64 `json:"DirCapacity,omitempty" xml:"DirCapacity,omitempty"`
+	// The capacity of IA files.
+	//
 	// example:
 	//
 	// 10240
 	DirCapacityOffline *int64 `json:"DirCapacityOffline,omitempty" xml:"DirCapacityOffline,omitempty"`
+	// The capacity of standard files.
+	//
 	// example:
 	//
 	// 10240
 	DirCapacityOnline *int64 `json:"DirCapacityOnline,omitempty" xml:"DirCapacityOnline,omitempty"`
+	// The number of files.
+	//
 	// example:
 	//
 	// 2343232
 	FileCount *int64 `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
+	// The number of Infrequent Access (IA) files.
+	//
 	// example:
 	//
 	// 204800
 	FileCountOffline *int64 `json:"FileCountOffline,omitempty" xml:"FileCountOffline,omitempty"`
+	// The number of standard files.
+	//
 	// example:
 	//
 	// 204800
-	FileCountOnline *int64                                                           `json:"FileCountOnline,omitempty" xml:"FileCountOnline,omitempty"`
-	SubDirectories  []*ListDataInsightDirectoriesResponseBodyDirectorySubDirectories `json:"SubDirectories,omitempty" xml:"SubDirectories,omitempty" type:"Repeated"`
+	FileCountOnline *int64 `json:"FileCountOnline,omitempty" xml:"FileCountOnline,omitempty"`
+	// The inode number of the directory.
+	//
+	// example:
+	//
+	// 2343
+	Inode *int64 `json:"Inode,omitempty" xml:"Inode,omitempty"`
+	// The subdirectory information.
+	SubDirectories []*ListDataInsightDirectoriesResponseBodyDirectorySubDirectories `json:"SubDirectories,omitempty" xml:"SubDirectories,omitempty" type:"Repeated"`
 }
 
 func (s ListDataInsightDirectoriesResponseBodyDirectory) String() string {
@@ -161,6 +189,10 @@ func (s *ListDataInsightDirectoriesResponseBodyDirectory) GetFileCountOffline() 
 
 func (s *ListDataInsightDirectoriesResponseBodyDirectory) GetFileCountOnline() *int64 {
 	return s.FileCountOnline
+}
+
+func (s *ListDataInsightDirectoriesResponseBodyDirectory) GetInode() *int64 {
+	return s.Inode
 }
 
 func (s *ListDataInsightDirectoriesResponseBodyDirectory) GetSubDirectories() []*ListDataInsightDirectoriesResponseBodyDirectorySubDirectories {
@@ -197,6 +229,11 @@ func (s *ListDataInsightDirectoriesResponseBodyDirectory) SetFileCountOnline(v i
 	return s
 }
 
+func (s *ListDataInsightDirectoriesResponseBodyDirectory) SetInode(v int64) *ListDataInsightDirectoriesResponseBodyDirectory {
+	s.Inode = &v
+	return s
+}
+
 func (s *ListDataInsightDirectoriesResponseBodyDirectory) SetSubDirectories(v []*ListDataInsightDirectoriesResponseBodyDirectorySubDirectories) *ListDataInsightDirectoriesResponseBodyDirectory {
 	s.SubDirectories = v
 	return s
@@ -216,46 +253,74 @@ func (s *ListDataInsightDirectoriesResponseBodyDirectory) Validate() error {
 }
 
 type ListDataInsightDirectoriesResponseBodyDirectorySubDirectories struct {
+	// The time when the directory was created. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2026-07-23T12:47:14Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The capacity of the subdirectory.
+	//
 	// example:
 	//
 	// 345518080
 	DirCapacity *int64 `json:"DirCapacity,omitempty" xml:"DirCapacity,omitempty"`
+	// The capacity of IA files in the subdirectory.
+	//
 	// example:
 	//
 	// 0
 	DirCapacityOffline *int64 `json:"DirCapacityOffline,omitempty" xml:"DirCapacityOffline,omitempty"`
+	// The capacity of standard files in the subdirectory.
+	//
 	// example:
 	//
 	// 345518080
 	DirCapacityOnline *int64 `json:"DirCapacityOnline,omitempty" xml:"DirCapacityOnline,omitempty"`
+	// The subdirectory level.
+	//
 	// example:
 	//
 	// 1
 	DirLevel *int32 `json:"DirLevel,omitempty" xml:"DirLevel,omitempty"`
+	// The subdirectory name.
+	//
 	// example:
 	//
 	// /dir_l1_n000
 	DirName *string `json:"DirName,omitempty" xml:"DirName,omitempty"`
+	// The number of files in the subdirectory.
+	//
 	// example:
 	//
 	// 84846
 	FileCount *int64 `json:"FileCount,omitempty" xml:"FileCount,omitempty"`
+	// The number of IA files in the subdirectory.
+	//
 	// example:
 	//
 	// 2343
 	FileCountOffline *int64 `json:"FileCountOffline,omitempty" xml:"FileCountOffline,omitempty"`
+	// The number of standard files in the subdirectory.
+	//
 	// example:
 	//
 	// 84355
 	FileCountOnline *int64 `json:"FileCountOnline,omitempty" xml:"FileCountOnline,omitempty"`
+	// The inode number of the subdirectory.
+	//
+	// example:
+	//
+	// 140288
+	Inode *int64 `json:"Inode,omitempty" xml:"Inode,omitempty"`
+	// The time when the database directory data record was last updated. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2026-07-29T03:41:12Z
 	LastAccessTime *string `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
+	// The time when the directory was last accessed. The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2026-07-29T03:41:12Z
@@ -304,6 +369,10 @@ func (s *ListDataInsightDirectoriesResponseBodyDirectorySubDirectories) GetFileC
 
 func (s *ListDataInsightDirectoriesResponseBodyDirectorySubDirectories) GetFileCountOnline() *int64 {
 	return s.FileCountOnline
+}
+
+func (s *ListDataInsightDirectoriesResponseBodyDirectorySubDirectories) GetInode() *int64 {
+	return s.Inode
 }
 
 func (s *ListDataInsightDirectoriesResponseBodyDirectorySubDirectories) GetLastAccessTime() *string {
@@ -356,6 +425,11 @@ func (s *ListDataInsightDirectoriesResponseBodyDirectorySubDirectories) SetFileC
 
 func (s *ListDataInsightDirectoriesResponseBodyDirectorySubDirectories) SetFileCountOnline(v int64) *ListDataInsightDirectoriesResponseBodyDirectorySubDirectories {
 	s.FileCountOnline = &v
+	return s
+}
+
+func (s *ListDataInsightDirectoriesResponseBodyDirectorySubDirectories) SetInode(v int64) *ListDataInsightDirectoriesResponseBodyDirectorySubDirectories {
+	s.Inode = &v
 	return s
 }
 

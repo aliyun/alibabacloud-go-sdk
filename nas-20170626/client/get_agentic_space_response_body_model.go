@@ -74,9 +74,7 @@ type GetAgenticSpaceResponseBodyAgenticSpace struct {
 	//
 	// cn-hangzhou-i
 	Azone *string `json:"Azone,omitempty" xml:"Azone,omitempty"`
-	// The time when the AgenticSpace was created.
-	//
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The time when the AgenticSpace was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -122,9 +120,7 @@ type GetAgenticSpaceResponseBodyAgenticSpace struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the AgenticSpace was last updated.
-	//
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+	// The time when the AgenticSpace was last updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//

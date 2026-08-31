@@ -28,7 +28,7 @@ type DescribeLifecyclePolicyLogsRequest struct {
 	//
 	// bmcpfs-030wldnqm8evtpy****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The ID of the lifecycle policy.
+	// The ID of the lifecycle management policy.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeLifecyclePolicyLogsRequest struct {
 	//
 	// lc-xxx
 	LifecyclePolicyId *string `json:"LifecyclePolicyId,omitempty" xml:"LifecyclePolicyId,omitempty"`
-	// The page number of the list.
+	// The page number.
 	//
 	// Default value: 1.
 	//

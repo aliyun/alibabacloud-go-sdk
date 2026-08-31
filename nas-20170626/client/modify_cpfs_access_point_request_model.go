@@ -20,22 +20,34 @@ type iModifyCpfsAccessPointRequest interface {
 }
 
 type ModifyCpfsAccessPointRequest struct {
+	// The access point ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ap-ie15yd****
 	AccessPointId *string `json:"AccessPointId,omitempty" xml:"AccessPointId,omitempty"`
+	// The description of the access point.
+	//
 	// example:
 	//
 	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The file system ID.
+	//
+	// - CPFS: The ID must start with `cpfs-`, for example, cpfs-125487\\*\\*\\*\\*.
+	//
+	// - CPFS for Lingjun: The ID must start with `bmcpfs-`, for example, bmcpfs-0015\\*\\*\\*\\*.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// bmcpfs-099394bd928c****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
