@@ -14,6 +14,8 @@ type iDeleteHiveResponseBody interface {
 }
 
 type DeleteHiveResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxx-xxx

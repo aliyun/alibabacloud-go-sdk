@@ -22,19 +22,28 @@ type iListSpecificationsResponseBody interface {
 }
 
 type ListSpecificationsResponseBody struct {
+	// The result objects.
 	Items []*ListSpecificationsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number of the query list. Minimum value: 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxx-xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 200
@@ -108,26 +117,38 @@ func (s *ListSpecificationsResponseBody) Validate() error {
 }
 
 type ListSpecificationsResponseBodyItems struct {
+	// The specification family.
+	//
 	// example:
 	//
 	// 4090CU
 	Class *string `json:"Class,omitempty" xml:"Class,omitempty"`
+	// The number of cores.
+	//
 	// example:
 	//
 	// 2
 	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// The memory size.
+	//
 	// example:
 	//
 	// 8
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The number of cards per single load.
+	//
 	// example:
 	//
 	// 1
 	Shard *int32 `json:"Shard,omitempty" xml:"Shard,omitempty"`
+	// `RenderingSpec`
+	//
 	// example:
 	//
 	// crs.xic.s1
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	// The maximum storage capacity. Unit: GB.
+	//
 	// example:
 	//
 	// 90

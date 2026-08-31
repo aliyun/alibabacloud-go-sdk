@@ -16,7 +16,7 @@ type iMoveHiveEdgeWorkersRequest interface {
 }
 
 type MoveHiveEdgeWorkersRequest struct {
-	// The ID of the target Hive.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type MoveHiveEdgeWorkersRequest struct {
 	//
 	// hive-xxxx-xxx-xxx
 	HiveId *string `json:"HiveId,omitempty" xml:"HiveId,omitempty"`
-	// The IDs of the cloud application service instances to move.
+	// The list of workload IDs.
 	//
 	// This parameter is required.
 	//

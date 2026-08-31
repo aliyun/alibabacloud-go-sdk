@@ -22,20 +22,28 @@ type iDelHiveEdgeWorkersResponseBody interface {
 }
 
 type DelHiveEdgeWorkersResponseBody struct {
+	// The number of workload instances that failed to be unbound.
+	//
 	// example:
 	//
 	// 0
-	FailedInstanceCount *int32                                           `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
-	FailedInstances     []*DelHiveEdgeWorkersResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
+	FailedInstanceCount *int32 `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
+	// The list of workload instances that failed to be unbound.
+	FailedInstances []*DelHiveEdgeWorkersResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
+	// **The request ID.**
+	//
 	// example:
 	//
 	// xxxx-xxx-xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of workload instances that were successfully unbound.
+	//
 	// example:
 	//
 	// 5
-	SuccessInstanceCount *int32                                            `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
-	SuccessInstances     []*DelHiveEdgeWorkersResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
+	SuccessInstanceCount *int32 `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
+	// The list of workload instances that were successfully unbound.
+	SuccessInstances []*DelHiveEdgeWorkersResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
 }
 
 func (s DelHiveEdgeWorkersResponseBody) String() string {
@@ -114,10 +122,14 @@ func (s *DelHiveEdgeWorkersResponseBody) Validate() error {
 }
 
 type DelHiveEdgeWorkersResponseBodyFailedInstances struct {
+	// The workload ID.
+	//
 	// example:
 	//
 	// ew-1226d588c69449209ee963161c067b04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The failure reason.
+	//
 	// example:
 	//
 	// Error 1062 (23000): Duplicate entry \\"hive-4fbf3928d40e43948b98acdb4fb5aaed-ew-1226d588c69449209ee9631\\" for key \\"PRIMARY\\"
@@ -155,10 +167,14 @@ func (s *DelHiveEdgeWorkersResponseBodyFailedInstances) Validate() error {
 }
 
 type DelHiveEdgeWorkersResponseBodySuccessInstances struct {
+	// The workload ID.
+	//
 	// example:
 	//
 	// ew-1226d588c69449209ee963161c067b04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The message.
+	//
 	// example:
 	//
 	// SUCCESS

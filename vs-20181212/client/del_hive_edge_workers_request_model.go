@@ -16,12 +16,16 @@ type iDelHiveEdgeWorkersRequest interface {
 }
 
 type DelHiveEdgeWorkersRequest struct {
+	// **The cluster ID.**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hive-xxxx-xxx-xxx
 	HiveId *string `json:"HiveId,omitempty" xml:"HiveId,omitempty"`
+	// **The list of workload IDs.**
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,13 +22,13 @@ type iMoveHiveEdgeWorkersResponseBody interface {
 }
 
 type MoveHiveEdgeWorkersResponseBody struct {
-	// The number of instances that failed to move.
+	// The number of failed operations.
 	//
 	// example:
 	//
 	// 0
 	FailedInstanceCount *int32 `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
-	// Details of the instances that failed to move.
+	// The list of workloads that failed to be moved.
 	FailedInstances []*MoveHiveEdgeWorkersResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -36,13 +36,13 @@ type MoveHiveEdgeWorkersResponseBody struct {
 	//
 	// xxxx-xxx-xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of successfully moved instances.
+	// The number of successful operations.
 	//
 	// example:
 	//
 	// 5
 	SuccessInstanceCount *int32 `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
-	// Details of the successfully moved instances.
+	// The list of workloads that were successfully moved.
 	SuccessInstances []*MoveHiveEdgeWorkersResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
 }
 
@@ -122,7 +122,7 @@ func (s *MoveHiveEdgeWorkersResponseBody) Validate() error {
 }
 
 type MoveHiveEdgeWorkersResponseBodyFailedInstances struct {
-	// The instance ID.
+	// The workload ID.
 	//
 	// example:
 	//
@@ -167,13 +167,13 @@ func (s *MoveHiveEdgeWorkersResponseBodyFailedInstances) Validate() error {
 }
 
 type MoveHiveEdgeWorkersResponseBodySuccessInstances struct {
-	// The instance ID.
+	// The workload ID.
 	//
 	// example:
 	//
 	// ew-1226d588c69449209ee963161c067b04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The result message. For a successful operation, the value is typically `SUCCESS`.
+	// The message.
 	//
 	// example:
 	//

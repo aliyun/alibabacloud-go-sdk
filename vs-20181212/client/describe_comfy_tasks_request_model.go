@@ -13,6 +13,8 @@ type iDescribeComfyTasksRequest interface {
 	GetPageNumber() *int32
 	SetPageSize(v int32) *DescribeComfyTasksRequest
 	GetPageSize() *int32
+	SetTaskId(v string) *DescribeComfyTasksRequest
+	GetTaskId() *string
 	SetTaskState(v string) *DescribeComfyTasksRequest
 	GetTaskState() *string
 	SetWorkflowId(v string) *DescribeComfyTasksRequest
@@ -26,19 +28,21 @@ type DescribeComfyTasksRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of tasks per page.
+	// The number of records to display per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The task state. If specified, the operation returns only tasks in that state.
+	// The Comfy workflow ID used as a filter condition.
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task status used as a filter condition.
 	//
 	// example:
 	//
 	// QUEUED
 	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
-	// If you specify this parameter, the operation returns only tasks for the specified workflow.
+	// The Comfy workflow ID used as a filter condition.
 	//
 	// example:
 	//
@@ -62,6 +66,10 @@ func (s *DescribeComfyTasksRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *DescribeComfyTasksRequest) GetTaskId() *string {
+	return s.TaskId
+}
+
 func (s *DescribeComfyTasksRequest) GetTaskState() *string {
 	return s.TaskState
 }
@@ -77,6 +85,11 @@ func (s *DescribeComfyTasksRequest) SetPageNumber(v int32) *DescribeComfyTasksRe
 
 func (s *DescribeComfyTasksRequest) SetPageSize(v int32) *DescribeComfyTasksRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeComfyTasksRequest) SetTaskId(v string) *DescribeComfyTasksRequest {
+	s.TaskId = &v
 	return s
 }
 

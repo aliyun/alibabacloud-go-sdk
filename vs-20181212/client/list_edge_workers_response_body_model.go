@@ -22,15 +22,15 @@ type iListEdgeWorkersResponseBody interface {
 }
 
 type ListEdgeWorkersResponseBody struct {
-	// The list of payloads.
+	// The workload list.
 	Instances []*ListEdgeWorkersResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// The page number of the query. The value starts from 1. Default value: 1.
+	// The page number of the query list. Minimum value: 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page for a paged query. The maximum value is 100. Default value: 100.
+	// The number of entries per page for a paginated query. Maximum value: 100. Default value: 100.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListEdgeWorkersResponseBody struct {
 	//
 	// xxxx-xxx-xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of workloads.
 	//
 	// example:
 	//
@@ -135,13 +135,13 @@ type ListEdgeWorkersResponseBodyInstances struct {
 	//
 	// hive-58mq6jynvgxxmlid3pt39x6gk-0
 	HiveId *string `json:"HiveId,omitempty" xml:"HiveId,omitempty"`
-	// The ID of the instance.
+	// The workload ID.
 	//
 	// example:
 	//
 	// as-d135ca4425c24b99b79cd0b6c552cac9
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The package ID.
+	// The plan ID.
 	//
 	// example:
 	//

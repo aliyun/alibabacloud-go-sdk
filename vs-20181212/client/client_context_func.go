@@ -1717,7 +1717,7 @@ func (client *Client) ContinuousMoveWithContext(ctx context.Context, request *Co
 //
 // Description:
 //
-// > You must first enable the on-demand screenshot feature in the associated screenshot template.
+// > You must enable on-demand snapshot in the associated snapshot template in advance.
 //
 // @param request - CreateComfyTaskRequest
 //
@@ -2799,17 +2799,17 @@ func (client *Client) CreateTemplateWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 从集群删除负载
+// Unbinds one or more workload instances from a specified cluster.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - **HiveId*	- 是必填参数，表示要操作的集群ID。
+// - **HiveId*	- is a required parameter that specifies the ID of the cluster to operate on.
 //
-// - **InstanceIds*	- 是必填参数，需要提供一个负载ID列表，用于指定要从集群中解绑的负载实例。
+// - **InstanceIds*	- is a required parameter that specifies a list of workload IDs to unbind from the cluster.
 //
-// - 解绑操作成功后，会返回成功和失败的负载实例列表及其相关信息。
+// - After the unbind operation succeeds, the response returns lists of successful and failed workload instances along with related information.
 //
 // @param tmpReq - DelHiveEdgeWorkersRequest
 //
@@ -3239,15 +3239,15 @@ func (client *Client) DeleteGroupWithContext(ctx context.Context, request *Delet
 
 // Summary:
 //
-// 删除集群
+// Deletes an empty cluster by the specified ID.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 需要确保该集群内所有应用服务已清空，否则无法执行删除操作。
+// - Ensure that all application services in the cluster have been removed. Otherwise, the delete operation cannot be performed.
 //
-// - `HiveId` 是必填参数，用于标识待删除的集群。
+// - `HiveId` is a required parameter that identifies the cluster to be deleted.
 //
 // @param request - DeleteHiveRequest
 //
@@ -3945,11 +3945,11 @@ func (client *Client) DescribeComfyProductionsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries a list of Comfy tasks.
+// Queries the list of Comfy tasks.
 //
 // Description:
 //
-// > Querying by screenshot does not support pagination and only supports iteration. To request the next page, use the extStartTime parameter value from the response as the StartTime for the new request.
+// > Currently, screenshot queries do not support pagination. Only iterative queries are supported. Use the extStartTime parameter value from the response as the StartTime for a new request to retrieve the next page.
 //
 // @param request - DescribeComfyTasksRequest
 //
@@ -3970,6 +3970,10 @@ func (client *Client) DescribeComfyTasksWithContext(ctx context.Context, request
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.TaskId) {
+		query["TaskId"] = request.TaskId
 	}
 
 	if !dara.IsNil(request.TaskState) {
@@ -7893,19 +7897,19 @@ func (client *Client) ListCloudAppsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Queries payload information for cloud application services. This operation supports paged queries.
+// Queries workload information with pagination.
 //
 // Description:
 //
-// ## Request description
+// ## Description
 //
-// - This API queries payload information for cloud application services and supports filtering and paged queries using various parameters.
+// - This API operation queries workload information and supports filtering and pagination by using multiple parameters.
 //
-// - Optional parameters include `Spec`, `Statuses`, `InstanceIds`, `PlanIds`, and `HiveIds`.
+// - Optional parameters include Spec (specification), Statuses (status list), InstanceIds (instance ID list), PlanIds (plan ID list), and HiveIds (cluster ID list).
 //
-// - For paged queries, you can use the `PageNumber` and `PageSize` parameters to control the amount of data returned. The default page size is 10 records, and the maximum is 100 records.
+// - For pagination, use the PageNumber and PageSize parameters to control the amount of returned data. By default, 10 records are returned per page and a maximum of 100 records are supported per page.
 //
-// - You can specify a time range for the query using the `StartTime` and `EndTime` parameters.
+// - Use the StartTime and EndTime parameters to specify the time range for queries.
 //
 // @param tmpReq - ListEdgeWorkersRequest
 //
@@ -8079,19 +8083,19 @@ func (client *Client) ListFilesWithContext(ctx context.Context, request *ListFil
 
 // Summary:
 //
-// 查询所有集群信息，支持分页查询。
+// Queries all cluster information by using paging and supports filtering by conditions.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该 API 用于查询用户创建的所有集群信息。
+// - This API operation queries information about all clusters created by the user.
 //
-// - 支持通过 `HiveId` 和 `Name` 参数进行过滤查询。
+// - You can use the `HiveId` and `Name` parameters to filter query results.
 //
-// - 分页参数 `PageNumber` 和 `PageSize` 可以控制返回结果的数量和页码，默认每页显示10条记录，最大支持100条。
+// - The pagination parameters `PageNumber` and `PageSize` control the number of results and page number. By default, 10 records are displayed per page, with a maximum of 100.
 //
-// - `StartTime` 和 `EndTime` 参数可用于指定时间范围内的集群信息查询，但非必填项。
+// - The `StartTime` and `EndTime` parameters specify a time range for querying cluster information, but they are optional.
 //
 // @param request - ListHivesRequest
 //
@@ -8613,17 +8617,17 @@ func (client *Client) ListRenderingSessionsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询规格信息，支持分页查询。
+// Queries all cloud application service specification information. Paging is supported.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该 API 用于查询所有可用的云应用服务规格信息。
+// - This API operation queries all active cloud application service specifications.
 //
-// - 支持通过 `Specification` 参数过滤特定规格。
+// - You can use the `Specification` parameter to filter specific specifications.
 //
-// - 分页查询时，可以通过 `PageNumber` 和 `PageSize` 参数控制返回的数据量。
+// - For paging, use the `PageNumber` and `PageSize` parameters to control the data volume returned.
 //
 // @param request - ListSpecificationsRequest
 //
@@ -9721,13 +9725,19 @@ func (client *Client) ModifyTemplateWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
-// Moves the specified cloud application service instances from their current cluster to the target Hive.
+// Moves specified workloads to a target cluster.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// - Ensure the target Hive has sufficient resources to accommodate the instances.
+// - **HiveId**: The target cluster ID. Required.
+//
+// - **InstanceIds**: The list of workload IDs to move. Required.
+//
+// - This operation moves the specified workloads from the current cluster to the target cluster.
+//
+// - Ensure that the target cluster exists to accept the new workloads.
 //
 // @param tmpReq - MoveHiveEdgeWorkersRequest
 //

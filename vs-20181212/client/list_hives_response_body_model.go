@@ -18,11 +18,16 @@ type iListHivesResponseBody interface {
 }
 
 type ListHivesResponseBody struct {
+	// The list of clusters.
 	Hives []*ListHivesResponseBodyHives `json:"Hives,omitempty" xml:"Hives,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// xxxx-xxx-xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -78,18 +83,26 @@ func (s *ListHivesResponseBody) Validate() error {
 }
 
 type ListHivesResponseBodyHives struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2025-05-14T15:20:37+08:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The description.
+	//
 	// example:
 	//
-	// 基础型S1
+	// Basic S1
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// hive-3b506f0868a7451ba15e0e890706033a
 	HiveId *string `json:"HiveId,omitempty" xml:"HiveId,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// yy-test2

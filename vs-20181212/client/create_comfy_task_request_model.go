@@ -18,7 +18,7 @@ type iCreateComfyTaskRequest interface {
 }
 
 type CreateComfyTaskRequest struct {
-	// The ID of the resource pool.
+	// The resource pool ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type CreateComfyTaskRequest struct {
 	//
 	// hive-26cd567b35c04a0a90f017388207b232
 	HiveId *string `json:"HiveId,omitempty" xml:"HiveId,omitempty"`
-	// The parameters to replace in the workflow.
+	// The workflow parameters that the user wants to replace.
 	//
 	// This parameter is required.
 	//

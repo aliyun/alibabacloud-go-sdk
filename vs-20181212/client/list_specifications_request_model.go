@@ -18,14 +18,20 @@ type iListSpecificationsRequest interface {
 }
 
 type ListSpecificationsRequest struct {
+	// The page number of the query list. Minimum value: 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page for paging. Maximum value: 100. Default value: 10.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The specification.
+	//
 	// example:
 	//
 	// ew.gn8t6xlarge-rb.x1p
