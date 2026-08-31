@@ -9,6 +9,8 @@ type iPostEventDisposeAndWhiteruleListRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *PostEventDisposeAndWhiteruleListRequest
+	GetClientToken() *string
 	SetDisposeStrategyIds(v string) *PostEventDisposeAndWhiteruleListRequest
 	GetDisposeStrategyIds() *string
 	SetEventDispose(v string) *PostEventDisposeAndWhiteruleListRequest
@@ -36,6 +38,12 @@ type iPostEventDisposeAndWhiteruleListRequest interface {
 }
 
 type PostEventDisposeAndWhiteruleListRequest struct {
+	// 幂等令牌。
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426614174000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// A comma-separated list of response strategy IDs.
 	//
 	// example:
@@ -196,6 +204,10 @@ func (s PostEventDisposeAndWhiteruleListRequest) GoString() string {
 	return s.String()
 }
 
+func (s *PostEventDisposeAndWhiteruleListRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *PostEventDisposeAndWhiteruleListRequest) GetDisposeStrategyIds() *string {
 	return s.DisposeStrategyIds
 }
@@ -242,6 +254,11 @@ func (s *PostEventDisposeAndWhiteruleListRequest) GetStatus() *int32 {
 
 func (s *PostEventDisposeAndWhiteruleListRequest) GetThreatLevel() *string {
 	return s.ThreatLevel
+}
+
+func (s *PostEventDisposeAndWhiteruleListRequest) SetClientToken(v string) *PostEventDisposeAndWhiteruleListRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *PostEventDisposeAndWhiteruleListRequest) SetDisposeStrategyIds(v string) *PostEventDisposeAndWhiteruleListRequest {

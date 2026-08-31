@@ -3111,7 +3111,7 @@ func (client *Client) DescribeWhiteRuleListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Grants permissions to Threat Analysis and creates the AliyunServiceRoleForSasCloudSiem service-linked role.
+// Authorizes the user and creates the threat detection and response service-linked role AliyunServiceRoleForSasCloudSiem.
 //
 // @param request - EnableAccessForCloudSiemRequest
 //
@@ -3128,6 +3128,10 @@ func (client *Client) EnableAccessForCloudSiemWithContext(ctx context.Context, r
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoSubmit) {
 		body["AutoSubmit"] = request.AutoSubmit
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -5254,6 +5258,10 @@ func (client *Client) PostEventDisposeAndWhiteruleListWithContext(ctx context.Co
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.DisposeStrategyIds) {
 		body["DisposeStrategyIds"] = request.DisposeStrategyIds
 	}

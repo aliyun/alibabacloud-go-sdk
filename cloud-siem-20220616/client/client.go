@@ -4064,7 +4064,7 @@ func (client *Client) DescribeWhiteRuleList(request *DescribeWhiteRuleListReques
 
 // Summary:
 //
-// Grants permissions to Threat Analysis and creates the AliyunServiceRoleForSasCloudSiem service-linked role.
+// Authorizes the user and creates the threat detection and response service-linked role AliyunServiceRoleForSasCloudSiem.
 //
 // @param request - EnableAccessForCloudSiemRequest
 //
@@ -4081,6 +4081,10 @@ func (client *Client) EnableAccessForCloudSiemWithOptions(request *EnableAccessF
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AutoSubmit) {
 		body["AutoSubmit"] = request.AutoSubmit
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
 	}
 
 	if !dara.IsNil(request.RegionId) {
@@ -4120,7 +4124,7 @@ func (client *Client) EnableAccessForCloudSiemWithOptions(request *EnableAccessF
 
 // Summary:
 //
-// Grants permissions to Threat Analysis and creates the AliyunServiceRoleForSasCloudSiem service-linked role.
+// Authorizes the user and creates the threat detection and response service-linked role AliyunServiceRoleForSasCloudSiem.
 //
 // @param request - EnableAccessForCloudSiemRequest
 //
@@ -6755,6 +6759,10 @@ func (client *Client) PostEventDisposeAndWhiteruleListWithOptions(request *PostE
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.DisposeStrategyIds) {
 		body["DisposeStrategyIds"] = request.DisposeStrategyIds
 	}

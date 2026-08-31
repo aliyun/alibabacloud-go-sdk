@@ -16,13 +16,13 @@ type iEnableAccessForCloudSiemResponseBody interface {
 }
 
 type EnableAccessForCloudSiemResponseBody struct {
-  // The return value of the request.
+  // The response data.
   // 
   // example:
   // 
   // true
   Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-  // The ID of the request.
+  // The request ID.
   // 
   // example:
   // 
