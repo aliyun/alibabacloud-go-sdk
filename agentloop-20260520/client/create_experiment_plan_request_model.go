@@ -42,9 +42,9 @@ type CreateExperimentPlanRequest struct {
 	//
 	// example:
 	//
-	// rca_benchmark_eval_experiment offline experiment.
+	// rca_benchmark_eval_experiment offline experiment
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The list of evaluators. After configuration, evaluation can be automatically triggered when the experiment completes.
+	// The list of evaluators. When configured, evaluation can be automatically triggered upon experiment completion.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type CreateExperimentPlanRequest struct {
 	//
 	// OFFLINE
 	ExperimentType *string `json:"experimentType,omitempty" xml:"experimentType,omitempty"`
-	// The list of experiment configurations. A maximum of 5 configurations are supported. For offline experiments, this parameter can be omitted or set to an empty array. For online experiments, at least one configuration is required.
+	// The list of experiment configurations. A maximum of five configurations are supported. For offline experiments, this parameter can be omitted or set to an empty array. For online experiments, at least one configuration is required.
 	//
 	// This parameter is required.
 	//
@@ -70,10 +70,11 @@ type CreateExperimentPlanRequest struct {
 	//
 	// example:
 	//
-	// {"question": "How do I get a refund?"}
-	Input        map[string]interface{} `json:"input,omitempty" xml:"input,omitempty"`
-	PipelineName *string                `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
-	// The experiment plan name. The name must be unique within the same AgentSpace and account.
+	// {"question": "How do I request a refund?"}
+	Input map[string]interface{} `json:"input,omitempty" xml:"input,omitempty"`
+	// The name of the associated data processing pipeline (optional). After association, when the experiment execution under this plan writes results to the experiment result Logstore, the system filters by the traceId of the experiment trace, calls PreviewPipeline, and writes the pipeline-processed results together.
+	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
+	// The experiment plan name. The name must be unique within the same AgentSpace under the same account.
 	//
 	// This parameter is required.
 	//
@@ -87,7 +88,7 @@ type CreateExperimentPlanRequest struct {
 	//
 	// status=\\"OK\\"
 	QuerySql *string `json:"querySql,omitempty" xml:"querySql,omitempty"`
-	// The list of selected data item IDs in partial dataset mode. This parameter must be used together with `datasetId`.
+	// The list of selected data item IDs in partial dataset mode. Use this parameter together with `datasetId`.
 	//
 	// example:
 	//

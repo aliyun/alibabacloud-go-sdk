@@ -42,7 +42,7 @@ type iGetExperimentPlanResponseBody interface {
 }
 
 type GetExperimentPlanResponseBody struct {
-	// The creation time. This value is a millisecond-level UNIX timestamp.
+	// The creation time, in millisecond-level UNIX timestamp.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type GetExperimentPlanResponseBody struct {
 	//
 	// example:
 	//
-	// Compare the checkout Agent baseline with the optimized version.
+	// Compare the checkout Agent baseline with the optimized version
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The list of evaluators.
 	//
@@ -83,8 +83,9 @@ type GetExperimentPlanResponseBody struct {
 	// example:
 	//
 	// {"question": "How do I request a refund?"}
-	Input        map[string]interface{} `json:"input,omitempty" xml:"input,omitempty"`
-	PipelineName *string                `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
+	Input map[string]interface{} `json:"input,omitempty" xml:"input,omitempty"`
+	// The name of the associated data processing pipeline. This value is empty if no pipeline is associated.
+	PipelineName *string `json:"pipelineName,omitempty" xml:"pipelineName,omitempty"`
 	// The experiment plan ID.
 	//
 	// example:
@@ -109,7 +110,7 @@ type GetExperimentPlanResponseBody struct {
 	//
 	// 3FE4CD1E-FF41-56BE-B590-7A021D9C1524
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The list of selected data item IDs in partial dataset mode.
+	// The list of data item IDs selected in partial dataset mode.
 	//
 	// example:
 	//
@@ -121,7 +122,7 @@ type GetExperimentPlanResponseBody struct {
 	//
 	// stopped
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The update time. This value is a millisecond-level UNIX timestamp.
+	// The update time, in millisecond-level UNIX timestamp.
 	//
 	// example:
 	//

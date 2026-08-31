@@ -24,9 +24,9 @@ type UpdateExperimentPlanResponseBody struct {
 	//
 	// example:
 	//
-	// Experiment plan updated successfully.
+	// Experiment plan updated successfully
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The experiment plan ID.
+	// The ID of the experiment plan.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type UpdateExperimentPlanResponseBody struct {
 	//
 	// 3FE4CD1E-FF41-56BE-B590-7A021D9C1524
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The update result. The value is updated if the operation is successful.
+	// The update result. A value of updated indicates success.
 	//
 	// example:
 	//

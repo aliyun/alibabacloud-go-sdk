@@ -64,7 +64,7 @@ type ListExperimentRunsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Filters results by fuzzy match on experiment plan name.
+	// Filters results by fuzzy match on the experiment plan name.
 	//
 	// example:
 	//

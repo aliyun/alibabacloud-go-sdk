@@ -251,7 +251,7 @@ func (s *GetPipelineResponseBody) Validate() error {
 type GetPipelineResponseBodyExecutePolicy struct {
 	// example:
 	//
-	// Scheduled
+	// scheduled
 	Mode      *string                                        `json:"mode,omitempty" xml:"mode,omitempty"`
 	RunOnce   *GetPipelineResponseBodyExecutePolicyRunOnce   `json:"runOnce,omitempty" xml:"runOnce,omitempty" type:"Struct"`
 	Scheduled *GetPipelineResponseBodyExecutePolicyScheduled `json:"scheduled,omitempty" xml:"scheduled,omitempty" type:"Struct"`
@@ -474,10 +474,11 @@ func (s *GetPipelineResponseBodyPipelineNodes) Validate() error {
 }
 
 type GetPipelineResponseBodySink struct {
-	Dataset *GetPipelineResponseBodySinkDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	Condition *GetPipelineResponseBodySinkCondition `json:"condition,omitempty" xml:"condition,omitempty" type:"Struct"`
+	Dataset   *GetPipelineResponseBodySinkDataset   `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
 	// example:
 	//
-	// Dataset
+	// condition
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -489,12 +490,21 @@ func (s GetPipelineResponseBodySink) GoString() string {
 	return s.String()
 }
 
+func (s *GetPipelineResponseBodySink) GetCondition() *GetPipelineResponseBodySinkCondition {
+	return s.Condition
+}
+
 func (s *GetPipelineResponseBodySink) GetDataset() *GetPipelineResponseBodySinkDataset {
 	return s.Dataset
 }
 
 func (s *GetPipelineResponseBodySink) GetType() *string {
 	return s.Type
+}
+
+func (s *GetPipelineResponseBodySink) SetCondition(v *GetPipelineResponseBodySinkCondition) *GetPipelineResponseBodySink {
+	s.Condition = v
+	return s
 }
 
 func (s *GetPipelineResponseBodySink) SetDataset(v *GetPipelineResponseBodySinkDataset) *GetPipelineResponseBodySink {
@@ -508,12 +518,303 @@ func (s *GetPipelineResponseBodySink) SetType(v string) *GetPipelineResponseBody
 }
 
 func (s *GetPipelineResponseBodySink) Validate() error {
+	if s.Condition != nil {
+		if err := s.Condition.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.Dataset != nil {
 		if err := s.Dataset.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type GetPipelineResponseBodySinkCondition struct {
+	DefaultSink *GetPipelineResponseBodySinkConditionDefaultSink `json:"defaultSink,omitempty" xml:"defaultSink,omitempty" type:"Struct"`
+	// example:
+	//
+	// all
+	MatchMode *string                                       `json:"matchMode,omitempty" xml:"matchMode,omitempty"`
+	Routes    []*GetPipelineResponseBodySinkConditionRoutes `json:"routes,omitempty" xml:"routes,omitempty" type:"Repeated"`
+}
+
+func (s GetPipelineResponseBodySinkCondition) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetPipelineResponseBodySinkCondition) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineResponseBodySinkCondition) GetDefaultSink() *GetPipelineResponseBodySinkConditionDefaultSink {
+	return s.DefaultSink
+}
+
+func (s *GetPipelineResponseBodySinkCondition) GetMatchMode() *string {
+	return s.MatchMode
+}
+
+func (s *GetPipelineResponseBodySinkCondition) GetRoutes() []*GetPipelineResponseBodySinkConditionRoutes {
+	return s.Routes
+}
+
+func (s *GetPipelineResponseBodySinkCondition) SetDefaultSink(v *GetPipelineResponseBodySinkConditionDefaultSink) *GetPipelineResponseBodySinkCondition {
+	s.DefaultSink = v
+	return s
+}
+
+func (s *GetPipelineResponseBodySinkCondition) SetMatchMode(v string) *GetPipelineResponseBodySinkCondition {
+	s.MatchMode = &v
+	return s
+}
+
+func (s *GetPipelineResponseBodySinkCondition) SetRoutes(v []*GetPipelineResponseBodySinkConditionRoutes) *GetPipelineResponseBodySinkCondition {
+	s.Routes = v
+	return s
+}
+
+func (s *GetPipelineResponseBodySinkCondition) Validate() error {
+	if s.DefaultSink != nil {
+		if err := s.DefaultSink.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Routes != nil {
+		for _, item := range s.Routes {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetPipelineResponseBodySinkConditionDefaultSink struct {
+	Dataset *GetPipelineResponseBodySinkConditionDefaultSinkDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// example:
+	//
+	// dataset
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetPipelineResponseBodySinkConditionDefaultSink) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetPipelineResponseBodySinkConditionDefaultSink) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineResponseBodySinkConditionDefaultSink) GetDataset() *GetPipelineResponseBodySinkConditionDefaultSinkDataset {
+	return s.Dataset
+}
+
+func (s *GetPipelineResponseBodySinkConditionDefaultSink) GetType() *string {
+	return s.Type
+}
+
+func (s *GetPipelineResponseBodySinkConditionDefaultSink) SetDataset(v *GetPipelineResponseBodySinkConditionDefaultSinkDataset) *GetPipelineResponseBodySinkConditionDefaultSink {
+	s.Dataset = v
+	return s
+}
+
+func (s *GetPipelineResponseBodySinkConditionDefaultSink) SetType(v string) *GetPipelineResponseBodySinkConditionDefaultSink {
+	s.Type = &v
+	return s
+}
+
+func (s *GetPipelineResponseBodySinkConditionDefaultSink) Validate() error {
+	if s.Dataset != nil {
+		if err := s.Dataset.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetPipelineResponseBodySinkConditionDefaultSinkDataset struct {
+	// example:
+	//
+	// my-agent-space
+	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	// example:
+	//
+	// other-result
+	Dataset *string `json:"dataset,omitempty" xml:"dataset,omitempty"`
+}
+
+func (s GetPipelineResponseBodySinkConditionDefaultSinkDataset) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetPipelineResponseBodySinkConditionDefaultSinkDataset) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineResponseBodySinkConditionDefaultSinkDataset) GetAgentSpace() *string {
+	return s.AgentSpace
+}
+
+func (s *GetPipelineResponseBodySinkConditionDefaultSinkDataset) GetDataset() *string {
+	return s.Dataset
+}
+
+func (s *GetPipelineResponseBodySinkConditionDefaultSinkDataset) SetAgentSpace(v string) *GetPipelineResponseBodySinkConditionDefaultSinkDataset {
+	s.AgentSpace = &v
+	return s
+}
+
+func (s *GetPipelineResponseBodySinkConditionDefaultSinkDataset) SetDataset(v string) *GetPipelineResponseBodySinkConditionDefaultSinkDataset {
+	s.Dataset = &v
+	return s
+}
+
+func (s *GetPipelineResponseBodySinkConditionDefaultSinkDataset) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetPipelineResponseBodySinkConditionRoutes struct {
+	// example:
+	//
+	// 	- | where intent = \\"refund\\"
+	Expression *string `json:"expression,omitempty" xml:"expression,omitempty"`
+	// example:
+	//
+	// refund
+	Id   *string                                         `json:"id,omitempty" xml:"id,omitempty"`
+	Sink *GetPipelineResponseBodySinkConditionRoutesSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
+}
+
+func (s GetPipelineResponseBodySinkConditionRoutes) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetPipelineResponseBodySinkConditionRoutes) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineResponseBodySinkConditionRoutes) GetExpression() *string {
+	return s.Expression
+}
+
+func (s *GetPipelineResponseBodySinkConditionRoutes) GetId() *string {
+	return s.Id
+}
+
+func (s *GetPipelineResponseBodySinkConditionRoutes) GetSink() *GetPipelineResponseBodySinkConditionRoutesSink {
+	return s.Sink
+}
+
+func (s *GetPipelineResponseBodySinkConditionRoutes) SetExpression(v string) *GetPipelineResponseBodySinkConditionRoutes {
+	s.Expression = &v
+	return s
+}
+
+func (s *GetPipelineResponseBodySinkConditionRoutes) SetId(v string) *GetPipelineResponseBodySinkConditionRoutes {
+	s.Id = &v
+	return s
+}
+
+func (s *GetPipelineResponseBodySinkConditionRoutes) SetSink(v *GetPipelineResponseBodySinkConditionRoutesSink) *GetPipelineResponseBodySinkConditionRoutes {
+	s.Sink = v
+	return s
+}
+
+func (s *GetPipelineResponseBodySinkConditionRoutes) Validate() error {
+	if s.Sink != nil {
+		if err := s.Sink.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetPipelineResponseBodySinkConditionRoutesSink struct {
+	Dataset *GetPipelineResponseBodySinkConditionRoutesSinkDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// example:
+	//
+	// dataset
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetPipelineResponseBodySinkConditionRoutesSink) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetPipelineResponseBodySinkConditionRoutesSink) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineResponseBodySinkConditionRoutesSink) GetDataset() *GetPipelineResponseBodySinkConditionRoutesSinkDataset {
+	return s.Dataset
+}
+
+func (s *GetPipelineResponseBodySinkConditionRoutesSink) GetType() *string {
+	return s.Type
+}
+
+func (s *GetPipelineResponseBodySinkConditionRoutesSink) SetDataset(v *GetPipelineResponseBodySinkConditionRoutesSinkDataset) *GetPipelineResponseBodySinkConditionRoutesSink {
+	s.Dataset = v
+	return s
+}
+
+func (s *GetPipelineResponseBodySinkConditionRoutesSink) SetType(v string) *GetPipelineResponseBodySinkConditionRoutesSink {
+	s.Type = &v
+	return s
+}
+
+func (s *GetPipelineResponseBodySinkConditionRoutesSink) Validate() error {
+	if s.Dataset != nil {
+		if err := s.Dataset.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type GetPipelineResponseBodySinkConditionRoutesSinkDataset struct {
+	// example:
+	//
+	// my-agent-space
+	AgentSpace *string `json:"agentSpace,omitempty" xml:"agentSpace,omitempty"`
+	// example:
+	//
+	// refund-result
+	Dataset *string `json:"dataset,omitempty" xml:"dataset,omitempty"`
+}
+
+func (s GetPipelineResponseBodySinkConditionRoutesSinkDataset) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetPipelineResponseBodySinkConditionRoutesSinkDataset) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineResponseBodySinkConditionRoutesSinkDataset) GetAgentSpace() *string {
+	return s.AgentSpace
+}
+
+func (s *GetPipelineResponseBodySinkConditionRoutesSinkDataset) GetDataset() *string {
+	return s.Dataset
+}
+
+func (s *GetPipelineResponseBodySinkConditionRoutesSinkDataset) SetAgentSpace(v string) *GetPipelineResponseBodySinkConditionRoutesSinkDataset {
+	s.AgentSpace = &v
+	return s
+}
+
+func (s *GetPipelineResponseBodySinkConditionRoutesSinkDataset) SetDataset(v string) *GetPipelineResponseBodySinkConditionRoutesSinkDataset {
+	s.Dataset = &v
+	return s
+}
+
+func (s *GetPipelineResponseBodySinkConditionRoutesSinkDataset) Validate() error {
+	return dara.Validate(s)
 }
 
 type GetPipelineResponseBodySinkDataset struct {
@@ -558,10 +859,12 @@ func (s *GetPipelineResponseBodySinkDataset) Validate() error {
 }
 
 type GetPipelineResponseBodySource struct {
-	Logstore *GetPipelineResponseBodySourceLogstore `json:"logstore,omitempty" xml:"logstore,omitempty" type:"Struct"`
+	Dataset     *GetPipelineResponseBodySourceDataset       `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	InputFields []*GetPipelineResponseBodySourceInputFields `json:"inputFields,omitempty" xml:"inputFields,omitempty" type:"Repeated"`
+	Logstore    *GetPipelineResponseBodySourceLogstore      `json:"logstore,omitempty" xml:"logstore,omitempty" type:"Struct"`
 	// example:
 	//
-	// SLS
+	// dataset
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -573,12 +876,30 @@ func (s GetPipelineResponseBodySource) GoString() string {
 	return s.String()
 }
 
+func (s *GetPipelineResponseBodySource) GetDataset() *GetPipelineResponseBodySourceDataset {
+	return s.Dataset
+}
+
+func (s *GetPipelineResponseBodySource) GetInputFields() []*GetPipelineResponseBodySourceInputFields {
+	return s.InputFields
+}
+
 func (s *GetPipelineResponseBodySource) GetLogstore() *GetPipelineResponseBodySourceLogstore {
 	return s.Logstore
 }
 
 func (s *GetPipelineResponseBodySource) GetType() *string {
 	return s.Type
+}
+
+func (s *GetPipelineResponseBodySource) SetDataset(v *GetPipelineResponseBodySourceDataset) *GetPipelineResponseBodySource {
+	s.Dataset = v
+	return s
+}
+
+func (s *GetPipelineResponseBodySource) SetInputFields(v []*GetPipelineResponseBodySourceInputFields) *GetPipelineResponseBodySource {
+	s.InputFields = v
+	return s
 }
 
 func (s *GetPipelineResponseBodySource) SetLogstore(v *GetPipelineResponseBodySourceLogstore) *GetPipelineResponseBodySource {
@@ -592,12 +913,108 @@ func (s *GetPipelineResponseBodySource) SetType(v string) *GetPipelineResponseBo
 }
 
 func (s *GetPipelineResponseBodySource) Validate() error {
+	if s.Dataset != nil {
+		if err := s.Dataset.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InputFields != nil {
+		for _, item := range s.InputFields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Logstore != nil {
 		if err := s.Logstore.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type GetPipelineResponseBodySourceDataset struct {
+	// example:
+	//
+	// my-dataset
+	Dataset *string `json:"dataset,omitempty" xml:"dataset,omitempty"`
+	// example:
+	//
+	// status = \\"pending\\"
+	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
+}
+
+func (s GetPipelineResponseBodySourceDataset) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetPipelineResponseBodySourceDataset) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineResponseBodySourceDataset) GetDataset() *string {
+	return s.Dataset
+}
+
+func (s *GetPipelineResponseBodySourceDataset) GetFilter() *string {
+	return s.Filter
+}
+
+func (s *GetPipelineResponseBodySourceDataset) SetDataset(v string) *GetPipelineResponseBodySourceDataset {
+	s.Dataset = &v
+	return s
+}
+
+func (s *GetPipelineResponseBodySourceDataset) SetFilter(v string) *GetPipelineResponseBodySourceDataset {
+	s.Filter = &v
+	return s
+}
+
+func (s *GetPipelineResponseBodySourceDataset) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetPipelineResponseBodySourceInputFields struct {
+	// example:
+	//
+	// question
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// text
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetPipelineResponseBodySourceInputFields) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetPipelineResponseBodySourceInputFields) GoString() string {
+	return s.String()
+}
+
+func (s *GetPipelineResponseBodySourceInputFields) GetName() *string {
+	return s.Name
+}
+
+func (s *GetPipelineResponseBodySourceInputFields) GetType() *string {
+	return s.Type
+}
+
+func (s *GetPipelineResponseBodySourceInputFields) SetName(v string) *GetPipelineResponseBodySourceInputFields {
+	s.Name = &v
+	return s
+}
+
+func (s *GetPipelineResponseBodySourceInputFields) SetType(v string) *GetPipelineResponseBodySourceInputFields {
+	s.Type = &v
+	return s
+}
+
+func (s *GetPipelineResponseBodySourceInputFields) Validate() error {
+	return dara.Validate(s)
 }
 
 type GetPipelineResponseBodySourceLogstore struct {

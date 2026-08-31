@@ -138,7 +138,7 @@ type PreviewPipelineRequestPipelineNodes struct {
 	//
 	// node-1
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The node parameters in key-value structure. The parameters vary depending on the node type.
+	// The node parameters in key-value format. The parameters vary based on the node type.
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The node type.
 	//
@@ -188,9 +188,13 @@ func (s *PreviewPipelineRequestPipelineNodes) Validate() error {
 }
 
 type PreviewPipelineRequestSource struct {
+	// The Dataset datasource config under the current AgentSpace.
+	Dataset *PreviewPipelineRequestSourceDataset `json:"dataset,omitempty" xml:"dataset,omitempty" type:"Struct"`
+	// The input fields and field types. This parameter applies to all data source types.
+	InputFields []*PreviewPipelineRequestSourceInputFields `json:"inputFields,omitempty" xml:"inputFields,omitempty" type:"Repeated"`
 	// The SLS Logstore datasource config.
 	Logstore *PreviewPipelineRequestSourceLogstore `json:"logstore,omitempty" xml:"logstore,omitempty" type:"Struct"`
-	// The data source type. Currently, only Simple Log Service (SLS) is supported.
+	// The data source type. Currently, Simple Log Service (SLS) is supported.
 	//
 	// example:
 	//
@@ -206,12 +210,30 @@ func (s PreviewPipelineRequestSource) GoString() string {
 	return s.String()
 }
 
+func (s *PreviewPipelineRequestSource) GetDataset() *PreviewPipelineRequestSourceDataset {
+	return s.Dataset
+}
+
+func (s *PreviewPipelineRequestSource) GetInputFields() []*PreviewPipelineRequestSourceInputFields {
+	return s.InputFields
+}
+
 func (s *PreviewPipelineRequestSource) GetLogstore() *PreviewPipelineRequestSourceLogstore {
 	return s.Logstore
 }
 
 func (s *PreviewPipelineRequestSource) GetType() *string {
 	return s.Type
+}
+
+func (s *PreviewPipelineRequestSource) SetDataset(v *PreviewPipelineRequestSourceDataset) *PreviewPipelineRequestSource {
+	s.Dataset = v
+	return s
+}
+
+func (s *PreviewPipelineRequestSource) SetInputFields(v []*PreviewPipelineRequestSourceInputFields) *PreviewPipelineRequestSource {
+	s.InputFields = v
+	return s
 }
 
 func (s *PreviewPipelineRequestSource) SetLogstore(v *PreviewPipelineRequestSourceLogstore) *PreviewPipelineRequestSource {
@@ -225,12 +247,116 @@ func (s *PreviewPipelineRequestSource) SetType(v string) *PreviewPipelineRequest
 }
 
 func (s *PreviewPipelineRequestSource) Validate() error {
+	if s.Dataset != nil {
+		if err := s.Dataset.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.InputFields != nil {
+		for _, item := range s.InputFields {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.Logstore != nil {
 		if err := s.Logstore.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type PreviewPipelineRequestSourceDataset struct {
+	// The name of the source dataset.
+	//
+	// example:
+	//
+	// my-dataset
+	Dataset *string `json:"dataset,omitempty" xml:"dataset,omitempty"`
+	// The filter condition for dataset data.
+	//
+	// example:
+	//
+	// status = \\"pending\\"
+	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
+}
+
+func (s PreviewPipelineRequestSourceDataset) String() string {
+	return dara.Prettify(s)
+}
+
+func (s PreviewPipelineRequestSourceDataset) GoString() string {
+	return s.String()
+}
+
+func (s *PreviewPipelineRequestSourceDataset) GetDataset() *string {
+	return s.Dataset
+}
+
+func (s *PreviewPipelineRequestSourceDataset) GetFilter() *string {
+	return s.Filter
+}
+
+func (s *PreviewPipelineRequestSourceDataset) SetDataset(v string) *PreviewPipelineRequestSourceDataset {
+	s.Dataset = &v
+	return s
+}
+
+func (s *PreviewPipelineRequestSourceDataset) SetFilter(v string) *PreviewPipelineRequestSourceDataset {
+	s.Filter = &v
+	return s
+}
+
+func (s *PreviewPipelineRequestSourceDataset) Validate() error {
+	return dara.Validate(s)
+}
+
+type PreviewPipelineRequestSourceInputFields struct {
+	// The field name.
+	//
+	// example:
+	//
+	// question
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The field type. Valid values: text, long, double, and json.
+	//
+	// example:
+	//
+	// text
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s PreviewPipelineRequestSourceInputFields) String() string {
+	return dara.Prettify(s)
+}
+
+func (s PreviewPipelineRequestSourceInputFields) GoString() string {
+	return s.String()
+}
+
+func (s *PreviewPipelineRequestSourceInputFields) GetName() *string {
+	return s.Name
+}
+
+func (s *PreviewPipelineRequestSourceInputFields) GetType() *string {
+	return s.Type
+}
+
+func (s *PreviewPipelineRequestSourceInputFields) SetName(v string) *PreviewPipelineRequestSourceInputFields {
+	s.Name = &v
+	return s
+}
+
+func (s *PreviewPipelineRequestSourceInputFields) SetType(v string) *PreviewPipelineRequestSourceInputFields {
+	s.Type = &v
+	return s
+}
+
+func (s *PreviewPipelineRequestSourceInputFields) Validate() error {
+	return dara.Validate(s)
 }
 
 type PreviewPipelineRequestSourceLogstore struct {

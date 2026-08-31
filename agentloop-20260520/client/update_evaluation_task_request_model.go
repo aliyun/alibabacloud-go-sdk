@@ -34,7 +34,7 @@ type UpdateEvaluationTaskRequest struct {
 	//
 	// {"dataScope":"trace"}
 	Config map[string]*string `json:"config,omitempty" xml:"config,omitempty"`
-	// The filter condition for evaluation data. A JSON object or JSON string is supported.
+	// The filter conditions for evaluation data. JSON objects and JSON strings are supported.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type UpdateEvaluationTaskRequest struct {
 	//
 	// example:
 	//
-	// 更新后的链路 Trace 任务完成度评估
+	// Updated trace link task completion evaluation
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The new list of evaluator configurations. When specified, this list entirely replaces the existing evaluator list of the task, and the system re-validates evaluator uniqueness and variable mappings.
 	//
@@ -52,9 +52,9 @@ type UpdateEvaluationTaskRequest struct {
 	//
 	// [{"evaluatorRef":"Builtin.agent_task_completion","resultName":"agent_task_completion","resultType":"score","variableMapping":{"input":"trace.input","output":"trace.output","agent_trajectory":"trace.agent_trajectory"}}]
 	Evaluators []*Evaluator `json:"evaluators,omitempty" xml:"evaluators,omitempty" type:"Repeated"`
-	// The new task execution strategies. A JSON object or JSON string is supported. If the task is in `Completed`, `Terminated`, or `Failed` status and the new strategy enables backfill or continuous mode, the backend resets the task to `Pending` and triggers orchestration.
+	// The new task execution strategies. JSON objects and JSON strings are supported. If the task is in the `Completed`, `Terminated`, or `Failed` state and the new strategy enables backfill or continuous mode, the backend restores the task to the `Pending` state and triggers orchestration.
 	RunStrategies *RunStrategies `json:"runStrategies,omitempty" xml:"runStrategies,omitempty"`
-	// The task status. Currently the backend only allows users to explicitly set this to `Terminated`. Other statuses are managed by the system.
+	// The task status. Currently, the backend only allows users to manually set this to `Terminated`. Other statuses are managed by the system.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type UpdateEvaluationTaskRequest struct {
 	//
 	// {"env":"prod","serviceId":"checkout-service","planId":"plan-20260703"}
 	Tags map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// The idempotency token. CloudSpec declares this query parameter, but the backend does not currently perform idempotency comparison.
+	// The idempotency token. CloudSpec declares this query parameter, but the backend does not currently perform idempotency checks.
 	//
 	// example:
 	//

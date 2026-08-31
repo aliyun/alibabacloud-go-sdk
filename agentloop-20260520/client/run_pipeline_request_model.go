@@ -18,11 +18,16 @@ type iRunPipelineRequest interface {
 }
 
 type RunPipelineRequest struct {
+	// The start of the data processing window, in UNIX seconds. This parameter is required for SQL Pipeline and time window-based WorkItem Source. This parameter is optional for checkpoint-based WorkItem Source types such as Dataset and Logstore Pull.
+	//
 	// example:
 	//
 	// 1735660800
-	FromTime *int64                    `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
-	Output   *RunPipelineRequestOutput `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	// The output control settings. SQL Pipeline supports overriding. WorkItem Pipeline uses the saved Sink configuration and must keep the default value.
+	Output *RunPipelineRequestOutput `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	// The end of the data processing window, in UNIX seconds. This parameter must be provided together with fromTime and must be greater than fromTime. This parameter is optional for checkpoint-based WorkItem Source types.
+	//
 	// example:
 	//
 	// 1735747200
@@ -74,10 +79,14 @@ func (s *RunPipelineRequest) Validate() error {
 }
 
 type RunPipelineRequestOutput struct {
+	// Specifies whether to write to the target Dataset. Default value: true.
+	//
 	// example:
 	//
 	// true
 	Dataset *bool `json:"dataset,omitempty" xml:"dataset,omitempty"`
+	// Specifies whether to return inline results in the response. Default value: false.
+	//
 	// example:
 	//
 	// false

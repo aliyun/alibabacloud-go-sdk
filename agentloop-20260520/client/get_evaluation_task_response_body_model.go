@@ -58,7 +58,7 @@ type GetEvaluationTaskResponseBody struct {
 	//
 	// default
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// The data source and execution configuration. Tasks with `dataType=trace` typically include `project`, `storeName`, and `dataScope` fields populated by the backend.
+	// The data source and execution configuration. Tasks with `dataType=trace` typically contain `project`, `storeName`, and `dataScope` fields that are populated by the backend.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type GetEvaluationTaskResponseBody struct {
 	//
 	// 1782816000
 	CreatedAt *int64 `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The filter conditions for evaluation data, returned by the backend as a JSON string.
+	// The evaluation data filter condition, returned by the backend as a JSON string.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type GetEvaluationTaskResponseBody struct {
 	//
 	// example:
 	//
-	// 评估线上 Agent 链路任务完成度
+	// Evaluate the task completion rate of the online Agent pipeline
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The list of evaluator configurations.
 	//

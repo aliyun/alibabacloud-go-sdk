@@ -18,7 +18,7 @@ type iPreviewPipelineResponseBody interface {
 }
 
 type PreviewPipelineResponseBody struct {
-	// The `data` field is a collection of sample rows (an array of maps) that contains only the first N rows (up to 5 by default) and does not reflect the complete write plan.
+	// `data` is a collection of sample rows (maps within an array) that contains only the first N rows (up to 5 by default) and does not reflect the complete write plan.
 	Data []map[string]*string `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The query metadata.
 	Meta *PreviewPipelineResponseBodyMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
@@ -81,7 +81,7 @@ type PreviewPipelineResponseBodyMeta struct {
 	//
 	// 	- | SELECT status, count(*) AS cnt GROUP BY status
 	AggQuery *string `json:"aggQuery,omitempty" xml:"aggQuery,omitempty"`
-	// The `meta.columnTypes` field provides a mapping from column names to data types (string / long / double / json).
+	// `meta.columnTypes` provides the mapping from column names to data types (string / long / double / json).
 	ColumnTypes []*string `json:"columnTypes,omitempty" xml:"columnTypes,omitempty" type:"Repeated"`
 	// The number of matched log entries.
 	//
@@ -113,7 +113,7 @@ type PreviewPipelineResponseBodyMeta struct {
 	IsAccurate *bool `json:"isAccurate,omitempty" xml:"isAccurate,omitempty"`
 	// The list of result column names.
 	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
-	// The maximum number of result rows returned.
+	// The maximum number of rows that can be returned.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type PreviewPipelineResponseBodyMeta struct {
 	//
 	// 1
 	Mode *int32 `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The number of processed data bytes.
+	// The number of data bytes processed.
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type PreviewPipelineResponseBodyMeta struct {
 	//
 	// 10000
 	ProcessedRows *int64 `json:"processedRows,omitempty" xml:"processedRows,omitempty"`
-	// The SLS query progress. A value of Complete indicates that the query is complete.
+	// The Simple Log Service (SLS) query progress. A value of Complete indicates that the query is complete.
 	//
 	// example:
 	//
@@ -149,7 +149,7 @@ type PreviewPipelineResponseBodyMeta struct {
 	//
 	// 1048576
 	ScanBytes *int64 `json:"scanBytes,omitempty" xml:"scanBytes,omitempty"`
-	// The column type and aggregation information.
+	// The type and aggregation information of columns.
 	Terms []map[string]interface{} `json:"terms,omitempty" xml:"terms,omitempty" type:"Repeated"`
 	// The filter condition SPL statement.
 	//

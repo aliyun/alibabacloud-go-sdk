@@ -23,12 +23,14 @@ type iEvaluator interface {
   GetResultType() *string 
   SetType(v string) *Evaluator
   GetType() *string 
+  SetVariableExtractorMapping(v map[string]*EvaluatorVariableExtractorMappingValue) *Evaluator
+  GetVariableExtractorMapping() map[string]*EvaluatorVariableExtractorMappingValue 
   SetVariableMapping(v map[string]*string) *Evaluator
   GetVariableMapping() map[string]*string 
 }
 
 type Evaluator struct {
-  // The evaluator runtime configuration. For inline LLM evaluators, this must include configurations such as prompt. When referencing an existing evaluator, this parameter is typically not required and is only specified when runtime parameters such as version need to be set.
+  // The runtime configuration of the evaluator. For inline LLM evaluators, this must include configurations such as prompt. When referencing an existing evaluator, this parameter is typically not required and should only be specified when runtime parameters such as version need to be set.
   // 
   // example:
   // 
@@ -58,18 +60,20 @@ type Evaluator struct {
   // 
   // agent_task_completion
   ResultName *string `json:"resultName,omitempty" xml:"resultName,omitempty"`
-  // The evaluation result type. Required for inline evaluators. Defaults to score when referencing an existing evaluator and this parameter is not specified.
+  // The evaluation result type. Required for inline evaluators. When referencing an existing evaluator, defaults to score if not specified.
   // 
   // example:
   // 
   // score
   ResultType *string `json:"resultType,omitempty" xml:"resultType,omitempty"`
-  // The evaluator type. Defaults to LLM if not specified. Inline CODE evaluators are currently not supported. For CODE type evaluators, reference a previously created evaluator by using evaluatorRef.
+  // The evaluator type. Defaults to LLM if not specified. Inline CODE evaluators are not currently supported. For the CODE type, reference a previously created evaluator by using evaluatorRef.
   // 
   // example:
   // 
   // AGENT
   Type *string `json:"type,omitempty" xml:"type,omitempty"`
+  // The variable extraction rule mapping that maps evaluator variables to a portion of the content within an evaluation data field. This is applicable when the variable value is not the entire field but a subset of the field content. This parameter shares the same variable name key space as variableMapping. Each variable can use only one of the two. Duplicate configurations cause an error. When referencing an existing evaluator, the variable names must exist in the evaluator definition. Call ListTraceFieldExtractionsPreview to perform a trial run for validation before saving.
+  VariableExtractorMapping map[string]*EvaluatorVariableExtractorMappingValue `json:"variableExtractorMapping,omitempty" xml:"variableExtractorMapping,omitempty"`
   // The variable mapping that maps evaluator variables to evaluation data fields. Required for LLM/AGENT inline evaluators. When referencing an existing evaluator, the variable names must exist in the evaluator definition.
   // 
   // example:
@@ -114,6 +118,10 @@ func (s *Evaluator) GetType() *string  {
   return s.Type
 }
 
+func (s *Evaluator) GetVariableExtractorMapping() map[string]*EvaluatorVariableExtractorMappingValue  {
+  return s.VariableExtractorMapping
+}
+
 func (s *Evaluator) GetVariableMapping() map[string]*string  {
   return s.VariableMapping
 }
@@ -150,6 +158,11 @@ func (s *Evaluator) SetResultType(v string) *Evaluator {
 
 func (s *Evaluator) SetType(v string) *Evaluator {
   s.Type = &v
+  return s
+}
+
+func (s *Evaluator) SetVariableExtractorMapping(v map[string]*EvaluatorVariableExtractorMappingValue) *Evaluator {
+  s.VariableExtractorMapping = v
   return s
 }
 
