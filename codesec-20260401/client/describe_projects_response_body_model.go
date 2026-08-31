@@ -22,11 +22,34 @@ type iDescribeProjectsResponseBody interface {
 }
 
 type DescribeProjectsResponseBody struct {
-	Items      []*DescribeProjectsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	MaxResults *int32                               `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	NextToken  *string                              `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	RequestId  *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TotalCount *int64                               `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// The list of projects.
+	Items []*DescribeProjectsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The page size.
+	//
+	// > If not specified, all projects are displayed.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token. An empty value indicates the last page.
+	//
+	// example:
+	//
+	// eyJ0IjoiMjAyNi0wNy0xNlQwNzo1MzozOC4wMjFaIiwiaSI6MTAwMDQ0OH0
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 9A1F403F-0A85-5578-8B7C-55E3E9408659
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 2
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s DescribeProjectsResponseBody) String() string {
@@ -96,17 +119,57 @@ func (s *DescribeProjectsResponseBody) Validate() error {
 }
 
 type DescribeProjectsResponseBodyItems struct {
+	// The project configuration version number.
+	//
+	// example:
+	//
+	// 1
 	ConfigRevision *int64 `json:"configRevision,omitempty" xml:"configRevision,omitempty"`
-	// 扫描项目创建时间（RFC3339）
-	CreatedAt         *string                                   `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy         *string                                   `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	Description       *string                                   `json:"description,omitempty" xml:"description,omitempty"`
-	Engines           *DescribeProjectsResponseBodyItemsEngines `json:"engines,omitempty" xml:"engines,omitempty" type:"Struct"`
-	Id                *int64                                    `json:"id,omitempty" xml:"id,omitempty"`
-	InstructionPrompt *string                                   `json:"instructionPrompt,omitempty" xml:"instructionPrompt,omitempty"`
-	Name              *string                                   `json:"name,omitempty" xml:"name,omitempty"`
-	Source            *DescribeProjectsResponseBodyItemsSource  `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
-	// 扫描项目更新时间（RFC3339）
+	// The creation time.
+	//
+	// example:
+	//
+	// 2026-07-28T03:36:31.573Z
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The user ID of the project creator.
+	//
+	// example:
+	//
+	// 11111
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// 111
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The engine switches for the project or scan snapshot (SAST and SCA only).
+	Engines *DescribeProjectsResponseBodyItemsEngines `json:"engines,omitempty" xml:"engines,omitempty" type:"Struct"`
+	// The project ID.
+	//
+	// example:
+	//
+	// 934
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The natural language prompt provided by the user that describes scanning or result processing preferences, such as ignoring low-risk vulnerabilities.
+	//
+	// example:
+	//
+	// 1111
+	InstructionPrompt *string `json:"instructionPrompt,omitempty" xml:"instructionPrompt,omitempty"`
+	// The project name.
+	//
+	// example:
+	//
+	// manual-hDecBn
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The project source.
+	Source *DescribeProjectsResponseBodyItemsSource `json:"source,omitempty" xml:"source,omitempty" type:"Struct"`
+	// The update time.
+	//
+	// example:
+	//
+	// 2026-07-28T03:36:31.573Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
 }
 
@@ -223,8 +286,18 @@ func (s *DescribeProjectsResponseBodyItems) Validate() error {
 }
 
 type DescribeProjectsResponseBodyItemsEngines struct {
+	// Indicates whether SAST is supported.
+	//
+	// example:
+	//
+	// true
 	Sast *bool `json:"sast,omitempty" xml:"sast,omitempty"`
-	Sca  *bool `json:"sca,omitempty" xml:"sca,omitempty"`
+	// Indicates whether SCA is supported.
+	//
+	// example:
+	//
+	// true
+	Sca *bool `json:"sca,omitempty" xml:"sca,omitempty"`
 }
 
 func (s DescribeProjectsResponseBodyItemsEngines) String() string {
@@ -258,6 +331,11 @@ func (s *DescribeProjectsResponseBodyItemsEngines) Validate() error {
 }
 
 type DescribeProjectsResponseBodyItemsSource struct {
+	// The project type.
+	//
+	// example:
+	//
+	// manual_upload
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 

@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// # List projects for tenant
+// Lists projects under the tenant with pagination, supporting fuzzy search by name or prompt.
 //
 // @param request - DescribeProjectsRequest
 //
@@ -64,7 +64,7 @@ func (client *Client) DescribeProjectsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// List findings for one engine (SAST / SCA)
+// Queries the task result list to retrieve detailed SAST or SCA results for a specific scan.
 //
 // @param request - DescribeScanResultsByEngineRequest
 //
@@ -127,7 +127,7 @@ func (client *Client) DescribeScanResultsByEngineWithContext(ctx context.Context
 
 // Summary:
 //
-// # List scans for project
+// Lists scan tasks under a specified project with pagination.
 //
 // @param request - DescribeScansRequest
 //

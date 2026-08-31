@@ -24,7 +24,11 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"ap-southeast-1": dara.String("codesec.ap-southeast-1.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("codesec.cn-hangzhou.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -58,7 +62,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// # List projects for tenant
+// Lists projects under the tenant with pagination, supporting fuzzy search by name or prompt.
 //
 // @param request - DescribeProjectsRequest
 //
@@ -113,7 +117,7 @@ func (client *Client) DescribeProjectsWithOptions(request *DescribeProjectsReque
 
 // Summary:
 //
-// # List projects for tenant
+// Lists projects under the tenant with pagination, supporting fuzzy search by name or prompt.
 //
 // @param request - DescribeProjectsRequest
 //
@@ -132,7 +136,7 @@ func (client *Client) DescribeProjects(request *DescribeProjectsRequest) (_resul
 
 // Summary:
 //
-// List findings for one engine (SAST / SCA)
+// Queries the task result list to retrieve detailed SAST or SCA results for a specific scan.
 //
 // @param request - DescribeScanResultsByEngineRequest
 //
@@ -195,7 +199,7 @@ func (client *Client) DescribeScanResultsByEngineWithOptions(projectId *string, 
 
 // Summary:
 //
-// List findings for one engine (SAST / SCA)
+// Queries the task result list to retrieve detailed SAST or SCA results for a specific scan.
 //
 // @param request - DescribeScanResultsByEngineRequest
 //
@@ -214,7 +218,7 @@ func (client *Client) DescribeScanResultsByEngine(projectId *string, scanId *str
 
 // Summary:
 //
-// # List scans for project
+// Lists scan tasks under a specified project with pagination.
 //
 // @param request - DescribeScansRequest
 //
@@ -273,7 +277,7 @@ func (client *Client) DescribeScansWithOptions(projectId *string, request *Descr
 
 // Summary:
 //
-// # List scans for project
+// Lists scan tasks under a specified project with pagination.
 //
 // @param request - DescribeScansRequest
 //

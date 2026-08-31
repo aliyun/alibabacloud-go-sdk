@@ -22,11 +22,32 @@ type iDescribeScansResponseBody interface {
 }
 
 type DescribeScansResponseBody struct {
-	Items      []*DescribeScansResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	MaxResults *int64                            `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	NextToken  *string                           `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	RequestId  *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	TotalCount *int64                            `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// The task list.
+	Items []*DescribeScansResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The page size.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token. An empty value indicates the last page.
+	//
+	// example:
+	//
+	// eyJ0IjoiMjAyNi0wNy0xNlQwNzo1MzozOC4wMjFaIiwiaSI6MTAwMDQ0OH0
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 9A1F403F-0A85-5578-8B7C-55E3E9408659
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 2
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s DescribeScansResponseBody) String() string {
@@ -96,25 +117,118 @@ func (s *DescribeScansResponseBody) Validate() error {
 }
 
 type DescribeScansResponseBodyItems struct {
+	// The code bundle ID.
+	//
+	// example:
+	//
+	// 11
 	CodeBundleId *int64 `json:"codeBundleId,omitempty" xml:"codeBundleId,omitempty"`
-	// 扫描任务创建时间（RFC3339）
-	CreatedAt      *string                                       `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	CreatedBy      *string                                       `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// The time when the task was created.
+	//
+	// example:
+	//
+	// 2026-07-28T03:36:31.573Z
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// The user ID of the task creator.
+	//
+	// example:
+	//
+	// 11111
+	CreatedBy *string `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
+	// The scan phase. Valid values:
+	//
+	// 	- threat_model: Threat modeling.
+	//
+	// 	- discovery: Vulnerability discovery.
+	//
+	// 	- panel: Vulnerability review.
+	//
+	// 	- adversarial: Adversarial verification.
+	//
+	// 	- finalize: Report generation.
+	//
+	// example:
+	//
+	// finalize
+	CurrentPhase *string `json:"currentPhase,omitempty" xml:"currentPhase,omitempty"`
+	// The supported scan types.
 	EngineSnapshot *DescribeScansResponseBodyItemsEngineSnapshot `json:"engineSnapshot,omitempty" xml:"engineSnapshot,omitempty" type:"Struct"`
-	// 扫描结束时间（RFC3339）
-	FinishedAt   *string                                    `json:"finishedAt,omitempty" xml:"finishedAt,omitempty"`
-	Id           *int64                                     `json:"id,omitempty" xml:"id,omitempty"`
-	Kind         *string                                    `json:"kind,omitempty" xml:"kind,omitempty"`
-	ProjectId    *int64                                     `json:"projectId,omitempty" xml:"projectId,omitempty"`
-	ScanMetrics  *DescribeScansResponseBodyItemsScanMetrics `json:"scanMetrics,omitempty" xml:"scanMetrics,omitempty" type:"Struct"`
-	ScanProgress *int64                                     `json:"scanProgress,omitempty" xml:"scanProgress,omitempty"`
-	// 扫描开始时间（RFC3339）
+	// The time when the scan finished.
+	//
+	// example:
+	//
+	// 2026-07-28T03:36:31.573Z
+	FinishedAt *string `json:"finishedAt,omitempty" xml:"finishedAt,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// 934
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The scan type. Valid values:
+	//
+	// 	- full: Full scan.
+	//
+	// 	- incremental: Incremental scan.
+	//
+	// example:
+	//
+	// full
+	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
+	// The project ID.
+	//
+	// example:
+	//
+	// p-n72k9yrkq81ny7z
+	ProjectId *int64 `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	// The scan result statistics information.
+	ScanMetrics *DescribeScansResponseBodyItemsScanMetrics `json:"scanMetrics,omitempty" xml:"scanMetrics,omitempty" type:"Struct"`
+	// The task progress.
+	//
+	// example:
+	//
+	// 100
+	ScanProgress *int64 `json:"scanProgress,omitempty" xml:"scanProgress,omitempty"`
+	// The time when the task started.
+	//
+	// example:
+	//
+	// 2026-07-28T03:36:31.573Z
 	StartedAt *string `json:"startedAt,omitempty" xml:"startedAt,omitempty"`
-	Status    *string `json:"status,omitempty" xml:"status,omitempty"`
-	TaskName  *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
-	// 扫描任务更新时间（RFC3339）
+	// The task status. Valid values:
+	//
+	// 	- running: Running.
+	//
+	// 	- completed: Completed.
+	//
+	// 	- failed: Failed.
+	//
+	// 	- canceling: Being canceled.
+	//
+	// 	- canceled: Canceled.
+	//
+	// example:
+	//
+	// completed
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The task name.
+	//
+	// example:
+	//
+	// 1648622222394847-ha-cn-lm64p7tby01_dsl_kb_video_1773817008236_full
+	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
+	// The time when the task was last updated.
+	//
+	// example:
+	//
+	// 2026-07-28T03:36:31.573Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	WorkerId  *string `json:"workerId,omitempty" xml:"workerId,omitempty"`
+	// Deprecated.
+	//
+	// example:
+	//
+	// 1
+	WorkerId *string `json:"workerId,omitempty" xml:"workerId,omitempty"`
 }
 
 func (s DescribeScansResponseBodyItems) String() string {
@@ -135,6 +249,10 @@ func (s *DescribeScansResponseBodyItems) GetCreatedAt() *string {
 
 func (s *DescribeScansResponseBodyItems) GetCreatedBy() *string {
 	return s.CreatedBy
+}
+
+func (s *DescribeScansResponseBodyItems) GetCurrentPhase() *string {
+	return s.CurrentPhase
 }
 
 func (s *DescribeScansResponseBodyItems) GetEngineSnapshot() *DescribeScansResponseBodyItemsEngineSnapshot {
@@ -197,6 +315,11 @@ func (s *DescribeScansResponseBodyItems) SetCreatedAt(v string) *DescribeScansRe
 
 func (s *DescribeScansResponseBodyItems) SetCreatedBy(v string) *DescribeScansResponseBodyItems {
 	s.CreatedBy = &v
+	return s
+}
+
+func (s *DescribeScansResponseBodyItems) SetCurrentPhase(v string) *DescribeScansResponseBodyItems {
+	s.CurrentPhase = &v
 	return s
 }
 
@@ -275,8 +398,18 @@ func (s *DescribeScansResponseBodyItems) Validate() error {
 }
 
 type DescribeScansResponseBodyItemsEngineSnapshot struct {
+	// Indicates whether SAST is supported.
+	//
+	// example:
+	//
+	// true
 	Sast *bool `json:"sast,omitempty" xml:"sast,omitempty"`
-	Sca  *bool `json:"sca,omitempty" xml:"sca,omitempty"`
+	// Indicates whether SCA is supported.
+	//
+	// example:
+	//
+	// true
+	Sca *bool `json:"sca,omitempty" xml:"sca,omitempty"`
 }
 
 func (s DescribeScansResponseBodyItemsEngineSnapshot) String() string {
@@ -310,10 +443,30 @@ func (s *DescribeScansResponseBodyItemsEngineSnapshot) Validate() error {
 }
 
 type DescribeScansResponseBodyItemsScanMetrics struct {
-	Credit      *float32 `json:"credit,omitempty" xml:"credit,omitempty"`
-	FileCount   *int64   `json:"fileCount,omitempty" xml:"fileCount,omitempty"`
-	LinesOfCode *int64   `json:"linesOfCode,omitempty" xml:"linesOfCode,omitempty"`
-	TokenTotal  *int64   `json:"tokenTotal,omitempty" xml:"tokenTotal,omitempty"`
+	// The number of credits consumed by the task.
+	//
+	// example:
+	//
+	// 1.25
+	Credit *float32 `json:"credit,omitempty" xml:"credit,omitempty"`
+	// The number of files.
+	//
+	// example:
+	//
+	// 459
+	FileCount *int64 `json:"fileCount,omitempty" xml:"fileCount,omitempty"`
+	// The number of lines of code.
+	//
+	// example:
+	//
+	// 11
+	LinesOfCode *int64 `json:"linesOfCode,omitempty" xml:"linesOfCode,omitempty"`
+	// Deprecated.
+	//
+	// example:
+	//
+	// 1
+	TokenTotal *int64 `json:"tokenTotal,omitempty" xml:"tokenTotal,omitempty"`
 }
 
 func (s DescribeScansResponseBodyItemsScanMetrics) String() string {

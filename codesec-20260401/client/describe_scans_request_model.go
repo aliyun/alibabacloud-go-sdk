@@ -20,10 +20,36 @@ type iDescribeScansRequest interface {
 }
 
 type DescribeScansRequest struct {
-	MaxResults *int64  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	NextToken  *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Status     *string `json:"status,omitempty" xml:"status,omitempty"`
-	TaskName   *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
+	// The number of entries per page. Default value: 20. Maximum value: 100.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token. Do not specify this parameter or set it to an empty string for the first page. For subsequent pages, pass the nextToken value from the previous response without any modification. If the nextToken value in the response is empty, the last page has been reached.
+	//
+	// example:
+	//
+	// eyJ0IjoiMjAyNi0wNy0xNlQwNzo1MzozOC4wMjFaIiwiaSI6MTAwMDQ0OH0
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The task status. Valid values:
+	//
+	// 	- running: Running.
+	//
+	// 	- completed: Completed.
+	//
+	// 	- failed: Failed.
+	//
+	// example:
+	//
+	// completed
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The task name.
+	//
+	// example:
+	//
+	// name
+	TaskName *string `json:"taskName,omitempty" xml:"taskName,omitempty"`
 }
 
 func (s DescribeScansRequest) String() string {

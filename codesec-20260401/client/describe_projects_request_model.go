@@ -18,9 +18,24 @@ type iDescribeProjectsRequest interface {
 }
 
 type DescribeProjectsRequest struct {
-	MaxResults *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	NextToken  *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Query      *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token. Do not specify this parameter or set it to an empty string for the first page. For subsequent pages, pass the nextToken value from the previous response without any modification. If the nextToken in the response is empty, the last page has been reached.
+	//
+	// example:
+	//
+	// eyJ0IjoiMjAyNi0wNy0xNlQwNzo1MzozOC4wMjFaIiwiaSI6MTAwMDQ0OH0
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Fuzzy matches projects by project name or prompt.
+	//
+	// example:
+	//
+	// project
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 }
 
 func (s DescribeProjectsRequest) String() string {
