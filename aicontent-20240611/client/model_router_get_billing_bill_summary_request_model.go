@@ -32,7 +32,7 @@ type iModelRouterGetBillingBillSummaryRequest interface {
 }
 
 type ModelRouterGetBillingBillSummaryRequest struct {
-	// The API key ID used to filter results. This parameter is optional and linked to the department. You must specify clientId first.
+	// The API Key ID used to filter results. This parameter is optional and linked with the department. You must specify clientId first.
 	//
 	// example:
 	//
@@ -50,16 +50,21 @@ type ModelRouterGetBillingBillSummaryRequest struct {
 	//
 	// 1,2,3
 	ClientIds *string `json:"clientIds,omitempty" xml:"clientIds,omitempty"`
-	// The end time, in UNIX timestamp format (seconds).
+	// The end time, in UNIX timestamp (seconds).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1700086400
-	EndTime    *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The maximum number of results to return.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The member IDs used to filter results, separated by commas. This parameter is optional. If not specified, the query returns data for the department and all its members. If an empty value is specified, the query returns data for the department only, excluding members.
+	// The member IDs used to filter results, separated by commas. This parameter is optional. If not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
 	//
 	// example:
 	//
@@ -77,8 +82,13 @@ type ModelRouterGetBillingBillSummaryRequest struct {
 	//
 	// Chat,ChatMultimodal
 	ModelTypes *string `json:"modelTypes,omitempty" xml:"modelTypes,omitempty"`
-	NextToken  *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The start time, in UNIX timestamp format (seconds).
+	// nextToken
+	//
+	// example:
+	//
+	// xxxx-xxx-xxxxx
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The start time, in UNIX timestamp (seconds).
 	//
 	// This parameter is required.
 	//

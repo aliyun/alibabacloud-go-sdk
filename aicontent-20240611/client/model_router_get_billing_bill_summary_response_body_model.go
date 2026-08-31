@@ -29,8 +29,12 @@ type iModelRouterGetBillingBillSummaryResponseBody interface {
 
 type ModelRouterGetBillingBillSummaryResponseBody struct {
 	// The data object.
+	//
+	// example:
+	//
+	// []
 	Data *BillingBillSummaryRespDTO `json:"data,omitempty" xml:"data,omitempty"`
-	// The fault code.
+	// The error message code.
 	//
 	// example:
 	//
@@ -47,9 +51,19 @@ type ModelRouterGetBillingBillSummaryResponseBody struct {
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	MaxResults     *int32  `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	NextToken      *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The maximum number of results returned per page.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token.
+	//
+	// example:
+	//
+	// xxxx-xxx-xxxxx
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The request ID.
 	//
 	// example:

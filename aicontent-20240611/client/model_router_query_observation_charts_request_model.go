@@ -40,7 +40,7 @@ type ModelRouterQueryObservationChartsRequest struct {
 	//
 	// 1
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	// The list of department IDs, separated by commas. Supports querying data for multiple departments. This parameter is mutually exclusive with client_id.
+	// The list of department IDs, separated by commas. Supports querying data for multiple departments. This parameter is mutually exclusive with clientId.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ModelRouterQueryObservationChartsRequest struct {
 	//
 	// 2024-01-01T00:00:00Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The time range for the query. Valid values: 1h, 6h, 24h, 7d, and 30d.
+	// The time range. Valid values: 1h, 6h, 24h, 7d, 30d.
 	//
 	// example:
 	//

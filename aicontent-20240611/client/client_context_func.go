@@ -3858,7 +3858,11 @@ func (client *Client) ModelRouterExportMemberBalanceOrdersWithContext(ctx contex
 
 // Summary:
 //
-// Queries the total cost trend of bills in the Billing Center.
+// Billing Center/Queries the total cost trend of bills.
+//
+// Description:
+//
+// Queries user role assignments.
 //
 // @param request - ModelRouterGetBillingBillSummaryRequest
 //
@@ -4599,6 +4603,112 @@ func (client *Client) ModelRouterListSubscriptionsWithContext(ctx context.Contex
 
 // Summary:
 //
+// Retrieves a pre-signed URL for downloading a Migu source file.
+//
+// Description:
+//
+// Creates a user.
+//
+// @param request - ModelRouterMiguDownloadSourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterMiguDownloadSourceResponse
+func (client *Client) ModelRouterMiguDownloadSourceWithContext(ctx context.Context, request *ModelRouterMiguDownloadSourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterMiguDownloadSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SourceId) {
+		query["sourceId"] = request.SourceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterMiguDownloadSource"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/pipeline/api/aigc/source/download"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterMiguDownloadSourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Manages Migu source files and retrieves a pre-signed URL for source file upload.
+//
+// Description:
+//
+// Updates a user.
+//
+// @param request - ModelRouterMiguUploadSourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterMiguUploadSourceResponse
+func (client *Client) ModelRouterMiguUploadSourceWithContext(ctx context.Context, request *ModelRouterMiguUploadSourceRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterMiguUploadSourceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FileType) {
+		body["fileType"] = request.FileType
+	}
+
+	if !dara.IsNil(request.ServiceName) {
+		body["serviceName"] = request.ServiceName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterMiguUploadSource"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/pipeline/api/aigc/source/upload"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterMiguUploadSourceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the details of an API key.
 //
 // @param headers - map
@@ -4729,6 +4839,10 @@ func (client *Client) ModelRouterQueryApiKeyListWithContext(ctx context.Context,
 //
 // Queries billing details in batches.
 //
+// Description:
+//
+// Queries the user list.
+//
 // @param request - ModelRouterQueryBillingCostBreakdownRequest
 //
 // @param headers - map
@@ -4812,6 +4926,97 @@ func (client *Client) ModelRouterQueryBillingCostBreakdownWithContext(ctx contex
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModelRouterQueryBillingCostBreakdownResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries request-granularity billing details from the Billing Center.
+//
+// Description:
+//
+// Queries the user list.
+//
+// @param request - ModelRouterQueryBillingDetailsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterQueryBillingDetailsResponse
+func (client *Client) ModelRouterQueryBillingDetailsWithContext(ctx context.Context, request *ModelRouterQueryBillingDetailsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterQueryBillingDetailsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ApiKeyId) {
+		query["apiKeyId"] = request.ApiKeyId
+	}
+
+	if !dara.IsNil(request.ClientId) {
+		query["clientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.ClientIds) {
+		query["clientIds"] = request.ClientIds
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.ModelCodes) {
+		query["modelCodes"] = request.ModelCodes
+	}
+
+	if !dara.IsNil(request.ModelId) {
+		query["modelId"] = request.ModelId
+	}
+
+	if !dara.IsNil(request.ModelTypes) {
+		query["modelTypes"] = request.ModelTypes
+	}
+
+	if !dara.IsNil(request.Page) {
+		query["page"] = request.Page
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RequestId) {
+		query["requestId"] = request.RequestId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["startTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterQueryBillingDetails"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/billing/details"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterQueryBillingDetailsResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6178,7 +6383,11 @@ func (client *Client) ModelRouterQueryNacosTagsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Retrieves observation chart data for model monitoring.
+// Retrieves monitoring chart data for model observation.
+//
+// Description:
+//
+// Queries a list of users.
 //
 // @param request - ModelRouterQueryObservationChartsRequest
 //
