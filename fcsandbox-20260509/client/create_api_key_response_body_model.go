@@ -25,10 +25,6 @@ type iCreateApiKeyResponseBody interface {
 
 type CreateApiKeyResponseBody struct {
 	// API Key。
-	//
-	// example:
-	//
-	// {\\"gmtCreate\\": 1776997128000, \\"workspaceId\\": \\"ws-3w77kird5sblwwfk\\", \\"apiKeyId\\": 4808780, \\"createdBy\\": \\"AssumedRoleUser300873166069492100\\", \\"apiKeyValue\\": \\"sk-110ff0028ad64a24b9453c8955c4c191\\"}
 	ApiKey *ApiKey `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
 	// The error code.
 	//

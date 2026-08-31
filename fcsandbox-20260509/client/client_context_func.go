@@ -93,6 +93,48 @@ func (client *Client) CreateTeamWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
+// Creates a template.
+//
+// @param request - CreateTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTemplateResponse
+func (client *Client) CreateTemplateWithContext(ctx context.Context, request *CreateTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *CreateTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateTemplate"),
+		Version:     dara.String("2026-05-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-05-09/templates"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateTemplateResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a volume.
 //
 // @param request - CreateVolumeRequest
@@ -254,6 +296,53 @@ func (client *Client) DeleteTeamWithContext(ctx context.Context, teamID *string,
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteTeamResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a template.
+//
+// @param request - DeleteTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTemplateResponse
+func (client *Client) DeleteTemplateWithContext(ctx context.Context, templateID *string, request *DeleteTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TeamID) {
+		query["teamID"] = request.TeamID
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteTemplate"),
+		Version:     dara.String("2026-05-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-05-09/templates/" + dara.PercentEncode(dara.StringValue(templateID))),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteTemplateResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -430,6 +519,53 @@ func (client *Client) GetTeamWithContext(ctx context.Context, teamID *string, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTeamResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a template.
+//
+// @param request - GetTemplateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTemplateResponse
+func (client *Client) GetTemplateWithContext(ctx context.Context, templateID *string, request *GetTemplateRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TeamID) {
+		query["teamID"] = request.TeamID
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTemplate"),
+		Version:     dara.String("2026-05-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-05-09/templates/" + dara.PercentEncode(dara.StringValue(templateID))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTemplateResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -662,6 +798,61 @@ func (client *Client) ListTeamsWithContext(ctx context.Context, request *ListTea
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTeamsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of templates.
+//
+// @param request - ListTemplatesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTemplatesResponse
+func (client *Client) ListTemplatesWithContext(ctx context.Context, request *ListTemplatesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListTemplatesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.TeamID) {
+		query["teamID"] = request.TeamID
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTemplates"),
+		Version:     dara.String("2026-05-09"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/pop/2026-05-09/templates"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTemplatesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

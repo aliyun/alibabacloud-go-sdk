@@ -37,6 +37,7 @@ type DescribeApiKeyResponseBody struct {
 	// 200
 	Code        *string     `json:"code,omitempty" xml:"code,omitempty"`
 	IpBlacklist []*IPConfig `json:"ipBlacklist,omitempty" xml:"ipBlacklist,omitempty" type:"Repeated"`
+	// The IP whitelist.
 	IpWhitelist []*IPConfig `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
 	// The response message.
 	//
