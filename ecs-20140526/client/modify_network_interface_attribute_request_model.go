@@ -49,14 +49,20 @@ type iModifyNetworkInterfaceAttributeRequest interface {
 
 type ModifyNetworkInterfaceAttributeRequest struct {
 	// The network connectivity tracking configuration.
+	//
+	// Before you use this parameter, read [Connection timeout management](https://help.aliyun.com/document_detail/2865958.html).
 	ConnectionTrackingConfiguration *ModifyNetworkInterfaceAttributeRequestConnectionTrackingConfiguration `json:"ConnectionTrackingConfiguration,omitempty" xml:"ConnectionTrackingConfiguration,omitempty" type:"Struct"`
 	// Specifies whether to retain the ENI when the associated instance is released. Valid values:
+	//
+	// - true: The ENI is not retained.
+	//
+	// - false: The ENI is retained.
 	//
 	// example:
 	//
 	// true
 	DeleteOnRelease *bool `json:"DeleteOnRelease,omitempty" xml:"DeleteOnRelease,omitempty"`
-	// The description of the ENI. The description must be 2 to 255 characters in length and cannot start with http:// or https://.
+	// The description of the network interface controller (NIC). The description must be 2 to 255 characters in length and cannot start with http:// or https://.
 	//
 	// Default value: empty.
 	//
@@ -67,7 +73,7 @@ type ModifyNetworkInterfaceAttributeRequest struct {
 	EnablePrimaryIPv6 *bool   `json:"EnablePrimaryIPv6,omitempty" xml:"EnablePrimaryIPv6,omitempty"`
 	// This parameter is not publicly available.
 	EnhancedNetwork *ModifyNetworkInterfaceAttributeRequestEnhancedNetwork `json:"EnhancedNetwork,omitempty" xml:"EnhancedNetwork,omitempty" type:"Struct"`
-	// The ID of the ENI.
+	// The ID of the network interface controller (NIC).
 	//
 	// This parameter is required.
 	//
@@ -75,23 +81,29 @@ type ModifyNetworkInterfaceAttributeRequest struct {
 	//
 	// eni-bp67acfmxazb4p****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The name of the ENI. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`. The name can contain characters under the letter categorization in Unicode, including English letters, Chinese characters, and digits. It can also contain colons (:), underscores (_), periods (.), or hyphens (-).
+	// The name of the network interface controller (NIC). The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`. The name can contain characters under the categorization of letter in Unicode, including English letters, Chinese characters, and digits. The name can also contain colons (:), underscores (_), periods (.), or hyphens (-).
+	//
+	// Default value: empty.
 	//
 	// example:
 	//
 	// eniTestName
 	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
-	// The communication parameters of the network interface controller (NIC).
+	// The communication parameter of the network interface controller (NIC).
 	NetworkInterfaceTrafficConfig *ModifyNetworkInterfaceAttributeRequestNetworkInterfaceTrafficConfig `json:"NetworkInterfaceTrafficConfig,omitempty" xml:"NetworkInterfaceTrafficConfig,omitempty" type:"Struct"`
 	OwnerAccount                  *string                                                              `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                       *int64                                                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of queues for the ENI. Valid values: 1 to 2048.
 	//
+	// - You can modify the queue number of an ENI that is in the Available state, or an ENI that is in the InUse state but attached to an instance in the Stopped state.
+	//
+	// - The queue number cannot exceed the maximum number of queues per ENI allowed by the instance type. The total number of queues across all ENIs of an instance cannot exceed the total queue quota allowed by the instance type. You can call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the MaximumQueueNumberPerEni and TotalEniQueueQuantity fields for the instance type.
+	//
 	// example:
 	//
 	// 8
 	QueueNumber *int32 `json:"QueueNumber,omitempty" xml:"QueueNumber,omitempty"`
-	// The region ID of the ENI. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the network interface controller (NIC). You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -103,23 +115,51 @@ type ModifyNetworkInterfaceAttributeRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The inbound queue depth of the network interface controller (NIC).
 	//
+	// > This parameter is in invitational preview and is not publicly available. To use this parameter, submit a ticket to request access.
+	//
+	// Take note of the following items:
+	//
+	// - This parameter applies only to instances of the seventh generation or later.
+	//
+	// - This parameter currently applies only to Linux images.
+	//
+	// - A larger inbound queue depth can improve inbound throughput and reduce packet loss, but consumes more memory.
+	//
 	// example:
 	//
 	// 8192
 	RxQueueSize *int32 `json:"RxQueueSize,omitempty" xml:"RxQueueSize,omitempty"`
-	// The IDs of security groups. The secondary ENI is added to the specified security groups and removed from the existing security groups.
+	// The list of security group IDs. The secondary network interface controller (NIC) joins the specified security groups and is removed from the existing security groups.
 	//
-	// - The valid values of N depend on the quota for the maximum number of security groups to which an ENI can belong. For more information, see [Before you begin](~~25412#SecurityGroupQuota~~).
+	// - Valid values of N depend on the maximum number of security groups to which a network interface controller (NIC) can belong. For more information, see [Limits](~~25412#SecurityGroupQuota~~).
 	//
 	// - The modification takes effect shortly, but a slight delay may occur.
 	SecurityGroupId []*string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Repeated"`
 	// Specifies whether to enable source/destination checking. We recommend that you enable this feature to improve network security. Valid values:
+	//
+	// - true: enabled.
+	//
+	// - false: disabled.
+	//
+	// Default value: false.
+	//
+	// > Only specific regions support this feature. Before using this feature, read [Source/destination checking](https://help.aliyun.com/document_detail/2863210.html).
 	//
 	// example:
 	//
 	// false
 	SourceDestCheck *bool `json:"SourceDestCheck,omitempty" xml:"SourceDestCheck,omitempty"`
 	// The outbound queue depth of the network interface controller (NIC).
+	//
+	// > This parameter is in invitational preview and is not publicly available. To use this parameter, submit a ticket to request access.
+	//
+	// Take note of the following items:
+	//
+	// - This parameter applies only to instances of the seventh generation or later.
+	//
+	// - This parameter currently applies only to Linux images.
+	//
+	// - A larger outbound queue depth can improve outbound throughput and reduce packet loss, but consumes more memory.
 	//
 	// example:
 	//
@@ -317,7 +357,11 @@ func (s *ModifyNetworkInterfaceAttributeRequest) Validate() error {
 }
 
 type ModifyNetworkInterfaceAttributeRequestConnectionTrackingConfiguration struct {
-	// The timeout period for TCP connections in the TIME_WAIT or CLOSED state. Unit: seconds. Valid values: integers from 3 to 15.
+	// The timeout period for TCP connections in the TIME_WAIT and CLOSED states. Unit: seconds. Valid values: integers from 3 to 15.
+	//
+	// Default value: 3.
+	//
+	// > If your ECS instance is used with NLB or CLB, the default timeout period for connections in the `TIME_WAIT` state is 15 seconds.
 	//
 	// example:
 	//
@@ -325,11 +369,17 @@ type ModifyNetworkInterfaceAttributeRequestConnectionTrackingConfiguration struc
 	TcpClosedAndTimeWaitTimeout *int32 `json:"TcpClosedAndTimeWaitTimeout,omitempty" xml:"TcpClosedAndTimeWaitTimeout,omitempty"`
 	// The timeout period for established TCP connections. Unit: seconds. Valid values: [30, 60, 80, 100, 200, 300, 500, 700, 910].
 	//
+	// Default value: 910.
+	//
 	// example:
 	//
 	// 910
 	TcpEstablishedTimeout *int32 `json:"TcpEstablishedTimeout,omitempty" xml:"TcpEstablishedTimeout,omitempty"`
 	// The timeout period for UDP flows. Unit: seconds. Valid values: [10, 20, 30, 60, 80, 100].
+	//
+	// Default value: 30.
+	//
+	// > If your ECS instance is used with NLB or CLB, the default value is 100 seconds.
 	//
 	// example:
 	//
@@ -452,41 +502,41 @@ func (s *ModifyNetworkInterfaceAttributeRequestEnhancedNetwork) Validate() error
 }
 
 type ModifyNetworkInterfaceAttributeRequestNetworkInterfaceTrafficConfig struct {
-	// The communication mode of the network interface. Valid values:
+	// The communication pattern of the network interface controller (NIC). Valid values:
 	//
-	// - Standard: Uses TCP communication mode.
+	// - Standard: uses the TCP communication pattern.
 	//
-	// - HighPerformance: Enables the Elastic RDMA Interface (ERI) and uses RDMA communication mode.
+	// - HighPerformance: enables the Elastic RDMA Interface (ERI) and uses the RDMA communication pattern.
 	//
-	// When the ENI is in the attached state, note the following:
+	// When the network interface controller (NIC) is in the attached state, take note of the following items:
 	//
-	// - The total number of RDMA network interfaces on an instance cannot exceed the RDMA network interface quota allowed by the instance type. You can query the EriQuantity field by calling the DescribeInstanceTypes operation to obtain the RDMA network interface quota allowed by the instance type.
+	// - The total number of RDMA network interface controllers (NICs) of an instance cannot exceed the RDMA network interface controller (NIC) quota allowed by the instance type. You can call DescribeInstanceTypes to query the EriQuantity field for the RDMA network interface controller (NIC) quota.
 	//
-	// > This parameter is in invitational preview and is not yet publicly available.
+	// > This parameter is in invitational preview and is not publicly available.
 	//
 	// example:
 	//
 	// HighPerformance
 	NetworkInterfaceTrafficMode *string `json:"NetworkInterfaceTrafficMode,omitempty" xml:"NetworkInterfaceTrafficMode,omitempty"`
-	// The number of queues for the ENI.
+	// The number of queues for the network interface controller (NIC).
 	//
-	// When the ENI is in the attached state, take note of the following items:
+	// When the network interface controller (NIC) is in the attached state, take note of the following items:
 	//
-	// - The value cannot exceed the maximum number of queues allowed per ENI for the instance type.
+	// - The value cannot exceed the maximum number of queues per network interface controller (NIC) allowed by the instance type.
 	//
-	// - The total number of queues across all ENIs of the instance cannot exceed the total queue quota allowed for the instance type. You can call the DescribeInstanceTypes operation to query the MaximumQueueNumberPerEni and TotalEniQueueQuantity fields for the maximum number of queues per ENI and the total quota of the instance type.
+	// - The total number of queues across all network interface controllers (NICs) of an instance cannot exceed the total queue quota allowed by the instance type. You can call DescribeInstanceTypes to query the MaximumQueueNumberPerEni and TotalEniQueueQuantity fields.
 	//
-	// > This parameter is in invitational preview and is not yet publicly available.
+	// > This parameter is in invitational preview and is not publicly available.
 	//
 	// example:
 	//
 	// 8
 	QueueNumber *int32 `json:"QueueNumber,omitempty" xml:"QueueNumber,omitempty"`
-	// The number of queues on the RDMA network interface.
+	// The number of RDMA queues for the network interface controller (NIC).
 	//
-	// When the ENI is in the attached state, take note of the following:
+	// When the network interface controller (NIC) is in the attached state, take note of the following items:
 	//
-	// - The value cannot exceed the maximum number of queues allowed per RDMA network interface for the instance type. You can call the DescribeInstanceTypes operation to query the QueuePairNumber field for the maximum number of queues allowed per RDMA network interface for the instance type.
+	// - The value cannot exceed the maximum number of queues per RDMA network interface controller (NIC) allowed by the instance type. You can call DescribeInstanceTypes to query the QueuePairNumber field for the maximum number of queues per RDMA network interface controller (NIC).
 	//
 	// > This parameter is in invitational preview and is not publicly available.
 	//
@@ -496,11 +546,31 @@ type ModifyNetworkInterfaceAttributeRequestNetworkInterfaceTrafficConfig struct 
 	QueuePairNumber *int32 `json:"QueuePairNumber,omitempty" xml:"QueuePairNumber,omitempty"`
 	// The inbound queue depth of the network interface controller (NIC).
 	//
+	// > This parameter is in invitational preview and is not publicly available. To use this parameter, submit a ticket to request access.
+	//
+	// Take note of the following items:
+	//
+	// - This parameter applies only to instances of the seventh generation or later.
+	//
+	// - This parameter currently applies only to Linux images.
+	//
+	// - A larger inbound queue depth can improve inbound throughput and reduce packet loss, but consumes more memory.
+	//
 	// example:
 	//
 	// 8192
 	RxQueueSize *int32 `json:"RxQueueSize,omitempty" xml:"RxQueueSize,omitempty"`
 	// The outbound queue depth of the network interface controller (NIC).
+	//
+	// > This parameter is in invitational preview and is not publicly available. To use this parameter, submit a ticket to request access.
+	//
+	// Take note of the following items:
+	//
+	// - This parameter applies only to instances of the seventh generation or later.
+	//
+	// - This parameter currently applies only to Linux images.
+	//
+	// - A larger outbound queue depth can improve outbound throughput and reduce packet loss, but consumes more memory.
 	//
 	// example:
 	//

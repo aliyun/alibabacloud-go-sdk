@@ -70,7 +70,7 @@ type iCreateImagePipelineRequest interface {
 }
 
 type CreateImagePipelineRequest struct {
-	// The Alibaba Cloud account ID to which to share the destination image through image sharing. Valid values of N: 1 to 20.
+	// The Alibaba Cloud account ID to which to share the built image through image sharing. Valid values of N: 1 to 20.
 	//
 	// example:
 	//
@@ -80,11 +80,23 @@ type CreateImagePipelineRequest struct {
 	AdvancedOptions *CreateImagePipelineRequestAdvancedOptions `json:"AdvancedOptions,omitempty" xml:"AdvancedOptions,omitempty" type:"Struct"`
 	// The source image.
 	//
+	// - If `BaseImageType=IMAGE`, set this parameter to an image ID.
+	//
+	// - If `BaseImageType=IMAGE_FAMILY`, set this parameter to an image family name.
+	//
+	// - If `BaseImageType=OSS`, you do not need to set this parameter.
+	//
 	// example:
 	//
 	// m-bp67acfmxazb4p****
 	BaseImage *string `json:"BaseImage,omitempty" xml:"BaseImage,omitempty"`
 	// The type of the source image. Valid values:
+	//
+	// - IMAGE: image.
+	//
+	// - IMAGE_FAMILY: image family.
+	//
+	// - OSS: OSS object.
 	//
 	// This parameter is required.
 	//
@@ -92,7 +104,7 @@ type CreateImagePipelineRequest struct {
 	//
 	// IMAGE
 	BaseImageType *string `json:"BaseImageType,omitempty" xml:"BaseImageType,omitempty"`
-	// The content of the image build template. The content size cannot exceed 16 KB. For information about supported commands, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
+	// The content of the image build template. The content size cannot exceed 16 KB. For more information about supported commands, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
 	//
 	// example:
 	//
@@ -106,7 +118,15 @@ type CreateImagePipelineRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to release the intermediate instance if the image build fails. Valid values:
+	// Specifies whether to release the intermediate instance if the image fails to be built. Valid values:
+	//
+	// - true: releases the intermediate instance.
+	//
+	// - false: does not release the intermediate instance.
+	//
+	// Default value: true.
+	//
+	// > If the intermediate instance fails to start, the instance is not retained by default.
 	//
 	// example:
 	//
@@ -120,7 +140,13 @@ type CreateImagePipelineRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Deprecated
 	//
-	// The destination image family.
+	// The image family of the built image.
+	//
+	// <notice>
+	//
+	// This parameter is deprecated. Use ImageOptions.ImageFamily instead.
+	//
+	// </notice>
 	//
 	// example:
 	//
@@ -128,17 +154,25 @@ type CreateImagePipelineRequest struct {
 	ImageFamily *string `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
 	// Deprecated
 	//
-	// The prefix of the destination image name.
+	// The prefix of the name of the built image.
+	//
+	// <notice>
+	//
+	// This parameter is deprecated. Use ImageOptions.ImageName instead.
+	//
+	// </notice>
 	//
 	// example:
 	//
 	// testImageName
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The destination image properties.
+	// The properties of the built image.
 	ImageOptions *CreateImagePipelineRequestImageOptions `json:"ImageOptions,omitempty" xml:"ImageOptions,omitempty" type:"Struct"`
-	// The properties and settings for importing the image. This parameter is required when `BaseImageType=OSS`.
+	// The properties and settings for importing an image. This parameter is required when `BaseImageType=OSS`.
 	ImportImageOptions *CreateImagePipelineRequestImportImageOptions `json:"ImportImageOptions,omitempty" xml:"ImportImageOptions,omitempty" type:"Struct"`
-	// The instance type. You can call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query available instance types.
+	// The instance type. You can call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query different instance types.
+	//
+	// If you do not specify this parameter, the instance type that has the minimum number of vCPUs and the smallest memory size is automatically selected. The selection is subject to the inventory of instance types. For example, the ecs.g6.large instance type is selected by default. If the inventory of the ecs.g6.large instance type is insufficient, the ecs.g6.xlarge instance type is selected.
 	//
 	// example:
 	//
@@ -146,11 +180,15 @@ type CreateImagePipelineRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The outbound public bandwidth of the intermediate instance. Unit: Mbit/s. Valid values: 0 to 100.
 	//
+	// Default value: 0.
+	//
 	// example:
 	//
 	// 0
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// The template name. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. The name cannot start with `http://` or `https://`. The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), or hyphens (-).
+	// The template name. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. The name cannot start with `http://` or `https://`. The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	//
+	// > If you do not specify `Name`, the `ImagePipelineId` return value is used by default.
 	//
 	// example:
 	//
@@ -158,7 +196,13 @@ type CreateImagePipelineRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Deprecated
 	//
-	// Specifies whether the destination image supports NVMe.
+	// Specifies whether the built image supports NVMe.
+	//
+	// <notice>
+	//
+	// This parameter is deprecated. Use ImageOptions.ImageFeatures.NvmeSupport instead.
+	//
+	// </notice>
 	//
 	// example:
 	//
@@ -175,7 +219,37 @@ type CreateImagePipelineRequest struct {
 	// cn-hangzhou
 	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RepairItem []*string `json:"RepairItem,omitempty" xml:"RepairItem,omitempty" type:"Repeated"`
-	// The repair options in the image template.
+	// The repair option in the image template.
+	//
+	// Valid values:
+	//
+	// - Standard: standard mode.
+	//
+	//   Detection items for Linux include:
+	//
+	//   - GUESTOS.CloudInit
+	//
+	//   - GUESTOS.Dhcp
+	//
+	//   - GUESTOS.Virtio
+	//
+	//   - GUESTOS.OnlineResizeFS
+	//
+	//   - GUESTOS.Grub
+	//
+	//   - GUESTOS.Fstab
+	//
+	//   Detection items for Windows include:
+	//
+	//   - GUESTOS.Virtio
+	//
+	//   - GUESTOS.Update
+	//
+	//   - GUESTOS.Hotfix
+	//
+	//   - GUESTOS.Server
+	//
+	// > As detection and repair capabilities continue to improve, the repair items may increase. For more information about the repair items, see [Overview of image detection](https://help.aliyun.com/document_detail/439819.html).
 	//
 	// example:
 	//
@@ -191,13 +265,15 @@ type CreateImagePipelineRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The system disk size of the intermediate instance. Unit: GiB. Valid values: 20 to 500.
 	//
+	// Default value: 40.
+	//
 	// example:
 	//
 	// 40
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 	// The tags.
 	Tag []*CreateImagePipelineRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The content of the image test template. The content size cannot exceed 16 KB. For information about supported commands, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
+	// The content of the image test template. The content size cannot exceed 16 KB. For more information about supported commands, see [Commands supported by Image Builder](https://help.aliyun.com/document_detail/200206.html).
 	//
 	// example:
 	//
@@ -205,13 +281,17 @@ type CreateImagePipelineRequest struct {
 	//
 	// COMPONENT acs:ecs:cn-hangzhou:18689161186*****:imagecomponent/ComponentName/1.*.*
 	TestContent *string `json:"TestContent,omitempty" xml:"TestContent,omitempty"`
-	// The regions to which to distribute the destination image. Valid values of N: 1 to 20.
+	// The regions to which to distribute the built image. Valid values of N: 1 to 20.
+	//
+	// If you do not specify this parameter, the image is created only in the current region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ToRegionId []*string `json:"ToRegionId,omitempty" xml:"ToRegionId,omitempty" type:"Repeated"`
-	// The vSwitch ID of the VPC.
+	// The ID of the vSwitch in the VPC.
+	//
+	// If you do not specify this parameter, a new VPC and vSwitch are created by default. Make sure that the VPC resource quota in your account is sufficient. For more information, see [Limits](https://help.aliyun.com/document_detail/27750.html).
 	//
 	// example:
 	//
@@ -517,13 +597,23 @@ func (s *CreateImagePipelineRequest) Validate() error {
 }
 
 type CreateImagePipelineRequestAdvancedOptions struct {
-	// Specifies whether to disable the automatic suffix for the destination image name. Valid values:
+	// Specifies whether to disable the automatic suffix for the built image name. Valid values:
+	//
+	// - disable: disables the automatic suffix.
 	//
 	// example:
 	//
 	// disable
 	ImageNameSuffix *string `json:"ImageNameSuffix,omitempty" xml:"ImageNameSuffix,omitempty"`
-	// Specifies whether to retain Cloud Assistant. During the build process, the system automatically installs Cloud Assistant on the intermediate instance to run commands. You can choose whether to retain Cloud Assistant in the destination image. Valid values:
+	// Specifies whether to retain Cloud Assistant. During the build process, the system automatically installs Cloud Assistant on the intermediate instance to run commands. You can choose whether to retain Cloud Assistant in the built image. Valid values:
+	//
+	// - true: retains Cloud Assistant.
+	//
+	// - false: does not retain Cloud Assistant.
+	//
+	// Default value: false.
+	//
+	// > This setting does not affect Cloud Assistant that is already included in your image.
 	//
 	// example:
 	//
@@ -568,21 +658,23 @@ type CreateImagePipelineRequestImageOptions struct {
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination image family. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. The name cannot start with aliyun or acs:. The name cannot contain http:// or https://. The name can contain digits, colons (:), underscores (_), or hyphens (-).
+	// The image family of the built image. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. The name cannot start with aliyun or acs:. The name cannot contain http:// or https://. The name can contain digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// family
 	ImageFamily *string `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
-	// The feature properties of the destination image.
+	// The image feature properties of the built image.
 	ImageFeatures *CreateImagePipelineRequestImageOptionsImageFeatures `json:"ImageFeatures,omitempty" xml:"ImageFeatures,omitempty" type:"Struct"`
-	// The prefix of the destination image name. The name must be 2 to 64 characters in length and must start with a letter or a Chinese character. The name cannot start with `http://` or `https://`. The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), or hyphens (-).
+	// The prefix of the name of the built image. The name must be 2 to 64 characters in length and must start with a letter or a Chinese character. The name cannot start with `http://` or `https://`. The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+	//
+	// The final complete image name is automatically generated by the system by concatenating the name prefix and the build task ID (`ExecutionId`) in the format of `{ImageName}_{ExecutionId}`.
 	//
 	// example:
 	//
 	// testImageName
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The tags of the destination image.
+	// The tags of the built image.
 	ImageTags []*CreateImagePipelineRequestImageOptionsImageTags `json:"ImageTags,omitempty" xml:"ImageTags,omitempty" type:"Repeated"`
 }
 
@@ -658,7 +750,13 @@ func (s *CreateImagePipelineRequestImageOptions) Validate() error {
 }
 
 type CreateImagePipelineRequestImageOptionsImageFeatures struct {
-	// Specifies whether the destination image supports NVMe. Valid values:
+	// Specifies whether the built image supports NVMe. Valid values:
+	//
+	// - supported: The instances created from this image support the NVMe protocol.
+	//
+	// - unsupported: The instances created from this image do not support the NVMe protocol.
+	//
+	// - auto: The system automatically detects whether your image has the NVMe driver installed. This detection occurs before the build phase. If you install or uninstall the NVMe driver during the build, the result may be inaccurate. Set this parameter to supported or unsupported based on your build content.
 	//
 	// example:
 	//
@@ -733,7 +831,13 @@ func (s *CreateImagePipelineRequestImageOptionsImageTags) Validate() error {
 }
 
 type CreateImagePipelineRequestImportImageOptions struct {
-	// The system architecture of the system disk. You must specify this parameter when you use a data disk snapshot to create a system disk image. Valid values:
+	// The system architecture of the system disk when a data disk snapshot is used as the system disk. Valid values:
+	//
+	// - x86_64.
+	//
+	// - arm64.
+	//
+	// Default value: x86_64.
 	//
 	// example:
 	//
@@ -741,12 +845,28 @@ type CreateImagePipelineRequestImportImageOptions struct {
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
 	// The boot mode of the image. Valid values:
 	//
+	// - BIOS: BIOS boot mode.
+	//
+	// - UEFI: UEFI boot mode.
+	//
+	// Default value: BIOS. If `Architecture=arm64`, the default value is UEFI, and only UEFI is supported.
+	//
+	// <notice>
+	//
+	// To prevent instances from failing to start due to an unsupported boot mode, make sure that you understand the boot modes supported by the image before you set this parameter. For more information about image boot modes, see [Image boot modes](~~2244655#b9caa9b8bb1wf~~).
+	//
+	// </notice>
+	//
 	// example:
 	//
 	// BIOS
 	BootMode    *string `json:"BootMode,omitempty" xml:"BootMode,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The information about the custom images.
+	// The list of custom image information.
+	//
+	// - When N=1, the entry represents the system disk.
+	//
+	// - When N=2 to 17, the entry represents a data disk.
 	DiskDeviceMappings []*CreateImagePipelineRequestImportImageOptionsDiskDeviceMappings `json:"DiskDeviceMappings,omitempty" xml:"DiskDeviceMappings,omitempty" type:"Repeated"`
 	// The image feature properties.
 	Features        *CreateImagePipelineRequestImportImageOptionsFeatures          `json:"Features,omitempty" xml:"Features,omitempty" type:"Struct"`
@@ -754,17 +874,87 @@ type CreateImagePipelineRequestImportImageOptions struct {
 	ImportImageTags []*CreateImagePipelineRequestImportImageOptionsImportImageTags `json:"ImportImageTags,omitempty" xml:"ImportImageTags,omitempty" type:"Repeated"`
 	// The license type used to activate the operating system after the image is imported. Valid values:
 	//
+	// - Auto: Alibaba Cloud detects the source operating system and assigns a license. In automatic mode, the system first checks whether a license distributed through official Alibaba Cloud channels exists for the `Platform` you specified and assigns the license to the imported image. If no such license exists, the system switches to BYOL (Bring Your Own License) mode.
+	//
+	// - Aliyun: uses a license distributed through official Alibaba Cloud channels based on the `Platform` you specified.
+	//
+	// - BYOL: uses the license that comes with the source operating system. When you use BYOL, make sure that your license key supports use on Alibaba Cloud.
+	//
+	// Default value: Auto.
+	//
 	// example:
 	//
 	// Auto
 	LicenseType *string `json:"LicenseType,omitempty" xml:"LicenseType,omitempty"`
 	// The operating system type. Valid values:
 	//
+	// - windows.
+	//
+	// - linux.
+	//
+	// Default value: linux.
+	//
 	// example:
 	//
 	// linux
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
 	// The operating system version. Valid values:
+	//
+	// - Aliyun
+	//
+	// - Anolis
+	//
+	// - CentOS
+	//
+	// - Ubuntu
+	//
+	// - CoreOS
+	//
+	// - SUSE
+	//
+	// - Debian
+	//
+	// - OpenSUSE
+	//
+	// - FreeBSD
+	//
+	// - RedHat
+	//
+	// - Kylin
+	//
+	// - UOS
+	//
+	// - Fedora
+	//
+	// - Fedora CoreOS
+	//
+	// - CentOS Stream
+	//
+	// - AlmaLinux
+	//
+	// - Rocky Linux
+	//
+	// - Gentoo
+	//
+	// - Customized Linux
+	//
+	// - Others Linux
+	//
+	// - Windows Server 2022
+	//
+	// - Windows Server 2019
+	//
+	// - Windows Server 2016
+	//
+	// - Windows Server 2012
+	//
+	// - Windows Server 2008
+	//
+	// - Windows Server 2003
+	//
+	// - Other Windows
+	//
+	// Default value: Others Linux if the operating system type is Linux. Otherwise, the default value is Other Windows.
 	//
 	// example:
 	//
@@ -935,11 +1125,27 @@ func (s *CreateImagePipelineRequestImportImageOptions) Validate() error {
 type CreateImagePipelineRequestImportImageOptionsDiskDeviceMappings struct {
 	// The size of the custom image after the image is imported.
 	//
+	// The size consists of the system disk and data disks. Make sure that the system disk size is greater than or equal to the size of the imported image file. Valid values:
+	//
+	// - When N=1, the entry represents the system disk. Valid values: 1 GiB to 2048 GiB.
+	//
+	// - When N=2 to 17, the entry represents a data disk. Valid values: 1 GiB to 2048 GiB.
+	//
+	// After you upload the source image file to OSS, you can view the size of the image file in the OSS bucket.
+	//
 	// example:
 	//
 	// 40
 	DiskImageSize *int32 `json:"DiskImageSize,omitempty" xml:"DiskImageSize,omitempty"`
 	// The image format. Valid values:
+	//
+	// - RAW.
+	//
+	// - VHD.
+	//
+	// - QCOW2.
+	//
+	// Default value: none. Alibaba Cloud automatically detects the image format, and the detected format prevails.
 	//
 	// example:
 	//
@@ -951,7 +1157,7 @@ type CreateImagePipelineRequestImportImageOptionsDiskDeviceMappings struct {
 	//
 	// ecsimageos
 	OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
-	// The name (key) of the image file stored in the OSS bucket after the image is uploaded.
+	// The file name (key) of the image file stored in the OSS bucket after the image is uploaded.
 	//
 	// example:
 	//
@@ -1009,7 +1215,13 @@ func (s *CreateImagePipelineRequestImportImageOptionsDiskDeviceMappings) Validat
 
 type CreateImagePipelineRequestImportImageOptionsFeatures struct {
 	ImdsSupport *string `json:"ImdsSupport,omitempty" xml:"ImdsSupport,omitempty"`
-	// Specifies whether the imported source image supports NVMe. Valid values:
+	// Specifies whether the imported original image supports NVMe. Valid values:
+	//
+	// - supported: The instances created from this image support the NVMe protocol.
+	//
+	// - unsupported: The instances created from this image do not support the NVMe protocol.
+	//
+	// Default value: unsupported.
 	//
 	// example:
 	//

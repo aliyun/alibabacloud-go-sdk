@@ -60,7 +60,7 @@ type DescribeInvocationsRequest struct {
 	//
 	// c-hz0jdfwcsr****
 	CommandId *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
-	// The command name. This parameter does not take effect if the `InstanceId` parameter is also specified.
+	// The command name. If you also specify the `InstanceId` parameter, this parameter does not take effect.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type DescribeInvocationsRequest struct {
 	//
 	// - RunPowerShellScript: PowerShell script that runs on Windows instances.
 	//
-	// - RunShellScript: shell script that runs on Linux instances.
+	// - RunShellScript: Shell script that runs on Linux instances.
 	//
 	// example:
 	//
@@ -80,9 +80,9 @@ type DescribeInvocationsRequest struct {
 	CommandType *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
 	// The encoding mode of the `CommandContent` and `Output` fields in the response. Valid values:
 	//
-	// - PlainText: returns the original command content and output.
+	// - PlainText: Returns the original command content and output.
 	//
-	// - Base64: returns Base64-encoded command content and output.
+	// - Base64: Returns the Base64-encoded command content and output.
 	//
 	// Default value: Base64.
 	//
@@ -90,11 +90,11 @@ type DescribeInvocationsRequest struct {
 	//
 	// PlainText
 	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	// Specifies whether to return the command output in the response.
+	// Specifies whether to return the command output in the results.
 	//
-	// - true: returns the output. You must specify at least the `InvokeId` or `InstanceId` parameter.
+	// - true: The output is returned. You must specify at least the `InvokeId` or `InstanceId` parameter.
 	//
-	// - false: does not return the output.
+	// - false: The output is not returned.
 	//
 	// Default value: false.
 	//
@@ -114,49 +114,49 @@ type DescribeInvocationsRequest struct {
 	//
 	// t-hz0jdfwd9f****
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	// The overall execution status of the command. The overall execution status is determined by the combined execution status across one or more instances. Valid values:
+	// The overall execution status of the command. The overall execution status depends on the common execution status across one or more instances in the execution. Valid values:
 	//
 	//
 	//
 	// - Running:
 	//
-	//     - Scheduled execution: the execution status remains Running until you manually stop the scheduled command.
+	//     - Scheduled execution: The execution status remains Running until you manually stop the scheduled command.
 	//
-	//     - One-time execution: the overall status is Running if the command process is running on any instance.
+	//     - One-time execution: The overall execution status is Running as long as the command process is running on any instance.
 	//
 	// - Finished:
 	//
-	//     - Scheduled execution: the status can never be Finished.
+	//     - Scheduled execution: The command process cannot have a status of Finished.
 	//
-	//     - One-time execution: all instances have completed execution, or the command process on some instances was manually stopped while the remaining instances completed execution.
+	//     - One-time execution: The command process has finished running on all instances, or the command process was manually stopped on some instances and finished running on the remaining instances.
 	//
-	// - Success: the execution status on each instance is Stopped or Success, and at least one instance has a status of Success.
+	// - Success: The command execution status on each instance is Stopped or Success, and the command execution status on at least one instance is Success. The overall execution status is Success.
 	//
-	//     - Immediate task: the command execution is complete and the exit code is 0.
+	//     - Immediate task: The command execution is complete and the exit code is 0.
 	//
-	//     - Scheduled task: the most recent execution succeeded with an exit code of 0, and all specified execution times have elapsed.
+	//     - Scheduled task: The last execution was successful with an exit code of 0, and all specified execution times have elapsed.
 	//
 	// - Failed:
 	//
-	//     - Scheduled execution: the status can never be Failed.
+	//     - Scheduled execution: The command process cannot have a status of Failed.
 	//
-	//     - One-time execution: all instances failed to run the command.
+	//     - One-time execution: The command process failed on all instances.
 	//
-	// - Stopped: the command was stopped.
+	// - Stopped: The command has been stopped.
 	//
-	// - Stopping: the command is being stopped.
+	// - Stopping: The command is being stopped.
 	//
-	// - PartialFailed: the command succeeded on some instances but failed on others. This value does not take effect if the `InstanceId` parameter is also specified.
+	// - PartialFailed: The command succeeded on some instances but failed on others. This value does not take effect if you also specify the `InstanceId` parameter.
 	//
-	// - Pending: the system is verifying or sending the command. The overall status is Pending if at least one instance has a status of Pending.
+	// - Pending: The system is verifying or sending the command. The overall execution status is Pending if the command execution status on at least one instance is Pending.
 	//
-	// - Scheduled: the scheduled command has been sent and is waiting to run. The overall status is Scheduled if at least one instance has a status of Scheduled.
+	// - Scheduled: The scheduled command has been sent and is waiting to run. The overall execution status is Scheduled if the command execution status on at least one instance is Scheduled.
 	//
 	// example:
 	//
 	// Finished
 	InvokeStatus *string `json:"InvokeStatus,omitempty" xml:"InvokeStatus,omitempty"`
-	// The maximum number of entries per page in a paging query.
+	// The maximum number of entries per page for a paging query.
 	//
 	// Maximum value: 50.
 	//
@@ -174,13 +174,13 @@ type DescribeInvocationsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter is about to be deprecated. Use NextToken and MaxResults to perform paging queries.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter is about to be deprecated. Use NextToken and MaxResults to perform paging queries.
+	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
 	//
 	// example:
 	//
@@ -194,15 +194,15 @@ type DescribeInvocationsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The execution mode of the command. This parameter does not take effect if the `InstanceId` parameter is also specified. Valid values:
+	// The execution mode of the command. This parameter does not take effect if you also specify the `InstanceId` parameter. Valid values:
 	//
-	// - Once: runs the command immediately.
+	// - Once: The command is immediately run.
 	//
-	// - Period: runs the command on a schedule.
+	// - Period: The command is run on a schedule.
 	//
-	// - NextRebootOnly: automatically runs the command the next time the instance starts.
+	// - NextRebootOnly: The command is automatically run the next time the instance starts.
 	//
-	// - EveryReboot: automatically runs the command every time the instance starts.
+	// - EveryReboot: The command is automatically run every time the instance starts.
 	//
 	// Default value: empty, which indicates that all execution modes are queried.
 	//
@@ -210,7 +210,7 @@ type DescribeInvocationsRequest struct {
 	//
 	// Once
 	RepeatMode *string `json:"RepeatMode,omitempty" xml:"RepeatMode,omitempty"`
-	// The ID of the resource group to which the command execution belongs. After you specify this parameter, you must also specify ResourceGroupId when you run the command. This way, the corresponding command execution results can be filtered.
+	// The resource group ID of the command execution. After you specify this parameter, you must also specify ResourceGroupId when running the command to filter the corresponding command execution results.
 	//
 	// example:
 	//
@@ -220,15 +220,15 @@ type DescribeInvocationsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The tags.
 	Tag []*DescribeInvocationsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// Specifies whether to query commands that will be automatically run in the future. Valid values:
+	// Specifies whether the command will be automatically run in the future. Valid values:
 	//
-	// - true: queries commands for which the `RepeatMode` parameter is set to `Period`, `NextRebootOnly`, or `EveryReboot` when `RunCommand` or `InvokeCommand` is called.
+	// - true: The command is run with the `RepeatMode` parameter set to `Period`, `NextRebootOnly`, or `EveryReboot` when `RunCommand` or `InvokeCommand` is called.
 	//
-	// - false: queries commands that meet one of the following conditions:
+	// - false: Queries commands in the following two states:
 	//
-	//     - The `RepeatMode` parameter is set to `Once` when `RunCommand` or `InvokeCommand` is called.
+	//     - The command is run with the `RepeatMode` parameter set to `Once` when `RunCommand` or `InvokeCommand` is called.
 	//
-	//     - The commands have been canceled, stopped, or completed.
+	//     - The command has been canceled, stopped, or completed.
 	//
 	// Default value: false.
 	//
@@ -451,9 +451,9 @@ func (s *DescribeInvocationsRequest) Validate() error {
 type DescribeInvocationsRequestTag struct {
 	// The tag key of the command execution. Valid values of N: 1 to 20. The tag key cannot be an empty string.
 	//
-	// If you use a single tag to filter resources, the number of resources with the specified tag cannot exceed 1,000. If you use multiple tags to filter resources, the number of resources that are attached to all specified tags cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to execute the query.
+	// If you use a single tag to filter resources, the resource count with the specified tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count that are attached to all specified tags cannot exceed 1,000. If the resource count exceeds 1,000, execute the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
 	//
-	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
 	//
 	// example:
 	//

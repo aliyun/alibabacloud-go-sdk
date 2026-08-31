@@ -63,7 +63,8 @@ func (s *DescribeRenewalPriceResponseBody) Validate() error {
 
 type DescribeRenewalPriceResponseBodyPriceInfo struct {
 	// The price.
-	Price        *DescribeRenewalPriceResponseBodyPriceInfoPrice        `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	Price *DescribeRenewalPriceResponseBodyPriceInfoPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// The related price.
 	RelatedPrice *DescribeRenewalPriceResponseBodyPriceInfoRelatedPrice `json:"RelatedPrice,omitempty" xml:"RelatedPrice,omitempty" type:"Struct"`
 	Rules        *DescribeRenewalPriceResponseBodyPriceInfoRules        `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Struct"`
 }
@@ -390,6 +391,7 @@ func (s *DescribeRenewalPriceResponseBodyPriceInfoPriceDetailInfosDetailInfoSubR
 }
 
 type DescribeRenewalPriceResponseBodyPriceInfoRelatedPrice struct {
+	// The Alibaba Cloud Marketplace image price.
 	MarketplaceImagePrice *DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice `json:"MarketplaceImagePrice,omitempty" xml:"MarketplaceImagePrice,omitempty" type:"Struct"`
 }
 
@@ -420,18 +422,30 @@ func (s *DescribeRenewalPriceResponseBodyPriceInfoRelatedPrice) Validate() error
 }
 
 type DescribeRenewalPriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice struct {
+	// The currency unit.
+	//
+	// China site: CNY.
+	//
+	// International site: USD.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The discount.
+	//
 	// example:
 	//
 	// 0
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// The original price.
+	//
 	// example:
 	//
 	// 200
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// The transaction price, which is equal to the original price minus the discount.
+	//
 	// example:
 	//
 	// 200

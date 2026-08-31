@@ -25,13 +25,13 @@ type iDescribeImagesResponseBody interface {
 
 type DescribeImagesResponseBody struct {
 	Images *DescribeImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
-	// The current page number.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries on the current page.
+	// The number of entries per page.
 	//
 	// example:
 	//

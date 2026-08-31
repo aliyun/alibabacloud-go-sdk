@@ -28,13 +28,19 @@ type iDescribeNetworkInterfaceAttributeRequest interface {
 }
 
 type DescribeNetworkInterfaceAttributeRequest struct {
-	// The network interface controller (NIC) attribute. Valid values:
+	// The property of the Elastic Network Interface (ENI). Valid values:
+	//
+	// attachment: queries the attachment information of member network interface controllers (NICs) for a trunk network interface controller (NIC). This parameter is in invitational preview and is not available for use.
+	//
+	// connectionTrackingConfiguration: queries the network connectivity tracking configuration.
+	//
+	// Default value:
 	//
 	// example:
 	//
 	// attachment
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
-	// The network interface controller (NIC) ID.
+	// The ID of the network interface controller (NIC).
 	//
 	// This parameter is required.
 	//
@@ -44,7 +50,7 @@ type DescribeNetworkInterfaceAttributeRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the network interface controller (NIC). You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the network interface controller (NIC). You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +60,7 @@ type DescribeNetworkInterfaceAttributeRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// > This parameter is not yet available for use.
+	// > This parameter is not available for use.
 	Tag []*DescribeNetworkInterfaceAttributeRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -152,13 +158,13 @@ func (s *DescribeNetworkInterfaceAttributeRequest) Validate() error {
 }
 
 type DescribeNetworkInterfaceAttributeRequestTag struct {
-	// > This parameter is not yet available for use.
+	// > This parameter is not available for use.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// > This parameter is not yet available for use.
+	// > This parameter is not available for use.
 	//
 	// example:
 	//

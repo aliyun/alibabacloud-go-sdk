@@ -31,13 +31,17 @@ type DescribeNetworkInterfacesResponseBody struct {
 	//
 	// AAAAAdDWBF2****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The paging query parameter.
+	// The paging parameter.
+	//
+	// > This parameter is being deprecated. Use NextToken and MaxResults for paging.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The paging query parameter.
+	// The paging parameter.
+	//
+	// > This parameter is being deprecated. Use NextToken and MaxResults for paging.
 	//
 	// example:
 	//
@@ -50,6 +54,8 @@ type DescribeNetworkInterfacesResponseBody struct {
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of Elastic Network Interfaces (ENIs) returned.
+	//
+	// > When you use the `MaxResults` and `NextToken` parameters for paging, the returned `TotalCount` value is meaningless.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iCreateImagePipelineResponseBody interface {
 }
 
 type CreateImagePipelineResponseBody struct {
-	// The image template ID.
+	// The ID of the image template.
 	//
 	// example:
 	//

@@ -32,11 +32,11 @@ type iDescribeRenewalPriceRequest interface {
 }
 
 type DescribeRenewalPriceRequest struct {
-	// The unified expiration date. After you specify this parameter, the price for renewing the instance to the unified expiration date is queried. Valid values: 1 to 28.
+	// The unified expiration date. If you specify this parameter, the price for renewing the instance to the unified expiration date is queried. Valid values: 1 to 28.
 	//
-	// For more information about the unified expiration date feature, see [Synchronize the expiration dates of instances](https://help.aliyun.com/document_detail/108486.html).
+	// For more information about the unified expiration date feature, see [Unified instance expiration date](https://help.aliyun.com/document_detail/108486.html).
 	//
-	// > The renewal duration parameters (Period and PeriodUnit) and the unified expiration date parameter (ExpectedRenewDay) cannot be set at the same time.
+	// > The renewal duration parameters (`Period` and `PeriodUnit`) and the unified expiration date parameter (`ExpectedRenewDay`) cannot be set at the same time.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type DescribeRenewalPriceRequest struct {
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The renewal duration. Valid values:
 	//
-	// - When PriceUnit is set to Month: 1 to 9.
+	// - When `PriceUnit` is set to `Month`: 1 to 9.
 	//
-	// - When PriceUnit is set to Year: 1 to 3.
+	// - When `PriceUnit` is set to `Year`: 1 to 3.
 	//
 	// Default value: 1.
 	//
-	// > The renewal duration parameters (Period and PeriodUnit) and the unified expiration date parameter (ExpectedRenewDay) cannot be set at the same time.
+	// > The renewal duration parameters (`Period` and `PeriodUnit`) and the unified expiration date parameter (`ExpectedRenewDay`) cannot be set at the same time.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type DescribeRenewalPriceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource whose renewal price you want to query. When ResourceType is set to instance, ResourceId is equivalent to InstanceId.
+	// The ID of the resource for which to query the renewal price. When `ResourceType` is set to `instance`, `ResourceId` is equivalent to `InstanceId`.
 	//
 	// This parameter is required.
 	//
@@ -88,7 +88,7 @@ type DescribeRenewalPriceRequest struct {
 	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource whose renewal price you want to query. Valid values: instance.
+	// The type of the resource for which to query the renewal price. Valid values: instance.
 	//
 	// Default value: instance.
 	//

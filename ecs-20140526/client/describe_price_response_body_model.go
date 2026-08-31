@@ -126,6 +126,10 @@ func (s *DescribePriceResponseBodyPriceInfo) Validate() error {
 type DescribePriceResponseBodyPriceInfoPrice struct {
 	// The currency unit.
 	//
+	// China site: CNY.
+	//
+	// International site: USD.
+	//
 	// example:
 	//
 	// CNY
@@ -434,6 +438,10 @@ func (s *DescribePriceResponseBodyPriceInfoRelatedPrice) Validate() error {
 
 type DescribePriceResponseBodyPriceInfoRelatedPriceMarketplaceImagePrice struct {
 	// The currency unit.
+	//
+	// China site: CNY.
+	//
+	// International site: USD.
 	//
 	// example:
 	//
