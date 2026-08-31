@@ -26,27 +26,40 @@ type iCustomerNoteListResponseBody interface {
 }
 
 type CustomerNoteListResponseBody struct {
+	// The details of the access denied error returned by the POP API when the caller does not have the required RAM permissions.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The result code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *CustomerNoteListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code returned by the POP API.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The prompt message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The prompt message, same as message.
+	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
@@ -134,40 +147,60 @@ func (s *CustomerNoteListResponseBody) Validate() error {
 }
 
 type CustomerNoteListResponseBodyData struct {
+	// The details of the access denied error returned by the POP API when the caller does not have the required RAM permissions.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The result code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data []*CustomerNoteListResponseBodyDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code returned by the POP API.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The prompt message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The prompt message, same as message.
+	//
 	// example:
 	//
 	// success
-	Msg      *string                                   `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The pagination information compatible with the legacy interface (deprecated).
 	PageInfo *CustomerNoteListResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 16
@@ -300,38 +333,56 @@ func (s *CustomerNoteListResponseBodyData) Validate() error {
 }
 
 type CustomerNoteListResponseBodyDataData struct {
+	// The name of the contact.
+	//
 	// example:
 	//
 	// 张三
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// The UID of the creator.
+	//
 	// example:
 	//
 	// 1757916424103619
 	Creator *int64 `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The logon name of the creator.
+	//
 	// example:
 	//
 	// 张三
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// The creation time in the format of yyyy-MM-dd HH:mm:ss.
+	//
 	// example:
 	//
 	// 2026-07-17 12:18:23
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The content of the note.
+	//
 	// example:
 	//
 	// 讨论技术方案
 	NoteContent *string `json:"NoteContent,omitempty" xml:"NoteContent,omitempty"`
+	// The ID of the note.
+	//
 	// example:
 	//
 	// 2932252
 	NoteId *int64 `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
+	// The type of the note (CUSTOMER).
+	//
 	// example:
 	//
 	// CUSTOMER
 	NoteType *string `json:"NoteType,omitempty" xml:"NoteType,omitempty"`
+	// The label of the note type.
+	//
 	// example:
 	//
 	// 客户
 	NoteTypeLabel *string `json:"NoteTypeLabel,omitempty" xml:"NoteTypeLabel,omitempty"`
+	// The touch date (timestamp).
+	//
 	// example:
 	//
 	// 1784266662000
@@ -432,14 +483,20 @@ func (s *CustomerNoteListResponseBodyDataData) Validate() error {
 }
 
 type CustomerNoteListResponseBodyDataPageInfo struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 20

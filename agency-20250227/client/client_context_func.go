@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 创建客户小记
+// Creates a customer note.
 //
 // @param request - CustomerNoteCreateRequest
 //
@@ -73,7 +73,7 @@ func (client *Client) CustomerNoteCreateWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 编辑客户小记
+// Edits a customer note.
 //
 // @param request - CustomerNoteEditRequest
 //
@@ -133,7 +133,7 @@ func (client *Client) CustomerNoteEditWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 分页查询客户小记列表
+// Queries a paged query list of customer notes with paging support.
 //
 // @param request - CustomerNoteListRequest
 //
@@ -185,7 +185,7 @@ func (client *Client) CustomerNoteListWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询客户小记详情
+// Queries the details of a customer note.
 //
 // @param request - CustomerNoteListDetailRequest
 //

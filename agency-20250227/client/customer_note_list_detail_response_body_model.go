@@ -26,13 +26,44 @@ type iCustomerNoteListDetailResponseBody interface {
 }
 
 type CustomerNoteListDetailResponseBody struct {
-	AccessDeniedDetail *string                                 `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Code               *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data               *CustomerNoteListDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode     *int32                                  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message            *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	Msg                *string                                 `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	RequestId          *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The access denied details returned by the POP API when RAM permissions are missing.
+	//
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The status code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *CustomerNoteListDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code returned by the POP API.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The prompt message.
+	//
+	// example:
+	//
+	// SUCCESS
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The prompt message. This is the same as Message.
+	//
+	// example:
+	//
+	// SUCCESS
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 9C14ADFE-DF0A-54D4-8BD5-45D0839246B4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CustomerNoteListDetailResponseBody) String() string {
@@ -116,20 +147,86 @@ func (s *CustomerNoteListDetailResponseBody) Validate() error {
 }
 
 type CustomerNoteListDetailResponseBodyData struct {
-	AiResult           *string                                             `json:"AiResult,omitempty" xml:"AiResult,omitempty"`
-	Attachment         []*CustomerNoteListDetailResponseBodyDataAttachment `json:"Attachment,omitempty" xml:"Attachment,omitempty" type:"Repeated"`
-	ContactInformation *string                                             `json:"ContactInformation,omitempty" xml:"ContactInformation,omitempty"`
-	ContactName        *string                                             `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	Creator            *int64                                              `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	CreatorName        *string                                             `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	CustomerName       *string                                             `json:"CustomerName,omitempty" xml:"CustomerName,omitempty"`
-	CustomerUid        *int64                                              `json:"CustomerUid,omitempty" xml:"CustomerUid,omitempty"`
-	GmtCreate          *string                                             `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	NoteContent        *string                                             `json:"NoteContent,omitempty" xml:"NoteContent,omitempty"`
-	NoteId             *int64                                              `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
-	NoteType           *string                                             `json:"NoteType,omitempty" xml:"NoteType,omitempty"`
-	NoteTypeLabel      *string                                             `json:"NoteTypeLabel,omitempty" xml:"NoteTypeLabel,omitempty"`
-	TouchDate          *string                                             `json:"TouchDate,omitempty" xml:"TouchDate,omitempty"`
+	// The AI parsing result (JSON string).
+	//
+	// example:
+	//
+	// {"TouchDate":"2026-07-17 10:00:01"}
+	AiResult *string `json:"AiResult,omitempty" xml:"AiResult,omitempty"`
+	// The attachment list.
+	Attachment []*CustomerNoteListDetailResponseBodyDataAttachment `json:"Attachment,omitempty" xml:"Attachment,omitempty" type:"Repeated"`
+	// The contact information.
+	//
+	// example:
+	//
+	// 13833333333
+	ContactInformation *string `json:"ContactInformation,omitempty" xml:"ContactInformation,omitempty"`
+	// The contact name.
+	//
+	// example:
+	//
+	// John
+	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// The UID of the creator.
+	//
+	// example:
+	//
+	// 291688841144601701
+	Creator *int64 `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The logon name of the creator.
+	//
+	// example:
+	//
+	// John
+	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// The customer name.
+	//
+	// example:
+	//
+	// XXXX Co., Ltd
+	CustomerName *string `json:"CustomerName,omitempty" xml:"CustomerName,omitempty"`
+	// The customer UID.
+	//
+	// example:
+	//
+	// 1271202085096245
+	CustomerUid *int64 `json:"CustomerUid,omitempty" xml:"CustomerUid,omitempty"`
+	// The creation time in the yyyy-MM-dd HH:mm:ss format.
+	//
+	// example:
+	//
+	// 2026-05-07 10:27:46
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The note content.
+	//
+	// example:
+	//
+	// Note content
+	NoteContent *string `json:"NoteContent,omitempty" xml:"NoteContent,omitempty"`
+	// The note ID.
+	//
+	// example:
+	//
+	// 1620737
+	NoteId *int64 `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
+	// The note type (CUSTOMER).
+	//
+	// example:
+	//
+	// CUSTOMER
+	NoteType *string `json:"NoteType,omitempty" xml:"NoteType,omitempty"`
+	// The note type label.
+	//
+	// example:
+	//
+	// Customer
+	NoteTypeLabel *string `json:"NoteTypeLabel,omitempty" xml:"NoteTypeLabel,omitempty"`
+	// The touch date (timestamp).
+	//
+	// example:
+	//
+	// 1784266662000
+	TouchDate *string `json:"TouchDate,omitempty" xml:"TouchDate,omitempty"`
 }
 
 func (s CustomerNoteListDetailResponseBodyData) String() string {
@@ -280,11 +377,38 @@ func (s *CustomerNoteListDetailResponseBodyData) Validate() error {
 }
 
 type CustomerNoteListDetailResponseBodyDataAttachment struct {
-	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The attachment signature.
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The attachment ID.
+	//
+	// example:
+	//
+	// 307
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The attachment name.
+	//
+	// example:
+	//
+	// Course Training
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The attachment signature.
+	//
+	// example:
+	//
+	// hF2UrEMc4XWy990sh9LGM0+ScI8=
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-	Size      *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The attachment size in bytes.
+	//
+	// example:
+	//
+	// 111222121
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The attachment type.
+	//
+	// example:
+	//
+	// image/png
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CustomerNoteListDetailResponseBodyDataAttachment) String() string {
@@ -293,6 +417,10 @@ func (s CustomerNoteListDetailResponseBodyDataAttachment) String() string {
 
 func (s CustomerNoteListDetailResponseBodyDataAttachment) GoString() string {
 	return s.String()
+}
+
+func (s *CustomerNoteListDetailResponseBodyDataAttachment) GetDownloadUrl() *string {
+	return s.DownloadUrl
 }
 
 func (s *CustomerNoteListDetailResponseBodyDataAttachment) GetId() *int64 {
@@ -313,6 +441,11 @@ func (s *CustomerNoteListDetailResponseBodyDataAttachment) GetSize() *int64 {
 
 func (s *CustomerNoteListDetailResponseBodyDataAttachment) GetType() *string {
 	return s.Type
+}
+
+func (s *CustomerNoteListDetailResponseBodyDataAttachment) SetDownloadUrl(v string) *CustomerNoteListDetailResponseBodyDataAttachment {
+	s.DownloadUrl = &v
+	return s
 }
 
 func (s *CustomerNoteListDetailResponseBodyDataAttachment) SetId(v int64) *CustomerNoteListDetailResponseBodyDataAttachment {

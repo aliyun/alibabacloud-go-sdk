@@ -24,26 +24,38 @@ type iCustomerNoteCreateRequest interface {
 }
 
 type CustomerNoteCreateRequest struct {
+	// The contact information.
+	//
 	// example:
 	//
 	// 13833333333
 	ContactInformation *string `json:"ContactInformation,omitempty" xml:"ContactInformation,omitempty"`
+	// The name of the contact.
+	//
 	// example:
 	//
 	// 张三
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// The name of the customer.
+	//
 	// example:
 	//
 	// XXXX有限公司
 	CustomerName *string `json:"CustomerName,omitempty" xml:"CustomerName,omitempty"`
+	// The UID of the customer.
+	//
 	// example:
 	//
 	// 1647796581073291
 	CustomerUid *string `json:"CustomerUid,omitempty" xml:"CustomerUid,omitempty"`
+	// The content of the note.
+	//
 	// example:
 	//
 	// 日常拜访客户，讨论客户agent建设方案
 	NoteContent *string `json:"NoteContent,omitempty" xml:"NoteContent,omitempty"`
+	// The touch time. This value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1784266662000

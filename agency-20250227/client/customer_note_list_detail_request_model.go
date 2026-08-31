@@ -14,6 +14,11 @@ type iCustomerNoteListDetailRequest interface {
 }
 
 type CustomerNoteListDetailRequest struct {
+	// The note ID.
+	//
+	// example:
+	//
+	// 1620737
 	NoteId *int64 `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
 }
 

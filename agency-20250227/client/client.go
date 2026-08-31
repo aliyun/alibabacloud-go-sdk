@@ -117,7 +117,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 创建客户小记
+// Creates a customer note.
 //
 // @param request - CustomerNoteCreateRequest
 //
@@ -181,7 +181,7 @@ func (client *Client) CustomerNoteCreateWithOptions(request *CustomerNoteCreateR
 
 // Summary:
 //
-// 创建客户小记
+// Creates a customer note.
 //
 // @param request - CustomerNoteCreateRequest
 //
@@ -199,7 +199,7 @@ func (client *Client) CustomerNoteCreate(request *CustomerNoteCreateRequest) (_r
 
 // Summary:
 //
-// 编辑客户小记
+// Edits a customer note.
 //
 // @param request - CustomerNoteEditRequest
 //
@@ -259,7 +259,7 @@ func (client *Client) CustomerNoteEditWithOptions(request *CustomerNoteEditReque
 
 // Summary:
 //
-// 编辑客户小记
+// Edits a customer note.
 //
 // @param request - CustomerNoteEditRequest
 //
@@ -277,7 +277,7 @@ func (client *Client) CustomerNoteEdit(request *CustomerNoteEditRequest) (_resul
 
 // Summary:
 //
-// 分页查询客户小记列表
+// Queries a paged query list of customer notes with paging support.
 //
 // @param request - CustomerNoteListRequest
 //
@@ -329,7 +329,7 @@ func (client *Client) CustomerNoteListWithOptions(request *CustomerNoteListReque
 
 // Summary:
 //
-// 分页查询客户小记列表
+// Queries a paged query list of customer notes with paging support.
 //
 // @param request - CustomerNoteListRequest
 //
@@ -347,7 +347,7 @@ func (client *Client) CustomerNoteList(request *CustomerNoteListRequest) (_resul
 
 // Summary:
 //
-// 查询客户小记详情
+// Queries the details of a customer note.
 //
 // @param request - CustomerNoteListDetailRequest
 //
@@ -391,7 +391,7 @@ func (client *Client) CustomerNoteListDetailWithOptions(request *CustomerNoteLis
 
 // Summary:
 //
-// 查询客户小记详情
+// Queries the details of a customer note.
 //
 // @param request - CustomerNoteListDetailRequest
 //

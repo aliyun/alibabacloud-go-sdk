@@ -18,14 +18,20 @@ type iCustomerNoteListRequest interface {
 }
 
 type CustomerNoteListRequest struct {
+	// The UID of the customer.
+	//
 	// example:
 	//
 	// 5625862916391497
 	CustomerUid *string `json:"CustomerUid,omitempty" xml:"CustomerUid,omitempty"`
+	// The page number. Pages start from 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page. Default value: 20.
+	//
 	// example:
 	//
 	// 10
