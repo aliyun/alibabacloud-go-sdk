@@ -27,6 +27,8 @@ type iReadOutboundTaskCallListRequest interface {
 	GetCustomerNameOrPhone() *string
 	SetDisplayStatusList(v []*string) *ReadOutboundTaskCallListRequest
 	GetDisplayStatusList() []*string
+	SetDurationRangeList(v []*string) *ReadOutboundTaskCallListRequest
+	GetDurationRangeList() []*string
 	SetLabelTags(v []*string) *ReadOutboundTaskCallListRequest
 	GetLabelTags() []*string
 	SetMaxResults(v int32) *ReadOutboundTaskCallListRequest
@@ -78,6 +80,10 @@ type ReadOutboundTaskCallListRequest struct {
 	//
 	// ["1", "2"]
 	DisplayStatusList []*string `json:"DisplayStatusList,omitempty" xml:"DisplayStatusList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ["WITHIN_15_SECONDS", "FROM_1_TO_3_MINUTES"]
+	DurationRangeList []*string `json:"DurationRangeList,omitempty" xml:"DurationRangeList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// ["有意向", "高净值"]
@@ -148,6 +154,10 @@ func (s *ReadOutboundTaskCallListRequest) GetDisplayStatusList() []*string {
 	return s.DisplayStatusList
 }
 
+func (s *ReadOutboundTaskCallListRequest) GetDurationRangeList() []*string {
+	return s.DurationRangeList
+}
+
 func (s *ReadOutboundTaskCallListRequest) GetLabelTags() []*string {
 	return s.LabelTags
 }
@@ -214,6 +224,11 @@ func (s *ReadOutboundTaskCallListRequest) SetCustomerNameOrPhone(v string) *Read
 
 func (s *ReadOutboundTaskCallListRequest) SetDisplayStatusList(v []*string) *ReadOutboundTaskCallListRequest {
 	s.DisplayStatusList = v
+	return s
+}
+
+func (s *ReadOutboundTaskCallListRequest) SetDurationRangeList(v []*string) *ReadOutboundTaskCallListRequest {
+	s.DurationRangeList = v
 	return s
 }
 

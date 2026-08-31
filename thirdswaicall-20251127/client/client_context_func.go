@@ -161,6 +161,10 @@ func (client *Client) ReadOutboundTaskCallListWithContext(ctx context.Context, t
 		request.DisplayStatusListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DisplayStatusList, dara.String("DisplayStatusList"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.DurationRangeList) {
+		request.DurationRangeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DurationRangeList, dara.String("DurationRangeList"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.LabelTags) {
 		request.LabelTagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelTags, dara.String("LabelTags"), dara.String("json"))
 	}
@@ -200,6 +204,10 @@ func (client *Client) ReadOutboundTaskCallListWithContext(ctx context.Context, t
 
 	if !dara.IsNil(request.DisplayStatusListShrink) {
 		body["DisplayStatusList"] = request.DisplayStatusListShrink
+	}
+
+	if !dara.IsNil(request.DurationRangeListShrink) {
+		body["DurationRangeList"] = request.DurationRangeListShrink
 	}
 
 	if !dara.IsNil(request.LabelTagsShrink) {

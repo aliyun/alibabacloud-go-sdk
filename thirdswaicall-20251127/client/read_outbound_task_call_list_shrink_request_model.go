@@ -27,6 +27,8 @@ type iReadOutboundTaskCallListShrinkRequest interface {
 	GetCustomerNameOrPhone() *string
 	SetDisplayStatusListShrink(v string) *ReadOutboundTaskCallListShrinkRequest
 	GetDisplayStatusListShrink() *string
+	SetDurationRangeListShrink(v string) *ReadOutboundTaskCallListShrinkRequest
+	GetDurationRangeListShrink() *string
 	SetLabelTagsShrink(v string) *ReadOutboundTaskCallListShrinkRequest
 	GetLabelTagsShrink() *string
 	SetMaxResults(v int32) *ReadOutboundTaskCallListShrinkRequest
@@ -78,6 +80,10 @@ type ReadOutboundTaskCallListShrinkRequest struct {
 	//
 	// ["1", "2"]
 	DisplayStatusListShrink *string `json:"DisplayStatusList,omitempty" xml:"DisplayStatusList,omitempty"`
+	// example:
+	//
+	// ["WITHIN_15_SECONDS", "FROM_1_TO_3_MINUTES"]
+	DurationRangeListShrink *string `json:"DurationRangeList,omitempty" xml:"DurationRangeList,omitempty"`
 	// example:
 	//
 	// ["有意向", "高净值"]
@@ -148,6 +154,10 @@ func (s *ReadOutboundTaskCallListShrinkRequest) GetDisplayStatusListShrink() *st
 	return s.DisplayStatusListShrink
 }
 
+func (s *ReadOutboundTaskCallListShrinkRequest) GetDurationRangeListShrink() *string {
+	return s.DurationRangeListShrink
+}
+
 func (s *ReadOutboundTaskCallListShrinkRequest) GetLabelTagsShrink() *string {
 	return s.LabelTagsShrink
 }
@@ -214,6 +224,11 @@ func (s *ReadOutboundTaskCallListShrinkRequest) SetCustomerNameOrPhone(v string)
 
 func (s *ReadOutboundTaskCallListShrinkRequest) SetDisplayStatusListShrink(v string) *ReadOutboundTaskCallListShrinkRequest {
 	s.DisplayStatusListShrink = &v
+	return s
+}
+
+func (s *ReadOutboundTaskCallListShrinkRequest) SetDurationRangeListShrink(v string) *ReadOutboundTaskCallListShrinkRequest {
+	s.DurationRangeListShrink = &v
 	return s
 }
 
