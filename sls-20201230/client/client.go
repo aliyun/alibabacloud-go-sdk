@@ -159,7 +159,7 @@ type AlertConfiguration struct {
 	//
 	// example:
 	//
-	// DasnboardExample
+	// dasnboardExample
 	Dashboard *string `json:"dashboard,omitempty" xml:"dashboard,omitempty"`
 	// The group evaluation configuration.
 	//
@@ -726,42 +726,62 @@ func (s *AsyncSqlResponseDataAsyncSqlMetaPB) SetResultRows(v int32) *AsyncSqlRes
 }
 
 type AzureBlobIngestion struct {
+	// The Azure Blob file import configuration.
+	//
 	// This parameter is required.
 	Configuration *AzureBlobIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1714360481
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// job description
+	//
 	// example:
 	//
 	// azure blob ingestion
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// job displayName
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// azure blob ingestion
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The last modified time.
+	//
 	// example:
 	//
 	// 1714360481
 	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// The name of the import task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ingest-azure-blob-123456
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The write processor ID.
+	//
 	// example:
 	//
 	// ingest-processor-1756802123-953901
 	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+	// The scheduling configuration.
+	//
 	// This parameter is required.
 	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// c7f01719d9feb105fc9d8df92af62010
 	ScheduleId *string `json:"scheduleId,omitempty" xml:"scheduleId,omitempty"`
+	// The import status.
+	//
 	// example:
 	//
 	// RUNNING
@@ -1112,29 +1132,29 @@ func (s *ConditionConfiguration) SetCountCondition(v string) *ConditionConfigura
 }
 
 type ConsumeProcessor struct {
-	// Processor配置
+	// The Processor configuration.
 	//
 	// This parameter is required.
 	Configuration *ConsumeProcessorConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	// 创建时间
+	// The creation time.
 	//
 	// example:
 	//
 	// 1717171200
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Processor描述
+	// The Processor description.
 	//
 	// example:
 	//
-	// 过滤content字段
+	// Filter the content field
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Processor名称
+	// The Processor name.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 字段过滤处理
+	// Field filtering
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// Processor ID
 	//
@@ -1144,7 +1164,7 @@ type ConsumeProcessor struct {
 	//
 	// consume-processor-1
 	ProcessorName *string `json:"processorName,omitempty" xml:"processorName,omitempty"`
-	// 更新时间
+	// The update time.
 	//
 	// example:
 	//
@@ -1445,38 +1465,56 @@ func (s *DeleteLogStoreLogsTask) SetTo(v int32) *DeleteLogStoreLogsTask {
 }
 
 type ESIngestion struct {
+	// The ES import configuration.
+	//
 	// This parameter is required.
 	Configuration *ESIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1714360481
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// job description
+	//
 	// example:
 	//
 	// es ingestion
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// job displayName
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// es ingestion
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The last modified time.
+	//
 	// example:
 	//
 	// 1714360481
 	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// The import task name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ingest-es-123456
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The scheduling configuration.
+	//
 	// This parameter is required.
 	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// c7f01719d9feb105fc9d8df92af62010
 	ScheduleId *string `json:"scheduleId,omitempty" xml:"scheduleId,omitempty"`
+	// The import status.
+	//
 	// example:
 	//
 	// RUNNING
@@ -1840,7 +1878,7 @@ type ETLConfiguration struct {
 	//
 	// example:
 	//
-	// config.vpc.vpc_id.test1：vpc-uf6mskb0b****n9yj
+	// config.vpc.vpc_id.test1:vpc-uf6mskb0b****n9yj
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 	// The ARN of the RAM role that is authorized to read data from the source Logstore.
 	//
@@ -1856,7 +1894,7 @@ type ETLConfiguration struct {
 	//
 	// example:
 	//
-	// 	- | extend key=\\"value\\"
+	// e_set("key","value")
 	Script *string `json:"script,omitempty" xml:"script,omitempty"`
 	// The output destinations of the data transformation.
 	//
@@ -2122,6 +2160,145 @@ func (s *EncryptUserCmkConf) SetCmkKeyId(v string) *EncryptUserCmkConf {
 
 func (s *EncryptUserCmkConf) SetRegionId(v string) *EncryptUserCmkConf {
 	s.RegionId = &v
+	return s
+}
+
+type FieldSpec struct {
+	// Specifies whether the field can be analyzed, that is, whether it can be used as a dimension column in a GROUP BY clause.
+	//
+	// example:
+	//
+	// true
+	Analysable *bool `json:"analysable,omitempty" xml:"analysable,omitempty"`
+	// The formatting method for numeric or display values, such as KMB (thousand/million/billion), percent, ms, or dthms (hours:minutes:seconds).
+	//
+	// example:
+	//
+	// KMB
+	DataFormat *string `json:"data_format,omitempty" xml:"data_format,omitempty"`
+	// The business description of the field.
+	//
+	// example:
+	//
+	// The unique ID of the transaction order
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name used in the console. The value can contain Chinese characters.
+	//
+	// example:
+	//
+	// OrderNumber
+	DisplayName *string `json:"display_name,omitempty" xml:"display_name,omitempty"`
+	// Specifies whether the field can be filtered, that is, whether index-based filter queries are supported.
+	//
+	// example:
+	//
+	// true
+	Filterable *bool `json:"filterable,omitempty" xml:"filterable,omitempty"`
+	// The launch stage of the field. Valid values: preview, beta, ga, and deprecated.
+	//
+	// example:
+	//
+	// ga
+	LaunchStage *string `json:"launch_stage,omitempty" xml:"launch_stage,omitempty"`
+	// The field name. The value must consist of lowercase letters, digits, hyphens (-), underscores (_), and periods (.).
+	//
+	// example:
+	//
+	// order_id
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Specifies whether the field can be sorted.
+	//
+	// example:
+	//
+	// true
+	Orderable *bool `json:"orderable,omitempty" xml:"orderable,omitempty"`
+	// The short description (one sentence) used in compact display scenarios such as lists.
+	//
+	// example:
+	//
+	// Order ID
+	ShortDescription *string `json:"short_description,omitempty" xml:"short_description,omitempty"`
+	// The field type. Valid values: string, integer, float, boolean, time, json_object, and json_array.
+	//
+	// example:
+	//
+	// string
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The unit of the field. The unit is used only for display purposes and is not automatically converted. For example, ms is not automatically converted to s.
+	//
+	// example:
+	//
+	// ms
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+	// The value mapping for enumerated values. The key is the raw value and the value is the mapped semantic name. This is used to display the business meaning of enumerated values. For example, the value 1 of the status field is mapped to running.
+	ValueMapping map[string]*string `json:"value_mapping,omitempty" xml:"value_mapping,omitempty"`
+}
+
+func (s FieldSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FieldSpec) GoString() string {
+	return s.String()
+}
+
+func (s *FieldSpec) SetAnalysable(v bool) *FieldSpec {
+	s.Analysable = &v
+	return s
+}
+
+func (s *FieldSpec) SetDataFormat(v string) *FieldSpec {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *FieldSpec) SetDescription(v string) *FieldSpec {
+	s.Description = &v
+	return s
+}
+
+func (s *FieldSpec) SetDisplayName(v string) *FieldSpec {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *FieldSpec) SetFilterable(v bool) *FieldSpec {
+	s.Filterable = &v
+	return s
+}
+
+func (s *FieldSpec) SetLaunchStage(v string) *FieldSpec {
+	s.LaunchStage = &v
+	return s
+}
+
+func (s *FieldSpec) SetName(v string) *FieldSpec {
+	s.Name = &v
+	return s
+}
+
+func (s *FieldSpec) SetOrderable(v bool) *FieldSpec {
+	s.Orderable = &v
+	return s
+}
+
+func (s *FieldSpec) SetShortDescription(v string) *FieldSpec {
+	s.ShortDescription = &v
+	return s
+}
+
+func (s *FieldSpec) SetType(v string) *FieldSpec {
+	s.Type = &v
+	return s
+}
+
+func (s *FieldSpec) SetUnit(v string) *FieldSpec {
+	s.Unit = &v
+	return s
+}
+
+func (s *FieldSpec) SetValueMapping(v map[string]*string) *FieldSpec {
+	s.ValueMapping = v
 	return s
 }
 
@@ -2855,6 +3032,171 @@ func (s *IngestProcessorConfiguration) SetSpl(v string) *IngestProcessorConfigur
 	return s
 }
 
+type JobInstance struct {
+	// The start time.
+	//
+	// example:
+	//
+	// 1784045339385
+	BeginTimeInMillis *int64 `json:"beginTimeInMillis,omitempty" xml:"beginTimeInMillis,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 1784045339385
+	CreateTimeInMillis *int64 `json:"createTimeInMillis,omitempty" xml:"createTimeInMillis,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// 加工作业
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name.
+	//
+	// example:
+	//
+	// filter-get-request
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// 401
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// QueryErr(InvalidQuery): invalid metric keys provided: [metric_key1, metric_key2]
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// 467b2b2cb7de2a9-656946cb235f3-52f6f88
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The task name.
+	//
+	// example:
+	//
+	// alimm_onebp_dtc_scs_prod_m_i_1561_p_x_1
+	JobName *string `json:"jobName,omitempty" xml:"jobName,omitempty"`
+	// The scheduled task ID.
+	//
+	// example:
+	//
+	// 5a4093d6cb4ed7e8bca3745b221af4c8
+	JobScheduleId *string `json:"jobScheduleId,omitempty" xml:"jobScheduleId,omitempty"`
+	// The returned result.
+	//
+	// example:
+	//
+	// {}
+	Result *string `json:"result,omitempty" xml:"result,omitempty"`
+	// The scheduled time.
+	//
+	// example:
+	//
+	// 1784045339385
+	ScheduleTimeInMillis *int64 `json:"scheduleTimeInMillis,omitempty" xml:"scheduleTimeInMillis,omitempty"`
+	// The current execution status.
+	//
+	// example:
+	//
+	// FAILED
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// The schedule title.
+	//
+	// example:
+	//
+	// {\\"pubNet\\":0,\\"queryId\\":\\"6A565F1DD71457AD541DEC77_76\\",\\"shipBytes\\":0,\\"shipLines\\":0,\\"sqlCPUMillis\\":0,\\"sqlCostMillis\\":0,\\"sqlFromTime\\":1784041200,\\"sqlProcessedBytes\\":0,\\"sqlProcessedLines\\":0,\\"sqlProgress\\":\\"\\",\\"sqlResultLines\\":0,\\"sqlState\\":\\"FAILED\\",\\"sqlToTime\\":1784044800,\\"userInfo\\":\\"\\"}
+	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
+	// The update time.
+	//
+	// example:
+	//
+	// 1784045339385
+	UpdateTimeInMillis *int64 `json:"updateTimeInMillis,omitempty" xml:"updateTimeInMillis,omitempty"`
+}
+
+func (s JobInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JobInstance) GoString() string {
+	return s.String()
+}
+
+func (s *JobInstance) SetBeginTimeInMillis(v int64) *JobInstance {
+	s.BeginTimeInMillis = &v
+	return s
+}
+
+func (s *JobInstance) SetCreateTimeInMillis(v int64) *JobInstance {
+	s.CreateTimeInMillis = &v
+	return s
+}
+
+func (s *JobInstance) SetDescription(v string) *JobInstance {
+	s.Description = &v
+	return s
+}
+
+func (s *JobInstance) SetDisplayName(v string) *JobInstance {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *JobInstance) SetErrorCode(v string) *JobInstance {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *JobInstance) SetErrorMessage(v string) *JobInstance {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *JobInstance) SetInstanceId(v string) *JobInstance {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *JobInstance) SetJobName(v string) *JobInstance {
+	s.JobName = &v
+	return s
+}
+
+func (s *JobInstance) SetJobScheduleId(v string) *JobInstance {
+	s.JobScheduleId = &v
+	return s
+}
+
+func (s *JobInstance) SetResult(v string) *JobInstance {
+	s.Result = &v
+	return s
+}
+
+func (s *JobInstance) SetScheduleTimeInMillis(v int64) *JobInstance {
+	s.ScheduleTimeInMillis = &v
+	return s
+}
+
+func (s *JobInstance) SetState(v string) *JobInstance {
+	s.State = &v
+	return s
+}
+
+func (s *JobInstance) SetSummary(v string) *JobInstance {
+	s.Summary = &v
+	return s
+}
+
+func (s *JobInstance) SetUpdateTimeInMillis(v int64) *JobInstance {
+	s.UpdateTimeInMillis = &v
+	return s
+}
+
 type JoinConfiguration struct {
 	// The condition of the set operation.
 	//
@@ -2889,38 +3231,56 @@ func (s *JoinConfiguration) SetType(v string) *JoinConfiguration {
 }
 
 type KafkaIngestion struct {
+	// The Kafka import configuration.
+	//
 	// This parameter is required.
 	Configuration *KafkaIngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1714360481
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// job description
+	//
 	// example:
 	//
 	// kafka ingestion
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// job displayName
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// kafka ingestion
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// The last modified time.
+	//
 	// example:
 	//
 	// 1714360481
 	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// The import task name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ingest-kafka-123456
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The scheduling configuration.
+	//
 	// This parameter is required.
 	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// c7f01719d9feb105fc9d8df92af62010
 	ScheduleId *string `json:"scheduleId,omitempty" xml:"scheduleId,omitempty"`
+	// The import status.
+	//
 	// example:
 	//
 	// RUNNING
@@ -3389,6 +3749,80 @@ func (s *LogItem) SetTimeNs(v int32) *LogItem {
 	return s
 }
 
+type LogSetSpec struct {
+	// The default sort direction. Valid values:
+	//
+	// - asc: ascending order.
+	//
+	// - desc: descending order.
+	//
+	// Default value: asc.
+	//
+	// example:
+	//
+	// asc
+	DefaultOrder *string `json:"default_order,omitempty" xml:"default_order,omitempty"`
+	// The list of fields.
+	Fields []*FieldSpec `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	// The list of hidden fields. These fields are not displayed in the interface by default.
+	HiddenFields []*string `json:"hidden_fields,omitempty" xml:"hidden_fields,omitempty" type:"Repeated"`
+	// The list of Displayed Fields, in sorting order by display priority.
+	NameFields []*string `json:"name_fields,omitempty" xml:"name_fields,omitempty" type:"Repeated"`
+	// The list of sort fields, used for default sorting.
+	OrderedFields []*string `json:"ordered_fields,omitempty" xml:"ordered_fields,omitempty" type:"Repeated"`
+	// The list of tag fields. Tag fields are aggregated together for display and analysis by default.
+	TagFields []*string `json:"tag_fields,omitempty" xml:"tag_fields,omitempty" type:"Repeated"`
+	// The name of the time field. The field must be of the timestamp type and supports seconds, milliseconds, microseconds, and nanoseconds.
+	//
+	// example:
+	//
+	// time
+	TimeField *string `json:"time_field,omitempty" xml:"time_field,omitempty"`
+}
+
+func (s LogSetSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogSetSpec) GoString() string {
+	return s.String()
+}
+
+func (s *LogSetSpec) SetDefaultOrder(v string) *LogSetSpec {
+	s.DefaultOrder = &v
+	return s
+}
+
+func (s *LogSetSpec) SetFields(v []*FieldSpec) *LogSetSpec {
+	s.Fields = v
+	return s
+}
+
+func (s *LogSetSpec) SetHiddenFields(v []*string) *LogSetSpec {
+	s.HiddenFields = v
+	return s
+}
+
+func (s *LogSetSpec) SetNameFields(v []*string) *LogSetSpec {
+	s.NameFields = v
+	return s
+}
+
+func (s *LogSetSpec) SetOrderedFields(v []*string) *LogSetSpec {
+	s.OrderedFields = v
+	return s
+}
+
+func (s *LogSetSpec) SetTagFields(v []*string) *LogSetSpec {
+	s.TagFields = v
+	return s
+}
+
+func (s *LogSetSpec) SetTimeField(v string) *LogSetSpec {
+	s.TimeField = &v
+	return s
+}
+
 type LogTag struct {
 	// The name of the custom key.
 	//
@@ -3645,8 +4079,6 @@ type LogtailPipelineConfig struct {
 	LogSample *string `json:"logSample,omitempty" xml:"logSample,omitempty"`
 	// The processing plug-ins.
 	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
-	// 任务配置
-	//
 	// example:
 	//
 	// {"Type": "task_example"}
@@ -4095,24 +4527,36 @@ func (s *MLServiceAnalysisParam) SetParameter(v map[string]*string) *MLServiceAn
 }
 
 type MLServiceParam struct {
+	// The microservice description.
+	//
 	// example:
 	//
-	// 某某服务
-	Description *string              `json:"description,omitempty" xml:"description,omitempty"`
-	Model       *MLServiceParamModel `json:"model,omitempty" xml:"model,omitempty" type:"Struct"`
+	// SampleService
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The model configuration that the microservice depends on.
+	Model *MLServiceParamModel `json:"model,omitempty" xml:"model,omitempty" type:"Struct"`
+	// The microservice name.
+	//
 	// example:
 	//
 	// service_name
-	Name     *string                 `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The microservice EPS resource configuration.
 	Resource *MLServiceParamResource `json:"resource,omitempty" xml:"resource,omitempty" type:"Struct"`
+	// The microservice type.
+	//
 	// example:
 	//
 	// sls_builtin
 	ServiceType *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
+	// The microservice status.
+	//
 	// example:
 	//
 	// running
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The microservice update time.
+	//
 	// example:
 	//
 	// 1695090077
@@ -4163,10 +4607,14 @@ func (s *MLServiceParam) SetUpdateTimestamp(v int64) *MLServiceParam {
 }
 
 type MLServiceParamModel struct {
+	// The model resource ID.
+	//
 	// example:
 	//
 	// xxxx
 	ModelResourceId *string `json:"modelResourceId,omitempty" xml:"modelResourceId,omitempty"`
+	// The model resource type.
+	//
 	// example:
 	//
 	// xxx_type
@@ -4192,18 +4640,26 @@ func (s *MLServiceParamModel) SetModelResourceType(v string) *MLServiceParamMode
 }
 
 type MLServiceParamResource struct {
+	// The maximum CPU resource limit.
+	//
 	// example:
 	//
 	// 2
 	CpuLimit *int32 `json:"cpuLimit,omitempty" xml:"cpuLimit,omitempty"`
+	// The required GPU memory size.
+	//
 	// example:
 	//
 	// 20
 	Gpu *int32 `json:"gpu,omitempty" xml:"gpu,omitempty"`
+	// The maximum memory resources limit.
+	//
 	// example:
 	//
 	// 64
 	MemoryLimit *int32 `json:"memoryLimit,omitempty" xml:"memoryLimit,omitempty"`
+	// The number of microservice replicas.
+	//
 	// example:
 	//
 	// 2
@@ -4604,6 +5060,210 @@ func (s *MaxComputeExportConfigurationSink) SetTimeZone(v string) *MaxComputeExp
 	return s
 }
 
+type Metric struct {
+	// The aggregation method of the metric (such as avg or sum). If the metric is already aggregated by the same dimensions (such as avg(rate(cpu_core_usage_seconds_total{}[1m]))), configuration is not required. Metrics based on log aggregation generally do not require configuration either.
+	//
+	// example:
+	//
+	// avg
+	Aggregator *string `json:"aggregator,omitempty" xml:"aggregator,omitempty"`
+	// The numeric or display formatting method, such as KMB (thousand/million/billion), percent, ms, or dthms (hours:minutes:seconds).
+	//
+	// example:
+	//
+	// KMB
+	DataFormat *string `json:"data_format,omitempty" xml:"data_format,omitempty"`
+	// The business description of the metric.
+	//
+	// example:
+	//
+	// The number of requests processed by the service per second
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The display name for UI presentation, which can contain Chinese characters.
+	//
+	// example:
+	//
+	// Request Count
+	DisplayName *string `json:"display_name,omitempty" xml:"display_name,omitempty"`
+	// The generation method of the metric. In PromQL mode, this is a PromQL expression (such as rate(request_count{}[1m]), which can be combined with aggregator to compute sum(...) by (label1, label2)). In SQL/SPL mode, this is an aggregation expression (such as count(1)) that is incorporated into the generated query statement.
+	//
+	// example:
+	//
+	// rate(request_count{}[1m])
+	Generator *string `json:"generator,omitempty" xml:"generator,omitempty"`
+	// Indicates whether the metric is a golden metric (core metrics such as latency, traffic, error count, and saturation).
+	//
+	// example:
+	//
+	// false
+	GoldenMetric *bool `json:"golden_metric,omitempty" xml:"golden_metric,omitempty"`
+	// The collection interval of the metric in microseconds. Multiple values indicate that multiple collection interval precisions are supported.
+	IntervalUs []*int64 `json:"interval_us,omitempty" xml:"interval_us,omitempty" type:"Repeated"`
+	// The metric name, which is unique within the MetricSet.
+	//
+	// example:
+	//
+	// request_count
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The expected query mode of the metric: range (range query), instant (instant query), or both.
+	//
+	// example:
+	//
+	// instant
+	QueryMode *string `json:"query_mode,omitempty" xml:"query_mode,omitempty"`
+	// The metric type. Metrics that do not require secondary processing are fixed as gauge.
+	//
+	// example:
+	//
+	// gauge
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The metric unit, which is used for display only without automatic conversion. For example, ms is not automatically converted to s.
+	//
+	// example:
+	//
+	// ms
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+}
+
+func (s Metric) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Metric) GoString() string {
+	return s.String()
+}
+
+func (s *Metric) SetAggregator(v string) *Metric {
+	s.Aggregator = &v
+	return s
+}
+
+func (s *Metric) SetDataFormat(v string) *Metric {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *Metric) SetDescription(v string) *Metric {
+	s.Description = &v
+	return s
+}
+
+func (s *Metric) SetDisplayName(v string) *Metric {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *Metric) SetGenerator(v string) *Metric {
+	s.Generator = &v
+	return s
+}
+
+func (s *Metric) SetGoldenMetric(v bool) *Metric {
+	s.GoldenMetric = &v
+	return s
+}
+
+func (s *Metric) SetIntervalUs(v []*int64) *Metric {
+	s.IntervalUs = v
+	return s
+}
+
+func (s *Metric) SetName(v string) *Metric {
+	s.Name = &v
+	return s
+}
+
+func (s *Metric) SetQueryMode(v string) *Metric {
+	s.QueryMode = &v
+	return s
+}
+
+func (s *Metric) SetType(v string) *Metric {
+	s.Type = &v
+	return s
+}
+
+func (s *Metric) SetUnit(v string) *Metric {
+	s.Unit = &v
+	return s
+}
+
+type MetricSetSpec struct {
+	// The label definitions for the metric set. Labels are recommended to be automatically generated using the dynamic method. MetricSet defines only common labels. Defining additional labels under individual Metrics is not recommended.
+	Labels *MetricSetSpecLabels `json:"labels,omitempty" xml:"labels,omitempty" type:"Struct"`
+	// The list of metrics included in the metric set.
+	Metrics []*Metric `json:"metrics,omitempty" xml:"metrics,omitempty" type:"Repeated"`
+	// Specifies whether the metric requires secondary processing before use. For example, Prometheus counter/summary/histogram metrics require calculations such as rate before they can be used directly.
+	//
+	// example:
+	//
+	// false
+	NeedsProcessing *bool `json:"needs_processing,omitempty" xml:"needs_processing,omitempty"`
+	// The query syntax for the metrics. Valid values: prom (PromQL), spl, and cms (CloudMonitor).
+	//
+	// example:
+	//
+	// prom
+	QueryType *string `json:"query_type,omitempty" xml:"query_type,omitempty"`
+}
+
+func (s MetricSetSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MetricSetSpec) GoString() string {
+	return s.String()
+}
+
+func (s *MetricSetSpec) SetLabels(v *MetricSetSpecLabels) *MetricSetSpec {
+	s.Labels = v
+	return s
+}
+
+func (s *MetricSetSpec) SetMetrics(v []*Metric) *MetricSetSpec {
+	s.Metrics = v
+	return s
+}
+
+func (s *MetricSetSpec) SetNeedsProcessing(v bool) *MetricSetSpec {
+	s.NeedsProcessing = &v
+	return s
+}
+
+func (s *MetricSetSpec) SetQueryType(v string) *MetricSetSpec {
+	s.QueryType = &v
+	return s
+}
+
+type MetricSetSpecLabels struct {
+	// Specifies whether to automatically extract (dynamically generate) labels based on data. Set this parameter to true in most cases.
+	//
+	// example:
+	//
+	// true
+	Dynamic *bool `json:"dynamic,omitempty" xml:"dynamic,omitempty"`
+	// The static label key list. This parameter takes effect when dynamic is set to false.
+	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
+}
+
+func (s MetricSetSpecLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MetricSetSpecLabels) GoString() string {
+	return s.String()
+}
+
+func (s *MetricSetSpecLabels) SetDynamic(v bool) *MetricSetSpecLabels {
+	s.Dynamic = &v
+	return s
+}
+
+func (s *MetricSetSpecLabels) SetKeys(v []*string) *MetricSetSpecLabels {
+	s.Keys = v
+	return s
+}
+
 type OSSExport struct {
 	// The OSS export configuration.
 	Configuration *OSSExportConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
@@ -4708,19 +5368,19 @@ type OSSExportConfiguration struct {
 	//
 	// example:
 	//
-	// 1718380800
+	// 123456789
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
 	// The name of the source Logstore.
 	//
 	// example:
 	//
-	// my-logstore
+	// logstore-demo
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
 	// The ARN of the Resource Access Management (RAM) role that Log Service assumes to read data from the Logstore. You must specify the ARN of your role.
 	//
 	// example:
 	//
-	// acs:ram::1234567890:role/aliyunlogdefaultrole
+	// acs:ram::123456789:role/aliyunlogdefaultrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
 	// The configuration of the destination OSS sink.
 	Sink                  *OSSExportConfigurationSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
@@ -4729,7 +5389,7 @@ type OSSExportConfiguration struct {
 	//
 	// example:
 	//
-	// 1718380800
+	// 123456789
 	ToTime *int64 `json:"toTime,omitempty" xml:"toTime,omitempty"`
 }
 
@@ -4778,7 +5438,7 @@ type OSSExportConfigurationSink struct {
 	//
 	// example:
 	//
-	// my-bucket
+	// test-bucket
 	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
 	// The time in seconds to buffer data before exporting. The value must be an integer from 300 to 900.
 	//
@@ -4796,7 +5456,7 @@ type OSSExportConfigurationSink struct {
 	//
 	// example:
 	//
-	// snappy
+	// snappy/gizp/zstd/none
 	CompressionType *string `json:"compressionType,omitempty" xml:"compressionType,omitempty"`
 	// Format-specific settings. The structure of this JSON object depends on the `contentType` value.
 	ContentDetail map[string]interface{} `json:"contentDetail,omitempty" xml:"contentDetail,omitempty"`
@@ -4804,7 +5464,7 @@ type OSSExportConfigurationSink struct {
 	//
 	// example:
 	//
-	// csv
+	// json/parquet/csv/orc
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
 	// Deprecated
 	//
@@ -4830,7 +5490,7 @@ type OSSExportConfigurationSink struct {
 	//
 	// example:
 	//
-	// https://oss-cn-hangzhou-internal.aliyuncs.com
+	// http://xxxxxxxx
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
 	// The path format for exported files. For more information, see [Path format](https://help.aliyun.com/document_detail/371934.html).
 	//
@@ -4838,7 +5498,7 @@ type OSSExportConfigurationSink struct {
 	//
 	// example:
 	//
-	// %Y/%m/%d/%H/%M
+	// %Y_%m_%d/good/bad
 	PathFormat *string `json:"pathFormat,omitempty" xml:"pathFormat,omitempty"`
 	// The type of the path format.
 	//
@@ -4846,13 +5506,13 @@ type OSSExportConfigurationSink struct {
 	//
 	// example:
 	//
-	// time
+	// only support time
 	PathFormatType *string `json:"pathFormatType,omitempty" xml:"pathFormatType,omitempty"`
 	// The prefix for files exported to the OSS bucket.
 	//
 	// example:
 	//
-	// prefix-demo/
+	// prefixxxx/
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 	// The ARN of the RAM role that Log Service assumes to write data to the OSS bucket. You must specify the ARN of your role.
 	//
@@ -4860,7 +5520,7 @@ type OSSExportConfigurationSink struct {
 	//
 	// example:
 	//
-	// acs:ram::1234567890:role/aliyunlogdefaultrole
+	// acs:ram::xxxxxxx
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
 	// The suffix for the exported files.
 	//
@@ -5118,7 +5778,7 @@ type OSSIngestionConfigurationSource struct {
 	//
 	// example:
 	//
-	// none
+	// none,snappy,gzip
 	CompressionCodec *string `json:"compressionCodec,omitempty" xml:"compressionCodec,omitempty"`
 	// The encoding of the source files.
 	//
@@ -5383,6 +6043,8 @@ func (s *PolicyConfiguration) SetRepeatInterval(v string) *PolicyConfiguration {
 }
 
 type ProcessorAssociate struct {
+	// Processor ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5493,22 +6155,190 @@ func (s *ProjectSummary) SetUpdateTime(v int64) *ProjectSummary {
 	return s
 }
 
+type ResolveModelAmbiguity struct {
+	// The list of candidate options. **The shape is determined by `type`**. Both shapes include an `id` (such as `o1` or `o2`) for the caller to pass back the selection. When `type=semantic`, each item contains exactly four fields: `id` / `label` / `description` / `context`, where `context` has the same structure as the top-level `context` in the response (**note that the candidate item itself is not a context but a wrapper around it**). When `type=data_source`, each item contains exactly two fields: `id` / `dataSource`, with the physical coordinates embedded in `dataSource` (including `region` / `project` / `logstore`), **not flattened at the top level of the candidate item**. Each item is an **open object**. The server may add or remove fields as the semantic layer evolves. Callers should read fields as needed and tolerate unknown fields.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"id": "o1", "dataSource": {"region": "cn-hangzhou", "project": "order-logs-a", "logstore": "orders"}}, {"id": "o2", "dataSource": {"region": "cn-hangzhou", "project": "order-logs-b", "logstore": "orders"}}]
+	Options []map[string]interface{} `json:"options,omitempty" xml:"options,omitempty" type:"Repeated"`
+	// A clarification question for the caller. You can display it directly to the user or a downstream agent to make a selection from `options`.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Select the data source for this query
+	Question *string `json:"question,omitempty" xml:"question,omitempty"`
+	// The ambiguity type. Valid values: `semantic` (the question semantically points to multiple candidate contexts) or `data_source` (the semantics are unique but map to multiple physical data source coordinates). Note that the value `data_source` of this field is not the same as the top-level `dataSource` field in the response.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// data_source
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ResolveModelAmbiguity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResolveModelAmbiguity) GoString() string {
+	return s.String()
+}
+
+func (s *ResolveModelAmbiguity) SetOptions(v []map[string]interface{}) *ResolveModelAmbiguity {
+	s.Options = v
+	return s
+}
+
+func (s *ResolveModelAmbiguity) SetQuestion(v string) *ResolveModelAmbiguity {
+	s.Question = &v
+	return s
+}
+
+func (s *ResolveModelAmbiguity) SetType(v string) *ResolveModelAmbiguity {
+	s.Type = &v
+	return s
+}
+
+type ResolveModelDataSource struct {
+	// The Logstore name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// managed-logstore
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// The project name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// managed-project
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+}
+
+func (s ResolveModelDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResolveModelDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *ResolveModelDataSource) SetLogstore(v string) *ResolveModelDataSource {
+	s.Logstore = &v
+	return s
+}
+
+func (s *ResolveModelDataSource) SetProject(v string) *ResolveModelDataSource {
+	s.Project = &v
+	return s
+}
+
+func (s *ResolveModelDataSource) SetRegion(v string) *ResolveModelDataSource {
+	s.Region = &v
+	return s
+}
+
+type ResourceRecord struct {
+	// The record creation time, a UNIX timestamp in seconds. This field is returned only in responses.
+	//
+	// example:
+	//
+	// 1787800000
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The record ID. If this field is not specified during creation or batch write, the server automatically generates it. If specified, the provided ID is used.
+	//
+	// example:
+	//
+	// record-001
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The record last modification time, a UNIX timestamp in seconds. This field is returned only in responses.
+	//
+	// example:
+	//
+	// 1787803600
+	LastModifyTime *int64 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	// The record tag.
+	//
+	// example:
+	//
+	// production
+	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
+	// The record content, which is a string encoded from a JSON object.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"key":"value"}
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ResourceRecord) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResourceRecord) GoString() string {
+	return s.String()
+}
+
+func (s *ResourceRecord) SetCreateTime(v int64) *ResourceRecord {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ResourceRecord) SetId(v string) *ResourceRecord {
+	s.Id = &v
+	return s
+}
+
+func (s *ResourceRecord) SetLastModifyTime(v int64) *ResourceRecord {
+	s.LastModifyTime = &v
+	return s
+}
+
+func (s *ResourceRecord) SetTag(v string) *ResourceRecord {
+	s.Tag = &v
+	return s
+}
+
+func (s *ResourceRecord) SetValue(v string) *ResourceRecord {
+	s.Value = &v
+	return s
+}
+
 type S3Ingestion struct {
-	// S3 import configuration
+	// The S3 import configuration.
 	Configuration *S3IngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	// Creation Time
+	// The creation time.
 	//
 	// example:
 	//
 	// 1714360481
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// Job description
+	// job description
 	//
 	// example:
 	//
 	// s3 ingestion
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Job display name
+	// job displayName
 	//
 	// This parameter is required.
 	//
@@ -5516,13 +6346,13 @@ type S3Ingestion struct {
 	//
 	// s3 ingestion
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// Updated At
+	// The last modified time.
 	//
 	// example:
 	//
 	// 1714360481
 	LastModifiedTime *int64 `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	// Task Name
+	// The import task name.
 	//
 	// This parameter is required.
 	//
@@ -5530,17 +6360,17 @@ type S3Ingestion struct {
 	//
 	// ingest-s3-123456
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Scan Configuration
+	// The scheduling configuration.
 	//
 	// This parameter is required.
 	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
-	// Job ID
+	// The task ID.
 	//
 	// example:
 	//
 	// c7f01719d9feb105fc9d8df92af62010
 	ScheduleId *string `json:"scheduleId,omitempty" xml:"scheduleId,omitempty"`
-	// Import Status
+	// The import status.
 	//
 	// example:
 	//
@@ -5967,7 +6797,7 @@ type SavedSearch struct {
 	//
 	// example:
 	//
-	// topic-test
+	// topic
 	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
 }
 
@@ -6021,7 +6851,7 @@ type Schedule struct {
 	//
 	// example:
 	//
-	// 60s
+	// 1m/1h
 	Interval *string `json:"interval,omitempty" xml:"interval,omitempty"`
 	// Specifies whether to execute the scheduled task immediately.
 	//
@@ -6033,7 +6863,7 @@ type Schedule struct {
 	//
 	// example:
 	//
-	// +0800
+	// "+0800"
 	TimeZone *string `json:"timeZone,omitempty" xml:"timeZone,omitempty"`
 	// schedule type
 	//
@@ -6041,7 +6871,7 @@ type Schedule struct {
 	//
 	// example:
 	//
-	// FixedRate
+	// Cron
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -6194,7 +7024,7 @@ func (s *ScheduledSQL) SetStatus(v string) *ScheduledSQL {
 }
 
 type ScheduledSQLConfiguration struct {
-	// The data format. Valid values: log2log, log2metric, and metric2metric.
+	// The write mode. Three configurations are supported: log2log, log2metric, and metric2metric.
 	//
 	// This parameter is required.
 	//
@@ -6202,7 +7032,7 @@ type ScheduledSQLConfiguration struct {
 	//
 	// log2log
 	DataFormat *string `json:"dataFormat,omitempty" xml:"dataFormat,omitempty"`
-	// The endpoint.
+	// The destination endpoint.
 	//
 	// This parameter is required.
 	//
@@ -6210,7 +7040,7 @@ type ScheduledSQLConfiguration struct {
 	//
 	// cn-hangzhou-intranet.log.aliyuncs.com
 	DestEndpoint *string `json:"destEndpoint,omitempty" xml:"destEndpoint,omitempty"`
-	// The destination Logstore.
+	// The destination logstore.
 	//
 	// This parameter is required.
 	//
@@ -6226,7 +7056,7 @@ type ScheduledSQLConfiguration struct {
 	//
 	// project-demo
 	DestProject *string `json:"destProject,omitempty" xml:"destProject,omitempty"`
-	// The ARN of the RAM role that is assumed to write data to the destination Logstore.
+	// The ARN of the role used to write data to the destination.
 	//
 	// This parameter is required.
 	//
@@ -6234,11 +7064,13 @@ type ScheduledSQLConfiguration struct {
 	//
 	// acs:ram::123456789:role/aliyunlogetlrole
 	DestRoleArn *string `json:"destRoleArn,omitempty" xml:"destRoleArn,omitempty"`
+	// Specifies whether to ensure accurate computation results.
+	//
 	// example:
 	//
 	// true
 	ForceComplete *bool `json:"forceComplete,omitempty" xml:"forceComplete,omitempty"`
-	// The start time. For more information, see [Process and store data from a Logstore to a Metricstore](https://help.aliyun.com/document_detail/286459.html).
+	// The start time. For more information, see [From Logstore to MetricStore](https://help.aliyun.com/document_detail/286459.html).
 	//
 	// This parameter is required.
 	//
@@ -6246,7 +7078,7 @@ type ScheduledSQLConfiguration struct {
 	//
 	// 1712592000
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
-	// The start time of the SQL time window.
+	// The start of the SQL time window.
 	//
 	// This parameter is required.
 	//
@@ -6254,11 +7086,13 @@ type ScheduledSQLConfiguration struct {
 	//
 	// @m-1m
 	FromTimeExpr *string `json:"fromTimeExpr,omitempty" xml:"fromTimeExpr,omitempty"`
+	// The concurrency.
+	//
 	// example:
 	//
 	// 1
 	MaxConcurrency *int64 `json:"maxConcurrency,omitempty" xml:"maxConcurrency,omitempty"`
-	// The maximum number of SQL timeouts allowed. Valid values: 1 to 100.
+	// The maximum number of retries upon SQL timeout. Valid values: 1 to 100.
 	//
 	// This parameter is required.
 	//
@@ -6266,7 +7100,7 @@ type ScheduledSQLConfiguration struct {
 	//
 	// 20
 	MaxRetries *int64 `json:"maxRetries,omitempty" xml:"maxRetries,omitempty"`
-	// The maximum timeout period of SQL analysis. Unit: seconds. Valid values: 60 to 1800.
+	// The maximum timeout period for SQL execution. Unit: seconds. Valid values: 60 to 1800.
 	//
 	// This parameter is required.
 	//
@@ -6274,7 +7108,7 @@ type ScheduledSQLConfiguration struct {
 	//
 	// 600
 	MaxRunTimeInSeconds *int64 `json:"maxRunTimeInSeconds,omitempty" xml:"maxRunTimeInSeconds,omitempty"`
-	// The SQL configurations. For more information, see [Process and store data from a Logstore to a Metricstore](https://help.aliyun.com/document_detail/286459.html).
+	// The SQL configuration. For more information, see [From Logstore to MetricStore](https://help.aliyun.com/document_detail/286459.html).
 	//
 	// This parameter is required.
 	//
@@ -6296,7 +7130,7 @@ type ScheduledSQLConfiguration struct {
 	//
 	// }
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
-	// The type of the resource pool. The value enhanced specifies an enhanced resource pool.
+	// The resource pool type. A value of enhanced indicates the enhanced resource pool.
 	//
 	// This parameter is required.
 	//
@@ -6304,7 +7138,7 @@ type ScheduledSQLConfiguration struct {
 	//
 	// enhanced
 	ResourcePool *string `json:"resourcePool,omitempty" xml:"resourcePool,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role that is assigned to the Scheduled SQL job.
+	// The Alibaba Cloud Resource Name (ARN) of the role used to execute the SQL statement.
 	//
 	// This parameter is required.
 	//
@@ -6312,7 +7146,7 @@ type ScheduledSQLConfiguration struct {
 	//
 	// acs:ram::123456789:role/aliyunlogetlrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// The query statement of the Scheduled SQL job.
+	// The analytic statement of the scheduled query.
 	//
 	// This parameter is required.
 	//
@@ -6320,7 +7154,7 @@ type ScheduledSQLConfiguration struct {
 	//
 	// 	- | select *
 	Script *string `json:"script,omitempty" xml:"script,omitempty"`
-	// The source Logstore.
+	// The source logstore.
 	//
 	// This parameter is required.
 	//
@@ -6328,7 +7162,7 @@ type ScheduledSQLConfiguration struct {
 	//
 	// source-logstore-demo
 	SourceLogstore *string `json:"sourceLogstore,omitempty" xml:"sourceLogstore,omitempty"`
-	// The type of the query statement.
+	// The SQL type.
 	//
 	// This parameter is required.
 	//
@@ -6336,7 +7170,7 @@ type ScheduledSQLConfiguration struct {
 	//
 	// searchQuery
 	SqlType *string `json:"sqlType,omitempty" xml:"sqlType,omitempty"`
-	// The end time. For more information, see [Process and store data from a Logstore to a Metricstore](https://help.aliyun.com/document_detail/286459.html).
+	// The end time. For more information, see [From Logstore to MetricStore](https://help.aliyun.com/document_detail/286459.html).
 	//
 	// This parameter is required.
 	//
@@ -6344,7 +7178,7 @@ type ScheduledSQLConfiguration struct {
 	//
 	// 0
 	ToTime *int64 `json:"toTime,omitempty" xml:"toTime,omitempty"`
-	// The end time of the SQL time window.
+	// The end of the SQL time window.
 	//
 	// This parameter is required.
 	//
@@ -6352,6 +7186,8 @@ type ScheduledSQLConfiguration struct {
 	//
 	// @m
 	ToTimeExpr *string `json:"toTimeExpr,omitempty" xml:"toTimeExpr,omitempty"`
+	// Specifies whether to use the Exactly-Once write protocol.
+	UsingExactlyOnce *bool `json:"usingExactlyOnce,omitempty" xml:"usingExactlyOnce,omitempty"`
 }
 
 func (s ScheduledSQLConfiguration) String() string {
@@ -6457,6 +7293,11 @@ func (s *ScheduledSQLConfiguration) SetToTimeExpr(v string) *ScheduledSQLConfigu
 	return s
 }
 
+func (s *ScheduledSQLConfiguration) SetUsingExactlyOnce(v bool) *ScheduledSQLConfiguration {
+	s.UsingExactlyOnce = &v
+	return s
+}
+
 type SeverityConfiguration struct {
 	// The trigger condition configurations.
 	EvalCondition *ConditionConfiguration `json:"evalCondition,omitempty" xml:"evalCondition,omitempty"`
@@ -6487,13 +7328,13 @@ func (s *SeverityConfiguration) SetSeverity(v int32) *SeverityConfiguration {
 }
 
 type ShardingPolicy struct {
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// example:
 	//
 	// 1764659409
 	QueryActiveTime *int64                    `json:"queryActiveTime,omitempty" xml:"queryActiveTime,omitempty"`
 	ShardGroup      *ShardingPolicyShardGroup `json:"shardGroup,omitempty" xml:"shardGroup,omitempty" type:"Struct"`
-	// This parameter is required.
-	ShardHash *ShardingPolicyShardHash `json:"shardHash,omitempty" xml:"shardHash,omitempty" type:"Struct"`
+	ShardHash       *ShardingPolicyShardHash  `json:"shardHash,omitempty" xml:"shardHash,omitempty" type:"Struct"`
 }
 
 func (s ShardingPolicy) String() string {
@@ -6502,6 +7343,11 @@ func (s ShardingPolicy) String() string {
 
 func (s ShardingPolicy) GoString() string {
 	return s.String()
+}
+
+func (s *ShardingPolicy) SetEnabled(v bool) *ShardingPolicy {
+	s.Enabled = &v
+	return s
 }
 
 func (s *ShardingPolicy) SetQueryActiveTime(v int64) *ShardingPolicy {
@@ -6912,50 +7758,74 @@ func (s *TemplateConfiguration) SetVersion(v string) *TemplateConfiguration {
 }
 
 type Ticket struct {
+	// The UID of the caller when the ticket was created.
+	//
 	// example:
 	//
 	// 1000000000
 	CallerUid *int64 `json:"callerUid,omitempty" xml:"callerUid,omitempty"`
+	// The time when the ticket was created.
+	//
 	// example:
 	//
 	// 2023-09-06 14:57:07
 	CreateDate *string `json:"createDate,omitempty" xml:"createDate,omitempty"`
+	// The expiration time of the ticket, in seconds.
+	//
 	// example:
 	//
 	// 100
 	ExpirationTime *int64 `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
+	// The expiration time of the ticket.
+	//
 	// example:
 	//
 	// 2023-09-06 14:58:07
 	ExpireDate *string `json:"expireDate,omitempty" xml:"expireDate,omitempty"`
+	// The extension field.
+	//
 	// example:
 	//
 	// {"xx":"yy"}
 	Extra *string `json:"extra,omitempty" xml:"extra,omitempty"`
+	// The name.
+	//
 	// example:
 	//
-	// 测试
+	// Test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The maximum number of times the ticket can be used.
+	//
 	// example:
 	//
 	// 1
 	Number *int32 `json:"number,omitempty" xml:"number,omitempty"`
+	// The target to which the ticket is shared.
+	//
 	// example:
 	//
 	// {"type":"aliyun","ids":[1,2]}
 	SharingTo *string `json:"sharingTo,omitempty" xml:"sharingTo,omitempty"`
+	// ticket
+	//
 	// example:
 	//
 	// xxxxx
 	Ticket *string `json:"ticket,omitempty" xml:"ticket,omitempty"`
+	// The unique ID of the ticket.
+	//
 	// example:
 	//
 	// xxxxx
 	TicketId *string `json:"ticketId,omitempty" xml:"ticketId,omitempty"`
+	// The number of times the ticket has been used.
+	//
 	// example:
 	//
 	// 1
 	UsedNumber *int32 `json:"usedNumber,omitempty" xml:"usedNumber,omitempty"`
+	// Indicates whether the ticket is disabled.
+	//
 	// example:
 	//
 	// false
@@ -7684,7 +8554,7 @@ type Machine struct {
 	//
 	// example:
 	//
-	// 3B70F4F1-80F7-46C4-A6C1-100****EE647
+	// 3B70F4F1-80F7-46C4-A6C1-100***CEE647
 	MachineUniqueid *string `json:"machine-uniqueid,omitempty" xml:"machine-uniqueid,omitempty"`
 	// The custom identifier of the machine. This parameter is valid only when the identity type of the machine group is set to custom.
 	//
@@ -7736,7 +8606,7 @@ type MachineGroup struct {
 	//
 	// example:
 	//
-	// machineGroup-test
+	// machineGroup-1
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
 	// The type of the machine group. This parameter is currently an empty string.
 	//
@@ -9028,15 +9898,15 @@ type CreateDownloadJobRequest struct {
 	//
 	// download-123456789
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The name of the job. The name must meet the following requirements:
+	// The job name. The naming rules are as follows:
 	//
-	// The job name must be unique within a project.
+	// Job names must be unique within the same project.
 	//
-	// - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	// 	- The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
 	//
-	// - It must start and end with a lowercase letter or a digit.
+	// 	- The name must start and end with a lowercase letter or digit.
 	//
-	// - The name must be 2 to 64 characters in length.
+	// 	- The name must be 2 to 64 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -9075,7 +9945,7 @@ func (s *CreateDownloadJobRequest) SetName(v string) *CreateDownloadJobRequest {
 }
 
 type CreateDownloadJobRequestConfiguration struct {
-	// Specifies whether to allow the download of incomplete results. Valid values: \\`true\\` and \\`false\\`.
+	// Specifies whether to allow downloading imprecise results. Valid values: true, false.
 	//
 	// This parameter is required.
 	//
@@ -9083,7 +9953,7 @@ type CreateDownloadJobRequestConfiguration struct {
 	//
 	// false
 	AllowInComplete *bool `json:"allowInComplete,omitempty" xml:"allowInComplete,omitempty"`
-	// The start time. This is a UNIX timestamp that is accurate to the second.
+	// The start timestamp, in seconds.
 	//
 	// This parameter is required.
 	//
@@ -9099,13 +9969,13 @@ type CreateDownloadJobRequestConfiguration struct {
 	//
 	// test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// Specifies whether to enable PowerSQL. Valid values: \\`true\\` and \\`false\\`.
+	// Specifies whether to enable PowerSQL. Valid values: true, false.
 	//
 	// example:
 	//
 	// true
 	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
-	// The search statement.
+	// The query statement.
 	//
 	// This parameter is required.
 	//
@@ -9117,7 +9987,7 @@ type CreateDownloadJobRequestConfiguration struct {
 	//
 	// This parameter is required.
 	Sink *CreateDownloadJobRequestConfigurationSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
-	// The end time. This is a UNIX timestamp that is accurate to the second.
+	// The end timestamp, in seconds.
 	//
 	// This parameter is required.
 	//
@@ -9171,13 +10041,13 @@ func (s *CreateDownloadJobRequestConfiguration) SetToTime(v int64) *CreateDownlo
 }
 
 type CreateDownloadJobRequestConfigurationSink struct {
-	// The destination Object Storage Service (OSS) bucket.
+	// The OSS bucket.
 	//
 	// example:
 	//
 	// oss-test-bucket
 	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	// The compression format of the file. Valid values: \\`zstd\\`, \\`lz4\\`, \\`gzip\\`, and \\`none\\`.
+	// The compression format. Valid values: zstd, lz4, gzip, none.
 	//
 	// This parameter is required.
 	//
@@ -9185,7 +10055,7 @@ type CreateDownloadJobRequestConfigurationSink struct {
 	//
 	// none
 	CompressionType *string `json:"compressionType,omitempty" xml:"compressionType,omitempty"`
-	// The format of the downloaded file. Valid values: \\`csv\\` and \\`json\\`.
+	// The download file format. Valid values: csv, json.
 	//
 	// This parameter is required.
 	//
@@ -9193,19 +10063,19 @@ type CreateDownloadJobRequestConfigurationSink struct {
 	//
 	// csv
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The prefix of the path in the destination OSS bucket.
+	// The path prefix for downloading data to the user\\"s OSS bucket.
 	//
 	// example:
 	//
 	// download/
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role to use for the download.
+	// The ARN of the RAM role used for the download.
 	//
 	// example:
 	//
 	// acs:ram::0123456789:role/aliyunlogdefaultrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// The type of the destination. Set the value to \\`AliyunOSS\\`.
+	// Fixed value: AliyunOSS.
 	//
 	// This parameter is required.
 	//
@@ -10253,18 +11123,18 @@ func (s *CreateMachineGroupResponse) SetStatusCode(v int32) *CreateMachineGroupR
 }
 
 type CreateMaterializedViewRequest struct {
-	// The aggregation interval in minutes. The system creates aggregation tasks based on this interval.
-	AggIntervalMins *int32 `json:"aggIntervalMins,omitempty" xml:"aggIntervalMins,omitempty"`
-	// The destination Logstore for the aggregated data from the materialized view.
-	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the materialized view. The name must be unique within the project, 2 to 63 characters long, and contain only lowercase letters, digits, hyphens (-), and underscores (_). It must also start and end with a lowercase letter or a digit.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The query statement that defines the materialized view.
-	OriginalSql *string `json:"originalSql,omitempty" xml:"originalSql,omitempty"`
-	// The time when the materialized view starts to aggregate data. Specify the time as a UNIX timestamp in seconds.
-	StartTime *int32 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The time-to-live (TTL) of the data in the materialized view, in days. After this period, the data expires and is automatically deleted.
-	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
+	AggIntervalMins *int32  `json:"aggIntervalMins,omitempty" xml:"aggIntervalMins,omitempty"`
+	Logstore        *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
+	OriginalSql     *string `json:"originalSql,omitempty" xml:"originalSql,omitempty"`
+	// The number of shards.
+	//
+	// example:
+	//
+	// 4
+	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	StartTime  *int32 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	Ttl        *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
 }
 
 func (s CreateMaterializedViewRequest) String() string {
@@ -10292,6 +11162,11 @@ func (s *CreateMaterializedViewRequest) SetName(v string) *CreateMaterializedVie
 
 func (s *CreateMaterializedViewRequest) SetOriginalSql(v string) *CreateMaterializedViewRequest {
 	s.OriginalSql = &v
+	return s
+}
+
+func (s *CreateMaterializedViewRequest) SetShardCount(v int32) *CreateMaterializedViewRequest {
+	s.ShardCount = &v
 	return s
 }
 
@@ -10953,10 +11828,81 @@ func (s *CreateProjectResponse) SetStatusCode(v int32) *CreateProjectResponse {
 	return s
 }
 
+type CreateResourceRecordRequest struct {
+	// The resource record to create.
+	//
+	// This parameter is required.
+	Body *ResourceRecord `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateResourceRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceRecordRequest) SetBody(v *ResourceRecord) *CreateResourceRecordRequest {
+	s.Body = v
+	return s
+}
+
+type CreateResourceRecordResponseBody struct {
+	// The ID of the created record.
+	//
+	// example:
+	//
+	// record-001
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+}
+
+func (s CreateResourceRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceRecordResponseBody) SetId(v string) *CreateResourceRecordResponseBody {
+	s.Id = &v
+	return s
+}
+
+type CreateResourceRecordResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateResourceRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateResourceRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceRecordResponse) SetHeaders(v map[string]*string) *CreateResourceRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateResourceRecordResponse) SetStatusCode(v int32) *CreateResourceRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateResourceRecordResponse) SetBody(v *CreateResourceRecordResponseBody) *CreateResourceRecordResponse {
+	s.Body = v
+	return s
+}
+
 type CreateS3IngestionRequest struct {
 	// The configuration.
 	Configuration *S3IngestionConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	// The description of the job.
+	// The task description.
 	//
 	// example:
 	//
@@ -10970,22 +11916,23 @@ type CreateS3IngestionRequest struct {
 	//
 	// test
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The name of the job. Follow these naming rules:
+	// The job name. The naming rules are as follows:
 	//
-	// Each job in the same project must have a unique name.
+	// Job names must be unique within the same project.
 	//
-	// - Use only lowercase letters, digits, hyphens (-), and underscores (_).
+	// 	- Can contain only lowercase letters, digits, hyphens (-), and underscores (_).
 	//
-	// - Start and end with a lowercase letter or digit.
+	// 	- Must start and end with a lowercase letter or digit.
 	//
-	// - Be 2 to 64 characters long.
+	// 	- Must be 2 to 64 characters in length.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
-	Name     *string   `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The scheduling structure.
 	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
 }
 
@@ -11163,15 +12110,15 @@ type CreateScheduledSQLRequest struct {
 	//
 	// ali-test-scheduled-sql
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The job name. The name must be unique within a project.
+	// The name of the job. The naming rules are as follows:
 	//
-	// The naming convention is as follows:
+	// Job names must be unique within the same project.
 	//
-	// - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+	// 	- The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
 	//
-	// - The name must start and end with a lowercase letter or a digit.
+	// 	- The name must start and end with a lowercase letter or digit.
 	//
-	// - The name must be 2 to 64 characters in length.
+	// 	- The name must be 2 to 64 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -11179,7 +12126,7 @@ type CreateScheduledSQLRequest struct {
 	//
 	// sql-123456789-123456
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The scheduling configuration for the job.
+	// The scheduling configuration of the job.
 	//
 	// This parameter is required.
 	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
@@ -11298,7 +12245,7 @@ func (s *CreateSqlInstanceResponse) SetStatusCode(v int32) *CreateSqlInstanceRes
 }
 
 type CreateStoreViewRequest struct {
-	// The name of the dataset.
+	// The name of the storeview.
 	//
 	// - The name can contain only lowercase letters, digits, and underscores (_).
 	//
@@ -11312,7 +12259,11 @@ type CreateStoreViewRequest struct {
 	//
 	// my_storeview
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The type of the dataset. Set this parameter to metricstore to create a Metricstore dataset. Set this parameter to logstore to create a Logstore dataset.
+	// The type of the storeview. Valid values:
+	//
+	// - metricstore: storeview for Metricstore.
+	//
+	// - logstore: storeview for Logstore.
 	//
 	// This parameter is required.
 	//
@@ -11320,7 +12271,7 @@ type CreateStoreViewRequest struct {
 	//
 	// logstore
 	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
-	// A list of Logstores or Metricstores.
+	// The list of Logstores or Metricstores.
 	//
 	// This parameter is required.
 	Stores []*StoreViewStore `json:"stores,omitempty" xml:"stores,omitempty" type:"Repeated"`
@@ -12333,6 +13284,53 @@ func (s *DeleteProjectPolicyResponse) SetHeaders(v map[string]*string) *DeletePr
 }
 
 func (s *DeleteProjectPolicyResponse) SetStatusCode(v int32) *DeleteProjectPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteResourceRecordRequest struct {
+	// The IDs of the records to delete. Separate multiple IDs with commas (,). You can specify up to 200 IDs at a time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// record-001,record-002
+	Ids *string `json:"ids,omitempty" xml:"ids,omitempty"`
+}
+
+func (s DeleteResourceRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteResourceRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteResourceRecordRequest) SetIds(v string) *DeleteResourceRecordRequest {
+	s.Ids = &v
+	return s
+}
+
+type DeleteResourceRecordResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DeleteResourceRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteResourceRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteResourceRecordResponse) SetHeaders(v map[string]*string) *DeleteResourceRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteResourceRecordResponse) SetStatusCode(v int32) *DeleteResourceRecordResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -13974,13 +14972,13 @@ func (s *GetDashboardResponse) SetBody(v *Dashboard) *GetDashboardResponse {
 type GetDownloadJobResponseBody struct {
 	// The download configuration.
 	Configuration *GetDownloadJobResponseBodyConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
-	// The time when the task was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1722411060
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The description of the task.
+	// The description.
 	//
 	// example:
 	//
@@ -14058,7 +15056,7 @@ type GetDownloadJobResponseBodyConfiguration struct {
 	//
 	// true
 	AllowInComplete *bool `json:"allowInComplete,omitempty" xml:"allowInComplete,omitempty"`
-	// The start time of the download task. The value is a UNIX timestamp in seconds.
+	// The start timestamp, in seconds.
 	//
 	// example:
 	//
@@ -14076,7 +15074,7 @@ type GetDownloadJobResponseBodyConfiguration struct {
 	//
 	// false
 	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
-	// The search statement.
+	// The query statement.
 	//
 	// example:
 	//
@@ -14084,7 +15082,7 @@ type GetDownloadJobResponseBodyConfiguration struct {
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 	// The export configuration.
 	Sink *GetDownloadJobResponseBodyConfigurationSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
-	// The end time of the download task. The value is a UNIX timestamp in seconds.
+	// The end timestamp, in seconds.
 	//
 	// example:
 	//
@@ -14136,7 +15134,7 @@ func (s *GetDownloadJobResponseBodyConfiguration) SetToTime(v int64) *GetDownloa
 }
 
 type GetDownloadJobResponseBodyConfigurationSink struct {
-	// The Object Storage Service (OSS) bucket.
+	// The OSS bucket.
 	//
 	// example:
 	//
@@ -14148,25 +15146,25 @@ type GetDownloadJobResponseBodyConfigurationSink struct {
 	//
 	// none
 	CompressionType *string `json:"compressionType,omitempty" xml:"compressionType,omitempty"`
-	// The file format.
+	// The format of the downloaded file.
 	//
 	// example:
 	//
 	// csv
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The prefix of the file that is saved to the bucket.
+	// The file prefix used when downloading logs to the user\\"s bucket.
 	//
 	// example:
 	//
 	// download/
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role that is used for the download.
+	// The ARN of the RAM role used for the download.
 	//
 	// example:
 	//
 	// acs:ram::0123456789:role/aliyunlogdefaultrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// The value is fixed to AliyunOSS.
+	// Fixed value: AliyunOSS.
 	//
 	// example:
 	//
@@ -14219,25 +15217,25 @@ type GetDownloadJobResponseBodyExecutionDetails struct {
 	//
 	// EXSFGSDASDASDG123ASD
 	CheckSum *string `json:"checkSum,omitempty" xml:"checkSum,omitempty"`
-	// The error message if the download fails.
+	// The error message of the download.
 	//
 	// example:
 	//
 	// timeout
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The duration of the download task in seconds.
+	// The execution time of the download.
 	//
 	// example:
 	//
 	// 123
 	ExecuteTime *int64 `json:"executeTime,omitempty" xml:"executeTime,omitempty"`
-	// The URL of the download result.
+	// The download result link.
 	//
 	// example:
 	//
 	// https://xxx.csv.zst?xxx
 	FilePath *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
-	// The size of the downloaded file in bytes.
+	// The size of the downloaded file.
 	//
 	// example:
 	//
@@ -14249,7 +15247,7 @@ type GetDownloadJobResponseBodyExecutionDetails struct {
 	//
 	// 123
 	LogCount *int64 `json:"logCount,omitempty" xml:"logCount,omitempty"`
-	// Notification text.
+	// The notification text.
 	//
 	// example:
 	//
@@ -14428,7 +15426,7 @@ func (s *GetGCSIngestionResponse) SetBody(v *GCSIngestion) *GetGCSIngestionRespo
 }
 
 type GetHistogramsRequest struct {
-	// The beginning of the time range for the subinterval. The value is a UNIX timestamp that represents the number of seconds that have elapsed since 1970-01-01 00:00:00 UTC.
+	// The start time of the subinterval. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// This parameter is required.
 	//
@@ -14436,13 +15434,13 @@ type GetHistogramsRequest struct {
 	//
 	// 1409529600
 	From *int64 `json:"from,omitempty" xml:"from,omitempty"`
-	// The search statement. Only search statements are supported. Analytic statements are not supported. For more information about the syntax of search statements, see [Search syntax](https://help.aliyun.com/document_detail/43772.html).
+	// The query statement. Only query statements are supported. Analytic statements are not supported. For more information about the query syntax, see [Query syntax](https://help.aliyun.com/document_detail/43772.html).
 	//
 	// example:
 	//
 	// with_pack_meta
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The end of the time range for the subinterval. The value is a UNIX timestamp that represents the number of seconds that have elapsed since 1970-01-01 00:00:00 UTC.
+	// The end time of the subinterval. This value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// This parameter is required.
 	//
@@ -14450,7 +15448,7 @@ type GetHistogramsRequest struct {
 	//
 	// 1409569200
 	To *int64 `json:"to,omitempty" xml:"to,omitempty"`
-	// The topic of the log.
+	// The topic of the logs.
 	//
 	// example:
 	//
@@ -14516,33 +15514,33 @@ func (s *GetHistogramsResponse) SetBody(v []*GetHistogramsResponseBody) *GetHist
 }
 
 type GetHistogramsResponseBody struct {
-	// The beginning of the time range for the subinterval. The value is a UNIX timestamp that represents the number of seconds that have elapsed since 1970-01-01 00:00:00 UTC.
+	// The start time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
-	// The time range is a left-closed, right-open interval. This means that the subinterval includes the start time but not the end time. If the values of from and to are the same, the interval is invalid and an error is returned.
+	// The time interval follows the left-closed, right-open principle. The interval includes the start time but excludes the end time. If the values of from and to are the same, the interval is invalid and the function returns an error.
 	//
 	// example:
 	//
 	// 1409529600
 	From *int64 `json:"from,omitempty" xml:"from,omitempty"`
-	// The end of the time range for the subinterval. The value is a UNIX timestamp that represents the number of seconds that have elapsed since 1970-01-01 00:00:00 UTC.
+	// The end time of the subinterval. The value is a UNIX timestamp representing the number of seconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
-	// The time range is a left-closed, right-open interval. This means that the subinterval includes the start time but not the end time. If the values of from and to are the same, the interval is invalid and an error is returned.
+	// The time interval follows the left-closed, right-open principle. The interval includes the start time but excludes the end time. If the values of from and to are the same, the interval is invalid and the function returns an error.
 	//
 	// example:
 	//
 	// 1409569200
 	To *int64 `json:"to,omitempty" xml:"to,omitempty"`
-	// The number of logs that are found in the subinterval.
+	// The number of logs queried in the subinterval.
 	//
 	// example:
 	//
 	// 2
 	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
-	// Indicates whether the query result in the subinterval is complete.
+	// Indicates whether the query results in the subinterval are complete.
 	//
-	// Complete: The query is complete and the result is complete.
+	// Complete: The query is complete and the returned results are complete.
 	//
-	// Incomplete: The query is complete but the result is incomplete. Send the request again to obtain the complete result.
+	// Incomplete: The query is complete but the returned results are incomplete. Repeat the request to obtain complete results.
 	//
 	// example:
 	//
@@ -14807,6 +15805,57 @@ func (s *GetIngestProcessorResponse) SetBody(v *IngestProcessor) *GetIngestProce
 	return s
 }
 
+type GetJobInstanceRequest struct {
+	// The owner of the job.
+	//
+	// example:
+	//
+	// 12312
+	CallerOwner *string `json:"callerOwner,omitempty" xml:"callerOwner,omitempty"`
+}
+
+func (s GetJobInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobInstanceRequest) SetCallerOwner(v string) *GetJobInstanceRequest {
+	s.CallerOwner = &v
+	return s
+}
+
+type GetJobInstanceResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *JobInstance       `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetJobInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobInstanceResponse) SetHeaders(v map[string]*string) *GetJobInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetJobInstanceResponse) SetStatusCode(v int32) *GetJobInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetJobInstanceResponse) SetBody(v *JobInstance) *GetJobInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type GetLogStoreResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -14963,97 +16012,63 @@ func (s *GetLoggingResponse) SetBody(v *Logging) *GetLoggingResponse {
 	return s
 }
 
+type GetLogsHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// lz4
+	AcceptEncoding *string `json:"Accept-Encoding,omitempty" xml:"Accept-Encoding,omitempty"`
+}
+
+func (s GetLogsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogsHeaders) SetCommonHeaders(v map[string]*string) *GetLogsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetLogsHeaders) SetAcceptEncoding(v string) *GetLogsHeaders {
+	s.AcceptEncoding = &v
+	return s
+}
+
 type GetLogsRequest struct {
-	// The start of the query time range, based on the log time specified when the log data was written.
-	//
-	// - The **from*	- and **to*	- parameters define a left-closed, right-open interval [from, to). If **from*	- equals **to**, the interval is invalid and the system returns an error.
-	//
-	// - Value: a UNIX timestamp representing the number of seconds elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// > To avoid missing data, align the query time to the minute level. If a time range is specified in the analytic statement, that time range takes precedence.
-	//
-	// To specify a time in seconds within an analytic statement, use the [from_unixtime function](https://help.aliyun.com/document_detail/63451.html) or the [to_unixtime function](https://help.aliyun.com/document_detail/63451.html) to convert the time format. Examples:
-	//
-	// - `	- | SELECT 	- FROM log WHERE from_unixtime(__time__) > from_unixtime(1664186624) AND from_unixtime(__time__) < now()`
-	//
-	// - `	- | SELECT 	- FROM log WHERE __time__ > to_unixtime(date_parse(\\"2022-10-19 15:46:05\\", \\"%Y-%m-%d %H:%i:%s\\")) AND __time__ < to_unixtime(now())`
-	//
+	Forward *bool `json:"forward,omitempty" xml:"forward,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1627268185
-	From *int32 `json:"from,omitempty" xml:"from,omitempty"`
-	// Valid only when the query parameter is a search statement. Maximum number of logs to return. Valid values: 0 to 100. Default value: 100. See [Page through query and analysis results](https://help.aliyun.com/document_detail/89994.html).
-	//
+	From       *int32 `json:"from,omitempty" xml:"from,omitempty"`
+	Highlight  *bool  `json:"highlight,omitempty" xml:"highlight,omitempty"`
+	IsAccurate *bool  `json:"isAccurate,omitempty" xml:"isAccurate,omitempty"`
 	// example:
 	//
 	// 100
 	Line *int64 `json:"line,omitempty" xml:"line,omitempty"`
-	// Valid only when the query parameter is a search statement. The starting row for the query. Default value: 0. See [Page through query and analysis results](https://help.aliyun.com/document_detail/89994.html).
-	//
 	// example:
 	//
 	// 0
-	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// Whether to enable the Exclusive SQL feature. See [Enable the Exclusive SQL feature](https://help.aliyun.com/document_detail/223777.html).
-	//
-	// - true: Enable Exclusive SQL.
-	//
-	// - false (default): Use standard SQL.
-	//
-	// Alternatively, add `set session parallel_sql=true;` to the analytic statement in the **query*	- parameter to enable Exclusive SQL.
-	//
-	// example:
-	//
-	// false
-	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
-	// The search statement or analytic statement. See [Query overview](https://help.aliyun.com/document_detail/43772.html) and [Analysis overview](https://help.aliyun.com/document_detail/53608.html). To enable the Exclusive SQL feature, add `set session parallel_sql=true;` to the analytic statement. Example: `	- | set session parallel_sql=true; select count(*) as pv`. For common query and analysis issues, see [Common errors that occur when you query and analyze logs](https://help.aliyun.com/document_detail/61628.html).
-	//
-	// > When the query parameter contains an analytic statement (SQL statement), the `line` and `offset` parameters are ignored. Set both to 0 and use the LIMIT clause in the SQL statement for pagination. See [Page through query and analysis results](https://help.aliyun.com/document_detail/89994.html).
-	//
+	Offset   *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
+	PowerSql *bool  `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
 	// example:
 	//
 	// status: 401 | SELECT remote_addr,COUNT(*) as pv GROUP by remote_addr ORDER by pv desc limit 5
-	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// Whether to return logs in descending order of timestamp, with minute-level precision.
-	//
-	// - true: Descending order (newest first).
-	//
-	// - false (default): Ascending order (oldest first).
-	//
-	// 	Notice:
-	//
-	// - When the query parameter is a search statement, the reverse parameter controls the sort order.
-	//
-	// - When the query parameter includes an analytic statement, the reverse parameter is ignored. Use the ORDER BY clause in the SQL statement instead. ORDER BY defaults to ascending (asc). Specify desc for descending order.
-	//
-	// example:
-	//
-	// false
-	Reverse *bool `json:"reverse,omitempty" xml:"reverse,omitempty"`
-	// The end of the query time range, based on the log time specified when the log data was written.
-	//
-	// - The **from*	- and **to*	- parameters define a left-closed, right-open interval [from, to). If **from*	- equals **to**, the interval is invalid and the system returns an error.
-	//
-	// - Value: a UNIX timestamp representing the number of seconds elapsed since January 1, 1970, 00:00:00 UTC.
-	//
-	// > To avoid missing data, align the query time to the minute level. If a time range is specified in the analytic statement, that time range takes precedence.
-	//
-	// To specify a time in seconds within an analytic statement, use the [from_unixtime function](https://help.aliyun.com/document_detail/63451.html) or the [to_unixtime function](https://help.aliyun.com/document_detail/63451.html) to convert the time format. Examples:
-	//
-	// - `	- | SELECT 	- FROM log WHERE from_unixtime(__time__) > from_unixtime(1664186624) AND from_unixtime(__time__) < now()`
-	//
-	// - `	- | SELECT 	- FROM log WHERE __time__ > to_unixtime(date_parse(\\"2022-10-19 15:46:05\\", \\"%Y-%m-%d %H:%i:%s\\")) AND __time__ < to_unixtime(now())`
-	//
+	Query   *string `json:"query,omitempty" xml:"query,omitempty"`
+	Reverse *bool   `json:"reverse,omitempty" xml:"reverse,omitempty"`
+	Session *string `json:"session,omitempty" xml:"session,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1627269085
+	// 1627268185
 	To *int32 `json:"to,omitempty" xml:"to,omitempty"`
-	// The log topic. Default value: an empty string. See [Topic](https://help.aliyun.com/document_detail/48881.html).
-	//
 	// example:
 	//
 	// topic
@@ -15068,8 +16083,23 @@ func (s GetLogsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetLogsRequest) SetForward(v bool) *GetLogsRequest {
+	s.Forward = &v
+	return s
+}
+
 func (s *GetLogsRequest) SetFrom(v int32) *GetLogsRequest {
 	s.From = &v
+	return s
+}
+
+func (s *GetLogsRequest) SetHighlight(v bool) *GetLogsRequest {
+	s.Highlight = &v
+	return s
+}
+
+func (s *GetLogsRequest) SetIsAccurate(v bool) *GetLogsRequest {
+	s.IsAccurate = &v
 	return s
 }
 
@@ -15098,6 +16128,11 @@ func (s *GetLogsRequest) SetReverse(v bool) *GetLogsRequest {
 	return s
 }
 
+func (s *GetLogsRequest) SetSession(v string) *GetLogsRequest {
+	s.Session = &v
+	return s
+}
+
 func (s *GetLogsRequest) SetTo(v int32) *GetLogsRequest {
 	s.To = &v
 	return s
@@ -15108,10 +16143,199 @@ func (s *GetLogsRequest) SetTopic(v string) *GetLogsRequest {
 	return s
 }
 
+type GetLogsResponseBody struct {
+	Data []map[string]*string     `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Meta *GetLogsResponseBodyMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
+}
+
+func (s GetLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogsResponseBody) SetData(v []map[string]*string) *GetLogsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetLogsResponseBody) SetMeta(v *GetLogsResponseBodyMeta) *GetLogsResponseBody {
+	s.Meta = v
+	return s
+}
+
+type GetLogsResponseBodyMeta struct {
+	AggQuery           *string                                 `json:"aggQuery,omitempty" xml:"aggQuery,omitempty"`
+	ColumnTypes        []*string                               `json:"columnTypes,omitempty" xml:"columnTypes,omitempty" type:"Repeated"`
+	Count              *int32                                  `json:"count,omitempty" xml:"count,omitempty"`
+	CpuCores           *int32                                  `json:"cpuCores,omitempty" xml:"cpuCores,omitempty"`
+	CpuSec             *float64                                `json:"cpuSec,omitempty" xml:"cpuSec,omitempty"`
+	ElapsedMillisecond *int64                                  `json:"elapsedMillisecond,omitempty" xml:"elapsedMillisecond,omitempty"`
+	HasSQL             *bool                                   `json:"hasSQL,omitempty" xml:"hasSQL,omitempty"`
+	Highlights         []map[string]interface{}                `json:"highlights,omitempty" xml:"highlights,omitempty" type:"Repeated"`
+	IsAccurate         *bool                                   `json:"isAccurate,omitempty" xml:"isAccurate,omitempty"`
+	Keys               []*string                               `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
+	Limited            *int32                                  `json:"limited,omitempty" xml:"limited,omitempty"`
+	Mode               *int32                                  `json:"mode,omitempty" xml:"mode,omitempty"`
+	PhraseQueryInfo    *GetLogsResponseBodyMetaPhraseQueryInfo `json:"phraseQueryInfo,omitempty" xml:"phraseQueryInfo,omitempty" type:"Struct"`
+	ProcessedBytes     *int64                                  `json:"processedBytes,omitempty" xml:"processedBytes,omitempty"`
+	ProcessedRows      *int64                                  `json:"processedRows,omitempty" xml:"processedRows,omitempty"`
+	Progress           *string                                 `json:"progress,omitempty" xml:"progress,omitempty"`
+	ScanBytes          *int64                                  `json:"scanBytes,omitempty" xml:"scanBytes,omitempty"`
+	TelementryType     *string                                 `json:"telementryType,omitempty" xml:"telementryType,omitempty"`
+	Terms              []map[string]interface{}                `json:"terms,omitempty" xml:"terms,omitempty" type:"Repeated"`
+	WhereQuery         *string                                 `json:"whereQuery,omitempty" xml:"whereQuery,omitempty"`
+}
+
+func (s GetLogsResponseBodyMeta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogsResponseBodyMeta) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogsResponseBodyMeta) SetAggQuery(v string) *GetLogsResponseBodyMeta {
+	s.AggQuery = &v
+	return s
+}
+
+func (s *GetLogsResponseBodyMeta) SetColumnTypes(v []*string) *GetLogsResponseBodyMeta {
+	s.ColumnTypes = v
+	return s
+}
+
+func (s *GetLogsResponseBodyMeta) SetCount(v int32) *GetLogsResponseBodyMeta {
+	s.Count = &v
+	return s
+}
+
+func (s *GetLogsResponseBodyMeta) SetCpuCores(v int32) *GetLogsResponseBodyMeta {
+	s.CpuCores = &v
+	return s
+}
+
+func (s *GetLogsResponseBodyMeta) SetCpuSec(v float64) *GetLogsResponseBodyMeta {
+	s.CpuSec = &v
+	return s
+}
+
+func (s *GetLogsResponseBodyMeta) SetElapsedMillisecond(v int64) *GetLogsResponseBodyMeta {
+	s.ElapsedMillisecond = &v
+	return s
+}
+
+func (s *GetLogsResponseBodyMeta) SetHasSQL(v bool) *GetLogsResponseBodyMeta {
+	s.HasSQL = &v
+	return s
+}
+
+func (s *GetLogsResponseBodyMeta) SetHighlights(v []map[string]interface{}) *GetLogsResponseBodyMeta {
+	s.Highlights = v
+	return s
+}
+
+func (s *GetLogsResponseBodyMeta) SetIsAccurate(v bool) *GetLogsResponseBodyMeta {
+	s.IsAccurate = &v
+	return s
+}
+
+func (s *GetLogsResponseBodyMeta) SetKeys(v []*string) *GetLogsResponseBodyMeta {
+	s.Keys = v
+	return s
+}
+
+func (s *GetLogsResponseBodyMeta) SetLimited(v int32) *GetLogsResponseBodyMeta {
+	s.Limited = &v
+	return s
+}
+
+func (s *GetLogsResponseBodyMeta) SetMode(v int32) *GetLogsResponseBodyMeta {
+	s.Mode = &v
+	return s
+}
+
+func (s *GetLogsResponseBodyMeta) SetPhraseQueryInfo(v *GetLogsResponseBodyMetaPhraseQueryInfo) *GetLogsResponseBodyMeta {
+	s.PhraseQueryInfo = v
+	return s
+}
+
+func (s *GetLogsResponseBodyMeta) SetProcessedBytes(v int64) *GetLogsResponseBodyMeta {
+	s.ProcessedBytes = &v
+	return s
+}
+
+func (s *GetLogsResponseBodyMeta) SetProcessedRows(v int64) *GetLogsResponseBodyMeta {
+	s.ProcessedRows = &v
+	return s
+}
+
+func (s *GetLogsResponseBodyMeta) SetProgress(v string) *GetLogsResponseBodyMeta {
+	s.Progress = &v
+	return s
+}
+
+func (s *GetLogsResponseBodyMeta) SetScanBytes(v int64) *GetLogsResponseBodyMeta {
+	s.ScanBytes = &v
+	return s
+}
+
+func (s *GetLogsResponseBodyMeta) SetTelementryType(v string) *GetLogsResponseBodyMeta {
+	s.TelementryType = &v
+	return s
+}
+
+func (s *GetLogsResponseBodyMeta) SetTerms(v []map[string]interface{}) *GetLogsResponseBodyMeta {
+	s.Terms = v
+	return s
+}
+
+func (s *GetLogsResponseBodyMeta) SetWhereQuery(v string) *GetLogsResponseBodyMeta {
+	s.WhereQuery = &v
+	return s
+}
+
+type GetLogsResponseBodyMetaPhraseQueryInfo struct {
+	BeginOffset *int64 `json:"beginOffset,omitempty" xml:"beginOffset,omitempty"`
+	EndOffset   *int64 `json:"endOffset,omitempty" xml:"endOffset,omitempty"`
+	EndTime     *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	ScanAll     *bool  `json:"scanAll,omitempty" xml:"scanAll,omitempty"`
+}
+
+func (s GetLogsResponseBodyMetaPhraseQueryInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogsResponseBodyMetaPhraseQueryInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogsResponseBodyMetaPhraseQueryInfo) SetBeginOffset(v int64) *GetLogsResponseBodyMetaPhraseQueryInfo {
+	s.BeginOffset = &v
+	return s
+}
+
+func (s *GetLogsResponseBodyMetaPhraseQueryInfo) SetEndOffset(v int64) *GetLogsResponseBodyMetaPhraseQueryInfo {
+	s.EndOffset = &v
+	return s
+}
+
+func (s *GetLogsResponseBodyMetaPhraseQueryInfo) SetEndTime(v int64) *GetLogsResponseBodyMetaPhraseQueryInfo {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetLogsResponseBodyMetaPhraseQueryInfo) SetScanAll(v bool) *GetLogsResponseBodyMetaPhraseQueryInfo {
+	s.ScanAll = &v
+	return s
+}
+
 type GetLogsResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       []map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetLogsResponse) String() string {
@@ -15132,7 +16356,7 @@ func (s *GetLogsResponse) SetStatusCode(v int32) *GetLogsResponse {
 	return s
 }
 
-func (s *GetLogsResponse) SetBody(v []map[string]interface{}) *GetLogsResponse {
+func (s *GetLogsResponse) SetBody(v *GetLogsResponseBody) *GetLogsResponse {
 	s.Body = v
 	return s
 }
@@ -15200,13 +16424,13 @@ type GetLogsV2Request struct {
 	//
 	// true
 	IsAccurate *bool `json:"isAccurate,omitempty" xml:"isAccurate,omitempty"`
-	// The maximum number of logs to return in the request. This parameter is valid only when the query parameter is a query statement (not an analytic statement). Minimum value: 0. Maximum value: 100. Default value: 100.
+	// The maximum number of logs to return. This parameter is valid only when the query parameter is a query statement (not an analytic statement). Minimum value: 0. Maximum value: 100. Default value: 100.
 	//
 	// example:
 	//
 	// 100
 	Line *int64 `json:"line,omitempty" xml:"line,omitempty"`
-	// The start row of the query. This parameter is valid only when the query parameter is a query statement (not an analytic statement). The value starts from 0. Default value: 0.
+	// The row from which the query starts. This parameter is valid only when the query parameter is a query statement (not an analytic statement). The value starts from 0. Default value: 0.
 	//
 	// example:
 	//
@@ -15218,7 +16442,7 @@ type GetLogsV2Request struct {
 	//
 	// false
 	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
-	// The query statement or analytic statement. For more information, see [Query overview](https://help.aliyun.com/document_detail/43772.html) and [Analysis overview](https://help.aliyun.com/document_detail/53608.html).
+	// The query statement or analytic statement. For more information, see [query overview](https://help.aliyun.com/document_detail/43772.html) and [analysis overview](https://help.aliyun.com/document_detail/53608.html).
 	//
 	// Add set session parallel_sql=true; to the analytic statement in the query parameter to use Dedicated SQL. Example: 	- | set session parallel_sql=true; select count(*) as pv.
 	//
@@ -15228,13 +16452,13 @@ type GetLogsV2Request struct {
 	//
 	// status: 401 | SELECT remote_addr,COUNT(*) as pv GROUP by remote_addr ORDER by pv desc limit 5
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// Specifies whether to return logs in descending order of log timestamps, accurate to the minute level. This parameter is valid only when the query parameter is a query statement (not an analytic statement).
+	// Specifies whether to return logs in reverse chronological order of log timestamps, accurate to the minute level. This parameter is valid only when the query parameter is a query statement (not an analytic statement).
 	//
 	// - true: Returns logs in descending order of log timestamps.
 	//
 	// - false (default): Returns logs in ascending order of log timestamps.
 	//
-	// To sort results in an analytic statement, use the ORDER BY syntax. If ORDER BY is set to asc (default), the results are sorted in ascending order. If ORDER BY is set to desc, the results are sorted in descending order.
+	// To sort results in an analytic statement, use the ORDER BY syntax. If ORDER BY is set to asc (default), logs are returned in ascending order. If ORDER BY is set to desc, logs are returned in descending order.
 	//
 	// example:
 	//
@@ -15408,7 +16632,7 @@ type GetLogsV2ResponseBodyMeta struct {
 	IsAccurate *bool `json:"isAccurate,omitempty" xml:"isAccurate,omitempty"`
 	// All keys in the query results.
 	Keys []*string `json:"keys,omitempty" xml:"keys,omitempty" type:"Repeated"`
-	// The limit on the number of rows. Returned when an SQL statement does not include a LIMIT clause.
+	// The limit on the number of rows. Returned when the SQL statement does not contain a LIMIT clause.
 	//
 	// example:
 	//
@@ -15416,13 +16640,13 @@ type GetLogsV2ResponseBodyMeta struct {
 	Limited *int32 `json:"limited,omitempty" xml:"limited,omitempty"`
 	// The query mode. Valid values:
 	//
-	// 0: standard query (including SQL)
+	// - 0: standard query (including SQL)
 	//
-	// 1: phrase query
+	// - 1: phrase query
 	//
-	// 2: SCAN
+	// - 2: SCAN
 	//
-	// 3: SCAN SQL.
+	// - 3: SCAN SQL
 	//
 	// example:
 	//
@@ -15430,7 +16654,7 @@ type GetLogsV2ResponseBodyMeta struct {
 	Mode *int32 `json:"mode,omitempty" xml:"mode,omitempty"`
 	// The phrase query information.
 	PhraseQueryInfo *GetLogsV2ResponseBodyMetaPhraseQueryInfo `json:"phraseQueryInfo,omitempty" xml:"phraseQueryInfo,omitempty" type:"Struct"`
-	// The volume of logs processed by the query.
+	// The volume of logs processed by the query, in bytes.
 	//
 	// example:
 	//
@@ -15446,7 +16670,7 @@ type GetLogsV2ResponseBodyMeta struct {
 	//
 	// - Complete: The query is complete and the results are complete.
 	//
-	// - Incomplete: The query is complete but the results are incomplete. Resend the request to obtain complete results.
+	// - Incomplete: The query is complete but the results are incomplete. Repeat the request to obtain complete results.
 	//
 	// example:
 	//
@@ -15822,7 +17046,12 @@ func (s *GetMachineGroupResponse) SetBody(v *MachineGroup) *GetMachineGroupRespo
 
 type GetMaterializedViewHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	ContentType   *string            `json:"Content-Type,omitempty" xml:"Content-Type,omitempty"`
+	// The content type of the response. Simple Log Service supports application/json and application/x-protobuf response types.
+	//
+	// example:
+	//
+	// application/json
+	ContentType *string `json:"Content-Type,omitempty" xml:"Content-Type,omitempty"`
 }
 
 func (s GetMaterializedViewHeaders) String() string {
@@ -15844,7 +17073,13 @@ func (s *GetMaterializedViewHeaders) SetContentType(v string) *GetMaterializedVi
 }
 
 type GetMaterializedViewRequest struct {
+	// Specifies whether to return the materialized view status information.
+	//
 	// if can be null:
+	// false
+	//
+	// example:
+	//
 	// false
 	ReturnStatus *bool `json:"returnStatus,omitempty" xml:"returnStatus,omitempty"`
 }
@@ -15863,14 +17098,66 @@ func (s *GetMaterializedViewRequest) SetReturnStatus(v bool) *GetMaterializedVie
 }
 
 type GetMaterializedViewResponseBody struct {
-	AggIntervalMins *int32                                 `json:"aggIntervalMins,omitempty" xml:"aggIntervalMins,omitempty"`
-	Enabled         *bool                                  `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	Logstore        *string                                `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	Name            *string                                `json:"name,omitempty" xml:"name,omitempty"`
-	OriginalSql     *string                                `json:"originalSql,omitempty" xml:"originalSql,omitempty"`
-	StartTime       *int32                                 `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Status          *GetMaterializedViewResponseBodyStatus `json:"status,omitempty" xml:"status,omitempty" type:"Struct"`
-	Ttl             *int32                                 `json:"ttl,omitempty" xml:"ttl,omitempty"`
+	// The aggregation interval of the materialized view results, in minutes.
+	//
+	// example:
+	//
+	// 5
+	AggIntervalMins *int32 `json:"aggIntervalMins,omitempty" xml:"aggIntervalMins,omitempty"`
+	// The time when the materialized view was created.
+	//
+	// example:
+	//
+	// 1722411060
+	CreateTime *int32 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Indicates whether the materialized view is enabled.
+	//
+	// example:
+	//
+	// false
+	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	// The Logstore from which the materialized view sources its data.
+	//
+	// example:
+	//
+	// ali-test-logstore
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// alert-123456
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The original SQL statement executed by the materialized view.
+	//
+	// example:
+	//
+	// 	- | select count(*) from log
+	OriginalSql *string `json:"originalSql,omitempty" xml:"originalSql,omitempty"`
+	// The number of shards used by the Logstore that stores the materialized view data.
+	//
+	// example:
+	//
+	// 2
+	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+	// The time from which the materialized view starts processing data.
+	//
+	// example:
+	//
+	// 1448748198
+	StartTime *int32 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// The status information of the materialized view.
+	//
+	// example:
+	//
+	// {}
+	Status *GetMaterializedViewResponseBodyStatus `json:"status,omitempty" xml:"status,omitempty" type:"Struct"`
+	// The number of days that the materialized view results are retained.
+	//
+	// example:
+	//
+	// 1
+	Ttl *int32 `json:"ttl,omitempty" xml:"ttl,omitempty"`
 }
 
 func (s GetMaterializedViewResponseBody) String() string {
@@ -15883,6 +17170,11 @@ func (s GetMaterializedViewResponseBody) GoString() string {
 
 func (s *GetMaterializedViewResponseBody) SetAggIntervalMins(v int32) *GetMaterializedViewResponseBody {
 	s.AggIntervalMins = &v
+	return s
+}
+
+func (s *GetMaterializedViewResponseBody) SetCreateTime(v int32) *GetMaterializedViewResponseBody {
+	s.CreateTime = &v
 	return s
 }
 
@@ -15906,6 +17198,11 @@ func (s *GetMaterializedViewResponseBody) SetOriginalSql(v string) *GetMateriali
 	return s
 }
 
+func (s *GetMaterializedViewResponseBody) SetShardCount(v int32) *GetMaterializedViewResponseBody {
+	s.ShardCount = &v
+	return s
+}
+
 func (s *GetMaterializedViewResponseBody) SetStartTime(v int32) *GetMaterializedViewResponseBody {
 	s.StartTime = &v
 	return s
@@ -15922,9 +17219,30 @@ func (s *GetMaterializedViewResponseBody) SetTtl(v int32) *GetMaterializedViewRe
 }
 
 type GetMaterializedViewResponseBodyStatus struct {
-	LastRunError  *string `json:"lastRunError,omitempty" xml:"lastRunError,omitempty"`
-	LastRunTime   *int64  `json:"lastRunTime,omitempty" xml:"lastRunTime,omitempty"`
-	MaxCursorTime *int64  `json:"maxCursorTime,omitempty" xml:"maxCursorTime,omitempty"`
+	// The error message from the last execution of the materialized view.
+	//
+	// example:
+	//
+	// column \\"value\\" not defined
+	LastRunError *string `json:"lastRunError,omitempty" xml:"lastRunError,omitempty"`
+	// The time when the materialized view was last executed.
+	//
+	// example:
+	//
+	// 1787647228
+	LastRunTime *int64 `json:"lastRunTime,omitempty" xml:"lastRunTime,omitempty"`
+	// The latest position up to which the materialized view has processed data.
+	//
+	// example:
+	//
+	// 1787647228
+	MaxCursorTime *int64 `json:"maxCursorTime,omitempty" xml:"maxCursorTime,omitempty"`
+	// The execute statistics information of the materialized view.
+	//
+	// example:
+	//
+	// {}
+	Stats *GetMaterializedViewResponseBodyStatusStats `json:"stats,omitempty" xml:"stats,omitempty" type:"Struct"`
 }
 
 func (s GetMaterializedViewResponseBodyStatus) String() string {
@@ -15947,6 +17265,44 @@ func (s *GetMaterializedViewResponseBodyStatus) SetLastRunTime(v int64) *GetMate
 
 func (s *GetMaterializedViewResponseBodyStatus) SetMaxCursorTime(v int64) *GetMaterializedViewResponseBodyStatus {
 	s.MaxCursorTime = &v
+	return s
+}
+
+func (s *GetMaterializedViewResponseBodyStatus) SetStats(v *GetMaterializedViewResponseBodyStatusStats) *GetMaterializedViewResponseBodyStatus {
+	s.Stats = v
+	return s
+}
+
+type GetMaterializedViewResponseBodyStatusStats struct {
+	// The number of times the materialized view was used in the last day.
+	//
+	// example:
+	//
+	// 0
+	Hits *int64 `json:"hits,omitempty" xml:"hits,omitempty"`
+	// The top 3 most frequently accelerated SQL statements by the materialized view.
+	//
+	// example:
+	//
+	// []
+	Queries []*string `json:"queries,omitempty" xml:"queries,omitempty" type:"Repeated"`
+}
+
+func (s GetMaterializedViewResponseBodyStatusStats) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMaterializedViewResponseBodyStatusStats) GoString() string {
+	return s.String()
+}
+
+func (s *GetMaterializedViewResponseBodyStatusStats) SetHits(v int64) *GetMaterializedViewResponseBodyStatusStats {
+	s.Hits = &v
+	return s
+}
+
+func (s *GetMaterializedViewResponseBodyStatusStats) SetQueries(v []*string) *GetMaterializedViewResponseBodyStatusStats {
+	s.Queries = v
 	return s
 }
 
@@ -16009,7 +17365,7 @@ func (s *GetMaxComputeExportResponse) SetBody(v *MaxComputeExport) *GetMaxComput
 }
 
 type GetMetricStoreResponseBody struct {
-	// Indicates whether to record the public IP address and log reception time.
+	// Indicates whether the public IP address and log receive time are recorded.
 	//
 	// example:
 	//
@@ -16021,43 +17377,43 @@ type GetMetricStoreResponseBody struct {
 	//
 	// true
 	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
-	// The time when the Metricstore was created. The value is a UNIX timestamp.
+	// The creation time, as a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1698933894
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The retention period of data in the hot storage layer. Unit: days.
+	// The storage duration of data in the hot tier, in days.
 	//
 	// example:
 	//
 	// 60
 	HotTtl *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
-	// The retention period for the Infrequent Access (IA) storage class. Unit: days.
+	// The storage duration in the infrequent access (IA) tier, in days.
 	//
 	// example:
 	//
 	// 30
 	InfrequentAccessTTL *int32 `json:"infrequentAccessTTL,omitempty" xml:"infrequentAccessTTL,omitempty"`
-	// The time when the Metricstore was last modified. The value is a UNIX timestamp.
+	// The last modification time, as a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1712023974
 	LastModifyTime *int64 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	// The maximum number of shards that can be generated by automatic sharding.
+	// The maximum number of shards for automatic sharding.
 	//
 	// example:
 	//
 	// 64
 	MaxSplitShard *int32 `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
-	// The type of metrics in the Metricstore. Example: prometheus.
+	// The category of the Metricstore, such as prometheus.
 	//
 	// example:
 	//
 	// prometheus
 	MetricType *string `json:"metricType,omitempty" xml:"metricType,omitempty"`
-	// The type of the Metricstore. Example: standard.
+	// The specification type of the Metricstore, such as standard.
 	//
 	// example:
 	//
@@ -16069,7 +17425,7 @@ type GetMetricStoreResponseBody struct {
 	//
 	// my_metric_store
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ID of the write processor associated with the Metricstore
+	// The ID of the write processor associated with the Metricstore.
 	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
 	// The number of shards.
 	//
@@ -16077,9 +17433,9 @@ type GetMetricStoreResponseBody struct {
 	//
 	// 2
 	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
-	// Hash write configuration
+	// The hash write configuration.
 	ShardingPolicy *ShardingPolicy `json:"shardingPolicy,omitempty" xml:"shardingPolicy,omitempty"`
-	// The retention period of data. Unit: days.
+	// The data retention period, in days.
 	//
 	// example:
 	//
@@ -16477,6 +17833,57 @@ func (s *GetProjectPolicyResponse) SetBody(v string) *GetProjectPolicyResponse {
 	return s
 }
 
+type GetResourceRecordRequest struct {
+	// Specifies whether to allow retrieving system built-in records.
+	//
+	// example:
+	//
+	// false
+	IncludeSystemRecords *bool `json:"includeSystemRecords,omitempty" xml:"includeSystemRecords,omitempty"`
+}
+
+func (s GetResourceRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceRecordRequest) SetIncludeSystemRecords(v bool) *GetResourceRecordRequest {
+	s.IncludeSystemRecords = &v
+	return s
+}
+
+type GetResourceRecordResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResourceRecord    `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetResourceRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceRecordResponse) SetHeaders(v map[string]*string) *GetResourceRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetResourceRecordResponse) SetStatusCode(v int32) *GetResourceRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetResourceRecordResponse) SetBody(v *ResourceRecord) *GetResourceRecordResponse {
+	s.Body = v
+	return s
+}
+
 type GetS3IngestionResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -16689,31 +18096,13 @@ func (s *GetSqlInstanceResponseBody) SetUseAsDefault(v bool) *GetSqlInstanceResp
 }
 
 type GetStoreViewResponseBody struct {
-	// The type of the dataset.
-	//
-	// Valid values:
-	//
-	// - metricstore
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - logstore
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
+	// The type of the storeview.
 	//
 	// example:
 	//
 	// logstore
 	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
-	// The Logstores or Metricstores.
+	// The list of Logstores or Metricstores.
 	Stores []*StoreViewStore `json:"stores,omitempty" xml:"stores,omitempty" type:"Repeated"`
 }
 
@@ -16765,7 +18154,7 @@ func (s *GetStoreViewResponse) SetBody(v *GetStoreViewResponseBody) *GetStoreVie
 }
 
 type GetStoreViewIndexResponseBody struct {
-	// The index configurations.
+	// The list of index configurations.
 	Indexes []*GetStoreViewIndexResponseBodyIndexes `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Repeated"`
 }
 
@@ -16783,7 +18172,7 @@ func (s *GetStoreViewIndexResponseBody) SetIndexes(v []*GetStoreViewIndexRespons
 }
 
 type GetStoreViewIndexResponseBodyIndexes struct {
-	// The index configurations of the Logstore.
+	// The index configuration of the Logstore.
 	Index *Index `json:"index,omitempty" xml:"index,omitempty"`
 	// The name of the Logstore.
 	//
@@ -16858,13 +18247,13 @@ type ListAgentInstanceConfigsRequest struct {
 	//
 	// apm_trace
 	ConfigType *string `json:"configType,omitempty" xml:"configType,omitempty"`
-	// The number of entries to skip. The default value is 0.
+	// The start row of the query. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The number of entries to return. The default value is 500.
+	// The number of entries to return. Default value: 500.
 	//
 	// example:
 	//
@@ -16898,13 +18287,13 @@ func (s *ListAgentInstanceConfigsRequest) SetSize(v int64) *ListAgentInstanceCon
 type ListAgentInstanceConfigsResponseBody struct {
 	// The process-level configurations.
 	Configs []*ListAgentInstanceConfigsResponseBodyConfigs `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
-	// The number of data entries.
+	// The number of entries returned.
 	//
 	// example:
 	//
 	// 10
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
-	// The total number of data entries that meet the query conditions.
+	// The total number of entries that match the query conditions.
 	//
 	// example:
 	//
@@ -18748,19 +20137,19 @@ func (s *ListDomainsResponse) SetBody(v *ListDomainsResponseBody) *ListDomainsRe
 }
 
 type ListDownloadJobsRequest struct {
-	// The name of the Logstore.
+	// The Logstore name.
 	//
 	// example:
 	//
 	// ali-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The line from which to start the query. The default value is 0.
+	// The start row of the query. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The number of log download jobs to return in a single request.
+	// The number of log download tasks to retrieve in a single query.
 	//
 	// example:
 	//
@@ -18792,13 +20181,13 @@ func (s *ListDownloadJobsRequest) SetSize(v int64) *ListDownloadJobsRequest {
 }
 
 type ListDownloadJobsResponseBody struct {
-	// The number of log download jobs returned in the current response.
+	// The number of log download tasks returned in the current request.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// An array that contains the list of log download jobs.
+	// The list of log download tasks.
 	Results []*ListDownloadJobsResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 	// The total number of records.
 	//
@@ -18834,33 +20223,33 @@ func (s *ListDownloadJobsResponseBody) SetTotal(v int32) *ListDownloadJobsRespon
 type ListDownloadJobsResponseBodyResults struct {
 	// The download configuration.
 	Configuration *ListDownloadJobsResponseBodyResultsConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
-	// The time when the log download job was created. This is a UNIX timestamp in seconds.
+	// The creation time of the log download task.
 	//
 	// example:
 	//
 	// 1722411060
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The description of the log download job.
+	// The description of the log download task.
 	//
 	// example:
 	//
 	// a download job
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Display name
+	// The display name.
 	//
 	// example:
 	//
 	// download-123
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The execution details of the job.
+	// The execution details.
 	ExecutionDetails *ListDownloadJobsResponseBodyResultsExecutionDetails `json:"executionDetails,omitempty" xml:"executionDetails,omitempty" type:"Struct"`
-	// The name of the log download job.
+	// The name of the log download task.
 	//
 	// example:
 	//
 	// download-123
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status of the Job.
+	// The task status.
 	//
 	// example:
 	//
@@ -18912,13 +20301,13 @@ func (s *ListDownloadJobsResponseBodyResults) SetStatus(v string) *ListDownloadJ
 }
 
 type ListDownloadJobsResponseBodyResultsConfiguration struct {
-	// Specifies whether to allow the download of incomplete results.
+	// Specifies whether to allow downloading incomplete results.
 	//
 	// example:
 	//
 	// false
 	AllowInComplete *string `json:"allowInComplete,omitempty" xml:"allowInComplete,omitempty"`
-	// The start time of the query. This is a UNIX timestamp that is accurate to the second.
+	// The start timestamp, in seconds.
 	//
 	// example:
 	//
@@ -18930,7 +20319,7 @@ type ListDownloadJobsResponseBodyResultsConfiguration struct {
 	//
 	// ali-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// Specifies whether to enable PowerSQL.
+	// Indicates whether PowerSQL is enabled.
 	//
 	// example:
 	//
@@ -18942,9 +20331,9 @@ type ListDownloadJobsResponseBodyResultsConfiguration struct {
 	//
 	// 	- | select *
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The sink configuration.
+	// The log download task configuration.
 	Sink *ListDownloadJobsResponseBodyResultsConfigurationSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
-	// The end time of the query. This is a UNIX timestamp that is accurate to the second.
+	// The end timestamp, in seconds.
 	//
 	// example:
 	//
@@ -18996,7 +20385,7 @@ func (s *ListDownloadJobsResponseBodyResultsConfiguration) SetToTime(v int64) *L
 }
 
 type ListDownloadJobsResponseBodyResultsConfigurationSink struct {
-	// The destination OSS bucket.
+	// The OSS bucket.
 	//
 	// example:
 	//
@@ -19008,25 +20397,25 @@ type ListDownloadJobsResponseBodyResultsConfigurationSink struct {
 	//
 	// none
 	CompressionType *string `json:"compressionType,omitempty" xml:"compressionType,omitempty"`
-	// The file format of the downloaded file.
+	// The download file format.
 	//
 	// example:
 	//
 	// csv
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The prefix of the object that is downloaded to the destination OSS bucket.
+	// The file prefix used when downloading to the user\\"s OSS bucket.
 	//
 	// example:
 	//
 	// download/
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role that is used for the download.
+	// The ARN of the RAM role used for the download.
 	//
 	// example:
 	//
 	// acs:ram::123456:role/aliyunlogimportossrole
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// The type of the sink. The value is fixed as AliyunOSS.
+	// Fixed value: AliyunOSS.
 	//
 	// example:
 	//
@@ -19073,31 +20462,31 @@ func (s *ListDownloadJobsResponseBodyResultsConfigurationSink) SetType(v string)
 }
 
 type ListDownloadJobsResponseBodyResultsExecutionDetails struct {
-	// The ETag of the file.
+	// The file ETag.
 	//
 	// example:
 	//
 	// ETASFGASDASQWDasd
 	CheckSum *string `json:"checkSum,omitempty" xml:"checkSum,omitempty"`
-	// The error message that is returned if the job fails.
+	// The download error message.
 	//
 	// example:
 	//
 	// timeout
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The running time of the download.
+	// The download execution time.
 	//
 	// example:
 	//
 	// 123
 	ExecuteTime *int64 `json:"executeTime,omitempty" xml:"executeTime,omitempty"`
-	// The URL of the downloaded file.
+	// The download result link.
 	//
 	// example:
 	//
 	// https://sls-downloaded-xxxx.csv.gzip?Expiresxxx
 	FilePath *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
-	// The size of the downloaded file in bytes.
+	// The download file size.
 	//
 	// example:
 	//
@@ -19109,13 +20498,13 @@ type ListDownloadJobsResponseBodyResultsExecutionDetails struct {
 	//
 	// 123
 	LogCount *int64 `json:"logCount,omitempty" xml:"logCount,omitempty"`
-	// The notification message.
+	// The notification information.
 	//
 	// example:
 	//
 	// test
 	Notice *string `json:"notice,omitempty" xml:"notice,omitempty"`
-	// The download progress as a percentage.
+	// The download progress.
 	//
 	// example:
 	//
@@ -19663,6 +21052,152 @@ func (s *ListIngestProcessorsResponse) SetBody(v *ListIngestProcessorsResponseBo
 	return s
 }
 
+type ListJobInstancesRequest struct {
+	// The owner of the job.
+	//
+	// example:
+	//
+	// 12312
+	CallerOwner *string `json:"callerOwner,omitempty" xml:"callerOwner,omitempty"`
+	// The end time.
+	//
+	// example:
+	//
+	// 1784237598
+	End *int64 `json:"end,omitempty" xml:"end,omitempty"`
+	// The start row of the query.
+	//
+	// example:
+	//
+	// 0
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of rows per page for a paged query.
+	//
+	// example:
+	//
+	// 100
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// The start time.
+	//
+	// example:
+	//
+	// 1784151198
+	Start *int64 `json:"start,omitempty" xml:"start,omitempty"`
+	// The current execution status.
+	//
+	// example:
+	//
+	// Running
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+}
+
+func (s ListJobInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobInstancesRequest) SetCallerOwner(v string) *ListJobInstancesRequest {
+	s.CallerOwner = &v
+	return s
+}
+
+func (s *ListJobInstancesRequest) SetEnd(v int64) *ListJobInstancesRequest {
+	s.End = &v
+	return s
+}
+
+func (s *ListJobInstancesRequest) SetOffset(v int32) *ListJobInstancesRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListJobInstancesRequest) SetSize(v int32) *ListJobInstancesRequest {
+	s.Size = &v
+	return s
+}
+
+func (s *ListJobInstancesRequest) SetStart(v int64) *ListJobInstancesRequest {
+	s.Start = &v
+	return s
+}
+
+func (s *ListJobInstancesRequest) SetState(v string) *ListJobInstancesRequest {
+	s.State = &v
+	return s
+}
+
+type ListJobInstancesResponseBody struct {
+	// The number of jobs returned on the current page.
+	//
+	// example:
+	//
+	// 10
+	Count *string `json:"count,omitempty" xml:"count,omitempty"`
+	// The job configuration details.
+	Results []*JobInstance `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
+	// example:
+	//
+	// 20
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListJobInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobInstancesResponseBody) SetCount(v string) *ListJobInstancesResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListJobInstancesResponseBody) SetResults(v []*JobInstance) *ListJobInstancesResponseBody {
+	s.Results = v
+	return s
+}
+
+func (s *ListJobInstancesResponseBody) SetTotal(v int64) *ListJobInstancesResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListJobInstancesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListJobInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListJobInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobInstancesResponse) SetHeaders(v map[string]*string) *ListJobInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListJobInstancesResponse) SetStatusCode(v int32) *ListJobInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListJobInstancesResponse) SetBody(v *ListJobInstancesResponseBody) *ListJobInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type ListLogStoresRequest struct {
 	// The name of the Logstore. Fuzzy match is supported. For example, if you enter test, Logstores whose name contains test are returned.
 	//
@@ -20159,106 +21694,10 @@ func (s *ListMachinesResponse) SetBody(v *ListMachinesResponseBody) *ListMachine
 	return s
 }
 
-type ListMaterializedViewRequest struct {
-	// The name of the materialized view. Use this to query for a specific materialized view.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The number of entries to skip before returning results. This parameter is used for pagination. Default value: 0.
-	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The maximum number of materialized views to return per page. Default value: 100. Maximum value: 500.
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-}
-
-func (s ListMaterializedViewRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMaterializedViewRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListMaterializedViewRequest) SetName(v string) *ListMaterializedViewRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *ListMaterializedViewRequest) SetOffset(v int32) *ListMaterializedViewRequest {
-	s.Offset = &v
-	return s
-}
-
-func (s *ListMaterializedViewRequest) SetSize(v int32) *ListMaterializedViewRequest {
-	s.Size = &v
-	return s
-}
-
-type ListMaterializedViewResponseBody struct {
-	// The number of materialized views returned on the current page.
-	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// A list of materialized views.
-	MaterializedViews []*string `json:"materializedViews,omitempty" xml:"materializedViews,omitempty" type:"Repeated"`
-	// The total number of materialized views that match the query.
-	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
-}
-
-func (s ListMaterializedViewResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMaterializedViewResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListMaterializedViewResponseBody) SetCount(v int32) *ListMaterializedViewResponseBody {
-	s.Count = &v
-	return s
-}
-
-func (s *ListMaterializedViewResponseBody) SetMaterializedViews(v []*string) *ListMaterializedViewResponseBody {
-	s.MaterializedViews = v
-	return s
-}
-
-func (s *ListMaterializedViewResponseBody) SetTotal(v int32) *ListMaterializedViewResponseBody {
-	s.Total = &v
-	return s
-}
-
-type ListMaterializedViewResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListMaterializedViewResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListMaterializedViewResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMaterializedViewResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListMaterializedViewResponse) SetHeaders(v map[string]*string) *ListMaterializedViewResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListMaterializedViewResponse) SetStatusCode(v int32) *ListMaterializedViewResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListMaterializedViewResponse) SetBody(v *ListMaterializedViewResponseBody) *ListMaterializedViewResponse {
-	s.Body = v
-	return s
-}
-
 type ListMaterializedViewsRequest struct {
-	// The name of the materialized view. Fuzzy search is supported.
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The position from which to start returning results for pagination. Default value: 0.
-	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The number of materialized views to return. The actual number of returned materialized views may be less than the specified value. If you do not specify this parameter, a system default is used.
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	Offset *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size   *int32  `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListMaterializedViewsRequest) String() string {
@@ -20285,12 +21724,9 @@ func (s *ListMaterializedViewsRequest) SetSize(v int32) *ListMaterializedViewsRe
 }
 
 type ListMaterializedViewsResponseBody struct {
-	// The number of materialized views returned on the current page.
-	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// An array of materialized view names.
+	Count             *int32    `json:"count,omitempty" xml:"count,omitempty"`
 	MaterializedViews []*string `json:"materializedViews,omitempty" xml:"materializedViews,omitempty" type:"Repeated"`
-	// The total number of materialized views that match the query.
-	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+	Total             *int32    `json:"total,omitempty" xml:"total,omitempty"`
 }
 
 func (s ListMaterializedViewsResponseBody) String() string {
@@ -20578,6 +22014,218 @@ func (s *ListMetricStoresResponse) SetStatusCode(v int32) *ListMetricStoresRespo
 }
 
 func (s *ListMetricStoresResponse) SetBody(v *ListMetricStoresResponseBody) *ListMetricStoresResponse {
+	s.Body = v
+	return s
+}
+
+type ListNextResourceRecordRequest struct {
+	// Filters records by ID. Separate multiple IDs with commas. A maximum of 200 IDs are supported.
+	//
+	// example:
+	//
+	// record-001,record-002
+	Ids *string `json:"ids,omitempty" xml:"ids,omitempty"`
+	// Specifies whether to include system built-in records.
+	//
+	// example:
+	//
+	// false
+	IncludeSystemRecords *bool `json:"includeSystemRecords,omitempty" xml:"includeSystemRecords,omitempty"`
+	// Specifies whether to enable JSON filter acceleration.
+	//
+	// example:
+	//
+	// false
+	JsonFilterAcc *bool `json:"jsonFilterAcc,omitempty" xml:"jsonFilterAcc,omitempty"`
+	// The JSON field path. Used together with jsonPathValue.
+	//
+	// example:
+	//
+	// $.status
+	JsonPath *string `json:"jsonPath,omitempty" xml:"jsonPath,omitempty"`
+	// The filter value for the JSON field. Used together with jsonPath.
+	//
+	// example:
+	//
+	// enabled
+	JsonPathValue *string `json:"jsonPathValue,omitempty" xml:"jsonPathValue,omitempty"`
+	// The maximum number of records to return in this request. Valid values: 1 to 200.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token. Do not pass this parameter for the first request. For subsequent requests, pass the nextToken value returned in the previous response.
+	//
+	// example:
+	//
+	// t7F6JzTNNTjkq2tRBH8hR0a_NcuVYQWjbVwdFeuFhkylsUhrDl0JSofT5mrbI0oV"
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// Specifies whether to traverse records in reverse order.
+	//
+	// example:
+	//
+	// false
+	Reverse *bool `json:"reverse,omitempty" xml:"reverse,omitempty"`
+	// Searches for a specified string in record content.
+	//
+	// example:
+	//
+	// example
+	Search *string `json:"search,omitempty" xml:"search,omitempty"`
+	// Searches by JSON content.
+	//
+	// example:
+	//
+	// status
+	Sjson *string `json:"sjson,omitempty" xml:"sjson,omitempty"`
+	// Filters records by tag.
+	//
+	// example:
+	//
+	// production
+	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
+}
+
+func (s ListNextResourceRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNextResourceRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNextResourceRecordRequest) SetIds(v string) *ListNextResourceRecordRequest {
+	s.Ids = &v
+	return s
+}
+
+func (s *ListNextResourceRecordRequest) SetIncludeSystemRecords(v bool) *ListNextResourceRecordRequest {
+	s.IncludeSystemRecords = &v
+	return s
+}
+
+func (s *ListNextResourceRecordRequest) SetJsonFilterAcc(v bool) *ListNextResourceRecordRequest {
+	s.JsonFilterAcc = &v
+	return s
+}
+
+func (s *ListNextResourceRecordRequest) SetJsonPath(v string) *ListNextResourceRecordRequest {
+	s.JsonPath = &v
+	return s
+}
+
+func (s *ListNextResourceRecordRequest) SetJsonPathValue(v string) *ListNextResourceRecordRequest {
+	s.JsonPathValue = &v
+	return s
+}
+
+func (s *ListNextResourceRecordRequest) SetMaxResults(v int32) *ListNextResourceRecordRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListNextResourceRecordRequest) SetNextToken(v string) *ListNextResourceRecordRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListNextResourceRecordRequest) SetReverse(v bool) *ListNextResourceRecordRequest {
+	s.Reverse = &v
+	return s
+}
+
+func (s *ListNextResourceRecordRequest) SetSearch(v string) *ListNextResourceRecordRequest {
+	s.Search = &v
+	return s
+}
+
+func (s *ListNextResourceRecordRequest) SetSjson(v string) *ListNextResourceRecordRequest {
+	s.Sjson = &v
+	return s
+}
+
+func (s *ListNextResourceRecordRequest) SetTag(v string) *ListNextResourceRecordRequest {
+	s.Tag = &v
+	return s
+}
+
+type ListNextResourceRecordResponseBody struct {
+	// The list of resource records.
+	Items []*ResourceRecord `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The maximum number of records returned in this request.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token for the next page. An empty value indicates that no more data is available.
+	//
+	// example:
+	//
+	// t7F6JzTNNTjkq2tRBH8hR0a_NcuVYQWjbVwdFeuFhkylsUhrDl0JSofT5mrbI0oV"
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The total number of records that match the filter criteria.
+	//
+	// example:
+	//
+	// 245
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListNextResourceRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNextResourceRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListNextResourceRecordResponseBody) SetItems(v []*ResourceRecord) *ListNextResourceRecordResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListNextResourceRecordResponseBody) SetMaxResults(v int64) *ListNextResourceRecordResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListNextResourceRecordResponseBody) SetNextToken(v string) *ListNextResourceRecordResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListNextResourceRecordResponseBody) SetTotal(v int64) *ListNextResourceRecordResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListNextResourceRecordResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNextResourceRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListNextResourceRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNextResourceRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListNextResourceRecordResponse) SetHeaders(v map[string]*string) *ListNextResourceRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListNextResourceRecordResponse) SetStatusCode(v int32) *ListNextResourceRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListNextResourceRecordResponse) SetBody(v *ListNextResourceRecordResponseBody) *ListNextResourceRecordResponse {
 	s.Body = v
 	return s
 }
@@ -21288,13 +22936,13 @@ type ListScheduledSQLsRequest struct {
 	//
 	// ali-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The line from which to start the query. The default value is 0.
+	// The start row of the query. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The number of entries to return. The default value is 10.
+	// The number of entries to return. Default value: 10.
 	//
 	// example:
 	//
@@ -21326,15 +22974,15 @@ func (s *ListScheduledSQLsRequest) SetSize(v int64) *ListScheduledSQLsRequest {
 }
 
 type ListScheduledSQLsResponseBody struct {
-	// The number of Scheduled SQL jobs returned.
+	// The number of scheduled query jobs returned in the current response.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// The list of Scheduled SQL jobs.
+	// The list of scheduled query jobs.
 	Results []*ScheduledSQL `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
-	// The total number of Scheduled SQL jobs in the project.
+	// The total number of scheduled query jobs in the project.
 	//
 	// example:
 	//
@@ -21424,43 +23072,25 @@ func (s *ListShardsResponse) SetBody(v []*Shard) *ListShardsResponse {
 }
 
 type ListStoreViewsRequest struct {
-	// The dataset name that is used for fuzzy match.
+	// The storeview name used for fuzzy match.
 	//
 	// example:
 	//
 	// my_storeview
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The offset of the datasets to return. Default value: 0.
+	// The offset of the returned results in the total list of storeviews. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The number of datasets to return. Default value: 100.
+	// The number of storeviews to return. Default value: 100.
 	//
 	// example:
 	//
 	// 100
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// The type of the datasets to return. By default, datasets are not filtered by type.
-	//
-	// Valid values:
-	//
-	// - metricstore
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - logstore
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
+	// The storeview type. By default, results are not filtered by type.
 	//
 	// example:
 	//
@@ -21497,15 +23127,15 @@ func (s *ListStoreViewsRequest) SetStoreType(v string) *ListStoreViewsRequest {
 }
 
 type ListStoreViewsResponseBody struct {
-	// The number of returned datasets.
+	// The number of storeviews returned.
 	//
 	// example:
 	//
 	// 100
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// The dataset names.
+	// The list of storeview names.
 	Storeviews []*string `json:"storeviews,omitempty" xml:"storeviews,omitempty" type:"Repeated"`
-	// The total number of datasets in the project.
+	// The total number of storeviews in the project.
 	//
 	// example:
 	//
@@ -23820,17 +25450,17 @@ func (s *UpdateDashboardResponse) SetStatusCode(v int32) *UpdateDashboardRespons
 }
 
 type UpdateETLRequest struct {
-	// The detailed configuration of the data transformation task.
+	// The detailed configuration of the data transformation job.
 	//
 	// This parameter is required.
 	Configuration *ETLConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
-	// The description of the data transformation task.
+	// The description of the data transformation job.
 	//
 	// example:
 	//
 	// this is description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The display name of the data transformation task.
+	// The display name of the data transformation job.
 	//
 	// This parameter is required.
 	//
@@ -24075,45 +25705,97 @@ func (s *UpdateIndexResponse) SetStatusCode(v int32) *UpdateIndexResponse {
 }
 
 type UpdateLogStoreRequest struct {
-	// Specifies whether to record public IP addresses. Default value: false.
+	// Specifies whether to record the public IP address and log arrival time. Default value: false.
 	//
-	// - true: records public IP addresses.
+	// - true: enables the feature. After this feature is enabled, Simple Log Service automatically adds the public IP address of the log source device and the time when the log arrives at the server to the Tag field of the log.
 	//
-	// - false: does not record public IP addresses.
+	// - false: disables the feature.
 	//
 	// example:
 	//
 	// false
 	AppendMeta *bool `json:"appendMeta,omitempty" xml:"appendMeta,omitempty"`
-	// Specifies whether to automatically split a shard.
-	//
-	// - true: automatically splits a shard.
-	//
-	// - false: does not automatically split a shard.
+	// Specifies whether to enable automatic sharding. After this feature is enabled, a shard is automatically split when the write traffic continuously exceeds the limit, which improves write capacity. You must set maxSplitShard (the maximum number of shards after splitting) when you enable automatic sharding.
 	//
 	// example:
 	//
 	// true
 	AutoSplit *bool `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
-	// Specifies whether to enable web tracking. Default value: false.
+	// Specifies whether to enable the WebTracking feature. Default value: false. You can use the WebTracking feature to collect and analyze user behavior data in browsers or mini programs, such as page views, purchase records, and time on site.
 	//
-	// - true: enables web tracking.
+	// - true: enables WebTracking.
 	//
-	// - false: does not enable web tracking.
+	// - false: disables WebTracking.
 	//
 	// example:
 	//
 	// false
 	EnableTracking *bool `json:"enable_tracking,omitempty" xml:"enable_tracking,omitempty"`
-	// The encryption configuration.
+	// The encryption configuration. Encryption is disabled by default.
+	//
+	// Example 1 (enable default encryption):
+	//
+	// ```
+	//
+	// {
+	//
+	//     "enable": true,
+	//
+	//     "encrypt_conf": "default"
+	//
+	// }
+	//
+	// ```
+	//
+	// Example 2 (enable BYOK encryption):
+	//
+	// ```
+	//
+	// {
+	//
+	//     "enable": true,
+	//
+	//     "encrypt_conf": "default",
+	//
+	//     "user_cmk_info": {
+	//
+	//         "cmk_key_id": "xxxxx",
+	//
+	//         "arn": "acs:ram::112340000000:role/rolename",
+	//
+	//         "region": "ap-southeast-1"
+	//
+	//     }
+	//
+	// }
+	//
+	// ```
 	EncryptConf *EncryptConf `json:"encrypt_conf,omitempty" xml:"encrypt_conf,omitempty"`
-	// The retention period of data in the hot tier of the Logstore. Minimum value: 7. Unit: days. Valid values: 7 to 3000. After the retention period of the hot tier ends, the data is moved to the Infrequent Access (IA) storage class. For more information, see [Automatic Storage Tiering](https://help.aliyun.com/document_detail/308645.html).
+	// The retention period of data in the hot tier of the Logstore. Unit: days. Minimum value: 7. The value cannot exceed the value of ttl. By default, all data within the retention period is stored in the hot tier.
+	//
+	// After the data storage time exceeds the configured hot data retention period, the data is moved to the infrequent access (IA) tier. When you enable the IA tier, the hot data retention period must be at least 7 days. For more information, see [Intelligent tiering](https://help.aliyun.com/document_detail/308645.html).
+	//
+	// Examples:
+	//
+	// - Scenario 1 (hot tier only, 30 days): `{"ttl": 30}` or `{"ttl": 30, "hot_ttl": 30}`
+	//
+	// - Scenario 2 (hot tier 7 days, IA tier 23 days): `{"ttl": 30, "hot_ttl": 7}`
 	//
 	// example:
 	//
 	// 60
 	HotTtl *int32 `json:"hot_ttl,omitempty" xml:"hot_ttl,omitempty"`
-	// The retention period for data in the IA storage class. Data in this storage class has no minimum retention period. Data must be stored for at least 30 days before it is moved to Archive storage.
+	// Infrequent access (IA) tier. No minimum storage time is required. Data must be stored for at least 30 days before being moved to the archive tier.
+	//
+	// When the log retention period exceeds the sum of the hot tier retention period and the IA tier retention period, the remaining storage time is converted to archive tier storage.
+	//
+	// Examples:
+	//
+	// - Scenario 1 (hot tier 7 days, IA tier 23 days): `{"ttl": 30, "hot_ttl": 7}`
+	//
+	// - Scenario 2 (hot tier 7 days, IA tier 30 days, archive tier 60 days): `{"ttl": 97, "hot_ttl": 7, "infrequentAccessTTL": 30}`
+	//
+	// - Scenario 3 (hot tier 60 days, IA tier 0 days, archive tier 60 days): `{"ttl": 120, "hot_ttl": 60, "infrequentAccessTTL": 0}`
 	//
 	// example:
 	//
@@ -24127,19 +25809,19 @@ type UpdateLogStoreRequest struct {
 	//
 	// test-logstore
 	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	// The maximum number of shards to which a shard can be split. The value must be an integer from 1 to 256.
+	// The maximum number of shards for automatic sharding. Minimum value: 1. Maximum value: 256.
 	//
-	// > This parameter is required if autoSplit is set to true.
+	// > This parameter is required when autoSplit is set to true.
 	//
 	// example:
 	//
 	// 64
 	MaxSplitShard *int32 `json:"maxSplitShard,omitempty" xml:"maxSplitShard,omitempty"`
-	// SLS provides two types of Logstores: Standard and Query.
+	// Simple Log Service provides two types of Logstores: Standard and Query.
 	//
-	// - **standard**: supports one-stop data analytics. This type of Logstore is suitable for scenarios such as real-time monitoring, interactive analysis, and building a complete observability system.
+	// - **standard**: supports one-stop data analytics capabilities of Simple Log Service. This type is suitable for scenarios such as real-time monitoring, interactive analysis, and building complete observability systems.
 	//
-	// - **query**: supports high-performance queries. The index traffic cost of a Query Logstore is about half that of a Standard Logstore. However, a Query Logstore does not support SQL analysis. This type of Logstore is suitable for scenarios that involve large data volumes, long retention periods of weeks or months, and no log analysis.
+	// - **query**: supports high-performance queries. The index traffic fee is approximately half that of the Standard type. However, SQL analysis is not supported. This type is suitable for scenarios with large data volumes, long storage periods (weeks or months), and no log analysis requirements.
 	//
 	// example:
 	//
@@ -24149,27 +25831,27 @@ type UpdateLogStoreRequest struct {
 	//
 	// The number of shards.
 	//
-	// > You cannot update the number of shards with this operation. To change the number of shards, call the SplitShard or MergeShards operation.
+	// > This operation does not support updating the number of shards. You can modify the number of shards only by calling the SplitShard or MergeShards operation.
 	//
 	// example:
 	//
 	// 2
 	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
-	// The hash-based write configuration.
+	// The hash-based write configuration. When data is written, logs are routed to shards based on the configured hash policy. Before configuring this parameter, ensure that the hash ranges of shards are evenly distributed. This configuration may affect write capacity. Proceed with caution.
 	ShardingPolicy *ShardingPolicy `json:"shardingPolicy,omitempty" xml:"shardingPolicy,omitempty"`
 	// Deprecated
 	//
-	// The type of observable data. Valid values:
+	// The type of observable data. The default value is log data. Valid values:
 	//
-	// - None: logs. This is the default value.
+	// - None: log data. This is the default value.
 	//
-	// - Metrics: metrics.
+	// - Metrics: time series data.
 	//
 	// example:
 	//
 	// None
 	TelemetryType *string `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
-	// The data retention period. Unit: days. Valid values: 1 to 3650. If you set this parameter to 3650, the data is permanently retained.
+	// The data retention period. Unit: days. Valid values: 1 to 3650. A value of 3650 indicates permanent retention.
 	//
 	// This parameter is required.
 	//
@@ -25296,7 +26978,11 @@ func (s *UpdateMetricStoreResponse) SetStatusCode(v int32) *UpdateMetricStoreRes
 }
 
 type UpdateMetricStoreMeteringModeRequest struct {
-	// The billing mode to which you want to switch. Valid values: ChargeByFunction and ChargeByDataIngest. ChargeByFunction specifies the [pay-by-feature](https://help.aliyun.com/document_detail/48220.html) mode. ChargeByDataIngest specifies the [pay-by-ingested-data](https://help.aliyun.com/document_detail/2365756.html) mode.
+	// The billing mode to switch to. Valid values:
+	//
+	// - ChargeByFunction: [pay-by-feature](https://help.aliyun.com/document_detail/48220.html).
+	//
+	// - ChargeByDataIngest: [pay-by-ingested-data](https://help.aliyun.com/document_detail/2365756.html).
 	//
 	// This parameter is required.
 	//
@@ -25749,7 +27435,7 @@ func (s *UpdateSavedSearchResponse) SetStatusCode(v int32) *UpdateSavedSearchRes
 }
 
 type UpdateScheduledSQLRequest struct {
-	// The configuration of the task.
+	// The task configuration.
 	//
 	// This parameter is required.
 	Configuration *ScheduledSQLConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
@@ -25881,25 +27567,7 @@ func (s *UpdateSqlInstanceResponse) SetStatusCode(v int32) *UpdateSqlInstanceRes
 }
 
 type UpdateStoreViewRequest struct {
-	// The type of the dataset.
-	//
-	// Valid values:
-	//
-	// - metricstore
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - logstore
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
+	// The type of the storeview.
 	//
 	// This parameter is required.
 	//
@@ -25907,7 +27575,7 @@ type UpdateStoreViewRequest struct {
 	//
 	// logstore
 	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
-	// The Logstores or Metricstores.
+	// The list of Logstores or Metricstores.
 	//
 	// This parameter is required.
 	Stores []*StoreViewStore `json:"stores,omitempty" xml:"stores,omitempty" type:"Repeated"`
@@ -26275,41 +27943,39 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 
 	client.EndpointRule = tea.String("regional")
 	client.EndpointMap = map[string]*string{
-		"us-west-1":             tea.String("us-west-1.log.aliyuncs.com"),
-		"us-southeast-1":        tea.String("us-southeast-1.log.aliyuncs.com"),
+		"cn-qingdao":            tea.String("cn-qingdao.log.aliyuncs.com"),
+		"cn-beijing":            tea.String("cn-beijing.log.aliyuncs.com"),
+		"cn-zhangjiakou":        tea.String("cn-zhangjiakou.log.aliyuncs.com"),
+		"cn-huhehaote":          tea.String("cn-huhehaote.log.aliyuncs.com"),
+		"cn-wulanchabu":         tea.String("cn-wulanchabu.log.aliyuncs.com"),
+		"cn-hangzhou":           tea.String("cn-hangzhou.log.aliyuncs.com"),
+		"cn-shanghai":           tea.String("cn-shanghai.log.aliyuncs.com"),
+		"cn-nanjing":            tea.String("cn-nanjing.log.aliyuncs.com"),
+		"cn-fuzhou":             tea.String("cn-fuzhou.log.aliyuncs.com"),
+		"cn-shenzhen":           tea.String("cn-shenzhen.log.aliyuncs.com"),
+		"cn-heyuan":             tea.String("cn-heyuan.log.aliyuncs.com"),
+		"cn-guangzhou":          tea.String("cn-guangzhou.log.aliyuncs.com"),
+		"cn-chengdu":            tea.String("cn-chengdu.log.aliyuncs.com"),
+		"cn-hongkong":           tea.String("cn-hongkong.log.aliyuncs.com"),
+		"ap-northeast-1":        tea.String("ap-northeast-1.log.aliyuncs.com"),
+		"ap-northeast-2":        tea.String("ap-northeast-2.log.aliyuncs.com"),
+		"ap-southeast-1":        tea.String("ap-southeast-1.log.aliyuncs.com"),
+		"ap-southeast-3":        tea.String("ap-southeast-3.log.aliyuncs.com"),
+		"ap-southeast-5":        tea.String("ap-southeast-5.log.aliyuncs.com"),
+		"ap-southeast-6":        tea.String("ap-southeast-6.log.aliyuncs.com"),
+		"ap-southeast-7":        tea.String("ap-southeast-7.log.aliyuncs.com"),
 		"us-east-1":             tea.String("us-east-1.log.aliyuncs.com"),
-		"me-east-1":             tea.String("me-east-1.log.aliyuncs.com"),
-		"me-central-1":          tea.String("me-central-1.log.aliyuncs.com"),
+		"us-west-1":             tea.String("us-west-1.log.aliyuncs.com"),
 		"eu-west-1":             tea.String("eu-west-1.log.aliyuncs.com"),
 		"eu-central-1":          tea.String("eu-central-1.log.aliyuncs.com"),
-		"cn-zhangjiakou":        tea.String("cn-zhangjiakou.log.aliyuncs.com"),
-		"cn-wulanchabu":         tea.String("cn-wulanchabu.log.aliyuncs.com"),
-		"cn-shenzhen-finance-1": tea.String("cn-shenzhen-finance-1.log.aliyuncs.com"),
-		"cn-shenzhen":           tea.String("cn-shenzhen.log.aliyuncs.com"),
-		"cn-shanghai-finance-1": tea.String("cn-shanghai-finance-1.log.aliyuncs.com"),
-		"cn-shanghai":           tea.String("cn-shanghai.log.aliyuncs.com"),
-		"cn-qingdao":            tea.String("cn-qingdao.log.aliyuncs.com"),
-		"cn-nanjing":            tea.String("cn-nanjing.log.aliyuncs.com"),
-		"cn-huhehaote":          tea.String("cn-huhehaote.log.aliyuncs.com"),
-		"cn-hongkong":           tea.String("cn-hongkong.log.aliyuncs.com"),
-		"cn-heyuan-acdr-1":      tea.String("cn-heyuan-acdr-1-intranet.log.aliyuncs.com"),
-		"cn-heyuan":             tea.String("cn-heyuan.log.aliyuncs.com"),
+		"us-southeast-1":        tea.String("us-southeast-1.log.aliyuncs.com"),
+		"me-east-1":             tea.String("me-east-1.log.aliyuncs.com"),
+		"me-central-1":          tea.String("me-central-1.log.aliyuncs.com"),
 		"cn-hangzhou-finance":   tea.String("cn-hangzhou-finance.log.aliyuncs.com"),
-		"cn-hangzhou":           tea.String("cn-hangzhou.log.aliyuncs.com"),
-		"cn-guangzhou":          tea.String("cn-guangzhou.log.aliyuncs.com"),
-		"cn-fuzhou":             tea.String("cn-fuzhou.log.aliyuncs.com"),
-		"cn-chengdu":            tea.String("cn-chengdu.log.aliyuncs.com"),
+		"cn-shanghai-finance-1": tea.String("cn-shanghai-finance-1.log.aliyuncs.com"),
+		"cn-shenzhen-finance-1": tea.String("cn-shenzhen-finance-1.log.aliyuncs.com"),
 		"cn-beijing-finance-1":  tea.String("cn-beijing-finance-1.log.aliyuncs.com"),
-		"cn-beijing":            tea.String("cn-beijing.log.aliyuncs.com"),
-		"ap-southeast-7":        tea.String("ap-southeast-7.log.aliyuncs.com"),
-		"ap-southeast-6":        tea.String("ap-southeast-6.log.aliyuncs.com"),
-		"ap-southeast-5":        tea.String("ap-southeast-5.log.aliyuncs.com"),
-		"ap-southeast-3":        tea.String("ap-southeast-3.log.aliyuncs.com"),
-		"ap-southeast-2":        tea.String("ap-southeast-2.log.aliyuncs.com"),
-		"ap-southeast-1":        tea.String("ap-southeast-1.log.aliyuncs.com"),
-		"ap-south-1":            tea.String("ap-south-1.log.aliyuncs.com"),
-		"ap-northeast-2":        tea.String("ap-northeast-2.log.aliyuncs.com"),
-		"ap-northeast-1":        tea.String("ap-northeast-1.log.aliyuncs.com"),
+		"cn-heyuan-acdr-1":      tea.String("cn-heyuan-acdr-1-intranet.log.aliyuncs.com"),
 	}
 	return nil
 }
@@ -27541,7 +29207,7 @@ func (client *Client) CreateDomain(project *string, request *CreateDomainRequest
 
 // Summary:
 //
-// Creates a log download task in a specified project.
+// Creates a log download task in the specified project.
 //
 // @param request - CreateDownloadJobRequest
 //
@@ -27601,7 +29267,7 @@ func (client *Client) CreateDownloadJobWithOptions(project *string, request *Cre
 
 // Summary:
 //
-// Creates a log download task in a specified project.
+// Creates a log download task in the specified project.
 //
 // @param request - CreateDownloadJobRequest
 //
@@ -28412,6 +30078,10 @@ func (client *Client) CreateMaterializedViewWithOptions(project *string, request
 		body["originalSql"] = request.OriginalSql
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ShardCount)) {
+		body["shardCount"] = request.ShardCount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		body["startTime"] = request.StartTime
 	}
@@ -29073,7 +30743,66 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 
 // Summary:
 //
-// Creates an S3 file import job.
+// Creates a resource record.
+//
+// @param request - CreateResourceRecordRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateResourceRecordResponse
+func (client *Client) CreateResourceRecordWithOptions(resourceName *string, request *CreateResourceRecordRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateResourceRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateResourceRecord"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/resources/" + tea.StringValue(resourceName) + "/records"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateResourceRecordResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a resource record.
+//
+// @param request - CreateResourceRecordRequest
+//
+// @return CreateResourceRecordResponse
+func (client *Client) CreateResourceRecord(resourceName *string, request *CreateResourceRecordRequest) (_result *CreateResourceRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateResourceRecordResponse{}
+	_body, _err := client.CreateResourceRecordWithOptions(resourceName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an S3 file import task.
 //
 // @param request - CreateS3IngestionRequest
 //
@@ -29137,7 +30866,7 @@ func (client *Client) CreateS3IngestionWithOptions(project *string, request *Cre
 
 // Summary:
 //
-// Creates an S3 file import job.
+// Creates an S3 file import task.
 //
 // @param request - CreateS3IngestionRequest
 //
@@ -29287,7 +31016,7 @@ func (client *Client) CreateSavedSearch(project *string, request *CreateSavedSea
 
 // Summary:
 //
-// Creates a scheduled SQL job in a specified project.
+// Creates a scheduled query job in the specified project.
 //
 // @param request - CreateScheduledSQLRequest
 //
@@ -29351,7 +31080,7 @@ func (client *Client) CreateScheduledSQLWithOptions(project *string, request *Cr
 
 // Summary:
 //
-// Creates a scheduled SQL job in a specified project.
+// Creates a scheduled query job in the specified project.
 //
 // @param request - CreateScheduledSQLRequest
 //
@@ -29449,7 +31178,7 @@ func (client *Client) CreateSqlInstance(project *string, request *CreateSqlInsta
 
 // Summary:
 //
-// Creates a dataset.
+// Creates a storeview.
 //
 // @param request - CreateStoreViewRequest
 //
@@ -29505,7 +31234,7 @@ func (client *Client) CreateStoreViewWithOptions(project *string, request *Creat
 
 // Summary:
 //
-// Creates a dataset.
+// Creates a storeview.
 //
 // @param request - CreateStoreViewRequest
 //
@@ -30395,7 +32124,7 @@ func (client *Client) DeleteDomain(project *string, domainName *string) (_result
 
 // Summary:
 //
-// Deletes a download job.
+// Deletes a log download task.
 //
 // @param headers - map
 //
@@ -30431,7 +32160,7 @@ func (client *Client) DeleteDownloadJobWithOptions(project *string, downloadJobN
 
 // Summary:
 //
-// Deletes a download job.
+// Deletes a log download task.
 //
 // @return DeleteDownloadJobResponse
 func (client *Client) DeleteDownloadJob(project *string, downloadJobName *string) (_result *DeleteDownloadJobResponse, _err error) {
@@ -31573,6 +33302,70 @@ func (client *Client) DeleteProjectPolicy(project *string) (_result *DeleteProje
 
 // Summary:
 //
+// Deletes resource records in batches.
+//
+// @param request - DeleteResourceRecordRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteResourceRecordResponse
+func (client *Client) DeleteResourceRecordWithOptions(resourceName *string, request *DeleteResourceRecordRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ids)) {
+		query["ids"] = request.Ids
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteResourceRecord"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/resources/" + tea.StringValue(resourceName) + "/records"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteResourceRecordResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes resource records in batches.
+//
+// @param request - DeleteResourceRecordRequest
+//
+// @return DeleteResourceRecordResponse
+func (client *Client) DeleteResourceRecord(resourceName *string, request *DeleteResourceRecordRequest) (_result *DeleteResourceRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteResourceRecordResponse{}
+	_body, _err := client.DeleteResourceRecordWithOptions(resourceName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes an S3 ingestion task.
 //
 // @param headers - map
@@ -31780,7 +33573,7 @@ func (client *Client) DeleteScheduledSQL(project *string, scheduledSQLName *stri
 
 // Summary:
 //
-// Deletes a dataset by using the name of the dataset.
+// Deletes a specified storeview by name.
 //
 // @param headers - map
 //
@@ -31816,7 +33609,7 @@ func (client *Client) DeleteStoreViewWithOptions(project *string, name *string, 
 
 // Summary:
 //
-// Deletes a dataset by using the name of the dataset.
+// Deletes a specified storeview by name.
 //
 // @return DeleteStoreViewResponse
 func (client *Client) DeleteStoreView(project *string, name *string) (_result *DeleteStoreViewResponse, _err error) {
@@ -33363,7 +35156,7 @@ func (client *Client) GetDashboard(project *string, dashboardName *string) (_res
 
 // Summary:
 //
-// Retrieves information about a download task.
+// Retrieves information about a log download task.
 //
 // @param headers - map
 //
@@ -33399,7 +35192,7 @@ func (client *Client) GetDownloadJobWithOptions(project *string, downloadJobName
 
 // Summary:
 //
-// Retrieves information about a download task.
+// Retrieves information about a log download task.
 //
 // @return GetDownloadJobResponse
 func (client *Client) GetDownloadJob(project *string, downloadJobName *string) (_result *GetDownloadJobResponse, _err error) {
@@ -33575,27 +35368,29 @@ func (client *Client) GetGCSIngestion(project *string, gcsIngestionName *string)
 
 // Summary:
 //
-// You can call the GetHistograms operation to query the distribution of logs that meet the search criteria in a specified Logstore.
+// Queries the distribution of logs that meet the specified query conditions in a Logstore by calling the GetHistograms operation.
 //
 // Description:
 //
-// ### Interface description
+// ### Operation description
 //
-// - The Host in the request syntax consists of the project name and the Simple Log Service Endpoint. You must specify the project in the Host.
+// - The Host in the request syntax consists of the project name and the Simple Log Service endpoint. Specify the project in the Host.
 //
-// - The subintervals in the response are divided consistently. If the requested time range is the same, the subinterval division in the response is also the same.
+// - The subinterval division in the response is always stable. If the time range in your query request remains unchanged, the subinterval division in the response also remains unchanged.
 //
-// - If the number of logs in a query varies greatly, the Simple Log Service application programming interface (API) cannot predict how many calls are needed to retrieve the full result. You must check the status of the progress member in each response. This status indicates whether to call the operation again to retrieve the final result. Each repeated call consumes the same number of query CUs.
+// - When the number of logs involved in a query changes significantly, the Simple Log Service API cannot predict how many times this operation needs to be invoked to obtain complete results. Check the progress status value in the response of each request to determine whether to invoke this operation again to obtain the final complete results. Each repeated invocation consumes the same number of query CUs.
 //
-// - The delay between when a log is written to a Logstore and when it can be queried using the GetHistograms and GetLogs operations varies by log type. Simple Log Service classifies logs into two types based on their timestamps:
+// - The latency between writing a log to a Logstore and querying the log by using LogSearch operations (GetHistograms and GetLogs) varies depending on the log type. Simple Log Service classifies logs into the following two types based on log UNIX timestamps:
 //
-//   - Real-time data: The log timestamp is within the range of (-180 seconds, +900 seconds] relative to the server\\"s current time. For example, if a log\\"s timestamp is UTC 2014-09-25 12:03:00 and the server receives it at UTC 2014-09-25 12:05:00, the log is processed as real-time data. The maximum latency for real-time data to become searchable is 3 seconds. In 99.9% of cases, the data is searchable within 1 second.
+//   - Real-time data: The time point in the log is within the range of (-180 seconds, 900 seconds] relative to the current server time. For example, if the log time is UTC 2014-09-25 12:03:00 and the server receives the log at UTC 2014-09-25 12:05:00, the log is processed as real-time data. The latency from writing real-time data to querying the data in the LogSearch interface is 3 seconds.
 //
-//   - Historical data: The log timestamp is within the range of [-7 × 86400 seconds, -180 seconds) relative to the server\\"s current time. For example, if a log\\"s timestamp is UTC 2014-09-25 12:00:00 and the server receives it at UTC 2014-09-25 12:05:00, the log is processed as historical data. This typically happens during data backfill.
+//   - Historical data: The time point in the log is within the range of [-7x86400 seconds, -180 seconds) relative to the current server time. For example, if the log time is UTC 2014-09-25 12:00:00 and the server receives the log at UTC 2014-09-25 12:05:00, the log is processed as historical data. This typically occurs in data backfill scenarios.
 //
-// > Simple Log Service calculates the difference between the log time (the __time__ field) and the time the server received the log (the __tag__:__receive_time__ field). If the difference is in the range of (-180 seconds, 900 seconds], the data is real-time data. If the difference is in the range of [-7 × 86400 seconds, -180 seconds), the data is historical data.
+//     The maximum latency from writing real-time data to querying the data is 3 seconds. In 99.9% of cases, the query is completed within 1 second.
 //
-// - Simple Log Service provides a Java software development kit (SDK) example for using the GetHistograms query. For more information, see [Use GetHistograms to query log distribution](https://help.aliyun.com/document_detail/462234.html).
+// > Simple Log Service calculates the difference between the log time (field name: __time__) and the server receive time (field name: __tag__:__receive_time__). If the difference is within the range of \\(-180 seconds, 900 seconds], the log is real-time data. If the difference is within the range of [-7x86400 seconds, -180 seconds), the log is historical data.
+//
+// - Simple Log Service provides a usage example of GetHistograms queries in the Java SDK. For more information, see [Use GetHistograms to query log distribution](https://help.aliyun.com/document_detail/462234.html).
 //
 // @param request - GetHistogramsRequest
 //
@@ -33655,27 +35450,29 @@ func (client *Client) GetHistogramsWithOptions(project *string, logstore *string
 
 // Summary:
 //
-// You can call the GetHistograms operation to query the distribution of logs that meet the search criteria in a specified Logstore.
+// Queries the distribution of logs that meet the specified query conditions in a Logstore by calling the GetHistograms operation.
 //
 // Description:
 //
-// ### Interface description
+// ### Operation description
 //
-// - The Host in the request syntax consists of the project name and the Simple Log Service Endpoint. You must specify the project in the Host.
+// - The Host in the request syntax consists of the project name and the Simple Log Service endpoint. Specify the project in the Host.
 //
-// - The subintervals in the response are divided consistently. If the requested time range is the same, the subinterval division in the response is also the same.
+// - The subinterval division in the response is always stable. If the time range in your query request remains unchanged, the subinterval division in the response also remains unchanged.
 //
-// - If the number of logs in a query varies greatly, the Simple Log Service application programming interface (API) cannot predict how many calls are needed to retrieve the full result. You must check the status of the progress member in each response. This status indicates whether to call the operation again to retrieve the final result. Each repeated call consumes the same number of query CUs.
+// - When the number of logs involved in a query changes significantly, the Simple Log Service API cannot predict how many times this operation needs to be invoked to obtain complete results. Check the progress status value in the response of each request to determine whether to invoke this operation again to obtain the final complete results. Each repeated invocation consumes the same number of query CUs.
 //
-// - The delay between when a log is written to a Logstore and when it can be queried using the GetHistograms and GetLogs operations varies by log type. Simple Log Service classifies logs into two types based on their timestamps:
+// - The latency between writing a log to a Logstore and querying the log by using LogSearch operations (GetHistograms and GetLogs) varies depending on the log type. Simple Log Service classifies logs into the following two types based on log UNIX timestamps:
 //
-//   - Real-time data: The log timestamp is within the range of (-180 seconds, +900 seconds] relative to the server\\"s current time. For example, if a log\\"s timestamp is UTC 2014-09-25 12:03:00 and the server receives it at UTC 2014-09-25 12:05:00, the log is processed as real-time data. The maximum latency for real-time data to become searchable is 3 seconds. In 99.9% of cases, the data is searchable within 1 second.
+//   - Real-time data: The time point in the log is within the range of (-180 seconds, 900 seconds] relative to the current server time. For example, if the log time is UTC 2014-09-25 12:03:00 and the server receives the log at UTC 2014-09-25 12:05:00, the log is processed as real-time data. The latency from writing real-time data to querying the data in the LogSearch interface is 3 seconds.
 //
-//   - Historical data: The log timestamp is within the range of [-7 × 86400 seconds, -180 seconds) relative to the server\\"s current time. For example, if a log\\"s timestamp is UTC 2014-09-25 12:00:00 and the server receives it at UTC 2014-09-25 12:05:00, the log is processed as historical data. This typically happens during data backfill.
+//   - Historical data: The time point in the log is within the range of [-7x86400 seconds, -180 seconds) relative to the current server time. For example, if the log time is UTC 2014-09-25 12:00:00 and the server receives the log at UTC 2014-09-25 12:05:00, the log is processed as historical data. This typically occurs in data backfill scenarios.
 //
-// > Simple Log Service calculates the difference between the log time (the __time__ field) and the time the server received the log (the __tag__:__receive_time__ field). If the difference is in the range of (-180 seconds, 900 seconds], the data is real-time data. If the difference is in the range of [-7 × 86400 seconds, -180 seconds), the data is historical data.
+//     The maximum latency from writing real-time data to querying the data is 3 seconds. In 99.9% of cases, the query is completed within 1 second.
 //
-// - Simple Log Service provides a Java software development kit (SDK) example for using the GetHistograms query. For more information, see [Use GetHistograms to query log distribution](https://help.aliyun.com/document_detail/462234.html).
+// > Simple Log Service calculates the difference between the log time (field name: __time__) and the server receive time (field name: __tag__:__receive_time__). If the difference is within the range of \\(-180 seconds, 900 seconds], the log is real-time data. If the difference is within the range of [-7x86400 seconds, -180 seconds), the log is historical data.
+//
+// - Simple Log Service provides a usage example of GetHistograms queries in the Java SDK. For more information, see [Use GetHistograms to query log distribution](https://help.aliyun.com/document_detail/462234.html).
 //
 // @param request - GetHistogramsRequest
 //
@@ -33812,13 +35609,104 @@ func (client *Client) GetIngestProcessor(project *string, processorName *string)
 
 // Summary:
 //
-// Retrieves the details of a Logstore.
+// Retrieves a job instance.
 //
 // Description:
 //
-// ### Description
+// ## Description
 //
-// The host consists of the project name and the Log Service endpoint.
+// - This API operation is used to query the details of a specific node instance in a project.
+//
+// - The `callerOwner` parameter is an optional options parameter that identifies the owner information of the invoker.
+//
+// - Ensure that the `projectName`, `jobName`, and `instanceId` parameters are correct to obtain the expected response.
+//
+// - This operation supports HTTP and HTTPS protocols and requires a valid AccessKey pair to authenticate.
+//
+// @param request - GetJobInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetJobInstanceResponse
+func (client *Client) GetJobInstanceWithOptions(project *string, jobName *string, instanceId *string, request *GetJobInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetJobInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallerOwner)) {
+		query["callerOwner"] = request.CallerOwner
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetJobInstance"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs/" + tea.StringValue(jobName) + "/jobinstances/" + tea.StringValue(instanceId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetJobInstanceResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a job instance.
+//
+// Description:
+//
+// ## Description
+//
+// - This API operation is used to query the details of a specific node instance in a project.
+//
+// - The `callerOwner` parameter is an optional options parameter that identifies the owner information of the invoker.
+//
+// - Ensure that the `projectName`, `jobName`, and `instanceId` parameters are correct to obtain the expected response.
+//
+// - This operation supports HTTP and HTTPS protocols and requires a valid AccessKey pair to authenticate.
+//
+// @param request - GetJobInstanceRequest
+//
+// @return GetJobInstanceResponse
+func (client *Client) GetJobInstance(project *string, jobName *string, instanceId *string, request *GetJobInstanceRequest) (_result *GetJobInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetJobInstanceResponse{}
+	_body, _err := client.GetJobInstanceWithOptions(project, jobName, instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a Logstore.
+//
+// Description:
+//
+// ### Operation description
+//
+// The Host consists of the project name and the Simple Log Service endpoint. You must specify the project in the Host.
 //
 // @param headers - map
 //
@@ -33854,13 +35742,13 @@ func (client *Client) GetLogStoreWithOptions(project *string, logstore *string, 
 
 // Summary:
 //
-// Retrieves the details of a Logstore.
+// Queries the details of a Logstore.
 //
 // Description:
 //
-// ### Description
+// ### Operation description
 //
-// The host consists of the project name and the Log Service endpoint.
+// The Host consists of the project name and the Simple Log Service endpoint. You must specify the project in the Host.
 //
 // @return GetLogStoreResponse
 func (client *Client) GetLogStore(project *string, logstore *string) (_result *GetLogStoreResponse, _err error) {
@@ -34084,110 +35972,137 @@ func (client *Client) GetLogging(project *string) (_result *GetLoggingResponse, 
 
 // Summary:
 //
-// Queries log data from a Logstore in the specified project.
+// Queries log data in a specified Logstore of a specified Project. This operation is deprecated. Use the GetLogsV2 operation instead.
 //
 // Description:
 //
-// ###
+// ### Operation description
 //
-// > Simple Log Service supports scheduled SQL jobs. For details, see [Create a scheduled SQL job](https://help.aliyun.com/document_detail/286457.html).
+// > Simple Log Service allows you to create scheduled SQL nodes. For more information, see [Create a scheduled SQL node](https://help.aliyun.com/document_detail/286457.html).
 //
-// - The Host in the request syntax consists of the project name and the Simple Log Service endpoint. Specify the project name in the Host.
+// - The Host in the request syntax consists of the Project name and the Simple Log Service endpoint. You must specify the Project in the Host.
 //
-// - Create and obtain an AccessKey pair. For details, see [AccessKey pair](https://help.aliyun.com/document_detail/2766629.html).
+// - Create and obtain an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/2766629.html).
 //
-// Create and use a RAM user to make API calls or perform routine O\\&M. Using an Alibaba Cloud account AccessKey pair grants access to all APIs and poses a high security risk. Ensure the RAM user has the required permissions for Simple Log Service resources. For details, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
+//	An Alibaba Cloud account AccessKey pair has access permissions on all API operations, which poses high security risks. We strongly recommend that you create and use a Resource Access Management (RAM) user for API access or routine O&M. The Resource Access Management (RAM) user must have access permissions to manage Simple Log Service EPS resources. For more information, see [Create a RAM user and authorize the RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
-// - Obtain the project name, region, and Logstore name for the logs to query. See [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - Determine the Project name, region, and Logstore name for the logs you want to query. For more information, see [Manage a Project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-// - Simple Log Service imposes limits on log queries. Design appropriate query and analytic statements and set a reasonable time range. See [Log query limits](https://help.aliyun.com/document_detail/43772.html) and [Log analysis limits](https://help.aliyun.com/document_detail/53608.html).
+// - Simple Log Service has usage limits for querying logs. Design proper query and analytic statements and set proper query time ranges. For more information, see [Limits on log queries](https://help.aliyun.com/document_detail/43772.html) and [Limits on log analysis](https://help.aliyun.com/document_detail/53608.html).
 //
-// - Configure indexes before querying logs. See [Create indexes](https://help.aliyun.com/document_detail/90732.html).
+// - Before you query logs, configure indexes. For more information, see [Create indexes](https://help.aliyun.com/document_detail/90732.html).
 //
-// - When the number of matching logs varies significantly, the API cannot predict how many calls are needed to retrieve the complete result. Check the `x-log-progress` header in each response to determine whether to repeat the call. Each repeated call consumes the same number of query capacity units (CUs).
+// - When the number of logs involved in a query changes significantly, the Simple Log Service API cannot predict how many times this operation must be invoked to obtain complete results. Check the x-log-progress status value in the response of each request to determine whether you need to invoke this operation again to obtain complete results. Each repeated invocation consumes the same number of query compute units (CUs).
 //
-// - After a log is written to a Logstore, the latency before it becomes queryable through the GetHistograms and GetLogs operations depends on the log type. Simple Log Service classifies logs into two types based on their timestamps:
+// - After logs are written to a Logstore, the latency before the query operations (GetHistograms and GetLogs) can query the logs varies based on the log type. Simple Log Service classifies logs into the following two types based on log UNIX timestamps:
 //
-//   - Real-time data: The log timestamp falls within (-180 seconds, 900 seconds] relative to the current server time. For example, if a log is generated at UTC 2014-09-25 12:03:00 and is received by the server at UTC 2014-09-25 12:05:00, the log is classified as real-time data. This is typical in normal scenarios. Real-time data becomes queryable in about 3 seconds.
+//   - Real-time data: The time point in the log is within the range of (-180 seconds, 900 seconds] relative to the current time on the server. For example, if the log time is UTC 2014-09-25 12:03:00 and the server receives the log at UTC 2014-09-25 12:05:00, the log is processed as real-time data. This generally occurs in normal scenarios.
 //
-//   - Historical data: The log timestamp falls within [-7 x 86,400 seconds, -180 seconds) relative to the current server time. For example, if a log is generated at UTC 2014-09-25 12:00:00 and is received by the server at UTC 2014-09-25 12:05:00, the log is classified as historical data. This is typical in data backfill scenarios.
+//   - Historical data: The time point in the log is within the range of [-7×86400 seconds, -180 seconds) relative to the current time on the server. For example, if the log time is UTC 2014-09-25 12:00:00 and the server receives the log at UTC 2014-09-25 12:05:00, the log is processed as historical data. This generally occurs in data backfill scenarios.
 //
-// > Simple Log Service calculates the difference between the log time (the __time__ field) and the server receipt time (the __tag__: **receive_time*	- field). If the difference falls within (-180 seconds, 900 seconds], the log is real-time data. If the difference falls within [-7 x 86,400 seconds, -180 seconds), the log is historical data.
+//     The latency from writing real-time data to querying the data is approximately 3 seconds.
 //
-// - Simple Log Service provides Java and Python SDK examples for the GetLogs operation. See [GetLogs examples for Java](https://help.aliyun.com/document_detail/407683.html) and [GetLogs examples for Python](https://help.aliyun.com/document_detail/407684.html).
+// > Simple Log Service calculates the difference between the log time (field name: __time__) and the server receive time (field name: __tag__:__receive_time__). If the difference is within the range of \\(-180 seconds, 900 seconds], the log is real-time data. If the difference is within the range of [-7×86400 seconds, -180 seconds), the log is historical data.
 //
-// ### Authorization
+// - Simple Log Service provides examples of using the GetLogs operation with the Java SDK and Python SDK. For more information, see [Java SDK example for GetLogs](https://help.aliyun.com/document_detail/407683.html) and [Python SDK example for GetLogs](https://help.aliyun.com/document_detail/407684.html).
 //
-// The following table describes the authorization information required for this operation. Add this information to the Action element of a RAM access policy statement to grant RAM users or RAM roles the permission to call this operation.
+// ### Authentication resources
 //
-// | Action                | Resource                                                                           |
+// The following table lists the authorization information corresponding to this API operation. You can add this information to the Action element of a RAM access policy statement to grant a Resource Access Management (RAM) user or RAM role the authorization to invoke this API operation.
 //
-// | :-------------------- | :--------------------------------------------------------------------------------- |
+// | Action | Resource |
 //
-// | `log:GetLogStoreLogs` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}` |
+// | :------------ | :------------ |
+//
+// | `log:GetLogStoreLogs`  | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}`  |
 //
 // @param request - GetLogsRequest
 //
-// @param headers - map
+// @param headers - GetLogsHeaders
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetLogsResponse
-func (client *Client) GetLogsWithOptions(project *string, logstore *string, request *GetLogsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLogsResponse, _err error) {
+func (client *Client) GetLogsWithOptions(project *string, logstore *string, request *GetLogsRequest, headers *GetLogsHeaders, runtime *util.RuntimeOptions) (_result *GetLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Forward)) {
+		body["forward"] = request.Forward
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.From)) {
-		query["from"] = request.From
+		body["from"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Highlight)) {
+		body["highlight"] = request.Highlight
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsAccurate)) {
+		body["isAccurate"] = request.IsAccurate
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Line)) {
-		query["line"] = request.Line
+		body["line"] = request.Line
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Offset)) {
-		query["offset"] = request.Offset
+		body["offset"] = request.Offset
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PowerSql)) {
-		query["powerSql"] = request.PowerSql
+		body["powerSql"] = request.PowerSql
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Query)) {
-		query["query"] = request.Query
+		body["query"] = request.Query
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Reverse)) {
-		query["reverse"] = request.Reverse
+		body["reverse"] = request.Reverse
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Session)) {
+		body["session"] = request.Session
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.To)) {
-		query["to"] = request.To
+		body["to"] = request.To
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Topic)) {
-		query["topic"] = request.Topic
+		body["topic"] = request.Topic
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AcceptEncoding)) {
+		realHeaders["Accept-Encoding"] = util.ToJSONString(headers.AcceptEncoding)
 	}
 
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
-		Headers: headers,
-		Query:   openapiutil.Query(query),
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetLogs"),
 		Version:     tea.String("2020-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "?type=log"),
-		Method:      tea.String("GET"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/logs"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("array"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetLogsResponse{}
 	_body, _err := client.Execute(params, req, runtime)
@@ -34200,54 +36115,56 @@ func (client *Client) GetLogsWithOptions(project *string, logstore *string, requ
 
 // Summary:
 //
-// Queries log data from a Logstore in the specified project.
+// Queries log data in a specified Logstore of a specified Project. This operation is deprecated. Use the GetLogsV2 operation instead.
 //
 // Description:
 //
-// ###
+// ### Operation description
 //
-// > Simple Log Service supports scheduled SQL jobs. For details, see [Create a scheduled SQL job](https://help.aliyun.com/document_detail/286457.html).
+// > Simple Log Service allows you to create scheduled SQL nodes. For more information, see [Create a scheduled SQL node](https://help.aliyun.com/document_detail/286457.html).
 //
-// - The Host in the request syntax consists of the project name and the Simple Log Service endpoint. Specify the project name in the Host.
+// - The Host in the request syntax consists of the Project name and the Simple Log Service endpoint. You must specify the Project in the Host.
 //
-// - Create and obtain an AccessKey pair. For details, see [AccessKey pair](https://help.aliyun.com/document_detail/2766629.html).
+// - Create and obtain an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/2766629.html).
 //
-// Create and use a RAM user to make API calls or perform routine O\\&M. Using an Alibaba Cloud account AccessKey pair grants access to all APIs and poses a high security risk. Ensure the RAM user has the required permissions for Simple Log Service resources. For details, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
+//	An Alibaba Cloud account AccessKey pair has access permissions on all API operations, which poses high security risks. We strongly recommend that you create and use a Resource Access Management (RAM) user for API access or routine O&M. The Resource Access Management (RAM) user must have access permissions to manage Simple Log Service EPS resources. For more information, see [Create a RAM user and authorize the RAM user](https://help.aliyun.com/document_detail/47664.html).
 //
-// - Obtain the project name, region, and Logstore name for the logs to query. See [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+// - Determine the Project name, region, and Logstore name for the logs you want to query. For more information, see [Manage a Project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-// - Simple Log Service imposes limits on log queries. Design appropriate query and analytic statements and set a reasonable time range. See [Log query limits](https://help.aliyun.com/document_detail/43772.html) and [Log analysis limits](https://help.aliyun.com/document_detail/53608.html).
+// - Simple Log Service has usage limits for querying logs. Design proper query and analytic statements and set proper query time ranges. For more information, see [Limits on log queries](https://help.aliyun.com/document_detail/43772.html) and [Limits on log analysis](https://help.aliyun.com/document_detail/53608.html).
 //
-// - Configure indexes before querying logs. See [Create indexes](https://help.aliyun.com/document_detail/90732.html).
+// - Before you query logs, configure indexes. For more information, see [Create indexes](https://help.aliyun.com/document_detail/90732.html).
 //
-// - When the number of matching logs varies significantly, the API cannot predict how many calls are needed to retrieve the complete result. Check the `x-log-progress` header in each response to determine whether to repeat the call. Each repeated call consumes the same number of query capacity units (CUs).
+// - When the number of logs involved in a query changes significantly, the Simple Log Service API cannot predict how many times this operation must be invoked to obtain complete results. Check the x-log-progress status value in the response of each request to determine whether you need to invoke this operation again to obtain complete results. Each repeated invocation consumes the same number of query compute units (CUs).
 //
-// - After a log is written to a Logstore, the latency before it becomes queryable through the GetHistograms and GetLogs operations depends on the log type. Simple Log Service classifies logs into two types based on their timestamps:
+// - After logs are written to a Logstore, the latency before the query operations (GetHistograms and GetLogs) can query the logs varies based on the log type. Simple Log Service classifies logs into the following two types based on log UNIX timestamps:
 //
-//   - Real-time data: The log timestamp falls within (-180 seconds, 900 seconds] relative to the current server time. For example, if a log is generated at UTC 2014-09-25 12:03:00 and is received by the server at UTC 2014-09-25 12:05:00, the log is classified as real-time data. This is typical in normal scenarios. Real-time data becomes queryable in about 3 seconds.
+//   - Real-time data: The time point in the log is within the range of (-180 seconds, 900 seconds] relative to the current time on the server. For example, if the log time is UTC 2014-09-25 12:03:00 and the server receives the log at UTC 2014-09-25 12:05:00, the log is processed as real-time data. This generally occurs in normal scenarios.
 //
-//   - Historical data: The log timestamp falls within [-7 x 86,400 seconds, -180 seconds) relative to the current server time. For example, if a log is generated at UTC 2014-09-25 12:00:00 and is received by the server at UTC 2014-09-25 12:05:00, the log is classified as historical data. This is typical in data backfill scenarios.
+//   - Historical data: The time point in the log is within the range of [-7×86400 seconds, -180 seconds) relative to the current time on the server. For example, if the log time is UTC 2014-09-25 12:00:00 and the server receives the log at UTC 2014-09-25 12:05:00, the log is processed as historical data. This generally occurs in data backfill scenarios.
 //
-// > Simple Log Service calculates the difference between the log time (the __time__ field) and the server receipt time (the __tag__: **receive_time*	- field). If the difference falls within (-180 seconds, 900 seconds], the log is real-time data. If the difference falls within [-7 x 86,400 seconds, -180 seconds), the log is historical data.
+//     The latency from writing real-time data to querying the data is approximately 3 seconds.
 //
-// - Simple Log Service provides Java and Python SDK examples for the GetLogs operation. See [GetLogs examples for Java](https://help.aliyun.com/document_detail/407683.html) and [GetLogs examples for Python](https://help.aliyun.com/document_detail/407684.html).
+// > Simple Log Service calculates the difference between the log time (field name: __time__) and the server receive time (field name: __tag__:__receive_time__). If the difference is within the range of \\(-180 seconds, 900 seconds], the log is real-time data. If the difference is within the range of [-7×86400 seconds, -180 seconds), the log is historical data.
 //
-// ### Authorization
+// - Simple Log Service provides examples of using the GetLogs operation with the Java SDK and Python SDK. For more information, see [Java SDK example for GetLogs](https://help.aliyun.com/document_detail/407683.html) and [Python SDK example for GetLogs](https://help.aliyun.com/document_detail/407684.html).
 //
-// The following table describes the authorization information required for this operation. Add this information to the Action element of a RAM access policy statement to grant RAM users or RAM roles the permission to call this operation.
+// ### Authentication resources
 //
-// | Action                | Resource                                                                           |
+// The following table lists the authorization information corresponding to this API operation. You can add this information to the Action element of a RAM access policy statement to grant a Resource Access Management (RAM) user or RAM role the authorization to invoke this API operation.
 //
-// | :-------------------- | :--------------------------------------------------------------------------------- |
+// | Action | Resource |
 //
-// | `log:GetLogStoreLogs` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}` |
+// | :------------ | :------------ |
+//
+// | `log:GetLogStoreLogs`  | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}`  |
 //
 // @param request - GetLogsRequest
 //
 // @return GetLogsResponse
 func (client *Client) GetLogs(project *string, logstore *string, request *GetLogsRequest) (_result *GetLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
+	headers := &GetLogsHeaders{}
 	_result = &GetLogsResponse{}
 	_body, _err := client.GetLogsWithOptions(project, logstore, request, headers, runtime)
 	if _err != nil {
@@ -34259,23 +36176,25 @@ func (client *Client) GetLogs(project *string, logstore *string, request *GetLog
 
 // Summary:
 //
-// Queries raw log data from a Logstore in a specified Project and returns raw logs within a specified time range. The results are compressed before transmission.
+// Queries raw log data from a specified Logstore in a project and returns raw logs within a specified time range. The results are compressed before transmission.
 //
 // Description:
 //
-// - Specify the compression method during the procedure. Different programming languages implement different compression algorithms. For details, see the Accept-Encoding request parameter.
+// - Specify the compression method during use. Different programming languages implement different compression algorithms. For details, see the Accept-Encoding request parameter.
 //
 // - For more information, see [GetLogs](https://help.aliyun.com/document_detail/2771313.html).
 //
 // ### Authentication
 //
-// The following table describes the authorization information required by this API. You can add the information to the Action element in a RAM access policy statement to grant a Resource Access Management (RAM) user or RAM role the permissions to invoke this API.
+// The following table describes the authorization information required by this API. You can add this information to the Action element in a RAM access policy statement to grant a Resource Access Management (RAM) user or RAM role the permission to invoke this API.
 //
 // | Action | Resource |
 //
 // | :------------ | :------------ |
 //
 // | `log:GetLogStoreLogs`  | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}`  |
+//
+// The following procedure describes how to use this API:
 //
 // @param request - GetLogsV2Request
 //
@@ -34376,23 +36295,25 @@ func (client *Client) GetLogsV2WithOptions(project *string, logstore *string, re
 
 // Summary:
 //
-// Queries raw log data from a Logstore in a specified Project and returns raw logs within a specified time range. The results are compressed before transmission.
+// Queries raw log data from a specified Logstore in a project and returns raw logs within a specified time range. The results are compressed before transmission.
 //
 // Description:
 //
-// - Specify the compression method during the procedure. Different programming languages implement different compression algorithms. For details, see the Accept-Encoding request parameter.
+// - Specify the compression method during use. Different programming languages implement different compression algorithms. For details, see the Accept-Encoding request parameter.
 //
 // - For more information, see [GetLogs](https://help.aliyun.com/document_detail/2771313.html).
 //
 // ### Authentication
 //
-// The following table describes the authorization information required by this API. You can add the information to the Action element in a RAM access policy statement to grant a Resource Access Management (RAM) user or RAM role the permissions to invoke this API.
+// The following table describes the authorization information required by this API. You can add this information to the Action element in a RAM access policy statement to grant a Resource Access Management (RAM) user or RAM role the permission to invoke this API.
 //
 // | Action | Resource |
 //
 // | :------------ | :------------ |
 //
 // | `log:GetLogStoreLogs`  | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}`  |
+//
+// The following procedure describes how to use this API:
 //
 // @param request - GetLogsV2Request
 //
@@ -34827,21 +36748,23 @@ func (client *Client) GetMaxComputeExport(project *string, mcExportName *string)
 //
 // Description:
 //
-// A [Metricstore](https://help.aliyun.com/document_detail/171723.html) is used to store [metrics](https://help.aliyun.com/document_detail/174965.html). This operation queries only the configuration of a Metricstore. To query the metric data, see [Query and analyze data](https://help.aliyun.com/document_detail/174968.html) and [GetLogsV2](https://help.aliyun.com/document_detail/2771318.html).
+// A [Metricstore](https://help.aliyun.com/document_detail/171723.html) is used to store [time series data](https://help.aliyun.com/document_detail/174965.html).
 //
-// - You must specify an existing Metricstore.
+// This operation is used only to query the configurations of a Metricstore. To query time series data in a Metricstore, refer to [Query and analysis](https://help.aliyun.com/document_detail/174968.html) and [GetLogsV2](https://help.aliyun.com/document_detail/2771318.html).
 //
-// - The Host in the request syntax consists of a project name and a Simple Log Service endpoint. You must specify the project in the Host.
+// - This operation requires an existing Metricstore.
 //
-// - You must have an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - The Host in the request syntax consists of the project name and the Simple Log Service endpoint. Specify the project in the Host.
 //
-// An AccessKey pair for an Alibaba Cloud account has full access permissions to all API operations. This poses a high security threat. For security, we recommend that you use a RAM user for API access or routine O\\&M. Grant the RAM user the required permissions to operate Simple Log Service resources. For more information, see [Create a RAM user and grant permissions](https://help.aliyun.com/document_detail/47664.html).
+// - An AccessKey pair has been created and obtained. For more information, refer to [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// - Obtain the name and region of the project that contains the Metricstore. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html).
+//	The AccessKey pair of an Alibaba Cloud account has access permissions on all API operations and poses high security risks. We strongly recommend that you create and use a Resource Access Management (RAM) user to call API operations or perform routine O&M. The RAM user must have the permissions to manage Simple Log Service EPS resources. For more information, refer to [Create a RAM user and authorization](https://help.aliyun.com/document_detail/47664.html).
 //
-// - You can create a maximum of 200 Logstores or Metricstores in a project.
+// - You have obtained the name and region of the project to which the logs belong. For more information on how to query this information, refer to [Manage a project](https://help.aliyun.com/document_detail/48984.html). Operation logs are available for tracking changes.
 //
-// - Metrics are deleted after their retention period expires.
+// - A maximum of 200 Logstores or Metricstores can be created in a project.
+//
+// - After the data retention period that you specified expires, the data is deleted.
 //
 // @param headers - map
 //
@@ -34881,21 +36804,23 @@ func (client *Client) GetMetricStoreWithOptions(project *string, name *string, h
 //
 // Description:
 //
-// A [Metricstore](https://help.aliyun.com/document_detail/171723.html) is used to store [metrics](https://help.aliyun.com/document_detail/174965.html). This operation queries only the configuration of a Metricstore. To query the metric data, see [Query and analyze data](https://help.aliyun.com/document_detail/174968.html) and [GetLogsV2](https://help.aliyun.com/document_detail/2771318.html).
+// A [Metricstore](https://help.aliyun.com/document_detail/171723.html) is used to store [time series data](https://help.aliyun.com/document_detail/174965.html).
 //
-// - You must specify an existing Metricstore.
+// This operation is used only to query the configurations of a Metricstore. To query time series data in a Metricstore, refer to [Query and analysis](https://help.aliyun.com/document_detail/174968.html) and [GetLogsV2](https://help.aliyun.com/document_detail/2771318.html).
 //
-// - The Host in the request syntax consists of a project name and a Simple Log Service endpoint. You must specify the project in the Host.
+// - This operation requires an existing Metricstore.
 //
-// - You must have an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - The Host in the request syntax consists of the project name and the Simple Log Service endpoint. Specify the project in the Host.
 //
-// An AccessKey pair for an Alibaba Cloud account has full access permissions to all API operations. This poses a high security threat. For security, we recommend that you use a RAM user for API access or routine O\\&M. Grant the RAM user the required permissions to operate Simple Log Service resources. For more information, see [Create a RAM user and grant permissions](https://help.aliyun.com/document_detail/47664.html).
+// - An AccessKey pair has been created and obtained. For more information, refer to [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// - Obtain the name and region of the project that contains the Metricstore. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html).
+//	The AccessKey pair of an Alibaba Cloud account has access permissions on all API operations and poses high security risks. We strongly recommend that you create and use a Resource Access Management (RAM) user to call API operations or perform routine O&M. The RAM user must have the permissions to manage Simple Log Service EPS resources. For more information, refer to [Create a RAM user and authorization](https://help.aliyun.com/document_detail/47664.html).
 //
-// - You can create a maximum of 200 Logstores or Metricstores in a project.
+// - You have obtained the name and region of the project to which the logs belong. For more information on how to query this information, refer to [Manage a project](https://help.aliyun.com/document_detail/48984.html). Operation logs are available for tracking changes.
 //
-// - Metrics are deleted after their retention period expires.
+// - A maximum of 200 Logstores or Metricstores can be created in a project.
+//
+// - After the data retention period that you specified expires, the data is deleted.
 //
 // @return GetMetricStoreResponse
 func (client *Client) GetMetricStore(project *string, name *string) (_result *GetMetricStoreResponse, _err error) {
@@ -35451,6 +37376,70 @@ func (client *Client) GetProjectPolicy(project *string) (_result *GetProjectPoli
 
 // Summary:
 //
+// Retrieves a specified resource record.
+//
+// @param request - GetResourceRecordRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResourceRecordResponse
+func (client *Client) GetResourceRecordWithOptions(resourceName *string, recordId *string, request *GetResourceRecordRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IncludeSystemRecords)) {
+		query["includeSystemRecords"] = request.IncludeSystemRecords
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourceRecord"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/resources/" + tea.StringValue(resourceName) + "/records/" + tea.StringValue(recordId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetResourceRecordResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a specified resource record.
+//
+// @param request - GetResourceRecordRequest
+//
+// @return GetResourceRecordResponse
+func (client *Client) GetResourceRecord(resourceName *string, recordId *string, request *GetResourceRecordRequest) (_result *GetResourceRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetResourceRecordResponse{}
+	_body, _err := client.GetResourceRecordWithOptions(resourceName, recordId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves information about an S3 import task.
 //
 // @param headers - map
@@ -35605,7 +37594,7 @@ func (client *Client) GetSavedSearch(project *string, savedsearchName *string) (
 
 // Summary:
 //
-// Retrieves the specified Scheduled SQL job.
+// Retrieves a specified scheduled query job.
 //
 // @param headers - map
 //
@@ -35641,7 +37630,7 @@ func (client *Client) GetScheduledSQLWithOptions(project *string, scheduledSQLNa
 
 // Summary:
 //
-// Retrieves the specified Scheduled SQL job.
+// Retrieves a specified scheduled query job.
 //
 // @return GetScheduledSQLResponse
 func (client *Client) GetScheduledSQL(project *string, scheduledSQLName *string) (_result *GetScheduledSQLResponse, _err error) {
@@ -35773,7 +37762,7 @@ func (client *Client) GetSqlInstance(project *string) (_result *GetSqlInstanceRe
 
 // Summary:
 //
-// Queries the configurations of a dataset by using the name of the dataset.
+// Queries the configuration of a specified storeview by name.
 //
 // @param headers - map
 //
@@ -35809,7 +37798,7 @@ func (client *Client) GetStoreViewWithOptions(project *string, name *string, hea
 
 // Summary:
 //
-// Queries the configurations of a dataset by using the name of the dataset.
+// Queries the configuration of a specified storeview by name.
 //
 // @return GetStoreViewResponse
 func (client *Client) GetStoreView(project *string, name *string) (_result *GetStoreViewResponse, _err error) {
@@ -35826,7 +37815,7 @@ func (client *Client) GetStoreView(project *string, name *string) (_result *GetS
 
 // Summary:
 //
-// Queries the indexes of a dataset by using the name of the dataset. Only datasets of the logstore type are supported.
+// Queries the index configuration of a storeview by name. Only storeviews of the Logstore type are supported.
 //
 // @param headers - map
 //
@@ -35862,7 +37851,7 @@ func (client *Client) GetStoreViewIndexWithOptions(project *string, name *string
 
 // Summary:
 //
-// Queries the indexes of a dataset by using the name of the dataset. Only datasets of the logstore type are supported.
+// Queries the index configuration of a storeview by name. Only storeviews of the Logstore type are supported.
 //
 // @return GetStoreViewIndexResponse
 func (client *Client) GetStoreViewIndex(project *string, name *string) (_result *GetStoreViewIndexResponse, _err error) {
@@ -35879,11 +37868,7 @@ func (client *Client) GetStoreViewIndex(project *string, name *string) (_result 
 
 // Summary:
 //
-// This operation lists process-level configurations.
-//
-// Description:
-//
-// Retrieves a list of process-level configurations.
+// Lists process-level configurations.
 //
 // @param request - ListAgentInstanceConfigsRequest
 //
@@ -35936,11 +37921,7 @@ func (client *Client) ListAgentInstanceConfigsWithOptions(request *ListAgentInst
 
 // Summary:
 //
-// This operation lists process-level configurations.
-//
-// Description:
-//
-// Retrieves a list of process-level configurations.
+// Lists process-level configurations.
 //
 // @param request - ListAgentInstanceConfigsRequest
 //
@@ -36970,7 +38951,7 @@ func (client *Client) ListDomains(project *string, request *ListDomainsRequest) 
 
 // Summary:
 //
-// Lists the log download jobs in a specified project.
+// Lists log download tasks in a specified project.
 //
 // @param request - ListDownloadJobsRequest
 //
@@ -37026,7 +39007,7 @@ func (client *Client) ListDownloadJobsWithOptions(project *string, request *List
 
 // Summary:
 //
-// Lists the log download jobs in a specified project.
+// Lists log download tasks in a specified project.
 //
 // @param request - ListDownloadJobsRequest
 //
@@ -37340,6 +39321,121 @@ func (client *Client) ListIngestProcessors(project *string, request *ListIngestP
 	headers := make(map[string]*string)
 	_result = &ListIngestProcessorsResponse{}
 	_body, _err := client.ListIngestProcessorsWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of job instances.
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该接口支持通过`projectName`和`jobName`路径参数来定位具体的项目与作业。
+//
+// - 可选查询参数包括：`callerOwner`, `state`, `offset`, `size`, `start`, `end`，用于进一步过滤或分页结果集。
+//
+// - `offset` 和 `size` 参数用于控制返回结果的数量及起始位置，实现分页功能。
+//
+// - `start` 和 `end` 参数允许用户按时间范围筛选实例记录。
+//
+// - 调用者可以通过设置`state`参数来过滤特定状态下的作业实例。
+//
+// @param request - ListJobInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListJobInstancesResponse
+func (client *Client) ListJobInstancesWithOptions(project *string, jobName *string, request *ListJobInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListJobInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CallerOwner)) {
+		query["callerOwner"] = request.CallerOwner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.End)) {
+		query["end"] = request.End
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Start)) {
+		query["start"] = request.Start
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["state"] = request.State
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListJobInstances"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/jobs/" + tea.StringValue(jobName) + "/jobinstances"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListJobInstancesResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of job instances.
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该接口支持通过`projectName`和`jobName`路径参数来定位具体的项目与作业。
+//
+// - 可选查询参数包括：`callerOwner`, `state`, `offset`, `size`, `start`, `end`，用于进一步过滤或分页结果集。
+//
+// - `offset` 和 `size` 参数用于控制返回结果的数量及起始位置，实现分页功能。
+//
+// - `start` 和 `end` 参数允许用户按时间范围筛选实例记录。
+//
+// - 调用者可以通过设置`state`参数来过滤特定状态下的作业实例。
+//
+// @param request - ListJobInstancesRequest
+//
+// @return ListJobInstancesResponse
+func (client *Client) ListJobInstances(project *string, jobName *string, request *ListJobInstancesRequest) (_result *ListJobInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListJobInstancesResponse{}
+	_body, _err := client.ListJobInstancesWithOptions(project, jobName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37721,81 +39817,6 @@ func (client *Client) ListMachines(project *string, machineGroup *string, reques
 
 // Summary:
 //
-// Lists the materialized views in a project.
-//
-// @param request - ListMaterializedViewRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListMaterializedViewResponse
-func (client *Client) ListMaterializedViewWithOptions(project *string, request *ListMaterializedViewRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMaterializedViewResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		query["name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Offset)) {
-		query["offset"] = request.Offset
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Size)) {
-		query["size"] = request.Size
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListMaterializedView"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/materializedviews"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListMaterializedViewResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Lists the materialized views in a project.
-//
-// @param request - ListMaterializedViewRequest
-//
-// @return ListMaterializedViewResponse
-func (client *Client) ListMaterializedView(project *string, request *ListMaterializedViewRequest) (_result *ListMaterializedViewResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListMaterializedViewResponse{}
-	_body, _err := client.ListMaterializedViewWithOptions(project, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Lists materialized views.
 //
 // @param request - ListMaterializedViewsRequest
@@ -38056,6 +40077,110 @@ func (client *Client) ListMetricStores(project *string, request *ListMetricStore
 	headers := make(map[string]*string)
 	_result = &ListMetricStoresResponse{}
 	_body, _err := client.ListMetricStoresWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists resource records using nextToken.
+//
+// @param request - ListNextResourceRecordRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNextResourceRecordResponse
+func (client *Client) ListNextResourceRecordWithOptions(resourceName *string, request *ListNextResourceRecordRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListNextResourceRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ids)) {
+		query["ids"] = request.Ids
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeSystemRecords)) {
+		query["includeSystemRecords"] = request.IncludeSystemRecords
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JsonFilterAcc)) {
+		query["jsonFilterAcc"] = request.JsonFilterAcc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JsonPath)) {
+		query["jsonPath"] = request.JsonPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JsonPathValue)) {
+		query["jsonPathValue"] = request.JsonPathValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reverse)) {
+		query["reverse"] = request.Reverse
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Search)) {
+		query["search"] = request.Search
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sjson)) {
+		query["sjson"] = request.Sjson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListNextResourceRecord"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/resources/" + tea.StringValue(resourceName) + "/next_records"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListNextResourceRecordResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists resource records using nextToken.
+//
+// @param request - ListNextResourceRecordRequest
+//
+// @return ListNextResourceRecordResponse
+func (client *Client) ListNextResourceRecord(resourceName *string, request *ListNextResourceRecordRequest) (_result *ListNextResourceRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListNextResourceRecordResponse{}
+	_body, _err := client.ListNextResourceRecordWithOptions(resourceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38544,7 +40669,7 @@ func (client *Client) ListSavedSearch(project *string, request *ListSavedSearchR
 
 // Summary:
 //
-// Lists the Scheduled SQLs in a specified project.
+// Lists the scheduled query jobs in a specified project.
 //
 // @param request - ListScheduledSQLsRequest
 //
@@ -38600,7 +40725,7 @@ func (client *Client) ListScheduledSQLsWithOptions(project *string, request *Lis
 
 // Summary:
 //
-// Lists the Scheduled SQLs in a specified project.
+// Lists the scheduled query jobs in a specified project.
 //
 // @param request - ListScheduledSQLsRequest
 //
@@ -38672,7 +40797,7 @@ func (client *Client) ListShards(project *string, logstore *string) (_result *Li
 
 // Summary:
 //
-// Queries datasets in a project.
+// Queries the list of storeviews in a project.
 //
 // @param request - ListStoreViewsRequest
 //
@@ -38732,7 +40857,7 @@ func (client *Client) ListStoreViewsWithOptions(project *string, request *ListSt
 
 // Summary:
 //
-// Queries datasets in a project.
+// Queries the list of storeviews in a project.
 //
 // @param request - ListStoreViewsRequest
 //
@@ -40343,7 +42468,7 @@ func (client *Client) StartAzureBlobIngestion(project *string, azureBlobIngestio
 
 // Summary:
 //
-// Starts a data transformation task.
+// Starts a specified data transformation job.
 //
 // @param headers - map
 //
@@ -40379,7 +42504,7 @@ func (client *Client) StartETLWithOptions(project *string, etlName *string, head
 
 // Summary:
 //
-// Starts a data transformation task.
+// Starts a specified data transformation job.
 //
 // @return StartETLResponse
 func (client *Client) StartETL(project *string, etlName *string) (_result *StartETLResponse, _err error) {
@@ -40681,7 +42806,7 @@ func (client *Client) StartOSSHDFSExport(project *string, ossExportName *string)
 
 // Summary:
 //
-// Starts a specified OSS import task.
+// Starts a specified OSS import job.
 //
 // @param headers - map
 //
@@ -40717,7 +42842,7 @@ func (client *Client) StartOSSIngestionWithOptions(project *string, ossIngestion
 
 // Summary:
 //
-// Starts a specified OSS import task.
+// Starts a specified OSS import job.
 //
 // @return StartOSSIngestionResponse
 func (client *Client) StartOSSIngestion(project *string, ossIngestionName *string) (_result *StartOSSIngestionResponse, _err error) {
@@ -41125,7 +43250,7 @@ func (client *Client) StopOSSHDFSExport(project *string, ossExportName *string) 
 
 // Summary:
 //
-// Stops the specified OSS import task.
+// Stops a specified OSS import job.
 //
 // @param headers - map
 //
@@ -41161,7 +43286,7 @@ func (client *Client) StopOSSIngestionWithOptions(project *string, ossIngestionN
 
 // Summary:
 //
-// Stops the specified OSS import task.
+// Stops a specified OSS import job.
 //
 // @return StopOSSIngestionResponse
 func (client *Client) StopOSSIngestion(project *string, ossIngestionName *string) (_result *StopOSSIngestionResponse, _err error) {
@@ -42169,7 +44294,7 @@ func (client *Client) UpdateDashboard(project *string, dashboardName *string, re
 
 // Summary:
 //
-// Updates the configuration of a specified data transformation task and restarts it.
+// Updates the configuration of a specified data transformation job and restarts it.
 //
 // @param request - UpdateETLRequest
 //
@@ -42225,7 +44350,7 @@ func (client *Client) UpdateETLWithOptions(project *string, etlName *string, req
 
 // Summary:
 //
-// Updates the configuration of a specified data transformation task and restarts it.
+// Updates the configuration of a specified data transformation job and restarts it.
 //
 // @param request - UpdateETLRequest
 //
@@ -42472,31 +44597,33 @@ func (client *Client) UpdateIndex(project *string, logstore *string, request *Up
 
 // Summary:
 //
-// Updates the properties of a Logstore.
+// Updates the attributes of a Logstore.
 //
 // Description:
 //
-// ### Usage notes
+// ### Operation description
 //
-// - Before you update a Logstore, call the GetLogStore operation to retrieve the configuration of the Logstore. Then, modify the configuration and pass it to the UpdateLogStore operation.
+// - Before updating a Logstore, call the GetLogStore operation to obtain the current Logstore configuration. Modify the configuration as needed and pass it as parameters to the UpdateLogStore operation.
 //
-// - The Host in the request syntax consists of a project name and a Simple Log Service (SLS) endpoint. You must specify the project in the Host.
+// - The Host in the request syntax consists of the project name and the Simple Log Service endpoint. Specify the project in the Host.
 //
-// - Obtain an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair has been created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// An AccessKey pair for an Alibaba Cloud account has permissions on all API operations. This poses a high security risk. We recommend that you create and use a Resource Access Management (RAM) user to make API calls or perform routine O\\&M. The RAM user must be granted the required permissions to operate SLS resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
+//	An Alibaba Cloud account AccessKey pair has access permissions on all API operations. This poses a high security risk. We recommend that you create and use a Resource Access Management (RAM) user to call API operations or perform routine O&M. The RAM user must have the required permissions on Simple Log Service EPS resources. For more information, see [Create a RAM user and authorization](https://help.aliyun.com/document_detail/47664.html).
 //
-// - Obtain the project name, the Logstore name, and the region where the project resides. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html) and [Manage Logstores](https://help.aliyun.com/document_detail/48990.html).
+// - You have determined the project name, region, and Logstore name for the logs you want to query. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-// ### Authorization
+// Operation logs are generated when you call this operation.
 //
-// The following table describes the authorization required for this operation. To grant a RAM user or RAM role permission to call this operation, add the required action to the Action element of a RAM policy.
+// ### Authentication resources
 //
-// | Action               | Resource description in an authorization policy                                    |
+// The following table lists the authorization information for this API operation. You can add the information to the Action element in a RAM access policy statement to grant a Resource Access Management (RAM) user or RAM role the permissions to invoke this API operation.
 //
-// | :------------------- | :--------------------------------------------------------------------------------- |
+// | Action | Resource |
 //
-// | `log:UpdateLogStore` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}` |
+// | :------------ | :------------ |
+//
+// | `log:UpdateLogStore`  | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}`  |
 //
 // @param request - UpdateLogStoreRequest
 //
@@ -42592,31 +44719,33 @@ func (client *Client) UpdateLogStoreWithOptions(project *string, logstore *strin
 
 // Summary:
 //
-// Updates the properties of a Logstore.
+// Updates the attributes of a Logstore.
 //
 // Description:
 //
-// ### Usage notes
+// ### Operation description
 //
-// - Before you update a Logstore, call the GetLogStore operation to retrieve the configuration of the Logstore. Then, modify the configuration and pass it to the UpdateLogStore operation.
+// - Before updating a Logstore, call the GetLogStore operation to obtain the current Logstore configuration. Modify the configuration as needed and pass it as parameters to the UpdateLogStore operation.
 //
-// - The Host in the request syntax consists of a project name and a Simple Log Service (SLS) endpoint. You must specify the project in the Host.
+// - The Host in the request syntax consists of the project name and the Simple Log Service endpoint. Specify the project in the Host.
 //
-// - Obtain an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair has been created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// An AccessKey pair for an Alibaba Cloud account has permissions on all API operations. This poses a high security risk. We recommend that you create and use a Resource Access Management (RAM) user to make API calls or perform routine O\\&M. The RAM user must be granted the required permissions to operate SLS resources. For more information, see [Create and authorize a RAM user](https://help.aliyun.com/document_detail/47664.html).
+//	An Alibaba Cloud account AccessKey pair has access permissions on all API operations. This poses a high security risk. We recommend that you create and use a Resource Access Management (RAM) user to call API operations or perform routine O&M. The RAM user must have the required permissions on Simple Log Service EPS resources. For more information, see [Create a RAM user and authorization](https://help.aliyun.com/document_detail/47664.html).
 //
-// - Obtain the project name, the Logstore name, and the region where the project resides. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html) and [Manage Logstores](https://help.aliyun.com/document_detail/48990.html).
+// - You have determined the project name, region, and Logstore name for the logs you want to query. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
-// ### Authorization
+// Operation logs are generated when you call this operation.
 //
-// The following table describes the authorization required for this operation. To grant a RAM user or RAM role permission to call this operation, add the required action to the Action element of a RAM policy.
+// ### Authentication resources
 //
-// | Action               | Resource description in an authorization policy                                    |
+// The following table lists the authorization information for this API operation. You can add the information to the Action element in a RAM access policy statement to grant a Resource Access Management (RAM) user or RAM role the permissions to invoke this API operation.
 //
-// | :------------------- | :--------------------------------------------------------------------------------- |
+// | Action | Resource |
 //
-// | `log:UpdateLogStore` | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}` |
+// | :------------ | :------------ |
+//
+// | `log:UpdateLogStore`  | `acs:log:{#regionId}:{#accountId}:project/{#ProjectName}/logstore/{#LogstoreName}`  |
 //
 // @param request - UpdateLogStoreRequest
 //
@@ -43629,17 +45758,17 @@ func (client *Client) UpdateMetricStore(project *string, name *string, request *
 //
 // Description:
 //
-// A Metricstore supports two billing modes: [Pay-by-feature](https://help.aliyun.com/document_detail/48220.html) and [Pay-by-ingested-data](https://help.aliyun.com/document_detail/2365756.html).
+// Metricstore supports two billing modes: [pay-by-feature](https://help.aliyun.com/document_detail/48220.html) and [pay-by-ingested-data](https://help.aliyun.com/document_detail/2365756.html).
 //
-// - Specify an existing Metricstore.
+// - This operation requires a Metricstore that already exists.
 //
-// - The Host in the request syntax consists of a project name and a Simple Log Service endpoint. You must specify the project in the Host.
+// - The Host in the request syntax consists of the project name and the Simple Log Service endpoint. Specify the project in the Host.
 //
-// - Obtain an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair has been created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// An AccessKey pair that belongs to an Alibaba Cloud account has permissions for all API operations, which poses a high security threat. We recommend that you use a RAM user to call API operations or perform routine operations and maintenance (O\\&M). The RAM user must be granted the required permissions to manage Simple Log Service resources. For more information, see [Create a RAM user and grant permissions](https://help.aliyun.com/document_detail/47664.html).
+//	An Alibaba Cloud account AccessKey pair has access permissions on all API operations, which poses high security risks. Create and use a Resource Access Management (RAM) user for API access or routine O&M. The RAM user must have permissions to perform operations on Simple Log Service resources. For more information, see [Create a RAM user and grant authorization](https://help.aliyun.com/document_detail/47664.html).
 //
-// - Obtain the name and region of the project. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html).
+// - You have determined the name and region of the project to which the logs belong. To query this information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
 // @param request - UpdateMetricStoreMeteringModeRequest
 //
@@ -43691,17 +45820,17 @@ func (client *Client) UpdateMetricStoreMeteringModeWithOptions(project *string, 
 //
 // Description:
 //
-// A Metricstore supports two billing modes: [Pay-by-feature](https://help.aliyun.com/document_detail/48220.html) and [Pay-by-ingested-data](https://help.aliyun.com/document_detail/2365756.html).
+// Metricstore supports two billing modes: [pay-by-feature](https://help.aliyun.com/document_detail/48220.html) and [pay-by-ingested-data](https://help.aliyun.com/document_detail/2365756.html).
 //
-// - Specify an existing Metricstore.
+// - This operation requires a Metricstore that already exists.
 //
-// - The Host in the request syntax consists of a project name and a Simple Log Service endpoint. You must specify the project in the Host.
+// - The Host in the request syntax consists of the project name and the Simple Log Service endpoint. Specify the project in the Host.
 //
-// - Obtain an AccessKey pair. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+// - An AccessKey pair has been created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
 //
-// An AccessKey pair that belongs to an Alibaba Cloud account has permissions for all API operations, which poses a high security threat. We recommend that you use a RAM user to call API operations or perform routine operations and maintenance (O\\&M). The RAM user must be granted the required permissions to manage Simple Log Service resources. For more information, see [Create a RAM user and grant permissions](https://help.aliyun.com/document_detail/47664.html).
+//	An Alibaba Cloud account AccessKey pair has access permissions on all API operations, which poses high security risks. Create and use a Resource Access Management (RAM) user for API access or routine O&M. The RAM user must have permissions to perform operations on Simple Log Service resources. For more information, see [Create a RAM user and grant authorization](https://help.aliyun.com/document_detail/47664.html).
 //
-// - Obtain the name and region of the project. For more information, see [Manage projects](https://help.aliyun.com/document_detail/48984.html).
+// - You have determined the name and region of the project to which the logs belong. To query this information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html).
 //
 // @param request - UpdateMetricStoreMeteringModeRequest
 //
@@ -44258,7 +46387,7 @@ func (client *Client) UpdateSavedSearch(project *string, savedsearchName *string
 
 // Summary:
 //
-// Updates the specified scheduled SQL task.
+// Updates a specified scheduled query.
 //
 // @param request - UpdateScheduledSQLRequest
 //
@@ -44318,7 +46447,7 @@ func (client *Client) UpdateScheduledSQLWithOptions(project *string, scheduledSQ
 
 // Summary:
 //
-// Updates the specified scheduled SQL task.
+// Updates a specified scheduled query.
 //
 // @param request - UpdateScheduledSQLRequest
 //
@@ -44416,7 +46545,7 @@ func (client *Client) UpdateSqlInstance(project *string, request *UpdateSqlInsta
 
 // Summary:
 //
-// Updates the configurations of a dataset.
+// Updates the configuration of a specified storeview.
 //
 // @param request - UpdateStoreViewRequest
 //
@@ -44468,7 +46597,7 @@ func (client *Client) UpdateStoreViewWithOptions(project *string, name *string, 
 
 // Summary:
 //
-// Updates the configurations of a dataset.
+// Updates the configuration of a specified storeview.
 //
 // @param request - UpdateStoreViewRequest
 //
