@@ -32,9 +32,9 @@ type iGetDashboardRequest interface {
 type GetDashboardRequest struct {
 	// The language. Valid values:
 	//
-	// - zh: Chinese.
+	// - zh: Chinese
 	//
-	// - en: English.
+	// - en: English
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type GetDashboardRequest struct {
 	Filter *GetDashboardRequestFilter `json:"filter,omitempty" xml:"filter,omitempty" type:"Struct"`
 	// The dashboard name. Valid values:
 	//
-	// - LOG: access log.
+	// - LOG: access log
 	//
-	// - PLUGIN: plugin log.
+	// - PLUGIN: plugin log
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type GetDashboardRequest struct {
 	RouteId *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
 	// The dashboard source. Valid values:
 	//
-	// - SLS: log dashboard.
+	// - SLS: log dashboard
 	//
 	// example:
 	//

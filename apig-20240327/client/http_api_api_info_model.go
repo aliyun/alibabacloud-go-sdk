@@ -60,7 +60,7 @@ type HttpApiApiInfo struct {
 	//
 	// /v1
 	BasePath *string `json:"basePath,omitempty" xml:"basePath,omitempty"`
-	// The API operation publish status.
+	// The API operation deployment status.
 	DeployCntMap map[string]*HttpApiApiInfoDeployCntMapValue `json:"deployCntMap,omitempty" xml:"deployCntMap,omitempty"`
 	// The list of API deployment configurations.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`

@@ -28,17 +28,17 @@ type iUpdateGatewayQuotaRuleRequest interface {
 }
 
 type UpdateGatewayQuotaRuleRequest struct {
-	// The list of subject (consumer) IDs to bind.
+	// The list of consumer principal IDs to bind.
 	//
 	// example:
 	//
 	// cs-001,cs-002
 	AddIds []*string `json:"addIds,omitempty" xml:"addIds,omitempty" type:"Repeated"`
-	// The conflict snapshot hash used to prevent concurrent dirty overwrites during confirmation. Obtain this value from the response of a prior dryRun=true call.
+	// The conflict snapshot hash, used to prevent concurrent dirty overwrites when confirming an overwrite. Obtain this value from the response of a prior dryRun=true call.
 	//
-	// This parameter is not required in the following cases: no conflict exists, the request is a dry run (dryRun=true), or overwrite is set to false.
+	// This parameter is not required in the following cases: no conflicts exist, the request is a dry run (dryRun=true), or overwrite is set to false.
 	//
-	// When dryRun=false and overwrite=true, if this parameter is missing or the value has expired and no longer matches, the backend returns accepted=false with a new conflict preview. You must perform a dry run again to confirm the new conflict.
+	// When dryRun is set to false and overwrite is set to true, if this parameter is missing or the value has expired and no longer matches, the backend returns accepted=false with a new conflict preview. Perform a dry run again to confirm the new conflicts.
 	//
 	// example:
 	//
@@ -46,19 +46,19 @@ type UpdateGatewayQuotaRuleRequest struct {
 	ConflictHash *string `json:"conflictHash,omitempty" xml:"conflictHash,omitempty"`
 	// Deprecated
 	//
-	// The list of consumer group IDs. This parameter is not supported currently.
+	// **[Deprecated]*	- The list of consumer group IDs.
 	//
 	// example:
 	//
 	// group1,group2
 	ConsumerGroupIds []*string `json:"consumerGroupIds,omitempty" xml:"consumerGroupIds,omitempty" type:"Repeated"`
-	// Specifies whether to perform a dry run only without persisting or applying the configuration. A dry run checks whether conflicting rules exist on the bound consumers. The same consumer cannot have two quota rules with the same calendar period. For example, a consumer that already has a daily calendar quota cannot be assigned another daily calendar quota rule.
+	// Specifies whether to perform a dry run only without persisting or applying the configuration. A dry run checks whether conflicting rules exist on the bound consumer principals. The same consumer principal cannot have two calendar-period quotas with the same period. For example, a consumer principal that already has a daily calendar quota cannot be assigned another daily calendar quota rule.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	// Specifies whether to allow overwriting on conflict. If overwriting is allowed, conflicting subjects (consumers) are unbound from the old rule and bound to the new rule.
+	// Specifies whether to allow overwriting when conflicts exist. If overwriting is allowed, conflicting principals (consumers or consumer groups) are unbound from the old rule and bound to the new rule.
 	Overwrite *bool `json:"overwrite,omitempty" xml:"overwrite,omitempty"`
 	// The updated total available quota.
 	//
@@ -66,7 +66,7 @@ type UpdateGatewayQuotaRuleRequest struct {
 	//
 	// 1000
 	QuotaLimit *int64 `json:"quotaLimit,omitempty" xml:"quotaLimit,omitempty"`
-	// The list of subject (consumer) IDs to unbind.
+	// The list of consumer principal IDs to unbind.
 	//
 	// example:
 	//

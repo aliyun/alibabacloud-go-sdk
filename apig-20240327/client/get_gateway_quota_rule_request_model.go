@@ -22,7 +22,7 @@ type iGetGatewayQuotaRuleRequest interface {
 type GetGatewayQuotaRuleRequest struct {
 	// Deprecated
 	//
-	// The page number of the consumer list.
+	// The page number.
 	//
 	// example:
 	//
@@ -30,15 +30,15 @@ type GetGatewayQuotaRuleRequest struct {
 	ConsumerPageNumber *string `json:"consumerPageNumber,omitempty" xml:"consumerPageNumber,omitempty"`
 	// Deprecated
 	//
-	// The page size of the consumer list.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	ConsumerPageSize *string `json:"consumerPageSize,omitempty" xml:"consumerPageSize,omitempty"`
-	// Specifies whether to return the consumer list.
+	// Specifies whether to return the API consumer list.
 	WithConsumers *bool `json:"withConsumers,omitempty" xml:"withConsumers,omitempty"`
-	// Specifies whether to return the general subject list. This parameter applies to both consumer and consumer group rules.
+	// Specifies whether to return the general subject list. This parameter applies to both API consumer and API consumer group rules.
 	WithSubjects *bool `json:"withSubjects,omitempty" xml:"withSubjects,omitempty"`
 }
 

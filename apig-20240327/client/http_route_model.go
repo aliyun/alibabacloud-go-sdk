@@ -40,7 +40,7 @@ type iHttpRoute interface {
 type HttpRoute struct {
 	// The backend service.
 	Backend *Backend `json:"backend,omitempty" xml:"backend,omitempty"`
-	// Indicates whether the route is a built-in system route.
+	// Indicates whether the route is a system built-in route.
 	//
 	// example:
 	//
@@ -409,6 +409,8 @@ func (s *HttpRouteEnvironmentInfo) Validate() error {
 }
 
 type HttpRouteEnvironmentInfoGatewayInfo struct {
+	// The gateway instance edition. Valid values: Professional, Serverless, MultiTenantServerless, and Unknown.
+	//
 	// example:
 	//
 	// MultiTenantServerless

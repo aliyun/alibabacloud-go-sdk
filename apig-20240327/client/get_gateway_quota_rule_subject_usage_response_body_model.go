@@ -146,7 +146,7 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyData struct {
 	//
 	// 1000
 	TotalQuota *int64 `json:"totalQuota,omitempty" xml:"totalQuota,omitempty"`
-	// The total used quota of the subject.
+	// The total used amount of the subject.
 	//
 	// example:
 	//

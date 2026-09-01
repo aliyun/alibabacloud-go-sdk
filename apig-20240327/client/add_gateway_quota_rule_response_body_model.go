@@ -32,13 +32,13 @@ type AddGatewayQuotaRuleResponseBody struct {
 	//
 	// {\\"key\\": \\"value\\"}
 	Data *AddGatewayQuotaRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The message content.
+	// The response message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The unique identifier of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *AddGatewayQuotaRuleResponseBody) Validate() error {
 }
 
 type AddGatewayQuotaRuleResponseBodyData struct {
-	// Indicates whether the write request is accepted by the system. A value of false typically indicates a retryable scenario such as an unconfirmed conflict overwrite.
+	// Indicates whether the write request is accepted by the system. A value of false typically indicates a retryable scenario, such as an unconfirmed conflict overwrite.
 	//
 	// example:
 	//
@@ -176,13 +176,13 @@ func (s *AddGatewayQuotaRuleResponseBodyData) Validate() error {
 }
 
 type AddGatewayQuotaRuleResponseBodyDataConflictPreview struct {
-	// The conflict hash.
+	// The conflict snapshot hash.
 	//
 	// example:
 	//
 	// f8f44dc6cf369a017d56b7197eb4fb5ac4bbb6b09a92b9b41999541fxxxxxxxx
 	ConflictHash *string `json:"conflictHash,omitempty" xml:"conflictHash,omitempty"`
-	// The list of conflicting subjects (consumers).
+	// The list of conflicting subjects (consumers or consumer groups).
 	Items []*AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The total number of conflicts.
 	//
@@ -241,25 +241,35 @@ func (s *AddGatewayQuotaRuleResponseBodyDataConflictPreview) Validate() error {
 }
 
 type AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems struct {
-	// The period type of the existing conflicting rule on the consumer. A value of day, week, or month indicates the conflicting rule has a daily, weekly, or monthly period respectively.
+	// The period type of the existing conflicting rule on the consumer subject. Valid values:
+	//
+	// - day: The existing conflicting rule has a daily period.
+	//
+	// - week: The existing conflicting rule has a weekly period.
+	//
+	// - month: The existing conflicting rule has a monthly period.
 	//
 	// example:
 	//
 	// week
 	ConflictPeriodType *string `json:"conflictPeriodType,omitempty" xml:"conflictPeriodType,omitempty"`
-	// The type of the existing conflicting rule on the consumer. A value of calendar indicates the conflicting rule uses a calendar period. A value of epoch indicates the conflicting rule uses an epoch period.
+	// The type of the existing conflicting rule on the consumer subject. Valid values:
+	//
+	// - calendar: The existing conflicting rule uses a calendar period.
+	//
+	// - epoch: The existing conflicting rule uses a custom period.
 	//
 	// example:
 	//
 	// calendar
 	ConflictType *string `json:"conflictType,omitempty" xml:"conflictType,omitempty"`
-	// The consumer ID.
+	// The conflicting consumer ID. You can use subjectId instead.
 	//
 	// example:
 	//
 	// cs-xxxxxx
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	// The consumer name.
+	// The conflicting consumer name. You can use subjectName instead.
 	//
 	// example:
 	//

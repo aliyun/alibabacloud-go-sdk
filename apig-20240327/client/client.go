@@ -89,23 +89,23 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Description:
 //
-// Creates a consumer-based quota rule for an AI gateway. This operation applies only to AI gateways running version 2.1.19 or later.
+// Creates a consumer-based or consumer group-based quota rule for an AI gateway. This operation takes effect only on AI gateways of version 2.1.21 or later.
 //
 // >
 //
-// >  Recommended call logic:
+// >  Recommended call sequence:
 //
-// > - 1. Perform a dry run to check for rule conflicts.
+// > - Step 1: Perform a dry run to check for rule conflicts.
 //
-// > - - Set dryRun=true.
+// > - - Set dryRun to true.
 //
-// > - - The response contains a conflict preview with conflictHash.
+// > - - The response returns a conflict preview that contains the conflictHash value.
 //
-// > - 2. Submit the request after confirmation.
+// > - Step 2: Submit the request after confirmation.
 //
-// > - - No conflicts: dryRun=false, overwrite=false.
+// > - - No conflicts: Set dryRun to false and overwrite to false.
 //
-// > - - Conflicts exist and you confirm overwrite: dryRun=false, overwrite=true, conflictHash=<value returned in the previous step>
+// > - - Conflicts exist and you confirm the overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
 //
 // @param request - AddGatewayQuotaRuleRequest
 //
@@ -204,23 +204,23 @@ func (client *Client) AddGatewayQuotaRuleWithOptions(gatewayId *string, request 
 //
 // Description:
 //
-// Creates a consumer-based quota rule for an AI gateway. This operation applies only to AI gateways running version 2.1.19 or later.
+// Creates a consumer-based or consumer group-based quota rule for an AI gateway. This operation takes effect only on AI gateways of version 2.1.21 or later.
 //
 // >
 //
-// >  Recommended call logic:
+// >  Recommended call sequence:
 //
-// > - 1. Perform a dry run to check for rule conflicts.
+// > - Step 1: Perform a dry run to check for rule conflicts.
 //
-// > - - Set dryRun=true.
+// > - - Set dryRun to true.
 //
-// > - - The response contains a conflict preview with conflictHash.
+// > - - The response returns a conflict preview that contains the conflictHash value.
 //
-// > - 2. Submit the request after confirmation.
+// > - Step 2: Submit the request after confirmation.
 //
-// > - - No conflicts: dryRun=false, overwrite=false.
+// > - - No conflicts: Set dryRun to false and overwrite to false.
 //
-// > - - Conflicts exist and you confirm overwrite: dryRun=false, overwrite=true, conflictHash=<value returned in the previous step>
+// > - - Conflicts exist and you confirm the overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
 //
 // @param request - AddGatewayQuotaRuleRequest
 //
@@ -3643,7 +3643,7 @@ func (client *Client) DeleteGateway(gatewayId *string) (_result *DeleteGatewayRe
 //
 // Description:
 //
-// Deletes a consumer-based quota rule from an AI gateway. This operation takes effect only for AI gateways of version 2.1.19 or later.
+// This operation deletes a consumer-based or consumer group-based quota rule from an AI gateway. This operation takes effect only on AI gateways of version 2.1.19 or later.
 //
 // @param request - DeleteGatewayQuotaRuleRequest
 //
@@ -3688,7 +3688,7 @@ func (client *Client) DeleteGatewayQuotaRuleWithOptions(gatewayId *string, ruleI
 //
 // Description:
 //
-// Deletes a consumer-based quota rule from an AI gateway. This operation takes effect only for AI gateways of version 2.1.19 or later.
+// This operation deletes a consumer-based or consumer group-based quota rule from an AI gateway. This operation takes effect only on AI gateways of version 2.1.19 or later.
 //
 // @param request - DeleteGatewayQuotaRuleRequest
 //
@@ -5560,11 +5560,11 @@ func (client *Client) GetGatewayElasticPolicy(gatewayId *string, request *GetGat
 
 // Summary:
 //
-// Queries the details of a gateway quota rate limiting rule.
+// Queries the details of a gateway quota throttling rule.
 //
 // Description:
 //
-// Queries the details of a consumer quota rule on an AI gateway.
+// Queries a specific API consumer quota rule on an AI gateway.
 //
 // @param request - GetGatewayQuotaRuleRequest
 //
@@ -5623,11 +5623,11 @@ func (client *Client) GetGatewayQuotaRuleWithOptions(gatewayId *string, ruleId *
 
 // Summary:
 //
-// Queries the details of a gateway quota rate limiting rule.
+// Queries the details of a gateway quota throttling rule.
 //
 // Description:
 //
-// Queries the details of a consumer quota rule on an AI gateway.
+// Queries a specific API consumer quota rule on an AI gateway.
 //
 // @param request - GetGatewayQuotaRuleRequest
 //
@@ -5650,7 +5650,7 @@ func (client *Client) GetGatewayQuotaRule(gatewayId *string, ruleId *string, req
 //
 // Description:
 //
-// Retrieves the usage details of a specific consumer under a quota rule. This operation applies only to AI gateways with a version later than 2.1.19.
+// Queries the usage details of a specific subject under a quota rule. This operation applies only to AI gateways with a version later than 2.1.19.
 //
 // @param request - GetGatewayQuotaRuleSubjectUsageRequest
 //
@@ -5709,7 +5709,7 @@ func (client *Client) GetGatewayQuotaRuleSubjectUsageWithOptions(gatewayId *stri
 //
 // Description:
 //
-// Retrieves the usage details of a specific consumer under a quota rule. This operation applies only to AI gateways with a version later than 2.1.19.
+// Queries the usage details of a specific subject under a quota rule. This operation applies only to AI gateways with a version later than 2.1.19.
 //
 // @param request - GetGatewayQuotaRuleSubjectUsageRequest
 //
@@ -7441,6 +7441,92 @@ func (client *Client) ListConsumerGroupConsumers(consumerGroupId *string, reques
 
 // Summary:
 //
+// 查询消费者组配额限流规则列表
+//
+// Description:
+//
+// 查询指定消费者组直接绑定的配额规则，不展开组内消费者个人绑定的规则；无直接绑定关系时返回空列表。
+//
+// @param request - ListConsumerGroupQuotaRulesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConsumerGroupQuotaRulesResponse
+func (client *Client) ListConsumerGroupQuotaRulesWithOptions(consumerGroupId *string, request *ListConsumerGroupQuotaRulesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListConsumerGroupQuotaRulesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListConsumerGroupQuotaRules"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/consumer-groups/" + dara.PercentEncode(dara.StringValue(consumerGroupId)) + "/quota-rules"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListConsumerGroupQuotaRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询消费者组配额限流规则列表
+//
+// Description:
+//
+// 查询指定消费者组直接绑定的配额规则，不展开组内消费者个人绑定的规则；无直接绑定关系时返回空列表。
+//
+// @param request - ListConsumerGroupQuotaRulesRequest
+//
+// @return ListConsumerGroupQuotaRulesResponse
+func (client *Client) ListConsumerGroupQuotaRules(consumerGroupId *string, request *ListConsumerGroupQuotaRulesRequest) (_result *ListConsumerGroupQuotaRulesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListConsumerGroupQuotaRulesResponse{}
+	_body, _err := client.ListConsumerGroupQuotaRulesWithOptions(consumerGroupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the list of consumer groups.
 //
 // @param request - ListConsumerGroupsRequest
@@ -8306,11 +8392,11 @@ func (client *Client) ListGatewayLoadBalancers(gatewayId *string, request *ListG
 
 // Summary:
 //
-// Queries the list of consumer quota rules bound to a gateway.
+// Queries the list of FinOps quota rules bound to a gateway.
 //
 // Description:
 //
-// Queries the list of consumer quota rules bound to a gateway.
+// Queries the list of FinOps quota rules bound to a gateway.
 //
 // @param request - ListGatewayQuotaRulesRequest
 //
@@ -8373,11 +8459,11 @@ func (client *Client) ListGatewayQuotaRulesWithOptions(gatewayId *string, reques
 
 // Summary:
 //
-// Queries the list of consumer quota rules bound to a gateway.
+// Queries the list of FinOps quota rules bound to a gateway.
 //
 // Description:
 //
-// Queries the list of consumer quota rules bound to a gateway.
+// Queries the list of FinOps quota rules bound to a gateway.
 //
 // @param request - ListGatewayQuotaRulesRequest
 //
@@ -10922,7 +11008,7 @@ func (client *Client) RemoveConsumerAuthorizationRule(consumerAuthorizationRuleI
 //
 // Description:
 //
-// Resets a quota throttling rule on a gateway. This operation only takes effect for AI gateways with versions later than 2.1.19. Resetting clears the historical usage of consumers on the rule.
+// Resets a quota throttling rule on a gateway. This operation takes effect only on AI gateways of version 2.1.21 or later. Resetting clears the historical usage of consumption subjects on the rule.
 //
 // >
 //
@@ -10930,15 +11016,15 @@ func (client *Client) RemoveConsumerAuthorizationRule(consumerAuthorizationRuleI
 //
 // > - 1. Perform a dry run to check for rule conflicts.
 //
-// > - - Set dryRun=true.
+// > - - Set dryRun to true.
 //
-// > - - The response contains a conflict preview with conflictHash.
+// > - - The response contains a conflict preview with a conflictHash value.
 //
-// > - 2. Submit the request after confirmation.
+// > - 2. Confirm and submit the request.
 //
-// > - - No conflict: dryRun=false, overwrite=false.
+// > - - No conflicts: Set dryRun to false and overwrite to false.
 //
-// > - - Conflict exists and overwrite confirmed: dryRun=false, overwrite=true, conflictHash=<value returned in the previous step>
+// > - - Conflicts exist and you confirm the overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
 //
 // @param request - ResetGatewayQuotaRuleRequest
 //
@@ -11017,7 +11103,7 @@ func (client *Client) ResetGatewayQuotaRuleWithOptions(gatewayId *string, ruleId
 //
 // Description:
 //
-// Resets a quota throttling rule on a gateway. This operation only takes effect for AI gateways with versions later than 2.1.19. Resetting clears the historical usage of consumers on the rule.
+// Resets a quota throttling rule on a gateway. This operation takes effect only on AI gateways of version 2.1.21 or later. Resetting clears the historical usage of consumption subjects on the rule.
 //
 // >
 //
@@ -11025,15 +11111,15 @@ func (client *Client) ResetGatewayQuotaRuleWithOptions(gatewayId *string, ruleId
 //
 // > - 1. Perform a dry run to check for rule conflicts.
 //
-// > - - Set dryRun=true.
+// > - - Set dryRun to true.
 //
-// > - - The response contains a conflict preview with conflictHash.
+// > - - The response contains a conflict preview with a conflictHash value.
 //
-// > - 2. Submit the request after confirmation.
+// > - 2. Confirm and submit the request.
 //
-// > - - No conflict: dryRun=false, overwrite=false.
+// > - - No conflicts: Set dryRun to false and overwrite to false.
 //
-// > - - Conflict exists and overwrite confirmed: dryRun=false, overwrite=true, conflictHash=<value returned in the previous step>
+// > - - Conflicts exist and you confirm the overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
 //
 // @param request - ResetGatewayQuotaRuleRequest
 //
@@ -12662,25 +12748,25 @@ func (client *Client) UpdateGatewayName(gatewayId *string, request *UpdateGatewa
 
 // Summary:
 //
-// Edits a quota rate-limiting rule on a gateway.
+// Edits a quota throttling rule on a gateway.
 //
 // Description:
 //
-// Edits a quota rule on a gateway. This operation takes effect only for AI gateways with a version later than 2.1.19. Editing preserves the historical usage of consumers on the rule.
+// Edits a quota rule on a gateway. This operation takes effect only on AI gateways with a version later than 2.1.21. Editing a rule preserves the historical usage of consumer principals bound to the rule.
 //
-// >  Recommended call logic:
+// >  Recommended call sequence:
 //
-// > - 1. Perform a dry run to check for rule conflicts.
+// > - Step 1: Perform a dry run to check for rule conflicts.
 //
 // > - - Set dryRun to true.
 //
-// > - - The response contains a conflict preview with conflictHash.
+// > - - The response returns a conflict preview that contains conflictHash.
 //
-// > - 2. Submit the request after confirmation.
+// > - Step 2: Confirm and submit the request.
 //
-// > - - No conflict: Set dryRun to false and overwrite to false.
+// > - - No conflicts: Set dryRun to false and overwrite to false.
 //
-// > - - Conflict exists and overwrite confirmed: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
+// > - - Conflicts exist and you confirm the overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
 //
 // @param request - UpdateGatewayQuotaRuleRequest
 //
@@ -12755,25 +12841,25 @@ func (client *Client) UpdateGatewayQuotaRuleWithOptions(gatewayId *string, ruleI
 
 // Summary:
 //
-// Edits a quota rate-limiting rule on a gateway.
+// Edits a quota throttling rule on a gateway.
 //
 // Description:
 //
-// Edits a quota rule on a gateway. This operation takes effect only for AI gateways with a version later than 2.1.19. Editing preserves the historical usage of consumers on the rule.
+// Edits a quota rule on a gateway. This operation takes effect only on AI gateways with a version later than 2.1.21. Editing a rule preserves the historical usage of consumer principals bound to the rule.
 //
-// >  Recommended call logic:
+// >  Recommended call sequence:
 //
-// > - 1. Perform a dry run to check for rule conflicts.
+// > - Step 1: Perform a dry run to check for rule conflicts.
 //
 // > - - Set dryRun to true.
 //
-// > - - The response contains a conflict preview with conflictHash.
+// > - - The response returns a conflict preview that contains conflictHash.
 //
-// > - 2. Submit the request after confirmation.
+// > - Step 2: Confirm and submit the request.
 //
-// > - - No conflict: Set dryRun to false and overwrite to false.
+// > - - No conflicts: Set dryRun to false and overwrite to false.
 //
-// > - - Conflict exists and overwrite confirmed: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
+// > - - Conflicts exist and you confirm the overwrite: Set dryRun to false, overwrite to true, and conflictHash to the value returned in the previous step.
 //
 // @param request - UpdateGatewayQuotaRuleRequest
 //
@@ -12796,7 +12882,7 @@ func (client *Client) UpdateGatewayQuotaRule(gatewayId *string, ruleId *string, 
 //
 // Description:
 //
-// Enables or disables a quota rule on a gateway. This operation takes effect only for AI gateways with a version later than 2.1.19.
+// Enables or disables a quota rule on a gateway. This operation takes effect only on AI gateways with a version later than 2.1.21.
 //
 // @param request - UpdateGatewayQuotaRuleStatusRequest
 //
@@ -12851,7 +12937,7 @@ func (client *Client) UpdateGatewayQuotaRuleStatusWithOptions(gatewayId *string,
 //
 // Description:
 //
-// Enables or disables a quota rule on a gateway. This operation takes effect only for AI gateways with a version later than 2.1.19.
+// Enables or disables a quota rule on a gateway. This operation takes effect only on AI gateways with a version later than 2.1.21.
 //
 // @param request - UpdateGatewayQuotaRuleStatusRequest
 //

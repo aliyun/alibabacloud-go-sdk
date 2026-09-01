@@ -1,3 +1,7 @@
+2026-09-01 Version: v11.2.0
+- Support API ListConsumerGroupQuotaRules.
+
+
 2026-08-28 Version: v11.1.0
 - Support API BatchUpdateHttpApiOperation.
 - Support API CreateHttpApiVersion.

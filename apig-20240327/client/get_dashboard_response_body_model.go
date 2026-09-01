@@ -36,13 +36,13 @@ type GetDashboardResponseBody struct {
 	//
 	// example:
 	//
-	// Ok
+	// CloudProductInactive.LogDeliveryNotEnabled
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
 	// The error message.
 	//
 	// example:
 	//
-	// success
+	// SLS log delivery configuration is not enabled.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// The request ID.
 	//

@@ -106,13 +106,13 @@ type GetGatewayQuotaRuleResponseBodyData struct {
 	//
 	// 1745846400000
 	BaseTimestamp *int64 `json:"baseTimestamp,omitempty" xml:"baseTimestamp,omitempty"`
-	// The number of consumers associated with the rule.
+	// The number of API consumers associated with the rule.
 	//
 	// example:
 	//
 	// 20
 	ConsumerCount *int64 `json:"consumerCount,omitempty" xml:"consumerCount,omitempty"`
-	// The list of subjects (consumers) bound to this rule.
+	// The list of subjects (API consumers) bound to this rule.
 	Consumers []*GetGatewayQuotaRuleResponseBodyDataConsumers `json:"consumers,omitempty" xml:"consumers,omitempty" type:"Repeated"`
 	// The quota period type.
 	//
@@ -335,13 +335,13 @@ func (s *GetGatewayQuotaRuleResponseBodyData) Validate() error {
 }
 
 type GetGatewayQuotaRuleResponseBodyDataConsumers struct {
-	// The subject (consumer) ID.
+	// The subject (API consumer) ID.
 	//
 	// example:
 	//
 	// c-aaa
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The subject (consumer) name.
+	// The subject (API consumer) name.
 	//
 	// example:
 	//
