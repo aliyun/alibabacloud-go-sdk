@@ -18,18 +18,24 @@ type iDeleteKnowledgeBaseFileRequest interface {
 }
 
 type DeleteKnowledgeBaseFileRequest struct {
+	// The file ID. To delete multiple files at a time, separate the file IDs with commas (,). A maximum of 500 file IDs are supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxxx-xxxx-xxxx-xxxx
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The unique ID of the knowledge base.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pkb-xxxxx
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

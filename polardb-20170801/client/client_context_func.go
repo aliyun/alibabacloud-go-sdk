@@ -540,7 +540,7 @@ func (client *Client) AddSQLRateLimitingRulesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 知识库单轮问答
+// Performs a single-round knowledge base question answering.
 //
 // @param request - AnswerKnowledgeBaseRequest
 //
@@ -5539,8 +5539,16 @@ func (client *Client) CreateKBSyncLinkWithContext(ctx context.Context, request *
 		query["LinkName"] = request.LinkName
 	}
 
+	if !dara.IsNil(request.McpEndpoint) {
+		query["McpEndpoint"] = request.McpEndpoint
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SheetMcpEndpoint) {
+		query["SheetMcpEndpoint"] = request.SheetMcpEndpoint
 	}
 
 	if !dara.IsNil(request.SourceDir) {
@@ -5557,6 +5565,10 @@ func (client *Client) CreateKBSyncLinkWithContext(ctx context.Context, request *
 
 	if !dara.IsNil(request.TenantId) {
 		query["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -8138,7 +8150,7 @@ func (client *Client) DeleteDBClusterWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Deletes a custom cluster endpoint for a PolarDB cluster.
+// Releases a custom cluster endpoint of a PolarDB cluster.
 //
 // @param request - DeleteDBClusterEndpointRequest
 //
@@ -9176,7 +9188,7 @@ func (client *Client) DeleteKnowledgeBaseWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 删除知识库文件
+// Deletes a knowledge base file.
 //
 // @param request - DeleteKnowledgeBaseFileRequest
 //
@@ -15368,11 +15380,11 @@ func (client *Client) DescribeDBClusterTDEWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Retrieves the details of the current kernel version for a PolarDB for MySQL cluster.
+// Queries the details of the current Milvus version of a PolarDB for MySQL cluster.
 //
 // Description:
 //
-// > For more information about the kernel versions of PolarDB for MySQL clusters, see [Kernel version guide](https://help.aliyun.com/document_detail/471239.html) and [Kernel release notes](https://help.aliyun.com/document_detail/423884.html).
+// >For more information about the minor Milvus versions and details of PolarDB for MySQL Cluster Edition, see [Minor Milvus version description](https://help.aliyun.com/document_detail/471239.html) and [Release notes](https://help.aliyun.com/document_detail/423884.html).
 //
 // @param request - DescribeDBClusterVersionRequest
 //
@@ -18004,7 +18016,7 @@ func (client *Client) DescribeKBSyncLinksWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询知识库单轮问答结果
+// Queries the result of a single-turn Q&A task in a knowledge base.
 //
 // @param request - DescribeKnowledgeBaseAnswerRequest
 //
@@ -18104,7 +18116,7 @@ func (client *Client) DescribeKnowledgeBaseAttributeWithContext(ctx context.Cont
 
 // Summary:
 //
-// 查询知识库文件分片列表
+// Queries the list of file shards in a knowledge base.
 //
 // @param request - DescribeKnowledgeBaseFileShardsRequest
 //
@@ -18164,7 +18176,7 @@ func (client *Client) DescribeKnowledgeBaseFileShardsWithContext(ctx context.Con
 
 // Summary:
 //
-// 查询知识库文件列表
+// Queries the list of files in a knowledge base.
 //
 // @param request - DescribeKnowledgeBaseFilesRequest
 //
@@ -18300,7 +18312,7 @@ func (client *Client) DescribeKnowledgeBasesWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 查询知识空间详情
+// Queries the details of a knowledge space.
 //
 // @param request - DescribeKnowledgeSpaceAttributeRequest
 //
@@ -21952,7 +21964,7 @@ func (client *Client) DisableDBClusterOrcaWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Disables steady-state serverless.
+// Disables steady-state Serverless.
 //
 // @param request - DisableDBClusterServerlessRequest
 //
@@ -26669,13 +26681,13 @@ func (client *Client) ModifyDBClusterMonitorWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Modifies the parameters of a PolarDB cluster or applies an existing parameter template to a destination cluster.
+// Modifies the parameters of a PolarDB cluster or applies an existing parameter template to the specified cluster.
 //
 // Description:
 //
-// The parameter template feature in PolarDB lets you centrally manage parameters and apply them to your clusters. For more information, see [Use parameter templates](https://help.aliyun.com/document_detail/207009.html).
+// PolarDB provides the parameter template feature. You can use parameter templates to centrally manage parameters and quickly apply them to clusters. For more information, see [Use parameter templates](https://help.aliyun.com/document_detail/207009.html).
 //
-// > The parameter template feature is available only for PolarDB for MySQL.
+// > Currently, only PolarDB for MySQL supports the parameter template feature.
 //
 // @param request - ModifyDBClusterParametersRequest
 //
@@ -26919,7 +26931,7 @@ func (client *Client) ModifyDBClusterResourceGroupWithContext(ctx context.Contex
 
 // Summary:
 //
-// Enables or performs shutdown of the Secure Sockets Layer (SSL) encryption feature for a PolarDB cluster, or updates the CA certificate of a PolarDB cluster.
+// Enables or shuts down the Secure Sockets Layer (SSL) encryption feature for a PolarDB cluster, or updates the CA certificate of a PolarDB cluster.
 //
 // @param request - ModifyDBClusterSSLRequest
 //
@@ -30953,7 +30965,7 @@ func (client *Client) RestoreTableWithContext(ctx context.Context, request *Rest
 
 // Summary:
 //
-// 检索知识库
+// Retrieves information from a knowledge base.
 //
 // @param request - RetrievalKnowledgeBaseRequest
 //
@@ -31017,7 +31029,7 @@ func (client *Client) RetrievalKnowledgeBaseWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 批量重试知识库失败文件
+// Retries failed files in a knowledge base in batches.
 //
 // @param request - RetryKnowledgeBaseFilesRequest
 //
@@ -31609,7 +31621,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Temporarily Modifies the configuration of a node.
+// Temporarily changes the specifications of a cluster.
 //
 // @param request - TempModifyDBNodeRequest
 //
@@ -31701,15 +31713,11 @@ func (client *Client) TempModifyDBNodeWithContext(ctx context.Context, request *
 //
 // Description:
 //
-// > - PolarDB clusters support two billing methods: subscription and pay-as-you-go. You can change the billing method of a cluster from subscription to pay-as-you-go, or from pay-as-you-go to subscription. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
+// > - PolarDB clusters support subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
 //
-// >
+// >- If your Alibaba Cloud account balance is insufficient, you cannot change the pay-as-you-go billing method to subscription.
 //
-// > - You cannot change the billing method from pay-as-you-go to subscription if your Alibaba Cloud account has an insufficient balance.
-//
-// >
-//
-// > - When you change the billing method from subscription to pay-as-you-go, the system automatically refunds your remaining prepaid fees.
+// >- When you change the billing method from subscription to pay-as-you-go, the system automatically refunds the remaining balance of the fees that you have paid.
 //
 // @param request - TransformDBClusterPayTypeRequest
 //
@@ -31801,7 +31809,7 @@ func (client *Client) TransformDBClusterPayTypeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 触发知识库同步
+// Triggers knowledge base synchronization.
 //
 // @param request - TriggerKnowledgeBaseSyncRequest
 //
@@ -32270,6 +32278,14 @@ func (client *Client) UpdateKBSyncLinkWithContext(ctx context.Context, request *
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientId) {
+		query["ClientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.ClientSecret) {
+		query["ClientSecret"] = request.ClientSecret
+	}
+
 	if !dara.IsNil(request.KnowledgeBaseId) {
 		query["KnowledgeBaseId"] = request.KnowledgeBaseId
 	}
@@ -32278,12 +32294,28 @@ func (client *Client) UpdateKBSyncLinkWithContext(ctx context.Context, request *
 		query["LinkId"] = request.LinkId
 	}
 
+	if !dara.IsNil(request.McpEndpoint) {
+		query["McpEndpoint"] = request.McpEndpoint
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.SheetMcpEndpoint) {
+		query["SheetMcpEndpoint"] = request.SheetMcpEndpoint
+	}
+
+	if !dara.IsNil(request.SyncEnabled) {
+		query["SyncEnabled"] = request.SyncEnabled
+	}
+
 	if !dara.IsNil(request.SyncIntervalMinutes) {
 		query["SyncIntervalMinutes"] = request.SyncIntervalMinutes
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -32311,7 +32343,7 @@ func (client *Client) UpdateKBSyncLinkWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 更新知识库
+// Updates a knowledge base.
 //
 // @param request - UpdateKnowledgeBaseRequest
 //
@@ -32371,7 +32403,7 @@ func (client *Client) UpdateKnowledgeBaseWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 更新知识库文件分块策略
+// Updates the chunking strategy for a file in a knowledge base.
 //
 // @param tmpReq - UpdateKnowledgeBaseFileShardingStrategyRequest
 //
@@ -32437,7 +32469,7 @@ func (client *Client) UpdateKnowledgeBaseFileShardingStrategyWithContext(ctx con
 
 // Summary:
 //
-// 更新知识空间
+// Updates a knowledge space.
 //
 // @param tmpReq - UpdateKnowledgeSpaceRequest
 //

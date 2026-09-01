@@ -18,18 +18,24 @@ type iDescribeKnowledgeBaseAnswerRequest interface {
 }
 
 type DescribeKnowledgeBaseAnswerRequest struct {
+	// The unique ID of the knowledge base.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pkb-xxxxx
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
+	// The unique ID of the Q&A task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// R3BGbnBqcXN******.2a5a23c9-******-179970533d30
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

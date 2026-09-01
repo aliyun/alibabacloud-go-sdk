@@ -22,28 +22,37 @@ type iUpdateKnowledgeBaseFileShardingStrategyShrinkRequest interface {
 }
 
 type UpdateKnowledgeBaseFileShardingStrategyShrinkRequest struct {
+	// The unique ID of the knowledge base file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// e347ddb8-49bb-5c66-94bc-fa05cedaeac8
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// Specifies whether to restore inheritance of the chunking strategy from the knowledge space. When this parameter is set to true, ShardingStrategyConfig cannot be specified at the same time.
+	//
 	// example:
 	//
 	// false
 	InheritSpaceStrategy *bool `json:"InheritSpaceStrategy,omitempty" xml:"InheritSpaceStrategy,omitempty"`
+	// The unique ID of the knowledge base.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pkb-2zesv6l6a63xsrym
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
+	// The ID of the region where the knowledge base resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
-	RegionId                     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The file-level chunking strategy configuration. This parameter is required when InheritSpaceStrategy is not set to true.
 	ShardingStrategyConfigShrink *string `json:"ShardingStrategyConfig,omitempty" xml:"ShardingStrategyConfig,omitempty"`
 }
 

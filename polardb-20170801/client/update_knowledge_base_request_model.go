@@ -22,26 +22,46 @@ type iUpdateKnowledgeBaseRequest interface {
 }
 
 type UpdateKnowledgeBaseRequest struct {
+	// The description of the knowledge base.
+	//
 	// example:
 	//
 	// test desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The unique ID of the knowledge base.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pkb-xxxxx
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
+	// The name of the knowledge base.
+	//
 	// example:
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The search mode. Valid values:
+	//
+	// 	- balanced (default): balanced mode.
+	//
+	// 	- precise: precise mode.
+	//
+	// 	- semantic: semantic mode.
+	//
+	// 	- knn: KNN mode.
+	//
+	// 	- rrf: reciprocal rank fusion (RRF) mode.
+	//
 	// example:
 	//
 	// balanced

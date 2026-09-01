@@ -24,23 +24,38 @@ type iDescribeKnowledgeBaseFilesResponseBody interface {
 }
 
 type DescribeKnowledgeBaseFilesResponseBody struct {
+	// The list of files.
 	Items []*DescribeKnowledgeBaseFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records on the current page.
+	//
 	// example:
 	//
 	// 9
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The number of records per page. Valid values: **30**, **50**, and **100**.
+	//
+	//
+	//
+	// Default value: **30**.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// CED079B7-A408-41A1-BFF1-EC608E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 9
@@ -123,63 +138,94 @@ func (s *DescribeKnowledgeBaseFilesResponseBody) Validate() error {
 }
 
 type DescribeKnowledgeBaseFilesResponseBodyItems struct {
+	// The error message.
+	//
 	// example:
 	//
 	// Not Support.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The file ID.
+	//
 	// example:
 	//
 	// 5b2dbb13-xxxx-xxxx-xxxx-a55fe8daec8f
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
-	// 财报.pdf
+	// Financial_report.pdf
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The file size, in bytes.
+	//
 	// example:
 	//
 	// 318881
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The file type.
+	//
 	// example:
 	//
 	// pdf
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// Indicates whether the chunking strategy is inherited from the knowledge space.
+	//
 	// example:
 	//
 	// true
 	InheritSpaceStrategy *bool `json:"InheritSpaceStrategy,omitempty" xml:"InheritSpaceStrategy,omitempty"`
+	// The knowledge base ID.
+	//
 	// example:
 	//
 	// pkb-xxxxxx
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
+	// The knowledge space ID.
+	//
 	// example:
 	//
 	// pks-xxxxxx
 	KnowledgeSpaceId *string `json:"KnowledgeSpaceId,omitempty" xml:"KnowledgeSpaceId,omitempty"`
+	// The document metadata.
+	//
 	// example:
 	//
 	// {}
 	Metadata map[string]interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The OSS file path.
+	//
 	// example:
 	//
-	// oss://test-bucket-example/pks-xxxx/pkb-xxxx/财报.pdf
+	// oss://test-bucket-example/pks-xxxx/pkb-xxxx/Financial_report.pdf
 	OSSPath *string `json:"OSSPath,omitempty" xml:"OSSPath,omitempty"`
+	// The number of shards.
+	//
 	// example:
 	//
 	// 10
-	ShardCount             *int32                                                             `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
+	ShardCount *int32 `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
+	// The chunking strategy configuration currently in effect for the document. This value may be empty if the complete configuration was not saved for existing objects.
 	ShardingStrategyConfig *DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfig `json:"ShardingStrategyConfig,omitempty" xml:"ShardingStrategyConfig,omitempty" type:"Struct"`
+	// The source type.
+	//
 	// example:
 	//
 	// OSS
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// COMPLETED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2026-06-15T22:28:53Z
 	UpdatedAt *string `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
+	// The upload time.
+	//
 	// example:
 	//
 	// 2026-06-15T22:28:53Z
@@ -348,8 +394,10 @@ func (s *DescribeKnowledgeBaseFilesResponseBodyItems) Validate() error {
 }
 
 type DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfig struct {
+	// The default chunking strategy type. Valid values: hybrid and hierarchical.
 	DefaultStrategy *DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigDefaultStrategy `json:"DefaultStrategy,omitempty" xml:"DefaultStrategy,omitempty" type:"Struct"`
-	Rules           []*DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRules         `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The list of override rules matched in order.
+	Rules []*DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfig) String() string {
@@ -397,7 +445,10 @@ func (s *DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfig) Vali
 }
 
 type DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigDefaultStrategy struct {
+	// The parameter list.
 	Parameters *DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigDefaultStrategyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
+	// The default chunking strategy type. Valid values: hybrid and hierarchical.
+	//
 	// example:
 	//
 	// hybrid
@@ -440,10 +491,14 @@ func (s *DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigDefaul
 }
 
 type DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigDefaultStrategyParameters struct {
+	// The maximum number of tokens per shard.
+	//
 	// example:
 	//
 	// 512
 	MaxTokens *int32 `json:"MaxTokens,omitempty" xml:"MaxTokens,omitempty"`
+	// Specifies whether to merge adjacent small shards under the same heading.
+	//
 	// example:
 	//
 	// true
@@ -481,7 +536,9 @@ func (s *DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigDefaul
 }
 
 type DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRules struct {
-	Match    *DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRulesMatch    `json:"Match,omitempty" xml:"Match,omitempty" type:"Struct"`
+	// The content type. Currently, table is supported.
+	Match *DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRulesMatch `json:"Match,omitempty" xml:"Match,omitempty" type:"Struct"`
+	// The chunking strategy.
 	Strategy *DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRulesStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
 }
 
@@ -526,6 +583,8 @@ func (s *DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRules)
 }
 
 type DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRulesMatch struct {
+	// The content type. Currently, table is supported.
+	//
 	// example:
 	//
 	// table
@@ -554,7 +613,10 @@ func (s *DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRulesM
 }
 
 type DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRulesStrategy struct {
+	// The parameter list.
 	Parameters *DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRulesStrategyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
+	// The chunking strategy type applied after a rule is matched.
+	//
 	// example:
 	//
 	// hierarchical
@@ -597,10 +659,14 @@ func (s *DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRulesS
 }
 
 type DescribeKnowledgeBaseFilesResponseBodyItemsShardingStrategyConfigRulesStrategyParameters struct {
+	// The Markdown table processing mode. Valid values: auto, on, and off.
+	//
 	// example:
 	//
 	// auto
 	MarkdownTables *string `json:"MarkdownTables,omitempty" xml:"MarkdownTables,omitempty"`
+	// The maximum number of tokens per shard for matched content.
+	//
 	// example:
 	//
 	// 512

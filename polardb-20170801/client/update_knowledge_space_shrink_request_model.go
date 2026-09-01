@@ -26,34 +26,47 @@ type iUpdateKnowledgeSpaceShrinkRequest interface {
 }
 
 type UpdateKnowledgeSpaceShrinkRequest struct {
+	// The description of the knowledge space. The description can be up to 512 characters in length.
+	//
 	// example:
 	//
 	// testDesc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The unique identifier of the knowledge space.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pks-xxxxxx
 	KnowledgeSpaceId *string `json:"KnowledgeSpaceId,omitempty" xml:"KnowledgeSpaceId,omitempty"`
+	// The name of the large language model.
+	//
 	// example:
 	//
 	// qwen3.6-plus
 	LLMModel *string `json:"LLMModel,omitempty" xml:"LLMModel,omitempty"`
+	// The name of the knowledge space. The name must be 1 to 128 characters in length.
+	//
 	// example:
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the reranking model.
+	//
 	// example:
 	//
 	// qwen3-rerank
-	RerankModel                  *string `json:"RerankModel,omitempty" xml:"RerankModel,omitempty"`
+	RerankModel *string `json:"RerankModel,omitempty" xml:"RerankModel,omitempty"`
+	// The default chunking strategy configuration for the knowledge space. Both simple strategies and composite strategies that match by content type are supported.
 	ShardingStrategyConfigShrink *string `json:"ShardingStrategyConfig,omitempty" xml:"ShardingStrategyConfig,omitempty"`
 }
 

@@ -22,19 +22,28 @@ type iRetryKnowledgeBaseFilesResponseBody interface {
 }
 
 type RetryKnowledgeBaseFilesResponseBody struct {
+	// The number of failed retries.
+	//
 	// example:
 	//
 	// 0
-	FailedCount *int32                                      `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	Items       []*RetryKnowledgeBaseFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	// The list of retry results.
+	Items []*RetryKnowledgeBaseFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// Id of the request
+	//
 	// example:
 	//
 	// CED079B7-A408-41A1-BFF1-EC608E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of successful retries.
+	//
 	// example:
 	//
 	// 1
 	SucceededCount *int32 `json:"SucceededCount,omitempty" xml:"SucceededCount,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 1
@@ -108,18 +117,30 @@ func (s *RetryKnowledgeBaseFilesResponseBody) Validate() error {
 }
 
 type RetryKnowledgeBaseFilesResponseBodyItems struct {
+	// The error code.
+	//
 	// example:
 	//
 	// AclProjectionNotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The failure reason.
+	//
 	// example:
 	//
 	// No active ACL projection exists for the IM document
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The file ID.
+	//
 	// example:
 	//
 	// 91b97b71-xxxx-xxxx-xxxx-33c6a6341cdc
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The request result. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// false

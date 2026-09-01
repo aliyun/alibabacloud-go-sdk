@@ -36,16 +36,26 @@ type DisableDBClusterServerlessRequest struct {
 	//
 	// pc-***************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Specifies whether to immediately run the task or run it during a scheduled time window. Valid values:
+	//
+	// - false (default): The task is run during a scheduled time window.
+	//
+	// - true: The task is immediately run.
+	//
 	// example:
 	//
 	// false
 	FromTimeService *bool   `json:"FromTimeService,omitempty" xml:"FromTimeService,omitempty"`
 	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The latest time to start running the scheduled task. Specify the time in the YYYY-MM-DDThh:mm:ssZ format (UTC).
+	//
 	// example:
 	//
 	// 2022-04-28T14:30:00Z
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
+	// The earliest time to start running the scheduled task (that is, the task is run within the specified time range). Specify the time in the YYYY-MM-DDThh:mm:ssZ format (UTC).
+	//
 	// example:
 	//
 	// 2022-04-28T14:00:00Z

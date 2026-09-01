@@ -24,6 +24,11 @@ type iModifyDBClusterArchRequest interface {
 }
 
 type ModifyDBClusterArchRequest struct {
+	// Specifies whether to automatically use coupons. Valid values:
+	//
+	// 	- true (default): Uses coupons.
+	//
+	// 	- false: Does not use coupons.
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
 	// The cluster ID.
 	//
@@ -31,33 +36,35 @@ type ModifyDBClusterArchRequest struct {
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to enable a hot standby cluster. Valid values:
+	// Specifies whether to enable the hot standby cluster. Valid values:
 	//
-	// - **on**: Enables a hot standby cluster.
+	// - **on**: Enables the hot standby cluster.
 	//
-	// - **equal**: Enables a peer cluster.
+	// - **equal**: Enables the peer cluster.
 	//
 	// example:
 	//
 	// on
 	HotStandbyCluster *string `json:"HotStandbyCluster,omitempty" xml:"HotStandbyCluster,omitempty"`
+	// The coupon code. If this parameter is not specified, the default coupon is used.
+	//
 	// example:
 	//
 	// 727xxxxxx934
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// The region ID.
 	//
-	// > For more information, see [DescribeRegions](https://help.aliyun.com/document_detail/98041.html).
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region information.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The zone for the hot standby storage cluster. Valid values:
+	// The zone of the hot standby storage cluster. Valid values:
 	//
-	// - **auto*	- (default): The system automatically selects a zone.
+	// - **auto*	- (default): Automatically selected.
 	//
-	// > The default value is valid only when \\`HotStandbyCluster\\` is set to \\`on\\`. A specific zone is required when \\`HotStandbyCluster\\` is set to \\`equal\\`. For more information about zones, see [DescribeZones](https://help.aliyun.com/document_detail/98041.html).
+	// > When the HotStandbyCluster parameter is set to on, you can use the default value. When the HotStandbyCluster parameter is set to equal, you must specify a specific zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/98041.html) operation to query zone details.
 	//
 	// example:
 	//

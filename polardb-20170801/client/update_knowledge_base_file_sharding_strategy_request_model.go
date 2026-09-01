@@ -22,28 +22,37 @@ type iUpdateKnowledgeBaseFileShardingStrategyRequest interface {
 }
 
 type UpdateKnowledgeBaseFileShardingStrategyRequest struct {
+	// The unique ID of the knowledge base file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// e347ddb8-49bb-5c66-94bc-fa05cedaeac8
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// Specifies whether to restore inheritance of the chunking strategy from the knowledge space. When this parameter is set to true, ShardingStrategyConfig cannot be specified at the same time.
+	//
 	// example:
 	//
 	// false
 	InheritSpaceStrategy *bool `json:"InheritSpaceStrategy,omitempty" xml:"InheritSpaceStrategy,omitempty"`
+	// The unique ID of the knowledge base.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pkb-2zesv6l6a63xsrym
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
+	// The ID of the region where the knowledge base resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
-	RegionId               *string                                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The file-level chunking strategy configuration. This parameter is required when InheritSpaceStrategy is not set to true.
 	ShardingStrategyConfig *UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfig `json:"ShardingStrategyConfig,omitempty" xml:"ShardingStrategyConfig,omitempty" type:"Struct"`
 }
 
@@ -110,9 +119,12 @@ func (s *UpdateKnowledgeBaseFileShardingStrategyRequest) Validate() error {
 }
 
 type UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfig struct {
+	// The default chunking strategy. This strategy is used when no rule is matched.
+	//
 	// This parameter is required.
 	DefaultStrategy *UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigDefaultStrategy `json:"DefaultStrategy,omitempty" xml:"DefaultStrategy,omitempty" type:"Struct"`
-	Rules           []*UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigRules         `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The list of override rules that are matched in order. Currently, a maximum of one exact-match rule with ContentType set to table is supported.
+	Rules []*UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfig) String() string {
@@ -160,7 +172,14 @@ func (s *UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfig) V
 }
 
 type UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigDefaultStrategy struct {
+	// The parameters of the default chunking strategy. MaxTokens and MergePeers are supported only when Type is set to hybrid.
 	Parameters *UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigDefaultStrategyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
+	// The type of the default chunking strategy. Valid values:
+	//
+	// - hybrid: Splits by document structure and limits the token count.
+	//
+	// - hierarchical: Splits only by document structure.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -205,10 +224,14 @@ func (s *UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigDef
 }
 
 type UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigDefaultStrategyParameters struct {
+	// The maximum number of tokens per chunk. The value must be a positive integer. This parameter takes effect only when Type is set to hybrid.
+	//
 	// example:
 	//
 	// 512
 	MaxTokens *int32 `json:"MaxTokens,omitempty" xml:"MaxTokens,omitempty"`
+	// Specifies whether to merge adjacent small chunks under the same heading. This parameter takes effect only when Type is set to hybrid.
+	//
 	// example:
 	//
 	// true
@@ -246,8 +269,12 @@ func (s *UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigDef
 }
 
 type UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigRules struct {
+	// The rule match condition. Currently, only exact matching by content type for table content is supported.
+	//
 	// This parameter is required.
 	Match *UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigRulesMatch `json:"Match,omitempty" xml:"Match,omitempty" type:"Struct"`
+	// The chunking strategy to use when the rule is matched.
+	//
 	// This parameter is required.
 	Strategy *UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigRulesStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
 }
@@ -293,6 +320,8 @@ func (s *UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigRul
 }
 
 type UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigRulesMatch struct {
+	// The content type. Currently, only table is supported, which matches content that is parsed as tables.
+	//
 	// example:
 	//
 	// table
@@ -321,7 +350,14 @@ func (s *UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigRul
 }
 
 type UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigRulesStrategy struct {
+	// The chunking strategy parameters of the override rule. MaxTokens takes effect only when Type is set to hybrid. MarkdownTables supports auto, on, or off.
 	Parameters *UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigRulesStrategyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
+	// The chunking strategy type of the override rule. Valid values:
+	//
+	// - hybrid
+	//
+	// - hierarchical
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -366,10 +402,20 @@ func (s *UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigRul
 }
 
 type UpdateKnowledgeBaseFileShardingStrategyRequestShardingStrategyConfigRulesStrategyParameters struct {
+	// The Markdown table processing mode. Valid values:
+	//
+	// - auto: Automatically determines the processing mode.
+	//
+	// - on: Forcefully enables Markdown table processing.
+	//
+	// - off: Disables Markdown table processing.
+	//
 	// example:
 	//
 	// auto
 	MarkdownTables *string `json:"MarkdownTables,omitempty" xml:"MarkdownTables,omitempty"`
+	// The maximum number of tokens per chunk for matched content. The value must be a positive integer. This parameter takes effect only when Type is set to hybrid.
+	//
 	// example:
 	//
 	// 512

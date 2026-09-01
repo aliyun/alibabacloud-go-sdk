@@ -831,7 +831,7 @@ func (client *Client) AddSQLRateLimitingRules(request *AddSQLRateLimitingRulesRe
 
 // Summary:
 //
-// 知识库单轮问答
+// Performs a single-round knowledge base question answering.
 //
 // @param request - AnswerKnowledgeBaseRequest
 //
@@ -915,7 +915,7 @@ func (client *Client) AnswerKnowledgeBaseWithOptions(request *AnswerKnowledgeBas
 
 // Summary:
 //
-// 知识库单轮问答
+// Performs a single-round knowledge base question answering.
 //
 // @param request - AnswerKnowledgeBaseRequest
 //
@@ -7028,8 +7028,16 @@ func (client *Client) CreateKBSyncLinkWithOptions(request *CreateKBSyncLinkReque
 		query["LinkName"] = request.LinkName
 	}
 
+	if !dara.IsNil(request.McpEndpoint) {
+		query["McpEndpoint"] = request.McpEndpoint
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SheetMcpEndpoint) {
+		query["SheetMcpEndpoint"] = request.SheetMcpEndpoint
 	}
 
 	if !dara.IsNil(request.SourceDir) {
@@ -7046,6 +7054,10 @@ func (client *Client) CreateKBSyncLinkWithOptions(request *CreateKBSyncLinkReque
 
 	if !dara.IsNil(request.TenantId) {
 		query["TenantId"] = request.TenantId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -10389,7 +10401,7 @@ func (client *Client) DeleteDBCluster(request *DeleteDBClusterRequest) (_result 
 
 // Summary:
 //
-// Deletes a custom cluster endpoint for a PolarDB cluster.
+// Releases a custom cluster endpoint of a PolarDB cluster.
 //
 // @param request - DeleteDBClusterEndpointRequest
 //
@@ -10457,7 +10469,7 @@ func (client *Client) DeleteDBClusterEndpointWithOptions(request *DeleteDBCluste
 
 // Summary:
 //
-// Deletes a custom cluster endpoint for a PolarDB cluster.
+// Releases a custom cluster endpoint of a PolarDB cluster.
 //
 // @param request - DeleteDBClusterEndpointRequest
 //
@@ -11737,7 +11749,7 @@ func (client *Client) DeleteKnowledgeBase(request *DeleteKnowledgeBaseRequest) (
 
 // Summary:
 //
-// 删除知识库文件
+// Deletes a knowledge base file.
 //
 // @param request - DeleteKnowledgeBaseFileRequest
 //
@@ -11789,7 +11801,7 @@ func (client *Client) DeleteKnowledgeBaseFileWithOptions(request *DeleteKnowledg
 
 // Summary:
 //
-// 删除知识库文件
+// Deletes a knowledge base file.
 //
 // @param request - DeleteKnowledgeBaseFileRequest
 //
@@ -19729,11 +19741,11 @@ func (client *Client) DescribeDBClusterTDE(request *DescribeDBClusterTDERequest)
 
 // Summary:
 //
-// Retrieves the details of the current kernel version for a PolarDB for MySQL cluster.
+// Queries the details of the current Milvus version of a PolarDB for MySQL cluster.
 //
 // Description:
 //
-// > For more information about the kernel versions of PolarDB for MySQL clusters, see [Kernel version guide](https://help.aliyun.com/document_detail/471239.html) and [Kernel release notes](https://help.aliyun.com/document_detail/423884.html).
+// >For more information about the minor Milvus versions and details of PolarDB for MySQL Cluster Edition, see [Minor Milvus version description](https://help.aliyun.com/document_detail/471239.html) and [Release notes](https://help.aliyun.com/document_detail/423884.html).
 //
 // @param request - DescribeDBClusterVersionRequest
 //
@@ -19797,11 +19809,11 @@ func (client *Client) DescribeDBClusterVersionWithOptions(request *DescribeDBClu
 
 // Summary:
 //
-// Retrieves the details of the current kernel version for a PolarDB for MySQL cluster.
+// Queries the details of the current Milvus version of a PolarDB for MySQL cluster.
 //
 // Description:
 //
-// > For more information about the kernel versions of PolarDB for MySQL clusters, see [Kernel version guide](https://help.aliyun.com/document_detail/471239.html) and [Kernel release notes](https://help.aliyun.com/document_detail/423884.html).
+// >For more information about the minor Milvus versions and details of PolarDB for MySQL Cluster Edition, see [Minor Milvus version description](https://help.aliyun.com/document_detail/471239.html) and [Release notes](https://help.aliyun.com/document_detail/423884.html).
 //
 // @param request - DescribeDBClusterVersionRequest
 //
@@ -23043,7 +23055,7 @@ func (client *Client) DescribeKBSyncLinks(request *DescribeKBSyncLinksRequest) (
 
 // Summary:
 //
-// 查询知识库单轮问答结果
+// Queries the result of a single-turn Q&A task in a knowledge base.
 //
 // @param request - DescribeKnowledgeBaseAnswerRequest
 //
@@ -23095,7 +23107,7 @@ func (client *Client) DescribeKnowledgeBaseAnswerWithOptions(request *DescribeKn
 
 // Summary:
 //
-// 查询知识库单轮问答结果
+// Queries the result of a single-turn Q&A task in a knowledge base.
 //
 // @param request - DescribeKnowledgeBaseAnswerRequest
 //
@@ -23179,7 +23191,7 @@ func (client *Client) DescribeKnowledgeBaseAttribute(request *DescribeKnowledgeB
 
 // Summary:
 //
-// 查询知识库文件分片列表
+// Queries the list of file shards in a knowledge base.
 //
 // @param request - DescribeKnowledgeBaseFileShardsRequest
 //
@@ -23239,7 +23251,7 @@ func (client *Client) DescribeKnowledgeBaseFileShardsWithOptions(request *Descri
 
 // Summary:
 //
-// 查询知识库文件分片列表
+// Queries the list of file shards in a knowledge base.
 //
 // @param request - DescribeKnowledgeBaseFileShardsRequest
 //
@@ -23257,7 +23269,7 @@ func (client *Client) DescribeKnowledgeBaseFileShards(request *DescribeKnowledge
 
 // Summary:
 //
-// 查询知识库文件列表
+// Queries the list of files in a knowledge base.
 //
 // @param request - DescribeKnowledgeBaseFilesRequest
 //
@@ -23329,7 +23341,7 @@ func (client *Client) DescribeKnowledgeBaseFilesWithOptions(request *DescribeKno
 
 // Summary:
 //
-// 查询知识库文件列表
+// Queries the list of files in a knowledge base.
 //
 // @param request - DescribeKnowledgeBaseFilesRequest
 //
@@ -23429,7 +23441,7 @@ func (client *Client) DescribeKnowledgeBases(request *DescribeKnowledgeBasesRequ
 
 // Summary:
 //
-// 查询知识空间详情
+// Queries the details of a knowledge space.
 //
 // @param request - DescribeKnowledgeSpaceAttributeRequest
 //
@@ -23477,7 +23489,7 @@ func (client *Client) DescribeKnowledgeSpaceAttributeWithOptions(request *Descri
 
 // Summary:
 //
-// 查询知识空间详情
+// Queries the details of a knowledge space.
 //
 // @param request - DescribeKnowledgeSpaceAttributeRequest
 //
@@ -28184,7 +28196,7 @@ func (client *Client) DisableDBClusterOrca(request *DisableDBClusterOrcaRequest)
 
 // Summary:
 //
-// Disables steady-state serverless.
+// Disables steady-state Serverless.
 //
 // @param request - DisableDBClusterServerlessRequest
 //
@@ -28256,7 +28268,7 @@ func (client *Client) DisableDBClusterServerlessWithOptions(request *DisableDBCl
 
 // Summary:
 //
-// Disables steady-state serverless.
+// Disables steady-state Serverless.
 //
 // @param request - DisableDBClusterServerlessRequest
 //
@@ -34185,13 +34197,13 @@ func (client *Client) ModifyDBClusterMonitor(request *ModifyDBClusterMonitorRequ
 
 // Summary:
 //
-// Modifies the parameters of a PolarDB cluster or applies an existing parameter template to a destination cluster.
+// Modifies the parameters of a PolarDB cluster or applies an existing parameter template to the specified cluster.
 //
 // Description:
 //
-// The parameter template feature in PolarDB lets you centrally manage parameters and apply them to your clusters. For more information, see [Use parameter templates](https://help.aliyun.com/document_detail/207009.html).
+// PolarDB provides the parameter template feature. You can use parameter templates to centrally manage parameters and quickly apply them to clusters. For more information, see [Use parameter templates](https://help.aliyun.com/document_detail/207009.html).
 //
-// > The parameter template feature is available only for PolarDB for MySQL.
+// > Currently, only PolarDB for MySQL supports the parameter template feature.
 //
 // @param request - ModifyDBClusterParametersRequest
 //
@@ -34275,13 +34287,13 @@ func (client *Client) ModifyDBClusterParametersWithOptions(request *ModifyDBClus
 
 // Summary:
 //
-// Modifies the parameters of a PolarDB cluster or applies an existing parameter template to a destination cluster.
+// Modifies the parameters of a PolarDB cluster or applies an existing parameter template to the specified cluster.
 //
 // Description:
 //
-// The parameter template feature in PolarDB lets you centrally manage parameters and apply them to your clusters. For more information, see [Use parameter templates](https://help.aliyun.com/document_detail/207009.html).
+// PolarDB provides the parameter template feature. You can use parameter templates to centrally manage parameters and quickly apply them to clusters. For more information, see [Use parameter templates](https://help.aliyun.com/document_detail/207009.html).
 //
-// > The parameter template feature is available only for PolarDB for MySQL.
+// > Currently, only PolarDB for MySQL supports the parameter template feature.
 //
 // @param request - ModifyDBClusterParametersRequest
 //
@@ -34495,7 +34507,7 @@ func (client *Client) ModifyDBClusterResourceGroup(request *ModifyDBClusterResou
 
 // Summary:
 //
-// Enables or performs shutdown of the Secure Sockets Layer (SSL) encryption feature for a PolarDB cluster, or updates the CA certificate of a PolarDB cluster.
+// Enables or shuts down the Secure Sockets Layer (SSL) encryption feature for a PolarDB cluster, or updates the CA certificate of a PolarDB cluster.
 //
 // @param request - ModifyDBClusterSSLRequest
 //
@@ -34583,7 +34595,7 @@ func (client *Client) ModifyDBClusterSSLWithOptions(request *ModifyDBClusterSSLR
 
 // Summary:
 //
-// Enables or performs shutdown of the Secure Sockets Layer (SSL) encryption feature for a PolarDB cluster, or updates the CA certificate of a PolarDB cluster.
+// Enables or shuts down the Secure Sockets Layer (SSL) encryption feature for a PolarDB cluster, or updates the CA certificate of a PolarDB cluster.
 //
 // @param request - ModifyDBClusterSSLRequest
 //
@@ -39595,7 +39607,7 @@ func (client *Client) RestoreTable(request *RestoreTableRequest) (_result *Resto
 
 // Summary:
 //
-// 检索知识库
+// Retrieves information from a knowledge base.
 //
 // @param request - RetrievalKnowledgeBaseRequest
 //
@@ -39659,7 +39671,7 @@ func (client *Client) RetrievalKnowledgeBaseWithOptions(request *RetrievalKnowle
 
 // Summary:
 //
-// 检索知识库
+// Retrieves information from a knowledge base.
 //
 // @param request - RetrievalKnowledgeBaseRequest
 //
@@ -39677,7 +39689,7 @@ func (client *Client) RetrievalKnowledgeBase(request *RetrievalKnowledgeBaseRequ
 
 // Summary:
 //
-// 批量重试知识库失败文件
+// Retries failed files in a knowledge base in batches.
 //
 // @param request - RetryKnowledgeBaseFilesRequest
 //
@@ -39729,7 +39741,7 @@ func (client *Client) RetryKnowledgeBaseFilesWithOptions(request *RetryKnowledge
 
 // Summary:
 //
-// 批量重试知识库失败文件
+// Retries failed files in a knowledge base in batches.
 //
 // @param request - RetryKnowledgeBaseFilesRequest
 //
@@ -40443,7 +40455,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Temporarily Modifies the configuration of a node.
+// Temporarily changes the specifications of a cluster.
 //
 // @param request - TempModifyDBNodeRequest
 //
@@ -40531,7 +40543,7 @@ func (client *Client) TempModifyDBNodeWithOptions(request *TempModifyDBNodeReque
 
 // Summary:
 //
-// Temporarily Modifies the configuration of a node.
+// Temporarily changes the specifications of a cluster.
 //
 // @param request - TempModifyDBNodeRequest
 //
@@ -40553,15 +40565,11 @@ func (client *Client) TempModifyDBNode(request *TempModifyDBNodeRequest) (_resul
 //
 // Description:
 //
-// > - PolarDB clusters support two billing methods: subscription and pay-as-you-go. You can change the billing method of a cluster from subscription to pay-as-you-go, or from pay-as-you-go to subscription. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
+// > - PolarDB clusters support subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
 //
-// >
+// >- If your Alibaba Cloud account balance is insufficient, you cannot change the pay-as-you-go billing method to subscription.
 //
-// > - You cannot change the billing method from pay-as-you-go to subscription if your Alibaba Cloud account has an insufficient balance.
-//
-// >
-//
-// > - When you change the billing method from subscription to pay-as-you-go, the system automatically refunds your remaining prepaid fees.
+// >- When you change the billing method from subscription to pay-as-you-go, the system automatically refunds the remaining balance of the fees that you have paid.
 //
 // @param request - TransformDBClusterPayTypeRequest
 //
@@ -40657,15 +40665,11 @@ func (client *Client) TransformDBClusterPayTypeWithOptions(request *TransformDBC
 //
 // Description:
 //
-// > - PolarDB clusters support two billing methods: subscription and pay-as-you-go. You can change the billing method of a cluster from subscription to pay-as-you-go, or from pay-as-you-go to subscription. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
+// > - PolarDB clusters support subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
 //
-// >
+// >- If your Alibaba Cloud account balance is insufficient, you cannot change the pay-as-you-go billing method to subscription.
 //
-// > - You cannot change the billing method from pay-as-you-go to subscription if your Alibaba Cloud account has an insufficient balance.
-//
-// >
-//
-// > - When you change the billing method from subscription to pay-as-you-go, the system automatically refunds your remaining prepaid fees.
+// >- When you change the billing method from subscription to pay-as-you-go, the system automatically refunds the remaining balance of the fees that you have paid.
 //
 // @param request - TransformDBClusterPayTypeRequest
 //
@@ -40683,7 +40687,7 @@ func (client *Client) TransformDBClusterPayType(request *TransformDBClusterPayTy
 
 // Summary:
 //
-// 触发知识库同步
+// Triggers knowledge base synchronization.
 //
 // @param request - TriggerKnowledgeBaseSyncRequest
 //
@@ -40735,7 +40739,7 @@ func (client *Client) TriggerKnowledgeBaseSyncWithOptions(request *TriggerKnowle
 
 // Summary:
 //
-// 触发知识库同步
+// Triggers knowledge base synchronization.
 //
 // @param request - TriggerKnowledgeBaseSyncRequest
 //
@@ -41290,6 +41294,14 @@ func (client *Client) UpdateKBSyncLinkWithOptions(request *UpdateKBSyncLinkReque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientId) {
+		query["ClientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.ClientSecret) {
+		query["ClientSecret"] = request.ClientSecret
+	}
+
 	if !dara.IsNil(request.KnowledgeBaseId) {
 		query["KnowledgeBaseId"] = request.KnowledgeBaseId
 	}
@@ -41298,12 +41310,28 @@ func (client *Client) UpdateKBSyncLinkWithOptions(request *UpdateKBSyncLinkReque
 		query["LinkId"] = request.LinkId
 	}
 
+	if !dara.IsNil(request.McpEndpoint) {
+		query["McpEndpoint"] = request.McpEndpoint
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.SheetMcpEndpoint) {
+		query["SheetMcpEndpoint"] = request.SheetMcpEndpoint
+	}
+
+	if !dara.IsNil(request.SyncEnabled) {
+		query["SyncEnabled"] = request.SyncEnabled
+	}
+
 	if !dara.IsNil(request.SyncIntervalMinutes) {
 		query["SyncIntervalMinutes"] = request.SyncIntervalMinutes
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -41349,7 +41377,7 @@ func (client *Client) UpdateKBSyncLink(request *UpdateKBSyncLinkRequest) (_resul
 
 // Summary:
 //
-// 更新知识库
+// Updates a knowledge base.
 //
 // @param request - UpdateKnowledgeBaseRequest
 //
@@ -41409,7 +41437,7 @@ func (client *Client) UpdateKnowledgeBaseWithOptions(request *UpdateKnowledgeBas
 
 // Summary:
 //
-// 更新知识库
+// Updates a knowledge base.
 //
 // @param request - UpdateKnowledgeBaseRequest
 //
@@ -41427,7 +41455,7 @@ func (client *Client) UpdateKnowledgeBase(request *UpdateKnowledgeBaseRequest) (
 
 // Summary:
 //
-// 更新知识库文件分块策略
+// Updates the chunking strategy for a file in a knowledge base.
 //
 // @param tmpReq - UpdateKnowledgeBaseFileShardingStrategyRequest
 //
@@ -41493,7 +41521,7 @@ func (client *Client) UpdateKnowledgeBaseFileShardingStrategyWithOptions(tmpReq 
 
 // Summary:
 //
-// 更新知识库文件分块策略
+// Updates the chunking strategy for a file in a knowledge base.
 //
 // @param request - UpdateKnowledgeBaseFileShardingStrategyRequest
 //
@@ -41511,7 +41539,7 @@ func (client *Client) UpdateKnowledgeBaseFileShardingStrategy(request *UpdateKno
 
 // Summary:
 //
-// 更新知识空间
+// Updates a knowledge space.
 //
 // @param tmpReq - UpdateKnowledgeSpaceRequest
 //
@@ -41585,7 +41613,7 @@ func (client *Client) UpdateKnowledgeSpaceWithOptions(tmpReq *UpdateKnowledgeSpa
 
 // Summary:
 //
-// 更新知识空间
+// Updates a knowledge space.
 //
 // @param request - UpdateKnowledgeSpaceRequest
 //

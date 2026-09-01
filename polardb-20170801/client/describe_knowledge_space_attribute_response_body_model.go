@@ -54,83 +54,132 @@ type iDescribeKnowledgeSpaceAttributeResponseBody interface {
 }
 
 type DescribeKnowledgeSpaceAttributeResponseBody struct {
+	// The access control list (ACL) mode of the knowledge space. Valid values:
+	//
+	// - DISABLED
+	//
+	// - ENFORCED
+	//
 	// example:
 	//
 	// ENFORCED
 	ACLMode *string `json:"ACLMode,omitempty" xml:"ACLMode,omitempty"`
+	// The time when the knowledge space was created.
+	//
 	// example:
 	//
 	// 2026-06-25T09:53:44Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The ID of the PolarDB instance.
+	//
 	// example:
 	//
 	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The name of the database.
+	//
 	// example:
 	//
 	// polar_rag_meta
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
+	// The type of the database engine. Valid values:
+	//
+	// 	- MySQL
+	//
+	// 	- PostgreSQL
+	//
 	// example:
 	//
 	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// The description of the knowledge space.
+	//
 	// example:
 	//
 	// testDesc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The vector dimensions.
+	//
 	// example:
 	//
 	// 1536
 	EmbeddingDimension *int32 `json:"EmbeddingDimension,omitempty" xml:"EmbeddingDimension,omitempty"`
+	// The embedding model.
+	//
 	// example:
 	//
 	// text-embedding-v4
 	EmbeddingModel *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
+	// The total number of knowledge bases.
+	//
 	// example:
 	//
 	// 1
 	KnowledgeBaseCount *int32 `json:"KnowledgeBaseCount,omitempty" xml:"KnowledgeBaseCount,omitempty"`
+	// The unique identifier of the knowledge space.
+	//
 	// example:
 	//
 	// pks-xxxxxx
 	KnowledgeSpaceId *string `json:"KnowledgeSpaceId,omitempty" xml:"KnowledgeSpaceId,omitempty"`
+	// The large language model.
+	//
 	// example:
 	//
 	// qwen3.6-plus
 	LLMModel *string `json:"LLMModel,omitempty" xml:"LLMModel,omitempty"`
+	// The name of the knowledge space.
+	//
 	// example:
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// OSS Bucket
+	//
 	// example:
 	//
 	// test-bucket
 	OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 6BD9CDE4-5E7B-4BF3-9BB8-83C73E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The reranking model.
+	//
 	// example:
 	//
 	// qwen3-rerank
 	RerankModel *string `json:"RerankModel,omitempty" xml:"RerankModel,omitempty"`
+	// The chunk size in tokens.
+	//
 	// example:
 	//
 	// 512
-	ShardSize              *int32                                                             `json:"ShardSize,omitempty" xml:"ShardSize,omitempty"`
+	ShardSize *int32 `json:"ShardSize,omitempty" xml:"ShardSize,omitempty"`
+	// The default chunking strategy configuration of the knowledge space. This parameter may be empty if existing instances do not have the complete configuration saved.
 	ShardingStrategyConfig *DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfig `json:"ShardingStrategyConfig,omitempty" xml:"ShardingStrategyConfig,omitempty" type:"Struct"`
+	// The instance status.
+	//
 	// example:
 	//
 	// Activation
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The chunking strategy.
+	//
 	// example:
 	//
 	// hybrid
 	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// The total number of documents.
+	//
 	// example:
 	//
 	// 1
 	TotalDocs *int32 `json:"TotalDocs,omitempty" xml:"TotalDocs,omitempty"`
+	// The total size in bytes.
+	//
 	// example:
 	//
 	// 318881
@@ -344,8 +393,10 @@ func (s *DescribeKnowledgeSpaceAttributeResponseBody) Validate() error {
 }
 
 type DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfig struct {
+	// The default chunking strategy. This strategy is used when no rule is matched.
 	DefaultStrategy *DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigDefaultStrategy `json:"DefaultStrategy,omitempty" xml:"DefaultStrategy,omitempty" type:"Struct"`
-	Rules           []*DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRules         `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The list of override rules that are matched in order.
+	Rules []*DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfig) String() string {
@@ -393,7 +444,10 @@ func (s *DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfig) Vali
 }
 
 type DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigDefaultStrategy struct {
+	// The parameter details.
 	Parameters *DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigDefaultStrategyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
+	// The type of the default chunking strategy. Valid values: hybrid or hierarchical.
+	//
 	// example:
 	//
 	// hybrid
@@ -436,10 +490,14 @@ func (s *DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigDefaul
 }
 
 type DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigDefaultStrategyParameters struct {
+	// The maximum number of tokens in a single chunk.
+	//
 	// example:
 	//
 	// 512
 	MaxTokens *int32 `json:"MaxTokens,omitempty" xml:"MaxTokens,omitempty"`
+	// Specifies whether to merge adjacent small chunks under the same heading.
+	//
 	// example:
 	//
 	// true
@@ -477,7 +535,9 @@ func (s *DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigDefaul
 }
 
 type DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRules struct {
-	Match    *DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRulesMatch    `json:"Match,omitempty" xml:"Match,omitempty" type:"Struct"`
+	// The content type. Currently, table is supported.
+	Match *DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRulesMatch `json:"Match,omitempty" xml:"Match,omitempty" type:"Struct"`
+	// The chunking strategy.
 	Strategy *DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRulesStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
 }
 
@@ -522,6 +582,8 @@ func (s *DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRules)
 }
 
 type DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRulesMatch struct {
+	// The content type. Currently, table is supported.
+	//
 	// example:
 	//
 	// table
@@ -550,7 +612,10 @@ func (s *DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRulesM
 }
 
 type DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRulesStrategy struct {
+	// The parameter details.
 	Parameters *DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRulesStrategyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
+	// The chunking strategy type used when a rule is matched.
+	//
 	// example:
 	//
 	// hierarchical
@@ -593,10 +658,14 @@ func (s *DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRulesS
 }
 
 type DescribeKnowledgeSpaceAttributeResponseBodyShardingStrategyConfigRulesStrategyParameters struct {
+	// The Markdown table processing mode. Valid values: auto, on, or off.
+	//
 	// example:
 	//
 	// auto
 	MarkdownTables *string `json:"MarkdownTables,omitempty" xml:"MarkdownTables,omitempty"`
+	// The maximum number of tokens in a single chunk for matched content.
+	//
 	// example:
 	//
 	// 512

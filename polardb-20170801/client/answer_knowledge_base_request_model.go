@@ -34,52 +34,74 @@ type iAnswerKnowledgeBaseRequest interface {
 }
 
 type AnswerKnowledgeBaseRequest struct {
+	// The unique ID of the knowledge base.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pkb-xxxxx
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
+	// The maximum number of context characters. Valid values: 1000 to 32000.
+	//
 	// example:
 	//
 	// 16000
 	MaxContextChars *int32 `json:"MaxContextChars,omitempty" xml:"MaxContextChars,omitempty"`
+	// The user query text.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 总结下今年财报
+	// Summarize this year\\"s financial report
 	QueryText *string `json:"QueryText,omitempty" xml:"QueryText,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to enable reranking. Default value: false.
+	//
 	// example:
 	//
 	// false
 	RerankEnabled *bool `json:"RerankEnabled,omitempty" xml:"RerankEnabled,omitempty"`
+	// Specifies whether to return citation sources. Default value: true.
+	//
 	// example:
 	//
 	// true
 	ReturnSources *bool `json:"ReturnSources,omitempty" xml:"ReturnSources,omitempty"`
+	// The similarity score threshold.
+	//
 	// example:
 	//
 	// 0.7
 	ScoreThreshold *float64 `json:"ScoreThreshold,omitempty" xml:"ScoreThreshold,omitempty"`
+	// The search mode. Valid values: knn, rrf, precise, semantic, and balanced.
+	//
 	// example:
 	//
 	// semantic
 	SearchMode *string `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
+	// The system prompt.
+	//
 	// example:
 	//
 	// This is a minimal test prompt for security verification.
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
+	// The number of results to recall during retrieval.
+	//
 	// example:
 	//
 	// 10
 	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	// The supplementary user instructions.
+	//
 	// example:
 	//
 	// Return a short summary and test result.

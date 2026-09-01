@@ -24,23 +24,34 @@ type iDescribeKnowledgeBaseFileShardsResponseBody interface {
 }
 
 type DescribeKnowledgeBaseFileShardsResponseBody struct {
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records on the current page.
+	//
 	// example:
 	//
 	// 10
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// The number of entries per page in a paged query.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 3E5CD764-xxxx-xxxx-xxxx-20E0DE84B2AF
-	RequestId *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Shards    []*DescribeKnowledgeBaseFileShardsResponseBodyShards `json:"Shards,omitempty" xml:"Shards,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The shard information.
+	Shards []*DescribeKnowledgeBaseFileShardsResponseBodyShards `json:"Shards,omitempty" xml:"Shards,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 10
@@ -123,12 +134,18 @@ func (s *DescribeKnowledgeBaseFileShardsResponseBody) Validate() error {
 }
 
 type DescribeKnowledgeBaseFileShardsResponseBodyShards struct {
-	Headings    []*string `json:"Headings,omitempty" xml:"Headings,omitempty" type:"Repeated"`
+	// The chain of section headings to which the shard belongs.
+	Headings []*string `json:"Headings,omitempty" xml:"Headings,omitempty" type:"Repeated"`
+	// The list of page numbers to which the shard belongs.
 	PageNumbers []*string `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty" type:"Repeated"`
+	// The text content of the shard.
+	//
 	// example:
 	//
 	// ******
 	ShardContent *string `json:"ShardContent,omitempty" xml:"ShardContent,omitempty"`
+	// The shard index.
+	//
 	// example:
 	//
 	// 1

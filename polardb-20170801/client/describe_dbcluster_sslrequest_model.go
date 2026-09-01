@@ -26,7 +26,7 @@ type iDescribeDBClusterSSLRequest interface {
 type DescribeDBClusterSSLRequest struct {
 	// The cluster ID.
 	//
-	// >You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters under your account, including the cluster ID.
+	// >You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters under your account, including cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -36,6 +36,8 @@ type DescribeDBClusterSSLRequest struct {
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The PFS instance ID.
+	//
 	// example:
 	//
 	// pfs-xxx

@@ -24,32 +24,44 @@ type iRetrievalKnowledgeBaseRequest interface {
 }
 
 type RetrievalKnowledgeBaseRequest struct {
+	// The unique ID of the knowledge base.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pkb-xxxxx
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
+	// The query text.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 财报
+	// Financial report
 	QueryText *string `json:"QueryText,omitempty" xml:"QueryText,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to enable reranking. Default value: true.
+	//
 	// example:
 	//
 	// true
 	RerankEnabled *bool `json:"RerankEnabled,omitempty" xml:"RerankEnabled,omitempty"`
+	// The similarity score threshold.
+	//
 	// example:
 	//
 	// 0.7
 	ScoreThreshold *float64 `json:"ScoreThreshold,omitempty" xml:"ScoreThreshold,omitempty"`
+	// The number of results to return.
+	//
 	// example:
 	//
 	// 5

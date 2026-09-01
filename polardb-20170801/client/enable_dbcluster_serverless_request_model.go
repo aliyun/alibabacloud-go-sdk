@@ -48,16 +48,26 @@ type EnableDBClusterServerlessRequest struct {
   // 
   // pc-**************
   DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+  // Specifies whether to immediately execute or schedule the parameter modification and restart. Valid values:
+  // 
+  // - false (default): Schedule the execution.
+  // 
+  // - true: Immediately execute.
+  // 
   // example:
   // 
   // false
   FromTimeService *bool `json:"FromTimeService,omitempty" xml:"FromTimeService,omitempty"`
   OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+  // The latest time to start executing the target scheduled task. Specify the time in the YYYY-MM-DDThh:mm:ssZ format (UTC).
+  // 
   // example:
   // 
   // 2022-04-28T14:30:00Z
   PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
+  // The earliest time to start executing the scheduled task (that is, the task is executed within the target time period). Specify the time in the YYYY-MM-DDThh:mm:ssZ format (UTC).
+  // 
   // example:
   // 
   // 2022-04-28T14:00:00Z

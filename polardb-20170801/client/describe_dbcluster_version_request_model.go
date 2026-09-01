@@ -26,7 +26,7 @@ type iDescribeDBClusterVersionRequest interface {
 type DescribeDBClusterVersionRequest struct {
 	// The cluster ID.
 	//
-	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view details of all clusters in your account, such as cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters within your account, such as the cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -34,11 +34,11 @@ type DescribeDBClusterVersionRequest struct {
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to return information about the latest version or a list of upgradable versions. Valid values:
+	// Specifies whether to return the latest version information or the list of available upgrade versions. Valid values:
 	//
-	// - LATEST_VERSION: Queries information about the latest version.
+	// - LATEST_VERSION: queries the latest version information.
 	//
-	// - AVAILABLE_VERSION: Queries a list of upgradable versions.
+	// - AVAILABLE_VERSION: queries the list of available upgrade versions.
 	//
 	// example:
 	//

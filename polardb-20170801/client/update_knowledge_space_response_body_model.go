@@ -18,14 +18,20 @@ type iUpdateKnowledgeSpaceResponseBody interface {
 }
 
 type UpdateKnowledgeSpaceResponseBody struct {
+	// The unique identifier of the knowledge space.
+	//
 	// example:
 	//
 	// pks-xxxxxx
 	KnowledgeSpaceId *string `json:"KnowledgeSpaceId,omitempty" xml:"KnowledgeSpaceId,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// CD35F3-F3-44CA-AFFF-BAF869******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the asynchronous workflow task. This value is empty if no actual model change occurs.
+	//
 	// example:
 	//
 	// 52*****03

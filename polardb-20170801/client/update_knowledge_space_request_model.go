@@ -26,34 +26,47 @@ type iUpdateKnowledgeSpaceRequest interface {
 }
 
 type UpdateKnowledgeSpaceRequest struct {
+	// The description of the knowledge space. The description can be up to 512 characters in length.
+	//
 	// example:
 	//
 	// testDesc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The unique identifier of the knowledge space.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pks-xxxxxx
 	KnowledgeSpaceId *string `json:"KnowledgeSpaceId,omitempty" xml:"KnowledgeSpaceId,omitempty"`
+	// The name of the large language model.
+	//
 	// example:
 	//
 	// qwen3.6-plus
 	LLMModel *string `json:"LLMModel,omitempty" xml:"LLMModel,omitempty"`
+	// The name of the knowledge space. The name must be 1 to 128 characters in length.
+	//
 	// example:
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the reranking model.
+	//
 	// example:
 	//
 	// qwen3-rerank
-	RerankModel            *string                                            `json:"RerankModel,omitempty" xml:"RerankModel,omitempty"`
+	RerankModel *string `json:"RerankModel,omitempty" xml:"RerankModel,omitempty"`
+	// The default chunking strategy configuration for the knowledge space. Both simple strategies and composite strategies that match by content type are supported.
 	ShardingStrategyConfig *UpdateKnowledgeSpaceRequestShardingStrategyConfig `json:"ShardingStrategyConfig,omitempty" xml:"ShardingStrategyConfig,omitempty" type:"Struct"`
 }
 
@@ -138,8 +151,10 @@ func (s *UpdateKnowledgeSpaceRequest) Validate() error {
 }
 
 type UpdateKnowledgeSpaceRequestShardingStrategyConfig struct {
+	// The default chunking strategy. This strategy is used when no rule is matched.
 	DefaultStrategy *UpdateKnowledgeSpaceRequestShardingStrategyConfigDefaultStrategy `json:"DefaultStrategy,omitempty" xml:"DefaultStrategy,omitempty" type:"Struct"`
-	Rules           []*UpdateKnowledgeSpaceRequestShardingStrategyConfigRules         `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The list of override rules that are matched in order. Currently, a maximum of one exact-match rule with ContentType set to table is supported.
+	Rules []*UpdateKnowledgeSpaceRequestShardingStrategyConfigRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s UpdateKnowledgeSpaceRequestShardingStrategyConfig) String() string {
@@ -187,7 +202,10 @@ func (s *UpdateKnowledgeSpaceRequestShardingStrategyConfig) Validate() error {
 }
 
 type UpdateKnowledgeSpaceRequestShardingStrategyConfigDefaultStrategy struct {
+	// The parameters of the default chunking strategy. MaxTokens and MergePeers take effect only when Type is set to hybrid.
 	Parameters *UpdateKnowledgeSpaceRequestShardingStrategyConfigDefaultStrategyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
+	// The type of the default chunking strategy. Valid values: hybrid or hierarchical.
+	//
 	// example:
 	//
 	// hybrid
@@ -230,10 +248,14 @@ func (s *UpdateKnowledgeSpaceRequestShardingStrategyConfigDefaultStrategy) Valid
 }
 
 type UpdateKnowledgeSpaceRequestShardingStrategyConfigDefaultStrategyParameters struct {
+	// The maximum number of tokens per chunk. The value must be a positive integer.
+	//
 	// example:
 	//
 	// 512
 	MaxTokens *int32 `json:"MaxTokens,omitempty" xml:"MaxTokens,omitempty"`
+	// Specifies whether to merge adjacent small chunks under the same heading.
+	//
 	// example:
 	//
 	// true
@@ -271,7 +293,9 @@ func (s *UpdateKnowledgeSpaceRequestShardingStrategyConfigDefaultStrategyParamet
 }
 
 type UpdateKnowledgeSpaceRequestShardingStrategyConfigRules struct {
-	Match    *UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesMatch    `json:"Match,omitempty" xml:"Match,omitempty" type:"Struct"`
+	// The match condition of the rule. Currently, only exact matching of table content by content type is supported.
+	Match *UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesMatch `json:"Match,omitempty" xml:"Match,omitempty" type:"Struct"`
+	// The chunking strategy to use when the rule is matched.
 	Strategy *UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
 }
 
@@ -316,6 +340,8 @@ func (s *UpdateKnowledgeSpaceRequestShardingStrategyConfigRules) Validate() erro
 }
 
 type UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesMatch struct {
+	// The content type. Currently, only table is supported.
+	//
 	// example:
 	//
 	// table
@@ -344,7 +370,10 @@ func (s *UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesMatch) Validate()
 }
 
 type UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesStrategy struct {
+	// The chunking strategy parameters for the override rule. MaxTokens takes effect only when Type is set to hybrid. MarkdownTables supports auto, on, or off.
 	Parameters *UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesStrategyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
+	// The type of the chunking strategy to use when the rule is matched. Valid values: hybrid or hierarchical.
+	//
 	// example:
 	//
 	// hierarchical
@@ -387,10 +416,14 @@ func (s *UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesStrategy) Validat
 }
 
 type UpdateKnowledgeSpaceRequestShardingStrategyConfigRulesStrategyParameters struct {
+	// The processing mode for Markdown tables. Valid values: auto, on, or off.
+	//
 	// example:
 	//
 	// auto
 	MarkdownTables *string `json:"MarkdownTables,omitempty" xml:"MarkdownTables,omitempty"`
+	// The maximum number of tokens per chunk for matched content. The value must be a positive integer.
+	//
 	// example:
 	//
 	// 512

@@ -18,14 +18,20 @@ type iAnswerKnowledgeBaseResponseBody interface {
 }
 
 type AnswerKnowledgeBaseResponseBody struct {
+	// The unique ID of the Q&A task.
+	//
 	// example:
 	//
 	// R3BGbnBqcXN******.2a5a23c9-******-179970533d30
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// A7E6A8FD-C50B-46B2-BA85-D8B8D3******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the Q&A task.
+	//
 	// example:
 	//
 	// Running

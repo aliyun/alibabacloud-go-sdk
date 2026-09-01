@@ -34,6 +34,8 @@ type DescribeDBClusterAccessWhitelistRequest struct {
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The PFS instance ID.
+	//
 	// example:
 	//
 	// pfs-xxx

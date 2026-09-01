@@ -19,8 +19,12 @@ type iCreateKBSyncLinkRequest interface {
 	GetKnowledgeBaseId() *string
 	SetLinkName(v string) *CreateKBSyncLinkRequest
 	GetLinkName() *string
+	SetMcpEndpoint(v string) *CreateKBSyncLinkRequest
+	GetMcpEndpoint() *string
 	SetRegionId(v string) *CreateKBSyncLinkRequest
 	GetRegionId() *string
+	SetSheetMcpEndpoint(v string) *CreateKBSyncLinkRequest
+	GetSheetMcpEndpoint() *string
 	SetSourceDir(v string) *CreateKBSyncLinkRequest
 	GetSourceDir() *string
 	SetSourceType(v string) *CreateKBSyncLinkRequest
@@ -29,6 +33,8 @@ type iCreateKBSyncLinkRequest interface {
 	GetSyncIntervalMinutes() *int32
 	SetTenantId(v string) *CreateKBSyncLinkRequest
 	GetTenantId() *string
+	SetUserId(v string) *CreateKBSyncLinkRequest
+	GetUserId() *string
 }
 
 type CreateKBSyncLinkRequest struct {
@@ -59,13 +65,15 @@ type CreateKBSyncLinkRequest struct {
 	// example:
 	//
 	// testName
-	LinkName *string `json:"LinkName,omitempty" xml:"LinkName,omitempty"`
+	LinkName    *string `json:"LinkName,omitempty" xml:"LinkName,omitempty"`
+	McpEndpoint *string `json:"McpEndpoint,omitempty" xml:"McpEndpoint,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SheetMcpEndpoint *string `json:"SheetMcpEndpoint,omitempty" xml:"SheetMcpEndpoint,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -86,6 +94,7 @@ type CreateKBSyncLinkRequest struct {
 	//
 	// 63eexxxx-xxxx-xxxx-xxxx-xxxxxx090f82
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s CreateKBSyncLinkRequest) String() string {
@@ -116,8 +125,16 @@ func (s *CreateKBSyncLinkRequest) GetLinkName() *string {
 	return s.LinkName
 }
 
+func (s *CreateKBSyncLinkRequest) GetMcpEndpoint() *string {
+	return s.McpEndpoint
+}
+
 func (s *CreateKBSyncLinkRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *CreateKBSyncLinkRequest) GetSheetMcpEndpoint() *string {
+	return s.SheetMcpEndpoint
 }
 
 func (s *CreateKBSyncLinkRequest) GetSourceDir() *string {
@@ -134,6 +151,10 @@ func (s *CreateKBSyncLinkRequest) GetSyncIntervalMinutes() *int32 {
 
 func (s *CreateKBSyncLinkRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *CreateKBSyncLinkRequest) GetUserId() *string {
+	return s.UserId
 }
 
 func (s *CreateKBSyncLinkRequest) SetClientId(v string) *CreateKBSyncLinkRequest {
@@ -161,8 +182,18 @@ func (s *CreateKBSyncLinkRequest) SetLinkName(v string) *CreateKBSyncLinkRequest
 	return s
 }
 
+func (s *CreateKBSyncLinkRequest) SetMcpEndpoint(v string) *CreateKBSyncLinkRequest {
+	s.McpEndpoint = &v
+	return s
+}
+
 func (s *CreateKBSyncLinkRequest) SetRegionId(v string) *CreateKBSyncLinkRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateKBSyncLinkRequest) SetSheetMcpEndpoint(v string) *CreateKBSyncLinkRequest {
+	s.SheetMcpEndpoint = &v
 	return s
 }
 
@@ -183,6 +214,11 @@ func (s *CreateKBSyncLinkRequest) SetSyncIntervalMinutes(v int32) *CreateKBSyncL
 
 func (s *CreateKBSyncLinkRequest) SetTenantId(v string) *CreateKBSyncLinkRequest {
 	s.TenantId = &v
+	return s
+}
+
+func (s *CreateKBSyncLinkRequest) SetUserId(v string) *CreateKBSyncLinkRequest {
+	s.UserId = &v
 	return s
 }
 

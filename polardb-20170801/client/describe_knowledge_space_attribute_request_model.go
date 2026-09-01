@@ -16,12 +16,16 @@ type iDescribeKnowledgeSpaceAttributeRequest interface {
 }
 
 type DescribeKnowledgeSpaceAttributeRequest struct {
+	// The unique identifier of the knowledge space.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pks-xxxx
 	KnowledgeSpaceId *string `json:"KnowledgeSpaceId,omitempty" xml:"KnowledgeSpaceId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

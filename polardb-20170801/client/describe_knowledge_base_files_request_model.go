@@ -28,38 +28,54 @@ type iDescribeKnowledgeBaseFilesRequest interface {
 }
 
 type DescribeKnowledgeBaseFilesRequest struct {
+	// The list of file IDs, separated by commas (,).
+	//
 	// example:
 	//
 	// doc_a,doc_b
 	FileIds *string `json:"FileIds,omitempty" xml:"FileIds,omitempty"`
+	// The keyword used to filter file names.
+	//
 	// example:
 	//
-	// 财报
+	// Financial report
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The unique ID of the knowledge base.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pkb-xxxxx
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
+	// The unique ID of the synchronization link.
+	//
 	// example:
 	//
 	// pkbl-2ze123456789abc
 	LinkId *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of records per page.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The source type.
+	//
 	// example:
 	//
 	// OSS

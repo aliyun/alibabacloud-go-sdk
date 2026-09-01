@@ -34,7 +34,7 @@ type DeleteDBClusterEndpointRequest struct {
 	//
 	// pc-******************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the custom cluster endpoint.
+	// The custom cluster endpoint ID.
 	//
 	// This parameter is required.
 	//
@@ -44,6 +44,8 @@ type DeleteDBClusterEndpointRequest struct {
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The PolarFs instance ID.
+	//
 	// example:
 	//
 	// pfs-test*****

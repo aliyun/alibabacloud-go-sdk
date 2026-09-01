@@ -101,7 +101,7 @@ type DescribeDBClusterSSLResponseBodyItems struct {
 	//
 	// - **Disable**: Disabled.
 	//
-	// > This parameter is supported only when the database engine is PostgreSQL-compatible or Oracle-syntax-compatible.
+	// > This parameter is supported only when the database engine is PostgreSQL-compatible or Oracle syntax-compatible.
 	//
 	// example:
 	//

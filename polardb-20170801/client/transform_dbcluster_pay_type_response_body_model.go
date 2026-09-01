@@ -32,7 +32,7 @@ type TransformDBClusterPayTypeResponseBody struct {
 	//
 	// Prepaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The ID of the PolarDB cluster.
+	// The PolarDB cluster ID.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type TransformDBClusterPayTypeResponseBody struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The expiration time of the instance.
 	//
-	// > This parameter is returned only when **PayType*	- is set to **Prepaid**.
+	// > This response parameter is returned only when **PayType*	- is set to **Prepaid**.
 	//
 	// example:
 	//

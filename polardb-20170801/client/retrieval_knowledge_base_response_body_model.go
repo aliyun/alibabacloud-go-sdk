@@ -20,19 +20,26 @@ type iRetrievalKnowledgeBaseResponseBody interface {
 }
 
 type RetrievalKnowledgeBaseResponseBody struct {
+	// The query text.
+	//
 	// example:
 	//
-	// 财报
+	// Financial report
 	QueryText *string `json:"QueryText,omitempty" xml:"QueryText,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// CD35F3-F3-44CA-AFFF-BAF869******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of results.
+	//
 	// example:
 	//
 	// 5
-	ResultCount *int32                                       `json:"ResultCount,omitempty" xml:"ResultCount,omitempty"`
-	Results     []*RetrievalKnowledgeBaseResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	ResultCount *int32 `json:"ResultCount,omitempty" xml:"ResultCount,omitempty"`
+	// The search results.
+	Results []*RetrievalKnowledgeBaseResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 }
 
 func (s RetrievalKnowledgeBaseResponseBody) String() string {
@@ -93,28 +100,42 @@ func (s *RetrievalKnowledgeBaseResponseBody) Validate() error {
 }
 
 type RetrievalKnowledgeBaseResponseBodyResults struct {
+	// The unique ID of the file.
+	//
 	// example:
 	//
 	// 91b97b71-xxxx-xxxx-xxxx-33c6a6341cdc
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// The file name.
+	//
 	// example:
 	//
-	// 2024财报.pdf
-	FileName *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// 2024FinancialReport.pdf
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The chain of section headings to which the shard belongs.
 	Headings []*string `json:"Headings,omitempty" xml:"Headings,omitempty" type:"Repeated"`
+	// The metadata.
+	//
 	// example:
 	//
 	// {}
-	Metadata    *string  `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The list of page numbers to which the shard belongs.
 	PageNumbers []*int32 `json:"PageNumbers,omitempty" xml:"PageNumbers,omitempty" type:"Repeated"`
+	// The text content of the shard.
+	//
 	// example:
 	//
-	// 财报
+	// Financial report
 	ShardContent *string `json:"ShardContent,omitempty" xml:"ShardContent,omitempty"`
+	// The shard index.
+	//
 	// example:
 	//
 	// 1
 	ShardIndex *int32 `json:"ShardIndex,omitempty" xml:"ShardIndex,omitempty"`
+	// The similarity score.
+	//
 	// example:
 	//
 	// 0.8

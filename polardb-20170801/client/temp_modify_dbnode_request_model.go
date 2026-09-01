@@ -36,8 +36,13 @@ type iTempModifyDBNodeRequest interface {
 }
 
 type TempModifyDBNodeRequest struct {
+	// Specifies whether to automatically use coupons. Valid values:
+	//
+	// 	- true (default): Uses coupons.
+	//
+	// 	- false: Does not use coupons.
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// A client token to ensure the idempotence of the request. Generate a unique token for each request. The token is case-sensitive and can be up to 64 ASCII characters in length.
+	// The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token is case-sensitive and can contain only ASCII characters. The token can be up to 64 characters in length.
 	//
 	// example:
 	//
@@ -51,11 +56,11 @@ type TempModifyDBNodeRequest struct {
 	//
 	// pc-xxxxxxxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The information about the nodes to upgrade or add.
+	// The information about the node to be upgraded or added.
 	//
 	// This parameter is required.
 	DBNode []*TempModifyDBNodeRequestDBNode `json:"DBNode,omitempty" xml:"DBNode,omitempty" type:"Repeated"`
-	// The modification type. The value is fixed to **TempUpgrade**.
+	// The change type. The value is fixed as **TempUpgrade**.
 	//
 	// This parameter is required.
 	//
@@ -65,9 +70,9 @@ type TempModifyDBNodeRequest struct {
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	// The operation type. Valid values:
 	//
-	// - **Modify**: temporary upgrade
+	// - **Modify**: temporarily upgrades specifications.
 	//
-	// - **Add**: temporarily add a node
+	// - **Add**: temporarily adds nodes.
 	//
 	// This parameter is required.
 	//
@@ -77,15 +82,17 @@ type TempModifyDBNodeRequest struct {
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The coupon code. If this parameter is not specified, the default coupon is used.
+	//
 	// example:
 	//
 	// 727xxxxxx934
 	PromotionCode        *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The time to revert the temporary upgrade. The format is YYYY-MM-DD hh:mm:ss.
+	// The restore time for the temporary upgrade. Specify the time in the YYYY-MM-DD hh:mm:ss format.
 	//
-	// > The revert time must be at least 1 hour later than the current time. It must also be at least 1 day before the cluster expires.
+	// > The restore time cannot be earlier than 1 hour after the current time or later than 1 day before the cluster expiration time.
 	//
 	// This parameter is required.
 	//
@@ -225,19 +232,17 @@ func (s *TempModifyDBNodeRequest) Validate() error {
 }
 
 type TempModifyDBNodeRequestDBNode struct {
-	// The specifications of the node to upgrade or add.
+	// The specifications of the node to be upgraded or added.
 	//
-	// > - When you add a node, the node specifications must be the same as the specifications of the existing nodes.
+	// > - When you add a node, the node specifications must be the same as those of the existing nodes.
 	//
-	// >
-	//
-	// > - For more information about the specifications of existing cluster nodes, see [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html).
+	// > - For the specifications of existing cluster nodes, see [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html).
 	//
 	// example:
 	//
 	// polar.mysql.x4.medium
 	TargetClass *string `json:"TargetClass,omitempty" xml:"TargetClass,omitempty"`
-	// The zone for the new node. The zone must be the same as the zone of the existing nodes.
+	// The zone of the node to be added. The zone must be the same as that of the existing nodes.
 	//
 	// example:
 	//
