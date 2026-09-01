@@ -32,6 +32,8 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-hongkong":    dara.String("fcsandbox.cn-hongkong.aliyuncs.com"),
 		"ap-southeast-1": dara.String("fcsandbox.ap-southeast-1.aliyuncs.com"),
 		"cn-hangzhou":    dara.String("fcsandbox.cn-hangzhou.aliyuncs.com"),
+		"us-west-1":      dara.String("fcsandbox.us-west-1.aliyuncs.com"),
+		"us-east-1":      dara.String("fcsandbox.us-east-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {

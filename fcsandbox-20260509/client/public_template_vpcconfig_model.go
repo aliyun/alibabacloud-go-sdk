@@ -20,15 +20,22 @@ type iPublicTemplateVPCConfig interface {
 }
 
 type PublicTemplateVPCConfig struct {
+	// The VPC authorization role name.
+	//
 	// example:
 	//
 	// AliyunFCSandboxDefaultRole
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// The security group ID.
+	//
 	// example:
 	//
 	// sg-bp1gx7yj8ud5mabcde
-	SecurityGroupId *string   `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	VSwitchIds      []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
+	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	// The list of vSwitch IDs.
+	VSwitchIds []*string `json:"vSwitchIds,omitempty" xml:"vSwitchIds,omitempty" type:"Repeated"`
+	// VPC ID
+	//
 	// example:
 	//
 	// vpc-bp1mwrqm3wkq7abcde
