@@ -1038,6 +1038,62 @@ func (client *Client) CreateDataAgentSessionWithContext(ctx context.Context, tmp
 
 // Summary:
 //
+// Creates and registers a DataAgent skill.
+//
+// @param request - CreateDataAgentSkillMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataAgentSkillMetaResponse
+func (client *Client) CreateDataAgentSkillMetaWithContext(ctx context.Context, request *CreateDataAgentSkillMetaRequest, runtime *dara.RuntimeOptions) (_result *CreateDataAgentSkillMetaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.SkillName) {
+		query["SkillName"] = request.SkillName
+	}
+
+	if !dara.IsNil(request.UploadLocation) {
+		query["UploadLocation"] = request.UploadLocation
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataAgentSkillMeta"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDataAgentSkillMetaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a DataAgent theme.
 //
 // @param request - CreateDataAgentThemeRequest
@@ -1868,6 +1924,54 @@ func (client *Client) DeleteDataAgentMemoryWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteDataAgentMemoryResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a DataAgent skill.
+//
+// @param request - DeleteDataAgentSkillMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDataAgentSkillMetaResponse
+func (client *Client) DeleteDataAgentSkillMetaWithContext(ctx context.Context, request *DeleteDataAgentSkillMetaRequest, runtime *dara.RuntimeOptions) (_result *DeleteDataAgentSkillMetaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.SkillId) {
+		query["SkillId"] = request.SkillId
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteDataAgentSkillMeta"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteDataAgentSkillMetaResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2870,6 +2974,50 @@ func (client *Client) DescribeKnowledgeBaseUploadSignatureWithContext(ctx contex
 
 // Summary:
 //
+// Retrieves the signature information for uploading skill files.
+//
+// @param request - DescribeSkillFileUploadSignatureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSkillFileUploadSignatureResponse
+func (client *Client) DescribeSkillFileUploadSignatureWithContext(ctx context.Context, request *DescribeSkillFileUploadSignatureRequest, runtime *dara.RuntimeOptions) (_result *DescribeSkillFileUploadSignatureResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeSkillFileUploadSignature"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeSkillFileUploadSignatureResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Calls back after a file is uploaded.
 //
 // @param request - FileUploadCallbackRequest
@@ -3217,20 +3365,26 @@ func (client *Client) GetDataAgentSubAccountInfoWithContext(ctx context.Context,
 //
 // Description:
 //
-// Queries the model usage summary of DataAgent analysis tasks within a specified time range, including the number of models used, total model call count, total tokens consumed, and peak TPM. This operation is used to analyze and monitor model resource consumption of DataAgent analysis tasks.
+// Queries the model usage summary of DataAgent analysis tasks within a specified time range, including the number of models used, total model call count, total tokens consumed, and peak TPM. This operation is used to analyze and monitor the model resource consumption of DataAgent analysis tasks.
 //
-// @param request - GetDataAgentTaskModelUsageRequest
+// @param tmpReq - GetDataAgentTaskModelUsageRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDataAgentTaskModelUsageResponse
-func (client *Client) GetDataAgentTaskModelUsageWithContext(ctx context.Context, request *GetDataAgentTaskModelUsageRequest, runtime *dara.RuntimeOptions) (_result *GetDataAgentTaskModelUsageResponse, _err error) {
+func (client *Client) GetDataAgentTaskModelUsageWithContext(ctx context.Context, tmpReq *GetDataAgentTaskModelUsageRequest, runtime *dara.RuntimeOptions) (_result *GetDataAgentTaskModelUsageResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &GetDataAgentTaskModelUsageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.InstanceIds) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, dara.String("InstanceIds"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BeginTime) {
 		query["BeginTime"] = request.BeginTime
@@ -3242,6 +3396,10 @@ func (client *Client) GetDataAgentTaskModelUsageWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceIdsShrink) {
+		query["InstanceIds"] = request.InstanceIdsShrink
 	}
 
 	if !dara.IsNil(request.PayLevel) {
@@ -3283,18 +3441,24 @@ func (client *Client) GetDataAgentTaskModelUsageWithContext(ctx context.Context,
 //
 // Queries the TPM time series metrics of DataAgent analysis task model usage within a specified time range. The metrics are returned at minute-level granularity, showing the number of tokens consumed in each statistical interval for analyzing model usage trends over time.
 //
-// @param request - GetDataAgentTaskModelUsageMetricsRequest
+// @param tmpReq - GetDataAgentTaskModelUsageMetricsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetDataAgentTaskModelUsageMetricsResponse
-func (client *Client) GetDataAgentTaskModelUsageMetricsWithContext(ctx context.Context, request *GetDataAgentTaskModelUsageMetricsRequest, runtime *dara.RuntimeOptions) (_result *GetDataAgentTaskModelUsageMetricsResponse, _err error) {
+func (client *Client) GetDataAgentTaskModelUsageMetricsWithContext(ctx context.Context, tmpReq *GetDataAgentTaskModelUsageMetricsRequest, runtime *dara.RuntimeOptions) (_result *GetDataAgentTaskModelUsageMetricsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &GetDataAgentTaskModelUsageMetricsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.InstanceIds) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, dara.String("InstanceIds"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BeginTime) {
 		query["BeginTime"] = request.BeginTime
@@ -3306,6 +3470,10 @@ func (client *Client) GetDataAgentTaskModelUsageMetricsWithContext(ctx context.C
 
 	if !dara.IsNil(request.EndTime) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceIdsShrink) {
+		query["InstanceIds"] = request.InstanceIdsShrink
 	}
 
 	if !dara.IsNil(request.PayLevel) {
@@ -4997,6 +5165,74 @@ func (client *Client) ListDataAgentSessionWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListDataAgentSessionResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the list of DataAgent skills.
+//
+// @param request - ListDataAgentSkillMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDataAgentSkillMetaResponse
+func (client *Client) ListDataAgentSkillMetaWithContext(ctx context.Context, request *ListDataAgentSkillMetaRequest, runtime *dara.RuntimeOptions) (_result *ListDataAgentSkillMetaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SearchKey) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !dara.IsNil(request.SkillFrom) {
+		query["SkillFrom"] = request.SkillFrom
+	}
+
+	if !dara.IsNil(request.SkillId) {
+		query["SkillId"] = request.SkillId
+	}
+
+	if !dara.IsNil(request.SkillName) {
+		query["SkillName"] = request.SkillName
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDataAgentSkillMeta"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDataAgentSkillMetaResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6751,7 +6987,7 @@ func (client *Client) ModifyDataAgentMcpWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # ModifyDataAgentTheme
+// Calls the ModifyDataAgentTheme operation to modify the display name and description of a DataAgent theme. Passing null for a parameter value indicates that the corresponding field is not modified. Passing an empty string clears the field.
 //
 // @param request - ModifyDataAgentThemeRequest
 //

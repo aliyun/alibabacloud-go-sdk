@@ -15,6 +15,8 @@ type iGetDataAgentTaskModelUsageRequest interface {
 	GetDMSUnit() *string
 	SetEndTime(v int64) *GetDataAgentTaskModelUsageRequest
 	GetEndTime() *int64
+	SetInstanceIds(v []*string) *GetDataAgentTaskModelUsageRequest
+	GetInstanceIds() []*string
 	SetPayLevel(v string) *GetDataAgentTaskModelUsageRequest
 	GetPayLevel() *string
 	SetRegionId(v string) *GetDataAgentTaskModelUsageRequest
@@ -22,7 +24,7 @@ type iGetDataAgentTaskModelUsageRequest interface {
 }
 
 type GetDataAgentTaskModelUsageRequest struct {
-	// The start time of the query time range. The value is a UNIX timestamp in seconds. We recommend that the time range does not exceed one month.
+	// The start time of the query time range. The value is a UNIX timestamp in seconds. The recommended interval length is no longer than one month.
 	//
 	// example:
 	//
@@ -34,13 +36,14 @@ type GetDataAgentTaskModelUsageRequest struct {
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The end time of the query time range. The value is a UNIX timestamp in seconds. We recommend that the time range does not exceed one month.
+	// The end time of the query time range. The value is a UNIX timestamp in seconds. The recommended interval length is no longer than one month.
 	//
 	// example:
 	//
 	// 1735747200
-	EndTime  *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	PayLevel *string `json:"PayLevel,omitempty" xml:"PayLevel,omitempty"`
+	EndTime     *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	PayLevel    *string   `json:"PayLevel,omitempty" xml:"PayLevel,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -69,6 +72,10 @@ func (s *GetDataAgentTaskModelUsageRequest) GetEndTime() *int64 {
 	return s.EndTime
 }
 
+func (s *GetDataAgentTaskModelUsageRequest) GetInstanceIds() []*string {
+	return s.InstanceIds
+}
+
 func (s *GetDataAgentTaskModelUsageRequest) GetPayLevel() *string {
 	return s.PayLevel
 }
@@ -89,6 +96,11 @@ func (s *GetDataAgentTaskModelUsageRequest) SetDMSUnit(v string) *GetDataAgentTa
 
 func (s *GetDataAgentTaskModelUsageRequest) SetEndTime(v int64) *GetDataAgentTaskModelUsageRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *GetDataAgentTaskModelUsageRequest) SetInstanceIds(v []*string) *GetDataAgentTaskModelUsageRequest {
+	s.InstanceIds = v
 	return s
 }
 

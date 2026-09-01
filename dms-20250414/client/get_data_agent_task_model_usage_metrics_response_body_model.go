@@ -117,19 +117,19 @@ func (s *GetDataAgentTaskModelUsageMetricsResponseBody) Validate() error {
 }
 
 type GetDataAgentTaskModelUsageMetricsResponseBodyData struct {
-	// The start time of the statistical interval for this time series point. The value is a UNIX timestamp in seconds.
+	// The start time of the statistical interval for this time series data point. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1735660800
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The end time of the statistical interval for this time series point. The value is a UNIX timestamp in seconds.
+	// The end time of the statistical interval for this time series data point. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1735660860
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The TPM for this time series point, which is the number of tokens consumed within the statistical interval.
+	// The TPM for this time series data point, which is the number of tokens consumed within the statistical interval.
 	//
 	// example:
 	//

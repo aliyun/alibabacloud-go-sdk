@@ -24,13 +24,13 @@ type iGetDataAgentTaskModelUsageResponseBody interface {
 type GetDataAgentTaskModelUsageResponseBody struct {
 	// The summary data of model usage for DataAgent analysis tasks.
 	Data *GetDataAgentTaskModelUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the request fails.
+	// The error code returned if the request failed.
 	//
 	// example:
 	//
 	// DMS-DA-40411
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request fails.
+	// The error message returned if the call failed.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type GetDataAgentTaskModelUsageResponseBody struct {
 	//
 	// 67E910F2-***695C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// - **true**: The request is successful.
+	// - **true**: The request was successful.
 	//
-	// - **false**: The request fails.
+	// - **false**: The request failed.
 	//
 	// example:
 	//

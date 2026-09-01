@@ -545,7 +545,8 @@ func (s *SendChatMessageRequestDataSourcePermission) Validate() error {
 
 type SendChatMessageRequestDataSourcePermissionTables struct {
 	// The list of columns that are allowed to be queried in the current table. If this field is left empty, all columns can be queried. If specified, SQL statements that exceed the allowed scope are blocked. For example, syntax such as SELECT 	- is blocked. To ensure DataAgent analysis effectiveness, avoid specifying columns beyond the allowed scope in the DataAgent prompts, knowledge, or instructions modules. Otherwise, unauthorized SQL statements may be generated and blocked, which reduces DataAgent analysis speed and effectiveness.
-	AllowedColumns []*string `json:"AllowedColumns,omitempty" xml:"AllowedColumns,omitempty" type:"Repeated"`
+	AllowedColumns    []*string `json:"AllowedColumns,omitempty" xml:"AllowedColumns,omitempty" type:"Repeated"`
+	DisallowedColumns []*string `json:"DisallowedColumns,omitempty" xml:"DisallowedColumns,omitempty" type:"Repeated"`
 	// The required row filter condition for the current table. If this field is left empty, it is ignored. If specified, all SQL statements involving this table are validated to check whether they include the filter field and whether the WHERE condition meets the constraint. SQL statements that do not meet the constraint are rejected. Ensure the validation condition format is correct.
 	//
 	// example:
@@ -572,6 +573,10 @@ func (s *SendChatMessageRequestDataSourcePermissionTables) GetAllowedColumns() [
 	return s.AllowedColumns
 }
 
+func (s *SendChatMessageRequestDataSourcePermissionTables) GetDisallowedColumns() []*string {
+	return s.DisallowedColumns
+}
+
 func (s *SendChatMessageRequestDataSourcePermissionTables) GetRequiredRowFilter() *string {
 	return s.RequiredRowFilter
 }
@@ -582,6 +587,11 @@ func (s *SendChatMessageRequestDataSourcePermissionTables) GetTableName() *strin
 
 func (s *SendChatMessageRequestDataSourcePermissionTables) SetAllowedColumns(v []*string) *SendChatMessageRequestDataSourcePermissionTables {
 	s.AllowedColumns = v
+	return s
+}
+
+func (s *SendChatMessageRequestDataSourcePermissionTables) SetDisallowedColumns(v []*string) *SendChatMessageRequestDataSourcePermissionTables {
+	s.DisallowedColumns = v
 	return s
 }
 
@@ -828,7 +838,8 @@ func (s *SendChatMessageRequestDataSourcesPermission) Validate() error {
 
 type SendChatMessageRequestDataSourcesPermissionTables struct {
 	// The list of columns that are allowed to be queried in the current table. If this field is left empty, all columns can be queried. If specified, SQL statements that exceed the allowed scope are blocked. For example, syntax such as SELECT 	- is blocked. To ensure DataAgent analysis effectiveness, avoid specifying columns beyond the allowed scope in the DataAgent prompts, knowledge, or instructions modules. Otherwise, unauthorized SQL statements may be generated and blocked, which reduces DataAgent analysis speed and effectiveness.
-	AllowedColumns []*string `json:"AllowedColumns,omitempty" xml:"AllowedColumns,omitempty" type:"Repeated"`
+	AllowedColumns    []*string `json:"AllowedColumns,omitempty" xml:"AllowedColumns,omitempty" type:"Repeated"`
+	DisallowedColumns []*string `json:"DisallowedColumns,omitempty" xml:"DisallowedColumns,omitempty" type:"Repeated"`
 	// The required row filter condition for the current table. If this field is left empty, it is ignored. If specified, all SQL statements involving this table are validated to check whether they include the filter field and whether the WHERE condition meets the constraint. SQL statements that do not meet the constraint are rejected. Ensure the validation condition format is correct.
 	//
 	// example:
@@ -855,6 +866,10 @@ func (s *SendChatMessageRequestDataSourcesPermissionTables) GetAllowedColumns() 
 	return s.AllowedColumns
 }
 
+func (s *SendChatMessageRequestDataSourcesPermissionTables) GetDisallowedColumns() []*string {
+	return s.DisallowedColumns
+}
+
 func (s *SendChatMessageRequestDataSourcesPermissionTables) GetRequiredRowFilter() *string {
 	return s.RequiredRowFilter
 }
@@ -865,6 +880,11 @@ func (s *SendChatMessageRequestDataSourcesPermissionTables) GetTableName() *stri
 
 func (s *SendChatMessageRequestDataSourcesPermissionTables) SetAllowedColumns(v []*string) *SendChatMessageRequestDataSourcesPermissionTables {
 	s.AllowedColumns = v
+	return s
+}
+
+func (s *SendChatMessageRequestDataSourcesPermissionTables) SetDisallowedColumns(v []*string) *SendChatMessageRequestDataSourcesPermissionTables {
+	s.DisallowedColumns = v
 	return s
 }
 
@@ -931,6 +951,8 @@ type SendChatMessageRequestSessionConfig struct {
 	//
 	// ANALYSIS
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// session 级权限生效机制配置，仅含未配置表的默认行为
+	PermissionConfig *SendChatMessageRequestSessionConfigPermissionConfig `json:"PermissionConfig,omitempty" xml:"PermissionConfig,omitempty" type:"Struct"`
 	// Specifies whether to enable the plan. Valid values: disable, enable, force. Default value: enable.
 	//
 	// example:
@@ -1006,6 +1028,10 @@ func (s *SendChatMessageRequestSessionConfig) GetMode() *string {
 	return s.Mode
 }
 
+func (s *SendChatMessageRequestSessionConfig) GetPermissionConfig() *SendChatMessageRequestSessionConfigPermissionConfig {
+	return s.PermissionConfig
+}
+
 func (s *SendChatMessageRequestSessionConfig) GetPlanMode() *string {
 	return s.PlanMode
 }
@@ -1069,6 +1095,11 @@ func (s *SendChatMessageRequestSessionConfig) SetMode(v string) *SendChatMessage
 	return s
 }
 
+func (s *SendChatMessageRequestSessionConfig) SetPermissionConfig(v *SendChatMessageRequestSessionConfigPermissionConfig) *SendChatMessageRequestSessionConfig {
+	s.PermissionConfig = v
+	return s
+}
+
 func (s *SendChatMessageRequestSessionConfig) SetPlanMode(v string) *SendChatMessageRequestSessionConfig {
 	s.PlanMode = &v
 	return s
@@ -1105,6 +1136,37 @@ func (s *SendChatMessageRequestSessionConfig) SetUserSpecifiedSkillList(v []*str
 }
 
 func (s *SendChatMessageRequestSessionConfig) Validate() error {
+	if s.PermissionConfig != nil {
+		if err := s.PermissionConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type SendChatMessageRequestSessionConfigPermissionConfig struct {
+	// 未配置表的默认行为：allow=放行（默认），deny=拒绝
+	DefaultAction *string `json:"DefaultAction,omitempty" xml:"DefaultAction,omitempty"`
+}
+
+func (s SendChatMessageRequestSessionConfigPermissionConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SendChatMessageRequestSessionConfigPermissionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SendChatMessageRequestSessionConfigPermissionConfig) GetDefaultAction() *string {
+	return s.DefaultAction
+}
+
+func (s *SendChatMessageRequestSessionConfigPermissionConfig) SetDefaultAction(v string) *SendChatMessageRequestSessionConfigPermissionConfig {
+	s.DefaultAction = &v
+	return s
+}
+
+func (s *SendChatMessageRequestSessionConfigPermissionConfig) Validate() error {
 	return dara.Validate(s)
 }
 

@@ -15,6 +15,8 @@ type iGetDataAgentTaskModelUsageMetricsRequest interface {
 	GetDMSUnit() *string
 	SetEndTime(v string) *GetDataAgentTaskModelUsageMetricsRequest
 	GetEndTime() *string
+	SetInstanceIds(v []*string) *GetDataAgentTaskModelUsageMetricsRequest
+	GetInstanceIds() []*string
 	SetPayLevel(v string) *GetDataAgentTaskModelUsageMetricsRequest
 	GetPayLevel() *string
 	SetRegionId(v string) *GetDataAgentTaskModelUsageMetricsRequest
@@ -39,8 +41,9 @@ type GetDataAgentTaskModelUsageMetricsRequest struct {
 	// example:
 	//
 	// 1735747200
-	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	PayLevel *string `json:"PayLevel,omitempty" xml:"PayLevel,omitempty"`
+	EndTime     *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	PayLevel    *string   `json:"PayLevel,omitempty" xml:"PayLevel,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -69,6 +72,10 @@ func (s *GetDataAgentTaskModelUsageMetricsRequest) GetEndTime() *string {
 	return s.EndTime
 }
 
+func (s *GetDataAgentTaskModelUsageMetricsRequest) GetInstanceIds() []*string {
+	return s.InstanceIds
+}
+
 func (s *GetDataAgentTaskModelUsageMetricsRequest) GetPayLevel() *string {
 	return s.PayLevel
 }
@@ -89,6 +96,11 @@ func (s *GetDataAgentTaskModelUsageMetricsRequest) SetDMSUnit(v string) *GetData
 
 func (s *GetDataAgentTaskModelUsageMetricsRequest) SetEndTime(v string) *GetDataAgentTaskModelUsageMetricsRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *GetDataAgentTaskModelUsageMetricsRequest) SetInstanceIds(v []*string) *GetDataAgentTaskModelUsageMetricsRequest {
+	s.InstanceIds = v
 	return s
 }
 
