@@ -540,6 +540,90 @@ func (client *Client) AddSQLRateLimitingRulesWithContext(ctx context.Context, re
 
 // Summary:
 //
+// 知识库单轮问答
+//
+// @param request - AnswerKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AnswerKnowledgeBaseResponse
+func (client *Client) AnswerKnowledgeBaseWithContext(ctx context.Context, request *AnswerKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *AnswerKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		query["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.MaxContextChars) {
+		query["MaxContextChars"] = request.MaxContextChars
+	}
+
+	if !dara.IsNil(request.QueryText) {
+		query["QueryText"] = request.QueryText
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RerankEnabled) {
+		query["RerankEnabled"] = request.RerankEnabled
+	}
+
+	if !dara.IsNil(request.ReturnSources) {
+		query["ReturnSources"] = request.ReturnSources
+	}
+
+	if !dara.IsNil(request.ScoreThreshold) {
+		query["ScoreThreshold"] = request.ScoreThreshold
+	}
+
+	if !dara.IsNil(request.SearchMode) {
+		query["SearchMode"] = request.SearchMode
+	}
+
+	if !dara.IsNil(request.SystemPrompt) {
+		query["SystemPrompt"] = request.SystemPrompt
+	}
+
+	if !dara.IsNil(request.TopK) {
+		query["TopK"] = request.TopK
+	}
+
+	if !dara.IsNil(request.UserInstructions) {
+		query["UserInstructions"] = request.UserInstructions
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AnswerKnowledgeBase"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AnswerKnowledgeBaseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Applies prompts to an application instance.
 //
 // Description:
@@ -5420,6 +5504,86 @@ func (client *Client) CreateGwConsumerOrderWithContext(ctx context.Context, requ
 
 // Summary:
 //
+// 创建知识库同步链路
+//
+// @param request - CreateKBSyncLinkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateKBSyncLinkResponse
+func (client *Client) CreateKBSyncLinkWithContext(ctx context.Context, request *CreateKBSyncLinkRequest, runtime *dara.RuntimeOptions) (_result *CreateKBSyncLinkResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientId) {
+		query["ClientId"] = request.ClientId
+	}
+
+	if !dara.IsNil(request.ClientSecret) {
+		query["ClientSecret"] = request.ClientSecret
+	}
+
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		query["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.LinkName) {
+		query["LinkName"] = request.LinkName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SourceDir) {
+		query["SourceDir"] = request.SourceDir
+	}
+
+	if !dara.IsNil(request.SourceType) {
+		query["SourceType"] = request.SourceType
+	}
+
+	if !dara.IsNil(request.SyncIntervalMinutes) {
+		query["SyncIntervalMinutes"] = request.SyncIntervalMinutes
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateKBSyncLink"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateKBSyncLinkResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a knowledge base.
 //
 // @param request - CreateKnowledgeBaseRequest
@@ -8912,6 +9076,58 @@ func (client *Client) DeleteGlobalSecurityIPGroupWithContext(ctx context.Context
 
 // Summary:
 //
+// 删除知识库同步链路
+//
+// @param request - DeleteKBSyncLinkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteKBSyncLinkResponse
+func (client *Client) DeleteKBSyncLinkWithContext(ctx context.Context, request *DeleteKBSyncLinkRequest, runtime *dara.RuntimeOptions) (_result *DeleteKBSyncLinkResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		query["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.LinkId) {
+		query["LinkId"] = request.LinkId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteKBSyncLink"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteKBSyncLinkResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a knowledge base.
 //
 // @param request - DeleteKnowledgeBaseRequest
@@ -8950,6 +9166,58 @@ func (client *Client) DeleteKnowledgeBaseWithContext(ctx context.Context, reques
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteKnowledgeBaseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除知识库文件
+//
+// @param request - DeleteKnowledgeBaseFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteKnowledgeBaseFileResponse
+func (client *Client) DeleteKnowledgeBaseFileWithContext(ctx context.Context, request *DeleteKnowledgeBaseFileRequest, runtime *dara.RuntimeOptions) (_result *DeleteKnowledgeBaseFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		query["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteKnowledgeBaseFile"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteKnowledgeBaseFileResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -17684,6 +17952,110 @@ func (client *Client) DescribeHistoryTasksStatWithContext(ctx context.Context, r
 
 // Summary:
 //
+// 查询知识库同步列表
+//
+// @param request - DescribeKBSyncLinksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeKBSyncLinksResponse
+func (client *Client) DescribeKBSyncLinksWithContext(ctx context.Context, request *DescribeKBSyncLinksRequest, runtime *dara.RuntimeOptions) (_result *DescribeKBSyncLinksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImPlatform) {
+		query["ImPlatform"] = request.ImPlatform
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		query["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeKBSyncLinks"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeKBSyncLinksResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询知识库单轮问答结果
+//
+// @param request - DescribeKnowledgeBaseAnswerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeKnowledgeBaseAnswerResponse
+func (client *Client) DescribeKnowledgeBaseAnswerWithContext(ctx context.Context, request *DescribeKnowledgeBaseAnswerRequest, runtime *dara.RuntimeOptions) (_result *DescribeKnowledgeBaseAnswerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		query["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.QueryId) {
+		query["QueryId"] = request.QueryId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeKnowledgeBaseAnswer"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeKnowledgeBaseAnswerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a knowledge base.
 //
 // @param request - DescribeKnowledgeBaseAttributeRequest
@@ -17722,6 +18094,138 @@ func (client *Client) DescribeKnowledgeBaseAttributeWithContext(ctx context.Cont
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeKnowledgeBaseAttributeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询知识库文件分片列表
+//
+// @param request - DescribeKnowledgeBaseFileShardsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeKnowledgeBaseFileShardsResponse
+func (client *Client) DescribeKnowledgeBaseFileShardsWithContext(ctx context.Context, request *DescribeKnowledgeBaseFileShardsRequest, runtime *dara.RuntimeOptions) (_result *DescribeKnowledgeBaseFileShardsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		query["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeKnowledgeBaseFileShards"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeKnowledgeBaseFileShardsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询知识库文件列表
+//
+// @param request - DescribeKnowledgeBaseFilesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeKnowledgeBaseFilesResponse
+func (client *Client) DescribeKnowledgeBaseFilesWithContext(ctx context.Context, request *DescribeKnowledgeBaseFilesRequest, runtime *dara.RuntimeOptions) (_result *DescribeKnowledgeBaseFilesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileIds) {
+		query["FileIds"] = request.FileIds
+	}
+
+	if !dara.IsNil(request.Keyword) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		query["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.LinkId) {
+		query["LinkId"] = request.LinkId
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SourceType) {
+		query["SourceType"] = request.SourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeKnowledgeBaseFiles"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeKnowledgeBaseFilesResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -17786,6 +18290,54 @@ func (client *Client) DescribeKnowledgeBasesWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeKnowledgeBasesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询知识空间详情
+//
+// @param request - DescribeKnowledgeSpaceAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeKnowledgeSpaceAttributeResponse
+func (client *Client) DescribeKnowledgeSpaceAttributeWithContext(ctx context.Context, request *DescribeKnowledgeSpaceAttributeRequest, runtime *dara.RuntimeOptions) (_result *DescribeKnowledgeSpaceAttributeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeSpaceId) {
+		query["KnowledgeSpaceId"] = request.KnowledgeSpaceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeKnowledgeSpaceAttribute"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeKnowledgeSpaceAttributeResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -30401,6 +30953,122 @@ func (client *Client) RestoreTableWithContext(ctx context.Context, request *Rest
 
 // Summary:
 //
+// 检索知识库
+//
+// @param request - RetrievalKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RetrievalKnowledgeBaseResponse
+func (client *Client) RetrievalKnowledgeBaseWithContext(ctx context.Context, request *RetrievalKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *RetrievalKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		query["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.QueryText) {
+		query["QueryText"] = request.QueryText
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RerankEnabled) {
+		query["RerankEnabled"] = request.RerankEnabled
+	}
+
+	if !dara.IsNil(request.ScoreThreshold) {
+		query["ScoreThreshold"] = request.ScoreThreshold
+	}
+
+	if !dara.IsNil(request.TopK) {
+		query["TopK"] = request.TopK
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RetrievalKnowledgeBase"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RetrievalKnowledgeBaseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量重试知识库失败文件
+//
+// @param request - RetryKnowledgeBaseFilesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RetryKnowledgeBaseFilesResponse
+func (client *Client) RetryKnowledgeBaseFilesWithContext(ctx context.Context, request *RetryKnowledgeBaseFilesRequest, runtime *dara.RuntimeOptions) (_result *RetryKnowledgeBaseFilesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileIds) {
+		query["FileIds"] = request.FileIds
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		query["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RetryKnowledgeBaseFiles"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RetryKnowledgeBaseFilesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Revokes access permissions on a database from a PolarDB standard account.
 //
 // @param request - RevokeAccountPrivilegeRequest
@@ -31133,6 +31801,58 @@ func (client *Client) TransformDBClusterPayTypeWithContext(ctx context.Context, 
 
 // Summary:
 //
+// 触发知识库同步
+//
+// @param request - TriggerKnowledgeBaseSyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TriggerKnowledgeBaseSyncResponse
+func (client *Client) TriggerKnowledgeBaseSyncWithContext(ctx context.Context, request *TriggerKnowledgeBaseSyncRequest, runtime *dara.RuntimeOptions) (_result *TriggerKnowledgeBaseSyncResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		query["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.LinkId) {
+		query["LinkId"] = request.LinkId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("TriggerKnowledgeBaseSync"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &TriggerKnowledgeBaseSyncResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Unbinds a PolarClaw Agent.
 //
 // @param request - UnbindPolarClawAgentRequest
@@ -31525,6 +32245,262 @@ func (client *Client) UpdateExtensionsWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateExtensionsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新知识库同步链路
+//
+// @param request - UpdateKBSyncLinkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateKBSyncLinkResponse
+func (client *Client) UpdateKBSyncLinkWithContext(ctx context.Context, request *UpdateKBSyncLinkRequest, runtime *dara.RuntimeOptions) (_result *UpdateKBSyncLinkResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		query["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.LinkId) {
+		query["LinkId"] = request.LinkId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SyncIntervalMinutes) {
+		query["SyncIntervalMinutes"] = request.SyncIntervalMinutes
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateKBSyncLink"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateKBSyncLinkResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新知识库
+//
+// @param request - UpdateKnowledgeBaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateKnowledgeBaseResponse
+func (client *Client) UpdateKnowledgeBaseWithContext(ctx context.Context, request *UpdateKnowledgeBaseRequest, runtime *dara.RuntimeOptions) (_result *UpdateKnowledgeBaseResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		query["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SearchMode) {
+		query["SearchMode"] = request.SearchMode
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateKnowledgeBase"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateKnowledgeBaseResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新知识库文件分块策略
+//
+// @param tmpReq - UpdateKnowledgeBaseFileShardingStrategyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateKnowledgeBaseFileShardingStrategyResponse
+func (client *Client) UpdateKnowledgeBaseFileShardingStrategyWithContext(ctx context.Context, tmpReq *UpdateKnowledgeBaseFileShardingStrategyRequest, runtime *dara.RuntimeOptions) (_result *UpdateKnowledgeBaseFileShardingStrategyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateKnowledgeBaseFileShardingStrategyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ShardingStrategyConfig) {
+		request.ShardingStrategyConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ShardingStrategyConfig, dara.String("ShardingStrategyConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FileId) {
+		query["FileId"] = request.FileId
+	}
+
+	if !dara.IsNil(request.InheritSpaceStrategy) {
+		query["InheritSpaceStrategy"] = request.InheritSpaceStrategy
+	}
+
+	if !dara.IsNil(request.KnowledgeBaseId) {
+		query["KnowledgeBaseId"] = request.KnowledgeBaseId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ShardingStrategyConfigShrink) {
+		query["ShardingStrategyConfig"] = request.ShardingStrategyConfigShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateKnowledgeBaseFileShardingStrategy"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateKnowledgeBaseFileShardingStrategyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新知识空间
+//
+// @param tmpReq - UpdateKnowledgeSpaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateKnowledgeSpaceResponse
+func (client *Client) UpdateKnowledgeSpaceWithContext(ctx context.Context, tmpReq *UpdateKnowledgeSpaceRequest, runtime *dara.RuntimeOptions) (_result *UpdateKnowledgeSpaceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpdateKnowledgeSpaceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ShardingStrategyConfig) {
+		request.ShardingStrategyConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ShardingStrategyConfig, dara.String("ShardingStrategyConfig"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.KnowledgeSpaceId) {
+		query["KnowledgeSpaceId"] = request.KnowledgeSpaceId
+	}
+
+	if !dara.IsNil(request.LLMModel) {
+		query["LLMModel"] = request.LLMModel
+	}
+
+	if !dara.IsNil(request.Name) {
+		query["Name"] = request.Name
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.RerankModel) {
+		query["RerankModel"] = request.RerankModel
+	}
+
+	if !dara.IsNil(request.ShardingStrategyConfigShrink) {
+		query["ShardingStrategyConfig"] = request.ShardingStrategyConfigShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateKnowledgeSpace"),
+		Version:     dara.String("2017-08-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateKnowledgeSpaceResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
