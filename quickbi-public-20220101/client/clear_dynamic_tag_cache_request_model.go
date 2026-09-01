@@ -14,6 +14,8 @@ type iClearDynamicTagCacheRequest interface {
 }
 
 type ClearDynamicTagCacheRequest struct {
+	// The ID of the tag configuration.
+	//
 	// This parameter is required.
 	//
 	// example:

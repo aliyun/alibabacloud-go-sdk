@@ -83,7 +83,7 @@ func (s *QueryUserByMobileAccountResponseBody) Validate() error {
 }
 
 type QueryUserByMobileAccountResponseBodyResult struct {
-	// The QuickBI user ID of the bound account.
+	// The Quick BI user ID of the bound account.
 	//
 	// example:
 	//

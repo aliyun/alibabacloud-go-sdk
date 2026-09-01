@@ -131,6 +131,10 @@ type QueryUserInfoByUserIdResponseBodyResult struct {
 	//
 	// 1386587****@163.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// true
+	IsDeleted *bool `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
 	// The nickname of the user.
 	//
 	// example:
@@ -197,6 +201,10 @@ func (s *QueryUserInfoByUserIdResponseBodyResult) GetEmail() *string {
 	return s.Email
 }
 
+func (s *QueryUserInfoByUserIdResponseBodyResult) GetIsDeleted() *bool {
+	return s.IsDeleted
+}
+
 func (s *QueryUserInfoByUserIdResponseBodyResult) GetNickName() *string {
 	return s.NickName
 }
@@ -244,6 +252,11 @@ func (s *QueryUserInfoByUserIdResponseBodyResult) SetCopilotModules(v []*string)
 
 func (s *QueryUserInfoByUserIdResponseBodyResult) SetEmail(v string) *QueryUserInfoByUserIdResponseBodyResult {
 	s.Email = &v
+	return s
+}
+
+func (s *QueryUserInfoByUserIdResponseBodyResult) SetIsDeleted(v bool) *QueryUserInfoByUserIdResponseBodyResult {
+	s.IsDeleted = &v
 	return s
 }
 

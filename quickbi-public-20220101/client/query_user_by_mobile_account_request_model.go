@@ -22,7 +22,7 @@ type QueryUserByMobileAccountRequest struct {
 	//
 	// - WeCom: corp_weixin
 	//
-	// - Lark: feishu.
+	// - Lark: feishu
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type QueryUserByMobileAccountRequest struct {
 	//
 	// - Lark: The userId of the Lark account.
 	//
-	// 	Notice: The mobileUserId must be obtained by calling the relevant DingTalk, WeCom, or Lark API operations..
+	// 	Notice: The mobileUserId must be obtained by calling the relevant API operations of DingTalk, WeCom, or Lark.
 	//
 	// This parameter is required.
 	//

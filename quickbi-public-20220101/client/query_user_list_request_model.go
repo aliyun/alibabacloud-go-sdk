@@ -18,15 +18,15 @@ type iQueryUserListRequest interface {
 }
 
 type QueryUserListRequest struct {
-	// The keyword to search for organization members by username or nickname.
+	// The keyword for the username or nickname of the organization member.
 	//
 	// example:
 	//
 	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The page number to return.
+	// The page number of the organization member list.
 	//
-	// - Starting value: 1
+	// - Minimum value: 1
 	//
 	// - Default value: 1
 	//
@@ -34,7 +34,7 @@ type QueryUserListRequest struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of organization members to return per page.
+	// The number of rows per page in a paged query.
 	//
 	// - Default value: 10
 	//

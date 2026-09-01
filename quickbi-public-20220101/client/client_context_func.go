@@ -1121,7 +1121,7 @@ func (client *Client) CheckReadableWithContext(ctx context.Context, request *Che
 
 // Summary:
 //
-// 删除单条配置的标签值缓存
+// Deletes the cached tag value for a single configuration.
 //
 // @param request - ClearDynamicTagCacheRequest
 //
@@ -2909,7 +2909,7 @@ func (client *Client) ListDataSourceWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 获取当前组织的动态标签列表
+// Retrieves the list of dynamic labels for the current organization.
 //
 // @param request - ListDynamicTagRequest
 //
@@ -5474,7 +5474,7 @@ func (client *Client) QueryUserInfoByUserIdWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Lists organization members.
+// Queries the list of organization members.
 //
 // @param request - QueryUserListRequest
 //
@@ -6650,7 +6650,7 @@ func (client *Client) UpdateTicketNumWithContext(ctx context.Context, request *U
 
 // Summary:
 //
-// Update the information of a specific member in an organization.
+// Updates the information of a specified member in an organization.
 //
 // @param request - UpdateUserRequest
 //

@@ -24,13 +24,13 @@ type QueryUserListResponseBody struct {
 	//
 	// D787E1A3-A93C-424A-B626-C2B05DF8D885
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The paginated list of users. The `Data` parameter contains the details of each organization member.
+	// The paginated result of the user list. The detailed information of organization members is stored in the Data response parameter.
 	Result *QueryUserListResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// - `true`: The request was successful.
+	// - true: The request was successful.
 	//
-	// - `false`: The request failed.
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *QueryUserListResponseBody) Validate() error {
 }
 
 type QueryUserListResponseBodyResult struct {
-	// The list of users.
+	// The list of users returned by the request.
 	Data []*QueryUserListResponseBodyResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -91,13 +91,13 @@ type QueryUserListResponseBodyResult struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page.
+	// The number of rows per page specified in the request.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of matching users.
+	// The total number of rows.
 	//
 	// example:
 	//
@@ -178,7 +178,7 @@ func (s *QueryUserListResponseBodyResult) Validate() error {
 }
 
 type QueryUserListResponseBodyResultData struct {
-	// The Alibaba Cloud account ID. For users not added through RAM, this ID is available only after they log in.
+	// The Alibaba Cloud account ID. For users who are not added through RAM self-service, the Alibaba Cloud ID can only be obtained after they log on.
 	//
 	// example:
 	//
@@ -190,64 +190,69 @@ type QueryUserListResponseBodyResultData struct {
 	//
 	// test
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Indicates whether the user is an organization administrator. Valid values:
+	// Indicates whether the user is bound to the organization administrator role. Valid values:
 	//
-	// - `true`: Yes
+	// - true: Yes.
 	//
-	// - `false`: No
+	// - false: No.
 	//
-	// 	Notice:
-	//
-	// This parameter is deprecated. Use the `RoleIdList` parameter instead.
+	// <notice>This parameter is deprecated. Use the RoleIdList parameter instead.</notice>
 	//
 	// example:
 	//
 	// true
 	AdminUser *bool `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
-	// Indicates whether the user is a permission administrator. Valid values:
+	// Indicates whether the user is attached to the permission management administrator role. Valid values:
 	//
-	// - `true`: Yes
+	// - true: Yes.
 	//
-	// - `false`: No
+	// - false: No.
 	//
-	// 	Notice:
-	//
-	// This parameter is deprecated. Use the `RoleIdList` parameter instead.
+	// <notice>This parameter has expired and is no longer recommended. Use the RoleIdList parameter instead.</notice>
 	//
 	// example:
 	//
 	// true
-	AuthAdminUser  *bool     `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	AuthAdminUser *bool `json:"AuthAdminUser,omitempty" xml:"AuthAdminUser,omitempty"`
+	// The intelligent module quota of the user.
+	//
+	// - qreport: Q report
+	//
+	// - qExploreNum: Q exploration edition
+	//
+	// - smartQAskNum: Q data inquiry
+	//
+	// - smartQDevNum: Q builder
 	CopilotModules []*string `json:"CopilotModules,omitempty" xml:"CopilotModules,omitempty" type:"Repeated"`
-	// Indicates whether the user is inactive.
+	// The user status. Valid values:
 	//
-	// - `false`: Active
+	// - false: active
 	//
-	// - `true`: Inactive
+	// - true: inactive
 	//
 	// example:
 	//
 	// false
 	IsDeleted *bool `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// The Unix timestamp (in milliseconds) that indicates when the user joined the organization.
+	// The date when the member joined the organization.
 	//
 	// example:
 	//
 	// 1718691704000
 	JoinedDate *int64 `json:"JoinedDate,omitempty" xml:"JoinedDate,omitempty"`
-	// The Unix timestamp (in milliseconds) of the user\\"s last login.
+	// The last logon time.
 	//
 	// example:
 	//
 	// 1718761320681
 	LastLoginTime *int64 `json:"LastLoginTime,omitempty" xml:"LastLoginTime,omitempty"`
-	// The nickname of the user.
+	// The nickname of the organization member.
 	//
 	// example:
 	//
 	// test
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// The IDs of the organization roles assigned to the user.
+	// The list of organization role IDs bound to the user.
 	RoleIdList []*int64 `json:"RoleIdList,omitempty" xml:"RoleIdList,omitempty" type:"Repeated"`
 	// The user ID in Quick BI.
 	//
@@ -257,11 +262,11 @@ type QueryUserListResponseBodyResultData struct {
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The user type of the organization member. Valid values:
 	//
-	// - `1`: developer
+	// - 1: developer
 	//
-	// - `2`: viewer
+	// - 2: visitor
 	//
-	// - `3`: analyst
+	// - 3: analyst
 	//
 	// example:
 	//

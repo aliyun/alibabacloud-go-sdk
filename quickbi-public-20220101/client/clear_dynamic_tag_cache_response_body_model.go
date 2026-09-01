@@ -18,14 +18,24 @@ type iClearDynamicTagCacheResponseBody interface {
 }
 
 type ClearDynamicTagCacheResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 78C17888****C462E57A95
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the cache is purged.
+	//
+	// - true: The cache is purged.
+	//
+	// - false: No cache exists.
+	//
 	// example:
 	//
 	// true
 	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

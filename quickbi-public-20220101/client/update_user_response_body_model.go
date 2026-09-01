@@ -24,11 +24,11 @@ type UpdateUserResponseBody struct {
 	//
 	// DC4E1E63-B337-44F8-8C22-6F00DF67E2C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful. Valid values:
+	// The execution result of the operation. Valid values:
 	//
-	// - true: The operation was successful.
+	// - true: Successful.
 	//
-	// - false: The operation failed.
+	// - false: Failed.
 	//
 	// example:
 	//

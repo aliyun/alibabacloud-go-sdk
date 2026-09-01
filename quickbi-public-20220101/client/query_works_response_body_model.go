@@ -97,10 +97,11 @@ type QueryWorksResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 备注
+	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The directory to which the work belongs.
-	Directory *QueryWorksResponseBodyResultDirectory `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
+	Directory         *QueryWorksResponseBodyResultDirectory           `json:"Directory,omitempty" xml:"Directory,omitempty" type:"Struct"`
+	GlobalParamVoList []*QueryWorksResponseBodyResultGlobalParamVoList `json:"GlobalParamVoList,omitempty" xml:"GlobalParamVoList,omitempty" type:"Repeated"`
 	// The timestamp of the creation of the work in milliseconds.
 	//
 	// example:
@@ -117,7 +118,7 @@ type QueryWorksResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 张三
+	// Tom
 	ModifyName *string `json:"ModifyName,omitempty" xml:"ModifyName,omitempty"`
 	// The user ID of the work owner in the Quick BI.
 	//
@@ -129,7 +130,7 @@ type QueryWorksResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 张三
+	// Tom
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// Is it public
 	//
@@ -179,7 +180,7 @@ type QueryWorksResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 测试报表
+	// Test report
 	WorkName *string `json:"WorkName,omitempty" xml:"WorkName,omitempty"`
 	// Queries the types of works. Fill in the blanks to query all types. Valid values:
 	//
@@ -213,7 +214,7 @@ type QueryWorksResponseBodyResult struct {
 	//
 	// example:
 	//
-	// 测试空间
+	// Test Space
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
@@ -235,6 +236,10 @@ func (s *QueryWorksResponseBodyResult) GetDescription() *string {
 
 func (s *QueryWorksResponseBodyResult) GetDirectory() *QueryWorksResponseBodyResultDirectory {
 	return s.Directory
+}
+
+func (s *QueryWorksResponseBodyResult) GetGlobalParamVoList() []*QueryWorksResponseBodyResultGlobalParamVoList {
+	return s.GlobalParamVoList
 }
 
 func (s *QueryWorksResponseBodyResult) GetGmtCreate() *string {
@@ -305,6 +310,11 @@ func (s *QueryWorksResponseBodyResult) SetDescription(v string) *QueryWorksRespo
 
 func (s *QueryWorksResponseBodyResult) SetDirectory(v *QueryWorksResponseBodyResultDirectory) *QueryWorksResponseBodyResult {
 	s.Directory = v
+	return s
+}
+
+func (s *QueryWorksResponseBodyResult) SetGlobalParamVoList(v []*QueryWorksResponseBodyResultGlobalParamVoList) *QueryWorksResponseBodyResult {
+	s.GlobalParamVoList = v
 	return s
 }
 
@@ -384,6 +394,15 @@ func (s *QueryWorksResponseBodyResult) Validate() error {
 			return err
 		}
 	}
+	if s.GlobalParamVoList != nil {
+		for _, item := range s.GlobalParamVoList {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	return nil
 }
 
@@ -398,7 +417,7 @@ type QueryWorksResponseBodyResultDirectory struct {
 	//
 	// example:
 	//
-	// 测试目录
+	// Test directory
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The hierarchical structure of the directory ID to which the directory belongs. Separate the hierarchical structure with a /.
 	//
@@ -410,7 +429,7 @@ type QueryWorksResponseBodyResultDirectory struct {
 	//
 	// example:
 	//
-	// 测试目录
+	// Test directory
 	PathName *string `json:"PathName,omitempty" xml:"PathName,omitempty"`
 }
 
@@ -459,5 +478,72 @@ func (s *QueryWorksResponseBodyResultDirectory) SetPathName(v string) *QueryWork
 }
 
 func (s *QueryWorksResponseBodyResultDirectory) Validate() error {
+	return dara.Validate(s)
+}
+
+type QueryWorksResponseBodyResultGlobalParamVoList struct {
+	// example:
+	//
+	// string
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// example:
+	//
+	// lastQueryAt
+	ParamAlias *string `json:"ParamAlias,omitempty" xml:"ParamAlias,omitempty"`
+	// example:
+	//
+	// lastQueryAt
+	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	// example:
+	//
+	// false
+	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+}
+
+func (s QueryWorksResponseBodyResultGlobalParamVoList) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryWorksResponseBodyResultGlobalParamVoList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryWorksResponseBodyResultGlobalParamVoList) GetDataType() *string {
+	return s.DataType
+}
+
+func (s *QueryWorksResponseBodyResultGlobalParamVoList) GetParamAlias() *string {
+	return s.ParamAlias
+}
+
+func (s *QueryWorksResponseBodyResultGlobalParamVoList) GetParamName() *string {
+	return s.ParamName
+}
+
+func (s *QueryWorksResponseBodyResultGlobalParamVoList) GetRequired() *bool {
+	return s.Required
+}
+
+func (s *QueryWorksResponseBodyResultGlobalParamVoList) SetDataType(v string) *QueryWorksResponseBodyResultGlobalParamVoList {
+	s.DataType = &v
+	return s
+}
+
+func (s *QueryWorksResponseBodyResultGlobalParamVoList) SetParamAlias(v string) *QueryWorksResponseBodyResultGlobalParamVoList {
+	s.ParamAlias = &v
+	return s
+}
+
+func (s *QueryWorksResponseBodyResultGlobalParamVoList) SetParamName(v string) *QueryWorksResponseBodyResultGlobalParamVoList {
+	s.ParamName = &v
+	return s
+}
+
+func (s *QueryWorksResponseBodyResultGlobalParamVoList) SetRequired(v bool) *QueryWorksResponseBodyResultGlobalParamVoList {
+	s.Required = &v
+	return s
+}
+
+func (s *QueryWorksResponseBodyResultGlobalParamVoList) Validate() error {
 	return dara.Validate(s)
 }

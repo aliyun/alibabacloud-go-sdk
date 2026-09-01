@@ -18,11 +18,16 @@ type iListDynamicTagResponseBody interface {
 }
 
 type ListDynamicTagResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D787E1A**********DF8D885
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListDynamicTagResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The label list.
+	Result []*ListDynamicTagResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -78,30 +83,50 @@ func (s *ListDynamicTagResponseBody) Validate() error {
 }
 
 type ListDynamicTagResponseBodyResult struct {
+	// The column name of the associated data source.
+	//
 	// example:
 	//
 	// site_id
 	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// The ID of the individual configuration.
+	//
 	// example:
 	//
 	// cfg****14352318681088
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The name of the label configuration.
+	//
 	// example:
 	//
 	// eip
 	ConfigName *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	// The ID of the associated data source.
+	//
 	// example:
 	//
 	// a201c85c-******
 	DsId *string `json:"DsId,omitempty" xml:"DsId,omitempty"`
+	// The organization ID.
+	//
 	// example:
 	//
 	// 2fe4fbd8-****-****-b3e1-e92c7af083ea
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// The associated user attribute. Valid values:
+	//
+	// - 0: account ID
+	//
+	// - 1: account name
+	//
+	// - 2: nickname within the organization
+	//
 	// example:
 	//
 	// 1
 	RelatedAttribute *int32 `json:"RelatedAttribute,omitempty" xml:"RelatedAttribute,omitempty"`
+	// The table name of the associated data source.
+	//
 	// example:
 	//
 	// testTable02\\"\\"

@@ -40,7 +40,7 @@ type CreateCubeBySqlRequest struct {
 	//
 	// select 	- from qqq
 	CustomSql *string `json:"CustomSql,omitempty" xml:"CustomSql,omitempty"`
-	// The data source ID.
+	// The ID of the data source.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type CreateCubeBySqlRequest struct {
 	//
 	// ]
 	Placeholders *string `json:"Placeholders,omitempty" xml:"Placeholders,omitempty"`
-	// The Quick BI UserId of a user who has permissions to create datasets. This is not your Alibaba Cloud account ID. You can call the [QueryUserInfoByAccount](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryUserInfoByAccount?spm=api-workbench.api_explorer.0.0.672f50daGq9ooV&params=%7B%7D&tab=DOC&sdkStyle=old&RegionId=cn-hangzhou) operation to obtain the UserId.
+	// The UserId of a Quick BI user who has permissions to create datasets. This is not your Alibaba Cloud account ID. You can call the [QueryUserInfoByAccount](https://next.api.aliyun.com/api/quickbi-public/2022-01-01/QueryUserInfoByAccount?spm=api-workbench.api_explorer.0.0.672f50daGq9ooV&params=%7B%7D&tab=DOC&sdkStyle=old&RegionId=ap-southeast-1) operation to obtain the UserId.
 	//
 	// This parameter is required.
 	//

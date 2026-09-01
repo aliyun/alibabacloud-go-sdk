@@ -26,16 +26,16 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"us-east-1":             dara.String("quickbi-public.us-east-1.aliyuncs.com"),
-		"me-central-1":          dara.String("quickbi-public.me-central-1.aliyuncs.com"),
-		"eu-central-1":          dara.String("quickbi-public.eu-central-1.aliyuncs.com"),
-		"cn-shanghai-finance-1": dara.String("quickbi-public.cn-shanghai-finance-1.aliyuncs.com"),
-		"cn-hongkong":           dara.String("quickbi-public.cn-hongkong.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("quickbi-public.cn-hangzhou.aliyuncs.com"),
-		"ap-southeast-5":        dara.String("quickbi-public.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-3":        dara.String("quickbi-public.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-1":        dara.String("quickbi-public.ap-southeast-1.aliyuncs.com"),
 		"ap-northeast-1":        dara.String("quickbi-public.ap-northeast-1.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("quickbi-public.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-3":        dara.String("quickbi-public.ap-southeast-3.aliyuncs.com"),
+		"ap-southeast-5":        dara.String("quickbi-public.ap-southeast-5.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("quickbi-public.cn-hangzhou.aliyuncs.com"),
+		"cn-hongkong":           dara.String("quickbi-public.cn-hongkong.aliyuncs.com"),
+		"us-east-1":             dara.String("quickbi-public.us-east-1.aliyuncs.com"),
+		"eu-central-1":          dara.String("quickbi-public.eu-central-1.aliyuncs.com"),
+		"me-central-1":          dara.String("quickbi-public.me-central-1.aliyuncs.com"),
+		"cn-shanghai-finance-1": dara.String("quickbi-public.cn-shanghai-finance-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -1571,7 +1571,7 @@ func (client *Client) CheckReadable(request *CheckReadableRequest) (_result *Che
 
 // Summary:
 //
-// 删除单条配置的标签值缓存
+// Deletes the cached tag value for a single configuration.
 //
 // @param request - ClearDynamicTagCacheRequest
 //
@@ -1615,7 +1615,7 @@ func (client *Client) ClearDynamicTagCacheWithOptions(request *ClearDynamicTagCa
 
 // Summary:
 //
-// 删除单条配置的标签值缓存
+// Deletes the cached tag value for a single configuration.
 //
 // @param request - ClearDynamicTagCacheRequest
 //
@@ -3995,7 +3995,7 @@ func (client *Client) ListDataSource(request *ListDataSourceRequest) (_result *L
 
 // Summary:
 //
-// 获取当前组织的动态标签列表
+// Retrieves the list of dynamic labels for the current organization.
 //
 // @param request - ListDynamicTagRequest
 //
@@ -4032,7 +4032,7 @@ func (client *Client) ListDynamicTagWithOptions(request *ListDynamicTagRequest, 
 
 // Summary:
 //
-// 获取当前组织的动态标签列表
+// Retrieves the list of dynamic labels for the current organization.
 //
 // @param request - ListDynamicTagRequest
 //
@@ -7600,7 +7600,7 @@ func (client *Client) QueryUserInfoByUserId(request *QueryUserInfoByUserIdReques
 
 // Summary:
 //
-// Lists organization members.
+// Queries the list of organization members.
 //
 // @param request - QueryUserListRequest
 //
@@ -7640,7 +7640,7 @@ func (client *Client) QueryUserListWithOptions(request *QueryUserListRequest, ru
 
 // Summary:
 //
-// Lists organization members.
+// Queries the list of organization members.
 //
 // @param request - QueryUserListRequest
 //
@@ -9259,7 +9259,7 @@ func (client *Client) UpdateTicketNum(request *UpdateTicketNumRequest) (_result 
 
 // Summary:
 //
-// Update the information of a specific member in an organization.
+// Updates the information of a specified member in an organization.
 //
 // @param request - UpdateUserRequest
 //
@@ -9331,7 +9331,7 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 
 // Summary:
 //
-// Update the information of a specific member in an organization.
+// Updates the information of a specified member in an organization.
 //
 // @param request - UpdateUserRequest
 //

@@ -263,7 +263,8 @@ type QueryOrganizationWorkspaceListResponseBodyResultData struct {
 	// example:
 	//
 	// 该空间是测试空间
-	WorkspaceDescription *string `json:"WorkspaceDescription,omitempty" xml:"WorkspaceDescription,omitempty"`
+	WorkspaceDescription  *string                                                                    `json:"WorkspaceDescription,omitempty" xml:"WorkspaceDescription,omitempty"`
+	WorkspaceExportConfig *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig `json:"WorkspaceExportConfig,omitempty" xml:"WorkspaceExportConfig,omitempty" type:"Struct"`
 	// The workspace ID.
 	//
 	// example:
@@ -336,6 +337,10 @@ func (s *QueryOrganizationWorkspaceListResponseBodyResultData) GetRealOwnerAccou
 
 func (s *QueryOrganizationWorkspaceListResponseBodyResultData) GetWorkspaceDescription() *string {
 	return s.WorkspaceDescription
+}
+
+func (s *QueryOrganizationWorkspaceListResponseBodyResultData) GetWorkspaceExportConfig() *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig {
+	return s.WorkspaceExportConfig
 }
 
 func (s *QueryOrganizationWorkspaceListResponseBodyResultData) GetWorkspaceId() *string {
@@ -411,6 +416,11 @@ func (s *QueryOrganizationWorkspaceListResponseBodyResultData) SetWorkspaceDescr
 	return s
 }
 
+func (s *QueryOrganizationWorkspaceListResponseBodyResultData) SetWorkspaceExportConfig(v *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) *QueryOrganizationWorkspaceListResponseBodyResultData {
+	s.WorkspaceExportConfig = v
+	return s
+}
+
 func (s *QueryOrganizationWorkspaceListResponseBodyResultData) SetWorkspaceId(v string) *QueryOrganizationWorkspaceListResponseBodyResultData {
 	s.WorkspaceId = &v
 	return s
@@ -422,5 +432,142 @@ func (s *QueryOrganizationWorkspaceListResponseBodyResultData) SetWorkspaceName(
 }
 
 func (s *QueryOrganizationWorkspaceListResponseBodyResultData) Validate() error {
+	if s.WorkspaceExportConfig != nil {
+		if err := s.WorkspaceExportConfig.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig struct {
+	// example:
+	//
+	// true
+	AllowExcelImageFile *bool `json:"AllowExcelImageFile,omitempty" xml:"AllowExcelImageFile,omitempty"`
+	// example:
+	//
+	// true
+	DataExport *bool `json:"DataExport,omitempty" xml:"DataExport,omitempty"`
+	// example:
+	//
+	// true
+	DefaultExportType *bool `json:"DefaultExportType,omitempty" xml:"DefaultExportType,omitempty"`
+	// example:
+	//
+	// true
+	ExportMainSwitch *bool `json:"ExportMainSwitch,omitempty" xml:"ExportMainSwitch,omitempty"`
+	// example:
+	//
+	// true
+	ExportToLocal *bool `json:"ExportToLocal,omitempty" xml:"ExportToLocal,omitempty"`
+	// example:
+	//
+	// true
+	ExportToPublicWork *bool `json:"ExportToPublicWork,omitempty" xml:"ExportToPublicWork,omitempty"`
+	// example:
+	//
+	// true
+	ExportToServer *bool `json:"ExportToServer,omitempty" xml:"ExportToServer,omitempty"`
+	// example:
+	//
+	// true
+	ImageExport *bool `json:"ImageExport,omitempty" xml:"ImageExport,omitempty"`
+	// example:
+	//
+	// true
+	PdfExport *bool `json:"PdfExport,omitempty" xml:"PdfExport,omitempty"`
+}
+
+func (s QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) GetAllowExcelImageFile() *bool {
+	return s.AllowExcelImageFile
+}
+
+func (s *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) GetDataExport() *bool {
+	return s.DataExport
+}
+
+func (s *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) GetDefaultExportType() *bool {
+	return s.DefaultExportType
+}
+
+func (s *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) GetExportMainSwitch() *bool {
+	return s.ExportMainSwitch
+}
+
+func (s *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) GetExportToLocal() *bool {
+	return s.ExportToLocal
+}
+
+func (s *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) GetExportToPublicWork() *bool {
+	return s.ExportToPublicWork
+}
+
+func (s *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) GetExportToServer() *bool {
+	return s.ExportToServer
+}
+
+func (s *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) GetImageExport() *bool {
+	return s.ImageExport
+}
+
+func (s *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) GetPdfExport() *bool {
+	return s.PdfExport
+}
+
+func (s *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) SetAllowExcelImageFile(v bool) *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig {
+	s.AllowExcelImageFile = &v
+	return s
+}
+
+func (s *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) SetDataExport(v bool) *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig {
+	s.DataExport = &v
+	return s
+}
+
+func (s *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) SetDefaultExportType(v bool) *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig {
+	s.DefaultExportType = &v
+	return s
+}
+
+func (s *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) SetExportMainSwitch(v bool) *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig {
+	s.ExportMainSwitch = &v
+	return s
+}
+
+func (s *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) SetExportToLocal(v bool) *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig {
+	s.ExportToLocal = &v
+	return s
+}
+
+func (s *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) SetExportToPublicWork(v bool) *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig {
+	s.ExportToPublicWork = &v
+	return s
+}
+
+func (s *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) SetExportToServer(v bool) *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig {
+	s.ExportToServer = &v
+	return s
+}
+
+func (s *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) SetImageExport(v bool) *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig {
+	s.ImageExport = &v
+	return s
+}
+
+func (s *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) SetPdfExport(v bool) *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig {
+	s.PdfExport = &v
+	return s
+}
+
+func (s *QueryOrganizationWorkspaceListResponseBodyResultDataWorkspaceExportConfig) Validate() error {
 	return dara.Validate(s)
 }
