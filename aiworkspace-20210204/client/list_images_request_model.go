@@ -17,6 +17,8 @@ type iListImagesRequest interface {
 	GetLabels() *string
 	SetName(v string) *ListImagesRequest
 	GetName() *string
+	SetOptions(v string) *ListImagesRequest
+	GetOptions() *string
 	SetOrder(v string) *ListImagesRequest
 	GetOrder() *string
 	SetPageNumber(v int32) *ListImagesRequest
@@ -97,6 +99,10 @@ type ListImagesRequest struct {
 	//
 	// tensorflow_2.9
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ExactMatchName
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
 	// The order in which to sort the results of a paged query. This parameter is used with SortBy. The default value is ASC.
 	//
 	// - ASC: ascending order.
@@ -173,6 +179,10 @@ func (s *ListImagesRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *ListImagesRequest) GetOptions() *string {
+	return s.Options
+}
+
 func (s *ListImagesRequest) GetOrder() *string {
 	return s.Order
 }
@@ -218,6 +228,11 @@ func (s *ListImagesRequest) SetLabels(v string) *ListImagesRequest {
 
 func (s *ListImagesRequest) SetName(v string) *ListImagesRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *ListImagesRequest) SetOptions(v string) *ListImagesRequest {
+	s.Options = &v
 	return s
 }
 

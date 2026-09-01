@@ -4973,6 +4973,10 @@ func (client *Client) ListImagesWithContext(ctx context.Context, request *ListIm
 		query["Name"] = request.Name
 	}
 
+	if !dara.IsNil(request.Options) {
+		query["Options"] = request.Options
+	}
+
 	if !dara.IsNil(request.Order) {
 		query["Order"] = request.Order
 	}
