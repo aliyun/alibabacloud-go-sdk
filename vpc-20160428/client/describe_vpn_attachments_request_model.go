@@ -30,9 +30,9 @@ type iDescribeVpnAttachmentsRequest interface {
 }
 
 type DescribeVpnAttachmentsRequest struct {
-	// The type of resource to which the IPsec-VPN connection is associated. Default value: **CEN**.
+	// The type of resource to which the IPsec-VPN connection is attached. Default value: **CEN**.
 	//
-	// The value can only be **CEN**, which indicates that the system queries IPsec-VPN connections associated with transit router instances.
+	// The value can only be **CEN**, which indicates that the system queries IPsec-VPN connections that are associated with transit router instances.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeVpnAttachmentsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in paging queries. Default value: **10**. Valid values: **1*	- to **50**.
+	// The number of entries per page when using paging. Default value: **10**. Valid values: **1*	- to **50**.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeVpnAttachmentsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the IPsec-VPN connection.
 	//
-	// > If you do not specify an IPsec-VPN connection ID, the system queries all IPsec-VPN connections that are associated with transit router instances in the current region.
+	// > If you do not specify the IPsec-VPN connection ID, the system queries all IPsec-VPN connections that are associated with transit router instances in the current region.
 	//
 	// example:
 	//

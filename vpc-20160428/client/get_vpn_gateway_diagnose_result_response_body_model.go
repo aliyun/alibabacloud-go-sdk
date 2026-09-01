@@ -32,7 +32,7 @@ type iGetVpnGatewayDiagnoseResultResponseBody interface {
 }
 
 type GetVpnGatewayDiagnoseResultResponseBody struct {
-	// The time when the diagnostic started.
+	// The time when the diagnosis started.
 	//
 	// The time is displayed in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
@@ -40,15 +40,15 @@ type GetVpnGatewayDiagnoseResultResponseBody struct {
 	//
 	// 2022-12-15T05:28:57Z
 	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The diagnostic ID.
+	// The diagnosis ID.
 	//
 	// example:
 	//
 	// vpndgn-uf6sgneym02lxyuv4****
 	DiagnoseId *string `json:"DiagnoseId,omitempty" xml:"DiagnoseId,omitempty"`
-	// The list of diagnostic items.
+	// The list of diagnosis items.
 	DiagnoseResult []*GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult `json:"DiagnoseResult,omitempty" xml:"DiagnoseResult,omitempty" type:"Repeated"`
-	// The time when the diagnostic ended.
+	// The time when the diagnosis ended.
 	//
 	// The time is displayed in UTC in the `YYYY-MM-DDThh:mm:ssZ` format.
 	//
@@ -56,7 +56,7 @@ type GetVpnGatewayDiagnoseResultResponseBody struct {
 	//
 	// 2022-12-15T05:29:08Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The number of diagnostic items that have been completed.
+	// The number of diagnosis items that have been completed.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type GetVpnGatewayDiagnoseResultResponseBody struct {
 	//
 	// IPsec
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The total number of diagnostic items.
+	// The total number of diagnosis items.
 	//
 	// example:
 	//
@@ -208,7 +208,7 @@ func (s *GetVpnGatewayDiagnoseResultResponseBody) Validate() error {
 }
 
 type GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult struct {
-	// The diagnostic item.
+	// The diagnosis item.
 	//
 	// - **RouteEntryConflict**: route conflict.
 	//
@@ -224,15 +224,15 @@ type GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult struct {
 	//
 	// - **VcoPrivateConnectivity**: private network connectivity.
 	//
-	// For more information about each diagnostic item, see [One-click diagnostics background information](https://help.aliyun.com/document_detail/190330.html).
+	// For more information about each diagnosis item, see [Background information about one-click diagnosis](https://help.aliyun.com/document_detail/190330.html).
 	//
 	// example:
 	//
 	// RouteEntryConflict
 	DiagnoseName *string `json:"DiagnoseName,omitempty" xml:"DiagnoseName,omitempty"`
-	// The diagnostic result of the diagnostic item.
+	// The diagnosis result of the diagnosis item.
 	//
-	// The operation returns different information for each diagnostic item:
+	// The operation returns different information for each diagnosis item:
 	//
 	// - **RouteEntryConflict**: The system returns information about the route conflict.
 	//
@@ -292,7 +292,7 @@ type GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult struct {
 	//
 	// {\\"targetIp\\":\\"192.168.0.1\\",\\"srcIp\\":\\"192.168.1.1\\",\\"rtt\\":-1.0,\\"lossRate\\":100.0}
 	DiagnoseResultDescription *string `json:"DiagnoseResultDescription,omitempty" xml:"DiagnoseResultDescription,omitempty"`
-	// The diagnostic result level of the diagnostic item.
+	// The diagnosis result level of the diagnosis item.
 	//
 	// - **normal**: Normal.
 	//
@@ -300,7 +300,7 @@ type GetVpnGatewayDiagnoseResultResponseBodyDiagnoseResult struct {
 	//
 	// - **error**: Error.
 	//
-	// For more information about the diagnostic result levels of each diagnostic item, see [One-click diagnostics background information](https://help.aliyun.com/document_detail/190330.html).
+	// For more information about the diagnosis result levels of each diagnosis item, see [Background information about one-click diagnosis](https://help.aliyun.com/document_detail/190330.html).
 	//
 	// example:
 	//

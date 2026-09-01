@@ -54,7 +54,7 @@ type DescribeVpnPbrRouteEntriesRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The VPN gateway instance ID.
+	// The instance ID of the VPN gateway.
 	//
 	// This parameter is required.
 	//

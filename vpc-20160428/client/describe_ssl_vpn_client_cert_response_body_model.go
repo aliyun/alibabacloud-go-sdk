@@ -102,7 +102,7 @@ type DescribeSslVpnClientCertResponseBody struct {
 	ClientKey *string `json:"ClientKey,omitempty" xml:"ClientKey,omitempty"`
 	// The timestamp when the SSL client certificate was created. Unit: milliseconds.
 	//
-	// The timestamp is in the UNIX format and represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp is in the Unix format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC, to the time when the SSL client certificate was created.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type DescribeSslVpnClientCertResponseBody struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The timestamp when the SSL client certificate expires. Unit: milliseconds.
 	//
-	// The timestamp is in the UNIX format and represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp is in the Unix format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC, to the time when the SSL client certificate expires.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type DescribeSslVpnClientCertResponseBody struct {
 	//
 	// vsc-bp13k5mp4tg8v3z9b****
 	SslVpnClientCertId *string `json:"SslVpnClientCertId,omitempty" xml:"SslVpnClientCertId,omitempty"`
-	// The ID of the SSL server.
+	// The SSL server ID.
 	//
 	// example:
 	//

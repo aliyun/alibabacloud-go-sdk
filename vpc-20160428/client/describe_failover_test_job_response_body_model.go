@@ -76,7 +76,7 @@ type DescribeFailoverTestJobResponseBodyFailoverTestJobModel struct {
 	//
 	// 60
 	JobDuration *string `json:"JobDuration,omitempty" xml:"JobDuration,omitempty"`
-	// The ID of the failover test job.
+	// The failover test job ID.
 	//
 	// example:
 	//
@@ -84,9 +84,9 @@ type DescribeFailoverTestJobResponseBodyFailoverTestJobModel struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The failover test type. Valid values:
 	//
-	// - **StartNow**: starts immediately. The failover test starts immediately after the job is created.
+	// - **StartNow**: start immediately. The test starts immediately after the job is created.
 	//
-	// - **StartLater**: starts later. Only the job is created without starting the test.
+	// - **StartLater**: start later. Only the test job is created without starting the test.
 	//
 	// example:
 	//
@@ -102,13 +102,13 @@ type DescribeFailoverTestJobResponseBodyFailoverTestJobModel struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The list of failover test resource IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type for the failover test. Valid values: **PHYSICALCONNECTION**: Express Connect circuit.
+	// The failover test resource type. Valid values: **PHYSICALCONNECTION**: Express Connect circuit.
 	//
 	// example:
 	//
 	// PHYSICALCONNECTION
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The start time of the failover test job. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format.
+	// The start time of the failover test job. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format as defined by ISO 8601.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ type DescribeFailoverTestJobResponseBodyFailoverTestJobModel struct {
 	//
 	// Init
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The end time of the failover test job. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format.
+	// The end time of the failover test job. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format as defined by ISO 8601.
 	//
 	// example:
 	//

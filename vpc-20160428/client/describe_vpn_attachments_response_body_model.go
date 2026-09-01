@@ -28,7 +28,7 @@ type DescribeVpnAttachmentsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in paging queries.
+	// The number of entries per page when using paging.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeVpnAttachmentsResponseBody struct {
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The list of IPsec-VPN connections associated with transit router instances.
+	// The list of IPsec-VPN connections that are associated with transit router instances.
 	VpnAttachments []*DescribeVpnAttachmentsResponseBodyVpnAttachments `json:"VpnAttachments,omitempty" xml:"VpnAttachments,omitempty" type:"Repeated"`
 }
 
@@ -117,7 +117,7 @@ func (s *DescribeVpnAttachmentsResponseBody) Validate() error {
 }
 
 type DescribeVpnAttachmentsResponseBodyVpnAttachments struct {
-	// The type of resource to which the IPsec-VPN connection is associated. The value is **CEN**, which indicates that the IPsec-VPN connection is associated with a transit router instance.
+	// The type of resource to which the IPsec-VPN connection is attached. The value is **CEN**, which indicates that the IPsec-VPN connection is associated with a transit router instance.
 	//
 	// example:
 	//
@@ -125,9 +125,9 @@ type DescribeVpnAttachmentsResponseBodyVpnAttachments struct {
 	AttachType *string `json:"AttachType,omitempty" xml:"AttachType,omitempty"`
 	// Indicates whether the IPsec-VPN connection is associated with a transit router instance that belongs to a different Alibaba Cloud account.
 	//
-	// - **true**: Yes.
+	// - **true**: The IPsec-VPN connection is associated with a cross-account transit router instance.
 	//
-	// - **false**: No.
+	// - **false**: The IPsec-VPN connection is not associated with a cross-account transit router instance.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type DescribeVpnAttachmentsResponseBodyVpnAttachments struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The system tags of the IPsec-VPN connection.
 	//
-	// You can use system tags to check whether the IPsec-VPN connection supports BGP. You can ignore other properties.
+	// You can use the system tags to check whether the IPsec-VPN connection supports BGP. You can ignore the other properties.
 	//
 	// **BGPSupport**: indicates whether the IPsec-VPN connection supports BGP.
 	//
@@ -163,7 +163,7 @@ type DescribeVpnAttachmentsResponseBodyVpnAttachments struct {
 	//
 	// example:
 	//
-	// {\\"description\\":\\"转发1.7.22\\",\\"VisuallySsl\\":\\"true\\",\\"PbrPriority\\":\\"true\\",\\"BGPSupport\\":\\"true\\",\\"IDaaSNewVersion\\":\\"true\\"}
+	// {\\"description\\":\\"forwarding1.7.22\\",\\"VisuallySsl\\":\\"true\\",\\"PbrPriority\\":\\"true\\",\\"BGPSupport\\":\\"true\\",\\"IDaaSNewVersion\\":\\"true\\"}
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The list of tags associated with the IPsec-VPN connection.
 	Tags []*DescribeVpnAttachmentsResponseBodyVpnAttachmentsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -181,9 +181,9 @@ type DescribeVpnAttachmentsResponseBodyVpnAttachments struct {
 	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
 	// The bandwidth specification of a single VPN tunnel. Valid values:
 	//
-	// Standard (default): standard. The default bandwidth is 1 Gbps.
+	// Standard (default): Standard. The default bandwidth is 1 Gbit/s.
 	//
-	// Large: large. The default bandwidth is 3 Gbps.
+	// Large: Large. The default bandwidth is 3 Gbit/s.
 	//
 	// example:
 	//

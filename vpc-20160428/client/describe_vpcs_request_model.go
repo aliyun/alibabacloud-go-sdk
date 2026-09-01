@@ -52,15 +52,15 @@ type DescribeVpcsRequest struct {
 	DhcpOptionsSetId *string `json:"DhcpOptionsSetId,omitempty" xml:"DhcpOptionsSetId,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: performs a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized RAM users, and missing parameter values. If the request fails the dry run, the corresponding error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized Resource Access Management (RAM) users, and missing parameter values. If the request fails the dry run, the corresponding error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): sends a normal request, and the resource status is directly queried after the request passes the check. An HTTP 2xx status code is returned.
+	// - **false*	- (default): sends a Normal request, and the resource status is directly queried after the request passes the authorization check. An HTTP 2xx status code is returned.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether to query VPCs that have IPv6 CIDR blocks enabled in the specified region. The default value is empty, which means no filtering is applied based on IPv6 enablement. Valid values:
+	// Specifies whether to query VPCs that have IPv6 CIDR blocks enabled in the specified region. The default value is empty, which means no filtering is performed based on IPv6 enablement. Valid values:
 	//
 	// - **false**: IPv6 is not enabled.
 	//
@@ -119,7 +119,7 @@ type DescribeVpcsRequest struct {
 	Tag []*DescribeVpcsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the VPC.
 	//
-	// You can specify up to 20 VPC IDs. Separate multiple IDs with commas (,).
+	// You can specify up to 20 VPC IDs. Separate multiple VPC IDs with commas (,).
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type DescribeVpcsRequest struct {
 	//
 	// Vpc-1
 	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	// The Alibaba Cloud account ID of the VPC owner.
+	// The Alibaba Cloud account ID that owns the VPC.
 	//
 	// example:
 	//
@@ -307,7 +307,7 @@ func (s *DescribeVpcsRequest) Validate() error {
 type DescribeVpcsRequestTag struct {
 	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -315,7 +315,7 @@ type DescribeVpcsRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

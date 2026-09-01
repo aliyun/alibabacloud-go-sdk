@@ -24,7 +24,7 @@ type iReleaseEipAddressRequest interface {
 }
 
 type ReleaseEipAddressRequest struct {
-	// The ID of the EIP to release.
+	// The ID of the EIP to be released.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ReleaseEipAddressRequest struct {
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the EIP to release. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query region IDs.
+	// The region ID of the EIP to be released. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// example:
 	//

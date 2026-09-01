@@ -48,9 +48,9 @@ type ModifyVpnPbrRouteEntryPriorityRequest struct {
 	//
 	// d7d24a21-f4ba-4454-9173-b3****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The new policy priority of the policy-based routing entry. Valid values: **1*	- to **100**.
+	// The new policy priority of the policy-based routing. Valid values: **1*	- to **100**.
 	//
-	// A smaller value indicates a higher policy priority for the routing entry.
+	// A smaller policy priority value indicates a higher priority of the routing.
 	//
 	// This parameter is required.
 	//
@@ -68,9 +68,9 @@ type ModifyVpnPbrRouteEntryPriorityRequest struct {
 	NextHop      *string `json:"NextHop,omitempty" xml:"NextHop,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The original policy priority of the policy-based routing entry. Valid values: **1*	- to **100**.
+	// The original policy priority of the policy-based routing. Valid values: **1*	- to **100**.
 	//
-	// A smaller value indicates a higher policy priority for the routing entry.
+	// A smaller policy priority value indicates a higher priority of the routing.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type ModifyVpnPbrRouteEntryPriorityRequest struct {
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The region ID of the VPN gateway instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//

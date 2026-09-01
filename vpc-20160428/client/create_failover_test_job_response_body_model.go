@@ -16,7 +16,7 @@ type iCreateFailoverTestJobResponseBody interface {
 }
 
 type CreateFailoverTestJobResponseBody struct {
-	// The ID of the failover test job.
+	// The failover test job ID.
 	//
 	// example:
 	//

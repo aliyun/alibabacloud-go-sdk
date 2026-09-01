@@ -56,7 +56,7 @@ type ModifyVcoRouteEntryWeightRequest struct {
 	//
 	// 0
 	NewWeight *int32 `json:"NewWeight,omitempty" xml:"NewWeight,omitempty"`
-	// The next hop of the destination route entry to modify.
+	// The next hop of the destination route entry to be modified.
 	//
 	// This parameter is required.
 	//
@@ -73,7 +73,7 @@ type ModifyVcoRouteEntryWeightRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	// The region ID of the IPsec-VPN connection.
 	//
-	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
+	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -83,7 +83,7 @@ type ModifyVcoRouteEntryWeightRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The destination CIDR block of the destination route entry to modify.
+	// The destination CIDR block of the destination route entry to be modified.
 	//
 	// This parameter is required.
 	//
@@ -99,7 +99,7 @@ type ModifyVcoRouteEntryWeightRequest struct {
 	//
 	// vco-p0w2jpkhi2eeop6q6****
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" xml:"VpnConnectionId,omitempty"`
-	// The current weight of the destination route entry to modify. Valid values:
+	// The current weight of the destination route entry to be modified. Valid values:
 	//
 	// - **0**: low priority.
 	//

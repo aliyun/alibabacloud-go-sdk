@@ -24,7 +24,7 @@ type AssociateVpcCidrBlockResponseBody struct {
 	//
 	// 192.168.0.0/16
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The IP address type of the secondary CIDR block.
+	// The IP address version of the secondary CIDR block.
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type iListVirtualPhysicalConnectionsRequest interface {
 }
 
 type ListVirtualPhysicalConnectionsRequest struct {
-	// Indicates whether the shared Express Connect circuits have been confirmed and accepted by the tenant. Valid values:
+	// Specifies whether the shared Express Connect circuits have been confirmed and accepted by the tenant. Valid values:
 	//
 	// - **true**: Yes.
 	//
@@ -52,11 +52,11 @@ type ListVirtualPhysicalConnectionsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Specifies whether a next query token is available. Valid values:
+	// Specifies whether a next query token exists. Valid values:
 	//
-	// - You do not need to specify this parameter for the first query or if no next query is available.
+	// - You do not need to specify this parameter for the first query or if no next query exists.
 	//
-	// - If a next query is available, set this parameter to the NextToken value returned in the previous API call.
+	// - If a next query exists, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type ListVirtualPhysicalConnectionsRequest struct {
 	//
 	// - **Normal**: Normal.
 	//
-	// - **FinancialLocked**: financial lock.
+	// - **FinancialLocked**: Locked due to overdue payment.
 	//
 	// - **SecurityLocked**: Locked for security reasons.
 	//
@@ -258,7 +258,7 @@ func (s *ListVirtualPhysicalConnectionsRequest) Validate() error {
 type ListVirtualPhysicalConnectionsRequestTags struct {
 	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -266,7 +266,7 @@ type ListVirtualPhysicalConnectionsRequestTags struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The tag value cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

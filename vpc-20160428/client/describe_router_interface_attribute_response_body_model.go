@@ -118,7 +118,7 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	// The business status of the router interface. Valid values:
 	//
-	// - **Normal**: Normal.
+	// - **Normal**: normal.
 	//
 	// - **FinancialLocked**: locked due to overdue payment.
 	//
@@ -144,23 +144,23 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the connection was established.
+	// The time when the connection was established. The time is displayed in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2022-04-14T08:58:04Z
 	ConnectedTime *string `json:"ConnectedTime,omitempty" xml:"ConnectedTime,omitempty"`
-	// The time when the router interface was created.
+	// The time when the router interface was created. The time is displayed in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2022-04-14T08:57:24Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Indicates whether the connection is a cross-border connection. Valid values:
+	// Indicates whether this is a cross-border connection. Valid values:
 	//
-	// - **false**: The connection is not a cross-border connection.
+	// - **false**: No.
 	//
-	// - **true**: The connection is a cross-border connection.
+	// - **true**: Yes.
 	//
 	// example:
 	//
@@ -170,19 +170,19 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	//
 	// example:
 	//
-	// 对端接口
+	// Peer interface
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The end time of the data retrieval.
+	// The end time of the data retrieval. The time is displayed in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2999-09-08T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Indicates whether the router interface on the VBR was created in fast link mode. Fast link mode allows the router interfaces on the VBR and VPC to be automatically connected after they are created. Valid values:
+	// Indicates whether the router interface on the VBR was created in fast link mode. Fast link mode allows the router interfaces on both the VBR and VPC sides to automatically connect after creation. Valid values:
 	//
-	// - **true**: The router interface was created in fast link mode.
+	// - **true**: Yes.
 	//
-	// - **false*	- (default): The router interface was not created in fast link mode.
+	// - **false*	- (default): No.
 	//
 	//
 	// > -  This parameter takes effect only when **RouterType*	- is set to **VBR*	- and **OppositeRouterType*	- is set to **VRouter**.
@@ -201,9 +201,9 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// Indicates whether renewal data exists. Valid values:
 	//
-	// - **false**: No renewal data exists.
+	// - **false**: No.
 	//
-	// - **true**: Renewal data exists.
+	// - **true**: Yes.
 	//
 	// example:
 	//
@@ -221,7 +221,7 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	//
 	// 8
 	HcThreshold *int32 `json:"HcThreshold,omitempty" xml:"HcThreshold,omitempty"`
-	// The source IP address of the health check.
+	// The health check source IP address.
 	//
 	// example:
 	//
@@ -231,7 +231,7 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	//
 	// - **Abnormal**: abnormal.
 	//
-	// - **Normal**: Normal.
+	// - **Normal**: normal.
 	//
 	// - **NoRedundantRoute**: no redundant route configured.
 	//
@@ -241,13 +241,13 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	//
 	// normal
 	HealthCheckStatus *string `json:"HealthCheckStatus,omitempty" xml:"HealthCheckStatus,omitempty"`
-	// The target IP address of the health check.
+	// The health check target IP address.
 	//
 	// example:
 	//
 	// 2.2.XX.XX
 	HealthCheckTargetIp *string `json:"HealthCheckTargetIp,omitempty" xml:"HealthCheckTargetIp,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -257,7 +257,7 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	//
 	// example:
 	//
-	// 路由器接口1
+	// RouterInterface1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the peer access point.
 	//
@@ -273,7 +273,7 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	OppositeBandwidth *int32 `json:"OppositeBandwidth,omitempty" xml:"OppositeBandwidth,omitempty"`
 	// The business status of the peer router interface. Valid values:
 	//
-	// - **Normal**: Normal.
+	// - **Normal**: normal.
 	//
 	// - **FinancialLocked**: locked due to overdue payment.
 	//
@@ -387,7 +387,7 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	//
 	// 01818199-04F6-47F4-9ADF-7CC824CF57A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The renewal active time.
+	// The renewal active time. The time is displayed in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -405,7 +405,7 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	//
 	// PayByBandwidth
 	ReservationInternetChargeType *string `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
-	// The type of the renewal order. Valid values: **RENEW**, which indicates a renewal order.
+	// The renewal order type. Valid values: **RENEW**, which indicates a renewal order.
 	//
 	// example:
 	//
@@ -508,7 +508,7 @@ type DescribeRouterInterfaceAttributeResponseBody struct {
 	// true
 	Success *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
 	Tags    *DescribeRouterInterfaceAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The ID of the virtual private cloud (VPC) to which the routing interface belongs.
+	// The ID of the virtual private cloud (VPC) to which the router interface belongs.
 	//
 	// example:
 	//

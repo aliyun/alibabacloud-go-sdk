@@ -48,11 +48,11 @@ type ListVpnCertificateAssociationsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. Valid values:
+	// The pagination token. Valid values:
 	//
-	// - If this is the first query or no next query exists, leave this parameter empty.
+	// - If this is the first query or no subsequent query exists, leave this parameter empty.
 	//
-	// - If a next query exists, set this parameter to the **NextToken*	- value returned by the previous API call.
+	// - If a subsequent query exists, set this parameter to the **NextToken*	- value returned by the previous API call.
 	//
 	// example:
 	//

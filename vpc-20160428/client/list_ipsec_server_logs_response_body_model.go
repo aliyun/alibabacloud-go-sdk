@@ -42,7 +42,7 @@ type ListIpsecServerLogsResponseBody struct {
 	//
 	// true
 	IsCompleted *bool `json:"IsCompleted,omitempty" xml:"IsCompleted,omitempty"`
-	// The page number of the list.
+	// The page number.
 	//
 	// example:
 	//

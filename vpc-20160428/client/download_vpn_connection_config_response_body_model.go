@@ -308,35 +308,35 @@ func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigBgpConfigsBgp
 }
 
 type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIkeConfig struct {
-	// The IKE phase authentication algorithm.
+	// The authentication algorithm of the IKE phase.
 	//
 	// example:
 	//
 	// sha1
 	IkeAuthAlg *string `json:"IkeAuthAlg,omitempty" xml:"IkeAuthAlg,omitempty"`
-	// The IKE phase encryption algorithm.
+	// The encryption algorithm of the IKE phase.
 	//
 	// example:
 	//
 	// aes
 	IkeEncAlg *string `json:"IkeEncAlg,omitempty" xml:"IkeEncAlg,omitempty"`
-	// The IKE phase lifetime. Unit: seconds.
+	// The lifetime of the IKE phase. Unit: seconds.
 	//
 	// example:
 	//
 	// 86400
 	IkeLifetime *int64 `json:"IkeLifetime,omitempty" xml:"IkeLifetime,omitempty"`
-	// The IKE negotiation mode. Valid values:
+	// The IKE negotiation mode.
 	//
-	// - **main**: Main mode. This mode provides high security during negotiation.
+	// - **main**: Main mode. This mode offers high negotiation security.
 	//
-	// - **aggressive**: Aggressive mode. This mode supports fast negotiation and a higher success rate.
+	// - **aggressive**: Aggressive mode. This mode supports fast negotiation and a high negotiation success rate.
 	//
 	// example:
 	//
 	// main
 	IkeMode *string `json:"IkeMode,omitempty" xml:"IkeMode,omitempty"`
-	// The DH group in the IKE phase.
+	// The DH group of the IKE phase.
 	//
 	// example:
 	//
@@ -462,25 +462,25 @@ func (s *DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIkeConfig) Va
 }
 
 type DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIpsecConfig struct {
-	// The IPsec phase authentication algorithm.
+	// The authentication algorithm of the IPsec phase.
 	//
 	// example:
 	//
 	// sha1
 	IpsecAuthAlg *string `json:"IpsecAuthAlg,omitempty" xml:"IpsecAuthAlg,omitempty"`
-	// The IPsec phase encryption algorithm.
+	// The encryption algorithm of the IPsec phase.
 	//
 	// example:
 	//
 	// aes
 	IpsecEncAlg *string `json:"IpsecEncAlg,omitempty" xml:"IpsecEncAlg,omitempty"`
-	// The IPsec phase lifetime. Unit: seconds.
+	// The lifetime of the IPsec phase. Unit: seconds.
 	//
 	// example:
 	//
 	// 86400
 	IpsecLifetime *int64 `json:"IpsecLifetime,omitempty" xml:"IpsecLifetime,omitempty"`
-	// The DH group in the IPsec phase.
+	// The DH group of the IPsec phase.
 	//
 	// example:
 	//

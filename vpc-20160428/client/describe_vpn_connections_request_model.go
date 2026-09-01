@@ -44,7 +44,7 @@ type DescribeVpnConnectionsRequest struct {
 	CustomerGatewayId *string `json:"CustomerGatewayId,omitempty" xml:"CustomerGatewayId,omitempty"`
 	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the list. Default value: **1**.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeVpnConnectionsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the IPsec-VPN connection.
 	//
-	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query region IDs.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +68,7 @@ type DescribeVpnConnectionsRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the IPsec-VPN connection belongs.
 	//
-	// You can call [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) to query resource group IDs.
+	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group IDs.
 	//
 	// example:
 	//
@@ -77,8 +77,6 @@ type DescribeVpnConnectionsRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The list of tags bound to the IPsec-VPN connection.
-	//
-	// You can specify up to 20 tags at a time.
 	Tag []*DescribeVpnConnectionsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the IPsec-VPN connection.
 	//
@@ -224,9 +222,9 @@ func (s *DescribeVpnConnectionsRequest) Validate() error {
 }
 
 type DescribeVpnConnectionsRequestTag struct {
-	// The tag key. If you specify this parameter, the value cannot be an empty string.
+	// The tag key. This value cannot be an empty string.
 	//
-	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// You can specify up to 20 tag keys at a time.
 	//
@@ -236,7 +234,7 @@ type DescribeVpnConnectionsRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// The tag value can be up to 128 characters in length and can be an empty string. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and can be an empty string. It cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
 	//
 	// Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
 	//

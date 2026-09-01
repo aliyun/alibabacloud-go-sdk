@@ -28,9 +28,9 @@ type iDeleteVpnGatewayRequest interface {
 type DeleteVpnGatewayRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// The client generates the value. Ensure that the value is unique among different requests. The token can be up to 64 ASCII characters in length.
+	// The client generates the value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
 	//
-	// > If you do not specify this parameter, the system uses the **RequestId*	- as the **ClientToken**. The **RequestId*	- may differ for each API request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may differ for each API request.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DeleteVpnGatewayRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the VPN gateway.
 	//
-	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query region IDs.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

@@ -106,13 +106,13 @@ type DeleteRouteEntriesResponseBodyFailedRouteEntries struct {
 	//
 	// 47.100.XX.XX/24
 	DstCidrBlock *string `json:"DstCidrBlock,omitempty" xml:"DstCidrBlock,omitempty"`
-	// The error code returned for the failure.
+	// The error code of the failure.
 	//
 	// example:
 	//
 	// VPC_ROUTER_ENTRY_NOT_EXIST
 	FailedCode *string `json:"FailedCode,omitempty" xml:"FailedCode,omitempty"`
-	// The error message returned for the failure.
+	// The error message of the failure.
 	//
 	// example:
 	//

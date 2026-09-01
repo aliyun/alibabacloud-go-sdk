@@ -22,7 +22,7 @@ type DescribeExpressConnectTrafficQosRuleResponseBody struct {
 	//
 	// 9C7FA9D6-72E0-48A9-A9C3-2DA8569CD5EB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The QoS rules.
+	// The list of QoS rules.
 	RuleList []*DescribeExpressConnectTrafficQosRuleResponseBodyRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
 }
 
@@ -66,23 +66,23 @@ func (s *DescribeExpressConnectTrafficQosRuleResponseBody) Validate() error {
 }
 
 type DescribeExpressConnectTrafficQosRuleResponseBodyRuleList struct {
-	// The destination IP address IPv4 CIDR block for QoS rule traffic matching.
+	// The destination IP address IPv4 CIDR block for traffic matching of the QoS rule.
 	//
-	// > You cannot specify this parameter together with **SrcIPv6Cidr*	- or **DstIPv6Cidr**.
+	// > This parameter cannot be specified together with **SrcIPv6Cidr*	- or **DstIPv6Cidr**.
 	//
 	// example:
 	//
 	// ``1.1.**.**``/24
 	DstCidr *string `json:"DstCidr,omitempty" xml:"DstCidr,omitempty"`
-	// The destination IP address IPv6 CIDR block for QoS rule traffic matching.
+	// The destination IP address IPv6 CIDR block for traffic matching of the QoS rule.
 	//
-	// > You cannot specify this parameter together with **SrcCidr*	- or **DstCidr**.
+	// > This parameter cannot be specified together with **SrcCidr*	- or **DstCidr**.
 	//
 	// example:
 	//
 	// 2001:0db8:1234:****::/64
 	DstIPv6Cidr *string `json:"DstIPv6Cidr,omitempty" xml:"DstIPv6Cidr,omitempty"`
-	// The destination port range for QoS rule traffic matching. Valid values: **0*	- to **65535**. A value of -1 indicates no match. Currently, only a single port number can be specified, and the start and end port numbers must be the same. The destination port range is fixed for each protocol type. Valid values:
+	// The destination port range for traffic matching of the QoS rule. Valid values: **0*	- to **65535**. A value of -1 indicates no match. Currently, only a single port number can be specified, and the start and end port numbers must be the same. The destination port range is fixed for different protocol types. Valid values:
 	//
 	// - **ALL**: -1/-1. Not editable.
 	//
@@ -120,13 +120,13 @@ type DescribeExpressConnectTrafficQosRuleResponseBodyRuleList struct {
 	//
 	// -1/-1
 	DstPortRange *string `json:"DstPortRange,omitempty" xml:"DstPortRange,omitempty"`
-	// The DSCP value for QoS rule traffic matching. Valid values: **0*	- to **63**. A value of -1 indicates no match.
+	// The DSCP value for traffic matching of the QoS rule. Valid values: **0*	- to **63**. A value of -1 indicates no match.
 	//
 	// example:
 	//
 	// 1
 	MatchDscp *int32 `json:"MatchDscp,omitempty" xml:"MatchDscp,omitempty"`
-	// The priority of the QoS rule. Valid values: **1*	- to **9000**. A larger value indicates a higher priority. QoS rule priorities must be unique within the same QoS policy.
+	// The priority of the QoS rule. Valid values: **1*	- to **9000**. A larger value indicates a higher priority. The priority must be unique within the same QoS policy.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ type DescribeExpressConnectTrafficQosRuleResponseBodyRuleList struct {
 	//
 	// qos-queue-9nyx2u7n71s2rc****
 	QueueId *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
-	// The remarked DSCP value in the traffic. Valid values: **0*	- to **63**. A value of -1 indicates no remarking.
+	// The DSCP value to remark in the traffic. Valid values: **0*	- to **63**. A value of -1 indicates no remarking.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type DescribeExpressConnectTrafficQosRuleResponseBodyRuleList struct {
 	RemarkingDscp *int32 `json:"RemarkingDscp,omitempty" xml:"RemarkingDscp,omitempty"`
 	// The description of the QoS rule.
 	//
-	// The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description is 0 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
@@ -204,29 +204,29 @@ type DescribeExpressConnectTrafficQosRuleResponseBodyRuleList struct {
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The name of the QoS rule.
 	//
-	// The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
+	// The name is 0 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// qos-rule-test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The source IPv4 CIDR block for QoS rule traffic matching.
+	// The source IPv4 CIDR block for traffic matching of the QoS rule.
 	//
-	// > You cannot specify this parameter together with **SrcIPv6Cidr*	- or **DstIPv6Cidr**.
+	// > This parameter cannot be specified together with **SrcIPv6Cidr*	- or **DstIPv6Cidr**.
 	//
 	// example:
 	//
 	// ``1.1.**.**``/24
 	SrcCidr *string `json:"SrcCidr,omitempty" xml:"SrcCidr,omitempty"`
-	// The source IPv6 CIDR block for QoS rule traffic matching.
+	// The source IPv6 CIDR block for traffic matching of the QoS rule.
 	//
-	// > You cannot specify this parameter together with **SrcCidr*	- or **DstCidr**.
+	// > This parameter cannot be specified together with **SrcCidr*	- or **DstCidr**.
 	//
 	// example:
 	//
 	// 2001:0db8:1234:****::/64
 	SrcIPv6Cidr *string `json:"SrcIPv6Cidr,omitempty" xml:"SrcIPv6Cidr,omitempty"`
-	// The source port range for QoS rule traffic matching. Valid values: **0*	- to **65535**. A value of -1 indicates no match. Currently, only a single port number can be specified, and the start and end port numbers must be the same.
+	// The source port range for traffic matching of the QoS rule. Valid values: **0*	- to **65535**. A value of -1 indicates no match. Currently, only a single port number can be specified, and the start and end port numbers must be the same.
 	//
 	// example:
 	//

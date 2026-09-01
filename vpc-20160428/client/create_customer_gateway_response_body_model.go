@@ -32,7 +32,7 @@ type CreateCustomerGatewayResponseBody struct {
 	//
 	// 1493363486000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The instance ID of the customer gateway instance.
+	// The instance ID of the customer gateway.
 	//
 	// example:
 	//

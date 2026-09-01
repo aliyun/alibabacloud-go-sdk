@@ -32,11 +32,11 @@ type iModifyVpnGatewayAttributeRequest interface {
 }
 
 type ModifyVpnGatewayAttributeRequest struct {
-	// Specifies whether to enable routing automatic propagation for the VPN gateway. Valid values:
+	// Specifies whether to enable the routing automatic propagation feature for the VPN gateway. Valid values:
 	//
 	// - **true**: enabled.
 	//
-	//     After routing automatic propagation is enabled, the VPN gateway instance performs automatic learning of system routes in the system route table of the VPC-connected instance and automatically propagates routes of the on-premises data center to the system route table of the VPC-connected instance.
+	//     After routing automatic propagation is enabled, the VPN gateway instance uses automatic learning to obtain system routes from the system route table of the VPC-connected instance and automatically propagates routes of the on-premises data center to the system route table of the VPC-connected instance.
 	//
 	// - **false**: disabled.
 	//
@@ -50,9 +50,9 @@ type ModifyVpnGatewayAttributeRequest struct {
 	AutoPropagate *bool `json:"AutoPropagate,omitempty" xml:"AutoPropagate,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the ClientToken. The RequestId may be different for each API request.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type ModifyVpnGatewayAttributeRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the VPN gateway instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
+	// The region ID of the VPN gateway instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
 	//
 	// This parameter is required.
 	//

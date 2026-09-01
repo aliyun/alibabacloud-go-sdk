@@ -28,11 +28,11 @@ type ListVirtualPhysicalConnectionsResponseBody struct {
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// Indicates whether a next query token is available. Valid values:
+	// Indicates whether a next query token exists. Valid values:
 	//
-	// - If **NextToken*	- is empty, no next query is available.
+	// - If **NextToken*	- is empty, no next query exists.
 	//
-	// - If **NextToken*	- is returned, the value indicates the token for the next query.
+	// - If **NextToken*	- has a return value, the value is the token for the next query.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections struct
 	//
 	// example:
 	//
-	// 余杭经济开发区XXX交叉口, 余杭XX机房, E***包间
+	// Yuhang Economic Development Zone, XX Intersection, Yuhang XX Data Center, Room E***
 	AdLocation *string `json:"AdLocation,omitempty" xml:"AdLocation,omitempty"`
 	// The Alibaba Cloud account ID of the shared Express Connect circuits owner.
 	//
@@ -149,7 +149,7 @@ type ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections struct
 	//
 	// - **Normal**: Enabled.
 	//
-	// - **FinancialLocked**: Financial lock.
+	// - **FinancialLocked**: Locked due to overdue payment.
 	//
 	// - **SecurityLocked**: Locked for security reasons.
 	//
@@ -171,11 +171,11 @@ type ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections struct
 	//
 	// longtel001
 	CircuitCode *string `json:"CircuitCode,omitempty" xml:"CircuitCode,omitempty"`
-	// The time when the Express Connect circuit was created.
+	// The time when the Express Connect circuit was created. The time is displayed in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
-	// 2021-06-08T12:20:55
+	// 2021-06-08T12:20:55Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The description of the Express Connect circuit.
 	//
@@ -183,21 +183,21 @@ type ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections struct
 	//
 	// desctest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the Express Connect circuit was enabled.
+	// The time when the Express Connect circuit was enabled. The time is displayed in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
-	// 2021-10-08T10:44Z
+	// 2021-10-08T10:44:00Z
 	EnabledTime *string `json:"EnabledTime,omitempty" xml:"EnabledTime,omitempty"`
 	// The expiration time of the shared Express Connect circuits.
 	//
-	// The time is displayed in the ISO 8601 standard in UTC. Format: YYYY-MM-DDThh:mm:ssZ.
+	// The time is displayed in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2021-11-08T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The expected bandwidth of the shared Express Connect circuits. The expected bandwidth takes effect only after payment is complete.
+	// The expected bandwidth value of the shared Express Connect circuits. The expected bandwidth value takes effect only after payment is completed.
 	//
 	// Unit: **M*	- indicates Mbit/s, and **G*	- indicates Gbit/s.
 	//
@@ -205,7 +205,7 @@ type ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections struct
 	//
 	// 50M
 	ExpectSpec *string `json:"ExpectSpec,omitempty" xml:"ExpectSpec,omitempty"`
-	// The carrier that provides the physical connection. Valid values:
+	// The carrier that provides the physical line for access. Valid values:
 	//
 	// - **CT**: China Telecom.
 	//
@@ -259,7 +259,7 @@ type ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections struct
 	//
 	// PayByPhysicalConnectionOwner
 	OrderMode *string `json:"OrderMode,omitempty" xml:"OrderMode,omitempty"`
-	// The Alibaba Cloud account ID to which the Express Connect circuit belongs.
+	// The Alibaba Cloud account ID that owns the Express Connect circuit.
 	//
 	// example:
 	//
@@ -275,7 +275,7 @@ type ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections struct
 	//
 	// example:
 	//
-	// 浙江省杭州市XX区XX街道XX号
+	// No. XX, XX Street, XX District, Hangzhou, Zhejiang Province
 	PeerLocation *string `json:"PeerLocation,omitempty" xml:"PeerLocation,omitempty"`
 	// The instance ID of the shared Express Connect circuits.
 	//
@@ -289,11 +289,11 @@ type ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections struct
 	//
 	// 80
 	PortNumber *string `json:"PortNumber,omitempty" xml:"PortNumber,omitempty"`
-	// The port type of the Express Connect circuit. Valid values:
+	// The port type of the access device for the Express Connect circuit. Valid values:
 	//
 	// - **100Base-T**: 100M Ethernet port.
 	//
-	// - **1000Base-T**: 1 GE electrical port.
+	// - **1000Base-T**: GE electrical port.
 	//
 	// - **1000Base-LX**: GE single-mode optical port (10 km).
 	//
@@ -331,7 +331,7 @@ type ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections struct
 	//
 	// rg-acfm3wmsyui****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The bandwidth of the shared Express Connect circuits.
+	// The bandwidth value of the shared Express Connect circuits.
 	//
 	// Unit: **M*	- indicates Mbit/s, and **G*	- indicates Gbit/s.
 	//
@@ -349,7 +349,7 @@ type ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections struct
 	//
 	// - **Allocated**: Under construction.
 	//
-	// - **Confirmed**: Pending confirmation.
+	// - **Confirmed**: Waiting for user confirmation.
 	//
 	// - **Enabled**: Enabled.
 	//
@@ -696,7 +696,7 @@ func (s *ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnections) V
 type ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnectionsTags struct {
 	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -704,7 +704,7 @@ type ListVirtualPhysicalConnectionsResponseBodyVirtualPhysicalConnectionsTags st
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The tag value cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

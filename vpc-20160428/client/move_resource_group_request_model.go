@@ -74,7 +74,7 @@ type MoveResourceGroupRequest struct {
 	//
 	// - **FlowLog**: flow log
 	//
-	// - **HaVip**: high-availability (HA) virtual IP address
+	// - **HaVip**: high-availability virtual IP address
 	//
 	// - **TrafficMirrorFilter**: traffic mirror filter
 	//

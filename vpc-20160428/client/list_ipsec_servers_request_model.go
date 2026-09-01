@@ -48,9 +48,9 @@ type ListIpsecServersRequest struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token. Valid values:
 	//
-	// - If this is the first query or no subsequent query is to be sent, you do not need to specify this parameter.
+	// - You do not need to specify this parameter for the first request or if no subsequent query exists.
 	//
-	// - If a subsequent query is to be sent, set the value to the NextToken value returned in the previous call.
+	// - If a subsequent query exists, set the value to the **NextToken*	- value returned by the previous API call.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type ListIpsecServersRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the IPsec server belongs.
+	// The resource group ID of the IPsec server.
 	//
 	// The IPsec server belongs to the same resource group as the associated VPN gateway instance. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the resource group ID of the VPN gateway instance.
 	//

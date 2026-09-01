@@ -46,7 +46,7 @@ type DescribeCustomerGatewayResponseBody struct {
 	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
 	// The timestamp when the customer gateway was created. Unit: milliseconds.
 	//
-	// The timestamp is in the UNIX format and represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC to the time when the customer gateway was created.
+	// The timestamp is in the UNIX format and represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type DescribeCustomerGatewayResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the resource group to which the customer gateway belongs.
 	//
-	// You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
+	// You can call [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) to query resource group information.
 	//
 	// example:
 	//

@@ -100,11 +100,11 @@ type DescribeVpnGatewayResponseBody struct {
 	//
 	// example:
 	//
-	// 中国站示例值：Prepay，国际站示例值：POSTPAY
+	// China site example: Prepay, International site example: POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The timestamp when the VPN gateway was created. Unit: milliseconds.
 	//
-	// The timestamp follows the UNIX format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp follows the UNIX time format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type DescribeVpnGatewayResponseBody struct {
 	EnableBgp *bool `json:"EnableBgp,omitempty" xml:"EnableBgp,omitempty"`
 	// The timestamp when the VPN gateway expires. Unit: milliseconds.
 	//
-	// The timestamp follows the UNIX format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp follows the UNIX time format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
@@ -237,7 +237,7 @@ type DescribeVpnGatewayResponseBody struct {
 	//
 	// enable
 	SslVpn *string `json:"SslVpn,omitempty" xml:"SslVpn,omitempty"`
-	// The IP address of the SSL-VPN connection.
+	// The IP address for SSL-VPN connections.
 	//
 	// This parameter is returned only when the SSL-VPN feature is enabled on a VPN gateway instance that has a public network type and supports creating dual-tunnel IPsec-VPN connections.
 	//
@@ -299,7 +299,7 @@ type DescribeVpnGatewayResponseBody struct {
 	//
 	// example:
 	//
-	// {\\"VpnEnableBgp\\":\\"true\\",\\"VisuallySsl\\":\\"true\\",\\"PbrPriority\\":\\"true\\",\\"VpnNewImage\\":\\"true\\",\\"description\\":\\"转发1.3.24\\",\\"VpnVersion\\":\\"v1.2.4\\",\\"IDaaSNewVersion\\":\\"true\\"}
+	// {\\"VpnEnableBgp\\":\\"true\\",\\"VisuallySsl\\":\\"true\\",\\"PbrPriority\\":\\"true\\",\\"VpnNewImage\\":\\"true\\",\\"description\\":\\"Forwarding 1.3.24\\",\\"VpnVersion\\":\\"v1.2.4\\",\\"IDaaSNewVersion\\":\\"true\\"}
 	Tag  *string                             `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	Tags *DescribeVpnGatewayResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The ID of the vSwitch to which the VPN gateway belongs.
@@ -650,9 +650,9 @@ func (s *DescribeVpnGatewayResponseBodyEniInstanceIds) Validate() error {
 }
 
 type DescribeVpnGatewayResponseBodyReservationData struct {
-	// If the pending order type is **TEMP_UPGRADE*	- (temporary upgrade), this parameter indicates the revert time of the temporary upgrade.
+	// If the pending order type is **TEMP_UPGRADE*	- (temporary upgrade), this parameter indicates the revert time for the temporary upgrade.
 	//
-	// If the pending order type is **RENEWCHANGE*	- (renewal with Upgrade/Downgrade) or **RENEW*	- (renewal), this parameter indicates the effective period when the renewal or renewal with specification change takes effect.
+	// If the pending order type is **RENEWCHANGE*	- (renewal with specification change) or **RENEW*	- (renewal), this parameter indicates the effective period when the renewal or renewal with specification change takes effect.
 	//
 	// example:
 	//
@@ -706,7 +706,7 @@ type DescribeVpnGatewayResponseBodyReservationData struct {
 	//
 	// - **1**: the renewal or renewal with specification change order has not taken effect.
 	//
-	// - **2**: the temporary upgrade order has taken effect. After the restoration time is reached, the system restores the VPN gateway to the specification before the temporary upgrade. In this case, **ReservationIpsec**, **ReservationMaxConnections**, **ReservationSpec**, and **ReservationSsl*	- indicate the specification before the temporary upgrade.
+	// - **2**: the temporary upgrade order has taken effect. After the restoration time is reached, the system restores the VPN gateway to the specification before the temporary upgrade. In this case, **ReservationIpsec**, **ReservationMaxConnections**, **ReservationSpec**, and **ReservationSsl*	- indicate the specifications before the temporary upgrade.
 	//
 	// example:
 	//

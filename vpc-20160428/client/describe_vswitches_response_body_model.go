@@ -22,7 +22,7 @@ type iDescribeVSwitchesResponseBody interface {
 }
 
 type DescribeVSwitchesResponseBody struct {
-	// The current page number.
+	// The page number.
 	//
 	// example:
 	//

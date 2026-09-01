@@ -82,7 +82,7 @@ type ModifySslVpnServerResponseBody struct {
 	//
 	// 1492753580000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether two-factor identity authentication is enabled.
+	// Indicates whether two-factor authentication is enabled.
 	//
 	// - **true**: enabled.
 	//

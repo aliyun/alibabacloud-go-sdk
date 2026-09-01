@@ -54,13 +54,13 @@ type DescribeVpnSslServerLogsRequest struct {
 	MinutePeriod *int32  `json:"MinutePeriod,omitempty" xml:"MinutePeriod,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the list. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page when using paging. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//

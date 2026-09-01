@@ -62,7 +62,7 @@ type AssociateVpcCidrBlockRequest struct {
 	//
 	// ipam-pool-sycmt3p2a9v63i****
 	IpamPoolId *string `json:"IpamPoolId,omitempty" xml:"IpamPoolId,omitempty"`
-	// The mask used to add an IPv6 CIDR block from an IPAM pool to the VPC.
+	// The subnet mask used to add an IPv6 CIDR block from an IPAM pool to the VPC.
 	//
 	// > When you use an IPAM pool to add a secondary IPv6 CIDR block to the VPC, you must specify at least one of IPv6CidrBlock or Ipv6CidrMask.
 	//
@@ -80,7 +80,7 @@ type AssociateVpcCidrBlockRequest struct {
 	//
 	// - **ChinaTelecom**: China Telecom (single ISP).
 	//
-	// > If you are a user who has activated the single-ISP bandwidth whitelist, you can set this parameter to **ChinaTelecom*	- (China Telecom), **ChinaUnicom*	- (China Unicom), or **ChinaMobile*	- (China Mobile).
+	// > If your account is included in the China single-ISP bandwidth whitelist, you can set this parameter to **ChinaTelecom*	- (China Telecom), **ChinaUnicom*	- (China Unicom), or **ChinaMobile*	- (China Mobile).
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type AssociateVpcCidrBlockRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the VPC to which you want to add a secondary CIDR block.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type AssociateVpcCidrBlockRequest struct {
 	//
 	// - Use private IPv4 addresses specified in RFC 1918 as the secondary IPv4 CIDR block of the virtual private cloud (VPC). The subnet mask must be 16 to 28 bits in length. Examples: 10.0.0.0/16, 172.16.0.0/16, and 192.168.0.0/16.
 	//
-	// - You can use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the virtual private cloud (VPC).
+	// - You can use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, or 169.254.0.0/16 and their subnets as the secondary IPv4 CIDR block of the virtual private cloud (VPC).
 	//
 	// Configuration limits:
 	//
@@ -116,7 +116,7 @@ type AssociateVpcCidrBlockRequest struct {
 	//
 	// 192.168.0.0/16
 	SecondaryCidrBlock *string `json:"SecondaryCidrBlock,omitempty" xml:"SecondaryCidrBlock,omitempty"`
-	// The mask used to add a secondary IPv4 CIDR block from an IPAM pool to the VPC.
+	// The subnet mask used to add a secondary IPv4 CIDR block from an IPAM pool to the VPC.
 	//
 	// > When you use an IPAM pool to add a secondary IPv4 CIDR block to the VPC, you must specify at least one of SecondaryCidrBlock or SecondaryCidrMask.
 	//

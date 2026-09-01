@@ -24,7 +24,7 @@ type iDescribeFailoverTestJobsResponseBody interface {
 }
 
 type DescribeFailoverTestJobsResponseBody struct {
-	// The number of entries on the current page.
+	// The number of entries returned on the current page.
 	//
 	// example:
 	//
@@ -32,17 +32,17 @@ type DescribeFailoverTestJobsResponseBody struct {
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The list of failover test jobs.
 	FailoverTestJobList []*DescribeFailoverTestJobsResponseBodyFailoverTestJobList `json:"FailoverTestJobList,omitempty" xml:"FailoverTestJobList,omitempty" type:"Repeated"`
-	// The number of entries per page for paginated queries. Valid values: **1 to 100**. Default value: 20.
+	// The number of entries per page for a paginated query. Valid values: **1*	- to **100**. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. Valid values:
+	// The pagination token. Valid values:
 	//
-	// - Leave this parameter empty for the first query or if no next query exists.
+	// - Leave this parameter empty for the first query or if no subsequent query is required.
 	//
-	// - If a next query exists, set this parameter to the NextToken value returned by the previous API call.
+	// - If a subsequent query is required, set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribeFailoverTestJobsResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the list.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type DescribeFailoverTestJobsResponseBodyFailoverTestJobList struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The test duration. Unit: minutes. Valid values: **1 to 4320**.
+	// The test duration. Unit: minutes. Valid values: **1*	- to **4320**.
 	//
 	// example:
 	//
@@ -160,9 +160,9 @@ type DescribeFailoverTestJobsResponseBodyFailoverTestJobList struct {
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	// The failover test type. Valid values:
 	//
-	// - **StartNow**: The test starts immediately after the failover test job is created.
+	// - **StartNow**: starts the test immediately after the failover test job is created.
 	//
-	// - **StartLater**: Only the test job is created. The test is not started.
+	// - **StartLater**: creates the failover test job without starting the test.
 	//
 	// example:
 	//
@@ -192,15 +192,15 @@ type DescribeFailoverTestJobsResponseBodyFailoverTestJobList struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the failover test job. Valid values:
 	//
-	// - **Init**: Pending.
+	// - **Init**: pending.
 	//
-	// - **Starting**: Starting.
+	// - **Starting**: starting.
 	//
-	// - **Testing**: In progress.
+	// - **Testing**: in progress.
 	//
-	// - **Stopping**: Stopping.
+	// - **Stopping**: stopping.
 	//
-	// - **Stopped**: Completed.
+	// - **Stopped**: completed.
 	//
 	// example:
 	//

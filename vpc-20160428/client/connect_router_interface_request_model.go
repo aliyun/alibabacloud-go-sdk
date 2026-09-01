@@ -23,7 +23,7 @@ type iConnectRouterInterfaceRequest interface {
 
 type ConnectRouterInterfaceRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region where the router interface resides.
+	// The region where the router interface is located.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//

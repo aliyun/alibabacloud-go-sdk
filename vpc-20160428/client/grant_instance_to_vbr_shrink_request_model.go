@@ -24,7 +24,7 @@ type iGrantInstanceToVbrShrinkRequest interface {
 }
 
 type GrantInstanceToVbrShrinkRequest struct {
-	// The scope of VBR instances to be granted authorization. Valid values:
+	// The scope of the VBR instances to be authorized. Valid values:
 	//
 	// - **All**: Grants authorization of the VPC-connected instance to all VBR instances in the specified region under the specified Alibaba Cloud account. In this case, the **VbrInstanceIds*	- parameter can be left empty.
 	//
@@ -36,7 +36,7 @@ type GrantInstanceToVbrShrinkRequest struct {
 	//
 	// All
 	GrantType *string `json:"GrantType,omitempty" xml:"GrantType,omitempty"`
-	// The ID of the VPC-connected instance for which to grant authorization.
+	// The ID of the VPC-connected instance for which authorization is to be granted.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type GrantInstanceToVbrShrinkRequest struct {
 	//
 	// vpc-bp1lqhq93q8evjpky****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the VPC-connected instance for which to grant authorization.
+	// The region ID of the VPC-connected instance for which authorization is to be granted.
 	//
 	// You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
 	//
@@ -54,12 +54,12 @@ type GrantInstanceToVbrShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of VBR instances to be granted authorization.
+	// The list of VBR instances to be authorized.
 	//
 	// if can be null:
 	// true
 	VbrInstanceIdsShrink *string `json:"VbrInstanceIds,omitempty" xml:"VbrInstanceIds,omitempty"`
-	// The Alibaba Cloud account ID that owns the VBR instance to be granted authorization.
+	// The ID of the Alibaba Cloud account that owns the VBR instance to be authorized. This account must be different from the caller\\"s account. You cannot specify the caller\\"s own account ID. This operation is used for cross-account authorization.
 	//
 	// This parameter is required.
 	//
@@ -67,7 +67,7 @@ type GrantInstanceToVbrShrinkRequest struct {
 	//
 	// 1210123456123456
 	VbrOwnerUid *int64 `json:"VbrOwnerUid,omitempty" xml:"VbrOwnerUid,omitempty"`
-	// The region ID of the VBR instance to be granted authorization.
+	// The region ID of the VBR instance to be authorized.
 	//
 	// This parameter is required.
 	//

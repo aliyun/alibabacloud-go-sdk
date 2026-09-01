@@ -28,7 +28,7 @@ type DescribeRouterInterfacesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging queries. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page when paging is performed. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//

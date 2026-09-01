@@ -28,7 +28,7 @@ type DescribeVpnPbrRouteEntriesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paging query.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//

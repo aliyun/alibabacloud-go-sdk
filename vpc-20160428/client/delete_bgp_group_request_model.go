@@ -26,7 +26,7 @@ type iDeleteBgpGroupRequest interface {
 }
 
 type DeleteBgpGroupRequest struct {
-	// The ID of the BGP group.
+	// The ID of the BGP group. The BGP group must be in the **Available*	- state. After you create a BGP group, call DescribeBgpGroups to query the **Status*	- value. Wait until the status changes to **Available*	- before you delete the BGP group.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DeleteBgpGroupRequest struct {
 	//
 	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- as the **ClientToken**. The **RequestId*	- of each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//

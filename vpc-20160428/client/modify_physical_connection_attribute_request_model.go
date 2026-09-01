@@ -67,9 +67,14 @@ type ModifyPhysicalConnectionAttributeRequest struct {
 	// example:
 	//
 	// Description of the Express Connect circuit
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DownDelayTime *int32  `json:"DownDelayTime,omitempty" xml:"DownDelayTime,omitempty"`
-	// The carrier that provides the access to the physical connection. Valid values:
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The port down delay time of the Express Connect circuit, in milliseconds. When a physical link Down event is detected, the access device waits for this duration before setting the port to the down state. This prevents transient disconnections from affecting your services. Valid values: 0 to 10000. The step size is 100. A value of 0 indicates that the port goes down immediately after the link goes down (default).
+	//
+	// example:
+	//
+	// 100
+	DownDelayTime *int32 `json:"DownDelayTime,omitempty" xml:"DownDelayTime,omitempty"`
+	// The carrier that provides the access to the physical line. Valid values:
 	//
 	// - **CT**: China Telecom
 	//
@@ -97,7 +102,7 @@ type ModifyPhysicalConnectionAttributeRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The geographical location of the on-premises data center.
+	// The geographic location of the on-premises data center.
 	//
 	// example:
 	//
@@ -127,7 +132,7 @@ type ModifyPhysicalConnectionAttributeRequest struct {
 	//
 	// - **100GBase-LR**: 100 GE single-mode optical port.
 	//
-	// > To create 40GBase-LR or 100GBase-LR ports, check the actual port availability on the backend. Contact your account manager for details.
+	// > 40GBase-LR and 100GBase-LR are subject to the availability of backend port resources. Contact your account manager for more information.
 	//
 	// example:
 	//

@@ -80,7 +80,7 @@ type ListBusinessAccessPointsResponseBodyBusinessAccessPoints struct {
 	AccessPointName *string `json:"AccessPointName,omitempty" xml:"AccessPointName,omitempty"`
 	// The CloudBox instance ID.
 	//
-	// > This parameter is available when the queried Express Connect circuit and access point are CloudBox Express Connect circuits and CloudBox access points.
+	// > This parameter is available only when the queried Express Connect circuit and access point are CloudBox Express Connect circuits and CloudBox access points.
 	//
 	// example:
 	//
@@ -97,7 +97,8 @@ type ListBusinessAccessPointsResponseBodyBusinessAccessPoints struct {
 	// example:
 	//
 	// 120.247514
-	Longitude           *float64                                                                       `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	Longitude *float64 `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	// The collection of optical module models supported by the current access point.
 	OpticalModuleModels []*ListBusinessAccessPointsResponseBodyBusinessAccessPointsOpticalModuleModels `json:"OpticalModuleModels,omitempty" xml:"OpticalModuleModels,omitempty" type:"Repeated"`
 	// The telecommunications service providers that support physical line access. Valid values:
 	//
@@ -133,7 +134,7 @@ type ListBusinessAccessPointsResponseBodyBusinessAccessPoints struct {
 	//
 	// - **100GBase-LR**: 100 GE single-mode optical port.
 	//
-	// >  40GBase-LR and 100GBase-LR ports are created based on actual backend port availability. Contact your account manager for details.
+	// >  The creation of 40GBase-LR and 100GBase-LR ports depends on the actual backend port availability. Contact your account manager for details.
 	//
 	// example:
 	//
@@ -235,8 +236,58 @@ func (s *ListBusinessAccessPointsResponseBodyBusinessAccessPoints) Validate() er
 }
 
 type ListBusinessAccessPointsResponseBodyBusinessAccessPointsOpticalModuleModels struct {
+	// The optical module model supported by the Express Connect circuit access point. Valid values:
+	//
+	// 1000Base-LX :
+	//
+	// SFP-GE-LR-SM1310,10KM
+	//
+	// SFP-GE-ER-SM1310,40KM
+	//
+	// SFP-GE-ZR-SM1550,80KM
+	//
+	// 10GBase-LR :
+	//
+	// SFP-10G-LR-SM1310,10KM
+	//
+	// SFP-10G-ER-SM1550,40KM
+	//
+	// SFP-10G-ZR-SM1550,80KM
+	//
+	// 40GBase-LR :
+	//
+	// QSFP-40G-LR4-WDM1300,10KM
+	//
+	// QSFP-40G-ER4-WDM1300,40KM
+	//
+	// QSFP-40G-ZR4-WDM1300,80KM
+	//
+	// 100GBase-LR :
+	//
+	// QSFP28-100G-LR4-WDM1300,10KM
+	//
+	// QSFP28-100G-ER4-WDM1300,40KM
+	//
+	// QSFP28-100G-ZR4-WDM1300,80KM.
+	//
+	// example:
+	//
+	// SFP-GE-LR-SM1310,10KM
 	OpticalModuleModel *string `json:"OpticalModuleModel,omitempty" xml:"OpticalModuleModel,omitempty"`
-	PortType           *string `json:"PortType,omitempty" xml:"PortType,omitempty"`
+	// The port type supported by the optical module at the Express Connect circuit access point. Valid values:
+	//
+	// ● 1000Base-LX: GE single-mode optical port.
+	//
+	// ● 10GBase-LR: 10 GE single-mode optical port.
+	//
+	// ● 40GBase-LR: 40 GE single-mode optical port.
+	//
+	// ● 100GBase-LR: 100 GE single-mode optical port.
+	//
+	// example:
+	//
+	// 1000Base-LX
+	PortType *string `json:"PortType,omitempty" xml:"PortType,omitempty"`
 }
 
 func (s ListBusinessAccessPointsResponseBodyBusinessAccessPointsOpticalModuleModels) String() string {

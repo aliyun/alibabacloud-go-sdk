@@ -80,6 +80,8 @@ type DescribeTagKeysForExpressConnectRequest struct {
 	//
 	// - **TRAFFICQOS**: QoS policy.
 	//
+	// > This parameter is essentially required. If it is not specified, the service returns MissingParameter (400).
+	//
 	// example:
 	//
 	// PHYSICALCONNECTION

@@ -78,7 +78,7 @@ type ModifyVpcAttributeRequest struct {
 	EnableIPv6 *bool `json:"EnableIPv6,omitempty" xml:"EnableIPv6,omitempty"`
 	// The IPv6 CIDR block of the VPC.
 	//
-	// When you enable IPv6 for a VPC, the system will assign an IPv6 CIDR block. To specify an IPv6 CIDR block, invoke the [AllocateVpcIpv6Cidr](https://help.aliyun.com/document_detail/448916.html) operation to reserve a specific IPv6 CIDR block first, and then pass it in.
+	// When you enable IPv6 for a VPC, the system will assign an IPv6 CIDR block. To specify an IPv6 CIDR block, you need to first invoke the [AllocateVpcIpv6Cidr](https://help.aliyun.com/document_detail/448916.html) operation to reserve the specified IPv6 CIDR block, and then pass it in.
 	//
 	// > For a VPC that already has IPv6 enabled, you cannot modify the IPv6 CIDR block by passing in this parameter.
 	//
@@ -90,11 +90,11 @@ type ModifyVpcAttributeRequest struct {
 	//
 	// - **BGP*	- (default): Alibaba Cloud BGP IPv6.
 	//
-	// - **ChinaMobile**: China Mobile (single ISP).
+	// - **ChinaMobile**: China Mobile (single-ISP).
 	//
-	// - **ChinaUnicom**: China Unicom (single ISP).
+	// - **ChinaUnicom**: China Unicom (single-ISP).
 	//
-	// - **ChinaTelecom**: China Telecom (single ISP).
+	// - **ChinaTelecom**: China Telecom (single-ISP).
 	//
 	// > If you are a user who has the single-ISP bandwidth whitelist enabled, you can set this parameter to **ChinaTelecom*	- (China Telecom), **ChinaUnicom*	- (China Unicom), or **ChinaMobile*	- (China Mobile).
 	//

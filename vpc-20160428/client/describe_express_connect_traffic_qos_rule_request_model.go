@@ -32,9 +32,9 @@ type iDescribeExpressConnectTrafficQosRuleRequest interface {
 type DescribeExpressConnectTrafficQosRuleRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may differ for each API request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may differ for each API request.
 	//
 	// example:
 	//
@@ -42,13 +42,17 @@ type DescribeExpressConnectTrafficQosRuleRequest struct {
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The QoS policy ID.
+	// The QoS policy ID returned by the CreateExpressConnectTrafficQos operation.
+	//
+	// > This parameter is required. If you do not specify this parameter, the service returns IllegalParam.QosId (400).
 	//
 	// example:
 	//
 	// qos-2giu0a6vd5x0mv****
 	QosId *string `json:"QosId,omitempty" xml:"QosId,omitempty"`
-	// The QoS queue ID.
+	// The QoS queue ID returned by the CreateExpressConnectTrafficQosQueue operation.
+	//
+	// > This parameter is required. If you do not specify this parameter, the service returns IllegalParam.QueueId (400).
 	//
 	// example:
 	//
@@ -65,9 +69,9 @@ type DescribeExpressConnectTrafficQosRuleRequest struct {
 	// cn-shanghai
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The QoS rule IDs.
+	// The list of QoS rule IDs.
 	RuleIdList []*string `json:"RuleIdList,omitempty" xml:"RuleIdList,omitempty" type:"Repeated"`
-	// The QoS rule names.
+	// The list of QoS rule names.
 	RuleNameList []*string `json:"RuleNameList,omitempty" xml:"RuleNameList,omitempty" type:"Repeated"`
 }
 

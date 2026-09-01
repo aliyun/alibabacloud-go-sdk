@@ -30,7 +30,7 @@ type iDescribeVbrHaResponseBody interface {
 }
 
 type DescribeVbrHaResponseBody struct {
-	// The time when the VBR was created.
+	// The time when the VBR was created. The time is displayed in the ISO 8601 standard in UTC. The format is YYYY-MM-DDThh:mm:ss.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type DescribeVbrHaResponseBody struct {
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The request ID.
 	//

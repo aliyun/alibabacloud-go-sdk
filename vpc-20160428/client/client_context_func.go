@@ -13,7 +13,9 @@ import (
 //
 // Description:
 //
-// After you call the ActivateRouterInterface operation, the router interface enters the **Activating*	- state. After the router interface is activated, it enters the **Active*	- state.
+// After you call the ActivateRouterInterface operation, the router interface enters the **Activating*	- state. After the activation succeeds, the router interface enters the **Active*	- state.
+//
+// Before you call this operation, the router interface must be in the **Inactive*	- state. The initial state of a newly created router interface is **Idle**. In non-express connect mode, you can call CreateRouterInterface to create both ends of the connection, call ModifyRouterInterfaceAttribute to configure peer information for each end, and then call ConnectRouterInterface to establish the connection. When the interface is in the **Active*	- state, you can call DeactivateRouterInterface to change it to the **Inactive*	- state, and then call this operation to reactivate it. You can call DescribeRouterInterfaceAttribute to query the current state.
 //
 // > You cannot activate a router interface that has an overdue payment.
 //
@@ -745,9 +747,9 @@ func (client *Client) AddSourcesToTrafficMirrorSessionWithContext(ctx context.Co
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the billing methods and pricing of EIPs. For more information, see [Billing overview](https://help.aliyun.com/document_detail/122035.html).
+// Make sure that you are familiar with the billing methods and pricing of EIPs before you call this operation. For more information, see [Billing overview](https://help.aliyun.com/document_detail/122035.html).
 //
-// After you call this operation, an EIP in the **Available*	- state is randomly allocated in the specified region. EIPs support only ICMP, TCP, and UDP at the transport layer. EIPs do not support IGMP or SCTP.
+// After you call this operation, an EIP in the **Available*	- state is randomly allocated in the specified region. EIPs support only ICMP, TCP, and UDP at the transport layer. IGMP and SCTP are not supported.
 //
 // @param request - AllocateEipAddressRequest
 //
@@ -1809,7 +1811,7 @@ func (client *Client) AssociateHaVipWithContext(ctx context.Context, request *As
 
 // Summary:
 //
-// Associates a MACsec key with a dedicated Express Connect circuit port. MACsec uses dedicated encryption chips (such as NICs or switches) to implement low-latency encryption and decryption, directly encrypting physical links (such as optical fiber or Ethernet) to cover all traffic from sender to receiver.
+// Associates a MACsec key with a dedicated Express Connect circuit port. MACsec uses dedicated encryption chips (such as NICs or switches) to implement low-latency encryption and decryption, directly encrypting physical links (such as optical fibers or Ethernet) to cover all traffic from the sender to the receiver.
 //
 // Description:
 //
@@ -1825,7 +1827,7 @@ func (client *Client) AssociateHaVipWithContext(ctx context.Context, request *As
 //
 // - A maximum of three CKN and CAK pairs can be configured.
 //
-// - Associating a key that is currently in the Disassociated state cancels the previously associated key.
+// - Associating a key that is currently in the Disassociated state disassociates the previously active key.
 //
 // - Associating a key that is currently in the AssociatedFailed state triggers the device to renegotiate the session.
 //
@@ -2463,29 +2465,29 @@ func (client *Client) AssociateVpcCidrBlockWithContext(ctx context.Context, requ
 //
 // Description:
 //
-// Before you attach a VPN gateway to an SSL certificate, take note of the following information:
+// Before you associate a VPN gateway with an SSL certificate, take note of the following information:
 //
-// - Only Chinese SM VPN gateways support SSL certificate attachment. You must attach two SSL certificates to a Chinese SM VPN gateway: one as the encryption certificate and the other as the signing certificate.
+// - Only ShangMi (SM) VPN gateways support SSL certificate binding. You must attach two SSL certificates to an SM VPN gateway: one as the encryption certificate and the other as the signing certificate.
 //
-// - The SSL certificates must use Chinese SM algorithms.
+// - The SSL certificates must use SM algorithms.
 //
 // - You cannot specify the same SSL certificate as both the encryption certificate and the signing certificate for the same VPN gateway instance.
 //
 // <props="china">
 //
-// - When you attach a VPN gateway to an SSL certificate for the first time, the system performs automatic creation of a service-linked role named AliyunServiceRoleForVPNCertificate and adds the access policy AliyunServiceRolePolicyForVPNCertificate to the role. This grants the VPN gateway permissions to access other cloud resources. For more information, see [AliyunServiceRoleForVPNCertificate](https://help.aliyun.com/document_detail/203323.html).
+// - When you attach a VPN gateway to an SSL certificate for the first time, the system performs automatic creation of a service-linked role named AliyunServiceRoleForVPNCertificate and adds the access policy named AliyunServiceRolePolicyForVPNCertificate to the role. This grants the VPN gateway permissions to access other cloud resources. For more information, see [AliyunServiceRoleForVPNCertificate](https://help.aliyun.com/document_detail/203323.html).
 //
-// - The **AssociateVpnGatewayWithCertificate*	- operation is asynchronous. After you send a request, the system returns a request ID, but the SSL certificate is not yet attached to the VPN gateway. The attachment node continues to run in the background. You can invoke the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query the attachment status of the SSL certificate:
+// - The **AssociateVpnGatewayWithCertificate*	- operation is asynchronous. After you send a request, the system returns a request ID, but the SSL certificate is not yet attached to the VPN gateway. The binding node continues to run in the background. You can invoke the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query the binding status of the SSL certificate:
 //
 //   - If the VPN gateway is in the **updating*	- state, the SSL certificate is being attached.
 //
 //   - If the VPN gateway is in the **active*	- state, the SSL certificate is attached.
 //
-// - The **AssociateVpnGatewayWithCertificate*	- operation does not support concurrent SSL certificate attachment for the same VPN gateway.
+// - The **AssociateVpnGatewayWithCertificate*	- operation does not support concurrent SSL certificate binding requests for the same VPN gateway.
 //
 // ### Before you begin
 //
-// Make sure that you have two SSL certificates that use Chinese SM algorithms in the Alibaba Cloud Certificate Management Service console. For more information about SSL certificates, see [What is Certificate Management Service?](https://help.aliyun.com/document_detail/28535.html).
+// Make sure that you have two SSL certificates that use SM algorithms in the Alibaba Cloud Certificate Management Service console. For more information about SSL certificates, see [What is Certificate Management Service?](https://help.aliyun.com/document_detail/28535.html).
 //
 // @param request - AssociateVpnGatewayWithCertificateRequest
 //
@@ -2635,7 +2637,7 @@ func (client *Client) AttachDhcpOptionsSetToVpcWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Associates a Virtual Border Router (VBR) instance with shared Express Connect circuits.
+// Associates a Virtual Border Router (VBR) instance with shared Express Connect circuits. This API is used to migrate an existing VBR that was pushed cross-account to shared Express Connect circuits (shared port), completing the shared Express Connect circuits form transformation. Only the partner (Express Connect circuit owner) can call this operation.
 //
 // @param request - AttachVbrToVpconnRequest
 //
@@ -2771,11 +2773,11 @@ func (client *Client) CancelCommonBandwidthPackageIpBandwidthWithContext(ctx con
 
 // Summary:
 //
-// Cancels access to an Express Connect circuit. After the cancellation, the Express Connect circuit enters the Canceled state.
+// Cancels the access of an Express Connect circuit. After the cancellation, the Express Connect circuit enters the Canceled state.
 //
 // Description:
 //
-// You can cancel access only for Express Connect circuits in the **Initial**, **Approved**, **Allocated**, or **Confirmed*	- state (not yet activated).
+// You can cancel the access of an Express Connect circuit only when it is in the **Initial**, **Approved**, **Allocated**, or **Confirmed*	- state (not enabled). After an Express Connect circuit is created by calling CreatePhysicalConnection, it may briefly be in the **Allocating*	- state, during which it cannot be canceled. Poll the status by calling DescribePhysicalConnections and call this operation after the state changes to **Allocated**.
 //
 // @param request - CancelPhysicalConnectionRequest
 //
@@ -2979,7 +2981,7 @@ func (client *Client) CheckCanAllocateVpcPrivateIpAddressWithContext(ctx context
 
 // Summary:
 //
-// Calls the CheckVpnBgpEnabled operation to query whether the region of an IPsec-VPN connection supports the BGP feature.
+// Calls the CheckVpnBgpEnabled operation to query whether the region to which an IPsec-VPN connection belongs supports the BGP feature.
 //
 // @param request - CheckVpnBgpEnabledRequest
 //
@@ -3039,7 +3041,15 @@ func (client *Client) CheckVpnBgpEnabledWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Calls CompletePhysicalConnectionLOA to complete the construction.
+// Calls CompletePhysicalConnectionLOA to complete the construction and backfill the completion information after the LOA is approved and the line construction is finished.
+//
+// Description:
+//
+// Calls the CompletePhysicalConnectionLOA operation to complete the construction. Before calling this operation, call DescribePhysicalConnectionLOA to query the LOA status. You can call this operation only when the status is **Available*	- or **Complete**. After an LOA application is submitted, the status changes to **Applying**. After the application is approved, the status changes to **Available**. If the application is rejected, the status changes to **Rejected**. For a rejected application, call SecondApplyPhysicalConnectionLOA to reapply. After the construction is completed, the LOA status changes to **Complete**.
+//
+// Complete call chain:
+//
+// CreatePhysicalConnection → ApplyPhysicalConnectionLOA (LOA enters the Applying state) → Wait for approval (Available after approval; Rejected if denied, in which case call SecondApplyPhysicalConnectionLOA or ApplyPhysicalConnectionLOA again to reapply) → CompletePhysicalConnectionLOA (backfill completion information, LOA enters the Completing state) → ConfirmPhysicalConnection (confirm the Express Connect circuit, LOA enters the Complete state).
 //
 // @param request - CompletePhysicalConnectionLOARequest
 //
@@ -3199,13 +3209,13 @@ func (client *Client) ConfirmPhysicalConnectionWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Initiates a connection from the requester VPC router interface to the accepter.
+// Calls the ConnectRouterInterface operation to initiate a connection from the requester VPC router interface to the accepter.
 //
 // Description:
 //
-// After you call this operation, the router interface enters the **Connecting*	- state. After the connection is established, the router interface enters the **Active*	- state.
+// After you invoke this operation, the router interface enters the **Connecting*	- state and transitions to the **Active*	- state after the connection is established.
 //
-// When you call this operation to create a VPC, note the following items:
+// When you invoke this operation to create a VPC, note the following items:
 //
 // - Only a requester VPC router interface in the **Idle*	- state can initiate a connection to the accepter VPC.
 //
@@ -4581,13 +4591,33 @@ func (client *Client) CreateExpressConnectTrafficQosRuleWithContext(ctx context.
 
 // Summary:
 //
-// Creates a failover test job for Express Connect.
+// Calls the CreateFailoverTestJob operation to create a failover test job for Express Connect.
 //
 // Description:
 //
-// You cannot create a failover test job in the following scenarios:
+// Resource status requirements (prerequisites)
 //
-// - A failover test job is already running in the current region, and the job type of the new failover test job is set to StartNow.
+// - Before creating a failover test job, ensure that the test resources and their associated resources are in the following states. Otherwise, the creation fails:
+//
+// - ResourceType set to PHYSICALCONNECTION: The Express Connect circuit (including shared Express Connect circuits) must be in the Enabled state with normal billing status (no overdue payment). Otherwise, IncorrectStatus.ResourceId or IncorrectBusinessStatus.ResourceId is returned.
+//
+// - ResourceType set to VIRTUALBORDERROUTER: The VBR must be in the active state with no overdue payment, and the Express Connect circuit to which the VBR belongs must also be in the Enabled state with no overdue payment.
+//
+// - ResourceType set to BGPPEER: The BGP peer must be in the Available state, the VBR to which it belongs must be in the active state, and the Express Connect circuit to which the VBR belongs must be in the Enabled state, all with no overdue payment.
+//
+// # How to check and advance the Express Connect circuit status
+//
+// - Call DescribePhysicalConnections to query the Status field of the Express Connect circuit. If the circuit is not in the Enabled state (for example, it is in the Allocated or Confirmed state), advance it along the following state transition path:
+//
+//   - Allocated (port reserved, pending confirmation) → Call ConfirmPhysicalConnection to confirm → Confirmed → Call EnablePhysicalConnection to activate (asynchronous; poll DescribePhysicalConnections after activation to confirm) → Enabled.
+//
+//   - Note: EnablePhysicalConnection only supports activating Express Connect circuits in the Confirmed state. If the circuit is in the Allocated state, call ConfirmPhysicalConnection first.
+//
+// - When JobType is set to StartLater, the status check described above is performed during the job creation phase. When you subsequently call StartFailoverTestJob to start the job, the resource status is checked again. If the resource status does not meet the requirements at that time (for example, the circuit is no longer in the Enabled state), the start operation fails.
+//
+// The following scenarios do not support creating failover test jobs:
+//
+// - A failover test job is already running in the current region, and the job type of the new failover test job is set to start immediately.
 //
 // - The Express Connect circuit instance or shared Express Connect circuit instance has not been paid for or has an overdue payment.
 //
@@ -4595,11 +4625,11 @@ func (client *Client) CreateExpressConnectTrafficQosRuleWithContext(ctx context.
 //
 // - The Express Connect circuit instance has more than one shared Express Connect circuit.
 //
-// - The Express Connect circuit instance has more than one cross-account Virtual Border Router (VBR).
+// - The Express Connect circuit instance has more than one cross-account VBR.
 //
 // - The shared Express Connect circuit instance is not associated with a VBR.
 //
-// - The VLAN of the shared Express Connect circuit instance is set to 0.
+// - The VLAN configuration of the shared Express Connect circuit instance is 0.
 //
 // @param request - CreateFailoverTestJobRequest
 //
@@ -7271,9 +7301,9 @@ func (client *Client) CreateRouteTableWithContext(ctx context.Context, request *
 //
 // - **Active/standby pattern**: When you create a routing target group, you must configure primary and secondary instances that are in different zones and of the same type.
 //
-// - **Primary instance**: The weight is 100. The primary instance handles all traffic under normal conditions and takes effect when health checks pass.
+// - **Primary instance**: The weight is 100. The primary instance carries all traffic under normal conditions and takes effect when health checks are successful.
 //
-// - **Secondary instance**: The weight is 0. The secondary instance takes over traffic when the primary instance fails, serving as disaster recovery and backup.
+// - **Secondary instance**: The weight is 0. The secondary instance takes over traffic after the primary instance fails and serves as disaster recovery and backup.
 //
 // @param request - CreateRouteTargetGroupRequest
 //
@@ -7719,7 +7749,7 @@ func (client *Client) CreateSslVpnClientCertWithContext(ctx context.Context, req
 //
 // Description:
 //
-// - **CreateSslVpnServer*	- is an asynchronous operation. After you call this operation, the system returns an instance ID but the SSL-VPN server is not yet created. The creation task is still running in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the VPN gateway instance to determine the creation status of the SSL-VPN server:
+// - **CreateSslVpnServer*	- is an asynchronous operation. After you call this operation, the system returns an instance ID but the SSL-VPN server is not yet created. The creation task continues in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the VPN gateway instance to determine the creation status of the SSL-VPN server:
 //
 //   - If the VPN gateway instance is in the **updating*	- state, the SSL-VPN server is being created.
 //
@@ -8169,11 +8199,11 @@ func (client *Client) CreateTrafficMirrorSessionWithContext(ctx context.Context,
 //
 // Description:
 //
-// Before you begin:
+// When you call this operation to create a vSwitch, take note of the following items:
 //
 // - The number of vSwitches in each VPC cannot exceed 150.
 //
-// - The first and last three IP addresses of each vSwitch CIDR block are reserved by the system. For example, the system reserved IP addresses of 192.168.1.0/24 are 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255.
+// - The first IP address and the last three IP addresses of each vSwitch CIDR block are reserved by the system. For example, the system reserved IP addresses of 192.168.1.0/24 are 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255.
 //
 // - The number of cloud service instances in a vSwitch cannot exceed the remaining available cloud service instances in the VPC (15,000 minus the current number of cloud service instances).
 //
@@ -8183,15 +8213,15 @@ func (client *Client) CreateTrafficMirrorSessionWithContext(ctx context.Context,
 //
 // - After a vSwitch is created, you cannot modify its CIDR block.
 //
-// - The **CreateVSwitch*	- operation is asynchronous. After you send a request, the system returns an instance ID, but the vSwitch is not yet created. The background node is still in progress. You can invoke [DescribeVSwitchAttributes](https://help.aliyun.com/document_detail/94567.html) to query the creation status of the vSwitch:
+// - The **CreateVSwitch*	- operation is asynchronous. After you send a request, the system returns an instance ID but the vSwitch is not yet created. The background task is still in progress. You can call [DescribeVSwitchAttributes](https://help.aliyun.com/document_detail/94567.html) to query the creation status of the vSwitch:
 //
-//   - If the vSwitch is in the **Pending*	- state, the vSwitch is being configured.
+//   - When the vSwitch is in the **Pending*	- state, the vSwitch is being configured.
 //
-//   - If the vSwitch is in the **Available*	- state, the vSwitch is active.
+//   - When the vSwitch is in the **Available*	- state, the vSwitch is available.
 //
 // - The **CreateVSwitch*	- operation does not support concurrent creation of vSwitches in the same VPC.
 //
-// - The **CreateVSwitch*	- operation does not support creating vSwitches with the CIDR block 100.64.0.0/10 or its subnets.
+// - When you call the **CreateVSwitch*	- operation, the CIDR block of the vSwitch cannot be within the following reserved address ranges: 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, or 224.0.0.0/4.
 //
 // @param request - CreateVSwitchRequest
 //
@@ -8301,7 +8331,7 @@ func (client *Client) CreateVSwitchWithContext(ctx context.Context, request *Cre
 //
 //   - IPv6 CIDR block: The first and last nine IP addresses of the vSwitch are system reserved IP addresses.
 //
-// - The **CreateVSwitchCidrReservation*	- operation is asynchronous. After you send a request, the system returns an instance ID, but the reserved CIDR block for a vSwitch has not been created. The system continues to run the background node. You can invoke [ListVSwitchCidrReservations](https://help.aliyun.com/document_detail/610155.html) to query the creation status of the reserved CIDR block for a vSwitch:
+// - The **CreateVSwitchCidrReservation*	- operation is asynchronous. After you send a request, the system returns an instance ID, but the reserved CIDR block for a vSwitch has not been created. The background node is still in progress. You can invoke [ListVSwitchCidrReservations](https://help.aliyun.com/document_detail/610155.html) to query the creation status of the reserved CIDR block for a vSwitch:
 //
 //   - If the reserved CIDR block for a vSwitch is in the **Assigning*	- state, the reserved CIDR block for a vSwitch is being allocated.
 //
@@ -8326,6 +8356,10 @@ func (client *Client) CreateVSwitchCidrReservationWithContext(ctx context.Contex
 
 	if !dara.IsNil(request.DryRun) {
 		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.IpPrefixNumber) {
+		query["IpPrefixNumber"] = request.IpPrefixNumber
 	}
 
 	if !dara.IsNil(request.IpVersion) {
@@ -8405,7 +8439,7 @@ func (client *Client) CreateVSwitchCidrReservationWithContext(ctx context.Contex
 
 // Summary:
 //
-// Creates a VBR failover group by calling the CreateVbrHa operation.
+// Creates a VBR failover group.
 //
 // @param request - CreateVbrHaRequest
 //
@@ -8497,7 +8531,7 @@ func (client *Client) CreateVbrHaWithContext(ctx context.Context, request *Creat
 //
 // - Adding a destination route with a destination CIDR block of 0.0.0.0/0 is not supported.
 //
-// - Do not add a destination route with a destination CIDR block of 100.64.0.0/10, a subnet of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. Such route entries cause the console to fail to display the status of the IPsec-VPN connection or cause IPsec negotiation to fail.
+// - Do not add a destination route whose destination CIDR block is 100.64.0.0/10, a subnet of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. Such route entries cause the console to fail to display the status of the IPsec-VPN connection or cause IPsec negotiation to fail.
 //
 // - **CreateVcoRouteEntry*	- is an asynchronous operation. After you send a request, the system returns an instance ID but the destination route entry is not yet created. The creation task is still running in the background. You can call [DescribeVpnConnection](https://help.aliyun.com/document_detail/53046.html) to query the creation status of the destination route entry:
 //
@@ -8505,7 +8539,7 @@ func (client *Client) CreateVbrHaWithContext(ctx context.Context, request *Creat
 //
 //   - If the IPsec-VPN connection is in the **attached*	- state, the destination route entry is created.
 //
-// - **CreateVcoRouteEntry*	- does not support concurrent creation of destination route entries for the same IPsec-VPN connection.
+// - The **CreateVcoRouteEntry*	- operation does not support concurrent creation of destination route entries for the same IPsec-VPN connection.
 //
 // @param request - CreateVcoRouteEntryRequest
 //
@@ -8729,7 +8763,29 @@ func (client *Client) CreateVirtualBorderRouterWithContext(ctx context.Context, 
 //
 // Description:
 //
-// Before calling this operation, understand the creation process and environment requirements for shared Express Connect circuits. For more information, see [Overview of shared Express Connect circuits](https://help.aliyun.com/document_detail/146571.html) and [Partner operation guide](https://help.aliyun.com/document_detail/155987.html).
+// Before you call this operation, familiarize yourself with the creation process and environment requirements for shared Express Connect circuits. For more information, see [Overview of shared Express Connect circuits](https://help.aliyun.com/document_detail/146571.html) and [Partner operation guide](https://help.aliyun.com/document_detail/155987.html).
+//
+// Before you call this operation, make sure the following conditions are met:
+//
+// - The Express Connect circuit specified by PhysicalConnectionId is in the Enabled state. The complete process for an Express Connect circuit to reach the Enabled state includes payment and manual steps that cannot be fully automated through OpenAPI:
+//
+//   - CreatePhysicalConnection: Creates an Express Connect circuit.
+//
+//   - LOA construction authorization: If you need to enter the data center for construction, call ApplyPhysicalConnectionLOA → wait for manual LOA approval → CompletePhysicalConnectionLOA (FinishWork=true). LOA approval and construction are manual/offline steps.
+//
+//   - ConfirmPhysicalConnection: Reports construction completion. The circuit must be in the Allocated state. After success, it enters the Confirmed state.
+//
+//   - After the Confirmed state, port usage fees must be paid before the circuit enters the Enabled state. For automation scenarios, call DescribePhysicalConnections first to confirm the target circuit is in the Enabled state before calling this operation.
+//
+// - The VlanId is not already used by an existing VBR or shared Express Connect circuit on the Express Connect circuit (valid values: 0 to 2999).
+//
+// - The Spec value does not exceed the remaining allocatable bandwidth of the Express Connect circuit or the shared circuit bandwidth limit configured for the account that owns the Express Connect circuit.
+//
+// - VpconnAliUid is the tenant\\"s Alibaba Cloud account (RAM users or partner accounts are not supported). Cross-site pushing is not allowed by default.
+//
+// - The number of shared Express Connect circuits on a single Express Connect circuit has not exceeded the quota.
+//
+// - The Express Connect circuit is not bound to a QoS policy, the access device supports MPBGP, and the access point allows the creation of shared Express Connect circuits.
 //
 // @param request - CreateVirtualPhysicalConnectionRequest
 //
@@ -9169,17 +9225,17 @@ func (client *Client) CreateVpcPrefixListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Transforms the sharing mode of shared Express Connect circuits from cross-account Virtual Border Router (VBR) routing push to cross-account shared port push.
+// Transforms the routing mode of shared Express Connect circuits from cross-account Virtual Border Router (VBR) push to cross-account shared port push.
 //
 // Description:
 //
-// By invoking the CreateVpconnFromVbr operation, a partner can transform the sharing mode of shared Express Connect circuits used by a tenant from cross-account VBR push to cross-account shared port push. The transform procedure does not affect the tenant\\"s services.
+// By invoking the CreateVpconnFromVbr operation, a partner can transform the routing mode of shared Express Connect circuits used by a tenant from cross-account VBR push to cross-account shared port push. The transform procedure does not affect the tenant\\"s services.
 //
-// Before you execute the transform:
+// Before you execute the transform procedure:
 //
 // The partner must notify the tenant about the service upgrade in advance and ensure that the tenant has enabled outbound traffic billing. For information about how to enable outbound traffic billing, see [Enable outbound traffic billing](https://help.aliyun.com/document_detail/274385.html).
 //
-// After the transform is complete:
+// After the transform procedure is complete:
 //
 // 1. A shared port is added to the tenant\\"s account. The tenant must invoke the [ConfirmPhysicalConnection](https://help.aliyun.com/document_detail/324198.html) operation to accept the shared port.
 //
@@ -9243,21 +9299,13 @@ func (client *Client) CreateVpconnFromVbrWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Creates an IPsec-VPN connection for bindng to a transit router instance by calling the CreateVpnAttachment operation.
+// Creates an IPsec-VPN connection to be associated with a transit router instance by calling the CreateVpnAttachment operation.
 //
 // Description:
 //
 //	Notice:
 //
-// - In the transit router binding scenario, IPsec-VPN connections have been upgraded to dual-tunnel mode. When you create an IPsec-VPN connection, in addition to the required request parameters, only the following dual-tunnel mode-related request parameters are supported: **ClientToken**, **Name**, **NetworkType**, **EffectImmediately**, **Tags*	- array, **ResourceGroupId**, **TunnelOptionsSpecification*	- array, and **EnableTunnelsBgp**. For more information, see [Dual-tunnel IPsec-VPN connections bound to transit routers](https://help.aliyun.com/document_detail/2853535.html).
-//
-// - An IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not bound to any resource by default. You can call the [CreateTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/443993.html) operation to bind the IPsec-VPN connection to a transit router instance. After the IPsec-VPN connection is bound to a transit router instance, the system allocates a gateway IP address to the IPsec-VPN connection. You can call the [DescribeVpnConnection](https://help.aliyun.com/document_detail/2526951.html) operation to view the gateway IP address.
-//
-// ### Before you begin
-//
-// Before you create an IPsec-VPN connection, make sure that you have created a customer gateway in the region where the IPsec-VPN connection resides. For more information, see [CreateCustomerGateway](https://help.aliyun.com/document_detail/120368.html).
-//
-// If you want to add BGP configurations to the IPsec-VPN connection, make sure that an autonomous system number has been added to the customer gateway.
+// ### Before you begin.
 //
 // @param request - CreateVpnAttachmentRequest
 //
@@ -9412,15 +9460,9 @@ func (client *Client) CreateVpnAttachmentWithContext(ctx context.Context, reques
 //
 //	For information about the regions and zones that support IPsec-VPN connections in dual-tunnel mode, see [Upgrade an IPsec-VPN connection to dual-tunnel mode](https://help.aliyun.com/document_detail/2358946.html).
 //
-// - If the VPN gateway instance supports only creating IPsec-VPN connections in single-tunnel mode, you can configure the following request parameters in addition to the required parameters when you call the `CreateVpnConnection` operation:
+//	 **ClientToken**, **CustomerGatewayId**, **Name**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, **RemoteCaCertificate**, and **Tags*	- array.
 //
-//	**ClientToken**, **CustomerGatewayId**, **Name**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, **RemoteCaCertificate**, and **Tags*	- array.
-//
-// - The **CreateVpnConnection*	- operation is asynchronous. After you send a request, the system returns an instance ID, but the IPsec-VPN connection is not yet created. The creation task is still running in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the VPN gateway instance to determine the creation status of the IPsec-VPN connection:
-//
-//   - If the VPN gateway instance is in the **updating*	- state, the IPsec-VPN connection is being created.
-//
-//   - If the VPN gateway instance is in the **active*	- state, the IPsec-VPN connection is created.
+// - The **CreateVpnConnection*	- operation is asynchronous. After you send a request, the system returns an instance ID, but the IPsec-VPN connection is not yet created. The creation task is still running in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the VPN gateway instance to determine the creation status of the IPsec-VPN connection.
 //
 // - The **CreateVpnConnection*	- operation does not support concurrent creation of IPsec-VPN connections under the same VPN gateway.
 //
@@ -9567,9 +9609,9 @@ func (client *Client) CreateVpnConnectionWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// - Before you create a VPN gateway, familiarize yourself with the limits of VPN gateways. For more information, see [VPN gateway limits](https://help.aliyun.com/document_detail/65290.html).
+// - Before you create a VPN gateway, we recommend that you familiarize yourself with the limits of VPN gateways. For more information, see [VPN gateway limits](https://help.aliyun.com/document_detail/65290.html).
 //
-// - VPN gateway instances in some regions support only dual-tunnel IPsec-VPN connections by default. When you call the `CreateVpnGateway` operation to create a VPN gateway instance in these regions, you must specify the **VSwitchId*	- and **DisasterRecoveryVSwitchId*	- parameters in addition to the required parameters. For information about the regions and zones that support dual-tunnel IPsec-VPN connections, see [Upgrade an IPsec-VPN connection to dual-tunnel mode](https://help.aliyun.com/document_detail/2358946.html).
+// - VPN gateway instances in some regions support only dual-tunnel mode IPsec-VPN connections by default. When you call the `CreateVpnGateway` operation to create a VPN gateway instance in these regions, you must specify the **VSwitchId*	- and **DisasterRecoveryVSwitchId*	- parameters in addition to the required parameters. For information about the regions and zones that support dual-tunnel mode IPsec-VPN connections, see [Upgrade an IPsec-VPN connection to dual-tunnel mode](https://help.aliyun.com/document_detail/2358946.html).
 //
 // - The **CreateVpnGateway*	- operation is asynchronous. After you call this operation, the system returns an instance ID, but the VPN gateway is not yet created. The creation task is still running in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the creation status of the VPN gateway:
 //
@@ -9695,27 +9737,27 @@ func (client *Client) CreateVpnGatewayWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Creates a policy-based route for a VPN gateway by calling the CreateVpnPbrRouteEntry operation.
+// Creates a VPN policy-based route by calling the CreateVpnPbrRouteEntry operation.
 //
 // Description:
 //
 // ### Before you begin
 //
-// - Before creating a policy-based route, make sure that you have created an IPsec-VPN connection. For more information, see [CreateVpnConnection](https://help.aliyun.com/document_detail/120391.html).
+// - Before you create a policy-based route, make sure that you have created an IPsec-VPN connection. For more information, see [CreateVpnConnection](https://help.aliyun.com/document_detail/120391.html).
 //
-// - Before creating a policy-based route, we recommend that you understand the limits and matching rules of policy-based routes. For more information, see [Use policy-based routes](https://help.aliyun.com/document_detail/110777.html).
+// - Before you create a policy-based route, we recommend that you familiarize yourself with the limits and matching rules of policy-based routes. For more information, see [Use policy-based routes](https://help.aliyun.com/document_detail/110777.html).
 //
 // ### Limits
 //
-// - Adding a policy-based route whose destination CIDR block is 0.0.0.0/0 is not supported.
+// - Policy-based routes whose destination CIDR block is 0.0.0.0/0 are not supported.
 //
-// - Do not add a policy-based route whose destination CIDR block is 100.64.0.0/10, a subnet of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. Such policy-based routes cause the console to fail to display instance status of the IPsec-VPN connection or cause IPsec-VPN connection negotiation failures.
+// - Do not add policy-based routes whose destination CIDR block is 100.64.0.0/10, a subnet of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. Such policy-based routes may cause the console to fail to display instance status of IPsec-VPN connections or cause IPsec-VPN connection negotiation to be failed.
 //
-// - The **CreateVpnPbrRouteEntry*	- operation is asynchronous. After you call this operation, the system returns the information about the policy-based route, but the route has not been created yet. The system creates the route in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query instance status of the VPN gateway instance to determine the creation status of the policy-based route:
+// - The **CreateVpnPbrRouteEntry*	- operation is asynchronous. After you invoke this operation, the system returns the information about the policy-based route, but the routing has not been created. The creation node is still running in the background. You can invoke the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query instance status of the VPN gateway instance to determine the creation status of the policy-based route:
 //
 //   - If the VPN gateway instance is in the **updating*	- state, the policy-based route is being created.
 //
-//   - If the VPN gateway instance is in the **active*	- state, the policy-based route has been created.
+//   - If the VPN gateway instance is in the **active*	- state, the policy-based route is created.
 //
 // - The **CreateVpnPbrRouteEntry*	- operation does not support concurrent creation of policy-based routes for the same VPN gateway instance.
 //
@@ -10073,7 +10115,7 @@ func (client *Client) DeactiveFlowLogWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Deletes a specified Border Gateway Protocol (BGP) group.
+// Deletes a specified BGP group.
 //
 // @param request - DeleteBgpGroupRequest
 //
@@ -10142,6 +10184,10 @@ func (client *Client) DeleteBgpGroupWithContext(ctx context.Context, request *De
 // Summary:
 //
 // Deletes an advertised Border Gateway Protocol (BGP) network.
+//
+// Description:
+//
+// Before calling this operation, ensure that the BgpNetwork is in the Available state. You can query the Status field by calling DescribeBgpNetworks. After a resource is created by AddBgpNetwork, it enters the Pending state. Wait until the state changes to Available before calling this operation.
 //
 // @param request - DeleteBgpNetworkRequest
 //
@@ -10871,11 +10917,11 @@ func (client *Client) DeleteExpressConnectTrafficQosRuleWithContext(ctx context.
 
 // Summary:
 //
-// Deletes an Express Connect failover test job.
+// Deletes an Express Connect failover test job by calling the DeleteFailoverTestJob operation.
 //
 // Description:
 //
-// Only failover test jobs in the **Pending*	- or **Completed*	- state can be deleted.
+// Only failover test jobs in the **Pending*	- or **Completed*	- state can be deleted. Before calling this operation, create a failover test job by calling CreateFailoverTestJob and obtain the **JobId**. If the test resource is an Express Connect circuit, the circuit must be in the **Enabled*	- state and its business status must be **Normal**.
 //
 // @param request - DeleteFailoverTestJobRequest
 //
@@ -11559,7 +11605,7 @@ func (client *Client) DeleteIPv6TranslatorEntryWithContext(ctx context.Context, 
 //
 // Description:
 //
-// - **DeleteIpsecServer*	- is an asynchronous operation. After you send a request, the system returns a request ID. However, the IPsec server is not yet deleted. The deletion node is still running in the background. You can invoke [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the instance status of the VPN gateway and determine the deletion status of the IPsec server:
+// - **DeleteIpsecServer*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the IPsec server is not yet deleted. The deletion node continues to run in the background. You can invoke [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the instance status of the VPN gateway to determine the deletion status of the IPsec server:
 //
 //   - If the VPN gateway instance is in the **updating*	- state, the IPsec server is being deleted.
 //
@@ -11975,13 +12021,13 @@ func (client *Client) DeleteIpv6InternetBandwidthWithContext(ctx context.Context
 //
 // Description:
 //
-// *DeleteNatGateway*	- is an asynchronous operation. After you send a request, the system returns a request ID. However, the NAT gateway is not immediately deleted. The deletion task runs in the background. You can call [DescribeNatGateways](https://help.aliyun.com/document_detail/36054.html) to query the status of the NAT gateway:
+// *DeleteNatGateway*	- is an asynchronous operation. After you send a request, the system returns a request ID. However, the NAT gateway is not immediately deleted. The deletion task runs in the background. You can call [DescribeNatGateways](https://www.alibabacloud.com/help/en/nat-gateway/developer-reference/api-vpc-2016-04-28-describenatgateways-natgws) to query the status of the NAT gateway:
 //
 // - If the NAT gateway is in the **Deleting*	- state, the NAT gateway is being deleted. In this state, you can only perform query operations.
 //
 // - If the NAT gateway cannot be found, the NAT gateway is deleted.
 //
-// > The deletion of a NAT gateway is irreversible. Proceed with caution.
+// > Deleting a NAT gateway is irreversible. Proceed with caution.
 //
 // @param request - DeleteNatGatewayRequest
 //
@@ -12379,7 +12425,7 @@ func (client *Client) DeletePhysicalConnectionWithContext(ctx context.Context, r
 //
 // Before you call this operation, take note of the following items:
 //
-// - Before deleting an IP address pool, make sure that the IP addresses in the pool are not in use.
+// - Before you delete an IP address pool, make sure that the IP addresses in the pool are not in use.
 //
 // - **DeletePublicIpAddressPool*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListPublicIpAddressPools](https://help.aliyun.com/document_detail/429433.html) to query the status of the IP address pool.
 //
@@ -12387,7 +12433,7 @@ func (client *Client) DeletePhysicalConnectionWithContext(ctx context.Context, r
 //
 //   - If the IP address pool cannot be found, the IP address pool is deleted.
 //
-// - **DeletePublicIpAddressPool*	- does not support concurrent deletion of the same IP address pool.
+// - You cannot call **DeletePublicIpAddressPool*	- to concurrently delete the same IP address pool.
 //
 // @param request - DeletePublicIpAddressPoolRequest
 //
@@ -12467,7 +12513,7 @@ func (client *Client) DeletePublicIpAddressPoolWithContext(ctx context.Context, 
 //
 // - Before deleting a CIDR block, make sure that the CIDR block is not in use.
 //
-// - **DeletePublicIpAddressPoolCidrBlock*	- is an asynchronous operation. After a request is sent, the system returns a request ID, but the CIDR block is not yet deleted. The deletion task continues to run in the background. You can call [ListPublicIpAddressPoolCidrBlocks](https://help.aliyun.com/document_detail/429436.html) to query the status of the CIDR block in the IP address pool.
+// - **DeletePublicIpAddressPoolCidrBlock*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the deletion task in the background. You can call [ListPublicIpAddressPoolCidrBlocks](https://help.aliyun.com/document_detail/429436.html) to query the status of the CIDR block in the IP address pool.
 //
 //   - If the CIDR block is in the **Deleting*	- state, the CIDR block is being deleted. In this state, you can only perform query operations.
 //
@@ -12549,7 +12595,7 @@ func (client *Client) DeletePublicIpAddressPoolCidrBlockWithContext(ctx context.
 
 // Summary:
 //
-// Batch deletes custom route entries.
+// Calls DeleteRouteEntries to batch delete custom route entries.
 //
 // Description:
 //
@@ -12557,15 +12603,15 @@ func (client *Client) DeletePublicIpAddressPoolCidrBlockWithContext(ctx context.
 //
 // - Only routing entries in the **Available*	- state can be deleted.
 //
-// - Routing entries cannot be deleted if the VPC to which the route table belongs is creating or deleting a vSwitch or routing entries.
+// - Routing entries cannot be deleted if the VPC that contains the route table is creating or deleting a vSwitch or routing entry.
 //
-// - The **DeleteRouteEntries*	- operation is asynchronous. After you send a request, the system returns a request ID, but the custom route entry is not yet deleted. The deletion task continues to run in the background. You can call [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) to query the deletion status of the custom route entry:
+// - The **DeleteRouteEntries*	- operation is asynchronous. After you send a request, the system returns a request ID, but the routing entry is not yet deleted. The deletion task is still running in the background. You can call [DescribeRouteEntryList](https://help.aliyun.com/document_detail/138148.html) to query the deletion status of the routing entry:
 //
-//   - If the custom route entry is in the **Deleting*	- state, the custom route entry is being deleted.
+//   - If the routing entry is in the **Deleting*	- state, the routing entry is being deleted.
 //
-//   - If the specified custom route entry cannot be found, the custom route entry is deleted.
+//   - If the specified routing entry cannot be found, the routing entry is deleted.
 //
-// - The **DeleteRouteEntries*	- operation does not support concurrent batch deletion of routing entries from route tables in the same VPC.
+// - The **DeleteRouteEntries*	- operation does not support concurrent batch deletion of routing entries in route tables within the same VPC.
 //
 // @param request - DeleteRouteEntriesRequest
 //
@@ -13133,13 +13179,13 @@ func (client *Client) DeleteSslVpnClientCertWithContext(ctx context.Context, req
 //
 // Description:
 //
-// - **DeleteSslVpnServer*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the SSL server has not yet been deleted. The deletion task continues to run in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the VPN gateway instance to determine the deletion status of the SSL server:
+// - The **DeleteSslVpnServer*	- operation is asynchronous. After you send a request, the system returns a request ID. However, the SSL server is not yet deleted. The deletion task is still running in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the VPN gateway instance to determine the deletion status of the SSL server:
 //
 //   - If the VPN gateway instance is in the **updating*	- state, the SSL server is being deleted.
 //
 //   - If the VPN gateway instance is in the **active*	- state, the SSL server is deleted.
 //
-// - **DeleteSslVpnServer*	- does not support concurrent deletion of SSL server instances under the same VPN gateway.
+// - The **DeleteSslVpnServer*	- operation does not support concurrent deletion of SSL servers under the same VPN gateway.
 //
 // @param request - DeleteSslVpnServerRequest
 //
@@ -13625,7 +13671,7 @@ func (client *Client) DeleteVSwitchCidrReservationWithContext(ctx context.Contex
 
 // Summary:
 //
-// Deletes a VBR failover group.
+// Calls DeleteVbrHa to delete a VBR failover group.
 //
 // @param request - DeleteVbrHaRequest
 //
@@ -13697,7 +13743,7 @@ func (client *Client) DeleteVbrHaWithContext(ctx context.Context, request *Delet
 //
 // Description:
 //
-// - **DeleteVcoRouteEntry*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the destination route entry has not been deleted yet. The deletion task is still running in the background. You can call [DescribeVpnConnection](https://help.aliyun.com/document_detail/53046.html) to query the deletion status of the destination route entry:
+// - **DeleteVcoRouteEntry*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the destination route entry is not yet deleted. The deletion task continues to run in the background. You can call [DescribeVpnConnection](https://help.aliyun.com/document_detail/53046.html) to query the deletion status of the destination route entry:
 //
 //   - If the IPsec-VPN connection is in the **updating*	- state, the destination route entry is being deleted.
 //
@@ -14101,13 +14147,13 @@ func (client *Client) DeleteVpcPrefixListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes an IPsec-VPN connection by calling the DeleteVpnAttachment operation.
+// Deletes an IPsec-VPN connection.
 //
 // Description:
 //
-// - If the IPsec-VPN connection is associated with a transit router instance, disassociate the IPsec-VPN connection from the transit router instance before you delete the IPsec-VPN connection. For more information, see [DeleteTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/468251.html).
+// - If the IPsec-VPN connection is bindded to a transit router instance, disassociate the IPsec-VPN connection from the transit router instance before you delete the IPsec-VPN connection. For more information, see [DeleteTransitRouterVpnAttachment](https://help.aliyun.com/document_detail/468251.html).
 //
-// - If the IPsec-VPN connection is not associated with any resource, you can call the `DeleteVpnAttachment` operation to directly delete the IPsec-VPN connection.
+// - If the IPsec-VPN connection is not bindded to any resource, you can call the `DeleteVpnAttachment` operation to directly delete the IPsec-VPN connection.
 //
 // @param request - DeleteVpnAttachmentRequest
 //
@@ -14175,7 +14221,7 @@ func (client *Client) DeleteVpnAttachmentWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// - **DeleteVpnConnection*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the IPsec-VPN connection is not yet deleted. The deletion task continues to run in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the VPN gateway instance and determine the deletion status of the IPsec-VPN connection:
+// - **DeleteVpnConnection*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the IPsec-VPN connection is not yet deleted. The deletion task continues to run in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the VPN gateway instance to determine the deletion status of the IPsec-VPN connection:
 //
 //   - If the VPN gateway instance is in the **updating*	- state, the IPsec-VPN connection is being deleted.
 //
@@ -14255,7 +14301,7 @@ func (client *Client) DeleteVpnConnectionWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// > You cannot delete a VPN gateway that has existing IPsec-VPN connections.
+// > You cannot delete a VPN gateway that has IPsec-VPN connections.
 //
 // @param request - DeleteVpnGatewayRequest
 //
@@ -14429,7 +14475,7 @@ func (client *Client) DeleteVpnPbrRouteEntryWithContext(ctx context.Context, req
 //
 // Description:
 //
-// - **DeleteVpnRouteEntry*	- is an asynchronous operation. After you send a request, the system returns a request ID. However, the VPN destination route is not yet deleted, and the deletion node is still running in the background. You can invoke [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the instance status of the VPN gateway and determine the deletion status of the VPN destination routing:
+// - **DeleteVpnRouteEntry*	- is an asynchronous operation. After you send a request, the system returns a request ID. However, the VPN destination route is not yet deleted, and the deletion node is still running in the background. You can invoke [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the instance status of the VPN gateway, and determine the deletion status of the VPN destination routing:
 //
 //   - If the VPN gateway instance is in the **updating*	- state, the VPN destination route is being deleted.
 //
@@ -15277,11 +15323,11 @@ func (client *Client) DescribeEcGrantRelationWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries Elastic IP Addresses (EIPs) created in a specified region.
+// Queries elastic IP addresses (EIPs) created in a specified region.
 //
 // Description:
 //
-// Queries information about EIPs created in a specified region, including the bandwidth peak, billing method, and the type of instance currently attached with each EIP.
+// This operation queries information about EIPs created in a specified region, including the maximum bandwidth, billing method, and the type of instance currently attached to each EIP. If you frequently perform deep paging or page skipping, the **Throttling.DeepPageSkip*	- error code may be returned. Reduce the query frequency or use sequential pagination.
 //
 // @param request - DescribeEipAddressesRequest
 //
@@ -15739,6 +15785,10 @@ func (client *Client) DescribeExpressConnectTrafficQosWithContext(ctx context.Co
 //
 // Queries Express Connect QoS queues.
 //
+// Description:
+//
+// Before you call this operation, call CreateExpressConnectTrafficQos to create a QoS policy and obtain the **QosId**.
+//
 // @param request - DescribeExpressConnectTrafficQosQueueRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -15893,7 +15943,7 @@ func (client *Client) DescribeExpressConnectTrafficQosRuleWithContext(ctx contex
 
 // Summary:
 //
-// Queries the details of an Express Connect failover test job by calling the DescribeFailoverTestJob operation.
+// Queries the details of an Express Connect failover test job.
 //
 // @param request - DescribeFailoverTestJobRequest
 //
@@ -15961,7 +16011,7 @@ func (client *Client) DescribeFailoverTestJobWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries failover test jobs of Express Connect in batches.
+// Queries Express Connect failover test jobs in batches.
 //
 // @param request - DescribeFailoverTestJobsRequest
 //
@@ -17863,7 +17913,7 @@ func (client *Client) DescribePhysicalConnectionLOAWithContext(ctx context.Conte
 //
 // Description:
 //
-// By default, the system queries information about all Express Connect circuits in the specified region. You can use the filter options provided by the **DescribePhysicalConnections*	- operation to query information about specific Express Connect circuits. For the filter options supported by the system, refer to the description of **Key*	- in the **request parameters*	- section of this topic.
+// By default, the system queries information about all Express Connect circuits in the specified region. You can use the filter options provided by the **DescribePhysicalConnections*	- operation to query information about specific Express Connect circuits. For the filter options supported by the system, see the description of **Key*	- in the **request parameters*	- section of this topic.
 //
 // @param request - DescribePhysicalConnectionsRequest
 //
@@ -18469,7 +18519,7 @@ func (client *Client) DescribeRouterInterfaceAttributeWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries router interfaces in a specified region by calling the DescribeRouterInterfaces operation.
+// Queries router interfaces in a specified region.
 //
 // @param request - DescribeRouterInterfacesRequest
 //
@@ -19111,7 +19161,7 @@ func (client *Client) DescribeTagKeysWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Calls the DescribeTagKeysForExpressConnect operation to return the tag list of Express Connect.
+// Queries the tag list of Express Connect resources by calling the DescribeTagKeysForExpressConnect operation.
 //
 // @param request - DescribeTagKeysForExpressConnectRequest
 //
@@ -19423,6 +19473,10 @@ func (client *Client) DescribeVSwitchAttributesWithContext(ctx context.Context, 
 //
 // Queries networkable information. Internal networking is performed by vSwitch.
 //
+// Description:
+//
+// The **DescribeVSwitches*	- operation may return the **Throttling.DeepPageSkip*	- error code during frequent deep paging or page skipping. Reduce the query frequency or use sequential paging.
+//
 // @param request - DescribeVSwitchesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -19685,7 +19739,7 @@ func (client *Client) DescribeVcoRouteEntriesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the Virtual Border Routers (VBRs) that you have created.
+// Queries Virtual Border Routers (VBRs) that are created.
 //
 // @param request - DescribeVirtualBorderRoutersRequest
 //
@@ -20002,6 +20056,10 @@ func (client *Client) DescribeVpcGrantRulesToEcrWithContext(ctx context.Context,
 // Summary:
 //
 // Queries created VPCs.
+//
+// Description:
+//
+// The **DescribeVpcs*	- operation may return the **Throttling.DeepPageSkip*	- error code during frequent deep paging or page skipping. Reduce the query frequency or use sequential paging.
 //
 // @param request - DescribeVpcsRequest
 //
@@ -20849,7 +20907,7 @@ func (client *Client) DescribeVpnRouteEntriesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the logs of an SSL server by calling the DescribeVpnSslServerLogs operation.
+// Queries the logs of an SSL server.
 //
 // @param request - DescribeVpnSslServerLogsRequest
 //
@@ -21167,11 +21225,11 @@ func (client *Client) DiagnoseVpnConnectionsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Diagnoses a specified VPN gateway instance with one click by calling the DiagnoseVpnGateway operation.
+// Calls the DiagnoseVpnGateway operation to perform a one-click diagnosis on a specified VPN gateway instance.
 //
 // Description:
 //
-// Only VPN gateway instances in specific regions support the one-click diagnostics feature. For more information about regions, see [Regions that support VPN Gateway features](https://help.aliyun.com/document_detail/430697.html).
+// Only VPN gateway instances in specific regions support the one-click diagnosis feature. For more information about regions, see [Regions that support VPN Gateway features](https://help.aliyun.com/document_detail/430697.html).
 //
 // @param request - DiagnoseVpnGatewayRequest
 //
@@ -21527,13 +21585,13 @@ func (client *Client) DissociateRouteTablesFromVpcGatewayEndpointWithContext(ctx
 //
 // Description:
 //
-// - **DissociateVpnGatewayWithCertificate*	- is an asynchronous operation. After a request is sent, the system returns a request ID. However, the VPN gateway is not yet dissociated from the SSL certificate, and the dissociation task is still running in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query the status of the VPN gateway instance and check the dissociation status of the SSL certificate:
+// - **DissociateVpnGatewayWithCertificate*	- is an asynchronous operation. After a request is sent, the system returns a request ID, but the VPN gateway has not yet been dissociated from the SSL certificate. The dissociation task is still running in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query the status of the VPN gateway instance and confirm the dissociation status of the SSL certificate:
 //
 //   - If the VPN gateway is in the **updating*	- state, the SSL certificate is being dissociated.
 //
 //   - If the VPN gateway is in the **active*	- state, the SSL certificate is dissociated.
 //
-// - **DissociateVpnGatewayWithCertificate*	- does not support concurrent SSL certificate dissociation for the same VPN gateway.
+// - **DissociateVpnGatewayWithCertificate*	- does not support concurrent dissociation of SSL certificates from the same VPN gateway.
 //
 // @param request - DissociateVpnGatewayWithCertificateRequest
 //
@@ -21665,15 +21723,17 @@ func (client *Client) DownloadVpnConnectionConfigWithContext(ctx context.Context
 //
 // Description:
 //
-// When you call this operation, take note of the following items:
+// When you invoke this operation, note the following items:
 //
-// - You can enable only an Express Connect circuit that is in the **Confirmed*	- state.
+// - You can enable only an Express Connect circuit that is in the Confirmed state. After the circuit is enabled, it enters the Enabled state. To reach the Confirmed state, complete the following steps in sequence: call CreatePhysicalConnection to create a circuit (Initial → Allocating), wait for resource allocation to complete (Allocating → Allocated), and then call ConfirmPhysicalConnection after construction is complete (Allocated → Confirmed).
 //
-// - After the circuit is enabled, it enters the **Enabled*	- state.
+// - A billing activation step occurs between the Confirmed and Enabled states. By default (if ByPassSp is not specified or ByPassSp is set to false), the system automatically creates a billing order in the sales and billing system when you invoke this operation. The circuit is enabled only after the order is created. To skip the billing order flow and directly enable the circuit, set ByPassSp to true. This capability is available only to whitelist accounts. For more information, see the ByPassSp parameter description.
 //
-// - **EnablePhysicalConnection*	- is an asynchronous operation. After you send a request, the system returns an instance ID, but the Express Connect circuit is not yet enabled. The enabling task is still running in the background. You can call [DescribePhysicalConnections](https://help.aliyun.com/document_detail/2982519.html) to query the status of the Express Connect circuit.
+// - The EnablePhysicalConnection operation is asynchronous. The system returns a success response, but the Express Connect circuit is not yet fully enabled because the backend enablement task is still in progress. You can invoke DescribePhysicalConnections to query the enablement status of the Express Connect circuit.
 //
-// - **EnablePhysicalConnection*	- does not support concurrent enabling of the same Express Connect circuit that is in the **Confirmed*	- state.
+// - The EnablePhysicalConnection operation does not support concurrent enablement of the same Express Connect circuit that is in the Confirmed state. Concurrent invocations return an error.
+//
+// If the Express Connect circuit is already in the Enabled state, invoking this operation again returns a success response (idempotent).
 //
 // @param request - EnablePhysicalConnectionRequest
 //
@@ -22109,7 +22169,7 @@ func (client *Client) GetIpv4GatewayAttributeWithContext(ctx context.Context, re
 //
 // Description:
 //
-// This operation queries the information about a single Internet NAT gateway or VPC NAT gateway. The term "NAT gateway" in this topic refers to both types without distinction.
+// This operation queries the information about a single Internet NAT gateway or VPC NAT gateway. The term "NAT gateway" in this topic does not distinguish between the two types.
 //
 // @param request - GetNatGatewayAttributeRequest
 //
@@ -22791,11 +22851,11 @@ func (client *Client) GetVpcRouteEntrySummaryWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the one-click diagnostic result of a VPN gateway instance by calling the GetVpnGatewayDiagnoseResult operation.
+// Queries the one-click diagnosis result of a VPN gateway instance.
 //
 // Description:
 //
-// When you call the **GetVpnGatewayDiagnoseResult*	- operation, you must specify at least one of the **DiagnoseId*	- and **VpnGatewayId*	- parameters in addition to the required parameters.
+// When you call the **GetVpnGatewayDiagnoseResult*	- operation, in addition to the required parameters, you must specify at least one of the **DiagnoseId*	- and **VpnGatewayId*	- parameters.
 //
 // @param request - GetVpnGatewayDiagnoseResultRequest
 //
@@ -22943,7 +23003,29 @@ func (client *Client) GrantInstanceToCenWithContext(ctx context.Context, request
 //
 // Description:
 //
-// When creating a cross-account VBR uplink connection, you must grant authorization of the VPC-connected instance to the VBR instance.
+// This operation is used for cross-account scenarios. Before calling this operation, ensure that the following resources are ready:
+//
+// **Account A (VPC owner, the caller of this operation):**
+//
+// - A VPC has been created and is in the Available state (CreateVpc).
+//
+// **Account B (VBR owner, the account specified by VbrOwnerUid):*	- When GrantType=Specify, the VBRs specified in VbrInstanceIds must already be created. Creating a VBR depends on the complete Express Connect circuit lifecycle:
+//
+// 1. Call CreatePhysicalConnection to create an Express Connect circuit.
+//
+// 2. Apply for a Letter of Authorization (LOA) and complete the construction (ApplyPhysicalConnectionLOA → CompletePhysicalConnectionLOA). The Express Connect circuit enters the Confirmed state.
+//
+// 3. Call EnablePhysicalConnection to enable the Express Connect circuit (the circuit must be in the Confirmed state).
+//
+// 4. Call CreateVirtualBorderRouter to create a VBR (the Express Connect circuit must be in the Enabled state. Otherwise, the error InvalidPhysicalConnectionId.NotEnabled is returned).
+//
+// After the preceding preparations are complete, Account A calls this operation to grant the VPC to the VBR of Account B:
+//
+// - GrantType=All: Grants authorization to all VBRs under Account B (only the validity of VbrOwnerUid is verified. The VBRs do not need to be created yet).
+//
+// - GrantType=Specify: Grants authorization to specified VBRs. The instances in VbrInstanceIds must already exist in the region specified by VbrRegionNo under the account specified by VbrOwnerUid. Otherwise, the error Instance.NotExist is returned.
+//
+// Note: VbrOwnerUid cannot be the same as the caller\\"s account. Otherwise, the error Parameter.Illegal is returned.
 //
 // @param tmpReq - GrantInstanceToVbrRequest
 //
@@ -23013,7 +23095,7 @@ func (client *Client) GrantInstanceToVbrWithContext(ctx context.Context, tmpReq 
 
 // Summary:
 //
-// Calls the ListBusinessAccessPoints operation to query access point information for Express Connect circuits.
+// Queries the access point information of Express Connect circuits by calling the ListBusinessAccessPoints operation.
 //
 // @param request - ListBusinessAccessPointsRequest
 //
@@ -24761,7 +24843,7 @@ func (client *Client) ListVSwitchCidrReservationsWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries information about shared Express Connect circuits by calling the ListVirtualPhysicalConnections operation.
+// Queries information about shared Express Connect circuits.
 //
 // @param request - ListVirtualPhysicalConnectionsRequest
 //
@@ -25109,7 +25191,7 @@ func (client *Client) ListVpcPublishedRouteEntriesWithContext(ctx context.Contex
 //
 // - If you specify only the **RegionId*	- parameter, all associations between VPN gateway instances and SSL certificates in the specified region are queried.
 //
-// - If you specify the **RegionId*	- and **CertificateType*	- parameters, the associations between VPN gateway instances and SSL certificates of the specified certificate type in the specified region are queried.
+// - If you specify the **RegionId*	- and **CertificateType*	- parameters, the associations between VPN gateway instances and SSL certificates of the specified type in the specified region are queried.
 //
 // - If you specify the **RegionId*	- and **VpnGatewayId*	- parameters, the associations between the specified VPN gateway instances and SSL certificates in the specified region are queried.
 //
@@ -25599,7 +25681,7 @@ func (client *Client) ModifyCommonBandwidthPackageSpecWithContext(ctx context.Co
 
 // Summary:
 //
-// Modifies the configuration of a customer gateway by calling the ModifyCustomerGatewayAttribute operation.
+// Modifies the configuration of a customer gateway.
 //
 // Description:
 //
@@ -25991,15 +26073,15 @@ func (client *Client) ModifyExpressCloudConnectionBandwidthWithContext(ctx conte
 
 // Summary:
 //
-// Calls the ModifyExpressConnectTrafficQos operation to modify an Express Connect Quality of Service (QoS) policy. You can also use this operation to associate dedicated Express Connect circuits.
+// Modifies an Express Connect Quality of Service (QoS) policy. You can also use this operation to associate dedicated Express Connect circuits with the policy.
 //
 // Description:
 //
 // - Only dedicated Express Connect circuits that are in the Normal state and do not have overdue payments can be associated. Shared Express Connect circuit ports and Virtual Border Router (VBR) instances are not supported.
 //
-// - When associating dedicated Express Connect circuits, only full operations are supported. To dissociate all circuits, pass an empty string.
+// - When associating dedicated Express Connect circuits, only full replacement is supported. To disassociate all circuits, pass an empty string.
 //
-// - If a dedicated Express Connect circuit has shared Express Connect circuits or cross-account VBRs, you must apply for a whitelist before you can associate it.
+// - If a dedicated Express Connect circuit has shared Express Connect circuits or cross-account VBRs, you must be added to the whitelist before you can associate it.
 //
 // - The device on which the dedicated Express Connect circuit resides must support the QoS feature before association.
 //
@@ -27975,7 +28057,7 @@ func (client *Client) ModifyNetworkAclAttributesWithContext(ctx context.Context,
 
 // Summary:
 //
-// Modifies the configuration of an Express Connect circuit.
+// Modifies the configurations of an Express Connect circuit.
 //
 // Description:
 //
@@ -27985,7 +28067,7 @@ func (client *Client) ModifyNetworkAclAttributesWithContext(ctx context.Context,
 //
 // - You cannot modify Express Connect circuits in the **Canceled**, **Allocating**, **AllocationFailed**, or **Terminated*	- state.
 //
-// - An Express Connect circuit in the **Rejected*	- state enters the **Initial*	- state after it is modified.
+// - After an Express Connect circuit in the **Rejected*	- state is modified, it enters the **Initial*	- state.
 //
 // @param request - ModifyPhysicalConnectionAttributeRequest
 //
@@ -28635,21 +28717,21 @@ func (client *Client) ModifySslVpnClientCertWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Modifies the configuration of an SSL-VPN server.
+// Modifies the configuration of an SSL-VPN server by calling the ModifySslVpnServer operation.
 //
 // Description:
 //
-// - If you want to enable two-factor identity authentication for the SSL server, make sure that the VPN gateway instance supports this feature. You may need to upgrade the VPN gateway instance. For more information, see [SSL-VPN two-factor authentication supports IDaaS EIAM 2.0](https://help.aliyun.com/document_detail/2785320.html).
+// - If you want to enable two-factor authentication for the SSL server, make sure that the VPN gateway instance supports this feature. You may need to upgrade the VPN gateway instance. For more information, see [SSL-VPN two-factor authentication supports IDaaS EIAM 2.0](https://help.aliyun.com/document_detail/2785320.html).
 //
-// - When you modify only the **Name*	- of the SSL-VPN server, this operation is synchronous. If you modify any configuration other than **Name**, this operation is asynchronous.
+// - When you modify only the **Name*	- of the SSL-VPN server, this operation is synchronous. If you modify configurations other than **Name**, this operation is asynchronous.
 //
-// - When **ModifySslVpnServer*	- is asynchronous, the system returns a request ID first, but the configuration of the SSL-VPN server has not been modified yet. The modification task continues in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the VPN gateway instance associated with the SSL-VPN server to check the modification status:
+// - When the **ModifySslVpnServer*	- operation is asynchronous, the system returns a request ID but the configuration of the SSL-VPN server has not been modified. The modification task is still running in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the VPN gateway instance associated with the SSL-VPN server to check the modification status:
 //
 //   - If the VPN gateway instance is in the **updating*	- state, the configuration of the SSL-VPN server is being modified.
 //
 //   - If the VPN gateway instance is in the **active*	- state, the configuration of the SSL-VPN server has been modified.
 //
-// - The **ModifySslVpnServer*	- operation does not support concurrent modifications to the configuration of SSL-VPN servers under the same VPN gateway.
+// - The **ModifySslVpnServer*	- operation does not support concurrent modifications to the SSL-VPN server configuration under the same VPN gateway.
 //
 // @param request - ModifySslVpnServerRequest
 //
@@ -29107,7 +29189,7 @@ func (client *Client) ModifyVSwitchCidrReservationAttributeWithContext(ctx conte
 //
 //   - If the IPsec-VPN connection is in the **updating*	- state, the weight of the destination route entry is being modified.
 //
-//   - If the IPsec-VPN connection is in the **attached*	- state, the weight of the destination route entry has been modified.
+//   - If the IPsec-VPN connection is in the **attached*	- state, the weight of the destination route entry is modified.
 //
 // - **ModifyVcoRouteEntryWeight*	- does not support concurrent modifications of destination route entry weights for the same IPsec-VPN connection.
 //
@@ -29445,6 +29527,70 @@ func (client *Client) ModifyVpcAttributeWithContext(ctx context.Context, request
 
 // Summary:
 //
+// Modifies the primary or secondary CIDR block of a VPC.
+//
+// @param request - ModifyVpcCidrBlockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyVpcCidrBlockResponse
+func (client *Client) ModifyVpcCidrBlockWithContext(ctx context.Context, request *ModifyVpcCidrBlockRequest, runtime *dara.RuntimeOptions) (_result *ModifyVpcCidrBlockResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.OriginalCidrBlock) {
+		query["OriginalCidrBlock"] = request.OriginalCidrBlock
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TargetCidrBlock) {
+		query["TargetCidrBlock"] = request.TargetCidrBlock
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyVpcCidrBlock"),
+		Version:     dara.String("2016-04-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyVpcCidrBlockResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the configuration of a prefix list.
 //
 // Description:
@@ -29553,19 +29699,19 @@ func (client *Client) ModifyVpcPrefixListWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// - When you modify a dual-tunnel IPsec-VPN connection, in addition to the required parameters, you can configure the following request parameters: **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, the **TunnelOptionsSpecification*	- array, and **EnableTunnelsBgp**.
+// - When you modify a dual-tunnel IPsec-VPN connection, in addition to the required parameters, the following request parameters are supported: **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, the **TunnelOptionsSpecification*	- array, and **EnableTunnelsBgp**.
 //
-// - When you modify a single-tunnel IPsec-VPN connection, in addition to the required parameters, you can configure the following request parameters: **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, and **CustomerGatewayId**.
+// - When you modify a single-tunnel IPsec-VPN connection, in addition to the required parameters, the following request parameters are supported: **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, and **CustomerGatewayId**.
 //
-// - **ModifyVpnAttachmentAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnConnection](https://help.aliyun.com/document_detail/53046.html) to query the modification status of the IPsec-VPN connection:
+// - The **ModifyVpnAttachmentAttribute*	- operation is asynchronous. After a request is sent, the system returns a request ID. However, the IPsec-VPN connection configuration has not been modified. The modification task is still running in the background. You can call [DescribeVpnConnection](https://help.aliyun.com/document_detail/53046.html) to query the modification status of the IPsec-VPN connection configuration:
 //
 //   - If the IPsec-VPN connection is in the **updating*	- state, the configuration is being modified.
 //
 //   - If the IPsec-VPN connection is in the **attached*	- state, the configuration has been modified.
 //
-// - **ModifyVpnAttachmentAttribute*	- does not support concurrent modification of the IPsec-VPN connection configuration.
+// - The **ModifyVpnAttachmentAttribute*	- operation does not support concurrent modifications to the IPsec-VPN connection configuration.
 //
-// - When you call **ModifyVpnAttachmentAttribute**, you cannot modify the gateway type of the IPsec-VPN connection.
+// - When you call the **ModifyVpnAttachmentAttribute*	- operation, you cannot modify the gateway type of the IPsec-VPN connection.
 //
 // @param request - ModifyVpnAttachmentAttributeRequest
 //
@@ -29702,21 +29848,15 @@ func (client *Client) ModifyVpnAttachmentAttributeWithContext(ctx context.Contex
 //
 // Description:
 //
-// - To modify a dual-tunnel IPsec-VPN connection, the `ModifyVpnConnectionAttribute` operation supports the following request parameters in addition to the required parameters:
+// - To modify a dual-tunnel mode IPsec-VPN connection, the `ModifyVpnConnectionAttribute` operation supports the following request parameters in addition to the required parameters:
 //
 //	**ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **AutoConfigRoute**, **TunnelOptionsSpecification*	- array, and **EnableTunnelsBgp**.
 //
-// - To modify a single-tunnel IPsec-VPN connection, the `ModifyVpnConnectionAttribute` operation supports the following request parameters in addition to the required parameters:
+// - To modify a single-tunnel mode IPsec-VPN connection, the `ModifyVpnConnectionAttribute` operation supports the following request parameters in addition to the required parameters:
 //
 //	**ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, and **RemoteCaCertificate**.
 //
-// - The **ModifyVpnConnectionAttribute*	- operation is asynchronous. After a request is sent, the system returns a request ID. However, the configuration of the IPsec-VPN connection is not yet modified. The modification node runs in the background. You can invoke [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the instance status of the VPN gateway to determine the modification status of the IPsec-VPN connection configuration:
-//
-//   - If the VPN gateway instance is in the **updating*	- state, the configuration of the IPsec-VPN connection is being modified.
-//
-//   - If the VPN gateway instance is in the **active*	- state, the configuration of the IPsec-VPN connection is modified.
-//
-// - The **ModifyVpnConnectionAttribute*	- operation does not support concurrent modifications to IPsec-VPN connection configurations under the same VPN gateway.
+// - The **ModifyVpnConnectionAttribute*	- operation is asynchronous. After a request is sent, the system returns a request ID, but the configuration of the IPsec-VPN connection has not been modified yet. The modification node is still running in the background. You can invoke [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the instance status of the VPN gateway to determine the modification status of the IPsec-VPN connection configuration:
 //
 // @param request - ModifyVpnConnectionAttributeRequest
 //
@@ -29849,7 +29989,7 @@ func (client *Client) ModifyVpnConnectionAttributeWithContext(ctx context.Contex
 //
 // Description:
 //
-// - **ModifyVpnGatewayAttribute*	- is an asynchronous operation. After you call this operation, the system returns the VPN gateway information, but the configuration has not been modified yet. The modification task is still running in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the modification status of the VPN gateway configuration:
+// - **ModifyVpnGatewayAttribute*	- is an asynchronous operation. After you call this operation, the system returns the VPN gateway information, but the configuration of the VPN gateway has not been modified yet. The modification task is still running in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the modification status of the VPN gateway configuration:
 //
 //   - If the VPN gateway is in the **updating*	- state, the configuration is being modified.
 //
@@ -30051,17 +30191,17 @@ func (client *Client) ModifyVpnPbrRouteEntryAttributeWithContext(ctx context.Con
 
 // Summary:
 //
-// Invokes the ModifyVpnPbrRouteEntryPriority operation to modify the policy priority of a policy-based routing entry.
+// Invokes the ModifyVpnPbrRouteEntryPriority operation to modify the policy priority of a policy-based routing.
 //
 // Description:
 //
-// - **ModifyVpnPbrRouteEntryPriority*	- is an asynchronous operation. After you send a request, the system returns a request ID, but the policy-based routing entry has not been modified yet. The modification node is still running in the background. You can invoke the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query the instance status of the VPN gateway to determine the modification status of the policy-based routing entry:
+// - **ModifyVpnPbrRouteEntryPriority*	- is an asynchronous operation. After you send a request, the system returns a request ID. However, the policy-based routing has not been modified yet because the modification node is still running in the background. You can invoke the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query the instance status of the VPN gateway and determine the modification status of the policy-based routing:
 //
-//   - If the VPN gateway instance is in the **updating*	- state, the policy-based routing entry is being modified.
+//   - If the VPN gateway instance is in the **updating*	- state, the policy-based routing is being modified.
 //
-//   - If the VPN gateway instance is in the **active*	- state, the policy-based routing entry has been modified.
+//   - If the VPN gateway instance is in the **active*	- state, the policy-based routing has been modified.
 //
-// - **ModifyVpnPbrRouteEntryPriority*	- does not support concurrent modifications of policy-based routing entries on the same VPN gateway instance.
+// - **ModifyVpnPbrRouteEntryPriority*	- does not support concurrent modifications of policy-based routing on the same VPN gateway instance.
 //
 // @param request - ModifyVpnPbrRouteEntryPriorityRequest
 //
@@ -30267,17 +30407,17 @@ func (client *Client) ModifyVpnPbrRouteEntryWeightWithContext(ctx context.Contex
 //
 // Description:
 //
-// > This operation is applicable only to VPN gateway instances that support IPsec-VPN connections in single-tunnel mode. For VPN gateway instances that support IPsec-VPN connections in dual-tunnel mode, the weight does not take effect even if you successfully modify it by calling this operation.
+// > This operation is applicable only to VPN gateway instances that support IPsec-VPN connections in single-tunnel mode. For VPN gateway instances that support IPsec-VPN connections in dual-tunnel mode, the weight does not take effect even if it is modified by calling this operation.
 //
 // - If active/standby destination routes exist on a VPN gateway instance and you want to modify the weight of the active destination route, delete the standby destination route first. After the active destination route is modified, reconfigure the standby destination route. If you want to modify the weight of the standby destination route, delete the active destination route first. After the standby destination route is modified, reconfigure the active destination route. To delete a destination route, see [DeleteVpnRouteEntry](https://help.aliyun.com/document_detail/2526961.html).
 //
-// - The **ModifyVpnRouteEntryWeight*	- operation is asynchronous. After a request is sent, the system returns a request ID. However, the weight of the VPN destination route is not yet modified, and the modification task is still running in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the modification status of the weight:
+// - **ModifyVpnRouteEntryWeight*	- is an asynchronous operation. After a request is sent, the system returns a request ID. However, the weight of the VPN destination route has not been modified yet because the modification task is still running in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the modification status of the weight:
 //
 //   - If the VPN destination route is in the **updating*	- state, the weight is being modified.
 //
-//   - If the VPN destination route is in the **active*	- state, the weight is modified.
+//   - If the VPN destination route is in the **active*	- state, the weight has been modified.
 //
-// - The **ModifyVpnRouteEntryWeight*	- operation does not support concurrent weight modifications for destination routes on the same VPN gateway.
+// - **ModifyVpnRouteEntryWeight*	- does not support concurrent modification of destination route weights on the same VPN gateway.
 //
 // @param request - ModifyVpnRouteEntryWeightRequest
 //
@@ -30369,7 +30509,7 @@ func (client *Client) ModifyVpnRouteEntryWeightWithContext(ctx context.Context, 
 //
 // Description:
 //
-// The **ChangeResourceGroup*	- operation does not support concurrent modifications to the resource group of Express Connect circuit resources within the same Express Connect circuit instance.
+// The **ChangeResourceGroup*	- operation does not support concurrent modifications of the resource group for Express Connect circuit resources within the same Express Connect circuit instance.
 //
 // @param request - MoveResourceGroupRequest
 //
@@ -31097,23 +31237,23 @@ func (client *Client) RecoverVirtualBorderRouterWithContext(ctx context.Context,
 
 // Summary:
 //
-// Releases a specified Elastic IP Address (EIP).
+// Releases a specified elastic IP address (EIP).
 //
 // Description:
 //
-// Before you invoke this operation, take note of the following items:
+// Before you invoke this operation, take note of the following information:
 //
-// - Before releasing an EIP, make sure the following conditions are met:
+// - Before you release an EIP, make sure that the following conditions are met:
 //
 //   - Only EIPs in the **Available*	- state can be released.
 //
 //   - Only EIPs that use the pay-as-you-go billing method can be released. Subscription EIPs cannot be released.
 //
-// - The **ReleaseEipAddress*	- operation is asynchronous. After you send a request, the system returns a request ID, but the EIP instance has not been released yet. The release node is still running in the background. You can invoke [DescribeEipAddresses](https://help.aliyun.com/document_detail/120193.html) to query the status of the EIP instance:
+// - The **ReleaseEipAddress*	- operation is asynchronous. After you send a request, the system returns a request ID. However, the EIP instance is not immediately released because the release node is still running in the background. You can invoke [DescribeEipAddresses](https://help.aliyun.com/document_detail/120193.html) to query the status of the EIP instance:
 //
-//   - If the EIP instance is in the **Releasing*	- state, the EIP instance is being released. In this state, you can only execute query operations.
+//   - If the EIP instance is in the **Releasing*	- state, the EIP instance is being released. In this state, you can only execute query operations and cannot execute other operations.
 //
-//   - If the EIP instance cannot be found, the EIP instance has been released.
+//   - If the EIP instance cannot be found, the EIP instance is released.
 //
 // - The **ReleaseEipAddress*	- operation does not support concurrent release of the same EIP instance.
 //
@@ -33341,11 +33481,11 @@ func (client *Client) UnassociateRouteTableWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Calls the UnassociateVpcCidrBlock operation to delete a secondary CIDR block from a VPC.
+// Invokes UnassociateVpcCidrBlock to delete a secondary CIDR block from a VPC.
 //
 // Description:
 //
-// - Before you delete a secondary CIDR block from a VPC, delete the vSwitches created with the secondary CIDR block. For more information, see [DeleteVSwitch](https://help.aliyun.com/document_detail/35746.html).
+// - Before deleting a secondary CIDR block from a VPC, delete the vSwitches that are created with the secondary CIDR block. For more information, see [DeleteVSwitch](https://help.aliyun.com/document_detail/35746.html).
 //
 // - The **UnassociateVpcCidrBlock*	- operation does not support concurrently deleting secondary CIDR blocks from the same VPC.
 //
@@ -33499,7 +33639,7 @@ func (client *Client) UntagResourcesForExpressConnectWithContext(ctx context.Con
 
 // Summary:
 //
-// Modifies the configuration of a DHCP options set by calling the UpdateDhcpOptionsSetAttribute operation.
+// Modifies the configuration of a DHCP options set.
 //
 // @param request - UpdateDhcpOptionsSetAttributeRequest
 //
@@ -33877,7 +34017,7 @@ func (client *Client) UpdateGatewayRouteTableEntryAttributeWithContext(ctx conte
 
 // Summary:
 //
-// Updates the configuration of an IPsec server by calling the UpdateIpsecServer operation.
+// Calls the UpdateIpsecServer operation to update the configuration of an IPsec server.
 //
 // Description:
 //

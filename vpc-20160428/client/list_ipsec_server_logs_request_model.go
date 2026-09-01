@@ -50,13 +50,13 @@ type ListIpsecServerLogsRequest struct {
 	//
 	// 10
 	MinutePeriod *int32 `json:"MinutePeriod,omitempty" xml:"MinutePeriod,omitempty"`
-	// The page number of the list. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Valid values: **1*	- to **50**. Default value: **10**.
+	// The number of entries per page for paging. Valid values: **1*	- to **50**. Default value: **10**.
 	//
 	// example:
 	//

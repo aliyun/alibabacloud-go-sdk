@@ -26,7 +26,7 @@ type DescribeVpcGrantRulesToEcrResponseBody struct {
 	//
 	// - If **NextToken*	- is empty, no more results exist.
 	//
-	// - If **NextToken*	- is returned, the value indicates the token for the next query.
+	// - If **NextToken*	- has a value, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DescribeVpcGrantRulesToEcrResponseBody struct {
 	//
 	// 66342E8E-5E87-5FF9-80C7-C3E3571A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of instances returned. Note: The TotalCount parameter is not meaningful when you use the MaxResults and NextToken parameters for a paged query with paging.
+	// The total number of instances returned. Note: The TotalCount parameter is meaningless when you use MaxResults and NextToken for paginated queries.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type DescribeVpcGrantRulesToEcrResponseBodyGrantRuleModels struct {
 	//
 	// 2024-09-09T02:14:51Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The Express Connect Router (ECR) instance ID.
+	// The instance ID of the Express Connect Router (ECR).
 	//
 	// example:
 	//
@@ -128,23 +128,23 @@ type DescribeVpcGrantRulesToEcrResponseBodyGrantRuleModels struct {
 	//
 	// vpc-wz9ek66wd7tl5xqpy****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the instance in the authorization relationship.
+	// The ID of the Alibaba Cloud account that owns the instance in the queried authorization relationship.
 	//
 	// example:
 	//
 	// 192745367151****
 	InstanceUid *int64 `json:"InstanceUid,omitempty" xml:"InstanceUid,omitempty"`
-	// The region ID of the instance in the authorization relationship.
+	// The region ID of the instance in the queried authorization relationship.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The instance type of the authorization relationship. Valid values:
+	// The type of the instance in the authorization relationship. Valid values:
 	//
-	// - **VBR**: Virtual Border Router (VBR) instance. Indicates the VPC instances that the VBR instance is authorized to access through the vRouter.
+	// - **VBR**: Virtual Border Router (VBR) instance. Indicates the VPC instances for which the VBR instance has been granted authorization.
 	//
-	// - **VPC**: virtual private cloud (VPC) instance. Indicates the VBR instances that the VPC instance has authorized through the vRouter.
+	// - **VPC**: virtual private cloud (VPC) instance. Indicates the VBR instances to which the VPC instance has granted authorization.
 	//
 	// example:
 	//

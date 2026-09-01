@@ -80,7 +80,7 @@ type DescribeVpnGatewaysRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for paging queries. Valid values: **1*	- to **50**. Default value: **10**.
+	// The number of entries per page in a paged query. Valid values: **1*	- to **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type DescribeVpnGatewaysRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the VPN gateway.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

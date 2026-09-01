@@ -32,7 +32,7 @@ type iCreateVcoRouteEntryResponseBody interface {
 type CreateVcoRouteEntryResponseBody struct {
 	// The timestamp when the destination route entry was created. Unit: milliseconds.
 	//
-	// The timestamp follows the UNIX format and represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The timestamp follows the UNIX timestamp format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC to the time when the destination route entry was created.
 	//
 	// example:
 	//

@@ -104,7 +104,7 @@ type DescribeExpressConnectTrafficQosQueueResponseBodyQueueList struct {
 	//
 	// qos-queue-test
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	// The type of the QoS queue. Valid values:
+	// The QoS queue type. Valid values:
 	//
 	// - **High**: high-priority queue.
 	//
@@ -122,7 +122,7 @@ type DescribeExpressConnectTrafficQosQueueResponseBodyQueueList struct {
 	RuleList []*DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
 	// The status of the QoS queue. Valid values:
 	//
-	// - **Normal**: active.
+	// - **Normal**: available.
 	//
 	// - **Configuring**: being configured.
 	//
@@ -228,7 +228,7 @@ func (s *DescribeExpressConnectTrafficQosQueueResponseBodyQueueList) Validate() 
 }
 
 type DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList struct {
-	// The destination IP address IPv4 CIDR block that the QoS rule matches for traffic.
+	// The destination IP address IPv4 CIDR block for traffic matching in the QoS rule.
 	//
 	// > You cannot specify this parameter together with **SrcIPv6Cidr*	- or **DstIPv6Cidr**.
 	//
@@ -236,7 +236,7 @@ type DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList struct {
 	//
 	// ``1.1.**.**``/24
 	DstCidr *string `json:"DstCidr,omitempty" xml:"DstCidr,omitempty"`
-	// The destination IP address IPv6 CIDR block that the QoS rule matches for traffic.
+	// The destination IP address IPv6 CIDR block for traffic matching in the QoS rule.
 	//
 	// > You cannot specify this parameter together with **SrcCidr*	- or **DstCidr**.
 	//
@@ -244,7 +244,7 @@ type DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList struct {
 	//
 	// 2001:0db8:1234:****::/64
 	DstIPv6Cidr *string `json:"DstIPv6Cidr,omitempty" xml:"DstIPv6Cidr,omitempty"`
-	// The destination port range that the QoS rule matches. Valid values: **0*	- to **65535**. A value of -1 indicates that no match is applied. Only a single port number can be specified. The start and end port numbers must be the same. The destination port range is fixed for different protocol types. Valid values:
+	// The destination port range for traffic matching in the QoS rule. Valid values: **0*	- to **65535**. A value of -1 indicates that no matching is performed. Only a single port number can be specified. The start and end port numbers must be the same. The destination port range is fixed for different protocol types. Valid values:
 	//
 	// - **ALL**: -1/-1, not editable.
 	//
@@ -282,13 +282,13 @@ type DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList struct {
 	//
 	// -1/-1
 	DstPortRange *string `json:"DstPortRange,omitempty" xml:"DstPortRange,omitempty"`
-	// The DSCP value that the QoS rule matches. Valid values: **0*	- to **63**. A value of -1 indicates that no match is applied.
+	// The DSCP value for traffic matching in the QoS rule. Valid values: **0*	- to **63**. A value of -1 indicates that no matching is performed.
 	//
 	// example:
 	//
 	// 1
 	MatchDscp *int32 `json:"MatchDscp,omitempty" xml:"MatchDscp,omitempty"`
-	// The priority of the QoS rule. Valid values: **1*	- to **9000**. A larger value indicates a higher priority. QoS rule priorities must be unique within the same QoS policy.
+	// The priority of the QoS rule. Valid values: **1*	- to **9000**. A larger value indicates a higher priority. The priority of each QoS rule must be unique within the same QoS policy.
 	//
 	// example:
 	//
@@ -344,7 +344,7 @@ type DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList struct {
 	//
 	// qos-queue-iugg0l9x27f2no****
 	QueueId *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
-	// The remarked DSCP value in the traffic. Valid values: **0*	- to **63**. A value of -1 indicates that the DSCP value is not modified.
+	// The DSCP value to remark in the traffic. Valid values: **0*	- to **63**. A value of -1 indicates that no remarking is performed.
 	//
 	// example:
 	//
@@ -372,7 +372,7 @@ type DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList struct {
 	//
 	// qos-rule-test
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The source IPv4 CIDR block that the QoS rule matches.
+	// The source IPv4 CIDR block for traffic matching in the QoS rule.
 	//
 	// > You cannot specify this parameter together with **SrcIPv6Cidr*	- or **DstIPv6Cidr**.
 	//
@@ -380,7 +380,7 @@ type DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList struct {
 	//
 	// ``1.1.**.**``/24
 	SrcCidr *string `json:"SrcCidr,omitempty" xml:"SrcCidr,omitempty"`
-	// The source IPv6 CIDR block that the QoS rule matches.
+	// The source IPv6 CIDR block for traffic matching in the QoS rule.
 	//
 	// > You cannot specify this parameter together with **SrcCidr*	- or **DstCidr**.
 	//
@@ -388,7 +388,7 @@ type DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList struct {
 	//
 	// 2001:0db8:1234:****::/64
 	SrcIPv6Cidr *string `json:"SrcIPv6Cidr,omitempty" xml:"SrcIPv6Cidr,omitempty"`
-	// The source port range that the QoS rule matches. Valid values: **0*	- to **65535**. A value of -1 indicates that no match is applied. Only a single port number can be specified. The start and end port numbers must be the same.
+	// The source port range for traffic matching in the QoS rule. Valid values: **0*	- to **65535**. A value of -1 indicates that no matching is performed. Only a single port number can be specified. The start and end port numbers must be the same.
 	//
 	// example:
 	//
@@ -396,7 +396,7 @@ type DescribeExpressConnectTrafficQosQueueResponseBodyQueueListRuleList struct {
 	SrcPortRange *string `json:"SrcPortRange,omitempty" xml:"SrcPortRange,omitempty"`
 	// The status of the QoS rule. Valid values:
 	//
-	// - **Normal**: active.
+	// - **Normal**: available.
 	//
 	// - **Configuring**: being configured.
 	//

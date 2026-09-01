@@ -50,9 +50,9 @@ type iDescribeVSwitchesRequest interface {
 type DescribeVSwitchesRequest struct {
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the request fails the dry run, the corresponding error is returned. If the request passes the dry run, the error code `DryRunOperation` is returned.
+	// - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed.
+	// - **false*	- (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -93,13 +93,13 @@ type DescribeVSwitchesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page when using paging. Maximum value: **50**. Default value: **10**.
+	// The number of entries per page for paging queries. Maximum value: **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region to which the vSwitch belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
+	// The ID of the region to which the vSwitch belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// > Specify at least one of the **RegionId*	- and **VpcId*	- parameters.
 	//
@@ -123,7 +123,7 @@ type DescribeVSwitchesRequest struct {
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
 	// The tags of the resource.
 	Tag []*DescribeVSwitchesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the vSwitch to query.
+	// The ID of the vSwitch that you want to query.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type DescribeVSwitchesRequest struct {
 	//
 	// 2546073170691****
 	VSwitchOwnerId *int64 `json:"VSwitchOwnerId,omitempty" xml:"VSwitchOwnerId,omitempty"`
-	// The ID of the VPC to which the vSwitch belongs.
+	// The ID of the VPC to which the vSwitches that you want to query belong.
 	//
 	// > Specify at least one of the **RegionId*	- and **VpcId*	- parameters.
 	//
@@ -151,7 +151,7 @@ type DescribeVSwitchesRequest struct {
 	//
 	// vpc-25cdvfeq58pl****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone to which the vSwitch belongs. You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query zone IDs.
+	// The ID of the zone to which the vSwitch belongs. You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query the zone ID.
 	//
 	// example:
 	//

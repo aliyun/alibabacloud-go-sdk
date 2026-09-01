@@ -38,9 +38,9 @@ type iCreateFailoverTestJobRequest interface {
 type CreateFailoverTestJobRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
@@ -54,11 +54,11 @@ type CreateFailoverTestJobRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: sends the request without creating the failover test node. The system checks the request for potential issues, including whether the AccessKey is valid, the authorization of the Resource Access Management (RAM) user, and whether required parameters are specified. If the check fails, the corresponding error is returned. If the check passes, the DryRunOperation error code is returned.
+	// - **true**: sends the request without creating the failover test node. The system checks the AccessKey validity, Resource Access Management (RAM) user authorization, and required parameters. If the check fails, the corresponding error is returned. If the check passes, the DryRunOperation error code is returned.
 	//
-	// - **false*	- (default): sends a Normal request, and the failover test job is created after the check passes. A 2xx HTTP status code is returned.
+	// - **false*	- (default): sends a Normal request. After the check passes, a 2xx HTTP status code is returned and the failover test job is created.
 	//
 	// example:
 	//
@@ -72,11 +72,11 @@ type CreateFailoverTestJobRequest struct {
 	//
 	// 60
 	JobDuration *int32 `json:"JobDuration,omitempty" xml:"JobDuration,omitempty"`
-	// The type of the failover test job. Valid values:
+	// The failover test job type. Valid values:
 	//
-	// - **StartNow**: The failover test starts immediately after the job is created.
+	// - **StartNow**: starts immediately. The test job starts executing immediately after it is created.
 	//
-	// - **StartLater**: Only the job is created. The failover test does not start.
+	// - **StartLater**: does not start. Only creates the test job without executing it.
 	//
 	// This parameter is required.
 	//
@@ -96,18 +96,18 @@ type CreateFailoverTestJobRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the failover test job.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query region IDs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of resource IDs to test. You can add up to 16 resources.
+	// The list of test resource IDs. You can add up to 16 test resources.
 	//
 	// This parameter is required.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The type of the resource to test. Valid values: **PHYSICALCONNECTION**: Express Connect circuit.
+	// The type of the test resource. Valid values: **PHYSICALCONNECTION**: Express Connect circuit.
 	//
 	// This parameter is required.
 	//

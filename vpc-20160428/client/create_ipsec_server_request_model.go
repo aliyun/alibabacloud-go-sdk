@@ -76,7 +76,7 @@ type CreateIpsecServerRequest struct {
 	//
 	// true
 	EffectImmediately *bool `json:"EffectImmediately,omitempty" xml:"EffectImmediately,omitempty"`
-	// The Phase 1 negotiation parameter settings. Valid values:
+	// The parameter settings of Phase 1 negotiations. Valid values:
 	//
 	// - **IkeVersion**: The version of the IKE protocol. Valid values: **ikev1*	- and **ikev2**. Default value: **ikev2**.
 	//
@@ -106,7 +106,7 @@ type CreateIpsecServerRequest struct {
 	//
 	// test
 	IpSecServerName *string `json:"IpSecServerName,omitempty" xml:"IpSecServerName,omitempty"`
-	// The Phase 2 negotiation parameter settings. Valid values:
+	// The parameter settings of Phase 2 negotiations. Valid values:
 	//
 	// - **IpsecEncAlg**: The encryption algorithm used in Phase 2 negotiations. Default value: **aes**.
 	//

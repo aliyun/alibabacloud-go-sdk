@@ -74,13 +74,18 @@ type DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType struct {
 	//
 	// test1234
 	CompanyName *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
-	// The time when the construction crew enters the site.
+	// The time when the construction starts. The time is in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2019-02-26T08:00:00Z
 	ConstructionTime *string `json:"ConstructionTime,omitempty" xml:"ConstructionTime,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The LOA error code.
+	//
+	// example:
+	//
+	// IllegalParam.CardId
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The instance ID of the Express Connect circuit.
 	//
 	// example:
@@ -99,7 +104,7 @@ type DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType struct {
 	//
 	// bbb222
 	LineLabel *string `json:"LineLabel,omitempty" xml:"LineLabel,omitempty"`
-	// The contact information of the line O&M personnel.
+	// The contact information for line O&M.
 	//
 	// example:
 	//
@@ -107,13 +112,13 @@ type DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType struct {
 	LineSPContactInfo *string `json:"LineSPContactInfo,omitempty" xml:"LineSPContactInfo,omitempty"`
 	// The telecommunications service provider. Valid values:
 	//
-	// - **China Telecom**
+	// - **中国电信**
 	//
-	// - **China Unicom**
+	// - **中国联通**
 	//
-	// - **China Mobile**
+	// - **中国移动**
 	//
-	// - **China Other**
+	// - **中国其他**
 	//
 	// example:
 	//
@@ -140,7 +145,7 @@ type DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType struct {
 	// http://******
 	LoaUrl *string                                                                   `json:"LoaUrl,omitempty" xml:"LoaUrl,omitempty"`
 	PMInfo *DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOATypePMInfo `json:"PMInfo,omitempty" xml:"PMInfo,omitempty" type:"Struct"`
-	// The construction company that enters the site.
+	// The construction company.
 	//
 	// example:
 	//

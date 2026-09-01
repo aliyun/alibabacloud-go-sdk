@@ -38,9 +38,9 @@ type iCompletePhysicalConnectionLOARequest interface {
 type CompletePhysicalConnectionLOARequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+	// The client generates the value. Ensure that the value is unique among different requests.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type CompletePhysicalConnectionLOARequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether the construction is completed. Valid values:
 	//
-	// 	- **true**: The construction is completed.
+	// 	- **true**: Construction is completed.
 	//
 	// 	- **false**: Line O&M.
 	//
@@ -64,7 +64,7 @@ type CompletePhysicalConnectionLOARequest struct {
 	//
 	// pc-bp10tvlhnwkw****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The line code of the telecommunications service provider.
+	// The line code of the carrier.
 	//
 	// example:
 	//
@@ -76,21 +76,21 @@ type CompletePhysicalConnectionLOARequest struct {
 	//
 	// bbb222****
 	LineLabel *string `json:"LineLabel,omitempty" xml:"LineLabel,omitempty"`
-	// The O&M contact information of the line.
+	// The O&M contact information of the line carrier.
 	//
 	// example:
 	//
 	// 1388888****
 	LineSPContactInfo *string `json:"LineSPContactInfo,omitempty" xml:"LineSPContactInfo,omitempty"`
-	// The telecommunications service provider. Valid values:
+	// The carrier. Valid values:
 	//
-	// - **中国电信**
+	// - **中国电信**.
 	//
-	// - **中国联通**
+	// - **中国联通**.
 	//
-	// - **中国移动**
+	// - **中国移动**.
 	//
-	// - **中国其他**
+	// - **中国其他**.
 	//
 	// example:
 	//

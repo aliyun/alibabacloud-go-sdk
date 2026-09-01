@@ -13,6 +13,8 @@ type iCreateVSwitchCidrReservationRequest interface {
 	GetClientToken() *string
 	SetDryRun(v bool) *CreateVSwitchCidrReservationRequest
 	GetDryRun() *bool
+	SetIpPrefixNumber(v int32) *CreateVSwitchCidrReservationRequest
+	GetIpPrefixNumber() *int32
 	SetIpVersion(v string) *CreateVSwitchCidrReservationRequest
 	GetIpVersion() *string
 	SetOwnerAccount(v string) *CreateVSwitchCidrReservationRequest
@@ -54,14 +56,20 @@ type CreateVSwitchCidrReservationRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// - **true**: sends a check request without creating the reserved CIDR block for a vSwitch. The system checks whether the required parameters are specified, the request format is valid, and the service limits are not exceeded. If the check fails, the corresponding error is returned. If the check passes, the `DryRunOperation` error code is returned.
+	// - **true**: sends a check request without creating the reserved CIDR block for a vSwitch. The system checks whether the required parameters are specified, the request format is valid, and the service limits are not exceeded. If the check fails, the corresponding error message is returned. If the check passes, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): sends a Normal request. After the check passes, an HTTP 2xx status code is returned and the reserved CIDR block for a vSwitch is created.
+	// - **false*	- (default): sends a Normal request. After the check passes, an HTTP 2xx status code is returned and the vSwitch reserved CIDR block for a vSwitch is created.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The expected number of IP prefixes to reserve. Valid values: 1 to 32.
+	//
+	// example:
+	//
+	// 1
+	IpPrefixNumber *int32 `json:"IpPrefixNumber,omitempty" xml:"IpPrefixNumber,omitempty"`
 	// The IP version of the reserved CIDR block for a vSwitch. Valid values:
 	//
 	// - **IPv4*	- (default)
@@ -98,7 +106,7 @@ type CreateVSwitchCidrReservationRequest struct {
 	//
 	// > - You must specify either the **VSwitchCidrReservationMask*	- parameter or the **VSwitchCidrReservationCidr*	- parameter.
 	//
-	// > - A reserved CIDR block cannot contain the system reserved IP addresses of the vSwitch to which it belongs.
+	// > - The reserved CIDR block cannot contain the system reserved IP addresses of the vSwitch.
 	//
 	// example:
 	//
@@ -120,7 +128,7 @@ type CreateVSwitchCidrReservationRequest struct {
 	//
 	// > - You must specify either the **VSwitchCidrReservationMask*	- parameter or the **VSwitchCidrReservationCidr*	- parameter.
 	//
-	// > - A reserved CIDR block cannot contain the system reserved IP addresses of the vSwitch to which it belongs.
+	// > - The reserved CIDR block cannot contain the system reserved IP addresses of the vSwitch.
 	//
 	// example:
 	//
@@ -134,15 +142,15 @@ type CreateVSwitchCidrReservationRequest struct {
 	//
 	// ReservationName
 	VSwitchCidrReservationName *string `json:"VSwitchCidrReservationName,omitempty" xml:"VSwitchCidrReservationName,omitempty"`
-	// The type of the reserved CIDR block for a vSwitch. Valid values: **prefix**, which indicates that addresses are allocated by CIDR block.
+	// The type of the reserved CIDR block for a vSwitch. Valid values: **prefix**, which indicates that IP addresses are allocated by CIDR block.
 	//
-	// > When users or cloud services automatically assign CIDR blocks to elastic network interfaces (ENIs), the CIDR blocks must be allocated from the reserved CIDR block. If the addresses in the reserved CIDR block are exhausted, the system returns an error.
+	// > When users or cloud services automatically assign CIDR blocks to elastic network interfaces (ENIs), the CIDR blocks must be allocated from the reserved CIDR block for a vSwitch. If the IP addresses in the reserved CIDR block for a vSwitch are exhausted, the system returns an error.
 	//
 	// example:
 	//
 	// prefix
 	VSwitchCidrReservationType *string `json:"VSwitchCidrReservationType,omitempty" xml:"VSwitchCidrReservationType,omitempty"`
-	// The ID of the vSwitch for which you want to create the reserved CIDR block for a vSwitch.
+	// The ID of the vSwitch for which you want to create a reserved CIDR block for a vSwitch.
 	//
 	// This parameter is required.
 	//
@@ -166,6 +174,10 @@ func (s *CreateVSwitchCidrReservationRequest) GetClientToken() *string {
 
 func (s *CreateVSwitchCidrReservationRequest) GetDryRun() *bool {
 	return s.DryRun
+}
+
+func (s *CreateVSwitchCidrReservationRequest) GetIpPrefixNumber() *int32 {
+	return s.IpPrefixNumber
 }
 
 func (s *CreateVSwitchCidrReservationRequest) GetIpVersion() *string {
@@ -227,6 +239,11 @@ func (s *CreateVSwitchCidrReservationRequest) SetClientToken(v string) *CreateVS
 
 func (s *CreateVSwitchCidrReservationRequest) SetDryRun(v bool) *CreateVSwitchCidrReservationRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *CreateVSwitchCidrReservationRequest) SetIpPrefixNumber(v int32) *CreateVSwitchCidrReservationRequest {
+	s.IpPrefixNumber = &v
 	return s
 }
 
