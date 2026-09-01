@@ -24,9 +24,9 @@ type iModifyPlaybookInputOutputRequest interface {
 }
 
 type ModifyPlaybookInputOutputRequest struct {
-	// The executed mode of a playbook. The value is a JSON array.
+	// The execution method for the playbook. This parameter is in the JSONObject format.
 	ExeConfig *string `json:"ExeConfig,omitempty" xml:"ExeConfig,omitempty"`
-	// The configuration of the input parameters. The value is a JSON array.
+	// The input parameter configuration for the playbook. This parameter is in the JSONArray format.
 	//
 	// This parameter is required.
 	//
@@ -54,17 +54,17 @@ type ModifyPlaybookInputOutputRequest struct {
 	//
 	// ]
 	InputParams *string `json:"InputParams,omitempty" xml:"InputParams,omitempty"`
-	// The language of the content within the request and response.
+	// The language of the request and response messages.
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The configuration of the output parameters. This parameter is unavailable. Leave it empty.
+	// Playbooks do not support output parameter configurations. This parameter is fixed to an empty value.
 	//
 	// This parameter is required.
 	//
@@ -72,15 +72,15 @@ type ModifyPlaybookInputOutputRequest struct {
 	//
 	// []
 	OutputParams *string `json:"OutputParams,omitempty" xml:"OutputParams,omitempty"`
-	// The input parameter type.
+	// The type of the input parameter for the playbook.
 	//
-	// 	- **template-ip**
+	// - **template-ip**: IP request template.
 	//
-	// 	- **template-file**
+	// - **template-file**: file request template.
 	//
-	// 	- **template-process**
+	// - **template-process**: process request template.
 	//
-	// 	- **custom**
+	// - **custom**: custom parameter.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type ModifyPlaybookInputOutputRequest struct {
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
 	// The UUID of the playbook.
 	//
-	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the playbook UUID.
+	// > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

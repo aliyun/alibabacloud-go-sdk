@@ -16,7 +16,7 @@ type iDescribeComponentAssetFormRequest interface {
 }
 
 type DescribeComponentAssetFormRequest struct {
-	// The component name.
+	// The name of the component.
 	//
 	// This parameter is required.
 	//
@@ -24,11 +24,11 @@ type DescribeComponentAssetFormRequest struct {
 	//
 	// python3
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//

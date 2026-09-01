@@ -16,9 +16,9 @@ type iDescribeSophonCommandsResponseBody interface {
 }
 
 type DescribeSophonCommandsResponseBody struct {
-	// The commands.
+	// The list of returned commands.
 	Data []*DescribeSophonCommandsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use this ID to troubleshoot and locate issues.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type DescribeSophonCommandsResponseBodyData struct {
 	//
 	// waf_process_ip_v2
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The parameter configurations.
+	// The parameter settings.
 	ParamConfig []*DescribeSophonCommandsResponseBodyDataParamConfig `json:"ParamConfig,omitempty" xml:"ParamConfig,omitempty" type:"Repeated"`
 }
 
@@ -146,13 +146,13 @@ func (s *DescribeSophonCommandsResponseBodyData) Validate() error {
 }
 
 type DescribeSophonCommandsResponseBodyDataParamConfig struct {
-	// The regular expression that is used to check the format of the parameter value. If the parameter is left empty, the check is not performed.
+	// The regular expression that is used to check the format of the field. If this parameter is empty, no check is performed.
 	//
 	// example:
 	//
 	// [0-9]{4}\\.[0-9]{4}\\.[0-9]{4}\\.[0-9]{4}
 	CheckField *string `json:"CheckField,omitempty" xml:"CheckField,omitempty"`
-	// The name of the parameter.
+	// The name of the parameter field.
 	//
 	// example:
 	//
@@ -160,9 +160,9 @@ type DescribeSophonCommandsResponseBodyDataParamConfig struct {
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
 	// Indicates whether the parameter is required. Valid values:
 	//
-	// 	- **true*	- (default)
+	// - **true**: The parameter is required. This is the default value.
 	//
-	// 	- **false**
+	// - **false**: The parameter is optional.
 	//
 	// example:
 	//

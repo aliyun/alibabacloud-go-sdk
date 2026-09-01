@@ -20,21 +20,21 @@ type iDescribePlaybookRequest interface {
 }
 
 type DescribePlaybookRequest struct {
-	// The flag that indicates whether the playbook is of the debugging or published version. Valid values:
+	// A flag that indicates whether the version is a published version or a debug version. Valid values:
 	//
-	// 	- **1**: playbook of the debugging version
+	// - **1**: retrieves the debug version.
 	//
-	// 	- **0**: playbook of the published version
+	// - **0**: retrieves the published version.
 	//
 	// example:
 	//
 	// 0
 	DebugFlag *int32 `json:"DebugFlag,omitempty" xml:"DebugFlag,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. The default value is **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribePlaybookRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The UUID of the playbook.
 	//
-	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the UUIDs of playbooks.
+	// > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type DescribePlaybookRequest struct {
 	//
 	// 9030076b-6733-4842-b05a-xxxxx
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	// The MD5 hash value of the playbook.
+	// The MD5 value of the playbook configuration.
 	//
 	// example:
 	//

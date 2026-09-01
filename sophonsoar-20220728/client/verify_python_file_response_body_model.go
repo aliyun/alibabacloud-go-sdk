@@ -16,13 +16,13 @@ type iVerifyPythonFileResponseBody interface {
 }
 
 type VerifyPythonFileResponseBody struct {
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. Use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// F72685FB-A6E6-5A9A-97F7-6DC1056E63CE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The verification result. If the parameter is left empty, the syntax of the code snippet is correct.
+	// The result set of the Python code verification. If this parameter is empty, the code syntax is correct.
 	Syntax []*VerifyPythonFileResponseBodySyntax `json:"Syntax,omitempty" xml:"Syntax,omitempty" type:"Repeated"`
 }
 
@@ -66,41 +66,41 @@ func (s *VerifyPythonFileResponseBody) Validate() error {
 }
 
 type VerifyPythonFileResponseBodySyntax struct {
-	// The number that indicates the end column of the error code.
+	// The ending column number of the code that contains an error.
 	//
 	// example:
 	//
 	// 5
 	EndColumn *int32 `json:"EndColumn,omitempty" xml:"EndColumn,omitempty"`
-	// The number that indicates the end line of the error code.
+	// The ending line number of the code that contains an error.
 	//
 	// example:
 	//
 	// 5
 	EndLineNumber *int32 `json:"EndLineNumber,omitempty" xml:"EndLineNumber,omitempty"`
-	// The error message for the error code.
+	// The error message for the code.
 	//
 	// example:
 	//
 	// undefined name \\"ab\\"
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The severity level of the error code. Valid values:
+	// The error level of the code.
 	//
-	// 	- 4: moderate
+	// - 4: General error
 	//
-	// 	- 8: serious
+	// - 8: Critical error
 	//
 	// example:
 	//
 	// 4
 	Severity *int32 `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// The number that indicates the start column of the error code.
+	// The starting column number of the code that contains an error.
 	//
 	// example:
 	//
 	// 2
 	StartColumn *int32 `json:"StartColumn,omitempty" xml:"StartColumn,omitempty"`
-	// The number that indicates the start line of the error code.
+	// The starting line number of the code that contains an error.
 	//
 	// example:
 	//

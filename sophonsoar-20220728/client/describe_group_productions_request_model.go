@@ -32,7 +32,7 @@ type DescribeGroupProductionsRequest struct {
 	//
 	// example:
 	//
-	// 118******150980
+	// 11824150xxx50980
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 	// The type of the view. Valid values:
 	//

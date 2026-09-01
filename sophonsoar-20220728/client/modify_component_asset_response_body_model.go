@@ -14,7 +14,7 @@ type iModifyComponentAssetResponseBody interface {
 }
 
 type ModifyComponentAssetResponseBody struct {
-	// The request ID.
+	// The ID of the request. This ID is unique to each request and is used to troubleshoot issues.
 	//
 	// example:
 	//

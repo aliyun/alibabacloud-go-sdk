@@ -11,6 +11,10 @@ type iDescribeProcessStatisticsRequest interface {
 	GoString() string
 	SetLang(v string) *DescribeProcessStatisticsRequest
 	GetLang() *string
+	SetProcessActionEnd(v int64) *DescribeProcessStatisticsRequest
+	GetProcessActionEnd() *int64
+	SetProcessActionStart(v int64) *DescribeProcessStatisticsRequest
+	GetProcessActionStart() *int64
 	SetRoleFor(v string) *DescribeProcessStatisticsRequest
 	GetRoleFor() *string
 	SetRoleType(v string) *DescribeProcessStatisticsRequest
@@ -18,27 +22,39 @@ type iDescribeProcessStatisticsRequest interface {
 }
 
 type DescribeProcessStatisticsRequest struct {
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese.
+	// - **zh*	- (default): Chinese.
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the user who switches from the current view to the destination view by using the management account.
+	// The end time of the query for response tasks. The value is a 13-digit UNIX timestamp.
+	//
+	// example:
+	//
+	// 17561XXX77435
+	ProcessActionEnd *int64 `json:"ProcessActionEnd,omitempty" xml:"ProcessActionEnd,omitempty"`
+	// The start time of the query for response tasks. The value is a 13-digit UNIX timestamp.
+	//
+	// example:
+	//
+	// 17000XXX83572
+	ProcessActionStart *int64 `json:"ProcessActionStart,omitempty" xml:"ProcessActionStart,omitempty"`
+	// The user ID of the member to which the administrator switches the view.
 	//
 	// example:
 	//
 	// 1709821xxxxx3093
 	RoleFor *string `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The view type. Valid values:
 	//
-	// 	- 0 (default): the view of the current Alibaba Cloud account.
+	// - 0 (default): the view of the current Alibaba Cloud account.
 	//
-	// 	- 1: the view of all accounts for the enterprise.
+	// - 1: the view of all accounts in the enterprise.
 	//
 	// example:
 	//
@@ -58,6 +74,14 @@ func (s *DescribeProcessStatisticsRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *DescribeProcessStatisticsRequest) GetProcessActionEnd() *int64 {
+	return s.ProcessActionEnd
+}
+
+func (s *DescribeProcessStatisticsRequest) GetProcessActionStart() *int64 {
+	return s.ProcessActionStart
+}
+
 func (s *DescribeProcessStatisticsRequest) GetRoleFor() *string {
 	return s.RoleFor
 }
@@ -68,6 +92,16 @@ func (s *DescribeProcessStatisticsRequest) GetRoleType() *string {
 
 func (s *DescribeProcessStatisticsRequest) SetLang(v string) *DescribeProcessStatisticsRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeProcessStatisticsRequest) SetProcessActionEnd(v int64) *DescribeProcessStatisticsRequest {
+	s.ProcessActionEnd = &v
+	return s
+}
+
+func (s *DescribeProcessStatisticsRequest) SetProcessActionStart(v int64) *DescribeProcessStatisticsRequest {
+	s.ProcessActionStart = &v
 	return s
 }
 

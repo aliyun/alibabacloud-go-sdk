@@ -14,7 +14,7 @@ type iDescribeSophonCommandsRequest interface {
 }
 
 type DescribeSophonCommandsRequest struct {
-	// The name of the command. Fuzzy match is supported.
+	// The name of the command. Fuzzy search is supported.
 	//
 	// example:
 	//

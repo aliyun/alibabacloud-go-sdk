@@ -16,9 +16,9 @@ type iDescribePlaybookInputOutputResponseBody interface {
 }
 
 type DescribePlaybookInputOutputResponseBody struct {
-	// The configurations.
+	// The configuration information.
 	Config *DescribePlaybookInputOutputResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates this unique ID for each request. Use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ func (s *DescribePlaybookInputOutputResponseBody) Validate() error {
 }
 
 type DescribePlaybookInputOutputResponseBodyConfig struct {
-	// The execution method of the playbook is in JSONObject format.
+	// The execution method of the playbook. The value is in the JSONObject format.
 	ExeConfig *string `json:"ExeConfig,omitempty" xml:"ExeConfig,omitempty"`
-	// The input parameter configuration of the playbook. The value is a JSON array.
+	// The input parameter configurations of the playbook. The value is in the JSONArray format.
 	//
 	// example:
 	//
@@ -90,21 +90,21 @@ type DescribePlaybookInputOutputResponseBodyConfig struct {
 	//
 	// ]
 	InputParams *string `json:"InputParams,omitempty" xml:"InputParams,omitempty"`
-	// The output parameter configuration. This parameter is unavailable and is always left empty.
+	// Playbooks do not support output parameter configurations. This parameter is empty.
 	//
 	// example:
 	//
 	// []
 	OutputParams *string `json:"OutputParams,omitempty" xml:"OutputParams,omitempty"`
-	// The input parameter type of the playbook. Valid values:
+	// The type of the input parameters for the playbook.
 	//
-	// 	- **template-ip**
+	// - **template-ip**: IP request template.
 	//
-	// 	- **template-file**
+	// - **template-file**: file request template.
 	//
-	// 	- **template-process**
+	// - **template-process**: process request template.
 	//
-	// 	- **custom**
+	// - **custom**: custom parameters.
 	//
 	// example:
 	//

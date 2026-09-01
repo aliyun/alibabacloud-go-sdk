@@ -36,7 +36,7 @@ type iRunNotifyComponentWithWebhookRequest interface {
 }
 
 type RunNotifyComponentWithWebhookRequest struct {
-	// The name of the action in the playbook.
+	// The name of the playbook action.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +44,13 @@ type RunNotifyComponentWithWebhookRequest struct {
 	//
 	// notifyByCustom
 	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
-	// The ID of the resource. This parameter is deprecated.
+	// The ID of the resource. This parameter is deprecated and no longer used.
 	//
 	// example:
 	//
 	// 1
 	AssetId *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
-	// The name of the component in the playbook.
+	// The name of the playbook component.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type RunNotifyComponentWithWebhookRequest struct {
 	//
 	// NotifyMessage
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	// The message body sent by the DingTalk group chatbot webhook.
+	// The content of the message sent by the webhook of the DingTalk group robot.
 	//
 	// This parameter is required.
 	//
@@ -94,23 +94,23 @@ type RunNotifyComponentWithWebhookRequest struct {
 	//
 	// }
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The language of the content within the request and the response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese.
+	// - **zh*	- (default): Chinese.
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The type of the webhook message. Valid values:
+	// The message type of the webhook. Valid values:
 	//
-	// 	- text.
+	// - text
 	//
-	// 	- markdown.
+	// - markdown
 	//
-	// 	- actionCard.
+	// - actionCard
 	//
 	// This parameter is required.
 	//
@@ -118,7 +118,7 @@ type RunNotifyComponentWithWebhookRequest struct {
 	//
 	// text
 	MsgType *string `json:"MsgType,omitempty" xml:"MsgType,omitempty"`
-	// The name of the node in the playbook.
+	// The name of the playbook node.
 	//
 	// This parameter is required.
 	//
@@ -128,7 +128,7 @@ type RunNotifyComponentWithWebhookRequest struct {
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	// The UUID of the playbook.
 	//
-	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the UUIDs of playbooks.
+	// > Call the [DescribePlaybooks](https://help.aliyun.com/document_detail/3000306.html) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -136,31 +136,29 @@ type RunNotifyComponentWithWebhookRequest struct {
 	//
 	// 94bc318c-****-4cba-****-801ccb0d739f
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	// The ID of the user who switches from the current view to the destination view by using the management account.
+	// The UID of the member that the administrator wants to switch to.
 	//
 	// example:
 	//
 	// 126339xxxx805497
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The view type. Valid values:
 	//
-	// 	- 0 (default): the view of the current Alibaba Cloud account.
+	// - 0 (default): the view of the current Alibaba Cloud account.
 	//
-	// 	- 1: the view of all accounts for the enterprise.
+	// - 1: the view of all accounts that belong to the enterprise.
 	//
 	// example:
 	//
 	// 0
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The message key of the DingTalk chatbot webhook. This parameter is deprecated.
+	// The secret key for the webhook of the DingTalk group robot. This parameter is deprecated and no longer used.
 	//
 	// example:
 	//
 	// SECc1*****e157b32b380f********bb8c70e1a67a22072
 	Secret *string `json:"Secret,omitempty" xml:"Secret,omitempty"`
-	// The IDs of chatbots that are configured in the message center. Only DingTalk chatbots are supported.
-	//
-	// >  You can call the [ListEncryptWebhooks](~~ListEncryptWebhooks~~) operation to query the chatbot IDs.
+	// The IDs of the DingTalk robots. Obtain the IDs on the robot management page in Message Center.
 	//
 	// This parameter is required.
 	//

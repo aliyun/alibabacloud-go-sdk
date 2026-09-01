@@ -26,7 +26,7 @@ type DescribeGroupProductionsResponseBody struct {
 	//
 	// example:
 	//
-	// 358E012F-****-599D-9ED0-****61CDE615
+	// 358E012F-B516-599D-9Exxx-A1A361CDE615
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -88,7 +88,7 @@ type DescribeGroupProductionsResponseBodyData struct {
 	//
 	// example:
 	//
-	// Cloud Communication
+	// Database
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The information about the cloud services.
 	Productions []*DescribeGroupProductionsResponseBodyDataProductions `json:"Productions,omitempty" xml:"Productions,omitempty" type:"Repeated"`
@@ -138,13 +138,13 @@ type DescribeGroupProductionsResponseBodyDataProductions struct {
 	//
 	// example:
 	//
-	// DM
+	// Rds
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The default requested domain name.
 	//
 	// example:
 	//
-	// dm.aliyuncs.com
+	// rds.aliyuncs.com
 	DefaultDomain *string `json:"DefaultDomain,omitempty" xml:"DefaultDomain,omitempty"`
 	// The default version.
 	//
@@ -156,7 +156,7 @@ type DescribeGroupProductionsResponseBodyDataProductions struct {
 	//
 	// example:
 	//
-	// DM
+	// ApsaraDB
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The requested domain names.
 	FullDomains []*string `json:"FullDomains,omitempty" xml:"FullDomains,omitempty" type:"Repeated"`
@@ -164,13 +164,13 @@ type DescribeGroupProductionsResponseBodyDataProductions struct {
 	//
 	// example:
 	//
-	// Cloud Communication
+	// ApsaraDB
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
 	// The name of the cloud service.
 	//
 	// example:
 	//
-	// DirectMail
+	// ApsaraDB RDS
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The RAM policies of the cloud service.
 	PolicyList []*DescribeGroupProductionsResponseBodyDataProductionsPolicyList `json:"PolicyList,omitempty" xml:"PolicyList,omitempty" type:"Repeated"`
@@ -178,13 +178,13 @@ type DescribeGroupProductionsResponseBodyDataProductions struct {
 	//
 	// example:
 	//
-	// dm
+	// rds
 	RamCode *string `json:"RamCode,omitempty" xml:"RamCode,omitempty"`
 	// The short name of the cloud service.
 	//
 	// example:
 	//
-	// DM
+	// RDS
 	ShortName *string `json:"ShortName,omitempty" xml:"ShortName,omitempty"`
 	// The information source of the cloud service.
 	//
@@ -340,7 +340,7 @@ type DescribeGroupProductionsResponseBodyDataProductionsPolicyList struct {
 	//
 	// example:
 	//
-	// All
+	// Read-only permission
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

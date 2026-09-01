@@ -20,19 +20,19 @@ type iComparePlaybooksRequest interface {
 }
 
 type ComparePlaybooksRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response.
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the second version.
+	// The UUID of the second published version for comparison.
 	//
-	// >  You can call the [DescribePlaybookReleases](~~DescribePlaybookReleases~~) operation to query the IDs of versions. The system automatically generates IDs for new versions.
+	// > To obtain the UUID of a historical version, call the [DescribePlaybookReleases](~~DescribePlaybookReleases~~) operation. The system automatically generates a UUID for a new version.
 	//
 	// This parameter is required.
 	//
@@ -40,9 +40,9 @@ type ComparePlaybooksRequest struct {
 	//
 	// sfdf2395-e814-459f-9662-xxxxx
 	NewPlaybookReleaseId *int32 `json:"NewPlaybookReleaseId,omitempty" xml:"NewPlaybookReleaseId,omitempty"`
-	// The ID of the first version.
+	// The UUID of the first published version for comparison.
 	//
-	// >  You can call the [DescribePlaybookReleases](~~DescribePlaybookReleases~~) operation to query the IDs of versions. The system automatically generates IDs for new versions.
+	// > To obtain the UUID of a historical version, call the [DescribePlaybookReleases](~~DescribePlaybookReleases~~) operation. The system automatically generates a UUID for a new version.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type ComparePlaybooksRequest struct {
 	OldPlaybookReleaseId *int32 `json:"OldPlaybookReleaseId,omitempty" xml:"OldPlaybookReleaseId,omitempty"`
 	// The UUID of the playbook.
 	//
-	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the UUIDs of playbooks.
+	// > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

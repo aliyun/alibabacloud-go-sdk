@@ -16,7 +16,7 @@ type iModifyComponentAssetRequest interface {
 }
 
 type ModifyComponentAssetRequest struct {
-	// The configuration of the asset. The value is a JSON object.
+	// The configuration of the component asset. This parameter is a JSON object.
 	//
 	// This parameter is required.
 	//
@@ -58,11 +58,11 @@ type ModifyComponentAssetRequest struct {
 	//
 	// }
 	AssetConfig *string `json:"AssetConfig,omitempty" xml:"AssetConfig,omitempty"`
-	// The language of the content within the request and response.
+	// The language of the request and response.
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//

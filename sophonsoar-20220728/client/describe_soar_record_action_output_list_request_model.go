@@ -22,7 +22,7 @@ type iDescribeSoarRecordActionOutputListRequest interface {
 type DescribeSoarRecordActionOutputListRequest struct {
 	// The UUID of the component action.
 	//
-	// >  You can call the [DescribeSoarTaskAndActions](~~DescribeSoarTaskAndActions~~) operation to query the UUID.
+	// > Call the [DescribeSoarTaskAndActions](~~DescribeSoarTaskAndActions~~) operation to get this parameter.
 	//
 	// This parameter is required.
 	//
@@ -30,17 +30,17 @@ type DescribeSoarRecordActionOutputListRequest struct {
 	//
 	// 2202c90d-fa93-4726-bc32-xxxxxx
 	ActionUuid *string `json:"ActionUuid,omitempty" xml:"ActionUuid,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The page number. Default value: 1. Pages start from page 1.
+	// The page number of the results to return. Default value: 1.
 	//
 	// This parameter is required.
 	//
@@ -48,9 +48,9 @@ type DescribeSoarRecordActionOutputListRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. If you leave this parameter empty, 10 entries are returned on each page.
+	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 10 entries are returned.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > We recommend that you specify a value for this parameter.
 	//
 	// This parameter is required.
 	//

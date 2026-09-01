@@ -16,9 +16,9 @@ type iDescribePlaybookNodesOutputResponseBody interface {
 }
 
 type DescribePlaybookNodesOutputResponseBody struct {
-	// The output data of the component node.
+	// The output data of the node.
 	PlaybookNodesOutput *DescribePlaybookNodesOutputResponseBodyPlaybookNodesOutput `json:"PlaybookNodesOutput,omitempty" xml:"PlaybookNodesOutput,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ func (s *DescribePlaybookNodesOutputResponseBody) Validate() error {
 }
 
 type DescribePlaybookNodesOutputResponseBodyPlaybookNodesOutput struct {
-	// The name of the component node.
+	// The name of the playbook node.
 	//
 	// example:
 	//
 	// DataFormat_1
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The historical output data of the component node. The value is in the JSON string format. If no data is found, the parameter is left empty.
+	// The historical output data of the component. The data is in the JSON format. If no data exists, this parameter is empty.
 	//
 	// example:
 	//

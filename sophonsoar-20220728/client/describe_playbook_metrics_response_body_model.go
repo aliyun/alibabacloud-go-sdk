@@ -18,7 +18,7 @@ type iDescribePlaybookMetricsResponseBody interface {
 type DescribePlaybookMetricsResponseBody struct {
 	// The details of the playbook.
 	Metrics *DescribePlaybookMetricsResponseBodyMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request. This ID is unique to each request and is used for troubleshooting.
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ func (s *DescribePlaybookMetricsResponseBody) Validate() error {
 type DescribePlaybookMetricsResponseBodyMetrics struct {
 	// The status of the playbook. Valid values:
 	//
-	// 	- **1**: enabled
+	// - **1**: The playbook is enabled.
 	//
-	// 	- **0**: disabled
+	// - **0**: The playbook is disabled.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type DescribePlaybookMetricsResponseBodyMetrics struct {
 	//
 	// demo name
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The number of the tasks that are created for the playbook and failed to run.
+	// The number of failed playbook runs.
 	//
 	// example:
 	//
@@ -110,9 +110,9 @@ type DescribePlaybookMetricsResponseBodyMetrics struct {
 	LastRuntime *int64 `json:"LastRuntime,omitempty" xml:"LastRuntime,omitempty"`
 	// The type of the playbook. Valid values:
 	//
-	// 	- **preset**: predefined playbook
+	// - **preset**: predefined playbook.
 	//
-	// 	- **user**: custom playbook
+	// - **user**: custom playbook.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type DescribePlaybookMetricsResponseBodyMetrics struct {
 	//
 	// 0fbc9bdb-9ae3-4ef4-a709-xxxxx
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	// The number of the tasks that are created for the playbook and were successfully run.
+	// The number of successful playbook runs.
 	//
 	// example:
 	//

@@ -18,10 +18,11 @@ type iDescribeSoarTaskAndActionsResponseBody interface {
 }
 
 type DescribeSoarTaskAndActionsResponseBody struct {
-	// The execution details of each task.
+	// The details of the task execution.
 	Details *DescribeSoarTaskAndActionsResponseBodyDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Struct"`
-	Page    *DescribeSoarTaskAndActionsResponseBodyPage    `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
-	// The request ID.
+	// The pagination information.
+	Page *DescribeSoarTaskAndActionsResponseBodyPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -79,22 +80,27 @@ func (s *DescribeSoarTaskAndActionsResponseBody) Validate() error {
 }
 
 type DescribeSoarTaskAndActionsResponseBodyDetails struct {
+	// The total number of action logs.
+	//
+	// example:
+	//
+	// 5
 	ActionLogNum *int32 `json:"ActionLogNum,omitempty" xml:"ActionLogNum,omitempty"`
-	// The list of component actions during the running of the playbook.
+	// The list of component actions executed in the playbook.
 	Actions []*DescribeSoarTaskAndActionsResponseBodyDetailsActions `json:"Actions,omitempty" xml:"Actions,omitempty" type:"Repeated"`
-	// The end of the time range during which the playbook is run. The value is a 13-digit timestamp.
+	// The end time of the playbook run. This is a 13-digit timestamp.
 	//
 	// example:
 	//
 	// 1699868848767
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The error message of the task. If the task is successful, this field is empty.
+	// The error message for the playbook task. This field is empty if the task is successful.
 	//
 	// example:
 	//
 	// stime not match
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The request parameters of the task.
+	// The request parameters of the playbook task.
 	//
 	// example:
 	//
@@ -106,55 +112,55 @@ type DescribeSoarTaskAndActionsResponseBodyDetails struct {
 	//
 	// }
 	RawEventReq *string `json:"RawEventReq,omitempty" xml:"RawEventReq,omitempty"`
-	// The request ID of the task. The value is unique.
+	// The request ID of the playbook task. This is the unique ID for each task run.
 	//
 	// example:
 	//
 	// 17f75844-75cc-4174-86da-cec07a690142
 	RequestUuid *string `json:"RequestUuid,omitempty" xml:"RequestUuid,omitempty"`
-	// The beginning of the time range during which the playbook is run. The value is a 13-digit timestamp.
+	// The start time of the playbook run. This is a 13-digit timestamp.
 	//
 	// example:
 	//
 	// 1699868848645
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The task status. Valid values:
+	// The status of the playbook task. Valid values:
 	//
-	// 	- **success**
+	// - **success**: The task was successful.
 	//
-	// 	- **fail**
+	// - **fail**: The task failed.
 	//
-	// 	- **running**
+	// - **running**: The task is running.
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The MD5 value of the playbook.
+	// The MD5 value of the playbook configuration that was run.
 	//
 	// example:
 	//
 	// ed127287-6699-4e4d-b986-9f770879xxx
 	TaskFlowMd5 *string `json:"TaskFlowMd5,omitempty" xml:"TaskFlowMd5,omitempty"`
-	// The name of the task. The value is the same as the playbook UUID.
+	// The name of the playbook task. This is the same as the playbook UUID.
 	//
 	// example:
 	//
 	// 92af3c79-1754-4646-9366-9ddbd1e45536
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The task type. Valid values:
+	// The trigger type. Valid values:
 	//
-	// 	- **debug**: a debugging task
+	// - **debug**: A task for debugging a playbook.
 	//
-	// 	- **manual**: a manual task
+	// - **manual**: A manually triggered task.
 	//
-	// 	- **siem**: an event-triggered task
+	// - **siem**: An event-triggered task.
 	//
 	// example:
 	//
 	// siem
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	// The ID of the Alibaba Cloud account that triggers the task.
+	// The ID of the Alibaba Cloud account that triggered the playbook task.
 	//
 	// example:
 	//
@@ -292,53 +298,53 @@ func (s *DescribeSoarTaskAndActionsResponseBodyDetails) Validate() error {
 }
 
 type DescribeSoarTaskAndActionsResponseBodyDetailsActions struct {
-	// The action name of the component.
+	// The name of the component action.
 	//
 	// example:
 	//
 	// formatdata
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// The UUID of the component execution record.
+	// The UUID of the component action execution record.
 	//
 	// example:
 	//
 	// 091be399-a937-4276-af78-xxxxxxxx
 	ActionUuid *string `json:"ActionUuid,omitempty" xml:"ActionUuid,omitempty"`
-	// The name of the asset that is used by the component.
+	// The name of the asset used by the component.
 	//
 	// example:
 	//
 	// SLS Asset
 	AssetName *string `json:"AssetName,omitempty" xml:"AssetName,omitempty"`
-	// The component name.
+	// The name of the component.
 	//
 	// example:
 	//
 	// DataFormat
 	Component *string `json:"Component,omitempty" xml:"Component,omitempty"`
-	// The end of the time range during which the component is run. The value is a 13-digit timestamp.
+	// The end time of the component run. This is a 13-digit timestamp.
 	//
 	// example:
 	//
 	// 1699868848766
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The custom name of the node in the component.
+	// The custom node name of the component.
 	//
 	// example:
 	//
 	// DataFormat_1
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The beginning of the time range during which the component is run. The value is a 13-digit timestamp.
+	// The start time of the component run. This is a 13-digit timestamp.
 	//
 	// example:
 	//
 	// 1699868848731
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The running result of the component. Valid values:
+	// The result of the component run. Valid values:
 	//
-	// 	- **success**
+	// - **success**: The run was successful.
 	//
-	// 	- **fail**
+	// - **fail**: The run failed.
 	//
 	// example:
 	//
@@ -431,8 +437,23 @@ func (s *DescribeSoarTaskAndActionsResponseBodyDetailsActions) Validate() error 
 }
 
 type DescribeSoarTaskAndActionsResponseBodyPage struct {
+	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 20
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 

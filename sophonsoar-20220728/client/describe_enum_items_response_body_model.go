@@ -16,9 +16,9 @@ type iDescribeEnumItemsResponseBody interface {
 }
 
 type DescribeEnumItemsResponseBody struct {
-	// The information about the enumeration item.
+	// The enumeration information.
 	Data []*DescribeEnumItemsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request. This ID is unique to each request. Use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *DescribeEnumItemsResponseBody) Validate() error {
 }
 
 type DescribeEnumItemsResponseBodyData struct {
-	// The key of the enumeration item.
+	// The key of the enumeration.
 	//
 	// example:
 	//
 	// system_xxxxx_process_book
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the enumeration item.
+	// The value of the enumeration.
 	//
 	// example:
 	//

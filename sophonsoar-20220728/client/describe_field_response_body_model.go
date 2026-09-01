@@ -18,7 +18,7 @@ type iDescribeFieldResponseBody interface {
 }
 
 type DescribeFieldResponseBody struct {
-	// The configuration content.
+	// The content of the configuration.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DescribeFieldResponseBody struct {
 	//
 	// soar_filed_tags
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates this unique ID for each request. Use this ID to troubleshoot issues.
 	//
 	// example:
 	//

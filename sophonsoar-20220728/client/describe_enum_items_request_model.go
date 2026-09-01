@@ -16,9 +16,9 @@ type iDescribeEnumItemsRequest interface {
 }
 
 type DescribeEnumItemsRequest struct {
-	// The type of the enumeration item. Valid values:
+	// The type of the enumeration. Valid value:
 	//
-	// 	- **process**: scenarios
+	// - **process**: The enumeration for response scenarios.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type DescribeEnumItemsRequest struct {
 	//
 	// process
 	EnumType *string `json:"EnumType,omitempty" xml:"EnumType,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh_cn**: Simplified Chinese (default)
+	// - **zh_cn**: The default value. Simplified Chinese.
 	//
-	// 	- **en_us**: English
+	// - **en_us**: American English.
 	//
 	// example:
 	//

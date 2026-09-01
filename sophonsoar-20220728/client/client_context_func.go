@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Compares configurations between two versions of a published playbook.
+// Compares the configurations of two published playbook versions.
 //
 // @param request - ComparePlaybooksRequest
 //
@@ -201,11 +201,7 @@ func (client *Client) CopyPlaybookWithContext(ctx context.Context, request *Copy
 
 // Summary:
 //
-// New Playbook.
-//
-// Description:
-//
-// Create Playbook.
+// Creates a new playbook.
 //
 // @param request - CreatePlaybookRequest
 //
@@ -325,7 +321,7 @@ func (client *Client) DebugPlaybookWithContext(ctx context.Context, request *Deb
 
 // Summary:
 //
-// Deletes the assets in a component.
+// Deletes a component asset.
 //
 // @param request - DeleteComponentAssetRequest
 //
@@ -373,7 +369,7 @@ func (client *Client) DeleteComponentAssetWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Deletes a custom playbook.
+// Deletes a specified custom playbook.
 //
 // @param request - DeletePlaybookRequest
 //
@@ -421,7 +417,7 @@ func (client *Client) DeletePlaybookWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Queries the metadata of assets in a component. The metadata of an asset refers to the fields that describe the asset.
+// Obtains the metadata for a component asset, which defines the fields that constitute the asset.
 //
 // @param request - DescribeComponentAssetFormRequest
 //
@@ -461,7 +457,7 @@ func (client *Client) DescribeComponentAssetFormWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries a list of assets in a component.
+// Retrieves the asset list for a component.
 //
 // @param request - DescribeComponentAssetsRequest
 //
@@ -501,7 +497,7 @@ func (client *Client) DescribeComponentAssetsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries a list of common components that are available.
+// Retrieves a list of standard components that you can use.
 //
 // @param request - DescribeComponentListRequest
 //
@@ -541,7 +537,7 @@ func (client *Client) DescribeComponentListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries a list of predefined components that are available.
+// Retrieves a list of predefined components.
 //
 // @param request - DescribeComponentPlaybookRequest
 //
@@ -581,7 +577,7 @@ func (client *Client) DescribeComponentPlaybookWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the JavaScript file of a component. The component uses the returned JavaScript file for page rendering.
+// Obtains the JavaScript (JS) file that a component uses to render the page.
 //
 // @param request - DescribeComponentsJsRequest
 //
@@ -621,7 +617,7 @@ func (client *Client) DescribeComponentsJsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the information about the published versions of a playbook after deduplication.
+// Retrieves a list of distinct playbook releases.
 //
 // @param request - DescribeDistinctReleasesRequest
 //
@@ -661,7 +657,7 @@ func (client *Client) DescribeDistinctReleasesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries enumeration items that are required by a cloud service.
+// Queries the enumeration information for a product.
 //
 // @param request - DescribeEnumItemsRequest
 //
@@ -701,7 +697,7 @@ func (client *Client) DescribeEnumItemsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the playbooks that are available for an automatic response plan.
+// Queries a list of executable playbooks that are used to configure automated response plans.
 //
 // @param request - DescribeExecutePlaybooksRequest
 //
@@ -741,7 +737,7 @@ func (client *Client) DescribeExecutePlaybooksWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the global configuration information about a cloud service.
+// Retrieves global configuration information for the product.
 //
 // @param request - DescribeFieldRequest
 //
@@ -825,7 +821,7 @@ func (client *Client) DescribeGroupProductionsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the output structure information of each node in a playbook based on the most recent running record of the playbook.
+// Describes the output structure of each node in a playbook based on the latest execution record.
 //
 // @param request - DescribeLatestRecordSchemaRequest
 //
@@ -865,7 +861,7 @@ func (client *Client) DescribeLatestRecordSchemaWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries recommended dynamic input parameters of a component for playbook orchestration.
+// Returns the reference paths for component inputs in a playbook orchestration.
 //
 // @param request - DescribeNodeParamTagsRequest
 //
@@ -993,11 +989,11 @@ func (client *Client) DescribeOpenApiInfoWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the API operations of an Alibaba Cloud service.
+// Retrieve the API list for a product.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or the pricing for log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+// Before you use this API, review the billing methods and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) for the orchestration product, which supports threat analysis, response, log access, and traffic monitoring.
 //
 // @param request - DescribeOpenApiListRequest
 //
@@ -1037,7 +1033,7 @@ func (client *Client) DescribeOpenApiListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the XML configuration of a playbook.
+// Retrieves the XML configuration of a playbook.
 //
 // @param request - DescribePlaybookRequest
 //
@@ -1077,7 +1073,7 @@ func (client *Client) DescribePlaybookWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the input and output parameter configurations of a playbook.
+// Retrieves the input and output parameter configurations for a playbook.
 //
 // @param request - DescribePlaybookInputOutputRequest
 //
@@ -1117,7 +1113,7 @@ func (client *Client) DescribePlaybookInputOutputWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the metrics of a playbook. The metrics include the playbook name, playbook description, the number of times that the playbook is run, and the failure rate of the playbook.
+// Queries playbook metadata, including its name, description, number of runs, and failure rate.
 //
 // @param request - DescribePlaybookMetricsRequest
 //
@@ -1157,7 +1153,7 @@ func (client *Client) DescribePlaybookMetricsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the historical output data of a component node.
+// Retrieves the historical output data of a component.
 //
 // @param request - DescribePlaybookNodesOutputRequest
 //
@@ -1197,7 +1193,7 @@ func (client *Client) DescribePlaybookNodesOutputWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the statistics of Security Orchestration Automation Response (SOAR), such as the numbers of created and enabled playbooks.
+// Retrieves metrics for the response orchestration product, including the total number of playbooks and the number of enabled playbooks.
 //
 // @param request - DescribePlaybookNumberMetricsRequest
 //
@@ -1237,7 +1233,7 @@ func (client *Client) DescribePlaybookNumberMetricsWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the information about the published versions of a playbook.
+// Queries a list of published versions of a playbook.
 //
 // @param request - DescribePlaybookReleasesRequest
 //
@@ -1277,7 +1273,11 @@ func (client *Client) DescribePlaybookReleasesWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Retrieve the list of playbooks.
+// Queries a list of playbooks.
+//
+// Description:
+//
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) for Security Orchestration, Automation, and Response (SOAR).
 //
 // @param request - DescribePlaybooksRequest
 //
@@ -1317,7 +1317,7 @@ func (client *Client) DescribePlaybooksWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the details of an API operation.
+// Retrieves the details of an OpenAPI.
 //
 // @param request - DescribePopApiRequest
 //
@@ -1369,11 +1369,11 @@ func (client *Client) DescribePopApiWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Queries statistics.
+// Retrieves statistics information.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+// Make sure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) of the response orchestration product (Cloud Threat Detection and Response (CTDR) log traffic) before you call this operation.
 //
 // @param request - DescribeProcessStatisticsRequest
 //
@@ -1413,7 +1413,7 @@ func (client *Client) DescribeProcessStatisticsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Query the number of associated disposal tasks based on the entity UUID.
+// Queries the count of response tasks associated with an entity UUID.
 //
 // @param request - DescribeProcessTaskCountRequest
 //
@@ -1453,11 +1453,11 @@ func (client *Client) DescribeProcessTaskCountWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the information about handling tasks. When you use Security Orchestration Automation Response (SOAR) to handle events, handling tasks are generated in the handling center.
+// Retrieves a list of disposal tasks.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+// Make sure that you are familiar with the billing method and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) of the response orchestration feature (the log traffic of Cloud Threat Detection and Response (CTDR)) before you call this operation.
 //
 // @param request - DescribeProcessTasksRequest
 //
@@ -1472,6 +1472,10 @@ func (client *Client) DescribeProcessTasksWithContext(ctx context.Context, reque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AlertId) {
+		query["AlertId"] = request.AlertId
+	}
+
 	if !dara.IsNil(request.Direction) {
 		query["Direction"] = request.Direction
 	}
@@ -1490,6 +1494,10 @@ func (client *Client) DescribeProcessTasksWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.EventUuid) {
 		query["EventUuid"] = request.EventUuid
+	}
+
+	if !dara.IsNil(request.ExecuteUuid) {
+		query["ExecuteUuid"] = request.ExecuteUuid
 	}
 
 	if !dara.IsNil(request.OrderField) {
@@ -1530,6 +1538,10 @@ func (client *Client) DescribeProcessTasksWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.ReqUuid) {
 		query["ReqUuid"] = request.ReqUuid
+	}
+
+	if !dara.IsNil(request.ResponseRuleId) {
+		query["ResponseRuleId"] = request.ResponseRuleId
 	}
 
 	if !dara.IsNil(request.SceneCode) {
@@ -1585,7 +1597,7 @@ func (client *Client) DescribeProcessTasksWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the data that is returned when a component initiates an action in a playbook task.
+// Retrieves the output data generated by a component for an action in a playbook task.
 //
 // @param request - DescribeSoarRecordActionOutputListRequest
 //
@@ -1625,7 +1637,7 @@ func (client *Client) DescribeSoarRecordActionOutputListWithContext(ctx context.
 
 // Summary:
 //
-// Queries the input and output data of a component action. You can call this operation after a playbook is run.
+// Retrieves the input and output data of a component action after a playbook task is executed.
 //
 // @param request - DescribeSoarRecordInOutputRequest
 //
@@ -1665,7 +1677,7 @@ func (client *Client) DescribeSoarRecordInOutputWithContext(ctx context.Context,
 
 // Summary:
 //
-// Get the execution records of a playbook.
+// Queries the execution records for a playbook.
 //
 // @param request - DescribeSoarRecordsRequest
 //
@@ -1705,7 +1717,7 @@ func (client *Client) DescribeSoarRecordsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the execution records of a component during the running of a playbook.
+// Retrieves the component execution records for a single playbook run.
 //
 // @param request - DescribeSoarTaskAndActionsRequest
 //
@@ -1745,7 +1757,7 @@ func (client *Client) DescribeSoarTaskAndActionsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the commands that can be run to obtain objects.
+// Queries the commands that are used to manage entities.
 //
 // @param request - DescribeSophonCommandsRequest
 //
@@ -1857,7 +1869,7 @@ func (client *Client) DescribeVendorApiListWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the operational logs of a Python3 script by using the UUID that is returned when the script is run. The UUID is specified by requestUuid.
+// After you submit a task for a Python 3 script, use the returned requestUuid to retrieve the operational logs.
 //
 // @param request - DescriberPython3ScriptLogsRequest
 //
@@ -1897,7 +1909,7 @@ func (client *Client) DescriberPython3ScriptLogsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Modifies the information about the asset that is configured for a component.
+// You can call this operation to modify the asset information for a component.
 //
 // @param request - ModifyComponentAssetRequest
 //
@@ -2069,7 +2081,7 @@ func (client *Client) ModifyPlaybookInputOutputWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Publishes the playbook. After the playbook is published, the playbook runs based on the new logic.
+// Publishes a playbook. Once published, the playbook runs with the new logic.
 //
 // @param request - PublishPlaybookRequest
 //
@@ -2117,7 +2129,7 @@ func (client *Client) PublishPlaybookWithContext(ctx context.Context, request *P
 
 // Summary:
 //
-// Queries all playbooks at a time.
+// Retrieves a list of all playbooks.
 //
 // @param request - QueryTreeDataRequest
 //
@@ -2157,7 +2169,7 @@ func (client *Client) QueryTreeDataWithContext(ctx context.Context, request *Que
 
 // Summary:
 //
-// Rolls back a playbook to a specific version. You can determine whether to publish the new playbook version during the rollback.
+// Rolls back a playbook to a specified version. You can also specify whether to publish that version after the rollback.
 //
 // @param request - RevertPlaybookReleaseRequest
 //
@@ -2209,11 +2221,11 @@ func (client *Client) RevertPlaybookReleaseWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Runs the email notification component to send messages.
+// Runs the notification component to send an email message.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+// Before calling this operation, understand the billing methods and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) for Security Orchestration Application Response (SOAR). SOAR is billed based on the log traffic added to the service.
 //
 // @param request - RunNotifyComponentWithEmailRequest
 //
@@ -2297,11 +2309,11 @@ func (client *Client) RunNotifyComponentWithEmailWithContext(ctx context.Context
 
 // Summary:
 //
-// Execute Notification Component - Send Message via Message Center.
+// Sends a message using the notification component in Message Center.
 //
 // Description:
 //
-// Please ensure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) of the response orchestration product (i.e., Threat Analysis and Response Log Access Traffic) before using this interface.
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) of Security Orchestration Automation Response (SOAR). The service is billed based on the log traffic for threat analysis and response.
 //
 // @param request - RunNotifyComponentWithMessageCenterRequest
 //
@@ -2389,11 +2401,11 @@ func (client *Client) RunNotifyComponentWithMessageCenterWithContext(ctx context
 
 // Summary:
 //
-// Runs the webhook notification component to send messages.
+// Sends a message from a notification component using a webhook.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR) or pricing for the log data added to the Cloud Threat Detection and Response (CTDR) feature. For more information, see [Pricing](https://www.aliyun.com/price/product#/sas/detail/sas).
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) of response orchestration. This feature is billed based on the log traffic for threat analysis and response.
 //
 // @param request - RunNotifyComponentWithWebhookRequest
 //
@@ -2481,11 +2493,11 @@ func (client *Client) RunNotifyComponentWithWebhookWithContext(ctx context.Conte
 
 // Summary:
 //
-// Submits and runs a Python3 script. You can call this operation only for data processing.
+// Executes a Python 3 code snippet for data processing.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing method and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1&spm=openapi-amp.newDocPublishment.0.0.4c41281fWhbdPa#/commodity/vm_intl).
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) of the response orchestration product.
 //
 // @param request - RunPython3ScriptRequest
 //
@@ -2547,11 +2559,11 @@ func (client *Client) RunPython3ScriptWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Triggers an enabled custom playbook or a predefined playbook.
+// Triggers an enabled custom or predefined playbook.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1&spm=a2796.7960336.3034855210.1.7adab91arMeIx2#/commodity/vm_intl).
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) of Response Orchestration.
 //
 // @param request - TriggerPlaybookRequest
 //
@@ -2599,7 +2611,7 @@ func (client *Client) TriggerPlaybookWithContext(ctx context.Context, request *T
 
 // Summary:
 //
-// Performs an action on a handling task that is generated by the handling center when an event is handled by using Security Orchestration Automation Response (SOAR). For example, you can call this operation to cancel blocking or isolation, or retry blocking.
+// When an event is handled using response orchestration, the response center creates a task. Perform follow-up actions on the task, such as unblocking, retrying a block, and removing from isolation.
 //
 // @param request - TriggerProcessTaskRequest
 //
@@ -2649,11 +2661,11 @@ func (client *Client) TriggerProcessTaskWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Triggers a playbook or a command.
+// Triggers a playbook or a response command.
 //
 // Description:
 //
-// Before you call this operation, make sure that you understand the billing methods and pricing of Security Orchestration Automation Response (SOAR). For more information, see [Pricing](https://www.alibabacloud.com/en/pricing-calculator?_p_lc=1&spm=a2796.7960336.3034855210.1.7adab91arMeIx2#/commodity/vm_intl).
+// Make sure that you are familiar with the billing method and [pricing](https://www.aliyun.com/price/product#/sas/detail/sas) of Security Orchestration Automation Response (SOAR) before you call this operation.
 //
 // @param request - TriggerSophonPlaybookRequest
 //
@@ -2668,6 +2680,10 @@ func (client *Client) TriggerSophonPlaybookWithContext(ctx context.Context, requ
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.CommandName) {
 		query["CommandName"] = request.CommandName
 	}
@@ -2713,7 +2729,7 @@ func (client *Client) TriggerSophonPlaybookWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Checks whether the configuration of the playbook is correct and whether the logic of the orchestration is reasonable.
+// Verifies that a playbook configuration is correct and its orchestration logic is valid.
 //
 // @param request - VerifyPlaybookRequest
 //
@@ -2761,7 +2777,7 @@ func (client *Client) VerifyPlaybookWithContext(ctx context.Context, request *Ve
 
 // Summary:
 //
-// Checks whether the syntax of a Python code snippet is correct.
+// Verifies the syntax of a Python code snippet.
 //
 // @param request - VerifyPythonFileRequest
 //

@@ -34,7 +34,7 @@ type iRunNotifyComponentWithEmailRequest interface {
 }
 
 type RunNotifyComponentWithEmailRequest struct {
-	// The action name of the component.
+	// The name of the component action.
 	//
 	// This parameter is required.
 	//
@@ -42,15 +42,15 @@ type RunNotifyComponentWithEmailRequest struct {
 	//
 	// notifyByCustom
 	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
-	// The resource instance ID of the email sender.
+	// The ID of the asset that is used to send the email.
 	//
-	// >  You can call the [DescribeComponentAssets](~~DescribeComponentAssets~~) operation to query the ID.
+	// > Call the [DescribeComponentAssets](~~DescribeComponentAssets~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 10
 	AssetId *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
-	// The name of component in the playbook.
+	// The name of the playbook component.
 	//
 	// This parameter is required.
 	//
@@ -66,17 +66,17 @@ type RunNotifyComponentWithEmailRequest struct {
 	//
 	// email content
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The language of the content within the request and the response. Valid value:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese.
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The name of the node in the playbook.
+	// The name of the playbook node.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type RunNotifyComponentWithEmailRequest struct {
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	// The UUID of the playbook.
 	//
-	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the UUIDs of playbooks.
+	// > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -94,27 +94,27 @@ type RunNotifyComponentWithEmailRequest struct {
 	//
 	// e99dab31-499b-4307-9248-xxxxxx
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	// The email addresses.
+	// A list of email addresses.
 	//
 	// This parameter is required.
 	Receivers []*string `json:"Receivers,omitempty" xml:"Receivers,omitempty" type:"Repeated"`
-	// The ID of the user who switches from the current view to the destination view by using the management account.
+	// The UID of the member whose data an administrator wants to access.
 	//
 	// example:
 	//
 	// 137602xxx718726
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The type of the view. Valid values:
+	// The view type. Valid values:
 	//
-	// 	- 0: the view of the current Alibaba Cloud account.
+	// - 0: The view of the current Alibaba Cloud account.
 	//
-	// 	- 1: the view of all accounts for the enterprise.
+	// - 1: The view of all accounts that belong to the enterprise.
 	//
 	// example:
 	//
 	// 0
 	RoleType *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
-	// The subject of the email.
+	// The title of the email.
 	//
 	// This parameter is required.
 	//

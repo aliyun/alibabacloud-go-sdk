@@ -40,15 +40,25 @@ type iDescribeSoarRecordsRequest interface {
 }
 
 type DescribeSoarRecordsRequest struct {
+	// The start time when the task was completed. The value is a 13-digit UNIX timestamp.
+	//
+	// example:
+	//
+	// 1755676363777
 	CompletedBeginTime *int64 `json:"CompletedBeginTime,omitempty" xml:"CompletedBeginTime,omitempty"`
-	CompletedEndTime   *int64 `json:"CompletedEndTime,omitempty" xml:"CompletedEndTime,omitempty"`
-	// The end time of the task execution, in 13-digit timestamp format.
+	// The end time when the task was completed. The value is a 13-digit UNIX timestamp.
+	//
+	// example:
+	//
+	// 1683526284584
+	CompletedEndTime *int64 `json:"CompletedEndTime,omitempty" xml:"CompletedEndTime,omitempty"`
+	// The end time of the task run. The value is a 13-digit UNIX timestamp.
 	//
 	// example:
 	//
 	// 1683772744953
 	EndMillis *int64 `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
-	// Set the language type for requests and received messages. The default is **zh**. Values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -58,15 +68,15 @@ type DescribeSoarRecordsRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Set which page to start displaying the query results from. The default value is 1, indicating the first page.
+	// The page number. Pages start from page 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Specify the maximum number of data entries per page when performing a paginated query. The default number of entries per page is 20. If the PageSize parameter is empty, it will return 10 entries by default.
+	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 10 entries are returned on each page.
 	//
-	// > It is recommended not to leave the PageSize value empty.
+	// > Specify a value for PageSize.
 	//
 	// example:
 	//
@@ -74,34 +84,39 @@ type DescribeSoarRecordsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The UUID of the playbook.
 	//
-	// > You can obtain this parameter by calling the [DescribePlaybooks](~~DescribePlaybooks~~) interface.
+	// > For more information, see [DescribePlaybooks](~~DescribePlaybooks~~).
 	//
 	// example:
 	//
 	// 8f55e76d-b5d5-4720-9cd7-xxxxx
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	QueryValue   *string `json:"QueryValue,omitempty" xml:"QueryValue,omitempty"`
-	// UUID of the playbook task execution.
+	// The input parameter of the playbook.
 	//
-	// > You can obtain this parameter by calling the [DescribeSoarRecords](https://help.aliyun.com/document_detail/2627455.html) interface.
+	// example:
+	//
+	// input
+	QueryValue *string `json:"QueryValue,omitempty" xml:"QueryValue,omitempty"`
+	// The UUID of the playbook task execution.
+	//
+	// > For more information, see [DescribeSoarRecords](https://help.aliyun.com/document_detail/2627455.html).
 	//
 	// example:
 	//
 	// 6d412cfa-0905-4567-8a83-xxxxxx
 	RequestUuid *string `json:"RequestUuid,omitempty" xml:"RequestUuid,omitempty"`
-	// The start time of the task execution, in 13-digit timestamp format.
+	// The start time of the task run. The value is a 13-digit UNIX timestamp.
 	//
 	// example:
 	//
 	// 1683526284584
 	StartMillis *int64 `json:"StartMillis,omitempty" xml:"StartMillis,omitempty"`
-	// The status of the task execution. Values:
+	// The status of the task run. Valid values:
 	//
-	// - **success**: Successful task.
+	// - **success**: The task is successful.
 	//
-	// - **failed**: Failed task.
+	// - **failed**: The task failed.
 	//
-	// - **inprogress**: Task in progress
+	// - **inprogress**: The task is in progress.
 	//
 	// example:
 	//
@@ -113,8 +128,25 @@ type DescribeSoarRecordsRequest struct {
 	//
 	// be0a4ef084dd174abe478df52xxxxx
 	TaskflowMd5 *string `json:"TaskflowMd5,omitempty" xml:"TaskflowMd5,omitempty"`
+	// The trigger type of the task. Valid values:
+	//
+	// - **stream**: stream
+	//
+	// - **debug**: test
+	//
+	// - **manual**: manual
+	//
+	// - **timer**: scheduled
+	//
+	// - **SubInvoke**: child flow
+	//
+	// - **siem**: triggered by a SIEM product
+	//
+	// example:
+	//
+	// debug
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	// The Alibaba Cloud account ID that executed the playbook task.
+	// The ID of the Alibaba Cloud account that runs the playbook task.
 	//
 	// example:
 	//

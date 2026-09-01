@@ -18,7 +18,7 @@ type iDescribePopApiRequest interface {
 }
 
 type DescribePopApiRequest struct {
-	// The operation name of the Alibaba Cloud service.
+	// The name of the Alibaba Cloud product API.
 	//
 	// This parameter is required.
 	//
@@ -28,17 +28,13 @@ type DescribePopApiRequest struct {
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
 	// The version number of the API.
 	//
-	// >  You can call the [DescribePopApiVersionList](~~DescribePopApiVersionList~~) operation to query the version number.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2021-10-01
 	ApiVersion *string `json:"ApiVersion,omitempty" xml:"ApiVersion,omitempty"`
-	// The POP code of the Alibaba Cloud service.
-	//
-	// >  You can call the [DescribeApiList](~~DescribeApiList~~) operation to query the POP code.
+	// The POP code of the Alibaba Cloud product API.
 	//
 	// This parameter is required.
 	//

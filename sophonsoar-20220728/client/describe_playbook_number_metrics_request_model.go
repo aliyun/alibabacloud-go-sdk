@@ -14,11 +14,11 @@ type iDescribePlaybookNumberMetricsRequest interface {
 }
 
 type DescribePlaybookNumberMetricsRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response.
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//

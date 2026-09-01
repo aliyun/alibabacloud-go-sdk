@@ -14,7 +14,7 @@ type iPublishPlaybookResponseBody interface {
 }
 
 type PublishPlaybookResponseBody struct {
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique ID for each request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

@@ -84,7 +84,7 @@ type DescribeSoarRecordInOutputResponseBody struct {
 	//
 	// }
 	InOutputInfo *string `json:"InOutputInfo,omitempty" xml:"InOutputInfo,omitempty"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique ID for each request. Use this ID to troubleshoot issues.
 	//
 	// example:
 	//

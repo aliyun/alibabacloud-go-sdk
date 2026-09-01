@@ -16,9 +16,9 @@ type iDescribeLatestRecordSchemaResponseBody interface {
 }
 
 type DescribeLatestRecordSchemaResponseBody struct {
-	// The output structure information of the playbook.
+	// The output structure of the playbook.
 	PlaybookNodeSchema *DescribeLatestRecordSchemaResponseBodyPlaybookNodeSchema `json:"PlaybookNodeSchema,omitempty" xml:"PlaybookNodeSchema,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -24,13 +24,13 @@ type iCreatePlaybookRequest interface {
 }
 
 type CreatePlaybookRequest struct {
-	// Description of the playbook.
+	// The description of the playbook.
 	//
 	// example:
 	//
 	// This is a new version
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Name of the playbook.
+	// The name of the playbook.
 	//
 	// This parameter is required.
 	//
@@ -38,29 +38,33 @@ type CreatePlaybookRequest struct {
 	//
 	// test09
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The input configuration of the playbook.
+	//
 	// example:
 	//
 	// {\\"key1\\": \\"value1\\", \\"key2\\": \\"value2\\"}
 	InputParams *string `json:"InputParams,omitempty" xml:"InputParams,omitempty"`
-	// Language type for receiving messages. Values:
+	// The language of the messages to receive. Valid values:
 	//
-	// - **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The output configuration of the playbook.
+	//
 	// example:
 	//
 	// {\\"result\\": \\"success\\"}
 	OutputParams *string `json:"OutputParams,omitempty" xml:"OutputParams,omitempty"`
-	// Playbook TaskFlow type.
+	// The configuration format of the playbook.
 	//
-	// - **x6*	- : x6
+	// - **xml**: XML format.
 	//
-	// - **bpmn**: bpmn
+	// - **x6**: JSON format.
 	//
 	// example:
 	//

@@ -18,19 +18,19 @@ type iRevertPlaybookReleaseRequest interface {
 }
 
 type RevertPlaybookReleaseRequest struct {
-	// Specifies whether to directly publish the new playbook after the rollback.
+	// Specifies whether to publish the playbook after the rollback.
 	//
-	// 	- **true*	- (default)
+	// - **true*	- (default): Publishes the playbook after the rollback.
 	//
-	// 	- **false**
+	// - **false**: Rolls back the playbook without publishing it.
 	//
 	// example:
 	//
 	// true
 	IsPublish *bool `json:"IsPublish,omitempty" xml:"IsPublish,omitempty"`
-	// The version of the playbook that you want to publish.
+	// The ID of the published playbook version.
 	//
-	// >  You can call the [DescribePlaybookReleases](~~DescribePlaybookReleases~~) operation to query the playbook version.
+	// > Call the [DescribePlaybookReleases](~~DescribePlaybookReleases~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type RevertPlaybookReleaseRequest struct {
 	PlayReleaseId *int32 `json:"PlayReleaseId,omitempty" xml:"PlayReleaseId,omitempty"`
 	// The UUID of the playbook.
 	//
-	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the playbook UUID.
+	// > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

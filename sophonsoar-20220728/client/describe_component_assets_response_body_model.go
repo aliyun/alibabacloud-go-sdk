@@ -16,9 +16,9 @@ type iDescribeComponentAssetsResponseBody interface {
 }
 
 type DescribeComponentAssetsResponseBody struct {
-	// The information about the assets.
+	// A list of assets.
 	ComponentAssets []*DescribeComponentAssetsResponseBodyComponentAssets `json:"ComponentAssets,omitempty" xml:"ComponentAssets,omitempty" type:"Repeated"`
-	// The request ID.
+	// The request ID. Alibaba Cloud generates a unique ID for each request. Use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,45 +66,45 @@ func (s *DescribeComponentAssetsResponseBody) Validate() error {
 }
 
 type DescribeComponentAssetsResponseBodyComponentAssets struct {
-	// The UUID of the asset.
+	// The asset\\"s UUID.
 	//
 	// example:
 	//
 	// ff6fe161-93e2-464c-a326-fxxxxxx
 	AssetUuid *string `json:"AssetUuid,omitempty" xml:"AssetUuid,omitempty"`
-	// The name of the component to which the asset belongs.
+	// The name of the component that the asset belongs to.
 	//
 	// example:
 	//
 	// pyhton3
 	Componentname *string `json:"Componentname,omitempty" xml:"Componentname,omitempty"`
-	// The time when the asset was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
+	// The time when the asset was created. The time is in UTC and follows the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2023-03-23T14:38Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the asset was modified. The time is in the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
+	// The time when the asset was last modified. The time is in UTC and follows the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2023-03-23T14:38Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The UUID of the asset.
+	// The unique ID of the asset.
 	//
 	// example:
 	//
 	// 7xx
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the asset.
+	// The asset name.
 	//
 	// example:
 	//
 	// test asset
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The configurations of the asset in the JSON string format. DescribeComponentAssetForm
+	// The asset configuration in JSON format.
 	//
-	// >  For more information, see [DescribeComponentAssetForm](~~DescribeComponentAssetForm~~).
+	// > For more information about the format, see [DescribeComponentAssetForm](~~DescribeComponentAssetForm~~).
 	//
 	// example:
 	//

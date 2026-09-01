@@ -24,21 +24,53 @@ type iDescribeSoarTaskAndActionsRequest interface {
 }
 
 type DescribeSoarTaskAndActionsRequest struct {
-	// The language of the content within the request and response.
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryType  *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. The maximum value is 20. If you do not specify this parameter, 10 entries are returned.
+	//
+	// > Specify a value for this parameter.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The trigger type of the task. Valid values:
+	//
+	// - **stream**: The task is triggered by a data stream.
+	//
+	// - **debug**: The task is triggered by a debugging process.
+	//
+	// - **manual**: The task is triggered manually.
+	//
+	// - **timer**: The task is triggered by a timer.
+	//
+	// - **SubInvoke**: The task is triggered by a child flow.
+	//
+	// example:
+	//
+	// debug
+	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	// The input parameter of the playbook.
+	//
+	// example:
+	//
+	// input
 	QueryValue *string `json:"QueryValue,omitempty" xml:"QueryValue,omitempty"`
-	// The playbook UUID.
+	// The UUID of the playbook task.
 	//
 	// example:
 	//

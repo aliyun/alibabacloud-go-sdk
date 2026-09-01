@@ -16,9 +16,9 @@ type iVerifyPlaybookRequest interface {
 }
 
 type VerifyPlaybookRequest struct {
-	// The playbook UUID.
+	// The UUID of the playbook.
 	//
-	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the playbook UUID.
+	// > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
 	//
 	// example:
 	//

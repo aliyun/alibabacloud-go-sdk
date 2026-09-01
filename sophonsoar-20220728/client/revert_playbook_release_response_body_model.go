@@ -14,7 +14,7 @@ type iRevertPlaybookReleaseResponseBody interface {
 }
 
 type RevertPlaybookReleaseResponseBody struct {
-	// The request ID.
+	// The ID of the request. This ID is unique to the request and can be used for troubleshooting.
 	//
 	// example:
 	//

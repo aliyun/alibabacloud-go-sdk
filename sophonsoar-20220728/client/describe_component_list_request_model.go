@@ -16,11 +16,11 @@ type iDescribeComponentListRequest interface {
 }
 
 type DescribeComponentListRequest struct {
-	// The language of the content within the request and the response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -28,7 +28,7 @@ type DescribeComponentListRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The UUID of the playbook.
 	//
-	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the UUIDs of playbooks.
+	// > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to get this parameter.
 	//
 	// This parameter is required.
 	//

@@ -16,13 +16,13 @@ type iComparePlaybooksResponseBody interface {
 }
 
 type ComparePlaybooksResponseBody struct {
-	// The comparison result.
+	// The result of the comparison.
 	CompareResult *ComparePlaybooksResponseBodyCompareResult `json:"CompareResult,omitempty" xml:"CompareResult,omitempty" type:"Struct"`
-	// The request ID.
+	// The unique ID of the request. Use this ID to troubleshoot issues.
 	//
 	// example:
 	//
-	// 2EC05B06-BF3C-5F3E-8FE8-3B1FAD76087A
+	// 2EC05B06-****-5F3E-****-3B1FAD76087A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -68,21 +68,21 @@ type ComparePlaybooksResponseBodyCompareResult struct {
 	//
 	// The first version adds one node compared to the second version
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the second version provides more information than the first version. Valid values:
+	// Indicates whether the second version used for comparison is a new version.
 	//
-	// 	- **true**
+	// - **true**: The version is new.
 	//
-	// 	- **false**
+	// - **false**: The version is not new.
 	//
 	// example:
 	//
 	// true
 	New *bool `json:"New,omitempty" xml:"New,omitempty"`
-	// Indicates whether the configurations of the two versions are the same. Valid values:
+	// Indicates whether the two versions are identical.
 	//
-	// 	- **true**
+	// - **true**: Identical.
 	//
-	// 	- **false**
+	// - **false**: Not identical.
 	//
 	// example:
 	//

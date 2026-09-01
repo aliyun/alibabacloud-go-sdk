@@ -18,10 +18,11 @@ type iVerifyPlaybookResponseBody interface {
 }
 
 type VerifyPlaybookResponseBody struct {
-	// The result of the verification.
+	// The verification results.
 	CheckTaskInfos []*VerifyPlaybookResponseBodyCheckTaskInfos `json:"CheckTaskInfos,omitempty" xml:"CheckTaskInfos,omitempty" type:"Repeated"`
-	Prerequisites  []*VerifyPlaybookResponseBodyPrerequisites  `json:"Prerequisites,omitempty" xml:"Prerequisites,omitempty" type:"Repeated"`
-	// The request ID.
+	// The prerequisite check information for the playbook.
+	Prerequisites []*VerifyPlaybookResponseBodyPrerequisites `json:"Prerequisites,omitempty" xml:"Prerequisites,omitempty" type:"Repeated"`
+	// The ID of the request. Alibaba Cloud generates this unique identifier for the request. Use this ID to troubleshoot and locate issues.
 	//
 	// example:
 	//
@@ -87,25 +88,25 @@ func (s *VerifyPlaybookResponseBody) Validate() error {
 }
 
 type VerifyPlaybookResponseBodyCheckTaskInfos struct {
-	// The error message returned when the playbook does not pass the check.
+	// The specific error message that is returned if the verification fails.
 	//
 	// example:
 	//
 	// Node [python3_3] doesn\\"t have the asset information
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The name of the node in the playbook.
+	// The name of the playbook node.
 	//
 	// example:
 	//
 	// python3_3
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The severity level of the verification information. Valid values:
+	// The severity level of the verification message. Valid values:
 	//
-	// 	- warn: An issue may occur during playbook running.
+	// - **warn**: A warning message. An issue may occur when the playbook runs.
 	//
-	// 	- error: The playbook cannot be compiled.
+	// - **error**: An error message. The playbook fails to be compiled.
 	//
-	// 	- remind: The publishing and running of the playbook are not affected. We recommend that you optimize the playbook format.
+	// - **remind**: A suggestion. This does not affect publishing or running the playbook. Optimize the playbook format.
 	//
 	// example:
 	//
@@ -153,7 +154,25 @@ func (s *VerifyPlaybookResponseBodyCheckTaskInfos) Validate() error {
 }
 
 type VerifyPlaybookResponseBodyPrerequisites struct {
-	PrerequisiteType  *string `json:"PrerequisiteType,omitempty" xml:"PrerequisiteType,omitempty"`
+	// The check type. Valid values:
+	//
+	// - **role**: The name of the custom RAM role.
+	//
+	// - **policies**: The list of RAM system policies.
+	//
+	// example:
+	//
+	// role
+	PrerequisiteType *string `json:"PrerequisiteType,omitempty" xml:"PrerequisiteType,omitempty"`
+	// The check content. The value is determined as follows:
+	//
+	// - If PrerequisiteType is **role**, the value is the static field AliyunSiemSoarExecutionDefaultRole.
+	//
+	// - If PrerequisiteType is **policies**, the value is a collection of policy names.
+	//
+	// example:
+	//
+	// AliyunSiemSoarExecutionDefaultRole
 	PrerequisiteValue *string `json:"PrerequisiteValue,omitempty" xml:"PrerequisiteValue,omitempty"`
 }
 

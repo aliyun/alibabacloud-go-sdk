@@ -18,19 +18,19 @@ type iDescribeDistinctReleasesRequest interface {
 }
 
 type DescribeDistinctReleasesRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The playbook UUID.
+	// The UUID of the playbook.
 	//
-	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the playbook UUID.
+	// > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DescribeDistinctReleasesRequest struct {
 	//
 	// bc0b8424-535c-4ed5-bd94-xxxxxx
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	// The MD5 value of the playbook XML configuration.
+	// The MD5 value of the playbook\\"s XML configuration.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iRunPython3ScriptResponseBody interface {
 }
 
 type RunPython3ScriptResponseBody struct {
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates this unique ID for the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// F210521C-D9BF-5264-8369-83EDDC617DB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The execution result of the Python3 script.
+	// The data returned after the script is run.
 	//
 	// example:
 	//

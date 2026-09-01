@@ -14,7 +14,7 @@ type iModifyPlaybookResponseBody interface {
 }
 
 type ModifyPlaybookResponseBody struct {
-	// The request ID.
+	// The unique ID of the request. Use this ID to locate and troubleshoot issues.
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type iRunNotifyComponentWithMessageCenterRequest interface {
 }
 
 type RunNotifyComponentWithMessageCenterRequest struct {
-	// The action name of the playbook.
+	// The name of the playbook action.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type RunNotifyComponentWithMessageCenterRequest struct {
 	//
 	// notifyByMessageCenter
 	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
-	// The user ID receiving the message.
+	// The ID of the user who receives the message.
 	//
 	// This parameter is required.
 	//
@@ -52,15 +52,15 @@ type RunNotifyComponentWithMessageCenterRequest struct {
 	//
 	// 146789xxxx733152
 	Aliuid *string `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	// Resource instance ID. This parameter is currently deprecated and no longer in use.
+	// The ID of the asset. This parameter is deprecated.
 	//
 	// example:
 	//
 	// 1
 	AssetId *string `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
-	// Collection of channel types. If not provided, all channels will be used by default, and it is not required to provide this parameter by default.
+	// A collection of channel types. If you do not specify this parameter, messages are sent through all channels by default.
 	ChannelTypeList []*string `json:"ChannelTypeList,omitempty" xml:"ChannelTypeList,omitempty" type:"Repeated"`
-	// The component name of the playbook.
+	// The name of the playbook component.
 	//
 	// This parameter is required.
 	//
@@ -68,13 +68,13 @@ type RunNotifyComponentWithMessageCenterRequest struct {
 	//
 	// NotifyMessage
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	// Cloud Pigeon\\"s message event ID. Values:
+	// The ID of the message event in Message Center. Valid values:
 	//
-	// - yundun_soar_incident_generate: Incident generation.
+	// - yundun_soar_incident_generate: An event is generated.
 	//
-	// - yundun_soar_alert_generate: Alert generation.
+	// - yundun_soar_alert_generate: An alert is generated.
 	//
-	// - yundun_soar_incident_update: Incident update.
+	// - yundun_soar_incident_update: An event is updated.
 	//
 	// This parameter is required.
 	//
@@ -82,17 +82,17 @@ type RunNotifyComponentWithMessageCenterRequest struct {
 	//
 	// yundun_soar_incident_generate
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The language type for requesting and receiving messages. Values:
+	// The language of the request and response. Valid values:
 	//
-	// - **zh*	- (default): Chinese.
+	// - **zh*	- (default): Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The node name of the playbook.
+	// The name of the playbook node.
 	//
 	// This parameter is required.
 	//
@@ -100,13 +100,13 @@ type RunNotifyComponentWithMessageCenterRequest struct {
 	//
 	// notify_message
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// Template parameters for the message event.
+	// The template parameters for the message event.
 	//
-	// - For incident generation: aliyunUID, incidentName, incidentID, startTime
+	// - Event generation: aliyunUID, incidentName, incidentID, startTime
 	//
-	// - For alert generation: aliyunUID, alertName, alertID, startTime
+	// - Alert generation: aliyunUID, alertName, alertID, startTime
 	//
-	// - For incident update: aliyunUID, incidentName, incidentID, startTime, endTime, status, level
+	// - Event update: aliyunUID, incidentName, incidentID, startTime, endTime, status, level
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type RunNotifyComponentWithMessageCenterRequest struct {
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	// The UUID of the playbook.
 	//
-	// > You can obtain this parameter by calling the [DescribePlaybooks](~~DescribePlaybooks~~) interface.
+	// > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain the value of this parameter.
 	//
 	// This parameter is required.
 	//
@@ -122,17 +122,17 @@ type RunNotifyComponentWithMessageCenterRequest struct {
 	//
 	// c5c88b5e-97ca-435d-8c20-xxxxxx
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	// The user ID when an administrator switches to another member\\"s perspective.
+	// The user ID of the member. This parameter is used when an administrator calls the operation on behalf of a member.
 	//
 	// example:
 	//
 	// 1467894xxx733152
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// View type. Values:
+	// The view type. Valid values:
 	//
-	// - 0 (default): Current Alibaba Cloud account view.
+	// - 0 (default): The view of the current Alibaba Cloud account.
 	//
-	// - 1: View for all accounts under the enterprise.
+	// - 1: The view of all accounts that belong to the enterprise.
 	//
 	// example:
 	//

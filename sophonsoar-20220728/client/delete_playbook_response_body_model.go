@@ -14,7 +14,7 @@ type iDeletePlaybookResponseBody interface {
 }
 
 type DeletePlaybookResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

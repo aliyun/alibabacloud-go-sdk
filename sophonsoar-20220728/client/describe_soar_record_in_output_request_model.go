@@ -18,7 +18,7 @@ type iDescribeSoarRecordInOutputRequest interface {
 type DescribeSoarRecordInOutputRequest struct {
 	// The UUID of the component action.
 	//
-	// >  You can call the [DescribeSoarTaskAndActions](~~DescribeSoarTaskAndActions~~) operation to query the UUIDs of component actions.
+	// > Call the [DescribeSoarTaskAndActions](~~DescribeSoarTaskAndActions~~) API to get this parameter.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type DescribeSoarRecordInOutputRequest struct {
 	//
 	// 0531ff66-dd05-4f24-84bf-xxxxxxxx
 	ActionUuid *string `json:"ActionUuid,omitempty" xml:"ActionUuid,omitempty"`
-	// The language of the content within the request and the response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iDescribeNodeParamTagsResponseBody interface {
 }
 
 type DescribeNodeParamTagsResponseBody struct {
-	// The configuration of the recommended path.
+	// The recommended path configurations.
 	ParamReferredPaths []*DescribeNodeParamTagsResponseBodyParamReferredPaths `json:"ParamReferredPaths,omitempty" xml:"ParamReferredPaths,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates this unique ID for each request. Use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *DescribeNodeParamTagsResponseBody) Validate() error {
 }
 
 type DescribeNodeParamTagsResponseBodyParamReferredPaths struct {
-	// The name of the upstream node.
+	// The name of the ancestor node.
 	//
 	// example:
 	//
 	// DataFormat_1
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
-	// The paths.
+	// An array of paths.
 	ReferredPath []*string `json:"ReferredPath,omitempty" xml:"ReferredPath,omitempty" type:"Repeated"`
 }
 

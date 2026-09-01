@@ -20,11 +20,11 @@ type iDescribeProcessTaskCountRequest interface {
 }
 
 type DescribeProcessTaskCountRequest struct {
-	// Collection of entity UUIDs.
+	// The UUIDs of the entities.
 	//
 	// This parameter is required.
 	EntityUuidList []*string `json:"EntityUuidList,omitempty" xml:"EntityUuidList,omitempty" type:"Repeated"`
-	// Language type for request and response messages. Values:
+	// The language of the request and response. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -34,17 +34,17 @@ type DescribeProcessTaskCountRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// User ID for administrators to switch to other member\\"s perspective.
+	// The UID of the member whose permissions you want to use to call the operation.
 	//
 	// example:
 	//
 	// 104739******259
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// View type.
+	// The view type.
 	//
-	// - **0**: Current Alibaba Cloud account view.
+	// - **0**: The view of the current Alibaba Cloud account.
 	//
-	// - **1**: View for all accounts under the enterprise.
+	// - **1**: The view of all accounts that belong to the enterprise.
 	//
 	// example:
 	//

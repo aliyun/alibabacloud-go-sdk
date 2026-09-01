@@ -28,21 +28,21 @@ type DescribePopApiResponseBody struct {
 	//
 	// AddAssetCleanConfig
 	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
-	// The information about the API.
+	// List of API information.
 	OpenApiMetaList []*DescribePopApiResponseBodyOpenApiMetaList `json:"OpenApiMetaList,omitempty" xml:"OpenApiMetaList,omitempty" type:"Repeated"`
-	// The POP code of the Alibaba Cloud service.
+	// The POP code of the Alibaba Cloud product API.
 	//
 	// example:
 	//
 	// Sas
 	PopCode *string `json:"PopCode,omitempty" xml:"PopCode,omitempty"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates this unique ID for each request. Use this ID to troubleshoot issues.
 	//
 	// example:
 	//
-	// 1A01B0BA-CFC4-5813-9EB0-A5DA15FA95AE
+	// 1A01B0BA-****-5813-****-A5DA15FA95AE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The version of the API.
+	// The version number of the API.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribePopApiResponseBody) Validate() error {
 }
 
 type DescribePopApiResponseBodyOpenApiMetaList struct {
-	// The parameter description.
+	// The description of the parameter.
 	//
 	// example:
 	//
@@ -137,24 +137,41 @@ type DescribePopApiResponseBodyOpenApiMetaList struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Indicates whether the parameter is required.
 	//
-	// 	- true
+	// - **true**: required.
 	//
-	// 	- false
+	// - **false**: not required.
 	//
 	// example:
 	//
 	// false
-	Required *bool   `json:"Required,omitempty" xml:"Required,omitempty"`
-	Style    *string `json:"Style,omitempty" xml:"Style,omitempty"`
-	// The data type of the parameter field. Valid values:
+	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+	// The serialization method for an array parameter. Valid values:
 	//
-	// 	- **string**
+	// - **repeatList**: An array is serialized in the XXX.N format. Example: Instance.1=i-instance1&\\&Instance.2=i-instance2.
 	//
-	// 	- **boolean**
+	// - **simple**: An array is serialized as a comma-separated string. Example: i-instance1,i-instance2.
 	//
-	// 	- **integer**
+	// - **spaceDelimited**: An array is serialized as a space-separated string. Example: i-instance1 i-instance2.
 	//
-	// 	- **long**
+	// - **pipeDelimited**: An array is serialized as a pipe-separated string. Example: i-instance1|i-instance2.
+	//
+	// - **json**: An array is serialized in JSON format. Example: ["i-instance1","i-instance2"].
+	//
+	// - **flat**: An array is serialized in the XXX.N format. Example: Instance.1=i-instance1\\&Instance.2=i-instance2.
+	//
+	// example:
+	//
+	// json
+	Style *string `json:"Style,omitempty" xml:"Style,omitempty"`
+	// The data type of the parameter. Valid values:
+	//
+	// - **string**: a string.
+	//
+	// - **boolean**: a Boolean value.
+	//
+	// - **integer**: an integer.
+	//
+	// - **long**: a long integer.
 	//
 	// example:
 	//

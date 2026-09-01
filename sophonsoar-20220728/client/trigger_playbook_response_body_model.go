@@ -16,13 +16,13 @@ type iTriggerPlaybookResponseBody interface {
 }
 
 type TriggerPlaybookResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// BD5A8DB6-A42C-532B-BCE8-83E69550CD59
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The running UUID of the playbook. This parameter is used to query the running result of the playbook.
+	// The UUID of the playbook run. You can use this UUID to obtain the results of the playbook run.
 	//
 	// example:
 	//

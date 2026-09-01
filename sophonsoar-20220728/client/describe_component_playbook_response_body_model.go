@@ -16,9 +16,9 @@ type iDescribeComponentPlaybookResponseBody interface {
 }
 
 type DescribeComponentPlaybookResponseBody struct {
-	// The information about the predefined components.
+	// The list of component playbooks.
 	Playbooks []*DescribeComponentPlaybookResponseBodyPlaybooks `json:"Playbooks,omitempty" xml:"Playbooks,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -66,21 +66,21 @@ func (s *DescribeComponentPlaybookResponseBody) Validate() error {
 }
 
 type DescribeComponentPlaybookResponseBodyPlaybooks struct {
-	// The description of the predefined component.
+	// The description of the component playbook.
 	//
 	// example:
 	//
 	// aegis_kill_process
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the predefined component.
+	// The name of the component playbook.
 	//
 	// example:
 	//
 	// AegisKillQuara
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The input parameter configuration of the playbook. The value is a JSON array.
+	// The input parameter configurations of the component playbook. The value is a JSON array.
 	//
-	// >  For more information, see [DescribePlaybookInputOutput](~~DescribePlaybookInputOutput~~).
+	// > For more information about the format, see [DescribePlaybookInputOutput](~~DescribePlaybookInputOutput~~).
 	//
 	// example:
 	//
@@ -106,6 +106,16 @@ type DescribeComponentPlaybookResponseBodyPlaybooks struct {
 	//
 	// ]
 	InputParams *string `json:"InputParams,omitempty" xml:"InputParams,omitempty"`
+	// The input parameter type of the component playbook.
+	//
+	// template-ip: IP request template.
+	//
+	// template-file: file request template.
+	//
+	// template-process: process request template.
+	//
+	// custom: custom parameters.
+	//
 	// example:
 	//
 	// template-alert

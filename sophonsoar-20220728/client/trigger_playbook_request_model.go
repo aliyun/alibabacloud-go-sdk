@@ -16,7 +16,7 @@ type iTriggerPlaybookRequest interface {
 }
 
 type TriggerPlaybookRequest struct {
-	// The input parameters of the playbook.
+	// The input parameters for the playbook.
 	//
 	// This parameter is required.
 	//
@@ -30,9 +30,9 @@ type TriggerPlaybookRequest struct {
 	//
 	// }
 	InputParam *string `json:"InputParam,omitempty" xml:"InputParam,omitempty"`
-	// The playbook UUID.
+	// The UUID of the playbook.
 	//
-	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the playbook UUID.
+	// > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//

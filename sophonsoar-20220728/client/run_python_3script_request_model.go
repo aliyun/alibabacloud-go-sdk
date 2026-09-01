@@ -22,13 +22,13 @@ type iRunPython3ScriptRequest interface {
 }
 
 type RunPython3ScriptRequest struct {
-	// The name of the node in the playbook.
+	// The name of the playbook node.
 	//
 	// example:
 	//
 	// python3_3
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The input parameters of the Python3 script.
+	// The input parameters for the Python 3 script.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type RunPython3ScriptRequest struct {
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	// The UUID of the playbook.
 	//
-	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the UUIDs of playbooks.
+	// > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 8baa6cff-319e-4ede-97bc-xxxxxxx
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	// The Python3 script.
+	// The Python 3 script.
 	//
 	// example:
 	//
@@ -68,6 +68,8 @@ type RunPython3ScriptRequest struct {
 	//
 	//   return (success,message,data)
 	PythonScript *string `json:"PythonScript,omitempty" xml:"PythonScript,omitempty"`
+	// The Python version.
+	//
 	// example:
 	//
 	// python2.0

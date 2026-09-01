@@ -16,19 +16,19 @@ type iDescribeFieldRequest interface {
 }
 
 type DescribeFieldRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response messages. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The key of the global configuration. Valid values:
+	// The key of the global configuration. Valid value:
 	//
-	// 	- **soar_filed_tags**: queries the input template of the playbook.
+	// - **soar_filed_tags**: Obtains the input field template for a playbook.
 	//
 	// This parameter is required.
 	//

@@ -22,7 +22,7 @@ type iDescribeExecutePlaybooksRequest interface {
 }
 
 type DescribeExecutePlaybooksRequest struct {
-	// The entity type of the script input parameter. When you want to query multiple entity types, separate them with commas.
+	// The entity type of the input parameter for the playbook. To query multiple entity types, separate them with commas.
 	//
 	// - **ip**: IP entity.
 	//
@@ -30,45 +30,45 @@ type DescribeExecutePlaybooksRequest struct {
 	//
 	// - **process**: process entity.
 	//
-	// - **incident**: incident entity.
+	// - **incident**: event entity.
 	//
 	// example:
 	//
 	// ip,file,process,host
 	InputMode *string `json:"InputMode,omitempty" xml:"InputMode,omitempty"`
-	// The language of the content within the request and the response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The input parameter type of the playbook.
+	// The type of the input parameter for the playbook.
 	//
-	// 	- **template-ip**
+	// - **template-ip**: IP request template.
 	//
-	// 	- **template-file**
+	// - **template-file**: file request template.
 	//
-	// 	- **template-process**
+	// - **template-process**: process request template.
 	//
-	// 	- **custom**
+	// - **custom**: custom parameter.
 	//
 	// example:
 	//
 	// custom
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
-	// The playbook name. Fuzzy search is supported.
+	// The name of the playbook. Fuzzy search is supported.
 	//
 	// example:
 	//
 	// demo_test
 	PlaybookName *string `json:"PlaybookName,omitempty" xml:"PlaybookName,omitempty"`
-	// The playbook UUID.
+	// The UUID of the playbook.
 	//
-	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the playbook UUID.
+	// > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
 	//
 	// example:
 	//

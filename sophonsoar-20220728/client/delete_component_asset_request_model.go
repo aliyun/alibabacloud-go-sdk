@@ -16,9 +16,9 @@ type iDeleteComponentAssetRequest interface {
 }
 
 type DeleteComponentAssetRequest struct {
-	// The ID of the asset.
+	// The asset ID of the component.
 	//
-	// >  You can call the [DescribeComponentAssets](~~DescribeComponentAssets~~) operation to query the ID.
+	// > Call the [DescribeComponentAssets](~~DescribeComponentAssets~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type DeleteComponentAssetRequest struct {
 	//
 	// 12x
 	AssetId *int64 `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
-	// The language of the content within the request and the response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//

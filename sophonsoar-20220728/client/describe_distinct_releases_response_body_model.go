@@ -16,9 +16,9 @@ type iDescribeDistinctReleasesResponseBody interface {
 }
 
 type DescribeDistinctReleasesResponseBody struct {
-	// The information about versions.
+	// The version records.
 	Records []*DescribeDistinctReleasesResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request. This ID is unique to each request and is used to troubleshoot issues.
 	//
 	// example:
 	//
@@ -66,23 +66,23 @@ func (s *DescribeDistinctReleasesResponseBody) Validate() error {
 }
 
 type DescribeDistinctReleasesResponseBodyRecords struct {
-	// The version description.
+	// The description of the version.
 	//
 	// example:
 	//
 	// demo version
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The MD5 value of the version XML configuration.
+	// The MD5 value of the version\\"s XML configuration.
 	//
 	// example:
 	//
 	// 17cf53049bc8efa941207xxxxx
 	TaskflowMd5 *string `json:"TaskflowMd5,omitempty" xml:"TaskflowMd5,omitempty"`
-	// The format of the playbook. Valid values:
+	// The configuration format of the playbook.
 	//
-	// 	- **xml**: XML format.
+	// - **xml**: XML format.
 	//
-	// 	- **x6**: JSON format.
+	// - **x6**: JSON format.
 	//
 	// example:
 	//

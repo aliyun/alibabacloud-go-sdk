@@ -9,6 +9,8 @@ type iDescribeProcessTasksRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAlertId(v string) *DescribeProcessTasksRequest
+	GetAlertId() *string
 	SetDirection(v string) *DescribeProcessTasksRequest
 	GetDirection() *string
 	SetEntityName(v string) *DescribeProcessTasksRequest
@@ -19,6 +21,8 @@ type iDescribeProcessTasksRequest interface {
 	GetEntityUuid() *string
 	SetEventUuid(v string) *DescribeProcessTasksRequest
 	GetEventUuid() *string
+	SetExecuteUuid(v string) *DescribeProcessTasksRequest
+	GetExecuteUuid() *string
 	SetOrderField(v string) *DescribeProcessTasksRequest
 	GetOrderField() *string
 	SetPageNumber(v int64) *DescribeProcessTasksRequest
@@ -39,6 +43,8 @@ type iDescribeProcessTasksRequest interface {
 	GetProcessStrategyUuid() *string
 	SetReqUuid(v string) *DescribeProcessTasksRequest
 	GetReqUuid() *string
+	SetResponseRuleId(v string) *DescribeProcessTasksRequest
+	GetResponseRuleId() *string
 	SetSceneCode(v string) *DescribeProcessTasksRequest
 	GetSceneCode() *string
 	SetScope(v string) *DescribeProcessTasksRequest
@@ -56,35 +62,36 @@ type iDescribeProcessTasksRequest interface {
 }
 
 type DescribeProcessTasksRequest struct {
-	// The sort order. Valid values:
+	AlertId *string `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	// The sort direction. Valid values:
 	//
-	// 	- **desc*	- (default).
+	// - **desc**: Descending (default).
 	//
-	// 	- **asc**.
+	// - **asc**: Ascending.
 	//
 	// example:
 	//
 	// desc
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The name of the handling entity.
+	// The name of the entity to be disposed.
 	//
 	// example:
 	//
 	// 127.0.0.1
 	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	// The type of the handling entity. Valid values:
+	// The type of the entity to be disposed. Valid values:
 	//
-	// 	- **ip**.
+	// - **ip**: IP address entity.
 	//
-	// 	- **file**.
+	// - **file**: File entity.
 	//
-	// 	- **process**.
+	// - **process**: Process entity.
 	//
 	// example:
 	//
 	// ip
 	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	// The UUID of the handling entity.
+	// The UUID of the entity.
 	//
 	// example:
 	//
@@ -95,153 +102,160 @@ type DescribeProcessTasksRequest struct {
 	// example:
 	//
 	// c1020ce1-d6a5-11e8-8298-00163e10****
-	EventUuid *string `json:"EventUuid,omitempty" xml:"EventUuid,omitempty"`
-	// The field that you use to sort the result.
+	EventUuid   *string `json:"EventUuid,omitempty" xml:"EventUuid,omitempty"`
+	ExecuteUuid *string `json:"ExecuteUuid,omitempty" xml:"ExecuteUuid,omitempty"`
+	// The field used to sort the results.
 	//
-	// >  You can obtain the field from the response result.
+	// > You can obtain the sort field from the response of this operation.
 	//
 	// example:
 	//
 	// gmtCreate
 	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
-	// The page number. Default value: 1. Pages start from page 1.
+	// The page number of the page to return. Default value: 1, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. If you do not specify the PageSize parameter, 10 entries are returned by default.
+	// The maximum number of entries to return on each page for paging queries. Default value: 20. If the PageSize parameter is left empty, 10 entries are returned by default.
 	//
-	// >  We recommend that you do not leave this parameter empty.
+	// > Do not leave PageSize empty.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The handling entity, handling scenario, or handling parameter that is used for fuzzy match.
+	// The fuzzy match content. This parameter queries the entity, disposal scene, and disposal parameter fields.
 	//
 	// example:
 	//
 	// 12.x.x.x
 	ParamContent *string `json:"ParamContent,omitempty" xml:"ParamContent,omitempty"`
-	// The end of the time range for a handling task. The value is a 13-digit timestamp.
+	// The end time of the query range for the disposal time. Format: 13-digit timestamp.
 	//
 	// example:
 	//
 	// 1700031183572
 	ProcessActionEnd *int64 `json:"ProcessActionEnd,omitempty" xml:"ProcessActionEnd,omitempty"`
-	// The beginning of the time range for a handling task. The value is a 13-digit timestamp.
+	// The start time of the query range for the disposal time. Format: 13-digit timestamp.
 	//
 	// example:
 	//
 	// 1700031183572
 	ProcessActionStart *int64 `json:"ProcessActionStart,omitempty" xml:"ProcessActionStart,omitempty"`
-	// The end of the time range for an unblocking task. The value is a 13-digit timestamp.
+	// The end time of the query range for the unblocking time. Format: 13-digit timestamp.
 	//
 	// example:
 	//
 	// 1700031183572
 	ProcessRemoveEnd *int64 `json:"ProcessRemoveEnd,omitempty" xml:"ProcessRemoveEnd,omitempty"`
-	// The beginning of the time range for an unblocking task. The value is a 13-digit timestamp.
+	// The start time of the query range for the unblocking time. Format: 13-digit timestamp.
 	//
 	// example:
 	//
 	// 1700031183572
 	ProcessRemoveStart *int64 `json:"ProcessRemoveStart,omitempty" xml:"ProcessRemoveStart,omitempty"`
-	// The UUID of the handling policy.
+	// The UUID of the disposal strategy.
 	//
-	// >  You can call the [ListDisposeStrategy](https://help.aliyun.com/document_detail/2584440.html) operation to query the UUID of the handling policy.
+	// >You can call the [ListDisposeStrategy](https://help.aliyun.com/document_detail/2584440.html) operation to obtain this parameter.
 	//
 	// example:
 	//
-	// 92af3c79-1754-4646-9366-9ddbd1e45536_xxxx
+	// 92af3c79-1754-4646-9366-9ddbd1e45536_****
 	ProcessStrategyUuid *string `json:"ProcessStrategyUuid,omitempty" xml:"ProcessStrategyUuid,omitempty"`
-	ReqUuid             *string `json:"ReqUuid,omitempty" xml:"ReqUuid,omitempty"`
-	// The scenario code of the handling task.
+	// The trigger ID of the playbook.
 	//
-	// >  You can call the [DescribeEnumItems](~~DescribeEnumItems~~) operation to query the scenario code of the handling task. This parameter is available when you set **EnumType*	- to **process**.
+	// example:
+	//
+	// b73d0b08-f1bd-4e8f-967a-8e2982c9****
+	ReqUuid        *string `json:"ReqUuid,omitempty" xml:"ReqUuid,omitempty"`
+	ResponseRuleId *string `json:"ResponseRuleId,omitempty" xml:"ResponseRuleId,omitempty"`
+	// The scene code of the disposal task.
+	//
+	// >You can call the [DescribeEnumItems](~~DescribeEnumItems~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// event_xxx_whole_process
 	SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
-	// The ID of the Alibaba Cloud account that is specified in the handling task.
+	// The Alibaba Cloud account ID for the disposal.
 	//
 	// example:
 	//
 	// 125xxxxx9870
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The triggering source of the handling task. The value is a string array. Valid values:
+	// The trigger source of the disposal task, in array string format. Valid values:
 	//
-	// 	- **system**: triggered when you manually handle an event.
+	// - **system**: Triggered by manual event disposal.
 	//
-	// 	- **custom**: triggered by an event based on an automatic response rule.
+	// - **custom**: Triggered by an automatic response rule based on an event.
 	//
-	// 	- **custom_alert**: triggered by an alert based on an automatic response rule.
+	// - **custom_alert**: Triggered by an automatic response rule based on an alert.
 	//
-	// 	- **soar-manual**: triggered when you use SOAR to manually run a playbook.
+	// - **soar-manual**: Triggered by manually invoking a SOAR playbook.
 	//
-	// 	- **soar-mdr**: triggered by Managed Security Service.
+	// - **soar-mdr**: Triggered by the Managed Security Service.
 	//
 	// example:
 	//
 	// ["system"]
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The unique identifier of the handling task.
+	// The unique identifier of the disposal task.
 	//
-	// >  This parameter is used to query a specific task. You can obtain the value from the response result.
+	// > This parameter is used to query a specific task. You can obtain the value from the response of this operation.
 	//
 	// example:
 	//
 	// 150xxxxxxxxx95066
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The status of the handling task. The value is a string. Valid values:
+	// The status list of the disposal task, in data string format. Valid values:
 	//
-	// 	- **11**: being handled.
+	// - **11**: Disposing.
 	//
-	// 	- **21**: being blocked.
+	// - **21**: Blocking.
 	//
-	// 	- **22**: being quarantined.
+	// - **22**: Isolating.
 	//
-	// 	- **23**: completed.
+	// - **23**: Ended.
 	//
-	// 	- **24**: added to the whitelist.
+	// - **24**: Whitelisted.
 	//
-	// 	- **20**: successful.
+	// - **20**: Succeeded.
 	//
-	// 	- **90**: failed.
+	// - **90**: Failed.
 	//
-	// 	- **91**: unblocking failed.
+	// - **91**: Unblocking failed.
 	//
-	// 	- **92**: restoring quarantined files failed
+	// - **92**: Unisolation failed.
 	//
 	// example:
 	//
 	// ["11","21"]
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The triggering source of the handling task. Valid values:
+	// The trigger source of the disposal task. Valid values:
 	//
-	// 	- **system**: triggered when you manually handle an event.
+	// - **system**: Triggered by manual event disposal.
 	//
-	// 	- **custom**: triggered by an event based on an automatic response rule.
+	// - **custom**: Triggered by an automatic response rule based on an event.
 	//
-	// 	- **custom_alert**: triggered by an alert based on an automatic response rule.
+	// - **custom_alert**: Triggered by an automatic response rule based on an alert.
 	//
-	// 	- **soar-manual**: triggered when you use SOAR to manually run a playbook.
+	// - **soar-manual**: Triggered by manually invoking a SOAR playbook.
 	//
-	// 	- **soar-mdr**: triggered by Managed Security Service.
+	// - **soar-mdr**: Triggered by the Managed Security Service.
 	//
 	// example:
 	//
 	// system
 	TriggerSource *string `json:"TriggerSource,omitempty" xml:"TriggerSource,omitempty"`
-	// The cloud service that is associated with the handling task. The value is a string. Valid values:
+	// The cloud product associated with the disposal task, in data string format. Valid values:
 	//
-	// 	- **WAF**: Web Application Firewall (WAF).
+	// - **WAF**: Web Application Firewall.
 	//
-	// 	- **CFW**: Cloud Firewall.
+	// - **CFW**: Cloud Firewall.
 	//
-	// 	- **Aegis**: Security Center.
+	// - **Aegis**: Security Center.
 	//
 	// example:
 	//
@@ -255,6 +269,10 @@ func (s DescribeProcessTasksRequest) String() string {
 
 func (s DescribeProcessTasksRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeProcessTasksRequest) GetAlertId() *string {
+	return s.AlertId
 }
 
 func (s *DescribeProcessTasksRequest) GetDirection() *string {
@@ -275,6 +293,10 @@ func (s *DescribeProcessTasksRequest) GetEntityUuid() *string {
 
 func (s *DescribeProcessTasksRequest) GetEventUuid() *string {
 	return s.EventUuid
+}
+
+func (s *DescribeProcessTasksRequest) GetExecuteUuid() *string {
+	return s.ExecuteUuid
 }
 
 func (s *DescribeProcessTasksRequest) GetOrderField() *string {
@@ -317,6 +339,10 @@ func (s *DescribeProcessTasksRequest) GetReqUuid() *string {
 	return s.ReqUuid
 }
 
+func (s *DescribeProcessTasksRequest) GetResponseRuleId() *string {
+	return s.ResponseRuleId
+}
+
 func (s *DescribeProcessTasksRequest) GetSceneCode() *string {
 	return s.SceneCode
 }
@@ -345,6 +371,11 @@ func (s *DescribeProcessTasksRequest) GetYunCode() *string {
 	return s.YunCode
 }
 
+func (s *DescribeProcessTasksRequest) SetAlertId(v string) *DescribeProcessTasksRequest {
+	s.AlertId = &v
+	return s
+}
+
 func (s *DescribeProcessTasksRequest) SetDirection(v string) *DescribeProcessTasksRequest {
 	s.Direction = &v
 	return s
@@ -367,6 +398,11 @@ func (s *DescribeProcessTasksRequest) SetEntityUuid(v string) *DescribeProcessTa
 
 func (s *DescribeProcessTasksRequest) SetEventUuid(v string) *DescribeProcessTasksRequest {
 	s.EventUuid = &v
+	return s
+}
+
+func (s *DescribeProcessTasksRequest) SetExecuteUuid(v string) *DescribeProcessTasksRequest {
+	s.ExecuteUuid = &v
 	return s
 }
 
@@ -417,6 +453,11 @@ func (s *DescribeProcessTasksRequest) SetProcessStrategyUuid(v string) *Describe
 
 func (s *DescribeProcessTasksRequest) SetReqUuid(v string) *DescribeProcessTasksRequest {
 	s.ReqUuid = &v
+	return s
+}
+
+func (s *DescribeProcessTasksRequest) SetResponseRuleId(v string) *DescribeProcessTasksRequest {
+	s.ResponseRuleId = &v
 	return s
 }
 

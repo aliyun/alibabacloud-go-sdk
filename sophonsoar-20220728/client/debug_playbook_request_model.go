@@ -20,19 +20,19 @@ type iDebugPlaybookRequest interface {
 }
 
 type DebugPlaybookRequest struct {
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The playbook UUID.
+	// The UUID of the playbook.
 	//
-	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the playbook UUID.
+	// > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DebugPlaybookRequest struct {
 	//
 	// f916b93e-e814-459f-9662-xxxxx
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	// The input parameters that you use to debug the playbook. You can define the parameters based on your business requirements.
+	// The user-defined input parameters for debugging the playbook.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DebugPlaybookRequest struct {
 	Record *string `json:"Record,omitempty" xml:"Record,omitempty"`
 	// The XML configuration of the playbook.
 	//
-	// >  You can call the [DescribePlaybook](~~DescribePlaybook~~) operation to query the XML configuration of the playbook.
+	// > Call the [DescribePlaybook](~~DescribePlaybook~~) operation to obtain this configuration.
 	//
 	// This parameter is required.
 	//

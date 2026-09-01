@@ -38,23 +38,23 @@ type iDescribePlaybooksRequest interface {
 }
 
 type DescribePlaybooksRequest struct {
-	// Activation status of the playbook. Values:
+	// The status of the playbook. Valid values:
 	//
-	// - **1**: Indicates the playbook is activated.
+	// - **1**: The playbook is enabled.
 	//
-	// - **0**: Indicates the playbook is not activated.
+	// - **0**: The playbook is disabled.
 	//
 	// example:
 	//
 	// 1
 	Active *int32 `json:"Active,omitempty" xml:"Active,omitempty"`
-	// End time for the query, in 13-digit timestamp format.
+	// The end of the time range to query. This value is a 13-digit timestamp.
 	//
 	// example:
 	//
 	// 1683858064361
 	EndMillis *int64 `json:"EndMillis,omitempty" xml:"EndMillis,omitempty"`
-	// Specifies the language type for the request and response, default is **zh**. Values:
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese.
 	//
@@ -70,59 +70,59 @@ type DescribePlaybooksRequest struct {
 	//
 	// demo_playbook
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sorting logic, with a default value of **desc**. Values:
+	// The sort order. Default value: **desc**. Valid values:
 	//
-	// - **desc**: Descending order.
+	// - **desc**: descending.
 	//
-	// - **asc**: Ascending order.
+	// - **asc**: ascending.
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// Type of the playbook. Values:
+	// The type of the playbook. Valid values:
 	//
-	// - **preset**: Predefined playbook.
+	// - **preset**: predefined playbook.
 	//
-	// - **user**: Custom playbook.
+	// - **user**: custom playbook.
 	//
 	// example:
 	//
 	// user
 	OwnType *string `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
-	// Sets the page number from which to start displaying the query results. The default value is 1, indicating the first page.
+	// The page number of the page to return. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Specifies the maximum number of items to display per page in a paginated query. The default number of items per page is 20. If the PageSize parameter is empty, it will return 10 items by default.
+	// The number of entries to return on each page. Default value: 20. If you leave this parameter empty, 10 entries are returned by default.
 	//
-	// > It is recommended that the PageSize value is not empty.
+	// > Specify a value for this parameter.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The trigger method for the playbook, with a default value of **query all**. Values:
+	// The trigger type of the playbook. If you do not specify this parameter, playbooks of all trigger types are queried. Valid values:
 	//
-	// - **template-incident**: Security incident.
+	// - **template-incident**: security event.
 	//
 	// - **template-ip**: IP entity.
 	//
-	// - **template-file**: File entity.
+	// - **template-file**: file entity.
 	//
-	// - **template-process**: Process entity.
+	// - **template-process**: process entity.
 	//
-	// - **template-alert**: Security alert.
+	// - **template-alert**: security alert.
 	//
-	// - **template-domain**: Domain entity.
+	// - **template-domain**: domain name entity.
 	//
-	// - **template-container**: Container entity.
+	// - **template-container**: container entity.
 	//
-	// - **template-host**: Host entity.
+	// - **template-host**: host entity.
 	//
-	// - **template-custom**: Custom.
+	// - **template-custom**: custom.
 	//
 	// example:
 	//
@@ -130,35 +130,29 @@ type DescribePlaybooksRequest struct {
 	ParamTypes *string `json:"ParamTypes,omitempty" xml:"ParamTypes,omitempty"`
 	// The UUID of the playbook.
 	//
-	// > You can use the UUID to query specific playbook information.
-	//
-	// > - Call the [CreatePlaybook](~~CreatePlaybook~~) API to obtain this parameter.
+	// > Call the [CreatePlaybook](~~CreatePlaybook~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 8baa6cff-319e-4ede-97bc-1xxxxxx
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	// UUID List of the playbook.
-	//
-	// Note You can use the UUID list to query specific playbook information.
-	//
-	// Call the DescribePlaybooks API to obtain this parameter.
+	// A comma-separated list of playbook UUIDs. You can specify up to 100 UUIDs.
 	//
 	// example:
 	//
-	// 8baa6cff-319e-4ede-97bc-1xxxxxx,7745e6cff-319e-4ede-97bc-1xxxxxx
+	// 8baa6cff-319e-4ede-97bc-1xxxxxx,8rrt6cff-319e-4ede-97bc-1xxxxxx
 	PlaybookUuids *string `json:"PlaybookUuids,omitempty" xml:"PlaybookUuids,omitempty"`
-	// The sorting basis, with a default value of **1**. Values:
+	// The field to sort by. Default value: **1**. Valid values:
 	//
-	// - **1**: Last modified time.
+	// - **1**: last modification time.
 	//
-	// - **2**: Most recent execution time.
+	// - **2**: last running time.
 	//
 	// example:
 	//
 	// 1
 	Sort *int32 `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	// Start time for the query, in 13-digit timestamp format.
+	// The start of the time range to query. This value is a 13-digit timestamp.
 	//
 	// example:
 	//

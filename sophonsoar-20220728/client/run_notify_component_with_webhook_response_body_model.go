@@ -26,7 +26,7 @@ type RunNotifyComponentWithWebhookResponseBody struct {
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The pagination information.
 	Page *RunNotifyComponentWithWebhookResponseBodyPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *RunNotifyComponentWithWebhookResponseBody) Validate() error {
 }
 
 type RunNotifyComponentWithWebhookResponseBodyPage struct {
-	// The page number.
+	// The page number of the returned page.
 	//
 	// example:
 	//
@@ -91,7 +91,7 @@ type RunNotifyComponentWithWebhookResponseBodyPage struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries returned. This parameter is available only for paged queries.
 	//
 	// example:
 	//

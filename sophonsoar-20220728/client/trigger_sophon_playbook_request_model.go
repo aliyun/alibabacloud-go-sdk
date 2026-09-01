@@ -9,6 +9,8 @@ type iTriggerSophonPlaybookRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *TriggerSophonPlaybookRequest
+	GetClientToken() *string
 	SetCommandName(v string) *TriggerSophonPlaybookRequest
 	GetCommandName() *string
 	SetInputParams(v string) *TriggerSophonPlaybookRequest
@@ -22,15 +24,21 @@ type iTriggerSophonPlaybookRequest interface {
 }
 
 type TriggerSophonPlaybookRequest struct {
+	// The idempotency token.
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426614174000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The name of the command that you want to trigger.
 	//
-	// >  You can call the [DescribeSophonCommands](~~DescribeSophonCommands~~) operation to query the command name.
+	// >You can call the [DescribeSophonCommands](~~DescribeSophonCommands~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// waf_process_command
 	CommandName *string `json:"CommandName,omitempty" xml:"CommandName,omitempty"`
-	// The input parameters of the command or playbook that you want to trigger.
+	// The input parameters for triggering the command or playbook.
 	//
 	// This parameter is required.
 	//
@@ -44,17 +52,17 @@ type TriggerSophonPlaybookRequest struct {
 	//
 	// }
 	InputParams *string `json:"InputParams,omitempty" xml:"InputParams,omitempty"`
-	// The custom ID. If you do not specify this parameter when the playbook is triggered, a random ID is generated for fault locating and troubleshooting.
+	// The custom ID of the task. If you do not specify this parameter when triggering a playbook, a random ID is generated. This ID is used for troubleshooting.
 	//
 	// example:
 	//
 	// f916b93e-e814-459f-9662-xxxxxxxxxx
 	SophonTaskId *string `json:"SophonTaskId,omitempty" xml:"SophonTaskId,omitempty"`
-	// The task type. Valid values:
+	// The trigger type. Valid values:
 	//
-	// 	- **command**
+	// - **command**: Triggers a command task.
 	//
-	// 	- **playbook**
+	// - **playbook**: Triggers a playbook task.
 	//
 	// example:
 	//
@@ -62,7 +70,7 @@ type TriggerSophonPlaybookRequest struct {
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
 	// The UUID of the playbook.
 	//
-	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~)operation to query the playbook UUID.
+	// >You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
 	//
 	// example:
 	//
@@ -76,6 +84,10 @@ func (s TriggerSophonPlaybookRequest) String() string {
 
 func (s TriggerSophonPlaybookRequest) GoString() string {
 	return s.String()
+}
+
+func (s *TriggerSophonPlaybookRequest) GetClientToken() *string {
+	return s.ClientToken
 }
 
 func (s *TriggerSophonPlaybookRequest) GetCommandName() *string {
@@ -96,6 +108,11 @@ func (s *TriggerSophonPlaybookRequest) GetTriggerType() *string {
 
 func (s *TriggerSophonPlaybookRequest) GetUuid() *string {
 	return s.Uuid
+}
+
+func (s *TriggerSophonPlaybookRequest) SetClientToken(v string) *TriggerSophonPlaybookRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *TriggerSophonPlaybookRequest) SetCommandName(v string) *TriggerSophonPlaybookRequest {

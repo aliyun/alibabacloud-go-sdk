@@ -14,11 +14,11 @@ type iQueryTreeDataRequest interface {
 }
 
 type QueryTreeDataRequest struct {
-	// The language of the content within the response. Valid values:
+	// The language of the response. Valid values:
 	//
-	// 	- **zh**: Chinese (default)
+	// - **zh*	- (default): Chinese
 	//
-	// 	- **en**: English
+	// - **en**: English
 	//
 	// example:
 	//

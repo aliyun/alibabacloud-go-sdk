@@ -16,13 +16,13 @@ type iDebugPlaybookResponseBody interface {
 }
 
 type DebugPlaybookResponseBody struct {
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique ID for each request. Use this ID to troubleshoot and locate issues.
 	//
 	// example:
 	//
 	// 75E56B2C-C8FA-5A2F-AA08-8745E2AC33EF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The UUID of the debugging task. You can use the UUID to query the result and other details of the debugging task.
+	// The run UUID of the debugging task. Use this UUID to query information, such as the task result.
 	//
 	// example:
 	//

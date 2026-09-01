@@ -20,9 +20,9 @@ type iDescribePlaybookReleasesResponseBody interface {
 type DescribePlaybookReleasesResponseBody struct {
 	// The pagination information.
 	Page *DescribePlaybookReleasesResponseBodyPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
-	// The information about the playbook version.
+	// A list of playbook versions.
 	Records []*DescribePlaybookReleasesResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -84,13 +84,13 @@ func (s *DescribePlaybookReleasesResponseBody) Validate() error {
 }
 
 type DescribePlaybookReleasesResponseBodyPage struct {
-	// The page number.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -144,25 +144,25 @@ func (s *DescribePlaybookReleasesResponseBodyPage) Validate() error {
 }
 
 type DescribePlaybookReleasesResponseBodyRecords struct {
-	// The ID of the Alibaba Cloud account that is used to publish the version.
+	// The ID of the Alibaba Cloud account that published the version.
 	//
 	// example:
 	//
 	// 145xxxx985
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// The description of the layer version.
+	// The description of the version.
 	//
 	// example:
 	//
 	// This is a new version
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the version was created. The value is a 13-digit timestamp.
+	// The time when the version was created. This is a 13-digit UNIX timestamp.
 	//
 	// example:
 	//
 	// 1655277397000
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the version was modified. The value is a 13-digit timestamp.
+	// The time when the version was last modified. This is a 13-digit UNIX timestamp.
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type DescribePlaybookReleasesResponseBodyRecords struct {
 	//
 	// 80xxx
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The MD5 value configured for the published version of the playbook.
+	// The MD5 hash of the playbook configuration for the published version.
 	//
 	// example:
 	//

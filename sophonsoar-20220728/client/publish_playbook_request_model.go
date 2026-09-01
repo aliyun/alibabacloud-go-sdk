@@ -16,15 +16,15 @@ type iPublishPlaybookRequest interface {
 }
 
 type PublishPlaybookRequest struct {
-	// The description of the released version.
+	// The description of the published version.
 	//
 	// example:
 	//
 	// This is a waf processing playbook
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The playbook UUID.
+	// The UUID of the playbook.
 	//
-	// >  You can call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to query the playbook UUID.
+	// > Call the [DescribePlaybooks](~~DescribePlaybooks~~) operation to obtain this parameter.
 	//
 	// This parameter is required.
 	//
