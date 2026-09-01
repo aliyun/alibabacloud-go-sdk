@@ -9,6 +9,8 @@ type iCreateSasTrialShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *CreateSasTrialShrinkRequest
+	GetClientToken() *string
 	SetFromEcs(v bool) *CreateSasTrialShrinkRequest
 	GetFromEcs() *bool
 	SetLang(v string) *CreateSasTrialShrinkRequest
@@ -22,49 +24,52 @@ type iCreateSasTrialShrinkRequest interface {
 }
 
 type CreateSasTrialShrinkRequest struct {
-	// Specifies whether the request is redirected from the Elastic Compute Service (ECS) console. Valid values:
+	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether the request is from the ECS console. Valid values:
 	//
-	// 	- **true**
+	// - **true**: yes.
 	//
-	// 	- **false**
+	// - **false**: no.
 	//
 	// example:
 	//
 	// true
 	FromEcs *bool `json:"FromEcs,omitempty" xml:"FromEcs,omitempty"`
-	// The language of the content within the request and response. Valid values:
+	// The language of the request and response. Valid values:
 	//
-	// 	- **zh**: Chinese
+	// - **zh**: Chinese.
 	//
-	// 	- **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The reason why you apply for the trial. You must specify the reason for the second trial.
+	// The reason for applying for a trial. This parameter is required for a second trial.
 	RequestFormShrink *string `json:"RequestForm,omitempty" xml:"RequestForm,omitempty"`
 	// The trial type. Valid values:
 	//
-	// 	- **0**: trial prohibited
+	// - **0**: trial not allowed.
 	//
-	// 	- **1**: first trial
+	// - **1**: first trial.
 	//
-	// 	- **2**: second trial
+	// - **2**: second trial.
 	//
-	// >  You can call the [GetCanTrySas](https://help.aliyun.com/document_detail/2623574.html) operation to obtain the trial type. You can start a trial only if this parameter is not set to 0.
+	//
+	// > Call the [GetCanTrySas](https://help.aliyun.com/document_detail/2623574.html) operation to obtain this parameter. A trial can be started only when the value is not 0.
 	//
 	// example:
 	//
 	// 1
 	TryType *int32 `json:"TryType,omitempty" xml:"TryType,omitempty"`
-	// The trial edition. Valid values:
+	// The trial version. Valid values:
 	//
-	// 	- **3**: Enterprise
+	// - **3**: Enterprise Edition.
 	//
-	// 	- **7**: Ultimate
+	// - **7**: Ultimate Edition.
 	//
-	// >  You can call the [GetCanTrySas](https://help.aliyun.com/document_detail/2623574.html) operation to obtain the trial edition.
+	// >Call the [GetCanTrySas](https://help.aliyun.com/document_detail/2623574.html) operation to obtain this parameter.
 	//
 	// example:
 	//
@@ -78,6 +83,10 @@ func (s CreateSasTrialShrinkRequest) String() string {
 
 func (s CreateSasTrialShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateSasTrialShrinkRequest) GetClientToken() *string {
+	return s.ClientToken
 }
 
 func (s *CreateSasTrialShrinkRequest) GetFromEcs() *bool {
@@ -98,6 +107,11 @@ func (s *CreateSasTrialShrinkRequest) GetTryType() *int32 {
 
 func (s *CreateSasTrialShrinkRequest) GetTryVersion() *int32 {
 	return s.TryVersion
+}
+
+func (s *CreateSasTrialShrinkRequest) SetClientToken(v string) *CreateSasTrialShrinkRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *CreateSasTrialShrinkRequest) SetFromEcs(v bool) *CreateSasTrialShrinkRequest {

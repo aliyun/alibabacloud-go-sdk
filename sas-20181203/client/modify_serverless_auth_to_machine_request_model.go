@@ -23,6 +23,8 @@ type iModifyServerlessAuthToMachineRequest interface {
 	GetBindAssetType() *string
 	SetBindUuidList(v []*string) *ModifyServerlessAuthToMachineRequest
 	GetBindUuidList() []*string
+	SetClientToken(v string) *ModifyServerlessAuthToMachineRequest
+	GetClientToken() *string
 	SetCriteria(v string) *ModifyServerlessAuthToMachineRequest
 	GetCriteria() *string
 	SetLogicalExp(v string) *ModifyServerlessAuthToMachineRequest
@@ -58,9 +60,9 @@ type ModifyServerlessAuthToMachineRequest struct {
 	AuthItem *string `json:"AuthItem,omitempty" xml:"AuthItem,omitempty"`
 	// Specifies whether to enable automatic binding. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: Disable automatic binding.
 	//
-	// - **1**: Enabled.
+	// - **1**: Enable automatic binding.
 	//
 	// example:
 	//
@@ -78,13 +80,13 @@ type ModifyServerlessAuthToMachineRequest struct {
 	BindAll *bool `json:"BindAll,omitempty" xml:"BindAll,omitempty"`
 	// The list of application IDs to bind.
 	//
-	// > Retrieve the IDs by calling the [ListMachineApps](~~ListMachineApps~~) operation.
+	// > Obtain the IDs by calling the [ListMachineApps](~~ListMachineApps~~) operation.
 	BindAppList []*string `json:"BindAppList,omitempty" xml:"BindAppList,omitempty" type:"Repeated"`
 	// The Asset Type for the operation. Valid values:
 	//
-	// - **INSTANCE**: instance.
+	// - **INSTANCE**: Instance.
 	//
-	// - **APP**: application.
+	// - **APP**: Application.
 	//
 	// example:
 	//
@@ -92,9 +94,11 @@ type ModifyServerlessAuthToMachineRequest struct {
 	BindAssetType *string `json:"BindAssetType,omitempty" xml:"BindAssetType,omitempty"`
 	// The list of asset UUIDs to bind.
 	BindUuidList []*string `json:"BindUuidList,omitempty" xml:"BindUuidList,omitempty" type:"Repeated"`
-	// The search conditions for assets. This parameter is in JSON format. Pay attention to letter case when specifying this parameter.
+	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The search conditions for assets. This parameter is in JSON format. Pay attention to letter case when you specify this parameter.
 	//
-	// > You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query supported search conditions.
+	// > You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
 	//
 	// example:
 	//
@@ -116,14 +120,14 @@ type ModifyServerlessAuthToMachineRequest struct {
 	//
 	// level2
 	NtmVersion *string `json:"NtmVersion,omitempty" xml:"NtmVersion,omitempty"`
-	// Specifies whether to perform a pre-binding operation. Valid values:
+	// Specifies whether to enable pre-binding. Valid values:
 	//
 	// - **0**: No.
 	//
 	// - **1**: Yes.
 	//
 	//
-	// > After pre-binding is enabled, the corresponding edition authorization quota is automatically bound to the specified servers after the purchase is completed.
+	// > After pre-binding is enabled, the corresponding authorization quota is automatically bound to the specified servers after the purchase is completed.
 	//
 	// example:
 	//
@@ -143,7 +147,7 @@ type ModifyServerlessAuthToMachineRequest struct {
 	ResourceDirectoryUid *int64 `json:"ResourceDirectoryUid,omitempty" xml:"ResourceDirectoryUid,omitempty"`
 	// The list of application IDs to unbind.
 	//
-	// > Retrieve the IDs by calling the [ListMachineApps](~~ListMachineApps~~) operation.
+	// > Obtain the IDs by calling the [ListMachineApps](~~ListMachineApps~~) operation.
 	UnBindAppList []*string `json:"UnBindAppList,omitempty" xml:"UnBindAppList,omitempty" type:"Repeated"`
 	// The list of asset UUIDs to unbind.
 	UnBindUuidList []*string `json:"UnBindUuidList,omitempty" xml:"UnBindUuidList,omitempty" type:"Repeated"`
@@ -183,6 +187,10 @@ func (s *ModifyServerlessAuthToMachineRequest) GetBindAssetType() *string {
 
 func (s *ModifyServerlessAuthToMachineRequest) GetBindUuidList() []*string {
 	return s.BindUuidList
+}
+
+func (s *ModifyServerlessAuthToMachineRequest) GetClientToken() *string {
+	return s.ClientToken
 }
 
 func (s *ModifyServerlessAuthToMachineRequest) GetCriteria() *string {
@@ -249,6 +257,11 @@ func (s *ModifyServerlessAuthToMachineRequest) SetBindAssetType(v string) *Modif
 
 func (s *ModifyServerlessAuthToMachineRequest) SetBindUuidList(v []*string) *ModifyServerlessAuthToMachineRequest {
 	s.BindUuidList = v
+	return s
+}
+
+func (s *ModifyServerlessAuthToMachineRequest) SetClientToken(v string) *ModifyServerlessAuthToMachineRequest {
+	s.ClientToken = &v
 	return s
 }
 

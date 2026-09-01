@@ -23,6 +23,8 @@ type iDescribeGroupedInstancesRequest interface {
 	GetNoPage() *bool
 	SetPageSize(v int32) *DescribeGroupedInstancesRequest
 	GetPageSize() *int32
+	SetResourceDirectoryAccountId(v int64) *DescribeGroupedInstancesRequest
+	GetResourceDirectoryAccountId() *int64
 	SetSaleVersionCheckCode(v string) *DescribeGroupedInstancesRequest
 	GetSaleVersionCheckCode() *string
 	SetVendor(v int32) *DescribeGroupedInstancesRequest
@@ -89,7 +91,8 @@ type DescribeGroupedInstancesRequest struct {
 	// example:
 	//
 	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize                   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The edition filter for querying assets. Valid values:
 	//
 	// - **sas_gte_advanced**: Advanced edition or higher
@@ -176,6 +179,10 @@ func (s *DescribeGroupedInstancesRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *DescribeGroupedInstancesRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeGroupedInstancesRequest) GetSaleVersionCheckCode() *string {
 	return s.SaleVersionCheckCode
 }
@@ -220,6 +227,11 @@ func (s *DescribeGroupedInstancesRequest) SetNoPage(v bool) *DescribeGroupedInst
 
 func (s *DescribeGroupedInstancesRequest) SetPageSize(v int32) *DescribeGroupedInstancesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeGroupedInstancesRequest) SetResourceDirectoryAccountId(v int64) *DescribeGroupedInstancesRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

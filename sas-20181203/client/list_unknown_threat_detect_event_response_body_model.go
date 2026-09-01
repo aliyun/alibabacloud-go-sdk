@@ -109,8 +109,9 @@ type ListUnknownThreatDetectEventResponseBodyData struct {
 	// example:
 	//
 	// 1694576692000
-	FirstTime  *int64  `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
-	HandleType *string `json:"HandleType,omitempty" xml:"HandleType,omitempty"`
+	FirstTime    *int64  `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	HandleRemark *string `json:"HandleRemark,omitempty" xml:"HandleRemark,omitempty"`
+	HandleType   *string `json:"HandleType,omitempty" xml:"HandleType,omitempty"`
 	// The unique identifier of the file.
 	//
 	// example:
@@ -241,6 +242,10 @@ func (s *ListUnknownThreatDetectEventResponseBodyData) GetFirstTime() *int64 {
 	return s.FirstTime
 }
 
+func (s *ListUnknownThreatDetectEventResponseBodyData) GetHandleRemark() *string {
+	return s.HandleRemark
+}
+
 func (s *ListUnknownThreatDetectEventResponseBodyData) GetHandleType() *string {
 	return s.HandleType
 }
@@ -335,6 +340,11 @@ func (s *ListUnknownThreatDetectEventResponseBodyData) SetFirstTime(v int64) *Li
 	return s
 }
 
+func (s *ListUnknownThreatDetectEventResponseBodyData) SetHandleRemark(v string) *ListUnknownThreatDetectEventResponseBodyData {
+	s.HandleRemark = &v
+	return s
+}
+
 func (s *ListUnknownThreatDetectEventResponseBodyData) SetHandleType(v string) *ListUnknownThreatDetectEventResponseBodyData {
 	s.HandleType = &v
 	return s
@@ -420,19 +430,19 @@ func (s *ListUnknownThreatDetectEventResponseBodyData) Validate() error {
 }
 
 type ListUnknownThreatDetectEventResponseBodyPageInfo struct {
-	// The number of alerting events displayed on the current page in a paged query. This parameter is used for paging.
+	// The number of alerting events displayed on the current page in a paging query.
 	//
 	// example:
 	//
 	// 2
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The page number of the current page in a paged query. This parameter is used for paging.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries displayed on each page in a paged query. This parameter is used for paging.
+	// The maximum number of entries displayed on each page in a paging query.
 	//
 	// example:
 	//

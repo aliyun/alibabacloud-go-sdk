@@ -18,7 +18,7 @@ type iGetFileDetectResultRequest interface {
 }
 
 type GetFileDetectResultRequest struct {
-	// An array of up to 100 unique file identifiers.
+	// The list of file identifiers. A maximum of 100 elements can be specified.
 	//
 	// This parameter is required.
 	HashKeyList []*string `json:"HashKeyList,omitempty" xml:"HashKeyList,omitempty" type:"Repeated"`
@@ -30,9 +30,7 @@ type GetFileDetectResultRequest struct {
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The type of file to detect. Valid values:
 	//
-	// - **0**: malicious file detection
-	//
-	// - **6**: Skill compressed package detection
+	// -  **0**: malicious file detection
 	//
 	// This parameter is required.
 	//

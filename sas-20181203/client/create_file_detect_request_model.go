@@ -28,77 +28,61 @@ type iCreateFileDetectRequest interface {
 }
 
 type CreateFileDetectRequest struct {
-	// Specifies whether to decompress the archive for detection. Valid values:
+	// Specifies whether to identify and decompress compressed files. Valid values:
 	//
 	// - **true**: Yes.
 	//
 	// - **false**: No.
 	//
-	// > This parameter is not supported when `Type` is set to `6`.
-	//
 	// example:
 	//
 	// false
 	Decompress *bool `json:"Decompress,omitempty" xml:"Decompress,omitempty"`
-	// The maximum number of files that can be decompressed from an archive. The maximum value is 1000.
+	// The maximum number of files to decompress. Maximum value: 1000.
 	//
-	// This parameter is required if you set `Decompress` to `true`.
-	//
-	// > This parameter is not supported when `Type` is set to `6`.
+	// This parameter is required when Decompress is set to true.
 	//
 	// example:
 	//
 	// 100
 	DecompressMaxFileCount *int32 `json:"DecompressMaxFileCount,omitempty" xml:"DecompressMaxFileCount,omitempty"`
-	// The maximum number of decompression layers for nested archives. The maximum value is 5.
+	// The maximum number of decompression layers when compressed files are nested within a compressed package. Maximum value: 5.
 	//
-	// This parameter is required if you set `Decompress` to `true`.
-	//
-	// > This parameter is not supported when `Type` is set to `6`.
+	// This parameter is required when Decompress is set to true.
 	//
 	// example:
 	//
 	// 1
 	DecompressMaxLayer *int32 `json:"DecompressMaxLayer,omitempty" xml:"DecompressMaxLayer,omitempty"`
-	// The download link for the file. You can provide a public URL to trigger file detection without uploading the file.
-	//
-	// > Skill archives can be submitted only by providing a download link. Therefore, this parameter is required when `Type` is set to `6`.
+	// The download URL of the file. You can pass in a file download URL (public URL) to directly trigger file detection without uploading the file in advance.
 	//
 	// example:
 	//
 	// https://xxxxxxxx.oss-cn-hangzhou-1.aliyuncs.com/xxxxx/xxxxxxxxxxxxxx?Expires=1671448125&OSSAccessKeyId=xxx
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The unique identifier of the file.
-	//
-	// This parameter is required if `Type` is `0`. Its value must be the MD5 or SHA-256 hash of the file.
-	//
-	// If you set `Type` to `6`, you do not need to specify this parameter. The operation returns the file\\"s unique identifier in the response.
+	// The unique identifier of the file. This parameter is required and must be the MD5 or SHA-256 of the file.
 	//
 	// example:
 	//
 	// 0a212417e65c26ff133cfff28f6c****
 	HashKey *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
-	// The storage key of the file in an Object Storage Service (OSS) bucket.
+	// The storage key of the file in the OSS bucket.
 	//
-	// If you submit the file by using the `DownloadUrl` parameter, you can leave this parameter empty. To obtain the value of this parameter, call the [CreateFileDetectUploadUrl](~~CreateFileDetectUploadUrl~~) operation.
-	//
-	// > This parameter is not supported when `Type` is set to `6`.
+	// If you push the file for detection by using DownloadUrl, this parameter is optional. This parameter is obtained from the [CreateFileDetectUploadUrl](~~CreateFileDetectUploadUrl~~) operation.
 	//
 	// example:
 	//
 	// 1/2022/06/23/15/41/16559701077444693a0c6-33b2-4cc2-a99f-9f38b8b8****
 	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
-	// The IP address of the source.
+	// The IP address of the access source.
 	//
 	// example:
 	//
 	// 115.213.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The type of the file to detect. Valid values:
+	// The type of file to detect. Valid values:
 	//
-	// - **0**: Malicious file detection
-	//
-	// - **6**: Skill archive detection
+	// - **0**: malicious file detection
 	//
 	// This parameter is required.
 	//

@@ -13,6 +13,8 @@ type iAddCheckInstanceResultWhiteListRequest interface {
 	GetCheckGroupId() *string
 	SetCheckId(v int64) *AddCheckInstanceResultWhiteListRequest
 	GetCheckId() *int64
+	SetClientToken(v string) *AddCheckInstanceResultWhiteListRequest
+	GetClientToken() *string
 	SetInstanceIds(v []*string) *AddCheckInstanceResultWhiteListRequest
 	GetInstanceIds() []*string
 	SetInstanceList(v []*AddCheckInstanceResultWhiteListRequestInstanceList) *AddCheckInstanceResultWhiteListRequest
@@ -24,7 +26,7 @@ type iAddCheckInstanceResultWhiteListRequest interface {
 }
 
 type AddCheckInstanceResultWhiteListRequest struct {
-	// The ID of the group to which the check item belongs.
+	// The ID of the check group to which the check item belongs.
 	//
 	// example:
 	//
@@ -32,25 +34,27 @@ type AddCheckInstanceResultWhiteListRequest struct {
 	CheckGroupId *string `json:"CheckGroupId,omitempty" xml:"CheckGroupId,omitempty"`
 	// The ID of the check item.
 	//
-	// >  You can call the [ListCheckResult](~~ListCheckResult~~) operation to query the IDs of check items.
+	// > Call the [ListCheckResult](~~ListCheckResult~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 132
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The instance IDs of the assets.
+	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The collection of asset instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The asset instances.
+	// The collection of asset instance information.
 	InstanceList []*AddCheckInstanceResultWhiteListRequestInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
-	// The description. The value of this parameter can be up to 65,535 bytes in length.
+	// The remarks. Maximum length: 65535 bytes.
 	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The type of the rule. Default value: **WHITE**. Valid value:
+	// The rule type. Default value: **WHITE**. Valid values:
 	//
-	// 	- WHITE: adds check items to the whitelist.
+	// - WHITE: whitelist
 	//
 	// example:
 	//
@@ -72,6 +76,10 @@ func (s *AddCheckInstanceResultWhiteListRequest) GetCheckGroupId() *string {
 
 func (s *AddCheckInstanceResultWhiteListRequest) GetCheckId() *int64 {
 	return s.CheckId
+}
+
+func (s *AddCheckInstanceResultWhiteListRequest) GetClientToken() *string {
+	return s.ClientToken
 }
 
 func (s *AddCheckInstanceResultWhiteListRequest) GetInstanceIds() []*string {
@@ -97,6 +105,11 @@ func (s *AddCheckInstanceResultWhiteListRequest) SetCheckGroupId(v string) *AddC
 
 func (s *AddCheckInstanceResultWhiteListRequest) SetCheckId(v int64) *AddCheckInstanceResultWhiteListRequest {
 	s.CheckId = &v
+	return s
+}
+
+func (s *AddCheckInstanceResultWhiteListRequest) SetClientToken(v string) *AddCheckInstanceResultWhiteListRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -134,17 +147,17 @@ func (s *AddCheckInstanceResultWhiteListRequest) Validate() error {
 }
 
 type AddCheckInstanceResultWhiteListRequestInstanceList struct {
-	// The instance ID of the asset.
+	// The asset instance ID.
 	//
-	// >  You can call the [ListCheckInstanceResult](~~ListCheckInstanceResult~~) operation to query the instance IDs of assets.
+	// > Call the [ListCheckInstanceResult](~~ListCheckInstanceResult~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// i-wz9fdluqx20mp2x7****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the asset.
+	// The region where the asset resides.
 	//
-	// >  You can call the [ListCheckInstanceResult](~~ListCheckInstanceResult~~) operation to query the region ID of the asset.
+	// > Call the [ListCheckInstanceResult](~~ListCheckInstanceResult~~) operation to obtain this parameter.
 	//
 	// example:
 	//

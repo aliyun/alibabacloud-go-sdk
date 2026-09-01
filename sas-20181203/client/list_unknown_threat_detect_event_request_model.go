@@ -33,7 +33,7 @@ type iListUnknownThreatDetectEventRequest interface {
 
 type ListUnknownThreatDetectEventRequest struct {
 	AnalyzeResult *string `json:"AnalyzeResult,omitempty" xml:"AnalyzeResult,omitempty"`
-	// The page number of the current page in a paged query. This parameter is used for paging.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListUnknownThreatDetectEventRequest struct {
 	// 0a212417e65c26ff133cfff28f6c****
 	HashKey *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
 	Lang    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries to return on each page in a paged query. This parameter is used for paging.
+	// The maximum number of entries to return on each page in a paging query.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ListUnknownThreatDetectEventRequest struct {
 	//
 	// /test
 	ProcessPath *string `json:"ProcessPath,omitempty" xml:"ProcessPath,omitempty"`
-	// The filter condition. You can filter by instance name or IP address.
+	// The filter condition based on instance name or IP address.
 	//
 	// example:
 	//

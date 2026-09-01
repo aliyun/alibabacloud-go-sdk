@@ -16,9 +16,9 @@ type iAddUnknownThreatDetectProcessResponseBody interface {
 }
 
 type AddUnknownThreatDetectProcessResponseBody struct {
-	// A list of results for the added processes.
+	// The list of process IDs.
 	IdList []*AddUnknownThreatDetectProcessResponseBodyIdList `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ func (s *AddUnknownThreatDetectProcessResponseBody) Validate() error {
 }
 
 type AddUnknownThreatDetectProcessResponseBodyIdList struct {
-	// The ID generated for the added process.
+	// The process ID.
 	//
 	// example:
 	//

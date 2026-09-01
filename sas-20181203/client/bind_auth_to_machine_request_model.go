@@ -17,6 +17,8 @@ type iBindAuthToMachineRequest interface {
 	GetBind() []*string
 	SetBindAll(v bool) *BindAuthToMachineRequest
 	GetBindAll() *bool
+	SetClientToken(v string) *BindAuthToMachineRequest
+	GetClientToken() *string
 	SetCriteria(v string) *BindAuthToMachineRequest
 	GetCriteria() *string
 	SetIsPreBind(v int32) *BindAuthToMachineRequest
@@ -27,6 +29,8 @@ type iBindAuthToMachineRequest interface {
 	GetNtmVersion() *string
 	SetPreBindOrderId(v int64) *BindAuthToMachineRequest
 	GetPreBindOrderId() *int64
+	SetProductCode(v string) *BindAuthToMachineRequest
+	GetProductCode() *string
 	SetResourceDirectoryAccountId(v int64) *BindAuthToMachineRequest
 	GetResourceDirectoryAccountId() *int64
 	SetUnBind(v []*string) *BindAuthToMachineRequest
@@ -36,15 +40,15 @@ type iBindAuthToMachineRequest interface {
 type BindAuthToMachineRequest struct {
 	// The authorization version of the asset. Valid values:
 	//
-	// - **6**: Anti-virus Edition
+	// - **6**: Anti-virus Edition.
 	//
-	// - **5**: Advanced Edition
+	// - **5**: Premium Edition.
 	//
-	// - **3**: Enterprise Edition
+	// - **3**: Enterprise Edition.
 	//
-	// - **7**: Ultimate Edition
+	// - **7**: Ultimate Edition.
 	//
-	// - **10**: Value-added Service Edition.
+	// - **10**: Value-added service Edition.
 	//
 	// example:
 	//
@@ -52,15 +56,15 @@ type BindAuthToMachineRequest struct {
 	AuthVersion *int32 `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
 	// Specifies whether to enable automatic binding. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: Disable automatic binding.
 	//
-	// - **1**: Enabled.
+	// - **1**: Enable automatic binding.
 	//
 	// example:
 	//
 	// 1
 	AutoBind *int32 `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
-	// The UUIDs of the servers to bind.
+	// The collection of UUIDs to bind.
 	//
 	// > **Bind*	- and **UnBind*	- cannot both be empty.
 	Bind []*string `json:"Bind,omitempty" xml:"Bind,omitempty" type:"Repeated"`
@@ -74,7 +78,9 @@ type BindAuthToMachineRequest struct {
 	//
 	// true
 	BindAll *bool `json:"BindAll,omitempty" xml:"BindAll,omitempty"`
-	// The search conditions for assets. This parameter is in JSON format. Note that the parameter values are case-sensitive.
+	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The conditions for searching assets. This parameter is in JSON format. Pay attention to letter case when you specify this parameter.
 	//
 	// > You can search for assets by instance ID, instance name, VPC ID, region, or public IP address. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
 	//
@@ -97,23 +103,23 @@ type BindAuthToMachineRequest struct {
 	IsPreBind *int32 `json:"IsPreBind,omitempty" xml:"IsPreBind,omitempty"`
 	// The logical relationship among multiple search conditions. Default value: **OR**. Valid values:
 	//
-	// - **OR**: The search conditions are evaluated with a logical OR.
+	// - **OR**: The search conditions are evaluated using a logical OR.
 	//
-	// - **AND**: The search conditions are evaluated with a logical AND.
+	// - **AND**: The search conditions are evaluated using a logical AND.
 	//
 	// example:
 	//
 	// OR
 	LogicalExp *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
-	// The order version associated with the pre-binding. Valid values:
+	// The order version associated with the pre-binding operation. Valid values:
 	//
-	// - **level7**: Anti-virus Edition
+	// - **level7**: Anti-virus Edition.
 	//
-	// - **level3**: Advanced Edition
+	// - **level3**: Premium Edition.
 	//
-	// - **level2**: Enterprise Edition
+	// - **level2**: Enterprise Edition.
 	//
-	// - **level8**: Ultimate Edition
+	// - **level8**: Ultimate Edition.
 	//
 	// - **level10**: Value-added service only.
 	//
@@ -121,21 +127,22 @@ type BindAuthToMachineRequest struct {
 	//
 	// level2
 	NtmVersion *string `json:"NtmVersion,omitempty" xml:"NtmVersion,omitempty"`
-	// The order ID associated with the pre-binding.
+	// The order ID associated with the pre-binding operation.
 	//
 	// example:
 	//
 	// 233016**0482
-	PreBindOrderId *int64 `json:"PreBindOrderId,omitempty" xml:"PreBindOrderId,omitempty"`
-	// The ID of the member accounts in the resource folder (Alibaba Cloud account).
+	PreBindOrderId *int64  `json:"PreBindOrderId,omitempty" xml:"PreBindOrderId,omitempty"`
+	ProductCode    *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The ID of the member accounts (Alibaba Cloud account) in the resource directory.
 	//
-	// > Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 16670360956*****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// The UUIDs of the servers to unbind.
+	// The collection of UUIDs to unbind.
 	//
 	// > **Bind*	- and **UnBind*	- cannot both be empty.
 	UnBind []*string `json:"UnBind,omitempty" xml:"UnBind,omitempty" type:"Repeated"`
@@ -165,6 +172,10 @@ func (s *BindAuthToMachineRequest) GetBindAll() *bool {
 	return s.BindAll
 }
 
+func (s *BindAuthToMachineRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *BindAuthToMachineRequest) GetCriteria() *string {
 	return s.Criteria
 }
@@ -183,6 +194,10 @@ func (s *BindAuthToMachineRequest) GetNtmVersion() *string {
 
 func (s *BindAuthToMachineRequest) GetPreBindOrderId() *int64 {
 	return s.PreBindOrderId
+}
+
+func (s *BindAuthToMachineRequest) GetProductCode() *string {
+	return s.ProductCode
 }
 
 func (s *BindAuthToMachineRequest) GetResourceDirectoryAccountId() *int64 {
@@ -213,6 +228,11 @@ func (s *BindAuthToMachineRequest) SetBindAll(v bool) *BindAuthToMachineRequest 
 	return s
 }
 
+func (s *BindAuthToMachineRequest) SetClientToken(v string) *BindAuthToMachineRequest {
+	s.ClientToken = &v
+	return s
+}
+
 func (s *BindAuthToMachineRequest) SetCriteria(v string) *BindAuthToMachineRequest {
 	s.Criteria = &v
 	return s
@@ -235,6 +255,11 @@ func (s *BindAuthToMachineRequest) SetNtmVersion(v string) *BindAuthToMachineReq
 
 func (s *BindAuthToMachineRequest) SetPreBindOrderId(v int64) *BindAuthToMachineRequest {
 	s.PreBindOrderId = &v
+	return s
+}
+
+func (s *BindAuthToMachineRequest) SetProductCode(v string) *BindAuthToMachineRequest {
+	s.ProductCode = &v
 	return s
 }
 

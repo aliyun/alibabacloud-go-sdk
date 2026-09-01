@@ -11,6 +11,8 @@ type iAddUnknownThreatDetectProcessRequest interface {
 	GoString() string
 	SetEventIdList(v []*int64) *AddUnknownThreatDetectProcessRequest
 	GetEventIdList() []*int64
+	SetHandleRemark(v string) *AddUnknownThreatDetectProcessRequest
+	GetHandleRemark() *string
 	SetProcessList(v []*AddUnknownThreatDetectProcessRequestProcessList) *AddUnknownThreatDetectProcessRequest
 	GetProcessList() []*AddUnknownThreatDetectProcessRequestProcessList
 	SetUuidList(v []*string) *AddUnknownThreatDetectProcessRequest
@@ -18,11 +20,12 @@ type iAddUnknownThreatDetectProcessRequest interface {
 }
 
 type AddUnknownThreatDetectProcessRequest struct {
-	// A list of associated event IDs.
-	EventIdList []*int64 `json:"EventIdList,omitempty" xml:"EventIdList,omitempty" type:"Repeated"`
-	// The list of processes to add.
+	// The list of specified event IDs.
+	EventIdList  []*int64 `json:"EventIdList,omitempty" xml:"EventIdList,omitempty" type:"Repeated"`
+	HandleRemark *string  `json:"HandleRemark,omitempty" xml:"HandleRemark,omitempty"`
+	// The list of processes.
 	ProcessList []*AddUnknownThreatDetectProcessRequestProcessList `json:"ProcessList,omitempty" xml:"ProcessList,omitempty" type:"Repeated"`
-	// The UUIDs of assets on which the processes are located.
+	// The list of asset UUIDs for which processes are to be added.
 	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
 }
 
@@ -38,6 +41,10 @@ func (s *AddUnknownThreatDetectProcessRequest) GetEventIdList() []*int64 {
 	return s.EventIdList
 }
 
+func (s *AddUnknownThreatDetectProcessRequest) GetHandleRemark() *string {
+	return s.HandleRemark
+}
+
 func (s *AddUnknownThreatDetectProcessRequest) GetProcessList() []*AddUnknownThreatDetectProcessRequestProcessList {
 	return s.ProcessList
 }
@@ -48,6 +55,11 @@ func (s *AddUnknownThreatDetectProcessRequest) GetUuidList() []*string {
 
 func (s *AddUnknownThreatDetectProcessRequest) SetEventIdList(v []*int64) *AddUnknownThreatDetectProcessRequest {
 	s.EventIdList = v
+	return s
+}
+
+func (s *AddUnknownThreatDetectProcessRequest) SetHandleRemark(v string) *AddUnknownThreatDetectProcessRequest {
+	s.HandleRemark = &v
 	return s
 }
 
@@ -75,25 +87,25 @@ func (s *AddUnknownThreatDetectProcessRequest) Validate() error {
 }
 
 type AddUnknownThreatDetectProcessRequestProcessList struct {
-	// The MD5 hash of the process file.
+	// The MD5 hash of the process.
 	//
 	// example:
 	//
 	// e59b63ae983377f131ab20ec0d******
 	Md5 *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
-	// The path to the process executable.
+	// The process path.
 	//
 	// example:
 	//
 	// /bin/rm
 	ProcessPath *string `json:"ProcessPath,omitempty" xml:"ProcessPath,omitempty"`
-	// A remark for the process.
+	// The remarks.
 	//
 	// example:
 	//
 	// 1330
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The SHA-256 hash of the process file.
+	// The SHA-256 hash of the process.
 	//
 	// example:
 	//

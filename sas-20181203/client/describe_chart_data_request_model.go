@@ -17,6 +17,8 @@ type iDescribeChartDataRequest interface {
 	GetLang() *string
 	SetReportId(v int64) *DescribeChartDataRequest
 	GetReportId() *int64
+	SetResourceDirectoryAccountId(v int64) *DescribeChartDataRequest
+	GetResourceDirectoryAccountId() *int64
 	SetTimeEnd(v int64) *DescribeChartDataRequest
 	GetTimeEnd() *int64
 	SetTimeStart(v int64) *DescribeChartDataRequest
@@ -57,7 +59,8 @@ type DescribeChartDataRequest struct {
 	// example:
 	//
 	// 721734
-	ReportId *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	ReportId                   *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The end timestamp for statistics. Unit: milliseconds.
 	//
 	// example:
@@ -96,6 +99,10 @@ func (s *DescribeChartDataRequest) GetReportId() *int64 {
 	return s.ReportId
 }
 
+func (s *DescribeChartDataRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeChartDataRequest) GetTimeEnd() *int64 {
 	return s.TimeEnd
 }
@@ -121,6 +128,11 @@ func (s *DescribeChartDataRequest) SetLang(v string) *DescribeChartDataRequest {
 
 func (s *DescribeChartDataRequest) SetReportId(v int64) *DescribeChartDataRequest {
 	s.ReportId = &v
+	return s
+}
+
+func (s *DescribeChartDataRequest) SetResourceDirectoryAccountId(v int64) *DescribeChartDataRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

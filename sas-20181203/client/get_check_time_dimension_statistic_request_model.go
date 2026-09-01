@@ -11,6 +11,8 @@ type iGetCheckTimeDimensionStatisticRequest interface {
 	GoString() string
 	SetEndTimeStamp(v int64) *GetCheckTimeDimensionStatisticRequest
 	GetEndTimeStamp() *int64
+	SetResourceDirectoryAccountId(v int64) *GetCheckTimeDimensionStatisticRequest
+	GetResourceDirectoryAccountId() *int64
 	SetStartTimeStamp(v int64) *GetCheckTimeDimensionStatisticRequest
 	GetStartTimeStamp() *int64
 	SetStatisticType(v string) *GetCheckTimeDimensionStatisticRequest
@@ -25,7 +27,8 @@ type GetCheckTimeDimensionStatisticRequest struct {
 	// example:
 	//
 	// 1672285044000
-	EndTimeStamp *int64 `json:"EndTimeStamp,omitempty" xml:"EndTimeStamp,omitempty"`
+	EndTimeStamp               *int64 `json:"EndTimeStamp,omitempty" xml:"EndTimeStamp,omitempty"`
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The start time in timestamp format.
 	//
 	// example:
@@ -58,6 +61,10 @@ func (s *GetCheckTimeDimensionStatisticRequest) GetEndTimeStamp() *int64 {
 	return s.EndTimeStamp
 }
 
+func (s *GetCheckTimeDimensionStatisticRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *GetCheckTimeDimensionStatisticRequest) GetStartTimeStamp() *int64 {
 	return s.StartTimeStamp
 }
@@ -72,6 +79,11 @@ func (s *GetCheckTimeDimensionStatisticRequest) GetVendors() []*string {
 
 func (s *GetCheckTimeDimensionStatisticRequest) SetEndTimeStamp(v int64) *GetCheckTimeDimensionStatisticRequest {
 	s.EndTimeStamp = &v
+	return s
+}
+
+func (s *GetCheckTimeDimensionStatisticRequest) SetResourceDirectoryAccountId(v int64) *GetCheckTimeDimensionStatisticRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

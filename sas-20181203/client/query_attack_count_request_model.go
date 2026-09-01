@@ -13,6 +13,8 @@ type iQueryAttackCountRequest interface {
 	GetFrom() *string
 	SetLang(v string) *QueryAttackCountRequest
 	GetLang() *string
+	SetResourceDirectoryAccountId(v int64) *QueryAttackCountRequest
+	GetResourceDirectoryAccountId() *int64
 	SetSourceIp(v string) *QueryAttackCountRequest
 	GetSourceIp() *string
 	SetUuids(v string) *QueryAttackCountRequest
@@ -35,7 +37,8 @@ type QueryAttackCountRequest struct {
 	// example:
 	//
 	// zh
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang                       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The IP address of the access source.
 	//
 	// example:
@@ -68,6 +71,10 @@ func (s *QueryAttackCountRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *QueryAttackCountRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *QueryAttackCountRequest) GetSourceIp() *string {
 	return s.SourceIp
 }
@@ -83,6 +90,11 @@ func (s *QueryAttackCountRequest) SetFrom(v string) *QueryAttackCountRequest {
 
 func (s *QueryAttackCountRequest) SetLang(v string) *QueryAttackCountRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *QueryAttackCountRequest) SetResourceDirectoryAccountId(v int64) *QueryAttackCountRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

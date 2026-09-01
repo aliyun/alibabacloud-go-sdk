@@ -14,7 +14,7 @@ type iGetAgentlessTaskUsedSizeEstimateRequest interface {
 }
 
 type GetAgentlessTaskUsedSizeEstimateRequest struct {
-	// Asset selection identifier.
+	// The asset selection identifier.
 	//
 	// This parameter is required.
 	//

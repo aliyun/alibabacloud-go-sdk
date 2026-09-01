@@ -11,6 +11,8 @@ type iListUnknownThreatDetectMachineRequest interface {
 	GoString() string
 	SetCurrentPage(v int32) *ListUnknownThreatDetectMachineRequest
 	GetCurrentPage() *int32
+	SetEventStatus(v int32) *ListUnknownThreatDetectMachineRequest
+	GetEventStatus() *int32
 	SetPageSize(v int32) *ListUnknownThreatDetectMachineRequest
 	GetPageSize() *int32
 	SetRemark(v string) *ListUnknownThreatDetectMachineRequest
@@ -28,13 +30,14 @@ type iListUnknownThreatDetectMachineRequest interface {
 }
 
 type ListUnknownThreatDetectMachineRequest struct {
-	// The page number to return.
+	// The page number of the current page when using paging.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries to return per page.
+	EventStatus *int32 `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
+	// The maximum number of entries per page when using paging.
 	//
 	// example:
 	//
@@ -46,15 +49,15 @@ type ListUnknownThreatDetectMachineRequest struct {
 	//
 	// test-ecs
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The status of the machine. Valid values:
+	// The running status of the machine. Valid values:
 	//
-	// - **monitoring**: Monitoring
+	// - **monitoring**: Warning.
 	//
-	// - **blocking**: Blocking
+	// - **blocking**: Blocking.
 	//
-	// - **studying**: Learning
+	// - **studying**: Learning.
 	//
-	// - **study_finish**: Learning complete
+	// - **study_finish**: Learning completed.
 	//
 	// example:
 	//
@@ -70,13 +73,13 @@ type ListUnknownThreatDetectMachineRequest struct {
 	//
 	// hash
 	StudyMode *string `json:"StudyMode,omitempty" xml:"StudyMode,omitempty"`
-	// The end of the time range for model creation, specified as a timestamp in milliseconds.
+	// The end of the model creation time range. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1768891966346
 	StudyTimeEnd *int64 `json:"StudyTimeEnd,omitempty" xml:"StudyTimeEnd,omitempty"`
-	// The start of the time range for model creation, specified as a timestamp in milliseconds.
+	// The start of the model creation time range. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -100,6 +103,10 @@ func (s ListUnknownThreatDetectMachineRequest) GoString() string {
 
 func (s *ListUnknownThreatDetectMachineRequest) GetCurrentPage() *int32 {
 	return s.CurrentPage
+}
+
+func (s *ListUnknownThreatDetectMachineRequest) GetEventStatus() *int32 {
+	return s.EventStatus
 }
 
 func (s *ListUnknownThreatDetectMachineRequest) GetPageSize() *int32 {
@@ -132,6 +139,11 @@ func (s *ListUnknownThreatDetectMachineRequest) GetUuid() *string {
 
 func (s *ListUnknownThreatDetectMachineRequest) SetCurrentPage(v int32) *ListUnknownThreatDetectMachineRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListUnknownThreatDetectMachineRequest) SetEventStatus(v int32) *ListUnknownThreatDetectMachineRequest {
+	s.EventStatus = &v
 	return s
 }
 

@@ -17,6 +17,8 @@ type iHandleSimilarSecurityEventsRequest interface {
 	GetOperationParams() *string
 	SetRemark(v string) *HandleSimilarSecurityEventsRequest
 	GetRemark() *string
+	SetResourceDirectoryAccountId(v int64) *HandleSimilarSecurityEventsRequest
+	GetResourceDirectoryAccountId() *int64
 	SetResourceOwnerId(v int64) *HandleSimilarSecurityEventsRequest
 	GetResourceOwnerId() *int64
 	SetSourceIp(v string) *HandleSimilarSecurityEventsRequest
@@ -77,8 +79,9 @@ type HandleSimilarSecurityEventsRequest struct {
 	// example:
 	//
 	// remark test.
-	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Remark                     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	ResourceOwnerId            *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The IP address of the access source.
 	//
 	// example:
@@ -121,6 +124,10 @@ func (s *HandleSimilarSecurityEventsRequest) GetRemark() *string {
 	return s.Remark
 }
 
+func (s *HandleSimilarSecurityEventsRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *HandleSimilarSecurityEventsRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
 }
@@ -150,6 +157,11 @@ func (s *HandleSimilarSecurityEventsRequest) SetOperationParams(v string) *Handl
 
 func (s *HandleSimilarSecurityEventsRequest) SetRemark(v string) *HandleSimilarSecurityEventsRequest {
 	s.Remark = &v
+	return s
+}
+
+func (s *HandleSimilarSecurityEventsRequest) SetResourceDirectoryAccountId(v int64) *HandleSimilarSecurityEventsRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

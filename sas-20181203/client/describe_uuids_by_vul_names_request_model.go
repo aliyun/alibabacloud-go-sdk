@@ -25,6 +25,8 @@ type iDescribeUuidsByVulNamesRequest interface {
 	GetNecessity() *string
 	SetRemark(v string) *DescribeUuidsByVulNamesRequest
 	GetRemark() *string
+	SetResourceDirectoryAccountId(v int64) *DescribeUuidsByVulNamesRequest
+	GetResourceDirectoryAccountId() *int64
 	SetSearchTags(v string) *DescribeUuidsByVulNamesRequest
 	GetSearchTags() *string
 	SetStatusList(v string) *DescribeUuidsByVulNamesRequest
@@ -109,7 +111,8 @@ type DescribeUuidsByVulNamesRequest struct {
 	// example:
 	//
 	// 10.7.
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Remark                     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The tag for querying vulnerabilities.
 	//
 	// example:
@@ -208,6 +211,10 @@ func (s *DescribeUuidsByVulNamesRequest) GetRemark() *string {
 	return s.Remark
 }
 
+func (s *DescribeUuidsByVulNamesRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeUuidsByVulNamesRequest) GetSearchTags() *string {
 	return s.SearchTags
 }
@@ -273,6 +280,11 @@ func (s *DescribeUuidsByVulNamesRequest) SetNecessity(v string) *DescribeUuidsBy
 
 func (s *DescribeUuidsByVulNamesRequest) SetRemark(v string) *DescribeUuidsByVulNamesRequest {
 	s.Remark = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetResourceDirectoryAccountId(v int64) *DescribeUuidsByVulNamesRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

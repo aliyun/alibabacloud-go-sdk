@@ -18,15 +18,15 @@ type iSubmitCheckResponseBody interface {
 }
 
 type SubmitCheckResponseBody struct {
-	// The data returned if the call is successful.
+	// The data returned when the API call is successful.
 	Data *SubmitCheckResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The ID of the request, which is used to locate and troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique ID for each API request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
 	// CE8369A6-A843-5E1B-A613-78E6920D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the configuration assessment task.
+	// The ID of the task that runs the cloud service configuration check.
 	//
 	// example:
 	//
@@ -79,17 +79,17 @@ func (s *SubmitCheckResponseBody) Validate() error {
 }
 
 type SubmitCheckResponseBodyData struct {
-	// The operation code of the configuration assessment task.
+	// The operation code of the cloud service configuration check task.
 	//
-	// 	- **Throttling**: frequency limit
+	// - **Throttling**: rate limited
 	//
-	// 	- **AuthorizationExhaust**: insufficient quota
+	// - **AuthorizationExhaust**: insufficient authorization quota
 	//
 	// example:
 	//
 	// Throttling
 	OperateCode *string `json:"OperateCode,omitempty" xml:"OperateCode,omitempty"`
-	// The throttling duration. Unit: seconds.
+	// The rate limit duration. Unit: seconds.
 	//
 	// example:
 	//

@@ -19,6 +19,8 @@ type iDescribePropertyCronDetailRequest interface {
 	GetPageSize() *int32
 	SetRemark(v string) *DescribePropertyCronDetailRequest
 	GetRemark() *string
+	SetResourceDirectoryAccountId(v int64) *DescribePropertyCronDetailRequest
+	GetResourceDirectoryAccountId() *int64
 	SetSource(v string) *DescribePropertyCronDetailRequest
 	GetSource() *string
 	SetUseNextToken(v bool) *DescribePropertyCronDetailRequest
@@ -59,7 +61,8 @@ type DescribePropertyCronDetailRequest struct {
 	// example:
 	//
 	// 192.168.XX.XX
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Remark                     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The path to the scheduled task.
 	//
 	// example:
@@ -118,6 +121,10 @@ func (s *DescribePropertyCronDetailRequest) GetRemark() *string {
 	return s.Remark
 }
 
+func (s *DescribePropertyCronDetailRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribePropertyCronDetailRequest) GetSource() *string {
 	return s.Source
 }
@@ -156,6 +163,11 @@ func (s *DescribePropertyCronDetailRequest) SetPageSize(v int32) *DescribeProper
 
 func (s *DescribePropertyCronDetailRequest) SetRemark(v string) *DescribePropertyCronDetailRequest {
 	s.Remark = &v
+	return s
+}
+
+func (s *DescribePropertyCronDetailRequest) SetResourceDirectoryAccountId(v int64) *DescribePropertyCronDetailRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

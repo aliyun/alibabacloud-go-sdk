@@ -13,6 +13,10 @@ type iCreateAgentlessScanTaskRequest interface {
 	GetAssetSelectionType() *string
 	SetAutoDeleteDays(v int32) *CreateAgentlessScanTaskRequest
 	GetAutoDeleteDays() *int32
+	SetClientToken(v string) *CreateAgentlessScanTaskRequest
+	GetClientToken() *string
+	SetRegionId(v string) *CreateAgentlessScanTaskRequest
+	GetRegionId() *string
 	SetReleaseAfterScan(v bool) *CreateAgentlessScanTaskRequest
 	GetReleaseAfterScan() *bool
 	SetScanDataDisk(v bool) *CreateAgentlessScanTaskRequest
@@ -24,41 +28,63 @@ type iCreateAgentlessScanTaskRequest interface {
 }
 
 type CreateAgentlessScanTaskRequest struct {
-	// Identification of asset selection.
+	// The asset selection identifier.
 	//
 	// example:
 	//
 	// AGENTLESS_SCAN_ONCE_TASK_1720145******
 	AssetSelectionType *string `json:"AssetSelectionType,omitempty" xml:"AssetSelectionType,omitempty"`
-	// The retention period of images. Unit: days.
+	// The image retention period, in days. This parameter takes effect only for host detection and does not take effect for user snapshot detection or user custom image detection.
 	//
 	// example:
 	//
 	// 1
 	AutoDeleteDays *int32 `json:"AutoDeleteDays,omitempty" xml:"AutoDeleteDays,omitempty"`
+	// The idempotency key.
+	//
+	// example:
+	//
+	// 66a9c708-d4a4-4fe
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID of the instance to query. Valid values:
+	//
+	// - **cn-hangzhou*	- (default): China.
+	//
+	// - **ap-southeast-1**: outside China.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to enable the cost-saving mode. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Enabled.
 	//
-	// 	- **false**
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// true
 	ReleaseAfterScan *bool `json:"ReleaseAfterScan,omitempty" xml:"ReleaseAfterScan,omitempty"`
-	// Specifies whether to check data disks. Valid values:
+	// Specifies whether to detect data cloud disks. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Detected.
 	//
-	// 	- **false**
+	// - **false**: Not detected.
 	//
 	// example:
 	//
 	// true
 	ScanDataDisk *bool `json:"ScanDataDisk,omitempty" xml:"ScanDataDisk,omitempty"`
-	// The type of the detection object. Valid values:
+	// The target type. Valid values:
 	//
-	// 	- **2**: image
+	// - **1**: Host detection - detection by snapshot.
+	//
+	// - **2**: Host detection - detection by image.
+	//
+	// - **3**: User snapshot detection.
+	//
+	// - **2**: User custom image detection.
 	//
 	// This parameter is required.
 	//
@@ -66,9 +92,9 @@ type CreateAgentlessScanTaskRequest struct {
 	//
 	// 2
 	TargetType *int32 `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The UUIDs of the assets on which you want to run the detection task.
+	// The UUIDs of the assets to be detected.
 	//
-	// >  You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to query the UUIDs of servers.
+	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain the UUIDs of servers.
 	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
 }
 
@@ -86,6 +112,14 @@ func (s *CreateAgentlessScanTaskRequest) GetAssetSelectionType() *string {
 
 func (s *CreateAgentlessScanTaskRequest) GetAutoDeleteDays() *int32 {
 	return s.AutoDeleteDays
+}
+
+func (s *CreateAgentlessScanTaskRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *CreateAgentlessScanTaskRequest) GetRegionId() *string {
+	return s.RegionId
 }
 
 func (s *CreateAgentlessScanTaskRequest) GetReleaseAfterScan() *bool {
@@ -111,6 +145,16 @@ func (s *CreateAgentlessScanTaskRequest) SetAssetSelectionType(v string) *Create
 
 func (s *CreateAgentlessScanTaskRequest) SetAutoDeleteDays(v int32) *CreateAgentlessScanTaskRequest {
 	s.AutoDeleteDays = &v
+	return s
+}
+
+func (s *CreateAgentlessScanTaskRequest) SetClientToken(v string) *CreateAgentlessScanTaskRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateAgentlessScanTaskRequest) SetRegionId(v string) *CreateAgentlessScanTaskRequest {
+	s.RegionId = &v
 	return s
 }
 

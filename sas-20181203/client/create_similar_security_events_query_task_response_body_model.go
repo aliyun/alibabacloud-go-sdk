@@ -16,7 +16,7 @@ type iCreateSimilarSecurityEventsQueryTaskResponseBody interface {
 }
 
 type CreateSimilarSecurityEventsQueryTaskResponseBody struct {
-	// The response for creating a task to query similar alert events.
+	// The response information of the task for querying similar security alerts.
 	CreateSimilarSecurityEventsQueryTaskResponse *CreateSimilarSecurityEventsQueryTaskResponseBodyCreateSimilarSecurityEventsQueryTaskResponse `json:"CreateSimilarSecurityEventsQueryTaskResponse,omitempty" xml:"CreateSimilarSecurityEventsQueryTaskResponse,omitempty" type:"Struct"`
 	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//

@@ -9,6 +9,8 @@ type iModifyEmgVulSubmitRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *ModifyEmgVulSubmitRequest
+	GetClientToken() *string
 	SetLang(v string) *ModifyEmgVulSubmitRequest
 	GetLang() *string
 	SetName(v string) *ModifyEmgVulSubmitRequest
@@ -20,11 +22,13 @@ type iModifyEmgVulSubmitRequest interface {
 }
 
 type ModifyEmgVulSubmitRequest struct {
+	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
@@ -38,9 +42,9 @@ type ModifyEmgVulSubmitRequest struct {
 	//
 	// scan:ASCV-2019-032401
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the member accounts in the resource folder (Alibaba Cloud account).
+	// The ID of the member accounts in the resource directory (Alibaba Cloud account).
 	//
-	// >Invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
@@ -68,6 +72,10 @@ func (s ModifyEmgVulSubmitRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyEmgVulSubmitRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *ModifyEmgVulSubmitRequest) GetLang() *string {
 	return s.Lang
 }
@@ -82,6 +90,11 @@ func (s *ModifyEmgVulSubmitRequest) GetResourceDirectoryAccountId() *int64 {
 
 func (s *ModifyEmgVulSubmitRequest) GetUserAgreement() *string {
 	return s.UserAgreement
+}
+
+func (s *ModifyEmgVulSubmitRequest) SetClientToken(v string) *ModifyEmgVulSubmitRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *ModifyEmgVulSubmitRequest) SetLang(v string) *ModifyEmgVulSubmitRequest {

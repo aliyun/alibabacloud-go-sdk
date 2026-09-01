@@ -17,6 +17,8 @@ type iListClusterInterceptionConfigRequest interface {
 	GetClusterName() *string
 	SetCurrentPage(v int32) *ListClusterInterceptionConfigRequest
 	GetCurrentPage() *int32
+	SetExcludeClusterTypes(v []*string) *ListClusterInterceptionConfigRequest
+	GetExcludeClusterTypes() []*string
 	SetPageSize(v int32) *ListClusterInterceptionConfigRequest
 	GetPageSize() *int32
 }
@@ -30,7 +32,7 @@ type ListClusterInterceptionConfigRequest struct {
 	//
 	// - **1**: normal
 	//
-	// - **2**: normal pending confirmation.
+	// - **2**: normal pending confirmation
 	//
 	// example:
 	//
@@ -56,7 +58,9 @@ type ListClusterInterceptionConfigRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries per page in a paged query. Default value: 20.
+	// The list of excluded cluster types.
+	ExcludeClusterTypes []*string `json:"ExcludeClusterTypes,omitempty" xml:"ExcludeClusterTypes,omitempty" type:"Repeated"`
+	// The maximum number of entries per page in a paging query. Default value: 20.
 	//
 	// example:
 	//
@@ -88,6 +92,10 @@ func (s *ListClusterInterceptionConfigRequest) GetCurrentPage() *int32 {
 	return s.CurrentPage
 }
 
+func (s *ListClusterInterceptionConfigRequest) GetExcludeClusterTypes() []*string {
+	return s.ExcludeClusterTypes
+}
+
 func (s *ListClusterInterceptionConfigRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
@@ -109,6 +117,11 @@ func (s *ListClusterInterceptionConfigRequest) SetClusterName(v string) *ListClu
 
 func (s *ListClusterInterceptionConfigRequest) SetCurrentPage(v int32) *ListClusterInterceptionConfigRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListClusterInterceptionConfigRequest) SetExcludeClusterTypes(v []*string) *ListClusterInterceptionConfigRequest {
+	s.ExcludeClusterTypes = v
 	return s
 }
 

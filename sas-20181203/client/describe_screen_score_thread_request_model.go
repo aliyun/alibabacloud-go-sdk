@@ -11,6 +11,8 @@ type iDescribeScreenScoreThreadRequest interface {
 	GoString() string
 	SetEndTime(v int64) *DescribeScreenScoreThreadRequest
 	GetEndTime() *int64
+	SetResourceDirectoryAccountId(v int64) *DescribeScreenScoreThreadRequest
+	GetResourceDirectoryAccountId() *int64
 	SetSource(v int32) *DescribeScreenScoreThreadRequest
 	GetSource() *int32
 	SetStartTime(v int64) *DescribeScreenScoreThreadRequest
@@ -25,7 +27,8 @@ type DescribeScreenScoreThreadRequest struct {
 	// example:
 	//
 	// 1668064495000
-	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime                    *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The source of the security score. If left empty, the default value is Security Center. Valid values:
 	//
 	// 0: Security Center.
@@ -58,6 +61,10 @@ func (s *DescribeScreenScoreThreadRequest) GetEndTime() *int64 {
 	return s.EndTime
 }
 
+func (s *DescribeScreenScoreThreadRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeScreenScoreThreadRequest) GetSource() *int32 {
 	return s.Source
 }
@@ -68,6 +75,11 @@ func (s *DescribeScreenScoreThreadRequest) GetStartTime() *int64 {
 
 func (s *DescribeScreenScoreThreadRequest) SetEndTime(v int64) *DescribeScreenScoreThreadRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeScreenScoreThreadRequest) SetResourceDirectoryAccountId(v int64) *DescribeScreenScoreThreadRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

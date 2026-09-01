@@ -13,6 +13,8 @@ type iSaveSuspEventUserSettingRequest interface {
 	GetFrom() *string
 	SetLevelsOn(v string) *SaveSuspEventUserSettingRequest
 	GetLevelsOn() *string
+	SetResourceDirectoryAccountId(v int64) *SaveSuspEventUserSettingRequest
+	GetResourceDirectoryAccountId() *int64
 }
 
 type SaveSuspEventUserSettingRequest struct {
@@ -33,7 +35,8 @@ type SaveSuspEventUserSettingRequest struct {
 	// example:
 	//
 	// suspicious,serious,remind
-	LevelsOn *string `json:"LevelsOn,omitempty" xml:"LevelsOn,omitempty"`
+	LevelsOn                   *string `json:"LevelsOn,omitempty" xml:"LevelsOn,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 
 func (s SaveSuspEventUserSettingRequest) String() string {
@@ -52,6 +55,10 @@ func (s *SaveSuspEventUserSettingRequest) GetLevelsOn() *string {
 	return s.LevelsOn
 }
 
+func (s *SaveSuspEventUserSettingRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *SaveSuspEventUserSettingRequest) SetFrom(v string) *SaveSuspEventUserSettingRequest {
 	s.From = &v
 	return s
@@ -59,6 +66,11 @@ func (s *SaveSuspEventUserSettingRequest) SetFrom(v string) *SaveSuspEventUserSe
 
 func (s *SaveSuspEventUserSettingRequest) SetLevelsOn(v string) *SaveSuspEventUserSettingRequest {
 	s.LevelsOn = &v
+	return s
+}
+
+func (s *SaveSuspEventUserSettingRequest) SetResourceDirectoryAccountId(v int64) *SaveSuspEventUserSettingRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iGetSuspiciousStatisticsRequest interface {
 	GoString() string
 	SetGroupIdList(v string) *GetSuspiciousStatisticsRequest
 	GetGroupIdList() *string
+	SetResourceDirectoryAccountId(v int64) *GetSuspiciousStatisticsRequest
+	GetResourceDirectoryAccountId() *int64
 	SetSourceIp(v string) *GetSuspiciousStatisticsRequest
 	GetSourceIp() *string
 }
@@ -25,7 +27,8 @@ type GetSuspiciousStatisticsRequest struct {
 	// example:
 	//
 	// 9997897
-	GroupIdList *string `json:"GroupIdList,omitempty" xml:"GroupIdList,omitempty"`
+	GroupIdList                *string `json:"GroupIdList,omitempty" xml:"GroupIdList,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The IP address of the access source.
 	//
 	// example:
@@ -46,12 +49,21 @@ func (s *GetSuspiciousStatisticsRequest) GetGroupIdList() *string {
 	return s.GroupIdList
 }
 
+func (s *GetSuspiciousStatisticsRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *GetSuspiciousStatisticsRequest) GetSourceIp() *string {
 	return s.SourceIp
 }
 
 func (s *GetSuspiciousStatisticsRequest) SetGroupIdList(v string) *GetSuspiciousStatisticsRequest {
 	s.GroupIdList = &v
+	return s
+}
+
+func (s *GetSuspiciousStatisticsRequest) SetResourceDirectoryAccountId(v int64) *GetSuspiciousStatisticsRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

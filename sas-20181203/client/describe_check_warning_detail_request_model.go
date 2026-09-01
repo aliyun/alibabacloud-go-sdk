@@ -28,7 +28,7 @@ type iDescribeCheckWarningDetailRequest interface {
 type DescribeCheckWarningDetailRequest struct {
 	// The ID of the check item.
 	//
-	// > You can call the [ListCheckItemWarningSummary](~~ListCheckItemWarningSummary~~) operation to obtain the check item ID.	Notice: When this parameter is specified, the Uuid parameter is required..
+	// > You can call the [ListCheckItemWarningSummary](~~ListCheckItemWarningSummary~~) operation to obtain the check item ID.	Notice: When this parameter is specified, the Uuid parameter is required.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DescribeCheckWarningDetailRequest struct {
 	//
 	// > To query the details of a specified check item, provide the alert ID of the check item. You can call the [DescribeCheckWarnings](~~DescribeCheckWarnings~~) operation to obtain this ID.
 	//
-	// 	Notice: This parameter is required when both Uuid and CheckId are empty..
+	// 	Notice: This parameter is required when both Uuid and CheckId are empty.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type DescribeCheckWarningDetailRequest struct {
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The ID of the Alibaba Cloud account of the member accounts in the resource folder.
+	// The Alibaba Cloud account ID of the member accounts in the resource folder.
 	//
 	// >You can invoke the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
@@ -76,7 +76,7 @@ type DescribeCheckWarningDetailRequest struct {
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The UUID of the server to query.
 	//
-	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.	Notice: When this parameter is specified, the CheckId parameter is required..
+	// > You can call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) operation to obtain this parameter.	Notice: When this parameter is specified, the CheckId parameter is required.
 	//
 	// example:
 	//

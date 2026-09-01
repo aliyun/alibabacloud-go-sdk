@@ -68,7 +68,7 @@ type ListAgentlessMaliciousFilesRequest struct {
 	//
 	// WebShell
 	FuzzyMaliciousName *string `json:"FuzzyMaliciousName,omitempty" xml:"FuzzyMaliciousName,omitempty"`
-	// The language type for the request and response. Default value: **zh**. Valid values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -96,7 +96,7 @@ type ListAgentlessMaliciousFilesRequest struct {
 	//
 	// d836968041f7683b5459****
 	MaliciousMd5 *string `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
-	// The alert type.
+	// The Alarm Metric.
 	//
 	// If Lang is set to zh, valid values:
 	//
@@ -126,7 +126,7 @@ type ListAgentlessMaliciousFilesRequest struct {
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The asset information for the vulnerability query. You can set this parameter to the asset name, public IP address, or private IP address. Fuzzy match is supported.
+	// The asset information to query. You can set this parameter to the asset name, public IP address, or private IP address. Fuzzy match is supported.
 	//
 	// example:
 	//

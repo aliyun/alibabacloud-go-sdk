@@ -18,11 +18,11 @@ type iListOssScanConfigResponseBody interface {
 }
 
 type ListOssScanConfigResponseBody struct {
-	// The data returned.
+	// The returned data.
 	Data []*ListOssScanConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *ListOssScanConfigResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -84,45 +84,47 @@ func (s *ListOssScanConfigResponseBody) Validate() error {
 }
 
 type ListOssScanConfigResponseBodyData struct {
-	// Indicates whether the prefixes of all objects are matched.
+	// Indicates whether all prefixes are matched.
 	//
 	// example:
 	//
 	// true
-	AllKeyPrefix *bool `json:"AllKeyPrefix,omitempty" xml:"AllKeyPrefix,omitempty"`
+	AllKeyPrefix      *bool   `json:"AllKeyPrefix,omitempty" xml:"AllKeyPrefix,omitempty"`
+	AutoAdd           *int32  `json:"AutoAdd,omitempty" xml:"AutoAdd,omitempty"`
+	AutoAddConfigName *string `json:"AutoAddConfigName,omitempty" xml:"AutoAddConfigName,omitempty"`
 	// The number of buckets.
 	//
 	// example:
 	//
 	// 10
 	BucketCount *int32 `json:"BucketCount,omitempty" xml:"BucketCount,omitempty"`
-	// The names of the buckets.
+	// The list of bucket names.
 	BucketNameList []*string `json:"BucketNameList,omitempty" xml:"BucketNameList,omitempty" type:"Repeated"`
-	// The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+	// The maximum number of files to decompress. The minimum value is 1 and the maximum value is 1000. When the maximum number of decompressed files is exceeded, the decompression operation ends immediately. The scan of already decompressed files is not affected.
 	//
 	// example:
 	//
 	// 100
 	DecompressMaxFileCount *int32 `json:"DecompressMaxFileCount,omitempty" xml:"DecompressMaxFileCount,omitempty"`
-	// The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+	// The maximum number of decompression layers when nested compressed files exist. The minimum value is 1 and the maximum value is 5. When the maximum decompression layer is exceeded, the decompression operation ends immediately. The scan of already decompressed files is not affected.
 	//
 	// example:
 	//
 	// 1
 	DecompressMaxLayer *int32 `json:"DecompressMaxLayer,omitempty" xml:"DecompressMaxLayer,omitempty"`
-	// The decryption methods.
+	// The list of decryption types.
 	DecryptionList []*string `json:"DecryptionList,omitempty" xml:"DecryptionList,omitempty" type:"Repeated"`
-	// Indicates whether the policy is enabled. Valid values:
+	// Indicates whether the configuration is enabled. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: Enabled.
 	//
-	// 	- **0**: no
+	// - **0**: Disabled.
 	//
 	// example:
 	//
 	// 1
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The time when the scan ends. The time is in the HH:mm:ss format.
+	// The scan end time, in the HH:mm:ss format.
 	//
 	// example:
 	//
@@ -134,17 +136,17 @@ type ListOssScanConfigResponseBodyData struct {
 	//
 	// 443496
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The prefixes of the objects that are scanned.
+	// The list of file directories to scan.
 	KeyPrefixList []*string `json:"KeyPrefixList,omitempty" xml:"KeyPrefixList,omitempty" type:"Repeated"`
-	// The suffixes of the objects that are scanned.
+	// The list of file suffixes to scan.
 	KeySuffixList []*string `json:"KeySuffixList,omitempty" xml:"KeySuffixList,omitempty" type:"Repeated"`
-	// The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+	// Scans files whose last modification time is after the specified timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1724301769834
 	LastModifiedStartTime *int64 `json:"LastModifiedStartTime,omitempty" xml:"LastModifiedStartTime,omitempty"`
-	// The timestamp when the configuration was last modified.
+	// The timestamp of the last update.
 	//
 	// example:
 	//
@@ -156,15 +158,25 @@ type ListOssScanConfigResponseBodyData struct {
 	//
 	// test****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Whether to enable real-time incremental detection. When this parameter is set to true, the parameters ScanDayList, StartTime, and EndTime are not effective.
+	// Indicates whether real-time incremental scan is enabled. When this parameter is set to true, the parameters ScanDayList, StartTime, and EndTime do not take effect.
 	//
 	// example:
 	//
 	// true
 	RealTimeIncr *bool `json:"RealTimeIncr,omitempty" xml:"RealTimeIncr,omitempty"`
-	// The days on which the scan is executed in a week.
+	// The scan days. The number represents the day of the week.
 	ScanDayList []*int32 `json:"ScanDayList,omitempty" xml:"ScanDayList,omitempty" type:"Repeated"`
-	// The time when the scan starts. The time is in the HH:mm:ss format.
+	// The business source. Valid values:
+	//
+	// - **OSS**: OSS
+	//
+	// - **NAS**: NAS
+	//
+	// example:
+	//
+	// OSS
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The scan start time, in the HH:mm:ss format.
 	//
 	// example:
 	//
@@ -182,6 +194,14 @@ func (s ListOssScanConfigResponseBodyData) GoString() string {
 
 func (s *ListOssScanConfigResponseBodyData) GetAllKeyPrefix() *bool {
 	return s.AllKeyPrefix
+}
+
+func (s *ListOssScanConfigResponseBodyData) GetAutoAdd() *int32 {
+	return s.AutoAdd
+}
+
+func (s *ListOssScanConfigResponseBodyData) GetAutoAddConfigName() *string {
+	return s.AutoAddConfigName
 }
 
 func (s *ListOssScanConfigResponseBodyData) GetBucketCount() *int32 {
@@ -244,12 +264,26 @@ func (s *ListOssScanConfigResponseBodyData) GetScanDayList() []*int32 {
 	return s.ScanDayList
 }
 
+func (s *ListOssScanConfigResponseBodyData) GetSource() *string {
+	return s.Source
+}
+
 func (s *ListOssScanConfigResponseBodyData) GetStartTime() *string {
 	return s.StartTime
 }
 
 func (s *ListOssScanConfigResponseBodyData) SetAllKeyPrefix(v bool) *ListOssScanConfigResponseBodyData {
 	s.AllKeyPrefix = &v
+	return s
+}
+
+func (s *ListOssScanConfigResponseBodyData) SetAutoAdd(v int32) *ListOssScanConfigResponseBodyData {
+	s.AutoAdd = &v
+	return s
+}
+
+func (s *ListOssScanConfigResponseBodyData) SetAutoAddConfigName(v string) *ListOssScanConfigResponseBodyData {
+	s.AutoAddConfigName = &v
 	return s
 }
 
@@ -328,6 +362,11 @@ func (s *ListOssScanConfigResponseBodyData) SetScanDayList(v []*int32) *ListOssS
 	return s
 }
 
+func (s *ListOssScanConfigResponseBodyData) SetSource(v string) *ListOssScanConfigResponseBodyData {
+	s.Source = &v
+	return s
+}
+
 func (s *ListOssScanConfigResponseBodyData) SetStartTime(v string) *ListOssScanConfigResponseBodyData {
 	s.StartTime = &v
 	return s
@@ -338,19 +377,19 @@ func (s *ListOssScanConfigResponseBodyData) Validate() error {
 }
 
 type ListOssScanConfigResponseBodyPageInfo struct {
-	// The page number.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

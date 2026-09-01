@@ -18,11 +18,11 @@ type iListUnknownThreatDetectMachineResponseBody interface {
 }
 
 type ListUnknownThreatDetectMachineResponseBody struct {
-	// An array of instance details.
+	// The returned data.
 	Data []*ListUnknownThreatDetectMachineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *ListUnknownThreatDetectMachineResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -102,21 +102,25 @@ type ListUnknownThreatDetectMachineResponseBodyData struct {
 	// example:
 	//
 	// 10.42.XX.XX
-	IntranetIp   *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	PluginStatus *string `json:"PluginStatus,omitempty" xml:"PluginStatus,omitempty"`
-	// The process count.
+	IntranetIp            *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	MaliciousProcessCount *int64  `json:"MaliciousProcessCount,omitempty" xml:"MaliciousProcessCount,omitempty"`
+	// Deprecated
+	NormalEventCount *int64  `json:"NormalEventCount,omitempty" xml:"NormalEventCount,omitempty"`
+	PluginStatus     *string `json:"PluginStatus,omitempty" xml:"PluginStatus,omitempty"`
+	// The number of processes.
 	//
 	// example:
 	//
 	// 1
-	ProcessCount *int32 `json:"ProcessCount,omitempty" xml:"ProcessCount,omitempty"`
-	// The instance status. Valid values:
+	ProcessCount                 *int32 `json:"ProcessCount,omitempty" xml:"ProcessCount,omitempty"`
+	RecentDeviationBehaviorCount *int64 `json:"RecentDeviationBehaviorCount,omitempty" xml:"RecentDeviationBehaviorCount,omitempty"`
+	// The running status of the machine. Valid values:
 	//
-	// - **monitoring**: The instance is being monitored for threats.
+	// - **monitoring**: Warning.
 	//
-	// - **blocking**: The instance is blocking unauthorized processes.
+	// - **blocking**: Blocking.
 	//
-	// - **studying**: The instance is in a learning phase.
+	// - **studying**: Learning.
 	//
 	// example:
 	//
@@ -133,7 +137,7 @@ type ListUnknownThreatDetectMachineResponseBodyData struct {
 	// hash
 	StudyMode       *string `json:"StudyMode,omitempty" xml:"StudyMode,omitempty"`
 	StudyRemainDays *int64  `json:"StudyRemainDays,omitempty" xml:"StudyRemainDays,omitempty"`
-	// The timestamp when the learning phase started. Unit: seconds.
+	// The timestamp when learning started.
 	//
 	// example:
 	//
@@ -171,12 +175,24 @@ func (s *ListUnknownThreatDetectMachineResponseBodyData) GetIntranetIp() *string
 	return s.IntranetIp
 }
 
+func (s *ListUnknownThreatDetectMachineResponseBodyData) GetMaliciousProcessCount() *int64 {
+	return s.MaliciousProcessCount
+}
+
+func (s *ListUnknownThreatDetectMachineResponseBodyData) GetNormalEventCount() *int64 {
+	return s.NormalEventCount
+}
+
 func (s *ListUnknownThreatDetectMachineResponseBodyData) GetPluginStatus() *string {
 	return s.PluginStatus
 }
 
 func (s *ListUnknownThreatDetectMachineResponseBodyData) GetProcessCount() *int32 {
 	return s.ProcessCount
+}
+
+func (s *ListUnknownThreatDetectMachineResponseBodyData) GetRecentDeviationBehaviorCount() *int64 {
+	return s.RecentDeviationBehaviorCount
 }
 
 func (s *ListUnknownThreatDetectMachineResponseBodyData) GetStatus() *string {
@@ -219,6 +235,16 @@ func (s *ListUnknownThreatDetectMachineResponseBodyData) SetIntranetIp(v string)
 	return s
 }
 
+func (s *ListUnknownThreatDetectMachineResponseBodyData) SetMaliciousProcessCount(v int64) *ListUnknownThreatDetectMachineResponseBodyData {
+	s.MaliciousProcessCount = &v
+	return s
+}
+
+func (s *ListUnknownThreatDetectMachineResponseBodyData) SetNormalEventCount(v int64) *ListUnknownThreatDetectMachineResponseBodyData {
+	s.NormalEventCount = &v
+	return s
+}
+
 func (s *ListUnknownThreatDetectMachineResponseBodyData) SetPluginStatus(v string) *ListUnknownThreatDetectMachineResponseBodyData {
 	s.PluginStatus = &v
 	return s
@@ -226,6 +252,11 @@ func (s *ListUnknownThreatDetectMachineResponseBodyData) SetPluginStatus(v strin
 
 func (s *ListUnknownThreatDetectMachineResponseBodyData) SetProcessCount(v int32) *ListUnknownThreatDetectMachineResponseBodyData {
 	s.ProcessCount = &v
+	return s
+}
+
+func (s *ListUnknownThreatDetectMachineResponseBodyData) SetRecentDeviationBehaviorCount(v int64) *ListUnknownThreatDetectMachineResponseBodyData {
+	s.RecentDeviationBehaviorCount = &v
 	return s
 }
 
@@ -259,19 +290,19 @@ func (s *ListUnknownThreatDetectMachineResponseBodyData) Validate() error {
 }
 
 type ListUnknownThreatDetectMachineResponseBodyPageInfo struct {
-	// The number of entries on the current page.
+	// The number of entries on the current page when using paging.
 	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The current page number.
+	// The page number of the current page when using paging.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page when using paging.
 	//
 	// example:
 	//

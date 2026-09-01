@@ -11,6 +11,8 @@ type iGetAlarmMachineCountRequest interface {
 	GoString() string
 	SetFrom(v string) *GetAlarmMachineCountRequest
 	GetFrom() *string
+	SetResourceDirectoryAccountId(v int64) *GetAlarmMachineCountRequest
+	GetResourceDirectoryAccountId() *int64
 }
 
 type GetAlarmMachineCountRequest struct {
@@ -19,7 +21,8 @@ type GetAlarmMachineCountRequest struct {
 	// example:
 	//
 	// sas
-	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	From                       *string `json:"From,omitempty" xml:"From,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 
 func (s GetAlarmMachineCountRequest) String() string {
@@ -34,8 +37,17 @@ func (s *GetAlarmMachineCountRequest) GetFrom() *string {
 	return s.From
 }
 
+func (s *GetAlarmMachineCountRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *GetAlarmMachineCountRequest) SetFrom(v string) *GetAlarmMachineCountRequest {
 	s.From = &v
+	return s
+}
+
+func (s *GetAlarmMachineCountRequest) SetResourceDirectoryAccountId(v int64) *GetAlarmMachineCountRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

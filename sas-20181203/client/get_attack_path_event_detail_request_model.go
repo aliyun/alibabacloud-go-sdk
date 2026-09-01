@@ -30,7 +30,7 @@ type GetAttackPathEventDetailRequest struct {
 	//
 	// - **caasm**: attack surface
 	//
-	// - **default**: attack path.
+	// - **default**: attack path
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type GetAttackPathEventDetailRequest struct {
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//

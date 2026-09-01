@@ -11,6 +11,8 @@ type iDescribeEventOnStageRequest interface {
 	GoString() string
 	SetLang(v string) *DescribeEventOnStageRequest
 	GetLang() *string
+	SetResourceDirectoryAccountId(v int64) *DescribeEventOnStageRequest
+	GetResourceDirectoryAccountId() *int64
 }
 
 type DescribeEventOnStageRequest struct {
@@ -23,7 +25,8 @@ type DescribeEventOnStageRequest struct {
 	// example:
 	//
 	// zh
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang                       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 
 func (s DescribeEventOnStageRequest) String() string {
@@ -38,8 +41,17 @@ func (s *DescribeEventOnStageRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *DescribeEventOnStageRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeEventOnStageRequest) SetLang(v string) *DescribeEventOnStageRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeEventOnStageRequest) SetResourceDirectoryAccountId(v int64) *DescribeEventOnStageRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

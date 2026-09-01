@@ -13,6 +13,8 @@ type iCreateSuspEventNoteRequest interface {
 	GetEventId() *int64
 	SetNote(v string) *CreateSuspEventNoteRequest
 	GetNote() *string
+	SetResourceDirectoryAccountId(v int64) *CreateSuspEventNoteRequest
+	GetResourceDirectoryAccountId() *int64
 }
 
 type CreateSuspEventNoteRequest struct {
@@ -31,7 +33,8 @@ type CreateSuspEventNoteRequest struct {
 	// example:
 	//
 	// Ignore
-	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	Note                       *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 
 func (s CreateSuspEventNoteRequest) String() string {
@@ -50,6 +53,10 @@ func (s *CreateSuspEventNoteRequest) GetNote() *string {
 	return s.Note
 }
 
+func (s *CreateSuspEventNoteRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *CreateSuspEventNoteRequest) SetEventId(v int64) *CreateSuspEventNoteRequest {
 	s.EventId = &v
 	return s
@@ -57,6 +64,11 @@ func (s *CreateSuspEventNoteRequest) SetEventId(v int64) *CreateSuspEventNoteReq
 
 func (s *CreateSuspEventNoteRequest) SetNote(v string) *CreateSuspEventNoteRequest {
 	s.Note = &v
+	return s
+}
+
+func (s *CreateSuspEventNoteRequest) SetResourceDirectoryAccountId(v int64) *CreateSuspEventNoteRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

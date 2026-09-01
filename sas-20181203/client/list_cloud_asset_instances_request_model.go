@@ -25,6 +25,8 @@ type iListCloudAssetInstancesRequest interface {
 	GetPageSize() *int32
 	SetRegionId(v string) *ListCloudAssetInstancesRequest
 	GetRegionId() *string
+	SetResourceDirectoryAccountId(v int64) *ListCloudAssetInstancesRequest
+	GetResourceDirectoryAccountId() *int64
 }
 
 type ListCloudAssetInstancesRequest struct {
@@ -78,7 +80,8 @@ type ListCloudAssetInstancesRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId                   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 
 func (s ListCloudAssetInstancesRequest) String() string {
@@ -121,6 +124,10 @@ func (s *ListCloudAssetInstancesRequest) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *ListCloudAssetInstancesRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *ListCloudAssetInstancesRequest) SetCloudAssetQueryData(v []*ListCloudAssetInstancesRequestCloudAssetQueryData) *ListCloudAssetInstancesRequest {
 	s.CloudAssetQueryData = v
 	return s
@@ -158,6 +165,11 @@ func (s *ListCloudAssetInstancesRequest) SetPageSize(v int32) *ListCloudAssetIns
 
 func (s *ListCloudAssetInstancesRequest) SetRegionId(v string) *ListCloudAssetInstancesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListCloudAssetInstancesRequest) SetResourceDirectoryAccountId(v int64) *ListCloudAssetInstancesRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

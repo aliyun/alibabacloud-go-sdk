@@ -11,6 +11,8 @@ type iUpdateSelectionKeyByTypeRequest interface {
 	GoString() string
 	SetBusinessType(v string) *UpdateSelectionKeyByTypeRequest
 	GetBusinessType() *string
+	SetClientToken(v string) *UpdateSelectionKeyByTypeRequest
+	GetClientToken() *string
 	SetSelectionKey(v string) *UpdateSelectionKeyByTypeRequest
 	GetSelectionKey() *string
 }
@@ -20,7 +22,7 @@ type UpdateSelectionKeyByTypeRequest struct {
 	//
 	// - **VIRUS_SCAN_CYCLE_CONFIG**: virus scan configuration.
 	//
-	// - **VIRUS_SCAN_ONCE_TASK**: one-time virus scan.
+	// - **VIRUS_SCAN_ONCE_TASK**: one-time virus scan task.
 	//
 	// - **AGENTLESS_MALICIOUS_WHITE_LIST_[ID]**: agentless detection alert whitelisting rule.
 	//
@@ -32,6 +34,8 @@ type UpdateSelectionKeyByTypeRequest struct {
 	//
 	// VIRUS_SCAN_CYCLE_CONFIG
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The unique identifier of the asset selection.
 	//
 	// example:
@@ -52,12 +56,21 @@ func (s *UpdateSelectionKeyByTypeRequest) GetBusinessType() *string {
 	return s.BusinessType
 }
 
+func (s *UpdateSelectionKeyByTypeRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *UpdateSelectionKeyByTypeRequest) GetSelectionKey() *string {
 	return s.SelectionKey
 }
 
 func (s *UpdateSelectionKeyByTypeRequest) SetBusinessType(v string) *UpdateSelectionKeyByTypeRequest {
 	s.BusinessType = &v
+	return s
+}
+
+func (s *UpdateSelectionKeyByTypeRequest) SetClientToken(v string) *UpdateSelectionKeyByTypeRequest {
+	s.ClientToken = &v
 	return s
 }
 

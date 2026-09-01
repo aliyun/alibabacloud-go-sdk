@@ -13,6 +13,8 @@ type iListOssBucketRequest interface {
 	GetBucketName() *string
 	SetLang(v string) *ListOssBucketRequest
 	GetLang() *string
+	SetSource(v string) *ListOssBucketRequest
+	GetSource() *string
 }
 
 type ListOssBucketRequest struct {
@@ -26,12 +28,22 @@ type ListOssBucketRequest struct {
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The business source. Valid values:
+	//
+	// - **OSS**: OSS
+	//
+	// - **NAS**: NAS
+	//
+	// example:
+	//
+	// OSS
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s ListOssBucketRequest) String() string {
@@ -50,6 +62,10 @@ func (s *ListOssBucketRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *ListOssBucketRequest) GetSource() *string {
+	return s.Source
+}
+
 func (s *ListOssBucketRequest) SetBucketName(v string) *ListOssBucketRequest {
 	s.BucketName = &v
 	return s
@@ -57,6 +73,11 @@ func (s *ListOssBucketRequest) SetBucketName(v string) *ListOssBucketRequest {
 
 func (s *ListOssBucketRequest) SetLang(v string) *ListOssBucketRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *ListOssBucketRequest) SetSource(v string) *ListOssBucketRequest {
+	s.Source = &v
 	return s
 }
 

@@ -16,9 +16,9 @@ type iListAccountsInResourceDirectoryResponseBody interface {
 }
 
 type ListAccountsInResourceDirectoryResponseBody struct {
-	// The list of member accounts in the resource directory.
+	// La liste des comptes membres dans le répertoire de ressources.
 	Accounts []*ListAccountsInResourceDirectoryResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
-	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
+	// L\\"identifiant de la requête. Il s\\"agit d\\"un identifiant unique généré par Alibaba Cloud pour la requête. Vous pouvez l\\"utiliser pour le dépannage.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ func (s *ListAccountsInResourceDirectoryResponseBody) Validate() error {
 }
 
 type ListAccountsInResourceDirectoryResponseBodyAccounts struct {
-	// The Alibaba Cloud account ID of the member.
+	// L\\"identifiant de compte Alibaba Cloud du membre.
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type ListAccountsInResourceDirectoryResponseBodyAccounts struct {
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// Deprecated
 	//
-	// This parameter is deprecated and does not need to be used.
+	// Ce paramètre est obsolète et ne doit plus être utilisé.
 	//
 	// example:
 	//
-	// true
+	// true.
 	BuySas *int32 `json:"BuySas,omitempty" xml:"BuySas,omitempty"`
-	// Indicates whether a Security Center subscription instance is purchased. Valid values:
+	// Indique si une instance Security Center en abonnement a été souscrite. Valeurs valides :
 	//
 	// - **true**
 	//
@@ -88,41 +88,41 @@ type ListAccountsInResourceDirectoryResponseBodyAccounts struct {
 	//
 	// example:
 	//
-	// true
+	// true.
 	BuySasNew *bool `json:"BuySasNew,omitempty" xml:"BuySasNew,omitempty"`
-	// The billing method. Valid values:
+	// Le mode de facturation de l\\"abonnement. Valeurs valides :
 	//
-	// 	- **0**: upfront
+	// 	- **0*	- : prépayé
 	//
-	// 	- **1**: pay-as-you-go.
+	// 	- **1*	- : paiement à l\\"usage.
 	//
 	// example:
 	//
 	// 1
 	ChargeType *int32 `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The account name.
+	// Le nom du compte.
 	//
 	// example:
 	//
 	// abc**
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the folder in the resource directory.
+	// L\\"identifiant du dossier dans le répertoire de ressources.
 	//
 	// example:
 	//
 	// fd-cE2SQP****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The instance purchase type. Valid values:
+	// Le type d\\"achat de l\\"instance. Valeurs valides :
 	//
-	// - **0**: self-purchased
+	// - **0*	- : achat direct
 	//
-	// - **1**: allocated through multi-account management.
+	// - **1*	- : alloué via la gestion multi-comptes.
 	//
 	// example:
 	//
 	// 0
 	InstanceBuyType *int32 `json:"InstanceBuyType,omitempty" xml:"InstanceBuyType,omitempty"`
-	// Indicates whether the account is the management account of the resource directory. Valid values:
+	// Indique si le compte est le compte de gestion du répertoire de ressources. Valeurs valides :
 	//
 	// - **yes**
 	//
@@ -132,13 +132,13 @@ type ListAccountsInResourceDirectoryResponseBodyAccounts struct {
 	//
 	// no
 	IsMaAccount *string `json:"IsMaAccount,omitempty" xml:"IsMaAccount,omitempty"`
-	// Indicates whether the account is marked as followed.
+	// Indique si le compte est marqué comme suivi.
 	//
 	// example:
 	//
 	// no
 	IsMarked *string `json:"IsMarked,omitempty" xml:"IsMarked,omitempty"`
-	// Indicates whether the account is a delegated administrator account of Security Center. Valid values:
+	// Indique si le compte est un compte administrateur délégué de Security Center. Valeurs valides :
 	//
 	// - **yes**
 	//
@@ -148,7 +148,7 @@ type ListAccountsInResourceDirectoryResponseBodyAccounts struct {
 	//
 	// no
 	IsSasDaAccount *string `json:"IsSasDaAccount,omitempty" xml:"IsSasDaAccount,omitempty"`
-	// Indicates whether the account is a management account of Cloud Threat Detection and Response (CTDR). Valid values:
+	// Indique si le compte est un compte de gestion de Cloud Threat Detection and Response (CTDR). Valeurs valides :
 	//
 	// - **yes**
 	//
@@ -158,7 +158,7 @@ type ListAccountsInResourceDirectoryResponseBodyAccounts struct {
 	//
 	// no
 	IsSiemControlAccount *string `json:"IsSiemControlAccount,omitempty" xml:"IsSiemControlAccount,omitempty"`
-	// Indicates whether the account is a delegated administrator account of Cloud Threat Detection and Response (CTDR). Valid values:
+	// Indique si le compte est un compte administrateur délégué de Cloud Threat Detection and Response (CTDR). Valeurs valides :
 	//
 	// - **yes**
 	//
@@ -168,59 +168,59 @@ type ListAccountsInResourceDirectoryResponseBodyAccounts struct {
 	//
 	// no
 	IsSiemDaAccount *string `json:"IsSiemDaAccount,omitempty" xml:"IsSiemDaAccount,omitempty"`
-	// The pay-as-you-go module switch. Valid values:
+	// Le commutateur de module à paiement à l\\"usage. Valeurs valides :
 	//
-	// - **0**: disabled
+	// - **0*	- : désactivé
 	//
-	// - **1**: enabled.
+	// - **1*	- : activé.
 	//
 	// example:
 	//
 	// 1
 	PostBasicService *int32 `json:"PostBasicService,omitempty" xml:"PostBasicService,omitempty"`
-	// The status of pay-as-you-go module switches, in JsonString format. Valid values:
+	// L\\"état des commutateurs de modules à paiement à l\\"usage, au format JsonString. Valeurs valides :
 	//
-	// - Key:
+	// - Clé :
 	//
-	//   - **VUL**: vulnerability management module
+	//   - **VUL*	- : module de gestion des vulnérabilités
 	//
-	//   - **CSPM**: Cloud Security Posture Management (CSPM) module
+	//   - **CSPM*	- : module Cloud Security Posture Management (CSPM)
 	//
-	//   - **AGENTLESS**: agentless detection module
+	//   - **AGENTLESS*	- : module de détection sans agent
 	//
-	//   - **SERVERLESS**: serverless asset module
+	//   - **SERVERLESS*	- : module de ressources serverless
 	//
-	//   - **CTDR**: Cloud Threat Detection and Response (CTDR) module
+	//   - **CTDR*	- : module Cloud Threat Detection and Response (CTDR)
 	//
-	//   - **RASP**: Runtime Application Self-Protection (RASP) module
+	//   - **RASP*	- : module Runtime Application Self-Protection (RASP)
 	//
-	//   - **SDK**: malicious file detection SDK module
+	//   - **SDK*	- : module SDK de détection de fichiers malveillants
 	//
-	//   - **POST_HOST**: host and container security module
+	//   - **POST_HOST*	- : module de sécurité des hôtes et des conteneurs
 	//
-	// - Value: 0 indicates disabled. 1 indicates enabled.
+	// - Valeur : 0 indique désactivé. 1 indique activé.
 	//
 	// example:
 	//
 	// {\\"VUL\\":0}
 	PostPayModuleSwitch *string `json:"PostPayModuleSwitch,omitempty" xml:"PostPayModuleSwitch,omitempty"`
-	// The Security Center instance ID.
+	// L\\"identifiant de l\\"instance Security Center.
 	//
 	// example:
 	//
 	// postpay-sas-x5x3hy1ly***
 	SaleInstance *string `json:"SaleInstance,omitempty" xml:"SaleInstance,omitempty"`
-	// The purchased edition of Security Center. Valid values:
+	// L\\"édition souscrite de Security Center. Valeurs valides :
 	//
-	// - **0*	- or **1**: Free Edition
+	// - **0*	- ou **1*	- : Édition gratuite
 	//
-	// - **2*	- or **3**: Enterprise Edition
+	// - **2*	- ou **3*	- : Édition Enterprise
 	//
-	// - **5**: Premium Edition
+	// - **5*	- : Édition Premium
 	//
-	// - **6**: Anti-virus Edition
+	// - **6*	- : Édition Anti-virus
 	//
-	// - **7**: Ultimate Edition.
+	// - **7*	- : Édition Ultimate.
 	//
 	// example:
 	//

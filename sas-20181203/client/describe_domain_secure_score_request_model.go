@@ -11,6 +11,8 @@ type iDescribeDomainSecureScoreRequest interface {
 	GoString() string
 	SetLang(v string) *DescribeDomainSecureScoreRequest
 	GetLang() *string
+	SetResourceDirectoryAccountId(v int64) *DescribeDomainSecureScoreRequest
+	GetResourceDirectoryAccountId() *int64
 	SetSourceIp(v string) *DescribeDomainSecureScoreRequest
 	GetSourceIp() *string
 }
@@ -25,7 +27,8 @@ type DescribeDomainSecureScoreRequest struct {
 	// example:
 	//
 	// zh
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang                       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The source IP address of the visitor.
 	//
 	// example:
@@ -46,12 +49,21 @@ func (s *DescribeDomainSecureScoreRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *DescribeDomainSecureScoreRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeDomainSecureScoreRequest) GetSourceIp() *string {
 	return s.SourceIp
 }
 
 func (s *DescribeDomainSecureScoreRequest) SetLang(v string) *DescribeDomainSecureScoreRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeDomainSecureScoreRequest) SetResourceDirectoryAccountId(v int64) *DescribeDomainSecureScoreRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

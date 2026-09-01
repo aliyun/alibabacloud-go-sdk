@@ -15,6 +15,8 @@ type iUpdateAlarmEventRequest interface {
 	GetLang() *string
 	SetOperationCode(v string) *UpdateAlarmEventRequest
 	GetOperationCode() *string
+	SetResourceDirectoryAccountId(v int64) *UpdateAlarmEventRequest
+	GetResourceDirectoryAccountId() *int64
 }
 
 type UpdateAlarmEventRequest struct {
@@ -41,7 +43,8 @@ type UpdateAlarmEventRequest struct {
 	// example:
 	//
 	// ignore
-	OperationCode *string `json:"OperationCode,omitempty" xml:"OperationCode,omitempty"`
+	OperationCode              *string `json:"OperationCode,omitempty" xml:"OperationCode,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 
 func (s UpdateAlarmEventRequest) String() string {
@@ -64,6 +67,10 @@ func (s *UpdateAlarmEventRequest) GetOperationCode() *string {
 	return s.OperationCode
 }
 
+func (s *UpdateAlarmEventRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *UpdateAlarmEventRequest) SetAlarmEventIdList(v []*int64) *UpdateAlarmEventRequest {
 	s.AlarmEventIdList = v
 	return s
@@ -76,6 +83,11 @@ func (s *UpdateAlarmEventRequest) SetLang(v string) *UpdateAlarmEventRequest {
 
 func (s *UpdateAlarmEventRequest) SetOperationCode(v string) *UpdateAlarmEventRequest {
 	s.OperationCode = &v
+	return s
+}
+
+func (s *UpdateAlarmEventRequest) SetResourceDirectoryAccountId(v int64) *UpdateAlarmEventRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

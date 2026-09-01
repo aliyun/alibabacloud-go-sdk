@@ -16,9 +16,9 @@ type iGetCurrentVersionPublishResponseBody interface {
 }
 
 type GetCurrentVersionPublishResponseBody struct {
-	// The data returned.
+	// The data details.
 	Data *GetCurrentVersionPublishResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -64,31 +64,31 @@ func (s *GetCurrentVersionPublishResponseBody) Validate() error {
 type GetCurrentVersionPublishResponseBodyData struct {
 	// Indicates whether automatic upgrade is enabled. Valid values:
 	//
-	// 	- **1**: yes.
+	// - **1**: Enabled.
 	//
-	// 	- **0**: no.
+	// - **0**: Disabled.
 	//
 	// example:
 	//
 	// 1
 	AutoUpgrade *int32 `json:"AutoUpgrade,omitempty" xml:"AutoUpgrade,omitempty"`
-	// Indicates whether you can enable custom upgrade for the Security Center agent. Valid values:
+	// Indicates whether the current user supports custom upgrades in Security Center. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Supported.
 	//
-	// 	- **false**
+	// - **false**: Not supported.
 	//
 	// example:
 	//
 	// true
 	BigCustomer *bool `json:"BigCustomer,omitempty" xml:"BigCustomer,omitempty"`
-	// The version of the Security Center agent.
+	// The current version.
 	//
 	// example:
 	//
 	// 0.0.8
 	CurVersion *string `json:"CurVersion,omitempty" xml:"CurVersion,omitempty"`
-	// The timestamp when the Security Center agent was forcibly upgraded.
+	// The timestamp for the forced client upgrade.
 	//
 	// example:
 	//
@@ -96,49 +96,49 @@ type GetCurrentVersionPublishResponseBodyData struct {
 	ForceUpgradeTime *int64 `json:"ForceUpgradeTime,omitempty" xml:"ForceUpgradeTime,omitempty"`
 	// Indicates whether the canary release policy is enabled. Valid values:
 	//
-	// 	- **1**: yes.
+	// - **1**: Enabled.
 	//
-	// 	- .**0**: no.
+	// - **0**: Disabled.
 	//
 	// example:
 	//
 	// 1
 	GraySwitchStatus *int32 `json:"GraySwitchStatus,omitempty" xml:"GraySwitchStatus,omitempty"`
-	// The latest version of the Security Center agent.
+	// The latest client version number.
 	//
 	// example:
 	//
 	// 0.0.9
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	// The timestamp when the latest version of the Security Center agent was created.
+	// The timestamp when the latest client version was created.
 	//
 	// example:
 	//
 	// 1662639150000
 	LatestVersionCreate *int64 `json:"LatestVersionCreate,omitempty" xml:"LatestVersionCreate,omitempty"`
-	// The description of about the latest version.
+	// The description of the latest version.
 	//
 	// example:
 	//
 	// test
 	LatestVersionDesc *string `json:"LatestVersionDesc,omitempty" xml:"LatestVersionDesc,omitempty"`
-	// The publish status of the Security Center agent. Valid values:
+	// The release status of the current version. Valid values:
 	//
-	// 	- **0**: not started.
+	// - **0**: Not started.
 	//
-	// 	- **1**: publishing.
+	// - **1**: Being released.
 	//
-	// 	- **2**: published.
+	// - **2**: Release completed.
 	//
-	// 	- **3**: publish suspended.
+	// - **3**: Release paused.
 	//
-	// 	- **4**: forcibly upgrading.
+	// - **4**: Forced upgrade in progress.
 	//
 	// example:
 	//
 	// 1
 	PublishStatus *int32 `json:"PublishStatus,omitempty" xml:"PublishStatus,omitempty"`
-	// The destination version of the Security Center agent.
+	// The target version to upgrade to.
 	//
 	// example:
 	//

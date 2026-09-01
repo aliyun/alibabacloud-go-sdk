@@ -11,6 +11,8 @@ type iDescribeCriteriaRequest interface {
 	GoString() string
 	SetMachineTypes(v string) *DescribeCriteriaRequest
 	GetMachineTypes() *string
+	SetResourceDirectoryAccountId(v int64) *DescribeCriteriaRequest
+	GetResourceDirectoryAccountId() *int64
 	SetSupportAutoTag(v bool) *DescribeCriteriaRequest
 	GetSupportAutoTag() *bool
 	SetValue(v string) *DescribeCriteriaRequest
@@ -25,7 +27,8 @@ type DescribeCriteriaRequest struct {
 	// example:
 	//
 	// ecs
-	MachineTypes *string `json:"MachineTypes,omitempty" xml:"MachineTypes,omitempty"`
+	MachineTypes               *string `json:"MachineTypes,omitempty" xml:"MachineTypes,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// Specifies whether the keyword that you specify for fuzzy search can be automatically matched. Default value: **false**. Valid values:
 	//
 	// 	- **true**
@@ -56,6 +59,10 @@ func (s *DescribeCriteriaRequest) GetMachineTypes() *string {
 	return s.MachineTypes
 }
 
+func (s *DescribeCriteriaRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeCriteriaRequest) GetSupportAutoTag() *bool {
 	return s.SupportAutoTag
 }
@@ -66,6 +73,11 @@ func (s *DescribeCriteriaRequest) GetValue() *string {
 
 func (s *DescribeCriteriaRequest) SetMachineTypes(v string) *DescribeCriteriaRequest {
 	s.MachineTypes = &v
+	return s
+}
+
+func (s *DescribeCriteriaRequest) SetResourceDirectoryAccountId(v int64) *DescribeCriteriaRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

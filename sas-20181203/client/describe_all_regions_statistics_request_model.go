@@ -15,6 +15,8 @@ type iDescribeAllRegionsStatisticsRequest interface {
 	GetGroupId() *int64
 	SetRemark(v string) *DescribeAllRegionsStatisticsRequest
 	GetRemark() *string
+	SetResourceDirectoryAccountId(v int64) *DescribeAllRegionsStatisticsRequest
+	GetResourceDirectoryAccountId() *int64
 	SetSourceIp(v string) *DescribeAllRegionsStatisticsRequest
 	GetSourceIp() *string
 }
@@ -43,7 +45,8 @@ type DescribeAllRegionsStatisticsRequest struct {
 	// example:
 	//
 	// 192.168.XX.XX
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Remark                     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The source IP address of the request.
 	//
 	// example:
@@ -72,6 +75,10 @@ func (s *DescribeAllRegionsStatisticsRequest) GetRemark() *string {
 	return s.Remark
 }
 
+func (s *DescribeAllRegionsStatisticsRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeAllRegionsStatisticsRequest) GetSourceIp() *string {
 	return s.SourceIp
 }
@@ -88,6 +95,11 @@ func (s *DescribeAllRegionsStatisticsRequest) SetGroupId(v int64) *DescribeAllRe
 
 func (s *DescribeAllRegionsStatisticsRequest) SetRemark(v string) *DescribeAllRegionsStatisticsRequest {
 	s.Remark = &v
+	return s
+}
+
+func (s *DescribeAllRegionsStatisticsRequest) SetResourceDirectoryAccountId(v int64) *DescribeAllRegionsStatisticsRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

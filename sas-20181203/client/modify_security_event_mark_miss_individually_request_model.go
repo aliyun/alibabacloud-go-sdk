@@ -17,6 +17,8 @@ type iModifySecurityEventMarkMissIndividuallyRequest interface {
 	GetInsertMarkMissParam() *string
 	SetLang(v string) *ModifySecurityEventMarkMissIndividuallyRequest
 	GetLang() *string
+	SetResourceDirectoryAccountId(v int64) *ModifySecurityEventMarkMissIndividuallyRequest
+	GetResourceDirectoryAccountId() *int64
 	SetSourceIp(v string) *ModifySecurityEventMarkMissIndividuallyRequest
 	GetSourceIp() *string
 }
@@ -49,7 +51,8 @@ type ModifySecurityEventMarkMissIndividuallyRequest struct {
 	// example:
 	//
 	// zh
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang                       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The source IP address of the request. You do not need to specify this parameter. It is automatically obtained by the system.
 	//
 	// example:
@@ -82,6 +85,10 @@ func (s *ModifySecurityEventMarkMissIndividuallyRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *ModifySecurityEventMarkMissIndividuallyRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *ModifySecurityEventMarkMissIndividuallyRequest) GetSourceIp() *string {
 	return s.SourceIp
 }
@@ -103,6 +110,11 @@ func (s *ModifySecurityEventMarkMissIndividuallyRequest) SetInsertMarkMissParam(
 
 func (s *ModifySecurityEventMarkMissIndividuallyRequest) SetLang(v string) *ModifySecurityEventMarkMissIndividuallyRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *ModifySecurityEventMarkMissIndividuallyRequest) SetResourceDirectoryAccountId(v int64) *ModifySecurityEventMarkMissIndividuallyRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

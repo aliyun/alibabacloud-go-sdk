@@ -15,6 +15,8 @@ type iDescribeAlarmEventDetailRequest interface {
 	GetFrom() *string
 	SetLang(v string) *DescribeAlarmEventDetailRequest
 	GetLang() *string
+	SetResourceDirectoryAccountId(v int64) *DescribeAlarmEventDetailRequest
+	GetResourceDirectoryAccountId() *int64
 	SetSourceIp(v string) *DescribeAlarmEventDetailRequest
 	GetSourceIp() *string
 }
@@ -47,7 +49,8 @@ type DescribeAlarmEventDetailRequest struct {
 	// example:
 	//
 	// zh
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang                       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The source IP address of the request.
 	//
 	// example:
@@ -76,6 +79,10 @@ func (s *DescribeAlarmEventDetailRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *DescribeAlarmEventDetailRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeAlarmEventDetailRequest) GetSourceIp() *string {
 	return s.SourceIp
 }
@@ -92,6 +99,11 @@ func (s *DescribeAlarmEventDetailRequest) SetFrom(v string) *DescribeAlarmEventD
 
 func (s *DescribeAlarmEventDetailRequest) SetLang(v string) *DescribeAlarmEventDetailRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeAlarmEventDetailRequest) SetResourceDirectoryAccountId(v int64) *DescribeAlarmEventDetailRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

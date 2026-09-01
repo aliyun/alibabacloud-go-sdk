@@ -28,13 +28,13 @@ type ModifyPostPayModuleSwitchResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code of the request.
+	// The HTTP status code of the request result.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The returned message of the request result.
 	//
 	// example:
 	//

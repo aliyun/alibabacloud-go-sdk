@@ -30,27 +30,27 @@ type iListAttackEventInfoRequest interface {
 }
 
 type ListAttackEventInfoRequest struct {
-	// Attacked asset. You can fill in the machine instance name, public IP, or private IP.
+	// The attacked asset. You can specify the instance name, public IP address, or private IP address.
 	//
 	// example:
 	//
 	// instance_**
 	AttackInstance *string `json:"AttackInstance,omitempty" xml:"AttackInstance,omitempty"`
-	// Attack type. Values:
+	// The attack type. Valid values:
 	//
-	// - 9: SQL Server brute force attack
+	// - 9: SQL Server brute-force attacks
 	//
-	// - 5: SSH brute force attack
+	// - 5: SSH brute-force attacks
 	//
-	// - 6: RDP brute force attack
+	// - 6: RDP brute-force attacks
 	//
-	// - 101: Java Struts2 attack interception
+	// - 101: Java Struts2 attack blocked
 	//
-	// - 102: Redis attack interception
+	// - 102: Redis attack blocked
 	//
-	// - 103: Chinese AntSword WebShell communication
+	// - 103: China Chopper (AntSword) WebShell communication
 	//
-	// - 104: Chinese Chopper WebShell communication
+	// - 104: China Chopper WebShell communication
 	//
 	// - 133: XISE WebShell communication
 	//
@@ -62,11 +62,11 @@ type ListAttackEventInfoRequest struct {
 	//
 	// - 211: ASP WebShell upload
 	//
-	// - 215: Special suffix WebShell upload
+	// - 215: Special extension WebShell upload
 	//
-	// - ai_webshell: Intelligent defense for WebShell upload
+	// - ai_webshell: WebShell upload intelligent defense
 	//
-	// - java_common_rce: Java common RCE vulnerability interception
+	// - java_common_rce: Java common remote code execution (RCE) vulnerability blocked
 	//
 	// - alinet_webrce: Adaptive web attack defense
 	//
@@ -74,25 +74,25 @@ type ListAttackEventInfoRequest struct {
 	//
 	// 9
 	AttackType *string `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
-	// Page number to display in a paginated query.
+	// The number of the page to return in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Target port of the attack.
+	// The Attack Target Ports of the Attack Target.
 	//
 	// example:
 	//
 	// 9085
 	DstPort *string `json:"DstPort,omitempty" xml:"DstPort,omitempty"`
-	// Timestamp of the end time.
+	// The timestamp of the end time.
 	//
 	// example:
 	//
 	// 1753152532550
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Set the language type for request and response messages. Default is **zh**. Values:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -102,19 +102,21 @@ type ListAttackEventInfoRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Maximum number of records per page in a paginated query.
+	// The maximum number of entries to return on each page in a paged query.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Source IP of the attack.
+	// The Attack Source IP Addresses.
 	//
 	// example:
 	//
 	// 185.237.96.***
 	SrcIp *string `json:"SrcIp,omitempty" xml:"SrcIp,omitempty"`
-	// Timestamp of the start time.
+	// The timestamp of the start time.
+	//
+	// This field is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//

@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Select an operation for assets.
+// Adds assets to an asset selection operation.
 //
 // @param request - AddAssetSelectionCriteriaRequest
 //
@@ -24,6 +24,10 @@ func (client *Client) AddAssetSelectionCriteriaWithContext(ctx context.Context, 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.Criteria) {
 		query["Criteria"] = request.Criteria
 	}
@@ -125,7 +129,7 @@ func (client *Client) AddBaselineCheckWhiteRecordWithContext(ctx context.Context
 
 // Summary:
 //
-// Adds instances on which risks are detected based on check items of the configuration assessment feature to a whitelist.
+// Adds instances to the whitelist at the check item level for cloud platform configuration checks.
 //
 // @param request - AddCheckInstanceResultWhiteListRequest
 //
@@ -146,6 +150,10 @@ func (client *Client) AddCheckInstanceResultWhiteListWithContext(ctx context.Con
 
 	if !dara.IsNil(request.CheckId) {
 		query["CheckId"] = request.CheckId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
 	}
 
 	if !dara.IsNil(request.InstanceIds) {
@@ -189,7 +197,7 @@ func (client *Client) AddCheckInstanceResultWhiteListWithContext(ctx context.Con
 
 // Summary:
 //
-// Adds the check items of the configuration assessment feature to the whitelist.
+// Adds check items to the whitelist for cloud platform configuration checks.
 //
 // @param request - AddCheckResultWhiteListRequest
 //
@@ -206,6 +214,10 @@ func (client *Client) AddCheckResultWhiteListWithContext(ctx context.Context, re
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckIds) {
 		query["CheckIds"] = request.CheckIds
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
 	}
 
 	if !dara.IsNil(request.InstanceIds) {
@@ -245,7 +257,7 @@ func (client *Client) AddCheckResultWhiteListWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Create a custom defense rule.
+// Creates a user-defined defense rule.
 //
 // @param request - AddClientUserDefineRuleRequest
 //
@@ -1383,7 +1395,7 @@ func (client *Client) AddUninstallClientsByUuidsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Adds one or more processes for intelligent behavior analysis.
+// Adds processes for intelligent behavior analytics.
 //
 // @param request - AddUnknownThreatDetectProcessRequest
 //
@@ -1400,6 +1412,10 @@ func (client *Client) AddUnknownThreatDetectProcessWithContext(ctx context.Conte
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventIdList) {
 		query["EventIdList"] = request.EventIdList
+	}
+
+	if !dara.IsNil(request.HandleRemark) {
+		query["HandleRemark"] = request.HandleRemark
 	}
 
 	if !dara.IsNil(request.ProcessList) {
@@ -1500,6 +1516,10 @@ func (client *Client) AdvanceSecurityEventOperationsWithContext(ctx context.Cont
 
 	if !dara.IsNil(request.EventType) {
 		query["EventType"] = request.EventType
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.ResourceOwnerId) {
@@ -1746,6 +1766,10 @@ func (client *Client) BindAuthToMachineWithContext(ctx context.Context, request 
 		query["BindAll"] = request.BindAll
 	}
 
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.Criteria) {
 		query["Criteria"] = request.Criteria
 	}
@@ -1764,6 +1788,10 @@ func (client *Client) BindAuthToMachineWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.PreBindOrderId) {
 		query["PreBindOrderId"] = request.PreBindOrderId
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
 	}
 
 	if !dara.IsNil(request.ResourceDirectoryAccountId) {
@@ -1939,7 +1967,7 @@ func (client *Client) ChangeAssetRefreshTaskConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// Modifies the configuration items of the configuration assessment feature.
+// Modifies the configuration of a cloud platform configuration check.
 //
 // @param tmpReq - ChangeCheckConfigRequest
 //
@@ -1966,6 +1994,10 @@ func (client *Client) ChangeCheckConfigWithContext(ctx context.Context, tmpReq *
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AddedCheck) {
 		query["AddedCheck"] = request.AddedCheck
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
 	}
 
 	if !dara.IsNil(request.ConfigRequirementIdsShrink) {
@@ -2105,6 +2137,58 @@ func (client *Client) ChangeCheckCustomConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
+// Modifies the configuration instance of a check scope.
+//
+// @param request - ChangeCheckScopeConfigInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeCheckScopeConfigInstanceResponse
+func (client *Client) ChangeCheckScopeConfigInstanceWithContext(ctx context.Context, request *ChangeCheckScopeConfigInstanceRequest, runtime *dara.RuntimeOptions) (_result *ChangeCheckScopeConfigInstanceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AddAssetUuids) {
+		query["AddAssetUuids"] = request.AddAssetUuids
+	}
+
+	if !dara.IsNil(request.ConfigId) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !dara.IsNil(request.DeleteAssetUuids) {
+		query["DeleteAssetUuids"] = request.DeleteAssetUuids
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ChangeCheckScopeConfigInstance"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ChangeCheckScopeConfigInstanceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the details of the deduction modules of the security score feature, including custom settings.
 //
 // @param request - ChangeSecurityScoreRuleRequest
@@ -2126,6 +2210,10 @@ func (client *Client) ChangeSecurityScoreRuleWithContext(ctx context.Context, re
 
 	if !dara.IsNil(request.ResetSecurityScoreRule) {
 		query["ResetSecurityScoreRule"] = request.ResetSecurityScoreRule
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.SecurityScoreCategoryList) {
@@ -2484,6 +2572,14 @@ func (client *Client) CreateAgentlessScanTaskWithContext(ctx context.Context, re
 		query["AutoDeleteDays"] = request.AutoDeleteDays
 	}
 
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !dara.IsNil(request.ReleaseAfterScan) {
 		query["ReleaseAfterScan"] = request.ReleaseAfterScan
 	}
@@ -2607,7 +2703,7 @@ func (client *Client) CreateAntiBruteForceRuleWithContext(ctx context.Context, t
 
 // Summary:
 //
-// Create asset selection configurations.
+// Creates an asset selection configuration.
 //
 // @param request - CreateAssetSelectionConfigRequest
 //
@@ -2624,6 +2720,10 @@ func (client *Client) CreateAssetSelectionConfigWithContext(ctx context.Context,
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessType) {
 		query["BusinessType"] = request.BusinessType
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
 	}
 
 	if !dara.IsNil(request.Platform) {
@@ -3395,7 +3495,7 @@ func (client *Client) CreateCustomizedDictWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates a periodic scan task. The task can be an image scan task, urgent vulnerability scan task, or virus scan task.
+// Creates a periodic scan task, including image scan, emergency vulnerability scanning, and virus scan.
 //
 // @param request - CreateCycleTaskRequest
 //
@@ -3410,6 +3510,10 @@ func (client *Client) CreateCycleTaskWithContext(ctx context.Context, request *C
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.Enable) {
 		query["Enable"] = request.Enable
 	}
@@ -3525,37 +3629,33 @@ func (client *Client) CreateDynamicDictWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Submits a file to the cloud for detection.
+// Pushes a file to the cloud for detection.
 //
 // Description:
 //
-// Use this operation to submit a file to the cloud for detection. It supports two scenarios: malicious file detection and Skill archive detection.
+// Pushes a file to the cloud for detection.
 //
-// ### File submission methods
+// ### File upload methods
 //
-// Submit a file by either pre-uploading it or providing a download link.
+// Two file upload methods are supported: pre-upload and download URL.
 //
-// If you use the pre-upload method, ensure the file is uploaded successfully before you call this operation. For details on how to upload a file, see the CreateFileDetectUploadUrl operation.
+// If you use the pre-upload method, confirm that the file is uploaded before you invoke this operation. For information about how to upload a file, refer to the [CreateFileDetectUploadUrl](~~CreateFileDetectUploadUrl~~) operation.
 //
-// If you use a download link, specify a publicly accessible URL in the `DownloadUrl` parameter.
+// If you use the download URL method, pass in a download URL that supports public network access by using the DownloadUrl parameter.
 //
-// The malicious file detection scenario supports both methods. For the Skill archive detection scenario (when `Type` is `6`), the pre-upload method is not supported, and you must provide a download link.
+// ### File unique identifier
 //
-// ### Unique identifier
+// All file detection operations include the HashKey parameter, which represents the unique identifier of the file being detected and is used to query detection results.
 //
-// All API operations related to file detection include the `HashKey` parameter. This parameter specifies the file\\"s unique identifier for a detection task, which you use to query the results.
+// Calculate the HashKey before calling the operation. Only the MD5 or SHA-256 of the complete file content is supported.
 //
-// For Skill archive detection (when `Type` is `6`), you do not need to calculate the `HashKey` in advance. This operation returns a globally unique UUID as the file\\"s identifier, which you can use to query the results.
+// To calculate the MD5 or SHA-256 value of the file content, follow these two steps:
 //
-// For malicious file detection (when `Type` is `0`), you must calculate the `HashKey` before you call this operation. The `HashKey` value must be the MD5 or SHA-256 hash of the entire file.
+// 1. Use the MD5 or SHA-256 algorithm to encrypt the data and generate a 128-bit or 256-bit hash value. Available libraries include Java MessageDigest and Python hashlib.
 //
-// To calculate the MD5 or SHA-256 hash of a file, follow these steps:
+// 2. Encode the generated hash value as a hexadecimal string. Available libraries include Java Codec and Python hex function. Make sure the final string is a combination of digits and lowercase letters. The MD5 string is 32 characters, and the SHA-256 string is 64 characters.
 //
-// 1. Use the MD5 or SHA-256 algorithm to generate a 128-bit or 256-bit hash value. You can use common libraries such as `MessageDigest` in Java or the `hashlib` library in Python.
-//
-// 2. Encode the hash value into a hexadecimal string. You can use tools such as the `Codec` utility in Java or the `hex()` function in Python. Ensure that the final string consists of only digits and lowercase letters. An MD5 hash is 32 characters long, and a SHA-256 hash is 64 characters long.
-//
-// Note: You must use the same `HashKey` value when you submit a file for detection and when you query the results. Otherwise, both the submission and the query will fail.
+// Note: The push and query operations for a single detection must use the same HashKey. Otherwise, the detection cannot be correctly pushed and the results cannot be queried.
 //
 // @param request - CreateFileDetectRequest
 //
@@ -5129,7 +5229,7 @@ func (client *Client) CreateOrUpdateDingTalkWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Creates a bucket check task.
+// Creates a bucket detection task.
 //
 // @param request - CreateOssBucketScanTaskRequest
 //
@@ -5184,6 +5284,10 @@ func (client *Client) CreateOssBucketScanTaskWithContext(ctx context.Context, re
 		query["ScanMode"] = request.ScanMode
 	}
 
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5209,7 +5313,11 @@ func (client *Client) CreateOssBucketScanTaskWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Creates a policy for detecting malicious Object Storage Service (OSS) objects by using the SDK for malicious file detection feature.
+// Creates a scan policy for detecting malicious files in OSS under the malicious file detection feature.
+//
+// Description:
+//
+// Before calling this operation, call the [PublicPreCheckImageScanTask](~~PublicPreCheckImageScanTask~~) operation to query the number of container images covered by the image scan task and the number of authorizations consumed. Ensure that sufficient authorizations are available for the image scan task to prevent the task from being interrupted due to insufficient authorizations.
 //
 // @param request - CreateOssScanConfigRequest
 //
@@ -5228,8 +5336,16 @@ func (client *Client) CreateOssScanConfigWithContext(ctx context.Context, reques
 		query["AllKeyPrefix"] = request.AllKeyPrefix
 	}
 
+	if !dara.IsNil(request.AutoAdd) {
+		query["AutoAdd"] = request.AutoAdd
+	}
+
 	if !dara.IsNil(request.BucketNameList) {
 		query["BucketNameList"] = request.BucketNameList
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
 	}
 
 	if !dara.IsNil(request.DecompressMaxFileCount) {
@@ -5274,6 +5390,10 @@ func (client *Client) CreateOssScanConfigWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.ScanDayList) {
 		query["ScanDayList"] = request.ScanDayList
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
 	}
 
 	if !dara.IsNil(request.StartTime) {
@@ -5425,7 +5545,7 @@ func (client *Client) CreateRestoreJobWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Applies for a trial of Security Center.
+// Starts a trial of Security Center.
 //
 // @param tmpReq - CreateSasTrialRequest
 //
@@ -5443,6 +5563,11 @@ func (client *Client) CreateSasTrialWithContext(ctx context.Context, tmpReq *Cre
 	openapiutil.Convert(tmpReq, request)
 	if !dara.IsNil(tmpReq.RequestForm) {
 		request.RequestFormShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RequestForm, dara.String("RequestForm"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
 	}
 
 	body := map[string]interface{}{}
@@ -5467,7 +5592,8 @@ func (client *Client) CreateSasTrialWithContext(ctx context.Context, tmpReq *Cre
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateSasTrial"),
@@ -5510,6 +5636,10 @@ func (client *Client) CreateServiceLinkedRoleWithContext(ctx context.Context, re
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.ServiceLinkedRole) {
 		query["ServiceLinkedRole"] = request.ServiceLinkedRole
 	}
@@ -5593,7 +5723,7 @@ func (client *Client) CreateServiceTrailWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Creates a node to query alert events triggered by the same rule or Alarm Metric through alerting.
+// Creates a node to query alerting events triggered by the same rule hits or Alarm Metric.
 //
 // @param request - CreateSimilarSecurityEventsQueryTaskRequest
 //
@@ -5608,6 +5738,14 @@ func (client *Client) CreateSimilarSecurityEventsQueryTaskWithContext(ctx contex
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.ResourceOwnerId) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
@@ -5734,6 +5872,10 @@ func (client *Client) CreateSuspEventNoteWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.Note) {
 		query["Note"] = request.Note
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5927,7 +6069,7 @@ func (client *Client) CreateUniRestorePlanWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Creates an intelligent behavior analysis strategy.
+// Creates an intelligent behavior analytics policy.
 //
 // @param request - CreateUnknownThreatDetectStrategyRequest
 //
@@ -6039,7 +6181,7 @@ func (client *Client) CreateUserSettingWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates a one-time virus scan task that is immediately executed.
+// Creates a one-time virus scan task.
 //
 // @param request - CreateVirusScanOnceTaskRequest
 //
@@ -6054,6 +6196,10 @@ func (client *Client) CreateVirusScanOnceTaskWithContext(ctx context.Context, re
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.Param) {
 		query["Param"] = request.Param
 	}
@@ -8404,6 +8550,10 @@ func (client *Client) DeleteSecurityEventMarkMissListWithContext(ctx context.Con
 		query["Ids"] = request.Ids
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.ResourceOwnerId) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
@@ -8594,6 +8744,10 @@ func (client *Client) DeleteSuspEventNodeWithContext(ctx context.Context, reques
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.NoteId) {
 		query["NoteId"] = request.NoteId
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -8922,6 +9076,10 @@ func (client *Client) DeleteVulWhitelistWithContext(ctx context.Context, request
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Id) {
 		query["Id"] = request.Id
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.Whitelist) {
@@ -9370,6 +9528,10 @@ func (client *Client) DescribeAlarmEventDetailWithContext(ctx context.Context, r
 		query["Lang"] = request.Lang
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.SourceIp) {
 		query["SourceIp"] = request.SourceIp
 	}
@@ -9578,6 +9740,10 @@ func (client *Client) DescribeAllRegionsStatisticsWithContext(ctx context.Contex
 
 	if !dara.IsNil(request.Remark) {
 		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.SourceIp) {
@@ -10628,6 +10794,10 @@ func (client *Client) DescribeCanFixVulListWithContext(ctx context.Context, requ
 		query["RepoRegionId"] = request.RepoRegionId
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.ScanRange) {
 		query["ScanRange"] = request.ScanRange
 	}
@@ -10702,6 +10872,10 @@ func (client *Client) DescribeChartDataWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.ReportId) {
 		query["ReportId"] = request.ReportId
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.TimeEnd) {
@@ -11413,11 +11587,11 @@ func (client *Client) DescribeClientProblemTypeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries asset information that meets specified search conditions. For example, you can search for assets by instance name or region. Two pagination methods are supported: page-based pagination and NextToken-based pagination. We recommend that you use NextToken-based pagination.
+// Queries asset information by settings conditional query criteria, such as asset instance name or asset instance region. Both paging and NextToken methods are supported. The NextToken method is recommended.
 //
 // Description:
 //
-// You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. You can also set the logical relationship between multiple search conditions to search for assets that meet multiple conditions.
+// You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. You can also set logical relationships between different search conditions to search for assets that meet multiple criteria.
 //
 // @param request - DescribeCloudCenterInstancesRequest
 //
@@ -11913,7 +12087,7 @@ func (client *Client) DescribeClusterInfoListWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Retrieves information about the network topology edge by cluster.
+// Queries the network topology edge information at the cluster level.
 //
 // @param request - DescribeClusterNetworkRequest
 //
@@ -11961,7 +12135,7 @@ func (client *Client) DescribeClusterNetworkWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Query the status of cluster scanning components.
+// Queries the scanner status information for a Kubernetes cluster.
 //
 // @param request - DescribeClusterScannerListRequest
 //
@@ -12832,6 +13006,10 @@ func (client *Client) DescribeCriteriaWithContext(ctx context.Context, request *
 		query["MachineTypes"] = request.MachineTypes
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.SupportAutoTag) {
 		query["SupportAutoTag"] = request.SupportAutoTag
 	}
@@ -13012,6 +13190,10 @@ func (client *Client) DescribeCustomizeReportConfigDetailWithContext(ctx context
 		query["ReportId"] = request.ReportId
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.SourceIp) {
 		query["SourceIp"] = request.SourceIp
 	}
@@ -13074,6 +13256,10 @@ func (client *Client) DescribeCustomizeReportListWithContext(ctx context.Context
 
 	if !dara.IsNil(request.ReportVersion) {
 		query["ReportVersion"] = request.ReportVersion
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.Title) {
@@ -13724,6 +13910,10 @@ func (client *Client) DescribeDomainSecureScoreWithContext(ctx context.Context, 
 		query["Lang"] = request.Lang
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.SourceIp) {
 		query["SourceIp"] = request.SourceIp
 	}
@@ -14108,6 +14298,10 @@ func (client *Client) DescribeEventLevelCountWithContext(ctx context.Context, re
 		query["MultiAccountActionType"] = request.MultiAccountActionType
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.TargetType) {
 		query["TargetType"] = request.TargetType
 	}
@@ -14154,6 +14348,10 @@ func (client *Client) DescribeEventOnStageWithContext(ctx context.Context, reque
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.Lang) {
 		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -14922,6 +15120,10 @@ func (client *Client) DescribeGroupedInstancesWithContext(ctx context.Context, r
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.SaleVersionCheckCode) {
@@ -16576,6 +16778,10 @@ func (client *Client) DescribeImageGroupedVulListWithContext(ctx context.Context
 		query["RepoRegionId"] = request.RepoRegionId
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.RuleTag) {
 		query["RuleTag"] = request.RuleTag
 	}
@@ -17558,6 +17764,10 @@ func (client *Client) DescribeImageVulListWithContext(ctx context.Context, reque
 		query["RepoRegionId"] = request.RepoRegionId
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.RuleTag) {
 		query["RuleTag"] = request.RuleTag
 	}
@@ -18471,7 +18681,7 @@ func (client *Client) DescribeOfflineMachinesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the list of client tasks.
+// Queries a list of client tasks.
 //
 // @param request - DescribeOnceTaskRequest
 //
@@ -18748,6 +18958,10 @@ func (client *Client) DescribePropertyCronDetailWithContext(ctx context.Context,
 
 	if !dara.IsNil(request.Remark) {
 		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.Source) {
@@ -19135,7 +19349,7 @@ func (client *Client) DescribePropertyProcItemWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries detailed information about the middleware list on the Asset Fingerprints investigation page.
+// Queries the details of the middleware list on the Asset Fingerprints investigation page.
 //
 // @param request - DescribePropertyScaDetailRequest
 //
@@ -19196,6 +19410,10 @@ func (client *Client) DescribePropertyScaDetailWithContext(ctx context.Context, 
 
 	if !dara.IsNil(request.Remark) {
 		query["Remark"] = request.Remark
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.ScaName) {
@@ -19738,6 +19956,10 @@ func (client *Client) DescribePropertyUserDetailWithContext(ctx context.Context,
 		query["Remark"] = request.Remark
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.UseNextToken) {
 		query["UseNextToken"] = request.UseNextToken
 	}
@@ -19900,6 +20122,10 @@ func (client *Client) DescribeReportExportWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.Lang) {
 		query["Lang"] = request.Lang
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -20718,6 +20944,10 @@ func (client *Client) DescribeScreenScoreThreadWithContext(ctx context.Context, 
 		query["EndTime"] = request.EndTime
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.Source) {
 		query["Source"] = request.Source
 	}
@@ -20865,11 +21095,11 @@ func (client *Client) DescribeSecureSuggestionWithContext(ctx context.Context, r
 //
 // Summary:
 //
-// Queries the day of a week when custom check tasks are performed and the time range during which the custom check tasks are performed.
+// Queries the custom check cycle and time period configured by the user.
 //
 // Description:
 //
-// This operation is phased out. You can use the GetCheckConfig operation.
+// This operation is deprecated. Use the GetCheckConfig operation instead.
 //
 // @param request - DescribeSecurityCheckScheduleConfigRequest
 //
@@ -22317,7 +22547,7 @@ func (client *Client) DescribeSuspEventUserSettingWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries a list of alert events that are generated without aggregation.
+// Queries the list of security alert events that have not been aggregated.
 //
 // @param tmpReq - DescribeSuspEventsRequest
 //
@@ -23372,6 +23602,10 @@ func (client *Client) DescribeUuidsByVulNamesWithContext(ctx context.Context, re
 		query["Remark"] = request.Remark
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.SearchTags) {
 		query["SearchTags"] = request.SearchTags
 	}
@@ -23648,6 +23882,10 @@ func (client *Client) DescribeVulCheckTaskStatusDetailWithContext(ctx context.Co
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.TaskIds) {
 		query["TaskIds"] = request.TaskIds
 	}
@@ -24242,6 +24480,10 @@ func (client *Client) DescribeVulWhitelistWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -25716,6 +25958,10 @@ func (client *Client) ExportCustomizeReportWithContext(ctx context.Context, requ
 		query["ReportId"] = request.ReportId
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25884,6 +26130,10 @@ func (client *Client) ExportSuspEventsWithContext(ctx context.Context, request *
 		query["Remark"] = request.Remark
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.SourceIp) {
 		query["SourceIp"] = request.SourceIp
 	}
@@ -25937,17 +26187,17 @@ func (client *Client) ExportSuspEventsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Export vulnerability list
+// Exports a vulnerability list.
 //
 // Description:
 //
-// This API exports vulnerabilities, including Linux software vulnerabilities, Windows system vulnerabilities, Web-CMS vulnerabilities, application vulnerabilities, and emergency vulnerabilities.
+// Exports a vulnerability list. You can export vulnerability lists for Linux software vulnerabilities, Windows system vulnerabilities, Web-CMS vulnerabilities, application vulnerabilities, and emergency vulnerabilities.
 //
-// Use this API to create a `vulnerability export task`. Then, call `DescribeVulExportInfo` with the task\\"s ID to check its progress.
+// This operation is used together with the DescribeVulExportInfo operation. After you call this operation to create a vulnerability export task, call the [DescribeVulExportInfo](~~DescribeVulExportInfo~~) operation with the export task ID to check the progress of the export task.
 //
 // ### QPS limit
 //
-// The QPS limit for a single user is 10. If you exceed this limit, API calls are throttled. This can affect your service. Plan your API calls accordingly.
+// The single-user QPS limit for this operation is 10 calls per second. If the number of calls per second exceeds the limit, throttling is triggered. This may affect your business. Manage your calls appropriately.
 //
 // @param request - ExportVulRequest
 //
@@ -25964,6 +26214,10 @@ func (client *Client) ExportVulWithContext(ctx context.Context, request *ExportV
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AliasName) {
 		query["AliasName"] = request.AliasName
+	}
+
+	if !dara.IsNil(request.AssetType) {
+		query["AssetType"] = request.AssetType
 	}
 
 	if !dara.IsNil(request.AttachTypes) {
@@ -26603,7 +26857,7 @@ func (client *Client) GenerateOnceTaskWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Obtains account tags.
+// Retrieves account labels.
 //
 // @param request - GetAccountLabelRequest
 //
@@ -26803,7 +27057,7 @@ func (client *Client) GetAgentlessTaskCountWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Query the estimated volume for agentless detection.
+// Retrieves the estimated scan volume for agentless detection.
 //
 // @param request - GetAgentlessTaskUsedSizeEstimateRequest
 //
@@ -26864,6 +27118,10 @@ func (client *Client) GetAlarmMachineCountWithContext(ctx context.Context, reque
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.From) {
 		query["From"] = request.From
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -27511,6 +27769,50 @@ func (client *Client) GetCanTrySasWithContext(ctx context.Context, request *GetC
 
 // Summary:
 //
+// Retrieves the check item configurations for cloud platform configuration checks.
+//
+// @param request - GetCheckConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCheckConfigResponse
+func (client *Client) GetCheckConfigWithContext(ctx context.Context, request *GetCheckConfigRequest, runtime *dara.RuntimeOptions) (_result *GetCheckConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCheckConfig"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCheckConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries statistics on the number of risk items in cloud security posture management (CSPM) for cloud services.
 //
 // @param request - GetCheckCountStatisticRequest
@@ -27634,6 +27936,10 @@ func (client *Client) GetCheckProcessWithContext(ctx context.Context, request *G
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.TaskId) {
 		query["TaskId"] = request.TaskId
 	}
@@ -27749,6 +28055,54 @@ func (client *Client) GetCheckSaleWithContext(ctx context.Context, request *GetC
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetCheckSaleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the check scope configuration.
+//
+// @param request - GetCheckScopeConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCheckScopeConfigResponse
+func (client *Client) GetCheckScopeConfigWithContext(ctx context.Context, request *GetCheckScopeConfigRequest, runtime *dara.RuntimeOptions) (_result *GetCheckScopeConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigId) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetCheckScopeConfig"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetCheckScopeConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -27900,6 +28254,10 @@ func (client *Client) GetCheckTimeDimensionStatisticWithContext(ctx context.Cont
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EndTimeStamp) {
 		query["EndTimeStamp"] = request.EndTimeStamp
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.StartTimeStamp) {
@@ -28143,7 +28501,7 @@ func (client *Client) GetCloudAssetDetailWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the summary of cloud assets.
+// Retrieves the summary of cloud assets.
 //
 // @param request - GetCloudAssetSummaryRequest
 //
@@ -28164,6 +28522,10 @@ func (client *Client) GetCloudAssetSummaryWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.IsSaleData) {
 		query["IsSaleData"] = request.IsSaleData
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.Vendors) {
@@ -28590,6 +28952,10 @@ func (client *Client) GetDataTrendWithContext(ctx context.Context, request *GetD
 		query["Interval"] = request.Interval
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.StartTimestamp) {
 		query["StartTimestamp"] = request.StartTimestamp
 	}
@@ -28767,25 +29133,19 @@ func (client *Client) GetFileDetectReportWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves file detection results in batches using `HashKey` values.
+// Retrieves file detection results in batches by HashKey.
 //
 // Description:
 //
-// You can retrieve detection results only for submitted files. Results are retained for 5 hours and can be queried multiple times during this period. To submit a file for detection, call the [CreateFileDetect](~~CreateFileDetect~~) operation.
+// You can retrieve detection results only for files that have been submitted for detection. Detection results are retained for 5 hours and can be queried repeatedly within this period. For the detection submission operation, refer to [CreateFileDetect](~~CreateFileDetect~~).
 //
-// ### Unique file identifier
+// ### File unique identifier
 //
-// All file detection operations use the `HashKey` parameter. `HashKey` is a unique file identifier used to query the corresponding file detection result.
-//
-// For Skill compressed package detection (when Type is 6), obtain the `HashKey` from the response of the [CreateFileDetect](~~CreateFileDetect~~) operation.
-//
-// For malicious file detection (when Type is 0), the `HashKey` must be the MD5 or SHA-256 hash of the entire file.
+// All file detection operations include the HashKey parameter, which represents the unique identifier of the file being detected and is used to query detection results. Only the MD5 or SHA-256 hash of the complete file content is supported.
 //
 // ### Query detection results
 //
-// In a malicious file detection scenario (when `Type` is `0`), you can filter files by their attributes using the `FileLabel` field in the `Ext` field. For example, you can combine the `encrypted` and `Zip` attributes to filter for encrypted compressed packages. Supported file tags for compressed packages include: `Zip`, `RAR`, `7-Zip`, `XAR`, `ZLib`, `GZip`, and `tar`. You can also use the `Highlight` field in the `Ext` field to locate malicious code segments in `WebShell` files. The `Highlight` field is a list in which each element represents a code range. The numbers indicate the character offset from the beginning of the file.
-//
-// In a Skill compressed package detection scenario (when `Type` is `6`), you can retrieve the detection report from the `Ext` field. This report includes results from deep intent analysis, prompt injection detection, sensitive information recognition, and malicious script detection. To query the details of an individual file within the compressed package, call the [ListCompressFileDetectResult](~~ListCompressFileDetectResult~~) operation.
+// You can filter file properties by using the FileLabel in the Ext extension field. For example, combine the encrypted and Zip properties to filter encrypted archives. Supported file labels for compressed file types: Zip, RAR, 7-Zip, XAR, ZLib, GZip, and tar. You can locate malicious code segments in web shell files by using the Highlight field in the Ext extension field. The Highlight field is a list type, where each element corresponds to a code range. The numbers represent the offset in characters relative to the file header.
 //
 // @param request - GetFileDetectResultRequest
 //
@@ -29781,6 +30141,10 @@ func (client *Client) GetInstanceAlarmStatisticsWithContext(ctx context.Context,
 		query["From"] = request.From
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.Uuid) {
 		query["Uuid"] = request.Uuid
 	}
@@ -29858,7 +30222,7 @@ func (client *Client) GetInterceptionRuleDetailWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the statistics of the container firewall feature.
+// Queries the micro-segmentation defense overview.
 //
 // @param request - GetInterceptionSummaryRequest
 //
@@ -29875,6 +30239,10 @@ func (client *Client) GetInterceptionSummaryWithContext(ctx context.Context, req
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ClusterId) {
 		query["ClusterId"] = request.ClusterId
+	}
+
+	if !dara.IsNil(request.ExcludeClusterTypes) {
+		query["ExcludeClusterTypes"] = request.ExcludeClusterTypes
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -30935,6 +31303,10 @@ func (client *Client) GetSecurityScoreRuleWithContext(ctx context.Context, reque
 		query["Lang"] = request.Lang
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -31267,6 +31639,10 @@ func (client *Client) GetSuspiciousStatisticsWithContext(ctx context.Context, re
 		query["GroupIdList"] = request.GroupIdList
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.SourceIp) {
 		query["SourceIp"] = request.SourceIp
 	}
@@ -31381,7 +31757,7 @@ func (client *Client) GetUnknownThreatDetectStatisticWithContext(ctx context.Con
 
 // Summary:
 //
-// # Get Valid Resource Package Instances
+// Retrieves active resource plan instances.
 //
 // @param request - GetValidDeductInstancesRequest
 //
@@ -31920,6 +32296,10 @@ func (client *Client) HandleSimilarSecurityEventsWithContext(ctx context.Context
 		query["Remark"] = request.Remark
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.ResourceOwnerId) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
@@ -31974,6 +32354,10 @@ func (client *Client) HandleUnknownThreatDetectEventWithContext(ctx context.Cont
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.EventIdList) {
 		query["EventIdList"] = request.EventIdList
+	}
+
+	if !dara.IsNil(request.HandleRemark) {
+		query["HandleRemark"] = request.HandleRemark
 	}
 
 	if !dara.IsNil(request.Status) {
@@ -33275,7 +33659,7 @@ func (client *Client) ListAssetSelectionTargetWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Get Attack Analysis Event List
+// Retrieves the list of attack analysis events.
 //
 // @param request - ListAttackEventInfoRequest
 //
@@ -33853,7 +34237,7 @@ func (client *Client) ListCheckInstanceResultWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the check items that can be customized.
+// Retrieves the list of check items that can be configured with custom settings.
 //
 // @param request - ListCheckItemRequest
 //
@@ -34660,6 +35044,10 @@ func (client *Client) ListCloudAssetInstancesWithContext(ctx context.Context, re
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -34990,6 +35378,10 @@ func (client *Client) ListClusterInterceptionConfigWithContext(ctx context.Conte
 
 	if !dara.IsNil(request.CurrentPage) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.ExcludeClusterTypes) {
+		query["ExcludeClusterTypes"] = request.ExcludeClusterTypes
 	}
 
 	if !dara.IsNil(request.PageSize) {
@@ -37154,11 +37546,11 @@ func (client *Client) ListMaliciousFileWhitelistConfigsWithContext(ctx context.C
 
 // Summary:
 //
-// # Query Multi-Account Authorization Allocation List
+// Queries the multi-account authorization assignment list under multi-account authorization management.
 //
 // Description:
 //
-// You can search for assets by conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset. You can also search for assets that meet multiple search conditions by setting the logical relationship between different search conditions.
+// You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. You can also set logical relationships between different search conditions to search for assets that meet multiple search conditions.
 //
 // @param request - ListMultiUserInstancesRequest
 //
@@ -37621,6 +38013,10 @@ func (client *Client) ListOssBucketWithContext(ctx context.Context, request *Lis
 		query["Lang"] = request.Lang
 	}
 
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -37673,6 +38069,10 @@ func (client *Client) ListOssBucketScanInfoWithContext(ctx context.Context, requ
 		query["FuzzBucketName"] = request.FuzzBucketName
 	}
 
+	if !dara.IsNil(request.FuzzFileSystemName) {
+		query["FuzzFileSystemName"] = request.FuzzFileSystemName
+	}
+
 	if !dara.IsNil(request.HasRisk) {
 		query["HasRisk"] = request.HasRisk
 	}
@@ -37683,6 +38083,10 @@ func (client *Client) ListOssBucketScanInfoWithContext(ctx context.Context, requ
 
 	if !dara.IsNil(request.PageSize) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
 	}
 
 	if !dara.IsNil(request.Status) {
@@ -37714,7 +38118,7 @@ func (client *Client) ListOssBucketScanInfoWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the configuration of an Object Storage Service (OSS) file detection policy.
+// Queries the list of OSS file scan policy configurations.
 //
 // @param request - ListOssScanConfigRequest
 //
@@ -38640,7 +39044,7 @@ func (client *Client) ListUnknownThreatDetectEventWithContext(ctx context.Contex
 
 // Summary:
 //
-// View instances identified by intelligent behavior analytics.
+// Queries the list of machines for intelligent behavior analytics.
 //
 // @param request - ListUnknownThreatDetectMachineRequest
 //
@@ -38657,6 +39061,10 @@ func (client *Client) ListUnknownThreatDetectMachineWithContext(ctx context.Cont
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CurrentPage) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.EventStatus) {
+		query["EventStatus"] = request.EventStatus
 	}
 
 	if !dara.IsNil(request.PageSize) {
@@ -38796,7 +39204,7 @@ func (client *Client) ListUnknownThreatDetectProcessWithContext(ctx context.Cont
 
 // Summary:
 //
-// Lists the strategies for intelligent behavior analytics.
+// Queries the list of intelligent behavior analysis policies.
 //
 // @param request - ListUnknownThreatDetectStrategyRequest
 //
@@ -39076,7 +39484,7 @@ func (client *Client) ListVirusScanMachineWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries virus alerts detected by virus scanning on a specific server.
+// Queries virus alerts detected by a virus scan on a specific server.
 //
 // @param request - ListVirusScanMachineEventRequest
 //
@@ -40854,7 +41262,7 @@ func (client *Client) ModifyContainerScanConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Adds vulnerabilities to the whitelist. After you add the vulnerabilities to the whitelist, Security Center no longer generates alerts for the vulnerabilities.
+// Adds a vulnerability whitelist. Vulnerabilities added to the whitelist are no longer displayed in the alert list.
 //
 // @param request - ModifyCreateVulWhitelistRequest
 //
@@ -40869,8 +41277,16 @@ func (client *Client) ModifyCreateVulWhitelistWithContext(ctx context.Context, r
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.Reason) {
 		query["Reason"] = request.Reason
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.TargetInfo) {
@@ -41113,6 +41529,10 @@ func (client *Client) ModifyEmgVulSubmitWithContext(ctx context.Context, request
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.Lang) {
 		query["Lang"] = request.Lang
 	}
@@ -41933,6 +42353,10 @@ func (client *Client) ModifyNoticeConfigWithContext(ctx context.Context, request
 		query["BizType"] = request.BizType
 	}
 
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.FocusLevel) {
 		query["FocusLevel"] = request.FocusLevel
 	}
@@ -42040,7 +42464,7 @@ func (client *Client) ModifyOpenLogShipperWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Handles detected vulnerabilities. You can fix, check, or ignore the vulnerabilities.
+// Handles detected vulnerabilities. Supported operations include fix, verify, and ignore.
 //
 // @param request - ModifyOperateVulRequest
 //
@@ -42055,6 +42479,10 @@ func (client *Client) ModifyOperateVulWithContext(ctx context.Context, request *
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.From) {
 		query["From"] = request.From
 	}
@@ -42069,6 +42497,10 @@ func (client *Client) ModifyOperateVulWithContext(ctx context.Context, request *
 
 	if !dara.IsNil(request.Reason) {
 		query["Reason"] = request.Reason
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.Type) {
@@ -42116,11 +42548,23 @@ func (client *Client) ModifyPostPayModuleSwitchWithContext(ctx context.Context, 
 	}
 	request := &ModifyPostPayModuleSwitchShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EdrModuleSwitch) {
+		request.EdrModuleSwitchShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EdrModuleSwitch, dara.String("EdrModuleSwitch"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.PostPayModuleSwitchObj) {
 		request.PostPayModuleSwitchObjShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PostPayModuleSwitchObj, dara.String("PostPayModuleSwitchObj"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.EdrModuleSwitchShrink) {
+		query["EdrModuleSwitch"] = request.EdrModuleSwitchShrink
+	}
+
 	if !dara.IsNil(request.PostPaidHostAutoBind) {
 		query["PostPaidHostAutoBind"] = request.PostPaidHostAutoBind
 	}
@@ -42484,11 +42928,11 @@ func (client *Client) ModifySearchConditionWithContext(ctx context.Context, requ
 //
 // Summary:
 //
-// Specifies the time when an automatic configuration check on cloud services runs.
+// Sets the automatic detection time for cloud platform configuration check items.
 //
 // Description:
 //
-// This operation is phased out. You can use the ChangeCheckConfig operation.
+// This operation is deprecated. Use the ChangeCheckConfig operation instead.
 //
 // @param request - ModifySecurityCheckScheduleConfigRequest
 //
@@ -42567,6 +43011,10 @@ func (client *Client) ModifySecurityEventMarkMissIndividuallyWithContext(ctx con
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.SourceIp) {
 		query["SourceIp"] = request.SourceIp
 	}
@@ -42655,6 +43103,10 @@ func (client *Client) ModifyServerlessAuthToMachineWithContext(ctx context.Conte
 
 	if !dara.IsNil(request.BindUuidList) {
 		query["BindUuidList"] = request.BindUuidList
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
 	}
 
 	if !dara.IsNil(request.Criteria) {
@@ -42766,7 +43218,7 @@ func (client *Client) ModifySoarStrategySubscribeWithContext(ctx context.Context
 
 // Summary:
 //
-// Enables the one-click scan feature on the vulnerability management page of the console.
+// Starts the one-click scan feature on the vulnerability management page of the console.
 //
 // @param request - ModifyStartVulScanRequest
 //
@@ -42781,6 +43233,14 @@ func (client *Client) ModifyStartVulScanWithContext(ctx context.Context, request
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.Types) {
 		query["Types"] = request.Types
 	}
@@ -43165,6 +43625,10 @@ func (client *Client) ModifyVulConfigWithContext(ctx context.Context, request *M
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.Config) {
 		query["Config"] = request.Config
 	}
@@ -44174,7 +44638,7 @@ func (client *Client) OperateApplicationWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Manages an Object Storage Service (OSS) bucket check task.
+// Operates on a bucket detection task.
 //
 // @param request - OperateBucketScanTaskRequest
 //
@@ -44195,6 +44659,10 @@ func (client *Client) OperateBucketScanTaskWithContext(ctx context.Context, requ
 
 	if !dara.IsNil(request.OperateCode) {
 		query["OperateCode"] = request.OperateCode
+	}
+
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -44222,7 +44690,7 @@ func (client *Client) OperateBucketScanTaskWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Enables or disables a feature by type.
+// Sets a global switch by type.
 //
 // @param request - OperateCommonOverallConfigRequest
 //
@@ -44237,6 +44705,10 @@ func (client *Client) OperateCommonOverallConfigWithContext(ctx context.Context,
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !dara.IsNil(request.Config) {
 		query["Config"] = request.Config
 	}
@@ -44745,6 +45217,10 @@ func (client *Client) OperateVulsWithContext(ctx context.Context, request *Opera
 		query["OperateType"] = request.OperateType
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.Type) {
 		query["Type"] = request.Type
 	}
@@ -44853,6 +45329,10 @@ func (client *Client) OperationCancelIgnoreSuspEventWithContext(ctx context.Cont
 		query["Remark"] = request.Remark
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.SecurityEventIds) {
 		query["SecurityEventIds"] = request.SecurityEventIds
 	}
@@ -44951,6 +45431,10 @@ func (client *Client) OperationSuspEventsWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.Operation) {
 		query["Operation"] = request.Operation
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	if !dara.IsNil(request.SourceIp) {
@@ -45385,6 +45869,10 @@ func (client *Client) QueryAttackCountWithContext(ctx context.Context, request *
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.SourceIp) {
 		query["SourceIp"] = request.SourceIp
 	}
@@ -45817,6 +46305,10 @@ func (client *Client) RefreshAssetsWithContext(ctx context.Context, request *Ref
 		query["CloudAssetType"] = request.CloudAssetType
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.Vendor) {
 		query["Vendor"] = request.Vendor
 	}
@@ -45880,6 +46372,50 @@ func (client *Client) RefreshContainerAssetsWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &RefreshContainerAssetsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Refreshes the bucket list.
+//
+// @param request - RefreshOssBucketScanInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefreshOssBucketScanInfoResponse
+func (client *Client) RefreshOssBucketScanInfoWithContext(ctx context.Context, request *RefreshOssBucketScanInfoRequest, runtime *dara.RuntimeOptions) (_result *RefreshOssBucketScanInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RefreshOssBucketScanInfo"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RefreshOssBucketScanInfoResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -46301,6 +46837,10 @@ func (client *Client) RollbackSuspEventQuaraFileWithContext(ctx context.Context,
 		query["QuaraFileId"] = request.QuaraFileId
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.SourceIp) {
 		query["SourceIp"] = request.SourceIp
 	}
@@ -46441,6 +46981,10 @@ func (client *Client) SaveCustomizeReportConfigWithContext(ctx context.Context, 
 		query["ReportVersion"] = request.ReportVersion
 	}
 
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.SendEndTime) {
 		query["SendEndTime"] = request.SendEndTime
 	}
@@ -46579,6 +47123,10 @@ func (client *Client) SaveSuspEventUserSettingWithContext(ctx context.Context, r
 
 	if !dara.IsNil(request.LevelsOn) {
 		query["LevelsOn"] = request.LevelsOn
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -46747,6 +47295,10 @@ func (client *Client) SendCustomizeReportWithContext(ctx context.Context, reques
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ReportId) {
 		query["ReportId"] = request.ReportId
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -47394,7 +47946,7 @@ func (client *Client) StopHoneypotWithContext(ctx context.Context, request *Stop
 
 // Summary:
 //
-// Submits a configuration assessment task.
+// Submits a cloud service configuration check.
 //
 // @param request - SubmitCheckRequest
 //
@@ -47409,6 +47961,10 @@ func (client *Client) SubmitCheckWithContext(ctx context.Context, request *Submi
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	if !dara.IsNil(request.ScanRange) {
 		query["ScanRange"] = request.ScanRange
 	}
@@ -47764,6 +48320,11 @@ func (client *Client) UpdateAlarmEventWithContext(ctx context.Context, request *
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.AlarmEventIdList) {
 		body["AlarmEventIdList"] = request.AlarmEventIdList
@@ -47778,7 +48339,8 @@ func (client *Client) UpdateAlarmEventWithContext(ctx context.Context, request *
 	}
 
 	req := &openapiutil.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("UpdateAlarmEvent"),
@@ -48142,6 +48704,66 @@ func (client *Client) UpdateCheckPolicyWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateCheckPolicyResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the check scope configuration.
+//
+// @param request - UpdateCheckScopeConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCheckScopeConfigResponse
+func (client *Client) UpdateCheckScopeConfigWithContext(ctx context.Context, request *UpdateCheckScopeConfigRequest, runtime *dara.RuntimeOptions) (_result *UpdateCheckScopeConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoConfig) {
+		query["AutoConfig"] = request.AutoConfig
+	}
+
+	if !dara.IsNil(request.AutoType) {
+		query["AutoType"] = request.AutoType
+	}
+
+	if !dara.IsNil(request.ConfigId) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !dara.IsNil(request.ResourceDirectoryAccountId) {
+		query["ResourceDirectoryAccountId"] = request.ResourceDirectoryAccountId
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateCheckScopeConfig"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateCheckScopeConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -49540,7 +50162,7 @@ func (client *Client) UpdateMaliciousFileWhitelistConfigWithContext(ctx context.
 
 // Summary:
 //
-// # Modify Multi-Account Instance Configuration
+// Manages authorization assignments for member accounts in multi-account authorization management.
 //
 // @param request - UpdateMultiUserInstancesRequest
 //
@@ -49686,7 +50308,7 @@ func (client *Client) UpdateOpaStrategyNewWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// Updates the scan policy configuration for OSS file detection under the malicious file detection feature.
+// Updates the OSS file scan policy configuration for the malicious file detection feature.
 //
 // @param request - UpdateOssScanConfigRequest
 //
@@ -49703,6 +50325,10 @@ func (client *Client) UpdateOssScanConfigWithContext(ctx context.Context, reques
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AllKeyPrefix) {
 		query["AllKeyPrefix"] = request.AllKeyPrefix
+	}
+
+	if !dara.IsNil(request.AutoAdd) {
+		query["AutoAdd"] = request.AutoAdd
 	}
 
 	if !dara.IsNil(request.BucketNameList) {
@@ -49757,6 +50383,10 @@ func (client *Client) UpdateOssScanConfigWithContext(ctx context.Context, reques
 		query["ScanDayList"] = request.ScanDayList
 	}
 
+	if !dara.IsNil(request.Source) {
+		query["Source"] = request.Source
+	}
+
 	if !dara.IsNil(request.StartTime) {
 		query["StartTime"] = request.StartTime
 	}
@@ -49786,7 +50416,7 @@ func (client *Client) UpdateOssScanConfigWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Change Postpaid Asset Authorization Version
+// Changes the protection edition bound to a server after you activate the pay-as-you-go billing method for host and container security.
 //
 // @param request - UpdatePostPaidBindRelRequest
 //
@@ -49811,6 +50441,14 @@ func (client *Client) UpdatePostPaidBindRelWithContext(ctx context.Context, requ
 
 	if !dara.IsNil(request.BindAction) {
 		query["BindAction"] = request.BindAction
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.ProductCode) {
+		query["ProductCode"] = request.ProductCode
 	}
 
 	if !dara.IsNil(request.UpdateIfNecessary) {
@@ -50048,7 +50686,7 @@ func (client *Client) UpdatePublishGraySwitchWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies the key that corresponds to a specified type.
+// Modifies the key corresponding to a specified type.
 //
 // @param request - UpdateSelectionKeyByTypeRequest
 //
@@ -50065,6 +50703,10 @@ func (client *Client) UpdateSelectionKeyByTypeWithContext(ctx context.Context, r
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.BusinessType) {
 		query["BusinessType"] = request.BusinessType
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
 	}
 
 	if !dara.IsNil(request.SelectionKey) {
@@ -50244,7 +50886,7 @@ func (client *Client) UpdateUnknownThreatDetectProcessWithContext(ctx context.Co
 
 // Summary:
 //
-// Updates the unknown threat detection strategy.
+// Updates an intelligent behavior analytics policy.
 //
 // @param request - UpdateUnknownThreatDetectStrategyRequest
 //
@@ -50746,7 +51388,7 @@ func (client *Client) VerifyCheckCustomConfigWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Verifies the instance dimensions under a check item.
+// Verifies instances under a check item.
 //
 // @param request - VerifyCheckInstanceResultRequest
 //
@@ -50767,6 +51409,10 @@ func (client *Client) VerifyCheckInstanceResultWithContext(ctx context.Context, 
 
 	if !dara.IsNil(request.CheckIds) {
 		query["CheckIds"] = request.CheckIds
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
 	}
 
 	if !dara.IsNil(request.InstanceIds) {
@@ -50802,7 +51448,7 @@ func (client *Client) VerifyCheckInstanceResultWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Performs check item-level validation.
+// Validates check items.
 //
 // @param request - VerifyCheckResultRequest
 //
@@ -50819,6 +51465,10 @@ func (client *Client) VerifyCheckResultWithContext(ctx context.Context, request 
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.CheckIds) {
 		query["CheckIds"] = request.CheckIds
+	}
+
+	if !dara.IsNil(request.Force) {
+		query["Force"] = request.Force
 	}
 
 	if !dara.IsNil(request.InstanceIds) {

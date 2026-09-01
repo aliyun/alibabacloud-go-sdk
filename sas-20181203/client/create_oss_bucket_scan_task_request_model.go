@@ -29,50 +29,52 @@ type iCreateOssBucketScanTaskRequest interface {
 	GetLastModifiedStartTime() *int64
 	SetScanMode(v int32) *CreateOssBucketScanTaskRequest
 	GetScanMode() *int32
+	SetSource(v string) *CreateOssBucketScanTaskRequest
+	GetSource() *string
 }
 
 type CreateOssBucketScanTaskRequest struct {
-	// Specifies whether to match the prefixes of all objects.
+	// Specifies whether to match all prefixes. If this parameter is set to true, the KeyPrefixList parameter does not take effect.
 	//
 	// example:
 	//
 	// true
 	AllKeyPrefix *bool `json:"AllKeyPrefix,omitempty" xml:"AllKeyPrefix,omitempty"`
-	// The names of the buckets.
+	// The list of bucket names.
 	//
 	// This parameter is required.
 	BucketNameList []*string `json:"BucketNameList,omitempty" xml:"BucketNameList,omitempty" type:"Repeated"`
-	// The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+	// The maximum number of files to decompress. The minimum value is 1 and the maximum value is 1000. When the maximum number of decompressed files is exceeded, the decompression operation ends immediately. The detection of files that have already been decompressed is not affected.
 	//
 	// example:
 	//
 	// 100
 	DecompressMaxFileCount *int32 `json:"DecompressMaxFileCount,omitempty" xml:"DecompressMaxFileCount,omitempty"`
-	// The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+	// The maximum number of decompression layers when multiple levels of compressed packages are nested. The minimum value is 1 and the maximum value is 5. When the maximum number of decompression layers is exceeded, the decompression operation ends immediately. The detection of files that have already been decompressed is not affected.
 	//
 	// example:
 	//
 	// 1
 	DecompressMaxLayer *int32 `json:"DecompressMaxLayer,omitempty" xml:"DecompressMaxLayer,omitempty"`
-	// The decryption methods.
+	// The list of decryption types.
 	DecryptionList []*string `json:"DecryptionList,omitempty" xml:"DecryptionList,omitempty" type:"Repeated"`
-	// The suffixes of the objects that you do not want to check.
+	// The list of file suffixes to exclude from detection.
 	ExcludeKeySuffixList []*string `json:"ExcludeKeySuffixList,omitempty" xml:"ExcludeKeySuffixList,omitempty" type:"Repeated"`
-	// The prefixes of the objects.
+	// The prefix list of files.
 	KeyPrefixList []*string `json:"KeyPrefixList,omitempty" xml:"KeyPrefixList,omitempty" type:"Repeated"`
-	// The suffixes of the objects that you want to check.
+	// The list of file suffixes.
 	KeySuffixList []*string `json:"KeySuffixList,omitempty" xml:"KeySuffixList,omitempty" type:"Repeated"`
-	// The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+	// Specifies that only files whose last modification time is after the specified timestamp are detected. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1724301769834
 	LastModifiedStartTime *int64 `json:"LastModifiedStartTime,omitempty" xml:"LastModifiedStartTime,omitempty"`
-	// The check mode. Valid values:
+	// The detection mode. Valid values:
 	//
-	// 	- **1**: checks all objects in the bucket.
+	// - **1**: Full file detection.
 	//
-	// 	- **2**: checks only new objects in the bucket.
+	// - **2**: Incremental file detection.
 	//
 	// This parameter is required.
 	//
@@ -80,6 +82,16 @@ type CreateOssBucketScanTaskRequest struct {
 	//
 	// 1
 	ScanMode *int32 `json:"ScanMode,omitempty" xml:"ScanMode,omitempty"`
+	// The business source. Valid values:
+	//
+	// - **OSS**: OSS
+	//
+	// - **NAS**: NAS
+	//
+	// example:
+	//
+	// OSS
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s CreateOssBucketScanTaskRequest) String() string {
@@ -130,6 +142,10 @@ func (s *CreateOssBucketScanTaskRequest) GetScanMode() *int32 {
 	return s.ScanMode
 }
 
+func (s *CreateOssBucketScanTaskRequest) GetSource() *string {
+	return s.Source
+}
+
 func (s *CreateOssBucketScanTaskRequest) SetAllKeyPrefix(v bool) *CreateOssBucketScanTaskRequest {
 	s.AllKeyPrefix = &v
 	return s
@@ -177,6 +193,11 @@ func (s *CreateOssBucketScanTaskRequest) SetLastModifiedStartTime(v int64) *Crea
 
 func (s *CreateOssBucketScanTaskRequest) SetScanMode(v int32) *CreateOssBucketScanTaskRequest {
 	s.ScanMode = &v
+	return s
+}
+
+func (s *CreateOssBucketScanTaskRequest) SetSource(v string) *CreateOssBucketScanTaskRequest {
+	s.Source = &v
 	return s
 }
 

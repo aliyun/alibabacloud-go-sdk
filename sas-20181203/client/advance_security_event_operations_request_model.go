@@ -13,6 +13,8 @@ type iAdvanceSecurityEventOperationsRequest interface {
 	GetEventName() *string
 	SetEventType(v string) *AdvanceSecurityEventOperationsRequest
 	GetEventType() *string
+	SetResourceDirectoryAccountId(v int64) *AdvanceSecurityEventOperationsRequest
+	GetResourceDirectoryAccountId() *int64
 	SetResourceOwnerId(v int64) *AdvanceSecurityEventOperationsRequest
 	GetResourceOwnerId() *int64
 	SetRuleId(v int32) *AdvanceSecurityEventOperationsRequest
@@ -79,8 +81,9 @@ type AdvanceSecurityEventOperationsRequest struct {
 	// example:
 	//
 	// 恶意脚本
-	EventType       *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	EventType                  *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	ResourceOwnerId            *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The rule ID.
 	//
 	// example:
@@ -105,6 +108,10 @@ func (s *AdvanceSecurityEventOperationsRequest) GetEventType() *string {
 	return s.EventType
 }
 
+func (s *AdvanceSecurityEventOperationsRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *AdvanceSecurityEventOperationsRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
 }
@@ -120,6 +127,11 @@ func (s *AdvanceSecurityEventOperationsRequest) SetEventName(v string) *AdvanceS
 
 func (s *AdvanceSecurityEventOperationsRequest) SetEventType(v string) *AdvanceSecurityEventOperationsRequest {
 	s.EventType = &v
+	return s
+}
+
+func (s *AdvanceSecurityEventOperationsRequest) SetResourceDirectoryAccountId(v int64) *AdvanceSecurityEventOperationsRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

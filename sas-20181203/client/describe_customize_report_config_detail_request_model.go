@@ -13,6 +13,8 @@ type iDescribeCustomizeReportConfigDetailRequest interface {
 	GetLang() *string
 	SetReportId(v int64) *DescribeCustomizeReportConfigDetailRequest
 	GetReportId() *int64
+	SetResourceDirectoryAccountId(v int64) *DescribeCustomizeReportConfigDetailRequest
+	GetResourceDirectoryAccountId() *int64
 	SetSourceIp(v string) *DescribeCustomizeReportConfigDetailRequest
 	GetSourceIp() *string
 }
@@ -37,7 +39,8 @@ type DescribeCustomizeReportConfigDetailRequest struct {
 	// example:
 	//
 	// 619031
-	ReportId *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	ReportId                   *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The IP address of the access source.
 	//
 	// example:
@@ -62,6 +65,10 @@ func (s *DescribeCustomizeReportConfigDetailRequest) GetReportId() *int64 {
 	return s.ReportId
 }
 
+func (s *DescribeCustomizeReportConfigDetailRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeCustomizeReportConfigDetailRequest) GetSourceIp() *string {
 	return s.SourceIp
 }
@@ -73,6 +80,11 @@ func (s *DescribeCustomizeReportConfigDetailRequest) SetLang(v string) *Describe
 
 func (s *DescribeCustomizeReportConfigDetailRequest) SetReportId(v int64) *DescribeCustomizeReportConfigDetailRequest {
 	s.ReportId = &v
+	return s
+}
+
+func (s *DescribeCustomizeReportConfigDetailRequest) SetResourceDirectoryAccountId(v int64) *DescribeCustomizeReportConfigDetailRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

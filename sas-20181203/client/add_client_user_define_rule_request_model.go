@@ -48,11 +48,11 @@ type iAddClientUserDefineRuleRequest interface {
 }
 
 type AddClientUserDefineRuleRequest struct {
-	// The action of the custom defense rule. Valid values:
+	// The action type. Valid values:
 	//
-	// 	- **0**: allow
+	// - **0**: allow
 	//
-	// 	- **1**: block
+	// - **1**: block
 	//
 	// This parameter is required.
 	//
@@ -84,21 +84,21 @@ type AddClientUserDefineRuleRequest struct {
 	//
 	// 10.240.XX.XX
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The hash values of processes.
+	// The list of process hashes.
 	//
 	// example:
 	//
 	// 0c9045b5bec90f9825f1f3f64dd4****
 	Md5List *string `json:"Md5List,omitempty" xml:"Md5List,omitempty"`
-	// The name of the custom defense rule.
+	// The name of the custom rule.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 规则1
+	// Rule1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The new file path after the file is renamed.
+	// The new file path for file rename.
 	//
 	// example:
 	//
@@ -110,19 +110,19 @@ type AddClientUserDefineRuleRequest struct {
 	//
 	// /usr/sbin/s****
 	ParentCmdline *string `json:"ParentCmdline,omitempty" xml:"ParentCmdline,omitempty"`
-	// The path to the parent process.
+	// The parent process path.
 	//
 	// example:
 	//
 	// c:/windows/system32/i****
 	ParentProcPath *string `json:"ParentProcPath,omitempty" xml:"ParentProcPath,omitempty"`
-	// The type of the operating system. Valid values:
+	// The operating system type. Valid values:
 	//
-	// 	- **windows**: Windows
+	// - **windows**: Windows
 	//
-	// 	- **linux**: Linux
+	// - **linux**: Linux
 	//
-	// 	- **all**: all types
+	// - **all**: all
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type AddClientUserDefineRuleRequest struct {
 	//
 	// 80
 	PortStr *string `json:"PortStr,omitempty" xml:"PortStr,omitempty"`
-	// The path to the process.
+	// The process path.
 	//
 	// example:
 	//
@@ -158,37 +158,37 @@ type AddClientUserDefineRuleRequest struct {
 	//
 	// HKEY_DYN_****
 	RegistryKey *string `json:"RegistryKey,omitempty" xml:"RegistryKey,omitempty"`
-	// Whether machines are automatically added to the rule. Default value: add. Valid values:
+	// Specifies whether machines are automatically added to the rule. Default value: add. Valid values:
 	//
-	// - **add**: Added by default
+	// - **add**: Automatically added by default.
 	//
-	// - **del**: Not added by default
+	// - **del**: Not automatically added by default.
 	//
 	// example:
 	//
 	// add
 	TargetDefault *string `json:"TargetDefault,omitempty" xml:"TargetDefault,omitempty"`
-	// The type of the custom defense rule. Valid values:
+	// The rule type. Valid values:
 	//
-	// 	- **1**: Process hash
+	// - **1**: process hash
 	//
-	// 	- **2**: Command line
+	// - **2**: command line
 	//
-	// 	- **3**: Process Network
+	// - **3**: process network
 	//
-	// 	- **4**: File Read and Write
+	// - **4**: file read/write
 	//
-	// 	- **5**: Operation on Registry
+	// - **5**: registry operation
 	//
-	// 	- **6**: Dynamic-link Library Loading
+	// - **6**: dynamic-link library loading
 	//
-	// 	- **7**: File Renaming
+	// - **7**: file rename
 	//
-	// 	- **8**: Network domain name
+	// - **8**: network domain name
 	//
-	// 	- **9**: Network ip
+	// - **9**: network IP
 	//
-	// 	- **10**: File Path
+	// - **10**: file path
 	//
 	// This parameter is required.
 	//

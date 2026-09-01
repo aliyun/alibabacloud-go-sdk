@@ -15,6 +15,8 @@ type iRefreshAssetsRequest interface {
 	GetCloudAssetSubType() *int32
 	SetCloudAssetType(v int32) *RefreshAssetsRequest
 	GetCloudAssetType() *int32
+	SetResourceDirectoryAccountId(v int64) *RefreshAssetsRequest
+	GetResourceDirectoryAccountId() *int64
 	SetVendor(v int32) *RefreshAssetsRequest
 	GetVendor() *int32
 }
@@ -89,7 +91,8 @@ type RefreshAssetsRequest struct {
 	// example:
 	//
 	// 0
-	CloudAssetType *int32 `json:"CloudAssetType,omitempty" xml:"CloudAssetType,omitempty"`
+	CloudAssetType             *int32 `json:"CloudAssetType,omitempty" xml:"CloudAssetType,omitempty"`
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The type of the server. Valid values:
 	//
 	// 	- **0**: an asset provided by Alibaba Cloud
@@ -128,6 +131,10 @@ func (s *RefreshAssetsRequest) GetCloudAssetType() *int32 {
 	return s.CloudAssetType
 }
 
+func (s *RefreshAssetsRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *RefreshAssetsRequest) GetVendor() *int32 {
 	return s.Vendor
 }
@@ -144,6 +151,11 @@ func (s *RefreshAssetsRequest) SetCloudAssetSubType(v int32) *RefreshAssetsReque
 
 func (s *RefreshAssetsRequest) SetCloudAssetType(v int32) *RefreshAssetsRequest {
 	s.CloudAssetType = &v
+	return s
+}
+
+func (s *RefreshAssetsRequest) SetResourceDirectoryAccountId(v int64) *RefreshAssetsRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

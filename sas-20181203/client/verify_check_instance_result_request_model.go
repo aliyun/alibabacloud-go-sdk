@@ -13,6 +13,8 @@ type iVerifyCheckInstanceResultRequest interface {
 	GetCheckId() *int64
 	SetCheckIds(v []*int64) *VerifyCheckInstanceResultRequest
 	GetCheckIds() []*int64
+	SetClientToken(v string) *VerifyCheckInstanceResultRequest
+	GetClientToken() *string
 	SetInstanceIds(v []*string) *VerifyCheckInstanceResultRequest
 	GetInstanceIds() []*string
 	SetTaskSource(v string) *VerifyCheckInstanceResultRequest
@@ -22,19 +24,21 @@ type iVerifyCheckInstanceResultRequest interface {
 type VerifyCheckInstanceResultRequest struct {
 	// The ID of the check item.
 	//
-	// > You can call the [ListCheckResult](~~ListCheckResult~~) operation to obtain the ID of the check item.
+	// > You can call the [ListCheckResult](~~ListCheckResult~~) operation to obtain the check item ID.
 	//
 	// example:
 	//
 	// 16
 	CheckId *int64 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	// The list of IDs of the check items.
+	// The list of check item IDs.
 	CheckIds []*int64 `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
-	// The list of instance IDs of the assets affected by the check item.
+	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The list of instance IDs of the affected assets under the check item.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The source of the task. Valid values:
+	// The task source. Valid values:
 	//
-	// - **YAO_CHI**: YaoChi console.
+	// - **YAO_CHI**: ApsaraDB console.
 	//
 	// example:
 	//
@@ -58,6 +62,10 @@ func (s *VerifyCheckInstanceResultRequest) GetCheckIds() []*int64 {
 	return s.CheckIds
 }
 
+func (s *VerifyCheckInstanceResultRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *VerifyCheckInstanceResultRequest) GetInstanceIds() []*string {
 	return s.InstanceIds
 }
@@ -73,6 +81,11 @@ func (s *VerifyCheckInstanceResultRequest) SetCheckId(v int64) *VerifyCheckInsta
 
 func (s *VerifyCheckInstanceResultRequest) SetCheckIds(v []*int64) *VerifyCheckInstanceResultRequest {
 	s.CheckIds = v
+	return s
+}
+
+func (s *VerifyCheckInstanceResultRequest) SetClientToken(v string) *VerifyCheckInstanceResultRequest {
+	s.ClientToken = &v
 	return s
 }
 

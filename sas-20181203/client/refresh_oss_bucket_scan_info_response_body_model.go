@@ -14,7 +14,7 @@ type iRefreshOssBucketScanInfoResponseBody interface {
 }
 
 type RefreshOssBucketScanInfoResponseBody struct {
-	// The ID of the request. The system generates a unique identifier for each request. You can use the ID to troubleshoot issues.
+	// The ID of the request. The China (Hangzhou) region generates a unique identifier for the request, which can be used for troubleshooting.
 	//
 	// example:
 	//

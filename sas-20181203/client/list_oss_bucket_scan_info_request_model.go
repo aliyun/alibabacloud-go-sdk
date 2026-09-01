@@ -15,12 +15,16 @@ type iListOssBucketScanInfoRequest interface {
 	GetCurrentPage() *int32
 	SetFuzzBucketName(v string) *ListOssBucketScanInfoRequest
 	GetFuzzBucketName() *string
+	SetFuzzFileSystemName(v string) *ListOssBucketScanInfoRequest
+	GetFuzzFileSystemName() *string
 	SetHasRisk(v int32) *ListOssBucketScanInfoRequest
 	GetHasRisk() *int32
 	SetLang(v string) *ListOssBucketScanInfoRequest
 	GetLang() *string
 	SetPageSize(v int32) *ListOssBucketScanInfoRequest
 	GetPageSize() *int32
+	SetSource(v string) *ListOssBucketScanInfoRequest
+	GetSource() *string
 	SetStatus(v int32) *ListOssBucketScanInfoRequest
 	GetStatus() *int32
 }
@@ -32,7 +36,7 @@ type ListOssBucketScanInfoRequest struct {
 	//
 	// iboxpublic****
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The page number of the current page in a paging query.
+	// The page number of the current page in a paged query.
 	//
 	// This parameter is required.
 	//
@@ -46,6 +50,12 @@ type ListOssBucketScanInfoRequest struct {
 	//
 	// test
 	FuzzBucketName *string `json:"FuzzBucketName,omitempty" xml:"FuzzBucketName,omitempty"`
+	// The NAS file system name for fuzzy match.
+	//
+	// example:
+	//
+	// test
+	FuzzFileSystemName *string `json:"FuzzFileSystemName,omitempty" xml:"FuzzFileSystemName,omitempty"`
 	// Specifies whether risky files are detected. Valid values:
 	//
 	// - **0**: No risks detected.
@@ -56,17 +66,17 @@ type ListOssBucketScanInfoRequest struct {
 	//
 	// 1
 	HasRisk *int32 `json:"HasRisk,omitempty" xml:"HasRisk,omitempty"`
-	// The language type for the request and response messages. Default value: **zh**. Valid values:
+	// The language type of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries to return on each page in a paging query.
+	// The maximum number of entries to return on each page in a paged query.
 	//
 	// This parameter is required.
 	//
@@ -74,6 +84,16 @@ type ListOssBucketScanInfoRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The business source. Valid values:
+	//
+	// - **OSS**: OSS
+	//
+	// - **NAS**: NAS
+	//
+	// example:
+	//
+	// OSS
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The detection status. Valid values:
 	//
 	// - **1**: Not scanned.
@@ -110,6 +130,10 @@ func (s *ListOssBucketScanInfoRequest) GetFuzzBucketName() *string {
 	return s.FuzzBucketName
 }
 
+func (s *ListOssBucketScanInfoRequest) GetFuzzFileSystemName() *string {
+	return s.FuzzFileSystemName
+}
+
 func (s *ListOssBucketScanInfoRequest) GetHasRisk() *int32 {
 	return s.HasRisk
 }
@@ -120,6 +144,10 @@ func (s *ListOssBucketScanInfoRequest) GetLang() *string {
 
 func (s *ListOssBucketScanInfoRequest) GetPageSize() *int32 {
 	return s.PageSize
+}
+
+func (s *ListOssBucketScanInfoRequest) GetSource() *string {
+	return s.Source
 }
 
 func (s *ListOssBucketScanInfoRequest) GetStatus() *int32 {
@@ -141,6 +169,11 @@ func (s *ListOssBucketScanInfoRequest) SetFuzzBucketName(v string) *ListOssBucke
 	return s
 }
 
+func (s *ListOssBucketScanInfoRequest) SetFuzzFileSystemName(v string) *ListOssBucketScanInfoRequest {
+	s.FuzzFileSystemName = &v
+	return s
+}
+
 func (s *ListOssBucketScanInfoRequest) SetHasRisk(v int32) *ListOssBucketScanInfoRequest {
 	s.HasRisk = &v
 	return s
@@ -153,6 +186,11 @@ func (s *ListOssBucketScanInfoRequest) SetLang(v string) *ListOssBucketScanInfoR
 
 func (s *ListOssBucketScanInfoRequest) SetPageSize(v int32) *ListOssBucketScanInfoRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListOssBucketScanInfoRequest) SetSource(v string) *ListOssBucketScanInfoRequest {
+	s.Source = &v
 	return s
 }
 

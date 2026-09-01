@@ -13,6 +13,8 @@ type iRollbackSuspEventQuaraFileRequest interface {
 	GetFrom() *string
 	SetQuaraFileId(v int32) *RollbackSuspEventQuaraFileRequest
 	GetQuaraFileId() *int32
+	SetResourceDirectoryAccountId(v int64) *RollbackSuspEventQuaraFileRequest
+	GetResourceDirectoryAccountId() *int64
 	SetSourceIp(v string) *RollbackSuspEventQuaraFileRequest
 	GetSourceIp() *string
 }
@@ -31,7 +33,8 @@ type RollbackSuspEventQuaraFileRequest struct {
 	// example:
 	//
 	// 3921797
-	QuaraFileId *int32 `json:"QuaraFileId,omitempty" xml:"QuaraFileId,omitempty"`
+	QuaraFileId                *int32 `json:"QuaraFileId,omitempty" xml:"QuaraFileId,omitempty"`
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The source IP address of the request.
 	//
 	// example:
@@ -56,6 +59,10 @@ func (s *RollbackSuspEventQuaraFileRequest) GetQuaraFileId() *int32 {
 	return s.QuaraFileId
 }
 
+func (s *RollbackSuspEventQuaraFileRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *RollbackSuspEventQuaraFileRequest) GetSourceIp() *string {
 	return s.SourceIp
 }
@@ -67,6 +74,11 @@ func (s *RollbackSuspEventQuaraFileRequest) SetFrom(v string) *RollbackSuspEvent
 
 func (s *RollbackSuspEventQuaraFileRequest) SetQuaraFileId(v int32) *RollbackSuspEventQuaraFileRequest {
 	s.QuaraFileId = &v
+	return s
+}
+
+func (s *RollbackSuspEventQuaraFileRequest) SetResourceDirectoryAccountId(v int64) *RollbackSuspEventQuaraFileRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

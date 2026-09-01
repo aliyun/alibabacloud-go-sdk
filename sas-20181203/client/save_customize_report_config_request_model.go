@@ -35,6 +35,8 @@ type iSaveCustomizeReportConfigRequest interface {
 	GetReportType() *int32
 	SetReportVersion(v string) *SaveCustomizeReportConfigRequest
 	GetReportVersion() *string
+	SetResourceDirectoryAccountId(v int64) *SaveCustomizeReportConfigRequest
+	GetResourceDirectoryAccountId() *int64
 	SetSendEndTime(v string) *SaveCustomizeReportConfigRequest
 	GetSendEndTime() *string
 	SetSendPeriodDays(v int32) *SaveCustomizeReportConfigRequest
@@ -187,7 +189,8 @@ type SaveCustomizeReportConfigRequest struct {
 	// example:
 	//
 	// 2.0.0
-	ReportVersion *string `json:"ReportVersion,omitempty" xml:"ReportVersion,omitempty"`
+	ReportVersion              *string `json:"ReportVersion,omitempty" xml:"ReportVersion,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The end time at which the report is sent. The value is in the HH:mm:ss format.
 	//
 	// >  This parameter is required if the ReportType parameter is set to 0, 1, 2, or 4.
@@ -312,6 +315,10 @@ func (s *SaveCustomizeReportConfigRequest) GetReportVersion() *string {
 	return s.ReportVersion
 }
 
+func (s *SaveCustomizeReportConfigRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *SaveCustomizeReportConfigRequest) GetSendEndTime() *string {
 	return s.SendEndTime
 }
@@ -402,6 +409,11 @@ func (s *SaveCustomizeReportConfigRequest) SetReportType(v int32) *SaveCustomize
 
 func (s *SaveCustomizeReportConfigRequest) SetReportVersion(v string) *SaveCustomizeReportConfigRequest {
 	s.ReportVersion = &v
+	return s
+}
+
+func (s *SaveCustomizeReportConfigRequest) SetResourceDirectoryAccountId(v int64) *SaveCustomizeReportConfigRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

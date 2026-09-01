@@ -11,6 +11,8 @@ type iCreateAssetSelectionConfigRequest interface {
 	GoString() string
 	SetBusinessType(v string) *CreateAssetSelectionConfigRequest
 	GetBusinessType() *string
+	SetClientToken(v string) *CreateAssetSelectionConfigRequest
+	GetClientToken() *string
 	SetPlatform(v string) *CreateAssetSelectionConfigRequest
 	GetPlatform() *string
 	SetTargetType(v string) *CreateAssetSelectionConfigRequest
@@ -18,17 +20,17 @@ type iCreateAssetSelectionConfigRequest interface {
 }
 
 type CreateAssetSelectionConfigRequest struct {
-	// The feature that you want to select for the asset. Valid values:
+	// The business type of the asset selection. Valid values:
 	//
-	// 	- **VIRUS_SCAN_CYCLE_CONFIG**: virus detection and removal
+	// - **VIRUS_SCAN_CYCLE_CONFIG**: trojan scan configuration.
 	//
-	// 	- **VIRUS_SCAN_ONCE_TASK**: one-time scan for viruses
+	// - **VIRUS_SCAN_ONCE_TASK**: trojan scan one-time scan.
 	//
-	// 	- **AGENTLESS_MALICIOUS_WHITE_LIST_[ID]**: a whitelist rule for alerts that are detected by using the agentless detection feature
+	// - **AGENTLESS_MALICIOUS_WHITE_LIST_[ID]**: agentless detection alert whitelisting rule.
 	//
-	// 	- **AGENTLESS_VUL_WHITE_LIST_[ID]**: a whitelist rule for vulnerabilities that are detected by using the agentless detection feature
+	// - **AGENTLESS_VUL_WHITE_LIST_[ID]**: agentless detection vulnerability whitelisting rule.
 	//
-	// 	- **FILE_PROTECT_RULE_SWITCH_TYPE_[ID]**: core file protection
+	// - **FILE_PROTECT_RULE_SWITCH_TYPE_[ID]**: core file protection.
 	//
 	// This parameter is required.
 	//
@@ -36,37 +38,41 @@ type CreateAssetSelectionConfigRequest struct {
 	//
 	// VIRUS_SCAN_CYCLE_CONFIG
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// The operating system of the asset. Valid values:
+	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The operating system of the target asset. Valid values:
 	//
-	// 	- **all**: all operating systems
+	// - **all**: all operating systems.
 	//
-	// 	- **windows**: the Windows operating system
+	// - **windows**: Windows operating system.
 	//
-	// 	- **linux**: the Linux operating system
+	// - **linux**: Linux operating system.
 	//
-	// >  If you leave this parameter empty, the system automatically selects a value for the parameter based on the value of the **BusinessType*	- parameter.
+	// > If this parameter is left empty, the default value is determined based on the **BusinessType*	- value.
 	//
-	// 	- If the BusinessType parameter is set to **VIRUS_SCAN_CYCLE_CONFIG**, the value of the Platform parameter is **all**.
+	// >- **VIRUS_SCAN_CYCLE_CONFIG**: the value is **all**.
 	//
-	// 	- If the BusinessType parameter is set to **VIRUS_SCAN_ONCE_TASK**, the value of the Platform parameter is **all**.
+	// >- **VIRUS_SCAN_ONCE_TASK**: the value is **all**.
 	//
-	// 	- If the BusinessType parameter is set to **AGENTLESS_MALICIOUS_WHITE_LIST_[ID]**, the value of the Platform parameter is **all**.
+	// >- **AGENTLESS_MALICIOUS_WHITE_LIST_[ID]**: the value is **all**.
 	//
-	// 	- If the BusinessType parameter is set to **AGENTLESS_VUL_WHITE_LIST_[ID]*	- the value of the Platform parameter is **all**.
+	// >- **AGENTLESS_VUL_WHITE_LIST_[ID]**: the value is **all**.
 	//
-	// 	- If the BusinessType parameter is set to **FILE_PROTECT_RULE_SWITCH_TYPE_[ID]**, the value of the Platform parameter is **linux**.
+	// >- **FILE_PROTECT_RULE_SWITCH_TYPE_[ID]**: the value is **linux**.
 	//
 	// example:
 	//
 	// linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The dimension based on which you want to select the asset. Valid values:
+	// The target asset type. Valid values:
 	//
-	// 	- **instance**: selects the asset by server.
+	// - **all_instance**: all servers.
 	//
-	// 	- **group**: selects the asset by group.
+	// - **instance**: select by server.
 	//
-	// 	- **vpc**: selects the asset by virtual private cloud (VPC).
+	// - **group**: select by group.
+	//
+	// - **vpc**: select by VPC.
 	//
 	// This parameter is required.
 	//
@@ -88,6 +94,10 @@ func (s *CreateAssetSelectionConfigRequest) GetBusinessType() *string {
 	return s.BusinessType
 }
 
+func (s *CreateAssetSelectionConfigRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *CreateAssetSelectionConfigRequest) GetPlatform() *string {
 	return s.Platform
 }
@@ -98,6 +108,11 @@ func (s *CreateAssetSelectionConfigRequest) GetTargetType() *string {
 
 func (s *CreateAssetSelectionConfigRequest) SetBusinessType(v string) *CreateAssetSelectionConfigRequest {
 	s.BusinessType = &v
+	return s
+}
+
+func (s *CreateAssetSelectionConfigRequest) SetClientToken(v string) *CreateAssetSelectionConfigRequest {
+	s.ClientToken = &v
 	return s
 }
 

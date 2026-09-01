@@ -49,6 +49,8 @@ type iDescribeCanFixVulListRequest interface {
 	GetRepoNamespace() *string
 	SetRepoRegionId(v string) *DescribeCanFixVulListRequest
 	GetRepoRegionId() *string
+	SetResourceDirectoryAccountId(v int64) *DescribeCanFixVulListRequest
+	GetResourceDirectoryAccountId() *int64
 	SetScanRange(v []*string) *DescribeCanFixVulListRequest
 	GetScanRange() []*string
 	SetStatusList(v string) *DescribeCanFixVulListRequest
@@ -253,7 +255,8 @@ type DescribeCanFixVulListRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RepoRegionId *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
+	RepoRegionId               *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The scan scope. Valid values:
 	//
 	// - **image**: Image.
@@ -386,6 +389,10 @@ func (s *DescribeCanFixVulListRequest) GetRepoRegionId() *string {
 	return s.RepoRegionId
 }
 
+func (s *DescribeCanFixVulListRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeCanFixVulListRequest) GetScanRange() []*string {
 	return s.ScanRange
 }
@@ -503,6 +510,11 @@ func (s *DescribeCanFixVulListRequest) SetRepoNamespace(v string) *DescribeCanFi
 
 func (s *DescribeCanFixVulListRequest) SetRepoRegionId(v string) *DescribeCanFixVulListRequest {
 	s.RepoRegionId = &v
+	return s
+}
+
+func (s *DescribeCanFixVulListRequest) SetResourceDirectoryAccountId(v int64) *DescribeCanFixVulListRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

@@ -25,6 +25,8 @@ type iDescribePropertyUserDetailRequest interface {
 	GetPageSize() *int32
 	SetRemark(v string) *DescribePropertyUserDetailRequest
 	GetRemark() *string
+	SetResourceDirectoryAccountId(v int64) *DescribePropertyUserDetailRequest
+	GetResourceDirectoryAccountId() *int64
 	SetUseNextToken(v bool) *DescribePropertyUserDetailRequest
 	GetUseNextToken() *bool
 	SetUser(v string) *DescribePropertyUserDetailRequest
@@ -87,7 +89,8 @@ type DescribePropertyUserDetailRequest struct {
 	// example:
 	//
 	// 192.168.XX.XX
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Remark                     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// Specifies whether to use the NextToken method to retrieve the vulnerability list data. If this parameter is used, TotalCount is no longer returned. Valid values:
 	//
 	// - **true**: Uses the NextToken method.
@@ -152,6 +155,10 @@ func (s *DescribePropertyUserDetailRequest) GetRemark() *string {
 	return s.Remark
 }
 
+func (s *DescribePropertyUserDetailRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribePropertyUserDetailRequest) GetUseNextToken() *bool {
 	return s.UseNextToken
 }
@@ -201,6 +208,11 @@ func (s *DescribePropertyUserDetailRequest) SetPageSize(v int32) *DescribeProper
 
 func (s *DescribePropertyUserDetailRequest) SetRemark(v string) *DescribePropertyUserDetailRequest {
 	s.Remark = &v
+	return s
+}
+
+func (s *DescribePropertyUserDetailRequest) SetResourceDirectoryAccountId(v int64) *DescribePropertyUserDetailRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

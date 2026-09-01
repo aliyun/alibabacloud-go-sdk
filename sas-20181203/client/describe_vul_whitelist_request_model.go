@@ -15,6 +15,8 @@ type iDescribeVulWhitelistRequest interface {
 	GetLang() *string
 	SetPageSize(v int32) *DescribeVulWhitelistRequest
 	GetPageSize() *int32
+	SetResourceDirectoryAccountId(v int64) *DescribeVulWhitelistRequest
+	GetResourceDirectoryAccountId() *int64
 }
 
 type DescribeVulWhitelistRequest struct {
@@ -39,7 +41,8 @@ type DescribeVulWhitelistRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize                   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 
 func (s DescribeVulWhitelistRequest) String() string {
@@ -62,6 +65,10 @@ func (s *DescribeVulWhitelistRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *DescribeVulWhitelistRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeVulWhitelistRequest) SetCurrentPage(v int32) *DescribeVulWhitelistRequest {
 	s.CurrentPage = &v
 	return s
@@ -74,6 +81,11 @@ func (s *DescribeVulWhitelistRequest) SetLang(v string) *DescribeVulWhitelistReq
 
 func (s *DescribeVulWhitelistRequest) SetPageSize(v int32) *DescribeVulWhitelistRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeVulWhitelistRequest) SetResourceDirectoryAccountId(v int64) *DescribeVulWhitelistRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

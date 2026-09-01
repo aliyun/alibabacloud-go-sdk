@@ -9,6 +9,10 @@ type iModifyPostPayModuleSwitchShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *ModifyPostPayModuleSwitchShrinkRequest
+	GetClientToken() *string
+	SetEdrModuleSwitchShrink(v string) *ModifyPostPayModuleSwitchShrinkRequest
+	GetEdrModuleSwitchShrink() *string
 	SetPostPaidHostAutoBind(v int32) *ModifyPostPayModuleSwitchShrinkRequest
 	GetPostPaidHostAutoBind() *int32
 	SetPostPaidHostAutoBindVersion(v int32) *ModifyPostPayModuleSwitchShrinkRequest
@@ -22,7 +26,10 @@ type iModifyPostPayModuleSwitchShrinkRequest interface {
 }
 
 type ModifyPostPayModuleSwitchShrinkRequest struct {
-	// Specifies whether to automatically bind newly added assets for host and container protection. Valid values:
+	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. Only ASCII characters are supported. The token can be up to 64 characters in length.
+	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EdrModuleSwitchShrink *string `json:"EdrModuleSwitch,omitempty" xml:"EdrModuleSwitch,omitempty"`
+	// Specifies whether to automatically bind new assets for host and container protection. Valid values:
 	//
 	// - **0**: Disabled.
 	//
@@ -32,7 +39,7 @@ type ModifyPostPayModuleSwitchShrinkRequest struct {
 	//
 	// 1
 	PostPaidHostAutoBind *int32 `json:"PostPaidHostAutoBind,omitempty" xml:"PostPaidHostAutoBind,omitempty"`
-	// The version to which newly added assets are automatically bound for host and container protection. Valid values:
+	// The edition to which new assets are automatically bound for host and container protection. Valid values:
 	//
 	// - **1**: Free Edition.
 	//
@@ -60,7 +67,7 @@ type ModifyPostPayModuleSwitchShrinkRequest struct {
 	//
 	// - Key:
 	//
-	//   - **VUL**: vulnerability fix module
+	//   - **VUL**: vulnerability management module
 	//
 	//   - **CSPM**: Cloud Security Posture Management (CSPM) module
 	//
@@ -84,7 +91,7 @@ type ModifyPostPayModuleSwitchShrinkRequest struct {
 	//
 	// > Modules for which no value is specified remain unchanged.
 	//
-	// <notice>This parameter has the same meaning as PostPayModuleSwitchObj. If both parameters are specified, the value of PostPayModuleSwitch takes precedence..
+	// <notice>This parameter has the same meaning as PostPayModuleSwitchObj. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
 	//
 	// example:
 	//
@@ -92,7 +99,7 @@ type ModifyPostPayModuleSwitchShrinkRequest struct {
 	PostPayModuleSwitch *string `json:"PostPayModuleSwitch,omitempty" xml:"PostPayModuleSwitch,omitempty"`
 	// The pay-as-you-go module switch.
 	//
-	// 	Notice: This parameter has the same meaning as PostPayModuleSwitch. If both parameters are specified, the value of PostPayModuleSwitch takes precedence..
+	// 	Notice: This parameter has the same meaning as PostPayModuleSwitch. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
 	PostPayModuleSwitchObjShrink *string `json:"PostPayModuleSwitchObj,omitempty" xml:"PostPayModuleSwitchObj,omitempty"`
 }
 
@@ -102,6 +109,14 @@ func (s ModifyPostPayModuleSwitchShrinkRequest) String() string {
 
 func (s ModifyPostPayModuleSwitchShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyPostPayModuleSwitchShrinkRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *ModifyPostPayModuleSwitchShrinkRequest) GetEdrModuleSwitchShrink() *string {
+	return s.EdrModuleSwitchShrink
 }
 
 func (s *ModifyPostPayModuleSwitchShrinkRequest) GetPostPaidHostAutoBind() *int32 {
@@ -122,6 +137,16 @@ func (s *ModifyPostPayModuleSwitchShrinkRequest) GetPostPayModuleSwitch() *strin
 
 func (s *ModifyPostPayModuleSwitchShrinkRequest) GetPostPayModuleSwitchObjShrink() *string {
 	return s.PostPayModuleSwitchObjShrink
+}
+
+func (s *ModifyPostPayModuleSwitchShrinkRequest) SetClientToken(v string) *ModifyPostPayModuleSwitchShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyPostPayModuleSwitchShrinkRequest) SetEdrModuleSwitchShrink(v string) *ModifyPostPayModuleSwitchShrinkRequest {
+	s.EdrModuleSwitchShrink = &v
+	return s
 }
 
 func (s *ModifyPostPayModuleSwitchShrinkRequest) SetPostPaidHostAutoBind(v int32) *ModifyPostPayModuleSwitchShrinkRequest {

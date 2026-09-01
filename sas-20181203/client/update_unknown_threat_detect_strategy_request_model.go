@@ -22,19 +22,19 @@ type iUpdateUnknownThreatDetectStrategyRequest interface {
 }
 
 type UpdateUnknownThreatDetectStrategyRequest struct {
-	// The number of days the model learns for after its creation.
+	// The number of days after the model is initially created before learning stops.
 	//
 	// example:
 	//
 	// 1
 	DurationDaysAfterInit *int32 `json:"DurationDaysAfterInit,omitempty" xml:"DurationDaysAfterInit,omitempty"`
-	// The number of consecutive days without new processes before the model stops learning.
+	// The number of days after which the model ends if no new processes are added.
 	//
 	// example:
 	//
 	// 1
 	DurationDaysAfterStop *int32 `json:"DurationDaysAfterStop,omitempty" xml:"DurationDaysAfterStop,omitempty"`
-	// The ID of the unknown threat detection strategy to update.
+	// The ID of the policy to delete.
 	//
 	// This parameter is required.
 	//
@@ -42,13 +42,13 @@ type UpdateUnknownThreatDetectStrategyRequest struct {
 	//
 	// 1
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the unknown threat detection strategy.
+	// The policy name.
 	//
 	// example:
 	//
 	// strategy****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The whitelist mode. Valid values are:
+	// The whitelist mode. Valid values:
 	//
 	// - **hash**: process hash
 	//

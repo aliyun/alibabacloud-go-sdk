@@ -11,6 +11,8 @@ type iOperateVulsRequest interface {
 	GoString() string
 	SetOperateType(v string) *OperateVulsRequest
 	GetOperateType() *string
+	SetResourceDirectoryAccountId(v int64) *OperateVulsRequest
+	GetResourceDirectoryAccountId() *int64
 	SetType(v string) *OperateVulsRequest
 	GetType() *string
 	SetUuids(v []*string) *OperateVulsRequest
@@ -27,7 +29,8 @@ type OperateVulsRequest struct {
 	// example:
 	//
 	// vul_fix
-	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	OperateType                *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The type of vulnerability to fix. Set the value to **cve**, which indicates a Linux software vulnerability.
 	//
 	// This parameter is required.
@@ -58,6 +61,10 @@ func (s *OperateVulsRequest) GetOperateType() *string {
 	return s.OperateType
 }
 
+func (s *OperateVulsRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *OperateVulsRequest) GetType() *string {
 	return s.Type
 }
@@ -72,6 +79,11 @@ func (s *OperateVulsRequest) GetVulNames() []*string {
 
 func (s *OperateVulsRequest) SetOperateType(v string) *OperateVulsRequest {
 	s.OperateType = &v
+	return s
+}
+
+func (s *OperateVulsRequest) SetResourceDirectoryAccountId(v int64) *OperateVulsRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

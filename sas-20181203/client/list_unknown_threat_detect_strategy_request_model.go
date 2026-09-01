@@ -22,7 +22,7 @@ type iListUnknownThreatDetectStrategyRequest interface {
 }
 
 type ListUnknownThreatDetectStrategyRequest struct {
-	// The page number for a paginated query.
+	// The page number of the current page in a paging query.
 	//
 	// This parameter is required.
 	//
@@ -30,19 +30,19 @@ type ListUnknownThreatDetectStrategyRequest struct {
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The strategy ID.
+	// The policy ID.
 	//
 	// example:
 	//
 	// 210****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The strategy name.
+	// The policy name.
 	//
 	// example:
 	//
 	// strategy****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of entries to return per page.
+	// The number of entries to display on each page in a paging query.
 	//
 	// This parameter is required.
 	//

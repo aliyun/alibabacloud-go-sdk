@@ -85,7 +85,9 @@ type GetAttackPathEventDetailResponseBodyAttackPathEvent struct {
 	// The list of path event edges.
 	PathEventEdgeList []*GetAttackPathEventDetailResponseBodyAttackPathEventPathEventEdgeList `json:"PathEventEdgeList,omitempty" xml:"PathEventEdgeList,omitempty" type:"Repeated"`
 	// The list of path nodes.
-	PathEventNodeList []*GetAttackPathEventDetailResponseBodyAttackPathEventPathEventNodeList `json:"PathEventNodeList,omitempty" xml:"PathEventNodeList,omitempty" type:"Repeated"`
+	PathEventNodeList        []*GetAttackPathEventDetailResponseBodyAttackPathEventPathEventNodeList `json:"PathEventNodeList,omitempty" xml:"PathEventNodeList,omitempty" type:"Repeated"`
+	PathInterpretationStatus *string                                                                 `json:"PathInterpretationStatus,omitempty" xml:"PathInterpretationStatus,omitempty"`
+	PathInterpretationUrl    *string                                                                 `json:"PathInterpretationUrl,omitempty" xml:"PathInterpretationUrl,omitempty"`
 	// The path name.
 	//
 	// example:
@@ -152,6 +154,14 @@ func (s *GetAttackPathEventDetailResponseBodyAttackPathEvent) GetPathEventNodeLi
 	return s.PathEventNodeList
 }
 
+func (s *GetAttackPathEventDetailResponseBodyAttackPathEvent) GetPathInterpretationStatus() *string {
+	return s.PathInterpretationStatus
+}
+
+func (s *GetAttackPathEventDetailResponseBodyAttackPathEvent) GetPathInterpretationUrl() *string {
+	return s.PathInterpretationUrl
+}
+
 func (s *GetAttackPathEventDetailResponseBodyAttackPathEvent) GetPathName() *string {
 	return s.PathName
 }
@@ -203,6 +213,16 @@ func (s *GetAttackPathEventDetailResponseBodyAttackPathEvent) SetPathEventEdgeLi
 
 func (s *GetAttackPathEventDetailResponseBodyAttackPathEvent) SetPathEventNodeList(v []*GetAttackPathEventDetailResponseBodyAttackPathEventPathEventNodeList) *GetAttackPathEventDetailResponseBodyAttackPathEvent {
 	s.PathEventNodeList = v
+	return s
+}
+
+func (s *GetAttackPathEventDetailResponseBodyAttackPathEvent) SetPathInterpretationStatus(v string) *GetAttackPathEventDetailResponseBodyAttackPathEvent {
+	s.PathInterpretationStatus = &v
+	return s
+}
+
+func (s *GetAttackPathEventDetailResponseBodyAttackPathEvent) SetPathInterpretationUrl(v string) *GetAttackPathEventDetailResponseBodyAttackPathEvent {
+	s.PathInterpretationUrl = &v
 	return s
 }
 

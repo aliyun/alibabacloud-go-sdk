@@ -13,6 +13,8 @@ type iDescribeReportExportRequest interface {
 	GetExportId() *int64
 	SetLang(v string) *DescribeReportExportRequest
 	GetLang() *string
+	SetResourceDirectoryAccountId(v int64) *DescribeReportExportRequest
+	GetResourceDirectoryAccountId() *int64
 }
 
 type DescribeReportExportRequest struct {
@@ -35,7 +37,8 @@ type DescribeReportExportRequest struct {
 	// example:
 	//
 	// zh
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang                       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 
 func (s DescribeReportExportRequest) String() string {
@@ -54,6 +57,10 @@ func (s *DescribeReportExportRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *DescribeReportExportRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeReportExportRequest) SetExportId(v int64) *DescribeReportExportRequest {
 	s.ExportId = &v
 	return s
@@ -61,6 +68,11 @@ func (s *DescribeReportExportRequest) SetExportId(v int64) *DescribeReportExport
 
 func (s *DescribeReportExportRequest) SetLang(v string) *DescribeReportExportRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeReportExportRequest) SetResourceDirectoryAccountId(v int64) *DescribeReportExportRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

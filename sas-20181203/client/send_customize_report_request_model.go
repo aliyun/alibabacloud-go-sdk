@@ -11,6 +11,8 @@ type iSendCustomizeReportRequest interface {
 	GoString() string
 	SetReportId(v int64) *SendCustomizeReportRequest
 	GetReportId() *int64
+	SetResourceDirectoryAccountId(v int64) *SendCustomizeReportRequest
+	GetResourceDirectoryAccountId() *int64
 }
 
 type SendCustomizeReportRequest struct {
@@ -23,7 +25,8 @@ type SendCustomizeReportRequest struct {
 	// example:
 	//
 	// 123
-	ReportId *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	ReportId                   *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 
 func (s SendCustomizeReportRequest) String() string {
@@ -38,8 +41,17 @@ func (s *SendCustomizeReportRequest) GetReportId() *int64 {
 	return s.ReportId
 }
 
+func (s *SendCustomizeReportRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *SendCustomizeReportRequest) SetReportId(v int64) *SendCustomizeReportRequest {
 	s.ReportId = &v
+	return s
+}
+
+func (s *SendCustomizeReportRequest) SetResourceDirectoryAccountId(v int64) *SendCustomizeReportRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

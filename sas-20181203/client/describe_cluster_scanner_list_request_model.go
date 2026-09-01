@@ -18,9 +18,9 @@ type iDescribeClusterScannerListRequest interface {
 }
 
 type DescribeClusterScannerListRequest struct {
-	// List of cluster IDs.
+	// The list of cluster IDs.
 	ClusterIdList []*string `json:"ClusterIdList,omitempty" xml:"ClusterIdList,omitempty" type:"Repeated"`
-	// The language type for requests and responses.
+	// The language type for the request and response messages.
 	//
 	// - **zh**: Chinese
 	//
@@ -30,13 +30,13 @@ type DescribeClusterScannerListRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// List of scanner statuses. Values:
+	// The list of scanner statuses. Valid values:
 	//
-	// - **online**: Running
+	// - **online**: running
 	//
-	// - **offline**: Offline
+	// - **offline**: offline
 	//
-	// - **not_installed**: Not Installed
+	// - **not_installed**: not installed
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 }
 

@@ -68,7 +68,7 @@ type ListAgentlessRiskUuidRequest struct {
 	//
 	// oracle-win-001****
 	MachineName *string `json:"MachineName,omitempty" xml:"MachineName,omitempty"`
-	// The maximum number of entries per page when using paging.
+	// The maximum number of entries to return per page when using paging.
 	//
 	// example:
 	//

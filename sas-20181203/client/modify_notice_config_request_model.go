@@ -11,6 +11,8 @@ type iModifyNoticeConfigRequest interface {
 	GoString() string
 	SetBizType(v string) *ModifyNoticeConfigRequest
 	GetBizType() *string
+	SetClientToken(v string) *ModifyNoticeConfigRequest
+	GetClientToken() *string
 	SetFocusLevel(v string) *ModifyNoticeConfigRequest
 	GetFocusLevel() *string
 	SetProject(v string) *ModifyNoticeConfigRequest
@@ -24,7 +26,7 @@ type iModifyNoticeConfigRequest interface {
 }
 
 type ModifyNoticeConfigRequest struct {
-	// The notification configuration type. By default, notifications are sent by SMS, email, or internal message. Valid values:
+	// The notification configuration type. By default, notifications are sent through SMS, email, or internal message. Valid values:
 	//
 	// - **cms**: CloudMonitor push.
 	//
@@ -32,17 +34,19 @@ type ModifyNoticeConfigRequest struct {
 	//
 	// cms
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The focus level. Separate multiple levels with commas (,).
 	//
 	// When **Project*	- is **yundun_soar_incident_generate*	- or **yundun_soar_incident_update**, valid values:
 	//
 	// - **CRITICAL**: Critical.
 	//
-	// - **HIGH**: High-risk.
+	// - **HIGH**: High.
 	//
-	// - **MEDIUM**: Medium-risk.
+	// - **MEDIUM**: Medium.
 	//
-	// - **LOW**: Low-risk.
+	// - **LOW**: Low.
 	//
 	// - **INFO**: Informational.
 	//
@@ -64,9 +68,9 @@ type ModifyNoticeConfigRequest struct {
 	//
 	// - **sas_healthcheck**: Baseline check
 	//
-	// - **yundun_defennce_antiRansomware_overflow**: Anti-ransomware storage space exceeded
+	// - **yundun_defennce_antiRansomware_overflow**: Anti-ransomware storage exceeded
 	//
-	// - **yundun_sas_cloudsiem_log**: Cloud Threat Detection and Response (CTDR) log excess notification
+	// - **yundun_sas_cloudsiem_log**: Threat analysis log excess notification
 	//
 	// - **sas_suspicious**: Security alert
 	//
@@ -88,7 +92,7 @@ type ModifyNoticeConfigRequest struct {
 	//
 	// - **yundun_sas_anti_virus_config**: Virus scan notification
 	//
-	// - **yundun_sas_log**: Log storage exceeded
+	// - **yundun_sas_log**: Log excess
 	//
 	// - **yundun_honeypot_alarm**: Cloud honeypot alerting
 	//
@@ -98,7 +102,7 @@ type ModifyNoticeConfigRequest struct {
 	//
 	// - **yundun_soar_incident_update**: Updated security incident
 	//
-	// > **yundun_security_Weekreport*	- sends a weekly report to notify you of unresolved vulnerabilities.
+	// > **yundun_security_Weekreport*	- sends a weekly report to notify about unresolved vulnerabilities.
 	//
 	// ---
 	//
@@ -116,7 +120,7 @@ type ModifyNoticeConfigRequest struct {
 	//
 	// - **Filedetect_event**: Malicious file SDK result details
 	//
-	// - **Rasp_event**: Application protection result details.
+	// - **Rasp_event**: Application protection result details
 	//
 	// example:
 	//
@@ -146,7 +150,7 @@ type ModifyNoticeConfigRequest struct {
 	//
 	// - 0: CloudMonitor push disabled
 	//
-	// - 1: CloudMonitor push enabled.
+	// - 1: CloudMonitor push enabled
 	//
 	// example:
 	//
@@ -162,13 +166,13 @@ type ModifyNoticeConfigRequest struct {
 	//
 	// #### When the BizType field is empty: valid values
 	//
-	// - **0**: No limit.
+	// - **0**: No limit
 	//
-	// - **1**: Notifications are sent only between 08:00 and 22:00.
+	// - **1**: Notifications are sent only during 08:00-22:00
 	//
-	// #### When the BizType field is `cms`
+	// #### When the BizType field is `cms`: description
 	//
-	// Specifies the push frequency limit, in seconds. The minimum value is **60**.
+	// Specifies the push frequency limit in seconds. The minimum value is **60**.
 	//
 	// example:
 	//
@@ -186,6 +190,10 @@ func (s ModifyNoticeConfigRequest) GoString() string {
 
 func (s *ModifyNoticeConfigRequest) GetBizType() *string {
 	return s.BizType
+}
+
+func (s *ModifyNoticeConfigRequest) GetClientToken() *string {
+	return s.ClientToken
 }
 
 func (s *ModifyNoticeConfigRequest) GetFocusLevel() *string {
@@ -210,6 +218,11 @@ func (s *ModifyNoticeConfigRequest) GetTimeLimit() *int32 {
 
 func (s *ModifyNoticeConfigRequest) SetBizType(v string) *ModifyNoticeConfigRequest {
 	s.BizType = &v
+	return s
+}
+
+func (s *ModifyNoticeConfigRequest) SetClientToken(v string) *ModifyNoticeConfigRequest {
+	s.ClientToken = &v
 	return s
 }
 

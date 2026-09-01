@@ -13,6 +13,8 @@ type iChangeSecurityScoreRuleRequest interface {
 	GetCalType() *string
 	SetResetSecurityScoreRule(v bool) *ChangeSecurityScoreRuleRequest
 	GetResetSecurityScoreRule() *bool
+	SetResourceDirectoryAccountId(v int64) *ChangeSecurityScoreRuleRequest
+	GetResourceDirectoryAccountId() *int64
 	SetSecurityScoreCategoryList(v []*ChangeSecurityScoreRuleRequestSecurityScoreCategoryList) *ChangeSecurityScoreRuleRequest
 	GetSecurityScoreCategoryList() []*ChangeSecurityScoreRuleRequestSecurityScoreCategoryList
 	SetSecurityScoreRuleList(v []*ChangeSecurityScoreRuleRequestSecurityScoreRuleList) *ChangeSecurityScoreRuleRequest
@@ -35,7 +37,8 @@ type ChangeSecurityScoreRuleRequest struct {
 	// example:
 	//
 	// false
-	ResetSecurityScoreRule *bool `json:"ResetSecurityScoreRule,omitempty" xml:"ResetSecurityScoreRule,omitempty"`
+	ResetSecurityScoreRule     *bool  `json:"ResetSecurityScoreRule,omitempty" xml:"ResetSecurityScoreRule,omitempty"`
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The information about the new version of the security score rule.
 	SecurityScoreCategoryList []*ChangeSecurityScoreRuleRequestSecurityScoreCategoryList `json:"SecurityScoreCategoryList,omitempty" xml:"SecurityScoreCategoryList,omitempty" type:"Repeated"`
 	// The information about the old version of the security score rule.
@@ -58,6 +61,10 @@ func (s *ChangeSecurityScoreRuleRequest) GetResetSecurityScoreRule() *bool {
 	return s.ResetSecurityScoreRule
 }
 
+func (s *ChangeSecurityScoreRuleRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *ChangeSecurityScoreRuleRequest) GetSecurityScoreCategoryList() []*ChangeSecurityScoreRuleRequestSecurityScoreCategoryList {
 	return s.SecurityScoreCategoryList
 }
@@ -73,6 +80,11 @@ func (s *ChangeSecurityScoreRuleRequest) SetCalType(v string) *ChangeSecuritySco
 
 func (s *ChangeSecurityScoreRuleRequest) SetResetSecurityScoreRule(v bool) *ChangeSecurityScoreRuleRequest {
 	s.ResetSecurityScoreRule = &v
+	return s
+}
+
+func (s *ChangeSecurityScoreRuleRequest) SetResourceDirectoryAccountId(v int64) *ChangeSecurityScoreRuleRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

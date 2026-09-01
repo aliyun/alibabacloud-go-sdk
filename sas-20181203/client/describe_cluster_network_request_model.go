@@ -16,9 +16,9 @@ type iDescribeClusterNetworkRequest interface {
 }
 
 type DescribeClusterNetworkRequest struct {
-	// The end timestamp of the query. Unit: milliseconds.
+	// The end timestamp. Unit: milliseconds.
 	//
-	// > The days between the start timestamp and the end timestamp cannot exceed **seven*	- days.
+	// > The difference between the start timestamp and end timestamp cannot exceed **7*	- days.
 	//
 	// This parameter is required.
 	//
@@ -26,9 +26,9 @@ type DescribeClusterNetworkRequest struct {
 	//
 	// 1656038940435
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start timestamp of the query. Unit: milliseconds.
+	// The start timestamp. Unit: milliseconds.
 	//
-	// > The days between the start timestamp and the end timestamp cannot exceed **seven*	- days.
+	// > The difference between the start timestamp and end timestamp cannot exceed **7*	- days.
 	//
 	// This parameter is required.
 	//

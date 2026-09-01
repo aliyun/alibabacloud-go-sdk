@@ -9,6 +9,8 @@ type iCreateCycleTaskRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *CreateCycleTaskRequest
+	GetClientToken() *string
 	SetEnable(v int32) *CreateCycleTaskRequest
 	GetEnable() *int32
 	SetFirstDateStr(v int64) *CreateCycleTaskRequest
@@ -32,11 +34,13 @@ type iCreateCycleTaskRequest interface {
 }
 
 type CreateCycleTaskRequest struct {
+	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to enable the task. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: enabled.
 	//
-	// 	- **0**: no
+	// - **0**: disabled.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +48,7 @@ type CreateCycleTaskRequest struct {
 	//
 	// 1
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The first time when the task is performed.
+	// The first execution time.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +56,7 @@ type CreateCycleTaskRequest struct {
 	//
 	// 1650556800000
 	FirstDateStr *int64 `json:"FirstDateStr,omitempty" xml:"FirstDateStr,omitempty"`
-	// The interval of the task.
+	// The interval period.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +64,7 @@ type CreateCycleTaskRequest struct {
 	//
 	// 7
 	IntervalPeriod *int32 `json:"IntervalPeriod,omitempty" xml:"IntervalPeriod,omitempty"`
-	// The additional information.
+	// The extended information field.
 	//
 	// example:
 	//
@@ -94,9 +98,9 @@ type CreateCycleTaskRequest struct {
 	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
 	// The unit of the scan interval. Valid values:
 	//
-	// 	- **day**: days
+	// - **day**: day.
 	//
-	// 	- **hour**: hours
+	// - **hour**: hour.
 	//
 	// This parameter is required.
 	//
@@ -104,13 +108,13 @@ type CreateCycleTaskRequest struct {
 	//
 	// day
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The additional source for the task.
+	// The source from which the task is added.
 	//
 	// example:
 	//
 	// console_batch
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The time when the task ends. Unit: hours.
+	// The task end time, in hours.
 	//
 	// This parameter is required.
 	//
@@ -118,7 +122,7 @@ type CreateCycleTaskRequest struct {
 	//
 	// 6
 	TargetEndTime *int32 `json:"TargetEndTime,omitempty" xml:"TargetEndTime,omitempty"`
-	// The time when the task is started. Unit: hours.
+	// The task start time, in hours.
 	//
 	// This parameter is required.
 	//
@@ -126,13 +130,13 @@ type CreateCycleTaskRequest struct {
 	//
 	// 0
 	TargetStartTime *int32 `json:"TargetStartTime,omitempty" xml:"TargetStartTime,omitempty"`
-	// The name of the task. Valid values:
+	// The task name. Valid values:
 	//
-	// 	- **VIRUS_VUL_SCHEDULE_SCAN**: virus scan task
+	// - **VIRUS_VUL_SCHEDULE_SCAN**: virus scan.
 	//
-	// 	- **IMAGE_SCAN**: image scan task
+	// - **IMAGE_SCAN**: image scan.
 	//
-	// 	- **EMG_VUL_SCHEDULE_SCAN**: urgent vulnerability scan task
+	// - **EMG_VUL_SCHEDULE_SCAN**: emergency vulnerability scanning.
 	//
 	// This parameter is required.
 	//
@@ -140,13 +144,13 @@ type CreateCycleTaskRequest struct {
 	//
 	// EMG_VUL_SCHEDULE_SCAN
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	// The type of the task. Valid values:
+	// The task type. Valid values:
 	//
-	// 	- **VIRUS_VUL_SCHEDULE_SCAN**: virus scan task
+	// - **VIRUS_VUL_SCHEDULE_SCAN**: virus scan.
 	//
-	// 	- **IMAGE_SCAN**: image scan task
+	// - **IMAGE_SCAN**: image scan.
 	//
-	// 	- **EMG_VUL_SCHEDULE_SCAN**: urgent vulnerability scan task
+	// - **EMG_VUL_SCHEDULE_SCAN**: emergency vulnerability scanning.
 	//
 	// This parameter is required.
 	//
@@ -162,6 +166,10 @@ func (s CreateCycleTaskRequest) String() string {
 
 func (s CreateCycleTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCycleTaskRequest) GetClientToken() *string {
+	return s.ClientToken
 }
 
 func (s *CreateCycleTaskRequest) GetEnable() *int32 {
@@ -202,6 +210,11 @@ func (s *CreateCycleTaskRequest) GetTaskName() *string {
 
 func (s *CreateCycleTaskRequest) GetTaskType() *string {
 	return s.TaskType
+}
+
+func (s *CreateCycleTaskRequest) SetClientToken(v string) *CreateCycleTaskRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *CreateCycleTaskRequest) SetEnable(v int32) *CreateCycleTaskRequest {

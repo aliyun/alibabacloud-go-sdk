@@ -9,6 +9,8 @@ type iModifyOperateVulRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *ModifyOperateVulRequest
+	GetClientToken() *string
 	SetFrom(v string) *ModifyOperateVulRequest
 	GetFrom() *string
 	SetInfo(v string) *ModifyOperateVulRequest
@@ -17,40 +19,44 @@ type iModifyOperateVulRequest interface {
 	GetOperateType() *string
 	SetReason(v string) *ModifyOperateVulRequest
 	GetReason() *string
+	SetResourceDirectoryAccountId(v int64) *ModifyOperateVulRequest
+	GetResourceDirectoryAccountId() *int64
 	SetType(v string) *ModifyOperateVulRequest
 	GetType() *string
 }
 
 type ModifyOperateVulRequest struct {
-	// The request ID. Set the value to **sas**.
+	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The source identifier of the request. Set the value to **sas**.
 	//
 	// example:
 	//
 	// sas
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The details of the vulnerability. The value of this parameter is in the JSON format and contains the following fields:
+	// The information about the vulnerability to handle. This parameter is in JSON format and contains the following fields:
 	//
-	// 	- **name**: the name of the vulnerability.
+	// - **name**: The name of the vulnerability.
 	//
-	// 	- **uuid**: the UUID of the server on which the vulnerability is detected.
+	// - **uuid**: The UUID of the server on which the vulnerability is detected.
 	//
-	// 	- **tag**: the tag that is added to the vulnerability. Valid values:
+	// - **tag**: The tag of the vulnerability. Valid values:
 	//
-	//     	- **oval**: Linux software vulnerability
+	//     - **oval**: Linux software vulnerability.
 	//
-	//     	- **system**: Windows system vulnerability
+	//     - **system**: Windows system vulnerability.
 	//
-	//     	- **cms**: Web-CMS vulnerability
+	//     - **cms**: Web-CMS vulnerability.
 	//
-	// >  You can call the [DescribeVulList](~~DescribeVulList~~) operation to query the tags that are added to vulnerabilities of other types.
+	// > For other vulnerability types, call the [DescribeVulList](~~DescribeVulList~~) operation to obtain vulnerability information.
 	//
-	// 	- **isFront**: specifies whether a pre-patch is required to fix the Windows system vulnerability. This field is required only for Windows system vulnerabilities. Valid values:
+	// - **isFront**: Specifies whether the Windows patch is a prerequisite patch. This parameter is required only when you handle Windows system vulnerabilities. You can ignore this parameter for other vulnerability types. Valid values:
 	//
-	//     	- **0**: no
+	//     - **0**: No.
 	//
-	//     	- **1**: yes
+	//     - **1**: Yes.
 	//
-	// >  You can fix multiple vulnerabilities at a time. Separate the details of multiple vulnerabilities with commas (,). You can call the [DescribeVulLIst](~~DescribeVulList~~) operation to query the details of vulnerabilities.
+	// > Batch processing of vulnerabilities is supported. Separate multiple vulnerability entries with commas (,). Call the [DescribeVulList](~~DescribeVulList~~) operation to obtain vulnerability information.
 	//
 	// This parameter is required.
 	//
@@ -58,17 +64,17 @@ type ModifyOperateVulRequest struct {
 	//
 	// [{"name":"alilinux2:2.1903:ALINUX2-SA-2022:0007","uuid":"a3bb82a8-a3bd-4546-acce-45ac34af****","tag":"oval","isFront":0},{"name":"alilinux2:2.1903:ALINUX2-SA-2022:0007","uuid":"98a6fecc-88cd-46f2-8e35-f808a388****","tag":"oval","isFront":0}]
 	Info *string `json:"Info,omitempty" xml:"Info,omitempty"`
-	// The operation that you want to perform on the vulnerability. Valid values:
+	// The operation to perform on the vulnerability. Valid values:
 	//
-	// 	- **vul_fix**: fixes the vulnerability.
+	// - **vul_fix**: fixes the vulnerability.
 	//
-	// 	- **vul_verify**: verifies the vulnerability fix.
+	// - **vul_verify**: verifies the vulnerability.
 	//
-	// 	- **vul_ignore**: ignores the vulnerability.
+	// - **vul_ignore**: ignores the vulnerability.
 	//
-	// 	- **vul_undo_ignore**: cancels ignoring the vulnerability.
+	// - **vul_undo_ignore**: cancels ignoring the vulnerability.
 	//
-	// 	- **vul_delete**: deletes the vulnerability.
+	// - **vul_delete**: deletes the vulnerability.
 	//
 	// This parameter is required.
 	//
@@ -76,29 +82,30 @@ type ModifyOperateVulRequest struct {
 	//
 	// vul_fix
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	// The reason why the vulnerability is **ignored**.
+	// The reason for ignoring the vulnerability.
 	//
-	// >  This parameter is required only when you set **OperateType*	- to **vul_ignore**.
+	// > This parameter is required only when the operation type is **ignore*	- (OperateType is set to **vul_ignore**).
 	//
 	// example:
 	//
 	// not operate
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The type of the vulnerability. Valid values:
+	Reason                     *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	// The type of the vulnerability to handle. Valid values:
 	//
-	// 	- **cve**: Linux software vulnerability
+	// - **cve**: Linux software vulnerability.
 	//
-	// 	- **sys**: Windows system vulnerability
+	// - **sys**: Windows system vulnerability.
 	//
-	// 	- **cms**: Web-CMS vulnerability
+	// - **cms**: Web-CMS vulnerability.
 	//
-	// 	- **emg**: urgent vulnerability
+	// - **emg**: emergency vulnerability.
 	//
-	// 	- **app**: application vulnerability
+	// - **app**: application vulnerability.
 	//
-	// 	- **sca**: vulnerability that is detected based on software component analysis
+	// - **sca**: software constituency parsing vulnerability.
 	//
-	// >  You cannot fix the urgent vulnerabilities, application vulnerabilities, or vulnerabilities that are detected based on software component analysis.
+	// > Emergency vulnerabilities (emg), application vulnerabilities (app), and software constituency parsing vulnerabilities (sca) do not support the execute vulnerability fix operation.
 	//
 	// This parameter is required.
 	//
@@ -114,6 +121,10 @@ func (s ModifyOperateVulRequest) String() string {
 
 func (s ModifyOperateVulRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyOperateVulRequest) GetClientToken() *string {
+	return s.ClientToken
 }
 
 func (s *ModifyOperateVulRequest) GetFrom() *string {
@@ -132,8 +143,17 @@ func (s *ModifyOperateVulRequest) GetReason() *string {
 	return s.Reason
 }
 
+func (s *ModifyOperateVulRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *ModifyOperateVulRequest) GetType() *string {
 	return s.Type
+}
+
+func (s *ModifyOperateVulRequest) SetClientToken(v string) *ModifyOperateVulRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *ModifyOperateVulRequest) SetFrom(v string) *ModifyOperateVulRequest {
@@ -153,6 +173,11 @@ func (s *ModifyOperateVulRequest) SetOperateType(v string) *ModifyOperateVulRequ
 
 func (s *ModifyOperateVulRequest) SetReason(v string) *ModifyOperateVulRequest {
 	s.Reason = &v
+	return s
+}
+
+func (s *ModifyOperateVulRequest) SetResourceDirectoryAccountId(v int64) *ModifyOperateVulRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

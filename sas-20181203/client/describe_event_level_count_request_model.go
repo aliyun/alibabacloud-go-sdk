@@ -21,6 +21,8 @@ type iDescribeEventLevelCountRequest interface {
 	GetFrom() *string
 	SetMultiAccountActionType(v int32) *DescribeEventLevelCountRequest
 	GetMultiAccountActionType() *int32
+	SetResourceDirectoryAccountId(v int64) *DescribeEventLevelCountRequest
+	GetResourceDirectoryAccountId() *int64
 	SetTargetType(v string) *DescribeEventLevelCountRequest
 	GetTargetType() *string
 }
@@ -91,7 +93,8 @@ type DescribeEventLevelCountRequest struct {
 	// example:
 	//
 	// 0
-	MultiAccountActionType *int32 `json:"MultiAccountActionType,omitempty" xml:"MultiAccountActionType,omitempty"`
+	MultiAccountActionType     *int32 `json:"MultiAccountActionType,omitempty" xml:"MultiAccountActionType,omitempty"`
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The type of the query condition. Valid values:
 	//
 	// 	- **containerId**: the ID of the container
@@ -136,6 +139,10 @@ func (s *DescribeEventLevelCountRequest) GetMultiAccountActionType() *int32 {
 	return s.MultiAccountActionType
 }
 
+func (s *DescribeEventLevelCountRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeEventLevelCountRequest) GetTargetType() *string {
 	return s.TargetType
 }
@@ -167,6 +174,11 @@ func (s *DescribeEventLevelCountRequest) SetFrom(v string) *DescribeEventLevelCo
 
 func (s *DescribeEventLevelCountRequest) SetMultiAccountActionType(v int32) *DescribeEventLevelCountRequest {
 	s.MultiAccountActionType = &v
+	return s
+}
+
+func (s *DescribeEventLevelCountRequest) SetResourceDirectoryAccountId(v int64) *DescribeEventLevelCountRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

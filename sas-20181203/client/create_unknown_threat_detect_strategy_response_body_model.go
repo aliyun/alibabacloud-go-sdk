@@ -16,13 +16,13 @@ type iCreateUnknownThreatDetectStrategyResponseBody interface {
 }
 
 type CreateUnknownThreatDetectStrategyResponseBody struct {
-	// The strategy ID.
+	// The policy ID.
 	//
 	// example:
 	//
 	// 1
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

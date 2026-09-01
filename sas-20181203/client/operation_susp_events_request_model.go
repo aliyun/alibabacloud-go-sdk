@@ -13,6 +13,8 @@ type iOperationSuspEventsRequest interface {
 	GetFrom() *string
 	SetOperation(v string) *OperationSuspEventsRequest
 	GetOperation() *string
+	SetResourceDirectoryAccountId(v int64) *OperationSuspEventsRequest
+	GetResourceDirectoryAccountId() *int64
 	SetSourceIp(v string) *OperationSuspEventsRequest
 	GetSourceIp() *string
 	SetSubOperation(v string) *OperationSuspEventsRequest
@@ -49,7 +51,8 @@ type OperationSuspEventsRequest struct {
 	// example:
 	//
 	// deal
-	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Operation                  *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The IP address of the access source.
 	//
 	// example:
@@ -106,6 +109,10 @@ func (s *OperationSuspEventsRequest) GetOperation() *string {
 	return s.Operation
 }
 
+func (s *OperationSuspEventsRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *OperationSuspEventsRequest) GetSourceIp() *string {
 	return s.SourceIp
 }
@@ -129,6 +136,11 @@ func (s *OperationSuspEventsRequest) SetFrom(v string) *OperationSuspEventsReque
 
 func (s *OperationSuspEventsRequest) SetOperation(v string) *OperationSuspEventsRequest {
 	s.Operation = &v
+	return s
+}
+
+func (s *OperationSuspEventsRequest) SetResourceDirectoryAccountId(v int64) *OperationSuspEventsRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

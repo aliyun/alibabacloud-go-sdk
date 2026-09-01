@@ -11,6 +11,8 @@ type iUpdateOssScanConfigRequest interface {
 	GoString() string
 	SetAllKeyPrefix(v bool) *UpdateOssScanConfigRequest
 	GetAllKeyPrefix() *bool
+	SetAutoAdd(v int32) *UpdateOssScanConfigRequest
+	GetAutoAdd() *int32
 	SetBucketNameList(v []*string) *UpdateOssScanConfigRequest
 	GetBucketNameList() []*string
 	SetDecompressMaxFileCount(v int32) *UpdateOssScanConfigRequest
@@ -37,6 +39,8 @@ type iUpdateOssScanConfigRequest interface {
 	GetRealTimeIncr() *bool
 	SetScanDayList(v []*int32) *UpdateOssScanConfigRequest
 	GetScanDayList() []*int32
+	SetSource(v string) *UpdateOssScanConfigRequest
+	GetSource() *string
 	SetStartTime(v string) *UpdateOssScanConfigRequest
 	GetStartTime() *string
 }
@@ -47,16 +51,17 @@ type UpdateOssScanConfigRequest struct {
 	// example:
 	//
 	// true
-	AllKeyPrefix *bool `json:"AllKeyPrefix,omitempty" xml:"AllKeyPrefix,omitempty"`
+	AllKeyPrefix *bool  `json:"AllKeyPrefix,omitempty" xml:"AllKeyPrefix,omitempty"`
+	AutoAdd      *int32 `json:"AutoAdd,omitempty" xml:"AutoAdd,omitempty"`
 	// The list of bucket names.
 	BucketNameList []*string `json:"BucketNameList,omitempty" xml:"BucketNameList,omitempty" type:"Repeated"`
-	// The maximum number of files to decompress. Minimum value: 1. Maximum value: 1000. If the maximum number of decompressed files is exceeded, the decompression operation stops. The detection of already decompressed files is not affected.
+	// The maximum number of files to decompress. Minimum value: 1. Maximum value: 1000. When the maximum number of decompressed files is exceeded, the decompression operation ends immediately. The detection of files that have already been decompressed is not affected.
 	//
 	// example:
 	//
 	// 100
 	DecompressMaxFileCount *int32 `json:"DecompressMaxFileCount,omitempty" xml:"DecompressMaxFileCount,omitempty"`
-	// The maximum number of decompression layers for nested compressed files. Minimum value: 1. Maximum value: 5. If the maximum number of decompression layers is exceeded, the decompression operation stops. The detection of already decompressed files is not affected.
+	// The maximum number of decompression layers when multiple levels of nested compressed files exist. Minimum value: 1. Maximum value: 5. When the maximum number of decompression layers is exceeded, the decompression operation ends immediately. The detection of files that have already been decompressed is not affected.
 	//
 	// example:
 	//
@@ -64,17 +69,17 @@ type UpdateOssScanConfigRequest struct {
 	DecompressMaxLayer *int32 `json:"DecompressMaxLayer,omitempty" xml:"DecompressMaxLayer,omitempty"`
 	// The list of decryption types.
 	DecryptionList []*string `json:"DecryptionList,omitempty" xml:"DecryptionList,omitempty" type:"Repeated"`
-	// Specifies whether to enable the scan policy. Valid values:
+	// Specifies whether to enable the policy. Valid values:
 	//
-	// - **1**: Enable.
+	// - **1**: Enabled.
 	//
-	// - **0**: Disable.
+	// - **0**: Disabled.
 	//
 	// example:
 	//
 	// 0
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The scan end time in the HH:mm:ss format.
+	// The scan stop time in the HH:mm:ss format.
 	//
 	// example:
 	//
@@ -90,7 +95,7 @@ type UpdateOssScanConfigRequest struct {
 	KeyPrefixList []*string `json:"KeyPrefixList,omitempty" xml:"KeyPrefixList,omitempty" type:"Repeated"`
 	// The list of file suffixes.
 	KeySuffixList []*string `json:"KeySuffixList,omitempty" xml:"KeySuffixList,omitempty" type:"Repeated"`
-	// Scans files whose last modification time is after the specified timestamp. Unit: milliseconds.
+	// Specifies that only files whose last modification time is after the specified timestamp are scanned. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -102,7 +107,7 @@ type UpdateOssScanConfigRequest struct {
 	//
 	// testStrategy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether to enable real-time incremental detection. If this parameter is set to true, the ScanDayList, StartTime, and EndTime parameters do not take effect.
+	// Specifies whether to enable real-time incremental detection. When this parameter is set to true, the ScanDayList, StartTime, and EndTime parameters do not take effect.
 	//
 	// example:
 	//
@@ -110,6 +115,16 @@ type UpdateOssScanConfigRequest struct {
 	RealTimeIncr *bool `json:"RealTimeIncr,omitempty" xml:"RealTimeIncr,omitempty"`
 	// The scan days. The number indicates the day of the week.
 	ScanDayList []*int32 `json:"ScanDayList,omitempty" xml:"ScanDayList,omitempty" type:"Repeated"`
+	// The business source. Valid values:
+	//
+	// - **OSS**: OSS
+	//
+	// - **NAS**: NAS
+	//
+	// example:
+	//
+	// OSS
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The scan start time in the HH:mm:ss format.
 	//
 	// example:
@@ -128,6 +143,10 @@ func (s UpdateOssScanConfigRequest) GoString() string {
 
 func (s *UpdateOssScanConfigRequest) GetAllKeyPrefix() *bool {
 	return s.AllKeyPrefix
+}
+
+func (s *UpdateOssScanConfigRequest) GetAutoAdd() *int32 {
+	return s.AutoAdd
 }
 
 func (s *UpdateOssScanConfigRequest) GetBucketNameList() []*string {
@@ -182,12 +201,21 @@ func (s *UpdateOssScanConfigRequest) GetScanDayList() []*int32 {
 	return s.ScanDayList
 }
 
+func (s *UpdateOssScanConfigRequest) GetSource() *string {
+	return s.Source
+}
+
 func (s *UpdateOssScanConfigRequest) GetStartTime() *string {
 	return s.StartTime
 }
 
 func (s *UpdateOssScanConfigRequest) SetAllKeyPrefix(v bool) *UpdateOssScanConfigRequest {
 	s.AllKeyPrefix = &v
+	return s
+}
+
+func (s *UpdateOssScanConfigRequest) SetAutoAdd(v int32) *UpdateOssScanConfigRequest {
+	s.AutoAdd = &v
 	return s
 }
 
@@ -253,6 +281,11 @@ func (s *UpdateOssScanConfigRequest) SetRealTimeIncr(v bool) *UpdateOssScanConfi
 
 func (s *UpdateOssScanConfigRequest) SetScanDayList(v []*int32) *UpdateOssScanConfigRequest {
 	s.ScanDayList = v
+	return s
+}
+
+func (s *UpdateOssScanConfigRequest) SetSource(v string) *UpdateOssScanConfigRequest {
+	s.Source = &v
 	return s
 }
 

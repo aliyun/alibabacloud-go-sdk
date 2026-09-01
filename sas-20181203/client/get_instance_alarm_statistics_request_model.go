@@ -11,6 +11,8 @@ type iGetInstanceAlarmStatisticsRequest interface {
 	GoString() string
 	SetFrom(v string) *GetInstanceAlarmStatisticsRequest
 	GetFrom() *string
+	SetResourceDirectoryAccountId(v int64) *GetInstanceAlarmStatisticsRequest
+	GetResourceDirectoryAccountId() *int64
 	SetUuid(v string) *GetInstanceAlarmStatisticsRequest
 	GetUuid() *string
 }
@@ -27,7 +29,8 @@ type GetInstanceAlarmStatisticsRequest struct {
 	// example:
 	//
 	// sas
-	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	From                       *string `json:"From,omitempty" xml:"From,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The UUID of the server to be queried.
 	//
 	// > Call the [DescribeCloudCenterInstances](~~DescribeCloudCenterInstances~~) API to obtain this parameter.
@@ -50,12 +53,21 @@ func (s *GetInstanceAlarmStatisticsRequest) GetFrom() *string {
 	return s.From
 }
 
+func (s *GetInstanceAlarmStatisticsRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *GetInstanceAlarmStatisticsRequest) GetUuid() *string {
 	return s.Uuid
 }
 
 func (s *GetInstanceAlarmStatisticsRequest) SetFrom(v string) *GetInstanceAlarmStatisticsRequest {
 	s.From = &v
+	return s
+}
+
+func (s *GetInstanceAlarmStatisticsRequest) SetResourceDirectoryAccountId(v int64) *GetInstanceAlarmStatisticsRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

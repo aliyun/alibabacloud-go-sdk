@@ -38,35 +38,21 @@ type iDescribeCloudCenterInstancesRequest interface {
 }
 
 type DescribeCloudCenterInstancesRequest struct {
-	// The search conditions for assets. This parameter is in JSON format. Pay attention to the case sensitivity when you specify this parameter.
+	// The conditions for searching assets. This parameter is in JSON format. Note that the parameter values are case-sensitive.
 	//
-	// > You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. You can call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
+	// > You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
 	//
 	// example:
 	//
 	// [{"name":"riskStatus","value":"YES"},{"name":"internetIp","value":"1.2.XX.XX"}]
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// The page number to return from the query results. Default value: **1**, which indicates that query results are returned starting from page 1.
+	// The page number of the first page to return. Default value: **1**, which indicates that the query results are returned starting from page 1.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The asset vendor. Separate multiple vendors with commas (,). Valid values:
-	//
-	// - **0**: Alibaba Cloud asset
-	//
-	// - **1**: non-cloud asset
-	//
-	// - **2**: IDC asset
-	//
-	// - **3**, **4**, **5**, **7**, **14**, **16**: third-party cloud asset
-	//
-	// - **8**: lightweight asset
-	//
-	// - **9**: SAE
-	//
-	// - **10**: PAI
+	// The asset vendor. Separate multiple asset vendors with commas (,). Valid values:
 	//
 	// example:
 	//
@@ -74,17 +60,17 @@ type DescribeCloudCenterInstancesRequest struct {
 	Flags *string `json:"Flags,omitempty" xml:"Flags,omitempty"`
 	// The importance level of the asset. Valid values:
 	//
-	// - **2**: important asset
+	// - **2**: Important asset.
 	//
-	// - **1**: normal asset
+	// - **1**: General asset.
 	//
-	// - **0**: test asset
+	// - **0**: Test asset.
 	//
 	// example:
 	//
 	// 2
 	Importance *int32 `json:"Importance,omitempty" xml:"Importance,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
 	// - **zh**: Chinese
 	//
@@ -96,25 +82,25 @@ type DescribeCloudCenterInstancesRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The logical relationship between multiple search conditions. Default value: **OR**. Valid values:
 	//
-	// - **OR**: The search conditions are in the **OR*	- relationship.
+	// - **OR**: The search conditions have an **OR*	- relationship.
 	//
-	// - **AND**: The search conditions are in the **AND*	- relationship.
+	// - **AND**: The search conditions have an **AND*	- relationship.
 	//
 	// example:
 	//
 	// OR
 	LogicalExp *string `json:"LogicalExp,omitempty" xml:"LogicalExp,omitempty"`
-	// The type of the asset that you want to query. Valid values:
+	// The type of asset to query. Valid values:
 	//
-	// - **ecs**: server
+	// - **ecs**: server.
 	//
-	// - **cloud_product**: cloud product
+	// - **cloud_product**: cloud product.
 	//
-	// - **eci**: elastic container instance
+	// - **eci**: elastic container instance.
 	//
-	// - **rund**: RunD container instance
+	// - **rund**: RunD container instance.
 	//
-	// - **runc**: RunC container instance
+	// - **runc**: RunC container instance.
 	//
 	// example:
 	//
@@ -126,17 +112,17 @@ type DescribeCloudCenterInstancesRequest struct {
 	//
 	// E17B501887A2D3AA5E8360A6EFA3B***
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Specifies whether to internationalize the default group name **Ungrouped**. Default value: **false**. Valid values:
+	// Specifies whether to disable internationalization for the default group name **未分组**. Default value: **false**. Valid values:
 	//
-	// - **true**: does not internationalize the group name. If the value of the GroupTrace response parameter is the default group **Ungrouped*	- in Security Center, the group name is still displayed as **Ungrouped*	- in Chinese.
+	// - **true**: Internationalization is disabled. If the value of the GroupTrace response parameter is the default Security Center group **未分组**, the value is still displayed as **未分组**.
 	//
-	// - **false**: internationalizes the group name. If the value of the GroupTrace response parameter is the default group **Ungrouped*	- in Security Center, the group name is displayed as **default**.
+	// - **false**: Internationalization is enabled. If the value of the GroupTrace response parameter is the default Security Center group **未分组**, the value is displayed as **default**.
 	//
 	// example:
 	//
 	// false
 	NoGroupTrace *bool `json:"NoGroupTrace,omitempty" xml:"NoGroupTrace,omitempty"`
-	// The number of entries per page in a paginated query. Default value: **20**, which indicates that 20 entries of asset information are displayed per page.
+	// The number of assets to display on each page in a paged conditional query. Default value: **20**, which indicates that 20 asset records are displayed on each page.
 	//
 	// example:
 	//
@@ -144,25 +130,25 @@ type DescribeCloudCenterInstancesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Deprecated
 	//
-	// The ID of the region where the instance you want to query resides.
+	// The region ID of the instance to query.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Alibaba Cloud account ID of the member account in the resource directory.
+	// The ID of the Alibaba Cloud account that corresponds to the member account in the resource directory.
 	//
-	// >You can call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
+	// >Call the [DescribeMonitorAccounts](~~DescribeMonitorAccounts~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// 1232428423234****
 	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
-	// Specifies whether to use the NextToken method to retrieve asset list data. If this parameter is used, the TotalCount parameter is no longer returned. Valid values:
+	// Specifies whether to use the NextToken method to retrieve asset list data. If this parameter is set to true, TotalCount is no longer returned. Valid values:
 	//
-	// - **true**: uses the NextToken method.
+	// - **true**: Uses the NextToken method.
 	//
-	// - **false**: does not use the NextToken method.
+	// - **false**: Does not use the NextToken method.
 	//
 	// example:
 	//

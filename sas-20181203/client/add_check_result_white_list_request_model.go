@@ -11,6 +11,8 @@ type iAddCheckResultWhiteListRequest interface {
 	GoString() string
 	SetCheckIds(v []*int64) *AddCheckResultWhiteListRequest
 	GetCheckIds() []*int64
+	SetClientToken(v string) *AddCheckResultWhiteListRequest
+	GetClientToken() *string
 	SetInstanceIds(v []*string) *AddCheckResultWhiteListRequest
 	GetInstanceIds() []*string
 	SetRemark(v string) *AddCheckResultWhiteListRequest
@@ -22,19 +24,21 @@ type iAddCheckResultWhiteListRequest interface {
 type AddCheckResultWhiteListRequest struct {
 	// The IDs of the check items.
 	//
-	// >  You can call the [ListCheckResult](~~ListCheckResult~~) operation to query the IDs of the check items.
+	// > Call the [ListCheckResult](~~ListCheckResult~~) operation to obtain this parameter.
 	CheckIds []*int64 `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
-	// IDs of the cloud product instances that need to be whitelisted. Separate multiple IDs with a comma (,).
+	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The instance IDs of the cloud service instances to add to the whitelist. Separate multiple instance IDs with commas (,).
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The description. The value of this parameter can be up to 65,535 bytes in length.
+	// The remarks. Maximum length: 65,535 bytes.
 	//
 	// example:
 	//
 	// test
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The type of the rule. Default value: **WHITE**. Valid value:
+	// The rule type. Default value: **WHITE**. Valid values:
 	//
-	// 	- **WHITE**: Add check items to the whitelist.
+	// - **WHITE**: adds to the whitelist.
 	//
 	// example:
 	//
@@ -54,6 +58,10 @@ func (s *AddCheckResultWhiteListRequest) GetCheckIds() []*int64 {
 	return s.CheckIds
 }
 
+func (s *AddCheckResultWhiteListRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *AddCheckResultWhiteListRequest) GetInstanceIds() []*string {
 	return s.InstanceIds
 }
@@ -68,6 +76,11 @@ func (s *AddCheckResultWhiteListRequest) GetRuleType() *string {
 
 func (s *AddCheckResultWhiteListRequest) SetCheckIds(v []*int64) *AddCheckResultWhiteListRequest {
 	s.CheckIds = v
+	return s
+}
+
+func (s *AddCheckResultWhiteListRequest) SetClientToken(v string) *AddCheckResultWhiteListRequest {
+	s.ClientToken = &v
 	return s
 }
 

@@ -112,7 +112,7 @@ type DescribeCanFixVulListResponseBodyVulRecords struct {
 	ContainerId *string `json:"ContainerId,omitempty" xml:"ContainerId,omitempty"`
 	// The extended content of the vulnerability information.
 	ExtendContentJson *DescribeCanFixVulListResponseBodyVulRecordsExtendContentJson `json:"ExtendContentJson,omitempty" xml:"ExtendContentJson,omitempty" type:"Struct"`
-	// The timestamp when the vulnerability was first detected. Unit: milliseconds.
+	// The timestamp when the vulnerability was first detected, in milliseconds.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type DescribeCanFixVulListResponseBodyVulRecords struct {
 	//
 	// 172.19.XX.XX
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The timestamp when the vulnerability was last detected. Unit: milliseconds.
+	// The timestamp when the vulnerability was last detected, in milliseconds.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type DescribeCanFixVulListResponseBodyVulRecords struct {
 	//
 	// agentless
 	MaliciousSource *string `json:"MaliciousSource,omitempty" xml:"MaliciousSource,omitempty"`
-	// The timestamp when the vulnerability status was modified. Unit: milliseconds.
+	// The timestamp when the vulnerability status was modified, in milliseconds.
 	//
 	// example:
 	//
@@ -232,7 +232,7 @@ type DescribeCanFixVulListResponseBodyVulRecords struct {
 	//
 	// 3rdparty
 	RepoNamespace *string `json:"RepoNamespace,omitempty" xml:"RepoNamespace,omitempty"`
-	// The timestamp of the scan. Unit: milliseconds.
+	// The timestamp of the scan, in milliseconds.
 	//
 	// example:
 	//
@@ -690,7 +690,7 @@ type DescribeCanFixVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList s
 	//
 	// b1f5b9420803ad0657cf21566e3e20acc08581e7f22991249ef3aa80b8b1****
 	Layer *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
-	// The details of the vulnerability match.
+	// The detailed information about the vulnerability match.
 	//
 	// example:
 	//
@@ -710,7 +710,7 @@ type DescribeCanFixVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList s
 	//
 	// /usr/lib64/python2.7/site-packages
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The command to fix the vulnerability.
+	// The command used to fix the vulnerability.
 	//
 	// example:
 	//

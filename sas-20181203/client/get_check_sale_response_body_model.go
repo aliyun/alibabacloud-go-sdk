@@ -18,7 +18,7 @@ type iGetCheckSaleResponseBody interface {
 type GetCheckSaleResponseBody struct {
 	// The sales information of cloud service configuration check.
 	CheckSale *GetCheckSaleResponseBodyCheckSale `json:"CheckSale,omitempty" xml:"CheckSale,omitempty" type:"Struct"`
-	// The ID of the request. The ID is a unique identifier that Alibaba Cloud generates for the request and can be used to troubleshoot issues.
+	// The ID of the request. The China Cloud generates a unique identifier for the request, which can be used for troubleshooting and diagnostics.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type GetCheckSaleResponseBodyCheckSale struct {
 	InstanceHybridPostLatestCycledResourceCount *int64 `json:"InstanceHybridPostLatestCycledResourceCount,omitempty" xml:"InstanceHybridPostLatestCycledResourceCount,omitempty"`
 	InstancePostConsumeCount                    *int64 `json:"InstancePostConsumeCount,omitempty" xml:"InstancePostConsumeCount,omitempty"`
 	InstancePurchaseCount                       *int64 `json:"InstancePurchaseCount,omitempty" xml:"InstancePurchaseCount,omitempty"`
-	// Indicates whether the user is an existing user who used the cloud service configuration check feature before the sales feature was released on July 7, 2023. Valid values:
+	// Indicates whether the user is an existing user who used the cloud service configuration check feature before the sales feature was released (July 7, 2023). Valid values:
 	//
 	// - **true**: The user is an existing user.
 	//
@@ -88,13 +88,13 @@ type GetCheckSaleResponseBodyCheckSale struct {
 	//
 	// 1000
 	PurchaseCount *int64 `json:"PurchaseCount,omitempty" xml:"PurchaseCount,omitempty"`
-	// The type of the sales user. Valid values:
+	// The sales user type. Valid values:
 	//
-	// - **1**: full-feature user who can use all check items.
+	// - **1**: Full-feature user. The user can use all check items.
 	//
-	// - **2**: user who needs to upgrade and can only use check items that were available before the sales feature was released on July 7, 2023.
+	// - **2**: Upgrade-required user. The user can use only the check items that were available before the sales feature was released (July 7, 2023).
 	//
-	// - **3**: user who needs to purchase the feature and cannot use the cloud service configuration check feature.
+	// - **3**: Purchase-required user. The user cannot use the cloud service configuration check feature.
 	//
 	// example:
 	//

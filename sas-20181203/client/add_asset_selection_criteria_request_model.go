@@ -9,6 +9,8 @@ type iAddAssetSelectionCriteriaRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *AddAssetSelectionCriteriaRequest
+	GetClientToken() *string
 	SetCriteria(v string) *AddAssetSelectionCriteriaRequest
 	GetCriteria() *string
 	SetCriteriaOperation(v string) *AddAssetSelectionCriteriaRequest
@@ -20,25 +22,27 @@ type iAddAssetSelectionCriteriaRequest interface {
 }
 
 type AddAssetSelectionCriteriaRequest struct {
-	// The search conditions that are used to query assets. The value of this parameter is in the JSON format and is case-sensitive.
+	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The conditions for searching assets. This parameter is in JSON format. Pay attention to the letter case when you specify this parameter.
 	//
-	// > A search condition can be an instance ID, instance name, virtual private cloud (VPC) ID, region, or public IP address. You can call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
+	// > You can search for assets by instance ID, instance name, VPC ID, region, public IP address, and other conditions. Call the [DescribeCriteria](~~DescribeCriteria~~) operation to query the supported search conditions.
 	//
 	// example:
 	//
 	// {"LogicalExp":"AND","Criteria":"[{\\"name\\":\\"osType\\",\\"value\\":\\"linux\\",\\"logicalExp\\":\\"AND\\"},{\\"name\\":\\"alarmStatus\\",\\"value\\":\\"YES\\",\\"logicalExp\\":\\"AND\\"}]"}
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
-	// The type of the operation on search conditions. Valid values:
+	// The operation type for criteria. Valid values:
 	//
-	// 	- **add**: adds assets.
+	// - **add**: adds assets.
 	//
-	// 	- **del**: deletes assets.
+	// - **del**: deletes assets.
 	//
 	// example:
 	//
 	// add
 	CriteriaOperation *string `json:"CriteriaOperation,omitempty" xml:"CriteriaOperation,omitempty"`
-	// The unique ID of the asset.
+	// The unique identifier of the asset selection.
 	//
 	// This parameter is required.
 	//
@@ -58,6 +62,10 @@ func (s AddAssetSelectionCriteriaRequest) GoString() string {
 	return s.String()
 }
 
+func (s *AddAssetSelectionCriteriaRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *AddAssetSelectionCriteriaRequest) GetCriteria() *string {
 	return s.Criteria
 }
@@ -72,6 +80,11 @@ func (s *AddAssetSelectionCriteriaRequest) GetSelectionKey() *string {
 
 func (s *AddAssetSelectionCriteriaRequest) GetTargetOperationList() []*AddAssetSelectionCriteriaRequestTargetOperationList {
 	return s.TargetOperationList
+}
+
+func (s *AddAssetSelectionCriteriaRequest) SetClientToken(v string) *AddAssetSelectionCriteriaRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *AddAssetSelectionCriteriaRequest) SetCriteria(v string) *AddAssetSelectionCriteriaRequest {
@@ -108,17 +121,17 @@ func (s *AddAssetSelectionCriteriaRequest) Validate() error {
 }
 
 type AddAssetSelectionCriteriaRequestTargetOperationList struct {
-	// The type of the operation. Valid values:
+	// The operation type. Valid values:
 	//
-	// 	- **add**
+	// - **add**: adds the asset.
 	//
-	// 	- **del**
+	// - **del**: deletes the asset.
 	//
 	// example:
 	//
 	// del
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// The ID of the asset.
+	// The asset ID. If you select assets by machine, the value is the UUID of the machine. If you select assets by group, the value is the group ID. If you select assets by VPC, the value is the VPC ID.
 	//
 	// example:
 	//

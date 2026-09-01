@@ -15,6 +15,8 @@ type iGetDataTrendRequest interface {
 	GetEndTimestamp() *int64
 	SetInterval(v int32) *GetDataTrendRequest
 	GetInterval() *int32
+	SetResourceDirectoryAccountId(v int64) *GetDataTrendRequest
+	GetResourceDirectoryAccountId() *int64
 	SetStartTimestamp(v int64) *GetDataTrendRequest
 	GetStartTimestamp() *int64
 }
@@ -57,7 +59,8 @@ type GetDataTrendRequest struct {
 	// example:
 	//
 	// 86400000
-	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Interval                   *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The start timestamp of the query. Unit: milliseconds.
 	//
 	// This parameter is required.
@@ -88,6 +91,10 @@ func (s *GetDataTrendRequest) GetInterval() *int32 {
 	return s.Interval
 }
 
+func (s *GetDataTrendRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *GetDataTrendRequest) GetStartTimestamp() *int64 {
 	return s.StartTimestamp
 }
@@ -104,6 +111,11 @@ func (s *GetDataTrendRequest) SetEndTimestamp(v int64) *GetDataTrendRequest {
 
 func (s *GetDataTrendRequest) SetInterval(v int32) *GetDataTrendRequest {
 	s.Interval = &v
+	return s
+}
+
+func (s *GetDataTrendRequest) SetResourceDirectoryAccountId(v int64) *GetDataTrendRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

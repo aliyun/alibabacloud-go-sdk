@@ -51,6 +51,8 @@ type iDescribeImageVulListRequest interface {
 	GetRepoNamespace() *string
 	SetRepoRegionId(v string) *DescribeImageVulListRequest
 	GetRepoRegionId() *string
+	SetResourceDirectoryAccountId(v int64) *DescribeImageVulListRequest
+	GetResourceDirectoryAccountId() *int64
 	SetRuleTag(v string) *DescribeImageVulListRequest
 	GetRuleTag() *string
 	SetScanRange(v []*string) *DescribeImageVulListRequest
@@ -205,7 +207,8 @@ type DescribeImageVulListRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RepoRegionId *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
+	RepoRegionId               *string `json:"RepoRegionId,omitempty" xml:"RepoRegionId,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The vulnerability tag. Valid values:
 	//
 	// - **AI**: vulnerability related to AI components.
@@ -342,6 +345,10 @@ func (s *DescribeImageVulListRequest) GetRepoRegionId() *string {
 	return s.RepoRegionId
 }
 
+func (s *DescribeImageVulListRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeImageVulListRequest) GetRuleTag() *string {
 	return s.RuleTag
 }
@@ -468,6 +475,11 @@ func (s *DescribeImageVulListRequest) SetRepoNamespace(v string) *DescribeImageV
 
 func (s *DescribeImageVulListRequest) SetRepoRegionId(v string) *DescribeImageVulListRequest {
 	s.RepoRegionId = &v
+	return s
+}
+
+func (s *DescribeImageVulListRequest) SetResourceDirectoryAccountId(v int64) *DescribeImageVulListRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

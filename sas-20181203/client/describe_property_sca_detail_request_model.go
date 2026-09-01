@@ -33,6 +33,8 @@ type iDescribePropertyScaDetailRequest interface {
 	GetProcessStartedStart() *int64
 	SetRemark(v string) *DescribePropertyScaDetailRequest
 	GetRemark() *string
+	SetResourceDirectoryAccountId(v int64) *DescribePropertyScaDetailRequest
+	GetResourceDirectoryAccountId() *int64
 	SetScaName(v string) *DescribePropertyScaDetailRequest
 	GetScaName() *string
 	SetScaNamePattern(v string) *DescribePropertyScaDetailRequest
@@ -66,13 +68,13 @@ type DescribePropertyScaDetailRequest struct {
 	//
 	// - **sca_web**: web service
 	//
-	// > If this parameter is not set, the default value **sca*	- is used, which queries Asset Fingerprints information of the middleware type.
+	// > If you do not settings this parameter, the default value **sca*	- is used, which indicates that middleware Asset Fingerprints information is queried.
 	//
 	// example:
 	//
 	// sca
 	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
-	// The type of middleware, database, or web service to query. Valid values:
+	// The type of the middleware, database, or web service to query. Valid values:
 	//
 	// - **system_service**: system service
 	//
@@ -86,13 +88,13 @@ type DescribePropertyScaDetailRequest struct {
 	//
 	// - **jar**: JAR package
 	//
-	// - **web_framework**: web framework.
+	// - **web_framework**: web framework
 	//
 	// example:
 	//
 	// system_service
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The page number of the page to return in the query results. Default value: **1**, which indicates that the results are displayed starting from page 1.
+	// The page number of the page to return in the query results. Default value: **1**, which indicates that the results start from page 1.
 	//
 	// example:
 	//
@@ -102,7 +104,7 @@ type DescribePropertyScaDetailRequest struct {
 	//
 	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
@@ -110,21 +112,21 @@ type DescribePropertyScaDetailRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The name of the middleware, database, or web service.
 	//
-	// > This parameter is deprecated. You do not need to specify this parameter.
+	// > This parameter is deprecated. You do not need to configure it.
 	//
 	// example:
 	//
 	// 1
 	Name *int64 `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The token that marks the current position from which to start reading. Leave this parameter empty to start reading from the beginning.
+	// The token that marks the current position from which to start reading. Leave this parameter empty to start from the beginning.
 	//
-	// > Do not specify this parameter for the first call. The response includes the NextToken value for the second call. Each subsequent response contains the NextToken value for the next call.
+	// > You do not need to set this parameter for the first call. The response includes the NextToken value for the next call. Each subsequent response contains the NextToken value for the following call.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6k+AtdhNE3kgQEK36GujZ5on+tWdc+4WoaoMP/kUNxxxx
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Sets the number of Asset Fingerprints entries per page in a paged query. Default value: **10**, which indicates that 10 Asset Fingerprints entries are displayed per page.
+	// Settings the number of entries per page in a paged query for Asset Fingerprints information. Default value: **10**, which indicates that 10 entries of Asset Fingerprints information are displayed per page.
 	//
 	// > Do not leave PageSize empty.
 	//
@@ -144,13 +146,13 @@ type DescribePropertyScaDetailRequest struct {
 	//
 	// 68
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The end of the time range for querying the process start timestamp. Unit: seconds.
+	// The end of the time range to query for process startup timestamps. Unit: seconds.
 	//
 	// example:
 	//
 	// 1641110965
 	ProcessStartedEnd *int64 `json:"ProcessStartedEnd,omitempty" xml:"ProcessStartedEnd,omitempty"`
-	// The start of the time range for querying the process start timestamp. Unit: seconds.
+	// The start of the time range to query for process startup timestamps. Unit: seconds.
 	//
 	// example:
 	//
@@ -163,8 +165,9 @@ type DescribePropertyScaDetailRequest struct {
 	// example:
 	//
 	// 192.168
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The name of the Asset Fingerprints entry to query.
+	Remark                     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	// The name of the Asset Fingerprints to query.
 	//
 	// example:
 	//
@@ -184,11 +187,11 @@ type DescribePropertyScaDetailRequest struct {
 	ScaVersion *string `json:"ScaVersion,omitempty" xml:"ScaVersion,omitempty"`
 	// The list of search criteria.
 	SearchCriteriaList []*DescribePropertyScaDetailRequestSearchCriteriaList `json:"SearchCriteriaList,omitempty" xml:"SearchCriteriaList,omitempty" type:"Repeated"`
-	// The content to query. Depending on the value of **SearchItem**, you need to enter different query content:
+	// The content to query. The content varies based on the value of **SearchItem**:
 	//
-	// - If **SearchItem*	- is set to **name**, enter the name of the asset fingerprint as the query condition.
+	// - If **SearchItem*	- is settings to **name**, enter the name of the Asset Fingerprints.
 	//
-	// - If **SearchItem*	- is set to **type**, select the type of asset fingerprint to query. Valid values:
+	// - If **SearchItem*	- is settings to **type**, select the type of the Asset Fingerprints. Valid values:
 	//
 	//     - **system_service**: system service
 	//
@@ -204,21 +207,21 @@ type DescribePropertyScaDetailRequest struct {
 	//
 	//     - **web_framework**: web framework
 	//
-	// > The **SearchItem*	- and **SearchInfo*	- parameters must be used together. Setting only one of them has no effect. By setting both parameters, you can view all data for asset fingerprints of a specified name or type.
+	// > The **SearchItem*	- and **SearchInfo*	- parameters must be used together. You must settings both parameters for the query to take effect (settings only one is invalid). This allows you to view all data of the specified Asset Fingerprints by name or type.
 	//
 	// example:
 	//
 	// openssl
 	SearchInfo *string `json:"SearchInfo,omitempty" xml:"SearchInfo,omitempty"`
-	// The content of the sub-query condition. Depending on the value of **SearchItemSub**, you need to enter different query content:
+	// The content of the sub-query condition. The content varies based on the value of **SearchItemSub**:
 	//
-	// - If **SearchItemSub*	- is set to **port**, enter the port as the sub-query condition.
+	// - If **SearchItemSub*	- is set to **port**, enter the port number.
 	//
-	// - If **SearchItemSub*	- is set to **pid**, enter the process ID as the sub-query condition.
+	// - If **SearchItemSub*	- is set to **pid**, enter the process ID.
 	//
-	// - If **SearchItemSub*	- is set to **version**, enter the middleware, database, or web service version as the sub-query condition.
+	// - If **SearchItemSub*	- is set to **version**, enter the version of the middleware, database, or web service.
 	//
-	// - If **SearchItemSub*	- is set to **user**, enter the username as the sub-query condition.
+	// - If **SearchItemSub*	- is set to **user**, enter the username.
 	//
 	// > Sub-query conditions help you search for the data list of a specific middleware, database, or web service.
 	//
@@ -226,19 +229,19 @@ type DescribePropertyScaDetailRequest struct {
 	//
 	// 1.0.2k
 	SearchInfoSub *string `json:"SearchInfoSub,omitempty" xml:"SearchInfoSub,omitempty"`
-	// The type of query condition. Valid values:
+	// Settings the type of the conditional query. Valid values:
 	//
 	// - **name**: the name of the middleware, database, or web service.
 	//
 	// - **type**: the type of the middleware, database, or web service.
 	//
-	// > The **SearchItem*	- and **SearchInfo*	- parameters must be used together. Setting only one of them has no effect. By setting both parameters, you can view all data for asset fingerprints of a specified name or type.
+	// > The **SearchItem*	- and **SearchInfo*	- parameters must be used together. You must settings both parameters for the query to take effect (settings only one is invalid). This allows you to view all data of the specified Asset Fingerprints by name or type.
 	//
 	// example:
 	//
 	// name
 	SearchItem *string `json:"SearchItem,omitempty" xml:"SearchItem,omitempty"`
-	// The type of sub-query condition. Valid values:
+	// The type of the sub-query condition. Valid values:
 	//
 	// - **port**: port
 	//
@@ -246,7 +249,7 @@ type DescribePropertyScaDetailRequest struct {
 	//
 	// - **version**: version
 	//
-	// - **user**: user.
+	// - **user**: user
 	//
 	// example:
 	//
@@ -330,6 +333,10 @@ func (s *DescribePropertyScaDetailRequest) GetProcessStartedStart() *int64 {
 
 func (s *DescribePropertyScaDetailRequest) GetRemark() *string {
 	return s.Remark
+}
+
+func (s *DescribePropertyScaDetailRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
 }
 
 func (s *DescribePropertyScaDetailRequest) GetScaName() *string {
@@ -433,6 +440,11 @@ func (s *DescribePropertyScaDetailRequest) SetProcessStartedStart(v int64) *Desc
 
 func (s *DescribePropertyScaDetailRequest) SetRemark(v string) *DescribePropertyScaDetailRequest {
 	s.Remark = &v
+	return s
+}
+
+func (s *DescribePropertyScaDetailRequest) SetResourceDirectoryAccountId(v int64) *DescribePropertyScaDetailRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

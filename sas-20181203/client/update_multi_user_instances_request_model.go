@@ -14,7 +14,7 @@ type iUpdateMultiUserInstancesRequest interface {
 }
 
 type UpdateMultiUserInstancesRequest struct {
-	// Member instances.
+	// The member instances.
 	MemberInstances []*UpdateMultiUserInstancesRequestMemberInstances `json:"MemberInstances,omitempty" xml:"MemberInstances,omitempty" type:"Repeated"`
 }
 
@@ -55,99 +55,100 @@ type UpdateMultiUserInstancesRequestMemberInstances struct {
 	//
 	// 1766185894104675
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// Anti-ransomware capacity allocated to the member, in GB.
+	// The anti-ransomware capacity assigned to the member. Unit: GB.
 	//
 	// example:
 	//
 	// 10
 	AntiRansomwareCapacity *int64 `json:"AntiRansomwareCapacity,omitempty" xml:"AntiRansomwareCapacity,omitempty"`
-	// Charge type, values:
+	// The billing type. Valid values:
 	//
-	// - **PREPAID**: Prepaid.
+	// 	- **PREPAID**: upfront.
 	//
-	// - **POSTPAID*	- (default): Postpaid.
+	// 	- **POSTPAID*	- (default): pay-as-you-go.
 	//
 	// example:
 	//
 	// PREPAID
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// Cloud platform configuration check scan count allocated to the member. Unit: times per month.
+	// The number of cloud platform configuration check scans assigned to the member. Unit: scans per month.
 	//
 	// example:
 	//
 	// 0
-	CspmCapacity *int64 `json:"CspmCapacity,omitempty" xml:"CspmCapacity,omitempty"`
-	// Honeypot authorization count allocated to the member.
+	CspmCapacity         *int64 `json:"CspmCapacity,omitempty" xml:"CspmCapacity,omitempty"`
+	CspmInstanceCapacity *int64 `json:"CspmInstanceCapacity,omitempty" xml:"CspmInstanceCapacity,omitempty"`
+	// The number of honeypot quotas assigned to the member.
 	//
 	// example:
 	//
 	// 0
 	HoneypotCapacity *int64 `json:"HoneypotCapacity,omitempty" xml:"HoneypotCapacity,omitempty"`
-	// Image scan authorization count allocated to the member.
+	// The number of image scan quotas assigned to the member.
 	//
 	// example:
 	//
 	// 1
 	ImageScanCapacity *int64 `json:"ImageScanCapacity,omitempty" xml:"ImageScanCapacity,omitempty"`
-	// The Cloud Security Center instance ID purchased by the member account.
+	// The Security Center instance ID purchased by the member accounts.
 	//
 	// example:
 	//
 	// sas-p0anpb26my69
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Operation type. Values:
+	// The operation type. Valid values:
 	//
-	// - **ADD**: Add
+	// - **ADD**: increase
 	//
-	// - **CHANGE**: Change
+	// - **CHANGE**: update
 	//
-	// - **DEL**: Delete
+	// - **DEL**: delete
 	//
 	// example:
 	//
 	// CHANGE
 	OptType *string `json:"OptType,omitempty" xml:"OptType,omitempty"`
-	// Application protection count allocated to the member. Unit: per month.
+	// The number of application protection quotas assigned to the member. Unit: quotas per month.
 	//
 	// example:
 	//
 	// 0
 	RaspCapacity *int64 `json:"RaspCapacity,omitempty" xml:"RaspCapacity,omitempty"`
-	// Malicious file detection SDK authorization count allocated to the member.
+	// The number of malicious file detection SDK quotas assigned to the member.
 	//
 	// example:
 	//
 	// 10
 	SdkCapacity *int64 `json:"SdkCapacity,omitempty" xml:"SdkCapacity,omitempty"`
-	// Log storage capacity allocated to the member, in GB.
+	// The log storage capacity assigned to the member. Unit: GB.
 	//
 	// example:
 	//
 	// 10
 	SlsCapacity *int64 `json:"SlsCapacity,omitempty" xml:"SlsCapacity,omitempty"`
-	// Status of the member account instance. Values:
+	// The instance status of the member accounts. Valid values:
 	//
-	// - **1**: Valid.
+	// - **1**: active.
 	//
-	// - **2**: Invalid.
+	// - **2**: expired.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Threat analysis capacity allocated to the member. Unit: GB.
+	// The threat analysis capacity assigned to the member. Unit: GB.
 	//
 	// example:
 	//
 	// 10
 	ThreatAnalysisCapacity *int64 `json:"ThreatAnalysisCapacity,omitempty" xml:"ThreatAnalysisCapacity,omitempty"`
-	// Threat analysis and response log access traffic allocated to the member. Unit: GB/day.
+	// The log ingestion traffic for threat detection and response assigned to the member. Unit: GB/day.
 	//
 	// example:
 	//
 	// 0
 	ThreatAnalysisFlow *int64 `json:"ThreatAnalysisFlow,omitempty" xml:"ThreatAnalysisFlow,omitempty"`
-	// The version of Cloud Security Center protection to be bound. Values:
+	// The Security Center edition to bind. Valid values:
 	//
 	// - **1**: Free Edition
 	//
@@ -155,17 +156,17 @@ type UpdateMultiUserInstancesRequestMemberInstances struct {
 	//
 	// - **5**: Advanced Edition
 	//
-	// - **6**: Antivirus Edition
+	// - **6**: Anti-virus Edition
 	//
-	// - **7**: Flagship Edition
+	// - **7**: Ultimate Edition
 	//
 	// example:
 	//
 	// 7
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// Member account authorization usage information.
+	// The authorization usage information of the member accounts.
 	VersionSummary []*UpdateMultiUserInstancesRequestMemberInstancesVersionSummary `json:"VersionSummary,omitempty" xml:"VersionSummary,omitempty" type:"Repeated"`
-	// Web tamper-proof authorization count allocated to the member.
+	// The number of web tamper-proofing authorization quotas assigned to the member.
 	//
 	// example:
 	//
@@ -195,6 +196,10 @@ func (s *UpdateMultiUserInstancesRequestMemberInstances) GetChargeType() *string
 
 func (s *UpdateMultiUserInstancesRequestMemberInstances) GetCspmCapacity() *int64 {
 	return s.CspmCapacity
+}
+
+func (s *UpdateMultiUserInstancesRequestMemberInstances) GetCspmInstanceCapacity() *int64 {
+	return s.CspmInstanceCapacity
 }
 
 func (s *UpdateMultiUserInstancesRequestMemberInstances) GetHoneypotCapacity() *int64 {
@@ -266,6 +271,11 @@ func (s *UpdateMultiUserInstancesRequestMemberInstances) SetChargeType(v string)
 
 func (s *UpdateMultiUserInstancesRequestMemberInstances) SetCspmCapacity(v int64) *UpdateMultiUserInstancesRequestMemberInstances {
 	s.CspmCapacity = &v
+	return s
+}
+
+func (s *UpdateMultiUserInstancesRequestMemberInstances) SetCspmInstanceCapacity(v int64) *UpdateMultiUserInstancesRequestMemberInstances {
+	s.CspmInstanceCapacity = &v
 	return s
 }
 
@@ -348,33 +358,33 @@ func (s *UpdateMultiUserInstancesRequestMemberInstances) Validate() error {
 }
 
 type UpdateMultiUserInstancesRequestMemberInstancesVersionSummary struct {
-	// Number of cores authorized for the member.
+	// The number of authorized cores assigned to the member.
 	//
 	// example:
 	//
 	// 6
 	CoreCount *int64 `json:"CoreCount,omitempty" xml:"CoreCount,omitempty"`
-	// Number of authorizations allocated to the member.
+	// The number of authorized instances assigned to the member.
 	//
 	// example:
 	//
 	// 3
 	EcsCount *int64 `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
-	// Version of the Cloud Security Center for the member account. Values:
+	// The Security Center edition of the member accounts. Valid values:
 	//
 	// - **1**: Free Edition
 	//
 	// - **3**: Enterprise Edition
 	//
-	// - **5**: Advanced Edition
+	// - **5**: Premium Edition
 	//
-	// - **6**: Antivirus Edition
+	// - **6**: Anti-virus Edition
 	//
-	// - **7**: Flagship Edition
+	// - **7**: Ultimate Edition
 	//
-	// - **8**: Multiple Versions
+	// - **8**: multi-edition
 	//
-	// - **10**: Only Purchase Value-Added Services
+	// - **10**: value-added services only
 	//
 	// example:
 	//

@@ -20,9 +20,9 @@ type iListAgentlessRiskUuidResponseBody interface {
 type ListAgentlessRiskUuidResponseBody struct {
 	// The list of servers.
 	List []*ListAgentlessRiskUuidResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The paging information for the query.
+	// The paging information.
 	PageInfo *ListAgentlessRiskUuidResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use the ID to troubleshoot issues.
+	// The ID of the request. Alibaba Cloud generates a unique identifier for each request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -120,6 +120,12 @@ type ListAgentlessRiskUuidResponseBodyList struct {
 	//
 	// 1
 	MaliciousCount *int32 `json:"MaliciousCount,omitempty" xml:"MaliciousCount,omitempty"`
+	// The URL of the latest parallel sandbox HTML report.
+	//
+	// example:
+	//
+	// https://bucket.oss.region.aliyuncs.com/report/html
+	ReportUrlHtml *string `json:"ReportUrlHtml,omitempty" xml:"ReportUrlHtml,omitempty"`
 	// The timestamp of the scan. Unit: milliseconds.
 	//
 	// example:
@@ -184,6 +190,10 @@ func (s *ListAgentlessRiskUuidResponseBodyList) GetMaliciousCount() *int32 {
 	return s.MaliciousCount
 }
 
+func (s *ListAgentlessRiskUuidResponseBodyList) GetReportUrlHtml() *string {
+	return s.ReportUrlHtml
+}
+
 func (s *ListAgentlessRiskUuidResponseBodyList) GetScanTime() *int64 {
 	return s.ScanTime
 }
@@ -234,6 +244,11 @@ func (s *ListAgentlessRiskUuidResponseBodyList) SetMaliciousCount(v int32) *List
 	return s
 }
 
+func (s *ListAgentlessRiskUuidResponseBodyList) SetReportUrlHtml(v string) *ListAgentlessRiskUuidResponseBodyList {
+	s.ReportUrlHtml = &v
+	return s
+}
+
 func (s *ListAgentlessRiskUuidResponseBodyList) SetScanTime(v int64) *ListAgentlessRiskUuidResponseBodyList {
 	s.ScanTime = &v
 	return s
@@ -264,7 +279,7 @@ func (s *ListAgentlessRiskUuidResponseBodyList) Validate() error {
 }
 
 type ListAgentlessRiskUuidResponseBodyPageInfo struct {
-	// The page number of the current page when using paging.
+	// The current page number when using paging.
 	//
 	// example:
 	//

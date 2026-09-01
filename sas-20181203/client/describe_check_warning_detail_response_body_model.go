@@ -40,7 +40,7 @@ type DescribeCheckWarningDetailResponseBody struct {
 	Advice *string `json:"Advice,omitempty" xml:"Advice,omitempty"`
 	// The list of checked asset details.
 	CheckDetailAssetInfo []map[string]*string `json:"CheckDetailAssetInfo,omitempty" xml:"CheckDetailAssetInfo,omitempty" type:"Repeated"`
-	// The details of the check content.
+	// The check content details.
 	CheckDetailColumns []*DescribeCheckWarningDetailResponseBodyCheckDetailColumns `json:"CheckDetailColumns,omitempty" xml:"CheckDetailColumns,omitempty" type:"Repeated"`
 	// The ID of the check item.
 	//
@@ -210,7 +210,7 @@ type DescribeCheckWarningDetailResponseBodyCheckDetailColumns struct {
 	//
 	// Containername
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The display name that corresponds to the key of the check content.
+	// The display name corresponding to the check content key.
 	//
 	// example:
 	//
@@ -218,9 +218,9 @@ type DescribeCheckWarningDetailResponseBodyCheckDetailColumns struct {
 	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
 	// The display type. Valid values:
 	//
-	// - **grid**: grid
+	// - **grid**: check grid
 	//
-	// - **text**: text.
+	// - **text**: text
 	//
 	// example:
 	//
@@ -292,7 +292,7 @@ type DescribeCheckWarningDetailResponseBodyCheckDetailColumnsGrids struct {
 	//
 	// Username
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The display name that corresponds to the key of the check content.
+	// The display name corresponding to the check content key.
 	//
 	// example:
 	//
@@ -300,9 +300,9 @@ type DescribeCheckWarningDetailResponseBodyCheckDetailColumnsGrids struct {
 	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
 	// The display type. Valid values:
 	//
-	// - **grid**: grid
+	// - **grid**: check grid
 	//
-	// - **text**: text.
+	// - **text**: text
 	//
 	// example:
 	//

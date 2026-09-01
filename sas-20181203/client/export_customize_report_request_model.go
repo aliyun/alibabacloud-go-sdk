@@ -13,6 +13,8 @@ type iExportCustomizeReportRequest interface {
   GetExportType() *string 
   SetReportId(v int64) *ExportCustomizeReportRequest
   GetReportId() *int64 
+  SetResourceDirectoryAccountId(v int64) *ExportCustomizeReportRequest
+  GetResourceDirectoryAccountId() *int64 
 }
 
 type ExportCustomizeReportRequest struct {
@@ -38,6 +40,7 @@ type ExportCustomizeReportRequest struct {
   // 
   // 1
   ReportId *int64 `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+  ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 
 func (s ExportCustomizeReportRequest) String() string {
@@ -56,6 +59,10 @@ func (s *ExportCustomizeReportRequest) GetReportId() *int64  {
   return s.ReportId
 }
 
+func (s *ExportCustomizeReportRequest) GetResourceDirectoryAccountId() *int64  {
+  return s.ResourceDirectoryAccountId
+}
+
 func (s *ExportCustomizeReportRequest) SetExportType(v string) *ExportCustomizeReportRequest {
   s.ExportType = &v
   return s
@@ -63,6 +70,11 @@ func (s *ExportCustomizeReportRequest) SetExportType(v string) *ExportCustomizeR
 
 func (s *ExportCustomizeReportRequest) SetReportId(v int64) *ExportCustomizeReportRequest {
   s.ReportId = &v
+  return s
+}
+
+func (s *ExportCustomizeReportRequest) SetResourceDirectoryAccountId(v int64) *ExportCustomizeReportRequest {
+  s.ResourceDirectoryAccountId = &v
   return s
 }
 

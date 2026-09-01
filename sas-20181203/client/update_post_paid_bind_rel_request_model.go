@@ -15,40 +15,47 @@ type iUpdatePostPaidBindRelRequest interface {
 	GetAutoBindVersion() *int32
 	SetBindAction(v []*UpdatePostPaidBindRelRequestBindAction) *UpdatePostPaidBindRelRequest
 	GetBindAction() []*UpdatePostPaidBindRelRequestBindAction
+	SetClientToken(v string) *UpdatePostPaidBindRelRequest
+	GetClientToken() *string
+	SetProductCode(v string) *UpdatePostPaidBindRelRequest
+	GetProductCode() *string
 	SetUpdateIfNecessary(v bool) *UpdatePostPaidBindRelRequest
 	GetUpdateIfNecessary() *bool
 }
 
 type UpdatePostPaidBindRelRequest struct {
-	// Enable automatic binding for new assets. Values:
+	// Specifies whether to enable automatic binding for new assets. Valid values:
 	//
-	// - **0**: Off
+	// - **0**: disabled
 	//
-	// - **1**: On
+	// - **1**: enabled
 	//
 	// example:
 	//
 	// 1
 	AutoBind *int32 `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
-	// Version to automatically bind when adding new assets. Values:
+	// The edition to automatically bind when new assets are added. Valid values:
 	//
-	// - **1**: Basic Edition
+	// - **1**: Free Edition
 	//
 	// - **3**: Enterprise Edition
 	//
 	// - **5**: Advanced Edition
 	//
-	// - **6**: Antivirus Edition
+	// - **6**: Anti-virus Edition
 	//
-	// - **7**: Container Edition
+	// - **7**: Ultimate Edition
 	//
 	// example:
 	//
 	// 3
 	AutoBindVersion *int32 `json:"AutoBindVersion,omitempty" xml:"AutoBindVersion,omitempty"`
-	// Parameters for the binding action.
+	// The binding action parameter.
 	BindAction []*UpdatePostPaidBindRelRequestBindAction `json:"BindAction,omitempty" xml:"BindAction,omitempty" type:"Repeated"`
-	// Whether to force upgrade the version.
+	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// Specifies whether to forcibly upgrade the edition.
 	//
 	// example:
 	//
@@ -76,6 +83,14 @@ func (s *UpdatePostPaidBindRelRequest) GetBindAction() []*UpdatePostPaidBindRelR
 	return s.BindAction
 }
 
+func (s *UpdatePostPaidBindRelRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *UpdatePostPaidBindRelRequest) GetProductCode() *string {
+	return s.ProductCode
+}
+
 func (s *UpdatePostPaidBindRelRequest) GetUpdateIfNecessary() *bool {
 	return s.UpdateIfNecessary
 }
@@ -92,6 +107,16 @@ func (s *UpdatePostPaidBindRelRequest) SetAutoBindVersion(v int32) *UpdatePostPa
 
 func (s *UpdatePostPaidBindRelRequest) SetBindAction(v []*UpdatePostPaidBindRelRequestBindAction) *UpdatePostPaidBindRelRequest {
 	s.BindAction = v
+	return s
+}
+
+func (s *UpdatePostPaidBindRelRequest) SetClientToken(v string) *UpdatePostPaidBindRelRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdatePostPaidBindRelRequest) SetProductCode(v string) *UpdatePostPaidBindRelRequest {
+	s.ProductCode = &v
 	return s
 }
 
@@ -114,29 +139,30 @@ func (s *UpdatePostPaidBindRelRequest) Validate() error {
 }
 
 type UpdatePostPaidBindRelRequestBindAction struct {
-	// Whether to bind all. Default is **false**. Values:
+	// Specifies whether to bind all servers. Default value: **false**. Valid values:
 	//
-	// - **true**: Yes
+	// - **true**: yes
 	//
-	// - **false**: No
+	// - **false**: no
 	//
 	// example:
 	//
 	// true
-	BindAll *bool `json:"BindAll,omitempty" xml:"BindAll,omitempty"`
-	// List of specified server UUIDs.
+	BindAll  *bool   `json:"BindAll,omitempty" xml:"BindAll,omitempty"`
+	FreeType *string `json:"FreeType,omitempty" xml:"FreeType,omitempty"`
+	// The list of server UUIDs.
 	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
-	// The Cloud Security Center protection version that needs to be bound. Values:
+	// The protection edition of Security Center to bind. Valid values:
 	//
-	// - **1**: Basic Edition
+	// - **1**: Free Edition
 	//
 	// - **3**: Enterprise Edition
 	//
 	// - **5**: Advanced Edition
 	//
-	// - **6**: Antivirus Edition
+	// - **6**: Anti-virus Edition
 	//
-	// - **7**: Container Edition
+	// - **7**: Ultimate Edition
 	//
 	// example:
 	//
@@ -156,6 +182,10 @@ func (s *UpdatePostPaidBindRelRequestBindAction) GetBindAll() *bool {
 	return s.BindAll
 }
 
+func (s *UpdatePostPaidBindRelRequestBindAction) GetFreeType() *string {
+	return s.FreeType
+}
+
 func (s *UpdatePostPaidBindRelRequestBindAction) GetUuidList() []*string {
 	return s.UuidList
 }
@@ -166,6 +196,11 @@ func (s *UpdatePostPaidBindRelRequestBindAction) GetVersion() *string {
 
 func (s *UpdatePostPaidBindRelRequestBindAction) SetBindAll(v bool) *UpdatePostPaidBindRelRequestBindAction {
 	s.BindAll = &v
+	return s
+}
+
+func (s *UpdatePostPaidBindRelRequestBindAction) SetFreeType(v string) *UpdatePostPaidBindRelRequestBindAction {
+	s.FreeType = &v
 	return s
 }
 

@@ -19,6 +19,8 @@ type iDescribeCustomizeReportListRequest interface {
 	GetReportType() *int32
 	SetReportVersion(v string) *DescribeCustomizeReportListRequest
 	GetReportVersion() *string
+	SetResourceDirectoryAccountId(v int64) *DescribeCustomizeReportListRequest
+	GetResourceDirectoryAccountId() *int64
 	SetTitle(v string) *DescribeCustomizeReportListRequest
 	GetTitle() *string
 }
@@ -77,7 +79,8 @@ type DescribeCustomizeReportListRequest struct {
 	// example:
 	//
 	// 2.0.0
-	ReportVersion *string `json:"ReportVersion,omitempty" xml:"ReportVersion,omitempty"`
+	ReportVersion              *string `json:"ReportVersion,omitempty" xml:"ReportVersion,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The name of the report.
 	//
 	// example:
@@ -114,6 +117,10 @@ func (s *DescribeCustomizeReportListRequest) GetReportVersion() *string {
 	return s.ReportVersion
 }
 
+func (s *DescribeCustomizeReportListRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeCustomizeReportListRequest) GetTitle() *string {
 	return s.Title
 }
@@ -140,6 +147,11 @@ func (s *DescribeCustomizeReportListRequest) SetReportType(v int32) *DescribeCus
 
 func (s *DescribeCustomizeReportListRequest) SetReportVersion(v string) *DescribeCustomizeReportListRequest {
 	s.ReportVersion = &v
+	return s
+}
+
+func (s *DescribeCustomizeReportListRequest) SetResourceDirectoryAccountId(v int64) *DescribeCustomizeReportListRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

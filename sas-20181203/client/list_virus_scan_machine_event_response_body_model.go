@@ -96,7 +96,7 @@ type ListVirusScanMachineEventResponseBodyData struct {
 	//
 	// example:
 	//
-	// 恶意脚本代码执行
+	// Malicious Software-Trojan
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// The instance name.
 	//
@@ -252,7 +252,7 @@ type ListVirusScanMachineEventResponseBodyDataDetails struct {
 	//
 	// - **text**: plain text
 	//
-	// - **html**: rich text.
+	// - **html**: rich text
 	//
 	// example:
 	//
@@ -260,7 +260,7 @@ type ListVirusScanMachineEventResponseBodyDataDetails struct {
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The additional attribute information of the exception event.
 	//
-	// For example, the logon time or logon location of an unusual logon alert, or the trojan file path or trojan type of an alert.
+	// For example, the logon time or logon location for an unusual logon alert, or the trojan file path or trojan type for a trojan alert.
 	//
 	// example:
 	//

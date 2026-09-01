@@ -9,6 +9,10 @@ type iModifyPostPayModuleSwitchRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *ModifyPostPayModuleSwitchRequest
+	GetClientToken() *string
+	SetEdrModuleSwitch(v *ModifyPostPayModuleSwitchRequestEdrModuleSwitch) *ModifyPostPayModuleSwitchRequest
+	GetEdrModuleSwitch() *ModifyPostPayModuleSwitchRequestEdrModuleSwitch
 	SetPostPaidHostAutoBind(v int32) *ModifyPostPayModuleSwitchRequest
 	GetPostPaidHostAutoBind() *int32
 	SetPostPaidHostAutoBindVersion(v int32) *ModifyPostPayModuleSwitchRequest
@@ -22,7 +26,10 @@ type iModifyPostPayModuleSwitchRequest interface {
 }
 
 type ModifyPostPayModuleSwitchRequest struct {
-	// Specifies whether to automatically bind newly added assets for host and container protection. Valid values:
+	// The client token that is used to ensure the idempotence of the request. Use a different token for each request. Only ASCII characters are supported. The token can be up to 64 characters in length.
+	ClientToken     *string                                          `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	EdrModuleSwitch *ModifyPostPayModuleSwitchRequestEdrModuleSwitch `json:"EdrModuleSwitch,omitempty" xml:"EdrModuleSwitch,omitempty" type:"Struct"`
+	// Specifies whether to automatically bind new assets for host and container protection. Valid values:
 	//
 	// - **0**: Disabled.
 	//
@@ -32,7 +39,7 @@ type ModifyPostPayModuleSwitchRequest struct {
 	//
 	// 1
 	PostPaidHostAutoBind *int32 `json:"PostPaidHostAutoBind,omitempty" xml:"PostPaidHostAutoBind,omitempty"`
-	// The version to which newly added assets are automatically bound for host and container protection. Valid values:
+	// The edition to which new assets are automatically bound for host and container protection. Valid values:
 	//
 	// - **1**: Free Edition.
 	//
@@ -60,7 +67,7 @@ type ModifyPostPayModuleSwitchRequest struct {
 	//
 	// - Key:
 	//
-	//   - **VUL**: vulnerability fix module
+	//   - **VUL**: vulnerability management module
 	//
 	//   - **CSPM**: Cloud Security Posture Management (CSPM) module
 	//
@@ -84,7 +91,7 @@ type ModifyPostPayModuleSwitchRequest struct {
 	//
 	// > Modules for which no value is specified remain unchanged.
 	//
-	// <notice>This parameter has the same meaning as PostPayModuleSwitchObj. If both parameters are specified, the value of PostPayModuleSwitch takes precedence..
+	// <notice>This parameter has the same meaning as PostPayModuleSwitchObj. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
 	//
 	// example:
 	//
@@ -92,7 +99,7 @@ type ModifyPostPayModuleSwitchRequest struct {
 	PostPayModuleSwitch *string `json:"PostPayModuleSwitch,omitempty" xml:"PostPayModuleSwitch,omitempty"`
 	// The pay-as-you-go module switch.
 	//
-	// 	Notice: This parameter has the same meaning as PostPayModuleSwitch. If both parameters are specified, the value of PostPayModuleSwitch takes precedence..
+	// 	Notice: This parameter has the same meaning as PostPayModuleSwitch. If both parameters are specified, the value of PostPayModuleSwitch takes precedence.</notice>
 	PostPayModuleSwitchObj *ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj `json:"PostPayModuleSwitchObj,omitempty" xml:"PostPayModuleSwitchObj,omitempty" type:"Struct"`
 }
 
@@ -102,6 +109,14 @@ func (s ModifyPostPayModuleSwitchRequest) String() string {
 
 func (s ModifyPostPayModuleSwitchRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyPostPayModuleSwitchRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *ModifyPostPayModuleSwitchRequest) GetEdrModuleSwitch() *ModifyPostPayModuleSwitchRequestEdrModuleSwitch {
+	return s.EdrModuleSwitch
 }
 
 func (s *ModifyPostPayModuleSwitchRequest) GetPostPaidHostAutoBind() *int32 {
@@ -122,6 +137,16 @@ func (s *ModifyPostPayModuleSwitchRequest) GetPostPayModuleSwitch() *string {
 
 func (s *ModifyPostPayModuleSwitchRequest) GetPostPayModuleSwitchObj() *ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj {
 	return s.PostPayModuleSwitchObj
+}
+
+func (s *ModifyPostPayModuleSwitchRequest) SetClientToken(v string) *ModifyPostPayModuleSwitchRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyPostPayModuleSwitchRequest) SetEdrModuleSwitch(v *ModifyPostPayModuleSwitchRequestEdrModuleSwitch) *ModifyPostPayModuleSwitchRequest {
+	s.EdrModuleSwitch = v
+	return s
 }
 
 func (s *ModifyPostPayModuleSwitchRequest) SetPostPaidHostAutoBind(v int32) *ModifyPostPayModuleSwitchRequest {
@@ -150,12 +175,52 @@ func (s *ModifyPostPayModuleSwitchRequest) SetPostPayModuleSwitchObj(v *ModifyPo
 }
 
 func (s *ModifyPostPayModuleSwitchRequest) Validate() error {
+	if s.EdrModuleSwitch != nil {
+		if err := s.EdrModuleSwitch.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.PostPayModuleSwitchObj != nil {
 		if err := s.PostPayModuleSwitchObj.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type ModifyPostPayModuleSwitchRequestEdrModuleSwitch struct {
+	AutoBind       *int32 `json:"AutoBind,omitempty" xml:"AutoBind,omitempty"`
+	EDR_HOST_USAGE *int64 `json:"EDR_HOST_USAGE,omitempty" xml:"EDR_HOST_USAGE,omitempty"`
+}
+
+func (s ModifyPostPayModuleSwitchRequestEdrModuleSwitch) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyPostPayModuleSwitchRequestEdrModuleSwitch) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPostPayModuleSwitchRequestEdrModuleSwitch) GetAutoBind() *int32 {
+	return s.AutoBind
+}
+
+func (s *ModifyPostPayModuleSwitchRequestEdrModuleSwitch) GetEDR_HOST_USAGE() *int64 {
+	return s.EDR_HOST_USAGE
+}
+
+func (s *ModifyPostPayModuleSwitchRequestEdrModuleSwitch) SetAutoBind(v int32) *ModifyPostPayModuleSwitchRequestEdrModuleSwitch {
+	s.AutoBind = &v
+	return s
+}
+
+func (s *ModifyPostPayModuleSwitchRequestEdrModuleSwitch) SetEDR_HOST_USAGE(v int64) *ModifyPostPayModuleSwitchRequestEdrModuleSwitch {
+	s.EDR_HOST_USAGE = &v
+	return s
+}
+
+func (s *ModifyPostPayModuleSwitchRequestEdrModuleSwitch) Validate() error {
+	return dara.Validate(s)
 }
 
 type ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj struct {
@@ -169,7 +234,7 @@ type ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj struct {
 	//
 	// 1
 	Agentless *int32 `json:"Agentless,omitempty" xml:"Agentless,omitempty"`
-	// The AI digitalization module.
+	// The AI digital human module.
 	//
 	// example:
 	//
@@ -187,11 +252,11 @@ type ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj struct {
 	AntiRansomware *int32 `json:"AntiRansomware,omitempty" xml:"AntiRansomware,omitempty"`
 	// The basic service module. Valid values:
 	//
-	// - **0**: shutdown.
+	// - **0**: Disabled.
 	//
-	// - **1**: enabling status.
+	// - **1**: Enabled.
 	//
-	// 	Notice: The basic service module switch cannot be manually modified. This module is in the enabling status when any other module is in the enabling status, and is in the shutdown state only when all other modules are in the shutdown state.
+	// 	Notice: The basic service module switch cannot be manually modified. This module is enabled when any other module is enabled, and is disabled when all other modules are disabled.
 	//
 	// example:
 	//
@@ -267,7 +332,7 @@ type ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj struct {
 	//
 	// 1
 	Serverless *int32 `json:"Serverless,omitempty" xml:"Serverless,omitempty"`
-	// The vulnerability fix module. Valid values:
+	// The vulnerability management module. Valid values:
 	//
 	// - **0**: Disabled.
 	//
@@ -277,7 +342,7 @@ type ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj struct {
 	//
 	// 1
 	Vul *int32 `json:"Vul,omitempty" xml:"Vul,omitempty"`
-	// The tamper-proofing module. Valid values:
+	// The file tamper-proofing module. Valid values:
 	//
 	// - **0**: Disabled.
 	//

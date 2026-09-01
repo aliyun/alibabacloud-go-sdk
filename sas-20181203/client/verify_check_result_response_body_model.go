@@ -78,7 +78,7 @@ type VerifyCheckResultResponseBodyData struct {
 	//
 	// 8eded533-5348-468c-aa1d-0aa2934a7***
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The rate limit duration. Unit: seconds.
+	// The throttling duration. Unit: seconds.
 	//
 	// example:
 	//

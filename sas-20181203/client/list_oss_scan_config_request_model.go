@@ -15,10 +15,12 @@ type iListOssScanConfigRequest interface {
 	GetName() *string
 	SetPageSize(v int32) *ListOssScanConfigRequest
 	GetPageSize() *int32
+	SetSource(v string) *ListOssScanConfigRequest
+	GetSource() *string
 }
 
 type ListOssScanConfigRequest struct {
-	// The page number.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
@@ -30,12 +32,22 @@ type ListOssScanConfigRequest struct {
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The business source. Valid values:
+	//
+	// - **OSS**: OSS
+	//
+	// - **NAS**: NAS
+	//
+	// example:
+	//
+	// OSS
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
 func (s ListOssScanConfigRequest) String() string {
@@ -58,6 +70,10 @@ func (s *ListOssScanConfigRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *ListOssScanConfigRequest) GetSource() *string {
+	return s.Source
+}
+
 func (s *ListOssScanConfigRequest) SetCurrentPage(v int32) *ListOssScanConfigRequest {
 	s.CurrentPage = &v
 	return s
@@ -70,6 +86,11 @@ func (s *ListOssScanConfigRequest) SetName(v string) *ListOssScanConfigRequest {
 
 func (s *ListOssScanConfigRequest) SetPageSize(v int32) *ListOssScanConfigRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListOssScanConfigRequest) SetSource(v string) *ListOssScanConfigRequest {
+	s.Source = &v
 	return s
 }
 

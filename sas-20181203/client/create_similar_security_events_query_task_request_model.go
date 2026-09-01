@@ -9,6 +9,10 @@ type iCreateSimilarSecurityEventsQueryTaskRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *CreateSimilarSecurityEventsQueryTaskRequest
+	GetClientToken() *string
+	SetResourceDirectoryAccountId(v int64) *CreateSimilarSecurityEventsQueryTaskRequest
+	GetResourceDirectoryAccountId() *int64
 	SetResourceOwnerId(v int64) *CreateSimilarSecurityEventsQueryTaskRequest
 	GetResourceOwnerId() *int64
 	SetSecurityEventId(v int64) *CreateSimilarSecurityEventsQueryTaskRequest
@@ -20,8 +24,11 @@ type iCreateSimilarSecurityEventsQueryTaskRequest interface {
 }
 
 type CreateSimilarSecurityEventsQueryTaskRequest struct {
-	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the alert event.
+	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken                *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	ResourceOwnerId            *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the security alert.
 	//
 	// This parameter is required.
 	//
@@ -51,6 +58,14 @@ func (s CreateSimilarSecurityEventsQueryTaskRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateSimilarSecurityEventsQueryTaskRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *CreateSimilarSecurityEventsQueryTaskRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *CreateSimilarSecurityEventsQueryTaskRequest) GetResourceOwnerId() *int64 {
 	return s.ResourceOwnerId
 }
@@ -65,6 +80,16 @@ func (s *CreateSimilarSecurityEventsQueryTaskRequest) GetSimilarEventScenarioCod
 
 func (s *CreateSimilarSecurityEventsQueryTaskRequest) GetSourceIp() *string {
 	return s.SourceIp
+}
+
+func (s *CreateSimilarSecurityEventsQueryTaskRequest) SetClientToken(v string) *CreateSimilarSecurityEventsQueryTaskRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateSimilarSecurityEventsQueryTaskRequest) SetResourceDirectoryAccountId(v int64) *CreateSimilarSecurityEventsQueryTaskRequest {
+	s.ResourceDirectoryAccountId = &v
+	return s
 }
 
 func (s *CreateSimilarSecurityEventsQueryTaskRequest) SetResourceOwnerId(v int64) *CreateSimilarSecurityEventsQueryTaskRequest {

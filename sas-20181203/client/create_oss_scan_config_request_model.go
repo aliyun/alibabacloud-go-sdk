@@ -11,8 +11,12 @@ type iCreateOssScanConfigRequest interface {
 	GoString() string
 	SetAllKeyPrefix(v bool) *CreateOssScanConfigRequest
 	GetAllKeyPrefix() *bool
+	SetAutoAdd(v int32) *CreateOssScanConfigRequest
+	GetAutoAdd() *int32
 	SetBucketNameList(v []*string) *CreateOssScanConfigRequest
 	GetBucketNameList() []*string
+	SetClientToken(v string) *CreateOssScanConfigRequest
+	GetClientToken() *string
 	SetDecompressMaxFileCount(v int32) *CreateOssScanConfigRequest
 	GetDecompressMaxFileCount() *int32
 	SetDecompressMaxLayer(v int32) *CreateOssScanConfigRequest
@@ -35,54 +39,72 @@ type iCreateOssScanConfigRequest interface {
 	GetRealTimeIncr() *bool
 	SetScanDayList(v []*int32) *CreateOssScanConfigRequest
 	GetScanDayList() []*int32
+	SetSource(v string) *CreateOssScanConfigRequest
+	GetSource() *string
 	SetStartTime(v string) *CreateOssScanConfigRequest
 	GetStartTime() *string
 }
 
 type CreateOssScanConfigRequest struct {
-	// Specifies whether to match the prefixes of all objects.
+	// Specifies whether to match all prefixes. If this parameter is set to true, the KeyPrefixList parameter does not take effect.
 	//
 	// example:
 	//
 	// true
 	AllKeyPrefix *bool `json:"AllKeyPrefix,omitempty" xml:"AllKeyPrefix,omitempty"`
-	// The names of buckets.
+	// Specifies whether OSS buckets are automatically added to this policy. Valid values:
+	//
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
+	//
+	// example:
+	//
+	// 0
+	AutoAdd *int32 `json:"AutoAdd,omitempty" xml:"AutoAdd,omitempty"`
+	// The list of bucket names.
 	BucketNameList []*string `json:"BucketNameList,omitempty" xml:"BucketNameList,omitempty" type:"Repeated"`
-	// The maximum number of objects that can be extracted during decompression. Valid values: 1 to 1000. If the maximum number of objects that can be extracted is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The maximum number of files to decompress. Minimum value: 1. Maximum value: 1000. When the maximum number of decompressed files is exceeded, the decompression operation stops. The detection of files that have already been decompressed is not affected.
 	//
 	// example:
 	//
 	// 100
 	DecompressMaxFileCount *int32 `json:"DecompressMaxFileCount,omitempty" xml:"DecompressMaxFileCount,omitempty"`
-	// The maximum number of decompression levels when multi-level packages are decompressed. Valid values: 1 to 5. If the maximum number of decompression levels is reached, the decompression operation immediately ends and the detection of extracted objects is not affected.
+	// The maximum number of decompression layers when multiple levels of nested compressed files exist. Minimum value: 1. Maximum value: 5. When the maximum number of decompression layers is exceeded, the decompression operation stops. The detection of files that have already been decompressed is not affected.
 	//
 	// example:
 	//
 	// 1
 	DecompressMaxLayer *int32 `json:"DecompressMaxLayer,omitempty" xml:"DecompressMaxLayer,omitempty"`
-	// The decryption methods.
+	// The list of decryption types.
 	DecryptionList []*string `json:"DecryptionList,omitempty" xml:"DecryptionList,omitempty" type:"Repeated"`
 	// Specifies whether to enable the policy. Valid values:
 	//
-	// 	- **1**: yes
+	// - **1**: Enabled.
 	//
-	// 	- **0**: no
+	// - **0**: Disabled.
 	//
 	// example:
 	//
 	// 1
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The time when the scan ends. The time must be in the HH:mm:ss format.
+	// The scan stop time, in the HH:mm:ss format.
 	//
 	// example:
 	//
 	// 01:01:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The prefixes of the objects.
+	// The file prefix list.
 	KeyPrefixList []*string `json:"KeyPrefixList,omitempty" xml:"KeyPrefixList,omitempty" type:"Repeated"`
-	// The suffixes of the files to scan.
+	// The list of file suffixes to scan.
 	KeySuffixList []*string `json:"KeySuffixList,omitempty" xml:"KeySuffixList,omitempty" type:"Repeated"`
-	// The timestamp when the object was last modified. The time must be later than the timestamp that you specify. Unit: milliseconds.
+	// Specifies that only files whose last modification time is after the specified timestamp are scanned. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -94,15 +116,25 @@ type CreateOssScanConfigRequest struct {
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Whether to enable real-time incremental detection. When this parameter is set to true, the parameters ScanDayList, StartTime, and EndTime are not effective.
+	// Specifies whether to enable real-time incremental detection. If this parameter is set to true, the ScanDayList, StartTime, and EndTime parameters do not take effect.
 	//
 	// example:
 	//
 	// true
 	RealTimeIncr *bool `json:"RealTimeIncr,omitempty" xml:"RealTimeIncr,omitempty"`
-	// The days on which the scan is executed in a week.
+	// The scan schedule. The number represents the day of the week.
 	ScanDayList []*int32 `json:"ScanDayList,omitempty" xml:"ScanDayList,omitempty" type:"Repeated"`
-	// The time when the scan starts. The time must be in the HH:mm:ss format.
+	// The business source. Valid values:
+	//
+	// - **OSS**: OSS.
+	//
+	// - **NAS**: NAS.
+	//
+	// example:
+	//
+	// OSS
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The scan start time, in the HH:mm:ss format.
 	//
 	// example:
 	//
@@ -122,8 +154,16 @@ func (s *CreateOssScanConfigRequest) GetAllKeyPrefix() *bool {
 	return s.AllKeyPrefix
 }
 
+func (s *CreateOssScanConfigRequest) GetAutoAdd() *int32 {
+	return s.AutoAdd
+}
+
 func (s *CreateOssScanConfigRequest) GetBucketNameList() []*string {
 	return s.BucketNameList
+}
+
+func (s *CreateOssScanConfigRequest) GetClientToken() *string {
+	return s.ClientToken
 }
 
 func (s *CreateOssScanConfigRequest) GetDecompressMaxFileCount() *int32 {
@@ -170,6 +210,10 @@ func (s *CreateOssScanConfigRequest) GetScanDayList() []*int32 {
 	return s.ScanDayList
 }
 
+func (s *CreateOssScanConfigRequest) GetSource() *string {
+	return s.Source
+}
+
 func (s *CreateOssScanConfigRequest) GetStartTime() *string {
 	return s.StartTime
 }
@@ -179,8 +223,18 @@ func (s *CreateOssScanConfigRequest) SetAllKeyPrefix(v bool) *CreateOssScanConfi
 	return s
 }
 
+func (s *CreateOssScanConfigRequest) SetAutoAdd(v int32) *CreateOssScanConfigRequest {
+	s.AutoAdd = &v
+	return s
+}
+
 func (s *CreateOssScanConfigRequest) SetBucketNameList(v []*string) *CreateOssScanConfigRequest {
 	s.BucketNameList = v
+	return s
+}
+
+func (s *CreateOssScanConfigRequest) SetClientToken(v string) *CreateOssScanConfigRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -236,6 +290,11 @@ func (s *CreateOssScanConfigRequest) SetRealTimeIncr(v bool) *CreateOssScanConfi
 
 func (s *CreateOssScanConfigRequest) SetScanDayList(v []*int32) *CreateOssScanConfigRequest {
 	s.ScanDayList = v
+	return s
+}
+
+func (s *CreateOssScanConfigRequest) SetSource(v string) *CreateOssScanConfigRequest {
+	s.Source = &v
 	return s
 }
 

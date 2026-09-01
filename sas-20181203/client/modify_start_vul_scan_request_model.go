@@ -9,6 +9,10 @@ type iModifyStartVulScanRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *ModifyStartVulScanRequest
+	GetClientToken() *string
+	SetResourceDirectoryAccountId(v int64) *ModifyStartVulScanRequest
+	GetResourceDirectoryAccountId() *int64
 	SetTypes(v string) *ModifyStartVulScanRequest
 	GetTypes() *string
 	SetUuids(v string) *ModifyStartVulScanRequest
@@ -16,6 +20,9 @@ type iModifyStartVulScanRequest interface {
 }
 
 type ModifyStartVulScanRequest struct {
+	// The client token that is used to ensure the idempotence of the request. Different requests should use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken                *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// Settings for the types of vulnerabilities to detect by using the one-click scan feature. Valid values:
 	//
 	// - **cve**: Linux software vulnerability.
@@ -24,13 +31,13 @@ type ModifyStartVulScanRequest struct {
 	//
 	// - **cms**: Web-CMS vulnerability.
 	//
-	// - **app**: Application vulnerability detected by the web scanner.
+	// - **app**: application vulnerability detected by the web scanner.
 	//
-	// - **emg**: Emergency vulnerability.
+	// - **emg**: urgent vulnerability.
 	//
-	// - **image**: Container image vulnerability.
+	// - **image**: container image vulnerability.
 	//
-	// - **sca**: Application vulnerability detected by software constituency parsing.
+	// - **sca**: application vulnerability detected by software constituency parsing.
 	//
 	// > If this parameter is left empty, all vulnerability types are detected.
 	//
@@ -38,7 +45,7 @@ type ModifyStartVulScanRequest struct {
 	//
 	// "cve,sys,cms,app,emg"
 	Types *string `json:"Types,omitempty" xml:"Types,omitempty"`
-	// The list of server UUIDs. Separate multiple UUIDs with commas (,).
+	// The UUIDs of the servers. Separate multiple UUIDs with commas (,).
 	//
 	// > You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/421726.html) operation to obtain this parameter.
 	//
@@ -56,12 +63,30 @@ func (s ModifyStartVulScanRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyStartVulScanRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
+func (s *ModifyStartVulScanRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *ModifyStartVulScanRequest) GetTypes() *string {
 	return s.Types
 }
 
 func (s *ModifyStartVulScanRequest) GetUuids() *string {
 	return s.Uuids
+}
+
+func (s *ModifyStartVulScanRequest) SetClientToken(v string) *ModifyStartVulScanRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyStartVulScanRequest) SetResourceDirectoryAccountId(v int64) *ModifyStartVulScanRequest {
+	s.ResourceDirectoryAccountId = &v
+	return s
 }
 
 func (s *ModifyStartVulScanRequest) SetTypes(v string) *ModifyStartVulScanRequest {

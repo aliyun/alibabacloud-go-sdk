@@ -11,6 +11,8 @@ type iDeleteSuspEventNodeRequest interface {
 	GoString() string
 	SetNoteId(v int64) *DeleteSuspEventNodeRequest
 	GetNoteId() *int64
+	SetResourceDirectoryAccountId(v int64) *DeleteSuspEventNodeRequest
+	GetResourceDirectoryAccountId() *int64
 }
 
 type DeleteSuspEventNodeRequest struct {
@@ -23,7 +25,8 @@ type DeleteSuspEventNodeRequest struct {
 	// example:
 	//
 	// 123
-	NoteId *int64 `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
+	NoteId                     *int64 `json:"NoteId,omitempty" xml:"NoteId,omitempty"`
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 
 func (s DeleteSuspEventNodeRequest) String() string {
@@ -38,8 +41,17 @@ func (s *DeleteSuspEventNodeRequest) GetNoteId() *int64 {
 	return s.NoteId
 }
 
+func (s *DeleteSuspEventNodeRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DeleteSuspEventNodeRequest) SetNoteId(v int64) *DeleteSuspEventNodeRequest {
 	s.NoteId = &v
+	return s
+}
+
+func (s *DeleteSuspEventNodeRequest) SetResourceDirectoryAccountId(v int64) *DeleteSuspEventNodeRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

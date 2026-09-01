@@ -13,6 +13,8 @@ type iGetSecurityScoreRuleRequest interface {
 	GetCalType() *string
 	SetLang(v string) *GetSecurityScoreRuleRequest
 	GetLang() *string
+	SetResourceDirectoryAccountId(v int64) *GetSecurityScoreRuleRequest
+	GetResourceDirectoryAccountId() *int64
 }
 
 type GetSecurityScoreRuleRequest struct {
@@ -31,7 +33,8 @@ type GetSecurityScoreRuleRequest struct {
 	// example:
 	//
 	// zh
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang                       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 }
 
 func (s GetSecurityScoreRuleRequest) String() string {
@@ -50,6 +53,10 @@ func (s *GetSecurityScoreRuleRequest) GetLang() *string {
 	return s.Lang
 }
 
+func (s *GetSecurityScoreRuleRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *GetSecurityScoreRuleRequest) SetCalType(v string) *GetSecurityScoreRuleRequest {
 	s.CalType = &v
 	return s
@@ -57,6 +64,11 @@ func (s *GetSecurityScoreRuleRequest) SetCalType(v string) *GetSecurityScoreRule
 
 func (s *GetSecurityScoreRuleRequest) SetLang(v string) *GetSecurityScoreRuleRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *GetSecurityScoreRuleRequest) SetResourceDirectoryAccountId(v int64) *GetSecurityScoreRuleRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

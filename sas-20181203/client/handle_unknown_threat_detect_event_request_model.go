@@ -11,13 +11,16 @@ type iHandleUnknownThreatDetectEventRequest interface {
 	GoString() string
 	SetEventIdList(v []*string) *HandleUnknownThreatDetectEventRequest
 	GetEventIdList() []*string
+	SetHandleRemark(v string) *HandleUnknownThreatDetectEventRequest
+	GetHandleRemark() *string
 	SetStatus(v int32) *HandleUnknownThreatDetectEventRequest
 	GetStatus() *int32
 }
 
 type HandleUnknownThreatDetectEventRequest struct {
 	// The list of event IDs.
-	EventIdList []*string `json:"EventIdList,omitempty" xml:"EventIdList,omitempty" type:"Repeated"`
+	EventIdList  []*string `json:"EventIdList,omitempty" xml:"EventIdList,omitempty" type:"Repeated"`
+	HandleRemark *string   `json:"HandleRemark,omitempty" xml:"HandleRemark,omitempty"`
 	// The event handling status. Valid values:
 	//
 	// - **1**: Unhandled.
@@ -44,12 +47,21 @@ func (s *HandleUnknownThreatDetectEventRequest) GetEventIdList() []*string {
 	return s.EventIdList
 }
 
+func (s *HandleUnknownThreatDetectEventRequest) GetHandleRemark() *string {
+	return s.HandleRemark
+}
+
 func (s *HandleUnknownThreatDetectEventRequest) GetStatus() *int32 {
 	return s.Status
 }
 
 func (s *HandleUnknownThreatDetectEventRequest) SetEventIdList(v []*string) *HandleUnknownThreatDetectEventRequest {
 	s.EventIdList = v
+	return s
+}
+
+func (s *HandleUnknownThreatDetectEventRequest) SetHandleRemark(v string) *HandleUnknownThreatDetectEventRequest {
+	s.HandleRemark = &v
 	return s
 }
 

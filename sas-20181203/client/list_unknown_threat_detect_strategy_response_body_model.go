@@ -18,11 +18,11 @@ type iListUnknownThreatDetectStrategyResponseBody interface {
 }
 
 type ListUnknownThreatDetectStrategyResponseBody struct {
-	// An array of strategies.
+	// The returned data.
 	Data []*ListUnknownThreatDetectStrategyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The pagination information.
 	PageInfo *ListUnknownThreatDetectStrategyResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -90,19 +90,19 @@ type ListUnknownThreatDetectStrategyResponseBodyData struct {
 	//
 	// UNKNOWN_THREAT_DETECT_CONFIG_****
 	AssetSelectionType *string `json:"AssetSelectionType,omitempty" xml:"AssetSelectionType,omitempty"`
-	// The duration, in days, of the learning phase after model creation.
+	// The number of days after the model is initially created before learning ends.
 	//
 	// example:
 	//
 	// 1
 	DurationDaysAfterInit *int32 `json:"DurationDaysAfterInit,omitempty" xml:"DurationDaysAfterInit,omitempty"`
-	// The number of consecutive days without new process detections before the learning phase automatically ends.
+	// The number of days after which the model ends when no new processes are added.
 	//
 	// example:
 	//
 	// 1
 	DurationDaysAfterStop *int32 `json:"DurationDaysAfterStop,omitempty" xml:"DurationDaysAfterStop,omitempty"`
-	// The strategy ID.
+	// The policy ID.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type ListUnknownThreatDetectStrategyResponseBodyData struct {
 	//
 	// 1
 	MachineCount *int32 `json:"MachineCount,omitempty" xml:"MachineCount,omitempty"`
-	// The strategy name.
+	// The policy name.
 	//
 	// example:
 	//
@@ -208,25 +208,25 @@ func (s *ListUnknownThreatDetectStrategyResponseBodyData) Validate() error {
 }
 
 type ListUnknownThreatDetectStrategyResponseBodyPageInfo struct {
-	// The number of entries returned on the current page.
+	// The number of entries displayed on the current page.
 	//
 	// example:
 	//
 	// 20
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The current page number.
+	// The page number of the current page in a paging query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The number of entries returned per page.
+	// The maximum number of entries displayed on each page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of matching entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//

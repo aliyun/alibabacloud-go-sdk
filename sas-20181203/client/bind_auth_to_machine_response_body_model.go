@@ -52,7 +52,7 @@ type BindAuthToMachineResponseBody struct {
 	//
 	// - **0**: Succeeded.
 	//
-	// - **1**: Invalid parameters.
+	// - **1**: Parameter error.
 	//
 	// - **2**: Insufficient server authorization quota.
 	//

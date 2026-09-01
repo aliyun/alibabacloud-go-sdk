@@ -9,8 +9,12 @@ type iModifyCreateVulWhitelistRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetClientToken(v string) *ModifyCreateVulWhitelistRequest
+	GetClientToken() *string
 	SetReason(v string) *ModifyCreateVulWhitelistRequest
 	GetReason() *string
+	SetResourceDirectoryAccountId(v int64) *ModifyCreateVulWhitelistRequest
+	GetResourceDirectoryAccountId() *int64
 	SetTargetInfo(v string) *ModifyCreateVulWhitelistRequest
 	GetTargetInfo() *string
 	SetWhitelist(v string) *ModifyCreateVulWhitelistRequest
@@ -18,69 +22,72 @@ type iModifyCreateVulWhitelistRequest interface {
 }
 
 type ModifyCreateVulWhitelistRequest struct {
-	// The reason why you add the vulnerability to the whitelist.
+	// The client token that is used to ensure the idempotence of the request. Different requests must use different tokens. The token supports only ASCII characters and cannot exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The reason for adding the vulnerability to the whitelist.
 	//
 	// example:
 	//
 	// This vulnerability is not harmful
-	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The applicable scope of the whitelist. The value of this parameter is in the JSON format and contains the following fields:
+	Reason                     *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
+	// The scope in which the whitelist takes effect. The value is a JSON string that contains the following fields:
 	//
-	// 	- **type**: the type of the applicable scope. Valid values:
+	// - **type**: The scope type. Valid values:
 	//
-	//     	- **GroupId**: the ID of a server group.
+	//     - **GroupId**: server group
 	//
-	//     	- **Uuid**: the UUID of a server.
+	//     - **Uuid**: host asset
 	//
-	// 	- **uuids**: the UUIDs of servers. This field is of the string type.
+	// - **uuids**: The collection of host asset UUIDs. The field type is String.
 	//
-	// 	- **groupIds**: the IDs of server groups. This field is of the long type.
+	// - **groupIds**: The collection of server group IDs. The field type is Long.
 	//
-	// >  If you leave this parameter empty, the applicable scope is all servers. If you set the **type*	- field to **GroupId**, you must also specify the **groupIds*	- field. If you set the **type*	- field to **Uuid**, you must also specify the **uuids*	- field.
+	// > If this parameter is left empty, the whitelist takes effect on all hosts. If **type*	- is set to **GroupId**, **groupIds*	- cannot be empty. If **type*	- is set to **Uuid**, **uuids*	- cannot be empty.
 	//
 	// example:
 	//
 	// {"type":"Uuid","uuids":["b31a708f-5fea-426e-bebe-a7b0893****","1f749687-3b5d-4e11-8140-d964673****"],"groupIds":[]}
 	TargetInfo *string `json:"TargetInfo,omitempty" xml:"TargetInfo,omitempty"`
-	// The information about the vulnerability that you want to add to the whitelist. The value is a JSON string that contains the following fields:
+	// The information about the vulnerability to add to the whitelist. The value is a JSON string that contains the following fields:
 	//
-	// 	- **Status**: the status of the vulnerability.
+	// - **Status**: The vulnerability status.
 	//
-	// 	- **GmtLast**: the timestamp when the vulnerability was last detected. Unit: milliseconds.
+	// - **GmtLast**: The timestamp when the vulnerability was last detected. Unit: milliseconds.
 	//
-	// 	- **LaterCount**: the number of vulnerabilities that have the medium priority.
+	// - **LaterCount**: The number of medium-priority vulnerabilities.
 	//
-	// 	- **AsapCount**: the number of vulnerabilities that have the high priority.
+	// - **AsapCount**: The number of high-priority vulnerabilities.
 	//
-	// 	- **Name**: the name of the vulnerability.
+	// - **Name**: The vulnerability name.
 	//
-	// 	- **Type**: the type of the vulnerability. Valid values:
+	// - **Type**: The vulnerability type. Valid values:
 	//
-	//     	- **cve**: Linux software vulnerability
+	//     - **cve**: Linux software vulnerability
 	//
-	//     	- **sys**: Windows system vulnerability
+	//     - **sys**: Windows system vulnerability
 	//
-	//     	- **cms**: Web-CMS vulnerability
+	//     - **cms**: Web-CMS vulnerability
 	//
-	//     	- **app**: application vulnerability
+	//     - **app**: application vulnerability
 	//
-	//     	- **emg**: urgent vulnerability
+	//     - **emg**: emergency vulnerability
 	//
-	// 	- **Related**: the Common Vulnerabilities and Exposures (CVE) ID of the vulnerability.
+	// - **Related**: The CVE ID of the vulnerability.
 	//
-	// 	- **HandledCount**: the number of handled vulnerabilities.
+	// - **HandledCount**: The number of handled vulnerabilities.
 	//
-	// 	- **AliasName**: the alias of the vulnerability.
+	// - **AliasName**: The alias of the vulnerability.
 	//
-	// 	- **RuleModifyTime**: the time when the vulnerability was last disclosed.
+	// - **RuleModifyTime**: The time when the vulnerability was last published.
 	//
-	// 	- **NntfCount**: the number of vulnerabilities that have the low priority.
+	// - **NntfCount**: The number of low-priority vulnerabilities.
 	//
-	// 	- **TotalFixCount**: the total number of fixed vulnerabilities.
+	// - **TotalFixCount**: The total number of fixed vulnerabilities.
 	//
-	// 	- **Tags**: the tag that is added to the vulnerability.
+	// - **Tags**: The vulnerability tags.
 	//
-	// >  You can call the [DescribeGroupedVul](~~DescribeGroupedVul~~) operation to query the information about the vulnerability that you want to add to the whitelist.
+	// > You can call the [DescribeGroupedVul](~~DescribeGroupedVul~~) operation to obtain the vulnerability information to add to the whitelist.
 	//
 	// This parameter is required.
 	//
@@ -98,8 +105,16 @@ func (s ModifyCreateVulWhitelistRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ModifyCreateVulWhitelistRequest) GetClientToken() *string {
+	return s.ClientToken
+}
+
 func (s *ModifyCreateVulWhitelistRequest) GetReason() *string {
 	return s.Reason
+}
+
+func (s *ModifyCreateVulWhitelistRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
 }
 
 func (s *ModifyCreateVulWhitelistRequest) GetTargetInfo() *string {
@@ -110,8 +125,18 @@ func (s *ModifyCreateVulWhitelistRequest) GetWhitelist() *string {
 	return s.Whitelist
 }
 
+func (s *ModifyCreateVulWhitelistRequest) SetClientToken(v string) *ModifyCreateVulWhitelistRequest {
+	s.ClientToken = &v
+	return s
+}
+
 func (s *ModifyCreateVulWhitelistRequest) SetReason(v string) *ModifyCreateVulWhitelistRequest {
 	s.Reason = &v
+	return s
+}
+
+func (s *ModifyCreateVulWhitelistRequest) SetResourceDirectoryAccountId(v int64) *ModifyCreateVulWhitelistRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

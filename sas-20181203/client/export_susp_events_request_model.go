@@ -41,6 +41,8 @@ type iExportSuspEventsRequest interface {
   GetParentEventTypes() *string 
   SetRemark(v string) *ExportSuspEventsRequest
   GetRemark() *string 
+  SetResourceDirectoryAccountId(v int64) *ExportSuspEventsRequest
+  GetResourceDirectoryAccountId() *int64 
   SetSourceIp(v string) *ExportSuspEventsRequest
   GetSourceIp() *string 
   SetStatus(v string) *ExportSuspEventsRequest
@@ -232,6 +234,7 @@ type ExportSuspEventsRequest struct {
   // 
   // remark
   Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+  ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
   // The source IP address of the request. The value of this parameter is specified by the system.
   // 
   // example:
@@ -372,6 +375,10 @@ func (s *ExportSuspEventsRequest) GetRemark() *string  {
   return s.Remark
 }
 
+func (s *ExportSuspEventsRequest) GetResourceDirectoryAccountId() *int64  {
+  return s.ResourceDirectoryAccountId
+}
+
 func (s *ExportSuspEventsRequest) GetSourceIp() *string  {
   return s.SourceIp
 }
@@ -477,6 +484,11 @@ func (s *ExportSuspEventsRequest) SetParentEventTypes(v string) *ExportSuspEvent
 
 func (s *ExportSuspEventsRequest) SetRemark(v string) *ExportSuspEventsRequest {
   s.Remark = &v
+  return s
+}
+
+func (s *ExportSuspEventsRequest) SetResourceDirectoryAccountId(v int64) *ExportSuspEventsRequest {
+  s.ResourceDirectoryAccountId = &v
   return s
 }
 

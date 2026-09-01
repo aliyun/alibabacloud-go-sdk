@@ -20,13 +20,14 @@ type iListCheckItemRequest interface {
 }
 
 type ListCheckItemRequest struct {
-	// The number of the page to return. Default value: **1**.
+	// The page number of the page to return. Default value: **1**, which indicates that the first page is returned.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid value:
+	// The language type for the request and response messages. Default value: **zh**. Valid values:
+	//
 	//
 	// - **zh**: Chinese
 	//
@@ -36,13 +37,13 @@ type ListCheckItemRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The number of entries per page. Default value: **20**.
+	// The maximum number of entries per page in a paged query. Default value: **20**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// List of task sources.
+	// The list of task sources.
 	TaskSources []*string `json:"TaskSources,omitempty" xml:"TaskSources,omitempty" type:"Repeated"`
 }
 

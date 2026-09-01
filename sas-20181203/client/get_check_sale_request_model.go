@@ -16,9 +16,9 @@ type iGetCheckSaleRequest interface {
 type GetCheckSaleRequest struct {
 	// The region of the Security Center instance. Valid values:
 	//
-	// - **cn-hangzhou:*	- the Chinese mainland
+	// - **cn-hangzhou:*	- China
 	//
-	// - **ap-southeast-1:*	- outside the Chinese mainland.
+	// - **ap-southeast-1:*	- outside China.
 	//
 	// example:
 	//

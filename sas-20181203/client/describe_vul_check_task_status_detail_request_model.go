@@ -9,6 +9,8 @@ type iDescribeVulCheckTaskStatusDetailRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetResourceDirectoryAccountId(v int64) *DescribeVulCheckTaskStatusDetailRequest
+	GetResourceDirectoryAccountId() *int64
 	SetTaskIds(v []*string) *DescribeVulCheckTaskStatusDetailRequest
 	GetTaskIds() []*string
 	SetTypes(v []*string) *DescribeVulCheckTaskStatusDetailRequest
@@ -18,6 +20,7 @@ type iDescribeVulCheckTaskStatusDetailRequest interface {
 }
 
 type DescribeVulCheckTaskStatusDetailRequest struct {
+	ResourceDirectoryAccountId *int64 `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The task IDs.
 	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 	// The types of the vulnerabilities that are detected by the tasks.
@@ -38,6 +41,10 @@ func (s DescribeVulCheckTaskStatusDetailRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeVulCheckTaskStatusDetailRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *DescribeVulCheckTaskStatusDetailRequest) GetTaskIds() []*string {
 	return s.TaskIds
 }
@@ -48,6 +55,11 @@ func (s *DescribeVulCheckTaskStatusDetailRequest) GetTypes() []*string {
 
 func (s *DescribeVulCheckTaskStatusDetailRequest) GetUuid() *string {
 	return s.Uuid
+}
+
+func (s *DescribeVulCheckTaskStatusDetailRequest) SetResourceDirectoryAccountId(v int64) *DescribeVulCheckTaskStatusDetailRequest {
+	s.ResourceDirectoryAccountId = &v
+	return s
 }
 
 func (s *DescribeVulCheckTaskStatusDetailRequest) SetTaskIds(v []*string) *DescribeVulCheckTaskStatusDetailRequest {

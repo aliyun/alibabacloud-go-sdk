@@ -11,6 +11,8 @@ type iOperationCancelIgnoreSuspEventRequest interface {
 	GoString() string
 	SetRemark(v string) *OperationCancelIgnoreSuspEventRequest
 	GetRemark() *string
+	SetResourceDirectoryAccountId(v int64) *OperationCancelIgnoreSuspEventRequest
+	GetResourceDirectoryAccountId() *int64
 	SetSecurityEventIds(v []*int64) *OperationCancelIgnoreSuspEventRequest
 	GetSecurityEventIds() []*int64
 }
@@ -21,7 +23,8 @@ type OperationCancelIgnoreSuspEventRequest struct {
 	// example:
 	//
 	// remark text
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Remark                     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceDirectoryAccountId *int64  `json:"ResourceDirectoryAccountId,omitempty" xml:"ResourceDirectoryAccountId,omitempty"`
 	// The IDs of alert events.
 	//
 	// This parameter is required.
@@ -40,12 +43,21 @@ func (s *OperationCancelIgnoreSuspEventRequest) GetRemark() *string {
 	return s.Remark
 }
 
+func (s *OperationCancelIgnoreSuspEventRequest) GetResourceDirectoryAccountId() *int64 {
+	return s.ResourceDirectoryAccountId
+}
+
 func (s *OperationCancelIgnoreSuspEventRequest) GetSecurityEventIds() []*int64 {
 	return s.SecurityEventIds
 }
 
 func (s *OperationCancelIgnoreSuspEventRequest) SetRemark(v string) *OperationCancelIgnoreSuspEventRequest {
 	s.Remark = &v
+	return s
+}
+
+func (s *OperationCancelIgnoreSuspEventRequest) SetResourceDirectoryAccountId(v int64) *OperationCancelIgnoreSuspEventRequest {
+	s.ResourceDirectoryAccountId = &v
 	return s
 }
 

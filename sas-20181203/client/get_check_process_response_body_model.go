@@ -34,7 +34,7 @@ type GetCheckProcessResponseBody struct {
 	//
 	// D18B5DAD-BA97-5552-AE48-83F59D5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status code of the Cloud Security Posture Management (CSPM) check task. Valid values:
+	// The status code of the CSPM check task. Valid values:
 	//
 	// - 0: The task is being initialized and the total number of tasks is being calculated.
 	//
@@ -44,21 +44,23 @@ type GetCheckProcessResponseBody struct {
 	//
 	// - 3: The task timed out.
 	//
-	// - 4: The task is invalid. Check whether valid assets exist for detection.
+	// - 4: The task is invalid. Check whether valid assets exist for the check.
 	//
 	// - 5: No task record exists. Check whether the TaskId is correct.
+	//
+	// - 6: The task is running and data is being prepared. You cannot query the total number of tasks or the number of completed tasks.
 	//
 	// example:
 	//
 	// 1
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-	// The ID of the cloud service configuration check task to query.
+	// The ID of the cloud service configuration check task.
 	//
 	// example:
 	//
 	// 5347c7b6-c85c-4070-846a-3029e08e****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The total number of assets to check.
+	// The total number of assets to be checked.
 	//
 	// example:
 	//
