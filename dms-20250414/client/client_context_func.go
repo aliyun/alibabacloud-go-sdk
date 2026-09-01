@@ -912,6 +912,78 @@ func (client *Client) CreateDataAgentAccuracyTestWithContext(ctx context.Context
 
 // Summary:
 //
+// # Data Agent点赞点踩功能
+//
+// @param request - CreateDataAgentFeedbackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataAgentFeedbackResponse
+func (client *Client) CreateDataAgentFeedbackWithContext(ctx context.Context, request *CreateDataAgentFeedbackRequest, runtime *dara.RuntimeOptions) (_result *CreateDataAgentFeedbackResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DMSUnit) {
+		query["DMSUnit"] = request.DMSUnit
+	}
+
+	if !dara.IsNil(request.FeedbackContent) {
+		query["FeedbackContent"] = request.FeedbackContent
+	}
+
+	if !dara.IsNil(request.FeedbackType) {
+		query["FeedbackType"] = request.FeedbackType
+	}
+
+	if !dara.IsNil(request.LikeValue) {
+		query["LikeValue"] = request.LikeValue
+	}
+
+	if !dara.IsNil(request.SessionId) {
+		query["SessionId"] = request.SessionId
+	}
+
+	if !dara.IsNil(request.TargetId) {
+		query["TargetId"] = request.TargetId
+	}
+
+	if !dara.IsNil(request.TargetType) {
+		query["TargetType"] = request.TargetType
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateDataAgentFeedback"),
+		Version:     dara.String("2025-04-14"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateDataAgentFeedbackResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a DataAgent knowledge base. The knowledge base creator has read and write permissions. Other workspace members have permission to use it.
 //
 // @param request - CreateDataAgentKnowledgeBaseRequest
@@ -7369,7 +7441,7 @@ func (client *Client) SaveWorkspaceCodeWithContext(ctx context.Context, request 
 //
 // - `message_type` defaults to `primary`. Set it to `additional` or `cancel` when you need to append information or cancel a session.
 //
-// - The `reply_to` field indicates which Agent message this message is responding to. The default value is `0`.
+// - The `reply_to` field indicates which Agent message this message is a response to. The default value is `0`.
 //
 // - When `message_type` is `additional`, the `question` field is required.
 //
