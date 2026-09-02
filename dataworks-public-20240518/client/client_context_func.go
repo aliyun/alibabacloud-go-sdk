@@ -8380,6 +8380,50 @@ func (client *Client) GetApplicationContentsWithContext(ctx context.Context, req
 
 // Summary:
 //
+// 查询批量转交表Owner状态
+//
+// @param request - GetBatchChangeTableOwnerStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBatchChangeTableOwnerStatusResponse
+func (client *Client) GetBatchChangeTableOwnerStatusWithContext(ctx context.Context, request *GetBatchChangeTableOwnerStatusRequest, runtime *dara.RuntimeOptions) (_result *GetBatchChangeTableOwnerStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BatchId) {
+		query["BatchId"] = request.BatchId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetBatchChangeTableOwnerStatus"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetBatchChangeTableOwnerStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of a business process by calling GetBusiness.
 //
 // @param request - GetBusinessRequest
@@ -19775,6 +19819,64 @@ func (client *Client) StopWorkflowInstancesWithContext(ctx context.Context, tmpR
 		BodyType:    dara.String("json"),
 	}
 	_result = &StopWorkflowInstancesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交批量转交表Owner
+//
+// @param tmpReq - SubmitBatchChangeTableOwnerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitBatchChangeTableOwnerResponse
+func (client *Client) SubmitBatchChangeTableOwnerWithContext(ctx context.Context, tmpReq *SubmitBatchChangeTableOwnerRequest, runtime *dara.RuntimeOptions) (_result *SubmitBatchChangeTableOwnerResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SubmitBatchChangeTableOwnerShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.TableMetaEntityIds) {
+		request.TableMetaEntityIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TableMetaEntityIds, dara.String("TableMetaEntityIds"), dara.String("simple"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EnableCrossTenant) {
+		body["EnableCrossTenant"] = request.EnableCrossTenant
+	}
+
+	if !dara.IsNil(request.Owner) {
+		body["Owner"] = request.Owner
+	}
+
+	if !dara.IsNil(request.TableMetaEntityIdsShrink) {
+		body["TableMetaEntityIds"] = request.TableMetaEntityIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitBatchChangeTableOwner"),
+		Version:     dara.String("2024-05-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitBatchChangeTableOwnerResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
