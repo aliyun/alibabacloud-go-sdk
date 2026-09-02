@@ -89,6 +89,7 @@ type ListAgentsResponseBodyList struct {
 	AgentName             *string `json:"agentName,omitempty" xml:"agentName,omitempty"`
 	AgentScene            *string `json:"agentScene,omitempty" xml:"agentScene,omitempty"`
 	CharacterAgeStage     *string `json:"characterAgeStage,omitempty" xml:"characterAgeStage,omitempty"`
+	CharacterGender       *string `json:"characterGender,omitempty" xml:"characterGender,omitempty"`
 	CharacterName         *string `json:"characterName,omitempty" xml:"characterName,omitempty"`
 	CharactersDescription *string `json:"charactersDescription,omitempty" xml:"charactersDescription,omitempty"`
 	EnableInteraction     *int32  `json:"enableInteraction,omitempty" xml:"enableInteraction,omitempty"`
@@ -127,6 +128,10 @@ func (s *ListAgentsResponseBodyList) GetAgentScene() *string {
 
 func (s *ListAgentsResponseBodyList) GetCharacterAgeStage() *string {
 	return s.CharacterAgeStage
+}
+
+func (s *ListAgentsResponseBodyList) GetCharacterGender() *string {
+	return s.CharacterGender
 }
 
 func (s *ListAgentsResponseBodyList) GetCharacterName() *string {
@@ -191,6 +196,11 @@ func (s *ListAgentsResponseBodyList) SetAgentScene(v string) *ListAgentsResponse
 
 func (s *ListAgentsResponseBodyList) SetCharacterAgeStage(v string) *ListAgentsResponseBodyList {
 	s.CharacterAgeStage = &v
+	return s
+}
+
+func (s *ListAgentsResponseBodyList) SetCharacterGender(v string) *ListAgentsResponseBodyList {
+	s.CharacterGender = &v
 	return s
 }
 
