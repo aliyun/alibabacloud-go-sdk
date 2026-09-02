@@ -199,7 +199,7 @@ func (s *GlobalHotelSearchCityPageResponseBodyData) Validate() error {
 }
 
 type GlobalHotelSearchCityPageResponseBodyDataCities struct {
-	// The Chinese name.
+	// The Chinese name of the city.
 	//
 	// example:
 	//
@@ -217,13 +217,13 @@ type GlobalHotelSearchCityPageResponseBodyDataCities struct {
 	//
 	// 156
 	Country *int32 `json:"Country,omitempty" xml:"Country,omitempty"`
-	// The country code (ISO 3166-1 alpha-2).
+	// The country code in ISO 3166-1 alpha-2 format.
 	//
 	// example:
 	//
 	// CN
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	// The English name.
+	// The English name of the city.
 	//
 	// example:
 	//

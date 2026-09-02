@@ -3727,7 +3727,7 @@ func (client *Client) GlobalHotelQueryOrderWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries city administrative divisions (in Chinese and English) by paging.
+// Queries city administrative divisions by paging (in Chinese and English).
 //
 // @param request - GlobalHotelSearchCityPageRequest
 //
@@ -3790,7 +3790,7 @@ func (client *Client) GlobalHotelSearchCityPageWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Performs a paged query of the hotel list by city with paging support.
+// Performs a paged query to retrieve the list of hotels by city with paging support.
 //
 // @param request - GlobalHotelSearchHotelListRequest
 //

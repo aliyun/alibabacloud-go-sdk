@@ -38,13 +38,13 @@ type GlobalHotelSearchCityPageRequest struct {
 	//
 	// 20
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The country code (ISO 3166-1 alpha-2).
+	// The country code in ISO 3166-1 alpha-2 format.
 	//
 	// example:
 	//
 	// CN
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	// The pagination offset (starts from 0).
+	// The pagination offset. Starts from 0.
 	//
 	// example:
 	//

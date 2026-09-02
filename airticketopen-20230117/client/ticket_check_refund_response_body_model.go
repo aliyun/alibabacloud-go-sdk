@@ -250,6 +250,9 @@ func (s *TicketCheckRefundResponseBodyDataRefundRule) Validate() error {
 }
 
 type TicketCheckRefundResponseBodyDataRefundRuleRefundStageRules struct {
+	// example:
+	//
+	// 10000
 	Fee *float64 `json:"Fee,omitempty" xml:"Fee,omitempty"`
 	// example:
 	//

@@ -4860,7 +4860,7 @@ func (client *Client) GlobalHotelQueryOrder(request *GlobalHotelQueryOrderReques
 
 // Summary:
 //
-// Queries city administrative divisions (in Chinese and English) by paging.
+// Queries city administrative divisions by paging (in Chinese and English).
 //
 // @param request - GlobalHotelSearchCityPageRequest
 //
@@ -4923,7 +4923,7 @@ func (client *Client) GlobalHotelSearchCityPageWithOptions(request *GlobalHotelS
 
 // Summary:
 //
-// Queries city administrative divisions (in Chinese and English) by paging.
+// Queries city administrative divisions by paging (in Chinese and English).
 //
 // @param request - GlobalHotelSearchCityPageRequest
 //
@@ -4942,7 +4942,7 @@ func (client *Client) GlobalHotelSearchCityPage(request *GlobalHotelSearchCityPa
 
 // Summary:
 //
-// Performs a paged query of the hotel list by city with paging support.
+// Performs a paged query to retrieve the list of hotels by city with paging support.
 //
 // @param request - GlobalHotelSearchHotelListRequest
 //
@@ -5005,7 +5005,7 @@ func (client *Client) GlobalHotelSearchHotelListWithOptions(request *GlobalHotel
 
 // Summary:
 //
-// Performs a paged query of the hotel list by city with paging support.
+// Performs a paged query to retrieve the list of hotels by city with paging support.
 //
 // @param request - GlobalHotelSearchHotelListRequest
 //

@@ -1,3 +1,10 @@
+2026-09-02 Version: v7.0.0
+- Update API globalHotelBatchGetHotelDetail: add response parameters Body.Data.Hotels.$.Facilities.$.SubItems.
+- Update API globalHotelBatchGetHotelDetail: add response parameters Body.Data.Hotels.$.RoomTypes.$.BedGroups.
+- Update API globalHotelBatchGetHotelDetail: add response parameters Body.Data.Hotels.$.RoomTypes.$.Facilities.
+- Update API globalHotelBatchGetHotelDetail: delete response parameters Body.Data.Hotels.$.RoomTypes.$.BedType.
+
+
 2026-08-21 Version: v6.1.0
 - Support API TicketApplyRefund.
 - Support API TicketCancelOrder.

@@ -503,13 +503,13 @@ type DataHotelsValueRoomsOffersCancelPolicyPenalties struct {
 	//
 	// PERCENTAGE
 	PenaltyType *string `json:"PenaltyType,omitempty" xml:"PenaltyType,omitempty"`
-	// The penalty value (percentage/amount/nights).
+	// The penalty value (percentage/amount/number of nights).
 	//
 	// example:
 	//
 	// 50
 	PenaltyValue *string `json:"PenaltyValue,omitempty" xml:"PenaltyValue,omitempty"`
-	// The currency code (present only when the penalty type is AMOUNT).
+	// The currency code (present only when the type is AMOUNT).
 	//
 	// example:
 	//
@@ -771,7 +771,7 @@ func (s *DataHotelsValueRoomsOffersDailyPricesPrice) Validate() error {
 }
 
 type DataHotelsValueOffers struct {
-	// The item offer key used for price verification. Pass through this value as-is.
+	// The item offer key, which is a price verification key. Pass this value through as-is.
 	//
 	// example:
 	//
@@ -1008,13 +1008,13 @@ func (s *DataHotelsValueOffersCancelPolicy) Validate() error {
 }
 
 type DataHotelsValueOffersCancelPolicyPenalties struct {
-	// The effective start time as a UTC millisecond timestamp.
+	// The effective start time, in UTC millisecond timestamp format.
 	//
 	// example:
 	//
 	// 1672531200000
 	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
-	// The effective end time as a UTC millisecond timestamp.
+	// The effective end time, in UTC millisecond timestamp format.
 	//
 	// example:
 	//
@@ -1026,13 +1026,13 @@ type DataHotelsValueOffersCancelPolicyPenalties struct {
 	//
 	// PERCENTAGE
 	PenaltyType *string `json:"PenaltyType,omitempty" xml:"PenaltyType,omitempty"`
-	// The penalty value (percentage/amount/nights).
+	// The penalty value (percentage, amount, or number of nights).
 	//
 	// example:
 	//
 	// 50
 	PenaltyValue *string `json:"PenaltyValue,omitempty" xml:"PenaltyValue,omitempty"`
-	// The currency code. This field is present only when the penalty type is AMOUNT.
+	// The currency code. This field has a value only when the penalty type is AMOUNT.
 	//
 	// example:
 	//

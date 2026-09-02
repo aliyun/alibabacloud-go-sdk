@@ -38,7 +38,7 @@ type GlobalHotelBatchGetHotelDetailResponseBody struct {
 	//
 	// City code cannot be empty
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The unique request ID.
+	// The unique ID of the request.
 	//
 	// example:
 	//
@@ -165,19 +165,19 @@ func (s *GlobalHotelBatchGetHotelDetailResponseBodyData) Validate() error {
 }
 
 type GlobalHotelBatchGetHotelDetailResponseBodyDataHotels struct {
-	// The address.
+	// The address of the hotel.
 	//
 	// example:
 	//
 	// No.33 East Chang An Avenue
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The default check-in time.
+	// The default check-in time in HH:mm format, based on the hotel\\"s local time zone.
 	//
 	// example:
 	//
 	// 14:00
 	CheckInTime *string `json:"CheckInTime,omitempty" xml:"CheckInTime,omitempty"`
-	// The default check-out time.
+	// The default check-out time in HH:mm format, based on the hotel\\"s local time zone.
 	//
 	// example:
 	//
@@ -195,7 +195,7 @@ type GlobalHotelBatchGetHotelDetailResponseBodyDataHotels struct {
 	//
 	// China
 	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
-	// The hotel description.
+	// The description of the hotel.
 	//
 	// example:
 	//
@@ -207,7 +207,7 @@ type GlobalHotelBatchGetHotelDetailResponseBodyDataHotels struct {
 	//
 	// HOTEL_NOT_FOUND
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message for the individual hotel.
+	// The error description for the individual hotel.
 	//
 	// example:
 	//
@@ -221,7 +221,7 @@ type GlobalHotelBatchGetHotelDetailResponseBodyDataHotels struct {
 	//
 	// Beijing Hotel
 	HotelName *string `json:"HotelName,omitempty" xml:"HotelName,omitempty"`
-	// The Chinese hotel name.
+	// The Chinese hotel name. This value is always in Chinese regardless of the language setting.
 	//
 	// example:
 	//
@@ -233,19 +233,19 @@ type GlobalHotelBatchGetHotelDetailResponseBodyDataHotels struct {
 	//
 	// LUXURY
 	HotelType *string `json:"HotelType,omitempty" xml:"HotelType,omitempty"`
-	// The latitude.
+	// The latitude of the hotel.
 	//
 	// example:
 	//
 	// 39.9042
 	Latitude *string `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
-	// The longitude.
+	// The longitude of the hotel.
 	//
 	// example:
 	//
 	// 116.4074
 	Longitude *string `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
-	// The opening year.
+	// The year the hotel opened.
 	//
 	// example:
 	//
@@ -255,13 +255,13 @@ type GlobalHotelBatchGetHotelDetailResponseBodyDataHotels struct {
 	Pictures []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPictures `json:"Pictures,omitempty" xml:"Pictures,omitempty" type:"Repeated"`
 	// The hotel policy information.
 	Policies []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
-	// The source of the coordinates.
+	// The source of the latitude and longitude coordinates.
 	//
 	// example:
 	//
 	// GOOGLE
 	PositionType *string `json:"PositionType,omitempty" xml:"PositionType,omitempty"`
-	// The renovation year.
+	// The year the hotel was last renovated.
 	//
 	// example:
 	//
@@ -275,7 +275,7 @@ type GlobalHotelBatchGetHotelDetailResponseBodyDataHotels struct {
 	//
 	// H001
 	StandardHotelId *string `json:"StandardHotelId,omitempty" xml:"StandardHotelId,omitempty"`
-	// The star rating.
+	// The star rating of the hotel.
 	//
 	// example:
 	//
@@ -287,13 +287,13 @@ type GlobalHotelBatchGetHotelDetailResponseBodyDataHotels struct {
 	//
 	// ONLINE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The phone number.
+	// The phone number of the hotel.
 	//
 	// example:
 	//
 	// +86-10-65137766
 	Tel *string `json:"Tel,omitempty" xml:"Tel,omitempty"`
-	// The hotel time zone (IANA ID).
+	// The time zone of the hotel in IANA ID format.
 	//
 	// example:
 	//
@@ -581,13 +581,15 @@ type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities struct {
 	//
 	// Outdoor heated swimming pool
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The facility name.
+	// The name of the facility.
 	//
 	// example:
 	//
 	// Swimming Pool
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The facility type.
+	// The list of sub-facilities.
+	SubItems []interface{} `json:"SubItems,omitempty" xml:"SubItems,omitempty" type:"Repeated"`
+	// The type of the facility.
 	//
 	// example:
 	//
@@ -611,6 +613,10 @@ func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities) GetName
 	return s.Name
 }
 
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities) GetSubItems() []interface{} {
+	return s.SubItems
+}
+
 func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities) GetType() *string {
 	return s.Type
 }
@@ -625,6 +631,11 @@ func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities) SetName
 	return s
 }
 
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities) SetSubItems(v []interface{}) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities {
+	s.SubItems = v
+	return s
+}
+
 func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities) SetType(v string) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities {
 	s.Type = &v
 	return s
@@ -635,7 +646,7 @@ func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsFacilities) Validat
 }
 
 type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPictures struct {
-	// The picture description.
+	// The description of the picture.
 	//
 	// example:
 	//
@@ -659,7 +670,7 @@ type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPictures struct {
 	//
 	// true
 	IsHeadPic *bool `json:"IsHeadPic,omitempty" xml:"IsHeadPic,omitempty"`
-	// The picture ID (subject to the URL).
+	// The picture ID. The URL takes precedence.
 	//
 	// example:
 	//
@@ -677,7 +688,7 @@ type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPictures struct {
 	//
 	// Lobby
 	SecondCategoryName *string `json:"SecondCategoryName,omitempty" xml:"SecondCategoryName,omitempty"`
-	// The picture URL.
+	// The URL of the picture.
 	//
 	// example:
 	//
@@ -835,13 +846,13 @@ func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPolicies) Validate(
 }
 
 type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPoliciesItems struct {
-	// The list of sub-items.
+	// The list of subkeys.
 	Children []interface{} `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
 	// The item name.
 	//
 	// example:
 	//
-	// Check-in Time
+	// Check-in time
 	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
 	// The item type ID.
 	//
@@ -906,8 +917,10 @@ func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsPoliciesItems) Vali
 }
 
 type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes struct {
-	// The list of bed types.
-	BedType []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType `json:"BedType,omitempty" xml:"BedType,omitempty" type:"Repeated"`
+	// The list of bed type groups. This has the same structure as bedInfoJson. Groups are in an OR relationship, and items within a group are in an AND relationship.
+	BedGroups []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroups `json:"BedGroups,omitempty" xml:"BedGroups,omitempty" type:"Repeated"`
+	// The list of room type facilities.
+	Facilities []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities `json:"Facilities,omitempty" xml:"Facilities,omitempty" type:"Repeated"`
 	// The list of room type pictures.
 	Pictures []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesPictures `json:"Pictures,omitempty" xml:"Pictures,omitempty" type:"Repeated"`
 	// The room type name.
@@ -916,19 +929,19 @@ type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes struct {
 	//
 	// Deluxe King Room
 	RoomName *string `json:"RoomName,omitempty" xml:"RoomName,omitempty"`
-	// The Chinese room type name (always in Chinese, regardless of the language parameter).
+	// The Chinese room type name. This value is always in Chinese regardless of the language parameter.
 	//
 	// example:
 	//
 	// 豪华大床房
 	RoomNameCn *string `json:"RoomNameCn,omitempty" xml:"RoomNameCn,omitempty"`
-	// The room area (passed through as-is, may be a range value).
+	// The room size. The value is passed through as-is and may be a range.
 	//
 	// example:
 	//
 	// 35.0
 	RoomSize *string `json:"RoomSize,omitempty" xml:"RoomSize,omitempty"`
-	// The area unit. Valid values: SQM (square meters) and SQFT (square feet). Default value: SQM.
+	// The unit of the room size. Valid values: SQM (square meters) and SQFT (square feet). Default value: SQM.
 	//
 	// example:
 	//
@@ -942,17 +955,17 @@ type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes struct {
 	StandardRoomId *string `json:"StandardRoomId,omitempty" xml:"StandardRoomId,omitempty"`
 	// The window type. Valid values:
 	//
-	// - 0: no window
+	// - 0: no window.
 	//
-	// - 1: with window
+	// - 1: with window.
 	//
-	// - 2: partially with window
+	// - 2: partially with window.
 	//
-	// - 3: opaque window
+	// - 3: frosted or opaque window.
 	//
-	// - 4: partially opaque window
+	// - 4: partially frosted or opaque window.
 	//
-	// - 5: floor-to-ceiling window
+	// - 5: floor-to-ceiling window.
 	//
 	// example:
 	//
@@ -960,15 +973,15 @@ type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes struct {
 	WindowType *string `json:"WindowType,omitempty" xml:"WindowType,omitempty"`
 	// The window defect code. Valid values:
 	//
-	// - 0: window cannot be opened for ventilation
+	// - 0: The window cannot be opened for ventilation.
 	//
-	// - 1: view is obstructed outside the window
+	// - 1: The view from the window is obstructed.
 	//
-	// - 2: window faces the interior of the hotel
+	// - 2: The window faces an interior hotel view.
 	//
-	// - 3: window is located in a corridor or hallway
+	// - 3: The window is located along a corridor or hallway.
 	//
-	// - 4: window can be opened for ventilation and faces an outdoor open environment
+	// - 4: The window can be opened for ventilation and faces an outdoor open environment.
 	//
 	// example:
 	//
@@ -984,8 +997,12 @@ func (s GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes) GoString(
 	return s.String()
 }
 
-func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes) GetBedType() []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType {
-	return s.BedType
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes) GetBedGroups() []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroups {
+	return s.BedGroups
+}
+
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes) GetFacilities() []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities {
+	return s.Facilities
 }
 
 func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes) GetPictures() []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesPictures {
@@ -1020,8 +1037,13 @@ func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes) GetWindo
 	return s.WindowTypeDefect
 }
 
-func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes) SetBedType(v []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes {
-	s.BedType = v
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes) SetBedGroups(v []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroups) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes {
+	s.BedGroups = v
+	return s
+}
+
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes) SetFacilities(v []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes {
+	s.Facilities = v
 	return s
 }
 
@@ -1066,8 +1088,17 @@ func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes) SetWindo
 }
 
 func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes) Validate() error {
-	if s.BedType != nil {
-		for _, item := range s.BedType {
+	if s.BedGroups != nil {
+		for _, item := range s.BedGroups {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.Facilities != nil {
+		for _, item := range s.Facilities {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -1087,68 +1118,204 @@ func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypes) Validate
 	return nil
 }
 
-type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType struct {
+type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroups struct {
+	// The list of bed types within a group. Items are in an AND relationship.
+	BedInfos []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos `json:"BedInfos,omitempty" xml:"BedInfos,omitempty" type:"Repeated"`
+}
+
+func (s GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroups) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroups) GoString() string {
+	return s.String()
+}
+
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroups) GetBedInfos() []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos {
+	return s.BedInfos
+}
+
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroups) SetBedInfos(v []*GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroups {
+	s.BedInfos = v
+	return s
+}
+
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroups) Validate() error {
+	if s.BedInfos != nil {
+		for _, item := range s.BedInfos {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos struct {
 	// The number of beds.
 	//
 	// example:
 	//
 	// 1
 	BedCount *int32 `json:"BedCount,omitempty" xml:"BedCount,omitempty"`
-	// The bed width in meters.
+	// The Chinese name of the bed type.
 	//
 	// example:
 	//
-	// 1.8
-	BedSize *string `json:"BedSize,omitempty" xml:"BedSize,omitempty"`
-	// The bed type name.
+	// 大床
+	BedNameCn *string `json:"BedNameCn,omitempty" xml:"BedNameCn,omitempty"`
+	// The English name of the bed type.
 	//
 	// example:
 	//
 	// King Bed
+	BedNameEn *string `json:"BedNameEn,omitempty" xml:"BedNameEn,omitempty"`
+	// The bed width in meters.
+	//
+	// example:
+	//
+	// 1.83
+	BedSize *string `json:"BedSize,omitempty" xml:"BedSize,omitempty"`
+	// The bed type code. This is the original channel code passed through directly. For the meaning of code values, refer to the API documentation.
+	//
+	// example:
+	//
+	// 0
 	BedType *string `json:"BedType,omitempty" xml:"BedType,omitempty"`
 }
 
-func (s GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType) String() string {
+func (s GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos) String() string {
 	return dara.Prettify(s)
 }
 
-func (s GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType) GoString() string {
+func (s GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos) GoString() string {
 	return s.String()
 }
 
-func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType) GetBedCount() *int32 {
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos) GetBedCount() *int32 {
 	return s.BedCount
 }
 
-func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType) GetBedSize() *string {
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos) GetBedNameCn() *string {
+	return s.BedNameCn
+}
+
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos) GetBedNameEn() *string {
+	return s.BedNameEn
+}
+
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos) GetBedSize() *string {
 	return s.BedSize
 }
 
-func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType) GetBedType() *string {
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos) GetBedType() *string {
 	return s.BedType
 }
 
-func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType) SetBedCount(v int32) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType {
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos) SetBedCount(v int32) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos {
 	s.BedCount = &v
 	return s
 }
 
-func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType) SetBedSize(v string) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType {
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos) SetBedNameCn(v string) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos {
+	s.BedNameCn = &v
+	return s
+}
+
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos) SetBedNameEn(v string) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos {
+	s.BedNameEn = &v
+	return s
+}
+
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos) SetBedSize(v string) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos {
 	s.BedSize = &v
 	return s
 }
 
-func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType) SetBedType(v string) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType {
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos) SetBedType(v string) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos {
 	s.BedType = &v
 	return s
 }
 
-func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedType) Validate() error {
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesBedGroupsBedInfos) Validate() error {
+	return dara.Validate(s)
+}
+
+type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities struct {
+	// The facility description.
+	//
+	// example:
+	//
+	// Popular Facilities
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the facility.
+	//
+	// example:
+	//
+	// Parking Lot
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of sub-facilities.
+	SubItems []interface{} `json:"SubItems,omitempty" xml:"SubItems,omitempty" type:"Repeated"`
+	// The type of the facility.
+	//
+	// example:
+	//
+	// parkade
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities) GoString() string {
+	return s.String()
+}
+
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities) GetDescription() *string {
+	return s.Description
+}
+
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities) GetName() *string {
+	return s.Name
+}
+
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities) GetSubItems() []interface{} {
+	return s.SubItems
+}
+
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities) GetType() *string {
+	return s.Type
+}
+
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities) SetDescription(v string) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities {
+	s.Description = &v
+	return s
+}
+
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities) SetName(v string) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities {
+	s.Name = &v
+	return s
+}
+
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities) SetSubItems(v []interface{}) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities {
+	s.SubItems = v
+	return s
+}
+
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities) SetType(v string) *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities {
+	s.Type = &v
+	return s
+}
+
+func (s *GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesFacilities) Validate() error {
 	return dara.Validate(s)
 }
 
 type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesPictures struct {
-	// The picture description.
+	// The description of the picture.
 	//
 	// example:
 	//
@@ -1172,7 +1339,7 @@ type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesPictures struc
 	//
 	// true
 	IsHeadPic *bool `json:"IsHeadPic,omitempty" xml:"IsHeadPic,omitempty"`
-	// The picture ID (subject to the URL).
+	// The picture ID. The URL takes precedence.
 	//
 	// example:
 	//
@@ -1190,7 +1357,7 @@ type GlobalHotelBatchGetHotelDetailResponseBodyDataHotelsRoomTypesPictures struc
 	//
 	// Lobby
 	SecondCategoryName *string `json:"SecondCategoryName,omitempty" xml:"SecondCategoryName,omitempty"`
-	// The picture URL.
+	// The URL of the picture.
 	//
 	// example:
 	//

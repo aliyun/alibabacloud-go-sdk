@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/airticketopen-20230117/v6
+module github.com/alibabacloud-go/airticketopen-20230117/v7
 
 go 1.14
 
