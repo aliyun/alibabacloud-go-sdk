@@ -109,6 +109,8 @@ type iDescribeVersionConfigResponseBody interface {
 	GetSasLog() *int32
 	SetSasScreen(v int32) *DescribeVersionConfigResponseBody
 	GetSasScreen() *int32
+	SetSdkAiPostPaidGray(v int32) *DescribeVersionConfigResponseBody
+	GetSdkAiPostPaidGray() *int32
 	SetSdkCapacity(v int64) *DescribeVersionConfigResponseBody
 	GetSdkCapacity() *int64
 	SetSlsCapacity(v int64) *DescribeVersionConfigResponseBody
@@ -554,6 +556,10 @@ type DescribeVersionConfigResponseBody struct {
 	//
 	// 0
 	SasScreen *int32 `json:"SasScreen,omitempty" xml:"SasScreen,omitempty"`
+	// example:
+	//
+	// 1
+	SdkAiPostPaidGray *int32 `json:"SdkAiPostPaidGray,omitempty" xml:"SdkAiPostPaidGray,omitempty"`
 	// The number of malicious file detection SDK authorizations.
 	//
 	// example:
@@ -856,6 +862,10 @@ func (s *DescribeVersionConfigResponseBody) GetSasScreen() *int32 {
 	return s.SasScreen
 }
 
+func (s *DescribeVersionConfigResponseBody) GetSdkAiPostPaidGray() *int32 {
+	return s.SdkAiPostPaidGray
+}
+
 func (s *DescribeVersionConfigResponseBody) GetSdkCapacity() *int64 {
 	return s.SdkCapacity
 }
@@ -1151,6 +1161,11 @@ func (s *DescribeVersionConfigResponseBody) SetSasLog(v int32) *DescribeVersionC
 
 func (s *DescribeVersionConfigResponseBody) SetSasScreen(v int32) *DescribeVersionConfigResponseBody {
 	s.SasScreen = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBody) SetSdkAiPostPaidGray(v int32) *DescribeVersionConfigResponseBody {
+	s.SdkAiPostPaidGray = &v
 	return s
 }
 

@@ -32606,6 +32606,72 @@ func (client *Client) DescribeUserSetting(request *DescribeUserSettingRequest) (
 
 // Summary:
 //
+// 查询 UUID 维度的漏洞数量统计
+//
+// @param request - DescribeUuidVulNumClassifyStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUuidVulNumClassifyStatisticResponse
+func (client *Client) DescribeUuidVulNumClassifyStatisticWithOptions(request *DescribeUuidVulNumClassifyStatisticRequest, runtime *dara.RuntimeOptions) (_result *DescribeUuidVulNumClassifyStatisticResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImageVul) {
+		query["ImageVul"] = request.ImageVul
+	}
+
+	if !dara.IsNil(request.Uuids) {
+		query["Uuids"] = request.Uuids
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeUuidVulNumClassifyStatistic"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeUuidVulNumClassifyStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询 UUID 维度的漏洞数量统计
+//
+// @param request - DescribeUuidVulNumClassifyStatisticRequest
+//
+// @return DescribeUuidVulNumClassifyStatisticResponse
+func (client *Client) DescribeUuidVulNumClassifyStatistic(request *DescribeUuidVulNumClassifyStatisticRequest) (_result *DescribeUuidVulNumClassifyStatisticResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeUuidVulNumClassifyStatisticResponse{}
+	_body, _err := client.DescribeUuidVulNumClassifyStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the list of servers that support vulnerability fixing based on vulnerability names.
 //
 // @param request - DescribeUuidsByVulNamesRequest
@@ -52943,6 +53009,10 @@ func (client *Client) ListObjectScanEventWithOptions(request *ListObjectScanEven
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AiDetect) {
+		query["AiDetect"] = request.AiDetect
+	}
+
 	if !dara.IsNil(request.BatchType) {
 		query["BatchType"] = request.BatchType
 	}

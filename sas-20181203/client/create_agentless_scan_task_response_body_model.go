@@ -22,7 +22,10 @@ type CreateAgentlessScanTaskResponseBody struct {
 	//
 	// E90DE229-9FC6-58F6-BF4B-03AD6179****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 66561899963532d9db8a14124f46f3a0
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateAgentlessScanTaskResponseBody) String() string {

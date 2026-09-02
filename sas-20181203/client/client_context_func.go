@@ -23555,6 +23555,54 @@ func (client *Client) DescribeUserSettingWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// 查询 UUID 维度的漏洞数量统计
+//
+// @param request - DescribeUuidVulNumClassifyStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUuidVulNumClassifyStatisticResponse
+func (client *Client) DescribeUuidVulNumClassifyStatisticWithContext(ctx context.Context, request *DescribeUuidVulNumClassifyStatisticRequest, runtime *dara.RuntimeOptions) (_result *DescribeUuidVulNumClassifyStatisticResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImageVul) {
+		query["ImageVul"] = request.ImageVul
+	}
+
+	if !dara.IsNil(request.Uuids) {
+		query["Uuids"] = request.Uuids
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeUuidVulNumClassifyStatistic"),
+		Version:     dara.String("2018-12-03"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeUuidVulNumClassifyStatisticResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the list of servers that support vulnerability fixing based on vulnerability names.
 //
 // @param request - DescribeUuidsByVulNamesRequest
@@ -37613,6 +37661,10 @@ func (client *Client) ListObjectScanEventWithContext(ctx context.Context, reques
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AiDetect) {
+		query["AiDetect"] = request.AiDetect
+	}
+
 	if !dara.IsNil(request.BatchType) {
 		query["BatchType"] = request.BatchType
 	}

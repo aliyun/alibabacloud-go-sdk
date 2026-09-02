@@ -9,6 +9,8 @@ type iListObjectScanEventRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAiDetect(v bool) *ListObjectScanEventRequest
+	GetAiDetect() *bool
 	SetBatchType(v string) *ListObjectScanEventRequest
 	GetBatchType() *string
 	SetBucketName(v string) *ListObjectScanEventRequest
@@ -42,6 +44,7 @@ type iListObjectScanEventRequest interface {
 }
 
 type ListObjectScanEventRequest struct {
+	AiDetect *bool `json:"AiDetect,omitempty" xml:"AiDetect,omitempty"`
 	// The batch operation type. Valid values:
 	//
 	// - **sha256**: same file content
@@ -180,6 +183,10 @@ func (s ListObjectScanEventRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListObjectScanEventRequest) GetAiDetect() *bool {
+	return s.AiDetect
+}
+
 func (s *ListObjectScanEventRequest) GetBatchType() *string {
 	return s.BatchType
 }
@@ -238,6 +245,11 @@ func (s *ListObjectScanEventRequest) GetTimeEnd() *int64 {
 
 func (s *ListObjectScanEventRequest) GetTimeStart() *int64 {
 	return s.TimeStart
+}
+
+func (s *ListObjectScanEventRequest) SetAiDetect(v bool) *ListObjectScanEventRequest {
+	s.AiDetect = &v
+	return s
 }
 
 func (s *ListObjectScanEventRequest) SetBatchType(v string) *ListObjectScanEventRequest {

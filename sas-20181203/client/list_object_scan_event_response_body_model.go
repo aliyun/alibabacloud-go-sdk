@@ -84,6 +84,7 @@ func (s *ListObjectScanEventResponseBody) Validate() error {
 }
 
 type ListObjectScanEventResponseBodyData struct {
+	AiDetect *bool `json:"AiDetect,omitempty" xml:"AiDetect,omitempty"`
 	// The bucket name.
 	//
 	// example:
@@ -238,6 +239,10 @@ func (s ListObjectScanEventResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *ListObjectScanEventResponseBodyData) GetAiDetect() *bool {
+	return s.AiDetect
+}
+
 func (s *ListObjectScanEventResponseBodyData) GetBucketName() *string {
 	return s.BucketName
 }
@@ -316,6 +321,11 @@ func (s *ListObjectScanEventResponseBodyData) GetSource() *string {
 
 func (s *ListObjectScanEventResponseBodyData) GetStatus() *int32 {
 	return s.Status
+}
+
+func (s *ListObjectScanEventResponseBodyData) SetAiDetect(v bool) *ListObjectScanEventResponseBodyData {
+	s.AiDetect = &v
+	return s
 }
 
 func (s *ListObjectScanEventResponseBodyData) SetBucketName(v string) *ListObjectScanEventResponseBodyData {
