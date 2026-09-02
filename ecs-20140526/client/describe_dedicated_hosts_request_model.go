@@ -86,7 +86,7 @@ type DescribeDedicatedHostsRequest struct {
 	//
 	// financial
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The maximum number of entries per page for a paging query. If you set this parameter, it indicates that you are using the MaxResults and NextToken paging method.
+	// The maximum number of entries per page for a paged query. If you set this parameter, the MaxResults and NextToken parameters are used together for paging.
 	//
 	// Maximum value: 100.
 	//
@@ -104,13 +104,13 @@ type DescribeDedicatedHostsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter is about to go offline. Use NextToken and MaxResults to perform paging query operations.
+	// > This parameter will be offline soon. Use NextToken and MaxResults to perform paged query operations for paging.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter is about to go offline. Use NextToken and MaxResults to perform paging query operations.
+	// > This parameter will be offline soon. Use NextToken and MaxResults to perform paged query operations for paging.
 	//
 	// example:
 	//
@@ -135,19 +135,19 @@ type DescribeDedicatedHostsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to display socket-level capacity information. You can use socket-level capacity information to view remaining resources (vCPU, memory usage, remaining capacity, and total capacity) to determine whether an ECS instance of a specific instance type can be created. Valid values:
+	// Specifies whether to display socket-level capacity information. You can use socket-level capacity information to view remaining resources (vCPUs, memory usage, remaining capacity, and total capacity) to determine whether an ECS instance of a specific instance type can be created. Valid values:
 	//
-	// - true: Display socket-level capacity information. Only specific dedicated host types support displaying socket-level resource information. For more information, see [View and export DDH information](https://help.aliyun.com/document_detail/68989.html).
+	// - true: Displays socket-level capacity information. Only specific dedicated host types support displaying socket-level resource information. For more information, see [View and export DDH information](https://help.aliyun.com/document_detail/68989.html).
 	//
-	// - false: Do not display socket-level capacity information.
+	// - false: Does not display socket-level capacity information.
 	//
 	// 	Notice:
 	//
 	// Each dedicated host typically has two CPUs, numbered Socket 0 and Socket 1. On a dedicated host, ECS instances are not created across sockets to ensure maximum performance. An ECS instance is created based on a single socket only.
 	//
-	// - If the remaining computing resources of one socket are greater than or equal to the instance type to be created, the ECS instance is created.
+	// - If the remaining computing resources of one socket are greater than or equal to the ECS instance type to be created, the ECS instance is created.
 	//
-	// - If the remaining computing resources of each socket are less than the instance type to be created, the ECS instance fails to be created, even if the combined remaining resources of both sockets exceed the instance type requirements.
+	// - If the remaining computing resources of each socket are less than the ECS instance type to be created, the ECS instance fails to be created, even if the combined remaining resources of both sockets exceed the ECS instance type requirements.
 	//
 	// </notice>
 	//
@@ -157,9 +157,9 @@ type DescribeDedicatedHostsRequest struct {
 	SocketDetails *string `json:"SocketDetails,omitempty" xml:"SocketDetails,omitempty"`
 	// The usage status of the dedicated host. Valid values:
 	//
-	// - Available: The dedicated host is running normally.
+	// - Available: The dedicated host is running as expected.
 	//
-	// - UnderAssessment: The physical machine is at risk. The physical machine is available but may cause issues for ECS instances on the dedicated host.
+	// - UnderAssessment: The physical machine has potential risks. The physical machine is available but may cause issues for ECS instances on the dedicated host.
 	//
 	// - PermanentFailure: The dedicated host has a permanent failure and is unavailable.
 	//
@@ -173,7 +173,7 @@ type DescribeDedicatedHostsRequest struct {
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of tags. Valid values of N: 0 to 20.
+	// The tags. You can specify up to 20 tags.
 	Tag []*DescribeDedicatedHostsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The zone ID. You can call [DescribeZones](https://help.aliyun.com/document_detail/25610.html) to query the most recent zone list.
 	//

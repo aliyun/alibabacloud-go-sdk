@@ -62,7 +62,7 @@ type CloneDisksRequest struct {
 	//
 	// true
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
-	// A client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type CloneDisksRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The category of the new disk. Valid values:
 	//
-	// - cloud_essd: enterprise SSD.
+	// - cloud_essd: enterprise SSD (ESSD).
 	//
 	// - cloud_auto: ESSD AutoPL disk.
 	//
@@ -80,9 +80,9 @@ type CloneDisksRequest struct {
 	//
 	// > Disk category restrictions for disk cloning:
 	//
-	// > - Non-regional disks can only be cloned to non-regional types.
+	// > - Non-regional disks can only be cloned to non-regional disk types.
 	//
-	// > - Regional disks can only be cloned to regional types.
+	// > - Regional disks can only be cloned to regional disk types.
 	//
 	// This parameter is required.
 	//
@@ -100,9 +100,9 @@ type CloneDisksRequest struct {
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
 	//
-	// - true: sends a check request without querying the filing status. The system checks whether your AccessKey pair is valid, whether the Resource Access Management (RAM) user is granted the required authorization, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check passes, the DryRunOperation error code is returned.
+	// - true: sends a check request without querying the filing status. The check items include whether the AccessKey pair is valid, whether the Resource Access Management (RAM) user is granted the required authorization, and whether the required parameters are specified. If the check fails, the corresponding error message is returned. If the check succeeds, the DryRunOperation error code is returned.
 	//
-	// - false (default): sends a Normal request. After the check passes, a 2XX HTTP status code is returned and the filing status is queried.
+	// - false (default): sends a Normal request. After the check succeeds, a 2XX HTTP status code is returned and the filing status is directly queried.
 	//
 	// example:
 	//
@@ -110,9 +110,9 @@ type CloneDisksRequest struct {
 	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Specifies whether the new disk is encrypted. Valid values:
 	//
-	// - true: The disk is encrypted.
+	// - true: The new disk is encrypted.
 	//
-	// - false: The disk is not encrypted.
+	// - false: The new disk is not encrypted.
 	//
 	// Default value: false.
 	//
@@ -130,7 +130,7 @@ type CloneDisksRequest struct {
 	//
 	// - Disabled: disables the multi-attach attribute.
 	//
-	// - Enabled: enables the multi-attach attribute. Only enterprise SSDs support settings this to `Enabled`.
+	// - Enabled: enables the multi-attach attribute. Only enterprise SSDs (ESSDs) support this parameter set to `Enabled`.
 	//
 	// This parameter is required.
 	//
@@ -139,15 +139,15 @@ type CloneDisksRequest struct {
 	// Disabled
 	MultiAttach *string `json:"MultiAttach,omitempty" xml:"MultiAttach,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The performance level of the enterprise SSD. Settings this parameter when you create an enterprise SSD. Valid values:
+	// The performance level (PL) of the new standard SSD. Valid values:
 	//
-	// - PL0: a single disk can deliver up to 10,000 random read/write IOPS.
+	// - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
 	//
-	// - PL1: a single disk can deliver up to 50,000 random read/write IOPS.
+	// - PL1: A single disk can deliver up to 50,000 random read/write IOPS.
 	//
-	// - PL2: a single disk can deliver up to 100,000 random read/write IOPS.
+	// - PL2: A single disk can deliver up to 100,000 random read/write IOPS.
 	//
-	// - PL3: a single disk can deliver up to 1,000,000 random read/write IOPS.
+	// - PL3: A single disk can deliver up to 1,000,000 random read/write IOPS.
 	//
 	// > If DiskCategory is set to cloud_essd, PerformanceLevel is required.
 	//
@@ -159,7 +159,7 @@ type CloneDisksRequest struct {
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
 	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values:
 	//
-	// - Capacity (GiB) <= 3: provisioned performance is not supported.
+	// - Capacity (GiB) <= 3: Provisioned performance is not supported.
 	//
 	// - Capacity (GiB) >= 4: [0, min{(1,000 IOPS/GiB × Capacity - Baseline IOPS), 50,000}]
 	//
@@ -186,9 +186,9 @@ type CloneDisksRequest struct {
 	// rg-bp199lyny9b3****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The capacity of the new disk. Unit: GiB. You must specify this parameter. Valid values:
+	// The capacity of the new disk. Unit: GiB. You must specify a value for this parameter. Valid values:
 	//
-	// - cloud_essd: The valid values depend on the performance level.
+	// - cloud_essd: The valid values vary based on the performance level.
 	//
 	//     - PL0: 1 to 65,536.
 	//
@@ -475,7 +475,7 @@ func (s *CloneDisksRequestArn) Validate() error {
 }
 
 type CloneDisksRequestTag struct {
-	// The tag key of the disk. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+	// The tag key of the disk. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
 	//
 	// example:
 	//

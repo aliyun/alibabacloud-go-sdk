@@ -88,13 +88,13 @@ type ReplaceSystemDiskRequest struct {
 	//
 	// Default value: false.
 	//
-	// 	Notice: When you use a shared encrypted image to create a disk from an encrypted snapshot, you must set the request parameter Encrypted to true to ensure that the created disk uses the key of the image recipient.
+	// 	Notice: When you use a shared encrypted image to create a disk from an encrypted snapshot, you must set the request parameter Encrypted to true to ensure that the disk uses the key of the image recipient.
 	//
 	// example:
 	//
 	// false
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The ID of the image to use to reset the system. This parameter is required.
+	// The ID of the image to use when you reset the system. This parameter is required.
 	//
 	// example:
 	//
@@ -148,7 +148,7 @@ type ReplaceSystemDiskRequest struct {
 	//
 	// Default value: false.
 	//
-	// > When you use this parameter, the Password parameter must be empty. Make sure that the image you use has a preset password.
+	// > If you use this parameter, the Password parameter must be empty. Make sure that the image has a preset password.
 	//
 	// example:
 	//
@@ -164,9 +164,9 @@ type ReplaceSystemDiskRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to use the free Security Center service after the system disk is replaced. Valid values:
 	//
-	// - Active: Security Center is enabled. This value is valid only for public images.
+	// - Active: The Security Center service is used. This value is supported only for public images.
 	//
-	// - Deactive: Security Center is not enabled. This value is valid for all images.
+	// - Deactive: The Security Center service is not used. This value is supported for all images.
 	//
 	// Default value: Deactive.
 	//
@@ -393,25 +393,23 @@ func (s *ReplaceSystemDiskRequest) Validate() error {
 type ReplaceSystemDiskRequestSystemDisk struct {
 	// The capacity of the new system disk. Unit: GiB. Valid values:
 	//
-	// - Basic disk: Max{20, size of the image specified by the parameter ImageId} to 500.
+	// - Basic disk: Max{20, size of the image specified by the ImageId parameter} to 500.
 	//
-	// - Enterprise SSD:
+	// - Enterprise SSD (ESSD):
 	//
-	//   - PL0: Max{1, size of the image specified by the parameter ImageId} to 2048.
+	//   - PL0: Max{1, size of the image specified by the ImageId parameter} to 2048.
 	//
-	//   - PL1: Max{20, size of the image specified by the parameter ImageId} to 2048.
+	//   - PL1: Max{20, size of the image specified by the ImageId parameter} to 2048.
 	//
-	//   - PL2: Max{461, size of the image specified by the parameter ImageId} to 2048.
+	//   - PL2: Max{461, size of the image specified by the ImageId parameter} to 2048.
 	//
-	//   - PL3: Max{1261, size of the image specified by the parameter ImageId} to 2048.
+	//   - PL3: Max{1261, size of the image specified by the ImageId parameter} to 2048.
 	//
-	// - ESSD AutoPL disk: Max{1, size of the image specified by the parameter ImageId} to 2048.
+	// - ESSD AutoPL disk: Max{1, size of the image specified by the ImageId parameter} to 2048.
 	//
-	// - Standard SSD: Max{20, size of the image specified by the parameter ImageId} to 2048.
+	// - Standard SSD and other disk types: Max{20, size of the image specified by the ImageId parameter} to 2048.
 	//
-	// - Other disk types: Max{20, size of the image specified by the parameter ImageId} to 2048.
-	//
-	// Default value: Max{40, size of the image specified by the parameter ImageId}.
+	// Default value: Max{40, size of the image specified by the ImageId parameter}.
 	//
 	// > You are charged additional fees for the disk capacity that exceeds `Max{20, capacity of the original system disk}`.
 	//

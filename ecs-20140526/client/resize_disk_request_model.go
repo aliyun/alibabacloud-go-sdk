@@ -42,7 +42,7 @@ type ResizeDiskRequest struct {
 	//
 	// d-bp67acfmxazb4p****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The new disk capacity that you want to expand to. Unit: GiB. Valid values:
+	// The new disk capacity that you want after expansion. Unit: GiB. Valid values:
 	//
 	// - System disk:
 	//
@@ -68,7 +68,7 @@ type ResizeDiskRequest struct {
 	//
 	//     - Standard SSD (cloud_ssd): 20 to 32768.
 	//
-	//     - Enterprise SSD (cloud_essd): The valid values depend on the value of `PerformanceLevel`. You can call [DescribeDisks](https://help.aliyun.com/document_detail/25514.html) to query disk information and then check the valid values based on the `PerformanceLevel` parameter in the response.
+	//     - Enterprise SSD (cloud_essd): The valid values depend on the value of `PerformanceLevel`. You can call [DescribeDisks](https://help.aliyun.com/document_detail/25514.html) to query disk information and check the `PerformanceLevel` parameter in the response.
 	//
 	//         - PL0: 1 to 65536.
 	//
@@ -90,7 +90,7 @@ type ResizeDiskRequest struct {
 	//
 	//   - Elastic ephemeral disk - Premium (elastic_ephemeral_disk_premium): 64 to 8,192.
 	//
-	// >The specified new disk capacity must be greater than the original disk capacity. Otherwise, an error is returned.
+	// >The new disk capacity must be greater than the original disk capacity. Otherwise, an error is returned.
 	//
 	// This parameter is required.
 	//
@@ -108,7 +108,7 @@ type ResizeDiskRequest struct {
 	//
 	//
 	//
-	// - online: online expansion. The expansion takes effect without restarting the instance. Supported disk types include ultra disks, standard SSDs, enterprise SSDs, and elastic ephemeral disks.
+	// - online: online expansion. The expansion takes effect without the need to restart the instance. Supported disk types include ultra disks, standard SSDs, enterprise SSDs, and elastic ephemeral disks.
 	//
 	// example:
 	//

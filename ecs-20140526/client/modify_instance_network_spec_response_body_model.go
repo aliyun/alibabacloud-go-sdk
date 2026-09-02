@@ -16,7 +16,7 @@ type iModifyInstanceNetworkSpecResponseBody interface {
 }
 
 type ModifyInstanceNetworkSpecResponseBody struct {
-	// The order ID. This parameter is returned only when the bandwidth configuration of a subscription (PrePaid) instance is modified.
+	// The order ID. This parameter is returned only when you modify the bandwidth configuration of a subscription (PrePaid) instance.
 	//
 	// example:
 	//

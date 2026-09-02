@@ -76,9 +76,9 @@ type CreateDiskRequest struct {
 	Arn []*CreateDiskRequestArn `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Repeated"`
 	// Specifies whether to enable the performance burst feature. Valid values:
 	//
-	// - true: enables the feature.
+	// - true: enables the performance burst feature.
 	//
-	// - false: does not enable the feature.
+	// - false: does not enable the performance burst feature.
 	//
 	// > This parameter is supported only when `DiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
 	//
@@ -108,7 +108,7 @@ type CreateDiskRequest struct {
 	//
 	// - cloud_ssd: standard SSD.
 	//
-	// - cloud_essd: enterprise SSD.
+	// - cloud_essd: enterprise SSD (ESSD).
 	//
 	// - cloud_auto: ESSD AutoPL disk.
 	//
@@ -126,7 +126,7 @@ type CreateDiskRequest struct {
 	//
 	// cloud_ssd
 	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
-	// The name of the disk. The name must be 2 to 128 characters in length and can contain characters from the Unicode letter category (including English and Chinese characters) and ASCII digits (0-9). The name can contain colons (:), underscores (_), periods (.), or hyphens (-). The name must start with a character from the Unicode letter category.
+	// The name of the disk. The name must be 2 to 128 characters in length and can contain Unicode characters under the letter category (including letters in English and Chinese) and ASCII digits (0-9). The name can contain colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a Unicode character under the letter category.
 	//
 	// Default value: empty.
 	//
@@ -158,7 +158,7 @@ type CreateDiskRequest struct {
 	//
 	// - You cannot specify both ZoneId and InstanceId.
 	//
-	// Default value: empty. A pay-as-you-go disk is created, and the region of the disk is determined by RegionId and ZoneId.
+	// Default value: empty. This indicates that a pay-as-you-go disk is created. The region of the disk is determined by RegionId and ZoneId.
 	//
 	// example:
 	//
@@ -166,15 +166,15 @@ type CreateDiskRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the Key Management Service (KMS) key used by the disk.
 	//
-	// > If Encrypted is set to true and KMSKeyId is not specified, the default key is used for encryption, and the KMSKeyId value is returned after the instance is created.
+	// > If Encrypted is set to true and KMSKeyId is not specified, the default key is used for encryption. The KMSKeyId value is returned after the instance is created.
 	//
-	// > - - Disk created from a non-shared encrypted snapshot: The encryption key used by the snapshot is used by default.
+	// > - - If the disk is created from a non-shared encrypted snapshot, the encryption key used by the snapshot is used by default.
 	//
-	// > - - Disk created from a shared encrypted snapshot: The service key is used by default.
+	// > - - If the disk is created from a shared encrypted snapshot, the service key is used by default.
 	//
-	// > - - Disk created in a region where account-level default encryption for block storage is enabled: The specified account-level key is used by default.
+	// > - - If the disk is created in a region where account-level default encryption for block storage is enabled, the specified account-level key is used by default.
 	//
-	// > - - Other cases: The service key is used by default.
+	// > - - In other cases, the service key is used by default.
 	//
 	// example:
 	//
@@ -182,13 +182,13 @@ type CreateDiskRequest struct {
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
 	// Specifies whether to enable the multi-attach attribute. Valid values:
 	//
-	// - Disabled: does not enable the attribute.
+	// - Disabled: disables the multi-attach attribute.
 	//
-	// - Enabled: enables the attribute. Currently, only enterprise SSDs can be set to `Enabled`.
+	// - Enabled: enables the multi-attach attribute. Only enterprise SSDs can be set to `Enabled`.
 	//
 	// Default value: Disabled.
 	//
-	// > Disks with the multi-attach attribute enabled support only the pay-as-you-go billing method. Therefore, when `MultiAttach=Enabled`, you cannot specify the `InstanceId` parameter. You can invoke [AttachDisk](https://help.aliyun.com/document_detail/25515.html) to attach the disk after it is created. Note that a disk with the multi-attach feature enabled can be attached only as a data disk.
+	// > Disks with the multi-attach attribute enabled support only the pay-as-you-go billing method. Therefore, when `MultiAttach=Enabled`, you cannot specify the `InstanceId` parameter. You can call [AttachDisk](https://help.aliyun.com/document_detail/25515.html) to attach the disk after it is created. Note that a disk with the multi-attach feature enabled can be attached only as a data disk.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type CreateDiskRequest struct {
 	MultiAttach  *string `json:"MultiAttach,omitempty" xml:"MultiAttach,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The performance level of the enterprise SSD to create. Settings for the performance level. Valid values:
+	// The performance level of the enterprise SSD. This parameter is available only when you create an ESSD. Valid values:
 	//
 	// - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
 	//
@@ -208,7 +208,7 @@ type CreateDiskRequest struct {
 	//
 	// Default value: PL1.
 	//
-	// For information about how to select an ESSD performance level, see [ESSD disks](https://help.aliyun.com/document_detail/122389.html).
+	// For information about how to select an ESSD performance level, see [Enterprise SSDs](https://help.aliyun.com/document_detail/122389.html).
 	//
 	// example:
 	//
@@ -230,7 +230,7 @@ type CreateDiskRequest struct {
 	//
 	// 40000
 	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The ID of the region in which to create the disk. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -246,7 +246,7 @@ type CreateDiskRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The size of the disk. Unit: GiB. You must specify a value for this parameter. Valid values:
+	// Snapshot size of the disk. Unit: GiB. You must specify a value for this parameter. Valid values:
 	//
 	// -   cloud: 5 to 2,000.
 	//
@@ -254,7 +254,7 @@ type CreateDiskRequest struct {
 	//
 	// -   cloud_ssd: 20 to 32,768.
 	//
-	// -   cloud_essd: The valid value range depends on the value of `PerformanceLevel`.
+	// -   cloud_essd: The valid values depend on the value of `PerformanceLevel`.
 	//
 	//     - PL0: 1 to 65,536.
 	//
@@ -276,9 +276,9 @@ type CreateDiskRequest struct {
 	//
 	// If you specify `SnapshotId`, the `SnapshotId` and `Size` parameters have the following limits:
 	//
-	// - If the snapshot specified by `SnapshotId` is larger than the specified `Size` value, the snapshot size of the created disk equals the size of the specified snapshot.
+	// - If the snapshot specified by `SnapshotId` is larger than the specified `Size` value, snapshot size of the created disk equals snapshot size of the specified snapshot.
 	//
-	// - If the snapshot specified by `SnapshotId` is smaller than the specified `Size` value, the snapshot size of the created disk equals the specified `Size` value.
+	// - If the snapshot specified by `SnapshotId` is smaller than the specified `Size` value, snapshot size of the created disk equals the specified `Size` value.
 	//
 	// example:
 	//
@@ -288,9 +288,9 @@ type CreateDiskRequest struct {
 	//
 	// The `SnapshotId` and `Size` parameters have the following limits:
 	//
-	// - If the snapshot specified by `SnapshotId` is larger than the specified `Size` value, the snapshot size of the created disk equals the size of the specified snapshot.
+	// - If the snapshot specified by `SnapshotId` is larger than the specified `Size` value, snapshot size of the created disk equals snapshot size of the specified snapshot.
 	//
-	// - If the snapshot specified by `SnapshotId` is smaller than the specified `Size` value, the snapshot size of the created disk equals the specified `Size` value.
+	// - If the snapshot specified by `SnapshotId` is smaller than the specified `Size` value, snapshot size of the created disk equals the specified `Size` value.
 	//
 	// - Elastic ephemeral disks cannot be created from snapshots.
 	//
@@ -300,7 +300,7 @@ type CreateDiskRequest struct {
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	// The ID of the dedicated block storage cluster. To create a disk in a specific dedicated block storage cluster, specify this parameter.
 	//
-	// > Storage set parameters (`StorageSetId` and `StorageSetPartitionNumber`) and the dedicated block storage cluster parameter (`StorageClusterId`) are mutually exclusive. If you specify both, the API call fails.
+	// > The storage set parameters (`StorageSetId` and `StorageSetPartitionNumber`) and the dedicated block storage cluster parameter (`StorageClusterId`) are mutually exclusive. If you specify both, the API call fails.
 	//
 	// example:
 	//
@@ -308,13 +308,13 @@ type CreateDiskRequest struct {
 	StorageClusterId *string `json:"StorageClusterId,omitempty" xml:"StorageClusterId,omitempty"`
 	// The ID of the storage set.
 	//
-	// > Storage set parameters (`StorageSetId` and `StorageSetPartitionNumber`) and the dedicated block storage cluster parameter (`StorageClusterId`) are mutually exclusive. If you specify both, the API call fails.
+	// > The storage set parameters (`StorageSetId` and `StorageSetPartitionNumber`) and the dedicated block storage cluster parameter (`StorageClusterId`) are mutually exclusive. If you specify both, the API call fails.
 	//
 	// example:
 	//
 	// ss-bp67acfmxazb4p****
 	StorageSetId *string `json:"StorageSetId,omitempty" xml:"StorageSetId,omitempty"`
-	// The number of partitions in the storage set. Valid values: 2 and greater, up to the privilege quota limit returned by [DescribeAccountAttributes](https://help.aliyun.com/document_detail/73772.html).
+	// The number of partitions in the storage set. Valid values: greater than or equal to 2, up to the privilege quota limit returned by [DescribeAccountAttributes](https://help.aliyun.com/document_detail/73772.html).
 	//
 	// Default value: 2.
 	//
@@ -673,7 +673,7 @@ func (s *CreateDiskRequestArn) Validate() error {
 }
 
 type CreateDiskRequestTag struct {
-	// The tag key of the disk. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag key of the disk. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

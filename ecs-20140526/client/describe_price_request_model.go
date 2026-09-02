@@ -81,7 +81,7 @@ type DescribePriceRequest struct {
 	DataDisk         []*DescribePriceRequestDataDisk       `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
 	SchedulerOptions *DescribePriceRequestSchedulerOptions `json:"SchedulerOptions,omitempty" xml:"SchedulerOptions,omitempty" type:"Struct"`
 	SystemDisk       *DescribePriceRequestSystemDisk       `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	// The number of Elastic Compute Service (ECS) instances that you want to purchase in a batch with a specific configuration. Valid values: 1 to 1000.
+	// The number of Elastic Compute Service (ECS) instances that you want to purchase. You can use this parameter to query the price of batch purchases. Valid values: 1 to 1000.
 	//
 	// Default value: 1.
 	//
@@ -89,7 +89,7 @@ type DescribePriceRequest struct {
 	//
 	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The total number of times that the elasticity assurance can be applied. Valid values: Unlimited. Currently, only the unlimited mode within the service effective period is supported.
+	// The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. Only the unlimited mode within the service effective period is supported.
 	//
 	// Default value: Unlimited.
 	//
@@ -97,7 +97,7 @@ type DescribePriceRequest struct {
 	//
 	// Unlimited
 	AssuranceTimes *string `json:"AssuranceTimes,omitempty" xml:"AssuranceTimes,omitempty"`
-	// The capacity, in GiB.
+	// The capacity. Unit: GiB.
 	//
 	// example:
 	//
@@ -125,9 +125,9 @@ type DescribePriceRequest struct {
 	//
 	// 100
 	InstanceAmount *int32 `json:"InstanceAmount,omitempty" xml:"InstanceAmount,omitempty"`
-	// The total number of vCPUs supported by instances within the elasticity assurance. When you call this operation, the system calculates the number of instances required for the elasticity assurance based on the specified InstanceType (rounded up).
+	// The total number of vCPUs supported by the elasticity assurance. When you call the API, the system calculates the number of instances to be covered by the elasticity assurance based on the specified InstanceType (rounded up).
 	//
-	// > When you call this operation to query the price of an elasticity assurance, you can specify only one of the InstanceCoreCpuCount and InstanceAmount parameters.
+	// > When you call the API to query the price of an elasticity assurance, you can specify only one of the InstanceCoreCpuCount and InstanceAmount parameters.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ type DescribePriceRequest struct {
 	//
 	// ecs.g6.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The instance type. Currently, only a single instance type can be specified for the unlimited elasticity assurance service.
+	// The instance type. Only a single instance type can be specified for the unlimited elasticity assurance.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ type DescribePriceRequest struct {
 	//
 	// PayByTraffic
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	// The maximum outbound public bandwidth, in Mbit/s. Valid values: 0 to 100.
+	// The maximum outbound public bandwidth. Unit: Mbit/s (Megabit per second). Valid values: 0 to 100.
 	//
 	// Default value: 0.
 	//
@@ -205,7 +205,7 @@ type DescribePriceRequest struct {
 	//
 	// cmcc
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The payment type of the reserved instance. Valid values:
+	// The payment option of the reserved instance. Valid values:
 	//
 	// - No Upfront: no upfront.
 	//
@@ -223,23 +223,23 @@ type DescribePriceRequest struct {
 	//
 	// <props="china">
 	//
-	// - When the PriceUnit parameter is set to Month: 1 to 9.
+	// - If the PriceUnit parameter is set to Month: 1 to 9.
 	//
-	// - When the PriceUnit parameter is set to Year: 1 to 5.
+	// - If the PriceUnit parameter is set to Year: 1 to 5.
 	//
-	// - When the PriceUnit parameter is set to Hour: 1.
+	// - If the PriceUnit parameter is set to Hour: 1.
 	//
-	// - When the PriceUnit parameter is set to Week: 1 to 4.
+	// - If the PriceUnit parameter is set to Week: 1 to 4.
 	//
 	//
 	//
 	// <props="intl">
 	//
-	// - When the PriceUnit parameter is set to Month: 1 to 9.
+	// - If the PriceUnit parameter is set to Month: 1 to 9.
 	//
-	// - When the PriceUnit parameter is set to Year: 1 to 5.
+	// - If the PriceUnit parameter is set to Year: 1 to 5.
 	//
-	// - When the PriceUnit parameter is set to Hour: 1.
+	// - If the PriceUnit parameter is set to Hour: 1.
 	//
 	//
 	//
@@ -259,27 +259,27 @@ type DescribePriceRequest struct {
 	//
 	// Linux
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The pricing unit for querying Elastic Compute Service (ECS) prices across different billing cycles. Valid values:
+	// Queries the prices of Elastic Compute Service (ECS) for different billing cycles. Valid values:
 	//
 	// <props="china">
 	//
-	// - Month: monthly pricing unit.
+	// - Month: the monthly price.
 	//
-	// - Year: yearly pricing unit.
+	// - Year: the yearly price.
 	//
-	// - Hour (default): hourly pricing unit.
+	// - Hour (default): the hourly price.
 	//
-	// - Week: weekly pricing unit.
+	// - Week: the weekly price.
 	//
 	//
 	//
 	// <props="intl">
 	//
-	// - Month: monthly pricing unit.
+	// - Month: the monthly price.
 	//
-	// - Year: yearly pricing unit.
+	// - Year: the yearly price.
 	//
-	// - Hour (default): hourly pricing unit.
+	// - Hour (default): the hourly price.
 	//
 	// example:
 	//
@@ -309,19 +309,19 @@ type DescribePriceRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of the resource. Valid values:
 	//
-	// - instance: queries the latest price list of ECS instances. When this parameter is set to `instance`, you must also specify the `InstanceType` parameter.
+	// - instance: queries the most recent price list of ECS instances. If you set this parameter to `instance`, you must also specify the `InstanceType` parameter.
 	//
-	// - disk: queries the latest price list of disks. When this parameter is set to `disk`, you must also specify the `DataDisk.1.Category` and `DataDisk.1.Size` parameters.
+	// - disk: queries the most recent price list of disks. If you set this parameter to `disk`, you must also specify the `DataDisk.1.Category` and `DataDisk.1.Size` parameters.
 	//
-	// - diskperformance: queries the latest price list of provisioned performance for ESSD AutoPL disks. You must also specify the `DataDisk.1.Category` and `DataDisk.1.ProvisionedIops` parameters.
+	// - diskperformance: queries the most recent price list of provisioned performance for ESSD AutoPL disks. You must also specify the `DataDisk.1.Category` and `DataDisk.1.ProvisionedIops` parameters.
 	//
-	// - bandwidth: queries the latest price list of bandwidth.
+	// - bandwidth: queries the most recent price list of bandwidth.
 	//
-	// - ddh: queries the latest price list of dedicated hosts.
+	// - ddh: queries the most recent price list of dedicated hosts.
 	//
-	// - ElasticityAssurance: queries the price of elasticity assurance services. When this parameter is set to `ElasticityAssurance`, you must also specify the `InstanceType` parameter.
+	// - ElasticityAssurance: queries the price of elasticity assurance services. If you set this parameter to `ElasticityAssurance`, you must also specify the `InstanceType` parameter.
 	//
-	// - CapacityReservation: queries the price of capacity reservation services. When this parameter is set to `CapacityReservation`, you must also specify the `InstanceType` parameter.
+	// - CapacityReservation: queries the price of capacity reservation services. If you set this parameter to `CapacityReservation`, you must also specify the `InstanceType` parameter.
 	//
 	// Default value: instance.
 	//
@@ -343,13 +343,13 @@ type DescribePriceRequest struct {
 	//
 	// Zone
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The protection period of the spot instance, in hours. Default value: 1. Valid values:
+	// The protection period of the spot instance. Unit: hours. Default value: 1. Valid values:
 	//
 	// - 1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After 1 hour, the system automatically compares the bid price with the market price and checks the resource inventory to determine whether to retain automatic release the instance.
 	//
 	// - 0: After a spot instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system automatically compares the bid price with the market price and checks the resource inventory to determine whether to retain automatic release the instance.
 	//
-	// Alibaba Cloud sends an ECS system event notification 5 minutes before the instance is released. Spot instances are billed by second. Select an appropriate protection period based on the expected task execution duration.
+	// Alibaba Cloud sends a notification through an ECS system event 5 minutes before the instance is released. Spot instances are billed by second. Select an appropriate protection period based on the expected task execution duration.
 	//
 	// > This parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit or SpotAsPriceGo.
 	//
@@ -357,7 +357,7 @@ type DescribePriceRequest struct {
 	//
 	// 1
 	SpotDuration *int32 `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
-	// The bidding policy for pay-as-you-go instances. Valid values:
+	// The bidding policy for the pay-as-you-go instance. Valid values:
 	//
 	// - NoSpot: a regular pay-as-you-go instance.
 	//
@@ -367,7 +367,7 @@ type DescribePriceRequest struct {
 	//
 	// Default value: NoSpot.
 	//
-	// > This parameter takes effect only when `PriceUnit=Hour` and `Period=1`. Because the default value of `PriceUnit` is `Hour` and the default value of `Period` is `1`, you do not need to set the `PriceUnit` and `Period` parameters when you set this parameter.
+	// > This parameter takes effect only when `PriceUnit=Hour` and `Period=1`. Because the default value of `PriceUnit` is `Hour` and the default value of `Period` is `1`, you do not need to set the `PriceUnit` and `Period` parameters when you specify this parameter.
 	//
 	// example:
 	//
@@ -752,7 +752,7 @@ type DescribePriceRequestDataDisk struct {
 	//
 	// cloud_ssd
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The performance level of data disk N when the disk is an ESSD. This parameter is valid only when `DataDisk.N.Category=cloud_essd`. Valid values:
+	// The performance level of data disk N when the disk is an enterprise SSD (ESSD). This parameter is valid only when `DataDisk.N.Category=cloud_essd`. Valid values:
 	//
 	// - PL0.
 	//
@@ -947,7 +947,7 @@ type DescribePriceRequestSystemDisk struct {
 	//
 	// cloud_ssd
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The performance level of the system disk when the system disk type is enterprise SSD. This parameter takes effect only when `SystemDiskCategory=cloud_essd`. Valid values:
+	// The performance level of the system disk when the system disk type is enterprise SSD. This parameter is valid only when `SystemDiskCategory=cloud_essd`. Valid values:
 	//
 	// PL0.
 	//
@@ -961,7 +961,7 @@ type DescribePriceRequestSystemDisk struct {
 	//
 	// PL1
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The size of the system disk, in GiB. Valid values:
+	// The size of the system disk. Unit: GiB. Valid values:
 	//
 	// - Basic disk: 20 to 500.
 	//
@@ -979,7 +979,7 @@ type DescribePriceRequestSystemDisk struct {
 	//
 	// - Other disk categories: 20 to 2048.
 	//
-	// Default value: max{20, image size corresponding to the ImageId parameter}.
+	// Default value: max{20, image size of the specified ImageId parameter}.
 	//
 	// example:
 	//
@@ -1053,7 +1053,7 @@ type DescribePriceRequestRecurrenceRules struct {
 	//
 	// - If `RecurrenceType` is set to `Weekly`, you can specify multiple values separated by commas (,). The values for Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday are 0, 1, 2, 3, 4, 5, and 6. For example, `1,2` indicates Monday and Tuesday.
 	//
-	// - If `RecurrenceType` is set to `Monthly`, the format is `A-B`. Valid values of A and B: 1 to 31. B must be greater than or equal to A. For example, `1-5` indicates the 1st to 5th day of each month.
+	// - If `RecurrenceType` is set to `Monthly`, the format is `A-B`. Valid values of A and B: 1 to 31. B must be greater than or equal to A. For example, `1-5` indicates the 1st through 5th day of each month.
 	//
 	// > You must specify both `RecurrenceType` and `RecurrenceValue`.
 	//

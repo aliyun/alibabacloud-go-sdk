@@ -36,9 +36,9 @@ type RenewInstanceRequest struct {
 	//
 	// 0c593ea1-3bea-11e9-b96b-88e9fe637760
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The day on which to renew the instance to a [unified expiration date](https://help.aliyun.com/document_detail/63396.html). Valid values: 1 to 28.
+	// Renews the instance to a [unified expiration date](https://help.aliyun.com/document_detail/63396.html). Valid values: 1 to 28.
 	//
-	// To use this parameter, you must first [set a unified expiration date for ECS instances](~~63396#694cb636c0rp6~~). The value of this parameter must match the unified expiration date that you have set. Otherwise, the call fails.
+	// To use this parameter, you must [set a unified expiration date for ECS instances](~~63396#694cb636c0rp6~~). The value of this parameter must match the unified expiration date that you have set. Otherwise, the call fails.
 	//
 	// > You must specify either the renewal period parameters (Period and PeriodUnit) or the unified expiration date parameter (ExpectedRenewDay), but not both.
 	//
@@ -46,7 +46,7 @@ type RenewInstanceRequest struct {
 	//
 	// 5
 	ExpectedRenewDay *int32 `json:"ExpectedRenewDay,omitempty" xml:"ExpectedRenewDay,omitempty"`
-	// The ID of the instance that you want to renew.
+	// The instance ID of the instance that you want to renewal.
 	//
 	// This parameter is required.
 	//
@@ -60,13 +60,13 @@ type RenewInstanceRequest struct {
 	//
 	// <props="china">
 	//
-	// - If you set PeriodUnit to Week, valid values of Period are 1, 2, 3, and 4.
+	// - If PeriodUnit is set to Week, valid values of Period: 1, 2, 3, and 4.
 	//
-	// - If you set PeriodUnit to Month, valid values of Period are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
+	// - If PeriodUnit is set to Month, valid values of Period: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
 	//
 	//
 	//
-	// <props="intl">If you set PeriodUnit to Month, valid values of Period are 1, 2, 3, 4, 5, 6, 7, 8, 9, and 12.
+	// <props="intl">If PeriodUnit is set to Month, valid values of Period: 1, 2, 3, 4, 5, 6, 7, 8, 9, and 12.
 	//
 	// > You must specify either the renewal period parameters (Period and PeriodUnit) or the unified expiration date parameter (ExpectedRenewDay), but not both.
 	//
@@ -74,7 +74,7 @@ type RenewInstanceRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the renewal period. This parameter specifies the unit for the Period parameter. Valid values:
+	// The unit of the renewal period. This parameter specifies the unit of Period. Valid values:
 	//
 	// <props="china">
 	//

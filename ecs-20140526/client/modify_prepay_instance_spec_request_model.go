@@ -47,25 +47,25 @@ type iModifyPrepayInstanceSpecRequest interface {
 
 type ModifyPrepayInstanceSpecRequest struct {
 	SystemDisk *ModifyPrepayInstanceSpecRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	// Specifies whether to automatically complete automatic payment when you upgrade the instance type. Valid values:
+	// Specifies whether to automatically complete the payment when you upgrade the instance type. Valid values:
 	//
-	// - true: Automatic payment is automatically completed.
+	// - true: The payment is automatically completed.
 	//
-	// - false: An order is created but automatic payment is not completed.
+	// - false: An order is created but the payment is not completed.
 	//
 	// Default value: true.
 	//
-	// > - If you set AutoPay to true, make sure that your account has a sufficient payment method balance. Otherwise, an abnormal order is generated, and you can only cancel the order.
+	// > - If automatic payment is enabled, make sure that the balance of your payment method is sufficient. Otherwise, an abnormal order is generated and can only be voided.
 	//
-	// > - If your payment method balance is insufficient, you can set `AutoPay` to `false` to generate an unpaid order. Then, you can logon to the ECS console to pay for the order.
+	// > - If the balance of your payment method is insufficient, set `AutoPay` to `false`. An unpaid order is generated. You can log on to the ECS console to complete the payment.
 	//
-	// > - When `OperatorType` is set to `downgrade`, the `AutoPay` parameter is ignored.
+	// > - If `OperatorType` is set to `downgrade`, the `AutoPay` parameter is ignored.
 	//
 	// example:
 	//
 	// true
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
@@ -87,7 +87,7 @@ type ModifyPrepayInstanceSpecRequest struct {
 	//
 	// i-bp67acfmxazb4ph****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The target instance type for the Upgrade/Downgrade. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html) or invoke [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html).
+	// The target instance type to which you want to perform the Upgrade/Downgrade. For valid values, see [Instance family](https://help.aliyun.com/document_detail/25378.html) or invoke [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html).
 	//
 	// This parameter is required.
 	//
@@ -103,9 +103,9 @@ type ModifyPrepayInstanceSpecRequest struct {
 	//
 	// Default value: false.
 	//
-	// When `MigrateAcrossZone` is set to `true`, take note of the following items after you upgrade the Elastic Compute Service instance based on the response:
+	// If you set the `MigrateAcrossZone` parameter to `true` and upgrade the Elastic Compute Service instance based on the response, note the following:
 	//
-	// VPC-type instances: For [retired instance types](https://help.aliyun.com/document_detail/55263.html), when a non-I/O optimized instance is changed to an I/O optimized instance, the disk device names and software authorization codes of the server change. For Linux instances, basic disks (cloud) are identified as xvda or xvdb. Ultra disks (cloud_efficiency) and standard SSDs (cloud_ssd) are identified as vda or vdb. This parameter is used for optimization of cross-cluster migration.
+	// VPC-type instances: For [retired instance types](https://help.aliyun.com/document_detail/55263.html), when a non-I/O optimized instance is changed to an I/O optimized instance, the disk device names and software authorization codes of the server change. For Linux instances, basic disks (cloud) are identified as xvda or xvdb. Ultra disks (cloud_efficiency) and standard SSDs (cloud_ssd) are identified as vda or vdb.
 	//
 	// example:
 	//
@@ -119,11 +119,11 @@ type ModifyPrepayInstanceSpecRequest struct {
 	ModifyMode *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
 	// The type of the operation. Valid values:
 	//
-	// > This parameter is optional. The system can automatically determine whether the operation is an upgrade or a downgrade. If you upload this parameter, follow the rules below.
+	// > This parameter is optional. The system can automatically determine whether the operation is an upgrade or a downgrade. If you specify this parameter, follow the rules below.
 	//
-	// - upgrade: upgrades the instance type. Make sure that your account has a sufficient payment method balance.
+	// - upgrade: upgrades the instance type. Make sure that the balance of your payment method is sufficient.
 	//
-	// - downgrade: downgrades the instance type. When the instance type specified by `InstanceType` is lower than the current instance type, set `OperatorType` to `downgrade`.
+	// - downgrade: downgrades the instance type. Set `OperatorType` to `downgrade` when the instance type specified by `InstanceType` is lower than the current instance type.
 	//
 	// > For precautions about upgrading or downgrading instance types, see the operation description section above.
 	//
@@ -139,7 +139,7 @@ type ModifyPrepayInstanceSpecRequest struct {
 	//
 	// 2018-01-01T12:05Z
 	RebootTime *string `json:"RebootTime,omitempty" xml:"RebootTime,omitempty"`
-	// Specifies whether to immediately restart the instance after the instance type is changed. Valid values:
+	// Specifies whether to immediately restart the instance after the instance type change is complete. Valid values:
 	//
 	// - true: The instance is immediately restarted.
 	//
@@ -351,7 +351,7 @@ type ModifyPrepayInstanceSpecRequestSystemDisk struct {
 	//
 	// - cloud_ssd: standard SSD.
 	//
-	// > This parameter is valid only when you upgrade from a [retired instance type](https://help.aliyun.com/document_detail/55263.html) to a [currently available instance family](https://help.aliyun.com/document_detail/25378.html) and change a non-I/O optimized instance to an I/O optimized instance.
+	// > This parameter is valid only when you Increase Quota from a [retired instance type](https://help.aliyun.com/document_detail/55263.html) to a [normal instance family](https://help.aliyun.com/document_detail/25378.html) and upgrade a non-I/O optimized instance to an I/O optimized instance.
 	//
 	// example:
 	//

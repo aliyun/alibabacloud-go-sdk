@@ -25,7 +25,7 @@ type iDescribeDedicatedHostsResponseBody interface {
 
 type DescribeDedicatedHostsResponseBody struct {
 	DedicatedHosts *DescribeDedicatedHostsResponseBodyDedicatedHosts `json:"DedicatedHosts,omitempty" xml:"DedicatedHosts,omitempty" type:"Struct"`
-	// The paging token returned in this call. When you use MaxResults and NextToken for paging query, an empty value indicates that no more data is available.
+	// The query token returned by this call. If this value is empty when you use MaxResults and NextToken for paging, no more data is returned.
 	//
 	// example:
 	//
@@ -887,6 +887,7 @@ func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostCapacitySo
 
 type DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostHostDetailInfo struct {
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	VgpuVersion  *string `json:"VgpuVersion,omitempty" xml:"VgpuVersion,omitempty"`
 }
 
 func (s DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostHostDetailInfo) String() string {
@@ -901,8 +902,17 @@ func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostHostDetail
 	return s.SerialNumber
 }
 
+func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostHostDetailInfo) GetVgpuVersion() *string {
+	return s.VgpuVersion
+}
+
 func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostHostDetailInfo) SetSerialNumber(v string) *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostHostDetailInfo {
 	s.SerialNumber = &v
+	return s
+}
+
+func (s *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostHostDetailInfo) SetVgpuVersion(v string) *DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHostHostDetailInfo {
+	s.VgpuVersion = &v
 	return s
 }
 

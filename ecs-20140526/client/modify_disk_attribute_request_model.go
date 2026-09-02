@@ -44,7 +44,7 @@ type ModifyDiskAttributeRequest struct {
 	//
 	// - false: Disabled.
 	//
-	// > If you specify this parameter for a disk that does not support the burst feature, an error is returned.
+	// > An error is returned if you specify any value for a disk that does not support the burst feature.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ type ModifyDiskAttributeRequest struct {
 	//
 	// false
 	DeleteAutoSnapshot *bool `json:"DeleteAutoSnapshot,omitempty" xml:"DeleteAutoSnapshot,omitempty"`
-	// Specifies whether to release the disk along with the instance. Default value: null, which indicates that the current value remains unchanged.
+	// Specifies whether to release the disk when the associated instance is released. Default value: null, which indicates that the current value remains unchanged.
 	//
 	// <props="china">Disks that have the multi-attach feature enabled do not support this parameter.
 	//
-	// Setting `DeleteWithInstance` to `false` returns an error in the following cases:
+	// An error is returned if you set `DeleteWithInstance` to `false` in the following cases:
 	//
 	//
 	//
-	// - The disk category is local disk (ephemeral).
+	// - The category of the disk is local disk (ephemeral).
 	//
-	// - The disk category is basic disk (cloud) and the disk is not detachable (Portable=false).
+	// - The category of the disk is basic disk (cloud) and the disk is not detachable (Portable=false).
 	//
-	// 	Warning: If you set DeleteWithInstance to false, when the ECS instance to which the disk is attached is security-locked and the OperationLocks parameter contains "LockReason" : "security", the DeleteWithInstance attribute is ignored and the disk is released along with the instance.
+	// 	Warning: If you set DeleteWithInstance to false and the ECS instance to which the disk is attached is security-locked with "LockReason" : "security" in OperationLocks, the DeleteWithInstance setting is ignored and the disk is released together with the instance.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type ModifyDiskAttributeRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the disk whose attributes you want to modify.
 	//
-	// > The `DiskId` and `DiskIds.N` parameters cannot be specified at the same time. Specify one of them as needed.
+	// > The DiskId and DiskIds.N parameters cannot be specified at the same time. Specify one of them as needed.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type ModifyDiskAttributeRequest struct {
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 	// The IDs of the disks whose attributes you want to modify. Valid values of N: 0 to 100.
 	//
-	// > The `DiskId` and `DiskIds.N` parameters cannot be specified at the same time. Specify one of them as needed.
+	// > The DiskId and DiskIds.N parameters cannot be specified at the same time. Specify one of them as needed.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type ModifyDiskAttributeRequest struct {
 	//
 	// Default value: null, which indicates that the current value remains unchanged.
 	//
-	// > This parameter is deprecated. The automatic snapshot policy is enabled by default for disks after creation. You only need to associate an automatic snapshot policy with the disk.
+	// > **[Deprecated]*	- This parameter is deprecated. The automatic snapshot policy feature is enabled by default for disks after they are created. You only need to associate an automatic snapshot policy with the disk.
 	//
 	// example:
 	//
