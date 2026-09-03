@@ -22,7 +22,7 @@ type iImageTranslationStandardResponseBody interface {
 }
 
 type ImageTranslationStandardResponseBody struct {
-	// The response code. A value of 200 indicates a successful call. For other response codes, refer to the error code information.
+	// The response code. 200 indicates success. For other response codes, refer to the error code information.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ImageTranslationStandardResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The translation result data, including the translated image URL and usage information.
 	Data *ImageTranslationStandardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. "Success" is returned for successful calls, and a specific error message is returned for failed calls.
+	// The error message. "Success" is returned for a successful call. A specific error message is returned for a failed call.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ImageTranslationStandardResponseBody struct {
 	//
 	// 1CEC4D94-905A-1ED1-A7B4-1BFEFFB3D850
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
+	// Indicates whether the call is successful. true indicates success. false indicates failure.
 	//
 	// example:
 	//

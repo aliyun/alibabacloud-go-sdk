@@ -30,13 +30,13 @@ type ImageTranslationProResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The translation result data. ResultList contains the URL of the translation result. EditInfo in GenFiles contains the recognized text information.
 	Data *ImageTranslationProResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. "Success" is returned for a successful call. A specific error message is returned for a failed call, such as "The content contains sensitive data. Try other input."
+	// The error message. Returns "Success" for a successful call. Returns a specific error message for an exception, such as "The content contains sensitive data. Try other input."
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, which uniquely identifies the request.
+	// The request ID. Used to uniquely identify a request.
 	//
 	// example:
 	//
@@ -459,7 +459,7 @@ type ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreas struct {
 	//
 	// example:
 	//
-	// 萌趣造型·清脆响铃
+	// Cute Design · Crisp Bell
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The font size.
 	//
@@ -608,7 +608,7 @@ type ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTexts struct {
 	LineCount *int32 `json:"LineCount,omitempty" xml:"LineCount,omitempty"`
 	// The coordinates of the text box area.
 	TextRect *ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTextsTextRect `json:"TextRect,omitempty" xml:"TextRect,omitempty" type:"Struct"`
-	// Indicates whether the TextItem is valid. The item is invalid if this value does not exist or is false.
+	// Indicates whether the TextItem is valid. The item is invalid if this value does not exist or is set to false.
 	//
 	// example:
 	//
@@ -966,7 +966,7 @@ func (s *ImageTranslationProResponseBodyDataGenFilesResultList) Validate() error
 }
 
 type ImageTranslationProResponseBodyDataResultList struct {
-	// The URL of the translated result image.
+	// The URL of the image translation result image.
 	//
 	// example:
 	//

@@ -38,13 +38,13 @@ type DocumentTranslateResponseBody struct {
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The unique request identity, used for troubleshooting and tracing.
+	// The unique identity of this request, used for troubleshooting and Tracing Analysis.
 	//
 	// example:
 	//
 	// 39E8A74B-F99E-1195-A5FF-3ECC5F94F304
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
+	// Indicates whether the call is successful. Valid values: true: The call is successful. false: The call failed.
 	//
 	// example:
 	//

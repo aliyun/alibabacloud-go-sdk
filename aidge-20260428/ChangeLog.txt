@@ -1,3 +1,7 @@
+2026-09-03 Version: v5.3.0
+- Support API VirtualTryOn.
+
+
 2026-09-02 Version: v5.2.0
 - Support API EcomVideoRecreation.
 
