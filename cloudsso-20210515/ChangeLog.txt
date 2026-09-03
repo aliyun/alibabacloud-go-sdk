@@ -1,3 +1,8 @@
+2026-09-03 Version: v1.7.0
+- Support API GetAttributePassingSetting.
+- Support API UpdateAttributePassingSetting.
+
+
 2026-08-25 Version: v1.6.3
 - Update API CreateAccessAssignment: add request parameters OriginTargetId.
 - Update API CreateAccessAssignment: add response parameters Body.Task.OriginTargetId.

@@ -25,14 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-shanghai":    dara.String("cloudsso.cn-shanghai.aliyuncs.com"),
-		"cn-hongkong":    dara.String("cloudsso.cn-hongkong.aliyuncs.com"),
-		"ap-northeast-2": dara.String("cloudsso.ap-northeast-2.aliyuncs.com"),
-		"ap-southeast-1": dara.String("cloudsso.ap-southeast-1.aliyuncs.com"),
-		"us-west-1":      dara.String("cloudsso.us-west-1.aliyuncs.com"),
-		"eu-central-1":   dara.String("cloudsso.eu-central-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -2219,6 +2211,76 @@ func (client *Client) GetAccessConfiguration(request *GetAccessConfigurationRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetAccessConfigurationResponse{}
 	_body, _err := client.GetAccessConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the attribute passing settings of a specified directory to retrieve the current configuration of the SourceIdentity pass-through mode.
+//
+// Description:
+//
+// You must have the cloudsso:GetAttributePassingSetting permission to call this operation. If the directory is not explicitly configured, SourceIdentityPassing returns Disabled by default.
+//
+// @param request - GetAttributePassingSettingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAttributePassingSettingResponse
+func (client *Client) GetAttributePassingSettingWithOptions(request *GetAttributePassingSettingRequest, runtime *dara.RuntimeOptions) (_result *GetAttributePassingSettingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DirectoryId) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAttributePassingSetting"),
+		Version:     dara.String("2021-05-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAttributePassingSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the attribute passing settings of a specified directory to retrieve the current configuration of the SourceIdentity pass-through mode.
+//
+// Description:
+//
+// You must have the cloudsso:GetAttributePassingSetting permission to call this operation. If the directory is not explicitly configured, SourceIdentityPassing returns Disabled by default.
+//
+// @param request - GetAttributePassingSettingRequest
+//
+// @return GetAttributePassingSettingResponse
+func (client *Client) GetAttributePassingSetting(request *GetAttributePassingSettingRequest) (_result *GetAttributePassingSettingResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAttributePassingSettingResponse{}
+	_body, _err := client.GetAttributePassingSettingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6005,6 +6067,80 @@ func (client *Client) UpdateAccessConfiguration(request *UpdateAccessConfigurati
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpdateAccessConfigurationResponse{}
 	_body, _err := client.UpdateAccessConfigurationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the attribute passing settings for a specified directory, allowing you to set the SourceIdentity pass-through mode to IdP, UserName, or Disabled.
+//
+// Description:
+//
+// You must have the cloudsso:UpdateAttributePassingSetting permission to call this operation. If the SourceIdentityPassing request parameter is not specified, the existing value is retained. If an invalid enum value is specified, the InvalidParameter.SourceIdentityPassing error is returned.
+//
+// @param request - UpdateAttributePassingSettingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAttributePassingSettingResponse
+func (client *Client) UpdateAttributePassingSettingWithOptions(request *UpdateAttributePassingSettingRequest, runtime *dara.RuntimeOptions) (_result *UpdateAttributePassingSettingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DirectoryId) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.SourceIdentityPassing) {
+		query["SourceIdentityPassing"] = request.SourceIdentityPassing
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAttributePassingSetting"),
+		Version:     dara.String("2021-05-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAttributePassingSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the attribute passing settings for a specified directory, allowing you to set the SourceIdentity pass-through mode to IdP, UserName, or Disabled.
+//
+// Description:
+//
+// You must have the cloudsso:UpdateAttributePassingSetting permission to call this operation. If the SourceIdentityPassing request parameter is not specified, the existing value is retained. If an invalid enum value is specified, the InvalidParameter.SourceIdentityPassing error is returned.
+//
+// @param request - UpdateAttributePassingSettingRequest
+//
+// @return UpdateAttributePassingSettingResponse
+func (client *Client) UpdateAttributePassingSetting(request *UpdateAttributePassingSettingRequest) (_result *UpdateAttributePassingSettingResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpdateAttributePassingSettingResponse{}
+	_body, _err := client.UpdateAttributePassingSettingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

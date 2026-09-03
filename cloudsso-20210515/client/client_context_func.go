@@ -1465,6 +1465,54 @@ func (client *Client) GetAccessConfigurationWithContext(ctx context.Context, req
 
 // Summary:
 //
+// Queries the attribute passing settings of a specified directory to retrieve the current configuration of the SourceIdentity pass-through mode.
+//
+// Description:
+//
+// You must have the cloudsso:GetAttributePassingSetting permission to call this operation. If the directory is not explicitly configured, SourceIdentityPassing returns Disabled by default.
+//
+// @param request - GetAttributePassingSettingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAttributePassingSettingResponse
+func (client *Client) GetAttributePassingSettingWithContext(ctx context.Context, request *GetAttributePassingSettingRequest, runtime *dara.RuntimeOptions) (_result *GetAttributePassingSettingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DirectoryId) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAttributePassingSetting"),
+		Version:     dara.String("2021-05-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAttributePassingSettingResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries information about a directory.
 //
 // Description:
@@ -4123,6 +4171,58 @@ func (client *Client) UpdateAccessConfigurationWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAccessConfigurationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the attribute passing settings for a specified directory, allowing you to set the SourceIdentity pass-through mode to IdP, UserName, or Disabled.
+//
+// Description:
+//
+// You must have the cloudsso:UpdateAttributePassingSetting permission to call this operation. If the SourceIdentityPassing request parameter is not specified, the existing value is retained. If an invalid enum value is specified, the InvalidParameter.SourceIdentityPassing error is returned.
+//
+// @param request - UpdateAttributePassingSettingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAttributePassingSettingResponse
+func (client *Client) UpdateAttributePassingSettingWithContext(ctx context.Context, request *UpdateAttributePassingSettingRequest, runtime *dara.RuntimeOptions) (_result *UpdateAttributePassingSettingResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DirectoryId) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.SourceIdentityPassing) {
+		query["SourceIdentityPassing"] = request.SourceIdentityPassing
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateAttributePassingSetting"),
+		Version:     dara.String("2021-05-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateAttributePassingSettingResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
