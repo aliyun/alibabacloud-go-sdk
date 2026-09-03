@@ -2939,7 +2939,7 @@ func (client *Client) CreateAttestorWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Creates an anti-ransomware policy for servers.
+// Creates an anti-ransomware policy for server protection.
 //
 // @param tmpReq - CreateBackupPolicyRequest
 //
@@ -2974,6 +2974,14 @@ func (client *Client) CreateBackupPolicyWithContext(ctx context.Context, tmpReq 
 
 	if !dara.IsNil(request.PolicyVersion) {
 		query["PolicyVersion"] = request.PolicyVersion
+	}
+
+	if !dara.IsNil(request.SelectType) {
+		query["SelectType"] = request.SelectType
+	}
+
+	if !dara.IsNil(request.ServerType) {
+		query["ServerType"] = request.ServerType
 	}
 
 	if !dara.IsNil(request.UuidList) {
@@ -10407,7 +10415,7 @@ func (client *Client) DescribeBackupMachineStatusWithContext(ctx context.Context
 
 // Summary:
 //
-// Query anti-ransomware protection policies.
+// Queries anti-ransomware mitigation policies.
 //
 // @param request - DescribeBackupPoliciesRequest
 //
@@ -23555,7 +23563,7 @@ func (client *Client) DescribeUserSettingWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询 UUID 维度的漏洞数量统计
+// Queries vulnerability count statistics by UUID.
 //
 // @param request - DescribeUuidVulNumClassifyStatisticRequest
 //
@@ -40290,7 +40298,7 @@ func (client *Client) ModifyAutoDelConfigWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Modifies an anti-ransomware mitigation policy.
+// Modifies an anti-ransomware policy.
 //
 // @param tmpReq - ModifyBackupPolicyRequest
 //
@@ -40329,6 +40337,14 @@ func (client *Client) ModifyBackupPolicyWithContext(ctx context.Context, tmpReq 
 
 	if !dara.IsNil(request.PolicyVersion) {
 		query["PolicyVersion"] = request.PolicyVersion
+	}
+
+	if !dara.IsNil(request.SelectType) {
+		query["SelectType"] = request.SelectType
+	}
+
+	if !dara.IsNil(request.ServerType) {
+		query["ServerType"] = request.ServerType
 	}
 
 	if !dara.IsNil(request.UuidList) {

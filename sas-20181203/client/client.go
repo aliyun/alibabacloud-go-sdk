@@ -3950,7 +3950,7 @@ func (client *Client) CreateAttestor(request *CreateAttestorRequest) (_result *C
 
 // Summary:
 //
-// Creates an anti-ransomware policy for servers.
+// Creates an anti-ransomware policy for server protection.
 //
 // @param tmpReq - CreateBackupPolicyRequest
 //
@@ -3987,6 +3987,14 @@ func (client *Client) CreateBackupPolicyWithOptions(tmpReq *CreateBackupPolicyRe
 		query["PolicyVersion"] = request.PolicyVersion
 	}
 
+	if !dara.IsNil(request.SelectType) {
+		query["SelectType"] = request.SelectType
+	}
+
+	if !dara.IsNil(request.ServerType) {
+		query["ServerType"] = request.ServerType
+	}
+
 	if !dara.IsNil(request.UuidList) {
 		query["UuidList"] = request.UuidList
 	}
@@ -4016,7 +4024,7 @@ func (client *Client) CreateBackupPolicyWithOptions(tmpReq *CreateBackupPolicyRe
 
 // Summary:
 //
-// Creates an anti-ransomware policy for servers.
+// Creates an anti-ransomware policy for server protection.
 //
 // @param request - CreateBackupPolicyRequest
 //
@@ -14112,7 +14120,7 @@ func (client *Client) DescribeBackupMachineStatus(request *DescribeBackupMachine
 
 // Summary:
 //
-// Query anti-ransomware protection policies.
+// Queries anti-ransomware mitigation policies.
 //
 // @param request - DescribeBackupPoliciesRequest
 //
@@ -14172,7 +14180,7 @@ func (client *Client) DescribeBackupPoliciesWithOptions(request *DescribeBackupP
 
 // Summary:
 //
-// Query anti-ransomware protection policies.
+// Queries anti-ransomware mitigation policies.
 //
 // @param request - DescribeBackupPoliciesRequest
 //
@@ -32606,7 +32614,7 @@ func (client *Client) DescribeUserSetting(request *DescribeUserSettingRequest) (
 
 // Summary:
 //
-// 查询 UUID 维度的漏洞数量统计
+// Queries vulnerability count statistics by UUID.
 //
 // @param request - DescribeUuidVulNumClassifyStatisticRequest
 //
@@ -32654,7 +32662,7 @@ func (client *Client) DescribeUuidVulNumClassifyStatisticWithOptions(request *De
 
 // Summary:
 //
-// 查询 UUID 维度的漏洞数量统计
+// Queries vulnerability count statistics by UUID.
 //
 // @param request - DescribeUuidVulNumClassifyStatisticRequest
 //
@@ -56656,7 +56664,7 @@ func (client *Client) ModifyAutoDelConfig(request *ModifyAutoDelConfigRequest) (
 
 // Summary:
 //
-// Modifies an anti-ransomware mitigation policy.
+// Modifies an anti-ransomware policy.
 //
 // @param tmpReq - ModifyBackupPolicyRequest
 //
@@ -56697,6 +56705,14 @@ func (client *Client) ModifyBackupPolicyWithOptions(tmpReq *ModifyBackupPolicyRe
 		query["PolicyVersion"] = request.PolicyVersion
 	}
 
+	if !dara.IsNil(request.SelectType) {
+		query["SelectType"] = request.SelectType
+	}
+
+	if !dara.IsNil(request.ServerType) {
+		query["ServerType"] = request.ServerType
+	}
+
 	if !dara.IsNil(request.UuidList) {
 		query["UuidList"] = request.UuidList
 	}
@@ -56726,7 +56742,7 @@ func (client *Client) ModifyBackupPolicyWithOptions(tmpReq *ModifyBackupPolicyRe
 
 // Summary:
 //
-// Modifies an anti-ransomware mitigation policy.
+// Modifies an anti-ransomware policy.
 //
 // @param request - ModifyBackupPolicyRequest
 //

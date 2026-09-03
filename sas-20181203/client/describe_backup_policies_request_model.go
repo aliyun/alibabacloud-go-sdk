@@ -22,7 +22,7 @@ type iDescribeBackupPoliciesRequest interface {
 }
 
 type DescribeBackupPoliciesRequest struct {
-	// The page number from which to start displaying the returned results. Default value: 1, which indicates that the display starts from page 1.
+	// The page number of the first page to return. Default value: 1, which indicates that results are returned starting from page 1.
 	//
 	// This parameter is required.
 	//
@@ -30,19 +30,19 @@ type DescribeBackupPoliciesRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The identification information of the server protected by the anti-ransomware policy to query. You can enter the IP address or instance ID of the server.
+	// The identification information of the server that is protected by the anti-ransomware policy you want to query. You can enter the IP address or instance ID of the server.
 	//
 	// example:
 	//
 	// 1.1.XX.XX
 	MachineRemark *string `json:"MachineRemark,omitempty" xml:"MachineRemark,omitempty"`
-	// The name of the anti-ransomware protection policy to query.
+	// The name of the anti-ransomware mitigation policy that you want to query.
 	//
 	// example:
 	//
 	// SecurityStrategy-20200303
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of backup policies on each page during paginated queries. Default value: 10, which indicates that each page contains 10 protection policies.
+	// The number of backup policies per page in a paged query. Default value: 10, which indicates that each page contains 10 mitigation policies.
 	//
 	// This parameter is required.
 	//
@@ -50,11 +50,11 @@ type DescribeBackupPoliciesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The status of the anti-ransomware protection policy.
+	// The status of the anti-ransomware mitigation policy.
 	//
 	// - **enabled**: The policy is manually enabled.
 	//
-	// - **disabled**: The policy is manually disabled. After the policy is disabled, running backup tasks will stop.
+	// - **disabled**: The policy is manually disabled. After the policy is disabled, running backup nodes are stopped.
 	//
 	// - **closed**: The anti-ransomware capacity is exceeded, and the system disables the policy.
 	//

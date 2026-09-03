@@ -16,7 +16,10 @@ type iDescribeUuidVulNumClassifyStatisticResponseBody interface {
 }
 
 type DescribeUuidVulNumClassifyStatisticResponseBody struct {
+	// The vulnerability statistics returned by asset unique identifier. The key of the map is the host UUID or image ID specified in the request.
 	Data map[string]*DataValue `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FDF7B8D9-8493-4B90-8D13-E0C1FFCE5F97

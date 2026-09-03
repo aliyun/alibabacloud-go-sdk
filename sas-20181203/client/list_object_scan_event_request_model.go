@@ -44,10 +44,15 @@ type iListObjectScanEventRequest interface {
 }
 
 type ListObjectScanEventRequest struct {
+	// Specifies whether the alert was detected by AI. Valid values:
+	//
+	// - true: The alert was detected by AI.
+	//
+	// - false: The alert was not detected by AI.
 	AiDetect *bool `json:"AiDetect,omitempty" xml:"AiDetect,omitempty"`
 	// The batch operation type. Valid values:
 	//
-	// - **sha256**: same file content
+	// - **sha256**: same file content.
 	//
 	// - **eventName**: same alerting type.
 	//
@@ -61,7 +66,7 @@ type ListObjectScanEventRequest struct {
 	//
 	// ltrbuck****
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The page number of the current page when you perform a paged query.
+	// The page number of the current page in a paging query.
 	//
 	// This parameter is required.
 	//
@@ -81,9 +86,9 @@ type ListObjectScanEventRequest struct {
 	//
 	// WebShell
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The language type for the request and response messages. Default value: **zh**. Valid values:
+	// The language of the request and response. Default value: **zh**. Valid values:
 	//
-	// - **zh**: Chinese
+	// - **zh**: Chinese.
 	//
 	// - **en**: English.
 	//
@@ -103,7 +108,7 @@ type ListObjectScanEventRequest struct {
 	//
 	// 1/2022/06/23/15/41/16559701077444693a0c6-33b2-4cc2-a99f-9f38b8b8****
 	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
-	// The maximum number of entries to return on each page when you perform a paged query.
+	// The maximum number of entries to return on each page in a paging query.
 	//
 	// This parameter is required.
 	//
@@ -125,11 +130,11 @@ type ListObjectScanEventRequest struct {
 	ParentEventId *int64 `json:"ParentEventId,omitempty" xml:"ParentEventId,omitempty"`
 	// The risk level. Valid values:
 	//
-	// - **high**: high risk
+	// - **high**: High risk.
 	//
-	// - **medium**: medium risk
+	// - **medium**: Medium risk.
 	//
-	// - **low**: low risk.
+	// - **low**: Low risk.
 	//
 	// example:
 	//
@@ -137,9 +142,9 @@ type ListObjectScanEventRequest struct {
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The data source. Valid values:
 	//
-	// - **API**: API detection
+	// - **API**: API-based detection.
 	//
-	// - **OSS**: OSS detection.
+	// - **OSS**: OSS-based detection.
 	//
 	// example:
 	//
@@ -147,27 +152,27 @@ type ListObjectScanEventRequest struct {
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The event status. Valid values:
 	//
-	// - 0: unhandled
+	// - 0: Unhandled.
 	//
-	// - 1: manually handled
+	// - 1: Manually handled.
 	//
-	// - 2: whitelisted
+	// - 2: Whitelisted.
 	//
-	// - 3: ignored
+	// - 3: Ignored.
 	//
-	// - 4: access denied.
+	// - 4: Access blocked.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The end time of the time range during which the exception event occurred.
+	// The end time of the time range during which the anomalous event occurred.
 	//
 	// example:
 	//
 	// 1683862286000
 	TimeEnd *int64 `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
-	// The start time of the time range during which the exception event occurred.
+	// The start time of the time range during which the anomalous event occurred.
 	//
 	// example:
 	//

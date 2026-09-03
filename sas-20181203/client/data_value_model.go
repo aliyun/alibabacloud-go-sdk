@@ -32,42 +32,62 @@ type iDataValue interface {
 }
 
 type DataValue struct {
+	// The number of Linux software vulnerabilities.
+	//
 	// example:
 	//
 	// 1
 	CveNum *int32 `json:"CveNum,omitempty" xml:"CveNum,omitempty"`
+	// The number of emergency vulnerabilities. This field is 0 when ImageVul is set to true.
+	//
 	// example:
 	//
 	// 0
 	EmgNum *int32 `json:"EmgNum,omitempty" xml:"EmgNum,omitempty"`
+	// The number of Windows system vulnerabilities. This field is 0 when ImageVul is set to true.
+	//
 	// example:
 	//
 	// 0
 	SysNum *int32 `json:"SysNum,omitempty" xml:"SysNum,omitempty"`
+	// The number of Web-CMS vulnerabilities. This field is 0 when ImageVul is set to true.
+	//
 	// example:
 	//
 	// 0
 	CmsNum *int32 `json:"CmsNum,omitempty" xml:"CmsNum,omitempty"`
+	// The number of application vulnerabilities. This field is 0 when ImageVul is set to true.
+	//
 	// example:
 	//
 	// 0
 	AppNum *int32 `json:"AppNum,omitempty" xml:"AppNum,omitempty"`
+	// The number of software composition analysis (SCA) vulnerabilities.
+	//
 	// example:
 	//
 	// 2
 	ScaNum *int32 `json:"ScaNum,omitempty" xml:"ScaNum,omitempty"`
+	// The number of high-priority vulnerabilities.
+	//
 	// example:
 	//
 	// 1
 	VulAsapSum *int32 `json:"VulAsapSum,omitempty" xml:"VulAsapSum,omitempty"`
+	// The number of medium-priority vulnerabilities.
+	//
 	// example:
 	//
 	// 1
 	VulLaterSum *int32 `json:"VulLaterSum,omitempty" xml:"VulLaterSum,omitempty"`
+	// The number of low-priority vulnerabilities.
+	//
 	// example:
 	//
 	// 1
 	VulNntfSum *int32 `json:"VulNntfSum,omitempty" xml:"VulNntfSum,omitempty"`
+	// The number of high-priority system vulnerabilities among Linux software vulnerabilities and Windows system vulnerabilities.
+	//
 	// example:
 	//
 	// 1

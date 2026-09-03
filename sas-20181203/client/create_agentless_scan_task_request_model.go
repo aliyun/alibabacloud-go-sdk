@@ -34,7 +34,7 @@ type CreateAgentlessScanTaskRequest struct {
 	//
 	// AGENTLESS_SCAN_ONCE_TASK_1720145******
 	AssetSelectionType *string `json:"AssetSelectionType,omitempty" xml:"AssetSelectionType,omitempty"`
-	// The image retention period, in days. This parameter takes effect only for host detection and does not take effect for user snapshot detection or user custom image detection.
+	// The image retention period, in days. This parameter takes effect only for host detection. It does not take effect for user snapshot detection or user custom image detection.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type CreateAgentlessScanTaskRequest struct {
 	//
 	// 66a9c708-d4a4-4fe
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The region ID of the instance to query. Valid values:
+	// The ID of the region in which the instance resides. Valid values:
 	//
 	// - **cn-hangzhou*	- (default): China.
 	//
