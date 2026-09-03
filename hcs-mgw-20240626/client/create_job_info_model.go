@@ -48,13 +48,15 @@ type iCreateJobInfo interface {
 }
 
 type CreateJobInfo struct {
+	// Specifies whether to migrate appendable files as normal or multipart files. Default value: false.
+	//
 	// example:
 	//
 	// false
 	AppendableToNormal *bool `json:"AppendableToNormal,omitempty" xml:"AppendableToNormal,omitempty"`
 	// The audit method.
 	Audit *Audit `json:"Audit,omitempty" xml:"Audit,omitempty"`
-	// Indicates whether the Target attribute value of the symbolic links at the source data address is converted. You can convert the Target attribute value of the symbolic links at the source data address in one of the following scenarios: The source data address is an Object Storage Service (OSS) data address and the destination data address is a local data address. The source data address is a local data address and the destination data address is an OSS data address. The source data address is a local data address and the destination data address is another local data address. This ensures that the symbolic links at the destination data address can point to their objects as expected.
+	// Specifies whether to transform the target of a symbolic link. When migrating data from OSS to a local server, from a local server to OSS, or between two local servers, set this parameter to \\`true\\` to ensure that symbolic links can be accessed after migration.
 	//
 	// example:
 	//
@@ -74,19 +76,19 @@ type CreateJobInfo struct {
 	//
 	// test_dest_address
 	DestAddress *string `json:"DestAddress,omitempty" xml:"DestAddress,omitempty"`
-	// Specifies whether to enable multi-version migration. Multi-version migration is not supported.
+	// Specifies whether to migrate multiple object versions. Multi-version migration is not supported.
 	//
 	// example:
 	//
 	// false
 	EnableMultiVersioning *bool `json:"EnableMultiVersioning,omitempty" xml:"EnableMultiVersioning,omitempty"`
-	// The filtering rule.
+	// The filter rule.
 	FilterRule *FilterRule `json:"FilterRule,omitempty" xml:"FilterRule,omitempty"`
-	// The throttling settings of the task.
+	// The task throttling settings.
 	ImportQos *ImportQos `json:"ImportQos,omitempty" xml:"ImportQos,omitempty"`
-	// The task name.\\
+	// The task name.<br>
 	//
-	// The name can contain lowercase letters, digits, hyphens (-), and underscores (_). The name must be 3 to 63 characters in length. The name is case-sensitive and encoded in UTF-8. The name cannot start with a hyphen (-) or an underscore (_). You must specify a name.
+	// The name must be 3 to 63 characters in length and can contain lowercase letters, digits, hyphens (-), and underscores (_). The name is case-sensitive and must be UTF-8 encoded. It cannot start with a hyphen (-) or an underscore (_). This parameter cannot be empty.<br>
 	//
 	// This parameter is required.
 	//
@@ -94,9 +96,9 @@ type CreateJobInfo struct {
 	//
 	// test_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The file overwriting mode.\\
+	// The file overwrite mode.<br>
 	//
-	// Valid values: never and always.
+	// Valid values: \\`never\\` and \\`always\\`. \\`never\\`: Does not overwrite existing files. \\`always\\`: Overwrites existing files.<br>
 	//
 	// This parameter is required.
 	//
@@ -104,7 +106,7 @@ type CreateJobInfo struct {
 	//
 	// always
 	OverwriteMode *string `json:"OverwriteMode,omitempty" xml:"OverwriteMode,omitempty"`
-	// The ID of the parent task. When you create a subtask to migrate a file that failed to be migrated, you can specify the ID of the parent task.
+	// The parent task ID. Specify this ID when you create a subtask to retry failed file transfers.
 	//
 	// example:
 	//
@@ -120,29 +122,31 @@ type CreateJobInfo struct {
 	//
 	// test_src_address
 	SrcAddress *string `json:"SrcAddress,omitempty" xml:"SrcAddress,omitempty"`
-	// The tags in the key:value format.\\
+	// The tags, in key-value format.<br>
 	//
-	// The value can contain letters, digits, hyphens (-), underscores (_), and commas (,). The value can be up to 1,024 characters in length.
+	// Allowed characters include uppercase and lowercase letters, digits, hyphens (-), and underscores (_). The maximum length is 1024 characters.<br>
 	//
 	// example:
 	//
 	// K1:V1,K2:V2
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// Specifies the StorageClass for destination files. The destination address can only be OSS. Valid values: Standard, IA, Archive, ColdArchive, DeepColdArchive.
+	//
 	// example:
 	//
 	// Standard
 	TargetStorageClass *string `json:"TargetStorageClass,omitempty" xml:"TargetStorageClass,omitempty"`
-	// The file transfer mode.\\
+	// The file transfer mode.<br>
 	//
-	// Valid values: all and lastmodified. all: transfers the full data of files. lastmodified: transfers the incremental data of files.\\
+	// Valid values: \\`all\\` (full transfer) and \\`lastmodified\\` (incremental transfer).<br>
 	//
-	// Valid values if OverwriteMode and TransferMode are used together:
+	// \\`OverwriteMode\\` and \\`TransferMode\\` are used together:<br><br>
 	//
-	// 	- A combination of always and all indicates that all files are forcefully overwritten.
+	// - \\`always\\` and \\`all\\`: Forces a full overwrite.
 	//
-	// 	- A combination of always and lastmodified indicates that files are overwritten based on the last modification time.
+	// - \\`always\\` and \\`lastmodified\\`: Overwrites files based on their last modified time.
 	//
-	// 	- A combination of never and all indicates that the files with the same name are not overwritten.
+	// - \\`never\\` and an empty value for \\`TransferMode\\`: Does not overwrite files with the same name.
 	//
 	// This parameter is required.
 	//
@@ -150,10 +154,14 @@ type CreateJobInfo struct {
 	//
 	// all
 	TransferMode *string `json:"TransferMode,omitempty" xml:"TransferMode,omitempty"`
+	// Specifies whether to preserve the lastModifyTime. Default value: true.
+	//
 	// example:
 	//
 	// true
 	WithLastModifyTime *bool `json:"WithLastModifyTime,omitempty" xml:"WithLastModifyTime,omitempty"`
+	// Specifies whether to migrate the StorageClass property. This is allowed only for OSS-to-OSS migration.
+	//
 	// example:
 	//
 	// false

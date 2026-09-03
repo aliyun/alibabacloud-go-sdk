@@ -46,101 +46,103 @@ type iGetJobResultResp interface {
 }
 
 type GetJobResultResp struct {
-	// The type of the data address created based on the files that failed to be migrated. This parameter is required if you create a data address.
+	// The data address type for the retry job. This value indicates that the data address is constructed from a failed file inventory. Use this value as the AddressType parameter when you create a data address for a retry job.
 	//
 	// example:
 	//
 	// ossinv
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// The number of files that are migrated. The number includes the number of files that are successfully migrated and the number of files that are skipped.
+	// The number of objects that were processed successfully. This value includes both migrated objects and skipped objects.
 	//
 	// example:
 	//
 	// 800
 	CopiedObjectCount *int64 `json:"CopiedObjectCount,omitempty" xml:"CopiedObjectCount,omitempty"`
-	// The data size of files that are migrated.
+	// The total size of objects that were processed successfully. Unit: bytes.
 	//
 	// example:
 	//
 	// 800
 	CopiedObjectSize *int64 `json:"CopiedObjectSize,omitempty" xml:"CopiedObjectSize,omitempty"`
-	// The number of files that failed to be migrated.
+	// The number of objects that failed to migrate.
 	//
 	// example:
 	//
 	// 200
 	FailedObjectCount *int64 `json:"FailedObjectCount,omitempty" xml:"FailedObjectCount,omitempty"`
-	// The AccessKey ID that is used to access the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
+	// The AccessKey ID that is used to access the bucket where the failed file list is stored. Use this value as the InvAccessId parameter when you create a data address for a retry job.
 	//
 	// example:
 	//
 	// test_access_id
 	InvAccessId *string `json:"InvAccessId,omitempty" xml:"InvAccessId,omitempty"`
-	// The AccessKey secret that is used to access the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
+	// The AccessKey secret that is used to access the bucket where the failed file list is stored. Use this value as the InvAccessSecret parameter when you create a data address for a retry job.
 	//
 	// example:
 	//
 	// test_secret_key
 	InvAccessSecret *string `json:"InvAccessSecret,omitempty" xml:"InvAccessSecret,omitempty"`
-	// The name of the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
+	// The name of the bucket that stores the failed file list. Use this value as the InvBucket parameter when you create a data address for a retry job.
 	//
 	// example:
 	//
 	// test_sys_bucket
 	InvBucket *string `json:"InvBucket,omitempty" xml:"InvBucket,omitempty"`
-	// The domain name of the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
+	// The endpoint of the bucket that stores the failed file list. Use this value as the InvDomain parameter when you create a data address for a retry job.
 	//
 	// example:
 	//
 	// test_domain
 	InvDomain *string `json:"InvDomain,omitempty" xml:"InvDomain,omitempty"`
-	// The type of the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
+	// The storage type of the bucket that stores the failed file list, such as oss. Use this value as the InvLocation parameter when you create a data address for a retry job.
 	//
 	// example:
 	//
 	// oss
 	InvLocation *string `json:"InvLocation,omitempty" xml:"InvLocation,omitempty"`
-	// The inventory list of files that failed to be migrated. This parameter is required if you create a data address.
+	// The path to the manifest file that lists the failed files. Use this value as the InvPath parameter when you create a data address for a retry job.
 	//
 	// example:
 	//
 	// mainfest.json
 	InvPath *string `json:"InvPath,omitempty" xml:"InvPath,omitempty"`
-	// The region ID of the bucket in which the inventory list of files that failed to be migrated resides. This parameter is required if you create a data address.
+	// The region ID of the bucket that stores the failed file list. Use this value as the InvRegionId parameter when you create a data address for a retry job.
 	//
 	// example:
 	//
 	// test_region_id
 	InvRegionId *string `json:"InvRegionId,omitempty" xml:"InvRegionId,omitempty"`
-	// Indicates whether the files that failed to be migrated can be migrated again.\\
-	//
-	// Valid values: NoNeed, Ready, and NotReady.
+	// The retry readiness status for failed files. Valid values: NoNeed indicates that all files were migrated successfully and no retry is required. Ready indicates that the failed file list has been generated and is available for retry. NotReady indicates that the failed file list is being generated.<br><br>
 	//
 	// example:
 	//
 	// Ready
 	ReadyRetry *string `json:"ReadyRetry,omitempty" xml:"ReadyRetry,omitempty"`
+	// The number of objects that were skipped during migration. Objects are skipped when they already exist at the destination and meet the configured skip conditions.
+	//
 	// example:
 	//
 	// 5000
 	SkippedObjectCount *int64 `json:"SkippedObjectCount,omitempty" xml:"SkippedObjectCount,omitempty"`
+	// The total size of objects that were skipped during migration. Unit: bytes.
+	//
 	// example:
 	//
 	// 1000000
 	SkippedObjectSize *int64 `json:"SkippedObjectSize,omitempty" xml:"SkippedObjectSize,omitempty"`
-	// The total number of files.
+	// The total number of objects in the source data address.
 	//
 	// example:
 	//
 	// 1000
 	TotalObjectCount *int64 `json:"TotalObjectCount,omitempty" xml:"TotalObjectCount,omitempty"`
-	// The total data size of files.
+	// The total size of all objects in the source data address. Unit: bytes.
 	//
 	// example:
 	//
 	// 1000
 	TotalObjectSize *int64 `json:"TotalObjectSize,omitempty" xml:"TotalObjectSize,omitempty"`
-	// The task ID.
+	// The unique identifier of the migration job.
 	//
 	// example:
 	//

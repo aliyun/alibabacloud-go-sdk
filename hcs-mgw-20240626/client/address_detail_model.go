@@ -50,7 +50,7 @@ type iAddressDetail interface {
 }
 
 type AddressDetail struct {
-	// The AccessKey ID that is used to access the bucket.
+	// The AccessKey ID used to access the bucket.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type AddressDetail struct {
 	//
 	// test_access_id
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
-	// The AccessKey secret that is used to access the bucket.
+	// The AccessKey Secret used to access the bucket.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,13 @@ type AddressDetail struct {
 	//
 	// test_secret_key
 	AccessSecret *string `json:"AccessSecret,omitempty" xml:"AccessSecret,omitempty"`
-	// The type of the data address.
+	// The address type. Valid values:
+	//
+	// Object storage: `oss`, `s3`, `qiniu`, `cos`, `bos`, `obs`, `ks3`, `ucloud`, `upyun`, `azure`, `gcp`, and `tos`.
+	//
+	// File storage: `local`, `obsfs`, and `ftp`.
+	//
+	// Inventory: `inv`.
 	//
 	// This parameter is required.
 	//
@@ -74,13 +80,13 @@ type AddressDetail struct {
 	//
 	// ossinv
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// The associated agents. If you want to access data over an Express Connect circuit or a VPN gateway, you must associate agents.
+	// A list of agents required to access data over a leased line or a VPN connection.
 	//
 	// example:
 	//
 	// agent1,agent2
 	AgentList *string `json:"AgentList,omitempty" xml:"AgentList,omitempty"`
-	// The bucket name.
+	// The name of the bucket.
 	//
 	// This parameter is required.
 	//
@@ -88,11 +94,13 @@ type AddressDetail struct {
 	//
 	// test_bucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// Specifies the underlying storage type, such as `oss`, `s3`, or `obs`, when `AddressType` is `inv`.
+	//
 	// example:
 	//
 	// oss
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The domain name of the bucket.
+	// The domain of the bucket.
 	//
 	// This parameter is required.
 	//
@@ -101,69 +109,69 @@ type AddressDetail struct {
 	// test_domain
 	Domain         *string         `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	HdfsAuthConfig *HdfsAuthConfig `json:"HdfsAuthConfig,omitempty" xml:"HdfsAuthConfig,omitempty"`
-	// The AccessKey ID that is used to access the bucket in which the inventory list resides.
+	// The AccessKey ID used to access the inventory bucket.
 	//
 	// example:
 	//
 	// test_inv_access_id
 	InvAccessId *string `json:"InvAccessId,omitempty" xml:"InvAccessId,omitempty"`
-	// The AccessKey secret that is used to access the bucket in which the inventory list resides.
+	// The AccessKey Secret used to access the inventory bucket.
 	//
 	// example:
 	//
 	// test_inv_secret_key
 	InvAccessSecret *string `json:"InvAccessSecret,omitempty" xml:"InvAccessSecret,omitempty"`
-	// The name of the bucket in which the inventory list resides.
+	// The name of the inventory bucket.
 	//
 	// example:
 	//
 	// test_inv_bucket
 	InvBucket *string `json:"InvBucket,omitempty" xml:"InvBucket,omitempty"`
-	// The domain name of the bucket in which the inventory list resides.
+	// The domain of the inventory bucket.
 	//
 	// example:
 	//
 	// test_inv_domain
 	InvDomain *string `json:"InvDomain,omitempty" xml:"InvDomain,omitempty"`
-	// The type of the bucket in which the inventory list resides.\\
+	// The type of the inventory bucket.<br>
 	//
-	// Valid values: oss, s3, and cos.
+	// Valid values: `oss` and `s3`.<br>
 	//
 	// example:
 	//
 	// oss
 	InvLocation *string `json:"InvLocation,omitempty" xml:"InvLocation,omitempty"`
-	// The inventory list. You must specify the file name and file name extension of the inventory list.
+	// The path to the manifest file, which lists the objects and their format.
 	//
 	// example:
 	//
 	// manifest.json
 	InvPath *string `json:"InvPath,omitempty" xml:"InvPath,omitempty"`
-	// The region ID of the bucket in which the inventory list resides. If the bucket in which the inventory list resides is an OSS bucket, you must specify the ID of the region in which the inventory list resides. You do not need to specify the domain name of the inventory list.
+	// The region of the inventory bucket. This parameter is required for OSS inventory buckets and eliminates the need to specify a domain. Use the OSS-specific region ID format.
 	//
 	// example:
 	//
 	// test_inv_region_id
 	InvRegionId *string `json:"InvRegionId,omitempty" xml:"InvRegionId,omitempty"`
-	// The role that is used to migrate data for the bucket in which the inventory list resides. If the bucket in which the inventory list resides is an OSS bucket, you must specify a role. You do not need to specify an AccessKey pair that is used to access the bucket.
+	// The authorization role for the inventory bucket. If the inventory bucket is an OSS bucket, you can use this role to grant access instead of an AccessKey.
 	//
 	// example:
 	//
 	// test_inv_role
 	InvRole *string `json:"InvRole,omitempty" xml:"InvRole,omitempty"`
-	// The bucket prefix.
+	// The object prefix in the bucket.
 	//
 	// example:
 	//
 	// test_prefix
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	// The region ID of the bucket. If the bucket is an OSS bucket, you must specify the ID of the region in which the bucket resides. You do not need to specify the domain name of the bucket.
+	// The region of the bucket. This parameter is required for OSS buckets and eliminates the need to specify a domain. Use the OSS-specific region ID format.
 	//
 	// example:
 	//
 	// test_region_id
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The role that is used to migrate data. If the bucket is an Object Storage Service (OSS) bucket, you must specify a role. You do not need to specify an AccessKey pair that is used to access the bucket.
+	// The authorization role. If the bucket is an OSS bucket, you can use this role to grant access instead of an AccessKey.
 	//
 	// example:
 	//

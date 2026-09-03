@@ -14,7 +14,7 @@ type iListJobHistoryResponseBody interface {
 }
 
 type ListJobHistoryResponseBody struct {
-	// The running history of the migration task.
+	// The list of task run history entries.
 	JobHistoryList *ListJobHistoryResp `json:"JobHistoryList,omitempty" xml:"JobHistoryList,omitempty"`
 }
 

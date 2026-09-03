@@ -475,7 +475,7 @@ func (client *Client) DeleteTunnelWithContext(ctx context.Context, userid *strin
 //
 // Description:
 //
-//	To query the information about a data address, you must have the permission on mgw:GetImportAddress.
+// - To query the information about a data address, you must have the permission on mgw:GetImportAddress.
 //
 // @param headers - map
 //
@@ -805,7 +805,7 @@ func (client *Client) GetTunnelWithContext(ctx context.Context, userid *string, 
 //
 // Description:
 //
-//	To query a list of data addresses, you must have the permission on mgw:ListImportAddress.
+// - To query a list of data addresses, you must have the permission on mgw:ListImportAddress.
 //
 // @param request - ListAddressRequest
 //
@@ -983,15 +983,13 @@ func (client *Client) ListJobWithContext(ctx context.Context, userid *string, re
 
 // Summary:
 //
-// Lists the running history of a migration task.
+// Lists the run history of a migration task.
 //
 // Description:
 //
-//	  To query the execution history of a migration task, you must have the permission on mgw:ListImportJobHistory.
+// - Call this operation to retrieve the run history of a specified migration task. A migration task can have multiple runs, each identified by a unique execution ID. The run history records status changes that occur during each execution.
 //
-//		- A migration task can run multiple rounds. A unique execution ID is generated for each round.
-//
-//		- The execution history of a migration task records the change history of the task status.
+// - Required permission: mgw:ListImportJobHistory
 //
 // @param request - ListJobHistoryRequest
 //

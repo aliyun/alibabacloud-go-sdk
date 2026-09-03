@@ -60,25 +60,27 @@ type iGetJobResp interface {
 }
 
 type GetJobResp struct {
+	// Specifies whether to migrate appendable files as normal or multipart files. The default value is false.
+	//
 	// example:
 	//
 	// true
 	AppendableToNormal *bool `json:"AppendableToNormal,omitempty" xml:"AppendableToNormal,omitempty"`
 	// The audit method.
 	Audit *Audit `json:"Audit,omitempty" xml:"Audit,omitempty"`
-	// Indicates whether the Target attribute value of the symbolic links at the source data address is converted.
+	// Indicates whether to convert the target of the symbolic link.
 	//
 	// example:
 	//
 	// false
 	ConvertSymlinkTarget *bool `json:"ConvertSymlinkTarget,omitempty" xml:"ConvertSymlinkTarget,omitempty"`
-	// Indicates whether a migration report is created.
+	// Indicates whether to generate a migration report.
 	//
 	// example:
 	//
 	// false
 	CreateReport *bool `json:"CreateReport,omitempty" xml:"CreateReport,omitempty"`
-	// The time when the task was created.
+	// The time when the job was created.
 	//
 	// example:
 	//
@@ -90,47 +92,47 @@ type GetJobResp struct {
 	//
 	// test_dest_address
 	DestAddress *string `json:"DestAddress,omitempty" xml:"DestAddress,omitempty"`
-	// Indicates whether multi-version migration is enabled.
+	// Indicates whether multi-versioning is enabled.
 	//
 	// example:
 	//
 	// false
 	EnableMultiVersioning *bool `json:"EnableMultiVersioning,omitempty" xml:"EnableMultiVersioning,omitempty"`
-	// The filtering rule.
+	// The filter rule.
 	FilterRule *FilterRule `json:"FilterRule,omitempty" xml:"FilterRule,omitempty"`
-	// The throttling settings of the task.
+	// The rate limiting rule for the job.
 	ImportQos *ImportQos `json:"ImportQos,omitempty" xml:"ImportQos,omitempty"`
-	// The time when the task was modified.
+	// The time when the job was last modified.
 	//
 	// example:
 	//
 	// 2024-05-01 12:00:00
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The task name.
+	// The name of the job.
 	//
 	// example:
 	//
 	// test_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The file overwriting mode.
+	// The file overwrite mode.
 	//
 	// example:
 	//
 	// always
 	OverwriteMode *string `json:"OverwriteMode,omitempty" xml:"OverwriteMode,omitempty"`
-	// The task owner.
+	// The owner.
 	//
 	// example:
 	//
 	// test_owner
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	// The name of the parent task.
+	// The name of the parent job.
 	//
 	// example:
 	//
 	// test_parent_name
 	ParentName *string `json:"ParentName,omitempty" xml:"ParentName,omitempty"`
-	// The ID of the parent task.
+	// The ID of the parent job.
 	//
 	// example:
 	//
@@ -144,25 +146,27 @@ type GetJobResp struct {
 	//
 	// test_src_address
 	SrcAddress *string `json:"SrcAddress,omitempty" xml:"SrcAddress,omitempty"`
-	// The task state. Valid values:
+	// The status of the job.
 	//
-	// IMPORT_JOB_BEGIN: The task is created.
+	// IMPORT_JOB_BEGIN: The job is created.
 	//
-	// IMPORT_JOB_LAUNCHING: The task is being started.
+	// IMPORT_JOB_LAUNCHING: The job is starting.
 	//
-	// IMPORT_JOB_PREPARING: The system is preparing for the task.
+	// IMPORT_JOB_PREPARING: The job is preparing.
 	//
-	// IMPORT_JOB_DOING: The task is running.
+	// IMPORT_JOB_DOING: The job is running.
 	//
-	// IMPORT_JOB_SUSPEND: The task is paused.
+	// IMPORT_JOB_SUSPEND: The job is paused.
 	//
-	// IMPORT_JOB_CLOSING: The task is being closed.
+	// IMPORT_JOB_CLOSING: The job is shutting down.
 	//
-	// IMPORT_JOB_FINISHED: The task is complete.
+	// IMPORT_JOB_FINISHED: The job is finished.
 	//
-	// IMPORT_JOB_INTERRUPTED: The task is abnormally interrupted.
+	// IMPORT_JOB_INTERRUPTED: The job is abnormally interrupted.
 	//
-	// IMPORT_JOB_CONFIRMED: The task is complete and the user has confirmed the data integrity and consistency.
+	// IMPORT_JOB_CONFIRMED: The migration is complete, and the user has confirmed data integrity and consistency.
+	//
+	// IMPORT_JOB_DELETING: The job is being deleted.
 	//
 	// example:
 	//
@@ -174,6 +178,8 @@ type GetJobResp struct {
 	//
 	// K1:V1,K2:V2
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// Specifies the StorageClass of the destination file. The destination address must be an OSS address. Valid values: Standard, IA, Archive, ColdArchive, and DeepColdArchive.
+	//
 	// example:
 	//
 	// Standard
@@ -184,16 +190,20 @@ type GetJobResp struct {
 	//
 	// all
 	TransferMode *string `json:"TransferMode,omitempty" xml:"TransferMode,omitempty"`
-	// The task ID.
+	// The ID of the job.
 	//
 	// example:
 	//
 	// test_id
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// Specifies whether to retain the lastModifyTime property. The default value is true.
+	//
 	// example:
 	//
 	// true
 	WithLastModifyTime *bool `json:"WithLastModifyTime,omitempty" xml:"WithLastModifyTime,omitempty"`
+	// Specifies whether to migrate the StorageClass property. This is allowed only for migrations from OSS to OSS.
+	//
 	// example:
 	//
 	// false

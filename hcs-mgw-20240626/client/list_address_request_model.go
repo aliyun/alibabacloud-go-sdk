@@ -16,9 +16,9 @@ type iListAddressRequest interface {
 }
 
 type ListAddressRequest struct {
-	// Specifies the number of migration addresses to be returned.\\
+	// Specifies the number of migration addresses to be returned.<br>
 	//
-	// Valid values: 0 - 1000 (excluding 0).\\
+	// Valid values: 0 - 1000 (excluding 0).<br>
 	//
 	// Default value: 1000.
 	//
@@ -26,7 +26,7 @@ type ListAddressRequest struct {
 	//
 	// 100
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// The marker after which the migration addresses are listed.\\
+	// The marker after which the migration addresses are listed.<br>
 	//
 	// By default, this parameter is left empty.
 	//

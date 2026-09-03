@@ -18,7 +18,7 @@ type GetAddressResponseBody struct {
 	//
 	// Valid values:
 	//
-	// 	- 1:1
+	// - 1:1
 	ImportAddress *GetAddressResp `json:"ImportAddress,omitempty" xml:"ImportAddress,omitempty"`
 }
 

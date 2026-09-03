@@ -18,25 +18,19 @@ type iListJobHistoryRequest interface {
 }
 
 type ListJobHistoryRequest struct {
-	// Specifies the number of running records of the migration task to be returned.\\
-	//
-	// Valid values: 0 - 1000.\\
-	//
-	// Default value: 1000.
+	// The maximum number of history entries to return.<br> Valid values: 1 to 1000.<br> Default value: 1000.<br><br>
 	//
 	// example:
 	//
 	// 100
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// The marker after which the running history of the task is listed.\\
-	//
-	// By default, this parameter is left empty.
+	// The pagination token. Set this parameter to the marker value returned in the previous response to retrieve the next page of results. If not specified, results are returned from the beginning.
 	//
 	// example:
 	//
 	// test_marker
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// The execution ID of the task. If you specify an execution ID, only the running history related to the execution ID is listed.
+	// The execution ID of a specific run. Specify this parameter to retrieve the run history for only that execution.
 	//
 	// example:
 	//

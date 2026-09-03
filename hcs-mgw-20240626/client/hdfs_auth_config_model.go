@@ -16,7 +16,9 @@ type iHdfsAuthConfig interface {
 }
 
 type HdfsAuthConfig struct {
+	// The authentication type for HDFS.
 	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The username for HDFS authentication.
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 

@@ -32,7 +32,21 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 
 	client.Spi = gatewayClient
-	client.EndpointRule = dara.String("")
+	client.EndpointRule = dara.String("regional")
+	client.EndpointMap = map[string]*string{
+		"cn-beijing":     dara.String("cn-beijing.mgw.aliyuncs.com"),
+		"cn-wulanchabu":  dara.String("cn-wulanchabu.mgw.aliyuncs.com"),
+		"cn-hangzhou":    dara.String("cn-hangzhou.mgw.aliyuncs.com"),
+		"cn-shanghai":    dara.String("cn-shanghai.mgw.aliyuncs.com"),
+		"cn-shenzhen":    dara.String("cn-shenzhen.mgw.aliyuncs.com"),
+		"cn-chengdu":     dara.String("cn-chengdu.mgw.aliyuncs.com"),
+		"cn-hongkong":    dara.String("cn-hongkong.mgw.aliyuncs.com"),
+		"ap-northeast-1": dara.String("ap-northeast-1.mgw.aliyuncs.com"),
+		"ap-southeast-1": dara.String("ap-southeast-1.mgw.aliyuncs.com"),
+		"eu-central-1":   dara.String("eu-central-1.mgw.aliyuncs.com"),
+		"us-east-1":      dara.String("us-east-1.mgw.aliyuncs.com"),
+		"us-west-1":      dara.String("us-west-1.mgw.aliyuncs.com"),
+	}
 	return nil
 }
 
@@ -723,7 +737,7 @@ func (client *Client) DeleteTunnel(userid *string, tunnelId *string) (_result *D
 //
 // Description:
 //
-//	To query the information about a data address, you must have the permission on mgw:GetImportAddress.
+// - To query the information about a data address, you must have the permission on mgw:GetImportAddress.
 //
 // @param headers - map
 //
@@ -763,7 +777,7 @@ func (client *Client) GetAddressWithOptions(userid *string, addressName *string,
 //
 // Description:
 //
-//	To query the information about a data address, you must have the permission on mgw:GetImportAddress.
+// - To query the information about a data address, you must have the permission on mgw:GetImportAddress.
 //
 // @return GetAddressResponse
 func (client *Client) GetAddress(userid *string, addressName *string) (_result *GetAddressResponse, _err error) {
@@ -1210,7 +1224,7 @@ func (client *Client) GetTunnel(userid *string, tunnelId *string) (_result *GetT
 //
 // Description:
 //
-//	To query a list of data addresses, you must have the permission on mgw:ListImportAddress.
+// - To query a list of data addresses, you must have the permission on mgw:ListImportAddress.
 //
 // @param request - ListAddressRequest
 //
@@ -1268,7 +1282,7 @@ func (client *Client) ListAddressWithOptions(userid *string, request *ListAddres
 //
 // Description:
 //
-//	To query a list of data addresses, you must have the permission on mgw:ListImportAddress.
+// - To query a list of data addresses, you must have the permission on mgw:ListImportAddress.
 //
 // @param request - ListAddressRequest
 //
@@ -1457,15 +1471,13 @@ func (client *Client) ListJob(userid *string, request *ListJobRequest) (_result 
 
 // Summary:
 //
-// Lists the running history of a migration task.
+// Lists the run history of a migration task.
 //
 // Description:
 //
-//	  To query the execution history of a migration task, you must have the permission on mgw:ListImportJobHistory.
+// - Call this operation to retrieve the run history of a specified migration task. A migration task can have multiple runs, each identified by a unique execution ID. The run history records status changes that occur during each execution.
 //
-//		- A migration task can run multiple rounds. A unique execution ID is generated for each round.
-//
-//		- The execution history of a migration task records the change history of the task status.
+// - Required permission: mgw:ListImportJobHistory
 //
 // @param request - ListJobHistoryRequest
 //
@@ -1523,15 +1535,13 @@ func (client *Client) ListJobHistoryWithOptions(userid *string, jobName *string,
 
 // Summary:
 //
-// Lists the running history of a migration task.
+// Lists the run history of a migration task.
 //
 // Description:
 //
-//	  To query the execution history of a migration task, you must have the permission on mgw:ListImportJobHistory.
+// - Call this operation to retrieve the run history of a specified migration task. A migration task can have multiple runs, each identified by a unique execution ID. The run history records status changes that occur during each execution.
 //
-//		- A migration task can run multiple rounds. A unique execution ID is generated for each round.
-//
-//		- The execution history of a migration task records the change history of the task status.
+// - Required permission: mgw:ListImportJobHistory
 //
 // @param request - ListJobHistoryRequest
 //
