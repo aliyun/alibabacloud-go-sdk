@@ -38,63 +38,98 @@ type iCreateKBSyncLinkRequest interface {
 }
 
 type CreateKBSyncLinkRequest struct {
+	// The client ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cli_xxxxxxbe8
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The client secret.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ******
 	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
+	// The description of the synchronization link.
+	//
 	// example:
 	//
 	// testDesc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The unique identifier of the knowledge base.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pkb-xxxxx
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
+	// The name of the synchronization link.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testName
-	LinkName    *string `json:"LinkName,omitempty" xml:"LinkName,omitempty"`
+	LinkName *string `json:"LinkName,omitempty" xml:"LinkName,omitempty"`
+	// The DingTalk document MCP Server endpoint.
+	//
+	// example:
+	//
+	// https://mcp-gw.dingtalk.com/server/1a2b3cxxxxxx789?key=d5e6fxxxxxx876
 	McpEndpoint *string `json:"McpEndpoint,omitempty" xml:"McpEndpoint,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The DingTalk spreadsheet MCP Server endpoint.
+	//
+	// example:
+	//
+	// https://mcp-gw.dingtalk.com/server/1a2b3cxxxxxx567?key=d5e6fxxxxxx543
 	SheetMcpEndpoint *string `json:"SheetMcpEndpoint,omitempty" xml:"SheetMcpEndpoint,omitempty"`
+	// The source directory address for synchronization.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://example.feishu.cn/wiki/space/xxxxxx
 	SourceDir *string `json:"SourceDir,omitempty" xml:"SourceDir,omitempty"`
+	// The data source type. Valid values: FEISHU and SHAREPOINT.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// FEISHU
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The synchronization interval. Unit: minutes.
+	//
 	// example:
 	//
 	// 30
 	SyncIntervalMinutes *int32 `json:"SyncIntervalMinutes,omitempty" xml:"SyncIntervalMinutes,omitempty"`
+	// The tenant ID. This parameter is required when SourceType is set to SHAREPOINT.
+	//
 	// example:
 	//
 	// 63eexxxx-xxxx-xxxx-xxxx-xxxxxx090f82
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The DingTalk operator user ID.
+	//
+	// example:
+	//
+	// 123***56
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s CreateKBSyncLinkRequest) String() string {

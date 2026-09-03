@@ -16,7 +16,10 @@ type iDescribeKBSyncLinksResponseBody interface {
 }
 
 type DescribeKBSyncLinksResponseBody struct {
+	// The list of synchronization links.
 	Items []*DescribeKBSyncLinksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// Id of the request
+	//
 	// example:
 	//
 	// EB07CFF0-D8A4-5C76-AED7-D00E26FC2***
@@ -63,38 +66,64 @@ func (s *DescribeKBSyncLinksResponseBody) Validate() error {
 }
 
 type DescribeKBSyncLinksResponseBodyItems struct {
+	// The client identifier.
+	//
 	// example:
 	//
 	// cli_xxxxxxbe8
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-08-11T09:55:19Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The description of the synchronization link.
+	//
 	// example:
 	//
 	// testDesc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The source channel of the synchronization link.
+	//
 	// example:
 	//
 	// FEISHU
 	ImPlatform *string `json:"ImPlatform,omitempty" xml:"ImPlatform,omitempty"`
+	// The synchronization link ID.
+	//
 	// example:
 	//
 	// pkbl-xxxxx
 	LinkId *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
+	// The link name.
+	//
 	// example:
 	//
 	// testName
 	LinkName *string `json:"LinkName,omitempty" xml:"LinkName,omitempty"`
+	// The source directory address for synchronization.
+	//
 	// example:
 	//
 	// https://example.feishu.cn/wiki/space/xxxxxx
 	SourceDir *string `json:"SourceDir,omitempty" xml:"SourceDir,omitempty"`
+	// The synchronization interval. Unit: minutes.
+	//
 	// example:
 	//
 	// 30
 	SyncIntervalMinutes *int32 `json:"SyncIntervalMinutes,omitempty" xml:"SyncIntervalMinutes,omitempty"`
+	// The synchronization status. Valid values:
+	//
+	// - CREATING
+	//
+	// - RUNNING
+	//
+	// - PAUSED
+	//
+	// - DELETING
+	//
 	// example:
 	//
 	// RUNNING

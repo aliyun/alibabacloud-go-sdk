@@ -14,6 +14,8 @@ type iDeleteKBSyncLinkResponseBody interface {
 }
 
 type DeleteKBSyncLinkResponseBody struct {
+	// Id of the request
+	//
 	// example:
 	//
 	// 69A85BAF-1089-4CDF-A82F-0A140F******

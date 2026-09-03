@@ -25,6 +25,8 @@ type iDescribeApplicationAttributeResponseBody interface {
 	GetDBClusterId() *string
 	SetDescription(v string) *DescribeApplicationAttributeResponseBody
 	GetDescription() *string
+	SetDnatMappings(v []*DescribeApplicationAttributeResponseBodyDnatMappings) *DescribeApplicationAttributeResponseBody
+	GetDnatMappings() []*DescribeApplicationAttributeResponseBodyDnatMappings
 	SetEndpoints(v []*DescribeApplicationAttributeResponseBodyEndpoints) *DescribeApplicationAttributeResponseBody
 	GetEndpoints() []*DescribeApplicationAttributeResponseBodyEndpoints
 	SetExpireTime(v string) *DescribeApplicationAttributeResponseBody
@@ -47,6 +49,8 @@ type iDescribeApplicationAttributeResponseBody interface {
 	GetMinorVersion() *string
 	SetNatGatewayId(v string) *DescribeApplicationAttributeResponseBody
 	GetNatGatewayId() *string
+	SetNatMappingSnatIpAddress(v string) *DescribeApplicationAttributeResponseBody
+	GetNatMappingSnatIpAddress() *string
 	SetPayType(v string) *DescribeApplicationAttributeResponseBody
 	GetPayType() *string
 	SetPolarClawSaaSApplicationAttribute(v *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute) *DescribeApplicationAttributeResponseBody
@@ -77,6 +81,8 @@ type iDescribeApplicationAttributeResponseBody interface {
 	GetVSwitchId() *string
 	SetVersion(v string) *DescribeApplicationAttributeResponseBody
 	GetVersion() *string
+	SetVpcNatGatewayId(v string) *DescribeApplicationAttributeResponseBody
+	GetVpcNatGatewayId() *string
 	SetZoneId(v string) *DescribeApplicationAttributeResponseBody
 	GetZoneId() *string
 }
@@ -124,11 +130,13 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// myapp
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of endpoints for the application.
+	// The list of DNAT mapping entries for NAT mapping.
+	DnatMappings []*DescribeApplicationAttributeResponseBodyDnatMappings `json:"DnatMappings,omitempty" xml:"DnatMappings,omitempty" type:"Repeated"`
+	// The list of endpoints of the application.
 	Endpoints []*DescribeApplicationAttributeResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 	// The expiration time.
 	//
-	// This value is empty when the billing type is Postpaid.
+	// This value is empty if the billing method is Postpaid.
 	//
 	// example:
 	//
@@ -162,13 +170,13 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// Unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The maintenance end time.
+	// The end time of the maintenance window.
 	//
 	// example:
 	//
 	// 19:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The maintenance start time.
+	// The start time of the maintenance window.
 	//
 	// example:
 	//
@@ -188,7 +196,13 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// pc-xxx
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The billing type.
+	// The SNAT IP address bound to the vSwitch where the application resides for NAT mapping. This is a customer-managed SNAT entry that is discovered and returned by the control plane in real time. It is not related to the Internet NAT gateway SNAT.
+	//
+	// example:
+	//
+	// 10.64.0.20
+	NatMappingSnatIpAddress *string `json:"NatMappingSnatIpAddress,omitempty" xml:"NatMappingSnatIpAddress,omitempty"`
+	// The billing method.
 	//
 	// example:
 	//
@@ -214,9 +228,9 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of application-level security groups.
+	// The list of security groups at the application level.
 	SecurityGroups []*DescribeApplicationAttributeResponseBodySecurityGroups `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
-	// The list of application-level whitelists.
+	// The list of whitelists at the application level.
 	SecurityIPArrays []*DescribeApplicationAttributeResponseBodySecurityIPArrays `json:"SecurityIPArrays,omitempty" xml:"SecurityIPArrays,omitempty" type:"Repeated"`
 	// The serverless type. Valid values:
 	//
@@ -294,6 +308,12 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// 1.0.0
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The customer-created VPC NAT gateway ID for NAT mapping.
+	//
+	// example:
+	//
+	// ngw-xxx
+	VpcNatGatewayId *string `json:"VpcNatGatewayId,omitempty" xml:"VpcNatGatewayId,omitempty"`
 	// The zone ID.
 	//
 	// example:
@@ -342,6 +362,10 @@ func (s *DescribeApplicationAttributeResponseBody) GetDescription() *string {
 	return s.Description
 }
 
+func (s *DescribeApplicationAttributeResponseBody) GetDnatMappings() []*DescribeApplicationAttributeResponseBodyDnatMappings {
+	return s.DnatMappings
+}
+
 func (s *DescribeApplicationAttributeResponseBody) GetEndpoints() []*DescribeApplicationAttributeResponseBodyEndpoints {
 	return s.Endpoints
 }
@@ -384,6 +408,10 @@ func (s *DescribeApplicationAttributeResponseBody) GetMinorVersion() *string {
 
 func (s *DescribeApplicationAttributeResponseBody) GetNatGatewayId() *string {
 	return s.NatGatewayId
+}
+
+func (s *DescribeApplicationAttributeResponseBody) GetNatMappingSnatIpAddress() *string {
+	return s.NatMappingSnatIpAddress
 }
 
 func (s *DescribeApplicationAttributeResponseBody) GetPayType() *string {
@@ -446,6 +474,10 @@ func (s *DescribeApplicationAttributeResponseBody) GetVersion() *string {
 	return s.Version
 }
 
+func (s *DescribeApplicationAttributeResponseBody) GetVpcNatGatewayId() *string {
+	return s.VpcNatGatewayId
+}
+
 func (s *DescribeApplicationAttributeResponseBody) GetZoneId() *string {
 	return s.ZoneId
 }
@@ -487,6 +519,11 @@ func (s *DescribeApplicationAttributeResponseBody) SetDBClusterId(v string) *Des
 
 func (s *DescribeApplicationAttributeResponseBody) SetDescription(v string) *DescribeApplicationAttributeResponseBody {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBody) SetDnatMappings(v []*DescribeApplicationAttributeResponseBodyDnatMappings) *DescribeApplicationAttributeResponseBody {
+	s.DnatMappings = v
 	return s
 }
 
@@ -542,6 +579,11 @@ func (s *DescribeApplicationAttributeResponseBody) SetMinorVersion(v string) *De
 
 func (s *DescribeApplicationAttributeResponseBody) SetNatGatewayId(v string) *DescribeApplicationAttributeResponseBody {
 	s.NatGatewayId = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBody) SetNatMappingSnatIpAddress(v string) *DescribeApplicationAttributeResponseBody {
+	s.NatMappingSnatIpAddress = &v
 	return s
 }
 
@@ -620,6 +662,11 @@ func (s *DescribeApplicationAttributeResponseBody) SetVersion(v string) *Describ
 	return s
 }
 
+func (s *DescribeApplicationAttributeResponseBody) SetVpcNatGatewayId(v string) *DescribeApplicationAttributeResponseBody {
+	s.VpcNatGatewayId = &v
+	return s
+}
+
 func (s *DescribeApplicationAttributeResponseBody) SetZoneId(v string) *DescribeApplicationAttributeResponseBody {
 	s.ZoneId = &v
 	return s
@@ -628,6 +675,15 @@ func (s *DescribeApplicationAttributeResponseBody) SetZoneId(v string) *Describe
 func (s *DescribeApplicationAttributeResponseBody) Validate() error {
 	if s.Components != nil {
 		for _, item := range s.Components {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DnatMappings != nil {
+		for _, item := range s.DnatMappings {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -715,7 +771,7 @@ type DescribeApplicationAttributeResponseBodyComponents struct {
 	//
 	// 1
 	ComponentReplica *int64 `json:"ComponentReplica,omitempty" xml:"ComponentReplica,omitempty"`
-	// The group name of the application subcomponent replicas.
+	// The group name of the replicas of the application subcomponent.
 	//
 	// example:
 	//
@@ -727,15 +783,15 @@ type DescribeApplicationAttributeResponseBodyComponents struct {
 	//
 	// gateway
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	// The list of subcomponent-level security groups.
+	// The list of security groups at the subcomponent level.
 	//
-	// If the subcomponent-level security groups are the same as the application-level security groups, this response element is omitted.
+	// If the security groups at the subcomponent level are the same as those at the application level, this response element is omitted.
 	SecurityGroups []*DescribeApplicationAttributeResponseBodyComponentsSecurityGroups `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
-	// The list of subcomponent-level whitelist addresses.
+	// The list of whitelist addresses at the subcomponent level.
 	//
-	// If the subcomponent-level whitelists are the same as the application-level whitelists, this response element is omitted.
+	// If the whitelists at the subcomponent level are the same as those at the application level, this response element is omitted.
 	SecurityIPArrays []*DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays `json:"SecurityIPArrays,omitempty" xml:"SecurityIPArrays,omitempty" type:"Repeated"`
-	// The component status. Valid values are the same as the application status.
+	// The component status. Valid values are the same as those of the application status.
 	//
 	// example:
 	//
@@ -1098,6 +1154,111 @@ func (s *DescribeApplicationAttributeResponseBodyComponentsTopology) Validate() 
 	return dara.Validate(s)
 }
 
+type DescribeApplicationAttributeResponseBodyDnatMappings struct {
+	// The access address in the format of NatIp:FrontPort. This address can be used directly from the office network.
+	//
+	// example:
+	//
+	// 10.64.0.10:10001
+	AccessAddress *string `json:"AccessAddress,omitempty" xml:"AccessAddress,omitempty"`
+	// The backend service port.
+	//
+	// example:
+	//
+	// 8787
+	BackendPort *int32 `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
+	// The DNAT entry ID.
+	//
+	// example:
+	//
+	// fwd-xxx
+	EntryId *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
+	// The frontend port.
+	//
+	// example:
+	//
+	// 10001
+	FrontPort *int32 `json:"FrontPort,omitempty" xml:"FrontPort,omitempty"`
+	// The port name. Valid values: webui, hermesagent, dashboard, and ssh.
+	//
+	// example:
+	//
+	// webui
+	PortName *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
+	// The entry status.
+	//
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeApplicationAttributeResponseBodyDnatMappings) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeApplicationAttributeResponseBodyDnatMappings) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationAttributeResponseBodyDnatMappings) GetAccessAddress() *string {
+	return s.AccessAddress
+}
+
+func (s *DescribeApplicationAttributeResponseBodyDnatMappings) GetBackendPort() *int32 {
+	return s.BackendPort
+}
+
+func (s *DescribeApplicationAttributeResponseBodyDnatMappings) GetEntryId() *string {
+	return s.EntryId
+}
+
+func (s *DescribeApplicationAttributeResponseBodyDnatMappings) GetFrontPort() *int32 {
+	return s.FrontPort
+}
+
+func (s *DescribeApplicationAttributeResponseBodyDnatMappings) GetPortName() *string {
+	return s.PortName
+}
+
+func (s *DescribeApplicationAttributeResponseBodyDnatMappings) GetStatus() *string {
+	return s.Status
+}
+
+func (s *DescribeApplicationAttributeResponseBodyDnatMappings) SetAccessAddress(v string) *DescribeApplicationAttributeResponseBodyDnatMappings {
+	s.AccessAddress = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyDnatMappings) SetBackendPort(v int32) *DescribeApplicationAttributeResponseBodyDnatMappings {
+	s.BackendPort = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyDnatMappings) SetEntryId(v string) *DescribeApplicationAttributeResponseBodyDnatMappings {
+	s.EntryId = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyDnatMappings) SetFrontPort(v int32) *DescribeApplicationAttributeResponseBodyDnatMappings {
+	s.FrontPort = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyDnatMappings) SetPortName(v string) *DescribeApplicationAttributeResponseBodyDnatMappings {
+	s.PortName = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyDnatMappings) SetStatus(v string) *DescribeApplicationAttributeResponseBodyDnatMappings {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBodyDnatMappings) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeApplicationAttributeResponseBodyEndpoints struct {
 	// The description of the endpoint.
 	//
@@ -1122,7 +1283,7 @@ type DescribeApplicationAttributeResponseBodyEndpoints struct {
 	//
 	// - Private: VPC endpoint.
 	//
-	// - Public: public endpoint.
+	// - Public: Public endpoint.
 	//
 	// example:
 	//

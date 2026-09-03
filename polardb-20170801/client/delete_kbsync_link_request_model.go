@@ -18,18 +18,24 @@ type iDeleteKBSyncLinkRequest interface {
 }
 
 type DeleteKBSyncLinkRequest struct {
+	// The unique ID of the knowledge base.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pkb-xxxxx
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
+	// The synchronization link ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pkbl-xxxxx
 	LinkId *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

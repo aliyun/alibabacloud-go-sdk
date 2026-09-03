@@ -18,16 +18,22 @@ type iDescribeKBSyncLinksRequest interface {
 }
 
 type DescribeKBSyncLinksRequest struct {
+	// The source channel of the synchronization link.
+	//
 	// example:
 	//
 	// FEISHU
 	ImPlatform *string `json:"ImPlatform,omitempty" xml:"ImPlatform,omitempty"`
+	// The unique ID of the knowledge base.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pkb-xxxxx
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

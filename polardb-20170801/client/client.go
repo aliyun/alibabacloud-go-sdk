@@ -65,28 +65,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-zhengzhou-nebula-1":       dara.String("polardb.aliyuncs.com"),
 		"eu-west-1-oxs":               dara.String("polardb.aliyuncs.com"),
 		"rus-west-1-pop":              dara.String("polardb.aliyuncs.com"),
-		"cn-hongkong":                 dara.String("polardb.cn-hongkong.aliyuncs.com"),
-		"cn-zhangjiakou":              dara.String("polardb.cn-zhangjiakou.aliyuncs.com"),
-		"cn-shenzhen":                 dara.String("polardb.cn-shenzhen.aliyuncs.com"),
-		"ap-northeast-2":              dara.String("polardb.ap-northeast-2.aliyuncs.com"),
-		"ap-northeast-1":              dara.String("polardb.ap-northeast-1.aliyuncs.com"),
-		"cn-chengdu":                  dara.String("polardb.cn-chengdu.aliyuncs.com"),
-		"cn-guangzhou":                dara.String("polardb.cn-guangzhou.aliyuncs.com"),
-		"ap-southeast-1":              dara.String("polardb.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-3":              dara.String("polardb.ap-southeast-3.aliyuncs.com"),
-		"cn-huhehaote":                dara.String("polardb.cn-huhehaote.aliyuncs.com"),
-		"ap-southeast-5":              dara.String("polardb.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-6":              dara.String("polardb.ap-southeast-6.aliyuncs.com"),
-		"ap-southeast-7":              dara.String("polardb.ap-southeast-7.aliyuncs.com"),
-		"ap-southeast-8":              dara.String("polardb.ap-southeast-8.aliyuncs.com"),
-		"na-south-1":                  dara.String("polardb.na-south-1.aliyuncs.com"),
-		"eu-central-1":                dara.String("polardb.eu-central-1.aliyuncs.com"),
-		"us-west-1":                   dara.String("polardb.us-west-1.aliyuncs.com"),
-		"eu-west-1":                   dara.String("polardb.eu-west-1.aliyuncs.com"),
-		"us-east-1":                   dara.String("polardb.us-east-1.aliyuncs.com"),
-		"me-east-1":                   dara.String("polardb.me-east-1.aliyuncs.com"),
-		"cn-shanghai-finance-1":       dara.String("polardb.cn-shanghai-finance-1.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       dara.String("polardb.cn-shenzhen-finance-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -3883,7 +3861,7 @@ func (client *Client) CreateAgenticDBTenantApiKey(request *CreateAgenticDBTenant
 
 // Summary:
 //
-// Creates an application attached to a PolarDB instance.
+// Creates an application that is attached to a PolarDB instance.
 //
 // @param tmpReq - CreateApplicationRequest
 //
@@ -3901,6 +3879,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 	openapiutil.Convert(tmpReq, request)
 	if !dara.IsNil(tmpReq.Components) {
 		request.ComponentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Components, dara.String("Components"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.DnatEntries) {
+		request.DnatEntriesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DnatEntries, dara.String("DnatEntries"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.Endpoints) {
@@ -3966,6 +3948,14 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DnatEntriesShrink) {
+		query["DnatEntries"] = request.DnatEntriesShrink
+	}
+
+	if !dara.IsNil(request.DnatIpAddress) {
+		query["DnatIpAddress"] = request.DnatIpAddress
 	}
 
 	if !dara.IsNil(request.DryRun) {
@@ -4072,6 +4062,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		query["VpcId"] = request.VpcId
 	}
 
+	if !dara.IsNil(request.VpcNatGatewayId) {
+		query["VpcNatGatewayId"] = request.VpcNatGatewayId
+	}
+
 	if !dara.IsNil(request.ZoneId) {
 		query["ZoneId"] = request.ZoneId
 	}
@@ -4101,7 +4095,7 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 
 // Summary:
 //
-// Creates an application attached to a PolarDB instance.
+// Creates an application that is attached to a PolarDB instance.
 //
 // @param request - CreateApplicationRequest
 //
@@ -6993,7 +6987,7 @@ func (client *Client) CreateGwConsumerOrder(request *CreateGwConsumerOrderReques
 
 // Summary:
 //
-// 创建知识库同步链路
+// Creates a knowledge base synchronization link.
 //
 // @param request - CreateKBSyncLinkRequest
 //
@@ -7085,7 +7079,7 @@ func (client *Client) CreateKBSyncLinkWithOptions(request *CreateKBSyncLinkReque
 
 // Summary:
 //
-// 创建知识库同步链路
+// Creates a knowledge base synchronization link.
 //
 // @param request - CreateKBSyncLinkRequest
 //
@@ -11613,7 +11607,7 @@ func (client *Client) DeleteGlobalSecurityIPGroup(request *DeleteGlobalSecurityI
 
 // Summary:
 //
-// 删除知识库同步链路
+// Deletes a knowledge base synchronization link.
 //
 // @param request - DeleteKBSyncLinkRequest
 //
@@ -11665,7 +11659,7 @@ func (client *Client) DeleteKBSyncLinkWithOptions(request *DeleteKBSyncLinkReque
 
 // Summary:
 //
-// 删除知识库同步链路
+// Deletes a knowledge base synchronization link.
 //
 // @param request - DeleteKBSyncLinkRequest
 //
@@ -22985,7 +22979,7 @@ func (client *Client) DescribeHistoryTasksStat(request *DescribeHistoryTasksStat
 
 // Summary:
 //
-// 查询知识库同步列表
+// Queries the synchronization list of a knowledge base.
 //
 // @param request - DescribeKBSyncLinksRequest
 //
@@ -23037,7 +23031,7 @@ func (client *Client) DescribeKBSyncLinksWithOptions(request *DescribeKBSyncLink
 
 // Summary:
 //
-// 查询知识库同步列表
+// Queries the synchronization list of a knowledge base.
 //
 // @param request - DescribeKBSyncLinksRequest
 //
@@ -41279,7 +41273,7 @@ func (client *Client) UpdateExtensions(request *UpdateExtensionsRequest) (_resul
 
 // Summary:
 //
-// 更新知识库同步链路
+// Updates a knowledge base synchronization link.
 //
 // @param request - UpdateKBSyncLinkRequest
 //
@@ -41359,7 +41353,7 @@ func (client *Client) UpdateKBSyncLinkWithOptions(request *UpdateKBSyncLinkReque
 
 // Summary:
 //
-// 更新知识库同步链路
+// Updates a knowledge base synchronization link.
 //
 // @param request - UpdateKBSyncLinkRequest
 //

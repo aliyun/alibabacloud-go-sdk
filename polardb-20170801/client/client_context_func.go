@@ -2934,7 +2934,7 @@ func (client *Client) CreateAgenticDBTenantApiKeyWithContext(ctx context.Context
 
 // Summary:
 //
-// Creates an application attached to a PolarDB instance.
+// Creates an application that is attached to a PolarDB instance.
 //
 // @param tmpReq - CreateApplicationRequest
 //
@@ -2952,6 +2952,10 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, tmpReq *
 	openapiutil.Convert(tmpReq, request)
 	if !dara.IsNil(tmpReq.Components) {
 		request.ComponentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Components, dara.String("Components"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.DnatEntries) {
+		request.DnatEntriesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DnatEntries, dara.String("DnatEntries"), dara.String("json"))
 	}
 
 	if !dara.IsNil(tmpReq.Endpoints) {
@@ -3017,6 +3021,14 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.Description) {
 		query["Description"] = request.Description
+	}
+
+	if !dara.IsNil(request.DnatEntriesShrink) {
+		query["DnatEntries"] = request.DnatEntriesShrink
+	}
+
+	if !dara.IsNil(request.DnatIpAddress) {
+		query["DnatIpAddress"] = request.DnatIpAddress
 	}
 
 	if !dara.IsNil(request.DryRun) {
@@ -3121,6 +3133,10 @@ func (client *Client) CreateApplicationWithContext(ctx context.Context, tmpReq *
 
 	if !dara.IsNil(request.VpcId) {
 		query["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.VpcNatGatewayId) {
+		query["VpcNatGatewayId"] = request.VpcNatGatewayId
 	}
 
 	if !dara.IsNil(request.ZoneId) {
@@ -5504,7 +5520,7 @@ func (client *Client) CreateGwConsumerOrderWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建知识库同步链路
+// Creates a knowledge base synchronization link.
 //
 // @param request - CreateKBSyncLinkRequest
 //
@@ -9088,7 +9104,7 @@ func (client *Client) DeleteGlobalSecurityIPGroupWithContext(ctx context.Context
 
 // Summary:
 //
-// 删除知识库同步链路
+// Deletes a knowledge base synchronization link.
 //
 // @param request - DeleteKBSyncLinkRequest
 //
@@ -17964,7 +17980,7 @@ func (client *Client) DescribeHistoryTasksStatWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询知识库同步列表
+// Queries the synchronization list of a knowledge base.
 //
 // @param request - DescribeKBSyncLinksRequest
 //
@@ -32263,7 +32279,7 @@ func (client *Client) UpdateExtensionsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 更新知识库同步链路
+// Updates a knowledge base synchronization link.
 //
 // @param request - UpdateKBSyncLinkRequest
 //

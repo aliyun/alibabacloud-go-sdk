@@ -33,6 +33,10 @@ type iCreateApplicationRequest interface {
 	GetDBClusterId() *string
 	SetDescription(v string) *CreateApplicationRequest
 	GetDescription() *string
+	SetDnatEntries(v []*CreateApplicationRequestDnatEntries) *CreateApplicationRequest
+	GetDnatEntries() []*CreateApplicationRequestDnatEntries
+	SetDnatIpAddress(v string) *CreateApplicationRequest
+	GetDnatIpAddress() *string
 	SetDryRun(v bool) *CreateApplicationRequest
 	GetDryRun() *bool
 	SetEndpoints(v []*CreateApplicationRequestEndpoints) *CreateApplicationRequest
@@ -85,24 +89,26 @@ type iCreateApplicationRequest interface {
 	GetVSwitchId() *string
 	SetVpcId(v string) *CreateApplicationRequest
 	GetVpcId() *string
+	SetVpcNatGatewayId(v string) *CreateApplicationRequest
+	GetVpcNatGatewayId() *string
 	SetZoneId(v string) *CreateApplicationRequest
 	GetZoneId() *string
 }
 
 type CreateApplicationRequest struct {
-	// The ID of an existing model operator instance to associate. This parameter is effective only when ApplicationType is set to polarclaw.
+	// The ID of an existing template operator instance to associate. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
 	// example:
 	//
 	// pm-xxxxxx
 	AIDBClusterId *string `json:"AIDBClusterId,omitempty" xml:"AIDBClusterId,omitempty"`
-	// The type of the application. Valid values:
+	// The application type. Valid values:
 	//
-	// - supabase: Creates a managed Supabase application.
+	// - supabase: Set this value to create a managed Supabase application.
 	//
-	// - raycluster: Creates a managed Ray Cluster application.
+	// - raycluster: Set this value to create a managed Ray Cluster application.
 	//
-	// - polarclaw: Creates a managed PolarClaw application.
+	// - polarclaw: Set this value to create a managed PolarClaw application.
 	//
 	// This parameter is required.
 	//
@@ -110,7 +116,7 @@ type CreateApplicationRequest struct {
 	//
 	// supabase
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
-	// The CPU architecture. Valid value:
+	// The CPU architecture. Valid values:
 	//
 	// - x86
 	//
@@ -132,17 +138,17 @@ type CreateApplicationRequest struct {
 	//
 	// xxx
 	AuthProviderConfig *string `json:"AuthProviderConfig,omitempty" xml:"AuthProviderConfig,omitempty"`
-	// Specifies whether to automatically create and bind an Elastic IP Address (EIP).
+	// Specifies whether to automatically create and associate with an elastic IP address (EIP).
 	//
 	// example:
 	//
 	// qwen3-max
 	AutoAllocatePublicEip *bool `json:"AutoAllocatePublicEip,omitempty" xml:"AutoAllocatePublicEip,omitempty"`
-	// Specifies whether to automatically create a PolarFS cold storage instance. Valid values:
+	// Specifies whether to enable automatic creation of a cold storage Polarlakebase instance. Valid values:
 	//
-	// - false (default): Does not automatically create the instance.
+	// 	- false (default): Automatic creation is disabled.
 	//
-	// - true: Automatically creates the instance.
+	// 	- true: Automatic creation is enabled.
 	//
 	// example:
 	//
@@ -154,19 +160,19 @@ type CreateApplicationRequest struct {
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// Specifies whether to automatically use a coupon. Valid values:
+	// Specifies whether to automatically use coupons. Valid values:
 	//
-	// - true (default): Uses a coupon.
+	// 	- true (default): Use coupons.
 	//
-	// - false: Does not use a coupon.
+	// 	- false: Do not use coupons.
 	//
 	// example:
 	//
 	// true
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// A list of custom child components for the application.
+	// The list of user-defined application subcomponents.
 	Components []*CreateApplicationRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// The ID of the PolarDB instance that the application depends on.
+	// The instance ID of the PolarDB instance on which the application depends.
 	//
 	// example:
 	//
@@ -178,71 +184,79 @@ type CreateApplicationRequest struct {
 	//
 	// myapp
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The default value is `false`. If you set this parameter to `true`, the system only checks the parameters and resources without creating the actual resources.
+	// The list of expected DNAT entries for NAT mapping. Specify this parameter together with VpcNatGatewayId. This parameter can be left empty, which indicates that no DNAT entries are created.
+	DnatEntries []*CreateApplicationRequestDnatEntries `json:"DnatEntries,omitempty" xml:"DnatEntries,omitempty" type:"Repeated"`
+	// The dedicated DNAT NAT IP address that is allocated by the customer (separate from the SNAT IP address) for NAT mapping. The IP address must belong to the specified gateway and be in the available state. The vSwitch of the gateway must belong to the primary CIDR block that is reachable from the office network. Specify this parameter together with VpcNatGatewayId. Prerequisite: An SNAT entry is bound to the vSwitch where the application resides.
+	//
+	// example:
+	//
+	// 10.64.0.10
+	DnatIpAddress *string `json:"DnatIpAddress,omitempty" xml:"DnatIpAddress,omitempty"`
+	// Default value: `false`. If you set this parameter to `true`, only parameter and resource validation is performed without actually creating resources.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// A list of custom server-side endpoints. By default, a VPC Endpoint is created.
+	// The list of user-defined service endpoints. By default, a VPC endpoint is created.
 	Endpoints []*CreateApplicationRequestEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	// This parameter is required for knowledge applications.
+	// Required for knowledge applications.
 	KnowledgeApplicationSpec *CreateApplicationRequestKnowledgeApplicationSpec `json:"KnowledgeApplicationSpec,omitempty" xml:"KnowledgeApplicationSpec,omitempty" type:"Struct"`
-	// This parameter is required for mem0 applications.
+	// Required for mem0 applications.
 	MemApplicationSpec *CreateApplicationRequestMemApplicationSpec `json:"MemApplicationSpec,omitempty" xml:"MemApplicationSpec,omitempty" type:"Struct"`
-	// The model API. This parameter is effective only when ApplicationType is set to polarclaw.
+	// The API of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
 	// example:
 	//
 	// openai-completions
 	ModelApi *string `json:"ModelApi,omitempty" xml:"ModelApi,omitempty"`
-	// The API key for the model. This parameter is effective only when ApplicationType is set to polarclaw.
+	// The API key of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
 	// example:
 	//
 	// sk-xxxxxx
 	ModelApiKey *string `json:"ModelApiKey,omitempty" xml:"ModelApiKey,omitempty"`
-	// The URL of the model. This parameter is effective only when ApplicationType is set to polarclaw.
+	// The URL of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
 	// example:
 	//
 	// https://dashscope.aliyuncs.com/compatible-mode/v1
 	ModelBaseUrl *string `json:"ModelBaseUrl,omitempty" xml:"ModelBaseUrl,omitempty"`
-	// The source of the model. Valid values:
+	// The model source. Valid values:
 	//
-	// - bailian: Alibaba Cloud Model Studio model.
+	// 	- bailian: Bailian model.
 	//
-	// - custom: A custom model.
+	// 	- custom: Custom model.
 	//
-	// - maas: PolarDB model operator.
+	// 	- maas: PolarDB model operator.
 	//
 	// example:
 	//
 	// bailian
 	ModelFrom *string `json:"ModelFrom,omitempty" xml:"ModelFrom,omitempty"`
-	// The name of the model. This parameter is effective only when ApplicationType is set to polarclaw.
+	// The name of the model. This parameter takes effect only when ApplicationType is set to polarclaw.
 	//
 	// example:
 	//
 	// qwen3-max
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// A list of parameters.
+	// The list of parameters.
 	Parameters []*CreateApplicationRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	// The billing method.
+	// The billing type.
 	//
 	// example:
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The subscription period type.
+	// The subscription type, such as yearly or monthly.
 	//
 	// example:
 	//
 	// Year
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The ID of the PolarFileSystem (PolarFS) cold storage or high-performance instance. This parameter is empty by default. If you specify this parameter, the corresponding storage is mounted to the application.
+	// The instance ID of the Polarlakebase cold storage or high-performance instance. Default value: empty. If specified, the corresponding storage is mounted to the application.
 	//
-	// This feature is currently supported only by the following applications:
+	// Currently, only the following applications support this parameter:
 	//
 	// - supabase
 	//
@@ -258,31 +272,31 @@ type CreateApplicationRequest struct {
 	//
 	// 727xxxxxx934
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
-	// The region. The default value is the region of the instance.
+	// The region. Default value: the region of the instance.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-********************
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the security group.
+	// The security group ID.
 	//
 	// example:
 	//
 	// sg-********************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The name of the IP address whitelist group. The default value is `default`.
+	// The name of the IP whitelist group. Default value: `default`.
 	//
 	// example:
 	//
 	// default
 	SecurityIPArrayName *string `json:"SecurityIPArrayName,omitempty" xml:"SecurityIPArrayName,omitempty"`
-	// The IP address whitelist. If you do not specify this parameter, the default value `127.0.0.1` is used.
+	// The IP whitelist. If you do not specify this parameter, the default value `127.0.0.1` is used.
 	//
 	// example:
 	//
@@ -294,13 +308,13 @@ type CreateApplicationRequest struct {
 	//
 	// ipv4
 	SecurityIPType *string `json:"SecurityIPType,omitempty" xml:"SecurityIPType,omitempty"`
-	// The ID of the skill template.
+	// The skill template ID.
 	//
 	// example:
 	//
 	// xxx
 	SkillTemplateId *string `json:"SkillTemplateId,omitempty" xml:"SkillTemplateId,omitempty"`
-	// The tag.
+	// The tags.
 	Tag []*CreateApplicationRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The target version.
 	//
@@ -314,19 +328,25 @@ type CreateApplicationRequest struct {
 	//
 	// 1
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// The vSwitch. The default value is the current vSwitch in the primary zone of the instance.
+	// The vSwitch. Default value: the current vSwitch in the primary zone of the instance.
 	//
 	// example:
 	//
 	// vsw-*********************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the Virtual Private Cloud (VPC).
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-********************
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The zone. The default value is the primary zone of the instance.
+	// The VPC NAT gateway ID for NAT mapping. If specified, NAT mapping is enabled when the instance is created. The NAT gateway must be in the same VPC as the application, use the private network type (intranet), and be in the active state.
+	//
+	// example:
+	//
+	// ngw-xxx
+	VpcNatGatewayId *string `json:"VpcNatGatewayId,omitempty" xml:"VpcNatGatewayId,omitempty"`
+	// The zone. Default value: the primary zone of the instance.
 	//
 	// example:
 	//
@@ -388,6 +408,14 @@ func (s *CreateApplicationRequest) GetDBClusterId() *string {
 
 func (s *CreateApplicationRequest) GetDescription() *string {
 	return s.Description
+}
+
+func (s *CreateApplicationRequest) GetDnatEntries() []*CreateApplicationRequestDnatEntries {
+	return s.DnatEntries
+}
+
+func (s *CreateApplicationRequest) GetDnatIpAddress() *string {
+	return s.DnatIpAddress
 }
 
 func (s *CreateApplicationRequest) GetDryRun() *bool {
@@ -494,6 +522,10 @@ func (s *CreateApplicationRequest) GetVpcId() *string {
 	return s.VpcId
 }
 
+func (s *CreateApplicationRequest) GetVpcNatGatewayId() *string {
+	return s.VpcNatGatewayId
+}
+
 func (s *CreateApplicationRequest) GetZoneId() *string {
 	return s.ZoneId
 }
@@ -555,6 +587,16 @@ func (s *CreateApplicationRequest) SetDBClusterId(v string) *CreateApplicationRe
 
 func (s *CreateApplicationRequest) SetDescription(v string) *CreateApplicationRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetDnatEntries(v []*CreateApplicationRequestDnatEntries) *CreateApplicationRequest {
+	s.DnatEntries = v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetDnatIpAddress(v string) *CreateApplicationRequest {
+	s.DnatIpAddress = &v
 	return s
 }
 
@@ -688,6 +730,11 @@ func (s *CreateApplicationRequest) SetVpcId(v string) *CreateApplicationRequest 
 	return s
 }
 
+func (s *CreateApplicationRequest) SetVpcNatGatewayId(v string) *CreateApplicationRequest {
+	s.VpcNatGatewayId = &v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetZoneId(v string) *CreateApplicationRequest {
 	s.ZoneId = &v
 	return s
@@ -696,6 +743,15 @@ func (s *CreateApplicationRequest) SetZoneId(v string) *CreateApplicationRequest
 func (s *CreateApplicationRequest) Validate() error {
 	if s.Components != nil {
 		for _, item := range s.Components {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.DnatEntries != nil {
+		for _, item := range s.DnatEntries {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -744,35 +800,35 @@ func (s *CreateApplicationRequest) Validate() error {
 }
 
 type CreateApplicationRequestComponents struct {
-	// The specifications of the child component.
+	// The specifications of the application subcomponent.
 	//
 	// example:
 	//
 	// polar.app.g2.medium
 	ComponentClass *string `json:"ComponentClass,omitempty" xml:"ComponentClass,omitempty"`
-	// The maximum number of child components with the same specifications. The default value is the value of ComponentReplica.
+	// The maximum number of application subcomponents with the same specifications. Default value: the value of ComponentReplica.
 	//
-	// - This parameter is supported only for raycluster.
+	// - Only raycluster supports this parameter.
 	//
 	// example:
 	//
 	// 1
 	ComponentMaxReplica *int64 `json:"ComponentMaxReplica,omitempty" xml:"ComponentMaxReplica,omitempty"`
-	// The number of replicas for the child component. The default value is 1.
+	// The number of replicas for the application subcomponent. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	ComponentReplica *int64 `json:"ComponentReplica,omitempty" xml:"ComponentReplica,omitempty"`
-	// The type of the child component.
+	// The type of the application subcomponent.
 	//
-	// For supabase, valid values are:
+	// For supabase, valid values:
 	//
 	// - gateway
 	//
 	// - backend
 	//
-	// For raycluster, valid values are:
+	// For raycluster, valid values:
 	//
 	// - head
 	//
@@ -784,37 +840,37 @@ type CreateApplicationRequestComponents struct {
 	//
 	// gateway
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	// The maximum number of component replicas for scaling.
+	// The maximum number of replicas for component scaling.
 	//
 	// example:
 	//
 	// 16
 	ScaleMax *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	// The minimum number of component replicas for scaling.
+	// The minimum number of replicas for component scaling.
 	//
 	// example:
 	//
 	// 1
 	ScaleMin *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-	// The security groups for the child component. Separate multiple security group IDs with commas (,).
+	// The list of security groups for the application subcomponent. Separate multiple security groups with commas (,).
 	//
 	// example:
 	//
 	// sg-********************
 	SecurityGroups *string `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty"`
-	// The name of the IP address whitelist group for the child component. The default value is default.
+	// The name of the whitelist IP address group for the application subcomponent. Default value: default.
 	//
 	// example:
 	//
 	// default
 	SecurityIPArrayName *string `json:"SecurityIPArrayName,omitempty" xml:"SecurityIPArrayName,omitempty"`
-	// The IP address whitelist for the child component. Separate multiple IP addresses with commas (,).
+	// The whitelist IP addresses of the application subcomponent. Separate multiple IP addresses with commas (,).
 	//
 	// example:
 	//
 	// 127.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The type of the IP address in the whitelist for the child component. The default value is ipv4.
+	// The type of the whitelist IP addresses for the application subcomponent. Default value: ipv4.
 	//
 	// example:
 	//
@@ -924,14 +980,59 @@ func (s *CreateApplicationRequestComponents) Validate() error {
 	return dara.Validate(s)
 }
 
+type CreateApplicationRequestDnatEntries struct {
+	// The frontend port. This parameter is optional. If not specified, the port is automatically assigned by the control plane to avoid conflicts with ports already in use on the gateway. You can query the assignment result by calling the DescribeApplicationAttribute operation.
+	//
+	// example:
+	//
+	// 10001
+	FrontPort *int32 `json:"FrontPort,omitempty" xml:"FrontPort,omitempty"`
+	// The port name. Valid values: webui, hermesagent, dashboard, and ssh.
+	//
+	// example:
+	//
+	// webui
+	PortName *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
+}
+
+func (s CreateApplicationRequestDnatEntries) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateApplicationRequestDnatEntries) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApplicationRequestDnatEntries) GetFrontPort() *int32 {
+	return s.FrontPort
+}
+
+func (s *CreateApplicationRequestDnatEntries) GetPortName() *string {
+	return s.PortName
+}
+
+func (s *CreateApplicationRequestDnatEntries) SetFrontPort(v int32) *CreateApplicationRequestDnatEntries {
+	s.FrontPort = &v
+	return s
+}
+
+func (s *CreateApplicationRequestDnatEntries) SetPortName(v string) *CreateApplicationRequestDnatEntries {
+	s.PortName = &v
+	return s
+}
+
+func (s *CreateApplicationRequestDnatEntries) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateApplicationRequestEndpoints struct {
-	// The description of the server-side endpoint.
+	// The description of the service endpoint.
 	//
 	// example:
 	//
 	// my_endpoint
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The type of the server-side endpoint. This value is fixed to Primary.
+	// The type of the service endpoint. The value is fixed as Primary.
 	//
 	// example:
 	//
@@ -970,11 +1071,11 @@ func (s *CreateApplicationRequestEndpoints) Validate() error {
 }
 
 type CreateApplicationRequestKnowledgeApplicationSpec struct {
-	// The password for the dashboard.
+	// The dashboard password.
 	DashboardPassword *string `json:"DashboardPassword,omitempty" xml:"DashboardPassword,omitempty"`
 	// The password.
 	DbPassword *string `json:"DbPassword,omitempty" xml:"DbPassword,omitempty"`
-	// This parameter is required for knowledge applications. It specifies the name of the LLM, such as qwen3-max.
+	// Required for knowledge applications. The name of the LLM model, such as qwen3-max.
 	LlmModel *string `json:"LlmModel,omitempty" xml:"LlmModel,omitempty"`
 }
 
@@ -1018,7 +1119,7 @@ func (s *CreateApplicationRequestKnowledgeApplicationSpec) Validate() error {
 }
 
 type CreateApplicationRequestMemApplicationSpec struct {
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
@@ -1036,7 +1137,7 @@ type CreateApplicationRequestMemApplicationSpec struct {
 	//
 	// test-user
 	DbUser *string `json:"DbUser,omitempty" xml:"DbUser,omitempty"`
-	// This parameter is required for mem0 applications. It specifies the name of the embedder model, such as text-embedding-v4.
+	// Required for mem0 applications. The name of the embedder model, such as text-embedding-v4.
 	//
 	// example:
 	//
@@ -1048,31 +1149,31 @@ type CreateApplicationRequestMemApplicationSpec struct {
 	//
 	// 1024
 	EmbedderModelDimension *int32 `json:"EmbedderModelDimension,omitempty" xml:"EmbedderModelDimension,omitempty"`
-	// The graph LLM.
+	// The graph LLM model.
 	//
 	// example:
 	//
 	// qwen-plus
 	GraphLlmModel *string `json:"GraphLlmModel,omitempty" xml:"GraphLlmModel,omitempty"`
-	// This parameter is required for mem0 applications. It specifies the name of the large language model (LLM), such as qwen3-max.
+	// Required for mem0 applications. The name of the LLM model, such as qwen3-max.
 	//
 	// example:
 	//
 	// qwen3-max
 	LlmModel *string `json:"LlmModel,omitempty" xml:"LlmModel,omitempty"`
-	// The project name. This corresponds to the schema in the database where project data is stored.
+	// The project name, which corresponds to the database schema that stores project data.
 	//
 	// example:
 	//
 	// test-project-name
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// This parameter is required for mem0 applications. It specifies the name of the reranker model, such as qwen3-rerank.
+	// Required for mem0 applications. The name of the reranker model, such as qwen3-rerank.
 	//
 	// example:
 	//
 	// qwen3-rerank
 	RerankerModel *string `json:"RerankerModel,omitempty" xml:"RerankerModel,omitempty"`
-	// The number of sharded tables.
+	// The number of table shards.
 	//
 	// example:
 	//
@@ -1183,13 +1284,13 @@ func (s *CreateApplicationRequestMemApplicationSpec) Validate() error {
 }
 
 type CreateApplicationRequestParameters struct {
-	// The name of the parameter.
+	// The parameter name.
 	//
 	// example:
 	//
 	// secret.gateway.auth.token
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The value of the parameter.
+	// The parameter value.
 	//
 	// example:
 	//
@@ -1228,13 +1329,13 @@ func (s *CreateApplicationRequestParameters) Validate() error {
 }
 
 type CreateApplicationRequestTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// testKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

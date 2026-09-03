@@ -32,34 +32,72 @@ type iUpdateKBSyncLinkRequest interface {
 }
 
 type UpdateKBSyncLinkRequest struct {
-	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The client ID.
+	//
+	// example:
+	//
+	// cli_xxxxxxbe8
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The client secret.
+	//
+	// example:
+	//
+	// ******
 	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
+	// The unique identifier of the knowledge base.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pkb-xxxxx
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
+	// The synchronization link ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pkbl-xxxxx
-	LinkId      *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
+	LinkId *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
+	// The MCP Server address for DingTalk documents.
+	//
+	// example:
+	//
+	// https://mcp-gw.dingtalk.com/server/1a2b3cxxxxxx789?key=d5e6fxxxxxx876
 	McpEndpoint *string `json:"McpEndpoint,omitempty" xml:"McpEndpoint,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The MCP Server address for DingTalk spreadsheets.
+	//
+	// example:
+	//
+	// https://mcp-gw.dingtalk.com/server/1a2b3cxxxxxx567?key=d5e6fxxxxxx543
 	SheetMcpEndpoint *string `json:"SheetMcpEndpoint,omitempty" xml:"SheetMcpEndpoint,omitempty"`
-	SyncEnabled      *bool   `json:"SyncEnabled,omitempty" xml:"SyncEnabled,omitempty"`
+	// Specifies whether to enable automatic synchronization. This parameter can only be modified independently and cannot be changed together with other configurations.
+	//
+	// example:
+	//
+	// false
+	SyncEnabled *bool `json:"SyncEnabled,omitempty" xml:"SyncEnabled,omitempty"`
+	// 20
+	//
 	// example:
 	//
 	// 20
-	SyncIntervalMinutes *int32  `json:"SyncIntervalMinutes,omitempty" xml:"SyncIntervalMinutes,omitempty"`
-	UserId              *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	SyncIntervalMinutes *int32 `json:"SyncIntervalMinutes,omitempty" xml:"SyncIntervalMinutes,omitempty"`
+	// The DingTalk user ID for the operation.
+	//
+	// example:
+	//
+	// 123***56
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s UpdateKBSyncLinkRequest) String() string {

@@ -32,7 +32,7 @@ type ModifyPolarFsMappingAuthRequest struct {
 	//
 	// pfs-xxx.oss-[regionId]-internal.aliyuncs.com
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The AccessKey ID for the storage bucket.
+	// The AccessKey ID of the storage bucket.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type ModifyPolarFsMappingAuthRequest struct {
 	//
 	// xxx
 	BucketAccessKeyId *string `json:"BucketAccessKeyId,omitempty" xml:"BucketAccessKeyId,omitempty"`
-	// The AccessKey secret for the storage bucket.
+	// The AccessKey secret of the storage bucket.
 	//
 	// This parameter is required.
 	//
