@@ -3225,6 +3225,50 @@ func (client *Client) DescribeDataSourcesWithContext(ctx context.Context, reques
 
 // Summary:
 //
+// Queries the free trial activation status and expiration time of a specified feature. Currently, only the free trial information of Tablestore backup can be queried.
+//
+// @param request - DescribeFeatureTrialInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeFeatureTrialInfoResponse
+func (client *Client) DescribeFeatureTrialInfoWithContext(ctx context.Context, request *DescribeFeatureTrialInfoRequest, runtime *dara.RuntimeOptions) (_result *DescribeFeatureTrialInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.FeatureType) {
+		query["FeatureType"] = request.FeatureType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeFeatureTrialInfo"),
+		Version:     dara.String("2017-09-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeFeatureTrialInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries for one or more SAP HANA backup plans that match specified criteria.
 //
 // @param request - DescribeHanaBackupPlansRequest
@@ -4890,6 +4934,62 @@ func (client *Client) GetTempFileDownloadLinkWithContext(ctx context.Context, re
 
 // Summary:
 //
+// Queries the free trial information of a specified OSS bucket or NAS file system.
+//
+// @param request - GetTrialInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTrialInfoResponse
+func (client *Client) GetTrialInfoWithContext(ctx context.Context, request *GetTrialInfoRequest, runtime *dara.RuntimeOptions) (_result *GetTrialInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Bucket) {
+		query["Bucket"] = request.Bucket
+	}
+
+	if !dara.IsNil(request.CreateTime) {
+		query["CreateTime"] = request.CreateTime
+	}
+
+	if !dara.IsNil(request.FileSystemId) {
+		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !dara.IsNil(request.SourceType) {
+		query["SourceType"] = request.SourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetTrialInfo"),
+		Version:     dara.String("2017-09-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetTrialInfoResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Installs backup clients on one or more ECS instances.
 //
 // Description:
@@ -5028,6 +5128,82 @@ func (client *Client) ListProtectedResourcesWithContext(ctx context.Context, req
 
 // Summary:
 //
+// Queries a list of backup points.
+//
+// @param request - ListSnapshotsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSnapshotsResponse
+func (client *Client) ListSnapshotsWithContext(ctx context.Context, request *ListSnapshotsRequest, runtime *dara.RuntimeOptions) (_result *ListSnapshotsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CompleteTimeEnd) {
+		query["CompleteTimeEnd"] = request.CompleteTimeEnd
+	}
+
+	if !dara.IsNil(request.CompleteTimeStart) {
+		query["CompleteTimeStart"] = request.CompleteTimeStart
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PlanId) {
+		query["PlanId"] = request.PlanId
+	}
+
+	if !dara.IsNil(request.ProtectedResourceId) {
+		query["ProtectedResourceId"] = request.ProtectedResourceId
+	}
+
+	if !dara.IsNil(request.Skip) {
+		query["Skip"] = request.Skip
+	}
+
+	if !dara.IsNil(request.SourceType) {
+		query["SourceType"] = request.SourceType
+	}
+
+	if !dara.IsNil(request.VaultId) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListSnapshots"),
+		Version:     dara.String("2017-09-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListSnapshotsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a data source.
 //
 // Description:
@@ -5078,7 +5254,7 @@ func (client *Client) RemoveDataSourceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves one or more historical backup snapshots that meet the specified criteria.
+// Retrieves one or more historical backup snapshots that meet the specified conditions.
 //
 // @param tmpReq - SearchHistoricalSnapshotsRequest
 //

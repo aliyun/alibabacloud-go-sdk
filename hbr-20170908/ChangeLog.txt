@@ -1,3 +1,6 @@
+2026-09-03 Version: v4.7.3
+- Generated golang 2017-09-08 for hbr.
+
 2026-08-25 Version: v4.7.2
 - Update API CreatePolicyV2: add request parameters Rules.$.ArchiveDays.
 - Update API CreatePolicyV2: add request parameters Rules.$.DataSourceFilters.$.AccountScope.

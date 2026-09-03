@@ -28,7 +28,7 @@ type iSearchHistoricalSnapshotsResponseBody interface {
 }
 
 type SearchHistoricalSnapshotsResponseBody struct {
-	// The return code. A value of 200 indicates that the request was successful.
+	// The response code. A value of 200 indicates success.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type SearchHistoricalSnapshotsResponseBody struct {
 	//
 	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The returned message. If the request is successful, \\`successful\\` is returned. If the request fails, an error message is returned.
+	// The returned message. The value "successful" is returned for successful requests. An error message is returned for failed requests.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The token that is required to obtain the next page of snapshots.
+	// The token required to retrieve the next page of snapshots.
 	//
 	// example:
 	//
@@ -69,7 +69,7 @@ type SearchHistoricalSnapshotsResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of snapshots that meet the specified criteria.
+	// The total number of snapshots that meet the specified conditions.
 	//
 	// example:
 	//
