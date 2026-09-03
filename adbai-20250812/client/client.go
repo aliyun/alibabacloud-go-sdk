@@ -25,17 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"ap-northeast-1": dara.String("adbai.ap-northeast-1.aliyuncs.com"),
-		"ap-southeast-1": dara.String("adbai.ap-southeast-1.aliyuncs.com"),
-		"cn-beijing":     dara.String("adbai.cn-beijing.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("adbai.cn-hangzhou.aliyuncs.com"),
-		"cn-shanghai":    dara.String("adbai.cn-shanghai.aliyuncs.com"),
-		"cn-shenzhen":    dara.String("adbai.cn-shenzhen.aliyuncs.com"),
-		"cn-guangzhou":   dara.String("adbai.cn-guangzhou.aliyuncs.com"),
-		"cn-wulanchabu":  dara.String("adbai.cn-wulanchabu.aliyuncs.com"),
-		"us-west-1":      dara.String("adbai.us-west-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -272,12 +261,44 @@ func (client *Client) CreateMultiModelKnowledgeBaseWithOptions(request *CreateMu
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdbInstanceName) {
+		query["AdbInstanceName"] = request.AdbInstanceName
+	}
+
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !dara.IsNil(request.DbClusterAcu) {
+		query["DbClusterAcu"] = request.DbClusterAcu
+	}
+
+	if !dara.IsNil(request.LakeStorageBucketName) {
+		query["LakeStorageBucketName"] = request.LakeStorageBucketName
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceAcuMax) {
+		query["ResourceAcuMax"] = request.ResourceAcuMax
+	}
+
+	if !dara.IsNil(request.ResourceAcuMin) {
+		query["ResourceAcuMin"] = request.ResourceAcuMin
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -488,6 +509,10 @@ func (client *Client) DeleteMultiModalKnowledgeBaseWithOptions(request *DeleteMu
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.MmkbName) {
+		query["MmkbName"] = request.MmkbName
 	}
 
 	if !dara.IsNil(request.RegionId) {

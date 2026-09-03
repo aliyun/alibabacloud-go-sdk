@@ -9,11 +9,17 @@ type iCreateMultiModelKnowledgeBaseResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetDbClusterId(v string) *CreateMultiModelKnowledgeBaseResponseBody
+	GetDbClusterId() *string
+	SetMmkbName(v string) *CreateMultiModelKnowledgeBaseResponseBody
+	GetMmkbName() *string
 	SetRequestId(v string) *CreateMultiModelKnowledgeBaseResponseBody
 	GetRequestId() *string
 }
 
 type CreateMultiModelKnowledgeBaseResponseBody struct {
+	DbClusterId *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
+	MmkbName    *string `json:"MmkbName,omitempty" xml:"MmkbName,omitempty"`
 	// Id of the request
 	//
 	// example:
@@ -30,8 +36,26 @@ func (s CreateMultiModelKnowledgeBaseResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *CreateMultiModelKnowledgeBaseResponseBody) GetDbClusterId() *string {
+	return s.DbClusterId
+}
+
+func (s *CreateMultiModelKnowledgeBaseResponseBody) GetMmkbName() *string {
+	return s.MmkbName
+}
+
 func (s *CreateMultiModelKnowledgeBaseResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *CreateMultiModelKnowledgeBaseResponseBody) SetDbClusterId(v string) *CreateMultiModelKnowledgeBaseResponseBody {
+	s.DbClusterId = &v
+	return s
+}
+
+func (s *CreateMultiModelKnowledgeBaseResponseBody) SetMmkbName(v string) *CreateMultiModelKnowledgeBaseResponseBody {
+	s.MmkbName = &v
+	return s
 }
 
 func (s *CreateMultiModelKnowledgeBaseResponseBody) SetRequestId(v string) *CreateMultiModelKnowledgeBaseResponseBody {

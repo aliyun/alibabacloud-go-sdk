@@ -173,12 +173,44 @@ func (client *Client) CreateMultiModelKnowledgeBaseWithContext(ctx context.Conte
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AdbInstanceName) {
+		query["AdbInstanceName"] = request.AdbInstanceName
+	}
+
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !dara.IsNil(request.DbClusterAcu) {
+		query["DbClusterAcu"] = request.DbClusterAcu
+	}
+
+	if !dara.IsNil(request.LakeStorageBucketName) {
+		query["LakeStorageBucketName"] = request.LakeStorageBucketName
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceAcuMax) {
+		query["ResourceAcuMax"] = request.ResourceAcuMax
+	}
+
+	if !dara.IsNil(request.ResourceAcuMin) {
+		query["ResourceAcuMin"] = request.ResourceAcuMin
+	}
+
+	if !dara.IsNil(request.VSwitchId) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !dara.IsNil(request.VpcId) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !dara.IsNil(request.ZoneId) {
+		query["ZoneId"] = request.ZoneId
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -331,6 +363,10 @@ func (client *Client) DeleteMultiModalKnowledgeBaseWithContext(ctx context.Conte
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.DBClusterId) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.MmkbName) {
+		query["MmkbName"] = request.MmkbName
 	}
 
 	if !dara.IsNil(request.RegionId) {
