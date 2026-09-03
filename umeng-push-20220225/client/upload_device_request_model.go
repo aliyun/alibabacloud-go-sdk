@@ -14,11 +14,6 @@ type iUploadDeviceRequest interface {
 }
 
 type UploadDeviceRequest struct {
-	// example:
-	//
-	// device_token_1\\ndevice_token_2\\ndevice_token_3\\n...
-	//
-	// alias1\\nalias2\\nalias3\\n...
 	DeviceTokens *string `json:"DeviceTokens,omitempty" xml:"DeviceTokens,omitempty"`
 }
 

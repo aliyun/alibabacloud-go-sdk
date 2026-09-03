@@ -14,9 +14,6 @@ type iCancelByMsgIdRequest interface {
 }
 
 type CancelByMsgIdRequest struct {
-	// example:
-	//
-	// ucj0242167047014687101
 	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
 }
 

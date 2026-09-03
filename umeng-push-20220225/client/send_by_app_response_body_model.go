@@ -24,27 +24,12 @@ type iSendByAppResponseBody interface {
 }
 
 type SendByAppResponseBody struct {
-	// example:
-	//
-	// 0
-	Code *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *SendByAppResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 86C4236B-D6C2-1E31-8370-2FAEC5CFE012
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *SendByAppResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SendByAppResponseBody) String() string {
@@ -119,9 +104,6 @@ func (s *SendByAppResponseBody) Validate() error {
 }
 
 type SendByAppResponseBodyData struct {
-	// example:
-	//
-	// um3zlgb166876370784300
 	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
 }
 

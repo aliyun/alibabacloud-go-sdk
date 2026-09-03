@@ -41,10 +41,6 @@ type iSendByAliasShrinkRequest interface {
 
 type SendByAliasShrinkRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// test
 	Alias                     *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	AliasType                 *string `json:"AliasType,omitempty" xml:"AliasType,omitempty"`
 	AndroidPayloadShrink      *string `json:"AndroidPayload,omitempty" xml:"AndroidPayload,omitempty"`
@@ -54,17 +50,11 @@ type SendByAliasShrinkRequest struct {
 	HarmonyPayloadShrink      *string `json:"HarmonyPayload,omitempty" xml:"HarmonyPayload,omitempty"`
 	IosPayloadShrink          *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
 	PolicyShrink              *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// example:
-	//
-	// true
-	ProductionMode *bool  `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
-	ReceiptType    *int32 `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
-	// example:
-	//
-	// https://msg.umeng.com/upush/receipt
-	ReceiptUrl     *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId   *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
-	CallbackParams *string `json:"callbackParams,omitempty" xml:"callbackParams,omitempty"`
+	ProductionMode            *bool   `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType               *int32  `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	ReceiptUrl                *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId              *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	CallbackParams            *string `json:"callbackParams,omitempty" xml:"callbackParams,omitempty"`
 }
 
 func (s SendByAliasShrinkRequest) String() string {

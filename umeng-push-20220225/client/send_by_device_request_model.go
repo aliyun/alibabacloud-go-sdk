@@ -43,19 +43,12 @@ type SendByDeviceRequest struct {
 	ChannelProperties   *ChannelProperties   `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
 	Description         *string              `json:"Description,omitempty" xml:"Description,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ArdNyIzFCH2K3szXA8arpu0Y7ywOdA67mCSumtpnMnmf
 	DeviceTokens   *string         `json:"DeviceTokens,omitempty" xml:"DeviceTokens,omitempty"`
 	HarmonyPayload *HarmonyPayload `json:"HarmonyPayload,omitempty" xml:"HarmonyPayload,omitempty"`
 	IosPayload     *IosPayload     `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
 	Policy         *Policy         `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// example:
-	//
-	// true
-	ProductionMode *bool  `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
-	ReceiptType    *int32 `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	ProductionMode *bool           `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType    *int32          `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
 	// example:
 	//
 	// https://msg.umeng.com/upush/receipt

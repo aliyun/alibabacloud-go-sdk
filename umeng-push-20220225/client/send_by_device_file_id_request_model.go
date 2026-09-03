@@ -43,25 +43,15 @@ type SendByDeviceFileIdRequest struct {
 	ChannelProperties   *ChannelProperties   `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
 	Description         *string              `json:"Description,omitempty" xml:"Description,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// PF835431668603208261
 	FileId         *string         `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	HarmonyPayload *HarmonyPayload `json:"HarmonyPayload,omitempty" xml:"HarmonyPayload,omitempty"`
 	IosPayload     *IosPayload     `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
 	Policy         *Policy         `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// example:
-	//
-	// true
-	ProductionMode *bool  `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
-	ReceiptType    *int32 `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
-	// example:
-	//
-	// https://msg.umeng.com/upush/receipt
-	ReceiptUrl     *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId   *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
-	CallbackParams *string `json:"callbackParams,omitempty" xml:"callbackParams,omitempty"`
+	ProductionMode *bool           `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType    *int32          `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	ReceiptUrl     *string         `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId   *string         `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	CallbackParams *string         `json:"callbackParams,omitempty" xml:"callbackParams,omitempty"`
 }
 
 func (s SendByDeviceFileIdRequest) String() string {

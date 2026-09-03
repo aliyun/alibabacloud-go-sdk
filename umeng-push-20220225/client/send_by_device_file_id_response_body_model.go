@@ -24,27 +24,12 @@ type iSendByDeviceFileIdResponseBody interface {
 }
 
 type SendByDeviceFileIdResponseBody struct {
-	// example:
-	//
-	// 0
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *SendByDeviceFileIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// example:
-	//
-	// null
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 86C4236B-D6C2-1E31-8370-2FAEC5CFE012
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *SendByDeviceFileIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SendByDeviceFileIdResponseBody) String() string {
@@ -119,9 +104,6 @@ func (s *SendByDeviceFileIdResponseBody) Validate() error {
 }
 
 type SendByDeviceFileIdResponseBodyData struct {
-	// example:
-	//
-	// ufe29y2167046828041801
 	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
 }
 

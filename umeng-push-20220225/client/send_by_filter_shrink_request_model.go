@@ -42,24 +42,15 @@ type SendByFilterShrinkRequest struct {
 	AndroidShortPayload     *AndroidShortPayload `json:"AndroidShortPayload,omitempty" xml:"AndroidShortPayload,omitempty"`
 	ChannelPropertiesShrink *string              `json:"ChannelProperties,omitempty" xml:"ChannelProperties,omitempty"`
 	Description             *string              `json:"Description,omitempty" xml:"Description,omitempty"`
-	// example:
-	//
-	// "where":{"and":[{"or":[{"app_version":">=1.0"}]}]}
-	Filter               *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	HarmonyPayloadShrink *string `json:"HarmonyPayload,omitempty" xml:"HarmonyPayload,omitempty"`
-	IosPayloadShrink     *string `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
-	PolicyShrink         *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// example:
-	//
-	// true
-	ProductionMode *bool  `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
-	ReceiptType    *int32 `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
-	// example:
-	//
-	// https://msg.umeng.com/upush/receipt
-	ReceiptUrl     *string `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
-	ThirdPartyId   *string `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
-	CallbackParams *string `json:"callbackParams,omitempty" xml:"callbackParams,omitempty"`
+	Filter                  *string              `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	HarmonyPayloadShrink    *string              `json:"HarmonyPayload,omitempty" xml:"HarmonyPayload,omitempty"`
+	IosPayloadShrink        *string              `json:"IosPayload,omitempty" xml:"IosPayload,omitempty"`
+	PolicyShrink            *string              `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	ProductionMode          *bool                `json:"ProductionMode,omitempty" xml:"ProductionMode,omitempty"`
+	ReceiptType             *int32               `json:"ReceiptType,omitempty" xml:"ReceiptType,omitempty"`
+	ReceiptUrl              *string              `json:"ReceiptUrl,omitempty" xml:"ReceiptUrl,omitempty"`
+	ThirdPartyId            *string              `json:"ThirdPartyId,omitempty" xml:"ThirdPartyId,omitempty"`
+	CallbackParams          *string              `json:"callbackParams,omitempty" xml:"callbackParams,omitempty"`
 }
 
 func (s SendByFilterShrinkRequest) String() string {

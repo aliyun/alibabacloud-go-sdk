@@ -14,9 +14,6 @@ type iQueryMsgStatRequest interface {
 }
 
 type QueryMsgStatRequest struct {
-	// example:
-	//
-	// ufe29y2167046828041801
 	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
 }
 

@@ -27,12 +27,9 @@ type SendByDeviceResponseBody struct {
 	// example:
 	//
 	// 0
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *SendByDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Code           *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *SendByDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// example:
 	//
 	// 内部错误
@@ -41,10 +38,7 @@ type SendByDeviceResponseBody struct {
 	//
 	// 74808AA4-A044-102F-8F5F-AFE4D97A0F26
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SendByDeviceResponseBody) String() string {

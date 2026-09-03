@@ -24,27 +24,12 @@ type iQueryMsgStatResponseBody interface {
 }
 
 type QueryMsgStatResponseBody struct {
-	// example:
-	//
-	// 0
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *QueryMsgStatResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// example:
-	//
-	// null
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 86C4236B-D6C2-1E31-8370-2FAEC5CFE012
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *QueryMsgStatResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryMsgStatResponseBody) String() string {
@@ -119,38 +104,14 @@ func (s *QueryMsgStatResponseBody) Validate() error {
 }
 
 type QueryMsgStatResponseBodyData struct {
-	// example:
-	//
-	// 1
-	Accept *int64 `json:"Accept,omitempty" xml:"Accept,omitempty"`
-	// example:
-	//
-	// 1
-	Arrive *int64 `json:"Arrive,omitempty" xml:"Arrive,omitempty"`
-	// example:
-	//
-	// 0
-	ClosePush *int64 `json:"ClosePush,omitempty" xml:"ClosePush,omitempty"`
-	// example:
-	//
-	// 0
-	Dismiss *int64 `json:"Dismiss,omitempty" xml:"Dismiss,omitempty"`
-	// example:
-	//
-	// ufe29y2167046828041801
-	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	// example:
-	//
-	// 1
-	Open *int64 `json:"Open,omitempty" xml:"Open,omitempty"`
-	// example:
-	//
-	// 1
-	Sent *int64 `json:"Sent,omitempty" xml:"Sent,omitempty"`
-	// example:
-	//
-	// 2
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Accept    *int64  `json:"Accept,omitempty" xml:"Accept,omitempty"`
+	Arrive    *int64  `json:"Arrive,omitempty" xml:"Arrive,omitempty"`
+	ClosePush *int64  `json:"ClosePush,omitempty" xml:"ClosePush,omitempty"`
+	Dismiss   *int64  `json:"Dismiss,omitempty" xml:"Dismiss,omitempty"`
+	MsgId     *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	Open      *int64  `json:"Open,omitempty" xml:"Open,omitempty"`
+	Sent      *int64  `json:"Sent,omitempty" xml:"Sent,omitempty"`
+	Status    *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryMsgStatResponseBodyData) String() string {
