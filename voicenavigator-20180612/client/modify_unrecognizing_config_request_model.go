@@ -24,7 +24,7 @@ type iModifyUnrecognizingConfigRequest interface {
 }
 
 type ModifyUnrecognizingConfigRequest struct {
-	// The rejection action performed after the final rejection prompt is played.
+	// The rejection action.
 	//
 	// This parameter is required.
 	//
@@ -32,19 +32,19 @@ type ModifyUnrecognizingConfigRequest struct {
 	//
 	// TransferToAgent
 	FinalAction *string `json:"FinalAction,omitempty" xml:"FinalAction,omitempty"`
-	// The action parameters for the rejection action, in JSON format.
+	// The action parameters.
 	//
 	// example:
 	//
 	// {}
 	FinalActionParams *string `json:"FinalActionParams,omitempty" xml:"FinalActionParams,omitempty"`
-	// The final rejection prompt. The service plays this prompt when the rejection threshold is met.
+	// The final rejection prompt.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 再见
+	// Goodbye
 	FinalPrompt *string `json:"FinalPrompt,omitempty" xml:"FinalPrompt,omitempty"`
 	// The instance ID.
 	//
@@ -54,15 +54,15 @@ type ModifyUnrecognizingConfigRequest struct {
 	//
 	// 12f407b22cbe4890ac595f09985848d5
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The rejection prompt played when the service fails to recognize user input.
+	// The rejection prompt.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 我不理解您的意思，请再说一遍
+	// I don\\"t understand what you mean, please say it again
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	// The rejection threshold. The maximum number of consecutive rejections before the service triggers the rejection action.
+	// The maximum number of rejections.
 	//
 	// This parameter is required.
 	//

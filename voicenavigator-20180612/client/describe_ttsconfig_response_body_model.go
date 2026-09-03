@@ -31,6 +31,8 @@ type iDescribeTTSConfigResponseBody interface {
 	GetSpeechRate() *int32
 	SetTtsOverrides(v string) *DescribeTTSConfigResponseBody
 	GetTtsOverrides() *string
+	SetTtsOverridesUuid(v string) *DescribeTTSConfigResponseBody
+	GetTtsOverridesUuid() *string
 	SetVoice(v string) *DescribeTTSConfigResponseBody
 	GetVoice() *string
 	SetVolume(v int32) *DescribeTTSConfigResponseBody
@@ -94,6 +96,12 @@ type DescribeTTSConfigResponseBody struct {
 	//
 	// [{\\"pronunciation\\":\\"huanqian\\",\\"word\\":\\"huaiqian\\"}]
 	TtsOverrides *string `json:"TtsOverrides,omitempty" xml:"TtsOverrides,omitempty"`
+	// The TTS correction dictionary ID.
+	//
+	// example:
+	//
+	// 94001ae8-72fd-4f93-84dc-e58e2b20363b
+	TtsOverridesUuid *string `json:"TtsOverridesUuid,omitempty" xml:"TtsOverridesUuid,omitempty"`
 	// The voice.
 	//
 	// example:
@@ -160,6 +168,10 @@ func (s *DescribeTTSConfigResponseBody) GetTtsOverrides() *string {
 	return s.TtsOverrides
 }
 
+func (s *DescribeTTSConfigResponseBody) GetTtsOverridesUuid() *string {
+	return s.TtsOverridesUuid
+}
+
 func (s *DescribeTTSConfigResponseBody) GetVoice() *string {
 	return s.Voice
 }
@@ -220,6 +232,11 @@ func (s *DescribeTTSConfigResponseBody) SetSpeechRate(v int32) *DescribeTTSConfi
 
 func (s *DescribeTTSConfigResponseBody) SetTtsOverrides(v string) *DescribeTTSConfigResponseBody {
 	s.TtsOverrides = &v
+	return s
+}
+
+func (s *DescribeTTSConfigResponseBody) SetTtsOverridesUuid(v string) *DescribeTTSConfigResponseBody {
+	s.TtsOverridesUuid = &v
 	return s
 }
 

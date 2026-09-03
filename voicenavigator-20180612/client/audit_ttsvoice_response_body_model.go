@@ -16,7 +16,7 @@ type iAuditTTSVoiceResponseBody interface {
 }
 
 type AuditTTSVoiceResponseBody struct {
-	// The preview URL.
+	// The audition URL.
 	//
 	// example:
 	//

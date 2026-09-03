@@ -16,7 +16,7 @@ type iDescribeConversationContextRequest interface {
 }
 
 type DescribeConversationContextRequest struct {
-	// The ID of the conversation.
+	// The session ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeConversationContextRequest struct {
 	//
 	// 361c8a53-0e29-42f3-8aa7-c7752d010399
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

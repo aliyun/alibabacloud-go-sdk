@@ -19,12 +19,16 @@ type iModifyAsrConfigRequest interface {
 	GetAsrCustomizationId() *string
 	SetAsrOverrides(v string) *ModifyAsrConfigRequest
 	GetAsrOverrides() *string
+	SetAsrOverridesUuid(v string) *ModifyAsrConfigRequest
+	GetAsrOverridesUuid() *string
 	SetAsrVocabularyId(v string) *ModifyAsrConfigRequest
 	GetAsrVocabularyId() *string
 	SetConfigLevel(v int32) *ModifyAsrConfigRequest
 	GetConfigLevel() *int32
 	SetEngine(v string) *ModifyAsrConfigRequest
 	GetEngine() *string
+	SetEngineXunfei(v string) *ModifyAsrConfigRequest
+	GetEngineXunfei() *string
 	SetEntryId(v string) *ModifyAsrConfigRequest
 	GetEntryId() *string
 	SetNlsServiceType(v string) *ModifyAsrConfigRequest
@@ -57,7 +61,13 @@ type ModifyAsrConfigRequest struct {
 	// 6cc9f5ca-2cb6-4cc7-a46b-2bbfd3e61b22
 	AsrCustomizationId *string `json:"AsrCustomizationId,omitempty" xml:"AsrCustomizationId,omitempty"`
 	AsrOverrides       *string `json:"AsrOverrides,omitempty" xml:"AsrOverrides,omitempty"`
-	// The hotword ID. View the ASR hotword ID on the [ASR Hotword Management page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
+	// The ASR error correction dictionary ID.
+	//
+	// example:
+	//
+	// 94001ae8-72fd-4f93-84dc-e58e2b20363b
+	AsrOverridesUuid *string `json:"AsrOverridesUuid,omitempty" xml:"AsrOverridesUuid,omitempty"`
+	// The hotword ID. You can view the ASR hotword ID on the [ASR Hotword Management page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
 	//
 	// example:
 	//
@@ -81,6 +91,12 @@ type ModifyAsrConfigRequest struct {
 	//
 	// ali
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The iFLYTEK ASR configuration parameters.
+	//
+	// example:
+	//
+	// {"Uuid":"b06c4ed3-a5e3-4c55-92b7-c2d2a88ca37f"}
+	EngineXunfei *string `json:"EngineXunfei,omitempty" xml:"EngineXunfei,omitempty"`
 	// The entity ID corresponding to config_level.
 	//
 	// example:
@@ -91,7 +107,7 @@ type ModifyAsrConfigRequest struct {
 	//
 	// example:
 	//
-	// Speech recognition.
+	// Speech Recognition
 	NlsServiceType *string `json:"NlsServiceType,omitempty" xml:"NlsServiceType,omitempty"`
 }
 
@@ -123,6 +139,10 @@ func (s *ModifyAsrConfigRequest) GetAsrOverrides() *string {
 	return s.AsrOverrides
 }
 
+func (s *ModifyAsrConfigRequest) GetAsrOverridesUuid() *string {
+	return s.AsrOverridesUuid
+}
+
 func (s *ModifyAsrConfigRequest) GetAsrVocabularyId() *string {
 	return s.AsrVocabularyId
 }
@@ -133,6 +153,10 @@ func (s *ModifyAsrConfigRequest) GetConfigLevel() *int32 {
 
 func (s *ModifyAsrConfigRequest) GetEngine() *string {
 	return s.Engine
+}
+
+func (s *ModifyAsrConfigRequest) GetEngineXunfei() *string {
+	return s.EngineXunfei
 }
 
 func (s *ModifyAsrConfigRequest) GetEntryId() *string {
@@ -168,6 +192,11 @@ func (s *ModifyAsrConfigRequest) SetAsrOverrides(v string) *ModifyAsrConfigReque
 	return s
 }
 
+func (s *ModifyAsrConfigRequest) SetAsrOverridesUuid(v string) *ModifyAsrConfigRequest {
+	s.AsrOverridesUuid = &v
+	return s
+}
+
 func (s *ModifyAsrConfigRequest) SetAsrVocabularyId(v string) *ModifyAsrConfigRequest {
 	s.AsrVocabularyId = &v
 	return s
@@ -180,6 +209,11 @@ func (s *ModifyAsrConfigRequest) SetConfigLevel(v int32) *ModifyAsrConfigRequest
 
 func (s *ModifyAsrConfigRequest) SetEngine(v string) *ModifyAsrConfigRequest {
 	s.Engine = &v
+	return s
+}
+
+func (s *ModifyAsrConfigRequest) SetEngineXunfei(v string) *ModifyAsrConfigRequest {
+	s.EngineXunfei = &v
 	return s
 }
 

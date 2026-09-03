@@ -31,6 +31,8 @@ type iModifyTTSConfigRequest interface {
 	GetSpeechRate() *string
 	SetTtsOverrides(v string) *ModifyTTSConfigRequest
 	GetTtsOverrides() *string
+	SetTtsOverridesUuid(v string) *ModifyTTSConfigRequest
+	GetTtsOverridesUuid() *string
 	SetVoice(v string) *ModifyTTSConfigRequest
 	GetVoice() *string
 	SetVolume(v string) *ModifyTTSConfigRequest
@@ -94,8 +96,14 @@ type ModifyTTSConfigRequest struct {
 	//
 	// example:
 	//
-	// [{\\"pronunciation\\":\\"huanqian\\",\\"word\\":\\"huanqian\\"}]
+	// [{\\"pronunciation\\":\\"huanqian\\",\\"word\\":\\"huaiqian\\"}]
 	TtsOverrides *string `json:"TtsOverrides,omitempty" xml:"TtsOverrides,omitempty"`
+	// The TTS error correction dictionary ID.
+	//
+	// example:
+	//
+	// 94001ae8-72fd-4f93-84dc-e58e2b20363b
+	TtsOverridesUuid *string `json:"TtsOverridesUuid,omitempty" xml:"TtsOverridesUuid,omitempty"`
 	// The voice.
 	//
 	// example:
@@ -162,6 +170,10 @@ func (s *ModifyTTSConfigRequest) GetTtsOverrides() *string {
 	return s.TtsOverrides
 }
 
+func (s *ModifyTTSConfigRequest) GetTtsOverridesUuid() *string {
+	return s.TtsOverridesUuid
+}
+
 func (s *ModifyTTSConfigRequest) GetVoice() *string {
 	return s.Voice
 }
@@ -222,6 +234,11 @@ func (s *ModifyTTSConfigRequest) SetSpeechRate(v string) *ModifyTTSConfigRequest
 
 func (s *ModifyTTSConfigRequest) SetTtsOverrides(v string) *ModifyTTSConfigRequest {
 	s.TtsOverrides = &v
+	return s
+}
+
+func (s *ModifyTTSConfigRequest) SetTtsOverridesUuid(v string) *ModifyTTSConfigRequest {
+	s.TtsOverridesUuid = &v
 	return s
 }
 

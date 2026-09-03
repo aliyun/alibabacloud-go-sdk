@@ -73,7 +73,7 @@ func (client *Client) AssociateChatbotInstanceWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Previews a TTS voice.
+// Auditions a TTS voice.
 //
 // @param request - AuditTTSVoiceRequest
 //
@@ -106,6 +106,10 @@ func (client *Client) AuditTTSVoiceWithContext(ctx context.Context, request *Aud
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NlsServiceType) {
+		query["NlsServiceType"] = request.NlsServiceType
 	}
 
 	if !dara.IsNil(request.PitchRate) {
@@ -157,7 +161,7 @@ func (client *Client) AuditTTSVoiceWithContext(ctx context.Context, request *Aud
 
 // Summary:
 //
-// Starts a conversation.
+// Starts a session.
 //
 // @param request - BeginDialogueRequest
 //
@@ -449,7 +453,7 @@ func (client *Client) DebugBeginDialogueWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Debugs the number collection process.
+// Collects digits in the debug environment.
 //
 // @param request - DebugCollectedNumberRequest
 //
@@ -641,7 +645,7 @@ func (client *Client) DescribeConversationWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the context of a specified conversation.
+// Queries the context data of a session.
 //
 // @param request - DescribeConversationContextRequest
 //
@@ -1616,6 +1620,10 @@ func (client *Client) ModifyAsrConfigWithContext(ctx context.Context, request *M
 		query["AsrOverrides"] = request.AsrOverrides
 	}
 
+	if !dara.IsNil(request.AsrOverridesUuid) {
+		query["AsrOverridesUuid"] = request.AsrOverridesUuid
+	}
+
 	if !dara.IsNil(request.AsrVocabularyId) {
 		query["AsrVocabularyId"] = request.AsrVocabularyId
 	}
@@ -1626,6 +1634,10 @@ func (client *Client) ModifyAsrConfigWithContext(ctx context.Context, request *M
 
 	if !dara.IsNil(request.Engine) {
 		query["Engine"] = request.Engine
+	}
+
+	if !dara.IsNil(request.EngineXunfei) {
+		query["EngineXunfei"] = request.EngineXunfei
 	}
 
 	if !dara.IsNil(request.EntryId) {
@@ -1908,6 +1920,10 @@ func (client *Client) ModifyTTSConfigWithContext(ctx context.Context, request *M
 		query["TtsOverrides"] = request.TtsOverrides
 	}
 
+	if !dara.IsNil(request.TtsOverridesUuid) {
+		query["TtsOverridesUuid"] = request.TtsOverridesUuid
+	}
+
 	if !dara.IsNil(request.Voice) {
 		query["Voice"] = request.Voice
 	}
@@ -2121,7 +2137,7 @@ func (client *Client) SaveRecordingWithContext(ctx context.Context, request *Sav
 
 // Summary:
 //
-// Handles the silence timeout event in a conversation.
+// Triggers a silence timeout.
 //
 // @param request - SilenceTimeoutRequest
 //

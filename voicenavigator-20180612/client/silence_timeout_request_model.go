@@ -20,7 +20,7 @@ type iSilenceTimeoutRequest interface {
 }
 
 type SilenceTimeoutRequest struct {
-	// The ID of the conversation.
+	// The session ID.
 	//
 	// This parameter is required.
 	//
@@ -28,13 +28,13 @@ type SilenceTimeoutRequest struct {
 	//
 	// 0099b75d-60fd-4c63-8541-7fbba0ae6bb0
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The context of the conversation.
+	// The session information context.
 	//
 	// example:
 	//
 	// {}
 	InitialContext *string `json:"InitialContext,omitempty" xml:"InitialContext,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

@@ -16,13 +16,13 @@ type iDescribeConversationContextResponseBody interface {
 }
 
 type DescribeConversationContextResponseBody struct {
-	// The conversation context, returned as a JSON string.
+	// The session context data.
 	//
 	// example:
 	//
 	// {         "CallingNumber": "135815***",         "AdditionalContext": "",         "ConversationId": "361c8a53-0e29-42f3-8aa7-c7752d010399"     }
 	ConversationContext *string `json:"ConversationContext,omitempty" xml:"ConversationContext,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

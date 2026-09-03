@@ -22,7 +22,7 @@ type iBeginDialogueResponseBody interface {
 }
 
 type BeginDialogueResponseBody struct {
-	// The action to perform.
+	// The action.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type BeginDialogueResponseBody struct {
 	//
 	// {\\"duration\\":31340,\\"endTime\\":1638243934786,\\"hangUpDirection\\":\\"ivr\\",\\"startTime\\":1638243903446}
 	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
-	// Specifies whether the IVR playback can be interrupted.
+	// Indicates whether the IVR announcement can be interrupted.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type BeginDialogueResponseBody struct {
 	//
 	// example:
 	//
-	// 您好，欢迎致电智能助手
+	// Hello, welcome to the intelligent assistant
 	TextResponse *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
 }
 

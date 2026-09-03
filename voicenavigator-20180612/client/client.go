@@ -25,10 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-hangzhou": dara.String("voicenavigator.cn-hangzhou.aliyuncs.com"),
-		"cn-shanghai": dara.String("voicenavigator.cn-shanghai.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -144,7 +140,7 @@ func (client *Client) AssociateChatbotInstance(request *AssociateChatbotInstance
 
 // Summary:
 //
-// Previews a TTS voice.
+// Auditions a TTS voice.
 //
 // @param request - AuditTTSVoiceRequest
 //
@@ -177,6 +173,10 @@ func (client *Client) AuditTTSVoiceWithOptions(request *AuditTTSVoiceRequest, ru
 
 	if !dara.IsNil(request.InstanceId) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.NlsServiceType) {
+		query["NlsServiceType"] = request.NlsServiceType
 	}
 
 	if !dara.IsNil(request.PitchRate) {
@@ -228,7 +228,7 @@ func (client *Client) AuditTTSVoiceWithOptions(request *AuditTTSVoiceRequest, ru
 
 // Summary:
 //
-// Previews a TTS voice.
+// Auditions a TTS voice.
 //
 // @param request - AuditTTSVoiceRequest
 //
@@ -246,7 +246,7 @@ func (client *Client) AuditTTSVoice(request *AuditTTSVoiceRequest) (_result *Aud
 
 // Summary:
 //
-// Starts a conversation.
+// Starts a session.
 //
 // @param request - BeginDialogueRequest
 //
@@ -310,7 +310,7 @@ func (client *Client) BeginDialogueWithOptions(request *BeginDialogueRequest, ru
 
 // Summary:
 //
-// Starts a conversation.
+// Starts a session.
 //
 // @param request - BeginDialogueRequest
 //
@@ -628,7 +628,7 @@ func (client *Client) DebugBeginDialogue(request *DebugBeginDialogueRequest) (_r
 
 // Summary:
 //
-// Debugs the number collection process.
+// Collects digits in the debug environment.
 //
 // @param request - DebugCollectedNumberRequest
 //
@@ -680,7 +680,7 @@ func (client *Client) DebugCollectedNumberWithOptions(request *DebugCollectedNum
 
 // Summary:
 //
-// Debugs the number collection process.
+// Collects digits in the debug environment.
 //
 // @param request - DebugCollectedNumberRequest
 //
@@ -892,7 +892,7 @@ func (client *Client) DescribeConversation(request *DescribeConversationRequest)
 
 // Summary:
 //
-// Queries the context of a specified conversation.
+// Queries the context data of a session.
 //
 // @param request - DescribeConversationContextRequest
 //
@@ -932,7 +932,7 @@ func (client *Client) DescribeConversationContextWithOptions(request *DescribeCo
 
 // Summary:
 //
-// Queries the context of a specified conversation.
+// Queries the context data of a session.
 //
 // @param request - DescribeConversationContextRequest
 //
@@ -2227,6 +2227,10 @@ func (client *Client) ModifyAsrConfigWithOptions(request *ModifyAsrConfigRequest
 		query["AsrOverrides"] = request.AsrOverrides
 	}
 
+	if !dara.IsNil(request.AsrOverridesUuid) {
+		query["AsrOverridesUuid"] = request.AsrOverridesUuid
+	}
+
 	if !dara.IsNil(request.AsrVocabularyId) {
 		query["AsrVocabularyId"] = request.AsrVocabularyId
 	}
@@ -2237,6 +2241,10 @@ func (client *Client) ModifyAsrConfigWithOptions(request *ModifyAsrConfigRequest
 
 	if !dara.IsNil(request.Engine) {
 		query["Engine"] = request.Engine
+	}
+
+	if !dara.IsNil(request.EngineXunfei) {
+		query["EngineXunfei"] = request.EngineXunfei
 	}
 
 	if !dara.IsNil(request.EntryId) {
@@ -2591,6 +2599,10 @@ func (client *Client) ModifyTTSConfigWithOptions(request *ModifyTTSConfigRequest
 		query["TtsOverrides"] = request.TtsOverrides
 	}
 
+	if !dara.IsNil(request.TtsOverridesUuid) {
+		query["TtsOverridesUuid"] = request.TtsOverridesUuid
+	}
+
 	if !dara.IsNil(request.Voice) {
 		query["Voice"] = request.Voice
 	}
@@ -2876,7 +2888,7 @@ func (client *Client) SaveRecording(request *SaveRecordingRequest) (_result *Sav
 
 // Summary:
 //
-// Handles the silence timeout event in a conversation.
+// Triggers a silence timeout.
 //
 // @param request - SilenceTimeoutRequest
 //
@@ -2932,7 +2944,7 @@ func (client *Client) SilenceTimeoutWithOptions(request *SilenceTimeoutRequest, 
 
 // Summary:
 //
-// Handles the silence timeout event in a conversation.
+// Triggers a silence timeout.
 //
 // @param request - SilenceTimeoutRequest
 //

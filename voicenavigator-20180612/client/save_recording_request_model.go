@@ -30,7 +30,7 @@ type iSaveRecordingRequest interface {
 }
 
 type SaveRecordingRequest struct {
-	// The ID of the conversation.
+	// The session ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type SaveRecordingRequest struct {
 	//
 	// 390515b5-6115-4ccf-83e2-52d5bfaf2ddf
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The duration of the recording, in seconds.
+	// The duration of the recording.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type SaveRecordingRequest struct {
 	//
 	// 10
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The name of the recording file.
+	// The file name.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type SaveRecordingRequest struct {
 	//
 	// e6bef0db439d4048bfcf45322491becf.wav
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The storage path of the recording file, such as a path in Object Storage Service (OSS).
+	// The file path.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type SaveRecordingRequest struct {
 	//
 	// oss://test/record/
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -70,13 +70,13 @@ type SaveRecordingRequest struct {
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the account that owns the instance.
+	// The ID of the account to which the instance belongs.
 	//
 	// example:
 	//
 	// 1971226538081821
 	InstanceOwnerId *int64 `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
-	// The Unix timestamp, in milliseconds, when the recording started.
+	// The start time of the recording.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,7 @@ type SaveRecordingRequest struct {
 	//
 	// 1582267398628
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of the recording file. Example: Source.
+	// The type of the recording file.
 	//
 	// This parameter is required.
 	//

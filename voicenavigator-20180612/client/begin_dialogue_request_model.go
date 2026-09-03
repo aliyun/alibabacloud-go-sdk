@@ -38,7 +38,7 @@ type BeginDialogueRequest struct {
 	//
 	// 1358158****
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	// The conversation ID.
+	// The session ID.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type BeginDialogueRequest struct {
 	//
 	// c28fc549-d88f-4f6e-85ad-a0806e5e39c0
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The conversation context.
+	// The session context.
 	//
 	// example:
 	//

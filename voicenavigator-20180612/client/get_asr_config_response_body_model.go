@@ -155,6 +155,12 @@ type GetAsrConfigResponseBodyData struct {
 	// 3b1d3031-8b6e-460a-8640-d330f2ca50b8
 	AsrCustomizationId *string `json:"AsrCustomizationId,omitempty" xml:"AsrCustomizationId,omitempty"`
 	AsrOverrides       *string `json:"AsrOverrides,omitempty" xml:"AsrOverrides,omitempty"`
+	// The ASR correction dictionary ID.
+	//
+	// example:
+	//
+	// 94001ae8-72fd-4f93-84dc-e58e2b20363b
+	AsrOverridesUuid *string `json:"AsrOverridesUuid,omitempty" xml:"AsrOverridesUuid,omitempty"`
 	// The hotword ID. You can view the ASR hotword ID on the [ASR Hotword Management page](https://aiccs.console.aliyun.com/sentence/vocab?spm=a2c4g.11186623.0.0.7f9bf965IKBpsi).
 	//
 	// example:
@@ -209,6 +215,10 @@ func (s *GetAsrConfigResponseBodyData) GetAsrOverrides() *string {
 	return s.AsrOverrides
 }
 
+func (s *GetAsrConfigResponseBodyData) GetAsrOverridesUuid() *string {
+	return s.AsrOverridesUuid
+}
+
 func (s *GetAsrConfigResponseBodyData) GetAsrVocabularyId() *string {
 	return s.AsrVocabularyId
 }
@@ -247,6 +257,11 @@ func (s *GetAsrConfigResponseBodyData) SetAsrCustomizationId(v string) *GetAsrCo
 
 func (s *GetAsrConfigResponseBodyData) SetAsrOverrides(v string) *GetAsrConfigResponseBodyData {
 	s.AsrOverrides = &v
+	return s
+}
+
+func (s *GetAsrConfigResponseBodyData) SetAsrOverridesUuid(v string) *GetAsrConfigResponseBodyData {
+	s.AsrOverridesUuid = &v
 	return s
 }
 

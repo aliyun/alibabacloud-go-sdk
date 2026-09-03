@@ -19,6 +19,8 @@ type iAuditTTSVoiceRequest interface {
 	GetExtParams() *string
 	SetInstanceId(v string) *AuditTTSVoiceRequest
 	GetInstanceId() *string
+	SetNlsServiceType(v string) *AuditTTSVoiceRequest
+	GetNlsServiceType() *string
 	SetPitchRate(v string) *AuditTTSVoiceRequest
 	GetPitchRate() *string
 	SetSecretKey(v string) *AuditTTSVoiceRequest
@@ -65,7 +67,8 @@ type AuditTTSVoiceRequest struct {
 	// example:
 	//
 	// af81a389-91f0-4157-8d82-720edd02b66a
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NlsServiceType *string `json:"NlsServiceType,omitempty" xml:"NlsServiceType,omitempty"`
 	// example:
 	//
 	// 0
@@ -84,13 +87,13 @@ type AuditTTSVoiceRequest struct {
 	//
 	// 100
 	SpeechRate *string `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	// The preview text.
+	// The audition text.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 你好
+	// Hello
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// The voice.
 	//
@@ -136,6 +139,10 @@ func (s *AuditTTSVoiceRequest) GetExtParams() *string {
 
 func (s *AuditTTSVoiceRequest) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *AuditTTSVoiceRequest) GetNlsServiceType() *string {
+	return s.NlsServiceType
 }
 
 func (s *AuditTTSVoiceRequest) GetPitchRate() *string {
@@ -184,6 +191,11 @@ func (s *AuditTTSVoiceRequest) SetExtParams(v string) *AuditTTSVoiceRequest {
 
 func (s *AuditTTSVoiceRequest) SetInstanceId(v string) *AuditTTSVoiceRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *AuditTTSVoiceRequest) SetNlsServiceType(v string) *AuditTTSVoiceRequest {
+	s.NlsServiceType = &v
 	return s
 }
 
