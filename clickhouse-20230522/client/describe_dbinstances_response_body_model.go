@@ -258,7 +258,17 @@ type DescribeDBInstancesResponseBodyDataDBInstances struct {
 	//
 	// example:
 	//
-	// active
+	// ACTIVATION
+	//
+	// STOPPED
+	//
+	// RESOURCE_PREPARING
+	//
+	// CREATING
+	//
+	// MINOR_VERSION_TRANSING
+	//
+	// CLASS_CHANGING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The instance storage type.
 	//

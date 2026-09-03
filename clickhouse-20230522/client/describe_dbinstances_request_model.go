@@ -40,7 +40,17 @@ type DescribeDBInstancesRequest struct {
 	//
 	// example:
 	//
-	// active
+	// ACTIVATION
+	//
+	// STOPPED
+	//
+	// RESOURCE_PREPARING
+	//
+	// CREATING
+	//
+	// MINOR_VERSION_TRANSING
+	//
+	// CLASS_CHANGING
 	DBInstanceStatus *string `json:"DBInstanceStatus,omitempty" xml:"DBInstanceStatus,omitempty"`
 	// The cluster description.
 	//

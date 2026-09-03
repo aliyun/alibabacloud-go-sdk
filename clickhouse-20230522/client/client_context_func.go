@@ -1082,6 +1082,10 @@ func (client *Client) DeleteLangfuseInstanceWithContext(ctx context.Context, req
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfirmDeleteAiGateway) {
+		query["ConfirmDeleteAiGateway"] = request.ConfirmDeleteAiGateway
+	}
+
 	if !dara.IsNil(request.DBInstanceId) {
 		query["DBInstanceId"] = request.DBInstanceId
 	}
@@ -1795,7 +1799,7 @@ func (client *Client) DescribeDBInstanceDataSourcesWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the list of clusters.
+// Queries a list of clusters.
 //
 // @param request - DescribeDBInstancesRequest
 //

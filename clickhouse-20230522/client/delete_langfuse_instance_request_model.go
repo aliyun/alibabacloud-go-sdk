@@ -9,6 +9,8 @@ type iDeleteLangfuseInstanceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetConfirmDeleteAiGateway(v bool) *DeleteLangfuseInstanceRequest
+	GetConfirmDeleteAiGateway() *bool
 	SetDBInstanceId(v string) *DeleteLangfuseInstanceRequest
 	GetDBInstanceId() *string
 	SetRegionId(v string) *DeleteLangfuseInstanceRequest
@@ -16,6 +18,8 @@ type iDeleteLangfuseInstanceRequest interface {
 }
 
 type DeleteLangfuseInstanceRequest struct {
+	// The confirmation flag for deleting the AiGateway instance associated with the Langfuse instance.
+	ConfirmDeleteAiGateway *bool `json:"ConfirmDeleteAiGateway,omitempty" xml:"ConfirmDeleteAiGateway,omitempty"`
 	// The Langfuse instance ID.
 	//
 	// This parameter is required.
@@ -42,12 +46,21 @@ func (s DeleteLangfuseInstanceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteLangfuseInstanceRequest) GetConfirmDeleteAiGateway() *bool {
+	return s.ConfirmDeleteAiGateway
+}
+
 func (s *DeleteLangfuseInstanceRequest) GetDBInstanceId() *string {
 	return s.DBInstanceId
 }
 
 func (s *DeleteLangfuseInstanceRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *DeleteLangfuseInstanceRequest) SetConfirmDeleteAiGateway(v bool) *DeleteLangfuseInstanceRequest {
+	s.ConfirmDeleteAiGateway = &v
+	return s
 }
 
 func (s *DeleteLangfuseInstanceRequest) SetDBInstanceId(v string) *DeleteLangfuseInstanceRequest {
