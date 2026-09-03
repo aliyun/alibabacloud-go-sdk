@@ -18,15 +18,15 @@ type iDescribeBundlesResponseBody interface {
 }
 
 type DescribeBundlesResponseBody struct {
-	// The cloud computer templates.
+	// The list of cloud computer templates.
 	Bundles []*DescribeBundlesResponseBodyBundles `json:"Bundles,omitempty" xml:"Bundles,omitempty" type:"Repeated"`
-	// The token that is used for the next query. If this parameter is empty, all results have been returned.
+	// The token for the next query. If NextToken is empty, no more results exist.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6lu3PTF6h3zE8egwlYuv8M8
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *DescribeBundlesResponseBody) Validate() error {
 }
 
 type DescribeBundlesResponseBodyBundles struct {
-	// The ID of the cloud computer template.
+	// The cloud computer template ID.
 	//
 	// example:
 	//
@@ -95,19 +95,19 @@ type DescribeBundlesResponseBodyBundles struct {
 	//
 	// Advanced graphics with Windows 2019
 	BundleName *string `json:"BundleName,omitempty" xml:"BundleName,omitempty"`
-	// The type of the cloud computer template.
+	// The cloud computer templatetype.
 	//
 	// example:
 	//
 	// SYSTEM
 	BundleType *string `json:"BundleType,omitempty" xml:"BundleType,omitempty"`
-	// The time when the cloud computer template was created.
+	// The time when the cloud computer template was created. The time is in the ISO 8601 standard in UTC.
 	//
 	// example:
 	//
 	// 2021-09-30T06:09Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The category of the data disk.
+	// The data cloud disk type.
 	//
 	// example:
 	//
@@ -117,23 +117,23 @@ type DescribeBundlesResponseBodyBundles struct {
 	//
 	// example:
 	//
-	// test
+	// Template for daily office use
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The instance type of the cloud computer.
+	// The cloud computer specifications.
 	//
 	// example:
 	//
 	// ecd.graphics.2xlarge
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	// The details of the cloud computer instance type.
+	// The details of the cloud computer specifications.
 	DesktopTypeAttribute *DescribeBundlesResponseBodyBundlesDesktopTypeAttribute `json:"DesktopTypeAttribute,omitempty" xml:"DesktopTypeAttribute,omitempty" type:"Struct"`
-	// The instance family of the cloud computer.
+	// The cloud computer instance family.
 	//
 	// example:
 	//
 	// eds.general
 	DesktopTypeFamily *string `json:"DesktopTypeFamily,omitempty" xml:"DesktopTypeFamily,omitempty"`
-	// Details of the disks.
+	// The disk information.
 	Disks []*DescribeBundlesResponseBodyBundlesDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
 	// The image ID.
 	//
@@ -147,25 +147,25 @@ type DescribeBundlesResponseBodyBundles struct {
 	//
 	// Windows server 2019 Chinese
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The status of the image.
+	// The image status.
 	//
 	// example:
 	//
 	// Available
 	ImageStatus *string `json:"ImageStatus,omitempty" xml:"ImageStatus,omitempty"`
-	// The OS language of the image.
+	// The language of the image operating system.
 	//
 	// example:
 	//
 	// en-US
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The type of the OS.
+	// The operating system type.
 	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The OS.
+	// The operating system platform information.
 	//
 	// example:
 	//
@@ -183,25 +183,25 @@ type DescribeBundlesResponseBodyBundles struct {
 	//
 	// 0
 	SessionType *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
-	// The inventory status of the cloud computer instance type. This parameter is returned only if you set the `CheckStock` parameter to `true`.
+	// The stock status. This parameter is returned when `CheckStock` is set to `True`.
 	//
 	// example:
 	//
 	// Sufficient
 	StockState *string `json:"StockState,omitempty" xml:"StockState,omitempty"`
-	// The category of the system disk.
+	// The system cloud disk type.
 	//
 	// example:
 	//
 	// cloud_efficiency
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	// Indicates whether disk encryption is enabled.
+	// Specifies whether to enable disk encryption.
 	//
 	// example:
 	//
 	// false
 	VolumeEncryptionEnabled *bool `json:"VolumeEncryptionEnabled,omitempty" xml:"VolumeEncryptionEnabled,omitempty"`
-	// The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled.
+	// The ID of the KMS key used when disk encryption is enabled.
 	//
 	// example:
 	//
@@ -509,19 +509,19 @@ func (s *DescribeBundlesResponseBodyBundlesDesktopTypeAttribute) Validate() erro
 }
 
 type DescribeBundlesResponseBodyBundlesDisks struct {
-	// The PL of the disk.
+	// The disk performance level.
 	//
 	// example:
 	//
 	// PL0
 	DiskPerformanceLevel *string `json:"DiskPerformanceLevel,omitempty" xml:"DiskPerformanceLevel,omitempty"`
-	// The size of the disk. Unit: GiB.
+	// The disk size. Unit: GiB.
 	//
 	// example:
 	//
 	// 150
 	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	// The type of the disk.
+	// The disk type.
 	//
 	// example:
 	//

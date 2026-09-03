@@ -20,9 +20,9 @@ type iModifyDesktopChargeTypeResponseBody interface {
 }
 
 type ModifyDesktopChargeTypeResponseBody struct {
-	// The IDs of the cloud desktops.
+	// The cloud desktop IDs. If multiple cloud desktops are created in a single call, multiple cloud desktop IDs are returned.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
@@ -34,7 +34,12 @@ type ModifyDesktopChargeTypeResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The file transfer task ID.
+	//
+	// example:
+	//
+	// task_abc123
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ModifyDesktopChargeTypeResponseBody) String() string {

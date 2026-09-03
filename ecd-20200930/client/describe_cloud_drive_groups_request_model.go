@@ -36,7 +36,7 @@ type iDescribeCloudDriveGroupsRequest interface {
 }
 
 type DescribeCloudDriveGroupsRequest struct {
-	// The ID of the cloud disk in Cloud Drive Service.
+	// The enterprise cloud drive ID.
 	//
 	// This parameter is required.
 	//
@@ -44,37 +44,25 @@ type DescribeCloudDriveGroupsRequest struct {
 	//
 	// cn-shanghai+cds-135515****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	// The workspace ID.
+	// The office network ID.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-jedbpr4sl9l37****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The workspace name.
+	// The office network name.
 	//
 	// example:
 	//
 	// testDirectoryName
 	DirectoryName *string `json:"DirectoryName,omitempty" xml:"DirectoryName,omitempty"`
-	// The team space status. Valid values:
-	//
-	// - enabled
-	//
-	// - disabled
-	//
-	// Default value: enabled.
+	// The team space status.
 	//
 	// example:
 	//
 	// enabled
 	DriveStatus *string `json:"DriveStatus,omitempty" xml:"DriveStatus,omitempty"`
-	// Specifies whether the space is increased.
-	//
-	// - binding: increased
-	//
-	// - unbound: not increased
-	//
-	// Default value: null. The default value indicates that all spaces are queried.
+	// Specifies whether a space is added. Default value: empty, which indicates that all types are queried.
 	//
 	// if can be null:
 	// true
@@ -83,51 +71,45 @@ type DescribeCloudDriveGroupsRequest struct {
 	//
 	// binding
 	DriveType *string `json:"DriveType,omitempty" xml:"DriveType,omitempty"`
-	// The team ID.
+	// The list of team space IDs.
 	GroupId []*string `json:"GroupId,omitempty" xml:"GroupId,omitempty" type:"Repeated"`
-	// The team name for fuzzy search.
+	// The team space name. Fuzzy match is supported.
 	//
 	// example:
 	//
-	// Test team 1
+	// TestTeam1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The team type.
-	//
-	// - org: organizational structure
-	//
-	// - directory: workspace
-	//
-	// Default value: null. The default value indicates that all types of teams are queried.
+	// The team type. Default value: empty, which indicates that all types are queried.
 	//
 	// example:
 	//
 	// org
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page for a paged query.
 	//
-	// - Valid values: 1 to 100
+	// - Maximum value: 100.
 	//
-	// - Default value: 20
+	// - Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The pagination token. Set this parameter to the value of `NextToken` that was returned in the previous call. You do not need to set this parameter for the first request.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6lY3I2VNHLwy+nIoSXh****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the parent node. If a parent node ID is specified, the subnodes are queried. If you set the value of this parameter to root, the root node is queried.
+	// The ID of the parent node of the object to query. To query the root node, set this parameter to `root`.
 	//
-	// Default value: null. The default value indicates that all nodes are queried.
+	// Default value: empty, which indicates that all team spaces are queried.
 	//
 	// example:
 	//
 	// cg-e70ga4ixp30ur****
 	ParentGroupId *string `json:"ParentGroupId,omitempty" xml:"ParentGroupId,omitempty"`
-	// The region ID.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

@@ -28,9 +28,19 @@ type iDescribeDesktopsInGroupRequest interface {
 }
 
 type DescribeDesktopsInGroupRequest struct {
-	CustomEndTimePeriod   *int64 `json:"CustomEndTimePeriod,omitempty" xml:"CustomEndTimePeriod,omitempty"`
+	// The end time of the custom time range.
+	//
+	// example:
+	//
+	// 18
+	CustomEndTimePeriod *int64 `json:"CustomEndTimePeriod,omitempty" xml:"CustomEndTimePeriod,omitempty"`
+	// The start time of the custom time range.
+	//
+	// example:
+	//
+	// 8
 	CustomStartTimePeriod *int64 `json:"CustomStartTimePeriod,omitempty" xml:"CustomStartTimePeriod,omitempty"`
-	// The ID of the desktop group.
+	// The ID of the shared cloud desktop.
 	//
 	// This parameter is required.
 	//
@@ -38,23 +48,19 @@ type DescribeDesktopsInGroupRequest struct {
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// Specifies whether to return deleted desktops.
+	// Specifies whether to ignore the deletion flag.
 	//
 	// example:
 	//
 	// true
 	IgnoreDeleted *bool `json:"IgnoreDeleted,omitempty" xml:"IgnoreDeleted,omitempty"`
-	// The maximum number of entries to return on a single page.
-	//
-	// - Maximum value: 100.
-	//
-	// - Default value: 10.
+	// The number of entries per page for a paged query.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to start the next query. If this parameter is empty, all results are returned.
+	// The pagination token for the next query. An empty value indicates that no more results exist.
 	//
 	// example:
 	//
@@ -66,7 +72,7 @@ type DescribeDesktopsInGroupRequest struct {
 	//
 	// PrePaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
 	//

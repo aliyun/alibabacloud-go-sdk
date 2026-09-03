@@ -38,43 +38,43 @@ type iDescribeUserConnectionRecordsRequest interface {
 }
 
 type DescribeUserConnectionRecordsRequest struct {
-	// The duration when the cloud desktop is connected, which is the minimum value for condition filtering.
+	// The minimum value of the connection duration used as a filter condition.
 	//
 	// example:
 	//
 	// 100
 	ConnectDurationFrom *int64 `json:"ConnectDurationFrom,omitempty" xml:"ConnectDurationFrom,omitempty"`
-	// The duration when the cloud desktop is connected, which is the maximum value for condition filtering.
+	// The maximum value of the connection duration used as a filter condition.
 	//
 	// example:
 	//
 	// 100
 	ConnectDurationTo *int64 `json:"ConnectDurationTo,omitempty" xml:"ConnectDurationTo,omitempty"`
-	// The time when the cloud desktop stops to be connected, which is the minimum value for condition filtering. The value is a UNIX timestamp. Unit: milliseconds.
+	// The minimum value of the connection end time used as a filter condition. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1631266200000
 	ConnectEndTimeFrom *int64 `json:"ConnectEndTimeFrom,omitempty" xml:"ConnectEndTimeFrom,omitempty"`
-	// The time when the cloud desktop stops to be connected, which is the maximum value for condition filtering. The value is a UNIX timestamp. Unit: milliseconds.
+	// The maximum value of the connection end time used as a filter condition. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1631268000000
 	ConnectEndTimeTo *int64 `json:"ConnectEndTimeTo,omitempty" xml:"ConnectEndTimeTo,omitempty"`
-	// The time when the cloud desktop starts to be connected, which is the minimum value for condition filtering. The value is a UNIX timestamp. Unit: milliseconds.
+	// The minimum value of the connection start time used as a filter condition. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1631239200000
 	ConnectStartTimeFrom *int64 `json:"ConnectStartTimeFrom,omitempty" xml:"ConnectStartTimeFrom,omitempty"`
-	// The time when the cloud desktop starts to be connected, which is the maximum value for condition filtering. The value is a UNIX timestamp. Unit: milliseconds.
+	// The maximum value of the connection start time used as a filter condition. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1631241000000
 	ConnectStartTimeTo *int64 `json:"ConnectStartTimeTo,omitempty" xml:"ConnectStartTimeTo,omitempty"`
-	// The ID of the cloud computer pool.
+	// The cloud computer pool ID.
 	//
 	// This parameter is required.
 	//
@@ -82,13 +82,13 @@ type DescribeUserConnectionRecordsRequest struct {
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The ID of the cloud computer.
+	// The cloud computer ID.
 	//
 	// example:
 	//
 	// ecd-138dsptkrt00u****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The ID of the authorized user.
+	// The authorized user ID.
 	//
 	// This parameter is required.
 	//
@@ -96,43 +96,33 @@ type DescribeUserConnectionRecordsRequest struct {
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The type of the user account.
-	//
-	// Valid values:
+	// The type of user account system. Valid values:
 	//
 	// - SIMPLE: convenience account
 	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
 	// - AD_CONNECTOR: enterprise AD account
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
 	//
 	// example:
 	//
 	// SIMPLE
 	EndUserType *string `json:"EndUserType,omitempty" xml:"EndUserType,omitempty"`
-	// The number of entries to return on each page. Maximum value: 100. Default value: 10.
+	// The number of entries per page for a paged query.
+	//
+	// Maximum value: 100.
+	//
+	// Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the next query. If this parameter is empty, all results are returned.
+	// The pagination token for the next query. An empty value indicates that there is no next page.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

@@ -16,13 +16,13 @@ type iCreateImageResponseBody interface {
 }
 
 type CreateImageResponseBody struct {
-	// The ID of the image.
+	// The image ID.
 	//
 	// example:
 	//
 	// m-gx2x1dhsmusr2****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

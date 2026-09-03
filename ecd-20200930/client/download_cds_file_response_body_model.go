@@ -100,7 +100,7 @@ type DownloadCdsFileResponseBodyDownloadFileModel struct {
 	//
 	// example:
 	//
-	// None.
+	// None
 	DownloadType *string `json:"DownloadType,omitempty" xml:"DownloadType,omitempty"`
 	// The download URL.
 	//
@@ -112,7 +112,7 @@ type DownloadCdsFileResponseBodyDownloadFileModel struct {
 	//
 	// example:
 	//
-	// None.
+	// None
 	ExpirationSecond *string `json:"ExpirationSecond,omitempty" xml:"ExpirationSecond,omitempty"`
 	// The expiration time of the file download URL.
 	//
@@ -136,7 +136,7 @@ type DownloadCdsFileResponseBodyDownloadFileModel struct {
 	//
 	// example:
 	//
-	// None.
+	// None
 	StreamUrl *string `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
 }
 

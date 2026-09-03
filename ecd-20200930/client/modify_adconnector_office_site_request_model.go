@@ -40,37 +40,37 @@ type iModifyADConnectorOfficeSiteRequest interface {
 }
 
 type ModifyADConnectorOfficeSiteRequest struct {
-	// The hostname of the domain controller. The hostname must comply with the naming conventions for hostnames in Windows.
+	// The hostname of the domain controller. The hostname must comply with Windows hostname naming conventions.
 	//
 	// example:
 	//
 	// beijing-ad01
 	AdHostname *string `json:"AdHostname,omitempty" xml:"AdHostname,omitempty"`
-	// The hostname of the secondary domain controller.
+	// The hostname of the backup domain controller.
 	//
 	// example:
 	//
 	// dc002
 	BackupDCHostname *string `json:"BackupDCHostname,omitempty" xml:"BackupDCHostname,omitempty"`
-	// The IP address of the DNS server corresponding to the secondary domain controller.
+	// The DNS address of the backup domain controller.
 	//
 	// example:
 	//
 	// 192.168.2.100
 	BackupDns *string `json:"BackupDns,omitempty" xml:"BackupDns,omitempty"`
-	// The IP addresses of the DNS servers corresponding to the enterprise ADs. You can specify only one DNS IP address.
+	// The IP address of the DNS server corresponding to the enterprise AD. Currently, only one IP address can be specified.
 	//
 	// example:
 	//
 	// 127.0.*.*
 	DnsAddress []*string `json:"DnsAddress,omitempty" xml:"DnsAddress,omitempty" type:"Repeated"`
-	// The domain name of the enterprise AD system. You can register each domain name only once.
+	// The domain name of the enterprise AD. The same domain name can be registered only once.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The password of the domain administrator. The username can be up to 64 characters in length.
+	// The password of the domain administrator. The password can be up to 64 characters in length.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type ModifyADConnectorOfficeSiteRequest struct {
 	DomainPassword *string `json:"DomainPassword,omitempty" xml:"DomainPassword,omitempty"`
 	// The username of the domain administrator. The username can be up to 64 characters in length.
 	//
-	// > Specify the value of the sAMAccountName parameter instead of the value of the userPrincipalName parameter as the username.
+	// > Use sAMAccountName for the username. Do not use userPrincipalName.
 	//
 	// example:
 	//
@@ -86,29 +86,11 @@ type ModifyADConnectorOfficeSiteRequest struct {
 	DomainUserName *string `json:"DomainUserName,omitempty" xml:"DomainUserName,omitempty"`
 	// Specifies whether to enable multi-factor authentication (MFA).
 	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
 	// false
 	MfaEnabled *bool `json:"MfaEnabled,omitempty" xml:"MfaEnabled,omitempty"`
-	// The name of the organizational unit (OU) in the AD domain. You can call the [ListUserAdOrganizationUnits](https://help.aliyun.com/document_detail/311259.html) operation to obtain OUs.
+	// The organizational unit (OU) of the AD domain. You can call [ListUserAdOrganizationUnits](https://help.aliyun.com/document_detail/311259.html) to obtain the value.
 	//
 	// example:
 	//
@@ -122,13 +104,13 @@ type ModifyADConnectorOfficeSiteRequest struct {
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The office network name. The name must be 2 to 255 characters in length. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
+	// The office network name. The name must be 2 to 255 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain digits, colons (:), underscores (_), or hyphens (-).
 	//
 	// example:
 	//
 	// test
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -136,13 +118,13 @@ type ModifyADConnectorOfficeSiteRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IP addresses of the DNS servers corresponding to the enterprise AD subdomains. You can specify only one DNS IP address. If you specify `SubDomainName` and leave this parameter empty, the value is the same as that of the enterprise AD domain.
+	// The DNS address of the enterprise AD subdomain. Currently, only one address can be specified. If `SubDomainName` is specified but this parameter is not, the subdomain DNS defaults to the same value as the parent domain.
 	//
 	// example:
 	//
 	// 127.0.*.*
 	SubDomainDnsAddress []*string `json:"SubDomainDnsAddress,omitempty" xml:"SubDomainDnsAddress,omitempty" type:"Repeated"`
-	// The name of the subdomain in the enterprise AD domain.
+	// The domain name of the enterprise AD subdomain.
 	//
 	// example:
 	//

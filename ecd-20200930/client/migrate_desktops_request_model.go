@@ -22,11 +22,11 @@ type iMigrateDesktopsRequest interface {
 }
 
 type MigrateDesktopsRequest struct {
-	// The IDs of the cloud computers to migrate. You can specify 1 to 100 IDs.
+	// The IDs of cloud computers. You can specify 1 to 100 IDs.
 	//
 	// This parameter is required.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// The region ID. To get a list of supported regions, call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,11 @@ type MigrateDesktopsRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// This parameter is not publicly available.
+	// The member IP address of the target node for migration.
+	//
+	// example:
+	//
+	// 192.168.1.10
 	TargetMemberIp *string `json:"TargetMemberIp,omitempty" xml:"TargetMemberIp,omitempty"`
 	// The ID of the target office network.
 	//
@@ -44,7 +48,11 @@ type MigrateDesktopsRequest struct {
 	//
 	// cn-shenzhen+dir-388505****
 	TargetOfficeSiteId *string `json:"TargetOfficeSiteId,omitempty" xml:"TargetOfficeSiteId,omitempty"`
-	// This parameter is not publicly available.
+	// > This parameter is not publicly available.
+	//
+	// example:
+	//
+	// vsw-bp1m3o4kbjxwe****
 	TargetSubnetId *string `json:"TargetSubnetId,omitempty" xml:"TargetSubnetId,omitempty"`
 }
 

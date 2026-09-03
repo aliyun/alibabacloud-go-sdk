@@ -26,12 +26,13 @@ type iCreateQosRuleRequest interface {
 }
 
 type CreateQosRuleRequest struct {
-	// The IDs of the cloud phones to include in this rule.
-	AuthAndroidId      []*string `json:"AuthAndroidId,omitempty" xml:"AuthAndroidId,omitempty" type:"Repeated"`
+	// The list of cloud phones to associate.
+	AuthAndroidId []*string `json:"AuthAndroidId,omitempty" xml:"AuthAndroidId,omitempty" type:"Repeated"`
+	// The ID of the cloud computer pool for which the authorization takes effect.
 	AuthDesktopGroupId []*string `json:"AuthDesktopGroupId,omitempty" xml:"AuthDesktopGroupId,omitempty" type:"Repeated"`
-	// The IDs of the cloud desktops to include in this rule.
+	// The list of cloud computer IDs to associate.
 	AuthDesktopId []*string `json:"AuthDesktopId,omitempty" xml:"AuthDesktopId,omitempty" type:"Repeated"`
-	// The maximum downstream bandwidth. Unit: Mbps.
+	// The peak downstream bandwidth. Unit: Mbit/s.
 	//
 	// This parameter is required.
 	//
@@ -39,7 +40,7 @@ type CreateQosRuleRequest struct {
 	//
 	// 5
 	Download *int32 `json:"Download,omitempty" xml:"Download,omitempty"`
-	// The ID of the premium bandwidth plan.
+	// The premium bandwidth ID.
 	//
 	// This parameter is required.
 	//
@@ -47,15 +48,15 @@ type CreateQosRuleRequest struct {
 	//
 	// np-cfedn7r2pe48g****
 	NetworkPackageId *string `json:"NetworkPackageId,omitempty" xml:"NetworkPackageId,omitempty"`
-	// The name of the QoS rule.
+	// The name of the rate limiting rule.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Test
+	// Office network rate limiting rule
 	QosRuleName *string `json:"QosRuleName,omitempty" xml:"QosRuleName,omitempty"`
-	// The maximum upstream bandwidth. Unit: Mbps.
+	// The peak upstream bandwidth. Unit: Mbit/s.
 	//
 	// This parameter is required.
 	//

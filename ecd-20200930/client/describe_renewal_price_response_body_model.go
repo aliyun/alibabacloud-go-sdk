@@ -64,7 +64,7 @@ func (s *DescribeRenewalPriceResponseBody) Validate() error {
 type DescribeRenewalPriceResponseBodyPriceInfo struct {
 	// The price.
 	Price *DescribeRenewalPriceResponseBodyPriceInfoPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
-	// The promotion rules.
+	// The promotion rule information.
 	Rules []*DescribeRenewalPriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -113,21 +113,21 @@ func (s *DescribeRenewalPriceResponseBodyPriceInfo) Validate() error {
 }
 
 type DescribeRenewalPriceResponseBodyPriceInfoPrice struct {
-	// <props="china">The unit of currency. The value is CNY.
+	// <props="china">The currency unit (CNY).
 	//
-	// <props="intl">The unit of currency. The value is USD.
+	// <props="intl">The currency unit (USD).
 	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The discount.
+	// The discount amount.
 	//
 	// example:
 	//
 	// 15.8
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
-	// The order details.
+	// The order information.
 	OrderLines map[string]*string `json:"OrderLines,omitempty" xml:"OrderLines,omitempty"`
 	// The original price.
 	//
@@ -135,9 +135,9 @@ type DescribeRenewalPriceResponseBodyPriceInfoPrice struct {
 	//
 	// 79.0
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// The promotion details.
+	// The promotion information.
 	Promotions []*DescribeRenewalPriceResponseBodyPriceInfoPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
-	// The final price. This is the value of `OriginalPrice` minus `DiscountPrice`.
+	// The actual payment price. The value is the original price minus the discount amount.
 	//
 	// example:
 	//
@@ -231,7 +231,7 @@ type DescribeRenewalPriceResponseBodyPriceInfoPricePromotions struct {
 	//
 	// example:
 	//
-	// 新品上市，立享优惠
+	// New product launch, enjoy discounts now
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
 	// The promotion ID.
 	//
@@ -243,7 +243,7 @@ type DescribeRenewalPriceResponseBodyPriceInfoPricePromotions struct {
 	//
 	// example:
 	//
-	// Featured deals
+	// Selected deals
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
 	// Indicates whether the promotion is selected.
 	//
@@ -315,7 +315,7 @@ type DescribeRenewalPriceResponseBodyPriceInfoRules struct {
 	//
 	// example:
 	//
-	// 买满1年，立享官网价格8.5折优惠。
+	// Get 15% off the list price when you purchase a 1-year subscription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The rule ID.
 	//

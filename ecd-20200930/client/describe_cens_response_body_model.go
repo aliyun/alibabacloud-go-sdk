@@ -22,9 +22,9 @@ type iDescribeCensResponseBody interface {
 }
 
 type DescribeCensResponseBody struct {
-	// Details of the CEN instances.
+	// The details of the CEN instances.
 	Cens []*DescribeCensResponseBodyCens `json:"Cens,omitempty" xml:"Cens,omitempty" type:"Repeated"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *DescribeCensResponseBody) Validate() error {
 }
 
 type DescribeCensResponseBodyCens struct {
-	// The ID of the CEN instance.
+	// The CEN instance ID.
 	//
 	// example:
 	//
 	// cen-3gwy16dojz1m65****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The time when the CEN instance was created.
+	// The time when the CEN instance was created. The time is in the ISO 8601 standard (UTC).
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type DescribeCensResponseBodyCens struct {
 	//
 	// example:
 	//
-	// test
+	// Production environment CEN
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The IPv6 level.
 	//
@@ -149,27 +149,15 @@ type DescribeCensResponseBodyCens struct {
 	//
 	// testCen
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The bandwidth plans that are bound to the CEN instance.
+	// The list of bandwidth packages bound to the CEN instance.
 	PackageIds []*DescribeCensResponseBodyCensPackageIds `json:"PackageIds,omitempty" xml:"PackageIds,omitempty" type:"Repeated"`
-	// The tolerated level of CIDR block conflict.
-	//
-	// Valid value:
-	//
-	// - REDUCED: CIDR block conflicts are allowed, but the conflicting CIDR blocks cannot be identical.
+	// The level of CIDR block overlap conflicts.
 	//
 	// example:
 	//
 	// REDUCED
 	ProtectionLevel *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
 	// The status of the CEN instance.
-	//
-	// Valid values:
-	//
-	// - Creating
-	//
-	// - Active
-	//
-	// - Deleting
 	//
 	// example:
 	//
@@ -291,7 +279,7 @@ func (s *DescribeCensResponseBodyCens) Validate() error {
 }
 
 type DescribeCensResponseBodyCensPackageIds struct {
-	// The ID of the bandwidth plan that is bound to the CEN instance.
+	// The ID of the bandwidth package bound to the CEN instance.
 	//
 	// example:
 	//
@@ -321,13 +309,13 @@ func (s *DescribeCensResponseBodyCensPackageIds) Validate() error {
 }
 
 type DescribeCensResponseBodyCensTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// testKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

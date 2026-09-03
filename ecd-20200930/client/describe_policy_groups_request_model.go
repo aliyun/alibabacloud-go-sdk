@@ -30,34 +30,55 @@ type iDescribePolicyGroupsRequest interface {
 }
 
 type DescribePolicyGroupsRequest struct {
+	// The business channel. Valid values:
+	//
+	// - Enterprise: Enterprise Edition.
+	//
+	// - Business: Business Edition.
+	//
+	// example:
+	//
+	// Enterprise
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The list of cloud computer policy IDs to exclude from the query results.
 	ExternalPolicyGroupIds []*string `json:"ExternalPolicyGroupIds,omitempty" xml:"ExternalPolicyGroupIds,omitempty" type:"Repeated"`
-	// The number of entries per page.
+	// The number of entries per page for a paged query.
 	//
-	// - Maximum value: 100
+	// - Maximum value: 100.
 	//
-	// - Default value: 10
+	// - Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set this parameter to the NextToken value returned in the previous response. Do not set this parameter for the first request.
+	// The pagination token. Set this parameter to the value of NextToken that was returned from the last call to this operation. You do not need to set this parameter for the first request.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number of the current page for a paged query.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The maximum number of entries per page for a paged query.
+	//
+	// Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The list of cloud computer policy IDs.
 	//
 	// example:
 	//
 	// system-all-enabled-policy
 	PolicyGroupId []*string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty" type:"Repeated"`
-	// The region ID. Call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
 	//

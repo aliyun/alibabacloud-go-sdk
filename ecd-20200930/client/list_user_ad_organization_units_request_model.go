@@ -38,7 +38,7 @@ type ListUserAdOrganizationUnitsRequest struct {
 	//
 	// example:
 	//
-	// caeba0bbb2be03f84eb48b699f0a4883
+	// CAAAAA==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The enterprise AD office network ID.
 	//

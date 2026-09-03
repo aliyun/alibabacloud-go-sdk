@@ -20,21 +20,21 @@ type iDescribeImageModifiedRecordsResponseBody interface {
 }
 
 type DescribeImageModifiedRecordsResponseBody struct {
-	// Collection of image modification records.
+	// The image change records.
 	ImageModifiedRecords []*DescribeImageModifiedRecordsResponseBodyImageModifiedRecords `json:"ImageModifiedRecords,omitempty" xml:"ImageModifiedRecords,omitempty" type:"Repeated"`
-	// Token for the next page of results. An empty NextToken means no more results.
+	// The pagination token for the next query. If NextToken is empty, no more results exist.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6koN7RqHg3d2z8LKmSoe821
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// DC40EE61-7E83-59ED-AEA6-7EE9C437F352
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total number of image modification records.
+	// The total number of image change records.
 	//
 	// example:
 	//
@@ -100,38 +100,43 @@ func (s *DescribeImageModifiedRecordsResponseBody) Validate() error {
 }
 
 type DescribeImageModifiedRecordsResponseBodyImageModifiedRecords struct {
-	// ID of the original image before modification.
+	// The image ID before the change.
 	//
 	// example:
 	//
 	// desktopimage-windows-server-2019-64-ch-asp
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// Name of the original image before modification.
+	// The image name before the change.
 	//
 	// example:
 	//
 	// Windows server 2019 Mainland
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// ID of the new image after modification.
+	// The ID of the new image after the change.
 	//
 	// example:
 	//
 	// desktopimage-windows-server-2022-64-ch-asp
 	NewImageId *string `json:"NewImageId,omitempty" xml:"NewImageId,omitempty"`
-	// Name of the new image after modification.
+	// The name of the new image after the change.
 	//
 	// example:
 	//
 	// Windows server 2022 Mainland asp
 	NewImageName *string `json:"NewImageName,omitempty" xml:"NewImageName,omitempty"`
-	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// Status of the image modification.
+	// The reason for ignoring the vulnerability. This parameter is required only when you perform the ignore vulnerability operation, that is, when `OperateType` is set to `vul_ignore`.
+	//
+	// example:
+	//
+	// Defer fix
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The status of the image change.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Time when the image was last modified.
+	// The time when the image was last changed. The time is in the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ss.SSSZ.
 	//
 	// example:
 	//

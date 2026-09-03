@@ -104,13 +104,13 @@ type DescribeOfficeSiteBridgeInfoResponseBodyBridge struct {
 	//
 	// user
 	DefaultUser *string `json:"DefaultUser,omitempty" xml:"DefaultUser,omitempty"`
-	// The deployment time of the virtual bridge.
+	// The deployment time of the virtual bridge. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2025-11-07T02:02:00Z
 	DeployTime *string `json:"DeployTime,omitempty" xml:"DeployTime,omitempty"`
-	// The expiration time of the virtual bridge.
+	// The expiration time of the virtual bridge. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type DescribeOfficeSiteBridgeInfoResponseBodyBridge struct {
 	//
 	// P0801-1
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// The start time of the virtual bridge.
+	// The start time of the virtual bridge. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//

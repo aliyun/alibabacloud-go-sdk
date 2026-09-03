@@ -94,7 +94,12 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	// example:
 	//
 	// 2
-	Cpu          *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The creation time of the cloud desktop. The time is in the ISO 8601 standard (UTC).
+	//
+	// example:
+	//
+	// 2020-11-06T08:28Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The shared cloud desktop ID.
 	//
@@ -186,7 +191,7 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	//
 	// Windows 10
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The protocol type.
+	// The protocol type. Valid values:
 	//
 	// - HDX
 	//
@@ -202,7 +207,7 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The enterprise resource group name.
+	// The enterprise resource group names.
 	ResourceGroups []*DescribeGlobalDesktopRecordsResponseBodySessionsResourceGroups `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Repeated"`
 	// The session idle duration. Unit: minutes.
 	//
@@ -212,7 +217,7 @@ type DescribeGlobalDesktopRecordsResponseBodySessions struct {
 	SessionIdleTime *int64 `json:"SessionIdleTime,omitempty" xml:"SessionIdleTime,omitempty"`
 	// The session details.
 	Sessions []*DescribeGlobalDesktopRecordsResponseBodySessionsSessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
-	// The time when the cloud desktop status changed.
+	// The UNIX timestamp of the cloud desktop status change. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -569,7 +574,9 @@ type DescribeGlobalDesktopRecordsResponseBodySessionsSessions struct {
 	//
 	// TestUser
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The time when the session was created.
+	// The session creation time.
+	//
+	// The time is in the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//

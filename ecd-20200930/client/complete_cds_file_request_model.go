@@ -24,7 +24,7 @@ type iCompleteCdsFileRequest interface {
 }
 
 type CompleteCdsFileRequest struct {
-	// The ID of the enterprise drive.
+	// The enterprise network disk ID.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,13 @@ type CompleteCdsFileRequest struct {
 	//
 	// 635a316c94f40f35f5354da29b2aee88c9d1****
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The ID of the team space. You must specify at least one of `EndUserId` and `GroupId`.
+	// The team workspace ID. You must specify at least one of `EndUserId` and `GroupId`.
 	//
 	// example:
 	//
 	// cg-i1ruuudp92qpj****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type CompleteCdsFileRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the file upload task. Callable interface [CreateCdsFile](https://help.aliyun.com/document_detail/2247619.html).
+	// The ID of the file upload task. You can call [CreateCdsFile](https://help.aliyun.com/document_detail/2247619.html) to obtain the ID.
 	//
 	// This parameter is required.
 	//

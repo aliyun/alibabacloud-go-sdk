@@ -18,15 +18,15 @@ type iDescribeImagesResponseBody interface {
 }
 
 type DescribeImagesResponseBody struct {
-	// The details of the images.
+	// The collection of image information.
 	Images []*DescribeImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	// The token that determines the start point of the next query. If this parameter is empty, all results are returned.
+	// The pagination token for the next query. An empty value indicates that there is no next page.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,79 +83,61 @@ func (s *DescribeImagesResponseBody) Validate() error {
 }
 
 type DescribeImagesResponseBodyImages struct {
-	// The version of the image.
+	// The image version.
 	//
 	// example:
 	//
 	// 1.0.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// The time when the image was created.
+	// The time when the image was created. The time is in the ISO 8601 standard in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2018-01-10T01:01:10Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The size of the data disk. Unit: GiB.
+	// The data cloud disk size. Unit: GiB.
 	//
 	// example:
 	//
 	// 150
 	DataDiskSize *int32 `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
-	// The description of the image.
+	// The image description.
 	//
 	// example:
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the image is a GPU-accelerated image.
+	// Specifies whether the image is a GPU image.
 	//
 	// example:
 	//
 	// false
 	GpuCategory *bool `json:"GpuCategory,omitempty" xml:"GpuCategory,omitempty"`
-	// The version number of the GPU driver.
+	// The GPU driver version.
 	//
 	// example:
 	//
 	// 417.22
 	GpuDriverVersion *string `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
-	// The ID of the image.
+	// The image ID.
 	//
 	// example:
 	//
 	// m-gx2x1dhsmusr2****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The type of the image.
-	//
-	// Valid values:
-	//
-	// - SYSTEM
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - CUSTOM
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
+	// The image type.
 	//
 	// example:
 	//
 	// SYSTEM
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	// The name of the image.
+	// The image name.
 	//
 	// example:
 	//
 	// testImageName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the operating system.
+	// The operating system type.
 	//
 	// example:
 	//
@@ -163,69 +145,11 @@ type DescribeImagesResponseBodyImages struct {
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	// The operating system type of the image.
 	//
-	// Valid values:
-	//
-	// - Ubuntu
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - Windows Server 2022
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - UOS
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - CentOS
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - Windows Server 2019
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - SQL Server 2016
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - Windows 10
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
 	// example:
 	//
 	// Windows Server 2019
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The creation progress of the image. Unit: %.
+	// The progress of image creation. Unit: %.
 	//
 	// example:
 	//
@@ -233,23 +157,11 @@ type DescribeImagesResponseBodyImages struct {
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The protocol type.
 	//
-	// Valid values:
-	//
-	// - HDX: High-definition Experience (HDX) protocol
-	//
-	// - ASP: in-house Adaptive Streaming Protocol (ASP) (recommended)
-	//
 	// example:
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The type of the image session.
-	//
-	// Valid values:
-	//
-	// - SINGLE_SESSION: single-session image.
-	//
-	// - MULTIPLE_SESSION: multi-session image.
+	// The session type of the image.
 	//
 	// example:
 	//
@@ -261,47 +173,21 @@ type DescribeImagesResponseBodyImages struct {
 	//
 	// 1
 	SharedCount *int32 `json:"SharedCount,omitempty" xml:"SharedCount,omitempty"`
-	// The size of the image. Unit: GiB.
+	// The image size. Unit: GiB.
 	//
 	// example:
 	//
 	// 40
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The status of the image.
-	//
-	// Valid values:
-	//
-	// - Creating
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - Available
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - CreateFailed
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
+	// The image status.
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The languages of the operating system.
+	// The operating system language.
 	SupportedLanguages []*string `json:"SupportedLanguages,omitempty" xml:"SupportedLanguages,omitempty" type:"Repeated"`
-	// The time when the image was last modified.
+	// The time when the image was last modified. The time is in the ISO 8601 standard in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -313,7 +199,7 @@ type DescribeImagesResponseBodyImages struct {
 	//
 	// false
 	VolumeEncryptionEnabled *bool `json:"VolumeEncryptionEnabled,omitempty" xml:"VolumeEncryptionEnabled,omitempty"`
-	// The ID of the Key Management Service (KMS) key that is used when disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to query the list of KMS keys.
+	// The ID of the KMS key used for disk encryption. You can call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
 	//
 	// example:
 	//

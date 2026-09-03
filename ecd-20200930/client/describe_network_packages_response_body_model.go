@@ -20,7 +20,7 @@ type iDescribeNetworkPackagesResponseBody interface {
 type DescribeNetworkPackagesResponseBody struct {
 	// The list of premium Internet bandwidth plans.
 	NetworkPackages []*DescribeNetworkPackagesResponseBodyNetworkPackages `json:"NetworkPackages,omitempty" xml:"NetworkPackages,omitempty" type:"Repeated"`
-	// The token for the next query. If NextToken is empty, no more results exist.
+	// The pagination token for the next query. If NextToken is empty, no more pages exist.
 	//
 	// example:
 	//
@@ -95,7 +95,7 @@ type DescribeNetworkPackagesResponseBodyNetworkPackages struct {
 	//
 	// Normal
 	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
-	// The creation time.
+	// The time when the plan was created. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
 	//
 	// example:
 	//
@@ -109,21 +109,23 @@ type DescribeNetworkPackagesResponseBodyNetworkPackages struct {
 	//
 	// - If the plan uses the pay-as-you-go billing method, `2099-12-31T15:59:59Z` is returned.
 	//
+	// The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+	//
 	// example:
 	//
 	// 2099-12-31T15:59:59Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// The billing method of the premium Internet bandwidth plan.
 	//
-	// - If the parameter `PayType` is set to `PrePaid`, valid values:
+	// - If the parameter `PayType` is set to `PrePaid`, the valid value is:
 	//
-	//     - PayByBandwidth: pay-by-bandwidth.
+	//     - PayByBandwidth: billing by fixed bandwidth.
 	//
-	// - If the parameter `PayType` is set to `PostPaid`, valid values:
+	// - If the parameter `PayType` is set to `PostPaid`, valid values are:
 	//
-	//     - PayByTraffic: pay-by-data-transfer.
+	//     - PayByTraffic: billing by data transfer.
 	//
-	//     - PayByBandwidth: pay-by-bandwidth.
+	//     - PayByBandwidth: billing by fixed bandwidth.
 	//
 	// example:
 	//
@@ -165,7 +167,7 @@ type DescribeNetworkPackagesResponseBodyNetworkPackages struct {
 	//
 	// PostPaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The effective period of the reserved network bandwidth.
+	// The effective period of the reserved network bandwidth. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
 	//
 	// example:
 	//
@@ -182,8 +184,9 @@ type DescribeNetworkPackagesResponseBodyNetworkPackages struct {
 	// example:
 	//
 	// PayByBandwidth
-	ReservationInternetChargeType *string                                                   `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
-	Tags                          []*DescribeNetworkPackagesResponseBodyNetworkPackagesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ReservationInternetChargeType *string `json:"ReservationInternetChargeType,omitempty" xml:"ReservationInternetChargeType,omitempty"`
+	// The tags.
+	Tags []*DescribeNetworkPackagesResponseBodyNetworkPackagesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeNetworkPackagesResponseBodyNetworkPackages) String() string {
@@ -352,7 +355,17 @@ func (s *DescribeNetworkPackagesResponseBodyNetworkPackages) Validate() error {
 }
 
 type DescribeNetworkPackagesResponseBodyNetworkPackagesTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key. If you specify this parameter, the value cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// TestValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

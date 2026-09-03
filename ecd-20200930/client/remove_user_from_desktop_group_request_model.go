@@ -28,28 +28,48 @@ type iRemoveUserFromDesktopGroupRequest interface {
 }
 
 type RemoveUserFromDesktopGroupRequest struct {
-	// The ID of the shared cloud desktop from which you revoke the user’s permission.
+	// The ID of the shared cloud computer from which to remove authorized users.
 	//
 	// example:
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// A list of shared desktop group IDs.
+	// The list of shared cloud computer IDs.
 	DesktopGroupIds []*string `json:"DesktopGroupIds,omitempty" xml:"DesktopGroupIds,omitempty" type:"Repeated"`
 	// The list of authorized users to remove.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	OrgId      *string   `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to get a list of regions where WUYING Workspace is available.
+	// The organization ID of the team.
+	//
+	// example:
+	//
+	// org-aliyun-wy-org-id
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The convenience user group ID.
+	//
+	// example:
+	//
+	// ug-3f6c8a2b****
 	SimpleUserGroupId *string `json:"SimpleUserGroupId,omitempty" xml:"SimpleUserGroupId,omitempty"`
-	UserGroupName     *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
-	UserOuPath        *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
+	// The user group name.
+	//
+	// example:
+	//
+	// R&D Group
+	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
+	// The organizational unit (OU) path of the user.
+	//
+	// example:
+	//
+	// example.com
+	UserOuPath *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
 }
 
 func (s RemoveUserFromDesktopGroupRequest) String() string {

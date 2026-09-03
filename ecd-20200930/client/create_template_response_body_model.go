@@ -30,7 +30,7 @@ type CreateTemplateResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The template ID returned after the template is created.
+	// The template ID returned after successful creation.
 	//
 	// example:
 	//

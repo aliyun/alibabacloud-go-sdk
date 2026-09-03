@@ -20,7 +20,7 @@ type iDescribeImageModifiedRecordsRequest interface {
 }
 
 type DescribeImageModifiedRecordsRequest struct {
-	// The cloud desktop ID.
+	// The cloud computer ID.
 	//
 	// This parameter is required.
 	//
@@ -28,23 +28,23 @@ type DescribeImageModifiedRecordsRequest struct {
 	//
 	// ecd-bd53sfmysz8ir****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// Number of entries per page for paged queries.
+	// The number of entries per page for a paged query.
 	//
-	// - Maximum: 100.
+	// - Maximum value: 100.
 	//
-	// - Default: 10.
+	// - Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Pagination token. Set this parameter to the NextToken value returned by the previous API call.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l3d+SWeOobbIlDLjwhjkTk
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to list regions that support WUYING Workspace.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

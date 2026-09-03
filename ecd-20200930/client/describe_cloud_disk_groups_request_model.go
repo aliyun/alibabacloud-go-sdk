@@ -22,7 +22,7 @@ type iDescribeCloudDiskGroupsRequest interface {
 }
 
 type DescribeCloudDiskGroupsRequest struct {
-	// The ID of the enterprise cloud drive that you created.
+	// The ID of the enterprise cloud disk that is created.
 	//
 	// This parameter is required.
 	//
@@ -30,13 +30,13 @@ type DescribeCloudDiskGroupsRequest struct {
 	//
 	// cn-hangzhou+cds-0456357992
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	// The group ID.
+	// The configuration group ID.
 	GroupId []*string `json:"GroupId,omitempty" xml:"GroupId,omitempty" type:"Repeated"`
 	// The team space name.
 	//
 	// example:
 	//
-	// Test team 1
+	// TestTeam1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The parent organization ID.
 	//

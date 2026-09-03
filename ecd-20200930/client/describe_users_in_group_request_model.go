@@ -32,13 +32,13 @@ type iDescribeUsersInGroupRequest interface {
 }
 
 type DescribeUsersInGroupRequest struct {
-	// The connection status of the user.
+	// The connection state of the user.
 	//
 	// example:
 	//
 	// 1
 	ConnectState *int32 `json:"ConnectState,omitempty" xml:"ConnectState,omitempty"`
-	// The shared cloud desktop ID.
+	// The ID of the shared cloud computer.
 	//
 	// This parameter is required.
 	//
@@ -52,15 +52,15 @@ type DescribeUsersInGroupRequest struct {
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// A list of authorized user IDs.
+	// The list of authorized user IDs.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The string for a partial match query. Results that contain this string are returned.
+	// The fuzzy query string. All results that contain this character string are returned.
 	//
 	// example:
 	//
 	// alice
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page for a paged query.
 	//
 	// - Maximum value: 100.
 	//
@@ -70,7 +70,7 @@ type DescribeUsersInGroupRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token to start the next query. An empty value indicates that all results have been returned.
+	// The pagination token for the next query. An empty value indicates that there is no next page.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type DescribeUsersInGroupRequest struct {
 	//
 	// true
 	QueryUserDetail *bool `json:"QueryUserDetail,omitempty" xml:"QueryUserDetail,omitempty"`
-	// The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to get a list of regions where WUYING Workspace is available.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

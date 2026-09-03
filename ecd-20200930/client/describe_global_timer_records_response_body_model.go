@@ -120,6 +120,8 @@ type DescribeGlobalTimerRecordsResponseBodyResults struct {
 	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
 	// The time when the record was created.
 	//
+	// The time is in the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2023-08-03T08:27:29Z
@@ -130,7 +132,7 @@ type DescribeGlobalTimerRecordsResponseBodyResults struct {
 	//
 	// ecd-0c951fy9arnk9****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The cloud computer name.
+	// The name of the cloud computer.
 	//
 	// example:
 	//
@@ -144,6 +146,8 @@ type DescribeGlobalTimerRecordsResponseBodyResults struct {
 	DisplayResultName *string `json:"DisplayResultName,omitempty" xml:"DisplayResultName,omitempty"`
 	// The time when the task ended.
 	//
+	// The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2025-01-21T02:00:45Z
@@ -154,6 +158,8 @@ type DescribeGlobalTimerRecordsResponseBodyResults struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource parent.
+	//
 	// example:
 	//
 	// p-xxx
@@ -170,7 +176,7 @@ type DescribeGlobalTimerRecordsResponseBodyResults struct {
 	//
 	// ccg-xxxx
 	TimerGroupId *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
-	// The timer record ID.
+	// The ID of the scheduled record.
 	//
 	// example:
 	//

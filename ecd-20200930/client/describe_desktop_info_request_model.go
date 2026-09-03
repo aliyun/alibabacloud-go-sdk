@@ -20,11 +20,21 @@ type iDescribeDesktopInfoRequest interface {
 }
 
 type DescribeDesktopInfoRequest struct {
+	// The business channel. Valid values:
+	//
+	// - Enterprise: Enterprise Edition.
+	//
+	// - Business: Business Edition.
+	//
+	// example:
+	//
+	// Enterprise
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// Desktop ID. Set 1 to 100.
-	DesktopId     []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	NeedExtraInfo *bool     `json:"NeedExtraInfo,omitempty" xml:"NeedExtraInfo,omitempty"`
-	// Region ID. Call [](t2167755.xdita#)to get a list of regions supported by WUYING Workspace.
+	// The cloud computer ID. You can specify 1 to 100 IDs.
+	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
+	// Specifies whether to return the extended information of the cloud computer.
+	NeedExtraInfo *bool `json:"NeedExtraInfo,omitempty" xml:"NeedExtraInfo,omitempty"`
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

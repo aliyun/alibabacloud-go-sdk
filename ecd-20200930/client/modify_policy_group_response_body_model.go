@@ -14,7 +14,7 @@ type iModifyPolicyGroupResponseBody interface {
 }
 
 type ModifyPolicyGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

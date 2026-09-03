@@ -32,9 +32,9 @@ type iDescribeTemplatesRequest interface {
 }
 
 type DescribeTemplatesRequest struct {
-	// The region filter condition for the template query.
+	// The region filter condition for template queries.
 	//
-	// > If this parameter is specified, region-specific configurations that do not match are excluded from the query results.
+	// > If this parameter is specified, the query results exclude configurations for regions that do not match.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type DescribeTemplatesRequest struct {
 	//
 	// example:
 	//
-	// null
+	// default
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The cloud computer image ID. You can obtain the ID from the image management page. System images, custom images, and other image types are supported.
+	// The cloud computer image ID. You can obtain the ID from the image management page. System images and custom images are supported.
 	//
 	// example:
 	//
@@ -58,13 +58,13 @@ type DescribeTemplatesRequest struct {
 	//
 	// abc
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The page number of the current page in a paged query. This parameter is used for paging.
+	// The page number of the current page in a paged query. Paging starts from page 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of rows per page in a paged query. This parameter is used for paging.
+	// The maximum number of rows per page in a paged query. Paging is used to return results in batches.
 	//
 	// example:
 	//
@@ -77,12 +77,16 @@ type DescribeTemplatesRequest struct {
 	// CloudDesktop
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The list of template IDs to query.
+	//
+	// example:
+	//
+	// DescribeTemplates
 	TemplateIds []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
 	// The template name used for the query.
 	//
 	// example:
 	//
-	// My cloud desktop template 001
+	// MyCloudComputerTemplate001
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The templatetype to query. If this parameter is not specified, templates of all types are queried.
 	//

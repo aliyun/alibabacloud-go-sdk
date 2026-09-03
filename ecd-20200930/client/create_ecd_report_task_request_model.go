@@ -24,10 +24,19 @@ type iCreateEcdReportTaskRequest interface {
 }
 
 type CreateEcdReportTaskRequest struct {
+	// The business channel. Valid values:
+	//
+	// Enterprise: Enterprise Edition.
+	//
+	// Business: Business Edition.
+	//
+	// example:
+	//
+	// Enterprise
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The list of filter conditions for query results. The filter condition objects have a logical AND (&) relationship.
 	//
-	// Each filter condition contains FilterKey and FilterValues, which represent the filter condition name and specific values.
+	// Each filter condition contains FilterKey and FilterValues, which specify the filter condition name and its values.
 	FilterList []*CreateEcdReportTaskRequestFilterList `json:"FilterList,omitempty" xml:"FilterList,omitempty" type:"Repeated"`
 	// The report language type. This is an enumerated value.
 	//
@@ -39,7 +48,7 @@ type CreateEcdReportTaskRequest struct {
 	//
 	// example:
 	//
-	// Test report name
+	// TestReportName
 	ReportFileName *string `json:"ReportFileName,omitempty" xml:"ReportFileName,omitempty"`
 	// The report task subtype.
 	//
@@ -141,7 +150,7 @@ type CreateEcdReportTaskRequestFilterList struct {
 	//
 	// 1. Cloud computer report
 	//
-	// - KeyWord: automatic keyword recognition for cloud computers.
+	// - KeyWord: automatically identifies the cloud computer keyword.
 	//
 	// - RegionId: the region ID.
 	//
@@ -163,7 +172,7 @@ type CreateEcdReportTaskRequestFilterList struct {
 	//
 	// - EndUserId: the username (fuzzy match).
 	//
-	// - ExpireTime: the expiration time in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format.
+	// - ExpireTime: the expiration time, in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format.
 	//
 	// - IncludeAssignedUser: specifies whether users are assigned.
 	//
@@ -194,10 +203,6 @@ type CreateEcdReportTaskRequestFilterList struct {
 	// - ExpireTime
 	//
 	// - IncludeAssignedUser
-	//
-	// example:
-	//
-	// Test cloud desktop name
 	FilterValues []*string `json:"FilterValues,omitempty" xml:"FilterValues,omitempty" type:"Repeated"`
 }
 

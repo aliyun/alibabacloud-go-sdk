@@ -50,6 +50,15 @@ type iDescribeGlobalDesktopRecordsRequest interface {
 }
 
 type DescribeGlobalDesktopRecordsRequest struct {
+	// The business channel. Valid values:
+	//
+	// Enterprise: Enterprise Edition.
+	//
+	// Business: Business Edition.
+	//
+	// example:
+	//
+	// Enterprise
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The cloud desktop ID. You can specify 1 to 100 IDs.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
@@ -58,9 +67,10 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	// example:
 	//
 	// DemoComputer
-	DesktopName       *string   `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	// The list of cloud desktop statuses to include.
 	DesktopStatusList []*string `json:"DesktopStatusList,omitempty" xml:"DesktopStatusList,omitempty" type:"Repeated"`
-	// The cloud desktop specification. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the supported specification IDs for cloud desktops.
+	// The cloud desktop specifications. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the supported specification IDs for cloud desktops.
 	//
 	// example:
 	//
@@ -79,7 +89,8 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	// example:
 	//
 	// TestUser
-	EndUserId                *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The list of cloud desktop statuses to exclude.
 	ExcludeDesktopStatusList []*string `json:"ExcludeDesktopStatusList,omitempty" xml:"ExcludeDesktopStatusList,omitempty" type:"Repeated"`
 	// The office network ID.
 	//
@@ -87,7 +98,7 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The sort field. If this parameter is not specified, results are sorted by creation time in descending order. Valid values:
+	// The sort field. If not specified, results are sorted by creation time in descending order. Valid values:
 	//
 	// - uptime: sorts by cloud desktop uptime.
 	//
@@ -95,7 +106,7 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	//
 	// uptime
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number of the current page in a paged query. Paging starts from page 1.
+	// The page number of the current page when using paging.
 	//
 	// Default value: 1.
 	//
@@ -109,7 +120,7 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID.
+	// The region ID. Valid values:
 	//
 	// - Shanghai
 	//
@@ -164,8 +175,9 @@ type DescribeGlobalDesktopRecordsRequest struct {
 	// example:
 	//
 	// monthPackage
-	SubPayType *string   `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
-	UserNames  []*string `json:"UserNames,omitempty" xml:"UserNames,omitempty" type:"Repeated"`
+	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
+	// The list of usernames.
+	UserNames []*string `json:"UserNames,omitempty" xml:"UserNames,omitempty" type:"Repeated"`
 }
 
 func (s DescribeGlobalDesktopRecordsRequest) String() string {

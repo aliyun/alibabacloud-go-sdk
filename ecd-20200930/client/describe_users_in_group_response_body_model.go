@@ -26,15 +26,15 @@ type iDescribeUsersInGroupResponseBody interface {
 }
 
 type DescribeUsersInGroupResponseBody struct {
-	// A list of authorized user information.
+	// The list of authorized user information.
 	EndUsers []*DescribeUsersInGroupResponseBodyEndUsers `json:"EndUsers,omitempty" xml:"EndUsers,omitempty" type:"Repeated"`
-	// The token to start the next query.
+	// The pagination token for the next query.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The total number of authorized users in the cloud desktop group who meet the query conditions and are connected to a cloud desktop.
+	// The total number of authorized users of the shared cloud computer that match the query conditions and are currently connected to a cloud computer.
 	//
 	// example:
 	//
@@ -45,10 +45,20 @@ type DescribeUsersInGroupResponseBody struct {
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the user group.
+	//
+	// example:
+	//
+	// R&D Team
 	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
-	UserOuPath    *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
-	// The total number of authorized users in the cloud desktop group who meet the query conditions.
+	// The organizational unit path of the user.
+	//
+	// example:
+	//
+	// example.com
+	UserOuPath *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
+	// The total number of authorized users of the shared cloud computer that match the query conditions.
 	//
 	// example:
 	//
@@ -147,13 +157,13 @@ type DescribeUsersInGroupResponseBodyEndUsers struct {
 	//
 	// 1
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// The ID of the cloud desktop.
+	// The ID of the cloud computer.
 	//
 	// example:
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The name of the cloud desktop.
+	// The name of the cloud computer.
 	//
 	// example:
 	//
@@ -164,7 +174,12 @@ type DescribeUsersInGroupResponseBodyEndUsers struct {
 	// example:
 	//
 	// alice
-	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The new display name of the user.
+	//
+	// example:
+	//
+	// Zhang San
 	DisplayNameNew *string `json:"DisplayNameNew,omitempty" xml:"DisplayNameNew,omitempty"`
 	// The email address of the authorized user.
 	//
@@ -190,28 +205,33 @@ type DescribeUsersInGroupResponseBodyEndUsers struct {
 	//
 	// 1381111****
 	EndUserPhone *string `json:"EndUserPhone,omitempty" xml:"EndUserPhone,omitempty"`
-	// The user remarks.
+	// The remarks of the user.
 	//
 	// example:
 	//
 	// Note
 	EndUserRemark *string `json:"EndUserRemark,omitempty" xml:"EndUserRemark,omitempty"`
-	// The user account type.
+	// The type of the user account system.
 	//
 	// example:
 	//
 	// SIMPLE
 	EndUserType *string `json:"EndUserType,omitempty" xml:"EndUserType,omitempty"`
-	// Additional information.
+	// The additional information.
 	ExternalInfo *DescribeUsersInGroupResponseBodyEndUsersExternalInfo `json:"ExternalInfo,omitempty" xml:"ExternalInfo,omitempty" type:"Struct"`
-	// The ID of the virtual cloud desktop assigned to the user.
+	// The ID of the virtual cloud computer that corresponds to the user.
 	//
 	// example:
 	//
 	// ud-i896ze8hazpvl****
-	UserDesktopId     *string `json:"UserDesktopId,omitempty" xml:"UserDesktopId,omitempty"`
+	UserDesktopId *string `json:"UserDesktopId,omitempty" xml:"UserDesktopId,omitempty"`
+	// The user principal name (UPN).
+	//
+	// example:
+	//
+	// alice@example.com
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
-	// A list of user seat information.
+	// The list of user seat information.
 	UserSetPropertiesModels []*DescribeUsersInGroupResponseBodyEndUsersUserSetPropertiesModels `json:"UserSetPropertiesModels,omitempty" xml:"UserSetPropertiesModels,omitempty" type:"Repeated"`
 }
 
@@ -440,7 +460,7 @@ type DescribeUsersInGroupResponseBodyEndUsersUserSetPropertiesModels struct {
 	//
 	// 1
 	PropertyType *int32 `json:"PropertyType,omitempty" xml:"PropertyType,omitempty"`
-	// An array of property values.
+	// The array of property values.
 	PropertyValues []*DescribeUsersInGroupResponseBodyEndUsersUserSetPropertiesModelsPropertyValues `json:"PropertyValues,omitempty" xml:"PropertyValues,omitempty" type:"Repeated"`
 	// The user ID.
 	//

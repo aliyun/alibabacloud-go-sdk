@@ -48,7 +48,7 @@ type DescribeInvocationsRequest struct {
 	//
 	// PlainText
 	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	// The cloud desktop ID. If you specify a cloud desktop, all script execution records for that cloud desktop are queried.
+	// The cloud desktop ID. If you specify a cloud desktop, all script execution records of the cloud desktop are queried.
 	//
 	// example:
 	//
@@ -64,15 +64,15 @@ type DescribeInvocationsRequest struct {
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// Specifies whether to return the execution results of all cloud desktops when a remote command is run on multiple cloud desktops.
+	// Specifies whether to return the execution results of all cloud desktops when the remote command is executed on multiple cloud desktops.
 	IncludeInvokeDesktops *bool `json:"IncludeInvokeDesktops,omitempty" xml:"IncludeInvokeDesktops,omitempty"`
-	// Specifies whether to return the output of the script execution in the results.
+	// Specifies whether to return the output information of the script execution in the results.
 	//
 	// example:
 	//
 	// false
 	IncludeOutput *bool `json:"IncludeOutput,omitempty" xml:"IncludeOutput,omitempty"`
-	// The script execution ID. Obtained from the response of [RunCommand](~~RunCommand~~).
+	// The execution ID of the script process. Obtained from the response of [RunCommand](~~RunCommand~~).
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type DescribeInvocationsRequest struct {
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6nmB7qrRFJ8vmttjxPL****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID. Call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

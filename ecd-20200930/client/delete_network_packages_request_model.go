@@ -18,19 +18,24 @@ type iDeleteNetworkPackagesRequest interface {
 }
 
 type DeleteNetworkPackagesRequest struct {
-	// List of public network premium bandwidth IDs. You can specify one or more IDs.
+	// The IDs of the premium Internet bandwidth plans. You can specify one or more IDs.
 	//
 	// This parameter is required.
 	NetworkPackageId []*string `json:"NetworkPackageId,omitempty" xml:"NetworkPackageId,omitempty" type:"Repeated"`
-	// The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to obtain a list of regions where WUYING Workspace is available.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of resource ownership in the reseller pattern. This parameter is not required in the non-reseller pattern.
+	//
+	// example:
+	//
+	// 1422724566551XXX
+	ResellerOwnerUid *int64 `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 }
 
 func (s DeleteNetworkPackagesRequest) String() string {

@@ -51,6 +51,8 @@ type iDescribeDesktopsRequest interface {
 	GetMaxResults() *int32
 	SetMultiResource(v bool) *DescribeDesktopsRequest
 	GetMultiResource() *bool
+	SetNetworkInterfaceIp(v string) *DescribeDesktopsRequest
+	GetNetworkInterfaceIp() *string
 	SetNextToken(v string) *DescribeDesktopsRequest
 	GetNextToken() *string
 	SetOfficeSiteId(v string) *DescribeDesktopsRequest
@@ -69,6 +71,8 @@ type iDescribeDesktopsRequest interface {
 	GetPolicyGroupId() *string
 	SetProtocolType(v string) *DescribeDesktopsRequest
 	GetProtocolType() *string
+	SetPublicIp(v string) *DescribeDesktopsRequest
+	GetPublicIp() *string
 	SetQosRuleId(v string) *DescribeDesktopsRequest
 	GetQosRuleId() *string
 	SetQueryFotaUpdate(v bool) *DescribeDesktopsRequest
@@ -88,6 +92,15 @@ type iDescribeDesktopsRequest interface {
 }
 
 type DescribeDesktopsRequest struct {
+	// The business channel. Valid values:
+	//
+	// - Enterprise: Enterprise Edition.
+	//
+	// - Business: Business Edition.
+	//
+	// example:
+	//
+	// Enterprise
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The billing method of the cloud computer.
 	//
@@ -95,7 +108,7 @@ type DescribeDesktopsRequest struct {
 	//
 	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The cloud computer pool ID. If `DesktopId` is specified, `DesktopGroupId` is ignored. If `DesktopId` is empty, the system retrieves the `DesktopId` of all cloud computers in the cloud computer pool specified by `DesktopGroupId`.
+	// The cloud computer pool ID. If `DesktopId` is specified, `DesktopGroupId` is ignored. If `DesktopId` is empty, the system retrieves the IDs of all cloud computers in the cloud computer pool specified by `DesktopGroupId`.
 	//
 	// example:
 	//
@@ -119,7 +132,7 @@ type DescribeDesktopsRequest struct {
 	//
 	// Running
 	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
-	// The list of cloud computer statuses.
+	// The cloud computer status list.
 	DesktopStatusList []*string `json:"DesktopStatusList,omitempty" xml:"DesktopStatusList,omitempty" type:"Repeated"`
 	// The cloud computer specifications. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the specification IDs supported by cloud computers.
 	//
@@ -147,13 +160,13 @@ type DescribeDesktopsRequest struct {
 	//
 	// andy
 	ExcludedEndUserId []*string `json:"ExcludedEndUserId,omitempty" xml:"ExcludedEndUserId,omitempty" type:"Repeated"`
-	// The expiration time of the subscription cloud computer.
+	// The expiration time of the subscription cloud computer. The time follows the ISO 8601 standard in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2022-12-31T15:59:59Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// Specifies whether to query enterprise resource group information.
+	// Specifies whether to query resource group information.
 	//
 	// example:
 	//
@@ -178,8 +191,9 @@ type DescribeDesktopsRequest struct {
 	// dg-boyczi8enfyc5****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	// The image IDs.
-	ImageId                   []*string `json:"ImageId,omitempty" xml:"ImageId,omitempty" type:"Repeated"`
-	IncludeAutoSnapshotPolicy *bool     `json:"IncludeAutoSnapshotPolicy,omitempty" xml:"IncludeAutoSnapshotPolicy,omitempty"`
+	ImageId []*string `json:"ImageId,omitempty" xml:"ImageId,omitempty" type:"Repeated"`
+	// Specifies whether to include automatic snapshot policy information in the response.
+	IncludeAutoSnapshotPolicy *bool `json:"IncludeAutoSnapshotPolicy,omitempty" xml:"IncludeAutoSnapshotPolicy,omitempty"`
 	// The management flag.
 	//
 	// example:
@@ -196,13 +210,14 @@ type DescribeDesktopsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Specifies whether there are multiple resources.
+	// Specifies whether multiple resources exist.
 	//
 	// example:
 	//
 	// false
-	MultiResource *bool `json:"MultiResource,omitempty" xml:"MultiResource,omitempty"`
-	// The pagination token for the next query. If this parameter is empty, no more results exist.
+	MultiResource      *bool   `json:"MultiResource,omitempty" xml:"MultiResource,omitempty"`
+	NetworkInterfaceIp *string `json:"NetworkInterfaceIp,omitempty" xml:"NetworkInterfaceIp,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
 	//
 	// example:
 	//
@@ -226,15 +241,15 @@ type DescribeDesktopsRequest struct {
 	//
 	// true
 	OnlyDesktopGroup *bool `json:"OnlyDesktopGroup,omitempty" xml:"OnlyDesktopGroup,omitempty"`
-	// The operating system type.
+	// The operating system types.
 	OsTypes []*string `json:"OsTypes,omitempty" xml:"OsTypes,omitempty" type:"Repeated"`
-	// The page number of the current page for a paged query.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries per page for a paged query.
+	// The maximum number of entries per page in a paged query.
 	//
 	// example:
 	//
@@ -252,6 +267,7 @@ type DescribeDesktopsRequest struct {
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	PublicIp     *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
 	// The Internet bandwidth throttling rule ID.
 	//
 	// example:
@@ -272,7 +288,7 @@ type DescribeDesktopsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The enterprise resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -290,7 +306,7 @@ type DescribeDesktopsRequest struct {
 	//
 	// monthPackage
 	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
-	// The tags. A tag consists of a key-value pair and is used to mark resources. You can use tags to group and manage cloud computers for easy searching and batch operations. For more information, see [Use tags to manage cloud computers](https://help.aliyun.com/document_detail/203781.html).
+	// The tags. A tag is a key-value pair that is used to mark resources. You can use tags to group and manage cloud computers for easy searching and batch operations. For more information, see [Use tags to manage cloud computers](https://help.aliyun.com/document_detail/203781.html).
 	Tag []*DescribeDesktopsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The username.
 	//
@@ -392,6 +408,10 @@ func (s *DescribeDesktopsRequest) GetMultiResource() *bool {
 	return s.MultiResource
 }
 
+func (s *DescribeDesktopsRequest) GetNetworkInterfaceIp() *string {
+	return s.NetworkInterfaceIp
+}
+
 func (s *DescribeDesktopsRequest) GetNextToken() *string {
 	return s.NextToken
 }
@@ -426,6 +446,10 @@ func (s *DescribeDesktopsRequest) GetPolicyGroupId() *string {
 
 func (s *DescribeDesktopsRequest) GetProtocolType() *string {
 	return s.ProtocolType
+}
+
+func (s *DescribeDesktopsRequest) GetPublicIp() *string {
+	return s.PublicIp
 }
 
 func (s *DescribeDesktopsRequest) GetQosRuleId() *string {
@@ -565,6 +589,11 @@ func (s *DescribeDesktopsRequest) SetMultiResource(v bool) *DescribeDesktopsRequ
 	return s
 }
 
+func (s *DescribeDesktopsRequest) SetNetworkInterfaceIp(v string) *DescribeDesktopsRequest {
+	s.NetworkInterfaceIp = &v
+	return s
+}
+
 func (s *DescribeDesktopsRequest) SetNextToken(v string) *DescribeDesktopsRequest {
 	s.NextToken = &v
 	return s
@@ -607,6 +636,11 @@ func (s *DescribeDesktopsRequest) SetPolicyGroupId(v string) *DescribeDesktopsRe
 
 func (s *DescribeDesktopsRequest) SetProtocolType(v string) *DescribeDesktopsRequest {
 	s.ProtocolType = &v
+	return s
+}
+
+func (s *DescribeDesktopsRequest) SetPublicIp(v string) *DescribeDesktopsRequest {
+	s.PublicIp = &v
 	return s
 }
 
@@ -664,13 +698,13 @@ func (s *DescribeDesktopsRequest) Validate() error {
 }
 
 type DescribeDesktopsRequestTag struct {
-	// The tag key. If you specify `Tag`, `Key` is required. The tag key cannot exceed 128 characters in length, cannot start with `aliyun` or `acs:`, cannot contain `http://` or `https://`, and cannot consist of only spaces.
+	// The tag key. If you specify `Tag`, `Key` is required. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`, contain `http://` or `https://`, or consist of only spaces.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. The tag value cannot exceed 128 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag value. The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
 	//
 	// example:
 	//

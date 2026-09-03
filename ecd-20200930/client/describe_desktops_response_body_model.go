@@ -24,21 +24,21 @@ type iDescribeDesktopsResponseBody interface {
 }
 
 type DescribeDesktopsResponseBody struct {
-	// The details of cloud computers.
+	// The details of the cloud desktops.
 	Desktops []*DescribeDesktopsResponseBodyDesktops `json:"Desktops,omitempty" xml:"Desktops,omitempty" type:"Repeated"`
-	// The pagination token for the next query. If this parameter is empty, no more results exist.
+	// The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number of the current page for a paged query.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries per page for a paged query.
+	// The maximum number of entries per page in a paged query.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeDesktopsResponseBody struct {
 	//
 	// 484256DA-D816-44D2-9D86-B6EE4D5BA78C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of cloud computers.
+	// The total number of cloud desktops.
 	//
 	// example:
 	//
@@ -134,7 +134,13 @@ func (s *DescribeDesktopsResponseBody) Validate() error {
 }
 
 type DescribeDesktopsResponseBodyDesktops struct {
-	AccountType       *string   `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The account type.
+	//
+	// example:
+	//
+	// SIMPLE
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The list of agents supported by the cloud computer.
 	AgentProviderList []*string `json:"AgentProviderList,omitempty" xml:"AgentProviderList,omitempty" type:"Repeated"`
 	// The number of concurrent sessions allowed per cloud computer in a multi-session cloud computer pool.
 	//
@@ -142,19 +148,19 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	//
 	// 2
 	BindAmount *int32 `json:"BindAmount,omitempty" xml:"BindAmount,omitempty"`
-	// The ID of the cloud computer template used by the cloud computer.
+	// The ID of the cloud desktop template used by the cloud desktop.
 	//
 	// example:
 	//
 	// b-2g65ljy4291vl****
 	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	// The name of the cloud computer template used by the cloud computer.
+	// The name of the cloud desktop template used by the cloud desktop.
 	//
 	// example:
 	//
 	// TemplateName
 	BundleName *string `json:"BundleName,omitempty" xml:"BundleName,omitempty"`
-	// The billing method of the cloud computer.
+	// The billing method of the cloud desktop.
 	//
 	// example:
 	//
@@ -172,7 +178,7 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	//
 	// 2
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The time when the cloud computer was created.
+	// The time when the cloud desktop was created. The time is in the ISO 8601 standard in UTC.
 	//
 	// example:
 	//
@@ -182,20 +188,20 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	//
 	// example:
 	//
-	// null
+	// cloud_auto
 	DataDiskCategory *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
 	// > This parameter is in invitational preview and is not publicly available.
 	//
 	// example:
 	//
-	// null
+	// 80
 	DataDiskSize        *string                                                    `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
 	DesktopDurationList []*DescribeDesktopsResponseBodyDesktopsDesktopDurationList `json:"DesktopDurationList,omitempty" xml:"DesktopDurationList,omitempty" type:"Repeated"`
-	// The ID of the cloud computer pool to which the cloud computer belongs. Default value: `null`.
+	// The ID of the cloud desktop pool to which the cloud desktop belongs. Default value: `null`.
 	//
 	// example:
 	//
-	// null
+	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
 	// The cloud computer ID.
 	//
@@ -215,7 +221,7 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	//
 	// Running
 	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
-	// The cloud computer specifications.
+	// The cloud desktop type.
 	//
 	// example:
 	//
@@ -234,26 +240,46 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	// SIMPLE
 	DirectoryType *string `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
 	// The disk information.
-	Disks      []*DescribeDesktopsResponseBodyDesktopsDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
-	DomainType *string                                      `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	// The number of times the specifications can be downgraded.
+	Disks []*DescribeDesktopsResponseBodyDesktopsDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	// The domain type of the directory to which the cloud computer belongs.
+	//
+	// example:
+	//
+	// AD
+	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	// The number of times the cloud desktop can be downgraded.
 	//
 	// example:
 	//
 	// 3
 	DowngradeQuota *int64 `json:"DowngradeQuota,omitempty" xml:"DowngradeQuota,omitempty"`
-	// The number of times the specifications have been downgraded.
+	// The number of times the cloud desktop has been downgraded.
 	//
 	// example:
 	//
 	// 0
 	DowngradedTimes *int64 `json:"DowngradedTimes,omitempty" xml:"DowngradedTimes,omitempty"`
-	// The authorized user IDs of the cloud computer.
-	EndUserIds      []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	EntraDomainName *string   `json:"EntraDomainName,omitempty" xml:"EntraDomainName,omitempty"`
-	EnvId           *string   `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
-	EnvType         *string   `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The expiration time of the subscription cloud computer.
+	// The IDs of the authorized users of the cloud desktop.
+	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	// The domain name of Microsoft Entra ID.
+	//
+	// example:
+	//
+	// contoso.onmicrosoft.com
+	EntraDomainName *string `json:"EntraDomainName,omitempty" xml:"EntraDomainName,omitempty"`
+	// The environment ID. This parameter is not publicly available.
+	//
+	// example:
+	//
+	// adifa****
+	EnvId *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	// The environment type. This parameter is not publicly available.
+	//
+	// example:
+	//
+	// Private
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The expiration time of the subscription cloud desktop. The time is in the ISO 8601 standard in UTC.
 	//
 	// example:
 	//
@@ -261,7 +287,7 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// The image version information of the cloud computer.
 	FotaUpdate *DescribeDesktopsResponseBodyDesktopsFotaUpdate `json:"FotaUpdate,omitempty" xml:"FotaUpdate,omitempty" type:"Struct"`
-	// Indicates whether the cloud computer is a GPU cloud computer.
+	// Indicates whether the cloud desktop is a GPU-accelerated cloud desktop.
 	//
 	// example:
 	//
@@ -273,11 +299,11 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	//
 	// 1
 	GpuCount *float32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
-	// The GPU driver version of the cloud computer.
+	// The GPU driver version of the cloud desktop.
 	//
 	// example:
 	//
-	// null
+	// 471.68
 	GpuDriverVersion *string `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
 	// The GPU specifications.
 	//
@@ -308,9 +334,15 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	// example:
 	//
 	// m-4zfb6zj728hhr****
-	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image name before the change.
+	//
+	// example:
+	//
+	// Windows server 2019 Mainland
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	IsLdap    *bool   `json:"IsLdap,omitempty" xml:"IsLdap,omitempty"`
+	// Indicates whether the directory is an LDAP directory.
+	IsLdap *bool `json:"IsLdap,omitempty" xml:"IsLdap,omitempty"`
 	// The management flag.
 	//
 	// example:
@@ -325,13 +357,13 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	//
 	// 4096
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The ID of the secondary elastic network interface (ENI) created by the cloud computer service under the RAM or AD user. This value cannot be modified.
+	// The ID of the secondary ENI created by the cloud desktop service for the RAM or AD user. This value cannot be modified.
 	//
 	// example:
 	//
 	// 123456
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The IP address of the secondary ENI created by the cloud computer service under the RAM or AD user.
+	// The IP address of the secondary ENI created by the cloud desktop service for the RAM or AD user.
 	//
 	// example:
 	//
@@ -361,12 +393,13 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	//
 	// basic
 	OfficeSiteVpcType *string `json:"OfficeSiteVpcType,omitempty" xml:"OfficeSiteVpcType,omitempty"`
-	// The operating system type.
+	// The operating system types.
 	//
 	// example:
 	//
 	// Windows
-	OsType   *string                                       `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// The operating system update information of the cloud computer.
 	OsUpdate *DescribeDesktopsResponseBodyDesktopsOsUpdate `json:"OsUpdate,omitempty" xml:"OsUpdate,omitempty" type:"Struct"`
 	// The operating system platform information.
 	//
@@ -389,10 +422,6 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	// All enabled policy
 	PolicyGroupName *string `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
 	// The list of cloud computer policy names.
-	//
-	// example:
-	//
-	// Test policy 01
 	PolicyGroupNameList []*string `json:"PolicyGroupNameList,omitempty" xml:"PolicyGroupNameList,omitempty" type:"Repeated"`
 	// The creation progress of the cloud computer.
 	//
@@ -408,14 +437,19 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	// The list of enterprise resource group information.
 	ResourceGroups []*DescribeDesktopsResponseBodyDesktopsResourceGroups `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Repeated"`
-	SerialNumber   *string                                               `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// The serial number of the terminal.
+	//
+	// example:
+	//
+	// 96c530bc-6095-4014-8bbc-d461b8ac****
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	// The session type.
 	//
 	// example:
 	//
 	// SINGLE_SESSION
 	SessionType *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
-	// The user session information of the cloud computer.
+	// The user session information of the cloud desktop.
 	Sessions []*DescribeDesktopsResponseBodyDesktopsSessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
 	// The snapshot policy ID.
 	//
@@ -429,14 +463,24 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	//
 	// testSnapshotName
 	SnapshotPolicyName *string `json:"SnapshotPolicyName,omitempty" xml:"SnapshotPolicyName,omitempty"`
-	StandardStartTime  *string `json:"StandardStartTime,omitempty" xml:"StandardStartTime,omitempty"`
-	// The time when the cloud computer was first started.
+	// The start time of the query. The time is in the ISO 8601 standard and in UTC+0, in the format of `yyyy-mm-ddthh:mm:ssz`.
+	//
+	// example:
+	//
+	// 2025-01-27T02:20:10Z
+	StandardStartTime *string `json:"StandardStartTime,omitempty" xml:"StandardStartTime,omitempty"`
+	// The time when the cloud desktop was first started. The time is in the ISO 8601 standard in UTC.
 	//
 	// example:
 	//
 	// 2020-11-06T08:31Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	SubnetId  *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// The subnet ID.
+	//
+	// example:
+	//
+	// vsw-dgea1*****
+	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
 	// Indicates whether hibernation is supported.
 	//
 	// example:
@@ -447,7 +491,7 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	//
 	// example:
 	//
-	// null
+	// cloud_auto
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
 	// > This parameter is in invitational preview and is not publicly available.
 	//
@@ -463,13 +507,13 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	//
 	// false
 	VolumeEncryptionEnabled *bool `json:"VolumeEncryptionEnabled,omitempty" xml:"VolumeEncryptionEnabled,omitempty"`
-	// The KMS key ID used for disk encryption. You can call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
+	// The ID of the Key Management Service (KMS) key used for disk encryption. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to obtain the key ID.
 	//
 	// example:
 	//
 	// 08c33a6f-4e0a-4a1b-a3fa-7ddfa1d4****
 	VolumeEncryptionKey *string `json:"VolumeEncryptionKey,omitempty" xml:"VolumeEncryptionKey,omitempty"`
-	// The zone type. Default value: `AvailabilityZone`, which indicates a standard cloud zone.
+	// The type of the zone. Default value: `AvailabilityZone`, which indicates a regular cloud zone.
 	//
 	// example:
 	//
@@ -1337,13 +1381,13 @@ func (s *DescribeDesktopsResponseBodyDesktopsDesktopDurationList) Validate() err
 }
 
 type DescribeDesktopsResponseBodyDesktopsDisks struct {
-	// The cloud disk category.
+	// The disk category.
 	//
 	// - cloud_efficiency (ultra cloud disk)
 	//
-	//    - cloud_auto (ESSD AutoPL cloud disk)
+	//    - cloud_auto (ultra-fast cloud disk)
 	//
-	//    - cloud_essd (enhanced standard SSD, supported only by specific specifications)
+	//    - cloud_essd (enhanced standard SSD cloud disk. Only specific types are supported.)
 	//
 	// example:
 	//
@@ -1367,9 +1411,9 @@ type DescribeDesktopsResponseBodyDesktopsDisks struct {
 	//
 	// SYSTEM
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The performance level (PL) of the ESSD when the cloud disk is an ESSD.
+	// The performance level (PL) of the ESSD when the disk is an ESSD.
 	//
-	// For more information about the differences between performance levels, see [ESSD cloud disks](https://help.aliyun.com/document_detail/122389.html).
+	// For more information about the differences between performance levels, see [ESSD](https://help.aliyun.com/document_detail/122389.html).
 	//
 	// example:
 	//
@@ -1435,37 +1479,37 @@ func (s *DescribeDesktopsResponseBodyDesktopsDisks) Validate() error {
 }
 
 type DescribeDesktopsResponseBodyDesktopsFotaUpdate struct {
-	// The current image version of the cloud computer.
+	// The version number of the current image on the cloud computer.
 	//
 	// example:
 	//
 	// 0.0.0-D-20220102.000000
 	CurrentAppVersion *string `json:"CurrentAppVersion,omitempty" xml:"CurrentAppVersion,omitempty"`
-	// The image version to which the cloud computer can be upgraded.
+	// The image version number to which the cloud computer can be upgraded.
 	//
 	// example:
 	//
 	// 0.0.0-R-20220307.190736
 	NewAppVersion *string `json:"NewAppVersion,omitempty" xml:"NewAppVersion,omitempty"`
-	// The release note of the upgradable image version.
+	// The release notes of the image version available for upgrade.
 	//
 	// example:
 	//
-	// 测试升级包03-07
+	// Test upgrade package 03-07
 	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
-	// The English release note of the upgradable version.
+	// The English release notes of the image version available for upgrade.
 	//
 	// example:
 	//
 	// What\\"s new
 	ReleaseNoteEn *string `json:"ReleaseNoteEn,omitempty" xml:"ReleaseNoteEn,omitempty"`
-	// The Japanese release note of the upgradable version.
+	// The Japanese release notes of the image version available for upgrade.
 	//
 	// example:
 	//
 	// リリースノート
 	ReleaseNoteJp *string `json:"ReleaseNoteJp,omitempty" xml:"ReleaseNoteJp,omitempty"`
-	// The size of the upgradable version installation package. Unit: KB.
+	// The size of the upgrade package. Unit: KB.
 	//
 	// example:
 	//
@@ -1540,9 +1584,20 @@ func (s *DescribeDesktopsResponseBodyDesktopsFotaUpdate) Validate() error {
 }
 
 type DescribeDesktopsResponseBodyDesktopsOsUpdate struct {
-	CheckId      *string                                                 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
-	PackageCount *int32                                                  `json:"PackageCount,omitempty" xml:"PackageCount,omitempty"`
-	Packages     []*DescribeDesktopsResponseBodyDesktopsOsUpdatePackages `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Repeated"`
+	// The ID of the health check task.
+	//
+	// example:
+	//
+	// ck-8f2a1b****
+	CheckId *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	// The number of pending update patches.
+	//
+	// example:
+	//
+	// 3
+	PackageCount *int32 `json:"PackageCount,omitempty" xml:"PackageCount,omitempty"`
+	// The list of system patches.
+	Packages []*DescribeDesktopsResponseBodyDesktopsOsUpdatePackages `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Repeated"`
 }
 
 func (s DescribeDesktopsResponseBodyDesktopsOsUpdate) String() string {
@@ -1594,9 +1649,24 @@ func (s *DescribeDesktopsResponseBodyDesktopsOsUpdate) Validate() error {
 }
 
 type DescribeDesktopsResponseBodyDesktopsOsUpdatePackages struct {
+	// The NAS file system description.
+	//
+	// example:
+	//
+	// newDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Kb          *string `json:"Kb,omitempty" xml:"Kb,omitempty"`
-	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The KB number of the system patch.
+	//
+	// example:
+	//
+	// KB5032190
+	Kb *string `json:"Kb,omitempty" xml:"Kb,omitempty"`
+	// The vulnerability name.
+	//
+	// example:
+	//
+	// 2021-05 Servicing Stack Update for Windows Server 2019 for x64-based Systems (KB5003243)
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s DescribeDesktopsResponseBodyDesktopsOsUpdatePackages) String() string {
@@ -1639,17 +1709,17 @@ func (s *DescribeDesktopsResponseBodyDesktopsOsUpdatePackages) Validate() error 
 }
 
 type DescribeDesktopsResponseBodyDesktopsResourceGroups struct {
-	// The enterprise resource group ID.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-4hsvzbbmqdzu3s****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The enterprise resource group name.
+	// The name of the enterprise resource group.
 	//
 	// example:
 	//
-	// Resource group 01
+	// ResourceGroup01
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -1684,13 +1754,13 @@ func (s *DescribeDesktopsResponseBodyDesktopsResourceGroups) Validate() error {
 }
 
 type DescribeDesktopsResponseBodyDesktopsSessions struct {
-	// The ID of the user connected to the cloud computer.
+	// The ID of the user connected to the cloud desktop.
 	//
 	// example:
 	//
 	// 29615820929547****
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The time when the cloud computer session was established.
+	// The time when the cloud desktop session was established. The time is in the ISO 8601 standard in UTC.
 	//
 	// example:
 	//

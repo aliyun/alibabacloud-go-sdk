@@ -30,7 +30,7 @@ type iListDirectoryUsersRequest interface {
 }
 
 type ListDirectoryUsersRequest struct {
-	// > This parameter is not publicly available. You can only set this parameter to `1` or leave it empty.
+	// > This field is not available for use. You can only pass in `1` or leave it empty.
 	//
 	// example:
 	//
@@ -44,19 +44,19 @@ type ListDirectoryUsersRequest struct {
 	//
 	// cn-hangzhou+dir-jedbpr4sl9l37****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The string for a fuzzy search. The operation returns all results that contain this string.
+	// The fuzzy match query string. All results that contain this character string are returned.
 	//
 	// example:
 	//
 	// alice
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	// Specifies whether to return only users who are assigned cloud desktops.
+	// Specifies whether to return only users who have been assigned cloud computers.
 	//
 	// example:
 	//
 	// true
 	IncludeAssignedUser *bool `json:"IncludeAssignedUser,omitempty" xml:"IncludeAssignedUser,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page for a paged query.
 	//
 	// - Maximum value: 100.
 	//
@@ -66,19 +66,19 @@ type ListDirectoryUsersRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to start the next query. If this value is empty, no more results are available.
+	// The pagination token for the next query. An empty value indicates that no more results exist.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The path of the organizational unit (OU) in the AD domain. You can call [ListUserAdOrganizationUnits](https://help.aliyun.com/document_detail/311259.html) to obtain the OU path.
+	// The organizational unit (OU) in the AD domain to which the user belongs. You can call [ListUserAdOrganizationUnits](https://help.aliyun.com/document_detail/311259.html) to obtain this value.
 	//
 	// example:
 	//
 	// example.com/Domain Controllers
 	OUPath *string `json:"OUPath,omitempty" xml:"OUPath,omitempty"`
-	// The region ID. To get a list of regions that WUYING Workspace supports, call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html).
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

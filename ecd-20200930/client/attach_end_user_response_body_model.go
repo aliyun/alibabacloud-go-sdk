@@ -14,7 +14,7 @@ type iAttachEndUserResponseBody interface {
 }
 
 type AttachEndUserResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

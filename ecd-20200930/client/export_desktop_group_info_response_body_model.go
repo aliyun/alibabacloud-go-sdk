@@ -22,13 +22,13 @@ type ExportDesktopGroupInfoResponseBody struct {
   // 
   // 24E05D3E-08F4-551E-B1F0-F6D84EE0BCCC
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // The download URL of the exported shared cloud desktop list file. The exported file contains the following details of shared cloud desktops:
+  // The download URL of the exported shared cloud computer list file. The exported file contains the following details:
   // 
-  // - Shared cloud desktop ID/name
+  // - Shared cloud computer ID/name
   // 
   // - Office network ID/name
   // 
-  // - Shared cloud desktop template
+  // - Shared cloud computer template
   // 
   // - CPU/memory
   // 

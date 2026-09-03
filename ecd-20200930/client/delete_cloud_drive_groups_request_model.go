@@ -18,7 +18,7 @@ type iDeleteCloudDriveGroupsRequest interface {
 }
 
 type DeleteCloudDriveGroupsRequest struct {
-	// The ID of the cloud disk in Cloud Drive Service.
+	// The enterprise network drive ID.
 	//
 	// This parameter is required.
 	//
@@ -26,9 +26,9 @@ type DeleteCloudDriveGroupsRequest struct {
 	//
 	// cn-hangzhou+cds-532033****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	// The IDs of the teams that you want to delete. You can delete multiple teams at a time.
+	// The list of team space IDs.
 	GroupId []*string `json:"GroupId,omitempty" xml:"GroupId,omitempty" type:"Repeated"`
-	// The region ID.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

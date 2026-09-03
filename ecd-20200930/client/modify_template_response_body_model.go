@@ -22,7 +22,7 @@ type iModifyTemplateResponseBody interface {
 }
 
 type ModifyTemplateResponseBody struct {
-	// The execution result. The value `success` indicates success. Otherwise, an error message is returned.
+	// The execution result. A value of `success` indicates success. Otherwise, an error message is returned.
 	//
 	// example:
 	//

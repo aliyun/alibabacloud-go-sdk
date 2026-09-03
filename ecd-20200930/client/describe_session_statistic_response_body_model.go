@@ -26,7 +26,7 @@ type DescribeSessionStatisticResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The statistics information.
 	Statistic []*DescribeSessionStatisticResponseBodyStatistic `json:"Statistic,omitempty" xml:"Statistic,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total count.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type DescribeSessionStatisticResponseBodyStatistic struct {
 	//
 	// 4
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The point in time.
+	// The time point. UNIX timestamp, in milliseconds.
 	//
 	// example:
 	//

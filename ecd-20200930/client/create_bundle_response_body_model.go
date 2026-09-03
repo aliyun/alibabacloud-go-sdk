@@ -16,13 +16,13 @@ type iCreateBundleResponseBody interface {
 }
 
 type CreateBundleResponseBody struct {
-	// The ID of the cloud computer template.
+	// The cloud computer template ID.
 	//
 	// example:
 	//
 	// b-cezrnfgecbich****
 	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

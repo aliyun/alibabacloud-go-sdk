@@ -24,17 +24,34 @@ type iDescribePolicyGroupsResponseBody interface {
 }
 
 type DescribePolicyGroupsResponseBody struct {
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 40
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The detailed information about the cloud computer policies.
+	// The details of the cloud computer policies.
 	DescribePolicyGroups []*DescribePolicyGroupsResponseBodyDescribePolicyGroups `json:"DescribePolicyGroups,omitempty" xml:"DescribePolicyGroups,omitempty" type:"Repeated"`
-	// The pagination token for the next query. If NextToken is empty, no further pages exist.
+	// The token for the next query. If NextToken is empty, no more results exist.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The page number of the current page for a paged query.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The maximum number of entries per page for a paged query.
+	//
+	// Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -119,69 +136,159 @@ func (s *DescribePolicyGroupsResponseBody) Validate() error {
 }
 
 type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
+	// Specifies whether the academic proxy feature is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
 	AcademicProxy *string `json:"AcademicProxy,omitempty" xml:"AcademicProxy,omitempty"`
-	// Whether end users have administrative permission after connecting to the cloud computer.
+	// Indicates whether the user has administrator permissions after connecting to the cloud computer.
 	//
 	// > This feature is in invitational preview and is not publicly available.
 	//
 	// example:
 	//
 	// deny
-	AdminAccess               *string `json:"AdminAccess,omitempty" xml:"AdminAccess,omitempty"`
+	AdminAccess *string `json:"AdminAccess,omitempty" xml:"AdminAccess,omitempty"`
+	// Specifies whether the administrator keyboard control in full-screen mode is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
 	AdminKeyboardOnFullScreen *string `json:"AdminKeyboardOnFullScreen,omitempty" xml:"AdminKeyboardOnFullScreen,omitempty"`
-	AdminKeyboardOnWindows    *string `json:"AdminKeyboardOnWindows,omitempty" xml:"AdminKeyboardOnWindows,omitempty"`
-	// Whether to enable the anti-screenshot feature.
+	// Specifies whether the administrator keyboard control within the Windows system is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	AdminKeyboardOnWindows *string `json:"AdminKeyboardOnWindows,omitempty" xml:"AdminKeyboardOnWindows,omitempty"`
+	// Specifies whether the screenshot prevention feature is enabled.
 	//
 	// example:
 	//
 	// off
 	AppContentProtection *string `json:"AppContentProtection,omitempty" xml:"AppContentProtection,omitempty"`
-	// The client IP address whitelist. Only IP addresses within the whitelisted CIDR blocks can access the cloud computer.
+	// The client IP whitelist. Only IP addresses within the whitelisted CIDR blocks can access cloud desktops.
 	AuthorizeAccessPolicyRules []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules `json:"AuthorizeAccessPolicyRules,omitempty" xml:"AuthorizeAccessPolicyRules,omitempty" type:"Repeated"`
-	// The security group control rules.
+	// The list of security group rules.
 	AuthorizeSecurityPolicyRules []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules `json:"AuthorizeSecurityPolicyRules,omitempty" xml:"AuthorizeSecurityPolicyRules,omitempty" type:"Repeated"`
-	// The automatic client reconnection configuration.
+	// The client auto-reconnect configuration.
 	//
 	// example:
 	//
 	// off
 	AutoReconnect *string `json:"AutoReconnect,omitempty" xml:"AutoReconnect,omitempty"`
-	// Whether to enable local camera redirection.
+	// Specifies whether local camera redirection is enabled.
 	//
 	// example:
 	//
 	// on
-	CameraRedirect       *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
-	ClientControlMenu    *string `json:"ClientControlMenu,omitempty" xml:"ClientControlMenu,omitempty"`
+	CameraRedirect *string `json:"CameraRedirect,omitempty" xml:"CameraRedirect,omitempty"`
+	// The client control menu display switch. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// on
+	ClientControlMenu *string `json:"ClientControlMenu,omitempty" xml:"ClientControlMenu,omitempty"`
+	// Specifies whether the client custom snapshot creation feature is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
 	ClientCreateSnapshot *string `json:"ClientCreateSnapshot,omitempty" xml:"ClientCreateSnapshot,omitempty"`
-	ClientHibernate      *string `json:"ClientHibernate,omitempty" xml:"ClientHibernate,omitempty"`
-	ClientRestart        *string `json:"ClientRestart,omitempty" xml:"ClientRestart,omitempty"`
-	ClientShutdown       *string `json:"ClientShutdown,omitempty" xml:"ClientShutdown,omitempty"`
-	// The logon method control list. Controls which clients can access the cloud computer.
+	// Specifies whether the hibernate option in the client menu is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	ClientHibernate *string `json:"ClientHibernate,omitempty" xml:"ClientHibernate,omitempty"`
+	// Specifies whether the restart option in the client menu is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	ClientRestart *string `json:"ClientRestart,omitempty" xml:"ClientRestart,omitempty"`
+	// Specifies whether the shutdown option in the client menu is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	ClientShutdown *string `json:"ClientShutdown,omitempty" xml:"ClientShutdown,omitempty"`
+	// The logon method control list. Specifies which client types are allowed to access cloud desktops.
 	ClientTypes []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes `json:"ClientTypes,omitempty" xml:"ClientTypes,omitempty" type:"Repeated"`
-	// The clipboard permissions.
+	// The clipboard permission.
 	//
 	// example:
 	//
 	// off
 	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
-	// Whether to enable color enhancement for design and 3D application scenarios.
+	// Indicates whether color enhancement is enabled for common scenarios of design and 3D applications.
 	//
 	// example:
 	//
 	// off
-	ColorEnhancement  *string `json:"ColorEnhancement,omitempty" xml:"ColorEnhancement,omitempty"`
+	ColorEnhancement *string `json:"ColorEnhancement,omitempty" xml:"ColorEnhancement,omitempty"`
+	// Specifies whether the local drive clipboard feature is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
 	CpdDriveClipboard *string `json:"CpdDriveClipboard,omitempty" xml:"CpdDriveClipboard,omitempty"`
-	// The CPU downclocking duration in seconds. Valid values: 30 to 120.
+	// The CPU throttling duration. Valid values: 30 to 120. Unit: seconds.
 	//
 	// example:
 	//
 	// 30
-	CpuDownGradeDuration *int32  `json:"CpuDownGradeDuration,omitempty" xml:"CpuDownGradeDuration,omitempty"`
-	CpuOverload          *string `json:"CpuOverload,omitempty" xml:"CpuOverload,omitempty"`
-	// The process whitelist exempt from CPU usage limits.
+	CpuDownGradeDuration *int32 `json:"CpuDownGradeDuration,omitempty" xml:"CpuDownGradeDuration,omitempty"`
+	// Specifies whether CPU overload protection is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	CpuOverload *string `json:"CpuOverload,omitempty" xml:"CpuOverload,omitempty"`
+	// The whitelist of processes that are not subject to CPU usage limits.
 	CpuProcessors []*string `json:"CpuProcessors,omitempty" xml:"CpuProcessors,omitempty" type:"Repeated"`
-	// The CPU protection mode switch.
+	// Specifies whether to enable CPU protection mode.
 	//
 	// example:
 	//
@@ -193,7 +300,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// 70
 	CpuRateLimit *int32 `json:"CpuRateLimit,omitempty" xml:"CpuRateLimit,omitempty"`
-	// The overall CPU sampling duration in seconds. Valid values: 10 to 60.
+	// The overall CPU sampling duration. Valid values: 10 to 60. Unit: seconds.
 	//
 	// example:
 	//
@@ -204,33 +311,52 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// 70
-	CpuSingleRateLimit *int32  `json:"CpuSingleRateLimit,omitempty" xml:"CpuSingleRateLimit,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The number of cloud computers associated with this policy.
+	CpuSingleRateLimit *int32 `json:"CpuSingleRateLimit,omitempty" xml:"CpuSingleRateLimit,omitempty"`
+	// The description of the NAS file system.
+	//
+	// example:
+	//
+	// newDescription
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The number of cloud computers associated with the policy.
 	//
 	// example:
 	//
 	// 1
 	DesktopCount *int32 `json:"DesktopCount,omitempty" xml:"DesktopCount,omitempty"`
-	// The number of cloud computer pools associated with this policy.
+	// The number of cloud computer pools associated with the policy.
 	//
 	// example:
 	//
 	// 1
-	DesktopGroupCount *int32  `json:"DesktopGroupCount,omitempty" xml:"DesktopGroupCount,omitempty"`
+	DesktopGroupCount *int32 `json:"DesktopGroupCount,omitempty" xml:"DesktopGroupCount,omitempty"`
+	// The peripheral connection hint control.
+	//
+	// example:
+	//
+	// off
 	DeviceConnectHint *string `json:"DeviceConnectHint,omitempty" xml:"DeviceConnectHint,omitempty"`
-	// The device redirection rule list.
+	// The list of device redirection rules.
 	DeviceRedirects []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRedirects `json:"DeviceRedirects,omitempty" xml:"DeviceRedirects,omitempty" type:"Repeated"`
-	// The custom peripheral rule list.
-	DeviceRules  []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules `json:"DeviceRules,omitempty" xml:"DeviceRules,omitempty" type:"Repeated"`
-	DiskOverload *string                                                            `json:"DiskOverload,omitempty" xml:"DiskOverload,omitempty"`
+	// The list of custom peripheral rules.
+	DeviceRules []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules `json:"DeviceRules,omitempty" xml:"DeviceRules,omitempty" type:"Repeated"`
+	// Specifies whether disk overload protection is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	DiskOverload *string `json:"DiskOverload,omitempty" xml:"DiskOverload,omitempty"`
 	// The display mode.
 	//
 	// example:
 	//
 	// adminCustom
 	DisplayMode *string `json:"DisplayMode,omitempty" xml:"DisplayMode,omitempty"`
-	// The access control for domain names. Wildcards (\\*) are supported. Separate multiple domain names with commas (,).
+	// The access domain name permission control. Domain names support wildcards (\\*). Separate multiple domain names with commas (,).
 	//
 	// example:
 	//
@@ -238,7 +364,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	DomainList *string `json:"DomainList,omitempty" xml:"DomainList,omitempty"`
 	// The domain name resolution policy list.
 	DomainResolveRule []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsDomainResolveRule `json:"DomainResolveRule,omitempty" xml:"DomainResolveRule,omitempty" type:"Repeated"`
-	// The domain name resolution policy switch.
+	// The switch for the domain name resolution policy.
 	//
 	// example:
 	//
@@ -250,45 +376,144 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// 2
 	EdsCount *int32 `json:"EdsCount,omitempty" xml:"EdsCount,omitempty"`
-	// The switch for users to request administrator assistance.
+	// Specifies whether to enable the feature that allows users to request administrator assistance.
 	//
 	// example:
 	//
 	// on
 	EndUserApplyAdminCoordinate *string `json:"EndUserApplyAdminCoordinate,omitempty" xml:"EndUserApplyAdminCoordinate,omitempty"`
-	EndUserCount                *string `json:"EndUserCount,omitempty" xml:"EndUserCount,omitempty"`
-	// The switch for stream collaboration between users.
+	// The number of associated end users.
+	//
+	// example:
+	//
+	// 3
+	EndUserCount *string `json:"EndUserCount,omitempty" xml:"EndUserCount,omitempty"`
+	// Specifies whether to enable stream collaboration between users.
 	//
 	// example:
 	//
 	// on
 	EndUserGroupCoordinate *string `json:"EndUserGroupCoordinate,omitempty" xml:"EndUserGroupCoordinate,omitempty"`
-	ExternalDrive          *string `json:"ExternalDrive,omitempty" xml:"ExternalDrive,omitempty"`
-	FileMigrate            *string `json:"FileMigrate,omitempty" xml:"FileMigrate,omitempty"`
-	// File transfer.
+	// Specifies whether the use of external storage devices is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
 	//
 	// example:
 	//
-	// null
-	FileTransfer              *string `json:"FileTransfer,omitempty" xml:"FileTransfer,omitempty"`
-	FileTransferAddress       *string `json:"FileTransferAddress,omitempty" xml:"FileTransferAddress,omitempty"`
-	FileTransferInSize        *int32  `json:"FileTransferInSize,omitempty" xml:"FileTransferInSize,omitempty"`
-	FileTransferInUnit        *string `json:"FileTransferInUnit,omitempty" xml:"FileTransferInUnit,omitempty"`
-	FileTransferOutSize       *int32  `json:"FileTransferOutSize,omitempty" xml:"FileTransferOutSize,omitempty"`
-	FileTransferOutUnit       *string `json:"FileTransferOutUnit,omitempty" xml:"FileTransferOutUnit,omitempty"`
-	FileTransferSizeLimit     *string `json:"FileTransferSizeLimit,omitempty" xml:"FileTransferSizeLimit,omitempty"`
-	FileTransferSpeed         *string `json:"FileTransferSpeed,omitempty" xml:"FileTransferSpeed,omitempty"`
+	// off
+	ExternalDrive *string `json:"ExternalDrive,omitempty" xml:"ExternalDrive,omitempty"`
+	// The file migration setting.
+	//
+	// example:
+	//
+	// off
+	FileMigrate *string `json:"FileMigrate,omitempty" xml:"FileMigrate,omitempty"`
+	// The file transfer setting.
+	//
+	// example:
+	//
+	// off
+	FileTransfer *string `json:"FileTransfer,omitempty" xml:"FileTransfer,omitempty"`
+	// The service address for the file transfer feature.
+	//
+	// example:
+	//
+	// filetransfer.example.com
+	FileTransferAddress *string `json:"FileTransferAddress,omitempty" xml:"FileTransferAddress,omitempty"`
+	// The file size limit for a single file transfer to the cloud desktop. Use this parameter together with the inbound unit parameter.
+	//
+	// example:
+	//
+	// 100
+	FileTransferInSize *int32 `json:"FileTransferInSize,omitempty" xml:"FileTransferInSize,omitempty"`
+	// The unit for the file size limit of a single file transfer to the cloud desktop.
+	//
+	// example:
+	//
+	// MB
+	FileTransferInUnit *string `json:"FileTransferInUnit,omitempty" xml:"FileTransferInUnit,omitempty"`
+	// The file size limit for a single file transfer from the cloud desktop. Use this parameter together with the outbound unit parameter.
+	//
+	// example:
+	//
+	// 100
+	FileTransferOutSize *int32 `json:"FileTransferOutSize,omitempty" xml:"FileTransferOutSize,omitempty"`
+	// The unit for the file size limit of a single file transfer from the cloud desktop.
+	//
+	// example:
+	//
+	// MB
+	FileTransferOutUnit *string `json:"FileTransferOutUnit,omitempty" xml:"FileTransferOutUnit,omitempty"`
+	// Specifies whether the file transfer size limit is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	FileTransferSizeLimit *string `json:"FileTransferSizeLimit,omitempty" xml:"FileTransferSizeLimit,omitempty"`
+	// The file transfer speed level.
+	//
+	// example:
+	//
+	// default
+	FileTransferSpeed *string `json:"FileTransferSpeed,omitempty" xml:"FileTransferSpeed,omitempty"`
+	// The location where the file transfer speed configured on the client takes effect.
+	//
+	// example:
+	//
+	// client
 	FileTransferSpeedLocation *string `json:"FileTransferSpeedLocation,omitempty" xml:"FileTransferSpeedLocation,omitempty"`
-	// Whether to enable the image quality policy for graphics-specification cloud computers. Enable this policy if you have high requirements for cloud computer performance and user experience, such as in professional design scenarios.
+	// Specifies whether the image quality policy is enabled for GPU-accelerated cloud desktops. Enable this policy when high performance and user experience are required, such as in professional design scenarios.
 	//
 	// example:
 	//
 	// off
 	GpuAcceleration *string `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
-	HoverConfigMsg  *string `json:"HoverConfigMsg,omitempty" xml:"HoverConfigMsg,omitempty"`
-	HoverHibernate  *string `json:"HoverHibernate,omitempty" xml:"HoverHibernate,omitempty"`
-	HoverRestart    *string `json:"HoverRestart,omitempty" xml:"HoverRestart,omitempty"`
-	HoverShutdown   *string `json:"HoverShutdown,omitempty" xml:"HoverShutdown,omitempty"`
+	// Specifies whether the floating ball configuration message prompt is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	HoverConfigMsg *string `json:"HoverConfigMsg,omitempty" xml:"HoverConfigMsg,omitempty"`
+	// Specifies whether the hibernate button on the floating ball is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	HoverHibernate *string `json:"HoverHibernate,omitempty" xml:"HoverHibernate,omitempty"`
+	// Specifies whether the restart button on the floating ball is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	HoverRestart *string `json:"HoverRestart,omitempty" xml:"HoverRestart,omitempty"`
+	// Specifies whether the shutdown button on the floating ball is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	HoverShutdown *string `json:"HoverShutdown,omitempty" xml:"HoverShutdown,omitempty"`
 	// The web client access policy.
 	//
 	// example:
@@ -307,30 +532,57 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// BOTH
 	InternetCommunicationProtocol *string `json:"InternetCommunicationProtocol,omitempty" xml:"InternetCommunicationProtocol,omitempty"`
-	InternetPrinter               *string `json:"InternetPrinter,omitempty" xml:"InternetPrinter,omitempty"`
-	KeyboardControl               *string `json:"KeyboardControl,omitempty" xml:"KeyboardControl,omitempty"`
-	// The local disk mapping permissions.
+	// The network printer feature switch. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	InternetPrinter *string `json:"InternetPrinter,omitempty" xml:"InternetPrinter,omitempty"`
+	// Specifies whether the keyboard control on the floating ball is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	KeyboardControl *string `json:"KeyboardControl,omitempty" xml:"KeyboardControl,omitempty"`
+	// The local drive mapping permission.
 	//
 	// example:
 	//
 	// readwrite
 	LocalDrive *string `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
-	// The maximum retry time for reconnecting to the cloud computer after a disconnection caused by objective reasons. Valid values: 30 to 7200 seconds.
+	// The maximum reconnection retry time when the cloud computer is disconnected due to external reasons. Valid values: 30 to 7200. Unit: seconds.
 	//
 	// example:
 	//
 	// 120
 	MaxReconnectTime *int32 `json:"MaxReconnectTime,omitempty" xml:"MaxReconnectTime,omitempty"`
-	// The memory downclocking duration per process in seconds. Valid values: 30 to 120.
+	// The memory throttling duration of a single process. Valid values: 30 to 120. Unit: seconds.
 	//
 	// example:
 	//
 	// 30
-	MemoryDownGradeDuration *int32  `json:"MemoryDownGradeDuration,omitempty" xml:"MemoryDownGradeDuration,omitempty"`
-	MemoryOverload          *string `json:"MemoryOverload,omitempty" xml:"MemoryOverload,omitempty"`
-	// The process whitelist exempt from memory usage limits.
+	MemoryDownGradeDuration *int32 `json:"MemoryDownGradeDuration,omitempty" xml:"MemoryDownGradeDuration,omitempty"`
+	// Specifies whether memory overload protection is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	MemoryOverload *string `json:"MemoryOverload,omitempty" xml:"MemoryOverload,omitempty"`
+	// The whitelist of processes that are not subject to memory usage limits.
 	MemoryProcessors []*string `json:"MemoryProcessors,omitempty" xml:"MemoryProcessors,omitempty" type:"Repeated"`
-	// The memory protection mode switch.
+	// Specifies whether to enable memory protection mode.
 	//
 	// example:
 	//
@@ -342,61 +594,79 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// 70
 	MemoryRateLimit *int32 `json:"MemoryRateLimit,omitempty" xml:"MemoryRateLimit,omitempty"`
-	// The overall memory sampling duration in seconds. Valid values: 30 to 60.
+	// The overall memory sampling duration. Valid values: 30 to 60. Unit: seconds.
 	//
 	// example:
 	//
 	// 30
 	MemorySampleDuration *int32 `json:"MemorySampleDuration,omitempty" xml:"MemorySampleDuration,omitempty"`
-	// The memory usage percentage per worker. Valid values: 30 to 60.
+	// The memory usage percentage of a single process. Valid values: 30 to 60.
 	//
 	// example:
 	//
 	// 30
 	MemorySingleRateLimit *int32 `json:"MemorySingleRateLimit,omitempty" xml:"MemorySingleRateLimit,omitempty"`
-	// Whether to display the restart button in the floating ball when accessing the cloud computer from mobile clients (including Android and iOS clients).
+	// Specifies whether the restart button is provided in the cloud computer floating ball when connecting to a cloud computer from a mobile client (including Android and iOS clients).
 	//
-	// > Applies only to mobile clients of V7.4 or later.
+	// > This applies only to mobile clients of V7.4 or later.
 	//
 	// example:
 	//
 	// off
 	MobileRestart *string `json:"MobileRestart,omitempty" xml:"MobileRestart,omitempty"`
-	// The Windows security control switch for mobile clients.
+	// Specifies whether the Windows security control feature is enabled on mobile clients.
 	//
 	// example:
 	//
 	// off
 	MobileSafeMenu *string `json:"MobileSafeMenu,omitempty" xml:"MobileSafeMenu,omitempty"`
-	// Whether to display the shutdown button in the floating ball when accessing the cloud computer from mobile clients (including Android and iOS clients).
+	// Specifies whether the shutdown button is provided in the cloud computer floating ball when connecting to a cloud computer from a mobile client (including Android and iOS clients).
 	//
-	// > Applies only to mobile clients of V7.4 or later.
+	// > This applies only to mobile clients of V7.4 or later.
 	//
 	// example:
 	//
 	// off
 	MobileShutdown *string `json:"MobileShutdown,omitempty" xml:"MobileShutdown,omitempty"`
-	// The WUYING Keeper switch for mobile clients.
+	// Specifies whether the WUYING Keeper feature is enabled on mobile clients.
 	//
 	// example:
 	//
 	// off
 	MobileWuyingKeeper *string `json:"MobileWuyingKeeper,omitempty" xml:"MobileWuyingKeeper,omitempty"`
-	// The Xiaoying AI Assistant switch for mobile clients.
+	// Specifies whether the WUYING Assistant feature is enabled on mobile clients.
 	//
 	// example:
 	//
 	// off
 	MobileWyAssistant *string `json:"MobileWyAssistant,omitempty" xml:"MobileWyAssistant,omitempty"`
-	ModelLibrary      *string `json:"ModelLibrary,omitempty" xml:"ModelLibrary,omitempty"`
-	MultiScreen       *string `json:"MultiScreen,omitempty" xml:"MultiScreen,omitempty"`
-	// The cloud computer policy name.
+	// Specifies whether the model library feature is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	ModelLibrary *string `json:"ModelLibrary,omitempty" xml:"ModelLibrary,omitempty"`
+	// Specifies whether the multi-screen display feature is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	MultiScreen *string `json:"MultiScreen,omitempty" xml:"MultiScreen,omitempty"`
+	// The Policy Name of the cloud computer policy.
 	//
 	// example:
 	//
 	// testPolicyGroupName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Network redirection.
+	// The network redirection setting.
 	//
 	// > This feature is in invitational preview and is not publicly available.
 	//
@@ -407,16 +677,30 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// The network redirection policy list.
 	//
 	// > This feature is in invitational preview and is not publicly available.
-	NetRedirectRule   []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsNetRedirectRule `json:"NetRedirectRule,omitempty" xml:"NetRedirectRule,omitempty" type:"Repeated"`
-	NetworkPrinter    *string                                                                `json:"NetworkPrinter,omitempty" xml:"NetworkPrinter,omitempty"`
-	OrganizationCount *string                                                                `json:"OrganizationCount,omitempty" xml:"OrganizationCount,omitempty"`
+	NetRedirectRule []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsNetRedirectRule `json:"NetRedirectRule,omitempty" xml:"NetRedirectRule,omitempty" type:"Repeated"`
+	// The network printer feature switch. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	NetworkPrinter *string `json:"NetworkPrinter,omitempty" xml:"NetworkPrinter,omitempty"`
+	// The number of associated organizations.
+	//
+	// example:
+	//
+	// 2
+	OrganizationCount *string `json:"OrganizationCount,omitempty" xml:"OrganizationCount,omitempty"`
 	// The cloud computer policy ID.
 	//
 	// example:
 	//
 	// pg-gx2x1dhsmthe9****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The cloud computer policy type.
+	// The type of the cloud computer policy.
 	//
 	// example:
 	//
@@ -428,84 +712,113 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// AVAILABLE
 	PolicyStatus *string `json:"PolicyStatus,omitempty" xml:"PolicyStatus,omitempty"`
-	PortProxy    *string `json:"PortProxy,omitempty" xml:"PortProxy,omitempty"`
-	// The cloud computer preemption policy.
+	// Specifies whether the port proxy feature is enabled. Valid values:
 	//
-	// > To ensure user experience and data security for end users currently using a cloud computer, mutual preemption between multiple users is not allowed. This parameter defaults to `off` and cannot be modified.
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	PortProxy *string `json:"PortProxy,omitempty" xml:"PortProxy,omitempty"`
+	// The preemption policy for the cloud computer.
+	//
+	// > To ensure the user experience and data security of end users who are using cloud computers, preemption among multiple users is not allowed. This means the configuration is set to `off` by default and cannot be modified.
 	//
 	// example:
 	//
 	// off
 	PreemptLogin *string `json:"PreemptLogin,omitempty" xml:"PreemptLogin,omitempty"`
-	// The usernames of users who can preempt the cloud computer.
+	// The usernames of users who can preempt cloud desktops.
 	PreemptLoginUsers []*string `json:"PreemptLoginUsers,omitempty" xml:"PreemptLoginUsers,omitempty" type:"Repeated"`
+	// The printer pop-up alert setting. Valid values:
+	//
+	// - default: Default value.
+	//
+	// - off: Disabled.
+	//
+	// - custom: Custom.
+	//
+	// example:
+	//
+	// off
+	PrinterAlert *string `json:"PrinterAlert,omitempty" xml:"PrinterAlert,omitempty"`
+	// The content of the printer pop-up alert.
+	//
+	// example:
+	//
+	// Print Content
+	PrinterAlertContent *string `json:"PrinterAlertContent,omitempty" xml:"PrinterAlertContent,omitempty"`
+	// The title of the printer pop-up alert.
+	//
+	// example:
+	//
+	// Print Title
+	PrinterAlertTitle *string `json:"PrinterAlertTitle,omitempty" xml:"PrinterAlertTitle,omitempty"`
 	// The printer redirection policy.
 	//
 	// example:
 	//
 	// on
 	PrinterRedirection *string `json:"PrinterRedirection,omitempty" xml:"PrinterRedirection,omitempty"`
-	// Whether to enable image quality enhancement for design and 3D application scenarios.
+	// Specifies whether image quality enhancement is enabled for design and 3D common scenarios.
 	//
 	// example:
 	//
 	// off
 	QualityEnhancement *string `json:"QualityEnhancement,omitempty" xml:"QualityEnhancement,omitempty"`
-	// Whether to enable custom screen recording.
+	// Specifies whether custom screen recording is enabled.
 	//
 	// example:
 	//
 	// off
 	RecordContent *string `json:"RecordContent,omitempty" xml:"RecordContent,omitempty"`
-	// The expiration time for custom screen recording files. Default value: 30 days.
+	// The expiration time of custom screen recording files. Default value: 30 days.
 	//
 	// example:
 	//
 	// 30
 	RecordContentExpires *int64 `json:"RecordContentExpires,omitempty" xml:"RecordContentExpires,omitempty"`
-	// The screen recording duration after an event is detected in screen recording audit. Unit: minutes. Valid values: 10 to 60.
+	// The recording duration after an event is detected in screen recording audit. Unit: minutes. Valid values: 10 to 60.
 	//
 	// example:
 	//
 	// 10
 	RecordEventDuration *int32 `json:"RecordEventDuration,omitempty" xml:"RecordEventDuration,omitempty"`
-	// The screen recording event suffix.
+	// The file extensions for screen recording events.
 	RecordEventFileExts []*string `json:"RecordEventFileExts,omitempty" xml:"RecordEventFileExts,omitempty" type:"Repeated"`
 	// The list of absolute paths for file monitoring in screen recording audit.
 	RecordEventFilePaths []*string `json:"RecordEventFilePaths,omitempty" xml:"RecordEventFilePaths,omitempty" type:"Repeated"`
-	// The screen recording event severity switch.
+	// The screen recording event level settings.
 	RecordEventLevels []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels `json:"RecordEventLevels,omitempty" xml:"RecordEventLevels,omitempty" type:"Repeated"`
 	// The list of absolute paths for registry monitoring in screen recording audit.
-	//
-	// example:
-	//
-	// Computer\\HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\USBSTOR
 	RecordEventRegisters []*string `json:"RecordEventRegisters,omitempty" xml:"RecordEventRegisters,omitempty" type:"Repeated"`
-	// Whether to enable screen recording.
+	// Specifies whether screen recording is enabled.
 	//
 	// example:
 	//
 	// OFF
 	Recording *string `json:"Recording,omitempty" xml:"Recording,omitempty"`
-	// The option to record audio from the cloud computer.
+	// The option for recording cloud computer audio.
 	//
 	// example:
 	//
 	// on
 	RecordingAudio *string `json:"RecordingAudio,omitempty" xml:"RecordingAudio,omitempty"`
-	// The screen recording file viewing duration in minutes. Recording files are automatically split based on this duration and uploaded to the bucket. When a file reaches 300 MB, it is preferentially rolled over.
+	// The duration of a screen recording file, in minutes. Recording files are automatically split and uploaded to the storage space based on the duration you specify. When a file reaches 300 MB, it is rolled over first.
 	//
 	// example:
 	//
 	// 10
 	RecordingDuration *int32 `json:"RecordingDuration,omitempty" xml:"RecordingDuration,omitempty"`
-	// The screen recording end time in HH:MM:SS format. This parameter takes effect only when Recording is set to PERIOD.
+	// The screen recording end time in the format of HH:MM:SS. This parameter is meaningful only when Recording is set to PERIOD.
 	//
 	// example:
 	//
 	// 08:59:00
 	RecordingEndTime *string `json:"RecordingEndTime,omitempty" xml:"RecordingEndTime,omitempty"`
-	// The retention period for screen recording files. Valid values: 1 to 180 days.
+	// The retention period of screen recording files. Valid values: 1 to 180. Unit: days.
 	//
 	// example:
 	//
@@ -517,41 +830,61 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// 5
 	RecordingFps *int64 `json:"RecordingFps,omitempty" xml:"RecordingFps,omitempty"`
-	// The screen recording start time in HH:MM:SS format. This parameter takes effect only when Recording is set to PERIOD.
+	// The screen recording start time in the format of HH:MM:SS. This parameter is meaningful only when Recording is set to PERIOD.
 	//
 	// example:
 	//
 	// 08:00:00
 	RecordingStartTime *string `json:"RecordingStartTime,omitempty" xml:"RecordingStartTime,omitempty"`
-	// The screen recording client notification feature.
+	// The client notification feature for screen recording.
 	//
 	// example:
 	//
 	// off
 	RecordingUserNotify *string `json:"RecordingUserNotify,omitempty" xml:"RecordingUserNotify,omitempty"`
-	// The screen recording client notification message. Leave empty by default.
+	// The notification content for the screen recording client. Leave this parameter empty by default.
 	//
 	// example:
 	//
-	// Your cloud desktop is being recorded.
+	// Your cloud computer is being recorded
 	RecordingUserNotifyMessage *string `json:"RecordingUserNotifyMessage,omitempty" xml:"RecordingUserNotifyMessage,omitempty"`
-	// The keyboard and mouse control permissions during remote assistance.
+	// The keyboard and mouse control permission for remote assistance.
 	//
 	// example:
 	//
 	// fullControl
 	RemoteCoordinate *string `json:"RemoteCoordinate,omitempty" xml:"RemoteCoordinate,omitempty"`
-	// Resets the cloud computer.
+	// The setting for resetting the cloud computer.
 	//
 	// example:
 	//
-	// null
-	ResetDesktop     *string `json:"ResetDesktop,omitempty" xml:"ResetDesktop,omitempty"`
-	ResolutionDpi    *int32  `json:"ResolutionDpi,omitempty" xml:"ResolutionDpi,omitempty"`
-	ResolutionHeight *int32  `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
-	ResolutionModel  *string `json:"ResolutionModel,omitempty" xml:"ResolutionModel,omitempty"`
-	ResolutionWidth  *int32  `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
-	// The number of resource groups associated with this policy.
+	// off
+	ResetDesktop *string `json:"ResetDesktop,omitempty" xml:"ResetDesktop,omitempty"`
+	// The DPI value of the screen resolution.
+	//
+	// example:
+	//
+	// 96
+	ResolutionDpi *int32 `json:"ResolutionDpi,omitempty" xml:"ResolutionDpi,omitempty"`
+	// The height of the resolution. Unit: pixels. Valid values for cloud applications: 500 to 50000. Valid values for cloud computers: 480 to 4096.
+	//
+	// example:
+	//
+	// 1280
+	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
+	// The resolution type.
+	//
+	// example:
+	//
+	// adaptive
+	ResolutionModel *string `json:"ResolutionModel,omitempty" xml:"ResolutionModel,omitempty"`
+	// The width of the resolution. Unit: pixels. Valid values for cloud applications: 500 to 50000. Valid values for cloud computers: 640 to 4096.
+	//
+	// example:
+	//
+	// 720
+	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+	// The number of resource groups associated with the policy.
 	//
 	// example:
 	//
@@ -559,35 +892,49 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	ResourceGroupCount *int32 `json:"ResourceGroupCount,omitempty" xml:"ResourceGroupCount,omitempty"`
 	// The region to which the cloud computer policy belongs.
 	//
-	// > For region-less policies, this value is `center`.
+	// > If the policy is a region-independent policy, this value is `center`.
 	//
 	// example:
 	//
 	// center
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
-	SafeMenu         *string `json:"SafeMenu,omitempty" xml:"SafeMenu,omitempty"`
+	// The security center shortcut key switch. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	SafeMenu *string `json:"SafeMenu,omitempty" xml:"SafeMenu,omitempty"`
 	// The effective scope of the policy.
 	//
 	// example:
 	//
 	// GLOBAL
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// Specify this parameter when `Scope` is set to `IP`. This parameter takes effect only when `Scope` is set to `IP`.
-	ScopeValue        []*string `json:"ScopeValue,omitempty" xml:"ScopeValue,omitempty" type:"Repeated"`
-	ScreenDisplayMode *string   `json:"ScreenDisplayMode,omitempty" xml:"ScreenDisplayMode,omitempty"`
-	// Whether to enable smoothness enhancement for daily office scenarios.
+	// This parameter is required when `Scope` is set to `IP`. This parameter takes effect only when `Scope` is set to `IP`.
+	ScopeValue []*string `json:"ScopeValue,omitempty" xml:"ScopeValue,omitempty" type:"Repeated"`
+	// The screen display mode.
+	//
+	// example:
+	//
+	// auto
+	ScreenDisplayMode *string `json:"ScreenDisplayMode,omitempty" xml:"ScreenDisplayMode,omitempty"`
+	// Specifies whether smoothness enhancement is enabled for daily office scenarios.
 	//
 	// example:
 	//
 	// off
 	SmoothEnhancement *string `json:"SmoothEnhancement,omitempty" xml:"SmoothEnhancement,omitempty"`
-	// Whether to provide the status monitoring feature in the floating ball when accessing the cloud computer.
+	// Specifies whether the status monitoring entry is provided in the cloud computer floating ball.
 	//
 	// example:
 	//
 	// on
 	StatusMonitor *string `json:"StatusMonitor,omitempty" xml:"StatusMonitor,omitempty"`
-	// The streaming mode adaptation scenario.
+	// The streaming mode for scenario adaptation.
 	//
 	// example:
 	//
@@ -599,28 +946,47 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// 30
 	TargetFps *int32 `json:"TargetFps,omitempty" xml:"TargetFps,omitempty"`
-	// USB redirection.
+	// Specifies whether the three-screen feature is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	ThreeScreen *string `json:"ThreeScreen,omitempty" xml:"ThreeScreen,omitempty"`
+	// The USB redirection policy.
 	//
 	// example:
 	//
 	// on
 	UsbRedirect *string `json:"UsbRedirect,omitempty" xml:"UsbRedirect,omitempty"`
-	// The USB redirection rule.
+	// The USB redirection rules.
 	UsbSupplyRedirectRule []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule `json:"UsbSupplyRedirectRule,omitempty" xml:"UsbSupplyRedirectRule,omitempty" type:"Repeated"`
-	UseTime               *string                                                                      `json:"UseTime,omitempty" xml:"UseTime,omitempty"`
+	// Specifies whether the usage duration display on the floating ball is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	UseTime *string `json:"UseTime,omitempty" xml:"UseTime,omitempty"`
 	// The average bitrate for video encoding. Valid values: 1000 to 50000.
 	//
 	// example:
 	//
 	// 1000
 	VideoEncAvgKbps *int32 `json:"VideoEncAvgKbps,omitempty" xml:"VideoEncAvgKbps,omitempty"`
-	// The maximum quantization parameter (QP) for video encoding, representing the lowest quality. Valid values: 0 to 51.
+	// The maximum QP for video encoding, which represents the lowest image quality. Valid values: 0 to 51.
 	//
 	// example:
 	//
 	// 20
 	VideoEncMaxQP *int32 `json:"VideoEncMaxQP,omitempty" xml:"VideoEncMaxQP,omitempty"`
-	// The minimum quantization parameter (QP) for video encoding, representing the highest quality. Valid values: 0 to 51.
+	// The minimum QP for video encoding, which represents the highest quality. Valid values: 0 to 51.
 	//
 	// example:
 	//
@@ -638,7 +1004,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// qualityFirst
 	VideoEncPolicy *string `json:"VideoEncPolicy,omitempty" xml:"VideoEncPolicy,omitempty"`
-	// Multimedia redirection.
+	// The multimedia redirection setting.
 	//
 	// example:
 	//
@@ -650,25 +1016,25 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// medium
 	VisualQuality *string `json:"VisualQuality,omitempty" xml:"VisualQuality,omitempty"`
-	// Watermark.
+	// The watermark policy.
 	//
 	// example:
 	//
 	// on
 	Watermark *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
-	// The blind watermark anti-photo feature.
+	// The anti-camera capture feature for invisible watermarks.
 	//
 	// example:
 	//
 	// off
 	WatermarkAntiCam *string `json:"WatermarkAntiCam,omitempty" xml:"WatermarkAntiCam,omitempty"`
-	// The watermark font color in RGB format. Valid values: 0 to 16777215.
+	// The watermark font color. Valid values: 0 to 16777215.
 	//
 	// example:
 	//
 	// 0
 	WatermarkColor *int32 `json:"WatermarkColor,omitempty" xml:"WatermarkColor,omitempty"`
-	// If you set `WatermarkType` to `custom`, you must also specify `WatermarkCustomText`.
+	// If the `WatermarkType` parameter is set to `custom`, you must also specify the custom text content by using the `WatermarkCustomText` parameter.
 	//
 	// example:
 	//
@@ -692,7 +1058,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// plain
 	WatermarkFontStyle *string `json:"WatermarkFontStyle,omitempty" xml:"WatermarkFontStyle,omitempty"`
-	// The blind watermark enhancement feature.
+	// The enhancement feature for invisible watermarks.
 	//
 	// example:
 	//
@@ -700,26 +1066,35 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	WatermarkPower *string `json:"WatermarkPower,omitempty" xml:"WatermarkPower,omitempty"`
 	// The number of watermark rows.
 	//
-	// > This parameter is not publicly available.
+	// > This parameter is not yet available for use.
 	//
 	// example:
 	//
 	// 5
 	WatermarkRowAmount *int32 `json:"WatermarkRowAmount,omitempty" xml:"WatermarkRowAmount,omitempty"`
-	// The blind watermark security priority rule.
+	// The security-first rule for invisible watermarks.
 	//
 	// example:
 	//
 	// on
 	WatermarkSecurity *string `json:"WatermarkSecurity,omitempty" xml:"WatermarkSecurity,omitempty"`
-	WatermarkShadow   *string `json:"WatermarkShadow,omitempty" xml:"WatermarkShadow,omitempty"`
-	// The watermark transparency level.
+	// Specifies whether the watermark shadow effect is enabled. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	WatermarkShadow *string `json:"WatermarkShadow,omitempty" xml:"WatermarkShadow,omitempty"`
+	// The transparency level of the watermark.
 	//
 	// example:
 	//
 	// LIGHT
 	WatermarkTransparency *string `json:"WatermarkTransparency,omitempty" xml:"WatermarkTransparency,omitempty"`
-	// The watermark transparency. A higher value means lower transparency. Valid values: 10 to 100.
+	// The watermark transparency. A larger value indicates lower transparency. Valid values: 10 to 100.
 	//
 	// example:
 	//
@@ -731,8 +1106,13 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// EndUserId
 	WatermarkType *string `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
-	WuyingKeeper  *string `json:"WuyingKeeper,omitempty" xml:"WuyingKeeper,omitempty"`
-	// Whether to provide the WUYING AI Assistant feature in the floating ball when accessing the cloud computer.
+	// The WUYING Keeper switch.
+	//
+	// example:
+	//
+	// off
+	WuyingKeeper *string `json:"WuyingKeeper,omitempty" xml:"WuyingKeeper,omitempty"`
+	// Specifies whether the WUYING AI Assistant entry is provided in the cloud computer floating ball.
 	//
 	// example:
 	//
@@ -1100,6 +1480,18 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetPreemptLoginUs
 	return s.PreemptLoginUsers
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetPrinterAlert() *string {
+	return s.PrinterAlert
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetPrinterAlertContent() *string {
+	return s.PrinterAlertContent
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetPrinterAlertTitle() *string {
+	return s.PrinterAlertTitle
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetPrinterRedirection() *string {
 	return s.PrinterRedirection
 }
@@ -1234,6 +1626,10 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetStreamingMode(
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetTargetFps() *int32 {
 	return s.TargetFps
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetThreeScreen() *string {
+	return s.ThreeScreen
 }
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) GetUsbRedirect() *string {
@@ -1780,6 +2176,21 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetPreemptLoginUs
 	return s
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetPrinterAlert(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.PrinterAlert = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetPrinterAlertContent(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.PrinterAlertContent = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetPrinterAlertTitle(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.PrinterAlertTitle = &v
+	return s
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetPrinterRedirection(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.PrinterRedirection = &v
 	return s
@@ -1947,6 +2358,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetStreamingMode(
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetTargetFps(v int32) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.TargetFps = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetThreeScreen(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.ThreeScreen = &v
 	return s
 }
 
@@ -2166,17 +2582,17 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) Validate() error 
 }
 
 type DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules struct {
-	// The client-accessible IP address segment. The value is an IPv4 CIDR block.
+	// The client access IP CIDR block. The value is an IPv4 CIDR block.
 	//
 	// example:
 	//
 	// 47.100.XX.XX/16
 	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
-	// The remarks for the client-accessible CIDR block.
+	// The description of the client access IP CIDR block.
 	//
 	// example:
 	//
-	// test
+	// Corporate office network
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 }
 
@@ -2211,43 +2627,43 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeAccessPoli
 }
 
 type DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules struct {
-	// The target of the security group control rule. The value is an IPv4 CIDR block.
+	// The target of the security group rule. The value is an IPv4 CIDR block.
 	//
 	// example:
 	//
 	// 47.100.XX.XX/16
 	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
-	// The description of the security group control rule.
+	// The description of the security group rule.
 	//
 	// example:
 	//
-	// test
+	// Allow access to the internal R&D environment
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The protocol type of the security group control rule.
+	// The protocol type of the security group rule.
 	//
 	// example:
 	//
 	// tcp
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The authorization policy of the security group control rule.
+	// The authorization policy of the security group rule.
 	//
 	// example:
 	//
 	// accept
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The port range of the security group control rule.
+	// The port range of the security group rule.
 	//
 	// example:
 	//
 	// 22/22
 	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	// The priority of the security group control rule. A smaller number indicates a higher priority.
+	// The priority of the security group rule. A smaller value indicates a higher priority.
 	//
 	// example:
 	//
 	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The rule direction of the security group control rule.
+	// The direction of the security group rule.
 	//
 	// example:
 	//
@@ -2337,7 +2753,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes struct {
 	//
 	// windows
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	// Whether a specific client type is allowed to connect to the cloud computer.
+	// Specifies whether a specific type of client is allowed to connect to cloud desktops.
 	//
 	// example:
 	//
@@ -2382,13 +2798,13 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRedirects struct 
 	//
 	// camera
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// The redirection type.
+	// The redirection type. Valid values:
 	//
 	// - usbRedirect: USB redirection.
 	//
-	// - deviceRedirect: Device redirection.
+	// - deviceRedirect: device redirection.
 	//
-	// - off: Disabled.
+	// - off: disabled.
 	//
 	// example:
 	//
@@ -2445,7 +2861,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules struct {
 	//
 	// storage
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// The vendor ID. For more information, see [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
+	// The vendor ID. See [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
 	//
 	// example:
 	//
@@ -2457,7 +2873,12 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules struct {
 	//
 	// 2:0
 	OptCommand *string `json:"OptCommand,omitempty" xml:"OptCommand,omitempty"`
-	Platforms  *string `json:"Platforms,omitempty" xml:"Platforms,omitempty"`
+	// The platform types to which the device rule applies.
+	//
+	// example:
+	//
+	// Windows
+	Platforms *string `json:"Platforms,omitempty" xml:"Platforms,omitempty"`
 	// The redirection type.
 	//
 	// example:
@@ -2546,7 +2967,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroupsDomainResolveRule struc
 	//
 	// example:
 	//
-	// 测试规则
+	// Test rule
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The domain name.
 	//
@@ -2662,9 +3083,17 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsNetRedirectRule) Va
 }
 
 type DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels struct {
-	// The event severity.
+	// The event level.
+	//
+	// example:
+	//
+	// HIGH
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
 	// The event type.
+	//
+	// example:
+	//
+	// StartApplication
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 }
 
@@ -2705,13 +3134,13 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule s
 	//
 	// Test rule
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The device class. This parameter is required when `usbRuleType` is set to 1. For more information, see [Defined Class Codes](https://www.usb.org/defined-class-codes).
+	// The device class. This parameter is required when `usbRuleType` is set to 1. See [Defined Class Codes](https://www.usb.org/defined-class-codes).
 	//
 	// example:
 	//
 	// 0Eh
 	DeviceClass *string `json:"DeviceClass,omitempty" xml:"DeviceClass,omitempty"`
-	// The device subclass. This parameter is required when `usbRuleType` is set to 1. For more information, see [Defined Class Codes](https://www.usb.org/defined-class-codes).
+	// The device subclass. This parameter is required when `usbRuleType` is set to 1. See [Defined Class Codes](https://www.usb.org/defined-class-codes).
 	//
 	// example:
 	//
@@ -2735,7 +3164,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule s
 	//
 	// 1
 	UsbRuleType *int64 `json:"UsbRuleType,omitempty" xml:"UsbRuleType,omitempty"`
-	// The vendor ID. For more information, see [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
+	// The vendor ID. See [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
 	//
 	// example:
 	//

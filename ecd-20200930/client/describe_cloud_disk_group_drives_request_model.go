@@ -30,23 +30,23 @@ type DescribeCloudDiskGroupDrivesRequest struct {
 	//
 	// cn-hangzhou+cds-6805637***
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	// The team drive name.
+	// The team space name.
 	//
 	// example:
 	//
-	// Team 1
+	// Team1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The number of entries per page for paged queries.
+	// The number of entries per page for a paged query.
 	//
-	// - Maximum: 100
+	// - Maximum value: 100
 	//
-	// - Default: 20
+	// - Default value: 20
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the start of the next query. An empty NextToken means no more results.
+	// The token for the next query. If NextToken is empty, no more results are available.
 	//
 	// example:
 	//

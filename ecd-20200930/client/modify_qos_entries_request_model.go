@@ -26,12 +26,13 @@ type iModifyQosEntriesRequest interface {
 }
 
 type ModifyQosEntriesRequest struct {
-	// The IDs of the cloud phones to bind to the QoS rule.
-	AuthAndroidId      []*string `json:"AuthAndroidId,omitempty" xml:"AuthAndroidId,omitempty" type:"Repeated"`
+	// The list of cloud phone IDs to associate.
+	AuthAndroidId []*string `json:"AuthAndroidId,omitempty" xml:"AuthAndroidId,omitempty" type:"Repeated"`
+	// The ID of the cloud desktop pool to authorize.
 	AuthDesktopGroupId []*string `json:"AuthDesktopGroupId,omitempty" xml:"AuthDesktopGroupId,omitempty" type:"Repeated"`
-	// The IDs of the cloud desktops to bind to the QoS rule.
+	// The list of cloud desktop IDs to associate.
 	AuthDesktopId []*string `json:"AuthDesktopId,omitempty" xml:"AuthDesktopId,omitempty" type:"Repeated"`
-	// The ID of the QoS rule.
+	// The ID of the public network rate limiting rule.
 	//
 	// This parameter is required.
 	//
@@ -39,10 +40,11 @@ type ModifyQosEntriesRequest struct {
 	//
 	// qos-5605u0gelk200****
 	QosRuleId *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
-	// The IDs of the cloud phones to unbind from the QoS rule.
-	RevokeAndroidId      []*string `json:"RevokeAndroidId,omitempty" xml:"RevokeAndroidId,omitempty" type:"Repeated"`
+	// The list of cloud phone IDs to disassociate.
+	RevokeAndroidId []*string `json:"RevokeAndroidId,omitempty" xml:"RevokeAndroidId,omitempty" type:"Repeated"`
+	// The ID of the cloud desktop pool to revoke authorization from.
 	RevokeDesktopGroupId []*string `json:"RevokeDesktopGroupId,omitempty" xml:"RevokeDesktopGroupId,omitempty" type:"Repeated"`
-	// The IDs of the cloud desktops to unbind from the QoS rule.
+	// The list of cloud desktop IDs to disassociate.
 	RevokeDesktopId []*string `json:"RevokeDesktopId,omitempty" xml:"RevokeDesktopId,omitempty" type:"Repeated"`
 }
 

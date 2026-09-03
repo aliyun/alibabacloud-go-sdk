@@ -54,24 +54,29 @@ type CreateNetworkPackageRequest struct {
 	//
 	// - If the premium bandwidth plan uses the subscription billing method, the valid values are 2 to 1000.
 	//
-	// - If the premium bandwidth plan uses the pay-as-you-go billing method and the billing type is pay-by-data-transfer (PayByTraffic), the valid values are 2 to 200.
+	// - If the premium bandwidth plan uses the pay-as-you-go billing method and the metering method is pay-by-data-transfer (PayByTraffic), the valid values are 2 to 200.
 	//
-	// - If the premium bandwidth plan uses the pay-as-you-go billing method and the billing type is pay-by-bandwidth (PayByBandwidth), the valid values are 2 to 1000.
+	// - If the premium bandwidth plan uses the pay-as-you-go billing method and the metering method is pay-by-bandwidth (PayByBandwidth), the valid values are 2 to 1000.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
-	Bandwidth     *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// > This field is not publicly available.
+	//
+	// example:
+	//
+	// PBKB1QbqEl2tslEuU6gRrLxvCFBU2M%2FVD0Eru6Oo%2FI9LTU3XQhvq3PGMWarE%2BPJdkNvCqT3blqlRSthNy4A%2BJQ%3D%3D
 	ChannelCookie *string `json:"ChannelCookie,omitempty" xml:"ChannelCookie,omitempty"`
 	// The billable methods of the premium bandwidth plan.
 	//
-	// - If the parameter `PayType` is set to `PrePaid`, valid values:
+	// - When the parameter `PayType` is set to `PrePaid`, the valid value is:
 	//
 	//     - PayByBandwidth: billing by fixed bandwidth.
 	//
-	// - If the parameter `PayType` is set to `PostPaid`, valid values:
+	// - When the parameter `PayType` is set to `PostPaid`, the valid values are:
 	//
 	//     - PayByTraffic: billing by data transfer.
 	//
@@ -97,9 +102,9 @@ type CreateNetworkPackageRequest struct {
 	//
 	// - If PeriodUnit is set to Week, the valid value is 1.
 	//
-	// - If PeriodUnit is set to Month, valid values are 1, 2, 3, and 6.
+	// - If PeriodUnit is set to Month, the valid values are 1, 2, 3, and 6.
 	//
-	// - If PeriodUnit is set to Year, valid values are 1, 2, and 3.
+	// - If PeriodUnit is set to Year, the valid values are 1, 2, and 3.
 	//
 	// Default value: 1.
 	//
@@ -113,7 +118,7 @@ type CreateNetworkPackageRequest struct {
 	//
 	// Week
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The promotion ID.
+	// The promotion activity ID.
 	//
 	// example:
 	//
@@ -126,9 +131,15 @@ type CreateNetworkPackageRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId         *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResellerOwnerUid *int64                            `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
-	Tag              []*CreateNetworkPackageRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of resource ownership in the reseller pattern. You do not need to specify this parameter if you are not using the reseller pattern.
+	//
+	// example:
+	//
+	// 1422724566551XXX
+	ResellerOwnerUid *int64 `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
+	// The tags. A maximum of 20 tags are supported.
+	Tag []*CreateNetworkPackageRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateNetworkPackageRequest) String() string {
@@ -270,7 +281,17 @@ func (s *CreateNetworkPackageRequest) Validate() error {
 }
 
 type CreateNetworkPackageRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key. If you specify this parameter, the value cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// TestValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

@@ -38,7 +38,7 @@ type RenewDesktopGroupRequest struct {
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The ID of the cloud computer pool.
+	// The ID of the shared cloud computer.
 	//
 	// This parameter is required.
 	//
@@ -46,11 +46,11 @@ type RenewDesktopGroupRequest struct {
 	//
 	// dg-7724r1jitbjzc****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The renewal duration. The valid values of this parameter vary based on the `PeriodUnit` value.
+	// The renewal duration. Valid values of this parameter are determined by the value of the `PeriodUnit` parameter.
 	//
-	// - If you set `PeriodUnit` to `Month`, the valid values are 1, 2, 3, and 6.
+	// - If `PeriodUnit` is set to `Month`, valid values are 1, 2, 3, and 6.
 	//
-	// - If you set `PeriodUnit` to `Year`, the valid values are 1, 2, 3, 4, and 5.
+	// - If `PeriodUnit` is set to `Year`, valid values are 1 to 5.
 	//
 	// Default value: 1.
 	//
@@ -58,21 +58,26 @@ type RenewDesktopGroupRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the renewal duration specified by the `Period` parameter.
+	// The unit of the renewal duration, which is the unit of the `Period` parameter.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions that are supported by Elastic Desktop Service.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of the resource ownership in the resale pattern. You do not need to specify this parameter if you are not using the resale pattern.
+	//
+	// example:
+	//
+	// 1422724566551XXX
+	ResellerOwnerUid *int64 `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 }
 
 func (s RenewDesktopGroupRequest) String() string {

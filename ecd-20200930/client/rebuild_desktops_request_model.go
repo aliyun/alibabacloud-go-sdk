@@ -24,8 +24,13 @@ type iRebuildDesktopsRequest interface {
 }
 
 type RebuildDesktopsRequest struct {
+	// The target status of the cloud computer after the rebuild is complete.
+	//
+	// example:
+	//
+	// Running
 	AfterStatus *string `json:"AfterStatus,omitempty" xml:"AfterStatus,omitempty"`
-	// The IDs of the cloud computers to rebuild. You can specify 1 to 20 IDs.
+	// The cloud computer ID. You can specify 1 to 20 IDs.
 	//
 	// This parameter is required.
 	//
@@ -33,43 +38,45 @@ type RebuildDesktopsRequest struct {
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// The ID of the new image.
+	// The ID of the new image to use after the change.
 	//
 	// example:
 	//
 	// m-84mztzatmlnys****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The operating system language. This parameter applies only to system images. For Linux cloud computers, only English is supported.
+	// The operating system language. Currently, only system images are supported, and Linux computers only support English.
 	//
 	// example:
 	//
 	// en-US
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// Specifies how to handle the data disk.
+	// The operation type for the data cloud disk.
 	//
-	// > This parameter is optional.
+	// > Regardless of whether the cloud computer has a data cloud disk, no field value is passed in by default when you call this operation.
 	//
-	// - If a cloud computer does not have a data disk, this parameter is ignored.<br>
+	// - If the cloud computer has no data cloud disk:
 	//
-	// - If a cloud computer has a data disk:
+	//         No data cloud disk operation is performed regardless of the field value passed in.
 	//
-	//   1. If the new image has the same operating system as the original one:
+	// - If the cloud computer has a data cloud disk:
 	//
-	//      - If you set this parameter to `replace`, the data disk is replaced.
+	//     1. When the operating system of the cloud computer is the same as that of the target image:
 	//
-	//      - If you do not specify this parameter, the data disk is retained.
+	//         - If the field value is `replace`, the data cloud disk of the cloud computer is replaced.
 	//
-	//   2. If the new image has a different operating system:
+	//         - If no field value is passed in, the original data cloud disk of the cloud computer is retained.
 	//
-	//      - If you set this parameter to `replace`, the data disk is replaced.
+	//     2. When the operating system of the cloud computer is different from that of the target image:
 	//
-	//      - If you do not specify this parameter, the data disk is erased.
+	//         - If the field value is `replace`, the data cloud disk of the cloud computer is replaced.
+	//
+	//         - If no field value is passed in, the data cloud disk of the cloud computer is cleared.
 	//
 	// example:
 	//
 	// replace
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to find the regions where Elastic Desktop Service is available.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the list of regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

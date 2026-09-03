@@ -30,6 +30,15 @@ type iDescribeCenterPolicyListRequest interface {
 }
 
 type DescribeCenterPolicyListRequest struct {
+	// Specifies whether to enable the academic proxy feature. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
 	AcademicProxy *string `json:"AcademicProxy,omitempty" xml:"AcademicProxy,omitempty"`
 	// The business type.
 	//
@@ -38,9 +47,18 @@ type DescribeCenterPolicyListRequest struct {
 	// example:
 	//
 	// 1
-	BusinessType *int32  `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	BusinessType *int32 `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// Specifies whether to enable the model library feature. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
 	ModelLibrary *string `json:"ModelLibrary,omitempty" xml:"ModelLibrary,omitempty"`
-	// The page number of the current page in a paging query.
+	// The page number of the current page in a paged query. This parameter implements paging.
 	//
 	// Default value: 1.
 	//
@@ -48,15 +66,24 @@ type DescribeCenterPolicyListRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries per page in a paging query.
+	// The maximum number of rows per page in a paged query. This parameter implements paging.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of cloud desktop policy IDs.
+	// The list of Cloud Desktop policy IDs.
 	PolicyGroupId []*string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty" type:"Repeated"`
-	PortProxy     *string   `json:"PortProxy,omitempty" xml:"PortProxy,omitempty"`
+	// Specifies whether to enable the port proxy feature. Valid values:
+	//
+	// - on: Enabled.
+	//
+	// - off: Disabled.
+	//
+	// example:
+	//
+	// off
+	PortProxy *string `json:"PortProxy,omitempty" xml:"PortProxy,omitempty"`
 	// The resource type.
 	//
 	// This parameter is required.
@@ -65,7 +92,7 @@ type DescribeCenterPolicyListRequest struct {
 	//
 	// desktop
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The effective scope of the cloud desktop policy.
+	// The effective scope of the Cloud Desktop policy.
 	//
 	// example:
 	//

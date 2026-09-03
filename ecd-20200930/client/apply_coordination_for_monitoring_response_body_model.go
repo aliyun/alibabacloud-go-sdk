@@ -16,7 +16,7 @@ type iApplyCoordinationForMonitoringResponseBody interface {
 }
 
 type ApplyCoordinationForMonitoringResponseBody struct {
-	// The list of coordination flow data.
+	// The list of collaboration flow data.
 	CoordinateFlowModels []*ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels `json:"CoordinateFlowModels,omitempty" xml:"CoordinateFlowModels,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,21 +66,21 @@ func (s *ApplyCoordinationForMonitoringResponseBody) Validate() error {
 }
 
 type ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels struct {
-	// The coordination flow ID.
+	// The collaboration flow ID.
 	//
 	// example:
 	//
 	// co-0sot77uale3****
 	CoId *string `json:"CoId,omitempty" xml:"CoId,omitempty"`
-	// The current coordination status.
+	// The current collaboration status.
 	//
-	// [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.COORDINATING  ]coordinating
+	// [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.COORDINATING  ]Collaborating.
 	//
-	// [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.TERMINATING  ] terminating
+	// [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.TERMINATING  ]Terminating.
 	//
-	// [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.TERMINATED ]terminated
+	// [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.TERMINATED ]Terminated.
 	//
-	// [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.PENDING ]pending acceptance
+	// [_single.resp.200.props.CoordinateFlowModels.items.CoordinateStatus.enum.PENDING ]Pending acceptance.
 	//
 	// example:
 	//

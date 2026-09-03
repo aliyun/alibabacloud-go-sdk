@@ -54,7 +54,7 @@ type CreateCloudDriveServiceRequest struct {
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// Specifies whether to enable auto-renewal. This parameter applies only when `CdsChargeType` is set to `PrePaid`.
+	// Specifies whether to enable auto-renewal. This parameter takes effect and is optional only when CdsChargeType is set to `PrePaid`.
 	//
 	// example:
 	//
@@ -64,33 +64,33 @@ type CreateCloudDriveServiceRequest struct {
 	//
 	// example:
 	//
-	// null
+	// 1
 	BizType *int32 `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The billing method of the cloud drive.
+	// The billing method of the NAS drive.
 	//
 	// example:
 	//
 	// PostPaid
 	CdsChargeType *string `json:"CdsChargeType,omitempty" xml:"CdsChargeType,omitempty"`
-	// The ID of the Cloud Enterprise Network (CEN) instance. This parameter is required when `OfficeSiteType` is set to `AD_CONNECTOR` and you do not specify `OfficeSiteId`.
+	// The instance ID of the Cloud Enterprise Network (CEN) associated with the AD office network. This parameter takes effect only when `OfficeSiteType` is set to `AD_CONNECTOR`. If `OfficeSiteId` is specified, you do not need to specify this parameter.
 	//
 	// example:
 	//
 	// cen-g4ba1mkji8nj6****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The name of the domain controller. This parameter is required when `OfficeSiteType` is set to `AD_CONNECTOR` and you do not specify `OfficeSiteId`.
+	// The domain controller name of the AD office network. This parameter takes effect only when `OfficeSiteType` is set to `AD_CONNECTOR`. If `OfficeSiteId` is specified, you do not need to specify this parameter.
 	//
 	// example:
 	//
 	// test.local
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// A list of user IDs.
+	// The list of user IDs.
 	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
-	// The total capacity of the cloud drive.
+	// The Peak Volume of the NAS drive storage space.
 	//
-	// - For pay-as-you-go cloud drives, the unit is bytes.
+	// - When you create a pay-as-you-go NAS drive, the unit is bytes.
 	//
-	// - For subscription cloud drives, the unit is GiB. For example, set the value to 500 for 500 GiB, or to 2048 for 2 TiB.
+	// - When you create an upfront NAS drive, the unit is GiB. For example, to create a 500 GiB upfront NAS drive, set this parameter to 500. To create a 2 TiB upfront NAS drive, set this parameter to 2048.
 	//
 	// This parameter is required.
 	//
@@ -98,58 +98,63 @@ type CreateCloudDriveServiceRequest struct {
 	//
 	// 536870912000
 	MaxSize *int64 `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
-	// The name of the cloud drive.
+	// The name of the enterprise NAS drive.
 	//
 	// example:
 	//
 	// wuying-cds
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the office site. This parameter applies only when `OfficeSiteType` is set to `AD_CONNECTOR`.
+	// The ID of the office network. This parameter takes effect only when the network type is set to `AD_CONNECTOR`.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-400695****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The type of the office site.
+	// The network type of the office network.
 	//
 	// example:
 	//
 	// SIMPLE
 	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
-	// The subscription duration. The unit is specified by `PeriodUnit`. This parameter is required only when `CdsChargeType` is set to `PrePaid`.
+	// The subscription duration. The unit is specified by `PeriodUnit`. This parameter takes effect and is required only when `CdsChargeType` is set to `PrePaid`.
 	//
 	// example:
 	//
 	// 1
 	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription duration. This parameter is required only when `CdsChargeType` is set to `PrePaid`.
+	// The unit of the subscription duration for the subscription NAS drive. This parameter takes effect and is required only when `CdsChargeType` is set to `PrePaid`.
 	//
 	// example:
 	//
 	// Year
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID for resource ownership in reseller pattern. You do not need to specify this parameter if you are not in reseller pattern.
+	//
+	// example:
+	//
+	// 1422724566551XXX
+	ResellerOwnerUid *int64 `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 	// > This parameter is not publicly available.
 	//
 	// example:
 	//
-	// null
+	// sol-2i8qxpv6t1a03****
 	SolutionId *string `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
-	// The maximum number of users for a subscription cloud drive. This parameter is required only when `CdsChargeType` is set to `PrePaid`.
+	// The maximum number of users for the subscription NAS drive. This parameter takes effect and is required only when `CdsChargeType` is set to `PrePaid`.
 	//
 	// example:
 	//
 	// 5
 	UserCount *int64 `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
-	// The maximum size of the personal disk for each user, in bytes.
+	// The maximum storage capacity of a personal drive when you assign a personal drive to a user. Unit: bytes.
 	//
 	// example:
 	//

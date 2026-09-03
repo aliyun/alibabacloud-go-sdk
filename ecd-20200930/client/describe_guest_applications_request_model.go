@@ -32,7 +32,7 @@ type DescribeGuestApplicationsRequest struct {
 	//
 	// example:
 	//
-	// alice
+	// demo001
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
 	//

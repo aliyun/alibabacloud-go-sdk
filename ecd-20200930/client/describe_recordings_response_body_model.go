@@ -18,13 +18,13 @@ type iDescribeRecordingsResponseBody interface {
 }
 
 type DescribeRecordingsResponseBody struct {
-	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	// The pagination token for the next query. If NextToken is empty, no more results exist.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6nbCQ7ar+fECeh1IuWQXi39R5eoJ68zWp99mTAKRRNRhw==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The screen recording files.
+	// The collection of cloud computer screen recording information.
 	Recordings []*DescribeRecordingsResponseBodyRecordings `json:"Recordings,omitempty" xml:"Recordings,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -95,13 +95,13 @@ type DescribeRecordingsResponseBodyRecordings struct {
 	//
 	// DemoComputer
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The end time of the recording.
+	// The end time of the recording. The time is in the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2023-04-10T07:26:06Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The end user IDs.
+	// The list of end user IDs.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
 	// The file path.
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
@@ -111,27 +111,13 @@ type DescribeRecordingsResponseBodyRecordings struct {
 	//
 	// pg-6dn811rzrwh9w****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The size of the screen recording file. Unit: bytes.
+	// The size of the recording file. Unit: bytes.
 	//
 	// example:
 	//
 	// 1742845
 	RecordingSize *int32 `json:"RecordingSize,omitempty" xml:"RecordingSize,omitempty"`
-	// The type of event that triggers the recording.
-	//
-	// Valid values:
-	//
-	// 	- byaction_cmd_ft: triggered by copy-paste or file transfer events.
-	//
-	// 	- period: triggered at scheduled intervals.
-	//
-	// 	- session: triggered by session lifecycle monitoring.
-	//
-	// 	- byaction_commands: triggered by copy-paste only.
-	//
-	// 	- alltime: continuous recording.
-	//
-	// 	- byaction_file_transfer: triggered by file transfer only.
+	// The recording type.
 	//
 	// example:
 	//
@@ -139,7 +125,7 @@ type DescribeRecordingsResponseBodyRecordings struct {
 	RecordingType *string `json:"RecordingType,omitempty" xml:"RecordingType,omitempty"`
 	// The download URL of the screen recording file.
 	SignedUrl *string `json:"SignedUrl,omitempty" xml:"SignedUrl,omitempty"`
-	// The start time of the recording.
+	// The start time of the recording. The time is in the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//

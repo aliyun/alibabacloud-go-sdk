@@ -16,7 +16,7 @@ type iDescribeFlowMetricResponseBody interface {
 }
 
 type DescribeFlowMetricResponseBody struct {
-	// Metric data.
+	// The metric data.
 	//
 	// example:
 	//

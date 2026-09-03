@@ -14,7 +14,7 @@ type iDeleteDesktopGroupResponseBody interface {
 }
 
 type DeleteDesktopGroupResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

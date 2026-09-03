@@ -26,13 +26,13 @@ type DescribeGlobalTimerBatchesResponseBody struct {
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The pagination token for the next query. An empty value indicates that there are no more results.
+	// The pagination token for the next query. An empty value indicates that no more results exist.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -108,17 +108,19 @@ type DescribeGlobalTimerBatchesResponseBodyResults struct {
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 	// The time when the record was created.
 	//
+	// The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
+	//
 	// example:
 	//
 	// 2023-08-03T08:27:29Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The number of tasks that failed to execute.
+	// The number of tasks that failed to be executed.
 	//
 	// example:
 	//
 	// 0
 	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The number of tasks that are currently running.
+	// The number of tasks that are being executed.
 	//
 	// example:
 	//

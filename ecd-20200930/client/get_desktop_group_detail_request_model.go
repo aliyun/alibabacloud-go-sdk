@@ -16,7 +16,7 @@ type iGetDesktopGroupDetailRequest interface {
 }
 
 type GetDesktopGroupDetailRequest struct {
-	// The ID of the cloud computer share.
+	// The ID of the shared cloud computer.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetDesktopGroupDetailRequest struct {
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// Region ID. Call [](t2167755.xdita#)to list regions that support Elastic Desktop Service (EDS).
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

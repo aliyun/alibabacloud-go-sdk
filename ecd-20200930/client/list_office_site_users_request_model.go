@@ -30,15 +30,21 @@ type iListOfficeSiteUsersRequest interface {
 }
 
 type ListOfficeSiteUsersRequest struct {
+	// > This parameter is not publicly available. You can only pass in `1` or leave it empty.
+	//
+	// example:
+	//
+	// 1
 	AssignedInfo *string `json:"AssignedInfo,omitempty" xml:"AssignedInfo,omitempty"`
-	// The query string for fuzzy matching.
+	// The fuzzy query character string.
 	//
 	// example:
 	//
 	// *jin*
-	Filter              *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	IncludeAssignedUser *bool   `json:"IncludeAssignedUser,omitempty" xml:"IncludeAssignedUser,omitempty"`
-	// The number of entries to return on each page.
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// Specifies whether to return only users who are assigned cloud computers.
+	IncludeAssignedUser *bool `json:"IncludeAssignedUser,omitempty" xml:"IncludeAssignedUser,omitempty"`
+	// The number of entries per page for a paged query.
 	//
 	// - Maximum value: 100.
 	//
@@ -48,19 +54,19 @@ type ListOfficeSiteUsersRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page of results. Leave this empty for the first query. For subsequent queries, use the NextToken value from the previous response.
+	// The pagination token. Leave this parameter empty for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The path of the organizational unit (OU) in the AD domain.
+	// The specified AD domain organizational unit (OU).
 	//
 	// example:
 	//
 	// example.com/Domain Controllers
 	OUPath *string `json:"OUPath,omitempty" xml:"OUPath,omitempty"`
-	// The office network ID. Only office networks that use enterprise AD accounts are supported.
+	// The office network ID. Only office networks based on enterprise AD accounts are supported.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +74,7 @@ type ListOfficeSiteUsersRequest struct {
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The region ID. Call [DescribeRegions](~~DescribeRegions~~) to get a list of regions where WUYING Workspace is available.
+	// The region ID. Call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -76,6 +82,11 @@ type ListOfficeSiteUsersRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The sorting method.
+	//
+	// example:
+	//
+	// asc
 	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
 }
 

@@ -22,15 +22,15 @@ type iDescribeCloudDiskGroupsResponseBody interface {
 }
 
 type DescribeCloudDiskGroupsResponseBody struct {
-	// A list of cloud drive team spaces.
+	// The list of cloud disk team spaces.
 	CloudDriveGroups []*DescribeCloudDiskGroupsResponseBodyCloudDriveGroups `json:"CloudDriveGroups,omitempty" xml:"CloudDriveGroups,omitempty" type:"Repeated"`
-	// The total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The token used to start the next query. If NextToken is empty, no more results are available.
+	// The token for the next query. If NextToken is empty, no more results exist.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeCloudDiskGroupsResponseBody struct {
 	//
 	// D648DBF7-9476-53D6-98AB-674836021DFB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation succeeded. Valid values: true and false.
+	// Indicates whether the operation is successful. Valid values: true: The operation is successful. false: The operation failed.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeCloudDiskGroupsResponseBody) Validate() error {
 }
 
 type DescribeCloudDiskGroupsResponseBodyCloudDriveGroups struct {
-	// The time when the resource was created.
+	// The creation time. The time is in the ISO 8601 standard in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -145,7 +145,7 @@ type DescribeCloudDiskGroupsResponseBodyCloudDriveGroups struct {
 	//
 	// example:
 	//
-	// Test team 1
+	// TestTeam1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The organization ID of the team.
 	//
@@ -159,13 +159,13 @@ type DescribeCloudDiskGroupsResponseBodyCloudDriveGroups struct {
 	//
 	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total capacity of the cloud drive team space, in bytes.
+	// The total capacity of the cloud disk team.
 	//
 	// example:
 	//
 	// 5368709120
 	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
-	// The amount of space used, in bytes.
+	// The used space size. Unit: bytes.
 	//
 	// example:
 	//

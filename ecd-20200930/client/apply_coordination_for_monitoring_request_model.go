@@ -24,7 +24,7 @@ type iApplyCoordinationForMonitoringRequest interface {
 }
 
 type ApplyCoordinationForMonitoringRequest struct {
-	// The access policy during the remote assistance procedure.
+	// The access policy for the remote assistance procedure.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type ApplyCoordinationForMonitoringRequest struct {
 	//
 	// FULL_CONTROL
 	CoordinatePolicyType *string `json:"CoordinatePolicyType,omitempty" xml:"CoordinatePolicyType,omitempty"`
-	// The ID of the end user who initiates the coordination flow. This parameter is not required if the request is initiated by an administrator.
+	// The ID of the end user who initiates the streaming collaboration. This parameter is not required if the administrator initiates the request.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type ApplyCoordinationForMonitoringRequestResourceCandidates struct {
 	OwnerAliUid *int64 `json:"OwnerAliUid,omitempty" xml:"OwnerAliUid,omitempty"`
 	// The username of the current user of the cloud computer.
 	//
-	// > This field is required.
+	// > This parameter is required.
 	//
 	// example:
 	//
@@ -174,7 +174,7 @@ type ApplyCoordinationForMonitoringRequestResourceCandidates struct {
 	//
 	// DemoComputer
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The properties of the cloud computer.
+	// The cloud computer properties.
 	//
 	// example:
 	//

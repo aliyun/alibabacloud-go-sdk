@@ -32,20 +32,25 @@ type iCreateImageRequest interface {
 }
 
 type CreateImageRequest struct {
-	// Specify whether to clear user personal data. If set to `true`, the image clears all folders under `C:\\Users`, except `Administrator` and `Public`.
+	// Specifies whether to clear personal user data. If this parameter is set to `true`, the created image clears data in all directories under `C:\\Users` except the `Administrator` and `Public` directories.
 	//
 	// example:
 	//
 	// false
-	AutoCleanUserdata *bool     `json:"AutoCleanUserdata,omitempty" xml:"AutoCleanUserdata,omitempty"`
-	DataSnapshotIds   []*string `json:"DataSnapshotIds,omitempty" xml:"DataSnapshotIds,omitempty" type:"Repeated"`
-	// The description of the image. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
+	AutoCleanUserdata *bool `json:"AutoCleanUserdata,omitempty" xml:"AutoCleanUserdata,omitempty"`
+	// The list of data cloud disk snapshot IDs. To include data cloud disks when creating an image, specify the corresponding data cloud disk snapshot IDs. A maximum of 100 IDs are supported.
+	//
+	// example:
+	//
+	// ["s-bp67acfmxazb4ph****", "s-bp67acfmxazb5qh****"]
+	DataSnapshotIds []*string `json:"DataSnapshotIds,omitempty" xml:"DataSnapshotIds,omitempty" type:"Repeated"`
+	// The description of the image. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the cloud computer.
+	// The cloud computer ID.
 	//
 	// example:
 	//
@@ -57,19 +62,19 @@ type CreateImageRequest struct {
 	//
 	// ALL
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The name of the image. The name must be 2 to 128 characters in length. It must start with a letter or Chinese character. It cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	// The image name. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// testImageName
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// This parameter is not available for use.
+	// This parameter is not publicly available.
 	//
 	// example:
 	//
 	// deprecated
 	ImageResourceType *string `json:"ImageResourceType,omitempty" xml:"ImageResourceType,omitempty"`
-	// The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to view the list of regions that support WUYING Workspace.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
 	//
@@ -77,13 +82,13 @@ type CreateImageRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the snapshot.
+	// The snapshot ID.
 	//
 	// example:
 	//
 	// s-2zefuwk8l6ytcgd3bf4o
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// A list of snapshot IDs.
+	// The list of snapshot IDs.
 	SnapshotIds []*string `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty" type:"Repeated"`
 }
 

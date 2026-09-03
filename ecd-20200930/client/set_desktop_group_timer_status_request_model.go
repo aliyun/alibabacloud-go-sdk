@@ -20,7 +20,7 @@ type iSetDesktopGroupTimerStatusRequest interface {
 }
 
 type SetDesktopGroupTimerStatusRequest struct {
-	// The ID of the cloud computer share.
+	// The ID of the shared cloud computer.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type SetDesktopGroupTimerStatusRequest struct {
 	//
 	// dg-fgxsniu6at****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -38,31 +38,11 @@ type SetDesktopGroupTimerStatusRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The status of the scheduled task.
 	//
-	// Valid values:
-	//
-	// 	- 1: enabled
-	//
-	// 	- 2: disabled
-	//
-	// 	- 3: deleted
-	//
-	// 	- 100: unknown
-	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the scheduled task.
-	//
-	// Valid values:
-	//
-	// 	- 1: scheduled reset
-	//
-	// 	- 2: scheduled startup
-	//
-	// 	- 3: scheduled stop
-	//
-	// 	- 4: scheduled restart
 	//
 	// This parameter is required.
 	//

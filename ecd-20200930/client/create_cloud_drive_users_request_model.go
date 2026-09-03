@@ -20,7 +20,7 @@ type iCreateCloudDriveUsersRequest interface {
 }
 
 type CreateCloudDriveUsersRequest struct {
-	// Enterprise cloud drive ID.
+	// The enterprise network drive ID.
 	//
 	// This parameter is required.
 	//
@@ -28,11 +28,11 @@ type CreateCloudDriveUsersRequest struct {
 	//
 	// cn-hangzhou+cds-352282****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	// List of end user IDs.
+	// The list of end user IDs.
 	//
 	// This parameter is required.
 	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
-	// The ID of the region. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to obtain a list of regions supported by WUYING Workspace.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type CreateCloudDriveUsersRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Maximum storage size for a user\\"s personal cloud drive. This value must not exceed the remaining available capacity in the enterprise cloud drive. Unit: byte.
+	// The maximum storage capacity of the user\\"s personal drive. This value cannot exceed the remaining allocatable capacity of the enterprise network drive. Unit: bytes.
 	//
 	// This parameter is required.
 	//

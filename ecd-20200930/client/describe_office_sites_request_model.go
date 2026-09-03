@@ -30,8 +30,13 @@ type iDescribeOfficeSitesRequest interface {
 }
 
 type DescribeOfficeSitesRequest struct {
+	// The account type.
+	//
+	// example:
+	//
+	// SIMPLE
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page for a paged query.
 	//
 	// - Maximum value: 100.
 	//
@@ -41,25 +46,25 @@ type DescribeOfficeSitesRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to retrieve the next page of results.
+	// The token for the next query.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The office network IDs. You can specify 1 to 100 office network IDs.
+	// The office network ID. You can specify 1 to 100 IDs.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId []*string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty" type:"Repeated"`
-	// The type of account for the office network.
+	// The account system type of the office network.
 	//
 	// example:
 	//
 	// SIMPLE
 	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
 	//
@@ -67,19 +72,25 @@ type DescribeOfficeSitesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The security protection setting for the office network.
+	// The Network Security Protection Settings of the office network.
 	//
 	// example:
 	//
 	// SASE
 	SecurityProtection *string `json:"SecurityProtection,omitempty" xml:"SecurityProtection,omitempty"`
-	// The office network status.
+	// The status of the office network.
 	//
 	// example:
 	//
 	// REGISTERED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The ID of the VPC in which the office network of the shared cloud computer resides.
+	//
+	// > This parameter is not yet available.
+	//
+	// example:
+	//
+	// vpc-uf6w8u60n8xbkg5el****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 

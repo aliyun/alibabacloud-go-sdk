@@ -18,7 +18,7 @@ type iListOfficeSiteUsersResponseBody interface {
 }
 
 type ListOfficeSiteUsersResponseBody struct {
-	// The token to start the next query. If this parameter is empty, all results have been returned.
+	// The pagination token for the next query. An empty value indicates that no more results exist.
 	//
 	// example:
 	//
@@ -30,9 +30,7 @@ type ListOfficeSiteUsersResponseBody struct {
 	//
 	// 269BDB16-2CD8-4865-84BD-11C40BC21DB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the AD accounts.<br>
-	//
-	// If the enterprise AD contains only the Administrator and Guest users, an empty Users array is returned.<br>
+	// The array of AD account usernames. If the enterprise AD contains only the Administrator and Guest users and no other users, an empty Users array is returned.
 	Users []*ListOfficeSiteUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -85,22 +83,47 @@ func (s *ListOfficeSiteUsersResponseBody) Validate() error {
 }
 
 type ListOfficeSiteUsersResponseBodyUsers struct {
+	// The number of assigned cloud computers.
+	//
+	// example:
+	//
+	// 2
 	AssignedDesktopNumber *int32 `json:"AssignedDesktopNumber,omitempty" xml:"AssignedDesktopNumber,omitempty"`
 	// The display name of the AD account.
 	//
 	// example:
 	//
 	// aduser
-	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The new display name of the user.
+	//
+	// example:
+	//
+	// 张三
 	DisplayNameNew *string `json:"DisplayNameNew,omitempty" xml:"DisplayNameNew,omitempty"`
-	Email          *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The email address.
+	//
+	// example:
+	//
+	// user@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The username of the AD account.
 	//
 	// example:
 	//
 	// aduser
-	EndUser           *string `json:"EndUser,omitempty" xml:"EndUser,omitempty"`
-	Phone             *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	EndUser *string `json:"EndUser,omitempty" xml:"EndUser,omitempty"`
+	// The mobile phone number.
+	//
+	// example:
+	//
+	// 130********
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// The user principal name (UPN).
+	//
+	// example:
+	//
+	// alice@example.com
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 

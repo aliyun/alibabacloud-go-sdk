@@ -16,7 +16,7 @@ type iCancelCdsFileShareLinkRequest interface {
 }
 
 type CancelCdsFileShareLinkRequest struct {
-	// The enterprise drive ID.
+	// The ID of the enterprise network disk.
 	//
 	// This parameter is required.
 	//

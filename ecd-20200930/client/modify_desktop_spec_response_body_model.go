@@ -24,7 +24,7 @@ type ModifyDesktopSpecResponseBody struct {
 	//
 	// 123456789
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// A list of order IDs.
+	// The order IDs.
 	OrderIds []*int64 `json:"OrderIds,omitempty" xml:"OrderIds,omitempty" type:"Repeated"`
 	// The request ID.
 	//

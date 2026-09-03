@@ -16,11 +16,11 @@ type iHibernateDesktopsRequest interface {
 }
 
 type HibernateDesktopsRequest struct {
-	// The IDs of the cloud desktops. You can specify 1 to 20 cloud desktop IDs.
+	// The cloud computer IDs. You can specify 1 to 100 IDs.
 	//
 	// This parameter is required.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

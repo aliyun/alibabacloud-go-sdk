@@ -20,13 +20,13 @@ type iDescribeOfficeSitesResponseBody interface {
 }
 
 type DescribeOfficeSitesResponseBody struct {
-	// The token used to retrieve the next page of results. If this parameter is empty, all results have been returned.
+	// The token for the next query. If NextToken is empty, no more results exist.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// A list of office networks.
+	// The collection of office network information.
 	OfficeSites []*DescribeOfficeSitesResponseBodyOfficeSites `json:"OfficeSites,omitempty" xml:"OfficeSites,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -34,7 +34,7 @@ type DescribeOfficeSitesResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of query results.
 	//
 	// example:
 	//
@@ -100,24 +100,37 @@ func (s *DescribeOfficeSitesResponseBody) Validate() error {
 }
 
 type DescribeOfficeSitesResponseBodyOfficeSites struct {
-	// A list of AD connectors.
+	// The collection of AD Connector information.
 	ADConnectors []*DescribeOfficeSitesResponseBodyOfficeSitesADConnectors `json:"ADConnectors,omitempty" xml:"ADConnectors,omitempty" type:"Repeated"`
-	// The ID of the Global Accelerator (GA) instance.
+	// The Alibaba Cloud Global Accelerator (GA) instance ID.
 	//
 	// example:
 	//
 	// ga-bp1astu3yrplkzoo2****
-	AcceleratorId   *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
-	AccessAttribute *string `json:"AccessAttribute,omitempty" xml:"AccessAttribute,omitempty"`
-	AccountType     *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The hostname of the domain controller.
+	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	// The access attribute of the office network (workspace).
 	//
-	// The hostname must comply with the Windows hostname naming conventions.
+	// example:
+	//
+	// Private
+	AccessAttribute *string `json:"AccessAttribute,omitempty" xml:"AccessAttribute,omitempty"`
+	// The account type.
+	//
+	// example:
+	//
+	// SIMPLE
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The hostname of the domain controller. The hostname must comply with Windows hostname naming conventions.
 	//
 	// example:
 	//
 	// beijing-ad01
-	AdHostname    *string `json:"AdHostname,omitempty" xml:"AdHostname,omitempty"`
+	AdHostname *string `json:"AdHostname,omitempty" xml:"AdHostname,omitempty"`
+	// The authority URL of the identity authentication service.
+	//
+	// example:
+	//
+	// https://login.microsoftonline.com
 	AuthorityHost *string `json:"AuthorityHost,omitempty" xml:"AuthorityHost,omitempty"`
 	// The hostname of the backup domain controller.
 	//
@@ -131,51 +144,69 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// 172.24.XX.XX
 	BackupDns *string `json:"BackupDns,omitempty" xml:"BackupDns,omitempty"`
-	// The peak public bandwidth, in Mbit/s. Valid values: 0 to 1000. <br>A value of 0 indicates that internet access is disabled.<br>
+	// The peak Internet bandwidth. Valid values: 0 to 1000. Unit: Mbit/s.
+	//
+	// If the value is empty or 0, Internet access is not enabled.
 	//
 	// example:
 	//
 	// 10
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The attachment status of the Cloud Enterprise Network (CEN) instance.
+	// The basic bandwidth type.
+	//
+	// example:
+	//
+	// basic_plus
+	BasicInternetType *string `json:"BasicInternetType,omitempty" xml:"BasicInternetType,omitempty"`
+	// The status of the Cloud Enterprise Network (CEN) instance.
 	//
 	// example:
 	//
 	// attached
 	CenAttachStatus *string `json:"CenAttachStatus,omitempty" xml:"CenAttachStatus,omitempty"`
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// The Cloud Enterprise Network (CEN) instance ID.
 	//
 	// example:
 	//
 	// cen-3gwy16dojz1m65****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The IPv4 CIDR block of the office network\\"s Virtual Private Cloud (VPC).
+	// The IPv4 CIDR block of the office network VPC.
 	//
 	// example:
 	//
 	// 47.100.XX.XX
-	CidrBlock    *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The client ID registered with the identity provider application.
+	//
+	// example:
+	//
+	// a2c8f7e4-1b3d-4c5e-9f0a-6d7b8c9e****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The client secret registered with the identity provider application.
+	//
+	// example:
+	//
+	// sct-9f3e2d1c****
 	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
-	// Specifies whether the office network is a CloudBox-based office network.
+	// Indicates whether the office network is a CloudBox office network.
 	//
 	// example:
 	//
 	// true
 	CloudBoxOfficeSite *bool `json:"CloudBoxOfficeSite,omitempty" xml:"CloudBoxOfficeSite,omitempty"`
-	// The time when the office network was created.
+	// The time when the office network was created. The time is in the ISO 8601 standard (UTC).
 	//
 	// example:
 	//
 	// 2021-05-06T05:58Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The address of the custom access gateway.
+	// The custom access gateway address.
 	//
 	// example:
 	//
 	// gw-****.com
 	CustomAccessPoint *string `json:"CustomAccessPoint,omitempty" xml:"CustomAccessPoint,omitempty"`
-	// The custom DNS addresses.
+	// The array of custom DNS addresses.
 	CustomDnsAddress []*string `json:"CustomDnsAddress,omitempty" xml:"CustomDnsAddress,omitempty" type:"Repeated"`
 	// The security group ID.
 	//
@@ -183,27 +214,27 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// sg-bp1ce64o4g9mdf5u****
 	CustomSecurityGroupId *string `json:"CustomSecurityGroupId,omitempty" xml:"CustomSecurityGroupId,omitempty"`
-	// The method for connecting to cloud computers from an Elastic Desktop Service client.
+	// The access method allowed when connecting to cloud computers.
 	//
-	// > Connections over a VPC use Alibaba Cloud PrivateLink, which is provided free of charge. The PrivateLink service is enabled when this parameter is returned as `VPC` or `Any`.
+	// > The VPC connection method depends on the Alibaba Cloud PrivateLink service, which is free of charge. When this parameter is set to `VPC` or `Any`, the system automatically activates the PrivateLink service for you.
 	//
 	// example:
 	//
 	// INTERNET
 	DesktopAccessType *string `json:"DesktopAccessType,omitempty" xml:"DesktopAccessType,omitempty"`
-	// The number of individually provisioned cloud computers.
+	// The number of cloud computers that have been created.
 	//
 	// example:
 	//
 	// 1
 	DesktopCount *int64 `json:"DesktopCount,omitempty" xml:"DesktopCount,omitempty"`
-	// The endpoint used to connect to cloud computers over a VPC.
+	// The endpoint used for VPC connections to cloud computers.
 	//
 	// example:
 	//
 	// http://ep-bp1s2vmbj55r5rzc****.epsrv-bp1pcfhpwvlpny01****.cn-hangzhou.privatelink.aliyuncs.com
 	DesktopVpcEndpoint *string `json:"DesktopVpcEndpoint,omitempty" xml:"DesktopVpcEndpoint,omitempty"`
-	// The DNS addresses of the AD domain.
+	// The array of DNS addresses corresponding to the AD domain.
 	DnsAddress []*string `json:"DnsAddress,omitempty" xml:"DnsAddress,omitempty" type:"Repeated"`
 	// The DNS username.
 	//
@@ -229,37 +260,53 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// Administrator
 	DomainUserName *string `json:"DomainUserName,omitempty" xml:"DomainUserName,omitempty"`
-	Eid            *string `json:"Eid,omitempty" xml:"Eid,omitempty"`
-	// Specifies whether to grant local administrator permissions to users of cloud computers in the office network.
+	// The enterprise ID (EID).
+	//
+	// example:
+	//
+	// e-1234abcd****
+	Eid *string `json:"Eid,omitempty" xml:"Eid,omitempty"`
+	// Indicates whether local administrator permissions are granted to users of cloud computers.
 	//
 	// example:
 	//
 	// true
 	EnableAdminAccess *bool `json:"EnableAdminAccess,omitempty" xml:"EnableAdminAccess,omitempty"`
-	// Specifies whether cloud computers in the office network can access each other.
+	// Indicates whether cross-cloud computer access within the office network is enabled. If enabled, cloud computers within the same office network can access each other over the network.
 	//
 	// example:
 	//
 	// false
 	EnableCrossDesktopAccess *bool `json:"EnableCrossDesktopAccess,omitempty" xml:"EnableCrossDesktopAccess,omitempty"`
-	// Indicates whether internet access is enabled.
+	// Indicates whether the public network access feature is enabled.
 	//
 	// example:
 	//
 	// false
 	EnableInternetAccess *bool `json:"EnableInternetAccess,omitempty" xml:"EnableInternetAccess,omitempty"`
-	// Specifies whether to enable access control for cloud service routing.
+	// Indicates whether cloud service route access control is enabled.
 	//
 	// example:
 	//
 	// false
-	EnableServiceRoute *bool   `json:"EnableServiceRoute,omitempty" xml:"EnableServiceRoute,omitempty"`
-	EnvType            *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The IDs of Apsara File Storage for NAS file systems.
+	EnableServiceRoute *bool `json:"EnableServiceRoute,omitempty" xml:"EnableServiceRoute,omitempty"`
+	// The environment type. This parameter is not publicly available.
+	//
+	// example:
+	//
+	// Private
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The array of NAS file system IDs.
 	FileSystemIds []*string `json:"FileSystemIds,omitempty" xml:"FileSystemIds,omitempty" type:"Repeated"`
-	IsLdap        *bool     `json:"IsLdap,omitempty" xml:"IsLdap,omitempty"`
-	LdapUrl       *string   `json:"LdapUrl,omitempty" xml:"LdapUrl,omitempty"`
-	// The registration logs.
+	// Indicates whether the directory is an LDAP directory.
+	IsLdap *bool `json:"IsLdap,omitempty" xml:"IsLdap,omitempty"`
+	// The access URL of the LDAP service.
+	//
+	// example:
+	//
+	// ldap://192.168.0.10:389
+	LdapUrl *string `json:"LdapUrl,omitempty" xml:"LdapUrl,omitempty"`
+	// The registration log information.
 	Logs []*DescribeOfficeSitesResponseBodyOfficeSitesLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
 	// Indicates whether multi-factor authentication (MFA) is enabled.
 	//
@@ -267,31 +314,31 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// false
 	MfaEnabled *bool `json:"MfaEnabled,omitempty" xml:"MfaEnabled,omitempty"`
-	// The name of the office network. The name must be unique within the same region.
+	// The name of the office network. The name is unique within a region.
 	//
 	// example:
 	//
-	// test
+	// R&D_Office_Network
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether risk-based verification is enabled for user logon. This feature applies only to office networks that use convenience accounts. If enabled, the system checks for security risks during logon. If a risk is detected, the user must enter a verification code sent to their email address to complete the logon process.
+	// Applicable only to convenience account office networks. Indicates whether secondary authentication is required during logon. If logon secondary authentication is enabled, the system checks whether the logon account has security risks when a convenience user logs on to the client. If a risk is detected, the system sends a verification code to the email address associated with the account. The convenience user can log on to the client only after passing the verification code check.
 	//
 	// example:
 	//
 	// false
 	NeedVerifyLoginRisk *bool `json:"NeedVerifyLoginRisk,omitempty" xml:"NeedVerifyLoginRisk,omitempty"`
-	// Specifies whether to enable trusted device verification.
+	// Indicates whether trusted device verification is enabled.
 	//
 	// example:
 	//
 	// true
 	NeedVerifyZeroDevice *bool `json:"NeedVerifyZeroDevice,omitempty" xml:"NeedVerifyZeroDevice,omitempty"`
-	// The ID of the premium bandwidth plan.
+	// The Internet access package ID.
 	//
 	// example:
 	//
 	// np-amtp8e8q1o9e4****
 	NetworkPackageId *string `json:"NetworkPackageId,omitempty" xml:"NetworkPackageId,omitempty"`
-	// The network version. The new version supports products such as App Streaming.
+	// The network version. The new version supports products such as WUYING Cloud Application.
 	//
 	// example:
 	//
@@ -303,57 +350,57 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The account type of the office network.
+	// The account system type of the office network.
 	//
 	// example:
 	//
 	// AD_CONNECTOR
 	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
-	// The organizational unit (OU) in the Active Directory (AD) domain.
+	// The organizational unit (OU) in the AD domain.
 	//
 	// example:
 	//
 	// example.com/Domain Controllers
 	OuName *string `json:"OuName,omitempty" xml:"OuName,omitempty"`
-	// The streaming protocol.
+	// The protocol type.
 	//
 	// example:
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The IP address of the RDS license server.
+	// The IP address of the RDS license.
 	//
 	// example:
 	//
 	// 47.100.XX.XX
 	RdsLicenseAddress *string `json:"RdsLicenseAddress,omitempty" xml:"RdsLicenseAddress,omitempty"`
-	// The domain name of the RDS license server.
+	// The domain name where the RDS license resides.
 	//
 	// example:
 	//
 	// example.com
 	RdsLicenseDomainName *string `json:"RdsLicenseDomainName,omitempty" xml:"RdsLicenseDomainName,omitempty"`
-	// The status of the Remote Desktop Services (RDS) license.
+	// The status of the RDS license.
 	//
 	// example:
 	//
 	// 2
 	RdsLicenseStatus *string `json:"RdsLicenseStatus,omitempty" xml:"RdsLicenseStatus,omitempty"`
-	// A list of resource quantities.
+	// The resource count list.
 	ResourceAmounts []*DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts `json:"ResourceAmounts,omitempty" xml:"ResourceAmounts,omitempty" type:"Repeated"`
-	// The security protection configuration for the office network.
+	// The Network Security Protection Settings of the office network.
 	//
 	// example:
 	//
 	// SASE
 	SecurityProtection *string `json:"SecurityProtection,omitempty" xml:"SecurityProtection,omitempty"`
-	// Specifies whether to enable single sign-on (SSO).
+	// Indicates whether single sign-on (SSO) is enabled.
 	//
 	// example:
 	//
 	// false
 	SsoEnabled *bool `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
-	// The single sign-on (SSO) type.
+	// The SSO type.
 	//
 	// example:
 	//
@@ -365,9 +412,9 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// REGISTERED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The DNS addresses of the AD subdomains.
+	// The array of DNS addresses of the AD subdomain.
 	SubDnsAddress []*string `json:"SubDnsAddress,omitempty" xml:"SubDnsAddress,omitempty" type:"Repeated"`
-	// The name of the Active Directory (AD) subdomain.
+	// The username of the AD subdomain DNS.
 	//
 	// example:
 	//
@@ -379,45 +426,55 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// 0
 	SubnetMode *string `json:"SubnetMode,omitempty" xml:"SubnetMode,omitempty"`
-	TenantId   *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The total number of cloud computers in the office network, including individual and shared computers.
+	// The tenant ID of the identity provider.
+	//
+	// example:
+	//
+	// 72f988bf-86f1-41af-91ab-2d7cd011****
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The number of cloud computers.
 	//
 	// example:
 	//
 	// 0
 	TotalEdsCount *int64 `json:"TotalEdsCount,omitempty" xml:"TotalEdsCount,omitempty"`
-	// The number of shared cloud computers.
+	// The number of cloud computers in shared cloud computer groups.
 	//
 	// example:
 	//
 	// 0
 	TotalEdsCountForGroup *int64 `json:"TotalEdsCountForGroup,omitempty" xml:"TotalEdsCountForGroup,omitempty"`
-	// The total number of resources, including cloud computers and shared cloud computers.
+	// The total number of network interface controllers (NICs).
 	//
 	// example:
 	//
 	// 1
 	TotalResourceAmount *int64 `json:"TotalResourceAmount,omitempty" xml:"TotalResourceAmount,omitempty"`
-	// > This parameter is not available.
+	// > This parameter is not yet available.
 	//
 	// example:
 	//
 	// To be hidden.
 	TrustPassword *string `json:"TrustPassword,omitempty" xml:"TrustPassword,omitempty"`
-	// The vSwitch IDs.
+	// The array of vSwitch IDs.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	// The ID of the office network\\"s Virtual Private Cloud (VPC).
+	// The VPC ID of the secure office network.
 	//
 	// example:
 	//
 	// vpc-uf6tz5k67puge5jn8****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The VPC type.
+	// The usage mode of the VPC.
 	//
 	// example:
 	//
 	// Basic
-	VpcType    *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
+	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
+	// The version of the workspace network component (VPL).
+	//
+	// example:
+	//
+	// 2.0.0
 	VplVersion *string `json:"VplVersion,omitempty" xml:"VplVersion,omitempty"`
 }
 
@@ -463,6 +520,10 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetBackupDns() *string {
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetBandwidth() *int32 {
 	return s.Bandwidth
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetBasicInternetType() *string {
+	return s.BasicInternetType
 }
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) GetCenAttachStatus() *string {
@@ -739,6 +800,11 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetBackupDns(v string) *Des
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetBandwidth(v int32) *DescribeOfficeSitesResponseBodyOfficeSites {
 	s.Bandwidth = &v
+	return s
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetBasicInternetType(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
+	s.BasicInternetType = &v
 	return s
 }
 
@@ -1064,37 +1130,37 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) Validate() error {
 }
 
 type DescribeOfficeSitesResponseBodyOfficeSitesADConnectors struct {
-	// The connection address of the AD connector.
+	// The endpoint of the AD Connector.
 	//
 	// example:
 	//
 	// 172.24.*.*
 	ADConnectorAddress *string `json:"ADConnectorAddress,omitempty" xml:"ADConnectorAddress,omitempty"`
-	// The status of the AD connector.
+	// The status of the AD Connector.
 	//
 	// example:
 	//
 	// RUNNING
 	ConnectorStatus *string `json:"ConnectorStatus,omitempty" xml:"ConnectorStatus,omitempty"`
-	// The ID of the elastic network interface (ENI) to which the AD connector is attached.
+	// The ID of the network interface controller (NIC) attached to the AD Connector.
 	//
 	// example:
 	//
 	// eni-bp1i4wx78lgosrj6****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The specification of the AD connector.
+	// The specification of the AD Connector.
 	//
 	// example:
 	//
 	// 1
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	// The trust password that is configured when you set up an AD trust relationship.
+	// The trust password configured when setting up the AD trust relationship.
 	//
 	// example:
 	//
 	// password123***
 	TrustKey *string `json:"TrustKey,omitempty" xml:"TrustKey,omitempty"`
-	// The ID of the vSwitch that corresponds to the network of the AD connector.
+	// The vSwitch ID of the network where the AD Connector resides.
 	//
 	// example:
 	//
@@ -1175,19 +1241,19 @@ type DescribeOfficeSitesResponseBodyOfficeSitesLogs struct {
 	//
 	// INFO
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The log message.
+	// The detailed log information.
 	//
 	// example:
 	//
 	// code:success | message:Create Connector complete
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The registration step.
+	// The step that corresponds to the log entry.
 	//
 	// example:
 	//
 	// CREATE_CONNECTOR
 	Step *string `json:"Step,omitempty" xml:"Step,omitempty"`
-	// The timestamp of the log entry.
+	// The time when the log was printed. The time is in the ISO 8601 standard (UTC).
 	//
 	// example:
 	//
@@ -1244,7 +1310,7 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSitesLogs) Validate() error {
 }
 
 type DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts struct {
-	// The number of resources of this type.
+	// The resource count.
 	//
 	// example:
 	//

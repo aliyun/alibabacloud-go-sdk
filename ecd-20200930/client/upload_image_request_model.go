@@ -38,6 +38,11 @@ type iUploadImageRequest interface {
 }
 
 type UploadImageRequest struct {
+	// The boot mode of the image.
+	//
+	// example:
+	//
+	// BIOS
 	BootMode *string `json:"BootMode,omitempty" xml:"BootMode,omitempty"`
 	// The data cloud disk size. Valid values: 80 to 500. Unit: GiB.
 	//
@@ -57,7 +62,7 @@ type UploadImageRequest struct {
 	//
 	// true
 	EnableSecurityCheck *bool `json:"EnableSecurityCheck,omitempty" xml:"EnableSecurityCheck,omitempty"`
-	// Specifies whether the image is a GPU image.
+	// Specifies whether the image is a GPU-type image.
 	//
 	// example:
 	//
@@ -83,11 +88,11 @@ type UploadImageRequest struct {
 	//
 	// - Aliyun: Uses an Alibaba Cloud official license based on the `Platform` you specified.
 	//
-	// - BYOL: Uses the license that comes with the source operating system. When you use BYOL, make sure that your license key supports use on Alibaba Cloud.
+	// - BYOL: Uses the license that comes with the source operating system. When using BYOL, ensure that your license key supports use on Alibaba Cloud.
 	//
-	// Default value: Auto.
+	// Default value: Auto
 	//
-	// > Systems such as Windows 10 cannot be activated through Alibaba Cloud. Set `LicenseType` to BYOL for custom activation.
+	// > Systems such as Windows 10 cannot be activated through Alibaba Cloud. Set `LicenseType` to custom activation (BYOL).
 	//
 	// example:
 	//
@@ -123,7 +128,7 @@ type UploadImageRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The system cloud disk size. Unit: GiB.
 	//
-	// > The system cloud disk size cannot be smaller than the image file size.
+	// > The system cloud disk size cannot be smaller than the image file.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iCreateAutoSnapshotPolicyResponseBody interface {
 }
 
 type CreateAutoSnapshotPolicyResponseBody struct {
-	// The ID of the automatic snapshot policy.
+	// The automatic snapshot policy ID.
 	//
 	// example:
 	//

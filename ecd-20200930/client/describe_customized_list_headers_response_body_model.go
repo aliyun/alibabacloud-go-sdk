@@ -76,7 +76,7 @@ type DescribeCustomizedListHeadersResponseBodyHeaders struct {
 	//
 	// example:
 	//
-	// system_data_disk
+	// pay_type
 	HeaderKey *string `json:"HeaderKey,omitempty" xml:"HeaderKey,omitempty"`
 	// The name of the table header.
 	//

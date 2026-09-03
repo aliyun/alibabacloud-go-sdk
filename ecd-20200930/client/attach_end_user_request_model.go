@@ -26,59 +26,49 @@ type iAttachEndUserRequest interface {
 }
 
 type AttachEndUserRequest struct {
-	// The address of the Active Directory (AD) office network.
+	// The address of the AD workspace.
 	//
 	// example:
 	//
 	// xn--0zw****
 	AdDomain *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
-	// The type of the client.
-	//
-	// Valid values:
-	//
-	// 	- 1: hardware client.
+	// The device type.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2
+	// 1
 	ClientType *int32 `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	// The serial number (SN) of the hardware client.
+	// The serial number (SN) of the WUYING hardware terminal.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 111810122200F0C24CF7F1BF-*05AY****
+	// 12OERSLDO7M3****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	// The ID of the convenient office network.
+	// The ID of the convenience workspace.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-jedbpr4sl9l37****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The ID of the user that you want to bind to the hardware client.
+	// The ID of the bound user to add to the WUYING hardware terminal.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// moli
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The account type of the user.
-	//
-	// Valid values:
-	//
-	// 	- AD: enterprise AD account.
-	//
-	// 	- SIMPLE: convenience account
+	// The user account type.
 	//
 	// example:
 	//

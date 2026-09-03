@@ -31,6 +31,8 @@ type iCreateDesktopsShrinkRequest interface {
 	GetDesktopMemberIp() *string
 	SetDesktopName(v string) *CreateDesktopsShrinkRequest
 	GetDesktopName() *string
+	SetDesktopNameModelShrink(v string) *CreateDesktopsShrinkRequest
+	GetDesktopNameModelShrink() *string
 	SetDesktopNameSuffix(v bool) *CreateDesktopsShrinkRequest
 	GetDesktopNameSuffix() *bool
 	SetDesktopTimers(v []*CreateDesktopsShrinkRequestDesktopTimers) *CreateDesktopsShrinkRequest
@@ -102,7 +104,7 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The application control policy ID.
+	// The ID of the application control policy.
 	//
 	// example:
 	//
@@ -131,7 +133,7 @@ type CreateDesktopsShrinkRequest struct {
 	// if can be null:
 	// true
 	BundleModels []*CreateDesktopsShrinkRequestBundleModels `json:"BundleModels,omitempty" xml:"BundleModels,omitempty" type:"Repeated"`
-	// > This field is not available for use.
+	// > This field is not publicly available.
 	//
 	// example:
 	//
@@ -143,7 +145,7 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The parameters for creating a cloud desktop without a template. This parameter is invalid when the BundleId parameter is specified.
+	// The parameters for creating a cloud desktop without a template. This parameter is invalid when the BundleID parameter is specified.
 	DesktopAttachmentShrink *string `json:"DesktopAttachment,omitempty" xml:"DesktopAttachment,omitempty"`
 	// The private IP address of the cloud desktop.
 	//
@@ -153,9 +155,9 @@ type CreateDesktopsShrinkRequest struct {
 	DesktopMemberIp *string `json:"DesktopMemberIp,omitempty" xml:"DesktopMemberIp,omitempty"`
 	// The cloud desktop name. The naming rules are as follows:
 	//
-	// - The name can be up to 64 characters in length.
+	// - The name cannot exceed 64 characters in length.
 	//
-	// - The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`.
+	// - The name must start with a letter (uppercase or lowercase) or a Chinese character. It cannot start with `http://` or `https://`.
 	//
 	// - The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), or hyphens (-).
 	//
@@ -163,13 +165,15 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// DemoComputer01
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// Specifies whether to automatically append a suffix to the cloud desktop name when you create multiple cloud desktops in a batch.
+	// Controls the format of the desktop name.
+	DesktopNameModelShrink *string `json:"DesktopNameModel,omitempty" xml:"DesktopNameModel,omitempty"`
+	// Specifies whether to automatically append a suffix to the cloud desktop name when creating multiple cloud desktops in a batch.
 	//
 	// example:
 	//
 	// false
 	DesktopNameSuffix *bool `json:"DesktopNameSuffix,omitempty" xml:"DesktopNameSuffix,omitempty"`
-	// The scheduled task details of the cloud desktop. This parameter is being deprecated. Use the TimerGroupId parameter instead.
+	// The details of the scheduled tasks for the cloud desktop. This parameter is being deprecated. Use the TimerGroupId parameter instead.
 	//
 	// if can be null:
 	// true
@@ -198,15 +202,15 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// dg-boyczi8enfyc5****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The custom hostname of the cloud desktop. Settings for this parameter are supported only for cloud desktops that run the Windows operating system in an AD office network.
+	// The custom hostname settings of the cloud desktop. This parameter is supported only for cloud desktops whose operating system type is Windows in an AD office network.
 	//
 	// The naming rules for the hostname are as follows:
 	//
 	// - The hostname must be 2 to 15 characters in length.
 	//
-	// - The hostname can contain uppercase letters, lowercase letters, digits, or hyphens (-). It cannot start or end with a hyphen, contain consecutive hyphens, or consist of only digits.
+	// - The hostname can contain uppercase letters, lowercase letters, digits, or hyphens (-). It cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of only digits.
 	//
-	// When you create multiple cloud desktops, you can use the `name_prefix[begin_number,bits]name_suffix` format to uniformly name the cloud desktops. For example, if you set Hostname to ecd-[1,4]-test, the hostname of the first cloud desktop is ecd-0001-test, the hostname of the second cloud desktop is ecd-0002-test, and so on.
+	// When creating multiple cloud desktops, you can use the `name_prefix[begin_number,bits]name_suffix` format to name multiple cloud desktops uniformly. For example, if Hostname is set to ecd-[1,4]-test, the hostname of the first cloud desktop is ecd-0001-test, the hostname of the second cloud desktop is ecd-0002-test, and so on.
 	//
 	// - `name_prefix`: the prefix of the hostname.
 	//
@@ -218,7 +222,7 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// testhost
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// The purchase parameters for the monthly hourly package.
+	// The parameters for purchasing a monthly hours package.
 	MonthDesktopSetting *CreateDesktopsShrinkRequestMonthDesktopSetting `json:"MonthDesktopSetting,omitempty" xml:"MonthDesktopSetting,omitempty" type:"Struct"`
 	// The office network ID.
 	//
@@ -226,7 +230,7 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// cn-hangzhou+dir-387822****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The OU path. If specified, the cloud desktop is added to the corresponding organizational unit (OU) in Active Directory (AD).
+	// The organizational unit (OU) path. After this parameter is specified, the cloud desktop joins the corresponding OU in Active Directory (AD).
 	//
 	// example:
 	//
@@ -234,7 +238,7 @@ type CreateDesktopsShrinkRequest struct {
 	OuPath *string `json:"OuPath,omitempty" xml:"OuPath,omitempty"`
 	// The subscription duration of the resource. The unit is specified by `PeriodUnit`. This parameter takes effect and is required only when `ChargeType` is set to `PrePaid`.
 	//
-	// - If `PeriodUnit` is set to `Month`, valid values of this parameter:
+	// - If `PeriodUnit` is set to `Month`, valid values:
 	//
 	//      - 1
 	//
@@ -244,7 +248,7 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	//     - 6
 	//
-	// - If `PeriodUnit` is set to `Year`, valid values of this parameter:
+	// - If `PeriodUnit` is set to `Year`, valid values:
 	//
 	//     - 1
 	//
@@ -260,7 +264,7 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription duration.
+	// The unit of the subscription duration for the billing method.
 	//
 	// example:
 	//
@@ -280,13 +284,13 @@ type CreateDesktopsShrinkRequest struct {
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	// The additional parameters for a specific purchase type.
 	PurchaseOptionsShrink *string `json:"PurchaseOptions,omitempty" xml:"PurchaseOptions,omitempty"`
-	// The public network rate limiting rule ID.
+	// The ID of the public network bandwidth throttling rule.
 	//
 	// example:
 	//
 	// qos-52fqmg6kvyro7zu4l
 	QosRuleId *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
+	// The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
 	//
@@ -294,31 +298,44 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID for resource ownership in reseller pattern. This parameter is not required in non-reseller pattern.
+	// The user ID of the resource ownership in reseller pattern. This parameter is not required in non-reseller pattern.
 	//
 	// example:
 	//
 	// 1828644634819902
 	ResellerOwnerUid *int64 `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
-	// The WUYING resource group ID.
+	// The ID of the WUYING resource group.
 	//
 	// example:
 	//
 	// rg-3mtuc28rx95lx****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// > This field is not available for use.
+	// > This field is not publicly available.
 	//
 	// example:
 	//
 	// spn-26c1b7bcrjcI****
 	SavingPlanId *string `json:"SavingPlanId,omitempty" xml:"SavingPlanId,omitempty"`
-	// The WUYING automatic snapshot policy ID.
+	// The ID of the WUYING automatic snapshot policy.
 	//
 	// example:
 	//
 	// sp-28mp6my0l6zow****
 	SnapshotPolicyId *string `json:"SnapshotPolicyId,omitempty" xml:"SnapshotPolicyId,omitempty"`
-	SubPayType       *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
+	// The purchase method of the cloud desktop. Valid values:
+	//
+	// - prePaid: monthly subscription with unlimited duration.
+	//
+	// - postPaid: pay-as-you-go.
+	//
+	// - monthPackage: monthly hours package.
+	//
+	// - jvsAgentPackage: JVS Agent duration package.
+	//
+	// example:
+	//
+	// monthPackage
+	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
 	// The subnet ID.
 	//
 	// example:
@@ -327,7 +344,7 @@ type CreateDesktopsShrinkRequest struct {
 	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
 	// The tags.
 	Tag []*CreateDesktopsShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The scheduled task group ID.
+	// The ID of the scheduled task group.
 	//
 	// example:
 	//
@@ -349,13 +366,13 @@ type CreateDesktopsShrinkRequest struct {
 	//
 	// username
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// Specifies whether to enable cloud disk encryption.
+	// Specifies whether to enable disk encryption.
 	//
 	// example:
 	//
 	// false
 	VolumeEncryptionEnabled *bool `json:"VolumeEncryptionEnabled,omitempty" xml:"VolumeEncryptionEnabled,omitempty"`
-	// The ID of the Key Management Service (KMS) key used for cloud disk encryption. You can call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
+	// The ID of the Key Management Service (KMS) key used when disk encryption is enabled. Call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
 	//
 	// example:
 	//
@@ -419,6 +436,10 @@ func (s *CreateDesktopsShrinkRequest) GetDesktopMemberIp() *string {
 
 func (s *CreateDesktopsShrinkRequest) GetDesktopName() *string {
 	return s.DesktopName
+}
+
+func (s *CreateDesktopsShrinkRequest) GetDesktopNameModelShrink() *string {
+	return s.DesktopNameModelShrink
 }
 
 func (s *CreateDesktopsShrinkRequest) GetDesktopNameSuffix() *bool {
@@ -597,6 +618,11 @@ func (s *CreateDesktopsShrinkRequest) SetDesktopMemberIp(v string) *CreateDeskto
 
 func (s *CreateDesktopsShrinkRequest) SetDesktopName(v string) *CreateDesktopsShrinkRequest {
 	s.DesktopName = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetDesktopNameModelShrink(v string) *CreateDesktopsShrinkRequest {
+	s.DesktopNameModelShrink = &v
 	return s
 }
 
@@ -815,9 +841,9 @@ type CreateDesktopsShrinkRequestBundleModels struct {
 	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
 	// The cloud desktop name. The naming rules are as follows:
 	//
-	// - The name can be up to 64 characters in length.
+	// - The name cannot exceed 64 characters in length.
 	//
-	// - The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`.
+	// - The name must start with a letter (uppercase or lowercase) or a Chinese character. It cannot start with `http://` or `https://`.
 	//
 	// - The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), or hyphens (-).
 	//
@@ -827,15 +853,15 @@ type CreateDesktopsShrinkRequestBundleModels struct {
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
 	// The list of users to whom the cloud desktops are assigned.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The custom hostname of the cloud desktop. Settings for this parameter are supported only for cloud desktops that run the Windows operating system in an AD office network.
+	// The custom hostname settings of the cloud desktop. This parameter is supported only for cloud desktops whose operating system type is Windows in an AD office network.
 	//
 	// The naming rules for the hostname are as follows:
 	//
 	// - The hostname must be 2 to 15 characters in length.
 	//
-	// - The hostname can contain uppercase letters, lowercase letters, digits, or hyphens (-). It cannot start or end with a hyphen, contain consecutive hyphens, or consist of only digits.
+	// - The hostname can contain uppercase letters, lowercase letters, digits, or hyphens (-). It cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of only digits.
 	//
-	// When you create multiple cloud desktops, you can use the `name_prefix[begin_number,bits]name_suffix` format to uniformly name the cloud desktops. For example, if you set Hostname to ecd-[1,4]-test, the hostname of the first cloud desktop is ecd-0001-test, the hostname of the second cloud desktop is ecd-0002-test, and so on.
+	// When creating multiple cloud desktops, you can use the `name_prefix[begin_number,bits]name_suffix` format to name multiple cloud desktops uniformly. For example, if Hostname is set to ecd-[1,4]-test, the hostname of the first cloud desktop is ecd-0001-test, the hostname of the second cloud desktop is ecd-0002-test, and so on.
 	//
 	// - `name_prefix`: the prefix of the hostname.
 	//
@@ -847,13 +873,13 @@ type CreateDesktopsShrinkRequestBundleModels struct {
 	//
 	// testhost
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// Specifies whether to enable cloud disk encryption.
+	// Specifies whether to enable disk encryption.
 	//
 	// example:
 	//
 	// false
 	VolumeEncryptionEnabled *bool `json:"VolumeEncryptionEnabled,omitempty" xml:"VolumeEncryptionEnabled,omitempty"`
-	// The ID of the Key Management Service (KMS) key used for cloud disk encryption. You can call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
+	// The ID of the Key Management Service (KMS) key used when disk encryption is enabled. Call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
 	//
 	// example:
 	//
@@ -945,19 +971,19 @@ type CreateDesktopsShrinkRequestDesktopTimers struct {
 	AllowClientSetting *bool `json:"AllowClientSetting,omitempty" xml:"AllowClientSetting,omitempty"`
 	// The cron expression of the scheduled task.
 	//
-	// 	Notice: Specify the time in UTC. For example, to schedule a task at 00:00 (UTC+8) every day, set the value to 0 0 16 ? 	- 1,2,3,4,5,6,7.</notice>
+	// 	Notice: The time must be specified in UTC. For example, to specify 00:00 (UTC+8) every day, use 0 0 16 ? 	- 1,2,3,4,5,6,7.</notice>
 	//
 	// example:
 	//
 	// 0 40 7 ? 	- 1,2,3,4,5,6,7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// Specifies whether to forcefully execute the task.
+	// Specifies whether to forcefully execute the scheduled task.
 	//
 	// example:
 	//
 	// true
 	Enforce *bool `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
-	// The time interval, in minutes.
+	// The time interval. Unit: minutes.
 	//
 	// example:
 	//
@@ -1059,19 +1085,19 @@ func (s *CreateDesktopsShrinkRequestDesktopTimers) Validate() error {
 }
 
 type CreateDesktopsShrinkRequestMonthDesktopSetting struct {
-	// > This field is not available for use.
+	// > This field is not publicly available.
 	//
 	// example:
 	//
 	// null
 	BuyerId *int64 `json:"BuyerId,omitempty" xml:"BuyerId,omitempty"`
-	// > This field is not available for use.
+	// > This field is not publicly available.
 	//
 	// example:
 	//
 	// null
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The package option when purchasing a monthly hourly package. Valid values: 120, 250, and 360.
+	// The plan selected when purchasing a monthly hours package. Valid values: 120, 250, and 360.
 	//
 	// example:
 	//

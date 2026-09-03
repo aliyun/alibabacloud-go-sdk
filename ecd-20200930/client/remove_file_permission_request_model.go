@@ -24,7 +24,7 @@ type iRemoveFilePermissionRequest interface {
 }
 
 type RemoveFilePermissionRequest struct {
-	// The ID of the enterprise drive.
+	// The enterprise cloud disk ID.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,13 @@ type RemoveFilePermissionRequest struct {
 	//
 	// cn-hangzhou+cds-066224****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	// The ID of the end user.
+	// The user ID.
 	//
 	// example:
 	//
-	// user01
+	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The file ID. You can call the [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) operation to query the ID of the file.
+	// The file ID. You can call [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) to query the ID of the file.
 	//
 	// This parameter is required.
 	//
@@ -46,17 +46,17 @@ type RemoveFilePermissionRequest struct {
 	//
 	// 6333e553a133ce21e6f747cf948bb9ef95d7****
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The ID of the team space.
+	// The team space ID.
 	//
 	// example:
 	//
 	// cg-1fbmvrc7ug5m7****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The users that you want to authorize to use the cloud disk.
+	// The list of authorized users.
 	//
 	// This parameter is required.
 	MemberList []*RemoveFilePermissionRequestMemberList `json:"MemberList,omitempty" xml:"MemberList,omitempty" type:"Repeated"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -146,35 +146,7 @@ type RemoveFilePermissionRequestMemberList struct {
 	//
 	// This parameter is required.
 	CdsIdentity *RemoveFilePermissionRequestMemberListCdsIdentity `json:"CdsIdentity,omitempty" xml:"CdsIdentity,omitempty" type:"Struct"`
-	// You can set permissions by specifying roles or by customizing operation permissions. This field is used to set permissions by specifying roles. This field is mutually exclusive with `ActionList`.
-	//
-	// Valid values:
-	//
-	// 	- SystemFileEditorWithoutShareLink: the role that has the permissions to edit files but cannot share files.
-	//
-	// 	- SystemFileUploaderAndDownloaderWithShareLink: the role that has the permissions to upload, download, and share files.
-	//
-	// 	- SystemFileDownloader: the role that has the permissions to download files.
-	//
-	// 	- SystemFileEditorWithoutDelete: the role that has the permissions to edit files but cannot delete files.
-	//
-	// 	- SystemFileOwner: the role that has the permissions to collaborate with others.
-	//
-	// 	- SystemFileDownloaderWithShareLink: the role that has the permissions to download and share files
-	//
-	// 	- SystemFileUploaderAndViewer: the role that has the permissions to preview or upload files.
-	//
-	// 	- SystemFileViewer: the role that has the permissions to preview files.
-	//
-	// 	- SystemFileEditor: the role that has the permissions to edit files
-	//
-	// 	- SystemFileUploaderWithShareLink: the role that has the permissions to upload or share files.
-	//
-	// 	- SystemFileUploader: the role that has the permission to upload files.
-	//
-	// 	- SystemFileUploaderAndDownloader: the role that has the permissions to upload or download files.
-	//
-	// 	- SystemFileMetaViewer: the role that has the permissions to view files
+	// Two methods are supported for setting permissions: specifying a role or customizing operation permissions. This parameter specifies the role-based permission and is mutually exclusive with `ActionList`. If both parameters are specified, this parameter takes precedence.
 	//
 	// This parameter is required.
 	//
@@ -229,12 +201,6 @@ type RemoveFilePermissionRequestMemberListCdsIdentity struct {
 	// 249dsfseee643h33g3dv****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The object type.
-	//
-	// Valid values:
-	//
-	// 	- IT_Group: group.
-	//
-	// 	- IT_User: user.
 	//
 	// This parameter is required.
 	//

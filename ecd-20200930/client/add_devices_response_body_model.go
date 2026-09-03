@@ -18,19 +18,19 @@ type iAddDevicesResponseBody interface {
 }
 
 type AddDevicesResponseBody struct {
-	// The execution result. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+	// The execution result. The value `success` indicates success. Otherwise, an error message is returned.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned error message. This parameter is not returned if the value of Code is `success`.
+	// The error message. This parameter is not returned if Code is `success`.
 	//
 	// example:
 	//
 	// The parameter is not specified.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -42,49 +42,31 @@ type iDescribeImagesRequest interface {
 }
 
 type DescribeImagesRequest struct {
-	// The instance type of the cloud computer. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/436816.html) operation to obtain the parameter value.
+	// The cloud desktop specification. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/436816.html) to obtain this parameter.
 	//
 	// example:
 	//
 	// ecd.graphics.xlarge
 	DesktopInstanceType *string `json:"DesktopInstanceType,omitempty" xml:"DesktopInstanceType,omitempty"`
-	// The image version.
+	// The image version information.
 	//
 	// example:
 	//
 	// 0.0.3-R-20220616.133609
 	FotaVersion *string `json:"FotaVersion,omitempty" xml:"FotaVersion,omitempty"`
-	// Specifies whether the images are GPU-accelerated images.
-	//
-	// Valid values:
-	//
-	// - true
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - false
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
+	// Specifies whether the image is a GPU image.
 	//
 	// example:
 	//
 	// false
 	GpuCategory *bool `json:"GpuCategory,omitempty" xml:"GpuCategory,omitempty"`
-	// The version of the GPU driver.
+	// The GPU driver version.
 	//
 	// example:
 	//
 	// 417.22
 	GpuDriverVersion *string `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
-	// The IDs of the images. You can specify one or more image IDs.
+	// The image ID. You can specify one or more image IDs.
 	//
 	// example:
 	//
@@ -96,59 +78,41 @@ type DescribeImagesRequest struct {
 	//
 	// Win_01
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// The state of the image.
+	// The image status.
 	//
 	// example:
 	//
 	// Available
 	ImageStatus *string `json:"ImageStatus,omitempty" xml:"ImageStatus,omitempty"`
-	// The type of the image.
+	// The image type.
 	//
 	// example:
 	//
 	// SYSTEM
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	// The language of the OS.
+	// The operating system language.
 	//
 	// example:
 	//
 	// en-US
 	LanguageType *string `json:"LanguageType,omitempty" xml:"LanguageType,omitempty"`
-	// The maximum number of entries to return on each page.
+	// The number of entries per page for a paged query.
 	//
-	// - Maximum value: 100.
+	// - Maximum value: 100
 	//
-	// - Default value: 10.
+	// - Default value: 10
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the next query. If you do not specify this parameter, all results are returned.
+	// The pagination token for the next query. An empty value indicates that there is no next page.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The type of the operating system of the images. Default value: `null`.
-	//
-	// Valid values:
-	//
-	// - Linux
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - Windows
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
+	// The operating system type. Default value: `null`.
 	//
 	// example:
 	//
@@ -156,17 +120,11 @@ type DescribeImagesRequest struct {
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	// The protocol type.
 	//
-	// Valid values:
-	//
-	// - HDX: High-definition Experience (HDX) protocol
-	//
-	// - ASP: in-house Adaptive Streaming Protocol (ASP) (recommended)
-	//
 	// example:
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

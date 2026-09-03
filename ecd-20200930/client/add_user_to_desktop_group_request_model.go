@@ -30,34 +30,54 @@ type iAddUserToDesktopGroupRequest interface {
 }
 
 type AddUserToDesktopGroupRequest struct {
-	// A client token that ensures the idempotence of a request. Generate a unique value for this parameter from your client. The token can contain only ASCII characters and must be no more than 64 characters long. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the shared cloud desktop to which to add an authorized user.
+	// The ID of the shared cloud computer to which you want to add authorized users.
 	//
 	// example:
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// A list of shared cloud desktop group IDs.
+	// The list of shared cloud computer IDs.
 	DesktopGroupIds []*string `json:"DesktopGroupIds,omitempty" xml:"DesktopGroupIds,omitempty" type:"Repeated"`
-	// A list of users to authorize.
+	// The list of users to authorize.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	OrgId      *string   `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to obtain a list of regions where WUYING Workspace is available.
+	// The organization ID of the team.
+	//
+	// example:
+	//
+	// org-aliyun-wy-org-id
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The convenience user group ID.
+	//
+	// example:
+	//
+	// ug-3f6c8a2b****
 	SimpleUserGroupId *string `json:"SimpleUserGroupId,omitempty" xml:"SimpleUserGroupId,omitempty"`
-	UserGroupName     *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
-	UserOuPath        *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
+	// The user group name.
+	//
+	// example:
+	//
+	// R&D Group
+	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
+	// The organizational unit (OU) path of the user.
+	//
+	// example:
+	//
+	// example.com
+	UserOuPath *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
 }
 
 func (s AddUserToDesktopGroupRequest) String() string {

@@ -28,7 +28,7 @@ type ModifyTimerGroupRequest struct {
 	//
 	// example:
 	//
-	// ScheduledTask.
+	// ScheduledTask
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The configuration group ID.
 	//
@@ -38,11 +38,11 @@ type ModifyTimerGroupRequest struct {
 	//
 	// cg-i1ruuudp92qpj****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The configuration group name.
+	// The name of the configuration group.
 	//
 	// example:
 	//
-	// ScheduledTask.
+	// ScheduledTask
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID. This feature is not region-specific. Set this parameter to `cn-shanghai`.
 	//
@@ -133,18 +133,23 @@ type ModifyTimerGroupRequestConfigTimers struct {
 	//
 	// 0 0 16 ? 	- 1,2,3,4,5,6,7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// Specifies whether to forcefully execute the task. If set to true, the scheduled task is forcefully executed regardless of the desktop and connection status.
+	// Specifies whether to forcefully execute the task. If this parameter is set to true, the scheduled task is forcefully executed regardless of the cloud desktop and connection status.
 	//
 	// example:
 	//
 	// false
 	Enforce *bool `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
-	// The time interval, in minutes.
+	// The time interval. Unit: minutes.
 	//
 	// example:
 	//
 	// 10
-	Interval         *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The advance notification time before the scheduled task is executed. Unit: seconds.
+	//
+	// example:
+	//
+	// 300
 	NotificationTime *int32 `json:"NotificationTime,omitempty" xml:"NotificationTime,omitempty"`
 	// The operation type of the scheduled task. Currently, only disconnect scheduled tasks support this parameter.
 	//
@@ -159,9 +164,10 @@ type ModifyTimerGroupRequestConfigTimers struct {
 	// example:
 	//
 	// RESET_TYPE_SYSTEM
-	ResetType     *string                                             `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	ResetType *string `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	// The list of segment timer configurations.
 	SegmentTimers []*ModifyTimerGroupRequestConfigTimersSegmentTimers `json:"SegmentTimers,omitempty" xml:"SegmentTimers,omitempty" type:"Repeated"`
-	// The scheduled task type.
+	// The type of the scheduled task.
 	//
 	// example:
 	//
@@ -296,38 +302,98 @@ func (s *ModifyTimerGroupRequestConfigTimers) Validate() error {
 }
 
 type ModifyTimerGroupRequestConfigTimersSegmentTimers struct {
-	// The specified time point for fixed-time scheduled task execution. After this parameter is specified, the scheduled task is executed at the specified time point.
+	// The appointment timer for executing scheduled tasks at specified time points.
 	//
 	// example:
 	//
 	// 1764660600967
-	AppointmentTimer  *int64  `json:"AppointmentTimer,omitempty" xml:"AppointmentTimer,omitempty"`
+	AppointmentTimer *int64 `json:"AppointmentTimer,omitempty" xml:"AppointmentTimer,omitempty"`
+	// Specifies whether to create a snapshot.
+	CreateSnapshot *bool `json:"CreateSnapshot,omitempty" xml:"CreateSnapshot,omitempty"`
+	// The cron expression for the end time of the scheduled task.
+	//
+	// example:
+	//
+	// 0 0 18 ? 	- 1-5
 	EndCronExpression *string `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
-	Enforce           *bool   `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
-	// The image ID to change to. This parameter is used for image change scheduled tasks.
+	// Specifies whether to forcefully execute the task. If this parameter is set to true, the scheduled task is forcefully executed regardless of the cloud desktop and connection status.
+	Enforce *bool `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
+	// The image ID.
 	//
 	// example:
 	//
-	// m-5b0vjqbiqu010XXXXXX
-	ImageId    *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	Interval   *int32    `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// m-4zfb6zj728hhr****
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The time interval. Unit: minutes.
+	//
+	// example:
+	//
+	// 10
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The list of IP CIDR blocks that take effect.
 	IpSegments []*string `json:"IpSegments,omitempty" xml:"IpSegments,omitempty" type:"Repeated"`
-	// The lock screen time point for the no-operation lock screen feature. This parameter is not supported for non-AD desktops.
+	// The duration of inactivity before the screen is locked for the no-operation lock screen feature. Unit: minutes. Only AD-joined cloud desktops are supported.
 	//
 	// example:
 	//
-	// 1800
-	LockScreenTime               *int32    `json:"LockScreenTime,omitempty" xml:"LockScreenTime,omitempty"`
-	NotificationTime             *int32    `json:"NotificationTime,omitempty" xml:"NotificationTime,omitempty"`
-	OperationType                *string   `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	ProcessWhitelist             []*string `json:"ProcessWhitelist,omitempty" xml:"ProcessWhitelist,omitempty" type:"Repeated"`
-	ResetType                    *string   `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
-	StartCronExpression          *string   `json:"StartCronExpression,omitempty" xml:"StartCronExpression,omitempty"`
-	TimerOrder                   *int32    `json:"TimerOrder,omitempty" xml:"TimerOrder,omitempty"`
-	Timezone                     *string   `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	TriggerType                  *string   `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	VerificationNotificationTime *int32    `json:"VerificationNotificationTime,omitempty" xml:"VerificationNotificationTime,omitempty"`
-	VerificationTime             *int32    `json:"VerificationTime,omitempty" xml:"VerificationTime,omitempty"`
+	// 5
+	LockScreenTime *int32 `json:"LockScreenTime,omitempty" xml:"LockScreenTime,omitempty"`
+	// The advance notification time before the scheduled task is executed. Unit: seconds.
+	//
+	// example:
+	//
+	// 300
+	NotificationTime *int32 `json:"NotificationTime,omitempty" xml:"NotificationTime,omitempty"`
+	// The operation type of the scheduled task. Currently, only disconnect scheduled tasks support this parameter.
+	//
+	// example:
+	//
+	// Shutdown
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	// The process whitelist for intelligent detection of no-operation scheduled tasks. If a specified process is running, the no-operation scheduled task is not triggered.
+	ProcessWhitelist []*string `json:"ProcessWhitelist,omitempty" xml:"ProcessWhitelist,omitempty" type:"Repeated"`
+	// The reset type, which determines whether to reset and the scope of cloud disks to reset.
+	//
+	// example:
+	//
+	// 1
+	ResetType *string `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	// The cron expression for the start time of the scheduled task.
+	//
+	// example:
+	//
+	// 0 0 8 ? 	- 1-5
+	StartCronExpression *string `json:"StartCronExpression,omitempty" xml:"StartCronExpression,omitempty"`
+	// The execution order number of the timer.
+	//
+	// example:
+	//
+	// 1
+	TimerOrder *int32 `json:"TimerOrder,omitempty" xml:"TimerOrder,omitempty"`
+	// The time zone used by the scheduled task.
+	//
+	// example:
+	//
+	// Asia/Shanghai
+	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	// The trigger configuration type for no-operation scheduled tasks.
+	//
+	// example:
+	//
+	// Standard
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+	// The advance notification time before verification is executed. Unit: seconds.
+	//
+	// example:
+	//
+	// 300
+	VerificationNotificationTime *int32 `json:"VerificationNotificationTime,omitempty" xml:"VerificationNotificationTime,omitempty"`
+	// The verification wait duration. Unit: seconds.
+	//
+	// example:
+	//
+	// 600
+	VerificationTime *int32 `json:"VerificationTime,omitempty" xml:"VerificationTime,omitempty"`
 }
 
 func (s ModifyTimerGroupRequestConfigTimersSegmentTimers) String() string {
@@ -340,6 +406,10 @@ func (s ModifyTimerGroupRequestConfigTimersSegmentTimers) GoString() string {
 
 func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) GetAppointmentTimer() *int64 {
 	return s.AppointmentTimer
+}
+
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) GetCreateSnapshot() *bool {
+	return s.CreateSnapshot
 }
 
 func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) GetEndCronExpression() *string {
@@ -408,6 +478,11 @@ func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) GetVerificationTime()
 
 func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetAppointmentTimer(v int64) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
 	s.AppointmentTimer = &v
+	return s
+}
+
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetCreateSnapshot(v bool) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
+	s.CreateSnapshot = &v
 	return s
 }
 

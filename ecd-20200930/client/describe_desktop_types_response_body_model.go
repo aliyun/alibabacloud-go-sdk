@@ -72,72 +72,89 @@ type DescribeDesktopTypesResponseBodyDesktopTypes struct {
 	//
 	// 2
 	CpuCount *string `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
-	// The size of the data disk, in GiB.
+	// The data cloud disk size. Unit: GiB.
 	//
 	// example:
 	//
 	// 150
 	DataDiskSize *string `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the NAS file system.
+	//
+	// example:
+	//
+	// newDescription
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The specification ID.
 	//
 	// example:
 	//
 	// ecd.graphics.xlarge
 	DesktopTypeId *string `json:"DesktopTypeId,omitempty" xml:"DesktopTypeId,omitempty"`
-	// The availability of the specification. A value of `SUFFICIENT` indicates that the specification is in stock.
+	// The specification status. A value of `SUFFICIENT` indicates that the specification resources are sufficient.
 	//
 	// example:
 	//
 	// SUFFICIENT
 	DesktopTypeStatus *string `json:"DesktopTypeStatus,omitempty" xml:"DesktopTypeStatus,omitempty"`
-	EnvId             *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
-	EnvType           *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The environment ID. This parameter is not publicly available.
+	//
+	// example:
+	//
+	// adifa****
+	EnvId *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	// The environment type. This parameter is not publicly available.
+	//
+	// example:
+	//
+	// Private
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	// The number of GPU cores.
 	//
 	// example:
 	//
 	// 1
 	GpuCount *float32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
-	// The GPU memory size in MiB. This parameter is valid only for GPU-accelerated cloud desktops.
+	// The GPU memory size. This parameter is meaningful only for GPU-accelerated cloud computers. Unit: MB.
 	//
 	// example:
 	//
 	// 2048
 	GpuMemory *int32 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
-	// The GPU memory size.
+	// The GPU memory.
 	//
 	// example:
 	//
 	// 16 GiB
 	GpuSpec *string `json:"GpuSpec,omitempty" xml:"GpuSpec,omitempty"`
-	// The instance type family.
+	// The instance family.
 	//
 	// example:
 	//
 	// ecd.graphics
 	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	// The maximum number of concurrent sessions that is supported by the cloud desktop specification.
+	// The number of multi-sessions supported by the current specification.
 	//
 	// example:
 	//
 	// 4
 	MaxSessionCount *int32 `json:"MaxSessionCount,omitempty" xml:"MaxSessionCount,omitempty"`
-	// The memory size, in MiB.
+	// The memory size. Unit: MiB.
 	//
 	// example:
 	//
 	// 23552
 	MemorySize *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
-	// The purchase options for the specification.
+	// The supported desktop type sale categories.
+	SaleTypes []*string `json:"SaleTypes,omitempty" xml:"SaleTypes,omitempty" type:"Repeated"`
+	// The list of billing methods for the specification.
 	Scopes []*string `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Repeated"`
-	// The inventory status.
+	// The stock status.
 	//
 	// example:
 	//
 	// Sufficient
 	StockState *string `json:"StockState,omitempty" xml:"StockState,omitempty"`
-	// The size of the system disk, in GiB.
+	// The system cloud disk size. Unit: GiB.
 	//
 	// example:
 	//
@@ -203,6 +220,10 @@ func (s *DescribeDesktopTypesResponseBodyDesktopTypes) GetMaxSessionCount() *int
 
 func (s *DescribeDesktopTypesResponseBodyDesktopTypes) GetMemorySize() *string {
 	return s.MemorySize
+}
+
+func (s *DescribeDesktopTypesResponseBodyDesktopTypes) GetSaleTypes() []*string {
+	return s.SaleTypes
 }
 
 func (s *DescribeDesktopTypesResponseBodyDesktopTypes) GetScopes() []*string {
@@ -279,6 +300,11 @@ func (s *DescribeDesktopTypesResponseBodyDesktopTypes) SetMaxSessionCount(v int3
 
 func (s *DescribeDesktopTypesResponseBodyDesktopTypes) SetMemorySize(v string) *DescribeDesktopTypesResponseBodyDesktopTypes {
 	s.MemorySize = &v
+	return s
+}
+
+func (s *DescribeDesktopTypesResponseBodyDesktopTypes) SetSaleTypes(v []*string) *DescribeDesktopTypesResponseBodyDesktopTypes {
+	s.SaleTypes = v
 	return s
 }
 

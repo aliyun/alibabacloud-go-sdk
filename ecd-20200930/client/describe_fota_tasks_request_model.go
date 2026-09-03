@@ -48,7 +48,7 @@ type DescribeFotaTasksRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. An empty value indicates that no more results exist.
+	// The pagination token for the next query. An empty value indicates that there are no more results.
 	//
 	// example:
 	//

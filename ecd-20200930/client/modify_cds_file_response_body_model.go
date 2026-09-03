@@ -28,7 +28,7 @@ type ModifyCdsFileResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether data is returned successfully.
+	// Indicates whether the data is returned successfully.
 	//
 	// [_single.resp.200.props.Data.enum. false]Failed to return data.
 	//

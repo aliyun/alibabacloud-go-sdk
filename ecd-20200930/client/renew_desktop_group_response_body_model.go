@@ -16,7 +16,7 @@ type iRenewDesktopGroupResponseBody interface {
 }
 
 type RenewDesktopGroupResponseBody struct {
-	// The order IDs.
+	// The list of order IDs.
 	OrderId []*string `json:"OrderId,omitempty" xml:"OrderId,omitempty" type:"Repeated"`
 	// The request ID.
 	//

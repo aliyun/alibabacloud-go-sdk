@@ -133,19 +133,19 @@ type DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktops struct {
 	//
 	// example:
 	//
-	// demo-computer
+	// TestDesktop
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
 	// > This parameter is not publicly available.
 	//
 	// example:
 	//
-	// windows
+	// To be hidden
 	FotaProject *string `json:"FotaProject,omitempty" xml:"FotaProject,omitempty"`
 	// The ID of the office network.
 	//
 	// example:
 	//
-	// cn-shanghai+dir-428216****
+	// cn-hangzhou+dir-815419****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 	// The connected sessions.
 	Sessions []*DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
@@ -264,7 +264,7 @@ type DescribeFotaPendingDesktopsResponseBodyFotaPendingDesktopsSessions struct {
 	//
 	// example:
 	//
-	// alice
+	// end user id
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 }
 

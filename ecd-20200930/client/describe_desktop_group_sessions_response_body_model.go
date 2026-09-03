@@ -20,7 +20,7 @@ type iDescribeDesktopGroupSessionsResponseBody interface {
 }
 
 type DescribeDesktopGroupSessionsResponseBody struct {
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The token for the start of the next page.
 	//
 	// example:
 	//
@@ -32,9 +32,9 @@ type DescribeDesktopGroupSessionsResponseBody struct {
 	//
 	// D0920845-7359-59FC-9899-B****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The sessions.
+	// The list of session data.
 	Sessions []*DescribeDesktopGroupSessionsResponseBodySessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
-	// The total number of sessions.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type DescribeDesktopGroupSessionsResponseBodySessions struct {
 	//
 	// SIMPLE
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The IP address of the client.
+	// The client IP address.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type DescribeDesktopGroupSessionsResponseBodySessions struct {
 	//
 	// windows
 	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
-	// The version of the client.
+	// The client version.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ type DescribeDesktopGroupSessionsResponseBodySessions struct {
 	//
 	// dg-iaqu3bi2xtie****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The name of the cloud computer share.
+	// The name of the shared cloud computer.
 	//
 	// example:
 	//
 	// DemoCCGroup
 	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
-	// If the session status is Connected, it indicates the ID of the cloud computer that is currently connected. If the session status is Disconnected, it indicates the ID of the cloud computer that was last connected.
+	// The cloud computer ID. If the session status is Connected, this value indicates the ID of the currently connected cloud computer. If the session status is Disconnected, this value indicates the ID of the most recently connected cloud computer.
 	//
 	// example:
 	//
@@ -148,43 +148,43 @@ type DescribeDesktopGroupSessionsResponseBodySessions struct {
 	//
 	// SIMPLE
 	DirectoryType *string `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
-	// The point in time when the end user applies for administrator assistance.
+	// The point in time when the user requested administrator assistance. This value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1678794261000
 	EndUserApplyCoordinateTime *int64 `json:"EndUserApplyCoordinateTime,omitempty" xml:"EndUserApplyCoordinateTime,omitempty"`
-	// The user ID of the terminal that connects to the session.
+	// The ID of the end user connected to the session.
 	//
 	// example:
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The end time of the most recent connection.
+	// The end time of the most recent connection. Time format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2022-08-31 07:56:45
 	LastSessionEndTime *string `json:"LastSessionEndTime,omitempty" xml:"LastSessionEndTime,omitempty"`
-	// The start time of the most recent connection.
+	// The start time of the most recent connection. Time format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 2022-08-31 06:56:45
 	LastSessionStartTime *string `json:"LastSessionStartTime,omitempty" xml:"LastSessionStartTime,omitempty"`
-	// The duration of the most recent session. Unit: seconds.
+	// The duration of the most recent connection. Unit: seconds.
 	//
 	// example:
 	//
 	// 120
 	LatestConnectionTime *int64 `json:"LatestConnectionTime,omitempty" xml:"LatestConnectionTime,omitempty"`
-	// The office network ID.
+	// The ID of the office network.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-8904****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The office network name.
+	// The name of the office network.
 	//
 	// example:
 	//
@@ -196,13 +196,13 @@ type DescribeDesktopGroupSessionsResponseBodySessions struct {
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The type of the session.
+	// The session type.
 	//
 	// example:
 	//
 	// 0
 	OwnType *int32 `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
-	// The protocol type supported by the rule.
+	// The protocol type.
 	//
 	// example:
 	//
@@ -214,15 +214,15 @@ type DescribeDesktopGroupSessionsResponseBodySessions struct {
 	//
 	// 120
 	SessionIdleTime *int64 `json:"SessionIdleTime,omitempty" xml:"SessionIdleTime,omitempty"`
-	// The state of the session.
+	// The session connection status.
 	//
 	// example:
 	//
 	// Connected
 	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
-	// Terminal Info
+	// The terminal information.
 	TerminalInfo *DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo `json:"TerminalInfo,omitempty" xml:"TerminalInfo,omitempty" type:"Struct"`
-	// The total duration of the sessions. Unit: seconds.
+	// The total connection duration. Unit: seconds.
 	//
 	// example:
 	//
@@ -446,7 +446,7 @@ func (s *DescribeDesktopGroupSessionsResponseBodySessions) Validate() error {
 }
 
 type DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo struct {
-	// The type of the terminal.
+	// The terminal device model.
 	//
 	// example:
 	//
@@ -458,13 +458,13 @@ type DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo struct {
 	//
 	// Mac
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	// Terminal Serial Number
+	// The terminal serial number.
 	//
 	// example:
 	//
 	// 96c530bc-6095-4014-8bbc-d461b8ac****
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	// The terminal UUID.
+	// The UUID of the terminal device.
 	//
 	// example:
 	//

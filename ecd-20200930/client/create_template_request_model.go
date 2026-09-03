@@ -56,16 +56,23 @@ type iCreateTemplateRequest interface {
 }
 
 type CreateTemplateRequest struct {
-	AutoPay   *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Indicates whether automatic payment is enabled for the subscription order.
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to enable auto-renewal for the subscription cloud computer.
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// > This parameter is not publicly available.
 	//
 	// example:
 	//
 	// 1
-	BizType    *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The billing method of the cloud computer.
+	//
+	// example:
+	//
+	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The data disk size and specification configurations.
+	// The size and specification configurations of data disks.
 	DataDiskList []*CreateTemplateRequestDataDiskList `json:"DataDiskList,omitempty" xml:"DataDiskList,omitempty" type:"Repeated"`
 	// The default language set when the cloud computer starts. This parameter takes effect only when a system image is used to create the cloud computer.
 	//
@@ -75,38 +82,71 @@ type CreateTemplateRequest struct {
 	DefaultLanguage *string `json:"DefaultLanguage,omitempty" xml:"DefaultLanguage,omitempty"`
 	// The description of the template. The description must meet the following requirements:
 	//
-	// - The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// - The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
 	//
 	// - The description can contain Chinese characters, letters, digits, spaces, and special characters. Line breaks are supported.
 	//
 	// example:
 	//
-	// Design department template
+	// DesignDepartmentTemplate
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The cloud computer image ID. You can query this value on the image management page. System images and custom images are supported.
+	// The ID of the cloud computer image. You can query the ID on the image management page. System images and custom images are supported.
 	//
 	// example:
 	//
 	// desktopimage-windows-server-2022-64-asp
-	ImageId    *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	Period     *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The subscription duration of the subscription cloud computer. This parameter takes effect and is required only when `ChargeType` is set to `PrePaid`. The unit is specified by `PeriodUnit`.
+	//
+	// - If `PeriodUnit` is set to `Month`, valid values:
+	//
+	//     - 1
+	//
+	//     - 2
+	//
+	//     - 3
+	//
+	//     - 6
+	//
+	// - If `PeriodUnit` is set to `Year`, valid values:
+	//
+	//     - 1
+	//
+	//     - 2
+	//
+	//     - 3
+	//
+	//     - 4
+	//
+	//     - 5
+	//
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription billable methods duration.
+	//
+	// example:
+	//
+	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// The ID of the global policy.
 	//
 	// example:
 	//
 	// pg-8hlryfn331******
-	PolicyGroupId       *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	PostPaidAfterUsedUp *bool   `json:"PostPaidAfterUsedUp,omitempty" xml:"PostPaidAfterUsedUp,omitempty"`
+	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// Specifies whether to automatically switch to pay-as-you-go billing after the duration plan is used up.
+	PostPaidAfterUsedUp *bool `json:"PostPaidAfterUsedUp,omitempty" xml:"PostPaidAfterUsedUp,omitempty"`
 	// The product type. Set the value to `CloudDesktop`.
 	//
 	// example:
 	//
 	// CloudDesktop
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The region-specific template configurations. Multiple configurations are supported. The configuration that matches the specific region is used.
+	// The region-specific template configurations. You can specify multiple configurations. The configuration that matches the specific region is used.
 	//
-	// > You can configure up to 20 regions.
+	// > You can specify configurations for up to 20 regions.
 	RegionConfigList []*CreateTemplateRequestRegionConfigList `json:"RegionConfigList,omitempty" xml:"RegionConfigList,omitempty" type:"Repeated"`
 	// The resource group ID.
 	//
@@ -114,19 +154,19 @@ type CreateTemplateRequest struct {
 	//
 	// rg-4knxmfneq1e******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The cloud computer tags in key-value format. You can specify up to 20 tags.
+	// The tags of the cloud computer in key-value format. You can specify up to 20 tags.
 	ResourceTagList []*CreateTemplateRequestResourceTagList `json:"ResourceTagList,omitempty" xml:"ResourceTagList,omitempty" type:"Repeated"`
 	// The site configuration management.
 	SiteConfigList []*CreateTemplateRequestSiteConfigList `json:"SiteConfigList,omitempty" xml:"SiteConfigList,omitempty" type:"Repeated"`
-	// The system disk type.
+	// The type of the system disk.
 	//
-	// > Only high frequency and graphics cloud computer specifications support ESSD disks.
+	// > Only high-frequency and GPU-accelerated cloud computer specifications support ESSD disks.
 	//
 	// example:
 	//
 	// AutoPL
 	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
-	// The system disk size. Unit: GiB. Valid values: 40 to 500, in increments of 10 GiB.
+	// The size of the system disk. Unit: GiB. Valid values: 40 to 500. The value must be a multiple of 10.
 	//
 	// > The system disk size cannot be smaller than the image size.
 	//
@@ -136,7 +176,7 @@ type CreateTemplateRequest struct {
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 	// The name of the template. The name must meet the following requirements:
 	//
-	// - The name must be 2 to 126 characters in length and can contain letters and Chinese characters.
+	// - The name must be 2 to 126 characters in length.
 	//
 	// - The name must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
 	//
@@ -146,7 +186,7 @@ type CreateTemplateRequest struct {
 	//
 	// example:
 	//
-	// My cloud desktop template 001
+	// MyCloudComputerTemplate001
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The configuration group ID.
 	//
@@ -154,7 +194,12 @@ type CreateTemplateRequest struct {
 	//
 	// ccg-0caoeogrk9m5****
 	TimerGroupId *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
-	UserDuration *int32  `json:"UserDuration,omitempty" xml:"UserDuration,omitempty"`
+	// The usage duration plan per user.
+	//
+	// example:
+	//
+	// 120
+	UserDuration *int32 `json:"UserDuration,omitempty" xml:"UserDuration,omitempty"`
 }
 
 func (s CreateTemplateRequest) String() string {
@@ -404,15 +449,15 @@ func (s *CreateTemplateRequest) Validate() error {
 }
 
 type CreateTemplateRequestDataDiskList struct {
-	// The data disk performance level. Default value: `AutoPL`.
+	// The performance level of the data disk. Default value: `AutoPL`.
 	//
 	// example:
 	//
 	// AutoPL
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The data cloud disk size. Unit: GiB. Valid values: 40 to 2040, in increments of 10 GiB.
+	// The size of the data cloud disk. Unit: GiB. Valid values: 40 to 2040. The value must be a multiple of 10.
 	//
-	// 	Notice: The larger the standard SSD or ESSD cloud disk capacity, the higher the performance level (PL) available (for example, PL2 is available for capacities above 460 GiB). Higher performance levels incur higher costs. Select the ESSD cloud disk performance level (PL) based on your requirements.
+	// 	Notice: The larger the ESSD cloud disk capacity, the higher the performance level (PL) available (for example, PL2 is available for capacities of 460 GiB or more). Higher performance levels (PLs) incur higher costs. Select the ESSD cloud disk performance level (PL) based on your requirements. Note: Only standard SSD and ESSD cloud disks are supported.
 	//
 	// example:
 	//
@@ -469,7 +514,7 @@ type CreateTemplateRequestRegionConfigList struct {
 	//
 	// eds.enterprise_office.8c16g
 	ResourceInstanceType *string `json:"ResourceInstanceType,omitempty" xml:"ResourceInstanceType,omitempty"`
-	// The automatic snapshot policy ID.
+	// The ID of the automatic snapshot policy.
 	//
 	// example:
 	//
@@ -487,7 +532,7 @@ type CreateTemplateRequestRegionConfigList struct {
 	//
 	// false
 	VolumeEncryptionEnable *bool `json:"VolumeEncryptionEnable,omitempty" xml:"VolumeEncryptionEnable,omitempty"`
-	// The KMS key ID used when disk encryption is enabled. You can call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
+	// The ID of the KMS key used when disk encryption is enabled. You can call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
 	//
 	// example:
 	//

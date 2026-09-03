@@ -56,7 +56,7 @@ type DescribeTemplatesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of rows per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DescribeTemplatesResponseBody struct {
 	//
 	// 1871984F-51F6-5588-BAF6-*******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
@@ -185,8 +185,15 @@ func (s *DescribeTemplatesResponseBody) Validate() error {
 }
 
 type DescribeTemplatesResponseBodyData struct {
-	AutoPay    *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoRenew  *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// Indicates whether automatic payment is enabled for subscription orders.
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Indicates whether auto-renewal is enabled for the subscription shared cloud computer.
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The billing type of the cloud computer.
+	//
+	// example:
+	//
+	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The size and specification configurations of data cloud disks.
 	DataDiskList []*DescribeTemplatesResponseBodyDataDataDiskList `json:"DataDiskList,omitempty" xml:"DataDiskList,omitempty" type:"Repeated"`
@@ -200,7 +207,7 @@ type DescribeTemplatesResponseBodyData struct {
 	//
 	// example:
 	//
-	// My template
+	// MyTemplate
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The creation time of the template (UTC).
 	//
@@ -208,7 +215,7 @@ type DescribeTemplatesResponseBodyData struct {
 	//
 	// 2025-04-25T05:18:46.000+00:00
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The last modification time of the template (UTC).
+	// The update time of the template (UTC).
 	//
 	// example:
 	//
@@ -225,23 +232,34 @@ type DescribeTemplatesResponseBodyData struct {
 	// example:
 	//
 	// User
-	ImageType  *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
-	Period     *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	// The subscription duration of the subscription shared cloud computer. This parameter takes effect only when ChargeType is set to PrePaid, and is required in that case. The unit is specified by PeriodUnit.
+	//
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription billing duration. Billable methods use this parameter to specify the time unit.
+	//
+	// example:
+	//
+	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// The policy group ID.
 	//
 	// example:
 	//
 	// pg-0caoeogkhz*****
-	PolicyGroupId       *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	PostPaidAfterUsedUp *bool   `json:"PostPaidAfterUsedUp,omitempty" xml:"PostPaidAfterUsedUp,omitempty"`
+	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// Indicates whether the cloud computer automatically switches to pay-as-you-go billing after the duration plan is exhausted.
+	PostPaidAfterUsedUp *bool `json:"PostPaidAfterUsedUp,omitempty" xml:"PostPaidAfterUsedUp,omitempty"`
 	// The product type.
 	//
 	// example:
 	//
 	// CLOUD_DESKTOP
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The region-specific configuration parameters.
+	// The region-related configuration parameters.
 	RegionConfigList []*DescribeTemplatesResponseBodyDataRegionConfigList `json:"RegionConfigList,omitempty" xml:"RegionConfigList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -281,7 +299,7 @@ type DescribeTemplatesResponseBodyData struct {
 	//
 	// example:
 	//
-	// My template 001
+	// MyTemplate001
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The templatetype.
 	//
@@ -295,6 +313,11 @@ type DescribeTemplatesResponseBodyData struct {
 	//
 	// bcc-dweha*****
 	TimerGroupId *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
+	// The per-user usage duration plan.
+	//
+	// example:
+	//
+	// 120
 	UserDuration *string `json:"UserDuration,omitempty" xml:"UserDuration,omitempty"`
 }
 
@@ -635,13 +658,13 @@ func (s *DescribeTemplatesResponseBodyDataDataDiskList) Validate() error {
 }
 
 type DescribeTemplatesResponseBodyDataRegionConfigList struct {
-	// The number of vCPUs included in the cloud computer instance type.
+	// The number of vCPUs included in the cloud computer specification.
 	//
 	// example:
 	//
 	// 4
 	CpuCount *int32 `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
-	// The GPU memory information. This field is displayed only when the instance type is a graphics-accelerated type.
+	// The GPU memory information. This field is displayed only when the specification is a graphics-accelerated type.
 	//
 	// example:
 	//
@@ -665,7 +688,7 @@ type DescribeTemplatesResponseBodyDataRegionConfigList struct {
 	//
 	// cn-shenzhen
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The cloud computer instance type ID.
+	// The cloud computer specification ID.
 	//
 	// example:
 	//
@@ -810,7 +833,7 @@ type DescribeTemplatesResponseBodyDataResourceTagList struct {
 	//
 	// example:
 	//
-	// test
+	// 8vCPUs16GiB
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

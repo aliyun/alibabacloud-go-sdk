@@ -22,7 +22,7 @@ type iGetCoordinateTicketResponseBody interface {
 }
 
 type GetCoordinateTicketResponseBody struct {
-	// The ID of the stream collaboration.
+	// The coordination flow ID.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type GetCoordinateTicketResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the cloud computer connection task.
+	// The cloud computer connection task ID.
 	//
 	// example:
 	//
@@ -42,37 +42,11 @@ type GetCoordinateTicketResponseBody struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task status.
 	//
-	// Possible values:
-	//
-	// - Finished
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - Failed
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - Running
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
 	// example:
 	//
 	// Finished
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The credentials of the stream collaboration.
+	// The coordination flow ticket.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iVerifyCenRequest interface {
 }
 
 type VerifyCenRequest struct {
-	// The ID of the CEN instance.
+	// The CEN instance ID.
 	//
 	// This parameter is required.
 	//
@@ -30,25 +30,25 @@ type VerifyCenRequest struct {
 	//
 	// cen-3gwy16dojz1m65****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The Alibaba Cloud account to which the CEN instance belongs.
+	// The Alibaba Cloud account ID to which the CEN instance belongs.
 	//
-	// 	- If you own the CEN instance, you can skip this parameter.
+	// - If the specified CenId belongs to your Alibaba Cloud account, you do not need to configure this parameter.
 	//
-	// 	- If you do not own the CEN instance, you must specify the ID of the account that owns the CEN instance.
+	// - If the specified CenId belongs to another Alibaba Cloud account, specify the ID of that Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 102681951715****
 	CenOwnerId *int64 `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
-	// The IPv4 CIDR block of the associated office network.
+	// The IPv4 CIDR block of the office network.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 47.100.XX.XX
+	// 192.168.0.0/16
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type VerifyCenRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The verification code. If you do not own the CEN instance, you must call the [SendVerifyCode](https://help.aliyun.com/document_detail/436847.html) operation to obtain a verification code.
+	// The verification code. If the specified CenId belongs to another Alibaba Cloud account, you must first call [SendVerifyCode](https://help.aliyun.com/document_detail/436847.html) to obtain the verification code.
 	//
 	// example:
 	//

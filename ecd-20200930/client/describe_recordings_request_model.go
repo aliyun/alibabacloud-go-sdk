@@ -34,19 +34,19 @@ type iDescribeRecordingsRequest interface {
 }
 
 type DescribeRecordingsRequest struct {
-	// The cloud computer ID. If this parameter is not specified, the screen recording files on all cloud computers in the designated region will be queried.
+	// The cloud computer ID. If you do not specify this parameter, all cloud computers in the region are queried.
 	//
 	// example:
 	//
 	// ecd-hlh41mk78dugw****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The end time of the query. Specify the time in the `YYYYMMDDhhmmss` format. The time must be in UTC+8.
+	// The end time of the query. Specify the time in UTC+8 in the `YYYYMMDDhhmmss` format.
 	//
 	// example:
 	//
 	// 20230424004441
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The maximum number of entries per page.
+	// The number of entries per page for a paged query.
 	//
 	// Maximum value: 100.
 	//
@@ -56,19 +56,13 @@ type DescribeRecordingsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Specifies whether to return a URL.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	// 	- false (default)
+	// Specifies whether to return the URL.
 	//
 	// example:
 	//
 	// false
 	NeedSignedUrl *bool `json:"NeedSignedUrl,omitempty" xml:"NeedSignedUrl,omitempty"`
-	// The pagination token that is used in the request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous call to this operation. You do not need to set this parameter for the first request.
 	//
 	// example:
 	//
@@ -80,7 +74,7 @@ type DescribeRecordingsRequest struct {
 	//
 	// pg-gx2x1dhsmthe9****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -94,19 +88,19 @@ type DescribeRecordingsRequest struct {
 	//
 	// 10
 	SignedUrlExpireMinutes *int32 `json:"SignedUrlExpireMinutes,omitempty" xml:"SignedUrlExpireMinutes,omitempty"`
-	// The end time of the query. Specify the time in the ISO 8601 standard in the `yyyy-mm-ddthh:mm:ssz` format. The time must be in UTC+0.
+	// The end time of the query. Specify the time in the ISO 8601 standard in UTC+0 in the `yyyy-mm-ddthh:mm:ssz` format.
 	//
 	// example:
 	//
 	// 2025-01-27T02:30:10Z
 	StandardEndTime *string `json:"StandardEndTime,omitempty" xml:"StandardEndTime,omitempty"`
-	// The start time of the query. Specify the time in the ISO 8601 standard in the `yyyy-mm-ddthh:mm:ssz` format. The time must be in UTC+0.
+	// The start time of the query. Specify the time in the ISO 8601 standard in UTC+0 in the `yyyy-mm-ddthh:mm:ssz` format.
 	//
 	// example:
 	//
 	// 2025-01-27T02:20:10Z
 	StandardStartTime *string `json:"StandardStartTime,omitempty" xml:"StandardStartTime,omitempty"`
-	// The start time of the query. Specify the time in the `YYYYMMDDhhmmss` format. The time must be in UTC+8.
+	// The start time of the query. Specify the time in UTC+8 in the `YYYYMMDDhhmmss` format.
 	//
 	// example:
 	//

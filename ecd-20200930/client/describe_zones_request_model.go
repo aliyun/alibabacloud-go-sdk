@@ -18,16 +18,17 @@ type iDescribeZonesRequest interface {
 }
 
 type DescribeZonesRequest struct {
-	// The region ID. Call [](t2167755.xdita#)to get the list of regions supported by EDS.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to retrieve the list of regions supported by Alibaba Cloud Workspace.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VpcAccessZone *bool   `json:"VpcAccessZone,omitempty" xml:"VpcAccessZone,omitempty"`
-	// The zone type to query. Default value: `AvailabilityZone`. This queries standard cloud zones.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether the zone supports VPC access.
+	VpcAccessZone *bool `json:"VpcAccessZone,omitempty" xml:"VpcAccessZone,omitempty"`
+	// The type of zone to query. Default value: `AvailabilityZone`, which indicates a standard cloud zone.
 	//
 	// example:
 	//

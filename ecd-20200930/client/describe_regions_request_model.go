@@ -16,7 +16,7 @@ type iDescribeRegionsRequest interface {
 }
 
 type DescribeRegionsRequest struct {
-	// The display name of the region, which varies based on the current language.
+	// The display language of the business location. Default value: Chinese.
 	//
 	// example:
 	//

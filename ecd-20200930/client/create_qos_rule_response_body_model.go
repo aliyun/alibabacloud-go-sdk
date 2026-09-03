@@ -16,7 +16,7 @@ type iCreateQosRuleResponseBody interface {
 }
 
 type CreateQosRuleResponseBody struct {
-	// The ID of the created QoS rule.
+	// The rate limiting rule ID.
 	//
 	// example:
 	//

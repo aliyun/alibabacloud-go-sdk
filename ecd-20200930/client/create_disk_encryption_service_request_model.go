@@ -14,7 +14,7 @@ type iCreateDiskEncryptionServiceRequest interface {
 }
 
 type CreateDiskEncryptionServiceRequest struct {
-	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the list of regions supported by Elastic Desktop Service.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

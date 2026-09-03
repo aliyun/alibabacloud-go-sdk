@@ -149,7 +149,7 @@ type DescribeDesktopSessionsResponseBodySessions struct {
 	//
 	// cn-hangzhou+dir-8904****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The office network name.
+	// The name of the office network.
 	//
 	// example:
 	//
@@ -177,6 +177,8 @@ type DescribeDesktopSessionsResponseBodySessions struct {
 	ResourceGroups []*DescribeDesktopSessionsResponseBodySessionsResourceGroups `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Repeated"`
 	// The end time of the session.
 	//
+	// The time is displayed in UTC in the yyyy-MM-ddTHH:mm:ssZ format.
+	//
 	// example:
 	//
 	// 2023-01-28T02:31:43Z
@@ -188,6 +190,8 @@ type DescribeDesktopSessionsResponseBodySessions struct {
 	// 120
 	SessionIdleTime *int64 `json:"SessionIdleTime,omitempty" xml:"SessionIdleTime,omitempty"`
 	// The start time of the session.
+	//
+	// The time is displayed in UTC in the ISO 8601 standard format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeQosRulesRequest interface {
 }
 
 type DescribeQosRulesRequest struct {
-	// The network package ID.
+	// The premium Internet bandwidth ID.
 	//
 	// This parameter is required.
 	//
@@ -24,11 +24,11 @@ type DescribeQosRulesRequest struct {
 	//
 	// np-cxj99qb8d34vo****
 	NetworkPackageId *string `json:"NetworkPackageId,omitempty" xml:"NetworkPackageId,omitempty"`
-	// The QoS rule name.
+	// The name of the QoS rule.
 	//
 	// example:
 	//
-	// test
+	// Office network QoS rule
 	QosRuleName *string `json:"QosRuleName,omitempty" xml:"QosRuleName,omitempty"`
 }
 

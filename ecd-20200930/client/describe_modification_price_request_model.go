@@ -38,13 +38,13 @@ type iDescribeModificationPriceRequest interface {
 type DescribeModificationPriceRequest struct {
 	// The peak Internet bandwidth. Unit: Mbit/s.
 	//
-	// > If you use the pay-by-bandwidth billing method, the valid values range from 10 to 1000.
+	// > If you use the pay-by-fixed-bandwidth billing method, valid values are 10 to 1000.
 	//
 	// example:
 	//
 	// 20
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The instance ID. The value can be the ID of a monthly-subscribed (unlimited-duration) cloud computer or the ID of a premium Internet bandwidth instance.
+	// The instance ID. The value can be the ID of a monthly subscription (unlimited duration) cloud computer or the ID of a premium Internet bandwidth instance.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type DescribeModificationPriceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The resource specification.
 	//
-	// - If `ResourceType` is set to `Desktop`, valid values include:
+	// - If ResourceType is set to Desktop, valid values include:
 	//
 	//     - ecd.basic.small
 	//
@@ -90,7 +90,7 @@ type DescribeModificationPriceRequest struct {
 	//
 	//     - eds.general.16c32g
 	//
-	// - If `ResourceType` is set to `NetworkPackage`, you do not need to specify this parameter.
+	// - If ResourceType is set to NetworkPackage, you do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type DescribeModificationPriceRequest struct {
 	//
 	// youhuiquan_promotion_option_id_for_blank
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the list of regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -110,7 +110,7 @@ type DescribeModificationPriceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID for resource ownership in the reseller pattern. You do not need to specify this parameter in non-reseller pattern.
+	// The resource ownership user ID in the reseller pattern. You do not need to specify this parameter in non-reseller pattern.
 	//
 	// example:
 	//
@@ -118,35 +118,35 @@ type DescribeModificationPriceRequest struct {
 	ResellerOwnerUid *int64 `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 	// The list of resource specification templates.
 	ResourceSpecs []*DescribeModificationPriceRequestResourceSpecs `json:"ResourceSpecs,omitempty" xml:"ResourceSpecs,omitempty" type:"Repeated"`
-	// The resource type. The required parameters vary based on the resource type for which you want to query the specification change price:
+	// The resource type. The required parameters vary based on the resource type for which you want to query the upgrade/downgrade price:
 	//
-	// - If `ResourceType` is set to `Desktop`, you must specify the `InstanceType`, `RootDiskSizeGib`, and `UserDiskSizeGib` parameters.
+	// - If ResourceType is set to Desktop, you must specify the InstanceType, RootDiskSizeGib, and UserDiskSizeGib parameters.
 	//
-	// - If `ResourceType` is set to `NetworkPackage`, you must specify the `Bandwidth` parameter.
+	// - If ResourceType is set to NetworkPackage, you must specify the Bandwidth parameter.
 	//
 	// example:
 	//
 	// Desktop
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The performance level of the system cloud disk. You can configure the disk performance level in Settings when the cloud computer specification is set to graphics-accelerated or high frequency. For more information about the differences between performance levels, see [ESSDs](https://help.aliyun.com/document_detail/122389.html). standard SSD does not support performance level configuration.
+	// The performance level (PL) of the system cloud disk. You can set the disk performance level when the cloud computer specification in Settings is Graphics or High Frequency. For more information about the differences between disk performance levels, see [ESSDs](https://help.aliyun.com/document_detail/122389.html). standard SSD and ESSD have different performance levels.
 	//
 	// example:
 	//
 	// PL0
 	RootDiskPerformanceLevel *string `json:"RootDiskPerformanceLevel,omitempty" xml:"RootDiskPerformanceLevel,omitempty"`
-	// The system cloud disk size. Unit: GiB.
+	// The size of the system cloud disk. Unit: GiB.
 	//
 	// example:
 	//
 	// 80
 	RootDiskSizeGib *int32 `json:"RootDiskSizeGib,omitempty" xml:"RootDiskSizeGib,omitempty"`
-	// The performance level of the data cloud disk. You can configure the disk performance level in Settings when the cloud computer specification is set to graphics-accelerated or high frequency. For more information about the differences between performance levels, see [ESSDs](https://help.aliyun.com/document_detail/122389.html). standard SSD does not support performance level configuration.
+	// The performance level (PL) of the data cloud disk. You can set the disk performance level when the cloud computer specification in Settings is Graphics or High Frequency. For more information about the differences between disk performance levels, see [ESSDs](https://help.aliyun.com/document_detail/122389.html). standard SSD and ESSD have different performance levels.
 	//
 	// example:
 	//
 	// PL0
 	UserDiskPerformanceLevel *string `json:"UserDiskPerformanceLevel,omitempty" xml:"UserDiskPerformanceLevel,omitempty"`
-	// The data cloud disk size. Unit: GiB.
+	// The size of the data cloud disk. Unit: GiB.
 	//
 	// example:
 	//
@@ -290,13 +290,13 @@ type DescribeModificationPriceRequestResourceSpecs struct {
 	//
 	// ecd-6ghhzivgmnzgeyXXX
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The system cloud disk size. Unit: GiB.
+	// The size of the system cloud disk. Unit: GiB.
 	//
 	// example:
 	//
 	// 80
 	RootDiskSizeGib *int32 `json:"RootDiskSizeGib,omitempty" xml:"RootDiskSizeGib,omitempty"`
-	// The data cloud disk size. Unit: GiB.
+	// The size of the data cloud disk. Unit: GiB.
 	//
 	// example:
 	//

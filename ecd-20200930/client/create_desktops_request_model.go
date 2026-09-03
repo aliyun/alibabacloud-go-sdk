@@ -31,6 +31,8 @@ type iCreateDesktopsRequest interface {
 	GetDesktopMemberIp() *string
 	SetDesktopName(v string) *CreateDesktopsRequest
 	GetDesktopName() *string
+	SetDesktopNameModel(v *CreateDesktopsRequestDesktopNameModel) *CreateDesktopsRequest
+	GetDesktopNameModel() *CreateDesktopsRequestDesktopNameModel
 	SetDesktopNameSuffix(v bool) *CreateDesktopsRequest
 	GetDesktopNameSuffix() *bool
 	SetDesktopTimers(v []*CreateDesktopsRequestDesktopTimers) *CreateDesktopsRequest
@@ -102,7 +104,7 @@ type CreateDesktopsRequest struct {
 	//
 	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The application control policy ID.
+	// The ID of the application control policy.
 	//
 	// example:
 	//
@@ -131,7 +133,7 @@ type CreateDesktopsRequest struct {
 	// if can be null:
 	// true
 	BundleModels []*CreateDesktopsRequestBundleModels `json:"BundleModels,omitempty" xml:"BundleModels,omitempty" type:"Repeated"`
-	// > This field is not available for use.
+	// > This field is not publicly available.
 	//
 	// example:
 	//
@@ -143,7 +145,7 @@ type CreateDesktopsRequest struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The parameters for creating a cloud desktop without a template. This parameter is invalid when the BundleId parameter is specified.
+	// The parameters for creating a cloud desktop without a template. This parameter is invalid when the BundleID parameter is specified.
 	DesktopAttachment *CreateDesktopsRequestDesktopAttachment `json:"DesktopAttachment,omitempty" xml:"DesktopAttachment,omitempty" type:"Struct"`
 	// The private IP address of the cloud desktop.
 	//
@@ -153,9 +155,9 @@ type CreateDesktopsRequest struct {
 	DesktopMemberIp *string `json:"DesktopMemberIp,omitempty" xml:"DesktopMemberIp,omitempty"`
 	// The cloud desktop name. The naming rules are as follows:
 	//
-	// - The name can be up to 64 characters in length.
+	// - The name cannot exceed 64 characters in length.
 	//
-	// - The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`.
+	// - The name must start with a letter (uppercase or lowercase) or a Chinese character. It cannot start with `http://` or `https://`.
 	//
 	// - The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), or hyphens (-).
 	//
@@ -163,13 +165,15 @@ type CreateDesktopsRequest struct {
 	//
 	// DemoComputer01
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// Specifies whether to automatically append a suffix to the cloud desktop name when you create multiple cloud desktops in a batch.
+	// Controls the format of the desktop name.
+	DesktopNameModel *CreateDesktopsRequestDesktopNameModel `json:"DesktopNameModel,omitempty" xml:"DesktopNameModel,omitempty" type:"Struct"`
+	// Specifies whether to automatically append a suffix to the cloud desktop name when creating multiple cloud desktops in a batch.
 	//
 	// example:
 	//
 	// false
 	DesktopNameSuffix *bool `json:"DesktopNameSuffix,omitempty" xml:"DesktopNameSuffix,omitempty"`
-	// The scheduled task details of the cloud desktop. This parameter is being deprecated. Use the TimerGroupId parameter instead.
+	// The details of the scheduled tasks for the cloud desktop. This parameter is being deprecated. Use the TimerGroupId parameter instead.
 	//
 	// if can be null:
 	// true
@@ -198,15 +202,15 @@ type CreateDesktopsRequest struct {
 	//
 	// dg-boyczi8enfyc5****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The custom hostname of the cloud desktop. Settings for this parameter are supported only for cloud desktops that run the Windows operating system in an AD office network.
+	// The custom hostname settings of the cloud desktop. This parameter is supported only for cloud desktops whose operating system type is Windows in an AD office network.
 	//
 	// The naming rules for the hostname are as follows:
 	//
 	// - The hostname must be 2 to 15 characters in length.
 	//
-	// - The hostname can contain uppercase letters, lowercase letters, digits, or hyphens (-). It cannot start or end with a hyphen, contain consecutive hyphens, or consist of only digits.
+	// - The hostname can contain uppercase letters, lowercase letters, digits, or hyphens (-). It cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of only digits.
 	//
-	// When you create multiple cloud desktops, you can use the `name_prefix[begin_number,bits]name_suffix` format to uniformly name the cloud desktops. For example, if you set Hostname to ecd-[1,4]-test, the hostname of the first cloud desktop is ecd-0001-test, the hostname of the second cloud desktop is ecd-0002-test, and so on.
+	// When creating multiple cloud desktops, you can use the `name_prefix[begin_number,bits]name_suffix` format to name multiple cloud desktops uniformly. For example, if Hostname is set to ecd-[1,4]-test, the hostname of the first cloud desktop is ecd-0001-test, the hostname of the second cloud desktop is ecd-0002-test, and so on.
 	//
 	// - `name_prefix`: the prefix of the hostname.
 	//
@@ -218,7 +222,7 @@ type CreateDesktopsRequest struct {
 	//
 	// testhost
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// The purchase parameters for the monthly hourly package.
+	// The parameters for purchasing a monthly hours package.
 	MonthDesktopSetting *CreateDesktopsRequestMonthDesktopSetting `json:"MonthDesktopSetting,omitempty" xml:"MonthDesktopSetting,omitempty" type:"Struct"`
 	// The office network ID.
 	//
@@ -226,7 +230,7 @@ type CreateDesktopsRequest struct {
 	//
 	// cn-hangzhou+dir-387822****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The OU path. If specified, the cloud desktop is added to the corresponding organizational unit (OU) in Active Directory (AD).
+	// The organizational unit (OU) path. After this parameter is specified, the cloud desktop joins the corresponding OU in Active Directory (AD).
 	//
 	// example:
 	//
@@ -234,7 +238,7 @@ type CreateDesktopsRequest struct {
 	OuPath *string `json:"OuPath,omitempty" xml:"OuPath,omitempty"`
 	// The subscription duration of the resource. The unit is specified by `PeriodUnit`. This parameter takes effect and is required only when `ChargeType` is set to `PrePaid`.
 	//
-	// - If `PeriodUnit` is set to `Month`, valid values of this parameter:
+	// - If `PeriodUnit` is set to `Month`, valid values:
 	//
 	//      - 1
 	//
@@ -244,7 +248,7 @@ type CreateDesktopsRequest struct {
 	//
 	//     - 6
 	//
-	// - If `PeriodUnit` is set to `Year`, valid values of this parameter:
+	// - If `PeriodUnit` is set to `Year`, valid values:
 	//
 	//     - 1
 	//
@@ -260,7 +264,7 @@ type CreateDesktopsRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription duration.
+	// The unit of the subscription duration for the billing method.
 	//
 	// example:
 	//
@@ -280,13 +284,13 @@ type CreateDesktopsRequest struct {
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	// The additional parameters for a specific purchase type.
 	PurchaseOptions *CreateDesktopsRequestPurchaseOptions `json:"PurchaseOptions,omitempty" xml:"PurchaseOptions,omitempty" type:"Struct"`
-	// The public network rate limiting rule ID.
+	// The ID of the public network bandwidth throttling rule.
 	//
 	// example:
 	//
 	// qos-52fqmg6kvyro7zu4l
 	QosRuleId *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
+	// The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
 	//
@@ -294,31 +298,44 @@ type CreateDesktopsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID for resource ownership in reseller pattern. This parameter is not required in non-reseller pattern.
+	// The user ID of the resource ownership in reseller pattern. This parameter is not required in non-reseller pattern.
 	//
 	// example:
 	//
 	// 1828644634819902
 	ResellerOwnerUid *int64 `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
-	// The WUYING resource group ID.
+	// The ID of the WUYING resource group.
 	//
 	// example:
 	//
 	// rg-3mtuc28rx95lx****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// > This field is not available for use.
+	// > This field is not publicly available.
 	//
 	// example:
 	//
 	// spn-26c1b7bcrjcI****
 	SavingPlanId *string `json:"SavingPlanId,omitempty" xml:"SavingPlanId,omitempty"`
-	// The WUYING automatic snapshot policy ID.
+	// The ID of the WUYING automatic snapshot policy.
 	//
 	// example:
 	//
 	// sp-28mp6my0l6zow****
 	SnapshotPolicyId *string `json:"SnapshotPolicyId,omitempty" xml:"SnapshotPolicyId,omitempty"`
-	SubPayType       *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
+	// The purchase method of the cloud desktop. Valid values:
+	//
+	// - prePaid: monthly subscription with unlimited duration.
+	//
+	// - postPaid: pay-as-you-go.
+	//
+	// - monthPackage: monthly hours package.
+	//
+	// - jvsAgentPackage: JVS Agent duration package.
+	//
+	// example:
+	//
+	// monthPackage
+	SubPayType *string `json:"SubPayType,omitempty" xml:"SubPayType,omitempty"`
 	// The subnet ID.
 	//
 	// example:
@@ -327,7 +344,7 @@ type CreateDesktopsRequest struct {
 	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
 	// The tags.
 	Tag []*CreateDesktopsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The scheduled task group ID.
+	// The ID of the scheduled task group.
 	//
 	// example:
 	//
@@ -349,13 +366,13 @@ type CreateDesktopsRequest struct {
 	//
 	// username
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// Specifies whether to enable cloud disk encryption.
+	// Specifies whether to enable disk encryption.
 	//
 	// example:
 	//
 	// false
 	VolumeEncryptionEnabled *bool `json:"VolumeEncryptionEnabled,omitempty" xml:"VolumeEncryptionEnabled,omitempty"`
-	// The ID of the Key Management Service (KMS) key used for cloud disk encryption. You can call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
+	// The ID of the Key Management Service (KMS) key used when disk encryption is enabled. Call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
 	//
 	// example:
 	//
@@ -419,6 +436,10 @@ func (s *CreateDesktopsRequest) GetDesktopMemberIp() *string {
 
 func (s *CreateDesktopsRequest) GetDesktopName() *string {
 	return s.DesktopName
+}
+
+func (s *CreateDesktopsRequest) GetDesktopNameModel() *CreateDesktopsRequestDesktopNameModel {
+	return s.DesktopNameModel
 }
 
 func (s *CreateDesktopsRequest) GetDesktopNameSuffix() *bool {
@@ -600,6 +621,11 @@ func (s *CreateDesktopsRequest) SetDesktopName(v string) *CreateDesktopsRequest 
 	return s
 }
 
+func (s *CreateDesktopsRequest) SetDesktopNameModel(v *CreateDesktopsRequestDesktopNameModel) *CreateDesktopsRequest {
+	s.DesktopNameModel = v
+	return s
+}
+
 func (s *CreateDesktopsRequest) SetDesktopNameSuffix(v bool) *CreateDesktopsRequest {
 	s.DesktopNameSuffix = &v
 	return s
@@ -770,6 +796,11 @@ func (s *CreateDesktopsRequest) Validate() error {
 			return err
 		}
 	}
+	if s.DesktopNameModel != nil {
+		if err := s.DesktopNameModel.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.DesktopTimers != nil {
 		for _, item := range s.DesktopTimers {
 			if item != nil {
@@ -825,9 +856,9 @@ type CreateDesktopsRequestBundleModels struct {
 	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
 	// The cloud desktop name. The naming rules are as follows:
 	//
-	// - The name can be up to 64 characters in length.
+	// - The name cannot exceed 64 characters in length.
 	//
-	// - The name must start with a letter or a Chinese character and cannot start with `http://` or `https://`.
+	// - The name must start with a letter (uppercase or lowercase) or a Chinese character. It cannot start with `http://` or `https://`.
 	//
 	// - The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), or hyphens (-).
 	//
@@ -837,15 +868,15 @@ type CreateDesktopsRequestBundleModels struct {
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
 	// The list of users to whom the cloud desktops are assigned.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The custom hostname of the cloud desktop. Settings for this parameter are supported only for cloud desktops that run the Windows operating system in an AD office network.
+	// The custom hostname settings of the cloud desktop. This parameter is supported only for cloud desktops whose operating system type is Windows in an AD office network.
 	//
 	// The naming rules for the hostname are as follows:
 	//
 	// - The hostname must be 2 to 15 characters in length.
 	//
-	// - The hostname can contain uppercase letters, lowercase letters, digits, or hyphens (-). It cannot start or end with a hyphen, contain consecutive hyphens, or consist of only digits.
+	// - The hostname can contain uppercase letters, lowercase letters, digits, or hyphens (-). It cannot start or end with a hyphen, cannot contain consecutive hyphens, and cannot consist of only digits.
 	//
-	// When you create multiple cloud desktops, you can use the `name_prefix[begin_number,bits]name_suffix` format to uniformly name the cloud desktops. For example, if you set Hostname to ecd-[1,4]-test, the hostname of the first cloud desktop is ecd-0001-test, the hostname of the second cloud desktop is ecd-0002-test, and so on.
+	// When creating multiple cloud desktops, you can use the `name_prefix[begin_number,bits]name_suffix` format to name multiple cloud desktops uniformly. For example, if Hostname is set to ecd-[1,4]-test, the hostname of the first cloud desktop is ecd-0001-test, the hostname of the second cloud desktop is ecd-0002-test, and so on.
 	//
 	// - `name_prefix`: the prefix of the hostname.
 	//
@@ -857,13 +888,13 @@ type CreateDesktopsRequestBundleModels struct {
 	//
 	// testhost
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// Specifies whether to enable cloud disk encryption.
+	// Specifies whether to enable disk encryption.
 	//
 	// example:
 	//
 	// false
 	VolumeEncryptionEnabled *bool `json:"VolumeEncryptionEnabled,omitempty" xml:"VolumeEncryptionEnabled,omitempty"`
-	// The ID of the Key Management Service (KMS) key used for cloud disk encryption. You can call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
+	// The ID of the Key Management Service (KMS) key used when disk encryption is enabled. Call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
 	//
 	// example:
 	//
@@ -947,7 +978,7 @@ func (s *CreateDesktopsRequestBundleModels) Validate() error {
 }
 
 type CreateDesktopsRequestDesktopAttachment struct {
-	// The data cloud disk type. The system cloud disk type must be the same as the data cloud disk type. Valid values:
+	// The type of the data cloud disk. The system cloud disk type must be the same as the data cloud disk type. Valid values:
 	//
 	// - cloud_auto: standard SSD ultra cloud disk
 	//
@@ -957,7 +988,7 @@ type CreateDesktopsRequestDesktopAttachment struct {
 	//
 	// cloud_auto
 	DataDiskCategory *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
-	// The performance level (PL) of the ESSD cloud disk. This parameter is required when an ESSD cloud disk is selected. Valid values:
+	// The performance level of the ESSD cloud disk. This parameter is required if you select an ESSD cloud disk. Valid values:
 	//
 	// - PL0
 	//
@@ -967,7 +998,7 @@ type CreateDesktopsRequestDesktopAttachment struct {
 	//
 	// PL0
 	DataDiskPerLevel *string `json:"DataDiskPerLevel,omitempty" xml:"DataDiskPerLevel,omitempty"`
-	// The user cloud disk capacity. Valid values: 40 to 2040 GiB, in increments of 10 GiB.
+	// The capacity of the user disk. Valid values: 40 to 2040 GiB, in increments of 10 GiB.
 	//
 	// example:
 	//
@@ -999,7 +1030,7 @@ type CreateDesktopsRequestDesktopAttachment struct {
 	//
 	// m-39ddhdb0ggzjx*****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The system cloud disk type. The system cloud disk type must be the same as the data cloud disk type. Valid values:
+	// The type of the system cloud disk. The system cloud disk type must be the same as the data cloud disk type. Valid values:
 	//
 	// - cloud_auto: standard SSD ultra cloud disk
 	//
@@ -1009,7 +1040,7 @@ type CreateDesktopsRequestDesktopAttachment struct {
 	//
 	// cloud_auto
 	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	// The performance level (PL) of the ESSD cloud disk. This parameter is required when an ESSD cloud disk is selected. Valid values:
+	// The performance level of the ESSD cloud disk. This parameter is required if you select an ESSD cloud disk. Valid values:
 	//
 	// - PL0
 	//
@@ -1019,7 +1050,7 @@ type CreateDesktopsRequestDesktopAttachment struct {
 	//
 	// PL0
 	SystemDiskPerLevel *string `json:"SystemDiskPerLevel,omitempty" xml:"SystemDiskPerLevel,omitempty"`
-	// The system cloud disk capacity. Valid values: 60 to 500 GiB, in increments of 10 GiB.
+	// The capacity of the system cloud disk. Valid values: 40 to 2040 GiB, in increments of 10 GiB.
 	//
 	// example:
 	//
@@ -1120,6 +1151,32 @@ func (s *CreateDesktopsRequestDesktopAttachment) Validate() error {
 	return dara.Validate(s)
 }
 
+type CreateDesktopsRequestDesktopNameModel struct {
+	// Specifies whether to automatically append a suffix to the cloud desktop name when creating multiple cloud desktops in a batch. Default value: true.
+	DesktopNameIsSuffix *bool `json:"DesktopNameIsSuffix,omitempty" xml:"DesktopNameIsSuffix,omitempty"`
+}
+
+func (s CreateDesktopsRequestDesktopNameModel) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDesktopsRequestDesktopNameModel) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDesktopsRequestDesktopNameModel) GetDesktopNameIsSuffix() *bool {
+	return s.DesktopNameIsSuffix
+}
+
+func (s *CreateDesktopsRequestDesktopNameModel) SetDesktopNameIsSuffix(v bool) *CreateDesktopsRequestDesktopNameModel {
+	s.DesktopNameIsSuffix = &v
+	return s
+}
+
+func (s *CreateDesktopsRequestDesktopNameModel) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateDesktopsRequestDesktopTimers struct {
 	// Specifies whether to allow end users to configure scheduled tasks.
 	//
@@ -1129,19 +1186,19 @@ type CreateDesktopsRequestDesktopTimers struct {
 	AllowClientSetting *bool `json:"AllowClientSetting,omitempty" xml:"AllowClientSetting,omitempty"`
 	// The cron expression of the scheduled task.
 	//
-	// 	Notice: Specify the time in UTC. For example, to schedule a task at 00:00 (UTC+8) every day, set the value to 0 0 16 ? 	- 1,2,3,4,5,6,7.</notice>
+	// 	Notice: The time must be specified in UTC. For example, to specify 00:00 (UTC+8) every day, use 0 0 16 ? 	- 1,2,3,4,5,6,7.</notice>
 	//
 	// example:
 	//
 	// 0 40 7 ? 	- 1,2,3,4,5,6,7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// Specifies whether to forcefully execute the task.
+	// Specifies whether to forcefully execute the scheduled task.
 	//
 	// example:
 	//
 	// true
 	Enforce *bool `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
-	// The time interval, in minutes.
+	// The time interval. Unit: minutes.
 	//
 	// example:
 	//
@@ -1243,19 +1300,19 @@ func (s *CreateDesktopsRequestDesktopTimers) Validate() error {
 }
 
 type CreateDesktopsRequestMonthDesktopSetting struct {
-	// > This field is not available for use.
+	// > This field is not publicly available.
 	//
 	// example:
 	//
 	// null
 	BuyerId *int64 `json:"BuyerId,omitempty" xml:"BuyerId,omitempty"`
-	// > This field is not available for use.
+	// > This field is not publicly available.
 	//
 	// example:
 	//
 	// null
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The package option when purchasing a monthly hourly package. Valid values: 120, 250, and 360.
+	// The plan selected when purchasing a monthly hours package. Valid values: 120, 250, and 360.
 	//
 	// example:
 	//
@@ -1303,7 +1360,25 @@ func (s *CreateDesktopsRequestMonthDesktopSetting) Validate() error {
 }
 
 type CreateDesktopsRequestPurchaseOptions struct {
-	// The monthly credit package for purchasing Agent resources. Valid values: 200, 1600, and 4000.
+	// The WUYING credit package quota.
+	//
+	// example:
+	//
+	// 10000
+	CreditPackageAmountSpec *int32 `json:"CreditPackageAmountSpec,omitempty" xml:"CreditPackageAmountSpec,omitempty"`
+	// The WUYING credit package duration.
+	//
+	// example:
+	//
+	// 1
+	CreditPackagePeriod *int32 `json:"CreditPackagePeriod,omitempty" xml:"CreditPackagePeriod,omitempty"`
+	// The unit of the credit package duration.
+	//
+	// example:
+	//
+	// Month
+	CreditPackagePeriodUnit *string `json:"CreditPackagePeriodUnit,omitempty" xml:"CreditPackagePeriodUnit,omitempty"`
+	// The monthly credit package, which is used to select a credit plan when purchasing Agent resources. Valid values: 200, 1600, and 4000.
 	//
 	// example:
 	//
@@ -1319,8 +1394,35 @@ func (s CreateDesktopsRequestPurchaseOptions) GoString() string {
 	return s.String()
 }
 
+func (s *CreateDesktopsRequestPurchaseOptions) GetCreditPackageAmountSpec() *int32 {
+	return s.CreditPackageAmountSpec
+}
+
+func (s *CreateDesktopsRequestPurchaseOptions) GetCreditPackagePeriod() *int32 {
+	return s.CreditPackagePeriod
+}
+
+func (s *CreateDesktopsRequestPurchaseOptions) GetCreditPackagePeriodUnit() *string {
+	return s.CreditPackagePeriodUnit
+}
+
 func (s *CreateDesktopsRequestPurchaseOptions) GetMonthlyCredits() *int32 {
 	return s.MonthlyCredits
+}
+
+func (s *CreateDesktopsRequestPurchaseOptions) SetCreditPackageAmountSpec(v int32) *CreateDesktopsRequestPurchaseOptions {
+	s.CreditPackageAmountSpec = &v
+	return s
+}
+
+func (s *CreateDesktopsRequestPurchaseOptions) SetCreditPackagePeriod(v int32) *CreateDesktopsRequestPurchaseOptions {
+	s.CreditPackagePeriod = &v
+	return s
+}
+
+func (s *CreateDesktopsRequestPurchaseOptions) SetCreditPackagePeriodUnit(v string) *CreateDesktopsRequestPurchaseOptions {
+	s.CreditPackagePeriodUnit = &v
+	return s
 }
 
 func (s *CreateDesktopsRequestPurchaseOptions) SetMonthlyCredits(v int32) *CreateDesktopsRequestPurchaseOptions {

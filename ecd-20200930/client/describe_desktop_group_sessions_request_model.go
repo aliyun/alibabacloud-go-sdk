@@ -36,7 +36,7 @@ type iDescribeDesktopGroupSessionsRequest interface {
 }
 
 type DescribeDesktopGroupSessionsRequest struct {
-	// The IDs of shared desktop groups.
+	// The list of shared desktop group IDs.
 	DesktopGroupIds []*string `json:"DesktopGroupIds,omitempty" xml:"DesktopGroupIds,omitempty" type:"Repeated"`
 	// The name of the shared desktop.
 	//
@@ -44,57 +44,57 @@ type DescribeDesktopGroupSessionsRequest struct {
 	//
 	// ecd-4oyi32wmrctgx****
 	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
-	// The end of the time range to query.
+	// The end time of the query. The time is in the ISO 8601 standard (UTC).
 	//
 	// example:
 	//
 	// "2022-08-31T06:56:45Z"
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The user ID of the terminal that connects to the session.
+	// The ID of the end user connected to the session.
 	//
 	// example:
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// Whether to supplement terminal information.
+	// Specifies whether to include terminal information.
 	FillTerminalInfo *bool `json:"FillTerminalInfo,omitempty" xml:"FillTerminalInfo,omitempty"`
-	// The language of the response.
+	// The language type of the returned information.
 	//
 	// example:
 	//
 	// zh-CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The token for the next page.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6ljnKKgSRjo8yXAIT5QSvkU
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The type of the session.
+	// The session type.
 	//
 	// example:
 	//
 	// 1
 	OwnType *int32 `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
-	// The ID of the region. You can call the [](t2167755.xdita#)operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the session.
+	// The connection status.
 	//
 	// example:
 	//
 	// Connected
 	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
-	// The beginning of the time range to query.
+	// The start time of the query. The time is in the ISO 8601 standard (UTC).
 	//
 	// example:
 	//

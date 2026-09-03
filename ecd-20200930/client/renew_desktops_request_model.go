@@ -42,7 +42,7 @@ type RenewDesktopsRequest struct {
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// A list of WUYING Workspace instance IDs. You can renew only instances purchased on a monthly basis.
+	// The list of cloud computer IDs. Only monthly subscription cloud computers can be renewed.
 	//
 	// This parameter is required.
 	//
@@ -50,11 +50,11 @@ type RenewDesktopsRequest struct {
 	//
 	// ecd-ia2zw38bi6cm7****
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// The renewal duration. Valid values depend on the value of `PeriodUnit`.
+	// The renewal duration. Valid values of this parameter are determined by the value of the `PeriodUnit` parameter.
 	//
-	// - If `PeriodUnit` is `Month`, valid values are 1, 2, 3, and 6.
+	// - If `PeriodUnit` is set to `Month`, valid values are 1, 2, 3, and 6.
 	//
-	// - If `PeriodUnit` is `Year`, valid values are 1 to 5.
+	// - If `PeriodUnit` is set to `Year`, valid values are 1 to 5.
 	//
 	// Default value: 1.
 	//
@@ -62,7 +62,7 @@ type RenewDesktopsRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit for the renewal duration, which applies to the `Period` parameter.
+	// The unit of the renewal duration, which is the unit of the `Period` parameter.
 	//
 	// example:
 	//
@@ -74,20 +74,25 @@ type RenewDesktopsRequest struct {
 	//
 	// 50003098015****
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The region ID. Call [DescribeRegions](~~DescribeRegions~~) to list the regions where WUYING Workspace is available.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
-	// > This field is not available for public use.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID for resource ownership in the reselling pattern. You do not need to specify this parameter if you are not using the reselling pattern.
 	//
 	// example:
 	//
-	// null
+	// 1422724566551XXX
+	ResellerOwnerUid *int64 `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
+	// > This parameter is not publicly available.
+	//
+	// example:
+	//
+	// Desktop
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 

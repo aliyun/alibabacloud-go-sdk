@@ -22,7 +22,7 @@ type iDeleteCloudDriveGroupsResponseBody interface {
 }
 
 type DeleteCloudDriveGroupsResponseBody struct {
-	// The result of the operation. A value of success indicates that the operation is successful. If the operation failed, an error message is returned.
+	// The operation result. The value `success` indicates success. Otherwise, an error message is returned.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DeleteCloudDriveGroupsResponseBody struct {
 	//
 	// []
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message returned. This parameter is not returned if the value of Code is `success`.
+	// The error message. This parameter is not returned if Code is `success`.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DeleteCloudDriveGroupsResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true: The request is successful. false: The request fails.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//

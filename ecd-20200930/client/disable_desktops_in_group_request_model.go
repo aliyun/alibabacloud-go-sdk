@@ -18,7 +18,7 @@ type iDisableDesktopsInGroupRequest interface {
 }
 
 type DisableDesktopsInGroupRequest struct {
-	// The ID of the cloud computer share.
+	// The ID of the shared cloud computer group.
 	//
 	// This parameter is required.
 	//
@@ -26,11 +26,11 @@ type DisableDesktopsInGroupRequest struct {
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The IDs of the cloud computers.
+	// The list of cloud computer IDs.
 	//
 	// This parameter is required.
 	DesktopIds []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
-	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

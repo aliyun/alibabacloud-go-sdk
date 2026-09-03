@@ -47,6 +47,10 @@ type DescribeGlobalTimerRecordsRequest struct {
 	// ccg-****
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
 	// The list of cloud computer IDs.
+	//
+	// example:
+	//
+	// SUCCEED
 	DesktopIds []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
 	// The display result name.
 	//
@@ -77,7 +81,12 @@ type DescribeGlobalTimerRecordsRequest struct {
 	// example:
 	//
 	// cn-shanghai
-	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The list of resource types. If empty, all resource types are queried.
+	//
+	// example:
+	//
+	// true
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 	// Filters results by execution result.
 	//
@@ -104,7 +113,16 @@ type DescribeGlobalTimerRecordsRequest struct {
 	// RUNNING
 	TimerResult *string `json:"TimerResult,omitempty" xml:"TimerResult,omitempty"`
 	// The list of scheduled tasks.
-	TimerTypes      []*string `json:"TimerTypes,omitempty" xml:"TimerTypes,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// cn-shanghai
+	TimerTypes []*string `json:"TimerTypes,omitempty" xml:"TimerTypes,omitempty" type:"Repeated"`
+	// The list of Wuying server IDs.
+	//
+	// example:
+	//
+	// FAILED
 	WuyingServerIds []*string `json:"WuyingServerIds,omitempty" xml:"WuyingServerIds,omitempty" type:"Repeated"`
 }
 

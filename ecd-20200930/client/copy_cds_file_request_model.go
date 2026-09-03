@@ -30,7 +30,7 @@ type iCopyCdsFileRequest interface {
 }
 
 type CopyCdsFileRequest struct {
-	// Specifies whether to automatically rename the file when a file with the same name exists in the destination folder.
+	// Specifies whether to automatically rename the file when a file with the same name already exists in the destination folder.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type CopyCdsFileRequest struct {
 	//
 	// 640985a0ca2f71f489d2497682ca0bf468de****
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// The ID of the personal drive (which can be obtained from the `UserId` response parameter of the [DescribeCloudDriveUsers](https://help.aliyun.com/document_detail/2357237.html) operation) or the team space ID (which can be obtained from the `GroupId` response parameter of the [DescribeCloudDriveGroups](https://help.aliyun.com/document_detail/609896.html) operation) at the copy destination.
+	// The ID of the personal drive (which can be obtained from the UserId response parameter of the [DescribeCloudDriveUsers](https://help.aliyun.com/document_detail/2357237.html) operation) or the team space ID (which can be obtained from the GroupId response parameter of the [DescribeCloudDriveGroups](https://help.aliyun.com/document_detail/609896.html) operation) at the destination.
 	//
-	// > If both `FileReceiverId` and `FileReceiverType` are empty, the file is copied to the personal drive where the file currently resides by default.
+	// > If both FileReceiverId and FileReceiverType are empty, the file is copied to the personal drive where the file currently resides by default.
 	//
 	// example:
 	//
 	// user02
 	FileReceiverId *string `json:"FileReceiverId,omitempty" xml:"FileReceiverId,omitempty"`
-	// The type of space to which the file belongs.
+	// The type of the space to which the file belongs.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type CopyCdsFileRequest struct {
 	//
 	// cg-hs3i1w39o68ma****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the parent folder at the copy destination. You can call [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) to query the ID of the folder. Set this parameter to `root` if you want to copy the file to the root directory.
+	// The ID of the parent folder at the destination. You can call [ListCdsFiles](https://help.aliyun.com/document_detail/2247622.html) to query the ID of the folder. Set this parameter to `root` if you want to copy the file or folder to the root directory.
 	//
 	// This parameter is required.
 	//

@@ -38,7 +38,7 @@ type TransferTaskApprovalCallbackRequest struct {
 	//
 	// Approved
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The ID of the transfer task.
+	// The ID of the file transfer task.
 	//
 	// example:
 	//

@@ -38,13 +38,13 @@ type iDescribeRecordFileRequest interface {
 }
 
 type DescribeRecordFileRequest struct {
-	// The ID of the cloud desktop.
+	// The Cloud Desktop ID.
 	//
 	// example:
 	//
 	// ecd-7w78ozhjcwa3u****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The end of the time range to query.
+	// The end time of the query. Format: yyyyMMddHHmmss.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ type DescribeRecordFileRequest struct {
 	//
 	// Task7
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The sorting basis. If you do not specify this parameter, the results are sorted by screen recording start time in descending order. Valid value:
+	// The field used for sorting. If this parameter is not specified, the results are sorted by recording start time in descending order. Valid values:
 	//
-	// - `startTime`: the start time of a screen recording.
+	// - startTime: recording start time.
 	//
 	// example:
 	//
 	// startTime
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The sorting order. Valid values:
+	// The sort order. Valid values:
 	//
-	// - `asc`: ascending
+	// - asc: ascending order.
 	//
-	// - `desc`: descending
+	// - desc: descending order.
 	//
 	// example:
 	//
@@ -86,36 +86,41 @@ type DescribeRecordFileRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The maximum number of rows per page in a paging query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the screen recording. Valid values:
+	// The type of the screen recording file. Valid values:
 	//
-	// - `alltime`: full-time recording
+	// - alltime: full-time recording.
 	//
-	// - `period`: recording at intervals
+	// - period: interval recording.
 	//
-	// - `event`: event-triggered recording
+	// - event: event-based recording.
 	//
-	// - `session`: session-based recording
+	// - session: session recording.
 	//
 	// example:
 	//
 	// alltime
 	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
-	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions that are supported by Elastic Desktop Service.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource type.
+	//
+	// example:
+	//
+	// CLOUD_DESKTOP
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The beginning of the time range to query.
+	// The start time of the query. Format: yyyyMMddHHmmss.
 	//
 	// example:
 	//
@@ -123,9 +128,9 @@ type DescribeRecordFileRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the screen recording file. Valid values:
 	//
-	// - `0`: The file is uploaded.
+	// - 0: uploaded.
 	//
-	// - `1`: The file is being uploaded.
+	// - 1: uploading.
 	//
 	// example:
 	//

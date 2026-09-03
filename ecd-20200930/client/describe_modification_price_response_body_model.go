@@ -231,7 +231,7 @@ type DescribeModificationPriceResponseBodyPriceInfoPricePromotions struct {
 	//
 	// example:
 	//
-	// New product launch with exclusive discounts.
+	// New product launch with exclusive discounts
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
 	// The promotion ID.
 	//
@@ -315,7 +315,7 @@ type DescribeModificationPriceResponseBodyPriceInfoRules struct {
 	//
 	// example:
 	//
-	// Get 15% off the list price for a one-year purchase.
+	// Get a 15% discount off the list price for a one-year purchase
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The rule ID.
 	//

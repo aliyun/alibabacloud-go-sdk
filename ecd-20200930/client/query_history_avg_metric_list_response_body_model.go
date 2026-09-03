@@ -18,7 +18,7 @@ type iQueryHistoryAvgMetricListResponseBody interface {
 }
 
 type QueryHistoryAvgMetricListResponseBody struct {
-	// The list of average metric data.
+	// The list of average values of monitoring metrics.
 	AvgMetricList []*QueryHistoryAvgMetricListResponseBodyAvgMetricList `json:"AvgMetricList,omitempty" xml:"AvgMetricList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type QueryHistoryAvgMetricListResponseBody struct {
 	//
 	// 269BDB16-2CD8-4865-84BD-11C40BC2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records that meet the conditions.
 	//
 	// example:
 	//
@@ -89,13 +89,13 @@ type QueryHistoryAvgMetricListResponseBodyAvgMetricList struct {
 	//
 	// 20
 	AvgValue *float32 `json:"AvgValue,omitempty" xml:"AvgValue,omitempty"`
-	// The billing method of the desktop. Valid values:
+	// The billing method of the cloud desktop. Valid values:
 	//
-	// - `PostPaid`: pay-as-you-go
+	// - PostPaid: Pay-as-you-go.
 	//
-	// - `PrePaid`: subscription
+	// - PrePaid: Subscription.
 	//
-	// Default value: `PostPaid`.
+	// Default value: PostPaid.
 	//
 	// example:
 	//
@@ -107,53 +107,53 @@ type QueryHistoryAvgMetricListResponseBodyAvgMetricList struct {
 	//
 	// 4
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The desktop group ID.
+	// The cloud desktop pool ID.
 	//
 	// example:
 	//
 	// dg-bogo95eob5avnis9k
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// **The desktop ID.**
+	// The desktop ID.
 	//
 	// example:
 	//
 	// ecd-bx9i0nsjd3zmibnzq
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// **The desktop name.**
+	// The desktop name.
 	//
 	// example:
 	//
 	// C-051
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The status of the desktop. Valid values:
+	// The cloud desktop status. Valid values:
 	//
-	// - `Stopped`: The desktop is stopped.
+	// - Stopped: Stopped.
 	//
-	// - `Starting`: The desktop is being started.
+	// - Starting: Starting.
 	//
-	// - `Rebuilding`: The desktop is being rebuilt.
+	// - Rebuilding: Rebuilding.
 	//
-	// - `Running`: The desktop is running.
+	// - Running: Running.
 	//
-	// - `Stopping`: The desktop is being stopped.
+	// - Stopping: Stopping.
 	//
-	// - `Expired`: The desktop has expired.
+	// - Expired: Expired.
 	//
-	// - `Deleted`: The desktop has been deleted.
+	// - Deleted: Deleted.
 	//
-	// - `Pending`: The desktop is in a pending state.
+	// - Pending: Pending.
 	//
 	// example:
 	//
 	// Running
 	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
-	// The desktop type.
+	// The desktop specification.
 	//
 	// example:
 	//
 	// eds.enterprise_office.8c16g
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	// The IDs of the authorized end users.
+	// The list of authorized users.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
 	// The GPU memory size.
 	//
@@ -167,19 +167,19 @@ type QueryHistoryAvgMetricListResponseBodyAvgMetricList struct {
 	//
 	// 0
 	ManagementFlag *string `json:"ManagementFlag,omitempty" xml:"ManagementFlag,omitempty"`
-	// The memory size, in MB.
+	// The memory size.
 	//
 	// example:
 	//
 	// 2048
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// Whether the desktop is a multi-user shared desktop.
+	// Indicates whether the cloud desktop is a multi-resource shared type.
 	//
 	// example:
 	//
 	// true
 	MultiResource *bool `json:"MultiResource,omitempty" xml:"MultiResource,omitempty"`
-	// The type of the system image.
+	// The system image type.
 	//
 	// example:
 	//
@@ -191,7 +191,7 @@ type QueryHistoryAvgMetricListResponseBodyAvgMetricList struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// A list of session details.
+	// The list of session information.
 	Sessions []*QueryHistoryAvgMetricListResponseBodyAvgMetricListSessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
 	// The payment type.
 	//
@@ -376,25 +376,25 @@ func (s *QueryHistoryAvgMetricListResponseBodyAvgMetricList) Validate() error {
 }
 
 type QueryHistoryAvgMetricListResponseBodyAvgMetricListSessions struct {
-	// The ID of the end user.
+	// The end user ID.
 	//
 	// example:
 	//
 	// testUser
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The time when the session was created.
+	// The time when the session was created. The time is in the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2026-04-17T14:51:53Z
 	EstablishmentTime *string `json:"EstablishmentTime,omitempty" xml:"EstablishmentTime,omitempty"`
-	// The external username of the end user.
+	// The external username.
 	//
 	// example:
 	//
 	// testUserName
 	ExternalUserName *string `json:"ExternalUserName,omitempty" xml:"ExternalUserName,omitempty"`
-	// The nickname of the end user.
+	// The nickname of the user.
 	//
 	// example:
 	//

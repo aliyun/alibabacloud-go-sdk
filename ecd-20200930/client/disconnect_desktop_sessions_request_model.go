@@ -18,13 +18,13 @@ type iDisconnectDesktopSessionsRequest interface {
 }
 
 type DisconnectDesktopSessionsRequest struct {
-	// Specifies whether to perform precheck. If you perform precheck, the system does not disconnect from desktop sessions. Only the sessions that do not meet specific conditions are returned.
+	// Specifies whether to perform a dry run. If a dry run is performed, the disconnect operation is not actually executed. Only the sessions that do not meet the execution conditions are returned.
 	//
 	// example:
 	//
 	// true
 	PreCheck *bool `json:"PreCheck,omitempty" xml:"PreCheck,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. Call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -87,13 +87,13 @@ func (s *DisconnectDesktopSessionsRequest) Validate() error {
 }
 
 type DisconnectDesktopSessionsRequestSessions struct {
-	// The cloud desktop ID.
+	// The ID of the cloud computer to which the end user is connected.
 	//
 	// example:
 	//
 	// ecd-90g15fkhsxxxn****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The end user ID.
+	// The ID of the end user who is connected to the session.
 	//
 	// example:
 	//

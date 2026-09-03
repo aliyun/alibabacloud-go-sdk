@@ -83,7 +83,11 @@ func (s *DescribeNASFileSystemsResponseBody) Validate() error {
 }
 
 type DescribeNASFileSystemsResponseBodyFileSystems struct {
-	// > This field is not publicly available.
+	// Indicates whether operations on user directories (adding users, deleting data) are supported.
+	//
+	// example:
+	//
+	// false
 	AllowOperateUserDrive *bool `json:"AllowOperateUserDrive,omitempty" xml:"AllowOperateUserDrive,omitempty"`
 	// The list of cloud application delivery group objects bound to the UPM-supported NAS file system.
 	AppInstanceGroups []*DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups `json:"AppInstanceGroups,omitempty" xml:"AppInstanceGroups,omitempty" type:"Repeated"`
@@ -103,7 +107,7 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	//
 	// 2021-05-10T11:39Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The NAS file system description.
+	// The description of the NAS file system.
 	//
 	// example:
 	//
@@ -123,13 +127,13 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	//
 	// 04f314****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The NAS file system name.
+	// The name of the NAS file system.
 	//
 	// example:
 	//
 	// testNAS
 	FileSystemName *string `json:"FileSystemName,omitempty" xml:"FileSystemName,omitempty"`
-	// The NAS file system status.
+	// The status of the NAS file system.
 	//
 	// example:
 	//
@@ -159,13 +163,13 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	//
 	// Active
 	MountTargetStatus *string `json:"MountTargetStatus,omitempty" xml:"MountTargetStatus,omitempty"`
-	// The office network ID.
+	// The office network ID (deprecated).
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The office network name.
+	// The office network name (deprecated).
 	//
 	// example:
 	//
@@ -179,8 +183,17 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	// example:
 	//
 	// false
-	ProfileCompatible *bool   `json:"ProfileCompatible,omitempty" xml:"ProfileCompatible,omitempty"`
-	ProtocolType      *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	ProfileCompatible *bool `json:"ProfileCompatible,omitempty" xml:"ProfileCompatible,omitempty"`
+	// The protocol type of the file system. Valid values:
+	//
+	// - NFS: NFS file protocol.
+	//
+	// - SMB: SMB file protocol.
+	//
+	// example:
+	//
+	// SMB
+	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -206,7 +219,7 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	//
 	// false
 	SupportAcl *bool `json:"SupportAcl,omitempty" xml:"SupportAcl,omitempty"`
-	// The zone.
+	// The zone ID.
 	//
 	// example:
 	//

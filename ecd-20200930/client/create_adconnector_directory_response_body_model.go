@@ -20,7 +20,7 @@ type iCreateADConnectorDirectoryResponseBody interface {
 }
 
 type CreateADConnectorDirectoryResponseBody struct {
-	// The details of AD connectors.
+	// The information about AD Connectors.
 	AdConnectors []*CreateADConnectorDirectoryResponseBodyAdConnectors `json:"AdConnectors,omitempty" xml:"AdConnectors,omitempty" type:"Repeated"`
 	// The ID of the AD directory.
 	//
@@ -28,7 +28,7 @@ type CreateADConnectorDirectoryResponseBody struct {
 	//
 	// cn-hangzhou+dir-gx2x1dhsmu52rd****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *CreateADConnectorDirectoryResponseBody) Validate() error {
 }
 
 type CreateADConnectorDirectoryResponseBodyAdConnectors struct {
-	// The connection address.
+	// The endpoint.
 	//
 	// example:
 	//

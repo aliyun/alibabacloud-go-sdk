@@ -18,7 +18,7 @@ type iDescribeVirtualMFADevicesResponseBody interface {
 }
 
 type DescribeVirtualMFADevicesResponseBody struct {
-	// The token to retrieve the next page of results. If this parameter is empty, no more results are available.
+	// The token for the next query. If NextToken is empty, no more results exist.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DescribeVirtualMFADevicesResponseBody struct {
 	//
 	// FB550AAB-FB36-4A91-93F6-F4374AF65403
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of virtual MFA devices.
+	// The information about virtual MFA devices.
 	VirtualMFADevices []*DescribeVirtualMFADevicesResponseBodyVirtualMFADevices `json:"VirtualMFADevices,omitempty" xml:"VirtualMFADevices,omitempty" type:"Repeated"`
 }
 
@@ -83,38 +83,39 @@ func (s *DescribeVirtualMFADevicesResponseBody) Validate() error {
 }
 
 type DescribeVirtualMFADevicesResponseBodyVirtualMFADevices struct {
+	// The AD domain user information.
 	AdUser *DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser `json:"AdUser,omitempty" xml:"AdUser,omitempty" type:"Struct"`
-	// The number of consecutive failed attempts to bind or authenticate the virtual MFA device.
+	// The number of consecutive failures to bind or authenticate the virtual MFA device.
 	//
 	// example:
 	//
 	// 1
 	ConsecutiveFails *int32 `json:"ConsecutiveFails,omitempty" xml:"ConsecutiveFails,omitempty"`
-	// > This parameter is in private preview.
+	// > This parameter is in invitational preview and is not publicly available.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-gx2x1dhsmu52rd****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The AD username of the bound user.
+	// The username of the AD account that uses the virtual MFA device.
 	//
 	// example:
 	//
 	// usertest
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The time when the virtual MFA device was enabled. The time is in the `YYYY-MM-DDThh:mm:ssZ` format and in UTC, as specified by the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard.
+	// The time when the virtual MFA device was enabled. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2020-12-20T14:52:28Z
 	GmtEnabled *string `json:"GmtEnabled,omitempty" xml:"GmtEnabled,omitempty"`
-	// The time when the locked virtual MFA device is automatically unlocked. The time is in the `YYYY-MM-DDThh:mm:ssZ` format and in UTC, as specified by the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard.
+	// The automatic unlock time after the virtual MFA device is locked. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2020-12-21T15:21:28Z
 	GmtUnlock *string `json:"GmtUnlock,omitempty" xml:"GmtUnlock,omitempty"`
-	// The workspace ID.
+	// The office network ID.
 	//
 	// example:
 	//
@@ -233,9 +234,29 @@ func (s *DescribeVirtualMFADevicesResponseBodyVirtualMFADevices) Validate() erro
 }
 
 type DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser struct {
-	DisplayName       *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	DisplayNameNew    *string `json:"DisplayNameNew,omitempty" xml:"DisplayNameNew,omitempty"`
-	EndUser           *string `json:"EndUser,omitempty" xml:"EndUser,omitempty"`
+	// The display name of the AD account.
+	//
+	// example:
+	//
+	// aduser
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The new display name of the user.
+	//
+	// example:
+	//
+	// 张三
+	DisplayNameNew *string `json:"DisplayNameNew,omitempty" xml:"DisplayNameNew,omitempty"`
+	// The username of the AD account.
+	//
+	// example:
+	//
+	// aduser
+	EndUser *string `json:"EndUser,omitempty" xml:"EndUser,omitempty"`
+	// The user principal name (UPN).
+	//
+	// example:
+	//
+	// alice@example.com
 	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 

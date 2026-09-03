@@ -34,7 +34,7 @@ type iDescribeDesktopsInGroupResponseBody interface {
 }
 
 type DescribeDesktopsInGroupResponseBody struct {
-	// The token to retrieve the next page of results. If this parameter is not returned, all results have been retrieved.
+	// The token for the next query.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeDesktopsInGroupResponseBody struct {
 	//
 	// 100
 	OnlinePrePaidDesktopsCount *int32 `json:"OnlinePrePaidDesktopsCount,omitempty" xml:"OnlinePrePaidDesktopsCount,omitempty"`
-	// A list of subscription cloud desktops.
+	// The list of subscription cloud desktops.
 	PaidDesktops []*DescribeDesktopsInGroupResponseBodyPaidDesktops `json:"PaidDesktops,omitempty" xml:"PaidDesktops,omitempty" type:"Repeated"`
 	// The total number of subscription cloud desktops.
 	//
@@ -54,7 +54,7 @@ type DescribeDesktopsInGroupResponseBody struct {
 	//
 	// 10
 	PaidDesktopsCount *int32 `json:"PaidDesktopsCount,omitempty" xml:"PaidDesktopsCount,omitempty"`
-	// A list of pay-as-you-go cloud desktops.
+	// The list of pay-as-you-go cloud desktops.
 	PostPaidDesktops []*DescribeDesktopsInGroupResponseBodyPostPaidDesktops `json:"PostPaidDesktops,omitempty" xml:"PostPaidDesktops,omitempty" type:"Repeated"`
 	// The total number of pay-as-you-go cloud desktops.
 	//
@@ -62,7 +62,7 @@ type DescribeDesktopsInGroupResponseBody struct {
 	//
 	// 10
 	PostPaidDesktopsCount *int32 `json:"PostPaidDesktopsCount,omitempty" xml:"PostPaidDesktopsCount,omitempty"`
-	// The total billed amount for the pay-as-you-go cloud desktops.
+	// The total billing amount of pay-as-you-go cloud desktops.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type DescribeDesktopsInGroupResponseBody struct {
 	//
 	// 100
 	RunningPrePaidDesktopsCount *int32 `json:"RunningPrePaidDesktopsCount,omitempty" xml:"RunningPrePaidDesktopsCount,omitempty"`
-	// Deprecated. This parameter is misspelled. Use `StoppedPrePaidDesktopsCount` instead.
+	// The number of stopped subscription cloud desktops.
 	//
 	// example:
 	//
@@ -224,25 +224,25 @@ func (s *DescribeDesktopsInGroupResponseBody) Validate() error {
 }
 
 type DescribeDesktopsInGroupResponseBodyPaidDesktops struct {
-	// The connection status of the cloud desktop.
+	// The connection status.
 	//
 	// example:
 	//
 	// Connected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// The ID of the cloud desktop.
+	// The cloud desktop ID.
 	//
 	// example:
 	//
 	// ud-7ftf5b6yu77b0****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The name of the cloud desktop.
+	// The cloud desktop name.
 	//
 	// example:
 	//
 	// DemoComputer
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The status of the cloud desktop.
+	// The cloud desktop status.
 	//
 	// example:
 	//
@@ -254,25 +254,29 @@ type DescribeDesktopsInGroupResponseBodyPaidDesktops struct {
 	//
 	// SYSTEM
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The ID of the authorized end user.
+	// The authorized user.
 	//
 	// example:
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The IDs of end users connected to the cloud desktop. If no end user is connected, the array is empty.
+	// The list of currently connected user IDs. This value is empty if the desktop is not connected.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The name of the authorized end user.
+	// The authorized username.
 	//
 	// example:
 	//
 	// alice
 	EndUserName *string `json:"EndUserName,omitempty" xml:"EndUserName,omitempty"`
-	// The usernames of end users connected to the cloud desktop. If no end user is connected, the array is empty.
+	// The list of current usernames. This value is empty if the desktop is not connected.
 	EndUserNames []*string `json:"EndUserNames,omitempty" xml:"EndUserNames,omitempty" type:"Repeated"`
-	// The expiration time of the subscription cloud desktop.
+	// The time when the cloud desktop expires. This value is returned only for cloud desktops that use the subscription billable methods. The time is in the ISO 8601 format (UTC).
+	//
+	// example:
+	//
+	// 2021-12-31T15:59Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// The image version.
+	// The image version information.
 	//
 	// example:
 	//
@@ -302,39 +306,39 @@ type DescribeDesktopsInGroupResponseBodyPaidDesktops struct {
 	//
 	// NoFlag
 	ManagementFlag *string `json:"ManagementFlag,omitempty" xml:"ManagementFlag,omitempty"`
-	// The management flags.
+	// The list of management flags.
 	ManagementFlags []*string `json:"ManagementFlags,omitempty" xml:"ManagementFlags,omitempty" type:"Repeated"`
-	// The IP address of the secondary elastic network interface of the instance.
+	// The IP address of the secondary ENI of the instance.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	MemberEniIp *string `json:"MemberEniIp,omitempty" xml:"MemberEniIp,omitempty"`
-	// The type of the operating system.
+	// The operating system type.
 	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The IP address of the primary network interface of the instance.
+	// The IP address of the primary ENI of the instance.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	PrimaryEniIp *string `json:"PrimaryEniIp,omitempty" xml:"PrimaryEniIp,omitempty"`
-	// The session protocol.
+	// The protocol type.
 	//
 	// example:
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The time when the cloud desktop was last reset.
+	// The reset time of the cloud desktop.
 	//
 	// example:
 	//
 	// 2021-03-03 08:48:08
 	ResetTime *string `json:"ResetTime,omitempty" xml:"ResetTime,omitempty"`
-	// The size of the system disk, in GiB.
+	// The system cloud disk size. Unit: GiB.
 	//
 	// example:
 	//
@@ -553,37 +557,39 @@ func (s *DescribeDesktopsInGroupResponseBodyPaidDesktops) Validate() error {
 }
 
 type DescribeDesktopsInGroupResponseBodyPostPaidDesktops struct {
-	// The connection status of the cloud desktop.
+	// The connection status.
 	//
 	// example:
 	//
 	// Connected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// The retention period of the cloud desktop, in milliseconds.
+	// The retention duration. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 4153958447
 	CreateDuration *string `json:"CreateDuration,omitempty" xml:"CreateDuration,omitempty"`
-	// The creation time of the cloud desktop.
+	// The creation time.
+	//
+	// The time is displayed in UTC in the ISO 8601 standard format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2022-01-21T06:34:57Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the cloud desktop.
+	// The cloud desktop ID.
 	//
 	// example:
 	//
 	// ud-2i8qxpv6t1a07****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The name of the cloud desktop.
+	// The cloud desktop name.
 	//
 	// example:
 	//
 	// DemoComputer
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The status of the cloud desktop.
+	// The cloud desktop status.
 	//
 	// example:
 	//
@@ -595,23 +601,23 @@ type DescribeDesktopsInGroupResponseBodyPostPaidDesktops struct {
 	//
 	// SYSTEM
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The ID of the authorized end user.
+	// The authorized user.
 	//
 	// example:
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The IDs of end users connected to the cloud desktop. If no end user is connected, the array is empty.
+	// The list of currently connected user IDs. This value is empty if the desktop is not connected.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The name of the authorized end user.
+	// The authorized username.
 	//
 	// example:
 	//
 	// alice
 	EndUserName *string `json:"EndUserName,omitempty" xml:"EndUserName,omitempty"`
-	// The usernames of end users connected to the cloud desktop. If no end user is connected, the array is empty.
+	// The list of current usernames. This value is empty if the desktop is not connected.
 	EndUserNames []*string `json:"EndUserNames,omitempty" xml:"EndUserNames,omitempty" type:"Repeated"`
-	// The image version.
+	// The image version information.
 	//
 	// example:
 	//
@@ -641,45 +647,47 @@ type DescribeDesktopsInGroupResponseBodyPostPaidDesktops struct {
 	//
 	// NoFlag
 	ManagementFlag *string `json:"ManagementFlag,omitempty" xml:"ManagementFlag,omitempty"`
-	// The management flags.
+	// The collection of management flags.
 	ManagementFlags []*string `json:"ManagementFlags,omitempty" xml:"ManagementFlags,omitempty" type:"Repeated"`
-	// The IP address of the secondary elastic network interface of the instance.
+	// The IP address of the secondary ENI of the instance.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	MemberEniIp *string `json:"MemberEniIp,omitempty" xml:"MemberEniIp,omitempty"`
-	// The type of the operating system.
+	// The operating system type.
 	//
 	// example:
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The IP address of the primary network interface of the instance.
+	// The IP address of the primary ENI of the instance.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	PrimaryEniIp *string `json:"PrimaryEniIp,omitempty" xml:"PrimaryEniIp,omitempty"`
-	// The session protocol.
+	// The protocol type.
 	//
 	// example:
 	//
 	// HDX
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The release time of the cloud desktop.
+	// The release time.
+	//
+	// The time is displayed in UTC in the ISO 8601 standard format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2022-01-21T16:34:57Z
 	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	// The time when the cloud desktop was last reset.
+	// The reset time of the cloud desktop.
 	//
 	// example:
 	//
 	// 2021-03-03 08:48:08
 	ResetTime *string `json:"ResetTime,omitempty" xml:"ResetTime,omitempty"`
-	// The size of the system disk, in GiB.
+	// The system cloud disk size. Unit: GiB.
 	//
 	// example:
 	//

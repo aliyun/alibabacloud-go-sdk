@@ -20,21 +20,21 @@ type iDescribeDirectoriesResponseBody interface {
 }
 
 type DescribeDirectoriesResponseBody struct {
-	// The hostname of the domain controller. The hostname must comply with the hostname naming convention of Windows. This parameter is returned only when the directory type is AD office network.
+	// The hostname of the domain controller. The hostname must comply with Windows hostname naming conventions. This parameter is returned only when the directory type is AD workspace.
 	//
 	// example:
 	//
 	// cnshsv21hmc****
 	AdHostname *string `json:"AdHostname,omitempty" xml:"AdHostname,omitempty"`
-	// The directories.
+	// The list of directory information.
 	Directories []*DescribeDirectoriesResponseBodyDirectories `json:"Directories,omitempty" xml:"Directories,omitempty" type:"Repeated"`
-	// The token that is used for the next query. If this parameter is empty, all results are returned.
+	// The pagination token for the next query. An empty value indicates that no more results exist.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *DescribeDirectoriesResponseBody) Validate() error {
 }
 
 type DescribeDirectoriesResponseBodyDirectories struct {
-	// Details of the AD connector.
+	// The information about AD connectors.
 	ADConnectors []*DescribeDirectoriesResponseBodyDirectoriesADConnectors `json:"ADConnectors,omitempty" xml:"ADConnectors,omitempty" type:"Repeated"`
 	// The hostname of the domain controller.
 	//
@@ -120,51 +120,31 @@ type DescribeDirectoriesResponseBodyDirectories struct {
 	//
 	// 192.168.2.100
 	BackupDns *string `json:"BackupDns,omitempty" xml:"BackupDns,omitempty"`
-	// The time when the directory was created.
+	// The time when the directory was created. The time is in the ISO 8601 standard (UTC).
 	//
 	// example:
 	//
 	// 2020-11-02T01:44Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The security group ID. This parameter is returned only when the directory type is AD office network.
+	// The security group ID. This parameter is returned only when the directory type is AD workspace.
 	//
 	// example:
 	//
 	// sg-bp1ce64o4g9mdf5u****
 	CustomSecurityGroupId *string `json:"CustomSecurityGroupId,omitempty" xml:"CustomSecurityGroupId,omitempty"`
-	// The method in which the cloud computer is connected.
+	// The method allowed for connecting to cloud computers. Valid values:
 	//
-	// Valid values:
+	// - VPC: VPC connection.
 	//
-	// 	- VPC
+	// - Internet: Internet connection.
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Internet
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- Any
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// - Any: Both Internet and VPC connections.
 	//
 	// example:
 	//
 	// Internet
 	DesktopAccessType *string `json:"DesktopAccessType,omitempty" xml:"DesktopAccessType,omitempty"`
-	// The endpoint that is used to connect to cloud computers in the directory over a VPC.
+	// The endpoint used for connecting to cloud computers over a VPC.
 	//
 	// example:
 	//
@@ -178,31 +158,13 @@ type DescribeDirectoriesResponseBodyDirectories struct {
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The directory type.
 	//
-	// Valid values:
-	//
-	// 	- AD_CONNECTOR: AD directory
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- RAM: RAM directory
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
 	// RAM
 	DirectoryType *string `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
-	// The DNS address of the directory.
+	// The DNS addresses of the directory.
 	DnsAddress []*string `json:"DnsAddress,omitempty" xml:"DnsAddress,omitempty" type:"Repeated"`
-	// The username of a DNS user.
+	// The DNS username.
 	//
 	// example:
 	//
@@ -214,7 +176,7 @@ type DescribeDirectoriesResponseBodyDirectories struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The password of the domain administrator. This parameter is returned only when the directory type is AD office network.
+	// The password of the domain administrator. This parameter is returned only when the directory type is AD workspace.
 	//
 	// example:
 	//
@@ -226,31 +188,31 @@ type DescribeDirectoriesResponseBodyDirectories struct {
 	//
 	// sAMAccountName
 	DomainUserName *string `json:"DomainUserName,omitempty" xml:"DomainUserName,omitempty"`
-	// Indicates whether the local administrator permissions are granted to users that use cloud computers in the office network.
+	// Indicates whether local administrator permissions are granted to cloud computer users.
 	//
 	// example:
 	//
 	// true
 	EnableAdminAccess *bool `json:"EnableAdminAccess,omitempty" xml:"EnableAdminAccess,omitempty"`
-	// Indicates whether cloud computers can communicate with each other in the directory.
+	// Indicates whether the cross-cloud-computer access feature is enabled for the directory. After this feature is enabled, cloud computers within the same directory can access each other over the network.
 	//
 	// example:
 	//
 	// true
 	EnableCrossDesktopAccess *bool `json:"EnableCrossDesktopAccess,omitempty" xml:"EnableCrossDesktopAccess,omitempty"`
-	// Indicates whether access over the Internet is enabled.
+	// Indicates whether Internet access is enabled.
 	//
-	// >  This parameter is unavailable.
+	// > This parameter is not yet available for use.
 	//
 	// example:
 	//
 	// false
 	EnableInternetAccess *bool `json:"EnableInternetAccess,omitempty" xml:"EnableInternetAccess,omitempty"`
-	// The IDs of File Storage NAS (NAS) file systems.
+	// The NAS file system IDs.
 	FileSystemIds []*string `json:"FileSystemIds,omitempty" xml:"FileSystemIds,omitempty" type:"Repeated"`
-	// The registration logs. This parameter is returned only when the directory type is AD office network.
+	// The list of registration log information. This parameter is returned only when the directory type is AD workspace.
 	Logs []*DescribeDirectoriesResponseBodyDirectoriesLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	// Indicates whether MFA is enabled.
+	// Indicates whether multi-factor authentication (MFA) is enabled.
 	//
 	// example:
 	//
@@ -262,21 +224,19 @@ type DescribeDirectoriesResponseBodyDirectories struct {
 	//
 	// testDirectoryName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether two-step verification for logons is enabled. This parameter is returned only for directories of convenience account type.\\
-	//
-	// If two-factor verification is enabled, the system checks whether security risks exist within the logon account when a convenience user logs on to an Alibaba Cloud Workspace client. If risks are detected, the system sends a verification code to the email address that is associated with the account. Then, the convenience user can log on to the client only after the user enters the correct verification code.
+	// Indicates whether secondary authentication is required for logon. This parameter applies only to convenience directories. If secondary authentication is enabled, the system checks for security risks when a convenience user logs on to the client. If a risk is detected, the system sends a verification code to the email address associated with the account. The convenience user can log on to the client only after passing the verification.
 	//
 	// example:
 	//
 	// false
 	NeedVerifyLoginRisk *bool `json:"NeedVerifyLoginRisk,omitempty" xml:"NeedVerifyLoginRisk,omitempty"`
-	// The organization unit that you selected when you added the cloud computer to the domain.
+	// The organizational unit (OU) selected when cloud computers join the domain.
 	//
 	// example:
 	//
 	// example.com/Domain Controllers
 	OuName *string `json:"OuName,omitempty" xml:"OuName,omitempty"`
-	// Indicates whether single sign-on (SSO) is enabled.
+	// Indicates whether SSO is enabled.
 	//
 	// example:
 	//
@@ -284,45 +244,27 @@ type DescribeDirectoriesResponseBodyDirectories struct {
 	SsoEnabled *bool `json:"SsoEnabled,omitempty" xml:"SsoEnabled,omitempty"`
 	// The status of the AD directory.
 	//
-	// Valid values:
-	//
-	// 	- REGISTERING
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- REGISTERED
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// example:
 	//
 	// REGISTERING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The DNS address of the enterprise AD subdomain.
+	// The DNS addresses of the AD subdomain.
 	SubDnsAddress []*string `json:"SubDnsAddress,omitempty" xml:"SubDnsAddress,omitempty" type:"Repeated"`
-	// The fully qualified domain name (FQDN) of the existing AD subdomain. The value contains both the host name and the domain name.
+	// The fully qualified domain name (FQDN) of the existing AD subdomain, which includes both the hostname and the domain name.
 	//
 	// example:
 	//
 	// child.example.com
 	SubDomainName *string `json:"SubDomainName,omitempty" xml:"SubDomainName,omitempty"`
-	// The AD trust password. This parameter is returned only when the directory type is AD office network.
+	// The AD trust password. This parameter is returned only when the directory type is AD workspace.
 	//
 	// example:
 	//
 	// 82Tg****
 	TrustPassword *string `json:"TrustPassword,omitempty" xml:"TrustPassword,omitempty"`
-	// The IDs of the vSwitches specified when the directory was created.
+	// The vSwitch IDs specified when the directory was created.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	// The ID of the VPC to which the vSwitch belongs. This parameter is returned only when the directory type is AD office network.
+	// The ID of the VPC to which the vSwitch belongs. This parameter is returned only when the directory type is AD workspace.
 	//
 	// example:
 	//
@@ -640,53 +582,25 @@ func (s *DescribeDirectoriesResponseBodyDirectories) Validate() error {
 }
 
 type DescribeDirectoriesResponseBodyDirectoriesADConnectors struct {
-	// The connection address.
+	// The endpoint.
 	//
 	// example:
 	//
 	// 172.17.XX.XX
 	ADConnectorAddress *string `json:"ADConnectorAddress,omitempty" xml:"ADConnectorAddress,omitempty"`
-	// Valid values:
-	//
-	// 	- CONNECT_ERROR
-	//
-	// 	- RUNNING
-	//
-	// 	- CONNECTING: You must configure domain trust for your AD system.
-	//
-	// 	- EXPIRED
-	//
-	// 	- CREATING
+	// The connection status.
 	//
 	// example:
 	//
 	// RUNNING
 	ConnectorStatus *string `json:"ConnectorStatus,omitempty" xml:"ConnectorStatus,omitempty"`
-	// The ID of the NIC to which the AD connector is mounted.
+	// The ID of the network interface controller (NIC) attached to the AD connector.
 	//
 	// example:
 	//
 	// eni-bp1i4wx78lgosrj6****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The AD connector type.
-	//
-	// Valid values:
-	//
-	// 	- 1: General
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- 2: Advanced
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The AD connector specification.
 	//
 	// example:
 	//
@@ -698,7 +612,7 @@ type DescribeDirectoriesResponseBodyDirectoriesADConnectors struct {
 	//
 	// yfpoAD****
 	TrustKey *string `json:"TrustKey,omitempty" xml:"TrustKey,omitempty"`
-	// The ID of the vSwitch with which the AD connector is associated.
+	// The ID of the vSwitch where the AD connector resides.
 	//
 	// example:
 	//
@@ -773,39 +687,13 @@ func (s *DescribeDirectoriesResponseBodyDirectoriesADConnectors) Validate() erro
 }
 
 type DescribeDirectoriesResponseBodyDirectoriesLogs struct {
-	// The level of the log entry.
-	//
-	// Valid values:
-	//
-	// 	- ERROR
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- INFO
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- WARN
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// The log level.
 	//
 	// example:
 	//
 	// INFO
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// Details of the log entry.
+	// The detailed log information.
 	//
 	// example:
 	//
@@ -817,7 +705,7 @@ type DescribeDirectoriesResponseBodyDirectoriesLogs struct {
 	//
 	// DescribeDirectories
 	Step *string `json:"Step,omitempty" xml:"Step,omitempty"`
-	// The time when the log entry was printed.
+	// The time when the log was printed. The time is in the ISO 8601 standard (UTC).
 	//
 	// example:
 	//

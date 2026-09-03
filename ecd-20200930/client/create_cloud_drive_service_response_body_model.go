@@ -32,29 +32,29 @@ type iCreateCloudDriveServiceResponseBody interface {
 }
 
 type CreateCloudDriveServiceResponseBody struct {
-	// The ID of the enterprise network disk.
+	// The ID of the enterprise NAS drive.
 	//
 	// example:
 	//
 	// cn-hangzhou+cds-778205****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	// The name of the cloud storage service.
+	// The service name of the cloud storage.
 	//
 	// example:
 	//
 	// CDS_Windows_1126
 	CdsName *string `json:"CdsName,omitempty" xml:"CdsName,omitempty"`
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// The instance ID of the Cloud Enterprise Network (CEN).
 	//
-	// > If you want to connect to a cloud desktop through a VPC, you can add the office network to a CEN instance. This CEN instance connects to your on-premises network through a VPN or a dedicated line.
+	// > To connect to cloud desktops over a VPC, you can add the office network to a CEN instance. This CEN instance is the one to which the on-premises network is connected by using a VPN or Express Connect circuit.
 	//
 	// example:
 	//
 	// cen-638u3wxds9snyc****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The existing enterprise network disks or orders for enterprise network disks that conflict with the enterprise network disk that you want to create.
+	// The existing NAS drive or NAS drive order that conflicts with the NAS drive to be created.
 	ConflictCdsAndOrder *CreateCloudDriveServiceResponseBodyConflictCdsAndOrder `json:"ConflictCdsAndOrder,omitempty" xml:"ConflictCdsAndOrder,omitempty" type:"Struct"`
-	// The name of the Active Directory (AD) domain corresponding to the AD office network.
+	// The AD domain name of the AD office network.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ type CreateCloudDriveServiceResponseBody struct {
 	//
 	// ExistConflictCds
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The maximum storage usage of the enterprise network disk. Unit: bytes.
+	// The maximum storage capacity of the enterprise NAS drive. Unit: bytes.
 	//
 	// example:
 	//
 	// 5368709120
 	MaxSize *string `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
-	// The office network type.
+	// The network type of the office network.
 	//
 	// example:
 	//
 	// AD_CONNECTOR
 	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
-	// The order ID. You can obtain the order ID on the Order Management page in the Alibaba Cloud User Center.
+	// The order ID. You can obtain the order ID on the Orders page in the Alibaba Cloud User Center.
 	//
 	// example:
 	//
@@ -200,9 +200,9 @@ func (s *CreateCloudDriveServiceResponseBody) Validate() error {
 }
 
 type CreateCloudDriveServiceResponseBodyConflictCdsAndOrder struct {
-	// The information of conflicting enterprise network disks.
+	// The information about the conflicting NAS drive.
 	ConflictCds []*CreateCloudDriveServiceResponseBodyConflictCdsAndOrderConflictCds `json:"ConflictCds,omitempty" xml:"ConflictCds,omitempty" type:"Repeated"`
-	// The information of conflicting unpaid orders for enterprise network disks (orders for subscription enterprise network disks).
+	// The information about the conflicting unpaid NAS drive order (subscription NAS drive order).
 	ConflictOrder []*CreateCloudDriveServiceResponseBodyConflictCdsAndOrderConflictOrder `json:"ConflictOrder,omitempty" xml:"ConflictOrder,omitempty" type:"Repeated"`
 }
 
@@ -255,13 +255,13 @@ func (s *CreateCloudDriveServiceResponseBodyConflictCdsAndOrder) Validate() erro
 }
 
 type CreateCloudDriveServiceResponseBodyConflictCdsAndOrderConflictCds struct {
-	// The ID of the enterprise network disk.
+	// The ID of the enterprise NAS drive.
 	//
 	// example:
 	//
 	// cn-hangzhou+cds-778205****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions that are supported by Elastic Desktop Service.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// example:
 	//
@@ -300,13 +300,13 @@ func (s *CreateCloudDriveServiceResponseBodyConflictCdsAndOrderConflictCds) Vali
 }
 
 type CreateCloudDriveServiceResponseBodyConflictCdsAndOrderConflictOrder struct {
-	// The ID of the enterprise network disk (The order is not paid, and the enterprise network disk cannot be used).
+	// The ID of the enterprise NAS drive. The order is not paid, and the NAS drive is unavailable.
 	//
 	// example:
 	//
 	// cn-hangzhou+cds-778205****
 	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
-	// The order ID. You can obtain the order ID on the **Order Management*	- page in the Alibaba Cloud User Center.
+	// The order ID. You can obtain the order ID on the **Orders*	- page in the Alibaba Cloud User Center.
 	//
 	// example:
 	//

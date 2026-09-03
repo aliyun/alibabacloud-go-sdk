@@ -56,12 +56,21 @@ type iDescribeDesktopTypesRequest interface {
 }
 
 type DescribeDesktopTypesRequest struct {
-	// The scope of the instance types to query. Default value: `Public`.
+	// The applicable scope of the specification. Default value: `Public`.
 	//
 	// example:
 	//
 	// Public
-	AppliedScope    *string `json:"AppliedScope,omitempty" xml:"AppliedScope,omitempty"`
+	AppliedScope *string `json:"AppliedScope,omitempty" xml:"AppliedScope,omitempty"`
+	// The business channel. Valid values:
+	//
+	// Enterprise: Enterprise Edition.
+	//
+	// Business: Business Edition.
+	//
+	// example:
+	//
+	// Enterprise
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The number of vCPUs.
 	//
@@ -69,30 +78,35 @@ type DescribeDesktopTypesRequest struct {
 	//
 	// 2
 	CpuCount *int32 `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
-	// The ID of the desktop group to reconfigure. If you specify this parameter, the response returns only the instance types that are compatible with the specified group.
+	// The ID of the shared cloud computer for which you want to change the specification. If this parameter is specified, the response includes compatibility information between the specification and the shared cloud computer.
 	//
 	// example:
 	//
 	// dg-abcdefg****
 	DesktopGroupIdForModify *string `json:"DesktopGroupIdForModify,omitempty" xml:"DesktopGroupIdForModify,omitempty"`
-	// The ID of the WUYING Workspace to reconfigure. If you specify this parameter, the response returns only the instance types that are compatible with the specified workspace.
+	// The ID of the cloud computer for which you want to change the specification. If this parameter is specified, the response includes compatibility information between the specification and the cloud computer.
 	//
 	// example:
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopIdForModify *string `json:"DesktopIdForModify,omitempty" xml:"DesktopIdForModify,omitempty"`
-	DesktopScenario    *string `json:"DesktopScenario,omitempty" xml:"DesktopScenario,omitempty"`
-	// The ID of the instance type.
+	// The scenarios of the cloud computer.
 	//
-	// > If you omit both the `InstanceTypeFamily` and `DesktopTypeId` parameters, the operation returns all available WUYING Workspace instance types.
+	// example:
+	//
+	// office
+	DesktopScenario *string `json:"DesktopScenario,omitempty" xml:"DesktopScenario,omitempty"`
+	// The specification ID.
+	//
+	// > If both `InstanceTypeFamily` and `DesktopTypeId` are left empty, information about all cloud computer specifications is returned.
 	//
 	// example:
 	//
 	// ecd.graphics.xlarge
 	DesktopTypeId *string `json:"DesktopTypeId,omitempty" xml:"DesktopTypeId,omitempty"`
-	// An array of instance type IDs.
+	// The list of specification IDs.
 	DesktopTypeIdList []*string `json:"DesktopTypeIdList,omitempty" xml:"DesktopTypeIdList,omitempty" type:"Repeated"`
-	// The number of vGPUs.
+	// The number of GPU cores.
 	//
 	// example:
 	//
@@ -104,23 +118,33 @@ type DescribeDesktopTypesRequest struct {
 	//
 	// A10
 	GpuDriverType *string `json:"GpuDriverType,omitempty" xml:"GpuDriverType,omitempty"`
-	GpuMemory     *int32  `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
-	// The instance type family.
+	// The GPU memory size. This parameter is meaningful only for GPU-accelerated cloud computers. Unit: MB.
 	//
-	// > If you omit both the `InstanceTypeFamily` and `DesktopTypeId` parameters, the operation returns all available WUYING Workspace instance types.
+	// example:
+	//
+	// 2048
+	GpuMemory *int32 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
+	// The instance family name.
+	//
+	// > If both `InstanceTypeFamily` and `DesktopTypeId` are left empty, information about all cloud computer specifications is returned.
 	//
 	// example:
 	//
 	// ecd.graphics
 	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	// The memory size, in MiB.
+	// The memory size. Unit: MiB.
 	//
 	// example:
 	//
 	// 4096
-	MemorySize   *int32  `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	MemorySize *int32 `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	// The ID of the office network to which the shared cloud computer belongs.
+	//
+	// example:
+	//
+	// cn-hangzhou+os-c5cy7q578s8jc****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The property by which to sort the results. If you omit this parameter, the results are sorted by creation time in descending order.
+	// The field by which to sort the results. If this parameter is not specified, results are sorted by creation time in descending order.
 	//
 	// example:
 	//
@@ -132,7 +156,7 @@ type DescribeDesktopTypesRequest struct {
 	//
 	// DOWNGRADE
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions that Elastic Desktop Service supports.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
 	//
 	// This parameter is required.
 	//
@@ -140,12 +164,13 @@ type DescribeDesktopTypesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The billing method of the instance types.
+	// The billing method of the specification.
 	//
 	// example:
 	//
 	// FastBuy
-	Scope    *string   `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The list of applicable scopes.
 	ScopeSet []*string `json:"ScopeSet,omitempty" xml:"ScopeSet,omitempty" type:"Repeated"`
 	// The sort order.
 	//
@@ -153,7 +178,7 @@ type DescribeDesktopTypesRequest struct {
 	//
 	// ASC
 	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	// Filters for instance types that support at least the specified number of concurrent sessions. This parameter applies only to multi-session instance types.
+	// The minimum number of multi-sessions supported by the specification.
 	//
 	// example:
 	//
@@ -163,7 +188,7 @@ type DescribeDesktopTypesRequest struct {
 	//
 	// example:
 	//
-	// 无
+	// cn-hangzhou-j
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 

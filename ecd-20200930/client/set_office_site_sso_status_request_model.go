@@ -18,25 +18,7 @@ type iSetOfficeSiteSsoStatusRequest interface {
 }
 
 type SetOfficeSiteSsoStatusRequest struct {
-	// Specifies whether to enable SSO.
-	//
-	// Valid values:
-	//
-	// 	- true
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// Specifies whether to enable or shutdown single sign-on (SSO) logon.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +26,7 @@ type SetOfficeSiteSsoStatusRequest struct {
 	//
 	// true
 	EnableSso *bool `json:"EnableSso,omitempty" xml:"EnableSso,omitempty"`
-	// The workspace ID.
+	// The office network ID.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +34,7 @@ type SetOfficeSiteSsoStatusRequest struct {
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

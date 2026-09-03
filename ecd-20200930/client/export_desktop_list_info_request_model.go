@@ -66,7 +66,7 @@ type ExportDesktopListInfoRequest struct {
   // 
   // > Only one user can connect to and use the cloud desktop at a time.
   EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
-  // The expiration time of the subscription cloud desktop.
+  // The expiration time of the subscription cloud desktop. The time follows the ISO 8601 standard in UTC.
   // 
   // example:
   // 
@@ -120,7 +120,7 @@ type ExportDesktopListInfoRequest struct {
   // 
   // cn-hangzhou
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-  // The list of tags. A tag consists of a key-value pair and is used to mark resources. You can use tags to group and manage cloud desktops for easier searching and batch operations. For more information, see [Use tags to manage cloud desktops](https://help.aliyun.com/document_detail/203781.html).
+  // The list of tags. A tag consists of a key-value pair and is used to mark resources. You can use tags to group and manage cloud desktops for easy searching and batch operations. For more information, see [Use tags to manage cloud desktops](https://help.aliyun.com/document_detail/203781.html).
   Tag []*ExportDesktopListInfoRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
   // The username of the user who is currently using the cloud desktop.
   // 

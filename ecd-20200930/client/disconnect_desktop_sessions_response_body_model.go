@@ -66,7 +66,7 @@ func (s *DisconnectDesktopSessionsResponseBody) Validate() error {
 }
 
 type DisconnectDesktopSessionsResponseBodyInvalidSessions struct {
-	// The cloud desktop ID.
+	// The cloud computer ID.
 	//
 	// example:
 	//

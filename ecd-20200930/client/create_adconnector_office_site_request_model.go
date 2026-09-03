@@ -60,10 +60,13 @@ type iCreateADConnectorOfficeSiteRequest interface {
 }
 
 type CreateADConnectorOfficeSiteRequest struct {
-	AccessAttribute *string `json:"AccessAttribute,omitempty" xml:"AccessAttribute,omitempty"`
-	// The domain controller hostname.
+	// The access attribute of the office network (workspace).
 	//
-	// The hostname must comply with Windows hostname naming conventions.
+	// example:
+	//
+	// Private
+	AccessAttribute *string `json:"AccessAttribute,omitempty" xml:"AccessAttribute,omitempty"`
+	// The hostname of the domain controller. The hostname must comply with Windows hostname naming conventions.
 	//
 	// example:
 	//
@@ -81,51 +84,51 @@ type CreateADConnectorOfficeSiteRequest struct {
 	//
 	// 192.168.2.100
 	BackupDns *string `json:"BackupDns,omitempty" xml:"BackupDns,omitempty"`
-	// The peak public bandwidth, specified in Mbit/s. The value can range from 0 to 200.<br>
+	// The peak Internet bandwidth, in Mbit/s. Valid values: 0 to 200.
 	//
-	// If you omit this parameter or set it to 0, internet access is disabled.<br>
+	// If you do not set this parameter or set it to 0, the Internet access feature is not enabled. Settings take effect immediately.
 	//
 	// example:
 	//
 	// 1
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The ID of the CEN instance.
+	// The instance ID of the Cloud Enterprise Network (CEN).
 	//
 	// example:
 	//
 	// cen-3gwy16dojz1m65****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the Cloud Enterprise Network (CEN) instance.
+	// The Alibaba Cloud account ID of the Cloud Enterprise Network (CEN) instance owner.
 	//
-	// - If you do not specify `CenId`, or the specified CEN instance belongs to your Alibaba Cloud account, you do not need to specify this parameter.
+	// - If CenId is not specified, or the specified CenId belongs to the current Alibaba Cloud account, you do not need to specify this parameter.
 	//
-	// - If the specified CEN instance belongs to another Alibaba Cloud account, you must specify that account\\"s ID.
+	// - If the specified CenId belongs to another Alibaba Cloud account, specify the Alibaba Cloud account ID of that account.
 	//
 	// example:
 	//
 	// 102681951715****
 	CenOwnerId *int64 `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
-	// The IPv4 CIDR block for the office site\\"s VPC. The system uses this IPv4 CIDR block to automatically create a VPC. We recommend that you use one of the following CIDR blocks or their subnets:
+	// The IPv4 CIDR block of the office network VPC. The system uses automatic creation to provision a VPC based on the specified IPv4 CIDR block. Use one of the following CIDR blocks or their subnets as the IPv4 CIDR block:
 	//
-	// - `10.0.0.0/12` (The subnet mask length must be 12 to 24 bits.)
+	// - `10.0.0.0/12` (valid mask range: 12 to 24 bits)
 	//
-	// - `172.16.0.0/12` (The subnet mask length must be 12 to 24 bits.)
+	// - `172.16.0.0/12` (valid mask range: 12 to 24 bits)
 	//
-	// - `192.168.0.0/16` (The subnet mask length must be 16 to 24 bits.)
+	// - `192.168.0.0/16` (valid mask range: 16 to 24 bits)
 	//
 	// example:
 	//
 	// 47.100.XX.XX
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The method for connecting to cloud desktops.
+	// The access method allowed when connecting to cloud computers.
 	//
-	// > VPC connections are established using Alibaba Cloud PrivateLink, which is a free service. If you set this parameter to `VPC` or `Any`, PrivateLink is automatically enabled.
+	// > The VPC connection method depends on the Alibaba Cloud PrivateLink service, which is free of charge. If this parameter is set to `VPC` or `Any`, the system automatically activates the PrivateLink service for you.
 	//
 	// example:
 	//
 	// Internet
 	DesktopAccessType *string `json:"DesktopAccessType,omitempty" xml:"DesktopAccessType,omitempty"`
-	// An array that contains the IP address of the DNS server for the enterprise AD. You can specify only one IP address.
+	// The IP address of the DNS server corresponding to the enterprise AD. Currently, only one IP address is supported.
 	//
 	// This parameter is required.
 	//
@@ -133,7 +136,7 @@ type CreateADConnectorOfficeSiteRequest struct {
 	//
 	// 192.168.XX.XX
 	DnsAddress []*string `json:"DnsAddress,omitempty" xml:"DnsAddress,omitempty" type:"Repeated"`
-	// The domain name for the enterprise AD. Each domain name must be unique.
+	// The domain name of the enterprise AD. The same domain name can be registered only once.
 	//
 	// This parameter is required.
 	//
@@ -141,27 +144,27 @@ type CreateADConnectorOfficeSiteRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The domain administrator\\"s password. The password cannot exceed 64 characters in length.
+	// The password of the domain administrator. The password can be up to 64 characters in length.
 	//
 	// example:
 	//
 	// testPassword
 	DomainPassword *string `json:"DomainPassword,omitempty" xml:"DomainPassword,omitempty"`
-	// The domain administrator\\"s username. The username cannot exceed 64 characters in length.
+	// The username of the domain administrator. The username can be up to 64 characters in length.
 	//
-	// > Use the sAMAccountName, not the userPrincipalName.
+	// > Use the sAMAccountName format for the username. Do not use the userPrincipalName format.
 	//
 	// example:
 	//
 	// Administrator
 	DomainUserName *string `json:"DomainUserName,omitempty" xml:"DomainUserName,omitempty"`
-	// Specifies whether to grant local administrator permissions to cloud desktop users. Default: true.
+	// Specifies whether to grant local administrator permissions to users who use cloud computers.
 	//
 	// example:
 	//
 	// true
 	EnableAdminAccess *bool `json:"EnableAdminAccess,omitempty" xml:"EnableAdminAccess,omitempty"`
-	// This parameter is deprecated. Use the `Bandwidth` parameter to manage internet access.
+	// Specifies whether public network access is enabled. This parameter indicates whether the feature is active.
 	//
 	// example:
 	//
@@ -173,13 +176,13 @@ type CreateADConnectorOfficeSiteRequest struct {
 	//
 	// false
 	MfaEnabled *bool `json:"MfaEnabled,omitempty" xml:"MfaEnabled,omitempty"`
-	// The name of the office site. The name must be 2 to 255 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain digits, colons (:), underscores (_), and hyphens (-).<br>
+	// The name of the office network. The name must be 2 to 255 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter or Chinese character and cannot start with `http://` or `https://`.
 	//
-	// This parameter is empty by default.<br>
+	// Default value: null.
 	//
 	// example:
 	//
-	// test
+	// RD_Office_Network
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
 	// The protocol type.
 	//
@@ -187,7 +190,7 @@ type CreateADConnectorOfficeSiteRequest struct {
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service (EDS).
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -195,19 +198,19 @@ type CreateADConnectorOfficeSiteRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The AD Connector type.
+	// The AD Connector specification.
 	//
 	// example:
 	//
 	// 1
 	Specification *int64 `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	// The DNS address of the enterprise AD child domain. If you specify `SubDomainName` but not this parameter, the DNS address of the child domain is considered the same as that of the parent domain.
+	// The DNS address of the enterprise AD subdomain. If `SubDomainName` is specified but this parameter is not, the subdomain DNS is considered the same as the parent domain DNS.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	SubDomainDnsAddress []*string `json:"SubDomainDnsAddress,omitempty" xml:"SubDomainDnsAddress,omitempty" type:"Repeated"`
-	// The domain name of the enterprise AD child domain.
+	// The domain name of the enterprise AD subdomain.
 	//
 	// example:
 	//
@@ -215,7 +218,7 @@ type CreateADConnectorOfficeSiteRequest struct {
 	SubDomainName *string `json:"SubDomainName,omitempty" xml:"SubDomainName,omitempty"`
 	// The list of vSwitch IDs.
 	VSwitchId []*string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty" type:"Repeated"`
-	// The verification code. If the `CenId` that you specify belongs to another Alibaba Cloud account, you must first call the [SendVerifyCode](https://help.aliyun.com/document_detail/436847.html) operation to obtain the verification code.
+	// The verification code. If the specified CenId belongs to another Alibaba Cloud account, you must first call [SendVerifyCode](https://help.aliyun.com/document_detail/436847.html) to obtain the verification code.
 	//
 	// example:
 	//

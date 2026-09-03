@@ -16,9 +16,9 @@ type iUnbindConfigGroupResponseBody interface {
 }
 
 type UnbindConfigGroupResponseBody struct {
-	// The IDs of the configuration groups.
+	// The list of unbound configuration group IDs.
 	GroupIds []*string `json:"GroupIds,omitempty" xml:"GroupIds,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

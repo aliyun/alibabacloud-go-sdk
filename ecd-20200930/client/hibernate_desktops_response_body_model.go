@@ -14,7 +14,7 @@ type iHibernateDesktopsResponseBody interface {
 }
 
 type HibernateDesktopsResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

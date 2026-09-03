@@ -100,7 +100,16 @@ type DescribeInvocationsResponseBodyInvocations struct {
 	// example:
 	//
 	// 2020-12-19T09:15:46Z
-	CreationTime    *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The cloud desktop scenario. Valid values:
+	//
+	// - Classic: the classic cloud desktop scenario.
+	//
+	// - JvsClaw: the JVS Claw cloud desktop scenario.
+	//
+	// example:
+	//
+	// Classic
 	DesktopScenario *string `json:"DesktopScenario,omitempty" xml:"DesktopScenario,omitempty"`
 	// The end user ID.
 	//
@@ -110,45 +119,45 @@ type DescribeInvocationsResponseBodyInvocations struct {
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The overall execution status of the script. The overall execution status depends on the combined execution status of all cloud desktops in this call. Valid values:
 	//
-	// - Pending: The system is validating or sending the command. If the script execution status on at least one cloud desktop is Pending, the overall execution status is Pending.
+	// - Pending: The system is validating or sending the command. The overall execution status is Pending if at least one cloud desktop has a script execution status of Pending.
 	//
-	// - Running: The command is running on the cloud desktop. If the script execution status on at least one cloud desktop is Running, the overall execution status is Running.
+	// - Running: The command is running on the cloud desktop. The overall execution status is Running if at least one cloud desktop has a script execution status of Running.
 	//
-	// - Success: The script execution status on each cloud desktop is Stopped or Success, and the script execution status on at least one cloud desktop is Success. The overall execution status is Success.
+	// - Success: The overall execution status is Success if the script execution status on each cloud desktop is Stopped or Success, and at least one cloud desktop has a script execution status of Success.
 	//
-	// - Failed: The script execution status on each cloud desktop is Stopped or Failed. The overall execution status is Failed. The return value is Failed when one or more of the following statuses occur on a cloud desktop:
+	// - Failed: The overall execution status is Failed if the script execution status on each cloud desktop is Stopped or Failed. The return value is Failed when one or more of the following statuses occur on a cloud desktop:
 	//
-	//     - Command validation failed (Invalid).
+	//     - Command validation failed (Invalid)
 	//
-	//     - Command delivery failed (Aborted).
+	//     - Command delivery failed (Aborted)
 	//
-	//     - Command execution completed but the exit code is non-zero (Failed).
+	//     - Command execution completed with a non-zero exit code (Failed)
 	//
-	//     - Command execution timed out (Timeout).
+	//     - Command execution timed out (Timeout)
 	//
-	//     - Command execution encountered an exception (Error).
+	//     - Command execution encountered an exception (Error)
 	//
-	// - Stopping: The task is being stopped. If the script execution status on at least one instance is Stopping, the overall execution status is Stopping.
+	// - Stopping: The task is being stopped. The overall execution status is Stopping if at least one instance has a script execution status of Stopping.
 	//
-	// - Stopped: The task has been stopped. If the script execution status on all instances is Stopped, the overall execution status is Stopped. The return value is Stopped when the script execution status on an instance is one of the following:
+	// - Stopped: The task has been stopped. The overall execution status is Stopped if the script execution status on all instances is Stopped. The return value is Stopped when the script execution status on an instance is one of the following:
 	//
-	//     - Task cancelled (Cancelled).
+	//     - Task cancelled (Cancelled)
 	//
-	//     - Task terminated (Terminated).
+	//     - Task terminated (Terminated)
 	//
-	// - PartialFailed: Some instances succeeded and some instances failed. If the script execution status on each instance is Success, Failed, or Stopped, the overall execution status is PartialFailed.
+	// - PartialFailed: The overall execution status is PartialFailed if some instances succeeded and some instances failed. The overall execution status is PartialFailed if the script execution status on each instance is Success, Failed, or Stopped.
 	//
 	// example:
 	//
 	// Pending
 	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
-	// The total number of cloud desktops on which the script was run.
+	// The total number of cloud desktops on which the script was executed.
 	//
 	// example:
 	//
 	// 1
 	InvokeDesktopCount *int32 `json:"InvokeDesktopCount,omitempty" xml:"InvokeDesktopCount,omitempty"`
-	// The total number of cloud desktops on which the script was run successfully.
+	// The total number of cloud desktops on which the script was executed successfully.
 	//
 	// example:
 	//
@@ -294,13 +303,13 @@ type DescribeInvocationsResponseBodyInvocationsInvokeDesktops struct {
 	//
 	// demo1234
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	// The length of the truncated and discarded text after the text length in the Output field exceeds 24 KB.
+	// The length of the truncated and discarded text after the text length in the Output field exceeded 24 KB.
 	//
 	// example:
 	//
 	// 0
 	Dropped *int32 `json:"Dropped,omitempty" xml:"Dropped,omitempty"`
-	// The error code for the command delivery failure or execution failure. Valid values:
+	// The error code indicating the reason for command delivery failure or execution failure. Valid values:
 	//
 	// - Empty: The command ran normally.
 	//
@@ -334,7 +343,7 @@ type DescribeInvocationsResponseBodyInvocationsInvokeDesktops struct {
 	//
 	// InstanceNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The detailed information about the command delivery failure or execution failure. Valid values:
+	// The detailed reason for command delivery failure or execution failure. Valid values:
 	//
 	// - Empty: The command ran normally.
 	//
@@ -380,24 +389,29 @@ type DescribeInvocationsResponseBodyInvocationsInvokeDesktops struct {
 	//
 	// 2020-12-20T06:15:56Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The script execution status on a single cloud desktop.
+	// The script process status on a single cloud desktop.
 	//
 	// example:
 	//
 	// Success
 	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
-	JvsAgentId       *string `json:"JvsAgentId,omitempty" xml:"JvsAgentId,omitempty"`
-	// The output of the script process.
+	// jvs agent id。
+	//
+	// example:
+	//
+	// jvs-7xjos2l****
+	JvsAgentId *string `json:"JvsAgentId,omitempty" xml:"JvsAgentId,omitempty"`
+	// The output information of the script process.
 	//
 	// - If the request parameter `IncludeOutput` is set to false, Output is not returned.
 	//
-	// - If the request parameter `ContentEncoding` is set to Base64, Output is the Base64-encoded output.
+	// - If the request parameter `ContentEncoding` is set to Base64, Output is the Base64-encoded output information.
 	//
 	// example:
 	//
 	// OutPutTestmsg
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// The number of times the command was run on the cloud desktop.
+	// The number of times the command was executed on the cloud desktop.
 	//
 	// example:
 	//
@@ -409,7 +423,7 @@ type DescribeInvocationsResponseBodyInvocationsInvokeDesktops struct {
 	//
 	// 2020-12-20T06:15:55Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time when execution was stopped, if StopInvocation was called.
+	// The time when the execution was stopped, if StopInvocation was called.
 	//
 	// example:
 	//

@@ -54,99 +54,86 @@ type iDescribeDesktopGroupsRequest interface {
 }
 
 type DescribeDesktopGroupsRequest struct {
-	// The cloud computer template IDs.
+	// The list of cloud computer template IDs.
 	BundleId []*string `json:"BundleId,omitempty" xml:"BundleId,omitempty" type:"Repeated"`
-	// The ID of the cloud computer pool.
+	// The ID of the shared cloud computer.
 	//
 	// example:
 	//
 	// dg-2i8qxpv6t1a03****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The IDs of cloud computer pools.
+	// The list of shared cloud computer IDs.
 	DesktopGroupIds []*string `json:"DesktopGroupIds,omitempty" xml:"DesktopGroupIds,omitempty" type:"Repeated"`
-	// The name of the cloud computer pool. Fuzzy search is supported.
+	// The name of the shared cloud computer to query. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// CloudComputerPool01
 	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
-	DesktopType      *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	// The IDs of the authorized users of the cloud computer pool.
+	// The cloud computer specifications. You can call [DescribeDesktopTypes](~~DescribeDesktopTypes~~) to query the supported specification IDs.
+	//
+	// example:
+	//
+	// eds.enterprise_office.16c64g
+	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
+	// The list of authorized user IDs for the shared cloud computer.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The IDs of the users that you want to exclude from the authorized user list.
+	// The list of authorized users to exclude.
 	ExcludedEndUserIds []*string `json:"ExcludedEndUserIds,omitempty" xml:"ExcludedEndUserIds,omitempty" type:"Repeated"`
-	// The image IDs.
+	// The list of image IDs.
 	//
 	// if can be null:
 	// false
 	ImageId []*string `json:"ImageId,omitempty" xml:"ImageId,omitempty" type:"Repeated"`
-	// The number of entries to return on each page.<br>Maximum value: 100.<br>Default value: 10.<br><br>
+	// The number of entries per page for a paged query.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// Specifies whether to query multi-desktop cloud computer pools.
+	// Specifies whether the shared cloud computer is a multi-host type.
+	//
+	// Valid values:
+	//
+	// - true: Multi-host shared cloud computer.
+	//
+	// - false: Single-host shared cloud computer.
 	//
 	// example:
 	//
 	// true
 	MultiResource *bool `json:"MultiResource,omitempty" xml:"MultiResource,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. If NextToken is empty, no next page exists.
+	// The token for the next query. If NextToken is empty, no more results exist.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The office network ID.
+	// The ID of the office network to which the shared cloud computers belong.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-467671****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The type of the cloud computer pool.
-	//
-	// > This parameter is not publicly available.
+	// The type of the shared cloud computer.
 	//
 	// example:
 	//
 	// 0
 	OwnType *int64 `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
-	// The subscription duration of the subscription cloud computer pool. The unit is specified by the `PeriodUnit` parameter.
-	//
-	// - Valid values when `PeriodUnit` is set to `Month`:
-	//
-	//   - 1
-	//
-	//   - 2
-	//
-	//   - 3
-	//
-	//   - 6
-	//
-	// - Valid values when `PeriodUnit` is set to `Year`:
-	//
-	//   - 1
-	//
-	//   - 2
-	//
-	//   - 3
-	//
-	//   - 4
-	//
-	//   - 5
+	// The subscription duration of the shared cloud computer. The unit is specified by `PeriodUnit`.
 	//
 	// example:
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The unit of the subscription duration.
+	// The unit of the duration for the subscription billing method.
 	//
 	// example:
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The ID of the policy that is associated with the cloud computer pool.
+	// The ID of the policy associated with the shared cloud computer.
 	//
 	// example:
 	//
@@ -158,8 +145,13 @@ type DescribeDesktopGroupsRequest struct {
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	QosRuleId    *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The ID of the QoS rule.
+	//
+	// example:
+	//
+	// qos-5605u0gelk200****
+	QosRuleId *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -167,13 +159,13 @@ type DescribeDesktopGroupsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the cloud computer pool.
+	// The status of the shared cloud computer.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags. You can specify up to 20 tags.
+	// The list of tags. You can specify 1 to 20 tags.
 	Tag []*DescribeDesktopGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -388,13 +380,13 @@ func (s *DescribeDesktopGroupsRequest) Validate() error {
 }
 
 type DescribeDesktopGroupsRequestTag struct {
-	// The key of the tag. The key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	// The tag key. If you specify this parameter, the value cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. The value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

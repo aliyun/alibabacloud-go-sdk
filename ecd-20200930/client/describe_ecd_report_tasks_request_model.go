@@ -26,6 +26,15 @@ type iDescribeEcdReportTasksRequest interface {
 }
 
 type DescribeEcdReportTasksRequest struct {
+	// The business channel. Valid values:
+	//
+	// - Enterprise: Enterprise Edition.
+	//
+	// - Business: Business Edition.
+	//
+	// example:
+	//
+	// Enterprise
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	// The page number. Default value: 1.
 	//
@@ -37,7 +46,7 @@ type DescribeEcdReportTasksRequest struct {
 	//
 	// example:
 	//
-	// 20。
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The task status.
 	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`

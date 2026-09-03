@@ -36,70 +36,91 @@ type iModifyDesktopSpecRequest interface {
 type ModifyDesktopSpecRequest struct {
 	// Specifies whether to enable automatic payment.
 	//
+	// Default value: true. Valid values:
+	//
+	// - true: Automatic payment is enabled. Make sure that your Alibaba Cloud account balance is sufficient. Otherwise, abnormal orders may be generated.
+	//
+	// - false: Only an order is generated. Automatic payment is not enabled.
+	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// The ID of the cloud desktop.
+	// The cloud computer ID.
 	//
 	// example:
 	//
 	// ecd-4543qyik164a4****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The new desktop type. You can call the [DescribeDesktopTypes](~~DescribeDesktopTypes~~) operation to query the supported desktop types.
+	// The target instance type. You can call [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) to query the instance types supported by cloud computers.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// eds.general.2c4g
+	// eds.general.2c8g
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
 	// The promotion ID.
 	//
 	// example:
 	//
-	// 50003308011****
+	// 500033080110596
 	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](~~DescribeRegions~~) operation to obtain a list of regions that Elastic Desktop Service supports.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
-	// A list of resource specification templates.
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The user ID of the resource ownership in the reseller pattern. This parameter is not required in the non-reseller pattern.
+	//
+	// example:
+	//
+	// 1422724566551XXX
+	ResellerOwnerUid *int64 `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
+	// The resource specification templates.
 	ResourceSpecs []*ModifyDesktopSpecRequestResourceSpecs `json:"ResourceSpecs,omitempty" xml:"ResourceSpecs,omitempty" type:"Repeated"`
 	// The resource type.
 	//
-	// > This parameter is required only for cloud desktops that use the subscription billing method.
+	// > This parameter is not required for non-subscription cloud computers.
 	//
 	// example:
 	//
 	// DesktopMonthPackage
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The new size of the system disk, in GiB. The value must be a multiple of 10 in the range of 80 to 500.
+	// The system cloud disk size after the change. Unit: GiB. Valid values: 80 to 500. The value must be a multiple of 10.
 	//
 	// example:
 	//
 	// 80
 	RootDiskSizeGib *int32 `json:"RootDiskSizeGib,omitempty" xml:"RootDiskSizeGib,omitempty"`
-	// The performance level of the data disk.
+	// The performance level (PL) of the data cloud disk. Default value: PL0.
+	//
+	// Valid values:
+	//
+	// - PL0
+	//
+	// - PL1
+	//
+	// - PL2
+	//
+	// - PL3
 	//
 	// example:
 	//
 	// PL0
 	UserDiskPerformanceLevel *string `json:"UserDiskPerformanceLevel,omitempty" xml:"UserDiskPerformanceLevel,omitempty"`
-	// The new size of the data disk, in GiB.
+	// The data cloud disk size after the change. Unit: GiB.
 	//
-	// - For non-graphics-accelerated desktop types, the value must be a multiple of 10 in the range of 20 to 1,020.
+	// - For non-graphics cloud computers, valid values: 20 to 1020. The value must be a multiple of 10.
 	//
-	// - For graphics-accelerated desktop types, the value must be a multiple of 10 in the range of 40 to 1,020.
+	// - For graphics cloud computers, valid values: 40 to 1020. The value must be a multiple of 10.
 	//
 	// example:
 	//
-	// 40
+	// 100
 	UserDiskSizeGib *int32 `json:"UserDiskSizeGib,omitempty" xml:"UserDiskSizeGib,omitempty"`
 }
 
@@ -224,19 +245,19 @@ func (s *ModifyDesktopSpecRequest) Validate() error {
 }
 
 type ModifyDesktopSpecRequestResourceSpecs struct {
-	// The ID of the cloud desktop.
+	// The cloud computer ID.
 	//
 	// example:
 	//
 	// ecd-4543qyik164a4****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The new size of the system disk, in GiB. The value must be a multiple of 10 in the range of 80 to 500.
+	// The target system cloud disk size. Valid values: 80 to 500 GiB. The value must be a multiple of 10.
 	//
 	// example:
 	//
 	// 80
 	RootDiskSizeGib *int32 `json:"RootDiskSizeGib,omitempty" xml:"RootDiskSizeGib,omitempty"`
-	// The new size of the data disk, in GiB. The value must be a multiple of 10 in the range of 20 to 2,040.
+	// The target data cloud disk size. Valid values: 80 to 500 GiB. The value must be a multiple of 10.
 	//
 	// example:
 	//

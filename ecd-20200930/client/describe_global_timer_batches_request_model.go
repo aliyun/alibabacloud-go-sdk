@@ -38,7 +38,7 @@ type DescribeGlobalTimerBatchesRequest struct {
 	//
 	// 20
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. An empty value indicates that there are no more results.
+	// The pagination token for the next query. An empty value indicates that no more results exist.
 	//
 	// example:
 	//
@@ -53,15 +53,20 @@ type DescribeGlobalTimerBatchesRequest struct {
 	// example:
 	//
 	// cn-shanghai
-	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The list of resource types.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
-	// The region ID used for searching. Filters cloud desktop information for the specified region.
+	// The region ID used to filter cloud desktop information for a specific region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	SearchRegionId *string `json:"SearchRegionId,omitempty" xml:"SearchRegionId,omitempty"`
-	// The type of task to query. Only scheduled tasks have batch information available.
+	// The type of the task to query. Only scheduled tasks have batch information.
 	//
 	// - TimerBoot: scheduled startup
 	//
@@ -71,7 +76,7 @@ type DescribeGlobalTimerBatchesRequest struct {
 	//
 	// - TimerReset: scheduled reset
 	//
-	// - TimerMaintenance: scheduled maintenance
+	// - TimerMaintenance: scheduled maintenance mode
 	//
 	// - TimerHibernate: scheduled hibernation
 	//

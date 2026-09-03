@@ -44,9 +44,9 @@ type CreateBundleRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The instance type of the cloud computers. You can call the [DescribeBundles](https://help.aliyun.com/document_detail/436974.html) operation to query cloud computer templates and obtain the instance types supported by the cloud computers from the `DesktopType` response parameter.
+	// The cloud computer specifications. You can call [DescribeBundles](https://help.aliyun.com/document_detail/436974.html) to query cloud computer templates and obtain the supported cloud computer specifications from the `DesktopType` parameter in the response.
 	//
-	// > If you want the template to use a non-GPU-accelerated image, you can only select a non-GPU-accelerated instance type. If you want the template to use a GPU-accelerated image, you can only select a GPU-accelerated instance type.
+	// > Non-GPU images can only use non-GPU specifications, and GPU images can only use GPU specifications.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type CreateBundleRequest struct {
 	//
 	// eds.enterprise_office.2c4g
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
-	// The ID of the image.
+	// The image ID.
 	//
 	// This parameter is required.
 	//
@@ -62,21 +62,21 @@ type CreateBundleRequest struct {
 	//
 	// m-4zfb6zj728hhr****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The OS language. This parameter is available only for system images. Valid values:
+	// The operating system language. Currently, only system images are supported. Valid values:
 	//
-	// - zh-CN: Simplified Chinese
+	// - zh-CN: Simplified Chinese.
 	//
-	// - zh-HK: Traditional Chinese (Hong Kong)
+	// - zh-HK: Traditional Chinese (Hong Kong (China)).
 	//
-	// - en-US: American English
+	// - en-US: English.
 	//
-	// - ja-JP: Japanese
+	// - ja-JP: Japanese.
 	//
 	// example:
 	//
 	// zh-CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -84,47 +84,13 @@ type CreateBundleRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The performance level (PL) of the system disk. When the cloud computer instance type that is specified by the DesktopType parameter is set to a graphical instance type or instance type with a high clock speed, you can set the performance level of the disks. For more information about the differences among disks at different PLs, see [Enhanced SSDs](https://help.aliyun.com/document_detail/122389.html).
-	//
-	// Valid values:
-	//
-	// - PL1
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - PL0
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - PL3
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - PL2
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
+	// The performance level of the system cloud disk. When the cloud computer specifications are set to graphics or high frequency, you can configure the cloud disk performance level. For more information about the differences between performance levels, see [ESSD cloud disks](https://help.aliyun.com/document_detail/122389.html). Settings: standard SSD and ESSD cloud disks are supported.
 	//
 	// example:
 	//
 	// PL1
 	RootDiskPerformanceLevel *string `json:"RootDiskPerformanceLevel,omitempty" xml:"RootDiskPerformanceLevel,omitempty"`
-	// The size of the system disk. Unit: GiB. The value of this parameter must be consistent with the system disk size supported by the cloud computer instance type. For more information, see [Overview](https://help.aliyun.com/document_detail/188609.html).
+	// The system disk size. Unit: GiB. The supported system disk sizes correspond to the specifications. For more information, see [Overview of cloud computer specifications](https://help.aliyun.com/document_detail/188609.html).
 	//
 	// This parameter is required.
 	//
@@ -132,47 +98,13 @@ type CreateBundleRequest struct {
 	//
 	// 80
 	RootDiskSizeGib *int32 `json:"RootDiskSizeGib,omitempty" xml:"RootDiskSizeGib,omitempty"`
-	// The PL of the data disk. When the cloud computer instance type that is specified by the DesktopType parameter is set to a graphical instance type or instance type with a high clock speed, you can set the performance level of the disks. For more information about the differences among disks at different PLs, see [Enhanced SSDs](https://help.aliyun.com/document_detail/122389.html).
-	//
-	// Valid values:
-	//
-	// - PL1
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - PL0
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - PL3
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	// - PL2
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
-	//
-	//   <!-- -->
+	// The performance level of the data cloud disk. When the cloud computer specifications are set to graphics or high frequency, you can configure the cloud disk performance level. For more information about the differences between performance levels, see [ESSD cloud disks](https://help.aliyun.com/document_detail/122389.html). Settings: standard SSD and ESSD cloud disks are supported.
 	//
 	// example:
 	//
 	// PL1
 	UserDiskPerformanceLevel *string `json:"UserDiskPerformanceLevel,omitempty" xml:"UserDiskPerformanceLevel,omitempty"`
-	// The data disk sizes. You can configure only one data disk.
+	// The list of data disk sizes. Currently, only one data disk can be configured.
 	//
 	// This parameter is required.
 	//

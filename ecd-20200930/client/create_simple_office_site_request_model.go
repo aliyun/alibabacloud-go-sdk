@@ -56,72 +56,107 @@ type iCreateSimpleOfficeSiteRequest interface {
 }
 
 type CreateSimpleOfficeSiteRequest struct {
-	AccessAttribute *string `json:"AccessAttribute,omitempty" xml:"AccessAttribute,omitempty"`
-	AccountType     *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	AuthorityHost   *string `json:"AuthorityHost,omitempty" xml:"AuthorityHost,omitempty"`
-	// The peak public bandwidth. Valid values: 10 to 200. Unit: Mbps.
+	// The access attribute of the office network (workspace).
 	//
-	// This parameter is valid only when `EnableInternetAccess` is set to `true`.
+	// example:
+	//
+	// Private
+	AccessAttribute *string `json:"AccessAttribute,omitempty" xml:"AccessAttribute,omitempty"`
+	// The account type.
+	//
+	// example:
+	//
+	// SIMPLE
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// The authority URL of the identity authentication service.
+	//
+	// example:
+	//
+	// https://login.microsoftonline.com
+	AuthorityHost *string `json:"AuthorityHost,omitempty" xml:"AuthorityHost,omitempty"`
+	// The peak Internet bandwidth. Valid values: 10 to 200. Unit: Mbit/s.
+	//
+	// You can specify this parameter when `EnableInternetAccess` is set to `true`.
 	//
 	// example:
 	//
 	// 10
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// The instance ID of the Cloud Enterprise Network (CEN) instance.
 	//
-	// > If you want to connect to cloud desktops over a VPC, attach the office site to the same CEN instance that is connected to your on-premises network by a VPN or an Express Connect circuit.
+	// > To connect to cloud desktops over a VPC connection, add the office network to a CEN instance. The CEN instance is the one that the on-premises network connects to by using a VPN or Express Connect circuit.
 	//
 	// example:
 	//
 	// cen-3gwy16dojz1m65****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the CEN instance.
+	// The Alibaba Cloud account ID to which the CEN instance belongs.
 	//
-	// - If you do not specify CenId, or if the CEN instance belongs to your Alibaba Cloud account, this parameter is not required.
+	// - If CenId is not specified or the specified CEN instance belongs to the current Alibaba Cloud account, you do not need to specify this parameter.
 	//
-	// - If the CEN instance is owned by another Alibaba Cloud account, specify the ID of that account.
+	// - If the specified CEN instance belongs to another Alibaba Cloud account, specify the Alibaba Cloud account ID of that account.
 	//
 	// example:
 	//
 	// 118272523431****
 	CenOwnerId *int64 `json:"CenOwnerId,omitempty" xml:"CenOwnerId,omitempty"`
-	// The IPv4 CIDR block for the office site\\"s Virtual Private Cloud (VPC). This parameter is required for standard office sites. The system automatically creates a VPC based on the specified IPv4 CIDR block. Use one of the following CIDR blocks or their subnets:
+	// The IPv4 CIDR block of the VPC for the office network. This parameter is required for advanced office networks. The system uses automatic creation of a VPC based on the specified IPv4 CIDR block. Use one of the following CIDR blocks or their subnets:
 	//
-	// - `10.0.0.0/12` (The valid mask range is 12 to 24 bits.)
+	// - `10.0.0.0/12` (valid mask range: 12 to 24 bits)
 	//
-	// - `172.16.0.0/12` (The valid mask range is 12 to 24 bits.)
+	// - `172.16.0.0/12` (valid mask range: 12 to 24 bits)
 	//
-	// - `192.168.0.0/16` (The valid mask range is 16 to 24 bits.)
+	// - `192.168.0.0/16` (valid mask range: 16 to 24 bits)
 	//
 	// example:
 	//
 	// 172.16.0.0/12
-	CidrBlock    *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	ClientId     *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	// The client ID registered with the identity provider application.
+	//
+	// example:
+	//
+	// a2c8f7e4-1b3d-4c5e-9f0a-6d7b8c9e****
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The client secret registered with the identity provider application.
+	//
+	// example:
+	//
+	// sct-9f3e2d1c****
 	ClientSecret *string `json:"ClientSecret,omitempty" xml:"ClientSecret,omitempty"`
-	// Specifies whether to create a Cloud Box office site.
+	// Specifies whether the office network is a CloudBox office network.
 	//
 	// example:
 	//
 	// false
 	CloudBoxOfficeSite *bool `json:"CloudBoxOfficeSite,omitempty" xml:"CloudBoxOfficeSite,omitempty"`
-	// Specifies how clients can connect to cloud desktops.
+	// The access method allowed when connecting to cloud desktops.
 	//
-	// > VPC connections rely on the Alibaba Cloud PrivateLink service, which is free of charge. If you set this parameter to `VPC` or `Any`, the system automatically enables the PrivateLink service.
+	// > The VPC connection method depends on the Alibaba Cloud PrivateLink service, which is free of charge. If this parameter is set to `VPC` or `Any`, the system automatically activates the PrivateLink service.
 	//
 	// example:
 	//
 	// Internet
 	DesktopAccessType *string `json:"DesktopAccessType,omitempty" xml:"DesktopAccessType,omitempty"`
-	DomainName        *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Eid               *string `json:"Eid,omitempty" xml:"Eid,omitempty"`
-	// Specifies whether to grant users local administrator privileges on their cloud desktops.
+	// The domain name of the enterprise AD.
+	//
+	// example:
+	//
+	// domain.local
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The enterprise ID (EID).
+	//
+	// example:
+	//
+	// e-1234abcd****
+	Eid *string `json:"Eid,omitempty" xml:"Eid,omitempty"`
+	// Specifies whether to grant local administrator permissions to users who use cloud desktops.
 	//
 	// example:
 	//
 	// true
 	EnableAdminAccess *bool `json:"EnableAdminAccess,omitempty" xml:"EnableAdminAccess,omitempty"`
-	// Specifies whether to enable internet access.
+	// Specifies whether to enable public network access.
 	//
 	// example:
 	//
@@ -133,13 +168,13 @@ type CreateSimpleOfficeSiteRequest struct {
 	//
 	// true
 	NeedVerifyZeroDevice *bool `json:"NeedVerifyZeroDevice,omitempty" xml:"NeedVerifyZeroDevice,omitempty"`
-	// The name of the office site. The name must be 2 to 255 characters in length. It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`. The name can contain digits, colons (:), underscores (_), and hyphens (-).
+	// The name of the office network. The name must be 2 to 255 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). The name must start with a letter or Chinese character and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestOfficeSite_Simple
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to get a list of regions that support Elastic Desktop Service (ECD).
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -147,16 +182,21 @@ type CreateSimpleOfficeSiteRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The tenant ID of the identity provider.
+	//
+	// example:
+	//
+	// 72f988bf-86f1-41af-91ab-2d7cd011****
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The vSwitch ID. This parameter is required when you create a Cloud Box office site.
+	// The ID of the vSwitch in the VPC. This parameter is required when you create a CloudBox office network.
 	VSwitchId []*string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty" type:"Repeated"`
-	// The verification code. If the CEN instance is owned by another Alibaba Cloud account, you must first call [SendVerifyCode](https://help.aliyun.com/document_detail/335132.html) to obtain a verification code.
+	// The verification code. If the specified CEN instance belongs to another Alibaba Cloud account, call [SendVerifyCode](https://help.aliyun.com/document_detail/335132.html) to obtain the verification code first.
 	//
 	// example:
 	//
 	// 123456
 	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
-	// The type of the office site.
+	// The type of the office network.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iDescribeUsersPasswordResponseBody interface {
 }
 
 type DescribeUsersPasswordResponseBody struct {
-	// The authorized users of the cloud computer.
+	// The list of accounts in the cloud computer image.
 	DesktopUsers []*DescribeUsersPasswordResponseBodyDesktopUsers `json:"DesktopUsers,omitempty" xml:"DesktopUsers,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,19 +66,19 @@ func (s *DescribeUsersPasswordResponseBody) Validate() error {
 }
 
 type DescribeUsersPasswordResponseBodyDesktopUsers struct {
-	// The display name of the end user.
+	// The display name of the account in the cloud computer image.
 	//
 	// example:
 	//
 	// demo_user01_1488****
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The ID of the end user.
+	// The end user ID.
 	//
 	// example:
 	//
 	// demo_user01
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The password of the end user.
+	// The password of the account in the cloud computer image.
 	//
 	// example:
 	//

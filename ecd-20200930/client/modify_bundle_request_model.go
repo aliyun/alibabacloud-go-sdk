@@ -24,7 +24,7 @@ type iModifyBundleRequest interface {
 }
 
 type ModifyBundleRequest struct {
-	// The ID of the cloud computer template that you want to modify.
+	// The cloud computer template ID.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,13 @@ type ModifyBundleRequest struct {
 	//
 	// b-2g65ljy4291vl****
 	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	// The name of the new cloud computer template.
+	// The new cloud computer template name.
 	//
 	// example:
 	//
 	// newName
 	BundleName *string `json:"BundleName,omitempty" xml:"BundleName,omitempty"`
-	// The description of the new cloud computer template.
+	// The new cloud computer template description.
 	//
 	// example:
 	//
@@ -46,35 +46,25 @@ type ModifyBundleRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The new image ID. The new image must meet the following conditions:
 	//
-	// 	- The new image must be in the Available state.
+	// - The new image must be in the Available state.
 	//
-	// 	- The operating system of the new image must be the same as that of the original image.
+	// - The new image must have the same operating system as the original image.
 	//
-	// 	- The required disk size for the new image cannot be greater than that for the original image.
+	// - The disk size required by the new image cannot be larger than that of the original image.
 	//
-	// 	- The GPU type of the new image must be the same as that of the original image.
+	// - The GPU type of the new image must be the same as that of the original image.
 	//
 	// example:
 	//
 	// m-aea3oaww001np****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The OS language. This parameter is available only for system images.
-	//
-	// Valid values:
-	//
-	// 	- en-US: American English
-	//
-	// 	- zh-HK: Traditional Chinese (Hong Kong)
-	//
-	// 	- zh-CN: Simplified Chinese.
-	//
-	// 	- ja-JP: Japanese
+	// The operating system language. Currently, only system images are supported.
 	//
 	// example:
 	//
 	// zh-CN
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

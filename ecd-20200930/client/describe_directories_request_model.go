@@ -26,13 +26,13 @@ type iDescribeDirectoriesRequest interface {
 }
 
 type DescribeDirectoriesRequest struct {
-	// Details of directory IDs. You can specify one or more directory IDs.
+	// The directory IDs. You can specify one or more directory IDs.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-gx2x1dhsmu52rd****
 	DirectoryId []*string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty" type:"Repeated"`
-	// The directory status. This parameter is equivalent to `Status`.
+	// The directory status. This parameter is the same as Status.
 	//
 	// example:
 	//
@@ -40,17 +40,11 @@ type DescribeDirectoriesRequest struct {
 	DirectoryStatus *string `json:"DirectoryStatus,omitempty" xml:"DirectoryStatus,omitempty"`
 	// The directory type.
 	//
-	// Valid value:
-	//
-	// 	- SIMPLE: the convenience directory.
-	//
-	// 	- AD_CONNECTOR: the Active Directory (AD) directory.
-	//
 	// example:
 	//
 	// SIMPLE
 	DirectoryType *string `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page in a paged query.
 	//
 	// Maximum value: 100.
 	//
@@ -60,13 +54,13 @@ type DescribeDirectoriesRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the next query. If this parameter is empty, all results are returned.
+	// The pagination token for the next query. An empty value indicates that no more results exist.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -75,80 +69,6 @@ type DescribeDirectoriesRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The directory status.
-	//
-	// Valid values:
-	//
-	// 	- REGISTERING: The directory is being registered.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- DEREGISTERING: The directory is being deregistered.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- REGISTERED: The directory is registered.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- NEEDCONFIGTRUST: A trust relationship needs to be configured for the directory.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- CONFIGTRUSTFAILED: A trust relationship fails to be configured for the directory.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- DEREGISTERED: The directory is deregistered.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- ERROR: One or more configurations of the directory are invalid.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- CONFIGTRUSTING: A trust relationship is being configured.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- NEEDCONFIGUSER: Users need to be configured for the directory.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//

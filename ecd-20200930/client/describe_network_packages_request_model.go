@@ -40,13 +40,13 @@ type DescribeNetworkPackagesRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The IDs of the premium Internet bandwidth plans. You can specify 1 to 100 IDs.
+	// The IDs of premium Internet bandwidth plans. You can specify 1 to 100 IDs.
 	//
 	// example:
 	//
 	// np-amtp8e8q1o9e4****
 	NetworkPackageId []*string `json:"NetworkPackageId,omitempty" xml:"NetworkPackageId,omitempty" type:"Repeated"`
-	// The token for the next query.
+	// The pagination token for the next query.
 	//
 	// example:
 	//
@@ -59,8 +59,9 @@ type DescribeNetworkPackagesRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tag      []*DescribeNetworkPackagesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The tags. A maximum of 20 tags are supported.
+	Tag []*DescribeNetworkPackagesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeNetworkPackagesRequest) String() string {
@@ -139,7 +140,17 @@ func (s *DescribeNetworkPackagesRequest) Validate() error {
 }
 
 type DescribeNetworkPackagesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key. If you specify this parameter, the value cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
+	//
+	// example:
+	//
+	// TestValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

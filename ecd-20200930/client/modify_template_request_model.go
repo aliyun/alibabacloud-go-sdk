@@ -54,9 +54,17 @@ type iModifyTemplateRequest interface {
 }
 
 type ModifyTemplateRequest struct {
-	AutoPay      *bool                                `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoRenew    *bool                                `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ChargeType   *string                              `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// Specifies whether automatic payment is enabled for the subscription order.
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// Specifies whether to enable auto-renewal for the subscription cloud computer.
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The billing method of the cloud computer.
+	//
+	// example:
+	//
+	// PrePaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The system cloud disk performance level.
 	DataDiskList []*ModifyTemplateRequestDataDiskList `json:"DataDiskList,omitempty" xml:"DataDiskList,omitempty" type:"Repeated"`
 	// The default language that is set when the cloud computer starts. This parameter takes effect only when a system image is used to create the cloud computer.
 	//
@@ -66,7 +74,7 @@ type ModifyTemplateRequest struct {
 	DefaultLanguage *string `json:"DefaultLanguage,omitempty" xml:"DefaultLanguage,omitempty"`
 	// The description of the template. The description must meet the following requirements:
 	//
-	// - The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// - The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
 	//
 	// - The description can contain Chinese characters, letters, digits, spaces, and special characters. Line breaks are supported.
 	//
@@ -74,24 +82,57 @@ type ModifyTemplateRequest struct {
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the cloud computer image. You can query the ID on the image management page. System images and custom images are supported.
+	// The ID of the cloud computer image. You can query the ID on the Image Management page. System images and custom images are supported.
 	//
 	// example:
 	//
 	// m-gx2x1dhsmusr2****
-	ImageId    *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	Period     *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The subscription duration of the subscription cloud computer. This parameter takes effect and is required only when `ChargeType` is set to `PrePaid`. The unit is specified by `PeriodUnit`.
+	//
+	// - If `PeriodUnit` is set to `Month`, valid values:
+	//
+	//     - 1
+	//
+	//     - 2
+	//
+	//     - 3
+	//
+	//     - 6
+	//
+	// - If `PeriodUnit` is set to `Year`, valid values:
+	//
+	//     - 1
+	//
+	//     - 2
+	//
+	//     - 3
+	//
+	//     - 4
+	//
+	//     - 5
+	//
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The unit of the subscription duration for the subscription billing method.
+	//
+	// example:
+	//
+	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// The ID of the global policy.
 	//
 	// example:
 	//
 	// pg-gx2x1dhsmthe9****
-	PolicyGroupId       *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	PostPaidAfterUsedUp *bool   `json:"PostPaidAfterUsedUp,omitempty" xml:"PostPaidAfterUsedUp,omitempty"`
-	// The region-specific template configurations. Multiple configurations are supported. The configuration that matches the specific region is used.
+	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// Specifies whether to automatically switch to pay-as-you-go billing after the duration plan is used up.
+	PostPaidAfterUsedUp *bool `json:"PostPaidAfterUsedUp,omitempty" xml:"PostPaidAfterUsedUp,omitempty"`
+	// The region-specific template configurations. You can specify multiple configurations. The configuration that matches the specific region is used.
 	//
-	// > A maximum of 20 region configurations are supported.
+	// > You can specify configurations for up to 20 regions.
 	RegionConfigList []*ModifyTemplateRequestRegionConfigList `json:"RegionConfigList,omitempty" xml:"RegionConfigList,omitempty" type:"Repeated"`
 	// The resource group ID.
 	//
@@ -99,12 +140,13 @@ type ModifyTemplateRequest struct {
 	//
 	// rg-a5fqjjqaejt***
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags of the cloud computer in key-value format. A maximum of 20 tags can be specified.
+	// The tags of the cloud computer in key-value format. You can specify up to 20 tags.
 	ResourceTagList []*ModifyTemplateRequestResourceTagList `json:"ResourceTagList,omitempty" xml:"ResourceTagList,omitempty" type:"Repeated"`
-	SiteConfigList  []*ModifyTemplateRequestSiteConfigList  `json:"SiteConfigList,omitempty" xml:"SiteConfigList,omitempty" type:"Repeated"`
+	// The site configuration management.
+	SiteConfigList []*ModifyTemplateRequestSiteConfigList `json:"SiteConfigList,omitempty" xml:"SiteConfigList,omitempty" type:"Repeated"`
 	// The type of the system cloud disk.
 	//
-	// > Only high-frequency and GPU-accelerated cloud computer specifications support ESSD cloud disks.
+	// > Only high frequency and graphics cloud computer specifications support ESSD cloud disks.
 	//
 	// example:
 	//
@@ -128,15 +170,15 @@ type ModifyTemplateRequest struct {
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The name of the template. The name must meet the following requirements:
 	//
-	// - The name must be 2 to 126 characters in length and can contain letters and Chinese characters.
+	// - The name must be 2 to 126 characters in length.
 	//
-	// - The name must start with a letter or a Chinese character. The name cannot start with `http://` or `https://`.
+	// - The name must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
 	//
 	// - The name can contain letters, digits, Chinese characters, colons (:), underscores (_), or hyphens (-). Periods (.) are not supported.
 	//
 	// example:
 	//
-	// My cloud desktop template 001
+	// MyCloudComputerTemplate001
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// The configuration group ID.
 	//
@@ -144,7 +186,12 @@ type ModifyTemplateRequest struct {
 	//
 	// bcc-dweha*****
 	TimerGroupId *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
-	UserDuration *int32  `json:"UserDuration,omitempty" xml:"UserDuration,omitempty"`
+	// The per-user usage duration plan.
+	//
+	// example:
+	//
+	// 120
+	UserDuration *int32 `json:"UserDuration,omitempty" xml:"UserDuration,omitempty"`
 }
 
 func (s ModifyTemplateRequest) String() string {
@@ -386,6 +433,10 @@ func (s *ModifyTemplateRequest) Validate() error {
 
 type ModifyTemplateRequestDataDiskList struct {
 	// The performance level of the data cloud disk. Default value: `AutoPL`.
+	//
+	// example:
+	//
+	// AutoPL
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
 	// The size of the data cloud disk. Unit: GiB. Valid values: 40 to 2040. The value must be a multiple of 10.
 	//
@@ -432,7 +483,7 @@ type ModifyTemplateRequestRegionConfigList struct {
 	//
 	// cn-hangzhou+dir-709****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The region ID. Call [DescribeRegions](~~DescribeRegions~~) to query the list of regions supported by Elastic Desktop Service.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the list of regions supported by Elastic Desktop Service.
 	//
 	// example:
 	//
@@ -456,13 +507,13 @@ type ModifyTemplateRequestRegionConfigList struct {
 	//
 	// vsw-adjrehad1****
 	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
-	// Specifies whether to enable cloud disk encryption.
+	// Specifies whether to enable disk encryption.
 	//
 	// example:
 	//
 	// false
 	VolumeEncryptionEnable *bool `json:"VolumeEncryptionEnable,omitempty" xml:"VolumeEncryptionEnable,omitempty"`
-	// The ID of the KMS key used when cloud disk encryption is enabled.
+	// The ID of the KMS key used when disk encryption is enabled.
 	//
 	// example:
 	//
@@ -591,8 +642,18 @@ func (s *ModifyTemplateRequestResourceTagList) Validate() error {
 }
 
 type ModifyTemplateRequestSiteConfigList struct {
+	// The application control policy ID.
+	//
+	// example:
+	//
+	// bwr-5a5371e0*******
 	AppRuleId *string `json:"AppRuleId,omitempty" xml:"AppRuleId,omitempty"`
-	SiteId    *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// The site name.
+	//
+	// example:
+	//
+	// mainland
+	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 }
 
 func (s ModifyTemplateRequestSiteConfigList) String() string {

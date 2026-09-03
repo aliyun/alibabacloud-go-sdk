@@ -16,13 +16,13 @@ type iCreateADConnectorOfficeSiteResponseBody interface {
 }
 
 type CreateADConnectorOfficeSiteResponseBody struct {
-	// The ID of the office network.
+	// The office network ID.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

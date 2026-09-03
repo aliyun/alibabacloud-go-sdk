@@ -18,9 +18,9 @@ type iDescribeAutoSnapshotPolicyResponseBody interface {
 }
 
 type DescribeAutoSnapshotPolicyResponseBody struct {
-	// The automatic snapshot policies.
+	// The list of automatic snapshot policies.
 	AutoSnapshotPolicies []*DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies `json:"AutoSnapshotPolicies,omitempty" xml:"AutoSnapshotPolicies,omitempty" type:"Repeated"`
-	// The pagination token that is used in the next request to retrieve a new page of results. If the return value is empty, no more results are returned.
+	// The pagination token for the next query. If NextToken is empty, no more results exist.
 	//
 	// example:
 	//
@@ -83,31 +83,29 @@ func (s *DescribeAutoSnapshotPolicyResponseBody) Validate() error {
 }
 
 type DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies struct {
-	// The time when the policy was created. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
+	// The creation time. The time follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2023-01-11T09:14:00Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The cron expression that is used to create snapshots.
+	// The cron expression that specifies the snapshot creation time.
 	//
 	// example:
 	//
 	// 0 0 5,7 ? 	- 2/2
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// The number of cloud computers to which the automatic snapshot policy is applied.
+	// The number of cloud computers to which the snapshot policy is attached.
 	//
 	// example:
 	//
 	// 1
 	DesktopNum *int32 `json:"DesktopNum,omitempty" xml:"DesktopNum,omitempty"`
-	// The disk type for which the automatic snapshot policy is created.
+	// The cloud disk type.
 	//
-	// Valid values:
+	// example:
 	//
-	// - SYSTEM: system disk
-	//
-	// - DATA: data disk
+	// SYSTEM
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	// The ID of the automatic snapshot policy.
 	//
@@ -115,19 +113,19 @@ type DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies struct {
 	//
 	// sp-3e3bmfcdkjfl1****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The name of the automatic snapshot policy.
+	// The Policy Name of the automatic snapshot policy.
 	//
 	// example:
 	//
 	// snapshot01
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The ID of the region where the automatic snapshot policy resides.
+	// The region ID of the automatic snapshot policy.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The retention period of automatic snapshots. Unit: days. Valid values: 1 to 180.
+	// The retention period of automatic snapshots, in days. Valid values: 1 to 180.
 	//
 	// example:
 	//
@@ -139,9 +137,9 @@ type DescribeAutoSnapshotPolicyResponseBodyAutoSnapshotPolicies struct {
 	//
 	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The points in time when automatic snapshots are created.
+	// The points in time at which automatic snapshots are created.
 	//
-	// The value is a JSON array of integers. Example: `["0", "1", ... "23"]`. A maximum of 24 points in time can be specified.
+	// The parameter value is a JSON array in the format of `["0", "1", ... "23"]`, with a maximum of 24 time points separated by commas (,).
 	//
 	// example:
 	//

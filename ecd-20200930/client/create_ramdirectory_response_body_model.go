@@ -16,7 +16,7 @@ type iCreateRAMDirectoryResponseBody interface {
 }
 
 type CreateRAMDirectoryResponseBody struct {
-	// The RAM directory ID.
+	// The ID of the RAM-type directory.
 	//
 	// example:
 	//

@@ -18,21 +18,17 @@ type iUnbindConfigGroupRequest interface {
 }
 
 type UnbindConfigGroupRequest struct {
-	// The ID of the region. Set the value to `cn-shanghai`.
+	// The region ID. This operation is not region-specific. Set this parameter to `cn-shanghai`.
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resources from which you want to unbind the configuration group.
+	// The information about the resources to unbind.
 	//
 	// This parameter is required.
 	ResourceInfos []*UnbindConfigGroupRequestResourceInfos `json:"ResourceInfos,omitempty" xml:"ResourceInfos,omitempty" type:"Repeated"`
-	// The type of the configuration group.
-	//
-	// Valid value:
-	//
-	// 	- Timer: the scheduled task type.
+	// The type of the configuration group to unbind.
 	//
 	// This parameter is required.
 	//
@@ -91,17 +87,13 @@ func (s *UnbindConfigGroupRequest) Validate() error {
 }
 
 type UnbindConfigGroupRequestResourceInfos struct {
-	// The service type of the resource.
-	//
-	// Valid value:
-	//
-	// 	- CLOUD_DESKTOP: the cloud computer service.
+	// The product type to which the resource belongs.
 	//
 	// example:
 	//
 	// CLOUD_DESKTOP
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// example:
 	//
@@ -113,13 +105,7 @@ type UnbindConfigGroupRequestResourceInfos struct {
 	//
 	// cn-chengdu
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
-	// The type of the resource.
-	//
-	// Valid values:
-	//
-	// 	- RESOURCE_GROUP: the resource group.
-	//
-	// 	- CLOUD_DESKTOP: the cloud computer service.
+	// The resource type.
 	//
 	// example:
 	//

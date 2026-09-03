@@ -26,11 +26,7 @@ type SetDirectorySsoStatusRequest struct {
 	//
 	// cn-hangzhou+dir-h95efs1mbukd9****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// Specifies whether to enable or disable single sign-on (SSO). Valid values:
-	//
-	// - true: enables SSO
-	//
-	// - false: disables SSO.
+	// Specifies whether to enable or shutdown SSO logon.
 	//
 	// This parameter is required.
 	//

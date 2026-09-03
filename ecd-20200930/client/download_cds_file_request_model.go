@@ -22,7 +22,7 @@ type iDownloadCdsFileRequest interface {
 }
 
 type DownloadCdsFileRequest struct {
-	// The enterprise cloud drive ID.
+	// The enterprise cloud disk ID.
 	//
 	// example:
 	//

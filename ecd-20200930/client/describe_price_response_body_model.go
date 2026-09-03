@@ -62,21 +62,21 @@ func (s *DescribePriceResponseBody) Validate() error {
 }
 
 type DescribePriceResponseBodyPriceInfo struct {
-	// Indicates whether a free enterprise drive is available.
+	// Indicates whether a free enterprise cloud disk is available.
 	//
 	// example:
 	//
 	// true
 	FreeCdsQuota *bool `json:"FreeCdsQuota,omitempty" xml:"FreeCdsQuota,omitempty"`
-	// The free capacity provided by the enterprise drive. Unit: GiB.
+	// The free capacity of the enterprise cloud disk. Unit: GiB.
 	//
 	// example:
 	//
 	// 100
 	FreeCdsSize *int64 `json:"FreeCdsSize,omitempty" xml:"FreeCdsSize,omitempty"`
-	// The price.
+	// The price information.
 	Price *DescribePriceResponseBodyPriceInfoPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
-	// The details of the promotion rules.
+	// The promotion rule information.
 	Rules []*DescribePriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -143,19 +143,21 @@ func (s *DescribePriceResponseBodyPriceInfo) Validate() error {
 }
 
 type DescribePriceResponseBodyPriceInfoPrice struct {
-	// The unit of currency (USD).
+	// <props="china">The currency unit (CNY).
+	//
+	// <props="intl">The currency unit (USD).
 	//
 	// example:
 	//
 	// CNY/USD
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	// The discounted amount.
+	// The discount amount.
 	//
 	// example:
 	//
 	// 15.8
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
-	// The orders.
+	// The order information.
 	OrderLines map[string]*string `json:"OrderLines,omitempty" xml:"OrderLines,omitempty"`
 	// The original price.
 	//
@@ -163,15 +165,15 @@ type DescribePriceResponseBodyPriceInfoPrice struct {
 	//
 	// 79.0
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// The promotions.
+	// The promotion information.
 	Promotions []*DescribePriceResponseBodyPriceInfoPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
-	// The price under an effective savings plan.
+	// The price under the savings plan.
 	//
 	// example:
 	//
 	// 50.00
 	SpPrice *int64 `json:"SpPrice,omitempty" xml:"SpPrice,omitempty"`
-	// The actual price. The original price minus the discounted amount equals the actual price.
+	// The actual payment price. The value is the original price minus the discount amount.
 	//
 	// example:
 	//
@@ -264,17 +266,17 @@ func (s *DescribePriceResponseBodyPriceInfoPrice) Validate() error {
 }
 
 type DescribePriceResponseBodyPriceInfoPricePromotions struct {
-	// The description of the promotion rule.
+	// The promotion rule description.
 	//
 	// example:
 	//
 	// test
 	OptionCode *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
-	// The description of the promotion.
+	// The promotion description.
 	//
 	// example:
 	//
-	// 新品上市，立享优惠
+	// New product launch with special discount
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
 	// The promotion ID.
 	//
@@ -288,7 +290,7 @@ type DescribePriceResponseBodyPriceInfoPricePromotions struct {
 	//
 	// Featured deals
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
-	// Indicates whether an item is selected.
+	// Indicates whether the promotion is selected.
 	//
 	// example:
 	//
@@ -354,11 +356,11 @@ func (s *DescribePriceResponseBodyPriceInfoPricePromotions) Validate() error {
 }
 
 type DescribePriceResponseBodyPriceInfoRules struct {
-	// The description of the rule.
+	// The rule description.
 	//
 	// example:
 	//
-	// 买满1年，立享官网价格8.5折优惠。
+	// Get 15% off the list price when you purchase for one year or longer
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The rule ID.
 	//

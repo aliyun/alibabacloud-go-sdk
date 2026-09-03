@@ -22,15 +22,15 @@ type iDescribeCloudDriveGroupsResponseBody interface {
 }
 
 type DescribeCloudDriveGroupsResponseBody struct {
-	// The list of team spaces.
+	// The list of cloud drive team spaces.
 	CloudDriveGroups []*DescribeCloudDriveGroupsResponseBodyCloudDriveGroups `json:"CloudDriveGroups,omitempty" xml:"CloudDriveGroups,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 0
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	// The token for the next query. If `NextToken` is empty, no more results exist.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeCloudDriveGroupsResponseBody struct {
 	//
 	// EF015AE5-B30A-5189-B519-735CEE40****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//
@@ -117,75 +117,69 @@ func (s *DescribeCloudDriveGroupsResponseBody) Validate() error {
 }
 
 type DescribeCloudDriveGroupsResponseBodyCloudDriveGroups struct {
-	// List of group administrators.
+	// The list of team administrators.
 	//
 	// example:
 	//
 	// ["user01"]
 	AdminUserIds *string `json:"AdminUserIds,omitempty" xml:"AdminUserIds,omitempty"`
-	// Administrator information for the group space.
+	// The team storage management administrator information.
 	AdminUserInfos []*DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos `json:"AdminUserInfos,omitempty" xml:"AdminUserInfos,omitempty" type:"Repeated"`
-	// The time when the team space was created.
+	// The creation time. The time is in the ISO 8601 standard in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2022-04-11T07:44:21Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The workspace ID.
+	// The office network ID.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-959593****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The team space ID.
+	// The space ID.
 	//
 	// example:
 	//
 	// sh1234
 	DriveId *string `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
-	// The team ID.
+	// The team space ID.
 	//
 	// example:
 	//
 	// cg-e70ga4ixp30ur****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the team space.
+	// The team space name.
 	//
 	// example:
 	//
-	// Test team 1
+	// TestTeam1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Organization ID of the team.
+	// The organization ID of the team.
 	//
 	// example:
 	//
 	// org-aliyun-wy-org-id
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// Size of the recycle bin for the team space. Unit: Byte.
+	// The size of the team space recycle bin. Unit: bytes.
 	//
 	// example:
 	//
 	// 1024000
 	RecycleBinSize *string `json:"RecycleBinSize,omitempty" xml:"RecycleBinSize,omitempty"`
-	// The team space status. Valid values:
-	//
-	// - enabled
-	//
-	// - disabled
-	//
-	// Default value: enabled.
+	// The team space status.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total capacity of the team space.
+	// The total capacity of the cloud drive team space.
 	//
 	// example:
 	//
 	// 5368709120
 	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
-	// The capacity of the used space. Unit: bytes.
+	// The used space size. Unit: bytes.
 	//
 	// example:
 	//
@@ -323,47 +317,47 @@ func (s *DescribeCloudDriveGroupsResponseBodyCloudDriveGroups) Validate() error 
 }
 
 type DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos struct {
-	// Mailbox.
+	// The email address.
 	//
 	// example:
 	//
 	// 123@aliyun.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// Administrator username (may be unreadable when imported from a third party).
+	// The administrator username. This value may not be readable when imported from a third party.
 	//
 	// example:
 	//
 	// user01
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// Job number (DingTalk)
+	// The employee ID (DingTalk).
 	//
 	// example:
 	//
 	// 12345
 	JobNumber *string `json:"JobNumber,omitempty" xml:"JobNumber,omitempty"`
-	// Administrator nickname.
+	// The administrator nickname.
 	//
 	// example:
 	//
-	// John Doe
+	// John
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// Phone number.
+	// The phone number.
 	//
 	// example:
 	//
 	// 12345678
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	// Administrator nickname.
+	// The administrator nickname.
 	//
 	// example:
 	//
-	// John Doe
+	// John
 	RealNickName *string `json:"RealNickName,omitempty" xml:"RealNickName,omitempty"`
-	// Remark.
+	// The remarks.
 	//
 	// example:
 	//
-	// John Doe
+	// John
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 

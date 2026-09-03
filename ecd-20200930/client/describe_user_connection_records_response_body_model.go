@@ -18,15 +18,15 @@ type iDescribeUserConnectionRecordsResponseBody interface {
 }
 
 type DescribeUserConnectionRecordsResponseBody struct {
-	// The connection records.
+	// The array of user connection records.
 	ConnectionRecords []*DescribeUserConnectionRecordsResponseBodyConnectionRecords `json:"ConnectionRecords,omitempty" xml:"ConnectionRecords,omitempty" type:"Repeated"`
-	// The token that is used to start the next query.
+	// The pagination token for the next query.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -89,31 +89,31 @@ type DescribeUserConnectionRecordsResponseBodyConnectionRecords struct {
 	//
 	// 1800000
 	ConnectDuration *string `json:"ConnectDuration,omitempty" xml:"ConnectDuration,omitempty"`
-	// The time when the end user disconnected from the cloud computer.
+	// The connection end time.
 	//
 	// example:
 	//
 	// 2022-02-27T20:03:13Z
 	ConnectEndTime *string `json:"ConnectEndTime,omitempty" xml:"ConnectEndTime,omitempty"`
-	// The time when the end user connected to the cloud computer.
+	// The connection start time.
 	//
 	// example:
 	//
 	// 2022-01-19T10:12:38Z
 	ConnectStartTime *string `json:"ConnectStartTime,omitempty" xml:"ConnectStartTime,omitempty"`
-	// The ID of the connection record.
+	// The connection record ID.
 	//
 	// example:
 	//
 	// 528
 	ConnectionRecordId *string `json:"ConnectionRecordId,omitempty" xml:"ConnectionRecordId,omitempty"`
-	// The ID of the cloud computer to which the end user connected.
+	// The ID of the connected cloud computer.
 	//
 	// example:
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The name of the cloud computer to which the end user connected.
+	// The name of the connected cloud computer.
 	//
 	// example:
 	//

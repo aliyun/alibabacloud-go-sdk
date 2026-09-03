@@ -46,13 +46,13 @@ type iDescribeClientEventsRequest interface {
 }
 
 type DescribeClientEventsRequest struct {
-	// The cloud computer ID. If you do not specify this parameter, all cloud computers in the region are queried.
+	// The cloud computer ID. If this parameter is not specified, all cloud computers in the region are queried.
 	//
 	// example:
 	//
 	// ecd-8fupvkhg0aayu****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The IP address of the cloud computer. If you do not specify this parameter, events of all cloud computers in the region are queried.
+	// The IP address of the cloud computer. If this parameter is not specified, events of all cloud computers in the region are queried.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type DescribeClientEventsRequest struct {
 	//
 	// example:
 	//
-	// test
+	// Finance cloud computer
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
 	// > This parameter is not publicly available.
 	//
@@ -70,18 +70,19 @@ type DescribeClientEventsRequest struct {
 	//
 	// To be hidden.
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The end time. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC+0. If you do not specify this parameter, the current time is used.
+	// The end time. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC+0. If this parameter is not specified, the current time is used.
 	//
 	// example:
 	//
 	// 2020-11-31T06:32:31Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The logon user information, which is a Resource Access Management (RAM) user ID or AD username. If you do not specify this parameter, events of all users in the region are queried.
+	// The logon user information, which is a Resource Access Management (RAM) user ID or AD username. If this parameter is not specified, events of all users in the region are queried.
 	//
 	// example:
 	//
 	// 28961708130834****
-	EndUserId  *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The list of end user IDs.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
 	// The event type to query. If EventTypes is not empty, the EventTypes combination is used as the query filter condition. If both EventTypes and EventType are empty, all events are queried.
 	//
@@ -89,23 +90,29 @@ type DescribeClientEventsRequest struct {
 	//
 	// DESKTOP_DISCONNECT
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The combination of event types to query. You can specify multiple event types. The query results include events of all specified types.
-	EventTypes       []*string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
-	FillHardwareInfo *bool     `json:"FillHardwareInfo,omitempty" xml:"FillHardwareInfo,omitempty"`
-	Language         *string   `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The combination of event types to query. You can specify multiple event types. The query results include all events of the specified types.
+	EventTypes []*string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
+	// Specifies whether to include terminal information in the response.
+	FillHardwareInfo *bool `json:"FillHardwareInfo,omitempty" xml:"FillHardwareInfo,omitempty"`
+	// The language type of the returned information.
+	//
+	// example:
+	//
+	// zh-CN
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// The number of entries per page for a paged query. Default value: 100.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set this parameter to the value of NextToken returned in the previous API call.
+	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6nmB7qrRFJ8vmttjxPL****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the office network to which the cloud computer belongs. If you do not specify this parameter, user events in all office networks in the region are queried.
+	// The ID of the office network to which the cloud computer belongs. If this parameter is not specified, user events in all office networks in the region are queried.
 	//
 	// example:
 	//
@@ -115,7 +122,7 @@ type DescribeClientEventsRequest struct {
 	//
 	// example:
 	//
-	// test
+	// R&D office network
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
 	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
@@ -125,7 +132,7 @@ type DescribeClientEventsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC+0. If you do not specify this parameter, events are queried backward from the time specified by `EndTime`.
+	// The start time. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC+0. If this parameter is not specified, events are queried backward from the time specified by `EndTime`.
 	//
 	// example:
 	//

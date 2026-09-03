@@ -16,9 +16,9 @@ type iDescribeDesktopInfoResponseBody interface {
 }
 
 type DescribeDesktopInfoResponseBody struct {
-	// Basic desktop information.
+	// The basic information of cloud computers.
 	Desktops []*DescribeDesktopInfoResponseBodyDesktops `json:"Desktops,omitempty" xml:"Desktops,omitempty" type:"Repeated"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,57 +66,57 @@ func (s *DescribeDesktopInfoResponseBody) Validate() error {
 }
 
 type DescribeDesktopInfoResponseBodyDesktops struct {
-	// User connection status.
+	// The connection status of the user.
 	//
 	// example:
 	//
 	// Disconnected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// Desktop image version number.
+	// The image version number of the cloud computer.
 	//
 	// example:
 	//
 	// 1.4.0-R-***
 	CurrentAppVersion *string `json:"CurrentAppVersion,omitempty" xml:"CurrentAppVersion,omitempty"`
-	// Desktop group ID.
+	// The cloud computer pool ID.
 	//
 	// example:
 	//
 	// dg-3uiojcc0j4kh7****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// Desktop ID.
+	// The cloud computer ID.
 	//
 	// example:
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The status of the cloud desktop.
+	// The status of the cloud computer.
 	//
 	// example:
 	//
 	// Running
 	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
-	// The management flag.
+	// The management flags.
 	ManagementFlag []*string `json:"ManagementFlag,omitempty" xml:"ManagementFlag,omitempty" type:"Repeated"`
-	// Upgrade package size, in KB.
+	// The size of the upgrade package, in KB.
 	//
 	// example:
 	//
 	// 568533470
 	NewAppSize *int64 `json:"NewAppSize,omitempty" xml:"NewAppSize,omitempty"`
-	// Desktop upgradable image version number.
+	// The image version number to which the cloud computer can be upgraded.
 	//
 	// example:
 	//
 	// 1.6.0-R-***
 	NewAppVersion *string `json:"NewAppVersion,omitempty" xml:"NewAppVersion,omitempty"`
-	// Description of the upgradable image version.
+	// The description of the image version to which the cloud computer can be upgraded.
 	//
 	// example:
 	//
 	// Test upgrade package 03-07
 	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
-	// Desktop first startup time.
+	// The time when the cloud computer was first started. The time is in the ISO 8601 standard (UTC).
 	//
 	// example:
 	//

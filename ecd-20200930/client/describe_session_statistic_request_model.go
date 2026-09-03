@@ -24,7 +24,7 @@ type iDescribeSessionStatisticRequest interface {
 }
 
 type DescribeSessionStatisticRequest struct {
-	// The end of the time range to query.
+	// The end time of the query. UNIX timestamp, in milliseconds.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DescribeSessionStatisticRequest struct {
 	//
 	// cn-shanghai+dir-259382****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The query interval. Unit: seconds. Valid values:
+	// The query interval, in seconds. Valid values:
 	//
 	// - 60
 	//
@@ -52,13 +52,13 @@ type DescribeSessionStatisticRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The region ID used to filter desktop information for a specified region.
+	// The region ID used to filter desktop information in a specified region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	SearchRegionId *string `json:"SearchRegionId,omitempty" xml:"SearchRegionId,omitempty"`
-	// The beginning of the time range to query.
+	// The start time of the query. UNIX timestamp, in milliseconds.
 	//
 	// example:
 	//

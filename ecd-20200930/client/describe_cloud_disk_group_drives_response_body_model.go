@@ -22,15 +22,15 @@ type iDescribeCloudDiskGroupDrivesResponseBody interface {
 }
 
 type DescribeCloudDiskGroupDrivesResponseBody struct {
-	// The list of cloud disk team drives.
+	// The list of cloud disk team spaces.
 	CloudDriveGroups []*DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups `json:"CloudDriveGroups,omitempty" xml:"CloudDriveGroups,omitempty" type:"Repeated"`
-	// The total number of results.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The token that marks the start of the next query. An empty NextToken means no more results.
+	// The token for the next query. If NextToken is empty, no more results are available.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeCloudDiskGroupDrivesResponseBody struct {
 	//
 	// B9F9CBBE-8A9F-5FE5-8A72-0E81C2401A91
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation succeeded.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeCloudDiskGroupDrivesResponseBody) Validate() error {
 }
 
 type DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups struct {
-	// The time the drive was created.
+	// The creation time. The time is in the ISO 8601 standard in the UTC format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -129,23 +129,23 @@ type DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups struct {
 	//
 	// cn-hangzhou+dir-959593****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The drive ID.
+	// The space ID.
 	//
 	// example:
 	//
 	// 1234
 	DriveId *string `json:"DriveId,omitempty" xml:"DriveId,omitempty"`
-	// The team drive ID.
+	// The team space ID.
 	//
 	// example:
 	//
 	// cg-e70ga4ixp30ur****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The team drive name.
+	// The team space name.
 	//
 	// example:
 	//
-	// Test team 1
+	// TestTeam1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The organization ID of the team.
 	//
@@ -153,19 +153,19 @@ type DescribeCloudDiskGroupDrivesResponseBodyCloudDriveGroups struct {
 	//
 	// org-aliyun-wy-org-id
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// The status of the team drive.
+	// The team space status.
 	//
 	// example:
 	//
 	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The total capacity of the cloud disk team drive.
+	// The total capacity of the cloud disk team space.
 	//
 	// example:
 	//
 	// 5368709120
 	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
-	// The used space size, in bytes.
+	// The used space size. Unit: bytes.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type CopyCdsFileResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result of copying the file.
+	// The result of the file copy operation.
 	CopyCdsFileModel *CopyCdsFileResponseBodyCopyCdsFileModel `json:"CopyCdsFileModel,omitempty" xml:"CopyCdsFileModel,omitempty" type:"Struct"`
 	// The error message. This parameter is not returned if Code is `success`.
 	//

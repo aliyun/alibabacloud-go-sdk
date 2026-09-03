@@ -22,7 +22,7 @@ type iDescribeAutoSnapshotPolicyRequest interface {
 }
 
 type DescribeAutoSnapshotPolicyRequest struct {
-	// The maximum number of entries to return per page.
+	// The maximum number of entries per page for a paged query.
 	//
 	// - Maximum value: 50
 	//
@@ -32,7 +32,7 @@ type DescribeAutoSnapshotPolicyRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	// The pagination token for the next query. If NextToken is empty, no more results exist.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeAutoSnapshotPolicyRequest struct {
 	//
 	// example:
 	//
-	// Test 1201
+	// Test1201
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
-	// The region ID. To query the regions supported by Elastic Desktop Service, call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

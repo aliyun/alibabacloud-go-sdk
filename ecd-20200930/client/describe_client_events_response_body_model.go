@@ -33,8 +33,13 @@ type DescribeClientEventsResponseBody struct {
 	// example:
 	//
 	// 28A40F12-F340-442B-A35F-46EF6A03227B
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 15
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeClientEventsResponseBody) String() string {
@@ -135,7 +140,7 @@ type DescribeClientEventsResponseBodyEvents struct {
 	//
 	// example:
 	//
-	// test
+	// User logon event
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The cloud computer pool ID.
 	//
@@ -165,7 +170,7 @@ type DescribeClientEventsResponseBodyEvents struct {
 	//
 	// example:
 	//
-	// test
+	// Finance cloud computer
 	DesktopName *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
 	// The directory ID to which the cloud computer belongs.
 	//
@@ -191,7 +196,7 @@ type DescribeClientEventsResponseBodyEvents struct {
 	//
 	// 5651188b-3070-d1cc-5311-75753d59****
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The time when the event occurred.
+	// The time when the event occurred. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
 	//
 	// example:
 	//
@@ -213,7 +218,7 @@ type DescribeClientEventsResponseBodyEvents struct {
 	//
 	// example:
 	//
-	// test
+	// R&D office network
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
 	// The account system type of the office network.
 	//
@@ -231,12 +236,13 @@ type DescribeClientEventsResponseBodyEvents struct {
 	//
 	// - 200: success.
 	//
-	// - A failure message is returned, such as FailedToGetConnectionTicket.
+	// - A failure message, such as FailedToGetConnectionTicket.
 	//
 	// example:
 	//
 	// 200
-	Status       *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The terminal information.
 	TerminalInfo *DescribeClientEventsResponseBodyEventsTerminalInfo `json:"TerminalInfo,omitempty" xml:"TerminalInfo,omitempty" type:"Struct"`
 }
 
@@ -474,8 +480,23 @@ func (s *DescribeClientEventsResponseBodyEvents) Validate() error {
 }
 
 type DescribeClientEventsResponseBodyEventsTerminalInfo struct {
-	Model        *string `json:"Model,omitempty" xml:"Model,omitempty"`
-	ProductName  *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The terminal device model.
+	//
+	// example:
+	//
+	// wuying_mac_x86_64
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The terminal type.
+	//
+	// example:
+	//
+	// Mac
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// The terminal serial number.
+	//
+	// example:
+	//
+	// 96c530bc-6095-4014-8bbc-d461b8ac****
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 }
 

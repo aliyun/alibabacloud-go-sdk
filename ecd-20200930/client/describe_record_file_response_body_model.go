@@ -18,7 +18,7 @@ type iDescribeRecordFileResponseBody interface {
 }
 
 type DescribeRecordFileResponseBody struct {
-	// Details of the screen recording files.
+	// The details of the recording files.
 	RecordFiles []*DescribeRecordFileResponseBodyRecordFiles `json:"RecordFiles,omitempty" xml:"RecordFiles,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type DescribeRecordFileResponseBody struct {
 	//
 	// 05C2791F-41A7-5E7C-B5E4-1401FD0E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *DescribeRecordFileResponseBody) Validate() error {
 }
 
 type DescribeRecordFileResponseBodyRecordFiles struct {
-	// The ID of the cloud desktop.
+	// The Cloud Desktop ID.
 	//
 	// example:
 	//
 	// ecd-7yulhw1g1attet7d2
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The name of the cloud desktop.
+	// The name of the Cloud Desktop.
 	//
 	// example:
 	//
@@ -103,25 +103,25 @@ type DescribeRecordFileResponseBodyRecordFiles struct {
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	// The event details.
 	EventDetails []*DescribeRecordFileResponseBodyRecordFilesEventDetails `json:"EventDetails,omitempty" xml:"EventDetails,omitempty" type:"Repeated"`
-	// The name of the screen recording file.
+	// The name of the file.
 	//
 	// example:
 	//
 	// Task3
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The file size. Unit: bytes.
+	// The size of the file. Unit: bytes.
 	//
 	// example:
 	//
 	// 139
 	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The ID of the policy.
+	// The ID of the control policy.
 	//
 	// example:
 	//
 	// pg-**
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The time when the screen recording ended. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and is displayed in UTC.
+	// The time when the recording ended. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
@@ -133,49 +133,49 @@ type DescribeRecordFileResponseBodyRecordFiles struct {
 	//
 	// 1774656000000
 	RecordExpire *int64 `json:"RecordExpire,omitempty" xml:"RecordExpire,omitempty"`
-	// The time when the screen recording started. The time is in the *yyyy-MM-dd*T*HH:mm:ss*Z format and is displayed in UTC.
+	// The time when the recording started. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
 	//
 	// example:
 	//
 	// 2025-12-18T06:02:25Z
 	RecordStartTime *string `json:"RecordStartTime,omitempty" xml:"RecordStartTime,omitempty"`
-	// The recording type. Valid values:
+	// The type of the screen recording file. Valid values:
 	//
-	// - `alltime`: continuous screen recording.
+	// - alltime: full-time recording.
 	//
-	// - `period`: interval screen recording.
+	// - period: interval recording.
 	//
-	// - `event`: event-triggered screen recording.
+	// - event: event-based recording.
 	//
-	// - `session`: session-based screen recording.
+	// - session: session recording.
 	//
 	// example:
 	//
-	// period
+	// 0
 	RecordType *int32 `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
-	// The ID of the region where the cloud desktop resides.
+	// The region where the recorded Cloud Desktop is located.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-f3s3dgt8dtb0vlqc8
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The name of the resource group.
+	// The resource group name.
 	//
 	// example:
 	//
 	// resource
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
-	// The upload status of the screen recording file. Valid values:
+	// The status of the screen recording file. Valid values:
 	//
-	// - `0`: uploaded.
+	// - 0: uploaded.
 	//
-	// - `1`: uploading.
+	// - 1: uploading.
 	//
 	// example:
 	//
@@ -346,7 +346,7 @@ type DescribeRecordFileResponseBodyRecordFilesEventDetails struct {
 	//
 	// {\\n\\t\\"messageInfo\\" : \\"mouse_move\\",\\n\\t\\"messageType\\" : \\"UserInput\\"\\n}\\n"
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
-	// The time when the event occurred.
+	// The time when the event occurred. Unit: seconds.
 	//
 	// example:
 	//

@@ -28,27 +28,27 @@ type iQueryHistoryAvgMetricListRequest interface {
 }
 
 type QueryHistoryAvgMetricListRequest struct {
-	// The start date of the statistics. The format is `YYYY-MM-DD`. The default value is T-1.
+	// The start date for statistics. Format: "YYYY-MM-DD". Default value: T-1.
 	//
 	// example:
 	//
 	// 2026-04-01
 	DataDate *string `json:"DataDate,omitempty" xml:"DataDate,omitempty"`
-	// The desktop ID list. A maximum of 100 IDs are supported.
+	// The list of desktop IDs. A maximum of 100 IDs are supported.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// The metric to query.
+	// The type of monitoring metrics.
 	//
 	// example:
 	//
 	// LOAD_SCORE
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The page number, which must be greater than 0. Default value: 1.
+	// The page number. Default value: 1. The value must be greater than 0.
 	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The page size. Valid values: 1 to 200. Default value: 20.
+	// The number of entries per page. Default value: 20. Valid values: 1 to 200.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type QueryHistoryAvgMetricListRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The list of custom numeric ranges.
 	Range *QueryHistoryAvgMetricListRequestRange `json:"Range,omitempty" xml:"Range,omitempty" type:"Struct"`
-	// The desktop region.
+	// The region of the desktop.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
-	// The sorting method.
+	// The sort order.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ type QueryHistoryAvgMetricListRequestRange struct {
 	//
 	// true
 	IncludeMin *bool `json:"IncludeMin,omitempty" xml:"IncludeMin,omitempty"`
-	// The range label, which is used for the return value.
+	// The range label, which is used in the response.
 	//
 	// example:
 	//

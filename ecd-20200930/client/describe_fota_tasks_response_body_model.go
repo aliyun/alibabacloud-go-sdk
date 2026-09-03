@@ -22,7 +22,7 @@ type iDescribeFotaTasksResponseBody interface {
 }
 
 type DescribeFotaTasksResponseBody struct {
-	// The operation result. A value of `success` indicates success. Otherwise, an error message is returned.
+	// The result of the operation. A value of `success` indicates success. Otherwise, an error message is returned.
 	//
 	// example:
 	//
@@ -30,13 +30,13 @@ type DescribeFotaTasksResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The image upgrade task information.
 	FotaTasks []*DescribeFotaTasksResponseBodyFotaTasks `json:"FotaTasks,omitempty" xml:"FotaTasks,omitempty" type:"Repeated"`
-	// The error message. This parameter is not returned if Code is `success`.
+	// The error message. This parameter is not returned when Code is `success`.
 	//
 	// example:
 	//
 	// The parameter is not specified.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The pagination token for the next query. An empty value indicates that no more results exist.
+	// The pagination token for the next query. An empty value indicates that there are no more results.
 	//
 	// example:
 	//
@@ -141,7 +141,7 @@ type DescribeFotaTasksResponseBodyFotaTasks struct {
 	//
 	// 1
 	PendingDesktopCount *int32 `json:"PendingDesktopCount,omitempty" xml:"PendingDesktopCount,omitempty"`
-	// The publish time of the upgrade version.
+	// The release time of the upgrade version. The time is in the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -151,9 +151,9 @@ type DescribeFotaTasksResponseBodyFotaTasks struct {
 	//
 	// example:
 	//
-	// test
+	// Fixed known issues and improved system stability
 	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
-	// The size of the upgrade package. Unit: KB.
+	// The size of the upgrade package, in KB.
 	//
 	// example:
 	//

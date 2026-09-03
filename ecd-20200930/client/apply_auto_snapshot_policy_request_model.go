@@ -18,11 +18,11 @@ type iApplyAutoSnapshotPolicyRequest interface {
 }
 
 type ApplyAutoSnapshotPolicyRequest struct {
-	// The IDs of the cloud computers. You can specify 1 to 20 IDs.
+	// The cloud computer IDs. You can specify 1 to 20 IDs.
 	//
 	// This parameter is required.
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// The ID of the automatic snapshot policy.
+	// The automatic snapshot policy ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type ApplyAutoSnapshotPolicyRequest struct {
 	//
 	// sp-ejtum8j5tfcw7****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

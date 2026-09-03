@@ -16,7 +16,7 @@ type iDescribeQosRulesResponseBody interface {
 }
 
 type DescribeQosRulesResponseBody struct {
-	// A list of QoS rules.
+	// The list of QoS rules.
 	QosRules []*DescribeQosRulesResponseBodyQosRules `json:"QosRules,omitempty" xml:"QosRules,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,20 +66,25 @@ func (s *DescribeQosRulesResponseBody) Validate() error {
 }
 
 type DescribeQosRulesResponseBodyQosRules struct {
-	// The number of associated cloud desktops.
+	// The number of cloud computers in the pool.
 	//
 	// example:
 	//
 	// 0
-	DesktopCount      *string `json:"DesktopCount,omitempty" xml:"DesktopCount,omitempty"`
-	DesktopGroupCount *int32  `json:"DesktopGroupCount,omitempty" xml:"DesktopGroupCount,omitempty"`
-	// The download bandwidth.
+	DesktopCount *string `json:"DesktopCount,omitempty" xml:"DesktopCount,omitempty"`
+	// The number of cloud computer pools associated with the policy.
+	//
+	// example:
+	//
+	// 1
+	DesktopGroupCount *int32 `json:"DesktopGroupCount,omitempty" xml:"DesktopGroupCount,omitempty"`
+	// The downstream bandwidth.
 	//
 	// example:
 	//
 	// 10
 	Download *string `json:"Download,omitempty" xml:"Download,omitempty"`
-	// The network package ID.
+	// The premium Internet bandwidth ID.
 	//
 	// example:
 	//
@@ -91,13 +96,13 @@ type DescribeQosRulesResponseBodyQosRules struct {
 	//
 	// qos-chvkz5ekzgcb6bo0f
 	QosRuleId *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
-	// The QoS rule name.
+	// The name of the QoS rule.
 	//
 	// example:
 	//
-	// test
+	// Office network QoS rule
 	QosRuleName *string `json:"QosRuleName,omitempty" xml:"QosRuleName,omitempty"`
-	// The upload bandwidth.
+	// The upstream bandwidth.
 	//
 	// example:
 	//

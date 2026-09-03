@@ -36,23 +36,23 @@ type iExportDesktopGroupInfoRequest interface {
 }
 
 type ExportDesktopGroupInfoRequest struct {
-  // The billing method of the shared cloud desktops.
+  // The billing method of the shared cloud computer.
   // 
   // example:
   // 
   // PrePaid
   ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-  // The list of shared cloud desktop IDs.
+  // The list of shared cloud computer IDs.
   DesktopGroupId []*string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty" type:"Repeated"`
-  // The name of the shared cloud desktop.
+  // The name of the shared cloud computer.
   // 
   // example:
   // 
   // CloudComputerPool01
   DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
-  // The list of authorized user IDs for the shared cloud desktops.
+  // The list of authorized user IDs for the shared cloud computer.
   EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
-  // The expiration time of the subscription shared cloud desktops.
+  // The expiration time of the subscription shared cloud computer. The time is in the ISO 8601 standard (UTC).
   // 
   // example:
   // 
@@ -80,19 +80,19 @@ type ExportDesktopGroupInfoRequest struct {
   // 
   // caeba0bbb2be03f84eb48b699f0a4883
   NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-  // The ID of the office network to which the shared cloud desktops belong.
+  // The ID of the office network to which the shared cloud computer belongs.
   // 
   // example:
   // 
   // cn-hangzhou+dir-467671****
   OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-  // The ID of the policy associated with the shared cloud desktops.
+  // The ID of the policy associated with the shared cloud computer.
   // 
   // example:
   // 
   // pg-53iyi2aar0nd6****
   PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-  // The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
+  // The region ID. Call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
   // 
   // This parameter is required.
   // 
@@ -234,13 +234,13 @@ func (s *ExportDesktopGroupInfoRequest) Validate() error {
 }
 
 type ExportDesktopGroupInfoRequestTag struct {
-  // The tag key. This parameter cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+  // The tag key. This parameter cannot be an empty string if specified. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
   // 
   // example:
   // 
   // TestKey
   Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-  // The tag value. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
+  // The tag value. The tag value can be an empty string and can be up to 128 characters in length. It cannot start with `acs:` or contain `http://` or `https://`.
   // 
   // example:
   // 

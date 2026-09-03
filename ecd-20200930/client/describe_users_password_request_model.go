@@ -16,7 +16,7 @@ type iDescribeUsersPasswordRequest interface {
 }
 
 type DescribeUsersPasswordRequest struct {
-	// The ID of the cloud computer.
+	// The cloud computer ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeUsersPasswordRequest struct {
 	//
 	// ecd-gq8u6whi9f6k8****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

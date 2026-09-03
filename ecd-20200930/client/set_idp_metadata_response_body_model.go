@@ -16,7 +16,7 @@ type iSetIdpMetadataResponseBody interface {
 }
 
 type SetIdpMetadataResponseBody struct {
-	// The entity ID obtained after the IdP metadata file is parsed.
+	// The entityID value obtained after parsing the IdP metadata file.
 	//
 	// example:
 	//
