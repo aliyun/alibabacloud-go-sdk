@@ -7232,6 +7232,53 @@ func (client *Client) ModelRouterTransferToMemberWithContext(ctx context.Context
 
 // Summary:
 //
+// Modifies the status of an API key.
+//
+// @param request - ModelRouterUpdateApiKeyStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModelRouterUpdateApiKeyStatusResponse
+func (client *Client) ModelRouterUpdateApiKeyStatusWithContext(ctx context.Context, id *string, request *ModelRouterUpdateApiKeyStatusRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ModelRouterUpdateApiKeyStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Status) {
+		body["status"] = request.Status
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModelRouterUpdateApiKeyStatus"),
+		Version:     dara.String("20240611"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/api/v1/modelRouter/open/apikeys/" + dara.PercentEncode(dara.StringValue(id)) + "/status"),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModelRouterUpdateApiKeyStatusResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Billing management/Update billing rules
 //
 // @param request - ModelRouterUpdateBillingRuleRequest

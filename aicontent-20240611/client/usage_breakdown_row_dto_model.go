@@ -36,65 +36,73 @@ type iUsageBreakdownRowDTO interface {
 }
 
 type UsageBreakdownRowDTO struct {
+	// The API key ID. A value of 0 indicates that historical data is not broken down by API key.
+	//
 	// example:
 	//
 	// 0
 	ApiKeyId *int64 `json:"apiKeyId,omitempty" xml:"apiKeyId,omitempty"`
+	// The API key name, corresponding to api_key_id.
+	//
 	// example:
 	//
-	// 默认密钥
+	// Default key
 	ApiKeyName *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
-	// Department ID; 0 indicates no associated department
+	// The department ID. A value of 0 indicates no affiliated department.
 	//
 	// example:
 	//
 	// 0
 	ClientId *int64 `json:"clientId,omitempty" xml:"clientId,omitempty"`
-	// Department name
+	// The department name.
 	//
 	// example:
 	//
-	// 研发部
+	// R&D Department
 	ClientName *string `json:"clientName,omitempty" xml:"clientName,omitempty"`
+	// The member ID for a member row. The value is 0 for a department row.
+	//
 	// example:
 	//
 	// 30001
 	MemberUserId *int64 `json:"memberUserId,omitempty" xml:"memberUserId,omitempty"`
+	// The member name for a member row. The value is empty for a department row.
+	//
 	// example:
 	//
-	// 张三
+	// John Smith
 	MemberUserName *string `json:"memberUserName,omitempty" xml:"memberUserName,omitempty"`
-	// Array of usage metrics, containing only entries with non-zero values
+	// The usage metric array. Only entries with non-zero values are included.
 	//
 	// example:
 	//
 	// [{"key": "total_calls", "value": 100}]
 	Metrics []*MetricKVPairDTO `json:"metrics,omitempty" xml:"metrics,omitempty" type:"Repeated"`
-	// Model identifier
+	// The model identifier.
 	//
 	// example:
 	//
 	// qwen-plus
 	ModelCode *string `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
-	// Model ID
+	// The model ID.
 	//
 	// example:
 	//
 	// 1
 	ModelId *int64 `json:"modelId,omitempty" xml:"modelId,omitempty"`
-	// Model name
+	// The model name.
 	//
 	// example:
 	//
-	// 通义千问-Plus
+	// Qwen-Plus
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// Statistics scope
+	// The statistical dimension.
 	//
 	// example:
 	//
 	// llm
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
-	// Statistics time point, Unix timestamp (seconds)
+	// The statistical time point, in UNIX timestamp (seconds).
 	//
 	// example:
 	//
