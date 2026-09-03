@@ -28,28 +28,42 @@ type iPublicTemplate interface {
 }
 
 type PublicTemplate struct {
+	// The creation time.
+	//
 	// example:
 	//
 	// 2026-08-28T12:00:00.000Z
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
 	// my-template
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-acfmz7h4ocksp5y
-	ResourceGroupID *string                      `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
-	RuntimeConfig   *PublicTemplateRuntimeConfig `json:"runtimeConfig,omitempty" xml:"runtimeConfig,omitempty"`
-	Status          *PublicTemplateStatus        `json:"status,omitempty" xml:"status,omitempty"`
+	ResourceGroupID *string `json:"resourceGroupID,omitempty" xml:"resourceGroupID,omitempty"`
+	// The template runtime configuration.
+	RuntimeConfig *PublicTemplateRuntimeConfig `json:"runtimeConfig,omitempty" xml:"runtimeConfig,omitempty"`
+	// The template build status.
+	Status *PublicTemplateStatus `json:"status,omitempty" xml:"status,omitempty"`
+	// The unique identifier of the team.
+	//
 	// example:
 	//
 	// 70d1c834-0383-58d8-97ac-5336eb91abcd
 	TeamID *string `json:"teamID,omitempty" xml:"teamID,omitempty"`
+	// The team name.
+	//
 	// example:
 	//
 	// my-team
 	TeamName *string `json:"teamName,omitempty" xml:"teamName,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// w0aipmi0rvn5xqdnsihg

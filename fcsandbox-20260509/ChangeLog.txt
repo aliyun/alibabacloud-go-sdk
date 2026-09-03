@@ -1,3 +1,8 @@
+2026-09-03 Version: v1.4.2
+- Update API DescribeApiKey: add response parameters Body.effectivePermissions.
+- Update API DescribeApiKey: add response parameters Body.permissionPolicy.
+
+
 2026-09-01 Version: v1.4.1
 - Generated golang 2026-05-09 for FCSandbox.
 

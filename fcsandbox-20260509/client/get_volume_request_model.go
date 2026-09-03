@@ -14,7 +14,7 @@ type iGetVolumeRequest interface {
 }
 
 type GetVolumeRequest struct {
-	// The unique identifier of the Team.
+	// The unique identifier of the team.
 	//
 	// example:
 	//

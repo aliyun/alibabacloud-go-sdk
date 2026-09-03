@@ -70,7 +70,7 @@ type ListVolumesRequest struct {
 	//
 	// 210000000
 	UserID *string `json:"userID,omitempty" xml:"userID,omitempty"`
-	// The name of the volume. The name must be unique within the team.
+	// The name of the volume. The name must be unique within a team.
 	//
 	// example:
 	//

@@ -25,16 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-shenzhen":    dara.String("fcsandbox.cn-shenzhen.aliyuncs.com"),
-		"cn-beijing":     dara.String("fcsandbox.cn-beijing.aliyuncs.com"),
-		"cn-shanghai":    dara.String("fcsandbox.cn-shanghai.aliyuncs.com"),
-		"cn-hongkong":    dara.String("fcsandbox.cn-hongkong.aliyuncs.com"),
-		"ap-southeast-1": dara.String("fcsandbox.ap-southeast-1.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("fcsandbox.cn-hangzhou.aliyuncs.com"),
-		"us-west-1":      dara.String("fcsandbox.us-west-1.aliyuncs.com"),
-		"us-east-1":      dara.String("fcsandbox.us-east-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -882,7 +872,7 @@ func (client *Client) GetTemplate(templateID *string, request *GetTemplateReques
 
 // Summary:
 //
-// Queries a Volume.
+// Queries a volume.
 //
 // @param request - GetVolumeRequest
 //
@@ -929,7 +919,7 @@ func (client *Client) GetVolumeWithOptions(volumeID *string, request *GetVolumeR
 
 // Summary:
 //
-// Queries a Volume.
+// Queries a volume.
 //
 // @param request - GetVolumeRequest
 //

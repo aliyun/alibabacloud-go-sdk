@@ -576,7 +576,7 @@ func (client *Client) GetTemplateWithContext(ctx context.Context, templateID *st
 
 // Summary:
 //
-// Queries a Volume.
+// Queries a volume.
 //
 // @param request - GetVolumeRequest
 //

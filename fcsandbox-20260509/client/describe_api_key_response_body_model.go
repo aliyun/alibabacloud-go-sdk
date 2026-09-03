@@ -13,12 +13,16 @@ type iDescribeApiKeyResponseBody interface {
 	GetApiKey() *ApiKey
 	SetCode(v string) *DescribeApiKeyResponseBody
 	GetCode() *string
+	SetEffectivePermissions(v *EffectivePermissions) *DescribeApiKeyResponseBody
+	GetEffectivePermissions() *EffectivePermissions
 	SetIpBlacklist(v []*IPConfig) *DescribeApiKeyResponseBody
 	GetIpBlacklist() []*IPConfig
 	SetIpWhitelist(v []*IPConfig) *DescribeApiKeyResponseBody
 	GetIpWhitelist() []*IPConfig
 	SetMessage(v string) *DescribeApiKeyResponseBody
 	GetMessage() *string
+	SetPermissionPolicy(v *PermissionPolicy) *DescribeApiKeyResponseBody
+	GetPermissionPolicy() *PermissionPolicy
 	SetRequestId(v string) *DescribeApiKeyResponseBody
 	GetRequestId() *string
 }
@@ -35,8 +39,9 @@ type DescribeApiKeyResponseBody struct {
 	// example:
 	//
 	// 200
-	Code        *string     `json:"code,omitempty" xml:"code,omitempty"`
-	IpBlacklist []*IPConfig `json:"ipBlacklist,omitempty" xml:"ipBlacklist,omitempty" type:"Repeated"`
+	Code                 *string               `json:"code,omitempty" xml:"code,omitempty"`
+	EffectivePermissions *EffectivePermissions `json:"effectivePermissions,omitempty" xml:"effectivePermissions,omitempty"`
+	IpBlacklist          []*IPConfig           `json:"ipBlacklist,omitempty" xml:"ipBlacklist,omitempty" type:"Repeated"`
 	// The IP whitelist.
 	IpWhitelist []*IPConfig `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
 	// The response message.
@@ -44,7 +49,8 @@ type DescribeApiKeyResponseBody struct {
 	// example:
 	//
 	// success
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	Message          *string           `json:"message,omitempty" xml:"message,omitempty"`
+	PermissionPolicy *PermissionPolicy `json:"permissionPolicy,omitempty" xml:"permissionPolicy,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -69,6 +75,10 @@ func (s *DescribeApiKeyResponseBody) GetCode() *string {
 	return s.Code
 }
 
+func (s *DescribeApiKeyResponseBody) GetEffectivePermissions() *EffectivePermissions {
+	return s.EffectivePermissions
+}
+
 func (s *DescribeApiKeyResponseBody) GetIpBlacklist() []*IPConfig {
 	return s.IpBlacklist
 }
@@ -79,6 +89,10 @@ func (s *DescribeApiKeyResponseBody) GetIpWhitelist() []*IPConfig {
 
 func (s *DescribeApiKeyResponseBody) GetMessage() *string {
 	return s.Message
+}
+
+func (s *DescribeApiKeyResponseBody) GetPermissionPolicy() *PermissionPolicy {
+	return s.PermissionPolicy
 }
 
 func (s *DescribeApiKeyResponseBody) GetRequestId() *string {
@@ -92,6 +106,11 @@ func (s *DescribeApiKeyResponseBody) SetApiKey(v *ApiKey) *DescribeApiKeyRespons
 
 func (s *DescribeApiKeyResponseBody) SetCode(v string) *DescribeApiKeyResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *DescribeApiKeyResponseBody) SetEffectivePermissions(v *EffectivePermissions) *DescribeApiKeyResponseBody {
+	s.EffectivePermissions = v
 	return s
 }
 
@@ -110,6 +129,11 @@ func (s *DescribeApiKeyResponseBody) SetMessage(v string) *DescribeApiKeyRespons
 	return s
 }
 
+func (s *DescribeApiKeyResponseBody) SetPermissionPolicy(v *PermissionPolicy) *DescribeApiKeyResponseBody {
+	s.PermissionPolicy = v
+	return s
+}
+
 func (s *DescribeApiKeyResponseBody) SetRequestId(v string) *DescribeApiKeyResponseBody {
 	s.RequestId = &v
 	return s
@@ -118,6 +142,11 @@ func (s *DescribeApiKeyResponseBody) SetRequestId(v string) *DescribeApiKeyRespo
 func (s *DescribeApiKeyResponseBody) Validate() error {
 	if s.ApiKey != nil {
 		if err := s.ApiKey.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.EffectivePermissions != nil {
+		if err := s.EffectivePermissions.Validate(); err != nil {
 			return err
 		}
 	}
@@ -137,6 +166,11 @@ func (s *DescribeApiKeyResponseBody) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.PermissionPolicy != nil {
+		if err := s.PermissionPolicy.Validate(); err != nil {
+			return err
 		}
 	}
 	return nil

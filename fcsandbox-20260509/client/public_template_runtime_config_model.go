@@ -26,22 +26,32 @@ type iPublicTemplateRuntimeConfig interface {
 }
 
 type PublicTemplateRuntimeConfig struct {
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 1
 	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// The disk size. Unit: GB.
+	//
 	// example:
 	//
 	// 10
-	DiskSize       *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	InternetAccess *bool                    `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	LogConfig      *PublicTemplateLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	// Specifies whether to allow access to the Internet.
+	InternetAccess *bool `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	// The log configuration.
+	LogConfig *PublicTemplateLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	// The memory size. Unit: MB.
+	//
 	// example:
 	//
 	// 2048
-	MemorySize    *int32                       `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	MemorySize *int32 `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	// The sandbox configuration.
 	SandboxConfig *PublicTemplateSandboxConfig `json:"sandboxConfig,omitempty" xml:"sandboxConfig,omitempty"`
-	VpcConfig     *PublicTemplateVPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	// The VPC configuration.
+	VpcConfig *PublicTemplateVPCConfig `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s PublicTemplateRuntimeConfig) String() string {

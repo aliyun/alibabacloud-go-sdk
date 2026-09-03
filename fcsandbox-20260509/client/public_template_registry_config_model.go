@@ -14,6 +14,7 @@ type iPublicTemplateRegistryConfig interface {
 }
 
 type PublicTemplateRegistryConfig struct {
+	// The network configuration of the image repository.
 	NetworkConfig *PublicTemplateRegistryNetworkConfig `json:"networkConfig,omitempty" xml:"networkConfig,omitempty"`
 }
 

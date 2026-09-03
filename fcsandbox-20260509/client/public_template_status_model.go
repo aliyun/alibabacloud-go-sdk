@@ -18,11 +18,16 @@ type iPublicTemplateStatus interface {
 }
 
 type PublicTemplateStatus struct {
+	// The time when the build is completed.
+	//
 	// example:
 	//
 	// 2026-08-28T12:00:00.000Z
-	FinishedAt *string                     `json:"finishedAt,omitempty" xml:"finishedAt,omitempty"`
-	Reason     *PublicTemplateStatusReason `json:"reason,omitempty" xml:"reason,omitempty"`
+	FinishedAt *string `json:"finishedAt,omitempty" xml:"finishedAt,omitempty"`
+	// The reason for the build failure.
+	Reason *PublicTemplateStatusReason `json:"reason,omitempty" xml:"reason,omitempty"`
+	// The build status.
+	//
 	// example:
 	//
 	// ready
