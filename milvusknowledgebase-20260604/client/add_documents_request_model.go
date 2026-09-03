@@ -38,19 +38,19 @@ type AddDocumentsRequest struct {
 	//
 	// LOCAL_UPLOAD
 	ImportType *string `json:"ImportType,omitempty" xml:"ImportType,omitempty"`
-	// The ID of the knowledge base.
+	// The knowledge base ID.
 	//
 	// example:
 	//
 	// kb-3bd02617e9be335f
 	KnowledgeBaseId *string `json:"KnowledgeBaseId,omitempty" xml:"KnowledgeBaseId,omitempty"`
-	// The batch label configuration. The key must be a label field defined in the knowledge base. The value supports string, int64, float32, bool, and list types.
+	// The batch label configuration. The key must be a label field that is already defined in the knowledge base. The value supports string, int64, float32, bool, and list types.
 	//
 	// example:
 	//
 	// {"department":"legal","topics":["policy","contract"],"reviewed":true}
 	MetaFields interface{} `json:"MetaFields,omitempty" xml:"MetaFields,omitempty"`
-	// The ID of the processing strategy.
+	// The processing strategy ID.
 	//
 	// example:
 	//
@@ -215,24 +215,30 @@ func (s *AddDocumentsRequestDedup) Validate() error {
 }
 
 type AddDocumentsRequestDocuments struct {
-	// The name of the document.
+	// The document name.
 	//
 	// example:
 	//
 	// CHANGELOG.md
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The document path. This is the file name or relative path used during upload, which must be consistent with the pre-signed request.
+	// The document path. This is the file name or relative path used during upload, which must be consistent with the pre-signed URL request.
 	//
 	// example:
 	//
 	// 2026_06_23_17_49_52WwGSUezpG2u2iHWxyYGzkf9KtormhkxN/CHANGELOG.md
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// The size of the file.
+	// The file size.
 	//
 	// example:
 	//
 	// 1024
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The processing strategy ID.
+	//
+	// example:
+	//
+	// kb-strategy-7043984ca395eabd
+	StrategyId *string `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
 }
 
 func (s AddDocumentsRequestDocuments) String() string {
@@ -255,6 +261,10 @@ func (s *AddDocumentsRequestDocuments) GetSize() *int64 {
 	return s.Size
 }
 
+func (s *AddDocumentsRequestDocuments) GetStrategyId() *string {
+	return s.StrategyId
+}
+
 func (s *AddDocumentsRequestDocuments) SetName(v string) *AddDocumentsRequestDocuments {
 	s.Name = &v
 	return s
@@ -267,6 +277,11 @@ func (s *AddDocumentsRequestDocuments) SetPath(v string) *AddDocumentsRequestDoc
 
 func (s *AddDocumentsRequestDocuments) SetSize(v int64) *AddDocumentsRequestDocuments {
 	s.Size = &v
+	return s
+}
+
+func (s *AddDocumentsRequestDocuments) SetStrategyId(v string) *AddDocumentsRequestDocuments {
+	s.StrategyId = &v
 	return s
 }
 

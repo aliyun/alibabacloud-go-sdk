@@ -56,19 +56,19 @@ type SearchKnowledgeBaseRequest struct {
 	//
 	// 5
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The query for retrieval.
+	// The retrieval query.
 	//
 	// example:
 	//
 	// What is the tax amount on the invoice?
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
-	// The rerank model ID.
+	// The reranking model ID.
 	//
 	// example:
 	//
 	// 123
 	RerankModelId *int64 `json:"rerankModelId,omitempty" xml:"rerankModelId,omitempty"`
-	// The name of the rerank model that the tenant has activated. If both rerankModelName and rerankModelId are specified, this parameter takes precedence.
+	// The name of a reranking model that the tenant has activated. If both rerankModelName and rerankModelId are specified, this parameter takes precedence.
 	//
 	// example:
 	//
@@ -273,7 +273,7 @@ func (s *SearchKnowledgeBaseRequestImage) Validate() error {
 }
 
 type SearchKnowledgeBaseRequestRetrievalConfig struct {
-	// The number of candidate results to recall.
+	// The number of candidate recall results.
 	//
 	// example:
 	//

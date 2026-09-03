@@ -205,7 +205,7 @@ type AddDocumentsResponseBodyDataDocuments struct {
 	//
 	// naive
 	ChunkMethod *string `json:"chunkMethod,omitempty" xml:"chunkMethod,omitempty"`
-	// The ID of the knowledge base.
+	// The knowledge base ID.
 	//
 	// example:
 	//
@@ -223,7 +223,7 @@ type AddDocumentsResponseBodyDataDocuments struct {
 	//
 	// uploaded/doc-id/example.pdf
 	Location *string `json:"location,omitempty" xml:"location,omitempty"`
-	// The name of the document.
+	// The document name.
 	//
 	// example:
 	//
@@ -241,7 +241,7 @@ type AddDocumentsResponseBodyDataDocuments struct {
 	//
 	// RUNNING
 	Run *string `json:"run,omitempty" xml:"run,omitempty"`
-	// The size of the file.
+	// The file size.
 	//
 	// example:
 	//

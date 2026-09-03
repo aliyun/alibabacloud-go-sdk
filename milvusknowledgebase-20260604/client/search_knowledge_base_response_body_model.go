@@ -34,13 +34,13 @@ type iSearchKnowledgeBaseResponseBody interface {
 }
 
 type SearchKnowledgeBaseResponseBody struct {
-	// The details of the permission verification failure.
+	// The details of the access denial due to a permission verification failure.
 	//
 	// example:
 	//
 	// {"PolicyType":"AccountLevelIdentityBasedPolicy","NoPermissionType":"ImplicitDeny","AuthAction":"milvusknowledgebase:SearchKnowledgeBase"}
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	// The status code.
+	// The return code.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type SearchKnowledgeBaseResponseBody struct {
 	//
 	// 0
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The returned message.
+	// The return message.
 	//
 	// example:
 	//
@@ -255,6 +255,20 @@ type SearchKnowledgeBaseResponseBodyResults struct {
 	KnowledgeBaseId *string `json:"knowledgeBaseId,omitempty" xml:"knowledgeBaseId,omitempty"`
 	// The list of document locations.
 	Locations []*SearchKnowledgeBaseResponseBodyResultsLocations `json:"locations,omitempty" xml:"locations,omitempty" type:"Repeated"`
+	// The end time of the audio or video chunk in the original media, in milliseconds. This field is not returned for non-media chunks.
+	//
+	// example:
+	//
+	// 8400
+	MediaEndMs *int64 `json:"mediaEndMs,omitempty" xml:"mediaEndMs,omitempty"`
+	// The start time of the audio or video chunk in the original media, in milliseconds. This field is not returned for non-media chunks.
+	//
+	// example:
+	//
+	// 1250
+	MediaStartMs *int64 `json:"mediaStartMs,omitempty" xml:"mediaStartMs,omitempty"`
+	// The time ranges of sentence-level or paragraph-level content within the chunk in the original media. This field is not returned for non-audio chunks.
+	MediaTimeline []*SearchKnowledgeBaseResponseBodyResultsMediaTimeline `json:"mediaTimeline,omitempty" xml:"mediaTimeline,omitempty" type:"Repeated"`
 	// The parent chunk ID.
 	//
 	// example:
@@ -275,7 +289,7 @@ type SearchKnowledgeBaseResponseBodyResults struct {
 	Score *float32 `json:"score,omitempty" xml:"score,omitempty"`
 	// The relevance score details.
 	ScoreDetails *SearchKnowledgeBaseResponseBodyResultsScoreDetails `json:"scoreDetails,omitempty" xml:"scoreDetails,omitempty" type:"Struct"`
-	// The list of tags.
+	// The list of labels.
 	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
@@ -317,6 +331,18 @@ func (s *SearchKnowledgeBaseResponseBodyResults) GetKnowledgeBaseId() *string {
 
 func (s *SearchKnowledgeBaseResponseBodyResults) GetLocations() []*SearchKnowledgeBaseResponseBodyResultsLocations {
 	return s.Locations
+}
+
+func (s *SearchKnowledgeBaseResponseBodyResults) GetMediaEndMs() *int64 {
+	return s.MediaEndMs
+}
+
+func (s *SearchKnowledgeBaseResponseBodyResults) GetMediaStartMs() *int64 {
+	return s.MediaStartMs
+}
+
+func (s *SearchKnowledgeBaseResponseBodyResults) GetMediaTimeline() []*SearchKnowledgeBaseResponseBodyResultsMediaTimeline {
+	return s.MediaTimeline
 }
 
 func (s *SearchKnowledgeBaseResponseBodyResults) GetParentChunkId() *string {
@@ -379,6 +405,21 @@ func (s *SearchKnowledgeBaseResponseBodyResults) SetLocations(v []*SearchKnowled
 	return s
 }
 
+func (s *SearchKnowledgeBaseResponseBodyResults) SetMediaEndMs(v int64) *SearchKnowledgeBaseResponseBodyResults {
+	s.MediaEndMs = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyResults) SetMediaStartMs(v int64) *SearchKnowledgeBaseResponseBodyResults {
+	s.MediaStartMs = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyResults) SetMediaTimeline(v []*SearchKnowledgeBaseResponseBodyResultsMediaTimeline) *SearchKnowledgeBaseResponseBodyResults {
+	s.MediaTimeline = v
+	return s
+}
+
 func (s *SearchKnowledgeBaseResponseBodyResults) SetParentChunkId(v string) *SearchKnowledgeBaseResponseBodyResults {
 	s.ParentChunkId = &v
 	return s
@@ -416,6 +457,15 @@ func (s *SearchKnowledgeBaseResponseBodyResults) Validate() error {
 	}
 	if s.Locations != nil {
 		for _, item := range s.Locations {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.MediaTimeline != nil {
+		for _, item := range s.MediaTimeline {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -563,6 +613,66 @@ func (s *SearchKnowledgeBaseResponseBodyResultsLocations) SetTop(v int32) *Searc
 }
 
 func (s *SearchKnowledgeBaseResponseBodyResultsLocations) Validate() error {
+	return dara.Validate(s)
+}
+
+type SearchKnowledgeBaseResponseBodyResultsMediaTimeline struct {
+	// The end time of the segment.
+	//
+	// example:
+	//
+	// 4200
+	EndMs *int64 `json:"endMs,omitempty" xml:"endMs,omitempty"`
+	// The start time of the segment.
+	//
+	// example:
+	//
+	// 1250
+	StartMs *int64 `json:"startMs,omitempty" xml:"startMs,omitempty"`
+	// The segment text.
+	//
+	// example:
+	//
+	// The first sentence
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s SearchKnowledgeBaseResponseBodyResultsMediaTimeline) String() string {
+	return dara.Prettify(s)
+}
+
+func (s SearchKnowledgeBaseResponseBodyResultsMediaTimeline) GoString() string {
+	return s.String()
+}
+
+func (s *SearchKnowledgeBaseResponseBodyResultsMediaTimeline) GetEndMs() *int64 {
+	return s.EndMs
+}
+
+func (s *SearchKnowledgeBaseResponseBodyResultsMediaTimeline) GetStartMs() *int64 {
+	return s.StartMs
+}
+
+func (s *SearchKnowledgeBaseResponseBodyResultsMediaTimeline) GetText() *string {
+	return s.Text
+}
+
+func (s *SearchKnowledgeBaseResponseBodyResultsMediaTimeline) SetEndMs(v int64) *SearchKnowledgeBaseResponseBodyResultsMediaTimeline {
+	s.EndMs = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyResultsMediaTimeline) SetStartMs(v int64) *SearchKnowledgeBaseResponseBodyResultsMediaTimeline {
+	s.StartMs = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyResultsMediaTimeline) SetText(v string) *SearchKnowledgeBaseResponseBodyResultsMediaTimeline {
+	s.Text = &v
+	return s
+}
+
+func (s *SearchKnowledgeBaseResponseBodyResultsMediaTimeline) Validate() error {
 	return dara.Validate(s)
 }
 

@@ -58,13 +58,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Registers files that are uploaded to the knowledge base storage as knowledge base documents and **automatically triggers parsing*	- (chunking and embedding). Two import types are supported:
+// Registers files that have been uploaded to knowledge base storage as knowledge base documents and **automatically triggers parsing*	- (chunking and embedding). Two import types are supported:
 //
-// - `LOCAL_UPLOAD`: Works with the `GetKnowledgeBasePreSignedUrl` direct upload flow. This operation only registers the file and does not verify whether the file is actually uploaded. Therefore, you must complete the PUT upload before calling this operation.
+// - `LOCAL_UPLOAD`: Works with the `GetKnowledgeBasePreSignedUrl` direct upload flow. This operation only registers the file and does not verify whether the file has actually been uploaded. Therefore, you must complete the PUT upload before calling this operation.
 //
 // - `OSS_IMPORT`: Imports files from an external OSS bucket. The operation creates an asynchronous import task and returns a `knowledge_import_task_id`. The system downloads and registers the files in the background.
 //
-// A maximum of 100 files can be registered in a single request.
+// A maximum of 100 files can be imported in a single request.
 //
 // @param request - AddDocumentsRequest
 //
@@ -139,13 +139,13 @@ func (client *Client) AddDocumentsWithOptions(datasetId *string, request *AddDoc
 
 // Summary:
 //
-// Registers files that are uploaded to the knowledge base storage as knowledge base documents and **automatically triggers parsing*	- (chunking and embedding). Two import types are supported:
+// Registers files that have been uploaded to knowledge base storage as knowledge base documents and **automatically triggers parsing*	- (chunking and embedding). Two import types are supported:
 //
-// - `LOCAL_UPLOAD`: Works with the `GetKnowledgeBasePreSignedUrl` direct upload flow. This operation only registers the file and does not verify whether the file is actually uploaded. Therefore, you must complete the PUT upload before calling this operation.
+// - `LOCAL_UPLOAD`: Works with the `GetKnowledgeBasePreSignedUrl` direct upload flow. This operation only registers the file and does not verify whether the file has actually been uploaded. Therefore, you must complete the PUT upload before calling this operation.
 //
 // - `OSS_IMPORT`: Imports files from an external OSS bucket. The operation creates an asynchronous import task and returns a `knowledge_import_task_id`. The system downloads and registers the files in the background.
 //
-// A maximum of 100 files can be registered in a single request.
+// A maximum of 100 files can be imported in a single request.
 //
 // @param request - AddDocumentsRequest
 //
