@@ -32,7 +32,7 @@ type ListOutputFilesRequest struct {
 	//
 	// ppt
 	ItemType *string `json:"itemType,omitempty" xml:"itemType,omitempty"`
-	// The keyword for searching. Matches output titles or item names.
+	// The keyword for searching. Matches the output title or item name.
 	//
 	// example:
 	//
@@ -50,13 +50,13 @@ type ListOutputFilesRequest struct {
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of entries per page. Valid values: 1 to 100.
+	// The number of items per page. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Specifies whether to display only outputs and output items that have sharing enabled.
+	// Specifies whether to display only outputs and output items with sharing enabled.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type OfflineAnnouncementRequest struct {
 	//
 	// 1001
 	AnnouncementId *int64 `json:"announcementId,omitempty" xml:"announcementId,omitempty"`
-	// The tenant ID. This is a common parameter. In winnexo-cli, pass this explicitly with --tenant-id.
+	// The tenant ID. This is a common parameter. Pass it explicitly in winnexo-cli by using --tenant-id.
 	//
 	// example:
 	//

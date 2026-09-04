@@ -60,7 +60,7 @@ type CreatePersonalDingtalkMeetingResponseBody struct {
 	//
 	// oklabs_tongyici
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

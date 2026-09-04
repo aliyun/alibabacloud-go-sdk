@@ -32,7 +32,7 @@ type ListBillingResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The details of the list.
+	// The details of the bill list.
 	List []*ListBillingResponseBodyList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
 	// The prompt message.
 	//
@@ -169,13 +169,13 @@ type ListBillingResponseBodyList struct {
 	//
 	// string_value
 	BizType *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
-	// costSource
+	// The cost source type.
 	//
 	// example:
 	//
 	// string_value
 	CostSource []*string `json:"costSource,omitempty" xml:"costSource,omitempty" type:"Repeated"`
-	// costSourceDisplayName
+	// The display name of the cost source.
 	//
 	// example:
 	//
@@ -199,7 +199,7 @@ type ListBillingResponseBodyList struct {
 	//
 	// string_value
 	EntryObjectType *string `json:"entryObjectType,omitempty" xml:"entryObjectType,omitempty"`
-	// Indicates whether the bill is a shadow bill.
+	// Indicates whether this is a shadow bill.
 	//
 	// example:
 	//
@@ -223,7 +223,7 @@ type ListBillingResponseBodyList struct {
 	//
 	// 2023-10-01T12:00:00Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The task status. Running is returned upon submission.
+	// The task status. The status is returned as Running upon submission.
 	//
 	// example:
 	//

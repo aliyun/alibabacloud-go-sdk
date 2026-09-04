@@ -40,7 +40,7 @@ type CreateGroupFeishuDocRequest struct {
 	//
 	// Group collaboration document
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The folder ID.
+	// The directory ID.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type CreateGroupFeishuDocRequest struct {
 	//
 	// example:
 	//
-	// Project Plan
+	// ProjectPlan
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The meeting notes content (optional). The notes are used for auxiliary analysis.
 	//

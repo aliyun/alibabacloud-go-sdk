@@ -17,7 +17,7 @@ type iListVisibleKnowledgeBasesHeaders interface {
 
 type ListVisibleKnowledgeBasesHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

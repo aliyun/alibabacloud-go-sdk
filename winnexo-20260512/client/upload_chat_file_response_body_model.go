@@ -40,25 +40,25 @@ type UploadChatFileResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The content type of the file. Valid values:
 	//
-	// - **image**: image
+	// - **image**: Image.
 	//
-	// - **document**: general document
+	// - **document**: General document.
 	//
-	// - **alidoc**: Alibaba document
+	// - **alidoc**: Alibaba document.
 	//
-	// - **text**: text
+	// - **text**: Text.
 	//
-	// - **video**: video
+	// - **video**: Video.
 	//
-	// - **audio**: audio
+	// - **audio**: Audio.
 	//
-	// - **archive**: archive
+	// - **archive**: Archive.
 	//
-	// - **app**: application
+	// - **app**: Application.
 	//
-	// - **link**: shortcut
+	// - **link**: Shortcut.
 	//
-	// - **other**: other
+	// - **other**: Other.
 	//
 	// example:
 	//
@@ -70,19 +70,19 @@ type UploadChatFileResponseBody struct {
 	//
 	// example.pdf
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	// The publicly accessible URL of the online document.
+	// The publicly accessible URL of the AliDing online document.
 	//
 	// example:
 	//
 	// https://example.com/winnexo/resource
 	FilePublicUrl *string `json:"filePublicUrl,omitempty" xml:"filePublicUrl,omitempty"`
-	// The file record ID (optional, corresponding to settings.file_record_id).
+	// The file record ID. This parameter is optional and corresponds to settings.file_record_id.
 	//
 	// example:
 	//
 	// exampleFileRecordId
 	FileRecordId *string `json:"fileRecordId,omitempty" xml:"fileRecordId,omitempty"`
-	// The attachment address.
+	// The Yida attachment address.
 	//
 	// example:
 	//

@@ -15,6 +15,8 @@ type iCreateUserShrinkRequest interface {
 	GetPasswordEncrypted() *string
 	SetRoleCodesShrink(v string) *CreateUserShrinkRequest
 	GetRoleCodesShrink() *string
+	SetSsoProvider(v string) *CreateUserShrinkRequest
+	GetSsoProvider() *string
 	SetTenantId(v string) *CreateUserShrinkRequest
 	GetTenantId() *string
 	SetWnAccountId(v string) *CreateUserShrinkRequest
@@ -30,7 +32,7 @@ type CreateUserShrinkRequest struct {
 	//
 	// string_value
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The base64-encoded password ciphertext encrypted by RSA-OAEP-SHA256 (required).
+	// The base64-encoded password ciphertext encrypted by using RSA-OAEP-SHA256 (required).
 	//
 	// This parameter is required.
 	//
@@ -44,7 +46,13 @@ type CreateUserShrinkRequest struct {
 	//
 	// string_value
 	RoleCodesShrink *string `json:"roleCodes,omitempty" xml:"roleCodes,omitempty"`
-	// The ID of the tenant in which the operation takes effect.
+	// The SSO provider type. This parameter is optional if the tenant has only one external logon method. This parameter is required if the tenant has multiple external logon methods. Currently, createUser supports BUILD_IN and AGENT_ONE.
+	//
+	// example:
+	//
+	// AGENT_ONE
+	SsoProvider *string `json:"ssoProvider,omitempty" xml:"ssoProvider,omitempty"`
+	// The ID of the tenant on which the operation takes effect.
 	//
 	// example:
 	//
@@ -80,6 +88,10 @@ func (s *CreateUserShrinkRequest) GetRoleCodesShrink() *string {
 	return s.RoleCodesShrink
 }
 
+func (s *CreateUserShrinkRequest) GetSsoProvider() *string {
+	return s.SsoProvider
+}
+
 func (s *CreateUserShrinkRequest) GetTenantId() *string {
 	return s.TenantId
 }
@@ -100,6 +112,11 @@ func (s *CreateUserShrinkRequest) SetPasswordEncrypted(v string) *CreateUserShri
 
 func (s *CreateUserShrinkRequest) SetRoleCodesShrink(v string) *CreateUserShrinkRequest {
 	s.RoleCodesShrink = &v
+	return s
+}
+
+func (s *CreateUserShrinkRequest) SetSsoProvider(v string) *CreateUserShrinkRequest {
+	s.SsoProvider = &v
 	return s
 }
 

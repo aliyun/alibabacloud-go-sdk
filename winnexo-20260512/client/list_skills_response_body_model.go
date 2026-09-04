@@ -199,19 +199,19 @@ type ListSkillsResponseBodyItems struct {
 	//
 	// 1
 	SkillHubDefinitionId *int64 `json:"skillHubDefinitionId,omitempty" xml:"skillHubDefinitionId,omitempty"`
-	// The data source type. Fixed value: FILE.
+	// The skill source type.
 	//
 	// example:
 	//
 	// BUILTIN
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The task status. Returns Running upon submission.
+	// The task status. Running is returned upon submission.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The keys.
+	// The key.
 	//
 	// example:
 	//

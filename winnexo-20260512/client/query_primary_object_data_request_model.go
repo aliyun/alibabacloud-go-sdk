@@ -24,19 +24,19 @@ type iQueryPrimaryObjectDataRequest interface {
 }
 
 type QueryPrimaryObjectDataRequest struct {
-	// The keyword for search. The keyword is matched against the name field. If the schema defines a description field, the keyword is also matched against the description field.
+	// The keyword for searching. The keyword is matched against the name field by default. If the schema defines a description field, the keyword is also matched against the description field.
 	//
 	// example:
 	//
 	// SampleKeyword
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// Specifies whether to return only favorited primary objects. If this parameter is set to false or not specified, all objects are returned with the isFavorited flag.
+	// Specifies whether to return only favorited primary objects. If this parameter is set to false or not specified, all objects are returned, including the isFavorited flag.
 	//
 	// example:
 	//
 	// false
 	OnlyFavorites *bool `json:"onlyFavorites,omitempty" xml:"onlyFavorites,omitempty"`
-	// The operating object name (such as customer_1).
+	// The operating object name, such as customer_1.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type QueryPrimaryObjectDataRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// The page number (starting from 1).
+	// The page number. Pages start from 1.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type QueryPrimaryObjectDataRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The tenant ID. This is a common parameter. In winnexo-cli, pass this value explicitly by using --tenant-id.
+	// The tenant ID. This is a common parameter. You can explicitly pass it in winnexo-cli by using --tenant-id.
 	//
 	// example:
 	//

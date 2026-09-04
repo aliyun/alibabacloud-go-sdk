@@ -64,13 +64,13 @@ type CreatePersonalDirectoryResponseBody struct {
 	//
 	// example:
 	//
-	// 2026-03-04 13:54:52
+	// 1772603692
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	// The last modification time.
 	//
 	// example:
 	//
-	// 2025-11-14T02:18:27Z
+	// 1763086707
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
 	// The response message.
 	//
@@ -84,7 +84,7 @@ type CreatePersonalDirectoryResponseBody struct {
 	//
 	// conn_ip_101
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of the digital human (operating object name, optional).
+	// The name of the digital employee (operating object name, optional).
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type CreatePersonalDirectoryResponseBody struct {
 	//
 	// oss://clg-paimon-4a00f1ac43464714b86fb54ca41a84c9/db-abc73646-6a08-4b96-820f-3d1d547a1e3b.db/tbl-c8a33522-5398-4f8e-9a2a-fba1efad94d1
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

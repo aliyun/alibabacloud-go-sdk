@@ -28,7 +28,7 @@ type CreatePersonalDirectoryRequest struct {
 	//
 	// hangzhou-release-version-3-eventbridge-numeric-queue-fix-20260529
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the digital human.
+	// The name of the digital employee.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type CreatePersonalDirectoryRequest struct {
 	//
 	// sandbox-conversation-webpage-github-default-p32JG2
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of the digital human (operating object name, optional).
+	// The name of the digital employee (operating object name, optional).
 	//
 	// example:
 	//

@@ -50,7 +50,7 @@ type ListScheduledTasksResponseBody struct {
 	HasMore *bool `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
 	// The list of skill cards.
 	Items []*ListScheduledTasksResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of entries returned in this request.
+	// The maximum number of entries to return in this request.
 	//
 	// example:
 	//
@@ -206,7 +206,7 @@ func (s *ListScheduledTasksResponseBody) Validate() error {
 }
 
 type ListScheduledTasksResponseBodyItems struct {
-	// The reason for the abnormality. This field has a value only when status is abnormal.
+	// The reason for the exception. This field has a value only when status is abnormal.
 	//
 	// example:
 	//
@@ -264,7 +264,7 @@ type ListScheduledTasksResponseBodyItems struct {
 	//
 	// example:
 	//
-	// Sample description
+	// SampleDescription
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The list of digital employee names.
 	//
@@ -272,7 +272,7 @@ type ListScheduledTasksResponseBodyItems struct {
 	//
 	// string_value
 	DigitalEmployeeName []*string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty" type:"Repeated"`
-	// The cumulative number of executions.
+	// The total number of executions.
 	//
 	// example:
 	//
@@ -326,7 +326,7 @@ type ListScheduledTasksResponseBodyItems struct {
 	//
 	// string_value
 	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
-	// The visibility of the group task. Valid values:
+	// The visibility scope of the group task. Valid values:
 	//
 	// - PRIVATE: visible only to the creator and group owner.
 	//
@@ -334,13 +334,13 @@ type ListScheduledTasksResponseBodyItems struct {
 	//
 	// - PUBLIC: visible to all group members.
 	//
-	// If not specified for a group task, the default value is PRIVATE. This field is ignored for personal tasks.
+	// For group tasks, the default value is PRIVATE if not specified. This field is ignored for personal tasks.
 	//
 	// example:
 	//
 	// PRIVATE
 	Visibility *string `json:"visibility,omitempty" xml:"visibility,omitempty"`
-	// The list of collaborator user IDs (excluding the task creator and group creator, who are covered by the authentication layer). This field is returned only for group tasks. An empty list is returned for PRIVATE or PUBLIC visibility.
+	// The list of collaborators (excluding the task creator and group creator, who are covered by the authentication layer). This field is returned only for group tasks. An empty list is returned for PRIVATE or PUBLIC visibility.
 	//
 	// example:
 	//

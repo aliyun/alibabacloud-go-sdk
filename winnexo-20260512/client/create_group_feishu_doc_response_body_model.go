@@ -40,7 +40,7 @@ type CreateGroupFeishuDocResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The folder ID.
+	// The directory ID.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type CreateGroupFeishuDocResponseBody struct {
 	//
 	// example:
 	//
-	// Project Plan
+	// ProjectPlan
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

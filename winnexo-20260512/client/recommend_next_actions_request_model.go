@@ -48,7 +48,7 @@ type RecommendNextActionsRequest struct {
 	//
 	// exampleSessionId
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The tenant ID. This is a common parameter. In winnexo-cli, pass this explicitly with --tenant-id.
+	// The tenant ID. This is a common parameter. Pass it explicitly through winnexo-cli using --tenant-id.
 	//
 	// example:
 	//

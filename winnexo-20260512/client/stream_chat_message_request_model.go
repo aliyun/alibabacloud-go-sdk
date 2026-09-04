@@ -16,13 +16,13 @@ type iStreamChatMessageRequest interface {
 }
 
 type StreamChatMessageRequest struct {
-	// The last received SSE event ID, used for resuming delivery after a disconnection. If not specified, the full stream is replayed from the beginning.
+	// The last received SSE event ID, used for resuming delivery after a disconnection. If this parameter is not specified, full replay starts from the beginning.
 	//
 	// example:
 	//
 	// 5-1683456789012
 	LastEventId *string `json:"lastEventId,omitempty" xml:"lastEventId,omitempty"`
-	// The ID of the effective tenant.
+	// The ID of the tenant for which the subscription takes effect.
 	//
 	// example:
 	//

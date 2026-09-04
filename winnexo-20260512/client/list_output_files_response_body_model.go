@@ -394,7 +394,7 @@ type ListOutputFilesResponseBodyItemsOutputItems struct {
 	//
 	// true
 	ShareEnabled *bool `json:"shareEnabled,omitempty" xml:"shareEnabled,omitempty"`
-	// The share token, which is present when sharing is enabled. You can use this token to access the public share preview API.
+	// The share token that is present when sharing is enabled. You can use this token to access the public share preview API.
 	//
 	// example:
 	//
@@ -735,7 +735,7 @@ type ListOutputFilesResponseBodyItemsOutputItemsSlidesInfo struct {
 	//
 	// 1
 	CompletedSlides *int64 `json:"completedSlides,omitempty" xml:"completedSlides,omitempty"`
-	// PPT ID
+	// The PPT file ID.
 	//
 	// example:
 	//

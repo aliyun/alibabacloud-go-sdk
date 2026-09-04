@@ -24,7 +24,7 @@ type GetChatSessionRequest struct {
 	//
 	// 100
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The SessionId value to filter by. If specified, all Active/Expired status information associated with this session is returned.
+	// The session ID to filter by. If specified, all Active/Expired status information associated with this session is returned.
 	//
 	// This parameter is required.
 	//

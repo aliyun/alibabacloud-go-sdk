@@ -36,7 +36,7 @@ type ListVisibleKnowledgeBasesResponseBody struct {
 	//
 	// successful
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -135,17 +135,17 @@ type ListVisibleKnowledgeBasesResponseBodyItems struct {
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// The creation time. This value is a timestamp in milliseconds.
+	// The creation time. The value is a timestamp in milliseconds.
 	//
 	// example:
 	//
-	// 2025-11-14T02:18:27Z
+	// 1763086707000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	// The modification time.
 	//
 	// example:
 	//
-	// 2026-03-26T13:57:42Z
+	// 1774533462
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
 	// The skill name.
 	//
@@ -159,19 +159,19 @@ type ListVisibleKnowledgeBasesResponseBodyItems struct {
 	//
 	// /test-folder-path1_1773194924773
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// The number of resources in the FAILED state. This parameter is returned only when listing top-level knowledge base directories.
+	// The number of resources in the FAILED state. This parameter is returned only when the top-level knowledge base directory list is queried.
 	//
 	// example:
 	//
 	// 1
 	SourceFailedCount *int64 `json:"sourceFailedCount,omitempty" xml:"sourceFailedCount,omitempty"`
-	// The number of resources in the READY state. This parameter is returned only when listing top-level knowledge base directories.
+	// The number of resources in the READY state. This parameter is returned only when the top-level knowledge base directory list is queried.
 	//
 	// example:
 	//
 	// 1
 	SourceReadyCount *int64 `json:"sourceReadyCount,omitempty" xml:"sourceReadyCount,omitempty"`
-	// The total number of resources in the directory and its subdirectories. This parameter is returned only when listing top-level knowledge base directories.
+	// The total number of resources in the directory and its subdirectories. This parameter is returned only when the top-level knowledge base directory list is queried.
 	//
 	// example:
 	//

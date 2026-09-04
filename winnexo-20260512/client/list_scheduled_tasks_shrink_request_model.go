@@ -42,17 +42,17 @@ type ListScheduledTasksShrinkRequest struct {
 	//
 	// true
 	CreatorOnly *bool `json:"creatorOnly,omitempty" xml:"creatorOnly,omitempty"`
-	// The keyword of the rule name, used for fuzzy match.
+	// The keyword of the rule name for fuzzy match.
 	//
 	// example:
 	//
 	// SampleKeyword
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// The maximum number of entries returned in this request.
+	// The maximum number of entries to return in this request.
 	//
 	// example:
 	//
-	// string_value
+	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	// The pagination token for the next page.
 	//

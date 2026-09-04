@@ -30,9 +30,9 @@ type CreateUserWithGroupsResponseBody struct {
 	//
 	// example:
 	//
-	// exampleAccountId
+	// user123@example.com
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	// The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.	- or InvalidParameter.*).
+	// The error code.
 	//
 	// example:
 	//
@@ -42,27 +42,27 @@ type CreateUserWithGroupsResponseBody struct {
 	//
 	// example:
 	//
-	// string_value
+	// Zhang San
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// Indicates whether the user is newly created. A value of false indicates that an existing user joined the tenant.
+	// Indicates whether the user is newly created.
 	//
 	// example:
 	//
 	// true
 	IsNewUser *bool `json:"isNewUser,omitempty" xml:"isNewUser,omitempty"`
-	// The error description. This parameter is empty when the request succeeds.
+	// The status code description.
 	//
 	// example:
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request trace ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The WINNEXO platform user ID.
+	// The platform user ID.
 	//
 	// example:
 	//

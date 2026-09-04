@@ -34,7 +34,7 @@ type iCreateGroupDingtalkChatShrinkRequest interface {
 }
 
 type CreateGroupDingtalkChatShrinkRequest struct {
-	// The conversation ID, typically used for JSSDK.
+	// The session ID, typically used for JSSDK.
 	//
 	// This parameter is required.
 	//
@@ -42,11 +42,11 @@ type CreateGroupDingtalkChatShrinkRequest struct {
 	//
 	// cidxxxxxxxx
 	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
-	// The chat name.
+	// The group chat name.
 	//
 	// example:
 	//
-	// Customer Project Chat
+	// CustomerProjectGroup
 	ChatName *string `json:"chatName,omitempty" xml:"chatName,omitempty"`
 	// The description of the AI assistant.
 	//
@@ -80,7 +80,7 @@ type CreateGroupDingtalkChatShrinkRequest struct {
 	//
 	// example:
 	//
-	// Focus on identifying customer requests and to-do items
+	// Focus on identifying customer demands and to-do items
 	Notes *string `json:"notes,omitempty" xml:"notes,omitempty"`
 	// The name of the digital employee (operating object name, optional).
 	//
@@ -92,9 +92,9 @@ type CreateGroupDingtalkChatShrinkRequest struct {
 	//
 	// example:
 	//
-	// ["Customer","Chat"]
+	// ["Customer","GroupChat"]
 	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
-	// The tenant ID. This is a common parameter. In winnexo-cli, pass this value explicitly by using --tenant-id.
+	// The tenant ID. This is a common parameter. In winnexo-cli, pass this explicitly with --tenant-id.
 	//
 	// example:
 	//

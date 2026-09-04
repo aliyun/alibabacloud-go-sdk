@@ -32,7 +32,7 @@ type CreateConversationResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Id of the request
+	// The session ID.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type CreateConversationResponseBody struct {
 	//
 	// 1784513941206
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The status code description.
+	// The description of the status code.
 	//
 	// example:
 	//
 	// The current zone list is illegal.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// A reserved field for extension use.
+	// A reserved field for extension purposes.
 	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
 	// The request ID.
 	//

@@ -48,7 +48,7 @@ type RetryKnowledgeBaseFailedSourcesResponseBody struct {
 	//
 	// 1
 	EnqueuedCount *int64 `json:"enqueuedCount,omitempty" xml:"enqueuedCount,omitempty"`
-	// enqueuedIds。
+	// The list of knowledge base source IDs that have been re-enqueued.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type RetryKnowledgeBaseFailedSourcesResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The number of resources skipped because they are not in FAILED status.
+	// The number of resources skipped (not in FAILED status).
 	//
 	// example:
 	//

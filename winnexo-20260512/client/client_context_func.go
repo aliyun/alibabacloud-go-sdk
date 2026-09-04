@@ -85,6 +85,81 @@ func (client *Client) AddUserGroupMembersWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
+// Batch cancels digital employee favorites for specific object types.
+//
+// Description:
+//
+// Idempotently cancels favorites across three independent dimensions: graphName, operatingObjectName, and objectType. The input array accepts 1 to 200 items per request. Each item must be a non-empty string with a maximum length of 128 characters. The server validates and deduplicates items while preserving order. Non-string values, values that exceed the length limit, or arrays that exceed the size limit are rejected. Deletion, per-item status updates, and remaining valid count are completed within a single transaction. To safely cancel all favorites, you must also call ClearOperatingObjectFavorites to clean up historical records, MISSING records, or permission-hidden records that are not visible in the list. Then read back the result to confirm that total is 0.
+//
+// @param tmpReq - BatchRemoveOperatingObjectFavoritesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchRemoveOperatingObjectFavoritesResponse
+func (client *Client) BatchRemoveOperatingObjectFavoritesWithContext(ctx context.Context, tmpReq *BatchRemoveOperatingObjectFavoritesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchRemoveOperatingObjectFavoritesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &BatchRemoveOperatingObjectFavoritesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ObjectIds) {
+		request.ObjectIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ObjectIds, dara.String("objectIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GraphName) {
+		body["graphName"] = request.GraphName
+	}
+
+	if !dara.IsNil(request.ObjectIdsShrink) {
+		body["objectIds"] = request.ObjectIdsShrink
+	}
+
+	if !dara.IsNil(request.ObjectType) {
+		body["objectType"] = request.ObjectType
+	}
+
+	if !dara.IsNil(request.OperatingObjectName) {
+		body["operatingObjectName"] = request.OperatingObjectName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchRemoveOperatingObjectFavorites"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/batchRemoveOperatingObjectFavorites"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchRemoveOperatingObjectFavoritesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Performs a service health check.
 //
 // @param request - CheckHealthRequest
@@ -132,19 +207,84 @@ func (client *Client) CheckHealthWithContext(ctx context.Context, request *Check
 
 // Summary:
 //
+// Clears all follows of a specific object type for a digital employee.
+//
+// Description:
+//
+// Clears all persisted follows for the current calling user across three independent dimensions: graphName, operatingObjectName, and objectType. This includes historical records, MISSING records, and permission-hidden records that are not visible in the list. The operation does not return invisible object IDs and verifies that the remaining physical record count is zero within the same transaction.
+//
+// @param request - ClearOperatingObjectFavoritesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ClearOperatingObjectFavoritesResponse
+func (client *Client) ClearOperatingObjectFavoritesWithContext(ctx context.Context, request *ClearOperatingObjectFavoritesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ClearOperatingObjectFavoritesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GraphName) {
+		body["graphName"] = request.GraphName
+	}
+
+	if !dara.IsNil(request.ObjectType) {
+		body["objectType"] = request.ObjectType
+	}
+
+	if !dara.IsNil(request.OperatingObjectName) {
+		body["operatingObjectName"] = request.OperatingObjectName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ClearOperatingObjectFavorites"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/clearOperatingObjectFavorites"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ClearOperatingObjectFavoritesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a service notice.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// Creates a service notice. The caller identity must be mapped to a real platform user in the system O&M tenant and must have notice management permissions.
+// Creates a service notice. The caller must be mapped to a real platform user in the system O&M tenant and must have announcement management permissions.
 //
 // - `priority`: The importance level of the notice. Valid values: URGENT, IMPORTANT, and GENERAL.
 //
 // - `targetTenantIds` / `targetRoleCodes`: Used only when the corresponding target mode is set to SPECIFIED. Pass values as a JSON array.
 //
-// - `effectiveStart` / `effectiveEnd`: ISO 8601 timestamps with time zone information.
+// - `effectiveStart` / `effectiveEnd`: ISO 8601 time with time zone.
 //
 // - `publishNow`: If set to true, the notice is published immediately after creation. Otherwise, it is saved as a draft.
 //
@@ -500,21 +640,21 @@ func (client *Client) CreateGroupAliDingChatWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Creates a group-level DingTalk chat knowledge source.
+// Creates knowledge from a standard DingTalk group chat for a group.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - Connects a specified DingTalk chat to the knowledge base of a group that the caller has joined.
+// - Connects a specified standard DingTalk group chat to the group knowledge base that the caller has joined.
 //
 // - The resource type is fixed to DINGTALK, the scope is fixed to GROUP, and the owning user is parsed from the gateway authentication identity.
 //
 // - groupId, chatId, and historyStartTime are required.
 //
-// - updateFrequency can be configured by using a preset or a five-field cron expression for subsequent synchronization frequency.
+// - updateFrequency can be configured through preset or a five-segment cron expression for subsequent synchronization frequency.
 //
-// - The server verifies the caller\\"s group membership and the target group directory permissions. The same chat can be created as different sources.
+// - The server verifies the caller\\"s group member identity and target group directory permissions. The same group chat can be created as different Sources.
 //
 // @param tmpReq - CreateGroupDingtalkChatRequest
 //
@@ -1862,11 +2002,11 @@ func (client *Client) CreatePersonalDingtalkMinutesWithContext(ctx context.Conte
 //
 // - This API is used to create a personal folder (category) under "My Resources".
 //
-// - If `parentDirectoryId` is not specified, the system automatically uses or creates the default root folder of the current digital human as the parent folder.
+// - If `parentDirectoryId` is not specified, the system automatically uses or creates the default root folder of the current digital employee as the parent folder.
 //
-// - If `parentDirectoryId` is specified, it must be an existing personal folder of the current user under the current digital human.
+// - If `parentDirectoryId` is specified, it must be an existing personal folder of the current user under the current digital employee.
 //
-// - `tenant_id` and `user_id` are derived from the authentication identity only. These fields are ignored if included in the request body.
+// - `tenant_id` and `user_id` are derived from the authenticated identity only. These fields are ignored if passed in the request body.
 //
 // @param request - CreatePersonalDirectoryRequest
 //
@@ -2659,15 +2799,15 @@ func (client *Client) CreateScheduledTaskWithContext(ctx context.Context, tmpReq
 //
 // ## Request description
 //
-// - This API is used to create a new enterprise knowledge base directory under a specified tenant.
+// - This API is used to create a new enterprise knowledge base folder under a specified tenant.
 //
-// - You can specify the parent directory of the new directory by setting the `parentId` parameter. If this parameter is not specified, the directory is created as a root directory by default.
+// - You can set the `parentId` parameter to specify the parent folder of the new folder. If this parameter is not specified, the folder is created as a root folder by default.
 //
-// - The `path` parameter is optional. If this parameter is not specified, the system automatically calculates the path based on the parent directory.
+// - The `path` parameter is optional. If this parameter is not specified, the system automatically calculates the path based on the parent folder.
 //
 // - Calling this operation requires the corresponding permissions. Multiple authentication methods are supported, including AK, BearerToken, and APP authentication.
 //
-// - After the directory is created, the related information of the new directory is returned, such as the directory ID and name.
+// - After the folder is created, the related information about the new folder is returned, such as the folder ID and name.
 //
 // @param request - CreateTenantDirectoryRequest
 //
@@ -2740,17 +2880,17 @@ func (client *Client) CreateTenantDirectoryWithContext(ctx context.Context, requ
 //
 //	Business orchestration:
 //
-//	1. Parses roleCodes → role_ids (validates against system role enumerations).
+//	1. Parses roleCodes into role_ids (validates against system role enumerations).
 //
 //	2. Checks whether the user already exists (used to return the isNewUser flag).
 //
-//	3. Calls UserManagementService.add_tenant_member to create or add the user (the password must be passed in as an RSA ciphertext by the caller).
+//	3. Calls UserManagementService.add_tenant_member to create or add the user (the password must be passed by the caller as an RSA ciphertext).
 //
 //	4. Returns the creation result (including the isNewUser flag).
 //
 //	Error codes:
 //
-//	- ERR.User.DeactivatedInTenant: The user is deactivated in the tenant. Use updateUser to resume the user.
+//	- ERR.User.DeactivatedInTenant: The user is deactivated in the tenant. Use updateUser to restore the user.
 //
 //	- ERR.User.AlreadyInTenant: The user is already an active member of the tenant.
 //
@@ -2792,6 +2932,10 @@ func (client *Client) CreateUserWithContext(ctx context.Context, tmpReq *CreateU
 
 	if !dara.IsNil(request.RoleCodesShrink) {
 		body["roleCodes"] = request.RoleCodesShrink
+	}
+
+	if !dara.IsNil(request.SsoProvider) {
+		body["ssoProvider"] = request.SsoProvider
 	}
 
 	if !dara.IsNil(request.WnAccountId) {
@@ -2894,25 +3038,23 @@ func (client *Client) CreateUserGroupWithContext(ctx context.Context, request *C
 //
 // Description:
 //
-// Creates a user and sets initial roles and user groups via OpenAPI.
+// ## Request description
 //
-//	Business orchestration:
+// - This operation creates a WINNEXO user under a specified tenant and optionally assigns system roles and user groups to the user.
 //
-//	1. Parses roleCodes → role_ids (system role enumeration validation)
+// - The `accountId` parameter serves as the logon account for the user and must be unique.
 //
-//	2. Checks whether the user already exists (used to return the isNewUser flag)
+// - The `displayName` parameter specifies the display name of the user, which must also be unique within the tenant and cannot exceed 100 characters in length.
 //
-//	3. Validates the tenant ownership of userGroupIds and completes creation/joining (the password must be passed in by the caller as RSA ciphertext)
+// - The optional `roleCodes` parameter specifies a list of roles for the user. By default, the `APPLICATION_USER` role is assigned.
 //
-//	4. Returns the creation result (including the isNewUser flag)
+// - The `userGroupIds` parameter allows you to add up to 100 user group IDs to the new user. Make sure that all specified user groups belong to the same tenant.
 //
-//	Error codes:
+// - The password must be encrypted by using the RSA-OAEP-SHA256 algorithm and submitted in Base64 format.
 //
-//	- ERR.User.DeactivatedInTenant: The user is deactivated in the tenant. Use updateUser to resume.
+// - This operation supports calls over HTTPS and requires the request body in JSON format.
 //
-//	- ERR.User.AlreadyInTenant: The user is already an active member of the tenant.
-//
-//	- ERR.User.DisplayNameDuplicateInTenant: The display name is duplicate within the tenant.
+// - For security authentication, AK, BearerToken, and APP are supported.
 //
 // @param tmpReq - CreateUserWithGroupsRequest
 //
@@ -3003,9 +3145,9 @@ func (client *Client) CreateUserWithGroupsWithContext(ctx context.Context, tmpRe
 //
 // - The file must include an OSS persistent address (`filePath`). Other information such as the public access URL and original file name is optional.
 //
-// - If the target directory ID (`directoryId`) is not specified, the file is automatically attached to the default root directory of the current digital employee. If specified, ensure that the directory belongs to the personal directory of the caller.
+// - If the target directory ID (`directoryId`) is not specified, the file is automatically bound to the default root directory of the current digital employee. If specified, ensure that the directory belongs to the caller\\"s personal directory.
 //
-// - Security authentication is supported through multiple methods (AK, BearerToken, APP).
+// - Multiple authentication methods (AK, BearerToken, APP) are supported for security authentication.
 //
 // - The operation type is write (`write`), and operation logs are recorded for subsequent auditing.
 //
@@ -3346,7 +3488,7 @@ func (client *Client) EnableTokenWithContext(ctx context.Context, request *Enabl
 //
 // - If no target folder ID (`directoryId`) is specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the invoker\\"s personal folder.
 //
-// - Security verification is supported through multiple authenticate methods (AK, BearerToken, APP).
+// - Multiple authentication methods (AK, BearerToken, APP) are supported to authenticate requests.
 //
 // - The operation type is write (`write`), and operation logs are recorded for subsequent auditing.
 //
@@ -3817,17 +3959,17 @@ func (client *Client) GetScheduledTaskPushOptionsWithContext(ctx context.Context
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
 // - This operation uploads a file to the enterprise knowledge base.
 //
-// - You must have the `DEVELOPMENT_KB_MANAGE` permission to call this API operation.
+// - The `DEVELOPMENT_KB_MANAGE` feature permission is required to call this API.
 //
-// - You must provide the OSS persistent address (`filePath`) of the file when uploading.
+// - The OSS persistent address (`filePath`) of the file must be provided during upload.
 //
-// - Optional parameters include the public access URL of the file and the original file name to enhance the completeness of file information.
+// - Optional parameters include the public access URL and original file name to enhance the completeness of file information.
 //
-// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee by default.
+// - If `directoryId` is specified, the file is placed in the corresponding enterprise knowledge base directory. Otherwise, the file is bound to the default root directory of the current digital employee.
 //
 // - You can add tags to the resource by using `sourceTags` for subsequent management and retrieval.
 //
@@ -4719,9 +4861,9 @@ func (client *Client) GrantAgentUsersWithContext(ctx context.Context, tmpReq *Gr
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// Performs a paging query for published platform notices that are effective within the current database time window. The invoking identity must be a real user who has the notice viewing permission in the system O&M tenant.
+// Performs a paging query for published platform announcements that are effective within the current database time window. The caller must be a real user in the system O&M tenant who has the permission to view announcements.
 //
 // @param request - ListActiveAnnouncementsRequest
 //
@@ -5159,7 +5301,7 @@ func (client *Client) ListAvailableConfigsWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
 // - This operation queries the bill list based on specified conditions.
 //
@@ -5169,7 +5311,7 @@ func (client *Client) ListAvailableConfigsWithContext(ctx context.Context, reque
 //
 // - You can choose whether to filter out bills with zero credit consumption. By default, such bills are filtered out.
 //
-// - Authentication information (such as AK, BearerToken, or APP authentication) is required in the request.
+// - Authentication information (such as AK, BearerToken, or APP authentication) is required for the request.
 //
 // @param request - ListBillingRequest
 //
@@ -5461,25 +5603,98 @@ func (client *Client) ListKnowledgeBaseDirectoriesWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the output list of the current user with support for conditional filtering and pagination.
+// Queries the precise object type follows of a digital employee by page.
+//
+// Description:
+//
+// Queries follows by three independent dimensions: graphName, operatingObjectName, and objectType. Supports primary objects and explicit first-level associated objects. Uses opaque cursor pagination and is not limited by the 1000-item display window of the follow panel.
+//
+// @param request - ListOperatingObjectFavoritesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOperatingObjectFavoritesResponse
+func (client *Client) ListOperatingObjectFavoritesWithContext(ctx context.Context, request *ListOperatingObjectFavoritesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListOperatingObjectFavoritesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.TenantId) {
+		query["tenantId"] = request.TenantId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.GraphName) {
+		body["graphName"] = request.GraphName
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.ObjectType) {
+		body["objectType"] = request.ObjectType
+	}
+
+	if !dara.IsNil(request.OperatingObjectName) {
+		body["operatingObjectName"] = request.OperatingObjectName
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListOperatingObjectFavorites"),
+		Version:     dara.String("2026-05-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/openapi/listOperatingObjectFavorites"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListOperatingObjectFavoritesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the output list of the current user, with support for conditional filtering and pagination.
 //
 // Description:
 //
 // ## Operation description
 //
-// - This API operation queries the output list of the current logon user.
+// - This API operation queries the output list of the current logged-in user.
 //
-// - `tenantId` is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
+// - `tenantId` is a common parameter. If not specified, the default tenant of the caller is used.
 //
-// - You can filter results by using parameters such as `operatingObjectName`, `itemType`, and `keyword`.
+// - Supports filtering by parameters such as `operatingObjectName`, `itemType`, and `keyword`.
 //
-// - Set `sharedOnly` to `true` to display only shared outputs.
+// - Set `sharedOnly` to `true` to display only outputs with sharing enabled.
 //
-// - Pagination is controlled by `page` (page number) and `pageSize` (number of entries per page). By default, the first page is returned with 20 records per page.
+// - Pagination is controlled by `page` (page number) and `pageSize` (number of items per page). By default, results start from page 1 with 20 records per page.
 //
 // - Results are sorted by update time in descending order by default.
 //
-// - The `tenant_id` or `user_id` values passed in the request body are ignored. This information is obtained only from the authenticated identity.
+// - The `tenant_id` or `user_id` passed in the request body by the caller is ignored. This information is derived only from the authenticated identity.
 //
 // @param request - ListOutputFilesRequest
 //
@@ -5722,7 +5937,7 @@ func (client *Client) ListRolesWithContext(ctx context.Context, request *ListRol
 //
 // - This operation uploads a file to an enterprise knowledge base.
 //
-// - The `DEVELOPMENT_KB_MANAGE` permission is required to call this API.
+// - The DEVELOPMENT_KB_MANAGE permission is required to call this operation.
 //
 // - You must provide the OSS persistent address (`filePath`) of the file when uploading.
 //
@@ -5823,7 +6038,7 @@ func (client *Client) ListScheduledTasksWithContext(ctx context.Context, tmpReq 
 //
 // ## Request description
 //
-// This API retrieves all visible skills under the current tenant. It supports filtering by digital employee binding relationship, skill source, tags, keywords, and other conditions, and supports pagination.
+// This API retrieves all visible skills under the current tenant. It supports filtering by digital employee binding relationship, skill source, tags, and keywords, and supports pagination.
 //
 // ### Request parameters
 //
@@ -5831,15 +6046,15 @@ func (client *Client) ListScheduledTasksWithContext(ctx context.Context, tmpReq 
 //
 // - **FilterType**: Optional. The skill filtering dimension. Valid values: `ALL` (all published), `BUILTIN` (built-in published), `CUSTOM` (custom published), `DRAFT` (drafts, including published skills with unpublished modifications). Default value: `ALL`.
 //
-// - **Tags**: Optional. Filters by tags. A match occurs if any tag in the array is hit.
+// - **Tags**: Optional. Filters by tags. A match is returned if any tag in the array is hit.
 //
-// - **Keyword**: Optional. Performs fuzzy matching by skill name or description.
+// - **Keyword**: Optional. Performs a fuzzy match on the skill name or description.
 //
 // - **Page**: Optional. The page number. Minimum value: 1. Default value: 1.
 //
-// - **PageSize**: Optional. The number of entries per page. Value range: 1 to 100. Default value: 20.
+// - **PageSize**: Optional. The number of entries per page. Valid values: 1 to 100. Default value: 20.
 //
-// - **OperatingObjectName**: Optional. The digital employee name. If specified, filters by binding relationship. Must be used together with `BindStatus`.
+// - **OperatingObjectName**: Optional. The digital employee name. If specified, results are filtered by binding relationship. Must be used together with `BindStatus`.
 //
 // - **BindStatus**: Optional. The binding status. Valid values: `BOUND` (bound), `UNBOUND` (unbound global skills).
 //
@@ -6660,13 +6875,13 @@ func (client *Client) MoveResourceWithContext(ctx context.Context, request *Move
 
 // Summary:
 //
-// Offlines a service notice.
+// Takes a service notice offline.
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// Idempotently offlines a platform announcement by announcement ID. Returns `changed=true` when a PUBLISHED announcement is offlined for the first time. Returns `changed=false` when the announcement is already offline or expired.
+// Idempotently takes a platform announcement offline by announcement ID. Returns `changed=true` when a PUBLISHED announcement is taken offline for the first time. Returns `changed=false` when the announcement is already offline or expired.
 //
 // The caller must belong to the system operations tenant and have announcement management permissions.
 //
@@ -6862,21 +7077,21 @@ func (client *Client) PreviewPersonalSourceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries primary object data by operating object name with paging support, including filtering and search.
+// Queries primary object data by operating object name with pagination, and supports filtering and searching.
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// - This API queries primary object data by a specified operating object name (such as `customer_1`) with paging.
+// - This API queries primary object data with pagination based on a specified operating object name (such as `customer_1`).
 //
-// - Keyword-based search is supported. You can set whether to return only objects marked as favorites in Settings.
+// - Supports keyword-based searching and allows you to specify whether to return only objects marked as favorites.
 //
-// - Complex filter conditions can be used to further narrow results, including but not limited to equal to, not equal to, greater than, and less than operators.
+// - Complex filter conditions can be used to further refine results, including but not limited to logical operators such as equal to, not equal to, greater than, and less than.
 //
 // - If no primary object type is configured, an empty result set is returned.
 //
-// - Data in the request undergoes authentication and filtering to ensure security and accuracy.
+// - Data included in the request undergoes authentication and filtering to ensure security and accuracy.
 //
 // @param request - QueryPrimaryObjectDataRequest
 //
@@ -7940,7 +8155,7 @@ func (client *Client) ResetTokenWithContext(ctx context.Context, request *ResetT
 //
 // - `directoryId` is a required parameter that specifies the target folder in which to check and retry failed data sources.
 //
-// - If `tenantId` is not provided, the tenant ID of the caller is used by default.
+// - If `tenantId` is not provided, the caller\\"s tenant ID is used by default.
 //
 // - The API supports multiple authentication methods, including AccessKey, BearerToken, and APP authentication.
 //
@@ -7995,11 +8210,11 @@ func (client *Client) RetryDirectoryFailedSourcesWithContext(ctx context.Context
 
 // Summary:
 //
-// Retries all data sources in failed status under a specified directory in batch.
+// Retries all data sources in failed status under a specified directory in batches.
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
 // This API retrieves and retries all data sources in FAILED status under a specified enterprise knowledge base directory (including its subdirectories). The request returns immediately, and the actual retry operations are executed asynchronously in the background.
 //
@@ -8009,7 +8224,7 @@ func (client *Client) RetryDirectoryFailedSourcesWithContext(ctx context.Context
 //
 // - **Parameters**:
 //
-//   - `directoryId` (required): The ID of the enterprise knowledge base directory for which to check and retry failed data sources.
+//   - `directoryId` (required): The ID of the enterprise knowledge base directory to check and retry failed data sources.
 //
 //   - `tenantId` (optional): The tenant ID. The default tenant of the caller is used if this parameter is not specified.
 //
@@ -8618,15 +8833,15 @@ func (client *Client) SendAsyncChatMessageWithContext(ctx context.Context, tmpRe
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
 // - This API is used to upload a file to the "My Resources" section of a specified digital employee.
 //
 // - `source_type` is fixed to `FILE`, `scope` is fixed to `PERSONAL`, and `platform` is fixed to `LOCAL`.
 //
-// - A persistent OSS address (`filePath`) must be provided for the file. Other information such as the public access URL and original file name is optional.
+// - The file must include an OSS persistent address (`filePath`). Other information such as the public access URL and original file name is optional.
 //
-// - If the target folder ID (`directoryId`) is not specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the invoker\\"s personal folder.
+// - If no target folder ID (`directoryId`) is specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the invoker\\"s personal folder.
 //
 // - Multiple authentication methods (AK, BearerToken, APP) are supported to authenticate requests.
 //
@@ -8651,15 +8866,15 @@ func (client *Client) SendChatMessageWithSSECtx(ctx context.Context, tmpReq *Sen
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
 // - This API is used to upload a file to the "My Resources" section of a specified digital employee.
 //
 // - `source_type` is fixed to `FILE`, `scope` is fixed to `PERSONAL`, and `platform` is fixed to `LOCAL`.
 //
-// - A persistent OSS address (`filePath`) must be provided for the file. Other information such as the public access URL and original file name is optional.
+// - The file must include an OSS persistent address (`filePath`). Other information such as the public access URL and original file name is optional.
 //
-// - If the target folder ID (`directoryId`) is not specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the invoker\\"s personal folder.
+// - If no target folder ID (`directoryId`) is specified, the file is automatically attached to the default root folder of the current digital employee. If specified, ensure that the folder belongs to the invoker\\"s personal folder.
 //
 // - Multiple authentication methods (AK, BearerToken, APP) are supported to authenticate requests.
 //
@@ -10079,33 +10294,33 @@ func (client *Client) UpdateUserInfoWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Uploads a local file in a session.
+// Uploads a local file for a session.
 //
 // Description:
 //
 // ## Operation description
 //
-// This API is used to upload a session temporary file by using the **file transfer upload*	- mode (`fileTransfer`). The file binary data is not transmitted through the request body of this API. Instead, the file is first uploaded to Object Storage Service (OSS), and then the OSS address is passed to the backend through the `FileUrl` parameter. The backend retrieves the bytes from that address, writes them to its own OSS, and creates a session temporary file record.
+// This API operation uploads a temporary temporary file by using the **file transfer upload*	- mode (`fileTransfer`). The file binary data is not transmitted in the request body of this API operation. Instead, the file is first uploaded to Object Storage Service (OSS), and then the OSS address is passed to the backend through the `FileUrl` parameter. The backend retrieves the bytes from that address, writes them to its own OSS bucket, and creates a temporary temporary file record.
 //
-// ### Call methods
+// ### How to call
 //
-// - **Recommended**: Use the `UploadChatFileAdvance` method generated by the SDK. Pass in the local file stream, and the SDK automatically completes the transfer upload and populates `FileUrl`.
+// - **Recommended**: Use the `UploadChatFileAdvance` method generated by the SDK. Pass in the local file stream, and the SDK automatically completes the transfer upload and populates the `FileUrl` parameter.
 //
-// - **Direct upload**: Upload the file to an OSS address accessible by the server, and then directly call this API with the `FileUrl` parameter.
+// - **Direct upload**: Upload the file to an OSS address accessible by the server, and then call this API operation directly with the `FileUrl` parameter.
 //
 // ### Request parameters
 //
-// - **FileUrl**: Required. The OSS address of the file. When you use the Advance method, the SDK automatically populates this parameter. You do not need to manually assign a value.
+// - **FileUrl**: Required. The OSS address of the file. When you use the Advance method, the SDK automatically populates this parameter. You do not need to manually set it.
 //
-// - **FileName**: Required. The original file name including the extension, such as `report.pdf`. The OSS address generated during transfer does not carry the original file name. The backend uses this parameter to determine the file extension and display name. Therefore, you must explicitly pass in this parameter.
+// - **FileName**: Required. The original file name including the extension, such as `report.pdf`. The OSS address generated during the transfer does not carry the original file name. The backend uses this parameter to determine the file extension and display name. Therefore, you must explicitly pass in this parameter.
 //
 // - **ContentType**: Optional. The MIME type of the file. If this parameter is not specified, `application/octet-stream` is used.
 //
-// - **OperatingObjectName**: Optional. The Agent namespace identifier that determines the file storage path.
+// - **OperatingObjectName**: Optional. The agent namespace identifier that determines the file storage path.
 //
 // ### Response parameters
 //
-// The response includes the OSS object path `objectName`, the storage address `fileUrl`, the public access address `filePublicUrl` (valid for 1 hour), and the file record ID `fileRecordId`. The `uploadSignatureUrl` parameter is always empty in this mode.
+// The response includes the OSS object path `objectName`, the storage address `fileUrl`, the publicly accessible address `filePublicUrl` (valid for 1 hour), and the file record ID `fileRecordId`. The `uploadSignatureUrl` parameter is always empty in this mode.
 //
 // @param request - UploadChatFileRequest
 //

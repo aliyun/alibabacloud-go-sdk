@@ -68,7 +68,7 @@ type CreateKnowledgeBaseAliDingDocResponseBody struct {
 	//
 	// p-toolset-b8a1de80-e9f5-49f3-8a12-873d378889c6
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//

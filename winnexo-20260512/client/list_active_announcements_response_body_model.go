@@ -151,7 +151,7 @@ func (s *ListActiveAnnouncementsResponseBody) Validate() error {
 }
 
 type ListActiveAnnouncementsResponseBodyItems struct {
-	// The business ID of the notice.
+	// The business ID of the announcement.
 	//
 	// example:
 	//
@@ -187,7 +187,7 @@ type ListActiveAnnouncementsResponseBodyItems struct {
 	//
 	// 2026-08-21T14:00:00+08:00
 	EffectiveEnd *string `json:"effectiveEnd,omitempty" xml:"effectiveEnd,omitempty"`
-	// The effective start time in ISO 8601 format with time zone. If this parameter is not specified, the notice takes effect immediately.
+	// The effective start time in ISO 8601 format with time zone. If not specified, the announcement takes effect immediately.
 	//
 	// example:
 	//
@@ -195,7 +195,7 @@ type ListActiveAnnouncementsResponseBodyItems struct {
 	EffectiveStart *string `json:"effectiveStart,omitempty" xml:"effectiveStart,omitempty"`
 	// The priority of the free task.
 	//
-	// - Uses the default priority of the project, as shown in the following figure. The default priority values are as follows:
+	// - Uses the default priority of the project, as shown in the following figure. The default priorities are as follows:
 	//
 	//      - **-10**: Low. This is the default value.
 	//
@@ -207,9 +207,9 @@ type ListActiveAnnouncementsResponseBodyItems struct {
 	//
 	// ![](https://img.alicdn.com/imgextra/i1/O1CN01hNuSPz25juCzgxhmW_!!6000000007563-2-tps-2682-1304.png)
 	//
-	// - Custom priority defined by the user, as shown in the following figure, with an additional "Generally urgent" level.
+	// - Custom priority, as shown in the following figure, with an additional "Moderately urgent" level.
 	//
-	// The value of this parameter is subject to the actual response of the API call. A higher priority corresponds to a larger value.
+	// The value of this parameter is subject to the actual response of the API. A higher priority corresponds to a larger value.
 	//
 	// ![](https://img.alicdn.com/imgextra/i1/O1CN01V67b3i1mkNvJiW8D1_!!6000000004992-2-tps-2128-1126.png)
 	//
@@ -223,7 +223,7 @@ type ListActiveAnnouncementsResponseBodyItems struct {
 	//
 	// 2026-08-20T14:00:00+08:00
 	PublishedAt *string `json:"publishedAt,omitempty" xml:"publishedAt,omitempty"`
-	// The task status. The value Running is returned upon submission.
+	// The task status. Running is returned upon submission.
 	//
 	// example:
 	//
@@ -233,7 +233,7 @@ type ListActiveAnnouncementsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// System Maintenance Notification
+	// System Maintenance Notice
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
 }
 

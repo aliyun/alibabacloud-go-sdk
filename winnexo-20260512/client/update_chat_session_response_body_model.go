@@ -20,7 +20,7 @@ type iUpdateChatSessionResponseBody interface {
 }
 
 type UpdateChatSessionResponseBody struct {
-	// The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.	- / InvalidParameter.*).
+	// The business status code. A value of 200 indicates success. A non-200 value indicates a backend error code (ERR.	- / InvalidParameter.*).
 	//
 	// example:
 	//

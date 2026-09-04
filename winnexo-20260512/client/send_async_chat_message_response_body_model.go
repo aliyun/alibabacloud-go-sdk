@@ -62,7 +62,7 @@ type SendAsyncChatMessageResponseBody struct {
 	//
 	// bd772dcc-afab-44ad-9fb8-bca716726201
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The user message ID. Use this ID to establish a pairing relationship with the assistant message in this turn.
+	// The user message ID.
 	//
 	// example:
 	//

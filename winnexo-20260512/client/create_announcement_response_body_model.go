@@ -46,7 +46,7 @@ type CreateAnnouncementResponseBody struct {
 	//
 	// 10001
 	CreatedBy *int64 `json:"createdBy,omitempty" xml:"createdBy,omitempty"`
-	// The response message.
+	// The prompt message.
 	//
 	// example:
 	//
@@ -70,9 +70,9 @@ type CreateAnnouncementResponseBody struct {
 	//
 	// PLATFORM
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The refund status. You must query this field to confirm the refund status during processing. Valid values:
+	// The refund status. You need to query and confirm the refund status during the refund process. Valid values:
 	//
-	// - SUCCESS: All refunds succeeded.
+	// - SUCCESS: All succeeded.
 	//
 	// - FAIL: Failed.
 	//

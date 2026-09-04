@@ -132,7 +132,7 @@ type GetSourceResponseBody struct {
 	//
 	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The meeting notes content (optional), which participates in auxiliary analysis.
+	// The meeting notes content (optional). The notes are used for auxiliary analysis.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type GetSourceResponseBody struct {
 	//
 	// PERSONAL
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The user profile card settings.
+	// The user profile settings.
 	Settings map[string]interface{} `json:"settings,omitempty" xml:"settings,omitempty"`
 	// The skill output ID (carried when the output is saved as a resource).
 	//
@@ -184,7 +184,7 @@ type GetSourceResponseBody struct {
 	//
 	// exampleSourceId
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// The knowledge base affiliation type. Valid values:
+	// The knowledge base (KB) ownership type. Valid values:
 	//
 	// - aliding_kb_doc: DingTalk knowledge base document.
 	//
@@ -212,7 +212,7 @@ type GetSourceResponseBody struct {
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// structuredTables
+	// The list of structured tables.
 	//
 	// example:
 	//

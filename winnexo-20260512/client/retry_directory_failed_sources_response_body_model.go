@@ -36,7 +36,7 @@ type RetryDirectoryFailedSourcesResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The ID of the enterprise knowledge base folder. Failed resources in the folder and its subfolders are included recursively.
+	// The ID of the enterprise knowledge base folder. Failed resources in subfolders are recursively included.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type RetryDirectoryFailedSourcesResponseBody struct {
 	//
 	// 1
 	EnqueuedCount *int64 `json:"enqueuedCount,omitempty" xml:"enqueuedCount,omitempty"`
-	// enqueuedIds。
+	// The list of source IDs that have been re-enqueued.
 	//
 	// example:
 	//

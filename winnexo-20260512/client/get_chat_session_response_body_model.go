@@ -42,7 +42,7 @@ type GetChatSessionResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The session ID.
+	// The session information.
 	Session *GetChatSessionResponseBodySession `json:"session,omitempty" xml:"session,omitempty" type:"Struct"`
 }
 
@@ -160,7 +160,7 @@ type GetChatSessionResponseBodyMessages struct {
 	//
 	// string_value
 	Role *string `json:"role,omitempty" xml:"role,omitempty"`
-	// The username of the sharing source. This parameter has a value only when from_share=True.
+	// The username of the user who shared the message. This parameter has a value only when from_share is set to True.
 	//
 	// example:
 	//
@@ -325,7 +325,7 @@ type GetChatSessionResponseBodySession struct {
 	//
 	// exampleId
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// Indicates whether the creation time exceeds 30 days.
+	// Indicates whether the creation time is older than 30 days.
 	//
 	// example:
 	//

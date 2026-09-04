@@ -48,7 +48,7 @@ type CreateTenantDirectoryRequest struct {
 	//
 	// https://example.com/oss/file.pdf
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// The ID of the effective tenant.
+	// The ID of the tenant for which the operation takes effect.
 	//
 	// example:
 	//

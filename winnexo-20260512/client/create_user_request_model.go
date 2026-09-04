@@ -15,6 +15,8 @@ type iCreateUserRequest interface {
 	GetPasswordEncrypted() *string
 	SetRoleCodes(v []*string) *CreateUserRequest
 	GetRoleCodes() []*string
+	SetSsoProvider(v string) *CreateUserRequest
+	GetSsoProvider() *string
 	SetTenantId(v string) *CreateUserRequest
 	GetTenantId() *string
 	SetWnAccountId(v string) *CreateUserRequest
@@ -30,7 +32,7 @@ type CreateUserRequest struct {
 	//
 	// string_value
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The base64-encoded password ciphertext encrypted by RSA-OAEP-SHA256 (required).
+	// The base64-encoded password ciphertext encrypted by using RSA-OAEP-SHA256 (required).
 	//
 	// This parameter is required.
 	//
@@ -44,7 +46,13 @@ type CreateUserRequest struct {
 	//
 	// string_value
 	RoleCodes []*string `json:"roleCodes,omitempty" xml:"roleCodes,omitempty" type:"Repeated"`
-	// The ID of the tenant in which the operation takes effect.
+	// The SSO provider type. This parameter is optional if the tenant has only one external logon method. This parameter is required if the tenant has multiple external logon methods. Currently, createUser supports BUILD_IN and AGENT_ONE.
+	//
+	// example:
+	//
+	// AGENT_ONE
+	SsoProvider *string `json:"ssoProvider,omitempty" xml:"ssoProvider,omitempty"`
+	// The ID of the tenant on which the operation takes effect.
 	//
 	// example:
 	//
@@ -80,6 +88,10 @@ func (s *CreateUserRequest) GetRoleCodes() []*string {
 	return s.RoleCodes
 }
 
+func (s *CreateUserRequest) GetSsoProvider() *string {
+	return s.SsoProvider
+}
+
 func (s *CreateUserRequest) GetTenantId() *string {
 	return s.TenantId
 }
@@ -100,6 +112,11 @@ func (s *CreateUserRequest) SetPasswordEncrypted(v string) *CreateUserRequest {
 
 func (s *CreateUserRequest) SetRoleCodes(v []*string) *CreateUserRequest {
 	s.RoleCodes = v
+	return s
+}
+
+func (s *CreateUserRequest) SetSsoProvider(v string) *CreateUserRequest {
+	s.SsoProvider = &v
 	return s
 }
 

@@ -52,7 +52,7 @@ type CreateTenantDirectoryResponseBody struct {
 	//
 	// Sample description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The directory ID.
+	// The folder ID.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type CreateTenantDirectoryResponseBody struct {
 	//
 	// 1
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Id of the request
+	// The tenant folder ID.
 	//
 	// This parameter is required.
 	//
@@ -120,7 +120,7 @@ type CreateTenantDirectoryResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The ID of the effective tenant.
+	// The ID of the tenant for which the operation takes effect.
 	//
 	// This parameter is required.
 	//

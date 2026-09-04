@@ -24,25 +24,25 @@ type iUploadChatFileRequest interface {
 type UploadChatFileRequest struct {
 	// The content type of the file. Valid values:
 	//
-	// - **image**: image
+	// - **image**: Image.
 	//
-	// - **document**: general document
+	// - **document**: General document.
 	//
-	// - **alidoc**: Alibaba document
+	// - **alidoc**: Alibaba document.
 	//
-	// - **text**: text
+	// - **text**: Text.
 	//
-	// - **video**: video
+	// - **video**: Video.
 	//
-	// - **audio**: audio
+	// - **audio**: Audio.
 	//
-	// - **archive**: archive
+	// - **archive**: Archive.
 	//
-	// - **app**: application
+	// - **app**: Application.
 	//
-	// - **link**: shortcut
+	// - **link**: Shortcut.
 	//
-	// - **other**: other
+	// - **other**: Other.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type UploadChatFileRequest struct {
 	//
 	// report.pdf
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	// The attachment address.
+	// The Yida attachment address.
 	//
 	// This parameter is required.
 	//
@@ -64,13 +64,13 @@ type UploadChatFileRequest struct {
 	//
 	// http://winnexo-file-transfer.oss-cn-hangzhou.aliyuncs.com/openapi/2026-08-06/9f8c2a1b
 	FileUrl *string `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
-	// The name of the digital employee (operating object name, optional).
+	// The name of the digital employee (operating object name). This parameter is optional.
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// The tenant ID.
+	// The tenant ID that takes effect.
 	//
 	// example:
 	//

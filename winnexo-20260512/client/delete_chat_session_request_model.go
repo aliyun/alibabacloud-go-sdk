@@ -16,7 +16,7 @@ type iDeleteChatSessionRequest interface {
 }
 
 type DeleteChatSessionRequest struct {
-	// The ID of the session to delete.
+	// The ID of the session to be deleted.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteChatSessionRequest struct {
 	//
 	// exampleSessionId
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// The ID of the effective tenant.
+	// The tenant ID that takes effect.
 	//
 	// example:
 	//

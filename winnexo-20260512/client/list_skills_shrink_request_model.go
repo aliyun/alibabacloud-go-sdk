@@ -60,7 +60,7 @@ type ListSkillsShrinkRequest struct {
 	//
 	// example:
 	//
-	// string_value
+	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
 	// The number of entries per page.
 	//

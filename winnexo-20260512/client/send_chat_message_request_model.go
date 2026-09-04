@@ -54,13 +54,13 @@ type SendChatMessageRequest struct {
 	//
 	// string_value
 	DigitalEmployeeName []*string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty" type:"Repeated"`
-	// Specifies whether to enable direct connection mode. When set to true, the regular scenario routing is skipped and the direct conversation scenario is entered directly.
+	// Specifies whether to enable direct connection mode. If set to true, the regular scenario routing is skipped and the direct conversation scenario is entered.
 	//
 	// example:
 	//
 	// false
 	DirectChat *bool `json:"directChat,omitempty" xml:"directChat,omitempty"`
-	// The list of file references. Each item is an object, and fileId is required (returned by uploadChatFile).
+	// The list of file references. Each item is an object in which fileId is required and is returned by uploadChatFile.
 	Files []*SendChatMessageRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
 	// The abstract model tier. Valid values: quick, standard, and flagship. If not specified, new sessions use standard, and existing sessions retain the current session tier.
 	//

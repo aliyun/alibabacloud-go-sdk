@@ -64,7 +64,7 @@ type OfflineAnnouncementResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The datasource status after re-parsing.
+	// The data source status after re-parsing.
 	//
 	// example:
 	//

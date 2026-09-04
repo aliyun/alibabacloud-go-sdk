@@ -303,7 +303,7 @@ type GetScheduledTaskUnderstandDetailResponseBodyRelatedSkills struct {
 	//
 	// string_value
 	SkillCode *string `json:"skillCode,omitempty" xml:"skillCode,omitempty"`
-	// sourceIds
+	// The list of source IDs for related skills.
 	//
 	// example:
 	//

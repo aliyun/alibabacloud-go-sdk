@@ -28,13 +28,13 @@ type iCheckHealthResponseBody interface {
 }
 
 type CheckHealthResponseBody struct {
-	// The authentication source: bearer / aliyun_gateway.
+	// The authentication source. Valid values: bearer and aliyun_gateway.
 	//
 	// example:
 	//
 	// aliyun_gateway
 	AuthSource *string `json:"authSource,omitempty" xml:"authSource,omitempty"`
-	// The caller type: user / aliyun_main / aliyun_ram / service.
+	// The caller type. Valid values: user, aliyun_main, aliyun_ram, and service.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type CheckHealthResponseBody struct {
 	//
 	// pcitc-magent
 	DigitalEmployeeName *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
-	// The status code description.
+	// The description of the status code.
 	//
 	// example:
 	//

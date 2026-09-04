@@ -34,7 +34,7 @@ type iListBillingRequest interface {
 }
 
 type ListBillingRequest struct {
-	// The unique business identifier. When bizType is set to LibraryChat, bizId refers to the document library ID.
+	// The unique business identifier. When bizType is LibraryChat, bizId refers to the document library ID.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ListBillingRequest struct {
 	//
 	// 2023-10-01T12:00:00Z
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// Specifies whether to filter out bills with zero credit consumption. Default value: true (filtered).
+	// Specifies whether to filter out bills with zero credit consumption. Default value: true (filter out).
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type ListBillingRequest struct {
 	IgnoreZero *bool `json:"ignoreZero,omitempty" xml:"ignoreZero,omitempty"`
 	// The operation type. Valid values:
 	//
-	// - start: indicates node creation. This is the default value and does not need to be explicitly set in most cases.
+	// - start: indicates task creation. This is the default value and does not need to be explicitly set in most cases.
 	//
-	// - stop: stops a real-time meeting task. This corresponds to the creation of a real-time meeting. Set this to stop after the meeting ends to trigger the call. This is used in real-time meeting scenarios.
+	// - stop: stops a real-time meeting task. This corresponds to the creation of a real-time meeting. After the meeting ends, set this to stop to trigger the call. This is used in real-time meeting scenarios.
 	//
 	// Note: When ending a real-time recording, you must set this parameter to stop.
 	//
@@ -82,13 +82,13 @@ type ListBillingRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The query start time. This is a UNIX timestamp in seconds.
+	// The query start time. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 2023-10-01T12:00:00Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The task status. Running is returned upon submission.
+	// The task status. The status is returned as Running upon submission.
 	//
 	// example:
 	//

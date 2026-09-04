@@ -64,13 +64,13 @@ type CreateAnnouncementRequest struct {
 	//
 	// 2026-08-21T14:00:00+08:00
 	EffectiveEnd *string `json:"effectiveEnd,omitempty" xml:"effectiveEnd,omitempty"`
-	// The effective start time in ISO 8601 format with time zone information. If this parameter is not specified, the notice takes effect immediately.
+	// The effective start time in ISO 8601 format with time zone. If this parameter is not specified, the notice takes effect immediately.
 	//
 	// example:
 	//
 	// 2026-08-20T14:00:00+08:00
 	EffectiveStart *string `json:"effectiveStart,omitempty" xml:"effectiveStart,omitempty"`
-	// The priority level. Valid values:
+	// The priority. Valid values:
 	//
 	// This parameter is required.
 	//
