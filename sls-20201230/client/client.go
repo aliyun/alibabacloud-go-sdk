@@ -1860,8 +1860,6 @@ type ETLConfiguration struct {
 	//
 	// 0
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
-	// The language of the data transformation script.
-	//
 	// example:
 	//
 	// SPL
@@ -1976,9 +1974,8 @@ type ETLConfigurationSink struct {
 	// Deprecated
 	//
 	// The AccessKey Secret used to write to the destination Logstore.
-	AccessKeySecret *string `json:"accessKeySecret,omitempty" xml:"accessKeySecret,omitempty"`
-	// The datasets to write to the sink.
-	Datasets []*string `json:"datasets,omitempty" xml:"datasets,omitempty" type:"Repeated"`
+	AccessKeySecret *string   `json:"accessKeySecret,omitempty" xml:"accessKeySecret,omitempty"`
+	Datasets        []*string `json:"datasets,omitempty" xml:"datasets,omitempty" type:"Repeated"`
 	// The endpoint of the destination Project\\"s region.
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
 	// The destination Logstore name.
@@ -3641,8 +3638,6 @@ func (s *LogContent) SetValue(v string) *LogContent {
 }
 
 type LogGroup struct {
-	// A list of logs.
-	//
 	// This parameter is required.
 	LogItems []*LogItem `json:"LogItems,omitempty" xml:"LogItems,omitempty" type:"Repeated"`
 	// The list of tags for the log.
@@ -3998,8 +3993,6 @@ type LogtailConfigOutputDetail struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// The type of observable data in the Logstore.
-	//
 	// example:
 	//
 	// logs
@@ -4733,8 +4726,6 @@ type MaxComputeExport struct {
 	//
 	// MaxComputeExport
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The ID of the MaxCompute data shipping job.
-	//
 	// example:
 	//
 	// c7f01719d9feb105fc9d8df92af62010
@@ -4868,12 +4859,6 @@ func (s *MaxComputeExportConfiguration) SetToTime(v int64) *MaxComputeExportConf
 }
 
 type MaxComputeExportConfigurationSink struct {
-	// Specifies the minimum time granularity between two data shipping jobs. Unit: seconds. Valid values:
-	//
-	// 	- 1800 (default)
-	//
-	// 	- 3600
-	//
 	// example:
 	//
 	// 1800
@@ -4882,12 +4867,6 @@ type MaxComputeExportConfigurationSink struct {
 	//
 	// This parameter is required.
 	Fields []*string `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
-	// Specifies whether to filter the invalid content.
-	//
-	// 	- true (default)
-	//
-	// 	- false
-	//
 	// example:
 	//
 	// true
@@ -4962,12 +4941,6 @@ type MaxComputeExportConfigurationSink struct {
 	//
 	// %Y_%m_%d
 	PartitionTimeFormat *string `json:"partitionTimeFormat,omitempty" xml:"partitionTimeFormat,omitempty"`
-	// The time partition type. Valid values:
-	//
-	// 	- StrfTimeFormat (default)
-	//
-	// 	- JavaSimpleDateFormat
-	//
 	// example:
 	//
 	// StrfTimeFormat
@@ -8532,8 +8505,6 @@ func (s *Logstore) SetTtl(v int32) *Logstore {
 }
 
 type Machine struct {
-	// The host ID of the machine.
-	//
 	// example:
 	//
 	// test
@@ -9594,6 +9565,64 @@ func (s *CreateAnnotationLabelResponse) SetHeaders(v map[string]*string) *Create
 }
 
 func (s *CreateAnnotationLabelResponse) SetStatusCode(v int32) *CreateAnnotationLabelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateApiKeyRequest struct {
+	AllowedStores []*string `json:"allowedStores,omitempty" xml:"allowedStores,omitempty" type:"Repeated"`
+	// example:
+	//
+	// demo-apikey-001
+	ApiKeyName *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+}
+
+func (s CreateApiKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApiKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApiKeyRequest) SetAllowedStores(v []*string) *CreateApiKeyRequest {
+	s.AllowedStores = v
+	return s
+}
+
+func (s *CreateApiKeyRequest) SetApiKeyName(v string) *CreateApiKeyRequest {
+	s.ApiKeyName = &v
+	return s
+}
+
+func (s *CreateApiKeyRequest) SetDescription(v string) *CreateApiKeyRequest {
+	s.Description = &v
+	return s
+}
+
+type CreateApiKeyResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s CreateApiKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApiKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApiKeyResponse) SetHeaders(v map[string]*string) *CreateApiKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateApiKeyResponse) SetStatusCode(v int32) *CreateApiKeyResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -10911,8 +10940,7 @@ type CreateLogtailPipelineConfigRequest struct {
 	//
 	// >   - After the first processing plugin, you can add only one time parsing processing plugin, one filter plugin, and multiple data masking plugins.
 	Processors []map[string]interface{} `json:"processors,omitempty" xml:"processors,omitempty" type:"Repeated"`
-	// The task configuration.
-	Task map[string]interface{} `json:"task,omitempty" xml:"task,omitempty"`
+	Task       map[string]interface{}   `json:"task,omitempty" xml:"task,omitempty"`
 }
 
 func (s CreateLogtailPipelineConfigRequest) String() string {
@@ -11751,19 +11779,8 @@ type CreateProjectRequest struct {
 	// example:
 	//
 	// test-project
-	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	// Specifies whether to enable the recycle bin feature.
-	//
-	// Valid values:
-	//
-	// - true
-	//
-	// - false
-	//
-	// example:
-	//
-	// true
-	RecycleBinEnabled *bool `json:"recycleBinEnabled,omitempty" xml:"recycleBinEnabled,omitempty"`
+	ProjectName       *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	RecycleBinEnabled *bool   `json:"recycleBinEnabled,omitempty" xml:"recycleBinEnabled,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
@@ -12324,24 +12341,8 @@ func (s *CreateStoreViewResponse) SetStatusCode(v int32) *CreateStoreViewRespons
 }
 
 type CreateTicketRequest struct {
-	// - The validity period of the access token. Unit: seconds. Default value: 86400, which specifies one day. Valid values: 0 to 86400.
-	//
-	// - The validity period of the access token is the smaller value between accessTokenExpirationTime and expirationTime.
-	//
-	// - If you use a Security Token Service (STS) token to call this operation, the validity period of the access token is the smallest value among accessTokenExpirationTime, expirationTime, and the validity period of the STS token.
-	//
-	// example:
-	//
-	// 600
 	AccessTokenExpirationTime *int64 `json:"accessTokenExpirationTime,omitempty" xml:"accessTokenExpirationTime,omitempty"`
-	// - You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the CreateTicket operation. After you obtain the ticket, you can use the ticket regardless of the region.
-	//
-	// - The validity period for the URL of the console page that you want to embed. Unit: seconds. Default value: 86400 (one day). Valid values: 0 to 2592000 (30 days).
-	//
-	// example:
-	//
-	// 86400
-	ExpirationTime *int64 `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
+	ExpirationTime            *int64 `json:"expirationTime,omitempty" xml:"expirationTime,omitempty"`
 }
 
 func (s CreateTicketRequest) String() string {
@@ -12560,6 +12561,40 @@ func (s *DeleteAnnotationLabelResponse) SetHeaders(v map[string]*string) *Delete
 }
 
 func (s *DeleteAnnotationLabelResponse) SetStatusCode(v int32) *DeleteAnnotationLabelResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteApiKeyRequest struct {
+}
+
+func (s DeleteApiKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApiKeyRequest) GoString() string {
+	return s.String()
+}
+
+type DeleteApiKeyResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DeleteApiKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteApiKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteApiKeyResponse) SetHeaders(v map[string]*string) *DeleteApiKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteApiKeyResponse) SetStatusCode(v int32) *DeleteApiKeyResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -13572,6 +13607,40 @@ func (s *DisableAlertResponse) SetStatusCode(v int32) *DisableAlertResponse {
 	return s
 }
 
+type DisableApiKeyRequest struct {
+}
+
+func (s DisableApiKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableApiKeyRequest) GoString() string {
+	return s.String()
+}
+
+type DisableApiKeyResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DisableApiKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableApiKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableApiKeyResponse) SetHeaders(v map[string]*string) *DisableApiKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableApiKeyResponse) SetStatusCode(v int32) *DisableApiKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DisableScheduledSQLResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -13614,6 +13683,40 @@ func (s *EnableAlertResponse) SetHeaders(v map[string]*string) *EnableAlertRespo
 }
 
 func (s *EnableAlertResponse) SetStatusCode(v int32) *EnableAlertResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type EnableApiKeyRequest struct {
+}
+
+func (s EnableApiKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableApiKeyRequest) GoString() string {
+	return s.String()
+}
+
+type EnableApiKeyResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s EnableApiKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableApiKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableApiKeyResponse) SetHeaders(v map[string]*string) *EnableApiKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableApiKeyResponse) SetStatusCode(v int32) *EnableApiKeyResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -13887,6 +13990,99 @@ func (s *GetAnnotationLabelResponse) SetStatusCode(v int32) *GetAnnotationLabelR
 }
 
 func (s *GetAnnotationLabelResponse) SetBody(v *MLLabelParam) *GetAnnotationLabelResponse {
+	s.Body = v
+	return s
+}
+
+type GetApiKeyRequest struct {
+}
+
+func (s GetApiKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApiKeyRequest) GoString() string {
+	return s.String()
+}
+
+type GetApiKeyResponseBody struct {
+	AllowedStores []*string `json:"allowedStores,omitempty" xml:"allowedStores,omitempty" type:"Repeated"`
+	ApiKey        *string   `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	ApiKeyName    *string   `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
+	CreateTime    *int32    `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	Description   *string   `json:"description,omitempty" xml:"description,omitempty"`
+	Status        *string   `json:"status,omitempty" xml:"status,omitempty"`
+	UpdateTime    *int32    `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+}
+
+func (s GetApiKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApiKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetApiKeyResponseBody) SetAllowedStores(v []*string) *GetApiKeyResponseBody {
+	s.AllowedStores = v
+	return s
+}
+
+func (s *GetApiKeyResponseBody) SetApiKey(v string) *GetApiKeyResponseBody {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *GetApiKeyResponseBody) SetApiKeyName(v string) *GetApiKeyResponseBody {
+	s.ApiKeyName = &v
+	return s
+}
+
+func (s *GetApiKeyResponseBody) SetCreateTime(v int32) *GetApiKeyResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetApiKeyResponseBody) SetDescription(v string) *GetApiKeyResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetApiKeyResponseBody) SetStatus(v string) *GetApiKeyResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetApiKeyResponseBody) SetUpdateTime(v int32) *GetApiKeyResponseBody {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetApiKeyResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetApiKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetApiKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApiKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetApiKeyResponse) SetHeaders(v map[string]*string) *GetApiKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetApiKeyResponse) SetStatusCode(v int32) *GetApiKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetApiKeyResponse) SetBody(v *GetApiKeyResponseBody) *GetApiKeyResponse {
 	s.Body = v
 	return s
 }
@@ -14277,20 +14473,14 @@ type GetCollectionPolicyResponseBodyCollectionPolicy struct {
 	// example:
 	//
 	// access_log
-	DataCode *string `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
-	// The configuration that is supported only for global log types, such as when \\`productCode\\` is \\`sls\\`. Otherwise, this parameter is empty.
+	DataCode   *string                                                    `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
 	DataConfig *GetCollectionPolicyResponseBodyCollectionPolicyDataConfig `json:"dataConfig,omitempty" xml:"dataConfig,omitempty" type:"Struct"`
 	// Indicates whether the rule is enabled.
 	//
 	// example:
 	//
 	// true
-	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// Indicates whether the rule is a built-in rule. Built-in rules cannot be modified or deleted.
-	//
-	// example:
-	//
-	// false
+	Enabled        *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	InternalPolicy *bool `json:"internalPolicy,omitempty" xml:"internalPolicy,omitempty"`
 	// The configuration of the collection rule.
 	PolicyConfig *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig `json:"policyConfig,omitempty" xml:"policyConfig,omitempty" type:"Struct"`
@@ -14300,19 +14490,13 @@ type GetCollectionPolicyResponseBodyCollectionPolicy struct {
 	//
 	// your_log_policy
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
-	// The ID of the Alibaba Cloud account to which the rule belongs. If the rule is created by a resource directory administrator or a delegated administrator, this parameter specifies the ID of the administrator\\"s Alibaba Cloud account.
-	//
-	// example:
-	//
-	// 148***********50
-	PolicyUid *string `json:"policyUid,omitempty" xml:"policyUid,omitempty"`
+	PolicyUid  *string `json:"policyUid,omitempty" xml:"policyUid,omitempty"`
 	// The code of the product.
 	//
 	// example:
 	//
 	// oss
-	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
-	// The configuration of the resource directory. This parameter is empty if no configuration is specified.
+	ProductCode       *string                                                           `json:"productCode,omitempty" xml:"productCode,omitempty"`
 	ResourceDirectory *GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory `json:"resourceDirectory,omitempty" xml:"resourceDirectory,omitempty" type:"Struct"`
 }
 
@@ -14435,18 +14619,8 @@ func (s *GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig) SetDes
 }
 
 type GetCollectionPolicyResponseBodyCollectionPolicyDataConfig struct {
-	// This parameter is valid only for global log types, such as when \\`productCode\\` is \\`sls\\`. If this parameter is left empty, logs are collected to the default project of the account in the specified \\`dataRegion\\`.
-	//
-	// example:
-	//
-	// ""
 	DataProject *string `json:"dataProject,omitempty" xml:"dataProject,omitempty"`
-	// This parameter is supported only for global log types, such as when \\`productCode\\` is \\`sls\\`. This parameter specifies the region to which global logs are collected during the initial configuration.
-	//
-	// example:
-	//
-	// cn-beijing
-	DataRegion *string `json:"dataRegion,omitempty" xml:"dataRegion,omitempty"`
+	DataRegion  *string `json:"dataRegion,omitempty" xml:"dataRegion,omitempty"`
 }
 
 func (s GetCollectionPolicyResponseBodyCollectionPolicyDataConfig) String() string {
@@ -14515,14 +14689,8 @@ func (s *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig) SetResourc
 }
 
 type GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory struct {
-	// The mode for selecting accounts in the resource directory. Valid values: \\`all\\` and \\`custom\\`.
-	//
-	// example:
-	//
-	// all,custom
-	AccountGroupType *string `json:"accountGroupType,omitempty" xml:"accountGroupType,omitempty"`
-	// The member accounts. This parameter is returned only when \\`accountGroupType\\` is set to \\`custom\\`.
-	Members []*string `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
+	AccountGroupType *string   `json:"accountGroupType,omitempty" xml:"accountGroupType,omitempty"`
+	Members          []*string `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
 }
 
 func (s GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory) String() string {
@@ -16929,13 +17097,8 @@ type GetMLServiceResultsRequest struct {
 	// true
 	AllowBuiltin *bool `json:"allowBuiltin,omitempty" xml:"allowBuiltin,omitempty"`
 	// The request struct.
-	Body *MLServiceAnalysisParam `json:"body,omitempty" xml:"body,omitempty"`
-	// The version number of the algorithm. Different versions correspond to different algorithms.
-	//
-	// example:
-	//
-	// v1
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	Body    *MLServiceAnalysisParam `json:"body,omitempty" xml:"body,omitempty"`
+	Version *string                 `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetMLServiceResultsRequest) String() string {
@@ -18886,6 +19049,179 @@ func (s *ListAnnotationLabelsResponse) SetBody(v *ListAnnotationLabelsResponseBo
 	return s
 }
 
+type ListApiKeysRequest struct {
+	// example:
+	//
+	// test
+	AllowedStore *string `json:"allowedStore,omitempty" xml:"allowedStore,omitempty"`
+	// example:
+	//
+	// 1
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// example:
+	//
+	// 10
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListApiKeysRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApiKeysRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApiKeysRequest) SetAllowedStore(v string) *ListApiKeysRequest {
+	s.AllowedStore = &v
+	return s
+}
+
+func (s *ListApiKeysRequest) SetOffset(v int32) *ListApiKeysRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListApiKeysRequest) SetSize(v int32) *ListApiKeysRequest {
+	s.Size = &v
+	return s
+}
+
+type ListApiKeysResponseBody struct {
+	ApiKeys []*ListApiKeysResponseBodyApiKeys `json:"apiKeys,omitempty" xml:"apiKeys,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// example:
+	//
+	// 20
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListApiKeysResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApiKeysResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApiKeysResponseBody) SetApiKeys(v []*ListApiKeysResponseBodyApiKeys) *ListApiKeysResponseBody {
+	s.ApiKeys = v
+	return s
+}
+
+func (s *ListApiKeysResponseBody) SetCount(v int32) *ListApiKeysResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListApiKeysResponseBody) SetTotal(v int32) *ListApiKeysResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListApiKeysResponseBodyApiKeys struct {
+	AllowedStores []*string `json:"allowedStores,omitempty" xml:"allowedStores,omitempty" type:"Repeated"`
+	// example:
+	//
+	// <apiKey-plaintext>
+	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	// example:
+	//
+	// demo-apikey-001
+	ApiKeyName *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
+	// example:
+	//
+	// 1788420000
+	CreateTime *int32 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 1788420000
+	UpdateTime *int32 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+}
+
+func (s ListApiKeysResponseBodyApiKeys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApiKeysResponseBodyApiKeys) GoString() string {
+	return s.String()
+}
+
+func (s *ListApiKeysResponseBodyApiKeys) SetAllowedStores(v []*string) *ListApiKeysResponseBodyApiKeys {
+	s.AllowedStores = v
+	return s
+}
+
+func (s *ListApiKeysResponseBodyApiKeys) SetApiKey(v string) *ListApiKeysResponseBodyApiKeys {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *ListApiKeysResponseBodyApiKeys) SetApiKeyName(v string) *ListApiKeysResponseBodyApiKeys {
+	s.ApiKeyName = &v
+	return s
+}
+
+func (s *ListApiKeysResponseBodyApiKeys) SetCreateTime(v int32) *ListApiKeysResponseBodyApiKeys {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListApiKeysResponseBodyApiKeys) SetDescription(v string) *ListApiKeysResponseBodyApiKeys {
+	s.Description = &v
+	return s
+}
+
+func (s *ListApiKeysResponseBodyApiKeys) SetStatus(v string) *ListApiKeysResponseBodyApiKeys {
+	s.Status = &v
+	return s
+}
+
+func (s *ListApiKeysResponseBodyApiKeys) SetUpdateTime(v int32) *ListApiKeysResponseBodyApiKeys {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListApiKeysResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListApiKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListApiKeysResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApiKeysResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApiKeysResponse) SetHeaders(v map[string]*string) *ListApiKeysResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApiKeysResponse) SetStatusCode(v int32) *ListApiKeysResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListApiKeysResponse) SetBody(v *ListApiKeysResponseBody) *ListApiKeysResponse {
+	s.Body = v
+	return s
+}
+
 type ListAzureBlobIngestionRequest struct {
 	// The name of the logstore. If specified, the operation returns only tasks from this logstore.
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
@@ -18980,11 +19316,6 @@ func (s *ListAzureBlobIngestionResponse) SetBody(v *ListAzureBlobIngestionRespon
 }
 
 type ListCollectionPoliciesRequest struct {
-	// The destination project for centralized data shipping. Specify this parameter to query the number of rules that are configured to ship data to this project.
-	//
-	// example:
-	//
-	// your-central-project1
 	CentralProject *string `json:"centralProject,omitempty" xml:"centralProject,omitempty"`
 	// The code of the log type.
 	//
@@ -18998,12 +19329,7 @@ type ListCollectionPoliciesRequest struct {
 	//
 	// your-test-bucket1
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The row from which the query starts. Default value: 0.
-	//
-	// example:
-	//
-	// 0
-	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	Offset     *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
 	// The name of the collection rule.
 	//
 	// example:
@@ -19016,12 +19342,7 @@ type ListCollectionPoliciesRequest struct {
 	//
 	// oss
 	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
-	// The number of collection rules to return on each page. Default value: 50. Maximum value: 100.
-	//
-	// example:
-	//
-	// 50
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	Size        *int32  `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListCollectionPoliciesRequest) String() string {
@@ -19075,8 +19396,7 @@ type ListCollectionPoliciesResponseBody struct {
 	// 1
 	CurrentCount *int32 `json:"currentCount,omitempty" xml:"currentCount,omitempty"`
 	// The collection rules that are returned on the current page.
-	Data []*ListCollectionPoliciesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-	// Statistics returned based on the query conditions.
+	Data       []*ListCollectionPoliciesResponseBodyData       `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	Statistics []*ListCollectionPoliciesResponseBodyStatistics `json:"statistics,omitempty" xml:"statistics,omitempty" type:"Repeated"`
 	// The total number of collection rules.
 	//
@@ -19128,20 +19448,14 @@ type ListCollectionPoliciesResponseBodyData struct {
 	// example:
 	//
 	// access_log
-	DataCode *string `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
-	// Configurations for global log types, such as sls. This parameter is empty for other log types.
+	DataCode   *string                                           `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
 	DataConfig *ListCollectionPoliciesResponseBodyDataDataConfig `json:"dataConfig,omitempty" xml:"dataConfig,omitempty" type:"Struct"`
 	// Indicates whether the collection rule is enabled.
 	//
 	// example:
 	//
 	// true
-	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// Indicates whether the policy is a built-in policy. Built-in policies cannot be modified or deleted.
-	//
-	// example:
-	//
-	// false
+	Enabled        *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	InternalPolicy *bool `json:"internalPolicy,omitempty" xml:"internalPolicy,omitempty"`
 	// The configuration of the collection rule.
 	PolicyConfig *ListCollectionPoliciesResponseBodyDataPolicyConfig `json:"policyConfig,omitempty" xml:"policyConfig,omitempty" type:"Struct"`
@@ -19151,19 +19465,13 @@ type ListCollectionPoliciesResponseBodyData struct {
 	//
 	// your_log_policy
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the collection rule. If a resource directory administrator or delegated administrator creates the rule, this is the ID of that administrator\\"s account.
-	//
-	// example:
-	//
-	// 148***********50
-	PolicyUid *string `json:"policyUid,omitempty" xml:"policyUid,omitempty"`
+	PolicyUid  *string `json:"policyUid,omitempty" xml:"policyUid,omitempty"`
 	// The code of the Alibaba Cloud service.
 	//
 	// example:
 	//
 	// oss
-	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
-	// The configuration of the resource directory. This parameter is empty if no configuration is available.
+	ProductCode       *string                                                  `json:"productCode,omitempty" xml:"productCode,omitempty"`
 	ResourceDirectory *ListCollectionPoliciesResponseBodyDataResourceDirectory `json:"resourceDirectory,omitempty" xml:"resourceDirectory,omitempty" type:"Struct"`
 }
 
@@ -19286,18 +19594,8 @@ func (s *ListCollectionPoliciesResponseBodyDataCentralizeConfig) SetDestTTL(v in
 }
 
 type ListCollectionPoliciesResponseBodyDataDataConfig struct {
-	// The project for global logs. This parameter is used only for global log types, such as sls. If this parameter is empty, logs are collected to the default project of the account in the region specified by dataRegion.
-	//
-	// example:
-	//
-	// ""
 	DataProject *string `json:"dataProject,omitempty" xml:"dataProject,omitempty"`
-	// The region where global logs are first collected. This parameter is used only for global log types, such as sls.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	DataRegion *string `json:"dataRegion,omitempty" xml:"dataRegion,omitempty"`
+	DataRegion  *string `json:"dataRegion,omitempty" xml:"dataRegion,omitempty"`
 }
 
 func (s ListCollectionPoliciesResponseBodyDataDataConfig) String() string {
@@ -19366,14 +19664,8 @@ func (s *ListCollectionPoliciesResponseBodyDataPolicyConfig) SetResourceTags(v m
 }
 
 type ListCollectionPoliciesResponseBodyDataResourceDirectory struct {
-	// The mode for selecting accounts in the resource directory. Valid values: all and custom.
-	//
-	// example:
-	//
-	// all,custom
-	AccountGroupType *string `json:"accountGroupType,omitempty" xml:"accountGroupType,omitempty"`
-	// The list of member accounts. This parameter is returned only if accountGroupType is set to custom.
-	Members []*string `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
+	AccountGroupType *string   `json:"accountGroupType,omitempty" xml:"accountGroupType,omitempty"`
+	Members          []*string `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
 }
 
 func (s ListCollectionPoliciesResponseBodyDataResourceDirectory) String() string {
@@ -19395,14 +19687,8 @@ func (s *ListCollectionPoliciesResponseBodyDataResourceDirectory) SetMembers(v [
 }
 
 type ListCollectionPoliciesResponseBodyStatistics struct {
-	// The list of collection rule sources.
 	PolicySourceList []*ListCollectionPoliciesResponseBodyStatisticsPolicySourceList `json:"policySourceList,omitempty" xml:"policySourceList,omitempty" type:"Repeated"`
-	// The code of the Alibaba Cloud service.
-	//
-	// example:
-	//
-	// oss
-	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
+	ProductCode      *string                                                         `json:"productCode,omitempty" xml:"productCode,omitempty"`
 }
 
 func (s ListCollectionPoliciesResponseBodyStatistics) String() string {
@@ -19424,18 +19710,8 @@ func (s *ListCollectionPoliciesResponseBodyStatistics) SetProductCode(v string) 
 }
 
 type ListCollectionPoliciesResponseBodyStatisticsPolicySourceList struct {
-	// The name of the collection rule.
-	//
-	// example:
-	//
-	// policy_name1_from148
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the collection rule. If a resource directory administrator or delegated administrator creates the rule, this is the ID of that administrator\\"s account.
-	//
-	// example:
-	//
-	// 148***********50
-	PolicyUid *string `json:"policyUid,omitempty" xml:"policyUid,omitempty"`
+	PolicyUid  *string `json:"policyUid,omitempty" xml:"policyUid,omitempty"`
 }
 
 func (s ListCollectionPoliciesResponseBodyStatisticsPolicySourceList) String() string {
@@ -19769,18 +20045,8 @@ func (s *ListConsumerGroupResponse) SetBody(v []*ConsumerGroup) *ListConsumerGro
 }
 
 type ListDashboardRequest struct {
-	// The dashboard name.
-	//
-	// example:
-	//
-	// dashboard-1609294922657-434834
 	DashboardName *string `json:"dashboardName,omitempty" xml:"dashboardName,omitempty"`
-	// The display name.
-	//
-	// example:
-	//
-	// test
-	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	DisplayName   *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// The line from which the query starts. The default value is 0.
 	//
 	// example:
@@ -19792,8 +20058,7 @@ type ListDashboardRequest struct {
 	// example:
 	//
 	// 10
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// The tag information.
+	Size *int32                      `json:"size,omitempty" xml:"size,omitempty"`
 	Tags []*ListDashboardRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
@@ -19831,17 +20096,7 @@ func (s *ListDashboardRequest) SetTags(v []*ListDashboardRequestTags) *ListDashb
 }
 
 type ListDashboardRequestTags struct {
-	// The tag key.
-	//
-	// example:
-	//
-	// key1
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The tag value.
-	//
-	// example:
-	//
-	// value1
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -19864,18 +20119,8 @@ func (s *ListDashboardRequestTags) SetValue(v string) *ListDashboardRequestTags 
 }
 
 type ListDashboardShrinkRequest struct {
-	// The dashboard name.
-	//
-	// example:
-	//
-	// dashboard-1609294922657-434834
 	DashboardName *string `json:"dashboardName,omitempty" xml:"dashboardName,omitempty"`
-	// The display name.
-	//
-	// example:
-	//
-	// test
-	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	DisplayName   *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// The line from which the query starts. The default value is 0.
 	//
 	// example:
@@ -19887,8 +20132,7 @@ type ListDashboardShrinkRequest struct {
 	// example:
 	//
 	// 10
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// The tag information.
+	Size       *int32  `json:"size,omitempty" xml:"size,omitempty"`
 	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 
@@ -19957,12 +20201,7 @@ type ListDashboardResponseBodyDashboardItems struct {
 	//
 	// dashboard-1609294922657-434834
 	DashboardName *string `json:"dashboardName,omitempty" xml:"dashboardName,omitempty"`
-	// The description.
-	//
-	// example:
-	//
-	// tablet_ai
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	Description   *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The display name of the dashboard.
 	//
 	// example:
@@ -20590,11 +20829,6 @@ func (s *ListDownloadJobsResponse) SetBody(v *ListDownloadJobsResponseBody) *Lis
 }
 
 type ListETLsRequest struct {
-	// The Logstore name.
-	//
-	// example:
-	//
-	// ali-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
 	// The line from which the query starts. The default value is 0.
 	//
@@ -22706,6 +22940,196 @@ func (s *ListProjectResponse) SetStatusCode(v int32) *ListProjectResponse {
 }
 
 func (s *ListProjectResponse) SetBody(v *ListProjectResponseBody) *ListProjectResponse {
+	s.Body = v
+	return s
+}
+
+type ListResourceRecordRequest struct {
+	// Filters records by ID. Separate multiple IDs with commas (,). A maximum of 200 IDs are supported.
+	//
+	// example:
+	//
+	// record-001,record-002
+	Ids *string `json:"ids,omitempty" xml:"ids,omitempty"`
+	// Specifies whether to include system built-in records.
+	//
+	// example:
+	//
+	// false
+	IncludeSystemRecords *bool `json:"includeSystemRecords,omitempty" xml:"includeSystemRecords,omitempty"`
+	// Specifies whether to enable JSON filter acceleration.
+	//
+	// example:
+	//
+	// false
+	JsonFilterAcc *bool `json:"jsonFilterAcc,omitempty" xml:"jsonFilterAcc,omitempty"`
+	// The JSON field path. Use this parameter together with jsonPathValue.
+	//
+	// example:
+	//
+	// $.status
+	JsonPath *string `json:"jsonPath,omitempty" xml:"jsonPath,omitempty"`
+	// The filter value of the JSON field. Use this parameter together with jsonPath.
+	//
+	// example:
+	//
+	// enabled
+	JsonPathValue *string `json:"jsonPathValue,omitempty" xml:"jsonPathValue,omitempty"`
+	// The start position of the query.
+	//
+	// example:
+	//
+	// 0
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// Searches for the specified string in record content.
+	//
+	// example:
+	//
+	// example
+	Search *string `json:"search,omitempty" xml:"search,omitempty"`
+	// The maximum number of records to return. Valid values: 1 to 200.
+	//
+	// example:
+	//
+	// 100
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// Searches by JSON content.
+	//
+	// example:
+	//
+	// status
+	Sjson *string `json:"sjson,omitempty" xml:"sjson,omitempty"`
+	// Filters records by label.
+	//
+	// example:
+	//
+	// production
+	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
+}
+
+func (s ListResourceRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceRecordRequest) SetIds(v string) *ListResourceRecordRequest {
+	s.Ids = &v
+	return s
+}
+
+func (s *ListResourceRecordRequest) SetIncludeSystemRecords(v bool) *ListResourceRecordRequest {
+	s.IncludeSystemRecords = &v
+	return s
+}
+
+func (s *ListResourceRecordRequest) SetJsonFilterAcc(v bool) *ListResourceRecordRequest {
+	s.JsonFilterAcc = &v
+	return s
+}
+
+func (s *ListResourceRecordRequest) SetJsonPath(v string) *ListResourceRecordRequest {
+	s.JsonPath = &v
+	return s
+}
+
+func (s *ListResourceRecordRequest) SetJsonPathValue(v string) *ListResourceRecordRequest {
+	s.JsonPathValue = &v
+	return s
+}
+
+func (s *ListResourceRecordRequest) SetOffset(v int32) *ListResourceRecordRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListResourceRecordRequest) SetSearch(v string) *ListResourceRecordRequest {
+	s.Search = &v
+	return s
+}
+
+func (s *ListResourceRecordRequest) SetSize(v int32) *ListResourceRecordRequest {
+	s.Size = &v
+	return s
+}
+
+func (s *ListResourceRecordRequest) SetSjson(v string) *ListResourceRecordRequest {
+	s.Sjson = &v
+	return s
+}
+
+func (s *ListResourceRecordRequest) SetTag(v string) *ListResourceRecordRequest {
+	s.Tag = &v
+	return s
+}
+
+type ListResourceRecordResponseBody struct {
+	// The number of records returned.
+	//
+	// example:
+	//
+	// 100
+	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// The list of resource records.
+	Items []*ResourceRecord `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// The total number of records that match the specified conditions.
+	//
+	// example:
+	//
+	// 245
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListResourceRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceRecordResponseBody) SetCount(v int64) *ListResourceRecordResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListResourceRecordResponseBody) SetItems(v []*ResourceRecord) *ListResourceRecordResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListResourceRecordResponseBody) SetTotal(v int64) *ListResourceRecordResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListResourceRecordResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResourceRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListResourceRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceRecordResponse) SetHeaders(v map[string]*string) *ListResourceRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListResourceRecordResponse) SetStatusCode(v int32) *ListResourceRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListResourceRecordResponse) SetBody(v *ListResourceRecordResponseBody) *ListResourceRecordResponse {
 	s.Body = v
 	return s
 }
@@ -25195,6 +25619,55 @@ func (s *UpdateAnnotationLabelResponse) SetStatusCode(v int32) *UpdateAnnotation
 	return s
 }
 
+type UpdateApiKeyRequest struct {
+	AllowedStores []*string `json:"allowedStores,omitempty" xml:"allowedStores,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+}
+
+func (s UpdateApiKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApiKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApiKeyRequest) SetAllowedStores(v []*string) *UpdateApiKeyRequest {
+	s.AllowedStores = v
+	return s
+}
+
+func (s *UpdateApiKeyRequest) SetDescription(v string) *UpdateApiKeyRequest {
+	s.Description = &v
+	return s
+}
+
+type UpdateApiKeyResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s UpdateApiKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApiKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApiKeyResponse) SetHeaders(v map[string]*string) *UpdateApiKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateApiKeyResponse) SetStatusCode(v int32) *UpdateApiKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type UpdateAzureBlobIngestionRequest struct {
 	// The updated configuration for the Azure Blob ingestion task.
 	//
@@ -27287,13 +27760,8 @@ type UpdateProjectRequest struct {
 	// example:
 	//
 	// Description of my-project-test
-	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether to enable the recycle bin.
-	//
-	// example:
-	//
-	// true
-	RecycleBinEnabled *bool `json:"recycleBinEnabled,omitempty" xml:"recycleBinEnabled,omitempty"`
+	Description       *string `json:"description,omitempty" xml:"description,omitempty"`
+	RecycleBinEnabled *bool   `json:"recycleBinEnabled,omitempty" xml:"recycleBinEnabled,omitempty"`
 }
 
 func (s UpdateProjectRequest) String() string {
@@ -27333,6 +27801,49 @@ func (s *UpdateProjectResponse) SetHeaders(v map[string]*string) *UpdateProjectR
 }
 
 func (s *UpdateProjectResponse) SetStatusCode(v int32) *UpdateProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateResourceRecordRequest struct {
+	// The updated resource record content.
+	//
+	// This parameter is required.
+	Body *ResourceRecord `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateResourceRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceRecordRequest) SetBody(v *ResourceRecord) *UpdateResourceRecordRequest {
+	s.Body = v
+	return s
+}
+
+type UpdateResourceRecordResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s UpdateResourceRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateResourceRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateResourceRecordResponse) SetHeaders(v map[string]*string) *UpdateResourceRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateResourceRecordResponse) SetStatusCode(v int32) *UpdateResourceRecordResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -27638,8 +28149,7 @@ type UpsertCollectionPolicyRequest struct {
 	// example:
 	//
 	// access_log
-	DataCode *string `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
-	// The data configurations. The configuration is returned only for global logs. For example, if productCode is set to sls, the configuration is returned.
+	DataCode   *string                                  `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
 	DataConfig *UpsertCollectionPolicyRequestDataConfig `json:"dataConfig,omitempty" xml:"dataConfig,omitempty" type:"Struct"`
 	// Specifies whether to enable the policy.
 	//
@@ -27674,8 +28184,7 @@ type UpsertCollectionPolicyRequest struct {
 	// example:
 	//
 	// oss
-	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
-	// The configurations of the resource directory. The account must have activated the resource directory and be a management account or a delegated administrator of the resource directory.
+	ProductCode       *string                                         `json:"productCode,omitempty" xml:"productCode,omitempty"`
 	ResourceDirectory *UpsertCollectionPolicyRequestResourceDirectory `json:"resourceDirectory,omitempty" xml:"resourceDirectory,omitempty" type:"Struct"`
 }
 
@@ -27788,11 +28297,6 @@ func (s *UpsertCollectionPolicyRequestCentralizeConfig) SetDestTTL(v int32) *Ups
 }
 
 type UpsertCollectionPolicyRequestDataConfig struct {
-	// The region for storing the global logs that are collected for the first time.
-	//
-	// example:
-	//
-	// cn-beijing
 	DataRegion *string `json:"dataRegion,omitempty" xml:"dataRegion,omitempty"`
 }
 
@@ -27859,14 +28363,8 @@ func (s *UpsertCollectionPolicyRequestPolicyConfig) SetResourceTags(v map[string
 }
 
 type UpsertCollectionPolicyRequestResourceDirectory struct {
-	// The mode of the resource directory. Valid values: all and custom.
-	//
-	// example:
-	//
-	// all,custom
-	AccountGroupType *string `json:"accountGroupType,omitempty" xml:"accountGroupType,omitempty"`
-	// The members. If accountGroupType is set to custom, the members are returned.
-	Members []*string `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
+	AccountGroupType *string   `json:"accountGroupType,omitempty" xml:"accountGroupType,omitempty"`
+	Members          []*string `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
 }
 
 func (s UpsertCollectionPolicyRequestResourceDirectory) String() string {
@@ -27910,6 +28408,49 @@ func (s *UpsertCollectionPolicyResponse) SetStatusCode(v int32) *UpsertCollectio
 	return s
 }
 
+type UpsertResourceRecordRequest struct {
+	// The list of records to write. A maximum of 200 records can be written at a time. If no ID is specified for a record, the server automatically generates one.
+	//
+	// This parameter is required.
+	Records []*ResourceRecord `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
+}
+
+func (s UpsertResourceRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertResourceRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertResourceRecordRequest) SetRecords(v []*ResourceRecord) *UpsertResourceRecordRequest {
+	s.Records = v
+	return s
+}
+
+type UpsertResourceRecordResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s UpsertResourceRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertResourceRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertResourceRecordResponse) SetHeaders(v map[string]*string) *UpsertResourceRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpsertResourceRecordResponse) SetStatusCode(v int32) *UpsertResourceRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -27941,7 +28482,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		client.HttpClient = defaultHttpClient
 	}
 
-	client.EndpointRule = tea.String("regional")
+	client.EndpointRule = tea.String("central")
 	client.EndpointMap = map[string]*string{
 		"cn-qingdao":            tea.String("cn-qingdao.log.aliyuncs.com"),
 		"cn-beijing":            tea.String("cn-beijing.log.aliyuncs.com"),
@@ -28733,6 +29274,105 @@ func (client *Client) CreateAnnotationLabel(request *CreateAnnotationLabelReques
 	headers := make(map[string]*string)
 	_result = &CreateAnnotationLabelResponse{}
 	_body, _err := client.CreateAnnotationLabelWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 在指定Project下创建一个新的ApiKey资源。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 每个 Project 最多可以创建 10 个 ApiKey。
+//
+// - `apiKeyName` 在 Project 内必须唯一，且创建后不可修改。
+//
+// - `allowedStores` 字段不能为空，并支持通配符匹配。
+//
+// - 创建时系统会自动生成 ApiKey 明文，用户不能自定义。
+//
+// @param request - CreateApiKeyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApiKeyResponse
+func (client *Client) CreateApiKeyWithOptions(project *string, request *CreateApiKeyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateApiKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowedStores)) {
+		body["allowedStores"] = request.AllowedStores
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiKeyName)) {
+		body["apiKeyName"] = request.ApiKeyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateApiKey"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apikeys"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateApiKeyResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 在指定Project下创建一个新的ApiKey资源。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 每个 Project 最多可以创建 10 个 ApiKey。
+//
+// - `apiKeyName` 在 Project 内必须唯一，且创建后不可修改。
+//
+// - `allowedStores` 字段不能为空，并支持通配符匹配。
+//
+// - 创建时系统会自动生成 ApiKey 明文，用户不能自定义。
+//
+// @param request - CreateApiKeyRequest
+//
+// @return CreateApiKeyResponse
+func (client *Client) CreateApiKey(project *string, request *CreateApiKeyRequest) (_result *CreateApiKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateApiKeyResponse{}
+	_body, _err := client.CreateApiKeyWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31618,6 +32258,87 @@ func (client *Client) DeleteAnnotationLabel(labelId *string) (_result *DeleteAnn
 
 // Summary:
 //
+// 用于删除指定的ApiKey资源
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该API用于从Project中删除指定名称的ApiKey。
+//
+// - 删除后，ApiKey立即失效且无法再用于写入数据。
+//
+// - 建议接口幂等：即使ApiKey不存在时也返回`204 No Content`。
+//
+// @param request - DeleteApiKeyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteApiKeyResponse
+func (client *Client) DeleteApiKeyWithOptions(project *string, apiKeyName *string, request *DeleteApiKeyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteApiKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteApiKey"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apikeys/" + tea.StringValue(apiKeyName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteApiKeyResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于删除指定的ApiKey资源
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该API用于从Project中删除指定名称的ApiKey。
+//
+// - 删除后，ApiKey立即失效且无法再用于写入数据。
+//
+// - 建议接口幂等：即使ApiKey不存在时也返回`204 No Content`。
+//
+// @param request - DeleteApiKeyRequest
+//
+// @return DeleteApiKeyResponse
+func (client *Client) DeleteApiKey(project *string, apiKeyName *string, request *DeleteApiKeyRequest) (_result *DeleteApiKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteApiKeyResponse{}
+	_body, _err := client.DeleteApiKeyWithOptions(project, apiKeyName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Create a file import task from Azure Blob
 //
 // @param headers - map
@@ -33743,6 +34464,67 @@ func (client *Client) DisableAlert(project *string, alertName *string) (_result 
 
 // Summary:
 //
+// 用于禁用指定的ApiKey，使其不能继续用于写入数据。
+//
+// @param request - DisableApiKeyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableApiKeyResponse
+func (client *Client) DisableApiKeyWithOptions(project *string, apiKeyName *string, request *DisableApiKeyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DisableApiKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableApiKey"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apikeys/" + tea.StringValue(apiKeyName) + "/disable"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DisableApiKeyResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于禁用指定的ApiKey，使其不能继续用于写入数据。
+//
+// @param request - DisableApiKeyRequest
+//
+// @return DisableApiKeyResponse
+func (client *Client) DisableApiKey(project *string, apiKeyName *string, request *DisableApiKeyRequest) (_result *DisableApiKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DisableApiKeyResponse{}
+	_body, _err := client.DisableApiKeyWithOptions(project, apiKeyName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Disables the Scheduled SQL feature.
 //
 // @param headers - map
@@ -33840,6 +34622,83 @@ func (client *Client) EnableAlert(project *string, alertName *string) (_result *
 	headers := make(map[string]*string)
 	_result = &EnableAlertResponse{}
 	_body, _err := client.EnableAlertWithOptions(project, alertName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于启用指定的ApiKey，使其可以继续用于写入数据。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该API用于将指定的ApiKey从禁用状态恢复为启用状态。
+//
+// - 启用后，ApiKey可以继续用于写入数据。
+//
+// @param request - EnableApiKeyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableApiKeyResponse
+func (client *Client) EnableApiKeyWithOptions(project *string, apiKeyName *string, request *EnableApiKeyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *EnableApiKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableApiKey"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apikeys/" + tea.StringValue(apiKeyName) + "/enable"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &EnableApiKeyResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于启用指定的ApiKey，使其可以继续用于写入数据。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该API用于将指定的ApiKey从禁用状态恢复为启用状态。
+//
+// - 启用后，ApiKey可以继续用于写入数据。
+//
+// @param request - EnableApiKeyRequest
+//
+// @return EnableApiKeyResponse
+func (client *Client) EnableApiKey(project *string, apiKeyName *string, request *EnableApiKeyRequest) (_result *EnableApiKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &EnableApiKeyResponse{}
+	_body, _err := client.EnableApiKeyWithOptions(project, apiKeyName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34190,6 +35049,87 @@ func (client *Client) GetAnnotationLabel(labelId *string) (_result *GetAnnotatio
 	headers := make(map[string]*string)
 	_result = &GetAnnotationLabelResponse{}
 	_body, _err := client.GetAnnotationLabelWithOptions(labelId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据ApiKey名称获取指定ApiKey的详细信息。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该API用于通过`apiKeyName`获取指定ApiKey的详细信息。
+//
+// - 返回的信息包括ApiKey的名称、密钥、状态、描述、允许写入的存储列表、创建时间和更新时间。
+//
+// - `log:GetApiKey`被视为敏感权限，调用时需谨慎。
+//
+// @param request - GetApiKeyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApiKeyResponse
+func (client *Client) GetApiKeyWithOptions(project *string, apiKeyName *string, request *GetApiKeyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetApiKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetApiKey"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apikeys/" + tea.StringValue(apiKeyName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetApiKeyResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据ApiKey名称获取指定ApiKey的详细信息。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 该API用于通过`apiKeyName`获取指定ApiKey的详细信息。
+//
+// - 返回的信息包括ApiKey的名称、密钥、状态、描述、允许写入的存储列表、创建时间和更新时间。
+//
+// - `log:GetApiKey`被视为敏感权限，调用时需谨慎。
+//
+// @param request - GetApiKeyRequest
+//
+// @return GetApiKeyResponse
+func (client *Client) GetApiKey(project *string, apiKeyName *string, request *GetApiKeyRequest) (_result *GetApiKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetApiKeyResponse{}
+	_body, _err := client.GetApiKeyWithOptions(project, apiKeyName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36671,17 +37611,7 @@ func (client *Client) GetMaterializedView(project *string, name *string, request
 
 // Summary:
 //
-// Queries a MaxCompute data shipping job.
-//
-// Description:
-//
-// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-//
-// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
-//
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
-//
-// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+// 获取MC投递任务信息
 //
 // @param headers - map
 //
@@ -36717,17 +37647,7 @@ func (client *Client) GetMaxComputeExportWithOptions(project *string, mcExportNa
 
 // Summary:
 //
-// Queries a MaxCompute data shipping job.
-//
-// Description:
-//
-// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-//
-// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
-//
-// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
-//
-// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+// 获取MC投递任务信息
 //
 // @return GetMaxComputeExportResponse
 func (client *Client) GetMaxComputeExport(project *string, mcExportName *string) (_result *GetMaxComputeExportResponse, _err error) {
@@ -38292,6 +39212,101 @@ func (client *Client) ListAnnotationLabels(request *ListAnnotationLabelsRequest)
 	headers := make(map[string]*string)
 	_result = &ListAnnotationLabelsResponse{}
 	_body, _err := client.ListAnnotationLabelsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定项目下所有ApiKey及其详细信息。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 通过`allowedStore`参数可以过滤返回的ApiKey，只返回允许写入指定LogStore或MetricStore的ApiKey。
+//
+// - 如果不提供`allowedStore`参数，则返回项目下的所有ApiKey。
+//
+// - `log:ListApiKeys`权限被视为敏感权限，应谨慎授予。
+//
+// @param request - ListApiKeysRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApiKeysResponse
+func (client *Client) ListApiKeysWithOptions(project *string, request *ListApiKeysRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListApiKeysResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowedStore)) {
+		query["allowedStore"] = request.AllowedStore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApiKeys"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apikeys"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListApiKeysResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定项目下所有ApiKey及其详细信息。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - 通过`allowedStore`参数可以过滤返回的ApiKey，只返回允许写入指定LogStore或MetricStore的ApiKey。
+//
+// - 如果不提供`allowedStore`参数，则返回项目下的所有ApiKey。
+//
+// - `log:ListApiKeys`权限被视为敏感权限，应谨慎授予。
+//
+// @param request - ListApiKeysRequest
+//
+// @return ListApiKeysResponse
+func (client *Client) ListApiKeys(project *string, request *ListApiKeysRequest) (_result *ListApiKeysResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListApiKeysResponse{}
+	_body, _err := client.ListApiKeysWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40502,6 +41517,106 @@ func (client *Client) ListProject(request *ListProjectRequest) (_result *ListPro
 	headers := make(map[string]*string)
 	_result = &ListProjectResponse{}
 	_body, _err := client.ListProjectWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists resource records by offset and size.
+//
+// @param request - ListResourceRecordRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResourceRecordResponse
+func (client *Client) ListResourceRecordWithOptions(resourceName *string, request *ListResourceRecordRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListResourceRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ids)) {
+		query["ids"] = request.Ids
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeSystemRecords)) {
+		query["includeSystemRecords"] = request.IncludeSystemRecords
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JsonFilterAcc)) {
+		query["jsonFilterAcc"] = request.JsonFilterAcc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JsonPath)) {
+		query["jsonPath"] = request.JsonPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JsonPathValue)) {
+		query["jsonPathValue"] = request.JsonPathValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Search)) {
+		query["search"] = request.Search
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sjson)) {
+		query["sjson"] = request.Sjson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListResourceRecord"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/resources/" + tea.StringValue(resourceName) + "/records"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListResourceRecordResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists resource records by offset and size.
+//
+// @param request - ListResourceRecordRequest
+//
+// @return ListResourceRecordResponse
+func (client *Client) ListResourceRecord(resourceName *string, request *ListResourceRecordRequest) (_result *ListResourceRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListResourceRecordResponse{}
+	_body, _err := client.ListResourceRecordWithOptions(resourceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43911,6 +45026,105 @@ func (client *Client) UpdateAnnotationLabel(request *UpdateAnnotationLabelReques
 
 // Summary:
 //
+// 更新指定ApiKey的资源白名单和描述信息。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - `apiKeyName` 不允许修改。
+//
+// - `allowedStores` 不能为空。
+//
+// - 更新后立即生效。
+//
+// - 即使ApiKey处于Disabled状态，也可以更新其资源列表。
+//
+// - 该API不用于轮换ApiKey明文。
+//
+// @param request - UpdateApiKeyRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateApiKeyResponse
+func (client *Client) UpdateApiKeyWithOptions(project *string, apiKeyName *string, request *UpdateApiKeyRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateApiKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowedStores)) {
+		body["allowedStores"] = request.AllowedStores
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateApiKey"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apikeys/" + tea.StringValue(apiKeyName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateApiKeyResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新指定ApiKey的资源白名单和描述信息。
+//
+// Description:
+//
+// ## 请求说明
+//
+// - `apiKeyName` 不允许修改。
+//
+// - `allowedStores` 不能为空。
+//
+// - 更新后立即生效。
+//
+// - 即使ApiKey处于Disabled状态，也可以更新其资源列表。
+//
+// - 该API不用于轮换ApiKey明文。
+//
+// @param request - UpdateApiKeyRequest
+//
+// @return UpdateApiKeyResponse
+func (client *Client) UpdateApiKey(project *string, apiKeyName *string, request *UpdateApiKeyRequest) (_result *UpdateApiKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateApiKeyResponse{}
+	_body, _err := client.UpdateApiKeyWithOptions(project, apiKeyName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates an Azure Blob ingestion.
 //
 // @param request - UpdateAzureBlobIngestionRequest
@@ -46256,6 +47470,65 @@ func (client *Client) UpdateProject(project *string, request *UpdateProjectReque
 
 // Summary:
 //
+// Updates a specified resource record.
+//
+// @param request - UpdateResourceRecordRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateResourceRecordResponse
+func (client *Client) UpdateResourceRecordWithOptions(resourceName *string, recordId *string, request *UpdateResourceRecordRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateResourceRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateResourceRecord"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/resources/" + tea.StringValue(resourceName) + "/records/" + tea.StringValue(recordId)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateResourceRecordResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a specified resource record.
+//
+// @param request - UpdateResourceRecordRequest
+//
+// @return UpdateResourceRecordResponse
+func (client *Client) UpdateResourceRecord(resourceName *string, recordId *string, request *UpdateResourceRecordRequest) (_result *UpdateResourceRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateResourceRecordResponse{}
+	_body, _err := client.UpdateResourceRecordWithOptions(resourceName, recordId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates a saved search.
 //
 // Description:
@@ -46711,6 +47984,70 @@ func (client *Client) UpsertCollectionPolicy(request *UpsertCollectionPolicyRequ
 	headers := make(map[string]*string)
 	_result = &UpsertCollectionPolicyResponse{}
 	_body, _err := client.UpsertCollectionPolicyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Writes or updates resource records in batches.
+//
+// @param request - UpsertResourceRecordRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpsertResourceRecordResponse
+func (client *Client) UpsertResourceRecordWithOptions(resourceName *string, request *UpsertResourceRecordRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpsertResourceRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Records)) {
+		body["records"] = request.Records
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpsertResourceRecord"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/resources/" + tea.StringValue(resourceName) + "/records"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpsertResourceRecordResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Writes or updates resource records in batches.
+//
+// @param request - UpsertResourceRecordRequest
+//
+// @return UpsertResourceRecordResponse
+func (client *Client) UpsertResourceRecord(resourceName *string, request *UpsertResourceRecordRequest) (_result *UpsertResourceRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpsertResourceRecordResponse{}
+	_body, _err := client.UpsertResourceRecordWithOptions(resourceName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
