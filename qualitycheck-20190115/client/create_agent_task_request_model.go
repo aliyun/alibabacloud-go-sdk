@@ -16,7 +16,7 @@ type iCreateAgentTaskRequest interface {
 }
 
 type CreateAgentTaskRequest struct {
-	// The ID of the business space.
+	// The ID of the business workspace.
 	//
 	// example:
 	//

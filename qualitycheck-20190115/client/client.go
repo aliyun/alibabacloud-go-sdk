@@ -25,9 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-hangzhou": dara.String("qualitycheck.cn-hangzhou.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -694,7 +691,7 @@ func (client *Client) CreateAgent(request *CreateAgentRequest) (_result *CreateA
 
 // Summary:
 //
-// Creates an Agent batch task for conversation analysis. The application call supports HTTP calls to complete the customer response.
+// Creates an Agent batch task for conversation analysis. Application calls support HTTP invocations to complete customer responses.
 //
 // @param request - CreateAgentTaskRequest
 //
@@ -742,7 +739,7 @@ func (client *Client) CreateAgentTaskWithOptions(request *CreateAgentTaskRequest
 
 // Summary:
 //
-// Creates an Agent batch task for conversation analysis. The application call supports HTTP calls to complete the customer response.
+// Creates an Agent batch task for conversation analysis. Application calls support HTTP invocations to complete customer responses.
 //
 // @param request - CreateAgentTaskRequest
 //
@@ -2825,13 +2822,79 @@ func (client *Client) GetAgent(request *GetAgentRequest) (_result *GetAgentRespo
 
 // Summary:
 //
+// Queries the details of a single AgentM task.
+//
+// @param request - GetAgentMJobInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentMJobInfoResponse
+func (client *Client) GetAgentMJobInfoWithOptions(request *GetAgentMJobInfoRequest, runtime *dara.RuntimeOptions) (_result *GetAgentMJobInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BaseMeAgentId) {
+		body["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !dara.IsNil(request.JsonStr) {
+		body["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgentMJobInfo"),
+		Version:     dara.String("2019-01-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgentMJobInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of a single AgentM task.
+//
+// @param request - GetAgentMJobInfoRequest
+//
+// @return GetAgentMJobInfoResponse
+func (client *Client) GetAgentMJobInfo(request *GetAgentMJobInfoRequest) (_result *GetAgentMJobInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAgentMJobInfoResponse{}
+	_body, _err := client.GetAgentMJobInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the task result of an agent node.
 //
 // Description:
 //
-// 可以查询通过[UploadAudioData](https://help.aliyun.com/document_detail/139399.html)、[UploadData](https://help.aliyun.com/document_detail/111394.html)上传的数据，也可以查询数据集质检任务[SubmitQualityCheckTask](https://help.aliyun.com/document_detail/158890.html)的数据。可以根据任务ID（taskId）查询，也可以根据时间范围查询。
+// Queries data uploaded through [UploadAudioData](https://help.aliyun.com/document_detail/139399.html) or [UploadData](https://help.aliyun.com/document_detail/111394.html), or queries data from a dataset quality check task [SubmitQualityCheckTask](https://help.aliyun.com/document_detail/158890.html). You can query by task ID (taskId) or by time range.
 //
-// 此接⼝返回结果中默认只返回部分参数，可通过请求参数中的requiredFields来⾃定义设置返回参数中需要返回哪些字段。
+// By default, only partial parameters are returned in the response. Use the requiredFields request parameter to specify which fields to include in the response.
 //
 // @param request - GetAgentTaskResultRequest
 //
@@ -2883,9 +2946,9 @@ func (client *Client) GetAgentTaskResultWithOptions(request *GetAgentTaskResultR
 //
 // Description:
 //
-// 可以查询通过[UploadAudioData](https://help.aliyun.com/document_detail/139399.html)、[UploadData](https://help.aliyun.com/document_detail/111394.html)上传的数据，也可以查询数据集质检任务[SubmitQualityCheckTask](https://help.aliyun.com/document_detail/158890.html)的数据。可以根据任务ID（taskId）查询，也可以根据时间范围查询。
+// Queries data uploaded through [UploadAudioData](https://help.aliyun.com/document_detail/139399.html) or [UploadData](https://help.aliyun.com/document_detail/111394.html), or queries data from a dataset quality check task [SubmitQualityCheckTask](https://help.aliyun.com/document_detail/158890.html). You can query by task ID (taskId) or by time range.
 //
-// 此接⼝返回结果中默认只返回部分参数，可通过请求参数中的requiredFields来⾃定义设置返回参数中需要返回哪些字段。
+// By default, only partial parameters are returned in the response. Use the requiredFields request parameter to specify which fields to include in the response.
 //
 // @param request - GetAgentTaskResultRequest
 //
@@ -4570,6 +4633,72 @@ func (client *Client) InvalidRule(request *InvalidRuleRequest) (_result *Invalid
 	runtime := &dara.RuntimeOptions{}
 	_result = &InvalidRuleResponse{}
 	_body, _err := client.InvalidRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists AI analysis assistant tasks.
+//
+// @param request - ListAgentMJobInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAgentMJobInfoResponse
+func (client *Client) ListAgentMJobInfoWithOptions(request *ListAgentMJobInfoRequest, runtime *dara.RuntimeOptions) (_result *ListAgentMJobInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BaseMeAgentId) {
+		body["BaseMeAgentId"] = request.BaseMeAgentId
+	}
+
+	if !dara.IsNil(request.JsonStr) {
+		body["JsonStr"] = request.JsonStr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListAgentMJobInfo"),
+		Version:     dara.String("2019-01-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListAgentMJobInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists AI analysis assistant tasks.
+//
+// @param request - ListAgentMJobInfoRequest
+//
+// @return ListAgentMJobInfoResponse
+func (client *Client) ListAgentMJobInfo(request *ListAgentMJobInfoRequest) (_result *ListAgentMJobInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListAgentMJobInfoResponse{}
+	_body, _err := client.ListAgentMJobInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

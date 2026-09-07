@@ -22,7 +22,7 @@ type iGetAgentResponseBody interface {
 }
 
 type GetAgentResponseBody struct {
-	// The response code. A value of **200*	- indicates success. Other values indicate failure. You can use this field to determine the cause of the failure.
+	// The result code. A value of **200*	- indicates success. Other values indicate failure. You can use this field to determine the cause of the failure.
 	//
 	// example:
 	//
