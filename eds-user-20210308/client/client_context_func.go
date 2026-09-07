@@ -711,7 +711,7 @@ func (client *Client) DescribeGroupUserWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Query user groups.
+// Queries user groups.
 //
 // @param request - DescribeGroupsRequest
 //
@@ -915,11 +915,11 @@ func (client *Client) DescribeOrgByLayerWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries a list of organizations.
+// Queries the list of organizations.
 //
 // Description:
 //
-// Organizations are arranged in a tree-like structure. The root organization ID is org-aliyun-wy-org-id.
+// Organizations have a tree structure. The root organization ID is org-aliyun-wy-org-id.
 //
 // @param tmpReq - DescribeOrgsRequest
 //
@@ -946,6 +946,10 @@ func (client *Client) DescribeOrgsWithContext(ctx context.Context, tmpReq *Descr
 
 	if !dara.IsNil(request.IncludeOrgIds) {
 		query["IncludeOrgIds"] = request.IncludeOrgIds
+	}
+
+	if !dara.IsNil(request.IsQueryAllSubOrgs) {
+		query["IsQueryAllSubOrgs"] = request.IsQueryAllSubOrgs
 	}
 
 	if !dara.IsNil(request.MaxResults) {
@@ -1125,7 +1129,7 @@ func (client *Client) DescribeUserWithContext(ctx context.Context, request *Desc
 
 // Summary:
 //
-// Retrieves directory account information, including the username, email address, and display name.
+// Queries convenience account information, such as usernames, email addresses, and remarks.
 //
 // @param tmpReq - DescribeUsersRequest
 //
@@ -1379,6 +1383,66 @@ func (client *Client) FilterUsersWithContext(ctx context.Context, tmpReq *Filter
 
 // Summary:
 //
+// 获取用户数量
+//
+// Description:
+//
+// 出于安全考虑，您可以锁定便捷账号。被锁定的便捷用户无法登录无影终端，因此也无法访问任何无影云资源。
+//
+// > 您可以调用[DescribeUsers](https://help.aliyun.com/document_detail/283609.html)查询便捷账号信息。若返回数据中`Status`取值为0，表示该便捷账号未被锁定；若`Status`取值为9，表示该便捷账号已被锁定。
+//
+// @param request - GetAdUsersCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAdUsersCountResponse
+func (client *Client) GetAdUsersCountWithContext(ctx context.Context, request *GetAdUsersCountRequest, runtime *dara.RuntimeOptions) (_result *GetAdUsersCountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BizType) {
+		body["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.SolutionId) {
+		body["SolutionId"] = request.SolutionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAdUsersCount"),
+		Version:     dara.String("2021-03-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAdUsersCountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains the information about the current logon administrator based on the authorization code.
 //
 // @param request - GetManagerInfoByAuthCodeRequest
@@ -1413,6 +1477,66 @@ func (client *Client) GetManagerInfoByAuthCodeWithContext(ctx context.Context, r
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetManagerInfoByAuthCodeResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取用户数量
+//
+// Description:
+//
+// 出于安全考虑，您可以锁定便捷账号。被锁定的便捷用户无法登录无影终端，因此也无法访问任何无影云资源。
+//
+// > 您可以调用[DescribeUsers](https://help.aliyun.com/document_detail/283609.html)查询便捷账号信息。若返回数据中`Status`取值为0，表示该便捷账号未被锁定；若`Status`取值为9，表示该便捷账号已被锁定。
+//
+// @param request - GetUsersCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUsersCountResponse
+func (client *Client) GetUsersCountWithContext(ctx context.Context, request *GetUsersCountRequest, runtime *dara.RuntimeOptions) (_result *GetUsersCountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BusinessChannel) {
+		query["BusinessChannel"] = request.BusinessChannel
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BizType) {
+		body["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.SolutionId) {
+		body["SolutionId"] = request.SolutionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetUsersCount"),
+		Version:     dara.String("2021-03-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetUsersCountResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

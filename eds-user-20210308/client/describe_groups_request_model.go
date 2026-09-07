@@ -34,49 +34,49 @@ type iDescribeGroupsRequest interface {
 }
 
 type DescribeGroupsRequest struct {
-	// > This parameter is for internal use only.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
 	// ENTERPRISE
 	BizType         *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	BusinessChannel *string `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
-	// Specifies whether to exclude user groups that are already associated with a logon policy.
+	// Specifies whether to exclude user groups that have associated logon policies.
 	ExcludeAttachedLoginPolicyGroups *bool `json:"ExcludeAttachedLoginPolicyGroups,omitempty" xml:"ExcludeAttachedLoginPolicyGroups,omitempty"`
-	// The ID of the user group.
+	// The user group ID.
 	//
 	// example:
 	//
 	// ug-16nf7xxh4o9gc****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the user group.
+	// The user group name.
 	//
 	// example:
 	//
 	// TestGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	IdpId     *string `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	// The ID of a logon policy. If you specify this parameter, the call returns only user groups associated with the policy.
+	// Filters user groups by the specified associated logon policy.
 	LoginPolicyId *string `json:"LoginPolicyId,omitempty" xml:"LoginPolicyId,omitempty"`
-	// The page number to return.
+	// The page number for a paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: 100. Default value: 10.
+	// The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// > This parameter is for internal use only.
+	// > This parameter is not publicly available.
 	//
 	// example:
 	//
 	// co-0esnf80jab***
 	SolutionId *string `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
-	// Specifies whether file approval is enabled.
+	// Indicates whether file approval is enabled.
 	//
 	// example:
 	//

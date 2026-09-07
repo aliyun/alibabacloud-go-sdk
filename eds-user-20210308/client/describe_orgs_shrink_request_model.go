@@ -13,6 +13,8 @@ type iDescribeOrgsShrinkRequest interface {
 	GetBusinessChannel() *string
 	SetIncludeOrgIds(v []*string) *DescribeOrgsShrinkRequest
 	GetIncludeOrgIds() []*string
+	SetIsQueryAllSubOrgs(v bool) *DescribeOrgsShrinkRequest
+	GetIsQueryAllSubOrgs() *bool
 	SetMaxResults(v int64) *DescribeOrgsShrinkRequest
 	GetMaxResults() *int64
 	SetNextToken(v string) *DescribeOrgsShrinkRequest
@@ -33,15 +35,17 @@ type DescribeOrgsShrinkRequest struct {
 	// ENTERPRISE
 	BusinessChannel *string   `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	IncludeOrgIds   []*string `json:"IncludeOrgIds,omitempty" xml:"IncludeOrgIds,omitempty" type:"Repeated"`
-	// The maximum number of entries to return. Valid values: 1 to 100.<br>
+	// Specifies whether to query all subordinate organizations when a parent organization is specified.
+	IsQueryAllSubOrgs *bool `json:"IsQueryAllSubOrgs,omitempty" xml:"IsQueryAllSubOrgs,omitempty"`
+	// The maximum number of results to return. Valid values: 1 to 100.
 	//
-	// Default value: 100.<br>
+	// Default value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. To retrieve the next page of results, set this parameter to the `NextToken` value that was returned from a previous request.
+	// The pagination token. Set this parameter to the value of NextToken that was returned in the previous API call.
 	//
 	// example:
 	//
@@ -51,7 +55,7 @@ type DescribeOrgsShrinkRequest struct {
 	//
 	// example:
 	//
-	// 产品部
+	// ProductDepartment
 	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	// The parent organization ID.
 	//
@@ -76,6 +80,10 @@ func (s *DescribeOrgsShrinkRequest) GetBusinessChannel() *string {
 
 func (s *DescribeOrgsShrinkRequest) GetIncludeOrgIds() []*string {
 	return s.IncludeOrgIds
+}
+
+func (s *DescribeOrgsShrinkRequest) GetIsQueryAllSubOrgs() *bool {
+	return s.IsQueryAllSubOrgs
 }
 
 func (s *DescribeOrgsShrinkRequest) GetMaxResults() *int64 {
@@ -105,6 +113,11 @@ func (s *DescribeOrgsShrinkRequest) SetBusinessChannel(v string) *DescribeOrgsSh
 
 func (s *DescribeOrgsShrinkRequest) SetIncludeOrgIds(v []*string) *DescribeOrgsShrinkRequest {
 	s.IncludeOrgIds = v
+	return s
+}
+
+func (s *DescribeOrgsShrinkRequest) SetIsQueryAllSubOrgs(v bool) *DescribeOrgsShrinkRequest {
+	s.IsQueryAllSubOrgs = &v
 	return s
 }
 

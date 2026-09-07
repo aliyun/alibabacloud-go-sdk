@@ -18,13 +18,13 @@ type iDescribeOrgsResponseBody interface {
 }
 
 type DescribeOrgsResponseBody struct {
-	// The token used to retrieve the next page of results. If this parameter is not empty, more results are available. To retrieve the next page, pass this value in the `NextToken` parameter of a subsequent request.
+	// The pagination token. Set this parameter to the value of NextToken that was returned in the previous API call.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The organization list.
+	// The list of organizations.
 	Orgs []*DescribeOrgsResponseBodyOrgs `json:"Orgs,omitempty" xml:"Orgs,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,6 +83,12 @@ func (s *DescribeOrgsResponseBody) Validate() error {
 }
 
 type DescribeOrgsResponseBodyOrgs struct {
+	// The access type of the organization node. Valid values:
+	//
+	// - MANAGEABLE: indicates a manageable node.
+	//
+	// - PATH_ONLY: indicates a node used only to display the full path to the root organization.
+	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	// The organization ID.
 	//
 	// example:
@@ -93,7 +99,7 @@ type DescribeOrgsResponseBodyOrgs struct {
 	//
 	// example:
 	//
-	// 设计部****
+	// DesignDepartment****
 	OrgName     *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	OrgNamePath *string `json:"OrgNamePath,omitempty" xml:"OrgNamePath,omitempty"`
 	// The parent organization ID.
@@ -111,6 +117,10 @@ func (s DescribeOrgsResponseBodyOrgs) String() string {
 
 func (s DescribeOrgsResponseBodyOrgs) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeOrgsResponseBodyOrgs) GetAccessType() *string {
+	return s.AccessType
 }
 
 func (s *DescribeOrgsResponseBodyOrgs) GetOrgId() *string {
@@ -131,6 +141,11 @@ func (s *DescribeOrgsResponseBodyOrgs) GetParentOrgId() *string {
 
 func (s *DescribeOrgsResponseBodyOrgs) GetResourcePolicyList() []*DescribeOrgsResponseBodyOrgsResourcePolicyList {
 	return s.ResourcePolicyList
+}
+
+func (s *DescribeOrgsResponseBodyOrgs) SetAccessType(v string) *DescribeOrgsResponseBodyOrgs {
+	s.AccessType = &v
+	return s
 }
 
 func (s *DescribeOrgsResponseBodyOrgs) SetOrgId(v string) *DescribeOrgsResponseBodyOrgs {

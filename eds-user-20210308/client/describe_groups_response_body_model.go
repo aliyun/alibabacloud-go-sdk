@@ -18,13 +18,13 @@ type iDescribeGroupsResponseBody interface {
 }
 
 type DescribeGroupsResponseBody struct {
-	// The total number of entries returned.
+	// The number of entries returned in the query result.
 	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// A list of user groups.
+	// The list of user groups.
 	Groups []*DescribeGroupsResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,11 +83,10 @@ func (s *DescribeGroupsResponseBody) Validate() error {
 }
 
 type DescribeGroupsResponseBodyGroups struct {
-	// The logon policy attached to the user group.
 	AttachedLoginPolicy *DescribeGroupsResponseBodyGroupsAttachedLoginPolicy `json:"AttachedLoginPolicy,omitempty" xml:"AttachedLoginPolicy,omitempty" type:"Struct"`
-	// A list of authorized resources.
+	// The list of assigned resources.
 	AuthedResources map[string]*string `json:"AuthedResources,omitempty" xml:"AuthedResources,omitempty"`
-	// The time when the user group was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -99,24 +98,28 @@ type DescribeGroupsResponseBodyGroups struct {
 	//
 	// A test group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the user group.
+	// Indicates whether download requires approval.
+	DownloadNeedApproval *bool `json:"DownloadNeedApproval,omitempty" xml:"DownloadNeedApproval,omitempty"`
+	// The user group ID.
 	//
 	// example:
 	//
 	// ug-2412ojkwtybd****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the user group.
+	// The user group name.
 	//
 	// example:
 	//
 	// TestGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// Indicates whether file transfer approval is enabled.
+	// Indicates whether file approval is enabled.
 	//
 	// example:
 	//
 	// false
 	TransferFileNeedApproval *bool `json:"TransferFileNeedApproval,omitempty" xml:"TransferFileNeedApproval,omitempty"`
+	// Indicates whether upload requires approval.
+	UploadNeedApproval *bool `json:"UploadNeedApproval,omitempty" xml:"UploadNeedApproval,omitempty"`
 	// The number of members in the user group.
 	//
 	// example:
@@ -149,6 +152,10 @@ func (s *DescribeGroupsResponseBodyGroups) GetDescription() *string {
 	return s.Description
 }
 
+func (s *DescribeGroupsResponseBodyGroups) GetDownloadNeedApproval() *bool {
+	return s.DownloadNeedApproval
+}
+
 func (s *DescribeGroupsResponseBodyGroups) GetGroupId() *string {
 	return s.GroupId
 }
@@ -159,6 +166,10 @@ func (s *DescribeGroupsResponseBodyGroups) GetGroupName() *string {
 
 func (s *DescribeGroupsResponseBodyGroups) GetTransferFileNeedApproval() *bool {
 	return s.TransferFileNeedApproval
+}
+
+func (s *DescribeGroupsResponseBodyGroups) GetUploadNeedApproval() *bool {
+	return s.UploadNeedApproval
 }
 
 func (s *DescribeGroupsResponseBodyGroups) GetUserCount() *int32 {
@@ -185,6 +196,11 @@ func (s *DescribeGroupsResponseBodyGroups) SetDescription(v string) *DescribeGro
 	return s
 }
 
+func (s *DescribeGroupsResponseBodyGroups) SetDownloadNeedApproval(v bool) *DescribeGroupsResponseBodyGroups {
+	s.DownloadNeedApproval = &v
+	return s
+}
+
 func (s *DescribeGroupsResponseBodyGroups) SetGroupId(v string) *DescribeGroupsResponseBodyGroups {
 	s.GroupId = &v
 	return s
@@ -197,6 +213,11 @@ func (s *DescribeGroupsResponseBodyGroups) SetGroupName(v string) *DescribeGroup
 
 func (s *DescribeGroupsResponseBodyGroups) SetTransferFileNeedApproval(v bool) *DescribeGroupsResponseBodyGroups {
 	s.TransferFileNeedApproval = &v
+	return s
+}
+
+func (s *DescribeGroupsResponseBodyGroups) SetUploadNeedApproval(v bool) *DescribeGroupsResponseBodyGroups {
+	s.UploadNeedApproval = &v
 	return s
 }
 
@@ -215,9 +236,7 @@ func (s *DescribeGroupsResponseBodyGroups) Validate() error {
 }
 
 type DescribeGroupsResponseBodyGroupsAttachedLoginPolicy struct {
-	// The name of the logon policy.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the logon policy.
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 }
 

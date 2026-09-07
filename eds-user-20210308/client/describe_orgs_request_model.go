@@ -13,6 +13,8 @@ type iDescribeOrgsRequest interface {
 	GetBusinessChannel() *string
 	SetIncludeOrgIds(v []*string) *DescribeOrgsRequest
 	GetIncludeOrgIds() []*string
+	SetIsQueryAllSubOrgs(v bool) *DescribeOrgsRequest
+	GetIsQueryAllSubOrgs() *bool
 	SetMaxResults(v int64) *DescribeOrgsRequest
 	GetMaxResults() *int64
 	SetNextToken(v string) *DescribeOrgsRequest
@@ -33,15 +35,17 @@ type DescribeOrgsRequest struct {
 	// ENTERPRISE
 	BusinessChannel *string   `json:"BusinessChannel,omitempty" xml:"BusinessChannel,omitempty"`
 	IncludeOrgIds   []*string `json:"IncludeOrgIds,omitempty" xml:"IncludeOrgIds,omitempty" type:"Repeated"`
-	// The maximum number of entries to return. Valid values: 1 to 100.<br>
+	// Specifies whether to query all subordinate organizations when a parent organization is specified.
+	IsQueryAllSubOrgs *bool `json:"IsQueryAllSubOrgs,omitempty" xml:"IsQueryAllSubOrgs,omitempty"`
+	// The maximum number of results to return. Valid values: 1 to 100.
 	//
-	// Default value: 100.<br>
+	// Default value: 100.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. To retrieve the next page of results, set this parameter to the `NextToken` value that was returned from a previous request.
+	// The pagination token. Set this parameter to the value of NextToken that was returned in the previous API call.
 	//
 	// example:
 	//
@@ -51,7 +55,7 @@ type DescribeOrgsRequest struct {
 	//
 	// example:
 	//
-	// 产品部
+	// ProductDepartment
 	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	// The parent organization ID.
 	//
@@ -76,6 +80,10 @@ func (s *DescribeOrgsRequest) GetBusinessChannel() *string {
 
 func (s *DescribeOrgsRequest) GetIncludeOrgIds() []*string {
 	return s.IncludeOrgIds
+}
+
+func (s *DescribeOrgsRequest) GetIsQueryAllSubOrgs() *bool {
+	return s.IsQueryAllSubOrgs
 }
 
 func (s *DescribeOrgsRequest) GetMaxResults() *int64 {
@@ -105,6 +113,11 @@ func (s *DescribeOrgsRequest) SetBusinessChannel(v string) *DescribeOrgsRequest 
 
 func (s *DescribeOrgsRequest) SetIncludeOrgIds(v []*string) *DescribeOrgsRequest {
 	s.IncludeOrgIds = v
+	return s
+}
+
+func (s *DescribeOrgsRequest) SetIsQueryAllSubOrgs(v bool) *DescribeOrgsRequest {
+	s.IsQueryAllSubOrgs = &v
 	return s
 }
 

@@ -9,6 +9,8 @@ type iDescribeUsersResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetCount(v int32) *DescribeUsersResponseBody
+	GetCount() *int32
 	SetNextToken(v string) *DescribeUsersResponseBody
 	GetNextToken() *string
 	SetRequestId(v string) *DescribeUsersResponseBody
@@ -18,7 +20,9 @@ type iDescribeUsersResponseBody interface {
 }
 
 type DescribeUsersResponseBody struct {
-	// The token to start the next query. If this parameter is empty, all results have been returned.
+	// The total number of users that meet the query conditions
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The pagination token for the next query. An empty NextToken indicates that no more results exist.
 	//
 	// example:
 	//
@@ -30,7 +34,7 @@ type DescribeUsersResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the convenience accounts.
+	// The collection of convenience account information.
 	Users []*DescribeUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -40,6 +44,10 @@ func (s DescribeUsersResponseBody) String() string {
 
 func (s DescribeUsersResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeUsersResponseBody) GetCount() *int32 {
+	return s.Count
 }
 
 func (s *DescribeUsersResponseBody) GetNextToken() *string {
@@ -52,6 +60,11 @@ func (s *DescribeUsersResponseBody) GetRequestId() *string {
 
 func (s *DescribeUsersResponseBody) GetUsers() []*DescribeUsersResponseBodyUsers {
 	return s.Users
+}
+
+func (s *DescribeUsersResponseBody) SetCount(v int32) *DescribeUsersResponseBody {
+	s.Count = &v
+	return s
 }
 
 func (s *DescribeUsersResponseBody) SetNextToken(v string) *DescribeUsersResponseBody {
@@ -87,9 +100,9 @@ type DescribeUsersResponseBodyUsers struct {
 	//
 	// example:
 	//
-	// 杭州市***
+	// Hangzhou ***
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The URL of the user\\"s avatar.
+	// The URL of the user\\"s profile picture.
 	//
 	// example:
 	//
@@ -101,73 +114,71 @@ type DescribeUsersResponseBodyUsers struct {
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	// Indicates whether administrator access is enabled.
+	// Indicates whether administrator access permissions are enabled.
 	EnableAdminAccess *bool `json:"EnableAdminAccess,omitempty" xml:"EnableAdminAccess,omitempty"`
-	// The end user ID.
+	// The username.
 	//
 	// example:
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The name of the user imported from an external system.
+	// The username imported from an external source.
 	//
-	// > This parameter is for internal use only.
+	// > This field is not publicly available.
 	//
 	// example:
 	//
-	// 马**
+	// Ma**
 	ExternalName *string `json:"ExternalName,omitempty" xml:"ExternalName,omitempty"`
-	// The extended properties of the user.
+	// The extended user information.
 	Extras *DescribeUsersResponseBodyUsersExtras `json:"Extras,omitempty" xml:"Extras,omitempty" type:"Struct"`
-	// The user groups to which the convenience account belongs.
+	// The collection of user groups to which the convenience account belongs.
 	Groups []*DescribeUsersResponseBodyUsersGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The ID of the convenience account.
+	// The convenience account ID.
 	//
 	// example:
 	//
 	// 4205**
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the user is a tenant manager. When you create a convenience account of the `CreateFromManager` type, you must specify a tenant manager. Notifications, such as password resets initiated by an end user from a client, are sent to the tenant manager\\"s email or mobile phone. For more information, see [Create a convenience account](https://help.aliyun.com/document_detail/214472.html).
+	// Indicates whether the user is a user administrator. If the convenience account is of the administrator-activated type, a user administrator must be specified. Notifications such as password resets initiated by end users through the client are sent to the user administrator\\"s email or phone. For more information, see [Create a convenience account](https://help.aliyun.com/document_detail/214472.html).
 	//
 	// example:
 	//
 	// true
 	IsTenantManager *bool `json:"IsTenantManager,omitempty" xml:"IsTenantManager,omitempty"`
-	// The employee ID.
+	// The employee ID of the user.
 	//
 	// example:
 	//
 	// A10000**
 	JobNumber *string `json:"JobNumber,omitempty" xml:"JobNumber,omitempty"`
-	// The nickname of the user.<br>
+	// The nickname of the user. The value is determined in the following order:
 	//
-	// The value is determined from the following parameters, in order of priority:<br>
+	// - RealNickName
 	//
-	// - `RealNickName`
+	// - Remark
 	//
-	// - `Remark`
-	//
-	// - `EndUserId`
+	// - EndUserId
 	//
 	// example:
 	//
-	// 李**
+	// Li**
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// The ID of the organization to which the convenience account belongs.
+	// The department ID to which the convenience account belongs.
 	//
-	// > This parameter is deprecated and may be removed in a future release.
+	// > This parameter will be deprecated soon.
 	//
 	// example:
 	//
 	// org-4mdgc1cocc59z****
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// The organizations to which the convenience account belongs.
+	// The collection of departments to which the convenience account belongs.
 	Orgs []*DescribeUsersResponseBodyUsersOrgs `json:"Orgs,omitempty" xml:"Orgs,omitempty" type:"Repeated"`
-	// The type of the convenience account. The account can be activated in one of the following ways:
+	// The convenience account type, which includes:
 	//
-	// - Tenant manager-activated: The tenant manager sets the username and password. Notifications such as password resets are sent to the tenant manager\\"s email address or mobile phone.
+	// 	- Administrator-activated type: The administrator sets the username and password. User notifications such as password resets are sent to the administrator\\"s email or phone.
 	//
-	// - End user-activated: The tenant manager sets the username and the end user\\"s email address or mobile phone. Notifications for the end user, such as the initial password for the cloud desktop, are sent to the end user\\"s email address or mobile phone.
+	// 	- User-activated type: The administrator sets the username and the user\\"s email or phone for receiving notifications. User notifications such as cloud computer provisioning notifications (including the initial password) are sent to the user\\"s email or phone.
 	//
 	// example:
 	//
@@ -175,27 +186,27 @@ type DescribeUsersResponseBodyUsers struct {
 	OwnerType              *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
 	PasswordExpireDays     *int32  `json:"PasswordExpireDays,omitempty" xml:"PasswordExpireDays,omitempty"`
 	PasswordExpireRestDays *int32  `json:"PasswordExpireRestDays,omitempty" xml:"PasswordExpireRestDays,omitempty"`
-	// The phone number. This parameter is returned only if a phone number is set.
+	// The phone number. This parameter is not returned if it is not set.
 	//
 	// example:
 	//
 	// 1381111****
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
-	// A list of custom properties for the user.
+	// The user properties.
 	Properties []*DescribeUsersResponseBodyUsersProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
 	// The display name of the user.
 	//
 	// example:
 	//
-	// 李**
+	// Li**
 	RealNickName *string `json:"RealNickName,omitempty" xml:"RealNickName,omitempty"`
-	// The note about the convenience account.
+	// The remark of the convenience account.
 	//
 	// example:
 	//
 	// Test user.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The status of the convenience account.
+	// The status.
 	//
 	// example:
 	//
@@ -541,17 +552,17 @@ func (s *DescribeUsersResponseBodyUsersExtrasResourcePolicyList) Validate() erro
 }
 
 type DescribeUsersResponseBodyUsersGroups struct {
-	// The ID of the user group.
+	// The user group ID.
 	//
 	// example:
 	//
 	// ug-12341234****
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the user group.
+	// The user group name.
 	//
 	// example:
 	//
-	// 用户组1
+	// UserGroup1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 }
 
@@ -586,17 +597,17 @@ func (s *DescribeUsersResponseBodyUsersGroups) Validate() error {
 }
 
 type DescribeUsersResponseBodyUsersOrgs struct {
-	// The ID of the organization.
+	// The department ID.
 	//
 	// example:
 	//
 	// org-4mdgc1cocc59z****
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// The name of the organization.
+	// The department name.
 	//
 	// example:
 	//
-	// 部门1
+	// Department1
 	OrgName     *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	OrgNamePath *string `json:"OrgNamePath,omitempty" xml:"OrgNamePath,omitempty"`
 }
@@ -641,7 +652,7 @@ func (s *DescribeUsersResponseBodyUsersOrgs) Validate() error {
 }
 
 type DescribeUsersResponseBodyUsersProperties struct {
-	// The property key.
+	// The property name.
 	//
 	// example:
 	//
