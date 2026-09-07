@@ -707,6 +707,54 @@ func (client *Client) GetRemakeScriptJobWithContext(ctx context.Context, request
 
 // Summary:
 //
+// Queries the status, input parameters, and video result of a video text erasure task.
+//
+// Description:
+//
+// Queries the status, input, parameters, and desired state result of a video text erasure task based on `JobId`.
+//
+// @param request - GetVideoDetextJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVideoDetextJobResponse
+func (client *Client) GetVideoDetextJobWithContext(ctx context.Context, request *GetVideoDetextJobRequest, runtime *dara.RuntimeOptions) (_result *GetVideoDetextJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		body["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetVideoDetextJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetVideoDetextJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a video generation task.
 //
 // @param request - GetVideoGenerationJobRequest
@@ -1412,6 +1460,70 @@ func (client *Client) SubmitRemakeScriptJobWithContext(ctx context.Context, requ
 		BodyType:    dara.String("json"),
 	}
 	_result = &SubmitRemakeScriptJobResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits an asynchronous video text erasure task that supports full-video erasure, time range-based erasure, and region-specific erasure.
+//
+// Description:
+//
+// Submits an asynchronous video text erasure task. The input can be an accessible video URL or a media asset ID. You can configure the erasure time range and text regions.
+//
+// @param request - SubmitVideoDetextJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitVideoDetextJobResponse
+func (client *Client) SubmitVideoDetextJobWithContext(ctx context.Context, request *SubmitVideoDetextJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitVideoDetextJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.Input) {
+		body["Input"] = request.Input
+	}
+
+	if !dara.IsNil(request.JobParameters) {
+		body["JobParameters"] = request.JobParameters
+	}
+
+	if !dara.IsNil(request.Output) {
+		body["Output"] = request.Output
+	}
+
+	if !dara.IsNil(request.UserData) {
+		body["UserData"] = request.UserData
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitVideoDetextJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitVideoDetextJobResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
