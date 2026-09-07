@@ -25,13 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-beijing":     dara.String("modelstudio.cn-beijing.aliyuncs.com"),
-		"cn-hongkong":    dara.String("modelstudio.cn-hongkong.aliyuncs.com"),
-		"ap-southeast-1": dara.String("modelstudio.ap-southeast-1.aliyuncs.com"),
-		"us-east-1":      dara.String("modelstudio.us-east-1.aliyuncs.com"),
-		"eu-central-1":   dara.String("modelstudio.eu-central-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err

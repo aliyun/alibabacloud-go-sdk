@@ -237,6 +237,10 @@ type ListApiKeysResponseBodyApiKeys struct {
 	//
 	// ws-950f9aca7e76c816
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// example:
+	//
+	// workspace_test
+	WorkspaceName *string `json:"workspaceName,omitempty" xml:"workspaceName,omitempty"`
 }
 
 func (s ListApiKeysResponseBodyApiKeys) String() string {
@@ -279,6 +283,10 @@ func (s *ListApiKeysResponseBodyApiKeys) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
 
+func (s *ListApiKeysResponseBodyApiKeys) GetWorkspaceName() *string {
+	return s.WorkspaceName
+}
+
 func (s *ListApiKeysResponseBodyApiKeys) SetApiKeyId(v int64) *ListApiKeysResponseBodyApiKeys {
 	s.ApiKeyId = &v
 	return s
@@ -316,6 +324,11 @@ func (s *ListApiKeysResponseBodyApiKeys) SetGmtCreate(v int64) *ListApiKeysRespo
 
 func (s *ListApiKeysResponseBodyApiKeys) SetWorkspaceId(v string) *ListApiKeysResponseBodyApiKeys {
 	s.WorkspaceId = &v
+	return s
+}
+
+func (s *ListApiKeysResponseBodyApiKeys) SetWorkspaceName(v string) *ListApiKeysResponseBodyApiKeys {
+	s.WorkspaceName = &v
 	return s
 }
 
@@ -389,6 +402,10 @@ type ListApiKeysResponseBodyApiKeysAuthModelAccessScope struct {
 	// The list of accessible models.
 	AccessibleModels []*string `json:"accessibleModels,omitempty" xml:"accessibleModels,omitempty" type:"Repeated"`
 	// Indicates whether access to all models with inference permissions in the workspace is allowed.
+	//
+	// example:
+	//
+	// false
 	AllowAllModels *bool `json:"allowAllModels,omitempty" xml:"allowAllModels,omitempty"`
 }
 

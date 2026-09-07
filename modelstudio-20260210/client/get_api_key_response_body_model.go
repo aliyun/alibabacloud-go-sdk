@@ -182,6 +182,10 @@ type GetApiKeyResponseBodyApiKey struct {
 	//
 	// ws-b2d30f148c236908
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// example:
+	//
+	// workspace_test
+	WorkspaceName *string `json:"workspaceName,omitempty" xml:"workspaceName,omitempty"`
 }
 
 func (s GetApiKeyResponseBodyApiKey) String() string {
@@ -224,6 +228,10 @@ func (s *GetApiKeyResponseBodyApiKey) GetWorkspaceId() *string {
 	return s.WorkspaceId
 }
 
+func (s *GetApiKeyResponseBodyApiKey) GetWorkspaceName() *string {
+	return s.WorkspaceName
+}
+
 func (s *GetApiKeyResponseBodyApiKey) SetApiKeyId(v int64) *GetApiKeyResponseBodyApiKey {
 	s.ApiKeyId = &v
 	return s
@@ -261,6 +269,11 @@ func (s *GetApiKeyResponseBodyApiKey) SetGmtCreate(v int64) *GetApiKeyResponseBo
 
 func (s *GetApiKeyResponseBodyApiKey) SetWorkspaceId(v string) *GetApiKeyResponseBodyApiKey {
 	s.WorkspaceId = &v
+	return s
+}
+
+func (s *GetApiKeyResponseBodyApiKey) SetWorkspaceName(v string) *GetApiKeyResponseBodyApiKey {
+	s.WorkspaceName = &v
 	return s
 }
 
