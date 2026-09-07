@@ -11,6 +11,8 @@ type iGetMediaRequest interface {
 	GoString() string
 	SetAuthTimeout(v int64) *GetMediaRequest
 	GetAuthTimeout() *int64
+	SetBizConfig(v string) *GetMediaRequest
+	GetBizConfig() *string
 	SetInputURL(v string) *GetMediaRequest
 	GetInputURL() *string
 	SetMediaId(v string) *GetMediaRequest
@@ -23,14 +25,15 @@ type GetMediaRequest struct {
 	// example:
 	//
 	// 3600
-	AuthTimeout *int64 `json:"AuthTimeout,omitempty" xml:"AuthTimeout,omitempty"`
+	AuthTimeout *int64  `json:"AuthTimeout,omitempty" xml:"AuthTimeout,omitempty"`
+	BizConfig   *string `json:"BizConfig,omitempty" xml:"BizConfig,omitempty"`
 	// Currently unavailable.
 	//
 	// example:
 	//
 	// https://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// The media asset ID. If this parameter is not empty, the system queries the media asset by this ID and validates whether the value is a valid MediaId.
+	// The media asset ID. If this parameter is not empty, the query is performed based on this parameter, and the system verifies whether the value is a valid MediaId.
 	//
 	// example:
 	//
@@ -50,6 +53,10 @@ func (s *GetMediaRequest) GetAuthTimeout() *int64 {
 	return s.AuthTimeout
 }
 
+func (s *GetMediaRequest) GetBizConfig() *string {
+	return s.BizConfig
+}
+
 func (s *GetMediaRequest) GetInputURL() *string {
 	return s.InputURL
 }
@@ -60,6 +67,11 @@ func (s *GetMediaRequest) GetMediaId() *string {
 
 func (s *GetMediaRequest) SetAuthTimeout(v int64) *GetMediaRequest {
 	s.AuthTimeout = &v
+	return s
+}
+
+func (s *GetMediaRequest) SetBizConfig(v string) *GetMediaRequest {
+	s.BizConfig = &v
 	return s
 }
 

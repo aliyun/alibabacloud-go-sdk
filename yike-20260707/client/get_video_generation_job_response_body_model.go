@@ -84,7 +84,7 @@ type GetVideoGenerationJobResponseBodyVideoGenerationJob struct {
 	//
 	// example:
 	//
-	// {"Prompt":"Person in image 1 is on a basketball court, dunking with the appearance from image 2","Medias":[{"Type":"image","Url":"https://xxx/xxx.jpg"},{"Type":"image","Url":"https://xxx/xxx.jpg"}]}
+	// {"Prompt":"Person in image 1 is on a basketball court, dunking with image 2","Medias":[{"Type":"image","Url":"https://xxx/xxx.jpg"},{"Type":"image","Url":"https://xxx/xxx.jpg"}]}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	// The task ID.
 	//
@@ -116,9 +116,9 @@ type GetVideoGenerationJobResponseBodyVideoGenerationJob struct {
 	//
 	// 1
 	N *int32 `json:"N,omitempty" xml:"N,omitempty"`
-	// The generation result. The value is a JSON string that contains the following fields:
+	// The generation result in JsonString format, which contains:
 	//
-	// Medias: a list of media information (Media objects). The Media object contains the following fields:
+	// Medias: a list of media information (Media objects). Fields of a Media object:
 	//
 	// MediaId: String. The media asset ID.
 	//
@@ -134,7 +134,7 @@ type GetVideoGenerationJobResponseBodyVideoGenerationJob struct {
 	//
 	// 720P
 	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
-	// The scene type. Currently, only general is supported.
+	// The scene type. Currently only general is supported.
 	//
 	// example:
 	//

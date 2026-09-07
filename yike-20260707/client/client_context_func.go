@@ -32,8 +32,16 @@ func (client *Client) BatchGetMediasWithContext(ctx context.Context, request *Ba
 		query["AuthTimeout"] = request.AuthTimeout
 	}
 
+	if !dara.IsNil(request.BizConfig) {
+		query["BizConfig"] = request.BizConfig
+	}
+
 	if !dara.IsNil(request.MediaIds) {
 		query["MediaIds"] = request.MediaIds
+	}
+
+	if !dara.IsNil(request.ReturnDynamicMeta) {
+		query["ReturnDynamicMeta"] = request.ReturnDynamicMeta
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -288,6 +296,10 @@ func (client *Client) DeleteMediasWithContext(ctx context.Context, request *Dele
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizConfig) {
+		query["BizConfig"] = request.BizConfig
+	}
+
 	if !dara.IsNil(request.DeletePhysicalFiles) {
 		query["DeletePhysicalFiles"] = request.DeletePhysicalFiles
 	}
@@ -543,7 +555,9 @@ func (client *Client) GetInfiniteCanvasWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// ## Operation description.
+// ## Operation description
+//
+// This API operation is used to query a media content analysis job.
 //
 // @param request - GetMediaRequest
 //
@@ -560,6 +574,10 @@ func (client *Client) GetMediaWithContext(ctx context.Context, request *GetMedia
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AuthTimeout) {
 		query["AuthTimeout"] = request.AuthTimeout
+	}
+
+	if !dara.IsNil(request.BizConfig) {
+		query["BizConfig"] = request.BizConfig
 	}
 
 	if !dara.IsNil(request.InputURL) {
@@ -781,23 +799,11 @@ func (client *Client) GetVideoRenderJobWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the status and result of a video translation task by the specified ID.
+// Queries the status, input parameters, and multilingual outputs of a video translation job.
 //
 // Description:
 //
-// ## Request description
-//
-// - This API retrieves the status and details of a video translation task based on the `JobId`.
-//
-// - `JobId` is a required parameter, passed through query or form.
-//
-// - If the task does not exist or does not belong to the current caller, the `InvalidParameter` error code with HTTP status code 400 is returned.
-//
-// - On a successful response, the HTTP status code is 200, and the task object is located in `data.Job`.
-//
-// - When the task is completed (`Status=Finished`), the output artifacts can be found in the `data.Job.Output` field. The client needs to perform a JSON parse to obtain the specific results.
-//
-// - For tasks with multiple target languages, use `Output.AiResult.ResultMap` directly to obtain the specific results for each language. If there is only one target language, you can conveniently obtain the editing project ID through `data.Job.EditingProjectId`.
+// Queries the status, input, parameters, and desired state results of a video translation job based on the `JobId`.
 //
 // @param request - GetVideoTranslationJobRequest
 //
@@ -926,9 +932,9 @@ func (client *Client) GetYikeJobCreditWithContext(ctx context.Context, request *
 //
 // Description:
 //
-// ## Operation description
+// ## Request description
 //
-// This API is used to query media content understanding jobs.
+// This API is used to query media content analysis jobs.
 //
 // @param request - ImportMediaRequest
 //
@@ -943,6 +949,10 @@ func (client *Client) ImportMediaWithContext(ctx context.Context, request *Impor
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizConfig) {
+		query["BizConfig"] = request.BizConfig
+	}
+
 	if !dara.IsNil(request.CategoryId) {
 		query["CategoryId"] = request.CategoryId
 	}
@@ -995,6 +1005,10 @@ func (client *Client) ImportMediaWithContext(ctx context.Context, request *Impor
 		query["UserData"] = request.UserData
 	}
 
+	if !dara.IsNil(request.YikeAssetConfig) {
+		query["YikeAssetConfig"] = request.YikeAssetConfig
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1020,7 +1034,7 @@ func (client *Client) ImportMediaWithContext(ctx context.Context, request *Impor
 
 // Summary:
 //
-// Retrieves a paginated list of categories.
+// Retrieves a paged list of categories.
 //
 // @param request - ListAssetCategoriesRequest
 //
@@ -1157,6 +1171,10 @@ func (client *Client) SearchMediaWithContext(ctx context.Context, request *Searc
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizConfig) {
+		query["BizConfig"] = request.BizConfig
+	}
+
 	if !dara.IsNil(request.CategoryId) {
 		query["CategoryId"] = request.CategoryId
 	}
@@ -1544,25 +1562,11 @@ func (client *Client) SubmitVideoRenderJobWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Submits a video translation task that supports subtitle translation, voice translation, and on-screen text translation.
+// Submits an asynchronous video translation task that supports subtitle translation, voice translation, main subtitle erasure, and on-screen text translation.
 //
 // Description:
 //
-// ## Request description
-//
-// - This API supports multiple video translation features, including subtitle translation and voice translation.
-//
-// - The `JobType` parameter defines the task type, such as `SubtitleTranslate` and `VoiceTranslate`.
-//
-// - The `Input` and `Output` parameters specify the input resource and output path, respectively.
-//
-// - `JobParameters` contains language configuration and other feature switches, such as `SourceLanguage`, `TargetLanguage`, `NeedDetext`, and `NeedVisualTranslate`.
-//
-// - `EditingConfig` can be used to specify the style configuration for the final editing and compositing.
-//
-// - `ClientToken` is an optional parameter used to ensure the idempotence of the request.
-//
-// - Ensure that all required fields are correctly filled in. Otherwise, the request may fail.
+// Submits an asynchronous video translation task. The input supports a media URL or an Intelligent Media Management (IMM) media asset ID. Task parameters specify the source language, target language, and translation capabilities to enable.
 //
 // @param request - SubmitVideoTranslationJobRequest
 //
@@ -1638,7 +1642,7 @@ func (client *Client) SubmitVideoTranslationJobWithContext(ctx context.Context, 
 //
 // Description:
 //
-// After you create a media asset category, you can call this operation to locate and update the name of the media asset category by category ID.
+// After creating a media asset category, you can call this operation to locate and update the name of the category by category ID.
 //
 // @param request - UpdateAssetCategoryRequest
 //
@@ -1748,9 +1752,9 @@ func (client *Client) UpdateInfiniteCanvasWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// ## Request description
+// ## Operation description
 //
-// This API is used to query media content understanding jobs.
+// This API operation is used to query media content understanding jobs.
 //
 // @param request - UpdateMediaRequest
 //
@@ -1767,6 +1771,10 @@ func (client *Client) UpdateMediaWithContext(ctx context.Context, request *Updat
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AppendTags) {
 		query["AppendTags"] = request.AppendTags
+	}
+
+	if !dara.IsNil(request.BizConfig) {
+		query["BizConfig"] = request.BizConfig
 	}
 
 	if !dara.IsNil(request.CategoryId) {

@@ -9,6 +9,8 @@ type iSearchMediaRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBizConfig(v string) *SearchMediaRequest
+	GetBizConfig() *string
 	SetCategoryId(v int64) *SearchMediaRequest
 	GetCategoryId() *int64
 	SetMatch(v string) *SearchMediaRequest
@@ -24,13 +26,18 @@ type iSearchMediaRequest interface {
 }
 
 type SearchMediaRequest struct {
-	// The category ID. You can obtain the ID by using the following methods:
+	BizConfig *string `json:"BizConfig,omitempty" xml:"BizConfig,omitempty"`
+	// The category ID. You can obtain the category ID by using the following methods:
+	//
+	// - When you create a category by calling the CreateAssetCategory operation, the category ID is the value of CategoryId in the response.
+	//
+	// - When you query categories by calling the ListAssetCategories operation, the category ID is the value of CategoryId in the corresponding entry of the response.
 	//
 	// example:
 	//
 	// 10
 	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	// The filter condition. For syntax rules, see [Media asset search protocol](https://www.alibabacloud.com/help/en/ims/developer-reference/media-asset-search-filter-description).
+	// The filter conditions. For syntax rules, see [Media asset search protocol](https://www.alibabacloud.com/help/en/ims/developer-reference/media-asset-search-filter-description).
 	//
 	// example:
 	//
@@ -42,19 +49,19 @@ type SearchMediaRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries to return per page. Default value: 10. Maximum value: 50.
+	// The number of entries per page. Default value: 10. Maximum value: 50.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The pagination token. A 32-character string. You do not need to set this parameter for the first search request. When the search request matches data, the server returns this parameter value to record the current position of the search data. Record the returned parameter value and set this parameter in the next search request based on the following requirements or suggestions: This parameter must be set if you want to traverse all data that matches the search conditions. If the PageNo parameter value exceeds 200, set this parameter to optimize search performance. You can only page forward, with a maximum paging distance of 1000 media assets.
+	// The pagination token. The value is a 32-character string. Do not set this parameter for the first search request. When the search request matches data, the server returns this parameter value to record the current position of the search data. Record the returned parameter value and set this parameter in the next search request based on the following requirements or recommendations: This parameter is required if you want to traverse all data that matches the search conditions. If the PageNo parameter value exceeds 200, set this parameter to optimize search performance. You can only page forward, and the maximum paging distance is 1000 media assets.
 	//
 	// example:
 	//
 	// F8C4F642184DBDA5D93907A70AAE****
 	ScrollToken *string `json:"ScrollToken,omitempty" xml:"ScrollToken,omitempty"`
-	// The sort fields and sort orders, separated by commas (,). Format: field1:Desc,field2:Asc. The direction can only be Asc or Desc.
+	// The sort fields and sort orders, separated by commas (,). The format is field1:Desc,field2:Asc. The direction can only be Asc or Desc.
 	//
 	// example:
 	//
@@ -68,6 +75,10 @@ func (s SearchMediaRequest) String() string {
 
 func (s SearchMediaRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SearchMediaRequest) GetBizConfig() *string {
+	return s.BizConfig
 }
 
 func (s *SearchMediaRequest) GetCategoryId() *int64 {
@@ -92,6 +103,11 @@ func (s *SearchMediaRequest) GetScrollToken() *string {
 
 func (s *SearchMediaRequest) GetSortBy() *string {
 	return s.SortBy
+}
+
+func (s *SearchMediaRequest) SetBizConfig(v string) *SearchMediaRequest {
+	s.BizConfig = &v
+	return s
 }
 
 func (s *SearchMediaRequest) SetCategoryId(v int64) *SearchMediaRequest {

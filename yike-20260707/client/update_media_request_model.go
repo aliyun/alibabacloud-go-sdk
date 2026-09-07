@@ -11,6 +11,8 @@ type iUpdateMediaRequest interface {
 	GoString() string
 	SetAppendTags(v bool) *UpdateMediaRequest
 	GetAppendTags() *bool
+	SetBizConfig(v string) *UpdateMediaRequest
+	GetBizConfig() *string
 	SetCategoryId(v int64) *UpdateMediaRequest
 	GetCategoryId() *int64
 	SetCoverURL(v string) *UpdateMediaRequest
@@ -33,8 +35,9 @@ type iUpdateMediaRequest interface {
 
 type UpdateMediaRequest struct {
 	// Specifies whether to update the Tags field in append mode.
-	AppendTags *bool  `json:"AppendTags,omitempty" xml:"AppendTags,omitempty"`
-	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	AppendTags *bool   `json:"AppendTags,omitempty" xml:"AppendTags,omitempty"`
+	BizConfig  *string `json:"BizConfig,omitempty" xml:"BizConfig,omitempty"`
+	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	// The cover image URL. This parameter is valid only for video media assets.
 	//
 	// example:
@@ -65,11 +68,11 @@ type UpdateMediaRequest struct {
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The tags. Separate multiple tags with commas.
+	// The tags. Separate multiple tags with commas (,).
 	//
 	// example:
 	//
-	// CapCut animation.
+	// 剪映动画
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
 	// The title.
 	//
@@ -77,7 +80,7 @@ type UpdateMediaRequest struct {
 	//
 	// title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The user data. The maximum length is 1024 bytes.
+	// The user data. Maximum length: 1024 bytes.
 	//
 	// example:
 	//
@@ -95,6 +98,10 @@ func (s UpdateMediaRequest) GoString() string {
 
 func (s *UpdateMediaRequest) GetAppendTags() *bool {
 	return s.AppendTags
+}
+
+func (s *UpdateMediaRequest) GetBizConfig() *string {
+	return s.BizConfig
 }
 
 func (s *UpdateMediaRequest) GetCategoryId() *int64 {
@@ -135,6 +142,11 @@ func (s *UpdateMediaRequest) GetUserData() *string {
 
 func (s *UpdateMediaRequest) SetAppendTags(v bool) *UpdateMediaRequest {
 	s.AppendTags = &v
+	return s
+}
+
+func (s *UpdateMediaRequest) SetBizConfig(v string) *UpdateMediaRequest {
+	s.BizConfig = &v
 	return s
 }
 

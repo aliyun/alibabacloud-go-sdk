@@ -270,13 +270,13 @@ type BatchGetMediasResponseBodyMediaInfosFileInfoListAudioStreamInfoList struct 
 	//
 	// https://oapi.dingtalk.com/robot/send?access_token=fe58c6512a1c59524c199577c833abee23f9a16bc549815ca157c46d28fe6ffa
 	Channels *string `json:"Channels,omitempty" xml:"Channels,omitempty"`
-	// The long name of the codec.
+	// The long name of the codec format.
 	//
 	// example:
 	//
 	// xx
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// The short name of the codec.
+	// The short name of the codec format.
 	//
 	// example:
 	//
@@ -717,13 +717,13 @@ func (s *BatchGetMediasResponseBodyMediaInfosFileInfoListFileBasicInfo) Validate
 }
 
 type BatchGetMediasResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList struct {
-	// The long name of the codec.
+	// The long name of the codec format.
 	//
 	// example:
 	//
 	// xx
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// The short name of the codec.
+	// The short name of the codec format.
 	//
 	// example:
 	//
@@ -894,13 +894,13 @@ type BatchGetMediasResponseBodyMediaInfosFileInfoListVideoStreamInfoList struct 
 	//
 	// 23736607
 	Bitrate *string `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
-	// The long name of the codec.
+	// The long name of the codec format.
 	//
 	// example:
 	//
 	// xx
 	CodecLongName *string `json:"CodecLongName,omitempty" xml:"CodecLongName,omitempty"`
-	// The short name of the codec.
+	// The short name of the codec format.
 	//
 	// example:
 	//

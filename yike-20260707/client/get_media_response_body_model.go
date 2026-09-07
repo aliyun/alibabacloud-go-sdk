@@ -150,7 +150,7 @@ type GetMediaResponseBodyMediaInfoFileInfoList struct {
 	FileBasicInfo *GetMediaResponseBodyMediaInfoFileInfoListFileBasicInfo `json:"FileBasicInfo,omitempty" xml:"FileBasicInfo,omitempty" type:"Struct"`
 	// The subtitle stream information. A media asset may have multiple subtitle streams.
 	SubtitleStreamInfoList []*GetMediaResponseBodyMediaInfoFileInfoListSubtitleStreamInfoList `json:"SubtitleStreamInfoList,omitempty" xml:"SubtitleStreamInfoList,omitempty" type:"Repeated"`
-	// The video stream information. A media asset may contain multiple video streams.
+	// The video stream information. A media asset may have multiple video streams.
 	VideoStreamInfoList []*GetMediaResponseBodyMediaInfoFileInfoListVideoStreamInfoList `json:"VideoStreamInfoList,omitempty" xml:"VideoStreamInfoList,omitempty" type:"Repeated"`
 }
 
@@ -247,7 +247,7 @@ type GetMediaResponseBodyMediaInfoFileInfoListAudioStreamInfoList struct {
 	//
 	// stereo
 	ChannelLayout *string `json:"ChannelLayout,omitempty" xml:"ChannelLayout,omitempty"`
-	// The number of audio channels.
+	// The number of channels.
 	//
 	// example:
 	//
@@ -313,7 +313,7 @@ type GetMediaResponseBodyMediaInfoFileInfoListAudioStreamInfoList struct {
 	//
 	// 10
 	NumFrames *string `json:"NumFrames,omitempty" xml:"NumFrames,omitempty"`
-	// The encoding profile.
+	// The codec profile.
 	//
 	// example:
 	//
@@ -544,7 +544,7 @@ type GetMediaResponseBodyMediaInfoFileInfoListFileBasicInfo struct {
 	//
 	// example.mp4
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The file size in bytes.
+	// The file size, in bytes.
 	//
 	// example:
 	//
@@ -586,7 +586,7 @@ type GetMediaResponseBodyMediaInfoFileInfoListFileBasicInfo struct {
 	//
 	// 2020-12-26T04:11:10Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The storage region of the file.
+	// The region where the file is stored.
 	//
 	// example:
 	//
@@ -955,7 +955,7 @@ type GetMediaResponseBodyMediaInfoFileInfoListVideoStreamInfoList struct {
 	//
 	// 24.0
 	Fps *string `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	// Indicates whether the video stream contains B-frames.
+	// Indicates whether B-frames exist.
 	//
 	// example:
 	//
@@ -1003,7 +1003,7 @@ type GetMediaResponseBodyMediaInfoFileInfoListVideoStreamInfoList struct {
 	//
 	// yuv420p
 	PixFmt *string `json:"PixFmt,omitempty" xml:"PixFmt,omitempty"`
-	// The encoding profile.
+	// The codec profile.
 	//
 	// example:
 	//
@@ -1270,7 +1270,7 @@ func (s *GetMediaResponseBodyMediaInfoFileInfoListVideoStreamInfoList) Validate(
 }
 
 type GetMediaResponseBodyMediaInfoMediaBasicInfo struct {
-	// The business type of the media asset (currently unavailable).
+	// The business type of the media asset. This parameter is currently unavailable.
 	//
 	// example:
 	//
@@ -1284,13 +1284,13 @@ type GetMediaResponseBodyMediaInfoMediaBasicInfo struct {
 	//
 	// https://dtlive-vip.oss-cn-shanghai.aliyuncs.com/cover/4e88a055-75fc-4ff5-8b8a-f32224917514_open_live_cover.jpg
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the media asset was created.
+	// The creation time of the media asset.
 	//
 	// example:
 	//
 	// 2020-12-26T04:11:08Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The content description (the request parameter value of the register media asset API).
+	// The content description. This is the request parameter value of the RegisterMediaInfo API operation.
 	//
 	// example:
 	//
@@ -1302,7 +1302,7 @@ type GetMediaResponseBodyMediaInfoMediaBasicInfo struct {
 	//
 	// 1586676
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// The publicly accessible HTTP URL (the request parameter value of the register media asset API).
+	// The publicly accessible HTTP URL. This is the request parameter value of the RegisterMediaInfo API operation.
 	//
 	// example:
 	//
@@ -1314,13 +1314,13 @@ type GetMediaResponseBodyMediaInfoMediaBasicInfo struct {
 	//
 	// ****20b48fb04483915d4f2cd8ac****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The tags, separated by commas (the request parameter value of the register media asset API).
+	// The tags, separated by commas. This is the request parameter value of the RegisterMediaInfo API operation.
 	//
 	// example:
 	//
 	// pitaya,prd-wuxi,248
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
-	// The media type of the media asset: image/audio/video.
+	// The media type of the media asset. Valid values: image, audio, and video.
 	//
 	// example:
 	//
@@ -1591,7 +1591,7 @@ func (s *GetMediaResponseBodyMediaInfoMediaDynamicInfo) Validate() error {
 }
 
 type GetMediaResponseBodyMediaInfoMediaDynamicInfoDynamicMetaData struct {
-	// The dynamic metadata content.
+	// The content of the dynamic metadata.
 	//
 	// example:
 	//

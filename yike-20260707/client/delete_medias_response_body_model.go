@@ -18,9 +18,9 @@ type iDeleteMediasResponseBody interface {
 }
 
 type DeleteMediasResponseBody struct {
-	// The IDs or input URLs that are forbidden to delete.
+	// The IDs or input URLs that are forbidden from being deleted.
 	ForbiddenList []*string `json:"ForbiddenList,omitempty" xml:"ForbiddenList,omitempty" type:"Repeated"`
-	// The ignored IDs or input URLs (invalid or items with retrieval errors).
+	// The ignored IDs or input URLs, which are invalid or have retrieval errors.
 	IgnoredList []*string `json:"IgnoredList,omitempty" xml:"IgnoredList,omitempty" type:"Repeated"`
 	// The request ID.
 	//

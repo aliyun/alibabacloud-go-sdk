@@ -14,13 +14,13 @@ type iGetVideoTranslationJobRequest interface {
 }
 
 type GetVideoTranslationJobRequest struct {
-	// The task ID returned by `SubmitVideoTranslationJob`.
+	// The video translation job ID returned by SubmitVideoTranslationJob.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// vtj_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	// vtj_0123456789abcdef0123456789abcdef
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 

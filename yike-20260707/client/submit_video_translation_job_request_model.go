@@ -28,35 +28,27 @@ type iSubmitVideoTranslationJobRequest interface {
 }
 
 type SubmitVideoTranslationJobRequest struct {
-	// The user-level idempotency key.
+	// The user-level idempotency token, up to 40 characters. If the same user submits a request with the same token, the original job is returned.
 	//
 	// example:
 	//
-	// ****3e761e9d11edba640c42a1b7****
+	// vt-client-20260820-001
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The job description.
+	// The job description, used to record business purposes or processing requirements.
 	//
 	// example:
 	//
-	// description
+	// Translate a Chinese product introduction video into English
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The input configuration JSON string:
-	//
-	// - Video
-	//
-	// - Audio
-	//
-	// - Subtitle
-	//
-	// <notice>Currently, only OSS addresses under the calling account are supported as input.</notice>
+	// The input configuration JSON string. You must specify either Video or VideoMediaId, but not both. You can specify at most one of Audio or AudioMediaId. Subtitle is optional.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// {"Video":"oss://bucket/path/input.mp4"}
+	// {"VideoMediaId":"media-video-001"}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The job parameters JSON string.
+	// The job parameters JSON string. It must contain at least SourceLanguage and TargetLanguage. You can also configure main subtitle erasure, voice translation, on-screen text translation, and final editing.
 	//
 	// This parameter is required.
 	//
@@ -64,11 +56,7 @@ type SubmitVideoTranslationJobRequest struct {
 	//
 	// {"SourceLanguage":"zh","TargetLanguage":"en","NeedDetext":false,"NeedVisualTranslate":false}
 	JobParameters *string `json:"JobParameters,omitempty" xml:"JobParameters,omitempty"`
-	// The job type. Valid values:
-	//
-	// - SubtitleTranslate
-	//
-	// - VoiceTranslate
+	// The job type. SubtitleTranslate indicates subtitle translation. VoiceTranslate indicates voice translation.
 	//
 	// This parameter is required.
 	//
@@ -76,23 +64,23 @@ type SubmitVideoTranslationJobRequest struct {
 	//
 	// VoiceTranslate
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The output configuration JSON string. The OssUri value must be a folder.
+	// The output configuration JSON string. OssUri is an optional customer OSS output directory. If not specified, a signed URL of the service-owned artifact is returned.
 	//
 	// example:
 	//
-	// {"OssUri":"oss://bucket/output/"}
+	// {"OssUri":"oss://example-bucket/video-translation/output/"}
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// If not specified, the service generates a default title.
+	// The job title. If not specified, the service generates a default title.
 	//
 	// example:
 	//
-	// title
+	// Product introduction video English translation
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The custom user data JSON string.
+	// The custom user data JSON string. It can contain the asynchronous notification address NotifyAddress.
 	//
 	// example:
 	//
-	// {}
+	// {"NotifyAddress":"mns://account.mns.cn-shanghai.aliyuncs.com/queues/video-translation-result"}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 

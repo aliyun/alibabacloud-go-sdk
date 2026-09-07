@@ -9,6 +9,8 @@ type iImportMediaRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBizConfig(v string) *ImportMediaRequest
+	GetBizConfig() *string
 	SetCategoryId(v int64) *ImportMediaRequest
 	GetCategoryId() *int64
 	SetCoverURL(v string) *ImportMediaRequest
@@ -35,10 +37,13 @@ type iImportMediaRequest interface {
 	GetTitle() *string
 	SetUserData(v string) *ImportMediaRequest
 	GetUserData() *string
+	SetYikeAssetConfig(v string) *ImportMediaRequest
+	GetYikeAssetConfig() *string
 }
 
 type ImportMediaRequest struct {
-	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	BizConfig  *string `json:"BizConfig,omitempty" xml:"BizConfig,omitempty"`
+	CategoryId *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	// The cover image URL. This parameter is valid only for video media assets.
 	//
 	// example:
@@ -75,11 +80,11 @@ type ImportMediaRequest struct {
 	//
 	// https://example-bucket.oss-cn-shanghai.aliyuncs.com/example.mp4
 	InputURL *string `json:"InputURL,omitempty" xml:"InputURL,omitempty"`
-	// The tags of the media asset. Separate multiple tags with commas.
+	// The tags of the media asset. Separate multiple tags with commas (,).
 	//
 	// example:
 	//
-	// AdvancedImageToVideo,AIGenerated.
+	// AdvancedImageToVideo,AIGenerated
 	MediaTags *string `json:"MediaTags,omitempty" xml:"MediaTags,omitempty"`
 	// The type of the media asset.
 	//
@@ -105,12 +110,13 @@ type ImportMediaRequest struct {
 	//
 	// title
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The user data. The maximum size is 1024 bytes.
+	// The user data. Maximum length: 1024 bytes.
 	//
 	// example:
 	//
 	// {}
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData        *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	YikeAssetConfig *string `json:"YikeAssetConfig,omitempty" xml:"YikeAssetConfig,omitempty"`
 }
 
 func (s ImportMediaRequest) String() string {
@@ -119,6 +125,10 @@ func (s ImportMediaRequest) String() string {
 
 func (s ImportMediaRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ImportMediaRequest) GetBizConfig() *string {
+	return s.BizConfig
 }
 
 func (s *ImportMediaRequest) GetCategoryId() *int64 {
@@ -171,6 +181,15 @@ func (s *ImportMediaRequest) GetTitle() *string {
 
 func (s *ImportMediaRequest) GetUserData() *string {
 	return s.UserData
+}
+
+func (s *ImportMediaRequest) GetYikeAssetConfig() *string {
+	return s.YikeAssetConfig
+}
+
+func (s *ImportMediaRequest) SetBizConfig(v string) *ImportMediaRequest {
+	s.BizConfig = &v
+	return s
 }
 
 func (s *ImportMediaRequest) SetCategoryId(v int64) *ImportMediaRequest {
@@ -235,6 +254,11 @@ func (s *ImportMediaRequest) SetTitle(v string) *ImportMediaRequest {
 
 func (s *ImportMediaRequest) SetUserData(v string) *ImportMediaRequest {
 	s.UserData = &v
+	return s
+}
+
+func (s *ImportMediaRequest) SetYikeAssetConfig(v string) *ImportMediaRequest {
+	s.YikeAssetConfig = &v
 	return s
 }
 

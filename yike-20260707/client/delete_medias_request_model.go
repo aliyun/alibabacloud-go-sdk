@@ -9,6 +9,8 @@ type iDeleteMediasRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBizConfig(v string) *DeleteMediasRequest
+	GetBizConfig() *string
 	SetDeletePhysicalFiles(v bool) *DeleteMediasRequest
 	GetDeletePhysicalFiles() *bool
 	SetInputURLs(v string) *DeleteMediasRequest
@@ -18,6 +20,7 @@ type iDeleteMediasRequest interface {
 }
 
 type DeleteMediasRequest struct {
+	BizConfig *string `json:"BizConfig,omitempty" xml:"BizConfig,omitempty"`
 	// Specifies whether to delete the physical files at the same time.
 	//
 	// example:
@@ -26,7 +29,7 @@ type DeleteMediasRequest struct {
 	DeletePhysicalFiles *bool `json:"DeletePhysicalFiles,omitempty" xml:"DeletePhysicalFiles,omitempty"`
 	// Not supported.
 	InputURLs *string `json:"InputURLs,omitempty" xml:"InputURLs,omitempty"`
-	// The media asset IDs, separated by commas. Invalid IDs are added to the IgnoredList.
+	// The media asset IDs, separated by commas. Invalid IDs are added to IgnoredList.
 	//
 	// example:
 	//
@@ -42,6 +45,10 @@ func (s DeleteMediasRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteMediasRequest) GetBizConfig() *string {
+	return s.BizConfig
+}
+
 func (s *DeleteMediasRequest) GetDeletePhysicalFiles() *bool {
 	return s.DeletePhysicalFiles
 }
@@ -52,6 +59,11 @@ func (s *DeleteMediasRequest) GetInputURLs() *string {
 
 func (s *DeleteMediasRequest) GetMediaIds() *string {
 	return s.MediaIds
+}
+
+func (s *DeleteMediasRequest) SetBizConfig(v string) *DeleteMediasRequest {
+	s.BizConfig = &v
+	return s
 }
 
 func (s *DeleteMediasRequest) SetDeletePhysicalFiles(v bool) *DeleteMediasRequest {

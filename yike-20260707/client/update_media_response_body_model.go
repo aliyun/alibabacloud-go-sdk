@@ -16,7 +16,7 @@ type iUpdateMediaResponseBody interface {
 }
 
 type UpdateMediaResponseBody struct {
-	// The ICE media asset ID.
+	// The Intelligent Cloud Editing (ICE) media asset ID.
 	//
 	// example:
 	//

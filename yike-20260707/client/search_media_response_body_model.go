@@ -24,7 +24,7 @@ type iSearchMediaResponseBody interface {
 }
 
 type SearchMediaResponseBody struct {
-	// The return code.
+	// The response code.
 	//
 	// example:
 	//
@@ -319,7 +319,7 @@ type SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo struct {
 	//
 	// 2026-05-01T19:48Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The storage region of the file.
+	// The file storage region.
 	//
 	// example:
 	//
@@ -496,7 +496,7 @@ type SearchMediaResponseBodyMediaInfoListMediaBasicInfo struct {
 	//
 	// https://test-bucket-***.oss-cn-shanghai.aliyuncs.com/cover/e694372e-4f5b-4821-ae09-efd064f2****_large_cover_url.jpg
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the media asset was created.
+	// The creation time of the media asset.
 	//
 	// example:
 	//
@@ -538,7 +538,7 @@ type SearchMediaResponseBodyMediaInfoListMediaBasicInfo struct {
 	//
 	// video
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// The time when the media asset was last modified.
+	// The modification time of the media asset.
 	//
 	// example:
 	//

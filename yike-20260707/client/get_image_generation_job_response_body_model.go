@@ -68,7 +68,7 @@ type GetImageGenerationJobResponseBodyImageGenerationJob struct {
 	//
 	// 16:9
 	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
-	// The error message. This parameter is of the String type and is returned when the task is in the Failed state.
+	// The error message. This parameter is returned only when the task is in the Failed state.
 	//
 	// example:
 	//

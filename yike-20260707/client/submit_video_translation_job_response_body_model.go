@@ -16,17 +16,17 @@ type iSubmitVideoTranslationJobResponseBody interface {
 }
 
 type SubmitVideoTranslationJobResponseBody struct {
-	// `data.JobId`
+	// The video translation job ID, used to call GetVideoTranslationJob to query the job.
 	//
 	// example:
 	//
-	// vtj_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	// vtj_0123456789abcdef0123456789abcdef
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// `requestId`
+	// The request ID, used for Tracing Analysis and troubleshooting.
 	//
 	// example:
 	//
-	// request-id
+	// req-vt-20260820-001
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
