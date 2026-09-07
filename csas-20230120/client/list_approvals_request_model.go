@@ -52,13 +52,13 @@ type iListApprovalsRequest interface {
 type ListApprovalsRequest struct {
 	// The collection of approval instance IDs.
 	ApprovalIds []*string `json:"ApprovalIds,omitempty" xml:"ApprovalIds,omitempty" type:"Repeated"`
-	// The end time for approval instance creation, in seconds-level timestamp.
+	// The end time for querying approval instance creation, in seconds-level timestamp.
 	//
 	// example:
 	//
 	// 1736750500
 	CreateEndTime *int64 `json:"CreateEndTime,omitempty" xml:"CreateEndTime,omitempty"`
-	// The start time for approval instance creation, in seconds-level timestamp.
+	// The start time for querying approval instance creation, in seconds-level timestamp.
 	//
 	// example:
 	//
@@ -96,7 +96,11 @@ type ListApprovalsRequest struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of report effective statuses. Valid values: Enabled, Expired.
+	// The list of report effective statuses, serialized in Flat format. Duplicate values are not allowed. Only records with an approval status of Approved are matched. Valid values:
+	//
+	// 	- Enabled: effective.
+	//
+	// 	- Expired: expired or invalidated.
 	EffectStatuses []*string `json:"EffectStatuses,omitempty" xml:"EffectStatuses,omitempty" type:"Repeated"`
 	// The ID of the approval instance operator.
 	//
@@ -120,6 +124,18 @@ type ListApprovalsRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The adaptation policy type. Valid values:
 	//
+	// - **DomainBlacklist**: Domain name blacklist.
+	//
+	// - **DomainWhitelist**: Domain name whitelist.
+	//
+	// - **SoftwareBlock**: Software blocking.
+	//
+	// - **AppUninstall**: Agent uninstallation.
+	//
+	// - **DlpSend**: File outbound transfer.
+	//
+	// - **PeripheralBlock**: Peripheral control.
+	//
 	// example:
 	//
 	// DlpSend
@@ -136,7 +152,13 @@ type ListApprovalsRequest struct {
 	//
 	// Test
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
-	// The list of report types. If not specified, only ApprovalReport is queried.
+	// The list of report types, serialized in Flat format. Duplicate values are not allowed. Valid values:
+	//
+	// 	- ApprovalReport: approval report.
+	//
+	// 	- BackendReport: backend report.
+	//
+	// If not specified, only ApprovalReport is queried by default.
 	ReportTypes []*string `json:"ReportTypes,omitempty" xml:"ReportTypes,omitempty" type:"Repeated"`
 	// The associated approval template ID.
 	//

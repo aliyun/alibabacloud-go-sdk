@@ -14,7 +14,7 @@ type iGetApprovalRequest interface {
 }
 
 type GetApprovalRequest struct {
-	// The approval instance ID. You can obtain the value from:
+	// The approval instance ID. You can obtain the value from the following operations:
 	//
 	// - [ListApprovals](~~ListApprovals~~): Lists approval instances.
 	//

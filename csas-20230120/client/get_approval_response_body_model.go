@@ -16,13 +16,13 @@ type iGetApprovalResponseBody interface {
 }
 
 type GetApprovalResponseBody struct {
-	// The approval instance.
+	// The approval details list, which typically contains one record.
 	Approval []*GetApprovalResponseBodyApproval `json:"Approval,omitempty" xml:"Approval,omitempty" type:"Repeated"`
 	// The request ID.
 	//
 	// example:
 	//
-	// 7E9D7ACD-53D5-56EF-A913-79D148D06299
+	// D6707286-A50E-57B1-B2CF-EFAC59E8****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -70,7 +70,7 @@ type GetApprovalResponseBodyApproval struct {
 	//
 	// example:
 	//
-	// {"initiatorName":"John Smith","initiatorDept":"QA Department","devType":"windows","deviceType":"usbStorage","deviceId":"FC216E9E3****","approvalEndTimestamp":1736524799,"approvalReason":"This is a test"}
+	// {"applicationId":"pa-application-eb75f0c80c28****","applicationName":"App***","associatedPolicyName":"Private access***"}
 	ApprovalDetail *string `json:"ApprovalDetail,omitempty" xml:"ApprovalDetail,omitempty"`
 	// The approval instance ID.
 	//
@@ -78,23 +78,41 @@ type GetApprovalResponseBodyApproval struct {
 	//
 	// approval-3564b140642f****
 	ApprovalId *string `json:"ApprovalId,omitempty" xml:"ApprovalId,omitempty"`
-	// The list of approval progress nodes.
+	// The approval progress list. For backend reports without approval nodes, an empty array is returned.
 	ApprovalProgresses []*GetApprovalResponseBodyApprovalApprovalProgresses `json:"ApprovalProgresses,omitempty" xml:"ApprovalProgresses,omitempty" type:"Repeated"`
-	ApprovalType       *int32                                               `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
-	// The backend report details. This parameter is returned only when ReportType is set to BackendReport.
+	// The approval type. Valid values:
+	//
+	// 	- 0: built-in approval.
+	//
+	// 	- 1: DingTalk approval.
+	//
+	// 	- 2: WeCom approval.
+	//
+	// 	- 3: Lark approval.
+	//
+	// example:
+	//
+	// 0
+	ApprovalType *int32 `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	// The backend report details. This value is returned only when ReportType is set to BackendReport.
 	BackendReportDetail *GetApprovalResponseBodyApprovalBackendReportDetail `json:"BackendReportDetail,omitempty" xml:"BackendReportDetail,omitempty" type:"Struct"`
-	// The time when the approval instance was created.
+	// The creation time in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
-	// 2022-11-15 22:11:55
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimeUnix *int64  `json:"CreateTimeUnix,omitempty" xml:"CreateTimeUnix,omitempty"`
-	// The department of the user who created the approval instance.
+	// 2026-08-18 17:48:44
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creation time as a UNIX timestamp in seconds.
 	//
 	// example:
 	//
-	// QA Department
+	// 1787046524
+	CreateTimeUnix *int64 `json:"CreateTimeUnix,omitempty" xml:"CreateTimeUnix,omitempty"`
+	// The department path of the report initiator.
+	//
+	// example:
+	//
+	// CN=cn***,OU=ou***
 	CreatorDepartment *string `json:"CreatorDepartment,omitempty" xml:"CreatorDepartment,omitempty"`
 	// The device ID of the terminal that created the approval instance.
 	//
@@ -102,7 +120,7 @@ type GetApprovalResponseBodyApproval struct {
 	//
 	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
 	CreatorDevTag *string `json:"CreatorDevTag,omitempty" xml:"CreatorDevTag,omitempty"`
-	// The ID of the user who created the approval instance.
+	// The ID of the user who created the approval instance. For backend reports, this is the actual effective user, not the administrator.
 	//
 	// example:
 	//
@@ -112,9 +130,17 @@ type GetApprovalResponseBodyApproval struct {
 	//
 	// example:
 	//
-	// John Smith
+	// user***
 	CreatorUsername *string `json:"CreatorUsername,omitempty" xml:"CreatorUsername,omitempty"`
-	// The effective status of the report. Enabled indicates that the report is active, and Expired indicates that the report has expired.
+	// The effective status of the report. This value is an empty string when the approval status is not Approved. Valid values:
+	//
+	// 	- Enabled: valid.
+	//
+	// 	- Expired: expired.
+	//
+	// example:
+	//
+	// Enabled
 	EffectStatus *string `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
 	// The expiration time of the approval instance. The value is a UNIX timestamp in seconds.
 	//
@@ -130,11 +156,21 @@ type GetApprovalResponseBodyApproval struct {
 	//
 	// - **SoftwareBlock**: Software blocking.
 	//
-	// - **AppUninstall**: Agent uninstallation.
+	// - **DeviceRegistration**: Excess registration.
+	//
+	// - **AppUninstall**: Client uninstallation.
 	//
 	// - **DlpSend**: File outbound transfer.
 	//
-	// - **PeripheralBlock**: Peripheral device control.
+	// - **PeripheralBlock**: Peripheral control.
+	//
+	// - **EndpointHardening**: Endpoint hardening.
+	//
+	// - **oftwareHardening**: Software hardening.
+	//
+	// - **AiAgentBlock**: AI Agent control.
+	//
+	// - **PrivateAccessBlock**: Private access.
 	//
 	// example:
 	//
@@ -150,15 +186,23 @@ type GetApprovalResponseBodyApproval struct {
 	//
 	// example:
 	//
-	// Test
+	// Approval***
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
 	// The reason for creating the approval instance.
 	//
 	// example:
 	//
-	// This is a test
+	// Temporary access for a project
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The report type. ApprovalReport indicates an approval report, and BackendReport indicates a backend report.
+	// The report type. Valid values:
+	//
+	// 	- ApprovalReport: approval report.
+	//
+	// 	- BackendReport: backend report.
+	//
+	// example:
+	//
+	// BackendReport
 	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
 	// The content of the template associated with the approval instance.
 	//
@@ -176,7 +220,7 @@ type GetApprovalResponseBodyApproval struct {
 	//
 	// example:
 	//
-	// Test
+	// Template***
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
 	// The instance status. Valid values:
 	//
@@ -190,11 +234,21 @@ type GetApprovalResponseBodyApproval struct {
 	//
 	// - **Expired**: Expired.
 	//
+	// - **Deleted**: Deleted.
+	//
 	// example:
 	//
 	// Pending
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The validity duration type. When the value is Permanent, EndTimestamp returns 0.
+	// The validity duration type. Valid values:
+	//
+	// - **FixedTime**: Expires at a specified time.
+	//
+	// - **Permanent**: Permanently valid.
+	//
+	// example:
+	//
+	// Permanent
 	ValidityType *string `json:"ValidityType,omitempty" xml:"ValidityType,omitempty"`
 }
 
@@ -474,7 +528,7 @@ type GetApprovalResponseBodyApprovalApprovalProgresses struct {
 	//
 	// Approved
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the action was performed on the approval progress node. The value is a UNIX timestamp in seconds.
+	// The execution time of the approval progress node. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -568,7 +622,7 @@ type GetApprovalResponseBodyApprovalApprovalProgressesOperators struct {
 	//
 	// example:
 	//
-	// John Smith
+	// user***
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
@@ -603,11 +657,32 @@ func (s *GetApprovalResponseBodyApprovalApprovalProgressesOperators) Validate() 
 }
 
 type GetApprovalResponseBodyApprovalBackendReportDetail struct {
-	AssociatedPolicyName *string                                                       `json:"AssociatedPolicyName,omitempty" xml:"AssociatedPolicyName,omitempty"`
-	AssociatedPolicyType *string                                                       `json:"AssociatedPolicyType,omitempty" xml:"AssociatedPolicyType,omitempty"`
-	Remark               *string                                                       `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ReportObject         interface{}                                                   `json:"ReportObject,omitempty" xml:"ReportObject,omitempty"`
-	TargetUser           *GetApprovalResponseBodyApprovalBackendReportDetailTargetUser `json:"TargetUser,omitempty" xml:"TargetUser,omitempty" type:"Struct"`
+	// The associated policy name.
+	//
+	// example:
+	//
+	// Private access***
+	AssociatedPolicyName *string `json:"AssociatedPolicyName,omitempty" xml:"AssociatedPolicyName,omitempty"`
+	// The associated policy type, which is the same as PolicyType.
+	//
+	// example:
+	//
+	// PrivateAccessBlock
+	AssociatedPolicyType *string `json:"AssociatedPolicyType,omitempty" xml:"AssociatedPolicyType,omitempty"`
+	// The remark for the backend report, which is the same as the report reason.
+	//
+	// example:
+	//
+	// Temporary access for a project
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The report object. The fields vary based on PolicyType. Fields within the object use camelCase naming.
+	//
+	// example:
+	//
+	// {"applicationId":"pa-application-eb75f0c80c28****","applicationName":"App***"}
+	ReportObject interface{} `json:"ReportObject,omitempty" xml:"ReportObject,omitempty"`
+	// The actual effective user of the backend report.
+	TargetUser *GetApprovalResponseBodyApprovalBackendReportDetailTargetUser `json:"TargetUser,omitempty" xml:"TargetUser,omitempty" type:"Struct"`
 }
 
 func (s GetApprovalResponseBodyApprovalBackendReportDetail) String() string {
@@ -673,7 +748,17 @@ func (s *GetApprovalResponseBodyApprovalBackendReportDetail) Validate() error {
 }
 
 type GetApprovalResponseBodyApprovalBackendReportDetailTargetUser struct {
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The SASE user ID of the actual effective user.
+	//
+	// example:
+	//
+	// su_70a1ed06a900d337527984de27568352fdfed1b19442a886d2a697c0327f****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username of the actual effective user.
+	//
+	// example:
+	//
+	// user***
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 

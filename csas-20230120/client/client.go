@@ -932,6 +932,91 @@ func (client *Client) CreateApprovalProcess(request *CreateApprovalProcessReques
 
 // Summary:
 //
+// Creates a backend filing.
+//
+// @param request - CreateBackendReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBackendReportResponse
+func (client *Client) CreateBackendReportWithOptions(request *CreateBackendReportRequest, runtime *dara.RuntimeOptions) (_result *CreateBackendReportResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EndTimestamp) {
+		body["EndTimestamp"] = request.EndTimestamp
+	}
+
+	if !dara.IsNil(request.PolicyType) {
+		body["PolicyType"] = request.PolicyType
+	}
+
+	if !dara.IsNil(request.Reason) {
+		body["Reason"] = request.Reason
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.ReportObjects) {
+		bodyFlat["ReportObjects"] = request.ReportObjects
+	}
+
+	if !dara.IsNil(request.Targets) {
+		bodyFlat["Targets"] = request.Targets
+	}
+
+	if !dara.IsNil(request.ValidityType) {
+		body["ValidityType"] = request.ValidityType
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateBackendReport"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateBackendReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a backend filing.
+//
+// @param request - CreateBackendReportRequest
+//
+// @return CreateBackendReportResponse
+func (client *Client) CreateBackendReport(request *CreateBackendReportRequest) (_result *CreateBackendReportResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateBackendReportResponse{}
+	_body, _err := client.CreateBackendReportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Create a custom identity source user for your Alibaba Cloud account.
 //
 // @param request - CreateClientUserRequest
@@ -7985,6 +8070,68 @@ func (client *Client) ImportEnterpriseAccelerateTargets(request *ImportEnterpris
 
 // Summary:
 //
+// Immediately invalidates an approval.
+//
+// @param request - InvalidateApprovalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InvalidateApprovalResponse
+func (client *Client) InvalidateApprovalWithOptions(request *InvalidateApprovalRequest, runtime *dara.RuntimeOptions) (_result *InvalidateApprovalResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApprovalId) {
+		body["ApprovalId"] = request.ApprovalId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("InvalidateApproval"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &InvalidateApprovalResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Immediately invalidates an approval.
+//
+// @param request - InvalidateApprovalRequest
+//
+// @return InvalidateApprovalResponse
+func (client *Client) InvalidateApproval(request *InvalidateApprovalRequest) (_result *InvalidateApprovalResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &InvalidateApprovalResponse{}
+	_body, _err := client.InvalidateApprovalWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the applications associated with one or more private access policies.
 //
 // @param request - ListApplicationsForPrivateAccessPolicyRequest
@@ -9677,6 +9824,88 @@ func (client *Client) ListNacUserCert(request *ListNacUserCertRequest) (_result 
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListNacUserCertResponse{}
 	_body, _err := client.ListNacUserCertWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the VPC and Connector network instances connected to the current tenant and their bandwidth configurations by paging.
+//
+// Description:
+//
+// Queries the bandwidth configuration list of available network instances under the current account. You can filter results by network type (`NetType`) and instance ID list (`InstanceIds`), and use `CurrentPage` and `PageSize` for pagination.
+//
+// @param request - ListNetBandwidthRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNetBandwidthResponse
+func (client *Client) ListNetBandwidthWithOptions(request *ListNetBandwidthRequest, runtime *dara.RuntimeOptions) (_result *ListNetBandwidthResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !dara.IsNil(request.InstanceIds) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !dara.IsNil(request.NetType) {
+		query["NetType"] = request.NetType
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListNetBandwidth"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListNetBandwidthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the VPC and Connector network instances connected to the current tenant and their bandwidth configurations by paging.
+//
+// Description:
+//
+// Queries the bandwidth configuration list of available network instances under the current account. You can filter results by network type (`NetType`) and instance ID list (`InstanceIds`), and use `CurrentPage` and `PageSize` for pagination.
+//
+// @param request - ListNetBandwidthRequest
+//
+// @return ListNetBandwidthResponse
+func (client *Client) ListNetBandwidth(request *ListNetBandwidthRequest) (_result *ListNetBandwidthResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListNetBandwidthResponse{}
+	_body, _err := client.ListNetBandwidthWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
