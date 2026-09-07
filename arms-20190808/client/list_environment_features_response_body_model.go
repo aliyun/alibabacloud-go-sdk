@@ -125,7 +125,7 @@ type ListEnvironmentFeaturesResponseBodyData struct {
 	//
 	// example:
 	//
-	// Prometheus Agent
+	// Prometheus 探针
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	// The feature configuration.
 	Config map[string]*string `json:"Config,omitempty" xml:"Config,omitempty"`
@@ -133,7 +133,7 @@ type ListEnvironmentFeaturesResponseBodyData struct {
 	//
 	// example:
 	//
-	// Collect Metric data using the Prometheus collection specification.
+	// 以 Prometheus 采集规范采集 Metric 数据。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the environment instance.
 	//

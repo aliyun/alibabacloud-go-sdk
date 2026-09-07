@@ -188,7 +188,7 @@ type DescribeIMRobotsResponseBodyPageBeanAlertIMRobots struct {
 	//
 	// example:
 	//
-	// Chatbot name
+	// robot名称
 	RobotName *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
 	// The type of the IM chatbot. Valid values:
 	//
@@ -315,7 +315,7 @@ type DescribeIMRobotsResponseBodyPageBeanAlertIMRobotsDispatchRules struct {
 	//
 	// example:
 	//
-	// Notification policy test
+	// 通知策略测试
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

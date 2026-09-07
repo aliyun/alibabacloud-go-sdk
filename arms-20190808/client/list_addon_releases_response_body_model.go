@@ -22,27 +22,31 @@ type iListAddonReleasesResponseBody interface {
 }
 
 type ListAddonReleasesResponseBody struct {
-	// The HTTP status code. The status code 200 indicates that the request was successful.
+	// The status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result returned.
+	// The returned data.
 	Data *ListAddonReleasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message returned for the request.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// E9C9DA3D-10FE-472E-9EEF-2D0A3E41****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true and false.
+	// Indicates whether the query was successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -114,7 +118,7 @@ func (s *ListAddonReleasesResponseBody) Validate() error {
 
 type ListAddonReleasesResponseBodyData struct {
 	ContainsV2Addon *bool `json:"ContainsV2Addon,omitempty" xml:"ContainsV2Addon,omitempty"`
-	// The queried add-ons.
+	// The collection of addon releases.
 	Releases []*ListAddonReleasesResponseBodyDataReleases `json:"Releases,omitempty" xml:"Releases,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//
@@ -173,27 +177,27 @@ func (s *ListAddonReleasesResponseBodyData) Validate() error {
 }
 
 type ListAddonReleasesResponseBodyDataReleases struct {
-	// The name of the add-on.
+	// The component name.
 	//
 	// example:
 	//
 	// mysql
 	AddonName *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
-	// The number of alert rules.
+	// The number of alert groups.
 	//
 	// example:
 	//
 	// 1
 	AlertRuleCount *int64 `json:"AlertRuleCount,omitempty" xml:"AlertRuleCount,omitempty"`
-	// The installation phase.
+	// The installation phases.
 	Conditions []*ListAddonReleasesResponseBodyDataReleasesConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	// The configuration information of the add-on release.
+	// The configuration of the addon release.
 	//
 	// example:
 	//
 	// {"port":"9379"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The time when the add-on was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -211,19 +215,19 @@ type ListAddonReleasesResponseBodyDataReleases struct {
 	//
 	// env-xxxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	// The number of exporters.
+	// The number of plug-ins.
 	//
 	// example:
 	//
 	// 2
 	ExporterCount *int64 `json:"ExporterCount,omitempty" xml:"ExporterCount,omitempty"`
-	// Indicates whether the configuration is available.
+	// Indicates whether the addon has configurations.
 	//
 	// example:
 	//
 	// true
 	HaveConfig *bool `json:"HaveConfig,omitempty" xml:"HaveConfig,omitempty"`
-	// The user ID.
+	// The user ID of the installer.
 	//
 	// example:
 	//
@@ -235,7 +239,7 @@ type ListAddonReleasesResponseBodyDataReleases struct {
 	//
 	// zh
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// Indicates whether the component is fully managed.
+	// Indicates whether the component is managed.
 	//
 	// example:
 	//
@@ -265,7 +269,7 @@ type ListAddonReleasesResponseBodyDataReleases struct {
 	//
 	// mysql-1695372983039
 	ReleaseName *string `json:"ReleaseName,omitempty" xml:"ReleaseName,omitempty"`
-	// The scenario.
+	// The identified scenario.
 	//
 	// example:
 	//
@@ -277,7 +281,7 @@ type ListAddonReleasesResponseBodyDataReleases struct {
 	//
 	// 0
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the add-on was updated.
+	// The update time.
 	//
 	// example:
 	//
@@ -289,7 +293,7 @@ type ListAddonReleasesResponseBodyDataReleases struct {
 	//
 	// 111
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The version of the add-on.
+	// The addon version.
 	//
 	// example:
 	//
@@ -508,13 +512,13 @@ func (s *ListAddonReleasesResponseBodyDataReleases) Validate() error {
 }
 
 type ListAddonReleasesResponseBodyDataReleasesConditions struct {
-	// The first transition time.
+	// The time of the first transition.
 	//
 	// example:
 	//
 	// 2018-01-31T14:32:19Z
 	FirstTransitionTime *string `json:"FirstTransitionTime,omitempty" xml:"FirstTransitionTime,omitempty"`
-	// The last transition time.
+	// The time of the last transition.
 	//
 	// example:
 	//
@@ -526,19 +530,19 @@ type ListAddonReleasesResponseBodyDataReleasesConditions struct {
 	//
 	// xxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The reason for the failure.
+	// The failure reason.
 	//
 	// example:
 	//
 	// xxxx
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The status of the phase.
+	// The phase status.
 	//
 	// example:
 	//
 	// True
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the phase.
+	// The phase type.
 	//
 	// example:
 	//

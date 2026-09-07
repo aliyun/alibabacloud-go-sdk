@@ -54,7 +54,7 @@ type CreateRumAppShrinkRequest struct {
 	//
 	// example:
 	//
-	// Monitoring description
+	// 用户体验监控前端
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The language used by the client.
 	//

@@ -42,9 +42,9 @@ type CreateEnvironmentRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- en: English
+	// - en: English
 	//
-	// 	- zh: Chinese
+	// - zh: Chinese
 	//
 	// example:
 	//
@@ -68,25 +68,25 @@ type CreateEnvironmentRequest struct {
 	EnvironmentName *string `json:"EnvironmentName,omitempty" xml:"EnvironmentName,omitempty"`
 	// The subtype of the environment. Valid values:
 	//
-	// 	- CS: Container Service for Kubernetes (ACK) or Distributed Cloud Container Platform for Kubernetes (ACK One)
+	// - CS: Container Service for Kubernetes (ACK) or Distributed Cloud Container Platform for Kubernetes (ACK One)
 	//
-	// 	- ECS: ECS
+	// - ECS: ECS
 	//
-	// 	- Cloud: cloud service
+	// - Cloud: cloud service
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ECS, ACK, etc.
+	// ECS、ACK等。
 	EnvironmentSubType *string `json:"EnvironmentSubType,omitempty" xml:"EnvironmentSubType,omitempty"`
 	// The type of the environment. Valid values:
 	//
-	// 	- CS: Container Service
+	// - CS: Container Service
 	//
-	// 	- ECS: Elastic Compute Service
+	// - ECS: Elastic Compute Service
 	//
-	// 	- Cloud: cloud service
+	// - Cloud: cloud service
 	//
 	// This parameter is required.
 	//
@@ -96,9 +96,9 @@ type CreateEnvironmentRequest struct {
 	EnvironmentType *string `json:"EnvironmentType,omitempty" xml:"EnvironmentType,omitempty"`
 	// The payable resource plan.
 	//
-	// 	- If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
+	// - If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
 	//
-	// 	- Otherwise, leave the parameter empty.
+	// - Otherwise, leave the parameter empty.
 	//
 	// example:
 	//
@@ -121,11 +121,11 @@ type CreateEnvironmentRequest struct {
 	InitEnvironment *bool `json:"InitEnvironment,omitempty" xml:"InitEnvironment,omitempty"`
 	// Specifies whether agents or exporters are managed. Valid values:
 	//
-	// 	- none: No. By default, no managed agents or exporters are provided for ACK clusters.
+	// - none: No. By default, no managed agents or exporters are provided for ACK clusters.
 	//
-	// 	- agent: Agents are managed. By default, managed agents are provided for ASK clusters, ACS clusters, and ACK One clusters.
+	// - agent: Agents are managed. By default, managed agents are provided for ASK clusters, ACS clusters, and ACK One clusters.
 	//
-	// 	- agent-exporter: Agents and exporters are managed. By default, managed agents and exporters are provided for cloud services.
+	// - agent-exporter: Agents and exporters are managed. By default, managed agents and exporters are provided for cloud services.
 	//
 	// example:
 	//

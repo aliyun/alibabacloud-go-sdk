@@ -85,6 +85,8 @@ type InstallManagedPrometheusRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Resource group ID of the Prometheus instance.
+	//
 	// example:
 	//
 	// rg-acfmxyexli2****
@@ -104,7 +106,12 @@ type InstallManagedPrometheusRequest struct {
 	// example:
 	//
 	// vsw-bp1*********
-	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// Extension information for the Flink VC cluster.
+	//
+	// example:
+	//
+	// -
 	VcExtraInfo *string `json:"VcExtraInfo,omitempty" xml:"VcExtraInfo,omitempty"`
 	// The virtual private cloud (VPC) where the cluster resides.
 	//

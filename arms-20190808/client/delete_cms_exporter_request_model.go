@@ -16,12 +16,16 @@ type iDeleteCmsExporterRequest interface {
 }
 
 type DeleteCmsExporterRequest struct {
+	// Cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

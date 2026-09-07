@@ -38,7 +38,7 @@ type ListPrometheusIntegrationResponseBody struct {
 	//
 	// example:
 	//
-	// 1F1D8840-5330-5804-A8DB-C3C5C5CED6BB
+	// 1F1D8840-5330-5804-A8DB-C3C5C5******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -116,7 +116,7 @@ type ListPrometheusIntegrationResponseBodyData struct {
 	//
 	// example:
 	//
-	// c589a1b8db05c4561aefbb898ca8fb1cf
+	// c77f6f2397ea74672872acf5e31******
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The name of the container.
 	//
@@ -140,7 +140,7 @@ type ListPrometheusIntegrationResponseBodyData struct {
 	//
 	// example:
 	//
-	// 29374
+	// 293**
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the exporter.
 	//
@@ -152,7 +152,7 @@ type ListPrometheusIntegrationResponseBodyData struct {
 	//
 	// example:
 	//
-	// Kafka, mysql, redis, snmp, emr, nubela, and tidb
+	// kafka
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
 	// The namespace.
 	//
@@ -216,7 +216,7 @@ type ListPrometheusIntegrationResponseBodyData struct {
 	//
 	// example:
 	//
-	// 121.40.62.240:3342
+	// 121.40.XX.XX:3342
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	// The version number.
 	//

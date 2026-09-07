@@ -40,13 +40,17 @@ type iUpdateRumAppRequest interface {
 }
 
 type UpdateRumAppRequest struct {
-	// The application configurations in the JSON format. This parameter is deprecated.
+	// The legacy application configuration in JSON format. This parameter is deprecated.
 	//
 	// example:
 	//
 	// {"apiRequestOfH5":300,"apiRequestOfOriginal":500,"coldStart":5000,"hotStart":3000,"staticResourceLoad":300,"stutter":1000,"viewLoadOfH5":1000,"viewLoadOfOriginal":2000}
 	AppConfig *string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
-	// Specifies whether to restart the application the next day. Valid values: true and false.
+	// Specifies whether to restart the application the next day. Valid values:
+	//
+	// - true: Restart.
+	//
+	// - false: Do not restart.
 	//
 	// example:
 	//
@@ -56,9 +60,9 @@ type UpdateRumAppRequest struct {
 	//
 	// example:
 	//
-	// {\\"moduleConfig\\":{\\"enable\\":true,\\"defaultConfig\\":{\\"network\\":{\\"enable\\":true},\\"h5\\":{\\"enable\\":true},\\"routechange\\":{\\"enable\\":true},\\"crash\\":{\\"enable\\":true},\\"view\\":{\\"enable\\":true},\\"coollaunch\\":{\\"enable\\":true},\\"hotlaunch\\":{\\"enable\\":true},\\"action\\":{\\"enable\\":true},\\"lagstuck\\":{\\"enable\\":true},\\"lagfps\\":{\\"enable\\":true},\\"statechange\\":{\\"enable\\":true},\\"anr\\":{\\"enable\\":true},\\"customlog\\":{\\"enable\\":true},\\"customevent\\":{\\"enable\\":true},\\"custommetric\\":{\\"enable\\":true}},\\"versionConfigs\\":{\\"1.1.0\\":{\\"useCustom\\":true,\\"customConfig\\":{\\"network\\":{\\"enable\\":true},\\"h5\\":{\\"enable\\":true},\\"routechange\\":{\\"enable\\":true},\\"crash\\":{\\"enable\\":true},\\"view\\":{\\"enable\\":true},\\"coollaunch\\":{\\"enable\\":true},\\"hotlaunch\\":{\\"enable\\":true},\\"action\\":{\\"enable\\":true},\\"lagstuck\\":{\\"enable\\":false},\\"lagfps\\":{\\"enable\\":false},\\"statechange\\":{\\"enable\\":true},\\"anr\\":{\\"enable\\":true},\\"customlog\\":{\\"enable\\":true},\\"customevent\\":{\\"enable\\":true},\\"custommetric\\":{\\"enable\\":true}}},\\"1.2.0\\":{\\"useCustom\\":false,\\"customConfig\\":{}}}}}
+	// cn-hangzhou
 	BackendServiceTraceRegion *string `json:"BackendServiceTraceRegion,omitempty" xml:"BackendServiceTraceRegion,omitempty"`
-	// The collection configurations of the mobile SDK. You can enable or disable collection configurations based on the app version.
+	// The mobile SDK collection configuration. You can enable or disable collection items by app version.
 	//
 	// example:
 	//
@@ -68,9 +72,13 @@ type UpdateRumAppRequest struct {
 	//
 	// example:
 	//
-	// test
+	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether you want to subscribe to the application. Valid values: true and false.
+	// Specifies whether to add the application to favorites. Valid values:
+	//
+	// - true: Add to favorites.
+	//
+	// - false: Do not add to favorites.
 	//
 	// example:
 	//
@@ -80,7 +88,7 @@ type UpdateRumAppRequest struct {
 	//
 	// example:
 	//
-	// Android Test
+	// 应用别名。
 	Nickname *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
 	// The application ID.
 	//
@@ -90,11 +98,11 @@ type UpdateRumAppRequest struct {
 	//
 	// b5xxxxs@d8deedfa9bf****
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	// The region where the application resides. You can leave this parameter empty or set it to China East 2 Finance.
+	// The region where the application is actually connected. This parameter is used only in the China (Shanghai) Finance Cloud scenario.
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-shanghai-finance-1
 	RealRegionId *string `json:"RealRegionId,omitempty" xml:"RealRegionId,omitempty"`
 	// The region ID.
 	//
@@ -104,19 +112,27 @@ type UpdateRumAppRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to restart the application. Valid values: true and false.
+	// Specifies whether to restart the application. Valid values:
+	//
+	// - true: Restart.
+	//
+	// - false: Do not restart.
 	//
 	// example:
 	//
 	// true
 	Restart *bool `json:"Restart,omitempty" xml:"Restart,omitempty"`
-	// The service domain name of the application. You can create, modify, and delete service domain name configurations.
+	// The service domain name settings for the application. You can create, update, or delete service domain name configurations.
 	//
 	// example:
 	//
-	// {\\"Op\\":\\"Update\\",\\"Domain\\":\\"example.com\\",\\"Config\\":{\\"Description\\":\\"message\\",\\"Tracing\\":\\"true\\",\\"PropagatorTypes\\":[\\"sw8\\"]}}
+	// {\\"Op\\":\\"Update\\",\\"Domain\\":\\"example.com\\",\\"Config\\":{\\"Description\\":\\"这是描述bbb\\",\\"Tracing\\":\\"true\\",\\"PropagatorTypes\\":[\\"sw8\\"]}}
 	ServiceDomainOperationJson *string `json:"ServiceDomainOperationJson,omitempty" xml:"ServiceDomainOperationJson,omitempty"`
-	// Specifies whether to stop the application. Valid values: true and false.
+	// Specifies whether to stop the application. Valid values:
+	//
+	// - true: Stop.
+	//
+	// - false: Do not stop.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type GetCommercialStatusResponseBody struct {
 	//
 	// example:
 	//
-	// 49C82193-E991-5F6A-AF3E-1664D8D05CA3
+	// 49C82193-E991-5F6A-AF3E-1664D8******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The commercialization status of the service.
 	UserAndCommodityStatus *GetCommercialStatusResponseBodyUserAndCommodityStatus `json:"UserAndCommodityStatus,omitempty" xml:"UserAndCommodityStatus,omitempty" type:"Struct"`

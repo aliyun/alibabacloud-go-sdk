@@ -28,7 +28,7 @@ type CloseAlarmRequest struct {
 	//
 	// example:
 	//
-	// 163
+	// 184723093
 	AlarmId *int64 `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
 	// The ID of the alert handler.
 	//
@@ -48,7 +48,7 @@ type CloseAlarmRequest struct {
 	//
 	// example:
 	//
-	// Restart Repair
+	// 重启修复
 	Solution *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
 }
 

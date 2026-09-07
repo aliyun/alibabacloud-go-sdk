@@ -20,25 +20,37 @@ type iCreatePrometheusInstanceResponseBody interface {
 }
 
 type CreatePrometheusInstanceResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful.
+	// The HTTP status code. Valid values:
+	//
+	// - 2XX: success.
+	//
+	// - 3XX: redirection.
+	//
+	// - 4XX: request error.
+	//
+	// - 5XX: server error.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the created Prometheus instance.
+	// The instance ID returned after the instance is created.
+	//
+	// - For aliyun-cs instances, the Prometheus instance ID is the Container Service cluster ID.
+	//
+	// - For ecs instances, the Prometheus instance ID is the VPC ID.
 	//
 	// example:
 	//
 	// qduukd****
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The message returned.
+	// The returned message.
 	//
 	// example:
 	//
 	// message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

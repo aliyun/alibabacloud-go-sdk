@@ -20,15 +20,15 @@ type iGetPrometheusInstanceResponseBody interface {
 }
 
 type GetPrometheusInstanceResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
+	// The status code. A value of 200 indicates success. Other values indicate errors.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response parameters.
+	// The returned information.
 	Data *GetPrometheusInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
+	// The message returned for the result.
 	//
 	// example:
 	//
@@ -96,81 +96,79 @@ func (s *GetPrometheusInstanceResponseBody) Validate() error {
 }
 
 type GetPrometheusInstanceResponseBodyData struct {
-	// The permission type. Valid values: readWrite, readOnly, and httpReadOnly
+	// The permission type. Valid values:
+	//
+	// - readWrite
+	//
+	// - readOnly
+	//
+	// - httpReadOnly.
 	//
 	// example:
 	//
 	// readWrite
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// The number of days for which data is automatically archived after the storage duration expires. Valid values: 60, 90, 180, and 365. 0 indicates that the data is not archived.
+	// The number of days that data is automatically archived after the storage period expires. Valid values: 60, 90, 180, and 365. A value of 0 indicates that data is not archived.
 	//
 	// example:
 	//
 	// 60
 	ArchiveDuration *int32 `json:"ArchiveDuration,omitempty" xml:"ArchiveDuration,omitempty"`
-	// The whitelist of IP addresses for which password-free read is enabled.
+	// The whitelist policy for authentication-free read access.
 	//
 	// example:
 	//
-	// null
+	// 0.0.0.0/0
 	AuthFreeReadPolicy *string `json:"AuthFreeReadPolicy,omitempty" xml:"AuthFreeReadPolicy,omitempty"`
-	// The whitelist of IP addresses for which password-free write is enabled.
+	// The whitelist policy for authentication-free write access.
 	//
 	// example:
 	//
-	// null
+	// 0.0.0.0/0
 	AuthFreeWritePolicy *string `json:"AuthFreeWritePolicy,omitempty" xml:"AuthFreeWritePolicy,omitempty"`
-	// The authorization token.
+	// The authorization token string.
 	//
 	// example:
 	//
 	// GciOiJIUzI1NiJ9***
 	AuthToken *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
-	// The ID of the Prometheus instance.
+	// The Prometheus instance ID.
 	//
 	// example:
 	//
 	// c589a1b8db05c4561aefbb898ca8fb1cf
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the monitoring object.
+	// The cluster name.
 	//
 	// example:
 	//
 	// prom1
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// 	- remote-write: general-purpose Prometheus instance
+	// - remote-write (Prometheus for Remote Write)
 	//
-	// 	- ecs: Prometheus instances for ECS
+	// - ecs (Prometheus for ECS)
 	//
-	// 	- cloud-monitor: Prometheus instance for Alibaba Cloud services in the Chinese mainland
+	// - cloud-monitor (Prometheus for Cloud Service in the Chinese mainland)
 	//
-	// 	- cloud-product: Prometheus instance for Alibaba Cloud services outside the Chinese mainland
+	// - cloud-product (Prometheus for Cloud Service outside the Chinese mainland)
 	//
-	// 	- global-view: global aggregation instance
+	// - global-view (Prometheus for GlobalView)
 	//
-	// 	- aliyun-cs: Prometheus instance for Container Service
+	// - aliyun-cs (Prometheus for Container Service).
 	//
 	// example:
 	//
 	// remote-write
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The data storage status at the backend.
+	// The status of the backend data storage.
 	//
 	// example:
 	//
 	// RUNNING
 	DbInstanceStatus *string `json:"DbInstanceStatus,omitempty" xml:"DbInstanceStatus,omitempty"`
-	// Indicates whether password-free read is enabled.
-	//
-	// example:
-	//
-	// false
+	// Indicates whether authentication-free read access is enabled.
 	EnableAuthFreeRead *bool `json:"EnableAuthFreeRead,omitempty" xml:"EnableAuthFreeRead,omitempty"`
-	// Indicates whether password-free write is enabled.
-	//
-	// example:
-	//
-	// false
+	// Indicates whether authentication-free write access is enabled.
 	EnableAuthFreeWrite *bool `json:"EnableAuthFreeWrite,omitempty" xml:"EnableAuthFreeWrite,omitempty"`
 	// Indicates whether access token authentication is enabled.
 	//
@@ -178,21 +176,21 @@ type GetPrometheusInstanceResponseBodyData struct {
 	//
 	// true
 	EnableAuthToken *string `json:"EnableAuthToken,omitempty" xml:"EnableAuthToken,omitempty"`
-	// The extra information. This parameter is returned only for console requests.
+	// The extended information. This parameter is returned only for console requests.
 	ExtraInfo map[string]*string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	// The ID of the Grafana workspace.
+	// The Grafana workspace ID.
 	//
 	// example:
 	//
 	// grafana-rnggfvhlcdl6m71***
 	GrafanaInstanceId *string `json:"GrafanaInstanceId,omitempty" xml:"GrafanaInstanceId,omitempty"`
-	// The public URL for the HTTP API.
+	// The public endpoint for HTTP API.
 	//
 	// example:
 	//
 	// https://cn-beijing.arms.aliyuncs.com:9443/api/v1/prometheus/xxx
 	HttpApiInterUrl *string `json:"HttpApiInterUrl,omitempty" xml:"HttpApiInterUrl,omitempty"`
-	// The internal URL for the HTTP API.
+	// The internal endpoint for HTTP API.
 	//
 	// example:
 	//
@@ -202,33 +200,33 @@ type GetPrometheusInstanceResponseBodyData struct {
 	OpenTelemetryIntraUrl *string `json:"OpenTelemetryIntraUrl,omitempty" xml:"OpenTelemetryIntraUrl,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- PREPAY: subscription
+	// - PREPAY: subscription.
 	//
-	// 	- POSTPAY: pay-as-you-go
+	// - POSTPAY: pay-as-you-go.
 	//
 	// example:
 	//
 	// PREPAY
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The time when the billing method was modified.
+	// The time when the billing method of the instance was last modified.
 	//
 	// example:
 	//
 	// 2025-02-26T06:05:01Z
 	PaymentTypeUpdateTime *string `json:"PaymentTypeUpdateTime,omitempty" xml:"PaymentTypeUpdateTime,omitempty"`
-	// The product to which the Prometheus instance belongs. Valid values: arms and cms.
+	// The product to which the Prometheus instance belongs (arms or cms).
 	//
 	// example:
 	//
 	// arms
 	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	// The public URL for Pushgateway.
+	// The public endpoint for push gateway.
 	//
 	// example:
 	//
 	// https://cn-beijing.arms.aliyuncs.com/prometheus/xxx/api/v2
 	PushGatewayInterUrl *string `json:"PushGatewayInterUrl,omitempty" xml:"PushGatewayInterUrl,omitempty"`
-	// The internal URL for Pushgateway.
+	// The internal endpoint for push gateway.
 	//
 	// example:
 	//
@@ -240,25 +238,25 @@ type GetPrometheusInstanceResponseBodyData struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The public URL for remote read.
+	// The public endpoint for remote read.
 	//
 	// example:
 	//
 	// http://cn-beijing.arms.aliyuncs.com:9090/api/v1/prometheus/xxx/api/v1/read
 	RemoteReadInterUrl *string `json:"RemoteReadInterUrl,omitempty" xml:"RemoteReadInterUrl,omitempty"`
-	// The internal URL for remote read.
+	// The internal endpoint for remote read.
 	//
 	// example:
 	//
 	// http://cn-beijing-intranet.arms.aliyuncs.com:9090/api/v1/prometheus/xxx/api/v1/read
 	RemoteReadIntraUrl *string `json:"RemoteReadIntraUrl,omitempty" xml:"RemoteReadIntraUrl,omitempty"`
-	// The public URL for remote write.
+	// The public endpoint for remote write.
 	//
 	// example:
 	//
 	// https://cn-beijing.arms.aliyuncs.com/prometheus/xxx/api/v3/write
 	RemoteWriteInterUrl *string `json:"RemoteWriteInterUrl,omitempty" xml:"RemoteWriteInterUrl,omitempty"`
-	// The internal URL for remote write.
+	// The internal endpoint for remote write.
 	//
 	// example:
 	//
@@ -270,33 +268,33 @@ type GetPrometheusInstanceResponseBodyData struct {
 	//
 	// rg-aek2vezare****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The type of the resource. Set the value to PROMETHEUS.
+	// The fixed value: PROMETHEUS.
 	//
 	// example:
 	//
 	// PROMETHEUS
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The ID of the security group. This parameter is returned only for Prometheus instances for ECS.
+	// The security group ID. This parameter is returned only for Prometheus for ECS instances.
 	//
 	// example:
 	//
 	// sg-8vbdgmf4nraiqa9bx0jo
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The data storage duration. Unit: days.
+	// The storage duration, in days.
 	//
 	// example:
 	//
 	// 90
 	StorageDuration *int32 `json:"StorageDuration,omitempty" xml:"StorageDuration,omitempty"`
-	// The child instances of the global aggregation instance. The value is a JSON string.
+	// The JSON string of sub-instances for the GlobalView instance.
 	//
 	// example:
 	//
-	// [{"headers":{},"regionId":"cn-hangzhou","sourceType":"AlibabaPrometheus","extras":{},"clusterId":"c39a1048921e04fceb039db2fbb73\\*\\*\\*","sourceName":"arms-luyao-test","dataSource":"","userId":"167275301789\\*\\*\\*"},{"headers":{},"regionId":"cn-beijing","sourceType":"AlibabaPrometheus","extras":{},"clusterId":"c6b6485496d5b400abde22cb47b5\\*\\*\\*\\*","sourceName":"agent-321-test","dataSource":"","userId":"1672753017899\\*\\*\\*"},{"headers":{},"regionId":"cn-zhangjiakou","sourceType":"AlibabaPrometheus","extras":{},"clusterId":"c261a4f3200c446659133f1ade789b15e","sourceName":"zaifeng-cardinality-01","dataSource":"","userId":"167275301789\\*\\*\\*"}]
+	// [{"headers":{},"regionId":"cn-hangzhou","sourceType":"AlibabaPrometheus","extras":{},"clusterId":"c39a1048921e04fceb039db2fbb73***","sourceName":"arms-luyao-test","dataSource":"","userId":"167275301789***"},{"headers":{},"regionId":"cn-beijing","sourceType":"AlibabaPrometheus","extras":{},"clusterId":"c6b6485496d5b400abde22cb47b5****","sourceName":"agent-321-测试","dataSource":"","userId":"1672753017899***"},{"headers":{},"regionId":"cn-zhangjiakou","sourceType":"AlibabaPrometheus","extras":{},"clusterId":"c261a4f3200c446659133f1ade789b15e","sourceName":"zaifeng-cardinality-01","dataSource":"","userId":"167275301789***"}]
 	SubClustersJson *string `json:"SubClustersJson,omitempty" xml:"SubClustersJson,omitempty"`
 	// The supported authentication types.
 	SupportAuthTypes []*string `json:"SupportAuthTypes,omitempty" xml:"SupportAuthTypes,omitempty" type:"Repeated"`
-	// The tags of the instance.
+	// The tags bound to the instance.
 	Tags []*GetPrometheusInstanceResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The user ID.
 	//
@@ -304,19 +302,19 @@ type GetPrometheusInstanceResponseBodyData struct {
 	//
 	// 167275301789****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The vSwitch ID. This parameter is returned only for Prometheus instances for ECS.
+	// The vSwitch ID. This parameter is returned only for Prometheus for ECS instances.
 	//
 	// example:
 	//
 	// vsw-f8z73vcja1tqnw90aav5a
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// Version
+	// The version.
 	//
 	// example:
 	//
 	// V1
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The VPC ID. This parameter is returned only for Prometheus instances for ECS.
+	// The VPC associated with the cluster. This parameter is returned only for Prometheus for ECS instances.
 	//
 	// example:
 	//

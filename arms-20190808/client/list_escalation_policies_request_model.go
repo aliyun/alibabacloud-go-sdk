@@ -22,7 +22,7 @@ type ListEscalationPoliciesRequest struct {
 	//
 	// example:
 	//
-	// prod escalation policy
+	// prod升级策略
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The number of the page to return.
 	//

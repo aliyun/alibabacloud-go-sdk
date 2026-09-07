@@ -24,7 +24,7 @@ type ListPrometheusIntegrationRequest struct {
 	//
 	// example:
 	//
-	// c77f6f2397ea74672872acf5e31374a27
+	// c77f6f2397ea74672872acf5e31******
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The integration type. Valid values: kafka, mysql, redis, snmp, emr, nubela, and tidb.
 	//
@@ -32,7 +32,7 @@ type ListPrometheusIntegrationRequest struct {
 	//
 	// example:
 	//
-	// kafka, mysql, redis, snmp, emr, nubela, and tidb
+	// kafka
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
 	// The region ID.
 	//

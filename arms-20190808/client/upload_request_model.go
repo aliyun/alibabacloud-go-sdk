@@ -62,12 +62,7 @@ type UploadRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// We recommend that you do not specify this parameter.
-	//
-	// example:
-	//
-	// null
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version  *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s UploadRequest) String() string {

@@ -348,19 +348,19 @@ type ListSyntheticDetailRequestExactFilters struct {
 	//
 	// example:
 	//
-	// null
+	// 保留字段。
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// A reserved field.
 	//
 	// example:
 	//
-	// null
+	// 保留字段。
 	OpType *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
 	// A reserved field.
 	//
 	// example:
 	//
-	// null
+	// 保留字段。
 	Value interface{} `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

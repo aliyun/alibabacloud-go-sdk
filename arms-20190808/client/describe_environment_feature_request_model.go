@@ -24,7 +24,7 @@ type DescribeEnvironmentFeatureRequest struct {
 	//
 	// example:
 	//
-	// en
+	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
 	// The environment ID.
 	//

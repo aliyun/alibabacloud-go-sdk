@@ -38,7 +38,7 @@ type CreateRumUploadFileUrlRequest struct {
 	//
 	// test-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The type of the file. You can set this parameter to "application/zip", "text/plain", or an empty string.
+	// The file type. Valid values include `"application/zip"` and `"text/plain"`. You can also pass an empty string.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type CreateRumUploadFileUrlRequest struct {
 	//
 	// test.js.map
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The process ID (PID) of the application.
+	// The application ID.
 	//
 	// example:
 	//
@@ -67,19 +67,25 @@ type CreateRumUploadFileUrlRequest struct {
 	// cn-hangzhou
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The file type. Valid values: source-map: SourceMap files. mapping: symbol table files for Android. dsym: dSYM files for iOS.
+	// The file type. Valid values:
+	//
+	// - source-map: a source map file
+	//
+	// - mapping: an Android symbol table file
+	//
+	// - dsym: an iOS dSYM file
 	//
 	// example:
 	//
 	// source-map
 	SourcemapType *string `json:"SourcemapType,omitempty" xml:"SourcemapType,omitempty"`
-	// The file ID.
+	// The UUID of the file.
 	//
 	// example:
 	//
 	// 125bdb39-a415-4503-bd96-e293925fc64c
 	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	// The version number of the file.
+	// The file version.
 	//
 	// example:
 	//

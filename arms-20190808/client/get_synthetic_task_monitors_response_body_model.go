@@ -126,7 +126,7 @@ type GetSyntheticTaskMonitorsResponseBodyData struct {
 	//
 	// example:
 	//
-	// Beijing
+	// 北京市
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
 	// The ID of the city to which the monitoring point belongs.
 	//
@@ -148,7 +148,7 @@ type GetSyntheticTaskMonitorsResponseBodyData struct {
 	//
 	// example:
 	//
-	// Beijing
+	// 北京
 	District *string `json:"District,omitempty" xml:"District,omitempty"`
 	// The ID of the carrier.
 	//

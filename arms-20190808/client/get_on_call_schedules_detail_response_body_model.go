@@ -16,7 +16,7 @@ type iGetOnCallSchedulesDetailResponseBody interface {
 }
 
 type GetOnCallSchedulesDetailResponseBody struct {
-	// The information about the scheduling policy.
+	// The details of the on-call schedule.
 	Data *GetOnCallSchedulesDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,37 +62,37 @@ func (s *GetOnCallSchedulesDetailResponseBody) Validate() error {
 }
 
 type GetOnCallSchedulesDetailResponseBodyData struct {
-	// The URL of the DingTalk chatbot, which is used to receive notifications about shift changes.
+	// The webhook URL of the DingTalk bot for rotation notifications.
 	//
 	// example:
 	//
 	// https://oapi.dingtalk.com/robot/send?access_token=69d4e009547e11069c6513309414937b7bf0482fb9284125b5******
 	AlertRobotId *int64 `json:"AlertRobotId,omitempty" xml:"AlertRobotId,omitempty"`
-	// The description of the scheduling policy.
+	// The description of the on-call schedule.
 	//
 	// example:
 	//
-	// Test
+	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the scheduling policy.
+	// The ID of the on-call schedule.
 	//
 	// example:
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the scheduling policy.
+	// The name of the on-call schedule.
 	//
 	// example:
 	//
-	// Scheduling policy test
+	// 排班策略测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The information about the final user on duty.
+	// The final list of on-call contacts, after accounting for all rotations and substitutions.
 	RenderedFinnalEntries []*GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntries `json:"RenderedFinnalEntries,omitempty" xml:"RenderedFinnalEntries,omitempty" type:"Repeated"`
-	// The scheduled users on duty within a time range.
+	// A list of contacts on duty within the specified time range, as defined by the schedule layers.
 	RenderedLayerEntries [][]*GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntries `json:"RenderedLayerEntries,omitempty" xml:"RenderedLayerEntries,omitempty" type:"Repeated"`
-	// The information about the substitutes within a time range.
+	// A list of substitutes scheduled within the specified time range.
 	RenderedSubstitudeEntries []*GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntries `json:"RenderedSubstitudeEntries,omitempty" xml:"RenderedSubstitudeEntries,omitempty" type:"Repeated"`
-	// The information about the shift.
+	// A list of schedule layers.
 	ScheduleLayers []*GetOnCallSchedulesDetailResponseBodyDataScheduleLayers `json:"ScheduleLayers,omitempty" xml:"ScheduleLayers,omitempty" type:"Repeated"`
 }
 
@@ -208,15 +208,15 @@ func (s *GetOnCallSchedulesDetailResponseBodyData) Validate() error {
 }
 
 type GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntries struct {
-	// The date on which the user completed shift work.
+	// The end time of the on-call duty for the contact.
 	//
 	// example:
 	//
 	// 2022-10-30
 	End *string `json:"End,omitempty" xml:"End,omitempty"`
-	// The information about the user on duty.
+	// Details of the final on-call contact.
 	SimpleContact *GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntriesSimpleContact `json:"SimpleContact,omitempty" xml:"SimpleContact,omitempty" type:"Struct"`
-	// The date from which the user started shift work.
+	// The start time of the on-call duty for the contact.
 	//
 	// example:
 	//
@@ -269,17 +269,17 @@ func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntries) Validate
 }
 
 type GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntriesSimpleContact struct {
-	// The ID of the user on duty.
+	// The contact ID.
 	//
 	// example:
 	//
 	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the user on duty.
+	// The contact name.
 	//
 	// example:
 	//
-	// Employee 1
+	// 员工1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -314,19 +314,19 @@ func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedFinnalEntriesSimpleCont
 }
 
 type GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntries struct {
-	// The date from which the scheduled user was supposed to start shift work.
+	// The start time of the on-call duty for the contact.
 	//
 	// example:
 	//
 	// 2022-10-01
 	Start *string `json:"Start,omitempty" xml:"Start,omitempty"`
-	// The date on which the scheduled user was supposed to complete shift work.
+	// The end time of the on-call duty for the contact.
 	//
 	// example:
 	//
 	// 2022-10-30
 	End *string `json:"End,omitempty" xml:"End,omitempty"`
-	// The information about the scheduled user.
+	// Details of the on-duty contact.
 	SimpleContact *GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntriesSimpleContact `json:"SimpleContact,omitempty" xml:"SimpleContact,omitempty" type:"Struct"`
 }
 
@@ -375,17 +375,17 @@ func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntries) Validate(
 }
 
 type GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntriesSimpleContact struct {
-	// The ID of the scheduled user.
+	// The contact ID.
 	//
 	// example:
 	//
 	// 123
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the scheduled user.
+	// The contact name.
 	//
 	// example:
 	//
-	// Employee 1
+	// 员工1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -420,15 +420,15 @@ func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedLayerEntriesSimpleConta
 }
 
 type GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntries struct {
-	// The date on which the substitute was supposed to complete shift work.
+	// The end time of the on-call duty for the substitute.
 	//
 	// example:
 	//
 	// 2022-10-30
 	End *string `json:"End,omitempty" xml:"End,omitempty"`
-	// The information about the substitute.
+	// Details of the substitute.
 	SimpleContact *GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntriesSimpleContact `json:"SimpleContact,omitempty" xml:"SimpleContact,omitempty" type:"Struct"`
-	// The date from which the substitute was supposed to start shift work.
+	// The start time of the on-call duty for the substitute.
 	//
 	// example:
 	//
@@ -481,17 +481,17 @@ func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntries) Vali
 }
 
 type GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntriesSimpleContact struct {
-	// The ID of the substitute.
+	// The substitute ID.
 	//
 	// example:
 	//
 	// 234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the substitute.
+	// The substitute name.
 	//
 	// example:
 	//
-	// Employee 2
+	// 员工2
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -526,29 +526,29 @@ func (s *GetOnCallSchedulesDetailResponseBodyDataRenderedSubstitudeEntriesSimple
 }
 
 type GetOnCallSchedulesDetailResponseBodyDataScheduleLayers struct {
-	// The ID list of users on duty.
+	// A list of contact IDs for the schedule layer.
 	ContactIds []*int64 `json:"ContactIds,omitempty" xml:"ContactIds,omitempty" type:"Repeated"`
-	// The limit on the time of the shift.
+	// A list of restrictions for the schedule layer.
 	Restrictions []*GetOnCallSchedulesDetailResponseBodyDataScheduleLayersRestrictions `json:"Restrictions,omitempty" xml:"Restrictions,omitempty" type:"Repeated"`
-	// The type of the shift. Valid values:
+	// The rotation type. Valid values:
 	//
-	// 	- DAY
+	// - `DAY`: Rotates every day.
 	//
-	// 	- WEEK
+	// - `WEEK`: Rotates every week.
 	//
-	// 	- CUSTOM
+	// - `CUSTOM`: Rotates based on a custom schedule.
 	//
 	// example:
 	//
 	// DAY
 	RotationType *string `json:"RotationType,omitempty" xml:"RotationType,omitempty"`
-	// The shift cycle. Unit: hours.
+	// The shift length for the rotation, in hours.
 	//
 	// example:
 	//
 	// 8
 	ShiftLength *int64 `json:"ShiftLength,omitempty" xml:"ShiftLength,omitempty"`
-	// The date on which the shift change took effect.
+	// The start time for the rotation.
 	//
 	// example:
 	//
@@ -623,23 +623,23 @@ func (s *GetOnCallSchedulesDetailResponseBodyDataScheduleLayers) Validate() erro
 }
 
 type GetOnCallSchedulesDetailResponseBodyDataScheduleLayersRestrictions struct {
-	// The end time of the shift per day.
+	// The end time for on-call duty each day.
 	//
 	// example:
 	//
 	// 18:00
 	EndTimeOfDay *string `json:"EndTimeOfDay,omitempty" xml:"EndTimeOfDay,omitempty"`
-	// The type of the limit. Valid values:
+	// The type of restriction. Valid values:
 	//
-	// 	- daily_restriction
+	// - `daily_restriction`: A daily time-based restriction.
 	//
-	// 	- weekly_restriction
+	// - `weekly_restriction`: A weekly time-based restriction.
 	//
 	// example:
 	//
 	// daily_restriction
 	RestrictionType *string `json:"RestrictionType,omitempty" xml:"RestrictionType,omitempty"`
-	// The start time of the shift per day.
+	// The start time for on-call duty each day.
 	//
 	// example:
 	//

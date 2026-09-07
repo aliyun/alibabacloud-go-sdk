@@ -41,6 +41,10 @@ type GetAgentDownloadUrlV2ResponseBody struct {
 	// The version number and download URL of the agent.
 	Data *GetAgentDownloadUrlV2ResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// 探针类型错误
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

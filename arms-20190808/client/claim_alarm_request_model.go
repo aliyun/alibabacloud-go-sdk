@@ -26,7 +26,7 @@ type ClaimAlarmRequest struct {
 	//
 	// example:
 	//
-	// 30
+	// 184723093
 	AlarmId *int64 `json:"AlarmId,omitempty" xml:"AlarmId,omitempty"`
 	// The ID of the handler.
 	//

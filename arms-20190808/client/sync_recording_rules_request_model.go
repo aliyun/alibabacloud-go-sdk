@@ -18,7 +18,7 @@ type iSyncRecordingRulesRequest interface {
 }
 
 type SyncRecordingRulesRequest struct {
-	// The ID of the cluster whose aggregation rule you want to synchronize.
+	// The ID of the source cluster whose rules are to be synchronized.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type SyncRecordingRulesRequest struct {
 	//
 	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the region. The destination region can be the same as the source region.
+	// The region ID. This can be the same as the region ID of the source cluster.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type SyncRecordingRulesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of clusters to which you want to synchronize the aggregation rule.
+	// The IDs of the target clusters for batch synchronization.
 	//
 	// This parameter is required.
 	//

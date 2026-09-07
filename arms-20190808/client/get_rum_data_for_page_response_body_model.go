@@ -42,7 +42,7 @@ type GetRumDataForPageResponseBody struct {
 	//
 	// example:
 	//
-	// StartTime is mandatory for this action.
+	// 内部错误，请联系管理员。
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -138,7 +138,7 @@ type GetRumDataForPageResponseBodyData struct {
 	//
 	// example:
 	//
-	// null
+	// 保留字段，请忽略。
 	Authentication *string `json:"Authentication,omitempty" xml:"Authentication,omitempty"`
 	// Indicates whether the query ends. Valid values: true and false.
 	//
@@ -164,7 +164,7 @@ type GetRumDataForPageResponseBodyData struct {
 	//
 	// example:
 	//
-	// null
+	// 保留字段，请忽略。
 	Preference *string `json:"Preference,omitempty" xml:"Preference,omitempty"`
 	// The total number of entries returned.
 	//

@@ -179,7 +179,7 @@ type DescribeEnvironmentFeatureResponseBodyDataFeature struct {
 	//
 	// example:
 	//
-	// Prometheus agent.
+	// Prometheus 探针
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	// The configuration of the feature.
 	Config map[string]*string `json:"Config,omitempty" xml:"Config,omitempty"`
@@ -187,7 +187,7 @@ type DescribeEnvironmentFeatureResponseBodyDataFeature struct {
 	//
 	// example:
 	//
-	// Collect Metric data using the Prometheus collection specification.
+	// 以 Prometheus 采集规范采集 Metric 数据。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The environment ID.
 	//
@@ -385,7 +385,7 @@ type DescribeEnvironmentFeatureResponseBodyDataFeatureStatus struct {
 	//
 	// example:
 	//
-	// sg-bp1c9fcexoalq9po6cp8
+	// sg-bp1gbhqh8b4dsgvopkry
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The status of the agent. Valid values:
 	//
@@ -403,7 +403,7 @@ type DescribeEnvironmentFeatureResponseBodyDataFeatureStatus struct {
 	//
 	// example:
 	//
-	// vsw-bp1qt6ict0dbxgv4wer8l
+	// vsw-uf6vc2e4ytv8vv05j3u09
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 

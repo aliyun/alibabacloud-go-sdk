@@ -18,13 +18,13 @@ type iGetRumAppInfoRequest interface {
 }
 
 type GetRumAppInfoRequest struct {
-	// The group to which the application belongs.
+	// The application group.
 	//
 	// example:
 	//
 	// default
 	AppGroup *string `json:"AppGroup,omitempty" xml:"AppGroup,omitempty"`
-	// The process ID (PID) of the application.
+	// The application ID.
 	//
 	// This parameter is required.
 	//

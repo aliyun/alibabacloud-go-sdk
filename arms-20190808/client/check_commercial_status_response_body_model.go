@@ -16,13 +16,13 @@ type iCheckCommercialStatusResponseBody interface {
 }
 
 type CheckCommercialStatusResponseBody struct {
-	// The returned struct.
+	// The response struct.
 	//
 	// example:
 	//
 	// True
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

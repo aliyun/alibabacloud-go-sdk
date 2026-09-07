@@ -134,7 +134,7 @@ type CreateSyntheticTaskRequest struct {
 	//
 	// example:
 	//
-	// Network synthetic monitoring task
+	// 网络拨测任务
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The type of the monitoring task. Valid values:
 	//

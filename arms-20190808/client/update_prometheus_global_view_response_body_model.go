@@ -100,9 +100,9 @@ type UpdatePrometheusGlobalViewResponseBodyData struct {
 	FailedInstances []*UpdatePrometheusGlobalViewResponseBodyDataFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- `true`
+	// - `true`
 	//
-	// 	- `false`
+	// - `false`
 	//
 	// example:
 	//

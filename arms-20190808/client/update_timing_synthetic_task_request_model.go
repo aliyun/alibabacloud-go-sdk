@@ -54,7 +54,7 @@ type UpdateTimingSyntheticTaskRequest struct {
 	//
 	// example:
 	//
-	// AlibabaCloud DNS Task
+	// 拨测任务
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID.
 	//
@@ -581,13 +581,13 @@ type UpdateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting struct
 	//
 	// example:
 	//
-	// A reserved parameter.
+	// 保留字段。
 	PrometheusClusterId *string `json:"PrometheusClusterId,omitempty" xml:"PrometheusClusterId,omitempty"`
 	// A reserved parameter.
 	//
 	// example:
 	//
-	// A reserved parameter.
+	// 保留字段。
 	PrometheusClusterRegion *string `json:"PrometheusClusterRegion,omitempty" xml:"PrometheusClusterRegion,omitempty"`
 	// The reserved parameters.
 	PrometheusLabels map[string]*string `json:"PrometheusLabels,omitempty" xml:"PrometheusLabels,omitempty"`

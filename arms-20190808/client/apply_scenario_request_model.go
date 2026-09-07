@@ -56,13 +56,13 @@ type ApplyScenarioRequest struct {
 	//
 	// example:
 	//
-	// ScenarioName
+	// 测试POP业务监控
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region.
 	//
 	// example:
 	//
-	// cn-zhangjaikou
+	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The scenario where you want to use the business monitoring job. Valid values:
 	//

@@ -45,6 +45,10 @@ type GetTraceAppConfigResponseBody struct {
 	// {"profiler":{"enable":true}}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// 查询应用配置成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

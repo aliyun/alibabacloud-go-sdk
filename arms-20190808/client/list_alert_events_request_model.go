@@ -32,7 +32,7 @@ type ListAlertEventsRequest struct {
 	//
 	// example:
 	//
-	// Test-triggered alert
+	// 测试触发的告警
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// The end time of the alert events that you want to query. Specify the time in the YYYY-MM-DD HH:mm:ss format.
 	//

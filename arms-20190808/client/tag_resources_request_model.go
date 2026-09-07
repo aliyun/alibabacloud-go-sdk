@@ -24,25 +24,25 @@ type TagResourcesRequest struct {
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the ARMS resources for which you want to modify tags. Valid values:
 	//
-	// 	- WEB: Browser Monitoring
+	// - WEB: Browser Monitoring
 	//
-	// 	- APPLICATION: Application Monitoring
+	// - APPLICATION: Application Monitoring
 	//
-	// 	- PROMETHEUS: Managed Service for Prometheus
+	// - PROMETHEUS: Managed Service for Prometheus
 	//
-	// 	- SYNTHETICTASK: Synthetic Monitoring
+	// - SYNTHETICTASK: Synthetic Monitoring
 	//
-	// 	- ALERTRULE: Application Monitoring alert rule
+	// - ALERTRULE: Application Monitoring alert rule
 	//
-	// 	- PROMETHEUSALERTRULE: Managed Service for Prometheus alert rule
+	// - PROMETHEUSALERTRULE: Managed Service for Prometheus alert rule
 	//
-	// 	- XTRACEAPP: Managed Service for OpenTelemetry
+	// - XTRACEAPP: Managed Service for OpenTelemetry
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// PROMETHEUS
+	// APPLICATION
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags to add to the resource. You can specify a maximum of 20 tags.
 	//

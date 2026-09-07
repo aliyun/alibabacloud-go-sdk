@@ -100,7 +100,7 @@ type DescribeEnvCustomJobResponseBodyData struct {
 	//
 	// example:
 	//
-	// Refer to supplementary instructions.
+	// 参见补充说明。
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
 	// The name of the custom job.
 	//

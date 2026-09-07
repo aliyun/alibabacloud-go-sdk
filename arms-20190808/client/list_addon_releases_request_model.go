@@ -18,7 +18,7 @@ type iListAddonReleasesRequest interface {
 }
 
 type ListAddonReleasesRequest struct {
-	// The name of the add-on.
+	// The name of the addon.
 	//
 	// example:
 	//

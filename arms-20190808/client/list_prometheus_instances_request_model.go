@@ -20,25 +20,25 @@ type iListPrometheusInstancesRequest interface {
 type ListPrometheusInstancesRequest struct {
 	// The cluster type. If you do not specify this parameter, all cluster types are queried. Valid values:
 	//
-	// 	- cloud-product-prometheus: Prometheus instance for cloud services
+	// - cloud-product-prometheus: Prometheus instance for cloud services
 	//
-	// 	- ManagedKubernetes: ACK managed cluster
+	// - ManagedKubernetes: ACK managed cluster
 	//
-	// 	- satellite: Prometheus instance for ARMS OpenTelemetry
+	// - satellite: Prometheus instance for ARMS OpenTelemetry
 	//
-	// 	- Ask: ACK Serverless cluster
+	// - Ask: ACK Serverless cluster
 	//
-	// 	- remote-write-prometheus: general-purpose Prometheus instance
+	// - remote-write-prometheus: general-purpose Prometheus instance
 	//
-	// 	- cloud-monitor-cmee: Hybrid Cloud Monitoring
+	// - cloud-monitor-cmee: Hybrid Cloud Monitoring
 	//
-	// 	- ExternalKubernetes: external Kubernetes cluster registered in ACK
+	// - ExternalKubernetes: external Kubernetes cluster registered in ACK
 	//
-	// 	- vpc-prometheus: Prometheus instance for ECS
+	// - vpc-prometheus: Prometheus instance for ECS
 	//
-	// 	- cloud-monitor-direct: cloud service self-monitoring
+	// - cloud-monitor-direct: cloud service self-monitoring
 	//
-	// 	- Edge Kubernetes: ACK Edge cluster
+	// - Edge Kubernetes: ACK Edge cluster
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type ListPrometheusInstancesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to obtain global aggregation instances. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// This parameter is required.
 	//

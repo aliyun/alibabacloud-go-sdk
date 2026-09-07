@@ -90,7 +90,7 @@ type QueryAppTopologyResponseBody struct {
 	//
 	// example:
 	//
-	// Internal error. Please try again. Contact the DingTalk service account if the issue                              persists after multiple retries.
+	// null
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	//

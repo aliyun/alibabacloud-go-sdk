@@ -158,7 +158,7 @@ type SearchAlertContactResponseBodyPageBeanContacts struct {
 	//
 	// example:
 	//
-	// Default Group | SRE Group
+	// 默认分组|SRE分组
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The timestamp generated when the alert contact was created.
 	//

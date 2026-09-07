@@ -148,7 +148,7 @@ type ListAlertEventsResponseBodyPageBeanEvents struct {
 	//
 	// example:
 	//
-	// Test-triggered alert
+	// 测试触发的告警
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// The annotations.
 	//
@@ -160,7 +160,7 @@ type ListAlertEventsResponseBodyPageBeanEvents struct {
 	//
 	// example:
 	//
-	// Test
+	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The end time.
 	//
@@ -178,13 +178,13 @@ type ListAlertEventsResponseBodyPageBeanEvents struct {
 	//
 	// example:
 	//
-	// Tom
+	// 张三
 	HandlerName *string `json:"HandlerName,omitempty" xml:"HandlerName,omitempty"`
 	// The name of the alert integration.
 	//
 	// example:
 	//
-	// Custom integration
+	// 自定义集成
 	IntegrationName *string `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
 	// The type of the alert integration.
 	//
@@ -433,7 +433,7 @@ type ListAlertEventsResponseBodyPageBeanEventsAlarms struct {
 	//
 	// example:
 	//
-	// Test-triggered alert
+	// 测试触发的告警
 	AlarmName *string `json:"AlarmName,omitempty" xml:"AlarmName,omitempty"`
 	// The time when the alert was created.
 	//
@@ -514,7 +514,7 @@ type ListAlertEventsResponseBodyPageBeanEventsNotificationPolicies struct {
 	//
 	// example:
 	//
-	// P1 alert notification policy
+	// P1告警通知策略
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

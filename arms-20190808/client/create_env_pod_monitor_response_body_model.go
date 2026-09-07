@@ -100,7 +100,7 @@ type CreateEnvPodMonitorResponseBodyData struct {
 	//
 	// example:
 	//
-	// Match successful.
+	// 匹配成功。
 	MatchedMsg *string `json:"MatchedMsg,omitempty" xml:"MatchedMsg,omitempty"`
 	// The number of matched targets.
 	//

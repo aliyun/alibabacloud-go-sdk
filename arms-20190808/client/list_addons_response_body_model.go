@@ -135,7 +135,7 @@ type ListAddonsResponseBodyData struct {
 	//
 	// example:
 	//
-	// Monitor database indicators with MySQL Exporter
+	// 通过 MySQL Exporter 监控数据库指标
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The supported environments.
 	Environments []*ListAddonsResponseBodyDataEnvironments `json:"Environments,omitempty" xml:"Environments,omitempty" type:"Repeated"`
@@ -352,7 +352,7 @@ type ListAddonsResponseBodyDataDashboards struct {
 	//
 	// example:
 	//
-	// MySQL monitors the market information, monitoring the connection information, usage information and other indicators
+	// MySQL监控大盘信息，监控了连接信息、使用信息等指标
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the dashboard.
 	//
@@ -414,7 +414,7 @@ type ListAddonsResponseBodyDataEnvironments struct {
 	//
 	// example:
 	//
-	// The MySQL service is deployed in a Kubernetes cluster.
+	// MySQL 服务部署在 Kubernetes 集群中。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether the feature is enabled.
 	//
@@ -426,7 +426,7 @@ type ListAddonsResponseBodyDataEnvironments struct {
 	//
 	// example:
 	//
-	// Container
+	// 容器环境
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The name of the environment.
 	//

@@ -42,7 +42,7 @@ type ListAlertsRequest struct {
 	//
 	// example:
 	//
-	// Test alert
+	// 告警测试
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// The ID of the notification policy.
 	//
@@ -104,7 +104,7 @@ type ListAlertsRequest struct {
 	//
 	// example:
 	//
-	// Alice
+	// 张三
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The number of the page to return.
 	//

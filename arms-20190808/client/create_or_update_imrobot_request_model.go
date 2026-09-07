@@ -88,7 +88,7 @@ type CreateOrUpdateIMRobotRequest struct {
 	//
 	// example:
 	//
-	// Chatbot name
+	// robot名称
 	RobotName *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
 	// The token required to enable the Outgoing feature.
 	//

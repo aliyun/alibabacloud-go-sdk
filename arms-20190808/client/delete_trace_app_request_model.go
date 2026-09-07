@@ -131,7 +131,7 @@ type DeleteTraceAppRequestDeleteReason struct {
 	//
 	// example:
 	//
-	// The business scenario cannot be satisfied.
+	// 业务场景覆盖不全
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
@@ -185,7 +185,19 @@ type DeleteTraceAppRequestDeleteReasonReasonIds struct {
 	//
 	// example:
 	//
-	// The function is not perfect, and the root cause of the problem cannot be located.
+	// 删除理由描述，ID和Name的对应关系：
+	//
+	// "id":0,"name":"功能不完善，无法定位到问题根本原因。"
+	//
+	// "id":1,"name":"Agent不稳定，影响应用运行。"
+	//
+	// "id":2,"name":"服务不稳定，经常打不开界面。"
+	//
+	// "id":3,"name":"报警相关问题。"
+	//
+	// "id":4,"name":"价格太贵"
+	//
+	// "id":5,"name":"其他原因"
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

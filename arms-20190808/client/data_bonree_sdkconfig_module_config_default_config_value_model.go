@@ -14,7 +14,7 @@ type iDataBonreeSDKConfigModuleConfigDefaultConfigValue interface {
 }
 
 type DataBonreeSDKConfigModuleConfigDefaultConfigValue struct {
-	// Indicates whether the configuration is enabled.
+	// The switch.
 	//
 	// example:
 	//

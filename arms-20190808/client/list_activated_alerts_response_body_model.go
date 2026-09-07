@@ -18,6 +18,11 @@ type iListActivatedAlertsResponseBody interface {
 }
 
 type ListActivatedAlertsResponseBody struct {
+	// The error message returned when the invocation fails.
+	//
+	// example:
+	//
+	// CurrentPage is mandatory for this action.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The struct returned.
 	Page *ListActivatedAlertsResponseBodyPage `json:"Page,omitempty" xml:"Page,omitempty" type:"Struct"`
@@ -164,13 +169,13 @@ type ListActivatedAlertsResponseBodyPageAlerts struct {
 	//
 	// example:
 	//
-	// Container CPU usage is greater than 80%
+	// 容器CPU使用率大于80%
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// The type of the alert.
 	//
 	// example:
 	//
-	// PROMETHEUS_MONITORING_ALERT_RULE
+	// ARMS-Prometheus监控
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	// The number of times that the alert event was received.
 	//
@@ -199,6 +204,10 @@ type ListActivatedAlertsResponseBodyPageAlerts struct {
 	// 	- The tags that are created based on the alert rule.
 	//
 	// 	- The default tags of Application Real-Time Monitoring Service (ARMS).
+	//
+	// example:
+	//
+	// "severity": "critical",           "_aliyun_arms_alert_level": "ERROR",           "pod": "night-test-group-1-1-5f5d6f4d84-pszns",           "_aliyun_arms_alert_type": "101",           "_aliyun_arms_integration_name": "测试集成-prometheus",           "alertname": "PodRestart_jiubiantestphp2",           "_aliyun_arms_userid": "1131971649496228",           "_aliyun_arms_involvedObject_name": "jiubiantestphp2",           "_aliyun_arms_involvedObject_id": "ccafb2763cfa7415eb2e2a60a74b1f825",           "_aliyun_arms_region_id": "cn-beijing",           "_aliyun_arms_involvedObject_kind": "cluster",           "_aliyun_arms_product_type": "PROMETHEUS",           "namespace": "default",           "_aliyun_arms_integration_id": "80",           "_aliyun_arms_involvedObject_type": "ManagedKubernetes",           "_aliyun_arms_alert_rule_id": "3612229"
 	ExpandFields map[string]interface{} `json:"ExpandFields,omitempty" xml:"ExpandFields,omitempty"`
 	// The name of the object that is associated with the alert.
 	//
@@ -222,13 +231,13 @@ type ListActivatedAlertsResponseBodyPageAlerts struct {
 	//
 	// example:
 	//
-	// Test integration-prometheus
+	// 测试集成-prometheus
 	InvolvedObjectName *string `json:"InvolvedObjectName,omitempty" xml:"InvolvedObjectName,omitempty"`
 	// The description of the alert.
 	//
 	// example:
 	//
-	// Alarm name: PodRestart_testphp2,\\n Pod night-test-group-1-1-5f5d6f4d84-pszns is restart, Value: 133.33%, 1.33%
+	// 报警名称：PodRestart_testphp2，\\n Pod night-test-group-1-1-5f5d6f4d84-pszns is restart, Value: 133.33%, 1.33%
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The level of the alert. Valid values:
 	//
@@ -442,7 +451,7 @@ type ListActivatedAlertsResponseBodyPageAlertsDispatchRules struct {
 	//
 	// example:
 	//
-	// NotificationPolicy1
+	// 容器CPU使用率大于80%的通知策略
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 }
 

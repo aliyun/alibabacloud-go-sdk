@@ -18,23 +18,27 @@ type iListCmsInstancesRequest interface {
 }
 
 type ListCmsInstancesRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// n9p9o9o3se
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the cloud service integration. Valid values:
+	// The type of integrated cloud service. Valid values:
 	//
-	// 	- direct: self-monitoring
+	// - `direct`: An integration for cloud products that are monitored by the product itself.
 	//
-	// 	- cms: Hybrid Cloud Monitoring
+	// - `cms`: An integration with CloudMonitor.
 	//
 	// example:
 	//

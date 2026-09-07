@@ -70,7 +70,7 @@ type ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplates struct {
 	//
 	// example:
 	//
-	// The available memory on the node is less than 10%
+	// 节点内存可用率不足10%
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// The annotations of the alert rule.
 	Annotations []*ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplatesAnnotations `json:"Annotations,omitempty" xml:"Annotations,omitempty" type:"Repeated"`
@@ -78,7 +78,7 @@ type ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplates struct {
 	//
 	// example:
 	//
-	// The available memory on node {{ $labels.instance }} is less than 10%. Available memory: {{ $value }}%
+	// 节点 {{ $labels.instance }} 可用内存不足10%，当前可用内存 {{ $value }}%
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The duration of the alert. Valid values: 1 to 1440. Unit: minutes.
 	//
@@ -98,7 +98,7 @@ type ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplates struct {
 	//
 	// example:
 	//
-	// Node
+	// 节点
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The version of the alert rule.
 	//
@@ -221,7 +221,7 @@ type ListPrometheusAlertTemplatesResponseBodyPrometheusAlertTemplatesAnnotations
 	//
 	// example:
 	//
-	// The available memory on node {{ $labels.instance }} is less than 10%. Available memory: {{ $value }}%
+	// 节点 {{ $labels.instance }} 可用内存不足10%，当前可用内存 {{ $value }}%
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

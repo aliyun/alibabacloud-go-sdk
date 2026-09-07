@@ -694,13 +694,13 @@ type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyTempl
 	//
 	// example:
 	//
-	// Alert name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }} Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} Notification policy: {{ .dispatchRuleName }} Alert time: {{ .startTime }} Alert content: {{ for .alerts }} {{.annotations.message}} {{if .generatorURL }} \\<a href="{{.generatorURL}}" >Link\\</a> {{end}} {{end}}
+	// 告警名称：{{ .commonLabels.alertname }}{{if .commonLabels.clustername }} 集群名称：{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} 应用名称：{{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} 通知策略：{{ .dispatchRuleName }} 告警时间：{{ .startTime }} 告警内容：{{ for .alerts }} {{ .annotations.message }}  {{if .generatorURL }}  <a href="{{.generatorURL}}" > 详情链接</a>  {{ end }} {{ end }}
 	EmailContent *string `json:"EmailContent,omitempty" xml:"EmailContent,omitempty"`
 	// The content of the alert resolution notification sent by email.
 	//
 	// example:
 	//
-	// Alert name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }} Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} Notification policy: {{ .dispatchRuleName }} Alert resolution time: {{ .endTime }} Alert content: {{ for .alerts }} {{.annotations.message}} {{if .generatorURL }} \\<a href="{{.generatorURL}}" >Link\\</a> {{end}} {{end}}
+	// 告警名称：{{ .commonLabels.alertname }}{{if .commonLabels.clustername }} 集群名称：{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} 应用名称：{{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} 通知策略：{{ .dispatchRuleName }} 恢复时间：{{ .endTime }} 告警内容：{{ for .alerts }} {{ .annotations.message }}  {{if .generatorURL }} <a href="{{.generatorURL}}" > 详情链接</a>  {{ end }} {{ end }}
 	EmailRecoverContent *string `json:"EmailRecoverContent,omitempty" xml:"EmailRecoverContent,omitempty"`
 	// The title of the alert resolution notification sent by email.
 	//
@@ -718,31 +718,31 @@ type ListNotificationPoliciesResponseBodyPageBeanNotificationPoliciesNotifyTempl
 	//
 	// example:
 	//
-	// {{if .commonLabels.clustername }} > Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} > Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}{{ for .alerts }}> {{.annotations.message}} {{if .generatorURL }} [Link]\\({{.generatorURL}}) {{ end }} {{if eq "true" .labels._aliyun_arms_is_denoise_filtered }} (Suspected noise) {{end}} {{end}}
+	// {{if .commonLabels.clustername }}   >  集群名称：{{ .commonLabels.clustername }}    {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}   >  应用名称：{{ .commonLabels._aliyun_arms_involvedObject_name }}    {{ end }}{{ for .alerts }} >  {{ .annotations.message }} {{if .generatorURL }} [详情链接]({{.generatorURL}}) {{end}} {{if  eq "true" .labels._aliyun_arms_is_denoise_filtered }} （疑似噪音） {{end}}  {{end}}
 	RobotContent *string `json:"RobotContent,omitempty" xml:"RobotContent,omitempty"`
 	// The content of the alert notification sent by text message.
 	//
 	// example:
 	//
-	// \\<SmsContent>Notification on the occurrence of a {{ .level }} alert. Alert name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }} Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} Notification policy: {{ .dispatchRuleName }} Alert time: {{ .startTime }} Alert content: {{ for .alerts }} {{.annotations.message}} {{ end }}\\</SmsContent>
+	// 发生{{ .level }}告警 告警名称：{{ .commonLabels.alertname }}{{if .commonLabels.clustername }} 集群名称：{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} 应用名称：{{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} 通知策略：{{ .dispatchRuleName }} 告警时间：{{ .startTime }} 告警内容：{{ for .alerts }} {{ .annotations.message }} {{ end }}
 	SmsContent *string `json:"SmsContent,omitempty" xml:"SmsContent,omitempty"`
 	// The content of the alert resolution notification sent by text message.
 	//
 	// example:
 	//
-	// \\<SmsRecoverContent>Alert resolution notification. Alert name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }} Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} Notification policy: {{ .dispatchRuleName }} Alert resolution time: {{ .endTime }} Alert content: {{ for .alerts }} {{.annotations.message}} {{ end }}\\</SmsRecoverContent>
+	// 告警已经恢复 告警名称：{{ .commonLabels.alertname }}{{if .commonLabels.clustername }} 集群名称：{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} 应用名称：{{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} 通知策略：{{ .dispatchRuleName }} 恢复时间：{{ .endTime }} 告警内容：{{ for .alerts }} {{ .annotations.message }} {{ end }}
 	SmsRecoverContent *string `json:"SmsRecoverContent,omitempty" xml:"SmsRecoverContent,omitempty"`
 	// The content of the alert notification sent by phone.
 	//
 	// example:
 	//
-	// \\<TtsContent>Alert name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }} Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} Notification policy: {{ .dispatchRuleName }} Alert time: {{ .startTime }} Alert content: {{ for .alerts }} {{.annotations.message}} {{ end }}\\</TtsContent>
+	// 告警名称：{{ .commonLabels.alertname }}{{if .commonLabels.clustername }} 集群名称：{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} 应用名称：{{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} 通知策略：{{ .dispatchRuleName }} 告警时间：{{ .startTime }} 告警内容：{{ for .alerts }} {{ .annotations.message }} {{ end }}
 	TtsContent *string `json:"TtsContent,omitempty" xml:"TtsContent,omitempty"`
 	// The content of the alert resolution notification sent by phone.
 	//
 	// example:
 	//
-	// \\<TtsRecoverContent>Alert name: {{ .commonLabels.alertname }}{{if .commonLabels.clustername }} Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} Notification policy: {{ .dispatchRuleName }} Alert resolution time: {{ .endTime }} Alert content: {{ for .alerts }} {{.annotations.message}} {{ end }}\\</TtsRecoverContent>
+	// 告警名称：{{ .commonLabels.alertname }}{{if .commonLabels.clustername }} 集群名称：{{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} 应用名称：{{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }} 通知策略：{{ .dispatchRuleName }} 恢复时间：{{ .endTime }} 告警内容：{{ for .alerts }} {{ .annotations.message }} {{ end }}
 	TtsRecoverContent *string `json:"TtsRecoverContent,omitempty" xml:"TtsRecoverContent,omitempty"`
 }
 

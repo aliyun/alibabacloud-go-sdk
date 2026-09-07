@@ -22,61 +22,65 @@ type iDoInsightsActionResponseBody interface {
 }
 
 type DoInsightsActionResponseBody struct {
-	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	// Status code. 200 indicates success; other status codes indicate exceptions.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response parameters vary with the value of module.
+	// The return parameter type is related to the module value passed in.
 	//
-	// 	- QueryTopo
+	// - QueryTopo
 	//
-	//         {
+	//    ```
 	//
-	//         "nodes": [Object] # The nodes. For more information, see node details in the supplementary notes of response parameters.
+	//   {
 	//
-	//         "edges": [Object] # The edges. For more information, see edge details in the supplementary notes of response parameters.
+	// 	"nodes": [Object] #Node collection. See the Node definition in the supplementary description of return parameters.
 	//
-	//         }
+	// 	"edges": [Object] #Edge collection. See the Edge definition in the supplementary description of return parameters.
 	//
-	// 	- QueryTopoRed
+	//   }
 	//
-	//         {
+	//   ```
 	//
-	//           "nodeRed": {
+	// - QueryTopoRed
 	//
-	//           	"nodeId": {
+	//   ```
 	//
-	//           		"count": double, # The total number of requests in the specified time range.
+	//   {
 	//
-	//           		"error": double, # The total number of errors in the specified time range.
+	// 	"nodeRed": {
 	//
-	//           		"rt": double, # The average response time in the specified time range. Unit: milliseconds.
+	// 		"nodeId": {
 	//
-	//           	}
+	// 			"count": double, #Total number of requests during the query period
 	//
-	//           },
+	// 			"error": double, #Total number of errors during the query period
 	//
-	//           "edgeRed": {
+	// 			"rt": double, #Average latency during the query period, in milliseconds
 	//
-	//           	"edgeId": {
+	// 		}
 	//
-	//           	    "count": double, # The total number of requests in the specified time range.
+	// 	},
 	//
-	//           		"error": double, # The total number of errors in the specified time range.
+	// 	"edgeRed": {
 	//
-	//           		"rt": double, # The average response time in the specified time range. Unit: milliseconds.
+	// 		"edgeId": {
 	//
-	//           	}
+	// 		    "count": double, #Total number of requests during the query period
 	//
-	//           }
+	// 			"error": double, #Total number of errors during the query period
+	//
+	// 			"rt": double, #Average latency during the query period, in milliseconds
+	//
+	// 		}
+	//
+	// 	}
 	//
 	// }
 	//
-	// ```
-	//
-	// ```
+	//   ```
 	//
 	// example:
 	//
@@ -188,7 +192,7 @@ type DoInsightsActionResponseBody struct {
 	//
 	// 	}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message.
+	// The message returned when the call fails.
 	//
 	// example:
 	//
@@ -200,11 +204,11 @@ type DoInsightsActionResponseBody struct {
 	//
 	// 626037F5-FDEB-45B0-804C-B3C92797A64E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Whether the query is successful:
 	//
-	// 	- `true`
+	// - `true`: Successful.
 	//
-	// 	- `false`
+	// - `false`: Failed.
 	//
 	// example:
 	//

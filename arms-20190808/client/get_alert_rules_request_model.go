@@ -36,9 +36,9 @@ type iGetAlertRulesRequest interface {
 type GetAlertRulesRequest struct {
 	// The unique IDs of alert rules.
 	//
-	// 	- If you do not specify this parameter, the API operation does not filter alert rules based on their IDs.
+	// - If you do not specify this parameter, the API operation does not filter alert rules based on their IDs.
 	//
-	// 	- If you specify this parameter, the API operation returns only the information of the specified alert rules. Other filter conditions also take effect.
+	// - If you specify this parameter, the API operation returns only the information of the specified alert rules. Other filter conditions also take effect.
 	//
 	// > When you call the GetAlertRules operation, you can specify other request parameters to obtain the AlertIds parameter from the response. Then, you can specify the AlertIds parameter to query the specified alert rules.
 	//
@@ -48,9 +48,9 @@ type GetAlertRulesRequest struct {
 	AlertIds *string `json:"AlertIds,omitempty" xml:"AlertIds,omitempty"`
 	// The names of alert rules. When you create alert rules of the new version, you cannot specify duplicate names. However, existing alert rules may have duplicate names. Therefore, the **AlertName*	- parameter does not uniquely identify an alert rule.
 	//
-	// 	- If you do not specify this parameter, the API operation does not filter alert rules based on their names.
+	// - If you do not specify this parameter, the API operation does not filter alert rules based on their names.
 	//
-	// 	- If you specify this parameter, the API operation returns only the information of the specified alert rules. Other filter conditions also take effect.
+	// - If you specify this parameter, the API operation returns only the information of the specified alert rules. Other filter conditions also take effect.
 	//
 	// example:
 	//
@@ -58,13 +58,13 @@ type GetAlertRulesRequest struct {
 	AlertNames *string `json:"AlertNames,omitempty" xml:"AlertNames,omitempty"`
 	// The status of the alert rule. Valid values:
 	//
-	// 	- RUNNING
+	// - RUNNING
 	//
-	// 	- STOPPED
+	// - STOPPED
 	//
-	// 	- PAUSED
+	// - PAUSED
 	//
-	// >  The PAUSED state indicates an abnormal and paused alert rule. This may result from excessively large threshold values or deleted associated clusters.
+	// > The PAUSED state indicates an abnormal and paused alert rule. This may result from excessively large threshold values or deleted associated clusters.
 	//
 	// example:
 	//
@@ -72,16 +72,21 @@ type GetAlertRulesRequest struct {
 	AlertStatus *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
 	// The type of the alert rule. This parameter is required for the new version of Alert Management. Valid values:
 	//
-	// 	- APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
+	// - APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
 	//
-	// 	- BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
+	// - BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
 	//
-	// 	- PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Managed Service for Prometheus
+	// - PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Managed Service for Prometheus
 	//
 	// example:
 	//
 	// APPLICATION_MONITORING_ALERT_RULE
-	AlertType   *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	// The area ID where the rule resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	// The ID of the monitored cluster.
 	//

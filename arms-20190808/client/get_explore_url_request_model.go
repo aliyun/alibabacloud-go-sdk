@@ -28,7 +28,7 @@ type GetExploreUrlRequest struct {
 	//
 	// c9cc4c5e220f8461f9d71b6ec6e******
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The query statement that corresponds to the data source.
+	// The query statement for the data source.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type GetExploreUrlRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the Grafana data source.
+	// The Grafana data source type.
 	//
 	// This parameter is required.
 	//

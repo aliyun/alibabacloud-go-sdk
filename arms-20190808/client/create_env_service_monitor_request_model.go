@@ -38,7 +38,7 @@ type CreateEnvServiceMonitorRequest struct {
 	//
 	// example:
 	//
-	// Refer to supplementary instructions.
+	// 参见补充说明。
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
 	// Specifies whether to perform only a dry run, without performing the actual request. The system checks whether the format is valid and whether targets are matched.
 	//

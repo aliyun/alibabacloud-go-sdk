@@ -16,10 +16,14 @@ type iDeleteCmsExporterResponseBody interface {
 }
 
 type DeleteCmsExporterResponseBody struct {
+	// Return Result information.
+	//
 	// example:
 	//
 	// success
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The unique ID of this request. If a fault occurs, you can use this ID to troubleshoot the issue.
+	//
 	// example:
 	//
 	// 27E653FA-5958-45BE-8AA9-14D884DC****

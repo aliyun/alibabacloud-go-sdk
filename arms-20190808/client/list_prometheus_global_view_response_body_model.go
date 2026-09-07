@@ -30,7 +30,7 @@ type ListPrometheusGlobalViewResponseBody struct {
 	//
 	// example:
 	//
-	// [ {groupName: "the name of the global aggregation instance", clusterId: "global-v2-clusterid", endpoint: "cn-hangzhou"}, // ..... more items ]
+	// [   {groupName: "聚合实例名称", clusterId: "global-v2-clusterid", endpoint: "cn-hangzhou"}, //   ..... more items ]
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// More information.
 	//

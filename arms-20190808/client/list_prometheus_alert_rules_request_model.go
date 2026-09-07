@@ -70,7 +70,7 @@ type ListPrometheusAlertRulesRequest struct {
 	//
 	// example:
 	//
-	// Custom
+	// 自定义
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

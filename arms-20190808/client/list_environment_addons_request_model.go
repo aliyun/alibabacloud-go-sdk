@@ -16,12 +16,16 @@ type iListEnvironmentAddonsRequest interface {
 }
 
 type ListEnvironmentAddonsRequest struct {
+	// The environment ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// env-xxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

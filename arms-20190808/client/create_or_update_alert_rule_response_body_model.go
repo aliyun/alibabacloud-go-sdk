@@ -16,7 +16,7 @@ type iCreateOrUpdateAlertRuleResponseBody interface {
 }
 
 type CreateOrUpdateAlertRuleResponseBody struct {
-	// The details of the alert rule.
+	// The alert rule object.
 	AlertRule *CreateOrUpdateAlertRuleResponseBodyAlertRule `json:"AlertRule,omitempty" xml:"AlertRule,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,29 +62,29 @@ func (s *CreateOrUpdateAlertRuleResponseBody) Validate() error {
 }
 
 type CreateOrUpdateAlertRuleResponseBodyAlertRule struct {
-	// The alert check type of the Prometheus alert rule. Valid values:
+	// The check type of the Prometheus alert rule.
 	//
-	// 	- STATIC: a static threshold value.
+	// - `STATIC`: The alert is triggered based on a static threshold.
 	//
-	// 	- CUSTOM: a custom PromQL statement.
+	// - `CUSTOM`: The alert is triggered based on a custom PromQL expression.
 	//
 	// example:
 	//
 	// STATIC
 	AlertCheckType *string `json:"AlertCheckType,omitempty" xml:"AlertCheckType,omitempty"`
-	// The alert contact group ID of the Prometheus alert rule. Valid values:
+	// The alert group for the Prometheus alert rule.
 	//
-	// 	- \\-1: custom PromQL
+	// - `-1`: Custom PromQL
 	//
-	// 	- 1: Kubernetes load
+	// - `1`: Kubernetes Workloads
 	//
-	// 	- 15: Kubernetes node
+	// - `15`: Kubernetes Nodes
 	//
 	// example:
 	//
 	// -1
 	AlertGroup *int64 `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
-	// The alert rule ID.
+	// The ID of the alert rule.
 	//
 	// example:
 	//
@@ -96,17 +96,17 @@ type CreateOrUpdateAlertRuleResponseBodyAlertRule struct {
 	//
 	// arms-test
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
-	// The content of the Application Monitoring or Browser Monitoring alert rule.
+	// The content of the alert rule. This applies to application monitoring and browser monitoring.
 	AlertRuleContent *CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContent `json:"AlertRuleContent,omitempty" xml:"AlertRuleContent,omitempty" type:"Struct"`
-	// The status of the alert rule. Valid values:
+	// The status of the alert rule.
 	//
-	// 	- RUNNING
+	// - `RUNNING`: The alert rule is running.
 	//
-	// 	- STOPPED
+	// - `STOPPED`: The alert rule is stopped.
 	//
-	// 	- PAUSED
+	// - `PAUSED`: The alert rule is paused.
 	//
-	// > The PAUSED status indicates that the alert rule is abnormal and is actively paused by the system. The alert rule may be paused because that it is not unique or the associated cluster has been deleted.
+	// > The `PAUSED` status indicates that the system has automatically suspended the alert rule due to an abnormality. This can happen if the alert rule generates too many distinct time series or its associated cluster is deleted.
 	//
 	// example:
 	//
@@ -114,11 +114,11 @@ type CreateOrUpdateAlertRuleResponseBodyAlertRule struct {
 	AlertStatus *string `json:"AlertStatus,omitempty" xml:"AlertStatus,omitempty"`
 	// The type of the alert rule. Valid values:
 	//
-	// 	- APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
+	// - `APPLICATION_MONITORING_ALERT_RULE`: an alert rule for application monitoring.
 	//
-	// 	- BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
+	// - `BROWSER_MONITORING_ALERT_RULE`: an alert rule for browser monitoring.
 	//
-	// 	- PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Prometheus Service
+	// - `PROMETHEUS_MONITORING_ALERT_RULE`: an alert rule for Prometheus monitoring.
 	//
 	// example:
 	//
@@ -126,87 +126,87 @@ type CreateOrUpdateAlertRuleResponseBodyAlertRule struct {
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	// The annotations of the Prometheus alert rule.
 	Annotations []*CreateOrUpdateAlertRuleResponseBodyAlertRuleAnnotations `json:"Annotations,omitempty" xml:"Annotations,omitempty" type:"Repeated"`
-	// Indicates whether the alert rule was applied to new applications that were created in Application Monitoring or Browser Monitoring. Valid values:
+	// Indicates whether newly created applications are automatically added to the alert rule. This applies to application monitoring and browser monitoring rules.
 	//
-	// 	- `true`: enables the health check feature.
+	// - `true`: Enabled
 	//
-	// 	- `false`: disables the automatic backup feature.
+	// - `false`: Disabled
 	//
 	// example:
 	//
 	// false
 	AutoAddNewApplication *bool `json:"AutoAddNewApplication,omitempty" xml:"AutoAddNewApplication,omitempty"`
-	// The ID of the monitored cluster.
+	// The ID of the cluster that is associated with the Prometheus alert rule.
 	//
 	// example:
 	//
 	// ceba9b9ea5b924dd0b6726d2de6******
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The timestamp generated when the alert rule was created. Unit: seconds.
+	// The UNIX timestamp, in milliseconds, when the alert rule was created.
 	//
 	// example:
 	//
 	// 1641438611000
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The duration of the Prometheus alert rule. Unit: minutes.
+	// The duration, in minutes, for which a condition must be true before an alert is triggered. This applies only to Prometheus alert rules.
 	//
 	// example:
 	//
 	// 1
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The extended fields.
+	// The extended fields, returned as a JSON string.
 	//
 	// example:
 	//
-	// {\\\\"alarmContext\\\\":\\\\"{\\\\\\\\\\"content\\\\\\\\\\":\\\\\\\\Alert name: $Alert name\\\\\\\\\\\\nFilter condition: $Filter condition\\\\\\\\\\\\nAlert time: $Alert time\\\\\\\\\\\\nAlert content: $Alert content\\\\\\\\\\\\nNote: The alert persists before you receive an email that reminds you to clear the alert. You will be reminded of the alert again 24 hours later. \\\\\\\\\\",\\\\\\\\\\"subTitle\\\\\\\\\\":\\\\\\\\\\"\\\\\\\\\\"}\\\\",\\\\"alertWays\\\\":\\\\"[0,1]\\\\",\\\\"contactGroupIds\\\\":\\\\"381,5075\\\\",\\\\"notice\\\\":\\\\"{\\\\\\\\\\"endTime\\\\\\\\\\":1480607940000,\\\\\\\\\\"noticeEndTime\\\\\\\\\\":1480607940000,\\\\\\\\\\"noticeStartTime\\\\\\\\\\":1480521600000,\\\\\\\\\\"startTime\\\\\\\\\\":1480521600000}\\\\"}
+	// {\\"alarmContext\\":\\"{\\\\\\"content\\\\\\":\\\\\\"报警名称:$报警名称\\\\\\\\n筛选条件: $筛选\\\\\\\\n报警时间: $报警时间\\\\\\\\n报警内容: $报警内容\\\\\\\\n注意！：该报警未收到恢复邮件之前，正在持续报警中，24小时后会再次提醒您！\\\\\\",\\\\\\"subTitle\\\\\\":\\\\\\"\\\\\\"}\\",\\"alertWays\\":\\"[0,1]\\",\\"contactGroupIds\\":\\"381,5075\\",\\"notice\\":\\"{\\\\\\"endTime\\\\\\":1480607940000,\\\\\\"noticeEndTime\\\\\\":1480607940000,\\\\\\"noticeStartTime\\\\\\":1480521600000,\\\\\\"startTime\\\\\\":1480521600000}\\"}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The filter conditions of the Application Monitoring or Browser Monitoring alert rule.
+	// The filters of the alert rule. This applies to application monitoring or browser monitoring.
 	Filters *CreateOrUpdateAlertRuleResponseBodyAlertRuleFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Struct"`
-	// The tags of the Prometheus alert rule.
+	// The labels of the Prometheus alert rule.
 	Labels []*CreateOrUpdateAlertRuleResponseBodyAlertRuleLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The severity level of the Prometheus alert rule.
 	//
-	// 	- P1: Alert notifications are sent for major issues that affect the availability of core business, have a huge impact, and may lead to serious consequences.
+	// - `P1`: Critical. Indicates major issues that affect core business availability and can have severe consequences.
 	//
-	// 	- P2: Alert notifications are sent for service errors that affect the system availability with relatively limited impact.
+	// - `P2`: Warning. Indicates issues that impact system availability but have a limited scope.
 	//
-	// 	- P3: Alert notifications are sent for issues that may cause service errors or negative effects, or alert notifications for services that are relatively less important.
+	// - `P3`: Info. Indicates potential issues or alerts from less critical services.
 	//
-	// 	- P4: Alert notifications are sent for low-priority issues that do not affect your business.
+	// - `P4`: Low priority. Indicates informational alerts that do not affect services.
 	//
-	// 	- Default: Alert notifications are sent regardless of alert levels.
+	// - `Default`: The default level used when no specific severity is required.
 	//
 	// example:
 	//
 	// P2
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The alert message of the Prometheus alert rule.
+	// The message of the Prometheus alert rule.
 	//
 	// example:
 	//
-	// Namespace: {{$labels.namespace}} / Pod: {{$labels.pod_name}} / Container: {{$labels.container}} Memory usage exceeds 80%. Current value: {{ printf \\\\\\\\\\"%.2f\\\\\\\\\\" $value }}%
+	// 命名空间: {{$labels.namespace}} / Pod: {{$labels.pod_name}} / 容器: {{$labels.container}} 内存使用率超过80%, 当前值{{ printf \\\\\\"%.2f\\\\\\" $value }}%
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The metric type of the Application Monitoring or Browser Monitoring alert rule.
+	// The metric type of the alert rule. This applies to application monitoring and browser monitoring.
 	//
 	// example:
 	//
 	// JVM
 	MetricsType *string `json:"MetricsType,omitempty" xml:"MetricsType,omitempty"`
-	// Notification Mode.
+	// The notification mode.
 	//
 	// example:
 	//
 	// NORMAL_MODE
 	NotifyMode *string `json:"NotifyMode,omitempty" xml:"NotifyMode,omitempty"`
-	// The name of the notification policy.
+	// The notification policy.
 	//
 	// example:
 	//
 	// ALERT_MANAGER
 	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
-	// The process ID (PID) that was associated with the Application Monitoring or Browser Monitoring alert rule.
+	// The PIDs of the applications associated with the alert rule. This applies to application monitoring and browser monitoring rules.
 	Pids []*string `json:"Pids,omitempty" xml:"Pids,omitempty" type:"Repeated"`
-	// The PromQL statement of the Prometheus alert rule.
+	// The PromQL expression for the Prometheus alert rule.
 	//
 	// example:
 	//
@@ -218,15 +218,15 @@ type CreateOrUpdateAlertRuleResponseBodyAlertRule struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of tags.
+	// The tags that are added to the alert rule.
 	Tags []*CreateOrUpdateAlertRuleResponseBodyAlertRuleTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The timestamp generated when the alert rule was updated. Unit: seconds.
+	// The UNIX timestamp, in milliseconds, when the alert rule was last updated.
 	//
 	// example:
 	//
 	// 1641438611000
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The user ID.
 	//
 	// example:
 	//
@@ -518,17 +518,17 @@ func (s *CreateOrUpdateAlertRuleResponseBodyAlertRule) Validate() error {
 }
 
 type CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContent struct {
-	// The trigger conditions of the Application Monitoring or Browser Monitoring alert rule.
+	// The alert conditions. This applies to application monitoring and browser monitoring alert rules.
 	AlertRuleItems []*CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContentAlertRuleItems `json:"AlertRuleItems,omitempty" xml:"AlertRuleItems,omitempty" type:"Repeated"`
-	// The relationship between multiple alert conditions that were specified for the Application Monitoring or Browser Monitoring alert rule. Valid values:
+	// The logical operator for combining multiple alert conditions. This applies to application monitoring and browser monitoring.
 	//
-	// 	- OR: meets any of the specified conditions.
+	// - `OR`: The alert is triggered if any condition is met.
 	//
-	// 	- AND: meets all the specified conditions.
+	// - `AND`: The alert is triggered only if all conditions are met.
 	//
 	// example:
 	//
-	// "|"
+	// OR
 	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
 }
 
@@ -572,55 +572,55 @@ func (s *CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContent) Validate(
 }
 
 type CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContentAlertRuleItems struct {
-	// The aggregation method of the alert condition. Valid values:
+	// The aggregation method for the alert condition.
 	//
-	// 	- AVG: calculates the average value
+	// - `AVG`: average
 	//
-	// 	- SUM: calculates the total value
+	// - `SUM`: sum
 	//
-	// 	- MAX: selects the maximum value
+	// - `MAX`: maximum
 	//
-	// 	- MIN: selects the minimum value
+	// - `MIN`: minimum
 	//
 	// example:
 	//
 	// AVG
 	Aggregate *string `json:"Aggregate,omitempty" xml:"Aggregate,omitempty"`
-	// The metric of the alert condition.
+	// The metric that is evaluated by the alert condition.
 	//
 	// example:
 	//
-	// appstat.jvm.non_heap_used
+	// JVM非堆总使用内存量
 	MetricKey *string `json:"MetricKey,omitempty" xml:"MetricKey,omitempty"`
-	// Indicates the last N minutes.
+	// The duration of the time window, in minutes, for evaluating the alert condition.
 	//
 	// example:
 	//
 	// 1
 	N *float32 `json:"N,omitempty" xml:"N,omitempty"`
-	// The comparison operator that was used to compare the metric value with the threshold. Valid values:
+	// The operator used to compare the aggregated metric value with the threshold.
 	//
-	// 	- CURRENT_GTE: greater than or equal to
+	// - `CURRENT_GTE`: greater than or equal to
 	//
-	// 	- CURRENT_LTE: less than or equal to
+	// - `CURRENT_LTE`: less than or equal to
 	//
-	// 	- PREVIOUS_UP: the increase percentage compared with the last period
+	// - `PREVIOUS_UP`: period-over-period increase percentage
 	//
-	// 	- PREVIOUS_DOWN: the decrease percentage compared with the last period
+	// - `PREVIOUS_DOWN`: period-over-period decrease percentage
 	//
-	// 	- HOH_UP: the increase percentage compared with the last hour
+	// - `HOH_UP`: hour-over-hour increase percentage
 	//
-	// 	- HOH_DOWN: the decrease percentage compared with the last hour
+	// - `HOH_DOWN`: hour-over-hour decrease percentage
 	//
-	// 	- DOD_UP: the increase percentage compared with the last day
+	// - `DOD_UP`: day-over-day increase percentage
 	//
-	// 	- DOD_DOWN: the decrease percentage compared with the last day
+	// - `DOD_DOWN`: day-over-day decrease percentage
 	//
 	// example:
 	//
 	// CURRENT_GTE
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// The threshold of the alert condition.
+	// The threshold for the alert condition.
 	//
 	// example:
 	//
@@ -686,13 +686,13 @@ func (s *CreateOrUpdateAlertRuleResponseBodyAlertRuleAlertRuleContentAlertRuleIt
 }
 
 type CreateOrUpdateAlertRuleResponseBodyAlertRuleAnnotations struct {
-	// The key of the annotation.
+	// The annotation key.
 	//
 	// example:
 	//
 	// 123
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The value of the annotation.
+	// The annotation value.
 	//
 	// example:
 	//
@@ -731,13 +731,13 @@ func (s *CreateOrUpdateAlertRuleResponseBodyAlertRuleAnnotations) Validate() err
 }
 
 type CreateOrUpdateAlertRuleResponseBodyAlertRuleFilters struct {
-	// The custom filter condition of the Browser Monitoring alert rule.
+	// The custom filter conditions for the browser monitoring alert rule.
 	CustomSLSFilters []*CreateOrUpdateAlertRuleResponseBodyAlertRuleFiltersCustomSLSFilters `json:"CustomSLSFilters,omitempty" xml:"CustomSLSFilters,omitempty" type:"Repeated"`
-	// The information of the aggregation dimension.
+	// The aggregation dimensions.
 	CustomSLSGroupByDimensions []*string `json:"CustomSLSGroupByDimensions,omitempty" xml:"CustomSLSGroupByDimensions,omitempty" type:"Repeated"`
-	// The details of the custom filter condition.
+	// The configured filter conditions.
 	CustomSLSWheres []*string `json:"CustomSLSWheres,omitempty" xml:"CustomSLSWheres,omitempty" type:"Repeated"`
-	// The information about each filter condition of the Application Monitoring or Browser Monitoring alert rule.
+	// The filter conditions of the alert rule. This applies to application monitoring or browser monitoring.
 	DimFilters []*CreateOrUpdateAlertRuleResponseBodyAlertRuleFiltersDimFilters `json:"DimFilters,omitempty" xml:"DimFilters,omitempty" type:"Repeated"`
 }
 
@@ -814,29 +814,29 @@ type CreateOrUpdateAlertRuleResponseBodyAlertRuleFiltersCustomSLSFilters struct 
 	//
 	// username
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The logical operator of the filter condition. Valid values:
+	// The operator for the filter condition.
 	//
-	// 	- \\=: equal to
+	// - `=`: equals
 	//
-	// 	- not: not equal to
+	// - `not`: not equal to
 	//
 	// example:
 	//
 	// =
 	Opt *string `json:"Opt,omitempty" xml:"Opt,omitempty"`
-	// Indicates whether this filter condition was displayed on the frontend.
+	// Indicates whether the filter condition is displayed on the console.
 	//
 	// example:
 	//
 	// false
 	Show *bool `json:"Show,omitempty" xml:"Show,omitempty"`
-	// The log type of Browser Monitoring. This field was not included in other filter conditions.
+	// Used exclusively to distinguish between log types in browser monitoring. This parameter does not apply to other filter conditions.
 	//
 	// example:
 	//
 	// null
 	T *string `json:"T,omitempty" xml:"T,omitempty"`
-	// The value of the filter condition.
+	// The value for the filter condition.
 	//
 	// example:
 	//
@@ -908,13 +908,13 @@ type CreateOrUpdateAlertRuleResponseBodyAlertRuleFiltersDimFilters struct {
 	//
 	// rootIp
 	FilterKey *string `json:"FilterKey,omitempty" xml:"FilterKey,omitempty"`
-	// The logical operator of the filter condition.
+	// The operator for the filter condition.
 	//
 	// example:
 	//
 	// ALL
 	FilterOpt *string `json:"FilterOpt,omitempty" xml:"FilterOpt,omitempty"`
-	// The details of the filter condition.
+	// The values for the filter condition.
 	FilterValues []*string `json:"FilterValues,omitempty" xml:"FilterValues,omitempty" type:"Repeated"`
 }
 
@@ -958,13 +958,13 @@ func (s *CreateOrUpdateAlertRuleResponseBodyAlertRuleFiltersDimFilters) Validate
 }
 
 type CreateOrUpdateAlertRuleResponseBodyAlertRuleLabels struct {
-	// The tag key.
+	// The label key.
 	//
 	// example:
 	//
 	// 123
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The tag value.
+	// The label value.
 	//
 	// example:
 	//

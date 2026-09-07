@@ -34,7 +34,7 @@ type AddPrometheusIntegrationRequest struct {
 	//
 	// example:
 	//
-	// kafka, mysql, redis, snmp, emr, nubela, and tidb
+	// kafka、mysql、redis、snmp、emr、nubela、tidb等
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
 	// The configurations of the exporter. The value is a JSON string.
 	//

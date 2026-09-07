@@ -182,9 +182,9 @@ type SearchTraceAppByPageResponseBodyPageBeanTraceApps struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Indicates whether the application is displayed in the Application Real-Time Monitoring Service (ARMS) console. Valid values:
 	//
-	// 	- `true`: yes
+	// - `true`: yes
 	//
-	// 	- `false`: no
+	// - `false`: no
 	//
 	// example:
 	//
@@ -194,9 +194,9 @@ type SearchTraceAppByPageResponseBodyPageBeanTraceApps struct {
 	Tags []*SearchTraceAppByPageResponseBodyPageBeanTraceAppsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The type of the monitoring task. Valid values:
 	//
-	// 	- `TRACE`: Application Monitoring
+	// - `TRACE`: Application Monitoring
 	//
-	// 	- `RETCODE`: Browser Monitoring
+	// - `RETCODE`: Browser Monitoring
 	//
 	// example:
 	//

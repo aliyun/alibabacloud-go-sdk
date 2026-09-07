@@ -163,7 +163,7 @@ type ListAlertsResponseBodyPageBeanListAlerts struct {
 	//
 	// example:
 	//
-	// -1
+	// 告警从发生到认领之间的时长
 	AcknowledgeTime *int64 `json:"AcknowledgeTime,omitempty" xml:"AcknowledgeTime,omitempty"`
 	// The list of activities.
 	Activities []*ListAlertsResponseBodyPageBeanListAlertsActivities `json:"Activities,omitempty" xml:"Activities,omitempty" type:"Repeated"`
@@ -179,7 +179,7 @@ type ListAlertsResponseBodyPageBeanListAlerts struct {
 	//
 	// example:
 	//
-	// Test alert
+	// 告警测试
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// The time when the alert was created.
 	//
@@ -191,7 +191,7 @@ type ListAlertsResponseBodyPageBeanListAlerts struct {
 	//
 	// example:
 	//
-	// [Notification Strategy: ARMS Front-end Alarm]\\nPage Indicator Page Name: Home JS Error Number Average in the last 5 minutes &gt;= 1.0 times, current value 1.0000 times\\n
+	// [告警通知]通过[webhook]通知了xxx(成功）
 	Describe *string `json:"Describe,omitempty" xml:"Describe,omitempty"`
 	// The ID of the notification policy.
 	//
@@ -203,31 +203,31 @@ type ListAlertsResponseBodyPageBeanListAlerts struct {
 	//
 	// example:
 	//
-	// DingTalk Notification
+	// 钉群通知
 	DispatchRuleName *string `json:"DispatchRuleName,omitempty" xml:"DispatchRuleName,omitempty"`
 	// Alarm handler.
 	//
 	// example:
 	//
-	// Alice
+	// 认领、关闭告警的处理人
 	Handler *string `json:"Handler,omitempty" xml:"Handler,omitempty"`
 	// The contact card of an instant messaging app.
 	//
 	// example:
 	//
-	// Test Robot
+	// 钉钉的名片。
 	NotifyRobots *string `json:"NotifyRobots,omitempty" xml:"NotifyRobots,omitempty"`
 	// The notification object configured in the notification policy, responsible for handling alerts.
 	//
 	// example:
 	//
-	// Alice
+	// 通知策略中配置的联系人通知对象
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// Alarm recovery time.
 	//
 	// example:
 	//
-	// -1
+	// 告警从发生到恢复之间的时长
 	RecoverTime *int64 `json:"RecoverTime,omitempty" xml:"RecoverTime,omitempty"`
 	// The severity level of the alert. Valid values: P6, P5, P4, P3, P2, and P1. The preceding values are listed in ascending order of severity.
 	//
@@ -239,7 +239,7 @@ type ListAlertsResponseBodyPageBeanListAlerts struct {
 	//
 	// example:
 	//
-	// --
+	// 重启解决
 	Solution *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
 	// The status of the alert. Valid values:
 	//
@@ -434,19 +434,19 @@ type ListAlertsResponseBodyPageBeanListAlertsActivities struct {
 	//
 	// example:
 	//
-	// [Notification policy: Send notifications to DingTalk groups] Host monitoring. Host IP address: 10.76.XX.XX. Average memory usage of the host in the last 1 minute ≥ 1.0%. Current value: 84.7454%.
+	// 【通知策略: 钉群通知】 主机监控 节点机IP: 10.76.XX.XX 节点机内存利用率最近1分钟求平均 >= 1.0 %, 当前值84.7454 %
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The description of the activity.
 	//
 	// example:
 	//
-	// [Alert Claimed] The alert is claimed
+	// [告警认领]认领了该告警
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the handler.
 	//
 	// example:
 	//
-	// O\\&M Engineer A
+	// 运维A
 	HandlerName *string `json:"HandlerName,omitempty" xml:"HandlerName,omitempty"`
 	// The operation time of the activity.
 	//
@@ -534,7 +534,7 @@ type ListAlertsResponseBodyPageBeanListAlertsAlertEvents struct {
 	//
 	// example:
 	//
-	// Test-triggered alert
+	// 测试触发的告警
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// The annotations.
 	//
@@ -546,7 +546,7 @@ type ListAlertsResponseBodyPageBeanListAlertsAlertEvents struct {
 	//
 	// example:
 	//
-	// Host monitoring. Host IP address: 10.76.XX.XX. Average memory usage of the host in the last 1 minute ≥ 1.0%. Current value: 84.7454%.
+	// 主机监控 节点机IP: 10.76.XX.XX 节点机内存利用率最近1分钟求平均 >= 1.0 %, 当前值84.7454 %
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The time when the event ended.
 	//

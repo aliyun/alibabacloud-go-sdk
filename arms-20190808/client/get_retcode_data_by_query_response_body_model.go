@@ -40,13 +40,43 @@ type GetRetcodeDataByQueryResponseBody struct {
 	//
 	// example:
 	//
-	// {"total":0,"auth":false,"pageSize":20,"completed":true,"page":1,"items":[]}
+	// {
+	//
+	//     "total": 1,
+	//
+	//     "auth": false,
+	//
+	//     "pageSize": 20,
+	//
+	//     "completed": true,
+	//
+	//     "page": 1,
+	//
+	//     "items": [
+	//
+	//       {
+	//
+	//         "date": "1701820800000",
+	//
+	//         "__time__": 1701410567,
+	//
+	//         "uv": "64",
+	//
+	//         "__source__": "",
+	//
+	//         "pv": "890"
+	//
+	//       }
+	//
+	//     ]
+	//
+	// 	}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error message returned if the call fails.
 	//
 	// example:
 	//
-	// Internal error. Please try again. Contact the DingTalk service account if the issue                              persists after multiple retries.
+	// -
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

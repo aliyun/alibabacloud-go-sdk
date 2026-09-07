@@ -32,7 +32,7 @@ type UntagResourcesRequest struct {
 	//
 	// example:
 	//
-	// False
+	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The resource IDs. You can specify a maximum of 50 resource IDs.
 	//
@@ -58,7 +58,7 @@ type UntagResourcesRequest struct {
 	//
 	// example:
 	//
-	// PROMETHEUS
+	// APPLICATION
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag keys. You can specify a maximum of 20 tag keys.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
@@ -137,7 +137,7 @@ type UntagResourcesRequestTags struct {
 	//
 	// example:
 	//
-	// TestKey
+	// TestTag
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag.
 	//

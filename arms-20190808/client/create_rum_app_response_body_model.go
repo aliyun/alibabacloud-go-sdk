@@ -48,7 +48,7 @@ type CreateRumAppResponseBody struct {
 	//
 	// example:
 	//
-	// success
+	// 应用已存在。
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

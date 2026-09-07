@@ -94,7 +94,7 @@ type ListScenarioResponseBodyArmsScenarios struct {
 	//
 	// example:
 	//
-	// k8s_deployment_css-guns-vip-main-prod_silence
+	// 测试业务监控
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region.
 	//

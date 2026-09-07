@@ -36,7 +36,7 @@ type ListScenarioRequest struct {
 	//
 	// example:
 	//
-	// pro-content
+	// 测试业务监控
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the region.
 	//

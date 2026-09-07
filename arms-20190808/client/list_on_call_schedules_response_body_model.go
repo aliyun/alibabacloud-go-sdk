@@ -146,7 +146,7 @@ type ListOnCallSchedulesResponseBodyPageBeanOnCallSchedules struct {
 	//
 	// example:
 	//
-	// Test scheduling policy
+	// 测试排班策略
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the scheduling policy.
 	//

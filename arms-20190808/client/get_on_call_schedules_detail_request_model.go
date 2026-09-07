@@ -18,13 +18,13 @@ type iGetOnCallSchedulesDetailRequest interface {
 }
 
 type GetOnCallSchedulesDetailRequest struct {
-	// The date on which the shift ends. Format: `yyyy-MM-dd`.
+	// The end date of the query range in `yyyy-MM-dd` format.
 	//
 	// example:
 	//
 	// 2022-10-30
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the scheduling policy.
+	// The ID of the on-call schedule.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type GetOnCallSchedulesDetailRequest struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The date from which the shift starts. Format: `yyyy-MM-dd`.
+	// The start date of the query range in `yyyy-MM-dd` format.
 	//
 	// example:
 	//

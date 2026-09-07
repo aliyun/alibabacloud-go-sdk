@@ -24,13 +24,13 @@ type iGetRumExceptionStackResponseBody interface {
 }
 
 type GetRumExceptionStackResponseBody struct {
-	// The responses code. The status code 200 indicates that the request was successful.
+	// The status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response message.
+	// The response data.
 	Data *GetRumExceptionStackResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -38,13 +38,13 @@ type GetRumExceptionStackResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned if the request failed.
+	// The message returned when the call fails.
 	//
 	// example:
 	//
-	// Internal error. Please try again. Contact the DingTalk service account if the issue                              persists after multiple retries.
+	// 内部错误，请联系管理员。
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type GetRumExceptionStackResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- `true`
+	// - `true`: The request was successful.
 	//
-	// 	- `false`
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -134,27 +134,27 @@ func (s *GetRumExceptionStackResponseBody) Validate() error {
 }
 
 type GetRumExceptionStackResponseBodyData struct {
-	// The name and UUID of the symbol table required for parsing the exception stack. This parameter is exposed during the parsing of PC errors.
+	// The names and UUIDs of the system symbol tables required for exception stack parsing. This field is returned only for PC parsing.
 	//
 	// example:
 	//
 	// "04B5B216682E40BF9BBE9698E3F98CAA0,libcurl.4.dylib;7878DB3CF21A3C13A203B7E3B0FA66250,libalibabacloud_rum.dylib;0F9F96FE6B1C3253A33AC9E4A0C2A3860,libsystem_kernel.dylib;3DF3256F466E37BCB995A5A9956E14150,libsystem_pthread.dylib;000000000000000000000000000000000,Security;EA4B83A319EB3E15B22CDF035DBD49250,alibabacloud_rum_example;710BB12EEEC744BAB41D1849CA3AD8021,LTSDK.pdb;EE330BA9C49E4730AA15A2B7C0BB2CAE1,JBLive.pdb"
 	BinaryImages *string `json:"BinaryImages,omitempty" xml:"BinaryImages,omitempty"`
-	// The crash address. This parameter is exposed during the parsing of PC errors.
+	// The crash address. This field is returned only for PC parsing.
 	//
 	// example:
 	//
 	// 0x1
 	CrashAddress *string `json:"CrashAddress,omitempty" xml:"CrashAddress,omitempty"`
-	// The cause of the exception. This parameter is exposed during the parsing of PC errors.
+	// The exception reason. This field is returned only for PC parsing.
 	//
 	// example:
 	//
 	// EXC_BAD_ACCESS / KERN_INVALID_ADDRESS
 	CrashReason *string `json:"CrashReason,omitempty" xml:"CrashReason,omitempty"`
-	// The list of stacks.
+	// The stack list.
 	Lines []*string `json:"Lines,omitempty" xml:"Lines,omitempty" type:"Repeated"`
-	// The name of the crash parsing module. This parameter is exposed during the parsing of PC errors.
+	// The name of the crash parsing module. This field is returned only for PC parsing.
 	//
 	// example:
 	//
@@ -166,9 +166,9 @@ type GetRumExceptionStackResponseBodyData struct {
 	//
 	// 16643
 	ThreadId *string `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
-	// The thread stack information captured during PC crashes.
+	// The thread stack details captured during a PC crash.
 	ThreadInfoList []*GetRumExceptionStackResponseBodyDataThreadInfoList `json:"ThreadInfoList,omitempty" xml:"ThreadInfoList,omitempty" type:"Repeated"`
-	// The UUID of the symbol table required for parsing the stack. This parameter is exposed during the parsing of PC errors.
+	// The UUID of the symbol table required for stack parsing. This field is returned only for PC parsing.
 	//
 	// example:
 	//
@@ -270,13 +270,13 @@ func (s *GetRumExceptionStackResponseBodyData) Validate() error {
 }
 
 type GetRumExceptionStackResponseBodyDataThreadInfoList struct {
-	// Thread stack details.
+	// The detailed thread stack.
 	//
 	// example:
 	//
 	// "0  libsystem_platform.dylib + 0x1ab5\\n    rax = 0x0000000000000001   rdx = 0x0000000000000064\\n    rcx = 0xffffffffffffffff   rbx = 0x0000000107701bd0\\n    rsi = 0x0101010101010101   rdi = 0x0000000000000001\\n    rbp = 0x00007ff7b8d64300   rsp = 0x00007ff7b8d64300\\n     r8 = 0x000000000000000a    r9 = 0x0000000000000000\\n    r10 = 0x0000000000000001   r11 = 0x0000000000000247\\n    r12 = 0x00007ff7b8d64390   r13 = 0x0000000000000000\\n    r14 = 0x000000010719d770   r15 = 0x00007ff7b8d64500\\n    rip = 0x00007ff807a40ab5\\n    Found by: given as instruction pointer in context\\n 1  alibabacloud_rum_example + 0x2ad1\\n    rbp = 0x00007ff7b8d64310   rsp = 0x00007ff7b8d64310\\n    rip = 0x000000010719dad1\\n    Found by: previous frame\\"s frame pointer\\n 2  alibabacloud_rum_example + 0x2a3b\\n    rbp = 0x00007ff7b8d64360   rsp = 0x00007ff7b8d64320\\n    rip = 0x000000010719da3b\\n    Found by: previous frame\\"s frame pointer\\n 3  0x7ff807688345\\n    rbp = 0x00007ff7b8d64580   rsp = 0x00007ff7b8d64370\\n    rip = 0x00007ff807688345\\n    Found by: previous frame\\"s frame pointer"
 	ThreadDetail *string `json:"ThreadDetail,omitempty" xml:"ThreadDetail,omitempty"`
-	// The thread tag, including the thread number and name.
+	// The thread tag, which includes the thread number and thread name.
 	//
 	// example:
 	//

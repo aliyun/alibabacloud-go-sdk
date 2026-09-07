@@ -24,13 +24,13 @@ type iGetRumUploadFilesResponseBody interface {
 }
 
 type GetRumUploadFilesResponseBody struct {
-	// The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	// The status code. A value of 200 indicates success. Other values indicate exceptions.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The queried files.
+	// The file list.
 	Data *GetRumUploadFilesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -38,23 +38,23 @@ type GetRumUploadFilesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned if the request failed.
+	// The message returned when the call fails.
 	//
 	// example:
 	//
-	// success
+	// 内部错误，请联系管理员。
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 2983BEF7-4A0D-47A2-94A2-8E9C5E63****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the query is successful. Valid values:
 	//
-	// 	- true
+	// - true: Successful.
 	//
-	// 	- false
+	// - false: Failed.
 	//
 	// example:
 	//

@@ -44,9 +44,9 @@ type UpdateEnvironmentRequest struct {
 	EnvironmentName *string `json:"EnvironmentName,omitempty" xml:"EnvironmentName,omitempty"`
 	// The payable resource plan. Valid values:
 	//
-	// 	- If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
+	// - If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
 	//
-	// 	- Otherwise, leave the parameter empty.
+	// - Otherwise, leave the parameter empty.
 	//
 	// example:
 	//

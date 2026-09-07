@@ -36,7 +36,7 @@ type CreatePrometheusMonitoringRequest struct {
 	//
 	// example:
 	//
-	// Please refer to the supplementary explanation of the request parameters.
+	// 参见请求参数补充说明。
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
 	// The region ID.
 	//

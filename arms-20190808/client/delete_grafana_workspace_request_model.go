@@ -16,7 +16,7 @@ type iDeleteGrafanaWorkspaceRequest interface {
 }
 
 type DeleteGrafanaWorkspaceRequest struct {
-	// The ID of the workspace.
+	// The Managed Service for Grafana workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DeleteGrafanaWorkspaceRequest struct {
 	//
 	// grafana-rnglkcdrntlhk0****
 	GrafanaWorkspaceId *string `json:"GrafanaWorkspaceId,omitempty" xml:"GrafanaWorkspaceId,omitempty"`
-	// The region ID. Default value: cn-hangzhou.
+	// The region ID. Default value: ap-southeast-1.
 	//
 	// This parameter is required.
 	//

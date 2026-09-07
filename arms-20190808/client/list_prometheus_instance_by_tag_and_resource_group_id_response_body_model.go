@@ -135,7 +135,7 @@ type ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInst
 	//
 	// example:
 	//
-	// ad32dxxxx
+	// GciOiJIUzI1NiJ9***
 	AuthToken *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
 	// The ID of the Prometheus instance.
 	//
@@ -151,17 +151,17 @@ type ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInst
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	// The instance type. Valid values:
 	//
-	// 	- remote-write: Prometheus instance for Remote Write
+	// - remote-write: Prometheus instance for Remote Write
 	//
-	// 	- ecs: Prometheus instances for ECS
+	// - ecs: Prometheus instances for ECS
 	//
-	// 	- cloud-monitor: Prometheus instance for Alibaba Cloud services in the Chinese mainland
+	// - cloud-monitor: Prometheus instance for Alibaba Cloud services in the Chinese mainland
 	//
-	// 	- cloud-product: Prometheus instance for Alibaba Cloud services outside the Chinese mainland
+	// - cloud-product: Prometheus instance for Alibaba Cloud services outside the Chinese mainland
 	//
-	// 	- global-view: global aggregation instance
+	// - global-view: global aggregation instance
 	//
-	// 	- aliyun-cs: Prometheus instance for Container Service
+	// - aliyun-cs: Prometheus instance for Container Service
 	//
 	// example:
 	//
@@ -177,19 +177,19 @@ type ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInst
 	//
 	// example:
 	//
-	// http://cn-beijing.arms.aliyuncs.com:9090/api/v1/prometheus/xxx/cn-beijing
+	// https://cn-beijing.arms.aliyuncs.com:9443/api/v1/prometheus/xxx
 	HttpApiInterUrl *string `json:"HttpApiInterUrl,omitempty" xml:"HttpApiInterUrl,omitempty"`
 	// The internal URL for the HTTP API.
 	//
 	// example:
 	//
-	// http://cn-beijing-intranet.arms.aliyuncs.com:9090/api/v1/prometheus/xxx/cn-beijing
+	// http://cn-beijing-intranet.arms.aliyuncs.com:9090/api/v1/prometheus/xxx
 	HttpApiIntraUrl *string `json:"HttpApiIntraUrl,omitempty" xml:"HttpApiIntraUrl,omitempty"`
 	// The billing method. Valid values:
 	//
-	// 	- PREPAY: subscription
+	// - PREPAY: subscription
 	//
-	// 	- POSTPAY: pay-as-you-go
+	// - POSTPAY: pay-as-you-go
 	//
 	// example:
 	//
@@ -199,7 +199,7 @@ type ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInst
 	//
 	// example:
 	//
-	// http://cn-beijing.arms.aliyuncs.com/prometheus/xxx/api/v2
+	// https://cn-beijing.arms.aliyuncs.com/prometheus/xxx/api/v2
 	PushGatewayInterUrl *string `json:"PushGatewayInterUrl,omitempty" xml:"PushGatewayInterUrl,omitempty"`
 	// The internal URL for Pushgateway.
 	//
@@ -229,7 +229,7 @@ type ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInst
 	//
 	// example:
 	//
-	// http://cn-beijing.arms.aliyuncs.com/prometheus/xxx/api/v3/write
+	// https://cn-beijing.arms.aliyuncs.com/prometheus/xxx/api/v3/write
 	RemoteWriteInterUrl *string `json:"RemoteWriteInterUrl,omitempty" xml:"RemoteWriteInterUrl,omitempty"`
 	// The internal URL for remote write.
 	//
@@ -259,7 +259,69 @@ type ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInst
 	//
 	// example:
 	//
-	// [ { "headers": {}, "regionId": "cn-hangzhou", "sourceType": "AlibabaPrometheus", "extras": {}, "clusterId": "c39a1048921e04fceb039db2fb\\*\\*\\*\\*", "sourceName": "arms-luyao-test", "dataSource": "", "userId": "167275301789\\*\\*\\*\\*" }, { "headers": {}, "regionId": "cn-beijing", "sourceType": "AlibabaPrometheus", "extras": {}, "clusterId": "c6b6485496d5b400abde22cb47b5\\*\\*\\*\\*", "sourceName": "agent-321-test", "dataSource": "", "userId": "167275301789\\*\\*\\*\\*" }, { "headers": {}, "regionId": "cn-zhangjiakou", "sourceType": "AlibabaPrometheus", "extras": {}, "clusterId": "c261a4f3200c446659133f1ade78\\*\\*\\*\\*", "sourceName": "zaifeng-cardinality-01", "dataSource": "", "userId": "167275301789\\*\\*\\*\\*" } ]
+	// [
+	//
+	//   {
+	//
+	//     "headers": {},
+	//
+	//     "regionId": "cn-hangzhou",
+	//
+	//     "sourceType": "AlibabaPrometheus",
+	//
+	//     "extras": {},
+	//
+	//     "clusterId": "c39a1048921e04fceb039db2fb****",
+	//
+	//     "sourceName": "arms-luyao-test",
+	//
+	//     "dataSource": "",
+	//
+	//     "userId": "167275301789****"
+	//
+	//   },
+	//
+	//   {
+	//
+	//     "headers": {},
+	//
+	//     "regionId": "cn-beijing",
+	//
+	//     "sourceType": "AlibabaPrometheus",
+	//
+	//     "extras": {},
+	//
+	//     "clusterId": "c6b6485496d5b400abde22cb47b5****",
+	//
+	//     "sourceName": "agent-321-测试",
+	//
+	//     "dataSource": "",
+	//
+	//     "userId": "167275301789****"
+	//
+	//   },
+	//
+	//   {
+	//
+	//     "headers": {},
+	//
+	//     "regionId": "cn-zhangjiakou",
+	//
+	//     "sourceType": "AlibabaPrometheus",
+	//
+	//     "extras": {},
+	//
+	//     "clusterId": "c261a4f3200c446659133f1ade78****",
+	//
+	//     "sourceName": "zaifeng-cardinality-01",
+	//
+	//     "dataSource": "",
+	//
+	//     "userId": "167275301789****"
+	//
+	//   }
+	//
+	// ]
 	SubClustersJson *string `json:"SubClustersJson,omitempty" xml:"SubClustersJson,omitempty"`
 	// The list of tags.
 	Tags []*ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`

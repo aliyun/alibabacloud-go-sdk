@@ -25,9 +25,9 @@ type iQueryAppMetadataRequest interface {
 
 type QueryAppMetadataRequest struct {
 	EndTimeMs *int64 `json:"EndTimeMs,omitempty" xml:"EndTimeMs,omitempty"`
-	// The metadata IDs. Separate multiple IDs with commas (,).
+	// The metadata IDs. Use a comma (,) to separate multiple IDs.
 	//
-	// You can obtain the exception ID on the **Exception Analysis*	- page of your application in the ARMS console.
+	// You can obtain the exception ID on the **exception analysis*	- page of the target application in the ARMS console.
 	//
 	// This parameter is required.
 	//
@@ -35,11 +35,11 @@ type QueryAppMetadataRequest struct {
 	//
 	// 4c9dd447,3c76c565
 	MetaIds *string `json:"MetaIds,omitempty" xml:"MetaIds,omitempty"`
-	// The metadata type. Valid values:
+	// The type of the metadata. Valid values:
 	//
-	// 	- sql: obtains an SQL statement based on sqlId.
+	// - sql: Retrieves the SQL statement by sqlId.
 	//
-	// 	- exception: obtains the exception stack based on exceptionId.
+	// - exception: Retrieves the exception stack by exceptionId.
 	//
 	// This parameter is required.
 	//
@@ -47,13 +47,13 @@ type QueryAppMetadataRequest struct {
 	//
 	// sql
 	MetaType *string `json:"MetaType,omitempty" xml:"MetaType,omitempty"`
-	// The process identifier (PID) of the application. You can obtain the PID of an application by calling the **ListTraceApps*	- operation.
+	// The application ID. To obtain the ID, call the **ListTraceApps*	- operation.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ggxw4lnjuz@54364d85b97dc56
+	// ggxw4lnjuz@54364d85b******
 	Pid *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
 	// The region ID.
 	//

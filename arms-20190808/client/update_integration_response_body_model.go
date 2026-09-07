@@ -82,7 +82,7 @@ type UpdateIntegrationResponseBodyIntegration struct {
 	//
 	// example:
 	//
-	// Test
+	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The fields whose values are deduplicated.
 	//
@@ -120,7 +120,7 @@ type UpdateIntegrationResponseBodyIntegration struct {
 	//
 	// example:
 	//
-	// CloudMonitor integration
+	// 云监控集成
 	IntegrationName *string `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
 	// The service of the alert integration. Valid values:
 	//

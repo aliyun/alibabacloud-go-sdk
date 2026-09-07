@@ -20,25 +20,25 @@ type iUpdatePrometheusInstanceResponseBody interface {
 }
 
 type UpdatePrometheusInstanceResponseBody struct {
-	// The returned status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	// The status code. A value of 200 indicates success. Other values indicate errors.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result of the operation.
+	// The description of the operation result.
 	//
 	// example:
 	//
 	// success
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The message returned.
+	// The message returned for the request.
 	//
 	// example:
 	//
 	// message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

@@ -24,13 +24,13 @@ type iUpdateRumAppResponseBody interface {
 }
 
 type UpdateRumAppResponseBody struct {
-	// The HTTP status code. The status code 200 indicates that the request was successful.
+	// The status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the returned results.
+	// The details of the response.
 	Data *UpdateRumAppResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -38,23 +38,23 @@ type UpdateRumAppResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message returned if the request failed.
+	// The error message returned if the call failed.
 	//
 	// example:
 	//
 	// message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// E9C9DA3D-10FE-472E-9EEF-2D0A3E41****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the update was successful. Valid values:
 	//
-	// 	- `true`
+	// - `true`: Successful.
 	//
-	// 	- `false`
+	// - `false`: Failed.
 	//
 	// example:
 	//
@@ -134,25 +134,29 @@ func (s *UpdateRumAppResponseBody) Validate() error {
 }
 
 type UpdateRumAppResponseBodyData struct {
-	// The user configurations. This is a reserved parameter.
+	// The user configuration. This is a reserved field.
 	//
 	// example:
 	//
-	// null
+	// 用户配置，保留字段。
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The QPS limit. Unit: bytes.
+	// The quota limit, in bytes.
 	//
 	// example:
 	//
 	// 100000
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// Indicates whether the request is throttled due to the QPS limit. Valid values: true and false.
+	// Indicates whether the quota is exceeded. Valid values:
+	//
+	// - true: Exceeded.
+	//
+	// - false: Not exceeded.
 	//
 	// example:
 	//
 	// true
 	Limited *bool `json:"Limited,omitempty" xml:"Limited,omitempty"`
-	// The usage. Unit: bytes.
+	// The usage, in bytes.
 	//
 	// example:
 	//

@@ -150,13 +150,59 @@ type CreateOrUpdateNotificationPolicyRequest struct {
 	//
 	// example:
 	//
-	// {     "notifyStartTime":"00:00",     "notifyEndTime":"23:59",     "notifyChannels":[         "dingTalk",         "email",         "sms",         "tts",         "webhook"     ],     "notifyObjects":[         {             "notifyObjectType":"CONTACT",             "notifyObjectId":123,             "notifyObjectName":"test"         }     ] }
+	// {
+	//
+	//     "notifyStartTime": "00:00",
+	//
+	//     "notifyEndTime": "23:59",
+	//
+	//     "notifyChannels": [
+	//
+	//         "dingTalk",
+	//
+	//         "email",
+	//
+	//         "sms",
+	//
+	//         "tts",
+	//
+	//         "webhook"
+	//
+	//     ],
+	//
+	//     "notifyObjects": [
+	//
+	//         {
+	//
+	//             "notifyObjectType": "CONTACT",
+	//
+	//             "notifyObjectId": 123,
+	//
+	//             "notifyObjectName": "test",
+	//
+	//             "notifyChannels": [
+	//
+	//                 "email",
+	//
+	//                 "sms",
+	//
+	//                 "tts"
+	//
+	//             ],
+	//
+	//
+	//
+	//         }
+	//
+	//     ]
+	//
+	// }
 	NotifyRule *string `json:"NotifyRule,omitempty" xml:"NotifyRule,omitempty"`
 	// The notification template. The default notification template is provided below the table.
 	//
 	// example:
 	//
-	// "robotContent":"{{if .commonLabels.clustername }} > Cluster name: {{ .commonLabels.clustername }} {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }} > Application name: {{ .commonLabels._aliyun_arms_involvedObject_name }} {{ end }}{{ for .alerts }} > {{.annotations.message}} {{if .generatorURL }} [Link]\\({{.generatorURL}}) {{ end }} {{if eq "true" .labels._aliyun_arms_is_denoise_filtered }} (Suspected noise) {{end}} {{end}}"
+	// { "robotContent":"{{if .commonLabels.clustername }}   >  集群名称：{{ .commonLabels.clustername }}    {{ end }}{{if eq "app" .commonLabels._aliyun_arms_involvedObject_kind }}   >  应用名称：{{ .commonLabels._aliyun_arms_involvedObject_name }}    {{ end }}{{ for .alerts }} >  {{ .annotations.message }} {{if .generatorURL }} [详情链接]({{.generatorURL}}) {{end}} {{if  eq "true" .labels._aliyun_arms_is_denoise_filtered }} （疑似噪音） {{end}}  {{end}}" }
 	NotifyTemplate *string `json:"NotifyTemplate,omitempty" xml:"NotifyTemplate,omitempty"`
 	// The ID of the region.
 	//

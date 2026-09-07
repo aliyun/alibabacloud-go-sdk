@@ -916,25 +916,25 @@ type GetSyntheticTaskDetailResponseBodyTaskDetailMonitorList struct {
 	//
 	// example:
 	//
-	// 110100
+	// 11011XX
 	CityCode *int64 `json:"CityCode,omitempty" xml:"CityCode,omitempty"`
 	// The type of the detection point.
 	//
 	// example:
 	//
-	// IDC
+	// 1
 	MonitorType *int64 `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
 	// The ID of the network service.
 	//
 	// example:
 	//
-	// 12001
+	// 12
 	NetServiceId *int64 `json:"NetServiceId,omitempty" xml:"NetServiceId,omitempty"`
 	// The number of times that the system sends detection requests.
 	//
 	// example:
 	//
-	// 20
+	// 2
 	SendCount *int64 `json:"SendCount,omitempty" xml:"SendCount,omitempty"`
 }
 

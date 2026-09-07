@@ -32,7 +32,7 @@ type GetRumOcuStatisticDataResponseBody struct {
 	//
 	// example:
 	//
-	// null
+	// 内部错误，请联系客户人员。
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

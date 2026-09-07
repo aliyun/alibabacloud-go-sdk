@@ -16,7 +16,7 @@ type iGetPrometheusInstanceRequest interface {
 }
 
 type GetPrometheusInstanceRequest struct {
-	// The ID of the Prometheus instance.
+	// The Prometheus instance ID.
 	//
 	// This parameter is required.
 	//

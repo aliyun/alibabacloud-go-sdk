@@ -92,7 +92,7 @@ type CreatePrometheusAlertRuleRequest struct {
 	//
 	// example:
 	//
-	// The CPU utilization of ${{$labels.pod_name}} has exceeded 80%. Current value: {{$value}}%
+	// ${{$labels.pod_name}}CPU使用率大于80%，当前值{{$value}}%
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The method that is used to send alert notifications. Valid values:
 	//

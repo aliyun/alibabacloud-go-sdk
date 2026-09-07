@@ -20,21 +20,21 @@ type iAddPrometheusGlobalViewResponseBody interface {
 }
 
 type AddPrometheusGlobalViewResponseBody struct {
-	// 状态码。说明 200表示成功。
+	// The status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the array object.
+	// The response struct.
 	Data *AddPrometheusGlobalViewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// 返回结果的提示信息。
+	// The message returned for the result.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID. You can use the ID to query logs and troubleshoot issues.
+	// The request ID, which is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
@@ -97,18 +97,22 @@ func (s *AddPrometheusGlobalViewResponseBody) Validate() error {
 
 type AddPrometheusGlobalViewResponseBodyData struct {
 	// The Info-level information.
+	//
+	// example:
+	//
+	// {regionId: 实例所属region, globalViewClusterId: 实例Id, failedInstances: 数据源JSON list中，添加失败的单个JSON的list}
 	Info *AddPrometheusGlobalViewResponseBodyDataInfo `json:"Info,omitempty" xml:"Info,omitempty" type:"Struct"`
-	// The additional information.
+	// The additional description.
 	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the query was successful.
 	//
-	// 	- `true`
+	// - `true`: Successful.
 	//
-	// 	- `false`
+	// - `false`: Failed.
 	//
 	// example:
 	//
@@ -165,9 +169,9 @@ type AddPrometheusGlobalViewResponseBodyDataInfo struct {
 	//
 	// example:
 	//
-	// [{"sourceName": "Data source name- ArmsPrometheus","sourceType":"AlibabaPrometheus","userId":"UserID","clusterId":"ClusterId",}]
+	// [{"sourceName": "数据源名称- ArmsPrometheus","sourceType":"AlibabaPrometheus","userId":"UserID","clusterId":"ClusterId",}]
 	FailedInstances *string `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty"`
-	// The ID of the global aggregation instance.
+	// The aggregation instance ID.
 	//
 	// example:
 	//

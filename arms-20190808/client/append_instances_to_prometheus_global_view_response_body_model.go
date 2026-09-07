@@ -100,7 +100,7 @@ type AppendInstancesToPrometheusGlobalViewResponseBodyData struct {
 	//
 	// example:
 	//
-	// {regionId: the region where the aggregation instance resides. globalViewClusterId: the ID of the aggregation instance. failedInstances: the ID of the object that failed to be added.}
+	// {regionId: 实例所属region, globalViewClusterId: 实例Id, failedInstances: 数据源JSON list中，添加失败的单个JSON的list}
 	Info *string `json:"Info,omitempty" xml:"Info,omitempty"`
 	// The additional information.
 	//

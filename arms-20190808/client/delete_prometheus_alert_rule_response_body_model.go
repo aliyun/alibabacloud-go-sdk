@@ -40,9 +40,9 @@ type DeletePrometheusAlertRuleResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the alert rule was deleted. Valid values:
 	//
-	// 	- `true`: The alert rule was deleted.
+	// - `true`: The alert rule was deleted.
 	//
-	// 	- `false`: The alert rule failed to be deleted.
+	// - `false`: The alert rule failed to be deleted.
 	//
 	// example:
 	//

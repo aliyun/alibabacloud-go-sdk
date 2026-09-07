@@ -191,7 +191,7 @@ type DescribeAddonMetricsResponseBodyDataLabels struct {
 	//
 	// example:
 	//
-	// The number of times a B-tree page of size PAGE_SIZE was successfully compressed.
+	// 大小为PAGE_SIZE的B树页面被成功压缩的次数。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The tag key.
 	//
@@ -251,7 +251,7 @@ type DescribeAddonMetricsResponseBodyDataMetrics struct {
 	//
 	// example:
 	//
-	// The number of times a B-tree page of size PAGE_SIZE was successfully compressed.
+	// 大小为PAGE_SIZE的B树页面被成功压缩的次数。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The tags.
 	Labels []*DescribeAddonMetricsResponseBodyDataMetricsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`

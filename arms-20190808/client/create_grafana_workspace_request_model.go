@@ -40,6 +40,18 @@ type iCreateGrafanaWorkspaceRequest interface {
 }
 
 type CreateGrafanaWorkspaceRequest struct {
+	// Account quantity.
+	//
+	// **Value description:*	-
+	//
+	// - If GrafanaWorkspaceEdition is **standard**, this parameter is invalid.
+	//
+	// - If GrafanaWorkspaceEdition is **personal_edition**, this parameter is invalid. Default Value: 1.
+	//
+	// - If GrafanaWorkspaceEdition is **experts_edition**, valid values are 10, 30, or 50. Default Value: 10.
+	//
+	// - If GrafanaWorkspaceEdition is **advanced_edition**, this parameter is invalid. Default Value: 100.
+	//
 	// example:
 	//
 	// 10
@@ -54,10 +66,30 @@ type CreateGrafanaWorkspaceRequest struct {
 	//
 	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
+	// Whether auto-renewal is enabled. Valid values:
+	//
+	// - true: Auto-renewal is enabled.
+	//
+	// - false: Auto-renewal is disabled.
+	//
+	// Default Value: true.
+	//
 	// example:
 	//
 	// false
 	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// Additional custom account quantity for the User.
+	//
+	// **Value description:*	-
+	//
+	// - If GrafanaWorkspaceEdition is **standard**, this parameter is invalid.
+	//
+	// - If GrafanaWorkspaceEdition is **personal_edition**, this parameter is invalid.
+	//
+	// - If GrafanaWorkspaceEdition is **experts_edition**, this parameter is invalid.
+	//
+	// - If GrafanaWorkspaceEdition is **advanced_edition**, the value range is 0 to 2000 and must be a multiple of 10. Default Value: 0.
+	//
 	// example:
 	//
 	// 0
@@ -68,10 +100,20 @@ type CreateGrafanaWorkspaceRequest struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Subscription duration of the instance. Valid values:
+	//
+	// - If PricingCycle is **Month**, indicating monthly billing, the value range is **1*	- to **9**.
+	//
+	// - If PricingCycle is **Year**, indicating yearly billing, the value range is **1*	- to **3**.
+	//
+	// Default Value: 1.
+	//
 	// example:
 	//
 	// 6
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Grafana version.
+	//
 	// This parameter is required.
 	//
 	// example:

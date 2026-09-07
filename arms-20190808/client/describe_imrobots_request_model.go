@@ -38,7 +38,7 @@ type DescribeIMRobotsRequest struct {
 	//
 	// example:
 	//
-	// Chatbot name
+	// robot名称
 	RobotName *string `json:"RobotName,omitempty" xml:"RobotName,omitempty"`
 	// The number of IM chatbots to return on each page.
 	//

@@ -50,7 +50,7 @@ type ListSilencePoliciesRequest struct {
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The number of entries to return on each page.
 	//

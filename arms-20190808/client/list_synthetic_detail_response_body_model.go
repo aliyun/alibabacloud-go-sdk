@@ -114,7 +114,7 @@ type ListSyntheticDetailResponseBodyData struct {
 	//
 	// example:
 	//
-	// null
+	// 保留字段。
 	TaskCreateTime *int64 `json:"TaskCreateTime,omitempty" xml:"TaskCreateTime,omitempty"`
 	// The total number of entries.
 	//

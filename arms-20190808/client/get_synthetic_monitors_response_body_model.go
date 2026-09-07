@@ -116,7 +116,7 @@ type GetSyntheticMonitorsResponseBodyData struct {
 	//
 	// example:
 	//
-	// Beijing
+	// 北京市
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
 	// The city code.
 	//
@@ -134,7 +134,7 @@ type GetSyntheticMonitorsResponseBodyData struct {
 	//
 	// example:
 	//
-	// China
+	// 中国
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
 	// Indicates whether IPv6 is supported. Valid values: 0: IPv6 is not supported. 1: IPv6 is supported.
 	//
@@ -146,7 +146,7 @@ type GetSyntheticMonitorsResponseBodyData struct {
 	//
 	// example:
 	//
-	// Alibaba Cloud
+	// 阿里云
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	// The carrier code.
 	//
@@ -158,7 +158,7 @@ type GetSyntheticMonitorsResponseBodyData struct {
 	//
 	// example:
 	//
-	// Beijing
+	// 浙江
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 

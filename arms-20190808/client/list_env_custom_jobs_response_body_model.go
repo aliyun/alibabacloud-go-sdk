@@ -122,7 +122,7 @@ type ListEnvCustomJobsResponseBodyData struct {
 	//
 	// example:
 	//
-	// Refer to supplementary instructions.
+	// 参见补充说明。
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
 	// The time when the custom job was created. The value of this parameter is a timestamp.
 	//

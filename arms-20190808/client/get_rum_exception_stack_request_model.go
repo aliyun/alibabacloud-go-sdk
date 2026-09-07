@@ -30,13 +30,13 @@ type iGetRumExceptionStackRequest interface {
 }
 
 type GetRumExceptionStackRequest struct {
-	// The binary images, which represent all executable files loaded into the process address space when a crash occurs.
+	// The binary images, which represent all executable files loaded into the process address space at the time of the crash.
 	//
 	// example:
 	//
 	// iOSDemo:arm64%3B1489F4D3-6DE2-300C-90E9-E1B869675351%3B0x0000000104064000\\nAlibabaCloudRUM:arm64%3BAB7B3A8E-6CEE-325D-BCBB-8DA50E61804F%3B0x0000000106660000\\nlibdispatch.dylib:arm
 	ExceptionBinaryImages *string `json:"ExceptionBinaryImages,omitempty" xml:"ExceptionBinaryImages,omitempty"`
-	// The exception stack information. Set the value to a JSON string. call_stack.info represents the stack information, call_stack.thread.name represents the thread name, and call_stack.thread.id represents the thread ID. This parameter is exactly the same as the exception.stack parameter in the logstore-rum Logstore of Simple Log Service.
+	// The error stack information in JSON list format. Each list element contains three fields: call_stack.info, call_stack.thread.name, and call_stack.thread.id, which represent the stack information, thread name, and thread ID, respectively. This is identical to the exception.stack field in the Simple Log Service logstore-rum.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type GetRumExceptionStackRequest struct {
 	//
 	// ]
 	ExceptionStack *string `json:"ExceptionStack,omitempty" xml:"ExceptionStack,omitempty"`
-	// The ID of the exception thread.
+	// The exception thread ID.
 	//
 	// example:
 	//
 	// 16643
 	ExceptionThreadId *string `json:"ExceptionThreadId,omitempty" xml:"ExceptionThreadId,omitempty"`
-	// Extra information about iOS symbol tables. You can leave this parameter empty.
+	// The additional system symbol table information for iOS parsing. This parameter is optional.
 	//
 	// example:
 	//
@@ -81,19 +81,19 @@ type GetRumExceptionStackRequest struct {
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The parsing type. Valid values:
 	//
-	// 	- js: Parses JavaScript errors.
+	// - js: JavaScript error parsing
 	//
-	// 	- sym: Parses PC errors.
+	// - sym: PC parsing
 	//
-	// 	- har: Parses HarmonyOS errors.
+	// - har: HarmonyOS parsing
 	//
-	// 	- dSYM: Parses iOS errors.
+	// - dSYM: iOS parsing
 	//
-	// 	- so: Parses Android errors.
+	// - so: Android parsing.
 	//
 	// example:
 	//
-	// source-map
+	// js
 	SourcemapType *string `json:"SourcemapType,omitempty" xml:"SourcemapType,omitempty"`
 	Workspace     *string `json:"Workspace,omitempty" xml:"Workspace,omitempty"`
 }

@@ -330,6 +330,10 @@ type GetSyntheticTaskListResponseBodyPageInfoList struct {
 	// 0
 	TaskType *int64 `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 	// The name of the task type.
+	//
+	// example:
+	//
+	// 网络质量
 	TaskTypeName *string `json:"TaskTypeName,omitempty" xml:"TaskTypeName,omitempty"`
 	// The URL for synthetic monitoring.
 	//

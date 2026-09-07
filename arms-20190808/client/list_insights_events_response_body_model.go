@@ -76,7 +76,7 @@ type ListInsightsEventsResponseBodyInsightsEvents struct {
 	//
 	// example:
 	//
-	// The overall response time of the [HTTP] service of the application [sd] spikes at [2022-07-27 10:57:00]
+	// 应用【sd】【HTTP】服务整体的响应时间在【2022-07-27 10:57:00】出现突增
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	// The severity of the event.
 	//
@@ -100,7 +100,7 @@ type ListInsightsEventsResponseBodyInsightsEvents struct {
 	//
 	// example:
 	//
-	// Average response-time spikes of application services
+	// 应用服务整体平均响应时间突增
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The type of the event.
 	//

@@ -177,7 +177,7 @@ type ListEnvironmentDashboardsResponseBodyDataDashboards struct {
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-hongkong
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The keyword.
 	Tags []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`

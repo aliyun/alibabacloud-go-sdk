@@ -260,7 +260,7 @@ type DescribeEnvironmentResponseBodyData struct {
 	//
 	// example:
 	//
-	// grafana-cn-27a3m8eem0a
+	// grafana-cn-i7m2qn9xa01
 	GrafanaWorkspaceId *string `json:"GrafanaWorkspaceId,omitempty" xml:"GrafanaWorkspaceId,omitempty"`
 	// managed type:
 	//
@@ -610,7 +610,7 @@ type DescribeEnvironmentResponseBodyDataTags struct {
 	//
 	// example:
 	//
-	// p_dev
+	// p_运维
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

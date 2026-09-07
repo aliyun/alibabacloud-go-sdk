@@ -30,7 +30,13 @@ type iGetRumUploadFilesRequest interface {
 }
 
 type GetRumUploadFilesRequest struct {
-	// The file type. Valid values: source-map: SourceMap files. mapping: symbol table files for Android. dsym: dSYM files for iOS.
+	// The file type. Valid values:
+	//
+	// - source-map: SourceMap file.
+	//
+	// - mapping: Android symbol table file.
+	//
+	// - dsym: iOS dSYM file.
 	//
 	// example:
 	//
@@ -39,7 +45,7 @@ type GetRumUploadFilesRequest struct {
 	FileName  *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The process ID (PID) of the application.
+	// The application ID.
 	//
 	// example:
 	//
@@ -54,7 +60,7 @@ type GetRumUploadFilesRequest struct {
 	// cn-hangzhou
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	// The version number of the files. If you do not specify this parameter, all versions of the files are returned by default.
+	// The file version number. If this parameter is not specified, files of all versions are returned by default.
 	//
 	// example:
 	//

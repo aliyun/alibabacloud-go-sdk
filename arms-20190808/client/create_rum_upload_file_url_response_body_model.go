@@ -24,13 +24,13 @@ type iCreateRumUploadFileUrlResponseBody interface {
 }
 
 type CreateRumUploadFileUrlResponseBody struct {
-	// The response code. The status code 200 indicates that the request was successful.
+	// The status code. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The file upload URL.
+	// The file upload link.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type CreateRumUploadFileUrlResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The error message that is returned if the request fails.
 	//
 	// example:
 	//
-	// success
+	// 内部错误，请联系管理员。
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -54,11 +54,11 @@ type CreateRumUploadFileUrlResponseBody struct {
 	//
 	// A5EC8221-08F2-4C95-9AF1-49FD998C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- `true`
+	// - `true`: The operation was successful.
 	//
-	// 	- `false`
+	// - `false`: The operation failed.
 	//
 	// example:
 	//

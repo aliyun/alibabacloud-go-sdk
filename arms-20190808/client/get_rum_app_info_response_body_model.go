@@ -24,13 +24,13 @@ type iGetRumAppInfoResponseBody interface {
 }
 
 type GetRumAppInfoResponseBody struct {
-	// The HTTP status code. The status code 200 indicates that the request was successful.
+	// The HTTP status code. A `200` status code indicates a successful request.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The application details.
+	// The details of the application.
 	Data *GetRumAppInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code.
 	//
@@ -38,23 +38,23 @@ type GetRumAppInfoResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error message.
+	// The error message returned for a failed request.
 	//
 	// example:
 	//
-	// StartTime is mandatory for this action.
+	// 内部错误，请联系管理员。
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// A5EC8221-08F2-4C95-9AF1-49FD998C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request was successful.
 	//
-	// 	- `true`
+	// - `true`: The request was successful.
 	//
-	// 	- `false`
+	// - `false`: The request failed.
 	//
 	// example:
 	//
@@ -134,39 +134,39 @@ func (s *GetRumAppInfoResponseBody) Validate() error {
 }
 
 type GetRumAppInfoResponseBodyData struct {
-	// The application configurations in the JSON format. This parameter is deprecated.
+	// This parameter is deprecated. The legacy application configuration in the JSON format.
 	//
 	// example:
 	//
 	// {"apiRequestOfH5":300,"apiRequestOfOriginal":500,"coldStart":5000,"hotStart":3000,"staticResourceLoad":300,"stutter":1000,"viewLoadOfH5":1000,"viewLoadOfOriginal":2000}
 	AppConfig *string `json:"AppConfig,omitempty" xml:"AppConfig,omitempty"`
-	// The group to which the application belongs.
+	// The application group.
 	//
 	// example:
 	//
 	// default
 	AppGroup *string `json:"AppGroup,omitempty" xml:"AppGroup,omitempty"`
-	// The application type. Valid values: web, miniapp, ios, and android.
+	// The application type. Valid values: `web`, `miniapp`, `ios`, and `android`. `web` indicates Web and H5 applications, `miniapp` indicates mini programs.
 	//
 	// example:
 	//
 	// web
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The region where the backend is deployed.
+	// The region where the back-end application is deployed. This parameter is used for end-to-end tracing.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	BackendServiceTraceRegion *string `json:"BackendServiceTraceRegion,omitempty" xml:"BackendServiceTraceRegion,omitempty"`
-	// The collection configurations.
+	// The data collection configurations for mobile applications.
 	BonreeSDKConfig *GetRumAppInfoResponseBodyDataBonreeSDKConfig `json:"BonreeSDKConfig,omitempty" xml:"BonreeSDKConfig,omitempty" type:"Struct"`
-	// The domain name of the SDK.
+	// The SDK domain name.
 	//
 	// example:
 	//
 	// b59xxxxxxxx-sdk.rum.aliyuncs.com/v2/browser-sdk.js
 	CdnDomain *string `json:"CdnDomain,omitempty" xml:"CdnDomain,omitempty"`
-	// The time when the application was created. The value is a timestamp. Unit: milliseconds.
+	// The creation time of the application. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -176,15 +176,15 @@ type GetRumAppInfoResponseBodyData struct {
 	//
 	// example:
 	//
-	// Portal home page.
+	// 门户首页。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The endpoint that is used to report application data.
+	// The endpoint for reporting application data.
 	//
 	// example:
 	//
 	// xxxxxxxx-default-cn.rum.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// Indicates whether the application is subscribed. Valid values: true and false.
+	// Indicates whether the application is bookmarked. Valid values: `true` and `false`.
 	//
 	// example:
 	//
@@ -202,7 +202,7 @@ type GetRumAppInfoResponseBodyData struct {
 	//
 	// nickname
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
-	// The name of the application package.
+	// The application package name.
 	//
 	// example:
 	//
@@ -220,27 +220,27 @@ type GetRumAppInfoResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aek2vezare****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The list of service domain configurations. Only mobile applications are supported.
+	// The list of service domain name configurations. This parameter is supported only for mobile applications.
 	ServiceDomainConfigs []*GetRumAppInfoResponseBodyDataServiceDomainConfigs `json:"ServiceDomainConfigs,omitempty" xml:"ServiceDomainConfigs,omitempty" type:"Repeated"`
-	// The name of the Simple Log Service Logstore that stores application data.
+	// The name of the Log Service Logstore that is used to store application data.
 	//
 	// example:
 	//
 	// logstore-rum
 	SlsLogstore *string `json:"SlsLogstore,omitempty" xml:"SlsLogstore,omitempty"`
-	// The name of the Simple Log Service project that stores application data.
+	// The name of the Log Service project that is used to store application data.
 	//
 	// example:
 	//
 	// proj-xtrace-xxxxxxxxxxxxxxxxxxxxxxx-cn-hangzhou
 	SlsProject *string `json:"SlsProject,omitempty" xml:"SlsProject,omitempty"`
-	// The status of the application. Valid values: created, running, and stopped.
+	// The application status. Valid values: `created`, `running`, and `stopped`. `stopped` indicates that data reporting is stopped.
 	//
 	// example:
 	//
@@ -248,7 +248,7 @@ type GetRumAppInfoResponseBodyData struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags.
 	Tags []*GetRumAppInfoResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The type of the application. Valid value: RUM.
+	// The application type. This parameter is a constant of `RUM`.
 	//
 	// example:
 	//
@@ -500,9 +500,9 @@ func (s *GetRumAppInfoResponseBodyData) Validate() error {
 }
 
 type GetRumAppInfoResponseBodyDataBonreeSDKConfig struct {
-	// The module configuration.
+	// The feature switches for modules.
 	ModuleConfig *GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig `json:"moduleConfig,omitempty" xml:"moduleConfig,omitempty" type:"Struct"`
-	// Sampling configuration.
+	// The sampling configuration.
 	SamplingConfig *GetRumAppInfoResponseBodyDataBonreeSDKConfigSamplingConfig `json:"samplingConfig,omitempty" xml:"samplingConfig,omitempty" type:"Struct"`
 }
 
@@ -549,13 +549,13 @@ func (s *GetRumAppInfoResponseBodyDataBonreeSDKConfig) Validate() error {
 type GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig struct {
 	// The default configuration of the application.
 	DefaultConfig map[string]*DataBonreeSDKConfigModuleConfigDefaultConfigValue `json:"defaultConfig,omitempty" xml:"defaultConfig,omitempty"`
-	// Indicates whether the configuration is enabled.
+	// The master switch.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The version configurations of the application.
+	// The application version configurations.
 	VersionConfigs map[string]*DataBonreeSDKConfigModuleConfigVersionConfigsValue `json:"versionConfigs,omitempty" xml:"versionConfigs,omitempty"`
 }
 
@@ -599,13 +599,13 @@ func (s *GetRumAppInfoResponseBodyDataBonreeSDKConfigModuleConfig) Validate() er
 }
 
 type GetRumAppInfoResponseBodyDataBonreeSDKConfigSamplingConfig struct {
-	// Sampling rate: between (0, 1000], a thousandth.
+	// The sampling rate, in parts per thousand. The value must be greater than 0 and less than or equal to 1,000.
 	//
 	// example:
 	//
 	// 500
 	SamplingRate *int32 `json:"samplingRate,omitempty" xml:"samplingRate,omitempty"`
-	// Sampling type, currently only session random sampling is supported, that is, fixed transmission: 1.
+	// The sampling type. Only random session sampling is supported. You must set this parameter to `1`.
 	//
 	// example:
 	//
@@ -648,7 +648,7 @@ type GetRumAppInfoResponseBodyDataServiceDomainConfigs struct {
 	//
 	// example:
 	//
-	// Test
+	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The domain name or IP address.
 	//
@@ -656,19 +656,19 @@ type GetRumAppInfoResponseBodyDataServiceDomainConfigs struct {
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The trace propagation protocols. This parameter is required if the tracing analysis feature is enabled.
+	// The list of trace pass-through protocols. This parameter is required when trace tracking is enabled.
 	PropagatorTypes []*string `json:"PropagatorTypes,omitempty" xml:"PropagatorTypes,omitempty" type:"Repeated"`
-	// The sampling rate of a trace. Valid values: (0, 100].
+	// The trace sampling rate. Valid values: (0, 100].
 	//
 	// example:
 	//
 	// 100
 	SamplingRate *int32 `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
-	// Indicates whether the tracing analysis feature is enabled. To enable the tracing analysis feature, you must activate Managed Service for OpenTelemetry. Valid values:
+	// Indicates whether to enable trace tracking. You must activate Application Real-Time Monitoring Service (ARMS) OpenTelemetry Edition to use this feature. Valid values:
 	//
-	// 	- `true`: enables the tracing analysis feature. If you enable the tracing analysis feature, related headers are inserted into requests for the domain name.
+	// - `true`: enables trace tracking. If you set this parameter to true, a related header is inserted into the request for this domain name.
 	//
-	// 	- `false`: disables the tracing analysis feature.
+	// - `false`: does not enable trace tracking.
 	//
 	// example:
 	//
@@ -734,13 +734,13 @@ func (s *GetRumAppInfoResponseBodyDataServiceDomainConfigs) Validate() error {
 }
 
 type GetRumAppInfoResponseBodyDataTags struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// Label
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//

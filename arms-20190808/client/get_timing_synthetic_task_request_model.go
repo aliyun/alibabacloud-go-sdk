@@ -26,7 +26,7 @@ type GetTimingSyntheticTaskRequest struct {
 	//
 	// example:
 	//
-	// 856566a9cb2a4cafa05aa95ed0ec8f21
+	// 856566a9cb2a4cafa05aa95ed0*******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

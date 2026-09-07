@@ -22,13 +22,13 @@ type iInitEnvironmentRequest interface {
 }
 
 type InitEnvironmentRequest struct {
-	// The language. Valid values: zh and en. Default value: zh.
+	// The language. Valid values: zh and en. Default: zh.
 	//
 	// example:
 	//
 	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
-	// Specifies whether to create a token to improve data security.
+	// Whether to create an authentication token for enhanced data security.
 	//
 	// example:
 	//
@@ -42,13 +42,13 @@ type InitEnvironmentRequest struct {
 	//
 	// env-xxx
 	EnvironmentId *string `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	// Whether agents or exporters are managed. Valid values:
+	// The agent management mode. Valid values:
 	//
-	// 	- none: No. By default, no managed agents or exporters are provided for ACK clusters.
+	// - none: unmanaged. Default for ACK clusters.
 	//
-	// 	- agent: Agents are managed. By default, managed agents are provided for ASK clusters, ACS clusters, and ACK One clusters.
+	// - agent: managed agents only. Default for ASK, ACS, and ACK One clusters.
 	//
-	// 	- agent-exproter: Agents and exporters are managed. By default, managed agents and exporters are provided for cloud services.
+	// - agent-exproter: managed agents and exporters. Default for cloud services.
 	//
 	// example:
 	//

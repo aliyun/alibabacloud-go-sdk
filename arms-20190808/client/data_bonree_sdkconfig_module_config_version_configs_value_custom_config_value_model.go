@@ -14,7 +14,7 @@ type iDataBonreeSDKConfigModuleConfigVersionConfigsValueCustomConfigValue interf
 }
 
 type DataBonreeSDKConfigModuleConfigVersionConfigsValueCustomConfigValue struct {
-	// Indicates whether the configuration is enabled.
+	// The switch.
 	//
 	// example:
 	//

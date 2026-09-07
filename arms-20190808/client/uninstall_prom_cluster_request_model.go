@@ -26,7 +26,7 @@ type UninstallPromClusterRequest struct {
 	//
 	// example:
 	//
-	// en
+	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
 	// The cluster ID.
 	//

@@ -38,7 +38,7 @@ type GetPrometheusIntegrationResponseBody struct {
 	//
 	// example:
 	//
-	// 9BEF2832-9D95-5E3E-9B10-74887CA17B94
+	// 9BEF2832-9D95-5E3E-9B10-74887C******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -112,7 +112,7 @@ type GetPrometheusIntegrationResponseBodyData struct {
 	//
 	// example:
 	//
-	// c589a1b8db05c4561aefbb898ca8fb1cf
+	// cc7a37ee31aea4ed1a059eff8034b****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The container name.
 	//
@@ -136,7 +136,7 @@ type GetPrometheusIntegrationResponseBodyData struct {
 	//
 	// example:
 	//
-	// 2893
+	// 28**
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The name of the exporter.
 	//
@@ -206,7 +206,7 @@ type GetPrometheusIntegrationResponseBodyData struct {
 	//
 	// example:
 	//
-	// 127.0.0.1:3422
+	// 127.0.XX.XX:3422
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	// The version information.
 	//

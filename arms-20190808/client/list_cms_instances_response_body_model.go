@@ -16,7 +16,10 @@ type iListCmsInstancesResponseBody interface {
 }
 
 type ListCmsInstancesResponseBody struct {
+	// The returned data.
 	Data *ListCmsInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E7A04B0D-E2CA-59BB-8A9D-D5D349C22BF1
@@ -59,11 +62,14 @@ func (s *ListCmsInstancesResponseBody) Validate() error {
 }
 
 type ListCmsInstancesResponseBodyData struct {
+	// Indicates whether tag collection for the cloud product is enabled.
+	//
 	// example:
 	//
 	// true
-	EnableTag *bool                                       `json:"EnableTag,omitempty" xml:"EnableTag,omitempty"`
-	Products  []*ListCmsInstancesResponseBodyDataProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
+	EnableTag *bool `json:"EnableTag,omitempty" xml:"EnableTag,omitempty"`
+	// The list of cloud products.
+	Products []*ListCmsInstancesResponseBodyDataProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
 }
 
 func (s ListCmsInstancesResponseBodyData) String() string {
@@ -106,42 +112,66 @@ func (s *ListCmsInstancesResponseBodyData) Validate() error {
 }
 
 type ListCmsInstancesResponseBodyDataProducts struct {
+	// The product description.
+	//
 	// example:
 	//
 	// -
 	Descr *string `json:"Descr,omitempty" xml:"Descr,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 20210
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// cloudserver
 	Instance *string `json:"Instance,omitempty" xml:"Instance,omitempty"`
+	// The name of the integrated cloud product.
+	//
 	// example:
 	//
 	// hologres
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The product code.
+	//
 	// example:
 	//
 	// face
 	Prod *string `json:"Prod,omitempty" xml:"Prod,omitempty"`
+	// The event source.
+	//
 	// example:
 	//
 	// arms
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The integration status of the product.
+	//
+	// - `true`: Integrated.
+	//
+	// - `false`: Not integrated.
+	//
 	// example:
 	//
 	// true
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The creation timestamp of the Grafana dashboard.
+	//
 	// example:
 	//
 	// 1647852021000
 	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The product type.
+	//
 	// example:
 	//
 	// HOLOGRES
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The complete URL of the Grafana dashboard.
+	//
 	// example:
 	//
 	// https://g.console.aliyun.com/d/1098370038733503-35894-565/cms-hologres?orgId\\u003d9\\u0026refresh\\u003d60s

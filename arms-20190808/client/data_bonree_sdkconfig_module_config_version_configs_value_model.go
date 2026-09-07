@@ -20,21 +20,21 @@ type iDataBonreeSDKConfigModuleConfigVersionConfigsValue interface {
 }
 
 type DataBonreeSDKConfigModuleConfigVersionConfigsValue struct {
-	// Indicates whether the custom configuration is used.
+	// Indicates whether to use a custom configuration.
 	//
 	// example:
 	//
 	// true
 	UseCustom *bool `json:"useCustom,omitempty" xml:"useCustom,omitempty"`
-	// The custom configuration.
+	// The custom configuration items.
 	CustomConfig map[string]*DataBonreeSDKConfigModuleConfigVersionConfigsValueCustomConfigValue `json:"customConfig,omitempty" xml:"customConfig,omitempty"`
 	// The description of the version configuration.
 	//
 	// example:
 	//
-	// test
+	// 1.1.0版本配置
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The time when the version configuration was updated.
+	// The update time of the version configuration.
 	//
 	// example:
 	//

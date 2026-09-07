@@ -54,7 +54,7 @@ type UpdateTimingSyntheticTaskShrinkRequest struct {
 	//
 	// example:
 	//
-	// AlibabaCloud DNS Task
+	// 拨测任务
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The region ID.
 	//

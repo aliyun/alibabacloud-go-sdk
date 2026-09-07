@@ -42,7 +42,7 @@ type GetRumAppsResponseBody struct {
 	//
 	// example:
 	//
-	// Internal error, please contact customer service.
+	// 内部错误，请联系客服。
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -154,7 +154,7 @@ type GetRumAppsResponseBodyAppList struct {
 	//
 	// example:
 	//
-	// TEST
+	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The endpoint that is used to report application data.
 	//
@@ -172,7 +172,7 @@ type GetRumAppsResponseBodyAppList struct {
 	//
 	// example:
 	//
-	// home page
+	// 门户首页。
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The alias of the application.
 	//
@@ -422,7 +422,7 @@ type GetRumAppsResponseBodyAppListServiceDomainConfigs struct {
 	//
 	// example:
 	//
-	// Test
+	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The domain name or IP address.
 	//

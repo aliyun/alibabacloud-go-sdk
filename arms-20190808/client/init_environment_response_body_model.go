@@ -20,19 +20,19 @@ type iInitEnvironmentResponseBody interface {
 }
 
 type InitEnvironmentResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful.
+	// The HTTP status code. 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result of the operation.
+	// The operation result.
 	//
 	// example:
 	//
 	// success
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//

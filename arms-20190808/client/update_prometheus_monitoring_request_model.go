@@ -36,35 +36,7 @@ type UpdatePrometheusMonitoringRequest struct {
 	//
 	// example:
 	//
-	// apiVersion: monitoring.coreos.com/v1
-	//
-	// kind: ServiceMonitor
-	//
-	// metadata:
-	//
-	//   name: tomcat-demo
-	//
-	//   namespace: default
-	//
-	// spec:
-	//
-	//   endpoints:
-	//
-	//     - interval: 30s
-	//
-	//       path: /metrics
-	//
-	//       port: tomcat-monitor
-	//
-	//   namespaceSelector:
-	//
-	//     any: true
-	//
-	//   selector:
-	//
-	//     matchLabels:
-	//
-	//       app: tomcat
+	// 参见请求参数补充说明。
 	ConfigYaml *string `json:"ConfigYaml,omitempty" xml:"ConfigYaml,omitempty"`
 	// The name of the monitoring configuration.
 	//

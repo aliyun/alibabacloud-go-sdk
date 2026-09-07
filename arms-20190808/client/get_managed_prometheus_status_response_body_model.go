@@ -46,7 +46,7 @@ type GetManagedPrometheusStatusResponseBody struct {
 	//
 	// example:
 	//
-	// Successful
+	// 查询成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

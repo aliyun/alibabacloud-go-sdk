@@ -20,7 +20,7 @@ type GetRetcodeShareUrlResponseBody struct {
 	//
 	// example:
 	//
-	// 01FF8DD9-A09C-47A1-895A-B6E321******
+	// 01FF8DD9-A09C-47A1-895A-B6E321BE77B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The share URL of the application monitored by Browser Monitoring.
 	//

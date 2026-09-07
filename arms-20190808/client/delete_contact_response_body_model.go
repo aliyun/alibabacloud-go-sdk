@@ -18,9 +18,9 @@ type iDeleteContactResponseBody interface {
 type DeleteContactResponseBody struct {
 	// Indicates whether the alert contact is deleted. Valid values:
 	//
-	// 	- `true`: The alert contact is deleted.
+	// - `true`: The alert contact is deleted.
 	//
-	// 	- `false`: The alert contact is not deleted.
+	// - `false`: The alert contact is not deleted.
 	//
 	// example:
 	//

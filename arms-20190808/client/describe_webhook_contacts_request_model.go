@@ -46,7 +46,7 @@ type DescribeWebhookContactsRequest struct {
 	//
 	// example:
 	//
-	// Webhook name
+	// webhook名称
 	WebhookName *string `json:"WebhookName,omitempty" xml:"WebhookName,omitempty"`
 }
 

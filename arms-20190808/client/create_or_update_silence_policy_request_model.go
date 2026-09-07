@@ -84,7 +84,7 @@ type CreateOrUpdateSilencePolicyRequest struct {
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to enable the silence policy. Valid values: enable and disable.
 	//

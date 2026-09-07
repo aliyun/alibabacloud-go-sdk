@@ -32,7 +32,7 @@ type ListActivatedAlertsRequest struct {
 	//
 	// example:
 	//
-	// {"alertname":"Container CPU usage is greater than 80%"}
+	// {"alertname":"容器CPU使用率大于80%"}
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The number of entries to return on each page. Default value: `10`.
 	//

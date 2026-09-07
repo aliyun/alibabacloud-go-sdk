@@ -34,13 +34,13 @@ type iUpdatePrometheusInstanceRequest interface {
 }
 
 type UpdatePrometheusInstanceRequest struct {
-	// The number of days for which data is automatically archived after the storage expires. Valid values: 60, 90, 180, and 365. 0 indicates that the data is not archived.
+	// The number of days for automatic archiving after storage expires. Valid values: 60, 90, 180, and 365. A value of 0 indicates no archiving.
 	//
 	// example:
 	//
 	// 90
 	ArchiveDuration *int32 `json:"ArchiveDuration,omitempty" xml:"ArchiveDuration,omitempty"`
-	// The IP addresses or CIDR blocks for which password-free read is enabled. Separate multiple IP addresses with line breaks.
+	// The list of IP addresses for authentication-free read. CIDR notation is supported. Separate multiple IP addresses with line feeds.
 	//
 	// if can be null:
 	// true
@@ -49,7 +49,7 @@ type UpdatePrometheusInstanceRequest struct {
 	//
 	// 0.0.0.0/0
 	AuthFreeReadPolicy *string `json:"AuthFreeReadPolicy,omitempty" xml:"AuthFreeReadPolicy,omitempty"`
-	// The IP addresses or CIDR blocks for which password-free write is enabled. Separate multiple IP addresses with line breaks.
+	// The list of IP addresses for authentication-free write. CIDR notation is supported. Separate multiple IP addresses with line feeds.
 	//
 	// if can be null:
 	// true
@@ -58,7 +58,7 @@ type UpdatePrometheusInstanceRequest struct {
 	//
 	// 0.0.0.0/0
 	AuthFreeWritePolicy *string `json:"AuthFreeWritePolicy,omitempty" xml:"AuthFreeWritePolicy,omitempty"`
-	// The ID of the Prometheus instance.
+	// The Prometheus instance ID.
 	//
 	// This parameter is required.
 	//
@@ -66,12 +66,12 @@ type UpdatePrometheusInstanceRequest struct {
 	//
 	// vpc-xxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// Specifies whether to enable password-free read.
+	// Specifies whether to enable authentication-free read.
 	//
 	// if can be null:
 	// true
 	EnableAuthFreeRead *bool `json:"EnableAuthFreeRead,omitempty" xml:"EnableAuthFreeRead,omitempty"`
-	// Specifies whether to enable password-free write.
+	// Specifies whether to enable authentication-free write.
 	//
 	// if can be null:
 	// true
@@ -81,7 +81,11 @@ type UpdatePrometheusInstanceRequest struct {
 	// if can be null:
 	// true
 	EnableAuthToken *bool `json:"EnableAuthToken,omitempty" xml:"EnableAuthToken,omitempty"`
-	// The billing mode. Valid values: POSTPAY: charges fees based on the amount of reported metric data. POSTPAY_GB: charges fees based on the amount of written metric data.
+	// The billing method. Valid values:
+	//
+	// - POSTPAY: Pay-as-you-go based on metric reporting volume.
+	//
+	// - POSTPAY_GB: Pay-as-you-go based on metric write volume.
 	//
 	// example:
 	//
@@ -95,13 +99,13 @@ type UpdatePrometheusInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Prometheus resource group.
+	// The resource group ID of the Prometheus instance.
 	//
 	// example:
 	//
 	// rg-acfmxyexli2****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The data storage duration. Unit: days.
+	// The data retention period, in days.
 	//
 	// example:
 	//

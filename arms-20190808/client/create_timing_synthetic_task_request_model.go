@@ -634,13 +634,13 @@ type CreateTimingSyntheticTaskRequestCommonSettingCustomPrometheusSetting struct
 	//
 	// example:
 	//
-	// null
+	// 保留字段。
 	PrometheusClusterId *string `json:"PrometheusClusterId,omitempty" xml:"PrometheusClusterId,omitempty"`
 	// A reserved parameter.
 	//
 	// example:
 	//
-	// null
+	// 保留字段。
 	PrometheusClusterRegion *string `json:"PrometheusClusterRegion,omitempty" xml:"PrometheusClusterRegion,omitempty"`
 	// A reserved parameter.
 	PrometheusLabels map[string]*string `json:"PrometheusLabels,omitempty" xml:"PrometheusLabels,omitempty"`

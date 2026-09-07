@@ -42,7 +42,7 @@ type DeleteRumAppResponseBody struct {
 	//
 	// example:
 	//
-	// success
+	// 删除的应用不存在。
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	//
@@ -60,7 +60,7 @@ type DeleteRumAppResponseBody struct {
 	//
 	// example:
 	//
-	// Success to delete app.
+	// 删除应用成功。
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// Indicates whether the request is successful. Valid values: true and false.
 	//

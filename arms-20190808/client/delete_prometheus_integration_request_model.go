@@ -40,7 +40,7 @@ type DeletePrometheusIntegrationRequest struct {
 	//
 	// example:
 	//
-	// kafka and mysql.
+	// kafka、mysql等。
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
 	// The region ID.
 	//

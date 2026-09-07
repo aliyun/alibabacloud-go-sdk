@@ -24,13 +24,13 @@ type iDeleteRumUploadFileResponseBody interface {
 }
 
 type DeleteRumUploadFileResponseBody struct {
-	// The HTTP status code. The status code 200 indicates that the request was successful.
+	// The status code. 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the file is deleted. If the file is deleted, "success" is returned.
+	// Indicates whether the deletion was successful. The value success is returned if the deletion was successful.
 	//
 	// example:
 	//
@@ -46,19 +46,19 @@ type DeleteRumUploadFileResponseBody struct {
 	//
 	// example:
 	//
-	// Internal error, please contact the administrator.
+	// 内部错误，请联系管理员。
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// 40B10E04-81E8-4643-970D-F1B38F2E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// 	- `true`
+	// - `true`: The operation was successful.
 	//
-	// 	- `false`
+	// - `false`: The operation failed.
 	//
 	// example:
 	//

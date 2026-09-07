@@ -30,7 +30,7 @@ type UninstallPromClusterResponseBody struct {
 	//
 	// example:
 	//
-	// true
+	// success
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The returned message.
 	//

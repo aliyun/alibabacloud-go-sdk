@@ -166,7 +166,7 @@ type ListIntegrationResponseBodyPageInfoIntegrations struct {
 	//
 	// example:
 	//
-	// CloudMonitor integration
+	// 云监控集成
 	IntegrationName *string `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
 	// The type of the alert integration. Valid values:
 	//
@@ -315,7 +315,7 @@ type ListIntegrationResponseBodyPageInfoIntegrationsIntegrationDetail struct {
 	//
 	// example:
 	//
-	// Test
+	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The fields whose values are deduplicated.
 	//

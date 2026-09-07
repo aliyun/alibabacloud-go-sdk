@@ -32,7 +32,7 @@ type UpdatePrometheusIntegrationResponseBody struct {
 	//
 	// example:
 	//
-	// Successful
+	// 查询成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	//

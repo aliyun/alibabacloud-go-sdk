@@ -29,6 +29,10 @@ type UpdateGrafanaWorkspaceRequest struct {
 	// zh
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
 	// The description of the workspace.
+	//
+	// example:
+	//
+	// 线上生产环境Grafana
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the workspace.
 	//

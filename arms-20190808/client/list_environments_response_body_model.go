@@ -215,11 +215,11 @@ type ListEnvironmentsResponseBodyDataEnvironments struct {
 	EnvironmentName *string `json:"EnvironmentName,omitempty" xml:"EnvironmentName,omitempty"`
 	// The type of the environment instance. Valid values:
 	//
-	// 	- CS: Container Service
+	// - CS: Container Service
 	//
-	// 	- ECS: Elastic Compute Service
+	// - ECS: Elastic Compute Service
 	//
-	// 	- Cloud: cloud service
+	// - Cloud: cloud service
 	//
 	// example:
 	//
@@ -229,9 +229,9 @@ type ListEnvironmentsResponseBodyDataEnvironments struct {
 	Features []*ListEnvironmentsResponseBodyDataEnvironmentsFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
 	// The payable resource plan.
 	//
-	// 	- If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro.
+	// - If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro.
 	//
-	// 	- Otherwise, leave the parameter empty.
+	// - Otherwise, leave the parameter empty.
 	//
 	// example:
 	//
@@ -263,11 +263,11 @@ type ListEnvironmentsResponseBodyDataEnvironments struct {
 	LatestReleaseCreateTime *string `json:"LatestReleaseCreateTime,omitempty" xml:"LatestReleaseCreateTime,omitempty"`
 	// Indicates whether agents or exporters are managed. Valid values:
 	//
-	// 	- none: No. By default, no managed agents or exporters are provided for ACK clusters.
+	// - none: No. By default, no managed agents or exporters are provided for ACK clusters.
 	//
-	// 	- agent: Agents are managed. By default, managed agents are provided for ASK clusters, ACS clusters, and ACK One clusters.
+	// - agent: Agents are managed. By default, managed agents are provided for ASK clusters, ACS clusters, and ACK One clusters.
 	//
-	// 	- agent-exproter: Agents and exporters are managed. By default, managed agents and exporters are provided for cloud services.
+	// - agent-exproter: Agents and exporters are managed. By default, managed agents and exporters are provided for cloud services.
 	//
 	// example:
 	//
@@ -573,13 +573,13 @@ type ListEnvironmentsResponseBodyDataEnvironmentsAddons struct {
 	//
 	// example:
 	//
-	// MySQL Exporter
+	// Prometheus探针
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	// The description of the add-on.
 	//
 	// example:
 	//
-	// Collect mysql indicator information
+	// 以 Prometheus 采集规范采集 Metric 数据
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The URL of the icon.
 	//
@@ -648,13 +648,13 @@ type ListEnvironmentsResponseBodyDataEnvironmentsFeatures struct {
 	//
 	// example:
 	//
-	// Prometheus Agent
+	// Prometheus 探针
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	// The description of the feature.
 	//
 	// example:
 	//
-	// Collect Metric data using the Prometheus collection specification
+	// 以 Prometheus 采集规范采集 Metric 数据
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The URL of the icon.
 	//

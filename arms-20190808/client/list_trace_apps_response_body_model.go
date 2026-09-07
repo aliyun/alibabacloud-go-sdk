@@ -183,7 +183,7 @@ type ListTraceAppsResponseBodyTraceApps struct {
 	//
 	// example:
 	//
-	// Resource group
+	// rg-acfmxyexli2****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Indicates whether the application is displayed in the Application Real-Time Monitoring Service (ARMS) console. Valid values:
 	//

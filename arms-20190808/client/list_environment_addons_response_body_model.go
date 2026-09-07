@@ -22,22 +22,28 @@ type iListEnvironmentAddonsResponseBody interface {
 }
 
 type ListEnvironmentAddonsResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result of the operation.
+	// The returned data.
 	Data *ListEnvironmentAddonsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message returned.
+	//
 	// example:
 	//
 	// message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 32940175-181B-4B93-966E-4BB69176****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation was successful. Valid values are `true` if the operation succeeded and `false` if it failed.
+	//
 	// example:
 	//
 	// true
@@ -107,9 +113,12 @@ func (s *ListEnvironmentAddonsResponseBody) Validate() error {
 }
 
 type ListEnvironmentAddonsResponseBodyData struct {
-	// The queried add-ons.
-	Addons          []*ListEnvironmentAddonsResponseBodyDataAddons `json:"Addons,omitempty" xml:"Addons,omitempty" type:"Repeated"`
-	ContainsV2Addon *bool                                          `json:"ContainsV2Addon,omitempty" xml:"ContainsV2Addon,omitempty"`
+	// The list of addons.
+	Addons []*ListEnvironmentAddonsResponseBodyDataAddons `json:"Addons,omitempty" xml:"Addons,omitempty" type:"Repeated"`
+	// Indicates whether the list contains V2 addons.
+	ContainsV2Addon *bool `json:"ContainsV2Addon,omitempty" xml:"ContainsV2Addon,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
@@ -165,65 +174,69 @@ func (s *ListEnvironmentAddonsResponseBodyData) Validate() error {
 }
 
 type ListEnvironmentAddonsResponseBodyDataAddons struct {
-	// The alias of the add-on.
+	// The alias of the addon.
 	//
 	// example:
 	//
 	// MySQL
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
-	// The tags of the add-on.
+	// The list of addon tags.
 	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// The dashboards.
+	// The list of dashboards.
 	Dashboards []*ListEnvironmentAddonsResponseBodyDataAddonsDashboards `json:"Dashboards,omitempty" xml:"Dashboards,omitempty" type:"Repeated"`
-	// The description of the add-on.
+	// The description of the addon.
+	//
+	// example:
+	//
+	// 通过 MySQL Exporter 监控数据库指标
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The supported environments.
+	// The list of supported environments.
 	Environments []*ListEnvironmentAddonsResponseBodyDataAddonsEnvironments `json:"Environments,omitempty" xml:"Environments,omitempty" type:"Repeated"`
-	// The URL of the icon.
+	// The URL of the addon icon.
 	//
 	// example:
 	//
 	// http://xxxx
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// The collection of keywords.
+	// The keywords for the addon.
 	Keywords []*string `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
-	// The language.
+	// The language of the addon metadata.
 	//
 	// example:
 	//
 	// zh
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The time when the instance was last created.
+	// The creation time of the latest release of the addon.
 	//
 	// example:
 	//
 	// 2023-09-22T16:56:29+08:00
 	LatestReleaseCreateTime *string `json:"LatestReleaseCreateTime,omitempty" xml:"LatestReleaseCreateTime,omitempty"`
-	// The name of the add-on.
+	// The name of the addon.
 	//
 	// example:
 	//
 	// mysql
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the add-on can be installed only once.
+	// Indicates whether the addon can be installed only once per environment.
 	//
 	// example:
 	//
 	// false
 	Once *bool `json:"Once,omitempty" xml:"Once,omitempty"`
-	// The scenario.
+	// The application scenario of the addon.
 	//
 	// example:
 	//
 	// database
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	// The version of the agent.
+	// The addon version.
 	//
 	// example:
 	//
 	// 0.0.1
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The weight.
+	// The weight of the addon, which is used for sorting in the UI.
 	//
 	// example:
 	//
@@ -389,6 +402,10 @@ func (s *ListEnvironmentAddonsResponseBodyDataAddons) Validate() error {
 
 type ListEnvironmentAddonsResponseBodyDataAddonsDashboards struct {
 	// The description of the dashboard.
+	//
+	// example:
+	//
+	// MySQL监控大盘信息,监控了连接信息,使用信息等指标
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the dashboard.
 	//
@@ -444,17 +461,25 @@ func (s *ListEnvironmentAddonsResponseBodyDataAddonsDashboards) Validate() error
 }
 
 type ListEnvironmentAddonsResponseBodyDataAddonsEnvironments struct {
-	// The dependencies of the environment.
+	// The dependencies of the addon within the environment.
 	Dependencies *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsDependencies `json:"Dependencies,omitempty" xml:"Dependencies,omitempty" type:"Struct"`
 	// The description of the environment.
+	//
+	// example:
+	//
+	// MySQL 服务部署在 Kubernetes 集群中。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the feature is enabled.
+	// Indicates whether the addon is supported in this environment.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	// The tag of the environment.
+	// The label of the environment.
+	//
+	// example:
+	//
+	// 容器环境
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The name of the environment.
 	//
@@ -462,7 +487,7 @@ type ListEnvironmentAddonsResponseBodyDataAddonsEnvironments struct {
 	//
 	// CS
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The control policies in the environment.
+	// The policies related to the addon in this environment.
 	Policies *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Struct"`
 }
 
@@ -543,11 +568,11 @@ func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironments) Validate() err
 }
 
 type ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsDependencies struct {
-	// The cluster type.
+	// The required cluster types.
 	ClusterTypes []*string `json:"ClusterTypes,omitempty" xml:"ClusterTypes,omitempty" type:"Repeated"`
-	// The feature that can be installed in the environment.
+	// The features available for installation in the environment.
 	Features map[string]*bool `json:"Features,omitempty" xml:"Features,omitempty"`
-	// The services.
+	// The dependent services.
 	Services []*string `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 }
 
@@ -591,35 +616,35 @@ func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsDependencies) Va
 }
 
 type ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies struct {
-	// The default alert status.
+	// The default status of the alert.
 	//
 	// example:
 	//
 	// default
 	AlertDefaultStatus *string `json:"AlertDefaultStatus,omitempty" xml:"AlertDefaultStatus,omitempty"`
-	// The default installation status.
+	// Indicates whether the addon is installed by default in the environment.
 	//
 	// example:
 	//
 	// false
 	DefaultInstall *bool `json:"DefaultInstall,omitempty" xml:"DefaultInstall,omitempty"`
-	// Indicates whether a service account is enabled.
+	// Indicates whether a service account is enabled for the addon.
 	//
 	// example:
 	//
 	// true
 	EnableServiceAccount *bool `json:"EnableServiceAccount,omitempty" xml:"EnableServiceAccount,omitempty"`
-	// The metric check rule.
+	// The rules for checking metric status.
 	MetricCheckRule *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesMetricCheckRule `json:"MetricCheckRule,omitempty" xml:"MetricCheckRule,omitempty" type:"Struct"`
-	// Indicates whether a restart is required after the installation.
+	// Indicates whether a restart is required after the addon is installed.
 	//
 	// example:
 	//
 	// true
 	NeedRestartAfterIntegration *bool `json:"NeedRestartAfterIntegration,omitempty" xml:"NeedRestartAfterIntegration,omitempty"`
-	// The supported protocols.
+	// The list of supported protocols.
 	Protocols []*ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesProtocols `json:"Protocols,omitempty" xml:"Protocols,omitempty" type:"Repeated"`
-	// The target name of the add-on.
+	// The target name of the addon.
 	//
 	// example:
 	//
@@ -717,7 +742,7 @@ func (s *ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPolicies) Valida
 }
 
 type ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesMetricCheckRule struct {
-	// The PromQL statements.
+	// The PromQL query statements.
 	PromQL []*string `json:"PromQL,omitempty" xml:"PromQL,omitempty" type:"Repeated"`
 }
 
@@ -755,7 +780,7 @@ type ListEnvironmentAddonsResponseBodyDataAddonsEnvironmentsPoliciesProtocols st
 	//
 	// http://xxxxxxx
 	Icon *string `json:"Icon,omitempty" xml:"Icon,omitempty"`
-	// The tag of the protocol.
+	// The label of the protocol.
 	//
 	// example:
 	//

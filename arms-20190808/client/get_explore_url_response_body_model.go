@@ -22,19 +22,19 @@ type iGetExploreUrlResponseBody interface {
 }
 
 type GetExploreUrlResponseBody struct {
-	// Status code. 200 means success, other status codes are exceptions.
+	// The HTTP status code. A value of 200 indicates success. Other values indicate errors.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Response parameters
+	// The returned data.
 	//
 	// example:
 	//
 	// -
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The prompt information of the returned result.
+	// The message returned for the request.
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type GetExploreUrlResponseBody struct {
 	//
 	// 34ED024E-9E31-434A-9E4E-D9D15C3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the operation was successful:
+	// Indicates whether the operation was successful. Valid values:
 	//
-	// - true: the operation was successful
+	// - true: The operation was successful.
 	//
-	// - false: the operation failed
+	// - false: The operation failed.
 	//
 	// example:
 	//

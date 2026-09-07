@@ -149,7 +149,7 @@ type GetAppApiByPageResponseBodyData struct {
 	//
 	// example:
 	//
-	// 0
+	// 2
 	Total *string `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 

@@ -105,7 +105,7 @@ type ListTimingSyntheticTasksRequestSearch struct {
 	//
 	// example:
 	//
-	// AlibabaCloud DNS Task
+	// 拨测
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The order by which tasks are sorted. 1: ascending order. -1: descending order.
 	//

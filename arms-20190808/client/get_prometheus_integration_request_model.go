@@ -34,7 +34,7 @@ type GetPrometheusIntegrationRequest struct {
 	//
 	// example:
 	//
-	// 2893
+	// 28**
 	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The integration type. Valid values: kafka, mysql, redis, snmp, emr, nubela, and tidb.
 	//
@@ -42,7 +42,7 @@ type GetPrometheusIntegrationRequest struct {
 	//
 	// example:
 	//
-	// kafka, mysql, redis, snmp, emr, nubela, and tidb
+	// tidb
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
 	// The region ID.
 	//

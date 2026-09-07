@@ -177,7 +177,7 @@ func (client *Client) AddIntegrationWithContext(ctx context.Context, request *Ad
 //
 // Summary:
 //
-// Adds a global aggregation instance in Prometheus Service.
+// Adds an aggregation instance for ARMS Prometheus monitoring.
 //
 // @param request - AddPrometheusGlobalViewRequest
 //
@@ -583,6 +583,10 @@ func (client *Client) AppendInstancesToPrometheusGlobalViewWithContext(ctx conte
 	return _result, _err
 }
 
+// Summary:
+//
+// Create or update Business Monitoring.
+//
 // @param tmpReq - ApplyScenarioRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -897,11 +901,11 @@ func (client *Client) ChangeResourceGroupWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Checks whether Application Real-Time Monitoring Service (ARMS) is available for commercial use in a region.
+// Checks the commercial activation status of a product.
 //
 // Description:
 //
-// You can call this operation to check whether ARMS is available for commercial use in a region.
+// Retrieves the commercial activation status of a product.
 //
 // @param request - CheckCommercialStatusRequest
 //
@@ -1287,6 +1291,10 @@ func (client *Client) CreateAlertContactGroupWithContext(ctx context.Context, re
 //
 // Creates a dispatch policy.
 //
+// Description:
+//
+// 当前接口已不再维护，请使用新版告警管理的CreateOrUpdateNotificationPolicy接口创建或修改通知策略。
+//
 // @param request - CreateDispatchRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1611,19 +1619,19 @@ func (client *Client) CreateEnvironmentWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates a workspace in Managed Service for Grafana.
+// Create a Managed Service for Grafana workspace instance.
 //
 // Description:
 //
-// Before you call the operation, make sure that you have learned about the billing methods and [pricing](https://www.alibabacloud.com/help/zh/grafana/product-overview/billing-4?spm=a2c4g.11186623.0.0.14c2d253B3SDbt) of Managed Service for Grafana.
+// Ensure that you fully understand the billing method and <props="china">[pricing](https://help.aliyun.com/zh/grafana/product-overview/billing-4?spm=openapi-amp.newDocPublishment.0.0.7453281fkrsWrp)<props="intl">[pricing](https://www.alibabacloud.com/help/zh/grafana/product-overview/billing-4?spm=a2c4g.11186623.0.0.14c2d253B3SDbt) of the Managed Service for Grafana product before using this API.
 //
 // >
 //
-//   - To create workspaces, you must complete real-name verification.
+// > - Identity verification is required to create a Managed Service for Grafana instance. <props="china">You can refer to the [Account Identity Verification](https://help.aliyun.com/zh/account/user-guide/individual-identities) documentation to complete the verification.
 //
-//   - Regular users can create workspaces only in Managed Service for Grafana Developer Edition, Pro Edition, and Advanced Edition. `These editions charge fees.`
+// > - Regular users can only create Developer, Expert, or Pro editions (`fees apply`).
 //
-//   - Internal users can create workspaces only in Managed Service for Grafana Beta Edition and Standard Edition. `These editions do not charge fees.`
+// > - Internal testing users can only create the internal testing edition (`free of charge`).
 //
 // @param tmpReq - CreateGrafanaWorkspaceRequest
 //
@@ -1725,6 +1733,78 @@ func (client *Client) CreateGrafanaWorkspaceWithContext(ctx context.Context, tmp
 
 // Summary:
 //
+// 指定工作区下创建账号
+//
+// @param request - CreateGrafanaWorkspaceAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGrafanaWorkspaceAccountResponse
+func (client *Client) CreateGrafanaWorkspaceAccountWithContext(ctx context.Context, request *CreateGrafanaWorkspaceAccountRequest, runtime *dara.RuntimeOptions) (_result *CreateGrafanaWorkspaceAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountNotes) {
+		query["AccountNotes"] = request.AccountNotes
+	}
+
+	if !dara.IsNil(request.AccountPassword) {
+		query["AccountPassword"] = request.AccountPassword
+	}
+
+	if !dara.IsNil(request.AliyunLang) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !dara.IsNil(request.AliyunUid) {
+		query["AliyunUid"] = request.AliyunUid
+	}
+
+	if !dara.IsNil(request.GrafanaWorkspaceId) {
+		query["GrafanaWorkspaceId"] = request.GrafanaWorkspaceId
+	}
+
+	if !dara.IsNil(request.OrgId) {
+		query["OrgId"] = request.OrgId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Role) {
+		query["Role"] = request.Role
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateGrafanaWorkspaceAccount"),
+		Version:     dara.String("2019-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateGrafanaWorkspaceAccountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an alert integration.
 //
 // @param request - CreateIntegrationRequest
@@ -1791,7 +1871,7 @@ func (client *Client) CreateIntegrationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates or modifies an alert rule.
+// Create or modify alarm rules.
 //
 // @param request - CreateOrUpdateAlertRuleRequest
 //
@@ -2485,6 +2565,10 @@ func (client *Client) CreateOrUpdateWebhookContactWithContext(ctx context.Contex
 //
 // Creates an alert rule.
 //
+// Description:
+//
+// > 建议使用[CreateOrUpdateAlertRule](https://help.aliyun.com/document_detail/411960.html)接口创建Prometheus告警规则。
+//
 // @param request - CreatePrometheusAlertRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2571,7 +2655,7 @@ func (client *Client) CreatePrometheusAlertRuleWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Creates a Prometheus instance.
+// Creates a Managed Service for Prometheus instance.
 //
 // @param request - CreatePrometheusInstanceRequest
 //
@@ -2889,11 +2973,11 @@ func (client *Client) CreateRumAppWithContext(ctx context.Context, tmpReq *Creat
 
 // Summary:
 //
-// Creates a file upload URL to upload SourceMap files, symbol table files, or dSYM files.
+// Generates a presigned URL for uploading application artifacts, such as source map files, symbol table files, and dSYM files.
 //
 // Description:
 //
-// This operation returns a URL. You can upload files to the URL. For more information, see [Upload local files with signed URLs](https://help.aliyun.com/document_detail/2579659.html).
+// This operation returns a presigned URL for uploading a file. For instructions, see [Upload files by using URLs](https://help.aliyun.com/document_detail/2579659.html).
 //
 // @param request - CreateRumUploadFileUrlRequest
 //
@@ -3105,6 +3189,10 @@ func (client *Client) CreateSyntheticTaskWithContext(ctx context.Context, tmpReq
 //
 // Creates a scheduled synthetic test task.
 //
+// Description:
+//
+// 云拨测目前仅在杭州region提供服务，使用SDK或OpenAPI时请选择杭州region对应的服务接入点。
+//
 // @param tmpReq - CreateTimingSyntheticTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3218,6 +3306,10 @@ func (client *Client) CreateTimingSyntheticTaskWithContext(ctx context.Context, 
 // Summary:
 //
 // Adds a contact for webhook alerts.
+//
+// Description:
+//
+// 当前接口已不再维护，请使用新版告警管理的CreateOrUpdateWebhookContact接口创建或修改Webhook告警联系人。
 //
 // @param request - CreateWebhookRequest
 //
@@ -3451,6 +3543,10 @@ func (client *Client) DeleteAlertContactWithContext(ctx context.Context, request
 //
 // Deletes an DeleteAlertContactGroup contact group.
 //
+// Description:
+//
+// 当前接口已不再维护，请使用新版告警管理的DeleteContactGroup接口删除告警联系人组。
+//
 // @param request - DeleteAlertContactGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3643,7 +3739,7 @@ func (client *Client) DeleteAppListWithContext(ctx context.Context, request *Del
 //
 // Summary:
 //
-// Uninstalls a Prometheus instance.
+// Uninstall Prometheus for an Alibaba Cloud service instance.
 //
 // @param request - DeleteCmsExporterRequest
 //
@@ -3780,6 +3876,10 @@ func (client *Client) DeleteContactGroupWithContext(ctx context.Context, request
 // Summary:
 //
 // Deletes the dispatch policy of a specified ID.
+//
+// Description:
+//
+// 当前接口已不再维护，请使用新版告警管理的DeleteNotificationPolicy接口删除指定ID的通知策略。
 //
 // @param request - DeleteDispatchRuleRequest
 //
@@ -4195,13 +4295,19 @@ func (client *Client) DeleteGrafanaResourceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Deletes a Managed Service for Prometheus workspace.
+// Deletes a Managed Service for Grafana workspace instance.
 //
 // Description:
 //
-//	  You can delete workspaces only in Managed Service for Prometheus Beta Edition, which is `free of charge`.
+// <props="china">>
 //
-//		- You cannot delete workspaces in Managed Service for Prometheus Developer Edition, Pro Edition, and Advanced Edition. You can go to the [User Center](https://usercenter2.aliyun.com/refund/refund) to unsubscribe from workspaces.
+// > - This operation supports deletion only for beta (`free`) Grafana instances.
+//
+// > - Developer Edition, Pro Edition, and Advanced Edition instances do not support deletion. Go to [Expenses and Costs](https://usercenter2.aliyun.com/refund/refund) to unsubscribe from the resource.
+//
+// <props="intl">
+//
+// > This operation supports deletion only for beta (`free`) Grafana instances.
 //
 // @param request - DeleteGrafanaWorkspaceRequest
 //
@@ -4239,6 +4345,114 @@ func (client *Client) DeleteGrafanaWorkspaceWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteGrafanaWorkspaceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定工作区下账号
+//
+// @param request - DeleteGrafanaWorkspaceAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGrafanaWorkspaceAccountResponse
+func (client *Client) DeleteGrafanaWorkspaceAccountWithContext(ctx context.Context, request *DeleteGrafanaWorkspaceAccountRequest, runtime *dara.RuntimeOptions) (_result *DeleteGrafanaWorkspaceAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountId) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !dara.IsNil(request.GrafanaWorkspaceId) {
+		query["GrafanaWorkspaceId"] = request.GrafanaWorkspaceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteGrafanaWorkspaceAccount"),
+		Version:     dara.String("2019-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteGrafanaWorkspaceAccountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定工作区下账号的角色
+//
+// @param request - DeleteGrafanaWorkspaceAccountRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGrafanaWorkspaceAccountRoleResponse
+func (client *Client) DeleteGrafanaWorkspaceAccountRoleWithContext(ctx context.Context, request *DeleteGrafanaWorkspaceAccountRoleRequest, runtime *dara.RuntimeOptions) (_result *DeleteGrafanaWorkspaceAccountRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountId) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !dara.IsNil(request.GrafanaWorkspaceId) {
+		query["GrafanaWorkspaceId"] = request.GrafanaWorkspaceId
+	}
+
+	if !dara.IsNil(request.OrgId) {
+		query["OrgId"] = request.OrgId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteGrafanaWorkspaceAccountRole"),
+		Version:     dara.String("2019-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteGrafanaWorkspaceAccountRoleResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4757,11 +4971,11 @@ func (client *Client) DeleteRumAppWithContext(ctx context.Context, request *Dele
 
 // Summary:
 //
-// Deletes a file such as a symbol table or SourceMap.
+// Deletes files such as symbol tables and SourceMap files.
 //
 // Description:
 //
-// Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
+// Real User Monitoring is currently available only in Hangzhou, Singapore, and Silicon Valley. Select the correct endpoint.
 //
 // @param request - DeleteRumUploadFileRequest
 //
@@ -4831,6 +5045,10 @@ func (client *Client) DeleteRumUploadFileWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete a Business Monitoring.
+//
 // @param request - DeleteScenarioRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5028,6 +5246,10 @@ func (client *Client) DeleteSyntheticTaskWithContext(ctx context.Context, reques
 // Summary:
 //
 // Deletes a scheduled synthetic monitoring task.
+//
+// Description:
+//
+// 云拨测目前仅在杭州region提供服务，使用SDK或OpenAPI时请选择杭州region对应的服务接入点。
 //
 // @param request - DeleteTimingSyntheticTaskRequest
 //
@@ -5439,6 +5661,10 @@ func (client *Client) DescribeContactsWithContext(ctx context.Context, request *
 //
 // Queries the information about a dispatch policy.
 //
+// Description:
+//
+// 当前接口已不再维护，请使用新版告警管理的ListNotificationPolicies接口查询通知策略信息。
+//
 // @param request - DescribeDispatchRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5541,7 +5767,7 @@ func (client *Client) DescribeEnvCustomJobWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the list of discarded metrics of a specified environment instance.
+// Queries the metric drop rule for a specified environment instance.
 //
 // @param request - DescribeEnvDropMetricsRuleRequest
 //
@@ -5993,7 +6219,7 @@ func (client *Client) DescribeWebhookContactsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Performs actions based on the specified module type.
+// Executes the corresponding action based on the module type specified by the parameter.
 //
 // @param request - DoInsightsActionRequest
 //
@@ -6193,7 +6419,7 @@ func (client *Client) GetAgentDownloadUrlV2WithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries alert rules.
+// Query the created alert rules.
 //
 // @param request - GetAlertRulesRequest
 //
@@ -6583,7 +6809,7 @@ func (client *Client) GetCommercialStatusWithContext(ctx context.Context, reques
 //
 // Summary:
 //
-// Enables the Explore feature of Grafana.
+// Retrieves data using the Explore feature of Grafana.
 //
 // @param request - GetExploreUrlRequest
 //
@@ -6875,7 +7101,7 @@ func (client *Client) GetMultipleTraceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the information about a scheduling policy.
+// Use the GetOnCallSchedulesDetail API to retrieve the details of an on-call schedule.
 //
 // @param request - GetOnCallSchedulesDetailRequest
 //
@@ -7011,7 +7237,7 @@ func (client *Client) GetPrometheusGlobalViewWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the information about a Prometheus instance.
+// Retrieves information about a specified Prometheus instance.
 //
 // @param request - GetPrometheusInstanceRequest
 //
@@ -7417,11 +7643,11 @@ func (client *Client) GetRetcodeShareUrlWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Obtains the information about a single application in Browser Monitoring.
+// Retrieves a single Frontend Monitoring application.
 //
 // Description:
 //
-// Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
+// User experience monitoring is available only in China (Hangzhou), Asia Pacific SE 1 (Singapore), and US West 1 (Silicon Valley). Select the correct endpoint.
 //
 // @param request - GetRumAppInfoRequest
 //
@@ -7627,11 +7853,11 @@ func (client *Client) GetRumDataForPageWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the exception stack information of a Real User Monitoring (RUM) application.
+// Retrieves Real User Monitoring (RUM) exception stack information.
 //
 // Description:
 //
-// Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
+// Real User Monitoring is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
 //
 // @param request - GetRumExceptionStackRequest
 //
@@ -7761,11 +7987,11 @@ func (client *Client) GetRumOcuStatisticDataWithContext(ctx context.Context, tmp
 
 // Summary:
 //
-// Queries Real User Monitoring (RUM)-related files, such as symbol tables and SourceMap.
+// Retrieves Real User Monitoring (RUM) related files, including symbol tables and SourceMap files.
 //
 // Description:
 //
-// Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
+// Real User Monitoring is currently available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
 //
 // @param request - GetRumUploadFilesRequest
 //
@@ -7974,6 +8200,10 @@ func (client *Client) GetStackWithContext(ctx context.Context, request *GetStack
 // Summary:
 //
 // Obtains detection points.
+//
+// Description:
+//
+// 云拨测目前仅在杭州region提供服务，使用SDK或OpenAPI时请选择杭州region对应的服务接入点。
 //
 // @param tmpReq - GetSyntheticMonitorsRequest
 //
@@ -8189,6 +8419,10 @@ func (client *Client) GetSyntheticTaskMonitorsWithContext(ctx context.Context, r
 //
 // Obtains the details of a synthetic monitoring task.
 //
+// Description:
+//
+// 云拨测目前仅在杭州region提供服务，使用SDK或OpenAPI时请选择杭州region对应的服务接入点。
+//
 // @param request - GetTimingSyntheticTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8381,6 +8615,64 @@ func (client *Client) GetTraceAppConfigWithContext(ctx context.Context, request 
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetTraceAppConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 代理指定工作区的HTTP API 接口
+//
+// @param request - GrafanaWorkspaceHttpApiProxyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GrafanaWorkspaceHttpApiProxyResponse
+func (client *Client) GrafanaWorkspaceHttpApiProxyWithContext(ctx context.Context, request *GrafanaWorkspaceHttpApiProxyRequest, runtime *dara.RuntimeOptions) (_result *GrafanaWorkspaceHttpApiProxyResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.GrafanaWorkspaceId) {
+		query["GrafanaWorkspaceId"] = request.GrafanaWorkspaceId
+	}
+
+	if !dara.IsNil(request.OrgId) {
+		query["OrgId"] = request.OrgId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.BodyStr) {
+		body["BodyStr"] = request.BodyStr
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GrafanaWorkspaceHttpApiProxy"),
+		Version:     dara.String("2019-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GrafanaWorkspaceHttpApiProxyResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -8727,11 +9019,11 @@ func (client *Client) InstallEnvironmentFeatureWithContext(ctx context.Context, 
 //
 // Summary:
 //
-// Installs a Prometheus agent for serverless Kubernetes (ASK) clusters or Elastic Compute Service (ECS) clusters.
+// Create a managed (ASK/ECS) Prometheus instance.
 //
 // Description:
 //
-// You can call this operation only if the following conditions are met: The resources that you want to monitor are ASK clusters or ECS clusters. No Prometheus agents are installed in the ASK or ECS clusters. Take note that Prometheus agents can be installed only on the cloud service side, not in user clusters.
+// This applies only to ASK and ECS instances, and only if Alibaba Cloud Prometheus has not been previously installed on the cluster. The managed Prometheus instance will be installed on the cloud service side and will not be visible within the user\\"s cluster.
 //
 // @param request - InstallManagedPrometheusRequest
 //
@@ -8815,7 +9107,11 @@ func (client *Client) InstallManagedPrometheusWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the alerts that have been triggered.
+// Invoke the ListActivatedAlerts API to query the list of triggered alerts.
+//
+// Description:
+//
+// This API is no longer maintained. Use the ListAlerts API of the new alert management system to query the alert sending history.
 //
 // @param request - ListActivatedAlertsRequest
 //
@@ -8871,7 +9167,7 @@ func (client *Client) ListActivatedAlertsWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the add-ons installed in an environment.
+// Queries the addons installed in an environment.
 //
 // @param request - ListAddonReleasesRequest
 //
@@ -9195,7 +9491,7 @@ func (client *Client) ListClusterFromGrafanaWithContext(ctx context.Context, req
 //
 // Summary:
 //
-// Queries the collection of cloud services.
+// Queries the data collection status of cloud services.
 //
 // @param request - ListCmsInstancesRequest
 //
@@ -9605,7 +9901,7 @@ func (client *Client) ListEnvServiceMonitorsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the information about the add-ons that are installed in an environment.
+// Lists the add-ons installed in a specified environment.
 //
 // @param request - ListEnvironmentAddonsRequest
 //
@@ -10149,6 +10445,58 @@ func (client *Client) ListGrafanaWorkspaceWithContext(ctx context.Context, tmpRe
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListGrafanaWorkspaceResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定工作区下的阿里云账号列表
+//
+// @param request - ListGrafanaWorkspaceAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGrafanaWorkspaceAccountResponse
+func (client *Client) ListGrafanaWorkspaceAccountWithContext(ctx context.Context, request *ListGrafanaWorkspaceAccountRequest, runtime *dara.RuntimeOptions) (_result *ListGrafanaWorkspaceAccountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AliyunLang) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !dara.IsNil(request.GrafanaWorkspaceId) {
+		query["GrafanaWorkspaceId"] = request.GrafanaWorkspaceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListGrafanaWorkspaceAccount"),
+		Version:     dara.String("2019-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListGrafanaWorkspaceAccountResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -10793,6 +11141,10 @@ func (client *Client) ListRetcodeAppsWithContext(ctx context.Context, request *L
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtain Business Monitoring details.
+//
 // @param request - ListScenarioRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10913,6 +11265,10 @@ func (client *Client) ListSilencePoliciesWithContext(ctx context.Context, reques
 //
 // Obtains the results of one or more synthetic tests.
 //
+// Description:
+//
+// 云拨测目前仅在杭州 region 提供服务，使用 SDK 或 OpenAPI 时请选择杭州 region 对应的服务接入点。
+//
 // @param tmpReq - ListSyntheticDetailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10966,6 +11322,10 @@ func (client *Client) ListSyntheticDetailWithContext(ctx context.Context, tmpReq
 // Summary:
 //
 // Queries scheduled synthetic monitoring tasks.
+//
+// Description:
+//
+// 云拨测目前仅在杭州region提供服务，使用SDK或OpenAPI时请选择杭州region对应的服务接入点。
 //
 // @param tmpReq - ListTimingSyntheticTasksRequest
 //
@@ -11285,7 +11645,7 @@ func (client *Client) OpenXtraceDefaultSLRWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the encoding mapping content based on the metadata IDs and metadata type.
+// Queries application metadata by ID and type.
 //
 // @param request - QueryAppMetadataRequest
 //
@@ -12773,7 +13133,11 @@ func (client *Client) SetRetcodeShareStatusWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 启动报警
+// Invoke the StartAlert API to start an alert rule.
+//
+// Description:
+//
+// This API is no longer maintained. Use the AlertStatus parameter of the CreateOrUpdateAlertRule API in the new alert management system to update the running status of an alert rule.
 //
 // @param request - StartAlertRequest
 //
@@ -12822,6 +13186,10 @@ func (client *Client) StartAlertWithContext(ctx context.Context, request *StartA
 // Summary:
 //
 // Starts scheduled synthetic monitoring tasks.
+//
+// Description:
+//
+// 云拨测目前仅在杭州region提供服务，使用SDK或OpenAPI时请选择杭州region对应的服务接入点。
 //
 // @param tmpReq - StartTimingSyntheticTaskRequest
 //
@@ -12877,6 +13245,10 @@ func (client *Client) StartTimingSyntheticTaskWithContext(ctx context.Context, t
 //
 // Call StartAlert to stop an alert rule.
 //
+// Description:
+//
+// 当前接口已不再维护，请使用新版告警管理CreateOrUpdateAlertRule接口的AlertStatus参数更新告警规则运行状态。
+//
 // @param request - StopAlertRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12924,6 +13296,10 @@ func (client *Client) StopAlertWithContext(ctx context.Context, request *StopAle
 // Summary:
 //
 // Stops scheduled synthetic monitoring tasks.
+//
+// Description:
+//
+// 云拨测目前仅在杭州region提供服务，使用SDK或OpenAPI时请选择杭州region对应的服务接入点。
 //
 // @param tmpReq - StopTimingSyntheticTaskRequest
 //
@@ -13027,7 +13403,7 @@ func (client *Client) SwitchSyntheticTaskStatusWithContext(ctx context.Context, 
 //
 // Summary:
 //
-// Synchronizes the aggregation rule of a cluster to other clusters in a region.
+// Batch synchronizes the aggregation rules of a cluster to other target clusters across all regions.
 //
 // @param request - SyncRecordingRulesRequest
 //
@@ -13383,6 +13759,10 @@ func (client *Client) UpdateAlertContactWithContext(ctx context.Context, request
 //
 // Updates UpdateAlertContactGroup alarm contact group.
 //
+// Description:
+//
+// 当前接口已不再维护，请使用新版告警管理的CreateOrUpdateContactGroup接口创建或修改告警联系人组。
+//
 // @param request - UpdateAlertContactGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13435,6 +13815,14 @@ func (client *Client) UpdateAlertContactGroupWithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// You can invoke the UpdateAlertRule API to update an alert rule.
+//
+// Description:
+//
+// This API is no longer maintained. Use the CreateOrUpdateAlertRule API of the new alert management system to create or modify an alert rule.
+//
 // @param request - UpdateAlertRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13494,6 +13882,10 @@ func (client *Client) UpdateAlertRuleWithContext(ctx context.Context, request *U
 // Summary:
 //
 // Modifies a dispatch policy.
+//
+// Description:
+//
+// 当前接口已不再维护，请使用新版告警管理的CreateOrUpdateNotificationPolicy接口创建或修改通知策略。
 //
 // @param request - UpdateDispatchRuleRequest
 //
@@ -13925,6 +14317,66 @@ func (client *Client) UpdateGrafanaWorkspaceWithContext(ctx context.Context, req
 
 // Summary:
 //
+// 修改指定工作区下账号的角色
+//
+// @param request - UpdateGrafanaWorkspaceAccountRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGrafanaWorkspaceAccountRoleResponse
+func (client *Client) UpdateGrafanaWorkspaceAccountRoleWithContext(ctx context.Context, request *UpdateGrafanaWorkspaceAccountRoleRequest, runtime *dara.RuntimeOptions) (_result *UpdateGrafanaWorkspaceAccountRoleResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AccountId) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !dara.IsNil(request.GrafanaWorkspaceId) {
+		query["GrafanaWorkspaceId"] = request.GrafanaWorkspaceId
+	}
+
+	if !dara.IsNil(request.OrgId) {
+		query["OrgId"] = request.OrgId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Role) {
+		query["Role"] = request.Role
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateGrafanaWorkspaceAccountRole"),
+		Version:     dara.String("2019-08-08"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateGrafanaWorkspaceAccountRoleResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the version of a Grafana workspace.
 //
 // Description:
@@ -14137,6 +14589,10 @@ func (client *Client) UpdateMetricDropWithContext(ctx context.Context, request *
 //
 // Updates a Prometheus alert rule.
 //
+// Description:
+//
+// UpdatePrometheusAlertRule 接口已不再维护，请使用 CreateOrUpdateAlertRule 接口创建或修改告警规则。
+//
 // @param request - UpdatePrometheusAlertRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14297,7 +14753,7 @@ func (client *Client) UpdatePrometheusGlobalViewWithContext(ctx context.Context,
 
 // Summary:
 //
-// Updates the information about a Prometheus instance.
+// Updates the information of a Prometheus instance.
 //
 // @param request - UpdatePrometheusInstanceRequest
 //
@@ -14573,7 +15029,7 @@ func (client *Client) UpdatePrometheusMonitoringStatusWithContext(ctx context.Co
 //
 // Description:
 //
-// Real User Monitoring (RUM) is available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
+// Real User Monitoring is currently available only in the China (Hangzhou), Singapore, and US (Silicon Valley) regions. Select the correct endpoint.
 //
 // @param request - UpdateRumAppRequest
 //
@@ -14742,6 +15198,10 @@ func (client *Client) UpdateRumFileStatusWithContext(ctx context.Context, reques
 // Summary:
 //
 // Updates a scheduled synthetic test task.
+//
+// Description:
+//
+// 云拨测目前仅在杭州region提供服务，使用SDK或OpenAPI时请选择杭州region对应的服务接入点。
 //
 // @param tmpReq - UpdateTimingSyntheticTaskRequest
 //

@@ -38,7 +38,7 @@ type CreateIntegrationRequest struct {
 	//
 	// example:
 	//
-	// Test
+	// 测试
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the alert integration.
 	//
@@ -46,7 +46,7 @@ type CreateIntegrationRequest struct {
 	//
 	// example:
 	//
-	// CloudMonitor integration
+	// 云监控集成
 	IntegrationName *string `json:"IntegrationName,omitempty" xml:"IntegrationName,omitempty"`
 	// The service of the alert integration. Valid values:
 	//

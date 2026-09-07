@@ -16,21 +16,21 @@ type iCheckCommercialStatusRequest interface {
 }
 
 type CheckCommercialStatusRequest struct {
-	// The region ID. Default value: cn-hangzhou.
+	// The region ID. Default value: ap-southeast-1.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ARMS sub-service. Valid values:
+	// The sub-product type. Valid values:
 	//
-	// 	- apm: Application Monitoring
+	// - apm: Application Monitoring
 	//
-	// 	- rum: RUM
+	// - rum: Real User Monitoring
 	//
-	// 	- prometheus: Managed Service for Prometheus
+	// - prometheus: Managed Service for Prometheus
 	//
-	// 	- xtrace: Managed Service for OpenTelemetry
+	// - xtrace: Managed Service for OpenTelemetry
 	//
 	// This parameter is required.
 	//

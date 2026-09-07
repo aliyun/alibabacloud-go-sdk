@@ -24,29 +24,29 @@ type iDeleteGrafanaWorkspaceResponseBody interface {
 }
 
 type DeleteGrafanaWorkspaceResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	// The status code. A value of 200 indicates success. Other values indicate errors.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the workspace was deleted. Valid values:
+	// Indicates whether the Grafana workspace was deleted. Valid values:
 	//
-	// 	- true
+	// - true: The workspace was deleted.
 	//
-	// 	- false
+	// - false: The workspace failed to be deleted.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The returned message.
+	// The message returned for the request.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -54,15 +54,15 @@ type DeleteGrafanaWorkspaceResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- `true`
+	// - `true`: The operation was successful.
 	//
-	// 	- `false`
+	// - `false`: The operation failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// The trace ID, which is used to query the details of the call.
 	//
 	// example:
 	//
