@@ -15,8 +15,16 @@ type iModifyAccountPrivilegesRequest interface {
 	GetAccountPrivileges() []*ModifyAccountPrivilegesRequestAccountPrivileges
 	SetDBClusterId(v string) *ModifyAccountPrivilegesRequest
 	GetDBClusterId() *string
+	SetPromqlInsertPrivileges(v []*string) *ModifyAccountPrivilegesRequest
+	GetPromqlInsertPrivileges() []*string
+	SetPromqlSelectNodePercentage(v float64) *ModifyAccountPrivilegesRequest
+	GetPromqlSelectNodePercentage() *float64
+	SetPromqlSelectPrivileges(v []*string) *ModifyAccountPrivilegesRequest
+	GetPromqlSelectPrivileges() []*string
 	SetRegionId(v string) *ModifyAccountPrivilegesRequest
 	GetRegionId() *string
+	SetResourceGroupName(v string) *ModifyAccountPrivilegesRequest
+	GetResourceGroupName() *string
 }
 
 type ModifyAccountPrivilegesRequest struct {
@@ -28,18 +36,21 @@ type ModifyAccountPrivilegesRequest struct {
 	//
 	// account1
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The permissions that you want to grant to the database account.
-	//
-	// This parameter is required.
+	// The list of granted permissions.
 	AccountPrivileges []*ModifyAccountPrivilegesRequestAccountPrivileges `json:"AccountPrivileges,omitempty" xml:"AccountPrivileges,omitempty" type:"Repeated"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	//
+	// <props="intl">The cluster ID of the Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp1k5p066e1a****
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterId                *string   `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	PromqlInsertPrivileges     []*string `json:"PromqlInsertPrivileges,omitempty" xml:"PromqlInsertPrivileges,omitempty" type:"Repeated"`
+	PromqlSelectNodePercentage *float64  `json:"PromqlSelectNodePercentage,omitempty" xml:"PromqlSelectNodePercentage,omitempty"`
+	PromqlSelectPrivileges     []*string `json:"PromqlSelectPrivileges,omitempty" xml:"PromqlSelectPrivileges,omitempty" type:"Repeated"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -47,7 +58,8 @@ type ModifyAccountPrivilegesRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 
 func (s ModifyAccountPrivilegesRequest) String() string {
@@ -70,8 +82,24 @@ func (s *ModifyAccountPrivilegesRequest) GetDBClusterId() *string {
 	return s.DBClusterId
 }
 
+func (s *ModifyAccountPrivilegesRequest) GetPromqlInsertPrivileges() []*string {
+	return s.PromqlInsertPrivileges
+}
+
+func (s *ModifyAccountPrivilegesRequest) GetPromqlSelectNodePercentage() *float64 {
+	return s.PromqlSelectNodePercentage
+}
+
+func (s *ModifyAccountPrivilegesRequest) GetPromqlSelectPrivileges() []*string {
+	return s.PromqlSelectPrivileges
+}
+
 func (s *ModifyAccountPrivilegesRequest) GetRegionId() *string {
 	return s.RegionId
+}
+
+func (s *ModifyAccountPrivilegesRequest) GetResourceGroupName() *string {
+	return s.ResourceGroupName
 }
 
 func (s *ModifyAccountPrivilegesRequest) SetAccountName(v string) *ModifyAccountPrivilegesRequest {
@@ -89,8 +117,28 @@ func (s *ModifyAccountPrivilegesRequest) SetDBClusterId(v string) *ModifyAccount
 	return s
 }
 
+func (s *ModifyAccountPrivilegesRequest) SetPromqlInsertPrivileges(v []*string) *ModifyAccountPrivilegesRequest {
+	s.PromqlInsertPrivileges = v
+	return s
+}
+
+func (s *ModifyAccountPrivilegesRequest) SetPromqlSelectNodePercentage(v float64) *ModifyAccountPrivilegesRequest {
+	s.PromqlSelectNodePercentage = &v
+	return s
+}
+
+func (s *ModifyAccountPrivilegesRequest) SetPromqlSelectPrivileges(v []*string) *ModifyAccountPrivilegesRequest {
+	s.PromqlSelectPrivileges = v
+	return s
+}
+
 func (s *ModifyAccountPrivilegesRequest) SetRegionId(v string) *ModifyAccountPrivilegesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyAccountPrivilegesRequest) SetResourceGroupName(v string) *ModifyAccountPrivilegesRequest {
+	s.ResourceGroupName = &v
 	return s
 }
 
@@ -108,15 +156,15 @@ func (s *ModifyAccountPrivilegesRequest) Validate() error {
 }
 
 type ModifyAccountPrivilegesRequestAccountPrivileges struct {
-	// The objects on which you want to grant permissions, including databases, tables, and columns.
+	// The privilege object, which is a tuple of database, table, and column.
 	PrivilegeObject *ModifyAccountPrivilegesRequestAccountPrivilegesPrivilegeObject `json:"PrivilegeObject,omitempty" xml:"PrivilegeObject,omitempty" type:"Struct"`
-	// The permission level that you want to assign to the database account. You can call the `DescribeEnabledPrivileges` operation to query the permission level that can be assigned to the database account.
+	// The privilege level, obtained from the `DescribeEnabledPrivileges` operation.
 	//
 	// example:
 	//
 	// Global
 	PrivilegeType *string `json:"PrivilegeType,omitempty" xml:"PrivilegeType,omitempty"`
-	// The permissions that you want to grant to the database account.
+	// The list of granted permissions.
 	Privileges []*string `json:"Privileges,omitempty" xml:"Privileges,omitempty" type:"Repeated"`
 }
 
@@ -165,19 +213,19 @@ func (s *ModifyAccountPrivilegesRequestAccountPrivileges) Validate() error {
 }
 
 type ModifyAccountPrivilegesRequestAccountPrivilegesPrivilegeObject struct {
-	// The columns on which you want to grant permissions. This parameter must be specified when the PrivilegeType parameter is set to Column.
+	// The column to which permissions are granted. This parameter is required when the privilege level is column.
 	//
 	// example:
 	//
 	// column1
 	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
-	// The databases on which you want to grant permissions. This parameter must be specified when the PrivilegeType parameter is set to Database, Table, or Column.
+	// The database to which permissions are granted. This parameter is required when the privilege level is database, table, or column.
 	//
 	// example:
 	//
 	// tsdb1
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The tables on which you want to grant permissions. This parameter must be specified when the PrivilegeType parameter is set to Table or Column.
+	// The table to which permissions are granted. This parameter is required when the privilege level is table or column.
 	//
 	// example:
 	//

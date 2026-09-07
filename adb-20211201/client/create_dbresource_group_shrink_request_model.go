@@ -62,7 +62,7 @@ type iCreateDBResourceGroupShrinkRequest interface {
 type CreateDBResourceGroupShrinkRequest struct {
 	// The PromQL resource group configuration.
 	AtmConfigShrink *string `json:"AtmConfig,omitempty" xml:"AtmConfig,omitempty"`
-	// The automatic stop interval, in minutes (m).
+	// The auto-stop interval, in minutes (m).
 	//
 	// example:
 	//
@@ -104,9 +104,9 @@ type CreateDBResourceGroupShrinkRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// Specifies whether to enable the spot instance feature for the resource group. After the spot instance feature is enabled, the unit price of resources is reduced, but the resources may be released. Only Job resource groups support this feature. Valid values:
 	//
-	// - **True**: enables the spot instance feature.
+	// - **True**: Enables the spot instance feature.
 	//
-	// - **False**: disables the spot instance feature.
+	// - **False**: Disables the spot instance feature.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// {\\"spark.adb.version\\":\\"3.5\\"}
 	EngineParamsShrink *string `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
-	// The GPU time-sharing elastic plan.
+	// The GPU time-based elastic plan.
 	GpuElasticPlanShrink *string `json:"GpuElasticPlan,omitempty" xml:"GpuElasticPlan,omitempty"`
 	// The name of the resource group.
 	//
@@ -150,7 +150,7 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// - **Job**
 	//
-	// > For more information about resource groups of the Data Lakehouse Edition, see [Resource group overview (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
+	// > For more information about Data Lakehouse Edition resource groups, see [Introduction to resource groups (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// This parameter is required.
 	//
@@ -166,9 +166,9 @@ type CreateDBResourceGroupShrinkRequest struct {
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
 	// The maximum reserved computing resources, in ACUs.
 	//
-	// - If the resource group type is Interactive, the maximum reserved computing resources is the current unallocated resources of the cluster, with a step size of 16 ACUs.
+	// - If the resource group type is Interactive, the maximum reserved computing resources are the unallocated resources of the cluster, in increments of 16 ACUs.
 	//
-	// - If the resource group type is Job, the maximum reserved computing resources is the current unallocated resources of the cluster, with a step size of 8 ACUs.
+	// - If the resource group type is Job, the maximum reserved computing resources are the unallocated resources of the cluster, in increments of 8 ACUs.
 	//
 	// example:
 	//
@@ -188,9 +188,9 @@ type CreateDBResourceGroupShrinkRequest struct {
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
 	// The minimum reserved computing resources, in ACUs.
 	//
-	// - If the resource group type is Interactive, the minimum reserved computing resources is 16 ACUs.
+	// - If the resource group type is Interactive, the minimum reserved computing resources are 16 ACUs.
 	//
-	// - If the resource group type is Job, the minimum reserved computing resources is 0 ACUs.
+	// - If the resource group type is Job, the minimum reserved computing resources are 0 ACUs.
 	//
 	// example:
 	//
@@ -218,11 +218,11 @@ type CreateDBResourceGroupShrinkRequest struct {
 	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 	// The scaling policy of the resource group. Valid values:
 	//
-	// - AutoScaling: enables the AutoScaling automatic scaling policy.
+	// - AutoScaling: enables the AutoScaling auto-scaling policy.
 	//
-	// - Disable: disables automatic scaling.
+	// - Disable: disables auto-scaling.
 	//
-	// - MultiCluster: enables the MultiCluster automatic scaling policy.
+	// - MultiCluster: enables the MultiCluster auto-scaling policy.
 	//
 	// example:
 	//
@@ -234,7 +234,7 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// ADB.MLLarge.2
 	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	// The name of the target resource group.
+	// The name of the destination resource group.
 	//
 	// example:
 	//

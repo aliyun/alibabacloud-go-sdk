@@ -21,8 +21,16 @@ type iCreateAccountShrinkRequest interface {
 	GetDBClusterId() *string
 	SetEngine(v string) *CreateAccountShrinkRequest
 	GetEngine() *string
+	SetPromqlInsertPrivilegesShrink(v string) *CreateAccountShrinkRequest
+	GetPromqlInsertPrivilegesShrink() *string
+	SetPromqlSelectNodePercentage(v float64) *CreateAccountShrinkRequest
+	GetPromqlSelectNodePercentage() *float64
+	SetPromqlSelectPrivilegesShrink(v string) *CreateAccountShrinkRequest
+	GetPromqlSelectPrivilegesShrink() *string
 	SetRamUserListShrink(v string) *CreateAccountShrinkRequest
 	GetRamUserListShrink() *string
+	SetResourceGroupName(v string) *CreateAccountShrinkRequest
+	GetResourceGroupName() *string
 }
 
 type CreateAccountShrinkRequest struct {
@@ -34,7 +42,7 @@ type CreateAccountShrinkRequest struct {
 	//
 	// example:
 	//
-	// 数据库连接测试账号
+	// Database connection test account
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	// The name of the database account. The name must meet the following requirements:
 	//
@@ -86,16 +94,20 @@ type CreateAccountShrinkRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The database engine. Valid values:
 	//
-	// - **AnalyticDB*	- (default): AnalyticDB for MySQL engine.
+	// - **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
 	//
-	// - **Clickhouse**: wide table engine.
+	// - **Clickhouse**: the wide table engine.
 	//
 	// example:
 	//
 	// Clickhouse
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The list of Alibaba Cloud Resource Access Management (RAM) user IDs to attach. Currently, only one RAM user can be attached.
+	Engine                       *string  `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	PromqlInsertPrivilegesShrink *string  `json:"PromqlInsertPrivileges,omitempty" xml:"PromqlInsertPrivileges,omitempty"`
+	PromqlSelectNodePercentage   *float64 `json:"PromqlSelectNodePercentage,omitempty" xml:"PromqlSelectNodePercentage,omitempty"`
+	PromqlSelectPrivilegesShrink *string  `json:"PromqlSelectPrivileges,omitempty" xml:"PromqlSelectPrivileges,omitempty"`
+	// The list of Alibaba Cloud RAM user IDs to bind. Currently, only one RAM user can be bound.
 	RamUserListShrink *string `json:"RamUserList,omitempty" xml:"RamUserList,omitempty"`
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 
 func (s CreateAccountShrinkRequest) String() string {
@@ -130,8 +142,24 @@ func (s *CreateAccountShrinkRequest) GetEngine() *string {
 	return s.Engine
 }
 
+func (s *CreateAccountShrinkRequest) GetPromqlInsertPrivilegesShrink() *string {
+	return s.PromqlInsertPrivilegesShrink
+}
+
+func (s *CreateAccountShrinkRequest) GetPromqlSelectNodePercentage() *float64 {
+	return s.PromqlSelectNodePercentage
+}
+
+func (s *CreateAccountShrinkRequest) GetPromqlSelectPrivilegesShrink() *string {
+	return s.PromqlSelectPrivilegesShrink
+}
+
 func (s *CreateAccountShrinkRequest) GetRamUserListShrink() *string {
 	return s.RamUserListShrink
+}
+
+func (s *CreateAccountShrinkRequest) GetResourceGroupName() *string {
+	return s.ResourceGroupName
 }
 
 func (s *CreateAccountShrinkRequest) SetAccountDescription(v string) *CreateAccountShrinkRequest {
@@ -164,8 +192,28 @@ func (s *CreateAccountShrinkRequest) SetEngine(v string) *CreateAccountShrinkReq
 	return s
 }
 
+func (s *CreateAccountShrinkRequest) SetPromqlInsertPrivilegesShrink(v string) *CreateAccountShrinkRequest {
+	s.PromqlInsertPrivilegesShrink = &v
+	return s
+}
+
+func (s *CreateAccountShrinkRequest) SetPromqlSelectNodePercentage(v float64) *CreateAccountShrinkRequest {
+	s.PromqlSelectNodePercentage = &v
+	return s
+}
+
+func (s *CreateAccountShrinkRequest) SetPromqlSelectPrivilegesShrink(v string) *CreateAccountShrinkRequest {
+	s.PromqlSelectPrivilegesShrink = &v
+	return s
+}
+
 func (s *CreateAccountShrinkRequest) SetRamUserListShrink(v string) *CreateAccountShrinkRequest {
 	s.RamUserListShrink = &v
+	return s
+}
+
+func (s *CreateAccountShrinkRequest) SetResourceGroupName(v string) *CreateAccountShrinkRequest {
+	s.ResourceGroupName = &v
 	return s
 }
 

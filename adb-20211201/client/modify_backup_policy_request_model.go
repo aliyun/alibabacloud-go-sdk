@@ -32,15 +32,17 @@ type iModifyBackupPolicyRequest interface {
 }
 
 type ModifyBackupPolicyRequest struct {
-	// The number of days for which to retain full backup files. Valid values: 7 to 730.
+	// The number of days for which full backups are retained. Valid values: 7 to 730.
 	//
-	// >  If you do not specify this parameter, the default value 7 is used.
+	// > If you do not specify this parameter, the default value is 7.
 	//
 	// example:
 	//
 	// 7
 	BackupRetentionPeriod *string `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	//
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -48,21 +50,21 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// am-bp1xxxxxxxx47
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to enable log backup. Valid values:
+	// Specifies whether to enable log (real-time) backup. Valid values:
 	//
-	// 	- **Enable**
+	// - **Enable**: Enabled.
 	//
-	// 	- **Disable**
+	// - **Disable**: Disabled.
 	//
-	// >  If you do not specify this parameter, the default value Enable is used.
+	// > If you do not specify this parameter, log backup is enabled by default.
 	//
 	// example:
 	//
 	// Enable
 	EnableBackupLog *string `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	// The number of days for which to retain log backup files. Valid values: 7 to 730.
+	// The number of days for which log (real-time) backups are retained. Valid values: 7 to 730.
 	//
-	// >  If you do not specify this parameter, the default value 7 is used.
+	// > If you do not specify this parameter, the default value is 7.
 	//
 	// example:
 	//
@@ -70,31 +72,31 @@ type ModifyBackupPolicyRequest struct {
 	LogBackupRetentionPeriod *int32  `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
 	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The days of the week on which to perform a full backup. Separate multiple values with commas (,). Valid values:
+	// The full backup cycle. Separate multiple values with commas (,). Valid values:
 	//
-	// 	- **Monday**
+	// - **Monday**: Monday.
 	//
-	// 	- **Tuesday**
+	// - **Tuesday**: Tuesday.
 	//
-	// 	- **Wednesday**
+	// - **Wednesday**: Wednesday.
 	//
-	// 	- **Thursday**
+	// - **Thursday**: Thursday.
 	//
-	// 	- **Friday**
+	// - **Friday**: Friday.
 	//
-	// 	- **Saturday**
+	// - **Saturday**: Saturday.
 	//
-	// 	- **Sunday**
+	// - **Sunday**: Sunday.
 	//
-	// >  To ensure data security, we recommend that you specify at least two values.
+	// > To ensure data security, select at least two days.
 	//
 	// example:
 	//
 	// Monday,Wednesday,Friday,Sunday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	// The start time to perform a full backup. Specify the time in the HH:mmZ-HH:mmZ format. The time must be in UTC.
+	// The start time of the full backup. Specify the time in the HH:mmZ-HH:mmZ format (UTC).
 	//
-	// >  The time range must be 1 hour.
+	// > The time range is limited to 1 hour.
 	//
 	// This parameter is required.
 	//

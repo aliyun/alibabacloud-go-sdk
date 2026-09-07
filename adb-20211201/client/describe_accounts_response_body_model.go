@@ -95,13 +95,17 @@ func (s *DescribeAccountsResponseBodyAccountList) Validate() error {
 }
 
 type DescribeAccountsResponseBodyAccountListDBAccount struct {
-	AccountDescription *string                                                      `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	AccountName        *string                                                      `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountStatus      *string                                                      `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
-	AccountType        *string                                                      `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	Engine             *string                                                      `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	RamUserList        *DescribeAccountsResponseBodyAccountListDBAccountRamUserList `json:"RamUserList,omitempty" xml:"RamUserList,omitempty" type:"Struct"`
-	RamUsers           *string                                                      `json:"RamUsers,omitempty" xml:"RamUsers,omitempty"`
+	AccountDescription         *string                                                                 `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
+	AccountName                *string                                                                 `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountStatus              *string                                                                 `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
+	AccountType                *string                                                                 `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	Engine                     *string                                                                 `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	PromqlInsertPrivileges     *DescribeAccountsResponseBodyAccountListDBAccountPromqlInsertPrivileges `json:"PromqlInsertPrivileges,omitempty" xml:"PromqlInsertPrivileges,omitempty" type:"Struct"`
+	PromqlSelectNodes          *DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectNodes      `json:"PromqlSelectNodes,omitempty" xml:"PromqlSelectNodes,omitempty" type:"Struct"`
+	PromqlSelectPrivileges     *DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectPrivileges `json:"PromqlSelectPrivileges,omitempty" xml:"PromqlSelectPrivileges,omitempty" type:"Struct"`
+	RamUserList                *DescribeAccountsResponseBodyAccountListDBAccountRamUserList            `json:"RamUserList,omitempty" xml:"RamUserList,omitempty" type:"Struct"`
+	RamUsers                   *string                                                                 `json:"RamUsers,omitempty" xml:"RamUsers,omitempty"`
+	PromqlSelectNodePercentage *float64                                                                `json:"promqlSelectNodePercentage,omitempty" xml:"promqlSelectNodePercentage,omitempty"`
 }
 
 func (s DescribeAccountsResponseBodyAccountListDBAccount) String() string {
@@ -132,12 +136,28 @@ func (s *DescribeAccountsResponseBodyAccountListDBAccount) GetEngine() *string {
 	return s.Engine
 }
 
+func (s *DescribeAccountsResponseBodyAccountListDBAccount) GetPromqlInsertPrivileges() *DescribeAccountsResponseBodyAccountListDBAccountPromqlInsertPrivileges {
+	return s.PromqlInsertPrivileges
+}
+
+func (s *DescribeAccountsResponseBodyAccountListDBAccount) GetPromqlSelectNodes() *DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectNodes {
+	return s.PromqlSelectNodes
+}
+
+func (s *DescribeAccountsResponseBodyAccountListDBAccount) GetPromqlSelectPrivileges() *DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectPrivileges {
+	return s.PromqlSelectPrivileges
+}
+
 func (s *DescribeAccountsResponseBodyAccountListDBAccount) GetRamUserList() *DescribeAccountsResponseBodyAccountListDBAccountRamUserList {
 	return s.RamUserList
 }
 
 func (s *DescribeAccountsResponseBodyAccountListDBAccount) GetRamUsers() *string {
 	return s.RamUsers
+}
+
+func (s *DescribeAccountsResponseBodyAccountListDBAccount) GetPromqlSelectNodePercentage() *float64 {
+	return s.PromqlSelectNodePercentage
 }
 
 func (s *DescribeAccountsResponseBodyAccountListDBAccount) SetAccountDescription(v string) *DescribeAccountsResponseBodyAccountListDBAccount {
@@ -165,6 +185,21 @@ func (s *DescribeAccountsResponseBodyAccountListDBAccount) SetEngine(v string) *
 	return s
 }
 
+func (s *DescribeAccountsResponseBodyAccountListDBAccount) SetPromqlInsertPrivileges(v *DescribeAccountsResponseBodyAccountListDBAccountPromqlInsertPrivileges) *DescribeAccountsResponseBodyAccountListDBAccount {
+	s.PromqlInsertPrivileges = v
+	return s
+}
+
+func (s *DescribeAccountsResponseBodyAccountListDBAccount) SetPromqlSelectNodes(v *DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectNodes) *DescribeAccountsResponseBodyAccountListDBAccount {
+	s.PromqlSelectNodes = v
+	return s
+}
+
+func (s *DescribeAccountsResponseBodyAccountListDBAccount) SetPromqlSelectPrivileges(v *DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectPrivileges) *DescribeAccountsResponseBodyAccountListDBAccount {
+	s.PromqlSelectPrivileges = v
+	return s
+}
+
 func (s *DescribeAccountsResponseBodyAccountListDBAccount) SetRamUserList(v *DescribeAccountsResponseBodyAccountListDBAccountRamUserList) *DescribeAccountsResponseBodyAccountListDBAccount {
 	s.RamUserList = v
 	return s
@@ -175,13 +210,108 @@ func (s *DescribeAccountsResponseBodyAccountListDBAccount) SetRamUsers(v string)
 	return s
 }
 
+func (s *DescribeAccountsResponseBodyAccountListDBAccount) SetPromqlSelectNodePercentage(v float64) *DescribeAccountsResponseBodyAccountListDBAccount {
+	s.PromqlSelectNodePercentage = &v
+	return s
+}
+
 func (s *DescribeAccountsResponseBodyAccountListDBAccount) Validate() error {
+	if s.PromqlInsertPrivileges != nil {
+		if err := s.PromqlInsertPrivileges.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PromqlSelectNodes != nil {
+		if err := s.PromqlSelectNodes.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.PromqlSelectPrivileges != nil {
+		if err := s.PromqlSelectPrivileges.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.RamUserList != nil {
 		if err := s.RamUserList.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type DescribeAccountsResponseBodyAccountListDBAccountPromqlInsertPrivileges struct {
+	PromqlInsertPrivileges []*string `json:"PromqlInsertPrivileges,omitempty" xml:"PromqlInsertPrivileges,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAccountsResponseBodyAccountListDBAccountPromqlInsertPrivileges) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAccountsResponseBodyAccountListDBAccountPromqlInsertPrivileges) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccountsResponseBodyAccountListDBAccountPromqlInsertPrivileges) GetPromqlInsertPrivileges() []*string {
+	return s.PromqlInsertPrivileges
+}
+
+func (s *DescribeAccountsResponseBodyAccountListDBAccountPromqlInsertPrivileges) SetPromqlInsertPrivileges(v []*string) *DescribeAccountsResponseBodyAccountListDBAccountPromqlInsertPrivileges {
+	s.PromqlInsertPrivileges = v
+	return s
+}
+
+func (s *DescribeAccountsResponseBodyAccountListDBAccountPromqlInsertPrivileges) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectNodes struct {
+	PromqlSelectNodes []*string `json:"PromqlSelectNodes,omitempty" xml:"PromqlSelectNodes,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectNodes) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectNodes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectNodes) GetPromqlSelectNodes() []*string {
+	return s.PromqlSelectNodes
+}
+
+func (s *DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectNodes) SetPromqlSelectNodes(v []*string) *DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectNodes {
+	s.PromqlSelectNodes = v
+	return s
+}
+
+func (s *DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectNodes) Validate() error {
+	return dara.Validate(s)
+}
+
+type DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectPrivileges struct {
+	PromqlSelectPrivileges []*string `json:"PromqlSelectPrivileges,omitempty" xml:"PromqlSelectPrivileges,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectPrivileges) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectPrivileges) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectPrivileges) GetPromqlSelectPrivileges() []*string {
+	return s.PromqlSelectPrivileges
+}
+
+func (s *DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectPrivileges) SetPromqlSelectPrivileges(v []*string) *DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectPrivileges {
+	s.PromqlSelectPrivileges = v
+	return s
+}
+
+func (s *DescribeAccountsResponseBodyAccountListDBAccountPromqlSelectPrivileges) Validate() error {
+	return dara.Validate(s)
 }
 
 type DescribeAccountsResponseBodyAccountListDBAccountRamUserList struct {

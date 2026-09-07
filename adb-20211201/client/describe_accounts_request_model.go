@@ -17,6 +17,8 @@ type iDescribeAccountsRequest interface {
 	GetEngine() *string
 	SetOwnerId(v string) *DescribeAccountsRequest
 	GetOwnerId() *string
+	SetResourceGroupName(v string) *DescribeAccountsRequest
+	GetResourceGroupName() *string
 }
 
 type DescribeAccountsRequest struct {
@@ -40,15 +42,17 @@ type DescribeAccountsRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The database engine. Valid values:
 	//
-	// - **AnalyticDB*	- (default): the AnalyticDB for MySQL engine
+	// - **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
 	//
-	// - **Clickhouse**: the LindormTable engine
+	// - **Clickhouse**: the wide table engine.
 	//
 	// example:
 	//
 	// Clickhouse
 	Engine  *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The name of the resource group.
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 
 func (s DescribeAccountsRequest) String() string {
@@ -75,6 +79,10 @@ func (s *DescribeAccountsRequest) GetOwnerId() *string {
 	return s.OwnerId
 }
 
+func (s *DescribeAccountsRequest) GetResourceGroupName() *string {
+	return s.ResourceGroupName
+}
+
 func (s *DescribeAccountsRequest) SetAccountName(v string) *DescribeAccountsRequest {
 	s.AccountName = &v
 	return s
@@ -92,6 +100,11 @@ func (s *DescribeAccountsRequest) SetEngine(v string) *DescribeAccountsRequest {
 
 func (s *DescribeAccountsRequest) SetOwnerId(v string) *DescribeAccountsRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeAccountsRequest) SetResourceGroupName(v string) *DescribeAccountsRequest {
+	s.ResourceGroupName = &v
 	return s
 }
 

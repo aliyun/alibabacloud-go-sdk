@@ -17,14 +17,16 @@ type iModifyAccountDescriptionRequest interface {
 	GetDBClusterId() *string
 	SetEngine(v string) *ModifyAccountDescriptionRequest
 	GetEngine() *string
+	SetResourceGroupName(v string) *ModifyAccountDescriptionRequest
+	GetResourceGroupName() *string
 }
 
 type ModifyAccountDescriptionRequest struct {
-	// The description of the database account.
+	// The description of the account.
 	//
-	// 	- The description cannot start with `http://` or `https://`.
+	// - The description cannot start with `http://` or `https://`.
 	//
-	// 	- The description must be 2 to 256 characters in length.
+	// - The description must be 2 to 256 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -32,9 +34,9 @@ type ModifyAccountDescriptionRequest struct {
 	//
 	// AccDesc
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The name of the database account.
+	// The database account.
 	//
-	// >  You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/612430.html) operation to query the information about database accounts of an AnalyticDB for MySQL cluster, including database account names.
+	// > You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/612430.html) operation to query the database account information of a specified cluster, including the database account.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +44,9 @@ type ModifyAccountDescriptionRequest struct {
 	//
 	// testacc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// <props="china">The ID of the cluster. The cluster can be an Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	//
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -50,16 +54,17 @@ type ModifyAccountDescriptionRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The database engine of the cluster. Valid values:
+	// The database engine. Valid values:
 	//
-	// 	- **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
+	// - **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
 	//
-	// 	- **Clickhouse**: the wide table engine.
+	// - **Clickhouse**: the wide table engine.
 	//
 	// example:
 	//
 	// Clickhouse
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	Engine            *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 
 func (s ModifyAccountDescriptionRequest) String() string {
@@ -86,6 +91,10 @@ func (s *ModifyAccountDescriptionRequest) GetEngine() *string {
 	return s.Engine
 }
 
+func (s *ModifyAccountDescriptionRequest) GetResourceGroupName() *string {
+	return s.ResourceGroupName
+}
+
 func (s *ModifyAccountDescriptionRequest) SetAccountDescription(v string) *ModifyAccountDescriptionRequest {
 	s.AccountDescription = &v
 	return s
@@ -103,6 +112,11 @@ func (s *ModifyAccountDescriptionRequest) SetDBClusterId(v string) *ModifyAccoun
 
 func (s *ModifyAccountDescriptionRequest) SetEngine(v string) *ModifyAccountDescriptionRequest {
 	s.Engine = &v
+	return s
+}
+
+func (s *ModifyAccountDescriptionRequest) SetResourceGroupName(v string) *ModifyAccountDescriptionRequest {
+	s.ResourceGroupName = &v
 	return s
 }
 

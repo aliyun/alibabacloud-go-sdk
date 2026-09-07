@@ -70,21 +70,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"eu-west-1-oxs":               dara.String("adb.ap-northeast-1.aliyuncs.com"),
 		"me-east-1":                   dara.String("adb.ap-northeast-1.aliyuncs.com"),
 		"rus-west-1-pop":              dara.String("adb.ap-northeast-1.aliyuncs.com"),
-		"cn-chengdu":                  dara.String("adb.cn-chengdu.aliyuncs.com"),
-		"cn-wulanchabu":               dara.String("adb.cn-wulanchabu.aliyuncs.com"),
-		"cn-zhangjiakou":              dara.String("adb.cn-zhangjiakou.aliyuncs.com"),
-		"ap-northeast-2":              dara.String("adb.ap-northeast-2.aliyuncs.com"),
-		"ap-northeast-1":              dara.String("adb.ap-northeast-1.aliyuncs.com"),
-		"cn-guangzhou":                dara.String("adb.cn-guangzhou.aliyuncs.com"),
-		"ap-southeast-3":              dara.String("adb.ap-southeast-3.aliyuncs.com"),
-		"cn-huhehaote":                dara.String("adb.cn-huhehaote.aliyuncs.com"),
-		"ap-southeast-5":              dara.String("adb.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-6":              dara.String("adb.ap-southeast-6.aliyuncs.com"),
-		"ap-southeast-7":              dara.String("adb.ap-southeast-7.aliyuncs.com"),
-		"eu-west-1":                   dara.String("adb.eu-west-1.aliyuncs.com"),
-		"eu-central-1":                dara.String("adb.eu-central-1.aliyuncs.com"),
-		"na-south-1":                  dara.String("adb.na-south-1.aliyuncs.com"),
-		"me-central-1":                dara.String("adb.me-central-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -119,7 +104,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds a knowledge base document.
+// Adds a document to a knowledge base.
 //
 // @param request - AddKnowledgeFileRequest
 //
@@ -148,6 +133,10 @@ func (client *Client) AddKnowledgeFileWithOptions(request *AddKnowledgeFileReque
 
 	if !dara.IsNil(request.IsDir) {
 		query["IsDir"] = request.IsDir
+	}
+
+	if !dara.IsNil(request.Priority) {
+		query["Priority"] = request.Priority
 	}
 
 	if !dara.IsNil(request.Tags) {
@@ -183,7 +172,7 @@ func (client *Client) AddKnowledgeFileWithOptions(request *AddKnowledgeFileReque
 
 // Summary:
 //
-// Adds a knowledge base document.
+// Adds a document to a knowledge base.
 //
 // @param request - AddKnowledgeFileRequest
 //
@@ -192,6 +181,146 @@ func (client *Client) AddKnowledgeFile(request *AddKnowledgeFileRequest) (_resul
 	runtime := &dara.RuntimeOptions{}
 	_result = &AddKnowledgeFileResponse{}
 	_body, _err := client.AddKnowledgeFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds tags to a knowledge base document.
+//
+// @param request - AddKnowledgeTagsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddKnowledgeTagsResponse
+func (client *Client) AddKnowledgeTagsWithOptions(request *AddKnowledgeTagsRequest, runtime *dara.RuntimeOptions) (_result *AddKnowledgeTagsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FileLocation) {
+		query["FileLocation"] = request.FileLocation
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddKnowledgeTags"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddKnowledgeTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds tags to a knowledge base document.
+//
+// @param request - AddKnowledgeTagsRequest
+//
+// @return AddKnowledgeTagsResponse
+func (client *Client) AddKnowledgeTags(request *AddKnowledgeTagsRequest) (_result *AddKnowledgeTagsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddKnowledgeTagsResponse{}
+	_body, _err := client.AddKnowledgeTagsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds authorized users to a knowledge base document.
+//
+// @param request - AddKnowledgeUploadUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddKnowledgeUploadUserResponse
+func (client *Client) AddKnowledgeUploadUserWithOptions(request *AddKnowledgeUploadUserRequest, runtime *dara.RuntimeOptions) (_result *AddKnowledgeUploadUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FileLocation) {
+		query["FileLocation"] = request.FileLocation
+	}
+
+	if !dara.IsNil(request.Users) {
+		query["Users"] = request.Users
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddKnowledgeUploadUser"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddKnowledgeUploadUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds authorized users to a knowledge base document.
+//
+// @param request - AddKnowledgeUploadUserRequest
+//
+// @return AddKnowledgeUploadUserResponse
+func (client *Client) AddKnowledgeUploadUser(request *AddKnowledgeUploadUserRequest) (_result *AddKnowledgeUploadUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &AddKnowledgeUploadUserResponse{}
+	_body, _err := client.AddKnowledgeUploadUserWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1357,7 +1486,7 @@ func (client *Client) CreateAPSJob(request *CreateAPSJobRequest) (_result *Creat
 //
 // Description:
 //
-// For information about the endpoint of this service, see [Service registration](https://help.aliyun.com/document_detail/612373.html).
+// For information about the endpoint of the current service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param tmpReq - CreateAccountRequest
 //
@@ -1373,6 +1502,14 @@ func (client *Client) CreateAccountWithOptions(tmpReq *CreateAccountRequest, run
 	}
 	request := &CreateAccountShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.PromqlInsertPrivileges) {
+		request.PromqlInsertPrivilegesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PromqlInsertPrivileges, dara.String("PromqlInsertPrivileges"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.PromqlSelectPrivileges) {
+		request.PromqlSelectPrivilegesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PromqlSelectPrivileges, dara.String("PromqlSelectPrivileges"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.RamUserList) {
 		request.RamUserListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RamUserList, dara.String("RamUserList"), dara.String("json"))
 	}
@@ -1402,8 +1539,24 @@ func (client *Client) CreateAccountWithOptions(tmpReq *CreateAccountRequest, run
 		query["Engine"] = request.Engine
 	}
 
+	if !dara.IsNil(request.PromqlInsertPrivilegesShrink) {
+		query["PromqlInsertPrivileges"] = request.PromqlInsertPrivilegesShrink
+	}
+
+	if !dara.IsNil(request.PromqlSelectNodePercentage) {
+		query["PromqlSelectNodePercentage"] = request.PromqlSelectNodePercentage
+	}
+
+	if !dara.IsNil(request.PromqlSelectPrivilegesShrink) {
+		query["PromqlSelectPrivileges"] = request.PromqlSelectPrivilegesShrink
+	}
+
 	if !dara.IsNil(request.RamUserListShrink) {
 		query["RamUserList"] = request.RamUserListShrink
+	}
+
+	if !dara.IsNil(request.ResourceGroupName) {
+		query["ResourceGroupName"] = request.ResourceGroupName
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1435,7 +1588,7 @@ func (client *Client) CreateAccountWithOptions(tmpReq *CreateAccountRequest, run
 //
 // Description:
 //
-// For information about the endpoint of this service, see [Service registration](https://help.aliyun.com/document_detail/612373.html).
+// For information about the endpoint of the current service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - CreateAccountRequest
 //
@@ -2273,7 +2426,13 @@ func (client *Client) CreateApsWebhook(request *CreateApsWebhookRequest) (_resul
 //
 // Description:
 //
-// *Before you use this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ads/detail/ads_pre) of AnalyticDB for MySQL.*	- Temporary backups and regular backups have the same pricing and backup set retention period.
+// *Before using this operation, make sure that you fully understand the billing methods and <props="china">[pricing](https://www.aliyun.com/price/product#/ads/detail/ads_pre
+//
+// )
+//
+// <props="intl">[pricing](https://www.alibabacloud.com/zh/zh/pricing-calculator?_p_lc=1#/) of AnalyticDB for MySQL.*	-
+//
+// Temporary backups and regular backups have the same pricing and backup set retention period.
 //
 // @param request - CreateBackupRequest
 //
@@ -2341,7 +2500,13 @@ func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runt
 //
 // Description:
 //
-// *Before you use this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ads/detail/ads_pre) of AnalyticDB for MySQL.*	- Temporary backups and regular backups have the same pricing and backup set retention period.
+// *Before using this operation, make sure that you fully understand the billing methods and <props="china">[pricing](https://www.aliyun.com/price/product#/ads/detail/ads_pre
+//
+// )
+//
+// <props="intl">[pricing](https://www.alibabacloud.com/zh/zh/pricing-calculator?_p_lc=1#/) of AnalyticDB for MySQL.*	-
+//
+// Temporary backups and regular backups have the same pricing and backup set retention period.
 //
 // @param request - CreateBackupRequest
 //
@@ -2553,7 +2718,7 @@ func (client *Client) CreateDBCluster(request *CreateDBClusterRequest) (_result 
 //
 // Description:
 //
-// For the service registration of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoints of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param tmpReq - CreateDBResourceGroupRequest
 //
@@ -2715,7 +2880,7 @@ func (client *Client) CreateDBResourceGroupWithOptions(tmpReq *CreateDBResourceG
 //
 // Description:
 //
-// For the service registration of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoints of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - CreateDBResourceGroupRequest
 //
@@ -3511,11 +3676,11 @@ func (client *Client) CreateSparkTemplate(request *CreateSparkTemplateRequest) (
 
 // Summary:
 //
-// Deletes a database account from an AnalyticDB for MySQL cluster.
+// Deletes a database account from a cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoint of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DeleteAccountRequest
 //
@@ -3540,6 +3705,10 @@ func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, ru
 
 	if !dara.IsNil(request.Engine) {
 		query["Engine"] = request.Engine
+	}
+
+	if !dara.IsNil(request.ResourceGroupName) {
+		query["ResourceGroupName"] = request.ResourceGroupName
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3567,11 +3736,11 @@ func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, ru
 
 // Summary:
 //
-// Deletes a database account from an AnalyticDB for MySQL cluster.
+// Deletes a database account from a cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoint of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DeleteAccountRequest
 //
@@ -4220,6 +4389,72 @@ func (client *Client) DeleteFormationCrawler(request *DeleteFormationCrawlerRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteFormationCrawlerResponse{}
 	_body, _err := client.DeleteFormationCrawlerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a knowledge base document.
+//
+// @param request - DeleteKnowledgeFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteKnowledgeFileResponse
+func (client *Client) DeleteKnowledgeFileWithOptions(request *DeleteKnowledgeFileRequest, runtime *dara.RuntimeOptions) (_result *DeleteKnowledgeFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FileLocation) {
+		query["FileLocation"] = request.FileLocation
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteKnowledgeFile"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteKnowledgeFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a knowledge base document.
+//
+// @param request - DeleteKnowledgeFileRequest
+//
+// @return DeleteKnowledgeFileResponse
+func (client *Client) DeleteKnowledgeFile(request *DeleteKnowledgeFileRequest) (_result *DeleteKnowledgeFileResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteKnowledgeFileResponse{}
+	_body, _err := client.DeleteKnowledgeFileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5165,7 +5400,7 @@ func (client *Client) DescribeAccountPrivileges(request *DescribeAccountPrivileg
 //
 // Description:
 //
-// For the endpoint of this service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration information of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeAccountsRequest
 //
@@ -5194,6 +5429,10 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceGroupName) {
+		query["ResourceGroupName"] = request.ResourceGroupName
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5225,7 +5464,7 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 //
 // Description:
 //
-// For the endpoint of this service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration information of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeAccountsRequest
 //
@@ -8059,11 +8298,11 @@ func (client *Client) DescribeDBClusterHealthStatus(request *DescribeDBClusterHe
 
 // Summary:
 //
-// View target cluster performance data.
+// Queries the performance data of a specified cluster.
 //
 // Description:
 //
-// For the service endpoint address, see [service endpoint](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoint of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDBClusterPerformanceRequest
 //
@@ -8127,11 +8366,11 @@ func (client *Client) DescribeDBClusterPerformanceWithOptions(request *DescribeD
 
 // Summary:
 //
-// View target cluster performance data.
+// Queries the performance data of a specified cluster.
 //
 // Description:
 //
-// For the service endpoint address, see [service endpoint](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoint of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDBClusterPerformanceRequest
 //
@@ -15943,9 +16182,9 @@ func (client *Client) GetSparkWarehouseBatchSQL(request *GetSparkWarehouseBatchS
 //
 // Description:
 //
-// - Public endpoint of the region: `adb.<region-id>.aliyuncs.com`. Example: `adb.ap-southeast-1.aliyuncs.com`.
+// - Public endpoint of a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// - VPC endpoint of the region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.ap-southeast-1.aliyuncs.com`.
+// - VPC endpoint of a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - GetTableRequest
 //
@@ -16005,9 +16244,9 @@ func (client *Client) GetTableWithOptions(request *GetTableRequest, runtime *dar
 //
 // Description:
 //
-// - Public endpoint of the region: `adb.<region-id>.aliyuncs.com`. Example: `adb.ap-southeast-1.aliyuncs.com`.
+// - Public endpoint of a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// - VPC endpoint of the region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.ap-southeast-1.aliyuncs.com`.
+// - VPC endpoint of a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - GetTableRequest
 //
@@ -16990,6 +17229,138 @@ func (client *Client) ListApsWebhook(request *ListApsWebhookRequest) (_result *L
 
 // Summary:
 //
+// Queries the tags of a knowledge base document.
+//
+// @param request - ListKnowledgeTagsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKnowledgeTagsResponse
+func (client *Client) ListKnowledgeTagsWithOptions(request *ListKnowledgeTagsRequest, runtime *dara.RuntimeOptions) (_result *ListKnowledgeTagsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FileLocation) {
+		query["FileLocation"] = request.FileLocation
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKnowledgeTags"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKnowledgeTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the tags of a knowledge base document.
+//
+// @param request - ListKnowledgeTagsRequest
+//
+// @return ListKnowledgeTagsResponse
+func (client *Client) ListKnowledgeTags(request *ListKnowledgeTagsRequest) (_result *ListKnowledgeTagsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListKnowledgeTagsResponse{}
+	_body, _err := client.ListKnowledgeTagsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the authorized users of a knowledge base document.
+//
+// @param request - ListKnowledgeUploadUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKnowledgeUploadUserResponse
+func (client *Client) ListKnowledgeUploadUserWithOptions(request *ListKnowledgeUploadUserRequest, runtime *dara.RuntimeOptions) (_result *ListKnowledgeUploadUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FileLocation) {
+		query["FileLocation"] = request.FileLocation
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKnowledgeUploadUser"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKnowledgeUploadUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the authorized users of a knowledge base document.
+//
+// @param request - ListKnowledgeUploadUserRequest
+//
+// @return ListKnowledgeUploadUserResponse
+func (client *Client) ListKnowledgeUploadUser(request *ListKnowledgeUploadUserRequest) (_result *ListKnowledgeUploadUserResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListKnowledgeUploadUserResponse{}
+	_body, _err := client.ListKnowledgeUploadUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of lake storages.
 //
 // @param request - ListLakeStoragesRequest
@@ -17832,11 +18203,11 @@ func (client *Client) LoadSampleDataSet(request *LoadSampleDataSetRequest) (_res
 
 // Summary:
 //
-// Modifies the description of a database account for an AnalyticDB for MySQL cluster.
+// Modifies the description of a database account for a specified cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the service registration of the current service, see [Service registration](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyAccountDescriptionRequest
 //
@@ -17867,6 +18238,10 @@ func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccount
 		query["Engine"] = request.Engine
 	}
 
+	if !dara.IsNil(request.ResourceGroupName) {
+		query["ResourceGroupName"] = request.ResourceGroupName
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17892,11 +18267,11 @@ func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccount
 
 // Summary:
 //
-// Modifies the description of a database account for an AnalyticDB for MySQL cluster.
+// Modifies the description of a database account for a specified cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the service registration of the current service, see [Service registration](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyAccountDescriptionRequest
 //
@@ -17918,7 +18293,7 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration of this service, refer to [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param tmpReq - ModifyAccountPrivilegesRequest
 //
@@ -17938,6 +18313,14 @@ func (client *Client) ModifyAccountPrivilegesWithOptions(tmpReq *ModifyAccountPr
 		request.AccountPrivilegesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AccountPrivileges, dara.String("AccountPrivileges"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.PromqlInsertPrivileges) {
+		request.PromqlInsertPrivilegesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PromqlInsertPrivileges, dara.String("PromqlInsertPrivileges"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.PromqlSelectPrivileges) {
+		request.PromqlSelectPrivilegesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PromqlSelectPrivileges, dara.String("PromqlSelectPrivileges"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
 		query["AccountName"] = request.AccountName
@@ -17951,8 +18334,24 @@ func (client *Client) ModifyAccountPrivilegesWithOptions(tmpReq *ModifyAccountPr
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !dara.IsNil(request.PromqlInsertPrivilegesShrink) {
+		query["PromqlInsertPrivileges"] = request.PromqlInsertPrivilegesShrink
+	}
+
+	if !dara.IsNil(request.PromqlSelectNodePercentage) {
+		query["PromqlSelectNodePercentage"] = request.PromqlSelectNodePercentage
+	}
+
+	if !dara.IsNil(request.PromqlSelectPrivilegesShrink) {
+		query["PromqlSelectPrivileges"] = request.PromqlSelectPrivilegesShrink
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupName) {
+		query["ResourceGroupName"] = request.ResourceGroupName
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -17984,7 +18383,7 @@ func (client *Client) ModifyAccountPrivilegesWithOptions(tmpReq *ModifyAccountPr
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration of this service, refer to [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyAccountPrivilegesRequest
 //
@@ -18418,11 +18817,11 @@ func (client *Client) ModifyApsWorkloadName(request *ModifyApsWorkloadNameReques
 
 // Summary:
 //
-// Modifies the SQL audit settings of an AnalyticDB for MySQL cluster.
+// Modifies the SQL audit log settings of a cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoint of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyAuditLogConfigRequest
 //
@@ -18494,11 +18893,11 @@ func (client *Client) ModifyAuditLogConfigWithOptions(request *ModifyAuditLogCon
 
 // Summary:
 //
-// Modifies the SQL audit settings of an AnalyticDB for MySQL cluster.
+// Modifies the SQL audit log settings of a cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoint of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyAuditLogConfigRequest
 //
@@ -18610,11 +19009,11 @@ func (client *Client) ModifyAutoRenewalAttribute(request *ModifyAutoRenewalAttri
 
 // Summary:
 //
-// Modifies the backup policy of an AnalyticDB for MySQL cluster.
+// Modifies the backup policy of a cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the endpoint of the current service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -18694,11 +19093,11 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 
 // Summary:
 //
-// Modifies the backup policy of an AnalyticDB for MySQL cluster.
+// Modifies the backup policy of a cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the endpoint of the current service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -19454,7 +19853,7 @@ func (client *Client) ModifyDBClusterVip(request *ModifyDBClusterVipRequest) (_r
 //
 // Description:
 //
-// For information about the endpoints of this service, see [Service registration](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoint of this service, refer to [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param tmpReq - ModifyDBResourceGroupRequest
 //
@@ -19608,7 +20007,7 @@ func (client *Client) ModifyDBResourceGroupWithOptions(tmpReq *ModifyDBResourceG
 //
 // Description:
 //
-// For information about the endpoints of this service, see [Service registration](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoint of this service, refer to [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyDBResourceGroupRequest
 //
@@ -20820,6 +21219,76 @@ func (client *Client) ReleaseClusterPublicConnection(request *ReleaseClusterPubl
 
 // Summary:
 //
+// Deletes tags from a knowledge base document.
+//
+// @param request - RemoveKnowledgeTagsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveKnowledgeTagsResponse
+func (client *Client) RemoveKnowledgeTagsWithOptions(request *RemoveKnowledgeTagsRequest, runtime *dara.RuntimeOptions) (_result *RemoveKnowledgeTagsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FileLocation) {
+		query["FileLocation"] = request.FileLocation
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveKnowledgeTags"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveKnowledgeTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes tags from a knowledge base document.
+//
+// @param request - RemoveKnowledgeTagsRequest
+//
+// @return RemoveKnowledgeTagsResponse
+func (client *Client) RemoveKnowledgeTags(request *RemoveKnowledgeTagsRequest) (_result *RemoveKnowledgeTagsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RemoveKnowledgeTagsResponse{}
+	_body, _err := client.RemoveKnowledgeTagsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the name of a semantic view.
 //
 // @param request - RenameSemanticViewRequest
@@ -20972,11 +21441,11 @@ func (client *Client) ReplaceSemanticView(request *ReplaceSemanticViewRequest) (
 
 // Summary:
 //
-// Resets the password of a database account for an AnalyticDB for MySQL cluster.
+// Resets the password of a database account for a specified cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the service registration of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ResetAccountPasswordRequest
 //
@@ -21011,6 +21480,10 @@ func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPassw
 		query["Engine"] = request.Engine
 	}
 
+	if !dara.IsNil(request.ResourceGroupName) {
+		query["ResourceGroupName"] = request.ResourceGroupName
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21036,11 +21509,11 @@ func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPassw
 
 // Summary:
 //
-// Resets the password of a database account for an AnalyticDB for MySQL cluster.
+// Resets the password of a database account for a specified cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the service registration of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ResetAccountPasswordRequest
 //

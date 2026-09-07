@@ -22,11 +22,11 @@ type ModifyAuditLogConfigResponseBody struct {
 	//
 	// CDC59E56-BD07-56CA-A05F-B7907DE5C862
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the status of SQL audit is updated. Valid values:
+	// Indicates whether the SQL audit logging status is updated. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The status is updated.
 	//
-	// 	- **false**
+	// - **false**: The status failed to be updated.
 	//
 	// example:
 	//

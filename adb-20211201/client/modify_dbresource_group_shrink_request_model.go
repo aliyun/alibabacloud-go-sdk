@@ -58,23 +58,23 @@ type iModifyDBResourceGroupShrinkRequest interface {
 type ModifyDBResourceGroupShrinkRequest struct {
 	// The PromQL resource group configuration.
 	AtmConfigShrink *string `json:"AtmConfig,omitempty" xml:"AtmConfig,omitempty"`
-	// The automatic stop interval.
+	// The auto-stop interval.
 	//
 	// example:
 	//
 	// 5m
 	AutoStopInterval *string `json:"AutoStopInterval,omitempty" xml:"AutoStopInterval,omitempty"`
-	// A reserved parameter (not applicable).
+	// Reserved parameter (not applicable).
 	//
 	// example:
 	//
-	// 无
+	// None
 	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
-	// A reserved parameter (not applicable).
+	// Reserved parameter (not applicable).
 	//
 	// example:
 	//
-	// 无
+	// None
 	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
 	// <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
@@ -86,7 +86,7 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	//
 	// amv-bp1r053byu48p****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to enable the spot instance feature for the resource group. After the spot instance feature is enabled, the unit price of resources is reduced, but the resources may be released. Only Job resource groups support this feature. Valid values:
+	// Specifies whether to enable the spot instance feature for the resource group. After spot instances are enabled, the unit price of resources is reduced, but the resources may be released. Only Job resource groups support this feature. Valid values:
 	//
 	// - **True**: Enables the spot instance feature.
 	//
@@ -120,7 +120,7 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	//
 	// - **Job**
 	//
-	// > For more information about Data Lakehouse Edition resource groups, see [Resource group overview](https://help.aliyun.com/document_detail/428610.html).
+	// > For more information about Data Lakehouse Edition resource groups, refer to [Resource group introduction](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// This parameter is required.
 	//
@@ -128,45 +128,45 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	//
 	// Interactive
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// A reserved parameter (not applicable).
+	// Reserved parameter (not applicable).
 	//
 	// example:
 	//
-	// 无
+	// None
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
 	// The maximum reserved computing resources.
 	//
-	// - If the resource group type is Interactive, the maximum reserved computing resources is the unallocated resources of the cluster, in increments of 16 ACUs.
+	// - If the resource group type is Interactive, the maximum reserved computing resources are the current unallocated resources of the cluster, in increments of 16 ACUs.
 	//
-	// - If the resource group type is Job, the maximum reserved computing resources is the unallocated resources of the cluster, in increments of 8 ACUs.
+	// - If the resource group type is Job, the maximum reserved computing resources are the current unallocated resources of the cluster, in increments of 8 ACUs.
 	//
 	// example:
 	//
 	// 48ACU
 	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
-	// A reserved parameter (not applicable).
+	// Reserved parameter (not applicable).
 	//
 	// example:
 	//
 	// Reserved parameter. Not applicable.
 	MaxGpuQuantity *int32 `json:"MaxGpuQuantity,omitempty" xml:"MaxGpuQuantity,omitempty"`
-	// A reserved parameter (not applicable).
+	// Reserved parameter (not applicable).
 	//
 	// example:
 	//
-	// 无
+	// None
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
 	// The minimum reserved computing resources.
 	//
-	// - If the resource group type is Interactive, the minimum reserved computing resources is 16 ACUs.
+	// - If the resource group type is Interactive, the minimum reserved computing resources are 16 ACUs.
 	//
-	// - If the resource group type is Job, the minimum reserved computing resources is 0 ACUs.
+	// - If the resource group type is Job, the minimum reserved computing resources are 0 ACUs.
 	//
 	// example:
 	//
 	// 0ACU
 	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
-	// A reserved parameter (not applicable).
+	// Reserved parameter (not applicable).
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The job routing rules.
 	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// A reserved parameter (not applicable).
+	// Reserved parameter (not applicable).
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	//
 	// starting
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// A reserved parameter (not applicable).
+	// Reserved parameter (not applicable).
 	//
 	// example:
 	//

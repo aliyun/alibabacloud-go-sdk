@@ -58,23 +58,23 @@ type iModifyDBResourceGroupRequest interface {
 type ModifyDBResourceGroupRequest struct {
 	// The PromQL resource group configuration.
 	AtmConfig *ModifyDBResourceGroupRequestAtmConfig `json:"AtmConfig,omitempty" xml:"AtmConfig,omitempty" type:"Struct"`
-	// The automatic stop interval.
+	// The auto-stop interval.
 	//
 	// example:
 	//
 	// 5m
 	AutoStopInterval *string `json:"AutoStopInterval,omitempty" xml:"AutoStopInterval,omitempty"`
-	// A reserved parameter (not applicable).
+	// Reserved parameter (not applicable).
 	//
 	// example:
 	//
-	// 无
+	// None
 	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
-	// A reserved parameter (not applicable).
+	// Reserved parameter (not applicable).
 	//
 	// example:
 	//
-	// 无
+	// None
 	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
 	// <props="china">The cluster ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
@@ -86,7 +86,7 @@ type ModifyDBResourceGroupRequest struct {
 	//
 	// amv-bp1r053byu48p****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to enable the spot instance feature for the resource group. After the spot instance feature is enabled, the unit price of resources is reduced, but the resources may be released. Only Job resource groups support this feature. Valid values:
+	// Specifies whether to enable the spot instance feature for the resource group. After spot instances are enabled, the unit price of resources is reduced, but the resources may be released. Only Job resource groups support this feature. Valid values:
 	//
 	// - **True**: Enables the spot instance feature.
 	//
@@ -120,7 +120,7 @@ type ModifyDBResourceGroupRequest struct {
 	//
 	// - **Job**
 	//
-	// > For more information about Data Lakehouse Edition resource groups, see [Resource group overview](https://help.aliyun.com/document_detail/428610.html).
+	// > For more information about Data Lakehouse Edition resource groups, refer to [Resource group introduction](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// This parameter is required.
 	//
@@ -128,45 +128,45 @@ type ModifyDBResourceGroupRequest struct {
 	//
 	// Interactive
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// A reserved parameter (not applicable).
+	// Reserved parameter (not applicable).
 	//
 	// example:
 	//
-	// 无
+	// None
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
 	// The maximum reserved computing resources.
 	//
-	// - If the resource group type is Interactive, the maximum reserved computing resources is the unallocated resources of the cluster, in increments of 16 ACUs.
+	// - If the resource group type is Interactive, the maximum reserved computing resources are the current unallocated resources of the cluster, in increments of 16 ACUs.
 	//
-	// - If the resource group type is Job, the maximum reserved computing resources is the unallocated resources of the cluster, in increments of 8 ACUs.
+	// - If the resource group type is Job, the maximum reserved computing resources are the current unallocated resources of the cluster, in increments of 8 ACUs.
 	//
 	// example:
 	//
 	// 48ACU
 	MaxComputeResource *string `json:"MaxComputeResource,omitempty" xml:"MaxComputeResource,omitempty"`
-	// A reserved parameter (not applicable).
+	// Reserved parameter (not applicable).
 	//
 	// example:
 	//
 	// Reserved parameter. Not applicable.
 	MaxGpuQuantity *int32 `json:"MaxGpuQuantity,omitempty" xml:"MaxGpuQuantity,omitempty"`
-	// A reserved parameter (not applicable).
+	// Reserved parameter (not applicable).
 	//
 	// example:
 	//
-	// 无
+	// None
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
 	// The minimum reserved computing resources.
 	//
-	// - If the resource group type is Interactive, the minimum reserved computing resources is 16 ACUs.
+	// - If the resource group type is Interactive, the minimum reserved computing resources are 16 ACUs.
 	//
-	// - If the resource group type is Job, the minimum reserved computing resources is 0 ACUs.
+	// - If the resource group type is Job, the minimum reserved computing resources are 0 ACUs.
 	//
 	// example:
 	//
 	// 0ACU
 	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
-	// A reserved parameter (not applicable).
+	// Reserved parameter (not applicable).
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type ModifyDBResourceGroupRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The job routing rules.
 	Rules []*ModifyDBResourceGroupRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// A reserved parameter (not applicable).
+	// Reserved parameter (not applicable).
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type ModifyDBResourceGroupRequest struct {
 	//
 	// starting
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// A reserved parameter (not applicable).
+	// Reserved parameter (not applicable).
 	//
 	// example:
 	//
@@ -445,7 +445,7 @@ type ModifyDBResourceGroupRequestAtmConfig struct {
 	//
 	// 2
 	AuthNodeNum *int32 `json:"AuthNodeNum,omitempty" xml:"AuthNodeNum,omitempty"`
-	// The authentication node specifications in ACU ([0-9+]ACU).
+	// The authentication node specification in [0-9+]ACU.
 	//
 	// example:
 	//
@@ -457,7 +457,7 @@ type ModifyDBResourceGroupRequestAtmConfig struct {
 	//
 	// 2
 	InsertNodeNum *int32 `json:"InsertNodeNum,omitempty" xml:"InsertNodeNum,omitempty"`
-	// The insert node specifications in ACU ([0-9+]ACU).
+	// The insert node specification in [0-9+]ACU.
 	//
 	// example:
 	//
@@ -475,19 +475,19 @@ type ModifyDBResourceGroupRequestAtmConfig struct {
 	//
 	// 1
 	SelectNodeNum *int32 `json:"SelectNodeNum,omitempty" xml:"SelectNodeNum,omitempty"`
-	// The query node specifications ([0-9+]ACU).
+	// The query node specification ([0-9+]ACU).
 	//
 	// example:
 	//
 	// 8ACU
 	SelectNodeSpec *string `json:"SelectNodeSpec,omitempty" xml:"SelectNodeSpec,omitempty"`
-	// The disk size of storage nodes.
+	// The storage node disk size.
 	//
 	// example:
 	//
 	// 1
 	StorageNodeDiskSize *int32 `json:"StorageNodeDiskSize,omitempty" xml:"StorageNodeDiskSize,omitempty"`
-	// The disk type of storage nodes (essd_pl1, essd_pl2).
+	// The storage node disk type (essd_pl1, essd_pl2).
 	//
 	// example:
 	//
@@ -499,7 +499,7 @@ type ModifyDBResourceGroupRequestAtmConfig struct {
 	//
 	// 2
 	StorageNodeNum *int32 `json:"StorageNodeNum,omitempty" xml:"StorageNodeNum,omitempty"`
-	// The storage node specifications in ACU ([0-9+]ACU).
+	// The storage node specification in [0-9+]ACU.
 	//
 	// example:
 	//
@@ -621,9 +621,9 @@ func (s *ModifyDBResourceGroupRequestAtmConfig) Validate() error {
 type ModifyDBResourceGroupRequestGpuElasticPlan struct {
 	// Specifies whether to enable the elastic plan immediately after creation. Valid values:
 	//
-	// - **true**: Enables the elastic plan immediately.
+	// - **true**: Enables the plan immediately.
 	//
-	// - **false**: Does not enable the elastic plan.
+	// - **false**: Does not enable the plan.
 	//
 	// example:
 	//
@@ -722,9 +722,9 @@ type ModifyDBResourceGroupRequestRayConfig struct {
 	AppConfig *ModifyDBResourceGroupRequestRayConfigAppConfig `json:"AppConfig,omitempty" xml:"AppConfig,omitempty" type:"Struct"`
 	// The Ray cluster type. Valid values:
 	//
-	// - BASIC: basic type, non-high-availability
+	// - BASIC: basic type, non-high availability
 	//
-	// - HIGH_AVAILABILITY: high-availability type
+	// - HIGH_AVAILABILITY: high availability type
 	//
 	// example:
 	//
@@ -744,7 +744,7 @@ type ModifyDBResourceGroupRequestRayConfig struct {
 	//
 	// 100G
 	HeadDiskCapacity *string `json:"HeadDiskCapacity,omitempty" xml:"HeadDiskCapacity,omitempty"`
-	// The node specifications of the head node.
+	// The specification of the head node.
 	//
 	// example:
 	//
@@ -1095,7 +1095,7 @@ type ModifyDBResourceGroupRequestRayConfigWorkerGroups struct {
 	//
 	// 100G
 	WorkerDiskCapacity *string `json:"WorkerDiskCapacity,omitempty" xml:"WorkerDiskCapacity,omitempty"`
-	// The node specifications of the worker node.
+	// The specification of the worker node.
 	//
 	// example:
 	//

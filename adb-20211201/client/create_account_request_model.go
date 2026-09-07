@@ -21,8 +21,16 @@ type iCreateAccountRequest interface {
 	GetDBClusterId() *string
 	SetEngine(v string) *CreateAccountRequest
 	GetEngine() *string
+	SetPromqlInsertPrivileges(v []*string) *CreateAccountRequest
+	GetPromqlInsertPrivileges() []*string
+	SetPromqlSelectNodePercentage(v float64) *CreateAccountRequest
+	GetPromqlSelectNodePercentage() *float64
+	SetPromqlSelectPrivileges(v []*string) *CreateAccountRequest
+	GetPromqlSelectPrivileges() []*string
 	SetRamUserList(v []*string) *CreateAccountRequest
 	GetRamUserList() []*string
+	SetResourceGroupName(v string) *CreateAccountRequest
+	GetResourceGroupName() *string
 }
 
 type CreateAccountRequest struct {
@@ -34,7 +42,7 @@ type CreateAccountRequest struct {
 	//
 	// example:
 	//
-	// 数据库连接测试账号
+	// Database connection test account
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	// The name of the database account. The name must meet the following requirements:
 	//
@@ -86,16 +94,20 @@ type CreateAccountRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The database engine. Valid values:
 	//
-	// - **AnalyticDB*	- (default): AnalyticDB for MySQL engine.
+	// - **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
 	//
-	// - **Clickhouse**: wide table engine.
+	// - **Clickhouse**: the wide table engine.
 	//
 	// example:
 	//
 	// Clickhouse
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The list of Alibaba Cloud Resource Access Management (RAM) user IDs to attach. Currently, only one RAM user can be attached.
-	RamUserList []*string `json:"RamUserList,omitempty" xml:"RamUserList,omitempty" type:"Repeated"`
+	Engine                     *string   `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	PromqlInsertPrivileges     []*string `json:"PromqlInsertPrivileges,omitempty" xml:"PromqlInsertPrivileges,omitempty" type:"Repeated"`
+	PromqlSelectNodePercentage *float64  `json:"PromqlSelectNodePercentage,omitempty" xml:"PromqlSelectNodePercentage,omitempty"`
+	PromqlSelectPrivileges     []*string `json:"PromqlSelectPrivileges,omitempty" xml:"PromqlSelectPrivileges,omitempty" type:"Repeated"`
+	// The list of Alibaba Cloud RAM user IDs to bind. Currently, only one RAM user can be bound.
+	RamUserList       []*string `json:"RamUserList,omitempty" xml:"RamUserList,omitempty" type:"Repeated"`
+	ResourceGroupName *string   `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 }
 
 func (s CreateAccountRequest) String() string {
@@ -130,8 +142,24 @@ func (s *CreateAccountRequest) GetEngine() *string {
 	return s.Engine
 }
 
+func (s *CreateAccountRequest) GetPromqlInsertPrivileges() []*string {
+	return s.PromqlInsertPrivileges
+}
+
+func (s *CreateAccountRequest) GetPromqlSelectNodePercentage() *float64 {
+	return s.PromqlSelectNodePercentage
+}
+
+func (s *CreateAccountRequest) GetPromqlSelectPrivileges() []*string {
+	return s.PromqlSelectPrivileges
+}
+
 func (s *CreateAccountRequest) GetRamUserList() []*string {
 	return s.RamUserList
+}
+
+func (s *CreateAccountRequest) GetResourceGroupName() *string {
+	return s.ResourceGroupName
 }
 
 func (s *CreateAccountRequest) SetAccountDescription(v string) *CreateAccountRequest {
@@ -164,8 +192,28 @@ func (s *CreateAccountRequest) SetEngine(v string) *CreateAccountRequest {
 	return s
 }
 
+func (s *CreateAccountRequest) SetPromqlInsertPrivileges(v []*string) *CreateAccountRequest {
+	s.PromqlInsertPrivileges = v
+	return s
+}
+
+func (s *CreateAccountRequest) SetPromqlSelectNodePercentage(v float64) *CreateAccountRequest {
+	s.PromqlSelectNodePercentage = &v
+	return s
+}
+
+func (s *CreateAccountRequest) SetPromqlSelectPrivileges(v []*string) *CreateAccountRequest {
+	s.PromqlSelectPrivileges = v
+	return s
+}
+
 func (s *CreateAccountRequest) SetRamUserList(v []*string) *CreateAccountRequest {
 	s.RamUserList = v
+	return s
+}
+
+func (s *CreateAccountRequest) SetResourceGroupName(v string) *CreateAccountRequest {
+	s.ResourceGroupName = &v
 	return s
 }
 

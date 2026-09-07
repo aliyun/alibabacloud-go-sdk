@@ -43,6 +43,10 @@ type GetKnowledgeRecallRequest struct {
 	// 5
 	Topk *int32 `json:"Topk,omitempty" xml:"Topk,omitempty"`
 	// The username. Only files that this user has permission to access are recalled.
+	//
+	// example:
+	//
+	// user_name1
 	User *string `json:"User,omitempty" xml:"User,omitempty"`
 }
 

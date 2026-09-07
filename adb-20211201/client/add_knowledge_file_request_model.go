@@ -17,6 +17,8 @@ type iAddKnowledgeFileRequest interface {
 	GetFileType() *string
 	SetIsDir(v bool) *AddKnowledgeFileRequest
 	GetIsDir() *bool
+	SetPriority(v string) *AddKnowledgeFileRequest
+	GetPriority() *string
 	SetTags(v string) *AddKnowledgeFileRequest
 	GetTags() *string
 	SetUploadUser(v string) *AddKnowledgeFileRequest
@@ -32,7 +34,7 @@ type AddKnowledgeFileRequest struct {
 	//
 	// am-bp19aaaaaa****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The file address. Currently, only OSS paths are supported.
+	// The file location. Currently, only OSS paths are supported.
 	//
 	// This parameter is required.
 	//
@@ -46,12 +48,14 @@ type AddKnowledgeFileRequest struct {
 	//
 	// pdf
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// Specifies whether the file is a folder.
+	// Specifies whether the path is a directory.
 	//
 	// example:
 	//
 	// false
 	IsDir *bool `json:"IsDir,omitempty" xml:"IsDir,omitempty"`
+	// The confidence level or weight of the file.
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The file tags in JSON format.
 	//
 	// example:
@@ -90,6 +94,10 @@ func (s *AddKnowledgeFileRequest) GetIsDir() *bool {
 	return s.IsDir
 }
 
+func (s *AddKnowledgeFileRequest) GetPriority() *string {
+	return s.Priority
+}
+
 func (s *AddKnowledgeFileRequest) GetTags() *string {
 	return s.Tags
 }
@@ -115,6 +123,11 @@ func (s *AddKnowledgeFileRequest) SetFileType(v string) *AddKnowledgeFileRequest
 
 func (s *AddKnowledgeFileRequest) SetIsDir(v bool) *AddKnowledgeFileRequest {
 	s.IsDir = &v
+	return s
+}
+
+func (s *AddKnowledgeFileRequest) SetPriority(v string) *AddKnowledgeFileRequest {
+	s.Priority = &v
 	return s
 }
 

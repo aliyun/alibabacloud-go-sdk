@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Adds a knowledge base document.
+// Adds a document to a knowledge base.
 //
 // @param request - AddKnowledgeFileRequest
 //
@@ -40,6 +40,10 @@ func (client *Client) AddKnowledgeFileWithContext(ctx context.Context, request *
 		query["IsDir"] = request.IsDir
 	}
 
+	if !dara.IsNil(request.Priority) {
+		query["Priority"] = request.Priority
+	}
+
 	if !dara.IsNil(request.Tags) {
 		query["Tags"] = request.Tags
 	}
@@ -63,6 +67,110 @@ func (client *Client) AddKnowledgeFileWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &AddKnowledgeFileResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds tags to a knowledge base document.
+//
+// @param request - AddKnowledgeTagsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddKnowledgeTagsResponse
+func (client *Client) AddKnowledgeTagsWithContext(ctx context.Context, request *AddKnowledgeTagsRequest, runtime *dara.RuntimeOptions) (_result *AddKnowledgeTagsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FileLocation) {
+		query["FileLocation"] = request.FileLocation
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddKnowledgeTags"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddKnowledgeTagsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds authorized users to a knowledge base document.
+//
+// @param request - AddKnowledgeUploadUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddKnowledgeUploadUserResponse
+func (client *Client) AddKnowledgeUploadUserWithContext(ctx context.Context, request *AddKnowledgeUploadUserRequest, runtime *dara.RuntimeOptions) (_result *AddKnowledgeUploadUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FileLocation) {
+		query["FileLocation"] = request.FileLocation
+	}
+
+	if !dara.IsNil(request.Users) {
+		query["Users"] = request.Users
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddKnowledgeUploadUser"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddKnowledgeUploadUserResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -929,7 +1037,7 @@ func (client *Client) CreateAPSJobWithContext(ctx context.Context, request *Crea
 //
 // Description:
 //
-// For information about the endpoint of this service, see [Service registration](https://help.aliyun.com/document_detail/612373.html).
+// For information about the endpoint of the current service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param tmpReq - CreateAccountRequest
 //
@@ -945,6 +1053,14 @@ func (client *Client) CreateAccountWithContext(ctx context.Context, tmpReq *Crea
 	}
 	request := &CreateAccountShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.PromqlInsertPrivileges) {
+		request.PromqlInsertPrivilegesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PromqlInsertPrivileges, dara.String("PromqlInsertPrivileges"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.PromqlSelectPrivileges) {
+		request.PromqlSelectPrivilegesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PromqlSelectPrivileges, dara.String("PromqlSelectPrivileges"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.RamUserList) {
 		request.RamUserListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RamUserList, dara.String("RamUserList"), dara.String("json"))
 	}
@@ -974,8 +1090,24 @@ func (client *Client) CreateAccountWithContext(ctx context.Context, tmpReq *Crea
 		query["Engine"] = request.Engine
 	}
 
+	if !dara.IsNil(request.PromqlInsertPrivilegesShrink) {
+		query["PromqlInsertPrivileges"] = request.PromqlInsertPrivilegesShrink
+	}
+
+	if !dara.IsNil(request.PromqlSelectNodePercentage) {
+		query["PromqlSelectNodePercentage"] = request.PromqlSelectNodePercentage
+	}
+
+	if !dara.IsNil(request.PromqlSelectPrivilegesShrink) {
+		query["PromqlSelectPrivileges"] = request.PromqlSelectPrivilegesShrink
+	}
+
 	if !dara.IsNil(request.RamUserListShrink) {
 		query["RamUserList"] = request.RamUserListShrink
+	}
+
+	if !dara.IsNil(request.ResourceGroupName) {
+		query["ResourceGroupName"] = request.ResourceGroupName
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -1707,7 +1839,13 @@ func (client *Client) CreateApsWebhookWithContext(ctx context.Context, tmpReq *C
 //
 // Description:
 //
-// *Before you use this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ads/detail/ads_pre) of AnalyticDB for MySQL.*	- Temporary backups and regular backups have the same pricing and backup set retention period.
+// *Before using this operation, make sure that you fully understand the billing methods and <props="china">[pricing](https://www.aliyun.com/price/product#/ads/detail/ads_pre
+//
+// )
+//
+// <props="intl">[pricing](https://www.alibabacloud.com/zh/zh/pricing-calculator?_p_lc=1#/) of AnalyticDB for MySQL.*	-
+//
+// Temporary backups and regular backups have the same pricing and backup set retention period.
 //
 // @param request - CreateBackupRequest
 //
@@ -1943,7 +2081,7 @@ func (client *Client) CreateDBClusterWithContext(ctx context.Context, request *C
 //
 // Description:
 //
-// For the service registration of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoints of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param tmpReq - CreateDBResourceGroupRequest
 //
@@ -2693,11 +2831,11 @@ func (client *Client) CreateSparkTemplateWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes a database account from an AnalyticDB for MySQL cluster.
+// Deletes a database account from a cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoint of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DeleteAccountRequest
 //
@@ -2722,6 +2860,10 @@ func (client *Client) DeleteAccountWithContext(ctx context.Context, request *Del
 
 	if !dara.IsNil(request.Engine) {
 		query["Engine"] = request.Engine
+	}
+
+	if !dara.IsNil(request.ResourceGroupName) {
+		query["ResourceGroupName"] = request.ResourceGroupName
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -3195,6 +3337,54 @@ func (client *Client) DeleteFormationCrawlerWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteFormationCrawlerResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a knowledge base document.
+//
+// @param request - DeleteKnowledgeFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteKnowledgeFileResponse
+func (client *Client) DeleteKnowledgeFileWithContext(ctx context.Context, request *DeleteKnowledgeFileRequest, runtime *dara.RuntimeOptions) (_result *DeleteKnowledgeFileResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FileLocation) {
+		query["FileLocation"] = request.FileLocation
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteKnowledgeFile"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteKnowledgeFileResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3907,7 +4097,7 @@ func (client *Client) DescribeAccountPrivilegesWithContext(ctx context.Context, 
 //
 // Description:
 //
-// For the endpoint of this service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration information of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeAccountsRequest
 //
@@ -3936,6 +4126,10 @@ func (client *Client) DescribeAccountsWithContext(ctx context.Context, request *
 
 	if !dara.IsNil(request.OwnerId) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !dara.IsNil(request.ResourceGroupName) {
+		query["ResourceGroupName"] = request.ResourceGroupName
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -6095,11 +6289,11 @@ func (client *Client) DescribeDBClusterHealthStatusWithContext(ctx context.Conte
 
 // Summary:
 //
-// View target cluster performance data.
+// Queries the performance data of a specified cluster.
 //
 // Description:
 //
-// For the service endpoint address, see [service endpoint](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoint of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeDBClusterPerformanceRequest
 //
@@ -12007,9 +12201,9 @@ func (client *Client) GetSparkWarehouseBatchSQLWithContext(ctx context.Context, 
 //
 // Description:
 //
-// - Public endpoint of the region: `adb.<region-id>.aliyuncs.com`. Example: `adb.ap-southeast-1.aliyuncs.com`.
+// - Public endpoint of a region: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// - VPC endpoint of the region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.ap-southeast-1.aliyuncs.com`.
+// - VPC endpoint of a region: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - GetTableRequest
 //
@@ -12769,6 +12963,102 @@ func (client *Client) ListApsWebhookWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
+// Queries the tags of a knowledge base document.
+//
+// @param request - ListKnowledgeTagsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKnowledgeTagsResponse
+func (client *Client) ListKnowledgeTagsWithContext(ctx context.Context, request *ListKnowledgeTagsRequest, runtime *dara.RuntimeOptions) (_result *ListKnowledgeTagsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FileLocation) {
+		query["FileLocation"] = request.FileLocation
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKnowledgeTags"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKnowledgeTagsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the authorized users of a knowledge base document.
+//
+// @param request - ListKnowledgeUploadUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListKnowledgeUploadUserResponse
+func (client *Client) ListKnowledgeUploadUserWithContext(ctx context.Context, request *ListKnowledgeUploadUserRequest, runtime *dara.RuntimeOptions) (_result *ListKnowledgeUploadUserResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FileLocation) {
+		query["FileLocation"] = request.FileLocation
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListKnowledgeUploadUser"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListKnowledgeUploadUserResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of lake storages.
 //
 // @param request - ListLakeStoragesRequest
@@ -13383,11 +13673,11 @@ func (client *Client) LoadSampleDataSetWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Modifies the description of a database account for an AnalyticDB for MySQL cluster.
+// Modifies the description of a database account for a specified cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the service registration of the current service, see [Service registration](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyAccountDescriptionRequest
 //
@@ -13416,6 +13706,10 @@ func (client *Client) ModifyAccountDescriptionWithContext(ctx context.Context, r
 
 	if !dara.IsNil(request.Engine) {
 		query["Engine"] = request.Engine
+	}
+
+	if !dara.IsNil(request.ResourceGroupName) {
+		query["ResourceGroupName"] = request.ResourceGroupName
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -13447,7 +13741,7 @@ func (client *Client) ModifyAccountDescriptionWithContext(ctx context.Context, r
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the service registration of this service, refer to [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param tmpReq - ModifyAccountPrivilegesRequest
 //
@@ -13467,6 +13761,14 @@ func (client *Client) ModifyAccountPrivilegesWithContext(ctx context.Context, tm
 		request.AccountPrivilegesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AccountPrivileges, dara.String("AccountPrivileges"), dara.String("json"))
 	}
 
+	if !dara.IsNil(tmpReq.PromqlInsertPrivileges) {
+		request.PromqlInsertPrivilegesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PromqlInsertPrivileges, dara.String("PromqlInsertPrivileges"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.PromqlSelectPrivileges) {
+		request.PromqlSelectPrivilegesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PromqlSelectPrivileges, dara.String("PromqlSelectPrivileges"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AccountName) {
 		query["AccountName"] = request.AccountName
@@ -13480,8 +13782,24 @@ func (client *Client) ModifyAccountPrivilegesWithContext(ctx context.Context, tm
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !dara.IsNil(request.PromqlInsertPrivilegesShrink) {
+		query["PromqlInsertPrivileges"] = request.PromqlInsertPrivilegesShrink
+	}
+
+	if !dara.IsNil(request.PromqlSelectNodePercentage) {
+		query["PromqlSelectNodePercentage"] = request.PromqlSelectNodePercentage
+	}
+
+	if !dara.IsNil(request.PromqlSelectPrivilegesShrink) {
+		query["PromqlSelectPrivileges"] = request.PromqlSelectPrivilegesShrink
+	}
+
 	if !dara.IsNil(request.RegionId) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupName) {
+		query["ResourceGroupName"] = request.ResourceGroupName
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -13837,11 +14155,11 @@ func (client *Client) ModifyApsWorkloadNameWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Modifies the SQL audit settings of an AnalyticDB for MySQL cluster.
+// Modifies the SQL audit log settings of a cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoint of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyAuditLogConfigRequest
 //
@@ -13989,11 +14307,11 @@ func (client *Client) ModifyAutoRenewalAttributeWithContext(ctx context.Context,
 
 // Summary:
 //
-// Modifies the backup policy of an AnalyticDB for MySQL cluster.
+// Modifies the backup policy of a cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the endpoint of the current service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -14621,7 +14939,7 @@ func (client *Client) ModifyDBClusterVipWithContext(ctx context.Context, request
 //
 // Description:
 //
-// For information about the endpoints of this service, see [Service registration](https://help.aliyun.com/document_detail/612373.html).
+// For the endpoint of this service, refer to [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param tmpReq - ModifyDBResourceGroupRequest
 //
@@ -15685,6 +16003,58 @@ func (client *Client) ReleaseClusterPublicConnectionWithContext(ctx context.Cont
 
 // Summary:
 //
+// Deletes tags from a knowledge base document.
+//
+// @param request - RemoveKnowledgeTagsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveKnowledgeTagsResponse
+func (client *Client) RemoveKnowledgeTagsWithContext(ctx context.Context, request *RemoveKnowledgeTagsRequest, runtime *dara.RuntimeOptions) (_result *RemoveKnowledgeTagsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBClusterId) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !dara.IsNil(request.FileLocation) {
+		query["FileLocation"] = request.FileLocation
+	}
+
+	if !dara.IsNil(request.Tags) {
+		query["Tags"] = request.Tags
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveKnowledgeTags"),
+		Version:     dara.String("2021-12-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveKnowledgeTagsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the name of a semantic view.
 //
 // @param request - RenameSemanticViewRequest
@@ -15801,11 +16171,11 @@ func (client *Client) ReplaceSemanticViewWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Resets the password of a database account for an AnalyticDB for MySQL cluster.
+// Resets the password of a database account for a specified cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the service registration of this service, see [Endpoint](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ResetAccountPasswordRequest
 //
@@ -15838,6 +16208,10 @@ func (client *Client) ResetAccountPasswordWithContext(ctx context.Context, reque
 
 	if !dara.IsNil(request.Engine) {
 		query["Engine"] = request.Engine
+	}
+
+	if !dara.IsNil(request.ResourceGroupName) {
+		query["ResourceGroupName"] = request.ResourceGroupName
 	}
 
 	req := &openapiutil.OpenApiRequest{

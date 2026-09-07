@@ -24,19 +24,19 @@ type iDescribeDBClusterPerformanceResponseBody interface {
 type DescribeDBClusterPerformanceResponseBody struct {
 	// The cluster ID.
 	//
-	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all clusters in a specific region.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all clusters in a specified region.
 	//
 	// example:
 	//
 	// amv-bp1hx5n1o8f61****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end time of the query. The time is in UTC and uses the *yyyy-MM-ddTHH:mmZ	- format.
+	// The end time of the query. The time is in UTC in the format of <i>yyyy-MM-ddTHH:mmZ</i>.
 	//
 	// example:
 	//
 	// 2022-03-11T15:01Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The cluster performance metrics.
+	// The list of cluster performance metrics.
 	Performances []*DescribeDBClusterPerformanceResponseBodyPerformances `json:"Performances,omitempty" xml:"Performances,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -44,7 +44,7 @@ type DescribeDBClusterPerformanceResponseBody struct {
 	//
 	// BD8C3096-8BC6-51DF-A4AB-BACD9DC10435
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the query. The time is in UTC and uses the *yyyy-MM-ddTHH:mmZ	- format.
+	// The start time of the query. Specify the time in UTC in the format of <i>yyyy-MM-ddTHH:mmZ</i>.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type DescribeDBClusterPerformanceResponseBodyPerformances struct {
 	//
 	// AnalyticDB_CPU_Usage_Percentage
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The time series data for the metric.
+	// The list of performance data.
 	Series []*DescribeDBClusterPerformanceResponseBodyPerformancesSeries `json:"Series,omitempty" xml:"Series,omitempty" type:"Repeated"`
 	// The unit of the monitoring metric.
 	//
@@ -184,25 +184,25 @@ func (s *DescribeDBClusterPerformanceResponseBodyPerformances) Validate() error 
 }
 
 type DescribeDBClusterPerformanceResponseBodyPerformancesSeries struct {
-	// The name of the performance metric. This parameter is the Value Name of the monitoring metric. For more information, see [Overview of Monitoring Items](https://help.aliyun.com/document_detail/2863211.html).
+	// The name of the performance metric (monitoring metric value name). For more information, see [Monitoring metrics overview](https://help.aliyun.com/document_detail/2863211.html).
 	//
 	// example:
 	//
 	// AnalyticDB_Storage_CPU_Avg_Usage_Percentage
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// A JSON string that contains the tags for the metric series.
+	// The tag value.
 	//
 	// example:
 	//
 	// {instance_name: "am-***"}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// A key for internal internationalization (i18n). You can safely ignore this parameter.
+	// The key used for internationalization translation. You can ignore this parameter in most cases.
 	//
 	// example:
 	//
 	// AnalyticDB_RP_WaitTime
 	TranslateKey *string `json:"TranslateKey,omitempty" xml:"TranslateKey,omitempty"`
-	// An array of data points for the time series.
+	// The performance values at different points in time.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
