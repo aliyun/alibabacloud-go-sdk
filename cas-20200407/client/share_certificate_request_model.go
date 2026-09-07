@@ -16,12 +16,16 @@ type iShareCertificateRequest interface {
 }
 
 type ShareCertificateRequest struct {
+	// The certificate ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 23279004
 	CertificateId *int64 `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	// The UID of the user with whom the certificate is shared.
+	//
 	// This parameter is required.
 	//
 	// example:

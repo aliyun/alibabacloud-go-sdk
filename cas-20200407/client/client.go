@@ -77,13 +77,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"rus-west-1-pop":              dara.String("cas.aliyuncs.com"),
 		"us-east-1":                   dara.String("cas.aliyuncs.com"),
 		"us-west-1":                   dara.String("cas.aliyuncs.com"),
-		"ap-southeast-2":              dara.String("cas.ap-southeast-2.aliyuncs.com"),
-		"ap-northeast-1":              dara.String("cas.ap-northeast-1.aliyuncs.com"),
-		"ap-southeast-1":              dara.String("cas.ap-southeast-1.aliyuncs.com"),
-		"eu-central-1":                dara.String("cas.eu-central-1.aliyuncs.com"),
-		"me-central-1":                dara.String("cas.me-central-1.aliyuncs.com"),
-		"ap-south-1":                  dara.String("cas.ap-south-1.aliyuncs.com"),
-		"me-east-1":                   dara.String("cas.me-east-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -3323,6 +3316,16 @@ func (client *Client) GetCsrDetail(request *GetCsrDetailRequest) (_result *GetCs
 //
 // Queries the details of an instance.
 //
+// Description:
+//
+// This operation queries the status information of a Private Certificate Authority (PCA) instance that you purchased in the Certificate Management Service console by using the instance ID. The status information includes the CA instance status, the number of digital certificates included, and the number of digital certificates issued.
+//
+// Before you invoke this operation, you must have purchased a private CA in the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+//
+// ## QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, throttling is triggered, which may affect your business. Invoke this operation as appropriate.
+//
 // @param request - GetInstanceDetailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3366,6 +3369,16 @@ func (client *Client) GetInstanceDetailWithOptions(request *GetInstanceDetailReq
 // Summary:
 //
 // Queries the details of an instance.
+//
+// Description:
+//
+// This operation queries the status information of a Private Certificate Authority (PCA) instance that you purchased in the Certificate Management Service console by using the instance ID. The status information includes the CA instance status, the number of digital certificates included, and the number of digital certificates issued.
+//
+// Before you invoke this operation, you must have purchased a private CA in the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+//
+// ## QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, throttling is triggered, which may affect your business. Invoke this operation as appropriate.
 //
 // @param request - GetInstanceDetailRequest
 //
@@ -4692,6 +4705,16 @@ func (client *Client) ListDeploymentJobResource(request *ListDeploymentJobResour
 //
 // Retrieves a list of instances.
 //
+// Description:
+//
+// Queries the status information of Private Certificate Authority (PCA) instances that you purchased through the SSL Certificate console by using the IDs of the PCA instances. For example, you can query the status of a CA instance, the number of digital certificates included, and the number of digital certificates issued.
+//
+// Before you invoke this operation, you must have purchased a private CA through the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 requests per second. If the limit is exceeded, API calls are throttled, which may affect your business. Invoke this operation at an appropriate frequency.
+//
 // @param request - ListInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4705,6 +4728,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AutoReissueFlag) {
+		query["AutoReissueFlag"] = request.AutoReissueFlag
+	}
+
 	if !dara.IsNil(request.Brand) {
 		query["Brand"] = request.Brand
 	}
@@ -4731,6 +4758,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 
 	if !dara.IsNil(request.ResourceGroupId) {
 		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.ServerDeployFlag) {
+		query["ServerDeployFlag"] = request.ServerDeployFlag
 	}
 
 	if !dara.IsNil(request.ShowSize) {
@@ -4767,6 +4798,16 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 // Summary:
 //
 // Retrieves a list of instances.
+//
+// Description:
+//
+// Queries the status information of Private Certificate Authority (PCA) instances that you purchased through the SSL Certificate console by using the IDs of the PCA instances. For example, you can query the status of a CA instance, the number of digital certificates included, and the number of digital certificates issued.
+//
+// Before you invoke this operation, you must have purchased a private CA through the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Purchase a private CA](https://help.aliyun.com/document_detail/208553.html).
+//
+// ## QPS limit
+//
+// The single-user QPS limit for this operation is 10 requests per second. If the limit is exceeded, API calls are throttled, which may affect your business. Invoke this operation at an appropriate frequency.
 //
 // @param request - ListInstancesRequest
 //
@@ -5728,7 +5769,7 @@ func (client *Client) RevokeWHClientCertificate(request *RevokeWHClientCertifica
 
 // Summary:
 //
-// 共享证书
+// Shares a certificate.
 //
 // @param request - ShareCertificateRequest
 //
@@ -5776,7 +5817,7 @@ func (client *Client) ShareCertificateWithOptions(request *ShareCertificateReque
 
 // Summary:
 //
-// 共享证书
+// Shares a certificate.
 //
 // @param request - ShareCertificateRequest
 //
@@ -6490,7 +6531,7 @@ func (client *Client) UpdateDeploymentJobStatus(request *UpdateDeploymentJobStat
 
 // Summary:
 //
-// Updates the configuration of a Certificate Management Service instance.
+// Updates an instance.
 //
 // @param request - UpdateInstanceRequest
 //
@@ -6590,7 +6631,7 @@ func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, 
 
 // Summary:
 //
-// Updates the configuration of a Certificate Management Service instance.
+// Updates an instance.
 //
 // @param request - UpdateInstanceRequest
 //

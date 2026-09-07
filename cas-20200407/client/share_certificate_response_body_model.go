@@ -14,6 +14,8 @@ type iShareCertificateResponseBody interface {
 }
 
 type ShareCertificateResponseBody struct {
+	// The request ID. Alibaba Cloud generates a unique ID for each request. You can use the ID to troubleshoot issues.
+	//
 	// example:
 	//
 	// A79D2C05-4B0B-57CA-873D-4FA985F2D26E

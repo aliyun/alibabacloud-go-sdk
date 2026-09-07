@@ -54,7 +54,7 @@ type CreateContactRequest struct {
 	//
 	// example:
 	//
-	// [\\"https://open.feishu.cn/open-apis/bot/v2/hook/dc1aa9b9-47cd-4b34-91ef-73c1034208e5\\"]
+	// [\\"https://open.feishu.cn/open-apis/bot/v2/hook/XXX\\"]
 	Webhooks *string `json:"Webhooks,omitempty" xml:"Webhooks,omitempty"`
 }
 

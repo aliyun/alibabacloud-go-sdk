@@ -11,6 +11,10 @@ type iListInstancesResponseBody interface {
 	GoString() string
 	SetCurrentPage(v int32) *ListInstancesResponseBody
 	GetCurrentPage() *int32
+	SetDisableReissueCount(v int64) *ListInstancesResponseBody
+	GetDisableReissueCount() *int64
+	SetEnableReissueCount(v int64) *ListInstancesResponseBody
+	GetEnableReissueCount() *int64
 	SetInstanceList(v []*ListInstancesResponseBodyInstanceList) *ListInstancesResponseBody
 	GetInstanceList() []*ListInstancesResponseBodyInstanceList
 	SetRequestId(v string) *ListInstancesResponseBody
@@ -22,12 +26,24 @@ type iListInstancesResponseBody interface {
 }
 
 type ListInstancesResponseBody struct {
-	// The current page number in the paged query.
+	// The page number of the current page in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The number of instances for which managed renewal is not enabled.
+	//
+	// example:
+	//
+	// 80
+	DisableReissueCount *int64 `json:"DisableReissueCount,omitempty" xml:"DisableReissueCount,omitempty"`
+	// The number of instances for which managed renewal is enabled.
+	//
+	// example:
+	//
+	// 100
+	EnableReissueCount *int64 `json:"EnableReissueCount,omitempty" xml:"EnableReissueCount,omitempty"`
 	// The list of instances.
 	InstanceList []*ListInstancesResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
 	// The request ID.
@@ -62,6 +78,14 @@ func (s *ListInstancesResponseBody) GetCurrentPage() *int32 {
 	return s.CurrentPage
 }
 
+func (s *ListInstancesResponseBody) GetDisableReissueCount() *int64 {
+	return s.DisableReissueCount
+}
+
+func (s *ListInstancesResponseBody) GetEnableReissueCount() *int64 {
+	return s.EnableReissueCount
+}
+
 func (s *ListInstancesResponseBody) GetInstanceList() []*ListInstancesResponseBodyInstanceList {
 	return s.InstanceList
 }
@@ -80,6 +104,16 @@ func (s *ListInstancesResponseBody) GetTotalCount() *int64 {
 
 func (s *ListInstancesResponseBody) SetCurrentPage(v int32) *ListInstancesResponseBody {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListInstancesResponseBody) SetDisableReissueCount(v int64) *ListInstancesResponseBody {
+	s.DisableReissueCount = &v
+	return s
+}
+
+func (s *ListInstancesResponseBody) SetEnableReissueCount(v int64) *ListInstancesResponseBody {
+	s.EnableReissueCount = &v
 	return s
 }
 
@@ -119,9 +153,9 @@ func (s *ListInstancesResponseBody) Validate() error {
 type ListInstancesResponseBodyInstanceList struct {
 	// Indicates whether automatic managed renewal is enabled. Valid values:
 	//
-	// - enable: enabled.
+	// - enable: Enabled.
 	//
-	// - disable: disabled.
+	// - disable: Not enabled.
 	//
 	// example:
 	//
@@ -133,13 +167,13 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// DigiCert
 	Brand *string `json:"Brand,omitempty" xml:"Brand,omitempty"`
-	// The global certificate ID in the format of certificate ID + "-" + site region ID. This ID is commonly used across Alibaba Cloud services.
+	// The global certificate ID, in the format of certificate ID + "-" + site region ID. This ID is commonly used across Alibaba Cloud services.
 	//
-	// - For the China site: certificate ID + "-cn-hangzhou"
+	// - China site: certificate ID + "-cn-hangzhou"
 	//
-	// - For the China site: certificate ID + "-ap-southeast-1"
+	// - International site: certificate ID + "-ap-southeast-1"
 	//
-	// For example, if the certificate ID is 123, the CertIdentifier for the China site is "123-cn-hangzhou", and the CertIdentifier for the International site is "123-ap-southeast-1".
+	// For example, if the certificate ID is 123, the CertIdentifier on the China site is "123-cn-hangzhou", and the CertIdentifier on the international site is "123-ap-southeast-1".
 	//
 	// example:
 	//
@@ -163,19 +197,19 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// cert-13216408
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	// The end time of the latest certificate. The value is a UNIX timestamp accurate to seconds. If no certificate has been issued, this field is empty.
+	// The end time of the latest certificate. The value is a UNIX timestamp in seconds. This field is empty if no certificate has been issued.
 	//
 	// example:
 	//
 	// 1801324800000
 	CertificateNotAfter *int64 `json:"CertificateNotAfter,omitempty" xml:"CertificateNotAfter,omitempty"`
-	// The start time of the latest certificate. The value is a UNIX timestamp accurate to seconds. If no certificate has been issued, this field is empty.
+	// The start time of the latest certificate. The value is a UNIX timestamp in seconds. This field is empty if no certificate has been issued.
 	//
 	// example:
 	//
 	// 1776988800000
 	CertificateNotBefore *int64 `json:"CertificateNotBefore,omitempty" xml:"CertificateNotBefore,omitempty"`
-	// The revocation time of the latest certificate. The value is a UNIX timestamp accurate to seconds.
+	// The revocation time of the latest certificate. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -213,7 +247,7 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// 1
 	FullDomainCount *int32 `json:"FullDomainCount,omitempty" xml:"FullDomainCount,omitempty"`
-	// The expiration time of the instance. The value is a UNIX timestamp accurate to seconds. If no certificate has been issued, this field is empty.
+	// The expiration time of the instance. The value is a UNIX timestamp in seconds. This field is empty if no certificate has been issued.
 	//
 	// example:
 	//
@@ -225,7 +259,7 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// cas_dv-cn-123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The start time of the instance. The value is a UNIX timestamp accurate to seconds. If no certificate has been issued, this field is empty.
+	// The start time of the instance. The value is a UNIX timestamp in seconds. This field is empty if no certificate has been issued.
 	//
 	// example:
 	//
@@ -233,7 +267,7 @@ type ListInstancesResponseBodyInstanceList struct {
 	InstanceStartTime *int64 `json:"InstanceStartTime,omitempty" xml:"InstanceStartTime,omitempty"`
 	// The instance type. Valid values:
 	//
-	// - BUY: official certificate.
+	// - BUY: formal certificate.
 	//
 	// - TEST: test certificate.
 	//
@@ -257,13 +291,13 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// RSA_2048
 	KeyAlgorithm *string `json:"KeyAlgorithm,omitempty" xml:"KeyAlgorithm,omitempty"`
-	// The end time of the instance purchase. The value is a UNIX timestamp accurate to seconds. Used to determine the purchase duration of the instance.
+	// The end time when the instance was purchased. The value is a UNIX timestamp in seconds. This value is used to determine the purchase duration of the instance.
 	//
 	// example:
 	//
 	// 1801324800000
 	OrderEndTime *int64 `json:"OrderEndTime,omitempty" xml:"OrderEndTime,omitempty"`
-	// The start time of the instance purchase. The value is a UNIX timestamp accurate to seconds. Used to determine the refund time limit.
+	// The start time when the instance was purchased. The value is a UNIX timestamp in seconds. This value is used to determine the refund time limit.
 	//
 	// example:
 	//
@@ -293,15 +327,15 @@ type ListInstancesResponseBodyInstanceList struct {
 	//
 	// - **pending**: Under review. The latest certificate is being reviewed.
 	//
-	// - **willExpire**: About to expire.
+	// - **willExpire**: The instance is about to expire.
 	//
-	// - **expired**: Expired.
+	// - **expired**: The instance has expired.
 	//
 	// - **refund**: Refunded.
 	//
 	// - **normal**: Normal.
 	//
-	// - **closed**: Closed and unavailable.
+	// - **closed**: Closed. The instance is unavailable.
 	//
 	// example:
 	//
@@ -309,6 +343,20 @@ type ListInstancesResponseBodyInstanceList struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The list of cloud services to which the latest certificate is deployed.
 	UsingProductList []*string `json:"UsingProductList,omitempty" xml:"UsingProductList,omitempty" type:"Repeated"`
+	// The version type. Valid values:
+	//
+	// - basic: Basic Edition.
+	//
+	// - standard: Standard Edition.
+	//
+	// - professional: Professional Edition.
+	//
+	// - ultimate: Ultimate Edition.
+	//
+	// example:
+	//
+	// professional
+	VersionType *string `json:"VersionType,omitempty" xml:"VersionType,omitempty"`
 	// The number of wildcard domain names.
 	//
 	// example:
@@ -423,6 +471,10 @@ func (s *ListInstancesResponseBodyInstanceList) GetStatus() *string {
 
 func (s *ListInstancesResponseBodyInstanceList) GetUsingProductList() []*string {
 	return s.UsingProductList
+}
+
+func (s *ListInstancesResponseBodyInstanceList) GetVersionType() *string {
+	return s.VersionType
 }
 
 func (s *ListInstancesResponseBodyInstanceList) GetWildcardDomainCount() *int32 {
@@ -551,6 +603,11 @@ func (s *ListInstancesResponseBodyInstanceList) SetStatus(v string) *ListInstanc
 
 func (s *ListInstancesResponseBodyInstanceList) SetUsingProductList(v []*string) *ListInstancesResponseBodyInstanceList {
 	s.UsingProductList = v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstanceList) SetVersionType(v string) *ListInstancesResponseBodyInstanceList {
+	s.VersionType = &v
 	return s
 }
 

@@ -11,6 +11,8 @@ type iGetInstanceDetailResponseBody interface {
 	GoString() string
 	SetAutoReissue(v string) *GetInstanceDetailResponseBody
 	GetAutoReissue() *string
+	SetAutoReissueFlag(v int32) *GetInstanceDetailResponseBody
+	GetAutoReissueFlag() *int32
 	SetAverageWaitingTime(v string) *GetInstanceDetailResponseBody
 	GetAverageWaitingTime() *string
 	SetBrand(v string) *GetInstanceDetailResponseBody
@@ -41,6 +43,10 @@ type iGetInstanceDetailResponseBody interface {
 	GetCountryCode() *string
 	SetCsr(v string) *GetInstanceDetailResponseBody
 	GetCsr() *string
+	SetDeploymentResourceCount(v int32) *GetInstanceDetailResponseBody
+	GetDeploymentResourceCount() *int32
+	SetDeploymentUseCount(v int32) *GetInstanceDetailResponseBody
+	GetDeploymentUseCount() *int32
 	SetDingGroupList(v []*GetInstanceDetailResponseBodyDingGroupList) *GetInstanceDetailResponseBody
 	GetDingGroupList() []*GetInstanceDetailResponseBodyDingGroupList
 	SetDomain(v string) *GetInstanceDetailResponseBody
@@ -61,6 +67,10 @@ type iGetInstanceDetailResponseBody interface {
 	GetInstanceType() *string
 	SetKeyAlgorithm(v string) *GetInstanceDetailResponseBody
 	GetKeyAlgorithm() *string
+	SetMonitorExpandFlag(v int32) *GetInstanceDetailResponseBody
+	GetMonitorExpandFlag() *int32
+	SetMonitorUseCount(v int32) *GetInstanceDetailResponseBody
+	GetMonitorUseCount() *int32
 	SetOrderEndTime(v int64) *GetInstanceDetailResponseBody
 	GetOrderEndTime() *int64
 	SetOrderStartTime(v int64) *GetInstanceDetailResponseBody
@@ -79,25 +89,41 @@ type iGetInstanceDetailResponseBody interface {
 	GetStatus() *string
 	SetTags(v []*GetInstanceDetailResponseBodyTags) *GetInstanceDetailResponseBody
 	GetTags() []*GetInstanceDetailResponseBodyTags
+	SetTotalDeploymentCount(v int32) *GetInstanceDetailResponseBody
+	GetTotalDeploymentCount() *int32
+	SetTotalMonitorCount(v int32) *GetInstanceDetailResponseBody
+	GetTotalMonitorCount() *int32
 	SetUpgradeStatus(v string) *GetInstanceDetailResponseBody
 	GetUpgradeStatus() *string
 	SetValidationMethod(v string) *GetInstanceDetailResponseBody
 	GetValidationMethod() *string
+	SetVersionType(v string) *GetInstanceDetailResponseBody
+	GetVersionType() *string
 	SetWildcardDomainCount(v int32) *GetInstanceDetailResponseBody
 	GetWildcardDomainCount() *int32
 }
 
 type GetInstanceDetailResponseBody struct {
-	// Indicates whether automatic managed renewal is enabled. Valid values:
+	// Indicates whether automatic hosting is enabled. Valid values:
 	//
 	// - enable: Enabled.
 	//
-	// - disable: Disabled.
+	// - disable: Not enabled.
 	//
 	// example:
 	//
 	// enable
 	AutoReissue *string `json:"AutoReissue,omitempty" xml:"AutoReissue,omitempty"`
+	// Indicates whether the current version includes automatic hosting. Valid values:
+	//
+	// - 1: Included.
+	//
+	// - 0: Not included.
+	//
+	// example:
+	//
+	// 1
+	AutoReissueFlag *int32 `json:"AutoReissueFlag,omitempty" xml:"AutoReissueFlag,omitempty"`
 	// The average waiting time for issuing a certificate of this specification. Unit: seconds.
 	//
 	// example:
@@ -112,11 +138,11 @@ type GetInstanceDetailResponseBody struct {
 	Brand *string `json:"Brand,omitempty" xml:"Brand,omitempty"`
 	// The global certificate ID, in the format of certificate ID + "-" + site region ID. This ID is commonly used across Alibaba Cloud services.
 	//
-	//   --For the China site, the format is certificate ID + "-cn-hangzhou".
+	// - China site: certificate ID + "-cn-hangzhou"
 	//
-	// For the China site, the format is certificate ID + "-ap-southeast-1".
+	// - International site: certificate ID + "-ap-southeast-1"
 	//
-	// For example, if the certificate ID is 123, the CertIdentifier on the China site is "123-cn-hangzhou", and the CertIdentifier on the China site is "123-ap-southeast-1".
+	// For example, if the certificate ID is 123, the CertIdentifier on the China site is "123-cn-hangzhou", and the CertIdentifier on the International site is "123-ap-southeast-1".
 	//
 	// example:
 	//
@@ -128,7 +154,7 @@ type GetInstanceDetailResponseBody struct {
 	//
 	// 1234567890
 	CertificateId *int32 `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	// The name of the instance. When a certificate is issued, this name is used as the default certificate name.
+	// The name of the instance. When a certificate is issued, this name is used as the default name of the certificate.
 	//
 	// example:
 	//
@@ -154,13 +180,13 @@ type GetInstanceDetailResponseBody struct {
 	CertificateRevokeTime *int64 `json:"CertificateRevokeTime,omitempty" xml:"CertificateRevokeTime,omitempty"`
 	// The status of the certificate. Valid values:
 	//
-	// - **issued**: issued.
+	// - **issued**: Issued.
 	//
-	// - **revoked**: revoked.
+	// - **revoked**: Revoked.
 	//
-	// - **willExpire**: about to expire.
+	// - **willExpire**: About to expire.
 	//
-	// - **expired**: expired.
+	// - **expired**: Expired.
 	//
 	// example:
 	//
@@ -198,6 +224,18 @@ type GetInstanceDetailResponseBody struct {
 	//
 	// -----BEGIN CERTIFICATE REQUEST-----   ...... -----END CERTIFICATE REQUEST-----
 	Csr *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
+	// The number of cloud resources to which the certificate has been deployed.
+	//
+	// example:
+	//
+	// 30
+	DeploymentResourceCount *int32 `json:"DeploymentResourceCount,omitempty" xml:"DeploymentResourceCount,omitempty"`
+	// The used quota for cloud server deployment.
+	//
+	// example:
+	//
+	// 30
+	DeploymentUseCount *int32 `json:"DeploymentUseCount,omitempty" xml:"DeploymentUseCount,omitempty"`
 	// The list of associated expert service DingTalk groups.
 	DingGroupList []*GetInstanceDetailResponseBodyDingGroupList `json:"DingGroupList,omitempty" xml:"DingGroupList,omitempty" type:"Repeated"`
 	// The domain name bound to the certificate.
@@ -206,7 +244,7 @@ type GetInstanceDetailResponseBody struct {
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The list of domain validations.
+	// The list of domain names to be validated.
 	DomainValidationList []*GetInstanceDetailResponseBodyDomainValidationList `json:"DomainValidationList,omitempty" xml:"DomainValidationList,omitempty" type:"Repeated"`
 	// The number of exact-match domain names.
 	//
@@ -214,11 +252,11 @@ type GetInstanceDetailResponseBody struct {
 	//
 	// 1
 	FullDomainCount *int32 `json:"FullDomainCount,omitempty" xml:"FullDomainCount,omitempty"`
-	// The CSR generation method. Valid values:
+	// The method used to generate the certificate signing request. Valid values:
 	//
-	// - online: system-generated. The Csr field is ignored.
+	// - online: System-generated. The Csr field is ignored.
 	//
-	// - upload: user-uploaded. The Csr field is required.
+	// - upload: User-uploaded. The Csr field is required.
 	//
 	// example:
 	//
@@ -244,9 +282,9 @@ type GetInstanceDetailResponseBody struct {
 	InstanceStartTime *int64 `json:"InstanceStartTime,omitempty" xml:"InstanceStartTime,omitempty"`
 	// The instance type. Valid values:
 	//
-	// - **BUY**: formal certificate.
+	// - BUY: official certificate
 	//
-	// - **TEST**: test certificate.
+	// - TEST: test certificate
 	//
 	// example:
 	//
@@ -268,19 +306,35 @@ type GetInstanceDetailResponseBody struct {
 	//
 	// RSA_2048
 	KeyAlgorithm *string `json:"KeyAlgorithm,omitempty" xml:"KeyAlgorithm,omitempty"`
-	// The end time of the instance purchase, in UNIX timestamp format. This value is used to determine the purchase duration of the instance.
+	// Indicates whether the domain name monitoring quota can be expanded. Valid values:
+	//
+	// - 1: Yes.
+	//
+	// - 0: No.
+	//
+	// example:
+	//
+	// 1
+	MonitorExpandFlag *int32 `json:"MonitorExpandFlag,omitempty" xml:"MonitorExpandFlag,omitempty"`
+	// The used quota for domain name monitoring.
+	//
+	// example:
+	//
+	// 10
+	MonitorUseCount *int32 `json:"MonitorUseCount,omitempty" xml:"MonitorUseCount,omitempty"`
+	// The end time of the instance at the time of purchase, in UNIX timestamp format. This value is used to determine the purchase duration of the instance.
 	//
 	// example:
 	//
 	// 1801324800000
 	OrderEndTime *int64 `json:"OrderEndTime,omitempty" xml:"OrderEndTime,omitempty"`
-	// The start time of the instance purchase, in UNIX timestamp format. This value is used to determine the refund time limit. The value is accurate to the second.
+	// The start time of the instance at the time of purchase, in UNIX timestamp format. This value is used to determine the refund time limit. The value is accurate to the second.
 	//
 	// example:
 	//
 	// 1801324800000
 	OrderStartTime *int64 `json:"OrderStartTime,omitempty" xml:"OrderStartTime,omitempty"`
-	// The result returned by the certification authority (CA) during the last certificate operation.
+	// The result returned by the CA during the last certificate operation.
 	//
 	// example:
 	//
@@ -292,7 +346,7 @@ type GetInstanceDetailResponseBody struct {
 	//
 	// Beijing
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	// The request ID. Alibaba Cloud generates a unique identifier for each request. You can use the request ID to troubleshoot issues.
+	// The request ID. Alibaba Cloud generates a unique identifier for each API request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -312,19 +366,19 @@ type GetInstanceDetailResponseBody struct {
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// The instance status. Valid values:
 	//
-	// - **inactive**: pending use.
+	// - **inactive**: Pending use.
 	//
-	// - **pending**: under review. The latest certificate is being reviewed.
+	// - **pending**: Under review. The latest certificate is being reviewed.
 	//
-	// - **willExpire**: the instance is about to expire.
+	// - **willExpire**: The instance is about to expire.
 	//
-	// - **expired**: the instance has expired.
+	// - **expired**: The instance has expired.
 	//
-	// - **refund**: refunded.
+	// - **refund**: Refunded.
 	//
-	// - **normal**: normal.
+	// - **normal**: Normal.
 	//
-	// - **closed**: closed and unavailable.
+	// - **closed**: Closed. The instance cannot be used.
 	//
 	// example:
 	//
@@ -332,28 +386,46 @@ type GetInstanceDetailResponseBody struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The list of tags.
 	Tags []*GetInstanceDetailResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The total quota for cloud server deployment.
+	//
+	// example:
+	//
+	// 60
+	TotalDeploymentCount *int32 `json:"TotalDeploymentCount,omitempty" xml:"TotalDeploymentCount,omitempty"`
+	// The total quota for domain name monitoring.
+	//
+	// example:
+	//
+	// 80
+	TotalMonitorCount *int32 `json:"TotalMonitorCount,omitempty" xml:"TotalMonitorCount,omitempty"`
 	// The upgrade status of the instance. Valid values:
 	//
-	// - none: the instance has not been upgraded.
+	// - none: The instance has not been upgraded.
 	//
-	// - payed: the instance upgrade has been paid.
+	// - payed: The instance upgrade has been paid.
 	//
-	// - issued: the latest certificate has been issued after the instance upgrade.
+	// - issued: The latest certificate has been issued for the instance upgrade.
 	//
 	// example:
 	//
 	// none
 	UpgradeStatus *string `json:"UpgradeStatus,omitempty" xml:"UpgradeStatus,omitempty"`
-	// The certificate validation method. Valid values:
+	// The validation method for the certificate application. Valid values:
 	//
-	// - DNS: DNS validation, using TXT or CNAME.
+	// - DNS: DNS validation, using TXT or CNAME records.
 	//
-	// - HTTP: file-based validation.
+	// - HTTP: File-based validation.
 	//
 	// example:
 	//
 	// DNS
 	ValidationMethod *string `json:"ValidationMethod,omitempty" xml:"ValidationMethod,omitempty"`
+	// The version type. Valid values: FOTA: system upgrade. APP: application upgrade.
+	//
+	// example:
+	//
+	// 0
+	VersionType *string `json:"VersionType,omitempty" xml:"VersionType,omitempty"`
 	// The number of wildcard domain names.
 	//
 	// example:
@@ -372,6 +444,10 @@ func (s GetInstanceDetailResponseBody) GoString() string {
 
 func (s *GetInstanceDetailResponseBody) GetAutoReissue() *string {
 	return s.AutoReissue
+}
+
+func (s *GetInstanceDetailResponseBody) GetAutoReissueFlag() *int32 {
+	return s.AutoReissueFlag
 }
 
 func (s *GetInstanceDetailResponseBody) GetAverageWaitingTime() *string {
@@ -434,6 +510,14 @@ func (s *GetInstanceDetailResponseBody) GetCsr() *string {
 	return s.Csr
 }
 
+func (s *GetInstanceDetailResponseBody) GetDeploymentResourceCount() *int32 {
+	return s.DeploymentResourceCount
+}
+
+func (s *GetInstanceDetailResponseBody) GetDeploymentUseCount() *int32 {
+	return s.DeploymentUseCount
+}
+
 func (s *GetInstanceDetailResponseBody) GetDingGroupList() []*GetInstanceDetailResponseBodyDingGroupList {
 	return s.DingGroupList
 }
@@ -474,6 +558,14 @@ func (s *GetInstanceDetailResponseBody) GetKeyAlgorithm() *string {
 	return s.KeyAlgorithm
 }
 
+func (s *GetInstanceDetailResponseBody) GetMonitorExpandFlag() *int32 {
+	return s.MonitorExpandFlag
+}
+
+func (s *GetInstanceDetailResponseBody) GetMonitorUseCount() *int32 {
+	return s.MonitorUseCount
+}
+
 func (s *GetInstanceDetailResponseBody) GetOrderEndTime() *int64 {
 	return s.OrderEndTime
 }
@@ -510,6 +602,14 @@ func (s *GetInstanceDetailResponseBody) GetTags() []*GetInstanceDetailResponseBo
 	return s.Tags
 }
 
+func (s *GetInstanceDetailResponseBody) GetTotalDeploymentCount() *int32 {
+	return s.TotalDeploymentCount
+}
+
+func (s *GetInstanceDetailResponseBody) GetTotalMonitorCount() *int32 {
+	return s.TotalMonitorCount
+}
+
 func (s *GetInstanceDetailResponseBody) GetUpgradeStatus() *string {
 	return s.UpgradeStatus
 }
@@ -518,12 +618,21 @@ func (s *GetInstanceDetailResponseBody) GetValidationMethod() *string {
 	return s.ValidationMethod
 }
 
+func (s *GetInstanceDetailResponseBody) GetVersionType() *string {
+	return s.VersionType
+}
+
 func (s *GetInstanceDetailResponseBody) GetWildcardDomainCount() *int32 {
 	return s.WildcardDomainCount
 }
 
 func (s *GetInstanceDetailResponseBody) SetAutoReissue(v string) *GetInstanceDetailResponseBody {
 	s.AutoReissue = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBody) SetAutoReissueFlag(v int32) *GetInstanceDetailResponseBody {
+	s.AutoReissueFlag = &v
 	return s
 }
 
@@ -602,6 +711,16 @@ func (s *GetInstanceDetailResponseBody) SetCsr(v string) *GetInstanceDetailRespo
 	return s
 }
 
+func (s *GetInstanceDetailResponseBody) SetDeploymentResourceCount(v int32) *GetInstanceDetailResponseBody {
+	s.DeploymentResourceCount = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBody) SetDeploymentUseCount(v int32) *GetInstanceDetailResponseBody {
+	s.DeploymentUseCount = &v
+	return s
+}
+
 func (s *GetInstanceDetailResponseBody) SetDingGroupList(v []*GetInstanceDetailResponseBodyDingGroupList) *GetInstanceDetailResponseBody {
 	s.DingGroupList = v
 	return s
@@ -652,6 +771,16 @@ func (s *GetInstanceDetailResponseBody) SetKeyAlgorithm(v string) *GetInstanceDe
 	return s
 }
 
+func (s *GetInstanceDetailResponseBody) SetMonitorExpandFlag(v int32) *GetInstanceDetailResponseBody {
+	s.MonitorExpandFlag = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBody) SetMonitorUseCount(v int32) *GetInstanceDetailResponseBody {
+	s.MonitorUseCount = &v
+	return s
+}
+
 func (s *GetInstanceDetailResponseBody) SetOrderEndTime(v int64) *GetInstanceDetailResponseBody {
 	s.OrderEndTime = &v
 	return s
@@ -697,6 +826,16 @@ func (s *GetInstanceDetailResponseBody) SetTags(v []*GetInstanceDetailResponseBo
 	return s
 }
 
+func (s *GetInstanceDetailResponseBody) SetTotalDeploymentCount(v int32) *GetInstanceDetailResponseBody {
+	s.TotalDeploymentCount = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBody) SetTotalMonitorCount(v int32) *GetInstanceDetailResponseBody {
+	s.TotalMonitorCount = &v
+	return s
+}
+
 func (s *GetInstanceDetailResponseBody) SetUpgradeStatus(v string) *GetInstanceDetailResponseBody {
 	s.UpgradeStatus = &v
 	return s
@@ -704,6 +843,11 @@ func (s *GetInstanceDetailResponseBody) SetUpgradeStatus(v string) *GetInstanceD
 
 func (s *GetInstanceDetailResponseBody) SetValidationMethod(v string) *GetInstanceDetailResponseBody {
 	s.ValidationMethod = &v
+	return s
+}
+
+func (s *GetInstanceDetailResponseBody) SetVersionType(v string) *GetInstanceDetailResponseBody {
+	s.VersionType = &v
 	return s
 }
 
@@ -758,9 +902,9 @@ type GetInstanceDetailResponseBodyDingGroupList struct {
 	DingGroupName *string `json:"DingGroupName,omitempty" xml:"DingGroupName,omitempty"`
 	// The type of the expert service DingTalk group. Valid values:
 	//
-	// - expedite: application assistance.
+	// - expedite: application assistance
 	//
-	// - remote: offline deployment.
+	// - remote: offline deployment
 	//
 	// example:
 	//
@@ -859,7 +1003,7 @@ type GetInstanceDetailResponseBodyDomainValidationList struct {
 	//
 	// TXT
 	ValidationType *string `json:"ValidationType,omitempty" xml:"ValidationType,omitempty"`
-	// The validation host record value.
+	// The host record value for validation.
 	//
 	// example:
 	//

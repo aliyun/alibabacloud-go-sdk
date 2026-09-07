@@ -42,67 +42,67 @@ type iUpdateInstanceRequest interface {
 }
 
 type UpdateInstanceRequest struct {
-	// Whether to enable automatic management.
+	// Specifies whether to enable automatic hosting. Valid values:
 	//
-	// - enable: enabled
+	// - enable: Enabled.
 	//
-	// - disable: disabled
+	// - disable: Disabled.
 	//
 	// example:
 	//
 	// enable
 	AutoReissue *string `json:"AutoReissue,omitempty" xml:"AutoReissue,omitempty"`
-	// The name of the instance. When issuing a certificate, this value serves as the default certificate name.
+	// The name of the instance. When a certificate is issued, this name is used as the default name of the certificate.
 	//
 	// example:
 	//
 	// 123
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	// The city where the company or organization of the certificate requester is located. Required when generating a CSR for a DV certificate. Default value: Beijing.
+	// The city where the company or organization of the certificate purchaser is located. This field is required when generating a CSR for a DV certificate. Default value: Beijing.
 	//
 	// example:
 	//
 	// Beijing
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// The company information ID. Required for OV and EV certificates. Otherwise, you cannot call ApplyCertificate to request a certificate.
+	// The company information ID. This parameter is required for OV and EV certificates. Otherwise, you cannot call the ApplyCertificate operation to apply for a certificate.
 	//
 	// example:
 	//
 	// 44211
 	CompanyId *int64 `json:"CompanyId,omitempty" xml:"CompanyId,omitempty"`
-	// The list of contact IDs. You must specify at least one contact. Otherwise, you cannot call ApplyCertificate to request a certificate.
+	// The list of contact IDs. If a contact already exists, you do not need to specify this parameter. If no contact has been configured, specify at least one contact ID. Otherwise, you cannot call the ApplyCertificate operation to apply for a certificate.
 	ContactIdList []*int64 `json:"ContactIdList,omitempty" xml:"ContactIdList,omitempty" type:"Repeated"`
-	// The country or region code of the certificate organization. For example, CN represents China, and US represents the United States. Required when generating a CSR for a DV certificate. Default value: CN.
+	// The country or region code of the certificate organization. For example, CN indicates China and US indicates the United States. This field is required when generating a CSR for a DV certificate. Default value: CN.
 	//
 	// example:
 	//
 	// CN
 	CountryCode *string `json:"CountryCode,omitempty" xml:"CountryCode,omitempty"`
-	// The CSR content. You can generate a CSR using OpenSSL or Keytool. For more information, see [How to create a CSR file](https://help.aliyun.com/document_detail/42218.html).
+	// The CSR content. You can use OpenSSL or Keytool to generate a CSR. For more information, see [How do I create a CSR file?](https://help.aliyun.com/document_detail/42218.html).
 	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE REQUEST----- ...... -----END CERTIFICATE REQUEST-----
 	Csr *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
-	// The domain name to bind to the certificate. Requirements are as follows:
+	// The domain name to which the certificate is bound. Requirements:
 	//
-	// - Supports single domain names or wildcard domain names (for example, `*.aliyundoc.com`).
+	// - You can specify a single domain name or a wildcard domain name (for example, `*.aliyundoc.com`).
 	//
-	// - Supports multiple domain names. Separate multiple domain names with commas (,). The first domain determines whether a free domain is included.
+	// - You can specify multiple domain names. Separate multiple domain names with commas (,). Whether a free domain name is included is determined based on the first domain name.
 	//
 	// 	Notice:
 	//
-	// If you bind multiple domain names to the certificate, this parameter is required. This parameter and the **Csr*	- parameter cannot both be empty. If you set both parameters, the system uses the **CN*	- field value from the **Csr*	- as the domain name for the certificate.
+	// When the certificate is bound to multiple domain names, this parameter is required. This parameter and the **Csr*	- parameter cannot both be empty. If you specify both this parameter and the **Csr*	- parameter, the **CN*	- field value in the **Csr*	- parameter is used as the domain name to which the certificate is bound.
 	//
 	// example:
 	//
 	// test.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The CSR generation method. Default value: online.
+	// The method used to generate the certificate signing request (CSR). Default value: online. Valid values:
 	//
-	// - online: The system generates the CSR. The Csr field is ignored.
+	// - online: The system generates the CSR. The Csr parameter is ignored.
 	//
-	// - upload: You upload the CSR. The Csr field is required.
+	// - upload: You upload the CSR. The Csr parameter is required.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type UpdateInstanceRequest struct {
 	//
 	// cas-cn-68n1mm16****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The certificate algorithm. Default value: RSA_2048.
+	// The certificate algorithm. Default value: RSA_2048. Valid values:
 	//
 	// - **RSA_2048**
 	//
@@ -132,25 +132,25 @@ type UpdateInstanceRequest struct {
 	//
 	// RSA_2048
 	KeyAlgorithm *string `json:"KeyAlgorithm,omitempty" xml:"KeyAlgorithm,omitempty"`
-	// The province or region where the company is located. Required when generating a CSR for a DV certificate. Default value: Beijing.
+	// The province or region where the company is located. This field is required when generating a CSR for a DV certificate. Default value: Beijing.
 	//
 	// example:
 	//
 	// Beijing
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	// The ID of the resource group to which the instance belongs.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-ae******4wia
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// A list of tags.
+	// The list of tags.
 	Tags []*UpdateInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The certificate validation method.
+	// The validation method for the certificate application. Valid values:
 	//
-	// - DNS: DNS validation using TXT or CNAME records.
+	// - DNS: DNS validation, which uses TXT or CNAME records.
 	//
-	// - HTTP: File-based validation.
+	// - HTTP: File validation.
 	//
 	// example:
 	//
@@ -315,17 +315,17 @@ func (s *UpdateInstanceRequest) Validate() error {
 }
 
 type UpdateInstanceRequestTags struct {
-	// The tag key of the instance. Valid values for N: **1*	- to **20**. If you specify this value, it cannot be an empty string.
+	// The tag key of the instance. Valid values of N: **1*	- to **20**. If you specify this parameter, the value cannot be an empty string.
 	//
-	// It can contain up to 64 characters. It cannot start with `aliyun` or `acs:`, and it cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// test
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the instance. Valid values for N: **1*	- to **20**. If you specify this value, it can be an empty string.
+	// The tag value of the instance. Valid values of N: **1*	- to **20**. If you specify this parameter, the value can be an empty string.
 	//
-	// It can contain up to 128 characters. It cannot start with `aliyun` or `acs:`, and it cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
