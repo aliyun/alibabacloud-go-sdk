@@ -19,6 +19,8 @@ type iListSkillsRequest interface {
 	GetSkillIds() []*string
 	SetSupplierType(v string) *ListSkillsRequest
 	GetSupplierType() *string
+	SetTagCodes(v []*string) *ListSkillsRequest
+	GetTagCodes() []*string
 }
 
 type ListSkillsRequest struct {
@@ -50,6 +52,8 @@ type ListSkillsRequest struct {
 	//
 	// WUYING
 	SupplierType *string `json:"SupplierType,omitempty" xml:"SupplierType,omitempty"`
+	// TagCodes
+	TagCodes []*string `json:"TagCodes,omitempty" xml:"TagCodes,omitempty" type:"Repeated"`
 }
 
 func (s ListSkillsRequest) String() string {
@@ -80,6 +84,10 @@ func (s *ListSkillsRequest) GetSupplierType() *string {
 	return s.SupplierType
 }
 
+func (s *ListSkillsRequest) GetTagCodes() []*string {
+	return s.TagCodes
+}
+
 func (s *ListSkillsRequest) SetPageNumber(v int32) *ListSkillsRequest {
 	s.PageNumber = &v
 	return s
@@ -102,6 +110,11 @@ func (s *ListSkillsRequest) SetSkillIds(v []*string) *ListSkillsRequest {
 
 func (s *ListSkillsRequest) SetSupplierType(v string) *ListSkillsRequest {
 	s.SupplierType = &v
+	return s
+}
+
+func (s *ListSkillsRequest) SetTagCodes(v []*string) *ListSkillsRequest {
+	s.TagCodes = v
 	return s
 }
 

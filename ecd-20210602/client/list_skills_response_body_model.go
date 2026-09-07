@@ -146,7 +146,7 @@ type ListSkillsResponseBodySkills struct {
 	// name****
 	SkillName     *string                                      `json:"SkillName,omitempty" xml:"SkillName,omitempty"`
 	SkillVersions []*ListSkillsResponseBodySkillsSkillVersions `json:"SkillVersions,omitempty" xml:"SkillVersions,omitempty" type:"Repeated"`
-	// The skill slug identifier, which is user-defined and unique within the tenant.
+	// The skill slug identifier, which is user-defined and unique within the tenant dimension.
 	//
 	// example:
 	//

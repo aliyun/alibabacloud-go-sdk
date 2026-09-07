@@ -25,32 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"us-west-1":             dara.String("ecd.us-west-1.aliyuncs.com"),
-		"us-east-1":             dara.String("ecd.us-east-1.aliyuncs.com"),
-		"me-east-1":             dara.String("ecd.me-east-1.aliyuncs.com"),
-		"me-central-1":          dara.String("ecd.me-central-1.aliyuncs.com"),
-		"eu-west-1":             dara.String("ecd.eu-west-1.aliyuncs.com"),
-		"eu-central-1":          dara.String("ecd.eu-central-1.aliyuncs.com"),
-		"cn-zhangjiakou":        dara.String("ecd.cn-zhangjiakou.aliyuncs.com"),
-		"cn-wulanchabu":         dara.String("ecd.cn-wulanchabu.aliyuncs.com"),
-		"cn-shenzhen":           dara.String("ecd.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai-finance-1": dara.String("ecd.cn-shanghai-finance-1.aliyuncs.com"),
-		"cn-shanghai":           dara.String("ecd.cn-shanghai.aliyuncs.com"),
-		"cn-qingdao":            dara.String("ecd.cn-qingdao.aliyuncs.com"),
-		"cn-nanjing":            dara.String("ecd.cn-nanjing.aliyuncs.com"),
-		"cn-hongkong":           dara.String("ecd.cn-hongkong.aliyuncs.com"),
-		"cn-hangzhou-finance":   dara.String("ecd.cn-hangzhou-finance.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("ecd.cn-hangzhou.aliyuncs.com"),
-		"cn-guangzhou":          dara.String("ecd.cn-guangzhou.aliyuncs.com"),
-		"cn-chengdu":            dara.String("ecd.cn-chengdu.aliyuncs.com"),
-		"cn-beijing":            dara.String("ecd.cn-beijing.aliyuncs.com"),
-		"ap-southeast-7":        dara.String("ecd.ap-southeast-7.aliyuncs.com"),
-		"ap-southeast-6":        dara.String("ecd.ap-southeast-6.aliyuncs.com"),
-		"ap-southeast-5":        dara.String("ecd.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-1":        dara.String("ecd.ap-southeast-1.aliyuncs.com"),
-		"ap-northeast-1":        dara.String("ecd.ap-northeast-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -589,6 +563,10 @@ func (client *Client) ListSkillsWithOptions(request *ListSkillsRequest, runtime 
 		query["SupplierType"] = request.SupplierType
 	}
 
+	if !dara.IsNil(request.TagCodes) {
+		query["TagCodes"] = request.TagCodes
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -623,6 +601,116 @@ func (client *Client) ListSkills(request *ListSkillsRequest) (_result *ListSkill
 	runtime := &dara.RuntimeOptions{}
 	_result = &ListSkillsResponse{}
 	_body, _err := client.ListSkillsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paging query of desktop applications visible to the current tenant, with support for filtering by application name and source.
+//
+// Description:
+//
+// The query scope is determined by the caller identity and includes applications uploaded by the current tenant and marketplace applications that the tenant is authorized to view. The visibility of marketplace applications is subject to authorization and display policy restrictions. The authorization and auto-installation information in the list represents application configurations and does not indicate the actual installation result on a specific device.
+//
+// - **Application identity**: Id is a numeric application ID, and AppUid is a character string UID. The two cannot be used interchangeably.
+//
+// - **Authorization scope**: DistributeType is used together with AuthType. For example, `AuthType=auth_type_user` and `DistributeType=ALL` indicate that the application is allocated to all users on a per-user dimension.
+//
+// - **Auto-installation**: AutoInstallmentType specifies the auto-installation scope policy, which is used to distinguish between full, partial, or disabled auto-installation.
+//
+// - **Partial auto-installation**: When AutoInstallmentType is set to 1, use SetAutoInstallUser or SetAutoInstallDesktop to configure specific users or cloud desktops. OperationType=1 indicates enabled, and OperationType=2 indicates disabled. ListTenantApp only returns configurations and does not modify auto-installation settings.
+//
+// - **Capabilities and execution results**: The silent installation capability is application metadata returned in the response. To determine the actual installation or execution result on a device, use the corresponding execution result query capability.
+//
+// - **Optional information**: Information such as timestamps may be empty.
+//
+// - **Compatibility handling**: Extension information and subtype do not use closed enumerations. Clients should ignore unrecognized extension fields and be compatible with new enumeration values.
+//
+// @param request - ListTenantAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTenantAppResponse
+func (client *Client) ListTenantAppWithOptions(request *ListTenantAppRequest, runtime *dara.RuntimeOptions) (_result *ListTenantAppResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.KeyName) {
+		query["KeyName"] = request.KeyName
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.SourceType) {
+		query["SourceType"] = request.SourceType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListTenantApp"),
+		Version:     dara.String("2021-06-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListTenantAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Performs a paging query of desktop applications visible to the current tenant, with support for filtering by application name and source.
+//
+// Description:
+//
+// The query scope is determined by the caller identity and includes applications uploaded by the current tenant and marketplace applications that the tenant is authorized to view. The visibility of marketplace applications is subject to authorization and display policy restrictions. The authorization and auto-installation information in the list represents application configurations and does not indicate the actual installation result on a specific device.
+//
+// - **Application identity**: Id is a numeric application ID, and AppUid is a character string UID. The two cannot be used interchangeably.
+//
+// - **Authorization scope**: DistributeType is used together with AuthType. For example, `AuthType=auth_type_user` and `DistributeType=ALL` indicate that the application is allocated to all users on a per-user dimension.
+//
+// - **Auto-installation**: AutoInstallmentType specifies the auto-installation scope policy, which is used to distinguish between full, partial, or disabled auto-installation.
+//
+// - **Partial auto-installation**: When AutoInstallmentType is set to 1, use SetAutoInstallUser or SetAutoInstallDesktop to configure specific users or cloud desktops. OperationType=1 indicates enabled, and OperationType=2 indicates disabled. ListTenantApp only returns configurations and does not modify auto-installation settings.
+//
+// - **Capabilities and execution results**: The silent installation capability is application metadata returned in the response. To determine the actual installation or execution result on a device, use the corresponding execution result query capability.
+//
+// - **Optional information**: Information such as timestamps may be empty.
+//
+// - **Compatibility handling**: Extension information and subtype do not use closed enumerations. Clients should ignore unrecognized extension fields and be compatible with new enumeration values.
+//
+// @param request - ListTenantAppRequest
+//
+// @return ListTenantAppResponse
+func (client *Client) ListTenantApp(request *ListTenantAppRequest) (_result *ListTenantAppResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListTenantAppResponse{}
+	_body, _err := client.ListTenantAppWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
