@@ -20,11 +20,11 @@ type iModifyUserEntitlementRequest interface {
 }
 
 type ModifyUserEntitlementRequest struct {
-	// The IDs of the cloud computers to which you want to add end users.
+	// The list of cloud computer IDs for which to add authorized users.
 	AuthorizeDesktopId []*string `json:"AuthorizeDesktopId,omitempty" xml:"AuthorizeDesktopId,omitempty" type:"Repeated"`
-	// The ID of the users.
+	// The list of user IDs (usernames).
 	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type ModifyUserEntitlementRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the cloud computers whose end users you want to remove.
+	// The list of cloud computer IDs for which to remove authorized users.
 	RevokeDesktopId []*string `json:"RevokeDesktopId,omitempty" xml:"RevokeDesktopId,omitempty" type:"Repeated"`
 }
 

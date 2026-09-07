@@ -44,7 +44,7 @@ type ListDirectoryUsersRequest struct {
 	//
 	// cn-hangzhou+dir-jedbpr4sl9l37****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The fuzzy match query string. All results that contain this character string are returned.
+	// The fuzzy search string. All results that contain this string are matched.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListDirectoryUsersRequest struct {
 	//
 	// true
 	IncludeAssignedUser *bool `json:"IncludeAssignedUser,omitempty" xml:"IncludeAssignedUser,omitempty"`
-	// The number of entries per page for a paged query.
+	// The number of entries per page for a paginated query.
 	//
 	// - Maximum value: 100.
 	//
@@ -66,7 +66,7 @@ type ListDirectoryUsersRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next query. An empty value indicates that no more results exist.
+	// The token for the next query. If this parameter is empty, no more results are available.
 	//
 	// example:
 	//

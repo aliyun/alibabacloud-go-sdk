@@ -16,7 +16,7 @@ type iCreateOfficeSiteAcceleratorResponseBody interface {
 }
 
 type CreateOfficeSiteAcceleratorResponseBody struct {
-	// The ID of the GA instance.
+	// The GA instance ID.
 	//
 	// example:
 	//

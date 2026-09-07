@@ -22,8 +22,9 @@ type iRebootDesktopsRequest interface {
 }
 
 type RebootDesktopsRequest struct {
+	// Specifies whether to create a snapshot.
 	CreateSnapshot *bool `json:"CreateSnapshot,omitempty" xml:"CreateSnapshot,omitempty"`
-	// An array of 1 to 100 desktop IDs.
+	// The cloud computer ID. You can specify 1 to 100 IDs.
 	//
 	// This parameter is required.
 	//
@@ -33,11 +34,13 @@ type RebootDesktopsRequest struct {
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
 	// Specifies whether to install system patches.
 	OsUpdate *bool `json:"OsUpdate,omitempty" xml:"OsUpdate,omitempty"`
+	// The patch ID.
+	//
 	// example:
 	//
 	// KB5082063
 	PatchId *string `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
-	// The ID of the region. Call [DescribeRegions](~~DescribeRegions~~) to get a list of regions where Elastic Desktop Service is available.
+	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

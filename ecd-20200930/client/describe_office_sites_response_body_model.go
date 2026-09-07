@@ -102,7 +102,7 @@ func (s *DescribeOfficeSitesResponseBody) Validate() error {
 type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	// The collection of AD Connector information.
 	ADConnectors []*DescribeOfficeSitesResponseBodyOfficeSitesADConnectors `json:"ADConnectors,omitempty" xml:"ADConnectors,omitempty" type:"Repeated"`
-	// The Alibaba Cloud Global Accelerator (GA) instance ID.
+	// The ID of the Global Accelerator (GA) instance.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// SIMPLE
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The hostname of the domain controller. The hostname must comply with Windows hostname naming conventions.
+	// The hostname of the domain controller. The hostname must comply with Windows host naming conventions.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// 172.24.XX.XX
 	BackupDns *string `json:"BackupDns,omitempty" xml:"BackupDns,omitempty"`
-	// The peak Internet bandwidth. Valid values: 0 to 1000. Unit: Mbit/s.
+	// The peak public bandwidth. Valid values: 0 to 1000 Mbps.
 	//
 	// If the value is empty or 0, Internet access is not enabled.
 	//
@@ -158,7 +158,7 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// basic_plus
 	BasicInternetType *string `json:"BasicInternetType,omitempty" xml:"BasicInternetType,omitempty"`
-	// The status of the Cloud Enterprise Network (CEN) instance.
+	// The status of the CEN instance.
 	//
 	// example:
 	//
@@ -194,7 +194,7 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// true
 	CloudBoxOfficeSite *bool `json:"CloudBoxOfficeSite,omitempty" xml:"CloudBoxOfficeSite,omitempty"`
-	// The time when the office network was created. The time is in the ISO 8601 standard (UTC).
+	// The time when the office network was created. The time is in the ISO 8601 standard format (UTC).
 	//
 	// example:
 	//
@@ -214,7 +214,7 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// sg-bp1ce64o4g9mdf5u****
 	CustomSecurityGroupId *string `json:"CustomSecurityGroupId,omitempty" xml:"CustomSecurityGroupId,omitempty"`
-	// The access method allowed when connecting to cloud computers.
+	// The access method allowed for connecting to cloud computers.
 	//
 	// > The VPC connection method depends on the Alibaba Cloud PrivateLink service, which is free of charge. When this parameter is set to `VPC` or `Any`, the system automatically activates the PrivateLink service for you.
 	//
@@ -272,13 +272,13 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// true
 	EnableAdminAccess *bool `json:"EnableAdminAccess,omitempty" xml:"EnableAdminAccess,omitempty"`
-	// Indicates whether cross-cloud computer access within the office network is enabled. If enabled, cloud computers within the same office network can access each other over the network.
+	// Indicates whether cross-cloud-computer access within the office network is enabled. After this feature is enabled, cloud computers within the same office network can access each other over the network.
 	//
 	// example:
 	//
 	// false
 	EnableCrossDesktopAccess *bool `json:"EnableCrossDesktopAccess,omitempty" xml:"EnableCrossDesktopAccess,omitempty"`
-	// Indicates whether the public network access feature is enabled.
+	// Indicates whether public network access is enabled.
 	//
 	// example:
 	//
@@ -320,7 +320,7 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// R&D_Office_Network
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Applicable only to convenience account office networks. Indicates whether secondary authentication is required during logon. If logon secondary authentication is enabled, the system checks whether the logon account has security risks when a convenience user logs on to the client. If a risk is detected, the system sends a verification code to the email address associated with the account. The convenience user can log on to the client only after passing the verification code check.
+	// Applicable only to convenience account office networks. Indicates whether secondary verification is required during logon. If logon secondary verification is enabled, the system checks whether the logon account has security risks when a convenience user logs on to the client. If a risk is detected, the system sends a verification code to the email address associated with the account. The convenience user can log on to the client only after passing the verification code check.
 	//
 	// example:
 	//
@@ -338,7 +338,7 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// np-amtp8e8q1o9e4****
 	NetworkPackageId *string `json:"NetworkPackageId,omitempty" xml:"NetworkPackageId,omitempty"`
-	// The network version. The new version supports products such as WUYING Cloud Application.
+	// The network version. The new version supports products such as Wuying Cloud Application.
 	//
 	// example:
 	//
@@ -386,15 +386,15 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// 2
 	RdsLicenseStatus *string `json:"RdsLicenseStatus,omitempty" xml:"RdsLicenseStatus,omitempty"`
-	// The resource count list.
+	// The list of resource quantities.
 	ResourceAmounts []*DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts `json:"ResourceAmounts,omitempty" xml:"ResourceAmounts,omitempty" type:"Repeated"`
-	// The Network Security Protection Settings of the office network.
+	// The security protection configuration of the office network.
 	//
 	// example:
 	//
 	// SASE
 	SecurityProtection *string `json:"SecurityProtection,omitempty" xml:"SecurityProtection,omitempty"`
-	// Indicates whether single sign-on (SSO) is enabled.
+	// Indicates whether Single Sign-On (SSO) is enabled.
 	//
 	// example:
 	//
@@ -406,13 +406,13 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// SAML
 	SsoType *string `json:"SsoType,omitempty" xml:"SsoType,omitempty"`
-	// The status of the office network.
+	// The office network status.
 	//
 	// example:
 	//
 	// REGISTERED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The array of DNS addresses of the AD subdomain.
+	// The array of DNS addresses for the AD subdomain.
 	SubDnsAddress []*string `json:"SubDnsAddress,omitempty" xml:"SubDnsAddress,omitempty" type:"Repeated"`
 	// The username of the AD subdomain DNS.
 	//
@@ -438,7 +438,7 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// 0
 	TotalEdsCount *int64 `json:"TotalEdsCount,omitempty" xml:"TotalEdsCount,omitempty"`
-	// The number of cloud computers in shared cloud computer groups.
+	// The number of cloud computers in shared cloud computer pools.
 	//
 	// example:
 	//
@@ -464,7 +464,7 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// vpc-uf6tz5k67puge5jn8****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The usage mode of the VPC.
+	// The usage type of the VPC.
 	//
 	// example:
 	//
@@ -1130,7 +1130,7 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) Validate() error {
 }
 
 type DescribeOfficeSitesResponseBodyOfficeSitesADConnectors struct {
-	// The endpoint of the AD Connector.
+	// The connection address of the AD Connector.
 	//
 	// example:
 	//
@@ -1142,7 +1142,7 @@ type DescribeOfficeSitesResponseBodyOfficeSitesADConnectors struct {
 	//
 	// RUNNING
 	ConnectorStatus *string `json:"ConnectorStatus,omitempty" xml:"ConnectorStatus,omitempty"`
-	// The ID of the network interface controller (NIC) attached to the AD Connector.
+	// The ID of the elastic network interface (ENI) attached to the AD Connector.
 	//
 	// example:
 	//
@@ -1154,7 +1154,7 @@ type DescribeOfficeSitesResponseBodyOfficeSitesADConnectors struct {
 	//
 	// 1
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	// The trust password configured when setting up the AD trust relationship.
+	// The trust password specified when configuring the AD trust relationship.
 	//
 	// example:
 	//
@@ -1247,13 +1247,13 @@ type DescribeOfficeSitesResponseBodyOfficeSitesLogs struct {
 	//
 	// code:success | message:Create Connector complete
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The step that corresponds to the log entry.
+	// The step associated with the log entry.
 	//
 	// example:
 	//
 	// CREATE_CONNECTOR
 	Step *string `json:"Step,omitempty" xml:"Step,omitempty"`
-	// The time when the log was printed. The time is in the ISO 8601 standard (UTC).
+	// The time when the log was generated. The time is in the ISO 8601 standard format (UTC).
 	//
 	// example:
 	//
@@ -1310,7 +1310,7 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSitesLogs) Validate() error {
 }
 
 type DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts struct {
-	// The resource count.
+	// The number of resources.
 	//
 	// example:
 	//

@@ -36,7 +36,7 @@ type DescribeOfficeSitesRequest struct {
 	//
 	// SIMPLE
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The number of entries per page for a paged query.
+	// The number of entries per page for a paginated query.
 	//
 	// - Maximum value: 100.
 	//
@@ -64,7 +64,7 @@ type DescribeOfficeSitesRequest struct {
 	//
 	// SIMPLE
 	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//
@@ -72,21 +72,21 @@ type DescribeOfficeSitesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Network Security Protection Settings of the office network.
+	// The security protection configuration of the office network.
 	//
 	// example:
 	//
 	// SASE
 	SecurityProtection *string `json:"SecurityProtection,omitempty" xml:"SecurityProtection,omitempty"`
-	// The status of the office network.
+	// The office network status.
 	//
 	// example:
 	//
 	// REGISTERED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the VPC in which the office network of the shared cloud computer resides.
+	// The VPC ID of the office network for shared cloud computers.
 	//
-	// > This parameter is not yet available.
+	// > This parameter is not yet available for use.
 	//
 	// example:
 	//

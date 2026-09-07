@@ -3753,17 +3753,17 @@ func (client *Client) CreateDesktopOversoldGroupWithContext(ctx context.Context,
 
 // Summary:
 //
-// Creates one or more cloud desktops. If user information is specified during creation, the cloud desktops are directly assigned to the users.
+// Creates one or more cloud computers. If user information is provided during creation, the cloud computers are assigned directly.
 //
 // Description:
 //
-// Before creating cloud desktops, complete the following preparations:
+// Before creating cloud computers, complete the following preparations:
 //
-// - Create an office network (formerly workspace) and users. For more information, see the following API operations or documentation:
+// - Create an office network (formerly workspace) and users. For related API operations or documentation, refer to:
 //
-//   - Convenience office network: [CreateSimpleOfficeSite](https://help.aliyun.com/document_detail/215416.html) and [CreateUsers](https://help.aliyun.com/document_detail/437832.html).
+//   - Convenience office network: [CreateSimpleOfficeSite](https://help.aliyun.com/document_detail/215416.html), [CreateUsers](https://help.aliyun.com/document_detail/437832.html).
 //
-//   - AD office network: [CreateADConnectorOfficeSite](https://help.aliyun.com/document_detail/215417.html) and [Create AD users](https://help.aliyun.com/document_detail/188619.html).
+//   - AD office network: [CreateADConnectorOfficeSite](https://help.aliyun.com/document_detail/215417.html), [Create AD users](https://help.aliyun.com/document_detail/188619.html).
 //
 // - Call [CreatePolicyGroup](https://help.aliyun.com/document_detail/188889.html) to create a policy, or confirm that an existing policy is available.
 //
@@ -3929,7 +3929,7 @@ func (client *Client) CreateDesktopOversoldGroupWithContext(ctx context.Context,
 //
 // </details>
 //
-// To have cloud desktops automatically execute custom command scripts, use the `UserCommands` field to configure custom commands.
+// To have cloud computers automatically run custom command scripts, use the `UserCommands` field to configure custom commands.
 //
 // @param tmpReq - CreateDesktopsRequest
 //
@@ -4717,11 +4717,11 @@ func (client *Client) CreateNetworkPackageWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Enables the Global Accelerator (GA) service for an office network.
+// Enables Global Accelerator (GA) for an office network.
 //
 // Description:
 //
-// Before you call this operation, ensure you fully understand the billing methods and [pricing](t2208086.xdita#) of the GA service.
+// Before calling this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/425831.html) of Global Accelerator (GA).
 //
 // @param request - CreateOfficeSiteAcceleratorRequest
 //
@@ -9766,7 +9766,7 @@ func (client *Client) DescribeEcdReportTasksWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the inbound bandwidth and outbound bandwidth monitoring data of a cloud computer, or the public network access inbound bandwidth and outbound bandwidth monitoring data of a premium public bandwidth plan.
+// Queries the inbound and outbound bandwidth monitoring data of a cloud computer, or the public inbound and outbound bandwidth monitoring data of a premium public bandwidth instance.
 //
 // @param request - DescribeFlowMetricRequest
 //
@@ -11128,7 +11128,7 @@ func (client *Client) DescribeOfficeSiteBridgeInfoWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries all properties of an office network, including the ID, name, status, and creation time.
+// Queries all attributes of an office network, including the ID, name, status, and creation time.
 //
 // @param request - DescribeOfficeSitesRequest
 //
@@ -11254,6 +11254,216 @@ func (client *Client) DescribeOnlineUserCountWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeOnlineUserCountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries peripheral drivers visible to the current account, with support for filtering by ownership, brand, device type, driver ID, and keyword, and returns paginated results.
+//
+// Description:
+//
+// When multiple filter conditions are specified, only drivers that meet all conditions are returned. If no filter conditions are specified, both Wuying official drivers and drivers of the current account are returned. Use PageSize and PageNumber for pagination. Keep the filter conditions and PageSize unchanged, increment PageNumber page by page, and stop when an empty list is returned. The example values are provided to illustrate the format. Replace them with actual values.
+//
+// ## Request examples
+//
+// The following JSON examples show the logical request parameters. Common signature parameters are generated by the SDK or signing component.
+//
+// ### Query official printer drivers
+//
+// Query official printer drivers of a specified brand that contain a keyword. The first page is returned with a maximum of 20 entries per page.
+//
+// ```json
+//
+// {
+//
+//	"Action": "DescribePeripheralDrivers",
+//
+//	"Version": "2020-09-30",
+//
+//	"OwnerType": "WUYING",
+//
+//	"Brand": "hp",
+//
+//	"DeviceType": "printer",
+//
+//	"Filter": "LaserJet",
+//
+//	"PageSize": 20,
+//
+//	"PageNumber": 1
+//
+// }
+//
+// ```
+//
+// ### Query drivers by driver ID in batches
+//
+// ```json
+//
+// {
+//
+//	"Action": "DescribePeripheralDrivers",
+//
+//	"Version": "2020-09-30",
+//
+//	"DriverIds": [
+//
+//	  "11111111-2222-4333-8444-555555555555",
+//
+//	  "66666666-7777-4888-8999-000000000000"
+//
+//	],
+//
+//	"PageSize": 20,
+//
+//	"PageNumber": 1
+//
+// }
+//
+// ```
+//
+// When you construct request parameters directly, expand DriverIds by sequence number:
+//
+// ```text
+//
+// DriverIds.1=11111111-2222-4333-8444-555555555555
+//
+// DriverIds.2=66666666-7777-4888-8999-000000000000
+//
+// ```
+//
+// When you use an SDK, pass in a string array and the SDK handles the encoding.
+//
+// ## Response examples
+//
+// The following responses are format examples. The icon URLs are for illustration purposes only. The reserved fields MaxResults and NextToken do not provide valid values and are omitted from the examples.
+//
+// ### Successful query
+//
+// ```json
+//
+// {
+//
+//	"RequestId": "00000000-1111-4222-8333-444444444444",
+//
+//	"Count": 1,
+//
+//	"DriverInfos": [
+//
+//	  {
+//
+//	    "Id": "11111111-2222-4333-8444-555555555555",
+//
+//	    "Icon": "https://example.com/icons/printer.png",
+//
+//	    "Name": "HP Universal Printing PCL 6",
+//
+//	    "Brand": "hp",
+//
+//	    "DeviceType": "printer",
+//
+//	    "OsType": "Windows",
+//
+//	    "CreateTime": "2026-09-01T10:30:00+08:00",
+//
+//	    "Source": "Wuying",
+//
+//	    "OwnerType": "WUYING"
+//
+//	  }
+//
+//	]
+//
+// }
+//
+// ```
+//
+// ### No matching results
+//
+// ```json
+//
+// {
+//
+//	"RequestId": "00000000-1111-4222-8333-444444444444",
+//
+//	"Count": 0,
+//
+//	"DriverInfos": []
+//
+// }
+//
+// ```
+//
+// @param request - DescribePeripheralDriversRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePeripheralDriversResponse
+func (client *Client) DescribePeripheralDriversWithContext(ctx context.Context, request *DescribePeripheralDriversRequest, runtime *dara.RuntimeOptions) (_result *DescribePeripheralDriversResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Brand) {
+		query["Brand"] = request.Brand
+	}
+
+	if !dara.IsNil(request.DeviceType) {
+		query["DeviceType"] = request.DeviceType
+	}
+
+	if !dara.IsNil(request.DriverIds) {
+		query["DriverIds"] = request.DriverIds
+	}
+
+	if !dara.IsNil(request.Filter) {
+		query["Filter"] = request.Filter
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OwnerType) {
+		query["OwnerType"] = request.OwnerType
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribePeripheralDrivers"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribePeripheralDriversResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -12418,7 +12628,7 @@ func (client *Client) DescribeSessionStatisticWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the snapshot list and snapshot details of a cloud computer.
+// Queries the snapshot list and detailed snapshot information of a cloud computer.
 //
 // @param request - DescribeSnapshotsRequest
 //
@@ -13168,6 +13378,188 @@ func (client *Client) DescribeVirtualMFADevicesWithContext(ctx context.Context, 
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeVirtualMFADevicesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves cloud computer information for a vulnerability.
+//
+// Description:
+//
+// - This operation uses a centralized domain name. The access point is in the China (Shanghai) region. Other regions are not supported.
+//
+// - The cloud computer status information returned by this operation has a 1 to 3 second delay from the actual values.
+//
+// @param request - DescribeVulDesktopsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVulDesktopsResponse
+func (client *Client) DescribeVulDesktopsWithContext(ctx context.Context, request *DescribeVulDesktopsRequest, runtime *dara.RuntimeOptions) (_result *DescribeVulDesktopsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CveId) {
+		query["CveId"] = request.CveId
+	}
+
+	if !dara.IsNil(request.DesktopIdList) {
+		query["DesktopIdList"] = request.DesktopIdList
+	}
+
+	if !dara.IsNil(request.IncludeFixResult) {
+		query["IncludeFixResult"] = request.IncludeFixResult
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.OnlyCurrentMonthFixAttempted) {
+		query["OnlyCurrentMonthFixAttempted"] = request.OnlyCurrentMonthFixAttempted
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PatchId) {
+		query["PatchId"] = request.PatchId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceGroupId) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !dara.IsNil(request.SearchRegionId) {
+		query["SearchRegionId"] = request.SearchRegionId
+	}
+
+	if !dara.IsNil(request.StatusList) {
+		query["StatusList"] = request.StatusList
+	}
+
+	if !dara.IsNil(request.VulLevel) {
+		query["VulLevel"] = request.VulLevel
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVulDesktops"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVulDesktopsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves vulnerability information.
+//
+// Description:
+//
+// After security protection is enabled, the system automatically scans cloud desktops for system vulnerabilities on a periodic basis (once a day).
+//
+// @param request - DescribeVulnerabilityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVulnerabilityResponse
+func (client *Client) DescribeVulnerabilityWithContext(ctx context.Context, request *DescribeVulnerabilityRequest, runtime *dara.RuntimeOptions) (_result *DescribeVulnerabilityResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.CveId) {
+		query["CveId"] = request.CveId
+	}
+
+	if !dara.IsNil(request.IncludeDesktop) {
+		query["IncludeDesktop"] = request.IncludeDesktop
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PatchId) {
+		query["PatchId"] = request.PatchId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SearchRegionId) {
+		query["SearchRegionId"] = request.SearchRegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeVulnerability"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeVulnerabilityResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -14386,7 +14778,7 @@ func (client *Client) ListCdsFilesWithContext(ctx context.Context, tmpReq *ListC
 
 // Summary:
 //
-// Retrieves user information from an enterprise Active Directory (AD) when you use an AD directory to connect to your enterprise AD.
+// Retrieves user information from an enterprise Active Directory (AD) if you use an AD directory to connect to your enterprise AD.
 //
 // @param request - ListDirectoryUsersRequest
 //
@@ -15058,7 +15450,7 @@ func (client *Client) LockVirtualMFADeviceWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Migrates cloud computers from the current office network (formerly known as workspace) to a new office network.
+// Migrates cloud computers from the current office network to a new office network.
 //
 // @param request - MigrateDesktopsRequest
 //
@@ -19023,11 +19415,11 @@ func (client *Client) ModifyTimerGroupWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Grants permissions on cloud desktops to end users, or revokes the permissions from the end users.
+// Adds or removes the authorization of one or more cloud computers for one or more users.
 //
 // Description:
 //
-// You can modify end users only for cloud computers that are in the Running state.
+// Only cloud computers in the Running state support modifying authorized users.
 //
 // @param request - ModifyUserEntitlementRequest
 //
@@ -19343,6 +19735,126 @@ func (client *Client) MoveCdsFileWithContext(ctx context.Context, request *MoveC
 
 // Summary:
 //
+// Queries the trend of active user count statistics within a specified time range. Returns the deduplicated active user count at each time slice based on the specified aggregation interval (Period), which can be used to plot online user trend charts.
+//
+// @param request - QueryActiveUserStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryActiveUserStatisticResponse
+func (client *Client) QueryActiveUserStatisticWithContext(ctx context.Context, request *QueryActiveUserStatisticRequest, runtime *dara.RuntimeOptions) (_result *QueryActiveUserStatisticResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryActiveUserStatistic"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryActiveUserStatisticResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the usage duration ranking and details of each end user under a tenant within a specified date range. Aggregates offline statistical data, summarizes connection duration by user dimension, and populates basic information and per-desktop usage duration details for users on the current page.
+//
+// @param request - QueryEndUserHistoryUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryEndUserHistoryUsageResponse
+func (client *Client) QueryEndUserHistoryUsageWithContext(ctx context.Context, request *QueryEndUserHistoryUsageRequest, runtime *dara.RuntimeOptions) (_result *QueryEndUserHistoryUsageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.IsAdUser) {
+		query["IsAdUser"] = request.IsAdUser
+	}
+
+	if !dara.IsNil(request.PageNum) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryEndUserHistoryUsage"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryEndUserHistoryUsageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the historical daily active user count and monthly active user count for a specified date.
 //
 // Description:
@@ -19387,6 +19899,70 @@ func (client *Client) QueryHistoryActiveUserCountWithContext(ctx context.Context
 		BodyType:    dara.String("json"),
 	}
 	_result = &QueryHistoryActiveUserCountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the daily historical active user count for a tenant within a specified time range. Based on offline statistical data, this operation aggregates and deduplicates active users by date to calculate daily active users (DAU). Filtering by user group and workspace is supported.
+//
+// @param request - QueryHistoryActiveUserStatisticRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryHistoryActiveUserStatisticResponse
+func (client *Client) QueryHistoryActiveUserStatisticWithContext(ctx context.Context, request *QueryHistoryActiveUserStatisticRequest, runtime *dara.RuntimeOptions) (_result *QueryHistoryActiveUserStatisticResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BizType) {
+		query["BizType"] = request.BizType
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.Period) {
+		query["Period"] = request.Period
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !dara.IsNil(request.UserGroupId) {
+		query["UserGroupId"] = request.UserGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryHistoryActiveUserStatistic"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryHistoryActiveUserStatisticResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -19639,11 +20215,11 @@ func (client *Client) QueryHistoryUsageDurationRankWithContext(ctx context.Conte
 
 // Summary:
 //
-// Reboots one or more desktops.
+// Restarts one or more cloud computers.
 //
 // Description:
 //
-// The desktops must be in the Running state.
+// The cloud computers must be in the Running state.
 //
 // @param request - RebootDesktopsRequest
 //
@@ -20625,7 +21201,7 @@ func (client *Client) RevokeCoordinatePrivilegeWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Executes a PowerShell or Bat script on one or more cloud computers that run the Windows operating system.
+// Executes a PowerShell or Bat script on one or more cloud computers that run Windows.
 //
 // @param request - RunCommandRequest
 //
@@ -21209,11 +21785,11 @@ func (client *Client) SetUserProfilePathRulesWithContext(ctx context.Context, tm
 
 // Summary:
 //
-// Starts stopped cloud computers. After the API operation is successfully called, the cloud computers enter the Running state.
+// Starts one or more stopped cloud computers. After the operation is called successfully, the cloud computers enter the Running state.
 //
 // Description:
 //
-// The cloud computers that you want to start must be in the Stopped state.
+// The cloud computers must be in the Stopped state.
 //
 // @param request - StartDesktopsRequest
 //

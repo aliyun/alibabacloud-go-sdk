@@ -59,7 +59,7 @@ type DescribeSnapshotsRequest struct {
 	// testName
 	DesktopName     *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
 	DesktopScenario *string `json:"DesktopScenario,omitempty" xml:"DesktopScenario,omitempty"`
-	// The end of the time range during which the snapshot was created. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time must be in UTC.
+	// The end of the time range during which the snapshots were created. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time must be in UTC.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ type DescribeSnapshotsRequest struct {
 	//
 	// s-2ze81owrnv9pity4****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The display name of the snapshot. The name must be 2 to 127 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter or Chinese character. The name cannot start with `auto` to avoid conflicts with automatic snapshot names.
+	// The display name of the snapshot. The name must be 2 to 127 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter. The name cannot start with `auto` to avoid conflicts with automatic snapshot names.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ type DescribeSnapshotsRequest struct {
 	//
 	// user
 	SnapshotType *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
-	// The type of the cloud disk for which to create the snapshot.
+	// The type of the cloud disk from which the snapshot is created.
 	//
 	// > The value is case-insensitive.
 	//
@@ -121,7 +121,7 @@ type DescribeSnapshotsRequest struct {
 	//
 	// system
 	SourceDiskType *string `json:"SourceDiskType,omitempty" xml:"SourceDiskType,omitempty"`
-	// The beginning of the time range during which the snapshot was created. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time must be in UTC.
+	// The beginning of the time range during which the snapshots were created. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format. The time must be in UTC.
 	//
 	// example:
 	//

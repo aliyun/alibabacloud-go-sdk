@@ -18,7 +18,7 @@ type iListDirectoryUsersResponseBody interface {
 }
 
 type ListDirectoryUsersResponseBody struct {
-	// The pagination token for the next query. An empty value indicates that no more results exist.
+	// The token for the next query. If this parameter is empty, no more results are available.
 	//
 	// example:
 	//
@@ -99,7 +99,7 @@ type ListDirectoryUsersResponseBodyUsers struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	DisplayNameNew *string `json:"DisplayNameNew,omitempty" xml:"DisplayNameNew,omitempty"`
 	// The email address.
 	//
@@ -113,7 +113,7 @@ type ListDirectoryUsersResponseBodyUsers struct {
 	//
 	// Alice
 	EndUser *string `json:"EndUser,omitempty" xml:"EndUser,omitempty"`
-	// The phone number.
+	// The mobile phone number.
 	//
 	// example:
 	//

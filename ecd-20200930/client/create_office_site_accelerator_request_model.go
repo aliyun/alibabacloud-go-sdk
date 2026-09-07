@@ -22,7 +22,7 @@ type iCreateOfficeSiteAcceleratorRequest interface {
 }
 
 type CreateOfficeSiteAcceleratorRequest struct {
-	// A list of regions where access points provide acceleration.
+	// The list of acceleration region information for the access points.
 	//
 	// This parameter is required.
 	AccelerateRegion []*CreateOfficeSiteAcceleratorRequestAccelerateRegion `json:"AccelerateRegion,omitempty" xml:"AccelerateRegion,omitempty" type:"Repeated"`
@@ -131,7 +131,7 @@ type CreateOfficeSiteAcceleratorRequestAccelerateRegion struct {
 	//
 	// ap-southeast-1
 	AccelerateRegionId *string `json:"AccelerateRegionId,omitempty" xml:"AccelerateRegionId,omitempty"`
-	// The bandwidth allocated to the acceleration region. Unit: Mbps.
+	// The bandwidth allocated to the acceleration region. Unit: Mbit/s.
 	//
 	// This parameter is required.
 	//
@@ -139,21 +139,19 @@ type CreateOfficeSiteAcceleratorRequestAccelerateRegion struct {
 	//
 	// 50
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The IP protocol version used to access the GA instance.
+	// The IP address protocol used to connect to the GA service.
 	//
-	// > Only standard pay-as-you-go GA instances support `DUAL_STACK`.
+	// > The `DUAL_STACK` type is supported only by standard pay-as-you-go GA instances.
 	//
 	// example:
 	//
 	// IPv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// The line type.
+	// The public network line type of the acceleration region.
 	//
-	// > - This parameter is required for pay-by-data-transfer GA instances.
+	// > - Configure this parameter for GA instances that use the **pay-by-data-transfer*	- billing method.
 	//
-	// >
-	//
-	// > - The supported line types vary by acceleration region.
+	// > - The supported public network line types vary by acceleration region.
 	//
 	// This parameter is required.
 	//

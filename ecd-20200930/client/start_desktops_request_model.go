@@ -16,7 +16,7 @@ type iStartDesktopsRequest interface {
 }
 
 type StartDesktopsRequest struct {
-	// The cloud computer IDs. You can specify the IDs of 1 to 100 cloud computers.
+	// The cloud computer IDs. You can specify 1 to 100 IDs.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type StartDesktopsRequest struct {
 	//
 	// ecd-7w78ozhjcwa3u****
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by Elastic Desktop Service.
 	//
 	// This parameter is required.
 	//

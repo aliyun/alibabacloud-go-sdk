@@ -34,13 +34,13 @@ type MigrateDesktopsRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The member IP address of the target node for migration.
+	// The member IP address of the destination node for migration.
 	//
 	// example:
 	//
 	// 192.168.1.10
 	TargetMemberIp *string `json:"TargetMemberIp,omitempty" xml:"TargetMemberIp,omitempty"`
-	// The ID of the target office network.
+	// The ID of the destination office network.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type MigrateDesktopsRequest struct {
 	//
 	// cn-shenzhen+dir-388505****
 	TargetOfficeSiteId *string `json:"TargetOfficeSiteId,omitempty" xml:"TargetOfficeSiteId,omitempty"`
-	// > This parameter is not publicly available.
+	// > This parameter is not yet available for use.
 	//
 	// example:
 	//

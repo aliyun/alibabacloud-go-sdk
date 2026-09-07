@@ -140,7 +140,7 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	//
 	// Windows
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	// The snapshot creation progress. Unit: percent.
+	// The snapshot creation progress, in percentage.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	//
 	// example:
 	//
-	// 数据盘备份
+	// DataDiskBackup
 	RestorePointName *string `json:"RestorePointName,omitempty" xml:"RestorePointName,omitempty"`
 	// The snapshot ID.
 	//

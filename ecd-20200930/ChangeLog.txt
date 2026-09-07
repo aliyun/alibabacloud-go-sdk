@@ -1,3 +1,12 @@
+2026-09-07 Version: v6.2.0
+- Support API DescribePeripheralDrivers.
+- Support API DescribeVulDesktops.
+- Support API DescribeVulnerability.
+- Support API QueryActiveUserStatistic.
+- Support API QueryEndUserHistoryUsage.
+- Support API QueryHistoryActiveUserStatistic.
+
+
 2026-09-03 Version: v6.1.1
 - Generated golang 2020-09-30 for ecd.
 

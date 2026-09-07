@@ -28,7 +28,7 @@ type iDescribeFlowMetricRequest interface {
 type DescribeFlowMetricRequest struct {
 	// The end time. The following formats are supported:
 	//
-	// - UNIX timestamp: the number of milliseconds that have elapsed since January 1, 1970.
+	// - Unix timestamp: the number of milliseconds that have elapsed since January 1, 1970.
 	//
 	// - Format: YYYY-MM-DDThh:mm:ssZ.
 	//
@@ -38,7 +38,7 @@ type DescribeFlowMetricRequest struct {
 	//
 	// 1664714703743
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The instance ID. The value can be a cloud computer ID or a premium public bandwidth plan ID.
+	// The instance ID, which can be a cloud computer ID or a premium public bandwidth ID.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DescribeFlowMetricRequest struct {
 	//
 	// ecd-fwq23f13***	- or np-6inxqsvcyv6z8****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance type. You can select the cloud computer type or the premium public bandwidth plan type. If you select the cloud computer type, set InstanceId and MetricType to the cloud computer ID and the traffic type of the cloud computer. The same rule applies to the premium public bandwidth plan type.
+	// The instance type. You can select the cloud computer type or the premium public bandwidth type. If you select the cloud computer type, set InstanceId and MetricType to the cloud computer ID and the corresponding traffic type of the cloud computer. The same applies to the premium public bandwidth type.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type DescribeFlowMetricRequest struct {
 	//
 	// desktop
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The monitoring metric type. This parameter supports the inbound and outbound bandwidth of a cloud computer, and the public inbound and outbound bandwidth of a premium public bandwidth plan.
+	// The monitoring metric type. Supports inbound and outbound bandwidth of cloud computers, and public inbound and outbound bandwidth of premium public bandwidth instances.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +80,7 @@ type DescribeFlowMetricRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The start time. The following formats are supported:
 	//
-	// - UNIX timestamp: the number of milliseconds that have elapsed since January 1, 1970.
+	// - Unix timestamp: the number of milliseconds that have elapsed since January 1, 1970.
 	//
 	// - Format: YYYY-MM-DDThh:mm:ssZ.
 	//
