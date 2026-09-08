@@ -106,6 +106,12 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyData struct {
 	//
 	// 20
 	CachedAmount *int64 `json:"cachedAmount,omitempty" xml:"cachedAmount,omitempty"`
+	// The exact value of total cached consumption. Supports decimals in credit scenarios.
+	//
+	// example:
+	//
+	// 20.5
+	CachedAmountDecimal *float64 `json:"cachedAmountDecimal,omitempty" xml:"cachedAmountDecimal,omitempty"`
 	// The paginated consumption details.
 	//
 	// example:
@@ -118,23 +124,37 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyData struct {
 	//
 	// 300
 	InputAmount *int64 `json:"inputAmount,omitempty" xml:"inputAmount,omitempty"`
+	// The exact value of total input consumption. Supports decimals in credit scenarios.
+	//
+	// example:
+	//
+	// 300.5
+	InputAmountDecimal *float64 `json:"inputAmountDecimal,omitempty" xml:"inputAmountDecimal,omitempty"`
 	// The total output token consumption.
 	//
 	// example:
 	//
 	// 180
 	OutputAmount *int64 `json:"outputAmount,omitempty" xml:"outputAmount,omitempty"`
+	// The exact value of total output consumption. Supports decimals in credit scenarios.
+	//
+	// example:
+	//
+	// 180.5
+	OutputAmountDecimal *float64 `json:"outputAmountDecimal,omitempty" xml:"outputAmountDecimal,omitempty"`
 	// Indicates whether the quota limit is exceeded.
 	//
 	// example:
 	//
 	// false
 	OverLimit *bool `json:"overLimit,omitempty" xml:"overLimit,omitempty"`
-	// The subject type. Valid values:
+	// The quota dimension. Valid values: token and credit.
 	//
-	// - consumer
+	// example:
 	//
-	// - consumer_group
+	// token
+	QuotaDimension *string `json:"quotaDimension,omitempty" xml:"quotaDimension,omitempty"`
+	// The subject type. Valid values: consumer and consumer_group.
 	//
 	// example:
 	//
@@ -152,6 +172,12 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyData struct {
 	//
 	// 500
 	UsedAmount *int64 `json:"usedAmount,omitempty" xml:"usedAmount,omitempty"`
+	// The exact value of the total used amount of the subject. Supports decimals in credit scenarios.
+	//
+	// example:
+	//
+	// 500.5
+	UsedAmountDecimal *float64 `json:"usedAmountDecimal,omitempty" xml:"usedAmountDecimal,omitempty"`
 }
 
 func (s GetGatewayQuotaRuleSubjectUsageResponseBodyData) String() string {
@@ -166,6 +192,10 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) GetCachedAmount() *int
 	return s.CachedAmount
 }
 
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) GetCachedAmountDecimal() *float64 {
+	return s.CachedAmountDecimal
+}
+
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) GetDetails() *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails {
 	return s.Details
 }
@@ -174,12 +204,24 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) GetInputAmount() *int6
 	return s.InputAmount
 }
 
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) GetInputAmountDecimal() *float64 {
+	return s.InputAmountDecimal
+}
+
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) GetOutputAmount() *int64 {
 	return s.OutputAmount
 }
 
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) GetOutputAmountDecimal() *float64 {
+	return s.OutputAmountDecimal
+}
+
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) GetOverLimit() *bool {
 	return s.OverLimit
+}
+
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) GetQuotaDimension() *string {
+	return s.QuotaDimension
 }
 
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) GetSubjectType() *string {
@@ -194,8 +236,17 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) GetUsedAmount() *int64
 	return s.UsedAmount
 }
 
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) GetUsedAmountDecimal() *float64 {
+	return s.UsedAmountDecimal
+}
+
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) SetCachedAmount(v int64) *GetGatewayQuotaRuleSubjectUsageResponseBodyData {
 	s.CachedAmount = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) SetCachedAmountDecimal(v float64) *GetGatewayQuotaRuleSubjectUsageResponseBodyData {
+	s.CachedAmountDecimal = &v
 	return s
 }
 
@@ -209,13 +260,28 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) SetInputAmount(v int64
 	return s
 }
 
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) SetInputAmountDecimal(v float64) *GetGatewayQuotaRuleSubjectUsageResponseBodyData {
+	s.InputAmountDecimal = &v
+	return s
+}
+
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) SetOutputAmount(v int64) *GetGatewayQuotaRuleSubjectUsageResponseBodyData {
 	s.OutputAmount = &v
 	return s
 }
 
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) SetOutputAmountDecimal(v float64) *GetGatewayQuotaRuleSubjectUsageResponseBodyData {
+	s.OutputAmountDecimal = &v
+	return s
+}
+
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) SetOverLimit(v bool) *GetGatewayQuotaRuleSubjectUsageResponseBodyData {
 	s.OverLimit = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) SetQuotaDimension(v string) *GetGatewayQuotaRuleSubjectUsageResponseBodyData {
+	s.QuotaDimension = &v
 	return s
 }
 
@@ -231,6 +297,11 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) SetTotalQuota(v int64)
 
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) SetUsedAmount(v int64) *GetGatewayQuotaRuleSubjectUsageResponseBodyData {
 	s.UsedAmount = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyData) SetUsedAmountDecimal(v float64) *GetGatewayQuotaRuleSubjectUsageResponseBodyData {
+	s.UsedAmountDecimal = &v
 	return s
 }
 
@@ -262,7 +333,7 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -334,6 +405,12 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems struct {
 	//
 	// 10
 	CachedAmount *int64 `json:"cachedAmount,omitempty" xml:"cachedAmount,omitempty"`
+	// The exact value of cached consumption. Supports decimals in credit scenarios.
+	//
+	// example:
+	//
+	// 10.5
+	CachedAmountDecimal *float64 `json:"cachedAmountDecimal,omitempty" xml:"cachedAmountDecimal,omitempty"`
 	// The consumer name.
 	//
 	// example:
@@ -346,6 +423,12 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems struct {
 	//
 	// 120
 	InputAmount *int64 `json:"inputAmount,omitempty" xml:"inputAmount,omitempty"`
+	// The exact value of input consumption. Supports decimals in credit scenarios.
+	//
+	// example:
+	//
+	// 120.5
+	InputAmountDecimal *float64 `json:"inputAmountDecimal,omitempty" xml:"inputAmountDecimal,omitempty"`
 	// The model name.
 	//
 	// example:
@@ -358,6 +441,12 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems struct {
 	//
 	// 80
 	OutputAmount *int64 `json:"outputAmount,omitempty" xml:"outputAmount,omitempty"`
+	// The exact value of output consumption. Supports decimals in credit scenarios.
+	//
+	// example:
+	//
+	// 80.5
+	OutputAmountDecimal *float64 `json:"outputAmountDecimal,omitempty" xml:"outputAmountDecimal,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -376,6 +465,12 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems struct {
 	//
 	// 210
 	UsedAmount *int64 `json:"usedAmount,omitempty" xml:"usedAmount,omitempty"`
+	// The exact value of total consumption. Supports decimals in credit scenarios.
+	//
+	// example:
+	//
+	// 210.5
+	UsedAmountDecimal *float64 `json:"usedAmountDecimal,omitempty" xml:"usedAmountDecimal,omitempty"`
 }
 
 func (s GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) String() string {
@@ -390,6 +485,10 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetCachedA
 	return s.CachedAmount
 }
 
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetCachedAmountDecimal() *float64 {
+	return s.CachedAmountDecimal
+}
+
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetConsumer() *string {
 	return s.Consumer
 }
@@ -398,12 +497,20 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetInputAm
 	return s.InputAmount
 }
 
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetInputAmountDecimal() *float64 {
+	return s.InputAmountDecimal
+}
+
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetModel() *string {
 	return s.Model
 }
 
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetOutputAmount() *int64 {
 	return s.OutputAmount
+}
+
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetOutputAmountDecimal() *float64 {
+	return s.OutputAmountDecimal
 }
 
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetRequestId() *string {
@@ -418,8 +525,17 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetUsedAmo
 	return s.UsedAmount
 }
 
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) GetUsedAmountDecimal() *float64 {
+	return s.UsedAmountDecimal
+}
+
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetCachedAmount(v int64) *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems {
 	s.CachedAmount = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetCachedAmountDecimal(v float64) *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems {
+	s.CachedAmountDecimal = &v
 	return s
 }
 
@@ -433,6 +549,11 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetInputAm
 	return s
 }
 
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetInputAmountDecimal(v float64) *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems {
+	s.InputAmountDecimal = &v
+	return s
+}
+
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetModel(v string) *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems {
 	s.Model = &v
 	return s
@@ -440,6 +561,11 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetModel(v
 
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetOutputAmount(v int64) *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems {
 	s.OutputAmount = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetOutputAmountDecimal(v float64) *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems {
+	s.OutputAmountDecimal = &v
 	return s
 }
 
@@ -455,6 +581,11 @@ func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetStartTi
 
 func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetUsedAmount(v int64) *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems {
 	s.UsedAmount = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems) SetUsedAmountDecimal(v float64) *GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems {
+	s.UsedAmountDecimal = &v
 	return s
 }
 

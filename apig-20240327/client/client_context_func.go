@@ -4096,7 +4096,7 @@ func (client *Client) GetGatewayQuotaRuleWithContext(ctx context.Context, gatewa
 //
 // Description:
 //
-// Queries the usage details of a specific subject under a quota rule. This operation applies only to AI gateways with a version later than 2.1.19.
+// Queries the usage details of a specific subject under a quota rule. This operation takes effect only for AI gateways with a version later than 2.1.19.
 //
 // @param request - GetGatewayQuotaRuleSubjectUsageRequest
 //
@@ -4113,6 +4113,10 @@ func (client *Client) GetGatewayQuotaRuleSubjectUsageWithContext(ctx context.Con
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["endTime"] = request.EndTime
+	}
+
 	if !dara.IsNil(request.FilterFailedRequests) {
 		query["filterFailedRequests"] = request.FilterFailedRequests
 	}
@@ -4123,6 +4127,10 @@ func (client *Client) GetGatewayQuotaRuleSubjectUsageWithContext(ctx context.Con
 
 	if !dara.IsNil(request.PageSize) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["startTime"] = request.StartTime
 	}
 
 	req := &openapiutil.OpenApiRequest{

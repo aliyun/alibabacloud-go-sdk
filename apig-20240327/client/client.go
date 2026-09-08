@@ -25,33 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"ap-southeast-2": dara.String("apig.ap-southeast-2.aliyuncs.com"),
-		"ap-southeast-6": dara.String("apig.ap-southeast-6.aliyuncs.com"),
-		"ap-southeast-7": dara.String("apig.ap-southeast-7.aliyuncs.com"),
-		"cn-guangzhou":   dara.String("apig.cn-guangzhou.aliyuncs.com"),
-		"cn-heyuan":      dara.String("apig.cn-heyuan.aliyuncs.com"),
-		"cn-shenzhen":    dara.String("apig.cn-shenzhen.aliyuncs.com"),
-		"cn-wulanchabu":  dara.String("apig.cn-wulanchabu.aliyuncs.com"),
-		"cn-beijing":     dara.String("apig.cn-beijing.aliyuncs.com"),
-		"ap-northeast-2": dara.String("apig.ap-northeast-2.aliyuncs.com"),
-		"ap-northeast-1": dara.String("apig.ap-northeast-1.aliyuncs.com"),
-		"cn-chengdu":     dara.String("apig.cn-chengdu.aliyuncs.com"),
-		"cn-qingdao":     dara.String("apig.cn-qingdao.aliyuncs.com"),
-		"cn-shanghai":    dara.String("apig.cn-shanghai.aliyuncs.com"),
-		"cn-hongkong":    dara.String("apig.cn-hongkong.aliyuncs.com"),
-		"ap-southeast-1": dara.String("apig.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-3": dara.String("apig.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-5": dara.String("apig.ap-southeast-5.aliyuncs.com"),
-		"cn-zhangjiakou": dara.String("apig.cn-zhangjiakou.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("apig.cn-hangzhou.aliyuncs.com"),
-		"us-west-1":      dara.String("apig.us-west-1.aliyuncs.com"),
-		"us-east-1":      dara.String("apig.us-east-1.aliyuncs.com"),
-		"eu-central-1":   dara.String("apig.eu-central-1.aliyuncs.com"),
-		"eu-west-1":      dara.String("apig.eu-west-1.aliyuncs.com"),
-		"me-east-1":      dara.String("apig.me-east-1.aliyuncs.com"),
-		"me-central-1":   dara.String("apig.me-central-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -5650,7 +5623,7 @@ func (client *Client) GetGatewayQuotaRule(gatewayId *string, ruleId *string, req
 //
 // Description:
 //
-// Queries the usage details of a specific subject under a quota rule. This operation applies only to AI gateways with a version later than 2.1.19.
+// Queries the usage details of a specific subject under a quota rule. This operation takes effect only for AI gateways with a version later than 2.1.19.
 //
 // @param request - GetGatewayQuotaRuleSubjectUsageRequest
 //
@@ -5667,6 +5640,10 @@ func (client *Client) GetGatewayQuotaRuleSubjectUsageWithOptions(gatewayId *stri
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["endTime"] = request.EndTime
+	}
+
 	if !dara.IsNil(request.FilterFailedRequests) {
 		query["filterFailedRequests"] = request.FilterFailedRequests
 	}
@@ -5677,6 +5654,10 @@ func (client *Client) GetGatewayQuotaRuleSubjectUsageWithOptions(gatewayId *stri
 
 	if !dara.IsNil(request.PageSize) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["startTime"] = request.StartTime
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -5709,7 +5690,7 @@ func (client *Client) GetGatewayQuotaRuleSubjectUsageWithOptions(gatewayId *stri
 //
 // Description:
 //
-// Queries the usage details of a specific subject under a quota rule. This operation applies only to AI gateways with a version later than 2.1.19.
+// Queries the usage details of a specific subject under a quota rule. This operation takes effect only for AI gateways with a version later than 2.1.19.
 //
 // @param request - GetGatewayQuotaRuleSubjectUsageRequest
 //

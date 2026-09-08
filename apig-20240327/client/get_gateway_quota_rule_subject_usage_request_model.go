@@ -9,15 +9,25 @@ type iGetGatewayQuotaRuleSubjectUsageRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEndTime(v int64) *GetGatewayQuotaRuleSubjectUsageRequest
+	GetEndTime() *int64
 	SetFilterFailedRequests(v bool) *GetGatewayQuotaRuleSubjectUsageRequest
 	GetFilterFailedRequests() *bool
 	SetPageNumber(v int32) *GetGatewayQuotaRuleSubjectUsageRequest
 	GetPageNumber() *int32
 	SetPageSize(v int32) *GetGatewayQuotaRuleSubjectUsageRequest
 	GetPageSize() *int32
+	SetStartTime(v int64) *GetGatewayQuotaRuleSubjectUsageRequest
+	GetStartTime() *int64
 }
 
 type GetGatewayQuotaRuleSubjectUsageRequest struct {
+	// The end time for querying consumption record details, in UNIX timestamp format (seconds). If only this parameter is specified, the system automatically calculates startTime based on the rule cycle.
+	//
+	// example:
+	//
+	// 1788425220
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	// Specifies whether to filter out zero values.
 	//
 	// example:
@@ -36,6 +46,12 @@ type GetGatewayQuotaRuleSubjectUsageRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The start time for querying consumption record details, in UNIX timestamp format (seconds). If only this parameter is specified, the system automatically calculates endTime based on the rule cycle.
+	//
+	// example:
+	//
+	// 1788338820
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s GetGatewayQuotaRuleSubjectUsageRequest) String() string {
@@ -44,6 +60,10 @@ func (s GetGatewayQuotaRuleSubjectUsageRequest) String() string {
 
 func (s GetGatewayQuotaRuleSubjectUsageRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetGatewayQuotaRuleSubjectUsageRequest) GetEndTime() *int64 {
+	return s.EndTime
 }
 
 func (s *GetGatewayQuotaRuleSubjectUsageRequest) GetFilterFailedRequests() *bool {
@@ -58,6 +78,15 @@ func (s *GetGatewayQuotaRuleSubjectUsageRequest) GetPageSize() *int32 {
 	return s.PageSize
 }
 
+func (s *GetGatewayQuotaRuleSubjectUsageRequest) GetStartTime() *int64 {
+	return s.StartTime
+}
+
+func (s *GetGatewayQuotaRuleSubjectUsageRequest) SetEndTime(v int64) *GetGatewayQuotaRuleSubjectUsageRequest {
+	s.EndTime = &v
+	return s
+}
+
 func (s *GetGatewayQuotaRuleSubjectUsageRequest) SetFilterFailedRequests(v bool) *GetGatewayQuotaRuleSubjectUsageRequest {
 	s.FilterFailedRequests = &v
 	return s
@@ -70,6 +99,11 @@ func (s *GetGatewayQuotaRuleSubjectUsageRequest) SetPageNumber(v int32) *GetGate
 
 func (s *GetGatewayQuotaRuleSubjectUsageRequest) SetPageSize(v int32) *GetGatewayQuotaRuleSubjectUsageRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *GetGatewayQuotaRuleSubjectUsageRequest) SetStartTime(v int64) *GetGatewayQuotaRuleSubjectUsageRequest {
+	s.StartTime = &v
 	return s
 }
 
