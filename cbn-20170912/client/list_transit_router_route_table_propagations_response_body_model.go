@@ -22,13 +22,13 @@ type iListTransitRouterRouteTablePropagationsResponseBody interface {
 }
 
 type ListTransitRouterRouteTablePropagationsResponseBody struct {
-	// The number of entries returned per page.
+	// The number of entries per page for a paged query.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results.
+	// The token for the next query in a paged query.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListTransitRouterRouteTablePropagationsResponseBody struct {
 	//
 	// 2
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of the route propagations.
+	// The list of route learning relationships.
 	TransitRouterPropagations []*ListTransitRouterRouteTablePropagationsResponseBodyTransitRouterPropagations `json:"TransitRouterPropagations,omitempty" xml:"TransitRouterPropagations,omitempty" type:"Repeated"`
 }
 
@@ -117,45 +117,45 @@ func (s *ListTransitRouterRouteTablePropagationsResponseBody) Validate() error {
 }
 
 type ListTransitRouterRouteTablePropagationsResponseBodyTransitRouterPropagations struct {
-	// The ID of the network instance.
+	// The network instance ID.
 	//
 	// example:
 	//
 	// vpc-bp1h8vbrbcgohcju5****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the network instance.
+	// The network instance type. Valid values:
 	//
-	// - **VPC**: a VPC.
+	// - **VPC**: virtual private cloud (VPC) instance.
 	//
-	// - **VBR**: a VBR.
+	// - **VBR**: virtual border router (VBR) instance.
 	//
-	// - **TR**: a transit router.
+	// - **TR**: transit router instance.
 	//
-	// - **VPN**: a VPN connection.
+	// - **VPN**: VPN connection.
 	//
 	// example:
 	//
 	// VPC
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The status of the route propagation.
+	// The status of the route learning relationship. Valid values:
 	//
-	// - **Enabling**: The propagation is being enabled.
+	// - **Enabling**: being enabled.
 	//
-	// - **Disabling**: The propagation is being disabled.
+	// - **Disabling**: being disabled.
 	//
-	// - **Active**: The propagation is active.
+	// - **Active**: active.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the network instance connection.
+	// The network instance connection ID.
 	//
 	// example:
 	//
 	// tr-attach-vx6iwhjr1x1j78****
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The ID of the route table of the Enterprise Edition transit router.
+	// The ID of the Enterprise Edition transit router route table.
 	//
 	// example:
 	//

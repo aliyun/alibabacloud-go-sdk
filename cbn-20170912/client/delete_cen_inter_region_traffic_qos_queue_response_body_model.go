@@ -14,7 +14,7 @@ type iDeleteCenInterRegionTrafficQosQueueResponseBody interface {
 }
 
 type DeleteCenInterRegionTrafficQosQueueResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

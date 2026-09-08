@@ -18,11 +18,11 @@ type iListCenChildInstanceRouteEntriesToAttachmentResponseBody interface {
 }
 
 type ListCenChildInstanceRouteEntriesToAttachmentResponseBody struct {
-	// The token that is used for the next query.
+	// Indicates whether a next query token (Token) exists. Valid values:
 	//
-	// - If **NextToken*	- is empty, no subsequent query is sent.
+	// - If **NextToken*	- is empty, no next query exists.
 	//
-	// - If a value is returned for **NextToken**, the value is the token that is used for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type ListCenChildInstanceRouteEntriesToAttachmentResponseBody struct {
 	//
 	// 530BC816-F575-412A-AAB2-435125D26328
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the route.
+	// The details of the route entries.
 	RouteEntry []*ListCenChildInstanceRouteEntriesToAttachmentResponseBodyRouteEntry `json:"RouteEntry,omitempty" xml:"RouteEntry,omitempty" type:"Repeated"`
 }
 
@@ -87,37 +87,37 @@ func (s *ListCenChildInstanceRouteEntriesToAttachmentResponseBody) Validate() er
 }
 
 type ListCenChildInstanceRouteEntriesToAttachmentResponseBodyRouteEntry struct {
-	// The ID of the CEN instance.
+	// The Cloud Enterprise Network (CEN) instance ID.
 	//
 	// example:
 	//
 	// cen-9adwg6ghpq8oq4dp7q
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the route table of the network instance.
+	// The route table ID of the network instance.
 	//
 	// example:
 	//
 	// vtb-bp1tlaj1c4nxr2t3e****
 	ChildInstanceRouteTableId *string `json:"ChildInstanceRouteTableId,omitempty" xml:"ChildInstanceRouteTableId,omitempty"`
-	// The destination CIDR block of the route.
+	// The destination CIDR block of the route entry.
 	//
 	// example:
 	//
 	// 10.0.0.0/8
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The type of the managed routing service. If this parameter is empty, the route is not managed. The value TR indicates that the route is managed by a transit router.
+	// The type of route hosting. If this field is empty, the route is not hosted. Valid values: TR, which indicates that the hosting type is transit router.
 	//
 	// example:
 	//
 	// TR
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The status of the route. Valid values:
+	// The status of the route entry. Valid values:
 	//
-	// - **Available**: The route is active.
+	// - **Available**: available.
 	//
-	// - **Pending**: The route is being configured.
+	// - **Pending**: being configured.
 	//
-	// - **Modifying**: The route is being modified.
+	// - **Modifying**: being modified.
 	//
 	// example:
 	//

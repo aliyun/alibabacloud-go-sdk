@@ -52,7 +52,7 @@ type iDescribeFlowlogsRequest interface {
 }
 
 type DescribeFlowlogsRequest struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// The Cloud Enterprise Network (CEN) instance ID.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type DescribeFlowlogsRequest struct {
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the RequestId value as the ClientToken value. The RequestId value may be different for each API request.
 	//
 	// example:
 	//
@@ -70,13 +70,13 @@ type DescribeFlowlogsRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The description of the flow log.
 	//
-	// The description is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
+	// The description can be empty or 1 to 256 characters in length, and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// myFlowlog
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the flow log.
+	// The flow log ID.
 	//
 	// example:
 	//
@@ -84,29 +84,29 @@ type DescribeFlowlogsRequest struct {
 	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
 	// The name of the flow log.
 	//
-	// The name is optional. If you enter a name, it must be 1 to 128 characters in length, and cannot start with http:// or https://.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// myFlowlog
 	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
-	// The flow log version.
+	// The version of the flow log.
 	//
-	// Flow logs are automatically created in the latest version, which is **3**.
+	// When a flow log is created, the latest version supported by the system is automatically used. The current version is **3**.
 	//
 	// example:
 	//
 	// 3
 	FlowLogVersion *string `json:"FlowLogVersion,omitempty" xml:"FlowLogVersion,omitempty"`
-	// The time window for collecting log data. Unit: seconds Valid values: **60*	- or **600*	- Default value: **600**.
+	// The capture window duration of the flow log. Unit: seconds. Valid values: **60*	- or **600**. Default value: **600**.
 	//
 	// example:
 	//
 	// 600
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The name of the Logstore where the flow log is stored.
+	// The name of the Logstore that stores the captured traffic.
 	//
-	// The name must be 3 to 63 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-). It must start or end with a lowercase letter or a digit.
+	// The Logstore name must be 3 to 63 characters in length, and must start and end with a lowercase letter or digit. It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
 	//
 	// example:
 	//
@@ -114,29 +114,29 @@ type DescribeFlowlogsRequest struct {
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Minimum value: **1**. Default value: **20**.
+	// The number of entries per page for paging queries. Minimum value: **1**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the project where the flow log is stored.
+	// The name of the project that stores the captured traffic.
 	//
-	// The name must be 3 to 63 characters in length, and can contain lowercase letters, digits, and hyphens (-). It must start or end with a lowercase letter or a digit.
+	// The project name must be 3 to 63 characters in length, and must start and end with a lowercase letter or digit. It can contain only lowercase letters, digits, and hyphens (-).
 	//
 	// example:
 	//
 	// FlowLogProject
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The ID of the region where the flow log is deployed.
+	// The region ID of the flow log.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the region ID.
 	//
 	// example:
 	//
@@ -146,25 +146,25 @@ type DescribeFlowlogsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The status of the flow log. Valid values:
 	//
-	// 	- **Active**: The flow log is enabled.
+	// - **Active**: activated.
 	//
-	// 	- **Inactive**: The flow log is disabled.
+	// - **Inactive**: not activated.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The information about the tags.
+	// The tag information.
 	//
-	// You can specify at most 20 tags in each call.
+	// You can specify up to 20 tags at a time.
 	Tag []*DescribeFlowlogsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the network instance connection.
+	// The network instance connection ID.
 	//
 	// example:
 	//
-	// tr-attach-qieks13jnt1cchy****
+	// tr-attach-qieks13jnt1cchy***
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The ID of the transit router.
+	// The transit router instance ID.
 	//
 	// example:
 	//
@@ -374,21 +374,21 @@ func (s *DescribeFlowlogsRequest) Validate() error {
 }
 
 type DescribeFlowlogsRequestTag struct {
-	// The tag key.
+	// The tag key of the resource.
 	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
-	// You can specify at most 20 tag keys.
+	// You can specify up to 20 tag keys at a time.
 	//
 	// example:
 	//
 	// TagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value of the resource.
 	//
-	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be an empty string or up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
-	// Each tag key must have a unique tag value. You can specify at most 20 tag values in each call.
+	// Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
 	//
 	// example:
 	//

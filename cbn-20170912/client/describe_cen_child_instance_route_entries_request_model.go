@@ -36,7 +36,7 @@ type iDescribeCenChildInstanceRouteEntriesRequest interface {
 }
 
 type DescribeCenChildInstanceRouteEntriesRequest struct {
-	// The ID of the CEN instance.
+	// The CEN instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DescribeCenChildInstanceRouteEntriesRequest struct {
 	//
 	// cen-7qthudw0ll6jmc****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the network instance.
+	// The network instance ID.
 	//
 	// This parameter is required.
 	//
@@ -52,15 +52,17 @@ type DescribeCenChildInstanceRouteEntriesRequest struct {
 	//
 	// vpc-bp18sth14qii3pnvo****
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	// The ID of the region where the network instance is deployed.
+	// The region ID of the network instance.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain the region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	// The ID of the route table of the network instance. If you do not specify a route table ID, the system queries the routes in the system route tables of the VPCs by default.
+	// The routing table ID of the network instance.
+	//
+	// If you do not specify a routing table ID when querying route entries of a VPC-connected instance, the system queries route entries in the system routing table of the VPC-connected instance by default.
 	//
 	// example:
 	//
@@ -68,13 +70,13 @@ type DescribeCenChildInstanceRouteEntriesRequest struct {
 	ChildInstanceRouteTableId *string `json:"ChildInstanceRouteTableId,omitempty" xml:"ChildInstanceRouteTableId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// 	- **VPC**: virtual private cloud (VPC)
+	// - **VPC**: virtual private cloud (VPC).
 	//
-	// 	- **VBR**: virtual border router (VBR)
+	// - **VBR**: virtual border router (VBR).
 	//
-	// 	- **CCN**: Cloud Connect Network (CCN) instance
+	// - **CCN**: Cloud Connect Network (CCN).
 	//
-	// 	- **ECR**: Express Connect Router (ECR)
+	// - **ECR**: Express Connect Router (ECR).
 	//
 	// This parameter is required.
 	//
@@ -84,13 +86,13 @@ type DescribeCenChildInstanceRouteEntriesRequest struct {
 	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
 	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1*	- to **500**. Default value: **10**.
+	// The number of entries per page for paging queries. Default value: **10**. Valid values: **1*	- to **500**.
 	//
 	// example:
 	//
@@ -98,17 +100,17 @@ type DescribeCenChildInstanceRouteEntriesRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The status of the route. Valid values:
+	// The status of the route entry. Valid values:
 	//
-	// 	- **Active**: available
+	// - **Active**: active.
 	//
-	// 	- **Candidate**: standby
+	// - **Candidate**: candidate.
 	//
-	// 	- **Rejected**: rejected
+	// - **Rejected**: rejected.
 	//
-	// 	- **Prohibited**: prohibited
+	// - **Prohibited**: prohibited.
 	//
-	// 	- **All*	- (default): all routes
+	// - **All*	- (default): queries route entries in all states of the network instance.
 	//
 	// example:
 	//

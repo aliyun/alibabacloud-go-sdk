@@ -34,7 +34,7 @@ type iListGrantVSwitchesToCenRequest interface {
 }
 
 type ListGrantVSwitchesToCenRequest struct {
-	// The ID of the CEN instance.
+	// The CEN instance ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type ListGrantVSwitchesToCenRequest struct {
 	//
 	// cen-44m0p68spvlrqq****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// Specifies whether IPv6 is enabled. Valid values: true and false. If you do not specify this parameter, the query is not filtered by this property.
+	// Specifies whether IPv6 is enabled. A value of true indicates that IPv6 is enabled. A value of false indicates that IPv6 is not enabled. If you leave this parameter empty, the system does not filter by this property.
 	//
 	// example:
 	//
@@ -50,21 +50,21 @@ type ListGrantVSwitchesToCenRequest struct {
 	EnabledIpv6  *bool   `json:"EnabledIpv6,omitempty" xml:"EnabledIpv6,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the list. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1*	- to **50**. Default value: **10**.
+	// The number of entries per page for paging. Valid values: **1*	- to **50**. Default value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the VPC is deployed.
+	// The region ID of the VPC-connected instance.
 	//
-	// Call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
+	// You can invoke the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type ListGrantVSwitchesToCenRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the VPC.
+	// The VPC-connected instance ID.
 	//
 	// This parameter is required.
 	//
@@ -84,11 +84,11 @@ type ListGrantVSwitchesToCenRequest struct {
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The zone ID.
 	//
-	// - If you specify a zone ID, only the vSwitches in that zone are queried.
+	// - If you specify a zone ID, the system queries only the vSwitches that are in the specified zone of the VPC-connected instance.
 	//
-	// - If you do not specify a zone ID, the vSwitches in all zones of the VPC are queried by default.
+	// - If you do not specify a zone ID, the system queries the vSwitches in all active zones of the VPC-connected instance by default.
 	//
-	// Call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query zone IDs.
+	// You can invoke the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query zone IDs.
 	//
 	// example:
 	//

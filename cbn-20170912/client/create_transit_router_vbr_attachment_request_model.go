@@ -42,35 +42,37 @@ type iCreateTransitRouterVbrAttachmentRequest interface {
 }
 
 type CreateTransitRouterVbrAttachmentRequest struct {
-	// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Valid values:
+	// Specifies whether to allow the Enterprise Edition transit router to automatically publish route entries to the VBR instance.
 	//
-	// - **false*	- (default)
+	// - **false*	- (default): no.
 	//
-	// - **true**
+	// - **true**: yes.
 	//
 	// example:
 	//
 	// false
 	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// The Cloud Enterprise Network (CEN) instance ID.
 	//
 	// example:
 	//
 	// cen-j3jzhw1zpau2km****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The unique, one-use client token that is used to ensure the idempotence of the request. It can contain only ASCII characters.
+	// The client token that is used to ensure the idempotence of the request.
 	//
-	// > If you leave this parameter empty, the system automatically uses the **request ID*	- as the **client token**.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-001****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Default values:
+	// Specifies whether to perform a dry run, including permission and instance status verification. Valid values:
 	//
-	// - **false*	- (default): executes the request without performing a dry run.
+	// - **false*	- (default): sends a normal request. If the request passes the check, the VBR connection is created.
 	//
-	// - **true**: performs a dry run without actually creating the VBR connection. The system checks the required parameters and request syntax. If the request fails the dry run, an error message is returned. If the request passes the dry run, the system returns the ID of the request.
+	// - **true**: sends a check request. Only verification is performed without creating the VBR connection. The system checks whether required parameters are specified and whether the request format is valid. If the check fails, the corresponding error is returned. If the check succeeds, the corresponding request ID is returned.
 	//
 	// example:
 	//
@@ -78,9 +80,9 @@ type CreateTransitRouterVbrAttachmentRequest struct {
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the VBR.
+	// The region ID of the VBR instance.
 	//
-	// You can obtain the latest region list by calling the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation.
+	// You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
 	//
 	// example:
 	//
@@ -88,13 +90,13 @@ type CreateTransitRouterVbrAttachmentRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Tag information.
+	// The tag information.
 	//
-	// You can specify up to 20 tags.
+	// You can specify up to 20 tags at a time.
 	Tag []*CreateTransitRouterVbrAttachmentRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// Description of the VBR connection.
+	// The description of the VBR connection.
 	//
-	// The description can be empty or 1 to 256 characters in length. It cannot start with http\\:// or https\\://.
+	// The description can be empty or 1 to 256 characters in length, and cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -102,19 +104,19 @@ type CreateTransitRouterVbrAttachmentRequest struct {
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
 	// The name of the VBR connection.
 	//
-	// The name can be empty or 1 to 128 characters in length. It cannot start with http\\:// or https\\://.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// testname
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
-	// The ID of the Enterprise Edition transit router.
+	// The Enterprise Edition transit router instance ID.
 	//
 	// example:
 	//
 	// tr-bp1su1ytdxtataupl****
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	// The ID of the VBR.
+	// The VBR instance ID.
 	//
 	// This parameter is required.
 	//
@@ -122,9 +124,9 @@ type CreateTransitRouterVbrAttachmentRequest struct {
 	//
 	// vbr-bp1svadp4lq38janc****
 	VbrId *string `json:"VbrId,omitempty" xml:"VbrId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the VBR belongs. If you leave this parameter empty, the ID of the account calling this operation is used.
+	// The Alibaba Cloud account ID of the Alibaba Cloud account that owns the VBR instance. The default value is the Alibaba Cloud account ID of the current logon account.
 	//
-	// > For a cross-account connection, this parameter is required.
+	// > This parameter is required if you want to load a network instance that belongs to a different account.
 	//
 	// example:
 	//
@@ -289,21 +291,21 @@ func (s *CreateTransitRouterVbrAttachmentRequest) Validate() error {
 }
 
 type CreateTransitRouterVbrAttachmentRequestTag struct {
-	// The tag key.
+	// The tag key of the resource.
 	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// Once specified, the tag key cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
 	//
-	// You can specify up to 20 tag keys.
+	// You can specify up to 20 tag keys at a time.
 	//
 	// example:
 	//
 	// TagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value of the resource.
 	//
-	// The tag value can be 0 to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// Once specified, the tag value cannot be empty. The tag value can be up to 128 characters in length, and cannot start with aliyun or acs:, or contain http:// or https://.
 	//
-	// Each tag key must have a unique tag value. You can specify up to 20 tag values.
+	// Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
 	//
 	// example:
 	//

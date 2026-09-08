@@ -36,9 +36,9 @@ type iUpdateCenInterRegionTrafficQosQueueAttributeRequest interface {
 }
 
 type UpdateCenInterRegionTrafficQosQueueAttributeRequest struct {
-	// The absolute bandwidth value that can be allocated to the current queue. Unit: Mbit/s.
+	// The absolute value of cross-region bandwidth that the current queue can use when bandwidth is allocated by absolute value. Unit: Mbit/s.
 	//
-	// Enter a number. You do not need to enter a unit.
+	// Enter a number only. Do not include the unit.
 	//
 	// example:
 	//
@@ -52,29 +52,29 @@ type UpdateCenInterRegionTrafficQosQueueAttributeRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run without modifying the queue configurations. The system checks the required parameters, request format, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
 	//
-	// - **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): performs a dry run and then modifies the queue configurations after the check succeeds.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The differentiated services code point (DSCP) value used to match packets in the queue.
+	// The DSCP values of traffic packets to be matched by the current queue.
 	Dscps        []*int32 `json:"Dscps,omitempty" xml:"Dscps,omitempty" type:"Repeated"`
 	OwnerAccount *string  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The new description of the queue.
 	//
-	// The description must be 1 to 256 characters in length, and cannot start with http\\:// or https\\://. You can also leave this parameter empty.
+	// The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// desctest
 	QosQueueDescription *string `json:"QosQueueDescription,omitempty" xml:"QosQueueDescription,omitempty"`
-	// The queue ID.
+	// The QoS queue ID.
 	//
 	// This parameter is required.
 	//
@@ -84,15 +84,15 @@ type UpdateCenInterRegionTrafficQosQueueAttributeRequest struct {
 	QosQueueId *string `json:"QosQueueId,omitempty" xml:"QosQueueId,omitempty"`
 	// The new name of the queue.
 	//
-	// The name must be 1 to 128 characters in length, and cannot start with http\\:// or https\\://. You can also leave this parameter empty.
+	// The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// nametest
 	QosQueueName *string `json:"QosQueueName,omitempty" xml:"QosQueueName,omitempty"`
-	// The percentage of bandwidth that can be allocated to the current queue.
+	// The percentage of cross-region bandwidth that the current queue can use when bandwidth is allocated by percentage.
 	//
-	// Enter a number. You do not need to enter a percent sign (%).
+	// Enter a number only. Do not include the percent sign (%).
 	//
 	// example:
 	//

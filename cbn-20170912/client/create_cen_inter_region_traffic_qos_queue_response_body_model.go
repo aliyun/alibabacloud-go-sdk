@@ -16,13 +16,13 @@ type iCreateCenInterRegionTrafficQosQueueResponseBody interface {
 }
 
 type CreateCenInterRegionTrafficQosQueueResponseBody struct {
-	// The ID of the queue.
+	// The queue ID.
 	//
 	// example:
 	//
 	// qos-queue-irqhi8k5fdyuu5****
 	QosQueueId *string `json:"QosQueueId,omitempty" xml:"QosQueueId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

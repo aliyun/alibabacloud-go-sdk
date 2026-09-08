@@ -32,9 +32,9 @@ type iDeleteTransitRouterCidrRequest interface {
 type DeleteTransitRouterCidrRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// Generate a client-side token that is unique among different requests. The token can contain only ASCII characters.
+	// Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system uses the request ID as the client token. The request ID may be different for each request.
+	// > If you do not specify this parameter, the system uses the RequestId of the API request as the ClientToken. The RequestId may vary for each API request.
 	//
 	// example:
 	//
@@ -42,9 +42,9 @@ type DeleteTransitRouterCidrRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: sends a check request without deleting the CIDR block. The system checks whether the required parameters are specified, the request format is valid, and the service limits are met. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run without deleting the transit router CIDR block. The system checks the required parameters, request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
 	//
-	// - **false*	- (default): sends a normal request. After the request passes the check, the CIDR block is deleted.
+	// - **false*	- (default): performs a dry run and then deletes the transit router CIDR block after the request passes the check.
 	//
 	// example:
 	//
@@ -52,9 +52,9 @@ type DeleteTransitRouterCidrRequest struct {
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the transit router is deployed.
+	// The region ID of the transit router instance.
 	//
-	// Call [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) to obtain the region ID.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -64,9 +64,9 @@ type DeleteTransitRouterCidrRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the CIDR block of the transit router.
+	// The ID of the transit router CIDR block.
 	//
-	// Call [ListTransitRouterCidr](https://help.aliyun.com/document_detail/462772.html) to query the ID of the CIDR block.
+	// You can call the [ListTransitRouterCidr](https://help.aliyun.com/document_detail/462772.html) operation to query the ID of a transit router CIDR block.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type DeleteTransitRouterCidrRequest struct {
 	//
 	// cidr-0zv0q9crqpntzz****
 	TransitRouterCidrId *string `json:"TransitRouterCidrId,omitempty" xml:"TransitRouterCidrId,omitempty"`
-	// The ID of the transit router.
+	// The transit router instance ID.
 	//
 	// This parameter is required.
 	//

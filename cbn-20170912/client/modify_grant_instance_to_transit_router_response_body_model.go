@@ -14,7 +14,7 @@ type iModifyGrantInstanceToTransitRouterResponseBody interface {
 }
 
 type ModifyGrantInstanceToTransitRouterResponseBody struct {
-	// The request ID.
+	// The unique ID of the request. You can use this ID to troubleshoot issues.
 	//
 	// example:
 	//

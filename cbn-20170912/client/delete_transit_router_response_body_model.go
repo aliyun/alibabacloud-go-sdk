@@ -14,7 +14,7 @@ type iDeleteTransitRouterResponseBody interface {
 }
 
 type DeleteTransitRouterResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

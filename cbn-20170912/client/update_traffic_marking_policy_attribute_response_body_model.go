@@ -14,7 +14,7 @@ type iUpdateTrafficMarkingPolicyAttributeResponseBody interface {
 }
 
 type UpdateTrafficMarkingPolicyAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

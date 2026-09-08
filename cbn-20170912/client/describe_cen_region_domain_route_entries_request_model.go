@@ -30,7 +30,7 @@ type iDescribeCenRegionDomainRouteEntriesRequest interface {
 }
 
 type DescribeCenRegionDomainRouteEntriesRequest struct {
-	// The ID of the CEN instance.
+	// The CEN instance ID.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DescribeCenRegionDomainRouteEntriesRequest struct {
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The region ID.
 	//
-	// Call [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) to obtain the region ID.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain the region ID.
 	//
 	// This parameter is required.
 	//
@@ -50,13 +50,13 @@ type DescribeCenRegionDomainRouteEntriesRequest struct {
 	CenRegionId  *string `json:"CenRegionId,omitempty" xml:"CenRegionId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The default value is **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. The default value is **10**. Valid values: **1*	- to **500**.
+	// The number of entries per page during paging. Default value: **10**. Valid values: **1*	- to **500**.
 	//
 	// example:
 	//
@@ -72,9 +72,9 @@ type DescribeCenRegionDomainRouteEntriesRequest struct {
 	//
 	// - **Rejected**: rejected.
 	//
-	// - **Prohibited**: disabled.
+	// - **Prohibited**: prohibited.
 	//
-	// - **All**: all route entries in the current region, regardless of their status.
+	// - **All**: queries route entries in all states in the current region.
 	//
 	// example:
 	//

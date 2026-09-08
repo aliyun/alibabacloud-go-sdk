@@ -22,13 +22,13 @@ type iDescribeCenRouteMapsResponseBody interface {
 }
 
 type DescribeCenRouteMapsResponseBody struct {
-	// The page number.
+	// The page number of the list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page in a paged query. This parameter is used for paging.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeCenRouteMapsResponseBody struct {
 	// 24CE1987-D1D1-5324-9BAD-2750B60E6ABB
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouteMaps *DescribeCenRouteMapsResponseBodyRouteMaps `json:"RouteMaps,omitempty" xml:"RouteMaps,omitempty" type:"Struct"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

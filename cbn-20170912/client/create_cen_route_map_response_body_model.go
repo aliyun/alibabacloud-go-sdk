@@ -16,7 +16,7 @@ type iCreateCenRouteMapResponseBody interface {
 }
 
 type CreateCenRouteMapResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

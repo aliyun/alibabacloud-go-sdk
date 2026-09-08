@@ -22,13 +22,13 @@ type iListTransitRouterEcrAttachmentsResponseBody interface {
 }
 
 type ListTransitRouterEcrAttachmentsResponseBody struct {
-	// The number of entries per page.
+	// The number of entries per page for a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	// The token for the next paged query.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type ListTransitRouterEcrAttachmentsResponseBody struct {
 	//
 	// 461EC1B5-04A8-4706-8764-8F5BCEF48A6F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 4
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The information about the ECR connections.
+	// The list of ECR connection information.
 	TransitRouterAttachments []*ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments `json:"TransitRouterAttachments,omitempty" xml:"TransitRouterAttachments,omitempty" type:"Repeated"`
 }
 
@@ -117,15 +117,15 @@ func (s *ListTransitRouterEcrAttachmentsResponseBody) Validate() error {
 }
 
 type ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments struct {
-	// Indicates whether the Enterprise Edition transit router can automatically advertise routes to ECRs.
+	// Indicates whether the Enterprise Edition transit router automatically publishes route entries to the ECR instance.
 	//
-	// The value is **true**, which indicates that the Enterprise Edition transit router can automatically advertise routes to ECRs.
+	// The value is **true*	- only, which indicates that route entries are automatically published.
 	//
 	// example:
 	//
 	// true
 	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
-	// The ID of the CEN instance.
+	// The CEN instance ID.
 	//
 	// example:
 	//
@@ -133,55 +133,55 @@ type ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments struct 
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The time when the ECR connection was created.
 	//
-	// The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time is displayed in the ISO 8601 standard in UTC. Format: YYYY-MM-DDThh:mmZ.
 	//
 	// example:
 	//
 	// 2021-06-15T02:14Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the ECR with which the ECR connection is associated.
+	// The instance ID of the associated Express Connect Router (ECR).
 	//
 	// example:
 	//
 	// ecr-n78omt2qsko06y****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the ECR connection belongs.
+	// The ID of the Alibaba Cloud account to which the ECR instance belongs.
 	//
 	// example:
 	//
-	// 1688111111111111
+	// 1210123456123456
 	EcrOwnerId *int64 `json:"EcrOwnerId,omitempty" xml:"EcrOwnerId,omitempty"`
-	// The entity that pays the fees of the network instance. Valid values: Valid values:
+	// The payer of the network instance. Valid values:
 	//
-	// 	- **PayByCenOwner**: The Alibaba Cloud account to which the transit router belongs pays the connection and data forwarding fees of the ECR.
+	// - **PayByCenOwner**: The connection fee and data processing fee of the ECR instance are paid by the account that owns the transit router instance.
 	//
-	// 	- **PayByResourceOwner**: The Alibaba Cloud account to which the ECR belongs pays the connection and data forwarding fees of the ECR.
+	// - **PayByResourceOwner**: The connection fee and data processing fee of the ECR instance are paid by the account that owns the ECR instance.
 	//
 	// example:
 	//
 	// PayByCenOwner
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The type of resource to which the transit router is connected. Valid values:
+	// The resource type of the connection.
 	//
-	// The value is **ECR**, which indicates ECR connections.
+	// The value is **ECR*	- only, which indicates an Express Connect Router (ECR) instance.
 	//
 	// example:
 	//
 	// ECR
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The status of the ECR connection. Valid values:
+	// The status of the ECR connection.
 	//
-	// 	- **Attached**
+	// - **Attached**: attached.
 	//
-	// 	- **Attaching**
+	// - **Attaching**: being attached.
 	//
-	// 	- **Detaching**
+	// - **Detaching**: being detached.
 	//
 	// example:
 	//
 	// Attached
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tags []*ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachmentsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The description of the ECR connection.
 	//
@@ -189,7 +189,7 @@ type ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments struct 
 	//
 	// desctest
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
-	// The ID of the ECR connection.
+	// The ECR connection ID.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments struct 
 	//
 	// testname
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
-	// The ID of the Enterprise Edition transit router.
+	// The Enterprise Edition transit router instance ID.
 	//
 	// example:
 	//
@@ -209,7 +209,7 @@ type ListTransitRouterEcrAttachmentsResponseBodyTransitRouterAttachments struct 
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	// The region ID of the transit router.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the region information corresponding to the region ID.
 	//
 	// example:
 	//

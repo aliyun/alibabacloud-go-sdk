@@ -22,7 +22,7 @@ type CreateTransitRouterResponseBody struct {
 	//
 	// 404DA7EC-F495-44B5-B543-6EDCDF90F3D1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the Enterprise Edition transit router instance.
+	// The Enterprise Edition transit router instance ID. After creation, the instance is in the Creating state. Wait until the instance status changes to Active before performing subsequent operations. You can call the [ListTransitRouters](https://help.aliyun.com/document_detail/261219.html) operation to query the Enterprise Edition transit router instance status.
 	//
 	// example:
 	//

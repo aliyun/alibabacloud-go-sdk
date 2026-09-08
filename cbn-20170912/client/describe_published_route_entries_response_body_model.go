@@ -28,7 +28,7 @@ type DescribePublishedRouteEntriesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribePublishedRouteEntriesResponseBody struct {
 	//
 	// FF1A7B2A-677F-4F71-96EA-6002B329F437
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

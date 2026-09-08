@@ -23,13 +23,13 @@ type iDescribeCenBandwidthPackagesResponseBody interface {
 
 type DescribeCenBandwidthPackagesResponseBody struct {
 	CenBandwidthPackages *DescribeCenBandwidthPackagesResponseBodyCenBandwidthPackages `json:"CenBandwidthPackages,omitempty" xml:"CenBandwidthPackages,omitempty" type:"Struct"`
-	// The number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeCenBandwidthPackagesResponseBody struct {
 	//
 	// 9D7E2400-2755-4AF5-9B73-12565E4F73A0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

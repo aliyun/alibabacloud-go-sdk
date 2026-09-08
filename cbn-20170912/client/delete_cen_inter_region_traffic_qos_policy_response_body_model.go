@@ -14,7 +14,7 @@ type iDeleteCenInterRegionTrafficQosPolicyResponseBody interface {
 }
 
 type DeleteCenInterRegionTrafficQosPolicyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

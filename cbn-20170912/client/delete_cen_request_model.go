@@ -22,7 +22,7 @@ type iDeleteCenRequest interface {
 }
 
 type DeleteCenRequest struct {
-	// The CEN instance ID.
+	// The instance ID of the CEN instance.
 	//
 	// This parameter is required.
 	//

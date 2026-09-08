@@ -22,21 +22,21 @@ type iListTransitRouterCidrAllocationResponseBody interface {
 }
 
 type ListTransitRouterCidrAllocationResponseBody struct {
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
-	// - If you did not set the **MaxResults*	- parameter in the request, this parameter indicates the total number of entries.
+	// - If you did not specify the **MaxResults*	- request parameter, it indicates that you did not need to query results by page. The value of **MaxResults*	- in the response indicates the total number of entries.
 	//
-	// - If you set the **MaxResults*	- parameter in the request, this parameter indicates the number of entries on the current page.
+	// - If you specified the **MaxResults*	- request parameter, it indicates that you needed to query results by page. The value of **MaxResults*	- in the response indicates the number of entries on the current page.
 	//
 	// example:
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// - If **NextToken*	- is empty, no next page exists.
+	// - If **NextToken*	- is empty, no subsequent request exists.
 	//
-	// - If **NextToken*	- is not empty, the value of this parameter indicates the token that is used for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token that is used for the next query.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListTransitRouterCidrAllocationResponseBody struct {
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of CIDR block allocations.
+	// The allocation details of the transit router CIDR block.
 	TransitRouterCidrAllocations []*ListTransitRouterCidrAllocationResponseBodyTransitRouterCidrAllocations `json:"TransitRouterCidrAllocations,omitempty" xml:"TransitRouterCidrAllocations,omitempty" type:"Repeated"`
 }
 
@@ -125,7 +125,7 @@ func (s *ListTransitRouterCidrAllocationResponseBody) Validate() error {
 }
 
 type ListTransitRouterCidrAllocationResponseBodyTransitRouterCidrAllocations struct {
-	// The allocated CIDR block.
+	// The allocated CIDR block under the transit router CIDR block.
 	//
 	// example:
 	//
@@ -143,13 +143,13 @@ type ListTransitRouterCidrAllocationResponseBodyTransitRouterCidrAllocations str
 	//
 	// nametest
 	AttachmentName *string `json:"AttachmentName,omitempty" xml:"AttachmentName,omitempty"`
-	// The CIDR block of the transit router.
+	// The transit router CIDR block.
 	//
 	// example:
 	//
 	// 192.168.10.0/24
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The ID of the CIDR block of the transit router.
+	// The ID of the transit router CIDR block.
 	//
 	// example:
 	//

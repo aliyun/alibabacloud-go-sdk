@@ -14,7 +14,7 @@ type iDisableTransitRouterRouteTablePropagationResponseBody interface {
 }
 
 type DisableTransitRouterRouteTablePropagationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

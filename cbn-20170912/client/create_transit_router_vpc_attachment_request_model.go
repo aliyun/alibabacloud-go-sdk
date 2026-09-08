@@ -50,54 +50,55 @@ type iCreateTransitRouterVpcAttachmentRequest interface {
 }
 
 type CreateTransitRouterVpcAttachmentRequest struct {
-	// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VPC.
+	// Specifies whether to allow the Enterprise Edition transit router to automatically publish routing entries to the VPC instance.
 	//
-	// - **false*	- (default): Do not automatically advertise routes.
+	// - **false*	- (default): No.
 	//
-	// - **true**: Automatically advertise routes.
+	// - **true**: Yes.
 	//
 	// example:
 	//
 	// true
 	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
-	// The ID of the CEN instance.
+	// The instance ID of the Cloud Enterprise Network (CEN).
 	//
 	// example:
 	//
 	// cen-j3jzhw1zpau2km****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The billing method. The default value is **POSTPAY*	- (pay-as-you-go).
+	// The billing method. Default value: **POSTPAY**, which indicates pay-as-you-go.
 	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The client token used to ensure request idempotency.
+	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You must generate a value on your client that is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the request ID as the client token, which is unique for each request.
+	// >If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-001****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run to check the validity of the request without creating the resource. The check includes permissions and instance status. Valid values:
+	// Specifies whether to execute a dry run, including permission and instance status verification. Valid values:
 	//
-	// - **false*	- (default): Sends a normal request. The system creates the VPC connection if the request is valid.
+	// - **false*	- (default): Sends a normal request and creates the VPC connection after the request passes the check.
 	//
-	// - **true**: Sends only a check request. The system checks required parameters, request format, and permissions. The VPC connection is not created. If the check fails, an error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+	// - **true**: Sends a check request. Only the check is performed, and the VPC connection is not created. The check items include whether required parameters are specified and the request format. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
 	//
 	// example:
 	//
 	// false
-	DryRun       *bool                                           `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The collection of feature attributes.
 	Options      *CreateTransitRouterVpcAttachmentRequestOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
 	OwnerAccount *string                                         `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64                                          `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the VPC is located.
+	// The region ID of the VPC-connected instance.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
+	// You can invoke the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the region ID.
 	//
 	// example:
 	//
@@ -105,13 +106,13 @@ type CreateTransitRouterVpcAttachmentRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags to add to the VPC connection.
+	// The list of tags.
 	//
-	// You can add up to 20 tags.
+	// You can specify up to 20 tags at a time.
 	Tag []*CreateTransitRouterVpcAttachmentRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The description of the VPC connection.
 	//
-	// The description can be empty or 1 to 256 characters long, and cannot start with `http://` or `https://`.
+	// The description can be empty or 1 to 256 characters in length, and cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -119,21 +120,21 @@ type CreateTransitRouterVpcAttachmentRequest struct {
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
 	// The name of the VPC connection.
 	//
-	// The name can be empty or 1 to 128 characters long, and cannot start with `http://` or `https://`.
+	// The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// testname
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
-	// The ID of the Enterprise Edition transit router.
+	// The instance ID of the Enterprise Edition transit router.
 	//
 	// example:
 	//
 	// tr-bp1su1ytdxtataupl****
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	// The properties of the VPC connection. This parameter is deprecated. We recommend that you use the `Options` parameter instead.
+	// The list of feature attributes for the VPC connection (to be deprecated, use the new parameter Options instead).
 	TransitRouterVPCAttachmentOptions map[string]*string `json:"TransitRouterVPCAttachmentOptions,omitempty" xml:"TransitRouterVPCAttachmentOptions,omitempty"`
-	// The ID of the VPC.
+	// The instance ID of the VPC-connected instance.
 	//
 	// This parameter is required.
 	//
@@ -141,17 +142,17 @@ type CreateTransitRouterVpcAttachmentRequest struct {
 	//
 	// vpc-bp1kbjcre9vtsebo1****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the VPC. By default, this is the ID of the current Alibaba Cloud account.
+	// The Alibaba Cloud account ID to which the VPC-connected instance belongs. The default value is the Alibaba Cloud account ID of the current logon user.
 	//
-	// > This parameter is required if you want to attach a cross-account network instance.
+	// > This parameter is required if you want to load a cross-account network instance.
 	//
 	// example:
 	//
 	// 1250123456123456
 	VpcOwnerId *int64 `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
-	// The zone mappings for the VPC connection. For each mapping, you must specify a vSwitch in a zone that is supported by the Enterprise Edition transit router.
+	// Select a vSwitch instance in a zone supported by the Enterprise Edition transit router.
 	//
-	// You can specify up to 10 zone mappings.
+	// You can add up to 10 entries at a time.
 	//
 	// This parameter is required.
 	ZoneMappings []*CreateTransitRouterVpcAttachmentRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
@@ -364,10 +365,22 @@ func (s *CreateTransitRouterVpcAttachmentRequest) Validate() error {
 }
 
 type CreateTransitRouterVpcAttachmentRequestOptions struct {
+	// Specifies whether to enable the appliance mode.
+	//
+	// - **disable*	- (default): No.
+	//
+	// - **enable**: Yes.
+	//
 	// example:
 	//
 	// enable
 	ApplianceModeSupport *string `json:"ApplianceModeSupport,omitempty" xml:"ApplianceModeSupport,omitempty"`
+	// Specifies whether IPv6 is supported.
+	//
+	// - **disable*	- (default): No.
+	//
+	// - **enable**: Yes.
+	//
 	// example:
 	//
 	// enable
@@ -405,17 +418,21 @@ func (s *CreateTransitRouterVpcAttachmentRequestOptions) Validate() error {
 }
 
 type CreateTransitRouterVpcAttachmentRequestTag struct {
-	// The key of the tag.
+	// The tag key of the resource.
 	//
-	// The tag key cannot be an empty string. The key can be up to 64 characters long and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// Once specified, the tag key cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
+	//
+	// You can specify up to 20 tag keys at a time.
 	//
 	// example:
 	//
 	// tagtest
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value of the resource.
 	//
-	// The tag value can be an empty string or a string up to 128 characters long. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// Once specified, the tag value cannot be empty. The tag value can be up to 128 characters in length, and cannot start with aliyun or acs:, or contain http:// or https://.
+	//
+	// Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
 	//
 	// example:
 	//
@@ -454,7 +471,9 @@ func (s *CreateTransitRouterVpcAttachmentRequestTag) Validate() error {
 }
 
 type CreateTransitRouterVpcAttachmentRequestZoneMappings struct {
-	// The ID of the vSwitch.
+	// The ID of the vSwitch instance in a zone supported by the Enterprise Edition transit router.
+	//
+	// You can select vSwitch instances for up to 10 zones at a time.
 	//
 	// This parameter is required.
 	//
@@ -462,9 +481,11 @@ type CreateTransitRouterVpcAttachmentRequestZoneMappings struct {
 	//
 	// vsw-bp1a214sbus8z3b54****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the zone. The zone must be supported by the Enterprise Edition transit router.
+	// The ID of a zone supported by the Enterprise Edition transit router.
 	//
-	// You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query available zones.
+	// You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query zone IDs.
+	//
+	// You can select up to 10 zones at a time.
 	//
 	// This parameter is required.
 	//

@@ -22,11 +22,11 @@ type DeactiveFlowLogResponseBody struct {
 	//
 	// F7DDDC17-FA06-4AC2-8F35-59D2470FCFC1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the call is successful.
 	//
-	// - **true**
+	// - **true**: The call is successful.
 	//
-	// - **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//

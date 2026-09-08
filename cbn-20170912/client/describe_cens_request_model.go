@@ -32,17 +32,17 @@ type iDescribeCensRequest interface {
 type DescribeCensRequest struct {
 	// The filter conditions.
 	//
-	// You can specify up to five filter conditions.
+	// You can specify up to 5 filter conditions at a time.
 	Filter       []*DescribeCensRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	OwnerAccount *string                      `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number to query. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: **1*	- to **50**. Default value: **10**.
+	// The number of entries per page for a paged query. Valid values: **1*	- to **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type DescribeCensRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags.
+	// The tag information.
 	//
-	// You can specify up to 20 tags.
+	// You can specify up to 20 tags at a time.
 	Tag []*DescribeCensRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -174,25 +174,25 @@ func (s *DescribeCensRequest) Validate() error {
 }
 
 type DescribeCensRequestFilter struct {
-	// The filter key. Valid values:
+	// The filter condition. Valid values:
 	//
-	// - **CenId**: The ID of the CEN instance.
+	// - **CenId**: the CEN instance ID.
 	//
-	// - **Name**: The name of the CEN instance.
+	// - **Name**: the CEN instance name.
 	//
-	// The logical relationship among multiple filter conditions is **AND**. All filter conditions must be met.
+	// The relationship between multiple filter conditions is **AND**, which means that a record must match all filter conditions to be returned.
 	//
-	// You can specify up to five filter conditions.
+	// You can specify up to 5 filter conditions at a time.
 	//
 	// example:
 	//
 	// CenId
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The filter value.
+	// The value of the filter condition.
 	//
-	// Specify the filter value based on the **Key**. You can specify multiple values for a key. The logical relationship among the values is **OR**. A resource is a match if it meets any of the specified values.
+	// Specify filter values based on the **Key*	- parameter. You can specify multiple filter values for a single **Key**. The relationship between multiple filter values is **OR**, which means that a record is returned if it matches any of the filter values.
 	//
-	// You can specify up to five filter values for a filter condition.
+	// You can specify up to 5 filter values for each filter condition.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ type DescribeCensRequestTag struct {
 	//
 	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
-	// You can specify up to 20 tag keys.
+	// You can specify up to 20 tag keys at a time.
 	//
 	// example:
 	//
@@ -243,9 +243,9 @@ type DescribeCensRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the resource.
 	//
-	// The tag value can be an empty string or a string of up to 128 characters. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// The tag value can be an empty string or up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
-	// Each tag key must have a corresponding tag value. You can specify up to 20 tag values.
+	// Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
 	//
 	// example:
 	//

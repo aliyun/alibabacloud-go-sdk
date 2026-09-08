@@ -22,9 +22,9 @@ type iListTransitRouterAvailableResourceResponseBody interface {
 }
 
 type ListTransitRouterAvailableResourceResponseBody struct {
-	// A list of available zone IDs.
+	// The list of zone IDs.
 	AvailableZones []*string `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Repeated"`
-	// A list of primary zone IDs.
+	// The list of primary zone IDs.
 	MasterZones []*string `json:"MasterZones,omitempty" xml:"MasterZones,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -32,9 +32,9 @@ type ListTransitRouterAvailableResourceResponseBody struct {
 	//
 	// B4F480E0-4E76-5E43-9966-8322C28A158A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of secondary zone IDs.
+	// The list of secondary zone IDs.
 	SlaveZones []*string `json:"SlaveZones,omitempty" xml:"SlaveZones,omitempty" type:"Repeated"`
-	// Indicates whether the returned zones support the multicast feature.
+	// Indicates whether the zone information is for multicast-enabled zones.
 	//
 	// example:
 	//

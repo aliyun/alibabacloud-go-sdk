@@ -32,17 +32,17 @@ type iListTrafficMarkingPoliciesRequest interface {
 }
 
 type ListTrafficMarkingPoliciesRequest struct {
-	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries per page for a paged query. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query. Valid values:
+	// The pagination token. Valid values:
 	//
-	// - You do not need to specify this parameter for the first query.
+	// - You do not need to specify this parameter for the first request or if no subsequent query exists.
 	//
-	// - If a next query is to be sent, set the value to the **NextToken*	- value returned from the last API call.
+	// - If a subsequent query exists, set the value to the **NextToken*	- value returned by the previous API call.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListTrafficMarkingPoliciesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The description of the traffic marking policy.
 	//
-	// The description can be empty or 1 to 256 characters in length. It cannot start with http\\:// or https\\://.
+	// The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type ListTrafficMarkingPoliciesRequest struct {
 	TrafficMarkingPolicyId *string `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
 	// The name of the traffic marking policy.
 	//
-	// The name can be empty or 1 to 128 characters in length. It cannot start with http\\:// or https\\://.
+	// The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// nametest
 	TrafficMarkingPolicyName *string `json:"TrafficMarkingPolicyName,omitempty" xml:"TrafficMarkingPolicyName,omitempty"`
-	// The ID of the TransitRouter instance.
+	// The ID of the transit router instance.
 	//
 	// example:
 	//

@@ -56,13 +56,13 @@ type RevokeInstanceFromTransitRouterRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// - **VPC**: VPC
+	// - **VPC**: VPC instance.
 	//
-	// - **ExpressConnect**: VBR
+	// - **ExpressConnect**: VBR instance.
 	//
-	// - **VPN**: IPsec-VPN connection
+	// - **VPN**: IPsec connection.
 	//
-	// - **ECR**: ECR
+	// - **ECR**: ECR instance.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type RevokeInstanceFromTransitRouterRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the network instance.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
 	//
 	// example:
 	//

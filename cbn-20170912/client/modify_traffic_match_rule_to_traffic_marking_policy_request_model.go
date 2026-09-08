@@ -34,9 +34,9 @@ type iModifyTrafficMatchRuleToTrafficMarkingPolicyRequest interface {
 type ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// Generate a unique parameter value from your client for each request. The ClientToken parameter supports only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system uses the request ID as the client token. The request ID may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: Performs a dry run. The system checks for required parameters, the request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run. The system does not add a traffic categorization rule to the traffic marking policy. Instead, the system checks whether the required request parameters are specified, whether the request format is valid, and whether the business restrictions are met. If the request fails the dry run, an error message is returned. If the request passes the dry run, the error code `DryRunOperation` is returned.
 	//
-	// - **false*	- (default): Sends a normal request. After the request passes the check, the stream classification rule is added to the traffic marking policy.
+	// - **false*	- (default): sends a normal request. After the request passes the check, the traffic categorization rule is added to the traffic marking policy.
 	//
 	// example:
 	//
@@ -64,15 +64,15 @@ type ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest struct {
 	//
 	// tm-u9nxup5kww5po8****
 	TrafficMarkingPolicyId *string `json:"TrafficMarkingPolicyId,omitempty" xml:"TrafficMarkingPolicyId,omitempty"`
-	// The description of the stream classification rule.
+	// The description of the traffic classification rule.
 	//
-	// The description can be empty or 1 to 256 characters in length. The description cannot start with http\\:// or https\\://.
+	// The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// descriptiontest
 	TrafficMatchRuleDescription *string `json:"TrafficMatchRuleDescription,omitempty" xml:"TrafficMatchRuleDescription,omitempty"`
-	// The ID of the stream classification rule.
+	// The ID of the traffic classification rule.
 	//
 	// This parameter is required.
 	//
@@ -80,9 +80,9 @@ type ModifyTrafficMatchRuleToTrafficMarkingPolicyRequest struct {
 	//
 	// tm-rule-fa9kgq1e90rmhc****
 	TrafficMatchRuleId *string `json:"TrafficMatchRuleId,omitempty" xml:"TrafficMatchRuleId,omitempty"`
-	// The name of the stream classification rule.
+	// The name of the traffic classification rule.
 	//
-	// The name can be empty or 1 to 128 characters in length. The name cannot start with http\\:// or https\\://.
+	// The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//

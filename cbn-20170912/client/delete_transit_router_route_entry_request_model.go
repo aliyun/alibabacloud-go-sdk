@@ -34,21 +34,21 @@ type iDeleteTransitRouterRouteEntryRequest interface {
 }
 
 type DeleteTransitRouterRouteEntryRequest struct {
-	// A client token that is used to ensure the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request.
 	//
-	// The token must be unique for each request and can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the request as the **ClientToken**. The **RequestId*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-001****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. A dry run checks for potential issues, such as missing parameter values, incorrect request syntax, and service limits. Valid values:
+	// Specifies whether to perform a dry run, including permission and instance status validation. Valid values:
 	//
-	// - **false*	- (default): Sends the request. If the request passes the check, the route entry is deleted.
+	// - **false*	- (default): Sends a normal request and directly deletes the route entry after the request passes the validation.
 	//
-	// - **true**: Performs only a dry run. The system checks the request for potential issues. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **true**: Sends a check request. Only the validation is performed. The route entry is not deleted. The system checks required parameters, request format, and other conditions. If the check fails, the corresponding error is returned. If the check succeeds, the corresponding request ID is returned.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DeleteTransitRouterRouteEntryRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The destination CIDR block of the route.
+	// The destination CIDR block.
 	//
 	// example:
 	//
@@ -70,23 +70,23 @@ type DeleteTransitRouterRouteEntryRequest struct {
 	//
 	// rte-75eg4jprkvk0pw****
 	TransitRouterRouteEntryId *string `json:"TransitRouterRouteEntryId,omitempty" xml:"TransitRouterRouteEntryId,omitempty"`
-	// The ID of the network instance connection that serves as the next hop.
+	// The ID of the network instance connection associated with the next hop of the route entry.
 	//
 	// example:
 	//
 	// tr-attach-nls9fzkfat8934****
 	TransitRouterRouteEntryNextHopId *string `json:"TransitRouterRouteEntryNextHopId,omitempty" xml:"TransitRouterRouteEntryNextHopId,omitempty"`
-	// The type of the next hop. Valid values:
+	// The next hop type of the route entry. Valid values:
 	//
-	// - **BlackHole**: The route is a blackhole route. You do not need to specify a next hop.
+	// - **BlackHole**: The route entry is a blackhole route. You do not need to specify the next-hop information.
 	//
-	// - **Attachment**: The next hop is a network instance connection. You must specify the ID of the network instance connection.
+	// - **Attachment**: The next hop of the route entry is a network instance connection. You must also specify the ID of the network instance connection as the next hop.
 	//
 	// example:
 	//
 	// BlackHole
 	TransitRouterRouteEntryNextHopType *string `json:"TransitRouterRouteEntryNextHopType,omitempty" xml:"TransitRouterRouteEntryNextHopType,omitempty"`
-	// The ID of the route table of the Enterprise Edition transit router.
+	// The ID of the Enterprise Edition transit router route table.
 	//
 	// example:
 	//

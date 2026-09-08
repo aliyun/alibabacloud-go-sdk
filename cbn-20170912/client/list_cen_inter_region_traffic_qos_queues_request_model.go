@@ -38,19 +38,19 @@ type iListCenInterRegionTrafficQosQueuesRequest interface {
 }
 
 type ListCenInterRegionTrafficQosQueuesRequest struct {
-	// Filters the results by the actual bandwidth. Only positive integers are supported. Unit: Mbit/s.
+	// Filters results by the actual effective bandwidth value. Only positive integers are allowed. Unit: Mbit/s.
 	EffectiveBandwidthFilter *ListCenInterRegionTrafficQosQueuesRequestEffectiveBandwidthFilter `json:"EffectiveBandwidthFilter,omitempty" xml:"EffectiveBandwidthFilter,omitempty" type:"Struct"`
-	// The number of entries to return on each page. Valid values: 1 to 100. Default value: 20.
+	// The number of entries per page for a paged query. Valid values: 1 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// A pagination token. It is used in the next request to retrieve a new page of results.
+	// The token that determines the start point of the next query. Valid values:
 	//
-	// - If **NextToken*	- is empty, no more results are returned.
+	// - If **NextToken*	- is empty, no next query exists.
 	//
-	// - If NextToken is not empty, the value of **NextToken*	- is used for the next query.
+	// - If a value is returned for **NextToken**, the value indicates the token that is used for the next query.
 	//
 	// example:
 	//
@@ -60,29 +60,29 @@ type ListCenInterRegionTrafficQosQueuesRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the QoS policy.
+	// The ID of the traffic scheduling policy.
 	//
 	// example:
 	//
 	// qos-rnghap5gc8155x****
 	TrafficQosPolicyId *string `json:"TrafficQosPolicyId,omitempty" xml:"TrafficQosPolicyId,omitempty"`
-	// The description of the queue in the QoS policy.
+	// The description of the traffic scheduling policy queue.
 	//
-	// The description can be empty or 1 to 256 characters in length. It cannot start with \\`http\\://\\` or \\`https\\://\\`.
+	// The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// qosQueueDescription
 	TrafficQosQueueDescription *string `json:"TrafficQosQueueDescription,omitempty" xml:"TrafficQosQueueDescription,omitempty"`
-	// The ID of the queue in the QoS policy.
+	// The ID of the traffic scheduling policy queue.
 	//
 	// example:
 	//
 	// qos-queue-siakjb2nn9gz5z****
 	TrafficQosQueueId *string `json:"TrafficQosQueueId,omitempty" xml:"TrafficQosQueueId,omitempty"`
-	// The name of the queue in the QoS policy.
+	// The name of the traffic scheduling policy queue.
 	//
-	// The name can be empty or 1 to 128 characters in length. It cannot start with \\`http\\://\\` or \\`https\\://\\`.
+	// The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type ListCenInterRegionTrafficQosQueuesRequest struct {
 	//
 	// tr-attach-a6p8voaodog5c0****
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The ID of the transit router.
+	// The ID of the transit router instance.
 	//
 	// example:
 	//
@@ -237,13 +237,13 @@ func (s *ListCenInterRegionTrafficQosQueuesRequest) Validate() error {
 }
 
 type ListCenInterRegionTrafficQosQueuesRequestEffectiveBandwidthFilter struct {
-	// The actual bandwidth is greater than or equal to the specified value.
+	// The actual effective bandwidth is greater than or equal to the specified bandwidth value.
 	//
 	// example:
 	//
 	// 50
 	Gte *int64 `json:"Gte,omitempty" xml:"Gte,omitempty"`
-	// The actual bandwidth is less than or equal to the specified value.
+	// The actual effective bandwidth is less than or equal to the specified bandwidth value.
 	//
 	// example:
 	//

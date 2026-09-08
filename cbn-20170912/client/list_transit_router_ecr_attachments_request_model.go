@@ -34,23 +34,23 @@ type iListTransitRouterEcrAttachmentsRequest interface {
 }
 
 type ListTransitRouterEcrAttachmentsRequest struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// The CEN instance ID.
 	//
 	// example:
 	//
 	// cen-7qthudw0ll6jmc****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The number of entries to return on each page. Default value: **20**.
+	// The number of entries per page for a paged query. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The token that determines the start point of the next query. Valid values:
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// - If **NextToken*	- is empty, no next query exists.
 	//
-	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -58,9 +58,9 @@ type ListTransitRouterEcrAttachmentsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the transit router.
+	// The region ID of the transit router instance.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
 	//
 	// example:
 	//
@@ -68,17 +68,17 @@ type ListTransitRouterEcrAttachmentsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags.
+	// The tag information.
 	//
-	// You can specify at most 20 tags.
+	// You can specify up to 20 tags at a time.
 	Tag []*ListTransitRouterEcrAttachmentsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the ECR connection.
+	// The ECR connection ID.
 	//
 	// example:
 	//
 	// tr-attach-nls9fzkfat8934****
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The ID of the transit router.
+	// The transit router instance ID.
 	//
 	// example:
 	//
@@ -207,21 +207,21 @@ func (s *ListTransitRouterEcrAttachmentsRequest) Validate() error {
 }
 
 type ListTransitRouterEcrAttachmentsRequestTag struct {
-	// The tag key.
+	// The tag key of the resource.
 	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// The tag key cannot be an empty string. It can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
-	// You can specify at most 20 tag keys in each call.
+	// You can specify up to 20 tag keys at a time.
 	//
 	// example:
 	//
 	// TagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value of the resource.
 	//
-	// The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// The tag value can be an empty string or up to 128 characters in length. It cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
-	// Each key-value must be unique. You can specify at most 20 tag values in each call.
+	// Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
 	//
 	// example:
 	//

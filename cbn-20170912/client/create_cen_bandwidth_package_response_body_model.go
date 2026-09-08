@@ -18,13 +18,13 @@ type iCreateCenBandwidthPackageResponseBody interface {
 }
 
 type CreateCenBandwidthPackageResponseBody struct {
-	// The ID of the bandwidth plan.
+	// The instance ID of the new bandwidth plan.
 	//
 	// example:
 	//
 	// cenbwp-4c2zaavbvh5fx****
 	CenBandwidthPackageId *string `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
-	// The ID of the order for the bandwidth plan.
+	// The order ID of the bandwidth plan.
 	//
 	// example:
 	//

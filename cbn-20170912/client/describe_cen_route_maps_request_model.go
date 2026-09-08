@@ -34,7 +34,7 @@ type iDescribeCenRouteMapsRequest interface {
 }
 
 type DescribeCenRouteMapsRequest struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// The instance ID of the Cloud Enterprise Network (CEN) instance.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DescribeCenRouteMapsRequest struct {
 	//
 	// cen-wx12mmlt17ld82****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the region where the routing policy is applied.
+	// The ID of the region where the route map is applied.
 	//
 	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
 	//
@@ -52,13 +52,13 @@ type DescribeCenRouteMapsRequest struct {
 	CenRegionId  *string `json:"CenRegionId,omitempty" xml:"CenRegionId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: **1**.
+	// The page number of the list. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of entries per page in a paged query. Default value: **10**.
 	//
 	// example:
 	//
@@ -66,27 +66,27 @@ type DescribeCenRouteMapsRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the routing policy.
+	// The ID of the route map.
 	//
 	// example:
 	//
 	// cenrmap-y40mxdvf7joc12****
 	RouteMapId *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
-	// The ID of the route table of the transit router that is associated with the routing policy.
+	// The ID of the transit router route table associated with the route map.
 	//
 	// example:
 	//
 	// vtb-gw8nx3515m1mbd1z1****
 	TransitRouterRouteTableId *string `json:"TransitRouterRouteTableId,omitempty" xml:"TransitRouterRouteTableId,omitempty"`
-	// The direction in which the routing policy is applied. Valid values:
+	// The direction in which the route map is applied. Valid values:
 	//
-	// - **RegionIn**: Inbound. The routing policy is applied to routes that are advertised to the gateway of a region.
+	// - **RegionIn**: Routes are advertised to the regional gateway of the CEN instance.
 	//
-	// For example, routes are advertised from network instances in the current region to the gateway of the current region, or routes from other regions are advertised to the gateway of the current region.
+	//  For example, routes are advertised from a network instance in the local region to the local regional gateway, or routes are advertised from a regional gateway in another region to the local regional gateway.
 	//
-	// - **RegionOut**: Outbound. The routing policy is applied to routes that are advertised from the gateway of a region.
+	// - **RegionOut**: Routes are advertised from the regional gateway of the CEN instance.
 	//
-	// For example, routes are advertised from the gateway of the current region to network instances in the current region, or to gateways in other regions.
+	//  For example, routes are advertised from the local regional gateway to network instances in the local region, or routes are advertised from the local regional gateway to regional gateways in other regions.
 	//
 	// example:
 	//

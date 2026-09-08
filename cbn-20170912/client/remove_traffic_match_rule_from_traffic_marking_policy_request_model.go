@@ -30,9 +30,9 @@ type iRemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest interface {
 type RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not set this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- for each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions without deleting the traffic classification rule from the traffic marking policy. If the check fails, the corresponding error is returned. If the check passes, the error code `DryRunOperation` is returned.
 	//
-	// - **false*	- (default): performs a dry run and sends the request.
+	// - **false*	- (default): performs the actual request. After the check passes, the traffic classification rule is directly deleted from the traffic marking policy.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type RemoveTrafficMatchRuleFromTrafficMarkingPolicyRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the traffic classification rule.
+	// The IDs of the traffic classification rules.
 	TrafficMarkRuleIds []*string `json:"TrafficMarkRuleIds,omitempty" xml:"TrafficMarkRuleIds,omitempty" type:"Repeated"`
 	// The ID of the traffic marking policy.
 	//

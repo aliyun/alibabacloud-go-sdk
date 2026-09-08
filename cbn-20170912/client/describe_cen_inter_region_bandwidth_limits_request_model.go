@@ -28,7 +28,7 @@ type iDescribeCenInterRegionBandwidthLimitsRequest interface {
 }
 
 type DescribeCenInterRegionBandwidthLimitsRequest struct {
-	// The ID of the CEN instance.
+	// The Cloud Enterprise Network (CEN) instance ID.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type DescribeCenInterRegionBandwidthLimitsRequest struct {
 	CenId        *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The default value is **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. The default value is **10**. Valid values: **1*	- to **50**.
+	// The number of entries per page when using paging. Default value: **10**. Valid values: **1*	- to **50**.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type DescribeCenInterRegionBandwidthLimitsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The region ID of the transit router.
 	//
-	// Call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query information about regions.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the region information corresponding to a region ID.
 	//
 	// example:
 	//

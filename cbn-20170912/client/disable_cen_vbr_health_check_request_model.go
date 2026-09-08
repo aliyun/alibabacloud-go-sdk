@@ -28,7 +28,7 @@ type iDisableCenVbrHealthCheckRequest interface {
 }
 
 type DisableCenVbrHealthCheckRequest struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// The CEN instance ID.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type DisableCenVbrHealthCheckRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the VBR.
+	// The VBR instance ID.
 	//
 	// This parameter is required.
 	//
@@ -48,17 +48,17 @@ type DisableCenVbrHealthCheckRequest struct {
 	//
 	// vbr-wz95o9aylj181n5****
 	VbrInstanceId *string `json:"VbrInstanceId,omitempty" xml:"VbrInstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the VBR belongs.
+	// The ID of the Alibaba Cloud account that owns the VBR instance.
 	//
-	// > This parameter is required if the VBR and the CEN instance belong to different Alibaba Cloud accounts.
+	// > This parameter is required if the VBR instance and the CEN instance belong to different accounts.
 	//
 	// example:
 	//
 	// 1250123456123456
 	VbrInstanceOwnerId *int64 `json:"VbrInstanceOwnerId,omitempty" xml:"VbrInstanceOwnerId,omitempty"`
-	// The ID of the region where the VBR is deployed.
+	// The region ID of the VBR instance.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// You can call [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) to query region IDs.
 	//
 	// This parameter is required.
 	//

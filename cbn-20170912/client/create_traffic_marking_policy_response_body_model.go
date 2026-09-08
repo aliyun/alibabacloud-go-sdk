@@ -16,7 +16,7 @@ type iCreateTrafficMarkingPolicyResponseBody interface {
 }
 
 type CreateTrafficMarkingPolicyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -32,15 +32,15 @@ type iDescribeTransitRouteTableAggregationRequest interface {
 type DescribeTransitRouteTableAggregationRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// Generate a token from your client to ensure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the RequestId of the request as the ClientToken. The RequestId is different for each request.
+	// >If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-001****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The number of entries to return on each page. Default value: **20**.
+	// The number of entries per page for a paged query. Default value: **20**.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeTransitRouteTableAggregationRequest struct {
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// - You do not need to specify this parameter for the first request.
+	// - You do not need to specify this parameter for the first request or if no next query exists.
 	//
-	// - You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// - If a next query exists, set the value to the **NextToken*	- value returned in the previous API call.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeTransitRouteTableAggregationRequest struct {
 	//
 	// 192.168.10.0/24
 	TransitRouteTableAggregationCidr *string `json:"TransitRouteTableAggregationCidr,omitempty" xml:"TransitRouteTableAggregationCidr,omitempty"`
-	// The ID of the route table of the Enterprise Edition transit router.
+	// The ID of the Enterprise Edition transit router route table.
 	//
 	// This parameter is required.
 	//

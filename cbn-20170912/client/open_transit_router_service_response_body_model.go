@@ -16,13 +16,13 @@ type iOpenTransitRouterServiceResponseBody interface {
 }
 
 type OpenTransitRouterServiceResponseBody struct {
-	// The ID of the order.
+	// The order ID.
 	//
 	// example:
 	//
 	// 21370700730****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

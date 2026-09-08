@@ -24,7 +24,7 @@ type iModifyCenBandwidthPackageSpecRequest interface {
 }
 
 type ModifyCenBandwidthPackageSpecRequest struct {
-	// The new maximum bandwidth of the bandwidth plan. Unit: Mbps.
+	// The new peak bandwidth of the bandwidth plan instance. Unit: Mbit/s.
 	//
 	// Valid values: **2*	- to **10000**.
 	//
@@ -32,7 +32,7 @@ type ModifyCenBandwidthPackageSpecRequest struct {
 	//
 	// 2
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The ID of the bandwidth plan.
+	// The instance ID of the bandwidth plan.
 	//
 	// This parameter is required.
 	//

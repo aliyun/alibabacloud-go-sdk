@@ -30,13 +30,13 @@ type iUpdateTransitRouterVpcAttachmentZonesRequest interface {
 }
 
 type UpdateTransitRouterVpcAttachmentZonesRequest struct {
-	// The zones and vSwitches that you want to add to the VPC connection.
+	// The list of zones and vSwitches to add to the VPC connection.
 	AddZoneMappings []*UpdateTransitRouterVpcAttachmentZonesRequestAddZoneMappings `json:"AddZoneMappings,omitempty" xml:"AddZoneMappings,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type UpdateTransitRouterVpcAttachmentZonesRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the request fails the dry run, the corresponding error message is returned. If the request passes the dry run, the error code `DryRunOperation` is returned. The zones and vSwitches of the VPC connection are not modified.
 	//
-	// 	- **false*	- (default): performs a dry run and sends the request.
+	// - **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, the zones and vSwitches of the VPC connection are modified.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type UpdateTransitRouterVpcAttachmentZonesRequest struct {
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The zones and vSwitches that you want to remove from the VPC connection.
+	// The list of zones and vSwitches to remove from the VPC connection.
 	RemoveZoneMappings   []*UpdateTransitRouterVpcAttachmentZonesRequestRemoveZoneMappings `json:"RemoveZoneMappings,omitempty" xml:"RemoveZoneMappings,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string                                                           `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                                                            `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -180,21 +180,25 @@ func (s *UpdateTransitRouterVpcAttachmentZonesRequest) Validate() error {
 }
 
 type UpdateTransitRouterVpcAttachmentZonesRequestAddZoneMappings struct {
-	// The ID of the vSwitch that you want to add to the VPC connection.
+	// The ID of the vSwitch to add to the VPC connection.
 	//
-	// You can specify at most 10 vSwitches in each call.
+	// You can add up to 10 vSwitches at a time.
 	//
-	// 	- If the VPC connection belongs to the current Alibaba Cloud account, you can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) operation to query the IDs of the vSwitches and zones of the VPC.
+	// - If the Alibaba Cloud account that you use to log on and the VPC-connected instance belong to the same account, you can invoke the [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) operation to query the vSwitch IDs and the IDs of the zones to which the vSwitches belong in the VPC-connected instance.
 	//
-	// 	- If the VPC connection belongs to another Alibaba Cloud account, you can call the [ListGrantVSwitchesToCen](https://help.aliyun.com/document_detail/427599.html) operation to query the IDs of the vSwitches and zones of the VPC.
+	// - If the Alibaba Cloud account that you use to log on and the VPC-connected instance belong to different accounts, you can invoke the [ListGrantVSwitchesToCen](https://help.aliyun.com/document_detail/427599.html) operation to query the vSwitch IDs and the IDs of the zones to which the vSwitches belong in the VPC-connected instance.
+	//
+	// If you set **VSwitchId**, you must also set **ZoneId**.
 	//
 	// example:
 	//
 	// vsw-wz988dda8ldm4uvmx****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the zone where the vSwitch that you want to add to the VPC connection is deployed.
+	// The ID of the zone to which the vSwitch to add to the VPC connection belongs.
 	//
-	// You can specify at most 10 vSwitches in each call.
+	// You can add up to 10 vSwitches at a time.
+	//
+	// If you set **ZoneId**, you must also set **VSwitchId**.
 	//
 	// example:
 	//
@@ -233,15 +237,21 @@ func (s *UpdateTransitRouterVpcAttachmentZonesRequestAddZoneMappings) Validate()
 }
 
 type UpdateTransitRouterVpcAttachmentZonesRequestRemoveZoneMappings struct {
-	// The ID of the vSwitch that you want to remove from the VPC connection.
+	// The ID of the vSwitch to remove from the VPC connection.
 	//
-	// You can remove at most 10 vSwitches from a VPC in each call.
+	// You can remove up to 10 vSwitches at a time.
+	//
+	// If you set **VSwitchId**, you must also set **ZoneId**.
 	//
 	// example:
 	//
 	// vsw-wz9f5izl6wshndmta****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the zone where the vSwitch that you want to remove from the VPC connection is deployed.
+	// The ID of the zone to which the vSwitch to remove from the VPC connection belongs.
+	//
+	// You can remove up to 10 vSwitches at a time.
+	//
+	// If you set **ZoneId**, you must also set **VSwitchId**.
 	//
 	// example:
 	//

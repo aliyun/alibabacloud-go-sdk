@@ -80,17 +80,17 @@ type iCreateCenRouteMapRequest interface {
 }
 
 type CreateCenRouteMapRequest struct {
-	// The match method that is used to match routes based on the AS path. Valid values:
+	// The match mode of the AS path list. Valid values:
 	//
-	// - **Include**: fuzzy match. A route is a match if the AS path of the route overlaps with the AS path in the match conditions.
+	// - **Include**: fuzzy match. A match is successful if the AS path in the match condition overlaps with the AS path of the route being matched.
 	//
-	// - **Complete**: exact match. A route is a match only if the AS path of the route matches the AS path in the match conditions.
+	// - **Complete**: exact match. A match is successful only if the AS path in the match condition is the same as the AS path of the route being matched.
 	//
 	// example:
 	//
 	// Include
 	AsPathMatchMode *string `json:"AsPathMatchMode,omitempty" xml:"AsPathMatchMode,omitempty"`
-	// The ID of the CEN instance.
+	// The instance ID of the Cloud Enterprise Network (CEN).
 	//
 	// This parameter is required.
 	//
@@ -98,9 +98,9 @@ type CreateCenRouteMapRequest struct {
 	//
 	// cen-7qthudw0ll6jmc****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the region in which the routing policy is applied.
+	// The ID of the region to which the routing policy is applied.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// You can call [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -108,37 +108,39 @@ type CreateCenRouteMapRequest struct {
 	//
 	// cn-hangzhou
 	CenRegionId *string `json:"CenRegionId,omitempty" xml:"CenRegionId,omitempty"`
-	// The match method that is used to match routes against the prefix list. Valid values:
+	// The match mode of the prefix list. Valid values:
 	//
-	// - **Include**: fuzzy match. A route is a match if the route prefix is included in the match conditions.
+	// - **Include**: fuzzy match. A match is successful if the route prefix in the match condition contains the route prefix of the route being matched.
 	//
-	// For example, if you set the match condition to 1.1.0.0/16 and fuzzy match is applied, the route whose prefix is 1.1.1.0/24 meets the match condition.
+	//  For example, a policy that defines 10.10.0.0/16 can fuzzy match the route 10.10.1.0/24.
 	//
-	// - **Complete**: exact match. A route is a match only if the route prefix is the same as the prefix specified in the match condition.
+	// - **Complete**: exact match. A match is successful only if the route prefix in the match condition is the same as the route prefix of the route being matched.
 	//
-	// For example, if you set the match condition to 1.1.0.0/16 and exact match is applied, only the route whose prefix is 1.1.0.0/16 meets the match condition.
+	//  For example, a policy that defines 10.10.0.0/16 can only exact match the route 10.10.0.0/16.
 	//
 	// example:
 	//
 	// Include
 	CidrMatchMode *string `json:"CidrMatchMode,omitempty" xml:"CidrMatchMode,omitempty"`
-	// The match method that is used to match routes based on the community. Valid values:
+	// The match mode of the Community. Valid values:
 	//
-	// - **Include**: fuzzy match. A route is a match if the community of the route overlaps with the community in the match conditions.
+	// - **Include**: fuzzy match. A match is successful if the Community in the match condition overlaps with the Community of the route being matched.
 	//
-	// - **Complete**: exact match. A route is a match only if the community of the route matches the community in the match conditions.
+	// - **Complete**: exact match. A match is successful only if the Community in the match condition is the same as the Community of the route being matched.
+	//
+	// - **Contain**: inclusive match. A match is successful only if the Community of the route being matched contains all the Communities specified in the match condition.
 	//
 	// example:
 	//
 	// Include
 	CommunityMatchMode *string `json:"CommunityMatchMode,omitempty" xml:"CommunityMatchMode,omitempty"`
-	// The action to be performed on the community. Valid values:
+	// The action to perform on the Community. Valid values:
 	//
-	// - **Additive**: adds the community to the route.
+	// - **Additive**: adds a Community to the route.
 	//
-	// - **Replace**: replaces the original community of the route.
+	// - **Replace**: replaces the existing Community of the route.
 	//
-	// This parameter specifies the action to be performed when a route meets the match condition.
+	// This parameter specifies the action to perform after a route matches the condition.
 	//
 	// example:
 	//
@@ -146,87 +148,87 @@ type CreateCenRouteMapRequest struct {
 	CommunityOperateMode *string `json:"CommunityOperateMode,omitempty" xml:"CommunityOperateMode,omitempty"`
 	// The description of the routing policy.
 	//
-	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http\\:// or https\\://.
+	// The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// desctest
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The types of destination network instance to which the routes belong. The following types of network instances are supported:
+	// The list of destination instance types that the route must match. The following instance types are supported:
 	//
-	// - **VPC**: VPC
+	// - **VPC**: VPC instance.
 	//
-	// - **VBR**: VBR
+	// - **VBR**: VBR instance.
 	//
-	// - **CCN**: CCN instance
+	// - **CCN**: CCN instance.
 	//
-	// - **VPN**: IPsec connection
+	// - **VPN**: IPsec connection.
 	//
-	//   > This parameter does not take effect if the IPsec-VPN connection or SSL client is associated with a transit router through a VPN gateway and a VPC. This parameter takes effect only if the IPsec connection is directly connected to the transit router.
+	//     > If an IPsec connection or SSL server is bound to a VPN gateway instance and is connected to a transit router instance through the VPC associated with the VPN gateway instance, this parameter does not take effect. This parameter takes effect only when an IPsec connection is directly bound to a transit router instance.
 	//
-	// You can specify one or more network instance types.
+	// You can specify multiple instance types.
 	//
-	// > The destination network instance types are valid only if the routing policy is applied to scenarios where routes are advertised from the gateway in the current region to network instances in the current region.
+	// >The destination instance type list takes effect only when the routing policy direction is outbound from the regional gateway and the destination instance types are instance types in the local region.
 	//
 	// example:
 	//
 	// VPC
 	DestinationChildInstanceTypes []*string `json:"DestinationChildInstanceTypes,omitempty" xml:"DestinationChildInstanceTypes,omitempty" type:"Repeated"`
-	// The prefix list against which routes are matched.
+	// The prefix list that the route must match.
 	//
-	// Specify IP addresses in CIDR notations. You can specify at most 64 CIDR blocks.
+	// IP address ranges in the prefix list are in CIDR format. You can specify up to 64 IP address ranges.
 	//
-	// IPv4 and IPv4 addresses are supported.
+	// Both IPv4 and IPv6 formats are supported.
 	//
 	// example:
 	//
 	// 10.10.10.0/24
 	DestinationCidrBlocks []*string `json:"DestinationCidrBlocks,omitempty" xml:"DestinationCidrBlocks,omitempty" type:"Repeated"`
-	// The IDs of the destination network instances to which the routes belong. The following network instance types are supported:
+	// The list of destination instance IDs that the route must match. The following types of instance IDs are supported:
 	//
-	// - VPC
+	// - Virtual Private Cloud (VPC) instance ID
 	//
-	// - VBR
+	// - Virtual Border Router (VBR) instance ID
 	//
-	// - CCN instance
+	// - Cloud Connect Network (CCN) instance ID
 	//
-	// - SAG instance
+	// - Smart Access Gateway instance ID
 	//
-	// - The ID of the IPsec-VPN connection.
+	// - IPsec connection ID
 	//
-	// You can enter at most 64 IDs.
+	// You can specify up to 64 instance IDs.
 	//
-	// > The destination instance IDs take effect only when Direction is set to Export from Regional Gateway and the destination instances are deployed in the current region.
+	// >The destination instance ID list takes effect only when the routing policy direction is outbound from the regional gateway and the destination instance IDs are instance IDs in the local region.
 	//
 	// example:
 	//
 	// vpc-afrfs434465fdf****
 	DestinationInstanceIds []*string `json:"DestinationInstanceIds,omitempty" xml:"DestinationInstanceIds,omitempty" type:"Repeated"`
-	// Specifies whether to exclude destination instance IDs. Valid values:
+	// Specifies whether to use the exclude matching mode for the destination instance ID list. Valid values:
 	//
-	// - **false*	- (default): A route is a match if the destination instance ID is included in the list specified by **SourceInstanceIds.N**.
+	// - **false*	- (default): no. A match is successful if the destination instance ID of the route is in the **DestinationInstanceIds.N*	- list.
 	//
-	// - **true**: A route is a match if the destination network instance ID is not in the list specified by **SourceInstanceIds.N**.
+	// - **true**: yes. A match is successful if the destination instance ID of the route is not in the **DestinationInstanceIds.N*	- list.
 	//
 	// example:
 	//
 	// false
 	DestinationInstanceIdsReverseMatch *bool `json:"DestinationInstanceIdsReverseMatch,omitempty" xml:"DestinationInstanceIdsReverseMatch,omitempty"`
-	// The destination region IDs of the route. You can specify at most 64 region IDs.
+	// The list of destination region IDs that the route must match. You can specify up to 64 region IDs.
 	DestinationRegionIds []*string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Repeated"`
-	// The IDs of the destination route tables to which routes are evaluated. You can enter at most 64 route table IDs.
+	// The list of destination route table IDs that the route must match. You can specify up to 64 route table IDs.
 	//
-	// > The destination route table IDs take effect only when Direction is set to Export from Regional Gateway and the destination route tables belong to network instances deployed in the current region.
+	// >The destination route table ID list takes effect only when the routing policy direction is outbound from the regional gateway and the destination route table IDs are route table IDs of network instances in the local region.
 	//
 	// example:
 	//
 	// vtb-adefrgtr144vf****
 	DestinationRouteTableIds []*string `json:"DestinationRouteTableIds,omitempty" xml:"DestinationRouteTableIds,omitempty" type:"Repeated"`
-	// The action to be performed on a route that meets all the match conditions. Valid values:
+	// The action to perform after all conditions are matched. Valid values:
 	//
-	// - **Permit**: the route is permitted.
+	// - **Permit**: permits the matched routes.
 	//
-	// - **Deny**: the route is denied.
+	// - **Deny**: denies the matched routes.
 	//
 	// This parameter is required.
 	//
@@ -234,59 +236,59 @@ type CreateCenRouteMapRequest struct {
 	//
 	// Permit
 	MapResult *string `json:"MapResult,omitempty" xml:"MapResult,omitempty"`
-	// The type of IP address in the match condition. Valid values:
+	// The IP address type that the route must match. Valid values:
 	//
-	// - **IPv4**: IPv4 address
+	// - **IPv4**: matches only IPv4 routes.
 	//
-	// - **IPv6**: IPv6 address
+	// - **IPv6**: matches only IPv6 routes.
 	//
-	// This parameter can be empty. If no value is specified, all types of IP address are a match.
+	// This parameter can be left empty, which indicates that all types of routes are matched.
 	//
 	// example:
 	//
 	// IPv4
 	MatchAddressType *string `json:"MatchAddressType,omitempty" xml:"MatchAddressType,omitempty"`
-	// The AS paths based on which routes are compared.
+	// The AS path list that the route must match.
 	//
-	// You can specify at most 64 AS numbers.
+	// You can specify up to 64 AS numbers.
 	//
-	// > Only the AS-SEQUENCE parameter is supported. The AS-SET, AS-CONFED-SEQUENCE, and AS-CONFED-SET parameters are not supported. In other words, only the AS number list is supported. Sets and sub-lists are not supported.
+	// > Only AS SEQUENCE is supported. AS SET, AS CONFED SEQUENCE, and AS CONFED SET are not supported. This means that only AS number lists are supported, not sets or sublists.
 	//
 	// example:
 	//
 	// 65501
 	MatchAsns []*int64 `json:"MatchAsns,omitempty" xml:"MatchAsns,omitempty" type:"Repeated"`
-	// The community set based on which routes are compared.
+	// The Community set that the route must match.
 	//
-	// Specify the community in the format of n:m. Valid values of n and m: **1*	- to **65535**. Each community must comply with the RFC 1997 standard. The RFC 8092 standard that defines Border Gateway Protocol (BGP) large communities is not supported.
+	// Each Community is in the n:m format, where the value ranges of n and m are **1*	- to **65535**. Communities must comply with RFC 1997. Large Communities (RFC 8092) are not supported.
 	//
-	// You can specify at most 64 communities.
+	// You can specify up to 64 Communities.
 	//
-	// > If the configurations of the communities are incorrect, routes may fail to be advertised to your data center.
+	// > Incorrect Community configurations may cause routes to fail to be advertised to on-premises data centers.
 	//
 	// example:
 	//
 	// 65501:1
 	MatchCommunitySet []*string `json:"MatchCommunitySet,omitempty" xml:"MatchCommunitySet,omitempty" type:"Repeated"`
-	// The priority of the routing policy that you want to associate with the current one.
+	// Policy priority of the next associated routing policy.
 	//
-	// - This parameter takes effect only when the **MapResult*	- parameter is set to **Permit**. This way, the permitted route is matched against the next routing policy.
+	// - You can set policy priority of the next associated routing policy only when **MapResult*	- is set to **Permit**. Only routes that are permitted continue to match the next associated routing policy.
 	//
-	// - The region and direction of the routing policy to be associated must be the same as those of the current routing policy.
+	// - The next associated routing policy must have the same region and direction as the current routing policy.
 	//
-	// - The priority of the next routing policy must be lower than the priority of the current routing policy.
+	// - Policy priority of the next associated routing policy must be lower than policy priority of the current routing policy.
 	//
 	// example:
 	//
 	// 20
 	NextPriority *int32 `json:"NextPriority,omitempty" xml:"NextPriority,omitempty"`
-	// The community set on which actions are performed.
+	// The Community set to be executed.
 	//
-	// Specify the community in the format of n:m. Valid values of n and m: **1*	- to **65535**. Each community must comply with RFC 1997. The RFC 8092 standard that defines BGP large communities is not supported.
+	// Each Community is in the n:m format, where the value ranges of n and m are **1*	- to **65535**. Communities must comply with RFC 1997. Large Communities (RFC 8092) are not supported.
 	//
-	// You can specify at most 32 communities.
+	// You can specify up to 32 Communities.
 	//
-	// > If the configurations of the communities are incorrect, routes may fail to be advertised to your data center.
+	// > Incorrect Community configurations may cause routes to fail to be advertised to on-premises data centers.
 	//
 	// example:
 	//
@@ -294,33 +296,34 @@ type CreateCenRouteMapRequest struct {
 	OperateCommunitySet []*string `json:"OperateCommunitySet,omitempty" xml:"OperateCommunitySet,omitempty" type:"Repeated"`
 	OwnerAccount        *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId             *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The new priority of the route.
+	// The modified priority of the route.
 	//
-	// Valid values: **1*	- to **100**. The default priority is **50**. A smaller value indicates a higher priority.
+	// Valid values: **1*	- to **100**. The default priority of a route is **50**. A smaller value indicates a higher priority.
 	//
-	// This parameter specifies the action to be performed when a route meets the match condition.
+	// This parameter specifies the action to perform after a route matches the condition.
 	//
 	// example:
 	//
 	// 50
 	Preference *int32 `json:"Preference,omitempty" xml:"Preference,omitempty"`
-	// The AS paths that are prepended by using an action statement when regional gateways receive or advertise routes.
+	// The AS path that is prepended when the regional gateway receives or publishes route entries.
 	//
-	// The AS paths vary based on the direction in which the routing policy is applied:
+	// The requirements for configuring the prepended AS path vary based on the routing policy direction:
 	//
-	// - If AS paths are prepended to a routing policy that is applied in the inbound direction, you must specify source network instance IDs and the source region in the match condition. In addition, the source region must be the same as the region where the routing policy is applied.
+	// - When the direction is inbound to the regional gateway, the match condition must include the source instance ID list and source region, and the source region must be the same as the region to which the routing policy is applied.
 	//
-	// - If AS paths are prepended to a routing policy that is applied in the outbound direction, you must specify destination network instance IDs in the match condition.
+	// - When the direction is outbound from the regional gateway, the match condition must include the destination instance ID list.
 	//
-	// This parameter specifies the action to be performed when a route meets the match condition. You can specify at most 32 AS numbers.
+	//
+	// This parameter specifies the action to execute after a route matches the condition. You can specify up to 32 AS numbers.
 	//
 	// example:
 	//
 	// 65501
 	PrependAsPath []*int64 `json:"PrependAsPath,omitempty" xml:"PrependAsPath,omitempty" type:"Repeated"`
-	// The priority of the routing policy. Valid values: **1*	- to **100**. A smaller value indicates a higher priority.
+	// Policy priority of the routing policy. Valid values: **1*	- to **100**. A smaller value indicates a higher priority.
 	//
-	// > You cannot specify the same priority for routing policies that apply in the same region and direction. The system matches routes against the match conditions of routing policies in descending order of priority. A smaller value indicates a higher priority. You must set the priorities to proper values.
+	// > Policy priority of routing policies in the same region and with the same direction must be unique. When a routing policy is executed, the system starts matching conditional statements from the routing policy with the smallest priority value. Specify policy priority based on the expected matching order.
 	//
 	// This parameter is required.
 	//
@@ -330,83 +333,83 @@ type CreateCenRouteMapRequest struct {
 	Priority             *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of route to be compared. Valid values: The following route types are supported:
+	// The list of routing types that the route must match. The following routing types are supported:
 	//
 	// - **System**: system routes that are automatically generated by the system.
 	//
-	// - **Custom**: custom routes that are manually added.
+	// - **Custom**: custom routes that are manually added by users.
 	//
-	// - **BGP**: routes that are advertised over BGP.
+	// - **BGP**: BGP routes that are propagated through the BGP routing protocol.
 	//
-	// You can specify multiple route types.
+	// You can specify multiple routing types.
 	//
 	// example:
 	//
 	// System
 	RouteTypes []*string `json:"RouteTypes,omitempty" xml:"RouteTypes,omitempty" type:"Repeated"`
-	// The types of source network instance to which the routes belong. The following types of network instances are supported:
+	// The list of source instance types that the route must match. The following instance types are supported:
 	//
-	// - **VPC**: VPC
+	// - **VPC**: VPC instance.
 	//
-	// - **VBR**: VBR
+	// - **VBR**: virtual border router instance.
 	//
-	// - **CCN**: CCN instance
+	// - **CCN**: CCN instance.
 	//
-	// - **VPN**: VPN gateway or IPsec connection
+	// - **VPN**: VPN gateway instance or IPsec connection.
 	//
-	//   - If the IPsec-VPN connection or SSL client is associated with a VPN gateway, the VPC associated with the VPN gateway must be connected to a transit router, and the VPN gateway must use BGP dynamic routing. Otherwise, this parameter cannot take effect.
+	//     - If an IPsec connection or SSL server is attached to a VPN gateway instance, the VPC associated with the VPN gateway instance must be connected to a transit router instance, and the VPN gateway instance must run the BGP dynamic routing protocol for this parameter to take effect.
 	//
-	//   - This parameter takes effect if the IPsec connection is directly connected to a transit router.
+	//     - If an IPsec connection is directly attached to a transit router instance, this parameter takes effect.
 	//
-	// You can specify one or more network instance types.
+	// You can specify multiple instance types.
 	//
 	// example:
 	//
 	// VPC
 	SourceChildInstanceTypes []*string `json:"SourceChildInstanceTypes,omitempty" xml:"SourceChildInstanceTypes,omitempty" type:"Repeated"`
-	// The IDs of the source network instances to which the routes belong. The following network instance types are supported:
+	// The list of source instance IDs that the route must match. The following types of instance IDs are supported:
 	//
-	// - Virtual private cloud (VPC)
+	// - Virtual Private Cloud (VPC) instance ID
 	//
-	// - Virtual border router (VBR)
+	// - Virtual Border Router (VBR) instance ID
 	//
-	// - Cloud Connect Network (CCN) instance
+	// - Cloud Connect Network (CCN) instance ID
 	//
-	// - Smart Access Gateway (SAG) instance
+	// - Smart Access Gateway instance ID
 	//
-	// - The ID of the IPsec-VPN connection.
+	// - IPsec connection ID
 	//
-	// You can enter at most 64 IDs.
+	// You can specify up to 64 instance IDs.
 	//
 	// example:
 	//
 	// vpc-adeg3544fdf34vf****
 	SourceInstanceIds []*string `json:"SourceInstanceIds,omitempty" xml:"SourceInstanceIds,omitempty" type:"Repeated"`
-	// Specifies whether to exclude source instance IDs. Valid values:
+	// Specifies whether to use the exclude matching mode for the source instance ID list. Valid values:
 	//
-	// - **false*	- (default): A route is a match if the source instance ID is included in the list specified by **SourceInstanceIds.N**.
+	// - **false*	- (default): no. A match is successful if the source instance ID of the route is in the **SourceInstanceIds.N*	- list.
 	//
-	// - **true**: A route is a match if the source network instance ID is not in the list specified by **SourceInstanceIds.N**.
+	// - **true**: yes. A match is successful if the source instance ID of the route is not in the **SourceInstanceIds.N*	- list.
 	//
 	// example:
 	//
 	// false
 	SourceInstanceIdsReverseMatch *bool `json:"SourceInstanceIdsReverseMatch,omitempty" xml:"SourceInstanceIdsReverseMatch,omitempty"`
-	// The IDs of the source regions from which routes are evaluated. You can enter at most 64 region IDs.
+	// The list of source region IDs that the route must match. You can specify up to 64 region IDs.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// You can call [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) to query region IDs.
 	//
 	// example:
 	//
 	// cn-beijing
 	SourceRegionIds []*string `json:"SourceRegionIds,omitempty" xml:"SourceRegionIds,omitempty" type:"Repeated"`
-	// The IDs of the source route tables from which routes are evaluated. You can enter at most 64 route table IDs.
+	// The list of source route table IDs that the route must match. You can specify up to 64 route table IDs.
 	//
 	// example:
 	//
 	// vtb-adfr233vf34rvd4****
 	SourceRouteTableIds []*string `json:"SourceRouteTableIds,omitempty" xml:"SourceRouteTableIds,omitempty" type:"Repeated"`
-	// The ID of the route table of the transit router.
+	// The route table ID of the transit router.
 	//
 	// If you do not specify a route table ID, the routing policy is automatically associated with the default route table of the transit router.
 	//
@@ -416,13 +419,13 @@ type CreateCenRouteMapRequest struct {
 	TransitRouterRouteTableId *string `json:"TransitRouterRouteTableId,omitempty" xml:"TransitRouterRouteTableId,omitempty"`
 	// The direction in which the routing policy is applied. Valid values:
 	//
-	// - **RegionIn**: Routes are advertised to the gateways in the regions that are connected by the CEN instance.
+	// - **RegionIn**: the inbound direction of the regional gateway. Routes are transmitted to the CEN regional gateway.
 	//
-	// For example, routes are advertised from network instances deployed in the current region or other regions to the gateway deployed in the current region.
+	//  For example, a route is advertised from a network instance in the local region to the local regional gateway, or a route is advertised from another region to the local regional gateway.
 	//
-	// - **RegionOut**: Routes are advertised from the gateways in the regions that are connected by the CEN instance.
+	// - **RegionOut**: the outbound direction of the regional gateway. Routes are transmitted from the CEN regional gateway.
 	//
-	// For example, routes are advertised from the gateway deployed in the current region to network instances deployed in the same region, or to gateways deployed in other regions.
+	//  For example, a route is advertised from the local regional gateway to a network instance in the local region, or to a regional gateway in another region.
 	//
 	// This parameter is required.
 	//

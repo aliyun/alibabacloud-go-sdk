@@ -40,7 +40,7 @@ type iCreateTransitRouterEcrAttachmentRequest interface {
 }
 
 type CreateTransitRouterEcrAttachmentRequest struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// The Cloud Enterprise Network (CEN) instance ID.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type CreateTransitRouterEcrAttachmentRequest struct {
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// Make sure that the client token is unique for each request. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID is different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type CreateTransitRouterEcrAttachmentRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: performs a dry run. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned. The system does not change the configuration of the ECR connection.
+	// - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): sends a normal request. If the request passes the check, the system changes the configuration of the ECR connection.
+	// - **false*	- (default): performs a dry run and sends the request. If the check succeeds, the operation is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the ECR instance.
+	// The ID of the Express Connect Router (ECR) instance to associate.
 	//
 	// This parameter is required.
 	//
@@ -74,9 +74,9 @@ type CreateTransitRouterEcrAttachmentRequest struct {
 	//
 	// ecr-upyc0viial107r****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the ECR instance belongs. The default value is the ID of the current Alibaba Cloud account.
+	// The Alibaba Cloud account ID of the account that owns the ECR instance. The default value is the Alibaba Cloud account ID of the current logon account.
 	//
-	// > If you want to connect to a network instance that belongs to another Alibaba Cloud account, this parameter is required.
+	// > This parameter is required if you want to load a cross-account network instance.
 	//
 	// example:
 	//
@@ -84,9 +84,9 @@ type CreateTransitRouterEcrAttachmentRequest struct {
 	EcrOwnerId   *int64  `json:"EcrOwnerId,omitempty" xml:"EcrOwnerId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the transit router is deployed.
+	// The region ID of the transit router instance.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the most recent region list.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
 	//
 	// example:
 	//
@@ -94,13 +94,13 @@ type CreateTransitRouterEcrAttachmentRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The tags.
+	// The tag information list.
 	//
-	// You can specify up to 20 tags in each call.
+	// You can specify up to 20 tags at a time.
 	Tag []*CreateTransitRouterEcrAttachmentRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The description of the ECR connection.
 	//
-	// The description can be empty or 1 to 256 characters in length, and cannot start with http\\:// or https\\://.
+	// The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -108,13 +108,13 @@ type CreateTransitRouterEcrAttachmentRequest struct {
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
 	// The name of the ECR connection.
 	//
-	// The name can be empty or 1 to 128 characters in length, and cannot start with http\\:// or https\\://.
+	// The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// nametest
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
-	// The ID of the transit router.
+	// The transit router instance ID.
 	//
 	// example:
 	//
@@ -270,21 +270,21 @@ func (s *CreateTransitRouterEcrAttachmentRequest) Validate() error {
 }
 
 type CreateTransitRouterEcrAttachmentRequestTag struct {
-	// The tag key.
+	// The tag key of the resource.
 	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https:// `.
+	// The tag key cannot be an empty string. It can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
-	// You can specify up to 20 tag keys.
+	// You can specify up to 20 tag keys at a time.
 	//
 	// example:
 	//
 	// tagtest
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value of the resource.
 	//
-	// The tag value can be empty or up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https:// `.
+	// The tag value cannot be empty. It can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
 	//
-	// Each tag key must have a unique tag value. You can specify up to 20 tag values.
+	// Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
 	//
 	// example:
 	//

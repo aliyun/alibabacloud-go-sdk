@@ -34,17 +34,17 @@ type iListTransitRouterRouteTableAssociationsRequest interface {
 }
 
 type ListTransitRouterRouteTableAssociationsRequest struct {
-	// The number of entries to return on each page. Default value: **50**.
+	// The number of entries per page for a paged query. Default value: **50**.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query.
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// - You do not need to specify this parameter for the first query.
+	// - You do not need to specify this parameter for the first request or if no subsequent query exists.
 	//
-	// - For a subsequent query, set this parameter to the **NextToken*	- value returned from the previous query.
+	// - If a subsequent query exists, set the value to the **NextToken*	- value returned by the previous API call.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type ListTransitRouterRouteTableAssociationsRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The status of the association.
+	// The status of the route association. Valid values:
 	//
-	// - **Active**: The association is active.
+	// - **Active**: active.
 	//
-	// - **Associating**: The association is being created.
+	// - **Associating**: being associated.
 	//
-	// - **Dissociating**: The association is being deleted.
+	// - **Dissociating**: being dissociated.
 	//
 	// example:
 	//
@@ -78,13 +78,13 @@ type ListTransitRouterRouteTableAssociationsRequest struct {
 	//
 	// vpc-bp1h8vbrbcgohcju5****
 	TransitRouterAttachmentResourceId *string `json:"TransitRouterAttachmentResourceId,omitempty" xml:"TransitRouterAttachmentResourceId,omitempty"`
-	// The type of the next hop resource.
+	// The type of the next hop resource. Valid values:
 	//
-	// - **VPC**: virtual private cloud (VPC).
+	// - **VPC**: virtual private cloud (VPC) instance.
 	//
-	// - **VBR**: virtual border router (VBR).
+	// - **VBR**: virtual border router (VBR) instance.
 	//
-	// - **TR**: transit router.
+	// - **TR**: transit router instance.
 	//
 	// - **VPN**: VPN connection.
 	//
@@ -92,7 +92,7 @@ type ListTransitRouterRouteTableAssociationsRequest struct {
 	//
 	// VPC
 	TransitRouterAttachmentResourceType *string `json:"TransitRouterAttachmentResourceType,omitempty" xml:"TransitRouterAttachmentResourceType,omitempty"`
-	// The ID of the route table of the Enterprise Edition transit router.
+	// The ID of the Enterprise Edition transit router route table.
 	//
 	// example:
 	//

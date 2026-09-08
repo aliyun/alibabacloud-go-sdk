@@ -26,15 +26,15 @@ type iDescribeCenPrivateZoneRoutesRequest interface {
 }
 
 type DescribeCenPrivateZoneRoutesRequest struct {
-	// The ID of the region where you access the PrivateZone service.
+	// The ID of the region from which the PrivateZone service is accessed.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
+	// You can call [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) to query region IDs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	AccessRegionId *string `json:"AccessRegionId,omitempty" xml:"AccessRegionId,omitempty"`
-	// The ID of the CEN instance.
+	// The CEN instance ID.
 	//
 	// This parameter is required.
 	//
@@ -42,19 +42,19 @@ type DescribeCenPrivateZoneRoutesRequest struct {
 	//
 	// cen-7qthudw0ll6jmc****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the region where the PrivateZone service is deployed.
+	// The ID of the region where the PrivateZone service resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	HostRegionId *string `json:"HostRegionId,omitempty" xml:"HostRegionId,omitempty"`
-	// The page number. The default value is **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. The default value is **10**. Valid values: **1*	- to **50**.
+	// The number of entries per page for paging. Default value: **10**. Valid values: **1*	- to **50**.
 	//
 	// example:
 	//

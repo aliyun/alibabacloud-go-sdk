@@ -23,19 +23,19 @@ type iDescribeGrantRulesToCenResponseBody interface {
 
 type DescribeGrantRulesToCenResponseBody struct {
 	GrantRules *DescribeGrantRulesToCenResponseBodyGrantRules `json:"GrantRules,omitempty" xml:"GrantRules,omitempty" type:"Struct"`
-	// - The maximum number of entries to return per page.
+	// - If you did not specify the **MaxResults*	- request parameter, pagination is not required. The **MaxResults*	- value in the response indicates the total number of entries.
 	//
-	// - This value is the same as the **MaxResults*	- value that you specified in the request.
+	// - If you specified the **MaxResults*	- request parameter, pagination is required. The **MaxResults*	- value in the response indicates the number of entries in the current page.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results.
+	// The pagination token. Valid values:
 	//
-	// - If the **NextToken*	- parameter is empty, no more results are available.
+	// - If **NextToken*	- is empty, no subsequent query exists.
 	//
-	// - To retrieve the next page, set the NextToken request parameter to this value.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -47,7 +47,7 @@ type DescribeGrantRulesToCenResponseBody struct {
 	//
 	// 4906B209-8613-5C19-9CC9-B7A3FFDA731C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//

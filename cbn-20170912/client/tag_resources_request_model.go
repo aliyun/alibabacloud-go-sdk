@@ -30,15 +30,15 @@ type iTagResourcesRequest interface {
 type TagResourcesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the resource.
+	// The region ID of the resource instance.
 	//
-	// This parameter is not required for resources of the Cen and BandwidthPackage types. It is required for all other resource types.
+	// This parameter is not required when the resource type is Cen or BandwidthPackage. This parameter is required for all other resource types.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of resource IDs.
+	// The resources.
 	//
 	// This parameter is required.
 	//
@@ -48,27 +48,27 @@ type TagResourcesRequest struct {
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the resource. Valid values:
+	// The resource type. Valid values:
 	//
-	// **Cen**: a CEN instance.
+	// **Cen**: CEN instance.
 	//
-	// **BandwidthPackage**: a bandwidth plan.
+	// **BandwidthPackage**: bandwidth package instance.
 	//
-	// **TransitRouter**: a transit router instance.
+	// **TransitRouter**: transit router instance.
 	//
-	// **TransitRouterVpcAttachment**: a VPC connection.
+	// **TransitRouterVpcAttachment**: VPC connection instance.
 	//
-	// **TransitRouterVbrAttachment**: a VBR connection.
+	// **TransitRouterVbrAttachment**: VBR connection instance.
 	//
-	// **TransitRouterPeerAttachment**: an inter-region connection.
+	// **TransitRouterPeerAttachment**: inter-region connection instance.
 	//
-	// **TransitRouterVpnAttachment**: a VPN connection.
+	// **TransitRouterVpnAttachment**: VPN connection instance.
 	//
-	// **TransitRouterRouteTable**: a route table.
+	// **TransitRouterRouteTable**: route table instance.
 	//
-	// **Flowlog**: a flow log.
+	// **Flowlog**: flow log instance.
 	//
-	// **TransitRouterMulticastDomain**: a multicast domain.
+	// **TransitRouterMulticastDomain**: multicast domain instance.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type TagResourcesRequest struct {
 	//
 	// cen
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The list of tags.
+	// The tag list.
 	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -178,9 +178,9 @@ func (s *TagResourcesRequest) Validate() error {
 type TagResourcesRequestTag struct {
 	// The tag key.
 	//
-	// You can enter multiple tag keys. The value of **N*	- ranges from **1*	- to **20**.
+	// You can specify multiple tag keys. Valid values of **N**: **1*	- to **20**.
 	//
-	// The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -188,9 +188,9 @@ type TagResourcesRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// Each tag key must have a tag value. The value of **N*	- ranges from **1*	- to **20**.
+	// Each tag key corresponds to one tag value. Valid values of **N**: **1*	- to **20**.
 	//
-	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

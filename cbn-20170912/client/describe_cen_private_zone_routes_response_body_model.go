@@ -26,7 +26,7 @@ type iDescribeCenPrivateZoneRoutesResponseBody interface {
 }
 
 type DescribeCenPrivateZoneRoutesResponseBody struct {
-	// The ID of the CEN instance.
+	// The CEN instance ID.
 	//
 	// example:
 	//
@@ -38,13 +38,13 @@ type DescribeCenPrivateZoneRoutesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page for paging.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The IP addresses of the DNS servers for the PrivateZone service.
+	// The IP address of the DNS server for the PrivateZone service.
 	//
 	// example:
 	//
@@ -57,7 +57,7 @@ type DescribeCenPrivateZoneRoutesResponseBody struct {
 	//
 	// 461EC1B5-04A8-4706-8764-8F5BCEF48A6F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//

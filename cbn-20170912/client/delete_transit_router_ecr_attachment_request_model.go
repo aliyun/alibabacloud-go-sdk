@@ -30,29 +30,29 @@ type iDeleteTransitRouterEcrAttachmentRequest interface {
 type DeleteTransitRouterEcrAttachmentRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 02fb3da4****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run, including permission and instance status verification. Valid values:
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	// - **false*	- (default): Sends a normal request. If the request passes the check, the configuration of the inter-region connection is directly modified.
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, a request ID is returned.
+	// - **true**: Sends a check request. Only the verification is performed, and the configuration of the inter-region connection is not modified. The check items include whether required parameters are specified and the request format. If the check fails, the corresponding error is returned. If the check passes, the corresponding request ID is returned.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether to forcibly delete the ECR connection. Valid values:
+	// Specifies whether to forcefully delete the ECR connection. Valid values:
 	//
-	// 	- **false*	- (default): checks for resource dependencies such as associated forwarding and route learning before deleting the ECR connection. If such resources exist, the ECR connection is not deleted and an error message is returned.
+	// - **false*	- (default): Before the ECR connection is deleted, the system checks whether related resource dependencies exist, such as associated forwarding and route learning. If related dependencies exist, the ECR connection cannot be deleted and the corresponding error is returned.
 	//
-	// 	- **true**: deletes the ECR connections and all dependent resources.
+	// - **true**: When the ECR connection is deleted, all related dependencies are deleted by default.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iUpdateTransitRouterVpcAttachmentZonesResponseBody interface {
 }
 
 type UpdateTransitRouterVpcAttachmentZonesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

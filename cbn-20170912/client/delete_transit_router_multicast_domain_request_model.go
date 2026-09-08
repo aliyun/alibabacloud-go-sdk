@@ -26,9 +26,9 @@ type iDeleteTransitRouterMulticastDomainRequest interface {
 }
 
 type DeleteTransitRouterMulticastDomainRequest struct {
-	// A client token that is used to ensure the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request.
 	//
-	// Generate a token on your client to make sure that it is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
 	// example:
 	//
@@ -36,9 +36,9 @@ type DeleteTransitRouterMulticastDomainRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: performs a dry run. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// - **false*	- (default): performs a normal request. If the request passes the check, the multicast domain is deleted.
+	// - **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, the multicast domain is deleted.
 	//
 	// example:
 	//

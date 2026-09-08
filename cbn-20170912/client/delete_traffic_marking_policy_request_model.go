@@ -30,9 +30,9 @@ type iDeleteTrafficMarkingPolicyRequest interface {
 type DeleteTrafficMarkingPolicyRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the value of **RequestId*	- as the value of **ClientToken**. The value of **RequestId*	- for each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
@@ -40,19 +40,19 @@ type DeleteTrafficMarkingPolicyRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **true**: performs a dry run without deleting the traffic marking policy. The system checks the required parameters, request syntax, and business restrictions. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// - **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, the traffic marking policy is deleted.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Whether to force delete the traffic marking policy. Valid values:
+	// Specifies whether to force delete the traffic marking policy. Valid values:
 	//
-	// 	- **false*	- (default): checks whether there is a traffic classification rule before deleting the traffic marking policy. If there is, the traffic marking policy cannot be deleted and an error is returned.
+	// - **false*	- (default): Before the traffic marking policy is deleted, the system checks whether traffic categorization rules exist. If traffic categorization rules exist, the traffic marking policy cannot be deleted and an error message is returned.
 	//
-	// 	- **true**: When you delete a traffic marking policy, all traffic classification rules are deleted by default.
+	// - **true**: When the traffic marking policy is deleted, all traffic categorization rules are also deleted.
 	//
 	// example:
 	//

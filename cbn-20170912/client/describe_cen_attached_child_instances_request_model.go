@@ -30,7 +30,7 @@ type iDescribeCenAttachedChildInstancesRequest interface {
 }
 
 type DescribeCenAttachedChildInstancesRequest struct {
-	// The ID of the CEN instance.
+	// The CEN instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type DescribeCenAttachedChildInstancesRequest struct {
 	//
 	// cen-j3jzhw1zpau2km****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the region where the network instance is deployed.
+	// The region ID of the network instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// example:
 	//
@@ -48,11 +48,11 @@ type DescribeCenAttachedChildInstancesRequest struct {
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// - **VPC**: virtual private cloud (VPC)
+	// - **VPC**: virtual private cloud.
 	//
-	// - **VBR**: virtual border router (VBR)
+	// - **VBR**: virtual border router.
 	//
-	// - **CCN**: Cloud Connect Network (CCN) instance
+	// - **CCN**: Cloud Connect Network.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type DescribeCenAttachedChildInstancesRequest struct {
 	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
 	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**. Valid values: **1*	- to **50**.
+	// The number of entries per page for paging query. Default value: **10**. Valid values: **1*	- to **50**.
 	//
 	// example:
 	//

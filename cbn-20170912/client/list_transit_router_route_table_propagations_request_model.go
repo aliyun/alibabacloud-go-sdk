@@ -34,13 +34,13 @@ type iListTransitRouterRouteTablePropagationsRequest interface {
 }
 
 type ListTransitRouterRouteTablePropagationsRequest struct {
-	// The number of entries to return on each page. The default value is **50**.
+	// The number of entries per page for a paged query. Default value: **50**.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to retrieve the next page of results.
+	// The token for the next query in a paged query.
 	//
 	// example:
 	//
@@ -50,45 +50,45 @@ type ListTransitRouterRouteTablePropagationsRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The status of the route propagation.
+	// The status of the route learning relationship. Valid values:
 	//
-	// - **Active**: The propagation is active.
+	// - **Active**: active.
 	//
-	// - **Enabling**: The propagation is being enabled.
+	// - **Enabling**: being enabled.
 	//
-	// - **Disabling**: The propagation is being disabled.
+	// - **Disabling**: being disabled.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the network instance connection.
+	// The network instance connection ID.
 	//
 	// example:
 	//
 	// tr-attach-vx6iwhjr1x1j78****
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The ID of the network instance.
+	// The network instance ID.
 	//
 	// example:
 	//
 	// vpc-bp1h8vbrbcgohcju5****
 	TransitRouterAttachmentResourceId *string `json:"TransitRouterAttachmentResourceId,omitempty" xml:"TransitRouterAttachmentResourceId,omitempty"`
-	// The type of the network instance.
+	// The network instance type. Valid values:
 	//
-	// - **VPC**: a virtual private cloud (VPC).
+	// - **VPC**: virtual private cloud (VPC) instance.
 	//
-	// - **VBR**: a virtual border router (VBR).
+	// - **VBR**: virtual border router (VBR) instance.
 	//
-	// - **TR**: a transit router.
+	// - **TR**: transit router instance.
 	//
-	// - **VPN**: a VPN connection.
+	// - **VPN**: VPN connection.
 	//
 	// example:
 	//
 	// VPC
 	TransitRouterAttachmentResourceType *string `json:"TransitRouterAttachmentResourceType,omitempty" xml:"TransitRouterAttachmentResourceType,omitempty"`
-	// The ID of the route table of the Enterprise Edition transit router.
+	// The ID of the Enterprise Edition transit router route table.
 	//
 	// This parameter is required.
 	//

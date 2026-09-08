@@ -28,7 +28,7 @@ type DescribeRouteServicesInCenResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page for paging.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeRouteServicesInCenResponseBody struct {
 	// 196C99CA-6997-5951-9721-AE89720DF856
 	RequestId           *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouteServiceEntries *DescribeRouteServicesInCenResponseBodyRouteServiceEntries `json:"RouteServiceEntries,omitempty" xml:"RouteServiceEntries,omitempty" type:"Struct"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

@@ -34,23 +34,23 @@ type iDescribeCenAttachedChildInstanceAttributeResponseBody interface {
 }
 
 type DescribeCenAttachedChildInstanceAttributeResponseBody struct {
-	// The ID of the CEN instance.
+	// The CEN instance ID.
 	//
 	// example:
 	//
 	// cen-5mv960yjhja0dh****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The time when the network instance was attached to the CEN instance.
+	// The time when the network instance was attached.
 	//
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mmZ format. The time is displayed in UTC.
+	// The time is displayed in UTC in the YYYY-MM-DDThh:mmZ format.
 	//
 	// example:
 	//
 	// 2018-07-30T07:53Z
 	ChildInstanceAttachTime *string `json:"ChildInstanceAttachTime,omitempty" xml:"ChildInstanceAttachTime,omitempty"`
-	// The details about the network instance.
+	// The details of the network instance.
 	ChildInstanceAttributes *DescribeCenAttachedChildInstanceAttributeResponseBodyChildInstanceAttributes `json:"ChildInstanceAttributes,omitempty" xml:"ChildInstanceAttributes,omitempty" type:"Struct"`
-	// The ID of the network instance.
+	// The network instance ID.
 	//
 	// example:
 	//
@@ -74,37 +74,37 @@ type DescribeCenAttachedChildInstanceAttributeResponseBody struct {
 	//
 	// cn-beijing
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	// The type of the network instance. Valid values:
+	// The type of the network instance.
 	//
-	// - **VPC**: VPC
+	// - **VPC**: virtual private cloud.
 	//
-	// - **VBR**: VBR
+	// - **VBR**: virtual border router.
 	//
-	// - **CCN**: CCN instance
+	// - **CCN**: Cloud Connect Network.
 	//
 	// example:
 	//
 	// VPC
 	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	// The cloud service that the network instance belongs to. Its standard code is only returned when the VPC is connected to the transit router. For self-managed VPCs, no code is returned.
+	// The cloud service to which the network instance belongs. This parameter is returned only when a VPC occupied by a cloud service is connected to a transit router. If the VPC is managed by you, this parameter is not returned.
 	//
 	// example:
 	//
 	// swas
 	ManagedService *string `json:"ManagedService,omitempty" xml:"ManagedService,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// ADD98358-D265-4060-87CB-A2427F5A8944
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the network instance is attached to the CEN instance.
+	// The attachment status of the network instance.
 	//
-	// - **Attaching**: The network instance is being attached to the CEN instance.
+	// - **Attaching**: being attached.
 	//
-	// - **Attached**: The network instance is attached to the CEN instance.
+	// - **Attached**: attached.
 	//
-	// - **Detaching**: The network instance is being detached from the CEN instance.
+	// - **Detaching**: being detached.
 	//
 	// example:
 	//

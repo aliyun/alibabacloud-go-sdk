@@ -30,7 +30,7 @@ type iListTransitRouterMulticastDomainVSwitchesRequest interface {
 }
 
 type ListTransitRouterMulticastDomainVSwitchesRequest struct {
-	// The ID of the Cloud Enterprise Network instance.
+	// The instance ID of the Cloud Enterprise Network (CEN).
 	//
 	// This parameter is required.
 	//
@@ -38,17 +38,17 @@ type ListTransitRouterMulticastDomainVSwitchesRequest struct {
 	//
 	// cen-44m0p68spvlrqq****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The number of entries to return on each page. Minimum value: **0**. Default value: **20**.
+	// The number of entries per page for a paged query. Minimum value: **0**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. Valid values:
+	// The pagination token. Valid values:
 	//
-	// - You do not need to specify this parameter for the first query or if there is no next query.
+	// - You do not need to specify this parameter for the first request or if no subsequent query exists.
 	//
-	// - If there is a next query, set the value to the **NextToken*	- value that is returned from the previous API call.
+	// - If a subsequent query exists, set the value to the **NextToken*	- value returned by the previous API call.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type ListTransitRouterMulticastDomainVSwitchesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The list of vSwitch IDs.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	// The ID of the VPC instance.
+	// The ID of the VPC-connected instance.
 	//
 	// This parameter is required.
 	//

@@ -14,7 +14,7 @@ type iRemoveTrafficMatchRuleFromTrafficMarkingPolicyResponseBody interface {
 }
 
 type RemoveTrafficMatchRuleFromTrafficMarkingPolicyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

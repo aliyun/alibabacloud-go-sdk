@@ -22,13 +22,13 @@ type iListGrantVSwitchesToCenResponseBody interface {
 }
 
 type ListGrantVSwitchesToCenResponseBody struct {
-	// The page number.
+	// The page number of the list.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page for paging.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type ListGrantVSwitchesToCenResponseBody struct {
 	//
 	// A9288C78-881A-5D30-A8A9-68E05EE0A086
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries in the list.
 	//
 	// example:
 	//
 	// 2
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of vSwitches.
+	// The list of vSwitch information.
 	VSwitches []*ListGrantVSwitchesToCenResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
 }
 
@@ -117,7 +117,7 @@ func (s *ListGrantVSwitchesToCenResponseBody) Validate() error {
 }
 
 type ListGrantVSwitchesToCenResponseBodyVSwitches struct {
-	// The ID of the vSwitch.
+	// The vSwitch instance ID.
 	//
 	// example:
 	//
@@ -129,13 +129,13 @@ type ListGrantVSwitchesToCenResponseBodyVSwitches struct {
 	//
 	// nametest
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
-	// The ID of the VPC to which the vSwitch belongs.
+	// The VPC-connected instance ID to which the vSwitch belongs.
 	//
 	// example:
 	//
 	// vpc-bp12ge2tq5gzdc915****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone to which the vSwitch belongs.
+	// The zone ID of the vSwitch.
 	//
 	// example:
 	//

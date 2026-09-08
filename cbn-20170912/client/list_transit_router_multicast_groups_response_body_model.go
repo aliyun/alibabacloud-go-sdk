@@ -28,11 +28,11 @@ type ListTransitRouterMulticastGroupsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next page of results.
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// - If **NextToken*	- is empty, no next page exists.
+	// - If **NextToken*	- is empty, no next query exists.
 	//
-	// - If a value is returned for **NextToken**, the value is the token for the next page.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type ListTransitRouterMulticastGroupsResponseBody struct {
 	//
 	// FB3C4A16-0933-5850-9D43-0C3EA37BCBFB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of multicast groups.
+	// The list of multicast group information.
 	TransitRouterMulticastGroups []*ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups `json:"TransitRouterMulticastGroups,omitempty" xml:"TransitRouterMulticastGroups,omitempty" type:"Repeated"`
 }
 
@@ -121,69 +121,69 @@ func (s *ListTransitRouterMulticastGroupsResponseBody) Validate() error {
 }
 
 type ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups struct {
-	// The IP address of the multicast group.
+	// The IP address of the multicast group to which the multicast resource belongs.
 	//
 	// example:
 	//
 	// 239.XX.XX.2
 	GroupIpAddress *string `json:"GroupIpAddress,omitempty" xml:"GroupIpAddress,omitempty"`
-	// Indicates whether the multicast resource is a multicast member.
+	// Indicates whether the current multicast resource is a multicast member. Valid values:
 	//
-	// - **true**: The resource is a multicast member.
+	// - **true**: The multicast resource is a multicast member.
 	//
-	// - **false**: The resource is not a multicast member.
+	// - **false**: The multicast resource is not a multicast member.
 	//
 	// example:
 	//
 	// true
 	GroupMember *bool `json:"GroupMember,omitempty" xml:"GroupMember,omitempty"`
-	// Indicates whether the multicast resource is a multicast source.
+	// Indicates whether the current multicast resource is a multicast source. Valid values:
 	//
-	// - **true**: The resource is a multicast source.
+	// - **true**: The multicast resource is a multicast source.
 	//
-	// - **false**: The resource is not a multicast source.
+	// - **false**: The multicast resource is not a multicast source.
 	//
 	// example:
 	//
 	// false
 	GroupSource *bool `json:"GroupSource,omitempty" xml:"GroupSource,omitempty"`
-	// The type of the multicast member.
+	// The type of the multicast member. Valid values:
 	//
 	// - **Static**: The multicast member is manually specified.
 	//
-	// - **IGMPv2**: The multicast member dynamically joins the multicast group based on Internet Group Management Protocol Version 2 (IGMPv2).
+	// - **IGMPv2**: The multicast member dynamically joined the multicast group through the IGMP protocol.
 	//
 	// example:
 	//
 	// Static
 	MemberType *string `json:"MemberType,omitempty" xml:"MemberType,omitempty"`
-	// The ID of the ENI. The ENI is the multicast resource.
+	// The elastic network interface (ENI) ID, which is the multicast resource ID.
 	//
 	// example:
 	//
 	// eni-p0weuda3lszwzjly****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The ID of the multicast domain that is associated with the cross-region multicast resource.
+	// The ID of the multicast domain associated with the cross-region multicast resource.
 	//
 	// example:
 	//
 	// tr-mcast-domain-91wpg6wbhchjeq****
 	PeerTransitRouterMulticastDomainId *string `json:"PeerTransitRouterMulticastDomainId,omitempty" xml:"PeerTransitRouterMulticastDomainId,omitempty"`
-	// The ID of the resource associated with the multicast resource.
+	// The resource ID associated with the multicast resource.
 	//
 	// example:
 	//
 	// vpc-p0w9alkte4w2htrqe****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the multicast resource.
+	// The ID of the Alibaba Cloud account to which the multicast resource belongs.
 	//
 	// example:
 	//
 	// 11081188765****
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The type of the multicast resource.
+	// The type of the multicast resource. Valid values:
 	//
-	// - **VPC**: The multicast resource is in a VPC.
+	// - **VPC**: The multicast resource is a resource in a VPC.
 	//
 	// - **TR**: The multicast resource is a cross-region resource.
 	//
@@ -191,41 +191,41 @@ type ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups st
 	//
 	// VPC
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The type of the multicast source.
+	// The type of the multicast source. Valid values:
 	//
 	// - **Static**: The multicast source is manually specified.
 	//
-	// - **IGMPv2**: The multicast source dynamically joins the multicast group based on IGMPv2.
+	// - **IGMPv2**: The multicast source dynamically joined the multicast group through the IGMP protocol.
 	//
 	// example:
 	//
 	// Static
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The status of the multicast resource.
+	// The status of the multicast resource. Valid values:
 	//
-	// - **Registering**: The resource is being created.
+	// - **Registering**: being created.
 	//
-	// - **Registered**: The resource is available.
+	// - **Registered**: available.
 	//
-	// - **Deregistering**: The resource is being deleted.
+	// - **Deregistering**: being deleted.
 	//
 	// example:
 	//
 	// Registered
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the network instance connection.
+	// The network instance connection ID.
 	//
 	// example:
 	//
 	// tr-attach-g3kz2k3u76amsk****
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The ID of the multicast domain.
+	// The multicast domain ID.
 	//
 	// example:
 	//
 	// tr-mcast-domain-kx0vk0v7fz8kx4****
 	TransitRouterMulticastDomainId *string `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
-	// The ID of the vSwitch.
+	// The ID of the vSwitch to which the multicast resource belongs.
 	//
 	// example:
 	//

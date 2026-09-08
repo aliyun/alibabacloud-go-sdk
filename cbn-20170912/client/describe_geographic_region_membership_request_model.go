@@ -26,15 +26,15 @@ type iDescribeGeographicRegionMembershipRequest interface {
 }
 
 type DescribeGeographicRegionMembershipRequest struct {
-	// The ID of the area that you want to query. Valid values:
+	// The ID of the area to query. Valid values:
 	//
-	// - **china**: the Chinese mainland
+	// - **china**: the Chinese mainland.
 	//
-	// - **asia-pacific**: Asia Pacific
+	// - **asia-pacific**: Asia-Pacific.
 	//
-	// - **europe**: Europe
+	// - **europe**: Europe.
 	//
-	// - **north-america**: North America
+	// - **north-america**: North America.
 	//
 	// This parameter is required.
 	//
@@ -44,13 +44,13 @@ type DescribeGeographicRegionMembershipRequest struct {
 	GeographicRegionId *string `json:"GeographicRegionId,omitempty" xml:"GeographicRegionId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page. Default value: **10**. Valid values: **1*	- to **50**.
+	// The number of entries per page in a paged query. Default value: **10**. Valid values: **1*	- to **50**.
 	//
 	// example:
 	//

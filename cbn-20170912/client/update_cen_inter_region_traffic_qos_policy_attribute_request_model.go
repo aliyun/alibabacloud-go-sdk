@@ -40,9 +40,9 @@ type UpdateCenInterRegionTrafficQosPolicyAttributeRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the request fails the dry run, an error message is returned. If the request passes the dry run, the error code `DryRunOperation` is returned.
 	//
-	// - **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
+	// - **false*	- (default): performs a dry run and sends the request. After the request passes the dry run, the name and description of the traffic scheduling policy are modified.
 	//
 	// example:
 	//
@@ -52,15 +52,15 @@ type UpdateCenInterRegionTrafficQosPolicyAttributeRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The new description of the QoS policy.
+	// The new description of the traffic scheduling policy.
 	//
-	// The description must be 1 to 256 characters in length, and cannot start with http\\:// or https\\://. You can also leave this parameter empty.
+	// The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// desctest
 	TrafficQosPolicyDescription *string `json:"TrafficQosPolicyDescription,omitempty" xml:"TrafficQosPolicyDescription,omitempty"`
-	// The ID of the QoS policy.
+	// The ID of the traffic scheduling policy.
 	//
 	// This parameter is required.
 	//
@@ -68,9 +68,9 @@ type UpdateCenInterRegionTrafficQosPolicyAttributeRequest struct {
 	//
 	// qos-eczzew0v1kzrb5****
 	TrafficQosPolicyId *string `json:"TrafficQosPolicyId,omitempty" xml:"TrafficQosPolicyId,omitempty"`
-	// The new name of the QoS policy.
+	// The new name of the traffic scheduling policy.
 	//
-	// The name must be 1 to 128 characters in length, and cannot start with http\\:// or https\\://. You can also leave this parameter empty.
+	// The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//

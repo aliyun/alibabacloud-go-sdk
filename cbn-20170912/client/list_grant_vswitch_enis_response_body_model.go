@@ -22,15 +22,15 @@ type iListGrantVSwitchEnisResponseBody interface {
 }
 
 type ListGrantVSwitchEnisResponseBody struct {
-	// A list of ENI information.
+	// The list of network interface controller (NIC) information.
 	GrantVSwitchEnis []*ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis `json:"GrantVSwitchEnis,omitempty" xml:"GrantVSwitchEnis,omitempty" type:"Repeated"`
-	// The maximum number of entries returned.
+	// The maximum number of entries returned for this query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query.
+	// The token returned for this query.
 	//
 	// example:
 	//
@@ -42,11 +42,9 @@ type ListGrantVSwitchEnisResponseBody struct {
 	//
 	// DBFE1736-2F33-5309-9954-875B11E9519D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
-	// 	Notice:
-	//
-	// This parameter is invalid if you use MaxResults and NextToken to perform a paged query.
+	// 	Notice: When you use the MaxResults and NextToken parameters for paging, the returned Total parameter value is meaningless.
 	//
 	// example:
 	//
@@ -121,49 +119,49 @@ func (s *ListGrantVSwitchEnisResponseBody) Validate() error {
 }
 
 type ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis struct {
-	// The description of the ENI.
+	// The description of the elastic network interfaces (ENIs). This describes the network interface controller (NIC).
 	//
 	// example:
 	//
 	// created by CBN
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the ENI.
+	// The ID of the elastic network interfaces (ENIs). This is the network interface controller (NIC) identifier.
 	//
 	// example:
 	//
 	// eni-p0w172vv82kxzb49****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The name of the ENI.
+	// The name of the elastic network interfaces (ENIs). This is the network interface controller (NIC) name.
 	//
 	// example:
 	//
 	// my-eni-name
 	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
-	// The primary private IPv4 address of the ENI.
+	// The primary private IP IPv4 address of the elastic network interfaces (ENIs). This is the network interface controller (NIC) primary private IP address.
 	//
 	// example:
 	//
 	// ``192.168.**.**``
 	PrimaryIpAddress *string `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
-	// Indicates whether the ENI is created by a transit router.
+	// Indicates whether the elastic network interface (ENI) is created by a transit router for routing and forwarding purposes.
 	//
 	// - **true**: The ENI is created by a transit router.
 	//
 	// - **false**: The ENI is not created by a transit router.
 	//
-	// ENIs created by transit routers cannot be used as multicast sources or members.
+	// Elastic network interfaces (ENIs) created by transit routers cannot serve as multicast sources or multicast members.
 	//
 	// example:
 	//
 	// false
 	TransitRouterFlag *bool `json:"TransitRouterFlag,omitempty" xml:"TransitRouterFlag,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-p0w9s2ig1jnwgrbzl****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC.
+	// The VPC-connected instance ID.
 	//
 	// example:
 	//

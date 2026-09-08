@@ -38,11 +38,11 @@ type iCreateCenInterRegionTrafficQosPolicyRequest interface {
 }
 
 type CreateCenInterRegionTrafficQosPolicyRequest struct {
-	// The allocation mode of the guaranteed bandwidth. You can specify an absolute bandwidth value or a bandwidth percentage. Valid values:
+	// The bandwidth guarantee mode. You can configure QoS queues based on absolute bandwidth values or bandwidth percentages. Valid values:
 	//
-	// - **byBandwidth**: allocates an absolute bandwidth value for the QoS queue.
+	// - **byBandwidth**: configures QoS queues based on absolute bandwidth values.
 	//
-	// - **byBandwidthPercent*	- (default): allocates a bandwidth percentage for the OoS queue.
+	// - **byBandwidthPercent*	- (default): configures QoS queues based on bandwidth percentages.
 	//
 	// example:
 	//
@@ -50,18 +50,27 @@ type CreateCenInterRegionTrafficQosPolicyRequest struct {
 	BandwidthGuaranteeMode *string `json:"BandwidthGuaranteeMode,omitempty" xml:"BandwidthGuaranteeMode,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655****
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ConsoleDryRun *bool   `json:"ConsoleDryRun,omitempty" xml:"ConsoleDryRun,omitempty"`
-	// Specifies whether only to precheck the API request. Valid values:
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: prechecks the request but does not create the QoS policy. The system checks the required parameters, the request format, and the service limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// - **false**: sends the API request. If the request passes the precheck, the QoS policy is created. This is the default value.
+	// - **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, the cross-region traffic scheduling policy is created.
+	//
+	// example:
+	//
+	// false
+	ConsoleDryRun *bool `json:"ConsoleDryRun,omitempty" xml:"ConsoleDryRun,omitempty"`
+	// Specifies whether to perform a dry run. Valid values:
+	//
+	// - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// - **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, the traffic scheduling policy is created.
 	//
 	// example:
 	//
@@ -71,25 +80,25 @@ type CreateCenInterRegionTrafficQosPolicyRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The description of the QoS policy.
+	// The description of the traffic scheduling policy.
 	//
-	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http\\:// or https\\://.
+	// The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// desctest
 	TrafficQosPolicyDescription *string `json:"TrafficQosPolicyDescription,omitempty" xml:"TrafficQosPolicyDescription,omitempty"`
-	// The name of the QoS policy.
+	// The name of the traffic scheduling policy.
 	//
-	// The name can be empty or 1 to 128 characters in length, and cannot start with http\\:// or https\\://.
+	// The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// nametest
 	TrafficQosPolicyName *string `json:"TrafficQosPolicyName,omitempty" xml:"TrafficQosPolicyName,omitempty"`
-	// The information about the QoS queue.
+	// The queue information of the traffic scheduling policy.
 	//
-	// You can add at most three QoS queues in a QoS policy by calling this operation. To add more QoS queues, call the CreateCenInterRegionTrafficQosQueue operation.
+	// You can create up to 3 queues. To create more queues, call CreateCenInterRegionTrafficQosQueue.
 	TrafficQosQueues []*CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues `json:"TrafficQosQueues,omitempty" xml:"TrafficQosQueues,omitempty" type:"Repeated"`
 	// The ID of the inter-region connection.
 	//
@@ -99,7 +108,7 @@ type CreateCenInterRegionTrafficQosPolicyRequest struct {
 	//
 	// tr-attach-r6g0m3epjehw57****
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The ID of the transit router.
+	// The ID of the transit router instance.
 	//
 	// This parameter is required.
 	//
@@ -248,49 +257,49 @@ func (s *CreateCenInterRegionTrafficQosPolicyRequest) Validate() error {
 }
 
 type CreateCenInterRegionTrafficQosPolicyRequestTrafficQosQueues struct {
-	// The absolute bandwidth that can be consumed by the QoS queue. Unit: Mbit/s.
+	// The absolute bandwidth value that the queue can use for inter-region traffic, in Mbit/s.
 	//
-	// Each QoS policy supports at most 10 queues. You can specify a valid bandwidth value for each queue.
+	// A traffic scheduling policy supports up to 10 queues, and each queue can be assigned an absolute bandwidth value.
 	//
-	// For example, a value of 1 specifies that the queue can consume 1 Mbit/s of the inter-region bandwidth.
+	// For example, if you enter 1, traffic that matches the queue can use up to 1 Mbit/s of inter-region bandwidth.
 	//
-	// > The sum of the absolute bandwidth values of all the queues in a QoS policy cannot exceed the total bandwidth of the inter-region connection.
+	// > The sum of absolute bandwidth values of all allocated queues in a traffic scheduling policy cannot exceed the inter-region bandwidth value.
 	//
 	// example:
 	//
 	// 1
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The Differentiated Services Code Point (DSCP) value that matches the current queue.
+	// The DSCP values that the queue matches.
 	//
-	// Each QoS policy supports at most three queues. You can specify at most 60 DSCP values for each queue. Separate multiple DCSP values with commas (,).
+	// A traffic scheduling policy supports up to 3 queues, and each queue can match up to 60 DSCP values. Separate multiple DSCP values with commas (,).
 	Dscps []*int32 `json:"Dscps,omitempty" xml:"Dscps,omitempty" type:"Repeated"`
-	// The description of the current queue.
+	// The description of the queue.
 	//
-	// Each QoS policy supports at most 10 queues. You can specify a description for each queue.
+	// A traffic scheduling policy supports up to 10 queues, and each queue can have a description.
 	//
-	// This parameter is optional. If you enter a description, it must be 1 to 256 characters in length and cannot start with http\\:// or https\\://.
+	// The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// desctest
 	QosQueueDescription *string `json:"QosQueueDescription,omitempty" xml:"QosQueueDescription,omitempty"`
-	// The name of the current queue.
+	// The name of the queue.
 	//
-	// Each QoS policy supports at most three queues. You can specify a name for each queue.
+	// A traffic scheduling policy supports up to 3 queues, and each queue can be assigned a name.
 	//
-	// The name can be empty or 1 to 128 characters in length, and cannot start with http\\:// or https\\://.
+	// The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// nametest
 	QosQueueName *string `json:"QosQueueName,omitempty" xml:"QosQueueName,omitempty"`
-	// The percentage of the inter-region bandwidth that can be used by the queue.
+	// The percentage of inter-region bandwidth that the queue can use.
 	//
-	// Each QoS policy supports at most 10 queues. You can specify a valid percentage for each queue.
+	// A traffic scheduling policy supports up to 10 queues, and each queue can be assigned a percentage of inter-region bandwidth.
 	//
-	// For example, a value of **1*	- specifies that the queue can consume 1% of the inter-region bandwidth.
+	// For example, if you enter **1**, traffic that matches the queue can use up to 1% of the inter-region bandwidth.
 	//
-	// > The sum of the percentage values of all the queues in a QoS policy cannot exceed 100%.
+	// > The sum of bandwidth percentages of all queues in a traffic scheduling policy cannot exceed 100%.
 	//
 	// example:
 	//

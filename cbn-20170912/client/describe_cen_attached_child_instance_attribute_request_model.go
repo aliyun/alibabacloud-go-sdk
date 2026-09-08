@@ -28,7 +28,7 @@ type iDescribeCenAttachedChildInstanceAttributeRequest interface {
 }
 
 type DescribeCenAttachedChildInstanceAttributeRequest struct {
-	// The ID of the CEN instance.
+	// The CEN instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeCenAttachedChildInstanceAttributeRequest struct {
 	//
 	// cen-5mv960yjhja0dh****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the network instance that is attached to the CEN instance.
+	// The instance ID of the network instance loaded to the CEN instance.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DescribeCenAttachedChildInstanceAttributeRequest struct {
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
 	// The region ID of the network instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -56,11 +56,11 @@ type DescribeCenAttachedChildInstanceAttributeRequest struct {
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// - **VPC**: virtual private cloud (VPC)
+	// - **VPC**: virtual private cloud.
 	//
-	// - **VBR**: virtual border router (VBR)
+	// - **VBR**: virtual border router.
 	//
-	// - **CCN**: Cloud Connect Network (CCN) instance
+	// - **CCN**: Cloud Connect Network.
 	//
 	// This parameter is required.
 	//

@@ -16,13 +16,13 @@ type iCreateCenInterRegionTrafficQosPolicyResponseBody interface {
 }
 
 type CreateCenInterRegionTrafficQosPolicyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 6DF9A765-BCD2-5C7E-8C32-C35C8A361A39
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the QoS policy.
+	// The ID of the traffic scheduling policy.
 	//
 	// example:
 	//

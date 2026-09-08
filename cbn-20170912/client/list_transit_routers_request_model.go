@@ -40,13 +40,13 @@ type iListTransitRoutersRequest interface {
 }
 
 type ListTransitRoutersRequest struct {
-	// The ID of the CEN instance.
+	// The CEN instance ID.
 	//
 	// example:
 	//
 	// cen-j3jzhw1zpau2km****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The feature to be filtered.
+	// The feature filter for transit routers.
 	FeatureFilter []*ListTransitRoutersRequestFeatureFilter `json:"FeatureFilter,omitempty" xml:"FeatureFilter,omitempty" type:"Repeated"`
 	OwnerAccount  *string                                   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64                                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -56,15 +56,15 @@ type ListTransitRoutersRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1*	- to **50**. Default value: **10**.
+	// The number of entries per page in a paged query. Valid values: **1*	- to **50**. Default value: **10**. For more information about paging, see the related parameter descriptions.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the transit router is deployed.
+	// The region ID of the transit router instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// example:
 	//
@@ -72,33 +72,33 @@ type ListTransitRoutersRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The status of the transit router.
+	// The status of the transit router instance. Valid values:
 	//
-	// - **Creating**: The transit router is being created.
+	// - **Creating**: being created.
 	//
-	// - **Active**: The transit router is available.
+	// - **Active**: active.
 	//
-	// - **Modifying**: The transit router is being modified.
+	// - **Modifying**: being modified.
 	//
-	// - **Deleting**: The transit router is being deleted.
+	// - **Deleting**: being deleted.
 	//
-	// - **Upgrading**: The transit router is being upgraded.
+	// - **Upgrading**: being upgraded.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
+	// The tag information.
 	//
-	// You can specify up to 20 tags.
+	// You can specify up to 20 tags at a time.
 	Tag []*ListTransitRoutersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the transit router.
+	// The transit router instance ID.
 	//
 	// example:
 	//
 	// tr-uf654ttymmljlvh2x****
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	// The name of the transit router.
+	// The name of the transit router instance.
 	//
 	// The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
 	//
@@ -106,11 +106,11 @@ type ListTransitRoutersRequest struct {
 	//
 	// testname
 	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
-	// The type of the transit router.
+	// The type of the transit router instance. Valid values:
 	//
-	// - **Enterprise**: Enterprise Edition.
+	// - **Enterprise**: Enterprise Edition transit router.
 	//
-	// - **Basic**: Basic Edition.
+	// - **Basic**: Basic Edition transit router.
 	//
 	// example:
 	//
@@ -275,9 +275,7 @@ func (s *ListTransitRoutersRequest) Validate() error {
 }
 
 type ListTransitRoutersRequestFeatureFilter struct {
-	// The key of the feature to be filtered.
-	//
-	// The following key is supported:
+	// The key of the feature filter for transit routers. Currently supported fields:
 	//
 	// - **Multicast**: the multicast feature.
 	//
@@ -285,13 +283,11 @@ type ListTransitRoutersRequestFeatureFilter struct {
 	//
 	// Multicast
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// A list of values for the feature.
+	// The list of values for the feature filter of transit routers. When the key is **Multicast**, only one value is supported. Valid values:
 	//
-	// If you set the key to **Multicast**, you can specify only one value. Valid values:
+	// - **Enabled**: multicast is supported.
 	//
-	// - **Enabled**: Multicast is supported.
-	//
-	// - **Disabled**: Multicast is not supported.
+	// - **Disabled**: multicast is not supported.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
@@ -326,21 +322,21 @@ func (s *ListTransitRoutersRequestFeatureFilter) Validate() error {
 }
 
 type ListTransitRoutersRequestTag struct {
-	// The tag key.
+	// The tag key of the resource.
 	//
 	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
-	// You can specify up to 20 tag keys.
+	// You can specify up to 20 tag keys at a time.
 	//
 	// example:
 	//
 	// TagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The tag value of the resource.
 	//
-	// The tag value can be an empty string or a string of up to 128 characters. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+	// The tag value can be an empty string or up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
-	// Each tag key must have a unique tag value. You can specify up to 20 tag values.
+	// Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
 	//
 	// example:
 	//

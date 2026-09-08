@@ -56,23 +56,23 @@ type ListTransitRouterCidrAllocationRequest struct {
 	//
 	// nametest
 	AttachmentName *string `json:"AttachmentName,omitempty" xml:"AttachmentName,omitempty"`
-	// The CIDR block of the transit router.
+	// The transit router CIDR block.
 	//
 	// example:
 	//
 	// 192.168.10.0/24
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
-	// The allocated CIDR block.
+	// The allocated CIDR block under the transit router CIDR block.
 	//
 	// example:
 	//
 	// 192.168.10.0/28
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// A client token that is used to ensure the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request.
 	//
-	// Generate a token from your client to make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- is different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type ListTransitRouterCidrAllocationRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The dedicated CIDR block.
 	//
-	// The only valid value is **VPN**. This value specifies that you want to query the CIDR block that is reserved by the system for creating VPN connections.
+	// Set the value to **VPN**, which specifies that you want to query the CIDR block reserved by the system for creating VPN connections in the backend.
 	//
 	// example:
 	//
@@ -88,9 +88,9 @@ type ListTransitRouterCidrAllocationRequest struct {
 	DedicatedOwnerId *string `json:"DedicatedOwnerId,omitempty" xml:"DedicatedOwnerId,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: performs a dry run. The system checks the required parameters, request format, and service limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the request fails the dry run, the corresponding error is returned. If the request passes the dry run, the error code `DryRunOperation` is returned.
 	//
-	// - **false*	- (default): sends a normal request. After the request passes the check, the system queries the allocation details of the CIDR block.
+	// - **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, the transit router CIDR block allocation details are queried.
 	//
 	// example:
 	//
@@ -98,11 +98,11 @@ type ListTransitRouterCidrAllocationRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The number of entries per page.
 	//
-	// - If you do not specify this parameter, the query is not paginated.
+	// - If you do not specify a value for **MaxResults**, it indicates that you do not need to query results by page. The value of **MaxResults*	- in the response indicates the total number of entries.
 	//
-	// - If you specify this parameter, the query is paginated. Valid values: **1*	- to **100**. The recommended value is **20**.
+	// - If you specify a value for **MaxResults**, it indicates that you need to query results by page. Valid values: **1*	- to **100**. We recommend that you set **MaxResults*	- to **20**.
 	//
-	//   The value of the returned **MaxResults*	- parameter indicates the number of list entries in the current query batch.
+	//   The value of **MaxResults*	- in the response indicates the number of entries on the current page.
 	//
 	// example:
 	//
@@ -110,9 +110,9 @@ type ListTransitRouterCidrAllocationRequest struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// - You do not need to specify this parameter for the first request.
+	// - You do not need to specify this parameter for the first request or if no subsequent request exists.
 	//
-	// - If a next page exists, set the value to the **NextToken*	- value returned from the previous request.
+	// - If a subsequent request exists, set the value to the **NextToken*	- value returned in the previous API call.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type ListTransitRouterCidrAllocationRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the Transit Router instance is deployed.
+	// The region ID of the transit router instance.
 	//
 	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
 	//
@@ -132,15 +132,15 @@ type ListTransitRouterCidrAllocationRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the CIDR block of the transit router.
+	// The ID of the transit router CIDR block.
 	//
-	// You can call the [ListTransitRouterCidr](https://help.aliyun.com/document_detail/462772.html) operation to query the IDs of the CIDR blocks of the transit router.
+	// You can call the [ListTransitRouterCidr](https://help.aliyun.com/document_detail/462772.html) operation to query the transit router CIDR block ID.
 	//
 	// example:
 	//
 	// cidr-0zv0q9crqpntzz****
 	TransitRouterCidrId *string `json:"TransitRouterCidrId,omitempty" xml:"TransitRouterCidrId,omitempty"`
-	// The ID of the Transit Router instance.
+	// The forward router instance ID.
 	//
 	// This parameter is required.
 	//

@@ -14,7 +14,7 @@ type iAddTrafficMatchRuleToTrafficMarkingPolicyResponseBody interface {
 }
 
 type AddTrafficMatchRuleToTrafficMarkingPolicyResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

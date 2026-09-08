@@ -52,17 +52,17 @@ type iListTransitRouterRouteEntriesRequest interface {
 }
 
 type ListTransitRouterRouteEntriesRequest struct {
-	// The number of entries per page. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries per page when entries are returned in pages. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The token that determines the start point of the query. Valid values:
 	//
-	// - You do not need to specify this parameter for the first request.
+	// - You do not need to specify this parameter for the first query or if no subsequent query is to be sent.
 	//
-	// - You must specify the token that is obtained from the previous query as the value of **NextToken**.
+	// - If a subsequent query is to be sent, set the value to the **NextToken*	- value returned by the previous API call.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListTransitRouterRouteEntriesRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The prefix list ID.
+	// The ID of the prefix list.
 	//
 	// example:
 	//
@@ -78,49 +78,49 @@ type ListTransitRouterRouteEntriesRequest struct {
 	PrefixListId         *string `json:"PrefixListId,omitempty" xml:"PrefixListId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The filter conditions.
+	// The filter conditions for route entry CIDR blocks.
 	RouteFilter []*ListTransitRouterRouteEntriesRequestRouteFilter `json:"RouteFilter,omitempty" xml:"RouteFilter,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// The destination CIDR block of the route. **This parameter is to be deprecated. We recommend that you use the RouteFilter parameter**.
+	// The destination CIDR block of the route entry (**This parameter will be deprecated. Use the RouteFilter parameter instead**).
 	//
 	// example:
 	//
 	// 192.168.0.0/24
 	TransitRouterRouteEntryDestinationCidrBlock *string `json:"TransitRouterRouteEntryDestinationCidrBlock,omitempty" xml:"TransitRouterRouteEntryDestinationCidrBlock,omitempty"`
-	// The route ID.
+	// The IDs of the route entries.
 	//
 	// example:
 	//
 	// rte-oklkgwmj97z6dn****
 	TransitRouterRouteEntryIds []*string `json:"TransitRouterRouteEntryIds,omitempty" xml:"TransitRouterRouteEntryIds,omitempty" type:"Repeated"`
-	// The route name.
+	// The names of the route entries.
 	//
 	// example:
 	//
 	// testname
 	TransitRouterRouteEntryNames []*string `json:"TransitRouterRouteEntryNames,omitempty" xml:"TransitRouterRouteEntryNames,omitempty" type:"Repeated"`
-	// The ID of the network instance connection that you want to specify as the next hop.
+	// The ID of the network instance connection associated with the next hop of the route entry.
 	//
 	// example:
 	//
 	// tr-attach-nls9fzkfat8934****
 	TransitRouterRouteEntryNextHopId *string `json:"TransitRouterRouteEntryNextHopId,omitempty" xml:"TransitRouterRouteEntryNextHopId,omitempty"`
-	// The next hop ID.
+	// The instance ID of the next hop of the route entry.
 	//
 	// example:
 	//
 	// vpc-m5ent6du8deaq5*****
 	TransitRouterRouteEntryNextHopResourceId *string `json:"TransitRouterRouteEntryNextHopResourceId,omitempty" xml:"TransitRouterRouteEntryNextHopResourceId,omitempty"`
-	// The next hop type. Valid values:
+	// The type of the next hop instance of the route entry. Valid values:
 	//
-	// - **VPC**
+	// - **VPC**: Virtual Private Cloud (VPC) instance.
 	//
-	// - **VBR**
+	// - **VBR**: Virtual Border Router (VBR) instance.
 	//
-	// - **TR**
+	// - **TR**: transit router instance.
 	//
-	// - **VPN**
+	// - **VPN**: IPsec connection instance.
 	//
 	// example:
 	//
@@ -128,65 +128,65 @@ type ListTransitRouterRouteEntriesRequest struct {
 	TransitRouterRouteEntryNextHopResourceType *string `json:"TransitRouterRouteEntryNextHopResourceType,omitempty" xml:"TransitRouterRouteEntryNextHopResourceType,omitempty"`
 	// The next hop type. Valid values:
 	//
-	// - **BlackHole**: routes network traffic to a black hole.
+	// - **BlackHole**: the route entry is a blackhole route.
 	//
-	// - **Attachment**: routes network traffic to a network instance connection.
+	// - **Attachment**: the next hop of the route entry is a network instance connection.
 	//
 	// example:
 	//
 	// Attachment
 	TransitRouterRouteEntryNextHopType *string `json:"TransitRouterRouteEntryNextHopType,omitempty" xml:"TransitRouterRouteEntryNextHopType,omitempty"`
-	// The source instance ID.
+	// The instance ID of the origin of the route entry.
 	//
 	// example:
 	//
 	// vpc-m5ent6du8deaq5*****
 	TransitRouterRouteEntryOriginResourceId *string `json:"TransitRouterRouteEntryOriginResourceId,omitempty" xml:"TransitRouterRouteEntryOriginResourceId,omitempty"`
-	// The source instance type. Valid values:
+	// The type of the origin instance of the route entry. Valid values:
 	//
-	// - **VPC**
+	// - **VPC**: Virtual Private Cloud (VPC) instance.
 	//
-	// - **VBR**
+	// - **VBR**: Virtual Border Router (VBR) instance.
 	//
-	// - **TR**
+	// - **TR**: transit router instance.
 	//
-	// - **VPN**
+	// - **VPN**: IPsec connection instance.
 	//
 	// example:
 	//
 	// VPC
 	TransitRouterRouteEntryOriginResourceType *string `json:"TransitRouterRouteEntryOriginResourceType,omitempty" xml:"TransitRouterRouteEntryOriginResourceType,omitempty"`
-	// The status of the route. Valid values:
+	// The status of the route entry. Valid values:
 	//
-	// - **All**
+	// - **All**: queries route entries in all states.
 	//
-	// - **Active*	- (default)
+	// - **Active (default)**: queries only route entries in the active state.
 	//
-	// - **Rejected**
+	// - **Rejected**: queries only route entries that are rejected due to route conflicts.
 	//
-	// - **Prohibited**
+	// - **Prohibited**: queries only route entries that are prohibited because they match a routing policy.
 	//
-	// - **Standby**
+	// - **Standby**: queries only route entries that serve as standby routes.
 	//
-	// - **Candidate**
+	// - **Candidate**: queries only route entries that serve as candidate routes.
 	//
-	// If you do not specify a value, routes in the active state are queried.
+	// If you do not specify this parameter, only route entries in the active state are queried.
 	//
 	// example:
 	//
 	// Active
 	TransitRouterRouteEntryStatus *string `json:"TransitRouterRouteEntryStatus,omitempty" xml:"TransitRouterRouteEntryStatus,omitempty"`
-	// The route type. Valid values:
+	// The type of the route entry. Valid values:
 	//
-	// - **Propagated**: automatically learned by the route table.
+	// - **Propagated**: generated by automatic learning on the current route table.
 	//
-	// - **Static**: static routes.
+	// - **Static**: generated by static configuration on the current route table.
 	//
 	// example:
 	//
 	// Propagated
 	TransitRouterRouteEntryType *string `json:"TransitRouterRouteEntryType,omitempty" xml:"TransitRouterRouteEntryType,omitempty"`
-	// The ID of the route table of the Enterprise Edition transit router.
+	// The ID of the Enterprise Edition transit router route table.
 	//
 	// This parameter is required.
 	//
@@ -398,23 +398,23 @@ func (s *ListTransitRouterRouteEntriesRequest) Validate() error {
 }
 
 type ListTransitRouterRouteEntriesRequestRouteFilter struct {
-	// The match pattern for filtering CIDR blocks. Valid values:
+	// The filter condition. Valid values:
 	//
-	// - **PrefixExactMatchCidrs**: exact matching.
+	// - **PrefixExactMatchCidrs**: exact match.
 	//
-	// - **LongestPrefixMatchCidrs**: longest prefix matching. You can specify IP addresses and CIDR blocks.
+	// - **LongestPrefixMatchCidrs**: longest prefix match. IP addresses and CIDR blocks are supported.
 	//
-	// - **SubnetOfMatchCidrs**: subnet matching. The subnets of the specified CIDR blocks, including the CIDR block, are matches against the match conditions.
+	// - **SubnetOfMatchCidrs**: subnet match. Matches subnets of the specified CIDR block, including the specified CIDR block itself.
 	//
-	// - **SupernetOfMatchCidrs**: supernet matching. The supernets of the CIDR block, including the CIDR block, are matched against the match conditions.
+	// - **SupernetOfMatchCidrs**: supernet match. Matches supernets of the specified CIDR block, including the specified CIDR block itself.
 	//
-	// By default, the logical operator among filter conditions is **AND**. Information about a route entry is returned only if the route entry matches all filter conditions. Filter conditions must be unique.
+	// Multiple filter conditions have an **AND*	- relationship by default, which means that a route entry must meet all filter conditions to be considered a match. You cannot specify the same filter condition more than once.
 	//
 	// example:
 	//
 	// PrefixExactMatchCidrs
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The filter value.
+	// The list of filter condition values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

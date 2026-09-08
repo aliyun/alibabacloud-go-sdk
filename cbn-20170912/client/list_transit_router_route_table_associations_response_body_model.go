@@ -22,17 +22,17 @@ type iListTransitRouterRouteTableAssociationsResponseBody interface {
 }
 
 type ListTransitRouterRouteTableAssociationsResponseBody struct {
-	// The number of entries returned per page.
+	// The number of entries per page for a paged query.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query.
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
 	//
-	// - If this parameter is not returned, it indicates that no more results are to be returned.
+	// - If **NextToken*	- is empty, no subsequent query exists.
 	//
-	// - If a value is returned for this parameter, the value is the token that is used for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type ListTransitRouterRouteTableAssociationsResponseBody struct {
 	//
 	// F6B1D9AB-176D-4399-801D-8BC576F4EB0D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of forwarding associations.
+	// The list of route association relationships.
 	TransitRouterAssociations []*ListTransitRouterRouteTableAssociationsResponseBodyTransitRouterAssociations `json:"TransitRouterAssociations,omitempty" xml:"TransitRouterAssociations,omitempty" type:"Repeated"`
 }
 
@@ -127,13 +127,13 @@ type ListTransitRouterRouteTableAssociationsResponseBodyTransitRouterAssociation
 	//
 	// vpc-bp1h8vbrbcgohcju5****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the next hop resource.
+	// The type of the next hop resource. Valid values:
 	//
-	// - **VPC**: virtual private cloud (VPC).
+	// - **VPC**: virtual private cloud (VPC) instance.
 	//
-	// - **VBR**: virtual border router (VBR).
+	// - **VBR**: virtual border router (VBR) instance.
 	//
-	// - **TR**: transit router.
+	// - **TR**: transit router instance.
 	//
 	// - **VPN**: VPN connection.
 	//
@@ -141,15 +141,15 @@ type ListTransitRouterRouteTableAssociationsResponseBodyTransitRouterAssociation
 	//
 	// VPC
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The status of the association.
+	// The status of the route association. Valid values:
 	//
-	// - **Active**: The association is active.
+	// - **Active**: active.
 	//
-	// - **Associating**: The association is being created.
+	// - **Associating**: being associated.
 	//
-	// - **Dissociating**: The association is being deleted.
+	// - **Dissociating**: being dissociated.
 	//
-	// - **Deleted**: The association is deleted.
+	// - **Deleted**: deleted.
 	//
 	// example:
 	//
@@ -161,7 +161,7 @@ type ListTransitRouterRouteTableAssociationsResponseBodyTransitRouterAssociation
 	//
 	// tr-attach-nls9fzkfat8934****
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The ID of the route table of the Enterprise Edition transit router.
+	// The ID of the Enterprise Edition transit router route table.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iUnassociateCenBandwidthPackageRequest interface {
 }
 
 type UnassociateCenBandwidthPackageRequest struct {
-	// The ID of the bandwidth plan.
+	// The bandwidth package instance ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type UnassociateCenBandwidthPackageRequest struct {
 	//
 	// cenbwp-4c2zaavbvh5****
 	CenBandwidthPackageId *string `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
-	// The ID of the CEN instance.
+	// The CEN instance ID.
 	//
 	// This parameter is required.
 	//

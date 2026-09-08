@@ -14,7 +14,7 @@ type iModifyCenBandwidthPackageAttributeResponseBody interface {
 }
 
 type ModifyCenBandwidthPackageAttributeResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

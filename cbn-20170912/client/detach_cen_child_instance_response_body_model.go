@@ -14,7 +14,7 @@ type iDetachCenChildInstanceResponseBody interface {
 }
 
 type DetachCenChildInstanceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -22,17 +22,17 @@ type iListTransitRouterMulticastDomainAssociationsResponseBody interface {
 }
 
 type ListTransitRouterMulticastDomainAssociationsResponseBody struct {
-	// The number of entries returned per page.
+	// The number of entries per page for a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. Valid values:
+	// The token that determines the start point of the query. Valid values:
 	//
-	// - If **NextToken*	- is empty, it indicates that no next query is to be sent.
+	// - If **NextToken*	- is empty, no subsequent query is to be sent.
 	//
-	// - If a value is returned for **NextToken**, the value is the token that is used for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -135,7 +135,7 @@ type ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMultic
 	ResourceOwnerId *int64 `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of resource associated with the multicast domain.
 	//
-	// The value is **VPC**.
+	// Set the value to **VPC**.
 	//
 	// example:
 	//
@@ -143,29 +143,29 @@ type ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMultic
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The association status.
 	//
-	// - **Associated**: The resource is associated with the multicast domain.
+	// - **Associated**: associated.
 	//
-	// - **Associating**: The resource is being associated with the multicast domain.
+	// - **Associating**: being associated.
 	//
-	// - **Dissociating**: The resource is being dissociated from the multicast domain.
+	// - **Dissociating**: being dissociated.
 	//
 	// example:
 	//
 	// Dissociating
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the network instance connection.
+	// The network instance connection ID.
 	//
 	// example:
 	//
 	// tr-attach-p90y3ymbbwuvy5****
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
-	// The ID of the multicast domain.
+	// The multicast domain ID.
 	//
 	// example:
 	//
 	// tr-mcast-domain-91wpg6wbhchjeq****
 	TransitRouterMulticastDomainId *string `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//

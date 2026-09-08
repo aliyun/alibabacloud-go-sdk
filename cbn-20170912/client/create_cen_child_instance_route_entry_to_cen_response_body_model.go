@@ -14,7 +14,7 @@ type iCreateCenChildInstanceRouteEntryToCenResponseBody interface {
 }
 
 type CreateCenChildInstanceRouteEntryToCenResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

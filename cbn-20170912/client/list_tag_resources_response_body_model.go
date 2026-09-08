@@ -18,11 +18,11 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The token that is used for the next query. Valid values:
+	// Indicates whether a next query token exists. Valid values:
 	//
-	// - If **NextToken*	- is empty, no next query is to be sent.
+	// - If **NextToken*	- is empty, no next query exists.
 	//
-	// - If a value is returned for **NextToken**, the value is the token that is used for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//

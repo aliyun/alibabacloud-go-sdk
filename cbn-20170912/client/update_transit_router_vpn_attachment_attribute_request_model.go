@@ -34,21 +34,21 @@ type iUpdateTransitRouterVpnAttachmentAttributeRequest interface {
 }
 
 type UpdateTransitRouterVpnAttachmentAttributeRequest struct {
-	// Specifies whether to allow the Enterprise Edition transit router to automatically publish routes to the IPsec-VPN connection. Valid values:
+	// Specifies whether to allow the forward routing instance to automatically publish route entries to the IPsec connection. Valid values:
 	//
-	// - **true**: The Enterprise Edition transit router automatically publishes routes to the IPsec-VPN connection.
+	// - **true**: Allowed.
 	//
-	// - **false**: The Enterprise Edition transit router does not automatically publish routes to the IPsec-VPN connection.
+	// - **false**: Not allowed.
 	//
 	// example:
 	//
 	// true
 	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
-	// A client token that is used to ensure the idempotence of the request.
+	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the request as the **ClientToken**. The **RequestId*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
@@ -56,14 +56,20 @@ type UpdateTransitRouterVpnAttachmentAttributeRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: Performs a dry run to check the request without modifying the attributes of the VPN connection. The system checks the required parameters, request format, and service limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+	// - **true**: performs a dry run without modifying the VPN connection configurations. The system checks the required parameters, request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
 	//
-	// - **false*	- (Default): Sends a normal request. If the request passes the check, the system modifies the attributes of the VPN connection.
+	// - **false*	- (default): performs a dry run and then modifies the VPN connection configurations after the request passes the check.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The payer of the network instance. Valid values:
+	//
+	// - **PayByCenOwner**: The connection fee and data transfer fee of the VPN connection are paid by the account that owns the transit router instance.
+	//
+	// - **PayByResourceOwner**: The connection fee and data transfer fee of the VPN connection are paid by the account that owns the VPN gateway instance.
+	//
 	// example:
 	//
 	// PayByCenOwner
@@ -74,13 +80,13 @@ type UpdateTransitRouterVpnAttachmentAttributeRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The new description of the VPN connection.
 	//
-	// The description can be empty or 1 to 256 characters in length, and cannot start with http\\:// or https\\://.
+	// The description can be empty or 1 to 256 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// desctest
 	TransitRouterAttachmentDescription *string `json:"TransitRouterAttachmentDescription,omitempty" xml:"TransitRouterAttachmentDescription,omitempty"`
-	// The ID of the VPN connection.
+	// The VPN connection ID.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +96,7 @@ type UpdateTransitRouterVpnAttachmentAttributeRequest struct {
 	TransitRouterAttachmentId *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
 	// The new name of the VPN connection.
 	//
-	// The name can be empty or 1 to 128 characters in length, and cannot start with http\\:// or https\\://.
+	// The name can be empty or 1 to 128 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//

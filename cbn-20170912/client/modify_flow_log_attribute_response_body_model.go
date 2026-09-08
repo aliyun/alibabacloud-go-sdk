@@ -22,11 +22,11 @@ type ModifyFlowLogAttributeResponseBody struct {
 	//
 	// 9A411874-2EC8-4633-9D30-9012DCE89DD1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the call is successful.
 	//
-	// - **true**
+	// - **true**: successful.
 	//
-	// - **false**
+	// - **false**: failed.
 	//
 	// example:
 	//

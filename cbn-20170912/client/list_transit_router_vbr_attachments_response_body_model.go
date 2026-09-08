@@ -28,11 +28,11 @@ type ListTransitRouterVbrAttachmentsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query.
+	// The token that determines the start point of the query. Valid values:
 	//
-	// - If this parameter is empty, no more data is returned.
+	// - If this is the first query or no subsequent query is to be sent, you do not need to specify this parameter.
 	//
-	// - If a value is returned for this parameter, it is the token that you can use to retrieve the next page of results.
+	// - If a subsequent query is to be sent, set the value to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListTransitRouterVbrAttachmentsResponseBody struct {
 	//
 	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of VBR connections.
+	// The list of VBR connections.
 	TransitRouterAttachments []*ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments `json:"TransitRouterAttachments,omitempty" xml:"TransitRouterAttachments,omitempty" type:"Repeated"`
 }
 
@@ -121,17 +121,17 @@ func (s *ListTransitRouterVbrAttachmentsResponseBody) Validate() error {
 }
 
 type ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments struct {
-	// Indicates whether the Enterprise Edition transit router automatically advertises routes to the VBR.
+	// Indicates whether the Enterprise Edition forward routing automatically publishes route entries to the VBR instance. Valid values:
 	//
-	// - **false**: no.
+	// - **false**: The Enterprise Edition forward routing does not automatically publish route entries to the VBR instance.
 	//
-	// - **true**: yes.
+	// - **true**: The Enterprise Edition forward routing automatically publishes route entries to the VBR instance.
 	//
 	// example:
 	//
 	// false
 	AutoPublishRouteEnabled *bool `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
-	// The ID of the CEN instance.
+	// The CEN instance ID.
 	//
 	// example:
 	//
@@ -139,38 +139,39 @@ type ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments struct 
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	// The time when the VBR connection was created.
 	//
-	// The time is displayed in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
+	// The time is displayed in the ISO 8601 standard in UTC. Format: YYYY-MM-DDThh:mmZ.
 	//
 	// example:
 	//
 	// 2021-06-15T15:20Z
-	CreationTime   *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The cloud service that manages the VBR connection. This parameter is returned only when the VBR connection is managed by a cloud service. The standard code of the cloud service is returned. If the VBR connection is managed by you, this parameter is not returned.
 	ManagedService *string `json:"ManagedService,omitempty" xml:"ManagedService,omitempty"`
-	// The payer for the network instance. Valid values:
+	// The payer of the network instance. Valid values:
 	//
-	// - **PayByCenOwner**: The connection fee and data transfer fee for the VBR are paid by the account that owns the transit router.
+	// - **PayByCenOwner**: The connection fee and data processing fee of the VBR instance are paid by the account to which the transit router instance belongs.
 	//
-	// - **PayByResourceOwner**: The connection fee and data transfer fee for the VBR are paid by the account that owns the VBR.
+	// - **PayByResourceOwner**: The connection fee and data processing fee of the VBR instance are paid by the account to which the VBR instance belongs.
 	//
 	// example:
 	//
 	// PayByCenOwner
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The resource type of the connection.
+	// The type of resource to which the connection belongs.
 	//
-	// The value is set to **VBR**, which indicates a VBR instance.
+	// The value is **VBR**, which indicates a virtual border router instance.
 	//
 	// example:
 	//
 	// VBR
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The status of the VBR connection.
+	// The status of the VBR connection. Valid values:
 	//
-	// - **Attached**: The connection is established.
+	// - **Attached**: The VBR connection is attached.
 	//
-	// - **Attaching**: The connection is being established.
+	// - **Attaching**: The VBR connection is being attached.
 	//
-	// - **Detaching**: The connection is being removed.
+	// - **Detaching**: The VBR connection is being detached.
 	//
 	// example:
 	//
@@ -196,25 +197,25 @@ type ListTransitRouterVbrAttachmentsResponseBodyTransitRouterAttachments struct 
 	//
 	// testa
 	TransitRouterAttachmentName *string `json:"TransitRouterAttachmentName,omitempty" xml:"TransitRouterAttachmentName,omitempty"`
-	// The ID of the Enterprise Edition transit router.
+	// The Enterprise Edition forward routing instance ID.
 	//
 	// example:
 	//
 	// tr-bp1su1ytdxtataupl****
 	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
-	// The VBR ID.
+	// The VBR instance ID.
 	//
 	// example:
 	//
 	// vbr-bp1svadp4lq38janc****
 	VbrId *string `json:"VbrId,omitempty" xml:"VbrId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the VBR belongs.
+	// The ID of the account to which the VBR instance belongs.
 	//
 	// example:
 	//
 	// 1688111111111111
 	VbrOwnerId *int64 `json:"VbrOwnerId,omitempty" xml:"VbrOwnerId,omitempty"`
-	// The ID of the region where the VBR is deployed.
+	// The region ID of the VBR instance.
 	//
 	// example:
 	//

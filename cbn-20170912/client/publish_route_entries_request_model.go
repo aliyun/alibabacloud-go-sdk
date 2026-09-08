@@ -28,7 +28,7 @@ type iPublishRouteEntriesRequest interface {
 }
 
 type PublishRouteEntriesRequest struct {
-	// The ID of the CEN instance.
+	// The CEN instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type PublishRouteEntriesRequest struct {
 	//
 	// cen-7qthudw0ll6jmc****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the network instance.
+	// The network instance ID.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type PublishRouteEntriesRequest struct {
 	//
 	// vpc-rj9gt5nll27onu****
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	// The ID of the region where the network instance is deployed.
+	// The region ID of the network instance.
 	//
 	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
 	//
@@ -54,7 +54,7 @@ type PublishRouteEntriesRequest struct {
 	//
 	// us-west-1
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	// The ID of the route table of the network instance.
+	// The route table ID of the network instance.
 	//
 	// This parameter is required.
 	//
@@ -66,15 +66,13 @@ type PublishRouteEntriesRequest struct {
 	//
 	// - **VPC**: virtual private cloud.
 	//
-	// - **VBR**: virtual border router.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// VPC
 	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	// The destination CIDR block of the route that you want to advertise.
+	// The destination CIDR block of the route entry to be published.
 	//
 	// This parameter is required.
 	//

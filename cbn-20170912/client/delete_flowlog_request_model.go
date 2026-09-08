@@ -28,21 +28,23 @@ type iDeleteFlowlogRequest interface {
 }
 
 type DeleteFlowlogRequest struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// The Cloud Enterprise Network (CEN) instance ID.
 	//
 	// example:
 	//
 	// cen-7qthudw0ll6jmc****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The unique, one-use client token that is used to ensure the idempotence of the request. It can contain only ASCII characters.
+	// The client token that is used to ensure the idempotence of the request.
 	//
-	// > If you leave this parameter empty, the system automatically uses the **request ID*	- as the **client token**.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may differ for each API request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the flow log.
+	// The flow log ID.
 	//
 	// This parameter is required.
 	//
@@ -52,9 +54,9 @@ type DeleteFlowlogRequest struct {
 	FlowLogId    *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the flow log is deployed.
+	// The region ID of the flow log.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

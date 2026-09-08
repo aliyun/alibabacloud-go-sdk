@@ -29,7 +29,7 @@ type DescribeCenRegionDomainRouteEntriesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page during paging.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeCenRegionDomainRouteEntriesResponseBody struct {
 	//
 	// 004E99FB-E996-5777-888E-BA1D8F215407
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//

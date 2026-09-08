@@ -22,17 +22,17 @@ type iListTransitRouterMulticastDomainVSwitchesResponseBody interface {
 }
 
 type ListTransitRouterMulticastDomainVSwitchesResponseBody struct {
-	// The number of entries returned per page.
+	// The number of entries per page for a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. Valid values:
+	// The pagination token. Valid values:
 	//
-	// - If **NextToken*	- is empty, there is no next query.
+	// - If **NextToken*	- is empty, no subsequent query exists.
 	//
-	// - If **NextToken*	- has a return value, the value is the token for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListTransitRouterMulticastDomainVSwitchesResponseBody struct {
 	//
 	// B0E7E43C-979A-5130-AA0D-B3ADA69E0827
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries in the list.
+	// The total number of entries returned.
 	//
 	// example:
 	//

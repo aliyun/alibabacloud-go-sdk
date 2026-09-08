@@ -16,17 +16,17 @@ type iCheckTransitRouterServiceResponseBody interface {
 }
 
 type CheckTransitRouterServiceResponseBody struct {
-	// Indicates whether the transit router feature is activated.
+	// Indicates whether the transit router service is activated for the current Alibaba Cloud account.
 	//
-	// - **true**: activated
+	// - **true**: The service is activated.
 	//
-	// - If this value is not returned, the system prompts that the current account does not have the transit router feature activated.
+	// - If this parameter is not returned, the transit router service is not activated for the current Alibaba Cloud account, and the system returns a corresponding message.
 	//
 	// example:
 	//
 	// true
 	Enabled *string `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

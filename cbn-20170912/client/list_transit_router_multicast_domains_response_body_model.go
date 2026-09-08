@@ -28,11 +28,11 @@ type ListTransitRouterMulticastDomainsResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query.
+	// The token that determines the start point of the next query. Valid values:
 	//
-	// - If the value of **NextToken*	- is empty, it indicates that no next query is to be sent.
+	// - If **NextToken*	- is empty, no next query exists.
 	//
-	// - If a value is returned for **NextToken**, the value is the token that is used for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token that is used for the next query.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListTransitRouterMulticastDomainsResponseBody struct {
 	//
 	// 8A0F93D1-FD6C-56FC-B6D2-668FC92D12D2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -121,17 +121,17 @@ func (s *ListTransitRouterMulticastDomainsResponseBody) Validate() error {
 }
 
 type ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains struct {
-	// The ID of the CEN instance.
+	// The Cloud Enterprise Network (CEN) instance ID.
 	//
 	// example:
 	//
 	// cen-h19xdb0qy2b3ir****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The options of the multicast domain.
+	// The feature options of the multicast domain.
 	Options *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
-	// The ID of the region where the transit router is deployed.
+	// The region ID of the transit router.
 	//
-	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain the region ID.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
 	//
 	// example:
 	//
@@ -139,7 +139,11 @@ type ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains 
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The status of the multicast domain.
 	//
-	// The value is **Active**, which indicates that the multicast domain is available.
+	// Valid values:
+	//
+	// - ``Active``: The multicast domain is available.
+	//
+	// - ``Modifying``: The multicast domain is being modified.
 	//
 	// example:
 	//
@@ -147,7 +151,7 @@ type ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains 
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The list of tags.
 	Tags []*ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the transit router.
+	// The transit router instance ID.
 	//
 	// example:
 	//
@@ -281,12 +285,14 @@ func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDoma
 }
 
 type ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomainsOptions struct {
-	// Indicates whether IGMPv2 is enabled for the multicast domain.
+	// Indicates whether IGMP is enabled for the multicast domain.
 	//
 	// example:
 	//
 	// enable
 	Igmpv2Support *string `json:"Igmpv2Support,omitempty" xml:"Igmpv2Support,omitempty"`
+	// Indicates whether strict multicast source control is enabled for the multicast domain.
+	//
 	// example:
 	//
 	// enable

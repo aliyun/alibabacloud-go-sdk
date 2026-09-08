@@ -36,7 +36,7 @@ type iListGrantVSwitchEnisRequest interface {
 }
 
 type ListGrantVSwitchEnisRequest struct {
-	// The ID of the CEN instance to which the VPC is connected.
+	// The ID of the CEN instance to which the VPC-connected instance is connected.
 	//
 	// This parameter is required.
 	//
@@ -44,31 +44,31 @@ type ListGrantVSwitchEnisRequest struct {
 	//
 	// cen-a7syd349kne38g****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The maximum number of entries to return on each page. Valid values: 10 to 500.
+	// The maximum number of entries per page for a paged query. Valid values: 10 to 500.
 	//
 	// Default value:
 	//
-	// - If you do not specify this parameter, the default value is 20.
+	// - If you do not set this parameter, the default value is 20.
 	//
-	// - If you specify a value greater than 500, the default value is 500.
+	// - If the value you set is greater than 500, the default value is 500.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The ID of the ENI.
+	// The IDs of network interface controllers (NICs).
 	NetworkInterfaceId []*string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty" type:"Repeated"`
-	// The name of the ENI.
+	// The name of the elastic network interfaces (ENIs). You can use this parameter to filter network interface controllers (NICs) by name.
 	//
 	// example:
 	//
 	// test-eni-name
 	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
-	// The token that is used for the next query. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// - If this is your first query, you do not need to specify this parameter.
+	// - If this is the first query or no next query exists, leave this parameter empty.
 	//
-	// - If a next query is to be sent, set the value to the NextToken value that was returned from the last call.
+	// - If a next query exists, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type ListGrantVSwitchEnisRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The primary private IPv4 address of the ENI.
+	// The primary private IP IPv4 address of the elastic network interfaces (ENIs). You can use this parameter to filter network interface controllers (NICs) by primary private IP address.
 	//
 	// example:
 	//
@@ -84,9 +84,9 @@ type ListGrantVSwitchEnisRequest struct {
 	PrimaryIpAddress     *string `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of a vSwitch in the VPC.
+	// The ID of a vSwitch in the VPC-connected instance.
 	//
-	// You can query information about the ENIs in only one vSwitch at a time.
+	// You can query network interface controller (NIC) information for only one vSwitch at a time.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,7 @@ type ListGrantVSwitchEnisRequest struct {
 	//
 	// vsw-p0w9s2ig1jnwgrbzl****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC.
+	// The ID of the VPC-connected instance.
 	//
 	// This parameter is required.
 	//

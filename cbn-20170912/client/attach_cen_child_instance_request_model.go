@@ -38,7 +38,7 @@ type AttachCenChildInstanceRequest struct {
 	//
 	// cen-7qthudw0ll6jmc****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the network instance that you want to attach to the CEN instance.
+	// The ID of the network instance to attach.
 	//
 	// This parameter is required.
 	//
@@ -46,17 +46,17 @@ type AttachCenChildInstanceRequest struct {
 	//
 	// vpc-bp18sth14qii3pnvx****
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the network instance belongs.
+	// The Alibaba Cloud account ID to which the network instance belongs.
 	//
-	// > If the network instance and the CEN instance belong to different Alibaba Cloud accounts, this parameter is required.
+	// >This parameter is required if you want to attach a cross-account network instance.
 	//
 	// example:
 	//
 	// 1688000000000000
 	ChildInstanceOwnerId *int64 `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
-	// The ID of the region where the network instance is deployed.
+	// The region of the network instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -66,11 +66,11 @@ type AttachCenChildInstanceRequest struct {
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// - **VPC**: VPC
+	// - **VPC**: virtual private cloud.
 	//
-	// - **VBR**: VBR
+	// - **VBR**: border router.
 	//
-	// - **CCN**: CCN instance
+	// - **CCN**: Cloud Connect Network.
 	//
 	// This parameter is required.
 	//

@@ -30,11 +30,11 @@ type CreateFlowlogResponseBody struct {
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B457
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the API call is successful.
 	//
-	// - **true**: The call is successful.
+	// - **true**: successful.
 	//
-	// - **false**: The call failed.
+	// - **false**: failed.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type iWithdrawPublishedRouteEntriesRequest interface {
 }
 
 type WithdrawPublishedRouteEntriesRequest struct {
-	// The ID of the CEN instance.
+	// The CEN instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type WithdrawPublishedRouteEntriesRequest struct {
 	//
 	// cen-sxjfjkjfkjfiein****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	// The ID of the network instance.
+	// The network instance ID.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type WithdrawPublishedRouteEntriesRequest struct {
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
 	// The region ID of the network instance.
 	//
-	// Call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain the region ID.
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type WithdrawPublishedRouteEntriesRequest struct {
 	//
 	// cn-hangzhou
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	// The route table ID of the network instance.
+	// The ID of the route table of the network instance.
 	//
 	// This parameter is required.
 	//
@@ -66,15 +66,13 @@ type WithdrawPublishedRouteEntriesRequest struct {
 	//
 	// - **VPC**: virtual private cloud.
 	//
-	// - **VBR**: virtual border router.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// VPC
 	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	// The destination CIDR block of the route entry that you want to withdraw.
+	// The destination CIDR block of the route entry to withdraw.
 	//
 	// This parameter is required.
 	//

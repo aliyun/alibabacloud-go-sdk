@@ -22,17 +22,17 @@ type iListTrafficMarkingPoliciesResponseBody interface {
 }
 
 type ListTrafficMarkingPoliciesResponseBody struct {
-	// The number of entries returned per page.
+	// The number of entries per page for a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query.
+	// The pagination token.
 	//
-	// - If **NextToken*	- is empty, no next query is to be sent.
+	// - If **NextToken*	- is empty, no subsequent query exists.
 	//
-	// - If a value is returned for **NextToken**, the value is the token that is used for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListTrafficMarkingPoliciesResponseBody struct {
 	//
 	// 699989E4-64A0-5F78-8B93-CDB32D98971F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of entries returned.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -121,7 +121,7 @@ func (s *ListTrafficMarkingPoliciesResponseBody) Validate() error {
 }
 
 type ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies struct {
-	// The Differentiated Services Code Point (DSCP) value of the traffic marking policy.
+	// The DSCP value of the traffic marking policy.
 	//
 	// example:
 	//
@@ -157,7 +157,7 @@ type ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies struct {
 	//
 	// - **Creating**: The policy is being created.
 	//
-	// - **Active**: The policy is available.
+	// - **Active**: The policy is active.
 	//
 	// - **Modifying**: The policy is being modified.
 	//
@@ -169,7 +169,7 @@ type ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies struct {
 	TrafficMarkingPolicyStatus *string `json:"TrafficMarkingPolicyStatus,omitempty" xml:"TrafficMarkingPolicyStatus,omitempty"`
 	// The list of traffic classification rules.
 	TrafficMatchRules []*ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules `json:"TrafficMatchRules,omitempty" xml:"TrafficMatchRules,omitempty" type:"Repeated"`
-	// The ID of the TransitRouter instance.
+	// The ID of the transit router instance.
 	//
 	// example:
 	//
@@ -271,13 +271,13 @@ func (s *ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPolicies) Validate(
 }
 
 type ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRules struct {
-	// The address type. Valid values are IPv4, IPv6, or empty.
+	// The address type. Valid values: IPv4, IPv6, or empty.
 	//
 	// example:
 	//
 	// IPv4
 	AddressFamily *string `json:"AddressFamily,omitempty" xml:"AddressFamily,omitempty"`
-	// The destination CIDR block of the traffic message. IPv4 and IPv6 addresses are supported.
+	// The destination CIDR block of the traffic packet. IPv4 and IPv6 addresses are supported.
 	//
 	// example:
 	//
@@ -285,23 +285,23 @@ type ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRul
 	DstCidr *string `json:"DstCidr,omitempty" xml:"DstCidr,omitempty"`
 	// The destination port range to be matched by the traffic classification rule.
 	DstPortRange []*int32 `json:"DstPortRange,omitempty" xml:"DstPortRange,omitempty" type:"Repeated"`
-	// The DSCP value of the traffic message.
+	// The DSCP value of the traffic packet.
 	//
-	// > If **MatchDscp*	- returns -1, it indicates that all DSCP values are matched.
+	// >If the **MatchDscp*	- value is -1, any DSCP value is matched.
 	//
 	// example:
 	//
 	// 6
 	MatchDscp *int32 `json:"MatchDscp,omitempty" xml:"MatchDscp,omitempty"`
-	// The protocol type of the traffic message.
+	// The protocol type of the traffic packet.
 	//
-	// > A traffic marking policy supports matching multiple protocol types. For more information about the protocol types, see the relevant documentation.
+	// > The traffic marking policy supports matching multiple protocol types. For details about each protocol type, refer to the relevant documentation.
 	//
 	// example:
 	//
 	// HTTP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The source CIDR block of the traffic message. IPv6 and IPv4 addresses are supported.
+	// The source CIDR block of the traffic packet. IPv4 and IPv6 addresses are supported.
 	//
 	// example:
 	//
@@ -331,7 +331,7 @@ type ListTrafficMarkingPoliciesResponseBodyTrafficMarkingPoliciesTrafficMatchRul
 	//
 	// - **Creating**: The rule is being created.
 	//
-	// - **Active**: The rule is available.
+	// - **Active**: The rule is active.
 	//
 	// - **Deleting**: The rule is being deleted.
 	//

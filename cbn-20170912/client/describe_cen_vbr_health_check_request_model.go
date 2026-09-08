@@ -32,7 +32,7 @@ type iDescribeCenVbrHealthCheckRequest interface {
 }
 
 type DescribeCenVbrHealthCheckRequest struct {
-	// The ID of the Cloud Enterprise Network (CEN) instance.
+	// The Cloud Enterprise Network (CEN) instance ID.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeCenVbrHealthCheckRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: **1*	- to **50**. Default value: **10**.
+	// The number of entries per page for paging. Valid values: **1*	- to **50**. Default value: **10**.
 	//
 	// example:
 	//
@@ -54,21 +54,21 @@ type DescribeCenVbrHealthCheckRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the VBR.
+	// The VBR instance ID.
 	//
 	// example:
 	//
 	// vbr-bp1kznorjeembsuhl****
 	VbrInstanceId *string `json:"VbrInstanceId,omitempty" xml:"VbrInstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the VBR.
+	// The ID of the Alibaba Cloud account that owns the VBR instance.
 	//
 	// example:
 	//
 	// 1250123456123456
 	VbrInstanceOwnerId *int64 `json:"VbrInstanceOwnerId,omitempty" xml:"VbrInstanceOwnerId,omitempty"`
-	// The ID of the region where the Virtual Border Router (VBR) is deployed.
+	// The region ID of the VBR instance.
 	//
-	// For more information, see [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html).
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to obtain region IDs.
 	//
 	// This parameter is required.
 	//

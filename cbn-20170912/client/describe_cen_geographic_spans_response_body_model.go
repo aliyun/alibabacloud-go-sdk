@@ -23,13 +23,13 @@ type iDescribeCenGeographicSpansResponseBody interface {
 
 type DescribeCenGeographicSpansResponseBody struct {
 	GeographicSpanModels *DescribeCenGeographicSpansResponseBodyGeographicSpanModels `json:"GeographicSpanModels,omitempty" xml:"GeographicSpanModels,omitempty" type:"Struct"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//

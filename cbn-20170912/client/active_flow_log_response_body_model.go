@@ -16,7 +16,7 @@ type iActiveFlowLogResponseBody interface {
 }
 
 type ActiveFlowLogResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -24,9 +24,9 @@ type ActiveFlowLogResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful.
 	//
-	// - **true**: yes
+	// - **true**: successful.
 	//
-	// - **false**: no
+	// - **false**: failed.
 	//
 	// example:
 	//

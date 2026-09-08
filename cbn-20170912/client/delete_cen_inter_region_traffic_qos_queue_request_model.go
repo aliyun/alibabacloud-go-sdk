@@ -28,9 +28,9 @@ type iDeleteCenInterRegionTrafficQosQueueRequest interface {
 type DeleteCenInterRegionTrafficQosQueueRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
 	//
-	// > If you do not set this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- for each API request may be different.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
@@ -38,9 +38,9 @@ type DeleteCenInterRegionTrafficQosQueueRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// - **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - **true**: Sends a check request without deleting the queue from the traffic scheduling policy. The system checks the required parameters, request format, and business limits. If the check fails, the corresponding error is returned. If the check passes, the error code `DryRunOperation` is returned.
 	//
-	// - **false*	- (default): performs a dry run and sends the request.
+	// - **false*	- (default): Sends a normal request. After the check passes, the queue is directly deleted from the traffic scheduling policy.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DeleteCenInterRegionTrafficQosQueueRequest struct {
 	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the queue.
+	// The queue ID.
 	//
 	// This parameter is required.
 	//

@@ -26,9 +26,9 @@ type iTempUpgradeCenBandwidthPackageSpecRequest interface {
 }
 
 type TempUpgradeCenBandwidthPackageSpecRequest struct {
-	// The maximum temporary bandwidth. Unit: Mbps.
+	// The temporarily increased peak bandwidth. Unit: Mbit/s.
 	//
-	// Valid values: **2 to 10,000**
+	// Valid values: **2*	- to **10000**.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type TempUpgradeCenBandwidthPackageSpecRequest struct {
 	//
 	// 20
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// Bandwidth package ID.
+	// The instance ID of the bandwidth plan.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,9 @@ type TempUpgradeCenBandwidthPackageSpecRequest struct {
 	//
 	// cenbwp-y08yosedeqlpua****
 	CenBandwidthPackageId *string `json:"CenBandwidthPackageId,omitempty" xml:"CenBandwidthPackageId,omitempty"`
-	// The expiration time of the temporary upgrade. It follows the ISO8601 standard and is displayed in UTC time, `YYYY-MM-DDThh:mm:ssZ`.
+	// The expiration time of the temporary bandwidth upgrade.
+	//
+	// The time is expressed in the ISO 8601 standard in UTC. Format: YYYY-MM-DDThh:mm:ssZ.
 	//
 	// This parameter is required.
 	//

@@ -14,7 +14,7 @@ type iUpdateTransitRouterRouteEntryResponseBody interface {
 }
 
 type UpdateTransitRouterRouteEntryResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
