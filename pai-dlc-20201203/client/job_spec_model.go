@@ -57,17 +57,19 @@ type iJobSpec interface {
 	GetType() *string
 	SetUseSpotInstance(v bool) *JobSpec
 	GetUseSpotInstance() *bool
+	SetUserCommand(v string) *JobSpec
+	GetUserCommand() *string
 }
 
 type JobSpec struct {
-	// The assigned scheduling node configuration.
+	// The node scheduling configuration.
 	AssignNodeSpec *AssignNodeSpec `json:"AssignNodeSpec,omitempty" xml:"AssignNodeSpec,omitempty"`
 	// The auto scaling configuration.
 	AutoScalingSpec *AutoScalingSpec `json:"AutoScalingSpec,omitempty" xml:"AutoScalingSpec,omitempty"`
-	// Specifies whether this role is considered when determining job success. This parameter takes effect only when the success policy is set to Partial.
+	// Specifies whether to consider this role when determining job success. This parameter takes effect only when the success policy is set to Partial.
 	ConsiderInSuccessPolicy *bool   `json:"ConsiderInSuccessPolicy,omitempty" xml:"ConsiderInSuccessPolicy,omitempty"`
 	Driver                  *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
-	// The hardware specifications of the worker. Visit [PAI-DLC billing](https://help.aliyun.com/document_detail/171758.html) for the detailed list of specifications.	Notice: Prices vary depending on the specifications.
+	// The hardware specification of the worker. Visit [PAI-DLC billing](https://help.aliyun.com/document_detail/171758.html) for the detailed specification list.	Notice: Prices vary depending on the specification.
 	//
 	// example:
 	//
@@ -77,7 +79,7 @@ type JobSpec struct {
 	// The extra pod configuration.
 	ExtraPodSpec              *ExtraPodSpec              `json:"ExtraPodSpec,omitempty" xml:"ExtraPodSpec,omitempty"`
 	HyperNodeSchedulingConfig *HyperNodeSchedulingConfig `json:"HyperNodeSchedulingConfig,omitempty" xml:"HyperNodeSchedulingConfig,omitempty"`
-	// The runtime image address for this type of worker. Call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain images provided by the PAI platform. You can also specify a third-party public image.
+	// The runtime image address for this type of worker. Call [ListImages](https://help.aliyun.com/document_detail/449118.html) to retrieve images provided by the PAI platform. You can also specify a third-party public image.
 	//
 	// example:
 	//
@@ -87,9 +89,9 @@ type JobSpec struct {
 	ImageConfig *ImageConfig `json:"ImageConfig,omitempty" xml:"ImageConfig,omitempty"`
 	// Deprecated
 	//
-	// Deprecated due to a spelling error.
+	// **[Deprecated]*	- This field is deprecated due to a spelling error.
 	IsCheif *bool `json:"IsCheif,omitempty" xml:"IsCheif,omitempty"`
-	// Indicates whether this role is the Chief role. Only one Chief role is allowed.
+	// Specifies whether the role is the Chief role. Only one Chief role is allowed.
 	IsChief *bool `json:"IsChief,omitempty" xml:"IsChief,omitempty"`
 	// The list of local mount configurations.
 	LocalMountSpecs []*LocalMountSpec `json:"LocalMountSpecs,omitempty" xml:"LocalMountSpecs,omitempty" type:"Repeated"`
@@ -116,7 +118,7 @@ type JobSpec struct {
 	// The dependencies required before this role starts.
 	StartupDependencies []*StartupDependency `json:"StartupDependencies,omitempty" xml:"StartupDependencies,omitempty" type:"Repeated"`
 	SystemDisk          *SystemDisk          `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
-	// Type is closely related to Job Type. Different job types support different worker types.
+	// The type, which is closely related to the job type. Different job types support different worker types.
 	//
 	// - **TFJob**: Supports Chief, PS, Worker, Evaluator, and GraphLearn.
 	//
@@ -130,7 +132,7 @@ type JobSpec struct {
 	//
 	// - **RayJob**: Supports Head, Worker, and Worker[-xxx].
 	//
-	// Master is optional in PyTorchJob, XGBoostJob, OneFlowJob, and ElasticBatch. If Master is not specified, the system automatically designates the first Worker node as Master.
+	// Master is optional in PyTorchJob, XGBoostJob, OneFlowJob, and ElasticBatch. If not specified, the system automatically designates the first Worker node as Master.
 	//
 	// example:
 	//
@@ -144,6 +146,12 @@ type JobSpec struct {
 	//
 	// false
 	UseSpotInstance *bool `json:"UseSpotInstance,omitempty" xml:"UseSpotInstance,omitempty"`
+	// The role-level startup command.
+	//
+	// example:
+	//
+	// python train.py
+	UserCommand *string `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
 }
 
 func (s JobSpec) String() string {
@@ -248,6 +256,10 @@ func (s *JobSpec) GetType() *string {
 
 func (s *JobSpec) GetUseSpotInstance() *bool {
 	return s.UseSpotInstance
+}
+
+func (s *JobSpec) GetUserCommand() *string {
+	return s.UserCommand
 }
 
 func (s *JobSpec) SetAssignNodeSpec(v *AssignNodeSpec) *JobSpec {
@@ -367,6 +379,11 @@ func (s *JobSpec) SetType(v string) *JobSpec {
 
 func (s *JobSpec) SetUseSpotInstance(v bool) *JobSpec {
 	s.UseSpotInstance = &v
+	return s
+}
+
+func (s *JobSpec) SetUserCommand(v string) *JobSpec {
+	s.UserCommand = &v
 	return s
 }
 

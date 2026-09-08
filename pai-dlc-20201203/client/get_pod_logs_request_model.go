@@ -9,6 +9,8 @@ type iGetPodLogsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetContainers(v string) *GetPodLogsRequest
+	GetContainers() *string
 	SetDownloadToFile(v bool) *GetPodLogsRequest
 	GetDownloadToFile() *bool
 	SetEndTime(v string) *GetPodLogsRequest
@@ -22,11 +24,17 @@ type iGetPodLogsRequest interface {
 }
 
 type GetPodLogsRequest struct {
-	// Specifies whether to download the log file. Default value: false. Valid values:
+	// Filters logs by specified containers. Separate multiple container names with commas (,).
 	//
-	// 	- false
+	// example:
 	//
-	// 	- true
+	// pytorch,aimaster-worker
+	Containers *string `json:"Containers,omitempty" xml:"Containers,omitempty"`
+	// Specifies whether to download the log file. Valid values:
+	//
+	// - false (default): The log file is not downloaded.
+	//
+	// - true: The log file is downloaded.
 	//
 	// example:
 	//
@@ -38,13 +46,13 @@ type GetPodLogsRequest struct {
 	//
 	// 2020-11-08T17:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The maximum number of log entries. Default value: 2000.
+	// The maximum number of log lines to return. Default value: 2000.
 	//
 	// example:
 	//
 	// 100
 	MaxLines *int32 `json:"MaxLines,omitempty" xml:"MaxLines,omitempty"`
-	// The node UID. For more information about how to obtain a node UID, see [GetJob](https://help.aliyun.com/document_detail/459677.html).
+	// The node UID. For information about how to obtain the node UID, see [GetJob](https://help.aliyun.com/document_detail/459677.html).
 	//
 	// example:
 	//
@@ -66,6 +74,10 @@ func (s GetPodLogsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetPodLogsRequest) GetContainers() *string {
+	return s.Containers
+}
+
 func (s *GetPodLogsRequest) GetDownloadToFile() *bool {
 	return s.DownloadToFile
 }
@@ -84,6 +96,11 @@ func (s *GetPodLogsRequest) GetPodUid() *string {
 
 func (s *GetPodLogsRequest) GetStartTime() *string {
 	return s.StartTime
+}
+
+func (s *GetPodLogsRequest) SetContainers(v string) *GetPodLogsRequest {
+	s.Containers = &v
+	return s
 }
 
 func (s *GetPodLogsRequest) SetDownloadToFile(v bool) *GetPodLogsRequest {

@@ -69,24 +69,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"eu-west-1-oxs":               dara.String("pai-dlc.aliyuncs.com"),
 		"me-east-1":                   dara.String("pai-dlc.aliyuncs.com"),
 		"rus-west-1-pop":              dara.String("pai-dlc.aliyuncs.com"),
-		"cn-wulanchabu":               dara.String("pai-dlc.cn-wulanchabu.aliyuncs.com"),
-		"cn-beijing":                  dara.String("pai-dlc.cn-beijing.aliyuncs.com"),
-		"cn-shanghai":                 dara.String("pai-dlc.cn-shanghai.aliyuncs.com"),
-		"cn-hongkong":                 dara.String("pai-dlc.cn-hongkong.aliyuncs.com"),
-		"cn-shenzhen":                 dara.String("pai-dlc.cn-shenzhen.aliyuncs.com"),
-		"ap-northeast-1":              dara.String("pai-dlc.ap-northeast-1.aliyuncs.com"),
-		"cn-guangzhou":                dara.String("pai-dlc.cn-guangzhou.aliyuncs.com"),
-		"ap-southeast-1":              dara.String("pai-dlc.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-3":              dara.String("pai-dlc.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-5":              dara.String("pai-dlc.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-7":              dara.String("pai-dlc.ap-southeast-7.aliyuncs.com"),
-		"cn-hangzhou":                 dara.String("pai-dlc.cn-hangzhou.aliyuncs.com"),
-		"ap-southeast-8":              dara.String("pai-dlc.ap-southeast-8.aliyuncs.com"),
-		"us-east-1":                   dara.String("pai-dlc.us-east-1.aliyuncs.com"),
-		"us-southeast-1":              dara.String("pai-dlc.us-southeast-1.aliyuncs.com"),
-		"us-west-1":                   dara.String("pai-dlc.us-west-1.aliyuncs.com"),
-		"eu-central-1":                dara.String("pai-dlc.eu-central-1.aliyuncs.com"),
-		"cn-shanghai-finance-1":       dara.String("pai-dlc.cn-shanghai-finance-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -121,11 +103,13 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Creates a job to run in a cluster. You can specify the datasource config, code source configuration, startup command, and compute resource configuration for each node of the job.
+// Creates a job and runs it in a cluster. You can specify information such as the data source configuration, code source configuration, startup command, and compute resource configuration for each node of the job.
 //
 // Description:
 //
-// Before you use this operation, make sure that you fully understand the billing of PAI-DLC and its [pricing](https://help.aliyun.com/document_detail/171758.html).
+// Before using this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.
+//
+//	Notice: The total length of CreateJob operation parameters (including system-generated parameters) cannot exceed 65,536 bytes.
 //
 // @param request - CreateJobRequest
 //
@@ -272,11 +256,13 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 
 // Summary:
 //
-// Creates a job to run in a cluster. You can specify the datasource config, code source configuration, startup command, and compute resource configuration for each node of the job.
+// Creates a job and runs it in a cluster. You can specify information such as the data source configuration, code source configuration, startup command, and compute resource configuration for each node of the job.
 //
 // Description:
 //
-// Before you use this operation, make sure that you fully understand the billing of PAI-DLC and its [pricing](https://help.aliyun.com/document_detail/171758.html).
+// Before using this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.
+//
+//	Notice: The total length of CreateJob operation parameters (including system-generated parameters) cannot exceed 65,536 bytes.
 //
 // @param request - CreateJobRequest
 //
@@ -1037,7 +1023,7 @@ func (client *Client) GetDashboard(jobId *string, request *GetDashboardRequest) 
 
 // Summary:
 //
-// Retrieves the detailed configuration and runtime information of a node.
+// Retrieves the detailed configuration and runtime information of a task.
 //
 // @param request - GetJobRequest
 //
@@ -1084,7 +1070,7 @@ func (client *Client) GetJobWithOptions(JobId *string, request *GetJobRequest, h
 
 // Summary:
 //
-// Retrieves the detailed configuration and runtime information of a node.
+// Retrieves the detailed configuration and runtime information of a task.
 //
 // @param request - GetJobRequest
 //
@@ -1611,7 +1597,7 @@ func (client *Client) GetPodEvents(JobId *string, PodId *string, request *GetPod
 
 // Summary:
 //
-// Obtains or downloads the logs of a node for a task. The logs are from the stdout and stderr of the system and user scripts.
+// Retrieves or downloads the log of a specific node in a job. The log is collected from stdout and stderr of the system and user scripts.
 //
 // @param request - GetPodLogsRequest
 //
@@ -1628,6 +1614,10 @@ func (client *Client) GetPodLogsWithOptions(JobId *string, PodId *string, reques
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Containers) {
+		query["Containers"] = request.Containers
+	}
+
 	if !dara.IsNil(request.DownloadToFile) {
 		query["DownloadToFile"] = request.DownloadToFile
 	}
@@ -1674,7 +1664,7 @@ func (client *Client) GetPodLogsWithOptions(JobId *string, PodId *string, reques
 
 // Summary:
 //
-// Obtains or downloads the logs of a node for a task. The logs are from the stdout and stderr of the system and user scripts.
+// Retrieves or downloads the log of a specific node in a job. The log is collected from stdout and stderr of the system and user scripts.
 //
 // @param request - GetPodLogsRequest
 //
@@ -2057,7 +2047,7 @@ func (client *Client) GetTensorboardSharedUrl(TensorboardId *string, request *Ge
 
 // Summary:
 //
-// Obtains the sharing token of a DLC job. This token is used to view the information about the shared job.
+// Retrieves a sharing token for a DLC job, which is used to view information about the shared task.
 //
 // @param request - GetTokenRequest
 //
@@ -2086,6 +2076,10 @@ func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[
 		query["TargetType"] = request.TargetType
 	}
 
+	if !dara.IsNil(request.TokenSettings) {
+		query["TokenSettings"] = request.TokenSettings
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -2112,7 +2106,7 @@ func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[
 
 // Summary:
 //
-// Obtains the sharing token of a DLC job. This token is used to view the information about the shared job.
+// Retrieves a sharing token for a DLC job, which is used to view information about the shared task.
 //
 // @param request - GetTokenRequest
 //
@@ -3607,7 +3601,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Updates a job\\"s configuration, such as its priority.
+// Updates the configuration of a job, such as modifying the priority of a queued job.
 //
 // @param request - UpdateJobRequest
 //
@@ -3640,6 +3634,10 @@ func (client *Client) UpdateJobWithOptions(JobId *string, request *UpdateJobRequ
 		body["Priority"] = request.Priority
 	}
 
+	if !dara.IsNil(request.UserCommand) {
+		body["UserCommand"] = request.UserCommand
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -3666,7 +3664,7 @@ func (client *Client) UpdateJobWithOptions(JobId *string, request *UpdateJobRequ
 
 // Summary:
 //
-// Updates a job\\"s configuration, such as its priority.
+// Updates the configuration of a job, such as modifying the priority of a queued job.
 //
 // @param request - UpdateJobRequest
 //

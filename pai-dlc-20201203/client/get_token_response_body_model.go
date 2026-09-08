@@ -16,13 +16,13 @@ type iGetTokenResponseBody interface {
 }
 
 type GetTokenResponseBody struct {
-	// The request ID, which is used to troubleshoot issues.
+	// The request ID, which is used for diagnostics and troubleshooting.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-xxxxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The sharing token, used to view the information about the shared job.
+	// The task sharing token, which can be used to view information about the shared task.
 	//
 	// example:
 	//

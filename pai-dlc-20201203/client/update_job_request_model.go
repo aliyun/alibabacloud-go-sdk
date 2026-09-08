@@ -17,30 +17,34 @@ type iUpdateJobRequest interface {
 	GetJobSpecs() []*JobSpec
 	SetPriority(v int32) *UpdateJobRequest
 	GetPriority() *int32
+	SetUserCommand(v string) *UpdateJobRequest
+	GetUserCommand() *string
 }
 
 type UpdateJobRequest struct {
-	// The job\\"s visibility. You can only increase, not decrease, the visibility. Valid value:
+	// The visibility of the job. The visibility can only be expanded, not reduced. Valid values:
 	//
-	// - `PUBLIC`: The job is visible to all users in the workspace.
+	// - PUBLIC: visible to all users in the workspace.
 	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The job specifications.
+	// The job specification definition.
 	JobSpecs []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
-	// The priority of the job. Valid values range from 1 to 9:
+	// The priority of the job. Valid values: 1 to 9.
 	//
-	// - 1 indicates the lowest priority.
+	// - 1: the lowest priority.
 	//
-	// - 9 indicates the highest priority.
+	// - 9: the highest priority.
 	//
 	// example:
 	//
 	// 5
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The user command.
+	UserCommand *string `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
 }
 
 func (s UpdateJobRequest) String() string {
@@ -67,6 +71,10 @@ func (s *UpdateJobRequest) GetPriority() *int32 {
 	return s.Priority
 }
 
+func (s *UpdateJobRequest) GetUserCommand() *string {
+	return s.UserCommand
+}
+
 func (s *UpdateJobRequest) SetAccessibility(v string) *UpdateJobRequest {
 	s.Accessibility = &v
 	return s
@@ -84,6 +92,11 @@ func (s *UpdateJobRequest) SetJobSpecs(v []*JobSpec) *UpdateJobRequest {
 
 func (s *UpdateJobRequest) SetPriority(v int32) *UpdateJobRequest {
 	s.Priority = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetUserCommand(v string) *UpdateJobRequest {
+	s.UserCommand = &v
 	return s
 }
 

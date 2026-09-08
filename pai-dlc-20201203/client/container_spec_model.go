@@ -34,13 +34,13 @@ type ContainerSpec struct {
 	Command []*string `json:"Command,omitempty" xml:"Command,omitempty" type:"Repeated"`
 	// The environment variables.
 	Env []*EnvVar `json:"Env,omitempty" xml:"Env,omitempty" type:"Repeated"`
-	// The endpoint of the container image.
+	// The container image address.
 	//
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com/pai-dlc/curl:v1.0.0
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The name of the container.
+	// The container name.
 	//
 	// example:
 	//

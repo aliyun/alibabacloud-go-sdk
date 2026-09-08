@@ -9,6 +9,10 @@ type iGetPodLogsResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetContainerInfo(v *ContainerInfo) *GetPodLogsResponseBody
+	GetContainerInfo() *ContainerInfo
+	SetContainers(v string) *GetPodLogsResponseBody
+	GetContainers() *string
 	SetJobId(v string) *GetPodLogsResponseBody
 	GetJobId() *string
 	SetLogs(v []*string) *GetPodLogsResponseBody
@@ -22,13 +26,21 @@ type iGetPodLogsResponseBody interface {
 }
 
 type GetPodLogsResponseBody struct {
+	// The container information that may be associated with the node.
+	ContainerInfo *ContainerInfo `json:"ContainerInfo,omitempty" xml:"ContainerInfo,omitempty"`
+	// The containers used to filter logs. Separate multiple container names with commas (,).
+	//
+	// example:
+	//
+	// pytorch,aimaster-worker
+	Containers *string `json:"Containers,omitempty" xml:"Containers,omitempty"`
 	// The job ID.
 	//
 	// example:
 	//
 	// dlc-20210126170216-******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The logs.
+	// The log list.
 	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
 	// The node ID.
 	//
@@ -42,7 +54,7 @@ type GetPodLogsResponseBody struct {
 	//
 	// 94a7cc7c-0033-48b5-85bd-71c63592c268
 	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
-	// The request ID which is used for diagnostics and Q\\&A.
+	// The request ID for this call, used for diagnostics and troubleshooting.
 	//
 	// example:
 	//
@@ -56,6 +68,14 @@ func (s GetPodLogsResponseBody) String() string {
 
 func (s GetPodLogsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetPodLogsResponseBody) GetContainerInfo() *ContainerInfo {
+	return s.ContainerInfo
+}
+
+func (s *GetPodLogsResponseBody) GetContainers() *string {
+	return s.Containers
 }
 
 func (s *GetPodLogsResponseBody) GetJobId() *string {
@@ -76,6 +96,16 @@ func (s *GetPodLogsResponseBody) GetPodUid() *string {
 
 func (s *GetPodLogsResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *GetPodLogsResponseBody) SetContainerInfo(v *ContainerInfo) *GetPodLogsResponseBody {
+	s.ContainerInfo = v
+	return s
+}
+
+func (s *GetPodLogsResponseBody) SetContainers(v string) *GetPodLogsResponseBody {
+	s.Containers = &v
+	return s
 }
 
 func (s *GetPodLogsResponseBody) SetJobId(v string) *GetPodLogsResponseBody {
@@ -104,5 +134,10 @@ func (s *GetPodLogsResponseBody) SetRequestId(v string) *GetPodLogsResponseBody 
 }
 
 func (s *GetPodLogsResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.ContainerInfo != nil {
+		if err := s.ContainerInfo.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

@@ -72,51 +72,51 @@ type iTensorboard interface {
 }
 
 type Tensorboard struct {
-	// Visibility.
+	// The visibility.
 	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	Cpu           *int64  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// Data source ID.
+	// The data source ID.
 	//
 	// example:
 	//
 	// datasource-test
 	DataSourceId   *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// Display name.
+	// The display name.
 	//
 	// example:
 	//
 	// test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// Runtime duration (seconds).
+	// The duration in seconds.
 	//
 	// example:
 	//
-	// 1234567
+	// 60
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// Creation time (UTC).
+	// The creation time in UTC.
 	//
 	// example:
 	//
 	// 2021-01-12T14:35:00Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// End time (UTC).
+	// The end time in UTC.
 	//
 	// example:
 	//
 	// null
 	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
-	// Modification time (UTC).
+	// The modification time in UTC.
 	//
 	// example:
 	//
 	// 2021-01-12T14:36:00Z
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	// Job ID.
+	// The job ID.
 	//
 	// example:
 	//
@@ -125,79 +125,79 @@ type Tensorboard struct {
 	MaxRunningTimeMinutes *int64  `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
 	Memory                *int64  `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	Options               *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// Tensorboard Job priority.
+	// The priority of the TensorBoard job.
 	//
 	// example:
 	//
 	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// Resource group ID used by Tensorboard.
+	// The ID of the resource group used by TensorBoard.
 	//
 	// example:
 	//
 	// quota12***
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	// Name of the resource quota used by Tensorboard.
+	// The name of the resource quota used by TensorBoard.
 	//
 	// example:
 	//
 	// dlc-quota
 	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
-	// Status details code.
+	// The status detail code.
 	//
 	// example:
 	//
-	// Delete by user
+	// ""
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	// Status details.
+	// The status details.
 	//
 	// example:
 	//
-	// Tensorboard is deleted
+	// ""
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Status.
+	// The status.
 	//
 	// example:
 	//
 	// running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// File path.
+	// The file path.
 	//
 	// example:
 	//
 	// /root/data
 	SummaryPath         *string `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
 	SummaryRelativePath *string `json:"SummaryRelativePath,omitempty" xml:"SummaryRelativePath,omitempty"`
-	// Datasets mounted by the Tensorboard Job.
+	// The datasets mounted to the TensorBoard job.
 	TensorboardDataSources []*TensorboardDataSourceSpec `json:"TensorboardDataSources,omitempty" xml:"TensorboardDataSources,omitempty" type:"Repeated"`
-	// Tensorboard ID.
+	// Tensorboard ID。
 	//
 	// example:
 	//
 	// tensorboard-xxx
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
-	// Pay-as-you-go configuration for the Tensorboard Job.
+	// The pay-as-you-go configuration of the TensorBoard job.
 	TensorboardSpec *TensorboardSpec `json:"TensorboardSpec,omitempty" xml:"TensorboardSpec,omitempty"`
-	// Tensorboard URL.
+	// Tensorboard URL。
 	//
 	// example:
 	//
 	// http://xxxxxx
 	TensorboardUrl *string `json:"TensorboardUrl,omitempty" xml:"TensorboardUrl,omitempty"`
 	Token          *string `json:"Token,omitempty" xml:"Token,omitempty"`
-	// Creator ID.
+	// The ID of the creator.
 	//
 	// example:
 	//
 	// lycxxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// Creator username.
+	// The username of the creator.
 	//
 	// example:
 	//

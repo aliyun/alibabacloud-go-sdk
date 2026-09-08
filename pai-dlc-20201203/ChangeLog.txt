@@ -1,3 +1,11 @@
+2026-09-08 Version: v1.12.1
+- Update API GetPodLogs: add request parameters Containers.
+- Update API GetPodLogs: add response parameters Body.ContainerInfo.
+- Update API GetPodLogs: add response parameters Body.Containers.
+- Update API GetToken: add request parameters TokenSettings.
+- Update API UpdateJob: add request parameters body.UserCommand.
+
+
 2026-08-13 Version: v1.12.0
 - Support API TagResources.
 - Support API UntagResources.

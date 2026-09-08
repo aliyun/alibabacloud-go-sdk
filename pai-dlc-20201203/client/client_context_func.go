@@ -9,11 +9,13 @@ import (
 
 // Summary:
 //
-// Creates a job to run in a cluster. You can specify the datasource config, code source configuration, startup command, and compute resource configuration for each node of the job.
+// Creates a job and runs it in a cluster. You can specify information such as the data source configuration, code source configuration, startup command, and compute resource configuration for each node of the job.
 //
 // Description:
 //
-// Before you use this operation, make sure that you fully understand the billing of PAI-DLC and its [pricing](https://help.aliyun.com/document_detail/171758.html).
+// Before using this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of PAI-DLC.
+//
+//	Notice: The total length of CreateJob operation parameters (including system-generated parameters) cannot exceed 65,536 bytes.
 //
 // @param request - CreateJobRequest
 //
@@ -709,7 +711,7 @@ func (client *Client) GetDashboardWithContext(ctx context.Context, jobId *string
 
 // Summary:
 //
-// Retrieves the detailed configuration and runtime information of a node.
+// Retrieves the detailed configuration and runtime information of a task.
 //
 // @param request - GetJobRequest
 //
@@ -1134,7 +1136,7 @@ func (client *Client) GetPodEventsWithContext(ctx context.Context, JobId *string
 
 // Summary:
 //
-// Obtains or downloads the logs of a node for a task. The logs are from the stdout and stderr of the system and user scripts.
+// Retrieves or downloads the log of a specific node in a job. The log is collected from stdout and stderr of the system and user scripts.
 //
 // @param request - GetPodLogsRequest
 //
@@ -1151,6 +1153,10 @@ func (client *Client) GetPodLogsWithContext(ctx context.Context, JobId *string, 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.Containers) {
+		query["Containers"] = request.Containers
+	}
+
 	if !dara.IsNil(request.DownloadToFile) {
 		query["DownloadToFile"] = request.DownloadToFile
 	}
@@ -1452,7 +1458,7 @@ func (client *Client) GetTensorboardSharedUrlWithContext(ctx context.Context, Te
 
 // Summary:
 //
-// Obtains the sharing token of a DLC job. This token is used to view the information about the shared job.
+// Retrieves a sharing token for a DLC job, which is used to view information about the shared task.
 //
 // @param request - GetTokenRequest
 //
@@ -1479,6 +1485,10 @@ func (client *Client) GetTokenWithContext(ctx context.Context, request *GetToken
 
 	if !dara.IsNil(request.TargetType) {
 		query["TargetType"] = request.TargetType
+	}
+
+	if !dara.IsNil(request.TokenSettings) {
+		query["TokenSettings"] = request.TokenSettings
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -2657,7 +2667,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, tmpReq *Unt
 
 // Summary:
 //
-// Updates a job\\"s configuration, such as its priority.
+// Updates the configuration of a job, such as modifying the priority of a queued job.
 //
 // @param request - UpdateJobRequest
 //
@@ -2688,6 +2698,10 @@ func (client *Client) UpdateJobWithContext(ctx context.Context, JobId *string, r
 
 	if !dara.IsNil(request.Priority) {
 		body["Priority"] = request.Priority
+	}
+
+	if !dara.IsNil(request.UserCommand) {
+		body["UserCommand"] = request.UserCommand
 	}
 
 	req := &openapiutil.OpenApiRequest{
