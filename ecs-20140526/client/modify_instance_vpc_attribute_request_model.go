@@ -32,7 +32,7 @@ type iModifyInstanceVpcAttributeRequest interface {
 type ModifyInstanceVpcAttributeRequest struct {
 	// The instance ID.
 	//
-	// > When you call this operation, the ECS instance must be in the **Stopped*	- state. For other restrictions on the instance, carefully read the **operation description*	- section.
+	// > When you call this operation, the ECS instance must be in the **Stopped*	- (`Stopped`) state. For other restrictions on the instance, read the **Operation description*	- section carefully.
 	//
 	// This parameter is required.
 	//
@@ -44,9 +44,9 @@ type ModifyInstanceVpcAttributeRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The new private IP address.
 	//
-	// > The `PrivateIpAddress` parameter depends on `VSwitchId`. The specified IP address must be within the CIDR block of the vSwitch.
+	// > The PrivateIpAddress parameter depends on VSwitchId. The specified IP address must be within the CIDR block of the vSwitch.
 	//
-	// Default value: If this parameter is not specified, a private IP address is randomly assigned from the CIDR block of the vSwitch.
+	// Default value: If this parameter is not specified, an IP address is randomly assigned from the CIDR block of the vSwitch.
 	//
 	// example:
 	//
@@ -54,15 +54,17 @@ type ModifyInstanceVpcAttributeRequest struct {
 	PrivateIpAddress     *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The IDs of the security groups to which the instance is added after the VPC is changed. This parameter is required only when the `VpcId` parameter is specified.
+	// The list of security group IDs that the instance joins after the VPC is modified. This parameter is required only when the VpcId parameter is specified.
 	//
-	// - The security groups must belong to the destination VPC.
+	// - The VPC of the security group must match the target VPC.
 	//
-	// - You can specify one or more security groups. The number of security groups is subject to the limits on the number of security groups to which an instance can belong. For more information, see [Limits](~~25412#SecurityGroupQuota1~~).
+	// - Specifies the list of security groups that the instance joins after the modification. You can specify one or more security groups. The number of security groups is subject to the limit on the number of security groups that an instance can join. For more information, see [Limits](~~25412#SecurityGroupQuota1~~).
 	//
 	// - All security groups in the list must be of the same type.
 	//
-	// - Switching between security group types is supported. When you switch an ECS instance between security group types, make sure that you understand the differences in security group rule configurations between the two types to avoid impacts on instance networking. For more information, see [Security group overview](https://help.aliyun.com/document_detail/25387.html).
+	// - Switching between security group types is supported.
+	//
+	//           When an ECS instance switches between security group types, make sure that you understand the differences in the security group rule configurations of the two security group types to avoid affecting the instance network. For more information, see [Security group overview](https://help.aliyun.com/document_detail/25387.html).
 	//
 	// example:
 	//
@@ -70,11 +72,11 @@ type ModifyInstanceVpcAttributeRequest struct {
 	SecurityGroupId []*string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Repeated"`
 	// The vSwitch ID.
 	//
-	// - If the specified ID is the current vSwitch of the instance, the vSwitch remains unchanged.
+	// - If the specified ID is the current vSwitch of the instance, the vSwitch of the instance remains unchanged.
 	//
-	// - If the specified ID is a new vSwitch and the `VpcId` parameter is empty, the new and old vSwitches must belong to the same zone and the same VPC.
+	// - If the specified ID is a new vSwitch and the VpcId parameter is not specified, the new and original vSwitches must belong to the same zone and the same VPC.
 	//
-	// - If the `VpcId` parameter is not empty, the vSwitch specified by this parameter must belong to the specified VPC and must be in the same zone as the original vSwitch.
+	// - If the VpcId parameter is specified, the vSwitch ID specified in this parameter must belong to the VpcId and must be in the same zone as the original vSwitch.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +84,7 @@ type ModifyInstanceVpcAttributeRequest struct {
 	//
 	// vsw-bp1s5fnvk4gn3tw12****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the destination VPC.
+	// The target VPC ID.
 	//
 	// example:
 	//

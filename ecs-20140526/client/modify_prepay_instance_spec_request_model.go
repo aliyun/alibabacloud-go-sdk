@@ -59,7 +59,7 @@ type ModifyPrepayInstanceSpecRequest struct {
 	//
 	// > - If the balance of your payment method is insufficient, set `AutoPay` to `false`. An unpaid order is generated. You can log on to the ECS console to complete the payment.
 	//
-	// > - If `OperatorType` is set to `downgrade`, the `AutoPay` parameter is ignored.
+	// > - When `OperatorType` is set to `downgrade`, the `AutoPay` parameter is ignored.
 	//
 	// example:
 	//
@@ -87,7 +87,7 @@ type ModifyPrepayInstanceSpecRequest struct {
 	//
 	// i-bp67acfmxazb4ph****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The target instance type to which you want to perform the Upgrade/Downgrade. For valid values, see [Instance family](https://help.aliyun.com/document_detail/25378.html) or invoke [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html).
+	// The target instance type for the Upgrade/Downgrade. For valid values, see [Instance family](https://help.aliyun.com/document_detail/25378.html) or invoke [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html).
 	//
 	// This parameter is required.
 	//
@@ -103,7 +103,7 @@ type ModifyPrepayInstanceSpecRequest struct {
 	//
 	// Default value: false.
 	//
-	// If you set the `MigrateAcrossZone` parameter to `true` and upgrade the Elastic Compute Service instance based on the response, note the following:
+	// When the `MigrateAcrossZone` parameter is set to `true`, take note of the following items after you upgrade the Elastic Compute Service instance based on the response:
 	//
 	// VPC-type instances: For [retired instance types](https://help.aliyun.com/document_detail/55263.html), when a non-I/O optimized instance is changed to an I/O optimized instance, the disk device names and software authorization codes of the server change. For Linux instances, basic disks (cloud) are identified as xvda or xvdb. Ultra disks (cloud_efficiency) and standard SSDs (cloud_ssd) are identified as vda or vdb.
 	//
@@ -345,13 +345,13 @@ func (s *ModifyPrepayInstanceSpecRequest) Validate() error {
 }
 
 type ModifyPrepayInstanceSpecRequestSystemDisk struct {
-	// The new category of the system disk. Valid values:
+	// The new system disk category. Valid values:
 	//
 	// - cloud_efficiency: ultra disk.
 	//
 	// - cloud_ssd: standard SSD.
 	//
-	// > This parameter is valid only when you Increase Quota from a [retired instance type](https://help.aliyun.com/document_detail/55263.html) to a [normal instance family](https://help.aliyun.com/document_detail/25378.html) and upgrade a non-I/O optimized instance to an I/O optimized instance.
+	// > This parameter is valid only when you upgrade from a [retired instance type](https://help.aliyun.com/document_detail/55263.html) to an [instance family that is available for purchase](https://help.aliyun.com/document_detail/25378.html) and change a non-I/O optimized instance to an I/O optimized instance.
 	//
 	// example:
 	//

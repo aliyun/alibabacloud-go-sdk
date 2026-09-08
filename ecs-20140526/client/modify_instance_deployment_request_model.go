@@ -44,13 +44,13 @@ type iModifyInstanceDeploymentRequest interface {
 }
 
 type ModifyInstanceDeploymentRequest struct {
-	// Specifies whether to associate the instance with a dedicated host. Valid values:
+	// Specifies whether the instance is associated with the dedicated host. Valid values:
 	//
-	// - host: associates the instance with a dedicated host. When you start a stopped instance in economical mode, the instance remains on its original dedicated host.
+	// - host: The instance is associated with the dedicated host. When an instance that has economical mode enabled is restarted after being stopped, the instance is still deployed on the original dedicated host.
 	//
-	// - default: does not associate the instance with a dedicated host. When you start a stopped instance in economical mode, the instance can be automatically deployed to another dedicated host in the automatic deployment resource pool if the resources of the original dedicated host are insufficient.
+	// - default: The instance is not associated with the dedicated host. When an instance that has economical mode enabled is restarted after being stopped, if the resources of the original dedicated host are insufficient, the instance can be migrated to another dedicated host in the automatic deployment resource pool.
 	//
-	// If you want to migrate the instance from a shared host to a dedicated host, use the default value. Default value: default.
+	// Default value when migrating an instance from a shared host to a dedicated host: default.
 	//
 	// example:
 	//
@@ -62,47 +62,47 @@ type ModifyInstanceDeploymentRequest struct {
 	//
 	// dc-bp67acfmxazb4ph****
 	DedicatedHostClusterId *string `json:"DedicatedHostClusterId,omitempty" xml:"DedicatedHostClusterId,omitempty"`
-	// The ID of the destination dedicated host. You can call the [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) operation to query the most recent list of dedicated hosts.
+	// The ID of the dedicated host. You can call [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) to query available dedicated hosts.
 	//
-	// When you migrate an instance from a shared host to a dedicated host or between dedicated hosts, take note of the following items:
+	// When you modify the host of an ECS instance (migrate the instance from a shared host to a dedicated host or between dedicated hosts):
 	//
-	// - To migrate the instance to a specific dedicated host, specify this parameter.
+	// - To migrate the instance to a specified dedicated host, you must specify this parameter.
 	//
-	// - To migrate the instance to a system-selected dedicated host, leave this parameter empty and set `Tenancy` to host.
+	// - To migrate the instance to a dedicated host that is automatically selected by the system, you must set this parameter to empty and set the `Tenancy` parameter to host.
 	//
-	// For information about the automatic deployment feature, see [Functions and features](https://help.aliyun.com/document_detail/118938.html).
+	// For more information about the automatic deployment feature, see [Features of dedicated hosts](https://help.aliyun.com/document_detail/118938.html).
 	//
 	// example:
 	//
 	// dh-bp67acfmxazb4ph****
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	// The number of the deployment set group in which to deploy the instance in the destination deployment set. This parameter is valid only when the destination deployment set uses the high availability group strategy (AvailabilityGroup). Valid values: 1 to 7.
+	// The group number of the instance in the deployment set when the deployment set uses the availability group strategy (AvailabilityGroup). Valid values: 1 to 7.
 	//
-	// > If you call this operation to deploy an instance to a deployment set that uses the high availability group strategy (`AvailablilityGroup`) and leave this parameter empty, the system evenly distributes instances among the deployment set groups in the deployment set. If you call this operation to change the deployment set of an instance and specify the current deployment set of the instance as the destination deployment set, the system evenly distributes instances again among the deployment set groups in the deployment set.
+	// > If you change the deployment set of an ECS instance and the deployment set uses the availability group strategy (`AvailablilityGroup`), the system automatically distributes ECS instances evenly across groups when this parameter is not specified. If you specify the same deployment set that the instance currently belongs to, the system also redistributes ECS instances evenly across groups.
 	//
 	// example:
 	//
 	// 3
 	DeploymentSetGroupNo *int32 `json:"DeploymentSetGroupNo,omitempty" xml:"DeploymentSetGroupNo,omitempty"`
-	// The ID of the destination deployment set.
+	// The ID of the deployment set.
 	//
-	// This parameter is required when you add an instance to a deployment set or change the deployment set of an instance.
+	// This parameter is required when you add an ECS instance to a deployment set or change the deployment set of an ECS instance.
 	//
-	// > You cannot change the deployment set when you modify dedicated host configurations, including the `Tenancy`, `Affinity`, and `DedicatedHostId` parameters.
+	// > When you modify dedicated host-related parameters (`Tenancy`, `Affinity`, and `DedicatedHostId`), you cannot modify the deployment set at the same time.
 	//
 	// example:
 	//
 	// ds-bp67acfmxazb4ph****
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
-	// Specifies whether to forcefully change the host of the instance when the deployment set of the instance is changed. Valid values:
+	// Specifies whether to forcefully change the host when the instance is added to a deployment set. Valid values:
 	//
-	// - true: forcefully changes the host of the instance when the deployment set of the instance is changed. Hosts can be forcefully changed only for instances in the Running (Running) or Stopped (Stopped) state. The instances that are in the Stopped (Stopped) state do not include pay-as-you-go instances that are stopped in economical mode.
 	//
-	//   \\*\\*
 	//
-	//   **Note*	- If the specified instance has local disks attached, the local disks are forcefully changed when the host of the instance is forcefully changed. This may cause data loss in the local disks. Proceed with caution.
+	// - true: Allows the operation. Allows restarting ECS instances in the Running or Stopped state. Stopped instances do not include pay-as-you-go ECS instances that have economical mode enabled.
 	//
-	// - false: does not forcefully change the host of the instance when the deployment set of the instance is changed. You can add the instance to a deployment set only when the instance remains on the current host. When the Force parameter is set to false, the deployment set may fail to be changed.
+	//     > If the specified ECS instance has local disks attached, the local disks are also forcefully replaced. This may cause data loss on the local disks during host replacement. Proceed with caution.
+	//
+	// - false: Does not allow the operation. The instance is added to the deployment set only on the current host. This may cause the deployment set change to fail.
 	//
 	// Default value: false.
 	//
@@ -110,7 +110,7 @@ type ModifyInstanceDeploymentRequest struct {
 	//
 	// false
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -118,23 +118,23 @@ type ModifyInstanceDeploymentRequest struct {
 	//
 	// i-bp67acfmxazb4ph***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance type to which the instance is changed. You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query the most recent list of instance types.
+	// The target instance type of the ECS instance. You can call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to query the most recent instance type list.
 	//
-	// You can change the instance type of an instance when you migrate the instance to a dedicated host. The new instance type must match the type of the specified dedicated host. For more information, see [Dedicated host types](https://help.aliyun.com/document_detail/68564.html).
+	// When you modify the host of an ECS instance, you can also change ECS instance type. The target instance type must match the specifications of the specified dedicated host. For more information, see [Dedicated host types](https://help.aliyun.com/document_detail/68564.html).
 	//
-	// - If you specify this parameter, you must also specify `DedicatedHostId`.
+	// - To change ECS instance type, you must specify the dedicated host ID by setting the `DedicatedHostId` parameter.
 	//
-	// - You cannot change the instance type of an instance if you use the automatic deployment feature to migrate the instance.
+	// - You cannot change ECS instance type when using the automatic deployment feature to migrate an ECS instance.
 	//
 	// example:
 	//
 	// ecs.c6.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// Specifies whether to stop the instance before it is migrated to the destination dedicated host. Valid values:
+	// Specifies whether to stop ECS instance before migrating it to the destination dedicated host. Valid values:
 	//
-	// - reboot: stops the instance before it is migrated.
+	// - reboot: Stops ECS instance before migration.
 	//
-	// - live: migrates the instance without stopping it. If you set MigrationType to live, you must specify DedicatedHostId. In this case, you cannot change the instance type of the instance when the instance is migrated.
+	// - live: Migrates ECS instance without stopping it. In this case, you must specify the DedicatedHostId parameter. This value does not support changing ECS instance type while migrating ECS instance.
 	//
 	// Default value: reboot.
 	//
@@ -144,7 +144,7 @@ type ModifyInstanceDeploymentRequest struct {
 	MigrationType *string `json:"MigrationType,omitempty" xml:"MigrationType,omitempty"`
 	OwnerAccount  *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -152,15 +152,15 @@ type ModifyInstanceDeploymentRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to remove the specified instance from the specified deployment set. Valid values:
+	// Specifies whether to remove the selected instance from the selected deployment set. Valid values:
 	//
-	// - true
+	// - true: Yes.
 	//
-	// - false
+	// - false: No.
 	//
 	// Default value: false.
 	//
-	// > If you set this parameter to true, you must specify InstanceId and DeploymentSetId and make sure that the specified instance belongs to the specified deployment set.
+	// > When this parameter is set to true, you must specify the InstanceId and DeploymentSetId that have an ownership relationship.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ type ModifyInstanceDeploymentRequest struct {
 	RemoveFromDeploymentSet *bool   `json:"RemoveFromDeploymentSet,omitempty" xml:"RemoveFromDeploymentSet,omitempty"`
 	ResourceOwnerAccount    *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId         *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to deploy the instance on a dedicated host. Set the value to host, which indicates that the instance is deployed on a dedicated host.
+	// Specifies whether the instance is deployed on a dedicated host. Valid values: host. The instance is deployed only on a dedicated host.
 	//
 	// example:
 	//

@@ -21,6 +21,8 @@ type iDescribeDedicatedHostsRequest interface {
 	GetLockReason() *string
 	SetMaxResults(v int32) *DescribeDedicatedHostsRequest
 	GetMaxResults() *int32
+	SetNeedHostDetail(v string) *DescribeDedicatedHostsRequest
+	GetNeedHostDetail() *string
 	SetNextToken(v string) *DescribeDedicatedHostsRequest
 	GetNextToken() *string
 	SetOwnerAccount(v string) *DescribeDedicatedHostsRequest
@@ -78,7 +80,7 @@ type DescribeDedicatedHostsRequest struct {
 	DedicatedHostType *string `json:"DedicatedHostType,omitempty" xml:"DedicatedHostType,omitempty"`
 	// The reason why the dedicated host is locked. Valid values:
 	//
-	// - financial: The dedicated host is locked due to an overdue payment.
+	// - financial: The dedicated host is locked due to overdue payments.
 	//
 	// - security: The dedicated host is locked for security reasons.
 	//
@@ -86,7 +88,7 @@ type DescribeDedicatedHostsRequest struct {
 	//
 	// financial
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The maximum number of entries per page for a paged query. If you set this parameter, the MaxResults and NextToken parameters are used together for paging.
+	// The maximum number of entries per page for a paged query. If you set this parameter, it indicates that the paging method using the MaxResults and NextToken parameters is used.
 	//
 	// Maximum value: 100.
 	//
@@ -96,6 +98,12 @@ type DescribeDedicatedHostsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The detailed information of the dedicated host.
+	//
+	// example:
+	//
+	// false
+	NeedHostDetail *string `json:"NeedHostDetail,omitempty" xml:"NeedHostDetail,omitempty"`
 	// The pagination token. Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first request.
 	//
 	// example:
@@ -137,9 +145,9 @@ type DescribeDedicatedHostsRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to display socket-level capacity information. You can use socket-level capacity information to view remaining resources (vCPUs, memory usage, remaining capacity, and total capacity) to determine whether an ECS instance of a specific instance type can be created. Valid values:
 	//
-	// - true: Displays socket-level capacity information. Only specific dedicated host types support displaying socket-level resource information. For more information, see [View and export DDH information](https://help.aliyun.com/document_detail/68989.html).
+	// - true: Display socket-level capacity information. Only specific dedicated host types support displaying socket-level resource information. For more information, see [View and export DDH information](https://help.aliyun.com/document_detail/68989.html).
 	//
-	// - false: Does not display socket-level capacity information.
+	// - false: Do not display socket-level capacity information.
 	//
 	// 	Notice:
 	//
@@ -173,7 +181,7 @@ type DescribeDedicatedHostsRequest struct {
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags. You can specify up to 20 tags.
+	// The tags. Valid values of N: 0 to 20.
 	Tag []*DescribeDedicatedHostsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The zone ID. You can call [DescribeZones](https://help.aliyun.com/document_detail/25610.html) to query the most recent zone list.
 	//
@@ -213,6 +221,10 @@ func (s *DescribeDedicatedHostsRequest) GetLockReason() *string {
 
 func (s *DescribeDedicatedHostsRequest) GetMaxResults() *int32 {
 	return s.MaxResults
+}
+
+func (s *DescribeDedicatedHostsRequest) GetNeedHostDetail() *string {
+	return s.NeedHostDetail
 }
 
 func (s *DescribeDedicatedHostsRequest) GetNextToken() *string {
@@ -298,6 +310,11 @@ func (s *DescribeDedicatedHostsRequest) SetLockReason(v string) *DescribeDedicat
 
 func (s *DescribeDedicatedHostsRequest) SetMaxResults(v int32) *DescribeDedicatedHostsRequest {
 	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeDedicatedHostsRequest) SetNeedHostDetail(v string) *DescribeDedicatedHostsRequest {
+	s.NeedHostDetail = &v
 	return s
 }
 

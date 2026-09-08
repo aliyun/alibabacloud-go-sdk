@@ -14,7 +14,7 @@ type iModifyInstanceDeploymentResponseBody interface {
 }
 
 type ModifyInstanceDeploymentResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

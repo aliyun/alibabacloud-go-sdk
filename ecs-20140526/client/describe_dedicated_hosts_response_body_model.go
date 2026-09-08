@@ -25,7 +25,7 @@ type iDescribeDedicatedHostsResponseBody interface {
 
 type DescribeDedicatedHostsResponseBody struct {
 	DedicatedHosts *DescribeDedicatedHostsResponseBodyDedicatedHosts `json:"DedicatedHosts,omitempty" xml:"DedicatedHosts,omitempty" type:"Struct"`
-	// The query token returned by this call. If this value is empty when you use MaxResults and NextToken for paging, no more data is returned.
+	// The query token returned in this invoke. If the return value is empty when you use MaxResults and NextToken for paging, no more data is available.
 	//
 	// example:
 	//

@@ -34,9 +34,9 @@ type UnassignIpv6AddressesRequest struct {
 	//
 	// 2001:db8:1234:1a00::***
 	Ipv6Address []*string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty" type:"Repeated"`
-	// One or more IPv6 prefixes to unassign. Valid values of N: 1 to 10.
+	// One or more IPv6 prefixes to revoke. Valid values of N: 1 to 10.
 	Ipv6Prefix []*string `json:"Ipv6Prefix,omitempty" xml:"Ipv6Prefix,omitempty" type:"Repeated"`
-	// The ID of the Elastic Network Interface (ENI).
+	// The network interface controller (NIC) ID.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type UnassignIpv6AddressesRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the Elastic Network Interface (ENI). You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the network interface controller (NIC). You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
