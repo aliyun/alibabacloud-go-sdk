@@ -20,21 +20,32 @@ type iImportDoNotCallNumbersRequest interface {
 }
 
 type ImportDoNotCallNumbersRequest struct {
+	// The key of the OSS file. You can obtain the key from the response of the GetDoNotCallFileUploadParameters API. This parameter is required only for file uploads.
+	//
 	// example:
 	//
 	// temp/blacklist/import/15772471154xxxx/ccc-test/20220315100340/blacklist.xlsx
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// A JSON string that represents an array of do-not-call numbers.
+	//
 	// example:
 	//
 	// ["1900000****","1312121****"]
 	NumberList *string `json:"NumberList,omitempty" xml:"NumberList,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The remark for the do-not-call numbers.
+	//
+	// example:
+	//
+	// 测试
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s ImportDoNotCallNumbersRequest) String() string {

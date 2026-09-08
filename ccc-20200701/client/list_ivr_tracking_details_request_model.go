@@ -20,24 +20,32 @@ type iListIvrTrackingDetailsRequest interface {
 }
 
 type ListIvrTrackingDetailsRequest struct {
+	// The call ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-10963442671187****
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page number, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:

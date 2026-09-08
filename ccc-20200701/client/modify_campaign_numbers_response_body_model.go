@@ -24,17 +24,34 @@ type iModifyCampaignNumbersResponseBody interface {
 }
 
 type ModifyCampaignNumbersResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
+	//
+	// example:
+	//
+	// 无
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DE803553-8AA9-4B9D-9E4E-A82BC69EDCEE

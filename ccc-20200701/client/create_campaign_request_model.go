@@ -50,83 +50,128 @@ type iCreateCampaignRequest interface {
 }
 
 type CreateCampaignRequest struct {
+	// The callable time window for the predictive outbound dialing activity, formatted as a JSON object containing two properties: beginTime and endTime. Example: [{"beginTime":"00:00:00","endTime":"23:00:00"}].
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// [{"beginTime":"00:00:00","endTime":"23:00:00" }]
 	CallableTime *string `json:"CallableTime,omitempty" xml:"CallableTime,omitempty"`
+	// Predictive outbound dialing contact file, specified as the key of an OSS object. Obtain this key by calling the GetCaseFileUploadUrl API.
+	//
 	// example:
 	//
 	// ccc-test/namelist.csv
-	CaseFileKey *string                          `json:"CaseFileKey,omitempty" xml:"CaseFileKey,omitempty"`
-	CaseList    []*CreateCampaignRequestCaseList `json:"CaseList,omitempty" xml:"CaseList,omitempty" type:"Repeated"`
+	CaseFileKey *string `json:"CaseFileKey,omitempty" xml:"CaseFileKey,omitempty"`
+	// List of predictive outbound dialing contacts. This parameter cannot be used together with CaseFileKey (import from file). You must choose either file import or list import.
+	CaseList []*CreateCampaignRequestCaseList `json:"CaseList,omitempty" xml:"CaseList,omitempty" type:"Repeated"`
+	// The contact flow ID associated with the predictive outbound dialing activity.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c1f2bc75-422e-43c7-9c9d9d95633a
 	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	// The end time of the predictive outbound calling activity, formatted as a UNIX timestamp in milliseconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1634313600000
-	EndTime               *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ExecutingUntilTimeout *bool   `json:"ExecutingUntilTimeout,omitempty" xml:"ExecutingUntilTimeout,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Whether to keep the activity in the executing state until it expires. The default value is false. If false, the activity automatically transitions to the completed state after all contacts have been called. If true, the activity remains in the executing state even after all contacts have been called, allowing you to append additional contacts and continue dialing until the activity expires or is manually stopped.
+	//
+	// example:
+	//
+	// false
+	ExecutingUntilTimeout *bool `json:"ExecutingUntilTimeout,omitempty" xml:"ExecutingUntilTimeout,omitempty"`
+	// Flash SMS parameters
+	//
 	// example:
 	//
 	// {"applicationId":"08e6b63a-****-****-****-689a288cdbb5","templateId":"325"}
 	FlashSmsParameters *string `json:"FlashSmsParameters,omitempty" xml:"FlashSmsParameters,omitempty"`
+	// Phone number collection ID
+	//
 	// example:
 	//
 	// 0d368091-2c70-4d26-979a-6997ddc9c34f
 	InstGroupId *string `json:"InstGroupId,omitempty" xml:"InstGroupId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maximum number of attempts for the predictive outbound calling activity. This specifies how many times a number can be redialed if the initial call fails.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	MaxAttemptCount *int64 `json:"MaxAttemptCount,omitempty" xml:"MaxAttemptCount,omitempty"`
+	// The minimum redial interval for the predictive outbound calling activity, which specifies the minimum time interval between redial attempts after a failed call, in minutes.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	MinAttemptInterval *int64 `json:"MinAttemptInterval,omitempty" xml:"MinAttemptInterval,omitempty"`
+	// Name of the predictive outbound dialing activity.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-campaign
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// List of caller numbers
 	NumberList []*string `json:"NumberList,omitempty" xml:"NumberList,omitempty" type:"Repeated"`
+	// The skill group ID associated with the predictive outbound dialing activity.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// skillgroup@ccc-test
-	QueueId              *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
-	Simulation           *bool   `json:"Simulation,omitempty" xml:"Simulation,omitempty"`
+	QueueId *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
+	// Indicates whether this is a simulation activity used for testing. Regular customers do not need to concern themselves with this.
+	//
+	// example:
+	//
+	// 无
+	Simulation *bool `json:"Simulation,omitempty" xml:"Simulation,omitempty"`
+	// Simulation parameters used for testing. Regular customers do not need to concern themselves with this.
+	//
+	// example:
+	//
+	// 无
 	SimulationParameters *string `json:"SimulationParameters,omitempty" xml:"SimulationParameters,omitempty"`
+	// The start time of the predictive outbound dialing activity, in Unix timestamp format with millisecond precision.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1634140800000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Strategy parameters for the predictive outbound dialing activity. For PID strategy, an example format is: {"abandonRate":"5","historicalConnectedRate":"35"}. For PACING strategy, an example format is: {"ratio":1}. abandonRate represents the desired abandonment rate, historicalConnectedRate represents the historical reference connection rate, and ratio represents the fixed dialing ratio.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"ratio":1}
 	StrategyParameters *string `json:"StrategyParameters,omitempty" xml:"StrategyParameters,omitempty"`
+	// The strategy pattern for the predictive outbound calling activity.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -328,11 +373,20 @@ func (s *CreateCampaignRequest) Validate() error {
 }
 
 type CreateCampaignRequestCaseList struct {
+	// Customer-defined custom variables in JSON object format. The object can contain up to 10 properties, each with a name and value defined by the customer.
+	//
+	// example:
+	//
+	// {"name":"customer","客户标签":"tag"}
 	CustomVariables *string `json:"CustomVariables,omitempty" xml:"CustomVariables,omitempty"`
+	// Contact phone number.
+	//
 	// example:
 	//
 	// 1888888888
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// Business ID, an identifier from the Customer\\"s Operational System, used in integration scenarios.
+	//
 	// example:
 	//
 	// 01

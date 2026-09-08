@@ -16,13 +16,20 @@ type iGetRealtimeInstanceStatesRequest interface {
 }
 
 type GetRealtimeInstanceStatesRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MediaType  *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Media type. The default is audio (AUDIO).
+	//
+	// example:
+	//
+	// AUDIO
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
 }
 
 func (s GetRealtimeInstanceStatesRequest) String() string {

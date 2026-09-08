@@ -22,26 +22,36 @@ type iMonitorCallRequest interface {
 }
 
 type MonitorCallRequest struct {
+	// Device ID. This parameter is meaningless and can be filled with any value.
+	//
 	// example:
 	//
 	// device
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the agent being monitored.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// agent2@ccc-test
 	MonitoredUserId *string `json:"MonitoredUserId,omitempty" xml:"MonitoredUserId,omitempty"`
+	// The timeout period for the listening operation, in seconds. If the listening operation does not succeed within the specified time, it is canceled. Normally, the listening operation succeeds immediately. The timeout setting is provided to handle abnormal scenarios. This field is optional and defaults to 30 seconds.
+	//
 	// example:
 	//
 	// 30
 	TimeoutSeconds *int32 `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test

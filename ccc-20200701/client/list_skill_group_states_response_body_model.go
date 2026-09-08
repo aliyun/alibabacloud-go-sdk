@@ -24,20 +24,34 @@ type iListSkillGroupStatesResponseBody interface {
 }
 
 type ListSkillGroupStatesResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListSkillGroupStatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 1F69EBB0-63E9-5DDE-887F-9FC040ADF309
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -116,15 +130,22 @@ func (s *ListSkillGroupStatesResponseBody) Validate() error {
 }
 
 type ListSkillGroupStatesResponseBodyData struct {
+	// List of skill group status data.
 	List []*ListSkillGroupStatesResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 10
@@ -189,61 +210,104 @@ func (s *ListSkillGroupStatesResponseBodyData) Validate() error {
 }
 
 type ListSkillGroupStatesResponseBodyDataList struct {
+	// The average waiting time, in seconds.
+	//
 	// example:
 	//
 	// 3
 	AverageWaitingTime *int64 `json:"AverageWaitingTime,omitempty" xml:"AverageWaitingTime,omitempty"`
+	// Number of agents in break status.
+	//
 	// example:
 	//
 	// 0
-	BreakingAgents       *int64 `json:"BreakingAgents,omitempty" xml:"BreakingAgents,omitempty"`
+	BreakingAgents *int64 `json:"BreakingAgents,omitempty" xml:"BreakingAgents,omitempty"`
+	// The number of agents on calls in the inbound scenario.
+	//
+	// example:
+	//
+	// 0
 	InboundTalkingAgents *int64 `json:"InboundTalkingAgents,omitempty" xml:"InboundTalkingAgents,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Number of logged-in agents.
+	//
 	// example:
 	//
 	// 0
 	LoggedInAgents *int64 `json:"LoggedInAgents,omitempty" xml:"LoggedInAgents,omitempty"`
+	// Maximum waiting duration.
+	//
 	// example:
 	//
 	// 0
 	LongestCall *int64 `json:"LongestCall,omitempty" xml:"LongestCall,omitempty"`
+	// The number of agents who are idle and in outbound-only status.
+	//
 	// example:
 	//
 	// 0
 	OutboundScenarioReadyAgents *int64 `json:"OutboundScenarioReadyAgents,omitempty" xml:"OutboundScenarioReadyAgents,omitempty"`
-	OutboundTalkingAgents       *int64 `json:"OutboundTalkingAgents,omitempty" xml:"OutboundTalkingAgents,omitempty"`
+	// Number of agents on outbound calls.
+	//
+	// example:
+	//
+	// 0
+	OutboundTalkingAgents *int64 `json:"OutboundTalkingAgents,omitempty" xml:"OutboundTalkingAgents,omitempty"`
+	// The number of idle agents.
+	//
 	// example:
 	//
 	// 1
 	ReadyAgents *int64 `json:"ReadyAgents,omitempty" xml:"ReadyAgents,omitempty"`
+	// The skill group ID.
+	//
 	// example:
 	//
 	// skillgroup1@ccc-test
-	SkillGroupId   *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// Skill group name.
+	//
+	// example:
+	//
+	// 测试技能组
 	SkillGroupName *string `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
+	// The number of agents on calls.
+	//
 	// example:
 	//
 	// 0
 	TalkingAgents *int64 `json:"TalkingAgents,omitempty" xml:"TalkingAgents,omitempty"`
+	// Number of calls currently in the queue.
+	//
 	// example:
 	//
 	// 0
 	WaitingCalls *int64 `json:"WaitingCalls,omitempty" xml:"WaitingCalls,omitempty"`
+	// The number of calls with a waiting duration of less than 10 seconds.
+	//
 	// example:
 	//
 	// 0
 	WaitingCallsLevel10 *int64 `json:"WaitingCallsLevel10,omitempty" xml:"WaitingCallsLevel10,omitempty"`
+	// Number of calls with waiting duration less than 20 seconds.
+	//
 	// example:
 	//
 	// 0
 	WaitingCallsLevel20 *int64 `json:"WaitingCallsLevel20,omitempty" xml:"WaitingCallsLevel20,omitempty"`
+	// The number of calls with a waiting duration of less than 30 seconds.
+	//
 	// example:
 	//
 	// 0
 	WaitingCallsLevel30 *int64 `json:"WaitingCallsLevel30,omitempty" xml:"WaitingCallsLevel30,omitempty"`
+	// The number of agents in post-processing.
+	//
 	// example:
 	//
 	// 0

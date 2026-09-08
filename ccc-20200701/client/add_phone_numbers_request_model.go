@@ -22,24 +22,34 @@ type iAddPhoneNumbersRequest interface {
 }
 
 type AddPhoneNumbersRequest struct {
+	// ID of the IVR contact flow to attach. This parameter is valid only when the number usage includes inbound calls. It is optional and defaults to empty.
+	//
 	// example:
 	//
 	// dDMD_0mif4hv
 	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Number group ID. You can view number grouping information in the Cloud Contact Center console. This parameter is optional and defaults to empty.
+	//
 	// example:
 	//
 	// 2cb77c29-5f60-4b90-b21e-9d2ba9833f14
 	NumberGroupId *string `json:"NumberGroupId,omitempty" xml:"NumberGroupId,omitempty"`
+	// List of phone numbers to add.
+	//
 	// example:
 	//
 	// ["0101234****", "0105678****"]
 	NumberList *string `json:"NumberList,omitempty" xml:"NumberList,omitempty"`
+	// Usage of the phone number. Note: If the provided number is a 400 number, the usage must be set to Inbound.
+	//
 	// This parameter is required.
 	//
 	// example:

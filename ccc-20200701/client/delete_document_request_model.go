@@ -20,23 +20,29 @@ type iDeleteDocumentRequest interface {
 }
 
 type DeleteDocumentRequest struct {
+	// The document ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// xxx
 	DocumentId *string `json:"DocumentId,omitempty" xml:"DocumentId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// d278629c-c687-4aa3-b044-4fe9b012****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DE803553-8AA9-4B9D-9E4E-A82BC69EDCEE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// schema id
+	// The schema ID.
 	//
 	// This parameter is required.
 	//

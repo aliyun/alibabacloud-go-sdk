@@ -22,16 +22,28 @@ type iListCasesResponseBody interface {
 }
 
 type ListCasesResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListCasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 7CC6523B-0E51-1B62-8DA5-6A9831CAE316
@@ -101,15 +113,22 @@ func (s *ListCasesResponseBody) Validate() error {
 }
 
 type ListCasesResponseBodyData struct {
+	// List of contact list execution details.
 	List []*ListCasesResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 1
@@ -174,25 +193,56 @@ func (s *ListCasesResponseBodyData) Validate() error {
 }
 
 type ListCasesResponseBodyDataList struct {
+	// Phase at which the call was abandoned.
+	//
+	// - IVR (IVR interaction phase)
+	//
+	// - Queuing (queuing phase)
+	//
+	// - Ringing (agent ringing phase)
+	//
+	// example:
+	//
+	// Ringing
 	AbandonPhase *string `json:"AbandonPhase,omitempty" xml:"AbandonPhase,omitempty"`
+	// The type of call abandonment, that is, the reason why the call was not successfully connected.
+	//
 	// example:
 	//
 	// NA
 	AbandonType *string `json:"AbandonType,omitempty" xml:"AbandonType,omitempty"`
+	// Number of attempts, which is the total number of calls made to this contact.
+	//
 	// example:
 	//
 	// 1
 	AttemptCount *int64 `json:"AttemptCount,omitempty" xml:"AttemptCount,omitempty"`
+	// System-generated contact ID. Customers do not need to concern themselves with this.
+	//
 	// example:
 	//
 	// 60ecb1a2-4480-4d01-bede-c5b7655bfadf
-	CaseId          *string `json:"CaseId,omitempty" xml:"CaseId,omitempty"`
+	CaseId *string `json:"CaseId,omitempty" xml:"CaseId,omitempty"`
+	// Custom variables defined by the customer, formatted as a JSON object. The object can contain up to 10 properties, each with a name and value defined by the customer. These can be configured when creating a predictive outbound dialing activity.
+	//
+	// example:
+	//
+	// {"name":"yy","客戶标签":"tag-yy"}
 	CustomVariables *string `json:"CustomVariables,omitempty" xml:"CustomVariables,omitempty"`
-	FailureReason   *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
+	// Reason for outbound call failure.
+	//
+	// example:
+	//
+	// 无
+	FailureReason *string `json:"FailureReason,omitempty" xml:"FailureReason,omitempty"`
+	// Phone number.
+	//
 	// example:
 	//
 	// 1888888****
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// Status.
+	//
 	// example:
 	//
 	// Connected

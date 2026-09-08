@@ -16,12 +16,16 @@ type iImportAdminsRequest interface {
 }
 
 type ImportAdminsRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// A list of UIDs for Alibaba Cloud RAM accounts. The value must be a string-encoded JSON array. The array supports up to 20 UIDs.
+	//
 	// This parameter is required.
 	//
 	// example:

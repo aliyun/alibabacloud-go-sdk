@@ -22,24 +22,40 @@ type iUpdateTicketRequest interface {
 }
 
 type UpdateTicketRequest struct {
+	// The ticket form information.
+	//
+	// example:
+	//
+	// {"productName":"玩具1"}
 	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 51e155ce-***-****-b402-13c69597b920
 	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ticket ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5491d3b4-14ee-4341-b5f1-db2c78beddeb
 	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
-	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The ticket title.
+	//
+	// example:
+	//
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s UpdateTicketRequest) String() string {

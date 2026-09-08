@@ -26,27 +26,44 @@ type iSaveRTCStatsV2ResponseBody interface {
 }
 
 type SaveRTCStatsV2ResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BA03159C-E808-4FF1-B27E-A61B6E888D7F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Number of rows.
+	//
 	// example:
 	//
 	// 1
 	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Time when the record was generated, in Unix timestamp format, in milliseconds.
+	//
 	// example:
 	//
 	// 1647309061000

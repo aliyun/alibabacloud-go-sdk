@@ -16,12 +16,16 @@ type iRemoveDoNotCallNumbersRequest interface {
 }
 
 type RemoveDoNotCallNumbersRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// List of Do Not Call numbers to be deleted, formatted as a JSON array string. The array length must be between 1 and 300.
+	//
 	// example:
 	//
 	// ["1900000****","1312211****"]

@@ -22,21 +22,44 @@ type iAddFeedbackRequest interface {
 }
 
 type AddFeedbackRequest struct {
+	// The feedback provided by returning users.
+	//
+	// example:
+	//
+	// {"问题描述":"客户询问沙发生产周期并尝试加快", "客服方案":"订单确认，建议联系在线客服", "完成度判断":"否"}
 	Feedback *string `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Rating:
+	//
+	// - thumbsDown: Thumbs down.
+	//
+	// - thumbsUp: Thumbs up.
+	//
 	// example:
 	//
 	// thumbsUp
 	Rating *int32 `json:"Rating,omitempty" xml:"Rating,omitempty"`
+	// AI task ID.
+	//
 	// example:
 	//
 	// f780ade8-****-458b-b067-63077946a570
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Task type.
+	//
+	// - Abstract:fields (Field extraction)
+	//
+	// - Abstract:keywords (Hot keywords)
+	//
+	// - Abstract:title_summary (Summary)
+	//
 	// example:
 	//
 	// Abstract:fields

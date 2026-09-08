@@ -24,17 +24,34 @@ type iListCategoriesResponseBody interface {
 }
 
 type ListCategoriesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data. The category node information, in the format of a JSON string.
+	//
+	// example:
+	//
+	// [{\\"categoryId\\":\\"43c2671b-8939-4223-****-6bd187905cc8\\",\\"childCategoryList\\":[{\\"categoryId\\":\\"120816ad-4392-4edf-****-6d053d5cfa5a\\",\\"childCategoryList\\":[],\\"deleted\\":0,\\"editor\\":\\"283277706217028904\\",\\"editorName\\":\\"283277706217028904\\",\\"instanceId\\":\\"cccV2-kmz\\",\\"itemCount\\":0,\\"level\\":2,\\"name\\":\\"客户反馈\\",\\"parentCategoryId\\":\\"43c2671b-8939-****-86d0-6bd187905cc8\\",\\"type\\":\\"Ticket\\"}],\\"deleted\\":0,\\"editor\\":\\"283277706217028904\\",\\"editorName\\":\\"283277706217028904\\",\\"instanceId\\":\\"cccV2-kmz\\",\\"itemCount\\":10,\\"level\\":1,\\"name\\":\\"测试一01类目\\",\\"type\\":\\"Ticket\\"},{\\"categoryId\\":\\"4948fcd0-2972-****-81c6-1a00927e1802\\",\\"childCategoryList\\":[],\\"deleted\\":0,\\"editor\\":\\"283277706217028904\\",\\"editorName\\":\\"283277706217028904\\",\\"instanceId\\":\\"cccV2-kmz\\",\\"itemCount\\":0,\\"level\\":1,\\"name\\":\\"生产环境验证\\",\\"type\\":\\"Ticket\\"},{\\"categoryId\\":\\"c426bd7f-9661-47c3-****-2508f1a32f66\\",\\"childCategoryList\\":[],\\"deleted\\":0,\\"editor\\":\\"269801834095770945\\",\\"editorName\\":\\"269801834095770945\\",\\"instanceId\\":\\"cccV2-kmz\\",\\"itemCount\\":4,\\"level\\":1,\\"name\\":\\"测试环境测试\\",\\"type\\":\\"Ticket\\"}]
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of incorrect parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DE803553-8AA9-4B9D-9E4E-A82BC69EDCEE

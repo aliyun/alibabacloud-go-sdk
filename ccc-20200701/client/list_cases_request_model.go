@@ -24,32 +24,60 @@ type iListCasesRequest interface {
 }
 
 type ListCasesRequest struct {
+	// Predictive outbound dialing activity ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6badb397-a8b5-40b6-21019d382a09
 	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The paging ordinal number, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 100
-	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Filters by phone number. Fuzzy Matching is not supported. This parameter is not Required and defaults to empty.
+	//
+	// example:
+	//
+	// 无
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	State       *string `json:"State,omitempty" xml:"State,omitempty"`
+	// Pending (to be dialed)<br>
+	//
+	// Executing (dialing in progress)<br>
+	//
+	// Connected (contact succeeded)<br>
+	//
+	// Failed (contact failed)<br>
+	//
+	// Aborted (call stopped or canceled)<br>
+	//
+	// Forbidden (call prohibited by rule, such as blacklist)
+	//
+	// example:
+	//
+	// Pending
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s ListCasesRequest) String() string {

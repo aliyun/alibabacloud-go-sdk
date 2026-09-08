@@ -28,34 +28,56 @@ type iListHistoricalAgentReportRequest interface {
 }
 
 type ListHistoricalAgentReportRequest struct {
+	// The list of agent IDs. The list can contain 0 to 100 agent IDs.
+	//
 	// example:
 	//
 	// ["agent1@ccc-test", "agent2@ccc-test"]
 	AgentIdList *string `json:"AgentIdList,omitempty" xml:"AgentIdList,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MediaType  *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The media type. Default value: Audio. Other valid values: Chat and Video.
+	//
+	// example:
+	//
+	// VIDEO
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The page number. Valid values: 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size. Valid values: 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 100
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The skill group ID.
+	//
+	// example:
+	//
+	// wwtest@test_yunhu
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// The start time of the historical data to retrieve. Default value: 00:00 of the current day. The earliest allowed value is 180 days before the current time. The statistical time precision is hour-level, rounded down to the nearest hour. This is a closed interval. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1532448000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end time of the historical data to retrieve. Default value: the current time. The statistical time precision is hour-level, rounded up to the nearest hour. This is an open interval. For example, if the start time is 11:12:20 and the end time is 11:45:50, the aligned time range is [11:00:00, 12:00:00), which means greater than or equal to 11:00 and less than 12:00. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1532707199000

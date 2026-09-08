@@ -24,15 +24,111 @@ type iGetTurnServerListResponseBody interface {
 }
 
 type GetTurnServerListResponseBody struct {
+	// The response code.
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// A list of front-end access point servers.
+	//
+	// example:
+	//
+	// [
+	//
+	// 	{
+	//
+	// 		"region":"hangzhou",
+	//
+	// 		"name":"杭州",
+	//
+	// 		"domain":"turn-hz-ecs.ccc.aliyuncs.com",
+	//
+	// 		"cidr":"172.31.XX.XX/28"
+	//
+	// 	},
+	//
+	// 	{
+	//
+	// 		"region":"qingdao",
+	//
+	// 		"name":"青岛",
+	//
+	// 		"domain":"turn-qd-ecs.ccc.aliyuncs.com",
+	//
+	// 		"cidr":"172.31.XX.XX/28"
+	//
+	// 	},
+	//
+	// 	{
+	//
+	// 		"region":"shanghai",
+	//
+	// 		"name":"上海",
+	//
+	// 		"domain":"turn-sh-ecs.ccc.aliyuncs.com",
+	//
+	// 		"cidr":"172.31.XX.XX/28"
+	//
+	// 	},
+	//
+	// 	{
+	//
+	// 		"region":"chengdu",
+	//
+	// 		"name":"成都",
+	//
+	// 		"domain":"turn-cd-ecs.ccc.aliyuncs.com",
+	//
+	// 		"cidr":"172.31.XX.XX/28"
+	//
+	// 	},
+	//
+	// 	{
+	//
+	// 		"region":"beijing",
+	//
+	// 		"name":"北京",
+	//
+	// 		"domain":"turn-bj-ecs.ccc.aliyuncs.com",
+	//
+	// 		"cidr":"172.31.XX.XX/28"
+	//
+	// 	},
+	//
+	// 	{
+	//
+	// 		"region":"huanan",
+	//
+	// 		"name":"深圳",
+	//
+	// 		"domain":"turn-sz-ecs.ccc.aliyuncs.com",
+	//
+	// 		"cidr":"172.31.XX.XX/28"
+	//
+	// 	},
+	//
+	// 	{
+	//
+	// 		"region":"zhangbei",
+	//
+	// 		"name":"张北",
+	//
+	// 		"domain":"turn-zb-ecs.ccc.aliyuncs.com",
+	//
+	// 		"cidr":"172.31.XX.XX/28"
+	//
+	// 	}
+	//
+	// ]
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetTurnServerListResponseBody) String() string {

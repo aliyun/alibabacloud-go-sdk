@@ -22,16 +22,28 @@ type iGetVoicemailRecordingResponseBody interface {
 }
 
 type GetVoicemailRecordingResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *GetVoicemailRecordingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -101,10 +113,14 @@ func (s *GetVoicemailRecordingResponseBody) Validate() error {
 }
 
 type GetVoicemailRecordingResponseBodyData struct {
+	// Recording file name.
+	//
 	// example:
 	//
 	// voicemail.job-054ded02****.wav
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The OSS download URL of the recording file. Note that the download URL expires after 1 day.
+	//
 	// example:
 	//
 	// https://ccc-v2-online.oss-cn-shanghai.aliyuncs.com/ccc-record-mixed/ccc-test/2022/06/voicemail.job-054ded02****.wav?Expires=1656074923&OSSAccessKeyId=****&Signature=****

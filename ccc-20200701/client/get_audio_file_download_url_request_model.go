@@ -16,12 +16,16 @@ type iGetAudioFileDownloadUrlRequest interface {
 }
 
 type GetAudioFileDownloadUrlRequest struct {
+	// Audio resource ID, which uniquely identifies an audio file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// acc300c4-75c9-41ba-ba5e-2a365c96c248
 	AudioResourceId *string `json:"AudioResourceId,omitempty" xml:"AudioResourceId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

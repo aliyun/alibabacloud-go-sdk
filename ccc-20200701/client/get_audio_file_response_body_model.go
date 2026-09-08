@@ -22,16 +22,28 @@ type iGetAudioFileResponseBody interface {
 }
 
 type GetAudioFileResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Audio file data.
 	Data *GetAudioFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EEE26562-D921-5CB2-AE49-E4C45A42D432
@@ -101,27 +113,44 @@ func (s *GetAudioFileResponseBody) Validate() error {
 }
 
 type GetAudioFileResponseBodyData struct {
+	// Audio file name.
+	//
 	// example:
 	//
 	// test-file.wav
 	AudioFileName *string `json:"AudioFileName,omitempty" xml:"AudioFileName,omitempty"`
+	// Audio resource ID, the UUID of the audio file.
+	//
 	// example:
 	//
 	// c1a06b46-302a-4c6e-928b-a43c0df485cf
 	AudioResourceId *string `json:"AudioResourceId,omitempty" xml:"AudioResourceId,omitempty"`
+	// Creation Time of the audio resource.
+	//
 	// example:
 	//
 	// 2021-07-14 10:48:43.0
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Display name of the audio.
+	//
+	// example:
+	//
+	// 欢迎语
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Key of the audio resource file in OSS.
+	//
 	// example:
 	//
 	// ccc-test/test-file.wav
 	OssFileKey *string `json:"OssFileKey,omitempty" xml:"OssFileKey,omitempty"`
+	// Last Updated At of the audio resource.
+	//
 	// example:
 	//
 	// 2021-07-14 10:48:43.0

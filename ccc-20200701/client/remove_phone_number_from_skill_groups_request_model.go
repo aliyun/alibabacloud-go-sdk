@@ -18,18 +18,24 @@ type iRemovePhoneNumberFromSkillGroupsRequest interface {
 }
 
 type RemovePhoneNumberFromSkillGroupsRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The phone number to detach.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0101234****
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// List of skill group IDs to detach. Ensure that each skill group is already associated with the phone number.
+	//
 	// This parameter is required.
 	//
 	// example:

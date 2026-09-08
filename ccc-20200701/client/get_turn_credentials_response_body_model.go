@@ -24,17 +24,29 @@ type iGetTurnCredentialsResponseBody interface {
 }
 
 type GetTurnCredentialsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *GetTurnCredentialsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -113,10 +125,14 @@ func (s *GetTurnCredentialsResponseBody) Validate() error {
 }
 
 type GetTurnCredentialsResponseBodyData struct {
+	// The password.
+	//
 	// example:
 	//
 	// M0NQNG/uRUrfIxW7er/S9gKX****
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// 1602585817:****

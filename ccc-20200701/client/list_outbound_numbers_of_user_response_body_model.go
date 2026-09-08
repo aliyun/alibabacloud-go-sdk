@@ -22,16 +22,28 @@ type iListOutboundNumbersOfUserResponseBody interface {
 }
 
 type ListOutboundNumbersOfUserResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
 	Data *ListOutboundNumbersOfUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -101,15 +113,22 @@ func (s *ListOutboundNumbersOfUserResponseBody) Validate() error {
 }
 
 type ListOutboundNumbersOfUserResponseBodyData struct {
+	// A list of phone numbers.
 	List []*ListOutboundNumbersOfUserResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
@@ -174,7 +193,14 @@ func (s *ListOutboundNumbersOfUserResponseBodyData) Validate() error {
 }
 
 type ListOutboundNumbersOfUserResponseBodyDataList struct {
+	// The city where the phone number is located.
+	//
+	// example:
+	//
+	// 乐山
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// The phone number.
+	//
 	// example:
 	//
 	// 0830019****
@@ -186,7 +212,12 @@ type ListOutboundNumbersOfUserResponseBodyDataList struct {
 	ProviderDisplayName *string `json:"ProviderDisplayName,omitempty" xml:"ProviderDisplayName,omitempty"`
 	ProviderShortName   *string `json:"ProviderShortName,omitempty" xml:"ProviderShortName,omitempty"`
 	ProviderType        *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
-	Province            *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// The province where the phone number is located.
+	//
+	// example:
+	//
+	// 四川
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 
 func (s ListOutboundNumbersOfUserResponseBodyDataList) String() string {

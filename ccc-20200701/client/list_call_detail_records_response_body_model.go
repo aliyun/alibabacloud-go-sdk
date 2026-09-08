@@ -22,16 +22,28 @@ type iListCallDetailRecordsResponseBody interface {
 }
 
 type ListCallDetailRecordsResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListCallDetailRecordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -101,15 +113,22 @@ func (s *ListCallDetailRecordsResponseBody) Validate() error {
 }
 
 type ListCallDetailRecordsResponseBodyData struct {
+	// List of call records.
 	List []*ListCallDetailRecordsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count. A real numeric value is returned only when PageNumber is 1; otherwise, 0 is returned.
+	//
 	// example:
 	//
 	// 11
@@ -174,112 +193,212 @@ func (s *ListCallDetailRecordsResponseBodyData) Validate() error {
 }
 
 type ListCallDetailRecordsResponseBodyDataList struct {
+	// An additional broker number, which may be used in double-call scenarios.
+	//
 	// example:
 	//
 	// 0533128****
 	AdditionalBroker *string `json:"AdditionalBroker,omitempty" xml:"AdditionalBroker,omitempty"`
+	// A list of agent IDs, with multiple values separated by commas.
+	//
 	// example:
 	//
 	// agent@ccc-test
-	AgentIds   *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
+	AgentIds *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
+	// List of agent names involved in the call, separated by commas.
+	//
+	// example:
+	//
+	// 坐席小王
 	AgentNames *string `json:"AgentNames,omitempty" xml:"AgentNames,omitempty"`
+	// The intermediary number.
+	//
 	// example:
 	//
 	// 0533127****
 	Broker *string `json:"Broker,omitempty" xml:"Broker,omitempty"`
+	// Call duration. For inbound calls, timing starts when the call enters IVR. For outbound calls, timing starts when the call is connected. The unit is seconds.
+	//
 	// example:
 	//
 	// 30
 	CallDuration *string `json:"CallDuration,omitempty" xml:"CallDuration,omitempty"`
-	CallIds      *string `json:"CallIds,omitempty" xml:"CallIds,omitempty"`
+	// The Call-Id field in the underlying SIP protocol. If you need to obtain the call ID from the number provider side, you can retrieve it from this field.
+	//
+	// example:
+	//
+	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
+	CallIds *string `json:"CallIds,omitempty" xml:"CallIds,omitempty"`
+	// Called number.
+	//
 	// example:
 	//
 	// 1332315****
-	CalledNumber   *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// The callee\\"s location.
+	//
+	// example:
+	//
+	// 山东省-济南
 	CalleeLocation *string `json:"CalleeLocation,omitempty" xml:"CalleeLocation,omitempty"`
+	// Caller location.
+	//
+	// example:
+	//
+	// 北京市-北京
 	CallerLocation *string `json:"CallerLocation,omitempty" xml:"CallerLocation,omitempty"`
+	// Calling number.
+	//
 	// example:
 	//
 	// 0533128****
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// Reason for call termination.
+	//
 	// example:
 	//
 	// Success
 	ContactDisposition *string `json:"ContactDisposition,omitempty" xml:"ContactDisposition,omitempty"`
+	// Call ID.
+	//
 	// example:
 	//
 	// job-12515239414412****
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// Call type.
+	//
 	// example:
 	//
 	// Outbound
 	ContactType *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
-	DialingTime *int64  `json:"DialingTime,omitempty" xml:"DialingTime,omitempty"`
+	// Dial-up duration, in seconds.
+	//
+	// example:
+	//
+	// 0
+	DialingTime *int64 `json:"DialingTime,omitempty" xml:"DialingTime,omitempty"`
+	// Reason for failure to connect.
+	//
 	// example:
 	//
 	// NotConnected
 	EarlyMediaState *string `json:"EarlyMediaState,omitempty" xml:"EarlyMediaState,omitempty"`
+	// The time when the call was established. If the call was not established, this value is empty. The format is a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1532448000000
 	EstablishedTime *int64 `json:"EstablishedTime,omitempty" xml:"EstablishedTime,omitempty"`
-	HeldTime        *int64 `json:"HeldTime,omitempty" xml:"HeldTime,omitempty"`
+	// The hold duration, in seconds.
+	//
+	// example:
+	//
+	// 12
+	HeldTime *int64 `json:"HeldTime,omitempty" xml:"HeldTime,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// IVR duration, in seconds. This is the time interval from when the IVR starts until the call enters the agent queue (or the customer hangs up).
+	//
 	// example:
 	//
 	// 8
 	IvrTime *int64 `json:"IvrTime,omitempty" xml:"IvrTime,omitempty"`
+	// The queue duration, in seconds, measured from when the customer entered the agent queue until the agent started ringing (or the customer abandoned the call, the queue timed out, or the queue overflowed).
+	//
 	// example:
 	//
 	// 0
 	QueueTime *int64 `json:"QueueTime,omitempty" xml:"QueueTime,omitempty"`
+	// Recording duration, in seconds.
+	//
 	// example:
 	//
 	// 10
 	RecordingDuration *int64 `json:"RecordingDuration,omitempty" xml:"RecordingDuration,omitempty"`
+	// Indicates whether the recording has been generated. Returns false if the call was not established.
+	//
 	// example:
 	//
 	// true
 	RecordingReady *bool `json:"RecordingReady,omitempty" xml:"RecordingReady,omitempty"`
+	// The party that ended the call.
+	//
 	// example:
 	//
 	// customer
 	ReleaseInitiator *string `json:"ReleaseInitiator,omitempty" xml:"ReleaseInitiator,omitempty"`
-	ReleaseReason    *string `json:"ReleaseReason,omitempty" xml:"ReleaseReason,omitempty"`
+	// Hang-up reason for the channel, indicating why the current channel was disconnected. The value is derived from response codes defined in the SIP protocol. Customers should refer to the SIP protocol to analyze the hang-up reason.
+	//
+	// example:
+	//
+	// 486:USER_BUSY
+	ReleaseReason *string `json:"ReleaseReason,omitempty" xml:"ReleaseReason,omitempty"`
+	// The call end time, formatted as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1532707199000
 	ReleaseTime *int64 `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	// Ring duration, which is the time from when the agent\\"s phone starts ringing until the agent answers (or the customer hangs up), in seconds.
+	//
 	// example:
 	//
 	// 5
-	RingTime                *int64  `json:"RingTime,omitempty" xml:"RingTime,omitempty"`
+	RingTime *int64 `json:"RingTime,omitempty" xml:"RingTime,omitempty"`
+	// The satisfaction description, corresponding to the configuration of the satisfaction module in the satisfaction IVR. This is defined by the customer.
+	//
+	// example:
+	//
+	// 满意
 	SatisfactionDescription *string `json:"SatisfactionDescription,omitempty" xml:"SatisfactionDescription,omitempty"`
+	// Satisfaction rating, represented as a single-digit numeric value entered by the customer.
+	//
 	// example:
 	//
 	// 1
 	SatisfactionIndex *int32 `json:"SatisfactionIndex,omitempty" xml:"SatisfactionIndex,omitempty"`
+	// The channel used for the satisfaction survey.
+	//
 	// example:
 	//
 	// IVR
 	SatisfactionSurveyChannel *string `json:"SatisfactionSurveyChannel,omitempty" xml:"SatisfactionSurveyChannel,omitempty"`
+	// Indicates whether a satisfaction survey was initiated.
+	//
 	// example:
 	//
 	// true
 	SatisfactionSurveyOffered *bool `json:"SatisfactionSurveyOffered,omitempty" xml:"SatisfactionSurveyOffered,omitempty"`
+	// The IDs of the skill groups to which the agents participating in the call belong. Multiple skill group IDs are separated by commas.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
-	SkillGroupIds   *string `json:"SkillGroupIds,omitempty" xml:"SkillGroupIds,omitempty"`
+	SkillGroupIds *string `json:"SkillGroupIds,omitempty" xml:"SkillGroupIds,omitempty"`
+	// The names of the skill groups to which the agents participating in the call belong. Multiple skill group names are separated by commas.
+	//
+	// example:
+	//
+	// 测试技能组
 	SkillGroupNames *string `json:"SkillGroupNames,omitempty" xml:"SkillGroupNames,omitempty"`
+	// Call start time. For inbound calls, timing starts when the call enters IVR. For outbound calls, timing starts from dial-up. The format is a Unix string in milliseconds.
+	//
 	// example:
 	//
 	// 1532448000000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TalkTime  *int64 `json:"TalkTime,omitempty" xml:"TalkTime,omitempty"`
+	// Talk time, in seconds.
+	//
+	// example:
+	//
+	// 0
+	TalkTime *int64 `json:"TalkTime,omitempty" xml:"TalkTime,omitempty"`
+	// The customer\\"s waiting duration, which equals QueueTime plus RingTime. If the customer abandons the call during waiting, the value is 0. The unit is seconds.
+	//
 	// example:
 	//
 	// 5

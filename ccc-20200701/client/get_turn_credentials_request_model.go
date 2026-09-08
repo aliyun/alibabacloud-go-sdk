@@ -16,12 +16,16 @@ type iGetTurnCredentialsRequest interface {
 }
 
 type GetTurnCredentialsRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the agent. This parameter is optional. If you do not specify this parameter, the agent mapped to the current RAM user is used by default.
+	//
 	// example:
 	//
 	// agent@ccc-test

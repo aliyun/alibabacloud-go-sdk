@@ -18,16 +18,22 @@ type iGetTicketTemplateRequest interface {
 }
 
 type GetTicketTemplateRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Template ID.
+	//
 	// example:
 	//
 	// 4ca2e2-c8d19b82c-d7ce393ac8197d3ab
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Template version.
+	//
 	// example:
 	//
 	// 1703517780627

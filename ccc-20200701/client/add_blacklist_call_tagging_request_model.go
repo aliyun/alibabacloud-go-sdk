@@ -18,16 +18,22 @@ type iAddBlacklistCallTaggingRequest interface {
 }
 
 type AddBlacklistCallTaggingRequest struct {
+	// The ID of the Cloud Contact Center instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The call ID. If the phone number is encrypted and contains asterisks (\\*), specify the JobId. This parameter is not required for unencrypted numbers.
+	//
 	// example:
 	//
 	// job-6582589278232****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The phone number.
+	//
 	// This parameter is required.
 	//
 	// example:

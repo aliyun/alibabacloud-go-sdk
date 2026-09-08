@@ -20,20 +20,28 @@ type iListMultiChannelRecordingsRequest interface {
 }
 
 type ListMultiChannelRecordingsRequest struct {
+	// Agent call channel ID.
+	//
 	// example:
 	//
 	// ch-user-****-****-1772180844645-job-******
 	AgentChannelId *string `json:"AgentChannelId,omitempty" xml:"AgentChannelId,omitempty"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// Call ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-25920271311543****
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

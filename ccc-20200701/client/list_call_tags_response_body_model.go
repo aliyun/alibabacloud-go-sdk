@@ -22,16 +22,28 @@ type iListCallTagsResponseBody interface {
 }
 
 type ListCallTagsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
 	Data *ListCallTagsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BA03159C-E808-4FF1-B27E-A61B6E888D7F
@@ -101,15 +113,22 @@ func (s *ListCallTagsResponseBody) Validate() error {
 }
 
 type ListCallTagsResponseBodyData struct {
+	// The list of number tags.
 	List []*ListCallTagsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total count.
+	//
 	// example:
 	//
 	// 10
@@ -174,10 +193,14 @@ func (s *ListCallTagsResponseBodyData) Validate() error {
 }
 
 type ListCallTagsResponseBodyDataList struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the number tag.
+	//
 	// example:
 	//
 	// TagA

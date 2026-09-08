@@ -24,33 +24,52 @@ type iModifyAudioFileRequest interface {
 }
 
 type ModifyAudioFileRequest struct {
+	// Name of the audio file to be modified. You can specify new content for the audio file here.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// new-test-file.wav
 	AudioFileName *string `json:"AudioFileName,omitempty" xml:"AudioFileName,omitempty"`
+	// Audio resource ID, which uniquely identifies an audio file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// acc300c4-75c9-41ba-ba5e-2a365c96c248
 	AudioResourceId *string `json:"AudioResourceId,omitempty" xml:"AudioResourceId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Display name of the audio file. It must be 1 to 32 characters in length. The display name cannot be changed when modifying the audio file, so you must provide the original display name here.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 欢迎语
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The OSS key of the audio file to be modified.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test/new-test-file.wav
 	OssFileKey *string `json:"OssFileKey,omitempty" xml:"OssFileKey,omitempty"`
-	Usage      *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// Usage of the audio file. The default value is General (used in scenarios such as IVR). Other valid values include HoldMusic (hold music during call waiting).
+	//
+	// example:
+	//
+	// General
+	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
 }
 
 func (s ModifyAudioFileRequest) String() string {

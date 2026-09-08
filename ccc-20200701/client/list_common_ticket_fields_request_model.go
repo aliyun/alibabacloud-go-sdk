@@ -14,6 +14,8 @@ type iListCommonTicketFieldsRequest interface {
 }
 
 type ListCommonTicketFieldsRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

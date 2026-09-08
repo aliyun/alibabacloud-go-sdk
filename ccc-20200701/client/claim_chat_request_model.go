@@ -18,18 +18,24 @@ type iClaimChatRequest interface {
 }
 
 type ClaimChatRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the call.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// chat-65382141036853491
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Filter by skill group ID.
+	//
 	// This parameter is required.
 	//
 	// example:

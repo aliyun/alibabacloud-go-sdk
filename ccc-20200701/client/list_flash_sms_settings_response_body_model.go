@@ -24,17 +24,30 @@ type iListFlashSmsSettingsResponseBody interface {
 }
 
 type ListFlashSmsSettingsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
 	Data *ListFlashSmsSettingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A list of incorrect parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BA03159C-E808-4FF1-B27E-A61B6E888D7F
@@ -113,15 +126,22 @@ func (s *ListFlashSmsSettingsResponseBody) Validate() error {
 }
 
 type ListFlashSmsSettingsResponseBodyData struct {
+	// A list of configurations.
 	List []*ListFlashSmsSettingsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
@@ -186,18 +206,33 @@ func (s *ListFlashSmsSettingsResponseBodyData) Validate() error {
 }
 
 type ListFlashSmsSettingsResponseBodyDataList struct {
+	// Indicates whether flash SMS is enabled for the skill group.
+	//
+	// - **true**: enabled.
+	//
+	// - **false**: disabled.
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The skill group ID.
+	//
 	// example:
 	//
 	// skillgroup1@ccc-test
-	SkillGroupId   *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// The name of the skill group.
+	//
+	// example:
+	//
+	// 闪信测试技能组
 	SkillGroupName *string `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
 }
 

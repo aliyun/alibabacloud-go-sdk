@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// 废弃预测式外呼活动
+// Invoke AbortCampaign to stop the predictive outbound calling Activity corresponding to the specified Activity ID under the specified instance.
 //
 // @param request - AbortCampaignRequest
 //
@@ -55,6 +55,10 @@ func (client *Client) AbortCampaignWithContext(ctx context.Context, request *Abo
 	return _result, _err
 }
 
+// Summary:
+//
+// Call this operation to accept a chat.
+//
 // @param request - AcceptChatRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -101,7 +105,7 @@ func (client *Client) AcceptChatWithContext(ctx context.Context, request *Accept
 
 // Summary:
 //
-// 编辑呼入控制号码
+// Adds a blacklist tag to a specified phone number. You can use this feature with your Interactive Voice Response (IVR) settings to block frequent harassing calls.
 //
 // @param request - AddBlacklistCallTaggingRequest
 //
@@ -153,7 +157,7 @@ func (client *Client) AddBlacklistCallTaggingWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 追加联系人
+// Invoke AddCases to add an outbound call list to a predictive dialing activity identified by a specified ID under a specified instance.
 //
 // @param tmpReq - AddCasesRequest
 //
@@ -209,6 +213,10 @@ func (client *Client) AddCasesWithContext(ctx context.Context, tmpReq *AddCasesR
 	return _result, _err
 }
 
+// Summary:
+//
+// You can use the AddFeedback API to evaluate and rate AI features.
+//
 // @param request - AddFeedbackRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -267,7 +275,7 @@ func (client *Client) AddFeedbackWithContext(ctx context.Context, request *AddFe
 
 // Summary:
 //
-// 技能组添加号码
+// Adds one or more phone numbers to a skill group by calling AddNumbersToSkillGroup.
 //
 // @param request - AddNumbersToSkillGroupRequest
 //
@@ -323,7 +331,7 @@ func (client *Client) AddNumbersToSkillGroupWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 增加个人号码
+// You can invoke AddPersonalNumbersToUser to add one or more personal outbound numbers to a specified agent under a specified instance.
 //
 // @param request - AddPersonalNumbersToUserRequest
 //
@@ -375,7 +383,7 @@ func (client *Client) AddPersonalNumbersToUserWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 技能组添加号码
+// You can invoke AddPhoneNumberToSkillGroups to associate a phone number with one or more skill groups under a specified instance.
 //
 // @param request - AddPhoneNumberToSkillGroupsRequest
 //
@@ -427,7 +435,7 @@ func (client *Client) AddPhoneNumberToSkillGroupsWithContext(ctx context.Context
 
 // Summary:
 //
-// 添加号码
+// You can invoke AddPhoneNumbers to add one or more phone numbers to a specified instance.
 //
 // @param request - AddPhoneNumbersRequest
 //
@@ -545,7 +553,7 @@ func (client *Client) AddSchemaPropertyWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 技能组添加用户
+// You can invoke AddSkillGroupsToUser to add one or more skill groups to a specified agent under a specified instance.
 //
 // @param request - AddSkillGroupsToUserRequest
 //
@@ -595,6 +603,10 @@ func (client *Client) AddSkillGroupsToUserWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Use AddTicketTask to add a signature and assign an assignee.
+//
 // @param request - AddTicketTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -657,7 +669,7 @@ func (client *Client) AddTicketTaskWithContext(ctx context.Context, request *Add
 
 // Summary:
 //
-// 技能组添加用户
+// You can invoke AddUsersToSkillGroup to add one or more agents to the same skill group.
 //
 // @param request - AddUsersToSkillGroupRequest
 //
@@ -709,7 +721,11 @@ func (client *Client) AddUsersToSkillGroupWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 分析对话
+// Analyze the specified text-based conversation content and extract summary-related information, such as the title, keywords, summary, and other specified details.
+//
+// Description:
+//
+// This API can be used for both online chat sessions and voice sessions. When used for voice sessions, the real-time speech-to-text transcription feature must be enabled.
 //
 // @param request - AnalyzeConversationRequest
 //
@@ -765,7 +781,7 @@ func (client *Client) AnalyzeConversationWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 接电话
+// You can invoke AnswerCall to answer the call associated with a specified call ID under a specified instance.
 //
 // @param request - AnswerCallRequest
 //
@@ -821,7 +837,7 @@ func (client *Client) AnswerCallWithContext(ctx context.Context, request *Answer
 
 // Summary:
 //
-// 追加联系人
+// Adds cases to a predictive campaign in a specified instance.
 //
 // @param tmpReq - AppendCasesRequest
 //
@@ -883,7 +899,11 @@ func (client *Client) AppendCasesWithContext(ctx context.Context, tmpReq *Append
 //
 // Summary:
 //
-// 导入坐席
+// Call AssignUsers to import one or more RAM users into a specified instance. After the import, the RAM users become agents in the instance.
+//
+// Description:
+//
+// Accounts with RAM permissions can view all RAM users under an Alibaba Cloud account in the RAM console. You can access the RAM console at https\\://ram.console.aliyun.com/users.
 //
 // @param request - AssignUsersRequest
 //
@@ -947,7 +967,7 @@ func (client *Client) AssignUsersWithContext(ctx context.Context, request *Assig
 
 // Summary:
 //
-// # BargeInCall
+// You can invoke BargeInCall to forcibly insert into an ongoing call associated with a specified call ID under a specified instance. After the forced insertion succeeds, the original two-party call becomes a three-party conference call.
 //
 // @param request - BargeInCallRequest
 //
@@ -1011,7 +1031,7 @@ func (client *Client) BargeInCallWithContext(ctx context.Context, request *Barge
 
 // Summary:
 //
-// 盲转
+// Directly transfer a call to another agent, a skill group queue, or an external number. Direct transfer is also known as blind transfer or single-step transfer.
 //
 // @param request - BlindTransferRequest
 //
@@ -1195,7 +1215,7 @@ func (client *Client) BridgeRtcCallWithContext(ctx context.Context, request *Bri
 
 // Summary:
 //
-// 关注转-取消
+// You can invoke the CancelAttendedTransfer API to cancel an attended transfer. You can call this API at any time after initiating the attended transfer and before completing it, even if the transferee has already answered the call.
 //
 // @param request - CancelAttendedTransferRequest
 //
@@ -1251,7 +1271,7 @@ func (client *Client) CancelAttendedTransferWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 修改隐身状态(等同于仅外呼场景)
+// Changes an agent\\"s status to invisible. This is equivalent to the outbound-only mode.
 //
 // @param request - ChangeVisibilityRequest
 //
@@ -1303,7 +1323,7 @@ func (client *Client) ChangeVisibilityWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 修改坐席工作模式
+// You can invoke ChangeWorkMode to change the agent\\"s work mode.
 //
 // @param request - ChangeWorkModeRequest
 //
@@ -1367,7 +1387,7 @@ func (client *Client) ChangeWorkModeWithContext(ctx context.Context, request *Ch
 
 // Summary:
 //
-// 认领电话
+// Call the `ClaimCall` API to assign a call to an agent.
 //
 // @param request - ClaimCallRequest
 //
@@ -1429,6 +1449,10 @@ func (client *Client) ClaimCallWithContext(ctx context.Context, request *ClaimCa
 	return _result, _err
 }
 
+// Summary:
+//
+// You can call ClaimChat to claim the chat for a specified Job ID in a specified instance.
+//
 // @param request - ClaimChatRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1479,7 +1503,7 @@ func (client *Client) ClaimChatWithContext(ctx context.Context, request *ClaimCh
 
 // Summary:
 //
-// 辅导
+// You can invoke CoachCall to coach a specified agent in a specified call (identified by a call ID) under a specified instance. During the coaching session, the coached agent can hear the coach\\"s voice, but the customer cannot hear the coach\\"s voice.
 //
 // @param request - CoachCallRequest
 //
@@ -1543,7 +1567,7 @@ func (client *Client) CoachCallWithContext(ctx context.Context, request *CoachCa
 
 // Summary:
 //
-// 提交ivr流程
+// Commits a contact flow.
 //
 // @param request - CommitContactFlowRequest
 //
@@ -1603,7 +1627,7 @@ func (client *Client) CommitContactFlowWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 关注转-完成
+// You can invoke CompleteAttendedTransfer to complete a consultative transfer.
 //
 // @param request - CompleteAttendedTransferRequest
 //
@@ -1659,7 +1683,7 @@ func (client *Client) CompleteAttendedTransferWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 创建媒体文件
+// You can invoke CreateAudioFile to create an audio resource under a specified instance. The created audio resource can be used in the instance, such as selecting the audio file for playback during IVR.
 //
 // @param request - CreateAudioFileRequest
 //
@@ -1719,7 +1743,7 @@ func (client *Client) CreateAudioFileWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 创建会话小结
+// Use the CreateCallSummary operation to create a call summary.
 //
 // @param request - CreateCallSummaryRequest
 //
@@ -1775,7 +1799,7 @@ func (client *Client) CreateCallSummaryWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 批量创建号码标签
+// You can invoke CreateCallTags to create multiple call tags under a specified instance.
 //
 // @param request - CreateCallTagsRequest
 //
@@ -1823,7 +1847,7 @@ func (client *Client) CreateCallTagsWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// 创建预测式外呼活动
+// You can invoke CreateCampaign to create a predictive outbound calling activity under a specified instance.
 //
 // @param tmpReq - CreateCampaignRequest
 //
@@ -1997,7 +2021,7 @@ func (client *Client) CreateChatMediaUrlWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 创建ivr流程
+// Creates an IVR flow.
 //
 // @param request - CreateContactFlowRequest
 //
@@ -2059,7 +2083,7 @@ func (client *Client) CreateContactFlowWithContext(ctx context.Context, request 
 //
 // Summary:
 //
-// 创建呼入控制号码
+// You can invoke CreateCustomCallTagging to create one or more inbound number tags under a specified instance.
 //
 // @param request - CreateCustomCallTaggingRequest
 //
@@ -2107,7 +2131,7 @@ func (client *Client) CreateCustomCallTaggingWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 创建实例
+// Invoke CreateInstance to create a Cloud Contact Center instance.
 //
 // @param request - CreateInstanceRequest
 //
@@ -2229,7 +2253,7 @@ func (client *Client) CreateSchemaWithContext(ctx context.Context, tmpReq *Creat
 
 // Summary:
 //
-// 创建技能组
+// You can call CreateSkillGroup to create a skill group under a specified instance.
 //
 // @param request - CreateSkillGroupRequest
 //
@@ -2287,6 +2311,10 @@ func (client *Client) CreateSkillGroupWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Use CreateTicket to create a ticket.
+//
 // @param request - CreateTicketRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2353,7 +2381,11 @@ func (client *Client) CreateTicketWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// 创建坐席
+// Call the CreateUser operation to create a new agent in a specified instance.
+//
+// Description:
+//
+// Creating an agent is equivalent to creating a Resource Access Management (RAM) sub-account. Agents in Cloud Contact Center are mapped to RAM sub-accounts. Therefore, the parameters for creating an agent are similar to those for creating a RAM account. For example, LoginName is the logon name for the RAM account. Email is the email address associated with the RAM account. This email address receives an email containing the initial logon password for the RAM account.
 //
 // @param request - CreateUserRequest
 //
@@ -2445,7 +2477,7 @@ func (client *Client) CreateUserWithContext(ctx context.Context, request *Create
 
 // Summary:
 //
-// 删除语音文件
+// You can invoke DeleteAudioFile to delete the audio file associated with a specified audio resource ID under a specified instance.
 //
 // @param request - DeleteAudioFileRequest
 //
@@ -2493,7 +2525,7 @@ func (client *Client) DeleteAudioFileWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// 删除号码标签
+// You can invoke DeleteCallTag to delete a phone number tag under a specified instance.
 //
 // @param request - DeleteCallTagRequest
 //
@@ -2541,7 +2573,7 @@ func (client *Client) DeleteCallTagWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// 删除ivr流程
+// Deletes the specified contact flow.
 //
 // @param request - DeleteContactFlowRequest
 //
@@ -2593,7 +2625,7 @@ func (client *Client) DeleteContactFlowWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 删除呼入控制号码
+// You can invoke DeleteCustomCallTagging to delete the inbound number tag associated with a specified number under a specified instance.
 //
 // @param request - DeleteCustomCallTaggingRequest
 //
@@ -2891,7 +2923,7 @@ func (client *Client) DeleteSchemaPropertyWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 删除技能组
+// Invoke DeleteSkillGroup to delete the skill group associated with the specified skill group ID under the specified instance.
 //
 // @param request - DeleteSkillGroupRequest
 //
@@ -2941,6 +2973,10 @@ func (client *Client) DeleteSkillGroupWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a specified ticket.
+//
 // @param request - DeleteTicketRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2985,6 +3021,10 @@ func (client *Client) DeleteTicketWithContext(ctx context.Context, request *Dele
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a specified ticket template.
+//
 // @param request - DeleteTicketTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3081,6 +3121,10 @@ func (client *Client) DisableSchemaPropertyWithContext(ctx context.Context, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Use the DisableTicketTemplate operation to disable a ticket template. A disabled template cannot be selected when you create a new ticket.
+//
 // @param request - DisableTicketTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3127,7 +3171,7 @@ func (client *Client) DisableTicketTemplateWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 废弃当前IVR流程
+// Revoke contact flow editing and discard the associated draft.
 //
 // @param request - DiscardEditingContactFlowRequest
 //
@@ -3229,6 +3273,10 @@ func (client *Client) EnableSchemaPropertyWithContext(ctx context.Context, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// The EnableTicketTemplate operation publishes a ticket template. Published ticket templates can be used to create tickets.
+//
 // @param request - EnableTicketTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3275,7 +3323,7 @@ func (client *Client) EnableTicketTemplateWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 结束会议
+// You can invoke EndConference to make the specified agent exit the call associated with the specified call ID under the specified instance. The call must be in a conference state.
 //
 // @param request - EndConferenceRequest
 //
@@ -3377,7 +3425,7 @@ func (client *Client) ExportContactFlowWithContext(ctx context.Context, request 
 //
 // Summary:
 //
-// 导出全部呼入号码标签
+// You can invoke ExportCustomCallTagging to export all inbound number tags under a specified instance.
 //
 // @param request - ExportCustomCallTaggingRequest
 //
@@ -3421,7 +3469,7 @@ func (client *Client) ExportCustomCallTaggingWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 导出黑名单号码
+// The ExportDoNotCallNumbers operation exports a filtered list of do-not-call numbers from a specified instance.
 //
 // @param request - ExportDoNotCallNumbersRequest
 //
@@ -3471,6 +3519,10 @@ func (client *Client) ExportDoNotCallNumbersWithContext(ctx context.Context, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Use the FinishTicketTask operation to process tickets.
+//
 // @param request - FinishTicketTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3565,7 +3617,7 @@ func (client *Client) GetAccessChannelOfStagingWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取音频文件
+// Invoke GetAudioFile to obtain the audio file information corresponding to a specified audio resource ID under a specified instance.
 //
 // @param request - GetAudioFileRequest
 //
@@ -3613,7 +3665,7 @@ func (client *Client) GetAudioFileWithContext(ctx context.Context, request *GetA
 
 // Summary:
 //
-// 获取录音文件下载链接
+// Invoke GetAudioFileDownloadUrl to obtain the OSS download link for a specified audio resource under a specified instance.
 //
 // @param request - GetAudioFileDownloadUrlRequest
 //
@@ -3661,7 +3713,7 @@ func (client *Client) GetAudioFileDownloadUrlWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 获取录音文件上传参数
+// Invoke the GetAudioFileUploadParameters API to obtain audio file upload parameters. Before creating an audio file, you must first call this API to retrieve the upload parameters and then call CreateAudioFile to create the audio file. This API is typically invoked by the default public cloud CRM system provided by Cloud Contact Center. It is not recommended for integration customers to call this API directly, because file upload must be performed through a Page operation first; only after the upload is complete can the GetAudioFileUploadParameters API be called.
 //
 // @param request - GetAudioFileUploadParametersRequest
 //
@@ -3709,7 +3761,7 @@ func (client *Client) GetAudioFileUploadParametersWithContext(ctx context.Contex
 
 // Summary:
 //
-// 通话记录详情
+// You can invoke the GetCallDetailRecord operation to retrieve call details for a specific call ID within a specific instance.
 //
 // @param request - GetCallDetailRecordRequest
 //
@@ -3757,7 +3809,7 @@ func (client *Client) GetCallDetailRecordWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 获取预测式外呼活动信息
+// Gets a predictive outbound campaign by its ID from a specified instance.
 //
 // @param request - GetCampaignRequest
 //
@@ -3805,7 +3857,7 @@ func (client *Client) GetCampaignWithContext(ctx context.Context, request *GetCa
 
 // Summary:
 //
-// 获取预测试外呼号码配置文件上传链接
+// Invoke GetCaseFileUploadUrl to obtain the OSS upload parameters for a predictive outbound calling list file under a specified instance. When creating a predictive outbound calling Activity by importing a file, you must first invoke this API to retrieve the file upload parameters and then invoke the CreateCampaign API.
 //
 // @param request - GetCaseFileUploadUrlRequest
 //
@@ -3899,6 +3951,10 @@ func (client *Client) GetChatMediaUrlWithContext(ctx context.Context, request *G
 	return _result, _err
 }
 
+// Summary:
+//
+// Use GetChatRoutingProfile to retrieve the chat routing configuration.
+//
 // @param request - GetChatRoutingProfileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3941,7 +3997,7 @@ func (client *Client) GetChatRoutingProfileWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取ivr流程信息
+// Retrieve a specified contact flow.
 //
 // @param request - GetContactFlowRequest
 //
@@ -3993,7 +4049,7 @@ func (client *Client) GetContactFlowWithContext(ctx context.Context, request *Ge
 
 // Summary:
 //
-// 获取通话文本信息
+// Call GetConversationDetail to obtain the conversation details for the call corresponding to the specified contact ID within the specified instance. The instance and skill group must have quality inspection push enabled to obtain these details.
 //
 // @param request - GetConversationDetailRequest
 //
@@ -4093,7 +4149,7 @@ func (client *Client) GetDataChannelCredentialsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取黑名单文件上传地址
+// Invoke GetDoNotCallFileUploadParameters to obtain the upload parameters for a do-not-call file. When importing prohibited outbound call numbers through a file, you must first invoke this API to upload the do-not-call number file to the public OSS space of Cloud Contact Center, and then invoke ImportDoNotCallNumbers to execute the import.
 //
 // @param request - GetDoNotCallFileUploadParametersRequest
 //
@@ -4189,7 +4245,7 @@ func (client *Client) GetDocumentUploadParametersWithContext(ctx context.Context
 
 // Summary:
 //
-// 获取早媒体音频
+// Retrieve early-media audio recordings for a call in a specified Cloud Contact Center instance.
 //
 // @param request - GetEarlyMediaRecordingRequest
 //
@@ -4237,7 +4293,7 @@ func (client *Client) GetEarlyMediaRecordingWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 统计呼入号码信息
+// Invoke GetHistoricalCallerReport to retrieve the historical inbound call report for a specified calling number under a specified instance.
 //
 // @param request - GetHistoricalCallerReportRequest
 //
@@ -4293,7 +4349,7 @@ func (client *Client) GetHistoricalCallerReportWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取预测式外呼活动历史报表
+// You can invoke the GetHistoricalCampaignReport API to retrieve the historical data report of a predictive outbound calling activity corresponding to a specified ID under a specified instance.
 //
 // @param request - GetHistoricalCampaignReportRequest
 //
@@ -4333,7 +4389,7 @@ func (client *Client) GetHistoricalCampaignReportWithContext(ctx context.Context
 
 // Summary:
 //
-// 统计实例呼叫数据
+// You can invoke GetHistoricalInstanceReport to obtain the historical data report for a specified instance.
 //
 // @param request - GetHistoricalInstanceReportRequest
 //
@@ -4389,7 +4445,7 @@ func (client *Client) GetHistoricalInstanceReportWithContext(ctx context.Context
 
 // Summary:
 //
-// 获取实例信息
+// Retrieves the details of a Cloud Contact Center instance.
 //
 // @param request - GetInstanceRequest
 //
@@ -4433,7 +4489,7 @@ func (client *Client) GetInstanceWithContext(ctx context.Context, request *GetIn
 
 // Summary:
 //
-// 统计实例呼叫信息
+// You can call GetInstanceTrendingReport to retrieve the trend report for a specified instance.
 //
 // @param request - GetInstanceTrendingReportRequest
 //
@@ -4489,7 +4545,7 @@ func (client *Client) GetInstanceTrendingReportWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取IVR轨迹小结
+// Retrieve the IVR tracking summary.
 //
 // @param request - GetIvrTrackingSummaryRequest
 //
@@ -4537,7 +4593,7 @@ func (client *Client) GetIvrTrackingSummaryWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 获取登录信息
+// Invoke GetLoginDetails to obtain the agent\\"s logon information, including basic agent information, server address information, authentication information, and more. This API can only be invoked by the agent themselves; administrators are not permitted to invoke it on behalf of others.
 //
 // @param request - GetLoginDetailsRequest
 //
@@ -4589,7 +4645,7 @@ func (client *Client) GetLoginDetailsWithContext(ctx context.Context, request *G
 
 // Summary:
 //
-// 获取通话对应的录音, 用于播放和下载
+// You can invoke GetMonoRecording to obtain the single-track recording of a specified call under a specified instance. A single-track recording contains only one audio track, with both the agent-side and customer-side recordings merged into the same track in WAV format.
 //
 // @param request - GetMonoRecordingRequest
 //
@@ -4641,7 +4697,7 @@ func (client *Client) GetMonoRecordingWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 获取通话对应的录音, 用于分轨或者质检
+// You can invoke GetMultiChannelRecording to obtain the multi-track recording of a specified call under a specified instance. In the multi-track recording, the agent\\"s and customer\\"s audio are distributed across different sound channels. During each playback, only one sound channel can be played, meaning you can hear only one party\\"s voice. The format is MKV.
 //
 // @param request - GetMultiChannelRecordingRequest
 //
@@ -4689,7 +4745,7 @@ func (client *Client) GetMultiChannelRecordingWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询号码归属地
+// Invoke the GetNumberLocation API to obtain number location information.
 //
 // @param request - GetNumberLocationRequest
 //
@@ -4737,7 +4793,7 @@ func (client *Client) GetNumberLocationWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取预测式外呼实时状态
+// You can invoke GetRealtimeCampaignStats to retrieve real-time agent status data for a predictive outbound calling Activity with a specified ID under a specified instance.
 //
 // @param request - GetRealtimeCampaignStatsRequest
 //
@@ -4777,7 +4833,7 @@ func (client *Client) GetRealtimeCampaignStatsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 实时查询实例状态信息
+// You can invoke GetRealtimeInstanceStates to obtain the real-time status of a specified instance.
 //
 // @param request - GetRealtimeInstanceStatesRequest
 //
@@ -4873,7 +4929,7 @@ func (client *Client) GetSchemaWithContext(ctx context.Context, request *GetSche
 
 // Summary:
 //
-// 查询技能组
+// You can invoke GetSkillGroup to obtain information about the skill group corresponding to a specified skill group ID under a specified instance.
 //
 // @param request - GetSkillGroupRequest
 //
@@ -4919,6 +4975,10 @@ func (client *Client) GetSkillGroupWithContext(ctx context.Context, request *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the content of a session summary template.
+//
 // @param request - GetSummaryTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4963,6 +5023,10 @@ func (client *Client) GetSummaryTemplateWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves information about a specific ticket.
+//
 // @param request - GetTicketRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5007,6 +5071,10 @@ func (client *Client) GetTicketWithContext(ctx context.Context, request *GetTick
 	return _result, _err
 }
 
+// Summary:
+//
+// You can call GetTicketSummaryReport to retrieve a summary of ticket statuses.
+//
 // @param request - GetTicketSummaryReportRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5089,7 +5157,7 @@ func (client *Client) GetTicketSummaryReportWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 获取工单模版
+// Call GetTicketTemplate to retrieve ticket template definitions.
 //
 // @param request - GetTicketTemplateRequest
 //
@@ -5141,7 +5209,7 @@ func (client *Client) GetTicketTemplateWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取TURN服务的临时用户名和密码
+// Call GetTurnCredentials to get the connection credentials for a Cloud Contact Center Point of Presence (PoP). These credentials include a username and password for authentication. Connecting to Cloud Contact Center through a PoP improves network quality and stability.
 //
 // @param request - GetTurnCredentialsRequest
 //
@@ -5189,7 +5257,7 @@ func (client *Client) GetTurnCredentialsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取可用的TURN服务器列表
+// Call GetTurnServerList to get a list of front-end access points for Alibaba Cloud Contact Center. Connecting through these access points improves network quality and stability.
 //
 // @param request - GetTurnServerListRequest
 //
@@ -5233,7 +5301,7 @@ func (client *Client) GetTurnServerListWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 获取质检参数
+// Obtain the parameters related to offline quality inspection audio files. Normally, if the Customer has configured the quality inspection feature in Cloud Contact Center, the audio files requiring offline quality inspection and their corresponding parameters are automatically passed to Intelligent Quality Inspection. You only need to invoke this API to obtain the parameters for pushing quality inspection recordings when the Customer has not configured the quality inspection feature in Cloud Contact Center and wishes to manually push Cloud Contact Center call recordings to the quality inspection system.
 //
 // @param request - GetUploadAudioDataParamsRequest
 //
@@ -5273,7 +5341,7 @@ func (client *Client) GetUploadAudioDataParamsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 查询坐席
+// You can invoke GetUser to obtain the agent information corresponding to a specified agent ID under a specified instance.
 //
 // @param request - GetUserRequest
 //
@@ -5363,6 +5431,10 @@ func (client *Client) GetVideoWithContext(ctx context.Context, request *GetVideo
 	return _result, _err
 }
 
+// Summary:
+//
+// Call GetVisitorLoginDetails to retrieve login, server address, and authentication information for network service visitors.
+//
 // @param request - GetVisitorLoginDetailsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5417,7 +5489,7 @@ func (client *Client) GetVisitorLoginDetailsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 获取语音邮箱录音, 用于播放和下载
+// You can invoke GetVoicemailRecording to obtain the voicemail recording of a specified call under a specified instance. The recording is single-track and in WAV format.
 //
 // @param request - GetVoicemailRecordingRequest
 //
@@ -5465,7 +5537,7 @@ func (client *Client) GetVoicemailRecordingWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 保持通话
+// You can invoke HoldCall to hold the call associated with a specified call ID under a specified instance. After the call is held, it will be temporarily suspended, and the held party will hear hold music.
 //
 // @param request - HoldCallRequest
 //
@@ -5529,7 +5601,7 @@ func (client *Client) HoldCallWithContext(ctx context.Context, request *HoldCall
 
 // Summary:
 //
-// 导入管理员
+// Imports one or more admins to a specified instance. The caller must have the `AliyunCCCFullAccess` permission, which you can grant in the RAM console.
 //
 // @param request - ImportAdminsRequest
 //
@@ -5625,7 +5697,7 @@ func (client *Client) ImportContactFlowWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 导入自有线路号码
+// Imports your organization’s telephone line numbers. Before performing the first import, contact Cloud Contact Center technical support to add the numbers to the allowlist.
 //
 // @param request - ImportCorpNumbersRequest
 //
@@ -5691,7 +5763,7 @@ func (client *Client) ImportCorpNumbersWithContext(ctx context.Context, request 
 //
 // Summary:
 //
-// 文件导入呼入控制号码
+// You can invoke ImportCustomCallTagging to import multiple inbound number tags into a specified instance.
 //
 // @param request - ImportCustomCallTaggingRequest
 //
@@ -5739,7 +5811,7 @@ func (client *Client) ImportCustomCallTaggingWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 添加黑名单号码
+// Imports one or more do-not-call numbers to a specified instance. You can import numbers by manual entry or file upload.
 //
 // @param request - ImportDoNotCallNumbersRequest
 //
@@ -5847,7 +5919,7 @@ func (client *Client) ImportDocumentsWithContext(ctx context.Context, request *I
 
 // Summary:
 //
-// 导入ram用户
+// Import existing RAM users as contact center agents.
 //
 // @param request - ImportRamUsersRequest
 //
@@ -5907,7 +5979,7 @@ func (client *Client) ImportRamUsersWithContext(ctx context.Context, request *Im
 
 // Summary:
 //
-// 关注转-发起
+// Consultation transfer refers to transferring a call to another agent, a skill group queue, or an external number. It is also known as follow transfer or two-step transfer.
 //
 // @param request - InitiateAttendedTransferRequest
 //
@@ -6007,7 +6079,7 @@ func (client *Client) InitiateAttendedTransferWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 打断通话
+// You can invoke InterceptCall to forcibly disconnect the call associated with a specified call ID under a given instance. The call must be in the listener state, and the forced disconnection must be initiated by the listener. After the forced disconnection succeeds, the agent who was originally talking with the customer will be disconnected, and the agent who initiated the forced disconnection will replace the original agent and continue the conversation with the customer.
 //
 // @param request - InterceptCallRequest
 //
@@ -6071,7 +6143,7 @@ func (client *Client) InterceptCallWithContext(ctx context.Context, request *Int
 
 // Summary:
 //
-// 发起IVR认证流程
+// You can invoke LaunchAuthentication to temporarily transfer a call into a specified IVR flow. After invoking this API, the call enters an IVR interaction phase, which is commonly used for identity verification operations.
 //
 // @param request - LaunchAuthenticationRequest
 //
@@ -6135,7 +6207,7 @@ func (client *Client) LaunchAuthenticationWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 发起话后满意度调查IVR流程
+// Invoke LaunchSurvey to send a satisfaction survey. This operation causes the agent to hang up. If it is a voice-based satisfaction survey, the customer enters the IVR satisfaction survey flow after the agent hangs up and completes the satisfaction collection within the IVR flow. If it is an SMS-based satisfaction survey, the call ends and the customer receives a satisfaction survey text message.
 //
 // @param request - LaunchSurveyRequest
 //
@@ -6215,7 +6287,7 @@ func (client *Client) LaunchSurveyWithContext(ctx context.Context, request *Laun
 
 // Summary:
 //
-// 获取坐席状态记录列表
+// Invoke ListAgentStateLogs to obtain the status log list of a specified agent under a specified instance. Note that this API will soon expire. Use the override API ListRealtimeAgentStates instead.
 //
 // @param request - ListAgentStateLogsRequest
 //
@@ -6273,7 +6345,7 @@ func (client *Client) ListAgentStateLogsWithContext(ctx context.Context, request
 //
 // Summary:
 //
-// # ListAgentStates for ACC
+// You can invoke the ListAgentStates API to retrieve a list of agent statuses under a specified instance, filtered by specified conditions. This API is available only to specific Users. Other Customers are not recommended to invoke it.
 //
 // @param request - ListAgentStatesRequest
 //
@@ -6343,7 +6415,7 @@ func (client *Client) ListAgentStatesWithContext(ctx context.Context, request *L
 //
 // Summary:
 //
-// # ListAgentSummaryReportsSinceMidnight for acc
+// You can invoke the ListAgentSummaryReportsSinceMidnight API to retrieve agent historical data reports under a specified instance, filtered by given conditions. The statistics cover data from 00:00 of the current day up to the current time. This API is available only to specific users; other customers are not recommended to invoke it.
 //
 // @param request - ListAgentSummaryReportsSinceMidnightRequest
 //
@@ -6383,7 +6455,7 @@ func (client *Client) ListAgentSummaryReportsSinceMidnightWithContext(ctx contex
 
 // Summary:
 //
-// 获取预测式外呼呼叫记录
+// You can invoke ListAttempts to obtain the list of contact dialing records for a specified predictive outbound calling Activity under a specified instance.
 //
 // @param request - ListAttemptsRequest
 //
@@ -6423,7 +6495,7 @@ func (client *Client) ListAttemptsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 获取音频文件列表
+// Invoke ListAudioFiles to obtain the list of audio files under a specified instance.
 //
 // @param request - ListAudioFilesRequest
 //
@@ -6483,7 +6555,7 @@ func (client *Client) ListAudioFilesWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
-// 编辑呼入控制号码
+// Queries the blacklist tag status of specified numbers in a batch.
 //
 // @param request - ListBlacklistCallTaggingsRequest
 //
@@ -6531,7 +6603,7 @@ func (client *Client) ListBlacklistCallTaggingsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 坐席工作台坐席调用转接使用
+// You can invoke ListBriefSkillGroups to obtain the list of skill group summary information under a specified instance.
 //
 // @param request - ListBriefSkillGroupsRequest
 //
@@ -6591,7 +6663,11 @@ func (client *Client) ListBriefSkillGroupsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 获取通话详情
+// You can invoke ListCallDetailRecords to obtain a list of call details filtered by specified search conditions under a specified instance. This API is no longer iteratively updated. We recommend that you use the ListCallDetailRecordsV2 API instead.
+//
+// Description:
+//
+// To ensure query efficiency, the TotalCount field in the response data is populated only when the first page is queried. For other pages, this field returns 0.
 //
 // @param request - ListCallDetailRecordsRequest
 //
@@ -6715,7 +6791,11 @@ func (client *Client) ListCallDetailRecordsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 通话记录列表
+// Retrieves a list of call detail records that match the specified filter criteria for a specified instance.
+//
+// Description:
+//
+// ListCallDetailRecordsV2 is used to override the ListCallDetailRecords operation. New fields and query conditions will undergo continuous optimization in ListCallDetailRecordsV2. To ensure query efficiency, the TotalCount field in the response is populated only when you query the first page. For other pages, the value 0 is returned.
 //
 // @param request - ListCallDetailRecordsV2Request
 //
@@ -6861,6 +6941,10 @@ func (client *Client) ListCallDetailRecordsV2WithContext(ctx context.Context, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Use the ListCallSummaries operation to retrieve call summaries.
+//
 // @param tmpReq - ListCallSummariesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6913,7 +6997,7 @@ func (client *Client) ListCallSummariesWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// 列出号码标签
+// You can invoke ListCallTags to obtain all number tags under a specified instance.
 //
 // @param request - ListCallTagsRequest
 //
@@ -6965,7 +7049,7 @@ func (client *Client) ListCallTagsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 获取预测式外呼活动趋势报表
+// Obtain the trend report of the predictive outbound calling activity with the specified ID under the specified instance.
 //
 // @param request - ListCampaignTrendingReportRequest
 //
@@ -7005,7 +7089,7 @@ func (client *Client) ListCampaignTrendingReportWithContext(ctx context.Context,
 
 // Summary:
 //
-// 获取预测式外呼活动列表
+// Calls ListCampaigns to obtain the list of predictive dialing campaigns under a specified instance.
 //
 // @param request - ListCampaignsRequest
 //
@@ -7085,7 +7169,7 @@ func (client *Client) ListCampaignsWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 获取预测式外呼活动的联系人呼叫详情
+// Invoke ListCases to obtain the execution details list of the outbound contact list for the predictive dialing Activity corresponding to the specified ID under the specified instance.
 //
 // @param request - ListCasesRequest
 //
@@ -7147,6 +7231,10 @@ func (client *Client) ListCasesWithContext(ctx context.Context, request *ListCas
 	return _result, _err
 }
 
+// Summary:
+//
+// You can use ListCategories to retrieve category information.
+//
 // @param request - ListCategoriesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7195,6 +7283,10 @@ func (client *Client) ListCategoriesWithContext(ctx context.Context, request *Li
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the ticket field types that are defined for an instance.
+//
 // @param request - ListCommonTicketFieldsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7237,7 +7329,7 @@ func (client *Client) ListCommonTicketFieldsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 列表查询系统配置
+// Retrieves the config items for a specified instance.
 //
 // @param request - ListConfigItemsRequest
 //
@@ -7289,7 +7381,7 @@ func (client *Client) ListConfigItemsWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// 列表查询ivr流程
+// Call ListContactFlows to retrieve the IVR contact flows for a specified instance.
 //
 // @param request - ListContactFlowsRequest
 //
@@ -7359,7 +7451,7 @@ func (client *Client) ListContactFlowsWithContext(ctx context.Context, request *
 //
 // Summary:
 //
-// 列出呼入控制号码
+// You can invoke ListCustomCallTagging to obtain the list of inbound number marks under a specified instance.
 //
 // @param request - ListCustomCallTaggingRequest
 //
@@ -7419,7 +7511,7 @@ func (client *Client) ListCustomCallTaggingWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 列表查询可用设备
+// Obtain the device list of a specified agent under a specified instance.
 //
 // @param request - ListDevicesRequest
 //
@@ -7467,7 +7559,7 @@ func (client *Client) ListDevicesWithContext(ctx context.Context, request *ListD
 
 // Summary:
 //
-// 查询黑名单号码
+// Retrieves the list of prohibited outbound call numbers under a specified instance, filtered by specified search conditions.
 //
 // @param request - ListDoNotCallNumbersRequest
 //
@@ -7597,7 +7689,7 @@ func (client *Client) ListDocumentsWithContext(ctx context.Context, tmpReq *List
 
 // Summary:
 //
-// 查询反馈记录
+// Queries feedback records.
 //
 // @param request - ListFeedbacksRequest
 //
@@ -7643,6 +7735,10 @@ func (client *Client) ListFeedbacksWithContext(ctx context.Context, request *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// You can use ListFlashSmsApplication to obtain third-party flash SMS configuration information.
+//
 // @param request - ListFlashSmsApplicationsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7699,6 +7795,10 @@ func (client *Client) ListFlashSmsApplicationsWithContext(ctx context.Context, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Call the ListFlashSmsSettings operation to retrieve the flash SMS configurations for a specified skill group.
+//
 // @param tmpReq - ListFlashSmsSettingsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7763,7 +7863,7 @@ func (client *Client) ListFlashSmsSettingsWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 获取闪信模板列表
+// Use ListFlashSmsTemplates to retrieve flash SMS template information.
 //
 // @param request - ListFlashSmsTemplatesRequest
 //
@@ -7815,7 +7915,7 @@ func (client *Client) ListFlashSmsTemplatesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// # ListGroupChatMessages
+// Retrieves the records of group chat messages.
 //
 // @param request - ListGroupChatMessagesRequest
 //
@@ -7875,7 +7975,7 @@ func (client *Client) ListGroupChatMessagesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 列表查询历史作息报告
+// Retrieves historical data reports for one or more agents in a specified instance.
 //
 // @param request - ListHistoricalAgentReportRequest
 //
@@ -7949,7 +8049,7 @@ func (client *Client) ListHistoricalAgentReportWithContext(ctx context.Context, 
 
 // Summary:
 //
-// # ListHistoricalAgentSkillGroupReport
+// You can call ListHistoricalAgentSkillGroupReport to retrieve historical skill group reports for one or more agents in a specified instance.
 //
 // @param request - ListHistoricalAgentSkillGroupReportRequest
 //
@@ -8023,7 +8123,7 @@ func (client *Client) ListHistoricalAgentSkillGroupReportWithContext(ctx context
 
 // Summary:
 //
-// 技能组汇总报表
+// You can invoke ListHistoricalSkillGroupReport to obtain historical data reports for one or more skill groups under a specified instance.
 //
 // @param request - ListHistoricalSkillGroupReportRequest
 //
@@ -8093,7 +8193,11 @@ func (client *Client) ListHistoricalSkillGroupReportWithContext(ctx context.Cont
 
 // Summary:
 //
-// 查询实例列表
+// Invoke the ListInstances API to obtain the list of Cloud Contact Center instances under the current Alibaba Cloud account.
+//
+// Description:
+//
+// If a RAM user needs to invoke this API, the RAM user must have the "Manage Cloud Call Center (CCC)" permission (AliyunCCCFullAccess).
 //
 // @param request - ListInstancesRequest
 //
@@ -8141,7 +8245,7 @@ func (client *Client) ListInstancesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// 查询实例列表
+// You can invoke ListInstancesOfUser to obtain the list of Cloud Contact Center instances to which the User belongs.
 //
 // @param request - ListInstancesOfUserRequest
 //
@@ -8189,7 +8293,7 @@ func (client *Client) ListInstancesOfUserWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 查询坐席报表
+// You can invoke ListIntervalAgentReport to obtain the segment statistical report of a specified agent under a specified instance.
 //
 // @param request - ListIntervalAgentReportRequest
 //
@@ -8253,7 +8357,7 @@ func (client *Client) ListIntervalAgentReportWithContext(ctx context.Context, re
 
 // Summary:
 //
-// # ListIntervalAgentSkillGroupReport
+// Retrieves the interval-based statistical report for a specified agent in a specified instance.
 //
 // @param request - ListIntervalAgentSkillGroupReportRequest
 //
@@ -8293,7 +8397,7 @@ func (client *Client) ListIntervalAgentSkillGroupReportWithContext(ctx context.C
 
 // Summary:
 //
-// 查询实例报表
+// You can invoke ListIntervalInstanceReport to obtain the segment statistical report for a specified instance.
 //
 // @param request - ListIntervalInstanceReportRequest
 //
@@ -8349,7 +8453,7 @@ func (client *Client) ListIntervalInstanceReportWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询技能组报表
+// You can invoke ListIntervalSkillGroupReport to obtain the segment-based statistical report of a specified skill group under a specified instance.
 //
 // @param request - ListIntervalSkillGroupReportRequest
 //
@@ -8413,7 +8517,7 @@ func (client *Client) ListIntervalSkillGroupReportWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询ivr轨迹
+// Invoke ListIvrTrackingDetails to obtain the IVR tracking details of a specified call under a specified instance.
 //
 // @param request - ListIvrTrackingDetailsRequest
 //
@@ -8471,7 +8575,7 @@ func (client *Client) ListIvrTrackingDetailsWithContext(ctx context.Context, req
 //
 // Summary:
 //
-// # ListLegacyAgentEventLogs
+// You can invoke ListLegacyAgentEventLogs to obtain the list of 1.0 legacy agent event logs. This API is available only to specific Users, and other Customers are not recommended to invoke it.
 //
 // @param request - ListLegacyAgentEventLogsRequest
 //
@@ -8537,7 +8641,7 @@ func (client *Client) ListLegacyAgentEventLogsWithContext(ctx context.Context, r
 //
 // Summary:
 //
-// # ListLegacyAgentStatusLogs
+// You can invoke ListLegacyAgentStatusLogs to obtain the list of legacy agent status logs for version 1.0. This API is available only to specific Users, and other Customers are not recommended to invoke it.
 //
 // @param request - ListLegacyAgentStatusLogsRequest
 //
@@ -8661,7 +8765,7 @@ func (client *Client) ListLegacyAppraiseLogsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # ListLegacyQueueEventLogs
+// You can invoke ListLegacyQueueEventLogs to obtain the list of 1.0 legacy queue event logs. This API is available only to specific Users, and other Customers are not recommended to invoke it.
 //
 // @param request - ListLegacyQueueEventLogsRequest
 //
@@ -8725,7 +8829,7 @@ func (client *Client) ListLegacyQueueEventLogsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 获取单轨录音
+// Call ListMonoRecordings to retrieve single-track recordings for each party in a specified call under a specified instance. During a call, each party has a channel, and each channel generates a combined track recording in WAV format.
 //
 // @param request - ListMonoRecordingsRequest
 //
@@ -8781,7 +8885,7 @@ func (client *Client) ListMonoRecordingsWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 获取分轨录音
+// Call ListMultiChannelRecordings to retrieve the multi-channel recordings for each party in a specified call and instance. Each party has a call channel that corresponds to a multi-channel recording in MKV format.
 //
 // @param request - ListMultiChannelRecordingsRequest
 //
@@ -8837,7 +8941,7 @@ func (client *Client) ListMultiChannelRecordingsWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询消息推送记录
+// Query notification records that were not sent using Message Queue (MQ).
 //
 // @param request - ListNotificationRecordsRequest
 //
@@ -8885,7 +8989,7 @@ func (client *Client) ListNotificationRecordsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 该坐席可用的外呼号码列表
+// `ListOutboundNumbersOfUser` retrieves the outbound numbers for a specified agent in a specified instance.
 //
 // @param request - ListOutboundNumbersOfUserRequest
 //
@@ -8945,7 +9049,11 @@ func (client *Client) ListOutboundNumbersOfUserWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取个人外呼号码列表
+// You can invoke ListPersonalNumbersOfUser to obtain the list of personal outbound numbers for a specified agent under a specified instance. You can also use this API to retrieve the list of numbers that can be added as personal outbound numbers for an agent.
+//
+// Description:
+//
+// Note: If a number is already attached to a skill group, it will not appear in the list of numbers available as personal outbound numbers.
 //
 // @param request - ListPersonalNumbersOfUserRequest
 //
@@ -9009,7 +9117,7 @@ func (client *Client) ListPersonalNumbersOfUserWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 获取号码列表
+// You can invoke ListPhoneNumbers to obtain the phone number list under a specified instance.
 //
 // @param request - ListPhoneNumbersRequest
 //
@@ -9073,7 +9181,11 @@ func (client *Client) ListPhoneNumbersWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询技能组绑定的号码
+// You can invoke the ListPhoneNumbersOfSkillGroup API to obtain the list of phone numbers associated with a specified skill group under a specified instance. You can also use this API to query phone numbers that are not currently associated with the skill group but can be associated with it.
+//
+// Description:
+//
+// Note: If a phone number is already used as a personal outbound number, it will not appear in the list of numbers available for association with a skill group.
 //
 // @param request - ListPhoneNumbersOfSkillGroupRequest
 //
@@ -9141,7 +9253,7 @@ func (client *Client) ListPhoneNumbersOfSkillGroupWithContext(ctx context.Contex
 
 // Summary:
 //
-// 查询用户权限
+// Invoke ListPrivilegesOfUser to obtain the permissions owned by the current User.
 //
 // @param request - ListPrivilegesOfUserRequest
 //
@@ -9185,7 +9297,11 @@ func (client *Client) ListPrivilegesOfUserWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 列表查询ram用户
+// Lists RAM users that have not been imported into a specified instance.
+//
+// Description:
+//
+// A Resource Access Management (RAM) user can be imported as an agent into multiple Cloud Contact Center (CCC) instances. However, an agent can be associated with only one RAM account. When you create an agent in a CCC instance, a corresponding RAM account is also created. To avoid creating redundant RAM accounts when you set up a new instance, you can call the ListRamUsers operation to list RAM users that have not been imported into the instance. You can then call the operation that imports RAM users to add them to the new instance. This prevents creating unnecessary RAM accounts and conserves resources.
 //
 // @param request - ListRamUsersRequest
 //
@@ -9241,7 +9357,7 @@ func (client *Client) ListRamUsersWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// 列表查询坐席状态
+// You can invoke ListRealtimeAgentStates to obtain a real-time status data report for one or more specified agents in a specified instance.
 //
 // @param request - ListRealtimeAgentStatesRequest
 //
@@ -9331,7 +9447,7 @@ func (client *Client) ListRealtimeAgentStatesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 列表查询技能组状态报表
+// You can invoke ListRealtimeSkillGroupStates to obtain the real-time skill group status report for a specified instance.
 //
 // @param request - ListRealtimeSkillGroupStatesRequest
 //
@@ -9393,7 +9509,7 @@ func (client *Client) ListRealtimeSkillGroupStatesWithContext(ctx context.Contex
 
 // Summary:
 //
-// 列表查询历史通话记录
+// You can invoke ListRecentCallDetailRecords to obtain the list of recent call detail records for agents mapped to the current Resource Access Management (RAM) user under the specified instance.
 //
 // @param request - ListRecentCallDetailRecordsRequest
 //
@@ -9459,7 +9575,7 @@ func (client *Client) ListRecentCallDetailRecordsWithContext(ctx context.Context
 
 // Summary:
 //
-// 列表查询角色
+// You can invoke ListRoles to obtain all roles under a specified instance.
 //
 // @param request - ListRolesRequest
 //
@@ -9505,7 +9621,7 @@ func (client *Client) ListRolesWithContext(ctx context.Context, request *ListRol
 //
 // Summary:
 //
-// # ListSkillGroupStates for acc
+// You can invoke the ListSkillgroupStates API to obtain the status list of specified skill groups under a specified instance. This API is only available to specific Users, and other Customers are not recommended to invoke it.
 //
 // @param request - ListSkillGroupStatesRequest
 //
@@ -9547,7 +9663,7 @@ func (client *Client) ListSkillGroupStatesWithContext(ctx context.Context, reque
 //
 // Summary:
 //
-// # ListSkillGroupSummaryReportsSinceMidnight for acc
+// The `ListSkillgroupSummaryReportsSinceMidnight` operation retrieves historical summary reports, filtered by specified conditions, for skill groups in a specified instance. The report contains data from 00:00 (midnight) today to the time of the request. This operation is available to specific users only.
 //
 // @param request - ListSkillGroupSummaryReportsSinceMidnightRequest
 //
@@ -9587,7 +9703,7 @@ func (client *Client) ListSkillGroupSummaryReportsSinceMidnightWithContext(ctx c
 
 // Summary:
 //
-// 查询技能组列表
+// You can invoke ListSkillGroups to obtain the list of skill groups under a specified instance.
 //
 // @param request - ListSkillGroupsRequest
 //
@@ -9647,7 +9763,7 @@ func (client *Client) ListSkillGroupsWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// 查询用户技能组级别
+// You can use this API to retrieve the list of skill levels for skill groups associated with a specified agent under a specified instance. You can also use this API to query the list of skill groups that the agent can be associated with but is not currently associated with.
 //
 // @param request - ListSkillLevelsOfUserRequest
 //
@@ -9711,7 +9827,7 @@ func (client *Client) ListSkillLevelsOfUserWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 使用ListSmsMetadata获取短信配置信息。
+// Queries the details of SMS configurations.
 //
 // @param request - ListSmsMetadataRequest
 //
@@ -9809,6 +9925,10 @@ func (client *Client) ListTicketTasksWithContext(ctx context.Context, request *L
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a list of ticket templates.
+//
 // @param request - ListTicketTemplatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9869,6 +9989,10 @@ func (client *Client) ListTicketTemplatesWithContext(ctx context.Context, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves a list of tickets for an instance.
+//
 // @param request - ListTicketsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9967,7 +10091,7 @@ func (client *Client) ListTicketsWithContext(ctx context.Context, request *ListT
 
 // Summary:
 //
-// 获取未分配号码列表
+// You can invoke ListUnassignedNumbers to obtain the list of numbers under your Alibaba Cloud account that have not been assigned to an instance.
 //
 // @param request - ListUnassignedNumbersRequest
 //
@@ -10019,7 +10143,7 @@ func (client *Client) ListUnassignedNumbersWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 查询技能组级别列表
+// You can invoke the ListUserLevelsOfSkillGroup API to retrieve the list of agent skill levels under a specified skill group in a given instance. You can also use this API to retrieve the list of agents who can be associated with but are not currently associated with the specified skill group.
 //
 // @param request - ListUserLevelsOfSkillGroupRequest
 //
@@ -10083,7 +10207,7 @@ func (client *Client) ListUserLevelsOfSkillGroupWithContext(ctx context.Context,
 
 // Summary:
 //
-// 查询用户列表
+// Invoke ListUsers to obtain the agent list under a specified instance.
 //
 // @param request - ListUsersRequest
 //
@@ -10143,7 +10267,7 @@ func (client *Client) ListUsersWithContext(ctx context.Context, request *ListUse
 
 // Summary:
 //
-// # ListVisitorChatMessages
+// You can use ListVisitorChatMessages to retrieve visitor chat records.
 //
 // @param request - ListVisitorChatMessagesRequest
 //
@@ -10219,7 +10343,7 @@ func (client *Client) ListVisitorChatMessagesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 查询语音信箱列表
+// You can call the ListVoicemails operation to retrieve a list of voicemails for a specified instance.
 //
 // @param request - ListVoicemailsRequest
 //
@@ -10289,6 +10413,10 @@ func (client *Client) ListVoicemailsWithContext(ctx context.Context, request *Li
 	return _result, _err
 }
 
+// Summary:
+//
+// The ListWaitingChats operation allows agents to retrieve chats that are waiting in a queue to be assigned or claimed.
+//
 // @param request - ListWaitingChatsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10333,6 +10461,10 @@ func (client *Client) ListWaitingChatsWithContext(ctx context.Context, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// You can invoke MakeCall to initiate a call. The callee can be an internal agent or an external customer.
+//
 // @param request - MakeCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10411,7 +10543,7 @@ func (client *Client) MakeCallWithContext(ctx context.Context, request *MakeCall
 
 // Summary:
 //
-// 修改媒体文件
+// You can invoke ModifyAudioFile to modify the audio file associated with a specified audio resource ID under a given instance. You can update the audio file name, display name, and the OSS key of the audio file.
 //
 // @param request - ModifyAudioFileRequest
 //
@@ -10475,7 +10607,7 @@ func (client *Client) ModifyAudioFileWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// 修改活动外呼号码
+// Modifies the calling numbers for a batch prediction outbound campaign.
 //
 // @param tmpReq - ModifyCampaignNumbersRequest
 //
@@ -10537,7 +10669,7 @@ func (client *Client) ModifyCampaignNumbersWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
-// 编辑呼入控制号码
+// You can invoke ModifyCustomCallTagging to modify the description and attached number tags of an inbound number mark for a specified number under a specified instance.
 //
 // @param request - ModifyCustomCallTaggingRequest
 //
@@ -10593,7 +10725,7 @@ func (client *Client) ModifyCustomCallTaggingWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 修改实例
+// You can invoke ModifyInstance to modify a Cloud Contact Center instance.
 //
 // @param request - ModifyInstanceRequest
 //
@@ -10641,7 +10773,7 @@ func (client *Client) ModifyInstanceWithContext(ctx context.Context, request *Mo
 
 // Summary:
 //
-// 修改电话号码
+// You can invoke ModifyPhoneNumber to modify the information of a specified phone number under a specified instance, primarily to update the number\\"s usage and the attached contact flow ID.
 //
 // @param request - ModifyPhoneNumberRequest
 //
@@ -10697,7 +10829,7 @@ func (client *Client) ModifyPhoneNumberWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 修改技能组
+// You can invoke ModifySkillGroup to modify the information of a skill group associated with a specified skill group ID under a specified instance, primarily updating the skill group\\"s display name and description.
 //
 // @param request - ModifySkillGroupRequest
 //
@@ -10753,7 +10885,7 @@ func (client *Client) ModifySkillGroupWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 修改坐席技能组
+// Modify the skill level of a specified agent in one or more skill groups under a specified instance.
 //
 // @param request - ModifySkillLevelsOfUserRequest
 //
@@ -10805,7 +10937,7 @@ func (client *Client) ModifySkillLevelsOfUserWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 修改坐席
+// You can invoke ModifyUser to modify the information of a specified agent under a specified instance. You can modify the phone number, work mode, role, and agent ID.
 //
 // @param request - ModifyUserRequest
 //
@@ -10885,7 +11017,7 @@ func (client *Client) ModifyUserWithContext(ctx context.Context, request *Modify
 
 // Summary:
 //
-// 修改坐席技能组级别
+// You can invoke ModifyUserLevelsOfSkillGroup to modify the skill levels of one or more agents under a specified skill group in a specified instance.
 //
 // @param request - ModifyUserLevelsOfSkillGroupRequest
 //
@@ -10937,7 +11069,7 @@ func (client *Client) ModifyUserLevelsOfSkillGroupWithContext(ctx context.Contex
 
 // Summary:
 //
-// 通话监听
+// You can invoke MonitorCall to listen to a call associated with a specified call ID under a specified instance. The call must be in a state where both the agent and the customer are normally connected, and the agent initiating the listening must have permission to monitor the target agent.
 //
 // @param request - MonitorCallRequest
 //
@@ -10997,7 +11129,7 @@ func (client *Client) MonitorCallWithContext(ctx context.Context, request *Monit
 
 // Summary:
 //
-// 静音
+// You can invoke MuteCall to mute the call associated with a specified call ID under a specified instance. This operation can only be invoked by an agent who is in a talking state, and the agent can only mute themselves. After the agent mutes themselves, the customer will no longer hear the agent\\"s voice.
 //
 // @param request - MuteCallRequest
 //
@@ -11057,7 +11189,7 @@ func (client *Client) MuteCallWithContext(ctx context.Context, request *MuteCall
 
 // Summary:
 //
-// 暂停预测式外呼活动
+// Invoke PauseCampaign to pause the predictive outbound calling Activity corresponding to the specified ID under the specified instance.
 //
 // @param request - PauseCampaignRequest
 //
@@ -11105,7 +11237,7 @@ func (client *Client) PauseCampaignWithContext(ctx context.Context, request *Pau
 
 // Summary:
 //
-// 选择外呼号码
+// You can invoke PickOutboundNumbers to select an appropriate caller number based on the provided callee number. The number selection logic is controlled by an Intelligent algorithm.
 //
 // @param request - PickOutboundNumbersRequest
 //
@@ -11161,7 +11293,7 @@ func (client *Client) PickOutboundNumbersWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 轮询座席状态
+// Polls the agent status of a specified agent under a specified instance. This operation is typically invoked by the frontend agent Workbench to synchronize agent status.
 //
 // @param request - PollUserStatusRequest
 //
@@ -11329,7 +11461,7 @@ func (client *Client) ProcessCustomIMCallbackWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 发布ivr流程
+// Publishes a contact flow.
 //
 // @param request - PublishContactFlowRequest
 //
@@ -11381,7 +11513,7 @@ func (client *Client) PublishContactFlowWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 就绪/示闲
+// You can invoke ReadyForService to make a specified agent under a specified instance ready. After becoming ready, the agent enters the idle status.
 //
 // @param request - ReadyForServiceRequest
 //
@@ -11437,7 +11569,7 @@ func (client *Client) ReadyForServiceWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// 重拨
+// # Redial the number in the desensitized call record
 //
 // @param request - RedialCallRequest
 //
@@ -11509,7 +11641,7 @@ func (client *Client) RedialCallWithContext(ctx context.Context, request *Redial
 
 // Summary:
 //
-// 注册设备
+// Registers a Session Initiation Protocol (SIP) device with a specified agent in an instance. A SIP device can be a physical SIP phone or a softphone.
 //
 // @param request - RegisterDeviceRequest
 //
@@ -11565,7 +11697,7 @@ func (client *Client) RegisterDeviceWithContext(ctx context.Context, request *Re
 
 // Summary:
 //
-// 注册设备
+// Registers one or more SIP devices to specified agents in an instance. A SIP device can be a SIP phone or a SIP softphone.
 //
 // @param request - RegisterDevicesRequest
 //
@@ -11619,6 +11751,10 @@ func (client *Client) RegisterDevicesWithContext(ctx context.Context, request *R
 	return _result, _err
 }
 
+// Summary:
+//
+// Rejects a chat assigned to an agent.
+//
 // @param request - RejectChatRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11663,6 +11799,10 @@ func (client *Client) RejectChatWithContext(ctx context.Context, request *Reject
 	return _result, _err
 }
 
+// Summary:
+//
+// Use the RejectTicket operation to reject a ticket. The ticket creator can add information to a rejected ticket and then resubmit it.
+//
 // @param request - RejectTicketRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11713,7 +11853,7 @@ func (client *Client) RejectTicketWithContext(ctx context.Context, request *Reje
 
 // Summary:
 //
-// 释放对话
+// You can invoke ReleaseCall to hang up the call associated with a specified call ID under a specified instance. The invoker must be an agent and currently in a call.
 //
 // @param request - ReleaseCallRequest
 //
@@ -11771,6 +11911,10 @@ func (client *Client) ReleaseCallWithContext(ctx context.Context, request *Relea
 	return _result, _err
 }
 
+// Summary:
+//
+// The ReleaseChat operation ends the current chat.
+//
 // @param request - ReleaseChatRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11829,7 +11973,7 @@ func (client *Client) ReleaseChatWithContext(ctx context.Context, request *Relea
 
 // Summary:
 //
-// 编辑呼入控制号码
+// Removes the blacklist tag from a specified phone number.
 //
 // @param request - RemoveBlacklistCallTaggingRequest
 //
@@ -11881,7 +12025,7 @@ func (client *Client) RemoveBlacklistCallTaggingWithContext(ctx context.Context,
 
 // Summary:
 //
-// 删除黑名单号码
+// You can invoke RemoveDoNotCallNumbers to delete one or more Do Not Call number configuration items under a specified instance.
 //
 // @param request - RemoveDoNotCallNumbersRequest
 //
@@ -11929,7 +12073,7 @@ func (client *Client) RemoveDoNotCallNumbersWithContext(ctx context.Context, req
 
 // Summary:
 //
-// 移除个人号码
+// You can invoke RemovePersonalNumbersFromUser to delete one or more personal outbound numbers associated with a specified agent under a specified instance.
 //
 // @param request - RemovePersonalNumbersFromUserRequest
 //
@@ -11981,7 +12125,7 @@ func (client *Client) RemovePersonalNumbersFromUserWithContext(ctx context.Conte
 
 // Summary:
 //
-// 移除技能组下的电话号码
+// You can invoke RemovePhoneNumberFromSkillGroups to delete the binding relationship between a specified phone number and one or more skill groups under a given instance. This operation removes only the association between the phone number and the skill groups, not the actual phone number itself.
 //
 // @param request - RemovePhoneNumberFromSkillGroupsRequest
 //
@@ -12033,7 +12177,7 @@ func (client *Client) RemovePhoneNumberFromSkillGroupsWithContext(ctx context.Co
 
 // Summary:
 //
-// 移除电话号码
+// Removes one or more numbers from an instance. This action disassociates the numbers from the instance but does not permanently delete them. It also disassociates all associated resources, such as skill groups, contact flows, and agents.
 //
 // @param request - RemovePhoneNumbersRequest
 //
@@ -12085,7 +12229,7 @@ func (client *Client) RemovePhoneNumbersWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 移除技能组下的电话号码
+// You can invoke RemovePhoneNumbersFromSkillGroup to delete the association between one or more phone numbers and a specified skill group under a given instance.
 //
 // @param request - RemovePhoneNumbersFromSkillGroupRequest
 //
@@ -12137,7 +12281,7 @@ func (client *Client) RemovePhoneNumbersFromSkillGroupWithContext(ctx context.Co
 
 // Summary:
 //
-// 移除多个技能组下的坐席
+// You can invoke RemoveSkillGroupsFromUser to delete the association between one or more skill groups and a specified agent under a specified instance.
 //
 // @param request - RemoveSkillGroupsFromUserRequest
 //
@@ -12189,7 +12333,7 @@ func (client *Client) RemoveSkillGroupsFromUserWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 移除坐席
+// You can invoke RemoveUsers to delete one or more agents from a specified instance. This operation only detaches the RAM accounts from the instance and removes the agents mapped to those RAM accounts from the instance. It does not delete the RAM accounts themselves.
 //
 // @param request - RemoveUsersRequest
 //
@@ -12249,7 +12393,7 @@ func (client *Client) RemoveUsersWithContext(ctx context.Context, request *Remov
 
 // Summary:
 //
-// 移除坐席下的技能组
+// You can invoke RemoveUsersFromSkillGroup to delete the association between one or more agents and a specified skill group under a specified instance. This operation only removes the association between the skill group and the agents and does not delete the agents themselves.
 //
 // @param request - RemoveUsersFromSkillGroupRequest
 //
@@ -12301,7 +12445,7 @@ func (client *Client) RemoveUsersFromSkillGroupWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 重置坐席状态
+// Resets the state of a specific agent in a specific instance.
 //
 // @param request - ResetAgentStateRequest
 //
@@ -12353,7 +12497,7 @@ func (client *Client) ResetAgentStateWithContext(ctx context.Context, request *R
 
 // Summary:
 //
-// 重置坐席密码
+// Invoke ResetUserPassword to reset the logon password of a specified agent under a specified instance. In practice, agents do not have logon passwords; this operation actually modifies the logon password of the RAM account associated with the agent. This is typically used in scenarios where a customer service representative forgets the logon password of their RAM account.
 //
 // @param request - ResetUserPasswordRequest
 //
@@ -12405,7 +12549,7 @@ func (client *Client) ResetUserPasswordWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 录音解冻
+// Restores call recordings for the specified instance.
 //
 // @param request - RestoreArchivedRecordingsRequest
 //
@@ -12451,6 +12595,10 @@ func (client *Client) RestoreArchivedRecordingsWithContext(ctx context.Context, 
 	return _result, _err
 }
 
+// Summary:
+//
+// You can use the ResubmitTicket API to resubmit a rejected or returned ticket.
+//
 // @param request - ResubmitTicketRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12501,7 +12649,7 @@ func (client *Client) ResubmitTicketWithContext(ctx context.Context, request *Re
 
 // Summary:
 //
-// 恢复预测式外呼活动
+// Invoke ResumeCampaign to recover the predictive outbound calling Activity corresponding to the specified ID under the specified instance.
 //
 // @param request - ResumeCampaignRequest
 //
@@ -12549,7 +12697,7 @@ func (client *Client) ResumeCampaignWithContext(ctx context.Context, request *Re
 
 // Summary:
 //
-// 取回
+// You can invoke RetrieveCall to retrieve a call associated with a specified call ID under a specified instance. The call must be on hold for the retrieve operation to be performed.
 //
 // @param request - RetrieveCallRequest
 //
@@ -12665,7 +12813,7 @@ func (client *Client) SaveDocumentWithContext(ctx context.Context, request *Save
 
 // Summary:
 //
-// 客服侧数据收集
+// Invoke SaveRTCStatsV2 to report Web Real-Time Communication (WebRTC) voice transmission statistics information from the agent side. This API is not relevant for regular customers.
 //
 // @param request - SaveRTCStatsV2Request
 //
@@ -12729,7 +12877,7 @@ func (client *Client) SaveRTCStatsV2WithContext(ctx context.Context, request *Sa
 
 // Summary:
 //
-// 保存终端埋点日志
+// Invoke the SaveTerminalLog API to report agent-side log information. Regular customers do not need to be concerned with this API.
 //
 // @param request - SaveTerminalLogRequest
 //
@@ -12805,7 +12953,7 @@ func (client *Client) SaveTerminalLogWithContext(ctx context.Context, request *S
 
 // Summary:
 //
-// 客服侧数据收集
+// Invoke the SaveWebRTCStats API to report Web Real-Time Communication (WebRTC) voice transmission statistics information from the agent side. Regular customers do not need to concern themselves with this API.
 //
 // @param request - SaveWebRTCStatsRequest
 //
@@ -12869,7 +13017,7 @@ func (client *Client) SaveWebRTCStatsWithContext(ctx context.Context, request *S
 
 // Summary:
 //
-// 客服侧数据收集
+// Invoke the SaveWebRtcInfo API to report WebRTC call status information from the agent side, including call quality monitoring data, for backend statistics and monitoring. Customers do not need to concern themselves with this API.
 //
 // @param request - SaveWebRtcInfoRequest
 //
@@ -12929,7 +13077,7 @@ func (client *Client) SaveWebRtcInfoWithContext(ctx context.Context, request *Sa
 
 // Summary:
 //
-// 在接通的电话上发送DTMF信号
+// You can invoke SendDtmfSignaling to send DTMF keypress information during a call.
 //
 // @param request - SendDtmfSignalingRequest
 //
@@ -13053,7 +13201,7 @@ func (client *Client) SendNotificationWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 上线
+// You can invoke SignInGroup to sign an agent into a specified skill group under a specified instance, which is the operation for publishing the agent online.
 //
 // @param request - SignInGroupRequest
 //
@@ -13117,7 +13265,7 @@ func (client *Client) SignInGroupWithContext(ctx context.Context, request *SignI
 
 // Summary:
 //
-// 下线
+// You can call SignOutGroup to check out an agent from the skill group they are currently signed into, which is equivalent to performing an unpublish operation for the agent.
 //
 // @param request - SignOutGroupRequest
 //
@@ -13169,7 +13317,11 @@ func (client *Client) SignOutGroupWithContext(ctx context.Context, request *Sign
 
 // Summary:
 //
-// 双呼
+// You can invoke StartBack2BackCall to initiate a back-to-back call.
+//
+// Description:
+//
+// A back-to-back call differs from a traditional two-party call in that the caller does not directly call the callee. Instead, a Back-to-Back Agent is used. The Back-to-Back Agent first calls the caller, and after the connection is established, it calls the callee and then joins both parties into a single conference. In this mode, because all message streams of each call pass through the Back-to-Back Agent, the service provider (SP) can offer value-added services such as call timing, call recording, and number masking.
 //
 // @param request - StartBack2BackCallRequest
 //
@@ -13235,6 +13387,10 @@ func (client *Client) StartBack2BackCallWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts a chat session.
+//
 // @param tmpReq - StartChatRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13295,7 +13451,7 @@ func (client *Client) StartChatWithContext(ctx context.Context, tmpReq *StartCha
 
 // Summary:
 //
-// 开始会议
+// You can invoke StartConference to initiate a conference.
 //
 // @param request - StartConferenceRequest
 //
@@ -13355,7 +13511,7 @@ func (client *Client) StartConferenceWithContext(ctx context.Context, request *S
 
 // Summary:
 //
-// 编辑ivr流程
+// Start editing a contact flow and generate a draft version.
 //
 // @param request - StartEditContactFlowRequest
 //
@@ -13403,7 +13559,15 @@ func (client *Client) StartEditContactFlowWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// 开始预测试外呼
+// Invoke StartPredictiveCall to initiate predictive outbound calling.
+//
+// Description:
+//
+// In addition to supporting agents initiating outbound calls from the agent Workbench, Cloud Call Center also enables your Operational System backend to initiate outbound calls and transfer the call to an agent after it is answered. This allows you to seamlessly embed Cloud Call Center features into your Business Process.
+//
+// For example, your Customer can enter their phone number on your WeChat Official Account and click a button to inquire about a product. Your backend system then invokes this API to call the Customer’s Phone. After the call is connected, the system plays back the message: “We have received your inquiry about our product via the Official Account. We are now connecting you to an advisor. Please wait.” The call is then transferred to an appropriate agent.
+//
+// Compared with the DialEX API in version 1.0, this API offers greater flexibility in configuration. In addition to customizing the IVR for transfer-in, you can also pass custom parameters, which can be played back by voice within the IVR to support notification scenarios.
 //
 // @param request - StartPredictiveCallRequest
 //
@@ -13479,7 +13643,7 @@ func (client *Client) StartPredictiveCallWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 发起隐私呼叫
+// Starts a privacy call.
 //
 // @param request - StartPrivacyCallRequest
 //
@@ -13535,7 +13699,7 @@ func (client *Client) StartPrivacyCallWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 提交预测式外呼活动
+// Invoke SubmitCampaign to start the predictive outbound calling activity corresponding to the specified ID under the specified instance.
 //
 // @param request - SubmitCampaignRequest
 //
@@ -13583,7 +13747,7 @@ func (client *Client) SubmitCampaignWithContext(ctx context.Context, request *Su
 
 // Summary:
 //
-// 切换关注/咨询转到会议
+// You can invoke SwitchToConference to switch the status of a specified call under a specified instance to a three-party conference. This is typically used in scenarios where a consultation is converted into a conference.
 //
 // @param request - SwitchToConferenceRequest
 //
@@ -13639,7 +13803,7 @@ func (client *Client) SwitchToConferenceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 小休
+// You can invoke TakeBreak to set a specified agent in a specified instance to the break state.
 //
 // @param request - TakeBreakRequest
 //
@@ -13693,6 +13857,10 @@ func (client *Client) TakeBreakWithContext(ctx context.Context, request *TakeBre
 	return _result, _err
 }
 
+// Summary:
+//
+// Closes a ticket.
+//
 // @param request - TerminateTicketRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13741,6 +13909,10 @@ func (client *Client) TerminateTicketWithContext(ctx context.Context, request *T
 	return _result, _err
 }
 
+// Summary:
+//
+// You can call TransferTicketTask to transfer a ticket to another user.
+//
 // @param request - TransferTicketTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13799,7 +13971,7 @@ func (client *Client) TransferTicketTaskWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 取消静音
+// [responses_200_schema_properties_Data_properties_UserContext_properties_UserState_type]string
 //
 // @param request - UnmuteCallRequest
 //
@@ -13859,7 +14031,7 @@ func (client *Client) UnmuteCallWithContext(ctx context.Context, request *Unmute
 
 // Summary:
 //
-// 删除注册设备
+// You can invoke UnregisterDevice to delete the device registration record of a specified agent under a specified instance. After deletion, the SIP phone or SIP softphone associated with the agent becomes inactive.
 //
 // @param request - UnregisterDeviceRequest
 //
@@ -13907,7 +14079,7 @@ func (client *Client) UnregisterDeviceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 更新会话小结
+// Updates a call summary.
 //
 // @param request - UpdateCallSummaryRequest
 //
@@ -13959,7 +14131,7 @@ func (client *Client) UpdateCallSummaryWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 更新预测试外呼活动
+// Updates outbound campaign parameters.
 //
 // @param request - UpdateCampaignRequest
 //
@@ -14029,6 +14201,10 @@ func (client *Client) UpdateCampaignWithContext(ctx context.Context, request *Up
 	return _result, _err
 }
 
+// Summary:
+//
+// You can use UpdateChatRoutingProfile to configure session transfers.
+//
 // @param request - UpdateChatRoutingProfileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14075,7 +14251,7 @@ func (client *Client) UpdateChatRoutingProfileWithContext(ctx context.Context, r
 
 // Summary:
 //
-// 更新系统配置
+// Use the UpdateConfigItems operation to add or modify configuration items for an instance, such as hiding the caller ID for inbound calls or allowing agents to hang up.
 //
 // @param request - UpdateConfigItemsRequest
 //
@@ -14189,7 +14365,7 @@ func (client *Client) UpdateSchemaPropertyWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// # UpdateSubscription
+// Use the UpdateSubscription operation to configure message subscriptions.
 //
 // @param request - UpdateSubscriptionRequest
 //
@@ -14267,6 +14443,10 @@ func (client *Client) UpdateSubscriptionWithContext(ctx context.Context, request
 	return _result, _err
 }
 
+// Summary:
+//
+// UpdateTicket updates the content of a ticket.
+//
 // @param request - UpdateTicketRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14323,6 +14503,10 @@ func (client *Client) UpdateTicketWithContext(ctx context.Context, request *Upda
 	return _result, _err
 }
 
+// Summary:
+//
+// You can use WithdrawTicket to withdraw a ticket.
+//
 // @param request - WithdrawTicketRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions

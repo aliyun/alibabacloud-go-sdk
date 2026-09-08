@@ -22,26 +22,38 @@ type iListFlashSmsSettingsShrinkRequest interface {
 }
 
 type ListFlashSmsSettingsShrinkRequest struct {
+	// The ID of the CC instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number. The value ranges from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. The value ranges from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	PageSize               *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// A list of skill group IDs.
 	SkillGroupIdListShrink *string `json:"SkillGroupIdList,omitempty" xml:"SkillGroupIdList,omitempty"`
-	SkillGroupName         *string `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
+	// The name of the skill group.
+	//
+	// example:
+	//
+	// 闪信测试技能组
+	SkillGroupName *string `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
 }
 
 func (s ListFlashSmsSettingsShrinkRequest) String() string {

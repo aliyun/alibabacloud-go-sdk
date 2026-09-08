@@ -16,12 +16,16 @@ type iGetCaseFileUploadUrlRequest interface {
 }
 
 type GetCaseFileUploadUrlRequest struct {
+	// The file name of the predictive outbound calling Activity list. The name must consist of uppercase and lowercase English letters, and the file format must be CSV.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// case.csv
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

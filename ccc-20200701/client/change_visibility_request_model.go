@@ -18,16 +18,22 @@ type iChangeVisibilityRequest interface {
 }
 
 type ChangeVisibilityRequest struct {
+	// The ID of the Cloud Connect Center instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// szpczf
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to set the agent\\"s status to invisible.
+	//
 	// example:
 	//
 	// true
 	Invisible *bool `json:"Invisible,omitempty" xml:"Invisible,omitempty"`
+	// The ID of the agent.
+	//
 	// example:
 	//
 	// sam@szpczf

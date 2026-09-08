@@ -24,17 +24,30 @@ type iChangeWorkModeResponseBody interface {
 }
 
 type ChangeWorkModeResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ChangeWorkModeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Response parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 87731ED1-6224-48A5-99E3-6237FF9B1C00
@@ -113,36 +126,58 @@ func (s *ChangeWorkModeResponseBody) Validate() error {
 }
 
 type ChangeWorkModeResponseBodyData struct {
+	// Break status code, which can be either System-defined or Custom-defined. System-defined break codes include: Warm-up (temporary break state after agent is published and before becoming idle), RingingTimeout (break caused by agent ringing timeout), and RejectCall (break caused by agent rejecting a call). There are no restrictions on Custom-defined status codes; customers can define them according to their business needs.
+	//
 	// example:
 	//
 	// Warm-up
 	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	// Device ID, which is the identity of a browser-based Web Real-Time Communication (WebRTC) softphone or a physical phone device. Only one type of device can be registered at a time.
+	//
 	// example:
 	//
 	// ACC-YUNBS-1.0.10-****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Agent extension number.
+	//
 	// example:
 	//
 	// 8001****
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Call ID. If this field has a value, the agent is currently in a call.
+	//
+	// example:
+	//
+	// 无
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Indicates whether the agent has enabled outbound-only mode.
+	//
 	// example:
 	//
 	// false
-	OutboundScenario       *bool     `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	OutboundScenario *bool `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	// List of skill group IDs that the agent has signed into.
 	SignedSkillGroupIdList []*string `json:"SignedSkillGroupIdList,omitempty" xml:"SignedSkillGroupIdList,omitempty" type:"Repeated"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Agent status.
+	//
 	// example:
 	//
 	// OFFLINE
 	UserState *string `json:"UserState,omitempty" xml:"UserState,omitempty"`
+	// Work mode.
+	//
 	// example:
 	//
 	// ON_SITE

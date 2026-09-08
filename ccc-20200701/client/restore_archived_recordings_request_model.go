@@ -16,10 +16,14 @@ type iRestoreArchivedRecordingsRequest interface {
 }
 
 type RestoreArchivedRecordingsRequest struct {
+	// List of contact IDs, in JSON format.
+	//
 	// example:
 	//
 	// [\\"job-216750038017142784\\"]
 	ContactIds *string `json:"ContactIds,omitempty" xml:"ContactIds,omitempty"`
+	// Cloud Contact Center instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

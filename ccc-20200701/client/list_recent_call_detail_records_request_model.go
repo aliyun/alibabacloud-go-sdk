@@ -24,32 +24,44 @@ type iListRecentCallDetailRecordsRequest interface {
 }
 
 type ListRecentCallDetailRecordsRequest struct {
+	// Fuzzy search criteria in JSON object format. The object contains three properties that can be combined arbitrarily: phoneNumber (fuzzy search by calling or called number), callingNumber (fuzzy search by calling number), and calledNumber (fuzzy search by called number).
+	//
 	// example:
 	//
 	// {"phoneNumber":"1312121****","callingNumber":"1312121****","calledNumber":"1312121****"}
 	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
+	// End UNIX timestamp. The default value is the current time.
+	//
 	// example:
 	//
 	// 1604639129000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page ordinal number, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Start UNIX timestamp. The default value is the start time of the current day. The earliest allowed time is 180 days before the current time.
+	//
 	// example:
 	//
 	// 1604638129000

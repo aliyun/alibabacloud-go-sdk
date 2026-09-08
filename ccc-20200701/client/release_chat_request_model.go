@@ -22,24 +22,38 @@ type iReleaseChatRequest interface {
 }
 
 type ReleaseChatRequest struct {
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Job ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// chat-6538214103685****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Channel token for network services.
+	//
 	// example:
 	//
 	// 9XYGTGWtq2wFi_Bpg7aUnIoYi_vG_rO3bjEn0YtsxbHRHrYHlz1LDBLJAyZcLxieRQR4h_6AnWvTjJeNU5jg************Hwej7WgWrmA=
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// User ID. Visitor ID or agent ID.
+	//
 	// example:
 	//
 	// edbcf95a-ef9f-4296-a0a6-985ac9e36db3
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// User type.
+	//
+	// - CUSTOMER: visitor
+	//
+	// - AGENT: agent
+	//
 	// This parameter is required.
 	//
 	// example:

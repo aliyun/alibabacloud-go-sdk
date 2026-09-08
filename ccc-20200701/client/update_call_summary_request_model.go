@@ -18,13 +18,22 @@ type iUpdateCallSummaryRequest interface {
 }
 
 type UpdateCallSummaryRequest struct {
+	// Content to update.
+	//
+	// example:
+	//
+	// {"summaryTitle":"标题","summaryContent":"内容","keywords":"关键信息"}
 	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Summary ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,12 +16,16 @@ type iDeleteAudioFileRequest interface {
 }
 
 type DeleteAudioFileRequest struct {
+	// Audio resource ID, which is the UUID of the audio file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// d5cd7a94-3b6a-47d2-b7fd-0b1cd839bf77
 	AudioResourceId *string `json:"AudioResourceId,omitempty" xml:"AudioResourceId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

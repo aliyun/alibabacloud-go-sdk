@@ -20,18 +20,26 @@ type iStartChatShrinkRequest interface {
 }
 
 type StartChatShrinkRequest struct {
+	// The ID of the web service channel.
+	//
 	// example:
 	//
 	// cf584733-***-***-9699-cb77aa3b7aa6
 	AccessChannelId *string `json:"AccessChannelId,omitempty" xml:"AccessChannelId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The channel token for the web service.
+	//
 	// example:
 	//
 	// 9XYGTGWtq2wFi_Bpg7aUnIoYi_vG_rO3bjEn0YtsxbHRHrYHlz1LDBLJAyZcLxieRQR4h_6AnWvTjJeNU5jg************Hwej7WgWrmA=
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The information about chat members.
+	//
 	// This parameter is required.
 	UserListShrink *string `json:"UserList,omitempty" xml:"UserList,omitempty"`
 }

@@ -14,6 +14,8 @@ type iGetInstanceRequest interface {
 }
 
 type GetInstanceRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

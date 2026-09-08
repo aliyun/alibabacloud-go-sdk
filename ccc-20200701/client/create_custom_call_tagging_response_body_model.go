@@ -22,16 +22,28 @@ type iCreateCustomCallTaggingResponseBody interface {
 }
 
 type CreateCustomCallTaggingResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of inbound number tags that failed to be created.
 	Data []*CreateCustomCallTaggingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BA03159C-E808-4FF1-B27E-A61B6E888D7F
@@ -105,10 +117,14 @@ func (s *CreateCustomCallTaggingResponseBody) Validate() error {
 }
 
 type CreateCustomCallTaggingResponseBodyData struct {
+	// The number of the inbound number tag that failed to be created.
+	//
 	// example:
 	//
 	// 1312121****
 	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	// The reason why the creation of the inbound number tag failed.
+	//
 	// example:
 	//
 	// CUSTOM_NUMBER_DUPLICATED

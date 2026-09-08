@@ -22,16 +22,28 @@ type iListRealtimeAgentStatesResponseBody interface {
 }
 
 type ListRealtimeAgentStatesResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListRealtimeAgentStatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -101,15 +113,22 @@ func (s *ListRealtimeAgentStatesResponseBody) Validate() error {
 }
 
 type ListRealtimeAgentStatesResponseBodyData struct {
+	// List of real-time agent status data.
 	List []*ListRealtimeAgentStatesResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 1
@@ -174,54 +193,98 @@ func (s *ListRealtimeAgentStatesResponseBodyData) Validate() error {
 }
 
 type ListRealtimeAgentStatesResponseBodyDataList struct {
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent1@ccc-test
-	AgentId   *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// Agent name.
+	//
+	// example:
+	//
+	// 坐席小王
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// Break code.
+	//
+	// **Enumeration values:**
+	//
+	// - RingingTimeout: Break caused by agent ringing timeout.
+	//
+	// - RejectCall: Break caused by agent call rejection.
+	//
+	// - Warm-up: Temporary break state after the agent is published and before becoming idle.
+	//
+	// example:
+	//
+	// Warm-up
 	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	// Call type.
+	//
 	// example:
 	//
 	// Outbound
 	CallType *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	// Used in specific three-party scenarios, primarily for listener, coaching, and consultation. In three-party scenarios, it represents the third party—for example, the agent being monitored or coached in a listener or coaching scenario, or the agent or external number to which a call is transferred in a consultation scenario.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	CounterParty *string `json:"CounterParty,omitempty" xml:"CounterParty,omitempty"`
+	// Duration of the current status, in seconds.
+	//
 	// example:
 	//
 	// 16
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The agent\\"s extension number.
+	//
 	// example:
 	//
 	// 80317391
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The agent\\"s personal phone number.
+	//
 	// example:
 	//
 	// 1382114****
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// Whether the agent is in outbound-only mode.
+	//
 	// example:
 	//
 	// false
-	OutboundScenario   *bool     `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
-	SkillGroupIdList   []*string `json:"SkillGroupIdList,omitempty" xml:"SkillGroupIdList,omitempty" type:"Repeated"`
+	OutboundScenario *bool `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	// List of skill group IDs that the agent has signed into.
+	SkillGroupIdList []*string `json:"SkillGroupIdList,omitempty" xml:"SkillGroupIdList,omitempty" type:"Repeated"`
+	// List of skill group names that the agent has signed into.
 	SkillGroupNameList []*string `json:"SkillGroupNameList,omitempty" xml:"SkillGroupNameList,omitempty" type:"Repeated"`
+	// Agent status.
+	//
 	// example:
 	//
 	// ACW
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// Sub-status. In some scenarios, the agent\\"s status cannot be fully represented by the State field alone, so a sub-status is required for clarification. For example, when an agent is being monitored, State=Talking and StateCode=Monitoring.
+	//
 	// example:
 	//
 	// Monitored
 	StateCode *string `json:"StateCode,omitempty" xml:"StateCode,omitempty"`
+	// Time when the status started.
+	//
 	// example:
 	//
-	// 8
+	// 1696670640774
 	StateTime *int64 `json:"StateTime,omitempty" xml:"StateTime,omitempty"`
+	// Work mode.
+	//
 	// example:
 	//
 	// ON_SITE

@@ -24,17 +24,30 @@ type iStartConferenceResponseBody interface {
 }
 
 type StartConferenceResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *StartConferenceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// List of response parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// FDD327D1-AB8A-596B-883F-F63582A73F1D
@@ -113,7 +126,9 @@ func (s *StartConferenceResponseBody) Validate() error {
 }
 
 type StartConferenceResponseBodyData struct {
+	// Call context environment.
 	CallContext *StartConferenceResponseBodyDataCallContext `json:"CallContext,omitempty" xml:"CallContext,omitempty" type:"Struct"`
+	// Agent context environment.
 	UserContext *StartConferenceResponseBodyDataUserContext `json:"UserContext,omitempty" xml:"UserContext,omitempty" type:"Struct"`
 }
 
@@ -158,15 +173,22 @@ func (s *StartConferenceResponseBodyData) Validate() error {
 }
 
 type StartConferenceResponseBodyDataCallContext struct {
+	// Call type.
+	//
 	// example:
 	//
 	// OUTBOUND
-	CallType        *string                                                      `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	CallType *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	// List of call channels.
 	ChannelContexts []*StartConferenceResponseBodyDataCallContextChannelContexts `json:"ChannelContexts,omitempty" xml:"ChannelContexts,omitempty" type:"Repeated"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Call ID.
+	//
 	// example:
 	//
 	// job-6538214103685****
@@ -231,50 +253,74 @@ func (s *StartConferenceResponseBodyDataCallContext) Validate() error {
 }
 
 type StartConferenceResponseBodyDataCallContextChannelContexts struct {
+	// The call type of the channel.
+	//
 	// example:
 	//
 	// OUTBOUND
 	CallType *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	// Voice channel flags.
+	//
 	// example:
 	//
 	// MONITORING
 	ChannelFlags *string `json:"ChannelFlags,omitempty" xml:"ChannelFlags,omitempty"`
+	// The channel ID.
+	//
 	// example:
 	//
 	// ch:user:131888****->8001****:1609225718294:job-65700074013925376
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Status of the call channel.
+	//
 	// example:
 	//
 	// ANSWERED
 	ChannelState *string `json:"ChannelState,omitempty" xml:"ChannelState,omitempty"`
+	// The callee of the call channel.
+	//
 	// example:
 	//
 	// 8001****
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	// The call ID.
+	//
 	// example:
 	//
 	// job-6573574060089****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The calling party of the voice channel.
+	//
 	// example:
 	//
 	// 1318888****
 	Originator *string `json:"Originator,omitempty" xml:"Originator,omitempty"`
+	// The party that initiated the disconnection of the voice channel, indicating who first terminated the call.
+	//
 	// example:
 	//
 	// 1390501****
 	ReleaseInitiator *string `json:"ReleaseInitiator,omitempty" xml:"ReleaseInitiator,omitempty"`
+	// The release reason of the voice channel, indicating why the current voice channel was disconnected. The value is derived from the response codes defined in the SIP protocol. Customers should refer to the SIP protocol to analyze the disconnection reason.
+	//
 	// example:
 	//
 	// 404 - No destination
 	ReleaseReason *string `json:"ReleaseReason,omitempty" xml:"ReleaseReason,omitempty"`
+	// The UNIX timestamp indicating the most recent status change of the channel, in milliseconds.
+	//
 	// example:
 	//
 	// 1609138903315
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The extension number of the agent associated with the channel.
+	//
 	// example:
 	//
 	// 8032****
 	UserExtension *string `json:"UserExtension,omitempty" xml:"UserExtension,omitempty"`
+	// The agent ID associated with the voice channel. This field is empty if the channel belongs to a Customer.
+	//
 	// example:
 	//
 	// agent@ccc-test
@@ -402,55 +448,82 @@ func (s *StartConferenceResponseBodyDataCallContextChannelContexts) Validate() e
 }
 
 type StartConferenceResponseBodyDataUserContext struct {
+	// Break status code, which can be either System-defined or Custom-defined. System-defined break codes include: Warm-up (temporary break state after agent is published and before becoming idle), RingingTimeout (break due to agent ringing timeout), and RejectCall (break due to agent call rejection). There are no restrictions on Custom-defined status codes; customers can define them according to their business needs.
+	//
 	// example:
 	//
 	// Warm-up
 	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	// Device ID, the identity ID of a browser-based Web Real-Time Communication (WebRTC) softphone or a physical phone device. Only one type of device is allowed to register at a time.
+	//
 	// example:
 	//
 	// ACC-YUNBS-1.0.10-****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Device status.
+	//
 	// example:
 	//
 	// false
 	DeviceState *string `json:"DeviceState,omitempty" xml:"DeviceState,omitempty"`
+	// The agent\\"s extension number.
+	//
 	// example:
 	//
 	// 8032****
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The time when the last heartbeat was received from the agent, in Unix timestamp format with millisecond precision.
+	//
 	// example:
 	//
 	// 1609136956378
 	Heartbeat *int64 `json:"Heartbeat,omitempty" xml:"Heartbeat,omitempty"`
+	// instance ID.
+	//
 	// example:
 	//
 	// 1609136956378
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Call ID.
+	//
 	// example:
 	//
 	// job-6538214103685****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The agent\\"s personal phone number.
+	//
 	// example:
 	//
 	// 1324730****
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// Indicates whether the agent is in outbound-only mode.
+	//
 	// example:
 	//
 	// false
 	OutboundScenario *bool `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	// The time when the agent was most recently reserved. Being reserved means an incoming call will soon be assigned to this agent. The value is formatted as a Unix timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1609136956378
-	Reserved               *int64    `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	Reserved *int64 `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	// List of skill group IDs that the agent has signed into.
 	SignedSkillGroupIdList []*string `json:"SignedSkillGroupIdList,omitempty" xml:"SignedSkillGroupIdList,omitempty" type:"Repeated"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Agent status.
+	//
 	// example:
 	//
 	// TALKING
 	UserState *string `json:"UserState,omitempty" xml:"UserState,omitempty"`
+	// Work mode.
+	//
 	// example:
 	//
 	// ON_SITE

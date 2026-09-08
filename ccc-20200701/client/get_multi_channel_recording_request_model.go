@@ -16,12 +16,16 @@ type iGetMultiChannelRecordingRequest interface {
 }
 
 type GetMultiChannelRecordingRequest struct {
+	// Call ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-6538214103689****
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

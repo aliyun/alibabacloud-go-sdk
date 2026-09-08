@@ -22,16 +22,28 @@ type iListRecentCallDetailRecordsResponseBody interface {
 }
 
 type ListRecentCallDetailRecordsResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListRecentCallDetailRecordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -101,15 +113,22 @@ func (s *ListRecentCallDetailRecordsResponseBody) Validate() error {
 }
 
 type ListRecentCallDetailRecordsResponseBodyData struct {
+	// List of call records.
 	List []*ListRecentCallDetailRecordsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count. The actual total is returned only when PageNumber is 1; otherwise, it is 0.
+	//
 	// example:
 	//
 	// 11
@@ -174,46 +193,68 @@ func (s *ListRecentCallDetailRecordsResponseBodyData) Validate() error {
 }
 
 type ListRecentCallDetailRecordsResponseBodyDataList struct {
+	// List of agent IDs. Multiple values are separated by commas.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	AgentIds *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
+	// Call duration in seconds.
+	//
 	// example:
 	//
 	// 16
 	CallDuration *string `json:"CallDuration,omitempty" xml:"CallDuration,omitempty"`
+	// Called number.
+	//
 	// example:
 	//
 	// 1332315****
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// Calling number.
+	//
 	// example:
 	//
 	// 0533128****
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// The reason the call ended.
+	//
 	// example:
 	//
 	// Success
 	ContactDisposition *string `json:"ContactDisposition,omitempty" xml:"ContactDisposition,omitempty"`
+	// Call ID.
+	//
 	// example:
 	//
 	// job-7660472242845****
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// Call type.
+	//
 	// example:
 	//
 	// Outbound
 	ContactType *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
+	// Call duration in seconds.
+	//
 	// example:
 	//
 	// 16
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Skill groups to which the agent participating in the call belongs. Multiple skill groups are separated by commas.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
 	SkillGroupIds *string `json:"SkillGroupIds,omitempty" xml:"SkillGroupIds,omitempty"`
+	// Call start time. For inbound calls, it starts when the call enters IVR. For outbound calls, it starts when the call is answered. The format is a Unix timestamp string in milliseconds.
+	//
 	// example:
 	//
 	// 1532448000000

@@ -22,16 +22,28 @@ type iListRealtimeSkillGroupStatesResponseBody interface {
 }
 
 type ListRealtimeSkillGroupStatesResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListRealtimeSkillGroupStatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 26A34338-5CD9-4C95-A7A6-5BDCE76C6B94
@@ -101,15 +113,22 @@ func (s *ListRealtimeSkillGroupStatesResponseBody) Validate() error {
 }
 
 type ListRealtimeSkillGroupStatesResponseBodyData struct {
+	// List of real-time skill group status data.
 	List []*ListRealtimeSkillGroupStatesResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 2
@@ -174,48 +193,76 @@ func (s *ListRealtimeSkillGroupStatesResponseBodyData) Validate() error {
 }
 
 type ListRealtimeSkillGroupStatesResponseBodyDataList struct {
+	// Break statistics.
 	BreakCodeDetailList []*ListRealtimeSkillGroupStatesResponseBodyDataListBreakCodeDetailList `json:"BreakCodeDetailList,omitempty" xml:"BreakCodeDetailList,omitempty" type:"Repeated"`
+	// Number of agents currently on break.
+	//
 	// example:
 	//
 	// 0
 	BreakingAgents *int64 `json:"BreakingAgents,omitempty" xml:"BreakingAgents,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Number of agents currently logged in.
+	//
 	// example:
 	//
 	// 2
 	LoggedInAgents *int64 `json:"LoggedInAgents,omitempty" xml:"LoggedInAgents,omitempty"`
+	// Current maximum queue waiting time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	LongestWaitingTime *int64 `json:"LongestWaitingTime,omitempty" xml:"LongestWaitingTime,omitempty"`
+	// Number of agents in outbound-only mode and in an idle status.
+	//
 	// example:
 	//
 	// 0
 	OutboundScenarioReadyAgents *int64 `json:"OutboundScenarioReadyAgents,omitempty" xml:"OutboundScenarioReadyAgents,omitempty"`
+	// Number of agents currently idle.
+	//
 	// example:
 	//
 	// 2
 	ReadyAgents *int64 `json:"ReadyAgents,omitempty" xml:"ReadyAgents,omitempty"`
+	// Skill group ID.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// Skill group name.
+	//
 	// example:
 	//
 	// skillgroup
 	SkillGroupName *string `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
+	// Number of agents currently on a call.
+	//
 	// example:
 	//
 	// 0
 	TalkingAgents *int64 `json:"TalkingAgents,omitempty" xml:"TalkingAgents,omitempty"`
-	TotalAgents   *int64 `json:"TotalAgents,omitempty" xml:"TotalAgents,omitempty"`
+	// Total number of agents.
+	//
+	// example:
+	//
+	// 12
+	TotalAgents *int64 `json:"TotalAgents,omitempty" xml:"TotalAgents,omitempty"`
+	// Number of calls currently in the queue.
+	//
 	// example:
 	//
 	// 0
 	WaitingCalls *int64 `json:"WaitingCalls,omitempty" xml:"WaitingCalls,omitempty"`
+	// Number of agents currently in post-processing.
+	//
 	// example:
 	//
 	// 0
@@ -361,8 +408,18 @@ func (s *ListRealtimeSkillGroupStatesResponseBodyDataList) Validate() error {
 }
 
 type ListRealtimeSkillGroupStatesResponseBodyDataListBreakCodeDetailList struct {
+	// Break status code
+	//
+	// example:
+	//
+	// 客户自定义参数，比如午餐、会议等
 	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
-	Count     *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The number of times the break status occurred
+	//
+	// example:
+	//
+	// 1
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
 func (s ListRealtimeSkillGroupStatesResponseBodyDataListBreakCodeDetailList) String() string {

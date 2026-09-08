@@ -20,24 +20,32 @@ type iGetHistoricalCallerReportRequest interface {
 }
 
 type GetHistoricalCallerReportRequest struct {
+	// Calling number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1900000****
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Start time of the query, formatted as a UNIX timestamp in milliseconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1646841600000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// End time of the query, formatted as a UNIX timestamp in milliseconds.
+	//
 	// This parameter is required.
 	//
 	// example:

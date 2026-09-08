@@ -24,34 +24,46 @@ type iSendDtmfSignalingRequest interface {
 }
 
 type SendDtmfSignalingRequest struct {
+	// The channel ID of the call to which DTMF tones are to be sent.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ch:customer:0108989****->1318888****:1609234221870:job-6573574060089****
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Device ID. This parameter is meaningless and can be filled with any value.
+	//
 	// example:
 	//
 	// device
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// DTMF key information, which refers to the keys on a dial pad, including 0–9, \\*, and #.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5
 	Dtmf *string `json:"Dtmf,omitempty" xml:"Dtmf,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The call ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-6573574060089****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The agent ID that sends DTMF.
+	//
 	// example:
 	//
 	// agent@ccc-test

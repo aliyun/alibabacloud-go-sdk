@@ -22,17 +22,27 @@ type iListVisitorChatMessagesResponseBody interface {
 }
 
 type ListVisitorChatMessagesResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// OK
-	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data
 	Data *ListVisitorChatMessagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID
 	//
 	// example:
 	//
@@ -103,7 +113,10 @@ func (s *ListVisitorChatMessagesResponseBody) Validate() error {
 }
 
 type ListVisitorChatMessagesResponseBodyData struct {
+	// Message list
 	Messages []*ListVisitorChatMessagesResponseBodyDataMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	// Token for the next page
+	//
 	// example:
 	//
 	// 1737193352340::7463707254.EAUNIT
@@ -150,24 +163,52 @@ func (s *ListVisitorChatMessagesResponseBodyData) Validate() error {
 }
 
 type ListVisitorChatMessagesResponseBodyDataMessages struct {
+	// Message content
+	//
+	// example:
+	//
+	// {"variables":{},"text":"Hi，我是小云~ 很高兴遇见你！","contentType":"Text"}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Call ID
+	//
 	// example:
 	//
 	// chat-65382141036853491
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Sender profile picture URL
+	//
 	// example:
 	//
 	// http://xxxxx.com/avatar.png
 	SenderAvatarUrl *string `json:"SenderAvatarUrl,omitempty" xml:"SenderAvatarUrl,omitempty"`
+	// Sender user ID
+	//
 	// example:
 	//
 	// fcd020fe-****-1a272a174a7d
-	SenderId   *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	// Sender name
+	//
+	// example:
+	//
+	// 访客1
 	SenderName *string `json:"SenderName,omitempty" xml:"SenderName,omitempty"`
+	// Sender type
+	//
+	// Valid values:
+	//
+	// - **ADMIN**: system
+	//
+	// - **CUSTOMER**: visitor
+	//
+	// - **AGENT**: agent
+	//
 	// example:
 	//
 	// CUSTOMER
 	SenderType *string `json:"SenderType,omitempty" xml:"SenderType,omitempty"`
+	// UNIX timestamp
+	//
 	// example:
 	//
 	// 1696126980371

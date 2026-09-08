@@ -26,34 +26,48 @@ type iListDocumentsShrinkRequest interface {
 }
 
 type ListDocumentsShrinkRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// d278629c-c687-4aa3-b044-4fe9b012e7ef
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The token for the next page of results.
+	//
 	// example:
 	//
 	// eyJ0YWJsZUlkIjoiY2Y2MTQxYjA5NDY0NDUxMzk5YjFjMTA5YTMxZWNkMzEiLCJ0b2tlbiI6IjAwMDAwMDAwMDAwNzAzNzcifQ==
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 2
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EAF3C248-E123-441B-A545-B6CD02E98EED
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// schema id
+	// The schema ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// profile
-	SchemaId      *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The search conditional expression.
+	//
+	// example:
+	//
+	// 支持Lucene搜索语法
 	SearchPattern *string `json:"SearchPattern,omitempty" xml:"SearchPattern,omitempty"`
-	SortsShrink   *string `json:"Sorts,omitempty" xml:"Sorts,omitempty"`
+	// The custom sorting value.
+	SortsShrink *string `json:"Sorts,omitempty" xml:"Sorts,omitempty"`
 }
 
 func (s ListDocumentsShrinkRequest) String() string {

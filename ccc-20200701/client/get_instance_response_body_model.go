@@ -22,16 +22,28 @@ type iGetInstanceResponseBody interface {
 }
 
 type GetInstanceResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
 	Data *GetInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2778FA12-EDD6-42AA-9B15-AF855072E5E5
@@ -101,28 +113,50 @@ func (s *GetInstanceResponseBody) Validate() error {
 }
 
 type GetInstanceResponseBodyData struct {
+	// The list of administrators.
 	AdminList []*GetInstanceResponseBodyDataAdminList `json:"AdminList,omitempty" xml:"AdminList,omitempty" type:"Repeated"`
 	AgentType *string                                 `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
+	// The ID of the Alibaba Cloud account to which the instance belongs.
+	//
 	// example:
 	//
 	// 157123456789****
 	AliyunUid           *string                                         `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
 	ChatbotBusinessUnit *GetInstanceResponseBodyDataChatbotBusinessUnit `json:"ChatbotBusinessUnit,omitempty" xml:"ChatbotBusinessUnit,omitempty" type:"Struct"`
+	// The URL of the Cloud Contact Center instance homepage. This URL is formed by combining the base URL of Cloud Contact Center and the instance ID.
+	//
 	// example:
 	//
 	// https://ccc-v2.aliyun.com/#/workbench/ccc-test
-	ConsoleUrl  *string `json:"ConsoleUrl,omitempty" xml:"ConsoleUrl,omitempty"`
+	ConsoleUrl *string `json:"ConsoleUrl,omitempty" xml:"ConsoleUrl,omitempty"`
+	// The description of the instance.
+	//
+	// example:
+	//
+	// 云联络中心的测试实例。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The domain name of the instance. It is globally unique.
+	//
 	// example:
 	//
 	// ccc-test
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
-	Id         *string                                  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name       *string                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// 测试实例
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of numbers.
 	NumberList []*GetInstanceResponseBodyDataNumberList `json:"NumberList,omitempty" xml:"NumberList,omitempty" type:"Repeated"`
+	// The instance status.
+	//
 	// example:
 	//
 	// RUNNING
@@ -264,39 +298,62 @@ func (s *GetInstanceResponseBodyData) Validate() error {
 }
 
 type GetInstanceResponseBodyDataAdminList struct {
+	// The name of the administrator.
+	//
+	// example:
+	//
+	// 管理员
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The mailbox.
+	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The agent\\"s extension number.
+	//
 	// example:
 	//
 	// 8032****
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The agent\\"s logon name.
+	//
 	// example:
 	//
 	// agent
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	// The agent\\"s personal phone number.
+	//
 	// example:
 	//
 	// 1382114****
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// The role ID. The format is: Role\\@Instance ID.
+	//
 	// example:
 	//
 	// Admin@ccc-test
 	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// The role name.
+	//
 	// example:
 	//
 	// Admin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The work mode.
+	//
 	// example:
 	//
 	// ON_SITE
@@ -441,29 +498,52 @@ func (s *GetInstanceResponseBodyDataChatbotBusinessUnit) Validate() error {
 }
 
 type GetInstanceResponseBodyDataNumberList struct {
+	// Indicates whether the number is active.
+	//
 	// example:
 	//
 	// true
-	Active *bool   `json:"Active,omitempty" xml:"Active,omitempty"`
-	City   *string `json:"City,omitempty" xml:"City,omitempty"`
+	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The city where the number is registered.
+	//
+	// example:
+	//
+	// 乐山
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// The ID of the contact flow (IVR) associated with the phone number.
+	//
 	// example:
 	//
 	// 2ec7a58f-3243-4815-bb21-97b480b95f5e
 	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The phone number.
+	//
 	// example:
 	//
 	// 0830011****
-	Number      *string                                             `json:"Number,omitempty" xml:"Number,omitempty"`
-	Province    *string                                             `json:"Province,omitempty" xml:"Province,omitempty"`
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// The province where the number is registered.
+	//
+	// example:
+	//
+	// 四川
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// The list of skill groups associated with the number.
 	SkillGroups []*GetInstanceResponseBodyDataNumberListSkillGroups `json:"SkillGroups,omitempty" xml:"SkillGroups,omitempty" type:"Repeated"`
+	// The purpose of the number.
+	//
 	// example:
 	//
 	// Bidirection
 	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// The agent ID. If this parameter is not empty, the number is a personal outbound number for the agent.
+	//
 	// example:
 	//
 	// agent@ccc-test
@@ -573,24 +653,44 @@ func (s *GetInstanceResponseBodyDataNumberList) Validate() error {
 }
 
 type GetInstanceResponseBodyDataNumberListSkillGroups struct {
+	// The description of the skill group.
+	//
+	// example:
+	//
+	// 云联络中心的测试技能组。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the skill group.
+	//
+	// example:
+	//
+	// 测试技能组
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the skill group.
+	//
 	// example:
 	//
 	// skillgroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of phone numbers associated with the skill group.
+	//
 	// example:
 	//
 	// 1
 	PhoneNumberCount *int32 `json:"PhoneNumberCount,omitempty" xml:"PhoneNumberCount,omitempty"`
+	// The skill group ID.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// The number of agents associated with the skill group.
+	//
 	// example:
 	//
 	// 3

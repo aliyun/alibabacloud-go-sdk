@@ -24,17 +24,30 @@ type iListSmsMetadataResponseBody interface {
 }
 
 type ListSmsMetadataResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
 	Data *ListSmsMetadataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of incorrect parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8707EB29-BAED-4302-B999-40BA61877437
@@ -113,15 +126,22 @@ func (s *ListSmsMetadataResponseBody) Validate() error {
 }
 
 type ListSmsMetadataResponseBodyData struct {
+	// The list of SMS configurations.
 	List []*ListSmsMetadataResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 200
@@ -186,25 +206,50 @@ func (s *ListSmsMetadataResponseBodyData) Validate() error {
 }
 
 type ListSmsMetadataResponseBodyDataList struct {
+	// The Alibaba Cloud account ID.
+	//
 	// example:
 	//
 	// 15772400000****
-	AliyunUid   *int64  `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	AliyunUid *int64 `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	// The description of the configuration.
+	//
+	// example:
+	//
+	// 漏话短信配置
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the configuration.
+	//
+	// example:
+	//
+	// 漏话短信提醒
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The scenario type.
+	//
 	// example:
 	//
 	// MISSED_CALL_NOTIFICATION
 	Scenario *string `json:"Scenario,omitempty" xml:"Scenario,omitempty"`
+	// The name of the SMS signature.
+	//
+	// example:
+	//
+	// 云呼叫中心
 	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// The ID of the SMS configuration.
+	//
 	// example:
 	//
 	// 5ffc1c9a-4d3d-4019-*****-73255fb01d1c
 	SmsMetadataId *string `json:"SmsMetadataId,omitempty" xml:"SmsMetadataId,omitempty"`
+	// The template code.
+	//
 	// example:
 	//
 	// SMS_468xxxx298

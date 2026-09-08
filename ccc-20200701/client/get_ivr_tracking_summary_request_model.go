@@ -16,12 +16,16 @@ type iGetIvrTrackingSummaryRequest interface {
 }
 
 type GetIvrTrackingSummaryRequest struct {
+	// The call ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-489361145506897920
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

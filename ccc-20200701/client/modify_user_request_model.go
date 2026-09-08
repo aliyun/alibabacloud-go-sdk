@@ -32,34 +32,66 @@ type iModifyUserRequest interface {
 }
 
 type ModifyUserRequest struct {
+	// Agent profile picture URL.
+	//
+	// example:
+	//
+	// http://abc.com/sam.jpb
 	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	// Agent ID (employee ID).
+	//
 	// example:
 	//
 	// 1001
-	DisplayId   *string `json:"DisplayId,omitempty" xml:"DisplayId,omitempty"`
+	DisplayId *string `json:"DisplayId,omitempty" xml:"DisplayId,omitempty"`
+	// User\\"s full name.
+	//
+	// example:
+	//
+	// 张三疯
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Force       *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	// Whether to force the modification.
+	//
+	// example:
+	//
+	// true
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Agent\\"s personal phone number.
+	//
 	// example:
 	//
 	// 1382114****
-	Mobile   *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// Agent nickname
+	//
+	// example:
+	//
+	// 老王
 	Nickname *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	// Role ID, in the format: role\\@instance ID.
+	//
 	// example:
 	//
 	// Admin@ccc-test
 	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// Agent ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// user-test@ccc-test
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Work mode.
+	//
 	// This parameter is required.
 	//
 	// example:

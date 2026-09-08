@@ -16,12 +16,16 @@ type iListInstancesOfUserRequest interface {
 }
 
 type ListInstancesOfUserRequest struct {
+	// Paging ordinal number, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Paging size, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:

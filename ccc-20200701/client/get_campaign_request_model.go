@@ -16,12 +16,16 @@ type iGetCampaignRequest interface {
 }
 
 type GetCampaignRequest struct {
+	// The ID of the campaign.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6badb397-a8b5-40b6-21019d382a09
 	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

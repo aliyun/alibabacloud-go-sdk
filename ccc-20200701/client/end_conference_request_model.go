@@ -18,18 +18,24 @@ type iEndConferenceRequest interface {
 }
 
 type EndConferenceRequest struct {
+  // Instance ID.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 9cfad875-6260-4a53-ab6e-b13e3fb31f7d
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+  // Call ID.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // job-6538214103685****
   JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+  // Agent ID to leave the meeting. Optional. If not specified, defaults to the agent mapped to the current RAM account.
+  // 
   // example:
   // 
   // agent@ccc-test

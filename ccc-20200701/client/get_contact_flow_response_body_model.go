@@ -22,16 +22,28 @@ type iGetContactFlowResponseBody interface {
 }
 
 type GetContactFlowResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *GetContactFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2263B273-AC1B-44EB-BA98-87F2322C6780
@@ -101,40 +113,78 @@ func (s *GetContactFlowResponseBody) Validate() error {
 }
 
 type GetContactFlowResponseBodyData struct {
+	// The contact flow ID.
+	//
 	// example:
 	//
 	// 274601be-a6d5-4429-bcef-32b51d031c6e
 	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	// The time when the contact flow draft was created.
+	//
 	// example:
 	//
 	// 2021-07-14 10:48:43.0
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Definition  *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// IVR content.
+	//
+	// example:
+	//
+	// {"activities":[{"type":"INCOMING_CALL","id":"e98f0d47","name":"开始","properties":{"position":{"x":263,"y":164}},"events":[{"event":"complete","next":"2d3ad2c2","edgeId":"41f7dbd0"}],"nodeIndex":0},{"type":"HANGUP","id":"bd4f37e2","name":"挂机","properties":{"position":{"x":765,"y":185}},"events":[{"event":"complete","next":null}],"nodeIndex":999},{"type":"PLAY_SAY","id":"2d3ad2c2","name":"放音","properties":{"say":"您好，欢迎来到云联络中心。","audioResourceId":"","position":{"x":485.5,"y":153.5},"audioType":"tts","audioInterrupt":false},"events":[{"event":"complete","next":"bd4f37e2","edgeId":"e1af4f1f"}],"nodeIndex":1}],"description":""}
+	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The version description.
+	//
 	// example:
 	//
 	// 1.0
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The draft ID. This is the ID of the editable draft version for the current contact flow.
+	//
 	// example:
 	//
 	// 566399d7-5558-447c-a72f-9be2768b6a82
 	DraftId *string `json:"DraftId,omitempty" xml:"DraftId,omitempty"`
+	// The agent login name of the current editor of this draft.
+	//
 	// example:
 	//
 	// editor-xxx
 	Editor *string `json:"Editor,omitempty" xml:"Editor,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The IVR name.
+	//
+	// example:
+	//
+	// 欢迎语
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether the contact flow is published.
+	//
+	// True: Published
+	//
+	// False: Not published
+	//
 	// example:
 	//
 	// False
 	Published *bool `json:"Published,omitempty" xml:"Published,omitempty"`
+	// The flow type:<br>
+	//
+	// MAIN_FLOW (main flow)<br>
+	//
+	// SUB_FLOW (child flow)<br>
+	//
+	// SURVEY_FLOW (survey flow)<br><br><br>
+	//
 	// example:
 	//
 	// MAIN_FLOW
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the contact flow was last updated.
+	//
 	// example:
 	//
 	// 2021-07-14 10:48:43.0

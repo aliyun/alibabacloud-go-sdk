@@ -22,23 +22,36 @@ type iStartConferenceRequest interface {
 }
 
 type StartConferenceRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// A JSON-formatted string representing an array of participants. Each array element represents a participant. For internal calls to agents, the participant is the target agent\\"s extension number. For external calls to customers, the participant is the customer\\"s phone number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ["8045****","1317511****"]
 	ParticipantListJson *string `json:"ParticipantListJson,omitempty" xml:"ParticipantListJson,omitempty"`
-	Tags                *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// Ingest endpoint data. It cannot exceed 128 bytes and is primarily used for extension requirements. Ordinary customers do not need to concern themselves with it.
+	//
+	// example:
+	//
+	// 无
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// Timeout period. If the call is not answered within the time specified by this parameter, it will be automatically disconnected. This parameter is optional. The default value is 30 seconds.
+	//
 	// example:
 	//
 	// 30
 	TimeoutSeconds *int32 `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	// The agent ID initiating the conference call. This parameter is optional. If not specified, the agent mapped to the current RAM account is used by default.
+	//
 	// example:
 	//
 	// agent@ccc-test

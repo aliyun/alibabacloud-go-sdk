@@ -18,18 +18,24 @@ type iAddPhoneNumberToSkillGroupsRequest interface {
 }
 
 type AddPhoneNumberToSkillGroupsRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Phone number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0101234****
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// List of skill group IDs.
+	//
 	// This parameter is required.
 	//
 	// example:

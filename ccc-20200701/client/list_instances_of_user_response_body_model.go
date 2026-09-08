@@ -22,16 +22,28 @@ type iListInstancesOfUserResponseBody interface {
 }
 
 type ListInstancesOfUserResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListInstancesOfUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 3969FC68-CEC2-4398-B76A-60D2F7EDEBAF
@@ -101,15 +113,22 @@ func (s *ListInstancesOfUserResponseBody) Validate() error {
 }
 
 type ListInstancesOfUserResponseBodyData struct {
+	// List.
 	List []*ListInstancesOfUserResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 10
@@ -174,26 +193,48 @@ func (s *ListInstancesOfUserResponseBodyData) Validate() error {
 }
 
 type ListInstancesOfUserResponseBodyDataList struct {
+	// Administrator list.
 	AdminList []*ListInstancesOfUserResponseBodyDataListAdminList `json:"AdminList,omitempty" xml:"AdminList,omitempty" type:"Repeated"`
+	// The Alibaba Cloud Account ID to which the instance belongs.
+	//
 	// example:
 	//
 	// 157123456789****
 	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	// The URL of the Cloud Contact Center instance, used to access the homepage of the Cloud Contact Center instance. It consists of the specific Cloud Contact Center URL followed by the instance ID.
+	//
 	// example:
 	//
 	// https://ccc-v2.aliyun.com/#/workbench/ccc-test
-	ConsoleUrl  *string `json:"ConsoleUrl,omitempty" xml:"ConsoleUrl,omitempty"`
+	ConsoleUrl *string `json:"ConsoleUrl,omitempty" xml:"ConsoleUrl,omitempty"`
+	// The instance description.
+	//
+	// example:
+	//
+	// 云联络中心的测试实例。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The domain name of the instance, which is globally unique.
+	//
 	// example:
 	//
 	// ccc-test
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
-	Id         *string                                              `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name       *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// 测试实例
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// List of numbers.
 	NumberList []*ListInstancesOfUserResponseBodyDataListNumberList `json:"NumberList,omitempty" xml:"NumberList,omitempty" type:"Repeated"`
+	// Instance status.
+	//
 	// example:
 	//
 	// RUNNING
@@ -312,39 +353,62 @@ func (s *ListInstancesOfUserResponseBodyDataList) Validate() error {
 }
 
 type ListInstancesOfUserResponseBodyDataListAdminList struct {
+	// The administrator\\"s name.
+	//
+	// example:
+	//
+	// 测试坐席
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Mailbox.
+	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Agent extension number.
+	//
 	// example:
 	//
 	// 8032****
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Agent logon name.
+	//
 	// example:
 	//
 	// agent
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	// The agent\\"s personal phone number.
+	//
 	// example:
 	//
 	// 1382114****
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// The role ID, in the format: role\\@instance ID.
+	//
 	// example:
 	//
 	// Admin@ccc-test
 	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// Role name.
+	//
 	// example:
 	//
 	// Admin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Work mode.
+	//
 	// example:
 	//
 	// ON_SITE
@@ -454,29 +518,52 @@ func (s *ListInstancesOfUserResponseBodyDataListAdminList) Validate() error {
 }
 
 type ListInstancesOfUserResponseBodyDataListNumberList struct {
+	// Indicates whether the number is active.
+	//
 	// example:
 	//
 	// true
-	Active *bool   `json:"Active,omitempty" xml:"Active,omitempty"`
-	City   *string `json:"City,omitempty" xml:"City,omitempty"`
+	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The city of the phone number\\"s registration location.
+	//
+	// example:
+	//
+	// 乐山
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// The contact flow ID (IVR) associated with this phone number.
+	//
 	// example:
 	//
 	// a3fb6c62-9b49-4942-ae5b-cf2abd4123ek
 	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number.
+	//
 	// example:
 	//
 	// 0830011****
-	Number      *string                                                         `json:"Number,omitempty" xml:"Number,omitempty"`
-	Province    *string                                                         `json:"Province,omitempty" xml:"Province,omitempty"`
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// The province of the phone number\\"s registration location.
+	//
+	// example:
+	//
+	// 四川
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// List of skill groups associated with the phone number.
 	SkillGroups []*ListInstancesOfUserResponseBodyDataListNumberListSkillGroups `json:"SkillGroups,omitempty" xml:"SkillGroups,omitempty" type:"Repeated"`
+	// The usage of the number.
+	//
 	// example:
 	//
 	// Bidirection
 	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// Agent ID. If this parameter is not empty, the number is a personal outbound number assigned to the agent.
+	//
 	// example:
 	//
 	// agent@ccc-test
@@ -586,24 +673,44 @@ func (s *ListInstancesOfUserResponseBodyDataListNumberList) Validate() error {
 }
 
 type ListInstancesOfUserResponseBodyDataListNumberListSkillGroups struct {
+	// Skill group description.
+	//
+	// example:
+	//
+	// 云联络中心的测试技能组。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the skill group.
+	//
+	// example:
+	//
+	// 测试技能组
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the skill group.
+	//
 	// example:
 	//
 	// skillgroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Number of phone numbers associated with the skill group.
+	//
 	// example:
 	//
 	// 1
 	PhoneNumberCount *int32 `json:"PhoneNumberCount,omitempty" xml:"PhoneNumberCount,omitempty"`
+	// The skill group ID.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// The number of agents associated with the skill group.
+	//
 	// example:
 	//
 	// 2

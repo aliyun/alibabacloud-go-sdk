@@ -22,19 +22,32 @@ type iExportCustomCallTaggingResponseBody interface {
 }
 
 type ExportCustomCallTaggingResponseBody struct {
+  // Response code.
+  // 
   // example:
   // 
   // OK
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // Data. The download link to the OSS object containing the export result. The link has a validity period of 24 hours.
+  // 
   // example:
   // 
   // http://ccc-v2-online.oss-cn-shanghai.aliyuncs.com/ccc-test/tagging.xlsx ?Expires=1610910578&amp;OSSAccessKeyId=****&amp;Signature=****
   Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+  // HTTP status code.
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+  // Response message.
+  // 
+  // example:
+  // 
+  // 无
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // Request ID.
+  // 
   // example:
   // 
   // BA03159C-E808-4FF1-B27E-A61B6E888D7F

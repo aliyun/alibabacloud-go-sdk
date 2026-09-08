@@ -16,12 +16,16 @@ type iDeleteTicketRequest interface {
 }
 
 type DeleteTicketRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ticket ID.
+	//
 	// example:
 	//
 	// 3d26b90a-c5d2-4b09-8219-********

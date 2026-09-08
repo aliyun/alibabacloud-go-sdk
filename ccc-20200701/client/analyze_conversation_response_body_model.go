@@ -22,16 +22,38 @@ type iAnalyzeConversationResponseBody interface {
 }
 
 type AnalyzeConversationResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Return Result. The content varies depending on the analysis job.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "订单号": "1234",
+	//
+	//   "商品名称": "笔记本"
+	//
+	// }
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID, which can be used for LogSearch of this API.
+	//
 	// example:
 	//
 	// 9F766284-F103-4298-8EC5-19F9F9BE5522

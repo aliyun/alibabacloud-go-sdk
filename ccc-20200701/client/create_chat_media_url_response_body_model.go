@@ -24,17 +24,30 @@ type iCreateChatMediaUrlResponseBody interface {
 }
 
 type CreateChatMediaUrlResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *CreateChatMediaUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Response parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 03C67DAD-EB26-41D8-949D-9B0C470FB716
@@ -113,10 +126,14 @@ func (s *CreateChatMediaUrlResponseBody) Validate() error {
 }
 
 type CreateChatMediaUrlResponseBodyData struct {
+	// Media ID.
+	//
 	// example:
 	//
 	// $iAHNCNQCo21wMwMGBAAFAAbaACOEAaQhIH6TAqogDGyb-qD2Hbj0A88AAAGRLKYVnwTOACwwYwcACM8AAAGRLRPynQ
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// File URL.
+	//
 	// example:
 	//
 	// https://ccc-v2-online.oss-cn-shanghai.aliyuncs.com/ccc-test/namelist.csv?Expires=1642067227&OSSAccessKeyId=****&Signature=****

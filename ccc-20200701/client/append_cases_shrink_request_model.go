@@ -18,18 +18,23 @@ type iAppendCasesShrinkRequest interface {
 }
 
 type AppendCasesShrinkRequest struct {
+	// The predictive campaign ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 78cf6864-9a22-4ea8-a59d-5adc2d747b0e
 	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of cases to be added.
 	BodyShrink *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 

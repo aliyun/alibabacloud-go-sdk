@@ -24,6 +24,8 @@ type iClaimCallRequest interface {
 }
 
 type ClaimCallRequest struct {
+	// A JSON string that lists the agents and their corresponding skill groups eligible to claim the call.
+	//
 	// example:
 	//
 	// [
@@ -38,26 +40,36 @@ type ClaimCallRequest struct {
 	//
 	// ]
 	CandidateUserListJson *string `json:"CandidateUserListJson,omitempty" xml:"CandidateUserListJson,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the call.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-6538214103685****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The ID of the skill group that the call is assigned to.
+	//
 	// example:
 	//
 	// test_sg_****@ccc-test
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// A unique business identifier for scheduling purposes. Subsequent event notifications include this identifier.
+	//
 	// example:
 	//
 	// tags
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The ID of the agent claiming the call.
+	//
 	// example:
 	//
 	// invoker@ccc-test

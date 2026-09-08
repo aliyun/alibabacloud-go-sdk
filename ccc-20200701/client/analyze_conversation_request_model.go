@@ -20,17 +20,60 @@ type iAnalyzeConversationRequest interface {
 }
 
 type AnalyzeConversationRequest struct {
+	// Call ID.
+	//
 	// example:
 	//
 	// job-10963442671187****
-	ContactId     *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// When the TaskListJson parameter is set to "fields", this parameter specifies the field content to fetch.
+	//
+	// example:
+	//
+	// [
+	//
+	//   {
+	//
+	//     "code": "OrderNo",
+	//
+	//     "name": "订单号",
+	//
+	//     "description": "订单号"
+	//
+	//   },
+	//
+	//   {
+	//
+	//     "code": "ProductName",
+	//
+	//     "name": "商品名称",
+	//
+	//     "description": "商品名称"
+	//
+	//   }
+	//
+	// ]
 	FieldListJson *string `json:"FieldListJson,omitempty" xml:"FieldListJson,omitempty"`
+	// Cloud Contact Center instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 9cfad875-6260-4a53-ab6e-b13e3fb31f7d
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// List of Task Types for analysis. Valid values include:
+	//
+	// - title: title
+	//
+	// - summary: summary
+	//
+	// - keywords: keywords
+	//
+	// - fields: fields
+	//
+	// Currently, only "summary" and "title" can be passed together. All other parameters must be passed individually.
+	//
 	// example:
 	//
 	// ["keywords"]

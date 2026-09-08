@@ -22,21 +22,34 @@ type iListFlashSmsApplicationsRequest interface {
 }
 
 type ListFlashSmsApplicationsRequest struct {
+	// Cloud Contact Center instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Flash SMS configuration name.
+	//
+	// example:
+	//
+	// 闪信
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Page number. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Flash SMS provider ID.
+	//
 	// example:
 	//
 	// Uincall

@@ -24,31 +24,46 @@ type iListUserLevelsOfSkillGroupRequest interface {
 }
 
 type ListUserLevelsOfSkillGroupRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether to associate with the specified skill group. If the value is true, the operation retrieves the skill level list of agents associated with the skill group ID. If the value is false, the operation retrieves the list of agents that can be associated with but are not currently associated with the skill group ID. The default value is true.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	IsMember *bool `json:"IsMember,omitempty" xml:"IsMember,omitempty"`
+	// Page number, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Perform fuzzy matching based on agent logon name or agent display name. This parameter is optional and defaults to empty, which means no filtering is applied.
+	//
+	// example:
+	//
+	// 测试坐席
 	SearchPattern *string `json:"SearchPattern,omitempty" xml:"SearchPattern,omitempty"`
+	// Skill group ID.
+	//
 	// This parameter is required.
 	//
 	// example:

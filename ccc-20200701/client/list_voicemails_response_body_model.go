@@ -22,16 +22,28 @@ type iListVoicemailsResponseBody interface {
 }
 
 type ListVoicemailsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
 	Data *ListVoicemailsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -101,15 +113,22 @@ func (s *ListVoicemailsResponseBody) Validate() error {
 }
 
 type ListVoicemailsResponseBodyData struct {
+	// The list of voicemail records.
 	List []*ListVoicemailsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries. This parameter is returned only when \\`PageNumber\\` is set to 1. For other values of \\`PageNumber\\`, this parameter returns 0.
+	//
 	// example:
 	//
 	// 11
@@ -174,32 +193,56 @@ func (s *ListVoicemailsResponseBodyData) Validate() error {
 }
 
 type ListVoicemailsResponseBodyDataList struct {
+	// The called number.
+	//
 	// example:
 	//
 	// 0533128****
 	Callee *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
+	// The calling number.
+	//
 	// example:
 	//
 	// 073xxxx7539
-	Caller       *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
-	CdrStartTime *int64  `json:"CdrStartTime,omitempty" xml:"CdrStartTime,omitempty"`
+	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// The start time of the call.
+	//
+	// example:
+	//
+	// 1532448000000，已废弃，请使用StartTime。
+	CdrStartTime *int64 `json:"CdrStartTime,omitempty" xml:"CdrStartTime,omitempty"`
+	// The call ID.
+	//
 	// example:
 	//
 	// job-125152394144124921
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// The duration of the voicemail message in seconds.
+	//
 	// example:
 	//
 	// 16
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The ID of the CC instance.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the voicemail.
+	//
 	// example:
 	//
 	// voicemail-test
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RecordingDuration *int64  `json:"RecordingDuration,omitempty" xml:"RecordingDuration,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The duration of the voicemail message in seconds.
+	//
+	// example:
+	//
+	// 10，已废弃，请使用Duration
+	RecordingDuration *int64 `json:"RecordingDuration,omitempty" xml:"RecordingDuration,omitempty"`
+	// The start time of the voicemail.
+	//
 	// example:
 	//
 	// 1631440860000

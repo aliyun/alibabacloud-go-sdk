@@ -28,33 +28,50 @@ type iListHistoricalAgentSkillGroupReportRequest interface {
 }
 
 type ListHistoricalAgentSkillGroupReportRequest struct {
+	// List of agent IDs. The list size is 0 to 100.
+	//
 	// example:
 	//
 	// ["agent1@ccc-test", "agent2@ccc-test"]
 	AgentIdList *string `json:"AgentIdList,omitempty" xml:"AgentIdList,omitempty"`
+	// End time for historical data retrieval. Format is UNIX timestamp in milliseconds. Optional. Defaults to the current time. The statistical time granularity is hourly, rounded up to the nearest hour, in an open interval. For example, if the start time is 11:12:20 and the end time is 11:45:50, the aligned request parameter time range is [11:00:00, 12:00:00), meaning greater than or equal to 11:00 and less than 12:00.
+	//
 	// example:
 	//
 	// 1620273600000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MediaType  *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Media type. Defaults to Audio. Other optional parameters include Chat and Video.
+	//
+	// example:
+	//
+	// VIDEO
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Page number. Valid values are 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size. Valid values are 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// List of skill group IDs. The list size is 0 to 100.
+	//
 	// example:
 	//
 	// [
@@ -65,6 +82,8 @@ type ListHistoricalAgentSkillGroupReportRequest struct {
 	//
 	// ]
 	SkillGroupIdList *string `json:"SkillGroupIdList,omitempty" xml:"SkillGroupIdList,omitempty"`
+	// Start timestamp. Defaults to 00:00 on the current day. The statistical time granularity is hourly, rounded down to the nearest hour, in a closed interval.
+	//
 	// example:
 	//
 	// 1634140800000

@@ -24,17 +24,30 @@ type iGetVisitorLoginDetailsResponseBody interface {
 }
 
 type GetVisitorLoginDetailsResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
 	Data *GetVisitorLoginDetailsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Parameter information.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 19D09CCC-F298-4124-849A-AFA217819011
@@ -113,26 +126,38 @@ func (s *GetVisitorLoginDetailsResponseBody) Validate() error {
 }
 
 type GetVisitorLoginDetailsResponseBodyData struct {
+	// Chat session application ID.
+	//
 	// example:
 	//
 	// 7pjxxx
 	ChatAppId *string `json:"ChatAppId,omitempty" xml:"ChatAppId,omitempty"`
+	// Chat session application key.
+	//
 	// example:
 	//
 	// 955e4bd7xxxxxxxxxxxxxd7898ba9fa0d0
 	ChatAppKey *string `json:"ChatAppKey,omitempty" xml:"ChatAppKey,omitempty"`
+	// Chat device ID.
+	//
 	// example:
 	//
 	// 4c51c9116c36537cb850dc1081d745df
 	ChatDeviceId *string `json:"ChatDeviceId,omitempty" xml:"ChatDeviceId,omitempty"`
+	// Chat session login token.
+	//
 	// example:
 	//
 	// {"accessToken":"oauth_cloud_key:+4oJXUAFSWxGD2YuRW4V/oUN0/8qJGNc0I*********n1E3DOr3Q3lX00ZnTpyqRi8Y6hYoLYA7n2ZkWuv485hVtXeSgnIQkKxXPbMgwoLxWaK//lI5Dn/mb4YuDifigv+ZyFzc+07vxm9ZFu/NjA==","accessTokenExpiredTime":86400000,"refreshToken":"oauth_cloud_key:/U+8UueDmpeUszhXC+SWow4pNLZp2C***********U/377BNXF+Mjo1lFgDk6GtEjNNoJpapX2mHH8GcRke2+yKQs/w4gAN9xSMn543Ciung+93pXV6IpQGbEVlu"}
 	ChatLoginToken *string `json:"ChatLoginToken,omitempty" xml:"ChatLoginToken,omitempty"`
+	// Chat session server address.
+	//
 	// example:
 	//
 	// wss://wss.im.dingtalk.cn
 	ChatServerUrl *string `json:"ChatServerUrl,omitempty" xml:"ChatServerUrl,omitempty"`
+	// Visitor\\"s identity ID.
+	//
 	// example:
 	//
 	// dac9c001****a15684ea91a81317

@@ -18,18 +18,24 @@ type iRemoveSkillGroupsFromUserRequest interface {
 }
 
 type RemoveSkillGroupsFromUserRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// A list of skill group IDs to disassociate, formatted as a JSON array string, where each array element is a skill group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ["skillgroup1@ccc-test","skillgroup2@ccc-test"]
 	SkillGroupIdList *string `json:"SkillGroupIdList,omitempty" xml:"SkillGroupIdList,omitempty"`
+	// Agent ID.
+	//
 	// This parameter is required.
 	//
 	// example:

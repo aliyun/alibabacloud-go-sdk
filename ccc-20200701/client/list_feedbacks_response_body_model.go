@@ -22,16 +22,28 @@ type iListFeedbacksResponseBody interface {
 }
 
 type ListFeedbacksResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned dataset.
 	Data []*ListFeedbacksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 26E54929-CA86-1035-9B42-0C8F291BB027
@@ -105,26 +117,38 @@ func (s *ListFeedbacksResponseBody) Validate() error {
 }
 
 type ListFeedbacksResponseBodyData struct {
+	// The call ID.
+	//
 	// example:
 	//
 	// job-25920271311543****
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 20251216-8B9B7B02-16FE-54BE-942A-F59DE0656032
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task name.
+	//
 	// example:
 	//
 	// PostCallAnalyzer:solution
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The user\\"s rating for the task.
+	//
 	// example:
 	//
 	// -1
 	UserRating *int32 `json:"UserRating,omitempty" xml:"UserRating,omitempty"`
+	// The data from user feedback.
+	//
 	// example:
 	//
 	// xxxxxxx

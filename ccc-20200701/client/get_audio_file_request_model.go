@@ -16,12 +16,16 @@ type iGetAudioFileRequest interface {
 }
 
 type GetAudioFileRequest struct {
+	// Audio resource ID, the UUID of the audio file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c1a06b46-302a-4c6e-928b-a43c0df485cf
 	AudioResourceId *string `json:"AudioResourceId,omitempty" xml:"AudioResourceId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

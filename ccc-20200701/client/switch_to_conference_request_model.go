@@ -20,22 +20,30 @@ type iSwitchToConferenceRequest interface {
 }
 
 type SwitchToConferenceRequest struct {
+	// Invalid field. You can enter any value.
+	//
 	// example:
 	//
 	// device
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Call ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-24114064019637****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Agent ID. If not specified, the agent mapped to the current Resource Access Management (RAM) user is used by default.
+	//
 	// example:
 	//
 	// agent@ccc-test

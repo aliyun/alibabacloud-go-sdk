@@ -24,24 +24,12 @@ type iListLegacyAppraiseLogsResponseBody interface {
 }
 
 type ListLegacyAppraiseLogsResponseBody struct {
-	// example:
-	//
-	// OK
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *ListLegacyAppraiseLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// A13BB835-94AA-4E55-8D9E-5EA585CE6555"
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code           *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ListLegacyAppraiseLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListLegacyAppraiseLogsResponseBody) String() string {
@@ -116,19 +104,10 @@ func (s *ListLegacyAppraiseLogsResponseBody) Validate() error {
 }
 
 type ListLegacyAppraiseLogsResponseBodyData struct {
-	List []*ListLegacyAppraiseLogsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// example:
-	//
-	// 18
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	List       []*ListLegacyAppraiseLogsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	PageNumber *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListLegacyAppraiseLogsResponseBodyData) String() string {
@@ -189,48 +168,18 @@ func (s *ListLegacyAppraiseLogsResponseBodyData) Validate() error {
 }
 
 type ListLegacyAppraiseLogsResponseBodyDataList struct {
-	// example:
-	//
-	// 3786929579
-	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
-	// example:
-	//
-	// Outbound
-	ContactType *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
-	// example:
-	//
-	// 10505
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// example:
-	//
-	// ccc-test
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// example:
-	//
-	// {}
+	Acid            *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	ContactType     *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
+	Id              *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	KeyMarkRelation *string `json:"KeyMarkRelation,omitempty" xml:"KeyMarkRelation,omitempty"`
 	Note            *string `json:"Note,omitempty" xml:"Note,omitempty"`
 	ParentNote      *string `json:"ParentNote,omitempty" xml:"ParentNote,omitempty"`
-	// example:
-	//
-	// 2
-	PressKey *string `json:"PressKey,omitempty" xml:"PressKey,omitempty"`
-	// example:
-	//
-	// 28036411123456****
-	RamId *string `json:"RamId,omitempty" xml:"RamId,omitempty"`
-	// example:
-	//
-	// test@ccc-test
-	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-	// example:
-	//
-	// 2021-12-03T10:15:30
-	StatisticDate *string `json:"StatisticDate,omitempty" xml:"StatisticDate,omitempty"`
-	// example:
-	//
-	// Launch
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	PressKey        *string `json:"PressKey,omitempty" xml:"PressKey,omitempty"`
+	RamId           *string `json:"RamId,omitempty" xml:"RamId,omitempty"`
+	SkillGroupId    *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	StatisticDate   *string `json:"StatisticDate,omitempty" xml:"StatisticDate,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListLegacyAppraiseLogsResponseBodyDataList) String() string {

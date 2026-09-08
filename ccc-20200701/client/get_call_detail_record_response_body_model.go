@@ -22,16 +22,28 @@ type iGetCallDetailRecordResponseBody interface {
 }
 
 type GetCallDetailRecordResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
 	Data *GetCallDetailRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7BEEA660-A45A-45E3-98CC-AFC65E715C23
@@ -101,89 +113,151 @@ func (s *GetCallDetailRecordResponseBody) Validate() error {
 }
 
 type GetCallDetailRecordResponseBodyData struct {
+	// The list of agent events.
 	AgentEvents []*GetCallDetailRecordResponseBodyDataAgentEvents `json:"AgentEvents,omitempty" xml:"AgentEvents,omitempty" type:"Repeated"`
+	// The IDs of the agents who are involved in the call. Multiple IDs are separated by commas.
+	//
 	// example:
 	//
 	// agent1@ccc-test,agent2@ccc-test
 	AgentIds *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
+	// The names of the agents who are involved in the call. Multiple names are separated by commas.
+	//
 	// example:
 	//
 	// agent1,agent2
 	AgentNames           *string                                             `json:"AgentNames,omitempty" xml:"AgentNames,omitempty"`
 	AnalyticsReport      *GetCallDetailRecordResponseBodyDataAnalyticsReport `json:"AnalyticsReport,omitempty" xml:"AnalyticsReport,omitempty" type:"Struct"`
 	AnalyticsReportReady *bool                                               `json:"AnalyticsReportReady,omitempty" xml:"AnalyticsReportReady,omitempty"`
+	// The call duration, in seconds.
+	//
 	// example:
 	//
 	// 50
 	CallDuration *int64 `json:"CallDuration,omitempty" xml:"CallDuration,omitempty"`
+	// The called number.
+	//
 	// example:
 	//
 	// 1332315****
-	CalledNumber   *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// The location of the called number.
+	//
+	// example:
+	//
+	// 河北省-唐山
 	CalleeLocation *string `json:"CalleeLocation,omitempty" xml:"CalleeLocation,omitempty"`
+	// The location of the calling number.
+	//
+	// example:
+	//
+	// 山东省-淄博
 	CallerLocation *string `json:"CallerLocation,omitempty" xml:"CallerLocation,omitempty"`
+	// The calling number.
+	//
 	// example:
 	//
 	// 0533128****
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// The reason why the call ended. Note: The \\`Voicemail\\`, \\`QueuingFailed\\`, \\`QueuingTimeout\\`, \\`QueuingOverflow\\`, and \\`IVRException\\` reasons are returned only if you configure the hang-up reason node. If you do not configure this node and the IVR flow does not include a module to transfer the call to an agent, the default reason is \\`AbandonedInIVR\\`.
+	//
 	// example:
 	//
 	// Success
 	ContactDisposition *string `json:"ContactDisposition,omitempty" xml:"ContactDisposition,omitempty"`
+	// The call ID.
+	//
 	// example:
 	//
 	// job-10963442671187****
-	ContactId      *string                                              `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	ContactType    *string                                              `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
+	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// The call type.
+	//
+	// example:
+	//
+	// OUTBOUND
+	ContactType *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
+	// The list of customer events.
 	CustomerEvents []*GetCallDetailRecordResponseBodyDataCustomerEvents `json:"CustomerEvents,omitempty" xml:"CustomerEvents,omitempty" type:"Repeated"`
+	// The state of the early media. An exception occurred during the early media phase, which is when the customer is being called. An exception at this stage can cause the call to fail. This parameter provides possible reasons for the connection failure based on an analysis of the early media state.
+	//
 	// example:
 	//
 	// NotConnected
 	EarlyMediaState *string `json:"EarlyMediaState,omitempty" xml:"EarlyMediaState,omitempty"`
+	// The time when the call was connected. This parameter is empty if the call was not connected. The value is a UNIX timestamp, in milliseconds.
+	//
 	// example:
 	//
 	// 1532458000000
 	EstablishedTime *int64 `json:"EstablishedTime,omitempty" xml:"EstablishedTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
-	InstanceId                 *string                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IvrEvents                  []*GetCallDetailRecordResponseBodyDataIvrEvents   `json:"IvrEvents,omitempty" xml:"IvrEvents,omitempty" type:"Repeated"`
-	OutsideNumberReleaseReason *string                                           `json:"OutsideNumberReleaseReason,omitempty" xml:"OutsideNumberReleaseReason,omitempty"`
-	QueueEvents                []*GetCallDetailRecordResponseBodyDataQueueEvents `json:"QueueEvents,omitempty" xml:"QueueEvents,omitempty" type:"Repeated"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of IVR events.
+	IvrEvents                  []*GetCallDetailRecordResponseBodyDataIvrEvents `json:"IvrEvents,omitempty" xml:"IvrEvents,omitempty" type:"Repeated"`
+	OutsideNumberReleaseReason *string                                         `json:"OutsideNumberReleaseReason,omitempty" xml:"OutsideNumberReleaseReason,omitempty"`
+	// The list of queue events.
+	QueueEvents []*GetCallDetailRecordResponseBodyDataQueueEvents `json:"QueueEvents,omitempty" xml:"QueueEvents,omitempty" type:"Repeated"`
+	// Indicates whether the recording was generated. A value of \\`false\\` is returned if the call was not connected.
+	//
 	// example:
 	//
 	// true
 	RecordingReady *bool `json:"RecordingReady,omitempty" xml:"RecordingReady,omitempty"`
+	// The release initiator.
+	//
 	// example:
 	//
 	// customer
 	ReleaseInitiator *string `json:"ReleaseInitiator,omitempty" xml:"ReleaseInitiator,omitempty"`
+	// The reason why the call ended. The value is usually the SIP code followed by a text description.
+	//
 	// example:
 	//
 	// 200 - OK
 	ReleaseReason *string `json:"ReleaseReason,omitempty" xml:"ReleaseReason,omitempty"`
+	// The time when the call ended. This is the time when the last party of the call hangs up. The value is a UNIX timestamp, in milliseconds.
+	//
 	// example:
 	//
 	// 1532458000000
 	ReleaseTime *int64 `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	// The satisfaction score. The value and its meaning are defined by you.
+	//
 	// example:
 	//
 	// 1
 	Satisfaction *int32 `json:"Satisfaction,omitempty" xml:"Satisfaction,omitempty"`
+	// The channel through which the satisfaction survey was initiated.
+	//
 	// example:
 	//
 	// IVR
 	SatisfactionSurveyChannel *string `json:"SatisfactionSurveyChannel,omitempty" xml:"SatisfactionSurveyChannel,omitempty"`
+	// Indicates whether a satisfaction survey was initiated.
+	//
 	// example:
 	//
 	// true
 	SatisfactionSurveyOffered *bool `json:"SatisfactionSurveyOffered,omitempty" xml:"SatisfactionSurveyOffered,omitempty"`
+	// The IDs of the skill groups to which the agents involved in the call belong. Multiple IDs are separated by commas.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
-	SkillGroupIds   *string `json:"SkillGroupIds,omitempty" xml:"SkillGroupIds,omitempty"`
+	SkillGroupIds *string `json:"SkillGroupIds,omitempty" xml:"SkillGroupIds,omitempty"`
+	// The names of the skill groups to which the agents involved in the call belong. Multiple names are separated by commas.
+	//
+	// example:
+	//
+	// 测试技能组
 	SkillGroupNames *string `json:"SkillGroupNames,omitempty" xml:"SkillGroupNames,omitempty"`
+	// The time when the call started. For an inbound call, this is the time when the call enters the IVR. For an outbound call, this is the time when the call is initiated. The value is a UNIX timestamp, in milliseconds.
+	//
 	// example:
 	//
 	// 1532458000000
@@ -514,12 +588,22 @@ func (s *GetCallDetailRecordResponseBodyData) Validate() error {
 }
 
 type GetCallDetailRecordResponseBodyDataAgentEvents struct {
+	// The agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
-	AgentId       *string                                                        `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	AgentName     *string                                                        `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The agent name.
+	//
+	// example:
+	//
+	// 坐席小王
+	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// The sequence of events.
 	EventSequence []*GetCallDetailRecordResponseBodyDataAgentEventsEventSequence `json:"EventSequence,omitempty" xml:"EventSequence,omitempty" type:"Repeated"`
+	// The skill group ID.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
@@ -584,14 +668,20 @@ func (s *GetCallDetailRecordResponseBodyDataAgentEvents) Validate() error {
 }
 
 type GetCallDetailRecordResponseBodyDataAgentEventsEventSequence struct {
+	// The event duration, in seconds.
+	//
 	// example:
 	//
 	// 3
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The event type.
+	//
 	// example:
 	//
 	// Dialing
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The time when the event occurred. The value is a UNIX timestamp, in milliseconds.
+	//
 	// example:
 	//
 	// 1604639129000
@@ -943,10 +1033,13 @@ func (s *GetCallDetailRecordResponseBodyDataAnalyticsReportTodoList) Validate() 
 }
 
 type GetCallDetailRecordResponseBodyDataCustomerEvents struct {
+	// The customer ID. This is usually the customer\\"s phone number.
+	//
 	// example:
 	//
 	// 1332315****
-	CustomerId    *string                                                           `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	// The sequence of events.
 	EventSequence []*GetCallDetailRecordResponseBodyDataCustomerEventsEventSequence `json:"EventSequence,omitempty" xml:"EventSequence,omitempty" type:"Repeated"`
 }
 
@@ -990,10 +1083,14 @@ func (s *GetCallDetailRecordResponseBodyDataCustomerEvents) Validate() error {
 }
 
 type GetCallDetailRecordResponseBodyDataCustomerEventsEventSequence struct {
+	// The event type.
+	//
 	// example:
 	//
 	// Released
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The time when the event occurred. The value is a UNIX timestamp, in milliseconds.
+	//
 	// example:
 	//
 	// 1532458000000
@@ -1031,11 +1128,16 @@ func (s *GetCallDetailRecordResponseBodyDataCustomerEventsEventSequence) Validat
 }
 
 type GetCallDetailRecordResponseBodyDataIvrEvents struct {
+	// The sequence of events.
 	EventSequence []*GetCallDetailRecordResponseBodyDataIvrEventsEventSequence `json:"EventSequence,omitempty" xml:"EventSequence,omitempty" type:"Repeated"`
+	// The ID of the IVR contact flow.
+	//
 	// example:
 	//
 	// edaf2eaa-8f88-44ca-812e-41b3cd2b7a90
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The type of the contact flow.
+	//
 	// example:
 	//
 	// MAIN_FLOW
@@ -1091,10 +1193,14 @@ func (s *GetCallDetailRecordResponseBodyDataIvrEvents) Validate() error {
 }
 
 type GetCallDetailRecordResponseBodyDataIvrEventsEventSequence struct {
+	// The event type.
+	//
 	// example:
 	//
 	// Route2IVR
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The time when the event occurred. The value is a UNIX timestamp, in milliseconds.
+	//
 	// example:
 	//
 	// 1604639129000
@@ -1132,16 +1238,28 @@ func (s *GetCallDetailRecordResponseBodyDataIvrEventsEventSequence) Validate() e
 }
 
 type GetCallDetailRecordResponseBodyDataQueueEvents struct {
+	// The sequence of events.
 	EventSequence []*GetCallDetailRecordResponseBodyDataQueueEventsEventSequence `json:"EventSequence,omitempty" xml:"EventSequence,omitempty" type:"Repeated"`
+	// The contact flow ID.
+	//
 	// example:
 	//
 	// edaf2eaa-8f88-44ca-812e-41b3cd2b7a90
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The queue ID. If the call is routed to a skill group, this is the skill group ID. If the call is routed to an agent, this is the agent ID.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
-	QueueId   *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
+	QueueId *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
+	// The queue name.
+	//
+	// example:
+	//
+	// 测试技能组
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The queue type.
+	//
 	// example:
 	//
 	// 1
@@ -1215,10 +1333,14 @@ func (s *GetCallDetailRecordResponseBodyDataQueueEvents) Validate() error {
 }
 
 type GetCallDetailRecordResponseBodyDataQueueEventsEventSequence struct {
+	// The event type.
+	//
 	// example:
 	//
 	// Enqueue
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// The time when the event occurred. The value is a UNIX timestamp, in milliseconds.
+	//
 	// example:
 	//
 	// 1604639129000

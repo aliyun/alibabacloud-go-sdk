@@ -24,34 +24,46 @@ type iListLegacyQueueEventLogsRequest interface {
 }
 
 type ListLegacyQueueEventLogsRequest struct {
+	// End time, in UNIX timestamp format, in milliseconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1658026180018
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page number for paging, ranging from 1 to 1000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 1000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Filter by skill group ID. This parameter is optional and defaults to empty. An empty value means no filtering is applied.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// Start Time, in UNIX timestamp format, in milliseconds.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,19 +22,32 @@ type iCreateAudioFileResponseBody interface {
 }
 
 type CreateAudioFileResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data, which is the ID of the audio resource and uniquely identifies an audio resource.
+	//
 	// example:
 	//
 	// 2301b83f-1f9f-491e-9f97-2f832ed92f0b
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 94E29B9B-DBC6-5951-B3DD-C85C1BDF20ED

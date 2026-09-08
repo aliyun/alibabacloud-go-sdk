@@ -24,20 +24,34 @@ type iListCampaignsResponseBody interface {
 }
 
 type ListCampaignsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
 	Data *ListCampaignsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6CCEF32F-8614-535F-A1D9-D85B8C0DC4F0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -116,15 +130,22 @@ func (s *ListCampaignsResponseBody) Validate() error {
 }
 
 type ListCampaignsResponseBodyData struct {
+	// The list of predictive dialing campaigns.
 	List []*ListCampaignsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total count.
+	//
 	// example:
 	//
 	// 1
@@ -189,73 +210,122 @@ func (s *ListCampaignsResponseBodyData) Validate() error {
 }
 
 type ListCampaignsResponseBodyDataList struct {
+	// The actual end time of the predictive dialing campaign. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1634008800000
 	ActualEndTime *int64 `json:"ActualEndTime,omitempty" xml:"ActualEndTime,omitempty"`
+	// The actual start time of the predictive dialing campaign. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1634000460000
 	ActualStartTime *int64 `json:"ActualStartTime,omitempty" xml:"ActualStartTime,omitempty"`
+	// The ID of the predictive dialing campaign.
+	//
 	// example:
 	//
 	// 6badb397-a8b5-40b6-21019d382a09
 	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	// The number of aborted cases in the predictive dialing campaign. An aborted case indicates that the call to the contact was canceled.
+	//
 	// example:
 	//
 	// 0
 	CasesAborted *int64 `json:"CasesAborted,omitempty" xml:"CasesAborted,omitempty"`
+	// The number of connected cases in the predictive dialing campaign.
+	//
 	// example:
 	//
 	// 40
 	CasesConnected *int64 `json:"CasesConnected,omitempty" xml:"CasesConnected,omitempty"`
+	// The number of uncompleted cases in the predictive dialing campaign. An uncompleted case indicates that the call was not connected and the maximum number of retry attempts was not reached.
+	//
 	// example:
 	//
 	// 0
-	CasesUncompleted *int64   `json:"CasesUncompleted,omitempty" xml:"CasesUncompleted,omitempty"`
-	CompletionRate   *float32 `json:"CompletionRate,omitempty" xml:"CompletionRate,omitempty"`
-	ContactFlowId    *string  `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	CasesUncompleted *int64 `json:"CasesUncompleted,omitempty" xml:"CasesUncompleted,omitempty"`
+	// The completion rate. This parameter is deprecated. You can calculate the completion rate by using the formula (TotalCases - CasesUnCompleted) / TotalCases.
+	//
+	// example:
+	//
+	// 无
+	CompletionRate *float32 `json:"CompletionRate,omitempty" xml:"CompletionRate,omitempty"`
+	// The ID of the IVR contact flow associated with the phone number.
+	//
+	// example:
+	//
+	// a3fb6c62-9b49-4942-ae5b-cf2abd4123ek
+	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	// The maximum number of attempts for the predictive dialing campaign. This value specifies the maximum number of redial attempts when a call to a number fails.
+	//
 	// example:
 	//
 	// 1
 	MaxAttemptCount *int64 `json:"MaxAttemptCount,omitempty" xml:"MaxAttemptCount,omitempty"`
+	// The minimum redial interval for the predictive dialing campaign. This value specifies the minimum interval between redial attempts after a failure. Unit: seconds.
+	//
 	// example:
 	//
 	// 1
 	MinAttemptInterval *int64 `json:"MinAttemptInterval,omitempty" xml:"MinAttemptInterval,omitempty"`
+	// The name of the predictive dialing campaign.
+	//
 	// example:
 	//
 	// test-campaign
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The planned end time of the predictive dialing campaign. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1634054400000
 	PlanedEndTime *int64 `json:"PlanedEndTime,omitempty" xml:"PlanedEndTime,omitempty"`
+	// The planned start time of the predictive dialing campaign. The value is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1633968000000
 	PlanedStartTime *int64 `json:"PlanedStartTime,omitempty" xml:"PlanedStartTime,omitempty"`
+	// The ID of the associated skill group.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
-	QueueId   *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
+	QueueId *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
+	// The name of the skill group.
+	//
+	// example:
+	//
+	// 测试技能组
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// Indicates whether the campaign is a simulated campaign.
+	//
 	// example:
 	//
 	// false
 	Simulation *bool `json:"Simulation,omitempty" xml:"Simulation,omitempty"`
+	// The state of the predictive dialing campaign.
+	//
 	// example:
 	//
 	// Completed
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The strategy parameters of the predictive dialing campaign. Example for the PID strategy: {"abandonRate":"5","historicalConnectedRate":"35"}. Example for the PACING strategy: {"ratio":1}. abandonRate specifies the expected call abandon rate. historicalConnectedRate specifies the historical reference connection rate. ratio specifies the fixed dialing ratio.
+	//
 	// example:
 	//
 	// {"ratio":1}
 	StrategyParameters *string `json:"StrategyParameters,omitempty" xml:"StrategyParameters,omitempty"`
+	// The strategy mode of the predictive dialing campaign.
+	//
 	// example:
 	//
 	// PACING
 	StrategyType *string `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	// The total number of phone numbers.
+	//
 	// example:
 	//
 	// 100

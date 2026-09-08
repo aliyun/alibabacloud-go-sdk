@@ -24,23 +24,38 @@ type iAssignUsersResponseBody interface {
 }
 
 type AssignUsersResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data, which is the same as the workflow ID.
+	//
 	// example:
 	//
 	// 1ca2b084-6f0a-454b-9851-29768a9a5832
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The workflow ID.
+	//
 	// example:
 	//
 	// 1ca2b084-6f0a-454b-9851-29768a9a5832

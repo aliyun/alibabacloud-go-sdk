@@ -22,16 +22,28 @@ type iGetTicketSummaryReportResponseBody interface {
 }
 
 type GetTicketSummaryReportResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *GetTicketSummaryReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EAF3C248-E123-441B-A545-B6CD02E98EED
@@ -101,14 +113,20 @@ func (s *GetTicketSummaryReportResponseBody) Validate() error {
 }
 
 type GetTicketSummaryReportResponseBodyData struct {
+	// Number of tickets pending processing.
+	//
 	// example:
 	//
 	// 3
 	TicketsAssigned *string `json:"TicketsAssigned,omitempty" xml:"TicketsAssigned,omitempty"`
+	// Number of tickets created.
+	//
 	// example:
 	//
 	// 10
 	TicketsCreated *string `json:"TicketsCreated,omitempty" xml:"TicketsCreated,omitempty"`
+	// Number of tickets processed.
+	//
 	// example:
 	//
 	// 5

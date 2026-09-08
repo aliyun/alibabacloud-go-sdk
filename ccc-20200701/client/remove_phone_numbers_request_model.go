@@ -18,16 +18,22 @@ type iRemovePhoneNumbersRequest interface {
 }
 
 type RemovePhoneNumbersRequest struct {
+	// Specifies whether to force the removal. If a number is associated with a skill group, contact flow, or agent, you must set this parameter to `true` to remove it. The default value is `false`.
+	//
 	// example:
 	//
 	// true
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of numbers to remove.
+	//
 	// This parameter is required.
 	//
 	// example:

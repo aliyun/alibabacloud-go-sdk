@@ -18,13 +18,22 @@ type iRejectTicketRequest interface {
 }
 
 type RejectTicketRequest struct {
+	// The comment on the ticket.
+	//
+	// example:
+	//
+	// 请补充信息。
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ticket ID.
+	//
 	// example:
 	//
 	// f2c6722b-cd13-442d-bf10-22a07c70d6d5

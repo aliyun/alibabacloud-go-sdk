@@ -16,12 +16,16 @@ type iGetCallDetailRecordRequest interface {
 }
 
 type GetCallDetailRecordRequest struct {
+	// The call ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-10963442671187****
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

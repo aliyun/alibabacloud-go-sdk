@@ -22,16 +22,28 @@ type iListRolesResponseBody interface {
 }
 
 type ListRolesResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// List of roles.
 	Data []*ListRolesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 711D948F-C616-4E23-8573-0F260513CE09
@@ -105,10 +117,14 @@ func (s *ListRolesResponseBody) Validate() error {
 }
 
 type ListRolesResponseBodyData struct {
+	// Role name.
+	//
 	// example:
 	//
 	// Admin
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Role ID, in the format: role\\@instance ID.
+	//
 	// example:
 	//
 	// Admin@ccc-test

@@ -24,20 +24,34 @@ type iListAgentStatesResponseBody interface {
 }
 
 type ListAgentStatesResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListAgentStatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 03C67DAD-EB26-41D8-949D-9B0C470FB716
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
 	// true
@@ -116,15 +130,22 @@ func (s *ListAgentStatesResponseBody) Validate() error {
 }
 
 type ListAgentStatesResponseBodyData struct {
+	// List.
 	List []*ListAgentStatesResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 300.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 11
@@ -189,35 +210,56 @@ func (s *ListAgentStatesResponseBodyData) Validate() error {
 }
 
 type ListAgentStatesResponseBodyDataList struct {
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
-	AgentId   *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// Agent name.
+	//
+	// example:
+	//
+	// 坐席小王
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// Break code.
+	//
 	// example:
 	//
 	// Warm-up
 	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	// Agent extension number.
+	//
 	// example:
 	//
 	// 8030****
 	Dn *string `json:"Dn,omitempty" xml:"Dn,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Agent logon name.
+	//
 	// example:
 	//
 	// agent
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	// Indicates whether the agent is in outbound-only mode.
+	//
 	// example:
 	//
 	// false
 	OutboundScenario *bool `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	// Agent status.
+	//
 	// example:
 	//
 	// Ready
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// Duration of the agent status.
+	//
 	// example:
 	//
 	// 10

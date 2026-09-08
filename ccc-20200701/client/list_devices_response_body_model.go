@@ -24,17 +24,30 @@ type iListDevicesResponseBody interface {
 }
 
 type ListDevicesResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Device list.
 	Data []*ListDevicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// List of response parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -117,31 +130,50 @@ func (s *ListDevicesResponseBody) Validate() error {
 }
 
 type ListDevicesResponseBodyData struct {
+	// Call ID from the registration signaling initiated by the device.
+	//
 	// example:
 	//
 	// d7b818c3-8d3a-732f-bc9e-1782wa16****
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// Device address information.
+	//
 	// example:
 	//
 	// sip:8032****@33.89.XX.XX:64189;transport=tcp;registering_acc=18_134_23_4
 	Contact *string `json:"Contact,omitempty" xml:"Contact,omitempty"`
+	// Device ID, which is the identity ID of a browser Web Real-Time Communication (WebRTC) softphone or a physical phone device. Only one type of device can be registered at a time.
+	//
 	// example:
 	//
 	// ACC-YUNBS-1.0.10-****
-	DeviceId   *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Device type.
+	//
+	// example:
+	//
+	// CHAT
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// Device registration expiration time, in UNIX timestamp format with millisecond precision. If the device does not re-register after expiration, it will go offline.
+	//
 	// example:
 	//
 	// 1609118499750
 	Expires *int64 `json:"Expires,omitempty" xml:"Expires,omitempty"`
+	// Agent extension number.
+	//
 	// example:
 	//
 	// 8032****
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test

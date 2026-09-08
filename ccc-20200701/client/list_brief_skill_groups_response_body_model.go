@@ -22,16 +22,28 @@ type iListBriefSkillGroupsResponseBody interface {
 }
 
 type ListBriefSkillGroupsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListBriefSkillGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 3969FC68-CEC2-4398-B76A-60D2F7EDEBAF
@@ -101,15 +113,22 @@ func (s *ListBriefSkillGroupsResponseBody) Validate() error {
 }
 
 type ListBriefSkillGroupsResponseBodyData struct {
+	// List of skill group summary information.
 	List []*ListBriefSkillGroupsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 10
@@ -174,25 +193,50 @@ func (s *ListBriefSkillGroupsResponseBodyData) Validate() error {
 }
 
 type ListBriefSkillGroupsResponseBodyDataList struct {
+	// Description of the skill group.
+	//
+	// example:
+	//
+	// 云联络中心的测试技能组。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the skill group.
+	//
+	// example:
+	//
+	// 测试技能组
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MediaType  *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The media type. The default value is AUDIO. Other valid values include CHAT and VIDEO.
+	//
+	// example:
+	//
+	// VIDEO
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Quantity of phone numbers associated with the skill group.
+	//
 	// example:
 	//
 	// 1
 	PhoneNumberCount *int32 `json:"PhoneNumberCount,omitempty" xml:"PhoneNumberCount,omitempty"`
+	// The skill group ID.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// Name of the skill group.
+	//
 	// example:
 	//
 	// skillgroup
 	SkillGroupName *string `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
+	// The number of agents associated with the skill group.
+	//
 	// example:
 	//
 	// 10

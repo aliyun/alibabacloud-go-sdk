@@ -32,45 +32,74 @@ type iUpdateSubscriptionRequest interface {
 }
 
 type UpdateSubscriptionRequest struct {
+	// The endpoint for MQ. The service endpoint for webhook.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rmq-cn-****.cn-shanghai.rmq.aliyuncs.com:8080
 	AccessPoint *string `json:"AccessPoint,omitempty" xml:"AccessPoint,omitempty"`
-	AliyunUid   *int64  `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	// Leave blank.
+	//
+	// example:
+	//
+	// 无
+	AliyunUid *int64 `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	// For MQ, enter the topic name. For webhook, enter Topic_Webhook.
+	//
 	// example:
 	//
 	// ccc-event
 	DefaultTopic *string `json:"DefaultTopic,omitempty" xml:"DefaultTopic,omitempty"`
+	// The message subscription checklist.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// [{"Name ":"StopConsultant ","Disabled ":true},{"Name ":"QueueingRerouted ","Disabled ":true},{"Name ":"IvrTracking ","Disabled ":true},{"Name ":"DualTrackRecordingReady ","Disabled ":true},{"Name ":"SatisfactionSurveyResponse ","Disabled ":true},{"Name ":"Dialing ","Disabled ":false},{"Name ":"Abandoned ","Disabled ":true},{"Name ":"QueueingCancelled ","Disabled ":true},{"Name ":"RecordingReady ","Disabled ":true},{"Name ":"StopCoach ","Disabled ":true},{"Name ":"Established ","Disabled ":true},{"Name ":"InitiateConsultant ","Disabled ":true},{"Name ":"Route2IVR ","Disabled ":false},{"Name ":"Retrieved ","Disabled ":true},{"Name ":"CampaignPaused ","Disabled ":true},{"Name ":"TextStream ","Disabled ":true},{"Name ":"AgentRelease ","Disabled ":true},{"Name ":"VoicemailReady ","Disabled ":true},{"Name ":"Released ","Disabled ":false},{"Name ":"CDRReady ","Disabled ":true},{"Name ":"CaseAttempted ","Disabled ":true},{"Name ":"AgentBreak ","Disabled ":true},{"Name ":"AgentRingingTimeout ","Disabled ":true},{"Name ":"AgentReady ","Disabled ":true},{"Name ":"CampaignResumed ","Disabled ":true},{"Name ":"AgentDialing ","Disabled ":true},{"Name ":"Ringing ","Disabled ":true},{"Name ":"StartConsultant ","Disabled ":false},{"Name ":"QueueingTimeout ","Disabled ":true},{"Name ":"AgentTalk ","Disabled ":true},{"Name ":"AgentRinging ","Disabled ":true},{"Name ":"StartMonitor ","Disabled ":true},{"Name ":"BlindTransfer ","Disabled ":true},{"Name ":"Intercept ","Disabled ":true},{"Name ":"RingingTimeout ","Disabled ":true},{"Name ":"StartConference ","Disabled ":true},{"Name ":"QueueingOverflow ","Disabled ":true},{"Name ":"BargeIn ","Disabled ":true},{"Name ":"StopConference ","Disabled ":true},{"Name ":"AgentCheckOut ","Disabled ":true},{"Name ":"CampaignSubmitted ","Disabled ":true},{"Name ":"AgentCheckIn ","Disabled ":true},{"Name ":"Enqueue ","Disabled ":false},{"Name ":"AttendedTransfer ","Disabled ":true},{"Name ":"StopMonitor ","Disabled ":true},{"Name ":"DispatchingFailure ","Disabled ":true},{"Name ":"SatisfactionSurveyOffer ","Disabled ":true},{"Name ":"CampaignCompleted ","Disabled ":true},{"Name ":"CampaignAborted ","Disabled ":true},{"Name ":"AssignAgent ","Disabled ":true},{"Name ":"Held ","Disabled ":true},{"Name ":"StartCoach ","Disabled ":true}]
 	EventSubscriptionsJson *string `json:"EventSubscriptionsJson,omitempty" xml:"EventSubscriptionsJson,omitempty"`
+	// The ID of the Cloud Contact Center instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The MQ instance ID. Specify this only when MqType is rocketmq4 or rocketmq5.
+	//
 	// example:
 	//
 	// rmq-cn-****
 	MqInstanceId *string `json:"MqInstanceId,omitempty" xml:"MqInstanceId,omitempty"`
+	// The message push type.
+	//
+	// - rocketmq4
+	//
+	// - rocketmq5
+	//
+	// - webhook
+	//
 	// example:
 	//
 	// rocketmq5
 	MqType *string `json:"MqType,omitempty" xml:"MqType,omitempty"`
+	// The MQ password. Specify this only when MqType is rocketmq5.
+	//
 	// example:
 	//
 	// password
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// For Message Queue (MQ), enter the Group ID. For webhook, enter PID_Webhook.
+	//
 	// example:
 	//
 	// GID_xxx
 	ProducerId *string `json:"ProducerId,omitempty" xml:"ProducerId,omitempty"`
+	// The MQ username. Specify this only when MqType is rocketmq5.
+	//
 	// example:
 	//
 	// username

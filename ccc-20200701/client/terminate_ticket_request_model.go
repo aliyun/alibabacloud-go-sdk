@@ -18,13 +18,22 @@ type iTerminateTicketRequest interface {
 }
 
 type TerminateTicketRequest struct {
+	// Resolution comments.
+	//
+	// example:
+	//
+	// 关单
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ticket ID.
+	//
 	// example:
 	//
 	// 5491d3b4-14ee-4341-b5f1-db2c78beddeb

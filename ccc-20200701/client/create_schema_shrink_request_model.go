@@ -22,23 +22,30 @@ type iCreateSchemaShrinkRequest interface {
 }
 
 type CreateSchemaShrinkRequest struct {
+	// The description.
+	//
 	// example:
 	//
 	// -
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// schema id
+	// The schema ID.
 	//
 	// example:
 	//
 	// profile
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// b0eb2742-f37e-4c67-82d4-25c651c1c450
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of fields.
 	PropertiesShrink *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7BEEA660-A45A-45E3-98CC-AFC65E715C23

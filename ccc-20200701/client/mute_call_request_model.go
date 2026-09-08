@@ -22,26 +22,36 @@ type iMuteCallRequest interface {
 }
 
 type MuteCallRequest struct {
+	// The ID of the voice channel to be muted. This parameter is optional and defaults to empty. If it is empty, the voice channel of the agent corresponding to UserId will be muted.
+	//
 	// example:
 	//
 	// ch:user:1318888****->8001****:1609253204816:job-6581536084722****
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Device ID. This parameter is meaningless and can be filled with any value.
+	//
 	// example:
 	//
 	// device
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The call ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-6581536084722****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The agent ID to be muted.
+	//
 	// example:
 	//
 	// agent@ccc-test

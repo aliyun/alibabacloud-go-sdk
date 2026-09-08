@@ -22,19 +22,28 @@ type iEnableSchemaPropertyResponseBody interface {
 }
 
 type EnableSchemaPropertyResponseBody struct {
+  // Response code
+  // 
   // example:
   // 
   // OK
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // HTTP status code
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+  // Response message
+  // 
   // example:
   // 
   // The operation is not allowed. User state (READY) does not meet expectations (OFFLINE).
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // Response parameters.
   Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+  // Request ID.
+  // 
   // example:
   // 
   // 2778FA12-EDD6-42AA-9B15-AF855072E5E5

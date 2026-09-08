@@ -22,16 +22,28 @@ type iListUnassignedNumbersResponseBody interface {
 }
 
 type ListUnassignedNumbersResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListUnassignedNumbersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BA03159C-E808-4FF1-B27E-A61B6E888D7F
@@ -101,15 +113,22 @@ func (s *ListUnassignedNumbersResponseBody) Validate() error {
 }
 
 type ListUnassignedNumbersResponseBodyData struct {
+	// List of numbers.
 	List []*ListUnassignedNumbersResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 3
@@ -174,11 +193,23 @@ func (s *ListUnassignedNumbersResponseBodyData) Validate() error {
 }
 
 type ListUnassignedNumbersResponseBodyDataList struct {
+	// City where the number is registered.
+	//
+	// example:
+	//
+	// 乐山
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// Number.
+	//
 	// example:
 	//
 	// 08330011****
-	Number   *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// Province where the number is registered.
+	//
+	// example:
+	//
+	// 四川
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 

@@ -26,10 +26,14 @@ type iListAgentStatesRequest interface {
 }
 
 type ListAgentStatesRequest struct {
+	// Filters by a list of agent IDs.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	AgentIds *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
+	// Filters out offline agents. This parameter is fixed to true and does not support false at present.
+	//
 	// if can be null:
 	// true
 	//
@@ -37,24 +41,34 @@ type ListAgentStatesRequest struct {
 	//
 	// true
 	ExcludeOfflineUsers *bool `json:"ExcludeOfflineUsers,omitempty" xml:"ExcludeOfflineUsers,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page number, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 300.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Filters by skill group ID.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// Filters agents by status. Only a single status can be specified.
+	//
 	// example:
 	//
 	// Ready

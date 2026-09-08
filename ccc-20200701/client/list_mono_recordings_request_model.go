@@ -20,20 +20,28 @@ type iListMonoRecordingsRequest interface {
 }
 
 type ListMonoRecordingsRequest struct {
+	// The channel ID of the agent conversation.
+	//
 	// example:
 	//
 	// ch-user-****-****-1772180844645-job-*****
 	AgentChannelId *string `json:"AgentChannelId,omitempty" xml:"AgentChannelId,omitempty"`
+	// The agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The call ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-25697383427137****
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

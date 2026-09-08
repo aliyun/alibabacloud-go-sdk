@@ -24,17 +24,30 @@ type iListTicketTasksResponseBody interface {
 }
 
 type ListTicketTasksResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data []*ListTicketTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A list of error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// DE803553-8AA9-4B9D-9E4E-A82BC69EDCEE
@@ -117,46 +130,78 @@ func (s *ListTicketTasksResponseBody) Validate() error {
 }
 
 type ListTicketTasksResponseBodyData struct {
+	// The action performed on the node.
+	//
 	// example:
 	//
 	// CounterSignTask
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The ID of the assignee.
+	//
 	// example:
 	//
 	// assignee@ccc-test
 	Assignee *string `json:"Assignee,omitempty" xml:"Assignee,omitempty"`
+	// The name of the assignee.
+	//
 	// example:
 	//
 	// assignee
 	AssigneeName *string `json:"AssigneeName,omitempty" xml:"AssigneeName,omitempty"`
-	Comment      *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The comment.
+	//
+	// example:
+	//
+	// 同意
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The end time.
+	//
 	// example:
 	//
 	// 1620269200000
-	EndTime  *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// A list of files.
 	FileKeys []*string `json:"FileKeys,omitempty" xml:"FileKeys,omitempty" type:"Repeated"`
+	// A list of file access URLs.
 	FileUrls []*string `json:"FileUrls,omitempty" xml:"FileUrls,omitempty" type:"Repeated"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The start time.
+	//
 	// example:
 	//
 	// 1620259200000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The ID of the ticket node in the process definition.
+	//
 	// example:
 	//
 	// APPROVAL__6zu2QjAz
 	TaskDefinitionNodeId *string `json:"TaskDefinitionNodeId,omitempty" xml:"TaskDefinitionNodeId,omitempty"`
+	// The type of the ticket node in the process definition.
+	//
 	// example:
 	//
 	// APPROVAL
 	TaskDefinitionNodeType *string `json:"TaskDefinitionNodeType,omitempty" xml:"TaskDefinitionNodeType,omitempty"`
+	// The ID of the node.
+	//
 	// example:
 	//
 	// eb039a4a6a5742c6b44ccff0c1fca745
-	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The name of the node.
+	//
+	// example:
+	//
+	// 节点1
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The ID of the ticket.
+	//
 	// example:
 	//
 	// 5491d3b4-14ee-4341-b5f1-db2c78beddeb

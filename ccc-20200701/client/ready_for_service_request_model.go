@@ -20,20 +20,28 @@ type iReadyForServiceRequest interface {
 }
 
 type ReadyForServiceRequest struct {
+	// Device ID. This parameter is meaningless and can be filled with any value.
+	//
 	// example:
 	//
 	// device
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to enter outbound-only mode after being published. This parameter is optional and defaults to false.
+	//
 	// example:
 	//
 	// false
 	OutboundScenario *bool `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	// Agent ID. If not specified, it defaults to the agent mapped to the current RAM account.
+	//
 	// example:
 	//
 	// user-test@ccc-test

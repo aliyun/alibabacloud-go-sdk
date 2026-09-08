@@ -18,16 +18,22 @@ type iExportDoNotCallNumbersRequest interface {
 }
 
 type ExportDoNotCallNumbersRequest struct {
+  // The ID of the instance.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // ccc-test
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+  // Specifies the scope of the do-not-call numbers. A value of SYSTEM applies to your entire Alibaba Cloud account, while INSTANCE applies only to the current instance. The default value is INSTANCE.
+  // 
   // example:
   // 
   // INSTANCE
   Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+  // The keyword for a fuzzy search of phone numbers or remarks. If this parameter is left empty, no keyword-based filtering is applied.
+  // 
   // example:
   // 
   // RemarkA

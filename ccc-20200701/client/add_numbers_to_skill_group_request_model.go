@@ -20,17 +20,28 @@ type iAddNumbersToSkillGroupRequest interface {
 }
 
 type AddNumbersToSkillGroupRequest struct {
+	// The list of phone number group IDs.
+	//
+	// example:
+	//
+	// ["38f5b191-b764-45b8-bd93-4b65f839e13a"]
 	InstNumberGroupIdList *string `json:"InstNumberGroupIdList,omitempty" xml:"InstNumberGroupIdList,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of phone numbers. Ensure that the phone numbers already exist in the current instance.
+	//
 	// example:
 	//
 	// ["0103182****","0102387****"]
 	NumberList *string `json:"NumberList,omitempty" xml:"NumberList,omitempty"`
+	// The skill group ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -28,6 +28,8 @@ type iUpdateCampaignRequest interface {
 }
 
 type UpdateCampaignRequest struct {
+	// Callable time, supports multiple time segments.
+	//
 	// example:
 	//
 	// [
@@ -42,31 +44,67 @@ type UpdateCampaignRequest struct {
 	//
 	// ]
 	CallableTime *string `json:"CallableTime,omitempty" xml:"CallableTime,omitempty"`
+	// Predictive outbound campaign ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ab11908b-6ebc-4b0c-b51e-3e17c7060
 	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	// Contact stream ID.
+	//
 	// example:
 	//
 	// 3a310f56-4d30-4081-ba24-5d87a3b7262e
 	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	// End time, in Unix timestamp format, in milliseconds.
+	//
 	// example:
 	//
 	// 1689933600000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Cloud Contact Center instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Predictive outbound campaign name.
+	//
+	// example:
+	//
+	// 云联络中心测试
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Start time, in Unix timestamp format, in milliseconds.
+	//
 	// example:
 	//
 	// 1689901200000
-	StartTime          *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Policy parameters.
+	//
+	// example:
+	//
+	// PACING策略，参考参数
+	//
+	// {
+	//
+	//       "ratio": 2
+	//
+	// }
+	//
+	// PID策略，参考参数
+	//
+	// {
+	//
+	//     "abandonRate":5,
+	//
+	//     "historicalConnectedRate":45
+	//
+	// }
 	StrategyParameters *string `json:"StrategyParameters,omitempty" xml:"StrategyParameters,omitempty"`
 }
 

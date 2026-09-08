@@ -18,14 +18,24 @@ type iWithdrawTicketRequest interface {
 }
 
 type WithdrawTicketRequest struct {
+	// The comments.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 撤回，补充信息
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ticket ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,16 +22,28 @@ type iListPhoneNumbersResponseBody interface {
 }
 
 type ListPhoneNumbersResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListPhoneNumbersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BA03159C-E808-4FF1-B27E-A61B6E888D7F
@@ -101,15 +113,22 @@ func (s *ListPhoneNumbersResponseBody) Validate() error {
 }
 
 type ListPhoneNumbersResponseBodyData struct {
+	// The phone number list.
 	List []*ListPhoneNumbersResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total count.
+	//
 	// example:
 	//
 	// 1
@@ -174,42 +193,76 @@ func (s *ListPhoneNumbersResponseBodyData) Validate() error {
 }
 
 type ListPhoneNumbersResponseBodyDataList struct {
+	// Indicates whether the number is active.
+	//
 	// example:
 	//
 	// true
-	Active *bool   `json:"Active,omitempty" xml:"Active,omitempty"`
-	City   *string `json:"City,omitempty" xml:"City,omitempty"`
+	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The city where the number is registered.
+	//
+	// example:
+	//
+	// 乐山
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// The IVR contact flow ID associated with the phone number.
+	//
 	// example:
 	//
 	// a3fb6c62-9b49-4942-ae5b-cf2abd4123ek
-	ContactFlowId   *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	// Name of the IVR contact flow associated with the number.
+	//
+	// example:
+	//
+	// 默认联系流
 	ContactFlowName *string `json:"ContactFlowName,omitempty" xml:"ContactFlowName,omitempty"`
+	// The number creation time, which is the time when the number was associated with the instance, in Unix timestamp format with millisecond precision.
+	//
 	// example:
 	//
 	// 1617958538000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Number.
+	//
 	// example:
 	//
 	// 08330011****
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// Number provider name.
+	//
 	// example:
 	//
 	// alicom
-	Provider    *string                                            `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	Province    *string                                            `json:"Province,omitempty" xml:"Province,omitempty"`
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// The province where the number is registered.
+	//
+	// example:
+	//
+	// 四川
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// The list of skill groups associated with the number.
 	SkillGroups []*ListPhoneNumbersResponseBodyDataListSkillGroups `json:"SkillGroups,omitempty" xml:"SkillGroups,omitempty" type:"Repeated"`
+	// Business tags for the number, primarily used for labeling and extended business purposes. Ordinary customers do not need to concern themselves with this.
+	//
 	// example:
 	//
 	// M1
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The usage of the phone number.
+	//
 	// example:
 	//
 	// Bidirection
 	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// Agent ID. If this parameter is not empty, the number is dedicated to the agent.
+	//
 	// example:
 	//
 	// agent@ccc-test
@@ -355,15 +408,26 @@ func (s *ListPhoneNumbersResponseBodyDataList) Validate() error {
 }
 
 type ListPhoneNumbersResponseBodyDataListSkillGroups struct {
+	// The display name of the skill group.
+	//
+	// example:
+	//
+	// 测试技能组
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the skill group.
+	//
 	// example:
 	//
 	// skillgroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The skill group ID.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test

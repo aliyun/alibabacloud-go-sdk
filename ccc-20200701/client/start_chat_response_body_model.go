@@ -22,16 +22,28 @@ type iStartChatResponseBody interface {
 }
 
 type StartChatResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *StartChatResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -101,10 +113,14 @@ func (s *StartChatResponseBody) Validate() error {
 }
 
 type StartChatResponseBodyData struct {
+	// The ID of the chat session.
+	//
 	// example:
 	//
 	// $23086709$EAUNIT
 	ChatConversationId *string `json:"ChatConversationId,omitempty" xml:"ChatConversationId,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// chat-525523618219921408

@@ -22,16 +22,28 @@ type iGetSkillGroupResponseBody interface {
 }
 
 type GetSkillGroupResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *GetSkillGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// CF1C21B9-2D49-4B54-880F-FBE248C16903
@@ -101,17 +113,38 @@ func (s *GetSkillGroupResponseBody) Validate() error {
 }
 
 type GetSkillGroupResponseBodyData struct {
+	// Description of the skill group.
+	//
+	// example:
+	//
+	// 云联络中心的测试技能组。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Display name of the skill group.
+	//
+	// example:
+	//
+	// 测试技能组
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MediaType  *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Media type. The default value is AUDIO. Other valid values include CHAT and VIDEO.
+	//
+	// example:
+	//
+	// VIDEO
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Name of the skill group.
+	//
 	// example:
 	//
 	// skillgroup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Skill group ID, in the format: skill group name\\@instance ID.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test

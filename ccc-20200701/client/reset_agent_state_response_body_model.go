@@ -24,17 +24,30 @@ type iResetAgentStateResponseBody interface {
 }
 
 type ResetAgentStateResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response data.
 	Data *ResetAgentStateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Reserved for future use.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -113,36 +126,58 @@ func (s *ResetAgentStateResponseBody) Validate() error {
 }
 
 type ResetAgentStateResponseBodyData struct {
+	// The reason code for the agent\\"s break. This can be a system-defined or a custom code. System-defined codes include:
+	//
 	// example:
 	//
 	// Warm-up
 	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	// The ID of the registered device, such as a browser-based WebRTC softphone or a physical phone. An agent can register only one device at a time.
+	//
 	// example:
 	//
 	// ACC-YUNBS-1.0.10-****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The agent\\"s extension.
+	//
 	// example:
 	//
 	// 8001****
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId      *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The ID of the call. This parameter is returned only if the agent is on a call.
+	//
+	// example:
+	//
+	// 无
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Indicates whether the outbound-only mode is enabled for the agent.
+	//
 	// example:
 	//
 	// false
-	OutboundScenario       *bool     `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	OutboundScenario *bool `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	// The IDs of the skill groups that the agent is signed in to.
 	SignedSkillGroupIdList []*string `json:"SignedSkillGroupIdList,omitempty" xml:"SignedSkillGroupIdList,omitempty" type:"Repeated"`
+	// The ID of the agent.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The current state of the agent.
+	//
 	// example:
 	//
 	// OFFLINE
 	UserState *string `json:"UserState,omitempty" xml:"UserState,omitempty"`
+	// The agent\\"s work mode.
+	//
 	// example:
 	//
 	// ON_SITE

@@ -24,17 +24,30 @@ type iUpdateSubscriptionResponseBody interface {
 }
 
 type UpdateSubscriptionResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *UpdateSubscriptionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of invalid parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 03C67DAD-EB26-41D8-949D-9B0C470FB716
@@ -113,31 +126,52 @@ func (s *UpdateSubscriptionResponseBody) Validate() error {
 }
 
 type UpdateSubscriptionResponseBodyData struct {
+	// The endpoint for MQ. The service endpoint for webhook.
+	//
 	// example:
 	//
 	// rmq-cn-****.cn-shanghai.rmq.aliyuncs.com:8080
-	AccessPoint *string                                        `json:"AccessPoint,omitempty" xml:"AccessPoint,omitempty"`
-	EventList   []*UpdateSubscriptionResponseBodyDataEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
+	AccessPoint *string `json:"AccessPoint,omitempty" xml:"AccessPoint,omitempty"`
+	// The event checklist.
+	EventList []*UpdateSubscriptionResponseBodyDataEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The MQ instance ID. Specify this only when MqType is rocketmq4 or rocketmq5.
+	//
 	// example:
 	//
 	// rmq-cn-****
 	MqInstanceId *string `json:"MqInstanceId,omitempty" xml:"MqInstanceId,omitempty"`
+	// The message push type.
+	//
+	// - rocketmq4
+	//
+	// - rocketmq5
+	//
+	// - webhook
+	//
 	// example:
 	//
 	// rocketmq5
 	MqType *string `json:"MqType,omitempty" xml:"MqType,omitempty"`
+	// For MQ, enter the Group ID. For webhook, enter PID_Webhook.
+	//
 	// example:
 	//
 	// GID_xxx
 	ProducerId *string `json:"ProducerId,omitempty" xml:"ProducerId,omitempty"`
+	// For MQ, enter the topic name. For webhook, enter Topic_Webhook.
+	//
 	// example:
 	//
 	// ccc-event
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// The MQ username. Specify this only when MqType is rocketmq5.
+	//
 	// example:
 	//
 	// username
@@ -238,14 +272,23 @@ func (s *UpdateSubscriptionResponseBodyData) Validate() error {
 }
 
 type UpdateSubscriptionResponseBodyDataEventList struct {
+	// Indicates whether the push is disabled.
+	//
 	// example:
 	//
 	// true
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// The event name.
+	//
 	// example:
 	//
 	// Dialing
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The event topic.
+	//
+	// example:
+	//
+	// 无
 	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 

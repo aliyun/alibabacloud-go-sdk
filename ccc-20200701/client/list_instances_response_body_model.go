@@ -22,16 +22,28 @@ type iListInstancesResponseBody interface {
 }
 
 type ListInstancesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 26A34338-5CD9-4C95-A7A6-5BDCE76C6B94
@@ -101,15 +113,22 @@ func (s *ListInstancesResponseBody) Validate() error {
 }
 
 type ListInstancesResponseBodyData struct {
+	// List.
 	List []*ListInstancesResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 10
@@ -174,30 +193,54 @@ func (s *ListInstancesResponseBodyData) Validate() error {
 }
 
 type ListInstancesResponseBodyDataList struct {
+	// Administrator list.
 	AdminList []*ListInstancesResponseBodyDataListAdminList `json:"AdminList,omitempty" xml:"AdminList,omitempty" type:"Repeated"`
+	// The Alibaba Cloud account ID to which the instance belongs.
+	//
 	// example:
 	//
 	// 157123456789****
 	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	// The URL of the Cloud Contact Center instance, used to access the homepage of the Cloud Call Center instance. It is composed of the specific Cloud Call Center URL followed by the instance ID.
+	//
 	// example:
 	//
 	// https://ccc-v2.aliyun.com/#/workbench/ccc-test
 	ConsoleUrl *string `json:"ConsoleUrl,omitempty" xml:"ConsoleUrl,omitempty"`
+	// The creation time of the instance.
+	//
 	// example:
 	//
 	// 1624679747000
-	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The instance description.
+	//
+	// example:
+	//
+	// 云联络中心的测试实例。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The domain name of the instance, which is globally unique.
+	//
 	// example:
 	//
 	// ccc-test
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
-	Id         *string                                        `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name       *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// 测试实例
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of numbers.
 	NumberList []*ListInstancesResponseBodyDataListNumberList `json:"NumberList,omitempty" xml:"NumberList,omitempty" type:"Repeated"`
+	// Instance status.
+	//
 	// example:
 	//
 	// RUNNING
@@ -325,39 +368,62 @@ func (s *ListInstancesResponseBodyDataList) Validate() error {
 }
 
 type ListInstancesResponseBodyDataListAdminList struct {
+	// The administrator\\"s name.
+	//
+	// example:
+	//
+	// 测试坐席
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Mailbox.
+	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Agent extension number.
+	//
 	// example:
 	//
 	// 8032****
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Agent logon name.
+	//
 	// example:
 	//
 	// agent
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	// The agent\\"s personal phone number.
+	//
 	// example:
 	//
 	// 1382114****
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// The role ID, in the format: role\\@instance ID.
+	//
 	// example:
 	//
 	// Admin@ccc-test
 	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// Role name.
+	//
 	// example:
 	//
 	// Admin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Work mode.
+	//
 	// example:
 	//
 	// ON_SITE
@@ -467,6 +533,8 @@ func (s *ListInstancesResponseBodyDataListAdminList) Validate() error {
 }
 
 type ListInstancesResponseBodyDataListNumberList struct {
+	// The number.
+	//
 	// example:
 	//
 	// 0830011****

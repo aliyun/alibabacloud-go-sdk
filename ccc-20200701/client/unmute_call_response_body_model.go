@@ -24,17 +24,30 @@ type iUnmuteCallResponseBody interface {
 }
 
 type UnmuteCallResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// [responses_200_schema_properties_Data_properties_UserContext_properties_Heartbeat_description]The UNIX timestamp in milliseconds indicating when the last heartbeat was received from the agent.
 	Data *UnmuteCallResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// [responses_200_schema_properties_Data_properties_UserContext_properties_UserId_type]string
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// [responses_200_schema_properties_Data_properties_UserContext_properties_InstanceId_type]string
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// [responses_200_schema_properties_Data_properties_UserContext_properties_BreakCode_enumValueTitles_RejectCall]Break caused by agent rejecting a call
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// [responses_200_schema_properties_Data_properties_UserContext_properties_DeviceId_type]string
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -113,7 +126,9 @@ func (s *UnmuteCallResponseBody) Validate() error {
 }
 
 type UnmuteCallResponseBodyData struct {
+	// [responses_200_schema_properties_Data_properties_CallContext_properties_ChannelContexts_items_properties_ReleaseReason_type]string
 	CallContext *UnmuteCallResponseBodyDataCallContext `json:"CallContext,omitempty" xml:"CallContext,omitempty" type:"Struct"`
+	// [responses_200_schema_properties_Data_properties_UserContext_properties_OutboundScenario_description]Indicates whether the agent is in outbound-only mode.
 	UserContext *UnmuteCallResponseBodyDataUserContext `json:"UserContext,omitempty" xml:"UserContext,omitempty" type:"Struct"`
 }
 
@@ -158,15 +173,22 @@ func (s *UnmuteCallResponseBodyData) Validate() error {
 }
 
 type UnmuteCallResponseBodyDataCallContext struct {
+	// Call type.
+	//
 	// example:
 	//
 	// OUTBOUND
-	CallType        *string                                                 `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	CallType *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	// List of call channels.
 	ChannelContexts []*UnmuteCallResponseBodyDataCallContextChannelContexts `json:"ChannelContexts,omitempty" xml:"ChannelContexts,omitempty" type:"Repeated"`
+	// [responses_200_schema_properties_Data_properties_CallContext_properties_ChannelContexts_items_properties_ChannelFlags_enumValueTitles_MONITORING]Monitoring
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Call ID.
+	//
 	// example:
 	//
 	// job-6538214103685****
@@ -231,58 +253,86 @@ func (s *UnmuteCallResponseBodyDataCallContext) Validate() error {
 }
 
 type UnmuteCallResponseBodyDataCallContextChannelContexts struct {
+	// The call type of the channel.
+	//
 	// example:
 	//
 	// OUTBOUND
 	CallType *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	// Channel flags.
+	//
 	// example:
 	//
 	// MONITORING
 	ChannelFlags *string `json:"ChannelFlags,omitempty" xml:"ChannelFlags,omitempty"`
+	// The channel ID.
+	//
 	// example:
 	//
 	// ch:user:1390501****->8032****:1609138902226:job-6538214103685****
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// [parameters_JobId_schema_description]The call ID.
+	//
 	// example:
 	//
 	// CREATED
 	ChannelState *string `json:"ChannelState,omitempty" xml:"ChannelState,omitempty"`
+	// Called party of the call channel.
+	//
 	// example:
 	//
 	// 1390501****
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	// An auto-incremented ID assigned by the system. Customers do not need to concern themselves with this value.
+	//
 	// example:
 	//
 	// 1
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The call ID.
+	//
 	// example:
 	//
 	// job-6538214103685****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The originator of the channel.
+	//
 	// example:
 	//
 	// 0830019****
 	Originator *string `json:"Originator,omitempty" xml:"Originator,omitempty"`
+	// [parameters_JobId_in]query
+	//
 	// example:
 	//
 	// 1390501****
 	ReleaseInitiator *string `json:"ReleaseInitiator,omitempty" xml:"ReleaseInitiator,omitempty"`
+	// The reason for releasing the channel. This indicates why the current channel was disconnected. The value corresponds to a response code defined in the SIP protocol. Customers should refer to the SIP protocol to analyze the disconnection reason.
+	//
 	// example:
 	//
 	// 404 - No destination
 	ReleaseReason *string `json:"ReleaseReason,omitempty" xml:"ReleaseReason,omitempty"`
+	// The skill group associated with this call. In inbound scenarios, the skill group is specified by the queue routed through IVR. In outbound scenarios, the skill group is the first one the agent signs into.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// The UNIX timestamp of the most recent status change of the channel, in milliseconds.
+	//
 	// example:
 	//
 	// 1609138903315
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The extension number of the agent associated with the channel.
+	//
 	// example:
 	//
 	// 8032****
 	UserExtension *string `json:"UserExtension,omitempty" xml:"UserExtension,omitempty"`
+	// The agent ID associated with the channel. This field is empty if the channel belongs to a customer.
+	//
 	// example:
 	//
 	// agent@ccc-test
@@ -428,47 +478,70 @@ func (s *UnmuteCallResponseBodyDataCallContextChannelContexts) Validate() error 
 }
 
 type UnmuteCallResponseBodyDataUserContext struct {
+	// Break status code, which can be either system-defined or customer-defined. System-defined break codes include: Warm-up (temporary break state after an agent goes online but before becoming idle), RingingTimeout (break caused by agent ringing timeout), and RejectCall (break caused by agent rejecting a call). Customer-defined status codes have no restrictions, and customers can define them according to their business needs.
+	//
 	// example:
 	//
 	// Warm-up
 	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	// Device ID, which is the identity ID of a browser-based Web Real-Time Communication (WebRTC) softphone or a physical phone device. Only one type of device can be registered at a time.
+	//
 	// example:
 	//
 	// ACC-YUNBS-1.0.10-****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// [responses_200_schema_properties_Data_properties_UserContext_properties_Mobile_description]The agent\\"s personal phone number.
+	//
 	// example:
 	//
 	// 8032****
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The UNIX timestamp in milliseconds indicating when the last heartbeat was received from the agent.
+	//
 	// example:
 	//
 	// 1609136956378
 	Heartbeat *int64 `json:"Heartbeat,omitempty" xml:"Heartbeat,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// [responses_200_schema_properties_Data_properties_CallContext_properties_ChannelContexts_items_properties_SkillGroupId_type]string
+	//
 	// example:
 	//
 	// job-6538214103685****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The agent\\"s personal phone number.
+	//
 	// example:
 	//
 	// 1324730****
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// Indicates whether the agent is in outbound-only mode.
+	//
 	// example:
 	//
 	// false
-	OutboundScenario       *bool     `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	OutboundScenario *bool `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	// [responses_200_schema_properties_Data_properties_CallContext_properties_ChannelContexts_items_properties_ChannelId_type]string
 	SignedSkillGroupIdList []*string `json:"SignedSkillGroupIdList,omitempty" xml:"SignedSkillGroupIdList,omitempty" type:"Repeated"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// [responses_200_schema_properties_Data_properties_CallContext_properties_CallType_description]Call type.
+	//
 	// example:
 	//
 	// TALKING
 	UserState *string `json:"UserState,omitempty" xml:"UserState,omitempty"`
+	// [responses_200_schema_properties_Data_properties_CallContext_properties_ChannelContexts_items_properties_Index_type]integer
+	//
 	// example:
 	//
 	// ON_SITE

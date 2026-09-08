@@ -24,17 +24,30 @@ type iListDoNotCallNumbersResponseBody interface {
 }
 
 type ListDoNotCallNumbersResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListDoNotCallNumbersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// List of response parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BA03159C-E808-4FF1-B27E-A61B6E888D7F
@@ -113,15 +126,22 @@ func (s *ListDoNotCallNumbersResponseBody) Validate() error {
 }
 
 type ListDoNotCallNumbersResponseBodyData struct {
+	// List of prohibited outbound call numbers.
 	List []*ListDoNotCallNumbersResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 1
@@ -186,20 +206,38 @@ func (s *ListDoNotCallNumbersResponseBodyData) Validate() error {
 }
 
 type ListDoNotCallNumbersResponseBodyDataList struct {
+	// Creation time of the Do Not Call number configuration, in Unix timestamp format with millisecond precision. (Deprecated)
+	//
 	// example:
 	//
 	// 1626962425000
-	CreateTime  *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Creation time of the prohibited outbound call number configuration, in Unix timestamp format, in milliseconds.
+	//
+	// example:
+	//
+	// 1631440860000
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Creator, which is the agent logon name of the agent who created this record.
+	//
 	// example:
 	//
 	// agent
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Phone number.
+	//
 	// example:
 	//
 	// 1900000****
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// Remark.
+	//
+	// example:
+	//
+	// 测试
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Scope of application.
+	//
 	// example:
 	//
 	// INSTANCE

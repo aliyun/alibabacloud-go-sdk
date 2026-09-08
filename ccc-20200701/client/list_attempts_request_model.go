@@ -40,65 +40,96 @@ type iListAttemptsRequest interface {
 }
 
 type ListAttemptsRequest struct {
+	// Filter by agent ID. This parameter is optional and defaults to empty.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// Call record ID, which has the same value as the call ID.
+	//
 	// example:
 	//
 	// job-16976964500325****
 	AttemptId *string `json:"AttemptId,omitempty" xml:"AttemptId,omitempty"`
+	// Filter by called number. Optional. Default is empty.
+	//
 	// example:
 	//
 	// 1888888****
 	Callee *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
+	// Filter by caller number. This parameter is optional and defaults to empty.
+	//
 	// example:
 	//
 	// 05711234****
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// Predictive outbound dialing Activity ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6badb397-a8b5-40b6-21019d382a09
 	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	// System-generated contact ID. Customers do not need to concern themselves with this value.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 60ecb1a2-4480-4d01-bede-c5b7655bfadf
 	CaseId *string `json:"CaseId,omitempty" xml:"CaseId,omitempty"`
+	// Filter by call ID. This parameter is optional and defaults to empty.
+	//
 	// example:
 	//
 	// job-16976964500325****
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	Criteria  *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
+	// Extended query conditions in JSON format. Currently supports caseIds for batch queries.
+	//
+	// example:
+	//
+	// {"caseIds":["964f05a7-fc15-4a05-93a6-cd7421c4459e","5e2d508b-0df6-4077-8099-d3fff51ea6d0","da037029-8c83-4270-a90e-e7734be76af6"]}
+	Criteria *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
+	// End Time. This parameter is optional. If not specified, it defaults to the End Time of the predictive outbound dialing Activity. The format is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1634115698291
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page number. The product of PageNumber and PageSize must not exceed 10 000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size. The product of PageNumber and PageSize must not exceed 10 000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Filter by skill group ID. This parameter is optional and defaults to empty, which means no filtering is applied.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
 	QueueId *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
+	// Start Time. This parameter is optional. If not specified, it defaults to the Start Time of the predictive outbound dialing Activity. The format is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1634115688291

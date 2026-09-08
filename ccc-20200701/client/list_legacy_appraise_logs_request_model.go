@@ -23,34 +23,14 @@ type iListLegacyAppraiseLogsRequest interface {
 
 type ListLegacyAppraiseLogsRequest struct {
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1620273600000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// This parameter is required.
-	//
-	// example:
-	//
-	// 1604638129000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

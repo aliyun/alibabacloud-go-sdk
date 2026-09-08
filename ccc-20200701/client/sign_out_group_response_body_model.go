@@ -24,17 +24,30 @@ type iSignOutGroupResponseBody interface {
 }
 
 type SignOutGroupResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *SignOutGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// List of response parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -113,51 +126,76 @@ func (s *SignOutGroupResponseBody) Validate() error {
 }
 
 type SignOutGroupResponseBodyData struct {
+	// Break status code, which can be either System-defined or Custom-defined. System-defined break codes include: Warm-up (temporary break status after the agent is published but before becoming idle), RingingTimeout (break caused by ringing timeout), and RejectCall (break caused by the agent rejecting a call). There are no restrictions on Custom-defined status codes; customers can define them according to their business needs.
+	//
 	// example:
 	//
 	// Warm-up
 	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	// Device ID, which is the identity of a browser-based Web Real-Time Communication (WebRTC) softphone or a physical phone device. Only one type of device can be registered at a time.
+	//
 	// example:
 	//
 	// ACC-YUNBS-1.0.10-****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Agent extension number.
+	//
 	// example:
 	//
 	// 8032****
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// Time of the last received agent heartbeat, formatted as a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1609136956378
 	Heartbeat *int64 `json:"Heartbeat,omitempty" xml:"Heartbeat,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Call ID.
+	//
 	// example:
 	//
 	// job-6538214103685****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The agent\\"s personal phone number.
+	//
 	// example:
 	//
 	// 1324730****
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// Indicates whether the agent is in outbound-only mode.
+	//
 	// example:
 	//
 	// false
 	OutboundScenario *bool `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	// The UNIX timestamp (in milliseconds) indicating the most recent time the agent was reserved. Being reserved means an incoming call will be assigned to the agent shortly.
+	//
 	// example:
 	//
 	// 1609136956378
-	Reserved               *int64    `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	Reserved *int64 `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	// List of skill group IDs that the agent has signed into.
 	SignedSkillGroupIdList []*string `json:"SignedSkillGroupIdList,omitempty" xml:"SignedSkillGroupIdList,omitempty" type:"Repeated"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Agent status.
+	//
 	// example:
 	//
 	// BREAK
 	UserState *string `json:"UserState,omitempty" xml:"UserState,omitempty"`
+	// Work mode.
+	//
 	// example:
 	//
 	// ON_SITE

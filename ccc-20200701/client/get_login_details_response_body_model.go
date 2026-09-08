@@ -24,17 +24,30 @@ type iGetLoginDetailsResponseBody interface {
 }
 
 type GetLoginDetailsResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Logon information data.
 	Data *GetLoginDetailsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Response parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// F1A4774A-F28B-5C40-AEF6-D88D2DD6C7E4
@@ -113,56 +126,128 @@ func (s *GetLoginDetailsResponseBody) Validate() error {
 }
 
 type GetLoginDetailsResponseBodyData struct {
+	// Agent data push server URL. After a successful connection, the server pushes agent status data to the agent Workbench.
+	//
 	// example:
 	//
 	// sh-wss-ccc.aliyuncs.com
 	AgentServerUrl *string `json:"AgentServerUrl,omitempty" xml:"AgentServerUrl,omitempty"`
-	AvatarUrl      *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
-	ChatAppId      *string `json:"ChatAppId,omitempty" xml:"ChatAppId,omitempty"`
-	ChatAppKey     *string `json:"ChatAppKey,omitempty" xml:"ChatAppKey,omitempty"`
-	ChatDeviceId   *string `json:"ChatDeviceId,omitempty" xml:"ChatDeviceId,omitempty"`
+	// Agent profile picture URL.
+	//
+	// example:
+	//
+	// http://abc.com/sam.jpb
+	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	// Chat session application ID.
+	//
+	// example:
+	//
+	// 7pjxxx
+	ChatAppId *string `json:"ChatAppId,omitempty" xml:"ChatAppId,omitempty"`
+	// Chat session application key.
+	//
+	// example:
+	//
+	// 955e4bd7xxxxxxxxxxxxxd7898ba9fa0d0
+	ChatAppKey *string `json:"ChatAppKey,omitempty" xml:"ChatAppKey,omitempty"`
+	// Chat Device ID.
+	//
+	// example:
+	//
+	// 4c51c9116c36537cb850dc1081d745df
+	ChatDeviceId *string `json:"ChatDeviceId,omitempty" xml:"ChatDeviceId,omitempty"`
+	// Chat session logon token.
+	//
+	// example:
+	//
+	// {"accessToken":"oauth_cloud_key:4xxx0=","accessTokenExpiredTime":864xxxx,"refreshToken":"oauth_cloud_key:Paxxxx=="}
 	ChatLoginToken *string `json:"ChatLoginToken,omitempty" xml:"ChatLoginToken,omitempty"`
-	ChatServerUrl  *string `json:"ChatServerUrl,omitempty" xml:"ChatServerUrl,omitempty"`
-	ChatUserId     *string `json:"ChatUserId,omitempty" xml:"ChatUserId,omitempty"`
+	// Chat session server URL.
+	//
+	// example:
+	//
+	// wss://wss.im.dingtalk.cn
+	ChatServerUrl *string `json:"ChatServerUrl,omitempty" xml:"ChatServerUrl,omitempty"`
+	// Chat session Device ID.
+	//
+	// example:
+	//
+	// A-8000100x
+	ChatUserId *string `json:"ChatUserId,omitempty" xml:"ChatUserId,omitempty"`
+	// SIP device extension number. This field is required when using a SIP phone.
+	//
 	// example:
 	//
 	// 8033****
 	DeviceExt *string `json:"DeviceExt,omitempty" xml:"DeviceExt,omitempty"`
+	// If the agent has registered an SIP phone, this parameter is the Device ID of the SIP phone device; otherwise, it is empty.
+	//
 	// example:
 	//
 	// Yealink SIP-T23G 44.84.XX.XX
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// SIP device status.
+	//
 	// example:
 	//
 	// OFFLINE
 	DeviceState *string `json:"DeviceState,omitempty" xml:"DeviceState,omitempty"`
+	// Agent display name.
+	//
+	// example:
+	//
+	// 坐席小王
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Agent extension number.
+	//
 	// example:
 	//
 	// 8001****
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	Nickname  *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	// Agent nickname
+	//
+	// example:
+	//
+	// 老王
+	Nickname *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	// Signature information generated using an asymmetric key encryption algorithm. This information is required for authentication when registering with the SIP server.
+	//
 	// example:
 	//
 	// zi31STIMtIfa/UN2l+6lww****
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	// Signature information generated using an asymmetric key encryption algorithm. This information is required for authentication when registering with the SIP server.
+	//
 	// example:
 	//
 	// zi31STIMtIfa/UN2l+6lww****
 	Signature2 *string `json:"Signature2,omitempty" xml:"Signature2,omitempty"`
+	// SIP registration server URL. The agent must register with the server as an SIP user to perform transactional processing (TP) operations.
+	//
 	// example:
 	//
 	// sh-sip-ccc.aliyuncs.com:443
 	SipServerUrl *string `json:"SipServerUrl,omitempty" xml:"SipServerUrl,omitempty"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
-	UserId  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Signature data used to generate signature information. Because this signature mechanism does not support Chinese characters, UserKey2 is currently used for signing instead.
+	//
+	// example:
+	//
+	// 坐席@aliyun:802001:1656406628862
 	UserKey *string `json:"UserKey,omitempty" xml:"UserKey,omitempty"`
+	// Signature data used to generate signature information. UserKey2 was added because UserKey does not support Chinese characters in signatures.
+	//
 	// example:
 	//
 	// 802001:1656406628862"
 	UserKey2 *string `json:"UserKey2,omitempty" xml:"UserKey2,omitempty"`
+	// Work mode.
+	//
 	// example:
 	//
 	// ON_SITE

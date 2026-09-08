@@ -24,17 +24,30 @@ type iInterceptCallResponseBody interface {
 }
 
 type InterceptCallResponseBody struct {
+	// 响应码。
+	//
 	// example:
 	//
 	// OK
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *InterceptCallResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// List of response parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -113,7 +126,9 @@ func (s *InterceptCallResponseBody) Validate() error {
 }
 
 type InterceptCallResponseBodyData struct {
+	// Call context environment.
 	CallContext *InterceptCallResponseBodyDataCallContext `json:"CallContext,omitempty" xml:"CallContext,omitempty" type:"Struct"`
+	// Agent context environment.
 	UserContext *InterceptCallResponseBodyDataUserContext `json:"UserContext,omitempty" xml:"UserContext,omitempty" type:"Struct"`
 }
 
@@ -158,15 +173,22 @@ func (s *InterceptCallResponseBodyData) Validate() error {
 }
 
 type InterceptCallResponseBodyDataCallContext struct {
+	// The call type of the channel.
+	//
 	// example:
 	//
 	// INTERCEPT
-	CallType        *string                                                    `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	CallType *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	// The list of channels.
 	ChannelContexts []*InterceptCallResponseBodyDataCallContextChannelContexts `json:"ChannelContexts,omitempty" xml:"ChannelContexts,omitempty" type:"Repeated"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The call ID.
+	//
 	// example:
 	//
 	// job-6538214103685****
@@ -231,55 +253,86 @@ func (s *InterceptCallResponseBodyDataCallContext) Validate() error {
 }
 
 type InterceptCallResponseBodyDataCallContextChannelContexts struct {
+	// The call type of the channel.
+	//
 	// example:
 	//
 	// INTERCEPT
-	CallType     *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	CallType *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	// 话务通道标志。
+	//
+	// example:
+	//
+	// 无
 	ChannelFlags *string `json:"ChannelFlags,omitempty" xml:"ChannelFlags,omitempty"`
+	// 话务通道 ID。
+	//
 	// example:
 	//
 	// ch:user:1390501****->8032****:1609138902226:job-653821410368****
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// [responses_200_schema_properties_Data_properties_CallContext_properties_ChannelContexts_items_properties_CallType_enumValueTitles_COACH]Coaching
+	//
 	// example:
 	//
 	// ANSWERED
 	ChannelState *string `json:"ChannelState,omitempty" xml:"ChannelState,omitempty"`
+	// [responses_200_schema_properties_Data_properties_CallContext_properties_ChannelContexts_items_properties_CallType_enumValueTitles_BARGE]Barge-in
+	//
 	// example:
 	//
 	// 1390501****
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	// An auto-incremented ID assigned by the system. Customers do not need to concern themselves with this value.
+	//
 	// example:
 	//
 	// 10
 	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// 通话 ID。
+	//
 	// example:
 	//
 	// job-6538214103685****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 话务通道的主叫方。
+	//
 	// example:
 	//
 	// 0830019****
 	Originator *string `json:"Originator,omitempty" xml:"Originator,omitempty"`
+	// [responses_200_schema_properties_Data_properties_CallContext_properties_ChannelContexts_items_properties_CallType_type]string
+	//
 	// example:
 	//
 	// 1390501****
 	ReleaseInitiator *string `json:"ReleaseInitiator,omitempty" xml:"ReleaseInitiator,omitempty"`
+	// 话务通道的挂断原因，表示当前话务通道为什么会被挂断，取值来自 SIP 协议中定义的响应码，请客户参考 SIP 协议分析挂断原因。
+	//
 	// example:
 	//
 	// 404 - No destination
 	ReleaseReason *string `json:"ReleaseReason,omitempty" xml:"ReleaseReason,omitempty"`
+	// 话务通道关联的技能组 ID，呼入场景下，关联的技能组 ID 由 IVR 中转人工模块配置的技能组决定，呼出场景下，关联的技能组 ID 为座席签入的第一个技能组的 ID。
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// 话务通道最近一次状态变化的时间戳，格式是 Unix 时间戳，单位毫秒。
+	//
 	// example:
 	//
 	// 1609138903315
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// 话务通道关联的坐席的分机号。
+	//
 	// example:
 	//
 	// 8032****
 	UserExtension *string `json:"UserExtension,omitempty" xml:"UserExtension,omitempty"`
+	// 话务通道关联的坐席 ID，如果是客户的话务通道，该字段为空。
+	//
 	// example:
 	//
 	// agent@ccc-test
@@ -425,51 +478,76 @@ func (s *InterceptCallResponseBodyDataCallContextChannelContexts) Validate() err
 }
 
 type InterceptCallResponseBodyDataUserContext struct {
+	// Break status code, which can be either System-defined or Custom-defined. System-defined break codes include: Warm-up (temporary break state after an agent is published and before becoming idle), RingingTimeout (break caused by agent ringing timeout), and RejectCall (break caused by agent call rejection). There are no restrictions on Custom-defined status codes, and customers can define them according to their business needs.
+	//
 	// example:
 	//
 	// Warm-up
 	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	// Device ID, which is the identity ID of a browser-based Web Real-Time Communication (WebRTC) softphone or a physical phone device. Only one type of device can be registered at a time.
+	//
 	// example:
 	//
 	// ACC-YUNBS-1.0.10-****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Agent extension number.
+	//
 	// example:
 	//
 	// 8032****
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The time when the last heartbeat was received from the agent, formatted as a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1609136956378
 	Heartbeat *int64 `json:"Heartbeat,omitempty" xml:"Heartbeat,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Call ID.
+	//
 	// example:
 	//
 	// job-6538214103685****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The agent\\"s personal phone number.
+	//
 	// example:
 	//
 	// 1324730****
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// Indicates whether the agent is in outbound-only mode.
+	//
 	// example:
 	//
 	// false
 	OutboundScenario *bool `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	// The time when the agent was most recently reserved. Being reserved means an incoming call will be assigned to the agent shortly. The format is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1609136956378
-	Reserved               *int64    `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	Reserved *int64 `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	// List of skill group IDs that the agent has signed into.
 	SignedSkillGroupIdList []*string `json:"SignedSkillGroupIdList,omitempty" xml:"SignedSkillGroupIdList,omitempty" type:"Repeated"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Agent status.
+	//
 	// example:
 	//
 	// TALKING
 	UserState *string `json:"UserState,omitempty" xml:"UserState,omitempty"`
+	// Work mode.
+	//
 	// example:
 	//
 	// ON_SITE

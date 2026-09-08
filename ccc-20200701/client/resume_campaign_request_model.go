@@ -16,12 +16,16 @@ type iResumeCampaignRequest interface {
 }
 
 type ResumeCampaignRequest struct {
+	// The predictive outbound calling Activity ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6badb397-a8b5-40b6-21019d382a09
 	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

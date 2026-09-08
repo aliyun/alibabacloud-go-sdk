@@ -20,23 +20,29 @@ type iDeleteSchemaPropertyRequest interface {
 }
 
 type DeleteSchemaPropertyRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 9cfad875-6260-4a53-ab6e-b13e3fb31f7d
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The field name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// name
 	PropertyName *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7BEEA660-A45A-45E3-98CC-AFC65E715C23
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// schema id
+	// The schema ID.
 	//
 	// This parameter is required.
 	//

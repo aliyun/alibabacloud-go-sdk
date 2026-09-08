@@ -42,69 +42,102 @@ type iListTicketsRequest interface {
 }
 
 type ListTicketsRequest struct {
+	// Assignee ID.
+	//
 	// example:
 	//
 	// assignee@cccV2-kmz
 	Assignee *string `json:"Assignee,omitempty" xml:"Assignee,omitempty"`
+	// Assignee type.
+	//
 	// example:
 	//
 	// Agent
 	AssigneeType *string `json:"AssigneeType,omitempty" xml:"AssigneeType,omitempty"`
+	// Ticket category ID.
+	//
 	// example:
 	//
 	// 43c2671b-****-4223-86d0-6bd187905cc8
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// Creator.
+	//
 	// example:
 	//
 	// creator@cccV2-kmz
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Customer ID. The Cloud Contact Center customer profile ID.
+	//
 	// example:
 	//
 	// 51e155ce-3747-*****-b402-13c69597b920
 	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	// End time. Filter by ticket creation time.
+	//
 	// example:
 	//
 	// 1646928000000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// A list of contact IDs.
+	//
 	// example:
 	//
 	// ["job-12******","job-23****"]
 	JobIdList *string `json:"JobIdList,omitempty" xml:"JobIdList,omitempty"`
+	// Paging ordinal number. Range: 1-100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Paging size. Range: 1-100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Participant ID.
+	//
 	// example:
 	//
 	// participant@cccV2-kmz
 	Participant *string `json:"Participant,omitempty" xml:"Participant,omitempty"`
+	// Start time. Filter by ticket creation time.
+	//
 	// example:
 	//
 	// 1646841600000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Ticket state.
+	//
 	// example:
 	//
 	// Processing
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// Ticket ID.
+	//
 	// example:
 	//
 	// 5491d3b4-14ee-4341-b5f1-db2c78beddeb
 	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
-	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Ticket title.
+	//
+	// example:
+	//
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListTicketsRequest) String() string {

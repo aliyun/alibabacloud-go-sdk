@@ -24,17 +24,30 @@ type iListNotificationRecordsResponseBody interface {
 }
 
 type ListNotificationRecordsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data []*ListNotificationRecordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A list of invalid parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0630E5DF-CEB0-445B-8626-D5C7481181C3
@@ -117,6 +130,8 @@ func (s *ListNotificationRecordsResponseBody) Validate() error {
 }
 
 type ListNotificationRecordsResponseBodyData struct {
+	// The notification content.
+	//
 	// example:
 	//
 	// {
@@ -145,14 +160,20 @@ type ListNotificationRecordsResponseBodyData struct {
 	//
 	// }
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The notification key.
+	//
 	// example:
 	//
 	// job-468a63a2-****-****-****-b1ecf726d4be
 	NotificationKey *string `json:"NotificationKey,omitempty" xml:"NotificationKey,omitempty"`
+	// The message type.
+	//
 	// example:
 	//
 	// Dialing

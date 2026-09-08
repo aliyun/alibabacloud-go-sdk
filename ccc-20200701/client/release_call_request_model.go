@@ -22,26 +22,36 @@ type iReleaseCallRequest interface {
 }
 
 type ReleaseCallRequest struct {
+	// Channel ID of the call to hang up. This parameter is optional. If not specified, it defaults to the channel where the agent corresponding to the UserId is located.
+	//
 	// example:
 	//
 	// ch:user:1390501****->8032****:1609138902226:job-6538214103685****
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Device ID. This parameter is meaningless and can be filled with any value.
+	//
 	// example:
 	//
 	// device
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Call ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-6538214103685****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Agent ID. If not specified, the agent mapped to the current Resource Access Management (RAM) user is used by default.
+	//
 	// example:
 	//
 	// agent@ccc-test

@@ -24,17 +24,30 @@ type iGetSummaryTemplateResponseBody interface {
 }
 
 type GetSummaryTemplateResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
 	Data *GetSummaryTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 30C7D235-DDCF-4C7F-A462-5E2598252C2B
@@ -113,24 +126,44 @@ func (s *GetSummaryTemplateResponseBody) Validate() error {
 }
 
 type GetSummaryTemplateResponseBodyData struct {
+	// The ID of the summary category.
+	//
 	// example:
 	//
 	// 8939-4223-86d0-6bd187905cc8
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The user who edited the template.
+	//
 	// example:
 	//
 	// editor-xxx@ccc-test
 	Editor *string `json:"Editor,omitempty" xml:"Editor,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
-	InstanceId   *string                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name         *string                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the template.
+	//
+	// example:
+	//
+	// 测试模板
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of template fields.
 	PropertyList []*GetSummaryTemplateResponseBodyDataPropertyList `json:"PropertyList,omitempty" xml:"PropertyList,omitempty" type:"Repeated"`
+	// The status code.
+	//
+	// - Enabled: The template is enabled.
+	//
+	// - Disabled: The template is disabled.
+	//
 	// example:
 	//
 	// Enabled
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 43c2671b-8939-4223-86d0-6bd187905cc8_1717664210492
@@ -222,83 +255,128 @@ func (s *GetSummaryTemplateResponseBodyData) Validate() error {
 }
 
 type GetSummaryTemplateResponseBodyDataPropertyList struct {
+	// Indicates whether the field is an array.
+	//
 	// example:
 	//
 	// false
 	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
+	// The extended properties.
+	//
 	// example:
 	//
 	// {}
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// The time when the field was created.
+	//
 	// example:
 	//
 	// 1717664210000
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The user who created the field.
+	//
 	// example:
 	//
 	// cretor-xxx@ccc-test
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The data type.
+	//
 	// example:
 	//
 	// string
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The description of the field.
+	//
 	// example:
 	//
 	// Description-xxxx
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the field is disabled.
+	//
 	// example:
 	//
 	// false
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// The display name.
+	//
 	// example:
 	//
 	// DisplayName-A
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The display order in the list.
+	//
 	// example:
 	//
 	// 1
 	DisplayOrder *int32 `json:"DisplayOrder,omitempty" xml:"DisplayOrder,omitempty"`
+	// The type of the editor.
+	//
 	// example:
 	//
 	// textbox
 	EditorType *string `json:"EditorType,omitempty" xml:"EditorType,omitempty"`
+	// The maximum length.
+	//
 	// example:
 	//
 	// 30
 	MaxLength *int32 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	// The maximum value of the number.
+	//
 	// example:
 	//
 	// 10
 	Maximum *float64 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	// The minimum length.
+	//
 	// example:
 	//
 	// 1
 	MinLength *int32 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+	// The minimum value of the number.
+	//
 	// example:
 	//
 	// 1
 	Minimum *float64 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
+	// The name of the field.
+	//
 	// example:
 	//
 	// Name-A
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The validation rule that is specified by a regular expression.
+	//
 	// example:
 	//
 	// ^
-	Pattern             *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	// The error message that is returned when the regular expression fails to pass the validation.
+	//
+	// example:
+	//
+	// 不是有效的email地址
 	PatternErrorMessage *string `json:"PatternErrorMessage,omitempty" xml:"PatternErrorMessage,omitempty"`
+	// Indicates whether the field is read-only.
+	//
 	// example:
 	//
 	// false
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// Indicates whether the field is required.
+	//
 	// example:
 	//
 	// false
 	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+	// Indicates whether the field is a system field.
+	//
 	// example:
 	//
 	// false
 	System *bool `json:"System,omitempty" xml:"System,omitempty"`
+	// The time when the field was last updated.
+	//
 	// example:
 	//
 	// 1717664210000

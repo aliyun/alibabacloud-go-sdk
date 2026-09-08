@@ -24,20 +24,30 @@ type iGetSchemaResponseBody interface {
 }
 
 type GetSchemaResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetSchemaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// Service abnormal, the instance 0418 is ceased.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 19D09CCC-F298-4124-849A-AFA217819011
@@ -116,26 +126,40 @@ func (s *GetSchemaResponseBody) Validate() error {
 }
 
 type GetSchemaResponseBodyData struct {
+	// The time when the schema was created.
+	//
 	// example:
 	//
 	// 2021-07-14 10:48:43.0
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Indicates whether the schema is deleted.
+	//
 	// example:
 	//
 	// false
-	Deleted     *bool   `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	Deleted *bool `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// 客户profile
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// schema id
+	// The ID of the schema.
 	//
 	// example:
 	//
 	// profile
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// 5e0964fd-951c-4e45-b518-d09d4d2db8ca
-	InstanceId *string                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of fields.
 	Properties map[string]*DataPropertiesValue `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// The time when the schema was last modified.
+	//
 	// example:
 	//
 	// 2021-07-14 10:48:43.0

@@ -16,12 +16,16 @@ type iGetUploadAudioDataParamsRequest interface {
 }
 
 type GetUploadAudioDataParamsRequest struct {
+	// Call ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-38860977107324****
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// Cloud Contact Center instance ID.
+	//
 	// example:
 	//
 	// test

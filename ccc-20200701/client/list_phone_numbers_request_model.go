@@ -24,32 +24,44 @@ type iListPhoneNumbersRequest interface {
 }
 
 type ListPhoneNumbersRequest struct {
+	// Indicates whether the number is active. This parameter is optional. The default value is empty, which means no filtering is applied.
+	//
 	// example:
 	//
 	// true
 	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The paging ordinal number, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Performs fuzzy matching based on the number. This parameter is optional and defaults to empty. An empty value indicates no filtering.
+	//
 	// example:
 	//
 	// 0833
 	SearchPattern *string `json:"SearchPattern,omitempty" xml:"SearchPattern,omitempty"`
+	// Usage of the number. This parameter is optional. The default value is empty, which means no filtering is applied.
+	//
 	// example:
 	//
 	// Bidirection

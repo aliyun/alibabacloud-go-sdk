@@ -24,17 +24,30 @@ type iGetTicketTemplateResponseBody interface {
 }
 
 type GetTicketTemplateResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *GetTicketTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// List of error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BF268B34-09C2-43FD-BAC4-5D31EA633111
@@ -113,29 +126,52 @@ func (s *GetTicketTemplateResponseBody) Validate() error {
 }
 
 type GetTicketTemplateResponseBodyData struct {
+	// Ticket category ID.
+	//
 	// example:
 	//
 	// 43c2671b-****-4223-86d0-6bd187905cc8
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// Template editor.
+	//
 	// example:
 	//
 	// editor-xxx@ccc-test
 	Editor *string `json:"Editor,omitempty" xml:"Editor,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Template name.
+	//
+	// example:
+	//
+	// 测试模板。
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Workflow information.
+	//
+	// example:
+	//
+	// [{\\"id\\":\\"TICKET_START\\",\\"name\\":\\"开始\\",\\"nodeIndex\\":0,\\"properties\\":{\\"position\\":{\\"x\\":250,\\"y\\":200}},\\"type\\":\\"TICKET_START\\",\\"events\\":[{\\"edgeId\\":\\"8bd07339\\",\\"sourceAnchor\\":0,\\"next\\":\\"APPROVAL__JNBSSREc\\",\\"targetAnchor\\":0}]},{\\"id\\":\\"TICKET_FINISH\\",\\"name\\":\\"结束\\",\\"nodeIndex\\":9999,\\"properties\\":{\\"position\\":{\\"x\\":767,\\"y\\":206}},\\"type\\":\\"TICKET_FINISH\\",\\"events\\":[]},{\\"id\\":\\"APPROVAL__JNBSSREc\\",\\"name\\":\\"流程节点\\",\\"nodeIndex\\":1,\\"properties\\":{\\"skillGroupId\\":\\"chat001@cccV2-kmz\\",\\"position\\":{\\"x\\":537,\\"y\\":164.5}},\\"type\\":\\"APPROVAL\\",\\"events\\":[{\\"edgeId\\":\\"74031613\\",\\"sourceAnchor\\":1,\\"next\\":\\"TICKET_FINISH\\",\\"targetAnchor\\":0}]}]
 	ProcessDefinition *string `json:"ProcessDefinition,omitempty" xml:"ProcessDefinition,omitempty"`
+	// Status code.
+	//
 	// example:
 	//
 	// Enabled
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// Template ID.
+	//
 	// example:
 	//
 	// 4ca2e2-c8d19b82c-d7ce393ac8197d3ab
-	TemplateId   *string                                          `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// List of template fields.
 	TicketFields []*GetTicketTemplateResponseBodyDataTicketFields `json:"TicketFields,omitempty" xml:"TicketFields,omitempty" type:"Repeated"`
+	// Last modified time.
+	//
 	// example:
 	//
 	// 1717664210000
@@ -245,77 +281,128 @@ func (s *GetTicketTemplateResponseBodyData) Validate() error {
 }
 
 type GetTicketTemplateResponseBodyDataTicketFields struct {
+	// Whether the field is an array.
+	//
 	// example:
 	//
 	// false
 	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
+	// Extension attributes.
+	//
 	// example:
 	//
 	// {}
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 1717664210000
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Creator.
+	//
 	// example:
 	//
 	// creator@cccV2-kmz
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Data type.
+	//
 	// example:
 	//
 	// string
-	DataType    *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// Description.
+	//
+	// example:
+	//
+	// 姓名描述
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Whether the field is disabled.
+	//
 	// example:
 	//
 	// false
-	Disabled    *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// Display name.
+	//
+	// example:
+	//
+	// 姓名
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Display order in lists.
+	//
 	// example:
 	//
 	// 1
 	DisplayOrder *int32 `json:"DisplayOrder,omitempty" xml:"DisplayOrder,omitempty"`
+	// Editor type.
+	//
 	// example:
 	//
 	// textbox
 	EditorType *string `json:"EditorType,omitempty" xml:"EditorType,omitempty"`
+	// Maximum length.
+	//
 	// example:
 	//
 	// 30
 	MaxLength *int32 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	// Numeric maximum value.
+	//
 	// example:
 	//
 	// 10
 	Maximum *float64 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	// Minimum length.
+	//
 	// example:
 	//
 	// 1
 	MinLength *int32 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+	// Numeric minimum value.
+	//
 	// example:
 	//
 	// 1
 	Minimum *float64 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
+	// Name.
+	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Regular expression validation rule.
+	//
 	// example:
 	//
 	// ^
-	Pattern             *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	// Error message for regular expression validation.
+	//
+	// example:
+	//
+	// 不是有效的email地址
 	PatternErrorMessage *string `json:"PatternErrorMessage,omitempty" xml:"PatternErrorMessage,omitempty"`
+	// Whether the field is read-only.
+	//
 	// example:
 	//
 	// false
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// Whether the field is required.
+	//
 	// example:
 	//
 	// false
 	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+	// Whether the field is a system field.
+	//
 	// example:
 	//
 	// false
 	System *bool `json:"System,omitempty" xml:"System,omitempty"`
+	// Update time.
+	//
 	// example:
 	//
 	// 1717664210000

@@ -22,16 +22,28 @@ type iListPrivilegesOfUserResponseBody interface {
 }
 
 type ListPrivilegesOfUserResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data []*ListPrivilegesOfUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -105,14 +117,20 @@ func (s *ListPrivilegesOfUserResponseBody) Validate() error {
 }
 
 type ListPrivilegesOfUserResponseBodyData struct {
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Permission Name. Regular Customers do not need to understand specific permission names; this API is primarily invoked by the Workbench.
+	//
 	// example:
 	//
 	// Workbench:Call
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Permission Scope.
+	//
 	// example:
 	//
 	// SELF_ONLY

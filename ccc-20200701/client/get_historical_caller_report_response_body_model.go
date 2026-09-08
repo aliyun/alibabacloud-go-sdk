@@ -22,16 +22,28 @@ type iGetHistoricalCallerReportResponseBody interface {
 }
 
 type GetHistoricalCallerReportResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *GetHistoricalCallerReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BA03159C-E808-4FF1-B27E-A61B6E888D7F
@@ -101,10 +113,14 @@ func (s *GetHistoricalCallerReportResponseBody) Validate() error {
 }
 
 type GetHistoricalCallerReportResponseBodyData struct {
+	// The UNIX timestamp (in milliseconds) of the most recent incoming call.
+	//
 	// example:
 	//
 	// 1646917200000
 	LastCallingTime *int64 `json:"LastCallingTime,omitempty" xml:"LastCallingTime,omitempty"`
+	// Total number of incoming calls from this number during the query time period.
+	//
 	// example:
 	//
 	// 10

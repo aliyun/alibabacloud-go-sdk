@@ -22,27 +22,44 @@ type iCreateAudioFileRequest interface {
 }
 
 type CreateAudioFileRequest struct {
+	// Audio file name, containing 1 to 32 characters.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-file.wav
 	AudioFileName *string `json:"AudioFileName,omitempty" xml:"AudioFileName,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Display name of the audio, containing 1 to 32 characters.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 欢迎语
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Key of the OSS file, returned by the GetAudioFileUploadParameters API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test/test-file.wav
 	OssFileKey *string `json:"OssFileKey,omitempty" xml:"OssFileKey,omitempty"`
-	Usage      *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// Usage of the audio file. The default value is General (used in scenarios such as IVR). Other optional values include HoldMusic (hold music during a call).
+	//
+	// example:
+	//
+	// General
+	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
 }
 
 func (s CreateAudioFileRequest) String() string {

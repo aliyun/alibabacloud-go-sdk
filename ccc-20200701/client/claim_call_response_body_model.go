@@ -24,17 +24,30 @@ type iClaimCallResponseBody interface {
 }
 
 type ClaimCallResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
 	Data *ClaimCallResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 93CDC17E-3E8A-48F2-99E5-FA2E238DE8B4
@@ -113,11 +126,15 @@ func (s *ClaimCallResponseBody) Validate() error {
 }
 
 type ClaimCallResponseBodyData struct {
+	// The call context.
 	CallContext *ClaimCallResponseBodyDataCallContext `json:"CallContext,omitempty" xml:"CallContext,omitempty" type:"Struct"`
+	// The context ID.
+	//
 	// example:
 	//
 	// 123456
-	ContextId   *int64                                `json:"ContextId,omitempty" xml:"ContextId,omitempty"`
+	ContextId *int64 `json:"ContextId,omitempty" xml:"ContextId,omitempty"`
+	// The agent context.
 	UserContext *ClaimCallResponseBodyDataUserContext `json:"UserContext,omitempty" xml:"UserContext,omitempty" type:"Struct"`
 }
 
@@ -171,11 +188,16 @@ func (s *ClaimCallResponseBodyData) Validate() error {
 }
 
 type ClaimCallResponseBodyDataCallContext struct {
+	// The channel contexts.
 	ChannelContexts []*ClaimCallResponseBodyDataCallContextChannelContexts `json:"ChannelContexts,omitempty" xml:"ChannelContexts,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The call ID.
+	//
 	// example:
 	//
 	// job-6538214103685****
@@ -231,47 +253,74 @@ func (s *ClaimCallResponseBodyDataCallContext) Validate() error {
 }
 
 type ClaimCallResponseBodyDataCallContextChannelContexts struct {
+	// The call type of the channel.
+	//
 	// example:
 	//
 	// OUTBOUND
 	CallType *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	// The channel ID.
+	//
 	// example:
 	//
 	// ch:user:1390501****->8032****:1609138902226:job-653821410368****
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The state of the channel.
+	//
 	// example:
 	//
 	// ANSWERED
 	ChannelState *string `json:"ChannelState,omitempty" xml:"ChannelState,omitempty"`
+	// The channel variables.
+	//
 	// example:
 	//
 	// a=b;c=d;
 	ChannelVariables *string `json:"ChannelVariables,omitempty" xml:"ChannelVariables,omitempty"`
+	// The destination of the channel.
+	//
 	// example:
 	//
 	// 1390501****
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	// The call ID.
+	//
 	// example:
 	//
 	// job-6573574060089****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The originator of the channel.
+	//
 	// example:
 	//
 	// 0830019****
 	Originator *string `json:"Originator,omitempty" xml:"Originator,omitempty"`
+	// The party who initiated the channel release.
+	//
 	// example:
 	//
 	// 1390501****
 	ReleaseInitiator *string `json:"ReleaseInitiator,omitempty" xml:"ReleaseInitiator,omitempty"`
-	ReleaseReason    *string `json:"ReleaseReason,omitempty" xml:"ReleaseReason,omitempty"`
+	// The reason why the channel was released. This is a SIP response code. For more information, see the SIP protocol specification.
+	//
+	// example:
+	//
+	// 无
+	ReleaseReason *string `json:"ReleaseReason,omitempty" xml:"ReleaseReason,omitempty"`
+	// The Unix timestamp that indicates the last time the channel state changed. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1609225718295
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The agent extension number.
+	//
 	// example:
 	//
 	// 8059****
 	UserExtension *string `json:"UserExtension,omitempty" xml:"UserExtension,omitempty"`
+	// The agent ID.
+	//
 	// example:
 	//
 	// invoker@ccc-test
@@ -399,39 +448,58 @@ func (s *ClaimCallResponseBodyDataCallContextChannelContexts) Validate() error {
 }
 
 type ClaimCallResponseBodyDataUserContext struct {
+	// The break code.
+	//
 	// example:
 	//
 	// Customized
 	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	// The device ID.
+	//
 	// example:
 	//
 	// device-xxxx
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The extension number.
+	//
 	// example:
 	//
 	// 0830019****
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The call ID.
+	//
 	// example:
 	//
 	// job-6573574060089****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Indicates whether this is an outbound scenario.
+	//
 	// example:
 	//
 	// false
-	OutboundScenario       *bool     `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	OutboundScenario *bool `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	// The list of signed-in skill group IDs.
 	SignedSkillGroupIdList []*string `json:"SignedSkillGroupIdList,omitempty" xml:"SignedSkillGroupIdList,omitempty" type:"Repeated"`
+	// The agent ID.
+	//
 	// example:
 	//
 	// user@ccc-test
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The agent state.
+	//
 	// example:
 	//
 	// Dialing
 	UserState *string `json:"UserState,omitempty" xml:"UserState,omitempty"`
+	// The work mode.
+	//
 	// example:
 	//
 	// ON_SITE

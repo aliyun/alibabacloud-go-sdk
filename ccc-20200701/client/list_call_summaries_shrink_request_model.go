@@ -16,7 +16,10 @@ type iListCallSummariesShrinkRequest interface {
 }
 
 type ListCallSummariesShrinkRequest struct {
+	// List of call IDs.
 	ContactIdListShrink *string `json:"ContactIdList,omitempty" xml:"ContactIdList,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

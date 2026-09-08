@@ -18,18 +18,24 @@ type iImportContactFlowRequest interface {
 }
 
 type ImportContactFlowRequest struct {
+	// Data
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {}
 	FlowPackageData *string `json:"FlowPackageData,omitempty" xml:"FlowPackageData,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 9cfad875-6260-4a53-ab6e-b13e3fb31f7d
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DE803553-8AA9-4B9D-9E4E-A82BC69EDCEE

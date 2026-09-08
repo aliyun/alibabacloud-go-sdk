@@ -20,24 +20,32 @@ type iRegisterDeviceRequest interface {
 }
 
 type RegisterDeviceRequest struct {
+	// The custom device ID. No specific format is required.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-device
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The password used to authenticate the SIP device during registration. Keep this password secure.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// password
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test

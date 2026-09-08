@@ -16,12 +16,16 @@ type iGetAudioFileUploadParametersRequest interface {
 }
 
 type GetAudioFileUploadParametersRequest struct {
+	// Audio file name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-file.wav
 	AudioFileName *string `json:"AudioFileName,omitempty" xml:"AudioFileName,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

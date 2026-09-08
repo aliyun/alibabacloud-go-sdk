@@ -24,17 +24,30 @@ type iCreateUserResponseBody interface {
 }
 
 type CreateUserResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
 	Data *CreateUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BA03159C-E808-4FF1-B27E-A61B6E888D7F
@@ -113,29 +126,56 @@ func (s *CreateUserResponseBody) Validate() error {
 }
 
 type CreateUserResponseBodyData struct {
-	AvatarUrl   *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	// The URL of the agent\\"s profile picture.
+	//
+	// example:
+	//
+	// http://abc.com/sam.jpg
+	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	// The display name of the agent.
+	//
+	// example:
+	//
+	// 坐席小王
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The email address.
+	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The agent\\"s extension number.
+	//
 	// example:
 	//
 	// 8032****
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The logon name of the agent.
+	//
 	// example:
 	//
 	// agent
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	// The personal phone number of the agent.
+	//
 	// example:
 	//
 	// 1382114****
-	Mobile   *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// The agent\\"s nickname.
+	//
+	// example:
+	//
+	// 老王。
 	Nickname *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	// The agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The work mode.
+	//
 	// example:
 	//
 	// ON_SITE

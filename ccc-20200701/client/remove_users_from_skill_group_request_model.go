@@ -18,18 +18,24 @@ type iRemoveUsersFromSkillGroupRequest interface {
 }
 
 type RemoveUsersFromSkillGroupRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Skill group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// skillgroup@ccc-test
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// List of agent IDs.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,12 +16,16 @@ type iGetRealtimeCampaignStatsRequest interface {
 }
 
 type GetRealtimeCampaignStatsRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The predictive outbound dialing activity ID.
+	//
 	// This parameter is required.
 	//
 	// example:

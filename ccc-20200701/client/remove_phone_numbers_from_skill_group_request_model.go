@@ -18,18 +18,24 @@ type iRemovePhoneNumbersFromSkillGroupRequest interface {
 }
 
 type RemovePhoneNumbersFromSkillGroupRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// List of phone numbers.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ["0101234****","0105678****"]
 	NumberList *string `json:"NumberList,omitempty" xml:"NumberList,omitempty"`
+	// Skill group ID.
+	//
 	// This parameter is required.
 	//
 	// example:

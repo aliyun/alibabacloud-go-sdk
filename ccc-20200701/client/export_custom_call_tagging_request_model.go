@@ -14,6 +14,8 @@ type iExportCustomCallTaggingRequest interface {
 }
 
 type ExportCustomCallTaggingRequest struct {
+  // Instance ID.
+  // 
   // This parameter is required.
   // 
   // example:

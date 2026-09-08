@@ -22,16 +22,28 @@ type iListPersonalNumbersOfUserResponseBody interface {
 }
 
 type ListPersonalNumbersOfUserResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListPersonalNumbersOfUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -101,15 +113,22 @@ func (s *ListPersonalNumbersOfUserResponseBody) Validate() error {
 }
 
 type ListPersonalNumbersOfUserResponseBodyData struct {
+	// List of numbers.
 	List []*ListPersonalNumbersOfUserResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 1
@@ -174,23 +193,41 @@ func (s *ListPersonalNumbersOfUserResponseBodyData) Validate() error {
 }
 
 type ListPersonalNumbersOfUserResponseBodyDataList struct {
+	// Indicates whether the number is active.
+	//
 	// example:
 	//
 	// true
-	Active *bool   `json:"Active,omitempty" xml:"Active,omitempty"`
-	City   *string `json:"City,omitempty" xml:"City,omitempty"`
+	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The city where the phone number is registered.
+	//
+	// example:
+	//
+	// 乐山
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// ID of the IVR contact flow associated with this number.
+	//
 	// example:
 	//
 	// a3fb6c62-9b49-4942-ae5b-cf2abd4123ek
 	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Number.
+	//
 	// example:
 	//
 	// 08330011****
-	Number   *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// The province where the phone number is registered.
+	//
+	// example:
+	//
+	// 四川
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 

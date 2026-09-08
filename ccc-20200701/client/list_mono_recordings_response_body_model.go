@@ -22,16 +22,28 @@ type iListMonoRecordingsResponseBody interface {
 }
 
 type ListMonoRecordingsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of recording information.
 	Data []*ListMonoRecordingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E836EF2A-EDAE-5310-8921-F983C967D42D
@@ -105,35 +117,56 @@ func (s *ListMonoRecordingsResponseBody) Validate() error {
 }
 
 type ListMonoRecordingsResponseBodyData struct {
+	// The agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
-	AgentId   *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The agent name.
+	//
+	// example:
+	//
+	// 坐席小王
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// The call ID.
+	//
 	// example:
 	//
 	// job-25920271311543****
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// The duration of the recording in milliseconds.
+	//
 	// example:
 	//
 	// 5903871
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The name of the recording file.
+	//
 	// example:
 	//
 	// job-25920271311543****-798f1e90-1f82-42da-914c-46580c8f4c85-1656926518491.wav
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// The Object Storage Service (OSS) download URL for the recording file. Note that the download URL is valid for one day.
+	//
 	// example:
 	//
 	// https://ccc-v2-shanghai.oss-cn-shanghai.aliyuncs.com/ccc-test/job-25920271311543****-798f1e90-1f82-42da-914c-46580c8f4c85-1656926518491.wav?Expires=1657014031&OSSAccessKeyId=****&Signature=****
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// The ID of the Resource Access Management (RAM) account that corresponds to the agent.
+	//
 	// example:
 	//
 	// 26972543893791****
 	RamId *string `json:"RamId,omitempty" xml:"RamId,omitempty"`
+	// The skill group ID.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// The start time of the recording. This is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1620259200000

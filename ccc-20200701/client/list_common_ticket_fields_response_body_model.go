@@ -24,17 +24,30 @@ type iListCommonTicketFieldsResponseBody interface {
 }
 
 type ListCommonTicketFieldsResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListCommonTicketFieldsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// List of error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 30C7D235-DDCF-4C7F-A462-5E2598252C2B
@@ -113,21 +126,28 @@ func (s *ListCommonTicketFieldsResponseBody) Validate() error {
 }
 
 type ListCommonTicketFieldsResponseBodyData struct {
+	// Creation time.
+	//
 	// example:
 	//
 	// 1703517780627
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// Schema ID。
+	// Schema ID.
 	//
 	// example:
 	//
 	// ticketing
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
-	InstanceId *string                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// List of fields.
 	Properties map[string]*DataPropertiesValue `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// Last modification time.
+	//
 	// example:
 	//
 	// 1716211430928

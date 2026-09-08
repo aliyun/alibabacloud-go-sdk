@@ -20,13 +20,18 @@ type iAddSchemaPropertyShrinkRequest interface {
 }
 
 type AddSchemaPropertyShrinkRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// b0eb2742-f37e-4c67-82d4-25c651c1xxxx
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Field
 	PropertyShrink *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 03C67DAD-EB26-41D8-949D-9B0C470FB716

@@ -20,20 +20,28 @@ type iListSkillGroupSummaryReportsSinceMidnightRequest interface {
 }
 
 type ListSkillGroupSummaryReportsSinceMidnightRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number to return. The value must be in the range of 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. The value must be in the range of 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// A JSON-formatted string that contains the IDs of the skill groups to query. If this parameter is omitted, the query includes all skill groups.
+	//
 	// example:
 	//
 	// ["skillgroup1@ccc-test", "skillgroup2@ccc-test2"]

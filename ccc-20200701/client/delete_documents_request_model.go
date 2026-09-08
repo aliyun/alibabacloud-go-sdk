@@ -20,18 +20,23 @@ type iDeleteDocumentsRequest interface {
 }
 
 type DeleteDocumentsRequest struct {
+	// A list of document IDs.
 	DocumentIds []*string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty" type:"Repeated"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 9cfad875-6260-4a53-ab6e-b13e3fb31f7d
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0630E5DF-CEB0-445B-8626-D5C7481181C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// schema id
+	// The schema ID.
 	//
 	// This parameter is required.
 	//

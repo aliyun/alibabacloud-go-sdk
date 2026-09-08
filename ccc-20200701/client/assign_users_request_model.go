@@ -25,28 +25,38 @@ type iAssignUsersRequest interface {
 
 type AssignUsersRequest struct {
 	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// A JSON array of RAM user IDs to import, formatted as a string.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ["28036411123456****","29234301123456****"]
 	RamIdList *string `json:"RamIdList,omitempty" xml:"RamIdList,omitempty"`
+	// The ID of the role to assign to the users in the instance. After the RAM users are imported, they are assigned this role. Valid roles are Administrator, Teamleader, and Agent.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Agent@ccc-test
 	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// A JSON array of skill objects, provided as a string. Each object specifies a skillGroupId and a skillLevel from 1 to 10. A lower skillLevel value indicates higher proficiency and greater call-handling capacity.
+	//
 	// example:
 	//
 	// [{"skillGroupId":"skillgroup@ccc-test","skillLevel":5}]
 	SkillLevelList *string `json:"SkillLevelList,omitempty" xml:"SkillLevelList,omitempty"`
+	// The work mode for the agents.
+	//
 	// This parameter is required.
 	//
 	// example:

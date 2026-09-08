@@ -22,16 +22,28 @@ type iListCallDetailRecordsV2ResponseBody interface {
 }
 
 type ListCallDetailRecordsV2ResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
 	Data *ListCallDetailRecordsV2ResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// None
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 01B12EE4-6AF2-4730-8B78-EC15F4E5C025
@@ -101,15 +113,22 @@ func (s *ListCallDetailRecordsV2ResponseBody) Validate() error {
 }
 
 type ListCallDetailRecordsV2ResponseBodyData struct {
+	// The list of call records.
 	List []*ListCallDetailRecordsV2ResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 10
@@ -174,192 +193,380 @@ func (s *ListCallDetailRecordsV2ResponseBodyData) Validate() error {
 }
 
 type ListCallDetailRecordsV2ResponseBodyDataList struct {
+	// The channel ID.
+	//
+	// example:
+	//
+	// 8f6bcbad-6e2d-4ca3-9b65-91cf0aafdf00
+	AccessChannelId *string `json:"AccessChannelId,omitempty" xml:"AccessChannelId,omitempty"`
+	// The channel name. This parameter has a value only when MediaType is CHAT.
+	//
+	// example:
+	//
+	// TestChannel
 	AccessChannelName *string `json:"AccessChannelName,omitempty" xml:"AccessChannelName,omitempty"`
+	// The channel type. This parameter has a value only when MediaType is CHAT.
+	//
 	// example:
 	//
 	// Web
 	AccessChannelType *string `json:"AccessChannelType,omitempty" xml:"AccessChannelType,omitempty"`
+	// The visitor ID. This parameter has a value only when MediaType is CHAT.
+	//
 	// example:
 	//
 	// test-user-id
-	AccessChannelUserId   *string `json:"AccessChannelUserId,omitempty" xml:"AccessChannelUserId,omitempty"`
+	AccessChannelUserId *string `json:"AccessChannelUserId,omitempty" xml:"AccessChannelUserId,omitempty"`
+	// The visitor name. This parameter has a value only when MediaType is CHAT.
+	//
+	// example:
+	//
+	// TestVisitor
 	AccessChannelUserName *string `json:"AccessChannelUserName,omitempty" xml:"AccessChannelUserName,omitempty"`
+	// The additional intermediate number, which may be used in dual-call scenarios.
+	//
 	// example:
 	//
 	// 0533128****
 	AdditionalBroker *string `json:"AdditionalBroker,omitempty" xml:"AdditionalBroker,omitempty"`
+	// The list of agent IDs. Multiple values are separated by commas.
+	//
 	// example:
 	//
 	// agent@ccc-test
-	AgentIds             *string                                                     `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
-	AgentNames           *string                                                     `json:"AgentNames,omitempty" xml:"AgentNames,omitempty"`
-	AnalyticsReport      *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport `json:"AnalyticsReport,omitempty" xml:"AnalyticsReport,omitempty" type:"Struct"`
-	AnalyticsReportReady *bool                                                       `json:"AnalyticsReportReady,omitempty" xml:"AnalyticsReportReady,omitempty"`
+	AgentIds *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
+	// The list of agent names involved in the call. Multiple agents are separated by commas.
+	//
+	// example:
+	//
+	// CloudCallCenterTestAgent
+	AgentNames *string `json:"AgentNames,omitempty" xml:"AgentNames,omitempty"`
+	// The post-call analytics report.
+	AnalyticsReport *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport `json:"AnalyticsReport,omitempty" xml:"AnalyticsReport,omitempty" type:"Struct"`
+	// Indicates whether the AI post-call analytics report is complete.
+	//
+	// example:
+	//
+	// true
+	AnalyticsReportReady *bool `json:"AnalyticsReportReady,omitempty" xml:"AnalyticsReportReady,omitempty"`
+	// The intermediate number.
+	//
 	// example:
 	//
 	// 053xxxx3127
 	Broker *string `json:"Broker,omitempty" xml:"Broker,omitempty"`
+	// The call duration. For inbound calls, timing starts when the call enters the IVR. For outbound calls, timing starts when the call is connected. Unit: seconds.
+	//
 	// example:
 	//
 	// 16
 	CallDuration *string `json:"CallDuration,omitempty" xml:"CallDuration,omitempty"`
-	CallIds      *string `json:"CallIds,omitempty" xml:"CallIds,omitempty"`
+	// The list of SIP CallIds.
+	//
+	// example:
+	//
+	// dxxx1sdf,xkkwwwa
+	CallIds *string `json:"CallIds,omitempty" xml:"CallIds,omitempty"`
+	// The called number.
+	//
 	// example:
 	//
 	// 1332315****
-	CalledNumber   *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// The location of the callee.
+	//
+	// example:
+	//
+	// Shandong-Jinan
 	CalleeLocation *string `json:"CalleeLocation,omitempty" xml:"CalleeLocation,omitempty"`
+	// The location of the caller.
+	//
+	// example:
+	//
+	// Beijing-Beijing
 	CallerLocation *string `json:"CallerLocation,omitempty" xml:"CallerLocation,omitempty"`
+	// The calling number.
+	//
 	// example:
 	//
 	// 0533128****
 	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// The visitor client application name. This parameter has a value only when MediaType is CHAT.
+	//
+	// example:
+	//
+	// Unknown
 	ClientAppName *string `json:"ClientAppName,omitempty" xml:"ClientAppName,omitempty"`
+	// The visitor client IP address. This parameter has a value only when MediaType is CHAT.
+	//
 	// example:
 	//
 	// 10.100.2.1
 	ClientIpAddress *string `json:"ClientIpAddress,omitempty" xml:"ClientIpAddress,omitempty"`
+	// The visitor client location. This parameter has a value only when MediaType is CHAT.
+	//
 	// example:
 	//
 	// ---
 	ClientLocation *string `json:"ClientLocation,omitempty" xml:"ClientLocation,omitempty"`
+	// The visitor client user agent information. This parameter has a value only when MediaType is CHAT.
+	//
 	// example:
 	//
 	// Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
 	ClientUserAgent *string `json:"ClientUserAgent,omitempty" xml:"ClientUserAgent,omitempty"`
+	// The call end reason. For the enumeration list, refer to the ContactDispositionList query parameter.
+	//
 	// example:
 	//
 	// Success
 	ContactDisposition *string `json:"ContactDisposition,omitempty" xml:"ContactDisposition,omitempty"`
+	// The call ID.
+	//
 	// example:
 	//
 	// job-2255019651513856
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// The call type. For the enumeration list, refer to the ContactTypeList query parameter.
+	//
 	// example:
 	//
 	// OUTBOUND
 	ContactType *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
+	// The dialing duration. Unit: seconds.
+	//
 	// example:
 	//
 	// 0
 	DialingTime *int64 `json:"DialingTime,omitempty" xml:"DialingTime,omitempty"`
+	// The early media state.
+	//
 	// example:
 	//
 	// NotConnected
 	EarlyMediaState *string `json:"EarlyMediaState,omitempty" xml:"EarlyMediaState,omitempty"`
-	EarlyMediaText  *string `json:"EarlyMediaText,omitempty" xml:"EarlyMediaText,omitempty"`
+	// The early media text.
+	//
+	// example:
+	//
+	// Currently on a call
+	EarlyMediaText *string `json:"EarlyMediaText,omitempty" xml:"EarlyMediaText,omitempty"`
+	// The time when the call was established. If the call was not established, this value is empty. The value is a UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1532448000000
 	EstablishedTime *int64 `json:"EstablishedTime,omitempty" xml:"EstablishedTime,omitempty"`
+	// The time taken for the agent to first respond to the customer message. This parameter has a value only when MediaType is CHAT.
+	//
 	// example:
 	//
 	// 10
 	FirstResponseTime *int64 `json:"FirstResponseTime,omitempty" xml:"FirstResponseTime,omitempty"`
+	// The hold time. Unit: seconds.
+	//
 	// example:
 	//
 	// 12
 	HeldTime *int64 `json:"HeldTime,omitempty" xml:"HeldTime,omitempty"`
+	// The call center instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IVR duration, which is the time from when the call enters the IVR to when it starts entering the manual service queue (or the customer abandons the call). Unit: seconds.
+	//
 	// example:
 	//
 	// 8
 	IvrTime *int64 `json:"IvrTime,omitempty" xml:"IvrTime,omitempty"`
+	// The media type.
+	//
+	// Valid values:
+	//
+	// - AUDIO: Voice.
+	//
+	// - CHAT: Message.
+	//
+	// - VIDEO: Video.
+	//
 	// example:
 	//
 	// CHAT
 	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The total number of messages. This parameter has a value only when MediaType is CHAT.
+	//
 	// example:
 	//
 	// 10
 	MessagesSent *int64 `json:"MessagesSent,omitempty" xml:"MessagesSent,omitempty"`
+	// The total number of messages sent by the agent. This parameter has a value only when MediaType is CHAT.
+	//
 	// example:
 	//
 	// 5
 	MessagesSentByAgent *int64 `json:"MessagesSentByAgent,omitempty" xml:"MessagesSentByAgent,omitempty"`
+	// The total number of messages sent by the customer. This parameter has a value only when MediaType is CHAT.
+	//
 	// example:
 	//
 	// 5
 	MessagesSentByCustomer *int64 `json:"MessagesSentByCustomer,omitempty" xml:"MessagesSentByCustomer,omitempty"`
+	// The list of off-site agent IDs involved in the call. Multiple agents are separated by commas.
+	//
 	// example:
 	//
 	// skg-default@ccc-test
 	OffSiteAgentIds *string `json:"OffSiteAgentIds,omitempty" xml:"OffSiteAgentIds,omitempty"`
+	// The off-site agent number that is called when the assigned agent is an off-site agent.
+	//
 	// example:
 	//
 	// 80312348
 	OffsiteAgentDestinationNumbers *string `json:"OffsiteAgentDestinationNumbers,omitempty" xml:"OffsiteAgentDestinationNumbers,omitempty"`
+	// The number that initiates the call to the off-site agent when the assigned agent is an off-site agent.
+	//
 	// example:
 	//
 	// 0101257****
-	OffsiteAgentOriginatorNumbers  *string `json:"OffsiteAgentOriginatorNumbers,omitempty" xml:"OffsiteAgentOriginatorNumbers,omitempty"`
-	OffsiteAgentReleaseReason      *string `json:"OffsiteAgentReleaseReason,omitempty" xml:"OffsiteAgentReleaseReason,omitempty"`
+	OffsiteAgentOriginatorNumbers *string `json:"OffsiteAgentOriginatorNumbers,omitempty" xml:"OffsiteAgentOriginatorNumbers,omitempty"`
+	// The hangup reason of the last assigned offsite agent.
+	//
+	// example:
+	//
+	// IVRException
+	OffsiteAgentReleaseReason *string `json:"OffsiteAgentReleaseReason,omitempty" xml:"OffsiteAgentReleaseReason,omitempty"`
+	// The called number when the call is transferred to an outside line.
+	//
+	// example:
+	//
+	// 134xxxxxx
 	OutsideNumberDestinationNumber *string `json:"OutsideNumberDestinationNumber,omitempty" xml:"OutsideNumberDestinationNumber,omitempty"`
-	OutsideNumberReleaseReason     *string `json:"OutsideNumberReleaseReason,omitempty" xml:"OutsideNumberReleaseReason,omitempty"`
+	// The hangup reason when the call is transferred to an outside line.
+	//
+	// example:
+	//
+	// NoAnswer
+	OutsideNumberReleaseReason *string `json:"OutsideNumberReleaseReason,omitempty" xml:"OutsideNumberReleaseReason,omitempty"`
+	// The queue duration, which is the time from when the call enters the manual service queue to when the agent starts ringing (or the customer abandons the call, the queue times out, or the queue overflows). Unit: seconds.
+	//
 	// example:
 	//
 	// 0
 	QueueTime *int64 `json:"QueueTime,omitempty" xml:"QueueTime,omitempty"`
+	// The recording duration. Unit: seconds.
+	//
 	// example:
 	//
 	// 10
 	RecordingDuration *int64 `json:"RecordingDuration,omitempty" xml:"RecordingDuration,omitempty"`
+	// Indicates whether the recording has been generated. If the call was not established, false is returned.
+	//
 	// example:
 	//
 	// true
 	RecordingReady *bool `json:"RecordingReady,omitempty" xml:"RecordingReady,omitempty"`
+	// The party that hung up.
+	//
+	// Valid values:
+	//
+	// - agent: The agent.
+	//
+	// - customer: The customer.
+	//
 	// example:
 	//
 	// customer
 	ReleaseInitiator *string `json:"ReleaseInitiator,omitempty" xml:"ReleaseInitiator,omitempty"`
+	// The hangup reason of the call channel, indicating why the current call channel was hung up. The value is a response code defined in the SIP protocol. Refer to the SIP protocol to analyze the hangup reason.
+	//
 	// example:
 	//
 	// 486:USER_BUSY
 	ReleaseReason *string `json:"ReleaseReason,omitempty" xml:"ReleaseReason,omitempty"`
+	// The time when the call ended, in Unix timestamp format. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1532707199000
 	ReleaseTime *int64 `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	// The ringing duration, which is the time from when the agent starts ringing to when the agent answers (or the customer abandons the call). Unit: seconds.
+	//
 	// example:
 	//
 	// 5
-	RingTime                *int64  `json:"RingTime,omitempty" xml:"RingTime,omitempty"`
+	RingTime *int64 `json:"RingTime,omitempty" xml:"RingTime,omitempty"`
+	// The satisfaction description, which corresponds to the configuration of the satisfaction module in the satisfaction IVR and is defined by the customer.
+	//
+	// example:
+	//
+	// Satisfied
 	SatisfactionDescription *string `json:"SatisfactionDescription,omitempty" xml:"SatisfactionDescription,omitempty"`
+	// The satisfaction rating, which is the value of the satisfaction key digit (a single digit).
+	//
 	// example:
 	//
 	// 1
 	SatisfactionIndex *int32 `json:"SatisfactionIndex,omitempty" xml:"SatisfactionIndex,omitempty"`
+	// The satisfaction survey channel.
+	//
 	// example:
 	//
 	// IVR
 	SatisfactionSurveyChannel *string `json:"SatisfactionSurveyChannel,omitempty" xml:"SatisfactionSurveyChannel,omitempty"`
+	// Indicates whether a satisfaction survey was sent.
+	//
 	// example:
 	//
 	// true
 	SatisfactionSurveyOffered *bool `json:"SatisfactionSurveyOffered,omitempty" xml:"SatisfactionSurveyOffered,omitempty"`
+	// The skill group IDs of the agents who participated in the call. Multiple skill groups are separated by commas.
+	//
 	// example:
 	//
 	// skg-default@ccc-test
-	SkillGroupIds   *string `json:"SkillGroupIds,omitempty" xml:"SkillGroupIds,omitempty"`
+	SkillGroupIds *string `json:"SkillGroupIds,omitempty" xml:"SkillGroupIds,omitempty"`
+	// The skill group names of the agents who participated in the call. Multiple skill groups are separated by commas.
+	//
+	// example:
+	//
+	// TestSkillGroup1,TestSkillGroup2
 	SkillGroupNames *string `json:"SkillGroupNames,omitempty" xml:"SkillGroupNames,omitempty"`
+	// The time when the call started. For inbound calls, this is counted from when the call enters the IVR. For outbound calls, this is counted from when dialing begins. The value is in Unix timestamp format. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1631440860000
-	StartTime    *int64                                                   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The summary index.
 	SummaryIndex *ListCallDetailRecordsV2ResponseBodyDataListSummaryIndex `json:"SummaryIndex,omitempty" xml:"SummaryIndex,omitempty" type:"Struct"`
+	// The talk time. Unit: seconds.
+	//
 	// example:
 	//
 	// 0
 	TalkTime *int64 `json:"TalkTime,omitempty" xml:"TalkTime,omitempty"`
+	// The number of transfers.
+	//
 	// example:
 	//
 	// 1
-	TransferCount             *int64  `json:"TransferCount,omitempty" xml:"TransferCount,omitempty"`
+	TransferCount *int64 `json:"TransferCount,omitempty" xml:"TransferCount,omitempty"`
+	// The outbound called number carried when the call is transferred from an intelligent outbound call.
+	//
+	// example:
+	//
+	// 134xxxxxx
 	VoicebotDestinationNumber *string `json:"VoicebotDestinationNumber,omitempty" xml:"VoicebotDestinationNumber,omitempty"`
-	VoicebotOriginatorNumber  *string `json:"VoicebotOriginatorNumber,omitempty" xml:"VoicebotOriginatorNumber,omitempty"`
+	// The outbound caller number carried when the call is transferred from an intelligent outbound call.
+	//
+	// example:
+	//
+	// 021xxxxxxx
+	VoicebotOriginatorNumber *string `json:"VoicebotOriginatorNumber,omitempty" xml:"VoicebotOriginatorNumber,omitempty"`
+	// The customer wait time, which equals QueueTime + RingTime. If the customer abandons the call during the waiting period, the value is 0. Unit: seconds.
+	//
 	// example:
 	//
 	// 5
@@ -372,6 +579,10 @@ func (s ListCallDetailRecordsV2ResponseBodyDataList) String() string {
 
 func (s ListCallDetailRecordsV2ResponseBodyDataList) GoString() string {
 	return s.String()
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) GetAccessChannelId() *string {
+	return s.AccessChannelId
 }
 
 func (s *ListCallDetailRecordsV2ResponseBodyDataList) GetAccessChannelName() *string {
@@ -616,6 +827,11 @@ func (s *ListCallDetailRecordsV2ResponseBodyDataList) GetVoicebotOriginatorNumbe
 
 func (s *ListCallDetailRecordsV2ResponseBodyDataList) GetWaitTime() *int64 {
 	return s.WaitTime
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetAccessChannelId(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.AccessChannelId = &v
+	return s
 }
 
 func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetAccessChannelName(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
@@ -938,10 +1154,14 @@ func (s *ListCallDetailRecordsV2ResponseBodyDataList) Validate() error {
 }
 
 type ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport struct {
-	Emotion        *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion        `json:"Emotion,omitempty" xml:"Emotion,omitempty" type:"Struct"`
+	// The emotion analysis.
+	Emotion *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion `json:"Emotion,omitempty" xml:"Emotion,omitempty" type:"Struct"`
+	// The problem resolution status.
 	ProblemSolving *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving `json:"ProblemSolving,omitempty" xml:"ProblemSolving,omitempty" type:"Struct"`
-	Satisfaction   *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction   `json:"Satisfaction,omitempty" xml:"Satisfaction,omitempty" type:"Struct"`
-	TodoList       *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportTodoList       `json:"TodoList,omitempty" xml:"TodoList,omitempty" type:"Struct"`
+	// The satisfaction analysis.
+	Satisfaction *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction `json:"Satisfaction,omitempty" xml:"Satisfaction,omitempty" type:"Struct"`
+	// The to-do list.
+	TodoList *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportTodoList `json:"TodoList,omitempty" xml:"TodoList,omitempty" type:"Struct"`
 }
 
 func (s ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport) String() string {
@@ -1013,11 +1233,40 @@ func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReport) Validate() 
 }
 
 type ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion struct {
-	Confidence *int32  `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The confidence level.
+	//
+	// example:
+	//
+	// 50
+	Confidence *int32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The detailed remark of the emotion analysis.
+	//
+	// example:
+	//
+	// No emotional change from the customer
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// Indicates whether the call was successful.
+	//
+	// - **true**: Successful.
+	//
+	// - **false**: Failed.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// 0ff07fe35670423089dbdf12766d962f
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The emotion type.
+	//
+	// example:
+	//
+	// Neutral
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion) String() string {
@@ -1078,11 +1327,40 @@ func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportEmotion) Vali
 }
 
 type ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving struct {
-	Problem  *string `json:"Problem,omitempty" xml:"Problem,omitempty"`
+	// The problem description.
+	//
+	// example:
+	//
+	// Alert issue
+	Problem *string `json:"Problem,omitempty" xml:"Problem,omitempty"`
+	// The Solutions.
+	//
+	// example:
+	//
+	// The enrichment service automatically closes the original alert
 	Solution *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
-	Solved   *bool   `json:"Solved,omitempty" xml:"Solved,omitempty"`
-	Success  *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Indicates whether the problem is resolved.
+	//
+	// example:
+	//
+	// true
+	Solved *bool `json:"Solved,omitempty" xml:"Solved,omitempty"`
+	// Indicates whether the call was successful.
+	//
+	// - **true**: Successful.
+	//
+	// - **false**: Failed.
+	//
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// 8bf18b7a10064b29a75946a8d5b8469a
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolving) String() string {
@@ -1143,10 +1421,34 @@ func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportProblemSolvin
 }
 
 type ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction struct {
-	Remark                  *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The detailed remark of the satisfaction analysis.
+	//
+	// example:
+	//
+	// The customer expressed satisfaction
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The satisfaction description.
+	//
+	// example:
+	//
+	// Satisfied
 	SatisfactionDescription *string `json:"SatisfactionDescription,omitempty" xml:"SatisfactionDescription,omitempty"`
-	Success                 *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId                  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Indicates whether the call was successful.
+	//
+	// - **true**: Successful.
+	//
+	// - **false**: Failed.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// cb67479ce28243b28ff39948feaa0806
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction) String() string {
@@ -1198,9 +1500,24 @@ func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportSatisfaction)
 }
 
 type ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportTodoList struct {
-	Success *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId  *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Tasks   []*string `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	// Indicates whether the call was successful.
+	//
+	// - **true**: Successful.
+	//
+	// - **false**: Failed.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// cb67479ce28243b28ff39948feaa0806
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The to-do items.
+	Tasks []*string `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportTodoList) String() string {
@@ -1243,6 +1560,11 @@ func (s *ListCallDetailRecordsV2ResponseBodyDataListAnalyticsReportTodoList) Val
 }
 
 type ListCallDetailRecordsV2ResponseBodyDataListSummaryIndex struct {
+	// The keywords.
+	//
+	// example:
+	//
+	// CustomerService
 	Keywords *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
 }
 

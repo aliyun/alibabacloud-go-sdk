@@ -22,16 +22,28 @@ type iGetConversationDetailResponseBody interface {
 }
 
 type GetConversationDetailResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	Phrases        []*GetConversationDetailResponseBodyPhrases `json:"Phrases,omitempty" xml:"Phrases,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// List of conversations.
+	Phrases []*GetConversationDetailResponseBodyPhrases `json:"Phrases,omitempty" xml:"Phrases,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 7E407F9B-A278-52A0-B193-3EE5471D7A87
@@ -105,21 +117,42 @@ func (s *GetConversationDetailResponseBody) Validate() error {
 }
 
 type GetConversationDetailResponseBodyPhrases struct {
+	// The offset of the sentence start time relative to the session start time, in milliseconds.
+	//
 	// example:
 	//
 	// 240
 	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
+	// The offset of the sentence end time relative to the session start time, in milliseconds.
+	//
 	// example:
 	//
 	// 1280
-	End      *int32 `json:"End,omitempty" xml:"End,omitempty"`
-	Finished *bool  `json:"Finished,omitempty" xml:"Finished,omitempty"`
+	End *int32 `json:"End,omitempty" xml:"End,omitempty"`
+	// Is finished.
+	//
+	// example:
+	//
+	// false
+	Finished *bool `json:"Finished,omitempty" xml:"Finished,omitempty"`
+	// The ARN of the role. The system uses this identifier internally to identify the role. This parameter does not require management.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	Identity *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
-	Role     *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Words    *string `json:"Words,omitempty" xml:"Words,omitempty"`
+	// Role.
+	//
+	// example:
+	//
+	// 客服
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// Conversation text content.
+	//
+	// example:
+	//
+	// 欢迎致电云联络中心
+	Words *string `json:"Words,omitempty" xml:"Words,omitempty"`
 }
 
 func (s GetConversationDetailResponseBodyPhrases) String() string {

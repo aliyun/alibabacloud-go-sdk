@@ -22,16 +22,28 @@ type iGetRealtimeCampaignStatsResponseBody interface {
 }
 
 type GetRealtimeCampaignStatsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *GetRealtimeCampaignStatsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 42970829-E2C8-515A-8F42-5A6B59F852A7
@@ -101,34 +113,68 @@ func (s *GetRealtimeCampaignStatsResponseBody) Validate() error {
 }
 
 type GetRealtimeCampaignStatsResponseBodyData struct {
+	// Number of agents on break.
+	//
 	// example:
 	//
 	// 1
 	BreakingAgents *int64 `json:"BreakingAgents,omitempty" xml:"BreakingAgents,omitempty"`
+	// The number of concurrent calls per second. "Concurrent" means calls happening simultaneously.
+	//
 	// example:
 	//
 	// 5
 	Caps *int64 `json:"Caps,omitempty" xml:"Caps,omitempty"`
+	// Number of logged-in agents.
+	//
 	// example:
 	//
 	// 10
-	LoggedInAgents                 *int64 `json:"LoggedInAgents,omitempty" xml:"LoggedInAgents,omitempty"`
+	LoggedInAgents *int64 `json:"LoggedInAgents,omitempty" xml:"LoggedInAgents,omitempty"`
+	// The number of agents in outbound-only mode who are on a break.
+	//
+	// example:
+	//
+	// 1
 	OutboundScenarioBreakingAgents *int64 `json:"OutboundScenarioBreakingAgents,omitempty" xml:"OutboundScenarioBreakingAgents,omitempty"`
-	OutboundScenarioReadyAgents    *int64 `json:"OutboundScenarioReadyAgents,omitempty" xml:"OutboundScenarioReadyAgents,omitempty"`
-	OutboundScenarioTalkingAgents  *int64 `json:"OutboundScenarioTalkingAgents,omitempty" xml:"OutboundScenarioTalkingAgents,omitempty"`
-	OutboundScenarioWorkingAgents  *int64 `json:"OutboundScenarioWorkingAgents,omitempty" xml:"OutboundScenarioWorkingAgents,omitempty"`
+	// The number of agents in outbound-only mode who are idle.
+	//
+	// example:
+	//
+	// 1
+	OutboundScenarioReadyAgents *int64 `json:"OutboundScenarioReadyAgents,omitempty" xml:"OutboundScenarioReadyAgents,omitempty"`
+	// Number of agents in a call under outbound-only mode.
+	//
+	// example:
+	//
+	// 1
+	OutboundScenarioTalkingAgents *int64 `json:"OutboundScenarioTalkingAgents,omitempty" xml:"OutboundScenarioTalkingAgents,omitempty"`
+	// Number of agents in post-processing status under outbound-only mode.
+	//
+	// example:
+	//
+	// 1
+	OutboundScenarioWorkingAgents *int64 `json:"OutboundScenarioWorkingAgents,omitempty" xml:"OutboundScenarioWorkingAgents,omitempty"`
+	// Number of idle agents.
+	//
 	// example:
 	//
 	// 3
 	ReadyAgents *int64 `json:"ReadyAgents,omitempty" xml:"ReadyAgents,omitempty"`
+	// Number of agents in a call.
+	//
 	// example:
 	//
 	// 4
 	TalkingAgents *int64 `json:"TalkingAgents,omitempty" xml:"TalkingAgents,omitempty"`
+	// Total number of agents.
+	//
 	// example:
 	//
 	// 10
 	TotalAgents *int64 `json:"TotalAgents,omitempty" xml:"TotalAgents,omitempty"`
+	// Number of agents in post-processing.
+	//
 	// example:
 	//
 	// 2

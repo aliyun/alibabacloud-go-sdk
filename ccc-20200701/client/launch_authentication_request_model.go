@@ -24,29 +24,54 @@ type iLaunchAuthenticationRequest interface {
 }
 
 type LaunchAuthenticationRequest struct {
+	// The contact flow ID for the IVR identity verification flow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// af145gfc-1108-4d55-8fca-f719bd512ebb
-	ContactFlowId        *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	// Variables passed to the contact flow. This parameter is optional. The configured variables can be retrieved and used within the IVR flow. The format is a JSON string representing a collection of key-value pairs.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "customerID": "208880281831****",
+	//
+	//       "operateType": "cipherCode",
+	//
+	//       "taskId": "1234567890",
+	//
+	//       "crmOther": "123"
+	//
+	// }
 	ContactFlowVariables *string `json:"ContactFlowVariables,omitempty" xml:"ContactFlowVariables,omitempty"`
+	// Device ID. This parameter is meaningless and can be filled in with any value.
+	//
 	// example:
 	//
 	// ACC-YUNBS-1.0.10-****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The call ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-6538214103685****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The agent ID that initiates identity verification.
+	//
 	// example:
 	//
 	// agent@ccc-test

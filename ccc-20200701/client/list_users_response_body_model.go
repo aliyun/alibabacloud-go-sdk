@@ -24,17 +24,30 @@ type iListUsersResponseBody interface {
 }
 
 type ListUsersResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListUsersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Response parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -113,15 +126,22 @@ func (s *ListUsersResponseBody) Validate() error {
 }
 
 type ListUsersResponseBodyData struct {
+	// Agent list.
 	List []*ListUsersResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 1
@@ -186,62 +206,98 @@ func (s *ListUsersResponseBodyData) Validate() error {
 }
 
 type ListUsersResponseBodyDataList struct {
+	// SIP phone extension number. If the agent has registered a SIP phone, this parameter is the extension number of the SIP phone device.
+	//
 	// example:
 	//
 	// 8033****
 	DeviceExt *string `json:"DeviceExt,omitempty" xml:"DeviceExt,omitempty"`
+	// Device ID, which is the identity of a browser-based Web Real-Time Communication (WebRTC) softphone or a physical phone device. Only one type of device can be registered at a time.
+	//
 	// example:
 	//
 	// ACC-YUNBS-1.0.10-****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The status of the SIP phone device. If no SIP phone is registered, the status is UNREGISTERED (Unregistered). If a SIP phone is registered but offline, the status is OFFLINE (Offline). If a SIP phone is registered and online, the status is ONLINE (Online).
+	//
 	// example:
 	//
 	// OFFLINE
 	DeviceState *string `json:"DeviceState,omitempty" xml:"DeviceState,omitempty"`
+	// The agent\\"s employee ID.
+	//
 	// example:
 	//
 	// 1001
-	DisplayId   *string `json:"DisplayId,omitempty" xml:"DisplayId,omitempty"`
+	DisplayId *string `json:"DisplayId,omitempty" xml:"DisplayId,omitempty"`
+	// Agent display name.
+	//
+	// example:
+	//
+	// 坐席小王
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Mailbox.
+	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The landline extension number.
+	//
 	// example:
 	//
 	// 8031****
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// Agent logon name.
+	//
 	// example:
 	//
 	// agent
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	// The agent\\"s personal phone number.
+	//
 	// example:
 	//
 	// 1382114****
-	Mobile                     *string                                                    `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// List of personal outbound numbers for the agent.
 	PersonalOutboundNumberList []*ListUsersResponseBodyDataListPersonalOutboundNumberList `json:"PersonalOutboundNumberList,omitempty" xml:"PersonalOutboundNumberList,omitempty" type:"Repeated"`
-	Primary                    *bool                                                      `json:"Primary,omitempty" xml:"Primary,omitempty"`
+	// Indicates whether the RAM account mapped to the agent is a RAM root account.
+	Primary *bool `json:"Primary,omitempty" xml:"Primary,omitempty"`
+	// Indicates whether the RAM account mapped to the agent is a RAM primary account.
+	//
 	// example:
 	//
-	// false
+	// 已弃用，请使用Primary代替此参数。
 	PrimaryAccount *bool `json:"PrimaryAccount,omitempty" xml:"PrimaryAccount,omitempty"`
+	// The UID of the Resource Access Management (RAM) user associated with the agent.
+	//
 	// example:
 	//
 	// 21234502254620****
 	RamId *int64 `json:"RamId,omitempty" xml:"RamId,omitempty"`
+	// The role ID, in the format: role\\@instance ID.
+	//
 	// example:
 	//
 	// Admin@ccc-test
 	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// The role name.
+	//
 	// example:
 	//
 	// Admin
-	RoleName       *string                                        `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The list of skill group levels associated with the agent.
 	SkillLevelList []*ListUsersResponseBodyDataListSkillLevelList `json:"SkillLevelList,omitempty" xml:"SkillLevelList,omitempty" type:"Repeated"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Work mode.
+	//
 	// example:
 	//
 	// ON_SITE
@@ -441,16 +497,32 @@ func (s *ListUsersResponseBodyDataList) Validate() error {
 }
 
 type ListUsersResponseBodyDataListPersonalOutboundNumberList struct {
+	// Whether the number is active.
+	//
 	// example:
 	//
 	// true
-	Active *bool   `json:"Active,omitempty" xml:"Active,omitempty"`
-	City   *string `json:"City,omitempty" xml:"City,omitempty"`
+	Active *bool `json:"Active,omitempty" xml:"Active,omitempty"`
+	// City where the number is registered.
+	//
+	// example:
+	//
+	// 乐山
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// Number.
+	//
 	// example:
 	//
 	// 0830011****
-	Number   *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// The province of the phone number\\"s registration location.
+	//
+	// example:
+	//
+	// 四川
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// Usage of the number.
+	//
 	// example:
 	//
 	// Bidirection
@@ -515,14 +587,20 @@ func (s *ListUsersResponseBodyDataListPersonalOutboundNumberList) Validate() err
 }
 
 type ListUsersResponseBodyDataListSkillLevelList struct {
+	// The ID of the skill group.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// The name of the skill group.
+	//
 	// example:
 	//
 	// skillgroup
 	SkillGroupName *string `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
+	// The skill level.
+	//
 	// example:
 	//
 	// 5

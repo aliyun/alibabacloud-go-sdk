@@ -22,16 +22,28 @@ type iGetInstanceTrendingReportResponseBody interface {
 }
 
 type GetInstanceTrendingReportResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *GetInstanceTrendingReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 943D8EF3-3321-471F-A104-51C96FCA94D6
@@ -101,9 +113,12 @@ func (s *GetInstanceTrendingReportResponseBody) Validate() error {
 }
 
 type GetInstanceTrendingReportResponseBodyData struct {
-	Inbound  []*GetInstanceTrendingReportResponseBodyDataInbound  `json:"Inbound,omitempty" xml:"Inbound,omitempty" type:"Repeated"`
+	// Inbound metrics.
+	Inbound []*GetInstanceTrendingReportResponseBodyDataInbound `json:"Inbound,omitempty" xml:"Inbound,omitempty" type:"Repeated"`
+	// Outbound metrics.
 	Outbound []*GetInstanceTrendingReportResponseBodyDataOutbound `json:"Outbound,omitempty" xml:"Outbound,omitempty" type:"Repeated"`
-	Overall  []*GetInstanceTrendingReportResponseBodyDataOverall  `json:"Overall,omitempty" xml:"Overall,omitempty" type:"Repeated"`
+	// Overall metrics.
+	Overall []*GetInstanceTrendingReportResponseBodyDataOverall `json:"Overall,omitempty" xml:"Overall,omitempty" type:"Repeated"`
 }
 
 func (s GetInstanceTrendingReportResponseBodyData) String() string {
@@ -173,30 +188,44 @@ func (s *GetInstanceTrendingReportResponseBodyData) Validate() error {
 }
 
 type GetInstanceTrendingReportResponseBodyDataInbound struct {
+	// Number of calls abandoned in the IVR, meaning calls that were abandoned during the IVR flow after entering it.
+	//
 	// example:
 	//
 	// 0
 	CallsAbandonedInIVR *int64 `json:"CallsAbandonedInIVR,omitempty" xml:"CallsAbandonedInIVR,omitempty"`
+	// Number of calls abandoned in the queue, meaning calls that were abandoned while waiting in the skill group queue after entering it.
+	//
 	// example:
 	//
 	// 0
 	CallsAbandonedInQueue *int64 `json:"CallsAbandonedInQueue,omitempty" xml:"CallsAbandonedInQueue,omitempty"`
+	// Number of calls abandoned during ringing.
+	//
 	// example:
 	//
 	// 0
 	CallsAbandonedInRing *int64 `json:"CallsAbandonedInRing,omitempty" xml:"CallsAbandonedInRing,omitempty"`
+	// Number of calls answered by agents. If a single call is distributed to multiple agents, it is counted as one call.
+	//
 	// example:
 	//
 	// 0
 	CallsHandled *int64 `json:"CallsHandled,omitempty" xml:"CallsHandled,omitempty"`
+	// Number of calls that entered the queue. If a single call enters the queue multiple times, it is counted as one call.
+	//
 	// example:
 	//
 	// 0
 	CallsQueued *int64 `json:"CallsQueued,omitempty" xml:"CallsQueued,omitempty"`
+	// The start time of the segment statistics, in UNIX timestamp format, in milliseconds.
+	//
 	// example:
 	//
 	// 1604639129000
 	StatsTime *int64 `json:"StatsTime,omitempty" xml:"StatsTime,omitempty"`
+	// Total number of incoming calls.
+	//
 	// example:
 	//
 	// 0
@@ -279,14 +308,20 @@ func (s *GetInstanceTrendingReportResponseBodyDataInbound) Validate() error {
 }
 
 type GetInstanceTrendingReportResponseBodyDataOutbound struct {
+	// Number of answered outbound calls.
+	//
 	// example:
 	//
 	// 0
 	CallsAnswered *int64 `json:"CallsAnswered,omitempty" xml:"CallsAnswered,omitempty"`
+	// Start time of the segment, in UNIX timestamp format, in milliseconds.
+	//
 	// example:
 	//
 	// 1604639129000
 	StatsTime *int64 `json:"StatsTime,omitempty" xml:"StatsTime,omitempty"`
+	// Total number of outbound calls.
+	//
 	// example:
 	//
 	// 0
@@ -333,8 +368,18 @@ func (s *GetInstanceTrendingReportResponseBodyDataOutbound) Validate() error {
 }
 
 type GetInstanceTrendingReportResponseBodyDataOverall struct {
+	// Maximum number of agents logged on simultaneously during this time range.
+	//
+	// example:
+	//
+	// 102
 	MaxLoggedInAgents *int64 `json:"MaxLoggedInAgents,omitempty" xml:"MaxLoggedInAgents,omitempty"`
-	StatsTime         *int64 `json:"StatsTime,omitempty" xml:"StatsTime,omitempty"`
+	// The start time of the segment statistics, in UNIX timestamp format, in milliseconds.
+	//
+	// example:
+	//
+	// 1604639129000
+	StatsTime *int64 `json:"StatsTime,omitempty" xml:"StatsTime,omitempty"`
 }
 
 func (s GetInstanceTrendingReportResponseBodyDataOverall) String() string {

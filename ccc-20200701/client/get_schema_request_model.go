@@ -18,17 +18,21 @@ type iGetSchemaRequest interface {
 }
 
 type GetSchemaRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// b0eb2742-f37e-4c67-82d4-25c651c1xxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 03C67DAD-EB26-41D8-949D-9B0C470FB716
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// schema id
+	// The ID of the schema.
 	//
 	// This parameter is required.
 	//

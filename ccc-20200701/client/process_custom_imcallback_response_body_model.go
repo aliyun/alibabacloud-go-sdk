@@ -26,21 +26,40 @@ type iProcessCustomIMCallbackResponseBody interface {
 }
 
 type ProcessCustomIMCallbackResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
+	//
+	// example:
+	//
+	// 无
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// chat-65382141036853491
-	JobId   *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2778FA12-EDD6-42AA-9B15-AF855072E5E5

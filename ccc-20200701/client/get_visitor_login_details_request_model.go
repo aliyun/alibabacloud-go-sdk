@@ -20,20 +20,28 @@ type iGetVisitorLoginDetailsRequest interface {
 }
 
 type GetVisitorLoginDetailsRequest struct {
+	// Chat device ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4c51c9116c36537cb850dc1081d745df
 	ChatDeviceId *string `json:"ChatDeviceId,omitempty" xml:"ChatDeviceId,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Channel token for network services.
+	//
 	// example:
 	//
 	// 9XYGTGWtq2wFi_Bpg7aUnIoYi_vG_rO3b***YtsxbHRHrYHlz1LDBLJAyZcLxieRQR4h_6AnWvTjJeNU5jgxzO*****bHwej7WgWrmA
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// Visitor ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,12 +16,16 @@ type iListTicketTasksRequest interface {
 }
 
 type ListTicketTasksRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the ticket.
+	//
 	// example:
 	//
 	// 5491d3b4-14ee-4341-b5f1-db2c78beddeb

@@ -16,12 +16,16 @@ type iEnableTicketTemplateRequest interface {
 }
 
 type EnableTicketTemplateRequest struct {
+  // The instance ID.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // ccc-test
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+  // The ID of the ticket template.
+  // 
   // example:
   // 
   // 43c2671b-8939-4223-86d0-6bd187905cc8_1717664210492

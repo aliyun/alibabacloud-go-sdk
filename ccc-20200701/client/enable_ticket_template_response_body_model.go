@@ -24,17 +24,34 @@ type iEnableTicketTemplateResponseBody interface {
 }
 
 type EnableTicketTemplateResponseBody struct {
+  // The response code.
+  // 
   // example:
   // 
   // OK
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // The returned data.
+  // 
+  // example:
+  // 
+  // 无
   Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+  // The HTTP status code.
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+  // The response message.
+  // 
+  // example:
+  // 
+  // 无
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // The list of incorrect parameters.
   Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+  // The request ID.
+  // 
   // example:
   // 
   // BA03159C-E808-4FF1-B27E-A61B6E888D7F

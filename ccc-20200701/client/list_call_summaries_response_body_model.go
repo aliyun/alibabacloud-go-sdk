@@ -24,17 +24,30 @@ type iListCallSummariesResponseBody interface {
 }
 
 type ListCallSummariesResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data []*ListCallSummariesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// List of error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 932579BC-811A-503D-B322-4C2E57087CAA
@@ -117,23 +130,134 @@ func (s *ListCallSummariesResponseBody) Validate() error {
 }
 
 type ListCallSummariesResponseBodyData struct {
+	// Call ID.
+	//
 	// example:
 	//
 	// job-544789******759424
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	Context   *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// Summary information.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "_sys_field_config": [
+	//
+	//         {
+	//
+	//             "Array": false,
+	//
+	//             "Required": true,
+	//
+	//             "DisplayName": "主题",
+	//
+	//             "Attributes": "{}",
+	//
+	//             "DataType": "TEXT",
+	//
+	//             "EditorType": "TEXT",
+	//
+	//             "MaxLength": 30,
+	//
+	//             "System": true,
+	//
+	//             "Name": "summaryTitle"
+	//
+	//         },
+	//
+	//         {
+	//
+	//             "Array": false,
+	//
+	//             "DisplayName": "小结",
+	//
+	//             "Attributes": "{}",
+	//
+	//             "DataType": "TEXT",
+	//
+	//             "EditorType": "TEXTAREA",
+	//
+	//             "MaxLength": 1000,
+	//
+	//             "System": true,
+	//
+	//             "Name": "summaryContent"
+	//
+	//         },
+	//
+	//         {
+	//
+	//             "Array": true,
+	//
+	//             "DisplayName": "标签",
+	//
+	//             "Attributes": "{}",
+	//
+	//             "DataType": "TEXT",
+	//
+	//             "EditorType": "SELECT",
+	//
+	//             "System": true,
+	//
+	//             "Name": "keywords"
+	//
+	//         }
+	//
+	//     ],
+	//
+	//     "summaryContent": "小结内容",
+	//
+	//     "creator": "creator@ccc-test",
+	//
+	//     "bizType": "Summary",
+	//
+	//     "keywords": [
+	//
+	//         "标签1"
+	//
+	//     ],
+	//
+	//     "source": "Console",
+	//
+	//     "summaryTitle": "测试会话小结",
+	//
+	//     "instanceId": "ccc-test",
+	//
+	//     "externalInput": "{\\"summaryTitle\\":\\"测试会话小结\\",\\"summaryContent\\":\\"小结内容\\",\\"keywords\\":[\\"标签1\\"],\\"_sys_field_config\\":[{\\"DisplayName\\":\\"主题\\",\\"Name\\":\\"summaryTitle\\",\\"Required\\":true,\\"EditorType\\":\\"TEXT\\",\\"Array\\":false,\\"DataType\\":\\"TEXT\\",\\"System\\":true,\\"MaxLength\\":30,\\"Attributes\\":\\"{}\\"},{\\"DisplayName\\":\\"小结\\",\\"Name\\":\\"summaryContent\\",\\"EditorType\\":\\"TEXTAREA\\",\\"Array\\":false,\\"DataType\\":\\"TEXT\\",\\"System\\":true,\\"MaxLength\\":1000,\\"Attributes\\":\\"{}\\"},{\\"DisplayName\\":\\"标签\\",\\"Name\\":\\"keywords\\",\\"EditorType\\":\\"SELECT\\",\\"Array\\":true,\\"DataType\\":\\"TEXT\\",\\"System\\":true,\\"Attributes\\":\\"{}\\"}]}",
+	//
+	//     "templateName": "Summary-Ticket",
+	//
+	//     "bizId": "job-544789******759424",
+	//
+	//     "ticketStartTime": 1723449513735,
+	//
+	//     "ticketId": "ac0dd304-****-****-****-4a90010f0d38",
+	//
+	//     "definitionId": "Summary-Ticket:2:6881f43a-****-11ee-*****-6eb35a90a7a6"
+	//
+	// }
+	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 1723449513735
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Creator.
+	//
 	// example:
 	//
 	// creator@ccc-test
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Editor.
+	//
 	// example:
 	//
 	// editor@ccc-test
 	Editor *string `json:"Editor,omitempty" xml:"Editor,omitempty"`
+	// Summary ID.
+	//
 	// example:
 	//
 	// ac0dd304-****-****-****-4a90010f0d38

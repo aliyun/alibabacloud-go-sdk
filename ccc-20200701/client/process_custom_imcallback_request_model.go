@@ -28,40 +28,81 @@ type iProcessCustomIMCallbackRequest interface {
 }
 
 type ProcessCustomIMCallbackRequest struct {
+	// The channel ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cf584733-***-***-9699-cb77aa3b7aa6
 	AccessChannelId *string `json:"AccessChannelId,omitempty" xml:"AccessChannelId,omitempty"`
+	// The session ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// d165de4f-9851-445e-9535-66ebfa72fa51
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 9cfad875-6260-4a53-ab6e-b13e3fb31f7d
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The message content.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 消息内容，格式如下：
+	//
+	//
+	// 文本消息：
+	//
+	// { "contentType":"Text", "text":"你好  " }
+	//
+	// 图片消息：
+	//
+	// { "contentType":"Image", "mediaId": "xxx-xxx-xxx", "fileType": "png", "fileSize": 1233 }
+	//
+	// 视频消息：
+	//
+	// { "contentType":"Video", "mediaId": "xxx-xxx-xxx" "duration": 12, "fileSize": 1233, }
+	//
+	// 音频消息：
+	//
+	// { "contentType":"Audio", "mediaId": "xxx-xxx-xxx" "duration": 12, "fileSize": 1233 }
+	//
+	// 文件消息：
+	//
+	// { "contentType":"File", "mediaId": "xxx-xxx-xxx", "fileSize": 223232, "filename": "xyz. zip" }
 	MessageContent *string `json:"MessageContent,omitempty" xml:"MessageContent,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 03C67DAD-EB26-41D8-949D-9B0C470FB716
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The profile picture ID.
+	//
 	// example:
 	//
 	// xxxx
 	SenderAvatarMediaId *string `json:"SenderAvatarMediaId,omitempty" xml:"SenderAvatarMediaId,omitempty"`
+	// The user ID of the message sender.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 63061274befd6b545aab4c83
 	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	// The name of the sender.
+	//
 	// example:
 	//
 	// tom

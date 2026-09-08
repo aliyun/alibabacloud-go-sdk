@@ -22,16 +22,28 @@ type iGetCaseFileUploadUrlResponseBody interface {
 }
 
 type GetCaseFileUploadUrlResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *GetCaseFileUploadUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BA03159C-E808-4FF1-B27E-A61B6E888D7F
@@ -101,10 +113,14 @@ func (s *GetCaseFileUploadUrlResponseBody) Validate() error {
 }
 
 type GetCaseFileUploadUrlResponseBodyData struct {
+	// The key of the OSS file.
+	//
 	// example:
 	//
 	// ccc-test/namelist.csv
 	CaseFileKey *string `json:"CaseFileKey,omitempty" xml:"CaseFileKey,omitempty"`
+	// A pre-signed OSS file upload URL for uploading the file. The validity period is one hour.
+	//
 	// example:
 	//
 	// https://ccc-v2-online.oss-cn-shanghai.aliyuncs.com/ccc-test/namelist.csv?Expires=1642067227&OSSAccessKeyId=****&Signature=****

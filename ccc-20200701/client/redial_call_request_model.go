@@ -28,33 +28,52 @@ type iRedialCallRequest interface {
 }
 
 type RedialCallRequest struct {
+	// Callee number.
+	//
 	// example:
 	//
 	// 1318888****
 	Callee *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
+	// Caller number.
+	//
 	// example:
 	//
 	// 0109810****
-	Caller   *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// Unique ID provided by the agent endpoint to identify an agent Workbench.
+	//
+	// example:
+	//
+	// CCC-x.x.x.x-chrome102-bsdf911812c60f61e
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Instance ID of the call center.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// abc
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Call job ID. The job ID of the previous call used for redialing.
+	//
 	// example:
 	//
 	// job-6581536084722****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Per-call data. It must not exceed 128 bytes and is primarily used for extension purposes. Ordinary customers do not need to pay attention to it.
+	//
 	// example:
 	//
 	// a=b
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// Timeout. If the call is not answered within the time specified by this parameter, it is automatically disconnected.
+	//
 	// example:
 	//
 	// 30
 	TimeoutSeconds *int32 `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	// User ID of the agent.
+	//
 	// example:
 	//
 	// samzhang@abc

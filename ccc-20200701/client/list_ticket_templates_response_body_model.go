@@ -24,17 +24,30 @@ type iListTicketTemplatesResponseBody interface {
 }
 
 type ListTicketTemplatesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
 	Data *ListTicketTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of invalid parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8707EB29-BAED-4302-B999-40BA61877437
@@ -113,15 +126,22 @@ func (s *ListTicketTemplatesResponseBody) Validate() error {
 }
 
 type ListTicketTemplatesResponseBodyData struct {
+	// The list of templates.
 	List []*ListTicketTemplatesResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 25
@@ -186,37 +206,64 @@ func (s *ListTicketTemplatesResponseBodyData) Validate() error {
 }
 
 type ListTicketTemplatesResponseBodyDataList struct {
+	// The current working version.
+	//
 	// example:
 	//
 	// 0
 	AppliedVersion *string `json:"AppliedVersion,omitempty" xml:"AppliedVersion,omitempty"`
+	// The category ID.
+	//
 	// example:
 	//
 	// 43c2671b-*****-4223-86d0-6bd187905cc8
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The user who last edited the template.
+	//
 	// example:
 	//
 	// creator@ccc-test
 	Editor *string `json:"Editor,omitempty" xml:"Editor,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The draft version.
+	//
 	// example:
 	//
 	// 1715780670000
-	LatestVersion     *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	// The name of the template.
+	//
+	// example:
+	//
+	// 测试模板
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The process information. This parameter is deprecated.
+	//
+	// example:
+	//
+	// 无
 	ProcessDefinition *string `json:"ProcessDefinition,omitempty" xml:"ProcessDefinition,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// Enabled
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// b5c21219-3a1e-4bc0-92e7-da66e057d2f6
-	TemplateId   *string                                                `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The list of fields in the template.
 	TicketFields []*ListTicketTemplatesResponseBodyDataListTicketFields `json:"TicketFields,omitempty" xml:"TicketFields,omitempty" type:"Repeated"`
+	// The time when the template was last updated.
+	//
 	// example:
 	//
 	// 1715780670000
@@ -344,77 +391,128 @@ func (s *ListTicketTemplatesResponseBodyDataList) Validate() error {
 }
 
 type ListTicketTemplatesResponseBodyDataListTicketFields struct {
+	// Indicates whether the field is an array.
+	//
 	// example:
 	//
 	// false
 	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
+	// The extended properties.
+	//
 	// example:
 	//
 	// {}
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
+	// The time when the field was created.
+	//
 	// example:
 	//
 	// 1715780670000
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The creator.
+	//
 	// example:
 	//
 	// creator
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The data type.
+	//
 	// example:
 	//
 	// String
-	DataType    *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// 姓名字段
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the field is disabled.
+	//
 	// example:
 	//
 	// false
-	Disabled    *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// The display name.
+	//
+	// example:
+	//
+	// 姓名
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The display order in the list.
+	//
 	// example:
 	//
 	// 1
 	DisplayOrder *int32 `json:"DisplayOrder,omitempty" xml:"DisplayOrder,omitempty"`
+	// The type of the editor.
+	//
 	// example:
 	//
 	// textbox
 	EditorType *string `json:"EditorType,omitempty" xml:"EditorType,omitempty"`
+	// The maximum length.
+	//
 	// example:
 	//
 	// 30
 	MaxLength *int32 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	// The maximum value for a number.
+	//
 	// example:
 	//
 	// 10
 	Maximum *float64 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	// The minimum length.
+	//
 	// example:
 	//
 	// 1
 	MinLength *int32 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+	// The minimum value for a number.
+	//
 	// example:
 	//
 	// 1
 	Minimum *float64 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The regular expression that is used for validation.
+	//
 	// example:
 	//
 	// ^
-	Pattern             *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	// The error message that is returned when the regular expression validation fails.
+	//
+	// example:
+	//
+	// 不是有效的email地址
 	PatternErrorMessage *string `json:"PatternErrorMessage,omitempty" xml:"PatternErrorMessage,omitempty"`
+	// Indicates whether the field is read-only.
+	//
 	// example:
 	//
 	// false
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// Indicates whether the field is required.
+	//
 	// example:
 	//
 	// false
 	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+	// Indicates whether the field is a system field.
+	//
 	// example:
 	//
 	// false
 	System *bool `json:"System,omitempty" xml:"System,omitempty"`
+	// The time when the field was last updated.
+	//
 	// example:
 	//
 	// 1715780670000

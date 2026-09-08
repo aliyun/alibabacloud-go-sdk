@@ -24,17 +24,30 @@ type iRedialCallResponseBody interface {
 }
 
 type RedialCallResponseBody struct {
+	// Status code. A return value of "OK" indicates that the request succeeded. For other error codes, see the error code list.
+	//
 	// example:
 	//
 	// OK
-	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *RedialCallResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// List of response parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BF268B34-09C2-43FD-BAC4-5D31EA63****
@@ -113,11 +126,15 @@ func (s *RedialCallResponseBody) Validate() error {
 }
 
 type RedialCallResponseBodyData struct {
+	// Call context environment.
 	CallContext *RedialCallResponseBodyDataCallContext `json:"CallContext,omitempty" xml:"CallContext,omitempty" type:"Struct"`
+	// Context ID, strictly ordered and incrementing.
+	//
 	// example:
 	//
 	// 123456789
-	ContextId   *int64                                 `json:"ContextId,omitempty" xml:"ContextId,omitempty"`
+	ContextId *int64 `json:"ContextId,omitempty" xml:"ContextId,omitempty"`
+	// Agent context environment.
 	UserContext *RedialCallResponseBodyDataUserContext `json:"UserContext,omitempty" xml:"UserContext,omitempty" type:"Struct"`
 }
 
@@ -171,15 +188,22 @@ func (s *RedialCallResponseBodyData) Validate() error {
 }
 
 type RedialCallResponseBodyDataCallContext struct {
+	// The call type, indicating the type of the call when it was initially initiated.
+	//
 	// example:
 	//
 	// OUTBOUND
-	CallType        *string                                                 `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	CallType *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	// The list of call channels.
 	ChannelContexts []*RedialCallResponseBodyDataCallContextChannelContexts `json:"ChannelContexts,omitempty" xml:"ChannelContexts,omitempty" type:"Repeated"`
+	// Cloud Contact Center instance ID.
+	//
 	// example:
 	//
 	// abc
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The call job ID.
+	//
 	// example:
 	//
 	// job-6538214103685****
@@ -244,50 +268,74 @@ func (s *RedialCallResponseBodyDataCallContext) Validate() error {
 }
 
 type RedialCallResponseBodyDataCallContextChannelContexts struct {
+	// The call type of the channel.
+	//
 	// example:
 	//
 	// OUTBOUND
 	CallType *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	// Call channel flags.
+	//
 	// example:
 	//
 	// COACHING
 	ChannelFlags *string `json:"ChannelFlags,omitempty" xml:"ChannelFlags,omitempty"`
+	// Channel ID.
+	//
 	// example:
 	//
 	// ch:user:1390501****->8032****:1609138902226:job-653821410368****
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The status of the voice channel.
+	//
 	// example:
 	//
 	// CREATED
 	ChannelState *string `json:"ChannelState,omitempty" xml:"ChannelState,omitempty"`
+	// The callee of the voice channel.
+	//
 	// example:
 	//
 	// 8001****
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
+	// Call job ID.
+	//
 	// example:
 	//
 	// job-6573574060089****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The calling party of the call channel.
+	//
 	// example:
 	//
 	// 1318888****
 	Originator *string `json:"Originator,omitempty" xml:"Originator,omitempty"`
+	// The party that initiated the hang-up of the call channel, indicating who first terminated the call.
+	//
 	// example:
 	//
 	// 139xxxx0501
 	ReleaseInitiator *string `json:"ReleaseInitiator,omitempty" xml:"ReleaseInitiator,omitempty"`
+	// The release reason of the voice channel, indicating why the current voice channel was released. The value is derived from the response codes defined in the SIP protocol. Customers can refer to the SIP protocol to analyze the release reason.
+	//
 	// example:
 	//
 	// 486:USER_BUSY
 	ReleaseReason *string `json:"ReleaseReason,omitempty" xml:"ReleaseReason,omitempty"`
+	// UNIX timestamp of the last status change.
+	//
 	// example:
 	//
 	// 1609138903315
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// User extension number.
+	//
 	// example:
 	//
 	// 8000****
 	UserExtension *string `json:"UserExtension,omitempty" xml:"UserExtension,omitempty"`
+	// Agent User ID information.
+	//
 	// example:
 	//
 	// samzhang@abc
@@ -415,31 +463,92 @@ func (s *RedialCallResponseBodyDataCallContextChannelContexts) Validate() error 
 }
 
 type RedialCallResponseBodyDataUserContext struct {
+	// Break status code, which is divided into system-defined and customer-defined types.
+	//
+	// System-defined break codes:
+	//
+	// - Warm-up: A temporary break state after an agent is published but before becoming idle.
+	//
+	// - RingingTimeout: A break caused by ringing timeout for the agent.
+	//
+	// - RejectCall: A break caused by the agent rejecting a call.
+	//
+	// There are no restrictions on customer-defined status codes. Customers can define them according to their business needs.
+	//
+	// example:
+	//
+	// Warm-up
 	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
-	DeviceId  *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Device ID, which is the identity of a browser-based Web Real-Time Communication (WebRTC) softphone or a physical phone device. Only one type of device can be registered at a time.
+	//
+	// example:
+	//
+	// CCC-x.x.x.x-chrome102-bsdf911812c60f61e
+	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// User extension number.
+	//
 	// example:
 	//
 	// 8000****
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// abc
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Call job ID.
+	//
 	// example:
 	//
 	// job-6573574060089****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Indicates whether the agent is in outbound-only mode.
+	//
 	// example:
 	//
 	// False
-	OutboundScenario       *bool     `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	OutboundScenario *bool `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	// List of skill group IDs that the agent has signed into.
 	SignedSkillGroupIdList []*string `json:"SignedSkillGroupIdList,omitempty" xml:"SignedSkillGroupIdList,omitempty" type:"Repeated"`
+	// Agent User ID information.
+	//
 	// example:
 	//
 	// samzhang@abc
-	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Agent status. Enumeration values:
+	//
+	// - READY: idle
+	//
+	// - WORKING: post-processing
+	//
+	// - DIALING: dial-up
+	//
+	// - BREAK: break
+	//
+	// - OFFLINE: offline
+	//
+	// - TALKING: talking
+	//
+	// - RINGING: ringing
+	//
+	// example:
+	//
+	// READY
 	UserState *string `json:"UserState,omitempty" xml:"UserState,omitempty"`
-	WorkMode  *string `json:"WorkMode,omitempty" xml:"WorkMode,omitempty"`
+	// Work mode. Enumeration values:
+	//
+	// - ON_SITE: On-site mode
+	//
+	// - OFF_SITE: Off-site mode
+	//
+	// - OFFICE_PHONE: Office phone mode
+	//
+	// example:
+	//
+	// ON_SITE
+	WorkMode *string `json:"WorkMode,omitempty" xml:"WorkMode,omitempty"`
 }
 
 func (s RedialCallResponseBodyDataUserContext) String() string {

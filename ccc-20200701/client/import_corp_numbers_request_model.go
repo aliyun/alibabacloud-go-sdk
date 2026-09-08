@@ -24,18 +24,46 @@ type iImportCorpNumbersRequest interface {
 }
 
 type ImportCorpNumbersRequest struct {
-	City     *string `json:"City,omitempty" xml:"City,omitempty"`
+	// The city.
+	//
+	// example:
+	//
+	// 西安
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// The enterprise name.
+	//
+	// example:
+	//
+	// xxx公司
 	CorpName *string `json:"CorpName,omitempty" xml:"CorpName,omitempty"`
+	// The list of numbers.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// [\\"02912345678\\"]
+	// [\\"029xxxxxx\\"]
 	NumberList *string `json:"NumberList,omitempty" xml:"NumberList,omitempty"`
+	// The line information.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx通信-陕西线路
 	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// The province.
+	//
+	// example:
+	//
+	// 陕西
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	TagList  *string `json:"TagList,omitempty" xml:"TagList,omitempty"`
+	// The business tags.
+	//
+	// example:
+	//
+	// 无
+	TagList *string `json:"TagList,omitempty" xml:"TagList,omitempty"`
 }
 
 func (s ImportCorpNumbersRequest) String() string {

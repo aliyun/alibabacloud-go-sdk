@@ -22,16 +22,28 @@ type iListWaitingChatsResponseBody interface {
 }
 
 type ListWaitingChatsResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Returned data.
 	Data []*ListWaitingChatsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 03C67DAD-EB26-41D8-949D-9B0C470FB716
@@ -105,33 +117,52 @@ func (s *ListWaitingChatsResponseBody) Validate() error {
 }
 
 type ListWaitingChatsResponseBodyData struct {
+	// Access channel ID.
+	//
 	// example:
 	//
 	// 843073c2-*****-49fb-a616-738ddddfebdc
 	AccessChannelId *string `json:"AccessChannelId,omitempty" xml:"AccessChannelId,omitempty"`
+	// Access channel type.
+	//
 	// example:
 	//
 	// Web
 	AccessChannelType *string `json:"AccessChannelType,omitempty" xml:"AccessChannelType,omitempty"`
+	// Indicates whether the session has been assigned to an agent.
+	//
 	// example:
 	//
 	// false
 	BeingAssigned *bool `json:"BeingAssigned,omitempty" xml:"BeingAssigned,omitempty"`
+	// Chat session ID.
+	//
 	// example:
 	//
 	// $23086709$EAUNIT
 	ChatConversationId *string `json:"ChatConversationId,omitempty" xml:"ChatConversationId,omitempty"`
+	// Enqueue time, in Unix timestamp format, in milliseconds.
+	//
 	// example:
 	//
 	// 1718868572094
 	EnqueueTime *int64 `json:"EnqueueTime,omitempty" xml:"EnqueueTime,omitempty"`
+	// Job ID.
+	//
 	// example:
 	//
 	// chat-434537064047960064
-	JobId        *string                                     `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Messages     []*ListWaitingChatsResponseBodyDataMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
-	SkillGroupId *string                                     `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-	UserList     []*ListWaitingChatsResponseBodyDataUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Message list.
+	Messages []*ListWaitingChatsResponseBodyDataMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	// The skill group information.
+	//
+	// example:
+	//
+	// skill@ccc-test
+	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// User list.
+	UserList []*ListWaitingChatsResponseBodyDataUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
 }
 
 func (s ListWaitingChatsResponseBodyData) String() string {
@@ -246,11 +277,27 @@ func (s *ListWaitingChatsResponseBodyData) Validate() error {
 }
 
 type ListWaitingChatsResponseBodyDataMessages struct {
+	// Message content.
+	//
+	// example:
+	//
+	// 测试消息
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Message sender ID.
+	//
 	// example:
 	//
 	// c361765f-******-4e07-b81c-4b5d9183fac6
-	SenderId   *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	// Sender type. Valid values:
+	//
+	// - **CUSTOMER**: visitor
+	//
+	// - **AGENT**: agent
+	//
+	// example:
+	//
+	// {"variables":{},"text":"<p>这种的名片选单面还是双面</p>"}
 	SenderType *string `json:"SenderType,omitempty" xml:"SenderType,omitempty"`
 }
 
@@ -294,12 +341,26 @@ func (s *ListWaitingChatsResponseBodyDataMessages) Validate() error {
 }
 
 type ListWaitingChatsResponseBodyDataUserList struct {
+	// Profile picture URL.
+	//
+	// example:
+	//
+	// 无
 	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	// User ID.
+	//
 	// example:
 	//
 	// c361765f-******-4e07-b81c-4b5d9183fac6
-	UserId   *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// User name.
+	//
+	// example:
+	//
+	// 访客-1c***
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// User type.
+	//
 	// example:
 	//
 	// CUSTOMER

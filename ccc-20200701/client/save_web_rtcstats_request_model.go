@@ -24,32 +24,48 @@ type iSaveWebRTCStatsRequest interface {
 }
 
 type SaveWebRTCStatsRequest struct {
+	// The call ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 257e73de-1ee8-123b-0b9a-00163e0a****
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// General information.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// [null,"","","1647337928819","1647337888816","agent",null,"上海","10.10.XX.XX","11.1.XX.XX","2002"]
 	GeneralInfo *string `json:"GeneralInfo,omitempty" xml:"GeneralInfo,omitempty"`
+	// The access point address.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ["47.101.XX.XX","44368","47.104.XX.XX","37947"]
 	GoogAddress *string `json:"GoogAddress,omitempty" xml:"GoogAddress,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The content of the receiver report.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ["1","1649328987","40","PCMU","383560","89","49","ssrc_1649328987_recv","2022-03-15T09:52:08.820Z","","0","20000"]
 	ReceiverReport *string `json:"ReceiverReport,omitempty" xml:"ReceiverReport,omitempty"`
+	// The content of the sender report.
+	//
 	// This parameter is required.
 	//
 	// example:

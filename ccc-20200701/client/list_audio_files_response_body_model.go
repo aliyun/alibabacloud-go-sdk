@@ -22,16 +22,28 @@ type iListAudioFilesResponseBody interface {
 }
 
 type ListAudioFilesResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
 	Data *ListAudioFilesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 53223330-EBF1-586B-A2CB-93C3B711FDA0
@@ -101,15 +113,22 @@ func (s *ListAudioFilesResponseBody) Validate() error {
 }
 
 type ListAudioFilesResponseBodyData struct {
+	// The list of audio files.
 	List []*ListAudioFilesResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The paging size, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total count.
+	//
 	// example:
 	//
 	// 10
@@ -174,34 +193,66 @@ func (s *ListAudioFilesResponseBodyData) Validate() error {
 }
 
 type ListAudioFilesResponseBodyDataList struct {
+	// Audio file name.
+	//
 	// example:
 	//
 	// test-file.wav
 	AudioFileName *string `json:"AudioFileName,omitempty" xml:"AudioFileName,omitempty"`
+	// Audio resource ID, which is the UUID of the audio file.
+	//
 	// example:
 	//
 	// d5cd7a94-3b6a-47d2-b7fd-0b1cd839bf77
 	AudioResourceId *string `json:"AudioResourceId,omitempty" xml:"AudioResourceId,omitempty"`
-	AuditResult     *string `json:"AuditResult,omitempty" xml:"AuditResult,omitempty"`
+	// Audio content threat review result.
+	//
+	// example:
+	//
+	// 无
+	AuditResult *string `json:"AuditResult,omitempty" xml:"AuditResult,omitempty"`
+	// The creation time of the audio resource.
+	//
 	// example:
 	//
 	// 2021-03-05 17:35:45.0
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Display name of the audio resource.
+	//
+	// example:
+	//
+	// 欢迎语
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The key of the audio resource file in OSS.
+	//
 	// example:
 	//
 	// ccc-test/test-file.wav
 	OssFileKey *string `json:"OssFileKey,omitempty" xml:"OssFileKey,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the audio file.
+	//
+	// example:
+	//
+	// Completed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Last modified time of the audio resource.
+	//
 	// example:
 	//
 	// 2021-03-08 15:34:49.0
 	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	Usage       *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// The usage of the audio file. The default value is General (used in scenarios such as IVR). Other optional values include HoldMusic (hold music during call waiting).
+	//
+	// example:
+	//
+	// General
+	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
 }
 
 func (s ListAudioFilesResponseBodyDataList) String() string {

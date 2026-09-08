@@ -24,17 +24,30 @@ type iClaimChatResponseBody interface {
 }
 
 type ClaimChatResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ClaimChatResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// List of response parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BC976D32-AC4C-4E0F-8AA9-F4BC6C4E2B3E
@@ -113,11 +126,15 @@ func (s *ClaimChatResponseBody) Validate() error {
 }
 
 type ClaimChatResponseBodyData struct {
+	// Session context.
 	ChatContexts []*ClaimChatResponseBodyDataChatContexts `json:"ChatContexts,omitempty" xml:"ChatContexts,omitempty" type:"Repeated"`
+	// System auto-increment ID. Customers do not need to be concerned.
+	//
 	// example:
 	//
 	// 123456789
-	ContextId   *int64                                `json:"ContextId,omitempty" xml:"ContextId,omitempty"`
+	ContextId *int64 `json:"ContextId,omitempty" xml:"ContextId,omitempty"`
+	// Agent context.
 	UserContext *ClaimChatResponseBodyDataUserContext `json:"UserContext,omitempty" xml:"UserContext,omitempty" type:"Struct"`
 }
 
@@ -175,28 +192,50 @@ func (s *ClaimChatResponseBodyData) Validate() error {
 }
 
 type ClaimChatResponseBodyDataChatContexts struct {
+	// Network service channel ID.
+	//
 	// example:
 	//
 	// 226****-cbb6-****-8fea-1e71baf7bfa7
-	AccessChannelId   *string `json:"AccessChannelId,omitempty" xml:"AccessChannelId,omitempty"`
+	AccessChannelId *string `json:"AccessChannelId,omitempty" xml:"AccessChannelId,omitempty"`
+	// Network service channel name.
+	//
+	// example:
+	//
+	// 测试渠道
 	AccessChannelName *string `json:"AccessChannelName,omitempty" xml:"AccessChannelName,omitempty"`
+	// Network service channel type.
+	//
 	// example:
 	//
 	// Web
 	AccessChannelType *string `json:"AccessChannelType,omitempty" xml:"AccessChannelType,omitempty"`
+	// Whether the session has been assigned to an agent.
+	//
 	// example:
 	//
 	// true
-	BeingAssigned *bool   `json:"BeingAssigned,omitempty" xml:"BeingAssigned,omitempty"`
+	BeingAssigned *bool `json:"BeingAssigned,omitempty" xml:"BeingAssigned,omitempty"`
+	// Call variables.
+	//
+	// example:
+	//
+	// 无
 	CallVariables *string `json:"CallVariables,omitempty" xml:"CallVariables,omitempty"`
+	// Session type.
+	//
 	// example:
 	//
 	// INBOUND
 	ChatType *string `json:"ChatType,omitempty" xml:"ChatType,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Job ID.
+	//
 	// example:
 	//
 	// chat-65382141036853491
@@ -288,55 +327,104 @@ func (s *ClaimChatResponseBodyDataChatContexts) Validate() error {
 }
 
 type ClaimChatResponseBodyDataUserContext struct {
+	// Break status code.
+	//
 	// example:
 	//
 	// Warm-up
 	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	// Device ID.
+	//
 	// example:
 	//
 	// CCC-169.254.165.2-browser125.0.0-bs48b41903450e6c8
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Device state.
+	//
 	// example:
 	//
 	// ONLINE
 	DeviceState *string `json:"DeviceState,omitempty" xml:"DeviceState,omitempty"`
+	// Agent extension number.
+	//
 	// example:
 	//
 	// 8032****
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// Time of the agent\\"s last heartbeat, in Unix timestamp format, in milliseconds.
+	//
 	// example:
 	//
 	// 1609136956378
 	Heartbeat *int64 `json:"Heartbeat,omitempty" xml:"Heartbeat,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Job ID.
+	//
 	// example:
 	//
 	// chat-65382141036853491
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Agent\\"s personal phone number. Not applicable for chat scenarios.
+	//
 	// example:
 	//
 	// 18******102
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// Outbound call scenario only. Not applicable for chat services.
+	//
 	// example:
 	//
 	// false
 	OutboundScenario *bool `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	// Time when the agent was last reserved, in Unix timestamp format, in milliseconds.
+	//
 	// example:
 	//
 	// false
-	Reserved               *int64    `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	Reserved *int64 `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	// List of skill group IDs the agent is signed into.
 	SignedSkillGroupIdList []*string `json:"SignedSkillGroupIdList,omitempty" xml:"SignedSkillGroupIdList,omitempty" type:"Repeated"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// userId@ccc-test
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Agent state.
+	//
+	// Enumerated values:
+	//
+	// - READY: Idle.
+	//
+	// - WORKING: Post-call processing.
+	//
+	// - BREAK: Break.
+	//
+	// - OFFLINE: Offline.
+	//
+	// - TALKING: Chatting.
+	//
+	// - RINGING: Incoming chat.
+	//
 	// example:
 	//
 	// TALKING
 	UserState *string `json:"UserState,omitempty" xml:"UserState,omitempty"`
+	// Work mode. Not applicable for chat scenarios.
+	//
+	// Enumerated values:
+	//
+	// - ON_SITE: On-site mode.
+	//
+	// - OFF_SITE: Off-site mode.
+	//
+	// - OFFICE_PHONE: Office phone mode.
+	//
 	// example:
 	//
 	// ON_SITE

@@ -22,25 +22,38 @@ type iListBriefSkillGroupsRequest interface {
 }
 
 type ListBriefSkillGroupsRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MediaType  *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The media type. The default value is AUDIO. Other valid values include CHAT and VIDEO.
+	//
+	// example:
+	//
+	// CHAT
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// The page number for paging, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size for paging, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Perform fuzzy matching based on the skill group name or display name. This parameter is optional and defaults to empty, which means no filtering is applied.
+	//
 	// example:
 	//
 	// skillgroup

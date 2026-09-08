@@ -22,16 +22,28 @@ type iListIntervalAgentReportResponseBody interface {
 }
 
 type ListIntervalAgentReportResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// List of agent segment statistics.
 	Data []*ListIntervalAgentReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 943D8EF3-3321-471F-A104-51C96FCA94D6
@@ -105,11 +117,18 @@ func (s *ListIntervalAgentReportResponseBody) Validate() error {
 }
 
 type ListIntervalAgentReportResponseBodyData struct {
+	// Back-to-back call metric.
 	Back2Back *ListIntervalAgentReportResponseBodyDataBack2Back `json:"Back2Back,omitempty" xml:"Back2Back,omitempty" type:"Struct"`
-	Inbound   *ListIntervalAgentReportResponseBodyDataInbound   `json:"Inbound,omitempty" xml:"Inbound,omitempty" type:"Struct"`
-	Internal  *ListIntervalAgentReportResponseBodyDataInternal  `json:"Internal,omitempty" xml:"Internal,omitempty" type:"Struct"`
-	Outbound  *ListIntervalAgentReportResponseBodyDataOutbound  `json:"Outbound,omitempty" xml:"Outbound,omitempty" type:"Struct"`
-	Overall   *ListIntervalAgentReportResponseBodyDataOverall   `json:"Overall,omitempty" xml:"Overall,omitempty" type:"Struct"`
+	// Inbound metrics.
+	Inbound *ListIntervalAgentReportResponseBodyDataInbound `json:"Inbound,omitempty" xml:"Inbound,omitempty" type:"Struct"`
+	// Internal call metrics.
+	Internal *ListIntervalAgentReportResponseBodyDataInternal `json:"Internal,omitempty" xml:"Internal,omitempty" type:"Struct"`
+	// Outbound metrics.
+	Outbound *ListIntervalAgentReportResponseBodyDataOutbound `json:"Outbound,omitempty" xml:"Outbound,omitempty" type:"Struct"`
+	// Overall metrics.
+	Overall *ListIntervalAgentReportResponseBodyDataOverall `json:"Overall,omitempty" xml:"Overall,omitempty" type:"Struct"`
+	// Start time of the time segment, formatted as a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1620291600000
@@ -208,22 +227,102 @@ func (s *ListIntervalAgentReportResponseBodyData) Validate() error {
 }
 
 type ListIntervalAgentReportResponseBodyDataBack2Back struct {
-	AgentHandleRate         *float32 `json:"AgentHandleRate,omitempty" xml:"AgentHandleRate,omitempty"`
-	AnswerRate              *float32 `json:"AnswerRate,omitempty" xml:"AnswerRate,omitempty"`
+	// Agent acknowledgement rate.
+	//
+	// example:
+	//
+	// 1
+	AgentHandleRate *float32 `json:"AgentHandleRate,omitempty" xml:"AgentHandleRate,omitempty"`
+	// Answer rate. Calculation Formula: CallsAnswered / CallsDialed. (Because answer events and acknowledgement events may fall into different time ranges, the result may exceed 100% in certain cases.)
+	//
+	// example:
+	//
+	// 0.5
+	AnswerRate *float32 `json:"AnswerRate,omitempty" xml:"AnswerRate,omitempty"`
+	// Average customer-side ring duration in seconds.
+	//
+	// example:
+	//
+	// 100
 	AverageCustomerRingTime *float32 `json:"AverageCustomerRingTime,omitempty" xml:"AverageCustomerRingTime,omitempty"`
-	AverageRingTime         *float32 `json:"AverageRingTime,omitempty" xml:"AverageRingTime,omitempty"`
-	AverageTalkTime         *float32 `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
-	CallsAgentHandled       *int64   `json:"CallsAgentHandled,omitempty" xml:"CallsAgentHandled,omitempty"`
-	CallsAnswered           *int64   `json:"CallsAnswered,omitempty" xml:"CallsAnswered,omitempty"`
-	CallsCustomerAnswered   *int64   `json:"CallsCustomerAnswered,omitempty" xml:"CallsCustomerAnswered,omitempty"`
-	CallsDialed             *int64   `json:"CallsDialed,omitempty" xml:"CallsDialed,omitempty"`
-	CustomerAnswerRate      *float32 `json:"CustomerAnswerRate,omitempty" xml:"CustomerAnswerRate,omitempty"`
-	MaxCustomerRingTime     *int64   `json:"MaxCustomerRingTime,omitempty" xml:"MaxCustomerRingTime,omitempty"`
-	MaxRingTime             *int64   `json:"MaxRingTime,omitempty" xml:"MaxRingTime,omitempty"`
-	MaxTalkTime             *int64   `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
-	TotalCustomerRingTime   *int64   `json:"TotalCustomerRingTime,omitempty" xml:"TotalCustomerRingTime,omitempty"`
-	TotalRingTime           *int64   `json:"TotalRingTime,omitempty" xml:"TotalRingTime,omitempty"`
-	TotalTalkTime           *int64   `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+	// Average ring time, in seconds.
+	//
+	// example:
+	//
+	// 100
+	AverageRingTime *float32 `json:"AverageRingTime,omitempty" xml:"AverageRingTime,omitempty"`
+	// Average talk time, in seconds.
+	//
+	// example:
+	//
+	// 100
+	AverageTalkTime *float32 `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
+	// Number of calls answered by agents.
+	//
+	// example:
+	//
+	// 12
+	CallsAgentHandled *int64 `json:"CallsAgentHandled,omitempty" xml:"CallsAgentHandled,omitempty"`
+	// Number of answered calls.
+	//
+	// example:
+	//
+	// 100
+	CallsAnswered *int64 `json:"CallsAnswered,omitempty" xml:"CallsAnswered,omitempty"`
+	// Number of calls answered by customers.
+	//
+	// example:
+	//
+	// 9
+	CallsCustomerAnswered *int64 `json:"CallsCustomerAnswered,omitempty" xml:"CallsCustomerAnswered,omitempty"`
+	// Number of dial-up calls.
+	//
+	// example:
+	//
+	// 100
+	CallsDialed *int64 `json:"CallsDialed,omitempty" xml:"CallsDialed,omitempty"`
+	// Customer answer rate.
+	//
+	// example:
+	//
+	// 0.75
+	CustomerAnswerRate *float32 `json:"CustomerAnswerRate,omitempty" xml:"CustomerAnswerRate,omitempty"`
+	// Maximum customer-side ring time, in seconds.
+	//
+	// example:
+	//
+	// 100
+	MaxCustomerRingTime *int64 `json:"MaxCustomerRingTime,omitempty" xml:"MaxCustomerRingTime,omitempty"`
+	// Maximum ring duration in seconds.
+	//
+	// example:
+	//
+	// 100
+	MaxRingTime *int64 `json:"MaxRingTime,omitempty" xml:"MaxRingTime,omitempty"`
+	// Maximum talk time, in seconds.
+	//
+	// example:
+	//
+	// 100
+	MaxTalkTime *int64 `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+	// Total customer-side ring time, in seconds.
+	//
+	// example:
+	//
+	// 100
+	TotalCustomerRingTime *int64 `json:"TotalCustomerRingTime,omitempty" xml:"TotalCustomerRingTime,omitempty"`
+	// Total ring time, in seconds.
+	//
+	// example:
+	//
+	// 100
+	TotalRingTime *int64 `json:"TotalRingTime,omitempty" xml:"TotalRingTime,omitempty"`
+	// Total talk time, in seconds.
+	//
+	// example:
+	//
+	// 100
+	TotalTalkTime *int64 `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
 }
 
 func (s ListIntervalAgentReportResponseBodyDataBack2Back) String() string {
@@ -383,109 +482,190 @@ func (s *ListIntervalAgentReportResponseBodyDataBack2Back) Validate() error {
 }
 
 type ListIntervalAgentReportResponseBodyDataInbound struct {
+	// Statistics for each Channel.
 	AccessChannelTypeDetails []*ListIntervalAgentReportResponseBodyDataInboundAccessChannelTypeDetails `json:"AccessChannelTypeDetails,omitempty" xml:"AccessChannelTypeDetails,omitempty" type:"Repeated"`
-	AverageFirstResponseTime *float32                                                                  `json:"AverageFirstResponseTime,omitempty" xml:"AverageFirstResponseTime,omitempty"`
+	// Average first response time for chat sessions, in seconds.
+	//
+	// example:
+	//
+	// 8
+	AverageFirstResponseTime *float32 `json:"AverageFirstResponseTime,omitempty" xml:"AverageFirstResponseTime,omitempty"`
+	// Average hold time during calls, in seconds. Calculation Formula: TotalHoldTime / CallsHold.
+	//
 	// example:
 	//
 	// 0
-	AverageHoldTime     *float32 `json:"AverageHoldTime,omitempty" xml:"AverageHoldTime,omitempty"`
+	AverageHoldTime *float32 `json:"AverageHoldTime,omitempty" xml:"AverageHoldTime,omitempty"`
+	// Average response time for chat sessions.
+	//
+	// example:
+	//
+	// 10
 	AverageResponseTime *float32 `json:"AverageResponseTime,omitempty" xml:"AverageResponseTime,omitempty"`
+	// Average ring time, in seconds. Calculation Formula: TotalRingTime / CallsRinged.
+	//
 	// example:
 	//
 	// 0
 	AverageRingTime *float32 `json:"AverageRingTime,omitempty" xml:"AverageRingTime,omitempty"`
+	// Average talk time, in seconds. Calculation Formula: TotalTalkTime / CallsHandled.
+	//
 	// example:
 	//
 	// 0
 	AverageTalkTime *float32 `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
+	// Average post-processing time, in seconds. Calculation Formula: TotalWorkTime / CallsHandled.
+	//
 	// example:
 	//
 	// 0
 	AverageWorkTime *float32 `json:"AverageWorkTime,omitempty" xml:"AverageWorkTime,omitempty"`
+	// Number of attended transfer-ins. If a single call is transferred to the agent multiple times, each transfer counts as one.
+	//
 	// example:
 	//
 	// 0
 	CallsAttendedTransferIn *int64 `json:"CallsAttendedTransferIn,omitempty" xml:"CallsAttendedTransferIn,omitempty"`
+	// Number of transfer-out calls. If a single call is transferred to other agents multiple times, each transfer counts as one.
+	//
 	// example:
 	//
 	// 0
 	CallsAttendedTransferOut *int64 `json:"CallsAttendedTransferOut,omitempty" xml:"CallsAttendedTransferOut,omitempty"`
+	// Number of blind transfer-in calls. If a single call is transferred in to this agent multiple times, each transfer counts as one.
+	//
 	// example:
 	//
 	// 0
 	CallsBlindTransferIn *int64 `json:"CallsBlindTransferIn,omitempty" xml:"CallsBlindTransferIn,omitempty"`
+	// Number of blind transfer-out calls. If a single call is transferred out to other agents multiple times, each transfer counts as one.
+	//
 	// example:
 	//
 	// 0
 	CallsBlindTransferOut *int64 `json:"CallsBlindTransferOut,omitempty" xml:"CallsBlindTransferOut,omitempty"`
+	// Acknowledgement count, which is the number of times agents answered calls.
+	//
 	// example:
 	//
 	// 0
 	CallsHandled *int64 `json:"CallsHandled,omitempty" xml:"CallsHandled,omitempty"`
+	// Number of calls placed on hold, that is, the count of occurrences where a call was held.
+	//
 	// example:
 	//
 	// 0
 	CallsHold *int64 `json:"CallsHold,omitempty" xml:"CallsHold,omitempty"`
+	// Assigned count, which refers to the number of calls assigned to this agent, including calls blindly transferred or consultatively transferred from other agents.
+	//
 	// example:
 	//
 	// 0
 	CallsOffered *int64 `json:"CallsOffered,omitempty" xml:"CallsOffered,omitempty"`
+	// Number of calls that rang to the agent.
+	//
 	// example:
 	//
 	// 0
 	CallsRinged *int64 `json:"CallsRinged,omitempty" xml:"CallsRinged,omitempty"`
+	// Acknowledgement rate. Calculation Formula: CallsHandled / CallsOffered (because acknowledgement events and assign events may fall into different time ranges, the result may exceed 100% in certain cases).
+	//
 	// example:
 	//
 	// 0
 	HandleRate *float32 `json:"HandleRate,omitempty" xml:"HandleRate,omitempty"`
+	// Maximum call hold duration, in seconds.
+	//
 	// example:
 	//
 	// 0
 	MaxHoldTime *int64 `json:"MaxHoldTime,omitempty" xml:"MaxHoldTime,omitempty"`
+	// Maximum ring time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	MaxRingTime *int64 `json:"MaxRingTime,omitempty" xml:"MaxRingTime,omitempty"`
+	// Maximum talk time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	MaxTalkTime *int64 `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+	// Maximum post-processing duration, in seconds.
+	//
 	// example:
 	//
 	// 0
 	MaxWorkTime *int64 `json:"MaxWorkTime,omitempty" xml:"MaxWorkTime,omitempty"`
+	// Satisfaction Index, which is the average of the satisfaction rating digits (single-digit numbers) entered by users.
+	//
 	// example:
 	//
 	// 0
 	SatisfactionIndex *float32 `json:"SatisfactionIndex,omitempty" xml:"SatisfactionIndex,omitempty"`
+	// Satisfaction rate. Calculation Formula: Number of evaluations marked as satisfied / Count of satisfaction survey responses.
+	//
 	// example:
 	//
 	// 0
 	SatisfactionRate *float32 `json:"SatisfactionRate,omitempty" xml:"SatisfactionRate,omitempty"`
+	// Sending Count of satisfaction surveys.
+	//
 	// example:
 	//
 	// 0
 	SatisfactionSurveysOffered *int64 `json:"SatisfactionSurveysOffered,omitempty" xml:"SatisfactionSurveysOffered,omitempty"`
+	// Response Count of satisfaction surveys.
+	//
 	// example:
 	//
 	// 0
-	SatisfactionSurveysResponded *int64   `json:"SatisfactionSurveysResponded,omitempty" xml:"SatisfactionSurveysResponded,omitempty"`
-	ServiceLevel15               *float32 `json:"ServiceLevel15,omitempty" xml:"ServiceLevel15,omitempty"`
+	SatisfactionSurveysResponded *int64 `json:"SatisfactionSurveysResponded,omitempty" xml:"SatisfactionSurveysResponded,omitempty"`
+	// Service level within 15 seconds.
+	//
+	// example:
+	//
+	// 0.6
+	ServiceLevel15 *float32 `json:"ServiceLevel15,omitempty" xml:"ServiceLevel15,omitempty"`
+	// Total hold time during calls, in seconds.
+	//
 	// example:
 	//
 	// 0
-	TotalHoldTime               *int64 `json:"TotalHoldTime,omitempty" xml:"TotalHoldTime,omitempty"`
-	TotalMessagesSent           *int64 `json:"TotalMessagesSent,omitempty" xml:"TotalMessagesSent,omitempty"`
-	TotalMessagesSentByAgent    *int64 `json:"TotalMessagesSentByAgent,omitempty" xml:"TotalMessagesSentByAgent,omitempty"`
+	TotalHoldTime *int64 `json:"TotalHoldTime,omitempty" xml:"TotalHoldTime,omitempty"`
+	// Total number of messages sent in chat sessions.
+	//
+	// example:
+	//
+	// 12
+	TotalMessagesSent *int64 `json:"TotalMessagesSent,omitempty" xml:"TotalMessagesSent,omitempty"`
+	// Total number of messages sent by the agent in chat sessions.
+	//
+	// example:
+	//
+	// 10
+	TotalMessagesSentByAgent *int64 `json:"TotalMessagesSentByAgent,omitempty" xml:"TotalMessagesSentByAgent,omitempty"`
+	// Total number of messages sent by the Customer in chat sessions.
+	//
+	// example:
+	//
+	// 2
 	TotalMessagesSentByCustomer *int64 `json:"TotalMessagesSentByCustomer,omitempty" xml:"TotalMessagesSentByCustomer,omitempty"`
+	// Total ring time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	TotalRingTime *int64 `json:"TotalRingTime,omitempty" xml:"TotalRingTime,omitempty"`
+	// Total talk time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	TotalTalkTime *int64 `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+	// Total post-processing time, in seconds.
+	//
 	// example:
 	//
 	// 0
@@ -802,8 +982,18 @@ func (s *ListIntervalAgentReportResponseBodyDataInbound) Validate() error {
 }
 
 type ListIntervalAgentReportResponseBodyDataInboundAccessChannelTypeDetails struct {
+	// Channel Type.
+	//
+	// example:
+	//
+	// Web
 	AccessChannelType *string `json:"AccessChannelType,omitempty" xml:"AccessChannelType,omitempty"`
-	CallsOffered      *int64  `json:"CallsOffered,omitempty" xml:"CallsOffered,omitempty"`
+	// Number of assigned sessions.
+	//
+	// example:
+	//
+	// 2
+	CallsOffered *int64 `json:"CallsOffered,omitempty" xml:"CallsOffered,omitempty"`
 }
 
 func (s ListIntervalAgentReportResponseBodyDataInboundAccessChannelTypeDetails) String() string {
@@ -837,12 +1027,42 @@ func (s *ListIntervalAgentReportResponseBodyDataInboundAccessChannelTypeDetails)
 }
 
 type ListIntervalAgentReportResponseBodyDataInternal struct {
+	// Average talk time, in seconds.
+	//
+	// example:
+	//
+	// 100
 	AverageTalkTime *float32 `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
-	CallsAnswered   *int64   `json:"CallsAnswered,omitempty" xml:"CallsAnswered,omitempty"`
-	CallsDialed     *int64   `json:"CallsDialed,omitempty" xml:"CallsDialed,omitempty"`
-	CallsHandled    *int64   `json:"CallsHandled,omitempty" xml:"CallsHandled,omitempty"`
-	CallsOffered    *int64   `json:"CallsOffered,omitempty" xml:"CallsOffered,omitempty"`
-	CallsTalked     *int64   `json:"CallsTalked,omitempty" xml:"CallsTalked,omitempty"`
+	// Number of answered calls.
+	//
+	// example:
+	//
+	// 100
+	CallsAnswered *int64 `json:"CallsAnswered,omitempty" xml:"CallsAnswered,omitempty"`
+	// Number of dial-up calls.
+	//
+	// example:
+	//
+	// 100
+	CallsDialed *int64 `json:"CallsDialed,omitempty" xml:"CallsDialed,omitempty"`
+	// Number of acknowledgements, which refers to the number of times the agent acknowledged a call.
+	//
+	// example:
+	//
+	// 100
+	CallsHandled *int64 `json:"CallsHandled,omitempty" xml:"CallsHandled,omitempty"`
+	// Number of assigned calls, which refers to the count of calls assigned to this agent, including calls blindly transferred or consultatively transferred from other agents.
+	//
+	// example:
+	//
+	// 100
+	CallsOffered *int64 `json:"CallsOffered,omitempty" xml:"CallsOffered,omitempty"`
+	// Number of calls participated in.
+	//
+	// example:
+	//
+	// 80
+	CallsTalked *int64 `json:"CallsTalked,omitempty" xml:"CallsTalked,omitempty"`
 }
 
 func (s ListIntervalAgentReportResponseBodyDataInternal) String() string {
@@ -912,114 +1132,170 @@ func (s *ListIntervalAgentReportResponseBodyDataInternal) Validate() error {
 }
 
 type ListIntervalAgentReportResponseBodyDataOutbound struct {
+	// Answer rate. Calculation Formula: CallsAnswered / CallsDialed. (Because answering events and acknowledgement events may fall into different Time Ranges, the Result may exceed 100% in certain cases.)
+	//
 	// example:
 	//
 	// 0
 	AnswerRate *float32 `json:"AnswerRate,omitempty" xml:"AnswerRate,omitempty"`
+	// Average dial-up duration, in seconds. Calculation Formula: TotalDialingTime / CallsDialed.
+	//
 	// example:
 	//
 	// 30
 	AverageDialingTime *float32 `json:"AverageDialingTime,omitempty" xml:"AverageDialingTime,omitempty"`
+	// Average hold duration, in seconds. Calculation formula: TotalHoldTime / CallsHold.
+	//
 	// example:
 	//
 	// 0
 	AverageHoldTime *float32 `json:"AverageHoldTime,omitempty" xml:"AverageHoldTime,omitempty"`
+	// Average ring time in seconds. Calculation Formula: TotalRingTime / CallsRinged.
+	//
 	// example:
 	//
 	// 0
 	AverageRingTime *float32 `json:"AverageRingTime,omitempty" xml:"AverageRingTime,omitempty"`
+	// Average talk time, in seconds. Calculation Formula: TotalTalkTime / CallsAnswered.
+	//
 	// example:
 	//
 	// 0
 	AverageTalkTime *float32 `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
+	// Average post-processing time in seconds. Calculation Formula: TotalWorkTime / CallsDialed.
+	//
 	// example:
 	//
 	// 1
 	AverageWorkTime *float32 `json:"AverageWorkTime,omitempty" xml:"AverageWorkTime,omitempty"`
+	// Answered call count.
+	//
 	// example:
 	//
 	// 0
 	CallsAnswered *int64 `json:"CallsAnswered,omitempty" xml:"CallsAnswered,omitempty"`
+	// Number of attended transfer-in calls. If a single call is transferred to the agent multiple times, each transfer counts as one.
+	//
 	// example:
 	//
 	// 0
 	CallsAttendedTransferIn *int64 `json:"CallsAttendedTransferIn,omitempty" xml:"CallsAttendedTransferIn,omitempty"`
+	// Number of transfer-out calls. If a single call is transferred out to other agents multiple times, each transfer-out counts as one.
+	//
 	// example:
 	//
 	// 0
 	CallsAttendedTransferOut *int64 `json:"CallsAttendedTransferOut,omitempty" xml:"CallsAttendedTransferOut,omitempty"`
+	// Number of blind transfer-in calls. If a single call is transferred to the agent multiple times, each transfer counts as one.
+	//
 	// example:
 	//
 	// 0
 	CallsBlindTransferIn *int64 `json:"CallsBlindTransferIn,omitempty" xml:"CallsBlindTransferIn,omitempty"`
+	// Number of blind transfer-out calls. If a single call is transferred to other agents multiple times, each transfer counts as one.
+	//
 	// example:
 	//
 	// 0
 	CallsBlindTransferOut *int64 `json:"CallsBlindTransferOut,omitempty" xml:"CallsBlindTransferOut,omitempty"`
+	// Dial-up count.
+	//
 	// example:
 	//
 	// 5
 	CallsDialed *int64 `json:"CallsDialed,omitempty" xml:"CallsDialed,omitempty"`
+	// Hold count, which is the number of times call hold occurred.
+	//
 	// example:
 	//
 	// 0
 	CallsHold *int64 `json:"CallsHold,omitempty" xml:"CallsHold,omitempty"`
+	// Number of calls that rang for the agent.
+	//
 	// example:
 	//
 	// 0
 	CallsRinged *int64 `json:"CallsRinged,omitempty" xml:"CallsRinged,omitempty"`
+	// Maximum dial-up duration, in seconds.
+	//
 	// example:
 	//
 	// 60
 	MaxDialingTime *int64 `json:"MaxDialingTime,omitempty" xml:"MaxDialingTime,omitempty"`
+	// Maximum hold time during calls, in seconds.
+	//
 	// example:
 	//
 	// 0
 	MaxHoldTime *int64 `json:"MaxHoldTime,omitempty" xml:"MaxHoldTime,omitempty"`
+	// Maximum ring time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	MaxRingTime *int64 `json:"MaxRingTime,omitempty" xml:"MaxRingTime,omitempty"`
+	// Maximum talk time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	MaxTalkTime *int64 `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+	// Maximum post-processing time in seconds.
+	//
 	// example:
 	//
 	// 2
 	MaxWorkTime *int64 `json:"MaxWorkTime,omitempty" xml:"MaxWorkTime,omitempty"`
+	// Satisfaction index, which is the average value of the satisfaction key digits (single-digit numbers).
+	//
 	// example:
 	//
 	// 0
 	SatisfactionIndex *float32 `json:"SatisfactionIndex,omitempty" xml:"SatisfactionIndex,omitempty"`
+	// Satisfaction rate. Calculation Formula: Count of evaluations marked as satisfied / Count of satisfaction survey responses.
+	//
 	// example:
 	//
 	// 0
 	SatisfactionRate *float32 `json:"SatisfactionRate,omitempty" xml:"SatisfactionRate,omitempty"`
+	// Sending Count of satisfaction surveys.
+	//
 	// example:
 	//
 	// 0
 	SatisfactionSurveysOffered *int64 `json:"SatisfactionSurveysOffered,omitempty" xml:"SatisfactionSurveysOffered,omitempty"`
+	// Count of satisfaction survey responses.
+	//
 	// example:
 	//
 	// 0
 	SatisfactionSurveysResponded *int64 `json:"SatisfactionSurveysResponded,omitempty" xml:"SatisfactionSurveysResponded,omitempty"`
+	// Total dial-up duration, in seconds.
+	//
 	// example:
 	//
 	// 148
 	TotalDialingTime *int64 `json:"TotalDialingTime,omitempty" xml:"TotalDialingTime,omitempty"`
+	// Total hold duration, in seconds.
+	//
 	// example:
 	//
 	// 0
 	TotalHoldTime *int64 `json:"TotalHoldTime,omitempty" xml:"TotalHoldTime,omitempty"`
+	// Total ring time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	TotalRingTime *int64 `json:"TotalRingTime,omitempty" xml:"TotalRingTime,omitempty"`
+	// Total talk time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	TotalTalkTime *int64 `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+	// Total post-processing duration, in seconds.
+	//
 	// example:
 	//
 	// 4
@@ -1291,121 +1567,208 @@ func (s *ListIntervalAgentReportResponseBodyDataOutbound) Validate() error {
 }
 
 type ListIntervalAgentReportResponseBodyDataOverall struct {
+	// Average break duration, in seconds. Calculation Formula: TotalBreakTime / Count of breaks. The count of breaks is not an API statistics field.
+	//
 	// example:
 	//
 	// 0
 	AverageBreakTime *float32 `json:"AverageBreakTime,omitempty" xml:"AverageBreakTime,omitempty"`
+	// Average call hold duration, in seconds. Calculation Formula: TotalHoldTime / (Inbound CallsHold + Outbound CallsHold).
+	//
 	// example:
 	//
 	// 0
 	AverageHoldTime *float32 `json:"AverageHoldTime,omitempty" xml:"AverageHoldTime,omitempty"`
+	// Average ready time, in seconds. Calculation Formula: TotalReadyTime / Count of ready events. The count of ready events is a non-API statistical field.
+	//
 	// example:
 	//
 	// 0
 	AverageReadyTime *float32 `json:"AverageReadyTime,omitempty" xml:"AverageReadyTime,omitempty"`
+	// Average talk time, in seconds. Calculation Formula: TotalTalkTime / (CallsAnswered + CallsHandled).
+	//
 	// example:
 	//
 	// 0
 	AverageTalkTime *float32 `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
+	// Average post-processing duration per call, in seconds. Calculation Formula: TotalWorkTime / TotalCalls.
+	//
 	// example:
 	//
 	// 1
-	AverageWorkTime     *float32                                                             `json:"AverageWorkTime,omitempty" xml:"AverageWorkTime,omitempty"`
+	AverageWorkTime *float32 `json:"AverageWorkTime,omitempty" xml:"AverageWorkTime,omitempty"`
+	// List of break details.
 	BreakCodeDetailList []*ListIntervalAgentReportResponseBodyDataOverallBreakCodeDetailList `json:"BreakCodeDetailList,omitempty" xml:"BreakCodeDetailList,omitempty" type:"Repeated"`
+	// This field has a value only when the input parameter Interval is Daily, representing the first publish time of the day.
+	//
 	// example:
 	//
 	// 0
 	FirstCheckInTime *int64 `json:"FirstCheckInTime,omitempty" xml:"FirstCheckInTime,omitempty"`
-	LastCheckOutTime *int64 `json:"LastCheckOutTime,omitempty" xml:"LastCheckOutTime,omitempty"`
+	// This field has a value only when the input parameter Interval is Daily, representing the last unpublish time of the day.
+	//
 	// example:
 	//
 	// 0
+	LastCheckOutTime *int64 `json:"LastCheckOutTime,omitempty" xml:"LastCheckOutTime,omitempty"`
+	// This value is available only when the input parameter Interval is set to Daily, indicating the last unpublish time on that day.
+	//
+	// example:
+	//
+	// 已弃用，请使用LastCheckOutTime代替此参数。
 	LastCheckoutTime *int64 `json:"LastCheckoutTime,omitempty" xml:"LastCheckoutTime,omitempty"`
+	// Maximum break time, in seconds.
+	//
 	// example:
 	//
 	// 1
 	MaxBreakTime *int64 `json:"MaxBreakTime,omitempty" xml:"MaxBreakTime,omitempty"`
+	// Maximum call hold time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	MaxHoldTime *int64 `json:"MaxHoldTime,omitempty" xml:"MaxHoldTime,omitempty"`
+	// Maximum ready time, in seconds.
+	//
 	// example:
 	//
 	// 435
 	MaxReadyTime *int64 `json:"MaxReadyTime,omitempty" xml:"MaxReadyTime,omitempty"`
+	// Maximum talk time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	MaxTalkTime *int64 `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+	// Maximum post-processing duration in seconds.
+	//
 	// example:
 	//
 	// 2
 	MaxWorkTime *int64 `json:"MaxWorkTime,omitempty" xml:"MaxWorkTime,omitempty"`
+	// Agent occupancy rate. Calculation Formula: (TotalWorkTime + TotalTalkTime) / TotalLoggedInTime.
+	//
 	// example:
 	//
 	// 0
 	OccupancyRate *float32 `json:"OccupancyRate,omitempty" xml:"OccupancyRate,omitempty"`
+	// Satisfaction index, which is the average value of the satisfaction keypress digits (single-digit numbers).
+	//
 	// example:
 	//
 	// 0
 	SatisfactionIndex *float32 `json:"SatisfactionIndex,omitempty" xml:"SatisfactionIndex,omitempty"`
+	// Satisfaction rate. Calculation Formula: Number of evaluations marked as satisfied / Count of satisfaction survey responses.
+	//
 	// example:
 	//
 	// 0
 	SatisfactionRate *float32 `json:"SatisfactionRate,omitempty" xml:"SatisfactionRate,omitempty"`
+	// Sending Count of satisfaction surveys.
+	//
 	// example:
 	//
 	// 0
 	SatisfactionSurveysOffered *int64 `json:"SatisfactionSurveysOffered,omitempty" xml:"SatisfactionSurveysOffered,omitempty"`
+	// Response Count of satisfaction surveys.
+	//
 	// example:
 	//
 	// 0
 	SatisfactionSurveysResponded *int64 `json:"SatisfactionSurveysResponded,omitempty" xml:"SatisfactionSurveysResponded,omitempty"`
+	// Total break time, in seconds.
+	//
 	// example:
 	//
 	// 1
 	TotalBreakTime *int64 `json:"TotalBreakTime,omitempty" xml:"TotalBreakTime,omitempty"`
+	// Total call volume. Calculation Formula: CallsOffered + CallsDialed.
+	//
 	// example:
 	//
 	// 5
 	TotalCalls *int64 `json:"TotalCalls,omitempty" xml:"TotalCalls,omitempty"`
+	// Total hold time in seconds.
+	//
 	// example:
 	//
 	// 0
 	TotalHoldTime *int64 `json:"TotalHoldTime,omitempty" xml:"TotalHoldTime,omitempty"`
+	// Total logon duration, in seconds. Note: Exclude offline and break durations.
+	//
 	// example:
 	//
 	// 914
-	TotalLoggedInTime        *int64 `json:"TotalLoggedInTime,omitempty" xml:"TotalLoggedInTime,omitempty"`
+	TotalLoggedInTime *int64 `json:"TotalLoggedInTime,omitempty" xml:"TotalLoggedInTime,omitempty"`
+	// Total off-site logged-in duration, in seconds.
+	//
+	// example:
+	//
+	// 100
 	TotalOffSiteLoggedInTime *int64 `json:"TotalOffSiteLoggedInTime,omitempty" xml:"TotalOffSiteLoggedInTime,omitempty"`
+	// Total off-site online duration, in seconds.
+	//
 	// example:
 	//
 	// 已弃用，请使用TotalOffSiteLoggedInTime代替此参数
-	TotalOffSiteOnlineTime       *int64 `json:"TotalOffSiteOnlineTime,omitempty" xml:"TotalOffSiteOnlineTime,omitempty"`
+	TotalOffSiteOnlineTime *int64 `json:"TotalOffSiteOnlineTime,omitempty" xml:"TotalOffSiteOnlineTime,omitempty"`
+	// Total office phone logged-in time, in seconds.
+	//
+	// example:
+	//
+	// 100
 	TotalOfficePhoneLoggedInTime *int64 `json:"TotalOfficePhoneLoggedInTime,omitempty" xml:"TotalOfficePhoneLoggedInTime,omitempty"`
+	// Total office phone online time, in seconds.
+	//
 	// example:
 	//
 	// 已弃用，请使用TotalOfficePhoneLoggedInTime代替此参数
 	TotalOfficePhoneOnlineTime *int64 `json:"TotalOfficePhoneOnlineTime,omitempty" xml:"TotalOfficePhoneOnlineTime,omitempty"`
-	TotalOnSiteLoggedInTime    *int64 `json:"TotalOnSiteLoggedInTime,omitempty" xml:"TotalOnSiteLoggedInTime,omitempty"`
+	// Total on-site logged-in duration, in seconds.
+	//
+	// example:
+	//
+	// 100
+	TotalOnSiteLoggedInTime *int64 `json:"TotalOnSiteLoggedInTime,omitempty" xml:"TotalOnSiteLoggedInTime,omitempty"`
+	// Total on-site online duration, in seconds.
+	//
 	// example:
 	//
 	// 已弃用，请使用TotalOnSiteLoggedInTime代替此参数
-	TotalOnSiteOnlineTime             *int64 `json:"TotalOnSiteOnlineTime,omitempty" xml:"TotalOnSiteOnlineTime,omitempty"`
+	TotalOnSiteOnlineTime *int64 `json:"TotalOnSiteOnlineTime,omitempty" xml:"TotalOnSiteOnlineTime,omitempty"`
+	// Total online time for outbound-only scenarios, in seconds.
+	//
+	// example:
+	//
+	// 100
 	TotalOutboundScenarioLoggedInTime *int64 `json:"TotalOutboundScenarioLoggedInTime,omitempty" xml:"TotalOutboundScenarioLoggedInTime,omitempty"`
-	TotalOutboundScenarioReadyTime    *int64 `json:"TotalOutboundScenarioReadyTime,omitempty" xml:"TotalOutboundScenarioReadyTime,omitempty"`
+	// Total idle time for outbound-only scenarios, in seconds.
+	//
+	// example:
+	//
+	// 100
+	TotalOutboundScenarioReadyTime *int64 `json:"TotalOutboundScenarioReadyTime,omitempty" xml:"TotalOutboundScenarioReadyTime,omitempty"`
+	// Total outbound-only scenario duration, in seconds.
+	//
 	// example:
 	//
 	// 已弃用，请使用TotalOutboundScenarioLoggedInTime代替此参数
 	TotalOutboundScenarioTime *int64 `json:"TotalOutboundScenarioTime,omitempty" xml:"TotalOutboundScenarioTime,omitempty"`
+	// Total ready time, in seconds.
+	//
 	// example:
 	//
 	// 763
 	TotalReadyTime *int64 `json:"TotalReadyTime,omitempty" xml:"TotalReadyTime,omitempty"`
+	// Total talk duration, in seconds.
+	//
 	// example:
 	//
 	// 0
 	TotalTalkTime *int64 `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+	// Total post-processing time in seconds.
+	//
 	// example:
 	//
 	// 4
@@ -1749,9 +2112,24 @@ func (s *ListIntervalAgentReportResponseBodyDataOverall) Validate() error {
 }
 
 type ListIntervalAgentReportResponseBodyDataOverallBreakCodeDetailList struct {
+	// Break code.
+	//
+	// example:
+	//
+	// 会议
 	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
-	Count     *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
-	Duration  *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Quantity.
+	//
+	// example:
+	//
+	// 10
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// Duration in seconds.
+	//
+	// example:
+	//
+	// 100
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 }
 
 func (s ListIntervalAgentReportResponseBodyDataOverallBreakCodeDetailList) String() string {

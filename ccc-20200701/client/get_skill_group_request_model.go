@@ -16,12 +16,16 @@ type iGetSkillGroupRequest interface {
 }
 
 type GetSkillGroupRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Skill group ID, in the format: skill group name\\@instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

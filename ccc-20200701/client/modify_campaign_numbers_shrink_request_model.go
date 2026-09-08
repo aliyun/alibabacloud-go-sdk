@@ -20,22 +20,29 @@ type iModifyCampaignNumbersShrinkRequest interface {
 }
 
 type ModifyCampaignNumbersShrinkRequest struct {
+	// The campaign ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6badb397-****-****-21019d382a09
 	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	// The ID of the number collection.
+	//
 	// example:
 	//
 	// 3971876649-****-****-098763a382a09
 	InstGroupId *string `json:"InstGroupId,omitempty" xml:"InstGroupId,omitempty"`
+	// The ID of the Cloud Call Center (CCC) instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of numbers.
 	NumberListShrink *string `json:"NumberList,omitempty" xml:"NumberList,omitempty"`
 }
 

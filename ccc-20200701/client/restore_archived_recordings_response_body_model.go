@@ -22,19 +22,28 @@ type iRestoreArchivedRecordingsResponseBody interface {
 }
 
 type RestoreArchivedRecordingsResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data []*RestoreArchivedRecordingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
 	// example:
 	//
 	// Instance 0 does not exist.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// F8066648-5D95-55AB-ACD3-2F4AD3BEA715
@@ -108,18 +117,26 @@ func (s *RestoreArchivedRecordingsResponseBody) Validate() error {
 }
 
 type RestoreArchivedRecordingsResponseBodyData struct {
+	// Contact ID.
+	//
 	// example:
 	//
 	// job-25920271311543****
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// Is the recording file existing?
+	//
 	// example:
 	//
 	// False
 	Exists *string `json:"Exists,omitempty" xml:"Exists,omitempty"`
+	// The recording\\"s restored state. Values are Completed or Progressing.
+	//
 	// example:
 	//
 	// Progressing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Storage class of the recording file.
+	//
 	// example:
 	//
 	// Standard

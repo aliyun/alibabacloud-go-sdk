@@ -34,49 +34,86 @@ type iGetTicketSummaryReportRequest interface {
 }
 
 type GetTicketSummaryReportRequest struct {
+	// Assignee ID. This can be an agent ID or a skill group ID.
+	//
 	// example:
 	//
 	// assignee@ccc-test
 	Assignee *string `json:"Assignee,omitempty" xml:"Assignee,omitempty"`
+	// Assignee type.
+	//
+	// - Agent
+	//
+	// - SkillGroup
+	//
 	// example:
 	//
 	// Agent
 	AssigneeType *string `json:"AssigneeType,omitempty" xml:"AssigneeType,omitempty"`
+	// Ticket category ID.
+	//
 	// example:
 	//
 	// 43c2671b-***-***-86d0-6bd187905cc8
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// Creator ID.
+	//
 	// example:
 	//
 	// creator@ccc-test
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// End time. Filter tickets by creation time.
+	//
 	// example:
 	//
 	// 1719590399999
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Participant ID.
+	//
 	// example:
 	//
 	// participant@ccc-test
 	Participant *string `json:"Participant,omitempty" xml:"Participant,omitempty"`
+	// Start time. Filter tickets by creation time.
+	//
 	// example:
 	//
 	// 1716998400000
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Ticket state.
+	//
+	// - Processing
+	//
+	// - Withdrawal
+	//
+	// - Rejected
+	//
+	// - Closed
+	//
+	// example:
+	//
+	// 无
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s GetTicketSummaryReportRequest) String() string {

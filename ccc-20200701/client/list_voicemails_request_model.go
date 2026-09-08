@@ -28,18 +28,26 @@ type iListVoicemailsRequest interface {
 }
 
 type ListVoicemailsRequest struct {
+	// The calling number.
+	//
 	// example:
 	//
 	// 073xxxx7539
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// The ID of the call. You can use this parameter to query the record of a specific call. You can obtain the contact ID from the softphone SDK during a call. If you specify this parameter, other query parameters are ignored.
+	//
 	// example:
 	//
 	// job-125152394144124921
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// The end time of the query range. This is a UNIX timestamp in milliseconds. The default value is the current time.
+	//
 	// example:
 	//
 	// 1532707199000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The ID of the Cloud Contact Center (CC) instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -48,22 +56,30 @@ type ListVoicemailsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Deprecated
 	//
+	// The name of the voicemail.
+	//
 	// example:
 	//
 	// voicemail-test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number. Valid values: 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start time of the query range. This is a UNIX timestamp in milliseconds. The default value is 00:00 on the current day.
+	//
 	// example:
 	//
 	// 1532448000000

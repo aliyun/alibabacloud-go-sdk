@@ -18,6 +18,8 @@ type iDeleteContactFlowRequest interface {
 }
 
 type DeleteContactFlowRequest struct {
+	// The ID of the contact flow.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +27,8 @@ type DeleteContactFlowRequest struct {
 	// 0f87c997-b0c1-41d4-9e9e-1b791de6ad1f
 	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
 	Force         *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

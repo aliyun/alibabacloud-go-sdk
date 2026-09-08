@@ -20,24 +20,32 @@ type iUpdateConfigItemsRequest interface {
 }
 
 type UpdateConfigItemsRequest struct {
+	// A JSON-formatted string representing an array of configuration items. Each object in the array must contain a name to identify the configuration item and its value. You can use system-defined items (which have fixed names and customizable values, such as agent permissions to hang up or the ring no answer timeout) or create custom items.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// [{"name":"ShowCalledID","value":"-1"},{"name":"ShowCalleeID","value":"1"},{"name":"AllowHangup","value":"0"},{"name":"AutoAnswerCall","value":"-1"},{"name":"AllowAudioDownload","value":"1"},{"name":"AllowChooseSignedSkillGroup","value":"1"}]
 	ConfigItems *string `json:"ConfigItems,omitempty" xml:"ConfigItems,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the object to be configured.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The type of the object to be configured.
+	//
 	// This parameter is required.
 	//
 	// example:

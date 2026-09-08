@@ -20,13 +20,18 @@ type iAddSchemaPropertyRequest interface {
 }
 
 type AddSchemaPropertyRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// b0eb2742-f37e-4c67-82d4-25c651c1xxxx
-	InstanceId *string                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Property   *AddSchemaPropertyRequestProperty `json:"Property,omitempty" xml:"Property,omitempty" type:"Struct"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Field
+	Property *AddSchemaPropertyRequestProperty `json:"Property,omitempty" xml:"Property,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 03C67DAD-EB26-41D8-949D-9B0C470FB716
@@ -95,68 +100,108 @@ func (s *AddSchemaPropertyRequest) Validate() error {
 }
 
 type AddSchemaPropertyRequestProperty struct {
+	// Is array
+	//
 	// example:
 	//
 	// false
-	Array      *bool   `json:"Array,omitempty" xml:"Array,omitempty"`
+	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
+	// Extension attributes
+	//
+	// example:
+	//
+	// {\\"newName\\":\\"小桔充电-demo\\",\\"appId\\":\\"69FRKB4193W8BYP0\\"}
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// Data type
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// string
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// Description.
+	//
 	// example:
 	//
 	// -
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Is disabled
+	//
 	// example:
 	//
 	// False
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// Name
+	//
 	// example:
 	//
 	// name
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// List display order
+	//
 	// example:
 	//
 	// 10
 	DisplayOrder *int32 `json:"DisplayOrder,omitempty" xml:"DisplayOrder,omitempty"`
+	// Editor type
+	//
 	// example:
 	//
 	// textbox
 	EditorType *string `json:"EditorType,omitempty" xml:"EditorType,omitempty"`
+	// Maximum length
+	//
 	// example:
 	//
 	// 100
 	MaxLength *int32 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	// Maximum numeric value
+	//
 	// example:
 	//
 	// 1
 	Maximum *float64 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	// Minimum length
+	//
 	// example:
 	//
 	// 1
 	MinLength *int32 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+	// Minimum numeric value
+	//
 	// example:
 	//
 	// 1
 	Minimum *float64 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
+	// Name
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Regular expression validation rule
+	//
 	// example:
 	//
 	// *
-	Pattern             *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	// Regular expression validation error message
+	//
+	// example:
+	//
+	// 格式错误
 	PatternErrorMessage *string `json:"PatternErrorMessage,omitempty" xml:"PatternErrorMessage,omitempty"`
+	// Is read-only
+	//
 	// example:
 	//
 	// true
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// Is required
+	//
 	// example:
 	//
 	// false

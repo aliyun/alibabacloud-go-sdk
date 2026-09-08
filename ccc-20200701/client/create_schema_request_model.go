@@ -22,23 +22,30 @@ type iCreateSchemaRequest interface {
 }
 
 type CreateSchemaRequest struct {
+	// The description.
+	//
 	// example:
 	//
 	// -
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// schema id
+	// The schema ID.
 	//
 	// example:
 	//
 	// profile
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// b0eb2742-f37e-4c67-82d4-25c651c1c450
-	InstanceId *string                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of fields.
 	Properties []*CreateSchemaRequestProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7BEEA660-A45A-45E3-98CC-AFC65E715C23
@@ -112,68 +119,108 @@ func (s *CreateSchemaRequest) Validate() error {
 }
 
 type CreateSchemaRequestProperties struct {
+	// Indicates whether the field is an array.
+	//
 	// example:
 	//
 	// false
 	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
+	// The extended properties.
+	//
 	// example:
 	//
 	// {\\"Clusters\\": {\\"Description\\": \\"The list of clusters.\\"}, \\"ClusterIds\\": {\\"Description\\": \\"The list of cluster IDs.\\"}}
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// The data type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// string
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The description of the version.
+	//
 	// example:
 	//
 	// -
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the field is disabled.
+	//
 	// example:
 	//
 	// false
-	Disabled    *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// The display name for agents.
+	//
+	// example:
+	//
+	// 显示名称
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The display order in the list.
+	//
 	// example:
 	//
 	// 2
 	DisplayOrder *int32 `json:"DisplayOrder,omitempty" xml:"DisplayOrder,omitempty"`
+	// The editor type.
+	//
 	// example:
 	//
 	// textbox
 	EditorType *string `json:"EditorType,omitempty" xml:"EditorType,omitempty"`
+	// The maximum length.
+	//
 	// example:
 	//
 	// 100
 	MaxLength *int32 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	// The maximum value of the number.
+	//
 	// example:
 	//
 	// 1
 	Maximum *float64 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	// The minimum length.
+	//
 	// example:
 	//
 	// 1
 	MinLength *int32 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+	// The minimum value of the number.
+	//
 	// example:
 	//
 	// 1
 	Minimum *float64 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
+	// The name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The regular expression that is used for validation.
+	//
 	// example:
 	//
 	// *
-	Pattern             *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	// The error message that is returned when the regular expression fails to match.
+	//
+	// example:
+	//
+	// 错误的格式
 	PatternErrorMessage *string `json:"PatternErrorMessage,omitempty" xml:"PatternErrorMessage,omitempty"`
+	// Indicates whether the field is read-only.
+	//
 	// example:
 	//
 	// true
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// Indicates whether the field is required.
+	//
 	// example:
 	//
 	// false

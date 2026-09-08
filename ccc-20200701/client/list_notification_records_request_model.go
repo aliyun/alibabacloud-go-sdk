@@ -16,12 +16,16 @@ type iListNotificationRecordsRequest interface {
 }
 
 type ListNotificationRecordsRequest struct {
+	// The ID of the Cloud Contact Center instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// A list of notification keys to query. For example, if you specify a call ID, the API returns all notifications for that call ID.
+	//
 	// This parameter is required.
 	//
 	// example:

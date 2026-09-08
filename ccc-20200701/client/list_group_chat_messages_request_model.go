@@ -22,22 +22,38 @@ type iListGroupChatMessagesRequest interface {
 }
 
 type ListGroupChatMessagesRequest struct {
+	// Cloud Contact Center instance.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Call ID.
+	//
 	// example:
 	//
 	// chat-65382141036853491
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Token for the next page. This is a 32-character UUID. Leave this parameter empty when requesting the first page. For subsequent pages, use the NextPageToken value from the previous response.
+	//
 	// example:
 	//
 	// b2ad450b116e4f8396e58108acf5c020
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// Page size. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Sorting order. Default is descending.
+	//
+	// Valid values:
+	//
+	// ASC: ascending.
+	//
+	// DESC: descending.
+	//
 	// example:
 	//
 	// DESC

@@ -18,18 +18,24 @@ type iListConfigItemsRequest interface {
 }
 
 type ListConfigItemsRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the object to which the config item applies. This can be the ID of an Alibaba Cloud account, an instance, a skill group, or an agent.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The type of the object.
+	//
 	// This parameter is required.
 	//
 	// example:

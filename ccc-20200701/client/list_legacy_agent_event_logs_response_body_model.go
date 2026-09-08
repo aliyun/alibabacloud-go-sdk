@@ -24,20 +24,34 @@ type iListLegacyAgentEventLogsResponseBody interface {
 }
 
 type ListLegacyAgentEventLogsResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListLegacyAgentEventLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 2802EE59-3B53-513A-A130-85E480AF689D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
 	// true
@@ -116,15 +130,22 @@ func (s *ListLegacyAgentEventLogsResponseBody) Validate() error {
 }
 
 type ListLegacyAgentEventLogsResponseBodyData struct {
+	// List of agent event logs.
 	List []*ListLegacyAgentEventLogsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number, ranging from 1 to 1000.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 1000.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 10
@@ -189,62 +210,110 @@ func (s *ListLegacyAgentEventLogsResponseBodyData) Validate() error {
 }
 
 type ListLegacyAgentEventLogsResponseBodyDataList struct {
+	// Indicates whether the agent hung up the call.
+	//
 	// example:
 	//
 	// false
 	AgentDropCall *string `json:"AgentDropCall,omitempty" xml:"AgentDropCall,omitempty"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	AgentNo *string `json:"AgentNo,omitempty" xml:"AgentNo,omitempty"`
+	// Call direction.
+	//
+	// example:
+	//
+	// 内部
 	CallDir *string `json:"CallDir,omitempty" xml:"CallDir,omitempty"`
+	// Call ID.
+	//
 	// example:
 	//
 	// 378654****
-	CallId   *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
+	// Call pattern.
+	//
+	// example:
+	//
+	// 呼入
 	CallMode *string `json:"CallMode,omitempty" xml:"CallMode,omitempty"`
+	// Call type.
+	//
+	// example:
+	//
+	// 呼入
 	CallType *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	// Callee number.
+	//
 	// example:
 	//
 	// 1312343****
 	CalleeId *string `json:"CalleeId,omitempty" xml:"CalleeId,omitempty"`
+	// Calling number.
+	//
 	// example:
 	//
 	// 08331111****
 	CallerId *string `json:"CallerId,omitempty" xml:"CallerId,omitempty"`
+	// Call channel ID.
+	//
 	// example:
 	//
 	// 345467****
 	ConnId *string `json:"ConnId,omitempty" xml:"ConnId,omitempty"`
-	Event  *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// Type of management event.
+	//
+	// example:
+	//
+	// 拨号
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// List of skill group IDs that the agent signed in to. Separate multiple skill group IDs with commas.
+	//
 	// example:
 	//
 	// skillgroup1@ccc-test,skillgroup2@ccc-test
 	GroupNo *string `json:"GroupNo,omitempty" xml:"GroupNo,omitempty"`
+	// Indicates whether the agent is in outbound-only mode.
+	//
 	// example:
 	//
 	// false
 	OutboundScenario *bool `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	// Agent extension number.
+	//
 	// example:
 	//
 	// 8012****
 	PhoneNo *string `json:"PhoneNo,omitempty" xml:"PhoneNo,omitempty"`
+	// Statistics timestamp.
+	//
 	// example:
 	//
 	// 2021-12-03T10:15:30
 	StatisticDate *string `json:"StatisticDate,omitempty" xml:"StatisticDate,omitempty"`
+	// Skill group ID.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
 	TargetRequest *string `json:"TargetRequest,omitempty" xml:"TargetRequest,omitempty"`
+	// Skill group ID.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
 	TargetSelect *string `json:"TargetSelect,omitempty" xml:"TargetSelect,omitempty"`
+	// Tenant ID.
+	//
 	// example:
 	//
 	// acc101
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// Transfer number.
+	//
 	// example:
 	//
 	// 07518888****

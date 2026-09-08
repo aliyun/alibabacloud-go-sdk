@@ -14,6 +14,8 @@ type iListRolesRequest interface {
 }
 
 type ListRolesRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

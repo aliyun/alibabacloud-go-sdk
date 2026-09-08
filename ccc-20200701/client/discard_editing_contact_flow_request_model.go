@@ -18,18 +18,24 @@ type iDiscardEditingContactFlowRequest interface {
 }
 
 type DiscardEditingContactFlowRequest struct {
+	// Contact flow ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3ff4e021-fd63-4572-ad8c-10ed69972965
 	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	// Draft ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0aa493d6-58eb-4290-9ba2-e1c2c615b46b
 	DraftId *string `json:"DraftId,omitempty" xml:"DraftId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,20 +24,30 @@ type iChangeVisibilityResponseBody interface {
 }
 
 type ChangeVisibilityResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *ChangeVisibilityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// Internal service issue. Detail:.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 24BE19E8-BF7D-4992-A35E-15EBA874F2E5
@@ -116,36 +126,58 @@ func (s *ChangeVisibilityResponseBody) Validate() error {
 }
 
 type ChangeVisibilityResponseBodyData struct {
+	// The break code.
+	//
+	// example:
+	//
+	// 会议
 	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	// The device ID. This can be the ID of a browser-based WebRTC softphone or a physical phone. Only one device can be registered at a time.
+	//
 	// example:
 	//
 	// Yealink SIP-T23G 44.84.203.6
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The agent\\"s extension number.
+	//
 	// example:
 	//
 	// 8001****
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// szpczf
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The call ID. If populated, this field indicates that the agent is in a call.
+	//
 	// example:
 	//
 	// job-330557290544431104
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Indicates whether the agent is in outbound-only mode.
+	//
 	// example:
 	//
 	// False
-	OutboundScenario       *bool     `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	OutboundScenario *bool `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	// The IDs of the skill groups to which the agent is signed in.
 	SignedSkillGroupIdList []*string `json:"SignedSkillGroupIdList,omitempty" xml:"SignedSkillGroupIdList,omitempty" type:"Repeated"`
+	// The agent ID.
+	//
 	// example:
 	//
 	// sam@szpczf
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The agent state.
+	//
 	// example:
 	//
 	// Ready
 	UserState *string `json:"UserState,omitempty" xml:"UserState,omitempty"`
+	// The work mode.
+	//
 	// example:
 	//
 	// ON_SITE

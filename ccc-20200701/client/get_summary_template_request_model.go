@@ -16,12 +16,16 @@ type iGetSummaryTemplateRequest interface {
 }
 
 type GetSummaryTemplateRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:

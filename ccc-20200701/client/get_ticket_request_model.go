@@ -16,12 +16,16 @@ type iGetTicketRequest interface {
 }
 
 type GetTicketRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ticket ID.
+	//
 	// This parameter is required.
 	//
 	// example:

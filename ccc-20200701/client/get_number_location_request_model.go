@@ -16,12 +16,16 @@ type iGetNumberLocationRequest interface {
 }
 
 type GetNumberLocationRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number to query.
+	//
 	// This parameter is required.
 	//
 	// example:

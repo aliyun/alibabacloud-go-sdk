@@ -24,25 +24,44 @@ type iListTicketTemplatesRequest interface {
 }
 
 type ListTicketTemplatesRequest struct {
+	// The ID of the ticket category.
+	//
 	// example:
 	//
 	// 43c2671b-********86d0-6bd187905cc8
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number. The value must be between 1 and 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. The value must be between 1 and 100.
+	//
 	// example:
 	//
 	// 100
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the template. Fuzzy search is supported.
+	//
+	// example:
+	//
+	// 模板1
 	SearchPattern *string `json:"SearchPattern,omitempty" xml:"SearchPattern,omitempty"`
+	// The status of the template.
+	//
+	// - Enabled: The template is published.
+	//
+	// - Disabled: The template is unpublished.
+	//
 	// example:
 	//
 	// Enabled

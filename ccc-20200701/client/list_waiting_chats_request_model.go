@@ -16,12 +16,16 @@ type iListWaitingChatsRequest interface {
 }
 
 type ListWaitingChatsRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Skill group ID list.
+	//
 	// example:
 	//
 	// ["skillgroup1@ccc-test", "skillgroup2@ccc-test"]

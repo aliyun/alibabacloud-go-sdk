@@ -18,16 +18,22 @@ type iGetConversationDetailRequest interface {
 }
 
 type GetConversationDetailRequest struct {
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The ID of the conversation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-25884193037652****
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

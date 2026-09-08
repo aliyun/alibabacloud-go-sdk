@@ -16,12 +16,16 @@ type iAcceptChatRequest interface {
 }
 
 type AcceptChatRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The job ID.
+	//
 	// This parameter is required.
 	//
 	// example:

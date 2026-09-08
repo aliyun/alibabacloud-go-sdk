@@ -16,12 +16,16 @@ type iGetVoicemailRecordingRequest interface {
 }
 
 type GetVoicemailRecordingRequest struct {
+	// Call ID. Ensure that this call ID has a voicemail message; otherwise, the return result will contain no data.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-12515239414412****
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

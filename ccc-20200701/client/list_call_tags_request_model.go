@@ -18,18 +18,24 @@ type iListCallTagsRequest interface {
 }
 
 type ListCallTagsRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Paging ordinal number, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:

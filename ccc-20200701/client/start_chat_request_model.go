@@ -20,18 +20,26 @@ type iStartChatRequest interface {
 }
 
 type StartChatRequest struct {
+	// The ID of the web service channel.
+	//
 	// example:
 	//
 	// cf584733-***-***-9699-cb77aa3b7aa6
 	AccessChannelId *string `json:"AccessChannelId,omitempty" xml:"AccessChannelId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The channel token for the web service.
+	//
 	// example:
 	//
 	// 9XYGTGWtq2wFi_Bpg7aUnIoYi_vG_rO3bjEn0YtsxbHRHrYHlz1LDBLJAyZcLxieRQR4h_6AnWvTjJeNU5jg************Hwej7WgWrmA=
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The information about chat members.
+	//
 	// This parameter is required.
 	UserList []*StartChatRequestUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
 }
@@ -94,15 +102,30 @@ func (s *StartChatRequest) Validate() error {
 }
 
 type StartChatRequestUserList struct {
+	// The URL of the member\\"s profile picture.
+	//
 	// example:
 	//
 	// http://xxx.com/image
 	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
-	Nickname  *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	// The nickname of the member.
+	//
+	// example:
+	//
+	// 访客-1a272a174a7d
+	Nickname *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	// The member ID.
+	//
 	// example:
 	//
 	// fcd020fe-d8e4-40e5-8c77-1a272a174a7d
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The type of the member.
+	//
+	// - AGENT: An agent.
+	//
+	// - CUSTOMER: A visitor.
+	//
 	// example:
 	//
 	// CUSTOMER

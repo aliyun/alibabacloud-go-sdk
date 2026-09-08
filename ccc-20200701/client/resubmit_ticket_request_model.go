@@ -18,13 +18,22 @@ type iResubmitTicketRequest interface {
 }
 
 type ResubmitTicketRequest struct {
+	// The handling comment.
+	//
+	// example:
+	//
+	// 信息已补充
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ticket ID.
+	//
 	// This parameter is required.
 	//
 	// example:

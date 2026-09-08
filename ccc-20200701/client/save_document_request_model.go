@@ -22,22 +22,30 @@ type iSaveDocumentRequest interface {
 }
 
 type SaveDocumentRequest struct {
+	// Document ID
+	//
 	// example:
 	//
 	// xxx
 	DocumentId *string `json:"DocumentId,omitempty" xml:"DocumentId,omitempty"`
+	// The document content to save. It must conform to the rules defined in the schema.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"name":"tom"}
 	DocumentJson *string `json:"DocumentJson,omitempty" xml:"DocumentJson,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 9cfad875-6260-4a53-ab6e-b13e3fb31f7d
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// EAF3C248-E123-441B-A545-B6CD02E98EED

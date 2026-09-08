@@ -18,16 +18,22 @@ type iGetUserRequest interface {
 }
 
 type GetUserRequest struct {
+	// Agent extension number. This parameter is optional. You must specify either UserId or Extension.
+	//
 	// example:
 	//
 	// 8003****
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Agent ID. This parameter is optional. You must specify either UserId or Extension.
+	//
 	// example:
 	//
 	// agent@ccc-test

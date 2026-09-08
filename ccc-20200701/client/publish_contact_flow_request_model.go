@@ -18,18 +18,24 @@ type iPublishContactFlowRequest interface {
 }
 
 type PublishContactFlowRequest struct {
+	// The contact flow ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// b0a063bf-f138-42a4-ad9f-9babe3ec1a9e
 	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	// The draft ID. This is the ID of the draft version that corresponds to the current contact flow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0e0b8e78-af3e-4360-a5c5-f9bb5c2b8af2
 	DraftId *string `json:"DraftId,omitempty" xml:"DraftId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

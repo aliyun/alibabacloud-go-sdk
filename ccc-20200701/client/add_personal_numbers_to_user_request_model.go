@@ -18,18 +18,24 @@ type iAddPersonalNumbersToUserRequest interface {
 }
 
 type AddPersonalNumbersToUserRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// List of numbers to be added. The numbers must be attachable to the agent corresponding to UserId. If you are unsure which numbers the agent can attach, refer to the ListPersonalNumbersOfUser API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ["0101234****","0105678****"]
 	NumberList *string `json:"NumberList,omitempty" xml:"NumberList,omitempty"`
+	// Agent ID.
+	//
 	// This parameter is required.
 	//
 	// example:

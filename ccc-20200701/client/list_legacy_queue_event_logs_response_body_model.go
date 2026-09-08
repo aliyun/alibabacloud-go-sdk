@@ -24,20 +24,34 @@ type iListLegacyQueueEventLogsResponseBody interface {
 }
 
 type ListLegacyQueueEventLogsResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListLegacyQueueEventLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 1A5A8998-41F9-5F85-BFCF-EB2B6E376812
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the invocation succeeded.
+	//
 	// example:
 	//
 	// true
@@ -116,15 +130,22 @@ func (s *ListLegacyQueueEventLogsResponseBody) Validate() error {
 }
 
 type ListLegacyQueueEventLogsResponseBodyData struct {
+	// List of queue event logs.
 	List []*ListLegacyQueueEventLogsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number, ranging from 1 to 1000.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 1000.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 10
@@ -189,40 +210,68 @@ func (s *ListLegacyQueueEventLogsResponseBodyData) Validate() error {
 }
 
 type ListLegacyQueueEventLogsResponseBodyDataList struct {
+	// Call ID.
+	//
 	// example:
 	//
 	// 456328****
 	Acid *string `json:"Acid,omitempty" xml:"Acid,omitempty"`
+	// Calling party
+	//
 	// example:
 	//
 	// 8012****
 	Ani *string `json:"Ani,omitempty" xml:"Ani,omitempty"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	AnswerPhone *string `json:"AnswerPhone,omitempty" xml:"AnswerPhone,omitempty"`
+	// Acknowledgement duration, in seconds.
+	//
 	// example:
 	//
 	// 15
-	AnswerTime *int64  `json:"AnswerTime,omitempty" xml:"AnswerTime,omitempty"`
-	Cause      *string `json:"Cause,omitempty" xml:"Cause,omitempty"`
+	AnswerTime *int64 `json:"AnswerTime,omitempty" xml:"AnswerTime,omitempty"`
+	// Hang-up reason.
+	//
+	// example:
+	//
+	// 正常
+	Cause *string `json:"Cause,omitempty" xml:"Cause,omitempty"`
+	// Dialed number.
+	//
 	// example:
 	//
 	// 1312211****
 	Dnis *string `json:"Dnis,omitempty" xml:"Dnis,omitempty"`
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Primary key
+	//
+	// example:
+	//
+	// 109160
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Queue duration, in seconds.
+	//
 	// example:
 	//
 	// 10
 	QueueTime *int64 `json:"QueueTime,omitempty" xml:"QueueTime,omitempty"`
+	// Statistics date.
+	//
 	// example:
 	//
 	// 2021-12-03T10:15:30
 	StatisticDate *string `json:"StatisticDate,omitempty" xml:"StatisticDate,omitempty"`
+	// Tenant ID.
+	//
 	// example:
 	//
 	// acc3733
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// Queue name.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test

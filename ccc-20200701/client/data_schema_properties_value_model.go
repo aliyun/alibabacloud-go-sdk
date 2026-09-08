@@ -54,83 +54,128 @@ type iDataSchemaPropertiesValue interface {
 }
 
 type DataSchemaPropertiesValue struct {
+	// The display name of the field.
+	//
 	// example:
 	//
 	// name
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// -
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The data type.
+	//
 	// example:
 	//
 	// string
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The regular expression.
+	//
 	// example:
 	//
 	// *
-	Pattern             *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	// The error message for the regular expression.
+	//
+	// example:
+	//
+	// 格式错误
 	PatternErrorMessage *string `json:"PatternErrorMessage,omitempty" xml:"PatternErrorMessage,omitempty"`
+	// The minimum length.
+	//
 	// example:
 	//
 	// 1
 	MinLength *int32 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+	// The maximum length.
+	//
 	// example:
 	//
 	// 1
 	MaxLength *int32 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	// The minimum value.
+	//
 	// example:
 	//
 	// 1
 	Minimum *float64 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
+	// The maximum value.
+	//
 	// example:
 	//
 	// 1
 	Maximum *float64 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	// Indicates whether the field is required.
+	//
 	// example:
 	//
 	// false
 	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+	// Indicates whether the field is a system field.
+	//
 	// example:
 	//
 	// false
 	System *bool `json:"System,omitempty" xml:"System,omitempty"`
+	// Indicates whether the field is disabled.
+	//
 	// example:
 	//
 	// false
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// Indicates whether the field is an array.
+	//
 	// example:
 	//
 	// false
 	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
+	// Indicates whether the field is read-only.
+	//
 	// example:
 	//
 	// false
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// The editor type.
+	//
 	// example:
 	//
 	// textbox
 	EditorType *string `json:"EditorType,omitempty" xml:"EditorType,omitempty"`
+	// The extended properties.
+	//
 	// example:
 	//
 	// {}
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// The display order.
+	//
 	// example:
 	//
 	// 1
 	DisplayOrder *int32 `json:"DisplayOrder,omitempty" xml:"DisplayOrder,omitempty"`
+	// The time when the field was created.
+	//
 	// example:
 	//
 	// 2020-10-14T09:53:53Z
 	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The time when the field was last updated.
+	//
 	// example:
 	//
 	// 2020-10-14T09:53:53Z
 	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	// The creator.
+	//
 	// example:
 	//
 	// tom

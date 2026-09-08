@@ -22,16 +22,28 @@ type iListTicketsResponseBody interface {
 }
 
 type ListTicketsResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListTicketsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 7BEEA660-A45A-45E3-98CC-AFC65E715C23
@@ -101,15 +113,22 @@ func (s *ListTicketsResponseBody) Validate() error {
 }
 
 type ListTicketsResponseBodyData struct {
+	// Tickets list.
 	List []*ListTicketsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Paging ordinal number. Range: 1-100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Paging size. Range: 1-100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 10
@@ -174,90 +193,152 @@ func (s *ListTicketsResponseBodyData) Validate() error {
 }
 
 type ListTicketsResponseBodyDataList struct {
+	// Assignee ID.
+	//
 	// example:
 	//
 	// assignee@ccc-test
 	Assignee *string `json:"Assignee,omitempty" xml:"Assignee,omitempty"`
+	// Assignee name.
+	//
 	// example:
 	//
 	// Assignee
 	AssigneeName *string `json:"AssigneeName,omitempty" xml:"AssigneeName,omitempty"`
+	// Ticket category ID.
+	//
 	// example:
 	//
 	// 43c2671b-*****-4223-86d0-6bd187905cc8
-	CategoryId   *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// Ticket category name.
+	//
+	// example:
+	//
+	// 类目1
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// Ticket close reason.
+	//
 	// example:
 	//
 	// Completed
 	CloseCode *string `json:"CloseCode,omitempty" xml:"CloseCode,omitempty"`
-	Comment   *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Comment.
+	//
+	// example:
+	//
+	// 无
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Ticket form information.
+	//
 	// example:
 	//
 	// {"productName":"alynx"}
 	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// Creation time.
+	//
 	// example:
 	//
 	// 1631440860000
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Creator ID.
+	//
 	// example:
 	//
 	// creator@ccc-test
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// Creator name.
+	//
 	// example:
 	//
 	// Creator
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// Current node ID.
+	//
 	// example:
 	//
 	// 0707dab6-34a8-11ef-9823-161e3802b2d4
-	CurrentTaskId   *string `json:"CurrentTaskId,omitempty" xml:"CurrentTaskId,omitempty"`
+	CurrentTaskId *string `json:"CurrentTaskId,omitempty" xml:"CurrentTaskId,omitempty"`
+	// Current node name.
+	//
+	// example:
+	//
+	// 节点1
 	CurrentTaskName *string `json:"CurrentTaskName,omitempty" xml:"CurrentTaskName,omitempty"`
+	// Current node start time.
+	//
 	// example:
 	//
 	// 1631440860000
 	CurrentTaskStartTime *int64 `json:"CurrentTaskStartTime,omitempty" xml:"CurrentTaskStartTime,omitempty"`
+	// Customer ID.
+	//
 	// example:
 	//
 	// 51e155ce-*****1-b402-13c69597b920
 	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	// Ticket end time.
+	//
 	// example:
 	//
 	// 1631440860000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Job ID.
+	//
 	// example:
 	//
 	// job-47150***150396416
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Ticket source.
+	//
 	// example:
 	//
 	// CHAT
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Ticket start time.
+	//
 	// example:
 	//
 	// 1631440860000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// State.
+	//
 	// example:
 	//
 	// Processing
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// Template ID.
+	//
 	// example:
 	//
 	// c844a5f0-496c-4c5b-8a0c-dd27686e8ff6
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Template version.
+	//
 	// example:
 	//
 	// 0
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	// Ticket ID.
+	//
 	// example:
 	//
 	// feb83abd-9f08-49d2-9b56-41d1b66ca0ac
 	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
-	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Ticket title.
+	//
+	// example:
+	//
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Update time.
+	//
 	// example:
 	//
 	// 1631440860000

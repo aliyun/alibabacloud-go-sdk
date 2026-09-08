@@ -16,7 +16,14 @@ type iModifyInstanceRequest interface {
 }
 
 type ModifyInstanceRequest struct {
+	// Description of the instance. The description can be up to 256 characters in length.
+	//
+	// example:
+	//
+	// 新的实例描述。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

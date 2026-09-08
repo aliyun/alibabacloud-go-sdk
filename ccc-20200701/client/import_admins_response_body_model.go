@@ -22,16 +22,28 @@ type iImportAdminsResponseBody interface {
 }
 
 type ImportAdminsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// A list of imported admins.
 	Data []*ImportAdminsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CDB5C94-ACFB-59B5-85FE-C1DAF8049C63
@@ -105,22 +117,32 @@ func (s *ImportAdminsResponseBody) Validate() error {
 }
 
 type ImportAdminsResponseBodyData struct {
+	// The agent extension.
+	//
 	// example:
 	//
 	// 8021****
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The UID of the Alibaba Cloud RAM account.
+	//
 	// example:
 	//
 	// 26972543893791****
 	RamId *string `json:"RamId,omitempty" xml:"RamId,omitempty"`
+	// The role ID.
+	//
 	// example:
 	//
 	// Admin@ccc-test
 	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// The agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test

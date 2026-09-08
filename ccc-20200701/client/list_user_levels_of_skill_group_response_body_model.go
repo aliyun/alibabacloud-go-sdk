@@ -22,16 +22,28 @@ type iListUserLevelsOfSkillGroupResponseBody interface {
 }
 
 type ListUserLevelsOfSkillGroupResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListUserLevelsOfSkillGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -101,15 +113,22 @@ func (s *ListUserLevelsOfSkillGroupResponseBody) Validate() error {
 }
 
 type ListUserLevelsOfSkillGroupResponseBodyData struct {
+	// List of skill levels.
 	List []*ListUserLevelsOfSkillGroupResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 1
@@ -174,32 +193,56 @@ func (s *ListUserLevelsOfSkillGroupResponseBodyData) Validate() error {
 }
 
 type ListUserLevelsOfSkillGroupResponseBodyDataList struct {
+	// Agent display name.
+	//
+	// example:
+	//
+	// 坐席小王
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Agent logon name.
+	//
 	// example:
 	//
 	// agent
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
-	RamId     *string `json:"RamId,omitempty" xml:"RamId,omitempty"`
+	// The user\\"s Resource Access Management (RAM) account.
+	//
+	// example:
+	//
+	// 28036411123456****
+	RamId *string `json:"RamId,omitempty" xml:"RamId,omitempty"`
+	// Role ID, in the format: role\\@instance ID.
+	//
 	// example:
 	//
 	// Admin@ccc-test
 	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// Role name.
+	//
 	// example:
 	//
 	// Admin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// Skill group ID.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// Skill group Name.
+	//
 	// example:
 	//
 	// skillgroup
 	SkillGroupName *string `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
+	// Agent skill Level.
+	//
 	// example:
 	//
 	// 5
 	SkillLevel *int32 `json:"SkillLevel,omitempty" xml:"SkillLevel,omitempty"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test

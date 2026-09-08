@@ -18,18 +18,24 @@ type iResetUserPasswordRequest interface {
 }
 
 type ResetUserPasswordRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// New password.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// password
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// Agent ID.
+	//
 	// This parameter is required.
 	//
 	// example:

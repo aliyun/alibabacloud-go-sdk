@@ -18,13 +18,22 @@ type iGetLoginDetailsRequest interface {
 }
 
 type GetLoginDetailsRequest struct {
+	// Chat Device ID.
+	//
+	// example:
+	//
+	// 4c51c9116c36537cb850dc1081d745df
 	ChatDeviceId *string `json:"ChatDeviceId,omitempty" xml:"ChatDeviceId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Agent ID. This parameter is optional. If not specified, the agent mapped to the current RAM account is used by default.
+	//
 	// example:
 	//
 	// agent@ccc-test

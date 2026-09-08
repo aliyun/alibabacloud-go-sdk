@@ -22,16 +22,28 @@ type iPickOutboundNumbersResponseBody interface {
 }
 
 type PickOutboundNumbersResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data []*PickOutboundNumbersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -105,7 +117,9 @@ func (s *PickOutboundNumbersResponseBody) Validate() error {
 }
 
 type PickOutboundNumbersResponseBodyData struct {
+	// Callee number.
 	Callee *PickOutboundNumbersResponseBodyDataCallee `json:"Callee,omitempty" xml:"Callee,omitempty" type:"Struct"`
+	// Caller number.
 	Caller *PickOutboundNumbersResponseBodyDataCaller `json:"Caller,omitempty" xml:"Caller,omitempty" type:"Struct"`
 }
 
@@ -150,11 +164,23 @@ func (s *PickOutboundNumbersResponseBodyData) Validate() error {
 }
 
 type PickOutboundNumbersResponseBodyDataCallee struct {
+	// City of number registration.
+	//
+	// example:
+	//
+	// 北京
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// Number
+	//
 	// example:
 	//
 	// 1388888****
-	Number   *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// Province of number registration.
+	//
+	// example:
+	//
+	// 北京
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 
@@ -198,11 +224,23 @@ func (s *PickOutboundNumbersResponseBodyDataCallee) Validate() error {
 }
 
 type PickOutboundNumbersResponseBodyDataCaller struct {
+	// City of number registration.
+	//
+	// example:
+	//
+	// 北京
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// Number
+	//
 	// example:
 	//
 	// 0108989****
-	Number   *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// Province of number registration.
+	//
+	// example:
+	//
+	// 北京
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 

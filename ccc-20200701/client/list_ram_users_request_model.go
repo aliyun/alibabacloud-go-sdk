@@ -20,24 +20,32 @@ type iListRamUsersRequest interface {
 }
 
 type ListRamUsersRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number of the results to return. Valid values: 1 to 1,000.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Valid values: 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keyword to use for a fuzzy search based on the RAM user\\"s logon name or display name. This parameter is optional. If you leave this parameter empty, no filtering is applied.
+	//
 	// example:
 	//
 	// agent

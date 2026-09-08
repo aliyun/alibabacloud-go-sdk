@@ -32,37 +32,76 @@ type iLaunchSurveyRequest interface {
 }
 
 type LaunchSurveyRequest struct {
+	// The contact flow ID of the IVR satisfaction survey flow. Ensure that the specified contact flow ID corresponds to an active satisfaction survey flow.
+	//
 	// example:
 	//
 	// 4685b65a-eb8f-11ec-8ea0-0242ac120002
-	ContactFlowId        *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	// Variables passed to the contact flow. The variables configured here can be retrieved and used in the IVR flow. The format is a JSON string containing a collection of key-value pairs. This parameter is optional and defaults to empty.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "customerID": "208880281831****",
+	//
+	//       "operateType": "cipherCode",
+	//
+	//       "taskId": "1234567890",
+	//
+	//       "crmOther": "123"
+	//
+	// }
 	ContactFlowVariables *string `json:"ContactFlowVariables,omitempty" xml:"ContactFlowVariables,omitempty"`
+	// Device ID. This parameter has no effect and can be filled with any value.
+	//
 	// example:
 	//
 	// device
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The call ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-6580466654649****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The configuration ID for text message satisfaction. This parameter is required only when the collection channel is SMS. It is optional and defaults to empty.
+	//
 	// example:
 	//
 	// 4685b65a-eb8f-11ec-8ea0-0242ac120002
 	SmsMetadataId *string `json:"SmsMetadataId,omitempty" xml:"SmsMetadataId,omitempty"`
+	// The channel for collecting satisfaction feedback. This parameter is optional and defaults to Voice Satisfaction.
+	//
 	// example:
 	//
 	// IVR
-	SurveyChannel           *string `json:"SurveyChannel,omitempty" xml:"SurveyChannel,omitempty"`
-	SurveyTemplateId        *string `json:"SurveyTemplateId,omitempty" xml:"SurveyTemplateId,omitempty"`
+	SurveyChannel *string `json:"SurveyChannel,omitempty" xml:"SurveyChannel,omitempty"`
+	// The ID of the satisfaction survey template.
+	//
+	// example:
+	//
+	// 19dc793c-9a01-4cb0-b7d5-fcb5431bab6b
+	SurveyTemplateId *string `json:"SurveyTemplateId,omitempty" xml:"SurveyTemplateId,omitempty"`
+	// Satisfaction survey configuration.
+	//
+	// example:
+	//
+	// []
 	SurveyTemplateVariables *string `json:"SurveyTemplateVariables,omitempty" xml:"SurveyTemplateVariables,omitempty"`
+	// The agent ID that initiates the satisfaction survey.
+	//
 	// example:
 	//
 	// agent@ccc-test

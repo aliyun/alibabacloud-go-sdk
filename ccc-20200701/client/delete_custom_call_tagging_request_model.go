@@ -16,12 +16,16 @@ type iDeleteCustomCallTaggingRequest interface {
 }
 
 type DeleteCustomCallTaggingRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The number associated with the inbound call tag.
+	//
 	// This parameter is required.
 	//
 	// example:

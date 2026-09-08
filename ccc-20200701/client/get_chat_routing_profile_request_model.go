@@ -14,6 +14,8 @@ type iGetChatRoutingProfileRequest interface {
 }
 
 type GetChatRoutingProfileRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

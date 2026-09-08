@@ -22,19 +22,28 @@ type iDisableSchemaPropertyResponseBody interface {
 }
 
 type DisableSchemaPropertyResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Additional information
+	//
 	// example:
 	//
 	// User 244715989906081477 does not exist in instance worldfirst01.
-	Message *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params  []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Parameter information
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Request ID
+	//
 	// example:
 	//
 	// 9FBA26B0-462B-4D77-B78F-AF35560DBC71

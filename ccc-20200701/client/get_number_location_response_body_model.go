@@ -22,16 +22,28 @@ type iGetNumberLocationResponseBody interface {
 }
 
 type GetNumberLocationResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *GetNumberLocationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 584AA2E3-9AC4-561B-BC8D-C74BA11B1387
@@ -101,11 +113,23 @@ func (s *GetNumberLocationResponseBody) Validate() error {
 }
 
 type GetNumberLocationResponseBodyData struct {
+	// City of the number\\"s registration location.
+	//
+	// example:
+	//
+	// 北京
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// Number.
+	//
 	// example:
 	//
 	// 1312121****
-	Number   *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// Province of the number\\"s registration location.
+	//
+	// example:
+	//
+	// 北京
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
 }
 

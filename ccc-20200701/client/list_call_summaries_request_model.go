@@ -16,7 +16,10 @@ type iListCallSummariesRequest interface {
 }
 
 type ListCallSummariesRequest struct {
+	// List of call IDs.
 	ContactIdList []*string `json:"ContactIdList,omitempty" xml:"ContactIdList,omitempty" type:"Repeated"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

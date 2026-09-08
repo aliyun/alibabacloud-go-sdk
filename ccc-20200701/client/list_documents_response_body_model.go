@@ -24,17 +24,30 @@ type iListDocumentsResponseBody interface {
 }
 
 type ListDocumentsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
 	Data *ListDocumentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7BEEA660-A45A-45E3-98CC-AFC65E715C23
@@ -113,13 +126,18 @@ func (s *ListDocumentsResponseBody) Validate() error {
 }
 
 type ListDocumentsResponseBodyData struct {
+	// The list of documents.
 	Documents []map[string]interface{} `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
+	// The token for the next page of results.
+	//
 	// example:
 	//
 	// 54d1a616d95a4a01ba58967a9115b649
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	// scheme
+	// The schema.
 	Schema *ListDocumentsResponseBodyDataSchema `json:"Schema,omitempty" xml:"Schema,omitempty" type:"Struct"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
@@ -180,29 +198,40 @@ func (s *ListDocumentsResponseBodyData) Validate() error {
 }
 
 type ListDocumentsResponseBodyDataSchema struct {
+	// The time when the schema was created.
+	//
 	// example:
 	//
 	// 2020-10-14T09:53:53Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Indicates whether the schema is deleted.
+	//
 	// example:
 	//
 	// false
 	Deleted *bool `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// -
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// schame id
+	// The schema ID.
 	//
 	// example:
 	//
 	// profile
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// 87b12784-8ce2-40b6-b21f-c49cb3b5501e
-	InstanceId *string                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of fields.
 	Properties map[string]*DataSchemaPropertiesValue `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// The time when the schema was last updated.
+	//
 	// example:
 	//
 	// 2020-10-14T09:53:53Z

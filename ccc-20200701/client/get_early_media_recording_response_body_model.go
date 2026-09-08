@@ -22,16 +22,28 @@ type iGetEarlyMediaRecordingResponseBody interface {
 }
 
 type GetEarlyMediaRecordingResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *GetEarlyMediaRecordingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 03C67DAD-EB26-41D8-949D-9B0C470FB716
@@ -101,10 +113,14 @@ func (s *GetEarlyMediaRecordingResponseBody) Validate() error {
 }
 
 type GetEarlyMediaRecordingResponseBodyData struct {
+	// Recording file name.
+	//
 	// example:
 	//
-	// job-6538214103689****-earlyMedia..wav
+	// job-6538214103689****-earlyMedia.wav
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// OSS download URL for the recording file. Note the expiration time. The URL is valid for one day.
+	//
 	// example:
 	//
 	// https://ccc-v2-online.oss-cn-shanghai.aliyuncs.com/ccc-record-mixed/ccc-test/2022/06/voicemail.job-054ded02****.wav?Expires=1656074923&OSSAccessKeyId=****&Signature=****

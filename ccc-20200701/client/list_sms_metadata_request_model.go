@@ -20,24 +20,40 @@ type iListSmsMetadataRequest interface {
 }
 
 type ListSmsMetadataRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The page number. The value ranges from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. The value ranges from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the scenario. Valid values:
+	//
+	// - SATISFACTION_SURVEY: satisfaction survey
+	//
+	// - CONTACT_FLOW_NODE: Interactive Voice Response (IVR) flow node
+	//
+	// - MISSED_CALL_NOTIFICATION: missed call notification
+	//
+	// - FLASH_SMS: Alibaba Cloud flash SMS notification
+	//
 	// example:
 	//
 	// ["SATISFACTION_SURVEY","CONTACT_FLOW_NODE"]

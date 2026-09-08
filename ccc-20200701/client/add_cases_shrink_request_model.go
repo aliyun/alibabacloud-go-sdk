@@ -18,13 +18,18 @@ type iAddCasesShrinkRequest interface {
 }
 
 type AddCasesShrinkRequest struct {
+	// The predictive outbound call activity ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// c58b9719-3bc3-441d-a4d3-fc0309ef7066
-	CampaignId     *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	// The list of outbound call cases.
 	CaseListShrink *string `json:"CaseList,omitempty" xml:"CaseList,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -20,23 +20,29 @@ type iDisableSchemaPropertyRequest interface {
 }
 
 type DisableSchemaPropertyRequest struct {
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ef1e71e9-ae9d-487c-96ad-9181d85cf802
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Field name
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// name
 	PropertyName *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 2263B273-AC1B-44EB-BA98-87F2322C6780
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// schema id
+	// Schema ID
 	//
 	// This parameter is required.
 	//

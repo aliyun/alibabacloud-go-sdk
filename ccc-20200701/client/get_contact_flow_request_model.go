@@ -18,18 +18,24 @@ type iGetContactFlowRequest interface {
 }
 
 type GetContactFlowRequest struct {
+	// The contact flow ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 274601be-a6d5-4429-bcef-32b51d031c6e
 	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	// The draft ID. This is the ID of the editable draft version for the current contact flow.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 566399d7-5558-447c-a72f-9be2768b6a82
 	DraftId *string `json:"DraftId,omitempty" xml:"DraftId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

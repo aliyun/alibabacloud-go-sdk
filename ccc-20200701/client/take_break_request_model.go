@@ -20,22 +20,30 @@ type iTakeBreakRequest interface {
 }
 
 type TakeBreakRequest struct {
+	// Break status code. Customers can define any custom break status.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// lunchtime
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Device ID. This parameter is meaningless and can be filled with any value.
+	//
 	// example:
 	//
 	// device
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Agent ID. If not specified, the agent mapped to the current RAM account is used by default.
+	//
 	// example:
 	//
 	// agent@ccc-test

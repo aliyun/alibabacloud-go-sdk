@@ -22,16 +22,28 @@ type iGetHistoricalCampaignReportResponseBody interface {
 }
 
 type GetHistoricalCampaignReportResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *GetHistoricalCampaignReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// E3A847C1-9800-57DF-9172-2CDDC026388D
@@ -101,28 +113,50 @@ func (s *GetHistoricalCampaignReportResponseBody) Validate() error {
 }
 
 type GetHistoricalCampaignReportResponseBodyData struct {
+	// Abandon rate, calculated as: number of abandoned calls divided by total calls.
+	//
+	// example:
+	//
+	// 0.10
 	AbandonRate *float32 `json:"AbandonRate,omitempty" xml:"AbandonRate,omitempty"`
+	// Deprecated. Refer to AbandonRate instead.
+	//
 	// example:
 	//
 	// 0.10
 	AbandonedRate *float32 `json:"AbandonedRate,omitempty" xml:"AbandonedRate,omitempty"`
-	AnswerRate    *float32 `json:"AnswerRate,omitempty" xml:"AnswerRate,omitempty"`
+	// Answer rate, in %.
+	//
+	// example:
+	//
+	// 0.50
+	AnswerRate *float32 `json:"AnswerRate,omitempty" xml:"AnswerRate,omitempty"`
+	// Number of abandoned calls.
+	//
 	// example:
 	//
 	// 5
 	CallsAbandoned *int64 `json:"CallsAbandoned,omitempty" xml:"CallsAbandoned,omitempty"`
+	// Number of connected calls.
+	//
 	// example:
 	//
 	// 50
 	CallsConnected *int64 `json:"CallsConnected,omitempty" xml:"CallsConnected,omitempty"`
+	// Number of calls dialed, including retries.
+	//
 	// example:
 	//
 	// 100
 	CallsDialed *int64 `json:"CallsDialed,omitempty" xml:"CallsDialed,omitempty"`
+	// Deprecated. Refer to AnswerRate instead.
+	//
 	// example:
 	//
 	// 0.50
 	ConnectedRate *float32 `json:"ConnectedRate,omitempty" xml:"ConnectedRate,omitempty"`
+	// Agent occupancy rate, calculated as: (total talk duration + total post-processing duration) divided by total agent online duration. Total agent online duration refers to the sum of online durations of all agents in the skill group associated with this activity.
+	//
 	// example:
 	//
 	// 0.50

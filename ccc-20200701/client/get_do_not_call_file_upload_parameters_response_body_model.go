@@ -24,20 +24,34 @@ type iGetDoNotCallFileUploadParametersResponseBody interface {
 }
 
 type GetDoNotCallFileUploadParametersResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *GetDoNotCallFileUploadParametersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// BA03159C-E808-4FF1-B27E-A61B6E888D7F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the operation succeeded.
+	//
 	// example:
 	//
 	// true
@@ -116,26 +130,38 @@ func (s *GetDoNotCallFileUploadParametersResponseBody) Validate() error {
 }
 
 type GetDoNotCallFileUploadParametersResponseBodyData struct {
+	// AccessKeyId used for signing.
+	//
 	// example:
 	//
 	// ****
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// Expiration time, formatted as a Unix timestamp in seconds.
+	//
 	// example:
 	//
 	// 1647313420
 	ExpireTime *int32 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// Key of the OSS file.
+	//
 	// example:
 	//
 	// ccc-test/blacklist.xlsx
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// Endpoint domain name of OSS.
+	//
 	// example:
 	//
 	// https://ccc-v2-online.oss-cn-shanghai.aliyuncs.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// Signature policy.
+	//
 	// example:
 	//
 	// eyJleHBpcmF0aW9uIjoiMjAyMi0wMy0xNVQwMzowMzo0MC4zMTJaIiwiY29uZGl0aW9ucyI6W1siY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsMTA0ODU3NjBdLFsic3RhcnRzLXdpdGgiLCIka2V5IiwidGVtcC9ibGFja2xpc3QvaW1wb3J0LzE1NzcyNDcxMTU0OTA0MDEvY2NjVjIta216LzIwMjIE1MTAwMzQwLyJd****
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// Signature information of the temporary credential for file upload, used to authenticate validity during upload.
+	//
 	// example:
 	//
 	// zi31STIMtIfa/UN2l+6lww****

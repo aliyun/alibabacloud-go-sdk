@@ -16,12 +16,16 @@ type iGetHistoricalCampaignReportRequest interface {
 }
 
 type GetHistoricalCampaignReportRequest struct {
+	// Predictive outbound call activity ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4fc85829-f6fc-476e-9c0d-c350184e36f1
 	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

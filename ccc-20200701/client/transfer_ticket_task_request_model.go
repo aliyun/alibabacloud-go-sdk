@@ -22,23 +22,36 @@ type iTransferTicketTaskRequest interface {
 }
 
 type TransferTicketTaskRequest struct {
+	// The ID of the assignee.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// assignee@ccc-test
 	Assignee *string `json:"Assignee,omitempty" xml:"Assignee,omitempty"`
-	Comment  *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Comments.
+	//
+	// example:
+	//
+	// 请assignee处理
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The node ID.
+	//
 	// example:
 	//
 	// f780ade8-3ca9-458b-b067-63077946a570
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ticket ID.
+	//
 	// example:
 	//
 	// 5491d3b4-14ee-4341-b5f1-db2c78beddeb

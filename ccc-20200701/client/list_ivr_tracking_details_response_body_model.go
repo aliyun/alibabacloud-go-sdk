@@ -22,16 +22,28 @@ type iListIvrTrackingDetailsResponseBody interface {
 }
 
 type ListIvrTrackingDetailsResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListIvrTrackingDetailsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// D2RB671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -101,15 +113,22 @@ func (s *ListIvrTrackingDetailsResponseBody) Validate() error {
 }
 
 type ListIvrTrackingDetailsResponseBodyData struct {
+	// List of IVR tracking details.
 	List []*ListIvrTrackingDetailsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 3
@@ -174,57 +193,98 @@ func (s *ListIvrTrackingDetailsResponseBodyData) Validate() error {
 }
 
 type ListIvrTrackingDetailsResponseBodyDataList struct {
+	// Callee number.
+	//
 	// example:
 	//
 	// 0533128****
 	Callee *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
+	// The calling number.
+	//
 	// example:
 	//
 	// 1332315****
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// Voice channel ID.
+	//
 	// example:
 	//
 	// 65cp2c15-92ac-4e67-98b2-073a3c541c5d
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Channel-associated data.
+	//
 	// example:
 	//
 	// A=B;C=D
 	ChannelVariables *string `json:"ChannelVariables,omitempty" xml:"ChannelVariables,omitempty"`
+	// Call ID.
+	//
 	// example:
 	//
 	// job-10963442671187****
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// The time when the call entered this IVR edge zone, in Unix timestamp format, in milliseconds.
+	//
 	// example:
 	//
 	// 1621910542876
 	EnterTime *int64 `json:"EnterTime,omitempty" xml:"EnterTime,omitempty"`
+	// Contact flow ID.
+	//
 	// example:
 	//
 	// abc99462-1058-47d0-a114-f145ea7444ff
-	FlowId   *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The name of the contact flow.
+	//
+	// example:
+	//
+	// 测试IVR
 	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	Instance *string `json:"Instance,omitempty" xml:"Instance,omitempty"`
+	// Time when leaving this IVR node.
+	//
 	// example:
 	//
 	// 1621910545105
 	LeaveTime *int64 `json:"LeaveTime,omitempty" xml:"LeaveTime,omitempty"`
+	// Status code of the edge zone.
+	//
 	// example:
 	//
 	// Success
 	NodeExitCode *string `json:"NodeExitCode,omitempty" xml:"NodeExitCode,omitempty"`
+	// Node ID.
+	//
 	// example:
 	//
 	// e0bc19a3
-	NodeId         *string                `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	NodeName       *string                `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	NodeProperties map[string]interface{} `json:"NodeProperties,omitempty" xml:"NodeProperties,omitempty"`
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Edge zone name.
+	//
 	// example:
 	//
-	// PLAY_OR_SAY
+	// 放音
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// A collection of properties of the edge zone.
+	//
+	// example:
+	//
+	// {"say":"您好。"}
+	NodeProperties map[string]interface{} `json:"NodeProperties,omitempty" xml:"NodeProperties,omitempty"`
+	// File Type.
+	//
+	// example:
+	//
+	// PLAY_SAY
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// Node variables.
+	//
 	// example:
 	//
 	// {"digits":"2"}

@@ -22,16 +22,28 @@ type iGetUploadAudioDataParamsResponseBody interface {
 }
 
 type GetUploadAudioDataParamsResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *GetUploadAudioDataParamsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID, which can be used for LogSearch of the API.
+	//
 	// example:
 	//
 	// 03C67DAD-EB26-41D8-949D-9B0C470FB716
@@ -101,6 +113,7 @@ func (s *GetUploadAudioDataParamsResponseBody) Validate() error {
 }
 
 type GetUploadAudioDataParamsResponseBodyData struct {
+	// Parameters related to offline quality inspection audio files.
 	ParamsStr *string `json:"ParamsStr,omitempty" xml:"ParamsStr,omitempty"`
 }
 

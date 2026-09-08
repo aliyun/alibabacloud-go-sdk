@@ -24,20 +24,34 @@ type iListAgentSummaryReportsSinceMidnightResponseBody interface {
 }
 
 type ListAgentSummaryReportsSinceMidnightResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode          *int32                                                                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message                 *string                                                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Data.
 	PagedAgentSummaryReport *ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReport `json:"PagedAgentSummaryReport,omitempty" xml:"PagedAgentSummaryReport,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 27DD30C4-CAE2-481A-97CC-D3C54625341D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request succeeded.
+	//
 	// example:
 	//
 	// true
@@ -116,15 +130,22 @@ func (s *ListAgentSummaryReportsSinceMidnightResponseBody) Validate() error {
 }
 
 type ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReport struct {
+	// List of agent summary data.
 	List []*ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReportList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 2
@@ -189,27 +210,50 @@ func (s *ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReport
 }
 
 type ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReportList struct {
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
-	AgentId   *string                                                                             `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	AgentName *string                                                                             `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	Inbound   *ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReportListInbound `json:"Inbound,omitempty" xml:"Inbound,omitempty" type:"Struct"`
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// Agent name.
+	//
+	// example:
+	//
+	// 坐席小王。
+	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// Inbound metrics.
+	Inbound *ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReportListInbound `json:"Inbound,omitempty" xml:"Inbound,omitempty" type:"Struct"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Agent logon name.
+	//
 	// example:
 	//
 	// agent
-	LoginName *string                                                                              `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
-	Outbound  *ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReportListOutbound `json:"Outbound,omitempty" xml:"Outbound,omitempty" type:"Struct"`
-	Overall   *ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReportListOverall  `json:"Overall,omitempty" xml:"Overall,omitempty" type:"Struct"`
+	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	// Outbound metrics.
+	Outbound *ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReportListOutbound `json:"Outbound,omitempty" xml:"Outbound,omitempty" type:"Struct"`
+	// Overall metric.
+	Overall *ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReportListOverall `json:"Overall,omitempty" xml:"Overall,omitempty" type:"Struct"`
+	// List of skill group IDs to which the agent belongs, formatted as a JSON array string, where each array element is a skill group ID.
+	//
 	// example:
 	//
 	// ["skillgroup1@ccc-test","skillgroup2@ccc-test"]
-	SkillGroupIds   *string `json:"SkillGroupIds,omitempty" xml:"SkillGroupIds,omitempty"`
+	SkillGroupIds *string `json:"SkillGroupIds,omitempty" xml:"SkillGroupIds,omitempty"`
+	// List of skill group names to which the agent belongs, formatted as a JSON array string, where each array element is a skill group name.
+	//
+	// example:
+	//
+	// ["测试技能组1","测试技能组2"]
 	SkillGroupNames *string `json:"SkillGroupNames,omitempty" xml:"SkillGroupNames,omitempty"`
+	// The timestamp of the statistics data point.
+	//
 	// example:
 	//
 	// 2018-09-13 00:00:00
@@ -334,66 +378,98 @@ func (s *ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReport
 }
 
 type ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReportListInbound struct {
+	// Average ring time, in seconds. Calculation Formula: TotalRingTime / CallsRinged.
+	//
 	// example:
 	//
 	// 0
 	AverageRingTime *int64 `json:"AverageRingTime,omitempty" xml:"AverageRingTime,omitempty"`
+	// Average talk time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	AverageTalkTime *int64 `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
+	// Average post-processing time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	AverageWorkTime *int64 `json:"AverageWorkTime,omitempty" xml:"AverageWorkTime,omitempty"`
+	// Acknowledgement Count, which is the number of times the agent answered calls.
+	//
 	// example:
 	//
 	// 0
 	CallsHandled *int64 `json:"CallsHandled,omitempty" xml:"CallsHandled,omitempty"`
+	// Assign Count, which is the number of calls assigned to this agent, including calls blindly transferred or consultation-transferred from other agents.
+	//
 	// example:
 	//
 	// 0
 	CallsOffered *int64 `json:"CallsOffered,omitempty" xml:"CallsOffered,omitempty"`
+	// Acknowledgement rate. Calculation Formula: CallsHandled / CallsOffered (because acknowledgement events and assign events may fall into different Time Ranges, the Result may exceed 100% in certain cases).
+	//
 	// example:
 	//
 	// 0
 	HandleRate *float32 `json:"HandleRate,omitempty" xml:"HandleRate,omitempty"`
+	// Maximum ring time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	MaxRingTime *int64 `json:"MaxRingTime,omitempty" xml:"MaxRingTime,omitempty"`
+	// Maximum talk time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	MaxTalkTime *int64 `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+	// Maximum post-processing time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	MaxWorkTime *int64 `json:"MaxWorkTime,omitempty" xml:"MaxWorkTime,omitempty"`
+	// Satisfaction Index, which is the average value of the single-digit satisfaction rating entered by customers.
+	//
 	// example:
 	//
 	// 0
 	SatisfactionIndex *float32 `json:"SatisfactionIndex,omitempty" xml:"SatisfactionIndex,omitempty"`
+	// Sending Count of satisfaction surveys.
+	//
 	// example:
 	//
 	// 0
 	SatisfactionSurveysOffered *int64 `json:"SatisfactionSurveysOffered,omitempty" xml:"SatisfactionSurveysOffered,omitempty"`
+	// Response Count of satisfaction surveys.
+	//
 	// example:
 	//
 	// 0
 	SatisfactionSurveysResponded *int64 `json:"SatisfactionSurveysResponded,omitempty" xml:"SatisfactionSurveysResponded,omitempty"`
+	// Answer rate within 20 seconds, in percent (%).
+	//
 	// example:
 	//
 	// 0
 	ServiceLevel20 *float32 `json:"ServiceLevel20,omitempty" xml:"ServiceLevel20,omitempty"`
+	// Total ring time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	TotalRingTime *int64 `json:"TotalRingTime,omitempty" xml:"TotalRingTime,omitempty"`
+	// Total talk time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	TotalTalkTime *int64 `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+	// Total post-processing time, in seconds.
+	//
 	// example:
 	//
 	// 0
@@ -557,62 +633,92 @@ func (s *ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReport
 }
 
 type ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReportListOutbound struct {
+	// Answer rate. Calculation Formula: CallsAnswered / CallsDialed. (Because management events for answering and acknowledgement may fall into different Time Ranges, the Result may exceed 100% in some cases.)
+	//
 	// example:
 	//
 	// 0
 	AnswerRate *float32 `json:"AnswerRate,omitempty" xml:"AnswerRate,omitempty"`
+	// Average dial-up time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	AverageDialingTime *int64 `json:"AverageDialingTime,omitempty" xml:"AverageDialingTime,omitempty"`
+	// Average talk time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	AverageTalkTime *int64 `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
+	// Average post-processing duration, in seconds.
+	//
 	// example:
 	//
 	// 0
 	AverageWorkTime *int64 `json:"AverageWorkTime,omitempty" xml:"AverageWorkTime,omitempty"`
+	// Number of answered calls.
+	//
 	// example:
 	//
 	// 0
 	CallsAnswered *int64 `json:"CallsAnswered,omitempty" xml:"CallsAnswered,omitempty"`
+	// Number of dial-up calls.
+	//
 	// example:
 	//
 	// 0
 	CallsDialed *int64 `json:"CallsDialed,omitempty" xml:"CallsDialed,omitempty"`
+	// Maximum dial-up duration, in seconds.
+	//
 	// example:
 	//
 	// 0
 	MaxDialingTime *int64 `json:"MaxDialingTime,omitempty" xml:"MaxDialingTime,omitempty"`
+	// Maximum talk time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	MaxTalkTime *int64 `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+	// Maximum post-processing duration, in seconds.
+	//
 	// example:
 	//
 	// 0
 	MaxWorkTime *string `json:"MaxWorkTime,omitempty" xml:"MaxWorkTime,omitempty"`
+	// Satisfaction index, which is the average value of the satisfaction rating digits (single-digit numbers).
+	//
 	// example:
 	//
 	// 0
 	SatisfactionIndex *float32 `json:"SatisfactionIndex,omitempty" xml:"SatisfactionIndex,omitempty"`
+	// Sending Count of satisfaction surveys.
+	//
 	// example:
 	//
 	// 0
 	SatisfactionSurveysOffered *int64 `json:"SatisfactionSurveysOffered,omitempty" xml:"SatisfactionSurveysOffered,omitempty"`
+	// Response Count of satisfaction surveys.
+	//
 	// example:
 	//
 	// 0
 	SatisfactionSurveysResponded *int64 `json:"SatisfactionSurveysResponded,omitempty" xml:"SatisfactionSurveysResponded,omitempty"`
+	// Total dial-up time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	TotalDialingTime *int64 `json:"TotalDialingTime,omitempty" xml:"TotalDialingTime,omitempty"`
+	// Total talk time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	TotalTalkTime *int64 `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+	// Total post-processing time, in seconds.
+	//
 	// example:
 	//
 	// 0
@@ -767,70 +873,104 @@ func (s *ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReport
 }
 
 type ListAgentSummaryReportsSinceMidnightResponseBodyPagedAgentSummaryReportListOverall struct {
+	// Average ready time. Calculation Formula: TotalReadyTime divided by the Count of ready events. The Count of ready events is a non-API statistical field, in seconds.
+	//
 	// example:
 	//
 	// 0
 	AverageReadyTime *int64 `json:"AverageReadyTime,omitempty" xml:"AverageReadyTime,omitempty"`
+	// Average talk time. Calculation Formula: TotalTalkTime / (CallsAnswered + CallsHandled), in seconds.
+	//
 	// example:
 	//
 	// 0
 	AverageTalkTime *int64 `json:"AverageTalkTime,omitempty" xml:"AverageTalkTime,omitempty"`
+	// Average post-processing time. Calculation Formula: TotalWorkTime divided by TotalCalls, in seconds.
+	//
 	// example:
 	//
 	// 0
 	AverageWorkTime *int64 `json:"AverageWorkTime,omitempty" xml:"AverageWorkTime,omitempty"`
+	// Maximum ready time, in seconds.
+	//
 	// example:
 	//
 	// 37
 	MaxReadyTime *int64 `json:"MaxReadyTime,omitempty" xml:"MaxReadyTime,omitempty"`
+	// Maximum talk time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	MaxTalkTime *int64 `json:"MaxTalkTime,omitempty" xml:"MaxTalkTime,omitempty"`
+	// Maximum post-processing time after a call, in seconds.
+	//
 	// example:
 	//
 	// 0
 	MaxWorkTime *int64 `json:"MaxWorkTime,omitempty" xml:"MaxWorkTime,omitempty"`
+	// Agent occupancy rate. Calculation Formula: (TotalWorkTime + TotalTalkTime) / TotalLoggedInTime.
+	//
 	// example:
 	//
 	// 0
 	OccupancyRate *float32 `json:"OccupancyRate,omitempty" xml:"OccupancyRate,omitempty"`
+	// Quantity of directly transferred calls.
+	//
 	// example:
 	//
 	// 0
 	OneTransferCalls *int64 `json:"OneTransferCalls,omitempty" xml:"OneTransferCalls,omitempty"`
+	// Satisfaction index, which is the average of the satisfaction rating digits (single-digit numbers).
+	//
 	// example:
 	//
 	// 0
 	SatisfactionIndex *float32 `json:"SatisfactionIndex,omitempty" xml:"SatisfactionIndex,omitempty"`
+	// Sending Count of satisfaction surveys.
+	//
 	// example:
 	//
 	// 0
 	SatisfactionSurveysOffered *int64 `json:"SatisfactionSurveysOffered,omitempty" xml:"SatisfactionSurveysOffered,omitempty"`
+	// Count of satisfaction survey responses.
+	//
 	// example:
 	//
 	// 0
 	SatisfactionSurveysResponded *int64 `json:"SatisfactionSurveysResponded,omitempty" xml:"SatisfactionSurveysResponded,omitempty"`
+	// Total break time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	TotalBreakTime *int64 `json:"TotalBreakTime,omitempty" xml:"TotalBreakTime,omitempty"`
+	// Total call volume. Calculation Formula: CallsOffered + CallsDialed.
+	//
 	// example:
 	//
 	// 0
 	TotalCalls *int64 `json:"TotalCalls,omitempty" xml:"TotalCalls,omitempty"`
+	// Total logon time, excluding break time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	TotalLoggedInTime *int64 `json:"TotalLoggedInTime,omitempty" xml:"TotalLoggedInTime,omitempty"`
+	// Total ready time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	TotalReadyTime *int64 `json:"TotalReadyTime,omitempty" xml:"TotalReadyTime,omitempty"`
+	// Total talk time, in seconds.
+	//
 	// example:
 	//
 	// 0
 	TotalTalkTime *int64 `json:"TotalTalkTime,omitempty" xml:"TotalTalkTime,omitempty"`
+	// Total post-processing time, in seconds.
+	//
 	// example:
 	//
 	// 0

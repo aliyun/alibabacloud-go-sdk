@@ -24,17 +24,30 @@ type iListRamUsersResponseBody interface {
 }
 
 type ListRamUsersResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *ListRamUsersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 24753D71-C91D-1A38-A8AD-372BF12453F6
@@ -113,15 +126,22 @@ func (s *ListRamUsersResponseBody) Validate() error {
 }
 
 type ListRamUsersResponseBodyData struct {
+	// A list of RAM users.
 	List []*ListRamUsersResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The returned page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 100
@@ -186,27 +206,44 @@ func (s *ListRamUsersResponseBodyData) Validate() error {
 }
 
 type ListRamUsersResponseBodyDataList struct {
+	// The UID of the Alibaba Cloud account to which the RAM user belongs.
+	//
 	// example:
 	//
 	// 15772400000****
-	AliyunUid   *int64  `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	AliyunUid *int64 `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	// The display name of the RAM user.
+	//
+	// example:
+	//
+	// 测试账号
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The email address of the RAM user.
+	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The logon name of the RAM user.
+	//
 	// example:
 	//
 	// agent
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	// The mobile number of the RAM user.
+	//
 	// example:
 	//
 	// 1382114****
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// Indicates whether the user is a primary account. A value of `false` indicates that the user is a RAM user.
+	//
 	// example:
 	//
 	// false
 	Primary *bool `json:"Primary,omitempty" xml:"Primary,omitempty"`
+	// The ID of the RAM user.
+	//
 	// example:
 	//
 	// 28036411123456****

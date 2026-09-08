@@ -24,17 +24,30 @@ type iGetDocumentUploadParametersResponseBody interface {
 }
 
 type GetDocumentUploadParametersResponseBody struct {
+	// Response code
+	//
 	// example:
 	//
 	// OK
-	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *GetDocumentUploadParametersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Response parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Request ID
+	//
 	// example:
 	//
 	// 9FBA26B0-462B-4D77-B78F-AF35560DBC71
@@ -113,28 +126,38 @@ func (s *GetDocumentUploadParametersResponseBody) Validate() error {
 }
 
 type GetDocumentUploadParametersResponseBodyData struct {
+	// AccessKeyId used for signing
+	//
 	// example:
 	//
 	// ****
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// Expired At
+	//
 	// example:
 	//
 	// 1647313420
 	ExpireTime *int32 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// OSS file path
+	//
 	// example:
 	//
 	// ccc-test/blacklist.xlsx
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// oss host
+	// OSS host
 	//
 	// example:
 	//
 	// https://ccc-v2-online.oss-cn-shanghai.aliyuncs.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// Signature policy
+	//
 	// example:
 	//
 	// Permit
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// Signature
+	//
 	// example:
 	//
 	// zi31STIMtIfa/UN2l+6lww****

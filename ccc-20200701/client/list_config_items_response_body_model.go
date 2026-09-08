@@ -24,17 +24,30 @@ type iListConfigItemsResponseBody interface {
 }
 
 type ListConfigItemsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of config items.
 	Data []*ListConfigItemsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The list of dynamic response parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -117,22 +130,32 @@ func (s *ListConfigItemsResponseBody) Validate() error {
 }
 
 type ListConfigItemsResponseBodyData struct {
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the config item. A name can be system-defined or custom. You can customize the value of a system-defined item. You can also create custom items with custom names and values.
+	//
 	// example:
 	//
 	// config-item
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the object to which the config item applies.
+	//
 	// example:
 	//
 	// ccc-test
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// The type of the object to which the config item applies.
+	//
 	// example:
 	//
 	// INSTANCE
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	// The value of the config item.
+	//
 	// example:
 	//
 	// 100

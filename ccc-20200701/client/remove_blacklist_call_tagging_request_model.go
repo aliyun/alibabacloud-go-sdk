@@ -18,16 +18,22 @@ type iRemoveBlacklistCallTaggingRequest interface {
 }
 
 type RemoveBlacklistCallTaggingRequest struct {
+	// ID of the Cloud Contact Center instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Call ID. Provide this field only for masked numbers (containing \\*). Do not provide it for unmasked numbers.
+	//
 	// example:
 	//
 	// job-6538214103685****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Phone number.
+	//
 	// This parameter is required.
 	//
 	// example:

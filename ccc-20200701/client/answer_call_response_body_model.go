@@ -24,17 +24,30 @@ type iAnswerCallResponseBody interface {
 }
 
 type AnswerCallResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *AnswerCallResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// List of response parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -113,11 +126,15 @@ func (s *AnswerCallResponseBody) Validate() error {
 }
 
 type AnswerCallResponseBodyData struct {
+	// Call context environment.
 	CallContext *AnswerCallResponseBodyDataCallContext `json:"CallContext,omitempty" xml:"CallContext,omitempty" type:"Struct"`
+	// System auto increment ID. Customers do not need to concern themselves with this.
+	//
 	// example:
 	//
 	// 103655
-	ContextId   *int64                                 `json:"ContextId,omitempty" xml:"ContextId,omitempty"`
+	ContextId *int64 `json:"ContextId,omitempty" xml:"ContextId,omitempty"`
+	// Agent context environment.
 	UserContext *AnswerCallResponseBodyDataUserContext `json:"UserContext,omitempty" xml:"UserContext,omitempty" type:"Struct"`
 }
 
@@ -171,15 +188,22 @@ func (s *AnswerCallResponseBodyData) Validate() error {
 }
 
 type AnswerCallResponseBodyDataCallContext struct {
+	// Call type.
+	//
 	// example:
 	//
 	// INBOUND
-	CallType        *string                                                 `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	CallType *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	// List of channels.
 	ChannelContexts []*AnswerCallResponseBodyDataCallContextChannelContexts `json:"ChannelContexts,omitempty" xml:"ChannelContexts,omitempty" type:"Repeated"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Call ID.
+	//
 	// example:
 	//
 	// job-6538214103685****
@@ -244,52 +268,86 @@ func (s *AnswerCallResponseBodyDataCallContext) Validate() error {
 }
 
 type AnswerCallResponseBodyDataCallContextChannelContexts struct {
+	// The call type of the channel.
+	//
 	// example:
 	//
 	// INBOUND
 	CallType *string `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	// The ingest endpoint ID.
+	//
 	// example:
 	//
 	// ch:user:1390501****->8032****:1609138902226:job-653821410368****
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The status of the voice channel.
+	//
 	// example:
 	//
 	// ANSWERED
-	ChannelState     *string `json:"ChannelState,omitempty" xml:"ChannelState,omitempty"`
+	ChannelState *string `json:"ChannelState,omitempty" xml:"ChannelState,omitempty"`
+	// Channel-associated data.
+	//
+	// example:
+	//
+	// a=b;c=d;
 	ChannelVariables *string `json:"ChannelVariables,omitempty" xml:"ChannelVariables,omitempty"`
+	// The callee of the voice channel.
+	//
 	// example:
 	//
 	// 1390501****
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	Index       *int64  `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The order in which the channel was created during the call procedure.
+	//
+	// example:
+	//
+	// 1
+	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The call ID.
+	//
 	// example:
 	//
 	// job-6538214103685****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The calling party of the ingest endpoint.
+	//
 	// example:
 	//
 	// 0830019****
 	Originator *string `json:"Originator,omitempty" xml:"Originator,omitempty"`
+	// The party that initiated the release of the voice channel, indicating who hung up first.
+	//
 	// example:
 	//
 	// 1390501****
 	ReleaseInitiator *string `json:"ReleaseInitiator,omitempty" xml:"ReleaseInitiator,omitempty"`
+	// The hang-up reason for the ingest endpoint, indicating why the current ingest endpoint was disconnected. The value corresponds to the response codes defined in the SIP protocol. Customers should refer to the SIP protocol to analyze the hang-up reason.
+	//
 	// example:
 	//
 	// 404 - No destination
 	ReleaseReason *string `json:"ReleaseReason,omitempty" xml:"ReleaseReason,omitempty"`
+	// The skill group ID associated with the ingest endpoint. In inbound scenarios, the associated skill group ID is determined by the skill group configured in the IVR transfer-to-agent module. In outbound scenarios, the associated skill group ID is the first skill group that the agent signed into.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// The UNIX timestamp of the most recent status change of the ingest endpoint, in milliseconds.
+	//
 	// example:
 	//
 	// 1609138903315
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The extension number of the agent associated with the voice channel.
+	//
 	// example:
 	//
 	// 8032****
 	UserExtension *string `json:"UserExtension,omitempty" xml:"UserExtension,omitempty"`
+	// The agent ID associated with the ingest endpoint. This field is empty if the ingest endpoint belongs to a customer.
+	//
 	// example:
 	//
 	// agent@ccc-test
@@ -435,51 +493,76 @@ func (s *AnswerCallResponseBodyDataCallContextChannelContexts) Validate() error 
 }
 
 type AnswerCallResponseBodyDataUserContext struct {
+	// Break status code, which can be either System-defined or Custom-defined. System-defined break codes include: Warm-up (temporary break state after an agent is published and before becoming idle), RingingTimeout (break caused by agent ringing timeout), and RejectCall (break caused by agent call rejection). There are no restrictions on Custom-defined status codes; customers can define them as needed for their business.
+	//
 	// example:
 	//
 	// Warm-up
 	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
+	// Device ID, the identity ID of a browser-based Web Real-Time Communication (WebRTC) softphone or a physical phone device. Only one type of device can be registered at a time.
+	//
 	// example:
 	//
 	// ACC-YUNBS-1.0.10-****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The agent\\"s extension number.
+	//
 	// example:
 	//
 	// 8032****
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The time when the last heartbeat was received from the agent, formatted as a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1609136956378
 	Heartbeat *int64 `json:"Heartbeat,omitempty" xml:"Heartbeat,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Call ID.
+	//
 	// example:
 	//
 	// job-6538214103685****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The agent\\"s personal phone number.
+	//
 	// example:
 	//
 	// 1324730****
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// Indicates whether the agent is in outbound-only mode.
+	//
 	// example:
 	//
 	// false
 	OutboundScenario *bool `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	// The most recent time the agent was reserved. Being reserved means an incoming call will soon be assigned to the agent. The value is formatted as a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1609136956378
-	Reserved               *int64    `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	Reserved *int64 `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	// List of skill group IDs that the agent has signed into.
 	SignedSkillGroupIdList []*string `json:"SignedSkillGroupIdList,omitempty" xml:"SignedSkillGroupIdList,omitempty" type:"Repeated"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Agent status.
+	//
 	// example:
 	//
 	// TALKING
 	UserState *string `json:"UserState,omitempty" xml:"UserState,omitempty"`
+	// Work mode.
+	//
 	// example:
 	//
 	// ON_SITE

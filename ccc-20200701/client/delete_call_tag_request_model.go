@@ -16,12 +16,16 @@ type iDeleteCallTagRequest interface {
 }
 
 type DeleteCallTagRequest struct {
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The phone number tag name. Ensure that the tag you specify has already been created.
+	//
 	// This parameter is required.
 	//
 	// example:

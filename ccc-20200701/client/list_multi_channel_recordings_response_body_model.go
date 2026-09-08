@@ -22,16 +22,28 @@ type iListMultiChannelRecordingsResponseBody interface {
 }
 
 type ListMultiChannelRecordingsResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Recording list.
 	Data []*ListMultiChannelRecordingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// B19CD719-9F65-56A6-8B79-DA4282EA4797
@@ -105,40 +117,64 @@ func (s *ListMultiChannelRecordingsResponseBody) Validate() error {
 }
 
 type ListMultiChannelRecordingsResponseBodyData struct {
+	// Agent call channel ID.
+	//
 	// example:
 	//
 	// ch-user-8526899****-8602****-1656926504363-job-25920271311543****
 	AgentChannelId *string `json:"AgentChannelId,omitempty" xml:"AgentChannelId,omitempty"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
-	AgentId   *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// Agent name.
+	//
+	// example:
+	//
+	// 坐席小王
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// Call ID.
+	//
 	// example:
 	//
 	// job-25920271311543****
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// Recording duration, in milliseconds.
+	//
 	// example:
 	//
 	// 56321
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Recording file name.
+	//
 	// example:
 	//
 	// job-25920271311543****-798f1e90-1f82-42da-914c-46580c8f4c85-1656926518491.mkv
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// OSS download URL for the recording file. Note the time-to-live (TTL) of the download URL. The download URL is valid for 1 day.
+	//
 	// example:
 	//
 	// https://ccc-v2-shanghai.oss-cn-shanghai.aliyuncs.com/ccc-test/job-25920271311543****-798f1e90-1f82-42da-914c-46580c8f4c85-1656926518491.mkv?Expires=1657014031&OSSAccessKeyId=****&Signature=****
-	FileUrl          *string                                                       `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// List of call hold time segments.
 	HoldTimeSegments []*ListMultiChannelRecordingsResponseBodyDataHoldTimeSegments `json:"HoldTimeSegments,omitempty" xml:"HoldTimeSegments,omitempty" type:"Repeated"`
+	// RAM account ID for the agent.
+	//
 	// example:
 	//
 	// 22807673106369****
 	RamId *string `json:"RamId,omitempty" xml:"RamId,omitempty"`
+	// Skill group ID.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// Recording start time, in UNIX timestamp format, in milliseconds.
+	//
 	// example:
 	//
 	// 1656926518491
@@ -266,7 +302,17 @@ func (s *ListMultiChannelRecordingsResponseBodyData) Validate() error {
 }
 
 type ListMultiChannelRecordingsResponseBodyDataHoldTimeSegments struct {
-	EndTime   *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end time of the call hold, in milliseconds.
+	//
+	// example:
+	//
+	// 1687860143925
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Call hold start time, in milliseconds.
+	//
+	// example:
+	//
+	// 1673255098049
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

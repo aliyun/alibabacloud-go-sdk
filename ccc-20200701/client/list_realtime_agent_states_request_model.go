@@ -36,53 +36,80 @@ type iListRealtimeAgentStatesRequest interface {
 }
 
 type ListRealtimeAgentStatesRequest struct {
+	// List of agent IDs, formatted as a JSON array string. The array can contain up to 20 elements. This parameter is optional and defaults to empty, which matches all agents under the current instance.
+	//
 	// example:
 	//
 	// ["agent1@ccc-test", "agent2@ccc-test"]
 	AgentIdList *string `json:"AgentIdList,omitempty" xml:"AgentIdList,omitempty"`
+	// Perform fuzzy matching by agent name.
+	//
 	// example:
 	//
 	// agent
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// Filters by a list of call types. The value is a string in JSON array format, where each array element is a call type. This parameter is optional and defaults to empty, which matches all call types.
+	//
 	// example:
 	//
-	// ["INBOUND", "OUTBOUND"]
+	// ["Inbound", "Outbound"]
 	CallTypeList *string `json:"CallTypeList,omitempty" xml:"CallTypeList,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MediaType  *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Media type. The default is Audio. Other options include Chat (text), Video, and ALL.
+	//
+	// example:
+	//
+	// AUDIO
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Filters agents who are in outbound-only mode. This parameter is optional and defaults to empty, which means no filtering by outbound-only mode is applied.
+	//
 	// example:
 	//
 	// false
 	OutboundScenario *bool `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	// Page number, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Performs fuzzy filtering based on the full or partial agent display name, agent ID, or agent extension number. This parameter is optional and defaults to empty, which means no filtering is applied.
+	//
 	// example:
 	//
 	// agent
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// Filter by skill group ID. This parameter is optional and defaults to empty, which means no filtering is applied.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
 	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// Filters by a list of statuses. This parameter is optional and defaults to empty, which matches all statuses.
+	//
 	// example:
 	//
 	// ["ACW", "Dialing"]
 	StateList *string `json:"StateList,omitempty" xml:"StateList,omitempty"`
+	// Filter by work mode list. This parameter is optional and defaults to empty, which means all work modes are matched.
+	//
 	// example:
 	//
 	// ["OFFICE_PHONE","ON_SITE"]

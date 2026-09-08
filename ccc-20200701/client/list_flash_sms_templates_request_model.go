@@ -18,16 +18,22 @@ type iListFlashSmsTemplatesRequest interface {
 }
 
 type ListFlashSmsTemplatesRequest struct {
+	// Flash SMS configuration ID.
+	//
 	// example:
 	//
 	// 71b396fa-1*********-70b7c0
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Flash SMS provider ID.
+	//
 	// example:
 	//
 	// Uincall

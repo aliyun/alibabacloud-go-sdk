@@ -22,16 +22,28 @@ type iListCampaignTrendingReportResponseBody interface {
 }
 
 type ListCampaignTrendingReportResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// List of statistical data points.
 	Data []*ListCampaignTrendingReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 6CCEF32F-8614-535F-A1D9-D85B8C0DC4F0
@@ -105,41 +117,95 @@ func (s *ListCampaignTrendingReportResponseBody) Validate() error {
 }
 
 type ListCampaignTrendingReportResponseBodyData struct {
+	// Number of agents on break.
+	//
 	// example:
 	//
 	// 0
-	BreakAgents    *int64 `json:"BreakAgents,omitempty" xml:"BreakAgents,omitempty"`
+	BreakAgents *int64 `json:"BreakAgents,omitempty" xml:"BreakAgents,omitempty"`
+	// Number of agents in break status.
+	//
+	// example:
+	//
+	// 1
 	BreakingAgents *int64 `json:"BreakingAgents,omitempty" xml:"BreakingAgents,omitempty"`
+	// The concurrent call volume, which refers to the number of simultaneous outbound calls.
+	//
 	// example:
 	//
 	// 1
 	Concurrency *int64 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	// The timestamp for segmented statistics, formatted as a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1634037840000
 	Datetime *int64 `json:"Datetime,omitempty" xml:"Datetime,omitempty"`
+	// The number of published agents.
+	//
 	// example:
 	//
 	// 2
-	LoggedInAgents                 *int64 `json:"LoggedInAgents,omitempty" xml:"LoggedInAgents,omitempty"`
+	LoggedInAgents *int64 `json:"LoggedInAgents,omitempty" xml:"LoggedInAgents,omitempty"`
+	// The number of agents in outbound-only mode who are on a break.
+	//
+	// example:
+	//
+	// 2
 	OutboundScenarioBreakingAgents *int64 `json:"OutboundScenarioBreakingAgents,omitempty" xml:"OutboundScenarioBreakingAgents,omitempty"`
-	OutboundScenarioReadyAgents    *int64 `json:"OutboundScenarioReadyAgents,omitempty" xml:"OutboundScenarioReadyAgents,omitempty"`
-	OutboundScenarioTalkingAgents  *int64 `json:"OutboundScenarioTalkingAgents,omitempty" xml:"OutboundScenarioTalkingAgents,omitempty"`
-	OutboundScenarioWorkingAgents  *int64 `json:"OutboundScenarioWorkingAgents,omitempty" xml:"OutboundScenarioWorkingAgents,omitempty"`
+	// Number of agents in idle status under outbound-only mode.
+	//
+	// example:
+	//
+	// 1
+	OutboundScenarioReadyAgents *int64 `json:"OutboundScenarioReadyAgents,omitempty" xml:"OutboundScenarioReadyAgents,omitempty"`
+	// The number of agents in outbound-only mode who are currently on a call.
+	//
+	// example:
+	//
+	// 1
+	OutboundScenarioTalkingAgents *int64 `json:"OutboundScenarioTalkingAgents,omitempty" xml:"OutboundScenarioTalkingAgents,omitempty"`
+	// Number of agents in post-processing status under outbound-only mode.
+	//
+	// example:
+	//
+	// 2
+	OutboundScenarioWorkingAgents *int64 `json:"OutboundScenarioWorkingAgents,omitempty" xml:"OutboundScenarioWorkingAgents,omitempty"`
+	// Number of idle agents.
+	//
 	// example:
 	//
 	// 2
 	ReadyAgents *int64 `json:"ReadyAgents,omitempty" xml:"ReadyAgents,omitempty"`
-	StatsTime   *int64 `json:"StatsTime,omitempty" xml:"StatsTime,omitempty"`
+	// Time of the statistical data point, formatted as a UNIX timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1604639129000
+	StatsTime *int64 `json:"StatsTime,omitempty" xml:"StatsTime,omitempty"`
+	// Deprecated. Refer to TalkAgents.
+	//
 	// example:
 	//
 	// 0
-	TalkAgents    *int64 `json:"TalkAgents,omitempty" xml:"TalkAgents,omitempty"`
+	TalkAgents *int64 `json:"TalkAgents,omitempty" xml:"TalkAgents,omitempty"`
+	// The number of agents in a call.
+	//
+	// example:
+	//
+	// 4
 	TalkingAgents *int64 `json:"TalkingAgents,omitempty" xml:"TalkingAgents,omitempty"`
+	// Deprecated. Refer to WorkingAgents.
+	//
 	// example:
 	//
 	// 0
-	WorkAgents    *int64 `json:"WorkAgents,omitempty" xml:"WorkAgents,omitempty"`
+	WorkAgents *int64 `json:"WorkAgents,omitempty" xml:"WorkAgents,omitempty"`
+	// Number of agents in post-processing status.
+	//
+	// example:
+	//
+	// 0
 	WorkingAgents *int64 `json:"WorkingAgents,omitempty" xml:"WorkingAgents,omitempty"`
 }
 

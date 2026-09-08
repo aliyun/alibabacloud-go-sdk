@@ -18,13 +18,22 @@ type iGetMonoRecordingRequest interface {
 }
 
 type GetMonoRecordingRequest struct {
+	// Call ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-6538214103689****
-	ContactId     *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	ExpireSeconds *int64  `json:"ExpireSeconds,omitempty" xml:"ExpireSeconds,omitempty"`
+	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// Expiration time, in seconds.
+	//
+	// example:
+	//
+	// 300
+	ExpireSeconds *int64 `json:"ExpireSeconds,omitempty" xml:"ExpireSeconds,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

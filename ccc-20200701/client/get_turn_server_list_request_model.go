@@ -14,6 +14,8 @@ type iGetTurnServerListRequest interface {
 }
 
 type GetTurnServerListRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -20,15 +20,26 @@ type iCreateCallSummaryRequest interface {
 }
 
 type CreateCallSummaryRequest struct {
+	// The ID of the session.
+	//
 	// example:
 	//
 	// job-522327189435260928
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	Context   *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// Summary information
+	//
+	// example:
+	//
+	// {"summaryTitle":"标题","summaryContent":"内容","keywords":"关键信息"}
+	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// Customer ID
+	//
 	// example:
 	//
 	// 51e155ce-3747-*****-b402-13c69597b920
 	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	// Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:

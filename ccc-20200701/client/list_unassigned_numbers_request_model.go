@@ -18,18 +18,24 @@ type iListUnassignedNumbersRequest interface {
 }
 
 type ListUnassignedNumbersRequest struct {
+	// Page number for paging, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Performs Fuzzy Matching based on the number. This parameter is optional and defaults to empty. An empty value indicates no filtering.
+	//
 	// example:
 	//
 	// 0833

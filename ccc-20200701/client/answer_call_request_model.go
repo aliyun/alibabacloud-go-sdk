@@ -20,22 +20,30 @@ type iAnswerCallRequest interface {
 }
 
 type AnswerCallRequest struct {
+	// The device ID. This parameter is meaningless and can be filled with any value.
+	//
 	// example:
 	//
 	// device
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The call ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-65382141036853491
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test

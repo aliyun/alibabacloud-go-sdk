@@ -16,12 +16,16 @@ type iAbortCampaignRequest interface {
 }
 
 type AbortCampaignRequest struct {
+	// Predictive outbound calling Activity ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6badb397-a8b5-40b6-21019d382a09
 	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -24,17 +24,30 @@ type iGetUserResponseBody interface {
 }
 
 type GetUserResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *GetUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Extension parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -113,57 +126,98 @@ func (s *GetUserResponseBody) Validate() error {
 }
 
 type GetUserResponseBodyData struct {
+	// Agent profile picture URL.
+	//
+	// example:
+	//
+	// http://xxx.com/xxx.jpg
 	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	// SIP phone extension number. If the agent has registered a SIP phone, this parameter is the extension number of the SIP phone device.
+	//
 	// example:
 	//
 	// 8033****
 	DeviceExt *string `json:"DeviceExt,omitempty" xml:"DeviceExt,omitempty"`
+	// Device ID, which is the identity of a browser-based Web Real-Time Communication (WebRTC) softphone or a physical phone device. Only one type of device can be registered at a time.
+	//
 	// example:
 	//
 	// ACC-YUNBS-1.0.10-****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The status of the SIP phone device. If no SIP phone is registered, the status is UNREGISTERED (Unregistered). If a SIP phone was previously registered but is currently offline, the status is OFFLINE (Offline). If a SIP phone is registered and currently online, the status is ONLINE (Online).
+	//
 	// example:
 	//
 	// OFFLINE
 	DeviceState *string `json:"DeviceState,omitempty" xml:"DeviceState,omitempty"`
+	// Agent\\"s employee ID.
+	//
 	// example:
 	//
 	// 1001
-	DisplayId   *string `json:"DisplayId,omitempty" xml:"DisplayId,omitempty"`
+	DisplayId *string `json:"DisplayId,omitempty" xml:"DisplayId,omitempty"`
+	// Agent display name.
+	//
+	// example:
+	//
+	// 坐席小王
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Mailbox.
+	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// Agent extension number.
+	//
 	// example:
 	//
 	// 8003****
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Agent logon name.
+	//
 	// example:
 	//
 	// agent
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	// Agent\\"s personal phone number.
+	//
 	// example:
 	//
 	// 1391234****
-	Mobile   *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// Agent nickname
+	//
+	// example:
+	//
+	// 阿云
 	Nickname *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	// Role ID, in the format: role\\@instance ID.
+	//
 	// example:
 	//
 	// Admin@ccc-test
 	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// Role name.
+	//
 	// example:
 	//
 	// Admin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Work mode.
+	//
 	// example:
 	//
 	// ON_SITE

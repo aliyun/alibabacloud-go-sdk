@@ -24,20 +24,34 @@ type iExportDoNotCallNumbersResponseBody interface {
 }
 
 type ExportDoNotCallNumbersResponseBody struct {
+  // The response code.
+  // 
   // example:
   // 
   // OK
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // The OSS download link for the exported file. The link is valid for 24 hours.
+  // 
   // example:
   // 
   // https://****.oss-cn-shanghai.aliyuncs.com/ccc-test/blacklist.xlsx?Expires=3294624578&OSSAccessKeyId=****&Signature=****
   Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+  // The HTTP status code.
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+  // The response message.
+  // 
+  // example:
+  // 
+  // 无
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // The response parameters.
   Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+  // The request ID.
+  // 
   // example:
   // 
   // BA03159C-E808-4FF1-B27E-A61B6E888D7F

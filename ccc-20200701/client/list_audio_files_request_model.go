@@ -22,26 +22,48 @@ type iListAudioFilesRequest interface {
 }
 
 type ListAudioFilesRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The paging ordinal number, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Usage    *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Converting (transforming)<br>
+	//
+	// Completed (transformation completed)<br>
+	//
+	// Failed (transformation failed)<br>
+	//
+	// If this parameter is not specified, resources in all statuses are queried.
+	//
+	// example:
+	//
+	// Completed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Purpose of the audio file. The default value is General (used in scenarios such as IVR). Other optional values include HoldMusic (hold music during calls).
+	//
+	// example:
+	//
+	// General
+	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
 }
 
 func (s ListAudioFilesRequest) String() string {

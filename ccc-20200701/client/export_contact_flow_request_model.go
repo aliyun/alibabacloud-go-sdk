@@ -18,18 +18,24 @@ type iExportContactFlowRequest interface {
 }
 
 type ExportContactFlowRequest struct {
+  // The ID of the IVR contact flow.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // lc-uf61xdtm0mf73k
   FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+  // The instance ID.
+  // 
   // This parameter is required.
   // 
   // example:
   // 
   // 9cfad875-6260-4a53-ab6e-b13e3fb3xxxx
   InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+  // The request ID.
+  // 
   // example:
   // 
   // AF9834D8-6D09-4A1B-BADB-B019D9D444C8

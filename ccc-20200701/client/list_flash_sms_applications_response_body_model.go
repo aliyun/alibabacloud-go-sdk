@@ -24,17 +24,30 @@ type iListFlashSmsApplicationsResponseBody interface {
 }
 
 type ListFlashSmsApplicationsResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListFlashSmsApplicationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// List of error parameters.
+	Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 7BEEA660-A45A-45E3-98CC-AFC65E715C23
@@ -113,15 +126,22 @@ func (s *ListFlashSmsApplicationsResponseBody) Validate() error {
 }
 
 type ListFlashSmsApplicationsResponseBodyData struct {
+	// List of flash SMS configurations.
 	List []*ListFlashSmsApplicationsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// Page number. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 1
@@ -186,19 +206,32 @@ func (s *ListFlashSmsApplicationsResponseBodyData) Validate() error {
 }
 
 type ListFlashSmsApplicationsResponseBodyDataList struct {
+	// Registration ID.
+	//
 	// example:
 	//
 	// 71b396fa-***********-bd80e070b7c0
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Configuration name.
+	//
+	// example:
+	//
+	// 闪信配置
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Flash SMS provider ID.
+	//
 	// example:
 	//
 	// Uincall
 	ProviderId *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
+	// Configuration content.
+	//
 	// example:
 	//
 	// {"user":"600******_dev","pwd":"85abf3**********f494e","account":"6004******"}

@@ -22,16 +22,28 @@ type iListGroupChatMessagesResponseBody interface {
 }
 
 type ListGroupChatMessagesResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *ListGroupChatMessagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code returned in the response. A value of 200 indicates a successful request.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 2263B273-AC1B-44EB-BA98-87F2322C6780
@@ -101,7 +113,10 @@ func (s *ListGroupChatMessagesResponseBody) Validate() error {
 }
 
 type ListGroupChatMessagesResponseBodyData struct {
+	// Message list.
 	Messages []*ListGroupChatMessagesResponseBodyDataMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	// Token for the next page.
+	//
 	// example:
 	//
 	// 54d1a616d95a4a01ba58967a9115b649
@@ -148,31 +163,58 @@ func (s *ListGroupChatMessagesResponseBodyData) Validate() error {
 }
 
 type ListGroupChatMessagesResponseBodyDataMessages struct {
+	// Message content.
+	//
+	// example:
+	//
+	// {"variables":{},"text":"<p>好的，不客气</p>","contentType":"Text","subContentType":"richtext"}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Call ID.
+	//
 	// example:
 	//
 	// chat-65382141036853491
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Indicates whether the message was revoked.
+	//
 	// example:
 	//
 	// false
 	Recalled *bool `json:"Recalled,omitempty" xml:"Recalled,omitempty"`
+	// Sender profile picture URL.
+	//
 	// example:
 	//
 	// http://xxxxx.com
 	SenderAvatarUrl *string `json:"SenderAvatarUrl,omitempty" xml:"SenderAvatarUrl,omitempty"`
+	// User ID of the message sender.
+	//
 	// example:
 	//
 	// 64bb4ececc34fc5ec1ca1153
 	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	// Sender name.
+	//
 	// example:
 	//
 	// test-agent@test-instanceId
 	SenderName *string `json:"SenderName,omitempty" xml:"SenderName,omitempty"`
+	// Sender type.
+	//
+	// Valid values:
+	//
+	// - **ADMIN**: system
+	//
+	// - **CUSTOMER**: visitor
+	//
+	// - **AGENT**: agent
+	//
 	// example:
 	//
 	// CUSTOMER
 	SenderType *string `json:"SenderType,omitempty" xml:"SenderType,omitempty"`
+	// Message timestamp, in Unix timestamp format, measured in milliseconds.
+	//
 	// example:
 	//
 	// 1696126980371

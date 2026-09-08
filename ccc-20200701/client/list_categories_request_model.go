@@ -18,16 +18,22 @@ type iListCategoriesRequest interface {
 }
 
 type ListCategoriesRequest struct {
+	// The ID of the ticket category. Specify this parameter to return information about the subcategories of the specified category. If you leave this parameter empty, information about all categories in the instance is returned.
+	//
 	// example:
 	//
 	// 43c2671b-***-***-86d0-6bd187905cc8
 	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The category type.
+	//
 	// example:
 	//
 	// Ticket

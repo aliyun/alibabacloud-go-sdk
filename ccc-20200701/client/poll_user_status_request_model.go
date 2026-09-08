@@ -18,16 +18,22 @@ type iPollUserStatusRequest interface {
 }
 
 type PollUserStatusRequest struct {
+	// The Device ID. This parameter is meaningless and can be filled with any value.
+	//
 	// example:
 	//
 	// device
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test

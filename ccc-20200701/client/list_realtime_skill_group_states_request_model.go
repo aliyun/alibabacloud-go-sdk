@@ -22,25 +22,48 @@ type iListRealtimeSkillGroupStatesRequest interface {
 }
 
 type ListRealtimeSkillGroupStatesRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MediaType  *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Media type.
+	//
+	// Enumeration values:
+	//
+	// AUDIO: Voice.
+	//
+	// VIDEO: Video.
+	//
+	// CHAT: Message.
+	//
+	// ALL: All.
+	//
+	// example:
+	//
+	// AUDIO
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// Page number, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// List of skill group IDs for which data is queried. If not specified, all skill groups under the current instance are queried. The format is a JSON array string, with each array element being a skill group ID.
+	//
 	// example:
 	//
 	// ["skillgroup1@ccc-test", "skillgroup2@ccc-test"]

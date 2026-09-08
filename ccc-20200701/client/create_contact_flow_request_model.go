@@ -22,22 +22,46 @@ type iCreateContactFlowRequest interface {
 }
 
 type CreateContactFlowRequest struct {
+	// IVR content.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {"activities":[{"type":"INCOMING_CALL","id":"e98f0d47","name":"开始","properties":{"position":{"x":263,"y":164}},"events":[{"event":"complete","next":"2d3ad2c2","edgeId":"41f7dbd0"}],"nodeIndex":0},{"type":"HANGUP","id":"bd4f37e2","name":"挂机","properties":{"position":{"x":765,"y":185}},"events":[{"event":"complete","next":null}],"nodeIndex":999},{"type":"PLAY_SAY","id":"2d3ad2c2","name":"放音","properties":{"say":"您好，欢迎来到云联络中心。","audioResourceId":"","position":{"x":485.5,"y":153.5},"audioType":"tts","audioInterrupt":false},"events":[{"event":"complete","next":"bd4f37e2","edgeId":"e1af4f1f"}],"nodeIndex":1}],"description":""}
 	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// Version description.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1.0
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Contact flow name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 默认流程
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Flow type.<br>
+	//
+	// Main flow: MAIN_FLOW<br>
+	//
+	// Child flow: SUB_FLOW<br>
+	//
+	// Survey flow: SURVEY_FLOW<br><br><br>
+	//
 	// This parameter is required.
 	//
 	// example:

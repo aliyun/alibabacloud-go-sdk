@@ -22,16 +22,26 @@ type iListBlacklistCallTaggingsResponseBody interface {
 }
 
 type ListBlacklistCallTaggingsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data.
 	Data []*ListBlacklistCallTaggingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	//
 	// example:
@@ -107,14 +117,20 @@ func (s *ListBlacklistCallTaggingsResponseBody) Validate() error {
 }
 
 type ListBlacklistCallTaggingsResponseBodyData struct {
+	// Indicates whether the number has a blacklist tag.
+	//
 	// example:
 	//
 	// true
 	Blacklisted *bool `json:"Blacklisted,omitempty" xml:"Blacklisted,omitempty"`
+	// The call ID.
+	//
 	// example:
 	//
 	// job-481841171213393920
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The phone number.
+	//
 	// example:
 	//
 	// 1521083xxxx

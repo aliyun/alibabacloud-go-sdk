@@ -24,34 +24,46 @@ type iListPersonalNumbersOfUserRequest interface {
 }
 
 type ListPersonalNumbersOfUserRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether the phone numbers are associated with the agent. If true, the API queries the list of personal outbound phone numbers associated with the UserId. If false, it queries the list of personal outbound phone numbers that can be associated with but are not currently associated with the UserId. This parameter is typically used together with the AddPersonalNumbersToUser API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	IsMember *bool `json:"IsMember,omitempty" xml:"IsMember,omitempty"`
+	// Page number, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Fuzzy matching based on phone number. Optional. Default value is empty if not specified.
+	//
 	// example:
 	//
 	// 0833
 	SearchPattern *string `json:"SearchPattern,omitempty" xml:"SearchPattern,omitempty"`
+	// Agent ID.
+	//
 	// This parameter is required.
 	//
 	// example:

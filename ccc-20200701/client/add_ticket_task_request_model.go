@@ -24,30 +24,50 @@ type iAddTicketTaskRequest interface {
 }
 
 type AddTicketTaskRequest struct {
+	// The assignee for the signature.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// assignee@ccc-test
 	Assignee *string `json:"Assignee,omitempty" xml:"Assignee,omitempty"`
+	// Comments.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 请assignee处理。
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The position to add the signature.
+	//
+	// - Before: Before the current handler.
+	//
+	// - After: After the current handler.
+	//
 	// example:
 	//
 	// After
 	Position *string `json:"Position,omitempty" xml:"Position,omitempty"`
+	// The ticket flow node ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3b8c672f-48f6-45f5-bf41-9d4cb2b4a716
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The ticket ID.
+	//
 	// This parameter is required.
 	//
 	// example:

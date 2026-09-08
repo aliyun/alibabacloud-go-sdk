@@ -20,14 +20,28 @@ type iModifySkillGroupRequest interface {
 }
 
 type ModifySkillGroupRequest struct {
+	// Description of the skill group. This parameter is optional and defaults to empty.
+	//
+	// example:
+	//
+	// 云联络中心的新测试技能组。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Display name of the skill group, which must be 1 to 64 characters in length.
+	//
+	// example:
+	//
+	// 新测试技能组
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Skill group ID.
+	//
 	// This parameter is required.
 	//
 	// example:

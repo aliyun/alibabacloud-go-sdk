@@ -18,16 +18,22 @@ type iResetAgentStateRequest interface {
 }
 
 type ResetAgentStateRequest struct {
+	// A string that identifies the device. The value is not processed by the system and can be any string.
+	//
 	// example:
 	//
 	// device
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// The ID of the Cloud Call Center (CCC) instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the agent. This parameter is optional. If omitted, the agent mapped to the current RAM account is reset.
+	//
 	// example:
 	//
 	// agent@ccc-test

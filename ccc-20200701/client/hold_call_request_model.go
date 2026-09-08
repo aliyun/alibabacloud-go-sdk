@@ -24,29 +24,44 @@ type iHoldCallRequest interface {
 }
 
 type HoldCallRequest struct {
+	// Channel ID to be held.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ch:customer:010123****->1318888****:1609255715825:job-6582589278232****
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// A unique ID provided by the agent endpoint to represent an agent workbench. An agent can have multiple workbenches of different types, such as browser, iOS, or Android, but only one can be active at a time.
+	//
 	// example:
 	//
 	// ACC-YUNBS-1.0.10-****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Call job ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-6582589278232****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Name of the hold music. This parameter is optional and defaults to empty.
+	//
+	// example:
+	//
+	// 无
 	Music *string `json:"Music,omitempty" xml:"Music,omitempty"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test

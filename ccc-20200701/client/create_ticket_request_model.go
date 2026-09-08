@@ -26,30 +26,50 @@ type iCreateTicketRequest interface {
 }
 
 type CreateTicketRequest struct {
+	// The ID of the call.
+	//
 	// example:
 	//
 	// job-38860977107324****
 	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	Context   *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// Ticket field information.
+	//
+	// example:
+	//
+	// {"productName":"玩具1"}
+	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// Customer ID, the customer ID in Cloud Contact Center customer profiles.
+	//
 	// example:
 	//
 	// 51e155ce-3747-4f21-b402-13c69597b920
 	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Ticket source.
+	//
 	// example:
 	//
 	// CHAT
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// Ticket template ID.
+	//
 	// example:
 	//
 	// e9e4c76c-948d-4a6e-9ce2-9da0f5967a73
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Title      *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// Ticket title.
+	//
+	// example:
+	//
+	// 售后工单。
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s CreateTicketRequest) String() string {

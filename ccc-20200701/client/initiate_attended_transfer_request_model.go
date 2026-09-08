@@ -42,41 +42,106 @@ type iInitiateAttendedTransferRequest interface {
 }
 
 type InitiateAttendedTransferRequest struct {
+	// The queuing priority when transferring to a skill group queue. Valid values range from 0 to 9, where 0 is the highest priority and 9 is the lowest.
+	//
+	// example:
+	//
+	// 5
 	CallPriority *int32 `json:"CallPriority,omitempty" xml:"CallPriority,omitempty"`
+	// Device ID. This parameter is meaningless and can be filled with any value.
+	//
 	// example:
 	//
 	// ACC-YUNBS-1.0.10-****
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The call ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-6538214103685****
-	JobId                    *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	QueuingOverflowThreshold *int64  `json:"QueuingOverflowThreshold,omitempty" xml:"QueuingOverflowThreshold,omitempty"`
-	QueuingTimeoutSeconds    *int64  `json:"QueuingTimeoutSeconds,omitempty" xml:"QueuingTimeoutSeconds,omitempty"`
-	RoutingType              *string `json:"RoutingType,omitempty" xml:"RoutingType,omitempty"`
-	StrategyName             *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
-	StrategyParams           *string `json:"StrategyParams,omitempty" xml:"StrategyParams,omitempty"`
-	Tags                     *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The queuing overflow threshold when the transfer target is a skill group queue. The default value is 0, which means no overflow occurs.
+	//
+	// example:
+	//
+	// 0
+	QueuingOverflowThreshold *int64 `json:"QueuingOverflowThreshold,omitempty" xml:"QueuingOverflowThreshold,omitempty"`
+	// The queuing timeout period in seconds when the transfer target is a skill group queue.
+	//
+	// example:
+	//
+	// 10
+	QueuingTimeoutSeconds *int64 `json:"QueuingTimeoutSeconds,omitempty" xml:"QueuingTimeoutSeconds,omitempty"`
+	// The call assignment type. Valid values are Automatic or Manual. If this parameter is empty, the default value is Automatic, which is also the current system\\"s default behavior. When Manual is selected, you must invoke APIs such as ClaimCall to assign the call to a specific agent.
+	//
+	// example:
+	//
+	// Automatic
+	RoutingType *string `json:"RoutingType,omitempty" xml:"RoutingType,omitempty"`
+	// The policy name for agent assignment when transferring to a skill group queue.
+	//
+	// example:
+	//
+	// MOST_IDLE，MOST_SKILLED，MOST_ACQUAINTED，CUSTOMIZED等
+	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	// The policy parameters for agent assignment when transferring to a skill group queue.
+	//
+	// example:
+	//
+	// 当分配策略为CUSTOMIZED时，本参数的内容为如下格式：
+	//
+	//  {
+	//
+	//   "functionId": "512fed64-e379-400f-a1a5-14d5730xxxxx",
+	//
+	//   "functionName": "routing-strategy-test-2"
+	//
+	// }
+	StrategyParams *string `json:"StrategyParams,omitempty" xml:"StrategyParams,omitempty"`
+	// Ingest endpoint data, primarily used for extension requirements. Regular users do not need to concern themselves with this.
+	//
+	// example:
+	//
+	// a=b
+	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// Timeout duration for the consultation transfer, in seconds. If the transferee does not answer within the specified time, the call is disconnected. This field is optional. Default value is 30 seconds.
+	//
 	// example:
 	//
 	// 60
 	TimeoutSeconds *int32 `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	// The transferee, which can be an agent ID or a skill group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// agent2@ccc-test
-	Transferee     *string `json:"Transferee,omitempty" xml:"Transferee,omitempty"`
+	Transferee *string `json:"Transferee,omitempty" xml:"Transferee,omitempty"`
+	// The destination type for the transfer. Valid values are AGENT, SKILL_GROUP, and EXTERNAL. If this parameter is not provided, the system determines the destination type based on the format of the target number. If inaccurate detection occurs, explicitly specify this parameter.
+	//
+	// example:
+	//
+	// SKILL_GROUP
 	TransfereeType *string `json:"TransfereeType,omitempty" xml:"TransfereeType,omitempty"`
-	Transferor     *string `json:"Transferor,omitempty" xml:"Transferor,omitempty"`
+	// The party initiating the transfer. When transferring to an external number, this parameter specifies the caller number. This parameter is invalid when transferring to an internal agent or skill group; in such cases, the initiator is determined by the UserId parameter.
+	//
+	// example:
+	//
+	// 无
+	Transferor *string `json:"Transferor,omitempty" xml:"Transferor,omitempty"`
+	// The agent ID initiating the consultation transfer.
+	//
 	// example:
 	//
 	// agent@ccc-test

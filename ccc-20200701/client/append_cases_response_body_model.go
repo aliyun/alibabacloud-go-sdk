@@ -22,16 +22,27 @@ type iAppendCasesResponseBody interface {
 }
 
 type AppendCasesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
 	Code *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data []*AppendCasesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// BC976D32-AC4C-4E0F-8AA9-F4BC6C4E2B3E

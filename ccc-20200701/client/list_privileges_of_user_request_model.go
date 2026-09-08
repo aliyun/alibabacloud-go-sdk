@@ -14,6 +14,8 @@ type iListPrivilegesOfUserRequest interface {
 }
 
 type ListPrivilegesOfUserRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

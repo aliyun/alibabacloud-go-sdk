@@ -16,12 +16,16 @@ type iStartEditContactFlowRequest interface {
 }
 
 type StartEditContactFlowRequest struct {
+	// The contact flow ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 798e83a9-5140-4039-afa1-761ca4cca2df
 	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

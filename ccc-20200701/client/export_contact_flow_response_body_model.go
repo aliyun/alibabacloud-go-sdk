@@ -24,20 +24,34 @@ type iExportContactFlowResponseBody interface {
 }
 
 type ExportContactFlowResponseBody struct {
+  // The response code.
+  // 
   // example:
   // 
   // OK
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+  // The data.
+  // 
   // example:
   // 
   // {}
   FlowPackageData *string `json:"FlowPackageData,omitempty" xml:"FlowPackageData,omitempty"`
+  // The HTTP status code.
+  // 
   // example:
   // 
   // 200
   HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+  // The response message.
+  // 
+  // example:
+  // 
+  // 无
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+  // The response parameters.
   Params []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+  // The request ID.
+  // 
   // example:
   // 
   // DE803553-8AA9-4B9D-9E4E-A82BC69EDCEE

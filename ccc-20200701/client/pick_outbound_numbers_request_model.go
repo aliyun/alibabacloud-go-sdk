@@ -20,22 +20,30 @@ type iPickOutboundNumbersRequest interface {
 }
 
 type PickOutboundNumbersRequest struct {
+	// Called number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1388888****
 	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// The desired quantity of selectable numbers to return. Default is 1.
+	//
 	// example:
 	//
 	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// A collection of skill group IDs, formatted as a JSON array string. Each array element is a skill group ID. Numbers are associated with skill groups, and this parameter specifies from which skill groups to select numbers.
+	//
 	// This parameter is required.
 	//
 	// example:

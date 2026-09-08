@@ -20,24 +20,32 @@ type iStartPrivacyCallRequest interface {
 }
 
 type StartPrivacyCallRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ALIPUBB7A727C170949
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The callee\\"s number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1888888****
 	Callee *string `json:"Callee,omitempty" xml:"Callee,omitempty"`
+	// The caller\\"s number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0109810****
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// The ID of the Cloud Contact Center (CCC) instance.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -22,16 +22,28 @@ type iGetChatRoutingProfileResponseBody interface {
 }
 
 type GetChatRoutingProfileResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *GetChatRoutingProfileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 30C7D235-DDCF-4C7F-A462-5E2598252C2B
@@ -101,6 +113,16 @@ func (s *GetChatRoutingProfileResponseBody) Validate() error {
 }
 
 type GetChatRoutingProfileResponseBodyData struct {
+	// Agent session concurrent configuration.
+	//
+	// - AllowExceedingLimitWhenTransferring: Allow exceeding the limit when transferring. When transferring sessions to other agents, exceeding the recipient\\"s limit is allowed, but the total cannot exceed 30.
+	//
+	// - AllowExceedingLimitWhenClaiming: Allow exceeding the limit when claiming. When an agent actively claims sessions from the queue, exceeding the limit is allowed, but the total cannot exceed 30.
+	//
+	// - ConcurrencyLimit: The number of network business sessions an agent can process simultaneously.
+	//
+	// - Enabled: Enable this configuration.
+	//
 	// example:
 	//
 	// {
@@ -115,10 +137,24 @@ type GetChatRoutingProfileResponseBodyData struct {
 	//
 	// }
 	AgentConcurrencySettings *string `json:"AgentConcurrencySettings,omitempty" xml:"AgentConcurrencySettings,omitempty"`
+	// Session configuration.
+	//
+	// - IdleChatTimeoutSeconds: Automatic session end time. If no customer response is received within a specific period, the system ends the session. Unit: seconds.
+	//
 	// example:
 	//
 	// {"IdleChatTimeoutSeconds":300}
 	ChatSettings *string `json:"ChatSettings,omitempty" xml:"ChatSettings,omitempty"`
+	// Agent session allocation configuration.
+	//
+	// - AgentRingTimeoutSeconds: Agent processing timeout limit.
+	//
+	// - MaxNumberOfConversationsAgentCanMiss: The maximum number of consecutive unanswered sessions an agent can miss.
+	//
+	// - PostAgentMissingConversionsAction: After an agent misses more than the set number of consecutive responses, the system sets the agent\\"s status, such as Break, Invisible, or Nothing (remain unchanged).
+	//
+	// - Enabled: Enable.
+	//
 	// example:
 	//
 	// {
@@ -133,6 +169,12 @@ type GetChatRoutingProfileResponseBodyData struct {
 	//
 	// }
 	DistributionSettings *string `json:"DistributionSettings,omitempty" xml:"DistributionSettings,omitempty"`
+	// Call distribution type.
+	//
+	// - Automatic distribution (Automatic).
+	//
+	// - Manual distribution (Manual).
+	//
 	// example:
 	//
 	// Automatic

@@ -18,16 +18,22 @@ type iDeleteSkillGroupRequest interface {
 }
 
 type DeleteSkillGroupRequest struct {
+	// Whether to force delete. If the skill group is associated with a number or agent, you must enable the force delete flag to successfully delete it.
+	//
 	// example:
 	//
 	// true
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Skill group ID.
+	//
 	// This parameter is required.
 	//
 	// example:

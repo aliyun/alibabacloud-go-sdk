@@ -32,48 +32,68 @@ type iListCampaignsRequest interface {
 }
 
 type ListCampaignsRequest struct {
+	// The actual start time of the campaign. This parameter is optional. By default, all time ranges are queried.
+	//
 	// example:
 	//
-	// 2021-10-14 20:59:59
+	// 1780329600000
 	ActualStartTimeFrom *string `json:"ActualStartTimeFrom,omitempty" xml:"ActualStartTimeFrom,omitempty"`
+	// The actual end time of the campaign. This parameter is optional. By default, all time ranges are queried.
+	//
 	// example:
 	//
-	// 2021-10-14 20:59:59
+	// 1781625600000
 	ActualStartTimeTo *string `json:"ActualStartTimeTo,omitempty" xml:"ActualStartTimeTo,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Filters campaigns by predictive dialing campaign name. Fuzzy match is not supported. This parameter is optional and defaults to empty, which indicates no filtering.
+	//
 	// example:
 	//
 	// test-campaign
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number. Valid values: 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The page size. Valid values: 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The planned start time of the campaign. This parameter is optional. By default, all time ranges are queried.
+	//
 	// example:
 	//
-	// 2021-10-14 00:00:00
+	// 1780243200000
 	PlanedStartTimeFrom *string `json:"PlanedStartTimeFrom,omitempty" xml:"PlanedStartTimeFrom,omitempty"`
+	// The planned end time of the campaign. This parameter is optional. By default, all time ranges are queried.
+	//
 	// example:
 	//
-	// 2021-10-14 20:59:59
+	// 1781798399000
 	PlanedStartTimeTo *string `json:"PlanedStartTimeTo,omitempty" xml:"PlanedStartTimeTo,omitempty"`
+	// Filters campaigns by skill group ID. This parameter is optional and defaults to empty, which indicates no filtering.
+	//
 	// example:
 	//
 	// skillgroup@ccc-test
 	QueueId *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
+	// Filters campaigns by predictive dialing campaign state. This parameter is optional and defaults to empty.
+	//
 	// example:
 	//
 	// Draft

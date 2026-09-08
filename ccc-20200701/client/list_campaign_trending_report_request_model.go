@@ -20,22 +20,30 @@ type iListCampaignTrendingReportRequest interface {
 }
 
 type ListCampaignTrendingReportRequest struct {
+	// The ID of the predictive outbound calling Activity.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6badb397-a8b5-40b6-21019d382a09
 	CampaignId *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	// The end time. This parameter is optional. The default value is the end time of the predictive outbound dialing activity.
+	//
 	// example:
 	//
 	// 2021-10-14 20:59:59
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Start Time. This parameter is optional. The default value is the Start Time of the predictive outbound calling Activity.
+	//
 	// example:
 	//
 	// 2021-10-14 00:00:00

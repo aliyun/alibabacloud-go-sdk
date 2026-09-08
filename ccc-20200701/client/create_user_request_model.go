@@ -38,54 +38,94 @@ type iCreateUserRequest interface {
 }
 
 type CreateUserRequest struct {
+	// The URL of the agent\\"s profile picture.
+	//
+	// example:
+	//
+	// http://abc.com/sam.jpg
 	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	// The agent\\"s ID number. Set this as needed.
+	//
 	// example:
 	//
 	// 1001
 	DisplayId *string `json:"DisplayId,omitempty" xml:"DisplayId,omitempty"`
+	// The display name of the agent. It must be 1 to 128 characters in length.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 坐席小王
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The email address of the agent. After the agent is created, an email is sent to this address. The email contains the logon URL for Cloud Contact Center, and the username and password for the RAM account. Keep this information secure.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// username@example.com
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The logon name of the agent. It must be 4 to 64 characters in length and can contain uppercase letters, lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// agent
 	LoginName *string `json:"LoginName,omitempty" xml:"LoginName,omitempty"`
+	// The personal phone number of the agent. This number is used in OFF_SITE mode. The agent can use this number to answer calls in OFF_SITE mode.
+	//
 	// example:
 	//
 	// 1382114****
 	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// Specifies whether to send an email notification.
+	//
+	// - true: Send
+	//
+	// - false: Do not send
+	//
 	// example:
 	//
 	// true
 	NeedEmailNotification *string `json:"NeedEmailNotification,omitempty" xml:"NeedEmailNotification,omitempty"`
-	Nickname              *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	// The agent\\"s nickname.
+	//
+	// example:
+	//
+	// 老王
+	Nickname *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	// Specifies whether the agent must reset the password upon the first logon. If set to true, the agent is prompted to reset the password when they first log on to the RAM account. Otherwise, they are not prompted. The default value is false.
+	//
 	// example:
 	//
 	// false
 	ResetPassword *bool `json:"ResetPassword,omitempty" xml:"ResetPassword,omitempty"`
+	// The role ID. The format is Role\\@InstanceID. The following roles are supported: Admin (administrator), Manager (skill group leader), and Agent (agent).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Agent@ccc-test
 	RoleId *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	// A list of skill levels for skill groups. This is a string in the format of a JSON array. The array can contain up to 100 elements. Each element is an object that contains two fields: skillGroupId and skillLevel. For skillGroupId, enter the ID of the skill group to add. For skillLevel, enter the skill level to add. The value can range from 1 to 10. A smaller value indicates a higher skill level, meaning the agent can handle more calls per unit of time.
+	//
 	// example:
 	//
 	// [{"skillGroupId":"skillgroup1@ccc-test","skillLevel":1},{"skillGroupId":"skillgroup2@ccc-test","skillLevel":10}]
 	SkillLevelList *string `json:"SkillLevelList,omitempty" xml:"SkillLevelList,omitempty"`
+	// The work mode.
+	//
 	// example:
 	//
 	// ON_SITE

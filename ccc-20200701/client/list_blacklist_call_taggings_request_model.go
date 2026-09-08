@@ -16,12 +16,16 @@ type iListBlacklistCallTaggingsRequest interface {
 }
 
 type ListBlacklistCallTaggingsRequest struct {
+	// The ID of the Cloud Contact Center instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// A list of numbers to query for their blacklist tag status. The jobId field is required if a number is encrypted (contains \\*\\*\\*).
+	//
 	// This parameter is required.
 	//
 	// example:

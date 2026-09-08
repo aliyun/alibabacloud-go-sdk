@@ -18,13 +18,15 @@ type iGetChatMediaUrlRequest interface {
 }
 
 type GetChatMediaUrlRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// media id
+	// Media ID.
 	//
 	// This parameter is required.
 	//
@@ -32,6 +34,8 @@ type GetChatMediaUrlRequest struct {
 	//
 	// $iAHNCNQCo3dhdgMGBAAFAAbaACOEAaQhIEeoAqpjjBl42N6o_kg7A88AAAGRIRRuBgTOACrxHgcACM8AAAGRIYJLBQ
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 8707EB29-BAED-4302-B999-40BA61877437

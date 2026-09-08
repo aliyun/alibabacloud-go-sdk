@@ -22,15 +22,34 @@ type iRemoveUsersRequest interface {
 }
 
 type RemoveUsersRequest struct {
+	// The ObjectKey of the OSS object containing the file with the list of users to delete.
+	//
+	// example:
+	//
+	// temp/removeUsers.xlsx
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	Force    *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	// Specifies whether to force delete.
+	//
+	// example:
+	//
+	// true
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Notification email address.
+	//
+	// example:
+	//
+	// 123@abc.com
 	NotificationEmail *string `json:"NotificationEmail,omitempty" xml:"NotificationEmail,omitempty"`
+	// A JSON-formatted string representing an array of agent IDs. Each array element is an agent ID.
+	//
 	// example:
 	//
 	// ["agent1@ccc-test","agent2@ccc-test"]

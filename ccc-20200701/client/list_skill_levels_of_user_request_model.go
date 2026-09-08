@@ -24,32 +24,44 @@ type iListSkillLevelsOfUserRequest interface {
 }
 
 type ListSkillLevelsOfUserRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Indicates whether to associate with the specified agent. If true, retrieves the skill levels of skill groups associated with the agent. If false, retrieves the list of skill groups that the agent can be associated with but is not currently associated with. The default value is true.
+	//
 	// example:
 	//
 	// true
 	IsMember *bool `json:"IsMember,omitempty" xml:"IsMember,omitempty"`
+	// Page number, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// Page size, ranging from 1 to 100.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Perform fuzzy matching based on skill group name or display name. This parameter is optional and defaults to empty, which means no filtering is applied.
+	//
 	// example:
 	//
 	// skillgroup
 	SearchPattern *string `json:"SearchPattern,omitempty" xml:"SearchPattern,omitempty"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test

@@ -20,22 +20,30 @@ type iModifyPhoneNumberRequest interface {
 }
 
 type ModifyPhoneNumberRequest struct {
+	// The IVR contact flow ID attached to the number. This field is valid only when the number usage is Inbound or Bidirection.
+	//
 	// example:
 	//
 	// 78128960-bb00-4ddc-8a82-923a8c5bd22d
 	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Phone number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0102134****
 	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// Number usage.
+	//
 	// This parameter is required.
 	//
 	// example:

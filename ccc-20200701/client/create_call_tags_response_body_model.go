@@ -22,16 +22,28 @@ type iCreateCallTagsResponseBody interface {
 }
 
 type CreateCallTagsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The list of call tags that failed to be created.
 	Data []*CreateCallTagsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -105,10 +117,14 @@ func (s *CreateCallTagsResponseBody) Validate() error {
 }
 
 type CreateCallTagsResponseBodyData struct {
+	// The name of the call tag that failed to be created.
+	//
 	// example:
 	//
 	// TagC
 	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	// The reason why the call tag creation failed.
+	//
 	// example:
 	//
 	// CALL_TAG_NAME_DUPLICATED

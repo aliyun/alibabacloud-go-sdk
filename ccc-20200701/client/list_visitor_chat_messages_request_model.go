@@ -30,38 +30,62 @@ type iListVisitorChatMessagesRequest interface {
 }
 
 type ListVisitorChatMessagesRequest struct {
+	// Web business channel ID.
+	//
 	// example:
 	//
 	// cf584733-***-***-9699-cb77aa3b7aa6
 	AccessChannelId *string `json:"AccessChannelId,omitempty" xml:"AccessChannelId,omitempty"`
+	// Web business channel token.
+	//
 	// example:
 	//
 	// 9XYGTGWtq2wXzVikKuip_zeVGl6O4VJ-l-*-*-JPofhap4P7fAevuE=
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// End time, in UNIX timestamp format. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1650316799000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Cloud Contact Center instance.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Token for the next page. Do not include this parameter in your first request. The service returns it in the response. Include it in subsequent requests.
+	//
 	// example:
 	//
 	// 1737193352340::7463707254.EAUNIT
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// Number of records per page.
+	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Sorting order. Default is descending.
+	//
+	// Valid values:
+	//
+	// ASC: ascending.
+	//
+	// DESC: descending.
+	//
 	// example:
 	//
 	// DESC
 	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// Start time, in UNIX timestamp format. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1647325450000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Visitor ID.
+	//
 	// example:
 	//
 	// fcd020fe-****-1a272a174a7d

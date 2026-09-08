@@ -16,12 +16,16 @@ type iGetDoNotCallFileUploadParametersRequest interface {
 }
 
 type GetDoNotCallFileUploadParametersRequest struct {
+	// Name of the file containing prohibited outbound call numbers.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// blacklist.xlsx
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:

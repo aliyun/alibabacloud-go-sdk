@@ -22,16 +22,28 @@ type iGetRealtimeInstanceStatesResponseBody interface {
 }
 
 type GetRealtimeInstanceStatesResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data *GetRealtimeInstanceStatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 943D8EF3-3321-471F-A104-51C96FCA94D6
@@ -101,43 +113,64 @@ func (s *GetRealtimeInstanceStatesResponseBody) Validate() error {
 }
 
 type GetRealtimeInstanceStatesResponseBodyData struct {
+	// List of distributions of break code counts.
 	BreakCodeDetailList []*GetRealtimeInstanceStatesResponseBodyDataBreakCodeDetailList `json:"BreakCodeDetailList,omitempty" xml:"BreakCodeDetailList,omitempty" type:"Repeated"`
+	// Number of agents on break.
+	//
 	// example:
 	//
 	// 0
 	BreakingAgents *int64 `json:"BreakingAgents,omitempty" xml:"BreakingAgents,omitempty"`
+	// Instance ID.
+	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Number of calls interacting within IVR.
+	//
 	// example:
 	//
 	// 0
 	InteractiveCalls *int64 `json:"InteractiveCalls,omitempty" xml:"InteractiveCalls,omitempty"`
+	// Number of logged-in agents (including agents in ready, on break, on call, or other non-unpublished statuses).
+	//
 	// example:
 	//
 	// 0
 	LoggedInAgents *int64 `json:"LoggedInAgents,omitempty" xml:"LoggedInAgents,omitempty"`
+	// Maximum queue waiting time among currently queued incoming calls.
+	//
 	// example:
 	//
 	// 0
 	LongestWaitingTime *int64 `json:"LongestWaitingTime,omitempty" xml:"LongestWaitingTime,omitempty"`
+	// Number of agents in ready status.
+	//
 	// example:
 	//
 	// 0
 	ReadyAgents *int64 `json:"ReadyAgents,omitempty" xml:"ReadyAgents,omitempty"`
+	// Number of agents on calls.
+	//
 	// example:
 	//
 	// 0
 	TalkingAgents *int64 `json:"TalkingAgents,omitempty" xml:"TalkingAgents,omitempty"`
+	// Total number of agents.
+	//
 	// example:
 	//
 	// 0
 	TotalAgents *int64 `json:"TotalAgents,omitempty" xml:"TotalAgents,omitempty"`
+	// Number of incoming calls currently queued.
+	//
 	// example:
 	//
 	// 0
 	WaitingCalls *int64 `json:"WaitingCalls,omitempty" xml:"WaitingCalls,omitempty"`
+	// Number of agents in post-processing status.
+	//
 	// example:
 	//
 	// 0
@@ -265,8 +298,18 @@ func (s *GetRealtimeInstanceStatesResponseBodyData) Validate() error {
 }
 
 type GetRealtimeInstanceStatesResponseBodyDataBreakCodeDetailList struct {
+	// Break code.
+	//
+	// example:
+	//
+	// 默认
 	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
-	Count     *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// Break count.
+	//
+	// example:
+	//
+	// 1
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 }
 
 func (s GetRealtimeInstanceStatesResponseBodyDataBreakCodeDetailList) String() string {

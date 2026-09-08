@@ -24,32 +24,44 @@ type iCoachCallRequest interface {
 }
 
 type CoachCallRequest struct {
+	// Agent ID being coached.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// coached-agent@ccc-test
 	CoachedUserId *string `json:"CoachedUserId,omitempty" xml:"CoachedUserId,omitempty"`
+	// Device ID. This field is meaningless and can be filled with any value.
+	//
 	// example:
 	//
 	// device
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Call ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// job-65382141036853491
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// Coaching timeout. If the coaching session is not established within the specified time, the coaching operation is canceled. This field is optional and defaults to 30 seconds.
+	//
 	// example:
 	//
 	// 30
 	TimeoutSeconds *int32 `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+	// Agent ID initiating the coaching.
+	//
 	// example:
 	//
 	// agent@ccc-test

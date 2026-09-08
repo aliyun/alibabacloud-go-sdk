@@ -22,16 +22,28 @@ type iListAgentStateLogsResponseBody interface {
 }
 
 type ListAgentStateLogsResponseBody struct {
+	// Response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Data.
 	Data []*ListAgentStateLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 943D8EF3-3321-471F-A104-51C96FCA94D6
@@ -105,25 +117,48 @@ func (s *ListAgentStateLogsResponseBody) Validate() error {
 }
 
 type ListAgentStateLogsResponseBodyData struct {
+	// Break code.
+	//
+	// example:
+	//
+	// 会议
 	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
-	Duration  *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Duration of the status, in seconds.
+	//
+	// example:
+	//
+	// 32
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Indicates whether the agent is in outbound-only mode.
+	//
 	// example:
 	//
 	// false
 	OutboundScenario *bool `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	// Start Time of the status, in UNIX timestamp format, in milliseconds.
+	//
 	// example:
 	//
 	// 1620259200000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Status code.
+	//
 	// example:
 	//
 	// Break
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// Sub-status, which provides additional details for the status code. In certain scenarios, an agent\\"s status is jointly identified by State and StateCode. For example, in a monitoring scenario, the State is Talking and the StateCode is Monitoring.
+	//
 	// example:
 	//
 	// CHECK_IN_BREAK
 	StateCode *string `json:"StateCode,omitempty" xml:"StateCode,omitempty"`
-	WorkMode  *string `json:"WorkMode,omitempty" xml:"WorkMode,omitempty"`
+	// Work mode.
+	//
+	// example:
+	//
+	// ON_SITE
+	WorkMode *string `json:"WorkMode,omitempty" xml:"WorkMode,omitempty"`
 }
 
 func (s ListAgentStateLogsResponseBodyData) String() string {

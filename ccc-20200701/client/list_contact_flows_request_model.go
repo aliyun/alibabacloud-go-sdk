@@ -26,27 +26,50 @@ type iListContactFlowsRequest interface {
 }
 
 type ListContactFlowsRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The field by which to sort the results. Default value: updatedTime.
+	//
+	// example:
+	//
+	// updatedTime
 	OrderByField *string `json:"OrderByField,omitempty" xml:"OrderByField,omitempty"`
+	// The page number. The value must be an integer that is greater than 0. Default value: 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// A keyword to search for in the names or descriptions of IVR flows.
 	SearchPattern *string `json:"SearchPattern,omitempty" xml:"SearchPattern,omitempty"`
-	SortOrder     *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - `ASC`: The results are sorted in ascending order.
+	//
+	// - `DESC`: The results are sorted in descending order. This is the default value.
+	//
+	// example:
+	//
+	// DESC
+	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// Specifies the type of IVR flow to list. If you omit this parameter, IVR flows of all types are listed.
+	//
 	// example:
 	//
 	// MAIN_FLOW

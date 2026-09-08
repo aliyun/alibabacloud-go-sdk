@@ -22,16 +22,28 @@ type iListContactFlowsResponseBody interface {
 }
 
 type ListContactFlowsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// OK
-	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *ListContactFlowsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
+	// example:
+	//
+	// 无
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EEEE671A-3E24-4A04-81E6-6C4F5B39DF75
@@ -101,15 +113,22 @@ func (s *ListContactFlowsResponseBody) Validate() error {
 }
 
 type ListContactFlowsResponseBodyData struct {
+	// A list of contact flows.
 	List []*ListContactFlowsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
@@ -174,41 +193,70 @@ func (s *ListContactFlowsResponseBodyData) Validate() error {
 }
 
 type ListContactFlowsResponseBodyDataList struct {
+	// The ID of the IVR contact flow.
+	//
 	// example:
 	//
 	// 78128960-bb00-4ddc-8e82-923a8c5bd22d
 	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	// When the contact flow was created.
+	//
 	// example:
 	//
 	// 2021-03-05 17:35:45.0
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Definition  *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The JSON-formatted definition of the IVR contact flow. This parameter is for internal use and is parsed by the backend.
+	//
+	// example:
+	//
+	// {"activities":[{"type":"INCOMING_CALL","id":"e98f0d47","name":"开始","properties":{"position":{"x":263,"y":164}},"events":[{"event":"complete","next":"2d3ad2c2","edgeId":"41f7dbd0"}],"nodeIndex":0},{"type":"HANGUP","id":"bd4f37e2","name":"挂机","properties":{"position":{"x":765,"y":185}},"events":[{"event":"complete","next":null}],"nodeIndex":999},{"type":"PLAY_SAY","id":"2d3ad2c2","name":"放音","properties":{"say":"您好，欢迎来到云联络中心。","audioResourceId":"","position":{"x":485.5,"y":153.5},"audioType":"tts","audioInterrupt":false},"events":[{"event":"complete","next":"bd4f37e2","edgeId":"e1af4f1f"}],"nodeIndex":1}],"description":""}
+	Definition *string `json:"Definition,omitempty" xml:"Definition,omitempty"`
+	// The description of the contact flow version.
+	//
 	// example:
 	//
 	// 1.0
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The draft ID. This parameter is returned only when the contact flow is unpublished.
+	//
 	// example:
 	//
 	// db07c0bb-6b1f-47d2-b37e-2451c617562d
 	DraftId *string `json:"DraftId,omitempty" xml:"DraftId,omitempty"`
+	// The login name of the agent currently editing this draft.
+	//
 	// example:
 	//
 	// ccc-test
 	Editor *string `json:"Editor,omitempty" xml:"Editor,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// ccc-test
-	InstanceId *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name       *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the IVR contact flow.
+	//
+	// example:
+	//
+	// 默认流程
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// A list of phone numbers that are bound to the IVR contact flow.
 	NumberList []*string `json:"NumberList,omitempty" xml:"NumberList,omitempty" type:"Repeated"`
+	// Indicates whether the contact flow has been published.
+	//
 	// example:
 	//
 	// true
 	Published *bool `json:"Published,omitempty" xml:"Published,omitempty"`
+	// The type of the IVR contact flow.
+	//
 	// example:
 	//
 	// MAIN_FLOW
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The last time the contact flow was updated.
+	//
 	// example:
 	//
 	// 2021-03-08 15:34:49.0

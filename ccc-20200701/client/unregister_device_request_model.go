@@ -16,12 +16,16 @@ type iUnregisterDeviceRequest interface {
 }
 
 type UnregisterDeviceRequest struct {
+	// Instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ccc-test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Agent ID.
+	//
 	// example:
 	//
 	// agent@ccc-test
