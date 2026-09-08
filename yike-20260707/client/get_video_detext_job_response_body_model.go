@@ -78,7 +78,7 @@ type GetVideoDetextJobResponseBodyJob struct {
 	//
 	// example:
 	//
-	// {"VideoMediaId":"media-video-001"}
+	// {"VideoUrl":"https://example.com/input.mp4"}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	// The video text erasure task ID.
 	//
@@ -98,7 +98,7 @@ type GetVideoDetextJobResponseBodyJob struct {
 	//
 	// VIDEO_DETEXT
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The task output JSON string. When the task succeeds, AiResult.DetextVideoURL contains the URL of the video with text erased.
+	// The task result JSON string. When Status is Finished, deserialize this field and read AiResult.DetextVideoURL to obtain the URL of the video after text erasure. The video URL is not guaranteed to be included when the task has not completed successfully. If Output.OssUri is specified at submission time, the result is stored in the specified OSS location. Otherwise, a signed URL is returned.
 	//
 	// example:
 	//

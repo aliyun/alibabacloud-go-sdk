@@ -22,7 +22,7 @@ type iSubmitVideoDetextJobRequest interface {
 }
 
 type SubmitVideoDetextJobRequest struct {
-	// The user-level idempotency token. The token can be up to 40 characters in length. If the same user submits a request with the same token, the original task is returned.
+	// The user-level idempotency token. Maximum length: 40 characters. If the same user submits a request with the same token, the original task is returned.
 	//
 	// example:
 	//
@@ -34,25 +34,25 @@ type SubmitVideoDetextJobRequest struct {
 	//
 	// example:
 	//
-	// {"VideoMediaId":"media-video-001"}
+	// {"VideoUrl":"https://example.com/input.mp4"}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// The text erasure parameter JSON string. This parameter can contain EraseAllText, TimeRanges, TextTargets, FullEraseTargets, and Config.
+	// The text erasure parameter JSON string. This string can contain EraseAllText, TimeRanges, TextTargets, FullEraseTargets, and Config.
 	//
 	// example:
 	//
 	// {"EraseAllText":false,"TextTargets":[{"Box":[0.1,0.8,0.8,0.15],"TimeRanges":[[0,30]]}]}
 	JobParameters *string `json:"JobParameters,omitempty" xml:"JobParameters,omitempty"`
-	// The output configuration JSON string. You can use OssUri to specify the customer\\"s OSS bucket. If a directory is specified, the output file is named detext.mp4.
+	// The output configuration JSON string. OssUri specifies an OSS directory or MP4 file path and cannot contain query parameters or fragments. For directory paths, detext.mp4 is automatically appended. Paths ending with .mp4 without a trailing / are used directly as the target file. If not specified, a signed URL of the processing result is returned in the query result.
 	//
 	// example:
 	//
 	// {"OssUri":"oss://example-bucket/video-detext/job-001/"}
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// The custom user data JSON string. This parameter can contain the asynchronous notification address NotifyAddress.
+	// The custom data JSON string for pass-through in desired state notifications. For MNS callbacks, use NotifyAddress to specify a queue name prefixed with yike-callback, and use NotifyMnsEndpoint to specify an MNS endpoint under the same account. For HTTP(S) callbacks, use NotifyAddress to specify the full URL.
 	//
 	// example:
 	//
-	// {"NotifyAddress":"mns://account.mns.cn-shanghai.aliyuncs.com/queues/detext-result"}
+	// {"NotifyAddress":"yike-callback-example","NotifyMnsEndpoint":"http://<AccountId>.mns.cn-shanghai.aliyuncs.com/"}
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 

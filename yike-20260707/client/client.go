@@ -616,6 +616,68 @@ func (client *Client) GenerateYikeLoginToken(request *GenerateYikeLoginTokenRequ
 
 // Summary:
 //
+// Queries an agent asynchronous task.
+//
+// @param request - GetAgentJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentJobResponse
+func (client *Client) GetAgentJobWithOptions(request *GetAgentJobRequest, runtime *dara.RuntimeOptions) (_result *GetAgentJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgentJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgentJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries an agent asynchronous task.
+//
+// @param request - GetAgentJobRequest
+//
+// @return GetAgentJobResponse
+func (client *Client) GetAgentJob(request *GetAgentJobRequest) (_result *GetAgentJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAgentJobResponse{}
+	_body, _err := client.GetAgentJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the information of a specified category and the list of its subcategories (immediate child categories).
 //
 // @param request - GetAssetCategoryRequest
@@ -1801,6 +1863,88 @@ func (client *Client) SearchMedia(request *SearchMediaRequest) (_result *SearchM
 
 // Summary:
 //
+// Submits an agent asynchronous node.
+//
+// @param request - SubmitAgentJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitAgentJobResponse
+func (client *Client) SubmitAgentJobWithOptions(request *SubmitAgentJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitAgentJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Model) {
+		query["Model"] = request.Model
+	}
+
+	if !dara.IsNil(request.NotifyUrl) {
+		query["NotifyUrl"] = request.NotifyUrl
+	}
+
+	if !dara.IsNil(request.Prompt) {
+		query["Prompt"] = request.Prompt
+	}
+
+	if !dara.IsNil(request.Skill) {
+		query["Skill"] = request.Skill
+	}
+
+	if !dara.IsNil(request.UserData) {
+		query["UserData"] = request.UserData
+	}
+
+	if !dara.IsNil(request.WorkspaceId) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitAgentJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitAgentJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Submits an agent asynchronous node.
+//
+// @param request - SubmitAgentJobRequest
+//
+// @return SubmitAgentJobResponse
+func (client *Client) SubmitAgentJob(request *SubmitAgentJobRequest) (_result *SubmitAgentJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitAgentJobResponse{}
+	_body, _err := client.SubmitAgentJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Submits an image generation task.
 //
 // @param request - SubmitImageGenerationJobRequest
@@ -2067,7 +2211,7 @@ func (client *Client) SubmitRemakeScriptJob(request *SubmitRemakeScriptJobReques
 //
 // Description:
 //
-// Submits an asynchronous video text erasure task. The input can be an accessible video URL or a media asset ID. You can configure the erasure time range and text regions.
+// Submits an asynchronous video text erasure task. The input can be an accessible video URL or a Yike video media asset ID. You can configure the erasure time range and text regions.
 //
 // @param request - SubmitVideoDetextJobRequest
 //
@@ -2131,7 +2275,7 @@ func (client *Client) SubmitVideoDetextJobWithOptions(request *SubmitVideoDetext
 //
 // Description:
 //
-// Submits an asynchronous video text erasure task. The input can be an accessible video URL or a media asset ID. You can configure the erasure time range and text regions.
+// Submits an asynchronous video text erasure task. The input can be an accessible video URL or a Yike video media asset ID. You can configure the erasure time range and text regions.
 //
 // @param request - SubmitVideoDetextJobRequest
 //

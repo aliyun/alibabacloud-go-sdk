@@ -16,7 +16,7 @@ type iSubmitVideoDetextJobResponseBody interface {
 }
 
 type SubmitVideoDetextJobResponseBody struct {
-	// The video text erasure job ID. You can use this ID to call GetVideoDetextJob to query the job status.
+	// The video text erasure job ID. Use this ID to call GetVideoDetextJob to query the job.
 	//
 	// example:
 	//
