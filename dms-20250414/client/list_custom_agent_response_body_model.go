@@ -22,7 +22,7 @@ type iListCustomAgentResponseBody interface {
 }
 
 type ListCustomAgentResponseBody struct {
-	// The returned data.
+	// The response struct.
 	Data *ListCustomAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -30,13 +30,13 @@ type ListCustomAgentResponseBody struct {
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the request fails.
+	// The error message returned if the request failed.
 	//
 	// example:
 	//
 	// Specified parameter Tid is not valid.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *ListCustomAgentResponseBody) Validate() error {
 }
 
 type ListCustomAgentResponseBodyData struct {
-	// A list of custom agent objects.
+	// The list of data content.
 	Content []*ListCustomAgentResponseBodyDataContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -125,13 +125,13 @@ type ListCustomAgentResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of records per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -212,7 +212,7 @@ func (s *ListCustomAgentResponseBodyData) Validate() error {
 }
 
 type ListCustomAgentResponseBodyDataContent struct {
-	// The parent Alibaba Cloud account ID.
+	// The Alibaba Cloud primary account ID.
 	//
 	// example:
 	//
@@ -231,19 +231,17 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// HaoY*****
 	CreatorUserName *string `json:"CreatorUserName,omitempty" xml:"CreatorUserName,omitempty"`
-	// The custom agent ID.
+	// The ID of the custom agent.
 	//
 	// example:
 	//
 	// ca-4y3ca4khkcu**********ysf
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
-	// The current DMS unit.
-	//
 	// example:
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The data scope, specified as a JSON string.
+	// The specified data scope in JSON string format.
 	//
 	// example:
 	//
@@ -259,7 +257,7 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	//     "FileId" : "f-5qlrwaw10********s3gpw1z",
 	//
-	//     "Database" : "测试表格******.xlsx",
+	//     "Database" : "TestTable******.xlsx",
 	//
 	//     "Tables" : [ "Sheet1" ],
 	//
@@ -276,7 +274,7 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// example:
 	//
-	// Agent测试描述
+	// AgentTestDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The current DMS unit.
 	//
@@ -286,59 +284,59 @@ type ListCustomAgentResponseBodyDataContent struct {
 	DmsUnit *string `json:"DmsUnit,omitempty" xml:"DmsUnit,omitempty"`
 	// The execution configuration.
 	ExecutionConfig *ListCustomAgentResponseBodyDataContentExecutionConfig `json:"ExecutionConfig,omitempty" xml:"ExecutionConfig,omitempty" type:"Struct"`
-	// The time when the agent was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the agent was last modified.
+	// The modification time.
 	//
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The instructions.
+	// The instruction.
 	//
 	// example:
 	//
-	// 分析框架：
+	// Analysis framework:
 	//
-	// 1、需按日、周、月维度监控核心指标（GMV、订单量、UV、转化率），分析趋势变化及同比/环比波动；
+	// 1. Monitor core metrics (GMV, order volume, UV, conversion rate) by day, week, and month dimensions, and analyze trends and year-over-year/month-over-month fluctuations.
 	//
-	// 2、划分新老客、渠道、地域进行拆解，识别增长来源与短板；
+	// 2. Segment by new/existing customers, channels, and regions to identify growth drivers and weaknesses.
 	//
-	// 3、结合用户行为路径（浏览→加购→支付）开展漏斗分析，定位流失环节；
+	// 3. Conduct funnel analysis based on user behavior paths (browse → add to cart → payment) to identify drop-off points
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
-	// Indicates whether the agent is configured with a recurring task.
+	// Indicates whether a periodic task is configured.
 	//
 	// example:
 	//
 	// true
 	IsScheduleTask *bool `json:"IsScheduleTask,omitempty" xml:"IsScheduleTask,omitempty"`
-	// The provided knowledge.
+	// The knowledge.
 	//
 	// example:
 	//
-	// 核心指标定义：
+	// Core metric definitions:
 	//
-	// 1、GMV（成交总额）指订单金额总和，含已支付及未支付成功订单；
+	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including paid and unpaid orders.
 	//
-	// 2、订单量为每日有效下单笔数；
+	// 2. Order volume is the number of valid orders placed per day.
 	//
-	// 3、UV（独立访客）指访问网站或APP的去重用户数；
+	// 3. UV (Unique Visitors) refers to the deduplicated number of users who visit the website or app.
 	//
-	// 4、转化率=支付订单数 / UV，反映流量转化效率；
+	// 4. Conversion rate = number of paid orders / UV, reflecting traffic conversion efficiency
 	Knowledge                   *string                                                              `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	KnowledgeConfigList         []*ListCustomAgentResponseBodyDataContentKnowledgeConfigList         `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
 	KnowledgeSemanticConfigList []*ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList `json:"KnowledgeSemanticConfigList,omitempty" xml:"KnowledgeSemanticConfigList,omitempty" type:"Repeated"`
-	// The user who last modified the agent.
+	// The modifier.
 	//
 	// example:
 	//
 	// 20372822********
 	Modifier *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
-	// The name of the user who last modified the agent.
+	// The name of the modifier.
 	//
 	// example:
 	//
@@ -348,15 +346,15 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// example:
 	//
-	// Agent测试名称
+	// AgentTestName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// If a recurring task is configured, this indicates its next scheduled runtime.
+	// The next run time of the periodic task.
 	//
 	// example:
 	//
 	// 1767715200
 	NextRuntime *int64 `json:"NextRuntime,omitempty" xml:"NextRuntime,omitempty"`
-	// The time when the agent was taken offline.
+	// The offline time.
 	//
 	// example:
 	//
@@ -369,13 +367,12 @@ type ListCustomAgentResponseBodyDataContent struct {
 	// cn-hangzhou
 	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	RelatedSessionId *string `json:"RelatedSessionId,omitempty" xml:"RelatedSessionId,omitempty"`
-	// The time when the agent was published.
+	// The publish time.
 	//
 	// example:
 	//
 	// 2025-12-11T14:04:32.000+00:00
-	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	// The recurring task configuration.
+	ReleaseTime        *string                                                   `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
 	ScheduleTaskConfig *ListCustomAgentResponseBodyDataContentScheduleTaskConfig `json:"ScheduleTaskConfig,omitempty" xml:"ScheduleTaskConfig,omitempty" type:"Struct"`
 	// The status of the custom agent.
 	//
@@ -383,18 +380,18 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// RELEASED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The formatting instructions for the text report.
+	// The text report format.
 	//
 	// example:
 	//
-	// 文字报告要求所有数字不使用阿拉伯数字，全部转为中文数字
+	// The text report requires all numbers to be converted from Arabic numerals to Chinese numerals
 	TextReportConfig       *string   `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
 	UserSpecifiedSkillList []*string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty" type:"Repeated"`
-	// The formatting instructions for the web report.
+	// The web report format.
 	//
 	// example:
 	//
-	// 网页报告要求所有数字不使用阿拉伯数字，全部转为中文数字
+	// The web report requires all numbers to be converted from Arabic numerals to Chinese numerals
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	WebReportTheme  *string `json:"WebReportTheme,omitempty" xml:"WebReportTheme,omitempty"`
 	// The workspace ID.
@@ -814,25 +811,25 @@ func (s *ListCustomAgentResponseBodyDataContentCallbackConfig) Validate() error 
 
 type ListCustomAgentResponseBodyDataContentExecutionConfig struct {
 	ForbiddenAppendDataSource *bool `json:"ForbiddenAppendDataSource,omitempty" xml:"ForbiddenAppendDataSource,omitempty"`
-	// Indicates whether to prevent user inquiries during the process.
+	// Specifies whether to disable user inquiries during the process.
 	//
 	// example:
 	//
 	// false
 	SkipAskHuman *bool `json:"SkipAskHuman,omitempty" xml:"SkipAskHuman,omitempty"`
-	// Indicates whether to skip the plan confirmation step.
+	// Specifies whether to skip the plan confirmation step.
 	//
 	// example:
 	//
 	// true
 	SkipPlan *bool `json:"SkipPlan,omitempty" xml:"SkipPlan,omitempty"`
-	// Indicates whether to skip all SQL confirmations.
+	// Specifies whether to skip all SQL confirmations.
 	//
 	// example:
 	//
 	// true
 	SkipSqlConfirm *bool `json:"SkipSqlConfirm,omitempty" xml:"SkipSqlConfirm,omitempty"`
-	// Indicates whether to skip the confirmation for generating a web report.
+	// Specifies whether to skip the web report rendering confirmation.
 	//
 	// example:
 	//
@@ -998,17 +995,17 @@ func (s *ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList) Vali
 }
 
 type ListCustomAgentResponseBodyDataContentScheduleTaskConfig struct {
-	// The cron expression for the recurring task.
+	// The cron expression for the timed scheduling.
 	//
 	// example:
 	//
 	// 0 0 0 ? 	- 1-7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// The query for the recurring task.
+	// The query of the periodic task.
 	//
 	// example:
 	//
-	// 分析一下这份数据，给出简报
+	// Analyze this data and provide a brief report
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// The ID of the referenced historical session.
 	//

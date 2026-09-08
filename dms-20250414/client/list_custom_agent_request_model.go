@@ -30,23 +30,23 @@ type ListCustomAgentRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size. The default value is 20.
+	// The number of records per page. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether to query all published custom agents. The default value is false.
+	// Specifies whether to query all custom agents in the published state. Default value: false.
 	//
 	// example:
 	//
 	// true
 	QueryAllReleased *bool `json:"QueryAllReleased,omitempty" xml:"QueryAllReleased,omitempty"`
-	// A keyword for a fuzzy search on the names and descriptions of custom agents.
+	// The search keyword. Supports fuzzy search by custom agent name and description.
 	//
 	// example:
 	//
-	// 测试Agent
+	// TestAgent
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	// The status of the custom agent.
 	//
@@ -54,7 +54,7 @@ type ListCustomAgentRequest struct {
 	//
 	// RELEASED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// example:
 	//

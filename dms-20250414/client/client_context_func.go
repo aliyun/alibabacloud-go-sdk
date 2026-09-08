@@ -912,7 +912,7 @@ func (client *Client) CreateDataAgentAccuracyTestWithContext(ctx context.Context
 
 // Summary:
 //
-// # Data Agent点赞点踩功能
+// Creates feedback for a DataAgent.
 //
 // @param request - CreateDataAgentFeedbackRequest
 //
@@ -4189,6 +4189,10 @@ func (client *Client) GetOneMetaOssieModelWithContext(ctx context.Context, reque
 //
 // Queries the operation logs of the SQL window.
 //
+// Description:
+//
+// When you call this operation, the service endpoint must match the region where the instance resides. Otherwise, the complete SQL window operation logs cannot be retrieved.
+//
 // @param request - GetSqlConsoleOperationLogRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4723,7 +4727,7 @@ func (client *Client) ListAirflowsWithContext(ctx context.Context, request *List
 
 // Summary:
 //
-// ListCustomAgent returns a list of all custom agents from the personal space and workspaces.
+// Lists all custom agents in a personal space or workspace.
 //
 // @param request - ListCustomAgentRequest
 //
@@ -7439,7 +7443,7 @@ func (client *Client) SaveWorkspaceCodeWithContext(ctx context.Context, request 
 //
 // ## Request description
 //
-// - `message_type` defaults to `primary`. Set it to `additional` or `cancel` when you need to append information or cancel a session.
+// - `message_type` defaults to `primary`. To append information or cancel a session, set it to `additional` or `cancel`.
 //
 // - The `reply_to` field indicates which Agent message this message is a response to. The default value is `0`.
 //

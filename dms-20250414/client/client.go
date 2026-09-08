@@ -25,16 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-shenzhen":    dara.String("dms.cn-shenzhen.aliyuncs.com"),
-		"cn-beijing":     dara.String("dms.cn-beijing.aliyuncs.com"),
-		"cn-shanghai":    dara.String("dms.cn-shanghai.aliyuncs.com"),
-		"cn-hongkong":    dara.String("dms.cn-hongkong.aliyuncs.com"),
-		"ap-southeast-1": dara.String("dms.ap-southeast-1.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("dms.cn-hangzhou.aliyuncs.com"),
-		"us-west-1":      dara.String("dms.us-west-1.aliyuncs.com"),
-		"us-east-1":      dara.String("dms.us-east-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -1194,7 +1184,7 @@ func (client *Client) CreateDataAgentAccuracyTest(request *CreateDataAgentAccura
 
 // Summary:
 //
-// # Data Agent点赞点踩功能
+// Creates feedback for a DataAgent.
 //
 // @param request - CreateDataAgentFeedbackRequest
 //
@@ -1266,7 +1256,7 @@ func (client *Client) CreateDataAgentFeedbackWithOptions(request *CreateDataAgen
 
 // Summary:
 //
-// # Data Agent点赞点踩功能
+// Creates feedback for a DataAgent.
 //
 // @param request - CreateDataAgentFeedbackRequest
 //
@@ -5541,6 +5531,10 @@ func (client *Client) GetOneMetaOssieModel(request *GetOneMetaOssieModelRequest)
 //
 // Queries the operation logs of the SQL window.
 //
+// Description:
+//
+// When you call this operation, the service endpoint must match the region where the instance resides. Otherwise, the complete SQL window operation logs cannot be retrieved.
+//
 // @param request - GetSqlConsoleOperationLogRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5612,6 +5606,10 @@ func (client *Client) GetSqlConsoleOperationLogWithOptions(request *GetSqlConsol
 // Summary:
 //
 // Queries the operation logs of the SQL window.
+//
+// Description:
+//
+// When you call this operation, the service endpoint must match the region where the instance resides. Otherwise, the complete SQL window operation logs cannot be retrieved.
 //
 // @param request - GetSqlConsoleOperationLogRequest
 //
@@ -6257,7 +6255,7 @@ func (client *Client) ListAirflows(request *ListAirflowsRequest) (_result *ListA
 
 // Summary:
 //
-// ListCustomAgent returns a list of all custom agents from the personal space and workspaces.
+// Lists all custom agents in a personal space or workspace.
 //
 // @param request - ListCustomAgentRequest
 //
@@ -6321,7 +6319,7 @@ func (client *Client) ListCustomAgentWithOptions(request *ListCustomAgentRequest
 
 // Summary:
 //
-// ListCustomAgent returns a list of all custom agents from the personal space and workspaces.
+// Lists all custom agents in a personal space or workspace.
 //
 // @param request - ListCustomAgentRequest
 //
@@ -9685,7 +9683,7 @@ func (client *Client) SaveWorkspaceCode(request *SaveWorkspaceCodeRequest) (_res
 //
 // ## Request description
 //
-// - `message_type` defaults to `primary`. Set it to `additional` or `cancel` when you need to append information or cancel a session.
+// - `message_type` defaults to `primary`. To append information or cancel a session, set it to `additional` or `cancel`.
 //
 // - The `reply_to` field indicates which Agent message this message is a response to. The default value is `0`.
 //
@@ -9815,7 +9813,7 @@ func (client *Client) SendChatMessageWithOptions(tmpReq *SendChatMessageRequest,
 //
 // ## Request description
 //
-// - `message_type` defaults to `primary`. Set it to `additional` or `cancel` when you need to append information or cancel a session.
+// - `message_type` defaults to `primary`. To append information or cancel a session, set it to `additional` or `cancel`.
 //
 // - The `reply_to` field indicates which Agent message this message is a response to. The default value is `0`.
 //

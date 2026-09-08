@@ -42,13 +42,13 @@ type iSendChatMessageShrinkRequest interface {
 }
 
 type SendChatMessageShrinkRequest struct {
-	// **[Deprecated]*	- This field is now automatically obtained by the backend. You do not need to specify this field.
+	// **[Optimized]*	- This field is now automatically obtained by the backend. You do not need to specify this field.
 	//
 	// example:
 	//
 	// agent_***
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// **[Deprecated]*	- This field is now automatically obtained by the backend. You do not need to specify this field when calling the API.
+	// **[Optimized]*	- This field is now automatically obtained by the backend. You do not need to specify this field when calling the API.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type SendChatMessageShrinkRequest struct {
 	DataSourceShrink *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
 	// The detailed data source information. This parameter can be left empty.
 	DataSourcesShrink *string `json:"DataSources,omitempty" xml:"DataSources,omitempty"`
-	// The content of the message to send to the Agent.
+	// The message content to send to the Agent.
 	//
 	// This parameter is required.
 	//
@@ -74,11 +74,11 @@ type SendChatMessageShrinkRequest struct {
 	//
 	// - For regular interactions with the Agent, set the message type to `[primary]`.
 	//
-	// - When the message is a response to the Agent\\"s human-in-the-loop question, set the type to `[additional]`.
+	// - When the message is a response to the Agent\\"s Human-in-Loop question, set the type to `[additional]`.
 	//
-	// - When the message triggers a report generation, set the type to `[report]`.
+	// - When the message is intended to trigger report generation, set the type to `[report]`.
 	//
-	// - When the message cancels the current session, set the type to `[cancel]`.
+	// - When the message is intended to cancel the current session, set the type to `[cancel]`.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type SendChatMessageShrinkRequest struct {
 	//
 	// 20qrliuoo7p2vlsfg*****
 	ParentSessionId *string `json:"ParentSessionId,omitempty" xml:"ParentSessionId,omitempty"`
-	// This field is required when the message type is `additional`. Specify the specific question that the Agent asks the user through the human-in-the-loop mechanism.
+	// This field is required when the message type is `additional`. Specify the specific question that the Agent asks the user through Human-in-Loop.
 	//
 	// example:
 	//
@@ -104,9 +104,9 @@ type SendChatMessageShrinkRequest struct {
 	QuotedMessage *string `json:"QuotedMessage,omitempty" xml:"QuotedMessage,omitempty"`
 	// **Important**
 	//
-	// When this message is a reply to an Agent message (for example, the Agent asks a clarifying question through ASK_HUMAN), set reply_to to the exact Checkpoint sequence number carried in that Agent message. If this message is not a targeted reply, such as requesting the Agent to perform further in-depth analysis after the analysis is complete, leave reply_to empty or set it to "0".
+	// When this message is a reply to an Agent message (for example, the Agent asks a clarifying question through ASK_HUMAN), set reply_to to the exact Checkpoint sequence number carried in that Agent message. If this message is not a targeted reply, such as requesting the Agent to perform further in-depth analysis after analysis is complete, you can leave reply_to empty or set it to "0".
 	//
-	// This field affects how the Agent decides to process the message. Passing an incorrect value may cause the analysis results to be less effective than expected.
+	// This field affects how the Agent decides to process the message. Incorrect values may lead to analysis results that do not meet expectations.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ type SendChatMessageShrinkRequest struct {
 	// if can be null:
 	// true
 	SessionConfigShrink *string `json:"SessionConfig,omitempty" xml:"SessionConfig,omitempty"`
-	// The session ID. This is an optional field used for multi-turn conversations.
+	// The session ID. This is an optional field used for multi-turn sessions.
 	//
-	// - You can start a session without specifying this field. The response includes the SessionID for the current session.
+	// - You can start a session without specifying this field. The response includes the SessionID of the current session.
 	//
 	// - You can also manually create a session ID by calling the CreateDataAgentSession operation and include the ID when initiating a session.
 	//
-	// - If you need multi-turn conversations (such as follow-up questions or confirming execution plans), include the SessionID returned by the previous SendChatMessage call.
+	// - For multi-turn conversations (such as follow-up questions or confirming execution plans), specify the SessionID returned by the previous SendChatMessage call.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type SendChatMessageShrinkRequest struct {
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 	// The configuration items that affect only the current task.
 	TaskConfigShrink *string `json:"TaskConfig,omitempty" xml:"TaskConfig,omitempty"`
-	// The OSS bucket of the user. If this field is left empty, the analysis data is securely stored in the built-in storage.
+	// The OSS bucket of the user. If this parameter is not specified, the analysis data is securely stored in built-in storage.
 	//
 	// example:
 	//

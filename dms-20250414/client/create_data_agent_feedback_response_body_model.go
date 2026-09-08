@@ -26,27 +26,44 @@ type iCreateDataAgentFeedbackResponseBody interface {
 }
 
 type CreateDataAgentFeedbackResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response struct.
 	Data *CreateDataAgentFeedbackResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message returned if the request failed.
+	//
 	// example:
 	//
 	// Specified parameter Tid is not valid.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
 	// example:
 	//
 	// 89a07eac-96ff-48be-983b-f22c55*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -134,30 +151,44 @@ func (s *CreateDataAgentFeedbackResponseBody) Validate() error {
 }
 
 type CreateDataAgentFeedbackResponseBodyData struct {
+	// The feedback content.
+	//
 	// example:
 	//
 	// {"feedback_type":"PRODUCT_SUGGESTION","user_feedback": "test","email":"yourname@example.com","is_authorized":"Y"}
 	FeedbackContent *string `json:"FeedbackContent,omitempty" xml:"FeedbackContent,omitempty"`
+	// The feedback type.
+	//
 	// example:
 	//
 	// ISSUE_REPORT
 	FeedbackType *string `json:"FeedbackType,omitempty" xml:"FeedbackType,omitempty"`
+	// The like value.
+	//
 	// example:
 	//
 	// 1
 	LikeValue *int32 `json:"LikeValue,omitempty" xml:"LikeValue,omitempty"`
+	// The region.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The agent session ID.
+	//
 	// example:
 	//
 	// h8r********4fch
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The feedback target ID.
+	//
 	// example:
 	//
 	// h8r********4fch_sdesfews
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The feedback target.
+	//
 	// example:
 	//
 	// SESSION
