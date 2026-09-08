@@ -16,13 +16,13 @@ type iListCatalogsRequest interface {
 }
 
 type ListCatalogsRequest struct {
-	// Items per page
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// Pagination token
+	// The pagination token.
 	//
 	// example:
 	//

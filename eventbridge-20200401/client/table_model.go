@@ -38,7 +38,7 @@ type Table struct {
 	//
 	// example:
 	//
-	// [{"Name":"id","Type":"bigint","Comment":"主键"}]
+	// [{"Name":"id","Type":"bigint","Comment":"Primary key"}]
 	Columns []*TableColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
 	// Comment description of the table
 	//

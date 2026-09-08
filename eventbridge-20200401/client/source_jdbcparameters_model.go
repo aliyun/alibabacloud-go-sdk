@@ -42,21 +42,36 @@ type iSourceJDBCParameters interface {
 }
 
 type SourceJDBCParameters struct {
-	BatchSize          *int32  `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
-	CustomQuery        *string `json:"CustomQuery,omitempty" xml:"CustomQuery,omitempty"`
+	// The maximum number of rows returned per query. Default value: 1000. Maximum value: 10000.
+	BatchSize *int32 `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
+	// The custom SQL query statement (advanced mode). This parameter is mutually exclusive with TableName.
+	CustomQuery *string `json:"CustomQuery,omitempty" xml:"CustomQuery,omitempty"`
+	// The incrementing column name. Required when QueryMode is set to `incrementing` or `timestamp_incrementing`.
 	IncrementingColumn *string `json:"IncrementingColumn,omitempty" xml:"IncrementingColumn,omitempty"`
-	JdbcUrl            *string `json:"JdbcUrl,omitempty" xml:"JdbcUrl,omitempty"`
-	Network            *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	Password           *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	PollingInterval    *int32  `json:"PollingInterval,omitempty" xml:"PollingInterval,omitempty"`
-	QueryMode          *string `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
-	QueryTimeout       *int32  `json:"QueryTimeout,omitempty" xml:"QueryTimeout,omitempty"`
-	SecurityGroupId    *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	TableName          *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	TimestampColumn    *string `json:"TimestampColumn,omitempty" xml:"TimestampColumn,omitempty"`
-	Username           *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	VSwitchIds         *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	VpcId              *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The JDBC connection URL. ClickHouse example: `jdbc:clickhouse://host:8123/database`; MySQL example: `jdbc:mysql://host:3306/database`. The system automatically identifies the database type.
+	JdbcUrl *string `json:"JdbcUrl,omitempty" xml:"JdbcUrl,omitempty"`
+	// The network type. Valid values: `PublicNetwork` (public network); `PrivateNetwork` (VPC private network, requires VpcId, VSwitchIds, and SecurityGroupId to be configured).
+	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// The database password.
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The polling interval, in seconds. Minimum value: 10. Default value: 60.
+	PollingInterval *int32 `json:"PollingInterval,omitempty" xml:"PollingInterval,omitempty"`
+	// The query mode. Valid values: `bulk` (full query); `incrementing` (incrementing column tracking); `timestamp` (timestamp tracking); `timestamp_incrementing` (timestamp and incrementing column dual tracking).
+	QueryMode *string `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
+	// The SQL query timeout period, in seconds. Default value: 30. Maximum value: 300.
+	QueryTimeout *int32 `json:"QueryTimeout,omitempty" xml:"QueryTimeout,omitempty"`
+	// The security group ID. Required when Network is set to PrivateNetwork.
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The target table name. This parameter is mutually exclusive with CustomQuery. Required when custom SQL is not used.
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The timestamp column name. Required when QueryMode is set to `timestamp` or `timestamp_incrementing`.
+	TimestampColumn *string `json:"TimestampColumn,omitempty" xml:"TimestampColumn,omitempty"`
+	// The database username.
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The vSwitch ID. Required when Network is set to PrivateNetwork.
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// The VPC ID. Required when Network is set to PrivateNetwork.
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s SourceJDBCParameters) String() string {

@@ -22,7 +22,7 @@ type iPollAskResultResponseBody interface {
 }
 
 type PollAskResultResponseBody struct {
-	// The response code. Valid values:
+	// The API return code. Valid values:
 	//
 	// - Success: The operation was successful.
 	//

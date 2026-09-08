@@ -46,7 +46,7 @@ type AskLumaRequest struct {
 	//
 	// example:
 	//
-	// 帮我统计一下最近的订单数据。
+	// Help me collect statistics on recent order data
 	Question *string `json:"Question,omitempty" xml:"Question,omitempty"`
 }
 

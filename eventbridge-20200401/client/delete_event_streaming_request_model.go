@@ -11,6 +11,8 @@ type iDeleteEventStreamingRequest interface {
 	GoString() string
 	SetEventStreamingName(v string) *DeleteEventStreamingRequest
 	GetEventStreamingName() *string
+	SetForce(v bool) *DeleteEventStreamingRequest
+	GetForce() *bool
 }
 
 type DeleteEventStreamingRequest struct {
@@ -22,6 +24,8 @@ type DeleteEventStreamingRequest struct {
 	//
 	// rocketmq-sync
 	EventStreamingName *string `json:"EventStreamingName,omitempty" xml:"EventStreamingName,omitempty"`
+	// Specifies whether to force delete the event stream. If set to true, system label-based deletion protection is bypassed. Default value: false.
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 }
 
 func (s DeleteEventStreamingRequest) String() string {
@@ -36,8 +40,17 @@ func (s *DeleteEventStreamingRequest) GetEventStreamingName() *string {
 	return s.EventStreamingName
 }
 
+func (s *DeleteEventStreamingRequest) GetForce() *bool {
+	return s.Force
+}
+
 func (s *DeleteEventStreamingRequest) SetEventStreamingName(v string) *DeleteEventStreamingRequest {
 	s.EventStreamingName = &v
+	return s
+}
+
+func (s *DeleteEventStreamingRequest) SetForce(v bool) *DeleteEventStreamingRequest {
+	s.Force = &v
 	return s
 }
 

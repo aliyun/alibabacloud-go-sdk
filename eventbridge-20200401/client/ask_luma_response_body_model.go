@@ -42,7 +42,7 @@ type AskLumaResponseBody struct {
 	//
 	// 97FB3BAE-XXXXXX-36435495B7EB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

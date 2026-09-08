@@ -31,67 +31,75 @@ type iAskLumaResult interface {
 	GetStatus() *string
 	SetStorageTruncated(v bool) *AskLumaResult
 	GetStorageTruncated() *bool
+	SetWikiVersion(v string) *AskLumaResult
+	GetWikiVersion() *string
 }
 
 type AskLumaResult struct {
-	// Whether clarification is needed
+	// Indicates whether clarification is needed.
 	//
 	// example:
 	//
 	// false
 	ClarificationNeeded *bool `json:"ClarificationNeeded,omitempty" xml:"ClarificationNeeded,omitempty"`
-	// Clarification question text
+	// The clarification question text.
 	//
 	// example:
 	//
-	// 您指的是哪个数据库中的员工表？
+	// Which database does the employee table you are referring to belong to?
 	ClarificationQuestion *string `json:"ClarificationQuestion,omitempty" xml:"ClarificationQuestion,omitempty"`
-	// Query constraints
+	// The query constraints.
 	Constraints *Constraints `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
-	// Structured result body
+	// The structured result body.
 	Content *Content `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Conversation identifier, used for multi-turn follow-up questions
+	// The conversation ID, used for multi-turn follow-up questions.
 	//
 	// example:
 	//
 	// conv_xxx
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// Error code
+	// The error code.
 	//
 	// example:
 	//
 	// ExecutionFailed, Timeout, RateLimited, InternalError, ConversationExpired
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Error details
+	// The error details.
 	//
 	// example:
 	//
 	// Agent with name \\"xxx\\" not found for account 1186xxx
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Whether it is an error. false = query succeeded or clarification (including empty result set); true = execution failed / timeout / rate limited / internal error
+	// Indicates whether an error occurred. A value of false indicates that the query succeeded or a clarification is needed (including empty result sets). A value of true indicates that the execution failed due to a timeout, throttling, or internal error.
 	//
 	// example:
 	//
 	// false
 	IsError *bool `json:"IsError,omitempty" xml:"IsError,omitempty"`
-	// Message identifier, used for PollAskResult polling
+	// The message ID, used for polling with PollAskResult.
 	//
 	// example:
 	//
 	// msg_xxx
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// Execution status
+	// The submit status.
 	//
 	// example:
 	//
 	// RUNNING, SUCCEEDED, FAILED, TIMEOUT
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Whether the result was truncated due to exceeding the storage limit. Only appears in large result set scenarios
+	// Indicates whether the result was truncated because it exceeded the storage limit. This field is returned only for large result sets.
 	//
 	// example:
 	//
 	// true
 	StorageTruncated *bool `json:"StorageTruncated,omitempty" xml:"StorageTruncated,omitempty"`
+	// The business Wiki version that was actually used for this response. This field is not returned if the agent does not have a Wiki configured.
+	//
+	// example:
+	//
+	// eventhouse-multisource-demo-v1
+	WikiVersion *string `json:"WikiVersion,omitempty" xml:"WikiVersion,omitempty"`
 }
 
 func (s AskLumaResult) String() string {
@@ -146,6 +154,10 @@ func (s *AskLumaResult) GetStorageTruncated() *bool {
 	return s.StorageTruncated
 }
 
+func (s *AskLumaResult) GetWikiVersion() *string {
+	return s.WikiVersion
+}
+
 func (s *AskLumaResult) SetClarificationNeeded(v bool) *AskLumaResult {
 	s.ClarificationNeeded = &v
 	return s
@@ -198,6 +210,11 @@ func (s *AskLumaResult) SetStatus(v string) *AskLumaResult {
 
 func (s *AskLumaResult) SetStorageTruncated(v bool) *AskLumaResult {
 	s.StorageTruncated = &v
+	return s
+}
+
+func (s *AskLumaResult) SetWikiVersion(v string) *AskLumaResult {
+	s.WikiVersion = &v
 	return s
 }
 

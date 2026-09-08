@@ -44,7 +44,7 @@ type CreateEventStreamingShrinkRequest struct {
 	//
 	// myeventstreaming
 	EventStreamingName *string `json:"EventStreamingName,omitempty" xml:"EventStreamingName,omitempty"`
-	// The event filtering rule. If not specified, all events are matched.
+	// The event filtering rule. If you do not specify this parameter, all events are matched.
 	//
 	// example:
 	//
@@ -82,14 +82,15 @@ type CreateEventStreamingShrinkRequest struct {
 	//
 	// }
 	FilterPattern *string `json:"FilterPattern,omitempty" xml:"FilterPattern,omitempty"`
-	Metadata      *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// The generic JSON Configurations for the event source. This parameter is mutually exclusive with Source.
+	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	// The runtime environment parameters.
 	RunOptionsShrink *string `json:"RunOptions,omitempty" xml:"RunOptions,omitempty"`
-	// The event target. You must select exactly one Sink type.
+	// The event target. You must select one Sink type, and you can select only one Sink type.
 	SinkShrink *string `json:"Sink,omitempty" xml:"Sink,omitempty"`
-	// The event provider. You must select exactly one Source type.
+	// The event provider. You must specify one source type, and you can specify only one source type.
 	SourceShrink *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The tag list. A maximum of 20 items are supported.
+	// The tag list, containing up to 20 items.
 	Tags []*CreateEventStreamingShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The Transform-related configurations.
 	TransformsShrink *string `json:"Transforms,omitempty" xml:"Transforms,omitempty"`

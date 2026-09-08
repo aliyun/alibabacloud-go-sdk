@@ -24,7 +24,7 @@ type QueryAskLumaLogRequest struct {
 	//
 	// eyJ0cyI6MTcxN...
 	After *string `json:"After,omitempty" xml:"After,omitempty"`
-	// The agent name. If this parameter is not specified, logs of all agents are queried.
+	// The agent name. If this parameter is left empty, all agents are queried.
 	//
 	// example:
 	//

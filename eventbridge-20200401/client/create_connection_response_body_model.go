@@ -20,7 +20,7 @@ type iCreateConnectionResponseBody interface {
 }
 
 type CreateConnectionResponseBody struct {
-	// The API status or POP error code. Valid values: Success.
+	// The API status or POP error code. A value of Success indicates that the request is successful.
 	//
 	// example:
 	//

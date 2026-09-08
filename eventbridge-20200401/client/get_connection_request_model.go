@@ -14,7 +14,7 @@ type iGetConnectionRequest interface {
 }
 
 type GetConnectionRequest struct {
-	// The name of the connection.
+	// The connection name.
 	//
 	// This parameter is required.
 	//

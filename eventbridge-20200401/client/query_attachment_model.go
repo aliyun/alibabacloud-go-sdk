@@ -11,18 +11,26 @@ type iQueryAttachment interface {
 	GoString() string
 	SetQuery(v string) *QueryAttachment
 	GetQuery() *string
+	SetQueryId(v string) *QueryAttachment
+	GetQueryId() *string
 	SetResult(v *ExecutionResult) *QueryAttachment
 	GetResult() *ExecutionResult
 }
 
 type QueryAttachment struct {
-	// Query statement
+	// The query statement.
 	//
 	// example:
 	//
 	// "SELECT city, COUNT(*) AS cnt FROM events GROUP BY city"
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// Query execution result
+	// The stable identifier for the actual SQL tool execution, used for result tracking and interpretation.
+	//
+	// example:
+	//
+	// sqlx-0-a1b2c3d4
+	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// The query execution result.
 	Result *ExecutionResult `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
@@ -38,12 +46,21 @@ func (s *QueryAttachment) GetQuery() *string {
 	return s.Query
 }
 
+func (s *QueryAttachment) GetQueryId() *string {
+	return s.QueryId
+}
+
 func (s *QueryAttachment) GetResult() *ExecutionResult {
 	return s.Result
 }
 
 func (s *QueryAttachment) SetQuery(v string) *QueryAttachment {
 	s.Query = &v
+	return s
+}
+
+func (s *QueryAttachment) SetQueryId(v string) *QueryAttachment {
+	s.QueryId = &v
 	return s
 }
 

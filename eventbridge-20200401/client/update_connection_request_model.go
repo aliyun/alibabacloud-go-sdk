@@ -24,9 +24,9 @@ type iUpdateConnectionRequest interface {
 }
 
 type UpdateConnectionRequest struct {
-	// The data structure of the authentication parameters.
+	// The authentication data structure.
 	AuthParameters *UpdateConnectionRequestAuthParameters `json:"AuthParameters,omitempty" xml:"AuthParameters,omitempty" type:"Struct"`
-	// The name of the connection to be updated. The maximum length is 127 characters. The minimum length is 2 characters.
+	// The name of the connection to update. Maximum length: 127 characters. Minimum length: 2 characters.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UpdateConnectionRequest struct {
 	//
 	// connection-name
 	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
-	// The description. The maximum length is 255 characters.
+	// The description. Maximum length: 255 characters.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type UpdateConnectionRequest struct {
 	//
 	// This parameter is required.
 	NetworkParameters *UpdateConnectionRequestNetworkParameters `json:"NetworkParameters,omitempty" xml:"NetworkParameters,omitempty" type:"Struct"`
-	// The data source connection parameters (JSON object). For specific field definitions, call the GetConnectionType API and refer to the ParamsSchema in the response.
+	// The data source connection parameters (JSON object). For specific field definitions, call the GetConnectionType operation and refer to ParamsSchema in the response.
 	//
 	// example:
 	//
 	// {"HostName":"xxx.mysql.rds.aliyuncs.com","Port":"3306","User":"root","Password":"xxx","DatabaseName":"demo_db"}
 	Parameters interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The connection type. Valid values: MySQL, PostgreSQL, Elasticsearch, and Http.
+	// The connection type. Valid values: MySQL, PostgreSQL, Elasticsearch, OSS_TABLES, SLS, OTS, MaxCompute, MongoDB, Redis, SQLServer, ClickHouse, Oracle, Hive, Iceberg, lakehouse, Http.
 	//
 	// example:
 	//
@@ -135,23 +135,23 @@ func (s *UpdateConnectionRequest) Validate() error {
 }
 
 type UpdateConnectionRequestAuthParameters struct {
-	// The data structure of API Key authentication.
+	// The data structure for API Key authentication.
 	ApiKeyAuthParameters *UpdateConnectionRequestAuthParametersApiKeyAuthParameters `json:"ApiKeyAuthParameters,omitempty" xml:"ApiKeyAuthParameters,omitempty" type:"Struct"`
-	// The authentication type. Valid values:
+	// The authentication type:
 	//
-	// - BASIC: BASIC_AUTH. This authorization method is the basic authentication method implemented by browsers in compliance with the HTTP protocol. During communication using the HTTP protocol, the HTTP protocol defines basic authentication that allows the HTTP server to authenticate the user identity of the client. Add Authorization: Basic followed by one space and the Base64-encoded value of `username:password` to the request header in a fixed format. Username and Password are required.
+	// - BASIC: BASIC_AUTH. This authorization method is a basic authorization method implemented by browsers in compliance with the HTTP protocol. During HTTP communication, the HTTP protocol defines a basic authentication method that allows HTTP servers to verify client identities. Add Authorization: Basic Base64-encoded(`username:password`) in the request header in a fixed format. Username and Password are required.
 	//
-	// - API KEY: API_KEY_AUTH. Add Token: TokenValue to the request header in a fixed format. ApiKeyName and ApiKeyValue are required.
+	// - API KEY: API_KEY_AUTH. Add Token: token value in the request header in a fixed format. ApiKeyName and ApiKeyValue are required.
 	//
-	// - OAUTH: OAUTH_AUTH. OAuth 2.0 is an authorization mechanism. In normal cases, in a system that does not use an authorization mechanism such as OAuth 2.0, the client can directly access resources on the resource server. To ensure secure data access for users, the Access Token mechanism is added between the client and the resource server. The client must carry an Access Token to access protected resources. Therefore, OAuth 2.0 prevents resources from being accessed by malicious clients, thereby improving the security of the system. AuthorizationEndpoint, OAuthHttpParameters, and HttpMethod are required.
+	// - OAUTH: OAUTH_AUTH. OAuth 2.0 is an authorization mechanism. Normally, without an authorization mechanism such as OAuth 2.0, clients can directly access resources on the resource server. To ensure secure data access, an Access Token mechanism is added. Clients must carry an Access Token to access protected resources. OAuth 2.0 prevents resources from being accessed by malicious clients, thereby improving system security. AuthorizationEndpoint, OAuthHttpParameters, and HttpMethod are required.
 	//
 	// example:
 	//
 	// BASIC_AUTH
 	AuthorizationType *string `json:"AuthorizationType,omitempty" xml:"AuthorizationType,omitempty"`
-	// The data structure of Basic authentication.
+	// The data structure for Basic authentication.
 	BasicAuthParameters *UpdateConnectionRequestAuthParametersBasicAuthParameters `json:"BasicAuthParameters,omitempty" xml:"BasicAuthParameters,omitempty" type:"Struct"`
-	// The data structure of the OAuth authentication parameters.
+	// The data structure for OAuth authentication parameters.
 	OAuthParameters *UpdateConnectionRequestAuthParametersOAuthParameters `json:"OAuthParameters,omitempty" xml:"OAuthParameters,omitempty" type:"Struct"`
 }
 
@@ -309,15 +309,15 @@ func (s *UpdateConnectionRequestAuthParametersBasicAuthParameters) Validate() er
 }
 
 type UpdateConnectionRequestAuthParametersOAuthParameters struct {
-	// The request URL for obtaining the OAuth token. The maximum length is 127 characters.
+	// The request URL for obtaining the OAuth token. Maximum length: 127 characters.
 	//
 	// example:
 	//
 	// http://localhost:8080/oauth/token
 	AuthorizationEndpoint *string `json:"AuthorizationEndpoint,omitempty" xml:"AuthorizationEndpoint,omitempty"`
-	// The data structure of the client parameters.
+	// The data structure for client parameters.
 	ClientParameters *UpdateConnectionRequestAuthParametersOAuthParametersClientParameters `json:"ClientParameters,omitempty" xml:"ClientParameters,omitempty" type:"Struct"`
-	// The HTTP request method. Valid values:
+	// The HTTP method for the probe request. Valid values:
 	//
 	// - GET
 	//
@@ -443,11 +443,11 @@ func (s *UpdateConnectionRequestAuthParametersOAuthParametersClientParameters) V
 }
 
 type UpdateConnectionRequestAuthParametersOAuthParametersOAuthHttpParameters struct {
-	// The list of data structures for body request parameters.
+	// The list of body request parameter data structures.
 	BodyParameters []*UpdateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersBodyParameters `json:"BodyParameters,omitempty" xml:"BodyParameters,omitempty" type:"Repeated"`
-	// The list of request header parameters.
+	// The list of header parameter data structures.
 	HeaderParameters []*UpdateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersHeaderParameters `json:"HeaderParameters,omitempty" xml:"HeaderParameters,omitempty" type:"Repeated"`
-	// The data structure of request query parameters.
+	// The data structure of the URI of the request path parameters.
 	QueryStringParameters []*UpdateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersQueryStringParameters `json:"QueryStringParameters,omitempty" xml:"QueryStringParameters,omitempty" type:"Repeated"`
 }
 
@@ -518,7 +518,7 @@ func (s *UpdateConnectionRequestAuthParametersOAuthParametersOAuthHttpParameters
 }
 
 type UpdateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersBodyParameters struct {
-	// Specifies whether the parameter is used for authentication.
+	// Specifies whether the value is used for authentication.
 	//
 	// example:
 	//
@@ -578,19 +578,19 @@ func (s *UpdateConnectionRequestAuthParametersOAuthParametersOAuthHttpParameters
 }
 
 type UpdateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersHeaderParameters struct {
-	// Specifies whether the parameter is used for authentication.
+	// Specifies whether the value is used for authentication.
 	//
 	// example:
 	//
 	// false
 	IsValueSecret *string `json:"IsValueSecret,omitempty" xml:"IsValueSecret,omitempty"`
-	// The key of the request header parameter.
+	// The key of the header parameter.
 	//
 	// example:
 	//
 	// name
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the request header parameter.
+	// The value of the header parameter.
 	//
 	// example:
 	//
@@ -638,19 +638,19 @@ func (s *UpdateConnectionRequestAuthParametersOAuthParametersOAuthHttpParameters
 }
 
 type UpdateConnectionRequestAuthParametersOAuthParametersOAuthHttpParametersQueryStringParameters struct {
-	// Specifies whether the parameter is used for authentication.
+	// Specifies whether the value is used for authentication.
 	//
 	// example:
 	//
 	// false
 	IsValueSecret *string `json:"IsValueSecret,omitempty" xml:"IsValueSecret,omitempty"`
-	// The key of the request query parameter.
+	// The key of the URI of the request path parameter.
 	//
 	// example:
 	//
 	// name
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the request query parameter.
+	// The value of the URI of the request path parameter.
 	//
 	// example:
 	//
@@ -700,10 +700,10 @@ func (s *UpdateConnectionRequestAuthParametersOAuthParametersOAuthHttpParameters
 type UpdateConnectionRequestNetworkParameters struct {
 	// - Public network: PublicNetwork
 	//
-	// - Virtual Private Cloud (VPC): PrivateNetwork
+	// - Virtual private cloud (VPC): PrivateNetwork
 	//
 	//
-	// > When you select PrivateNetwork, VpcId, VswitcheId, and SecurityGroupId are required.
+	// > If you select PrivateNetwork, VpcId, VswitcheId, and SecurityGroupId are required.
 	//
 	// This parameter is required.
 	//
@@ -711,7 +711,7 @@ type UpdateConnectionRequestNetworkParameters struct {
 	//
 	// PublicNetwork
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The ID of the security group.
+	// The security group ID.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iCreateConnectionShrinkRequest interface {
 }
 
 type CreateConnectionShrinkRequest struct {
-	// The authentication configuration.
+	// The authentication data structure.
 	AuthParametersShrink *string `json:"AuthParameters,omitempty" xml:"AuthParameters,omitempty"`
 	// The connection configuration name. Maximum length: 127 characters. Minimum length: 2 characters.
 	//
@@ -40,17 +40,17 @@ type CreateConnectionShrinkRequest struct {
 	//
 	// demo
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The network configuration.
+	// The network configuration data structure.
 	//
 	// This parameter is required.
 	NetworkParametersShrink *string `json:"NetworkParameters,omitempty" xml:"NetworkParameters,omitempty"`
-	// The data source connection parameters (JSON object). This parameter is required when Type is set to a data source type. This parameter is not required for the Http type. For specific field definitions, call the GetConnectionType operation and refer to ParamsSchema in the response.
+	// The data source connection parameters (JSON object). This parameter is required when Type is a data source type. It is not required for the Http type. For specific field definitions, call the GetConnectionType operation and refer to ParamsSchema in the response.
 	//
 	// example:
 	//
 	// {"HostName":"xxx.mysql.rds.aliyuncs.com","Port":"3306","User":"root","Password":"xxx","DatabaseName":"demo_db"}
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The connection type. Valid values: MySQL, PostgreSQL, Elasticsearch, and Http. This parameter is required for data source connections. If this parameter is not specified, the default value Http is used. The Http type is used for HTTP protocol targets such as API Destination. Data source types are used for data connections in the integration marketplace.
+	// The connection type. Valid values: MySQL, PostgreSQL, Elasticsearch, OSS_TABLES, SLS, OTS, MaxCompute, MongoDB, Redis, SQLServer, ClickHouse, Oracle, Hive, Iceberg, lakehouse, and Http. This parameter is required for data source type connections. If this parameter is not specified, the default value Http is used. The Http type is used for API Destination and other HTTP protocol targets. Hive and Iceberg are used for the corresponding data lakehouse sources. lakehouse is used only for compatibility with existing connections. Other data source types are used for data connections in the integration marketplace.
 	//
 	// example:
 	//

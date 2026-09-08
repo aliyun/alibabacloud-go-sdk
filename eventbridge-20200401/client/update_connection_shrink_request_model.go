@@ -24,9 +24,9 @@ type iUpdateConnectionShrinkRequest interface {
 }
 
 type UpdateConnectionShrinkRequest struct {
-	// The data structure of the authentication parameters.
+	// The authentication data structure.
 	AuthParametersShrink *string `json:"AuthParameters,omitempty" xml:"AuthParameters,omitempty"`
-	// The name of the connection to be updated. The maximum length is 127 characters. The minimum length is 2 characters.
+	// The name of the connection to update. Maximum length: 127 characters. Minimum length: 2 characters.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UpdateConnectionShrinkRequest struct {
 	//
 	// connection-name
 	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
-	// The description. The maximum length is 255 characters.
+	// The description. Maximum length: 255 characters.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type UpdateConnectionShrinkRequest struct {
 	//
 	// This parameter is required.
 	NetworkParametersShrink *string `json:"NetworkParameters,omitempty" xml:"NetworkParameters,omitempty"`
-	// The data source connection parameters (JSON object). For specific field definitions, call the GetConnectionType API and refer to the ParamsSchema in the response.
+	// The data source connection parameters (JSON object). For specific field definitions, call the GetConnectionType operation and refer to ParamsSchema in the response.
 	//
 	// example:
 	//
 	// {"HostName":"xxx.mysql.rds.aliyuncs.com","Port":"3306","User":"root","Password":"xxx","DatabaseName":"demo_db"}
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The connection type. Valid values: MySQL, PostgreSQL, Elasticsearch, and Http.
+	// The connection type. Valid values: MySQL, PostgreSQL, Elasticsearch, OSS_TABLES, SLS, OTS, MaxCompute, MongoDB, Redis, SQLServer, ClickHouse, Oracle, Hive, Iceberg, lakehouse, Http.
 	//
 	// example:
 	//

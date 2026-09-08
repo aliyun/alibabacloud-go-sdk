@@ -26,32 +26,32 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	}
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
-		"us-west-1":             dara.String("eventbridge-console.us-west-1.aliyuncs.com"),
-		"us-east-1":             dara.String("eventbridge-console.us-east-1.aliyuncs.com"),
-		"eu-west-1":             dara.String("eventbridge-console.eu-west-1.aliyuncs.com"),
-		"eu-central-1":          dara.String("eventbridge-console.eu-central-1.aliyuncs.com"),
-		"cn-zhangjiakou":        dara.String("eventbridge-console.cn-zhangjiakou.aliyuncs.com"),
 		"cn-wulanchabu":         dara.String("eventbridge-console.cn-wulanchabu.aliyuncs.com"),
-		"cn-shenzhen-finance-1": dara.String("eventbridge-console.cn-shenzhen-finance-1.aliyuncs.com"),
-		"cn-shenzhen":           dara.String("eventbridge-console.cn-shenzhen.aliyuncs.com"),
-		"cn-shanghai-finance-1": dara.String("eventbridge-console.cn-shanghai-finance-1.aliyuncs.com"),
-		"cn-shanghai":           dara.String("eventbridge-console.cn-shanghai.aliyuncs.com"),
+		"cn-beijing":            dara.String("eventbridge-console.cn-beijing.aliyuncs.com"),
 		"cn-qingdao":            dara.String("eventbridge-console.cn-qingdao.aliyuncs.com"),
-		"cn-huhehaote":          dara.String("eventbridge-console.cn-huhehaote.aliyuncs.com"),
+		"cn-shanghai":           dara.String("eventbridge-console.cn-shanghai.aliyuncs.com"),
 		"cn-hongkong":           dara.String("eventbridge-console.cn-hongkong.aliyuncs.com"),
 		"cn-heyuan":             dara.String("eventbridge-console.cn-heyuan.aliyuncs.com"),
-		"cn-hangzhou":           dara.String("eventbridge-console.cn-hangzhou.aliyuncs.com"),
-		"cn-guangzhou":          dara.String("eventbridge-console.cn-guangzhou.aliyuncs.com"),
-		"cn-chengdu":            dara.String("eventbridge-console.cn-chengdu.aliyuncs.com"),
-		"cn-beijing-finance-1":  dara.String("eventbridge-console.cn-beijing-finance-1.aliyuncs.com"),
-		"cn-beijing":            dara.String("eventbridge-console.cn-beijing.aliyuncs.com"),
-		"ap-southeast-7":        dara.String("eventbridge-console.ap-southeast-7.aliyuncs.com"),
-		"ap-southeast-6":        dara.String("eventbridge-console.ap-southeast-6.aliyuncs.com"),
-		"ap-southeast-5":        dara.String("eventbridge-console.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-3":        dara.String("eventbridge-console.ap-southeast-3.aliyuncs.com"),
-		"ap-southeast-1":        dara.String("eventbridge-console.ap-southeast-1.aliyuncs.com"),
+		"cn-zhangjiakou":        dara.String("eventbridge-console.cn-zhangjiakou.aliyuncs.com"),
+		"cn-shenzhen":           dara.String("eventbridge-console.cn-shenzhen.aliyuncs.com"),
 		"ap-northeast-2":        dara.String("eventbridge-console.ap-northeast-2.aliyuncs.com"),
 		"ap-northeast-1":        dara.String("eventbridge-console.ap-northeast-1.aliyuncs.com"),
+		"cn-chengdu":            dara.String("eventbridge-console.cn-chengdu.aliyuncs.com"),
+		"cn-guangzhou":          dara.String("eventbridge-console.cn-guangzhou.aliyuncs.com"),
+		"ap-southeast-1":        dara.String("eventbridge-console.ap-southeast-1.aliyuncs.com"),
+		"ap-southeast-3":        dara.String("eventbridge-console.ap-southeast-3.aliyuncs.com"),
+		"cn-huhehaote":          dara.String("eventbridge-console.cn-huhehaote.aliyuncs.com"),
+		"ap-southeast-5":        dara.String("eventbridge-console.ap-southeast-5.aliyuncs.com"),
+		"ap-southeast-6":        dara.String("eventbridge-console.ap-southeast-6.aliyuncs.com"),
+		"ap-southeast-7":        dara.String("eventbridge-console.ap-southeast-7.aliyuncs.com"),
+		"cn-hangzhou":           dara.String("eventbridge-console.cn-hangzhou.aliyuncs.com"),
+		"us-east-1":             dara.String("eventbridge-console.us-east-1.aliyuncs.com"),
+		"eu-west-1":             dara.String("eventbridge-console.eu-west-1.aliyuncs.com"),
+		"us-west-1":             dara.String("eventbridge-console.us-west-1.aliyuncs.com"),
+		"eu-central-1":          dara.String("eventbridge-console.eu-central-1.aliyuncs.com"),
+		"cn-shenzhen-finance-1": dara.String("eventbridge-console.cn-shenzhen-finance-1.aliyuncs.com"),
+		"cn-beijing-finance-1":  dara.String("eventbridge-console.cn-beijing-finance-1.aliyuncs.com"),
+		"cn-shanghai-finance-1": dara.String("eventbridge-console.cn-shanghai-finance-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -86,7 +86,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Queries data using natural language.
+// Queries data by using natural language.
 //
 // @param request - AskLumaRequest
 //
@@ -142,7 +142,7 @@ func (client *Client) AskLumaWithOptions(request *AskLumaRequest, runtime *dara.
 
 // Summary:
 //
-// Queries data using natural language.
+// Queries data by using natural language.
 //
 // @param request - AskLumaRequest
 //
@@ -1701,6 +1701,10 @@ func (client *Client) DeleteEventStreamingWithOptions(request *DeleteEventStream
 		body["EventStreamingName"] = request.EventStreamingName
 	}
 
+	if !dara.IsNil(request.Force) {
+		body["Force"] = request.Force
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -2360,6 +2364,68 @@ func (client *Client) EventCenterQueryEvents(request *EventCenterQueryEventsRequ
 
 // Summary:
 //
+// Initiates an agent data semantics generation task.
+//
+// @param request - GenerateAgentDataSemanticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateAgentDataSemanticsResponse
+func (client *Client) GenerateAgentDataSemanticsWithOptions(request *GenerateAgentDataSemanticsRequest, runtime *dara.RuntimeOptions) (_result *GenerateAgentDataSemanticsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GenerateAgentDataSemantics"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GenerateAgentDataSemanticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Initiates an agent data semantics generation task.
+//
+// @param request - GenerateAgentDataSemanticsRequest
+//
+// @return GenerateAgentDataSemanticsResponse
+func (client *Client) GenerateAgentDataSemantics(request *GenerateAgentDataSemanticsRequest) (_result *GenerateAgentDataSemanticsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GenerateAgentDataSemanticsResponse{}
+	_body, _err := client.GenerateAgentDataSemanticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves agent metadata.
 //
 // @param request - GetAgentRequest
@@ -2413,6 +2479,68 @@ func (client *Client) GetAgent(request *GetAgentRequest) (_result *GetAgentRespo
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetAgentResponse{}
 	_body, _err := client.GetAgentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the currently effective data semantics of an agent.
+//
+// @param request - GetAgentDataSemanticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAgentDataSemanticsResponse
+func (client *Client) GetAgentDataSemanticsWithOptions(request *GetAgentDataSemanticsRequest, runtime *dara.RuntimeOptions) (_result *GetAgentDataSemanticsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAgentDataSemantics"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAgentDataSemanticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the currently effective data semantics of an agent.
+//
+// @param request - GetAgentDataSemanticsRequest
+//
+// @return GetAgentDataSemanticsResponse
+func (client *Client) GetAgentDataSemantics(request *GetAgentDataSemanticsRequest) (_result *GetAgentDataSemanticsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAgentDataSemanticsResponse{}
+	_body, _err := client.GetAgentDataSemanticsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2492,7 +2620,7 @@ func (client *Client) GetApiDestination(request *GetApiDestinationRequest) (_res
 
 // Summary:
 //
-// # Get data catalog
+// Retrieves a data catalog.
 //
 // @param request - GetCatalogRequest
 //
@@ -2542,7 +2670,7 @@ func (client *Client) GetCatalogWithOptions(request *GetCatalogRequest, runtime 
 
 // Summary:
 //
-// # Get data catalog
+// Retrieves a data catalog.
 //
 // @param request - GetCatalogRequest
 //
@@ -2560,11 +2688,11 @@ func (client *Client) GetCatalog(request *GetCatalogRequest) (_result *GetCatalo
 
 // Summary:
 //
-// Queries the configuration information of a single connection.
+// Queries the configuration of a single connection.
 //
 // Description:
 //
-// Queries the configuration information of a single connection.
+// Queries the configuration of a single connection.
 //
 // @param request - GetConnectionRequest
 //
@@ -2608,11 +2736,11 @@ func (client *Client) GetConnectionWithOptions(request *GetConnectionRequest, ru
 
 // Summary:
 //
-// Queries the configuration information of a single connection.
+// Queries the configuration of a single connection.
 //
 // Description:
 //
-// Queries the configuration information of a single connection.
+// Queries the configuration of a single connection.
 //
 // @param request - GetConnectionRequest
 //
@@ -2823,6 +2951,68 @@ func (client *Client) GetEventStreaming(request *GetEventStreamingRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetEventStreamingResponse{}
 	_body, _err := client.GetEventStreamingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the generation progress of data semantics for an agent.
+//
+// @param request - GetGenerateAgentDataSemanticsProgressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGenerateAgentDataSemanticsProgressResponse
+func (client *Client) GetGenerateAgentDataSemanticsProgressWithOptions(request *GetGenerateAgentDataSemanticsProgressRequest, runtime *dara.RuntimeOptions) (_result *GetGenerateAgentDataSemanticsProgressResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetGenerateAgentDataSemanticsProgress"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetGenerateAgentDataSemanticsProgressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the generation progress of data semantics for an agent.
+//
+// @param request - GetGenerateAgentDataSemanticsProgressRequest
+//
+// @return GetGenerateAgentDataSemanticsProgressResponse
+func (client *Client) GetGenerateAgentDataSemanticsProgress(request *GetGenerateAgentDataSemanticsProgressRequest) (_result *GetGenerateAgentDataSemanticsProgressResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetGenerateAgentDataSemanticsProgressResponse{}
+	_body, _err := client.GetGenerateAgentDataSemanticsProgressWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3259,7 +3449,7 @@ func (client *Client) ListApiDestinations(request *ListApiDestinationsRequest) (
 
 // Summary:
 //
-// # Query data catalog list
+// Queries the list of data catalogs.
 //
 // @param request - ListCatalogsRequest
 //
@@ -3307,7 +3497,7 @@ func (client *Client) ListCatalogsWithOptions(request *ListCatalogsRequest, runt
 
 // Summary:
 //
-// # Query data catalog list
+// Queries the list of data catalogs.
 //
 // @param request - ListCatalogsRequest
 //
@@ -3325,11 +3515,11 @@ func (client *Client) ListCatalogs(request *ListCatalogsRequest) (_result *ListC
 
 // Summary:
 //
-// Queries the list of connection configurations.
+// Retrieves a list of connection configurations.
 //
 // Description:
 //
-// Queries the list of connection configurations.
+// Retrieves a list of connection configurations.
 //
 // @param request - ListConnectionsRequest
 //
@@ -3385,11 +3575,11 @@ func (client *Client) ListConnectionsWithOptions(request *ListConnectionsRequest
 
 // Summary:
 //
-// Queries the list of connection configurations.
+// Retrieves a list of connection configurations.
 //
 // Description:
 //
-// Queries the list of connection configurations.
+// Retrieves a list of connection configurations.
 //
 // @param request - ListConnectionsRequest
 //
@@ -4163,6 +4353,86 @@ func (client *Client) PollAskResult(request *PollAskResultRequest) (_result *Pol
 
 // Summary:
 //
+// Sends events to an event bus.
+//
+// Description:
+//
+// Sends one or more events to an event bus.
+//
+// @param tmpReq - PutEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PutEventsResponse
+func (client *Client) PutEventsWithOptions(tmpReq *PutEventsRequest, runtime *dara.RuntimeOptions) (_result *PutEventsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &PutEventsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.EventList) {
+		request.EventListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EventList, dara.String("EventList"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.EventBusName) {
+		body["EventBusName"] = request.EventBusName
+	}
+
+	if !dara.IsNil(request.EventListShrink) {
+		body["EventList"] = request.EventListShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("PutEvents"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &PutEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sends events to an event bus.
+//
+// Description:
+//
+// Sends one or more events to an event bus.
+//
+// @param request - PutEventsRequest
+//
+// @return PutEventsResponse
+func (client *Client) PutEvents(request *PutEventsRequest) (_result *PutEventsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &PutEventsResponse{}
+	_body, _err := client.PutEventsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Create or update event targets for the specified rule.
 //
 // Description:
@@ -4461,6 +4731,88 @@ func (client *Client) QueryEventHouse(request *QueryEventHouseRequest) (_result 
 
 // Summary:
 //
+// Executes a read-only SQL statement to query internal EventHouse data within a specified time range. The time range only constrains the internal EventHouse data referenced in the SQL statement and does not affect mounted external data sources. Returns a structured result set.
+//
+// Description:
+//
+// Executes a single read-only SQL statement and returns a structured result set. BeginTime and EndTime only constrain the internal EventHouse data referenced in the SQL statement and do not affect mounted external data sources.
+//
+// @param request - QueryEventHouseWithTimeRangeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryEventHouseWithTimeRangeResponse
+func (client *Client) QueryEventHouseWithTimeRangeWithOptions(request *QueryEventHouseWithTimeRangeRequest, runtime *dara.RuntimeOptions) (_result *QueryEventHouseWithTimeRangeResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.BeginTime) {
+		query["BeginTime"] = request.BeginTime
+	}
+
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.Limit) {
+		query["Limit"] = request.Limit
+	}
+
+	if !dara.IsNil(request.Query) {
+		query["Query"] = request.Query
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryEventHouseWithTimeRange"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryEventHouseWithTimeRangeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Executes a read-only SQL statement to query internal EventHouse data within a specified time range. The time range only constrains the internal EventHouse data referenced in the SQL statement and does not affect mounted external data sources. Returns a structured result set.
+//
+// Description:
+//
+// Executes a single read-only SQL statement and returns a structured result set. BeginTime and EndTime only constrain the internal EventHouse data referenced in the SQL statement and do not affect mounted external data sources.
+//
+// @param request - QueryEventHouseWithTimeRangeRequest
+//
+// @return QueryEventHouseWithTimeRangeResponse
+func (client *Client) QueryEventHouseWithTimeRange(request *QueryEventHouseWithTimeRangeRequest) (_result *QueryEventHouseWithTimeRangeResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &QueryEventHouseWithTimeRangeResponse{}
+	_body, _err := client.QueryEventHouseWithTimeRangeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries event traces.
 //
 // Description:
@@ -4706,6 +5058,102 @@ func (client *Client) QueryTracedEvents(request *QueryTracedEventsRequest) (_res
 	runtime := &dara.RuntimeOptions{}
 	_result = &QueryTracedEventsResponse{}
 	_body, _err := client.QueryTracedEventsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Saves data semantics for an agent.
+//
+// @param tmpReq - SaveAgentDataSemanticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveAgentDataSemanticsResponse
+func (client *Client) SaveAgentDataSemanticsWithOptions(tmpReq *SaveAgentDataSemanticsRequest, runtime *dara.RuntimeOptions) (_result *SaveAgentDataSemanticsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &SaveAgentDataSemanticsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Examples) {
+		request.ExamplesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Examples, dara.String("Examples"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Joins) {
+		request.JoinsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Joins, dara.String("Joins"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Metrics) {
+		request.MetricsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Metrics, dara.String("Metrics"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.Text) {
+		request.TextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Text, dara.String("Text"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AgentName) {
+		body["AgentName"] = request.AgentName
+	}
+
+	if !dara.IsNil(request.ExamplesShrink) {
+		body["Examples"] = request.ExamplesShrink
+	}
+
+	if !dara.IsNil(request.JoinsShrink) {
+		body["Joins"] = request.JoinsShrink
+	}
+
+	if !dara.IsNil(request.MetricsShrink) {
+		body["Metrics"] = request.MetricsShrink
+	}
+
+	if !dara.IsNil(request.TextShrink) {
+		body["Text"] = request.TextShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SaveAgentDataSemantics"),
+		Version:     dara.String("2020-04-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SaveAgentDataSemanticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Saves data semantics for an agent.
+//
+// @param request - SaveAgentDataSemanticsRequest
+//
+// @return SaveAgentDataSemanticsResponse
+func (client *Client) SaveAgentDataSemantics(request *SaveAgentDataSemanticsRequest) (_result *SaveAgentDataSemanticsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SaveAgentDataSemanticsResponse{}
+	_body, _err := client.SaveAgentDataSemanticsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5107,11 +5555,11 @@ func (client *Client) UpdateApiDestination(request *UpdateApiDestinationRequest)
 
 // Summary:
 //
-// Updates the connection configuration.
+// Updates connection configuration information.
 //
 // Description:
 //
-// Updates the connection configuration.
+// Updates connection configurations.
 //
 // @param tmpReq - UpdateConnectionRequest
 //
@@ -5189,11 +5637,11 @@ func (client *Client) UpdateConnectionWithOptions(tmpReq *UpdateConnectionReques
 
 // Summary:
 //
-// Updates the connection configuration.
+// Updates connection configuration information.
 //
 // Description:
 //
-// Updates the connection configuration.
+// Updates connection configurations.
 //
 // @param request - UpdateConnectionRequest
 //

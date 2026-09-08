@@ -16,13 +16,13 @@ type iGetCatalogRequest interface {
 }
 
 type GetCatalogRequest struct {
-	// Idempotency token
+	// The idempotency token.
 	//
 	// example:
 	//
 	// 1e9b8f60-3a2c-4d7e-9f1b-8c3d5e7a2b4f
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Data catalog name
+	// The name of the data catalog.
 	//
 	// This parameter is required.
 	//

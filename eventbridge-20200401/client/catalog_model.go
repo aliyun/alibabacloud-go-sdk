@@ -24,37 +24,37 @@ type iCatalog interface {
 }
 
 type Catalog struct {
-	// The comment or description of the data catalog
+	// The comment or description of the data catalog.
 	//
 	// example:
 	//
-	// 测试数据目录
+	// Test data catalog
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The connection name associated with a mounted-type Catalog. Only has a value when Provider is MySQL/PostgreSQL/Elasticsearch
+	// The connection name associated with a mounted catalog. This parameter has a value only when Provider is set to MySQL, PostgreSQL, Elasticsearch, OSS_TABLES, SLS, OTS, MaxCompute, MongoDB, Redis, SQLServer, ClickHouse, Oracle, Hive, or Iceberg.
 	//
 	// example:
 	//
 	// my_connection
 	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
-	// The unique identifier name of the data catalog
+	// The unique identifier name of the data catalog.
 	//
 	// example:
 	//
 	// my_catalog
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Extended properties (JSON object). The Elasticsearch type contains information such as IndexPattern
+	// The extended properties (JSON object). For the Elasticsearch type, this includes information such as IndexPattern.
 	//
 	// example:
 	//
 	// {"IndexPattern":"my-index-*"}
 	Properties map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	// The data source provider. EventHouse is the built-in storage; MySQL/PostgreSQL/Elasticsearch are externally mounted
+	// The data source provider. EventHouse indicates built-in storage. MySQL, PostgreSQL, Elasticsearch, OSS_TABLES, SLS, OTS, MaxCompute, MongoDB, Redis, SQLServer, ClickHouse, Oracle, Hive, and Iceberg indicate externally mounted sources.
 	//
 	// example:
 	//
 	// EventHouse
 	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	// The type of the data catalog, such as RELATIONAL
+	// The type of the data catalog, such as RELATIONAL.
 	//
 	// example:
 	//
