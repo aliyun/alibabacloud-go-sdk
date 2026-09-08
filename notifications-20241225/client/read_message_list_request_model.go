@@ -52,111 +52,121 @@ type iReadMessageListRequest interface {
 }
 
 type ReadMessageListRequest struct {
-	// 语言，默认为简体中文
+	// The language. Default value: Simplified Chinese.
 	//
 	// example:
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// 系统参数，无需填写
+	// A system parameter. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// /
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 系统参数，无需填写
+	// A system parameter. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// /
 	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
-	// 系统参数，无需填写
+	// A system parameter. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// /
 	CallerProtocol *string `json:"CallerProtocol,omitempty" xml:"CallerProtocol,omitempty"`
-	// 消息类目ID
+	// Deprecated.
 	//
 	// example:
 	//
 	// 1
 	ClassId *int64 `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
-	// 系统参数，无需填写
+	// A system parameter. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// /
 	ClientSource *string `json:"ClientSource,omitempty" xml:"ClientSource,omitempty"`
-	// 消息内容，用于模糊搜索
+	// The message content. This parameter is used for fuzzy match.
 	//
 	// example:
 	//
 	// "消息内容示例“
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 系统参数，无需填写
+	// A system parameter. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// /
-	Cookies   *string `json:"Cookies,omitempty" xml:"Cookies,omitempty"`
+	Cookies *string `json:"Cookies,omitempty" xml:"Cookies,omitempty"`
+	// The group code.
+	//
+	// example:
+	//
+	// test
 	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
-	History   *string `json:"History,omitempty" xml:"History,omitempty"`
-	// 栏位 nav代表控制台topbar
+	// Specifies whether the messages are historical messages.
 	//
 	// example:
 	//
-	// /
+	// true
+	History *string `json:"History,omitempty" xml:"History,omitempty"`
+	// The location.
+	//
+	// example:
+	//
+	// nav
 	Loc *string `json:"Loc,omitempty" xml:"Loc,omitempty"`
-	// 系统参数，无需填写
+	// A system parameter. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// /
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 系统参数，无需填写
+	// A system parameter. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// /
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 分页查询页码
+	// The page number for the paged query.
 	//
 	// example:
 	//
 	// 2
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// 分页查询大小
+	// The page size for the paged query.
 	//
 	// example:
 	//
 	// 5
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 系统参数，无需填写
+	// A system parameter. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// /
 	SrcUrl *string `json:"SrcUrl,omitempty" xml:"SrcUrl,omitempty"`
-	// 消息状态，已读为1，未读为0
+	// The message status. A value of 1 indicates read. A value of 0 indicates unread. A value of -1 indicates all. Default value: -1.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 系统参数，无需填写
+	// A system parameter. You do not need to specify this parameter.
 	//
 	// example:
 	//
 	// /
 	TenantCode *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
-	// 消息标题，用于模糊搜索
+	// The message title. This parameter is used for fuzzy match.
 	//
 	// example:
 	//
 	// "标题示例“
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// 系统参数，无需填写
+	// A system parameter. You do not need to specify this parameter.
 	//
 	// example:
 	//

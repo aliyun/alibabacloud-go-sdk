@@ -22,31 +22,27 @@ type iReadMessageListResponseBody interface {
 }
 
 type ReadMessageListResponseBody struct {
-	// The response code. The value Success indicates that the request is successful. Other values indicate that the request failed. For more information about error codes, see Error codes.
+	// The error code returned when the call fails. For more information, see error codes.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Data
+	// The execution result.
 	Data *ReadMessageListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// message
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
-	// /
+	// 成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 唯一请求id
+	// The request ID.
 	//
 	// example:
 	//
 	// A5F62766-1C2F-1F56-A39D-63E3D30F0633
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
-	//
-	// 	- **true**: The call was successful.
-	//
-	// 	- **false**: The call failed.
+	// Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
 	//
 	// example:
 	//
@@ -108,23 +104,28 @@ func (s *ReadMessageListResponseBody) SetSuccess(v bool) *ReadMessageListRespons
 }
 
 func (s *ReadMessageListResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ReadMessageListResponseBodyData struct {
-	// The number of entries returned.
+	// The number of messages.
 	//
 	// example:
 	//
 	// 1
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The maximum number of entries returned.
+	// A reserved field.
 	//
 	// example:
 	//
 	// /
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// If excess return values exist, this parameter is returned.
+	// A reserved field.
 	//
 	// example:
 	//
@@ -136,13 +137,13 @@ type ReadMessageListResponseBodyData struct {
 	//
 	// 24
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of rows updated or returned on PolarDB-X 2.0 compute nodes.
+	// The returned data.
 	Rows []*ReadMessageListResponseBodyDataRows `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
 }
 
@@ -209,81 +210,102 @@ func (s *ReadMessageListResponseBodyData) SetRows(v []*ReadMessageListResponseBo
 }
 
 func (s *ReadMessageListResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Rows != nil {
+		for _, item := range s.Rows {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ReadMessageListResponseBodyDataRows struct {
-	CategoryCode *string `json:"CategoryCode,omitempty" xml:"CategoryCode,omitempty"`
-	// CategoryName
+	// The category code.
 	//
 	// example:
 	//
-	// /
+	// test
+	CategoryCode *string `json:"CategoryCode,omitempty" xml:"CategoryCode,omitempty"`
+	// The message category name.
+	//
+	// example:
+	//
+	// 活动消息
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// Class
+	// A reserved field.
 	//
 	// example:
 	//
 	// /
 	Class *string `json:"Class,omitempty" xml:"Class,omitempty"`
-	// ClassId
+	// The message class ID.
 	//
 	// example:
 	//
 	// 1
 	ClassId *int64 `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
-	// 内容
+	// The message content.
 	//
 	// example:
 	//
-	// /
+	// "消息内容示例“
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// 删除
+	// The deletion flag.
 	//
 	// example:
 	//
 	// 0
 	Deleted *int32 `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	// 创建时间
+	// The time when the message was created.
 	//
 	// example:
 	//
 	// 1723772244000
 	GmtCreated *int64 `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The time when the message was updated.
+	//
 	// example:
 	//
 	// 1723772244000
 	GmtUpdate *int64 `json:"GmtUpdate,omitempty" xml:"GmtUpdate,omitempty"`
-	// massId
+	// A reserved field.
 	//
 	// example:
 	//
 	// /
 	MassId *int64 `json:"MassId,omitempty" xml:"MassId,omitempty"`
-	// 描述
+	// A reserved field.
 	//
 	// example:
 	//
 	// /
 	Memo *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
-	// 消息id
+	// The message ID.
 	//
 	// example:
 	//
 	// 3727683838
 	MsgId *int64 `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	// 状态
+	// The read status. A value of 0 indicates unread. A value of 1 indicates read.
 	//
 	// example:
 	//
 	// 0
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 标题
+	// The message title.
 	//
 	// example:
 	//
-	// /
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// "标题示例“
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The highlighted title.
+	//
+	// example:
+	//
+	// title
 	Titleh *string `json:"Titleh,omitempty" xml:"Titleh,omitempty"`
 }
 

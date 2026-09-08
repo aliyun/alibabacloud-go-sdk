@@ -22,11 +22,40 @@ type iDelMessageResponseBody interface {
 }
 
 type DelMessageResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error code returned if the call failed. For more information, see error codes.
+	//
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The execution result.
+	//
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The error message returned if the call failed.
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A5F62766-1C2F-1F56-A39D-63E3D30F0633
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the deletion was successful. Valid values:
+	//
+	// - true: Successful.
+	//
+	// - false: Failed.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DelMessageResponseBody) String() string {

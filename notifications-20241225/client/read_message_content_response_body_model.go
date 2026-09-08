@@ -22,11 +22,36 @@ type iReadMessageContentResponseBody interface {
 }
 
 type ReadMessageContentResponseBody struct {
-	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *ReadMessageContentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned when the call fails. For more information, refer to error codes.
+	//
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The execution result.
+	Data *ReadMessageContentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error message returned when the call fails.
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A5F62766-1C2F-1F56-A39D-63E3D30F0633
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ReadMessageContentResponseBody) String() string {
@@ -83,10 +108,16 @@ func (s *ReadMessageContentResponseBody) SetSuccess(v bool) *ReadMessageContentR
 }
 
 func (s *ReadMessageContentResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		if err := s.Data.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ReadMessageContentResponseBodyData struct {
+	// The list of degradation rules.
 	Datas *ReadMessageContentResponseBodyDataDatas `json:"Datas,omitempty" xml:"Datas,omitempty" type:"Struct"`
 }
 
@@ -108,12 +139,20 @@ func (s *ReadMessageContentResponseBodyData) SetDatas(v *ReadMessageContentRespo
 }
 
 func (s *ReadMessageContentResponseBodyData) Validate() error {
-	return dara.Validate(s)
+	if s.Datas != nil {
+		if err := s.Datas.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 type ReadMessageContentResponseBodyDataDatas struct {
-	Item     []*ReadMessageContentResponseBodyDataDatasItem     `json:"Item,omitempty" xml:"Item,omitempty" type:"Repeated"`
+	// The data item.
+	Item []*ReadMessageContentResponseBodyDataDatasItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Repeated"`
+	// /
 	LastItem []*ReadMessageContentResponseBodyDataDatasLastItem `json:"LastItem,omitempty" xml:"LastItem,omitempty" type:"Repeated"`
+	// /
 	NextItem []*ReadMessageContentResponseBodyDataDatasNextItem `json:"NextItem,omitempty" xml:"NextItem,omitempty" type:"Repeated"`
 }
 
@@ -153,21 +192,107 @@ func (s *ReadMessageContentResponseBodyDataDatas) SetNextItem(v []*ReadMessageCo
 }
 
 func (s *ReadMessageContentResponseBodyDataDatas) Validate() error {
-	return dara.Validate(s)
+	if s.Item != nil {
+		for _, item := range s.Item {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.LastItem != nil {
+		for _, item := range s.LastItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.NextItem != nil {
+		for _, item := range s.NextItem {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ReadMessageContentResponseBodyDataDatasItem struct {
+	// The message category name.
+	//
+	// example:
+	//
+	// 活动消息
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	ClassId      *int64  `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
-	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Deleted      *int32  `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	GmtCreated   *int64  `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	GmtUpdate    *int64  `json:"GmtUpdate,omitempty" xml:"GmtUpdate,omitempty"`
-	MassId       *int64  `json:"MassId,omitempty" xml:"MassId,omitempty"`
-	Memo         *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
-	MsgId        *int64  `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	Status       *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The message class ID.
+	//
+	// example:
+	//
+	// 1
+	ClassId *int64 `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
+	// The message content.
+	//
+	// example:
+	//
+	// "消息内容示例“
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The deletion flag.
+	//
+	// example:
+	//
+	// 0
+	Deleted *int32 `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	// The time when the message was created.
+	//
+	// example:
+	//
+	// 1729758903000
+	GmtCreated *int64 `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The time when the message was updated.
+	//
+	// example:
+	//
+	// 1729758903000
+	GmtUpdate *int64 `json:"GmtUpdate,omitempty" xml:"GmtUpdate,omitempty"`
+	// A reserved field.
+	//
+	// example:
+	//
+	// /
+	MassId *int64 `json:"MassId,omitempty" xml:"MassId,omitempty"`
+	// A reserved field.
+	//
+	// example:
+	//
+	// 385ad715-4139-41f9-ba59-246a00bb46e0.jpg
+	Memo *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
+	// The message ID.
+	//
+	// example:
+	//
+	// AC14C11F1FF801EE00054518C220EF2C
+	MsgId *int64 `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The read status. Valid values:
+	//
+	// - 0: unread
+	//
+	// - 1: read.
+	//
+	// example:
+	//
+	// not_installed
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The message title.
+	//
+	// example:
+	//
+	// Endless
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ReadMessageContentResponseBodyDataDatasItem) String() string {
@@ -282,17 +407,76 @@ func (s *ReadMessageContentResponseBodyDataDatasItem) Validate() error {
 }
 
 type ReadMessageContentResponseBodyDataDatasLastItem struct {
+	// The message category name.
+	//
+	// example:
+	//
+	// 活动消息
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	ClassId      *int64  `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
-	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Deleted      *int32  `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	GmtCreated   *int64  `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	GmtUpdate    *int64  `json:"GmtUpdate,omitempty" xml:"GmtUpdate,omitempty"`
-	MassId       *int64  `json:"MassId,omitempty" xml:"MassId,omitempty"`
-	Memo         *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
-	MsgId        *int64  `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	Status       *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The message class ID.
+	//
+	// example:
+	//
+	// 1
+	ClassId *int64 `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
+	// The message content.
+	//
+	// example:
+	//
+	// "消息内容示例“
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The deletion flag.
+	//
+	// example:
+	//
+	// 0
+	Deleted *int32 `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	// The time when the message was created.
+	//
+	// example:
+	//
+	// 1729758903000
+	GmtCreated *int64 `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The time when the message was updated.
+	//
+	// example:
+	//
+	// 1729758903000
+	GmtUpdate *int64 `json:"GmtUpdate,omitempty" xml:"GmtUpdate,omitempty"`
+	// A reserved field.
+	//
+	// example:
+	//
+	// /
+	MassId *int64 `json:"MassId,omitempty" xml:"MassId,omitempty"`
+	// A reserved field.
+	//
+	// example:
+	//
+	// /
+	Memo *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
+	// The message ID.
+	//
+	// example:
+	//
+	// 3727683838
+	MsgId *int64 `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The read status. Valid values:
+	//
+	// - 0: unread
+	//
+	// - 1: read.
+	//
+	// example:
+	//
+	// 0
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The message title.
+	//
+	// example:
+	//
+	// "标题示例“
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ReadMessageContentResponseBodyDataDatasLastItem) String() string {
@@ -407,17 +591,76 @@ func (s *ReadMessageContentResponseBodyDataDatasLastItem) Validate() error {
 }
 
 type ReadMessageContentResponseBodyDataDatasNextItem struct {
+	// The message category name.
+	//
+	// example:
+	//
+	// 活动消息
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	ClassId      *int64  `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
-	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Deleted      *int32  `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	GmtCreated   *int64  `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	GmtUpdate    *int64  `json:"GmtUpdate,omitempty" xml:"GmtUpdate,omitempty"`
-	MassId       *int64  `json:"MassId,omitempty" xml:"MassId,omitempty"`
-	Memo         *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
-	MsgId        *int64  `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	Status       *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The message class ID.
+	//
+	// example:
+	//
+	// 1
+	ClassId *int64 `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
+	// The message content.
+	//
+	// example:
+	//
+	// ”消息内容示例“
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The deletion flag.
+	//
+	// example:
+	//
+	// 0
+	Deleted *int32 `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
+	// The time when the message was created.
+	//
+	// example:
+	//
+	// 1663809374000
+	GmtCreated *int64 `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The time when the message was updated.
+	//
+	// example:
+	//
+	// 1663809374000
+	GmtUpdate *int64 `json:"GmtUpdate,omitempty" xml:"GmtUpdate,omitempty"`
+	// A reserved field.
+	//
+	// example:
+	//
+	// /
+	MassId *int64 `json:"MassId,omitempty" xml:"MassId,omitempty"`
+	// A reserved field.
+	//
+	// example:
+	//
+	// /
+	Memo *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
+	// The message ID.
+	//
+	// example:
+	//
+	// 3727683838
+	MsgId *int64 `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// The read status. Valid values:
+	//
+	// - 0: unread
+	//
+	// - 1: read.
+	//
+	// example:
+	//
+	// 0
+	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The message title.
+	//
+	// example:
+	//
+	// "标题示例“
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ReadMessageContentResponseBodyDataDatasNextItem) String() string {

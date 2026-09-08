@@ -59,5 +59,10 @@ func (s *ReadClassNameResponse) SetBody(v *ReadClassNameResponseBody) *ReadClass
 }
 
 func (s *ReadClassNameResponse) Validate() error {
-	return dara.Validate(s)
+	if s.Body != nil {
+		if err := s.Body.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
 }

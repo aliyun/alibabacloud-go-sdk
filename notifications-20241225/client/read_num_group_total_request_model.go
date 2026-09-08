@@ -32,19 +32,66 @@ type iReadNumGroupTotalRequest interface {
 }
 
 type ReadNumGroupTotalRequest struct {
+	// The language. Default value: Simplified Chinese.
+	//
 	// example:
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BizName        *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// System parameter. You do not need to set this parameter.
+	//
+	// example:
+	//
+	// /
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// System parameter. You do not need to set this parameter.
+	//
+	// example:
+	//
+	// /
+	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// System parameter. You do not need to set this parameter.
+	//
+	// example:
+	//
+	// /
 	CallerProtocol *string `json:"CallerProtocol,omitempty" xml:"CallerProtocol,omitempty"`
-	ClientSource   *string `json:"ClientSource,omitempty" xml:"ClientSource,omitempty"`
-	Cookies        *string `json:"Cookies,omitempty" xml:"Cookies,omitempty"`
-	SrcUrl         *string `json:"SrcUrl,omitempty" xml:"SrcUrl,omitempty"`
-	TenantCode     *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
-	Title          *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	UidType        *string `json:"UidType,omitempty" xml:"UidType,omitempty"`
+	// System parameter. You do not need to set this parameter.
+	//
+	// example:
+	//
+	// /
+	ClientSource *string `json:"ClientSource,omitempty" xml:"ClientSource,omitempty"`
+	// System parameter. You do not need to set this parameter.
+	//
+	// example:
+	//
+	// /
+	Cookies *string `json:"Cookies,omitempty" xml:"Cookies,omitempty"`
+	// System parameter. You do not need to set this parameter.
+	//
+	// example:
+	//
+	// /
+	SrcUrl *string `json:"SrcUrl,omitempty" xml:"SrcUrl,omitempty"`
+	// System parameter. You do not need to set this parameter.
+	//
+	// example:
+	//
+	// /
+	TenantCode *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
+	// The message title.
+	//
+	// example:
+	//
+	// Can \\"Financial expenses_interest income\\" be considered as income?
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// System parameter. You do not need to set this parameter.
+	//
+	// example:
+	//
+	// /
+	UidType *string `json:"UidType,omitempty" xml:"UidType,omitempty"`
 }
 
 func (s ReadNumGroupTotalRequest) String() string {

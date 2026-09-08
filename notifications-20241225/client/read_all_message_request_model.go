@@ -34,17 +34,72 @@ type iReadAllMessageRequest interface {
 }
 
 type ReadAllMessageRequest struct {
+	// The language. Default value: Simplified Chinese.
+	//
+	// example:
+	//
+	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BizName        *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// A system parameter. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// /
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// A system parameter. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// /
+	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// A system parameter. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// /
 	CallerProtocol *string `json:"CallerProtocol,omitempty" xml:"CallerProtocol,omitempty"`
-	ClassId        *int64  `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
-	ClientSource   *string `json:"ClientSource,omitempty" xml:"ClientSource,omitempty"`
-	Cookies        *string `json:"Cookies,omitempty" xml:"Cookies,omitempty"`
-	GroupCode      *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
-	SrcUrl         *string `json:"SrcUrl,omitempty" xml:"SrcUrl,omitempty"`
-	TenantCode     *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
-	UidType        *string `json:"UidType,omitempty" xml:"UidType,omitempty"`
+	// The message category ID.
+	//
+	// example:
+	//
+	// 1
+	ClassId *int64 `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
+	// A system parameter. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// /
+	ClientSource *string `json:"ClientSource,omitempty" xml:"ClientSource,omitempty"`
+	// A system parameter. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// []
+	Cookies *string `json:"Cookies,omitempty" xml:"Cookies,omitempty"`
+	// The group code.
+	//
+	// example:
+	//
+	// test
+	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
+	// A system parameter. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// /
+	SrcUrl *string `json:"SrcUrl,omitempty" xml:"SrcUrl,omitempty"`
+	// A system parameter. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// /
+	TenantCode *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
+	// A system parameter. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// /
+	UidType *string `json:"UidType,omitempty" xml:"UidType,omitempty"`
 }
 
 func (s ReadAllMessageRequest) String() string {

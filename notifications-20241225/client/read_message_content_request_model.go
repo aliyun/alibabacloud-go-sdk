@@ -40,20 +40,94 @@ type iReadMessageContentRequest interface {
 }
 
 type ReadMessageContentRequest struct {
+	// The language. Default value: Simplified Chinese.
+	//
+	// example:
+	//
+	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BizName        *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// A system parameter. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// /
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// A system parameter. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// /
+	BizName *string `json:"BizName,omitempty" xml:"BizName,omitempty"`
+	// A system parameter. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// /
 	CallerProtocol *string `json:"CallerProtocol,omitempty" xml:"CallerProtocol,omitempty"`
-	ClassId        *int64  `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
-	ClientSource   *string `json:"ClientSource,omitempty" xml:"ClientSource,omitempty"`
-	Cookies        *string `json:"Cookies,omitempty" xml:"Cookies,omitempty"`
-	GroupCode      *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
-	History        *bool   `json:"History,omitempty" xml:"History,omitempty"`
-	MsgId          *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
-	SrcUrl         *string `json:"SrcUrl,omitempty" xml:"SrcUrl,omitempty"`
-	Status         *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantCode     *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
-	UidType        *string `json:"UidType,omitempty" xml:"UidType,omitempty"`
+	// Deprecated.
+	//
+	// example:
+	//
+	// 1
+	ClassId *int64 `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
+	// A system parameter. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// /
+	ClientSource *string `json:"ClientSource,omitempty" xml:"ClientSource,omitempty"`
+	// A system parameter. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// /
+	Cookies *string `json:"Cookies,omitempty" xml:"Cookies,omitempty"`
+	// The group code.
+	//
+	// example:
+	//
+	// test
+	GroupCode *string `json:"GroupCode,omitempty" xml:"GroupCode,omitempty"`
+	// Specifies whether the message is a historical message.
+	//
+	// example:
+	//
+	// true
+	History *bool `json:"History,omitempty" xml:"History,omitempty"`
+	// The message ID.
+	//
+	// example:
+	//
+	// 3727683838
+	MsgId *string `json:"MsgId,omitempty" xml:"MsgId,omitempty"`
+	// A system parameter. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// /
+	SrcUrl *string `json:"SrcUrl,omitempty" xml:"SrcUrl,omitempty"`
+	// The read status. Valid values:
+	//
+	// - 0: unread
+	//
+	// - 1: read.
+	//
+	// example:
+	//
+	// 0
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// A system parameter. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// /
+	TenantCode *string `json:"TenantCode,omitempty" xml:"TenantCode,omitempty"`
+	// A system parameter. You do not need to specify this parameter.
+	//
+	// example:
+	//
+	// /
+	UidType *string `json:"UidType,omitempty" xml:"UidType,omitempty"`
 }
 
 func (s ReadMessageContentRequest) String() string {

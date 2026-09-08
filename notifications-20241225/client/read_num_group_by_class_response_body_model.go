@@ -22,13 +22,32 @@ type iReadNumGroupByClassResponseBody interface {
 }
 
 type ReadNumGroupByClassResponseBody struct {
+	// The error code returned when the call fails. For more information, see error codes.
+	//
 	// example:
 	//
 	// SUCCESS
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ReadNumGroupByClassResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The execution result.
+	Data []*ReadNumGroupByClassResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The message returned when the call fails.
+	//
+	// example:
+	//
+	// 成功
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A5F62766-1C2F-1F56-A39D-63E3D30F0633
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
+	//
 	// example:
 	//
 	// true
@@ -89,11 +108,30 @@ func (s *ReadNumGroupByClassResponseBody) SetSuccess(v bool) *ReadNumGroupByClas
 }
 
 func (s *ReadNumGroupByClassResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ReadNumGroupByClassResponseBodyData struct {
-	ClassId  *int64 `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
+	// The message category ID.
+	//
+	// example:
+	//
+	// 1
+	ClassId *int64 `json:"ClassId,omitempty" xml:"ClassId,omitempty"`
+	// The number of unread messages in the category.
+	//
+	// example:
+	//
+	// 1
 	MsgCount *int64 `json:"MsgCount,omitempty" xml:"MsgCount,omitempty"`
 }
 

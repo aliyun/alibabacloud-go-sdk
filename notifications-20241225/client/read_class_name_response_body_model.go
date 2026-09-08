@@ -22,11 +22,36 @@ type iReadClassNameResponseBody interface {
 }
 
 type ReadClassNameResponseBody struct {
-	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ReadClassNameResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The error code returned by the system. For more information about error codes, see error codes.
+	//
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The execution result.
+	Data []*ReadClassNameResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The message returned when the call failed.
+	//
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 73FD6AE8-898F-5D09-9763-69B8A875488A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
+	//
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ReadClassNameResponseBody) String() string {
@@ -83,11 +108,30 @@ func (s *ReadClassNameResponseBody) SetSuccess(v bool) *ReadClassNameResponseBod
 }
 
 func (s *ReadClassNameResponseBody) Validate() error {
-	return dara.Validate(s)
+	if s.Data != nil {
+		for _, item := range s.Data {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
 }
 
 type ReadClassNameResponseBodyData struct {
-	Id   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The message category ID.
+	//
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The message category name.
+	//
+	// example:
+	//
+	// 安全消息
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
