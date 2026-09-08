@@ -22,7 +22,7 @@ type OperateNodeResponseBody struct {
 	//
 	// lingjunxxxx-mgxxx-xxxx
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

@@ -20,21 +20,21 @@ type iGetResourceGroupRequestResponseBody interface {
 }
 
 type GetResourceGroupRequestResponseBody struct {
-	// The total number of allocated CPUs.
+	// The total number of CPUs that have been assigned.
 	//
 	// example:
 	//
 	// 1
 	RequestCPU *int32 `json:"requestCPU,omitempty" xml:"requestCPU,omitempty"`
-	// The total number of allocated GPUs.
+	// The total number of GPUs that have been assigned.
 	//
 	// example:
 	//
 	// 8
 	RequestGPU *int32 `json:"requestGPU,omitempty" xml:"requestGPU,omitempty"`
-	// The allocated GPU resources counted separately by card type.
+	// The assigned GPU resources counted separately by GPU type.
 	RequestGPUInfos []*GPUInfo `json:"requestGPUInfos,omitempty" xml:"requestGPUInfos,omitempty" type:"Repeated"`
-	// The total amount of allocated memory.
+	// The total amount of memory that has been assigned.
 	//
 	// example:
 	//

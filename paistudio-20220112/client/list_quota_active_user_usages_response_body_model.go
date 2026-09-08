@@ -20,16 +20,17 @@ type iListQuotaActiveUserUsagesResponseBody interface {
 }
 
 type ListQuotaActiveUserUsagesResponseBody struct {
-	// A list of user resource usage details.
-	QuotaUserUsage  []*QuotaUser `json:"QuotaUserUsage,omitempty" xml:"QuotaUserUsage,omitempty" type:"Repeated"`
+	// The list of user resource usage details.
+	QuotaUserUsage []*QuotaUser `json:"QuotaUserUsage,omitempty" xml:"QuotaUserUsage,omitempty" type:"Repeated"`
+	// The user usage information.
 	QuotaUserUsages []*QuotaUser `json:"QuotaUserUsages,omitempty" xml:"QuotaUserUsages,omitempty" type:"Repeated"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
 	// E7C42CC7-2E85-508A-84F4-923B605FD10F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries that meet the filter criteria.
+	// The number of instances that match the filter conditions.
 	//
 	// example:
 	//

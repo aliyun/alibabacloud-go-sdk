@@ -18,14 +18,20 @@ type iNodeTypeStatistic interface {
 }
 
 type NodeTypeStatistic struct {
+	// The number of resource nodes of the specification that can be bound.
+	//
 	// example:
 	//
 	// 4
 	CanBeBoundCount *int32 `json:"CanBeBoundCount,omitempty" xml:"CanBeBoundCount,omitempty"`
+	// The resource node specifications.
+	//
 	// example:
 	//
 	// ecs.g6.4xlarge
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	// The total number of resource nodes of the specification.
+	//
 	// example:
 	//
 	// 10

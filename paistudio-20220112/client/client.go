@@ -45,11 +45,11 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"cn-shanghai-finance-1": dara.String("pai.cn-shanghai-finance-1.aliyuncs.com"),
 		"cn-wulanchabu":         dara.String("pai.cn-wulanchabu.aliyuncs.com"),
 		"cn-zhangjiakou":        dara.String("pai.cn-zhangjiakou.aliyuncs.com"),
-		"us-southeast-1":        dara.String("pai.us-southeast-1.aliyuncs.com"),
 		"cn-zhongwei":           dara.String("pai.cn-zhongwei.aliyuncs.com"),
+		"ap-northeast-2":        dara.String("pai.ap-northeast-2.aliyuncs.com"),
 		"cn-guangzhou":          dara.String("pai.cn-guangzhou.aliyuncs.com"),
 		"ap-southeast-8":        dara.String("pai.ap-southeast-8.aliyuncs.com"),
-		"ap-northeast-2":        dara.String("pai.ap-northeast-2.aliyuncs.com"),
+		"us-southeast-1":        dara.String("pai.us-southeast-1.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -350,7 +350,7 @@ func (client *Client) CreateInstanceWebTerminal(TrainingJobId *string, InstanceI
 
 // Summary:
 //
-// Call the `CreateQuota` operation to create a quota.
+// Creates a resource quota by calling the CreateQuota operation.
 //
 // @param request - CreateQuotaRequest
 //
@@ -437,7 +437,7 @@ func (client *Client) CreateQuotaWithOptions(request *CreateQuotaRequest, header
 
 // Summary:
 //
-// Call the `CreateQuota` operation to create a quota.
+// Creates a resource quota by calling the CreateQuota operation.
 //
 // @param request - CreateQuotaRequest
 //
@@ -855,7 +855,7 @@ func (client *Client) DeleteMachineGroup(MachineGroupID *string) (_result *Delet
 
 // Summary:
 //
-// You can delete a resource quota by using DeleteQuota.
+// Deletes a resource quota.
 //
 // @param headers - map
 //
@@ -888,7 +888,7 @@ func (client *Client) DeleteQuotaWithOptions(QuotaId *string, headers map[string
 
 // Summary:
 //
-// You can delete a resource quota by using DeleteQuota.
+// Deletes a resource quota.
 //
 // @return DeleteQuotaResponse
 func (client *Client) DeleteQuota(QuotaId *string) (_result *DeleteQuotaResponse, _err error) {
@@ -957,7 +957,7 @@ func (client *Client) DeleteResourceGroup(ResourceGroupID *string) (_result *Del
 //
 // Summary:
 //
-// Deletes the specified machine group from a resource group.
+// Deletes a machine group.
 //
 // @param headers - map
 //
@@ -992,7 +992,7 @@ func (client *Client) DeleteResourceGroupMachineGroupWithOptions(MachineGroupID 
 //
 // Summary:
 //
-// Deletes the specified machine group from a resource group.
+// Deletes a machine group.
 //
 // @return DeleteResourceGroupMachineGroupResponse
 // Deprecated
@@ -1283,7 +1283,7 @@ func (client *Client) GetMachineGroup(MachineGroupID *string) (_result *GetMachi
 //
 // Summary:
 //
-// You can call the GetNodeMetrics operation to obtain the metric information of resource group nodes.
+// Retrieves metric information for resource group nodes.
 //
 // @param request - GetNodeMetricsRequest
 //
@@ -1348,7 +1348,7 @@ func (client *Client) GetNodeMetricsWithOptions(ResourceGroupID *string, MetricT
 //
 // Summary:
 //
-// You can call the GetNodeMetrics operation to obtain the metric information of resource group nodes.
+// Retrieves metric information for resource group nodes.
 //
 // @param request - GetNodeMetricsRequest
 //
@@ -1368,7 +1368,7 @@ func (client *Client) GetNodeMetrics(ResourceGroupID *string, MetricType *string
 
 // Summary:
 //
-// Call GetQuota to retrieve the details of a resource quota. This helps you monitor current resource usage for effective resource management and planning.
+// Retrieves the details of a resource quota to help you understand the current resource usage and facilitate resource management and planning.
 //
 // @param request - GetQuotaRequest
 //
@@ -1419,7 +1419,7 @@ func (client *Client) GetQuotaWithOptions(QuotaId *string, request *GetQuotaRequ
 
 // Summary:
 //
-// Call GetQuota to retrieve the details of a resource quota. This helps you monitor current resource usage for effective resource management and planning.
+// Retrieves the details of a resource quota to help you understand the current resource usage and facilitate resource management and planning.
 //
 // @param request - GetQuotaRequest
 //
@@ -1588,7 +1588,7 @@ func (client *Client) GetResourceGroupMachineGroup(MachineGroupID *string, Resou
 //
 // Summary:
 //
-// You can call the GetResourceGroupRequest operation to obtain the number of resources that have been allocated to a resource group.
+// Retrieves the number of resources that have been assigned to a resource group.
 //
 // @param request - GetResourceGroupRequestRequest
 //
@@ -1641,7 +1641,7 @@ func (client *Client) GetResourceGroupRequestWithOptions(request *GetResourceGro
 //
 // Summary:
 //
-// You can call the GetResourceGroupRequest operation to obtain the number of resources that have been allocated to a resource group.
+// Retrieves the number of resources that have been assigned to a resource group.
 //
 // @param request - GetResourceGroupRequestRequest
 //
@@ -2312,9 +2312,9 @@ func (client *Client) ListAlgorithms(request *ListAlgorithmsRequest) (_result *L
 //
 // - This feature is currently available only on the Lingjun AI Computing Service platform and is accessible to customers through a whitelist.
 //
-// - `NodeName` and `ResourceGroupId` are required parameters that represent the node name and the resource group ID to which the node belongs.
+// - NodeName and ResourceGroupId are required parameters that represent the node name and the ID of the resource group to which the node belongs.
 //
-// - Optional parameters include `OversoldTypes` and `GPUIndexes`, which are used to further filter or specify conditions.
+// - Optional parameters include OversoldTypes and GPUIndexes, which are used to further filter or specify conditions.
 //
 // @param request - ListNodePodsRequest
 //
@@ -2377,9 +2377,9 @@ func (client *Client) ListNodePodsWithOptions(NodeId *string, request *ListNodeP
 //
 // - This feature is currently available only on the Lingjun AI Computing Service platform and is accessible to customers through a whitelist.
 //
-// - `NodeName` and `ResourceGroupId` are required parameters that represent the node name and the resource group ID to which the node belongs.
+// - NodeName and ResourceGroupId are required parameters that represent the node name and the ID of the resource group to which the node belongs.
 //
-// - Optional parameters include `OversoldTypes` and `GPUIndexes`, which are used to further filter or specify conditions.
+// - Optional parameters include OversoldTypes and GPUIndexes, which are used to further filter or specify conditions.
 //
 // @param request - ListNodePodsRequest
 //
@@ -2504,11 +2504,11 @@ func (client *Client) ListNodeTypes(request *ListNodeTypesRequest) (_result *Lis
 
 // Summary:
 //
-// Returns a list of resource nodes.
+// Retrieves a list of resource nodes.
 //
 // Description:
 //
-// ListNodes retrieves resource nodes that match specified filter conditions.
+// You can call ListNodes to retrieve resource nodes that match specified filter conditions.
 //
 // @param tmpReq - ListNodesRequest
 //
@@ -2685,11 +2685,11 @@ func (client *Client) ListNodesWithOptions(tmpReq *ListNodesRequest, headers map
 
 // Summary:
 //
-// Returns a list of resource nodes.
+// Retrieves a list of resource nodes.
 //
 // Description:
 //
-// ListNodes retrieves resource nodes that match specified filter conditions.
+// You can call ListNodes to retrieve resource nodes that match specified filter conditions.
 //
 // @param request - ListNodesRequest
 //
@@ -2708,11 +2708,11 @@ func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesRe
 
 // Summary:
 //
-// Lists users within a quota and their resource usage.
+// Retrieves the list of users under the current resource quota and their resource usage.
 //
 // Description:
 //
-// Retrieves the resource usage of users in a specified quota.
+// Retrieves the resource usage of users for a specified QuotaId.
 //
 // @param request - ListQuotaActiveUserUsagesRequest
 //
@@ -2791,11 +2791,11 @@ func (client *Client) ListQuotaActiveUserUsagesWithOptions(QuotaId *string, requ
 
 // Summary:
 //
-// Lists users within a quota and their resource usage.
+// Retrieves the list of users under the current resource quota and their resource usage.
 //
 // Description:
 //
-// Retrieves the resource usage of users in a specified quota.
+// Retrieves the resource usage of users for a specified QuotaId.
 //
 // @param request - ListQuotaActiveUserUsagesRequest
 //
@@ -2814,7 +2814,7 @@ func (client *Client) ListQuotaActiveUserUsages(QuotaId *string, request *ListQu
 
 // Summary:
 //
-// Retrieves a list of workloads associated with a specific quota.
+// Retrieves the list of node information on a resource quota.
 //
 // @param request - ListQuotaWorkloadsRequest
 //
@@ -2953,7 +2953,7 @@ func (client *Client) ListQuotaWorkloadsWithOptions(QuotaId *string, request *Li
 
 // Summary:
 //
-// Retrieves a list of workloads associated with a specific quota.
+// Retrieves the list of node information on a resource quota.
 //
 // @param request - ListQuotaWorkloadsRequest
 //
@@ -2972,7 +2972,7 @@ func (client *Client) ListQuotaWorkloads(QuotaId *string, request *ListQuotaWork
 
 // Summary:
 //
-// Lists quotas.
+// Retrieves a list of resource quotas.
 //
 // @param request - ListQuotasRequest
 //
@@ -3087,7 +3087,7 @@ func (client *Client) ListQuotasWithOptions(request *ListQuotasRequest, headers 
 
 // Summary:
 //
-// Lists quotas.
+// Retrieves a list of resource quotas.
 //
 // @param request - ListQuotasRequest
 //
@@ -4042,11 +4042,11 @@ func (client *Client) ListTrainingJobs(request *ListTrainingJobsRequest) (_resul
 
 // Summary:
 //
-// Use OperateNode to manage nodes.
+// Operates on a specified node.
 //
 // Description:
 //
-// Use OperateNode to manage a specified resource node. Supported operations include disabling or enabling scheduling.
+// You can call OperateNode to operate on a specified resource node, including operations such as disabling scheduling and enabling scheduling.
 //
 // @param request - OperateNodeRequest
 //
@@ -4101,11 +4101,11 @@ func (client *Client) OperateNodeWithOptions(NodeId *string, request *OperateNod
 
 // Summary:
 //
-// Use OperateNode to manage nodes.
+// Operates on a specified node.
 //
 // Description:
 //
-// Use OperateNode to manage a specified resource node. Supported operations include disabling or enabling scheduling.
+// You can call OperateNode to operate on a specified resource node, including operations such as disabling scheduling and enabling scheduling.
 //
 // @param request - OperateNodeRequest
 //

@@ -80,7 +80,7 @@ type ListNodesShrinkRequest struct {
 	//
 	// - GPU
 	//
-	// If omitted, this operation returns nodes of all accelerator types.
+	// Default value: empty, which indicates all types.
 	//
 	// example:
 	//
@@ -89,43 +89,46 @@ type ListNodesShrinkRequest struct {
 	AvailabilityZone *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
 	CliqueID         *string `json:"CliqueID,omitempty" xml:"CliqueID,omitempty"`
 	DiskPL           *string `json:"DiskPL,omitempty" xml:"DiskPL,omitempty"`
-	// When used with `ResourceGroupIds`, this parameter further filters the results to include only nodes from the specified resource quota.
+	// Used together with ResourceGroupIds to display nodes in the resource groups that are bound to the specified quotas.
 	//
 	// example:
 	//
 	// quotamtl37ge7gkvdz
 	FilterByQuotaId *string `json:"FilterByQuotaId,omitempty" xml:"FilterByQuotaId,omitempty"`
-	// When used with `QuotaId`, this parameter further filters the results to include only nodes from the specified resource groups.
+	// Used together with QuotaId to display nodes in the quota that belong to the specified resource groups.
 	//
 	// example:
 	//
 	// rg69rj0leslwdnbe
 	FilterByResourceGroupIds *string `json:"FilterByResourceGroupIds,omitempty" xml:"FilterByResourceGroupIds,omitempty"`
-	// The GPU type. Fuzzy matching is supported.
+	// The GPU type. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// T4
-	GPUType           *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// The number of healthy nodes.
 	HealthCountShrink *string `json:"HealthCount,omitempty" xml:"HealthCount,omitempty"`
-	HealthRateShrink  *string `json:"HealthRate,omitempty" xml:"HealthRate,omitempty"`
-	HyperNode         *string `json:"HyperNode,omitempty" xml:"HyperNode,omitempty"`
-	HyperZone         *string `json:"HyperZone,omitempty" xml:"HyperZone,omitempty"`
-	LayoutMode        *string `json:"LayoutMode,omitempty" xml:"LayoutMode,omitempty"`
-	MachineGroupIds   *string `json:"MachineGroupIds,omitempty" xml:"MachineGroupIds,omitempty"`
-	// A comma-separated list of node names. Only nodes with names that match this list are returned.
+	// The health rate of nodes (the proportion of healthy nodes).
+	HealthRateShrink *string `json:"HealthRate,omitempty" xml:"HealthRate,omitempty"`
+	HyperNode        *string `json:"HyperNode,omitempty" xml:"HyperNode,omitempty"`
+	HyperZone        *string `json:"HyperZone,omitempty" xml:"HyperZone,omitempty"`
+	// The layout mode.
+	LayoutMode      *string `json:"LayoutMode,omitempty" xml:"LayoutMode,omitempty"`
+	MachineGroupIds *string `json:"MachineGroupIds,omitempty" xml:"MachineGroupIds,omitempty"`
+	// The node names to display, separated by commas.
 	//
 	// example:
 	//
 	// lingjxxxx
 	NodeNames *string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty"`
-	// A comma-separated list of node statuses. If this parameter is omitted, this operation returns nodes of all statuses.
+	// The node statuses, separated by commas. If this parameter is not specified, nodes in all statuses are returned.
 	//
 	// example:
 	//
 	// Ready
 	NodeStatuses *string `json:"NodeStatuses,omitempty" xml:"NodeStatuses,omitempty"`
-	// A comma-separated list of node specifications. If this parameter is omitted, this operation returns nodes of all specifications.
+	// The resource node specifications, separated by commas. If this parameter is not configured, nodes of all node specifications are returned.
 	//
 	// example:
 	//
@@ -133,33 +136,33 @@ type ListNodesShrinkRequest struct {
 	NodeTypes *string `json:"NodeTypes,omitempty" xml:"NodeTypes,omitempty"`
 	// The sort order. Valid values:
 	//
-	// - `desc`: Descending
+	// - desc: Descending order.
 	//
-	// - `asc`: Ascending
+	// - asc: Ascending order.
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// A comma-separated list of order IDs.
+	// The order ID information.
 	//
 	// example:
 	//
 	// 260590501560397
 	OrderInstanceIds *string `json:"OrderInstanceIds,omitempty" xml:"OrderInstanceIds,omitempty"`
-	// A comma-separated list of order statuses.
+	// The order statuses of the nodes.
 	//
 	// example:
 	//
 	// Ready
 	OrderStatuses *string `json:"OrderStatuses,omitempty" xml:"OrderStatuses,omitempty"`
-	// The page number. The first page is 1.
+	// The page number, starting from 1.
 	//
 	// example:
 	//
 	// 2
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page.
+	// The number of entries per page for paged query. This parameter is used for paging.
 	//
 	// example:
 	//
@@ -167,35 +170,36 @@ type ListNodesShrinkRequest struct {
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 	PodNum      *int32  `json:"PodNum,omitempty" xml:"PodNum,omitempty"`
-	// The ID of the resource quota that contains the nodes.
+	// The resource quota ID to which the node belongs.
 	//
 	// example:
 	//
 	// quotamtl37ge7gkvdz
 	QuotaId     *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
 	ReasonCodes *string `json:"ReasonCodes,omitempty" xml:"ReasonCodes,omitempty"`
-	// A comma-separated list of resource group IDs. You must specify either this parameter or `QuotaId`.
+	// The IDs of resource groups, separated by commas. Either this parameter or QuotaId is required.
 	//
 	// Constraints:
 	//
-	// 1. The user ID of the request must match the user ID associated with the specified resource groups.
+	// 1. The UserId of the specified ResourceGroupId must match the UserId of the request.
 	//
-	// 2. All specified resource groups must be of the same type.
+	// 2. The specified resource groups must be of the same type.
 	//
-	// 3. All specified resource groups must be in the same VPC.
+	// 3. The specified resource groups must be associated with the same VPC at this stage.
 	//
 	// example:
 	//
 	// rg69rj0leslwdnbe
-	ResourceGroupIds  *string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty"`
+	ResourceGroupIds *string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty"`
+	// The name of the resource group.
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
-	// The field by which to sort the results.
+	// The field used for sorting.
 	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// Specifies whether to return resource usage information. This parameter applies only when `QuotaId` is specified.
+	// Specifies whether to return resource usage information. This parameter takes effect only when QuotaId is specified.
 	//
 	// example:
 	//

@@ -40,33 +40,75 @@ type iCacheService interface {
 }
 
 type CacheService struct {
-	// Information about each cache node in the service.
+	// The list of data source cache information connected to the cache service. Each element corresponds to a data source and its access port.
 	CacheInfos []*CacheInfo `json:"CacheInfos,omitempty" xml:"CacheInfos,omitempty" type:"Repeated"`
-	// The unique identifier of the CacheService.
+	// The cache service ID. This is the unique identifier of the cache service.
+	//
+	// example:
+	//
+	// cachea1b2c3d4e5f
 	CacheServiceId *string `json:"CacheServiceId,omitempty" xml:"CacheServiceId,omitempty"`
-	// The ID of the PAI cluster where the CacheService is deployed.
+	// The ID of the cluster where the cache service resides.
+	//
+	// example:
+	//
+	// c1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The user or entity that created the resource.
+	// The ID of the resource quota that created the cache service.
+	//
+	// example:
+	//
+	// quota1a2b3c4d5e6
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	// The time (in UTC, ISO 8601 format) when the CacheService was created.
+	// The time when the cache service was created, in UTC in ISO 8601 format.
+	//
+	// example:
+	//
+	// 2026-08-10T03:17:31Z
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// Indicates whether the CacheService is sharded across multiple nodes.
+	// Indicates whether the service discovery of the cache service uses shard mode.
 	IsSharded *bool `json:"IsSharded,omitempty" xml:"IsSharded,omitempty"`
-	// The network type of the CacheService. For example, `VPC`.
+	// The type of RDMA network interface controller used by the cache service. This parameter is returned only when SupportRDMA is set to true. Valid values:
+	//
+	// - eic: EIC network interface controller.
+	//
+	// - mlx: Mellanox network interface controller.
+	//
+	// This parameter is empty when RDMA is not enabled.
+	//
+	// example:
+	//
+	// eic
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The ID of the resource quota associated with the CacheService.
+	// The ID of the resource quota to which the cache service belongs.
+	//
+	// example:
+	//
+	// quota1a2b3c4d5e6
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	// The current status of the CacheService. For example: `Creating`, `Available`, or `Deleting`.
+	// The current status of the cache service.
+	//
+	// example:
+	//
+	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the CacheService supports RDMA.
+	// Indicates whether the cache service supports access through RDMA networks.
 	SupportRDMA *string `json:"SupportRDMA,omitempty" xml:"SupportRDMA,omitempty"`
-	// A list of quota IDs for clients that can connect to this CacheService.
+	// The list of client quota IDs that are allowed to access the cache service.
 	SupportedClientQuotaIds []*string `json:"SupportedClientQuotaIds,omitempty" xml:"SupportedClientQuotaIds,omitempty" type:"Repeated"`
-	// The ID of the tenant that owns the CacheService.
+	// The tenant ID to which the cache service belongs, which is the Alibaba Cloud account ID.
+	//
+	// example:
+	//
+	// 1234567890123456
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The ID of the user associated with the CacheService.
+	// The ID of the user who created the cache service.
+	//
+	// example:
+	//
+	// 123456789012345678
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The configuration of the user\\"s VPC where the CacheService is deployed.
+	// The VPC network information of the cache service, including the VPC, vSwitch, and security group configurations.
 	UserVpc *UserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty"`
 }
 

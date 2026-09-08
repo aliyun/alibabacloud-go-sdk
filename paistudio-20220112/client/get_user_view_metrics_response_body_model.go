@@ -20,21 +20,21 @@ type iGetUserViewMetricsResponseBody interface {
 }
 
 type GetUserViewMetricsResponseBody struct {
-	// 资源组ID
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rgf0zhfqn1d4ity2
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 用户监控数据。
+	// The user monitoring data.
 	Summary *UserViewMetric `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	// 总条数
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 2
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// 按照用户维度统计的指标
+	// The metrics aggregated at the user dimension.
 	UserMetrics []*UserViewMetric `json:"UserMetrics,omitempty" xml:"UserMetrics,omitempty" type:"Repeated"`
 }
 

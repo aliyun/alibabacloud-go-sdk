@@ -15,6 +15,8 @@ type iGetQuotaResponseBody interface {
 	GetCreatorId() *string
 	SetDescription(v string) *GetQuotaResponseBody
 	GetDescription() *string
+	SetGPUType(v string) *GetQuotaResponseBody
+	GetGPUType() *string
 	SetGmtCreatedTime(v string) *GetQuotaResponseBody
 	GetGmtCreatedTime() *string
 	SetGmtModifiedTime(v string) *GetQuotaResponseBody
@@ -62,73 +64,79 @@ type iGetQuotaResponseBody interface {
 }
 
 type GetQuotaResponseBody struct {
-	// The resource allocation policy.
+	// The resource allocation strategy.
 	//
 	// example:
 	//
 	// ByNodeSpec
 	AllocateStrategy *string `json:"AllocateStrategy,omitempty" xml:"AllocateStrategy,omitempty"`
-	// The ID of the user who created the resource quota.
+	// The ID of the quota creator.
 	//
 	// example:
 	//
 	// 1884692****
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The description of the resource quota.
+	// The description of the quota.
 	//
 	// example:
 	//
 	// this is a test quota
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the resource quota was created.
+	// The GPU type.
+	//
+	// example:
+	//
+	// L20
+	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// The time when the quota was created.
 	//
 	// example:
 	//
 	// 2023-06-22T00:00:00Z
 	GmtCreatedTime *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
-	// The time when the resource quota was last modified.
+	// The time when the quota was last modified.
 	//
 	// example:
 	//
 	// 2023-06-22T00:00:00Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// A list of high-performance network zones.
+	// The list of high-performance network zones.
 	HyperZones []*string `json:"HyperZones,omitempty" xml:"HyperZones,omitempty" type:"Repeated"`
-	// The labels of the resource quota.
+	// The labels of the quota.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The ID of the most recent change to the resource quota.
+	// The ID of the latest quota operation.
 	//
 	// example:
 	//
 	// operation****
 	LatestOperationId *string `json:"LatestOperationId,omitempty" xml:"LatestOperationId,omitempty"`
-	// The configuration of the minimum quota.
+	// The minimum quota configuration.
 	Min *ResourceSpec `json:"Min,omitempty" xml:"Min,omitempty"`
-	// The ID of the parent resource quota.
+	// The ID of the parent quota.
 	//
 	// example:
 	//
 	// quota1ci8g79****
 	ParentQuotaId *string `json:"ParentQuotaId,omitempty" xml:"ParentQuotaId,omitempty"`
-	// The queuing policy for tasks in the resource quota.
+	// The queuing strategy for tasks in the quota.
 	//
 	// example:
 	//
 	// PaiStrategyIntelligent
 	QueueStrategy *string `json:"QueueStrategy,omitempty" xml:"QueueStrategy,omitempty"`
-	// The specifications and status of the cluster that is composed of resources within the quota.
+	// The cluster specifications and status composed of resources in the quota.
 	QuotaCluster *QuotaCluster `json:"QuotaCluster,omitempty" xml:"QuotaCluster,omitempty"`
-	// The configurations of the resource quota:
+	// The quota configuration:
 	//
 	// - VPC information
 	//
-	// - Whether Remote Direct Memory Access (RDMA) is supported
+	// - Whether RDMA is supported
 	//
-	// - ACS configurations, which take effect if the resource type is ACS
+	// - ACS configuration (takes effect when the resource type is ACS)
 	QuotaConfig *QuotaConfig `json:"QuotaConfig,omitempty" xml:"QuotaConfig,omitempty"`
-	// The details of the resource quota.
+	// The details of the quota.
 	QuotaDetails *QuotaDetails `json:"QuotaDetails,omitempty" xml:"QuotaDetails,omitempty"`
-	// The ID of the resource quota.
+	// The resource quota ID.
 	//
 	// example:
 	//
@@ -146,7 +154,7 @@ type GetQuotaResponseBody struct {
 	//
 	// “”
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	// The cause of the error.
+	// The error reason.
 	//
 	// example:
 	//
@@ -158,7 +166,7 @@ type GetQuotaResponseBody struct {
 	//
 	// 18D5A1C6-14B8-545E-8408-0A7DDB4C6B5E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource groups that are associated with the resource quota.
+	// The resource group information associated with the resource quota.
 	ResourceGroupIds []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
 	// The resource type of the quota.
 	//
@@ -166,21 +174,21 @@ type GetQuotaResponseBody struct {
 	//
 	// ECS
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The status of the resource quota.
+	// The status of the quota.
 	//
 	// example:
 	//
 	// Ready
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// A list of sub-quotas of the resource quota.
+	// The list of sub-quotas under the quota.
 	SubQuotas []*QuotaIdName `json:"SubQuotas,omitempty" xml:"SubQuotas,omitempty" type:"Repeated"`
-	// The version information. This parameter takes effect when ResourceType is set to ECS.
+	// The version information. Takes effect when the resource type is ECS.
 	//
 	// example:
 	//
 	// 1.0
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The workspaces that are associated with the resource quota.
+	// The workspaces associated with the quota.
 	Workspaces []*WorkspaceIdName `json:"Workspaces,omitempty" xml:"Workspaces,omitempty" type:"Repeated"`
 }
 
@@ -202,6 +210,10 @@ func (s *GetQuotaResponseBody) GetCreatorId() *string {
 
 func (s *GetQuotaResponseBody) GetDescription() *string {
 	return s.Description
+}
+
+func (s *GetQuotaResponseBody) GetGPUType() *string {
+	return s.GPUType
 }
 
 func (s *GetQuotaResponseBody) GetGmtCreatedTime() *string {
@@ -304,6 +316,11 @@ func (s *GetQuotaResponseBody) SetCreatorId(v string) *GetQuotaResponseBody {
 
 func (s *GetQuotaResponseBody) SetDescription(v string) *GetQuotaResponseBody {
 	s.Description = &v
+	return s
+}
+
+func (s *GetQuotaResponseBody) SetGPUType(v string) *GetQuotaResponseBody {
+	s.GPUType = &v
 	return s
 }
 

@@ -18,13 +18,13 @@ type iOperateNodeRequest interface {
 }
 
 type OperateNodeRequest struct {
-	// The operation to perform.
+	// The operation. Valid values:
 	//
-	// - Cordon: Disables scheduling on the node.
+	// - Cordon: disables scheduling
 	//
-	// - Uncordon: Enables scheduling on the node.
+	// - Uncordon: enables scheduling
 	//
-	// - Drain: Evicts pods from the node.
+	// - Drain: evicts pods
 	//
 	// This parameter is required.
 	//
@@ -32,9 +32,9 @@ type OperateNodeRequest struct {
 	//
 	// Cordon
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// The parameter settings for the node operation.
+	// The node operation parameter settings.
 	OperationParameters *NodeOperationParameters `json:"OperationParameters,omitempty" xml:"OperationParameters,omitempty"`
-	// The ID of the resource group that contains the node.
+	// The ID of the resource group to which the resource node belongs.
 	//
 	// example:
 	//

@@ -32,9 +32,9 @@ type iListQuotaActiveUserUsagesRequest interface {
 type ListQuotaActiveUserUsagesRequest struct {
 	// The sort order. Valid values:
 	//
-	// - `desc`: descending order.
+	// - desc: descending order.
 	//
-	// - `asc`: ascending order.
+	// - asc: ascending order.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type ListQuotaActiveUserUsagesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// If true, retrieves resource usage from the current quota only.
+	// Specifies whether to view only the resource usage in the current quota.
 	//
 	// example:
 	//
 	// false
 	SelfOnly *bool `json:"SelfOnly,omitempty" xml:"SelfOnly,omitempty"`
-	// The field to sort the results by. Valid values:
+	// The field by which to sort the returned results. Valid values:
 	//
 	// - QuotaId
 	//
@@ -80,13 +80,13 @@ type ListQuotaActiveUserUsagesRequest struct {
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// Filters the results by user ID.
+	// The user ID for which to query resource usage.
 	//
 	// example:
 	//
 	// 200xxxxxx
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// Filters the results by username.
+	// The username for which to query resource usage.
 	//
 	// example:
 	//

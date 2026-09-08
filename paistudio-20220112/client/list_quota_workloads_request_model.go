@@ -60,38 +60,38 @@ type iListQuotaWorkloadsRequest interface {
 }
 
 type ListQuotaWorkloadsRequest struct {
-	// Retrieves workloads that precede the specified workload ID in the queue.
+	// Queries the queuing information for instances before a specified workload ID in the queue.
 	//
 	// example:
 	//
 	// dsw654433**
 	BeforeWorkloadId *string `json:"BeforeWorkloadId,omitempty" xml:"BeforeWorkloadId,omitempty"`
-	// Filters workloads by their dequeue time range.
+	// The range search for workload dequeue time.
 	GmtDequeuedTimeRange *TimeRangeFilter `json:"GmtDequeuedTimeRange,omitempty" xml:"GmtDequeuedTimeRange,omitempty"`
-	// Filters workloads by their enqueue time range.
+	// The range search for workload enqueue time.
 	GmtEnqueuedTimeRange *TimeRangeFilter `json:"GmtEnqueuedTimeRange,omitempty" xml:"GmtEnqueuedTimeRange,omitempty"`
-	// Filters workloads by the time range of their last queue position change.
+	// The range search for workload queue position change time.
 	GmtPositionModifiedTimeRange *TimeRangeFilter `json:"GmtPositionModifiedTimeRange,omitempty" xml:"GmtPositionModifiedTimeRange,omitempty"`
 	InstanceId                   *string          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Filters workloads by node name.
+	// Searches only for nodes on the specified node.
 	//
 	// example:
 	//
 	// lrn482781276**
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	// The sort order for the results. Valid values are `asc` for ascending and `desc` for descending.
+	// The sort order.
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The number of the page to return.
+	// The page number of the query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of entries to return on a single page.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
@@ -99,61 +99,60 @@ type ListQuotaWorkloadsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Position *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// Specifies whether to return only workloads that belong to the specified quota.
+	// Specifies whether to display only the workloads associated with the current resource quota.
 	//
 	// example:
 	//
 	// true
 	ShowOwn *bool `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
-	// The field to use for sorting the results.
+	// The field by which to sort the returned results.
 	//
 	// example:
 	//
 	// GmtCreatedTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// Filters workloads by their status in the queue.
+	// The status in the queue.
 	//
 	// example:
 	//
 	// Enqueued
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Filters workloads by sub-quota ID. You can specify multiple IDs, separated by commas.
+	// The list of sub-resource quota IDs.
 	//
 	// example:
 	//
 	// quota123446**,quota644322**
 	SubQuotaIds         *string `json:"SubQuotaIds,omitempty" xml:"SubQuotaIds,omitempty"`
 	UseOversoldResource *bool   `json:"UseOversoldResource,omitempty" xml:"UseOversoldResource,omitempty"`
-	// Filters workloads by user ID. You can specify multiple IDs, separated by commas.
+	// The list of user IDs.
 	//
 	// example:
 	//
 	// 290438938**,238290930**
-	UserIds *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
-	// Specifies whether to include historical data in the query results.
-	WithHistoricalData *bool `json:"WithHistoricalData,omitempty" xml:"WithHistoricalData,omitempty"`
-	// Filters workloads based on their creation time range.
+	UserIds            *string `json:"UserIds,omitempty" xml:"UserIds,omitempty"`
+	WithHistoricalData *bool   `json:"WithHistoricalData,omitempty" xml:"WithHistoricalData,omitempty"`
+	// The range search for workload creation time.
 	WorkloadCreatedTimeRange *TimeRangeFilter `json:"WorkloadCreatedTimeRange,omitempty" xml:"WorkloadCreatedTimeRange,omitempty"`
-	// Filters workloads by workload ID. You can specify multiple IDs, separated by commas.
+	// Queries the queuing information for specified workload IDs.
 	//
 	// example:
 	//
 	// dlc123445**
 	WorkloadIds   *string `json:"WorkloadIds,omitempty" xml:"WorkloadIds,omitempty"`
 	WorkloadNames *string `json:"WorkloadNames,omitempty" xml:"WorkloadNames,omitempty"`
-	// Filters workloads by status. You can specify multiple statuses, separated by commas.
+	// Filters by workload status.
 	//
 	// example:
 	//
 	// Pending
 	WorkloadStatuses *string `json:"WorkloadStatuses,omitempty" xml:"WorkloadStatuses,omitempty"`
-	// Filters workloads by the sub-product type of the instance.
+	// Queries the queuing information for instances of a specified sub-product.
 	//
 	// example:
 	//
 	// dlc
 	WorkloadType *string `json:"WorkloadType,omitempty" xml:"WorkloadType,omitempty"`
-	// Filters workloads by workspace ID. You can specify multiple IDs, separated by commas.
+	// Queries the queuing information for workloads in a specified workspace.
 	//
 	// example:
 	//

@@ -18,15 +18,15 @@ type iGetNodeMetricsResponseBody interface {
 }
 
 type GetNodeMetricsResponseBody struct {
-	// The name of the metric to query.
+	// The name of the queried metric.
 	//
 	// example:
 	//
 	// DiskWriteRate
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	// The metric information of the nodes.
+	// The node metric information.
 	NodesMetrics []*NodeMetric `json:"NodesMetrics,omitempty" xml:"NodesMetrics,omitempty" type:"Repeated"`
-	// The resource group ID. Each resource group has a globally unique resource group ID. You can use the resource group ID to obtain information about the resource group.
+	// The resource group ID. Each resource group has a globally unique resource group ID. You can use the resource group ID to retrieve information about the resource group.
 	//
 	// example:
 	//

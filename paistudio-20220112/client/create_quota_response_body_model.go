@@ -16,7 +16,7 @@ type iCreateQuotaResponseBody interface {
 }
 
 type CreateQuotaResponseBody struct {
-	// The quota ID.
+	// The resource quota ID.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iListQuotasResponseBody interface {
 }
 
 type ListQuotasResponseBody struct {
-	// The list of quotas.
+	// The list of resource quotas.
 	Quotas []*Quota `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListQuotasResponseBody struct {
 	//
 	// F082BD0D-21E1-5F9B-81A0-AB07485B03CD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries that match the request.
+	// The total number of records.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iDeleteQuotaResponseBody interface {
 }
 
 type DeleteQuotaResponseBody struct {
-	// Quota ID.
+	// Quota ID。
 	//
 	// example:
 	//
 	// quotamtl37ge7gkvdz
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

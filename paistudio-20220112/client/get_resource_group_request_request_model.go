@@ -31,7 +31,7 @@ type GetResourceGroupRequestRequest struct {
 	//
 	// Running
 	PodStatus *string `json:"PodStatus,omitempty" xml:"PodStatus,omitempty"`
-	// The resource group ID. Each resource group has a globally unique resource group ID. You can use the resource group ID to obtain information about the resource group.
+	// The resource group ID. Each resource group has a globally unique resource group ID. You can use the resource group ID to retrieve information about the resource group.
 	//
 	// This parameter is required.
 	//

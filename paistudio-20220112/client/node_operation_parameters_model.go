@@ -13,16 +13,20 @@ type iNodeOperationParameters interface {
 	GetCordonParameters() *NodeCordonParameters
 	SetDrainParameters(v *NodeDrainParameters) *NodeOperationParameters
 	GetDrainParameters() *NodeDrainParameters
+	SetResizeDiskParameters(v *ResizeDiskParameters) *NodeOperationParameters
+	GetResizeDiskParameters() *ResizeDiskParameters
 	SetUncordonParameters(v *NodeUncordonParameters) *NodeOperationParameters
 	GetUncordonParameters() *NodeUncordonParameters
 }
 
 type NodeOperationParameters struct {
-	// Node cordon parameter settings
+	// The parameter settings for disabling node scheduling.
 	CordonParameters *NodeCordonParameters `json:"CordonParameters,omitempty" xml:"CordonParameters,omitempty"`
-	// Node drain task instance parameter settings
+	// The parameter settings for draining task instances from a node.
 	DrainParameters *NodeDrainParameters `json:"DrainParameters,omitempty" xml:"DrainParameters,omitempty"`
-	// Node uncordon parameter settings
+	// The parameters for changing disk capacity.
+	ResizeDiskParameters *ResizeDiskParameters `json:"ResizeDiskParameters,omitempty" xml:"ResizeDiskParameters,omitempty"`
+	// The parameter settings for enabling node scheduling.
 	UncordonParameters *NodeUncordonParameters `json:"UncordonParameters,omitempty" xml:"UncordonParameters,omitempty"`
 }
 
@@ -42,6 +46,10 @@ func (s *NodeOperationParameters) GetDrainParameters() *NodeDrainParameters {
 	return s.DrainParameters
 }
 
+func (s *NodeOperationParameters) GetResizeDiskParameters() *ResizeDiskParameters {
+	return s.ResizeDiskParameters
+}
+
 func (s *NodeOperationParameters) GetUncordonParameters() *NodeUncordonParameters {
 	return s.UncordonParameters
 }
@@ -53,6 +61,11 @@ func (s *NodeOperationParameters) SetCordonParameters(v *NodeCordonParameters) *
 
 func (s *NodeOperationParameters) SetDrainParameters(v *NodeDrainParameters) *NodeOperationParameters {
 	s.DrainParameters = v
+	return s
+}
+
+func (s *NodeOperationParameters) SetResizeDiskParameters(v *ResizeDiskParameters) *NodeOperationParameters {
+	s.ResizeDiskParameters = v
 	return s
 }
 
@@ -69,6 +82,11 @@ func (s *NodeOperationParameters) Validate() error {
 	}
 	if s.DrainParameters != nil {
 		if err := s.DrainParameters.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.ResizeDiskParameters != nil {
+		if err := s.ResizeDiskParameters.Validate(); err != nil {
 			return err
 		}
 	}

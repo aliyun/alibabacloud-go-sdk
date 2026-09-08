@@ -50,7 +50,7 @@ type GetNodeMetricsRequest struct {
 	//
 	// 2024-07-08T02:23:30.292Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time step. Default value: 5m. The supported time units are:
+	// The time step. Default value: 5m. Valid values for the time unit:
 	//
 	// - h: hours.
 	//
@@ -58,19 +58,17 @@ type GetNodeMetricsRequest struct {
 	//
 	// - s: seconds.
 	//
-	// If the value does not contain a unit, the default unit is s (seconds).
+	// If no unit is specified, the default unit is s (seconds).
 	//
 	// example:
 	//
 	// 1h
 	TimeStep *string `json:"TimeStep,omitempty" xml:"TimeStep,omitempty"`
-	// Specifies whether to display non-essential information. Non-essential information currently includes Labels.
+	// Specifies whether to display non-essential information. Non-essential information currently includes Labels. Valid values:
 	//
-	// Valid values:
+	// false: does not display non-essential information (default).
 	//
-	// false: does not display non-essential information (default value)
-	//
-	// true: displays non-essential information
+	// true: displays non-essential information.
 	//
 	// example:
 	//

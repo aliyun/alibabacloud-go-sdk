@@ -34,57 +34,57 @@ type iCreateQuotaRequest interface {
 }
 
 type CreateQuotaRequest struct {
-	// The allocation strategy for the quota. Only `ByNodeSpecs` is supported.
+	// The quota allocation strategy. Currently, only ByNodeSpecs is supported.
 	//
 	// example:
 	//
 	// ByNodeSpecs
 	AllocateStrategy *string `json:"AllocateStrategy,omitempty" xml:"AllocateStrategy,omitempty"`
-	// The native cluster specification for the quota.
+	// The specifications of the native cluster for the resource quota.
 	ClusterSpec *ClusterSpec `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
-	// The description of the quota.
+	// The quota description.
 	//
 	// example:
 	//
 	// this is a test quota
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The tags for the quota.
+	// The quota labels.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The minimum resources for the quota. You can define this in one of the following ways:
+	// The minimum quota configuration. Valid options:
 	//
-	// - `ResourceAmount`: Specifies the CPU, memory, and GPU details.
+	// - ResourceAmount: specifies CPU, memory, or GPU details.
 	//
-	// - `NodeSpecs`: Specifies the node specification and the number of nodes.
+	// - NodeSpecs: specifies the instance type and quantity.
 	//
 	// Constraints:
 	//
-	// - If this quota allocates resources from a dedicated resource group, you must use the `NodeSpecs` method.
+	// - If the quota allocates resources from a dedicated resource group, only the NodeSpecs strategy is allowed.
 	//
-	// - If this quota allocates resources from a parent quota, both methods are allowed. However, all its child quotas must use the same method.
+	// - If the quota allocates resources from a parent quota, both strategies are allowed, but all child quotas must use the same strategy.
 	//
-	// - All GPU specifications within the quota must have the same GPU type.
+	// - All GPU specifications within a quota must use the same GPU type.
 	//
-	// - For quotas with the resource type set to ECS or Lingjun, only the `NodeSpecs` method can be used.
+	// - Resource quotas with the ECS or Lingjun resource type can only use the NodeSpecs strategy.
 	Min *ResourceSpec `json:"Min,omitempty" xml:"Min,omitempty"`
-	// The ID of the parent quota.
+	// The parent QuotaId:
 	//
-	// - If you do not specify this parameter, a root quota is created. Resources are allocated from a dedicated resource group.
+	// - If ParentQuotaId is empty, a root quota is created and machines are allocated from the dedicated resource group.
 	//
-	// - If you specify this parameter, a child quota is created. Resources are allocated from the nodes that are bound to the root quota.
+	// - If ParentQuotaId is not empty, a child quota is created and resources are allocated from the nodes bound to the root quota.
 	//
 	// example:
 	//
 	// quota1ci8g793pgm
 	ParentQuotaId *string `json:"ParentQuotaId,omitempty" xml:"ParentQuotaId,omitempty"`
-	// The queuing strategy for the quota. Four strategies are supported:
+	// Four queuing policies are supported for quotas.
 	//
-	// - `PaiStrategyIntelligent`: The intelligent strategy.
+	// - PaiStrategyIntelligent: intelligent policies.
 	//
-	// - `PaiStrategyBalance`: The balance strategy.
+	// - PaiStrategyBalance: balanced policy.
 	//
-	// - `PaiStrategyRoundRobin`: The round-robin strategy.
+	// - PaiStrategyRoundRobin: resource-priority policy.
 	//
-	// - `PaiStrategyStrictFIFO`: The FIFO strategy.
+	// - PaiStrategyStrictFIFO: FIFO policy.
 	//
 	// if can be null:
 	// true
@@ -93,25 +93,25 @@ type CreateQuotaRequest struct {
 	//
 	// PaiStrategyIntelligent
 	QueueStrategy *string `json:"QueueStrategy,omitempty" xml:"QueueStrategy,omitempty"`
-	// Constraints for the `QuotaConfig` parameter:
+	// QuotaConfig configuration constraints:
 	//
-	// - This parameter is ignored if the resource type is ECS or Lingjun.
+	// - This configuration does not take effect when the ECS or Lingjun resource type is used.
 	//
-	// - If the resource type is ACS, the specified VPC and ACS configurations are applied.
+	// - When the ACS resource type is used, the user VPC information and ACS configuration take effect.
 	QuotaConfig *QuotaConfig `json:"QuotaConfig,omitempty" xml:"QuotaConfig,omitempty"`
-	// The name of the quota.
+	// The quota name.
 	//
 	// example:
 	//
 	// test-quota
 	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
-	// The IDs of the dedicated resource groups. The following constraints apply:
+	// The list of dedicated resource groups. Constraints:
 	//
-	// - Only a root quota, for which `ParentQuotaId` is empty, can allocate nodes from a resource group.
+	// - Only root quotas (where ParentQuotaId is empty) can allocate machines from resource groups.
 	//
-	// - The VPC configurations of the specified resource groups must be the same.
+	// - The VPC configurations in the specified resource groups must be consistent.
 	ResourceGroupIds []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
-	// The resource type of the quota. Valid values: Lingjun, ECS, and ACS. Default value: ECS.
+	// The quota resource type (Lingjun/ECS/ACS). Default value: ECS.
 	//
 	// example:
 	//

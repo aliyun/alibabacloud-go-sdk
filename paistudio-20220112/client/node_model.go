@@ -59,6 +59,10 @@ type iNode interface {
 	GetMachineGroupId() *string
 	SetMemory(v string) *Node
 	GetMemory() *string
+	SetNodeGPUMemory(v string) *Node
+	GetNodeGPUMemory() *string
+	SetNodeGPUMemoryBytes(v int64) *Node
+	GetNodeGPUMemoryBytes() *int64
 	SetNodeName(v string) *Node
 	GetNodeName() *string
 	SetNodeStatus(v string) *Node
@@ -98,19 +102,32 @@ type iNode interface {
 }
 
 type Node struct {
-	// The accelerator type of the resource node instance, such as CPU or GPU.
+	// The accelerator type of the resource node specifications (CPU/GPU).
 	//
 	// example:
 	//
 	// CPU
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
-	// The number of allocatable CPU cores.
+	// The number of CPU cores that can be allocated to users.
+	//
+	// example:
+	//
+	// 4
 	AllocatableCPU *string `json:"AllocatableCPU,omitempty" xml:"AllocatableCPU,omitempty"`
-	// The amount of allocatable memory in GiB.
+	// The memory size that can be allocated to users.
+	//
+	// example:
+	//
+	// 5
 	AllocatableMemory        *string `json:"AllocatableMemory,omitempty" xml:"AllocatableMemory,omitempty"`
 	AncestorQuotaWorkloadNum *int64  `json:"AncestorQuotaWorkloadNum,omitempty" xml:"AncestorQuotaWorkloadNum,omitempty"`
-	AvailabilityZone         *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
-	// The list of quotas that are bound to the node.
+	// The zone.
+	//
+	// example:
+	//
+	// C
+	AvailabilityZone *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
+	// The list of bound quotas.
 	BoundQuotas []*QuotaIdName `json:"BoundQuotas,omitempty" xml:"BoundQuotas,omitempty" type:"Repeated"`
 	// The number of CPU cores.
 	//
@@ -118,7 +135,7 @@ type Node struct {
 	//
 	// 4
 	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	// The ID of the user who created the resource node.
+	// The creator of the resource node.
 	//
 	// example:
 	//
@@ -133,7 +150,11 @@ type Node struct {
 	//
 	// 0
 	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
-	// The GPU memory size in GiB.
+	// The GPU memory.
+	//
+	// example:
+	//
+	// 32
 	GPUMemory *string `json:"GPUMemory,omitempty" xml:"GPUMemory,omitempty"`
 	// The GPU model.
 	//
@@ -143,27 +164,33 @@ type Node struct {
 	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
 	// Deprecated
 	//
-	// The time when the resource node was created.
+	// The creation time of the resource node.
 	//
 	// example:
 	//
 	// 2024-07-10T11:49:47Z
-	GmtCreateTime  *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The creation time of the resource node.
 	GmtCreatedTime *string `json:"GmtCreatedTime,omitempty" xml:"GmtCreatedTime,omitempty"`
-	// The time when the resource node expires.
+	// The expiration time of the resource node.
 	//
 	// example:
 	//
 	// 2025-06-22T00:00:00Z
 	GmtExpiredTime *string `json:"GmtExpiredTime,omitempty" xml:"GmtExpiredTime,omitempty"`
-	// The time when the resource node was last modified.
+	// The update time of the resource node.
 	//
 	// example:
 	//
 	// 2024-07-10T11:49:47Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	HyperZone       *string `json:"HyperZone,omitempty" xml:"HyperZone,omitempty"`
-	// Indicates whether the node is bound to a quota.
+	// The high-speed interconnect zone.
+	//
+	// example:
+	//
+	// C3
+	HyperZone *string `json:"HyperZone,omitempty" xml:"HyperZone,omitempty"`
+	// Indicates whether the resource node is bound to a quota.
 	//
 	// example:
 	//
@@ -181,7 +208,7 @@ type Node struct {
 	//
 	// 0
 	LimitGPU *string `json:"LimitGPU,omitempty" xml:"LimitGPU,omitempty"`
-	// The maximum memory size in GiB.
+	// The maximum memory size.
 	//
 	// example:
 	//
@@ -193,12 +220,24 @@ type Node struct {
 	//
 	// mg1234456
 	MachineGroupId *string `json:"MachineGroupId,omitempty" xml:"MachineGroupId,omitempty"`
-	// The memory size in GiB.
+	// The memory size.
 	//
 	// example:
 	//
 	// 8
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The GPU memory of the node.
+	//
+	// example:
+	//
+	// 640G
+	NodeGPUMemory *string `json:"NodeGPUMemory,omitempty" xml:"NodeGPUMemory,omitempty"`
+	// The GPU memory of the node in bytes.
+	//
+	// example:
+	//
+	// 687194767360
+	NodeGPUMemoryBytes *int64 `json:"NodeGPUMemoryBytes,omitempty" xml:"NodeGPUMemoryBytes,omitempty"`
 	// The name of the resource node.
 	//
 	// example:
@@ -211,7 +250,7 @@ type Node struct {
 	//
 	// Ready
 	NodeStatus *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
-	// The instance type of the resource node.
+	// The node specifications type of the resource node.
 	//
 	// example:
 	//
@@ -253,7 +292,7 @@ type Node struct {
 	//
 	// 0
 	RequestGPU *string `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
-	// The requested memory size in GiB.
+	// The requested memory size.
 	//
 	// example:
 	//
@@ -270,12 +309,21 @@ type Node struct {
 	// example:
 	//
 	// test
-	ResourceGroupName    *string   `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
-	SelfQuotaWorkloadNum *int64    `json:"SelfQuotaWorkloadNum,omitempty" xml:"SelfQuotaWorkloadNum,omitempty"`
-	SubNodes             []*string `json:"SubNodes,omitempty" xml:"SubNodes,omitempty" type:"Repeated"`
-	// The number of CPU cores that are reserved for the system.
+	ResourceGroupName    *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	SelfQuotaWorkloadNum *int64  `json:"SelfQuotaWorkloadNum,omitempty" xml:"SelfQuotaWorkloadNum,omitempty"`
+	// The names of the child nodes.
+	SubNodes []*string `json:"SubNodes,omitempty" xml:"SubNodes,omitempty" type:"Repeated"`
+	// The number of system-reserved CPU cores.
+	//
+	// example:
+	//
+	// 0
 	SystemReservedCPU *string `json:"SystemReservedCPU,omitempty" xml:"SystemReservedCPU,omitempty"`
-	// The amount of memory that is reserved for the system in GiB.
+	// The system-reserved memory size.
+	//
+	// example:
+	//
+	// 3
 	SystemReservedMemory *string `json:"SystemReservedMemory,omitempty" xml:"SystemReservedMemory,omitempty"`
 	// The user information.
 	Users []*UserInfo `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
@@ -393,6 +441,14 @@ func (s *Node) GetMachineGroupId() *string {
 
 func (s *Node) GetMemory() *string {
 	return s.Memory
+}
+
+func (s *Node) GetNodeGPUMemory() *string {
+	return s.NodeGPUMemory
+}
+
+func (s *Node) GetNodeGPUMemoryBytes() *int64 {
+	return s.NodeGPUMemoryBytes
 }
 
 func (s *Node) GetNodeName() *string {
@@ -589,6 +645,16 @@ func (s *Node) SetMachineGroupId(v string) *Node {
 
 func (s *Node) SetMemory(v string) *Node {
 	s.Memory = &v
+	return s
+}
+
+func (s *Node) SetNodeGPUMemory(v string) *Node {
+	s.NodeGPUMemory = &v
+	return s
+}
+
+func (s *Node) SetNodeGPUMemoryBytes(v int64) *Node {
+	s.NodeGPUMemoryBytes = &v
 	return s
 }
 

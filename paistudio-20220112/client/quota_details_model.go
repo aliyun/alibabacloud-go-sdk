@@ -36,27 +36,31 @@ type iQuotaDetails interface {
 }
 
 type QuotaDetails struct {
-	// Total MinQuota amount actually assigned
+	// The total MinQuota actually allocated. For example, if the user configured 10 nodes but only 8 nodes are actually bound, this value returns the total resources of the 8 nodes.
 	ActualMinQuota *ResourceAmount `json:"ActualMinQuota,omitempty" xml:"ActualMinQuota,omitempty"`
-	// Quota amount assignable by the User
+	// The user-allocatable quota amount. For general computing resources, each node has system-reserved resources. This value represents the quota resources that user workloads can occupy.
+	//
+	// ActualMin = AllocatableQuota + SystemReservedQuota.
 	AllocatableQuota *ResourceAmount `json:"AllocatableQuota,omitempty" xml:"AllocatableQuota,omitempty"`
-	// Total Quota usage information
+	// The total quota usage information, which is the total resources occupied by workloads after scheduling to nodes.
 	AllocatedQuota *ResourceAmount `json:"AllocatedQuota,omitempty" xml:"AllocatedQuota,omitempty"`
-	// Quota usage information of ancestors
+	// The ancestor quota usage information, which is the total resources of workloads submitted using ancestor quotas after they are scheduled to nodes.
 	AncestorsAllocatedQuota *ResourceAmount `json:"AncestorsAllocatedQuota,omitempty" xml:"AncestorsAllocatedQuota,omitempty"`
-	// Quota usage information of descendants
+	// The descendant quota usage information, which is the total resources of workloads submitted using descendant quotas after they are scheduled to nodes.
 	DescendantsAllocatedQuota *ResourceAmount `json:"DescendantsAllocatedQuota,omitempty" xml:"DescendantsAllocatedQuota,omitempty"`
-	// Total MinQuota amount requested by the User
-	DesiredMinQuota *ResourceAmount      `json:"DesiredMinQuota,omitempty" xml:"DesiredMinQuota,omitempty"`
-	NodeStatistics  *QuotaNodeStatistics `json:"NodeStatistics,omitempty" xml:"NodeStatistics,omitempty"`
-	// Quota request amount
+	// The total MinQuota desired by the user.
+	DesiredMinQuota *ResourceAmount `json:"DesiredMinQuota,omitempty" xml:"DesiredMinQuota,omitempty"`
+	// The statistics information of nodes within the quota.
+	NodeStatistics *QuotaNodeStatistics `json:"NodeStatistics,omitempty" xml:"NodeStatistics,omitempty"`
+	// The quota requested amount, which is the total resources occupied by workloads after they are dequeued.
 	RequestedQuota *ResourceAmount `json:"RequestedQuota,omitempty" xml:"RequestedQuota,omitempty"`
-	// Quota usage information at the current level
+	// The current-level quota usage information, which is the total resources of workloads submitted using this quota after they are scheduled to nodes.
 	SelfAllocatedQuota *ResourceAmount `json:"SelfAllocatedQuota,omitempty" xml:"SelfAllocatedQuota,omitempty"`
+	// The amount submitted to this quota, which is the total resources of workloads submitted to this quota, including workloads that are queued.
 	SelfSubmittedQuota *ResourceAmount `json:"SelfSubmittedQuota,omitempty" xml:"SelfSubmittedQuota,omitempty"`
-	// System-reserved Quota amount
+	// The system-reserved quota amount.
 	SystemReservedQuota *ResourceAmount `json:"SystemReservedQuota,omitempty" xml:"SystemReservedQuota,omitempty"`
-	// Quota usage amount
+	// The quota used amount. This field is deprecating. Use AllocatedQuota instead.
 	UsedQuota *ResourceAmount `json:"UsedQuota,omitempty" xml:"UsedQuota,omitempty"`
 }
 

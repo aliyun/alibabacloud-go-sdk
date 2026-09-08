@@ -38,7 +38,7 @@ type ResourceGroup struct {
 	//
 	// example:
 	//
-	// 161228528250****
+	// 1612285282502324
 	CreatorID *string `json:"CreatorID,omitempty" xml:"CreatorID,omitempty"`
 	// The time the PAI resource group was created.
 	//
@@ -68,7 +68,7 @@ type ResourceGroup struct {
 	//
 	// example:
 	//
-	// rg17tmvwiokh****
+	// rg17tmvwiokhzaxg
 	ResourceGroupID *string `json:"ResourceGroupID,omitempty" xml:"ResourceGroupID,omitempty"`
 	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`

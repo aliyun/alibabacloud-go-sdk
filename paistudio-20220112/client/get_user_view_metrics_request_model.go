@@ -52,7 +52,7 @@ type GetUserViewMetricsRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sorting criterion.
+	// The sorting field.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type GetUserViewMetricsRequest struct {
 	//
 	// - s: seconds.
 	//
-	// If no unit is specified, the default unit s (seconds) is used.
+	// If no unit is specified, the default unit is s (seconds).
 	//
 	// example:
 	//

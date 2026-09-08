@@ -16,13 +16,13 @@ type iGetQuotaRequest interface {
 }
 
 type GetQuotaRequest struct {
-	// Specifies whether to return detailed information.
+	// Specifies whether to display detailed information.
 	//
 	// example:
 	//
 	// true
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
-	// Specifies whether to return the metadata of nodes that are attached to the resource quota.
+	// Specifies whether to return the node metadata bound to the quota.
 	WithNodeMeta *bool `json:"WithNodeMeta,omitempty" xml:"WithNodeMeta,omitempty"`
 }
 

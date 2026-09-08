@@ -48,7 +48,7 @@ type iListQuotasRequest interface {
 }
 
 type ListQuotasRequest struct {
-	// Filters the results by cluster type.
+	// The cluster type.
 	//
 	// example:
 	//
@@ -56,67 +56,67 @@ type ListQuotasRequest struct {
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	GPUType     *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
 	HasResource *string `json:"HasResource,omitempty" xml:"HasResource,omitempty"`
-	// Filters the results by labels. Specify labels as key=value pairs, separated by commas (,).
+	// Filters by label key and value. Separate multiple labels with commas (,).
 	//
 	// example:
 	//
 	// official=true,gpu=false
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	// The layout mode. Valid values: Tree and List.
+	// The display mode. Valid values: tree or list.
 	//
 	// example:
 	//
 	// Tree
 	LayoutMode *string `json:"LayoutMode,omitempty" xml:"LayoutMode,omitempty"`
-	// The sort order. Valid values are desc and asc.
+	// The sort order. Valid values: desc or asc.
 	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number of the results to return. The minimum value is 1.
+	// The page number to query. Minimum value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. The minimum value is 1.
+	// The number of entries per page. Minimum value: 1.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Filters the results by parent quota ID:
+	// Filters by ParentQuotaId:
 	//
-	// - If this parameter is not specified, all quotas within the tenant are returned, including both root and child quotas.
+	// - Not specified: lists all quotas under the tenant, including root quotas and child quotas.
 	//
-	// - If this parameter is set to an empty string, all root quotas are returned.
+	// - Empty string: lists all root quotas.
 	//
-	// - If a specific parent quota ID is provided, all child quotas of that parent are returned.
+	// - Non-empty string: lists all child quotas of the specified ParentQuotaId.
 	//
 	// example:
 	//
 	// quotajradxh43rgb
 	ParentQuotaId *string `json:"ParentQuotaId,omitempty" xml:"ParentQuotaId,omitempty"`
-	// A comma-separated list of up to 100 quota IDs to filter the results. Only exact matching is supported.
+	// Comma-separated QuotaIds for filtering. Only exact match is supported. A maximum of 100 IDs can be specified at a time.
 	//
 	// example:
 	//
 	// quota1ci8g793pgm,quotajradxh43rgb
 	QuotaIds *string `json:"QuotaIds,omitempty" xml:"QuotaIds,omitempty"`
-	// Filters the results by quota name. Fuzzy matching is supported.
+	// Filters by QuotaName. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// quotajradxh43rgb
 	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
-	// The resource type. Valid values are Lingjun, ECS, and ACS. The default value is ECS.
+	// The resource type of the quota (Lingjun/ECS/ACS). Default value: ECS.
 	//
 	// example:
 	//
 	// ECS
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The field to sort the results by. Valid values:
+	// The field by which to sort the results. Valid values:
 	//
 	// - QuotaName
 	//
@@ -136,29 +136,29 @@ type ListQuotasRequest struct {
 	//
 	// status
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// A comma-separated list of quota statuses to filter the results. Only exact matching is supported.
+	// Comma-separated quota statuses for filtering. Only exact match is supported.
 	//
 	// example:
 	//
 	// Creating
 	Statuses *string `json:"Statuses,omitempty" xml:"Statuses,omitempty"`
-	// Specifies whether to return detailed information. Valid values:
+	// Specifies whether to display details. Valid values:
 	//
-	// - true: Returns detailed information.
+	// - true: Displays details.
 	//
-	// - false: Does not return detailed information.
+	// - false: Does not display details.
 	//
 	// example:
 	//
 	// true
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
-	// Filters the results by version.
+	// Filters by version information.
 	//
 	// example:
 	//
 	// 1.0
 	Versions *string `json:"Versions,omitempty" xml:"Versions,omitempty"`
-	// A comma-separated list of up to 10 workspace IDs to filter the results. Only exact matching is supported.
+	// Comma-separated WorkspaceIds for filtering. Only exact match is supported. A maximum of 10 IDs can be specified at a time.
 	//
 	// example:
 	//

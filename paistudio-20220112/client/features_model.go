@@ -14,6 +14,7 @@ type iFeatures interface {
 }
 
 type Features struct {
+	// The Quota feature.
 	Quota *FeaturesQuota `json:"Quota,omitempty" xml:"Quota,omitempty" type:"Struct"`
 }
 
@@ -44,6 +45,8 @@ func (s *Features) Validate() error {
 }
 
 type FeaturesQuota struct {
+	// Indicates whether the feature is started.
+	//
 	// example:
 	//
 	// true

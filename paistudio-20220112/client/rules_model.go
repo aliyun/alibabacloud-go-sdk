@@ -14,6 +14,7 @@ type iRules interface {
 }
 
 type Rules struct {
+	// The node scheduling rule configuration.
 	Scheduling *SchedulingRule `json:"Scheduling,omitempty" xml:"Scheduling,omitempty"`
 }
 

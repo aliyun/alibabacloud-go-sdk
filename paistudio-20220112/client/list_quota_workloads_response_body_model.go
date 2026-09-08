@@ -24,13 +24,13 @@ type ListQuotaWorkloadsResponseBody struct {
 	//
 	// 42F23B58-3684-5443-848A-8DA81FF99712
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of workloads that match the filter criteria.
+	// The number of instances that match the filter conditions.
 	//
 	// example:
 	//
 	// 23
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// A list of workloads.
+	// The list of workload information.
 	Workloads []*QueueInfo `json:"Workloads,omitempty" xml:"Workloads,omitempty" type:"Repeated"`
 }
 

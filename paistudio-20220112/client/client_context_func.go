@@ -201,7 +201,7 @@ func (client *Client) CreateInstanceWebTerminalWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Call the `CreateQuota` operation to create a quota.
+// Creates a resource quota by calling the CreateQuota operation.
 //
 // @param request - CreateQuotaRequest
 //
@@ -595,7 +595,7 @@ func (client *Client) DeleteMachineGroupWithContext(ctx context.Context, Machine
 
 // Summary:
 //
-// You can delete a resource quota by using DeleteQuota.
+// Deletes a resource quota.
 //
 // @param headers - map
 //
@@ -663,7 +663,7 @@ func (client *Client) DeleteResourceGroupWithContext(ctx context.Context, Resour
 //
 // Summary:
 //
-// Deletes the specified machine group from a resource group.
+// Deletes a machine group.
 //
 // @param headers - map
 //
@@ -879,7 +879,7 @@ func (client *Client) GetMachineGroupWithContext(ctx context.Context, MachineGro
 //
 // Summary:
 //
-// You can call the GetNodeMetrics operation to obtain the metric information of resource group nodes.
+// Retrieves metric information for resource group nodes.
 //
 // @param request - GetNodeMetricsRequest
 //
@@ -942,7 +942,7 @@ func (client *Client) GetNodeMetricsWithContext(ctx context.Context, ResourceGro
 
 // Summary:
 //
-// Call GetQuota to retrieve the details of a resource quota. This helps you monitor current resource usage for effective resource management and planning.
+// Retrieves the details of a resource quota to help you understand the current resource usage and facilitate resource management and planning.
 //
 // @param request - GetQuotaRequest
 //
@@ -1105,7 +1105,7 @@ func (client *Client) GetResourceGroupMachineGroupWithContext(ctx context.Contex
 //
 // Summary:
 //
-// You can call the GetResourceGroupRequest operation to obtain the number of resources that have been allocated to a resource group.
+// Retrieves the number of resources that have been assigned to a resource group.
 //
 // @param request - GetResourceGroupRequestRequest
 //
@@ -1637,9 +1637,9 @@ func (client *Client) ListAlgorithmsWithContext(ctx context.Context, request *Li
 //
 // - This feature is currently available only on the Lingjun AI Computing Service platform and is accessible to customers through a whitelist.
 //
-// - `NodeName` and `ResourceGroupId` are required parameters that represent the node name and the resource group ID to which the node belongs.
+// - NodeName and ResourceGroupId are required parameters that represent the node name and the ID of the resource group to which the node belongs.
 //
-// - Optional parameters include `OversoldTypes` and `GPUIndexes`, which are used to further filter or specify conditions.
+// - Optional parameters include OversoldTypes and GPUIndexes, which are used to further filter or specify conditions.
 //
 // @param request - ListNodePodsRequest
 //
@@ -1769,11 +1769,11 @@ func (client *Client) ListNodeTypesWithContext(ctx context.Context, request *Lis
 
 // Summary:
 //
-// Returns a list of resource nodes.
+// Retrieves a list of resource nodes.
 //
 // Description:
 //
-// ListNodes retrieves resource nodes that match specified filter conditions.
+// You can call ListNodes to retrieve resource nodes that match specified filter conditions.
 //
 // @param tmpReq - ListNodesRequest
 //
@@ -1950,11 +1950,11 @@ func (client *Client) ListNodesWithContext(ctx context.Context, tmpReq *ListNode
 
 // Summary:
 //
-// Lists users within a quota and their resource usage.
+// Retrieves the list of users under the current resource quota and their resource usage.
 //
 // Description:
 //
-// Retrieves the resource usage of users in a specified quota.
+// Retrieves the resource usage of users for a specified QuotaId.
 //
 // @param request - ListQuotaActiveUserUsagesRequest
 //
@@ -2033,7 +2033,7 @@ func (client *Client) ListQuotaActiveUserUsagesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Retrieves a list of workloads associated with a specific quota.
+// Retrieves the list of node information on a resource quota.
 //
 // @param request - ListQuotaWorkloadsRequest
 //
@@ -2172,7 +2172,7 @@ func (client *Client) ListQuotaWorkloadsWithContext(ctx context.Context, QuotaId
 
 // Summary:
 //
-// Lists quotas.
+// Retrieves a list of resource quotas.
 //
 // @param request - ListQuotasRequest
 //
@@ -3019,11 +3019,11 @@ func (client *Client) ListTrainingJobsWithContext(ctx context.Context, tmpReq *L
 
 // Summary:
 //
-// Use OperateNode to manage nodes.
+// Operates on a specified node.
 //
 // Description:
 //
-// Use OperateNode to manage a specified resource node. Supported operations include disabling or enabling scheduling.
+// You can call OperateNode to operate on a specified resource node, including operations such as disabling scheduling and enabling scheduling.
 //
 // @param request - OperateNodeRequest
 //
