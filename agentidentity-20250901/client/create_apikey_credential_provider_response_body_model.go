@@ -60,6 +60,7 @@ type CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider struct {
 	CreateTime                   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CredentialProviderArn        *string `json:"CredentialProviderArn,omitempty" xml:"CredentialProviderArn,omitempty"`
 	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SourcePlatform               *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
 	TokenVaultName               *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 }
 
@@ -87,6 +88,10 @@ func (s *CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider) Get
 	return s.Description
 }
 
+func (s *CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider) GetSourcePlatform() *string {
+	return s.SourcePlatform
+}
+
 func (s *CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider) GetTokenVaultName() *string {
 	return s.TokenVaultName
 }
@@ -108,6 +113,11 @@ func (s *CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider) Set
 
 func (s *CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider) SetDescription(v string) *CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider) SetSourcePlatform(v string) *CreateAPIKeyCredentialProviderResponseBodyAPIKeyCredentialProvider {
+	s.SourcePlatform = &v
 	return s
 }
 

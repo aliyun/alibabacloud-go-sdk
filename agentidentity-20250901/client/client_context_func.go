@@ -839,11 +839,19 @@ func (client *Client) CreateWorkloadIdentityWithContext(ctx context.Context, tmp
 	}
 	request := &CreateWorkloadIdentityShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AllowedConsentCallbackURLs) {
+		request.AllowedConsentCallbackURLsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AllowedConsentCallbackURLs, dara.String("AllowedConsentCallbackURLs"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.AllowedResourceOAuth2ReturnURLs) {
 		request.AllowedResourceOAuth2ReturnURLsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AllowedResourceOAuth2ReturnURLs, dara.String("AllowedResourceOAuth2ReturnURLs"), dara.String("json"))
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AllowedConsentCallbackURLsShrink) {
+		body["AllowedConsentCallbackURLs"] = request.AllowedConsentCallbackURLsShrink
+	}
+
 	if !dara.IsNil(request.AllowedResourceOAuth2ReturnURLsShrink) {
 		body["AllowedResourceOAuth2ReturnURLs"] = request.AllowedResourceOAuth2ReturnURLsShrink
 	}
@@ -3661,11 +3669,19 @@ func (client *Client) UpdateLoginPreferenceWithContext(ctx context.Context, tmpR
 	}
 	request := &UpdateLoginPreferenceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AllowedPostLogoutRedirectUris) {
+		request.AllowedPostLogoutRedirectUrisShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AllowedPostLogoutRedirectUris, dara.String("AllowedPostLogoutRedirectUris"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.LoginPreference) {
 		request.LoginPreferenceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LoginPreference, dara.String("LoginPreference"), dara.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.AllowedPostLogoutRedirectUrisShrink) {
+		query["AllowedPostLogoutRedirectUris"] = request.AllowedPostLogoutRedirectUrisShrink
+	}
+
 	if !dara.IsNil(request.LoginPreferenceShrink) {
 		query["LoginPreference"] = request.LoginPreferenceShrink
 	}
@@ -4187,11 +4203,19 @@ func (client *Client) UpdateWorkloadIdentityWithContext(ctx context.Context, tmp
 	}
 	request := &UpdateWorkloadIdentityShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.AllowedConsentCallbackURLs) {
+		request.AllowedConsentCallbackURLsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AllowedConsentCallbackURLs, dara.String("AllowedConsentCallbackURLs"), dara.String("json"))
+	}
+
 	if !dara.IsNil(tmpReq.AllowedResourceOAuth2ReturnURLs) {
 		request.AllowedResourceOAuth2ReturnURLsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AllowedResourceOAuth2ReturnURLs, dara.String("AllowedResourceOAuth2ReturnURLs"), dara.String("json"))
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.AllowedConsentCallbackURLsShrink) {
+		body["AllowedConsentCallbackURLs"] = request.AllowedConsentCallbackURLsShrink
+	}
+
 	if !dara.IsNil(request.AllowedResourceOAuth2ReturnURLsShrink) {
 		body["AllowedResourceOAuth2ReturnURLs"] = request.AllowedResourceOAuth2ReturnURLsShrink
 	}

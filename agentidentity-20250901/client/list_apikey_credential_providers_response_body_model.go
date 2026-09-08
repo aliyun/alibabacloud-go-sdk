@@ -100,6 +100,7 @@ type ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders struct {
 	CreateTime                   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CredentialProviderArn        *string `json:"CredentialProviderArn,omitempty" xml:"CredentialProviderArn,omitempty"`
 	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SourcePlatform               *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
 	TokenVaultName               *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
 	UpdateTime                   *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
@@ -128,6 +129,10 @@ func (s *ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders) Get
 	return s.Description
 }
 
+func (s *ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders) GetSourcePlatform() *string {
+	return s.SourcePlatform
+}
+
 func (s *ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders) GetTokenVaultName() *string {
 	return s.TokenVaultName
 }
@@ -153,6 +158,11 @@ func (s *ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders) Set
 
 func (s *ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders) SetDescription(v string) *ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders {
 	s.Description = &v
+	return s
+}
+
+func (s *ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders) SetSourcePlatform(v string) *ListAPIKeyCredentialProvidersResponseBodyAPIKeyCredentialProviders {
+	s.SourcePlatform = &v
 	return s
 }
 

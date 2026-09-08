@@ -9,6 +9,8 @@ type iUpdateLoginPreferenceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAllowedPostLogoutRedirectUris(v []*string) *UpdateLoginPreferenceRequest
+	GetAllowedPostLogoutRedirectUris() []*string
 	SetLoginPreference(v *UpdateLoginPreferenceRequestLoginPreference) *UpdateLoginPreferenceRequest
 	GetLoginPreference() *UpdateLoginPreferenceRequestLoginPreference
 	SetUserPoolName(v string) *UpdateLoginPreferenceRequest
@@ -16,8 +18,9 @@ type iUpdateLoginPreferenceRequest interface {
 }
 
 type UpdateLoginPreferenceRequest struct {
-	LoginPreference *UpdateLoginPreferenceRequestLoginPreference `json:"LoginPreference,omitempty" xml:"LoginPreference,omitempty" type:"Struct"`
-	UserPoolName    *string                                      `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	AllowedPostLogoutRedirectUris []*string                                    `json:"AllowedPostLogoutRedirectUris,omitempty" xml:"AllowedPostLogoutRedirectUris,omitempty" type:"Repeated"`
+	LoginPreference               *UpdateLoginPreferenceRequestLoginPreference `json:"LoginPreference,omitempty" xml:"LoginPreference,omitempty" type:"Struct"`
+	UserPoolName                  *string                                      `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s UpdateLoginPreferenceRequest) String() string {
@@ -28,12 +31,21 @@ func (s UpdateLoginPreferenceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateLoginPreferenceRequest) GetAllowedPostLogoutRedirectUris() []*string {
+	return s.AllowedPostLogoutRedirectUris
+}
+
 func (s *UpdateLoginPreferenceRequest) GetLoginPreference() *UpdateLoginPreferenceRequestLoginPreference {
 	return s.LoginPreference
 }
 
 func (s *UpdateLoginPreferenceRequest) GetUserPoolName() *string {
 	return s.UserPoolName
+}
+
+func (s *UpdateLoginPreferenceRequest) SetAllowedPostLogoutRedirectUris(v []*string) *UpdateLoginPreferenceRequest {
+	s.AllowedPostLogoutRedirectUris = v
+	return s
 }
 
 func (s *UpdateLoginPreferenceRequest) SetLoginPreference(v *UpdateLoginPreferenceRequestLoginPreference) *UpdateLoginPreferenceRequest {

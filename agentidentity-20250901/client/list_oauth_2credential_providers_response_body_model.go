@@ -96,16 +96,33 @@ func (s *ListOAuth2CredentialProvidersResponseBody) Validate() error {
 }
 
 type ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders struct {
-	CallbackURL                  *string               `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
-	CreateTime                   *string               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CredentialProviderArn        *string               `json:"CredentialProviderArn,omitempty" xml:"CredentialProviderArn,omitempty"`
-	CredentialProviderVendor     *string               `json:"CredentialProviderVendor,omitempty" xml:"CredentialProviderVendor,omitempty"`
-	Description                  *string               `json:"Description,omitempty" xml:"Description,omitempty"`
+	CallbackURL              *string `json:"CallbackURL,omitempty" xml:"CallbackURL,omitempty"`
+	CreateTime               *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CredentialProviderArn    *string `json:"CredentialProviderArn,omitempty" xml:"CredentialProviderArn,omitempty"`
+	CredentialProviderVendor *string `json:"CredentialProviderVendor,omitempty" xml:"CredentialProviderVendor,omitempty"`
+	Description              *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// idaas_xxxx
+	IDaaSInstanceId              *string               `json:"IDaaSInstanceId,omitempty" xml:"IDaaSInstanceId,omitempty"`
 	OAuth2CredentialProviderName *string               `json:"OAuth2CredentialProviderName,omitempty" xml:"OAuth2CredentialProviderName,omitempty"`
 	OAuth2ProviderConfig         *OAuth2ProviderConfig `json:"OAuth2ProviderConfig,omitempty" xml:"OAuth2ProviderConfig,omitempty"`
 	OAuthType                    *string               `json:"OAuthType,omitempty" xml:"OAuthType,omitempty"`
-	TokenVaultName               *string               `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
-	UpdateTime                   *string               `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// app_xxxx
+	OutboundApplicationId *string `json:"OutboundApplicationId,omitempty" xml:"OutboundApplicationId,omitempty"`
+	// example:
+	//
+	// agent-xxxxx
+	OutboundAudience *string `json:"OutboundAudience,omitempty" xml:"OutboundAudience,omitempty"`
+	// example:
+	//
+	// client_xxxx
+	OutboundClientId *string `json:"OutboundClientId,omitempty" xml:"OutboundClientId,omitempty"`
+	SourcePlatform   *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
+	TokenVaultName   *string `json:"TokenVaultName,omitempty" xml:"TokenVaultName,omitempty"`
+	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) String() string {
@@ -136,6 +153,10 @@ func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) Get
 	return s.Description
 }
 
+func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) GetIDaaSInstanceId() *string {
+	return s.IDaaSInstanceId
+}
+
 func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) GetOAuth2CredentialProviderName() *string {
 	return s.OAuth2CredentialProviderName
 }
@@ -146,6 +167,22 @@ func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) Get
 
 func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) GetOAuthType() *string {
 	return s.OAuthType
+}
+
+func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) GetOutboundApplicationId() *string {
+	return s.OutboundApplicationId
+}
+
+func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) GetOutboundAudience() *string {
+	return s.OutboundAudience
+}
+
+func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) GetOutboundClientId() *string {
+	return s.OutboundClientId
+}
+
+func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) GetSourcePlatform() *string {
+	return s.SourcePlatform
 }
 
 func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) GetTokenVaultName() *string {
@@ -181,6 +218,11 @@ func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) Set
 	return s
 }
 
+func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) SetIDaaSInstanceId(v string) *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders {
+	s.IDaaSInstanceId = &v
+	return s
+}
+
 func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) SetOAuth2CredentialProviderName(v string) *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders {
 	s.OAuth2CredentialProviderName = &v
 	return s
@@ -193,6 +235,26 @@ func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) Set
 
 func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) SetOAuthType(v string) *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders {
 	s.OAuthType = &v
+	return s
+}
+
+func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) SetOutboundApplicationId(v string) *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders {
+	s.OutboundApplicationId = &v
+	return s
+}
+
+func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) SetOutboundAudience(v string) *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders {
+	s.OutboundAudience = &v
+	return s
+}
+
+func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) SetOutboundClientId(v string) *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders {
+	s.OutboundClientId = &v
+	return s
+}
+
+func (s *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders) SetSourcePlatform(v string) *ListOAuth2CredentialProvidersResponseBodyOAuth2CredentialProviders {
+	s.SourcePlatform = &v
 	return s
 }
 

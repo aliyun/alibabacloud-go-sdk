@@ -9,6 +9,8 @@ type iUpdateWorkloadIdentityShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAllowedConsentCallbackURLsShrink(v string) *UpdateWorkloadIdentityShrinkRequest
+	GetAllowedConsentCallbackURLsShrink() *string
 	SetAllowedResourceOAuth2ReturnURLsShrink(v string) *UpdateWorkloadIdentityShrinkRequest
 	GetAllowedResourceOAuth2ReturnURLsShrink() *string
 	SetDescription(v string) *UpdateWorkloadIdentityShrinkRequest
@@ -24,6 +26,7 @@ type iUpdateWorkloadIdentityShrinkRequest interface {
 }
 
 type UpdateWorkloadIdentityShrinkRequest struct {
+	AllowedConsentCallbackURLsShrink *string `json:"AllowedConsentCallbackURLs,omitempty" xml:"AllowedConsentCallbackURLs,omitempty"`
 	// if can be null:
 	// false
 	AllowedResourceOAuth2ReturnURLsShrink *string `json:"AllowedResourceOAuth2ReturnURLs,omitempty" xml:"AllowedResourceOAuth2ReturnURLs,omitempty"`
@@ -40,6 +43,10 @@ func (s UpdateWorkloadIdentityShrinkRequest) String() string {
 
 func (s UpdateWorkloadIdentityShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateWorkloadIdentityShrinkRequest) GetAllowedConsentCallbackURLsShrink() *string {
+	return s.AllowedConsentCallbackURLsShrink
 }
 
 func (s *UpdateWorkloadIdentityShrinkRequest) GetAllowedResourceOAuth2ReturnURLsShrink() *string {
@@ -64,6 +71,11 @@ func (s *UpdateWorkloadIdentityShrinkRequest) GetSessionBindingEnabled() *string
 
 func (s *UpdateWorkloadIdentityShrinkRequest) GetWorkloadIdentityName() *string {
 	return s.WorkloadIdentityName
+}
+
+func (s *UpdateWorkloadIdentityShrinkRequest) SetAllowedConsentCallbackURLsShrink(v string) *UpdateWorkloadIdentityShrinkRequest {
+	s.AllowedConsentCallbackURLsShrink = &v
+	return s
 }
 
 func (s *UpdateWorkloadIdentityShrinkRequest) SetAllowedResourceOAuth2ReturnURLsShrink(v string) *UpdateWorkloadIdentityShrinkRequest {

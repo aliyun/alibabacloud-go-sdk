@@ -56,12 +56,14 @@ func (s *GetUserPoolResponseBody) Validate() error {
 }
 
 type GetUserPoolResponseBodyUserPool struct {
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
-	UpdateTime     *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserPoolId     *string `json:"UserPoolId,omitempty" xml:"UserPoolId,omitempty"`
-	UserPoolName   *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	OIDCDiscoveryURL *string `json:"OIDCDiscoveryURL,omitempty" xml:"OIDCDiscoveryURL,omitempty"`
+	SigninBaseURL    *string `json:"SigninBaseURL,omitempty" xml:"SigninBaseURL,omitempty"`
+	SourcePlatform   *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
+	UpdateTime       *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserPoolId       *string `json:"UserPoolId,omitempty" xml:"UserPoolId,omitempty"`
+	UserPoolName     *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s GetUserPoolResponseBodyUserPool) String() string {
@@ -78,6 +80,14 @@ func (s *GetUserPoolResponseBodyUserPool) GetCreateTime() *string {
 
 func (s *GetUserPoolResponseBodyUserPool) GetDescription() *string {
 	return s.Description
+}
+
+func (s *GetUserPoolResponseBodyUserPool) GetOIDCDiscoveryURL() *string {
+	return s.OIDCDiscoveryURL
+}
+
+func (s *GetUserPoolResponseBodyUserPool) GetSigninBaseURL() *string {
+	return s.SigninBaseURL
 }
 
 func (s *GetUserPoolResponseBodyUserPool) GetSourcePlatform() *string {
@@ -103,6 +113,16 @@ func (s *GetUserPoolResponseBodyUserPool) SetCreateTime(v string) *GetUserPoolRe
 
 func (s *GetUserPoolResponseBodyUserPool) SetDescription(v string) *GetUserPoolResponseBodyUserPool {
 	s.Description = &v
+	return s
+}
+
+func (s *GetUserPoolResponseBodyUserPool) SetOIDCDiscoveryURL(v string) *GetUserPoolResponseBodyUserPool {
+	s.OIDCDiscoveryURL = &v
+	return s
+}
+
+func (s *GetUserPoolResponseBodyUserPool) SetSigninBaseURL(v string) *GetUserPoolResponseBodyUserPool {
+	s.SigninBaseURL = &v
 	return s
 }
 

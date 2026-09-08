@@ -56,6 +56,7 @@ func (s *GetWorkloadIdentityResponseBody) Validate() error {
 }
 
 type GetWorkloadIdentityResponseBodyWorkloadIdentity struct {
+	AllowedConsentCallbackURLs      []*string `json:"AllowedConsentCallbackURLs,omitempty" xml:"AllowedConsentCallbackURLs,omitempty" type:"Repeated"`
 	AllowedResourceOAuth2ReturnURLs []*string `json:"AllowedResourceOAuth2ReturnURLs,omitempty" xml:"AllowedResourceOAuth2ReturnURLs,omitempty" type:"Repeated"`
 	CreateTime                      *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description                     *string   `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -75,6 +76,10 @@ func (s GetWorkloadIdentityResponseBodyWorkloadIdentity) String() string {
 
 func (s GetWorkloadIdentityResponseBodyWorkloadIdentity) GoString() string {
 	return s.String()
+}
+
+func (s *GetWorkloadIdentityResponseBodyWorkloadIdentity) GetAllowedConsentCallbackURLs() []*string {
+	return s.AllowedConsentCallbackURLs
 }
 
 func (s *GetWorkloadIdentityResponseBodyWorkloadIdentity) GetAllowedResourceOAuth2ReturnURLs() []*string {
@@ -119,6 +124,11 @@ func (s *GetWorkloadIdentityResponseBodyWorkloadIdentity) GetWorkloadIdentityArn
 
 func (s *GetWorkloadIdentityResponseBodyWorkloadIdentity) GetWorkloadIdentityName() *string {
 	return s.WorkloadIdentityName
+}
+
+func (s *GetWorkloadIdentityResponseBodyWorkloadIdentity) SetAllowedConsentCallbackURLs(v []*string) *GetWorkloadIdentityResponseBodyWorkloadIdentity {
+	s.AllowedConsentCallbackURLs = v
+	return s
 }
 
 func (s *GetWorkloadIdentityResponseBodyWorkloadIdentity) SetAllowedResourceOAuth2ReturnURLs(v []*string) *GetWorkloadIdentityResponseBodyWorkloadIdentity {

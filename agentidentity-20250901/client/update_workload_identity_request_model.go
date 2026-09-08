@@ -9,6 +9,8 @@ type iUpdateWorkloadIdentityRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAllowedConsentCallbackURLs(v []*string) *UpdateWorkloadIdentityRequest
+	GetAllowedConsentCallbackURLs() []*string
 	SetAllowedResourceOAuth2ReturnURLs(v []*string) *UpdateWorkloadIdentityRequest
 	GetAllowedResourceOAuth2ReturnURLs() []*string
 	SetDescription(v string) *UpdateWorkloadIdentityRequest
@@ -24,6 +26,7 @@ type iUpdateWorkloadIdentityRequest interface {
 }
 
 type UpdateWorkloadIdentityRequest struct {
+	AllowedConsentCallbackURLs []*string `json:"AllowedConsentCallbackURLs,omitempty" xml:"AllowedConsentCallbackURLs,omitempty" type:"Repeated"`
 	// if can be null:
 	// false
 	AllowedResourceOAuth2ReturnURLs []*string `json:"AllowedResourceOAuth2ReturnURLs,omitempty" xml:"AllowedResourceOAuth2ReturnURLs,omitempty" type:"Repeated"`
@@ -40,6 +43,10 @@ func (s UpdateWorkloadIdentityRequest) String() string {
 
 func (s UpdateWorkloadIdentityRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateWorkloadIdentityRequest) GetAllowedConsentCallbackURLs() []*string {
+	return s.AllowedConsentCallbackURLs
 }
 
 func (s *UpdateWorkloadIdentityRequest) GetAllowedResourceOAuth2ReturnURLs() []*string {
@@ -64,6 +71,11 @@ func (s *UpdateWorkloadIdentityRequest) GetSessionBindingEnabled() *string {
 
 func (s *UpdateWorkloadIdentityRequest) GetWorkloadIdentityName() *string {
 	return s.WorkloadIdentityName
+}
+
+func (s *UpdateWorkloadIdentityRequest) SetAllowedConsentCallbackURLs(v []*string) *UpdateWorkloadIdentityRequest {
+	s.AllowedConsentCallbackURLs = v
+	return s
 }
 
 func (s *UpdateWorkloadIdentityRequest) SetAllowedResourceOAuth2ReturnURLs(v []*string) *UpdateWorkloadIdentityRequest {

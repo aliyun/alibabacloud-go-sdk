@@ -9,6 +9,8 @@ type iUpdateLoginPreferenceShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAllowedPostLogoutRedirectUrisShrink(v string) *UpdateLoginPreferenceShrinkRequest
+	GetAllowedPostLogoutRedirectUrisShrink() *string
 	SetLoginPreferenceShrink(v string) *UpdateLoginPreferenceShrinkRequest
 	GetLoginPreferenceShrink() *string
 	SetUserPoolName(v string) *UpdateLoginPreferenceShrinkRequest
@@ -16,8 +18,9 @@ type iUpdateLoginPreferenceShrinkRequest interface {
 }
 
 type UpdateLoginPreferenceShrinkRequest struct {
-	LoginPreferenceShrink *string `json:"LoginPreference,omitempty" xml:"LoginPreference,omitempty"`
-	UserPoolName          *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
+	AllowedPostLogoutRedirectUrisShrink *string `json:"AllowedPostLogoutRedirectUris,omitempty" xml:"AllowedPostLogoutRedirectUris,omitempty"`
+	LoginPreferenceShrink               *string `json:"LoginPreference,omitempty" xml:"LoginPreference,omitempty"`
+	UserPoolName                        *string `json:"UserPoolName,omitempty" xml:"UserPoolName,omitempty"`
 }
 
 func (s UpdateLoginPreferenceShrinkRequest) String() string {
@@ -28,12 +31,21 @@ func (s UpdateLoginPreferenceShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateLoginPreferenceShrinkRequest) GetAllowedPostLogoutRedirectUrisShrink() *string {
+	return s.AllowedPostLogoutRedirectUrisShrink
+}
+
 func (s *UpdateLoginPreferenceShrinkRequest) GetLoginPreferenceShrink() *string {
 	return s.LoginPreferenceShrink
 }
 
 func (s *UpdateLoginPreferenceShrinkRequest) GetUserPoolName() *string {
 	return s.UserPoolName
+}
+
+func (s *UpdateLoginPreferenceShrinkRequest) SetAllowedPostLogoutRedirectUrisShrink(v string) *UpdateLoginPreferenceShrinkRequest {
+	s.AllowedPostLogoutRedirectUrisShrink = &v
+	return s
 }
 
 func (s *UpdateLoginPreferenceShrinkRequest) SetLoginPreferenceShrink(v string) *UpdateLoginPreferenceShrinkRequest {

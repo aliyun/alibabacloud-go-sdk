@@ -9,6 +9,8 @@ type iCreateWorkloadIdentityRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAllowedConsentCallbackURLs(v []*string) *CreateWorkloadIdentityRequest
+	GetAllowedConsentCallbackURLs() []*string
 	SetAllowedResourceOAuth2ReturnURLs(v []*string) *CreateWorkloadIdentityRequest
 	GetAllowedResourceOAuth2ReturnURLs() []*string
 	SetCreateRAMRole(v bool) *CreateWorkloadIdentityRequest
@@ -30,6 +32,7 @@ type iCreateWorkloadIdentityRequest interface {
 }
 
 type CreateWorkloadIdentityRequest struct {
+	AllowedConsentCallbackURLs      []*string `json:"AllowedConsentCallbackURLs,omitempty" xml:"AllowedConsentCallbackURLs,omitempty" type:"Repeated"`
 	AllowedResourceOAuth2ReturnURLs []*string `json:"AllowedResourceOAuth2ReturnURLs,omitempty" xml:"AllowedResourceOAuth2ReturnURLs,omitempty" type:"Repeated"`
 	CreateRAMRole                   *bool     `json:"CreateRAMRole,omitempty" xml:"CreateRAMRole,omitempty"`
 	Description                     *string   `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -47,6 +50,10 @@ func (s CreateWorkloadIdentityRequest) String() string {
 
 func (s CreateWorkloadIdentityRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateWorkloadIdentityRequest) GetAllowedConsentCallbackURLs() []*string {
+	return s.AllowedConsentCallbackURLs
 }
 
 func (s *CreateWorkloadIdentityRequest) GetAllowedResourceOAuth2ReturnURLs() []*string {
@@ -83,6 +90,11 @@ func (s *CreateWorkloadIdentityRequest) GetSourcePlatform() *string {
 
 func (s *CreateWorkloadIdentityRequest) GetWorkloadIdentityName() *string {
 	return s.WorkloadIdentityName
+}
+
+func (s *CreateWorkloadIdentityRequest) SetAllowedConsentCallbackURLs(v []*string) *CreateWorkloadIdentityRequest {
+	s.AllowedConsentCallbackURLs = v
+	return s
 }
 
 func (s *CreateWorkloadIdentityRequest) SetAllowedResourceOAuth2ReturnURLs(v []*string) *CreateWorkloadIdentityRequest {

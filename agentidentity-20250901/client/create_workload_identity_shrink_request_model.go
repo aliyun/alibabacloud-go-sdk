@@ -9,6 +9,8 @@ type iCreateWorkloadIdentityShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAllowedConsentCallbackURLsShrink(v string) *CreateWorkloadIdentityShrinkRequest
+	GetAllowedConsentCallbackURLsShrink() *string
 	SetAllowedResourceOAuth2ReturnURLsShrink(v string) *CreateWorkloadIdentityShrinkRequest
 	GetAllowedResourceOAuth2ReturnURLsShrink() *string
 	SetCreateRAMRole(v bool) *CreateWorkloadIdentityShrinkRequest
@@ -30,6 +32,7 @@ type iCreateWorkloadIdentityShrinkRequest interface {
 }
 
 type CreateWorkloadIdentityShrinkRequest struct {
+	AllowedConsentCallbackURLsShrink      *string `json:"AllowedConsentCallbackURLs,omitempty" xml:"AllowedConsentCallbackURLs,omitempty"`
 	AllowedResourceOAuth2ReturnURLsShrink *string `json:"AllowedResourceOAuth2ReturnURLs,omitempty" xml:"AllowedResourceOAuth2ReturnURLs,omitempty"`
 	CreateRAMRole                         *bool   `json:"CreateRAMRole,omitempty" xml:"CreateRAMRole,omitempty"`
 	Description                           *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -47,6 +50,10 @@ func (s CreateWorkloadIdentityShrinkRequest) String() string {
 
 func (s CreateWorkloadIdentityShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateWorkloadIdentityShrinkRequest) GetAllowedConsentCallbackURLsShrink() *string {
+	return s.AllowedConsentCallbackURLsShrink
 }
 
 func (s *CreateWorkloadIdentityShrinkRequest) GetAllowedResourceOAuth2ReturnURLsShrink() *string {
@@ -83,6 +90,11 @@ func (s *CreateWorkloadIdentityShrinkRequest) GetSourcePlatform() *string {
 
 func (s *CreateWorkloadIdentityShrinkRequest) GetWorkloadIdentityName() *string {
 	return s.WorkloadIdentityName
+}
+
+func (s *CreateWorkloadIdentityShrinkRequest) SetAllowedConsentCallbackURLsShrink(v string) *CreateWorkloadIdentityShrinkRequest {
+	s.AllowedConsentCallbackURLsShrink = &v
+	return s
 }
 
 func (s *CreateWorkloadIdentityShrinkRequest) SetAllowedResourceOAuth2ReturnURLsShrink(v string) *CreateWorkloadIdentityShrinkRequest {
