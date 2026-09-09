@@ -7,6 +7,74 @@ import (
 	"github.com/alibabacloud-go/tea/dara"
 )
 
+// Summary:
+//
+// 上报论坛议程汇总数据
+//
+// @param request - AddAgendaSumRecordFlowPopRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddAgendaSumRecordFlowPopResponse
+func (client *Client) AddAgendaSumRecordFlowPopWithContext(ctx context.Context, request *AddAgendaSumRecordFlowPopRequest, runtime *dara.RuntimeOptions) (_result *AddAgendaSumRecordFlowPopResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActiveNum) {
+		query["ActiveNum"] = request.ActiveNum
+	}
+
+	if !dara.IsNil(request.AgendaId) {
+		query["AgendaId"] = request.AgendaId
+	}
+
+	if !dara.IsNil(request.AttendancePercent) {
+		query["AttendancePercent"] = request.AttendancePercent
+	}
+
+	if !dara.IsNil(request.FlowTime) {
+		query["FlowTime"] = request.FlowTime
+	}
+
+	if !dara.IsNil(request.SessionName) {
+		query["SessionName"] = request.SessionName
+	}
+
+	if !dara.IsNil(request.TotalPv) {
+		query["TotalPv"] = request.TotalPv
+	}
+
+	if !dara.IsNil(request.TotalUv) {
+		query["TotalUv"] = request.TotalUv
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddAgendaSumRecordFlowPop"),
+		Version:     dara.String("2021-01-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddAgendaSumRecordFlowPopResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
 // @param request - AddSumRecordFlowPopRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions

@@ -1,3 +1,7 @@
+2026-09-09 Version: v1.3.0
+- Support API AddAgendaSumRecordFlowPop.
+
+
 2026-09-08 Version: v1.2.2
 - Generated golang 2021-01-01 for marketing_event.
 
