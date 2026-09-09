@@ -9570,11 +9570,16 @@ func (s *CreateAnnotationLabelResponse) SetStatusCode(v int32) *CreateAnnotation
 }
 
 type CreateApiKeyRequest struct {
+	// The list of Logstores that the API key is allowed to write to.
 	AllowedStores []*string `json:"allowedStores,omitempty" xml:"allowedStores,omitempty" type:"Repeated"`
+	// The API key name.
+	//
 	// example:
 	//
 	// demo-apikey-001
 	ApiKeyName *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// test
@@ -9927,7 +9932,7 @@ type CreateDownloadJobRequest struct {
 	//
 	// download-123456789
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The job name. The naming rules are as follows:
+	// The job name. The following naming rules apply:
 	//
 	// Job names must be unique within the same project.
 	//
@@ -9974,7 +9979,7 @@ func (s *CreateDownloadJobRequest) SetName(v string) *CreateDownloadJobRequest {
 }
 
 type CreateDownloadJobRequestConfiguration struct {
-	// Specifies whether to allow downloading imprecise results. Valid values: true, false.
+	// Specifies whether to allow downloading inexact results. Valid values: true, false.
 	//
 	// This parameter is required.
 	//
@@ -10092,13 +10097,13 @@ type CreateDownloadJobRequestConfigurationSink struct {
 	//
 	// csv
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The path prefix for downloading data to the user\\"s OSS bucket.
+	// The path prefix in the OSS bucket to which data is downloaded.
 	//
 	// example:
 	//
 	// download/
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	// The ARN of the RAM role used for the download.
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role used for the download.
 	//
 	// example:
 	//
@@ -14006,13 +14011,44 @@ func (s GetApiKeyRequest) GoString() string {
 }
 
 type GetApiKeyResponseBody struct {
+	// The list of Logstores that allow writes.
 	AllowedStores []*string `json:"allowedStores,omitempty" xml:"allowedStores,omitempty" type:"Repeated"`
-	ApiKey        *string   `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
-	ApiKeyName    *string   `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
-	CreateTime    *int32    `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description   *string   `json:"description,omitempty" xml:"description,omitempty"`
-	Status        *string   `json:"status,omitempty" xml:"status,omitempty"`
-	UpdateTime    *int32    `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The API key in plaintext.
+	//
+	// example:
+	//
+	// <apiKey-plaintext>
+	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	// The API key name.
+	//
+	// example:
+	//
+	// demo-apikey-001
+	ApiKeyName *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 1788420000
+	CreateTime *int32 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the API key.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The status of the API key.
+	//
+	// example:
+	//
+	// Enabled / Disabled
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The update time.
+	//
+	// example:
+	//
+	// 1788420000
+	UpdateTime *int32 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s GetApiKeyResponseBody) String() string {
@@ -15236,7 +15272,7 @@ type GetDownloadJobResponseBodyConfiguration struct {
 	//
 	// ali-test-logstore
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// Specifies whether to enable PowerSQL.
+	// Indicates whether PowerSQL is enabled.
 	//
 	// example:
 	//
@@ -15320,7 +15356,7 @@ type GetDownloadJobResponseBodyConfigurationSink struct {
 	//
 	// csv
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The file prefix used when downloading logs to the user\\"s bucket.
+	// The file prefix used when downloading logs to the user\\"s OSS bucket.
 	//
 	// example:
 	//
@@ -19050,14 +19086,20 @@ func (s *ListAnnotationLabelsResponse) SetBody(v *ListAnnotationLabelsResponseBo
 }
 
 type ListApiKeysRequest struct {
+	// The Logstore that the API key is allowed to write to.
+	//
 	// example:
 	//
 	// test
 	AllowedStore *string `json:"allowedStore,omitempty" xml:"allowedStore,omitempty"`
+	// The number of the page to return.
+	//
 	// example:
 	//
 	// 1
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
@@ -19088,11 +19130,16 @@ func (s *ListApiKeysRequest) SetSize(v int32) *ListApiKeysRequest {
 }
 
 type ListApiKeysResponseBody struct {
+	// The list of API keys.
 	ApiKeys []*ListApiKeysResponseBodyApiKeys `json:"apiKeys,omitempty" xml:"apiKeys,omitempty" type:"Repeated"`
+	// The number of API keys on the current page.
+	//
 	// example:
 	//
 	// 10
 	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// The total number of API keys.
+	//
 	// example:
 	//
 	// 20
@@ -19123,27 +19170,40 @@ func (s *ListApiKeysResponseBody) SetTotal(v int32) *ListApiKeysResponseBody {
 }
 
 type ListApiKeysResponseBodyApiKeys struct {
+	// The list of Logstores that the API key is allowed to write to.
 	AllowedStores []*string `json:"allowedStores,omitempty" xml:"allowedStores,omitempty" type:"Repeated"`
+	// The plaintext of the API key.
+	//
 	// example:
 	//
 	// <apiKey-plaintext>
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
+	// The name of the API key.
+	//
 	// example:
 	//
 	// demo-apikey-001
 	ApiKeyName *string `json:"apiKeyName,omitempty" xml:"apiKeyName,omitempty"`
+	// The time when the API key was created.
+	//
 	// example:
 	//
 	// 1788420000
 	CreateTime *int32 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The description of the API key.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The status of the API key.
+	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The time when the API key was last updated.
+	//
 	// example:
 	//
 	// 1788420000
@@ -25620,7 +25680,10 @@ func (s *UpdateAnnotationLabelResponse) SetStatusCode(v int32) *UpdateAnnotation
 }
 
 type UpdateApiKeyRequest struct {
+	// The list of Logstores to which data can be written.
 	AllowedStores []*string `json:"allowedStores,omitempty" xml:"allowedStores,omitempty" type:"Repeated"`
+	// The description.
+	//
 	// example:
 	//
 	// test
@@ -28484,6 +28547,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 
 	client.EndpointRule = tea.String("central")
 	client.EndpointMap = map[string]*string{
+		"ap-southeast-8":        tea.String("ap-southeast-8.log.aliyuncs.com"),
 		"cn-qingdao":            tea.String("cn-qingdao.log.aliyuncs.com"),
 		"cn-beijing":            tea.String("cn-beijing.log.aliyuncs.com"),
 		"cn-zhangjiakou":        tea.String("cn-zhangjiakou.log.aliyuncs.com"),
@@ -28510,6 +28574,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"eu-west-1":             tea.String("eu-west-1.log.aliyuncs.com"),
 		"eu-central-1":          tea.String("eu-central-1.log.aliyuncs.com"),
 		"us-southeast-1":        tea.String("us-southeast-1.log.aliyuncs.com"),
+		"sa-east-1":             tea.String("sa-east-1.log.aliyuncs.com"),
 		"me-east-1":             tea.String("me-east-1.log.aliyuncs.com"),
 		"me-central-1":          tea.String("me-central-1.log.aliyuncs.com"),
 		"cn-hangzhou-finance":   tea.String("cn-hangzhou-finance.log.aliyuncs.com"),
@@ -29283,19 +29348,19 @@ func (client *Client) CreateAnnotationLabel(request *CreateAnnotationLabelReques
 
 // Summary:
 //
-// 在指定Project下创建一个新的ApiKey资源。
+// Creates an ApiKey resource in a specified Project.
 //
 // Description:
 //
-// ## 请求说明
+// ## Description
 //
-// - 每个 Project 最多可以创建 10 个 ApiKey。
+// - Each Project can have a maximum of 10 ApiKeys.
 //
-// - `apiKeyName` 在 Project 内必须唯一，且创建后不可修改。
+// - The `apiKeyName` must be unique within the Project and cannot be modified after creation.
 //
-// - `allowedStores` 字段不能为空，并支持通配符匹配。
+// - The `allowedStores` field cannot be empty and supports wildcard matching.
 //
-// - 创建时系统会自动生成 ApiKey 明文，用户不能自定义。
+// - The system automatically generates the ApiKey plaintext during creation. You cannot customize it.
 //
 // @param request - CreateApiKeyRequest
 //
@@ -29351,19 +29416,19 @@ func (client *Client) CreateApiKeyWithOptions(project *string, request *CreateAp
 
 // Summary:
 //
-// 在指定Project下创建一个新的ApiKey资源。
+// Creates an ApiKey resource in a specified Project.
 //
 // Description:
 //
-// ## 请求说明
+// ## Description
 //
-// - 每个 Project 最多可以创建 10 个 ApiKey。
+// - Each Project can have a maximum of 10 ApiKeys.
 //
-// - `apiKeyName` 在 Project 内必须唯一，且创建后不可修改。
+// - The `apiKeyName` must be unique within the Project and cannot be modified after creation.
 //
-// - `allowedStores` 字段不能为空，并支持通配符匹配。
+// - The `allowedStores` field cannot be empty and supports wildcard matching.
 //
-// - 创建时系统会自动生成 ApiKey 明文，用户不能自定义。
+// - The system automatically generates the ApiKey plaintext during creation. You cannot customize it.
 //
 // @param request - CreateApiKeyRequest
 //
@@ -29847,7 +29912,7 @@ func (client *Client) CreateDomain(project *string, request *CreateDomainRequest
 
 // Summary:
 //
-// Creates a log download task in the specified project.
+// Creates a log download task in a specified project.
 //
 // @param request - CreateDownloadJobRequest
 //
@@ -29907,7 +29972,7 @@ func (client *Client) CreateDownloadJobWithOptions(project *string, request *Cre
 
 // Summary:
 //
-// Creates a log download task in the specified project.
+// Creates a log download task in a specified project.
 //
 // @param request - CreateDownloadJobRequest
 //
@@ -32258,17 +32323,17 @@ func (client *Client) DeleteAnnotationLabel(labelId *string) (_result *DeleteAnn
 
 // Summary:
 //
-// 用于删除指定的ApiKey资源
+// Deletes a specified ApiKey resource.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API用于从Project中删除指定名称的ApiKey。
+// - This API operation deletes an ApiKey with the specified name from a project.
 //
-// - 删除后，ApiKey立即失效且无法再用于写入数据。
+// - After deletion, the ApiKey becomes invalid immediately and can no longer be used to write data.
 //
-// - 建议接口幂等：即使ApiKey不存在时也返回`204 No Content`。
+// - This operation is idempotent. A `204 No Content` response is returned even if the ApiKey does not exist.
 //
 // @param request - DeleteApiKeyRequest
 //
@@ -32310,17 +32375,17 @@ func (client *Client) DeleteApiKeyWithOptions(project *string, apiKeyName *strin
 
 // Summary:
 //
-// 用于删除指定的ApiKey资源
+// Deletes a specified ApiKey resource.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API用于从Project中删除指定名称的ApiKey。
+// - This API operation deletes an ApiKey with the specified name from a project.
 //
-// - 删除后，ApiKey立即失效且无法再用于写入数据。
+// - After deletion, the ApiKey becomes invalid immediately and can no longer be used to write data.
 //
-// - 建议接口幂等：即使ApiKey不存在时也返回`204 No Content`。
+// - This operation is idempotent. A `204 No Content` response is returned even if the ApiKey does not exist.
 //
 // @param request - DeleteApiKeyRequest
 //
@@ -32845,7 +32910,7 @@ func (client *Client) DeleteDomain(project *string, domainName *string) (_result
 
 // Summary:
 //
-// Deletes a log download task.
+// Deletes a download task.
 //
 // @param headers - map
 //
@@ -32881,7 +32946,7 @@ func (client *Client) DeleteDownloadJobWithOptions(project *string, downloadJobN
 
 // Summary:
 //
-// Deletes a log download task.
+// Deletes a download task.
 //
 // @return DeleteDownloadJobResponse
 func (client *Client) DeleteDownloadJob(project *string, downloadJobName *string) (_result *DeleteDownloadJobResponse, _err error) {
@@ -34464,7 +34529,7 @@ func (client *Client) DisableAlert(project *string, alertName *string) (_result 
 
 // Summary:
 //
-// 用于禁用指定的ApiKey，使其不能继续用于写入数据。
+// Disables a specified API key so that it can no longer be used to write data.
 //
 // @param request - DisableApiKeyRequest
 //
@@ -34506,7 +34571,7 @@ func (client *Client) DisableApiKeyWithOptions(project *string, apiKeyName *stri
 
 // Summary:
 //
-// 用于禁用指定的ApiKey，使其不能继续用于写入数据。
+// Disables a specified API key so that it can no longer be used to write data.
 //
 // @param request - DisableApiKeyRequest
 //
@@ -34631,15 +34696,15 @@ func (client *Client) EnableAlert(project *string, alertName *string) (_result *
 
 // Summary:
 //
-// 用于启用指定的ApiKey，使其可以继续用于写入数据。
+// Starts a specified API key so that it can continue to be used for writing data.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该API用于将指定的ApiKey从禁用状态恢复为启用状态。
+// - This operation starts a specified API key by changing its status from disabled to enabled.
 //
-// - 启用后，ApiKey可以继续用于写入数据。
+// - After the API key is started, it can continue to be used for writing data.
 //
 // @param request - EnableApiKeyRequest
 //
@@ -34681,15 +34746,15 @@ func (client *Client) EnableApiKeyWithOptions(project *string, apiKeyName *strin
 
 // Summary:
 //
-// 用于启用指定的ApiKey，使其可以继续用于写入数据。
+// Starts a specified API key so that it can continue to be used for writing data.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该API用于将指定的ApiKey从禁用状态恢复为启用状态。
+// - This operation starts a specified API key by changing its status from disabled to enabled.
 //
-// - 启用后，ApiKey可以继续用于写入数据。
+// - After the API key is started, it can continue to be used for writing data.
 //
 // @param request - EnableApiKeyRequest
 //
@@ -35058,17 +35123,17 @@ func (client *Client) GetAnnotationLabel(labelId *string) (_result *GetAnnotatio
 
 // Summary:
 //
-// 根据ApiKey名称获取指定ApiKey的详细信息。
+// Retrieves the details of a specified API key by API key name.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API用于通过`apiKeyName`获取指定ApiKey的详细信息。
+// - This operation retrieves the details of a specified API key by `apiKeyName`.
 //
-// - 返回的信息包括ApiKey的名称、密钥、状态、描述、允许写入的存储列表、创建时间和更新时间。
+// - The response includes the name, key, status, description, list of stores that allow writes, creation time, and update time of the API key.
 //
-// - `log:GetApiKey`被视为敏感权限，调用时需谨慎。
+// - `log:GetApiKey` is considered a sensitive permission. Exercise caution when calling this operation.
 //
 // @param request - GetApiKeyRequest
 //
@@ -35110,17 +35175,17 @@ func (client *Client) GetApiKeyWithOptions(project *string, apiKeyName *string, 
 
 // Summary:
 //
-// 根据ApiKey名称获取指定ApiKey的详细信息。
+// Retrieves the details of a specified API key by API key name.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API用于通过`apiKeyName`获取指定ApiKey的详细信息。
+// - This operation retrieves the details of a specified API key by `apiKeyName`.
 //
-// - 返回的信息包括ApiKey的名称、密钥、状态、描述、允许写入的存储列表、创建时间和更新时间。
+// - The response includes the name, key, status, description, list of stores that allow writes, creation time, and update time of the API key.
 //
-// - `log:GetApiKey`被视为敏感权限，调用时需谨慎。
+// - `log:GetApiKey` is considered a sensitive permission. Exercise caution when calling this operation.
 //
 // @param request - GetApiKeyRequest
 //
@@ -37611,7 +37676,17 @@ func (client *Client) GetMaterializedView(project *string, name *string, request
 
 // Summary:
 //
-// 获取MC投递任务信息
+// Queries a MaxCompute data shipping job.
+//
+// Description:
+//
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
 //
 // @param headers - map
 //
@@ -37647,7 +37722,17 @@ func (client *Client) GetMaxComputeExportWithOptions(project *string, mcExportNa
 
 // Summary:
 //
-// 获取MC投递任务信息
+// Queries a MaxCompute data shipping job.
+//
+// Description:
+//
+// - Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// - An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// - The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
 //
 // @return GetMaxComputeExportResponse
 func (client *Client) GetMaxComputeExport(project *string, mcExportName *string) (_result *GetMaxComputeExportResponse, _err error) {
@@ -39221,17 +39306,17 @@ func (client *Client) ListAnnotationLabels(request *ListAnnotationLabelsRequest)
 
 // Summary:
 //
-// 查询指定项目下所有ApiKey及其详细信息。
+// Queries all API keys and their details in a specified project.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 通过`allowedStore`参数可以过滤返回的ApiKey，只返回允许写入指定LogStore或MetricStore的ApiKey。
+// - Use the `allowedStore` parameter to filter the returned API keys. Only API keys that are allowed to write to the specified Logstore or Metricstore are returned.
 //
-// - 如果不提供`allowedStore`参数，则返回项目下的所有ApiKey。
+// - If you do not specify the `allowedStore` parameter, all API keys in the project are returned.
 //
-// - `log:ListApiKeys`权限被视为敏感权限，应谨慎授予。
+// - The `log:ListApiKeys` permission is considered a sensitive permission and should be granted with caution.
 //
 // @param request - ListApiKeysRequest
 //
@@ -39287,17 +39372,17 @@ func (client *Client) ListApiKeysWithOptions(project *string, request *ListApiKe
 
 // Summary:
 //
-// 查询指定项目下所有ApiKey及其详细信息。
+// Queries all API keys and their details in a specified project.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 通过`allowedStore`参数可以过滤返回的ApiKey，只返回允许写入指定LogStore或MetricStore的ApiKey。
+// - Use the `allowedStore` parameter to filter the returned API keys. Only API keys that are allowed to write to the specified Logstore or Metricstore are returned.
 //
-// - 如果不提供`allowedStore`参数，则返回项目下的所有ApiKey。
+// - If you do not specify the `allowedStore` parameter, all API keys in the project are returned.
 //
-// - `log:ListApiKeys`权限被视为敏感权限，应谨慎授予。
+// - The `log:ListApiKeys` permission is considered a sensitive permission and should be granted with caution.
 //
 // @param request - ListApiKeysRequest
 //
@@ -45026,21 +45111,21 @@ func (client *Client) UpdateAnnotationLabel(request *UpdateAnnotationLabelReques
 
 // Summary:
 //
-// 更新指定ApiKey的资源白名单和描述信息。
+// Updates the resource whitelist and description of a specified API key.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - `apiKeyName` 不允许修改。
+// - The apiKeyName parameter cannot be modified.
 //
-// - `allowedStores` 不能为空。
+// - The allowedStores parameter cannot be empty.
 //
-// - 更新后立即生效。
+// - The update takes effect immediately.
 //
-// - 即使ApiKey处于Disabled状态，也可以更新其资源列表。
+// - You can update the resources of an API key even if the API key is in the Disabled state.
 //
-// - 该API不用于轮换ApiKey明文。
+// - This operation is not used to rotate the API key plaintext.
 //
 // @param request - UpdateApiKeyRequest
 //
@@ -45092,21 +45177,21 @@ func (client *Client) UpdateApiKeyWithOptions(project *string, apiKeyName *strin
 
 // Summary:
 //
-// 更新指定ApiKey的资源白名单和描述信息。
+// Updates the resource whitelist and description of a specified API key.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - `apiKeyName` 不允许修改。
+// - The apiKeyName parameter cannot be modified.
 //
-// - `allowedStores` 不能为空。
+// - The allowedStores parameter cannot be empty.
 //
-// - 更新后立即生效。
+// - The update takes effect immediately.
 //
-// - 即使ApiKey处于Disabled状态，也可以更新其资源列表。
+// - You can update the resources of an API key even if the API key is in the Disabled state.
 //
-// - 该API不用于轮换ApiKey明文。
+// - This operation is not used to rotate the API key plaintext.
 //
 // @param request - UpdateApiKeyRequest
 //
