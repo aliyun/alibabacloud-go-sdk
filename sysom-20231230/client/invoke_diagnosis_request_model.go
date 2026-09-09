@@ -9,21 +9,16 @@ type iInvokeDiagnosisRequest interface {
 	dara.Model
 	String() string
 	GoString() string
-	SetXDebugId(v string) *InvokeDiagnosisRequest
-	GetXDebugId() *string
 	SetChannel(v string) *InvokeDiagnosisRequest
 	GetChannel() *string
 	SetParams(v string) *InvokeDiagnosisRequest
 	GetParams() *string
 	SetServiceName(v string) *InvokeDiagnosisRequest
 	GetServiceName() *string
-	SetXSysomInvokeSource(v string) *InvokeDiagnosisRequest
-	GetXSysomInvokeSource() *string
 }
 
 type InvokeDiagnosisRequest struct {
-	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
-	// The diagnosis channel (currently fixed to the ECS channel).
+	// The diagnostic channel. Currently fixed to the ECS channel.
 	//
 	// This parameter is required.
 	//
@@ -31,7 +26,7 @@ type InvokeDiagnosisRequest struct {
 	//
 	// ecs
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// The diagnosis parameters. Different diagnosis types require different parameters. Refer to the supplementary request parameter descriptions below for the parameters required by each diagnosis type.
+	// The diagnostic parameters. Different diagnostic types require different parameters. For the parameters required by each diagnostic type, see the supplementary description of request parameters below.
 	//
 	// 	Notice: Pass a JSON-formatted string.
 	//
@@ -49,15 +44,14 @@ type InvokeDiagnosisRequest struct {
 	//
 	// }
 	Params *string `json:"params,omitempty" xml:"params,omitempty"`
-	// The diagnosis type. This parameter distinguishes between different types of diagnostics.
+	// The diagnostic type. Specifies the type of diagnostic to perform.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// memgraph
-	ServiceName        *string `json:"service_name,omitempty" xml:"service_name,omitempty"`
-	XSysomInvokeSource *string `json:"x-sysom-invoke-source,omitempty" xml:"x-sysom-invoke-source,omitempty"`
+	ServiceName *string `json:"service_name,omitempty" xml:"service_name,omitempty"`
 }
 
 func (s InvokeDiagnosisRequest) String() string {
@@ -66,10 +60,6 @@ func (s InvokeDiagnosisRequest) String() string {
 
 func (s InvokeDiagnosisRequest) GoString() string {
 	return s.String()
-}
-
-func (s *InvokeDiagnosisRequest) GetXDebugId() *string {
-	return s.XDebugId
 }
 
 func (s *InvokeDiagnosisRequest) GetChannel() *string {
@@ -84,15 +74,6 @@ func (s *InvokeDiagnosisRequest) GetServiceName() *string {
 	return s.ServiceName
 }
 
-func (s *InvokeDiagnosisRequest) GetXSysomInvokeSource() *string {
-	return s.XSysomInvokeSource
-}
-
-func (s *InvokeDiagnosisRequest) SetXDebugId(v string) *InvokeDiagnosisRequest {
-	s.XDebugId = &v
-	return s
-}
-
 func (s *InvokeDiagnosisRequest) SetChannel(v string) *InvokeDiagnosisRequest {
 	s.Channel = &v
 	return s
@@ -105,11 +86,6 @@ func (s *InvokeDiagnosisRequest) SetParams(v string) *InvokeDiagnosisRequest {
 
 func (s *InvokeDiagnosisRequest) SetServiceName(v string) *InvokeDiagnosisRequest {
 	s.ServiceName = &v
-	return s
-}
-
-func (s *InvokeDiagnosisRequest) SetXSysomInvokeSource(v string) *InvokeDiagnosisRequest {
-	s.XSysomInvokeSource = &v
 	return s
 }
 

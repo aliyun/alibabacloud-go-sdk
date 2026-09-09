@@ -24,19 +24,32 @@ type iListInstanceInfoResponseBody interface {
 }
 
 type ListInstanceInfoResponseBody struct {
+	// The status code.
+	//
 	// example:
 	//
 	// Success
-	Code *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
 	Data []*ListInstanceInfoResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// The maximum number of entries returned per request.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The error message.
+	//
+	// - If `code == Success`, this field is empty.
+	//
+	// - Otherwise, this field contains the request error message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The pagination token for the next request.
+	//
 	// example:
 	//
 	// U+w1wv2R4ZWR5oZLXD0+Dp4dD+2BRJj42DLT6GrZysw=
@@ -125,14 +138,20 @@ func (s *ListInstanceInfoResponseBody) Validate() error {
 }
 
 type ListInstanceInfoResponseBodyData struct {
+	// The information key.
+	//
 	// example:
 	//
 	// sysom
 	InfoKey *string `json:"infoKey,omitempty" xml:"infoKey,omitempty"`
+	// The information type.
+	//
 	// example:
 	//
 	// instance_tag
 	InfoType *string `json:"infoType,omitempty" xml:"infoType,omitempty"`
+	// The information value.
+	//
 	// example:
 	//
 	// diagnosis

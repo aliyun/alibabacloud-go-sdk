@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/sysom-20231230
+module github.com/alibabacloud-go/sysom-20231230/v2
 
 go 1.14
 

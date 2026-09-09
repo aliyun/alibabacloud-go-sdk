@@ -30,7 +30,7 @@ type CheckInstanceSupportResponseBody struct {
 	//
 	// Success
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data []*CheckInstanceSupportResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// The error message. This field contains the error information when code is not Success.
 	//
@@ -110,7 +110,7 @@ type CheckInstanceSupportResponseBodyData struct {
 	//
 	// i-wz9d00ut2ska3mlyhn6j
 	Instance *string `json:"instance,omitempty" xml:"instance,omitempty"`
-	// The reason why the instance cannot be managed. This field is not empty when success is false.
+	// The reason why the instance cannot be managed. This value is not empty when success is false.
 	//
 	// example:
 	//

@@ -25,9 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-hangzhou": dara.String("sysom.cn-hangzhou.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -173,7 +170,7 @@ func (client *Client) AuthDiagnosis(request *AuthDiagnosisRequest) (_result *Aut
 //
 // Description:
 //
-// This operation retrieves the list of instances that are already managed by SysOM. If an ECS instance exists but is not managed by SysOM, it does not appear in the list.
+// The instance list returned by this operation contains only instances that are already managed by SysOM. If an ECS instance exists but is not managed by SysOM, it does not appear in the list.
 //
 // @param request - CheckInstanceSupportRequest
 //
@@ -238,7 +235,7 @@ func (client *Client) CheckInstanceSupportWithOptions(request *CheckInstanceSupp
 //
 // Description:
 //
-// This operation retrieves the list of instances that are already managed by SysOM. If an ECS instance exists but is not managed by SysOM, it does not appear in the list.
+// The instance list returned by this operation contains only instances that are already managed by SysOM. If an ECS instance exists but is not managed by SysOM, it does not appear in the list.
 //
 // @param request - CheckInstanceSupportRequest
 //
@@ -1068,13 +1065,13 @@ func (client *Client) DescribeMetricList(request *DescribeMetricListRequest) (_r
 
 // Summary:
 //
-// # Get the response result of the copilot service
+// Retrieves the response from the Copilot service.
 //
 // Description:
 //
-// - Parameters need to be filled in according to the standard LLM service input parameters, converted to a string, and assigned to llmParamString
+// - Populate the parameters based on the standard LLM service input parameters, convert them to a string, and assign the string to llmParamString.
 //
-// - The returned data needs to be converted from string to dict before use. Refer to the standard LLM service response format
+// - Convert the returned data from a string to a dict before use. Refer to the standard LLM service response format.
 //
 // @param request - GenerateCopilotResponseRequest
 //
@@ -1131,13 +1128,13 @@ func (client *Client) GenerateCopilotResponseWithOptions(request *GenerateCopilo
 
 // Summary:
 //
-// # Get the response result of the copilot service
+// Retrieves the response from the Copilot service.
 //
 // Description:
 //
-// - Parameters need to be filled in according to the standard LLM service input parameters, converted to a string, and assigned to llmParamString
+// - Populate the parameters based on the standard LLM service input parameters, convert them to a string, and assign the string to llmParamString.
 //
-// - The returned data needs to be converted from string to dict before use. Refer to the standard LLM service response format
+// - Convert the returned data from a string to a dict before use. Refer to the standard LLM service response format.
 //
 // @param request - GenerateCopilotResponseRequest
 //
@@ -1156,7 +1153,7 @@ func (client *Client) GenerateCopilotResponse(request *GenerateCopilotResponseRe
 
 // Summary:
 //
-// Calls the streaming SSE interface of the OS Copilot service.
+// Provides a streaming SSE interface for the OS Copilot service.
 //
 // Description:
 //
@@ -1181,7 +1178,7 @@ func (client *Client) GenerateCopilotStreamResponseWithSSE(request *GenerateCopi
 
 // Summary:
 //
-// Calls the streaming SSE interface of the OS Copilot service.
+// Provides a streaming SSE interface for the OS Copilot service.
 //
 // Description:
 //
@@ -1246,7 +1243,7 @@ func (client *Client) GenerateCopilotStreamResponseWithOptions(request *Generate
 
 // Summary:
 //
-// Calls the streaming SSE interface of the OS Copilot service.
+// Provides a streaming SSE interface for the OS Copilot service.
 //
 // Description:
 //
@@ -1917,7 +1914,7 @@ func (client *Client) GetCopilotHistory(request *GetCopilotHistoryRequest) (_res
 //
 // Description:
 //
-// The diagnostic process is asynchronous. When you call this operation, the diagnosis may still be in progress. You can check the `data.status` field in the response to determine the status. When `data.status == Success`, the diagnosis is complete and you can read the diagnostic result from `data.result`.
+// The diagnostic process is asynchronous. When you call this operation, the diagnosis may still be running. You can check the `data.status` field in the response to determine the status. When `data.status == Success`, the diagnosis is complete and you can read the diagnostic result from `data.result`.
 //
 // @param request - GetDiagnosisResultRequest
 //
@@ -1976,7 +1973,7 @@ func (client *Client) GetDiagnosisResultWithOptions(request *GetDiagnosisResultR
 //
 // Description:
 //
-// The diagnostic process is asynchronous. When you call this operation, the diagnosis may still be in progress. You can check the `data.status` field in the response to determine the status. When `data.status == Success`, the diagnosis is complete and you can read the diagnostic result from `data.result`.
+// The diagnostic process is asynchronous. When you call this operation, the diagnosis may still be running. You can check the `data.status` field in the response to determine the status. When `data.status == Success`, the diagnosis is complete and you can read the diagnostic result from `data.result`.
 //
 // @param request - GetDiagnosisResultRequest
 //
@@ -3891,15 +3888,15 @@ func (client *Client) InvokeAnomalyDiagnosis(request *InvokeAnomalyDiagnosisRequ
 //
 // Description:
 //
-// The following requirements apply when diagnosing a target ECS instance:
+// The following requirements must be met to diagnose a target ECS instance:
 //
 // - The target ECS instance status must be Running.
 //
 // - Cloud Assistant must be installed on the target ECS instance. If it is not installed, refer to [Install the Cloud Assistant Agent](https://www.alibabacloud.com/help/en/ecs/user-guide/install-the-cloud-assistant-agent) for installation.
 //
-// - You must invoke the AuthDiagnosis operation to authorize SysOM to diagnose the target ECS instance. If authorization is not granted, this operation directly returns failed.
+// - You must invoke the AuthDiagnosis operation to authorize SysOM to diagnose the target ECS instance. If authorization is not granted, this operation directly fails.
 //
-// - This operation depends on the SysOM service-linked role (AliyunServiceRoleForSysom) being created. This operation does not automatically create the service-linked role. If the service-linked role does not exist, invoke AuthDiagnosis first to associate the authorization. That operation creates the service-linked role.
+// - This operation depends on the SysOM service-linked role (AliyunServiceRoleForSysom) being created. This operation does not automatically create the service-linked role. If the service-linked role does not exist, first invoke AuthDiagnosis to associate the authorization. That operation creates the aforementioned service-linked role.
 //
 // @param request - InvokeDiagnosisRequest
 //
@@ -3915,15 +3912,6 @@ func (client *Client) InvokeDiagnosisWithOptions(request *InvokeDiagnosisRequest
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Channel) {
 		body["channel"] = request.Channel
@@ -3939,7 +3927,6 @@ func (client *Client) InvokeDiagnosisWithOptions(request *InvokeDiagnosisRequest
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -3968,15 +3955,15 @@ func (client *Client) InvokeDiagnosisWithOptions(request *InvokeDiagnosisRequest
 //
 // Description:
 //
-// The following requirements apply when diagnosing a target ECS instance:
+// The following requirements must be met to diagnose a target ECS instance:
 //
 // - The target ECS instance status must be Running.
 //
 // - Cloud Assistant must be installed on the target ECS instance. If it is not installed, refer to [Install the Cloud Assistant Agent](https://www.alibabacloud.com/help/en/ecs/user-guide/install-the-cloud-assistant-agent) for installation.
 //
-// - You must invoke the AuthDiagnosis operation to authorize SysOM to diagnose the target ECS instance. If authorization is not granted, this operation directly returns failed.
+// - You must invoke the AuthDiagnosis operation to authorize SysOM to diagnose the target ECS instance. If authorization is not granted, this operation directly fails.
 //
-// - This operation depends on the SysOM service-linked role (AliyunServiceRoleForSysom) being created. This operation does not automatically create the service-linked role. If the service-linked role does not exist, invoke AuthDiagnosis first to associate the authorization. That operation creates the service-linked role.
+// - This operation depends on the SysOM service-linked role (AliyunServiceRoleForSysom) being created. This operation does not automatically create the service-linked role. If the service-linked role does not exist, first invoke AuthDiagnosis to associate the authorization. That operation creates the aforementioned service-linked role.
 //
 // @param request - InvokeDiagnosisRequest
 //
@@ -5005,7 +4992,7 @@ func (client *Client) ListInstanceHealth(request *ListInstanceHealthRequest) (_r
 
 // Summary:
 //
-// 此接口用于获取某类型实例信息的所有值
+// Retrieves all values of a specified type of instance information.
 //
 // @param request - ListInstanceInfoRequest
 //
@@ -5084,7 +5071,7 @@ func (client *Client) ListInstanceInfoWithOptions(request *ListInstanceInfoReque
 
 // Summary:
 //
-// 此接口用于获取某类型实例信息的所有值
+// Retrieves all values of a specified type of instance information.
 //
 // @param request - ListInstanceInfoRequest
 //

@@ -91,7 +91,7 @@ func (client *Client) AuthDiagnosisWithContext(ctx context.Context, request *Aut
 //
 // Description:
 //
-// This operation retrieves the list of instances that are already managed by SysOM. If an ECS instance exists but is not managed by SysOM, it does not appear in the list.
+// The instance list returned by this operation contains only instances that are already managed by SysOM. If an ECS instance exists but is not managed by SysOM, it does not appear in the list.
 //
 // @param request - CheckInstanceSupportRequest
 //
@@ -780,13 +780,13 @@ func (client *Client) DescribeMetricListWithContext(ctx context.Context, request
 
 // Summary:
 //
-// # Get the response result of the copilot service
+// Retrieves the response from the Copilot service.
 //
 // Description:
 //
-// - Parameters need to be filled in according to the standard LLM service input parameters, converted to a string, and assigned to llmParamString
+// - Populate the parameters based on the standard LLM service input parameters, convert them to a string, and assign the string to llmParamString.
 //
-// - The returned data needs to be converted from string to dict before use. Refer to the standard LLM service response format
+// - Convert the returned data from a string to a dict before use. Refer to the standard LLM service response format.
 //
 // @param request - GenerateCopilotResponseRequest
 //
@@ -843,7 +843,7 @@ func (client *Client) GenerateCopilotResponseWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Calls the streaming SSE interface of the OS Copilot service.
+// Provides a streaming SSE interface for the OS Copilot service.
 //
 // Description:
 //
@@ -868,7 +868,7 @@ func (client *Client) GenerateCopilotStreamResponseWithSSECtx(ctx context.Contex
 
 // Summary:
 //
-// Calls the streaming SSE interface of the OS Copilot service.
+// Provides a streaming SSE interface for the OS Copilot service.
 //
 // Description:
 //
@@ -1425,7 +1425,7 @@ func (client *Client) GetCopilotHistoryWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// The diagnostic process is asynchronous. When you call this operation, the diagnosis may still be in progress. You can check the `data.status` field in the response to determine the status. When `data.status == Success`, the diagnosis is complete and you can read the diagnostic result from `data.result`.
+// The diagnostic process is asynchronous. When you call this operation, the diagnosis may still be running. You can check the `data.status` field in the response to determine the status. When `data.status == Success`, the diagnosis is complete and you can read the diagnostic result from `data.result`.
 //
 // @param request - GetDiagnosisResultRequest
 //
@@ -2947,15 +2947,15 @@ func (client *Client) InvokeAnomalyDiagnosisWithContext(ctx context.Context, req
 //
 // Description:
 //
-// The following requirements apply when diagnosing a target ECS instance:
+// The following requirements must be met to diagnose a target ECS instance:
 //
 // - The target ECS instance status must be Running.
 //
 // - Cloud Assistant must be installed on the target ECS instance. If it is not installed, refer to [Install the Cloud Assistant Agent](https://www.alibabacloud.com/help/en/ecs/user-guide/install-the-cloud-assistant-agent) for installation.
 //
-// - You must invoke the AuthDiagnosis operation to authorize SysOM to diagnose the target ECS instance. If authorization is not granted, this operation directly returns failed.
+// - You must invoke the AuthDiagnosis operation to authorize SysOM to diagnose the target ECS instance. If authorization is not granted, this operation directly fails.
 //
-// - This operation depends on the SysOM service-linked role (AliyunServiceRoleForSysom) being created. This operation does not automatically create the service-linked role. If the service-linked role does not exist, invoke AuthDiagnosis first to associate the authorization. That operation creates the service-linked role.
+// - This operation depends on the SysOM service-linked role (AliyunServiceRoleForSysom) being created. This operation does not automatically create the service-linked role. If the service-linked role does not exist, first invoke AuthDiagnosis to associate the authorization. That operation creates the aforementioned service-linked role.
 //
 // @param request - InvokeDiagnosisRequest
 //
@@ -2971,15 +2971,6 @@ func (client *Client) InvokeDiagnosisWithContext(ctx context.Context, request *I
 			return _result, _err
 		}
 	}
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.XDebugId) {
-		query["X-Debug-Id"] = request.XDebugId
-	}
-
-	if !dara.IsNil(request.XSysomInvokeSource) {
-		query["x-sysom-invoke-source"] = request.XSysomInvokeSource
-	}
-
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Channel) {
 		body["channel"] = request.Channel
@@ -2995,7 +2986,6 @@ func (client *Client) InvokeDiagnosisWithContext(ctx context.Context, request *I
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
-		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -3823,7 +3813,7 @@ func (client *Client) ListInstanceHealthWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 此接口用于获取某类型实例信息的所有值
+// Retrieves all values of a specified type of instance information.
 //
 // @param request - ListInstanceInfoRequest
 //

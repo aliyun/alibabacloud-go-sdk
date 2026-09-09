@@ -31,30 +31,44 @@ type iListInstanceInfoRequest interface {
 
 type ListInstanceInfoRequest struct {
 	XDebugId *string `json:"X-Debug-Id,omitempty" xml:"X-Debug-Id,omitempty"`
+	// The information type.
+	//
 	// example:
 	//
 	// instance_tag
 	InfoType *string `json:"infoType,omitempty" xml:"infoType,omitempty"`
+	// The instance type.
+	//
 	// example:
 	//
 	// ecs
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// The managed type.
+	//
 	// example:
 	//
 	// managed
 	ManagedType *string `json:"managedType,omitempty" xml:"managedType,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// xiF/wDgaeitjjhVJYYzLwJ4dD+2BRJj42DLT6GrZysw=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The plugin ID.
+	//
 	// example:
 	//
 	// 01fc4a0b-f199-4885-9861-b4054a310fe7
 	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou

@@ -37,7 +37,7 @@ type ListAgentInstallRecordsRequest struct {
 	//
 	// 1
 	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
-	// The ID of the instance. If you specify this parameter, only the Agent installation records for the specified instance are returned.
+	// Specifies the instance ID. If this parameter is specified, only the Agent installation records for the specified instance are returned.
 	//
 	// example:
 	//
@@ -49,13 +49,13 @@ type ListAgentInstallRecordsRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The ID of the Agent. If you specify this parameter, only the installation records for the specified Agent are returned. You can use this parameter together with the plugin_version parameter.
+	// Specifies the Agent ID. If this parameter is specified, only the installation records for the specified Agent are returned. You can use this parameter together with the plugin_version parameter.
 	//
 	// example:
 	//
 	// 74a86327-3170-412c-8e67-da3389ec56a9
 	PluginId *string `json:"plugin_id,omitempty" xml:"plugin_id,omitempty"`
-	// The version of the Agent. This parameter cannot be used alone. Use this parameter together with the plugin_id parameter to filter installation records for a specific version of the specified Agent.
+	// Specifies the Agent version. This parameter cannot be used alone and must be used together with the plugin_id parameter to filter the installation records for a specific version of the specified Agent.
 	//
 	// example:
 	//
