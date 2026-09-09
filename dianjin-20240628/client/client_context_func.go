@@ -2682,6 +2682,61 @@ func (client *Client) PreviewDocumentWithContext(ctx context.Context, workspaceI
 
 // Summary:
 //
+// 查询用量
+//
+// @param request - QueryAmountRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAmountResponse
+func (client *Client) QueryAmountWithContext(ctx context.Context, workspaceId *string, request *QueryAmountRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryAmountResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AliyunUidList) {
+		body["aliyunUidList"] = request.AliyunUidList
+	}
+
+	if !dara.IsNil(request.EndDate) {
+		body["endDate"] = request.EndDate
+	}
+
+	if !dara.IsNil(request.StartDate) {
+		body["startDate"] = request.StartDate
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryAmount"),
+		Version:     dara.String("2024-06-28"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/" + dara.PercentEncode(dara.StringValue(workspaceId)) + "/api/v1/aigcRevenue/query"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryAmountResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询兑换记录
 //
 // @param request - QueryApiKeysRequest
