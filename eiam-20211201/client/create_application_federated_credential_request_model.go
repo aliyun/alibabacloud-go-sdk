@@ -34,7 +34,7 @@ type iCreateApplicationFederatedCredentialRequest interface {
 }
 
 type CreateApplicationFederatedCredentialRequest struct {
-	// The name of the application federated identity credential.
+	// The application federated credential name.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type CreateApplicationFederatedCredentialRequest struct {
 	//
 	// example_name
 	ApplicationFederatedCredentialName *string `json:"ApplicationFederatedCredentialName,omitempty" xml:"ApplicationFederatedCredentialName,omitempty"`
-	// The type of the application federated identity credential.
+	// The application federated credential type.
 	//
 	// This parameter is required.
 	//
@@ -82,9 +82,9 @@ type CreateApplicationFederatedCredentialRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The OIDC structured configuration. This parameter applies when the verification mode is structured and the credential type is oidc.
+	// The OIDC structured configuration.
 	OidcVerificationConfig *CreateApplicationFederatedCredentialRequestOidcVerificationConfig `json:"OidcVerificationConfig,omitempty" xml:"OidcVerificationConfig,omitempty" type:"Struct"`
-	// The PKCS#7 structured configuration. This parameter applies when the verification mode is structured and the credential type is pkcs7.
+	// The PKCS#7 structured configuration.
 	Pkcs7VerificationConfig *CreateApplicationFederatedCredentialRequestPkcs7VerificationConfig `json:"Pkcs7VerificationConfig,omitempty" xml:"Pkcs7VerificationConfig,omitempty" type:"Struct"`
 	// The verification condition.
 	//
@@ -94,9 +94,9 @@ type CreateApplicationFederatedCredentialRequest struct {
 	VerificationCondition *string `json:"VerificationCondition,omitempty" xml:"VerificationCondition,omitempty"`
 	// The verification mode. Valid values:
 	//
-	// - freedom (default)
+	// - freedom: free mode
 	//
-	// - structured
+	// - structured: structured mode
 	//
 	// example:
 	//
@@ -283,11 +283,12 @@ type CreateApplicationFederatedCredentialRequestOidcVerificationConfig struct {
 	// The Azure VM scenario configuration.
 	AzureVmConfig *CreateApplicationFederatedCredentialRequestOidcVerificationConfigAzureVmConfig `json:"AzureVmConfig,omitempty" xml:"AzureVmConfig,omitempty" type:"Struct"`
 	// The GCP VM scenario configuration.
-	GcpVmConfig   *CreateApplicationFederatedCredentialRequestOidcVerificationConfigGcpVmConfig   `json:"GcpVmConfig,omitempty" xml:"GcpVmConfig,omitempty" type:"Struct"`
+	GcpVmConfig *CreateApplicationFederatedCredentialRequestOidcVerificationConfigGcpVmConfig `json:"GcpVmConfig,omitempty" xml:"GcpVmConfig,omitempty" type:"Struct"`
+	// The generic scenario configuration.
 	GenericConfig *CreateApplicationFederatedCredentialRequestOidcVerificationConfigGenericConfig `json:"GenericConfig,omitempty" xml:"GenericConfig,omitempty" type:"Struct"`
 	// The Kubernetes scenario configuration.
 	KubernetesConfig *CreateApplicationFederatedCredentialRequestOidcVerificationConfigKubernetesConfig `json:"KubernetesConfig,omitempty" xml:"KubernetesConfig,omitempty" type:"Struct"`
-	// The OIDC scenario profile. Valid values:
+	// The OIDC scenario profile. Different profiles correspond to different configurations. Valid values:
 	//
 	// - generic
 	//
@@ -381,10 +382,26 @@ func (s *CreateApplicationFederatedCredentialRequestOidcVerificationConfig) Vali
 }
 
 type CreateApplicationFederatedCredentialRequestOidcVerificationConfigAzureVmConfig struct {
-	PrincipalId       *string   `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	ResourceGroupName *string   `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
-	SubscriptionId    *string   `json:"SubscriptionId,omitempty" xml:"SubscriptionId,omitempty"`
-	VmNames           []*string `json:"VmNames,omitempty" xml:"VmNames,omitempty" type:"Repeated"`
+	// The principal ID.
+	//
+	// example:
+	//
+	// 5dee234a-1b4c-4ad7-a19f-fxxxxx
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The Azure resource group name.
+	//
+	// example:
+	//
+	// user_default
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// The subscription ID.
+	//
+	// example:
+	//
+	// 4342a1f4-7e5d-4371-97dc-d4f33f4xxxx
+	SubscriptionId *string `json:"SubscriptionId,omitempty" xml:"SubscriptionId,omitempty"`
+	// The list of virtual machine names.
+	VmNames []*string `json:"VmNames,omitempty" xml:"VmNames,omitempty" type:"Repeated"`
 }
 
 func (s CreateApplicationFederatedCredentialRequestOidcVerificationConfigAzureVmConfig) String() string {
@@ -436,9 +453,15 @@ func (s *CreateApplicationFederatedCredentialRequestOidcVerificationConfigAzureV
 }
 
 type CreateApplicationFederatedCredentialRequestOidcVerificationConfigGcpVmConfig struct {
+	// The list of GCP virtual machine instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	ProjectId   *string   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The sub claim that corresponds to the service account.
+	// The GCP project ID to which the resource belongs.
+	//
+	// example:
+	//
+	// turnkey-axiom-475109-xx
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The sub claim corresponding to the service account.
 	//
 	// example:
 	//
@@ -486,6 +509,11 @@ func (s *CreateApplicationFederatedCredentialRequestOidcVerificationConfigGcpVmC
 }
 
 type CreateApplicationFederatedCredentialRequestOidcVerificationConfigGenericConfig struct {
+	// The subject.
+	//
+	// example:
+	//
+	// test_subject
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
 }
 
@@ -511,7 +539,7 @@ func (s *CreateApplicationFederatedCredentialRequestOidcVerificationConfigGeneri
 }
 
 type CreateApplicationFederatedCredentialRequestOidcVerificationConfigKubernetesConfig struct {
-	// The Kubernetes namespace.
+	// The K8s namespace.
 	//
 	// example:
 	//
@@ -523,7 +551,7 @@ type CreateApplicationFederatedCredentialRequestOidcVerificationConfigKubernetes
 	//
 	// my-pod-
 	PodNamePrefix *string `json:"PodNamePrefix,omitempty" xml:"PodNamePrefix,omitempty"`
-	// The Kubernetes service account name.
+	// The K8s service account name.
 	//
 	// example:
 	//
@@ -571,6 +599,7 @@ func (s *CreateApplicationFederatedCredentialRequestOidcVerificationConfigKubern
 }
 
 type CreateApplicationFederatedCredentialRequestPkcs7VerificationConfig struct {
+	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 }
 

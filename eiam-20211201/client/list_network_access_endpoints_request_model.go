@@ -34,7 +34,7 @@ type ListNetworkAccessEndpointsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries per page for a paged query. Maximum value: 100.
+	// The number of rows per page in a paged query. Maximum value: 100.
 	//
 	// example:
 	//
@@ -44,15 +44,15 @@ type ListNetworkAccessEndpointsRequest struct {
 	//
 	//
 	//
-	// - pending: Pending initialization.
+	// - pending: pending initialization.
 	//
-	// - creating: Being created.
+	// - creating: being created.
 	//
-	// - running: Running.
+	// - running: running.
 	//
-	// - deleting: Being deleted.
+	// - deleting: being deleted.
 	//
-	// This parameter does not take effect when NetworkAccessEndpointType is set to shared.
+	// This filter parameter does not take effect when NetworkAccessEndpointType is set to shared.
 	//
 	// example:
 	//

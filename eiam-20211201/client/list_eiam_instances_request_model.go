@@ -18,7 +18,7 @@ type iListEiamInstancesRequest interface {
 type ListEiamInstancesRequest struct {
 	// The list of instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The region to which the instances belong.
+	// The region to which the instance belongs.
 	//
 	// example:
 	//

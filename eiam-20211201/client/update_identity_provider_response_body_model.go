@@ -14,7 +14,7 @@ type iUpdateIdentityProviderResponseBody interface {
 }
 
 type UpdateIdentityProviderResponseBody struct {
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

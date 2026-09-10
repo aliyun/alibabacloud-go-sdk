@@ -62,7 +62,7 @@ func (s *GetIdentityProviderResponseBody) Validate() error {
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
-	// The advanced configuration status. Valid values:
+	// The advanced configuration capability. Valid values:
 	//
 	// - disabled: Disabled.
 	//
@@ -94,7 +94,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
 	//
 	// urn:alibaba:idaas:idp:bytedance:lark
 	AuthnSourceSupplier *string `json:"AuthnSourceSupplier,omitempty" xml:"AuthnSourceSupplier,omitempty"`
-	// The authentication method type, such as OIDC or SAML. Valid values:
+	// The authentication type, OIDC or SAML. Valid values:
 	//
 	// - urn:alibaba:idaas:authntype:oidc: OIDC.
 	//
@@ -104,7 +104,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
 	//
 	// urn:alibaba:idaas:authntype:oidc
 	AuthnSourceType *string `json:"AuthnSourceType,omitempty" xml:"AuthnSourceType,omitempty"`
-	// Specifies whether the corresponding IdP supports authentication. Valid values:
+	// Indicates whether the corresponding IdP supports authentication. Valid values:
 	//
 	// - disabled: Disabled.
 	//
@@ -128,7 +128,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The DingTalk basic configuration.
 	DingtalkAppConfig *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig `json:"DingtalkAppConfig,omitempty" xml:"DingtalkAppConfig,omitempty" type:"Struct"`
-	// The DingTalk synchronization configuration. This value is returned only for DingTalk identity providers.
+	// The DingTalk provisioning configuration. This value is returned only for the DingTalk type.
 	DingtalkProvisioningConfig *GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkProvisioningConfig `json:"DingtalkProvisioningConfig,omitempty" xml:"DingtalkProvisioningConfig,omitempty" type:"Struct"`
 	// The endpoint metadata.
 	EndpointMetadata *GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata `json:"EndpointMetadata,omitempty" xml:"EndpointMetadata,omitempty" type:"Struct"`
@@ -186,7 +186,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
 	//
 	// success
 	LastStatusCheckJobResult *string `json:"LastStatusCheckJobResult,omitempty" xml:"LastStatusCheckJobResult,omitempty"`
-	// The AD/LDAP identity provider configuration.
+	// The AD/LDAP identity provider information.
 	LdapConfig *GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig `json:"LdapConfig,omitempty" xml:"LdapConfig,omitempty" type:"Struct"`
 	// The lock reason.
 	//
@@ -200,7 +200,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
 	//
 	// https://img.alicdn.com/imgextra/i4/O1CN01lvYwpv1aGowQXDML9_!!6000000003303-0-tps-580-580.jpg
 	LogoUrl *string `json:"LogoUrl,omitempty" xml:"LogoUrl,omitempty"`
-	// The network endpoint ID.
+	// The network access endpoint ID.
 	//
 	// example:
 	//
@@ -210,9 +210,9 @@ type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
 	OidcConfig *GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig `json:"OidcConfig,omitempty" xml:"OidcConfig,omitempty" type:"Struct"`
 	// The SAML IdP configuration.
 	SamlConfig *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig `json:"SamlConfig,omitempty" xml:"SamlConfig,omitempty" type:"Struct"`
-	// The inbound synchronization configuration.
+	// The inbound sync configuration.
 	UdPullConfig *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig `json:"UdPullConfig,omitempty" xml:"UdPullConfig,omitempty" type:"Struct"`
-	// Specifies whether the inbound synchronization feature is supported. Valid values:
+	// Indicates whether the inbound sync feature is supported. Valid values:
 	//
 	// - disabled: Disabled.
 	//
@@ -222,9 +222,9 @@ type GetIdentityProviderResponseBodyIdentityProviderDetail struct {
 	//
 	// disabled
 	UdPullStatus *string `json:"UdPullStatus,omitempty" xml:"UdPullStatus,omitempty"`
-	// The outbound synchronization configuration.
+	// The outbound sync configuration.
 	UdPushConfig *GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig `json:"UdPushConfig,omitempty" xml:"UdPushConfig,omitempty" type:"Struct"`
-	// Specifies whether the outbound synchronization feature is enabled. Valid values:
+	// Indicates whether the outbound sync capability is enabled. Valid values:
 	//
 	// - disabled: Disabled.
 	//
@@ -577,7 +577,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailDingtalkAppConfig stru
 	//
 	// 3756043633237690761
 	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
-	// The DingTalk QR code logon version.
+	// The DingTalk QR code login version.
 	//
 	// example:
 	//
@@ -918,19 +918,19 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailEndpointMetadata) 
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig struct {
-	// The AppId of the Lark self-built application.
+	// The CorpId of the Lark custom application.
 	//
 	// example:
 	//
 	// cli_a7a99f53a317100c
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The AppSecret of the Lark self-built application.
+	// The AppSecret of the Lark custom application.
 	//
 	// example:
 	//
 	// ***
 	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
-	// The EncryptKey of the Lark self-built application.
+	// The EncryptKey of the Lark custom application.
 	//
 	// example:
 	//
@@ -942,7 +942,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailLarkConfig struct {
 	//
 	// FX1231xxxx
 	EnterpriseNumber *string `json:"EnterpriseNumber,omitempty" xml:"EnterpriseNumber,omitempty"`
-	// The VerificationToken of the Lark self-built application.
+	// The VerificationToken of the Lark custom application.
 	//
 	// example:
 	//
@@ -1014,13 +1014,13 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig struct {
 	//
 	// XXXX
 	AdministratorPassword *string `json:"AdministratorPassword,omitempty" xml:"AdministratorPassword,omitempty"`
-	// The AD/LDAP administrator account.
+	// The AD/LDAP administrator username.
 	//
 	// example:
 	//
 	// example.com
 	AdministratorUsername *string `json:"AdministratorUsername,omitempty" xml:"AdministratorUsername,omitempty"`
-	// Specifies whether to verify the certificate fingerprint. Valid values:
+	// Indicates whether certificate fingerprint verification is enabled. Valid values:
 	//
 	// - disabled: Disabled.
 	//
@@ -1050,7 +1050,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailLdapConfig struct {
 	//
 	// 389
 	LdapServerPort *int32 `json:"LdapServerPort,omitempty" xml:"LdapServerPort,omitempty"`
-	// Specifies whether StartTLS is enabled. Valid values:
+	// Indicates whether StartTLS is enabled. Valid values:
 	//
 	// - disabled: Disabled.
 	//
@@ -1167,13 +1167,13 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailOidcConfig struct {
 	//
 	// - S256: SHA-256.
 	//
-	// - plain: Plaintext.
+	// - plain: plaintext.
 	//
 	// example:
 	//
 	// S256
 	PkceChallengeMethod *string `json:"PkceChallengeMethod,omitempty" xml:"PkceChallengeMethod,omitempty"`
-	// Specifies whether to use PKCE in the AuthorizationCode grant mode.
+	// Indicates whether PKCE is used in the AuthorizationCode grant mode.
 	//
 	// example:
 	//
@@ -1416,13 +1416,13 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig struct {
 	BindingMethod *string `json:"BindingMethod,omitempty" xml:"BindingMethod,omitempty"`
 	// The list of IdP signing certificates.
 	Certificates []*GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// The EntityId of the IdP.
+	// The entity ID of the IdP.
 	//
 	// example:
 	//
 	// http://dc.test.com/adfs/services/trust
 	IdPEntityId *string `json:"IdPEntityId,omitempty" xml:"IdPEntityId,omitempty"`
-	// The logon URL of the IdP.
+	// The SSO URL of the IdP.
 	//
 	// example:
 	//
@@ -1434,14 +1434,16 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig struct {
 	//
 	// 180
 	MaxClockSkew *int64 `json:"MaxClockSkew,omitempty" xml:"MaxClockSkew,omitempty"`
-	// Specifies whether the request must be signed.
+	// Indicates whether requests are required to be signed.
 	//
 	// example:
 	//
 	// true
 	RequireRequestSigned *bool `json:"RequireRequestSigned,omitempty" xml:"RequireRequestSigned,omitempty"`
+	// Indicates whether the external IdP is required to sign assertions.
 	WantAssertionsSigned *bool `json:"WantAssertionsSigned,omitempty" xml:"WantAssertionsSigned,omitempty"`
-	WantResponseSigned   *bool `json:"WantResponseSigned,omitempty" xml:"WantResponseSigned,omitempty"`
+	// Indicates whether the external IdP is required to sign the Response.
+	WantResponseSigned *bool `json:"WantResponseSigned,omitempty" xml:"WantResponseSigned,omitempty"`
 }
 
 func (s GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfig) String() string {
@@ -1584,13 +1586,13 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertific
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertificatesCertificateMetadata struct {
-	// The latest validity date of the certificate.
+	// The date after which the certificate is no longer valid.
 	//
 	// example:
 	//
 	// 1704067200000
 	NotAfter *int64 `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	// The earliest validity date of the certificate.
+	// The date before which the certificate is not valid.
 	//
 	// example:
 	//
@@ -1629,7 +1631,7 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailSamlConfigCertific
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig struct {
-	// Specifies whether group synchronization is enabled. Valid values:
+	// Indicates whether group synchronization is enabled. Valid values:
 	//
 	// - disabled: Disabled.
 	//
@@ -1639,7 +1641,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig struct {
 	//
 	// disabled
 	GroupSyncStatus *string `json:"GroupSyncStatus,omitempty" xml:"GroupSyncStatus,omitempty"`
-	// The incremental callback status. Specifies whether to process incremental callback data from the IdP. Valid values:
+	// The incremental callback status, which indicates whether incremental callback data from the IdP is processed. Valid values:
 	//
 	// - disabled: Disabled.
 	//
@@ -1649,7 +1651,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig struct {
 	//
 	// disabled
 	IncrementalCallbackStatus *string `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
-	// The synchronization scope configuration.
+	// The sync scope configuration.
 	UdSyncScopeConfig *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncScopeConfig `json:"UdSyncScopeConfig,omitempty" xml:"UdSyncScopeConfig,omitempty" type:"Struct"`
 }
 
@@ -1698,9 +1700,9 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfig) Vali
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailUdPullConfigUdSyncScopeConfig struct {
-	// The list of synchronization source nodes.
+	// The list of source nodes for synchronization.
 	SourceScopes []*string `json:"SourceScopes,omitempty" xml:"SourceScopes,omitempty" type:"Repeated"`
-	// The synchronization target node.
+	// The target node for synchronization.
 	//
 	// example:
 	//
@@ -1745,7 +1747,7 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig struct {
 	//
 	// disabled
 	IncrementalCallbackStatus *string `json:"IncrementalCallbackStatus,omitempty" xml:"IncrementalCallbackStatus,omitempty"`
-	// The list of synchronization scope configurations.
+	// The list of sync scope configurations.
 	UdSyncScopeConfigs []*GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSyncScopeConfigs `json:"UdSyncScopeConfigs,omitempty" xml:"UdSyncScopeConfigs,omitempty" type:"Repeated"`
 }
 
@@ -1789,9 +1791,9 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfig) Vali
 }
 
 type GetIdentityProviderResponseBodyIdentityProviderDetailUdPushConfigUdSyncScopeConfigs struct {
-	// The list of synchronization source nodes.
+	// The list of source nodes for synchronization.
 	SourceScopes []*string `json:"SourceScopes,omitempty" xml:"SourceScopes,omitempty" type:"Repeated"`
-	// The synchronization target node.
+	// The target node for synchronization.
 	//
 	// example:
 	//
@@ -1842,19 +1844,25 @@ type GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig struct {
 	//
 	// https://example.com/xxxx
 	AuthorizeCallbackDomain *string `json:"AuthorizeCallbackDomain,omitempty" xml:"AuthorizeCallbackDomain,omitempty"`
-	// The CorpId of the WeCom self-built application.
+	// The WeCom contacts secret.
+	//
+	// example:
+	//
+	// mPLLiWv-_9witxxxEJCpk1xkF5hOgBzpRt4kBkxxxx
+	ContactSecret *string `json:"ContactSecret,omitempty" xml:"ContactSecret,omitempty"`
+	// The corpId of the WeCom self-built application.
 	//
 	// example:
 	//
 	// 3562012953454577801
 	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
-	// The CorpSecret of the WeCom self-built application.
+	// The corpSecret of the WeCom self-built application.
 	//
 	// example:
 	//
 	// weaseiszjskejskaj12sjeszojxxxx
 	CorpSecret *string `json:"CorpSecret,omitempty" xml:"CorpSecret,omitempty"`
-	// The trusted domain name.
+	// The trusted domain.
 	//
 	// example:
 	//
@@ -1878,6 +1886,10 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig) GetAu
 	return s.AuthorizeCallbackDomain
 }
 
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig) GetContactSecret() *string {
+	return s.ContactSecret
+}
+
 func (s *GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig) GetCorpId() *string {
 	return s.CorpId
 }
@@ -1897,6 +1909,11 @@ func (s *GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig) SetAg
 
 func (s *GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig) SetAuthorizeCallbackDomain(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig {
 	s.AuthorizeCallbackDomain = &v
+	return s
+}
+
+func (s *GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig) SetContactSecret(v string) *GetIdentityProviderResponseBodyIdentityProviderDetailWeComConfig {
+	s.ContactSecret = &v
 	return s
 }
 

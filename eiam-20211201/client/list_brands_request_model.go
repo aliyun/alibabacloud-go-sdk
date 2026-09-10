@@ -40,7 +40,7 @@ type ListBrandsRequest struct {
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The pagination token for the previous page.
+	// The token used to query the previous page.
 	//
 	// example:
 	//

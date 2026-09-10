@@ -94,7 +94,15 @@ type GetAuthorizationRuleResponseBodyAuthorizationRule struct {
 	//
 	// test-name
 	AuthorizationRuleName *string `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
-	// The scenario label of the authorization rule.
+	// The scenario label of the authorization rule. Valid values:
+	//
+	// - privileged_cloud_account: Privileged cloud account scenario.
+	//
+	// - asset: Asset scenario.
+	//
+	// example:
+	//
+	// Asset
 	AuthorizationRuleScenarioLabel *string `json:"AuthorizationRuleScenarioLabel,omitempty" xml:"AuthorizationRuleScenarioLabel,omitempty"`
 	// The subject ID associated with the authorization rule.
 	//
@@ -122,7 +130,7 @@ type GetAuthorizationRuleResponseBodyAuthorizationRule struct {
 	//
 	// user
 	AuthorizationRuleSubjectType *string `json:"AuthorizationRuleSubjectType,omitempty" xml:"AuthorizationRuleSubjectType,omitempty"`
-	// The creation time, in UNIX timestamp format, measured in milliseconds.
+	// The creation time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -156,7 +164,7 @@ type GetAuthorizationRuleResponseBodyAuthorizationRule struct {
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The last update time, in UNIX timestamp format, measured in milliseconds.
+	// The last update time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//

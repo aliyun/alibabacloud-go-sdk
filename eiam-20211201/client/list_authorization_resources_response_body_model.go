@@ -22,7 +22,7 @@ type iListAuthorizationResourcesResponseBody interface {
 }
 
 type ListAuthorizationResourcesResponseBody struct {
-	// The list of authorization resources.
+	// The list of authorized resources.
 	AuthorizationResources []*ListAuthorizationResourcesResponseBodyAuthorizationResources `json:"AuthorizationResources,omitempty" xml:"AuthorizationResources,omitempty" type:"Repeated"`
 	// The number of rows per page in a paging query.
 	//
@@ -30,7 +30,7 @@ type ListAuthorizationResourcesResponseBody struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token returned by this call, used for the next page query.
+	// The pagination token returned in this call, which is used for the next paged query.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListAuthorizationResourcesResponseBody struct {
 	//
 	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the list.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -117,15 +117,15 @@ func (s *ListAuthorizationResourcesResponseBody) Validate() error {
 }
 
 type ListAuthorizationResourcesResponseBodyAuthorizationResources struct {
-	// The resource entity ID associated with the authorization resource.
+	// The ID of the resource entity associated with the authorized resource.
 	//
 	// example:
 	//
 	// carole_01kmek49aqxxxx
 	AuthorizationResourceEntityId *string `json:"AuthorizationResourceEntityId,omitempty" xml:"AuthorizationResourceEntityId,omitempty"`
-	// The resource entity type associated with the authorization resource. Valid values:
+	// The type of the resource entity associated with the authorized resource. Valid values:
 	//
-	// - cloud_account_role: cloud role
+	// - cloud_account_role: cloud role.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type ListAuthorizationResourcesResponseBodyAuthorizationResources struct {
 	//
 	// arrule_01kf143ug06fg7m9f43u7vahxxxx
 	AuthorizationRuleId *string `json:"AuthorizationRuleId,omitempty" xml:"AuthorizationRuleId,omitempty"`
-	// The cloud account ID to which the resource entity associated with the authorization resource belongs.
+	// The ID of the cloud account to which the resource entity associated with the authorized resource belongs.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ type ListAuthorizationResourcesResponseBodyAuthorizationResources struct {
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
 	// The effective condition.
 	Condition *ListAuthorizationResourcesResponseBodyAuthorizationResourcesCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Struct"`
-	// The creation time.
+	// The creation time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type ListAuthorizationResourcesResponseBodyAuthorizationResources struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The update time.
+	// The update time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//

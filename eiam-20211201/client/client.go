@@ -25,15 +25,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		return _err
 	}
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-hongkong":    dara.String("eiam.cn-hongkong.aliyuncs.com"),
-		"ap-northeast-2": dara.String("eiam.ap-northeast-2.aliyuncs.com"),
-		"ap-southeast-1": dara.String("eiam.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-5": dara.String("eiam.ap-southeast-5.aliyuncs.com"),
-		"cn-hangzhou":    dara.String("eiam.cn-hangzhou.aliyuncs.com"),
-		"cn-beijing":     dara.String("eiam.cn-beijing.aliyuncs.com"),
-		"eu-central-1":   dara.String("eiam.eu-central-1.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -1409,7 +1400,7 @@ func (client *Client) CheckInstanceForDelete(request *CheckInstanceForDeleteRequ
 
 // Summary:
 //
-// Determines whether an instance has the capability of a specific module.
+// Checks whether an instance has the feature of a specific module.
 //
 // @param request - CheckInstanceModuleStatusRequest
 //
@@ -1473,7 +1464,7 @@ func (client *Client) CheckInstanceModuleStatusWithOptions(request *CheckInstanc
 
 // Summary:
 //
-// Determines whether an instance has the capability of a specific module.
+// Checks whether an instance has the feature of a specific module.
 //
 // @param request - CheckInstanceModuleStatusRequest
 //
@@ -1667,7 +1658,7 @@ func (client *Client) CreateApplicationClientSecret(request *CreateApplicationCl
 
 // Summary:
 //
-// Creates an application federated identity credential.
+// Creates an application federated credential.
 //
 // @param request - CreateApplicationFederatedCredentialRequest
 //
@@ -1751,7 +1742,7 @@ func (client *Client) CreateApplicationFederatedCredentialWithOptions(request *C
 
 // Summary:
 //
-// Creates an application federated identity credential.
+// Creates an application federated credential.
 //
 // @param request - CreateApplicationFederatedCredentialRequest
 //
@@ -2237,11 +2228,13 @@ func (client *Client) CreateClientPublicKey(request *CreateClientPublicKeyReques
 
 // Summary:
 //
-// Creates a cloud account resource in a specified EIAM instance.
+// Creates a cloud account resource under a specified EIAM instance.
 //
 // Description:
 //
-// *Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of IDaaS EIAM.**
+// <props="china">**Before you call this operation, make sure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of IDaaS EIAM.**
+//
+// <props="intl">**Before you call this operation, make sure that you fully understand the billing method of IDaaS EIAM.**
 //
 // @param request - CreateCloudAccountRequest
 //
@@ -2313,11 +2306,13 @@ func (client *Client) CreateCloudAccountWithOptions(request *CreateCloudAccountR
 
 // Summary:
 //
-// Creates a cloud account resource in a specified EIAM instance.
+// Creates a cloud account resource under a specified EIAM instance.
 //
 // Description:
 //
-// *Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of IDaaS EIAM.**
+// <props="china">**Before you call this operation, make sure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of IDaaS EIAM.**
+//
+// <props="intl">**Before you call this operation, make sure that you fully understand the billing method of IDaaS EIAM.**
 //
 // @param request - CreateCloudAccountRequest
 //
@@ -3219,7 +3214,7 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 
 // Summary:
 //
-// Create an identity provider.
+// Creates an identity provider.
 //
 // @param request - CreateIdentityProviderRequest
 //
@@ -3331,7 +3326,7 @@ func (client *Client) CreateIdentityProviderWithOptions(request *CreateIdentityP
 
 // Summary:
 //
-// Create an identity provider.
+// Creates an identity provider.
 //
 // @param request - CreateIdentityProviderRequest
 //
@@ -9217,7 +9212,9 @@ func (client *Client) EnableCredentialProvider(request *EnableCredentialProvider
 //
 // Description:
 //
-// *Before you use this operation, make sure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of IDaaS EIAM.**.
+// <props="china">**Before using this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of IDaaS EIAM.**
+//
+// <props="intl">**Before using this operation, make sure that you fully understand the billing methods of IDaaS EIAM.**
 //
 // @param request - EnableCustomFieldRequest
 //
@@ -9269,7 +9266,9 @@ func (client *Client) EnableCustomFieldWithOptions(request *EnableCustomFieldReq
 //
 // Description:
 //
-// *Before you use this operation, make sure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of IDaaS EIAM.**.
+// <props="china">**Before using this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of IDaaS EIAM.**
+//
+// <props="intl">**Before using this operation, make sure that you fully understand the billing methods of IDaaS EIAM.**
 //
 // @param request - EnableCustomFieldRequest
 //
@@ -10659,7 +10658,7 @@ func (client *Client) GetApplicationAdvancedConfig(request *GetApplicationAdvanc
 
 // Summary:
 //
-// Retrieves the federated identity credential of an application.
+// Retrieves an application federated identity credential.
 //
 // @param request - GetApplicationFederatedCredentialRequest
 //
@@ -10711,7 +10710,7 @@ func (client *Client) GetApplicationFederatedCredentialWithOptions(request *GetA
 
 // Summary:
 //
-// Retrieves the federated identity credential of an application.
+// Retrieves an application federated identity credential.
 //
 // @param request - GetApplicationFederatedCredentialRequest
 //
@@ -11063,7 +11062,7 @@ func (client *Client) GetApplicationRole(request *GetApplicationRoleRequest) (_r
 
 // Summary:
 //
-// Retrieves the single sign-on (SSO) configuration for an application in EIAM.
+// Queries the single sign-on (SSO) configuration properties of an EIAM application.
 //
 // @param request - GetApplicationSsoConfigRequest
 //
@@ -11111,7 +11110,7 @@ func (client *Client) GetApplicationSsoConfigWithOptions(request *GetApplication
 
 // Summary:
 //
-// Retrieves the single sign-on (SSO) configuration for an application in EIAM.
+// Queries the single sign-on (SSO) configuration properties of an EIAM application.
 //
 // @param request - GetApplicationSsoConfigRequest
 //
@@ -11191,7 +11190,7 @@ func (client *Client) GetApplicationTemplate(request *GetApplicationTemplateRequ
 
 // Summary:
 //
-// Queries the information of an authorization resource.
+// Queries the information about an authorization resource.
 //
 // @param request - GetAuthorizationResourceRequest
 //
@@ -11243,7 +11242,7 @@ func (client *Client) GetAuthorizationResourceWithOptions(request *GetAuthorizat
 
 // Summary:
 //
-// Queries the information of an authorization resource.
+// Queries the information about an authorization resource.
 //
 // @param request - GetAuthorizationResourceRequest
 //
@@ -11393,7 +11392,7 @@ func (client *Client) GetAuthorizationServer(request *GetAuthorizationServerRequ
 
 // Summary:
 //
-// # Get Brand Details
+// Retrieves the details of a brand.
 //
 // @param request - GetBrandRequest
 //
@@ -11441,7 +11440,7 @@ func (client *Client) GetBrandWithOptions(request *GetBrandRequest, runtime *dar
 
 // Summary:
 //
-// # Get Brand Details
+// Retrieves the details of a brand.
 //
 // @param request - GetBrandRequest
 //
@@ -14313,7 +14312,7 @@ func (client *Client) ListApplicationClientSecrets(request *ListApplicationClien
 
 // Summary:
 //
-// Queries a list of application federated credentials.
+// Queries the list of application federated identity credentials.
 //
 // @param request - ListApplicationFederatedCredentialsRequest
 //
@@ -14377,7 +14376,7 @@ func (client *Client) ListApplicationFederatedCredentialsWithOptions(request *Li
 
 // Summary:
 //
-// Queries a list of application federated credentials.
+// Queries the list of application federated identity credentials.
 //
 // @param request - ListApplicationFederatedCredentialsRequest
 //
@@ -15285,11 +15284,11 @@ func (client *Client) ListApplicationsForUser(request *ListApplicationsForUserRe
 
 // Summary:
 //
-// Queries a list of authorization resource information.
+// Lists authorized resource information.
 //
 // Description:
 //
-// This operation queries only the direct permissions of an organization, that is, applications directly assigned to the organization. When calling this operation, you can use the **ApplicationIds*	- parameter to filter applications.
+// This operation queries only the direct permissions of an organization, that is, applications directly assigned to the organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListAuthorizationResourcesRequest
 //
@@ -15349,11 +15348,11 @@ func (client *Client) ListAuthorizationResourcesWithOptions(request *ListAuthori
 
 // Summary:
 //
-// Queries a list of authorization resource information.
+// Lists authorized resource information.
 //
 // Description:
 //
-// This operation queries only the direct permissions of an organization, that is, applications directly assigned to the organization. When calling this operation, you can use the **ApplicationIds*	- parameter to filter applications.
+// This operation queries only the direct permissions of an organization, that is, applications directly assigned to the organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListAuthorizationResourcesRequest
 //
@@ -15885,7 +15884,7 @@ func (client *Client) ListClientPublicKeys(request *ListClientPublicKeysRequest)
 
 // Summary:
 //
-// Queries the information about one or more cloud roles by using paging.
+// Queries information about one or more cloud roles by using paging.
 //
 // @param request - ListCloudAccountRolesRequest
 //
@@ -15945,7 +15944,7 @@ func (client *Client) ListCloudAccountRolesWithOptions(request *ListCloudAccount
 
 // Summary:
 //
-// Queries the information about one or more cloud roles by using paging.
+// Queries information about one or more cloud roles by using paging.
 //
 // @param request - ListCloudAccountRolesRequest
 //
@@ -15963,7 +15962,7 @@ func (client *Client) ListCloudAccountRoles(request *ListCloudAccountRolesReques
 
 // Summary:
 //
-// Queries one or more cloud accounts by using paging.
+// Queries information about one or more cloud accounts by using paging.
 //
 // @param request - ListCloudAccountsRequest
 //
@@ -16019,7 +16018,7 @@ func (client *Client) ListCloudAccountsWithOptions(request *ListCloudAccountsReq
 
 // Summary:
 //
-// Queries one or more cloud accounts by using paging.
+// Queries information about one or more cloud accounts by using paging.
 //
 // @param request - ListCloudAccountsRequest
 //
@@ -21218,11 +21217,11 @@ func (client *Client) SetApplicationResourceServerIdentifier(request *SetApplica
 
 // Summary:
 //
-// Sets the single sign-on (SSO) configuration properties for an EIAM application.
+// Sets the single sign-on (SSO) configuration properties of an EIAM application.
 //
 // Description:
 //
-// In EIAM, application management supports adding applications that use multiple single sign-on (SSO) protocols (SAML 2.0 and OIDC). However, each application supports only one SSO protocol, which is specified during creation and cannot be changed. Specify the corresponding SSO configuration property parameters based on the SSO protocol type supported by the application.
+// In EIAM, application management supports adding applications that use multiple single sign-on (SSO) protocols (SAML 2.0 and OIDC). However, each application supports only one SSO protocol, which is specified during creation and cannot be changed afterward. Specify the corresponding SSO configuration property parameters based on the SSO protocol type supported by the current application.
 //
 // @param request - SetApplicationSsoConfigRequest
 //
@@ -21290,11 +21289,11 @@ func (client *Client) SetApplicationSsoConfigWithOptions(request *SetApplication
 
 // Summary:
 //
-// Sets the single sign-on (SSO) configuration properties for an EIAM application.
+// Sets the single sign-on (SSO) configuration properties of an EIAM application.
 //
 // Description:
 //
-// In EIAM, application management supports adding applications that use multiple single sign-on (SSO) protocols (SAML 2.0 and OIDC). However, each application supports only one SSO protocol, which is specified during creation and cannot be changed. Specify the corresponding SSO configuration property parameters based on the SSO protocol type supported by the application.
+// In EIAM, application management supports adding applications that use multiple single sign-on (SSO) protocols (SAML 2.0 and OIDC). However, each application supports only one SSO protocol, which is specified during creation and cannot be changed afterward. Specify the corresponding SSO configuration property parameters based on the SSO protocol type supported by the current application.
 //
 // @param request - SetApplicationSsoConfigRequest
 //
@@ -22944,7 +22943,7 @@ func (client *Client) UpdateApplicationDescription(request *UpdateApplicationDes
 
 // Summary:
 //
-// Updates a federated credential for an application.
+// Updates an application federated identity credential.
 //
 // @param request - UpdateApplicationFederatedCredentialRequest
 //
@@ -23012,7 +23011,7 @@ func (client *Client) UpdateApplicationFederatedCredentialWithOptions(request *U
 
 // Summary:
 //
-// Updates a federated credential for an application.
+// Updates an application federated identity credential.
 //
 // @param request - UpdateApplicationFederatedCredentialRequest
 //

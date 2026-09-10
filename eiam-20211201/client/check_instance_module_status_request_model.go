@@ -24,7 +24,7 @@ type iCheckInstanceModuleStatusRequest interface {
 }
 
 type CheckInstanceModuleStatusRequest struct {
-	// The secondary module identifier.
+	// The level-2 module identifier.
 	//
 	// example:
 	//
@@ -38,17 +38,27 @@ type CheckInstanceModuleStatusRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The primary module identifier.
+	// The level-1 module identifier.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// urn:alibaba:idaas:license:module:ud
-	ModuleKey          *string `json:"ModuleKey,omitempty" xml:"ModuleKey,omitempty"`
-	ResourceLabelKey   *string `json:"ResourceLabelKey,omitempty" xml:"ResourceLabelKey,omitempty"`
+	ModuleKey *string `json:"ModuleKey,omitempty" xml:"ModuleKey,omitempty"`
+	// The resource label URN key.
+	//
+	// example:
+	//
+	// urn:alibaba:idaas:license:label:template:app
+	ResourceLabelKey *string `json:"ResourceLabelKey,omitempty" xml:"ResourceLabelKey,omitempty"`
+	// The resource label name.
+	//
+	// example:
+	//
+	// apt_ram_user_sso
 	ResourceLabelValue *string `json:"ResourceLabelValue,omitempty" xml:"ResourceLabelValue,omitempty"`
-	// The tertiary module identifier.
+	// The level-3 module identifier.
 	//
 	// example:
 	//

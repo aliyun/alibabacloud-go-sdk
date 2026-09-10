@@ -74,7 +74,7 @@ type CreateCloudAccountRequest struct {
 	//
 	// example:
 	//
-	// Alibaba_cloud(Alibaba Cloud)
+	// alibaba_cloud(Alibaba Cloud)
 	CloudAccountVendorType *string `json:"CloudAccountVendorType,omitempty" xml:"CloudAccountVendorType,omitempty"`
 	// The description of the cloud account.
 	//

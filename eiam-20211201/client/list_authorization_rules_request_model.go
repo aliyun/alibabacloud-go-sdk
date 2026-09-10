@@ -40,7 +40,7 @@ type ListAuthorizationRulesRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the starting position of the next page.
+	// The token that identifies the start position of the next page.
 	//
 	// - If this parameter is not specified, the query starts from the first page.
 	//
@@ -112,7 +112,7 @@ type ListAuthorizationRulesRequestFilter struct {
 	//
 	// - AuthorizationRuleId: the authorization rule ID.
 	//
-	// - AuthorizationRuleNameStartWith: the prefix of the authorization rule name for fuzzy match.
+	// - AuthorizationRuleNameStartWith: the left-match value of the authorization rule name.
 	//
 	// example:
 	//

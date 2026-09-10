@@ -46,19 +46,19 @@ type ListApplicationFederatedCredentialsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries per page in a paged query. This parameter is used for paging.
+	// The maximum number of rows per page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token used to retrieve the next page of results.
+	// The pagination token for the next page.
 	//
 	// example:
 	//
 	// NTxxxxxexample
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The pagination token used to retrieve the previous page of results.
+	// The pagination token for the previous page.
 	//
 	// example:
 	//

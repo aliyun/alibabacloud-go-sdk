@@ -1027,7 +1027,7 @@ func (client *Client) CheckInstanceForDeleteWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Determines whether an instance has the capability of a specific module.
+// Checks whether an instance has the feature of a specific module.
 //
 // @param request - CheckInstanceModuleStatusRequest
 //
@@ -1227,7 +1227,7 @@ func (client *Client) CreateApplicationClientSecretWithContext(ctx context.Conte
 
 // Summary:
 //
-// Creates an application federated identity credential.
+// Creates an application federated credential.
 //
 // @param request - CreateApplicationFederatedCredentialRequest
 //
@@ -1671,11 +1671,13 @@ func (client *Client) CreateClientPublicKeyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Creates a cloud account resource in a specified EIAM instance.
+// Creates a cloud account resource under a specified EIAM instance.
 //
 // Description:
 //
-// *Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of IDaaS EIAM.**
+// <props="china">**Before you call this operation, make sure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of IDaaS EIAM.**
+//
+// <props="intl">**Before you call this operation, make sure that you fully understand the billing method of IDaaS EIAM.**
 //
 // @param request - CreateCloudAccountRequest
 //
@@ -2447,7 +2449,7 @@ func (client *Client) CreateGroupWithContext(ctx context.Context, request *Creat
 
 // Summary:
 //
-// Create an identity provider.
+// Creates an identity provider.
 //
 // @param request - CreateIdentityProviderRequest
 //
@@ -6879,7 +6881,9 @@ func (client *Client) EnableCredentialProviderWithContext(ctx context.Context, r
 //
 // Description:
 //
-// *Before you use this operation, make sure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of IDaaS EIAM.**.
+// <props="china">**Before using this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of IDaaS EIAM.**
+//
+// <props="intl">**Before using this operation, make sure that you fully understand the billing methods of IDaaS EIAM.**
 //
 // @param request - EnableCustomFieldRequest
 //
@@ -7935,7 +7939,7 @@ func (client *Client) GetApplicationAdvancedConfigWithContext(ctx context.Contex
 
 // Summary:
 //
-// Retrieves the federated identity credential of an application.
+// Retrieves an application federated identity credential.
 //
 // @param request - GetApplicationFederatedCredentialRequest
 //
@@ -8231,7 +8235,7 @@ func (client *Client) GetApplicationRoleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves the single sign-on (SSO) configuration for an application in EIAM.
+// Queries the single sign-on (SSO) configuration properties of an EIAM application.
 //
 // @param request - GetApplicationSsoConfigRequest
 //
@@ -8323,7 +8327,7 @@ func (client *Client) GetApplicationTemplateWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the information of an authorization resource.
+// Queries the information about an authorization resource.
 //
 // @param request - GetAuthorizationResourceRequest
 //
@@ -8471,7 +8475,7 @@ func (client *Client) GetAuthorizationServerWithContext(ctx context.Context, req
 
 // Summary:
 //
-// # Get Brand Details
+// Retrieves the details of a brand.
 //
 // @param request - GetBrandRequest
 //
@@ -10587,7 +10591,7 @@ func (client *Client) ListApplicationClientSecretsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries a list of application federated credentials.
+// Queries the list of application federated identity credentials.
 //
 // @param request - ListApplicationFederatedCredentialsRequest
 //
@@ -11339,11 +11343,11 @@ func (client *Client) ListApplicationsForUserWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries a list of authorization resource information.
+// Lists authorized resource information.
 //
 // Description:
 //
-// This operation queries only the direct permissions of an organization, that is, applications directly assigned to the organization. When calling this operation, you can use the **ApplicationIds*	- parameter to filter applications.
+// This operation queries only the direct permissions of an organization, that is, applications directly assigned to the organization. When you call this operation, you can use the **ApplicationIds*	- parameter to filter applications.
 //
 // @param request - ListAuthorizationResourcesRequest
 //
@@ -11791,7 +11795,7 @@ func (client *Client) ListClientPublicKeysWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the information about one or more cloud roles by using paging.
+// Queries information about one or more cloud roles by using paging.
 //
 // @param request - ListCloudAccountRolesRequest
 //
@@ -11851,7 +11855,7 @@ func (client *Client) ListCloudAccountRolesWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries one or more cloud accounts by using paging.
+// Queries information about one or more cloud accounts by using paging.
 //
 // @param request - ListCloudAccountsRequest
 //
@@ -15749,11 +15753,11 @@ func (client *Client) SetApplicationResourceServerIdentifierWithContext(ctx cont
 
 // Summary:
 //
-// Sets the single sign-on (SSO) configuration properties for an EIAM application.
+// Sets the single sign-on (SSO) configuration properties of an EIAM application.
 //
 // Description:
 //
-// In EIAM, application management supports adding applications that use multiple single sign-on (SSO) protocols (SAML 2.0 and OIDC). However, each application supports only one SSO protocol, which is specified during creation and cannot be changed. Specify the corresponding SSO configuration property parameters based on the SSO protocol type supported by the application.
+// In EIAM, application management supports adding applications that use multiple single sign-on (SSO) protocols (SAML 2.0 and OIDC). However, each application supports only one SSO protocol, which is specified during creation and cannot be changed afterward. Specify the corresponding SSO configuration property parameters based on the SSO protocol type supported by the current application.
 //
 // @param request - SetApplicationSsoConfigRequest
 //
@@ -17057,7 +17061,7 @@ func (client *Client) UpdateApplicationDescriptionWithContext(ctx context.Contex
 
 // Summary:
 //
-// Updates a federated credential for an application.
+// Updates an application federated identity credential.
 //
 // @param request - UpdateApplicationFederatedCredentialRequest
 //

@@ -158,12 +158,24 @@ type ListBrandsResponseBodyBrands struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The SMS gateway ID.
+	//
+	// example:
+	//
+	// smsgw_01l9f0kunrrjhxxx
+	SmsGatewayId *string `json:"SmsGatewayId,omitempty" xml:"SmsGatewayId,omitempty"`
 	// The brand status.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The enabling status of system notifications.
+	//
+	// example:
+	//
+	// enabled
+	SystemNotificationStatus *string `json:"SystemNotificationStatus,omitempty" xml:"SystemNotificationStatus,omitempty"`
 }
 
 func (s ListBrandsResponseBodyBrands) String() string {
@@ -190,8 +202,16 @@ func (s *ListBrandsResponseBodyBrands) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *ListBrandsResponseBodyBrands) GetSmsGatewayId() *string {
+	return s.SmsGatewayId
+}
+
 func (s *ListBrandsResponseBodyBrands) GetStatus() *string {
 	return s.Status
+}
+
+func (s *ListBrandsResponseBodyBrands) GetSystemNotificationStatus() *string {
+	return s.SystemNotificationStatus
 }
 
 func (s *ListBrandsResponseBodyBrands) SetBrandId(v string) *ListBrandsResponseBodyBrands {
@@ -214,8 +234,18 @@ func (s *ListBrandsResponseBodyBrands) SetInstanceId(v string) *ListBrandsRespon
 	return s
 }
 
+func (s *ListBrandsResponseBodyBrands) SetSmsGatewayId(v string) *ListBrandsResponseBodyBrands {
+	s.SmsGatewayId = &v
+	return s
+}
+
 func (s *ListBrandsResponseBodyBrands) SetStatus(v string) *ListBrandsResponseBodyBrands {
 	s.Status = &v
+	return s
+}
+
+func (s *ListBrandsResponseBodyBrands) SetSystemNotificationStatus(v string) *ListBrandsResponseBodyBrands {
+	s.SystemNotificationStatus = &v
 	return s
 }
 

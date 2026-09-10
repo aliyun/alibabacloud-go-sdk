@@ -16,13 +16,13 @@ type iCreateIdentityProviderResponseBody interface {
 }
 
 type CreateIdentityProviderResponseBody struct {
-	// Identity provider ID.
+	// The identity provider ID.
 	//
 	// example:
 	//
 	// idp_mwpcwnhrimlr2horxXXXX
 	IdentityProviderId *string `json:"IdentityProviderId,omitempty" xml:"IdentityProviderId,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//

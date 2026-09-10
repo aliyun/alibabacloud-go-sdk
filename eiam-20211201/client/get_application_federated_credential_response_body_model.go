@@ -88,7 +88,7 @@ type GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredential
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The attribute mappings.
 	AttributeMappings []*GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialAttributeMappings `json:"AttributeMappings,omitempty" xml:"AttributeMappings,omitempty" type:"Repeated"`
-	// The time when the credential was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -112,15 +112,15 @@ type GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredential
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the credential was last used.
+	// The last used time.
 	//
 	// example:
 	//
 	// 1758785994982
 	LastUsedTime *int64 `json:"LastUsedTime,omitempty" xml:"LastUsedTime,omitempty"`
-	// The OIDC structured configuration. This parameter applies when the verification mode is structured and the credential type is oidc.
+	// The OIDC structured configuration.
 	OidcVerificationConfig *GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialOidcVerificationConfig `json:"OidcVerificationConfig,omitempty" xml:"OidcVerificationConfig,omitempty" type:"Struct"`
-	// The PKCS#7 structured configuration. This parameter applies when the verification mode is structured and the credential type is pkcs7.
+	// The PKCS#7 structured configuration.
 	Pkcs7VerificationConfig *GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialPkcs7VerificationConfig `json:"Pkcs7VerificationConfig,omitempty" xml:"Pkcs7VerificationConfig,omitempty" type:"Struct"`
 	// The application federated credential status.
 	//
@@ -128,7 +128,7 @@ type GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredential
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the credential was last updated.
+	// The update time.
 	//
 	// example:
 	//
@@ -140,7 +140,15 @@ type GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredential
 	//
 	// Equals(cert.subject.CN, "test")
 	VerificationCondition *string `json:"VerificationCondition,omitempty" xml:"VerificationCondition,omitempty"`
-	// The verification mode. Valid values: freedom and structured.
+	// The verification mode. Valid values:
+	//
+	// - freedom: Free mode.
+	//
+	// - structured: Structured mode.
+	//
+	// example:
+	//
+	// structured
 	VerificationMode *string `json:"VerificationMode,omitempty" xml:"VerificationMode,omitempty"`
 }
 
@@ -368,11 +376,24 @@ type GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredential
 	// The Azure VM scenario configuration.
 	AzureVmConfig *GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialOidcVerificationConfigAzureVmConfig `json:"AzureVmConfig,omitempty" xml:"AzureVmConfig,omitempty" type:"Struct"`
 	// The GCP VM scenario configuration.
-	GcpVmConfig   *GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialOidcVerificationConfigGcpVmConfig   `json:"GcpVmConfig,omitempty" xml:"GcpVmConfig,omitempty" type:"Struct"`
+	GcpVmConfig *GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialOidcVerificationConfigGcpVmConfig `json:"GcpVmConfig,omitempty" xml:"GcpVmConfig,omitempty" type:"Struct"`
+	// The generic scenario configuration.
 	GenericConfig *GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialOidcVerificationConfigGenericConfig `json:"GenericConfig,omitempty" xml:"GenericConfig,omitempty" type:"Struct"`
 	// The Kubernetes scenario configuration.
 	KubernetesConfig *GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialOidcVerificationConfigKubernetesConfig `json:"KubernetesConfig,omitempty" xml:"KubernetesConfig,omitempty" type:"Struct"`
-	// The OIDC scenario profile. Valid values: generic, kubernetes, gcp_vm, and azure_vm.
+	// The OIDC scenario profile. Different profiles correspond to different configurations. Valid values:
+	//
+	// - generic
+	//
+	// - kubernetes
+	//
+	// - gcp_vm
+	//
+	// - azure_vm
+	//
+	// example:
+	//
+	// kubernetes
 	Profile *string `json:"Profile,omitempty" xml:"Profile,omitempty"`
 }
 
@@ -454,10 +475,26 @@ func (s *GetApplicationFederatedCredentialResponseBodyApplicationFederatedCreden
 }
 
 type GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialOidcVerificationConfigAzureVmConfig struct {
-	PrincipalId       *string   `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	ResourceGroupName *string   `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
-	SubscriptionId    *string   `json:"SubscriptionId,omitempty" xml:"SubscriptionId,omitempty"`
-	VmNames           []*string `json:"VmNames,omitempty" xml:"VmNames,omitempty" type:"Repeated"`
+	// The principal ID.
+	//
+	// example:
+	//
+	// 5dee234a-1b4c-4ad7-a19f-fxxxxx
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The Azure resource group name.
+	//
+	// example:
+	//
+	// user_default
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// The subscription ID.
+	//
+	// example:
+	//
+	// 4342a1f4-7e5d-4371-97dc-d4f33f4xxxx
+	SubscriptionId *string `json:"SubscriptionId,omitempty" xml:"SubscriptionId,omitempty"`
+	// The list of virtual machine names.
+	VmNames []*string `json:"VmNames,omitempty" xml:"VmNames,omitempty" type:"Repeated"`
 }
 
 func (s GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialOidcVerificationConfigAzureVmConfig) String() string {
@@ -509,10 +546,19 @@ func (s *GetApplicationFederatedCredentialResponseBodyApplicationFederatedCreden
 }
 
 type GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialOidcVerificationConfigGcpVmConfig struct {
-	// The list of VM instance IDs. A maximum of 10 instance IDs are supported.
+	// The list of VM instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	ProjectId   *string   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The service account ID that corresponds to the sub claim.
+	// The GCP project ID.
+	//
+	// example:
+	//
+	// turnkey-axiom-475109-xx
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The subject corresponding to the service account.
+	//
+	// example:
+	//
+	// 123456789
 	ServiceAccountId *string `json:"ServiceAccountId,omitempty" xml:"ServiceAccountId,omitempty"`
 }
 
@@ -556,6 +602,11 @@ func (s *GetApplicationFederatedCredentialResponseBodyApplicationFederatedCreden
 }
 
 type GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialOidcVerificationConfigGenericConfig struct {
+	// The subject identifier.
+	//
+	// example:
+	//
+	// test_subject
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
 }
 
@@ -581,11 +632,23 @@ func (s *GetApplicationFederatedCredentialResponseBodyApplicationFederatedCreden
 }
 
 type GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialOidcVerificationConfigKubernetesConfig struct {
-	// The Kubernetes namespace.
+	// The K8s namespace.
+	//
+	// example:
+	//
+	// default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The pod name prefix.
+	//
+	// example:
+	//
+	// test-pod
 	PodNamePrefix *string `json:"PodNamePrefix,omitempty" xml:"PodNamePrefix,omitempty"`
-	// The Kubernetes service account name.
+	// The K8s service account name.
+	//
+	// example:
+	//
+	// default
 	ServiceAccountName *string `json:"ServiceAccountName,omitempty" xml:"ServiceAccountName,omitempty"`
 }
 
@@ -629,7 +692,7 @@ func (s *GetApplicationFederatedCredentialResponseBodyApplicationFederatedCreden
 }
 
 type GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentialPkcs7VerificationConfig struct {
-	// The list of allowed instance IDs. A maximum of 10 instance IDs are supported.
+	// The list of allowed instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 }
 

@@ -52,9 +52,9 @@ type UpdateApplicationFederatedCredentialRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The OIDC structured configuration (structured mode + oidc type).
+	// The OIDC structured configuration.
 	OidcVerificationConfig *UpdateApplicationFederatedCredentialRequestOidcVerificationConfig `json:"OidcVerificationConfig,omitempty" xml:"OidcVerificationConfig,omitempty" type:"Struct"`
-	// The PKCS#7 structured configuration (structured mode + pkcs7 type).
+	// The PKCS#7 structured configuration.
 	Pkcs7VerificationConfig *UpdateApplicationFederatedCredentialRequestPkcs7VerificationConfig `json:"Pkcs7VerificationConfig,omitempty" xml:"Pkcs7VerificationConfig,omitempty" type:"Struct"`
 	// The verification condition.
 	//
@@ -207,11 +207,20 @@ type UpdateApplicationFederatedCredentialRequestOidcVerificationConfig struct {
 	// The Azure VM scenario configuration.
 	AzureVmConfig *UpdateApplicationFederatedCredentialRequestOidcVerificationConfigAzureVmConfig `json:"AzureVmConfig,omitempty" xml:"AzureVmConfig,omitempty" type:"Struct"`
 	// The GCP VM scenario configuration.
-	GcpVmConfig   *UpdateApplicationFederatedCredentialRequestOidcVerificationConfigGcpVmConfig   `json:"GcpVmConfig,omitempty" xml:"GcpVmConfig,omitempty" type:"Struct"`
+	GcpVmConfig *UpdateApplicationFederatedCredentialRequestOidcVerificationConfigGcpVmConfig `json:"GcpVmConfig,omitempty" xml:"GcpVmConfig,omitempty" type:"Struct"`
+	// The generic scenario configuration.
 	GenericConfig *UpdateApplicationFederatedCredentialRequestOidcVerificationConfigGenericConfig `json:"GenericConfig,omitempty" xml:"GenericConfig,omitempty" type:"Struct"`
 	// The Kubernetes scenario configuration.
 	KubernetesConfig *UpdateApplicationFederatedCredentialRequestOidcVerificationConfigKubernetesConfig `json:"KubernetesConfig,omitempty" xml:"KubernetesConfig,omitempty" type:"Struct"`
-	// The OIDC scenario profile. Valid values: generic, kubernetes, gcp_vm, and azure_vm.
+	// The OIDC scenario profile. Different profiles correspond to different configurations. Valid values:
+	//
+	// - generic
+	//
+	// - kubernetes
+	//
+	// - gcp_vm
+	//
+	// - azure_vm
 	//
 	// example:
 	//
@@ -297,10 +306,26 @@ func (s *UpdateApplicationFederatedCredentialRequestOidcVerificationConfig) Vali
 }
 
 type UpdateApplicationFederatedCredentialRequestOidcVerificationConfigAzureVmConfig struct {
-	PrincipalId       *string   `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	ResourceGroupName *string   `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
-	SubscriptionId    *string   `json:"SubscriptionId,omitempty" xml:"SubscriptionId,omitempty"`
-	VmNames           []*string `json:"VmNames,omitempty" xml:"VmNames,omitempty" type:"Repeated"`
+	// The principal ID.
+	//
+	// example:
+	//
+	// 5dee234a-1b4c-4ad7-a19f-fxxxxx
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	// The Azure resource group name.
+	//
+	// example:
+	//
+	// user_default
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// The subscription ID.
+	//
+	// example:
+	//
+	// 4342a1f4-7e5d-4371-97dc-d4f33f4xxxx
+	SubscriptionId *string `json:"SubscriptionId,omitempty" xml:"SubscriptionId,omitempty"`
+	// The list of virtual machine names.
+	VmNames []*string `json:"VmNames,omitempty" xml:"VmNames,omitempty" type:"Repeated"`
 }
 
 func (s UpdateApplicationFederatedCredentialRequestOidcVerificationConfigAzureVmConfig) String() string {
@@ -352,9 +377,15 @@ func (s *UpdateApplicationFederatedCredentialRequestOidcVerificationConfigAzureV
 }
 
 type UpdateApplicationFederatedCredentialRequestOidcVerificationConfigGcpVmConfig struct {
+	// The list of VM instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	ProjectId   *string   `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The sub value corresponding to the service account.
+	// The GCP project ID.
+	//
+	// example:
+	//
+	// turnkey-axiom-475109-xx
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The sub claim corresponding to the service account.
 	//
 	// example:
 	//
@@ -402,6 +433,11 @@ func (s *UpdateApplicationFederatedCredentialRequestOidcVerificationConfigGcpVmC
 }
 
 type UpdateApplicationFederatedCredentialRequestOidcVerificationConfigGenericConfig struct {
+	// The subject identifier.
+	//
+	// example:
+	//
+	// test_subject
 	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
 }
 
@@ -427,7 +463,7 @@ func (s *UpdateApplicationFederatedCredentialRequestOidcVerificationConfigGeneri
 }
 
 type UpdateApplicationFederatedCredentialRequestOidcVerificationConfigKubernetesConfig struct {
-	// The Kubernetes namespace.
+	// The K8s namespace.
 	//
 	// example:
 	//
@@ -439,7 +475,7 @@ type UpdateApplicationFederatedCredentialRequestOidcVerificationConfigKubernetes
 	//
 	// my-pod-
 	PodNamePrefix *string `json:"PodNamePrefix,omitempty" xml:"PodNamePrefix,omitempty"`
-	// The Kubernetes service account name.
+	// The K8s service account name.
 	//
 	// example:
 	//
@@ -487,6 +523,7 @@ func (s *UpdateApplicationFederatedCredentialRequestOidcVerificationConfigKubern
 }
 
 type UpdateApplicationFederatedCredentialRequestPkcs7VerificationConfig struct {
+	// The list of VM instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 }
 

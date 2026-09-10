@@ -16,9 +16,9 @@ type iGetBrandResponseBody interface {
 }
 
 type GetBrandResponseBody struct {
-	// Brand.
+	// The brand.
 	Brand *GetBrandResponseBodyBrand `json:"Brand,omitempty" xml:"Brand,omitempty" type:"Struct"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,36 +62,48 @@ func (s *GetBrandResponseBody) Validate() error {
 }
 
 type GetBrandResponseBodyBrand struct {
-	// Brand ID.
+	// The brand ID.
 	//
 	// example:
 	//
 	// brand_xxxx
 	BrandId *string `json:"BrandId,omitempty" xml:"BrandId,omitempty"`
-	// Brand name.
+	// The brand name.
 	//
 	// example:
 	//
 	// Custom Brand
 	BrandName *string `json:"BrandName,omitempty" xml:"BrandName,omitempty"`
-	// Brand type.
+	// The brand type.
 	//
 	// example:
 	//
 	// user_custom
 	BrandType *string `json:"BrandType,omitempty" xml:"BrandType,omitempty"`
-	// Instance ID.
+	// The instance ID.
 	//
 	// example:
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Brand status.
+	// The SMS gateway ID.
+	//
+	// example:
+	//
+	// smsgw_01l9f0kunrrjhxxx
+	SmsGatewayId *string `json:"SmsGatewayId,omitempty" xml:"SmsGatewayId,omitempty"`
+	// The brand status.
 	//
 	// example:
 	//
 	// enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The enabling status of system notifications.
+	//
+	// example:
+	//
+	// enabled
+	SystemNotificationStatus *string `json:"SystemNotificationStatus,omitempty" xml:"SystemNotificationStatus,omitempty"`
 }
 
 func (s GetBrandResponseBodyBrand) String() string {
@@ -118,8 +130,16 @@ func (s *GetBrandResponseBodyBrand) GetInstanceId() *string {
 	return s.InstanceId
 }
 
+func (s *GetBrandResponseBodyBrand) GetSmsGatewayId() *string {
+	return s.SmsGatewayId
+}
+
 func (s *GetBrandResponseBodyBrand) GetStatus() *string {
 	return s.Status
+}
+
+func (s *GetBrandResponseBodyBrand) GetSystemNotificationStatus() *string {
+	return s.SystemNotificationStatus
 }
 
 func (s *GetBrandResponseBodyBrand) SetBrandId(v string) *GetBrandResponseBodyBrand {
@@ -142,8 +162,18 @@ func (s *GetBrandResponseBodyBrand) SetInstanceId(v string) *GetBrandResponseBod
 	return s
 }
 
+func (s *GetBrandResponseBodyBrand) SetSmsGatewayId(v string) *GetBrandResponseBodyBrand {
+	s.SmsGatewayId = &v
+	return s
+}
+
 func (s *GetBrandResponseBodyBrand) SetStatus(v string) *GetBrandResponseBodyBrand {
 	s.Status = &v
+	return s
+}
+
+func (s *GetBrandResponseBodyBrand) SetSystemNotificationStatus(v string) *GetBrandResponseBodyBrand {
+	s.SystemNotificationStatus = &v
 	return s
 }
 

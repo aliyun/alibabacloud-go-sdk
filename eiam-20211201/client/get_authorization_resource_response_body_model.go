@@ -96,7 +96,7 @@ type GetAuthorizationResourceResponseBodyAuthorizationResource struct {
 	CloudAccountId *string `json:"CloudAccountId,omitempty" xml:"CloudAccountId,omitempty"`
 	// The condition restriction.
 	Condition *GetAuthorizationResourceResponseBodyAuthorizationResourceCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Struct"`
-	// The creation time.
+	// The creation time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type GetAuthorizationResourceResponseBodyAuthorizationResource struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The update time.
+	// The update time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//

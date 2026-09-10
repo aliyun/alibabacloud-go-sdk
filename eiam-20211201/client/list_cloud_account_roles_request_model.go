@@ -50,7 +50,7 @@ type ListCloudAccountRolesRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that identifies the start position of the next page.
+	// The token that specifies the start position of the next page.
 	//
 	// - If this parameter is not specified, the query starts from the first page.
 	//
@@ -127,21 +127,21 @@ func (s *ListCloudAccountRolesRequest) Validate() error {
 }
 
 type ListCloudAccountRolesRequestFilter struct {
-	// The name of the filter field. Valid values:
+	// The filter field name. Valid values:
 	//
 	// - CloudAccountRoleId: the cloud role ID.
 	//
 	// - CloudAccountRoleName: the cloud role name.
 	//
-	// - CloudAccountRoleExternalId: the external identifier of the cloud role.
+	// - CloudAccountRoleExternalId: the cloud role external identifier.
 	//
-	// - CloudAccountRoleUsageType: the usage type of the cloud role.
+	// - CloudAccountRoleUsageType: the cloud role usage type.
 	//
 	// example:
 	//
 	// CloudAccountRoleId
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The values of the filter field.
+	// The list of filter field values.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 

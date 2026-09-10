@@ -30,7 +30,7 @@ type ListCloudAccountsRequest struct {
 	//
 	// idaas_ue2jvisn35ea5lmthk267xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries per page.
+	// The maximum number of records per page.
 	//
 	// - If this parameter is not specified, the default value is 20.
 	//

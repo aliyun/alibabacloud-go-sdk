@@ -24,7 +24,7 @@ type iListAuthorizationRulesResponseBody interface {
 type ListAuthorizationRulesResponseBody struct {
 	// The list of authorization rules.
 	AuthorizationRules []*ListAuthorizationRulesResponseBodyAuthorizationRules `json:"AuthorizationRules,omitempty" xml:"AuthorizationRules,omitempty" type:"Repeated"`
-	// The number of entries per page in the paging query.
+	// The number of entries per page in a paging query.
 	//
 	// example:
 	//
@@ -119,9 +119,9 @@ func (s *ListAuthorizationRulesResponseBody) Validate() error {
 type ListAuthorizationRulesResponseBodyAuthorizationRules struct {
 	// The authorization resource scope. Valid values:
 	//
-	// - global: all resources under the project
+	// - global: all resources under the project.
 	//
-	// - custom: specified resources under the project
+	// - custom: specified resources under the project.
 	//
 	// example:
 	//
@@ -129,9 +129,9 @@ type ListAuthorizationRulesResponseBodyAuthorizationRules struct {
 	AuthorizationResourceScope *string `json:"AuthorizationResourceScope,omitempty" xml:"AuthorizationResourceScope,omitempty"`
 	// The creation type of the authorization rule. Valid values:
 	//
-	// - system_init: created by the system
+	// - system_init: created by the system.
 	//
-	// - user_custom: created by the user
+	// - user_custom: created by the user.
 	//
 	// example:
 	//
@@ -149,7 +149,15 @@ type ListAuthorizationRulesResponseBodyAuthorizationRules struct {
 	//
 	// test-name
 	AuthorizationRuleName *string `json:"AuthorizationRuleName,omitempty" xml:"AuthorizationRuleName,omitempty"`
-	// The scenario label of the authorization rule.
+	// The scenario label of the authorization rule. Valid values:
+	//
+	// - privileged_cloud_account: privileged cloud account scenario.
+	//
+	// - asset: asset scenario.
+	//
+	// example:
+	//
+	// Asset
 	AuthorizationRuleScenarioLabel *string `json:"AuthorizationRuleScenarioLabel,omitempty" xml:"AuthorizationRuleScenarioLabel,omitempty"`
 	// The subject ID associated with the authorization rule.
 	//
@@ -159,9 +167,9 @@ type ListAuthorizationRulesResponseBodyAuthorizationRules struct {
 	AuthorizationRuleSubjectId *string `json:"AuthorizationRuleSubjectId,omitempty" xml:"AuthorizationRuleSubjectId,omitempty"`
 	// The subject scope of the authorization rule. Valid values:
 	//
-	// - shared: supports all subjects, including accounts and applications
+	// - shared: supports all subjects, including accounts and applications.
 	//
-	// - exclusive: exclusive type
+	// - exclusive: exclusive type.
 	//
 	// example:
 	//
@@ -169,9 +177,9 @@ type ListAuthorizationRulesResponseBodyAuthorizationRules struct {
 	AuthorizationRuleSubjectScope *string `json:"AuthorizationRuleSubjectScope,omitempty" xml:"AuthorizationRuleSubjectScope,omitempty"`
 	// The subject type associated with the authorization rule. This parameter takes effect only when the subject scope is exclusive. Valid values:
 	//
-	// - application: application
+	// - application: application.
 	//
-	// - user: account
+	// - user: account.
 	//
 	// example:
 	//
@@ -203,9 +211,9 @@ type ListAuthorizationRulesResponseBodyAuthorizationRules struct {
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The authorization rule status. Valid values:
 	//
-	// - enabled: enabled
+	// - enabled: Enabled.
 	//
-	// - disabled: disabled
+	// - disabled: Disabled.
 	//
 	// example:
 	//
