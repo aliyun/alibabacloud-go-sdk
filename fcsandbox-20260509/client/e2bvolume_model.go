@@ -9,6 +9,8 @@ type iE2BVolume interface {
   dara.Model
   String() string
   GoString() string
+  SetAgenticBucketVolumeConfig(v *AgenticBucketVolumeConfig) *E2BVolume
+  GetAgenticBucketVolumeConfig() *AgenticBucketVolumeConfig 
   SetAgenticFSVolumeConfig(v *AgenticFSVolumeConfig) *E2BVolume
   GetAgenticFSVolumeConfig() *AgenticFSVolumeConfig 
   SetCreatedAt(v string) *E2BVolume
@@ -38,6 +40,7 @@ type iE2BVolume interface {
 }
 
 type E2BVolume struct {
+  AgenticBucketVolumeConfig *AgenticBucketVolumeConfig `json:"agenticBucketVolumeConfig,omitempty" xml:"agenticBucketVolumeConfig,omitempty"`
   // The AgenticFS configuration.
   AgenticFSVolumeConfig *AgenticFSVolumeConfig `json:"agenticFSVolumeConfig,omitempty" xml:"agenticFSVolumeConfig,omitempty"`
   // The time when the volume was created.
@@ -126,6 +129,10 @@ func (s E2BVolume) GoString() string {
   return s.String()
 }
 
+func (s *E2BVolume) GetAgenticBucketVolumeConfig() *AgenticBucketVolumeConfig  {
+  return s.AgenticBucketVolumeConfig
+}
+
 func (s *E2BVolume) GetAgenticFSVolumeConfig() *AgenticFSVolumeConfig  {
   return s.AgenticFSVolumeConfig
 }
@@ -176,6 +183,11 @@ func (s *E2BVolume) GetVolumeID() *string  {
 
 func (s *E2BVolume) GetVolumeName() *string  {
   return s.VolumeName
+}
+
+func (s *E2BVolume) SetAgenticBucketVolumeConfig(v *AgenticBucketVolumeConfig) *E2BVolume {
+  s.AgenticBucketVolumeConfig = v
+  return s
 }
 
 func (s *E2BVolume) SetAgenticFSVolumeConfig(v *AgenticFSVolumeConfig) *E2BVolume {
@@ -244,6 +256,11 @@ func (s *E2BVolume) SetVolumeName(v string) *E2BVolume {
 }
 
 func (s *E2BVolume) Validate() error {
+  if s.AgenticBucketVolumeConfig != nil {
+    if err := s.AgenticBucketVolumeConfig.Validate(); err != nil {
+      return err
+    }
+  }
   if s.AgenticFSVolumeConfig != nil {
     if err := s.AgenticFSVolumeConfig.Validate(); err != nil {
       return err

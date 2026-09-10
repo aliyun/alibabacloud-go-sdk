@@ -51,7 +51,7 @@ func (client *Client) CreateApiKeyWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Creates a Team.
+// Creates a team.
 //
 // @param request - CreateTeamRequest
 //

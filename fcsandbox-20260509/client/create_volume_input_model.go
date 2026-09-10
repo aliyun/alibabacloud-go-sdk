@@ -9,6 +9,8 @@ type iCreateVolumeInput interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAgenticBucketVolumeConfig(v *AgenticBucketVolumeConfig) *CreateVolumeInput
+	GetAgenticBucketVolumeConfig() *AgenticBucketVolumeConfig
 	SetAgenticFSVolumeConfig(v *AgenticFSVolumeConfig) *CreateVolumeInput
 	GetAgenticFSVolumeConfig() *AgenticFSVolumeConfig
 	SetMountConfig(v *CreateVolumeInputMountConfig) *CreateVolumeInput
@@ -22,6 +24,7 @@ type iCreateVolumeInput interface {
 }
 
 type CreateVolumeInput struct {
+	AgenticBucketVolumeConfig *AgenticBucketVolumeConfig `json:"agenticBucketVolumeConfig,omitempty" xml:"agenticBucketVolumeConfig,omitempty"`
 	// The AgenticFS configuration.
 	AgenticFSVolumeConfig *AgenticFSVolumeConfig `json:"agenticFSVolumeConfig,omitempty" xml:"agenticFSVolumeConfig,omitempty"`
 	// The mount configuration.
@@ -50,6 +53,10 @@ func (s CreateVolumeInput) GoString() string {
 	return s.String()
 }
 
+func (s *CreateVolumeInput) GetAgenticBucketVolumeConfig() *AgenticBucketVolumeConfig {
+	return s.AgenticBucketVolumeConfig
+}
+
 func (s *CreateVolumeInput) GetAgenticFSVolumeConfig() *AgenticFSVolumeConfig {
 	return s.AgenticFSVolumeConfig
 }
@@ -68,6 +75,11 @@ func (s *CreateVolumeInput) GetTeamID() *string {
 
 func (s *CreateVolumeInput) GetVolumeName() *string {
 	return s.VolumeName
+}
+
+func (s *CreateVolumeInput) SetAgenticBucketVolumeConfig(v *AgenticBucketVolumeConfig) *CreateVolumeInput {
+	s.AgenticBucketVolumeConfig = v
+	return s
 }
 
 func (s *CreateVolumeInput) SetAgenticFSVolumeConfig(v *AgenticFSVolumeConfig) *CreateVolumeInput {
@@ -96,6 +108,11 @@ func (s *CreateVolumeInput) SetVolumeName(v string) *CreateVolumeInput {
 }
 
 func (s *CreateVolumeInput) Validate() error {
+	if s.AgenticBucketVolumeConfig != nil {
+		if err := s.AgenticBucketVolumeConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.AgenticFSVolumeConfig != nil {
 		if err := s.AgenticFSVolumeConfig.Validate(); err != nil {
 			return err

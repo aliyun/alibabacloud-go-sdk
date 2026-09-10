@@ -119,7 +119,7 @@ func (client *Client) CreateApiKey(request *CreateApiKeyRequest) (_result *Creat
 
 // Summary:
 //
-// Creates a Team.
+// Creates a team.
 //
 // @param request - CreateTeamRequest
 //
@@ -161,7 +161,7 @@ func (client *Client) CreateTeamWithOptions(request *CreateTeamRequest, headers 
 
 // Summary:
 //
-// Creates a Team.
+// Creates a team.
 //
 // @param request - CreateTeamRequest
 //
