@@ -1,3 +1,7 @@
+2026-09-10 Version: v1.1.0
+- Support API DownloadResourceControlEvents.
+
+
 2026-08-20 Version: v1.0.5
 - Update API QueryAccountSafetyIncident: add request parameters ActionCodes.
 - Update API QueryAccountSafetyIncident: add request parameters CaseCodes.

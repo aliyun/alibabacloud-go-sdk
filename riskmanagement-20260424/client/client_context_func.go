@@ -439,6 +439,180 @@ func (client *Client) DescribeVersionConfigWithContext(ctx context.Context, tmpR
 
 // Summary:
 //
+// Downloads cloud resource control events.
+//
+// @param tmpReq - DownloadResourceControlEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DownloadResourceControlEventsResponse
+func (client *Client) DownloadResourceControlEventsWithContext(ctx context.Context, tmpReq *DownloadResourceControlEventsRequest, runtime *dara.RuntimeOptions) (_result *DownloadResourceControlEventsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DownloadResourceControlEventsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.ActionCodes) {
+		request.ActionCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ActionCodes, dara.String("ActionCodes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.CaseCodesPrefix) {
+		request.CaseCodesPrefixShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CaseCodesPrefix, dara.String("CaseCodesPrefix"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.EventCodes) {
+		request.EventCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EventCodes, dara.String("EventCodes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ExcludeActionCodes) {
+		request.ExcludeActionCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExcludeActionCodes, dara.String("ExcludeActionCodes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ExcludeEventCodes) {
+		request.ExcludeEventCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExcludeEventCodes, dara.String("ExcludeEventCodes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.ExcludeReasons) {
+		request.ExcludeReasonsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExcludeReasons, dara.String("ExcludeReasons"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.IncludeReasons) {
+		request.IncludeReasonsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IncludeReasons, dara.String("IncludeReasons"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.SourceCodes) {
+		request.SourceCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceCodes, dara.String("SourceCodes"), dara.String("json"))
+	}
+
+	if !dara.IsNil(tmpReq.StatusList) {
+		request.StatusListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StatusList, dara.String("StatusList"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ActionCode) {
+		query["ActionCode"] = request.ActionCode
+	}
+
+	if !dara.IsNil(request.ActionCodesShrink) {
+		query["ActionCodes"] = request.ActionCodesShrink
+	}
+
+	if !dara.IsNil(request.AliyunLang) {
+		query["AliyunLang"] = request.AliyunLang
+	}
+
+	if !dara.IsNil(request.BusinessCode) {
+		query["BusinessCode"] = request.BusinessCode
+	}
+
+	if !dara.IsNil(request.CaseCodesPrefixShrink) {
+		query["CaseCodesPrefix"] = request.CaseCodesPrefixShrink
+	}
+
+	if !dara.IsNil(request.Current) {
+		query["Current"] = request.Current
+	}
+
+	if !dara.IsNil(request.Domain) {
+		query["Domain"] = request.Domain
+	}
+
+	if !dara.IsNil(request.EventCode) {
+		query["EventCode"] = request.EventCode
+	}
+
+	if !dara.IsNil(request.EventCodesShrink) {
+		query["EventCodes"] = request.EventCodesShrink
+	}
+
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.ExcludeActionCodesShrink) {
+		query["ExcludeActionCodes"] = request.ExcludeActionCodesShrink
+	}
+
+	if !dara.IsNil(request.ExcludeEventCodesShrink) {
+		query["ExcludeEventCodes"] = request.ExcludeEventCodesShrink
+	}
+
+	if !dara.IsNil(request.ExcludeReasonsShrink) {
+		query["ExcludeReasons"] = request.ExcludeReasonsShrink
+	}
+
+	if !dara.IsNil(request.IncludeReasonsShrink) {
+		query["IncludeReasons"] = request.IncludeReasonsShrink
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Ip) {
+		query["Ip"] = request.Ip
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.PunishEndTime) {
+		query["PunishEndTime"] = request.PunishEndTime
+	}
+
+	if !dara.IsNil(request.PunishStartTime) {
+		query["PunishStartTime"] = request.PunishStartTime
+	}
+
+	if !dara.IsNil(request.Reason) {
+		query["Reason"] = request.Reason
+	}
+
+	if !dara.IsNil(request.SourceCodesShrink) {
+		query["SourceCodes"] = request.SourceCodesShrink
+	}
+
+	if !dara.IsNil(request.Status) {
+		query["Status"] = request.Status
+	}
+
+	if !dara.IsNil(request.StatusListShrink) {
+		query["StatusList"] = request.StatusListShrink
+	}
+
+	if !dara.IsNil(request.Url) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DownloadResourceControlEvents"),
+		Version:     dara.String("2026-04-24"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DownloadResourceControlEventsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Retrieves the analysis results of alert records.
 //
 // @param tmpReq - GetAlertRecordAnalysisResultRequest

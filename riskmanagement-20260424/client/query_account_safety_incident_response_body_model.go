@@ -24,7 +24,7 @@ type iQueryAccountSafetyIncidentResponseBody interface {
 type QueryAccountSafetyIncidentResponseBody struct {
 	// The status code.
 	//
-	// > 200: success. Other values (such as 500 or 400): error codes.
+	// >  200: The request was successful. Other codes (500, 400, etc.): An error occurred.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type QueryAccountSafetyIncidentResponseBody struct {
 	//
 	// 2FBDD713-00A5-5C98-B661-3FD31A349B6E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request was successful.
 	//
 	// - **true**
 	//
@@ -121,7 +121,7 @@ func (s *QueryAccountSafetyIncidentResponseBody) Validate() error {
 type QueryAccountSafetyIncidentResponseBodyData struct {
 	// The event data.
 	List []*QueryAccountSafetyIncidentResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The pagination information.
+	// The total number of records.
 	PageInfo *QueryAccountSafetyIncidentResponseBodyDataPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 }
 
@@ -170,7 +170,7 @@ func (s *QueryAccountSafetyIncidentResponseBodyData) Validate() error {
 }
 
 type QueryAccountSafetyIncidentResponseBodyDataList struct {
-	// The control action name code.
+	// The control action code.
 	//
 	// example:
 	//
@@ -180,9 +180,9 @@ type QueryAccountSafetyIncidentResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// 处罚直接成功
+	// Penalty directly succeeded
 	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
-	// The control removal time.
+	// The time when the control action was removed.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -226,9 +226,9 @@ type QueryAccountSafetyIncidentResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// 可疑身份调用敏感
+	// Suspicious identity calling sensitive API
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The exception call time.
+	// The time of the abnormal call.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -236,13 +236,13 @@ type QueryAccountSafetyIncidentResponseBodyDataList struct {
 	//
 	// 2026-03-16 15:15:00
 	ExceptionCallTime *string `json:"ExceptionCallTime,omitempty" xml:"ExceptionCallTime,omitempty"`
-	// The exception IP address.
+	// The abnormal IP address.
 	//
 	// example:
 	//
 	// 39.1X4.63.XX9
 	ExceptionIp *string `json:"ExceptionIp,omitempty" xml:"ExceptionIp,omitempty"`
-	// The control start time.
+	// The start time of the control action.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -262,7 +262,7 @@ type QueryAccountSafetyIncidentResponseBodyDataList struct {
 	//
 	// i-2zeanc2b2vgfpbvp60cs
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The control object type.
+	// The controlled object type.
 	//
 	// example:
 	//
@@ -500,7 +500,7 @@ func (s *QueryAccountSafetyIncidentResponseBodyDataList) Validate() error {
 }
 
 type QueryAccountSafetyIncidentResponseBodyDataListDateExtras struct {
-	// The alert end time.
+	// The time when the alert ended.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -508,7 +508,7 @@ type QueryAccountSafetyIncidentResponseBodyDataListDateExtras struct {
 	//
 	// 2026-03-16 15:15:00
 	AlertEndTime *string `json:"AlertEndTime,omitempty" xml:"AlertEndTime,omitempty"`
-	// The first alert time.
+	// The time when the first alert was triggered.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -516,7 +516,7 @@ type QueryAccountSafetyIncidentResponseBodyDataListDateExtras struct {
 	//
 	// 2026-03-16 15:15:00
 	AlertStartTime *string `json:"AlertStartTime,omitempty" xml:"AlertStartTime,omitempty"`
-	// The latest detection time.
+	// The time of the latest detection.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -572,7 +572,7 @@ type QueryAccountSafetyIncidentResponseBodyDataPageInfo struct {
 	//
 	// 1
 	Current *string `json:"Current,omitempty" xml:"Current,omitempty"`
-	// The number of assets displayed on each page in a paging query.
+	// The number of assets displayed on each page in a paged query.
 	//
 	// example:
 	//

@@ -32,7 +32,7 @@ type QueryGuideSubStatusResponseBody struct {
 	//
 	// - **SUBSCRIBED**: Subscribed.
 	//
-	// - **UNSUBSCRIBED**: Unsubscribed.
+	// - **UNSUBSCRIBED**: Not subscribed.
 	//
 	// example:
 	//

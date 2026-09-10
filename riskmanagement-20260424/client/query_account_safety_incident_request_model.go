@@ -52,6 +52,8 @@ type QueryAccountSafetyIncidentRequest struct {
 	AliyunLang *string `json:"AliyunLang,omitempty" xml:"AliyunLang,omitempty"`
 	// The event name code.
 	//
+	// > This parameter does not take effect when the CaseCodes parameter is not empty.
+	//
 	// example:
 	//
 	// RISKCONTROL_IMS_IMS_BAN_SUBUSER
@@ -66,10 +68,13 @@ type QueryAccountSafetyIncidentRequest struct {
 	Current *string `json:"Current,omitempty" xml:"Current,omitempty"`
 	// The event ID.
 	//
+	// > This parameter does not take effect when the EventIds parameter is not empty.
+	//
 	// example:
 	//
 	// 2PTOHhN3YUeaPWzq9FLmpdZ9EOW
-	EventId  *string   `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The list of event IDs.
 	EventIds []*string `json:"EventIds,omitempty" xml:"EventIds,omitempty" type:"Repeated"`
 	// The number of records per page. Valid values: 1 to 100.
 	//
@@ -77,7 +82,7 @@ type QueryAccountSafetyIncidentRequest struct {
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The control end time.
+	// The end time of the control action.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -85,7 +90,7 @@ type QueryAccountSafetyIncidentRequest struct {
 	//
 	// 2026-03-16 15:15:00
 	PunishEndTime *string `json:"PunishEndTime,omitempty" xml:"PunishEndTime,omitempty"`
-	// The control start time.
+	// The start time of the control action.
 	//
 	// > Format: yyyy-MM-dd HH:mm:ss
 	//
@@ -109,10 +114,13 @@ type QueryAccountSafetyIncidentRequest struct {
 	//
 	// - **Ended**: Ended.
 	//
+	// > This parameter does not take effect when the Statuses parameter is not empty.
+	//
 	// example:
 	//
 	// Executing
-	Status   *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of event statuses.
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 }
 

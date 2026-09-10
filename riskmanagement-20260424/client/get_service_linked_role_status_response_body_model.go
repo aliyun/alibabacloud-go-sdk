@@ -26,7 +26,7 @@ type GetServiceLinkedRoleStatusResponseBody struct {
 	//
 	// - **200**: Succeeded.
 	//
-	// - **Other (400, 500)**: Failed.
+	// - **Other values (400, 500)**: Failed.
 	//
 	// example:
 	//
@@ -123,9 +123,9 @@ func (s *GetServiceLinkedRoleStatusResponseBody) Validate() error {
 type GetServiceLinkedRoleStatusResponseBodyData struct {
 	// The authorization status. Valid values:
 	//
-	// - **true**: authorized
+	// - **true**: Authorized.
 	//
-	// - **false**: not authorized
+	// - **false**: Not authorized.
 	//
 	// example:
 	//
